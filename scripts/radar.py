@@ -28,6 +28,7 @@ def fetch(url):
 def add(source,url,commune='pending_review',title=''):
  if not url.startswith('https://') and not url.startswith('http://'): return
  key=url.split('#')[0]
+ if re.search(r'/20(?:0\\d|1\\d|2[0-4])/',key): return
  if key in seen: return
  seen.add(key)
  candidates.append({'source':source,'url':key,'title':title,'commune':commune,'status':'candidate_unverified'})
@@ -50,9 +51,10 @@ for name,url in SOURCES:
     host=parsed.netloc.lower().removeprefix('www.')
     if host!=origin: continue
     clean=link.split('#')[0]
+    if re.search(r'/20(?:0\\d|1\\d|2[0-4])/',clean): continue
     if KEYWORDS.search(clean):
      before=len(candidates);add(name,clean);found+=len(candidates)-before
-    if depth<3 and ARCHIVE.search(clean) and clean not in visited and not any(x[0]==clean for x in queue) and len(queue)<100:
+    if depth<3 and not re.search(r'\\.(?:pdf|jpe?g|png|docx?|xlsx?)(?:\\?|$)',clean,re.I) and ARCHIVE.search(clean) and clean not in visited and not any(x[0]==clean for x in queue) and len(queue)<100:
      queue.append((clean,depth+1))
    if KEYWORDS.search(current): add(name,current)
   except Exception as exc:

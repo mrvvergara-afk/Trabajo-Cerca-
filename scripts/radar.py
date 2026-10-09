@@ -7,6 +7,9 @@ from html import unescape
 COMMUNES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']
 SOURCES = [
  ('OMIL Mulchén','https://www.munimulchen.cl/'),
+ ('OMIL Mulchén - Jefe de Terreno','https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/'),
+ ('OMIL Nacimiento - publicaciones','https://www.govern1.com/CL/Nacimiento/102913642090515/OMIL-Municipalidad-de-Nacimiento'),
+ ('Renaico - concursos','https://municipalidadrenaico.cl/concursos-publicos/'),
  ('Municipalidad de Angol','https://www.angol.cl/'),
  ('Municipalidad de Nacimiento','https://www.nacimiento.cl/'),
  ('Municipalidad de Collipulli','https://www.municipalidadcollipulli.cl/'),
@@ -35,6 +38,7 @@ for name,url in SOURCES:
   links=list(dict.fromkeys(urllib.parse.urljoin(url,unescape(x)) for x in LINK.findall(html)))
   matched=[x for x in links if KEYWORDS.search(x)]
   for link in matched[:30]: add(name,link)
+  if KEYWORDS.search(url): add(name,url)
   diagnostics.append({'source':name,'status':'ok','candidate_links':len(matched)})
  except Exception as exc:
   diagnostics.append({'source':name,'status':'error','reason':str(exc)[:180]})

@@ -5,8 +5,8 @@ import urllib.request
 
 token = os.environ.get('APIFY_TOKEN')
 actor = os.environ.get('APIFY_ACTOR_ID')
-if not token or not actor:
-    print(json.dumps({'status':'not_configured','reason':'APIFY_TOKEN or APIFY_ACTOR_ID missing'}))
+if not token:
+    print(json.dumps({'status':'not_configured','reason':'APIFY_TOKEN missing'}))
 else:
     req = urllib.request.Request('https://api.apify.com/v2/users/me', headers={'Authorization':'Bearer '+token})
     with urllib.request.urlopen(req,timeout=15) as response:

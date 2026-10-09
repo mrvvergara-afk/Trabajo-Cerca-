@@ -32,25 +32,41 @@ def add(source,url,commune='pending_review',title=''):
  seen.add(key)
  candidates.append({'source':source,'url':key,'title':title,'commune':commune,'status':'candidate_unverified'})
 
+# Backfill: traverse public archive/category/pagination links (bounded per source).
+ARCHIVE = re.compile(r'page/\\d+|[?&](?:paged|page)=\\d+|/category/|/categoria/|/tag/|/ofertas?|/empleo|/trabajo|/omil|/convocatoria|/concursos?',re.I)
 for name,url in SOURCES:
- try:
-  html=fetch(url)
-  links=list(dict.fromkeys(urllib.parse.urljoin(url,unescape(x)) for x in LINK.findall(html)))
-  matched=[x for x in links if KEYWORDS.search(x)]
-  for link in matched[:30]: add(name,link)
-  if KEYWORDS.search(url): add(name,url)
-  diagnostics.append({'source':name,'status':'ok','candidate_links':len(matched)})
- except Exception as exc:
-  diagnostics.append({'source':name,'status':'error','reason':str(exc)[:180]})
+ queue=[(url,0)]; visited=set(); found=0; errors=[]
+ origin=urllib.parse.urlparse(url).netloc.lower().removeprefix('www.')
+ while queue and len(visited)<35:
+  current,depth=queue.pop(0)
+  if current in visited: continue
+  visited.add(current)
+  try:
+   html=fetch(current)
+   links=list(dict.fromkeys(urllib.parse.urljoin(current,unescape(x)) for x in LINK.findall(html)))
+   for link in links:
+    parsed=urllib.parse.urlparse(link)
+    if parsed.scheme not in ('http','https'): continue
+    host=parsed.netloc.lower().removeprefix('www.')
+    if host!=origin: continue
+    clean=link.split('#')[0]
+    if KEYWORDS.search(clean):
+     before=len(candidates);add(name,clean);found+=len(candidates)-before
+    if depth<3 and ARCHIVE.search(clean) and clean not in visited and not any(x[0]==clean for x in queue) and len(queue)<100:
+     queue.append((clean,depth+1))
+   if KEYWORDS.search(current): add(name,current)
+  except Exception as exc:
+   errors.append({'url':current,'reason':str(exc)[:100]})
+ diagnostics.append({'source':name,'status':'partial' if errors else 'ok','pages_scanned':len(visited),'candidate_links':found,'errors':errors[:5]})
 
 # Independent search discovery via public Google News RSS index. Results remain unverified.
 for commune in COMMUNES:
- query=f'"{commune}" ("oferta laboral" OR "se necesita" OR "se busca" OR "vacantes" OR OMIL) when:30d'
+ query=f'"{commune}" ("oferta laboral" OR "se necesita" OR "se busca" OR "vacantes" OR OMIL) when:60d'
  url='https://news.google.com/rss/search?q='+urllib.parse.quote(query)+'&hl=es-419&gl=CL&ceid=CL:es-419'
  try:
   root=ET.fromstring(fetch(url))
   found=0
-  for item in root.findall('./channel/item')[:20]:
+  for item in root.findall('./channel/item')[:40]:
    title=(item.findtext('title') or '').strip()
    link=(item.findtext('link') or '').strip()
    if link and HIRING.search(title) and not EXCLUDE.search(title) and re.search(r'\\b'+re.escape(commune)+r'\\b',title,re.I):

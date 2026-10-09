@@ -12,6 +12,8 @@ SOURCES = [
  ('Municipalidad de Collipulli','https://www.municipalidadcollipulli.cl/'),
 ]
 KEYWORDS = re.compile(r'empleo|trabajo|vacante|postulaci[oó]n|oferta laboral|se busca|omil|convocatoria',re.I)
+HIRING = re.compile(r'oferta[s]? laboral(?:es)?|vacante[s]?|se busca|se requiere|se necesita|contrata(?:ci[oó]n|r)|postula(?:ciones|r)? a(?:l)? (?:cargo|puesto)|bolsa de empleo|omil',re.I)
+EXCLUDE = re.compile(r'subsidio|inversi[oó]n|exportaciones|inteligencia artificial|dossier art[ií]stico|pymes|villarruel|argentina|tamaulipas|rancahuaso',re.I)
 LINK = re.compile(r'href=["\\\']([^"\\\']+)["\\\']',re.I)
 candidates=[]; diagnostics=[]; seen=set()
 
@@ -39,7 +41,7 @@ for name,url in SOURCES:
 
 # Independent search discovery via public Google News RSS index. Results remain unverified.
 for commune in COMMUNES:
- query=f'"{commune}" (OMIL OR empleo OR "oferta laboral" OR contratación) when:30d'
+ query=f'"{commune}" ("oferta laboral" OR "se necesita" OR "se busca" OR "vacantes" OR OMIL) when:30d'
  url='https://news.google.com/rss/search?q='+urllib.parse.quote(query)+'&hl=es-419&gl=CL&ceid=CL:es-419'
  try:
   root=ET.fromstring(fetch(url))
@@ -47,7 +49,7 @@ for commune in COMMUNES:
   for item in root.findall('./channel/item')[:20]:
    title=(item.findtext('title') or '').strip()
    link=(item.findtext('link') or '').strip()
-   if link and KEYWORDS.search(title):
+   if link and HIRING.search(title) and not EXCLUDE.search(title) and re.search(r'\\b'+re.escape(commune)+r'\\b',title,re.I):
     add('Google News RSS',link,commune,title)
     found+=1
   diagnostics.append({'source':'Google News RSS '+commune,'status':'ok','candidate_links':found})

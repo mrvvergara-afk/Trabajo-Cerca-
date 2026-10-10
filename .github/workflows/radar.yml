@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/apify_probe.py'
       - 'scripts/apify_existing_results.py'
+      - 'scripts/verify_candidates.py'
       - '.github/workflows/radar.yml'
   schedule:
     - cron: '17 11,17 * * *'
@@ -23,6 +24,9 @@ jobs:
       - run: python scripts/radar.py
       - run: python scripts/backfill.py
       - run: python scripts/chiletrabajos_direct.py
+      - run: python scripts/verify_candidates.py
+        env:
+          VERIFY_LIMIT: '30'
       - run: python scripts/apify_probe.py
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}

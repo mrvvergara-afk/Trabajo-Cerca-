@@ -2,7 +2,7 @@
 A verified record requires a live job page, explicit target commune and hiring language.
 No automatic publication: ingestion remains a separate audited step.
 """
-import json,re,urllib.request,urllib.parse,datetime as dt,html,os
+import json,re,urllib.request,urllib.parse,datetime as dt,html,os,collections
 from html.parser import HTMLParser
 from pathlib import Path
 PLACES=['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']
@@ -36,11 +36,20 @@ report={'checked_at':dt.datetime.now(dt.timezone.utc).isoformat(),'source_candid
 if source.exists():
  candidates=json.loads(source.read_text(encoding='utf-8')).get('candidates',[])
  report['source_candidates']=len(candidates)
- for item in candidates[:int(os.getenv('VERIFY_LIMIT','30'))]:
+ limit=int(os.getenv('VERIFY_LIMIT','30'))
+ grouped=collections.defaultdict(list)
+ for item in candidates:grouped[item.get('commune_query','')].append(item)
+ chosen=[]
+ while len(chosen)<limit and any(grouped.values()):
+  for place in PLACES:
+   if grouped[place] and len(chosen)<limit:chosen.append(grouped[place].pop(0))
+ for item in chosen:
   try: result=check(item)
   except Exception as exc:result={'status':'error','reason':str(exc)[:140]};report['errors']+=1
   report['results'].append({'candidate_url':item['url'],'commune_query':item.get('commune_query'),**result})
   report['checked']+=1
   if result['status']=='review_ready':report['review_ready']+=1
+report['reasons']=dict(collections.Counter(x.get('reason','unknown') for x in report['results']))
+report['statuses']=dict(collections.Counter(x.get('status','unknown') for x in report['results']))
 Path('output/verification_stage.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 print('VERIFY_STAGE '+json.dumps({k:v for k,v in report.items() if k!='results'},ensure_ascii=False))

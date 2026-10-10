@@ -15,7 +15,7 @@ def communes(text):
  return [p for p in PLACES if re.search(r'\b'+re.escape(normalized(p))+r'\b',flat)]
 def job_locations(raw):
  evidence=[]
- for match in re.finditer(r'<script[^>]*type=[\"\\\']application/ld\\+json[\"\\\'][^>]*>(.*?)</script>',raw,re.I|re.S):
+ for match in re.finditer(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>',raw,re.I|re.S):
   try:
    data=json.loads(html.unescape(match.group(1)))
    stack=[data]
@@ -47,8 +47,8 @@ def check(item):
  if status!=200:return {'status':'rejected','reason':'HTTP '+str(status)}
  parsed=urllib.parse.urlparse(final)
  if parsed.hostname not in ('chiletrabajos.cl','www.chiletrabajos.cl') or not re.search(r'/trabajo/[^/?#]+',parsed.path):return {'status':'rejected','reason':'redirected_outside_job'}
- p=Extract();p.feed(raw);body=html.unescape(' '.join(p.parts));body=re.sub(r'\\s+',' ',body)
- hint=item.get('commune_query','');locations=[x for x in PLACES if re.search(r'\\b'+re.escape(x)+r'\\b',body,re.I)]
+ p=Extract();p.feed(raw);body=html.unescape(' '.join(p.parts));body=re.sub(r'\s+',' ',body);structured=job_locations(raw)
+ hint=item.get('commune_query','');locations=communes(body)
  if CLOSED.search(body[:10000]):return {'status':'rejected','reason':'closed_notice'}
  if not HIRING.search(body):return {'status':'pending','reason':'hiring_text_missing'}
  if not locations and not structured:return {'status':'pending','reason':'no_target_commune_evidence','title':p.title[:160],'page_chars':len(body),'title_hint':item.get('title_hint','')[:120]}

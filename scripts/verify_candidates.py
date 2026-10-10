@@ -2,12 +2,35 @@
 A verified record requires a live job page, explicit target commune and hiring language.
 No automatic publication: ingestion remains a separate audited step.
 """
-import json,re,urllib.request,urllib.parse,datetime as dt,html,os,collections
+import json,re,urllib.request,urllib.parse,datetime as dt,html,os,collections,unicodedata
 from html.parser import HTMLParser
 from pathlib import Path
 PLACES=['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']
 HIRING=re.compile(r'oferta laboral|postula|postulación|requisitos|descripción del empleo|descripción del trabajo|jornada|vacante|empleo',re.I)
 CLOSED=re.compile(r'oferta (?:expirada|finalizada|cerrada)|postulación(?:es)? (?:cerrada|finalizada)|esta oferta ya no',re.I)
+def normalized(s):
+ return ''.join(ch for ch in unicodedata.normalize('NFKD',s.lower()) if not unicodedata.combining(ch))
+def communes(text):
+ flat=normalized(text)
+ return [p for p in PLACES if re.search(r'\b'+re.escape(normalized(p))+r'\b',flat)]
+def job_locations(raw):
+ evidence=[]
+ for match in re.finditer(r'<script[^>]*type=[\"\\\']application/ld\\+json[\"\\\'][^>]*>(.*?)</script>',raw,re.I|re.S):
+  try:
+   data=json.loads(html.unescape(match.group(1)))
+   stack=[data]
+   while stack:
+    node=stack.pop()
+    if isinstance(node,list):stack.extend(node);continue
+    if not isinstance(node,dict):continue
+    stack.extend(v for v in node.values() if isinstance(v,(list,dict)))
+    typ=node.get('@type',[])
+    if isinstance(typ,str):typ=[typ]
+    if 'JobPosting' in typ:
+     location=node.get('jobLocation',[])
+     evidence.extend(communes(json.dumps(location,ensure_ascii=False)))
+  except (ValueError,TypeError):continue
+ return list(dict.fromkeys(evidence))
 class Extract(HTMLParser):
  def __init__(self):super().__init__();self.parts=[];self.title='';self.intitle=False
  def handle_starttag(self,tag,attrs):
@@ -28,9 +51,11 @@ def check(item):
  hint=item.get('commune_query','');locations=[x for x in PLACES if re.search(r'\\b'+re.escape(x)+r'\\b',body,re.I)]
  if CLOSED.search(body[:10000]):return {'status':'rejected','reason':'closed_notice'}
  if not HIRING.search(body):return {'status':'pending','reason':'hiring_text_missing'}
- if hint not in locations:return {'status':'pending','reason':'searched_commune_not_found_in_page','locations_seen':locations}
+ if not locations and not structured:return {'status':'pending','reason':'no_target_commune_evidence','title':p.title[:160],'page_chars':len(body),'title_hint':item.get('title_hint','')[:120]}
+ if hint not in locations and hint not in structured:return {'status':'pending','reason':'searched_commune_not_confirmed','locations_seen':locations,'structured_locations':structured,'title':p.title[:160]}
+ if hint in structured:return {'status':'review_ready','reason':'jobposting_structured_location','title':p.title[:200],'locations_seen':structured,'url':final,'note':'Review date and application before publishing'}
  # Location anywhere in page is insufficient to confirm worksite, so manual/location-specific verification remains necessary.
- return {'status':'review_ready','reason':'live_job_and_commune_text_present','title':p.title[:200],'locations_seen':locations,'url':final,'note':'Worksite and closing date require explicit review'}
+ return {'status':'review_ready','reason':'live_job_and_commune_text_present','title':p.title[:200],'locations_seen':locations,'structured_locations':structured,'url':final,'note':'Worksite and closing date require explicit review'}
 source=Path('output/chiletrabajos_direct.json')
 report={'checked_at':dt.datetime.now(dt.timezone.utc).isoformat(),'source_candidates':0,'checked':0,'review_ready':0,'verified':0,'published':0,'errors':0,'results':[]}
 if source.exists():

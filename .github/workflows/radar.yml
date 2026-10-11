@@ -7,9 +7,10 @@ on:
       - 'scripts/apify_probe.py'
       - 'scripts/apify_existing_results.py'
       - 'scripts/verify_candidates.py'
+      - 'scripts/apify_run_bounded.py'
       - '.github/workflows/radar.yml'
   schedule:
-    - cron: '17 11,17 * * *'
+    - cron: '17 * * * *'
 permissions:
   contents: read
 jobs:
@@ -31,6 +32,10 @@ jobs:
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           APIFY_ACTOR_ID: ${{ vars.APIFY_ACTOR_ID }}
+      - run: python scripts/apify_run_bounded.py
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_RUN_ENABLED: 'false'
       - run: python scripts/apify_existing_results.py
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}

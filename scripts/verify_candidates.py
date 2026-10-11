@@ -55,7 +55,7 @@ def check(item):
  if hint not in locations and hint not in structured:return {'status':'pending','reason':'searched_commune_not_confirmed','locations_seen':locations,'structured_locations':structured,'title':p.title[:160]}
  if hint in structured:return {'status':'review_ready','reason':'jobposting_structured_location','title':p.title[:200],'locations_seen':structured,'url':final,'note':'Review date and application before publishing'}
  # Location anywhere in page is insufficient to confirm worksite, so manual/location-specific verification remains necessary.
- return {'status':'review_ready','reason':'live_job_and_commune_text_present','title':p.title[:200],'locations_seen':locations,'structured_locations':structured,'url':final,'note':'Worksite and closing date require explicit review'}
+ return {'status':'pending','reason':'location_not_explicitly_confirmed','title':p.title[:200],'locations_seen':locations,'structured_locations':structured,'url':final,'note':'Worksite and closing date require explicit review'}
 source=Path('output/chiletrabajos_direct.json')
 report={'checked_at':dt.datetime.now(dt.timezone.utc).isoformat(),'source_candidates':0,'checked':0,'review_ready':0,'verified':0,'published':0,'errors':0,'results':[]}
 if source.exists():

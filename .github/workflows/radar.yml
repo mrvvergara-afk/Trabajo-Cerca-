@@ -16,7 +16,7 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,7 +27,7 @@ jobs:
       - run: python scripts/chiletrabajos_direct.py
       - run: python scripts/verify_candidates.py
         env:
-          VERIFY_LIMIT: '10'
+          VERIFY_LIMIT: '60'
       - run: python scripts/apify_probe.py
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}

@@ -53,6 +53,7 @@ def check(item):
  if not HIRING.search(body):return {'status':'pending','reason':'hiring_text_missing'}
  if not locations and not structured:return {'status':'pending','reason':'no_target_commune_evidence','title':p.title[:160],'page_chars':len(body),'title_hint':item.get('title_hint','')[:120]}
  if hint not in locations and hint not in structured:return {'status':'pending','reason':'searched_commune_not_confirmed','locations_seen':locations,'structured_locations':structured,'title':p.title[:160]}
+ if hint in structured and len(structured)>1:return {'status':'pending','reason':'multiple_structured_locations','locations_seen':structured}
  if hint in structured:return {'status':'review_ready','reason':'jobposting_structured_location','title':p.title[:200],'locations_seen':structured,'url':final,'note':'Review date and application before publishing'}
  # Location anywhere in page is insufficient to confirm worksite, so manual/location-specific verification remains necessary.
  return {'status':'pending','reason':'location_not_explicitly_confirmed','title':p.title[:200],'locations_seen':locations,'structured_locations':structured,'url':final,'note':'Worksite and closing date require explicit review'}

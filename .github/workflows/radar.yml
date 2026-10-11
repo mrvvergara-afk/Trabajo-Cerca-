@@ -27,7 +27,7 @@ jobs:
       - run: python scripts/chiletrabajos_direct.py
       - run: python scripts/verify_candidates.py
         env:
-          VERIFY_LIMIT: '110'
+          VERIFY_LIMIT: '10'
       - run: python scripts/apify_probe.py
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}

@@ -30,6 +30,16 @@ class ObserverTests(unittest.TestCase):
         parser.feed('<pre>unrelated</pre><pre id="radar-live-check">{&quot;ok&quot;:true}</pre>')
         self.assertEqual(json.loads(''.join(parser.parts)),{'ok':True})
 
+    def test_ingestion_rejection_and_source_progress_remain_observable(self):
+        report = validate({'ingestion':{'status':'batch_rejected','rejection':'Untrusted GitHub producer',
+          'stored':0,'published':0,'receipts':[]}, 'feed':{'complete':False,'buildSource':'radar_jobs',
+          'stagedPages':1,'stagedPublicItems':12,'hasNextSourcePage':True}, 'visibleIds':[]})
+        self.assertEqual(report['ingestion_status'],'batch_rejected')
+        self.assertEqual(report['ingestion_rejection'],'Untrusted GitHub producer')
+        self.assertEqual(report['staged_public_items'],12)
+        self.assertTrue(report['has_next_source_page'])
+        self.assertFalse(report['publication_confirmed'])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -43,8 +43,11 @@ def validate(proof):
         if proof.get('feedReadError') or len(set(ids)) != published or not set(ids).issubset(proof.get('visibleIds', [])):
             raise ValueError('Published IDs are not confirmed in the visible feed')
     return {'stored':ingestion.get('stored'), 'published':published, 'published_ids':ids,
+            'ingestion_status':ingestion.get('status'), 'ingestion_rejection':ingestion.get('rejection'),
+            'ingestion_data_commit':ingestion.get('dataCommit'), 'ingestion_run_id':ingestion.get('runId'),
             'feed_complete':feed.get('complete'), 'feed_manifest':feed.get('manifestId'),
             'source_phase':feed.get('buildSource'), 'staged_pages':feed.get('stagedPages'),
+            'staged_public_items':feed.get('stagedPublicItems'), 'has_next_source_page':feed.get('hasNextSourcePage'),
             'read_only':True, 'provider_calls':0, 'publication_confirmed':bool(published),
             'status':'published_ids_confirmed' if published else 'waiting_for_publication'}
 

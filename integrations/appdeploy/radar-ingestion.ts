@@ -222,6 +222,9 @@ export async function confirmRadarPublications() {
   if (!current?.receipts?.length) return { published:0, status:String(current?.status || 'awaiting_signed_batch') };
   const snapshot = await currentPublicFeedManifest();
   if (!snapshot) return { published:0, status:'waiting_for_complete_feed' };
+  if (current.feedManifestId === snapshot.manifestId && current.status === 'published') {
+    return { published:Number(current.publishedCount || 0), status:'published' };
+  }
   let published = 0;
   for (const receipt of current.receipts) {
     const page = snapshot.manifest.pages.find(ref => ref.identities?.includes(receipt.identity));
@@ -245,8 +248,16 @@ export async function confirmRadarPublications() {
 
 export async function externalRadarStatus() {
   const current = await state();
+  const receipts:Array<{ candidateId:string; publishedId:string | null; state:string; sourceUrl:string | null }> = [];
+  for (const receipt of current?.receipts?.slice(0, 3) ?? []) {
+    const [record] = await db.get<Stored>(receipt.table, [receipt.id]);
+    receipts.push({ candidateId:receipt.candidateId,
+      publishedId:typeof record?.externalPublishedId === 'string' ? record.externalPublishedId : null,
+      state:String(record?.externalPublicationState || 'not_confirmed'),
+      sourceUrl:typeof record?.url === 'string' ? record.url : null });
+  }
   return { status:current?.status || 'awaiting_signed_batch', stored:Number(current?.storedCount || 0),
     published:Number(current?.publishedCount || 0), checkedAt:current?.checkedAt ?? null,
     feedManifestId:current?.feedManifestId ?? null, dataCommit:current?.dataCommit ?? null,
-    rejection:current?.rejection ?? null, runId:current?.runId ?? null };
+    rejection:current?.rejection ?? null, runId:current?.runId ?? null, receipts };
 }

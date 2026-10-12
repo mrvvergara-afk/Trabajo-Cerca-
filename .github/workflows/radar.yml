@@ -42,6 +42,7 @@ jobs:
           node tests/appdeploy-repair.test.mjs
           node tests/appdeploy-public-feed.test.mjs
           node tests/appdeploy-ingestion.test.mjs
+          node tests/verification-schedule.test.mjs
           node tests/workflow-checkpoint.test.mjs
       - name: Localizar checkpoint anterior
         id: checkpoint
@@ -154,6 +155,7 @@ jobs:
           node tests/appdeploy-repair.test.mjs
           node tests/appdeploy-public-feed.test.mjs
           node tests/appdeploy-ingestion.test.mjs
+          node tests/verification-schedule.test.mjs
           node tests/workflow-checkpoint.test.mjs
       - name: Localizar respaldo durable o histórico anterior
         id: laboratory_history
@@ -198,6 +200,8 @@ jobs:
         env:
           RADAR_REPOSITORY_ID: ${{ github.repository_id }}
           RADAR_DATA_PARENT: ${{ steps.laboratory_history.outputs.parent }}
+      - name: Comprobar IDs publicados mediante el SDK de lectura de la app
+        run: python scripts/observe_laboratory.py
       - name: Conservar diagnóstico del piloto
         if: always()
         uses: actions/upload-artifact@v4

@@ -328,6 +328,15 @@ export async function currentPublicFeedManifest() {
   return { manifestId:current.manifestId, manifest:record };
 }
 
+export async function publicFeedProgress() {
+  const current = await single<Control>('public_feed_control');
+  const build = await single<Build>('public_feed_build_state');
+  return { complete:Boolean(current?.manifestId), manifestId:current?.manifestId ?? null,
+    visibleItemCount:Number(current?.itemCount || 0), buildSource:build?.source ?? null,
+    stagedPages:build?.pages?.length ?? 0, stagedPublicItems:build?.itemCount ?? 0,
+    hasNextSourcePage:Boolean(build?.nextToken), updatedAt:current?.updatedAt ?? null };
+}
+
 // Single scheduled writer: the existing verify-publish cron. Other handlers only read the summary.
 export async function advancePublicFeed(projector:Projector) {
   const now = Date.now();

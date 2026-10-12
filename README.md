@@ -15,6 +15,7 @@ python -m unittest discover -s tests -v
 node tests/appdeploy-repair.test.mjs
 node tests/appdeploy-public-feed.test.mjs
 node tests/appdeploy-ingestion.test.mjs
+node tests/verification-schedule.test.mjs
 node tests/workflow-checkpoint.test.mjs
 ```
 

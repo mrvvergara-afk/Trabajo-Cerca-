@@ -1,8 +1,8 @@
 # Recepción y publicación real del piloto de laboratorio
 
-Este documento continúa los informes de auditoría y piloto. Los resultados anteriores describen sus respectivos commits; este cierre registra las comprobaciones posteriores. Se mantiene `main` en `fab392b824e4100a4bba6dfe9289825297d24707`, sin integrar ni cambiar producción.
+Este documento continúa los informes de auditoría y piloto. Los resultados anteriores describen sus respectivos commits; este cierre registra las comprobaciones posteriores. Se mantiene `main` en `fab392b824e4100a4bba6dfe9289825297d24707`, sin integrar ni cambiar producción. Versión actual aplicada al laboratorio: **`1791842683706`**.
 
-**Resultado comprobado a las 21:40 UTC: dos ofertas reales publicadas y visibles en AppDeploy, con el feed completo.** Sus recibos quedaron guardados en el respaldo a las 22:00 UTC. La recepción y la publicación se comprobaron mediante el SDK de lectura del laboratorio. Producción sigue sin integrar.
+**Resultado comprobado a las 22:08 UTC: dos ofertas reales publicadas y visibles en AppDeploy, con el feed completo y los mismos IDs después de un nuevo respaldo.** Sus dos recibos quedaron guardados y restaurados sin duplicarse. La recepción y la publicación se comprobaron mediante el SDK de lectura del laboratorio. Producción sigue sin integrar.
 
 ## Errores y cambios de la reparación completa
 
@@ -36,7 +36,7 @@ El [monitor 38266447346](https://github.com/mrvvergara-afk/Trabajo-Cerca-/action
 
 La lectura posterior al arreglo, [38289365527](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38289365527), terminó correctamente. El SDK devolvió `stored: 2`, `published: 0`, `stored_waiting_for_feed`, sin rechazo, lote del run `38264847681` y commit de datos `d9a1381003b11fe7592354092e16c92b0ad369d7`. El feed tenía 60 elementos preparados en dos páginas, continuaba en `radar_jobs` y conservaba su cursor a otra página. No había manifiesto completo visible.
 
-El cron de las 18:05 UTC terminó correctamente con el receptor corregido. La construcción continúa por checkpoints de hasta 40 registros evaluados, sin publicar un inventario parcial ni borrar el histórico. No se conoce todavía el total restante de las tablas de AppDeploy; no se inventa un plazo de finalización. Los contadores y el cursor de avance se consultan en la [vista operativa de lectura](https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?radar-proof=1#operacion).
+El cron de las 18:05 UTC terminó correctamente con el receptor corregido. En esa etapa la construcción continuaba por checkpoints de hasta 40 registros evaluados, sin publicar un inventario parcial ni borrar el histórico. Todavía no se conocía el total restante y no se inventó un plazo de finalización. El resultado posterior completo se registra abajo. Los contadores se consultan en la [vista operativa de lectura](https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?radar-proof=1#operacion).
 
 ## Publicación real confirmada
 
@@ -54,6 +54,12 @@ El [job de recibos 38314043912](https://github.com/mrvvergara-afk/Trabajo-Cerca-
 La rama de datos avanzó por fast-forward a **`b0fb084e2f6ef6a8de5f7d01ad98963758c67835`**, cuyo padre es `d9a1381003b11fe7592354092e16c92b0ad369d7`. El snapshot conserva 190 candidatos, 2.750 observaciones, 6 intentos, 1 checkpoint, 2 runs y **2 recibos de publicación**. SQLite: 1.384.448 bytes; gzip: 227.359 bytes. SHA-256 de SQLite: `62f04b2e96b9c825213da4ae93ea1d74afa19e7ca9ede64b5bc1bd5de9f7e2a4`; del gzip: `f7083e69ead538b4d161d207a6c2c50f34cfb6335bb58d20af1f31bc625dba50`.
 
 La evidencia numérica se entrega en [publication-confirmation-2026-10-12.json](../integrations/appdeploy/publication-confirmation-2026-10-12.json). Las lecturas anteriores de cero publicaciones y el monitor fallido permanecen registrados como resultados de sus respectivas etapas.
+
+## Repetición y restauración de recibos comprobadas
+
+Después del ajuste, la [lectura 38314922342](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38314922342) confirmó a las 22:08 UTC que AppDeploy ya había aceptado el commit de respaldo `b0fb084e2f6ef6a8de5f7d01ad98963758c67835`, conservando el mismo lote del run `38264847681`, los mismos dos IDs públicos y el mismo manifiesto `b1fc0fa1-bdfd-4ab4-a27b-c159d0c21745`. La lectura quedó en `published`, sin rechazo y con el feed completo.
+
+El [job 38314922367](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38314922367) restauró ese respaldo con recibos, volvió a confirmar ambas publicaciones y guardó un nuevo snapshot en **`01d35bdc68538e6627d3990a880fdefd98dea6a8`**, hijo de `b0fb084e2f6ef6a8de5f7d01ad98963758c67835`. Los conteos y los hashes de SQLite y gzip permanecieron iguales: 190 candidatos, 2.750 observaciones y **dos recibos, sin duplicarlos**. El productor y `main` permanecieron omitidos; no hubo nuevas consultas a fuentes o proveedores.
 
 ## Último ajuste aplicado
 
@@ -87,7 +93,6 @@ El observador conserva ahora el motivo de rechazo y el avance del inventario. Un
 
 ## Pendientes para operación
 
-- Completar la comprobación posterior al nuevo commit de respaldo y registrar la estabilidad de IDs. Las dos publicaciones y sus recibos durables ya están confirmados.
 - Revisar el calendario del productor antes de automatizarlo en la rama por defecto. GitHub no ejecuta schedules de esta rama de reparación.
 - Ampliar y auditar verificadores para fuentes distintas de Chiletrabajos; los bloqueos HTTP y evidencias incompletas se conservan como pendientes.
 - Revisar cuotas y retención de las versiones del feed y del respaldo antes de operación sostenida. La implementación mantiene un escritor y no atribuye garantías de transacción a sus llamadas legacy del SDK.

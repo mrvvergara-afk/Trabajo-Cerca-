@@ -1,5 +1,9 @@
 # Reparaciones de AppDeploy en el laboratorio
 
+Estado actual: versión **`1791842683706`** aplicada y `ready`. Dos ofertas reales publicadas y visibles, con los mismos IDs después del respaldo. Se restauraron y conservaron dos recibos junto con 190 candidatos y 2.750 observaciones. Véase el [informe actual](../../docs/resultado-publicacion-laboratorio-2026-10-12.md), la [evidencia real](publication-confirmation-2026-10-12.json) y el [último arreglo de repetición](backup-replay-repair.json). `main` y producción siguen sin integrar.
+
+Los paquetes y secciones siguientes describen las etapas históricas y sus versiones. El calendario actual del escritor es cada 15 minutos; sus tareas con proveedores conservan solo los siete turnos originales.
+
 El primer parche preparado abajo se aplicó posteriormente en la versión `1791772015605`; véase el [registro de aplicación](../../docs/aplicacion-radar-laboratorio-2026-10-11.md).
 
 La continuación se aplicó en la versión **`1791805194792`** y completa la reconstrucción del feed por checkpoints. Entrega:

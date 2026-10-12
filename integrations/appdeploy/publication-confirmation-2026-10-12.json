@@ -25,5 +25,13 @@
   "receipt_backup_status": "confirmed",
   "receipt_backup_commit": "b0fb084e2f6ef6a8de5f7d01ad98963758c67835",
   "receipt_backup_workflow_run": "38314043912",
-  "latest_applied_version": "1791842683706"
+  "latest_applied_version": "1791842683706",
+  "latest_observed_at": "2026-10-12T22:08:59Z",
+  "latest_observation_workflow_run": "38314922367",
+  "repeat_read_workflow_run": "38314922342",
+  "latest_ingestion_data_commit": "b0fb084e2f6ef6a8de5f7d01ad98963758c67835",
+  "latest_receipt_backup_commit": "01d35bdc68538e6627d3990a880fdefd98dea6a8",
+  "ids_unchanged_after_backup": true,
+  "feed_manifest_unchanged_after_backup": true,
+  "backup_hashes_unchanged_on_repeat": true
 }

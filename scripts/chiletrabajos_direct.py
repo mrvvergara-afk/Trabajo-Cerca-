@@ -1,52 +1,57 @@
-"""Direct Chiletrabajos source adapter. Discovery only; never publishes unverified jobs."""
-import datetime as dt
-import html
-import json
+"""Chiletrabajos public discovery. Search communes are hints, not worksites."""
 import re
 import urllib.parse
-import urllib.request
-from html.parser import HTMLParser
-from pathlib import Path
+try:
+    from .common import COMMUNES, Links, canonical_url, fetch_text, output_dir, safe_error, utcnow, write_json
+except ImportError:
+    from common import COMMUNES, Links, canonical_url, fetch_text, output_dir, safe_error, utcnow, write_json
 
-PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']
-class Links(HTMLParser):
-    def __init__(self):
-        super().__init__(); self.links=[]; self.href=None; self.label=[]
-    def handle_starttag(self, tag, attrs):
-        if tag=='a':
-            self.href=dict(attrs).get('href'); self.label=[]
-    def handle_data(self, data):
-        if self.href is not None: self.label.append(data)
-    def handle_endtag(self, tag):
-        if tag=='a' and self.href:
-            self.links.append((self.href,' '.join(self.label).strip()))
-            self.href=None; self.label=[]
 
-def run():
-    Path('output').mkdir(exist_ok=True)
-    candidates={}; diagnostics=[]
-    for place in PLACES:
-        url='https://www.chiletrabajos.cl/encuentra-un-empleo/?2='+urllib.parse.quote(place)+'&f=2'
-        record={'source':'Chiletrabajos','commune_query':place,'url':url,'links_seen':0,'candidates':0,'status':'ok'}
+def run(*, fetcher=fetch_text, output=None, places=None, budget=None, now=None):
+    now = now or utcnow()
+    candidates, diagnostics = {}, []
+    for place in (COMMUNES if places is None else places):
+        url = 'https://www.chiletrabajos.cl/encuentra-un-empleo/?2=' + urllib.parse.quote(place) + '&f=2'
+        record = {'source': 'Chiletrabajos', 'commune_query': place, 'url': url,
+                  'links_seen': 0, 'candidates': 0, 'status': 'ok', 'coverage_complete': False}
+        if budget and budget.remaining() <= 0:
+            record.update(status='deferred', error='stage_budget_exhausted')
+            diagnostics.append(record)
+            continue
         try:
-            req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (compatible; TrabajoCerca/1.0)'})
-            with urllib.request.urlopen(req,timeout=14) as resp:
-                if resp.status!=200: raise ValueError('HTTP '+str(resp.status))
-                page=resp.read(1200000).decode('utf-8','replace')
-            parser=Links(); parser.feed(page)
-            for href,title in parser.links:
-                full=urllib.parse.urljoin(url,html.unescape(href)).split('#')[0]
-                parsed=urllib.parse.urlparse(full)
-                if parsed.hostname not in ('chiletrabajos.cl','www.chiletrabajos.cl'):continue
-                if not re.search(r'/trabajo/[^/?#]+',parsed.path):continue
-                record['links_seen']+=1
-                if full in candidates:continue
-                candidates[full]={'source':'Chiletrabajos','url':full,'title_hint':title[:180],'commune_query':place,'status':'pending_verification','work_location_verified':False,'discovered_at':dt.datetime.now(dt.timezone.utc).isoformat()}
-                record['candidates']+=1
+            parser = Links()
+            parser.feed(fetcher(url, budget=budget))
+            for href, title in parser.links:
+                try:
+                    full = canonical_url(urllib.parse.urljoin(url, href))
+                except ValueError:
+                    continue
+                parsed = urllib.parse.urlsplit(full)
+                if parsed.hostname not in ('chiletrabajos.cl', 'www.chiletrabajos.cl') or not re.fullmatch(r'/trabajo/[^/]+/?', parsed.path):
+                    continue
+                record['links_seen'] += 1
+                if full in candidates:
+                    if place not in candidates[full]['commune_queries']:
+                        candidates[full]['commune_queries'].append(place)
+                    continue
+                candidates[full] = {'source': 'Chiletrabajos', 'url': full, 'title_hint': title[:180],
+                                    'commune_query': place, 'commune_queries': [place],
+                                    'state': 'pending_verification', 'work_location_verified': False,
+                                    'discovered_at': now.isoformat()}
+                record['candidates'] += 1
         except Exception as exc:
-            record['status']='error';record['error']=str(exc)[:160]
+            record.update(status='error', error=safe_error(exc))
         diagnostics.append(record)
-    result={'source':'Chiletrabajos direct HTML','candidate_count':len(candidates),'published_count':0,'candidates':list(candidates.values()),'diagnostics':diagnostics,'warning':'Search city is not verified work location; each job must be opened and checked before publication.'}
-    Path('output/chiletrabajos_direct.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
-    print('DIRECT_CHILETRABAJOS '+json.dumps({'candidates':len(candidates),'errors':sum(x['status']=='error' for x in diagnostics)}))
-if __name__=='__main__':run()
+    report = {'source': 'Chiletrabajos direct HTML', 'candidate_count': len(candidates),
+              'published_count': 0, 'candidates': list(candidates.values()),
+              'diagnostics': diagnostics,
+              'warning': 'Only the returned search page was examined; job pages require verification.'}
+    write_json((output or output_dir()) / 'chiletrabajos_direct.json', report)
+    return report
+
+
+if __name__ == '__main__':
+    import json
+    result = run()
+    print('DIRECT_CHILETRABAJOS ' + json.dumps({'candidates': result['candidate_count'],
+          'errors': sum(d['status'] == 'error' for d in result['diagnostics'])}))

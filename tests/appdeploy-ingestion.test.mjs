@@ -199,6 +199,79 @@ test('Complete feed promotion yields a confirmed publication ID and repeating a 
   assert.equal(h.table(name).size,1);
 });
 
+test('A backup-only Git commit preserves confirmed receipts without requeuing the same signed batch', async () => {
+  const h = harness(); await h.build();
+  const envelope = signed();
+  let head = 'b'.repeat(40);
+  const response = value => ({ status:200,ok:true,headers:new Headers(),arrayBuffer:async () => Buffer.from(JSON.stringify(value)) });
+  h.ctx.fetch = async url => response(url.includes('/git/ref/') ? { object:{ sha:head } } : url.includes('/jwks') ? jwks : envelope);
+  await h.ctx.pullRadarBatch(h.mapper);
+  await h.ctx.advancePublicFeed(h.projector);
+  await h.ctx.confirmRadarPublications();
+  const before = await h.ctx.externalRadarStatus();
+  h.calls.length = 0;
+  head = 'c'.repeat(40);
+  const result = await h.ctx.pullRadarBatch(h.mapper);
+  const after = await h.ctx.externalRadarStatus();
+  assert.equal(after.published,1);
+  assert.equal(after.status,'published');
+  assert.equal(after.dataCommit,head);
+  assert.deepEqual(after.receipts,before.receipts);
+  assert.equal(after.feedManifestId,before.feedManifestId);
+  assert.equal(h.calls.filter(call => call.method === 'add' && call.table === 'public_feed_changes').length,0);
+  assert.equal(h.calls.filter(call => call.method === 'update' && /^radar_external_[a-f0-9]{32}$/.test(call.table)).length,0);
+  assert.equal(result.stored,0);
+  assert.equal(result.status,'unchanged_batch');
+});
+
+test('A failed data-head checkpoint recovers the complete persisted batch without duplicate change events', async () => {
+  const h = harness(), envelope = signed();
+  const head = 'b'.repeat(40);
+  const response = value => ({ status:200,ok:true,headers:new Headers(),arrayBuffer:async () => Buffer.from(JSON.stringify(value)) });
+  h.ctx.fetch = async url => response(url.includes('/git/ref/') ? { object:{ sha:head } } : url.includes('/jwks') ? jwks : envelope);
+  h.fail('update','radar_external_pull_state',[false]);
+  await assert.rejects(h.ctx.pullRadarBatch(h.mapper),/state write failed/);
+  assert.equal(h.table('public_feed_changes').size,1);
+  const result = await h.ctx.pullRadarBatch(h.mapper);
+  assert.equal(h.table('public_feed_changes').size,1);
+  const name = 'radar_external_' + h.ctx.jobIdentity(offer().source_url).slice(0,32);
+  assert.equal(h.table(name).size,1);
+  assert.equal((await h.ctx.externalRadarStatus()).dataCommit,head);
+  assert.equal((await h.ctx.externalRadarStatus()).published,0);
+  assert.equal(result.status,'unchanged_batch');
+});
+
+test('A cached batch digest does not bypass signature verification for a new data commit', async () => {
+  const h = harness();
+  let envelope = signed(), head = 'b'.repeat(40);
+  const response = value => ({ status:200,ok:true,headers:new Headers(),arrayBuffer:async () => Buffer.from(JSON.stringify(value)) });
+  h.ctx.fetch = async url => response(url.includes('/git/ref/') ? { object:{ sha:head } } : url.includes('/jwks') ? jwks : envelope);
+  await h.ctx.pullRadarBatch(h.mapper);
+  const acceptedHead = head;
+  h.calls.length = 0;
+  head = 'c'.repeat(40);
+  envelope = { ...envelope,proof:{ ...envelope.proof,signature:'a'.repeat(340) } };
+  assert.equal((await h.ctx.pullRadarBatch(h.mapper)).status,'batch_rejected');
+  assert.equal((await h.ctx.externalRadarStatus()).dataCommit,acceptedHead);
+  assert.equal(h.calls.filter(call => call.method === 'add' && call.table === 'public_feed_changes').length,0);
+  assert.equal(h.calls.filter(call => call.method === 'update' && /^radar_external_[a-f0-9]{32}$/.test(call.table)).length,0);
+});
+
+test('A different signed batch still updates the same canonical offer with its original ID', async () => {
+  const h = harness();
+  let envelope = signed(), head = 'b'.repeat(40);
+  const response = value => ({ status:200,ok:true,headers:new Headers(),arrayBuffer:async () => Buffer.from(JSON.stringify(value)) });
+  h.ctx.fetch = async url => response(url.includes('/git/ref/') ? { object:{ sha:head } } : url.includes('/jwks') ? jwks : envelope);
+  await h.ctx.pullRadarBatch(h.mapper);
+  const name = 'radar_external_' + h.ctx.jobIdentity(offer().source_url).slice(0,32);
+  const id = [...h.table(name).keys()][0];
+  head = 'c'.repeat(40);
+  envelope = signed(body({ run_id:'124',records:[offer({ title:'Operador actualizado' })] }));
+  assert.equal((await h.ctx.pullRadarBatch(h.mapper)).stored,1);
+  assert.deepEqual([...h.table(name).keys()],[id]);
+  assert.equal(h.table(name).get(id).title,'Operador actualizado');
+});
+
 test('Canonical deduplication prevents the same Chiletrabajos job appearing from the legacy and external sources', async () => {
   const h = harness();
   const old = h.mapper(offer());

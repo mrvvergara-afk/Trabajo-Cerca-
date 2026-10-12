@@ -22,5 +22,8 @@
   "provider_calls": 0,
   "main_merged": false,
   "production_changed": false,
-  "receipt_backup_status": "pending_separate_read_job"
+  "receipt_backup_status": "confirmed",
+  "receipt_backup_commit": "b0fb084e2f6ef6a8de5f7d01ad98963758c67835",
+  "receipt_backup_workflow_run": "38314043912",
+  "latest_applied_version": "1791842683706"
 }

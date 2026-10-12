@@ -208,6 +208,14 @@ export async function pullRadarBatch(mapRecord:(item:VerifiedOffer) => Stored) {
     const { batch, digest } = verifySignedBatch(envelope as unknown as Envelope, jwks as unknown as Jwks);
     // Validate the whole batch before writing any offer.
     batch.records.forEach(item => validateOffer(item));
+    if (previous && previous.digest === digest) {
+      // A backup commit may retain the already accepted exchange. Preserve its IDs and receipts.
+      const published = Number(previous.publishedCount || 0);
+      const count = previous.receipts?.length ?? 0;
+      const status = !count ? 'no_verified_offers' : published === count ? 'published' : 'stored_waiting_for_feed';
+      await saveState({ dataCommit:commit, status, rejection:null, transportError:null, checkedAt:new Date().toISOString() });
+      return { stored:0, published, status:'unchanged_batch' };
+    }
     const result = await storeVerifiedBatch(batch, digest, mapRecord);
     await saveState({ dataCommit:commit });
     return result;

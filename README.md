@@ -4,7 +4,7 @@ El radar recolecta candidatos públicos, conserva un historial local y verifica 
 
 La reparación está en una rama independiente. Producción y la rama principal no se actualizan durante esta auditoría.
 
-Consulta el [resultado actual y pendientes](docs/resultado-publicacion-laboratorio-2026-10-12.md), el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [continuación del feed](docs/continuacion-feed-laboratorio-2026-10-12.md) y la [integración y respaldo del laboratorio](docs/integracion-y-respaldo-laboratorio-2026-10-12.md). La última lectura real confirmó **dos ofertas recibidas y cero publicaciones visibles**, con el feed completo todavía en construcción.
+Consulta el [resultado actual y pendientes](docs/resultado-publicacion-laboratorio-2026-10-12.md), el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [continuación del feed](docs/continuacion-feed-laboratorio-2026-10-12.md) y la [integración y respaldo del laboratorio](docs/integracion-y-respaldo-laboratorio-2026-10-12.md). La lectura real confirmó **dos ofertas publicadas y visibles**, con el feed completo y sus recibos guardados en el respaldo del laboratorio.
 
 ## Pruebas sin red ni credenciales
 

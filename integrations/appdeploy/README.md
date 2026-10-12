@@ -1,4 +1,20 @@
-# Parche preparado para AppDeploy, sin desplegar
+# Reparaciones de AppDeploy en el laboratorio
+
+El primer parche preparado abajo se aplicó posteriormente en la versión `1791772015605`; véase el [registro de aplicación](../../docs/aplicacion-radar-laboratorio-2026-10-11.md).
+
+La continuación se aplicó en la versión **`1791805194792`** y completa la reconstrucción del feed por checkpoints. Entrega:
+
+- [public-feed.ts](public-feed.ts): módulo nuevo del backend, instalado como `backend/public-feed.ts`.
+- [public-feed-repair.json](public-feed-repair.json): cambios incrementales, snapshot base y archivos de la entrega.
+- [public-feed-repair.patch](public-feed-repair.patch): cambios de `backend/index.ts`.
+- [Pruebas del feed](../../tests/appdeploy-public-feed.test.mjs): 28 casos locales; no invocan AppDeploy ni proveedores.
+- [Informe de continuación](../../docs/continuacion-feed-laboratorio-2026-10-12.md): resultados, alcance y pendientes.
+
+El calendario permanece igual. La migración inicial avanza una página de hasta 40 registros por ciclo del cron existente `verify-publish`; después procesa cambios por ID. Conserva el feed visible ante fallos. La ingesta externa desde GitHub todavía no está conectada.
+
+El texto siguiente describe la preparación histórica del primer parche; su límite de 200 registros se aborda con la continuación anterior.
+
+## Preparación original
 
 App accesible auditada: `trabajo-cerca-laboratorio-3ojgro`. Snapshot leído: `1791755107051`.
 

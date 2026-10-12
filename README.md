@@ -4,7 +4,7 @@ El radar recolecta candidatos públicos, conserva un historial local y verifica 
 
 La reparación está en una rama independiente. Producción y la rama principal no se actualizan durante esta auditoría.
 
-Consulta el [informe de auditoría](docs/auditoria-radar-2026-10-11.md) y el [parche preparado para AppDeploy](integrations/appdeploy/README.md).
+Consulta el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [aplicación del primer parche](docs/aplicacion-radar-laboratorio-2026-10-11.md) y la [continuación del feed aplicada al laboratorio](docs/continuacion-feed-laboratorio-2026-10-12.md).
 
 ## Pruebas sin red ni credenciales
 
@@ -13,6 +13,7 @@ Requisitos: Python 3.12 y Node.js 24. No se instalan dependencias.
 ```sh
 python -m unittest discover -s tests -v
 node tests/appdeploy-repair.test.mjs
+node tests/appdeploy-public-feed.test.mjs
 node tests/workflow-checkpoint.test.mjs
 ```
 

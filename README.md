@@ -4,7 +4,7 @@ El radar recolecta candidatos públicos, conserva un historial local y verifica 
 
 La reparación está en una rama independiente. Producción y la rama principal no se actualizan durante esta auditoría.
 
-Consulta el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [continuación del feed](docs/continuacion-feed-laboratorio-2026-10-12.md) y la [integración y respaldo del laboratorio](docs/integracion-y-respaldo-laboratorio-2026-10-12.md).
+Consulta el [resultado actual y pendientes](docs/resultado-publicacion-laboratorio-2026-10-12.md), el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [continuación del feed](docs/continuacion-feed-laboratorio-2026-10-12.md) y la [integración y respaldo del laboratorio](docs/integracion-y-respaldo-laboratorio-2026-10-12.md). La última lectura real confirmó **dos ofertas recibidas y cero publicaciones visibles**, con el feed completo todavía en construcción.
 
 ## Pruebas sin red ni credenciales
 
@@ -59,6 +59,6 @@ Entre ejecuciones se restaura un checkpoint de SQLite. Si falta o expiró, la ej
 
 Los artefactos siguen teniendo 7 días de retención. **Esto no es una base de datos durable ni un respaldo permanente**: hace falta definir esa persistencia antes de depender del radar en operación.
 
-El piloto añade snapshots verificados de SQLite en `radar-state-laboratorio` y conserva versiones en Git. Su creación y el resultado real deben confirmarse con Actions. El cron existente del laboratorio lee los lotes firmados de esa rama; no se añade una ruta pública de escritura ni se cambian claves.
+El piloto ya creó snapshots verificados de SQLite en `radar-state-laboratorio` y una segunda ejecución restauró y continuó el histórico: 190 candidatos y 2.750 observaciones conservados. El cron del laboratorio recibe los lotes firmados de esa rama; no se añade una ruta pública de escritura ni se cambian claves. Los artefactos temporales del job general y este respaldo del laboratorio son mecanismos distintos; producción todavía requiere revisión.
 
 Apify mantiene bloqueado el inicio de Actors. Con un token existente solo se comprueban la conexión y resultados de ejecuciones previas; no se cambian credenciales.

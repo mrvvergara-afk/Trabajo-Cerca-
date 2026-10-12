@@ -24,6 +24,10 @@ const REPOSITORY_ID = '1411752840';
 const OWNER_ID = '291955988';
 const PRODUCER_REF = 'refs/heads/repair/radar-audit-2026-10-11';
 const WORKFLOW_REF = REPOSITORY + '/.github/workflows/radar.yml@' + PRODUCER_REF;
+const SUBJECTS = [
+  'repo:' + REPOSITORY + ':ref:' + PRODUCER_REF,
+  'repo:mrvvergara-afk@' + OWNER_ID + '/Trabajo-Cerca-@' + REPOSITORY_ID + ':ref:' + PRODUCER_REF,
+];
 const AUDIENCE = 'urn:trabajo-cerca:lab:' + REPOSITORY_ID + ':';
 const STATE_TABLE = 'radar_external_pull_state';
 const MAX_AGE = 86400000;
@@ -72,7 +76,8 @@ export function verifySignedBatch(envelope:Envelope, jwks:Jwks, now=Date.now()) 
   if (claims.iss !== 'https://token.actions.githubusercontent.com' || claims.aud !== AUDIENCE + digest ||
       claims.repository !== REPOSITORY || String(claims.repository_id) !== REPOSITORY_ID ||
       String(claims.repository_owner_id) !== OWNER_ID || claims.ref !== PRODUCER_REF ||
-      claims.workflow_ref !== WORKFLOW_REF || claims.sub !== 'repo:' + REPOSITORY + ':ref:' + PRODUCER_REF) reject('Untrusted GitHub producer');
+      claims.workflow_ref !== WORKFLOW_REF) reject('Untrusted GitHub producer');
+  if (typeof claims.sub !== 'string' || !SUBJECTS.includes(claims.sub)) reject('Untrusted GitHub subject');
   const issued = Number(claims.iat) * 1000;
   const expires = Number(claims.exp) * 1000;
   if (!Number.isFinite(issued) || !Number.isFinite(expires) || issued > now + 60000 || now - issued > MAX_AGE ||

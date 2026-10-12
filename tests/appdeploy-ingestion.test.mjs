@@ -95,6 +95,23 @@ test('Digest-bound GitHub proof accepts the exact authorized laboratory producer
   assert.equal(result.batch.run_id,'123');
 });
 
+test('Real GitHub subject with immutable owner and repository IDs is accepted', () => {
+  const h = harness();
+  const sub = 'repo:mrvvergara-afk@291955988/Trabajo-Cerca-@1411752840:ref:refs/heads/repair/radar-audit-2026-10-11';
+  const result = h.ctx.verifySignedBatch(signed(body(),{ sub }),jwks,now);
+  assert.equal(result.batch.run_id,'123');
+});
+
+test('Immutable subjects from other IDs, owners, repository names or branches are rejected', () => {
+  const h = harness();
+  const valid = 'repo:mrvvergara-afk@291955988/Trabajo-Cerca-@1411752840:ref:refs/heads/repair/radar-audit-2026-10-11';
+  for (const sub of [valid.replace('@291955988','@999'),valid.replace('@1411752840','@999'),
+    valid.replace('mrvvergara-afk@','fork-owner@'),valid.replace('/Trabajo-Cerca-@','/other-repo@'),
+    valid.replace('refs/heads/repair/radar-audit-2026-10-11','refs/heads/main')]) {
+    assert.throws(() => h.ctx.verifySignedBatch(signed(body(),{ sub }),jwks,now),/Untrusted GitHub subject/);
+  }
+});
+
 test('Changed batch bytes fail the signed audience binding', () => {
   const h = harness(), envelope = signed();
   envelope.body_base64 = Buffer.from(JSON.stringify(body({ records:[] }))).toString('base64');

@@ -1,5 +1,5 @@
 {
   "schema": "trabajo-cerca.laboratory-observation.v1",
-  "attempt": 3,
+  "attempt": 4,
   "purpose": "Read actual ingestion and feed progress; do not collect or write offers"
 }

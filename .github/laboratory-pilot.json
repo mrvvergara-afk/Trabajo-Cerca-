@@ -1,0 +1,10 @@
+{
+  "environment": "laboratory",
+  "authorized_task": "radar repair and real pilot",
+  "source": "Chiletrabajos public HTML",
+  "communes": ["Angol"],
+  "verification_limit": 3,
+  "paid_providers_enabled": false,
+  "production_changes_enabled": false,
+  "attempt": 1
+}

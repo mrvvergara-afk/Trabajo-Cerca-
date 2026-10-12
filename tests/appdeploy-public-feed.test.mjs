@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { stripTypeScriptTypes } from 'node:module';
 import test from 'node:test';
@@ -80,7 +81,7 @@ function harness(data = database()) {
     constructor(...args) { super(...(args.length ? args : [time])); }
     static now() { return time; }
   }
-  const context = { db:data.db, Buffer, Date:Clock, console };
+  const context = { db:data.db, Buffer, Date:Clock, console, URL, createHash };
   vm.createContext(context);
   vm.runInContext(code, context);
   const projector = {

@@ -1,6 +1,7 @@
 import { db } from '@appdeploy/sdk';
+import { createHash } from 'node:crypto';
 
-type FeedSource = 'radar_jobs' | 'community_posts';
+type FeedSource = string;
 type Stored = Record<string, unknown>;
 type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored };
 type Order = { time:number; key:string };
@@ -10,7 +11,7 @@ type Summary = {
   totalProvisionalJobOffers:number; communeStats:Record<string, Counts>;
   kindStats:Omit<Counts, 'newJobs24h'>;
 };
-type PageRef = { id:string; keys:string[]; first:Order; last:Order; refreshAt:number | null; summary:Summary };
+type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary };
 type Manifest = Summary & { schema:2; updatedAt:string; pages:PageRef[]; pageCount:number };
 type Build = Manifest & { source:FeedSource | 'complete'; nextToken?:string };
 type Change = { source:FeedSource; sourceId:string; queuedAt:string };
@@ -25,6 +26,20 @@ const STEP_SIZE = 40;
 const ITEM_BYTES = 230 * 1024;
 const INPUT_BYTES = 900 * 1024;
 const SOURCES:FeedSource[] = ['radar_jobs', 'community_posts'];
+
+function allowedSource(source:string) {
+  return SOURCES.includes(source) || /^radar_external_[a-f0-9]{32}$/.test(source);
+}
+
+function identity(item:Stored) {
+  if (item.kind !== 'job_offer' || typeof item.url !== 'string') return null;
+  try {
+    const parsed = new URL(item.url);
+    if (!['http:','https:'].includes(parsed.protocol) || parsed.username || parsed.password || parsed.port ||
+        !['chiletrabajos.cl','www.chiletrabajos.cl'].includes(parsed.hostname) || !/^\/trabajo\/[^/]+\/?$/.test(parsed.pathname)) return null;
+    return createHash('sha256').update('https://www.chiletrabajos.cl' + parsed.pathname.replace(/\/$/, '')).digest('hex');
+  } catch { return null; }
+}
 
 function bytes(value:unknown) {
   return Buffer.byteLength(JSON.stringify(value), 'utf8');
@@ -67,7 +82,7 @@ async function replaceSingle(table:string, record:Stored) {
 }
 
 async function queueChanges(source:string, ids:string[]) {
-  if (!SOURCES.includes(source as FeedSource) || !ids.length) return;
+  if (!allowedSource(source) || !ids.length) return;
   const records = ids.map(sourceId => ({ source, sourceId, queuedAt:new Date().toISOString() }));
   for (const batch of chunks(records, records => ({ table:'public_feed_changes', records }))) {
     const saved = await db.add('public_feed_changes', batch);
@@ -75,6 +90,11 @@ async function queueChanges(source:string, ids:string[]) {
       throw new Error('Source saved but public feed change registration failed; reconciliation required');
     }
   }
+}
+
+export async function registerPublicFeedChange(source:string, id:string) {
+  if (!allowedSource(source) || !id) throw new Error('Invalid external feed source');
+  await queueChanges(source, [id]);
 }
 
 // Return the original per-item results. Never treat an array length as success.
@@ -190,6 +210,7 @@ class Editor {
 
   private set(ref:PageRef, entries:Entry[]) {
     ref.keys = entries.map(entry => entry.key);
+    ref.identities = entries.map(entry => identity(entry.item));
     if (entries.length) {
       ref.first = order(entries[0]);
       ref.last = order(entries[entries.length - 1]);
@@ -208,6 +229,25 @@ class Editor {
     }
     const item = record ? this.projector.project({ ...record, id:sourceId }) : null;
     if (!item) return;
+    const incomingIdentity = identity(item);
+    if (incomingIdentity) {
+      const duplicates = this.pages.filter(page => page.identities?.includes(incomingIdentity));
+      for (const page of duplicates) {
+        const existing = await this.entries(page);
+        const duplicate = existing.find(entry => identity(entry.item) === incomingIdentity);
+        if (!duplicate) throw new Error('Feed identity metadata mismatch');
+        const checked = (value:Stored) => {
+          const stamp = Date.parse(String(value.externalVerifiedAt || value.verificationCheckedAt || value.verifiedAt || ''));
+          return Number.isFinite(stamp) && stamp <= this.now ? stamp : 0;
+        };
+        if (checked(duplicate.item) > checked(item)) return;
+      }
+      for (const page of duplicates) {
+        const remaining = (await this.entries(page)).filter(entry => identity(entry.item) !== incomingIdentity);
+        this.set(page, remaining);
+        if (!remaining.length) this.pages.splice(this.pages.indexOf(page), 1);
+      }
+    }
     const entry:Entry = { key, source, sourceId, item };
     checkSize({ entries:[entry] });
     let ref = this.pages.find(page => compare(order(entry), page.last) <= 0) ?? this.pages[this.pages.length - 1];
@@ -235,6 +275,10 @@ class Editor {
       return next;
     });
     this.pages.splice(index, 1, ...replacements);
+  }
+
+  async upgrade(ref:PageRef) {
+    this.set(ref, await this.entries(ref));
   }
 
   async persist() {
@@ -276,6 +320,14 @@ export async function readPublicFeedSummary() {
   return { ...emptySummary(), ...current, rebuilding:!current?.manifestId };
 }
 
+export async function currentPublicFeedManifest() {
+  const current = await single<Control>('public_feed_control');
+  if (!current?.manifestId) return null;
+  const [record] = await db.get<Manifest>('public_feed_manifests', [current.manifestId]);
+  if (!record) throw new Error('Public feed manifest missing');
+  return { manifestId:current.manifestId, manifest:record };
+}
+
 // Single scheduled writer: the existing verify-publish cron. Other handlers only read the summary.
 export async function advancePublicFeed(projector:Projector) {
   const now = Date.now();
@@ -283,6 +335,13 @@ export async function advancePublicFeed(projector:Projector) {
   if (!control?.manifestId) {
     const saved = await single<Build>('public_feed_build_state');
     const build:Build = saved ?? { ...manifest([], now), source:'radar_jobs' };
+    const legacy = build.pages.find(page => !Array.isArray(page.identities));
+    if (legacy) {
+      const editor = new Editor(build.pages, projector, now);
+      await editor.upgrade(legacy);
+      await replaceSingle('public_feed_build_state', { ...build, ...manifest(await editor.persist(), now) });
+      return { ...await readPublicFeedSummary(), rebuilding:true, buildSource:build.source };
+    }
     if (build.source === 'complete') return publish(manifest(build.pages, now));
     const rows = await db.list<Stored>(build.source, { limit:STEP_SIZE, ...(build.nextToken ? { nextToken:build.nextToken } : {}) });
     const editor = new Editor(build.pages, projector, now);
@@ -296,12 +355,18 @@ export async function advancePublicFeed(projector:Projector) {
 
   const [current] = await db.get<Manifest>('public_feed_manifests', [control.manifestId]);
   if (!current) throw new Error('Public feed manifest missing; previous feed retained');
+  const legacy = current.pages.find(page => !Array.isArray(page.identities));
+  if (legacy) {
+    const editor = new Editor(current.pages, projector, now);
+    await editor.upgrade(legacy);
+    return publish(manifest(await editor.persist(), now));
+  }
   const changes = await db.list<Change>('public_feed_changes', { limit:STEP_SIZE });
   const due = current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];
   if (!changes.items.length && !due) return readPublicFeedSummary();
   const wanted = new Map<string, { source:FeedSource; sourceId:string }>();
   for (const change of changes.items) {
-    if (!SOURCES.includes(change.source) || !change.sourceId) throw new Error('Invalid public feed change; reconciliation required');
+    if (!allowedSource(change.source) || !change.sourceId) throw new Error('Invalid public feed change; reconciliation required');
     wanted.set(change.source + ':' + change.sourceId, change);
   }
   if (due) for (const key of due.keys) {
@@ -309,7 +374,7 @@ export async function advancePublicFeed(projector:Projector) {
     wanted.set(key, { source:key.slice(0, colon) as FeedSource, sourceId:key.slice(colon + 1) });
   }
   const editor = new Editor(current.pages, projector, now);
-  for (const source of SOURCES) {
+  for (const source of new Set([...wanted.values()].map(item => item.source))) {
     const ids = [...wanted.values()].filter(item => item.source === source).map(item => item.sourceId);
     if (!ids.length) continue;
     const records = await db.get<Stored>(source, ids);

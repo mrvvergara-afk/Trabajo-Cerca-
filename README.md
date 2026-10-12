@@ -1,10 +1,10 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
-El radar recolecta candidatos públicos, conserva un historial local y verifica páginas individuales de Chiletrabajos cuando contienen evidencia suficiente. Prepara una cola de ingesta; **todavía no publica ofertas en AppDeploy**.
+El radar recolecta candidatos públicos, conserva un historial local y verifica páginas individuales de Chiletrabajos cuando contienen evidencia suficiente. La integración del laboratorio recibe lotes firmados de GitHub y confirma IDs en el feed; **producción continúa sin integrar**. La ejecución local de `pipeline.py` prepara una cola y no publica por sí sola.
 
 La reparación está en una rama independiente. Producción y la rama principal no se actualizan durante esta auditoría.
 
-Consulta el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [aplicación del primer parche](docs/aplicacion-radar-laboratorio-2026-10-11.md) y la [continuación del feed aplicada al laboratorio](docs/continuacion-feed-laboratorio-2026-10-12.md).
+Consulta el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [continuación del feed](docs/continuacion-feed-laboratorio-2026-10-12.md) y la [integración y respaldo del laboratorio](docs/integracion-y-respaldo-laboratorio-2026-10-12.md).
 
 ## Pruebas sin red ni credenciales
 
@@ -14,6 +14,7 @@ Requisitos: Python 3.12 y Node.js 24. No se instalan dependencias.
 python -m unittest discover -s tests -v
 node tests/appdeploy-repair.test.mjs
 node tests/appdeploy-public-feed.test.mjs
+node tests/appdeploy-ingestion.test.mjs
 node tests/workflow-checkpoint.test.mjs
 ```
 
@@ -51,10 +52,12 @@ La importación deduplica y exige reverificar antes de preparar publicaciones. N
 
 ## GitHub Actions preparado
 
-El workflow propuesto solo ejecuta el radar en `main`; esta rama de reparación no inicia recolectores. Los cambios de todos los scripts y pruebas pasan a estar cubiertos por el disparador.
+El job general del workflow propuesto solo ejecuta el radar en `main`. En la rama de reparación hay un piloto acotado que necesita un commit explícito `[lab pilot]` o inicialización manual; consulta una sola comuna, hasta tres ofertas y no usa proveedores de pago. Los cambios de todos los scripts y pruebas quedan cubiertos por el disparador.
 
 Entre ejecuciones se restaura un checkpoint de SQLite. Si falta o expiró, la ejecución programada se detiene para evitar reiniciar el historial. La primera inicialización manual necesita `initialize_state=true`, después de revisar y respaldar los artefactos; importa el último artefacto de candidatos disponible.
 
 Los artefactos siguen teniendo 7 días de retención. **Esto no es una base de datos durable ni un respaldo permanente**: hace falta definir esa persistencia antes de depender del radar en operación.
+
+El piloto añade snapshots verificados de SQLite en `radar-state-laboratorio` y conserva versiones en Git. Su creación y el resultado real deben confirmarse con Actions. El cron existente del laboratorio lee los lotes firmados de esa rama; no se añade una ruta pública de escritura ni se cambian claves.
 
 Apify mantiene bloqueado el inicio de Actors. Con un token existente solo se comprueban la conexión y resultados de ejecuciones previas; no se cambian credenciales.

@@ -10,7 +10,9 @@ La continuación se aplicó en la versión **`1791805194792`** y completa la rec
 - [Pruebas del feed](../../tests/appdeploy-public-feed.test.mjs): 28 casos locales; no invocan AppDeploy ni proveedores.
 - [Informe de continuación](../../docs/continuacion-feed-laboratorio-2026-10-12.md): resultados, alcance y pendientes.
 
-El calendario permanece igual. La migración inicial avanza una página de hasta 40 registros por ciclo del cron existente `verify-publish`; después procesa cambios por ID. Conserva el feed visible ante fallos. La ingesta externa desde GitHub todavía no está conectada.
+El calendario permanece igual. La migración inicial avanza una página de hasta 40 registros por ciclo del cron existente `verify-publish`; después procesa cambios por ID. Conserva el feed visible ante fallos.
+
+La ingesta del laboratorio se aplicó posteriormente en `1791813502255`: [radar-ingestion.ts](radar-ingestion.ts), [ingestion-repair.json](ingestion-repair.json) y [pruebas](../../tests/appdeploy-ingestion.test.mjs). El receptor lee lotes firmados desde una rama de datos de GitHub; los recibos solo cuentan publicaciones confirmadas en el feed. El [informe de integración y respaldo](../../docs/integracion-y-respaldo-laboratorio-2026-10-12.md) distingue ese código aplicado del piloto real todavía por comprobar.
 
 El texto siguiente describe la preparación histórica del primer parche; su límite de 200 registros se aborda con la continuación anterior.
 

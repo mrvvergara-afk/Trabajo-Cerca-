@@ -7,12 +7,13 @@ on:
         type: boolean
         default: false
   push:
-    branches: [main]
+    branches: [main, repair/radar-audit-2026-10-11]
     paths:
       - 'scripts/**'
       - 'tests/**'
       - 'integrations/appdeploy/**'
       - '.github/workflows/radar.yml'
+      - '.github/laboratory-pilot.json'
   schedule:
     - cron: '17 * * * *'
 permissions:
@@ -40,6 +41,7 @@ jobs:
           python -m unittest discover -s tests -v
           node tests/appdeploy-repair.test.mjs
           node tests/appdeploy-public-feed.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
           node tests/workflow-checkpoint.test.mjs
       - name: Localizar checkpoint anterior
         id: checkpoint
@@ -125,4 +127,81 @@ jobs:
         with:
           name: radar-checkpoint
           path: state/radar.sqlite3
+          retention-days: 7
+  laboratory:
+    # Explicit bounded pilot in the public repository. Never runs on main or on a schedule.
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      ((github.event_name == 'push' && contains(github.event.head_commit.message, '[lab pilot]')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.initialize_state == true))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Pruebas antes del piloto
+        run: |
+          python -m unittest discover -s tests -v
+          node tests/appdeploy-repair.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
+          node tests/workflow-checkpoint.test.mjs
+      - name: Localizar respaldo durable o histórico anterior
+        id: laboratory_history
+        uses: actions/github-script@v7
+        with:
+          script: |
+            if (context.payload.repository?.private === true) throw new Error('El piloto solo está habilitado en el repositorio público; no consumir minutos privados de pago.');
+            const { owner, repo } = context.repo;
+            const fs = require('node:fs');
+            try {
+              const response = await github.rest.git.getRef({ owner, repo, ref:'heads/radar-state-laboratorio' });
+              core.setOutput('parent', response.data.object.sha);
+              return;
+            } catch (cause) {
+              if (cause.status !== 404) throw cause;
+            }
+            const available = [];
+            for (let page = 1; page <= 10; page++) {
+              const response = await github.rest.actions.listArtifactsForRepo({ owner, repo, name:'radar-candidatos', per_page:100, page });
+              available.push(...response.data.artifacts.filter(item => !item.expired && item.workflow_run?.head_branch === 'main'));
+              if (response.data.artifacts.length < 100) break;
+              if (page === 10) throw new Error('Histórico demasiado grande; conservarlo y preparar importación por checkpoints.');
+            }
+            if (!available.length || available.length > 64 || available.reduce((n,a) => n + a.size_in_bytes, 0) > 16 * 1024 * 1024) {
+              throw new Error('Primera inicialización bloqueada: falta histórico o supera el límite seguro.');
+            }
+            fs.mkdirSync('historical_archives', { recursive:true });
+            for (const artifact of available) {
+              const response = await github.rest.actions.downloadArtifact({ owner, repo, artifact_id:artifact.id, archive_format:'zip' });
+              fs.writeFileSync('historical_archives/' + artifact.id + '.zip', Buffer.from(response.data));
+            }
+            core.info('Se conservarán ' + available.length + ' archivos históricos disponibles de main.');
+      - name: Recuperar la rama de datos sin modificar la reparación
+        if: steps.laboratory_history.outputs.parent != ''
+        run: git fetch origin refs/heads/radar-state-laboratorio:refs/remotes/origin/radar-state-laboratorio
+      - name: Restaurar o importar sin reiniciar historial
+        run: python scripts/prepare_laboratory_history.py
+        env:
+          RADAR_DATA_PARENT: ${{ steps.laboratory_history.outputs.parent }}
+      - name: Piloto de una comuna y tres verificaciones, con respaldo y prueba firmada
+        run: python scripts/laboratory_exchange.py
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+          RADAR_DATA_PARENT: ${{ steps.laboratory_history.outputs.parent }}
+      - name: Conservar diagnóstico del piloto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-laboratory-pilot
+          path: output/
           retention-days: 7

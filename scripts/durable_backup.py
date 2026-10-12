@@ -15,8 +15,9 @@ def counts(connection):
     required = {'candidates', 'observations', 'attempts', 'checkpoints', 'runs'}
     if not required.issubset(tables):
         raise ValueError('Backup is missing required history tables')
+    audited = required | ({'publication_receipts'} if 'publication_receipts' in tables else set())
     return {name: connection.execute('SELECT count(*) FROM ' + name).fetchone()[0]
-            for name in sorted(required)}
+            for name in sorted(audited)}
 
 
 def inspect(path):

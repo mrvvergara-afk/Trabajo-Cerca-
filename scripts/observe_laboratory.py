@@ -69,6 +69,7 @@ def main():
     report = validate(proof)
     Path('output').mkdir(exist_ok=True)
     Path('output/laboratory_observation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2) + '\n')
+    Path('output/laboratory_observation_proof.json').write_text(json.dumps(proof,ensure_ascii=False,indent=2) + '\n')
     print('LABORATORY_READ ' + json.dumps(report,ensure_ascii=False))
 
 

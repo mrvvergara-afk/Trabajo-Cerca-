@@ -209,3 +209,30 @@ jobs:
           name: radar-laboratory-pilot
           path: output/
           retention-days: 7
+  laboratory-read:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[lab read]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 130
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recuperar respaldo durable sin consultar proveedores
+        run: |
+          git fetch origin refs/heads/radar-state-laboratorio:refs/remotes/origin/radar-state-laboratorio
+          python -c "from scripts.laboratory_exchange import restore_from_git; print(restore_from_git('state/radar.sqlite3'))"
+          python -c "import os,subprocess; from pathlib import Path; sha=subprocess.check_output(['git','rev-parse','refs/remotes/origin/radar-state-laboratorio'],text=True).strip(); Path(os.environ['GITHUB_ENV']).open('a').write('RADAR_DATA_PARENT='+sha+'\n')"
+      - name: Observar el SDK y respaldar IDs confirmados
+        run: python scripts/monitor_laboratory.py
+      - name: Conservar prueba de lectura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-laboratory-read
+          path: output/
+          retention-days: 7

@@ -6,6 +6,7 @@
   "verification_limit": 3,
   "paid_providers_enabled": false,
   "production_changes_enabled": false,
-  "attempt": 2,
+  "attempt": 3,
+  "read_only_monitor": true,
   "check_visible_publication_ids": true
 }

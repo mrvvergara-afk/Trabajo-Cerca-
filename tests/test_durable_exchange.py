@@ -139,6 +139,38 @@ class DurableExchangeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             laboratory_exchange.signed_envelope(raw, 'not-a-jwt')
 
+    def test_confirmed_receipts_are_durable_and_do_not_disable_source_reverification(self):
+        store = State(self.state)
+        item = store.inventory()[0]
+        result = {'status':'verified','url':ITEM['url'],'reason':'live_jobposting_with_deadline_and_application'}
+        store.record_result(item,result,NOW - dt.timedelta(hours=25))
+        proof = {'ingestion':{'published':1,'feedManifestId':'manifest-one','receipts':[
+            {'candidateId':item['id'],'publishedId':'real-id','sourceUrl':ITEM['url']}]},
+            'feed':{'complete':True,'manifestId':'manifest-one'},'visibleIds':['real-id']}
+        store.record_publication_receipts(proof,NOW)
+        store.record_publication_receipts(proof,NOW)
+        self.assertEqual(store.connection.execute('SELECT count(*) FROM publication_receipts').fetchone()[0],1)
+        self.assertEqual(store.choose(1,NOW)[0]['id'],item['id'])
+        store.close()
+        manifest = durable_backup.snapshot(self.state,self.root/'confirmed')
+        self.assertEqual(manifest['counts']['publication_receipts'],1)
+
+    def test_receipt_for_an_unseen_id_or_different_source_cannot_mark_publication(self):
+        store = State(self.state)
+        item = store.inventory()[0]
+        store.record_result(item,{'status':'verified','url':ITEM['url']},NOW)
+        proof = {'ingestion':{'published':1,'feedManifestId':'manifest-one','receipts':[
+            {'candidateId':item['id'],'publishedId':'real-id','sourceUrl':'https://www.chiletrabajos.cl/trabajo/other'}]},
+            'feed':{'complete':True,'manifestId':'manifest-one'},'visibleIds':['real-id']}
+        with self.assertRaises(ValueError):
+            store.record_publication_receipts(proof,NOW)
+        proof['ingestion']['receipts'][0]['sourceUrl'] = ITEM['url']
+        proof['visibleIds'] = []
+        with self.assertRaises(ValueError):
+            store.record_publication_receipts(proof,NOW)
+        self.assertEqual(store.connection.execute('SELECT count(*) FROM publication_receipts').fetchone()[0],0)
+        store.close()
+
     def test_git_data_snapshot_is_fast_forward_only_and_preserves_source_branch(self):
         repo, remote = self.root / 'repo', self.root / 'remote.git'
         subprocess.run(['git','init','-q','--bare',str(remote)],check=True)

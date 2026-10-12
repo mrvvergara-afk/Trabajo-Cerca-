@@ -61,6 +61,12 @@ class State:
                 id INTEGER PRIMARY KEY, completed_at TEXT NOT NULL,
                 summary TEXT NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS publication_receipts (
+                id INTEGER PRIMARY KEY, candidate_id TEXT NOT NULL,
+                published_id TEXT NOT NULL, feed_manifest TEXT NOT NULL,
+                observed_at TEXT NOT NULL, payload TEXT NOT NULL,
+                UNIQUE(candidate_id,published_id,feed_manifest)
+            );
         ''')
 
     def close(self):
@@ -160,3 +166,32 @@ class State:
         with self.connection:
             self.connection.execute('INSERT INTO runs(completed_at,summary) VALUES(?,?)',
                                     ((now or utcnow()).isoformat(), json.dumps(summary, ensure_ascii=False)))
+
+    def record_publication_receipts(self, proof, now=None):
+        """Persist observed IDs without suppressing future source reverification."""
+        stamp = (now or utcnow()).isoformat()
+        ingestion, feed = proof.get('ingestion') or {}, proof.get('feed') or {}
+        receipts = ingestion.get('receipts') or []
+        count = ingestion.get('published')
+        manifest = feed.get('manifestId')
+        if (not isinstance(count, int) or not 1 <= count <= 3 or not feed.get('complete')
+                or not manifest or manifest != ingestion.get('feedManifestId') or proof.get('feedReadError')):
+            raise ValueError('A complete, readable feed and matching publication receipts are required')
+        published = [row for row in receipts if row.get('publishedId')]
+        ids = {row['publishedId'] for row in published}
+        if len(ids) != count or not ids.issubset(proof.get('visibleIds', [])):
+            raise ValueError('Publication IDs are not visible in the confirmed snapshot')
+        with self.connection:
+            for receipt in published:
+                candidate = self.connection.execute('SELECT result FROM candidates WHERE id=?',
+                                                    (receipt.get('candidateId'),)).fetchone()
+                if not candidate:
+                    raise ValueError('Receipt refers to a candidate absent from durable history')
+                result = json.loads(candidate['result'] or '{}')
+                if canonical_url(receipt.get('sourceUrl')) != canonical_url(result.get('url')):
+                    raise ValueError('Receipt source differs from the verified candidate')
+                self.connection.execute('''
+                    INSERT OR IGNORE INTO publication_receipts(candidate_id,published_id,feed_manifest,observed_at,payload)
+                    VALUES(?,?,?,?,?)
+                ''', (receipt['candidateId'],receipt['publishedId'],manifest,stamp,json.dumps(receipt,ensure_ascii=False)))
+        return count

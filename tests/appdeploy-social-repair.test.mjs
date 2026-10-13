@@ -71,6 +71,17 @@ test('The actual app verifier cannot publish a legacy social record from its con
   assert.equal(calls.length,0,'Missing evidence causes no source/provider call');
 });
 
+test('Rediscovered social notices retain their evidence and no-paid-fallback gate after source tags are joined',async()=>{
+  const { context,calls }=harness();
+  const input={ id:'rediscovered',title:'Operador',company:'Radio local',note:'Se necesita operador en Angol. empleo@example.cl',
+    source:'Radio local',sourcePublishedAt:'2026-10-12T18:00:00Z',workCommunes:['Angol'],recruitmentCommunes:['Angol'],
+    url:'https://www.facebook.com/municipio/posts/123',discoveredBy:'radar-social-visual · radar-web',contact:'empleo@example.cl',review:true,verified:false };
+  const result=await context.verifyPendingOffer(input);
+  assert.equal(result.record.verified,false);
+  assert.match(result.record.verificationReason,/transcripción original/);
+  assert.equal(calls.length,0);
+});
+
 test('A large captured run advances through finding offsets without silently losing its remaining notices',async()=>{
   const h=harness({ findings:Array.from({ length:28 },(_,i)=>finding(i)) });
   await h.context.recoverHistoricVisualFindings();

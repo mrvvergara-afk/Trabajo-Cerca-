@@ -4,7 +4,7 @@
   "timezone": "America/Santiago",
   "app": {
     "id": "trabajo-cerca-laboratorio-3ojgro",
-    "version": "1791858508959",
+    "version": "1791861145815",
     "url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
     "status": "ready",
     "qaErrors": 0
@@ -34,8 +34,8 @@
   },
   "tests": {
     "python": 63,
-    "node": 89,
-    "total": 152,
+    "node": 90,
+    "total": 153,
     "externalJobFixturesPublished": 0
   },
   "sources": [
@@ -337,5 +337,20 @@
   "artifact": {
     "id": 11784784055,
     "sha256": "411f42f487bea20b18a0faba877130fea9ba162a112f3d771532dfb598abb540"
+  },
+  "lastCiBeforeRediscoveryGuard": {
+    "runId": 38339274868,
+    "jobId": 115106384741,
+    "pythonPassed": 18,
+    "nodePassed": 21,
+    "skipped": 0,
+    "success": true,
+    "evidenceCommit": "fc17a31b2707a3880a9f20e801e22bdeafb5f57c"
+  },
+  "rediscoveryGuard": {
+    "status": "applied",
+    "patch": "integrations/appdeploy/social-rediscovery-guard-repair.json",
+    "regressionPassed": true,
+    "extraPaidFallbackCalls": 0
   }
 }

@@ -1,0 +1,43 @@
+{
+  "schema": "trabajo-cerca.curated-public-cycle.v1",
+  "checked_at": "2026-10-13T23:28:03.993410+00:00",
+  "catalog_offers": 3,
+  "checked": 3,
+  "reviewed": [
+    {
+      "candidate_url": "https://www.bne.gob.cl/oferta/2026-107065",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "title": "Operativo/a Tienda Sodimac HC Angol Jornada FT42hrs (1 vacantes)",
+      "company": "SODIMAC S.A.",
+      "work_commune": "Angol",
+      "source_published_at": "2026-09-09T03:00:00.000Z",
+      "valid_through": "2026-10-15T02:59:59.999Z"
+    },
+    {
+      "candidate_url": "https://www.bne.gob.cl/oferta/2026-112312",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "title": "Coordinador/a Visual Merchandising - Traiguén (1 vacantes)",
+      "company": "ABC S.A.",
+      "work_commune": "Traiguén",
+      "source_published_at": "2026-09-22T03:00:00.000Z",
+      "valid_through": "2026-11-18T02:59:59.999Z"
+    },
+    {
+      "candidate_url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "title": "Cajeros/as peaje Negrete (20 vacantes)",
+      "company": "O & C SERVICIOS GENERALES SPA",
+      "work_commune": "Negrete",
+      "source_published_at": "2026-09-15T03:00:00.000Z",
+      "valid_through": "2026-11-18T02:59:59.999Z"
+    }
+  ],
+  "ready_count": 3,
+  "published": 0,
+  "publication_confirmed": false,
+  "paid_provider_calls": 0,
+  "coverage_complete": false
+}

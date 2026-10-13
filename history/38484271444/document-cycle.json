@@ -1,0 +1,236 @@
+{
+  "schema": "trabajo-cerca.document-cycle.v1",
+  "checked_at": "2026-10-13T23:27:24.948703+00:00",
+  "work_items_received": 69,
+  "checked": 3,
+  "reviewed": [
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Auxiliares-1.pdf",
+      "status": "pending",
+      "reason": "source_date_missing_or_future",
+      "engine": "tesseract-local",
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": false,
+      "page_count": 17,
+      "mean_confidence": 93.0
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-ORIENTADOR-LABORAL-2025.pdf",
+      "status": "pending",
+      "reason": "source_date_missing_or_future",
+      "engine": "tesseract-local",
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": false,
+      "page_count": 8,
+      "mean_confidence": 92.9
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N%C2%B0-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+      "status": "pending",
+      "reason": "source_date_missing_or_future",
+      "engine": "tesseract-local",
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": true,
+      "page_count": 2,
+      "mean_confidence": 75.8
+    }
+  ],
+  "local_verified": 0,
+  "documents_ready": 0,
+  "batch_records": 3,
+  "discovered_channels": [
+    {
+      "channel": "https://www.facebook.com/municipalidadrenaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "publisher": "Municipalidad / OMIL Renaico",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/munirenaico/",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "publisher": "Municipalidad / OMIL Renaico",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/munimulchen",
+      "discovered_from": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+      "publisher": "Municipalidad / OMIL Mulchén",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/municipalidaddemulchen",
+      "discovered_from": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+      "publisher": "Municipalidad / OMIL Mulchén",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/Malleco7",
+      "discovered_from": "https://www.malleco7.cl/",
+      "publisher": "Malleco 7",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/diariolasnoticias/",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/policial/carabineros-abrio-postulaciones-para-120-cupos-en-tres-especialidades/",
+      "publisher": "Las Noticias de Malleco",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/lasnoticiasdia/",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/policial/carabineros-abrio-postulaciones-para-120-cupos-en-tres-especialidades/",
+      "publisher": "Las Noticias de Malleco",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/MuniNegreteCL",
+      "discovered_from": "https://www.muninegrete.cl/page/2/",
+      "publisher": "Municipalidad / OMIL Negrete",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/muninegrete/",
+      "discovered_from": "https://www.muninegrete.cl/page/2/",
+      "publisher": "Municipalidad / OMIL Negrete",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    }
+  ],
+  "local_diagnostics": [
+    {
+      "source": "Municipalidad / OMIL Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Municipalidad / OMIL Lumaco",
+      "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "unsupported_media_type"
+    },
+    {
+      "source": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 2
+    },
+    {
+      "source": "Municipalidad / OMIL Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 2
+    },
+    {
+      "source": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/page/2/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 5,
+      "media_read": 2
+    },
+    {
+      "source": "Municipalidad / OMIL Mulchén",
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 10,
+      "media_read": 3
+    },
+    {
+      "source": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 3
+    }
+  ],
+  "inventory_count": 365,
+  "paid_provider_calls": 0,
+  "published": 0,
+  "publication_confirmed": false,
+  "coverage_complete": false,
+  "curated_portals": {
+    "schema": "trabajo-cerca.curated-public-cycle.v1",
+    "checked_at": "2026-10-13T23:28:03.993410+00:00",
+    "catalog_offers": 3,
+    "checked": 3,
+    "reviewed": [
+      {
+        "candidate_url": "https://www.bne.gob.cl/oferta/2026-107065",
+        "status": "verified",
+        "reason": "live_jobposting_with_deadline_and_application",
+        "title": "Operativo/a Tienda Sodimac HC Angol Jornada FT42hrs (1 vacantes)",
+        "company": "SODIMAC S.A.",
+        "work_commune": "Angol",
+        "source_published_at": "2026-09-09T03:00:00.000Z",
+        "valid_through": "2026-10-15T02:59:59.999Z"
+      },
+      {
+        "candidate_url": "https://www.bne.gob.cl/oferta/2026-112312",
+        "status": "verified",
+        "reason": "live_jobposting_with_deadline_and_application",
+        "title": "Coordinador/a Visual Merchandising - Traiguén (1 vacantes)",
+        "company": "ABC S.A.",
+        "work_commune": "Traiguén",
+        "source_published_at": "2026-09-22T03:00:00.000Z",
+        "valid_through": "2026-11-18T02:59:59.999Z"
+      },
+      {
+        "candidate_url": "https://www.bne.gob.cl/oferta/2026-109726",
+        "status": "verified",
+        "reason": "live_jobposting_with_deadline_and_application",
+        "title": "Cajeros/as peaje Negrete (20 vacantes)",
+        "company": "O & C SERVICIOS GENERALES SPA",
+        "work_commune": "Negrete",
+        "source_published_at": "2026-09-15T03:00:00.000Z",
+        "valid_through": "2026-11-18T02:59:59.999Z"
+      }
+    ],
+    "ready_count": 3,
+    "published": 0,
+    "publication_confirmed": false,
+    "paid_provider_calls": 0,
+    "coverage_complete": false
+  }
+}

@@ -1,22 +1,33 @@
 {
   "schema": "trabajo-cerca.document-cycle.v1",
-  "checked_at": "2026-10-13T23:01:06.561541+00:00",
-  "work_items_received": 71,
+  "checked_at": "2026-10-13T23:06:16.132014+00:00",
+  "work_items_received": 69,
   "checked": 3,
   "reviewed": [
     {
-      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf",
+      "url": "https://www.muninegrete.cl/wp-content/uploads/2026/10/FOTO-CON-INFO-SI-5.png",
       "status": "pending",
       "reason": "source_date_missing_or_future",
       "engine": "tesseract-local",
       "source_published_at": null,
       "valid_through": null,
-      "complete_document": false,
-      "page_count": 4,
-      "mean_confidence": 91.9
+      "complete_document": true,
+      "page_count": null,
+      "mean_confidence": 75.8
     },
     {
-      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/12/DECRETO-ALCALDICIO-EXENTO-3613.pdf",
+      "status": "pending",
+      "reason": "source_date_missing_or_future",
+      "engine": "tesseract-local",
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": true,
+      "page_count": 3,
+      "mean_confidence": 76.1
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
       "status": "pending",
       "reason": "source_date_missing_or_future",
       "engine": "tesseract-local",
@@ -24,18 +35,7 @@
       "valid_through": null,
       "complete_document": false,
       "page_count": 9,
-      "mean_confidence": 94.7
-    },
-    {
-      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2022/11/ANEXO-N%C2%B01-FICHA-DE-POSTULACION.pdf",
-      "status": "pending",
-      "reason": "source_date_missing_or_future",
-      "engine": "pdftotext-local",
-      "source_published_at": null,
-      "valid_through": null,
-      "complete_document": true,
-      "page_count": 1,
-      "mean_confidence": null
+      "mean_confidence": 94.6
     }
   ],
   "local_verified": 0,
@@ -74,37 +74,67 @@
     },
     {
       "channel": "https://www.facebook.com/diariolasnoticias/",
-      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/policial/carabineros-abrio-postulaciones-para-120-cupos-en-tres-especialidades/",
       "publisher": "Las Noticias de Malleco",
       "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
     },
     {
       "channel": "https://www.instagram.com/lasnoticiasdia/",
-      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/policial/carabineros-abrio-postulaciones-para-120-cupos-en-tres-especialidades/",
       "publisher": "Las Noticias de Malleco",
       "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
     }
   ],
   "local_diagnostics": [
     {
-      "source": "Municipalidad / OMIL Angol",
-      "url": "https://noticias.angol.cl/index.php/noticias",
+      "source": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Radio Nativa",
+      "url": "https://www.radionativa.cl/page/100/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 2,
+      "media_read": 0
+    },
+    {
+      "source": "CMPC · sitio corporativo",
+      "url": "https://www.cmpc.com/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Arauco · sitio corporativo",
+      "url": "https://www.arauco.com/",
       "status": "error",
       "lookback_days": 45,
       "coverage_complete": false,
-      "error": "HTTP 403"
+      "error": "redirect_outside_publisher"
     },
     {
-      "source": "Municipalidad / OMIL Lumaco",
-      "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+      "source": "Bolsa Nacional de Empleo · Negrete",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
       "status": "error",
       "lookback_days": 45,
       "coverage_complete": false,
       "error": "unsupported_media_type"
     },
     {
-      "source": "Municipalidad / OMIL Los Sauces",
-      "url": "https://www.munilossauces.cl/noticias",
+      "source": "CMPC · portal de empleo",
+      "url": "https://cmpc.trabajando.cl/",
       "status": "ok",
       "lookback_days": 45,
       "coverage_complete": false,
@@ -113,67 +143,37 @@
       "media_read": 1
     },
     {
-      "source": "Municipalidad / OMIL Traiguén",
-      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "source": "Arauco · portal de empleo",
+      "url": "https://jobs.arauco.com/content/Ofertas-Laborales/?locale=es_ES",
       "status": "ok",
       "lookback_days": 45,
       "coverage_complete": false,
       "page_date": null,
+      "next_pages": 1,
+      "media_read": 1
+    },
+    {
+      "source": "Radio Viaducto",
+      "url": "https://radioviaducto.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": "2025-09-22T13:58:32+00:00",
       "next_pages": 0,
       "media_read": 1
     },
     {
-      "source": "Municipalidad / OMIL Renaico",
-      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "source": "Las Noticias de Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/policial/carabineros-abrio-postulaciones-para-120-cupos-en-tres-especialidades/",
       "status": "ok",
       "lookback_days": 45,
       "coverage_complete": false,
-      "page_date": null,
-      "next_pages": 0,
-      "media_read": 2
-    },
-    {
-      "source": "Municipalidad / OMIL Nacimiento",
-      "url": "https://www.nacimiento.cl/noticias",
-      "status": "ok",
-      "lookback_days": 45,
-      "coverage_complete": false,
-      "page_date": null,
-      "next_pages": 0,
-      "media_read": 2
-    },
-    {
-      "source": "Municipalidad / OMIL Negrete",
-      "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
-      "status": "ok",
-      "lookback_days": 45,
-      "coverage_complete": false,
-      "page_date": "2026-10-13T12:42:12+00:00",
-      "next_pages": 3,
-      "media_read": 3
-    },
-    {
-      "source": "Municipalidad / OMIL Mulchén",
-      "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
-      "status": "ok",
-      "lookback_days": 45,
-      "coverage_complete": false,
-      "page_date": null,
-      "next_pages": 11,
-      "media_read": 3
-    },
-    {
-      "source": "Municipalidad / OMIL Collipulli",
-      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
-      "status": "ok",
-      "lookback_days": 45,
-      "coverage_complete": false,
-      "page_date": null,
+      "page_date": "2026-10-12T13:43:33+00:00",
       "next_pages": 0,
       "media_read": 3
     }
   ],
-  "inventory_count": 359,
+  "inventory_count": 362,
   "paid_provider_calls": 0,
   "published": 0,
   "publication_confirmed": false,

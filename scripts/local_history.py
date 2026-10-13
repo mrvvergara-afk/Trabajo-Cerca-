@@ -51,6 +51,7 @@ def literal_date(value, end=False):
 
 def verify_notice(text, source_url, published_at, *, sha256, complete=True, now=None):
     now = now or utcnow()
+    source_url = canonical_url(source_url)
     fields = evidence_fields(text,published_at)
     adapter = source_adapter(source_url)
     result = {**fields,'url':source_url,'status':'pending','reason':'local_notice_requires_review'}

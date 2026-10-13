@@ -18,6 +18,19 @@ SHA = hashlib.sha256(TEXT.encode()).hexdigest()
 
 
 class DocumentCycleTests(unittest.TestCase):
+    def test_document_slots_exclude_literary_contests_and_preserve_specific_transport_errors(self):
+        def collector(**kwargs):return {'candidates':[],'notice_evidence':[],'checkpoints':{},'verified_notices':0,'diagnostics':[]}
+        calls=[]
+        def reader(row,**kwargs):calls.append(row['url']);raise ValueError('unsupported_media_type')
+        with tempfile.TemporaryDirectory() as folder:
+            store=State(Path(folder)/'state.sqlite3')
+            work={'items':[{'url':URL,'source':'OMIL'},
+                           {'url':'https://www.munimulchen.cl/3er-concurso-microcuentos-bureanos/','source':'OMIL'}]}
+            _,summary=document_cycle.run(store,Path(folder),work,reader=reader,collector=collector,now=NOW,budget=Budget(10))
+            self.assertEqual(calls,[URL]);self.assertEqual(summary['reviewed'][0]['reason'],'unsupported_media_type')
+            self.assertEqual(len(store.inventory()),2)
+            store.close()
+
     def test_a_complete_pdf_uses_its_literal_date_and_not_the_app_capture_time(self):
         medium = {'text':TEXT,'sha256':SHA,'engine':'pdftotext-local','complete_document':True,'page_count':1}
         result = document_cycle.verify_work_item({'url':URL},reader=lambda *args:medium,now=NOW)

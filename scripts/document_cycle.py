@@ -12,7 +12,7 @@ from pathlib import Path
 
 from . import durable_backup, laboratory_exchange, local_history, observe_laboratory, publication_queue, public_sources_probe
 from .common import Budget, canonical_url, parse_date, safe_error, utcnow, write_json
-from .local_source_audit import MEDIA, discover, fetch_public, read_medium, same_publisher
+from .local_source_audit import MEDIA, discover, fetch_public, read_medium, same_publisher, source_error
 from .public_source_adapters import source_adapter
 from .state import State
 
@@ -140,13 +140,16 @@ def run(store, output, work, *, reader=verify_work_item, collector=local_history
     def due(row):
         adapter = source_adapter(row['url']); checked = parse_date(row.get('last_attempt_at'))
         wait = dt.timedelta(hours=18 if row.get('state') == 'verified' else 4)
-        return adapter and adapter['family'] == 'local' and (not checked or now-checked >= wait)
-    choices = sorted((row for row in inventory if due(row)),key=lambda row:(row.get('state') != 'verified',bool(row.get('last_attempt_at')),row.get('last_attempt_at') or '',row['id']))[:3]
+        path = urllib.parse.unquote(urllib.parse.urlsplit(row['url']).path).lower()
+        literary_contest = 'concurso' in path and 'microcuento' in path and not any(label in path for label in ('cargo','puesto','vacante','empleo'))
+        return adapter and adapter['family'] == 'local' and not literary_contest and (not checked or now-checked >= wait)
+    choices = sorted((row for row in inventory if due(row)),key=lambda row:(row.get('state') != 'verified',bool(row.get('last_attempt_at')),
+        not bool(MEDIA.search(row['url'])),row.get('last_attempt_at') or '',row['id']))[:3]
     reviewed = []
     for row in choices:
         if budget.remaining() < 5: break
         try: result = reader(row,budget=budget,now=now)
-        except Exception as exc: result = {'url':row['url'],'status':'pending','reason':safe_error(exc)}
+        except Exception as exc: result = {'url':row['url'],'status':'pending','reason':source_error(exc)}
         store.record_result(row,result,now)
         reviewed.append({k:result.get(k) for k in ('url','status','reason','engine','source_published_at','valid_through','complete_document','page_count','mean_confidence')})
     local = collector(output=output,checkpoints=store.checkpoints(),budget=Budget(min(180,budget.remaining())),max_pages=9,now=now)

@@ -16,6 +16,13 @@ SHA=hashlib.sha256(TEXT.encode()).hexdigest()
 
 
 class LocalHistoryTests(unittest.TestCase):
+    def test_image_fragment_is_removed_from_the_offer_and_its_source_proof_together(self):
+        url='https://www.munilumaco.cl/images/oferta.png#joomlaImage://local-images/oferta.png?width=629'
+        result=local_history.verify_notice(TEXT,url,'2026-10-12T12:00:00Z',sha256=SHA,now=NOW)
+        self.assertEqual(result['status'],'verified')
+        self.assertEqual(result['url'],'https://www.munilumaco.cl/images/oferta.png')
+        self.assertEqual(result['source_evidence']['source_url'],result['url'])
+
     def test_a_single_literal_chilean_phone_can_be_the_application_for_a_complete_current_notice(self):
         text=TEXT.replace('empleo@example.cl','+56 9 1234 5678')
         self.assertEqual(local_history.verify_notice(text,URL,'2026-10-12T12:00:00Z',sha256=SHA,now=NOW)['application'],'tel:+56912345678')

@@ -8,7 +8,7 @@ import { fetchPublicPage } from './public-source-http';
 export type FreeSource = { key:string; name:string; url:string; territory:string };
 type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;
   pending:Array<{ url:string; source:string }>; rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;
-  checkedAt?:string; runId?:string; summary?:Record<string,unknown> };
+  checkedAt?:string; runId?:string; recheckPolicy?:string; summary?:Record<string,unknown> };
 type Stored = Record<string,unknown>;
 const CURSOR = 'free_public_source_cursor';
 const SEEDS = 'free_public_seed_state';
@@ -36,6 +36,7 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     workLocation:offer.work_commune,workCommunes:[offer.work_commune],recruitmentZones:[],recruitmentCommunes:[],
     area:'Fuente pública',status:'Verificada',date:new Date(offer.source_published_at).toLocaleDateString('es-CL',{ day:'2-digit',month:'short',year:'numeric',timeZone:'America/Santiago' }),source:offer.source,
     sourceDomain:new URL(offer.url).hostname,sourcePublishedAt:offer.source_published_at,
+    ...(offer.source_date_evidence ? { sourceDateEvidence:offer.source_date_evidence } : {}),
     sourceValidThrough:offer.valid_through || null,validityMethod:offer.validity_method || 'explicit_deadline',
     expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
     tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,
@@ -89,6 +90,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     if (url && adapter && adapter.family!=='aggregator' && !rechecks.has(url)) rechecks.set(url,{ url,lastAttemptAt:String(offer?.externalVerifiedAt || '') });
   }
   const due = [...rechecks.values()].filter(item => {
+    if (state.recheckPolicy!=='public-source-dates-v2') return true;
     const checked=Date.parse(item.nextCheckAt || ''),attempt=Date.parse(item.lastAttemptAt || '');
     return Number.isFinite(checked) ? now>=checked : !Number.isFinite(attempt) || now-attempt>=18*3600000;
   }).sort((a,b) => (Date.parse(a.nextCheckAt || a.lastAttemptAt || '') || 0)-(Date.parse(b.nextCheckAt || b.lastAttemptAt || '') || 0));
@@ -155,6 +157,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     pending:state.pending.length,reverificationBacklog:due.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,
     nextSource:state.position,coverageComplete:false,audits,reviewed,receipts };
   state.rechecks=[...rechecks.values()];
+  state.recheckPolicy='public-source-dates-v2';
   state.summary=summary;state.checkedAt=summary.checkedAt;state.runId=requestId;
   state.queues={};state.seen={};
   const { id:_id,...payload } = state as ScanState & { id?:string };

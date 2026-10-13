@@ -47,13 +47,19 @@ try {
   const navigation=await command('Page.navigate',{ url:'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?radar-public-proof=1#operacion' });
   if (navigation.errorText) throw new Error('Browser navigation failed: '+navigation.errorText);
   await command('Page.bringToFront');
-  const read=async()=>{
-    const result=await command('Runtime.evaluate',{ expression:"document.getElementById('radar-public-check')?.textContent || ''",returnByValue:true });
+  const read=async(id='radar-public-check')=>{
+    const result=await command('Runtime.evaluate',{ expression:"document.getElementById("+JSON.stringify(id)+")?.textContent || ''",returnByValue:true });
     return result.result?.value ? JSON.parse(result.result.value) : null;
   };
   let proof;
   for (let attempt=0;attempt<120;attempt++){proof=await read();if (proof?.state) break;await pause(500);}
   if (!proof?.state || proof.state.providerCalls!==0) throw new Error('Public source status unavailable');
+  const previous=Date.parse(proof.state.summary?.checkedAt || ''),now=Date.now();
+  const nextWindow=(Math.floor(now/900000)+1)*900000;
+  if (Number.isFinite(previous) && Math.floor(previous/900000)===Math.floor(now/900000) && nextWindow-now<=180000) {
+    console.log('APP_PUBLIC_SOURCE_WAIT '+JSON.stringify({ nextAllowedAt:new Date(nextWindow).toISOString() }));
+    while (Date.now()<nextWindow+1000) await pause(1000);
+  }
   await command('Runtime.evaluate',{ expression:"document.getElementById('free-source-run')?.click()" });
   for (let attempt=0;attempt<180;attempt++){
     proof=await read();if (proof?.result && !proof.running) break;await pause(500);
@@ -63,6 +69,23 @@ try {
   mkdirSync('output/public-sources',{recursive:true});
   writeFileSync('output/public-sources/app-public-source-observation.json',JSON.stringify(proof,null,2)+'\n');
   console.log('APP_PUBLIC_SOURCE_READ '+JSON.stringify(proof));
+  if (proof.result.stored>0) {
+    // Observe the existing writer through the read-only SDK view; do not invoke another scan or paid handler.
+    const wanted=new Set(proof.result.receipts.map(receipt=>receipt.url));
+    await command('Page.navigate',{url:'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?radar-proof=1#operacion'});
+    let publication,confirmed=false;
+    for (let attempt=0;attempt<360;attempt++) {
+      if (attempt && attempt%30===0) await command('Page.reload',{ignoreCache:true});
+      publication=await read('radar-live-check');
+      const ingestion=publication?.ingestion,feed=publication?.feed;
+      const matches=ingestion?.receipts?.filter(receipt=>wanted.has(receipt.sourceUrl) && receipt.publishedId && publication.visibleIds?.includes(receipt.publishedId)) || [];
+      if (!publication?.feedReadError && feed?.complete && feed.manifestId===ingestion?.feedManifestId && matches.length===wanted.size) {confirmed=true;break;}
+      await pause(1000);
+    }
+    writeFileSync('output/public-sources/app-publication-after-recheck.json',JSON.stringify({confirmed,publication},null,2)+'\n');
+    console.log('APP_PUBLICATION_AFTER_RECHECK '+JSON.stringify({confirmed,publication}));
+    if (!confirmed) throw new Error('Saved source offers are not yet confirmed in the public feed');
+  }
 } catch (error) {
   await saveDiagnostics();throw error;
 } finally {

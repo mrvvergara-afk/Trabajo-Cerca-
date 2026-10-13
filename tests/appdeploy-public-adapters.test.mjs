@@ -22,6 +22,24 @@ function page({ job={}, form=false, disabled=false, anchor=true, tail='' }={}) {
     (form?'<form method="post" action="/postular/0123456789abcdef"><input type="file" name="cv"><button type="submit" '+(disabled?'disabled':'')+'>Postular</button></form>':'')+tail;
 }
 
+test('Chiletrabajos civil source dates keep their literal values and normalize in continental Chile',()=>{
+  const chile='https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374';
+  const raw=page({ job:{ url:chile,datePosted:'2026-10-08 11:58:01',validThrough:'2026-12-22T11:58:01' } });
+  const result=ctx.evaluatePublicJob(chile,raw,chile,200,now);
+  assert.equal(result.status,'verified');assert.equal(result.source_published_at,'2026-10-08T14:58:01.000Z');
+  assert.equal(result.valid_through,'2026-12-22T14:58:01.000Z');
+  assert.equal(result.source_date_evidence.date_posted,'2026-10-08 11:58:01');
+  assert.equal(result.source_date_evidence.timezone,'America/Santiago');
+});
+
+test('Civil portal dates still reject invalid calendars, clock times, future values and unconfigured sources',()=>{
+  const chile='https://www.chiletrabajos.cl/trabajo/operador-1234567';
+  for (const datePosted of ['2026-02-30 11:58:01','2026-10-08 25:00:00','2026-10-14 11:58:01']) {
+    assert.equal(ctx.evaluatePublicJob(chile,page({ job:{ url:chile,datePosted } }),chile,200,now).status,'pending');
+  }
+  assert.equal(ctx.evaluatePublicJob(url,page({ job:{ datePosted:'2026-10-08 11:58:01' } }),url,200,now).status,'pending');
+});
+
 test('Individual portal identities preserve job IDs and reject directories and credential URLs', () => {
   for (const value of [url,'https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-operador-AB12',
     'https://cl.linkedin.com/jobs/view/operador-at-empresa-4456391320/',

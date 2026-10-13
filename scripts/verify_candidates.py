@@ -158,7 +158,11 @@ def original_source_links(raw, url):
 def evaluate(item, raw, final_url, *, status=200, now=None):
     now = now or utcnow()
     adapter = source_adapter(item['url'])
-    if adapter and adapter['name'] != 'Chiletrabajos':
+    if adapter:
+        if status == 200 and not supported_url(final_url):
+            return {'status':'rejected','reason':'redirected_outside_job'}
+        if status == 200 and not same_job(item['url'],final_url):
+            return {'status':'pending','reason':'redirected_to_other_job'}
         return evaluate_public(item, raw, final_url, status, now)
     if status in (404, 410):
         return {'status': 'rejected', 'reason': 'source_removed'}

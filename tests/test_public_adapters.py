@@ -22,6 +22,14 @@ def page(url=URL, *, form=False, deadline=True):
 
 
 class PublicAdapterTests(unittest.TestCase):
+    def test_chiletrabajos_uses_the_same_civil_date_parser_as_the_app(self):
+        url='https://www.chiletrabajos.cl/trabajo/operador-1234567'
+        raw=page(url).replace('2026-10-12T12:00:00Z','2026-10-08 11:58:01').replace('2026-10-25T12:00:00Z','2026-12-22T11:58:01')
+        result=verify_candidates.evaluate({'url':url},raw,url,now=NOW)
+        self.assertEqual(result['status'],'verified')
+        self.assertEqual(result['source_published_at'],'2026-10-08T14:58:01.000Z')
+        self.assertEqual(result['source_date_evidence']['date_posted'],'2026-10-08 11:58:01')
+
     def test_supported_portals_are_selected_for_verification_without_network(self):
         urls = [URL,'https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-operador-AB12',
                 'https://cl.linkedin.com/jobs/view/operador-4456391320/',

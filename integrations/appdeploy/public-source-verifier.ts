@@ -18,6 +18,7 @@ export type PublicVerification = {
   verification_method?:string;
   validity_method?:'explicit_deadline' | 'live_application';
   validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
+  source_date_evidence?:{ date_posted:string; valid_through:string; timezone:string };
 };
 
 const SOURCE_WORK_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria'];
@@ -25,6 +26,22 @@ const sourceFold = (value:unknown) => String(value ?? '').toLowerCase().normaliz
 const sourceDecode = (value:string) => value.replace(/&(?:amp|quot|apos|lt|gt|nbsp);/g, entity => ({ '&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>','&nbsp;':' ' }[entity] || entity));
 export const publicText = (value:string) => sourceDecode(value.replace(/<[^>]*>/g,' ')).replace(/\s+/g,' ').trim();
 const sourceObject = (value:unknown):value is Data => Boolean(value && typeof value === 'object' && !Array.isArray(value));
+
+// Chiletrabajos publishes civil timestamps without a zone. Only this adapter interprets them in continental Chile.
+function publicJobDate(value:unknown, source:string, endOfDay=false) {
+  const explicit = socialSourceDate(value,endOfDay);
+  if (explicit) return explicit;
+  if (source!=='Chiletrabajos' || typeof value!=='string') return null;
+  const match=value.trim().match(/^(20\d{2}-\d{2}-\d{2})[T ](\d{2}):(\d{2}):(\d{2})$/);
+  if (!match || Number(match[2])>23 || Number(match[3])>59 || Number(match[4])>59) return null;
+  const day=socialSourceDate(match[1]);
+  if (!day) return null;
+  const stamp=Date.parse(day)+(Number(match[2])*3600+Number(match[3])*60+Number(match[4]))*1000;
+  const parts=new Intl.DateTimeFormat('en-CA',{ timeZone:'America/Santiago',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23' }).formatToParts(new Date(stamp));
+  const field=(key:string)=>parts.find(part=>part.type===key)?.value;
+  if (field('year')+'-'+field('month')+'-'+field('day')!==match[1] || field('hour')!==match[2] || field('minute')!==match[3] || field('second')!==match[4]) return null;
+  return new Date(stamp).toISOString();
+}
 
 function visibleHtml(raw:string) {
   return raw.replace(/<(script|style|nav|header|footer|aside)\b[^>]*>[\s\S]*?<\/\1>/gi,'');
@@ -131,8 +148,8 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   if (!title || title.length>300) return { status:'pending',reason:'job_title_missing' };
   if (!place) return { status:'pending',reason:'worksite_missing_or_multiple' };
   const base = { title,company:employer,work_commune:place,work_location_verified:true,url:finalUrl,source:adapter.name };
-  const published = socialSourceDate(job.datePosted);
-  const deadline = job.validThrough ? socialSourceDate(job.validThrough,true) : null;
+  const published = publicJobDate(job.datePosted,adapter.name);
+  const deadline = job.validThrough ? publicJobDate(job.validThrough,adapter.name,true) : null;
   if (deadline && Date.parse(deadline)<=now) return { ...base,status:'rejected',reason:'expired_deadline' };
   if (!published || Date.parse(published)>now) return { ...base,status:'pending',reason:'source_date_missing_or_future' };
   const dated = { ...base,source_published_at:published };
@@ -146,6 +163,9 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   const result:PublicVerification = { ...dated,status:'verified',reason:deadline?'live_jobposting_with_deadline_and_application':'live_jobposting_with_enabled_application_form',
     application,valid_through:deadline || '',verification_method:adapter.verificationMethod,
     validity_method:deadline?'explicit_deadline':'live_application' };
+  if (adapter.name==='Chiletrabajos' && (!socialSourceDate(job.datePosted) || job.validThrough && !socialSourceDate(job.validThrough,true))) {
+    result.source_date_evidence={ date_posted:String(job.datePosted),valid_through:String(job.validThrough || ''),timezone:'America/Santiago' };
+  }
   if (!deadline && form) result.validity_evidence = { form_url:finalUrl,form_action:form,checked_at:new Date(now).toISOString(),source_sha256:createHash('sha256').update(raw).digest('hex') };
   return result;
 }

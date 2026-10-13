@@ -9,12 +9,12 @@ from zoneinfo import ZoneInfo
 
 try:
     from .common import Budget, Links, MAX_SOURCE_AGE_DAYS, canonical_url, normalized, output_dir, parse_date, safe_error, utcnow, write_json
-    from .local_source_audit import HIRING, MEDIA, NON_JOB, discover, evidence_fields, fetch_public, read_medium, same_publisher
+    from .local_source_audit import HIRING, MEDIA, NON_JOB, discover, evidence_fields, fetch_public, read_medium, same_publisher, source_error
     from .public_source_adapters import source_adapter
     from .radar import configured_sources
 except ImportError:
     from common import Budget, Links, MAX_SOURCE_AGE_DAYS, canonical_url, normalized, output_dir, parse_date, safe_error, utcnow, write_json
-    from local_source_audit import HIRING, MEDIA, NON_JOB, discover, evidence_fields, fetch_public, read_medium, same_publisher
+    from local_source_audit import HIRING, MEDIA, NON_JOB, discover, evidence_fields, fetch_public, read_medium, same_publisher, source_error
     from public_source_adapters import source_adapter
     from radar import configured_sources
 
@@ -26,6 +26,13 @@ def literal_date(value, end=False):
     text = normalized(value).strip()
     source = parse_date(text)
     if source and 't' in text:return source
+    timed = re.fullmatch('('+DATE+r')\s+(?:a\s+las\s+)?(\d{1,2}):(\d{2})(?:\s*(?:hrs|horas))?',text)
+    if timed:
+        date = literal_date(timed[1])
+        if date:
+            try:return date.astimezone(ZoneInfo('America/Santiago')).replace(hour=int(timed[2]),minute=int(timed[3])).astimezone(dt.timezone.utc)
+            except ValueError:return None
+        return None
     match = re.fullmatch(r'(20\d{2})-(\d{2})-(\d{2})',text)
     if match:year,month,day = map(int,match.groups())
     else:
@@ -51,16 +58,20 @@ def verify_notice(text, source_url, published_at, *, sha256, complete=True, now=
     if re.search(r'postulaciones? (?:cerradas?|finalizadas?)|oferta (?:cerrada|expirada|finalizada)|concurso desierto',text,re.I):
         return {**result,'status':'rejected','reason':'closed_notice'}
     published = parse_date(published_at)
+    explicit = re.findall(r'(?:publicad[oa]|fecha de publicaci[oó]n|publicaci[oó]n)\s*(?:el|:)?\s*('+DATE+')',text,re.I)
+    dates = {date for value in explicit if (date:=literal_date(value))}
+    if len(dates)>1 or published and dates and abs(published-next(iter(dates)))>=dt.timedelta(days=1):
+        return {**result,'reason':'source_date_conflict'}
     if not published:
-        explicit = re.findall(r'(?:publicad[oa]|fecha de publicaci[oó]n|publicaci[oó]n)\s*(?:el|:)?\s*('+DATE+')',text,re.I)
-        dates = {date for value in explicit if (date:=literal_date(value))}
         published = next(iter(dates)) if len(dates)==1 else None
+    elif dates:
+        published = min(published,next(iter(dates)))
     if not published or published>now:return {**result,'reason':'source_date_missing_or_future'}
     result['source_published_at'] = published.isoformat()
     fields['missing'] = [field for field in fields['missing'] if field!='fecha_original']
     result['missing'] = fields['missing']
     if now-published>dt.timedelta(days=MAX_SOURCE_AGE_DAYS):return {**result,'reason':'source_older_than_45_days'}
-    values = re.findall(r'(?:postulaciones?\s+hasta|plazo de postulaci[oó]n\s*:?|fecha l[ií]mite\s*:?|cierre\s*:?|recepci[oó]n de antecedentes\s+hasta)\s*(?:el\s+)?('+DATE+')',text,re.I)
+    values = re.findall(r'(?:postulaciones?\s+hasta|plazo de postulaci[oó]n\s*:?|fecha l[ií]mite\s*:?|cierre\s*:?|recepci[oó]n de antecedentes\s+hasta)\s*(?:el\s+)?('+DATE+r'(?:\s+(?:a\s+las\s+)?\d{1,2}:\d{2}(?:\s*(?:hrs|horas))?)?)',text,re.I)
     deadlines = {date for value in values if (date:=literal_date(value,True))}
     deadline = next(iter(deadlines)) if len(deadlines)==1 else None
     if deadline and deadline<=now:return {**result,'status':'rejected','reason':'expired_deadline'}
@@ -141,7 +152,7 @@ def run(*, output=None, checkpoints=None, fetcher=fetch_public, reader=read_medi
             queues[name]=list({item['url']:item for item in combined if item['url'] not in seen[name]}.values())[:80]
             diagnostic.update(page_date=published,next_pages=len(queues[name]),media_read=media_read)
         except Exception as exc:
-            diagnostic.update(status='error',error=safe_error(exc));queues[name]=queue
+            diagnostic.update(status='error',error=source_error(exc));queues[name]=queue
         diagnostics.append(diagnostic);pages+=1;position=(position+1)%len(sources)
     for notice in records:
         if source_adapter(notice['url']):

@@ -83,3 +83,29 @@ test('Different jobs receive globally distinct source IDs and storage-only recei
   assert.notEqual(h.registered[0].id,h.registered[1].id);
   const status=await h.ctx.freePublicSourceStatus();assert.equal(status.publishedConfirmed,null);assert.equal(status.readOnly,true);
 });
+
+test('Previously accepted offers are rechecked before expiry and keep their source ID, creation date and literal publication date',async()=>{
+  const h=harness();
+  const identity=createHash('sha256').update(url).digest('hex'),name='radar_external_'+identity.slice(0,32);
+  const created='2026-10-11T12:00:00Z',stale=new Date(stamp-19*3600000).toISOString();
+  h.table(name).set('historical-source-id',{ id:'historical-source-id',url,externalIdentity:identity,externalVerifiedAt:stale,createdAt:created });
+  h.table('radar_external_pull_state').set('accepted',{ id:'accepted',receipts:[{ table:name,id:'historical-source-id' }] });
+  const result=await h.ctx.runFreePublicSources(h.sources,'public-run-recheck-1',stamp);
+  assert.equal(result.stored,1);assert.equal(result.trackedOffers,1);assert.equal(result.reverificationBacklog,0);
+  assert.equal(h.registered[0].id,'historical-source-id');
+  assert.equal(h.table(name).get('historical-source-id').createdAt,created);
+  assert.equal(h.table(name).get('historical-source-id').sourcePublishedAt,'2026-10-12T12:00:00.000Z');
+  assert.equal(h.table(name).get('historical-source-id').externalVerifiedAt,new Date(stamp).toISOString());
+});
+
+test('A blocked recheck preserves the historical offer and never refreshes its verification date',async()=>{
+  const h=harness({ blocked:true });
+  const identity=createHash('sha256').update(url).digest('hex'),name='radar_external_'+identity.slice(0,32);
+  const stale=new Date(stamp-25*3600000).toISOString();
+  h.table(name).set('historical-source-id',{ id:'historical-source-id',url,externalIdentity:identity,externalVerifiedAt:stale,createdAt:stale });
+  h.table('radar_external_pull_state').set('accepted',{ id:'accepted',receipts:[{ table:name,id:'historical-source-id' }] });
+  const result=await h.ctx.runFreePublicSources(h.sources,'public-run-recheck-2',stamp);
+  assert.equal(result.stored,0);assert.equal(result.trackedOffers,1);assert.equal(h.registered.length,0);
+  assert.equal(h.table(name).get('historical-source-id').externalVerifiedAt,stale);
+  assert.equal(h.table('free_public_source_cursor').get('cursor').rechecks.length,1);
+});

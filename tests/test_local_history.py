@@ -49,6 +49,21 @@ class LocalHistoryTests(unittest.TestCase):
         self.assertEqual(local_history.verify_notice(TEXT.split('Postulaciones')[0],URL,'2026-10-12',sha256=SHA,now=NOW)['status'],'pending')
         self.assertEqual(local_history.verify_notice(TEXT.replace('Empresa: Empresa de prueba\n',''),URL,'2026-10-12',sha256=SHA,now=NOW)['status'],'pending')
 
+    def test_recent_publisher_metadata_does_not_rejuvenate_an_old_poster(self):
+        result=local_history.verify_notice('Publicación: 1 de agosto de 2026\n'+TEXT,URL,'2026-10-12T12:00:00Z',sha256=SHA,now=NOW)
+        self.assertEqual(result['reason'],'source_date_conflict')
+
+    def test_literal_closing_time_is_respected_in_chile_instead_of_extending_the_notice_to_midnight(self):
+        text=TEXT.replace('20 de octubre de 2026','13 de octubre de 2026 a las 08:00 horas')
+        result=local_history.verify_notice(text,URL,'2026-10-12T12:00:00Z',sha256=SHA,now=NOW)
+        self.assertEqual(result['reason'],'expired_deadline')
+
+    def test_source_byte_and_redirect_limits_keep_a_specific_diagnostic(self):
+        def fetcher(url,budget):raise ValueError('source_byte_budget_exceeded')
+        with tempfile.TemporaryDirectory() as folder,patch('scripts.local_history.configured_sources',return_value=[('OMIL Lumaco',URL)]):
+            report=local_history.run(output=Path(folder),fetcher=fetcher,budget=Budget(5),max_pages=1,now=NOW)
+        self.assertEqual(report['diagnostics'][0]['error'],'source_byte_budget_exceeded')
+
     def test_a_local_crawl_resumes_articles_without_using_the_publisher_town_as_worksite(self):
         calls=[]
         root='https://www.munilumaco.cl/'

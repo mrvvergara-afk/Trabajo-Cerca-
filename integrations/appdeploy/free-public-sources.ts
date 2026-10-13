@@ -7,7 +7,8 @@ import { fetchPublicPage } from './public-source-http';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string };
 type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;
-  pending:Array<{ url:string; source:string }>; checkedAt?:string; runId?:string; summary?:Record<string,unknown> };
+  pending:Array<{ url:string; source:string }>; rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;
+  checkedAt?:string; runId?:string; summary?:Record<string,unknown> };
 type Stored = Record<string,unknown>;
 const CURSOR = 'free_public_source_cursor';
 const SEEDS = 'free_public_seed_state';
@@ -77,7 +78,24 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   const [lease] = await db.tx.add('free_public_run_leases',[{ id:String(Math.floor(now/900000)),requestId,startedAt:new Date(now).toISOString() }]);
   if (!lease) return { deferred:true,reason:'public_scan_cooldown',providerCalls:0,nextAllowedAt:new Date((Math.floor(now/900000)+1)*900000).toISOString() };
   const state:ScanState = current ? structuredClone(current) : { position:0,queues:{},seen:{},pending:[] };
-  const seenPending = new Set(state.pending.map(item => item.url));
+  const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));
+  // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.
+  const accepted = (await db.list<Stored>('radar_external_pull_state',{ limit:1 })).items[0];
+  for (const receipt of (Array.isArray(accepted?.receipts) ? accepted.receipts as Stored[] : []).slice(0,3)) {
+    if (typeof receipt.table!=='string' || !/^radar_external_[a-f0-9]{32}$/.test(receipt.table) || typeof receipt.id!=='string') continue;
+    const [offer] = await db.get<Stored>(receipt.table,[receipt.id],{ consistent:true });
+    const url = typeof offer?.url==='string' ? safePublicUrl(offer.url) : null;
+    const adapter=url ? publicSourceAdapter(url) : null;
+    if (url && adapter && adapter.family!=='aggregator' && !rechecks.has(url)) rechecks.set(url,{ url,lastAttemptAt:String(offer?.externalVerifiedAt || '') });
+  }
+  const due = [...rechecks.values()].filter(item => {
+    const checked=Date.parse(item.nextCheckAt || ''),attempt=Date.parse(item.lastAttemptAt || '');
+    return Number.isFinite(checked) ? now>=checked : !Number.isFinite(attempt) || now-attempt>=18*3600000;
+  }).sort((a,b) => (Date.parse(a.nextCheckAt || a.lastAttemptAt || '') || 0)-(Date.parse(b.nextCheckAt || b.lastAttemptAt || '') || 0));
+  const priority = due.slice(0,2).map(item => ({ url:item.url,source:'Reverificación pública' }));
+  const priorityUrls = new Set(priority.map(item => item.url));
+  state.pending = [...priority,...state.pending.filter(item => !priorityUrls.has(item.url))];
+  const seenPending = new Set([...state.pending.map(item => item.url),...rechecks.keys()]);
   const audits:Stored[] = [],receipts:Stored[] = [];
   const changedSeeds = new Map<string,{ previous:Stored | null; record:Stored }>();
   let reads = 0, roots = 0;
@@ -121,14 +139,22 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         result = originalPage.error ? { status:'pending',reason:originalPage.error } : evaluatePublicJob(original,originalPage.raw,originalPage.url,originalPage.status,now);
       }
     }
-    if (result.status==='verified') { receipts.push(await saveOffer(result,now));verified++; }
+    if (result.status==='verified') {
+      receipts.push(await saveOffer(result,now));verified++;
+      rechecks.set(safePublicUrl(result.url!)!,{ url:safePublicUrl(result.url!)!,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+18*3600000).toISOString() });
+    } else if (rechecks.has(candidate.url)) {
+      // A failed attempt does not update the offer's verification stamp or its original publication date.
+      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+4*3600000).toISOString() });
+    }
     reviewed.push({ url:candidate.url,status:result.status,reason:result.reason });
     // The immutable run receipt retains every reviewed result and source failure.
     state.pending.shift();
   }
   const summary = { checkedAt:new Date(now).toISOString(),sourcesRead:roots,httpReads:reads,
     noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,
-    pending:state.pending.length,nextSource:state.position,coverageComplete:false,audits,reviewed,receipts };
+    pending:state.pending.length,reverificationBacklog:due.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,
+    nextSource:state.position,coverageComplete:false,audits,reviewed,receipts };
+  state.rechecks=[...rechecks.values()];
   state.summary=summary;state.checkedAt=summary.checkedAt;state.runId=requestId;
   state.queues={};state.seen={};
   const { id:_id,...payload } = state as ScanState & { id?:string };

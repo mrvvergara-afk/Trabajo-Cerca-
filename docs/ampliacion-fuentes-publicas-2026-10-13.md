@@ -1,5 +1,7 @@
 # Ampliación aplicada del radar — 13 de octubre de 2026
 
+Este informe conserva la entrega anterior. La [continuación regional](continuacion-fuentes-regionales-2026-10-13.md) registra la versión posterior, 225 pruebas y la publicación de BNE confirmada en el feed; sus cifras actualizan las de esta entrega.
+
 La app indicada por el usuario recibió la ampliación en **1791900925205**, la reverificación en **1791902576668** y la corrección del lector de fechas en **1791903387552**, actualmente `ready` y sin errores reportados de frontend, red o backend. Es la página que usa el usuario: https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/. No se integró `main` ni se cambiaron credenciales. El historial previo permanece guardado.
 
 La app ahora tiene adaptadores de páginas individuales de Indeed, Computrabajo, LinkedIn y Laborum, además de Chiletrabajos. Opción Empleo necesita resolver y verificar su origen; las copias no reciben una fecha nueva ni se publican como una vacante distinta. La selección persistente del productor, el puente de ingesta y la identidad del feed admiten los nuevos formatos. Las páginas sin datos estructurados suficientes, bloqueadas o con ubicación/fecha no comprobable quedan pendientes.

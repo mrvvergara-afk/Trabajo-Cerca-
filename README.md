@@ -1,6 +1,6 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
-La [ampliación aplicada de fuentes públicas](docs/ampliacion-fuentes-publicas-2026-10-13.md) añade adaptadores de portales, recuperación local y una comprobación gratuita en la app. El límite es 45 días desde la fecha original; el informe distingue preparación, lectura real y publicación confirmada.
+La [continuación del radar regional](docs/continuacion-fuentes-regionales-2026-10-13.md) registra una oferta nueva de BNE confirmada en la app, las correcciones de fuentes y selección de candidatos, 225 pruebas aprobadas y los pendientes de redes sociales y afiches. El límite es 45 días desde la fecha original; detectar, guardar y publicar se comprueban por separado. `main` sigue sin integrar.
 
 El radar externo recolecta candidatos públicos, conserva el historial y verifica páginas individuales de Chiletrabajos, Indeed, Computrabajo, LinkedIn y Laborum cuando contienen evidencia suficiente. Opción Empleo exige comprobar su fuente original. También prepara avisos locales y documentos mediante lectores gratuitos. La app indicada por el usuario tiene un recolector público propio y recibe lotes firmados de GitHub; guardar un aviso solo se confirma como publicación cuando su ID aparece en el feed. El productor programado de `main` sigue pendiente de integrar la reparación después de su revisión. La ejecución local de `pipeline.py` prepara una cola y no publica por sí sola.
 
@@ -31,7 +31,7 @@ python scripts/pipeline.py
 
 `VERIFY_LIMIT` acepta 0–60; `BACKFILL_DAYS`, 1–45 (45 por defecto); `RADAR_BUDGET_SECONDS`, 30–1100. Las rutas locales se configuran con `RADAR_OUTPUT_DIR` y `RADAR_STATE_DIR`. La fecha original debe tener como máximo 45 días y la postulación debe seguir vigente. La captura o reverificación no rejuvenece el aviso. Los registros históricos se conservan aunque dejen de ser publicables.
 
-El recolector público consume `config/local-source-priorities.json`: nueve sitios municipales, Malleco 7, Radio Nativa y dos sitios corporativos. El catálogo de portales está en `config/portal-source-priorities.json`. Excluye identidades pendientes y perfiles sociales del rastreo HTML. Conserva rotación y paginación por fuente; una cola terminada no demuestra cobertura completa de 45 días. Los accesos bloqueados y los formatos que no aportan datos suficientes quedan pendientes, sin iniciar proveedores pagos.
+El recolector público consume `config/local-source-priorities.json`: 18 fuentes HTML admitidas, incluidos nueve sitios municipales, medios regionales, sitios/portales de empresas y un piloto individual de BNE. El catálogo de portales está en `config/portal-source-priorities.json`. Excluye identidades pendientes y perfiles sociales del rastreo HTML. Conserva rotación y paginación por fuente; una cola terminada no demuestra cobertura completa de 45 días. Los accesos bloqueados y los formatos que no aportan datos suficientes quedan pendientes, sin iniciar proveedores pagos.
 
 | Archivo | Contenido |
 | --- | --- |

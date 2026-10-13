@@ -1,6 +1,8 @@
 # Reparaciones de AppDeploy en el laboratorio
 
-Estado actual: versión **`1791842683706`** aplicada y `ready`. Dos ofertas reales publicadas y visibles, con los mismos IDs después del respaldo. Se restauraron y conservaron dos recibos junto con 190 candidatos y 2.750 observaciones. Véase el [informe actual](../../docs/resultado-publicacion-laboratorio-2026-10-12.md), la [evidencia real](publication-confirmation-2026-10-12.json) y el [último arreglo de repetición](backup-replay-repair.json). `main` y producción siguen sin integrar.
+Estado actual de la app indicada por el usuario: versión **`1791920772060`** aplicada y `ready`. Se confirmó una oferta nueva de BNE en Negrete, además de las dos del piloto anterior. Véase la [continuación regional](../../docs/continuacion-fuentes-regionales-2026-10-13.md), la [evidencia por ID](regional-source-observation-2026-10-13.json) y los [parches regionales aplicados](regional-source-repair.json). `main` sigue sin integrar.
+
+El respaldo del piloto anterior conserva dos recibos, 190 candidatos y 2.750 observaciones. Su [informe del 12 de octubre](../../docs/resultado-publicacion-laboratorio-2026-10-12.md), [evidencia](publication-confirmation-2026-10-12.json) y [arreglo de repetición](backup-replay-repair.json) describen ese momento, no el conteo actual de la app.
 
 Los paquetes y secciones siguientes describen las etapas históricas y sus versiones. El calendario actual del escritor es cada 15 minutos; sus tareas con proveedores conservan solo los siete turnos originales.
 

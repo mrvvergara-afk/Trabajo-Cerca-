@@ -95,7 +95,8 @@ jobs:
        contains(github.event.head_commit.message, '[public browser]') ||
        contains(github.event.head_commit.message, '[public dates]') ||
        contains(github.event.head_commit.message, '[regional probe]') ||
-       contains(github.event.head_commit.message, '[social access]'))
+       contains(github.event.head_commit.message, '[social access]') ||
+       contains(github.event.head_commit.message, '[social browser]'))
     runs-on: ubuntu-latest
     timeout-minutes: 22
     permissions:
@@ -116,7 +117,7 @@ jobs:
         if: contains(github.event.head_commit.message, '[public sources]')
         run: python -m scripts.public_sources_probe
       - name: Comprobar el recolector gratuito mediante la interfaz y el SDK de la app
-        if: '!contains(github.event.head_commit.message, ''[public dates]'') && !contains(github.event.head_commit.message, ''[regional probe]'') && !contains(github.event.head_commit.message, ''[social access]'')'
+        if: '!contains(github.event.head_commit.message, ''[public dates]'') && !contains(github.event.head_commit.message, ''[regional probe]'') && !contains(github.event.head_commit.message, ''[social access]'') && !contains(github.event.head_commit.message, ''[social browser]'')'
         run: node scripts/observe_public_sources.mjs
       - name: Contrastar fechas literales de las dos ofertas del piloto
         if: contains(github.event.head_commit.message, '[public dates]')
@@ -127,6 +128,9 @@ jobs:
       - name: Diagnosticar lectura pública de canales sociales institucionales sin iniciar sesión
         if: contains(github.event.head_commit.message, '[social access]')
         run: python -m scripts.social_access_probe
+      - name: Comprobar dos perfiles públicos de Facebook con navegador sin credenciales
+        if: contains(github.event.head_commit.message, '[social browser]')
+        run: python -m scripts.social_browser_probe
       - name: Conservar resultados y bloqueos
         if: always()
         uses: actions/upload-artifact@v4

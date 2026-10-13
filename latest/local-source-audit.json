@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.local-source-audit.v1",
-  "checked_at": "2026-10-13T02:35:26.524928+00:00",
+  "checked_at": "2026-10-13T02:57:23.200244+00:00",
   "source_access": [
     {
       "key": "omil-angol",
@@ -339,20 +339,8 @@
       "family": "social",
       "url": "https://www.instagram.com/radionativacl/",
       "territory": "Lumaco",
-      "access": "login_or_public_content_unavailable",
-      "http": 200,
-      "final_url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F&is_from_rle",
-      "page_title": "InstagramDown chevron icon",
-      "candidate_links": [],
-      "social_links_from_page": [
-        "https://www.facebook.com/help/instagram/261704639352628",
-        "https://www.instagram.com/explore/locations/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
-        "https://www.instagram.com/legal/privacy/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
-        "https://www.instagram.com/legal/terms/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
-        "https://www.instagram.com/popular/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
-        "https://www.instagram.com/web/lite/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F"
-      ],
-      "source_published_at": null
+      "access": "unavailable",
+      "reason": "HTTP 429"
     },
     {
       "key": "cmpc",
@@ -443,26 +431,8 @@
       "territory": "Malleco",
       "discovered_from": "https://www.malleco7.cl/",
       "scope": "public_read_only_probe; no paid target added",
-      "access": "login_or_public_content_unavailable",
-      "http": 200,
-      "final_url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2FMalleco7",
-      "page_title": "Facebook",
-      "candidate_links": [],
-      "social_links_from_page": [
-        "https://www.facebook.com/about/",
-        "https://www.facebook.com/ad_campaign/landing.php?campaign_id=402047449186&extra_1=auto&nav_source=unknown&placement=pflo",
-        "https://www.facebook.com/careers/?ref=pf",
-        "https://www.facebook.com/help/568137493302217",
-        "https://www.facebook.com/help/637205020878504",
-        "https://www.facebook.com/help/?ref=pf",
-        "https://www.facebook.com/lite/",
-        "https://www.facebook.com/pages/create/?ref_type=site_footer",
-        "https://www.facebook.com/policies/cookies/",
-        "https://www.facebook.com/policies?ref=pf",
-        "https://www.facebook.com/privacy/center/?entry_point=facebook_page_footer",
-        "https://www.facebook.com/privacy/policy/?entry_point=facebook_page_footer"
-      ],
-      "source_published_at": null
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
     }
   ],
   "candidates": [

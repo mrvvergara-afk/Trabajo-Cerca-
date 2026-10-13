@@ -1,0 +1,1119 @@
+{
+  "schema": "trabajo-cerca.local-source-audit.v1",
+  "checked_at": "2026-10-13T02:57:23.200244+00:00",
+  "source_access": [
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "family": "municipal",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "access": "unavailable",
+      "reason": "HTTP 403"
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "family": "municipal",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.munilumaco.cl/",
+      "page_title": "Municipalidad de Lumaco",
+      "candidate_links": [
+        {
+          "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "title": "Llamados a concurso público",
+          "kind": "page"
+        }
+      ],
+      "social_links_from_page": [],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "family": "municipal",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.munilossauces.cl/noticias",
+      "page_title": "Municipalidad Los Sauces",
+      "candidate_links": [],
+      "social_links_from_page": [],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "family": "municipal",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "territory": "Traiguén",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "page_title": "Dirección de Fomento Productivo - Ilustre Municipalidad de TraiguénHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteContraste negativoFondo claroSubrayar enlacesFuente legibleRestablecer",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/munitraiguen/",
+        "https://www.instagram.com/munitraiguen"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-renaico",
+      "name": "Municipalidad / OMIL Renaico",
+      "family": "municipal",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "page_title": "Postulaciones a cargos públicos - Municipalidad de RenaicoHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteSubrayar enlacesRestablecer",
+      "candidate_links": [
+        {
+          "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+          "title": "DESCARGAR LLAMADO A CONCURSO PÚBLICO INTERNO",
+          "kind": "document"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/municipalidadrenaico",
+        "https://www.instagram.com/gonzalo.fotos/",
+        "https://www.instagram.com/munirenaico/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "family": "municipal",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.nacimiento.cl/noticias",
+      "page_title": "Nacimiento",
+      "candidate_links": [],
+      "social_links_from_page": [],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-negrete",
+      "name": "Municipalidad / OMIL Negrete",
+      "family": "municipal",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.muninegrete.cl/",
+      "page_title": "Ilustre Municipalidad de Negrete",
+      "candidate_links": [
+        {
+          "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+          "title": "Oficina Municipal de Intermediación Laboral (OMIL)",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+          "title": "¡YA ESTÁN ABIERTAS LAS POSTULACIONES PARA PUESTOS DE VENTA EN FIESTAS PATRIAS 2026!",
+          "kind": "page"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/MuniNegreteCL",
+        "https://www.instagram.com/muninegrete/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "family": "municipal",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "territory": "Mulchén",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "page_title": "oferta laboral | Resultados de la búsqueda  |",
+      "candidate_links": [
+        {
+          "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+          "title": "Bases de Postulación Feria Navideña 2025",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+          "title": "Concurso Público – Abogado Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Dispositivo Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+          "title": "Concurso Público – Profesional Equipo Previene",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-psicologo-omil/",
+          "title": "Concurso Público – Psicólogo OMIL",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/",
+          "title": "CONCURSO PÚBLICO 01 Cargo, Grado 8º Planta Directivos, Director de Obras Municipales",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/",
+          "title": "Llamado a Concurso para proveer cargo de Director de Control",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-3/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/",
+          "title": "Llamado a Concurso Público – Directivo Grado 6 E.M.R. (Dirección de Control Interno)",
+          "kind": "page"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/munimulchen",
+        "https://www.instagram.com/municipalidaddemulchen"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "family": "municipal",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "page_title": "Concursos Públicos - I. Municipalidad de Collipulli",
+      "candidate_links": [
+        {
+          "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+          "title": "Concursos Públicos",
+          "kind": "page"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-914-DEL-22.04.2026-LLAMADO-CONCURSO-OMIL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N%C2%B0-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Decreto-deroga-bases-concursos-publicos.pdf",
+          "title": "Descargar Decreto Deroga Bases Concursos Públicos",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2023/09/Bases-concurso-publico-tecnico-grado-15%C2%B0.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "http://municipalidadcollipulli.cl/wp-content/uploads/2016/11/Decreto-concurso-publico.pdf",
+          "title": "Decreto Aclaratorio",
+          "kind": "document"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/MunicipalidadCollipulli",
+        "https://www.instagram.com/Municipalidad_Collipulli/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "family": "media",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página pública con título MALLECO 7, leída el 2026-10-12 (Chile).",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.malleco7.cl/",
+      "page_title": "MALLECO 7 - En el corazón de nuestra gente",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/Malleco7",
+        "https://www.instagram.com/gonzalo.fotos/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "radio-mininco",
+      "name": "Radio Mininco",
+      "family": "media",
+      "url": "https://www.radiomininco.cl/",
+      "territory": "Mininco",
+      "identity_requires_check": true,
+      "access": "unavailable",
+      "reason": "URLError"
+    },
+    {
+      "key": "radio-nativa",
+      "name": "Radio Nativa",
+      "family": "media",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.radionativa.cl/",
+      "page_title": "✓ Radio Nativa | Inicio",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://instagram.com/radionativacl",
+        "https://www.facebook.com/radionativacl"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "radio-sur-collipulli",
+      "name": "Radio del Sur",
+      "family": "media",
+      "url": "https://www.radiodelsur.cl/",
+      "territory": "Collipulli",
+      "identity_requires_check": true,
+      "identity_note": "El sitio devuelve SUREÑA RADIO Y TELEVISIÓN; falta acreditar su vínculo territorial con Collipulli.",
+      "access": "unavailable",
+      "reason": "redirect_outside_publisher"
+    },
+    {
+      "key": "social-angol",
+      "name": "Municipalidad de Angol · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "territory": "Angol",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "key": "social-lumaco",
+      "name": "Municipalidad de Lumaco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "key": "social-radio-nativa",
+      "name": "Radio Nativa · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/radionativacl/",
+      "territory": "Lumaco",
+      "access": "unavailable",
+      "reason": "HTTP 429"
+    },
+    {
+      "key": "cmpc",
+      "name": "CMPC · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.cmpc.com/",
+      "territory": "zona forestal",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.cmpc.com/",
+      "page_title": "CMPC » Desde una empresa del fin del mundo… a una empresa del mundo",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/SomosCMPC/",
+        "https://www.instagram.com/somoscmpc/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "arauco",
+      "name": "Arauco · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.arauco.com/",
+      "territory": "zona forestal",
+      "access": "unavailable",
+      "reason": "redirect_outside_publisher"
+    },
+    {
+      "key": "social-traiguen",
+      "name": "Municipalidad de Traiguén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munitraiguen/",
+      "territory": "Traiguén",
+      "discovered_from": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "scope": "public_read_only_probe; no paid target added",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "key": "social-renaico",
+      "name": "Municipalidad de Renaico · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadrenaico",
+      "territory": "Renaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "scope": "public_read_only_probe; no paid target added",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "key": "social-negrete",
+      "name": "Municipalidad de Negrete · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MuniNegreteCL",
+      "territory": "Negrete",
+      "discovered_from": "https://www.muninegrete.cl/",
+      "scope": "public_read_only_probe; no paid target added",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "key": "social-mulchen",
+      "name": "Municipalidad de Mulchén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munimulchen",
+      "territory": "Mulchén",
+      "discovered_from": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "scope": "public_read_only_probe; no paid target added",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "key": "social-collipulli",
+      "name": "Municipalidad de Collipulli · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MunicipalidadCollipulli",
+      "territory": "Collipulli",
+      "discovered_from": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "scope": "public_read_only_probe; no paid target added",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "key": "social-malleco7",
+      "name": "Malleco 7 · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/Malleco7",
+      "territory": "Malleco",
+      "discovered_from": "https://www.malleco7.cl/",
+      "scope": "public_read_only_probe; no paid target added",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    }
+  ],
+  "candidates": [
+    {
+      "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+      "title": "Llamados a concurso público",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Lumaco",
+      "source_key": "omil-lumaco",
+      "family": "municipal",
+      "territory_hint": "Lumaco",
+      "published": false
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Renaico",
+      "source_key": "omil-renaico",
+      "family": "municipal",
+      "territory_hint": "Renaico",
+      "published": false
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "title": "DESCARGAR LLAMADO A CONCURSO PÚBLICO INTERNO",
+      "kind": "document",
+      "source": "Municipalidad / OMIL Renaico",
+      "source_key": "omil-renaico",
+      "family": "municipal",
+      "territory_hint": "Renaico",
+      "published": false
+    },
+    {
+      "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+      "title": "Oficina Municipal de Intermediación Laboral (OMIL)",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Negrete",
+      "source_key": "omil-negrete",
+      "family": "municipal",
+      "territory_hint": "Negrete",
+      "published": false
+    },
+    {
+      "url": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+      "title": "¡YA ESTÁN ABIERTAS LAS POSTULACIONES PARA PUESTOS DE VENTA EN FIESTAS PATRIAS 2026!",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Negrete",
+      "source_key": "omil-negrete",
+      "family": "municipal",
+      "territory_hint": "Negrete",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "title": "Bases de Postulación Feria Navideña 2025",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+      "title": "Concurso Público – Abogado Centro de las Mujeres Mulchén",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+      "title": "Concurso Público – Abogado para Centro de las Mujeres Mulchén",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+      "title": "Concurso Público – Abogado para Dispositivo Centro de las Mujeres Mulchén",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+      "title": "Concurso Público – Profesional Equipo Previene",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-psicologo-omil/",
+      "title": "Concurso Público – Psicólogo OMIL",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/",
+      "title": "CONCURSO PÚBLICO 01 Cargo, Grado 8º Planta Directivos, Director de Obras Municipales",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/",
+      "title": "Llamado a Concurso para proveer cargo de Director de Control",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-3/",
+      "title": "LLAMADO A CONCURSO PUBLICO",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico/",
+      "title": "LLAMADO A CONCURSO PUBLICO",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/",
+      "title": "LLAMADO A CONCURSO PUBLICO",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/",
+      "title": "Llamado a Concurso Público – Directivo Grado 6 E.M.R. (Dirección de Control Interno)",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "title": "Concursos Públicos",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Collipulli",
+      "source_key": "omil-collipulli",
+      "family": "municipal",
+      "territory_hint": "Collipulli",
+      "published": false
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-914-DEL-22.04.2026-LLAMADO-CONCURSO-OMIL.pdf",
+      "title": "Descargar Bases",
+      "kind": "document",
+      "source": "Municipalidad / OMIL Collipulli",
+      "source_key": "omil-collipulli",
+      "family": "municipal",
+      "territory_hint": "Collipulli",
+      "published": false
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N%C2%B0-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+      "title": "Descargar Bases",
+      "kind": "document",
+      "source": "Municipalidad / OMIL Collipulli",
+      "source_key": "omil-collipulli",
+      "family": "municipal",
+      "territory_hint": "Collipulli",
+      "published": false
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Decreto-deroga-bases-concursos-publicos.pdf",
+      "title": "Descargar Decreto Deroga Bases Concursos Públicos",
+      "kind": "document",
+      "source": "Municipalidad / OMIL Collipulli",
+      "source_key": "omil-collipulli",
+      "family": "municipal",
+      "territory_hint": "Collipulli",
+      "published": false
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2023/09/Bases-concurso-publico-tecnico-grado-15%C2%B0.pdf",
+      "title": "Descargar Bases",
+      "kind": "document",
+      "source": "Municipalidad / OMIL Collipulli",
+      "source_key": "omil-collipulli",
+      "family": "municipal",
+      "territory_hint": "Collipulli",
+      "published": false
+    },
+    {
+      "url": "http://municipalidadcollipulli.cl/wp-content/uploads/2016/11/Decreto-concurso-publico.pdf",
+      "title": "Decreto Aclaratorio",
+      "kind": "document",
+      "source": "Municipalidad / OMIL Collipulli",
+      "source_key": "omil-collipulli",
+      "family": "municipal",
+      "territory_hint": "Collipulli",
+      "published": false
+    }
+  ],
+  "evidence": [
+    {
+      "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+      "title": "Llamados a concurso público",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Lumaco",
+      "source_key": "omil-lumaco",
+      "family": "municipal",
+      "territory_hint": "Lumaco",
+      "published": false,
+      "final_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+      "http": 200,
+      "page": {
+        "title": "Llamados a concurso público",
+        "text": "Bases Jefatura grado 8°\n \nBases Profesional grado 12°\n \nAnexo 1\n \nAnexo 2\n \nDecreto que aprueba llamado a concurso y bases",
+        "candidates": [
+          {
+            "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+            "title": "Open menu",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [],
+        "images": [
+          "https://www.munilumaco.cl/images/465.png#joomlaImage://local-images/465.png?width=629&height=758",
+          "https://www.munilumaco.cl/images/searchButton.gif",
+          "https://www.munilumaco.cl/images/muni%20lumaco/ban_ta.png",
+          "https://www.munilumaco.cl/images/muni%20lumaco/ban_si.png",
+          "https://www.munilumaco.cl/images/muni%20lumaco/ban_lobby.png",
+          "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "https://www.munilumaco.cl/images/muni%20lumaco/asd.png",
+          "https://www.munilumaco.cl/images/muni%20lumaco/app_ico.png"
+        ],
+        "source_published_at": null
+      },
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "fecha_original"
+        ],
+        "hiring_language": false,
+        "published": false
+      },
+      "public_attachments": [
+        {
+          "text": "LLAMADO A\n»\n“E | República de Chile CONCURSO PÚBLICO\nKy Región de La Araucanía 7\nVe llustre Municipalidad Llámase a concurso público para\ngy) de Lumaco proveer, en calidad de planta, los\n= siguientes cargos:\n[Vacantes ] cargo | Escalatón | Grado |\na [vetado Tuismoy Medioambiente] Jefatura | 8\nRequisitos y antecedentes: Los establecidos en las leyes N° 18.883 y N° 18.575,\nen el Reglamento que modifica la Planta de Personal Yo019) y en las respectivas\nbases del concurso.\nRetiro de Bases: Entre el 17 y el 29 de julio de 2026, en Oficina de Partes (N° 19),\nen días hábiles, entre las 08:15 y las 14:00 horas, o a través del sitio web\nwww.munilumaco.cl.\nRecepción de postulaciones: Entre el 17 y el 29 de julio de 2026, en Oficina\nde Partes (N° 19), en días hábiles, entre las 08:15 y las 14:00 horas,\nEntrevista: Entre el 03 y el 05 de agosto de 2026.\nResolución del concurso: 07 de agosto de 2026.\nDirección: Calle Arturo Prat N* 506, cuidad de Lumaco, comuna de Lumaco.\nPublicación efectuada en conformidad con el artículo 18 de la Ley 18.883,\nEstatuto Administrativo para Funcionarios Municipales.",
+          "mean_confidence": 89.6,
+          "language": "spa+eng",
+          "engine": "tesseract-local",
+          "parser": "tesseract-tsv-literal-v2",
+          "url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "final_url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "mime": "image/jpeg",
+          "http_status": 200,
+          "bytes": 213229,
+          "sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+          "fields": {
+            "role": null,
+            "company": null,
+            "workplace_evidence": null,
+            "work_communes": [],
+            "emails": [],
+            "phones": [],
+            "source_published_at": null,
+            "missing": [
+              "cargo",
+              "empresa",
+              "lugar_real",
+              "contacto",
+              "fecha_original"
+            ],
+            "hiring_language": true,
+            "published": false
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "title": "DESCARGAR LLAMADO A CONCURSO PÚBLICO INTERNO",
+      "kind": "document",
+      "source": "Municipalidad / OMIL Renaico",
+      "source_key": "omil-renaico",
+      "family": "municipal",
+      "territory_hint": "Renaico",
+      "published": false,
+      "text": "| MUNICIPALIDAD DE RENAICO |\nDEPARTAMENTO DE SALUD |\n|\n| LLAMADO A CONCURSO PUBLICO INTERNO |\n[En conformidad al artículo 2 de la ley 21.308 se llama a concurso publico |\ninterno para regularizar la dotación del personal contemplado en la ley 19.378\nREQUISITOS DE POSTULACIÓN:\n= Los requisitos de postulación serán los contemplados en la ley 19.378 y\nlos señalados en las bases del concurso\n|\n\"Los antecedentes requeridos son los señalados en las páginas N°4 y N*5\nde las bases del concurso.\n|\nENTREGA DE BASES Y RECEPCION DE ANTECEDENTES:\n= Las bases podrán solicitarse en la oficina de partes de la municipalidad\nde Renaico, ubicada en calle comercio N° 287 de la comuna de Renaico\ndesde el día 22 de Septiembre de 2023 en adelante desde las 08:30\nhasta 16:00Hrs.\n= La recepción de antecedentes se hará desde el día 25 de Septiembre\n2023 al 06 de Octubre 2023 desde las 08:30 A.M a 14:00 P.M y de 15:00\nP.M a 16:00 P.M de Lunes a Viernes.\nRESOLUCION DEL CONCURSO\n|\n* Decreto alcaldicio exento N°2463 de fecha 12 de Septiembre que]\naprueba las bases del presente concurso. |\n| LA ES\n| a_i |\n| ALCALDE (S) en FA. |\nMUNICIPALIDAD DE RENAICO ES |\n= in A\nScanned by TapScanner",
+      "mean_confidence": 91.6,
+      "language": "spa+eng",
+      "engine": "tesseract-local",
+      "parser": "tesseract-tsv-literal-v2",
+      "pages_limit": 1,
+      "final_url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "mime": "application/pdf",
+      "http_status": 200,
+      "bytes": 182246,
+      "sha256": "dac8226bc7627eed6aa728ff9a4bef94cf6c8bbd72591caeb1e9642131357b58",
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false
+      }
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+      "title": "Concurso Público – Abogado Centro de las Mujeres Mulchén",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false,
+      "final_url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+      "http": 200,
+      "page": {
+        "title": "Concurso Público – Abogado Centro de las Mujeres Mulchén |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Concurso Público - Abogado Centro de las Mujeres Mulchén\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nLa Ilustre Municipalidad de Mulchén, en convenio con el Servicio Nacional de la Mujer y la Equidad de Género Región del Biobío, invita a presentar antecedentes para proveer el cargo de Abogado/a (44 horas) para el Centro de las Mujeres de Mulchén, en el marco del Programa Atención Inicial de las Violencias de Género.\nEsta convocatoria busca profesionales comprometidos con la promoción de los derechos de las mujeres y el acompañamiento jurídico en materias relacionadas con violencia de género.\nRecepción de antecedentes\nFecha: Desde el 16 al 23 de junio de 2026.\nHorario: 08:15 a 14:00 horas.\nLugar: Oficina de Partes de la Municipalidad de Mulchén, Aníbal Pinto #495, primer piso.\nBases y requisitos\nRevisa las bases completas, requisitos del cargo y documentación solicitada en el siguiente enlace:\nVer Bases del Concurso\nInvitamos a las y los profesionales interesados a participar de este proceso de selección y a compartir esta información para que llegue a más personas.\n \n \n \n \n \n \n \n \n \n \nDocumentos relacionados\n \n \n \n \nBases llamado a Concurso\n \n \n \n \nDecreto que Aprueba Bases\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "candidates": [
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+            "title": "Clinica Veterinaria Municipal",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/bases-llamado-a-concurso-para-proveer-el-cargo-de-Abogadoa-44-horas-para-CDM-FIRMADAS.pdf",
+            "title": "Bases llamado a Concurso",
+            "kind": "document"
+          }
+        ],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "images": [
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/twitter.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo-trans.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo1.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo2.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo3.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo4.jpg",
+          "https://www.munimulchen.cl/wp-content/uploads/2026/06/Concurso-Publico-Slider-Movil.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/mulchen.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png"
+        ],
+        "source_published_at": null
+      },
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false
+      },
+      "public_attachments": [
+        {
+          "text": "Llamadoa coe\nCONCURSO\nPÚBLICO",
+          "mean_confidence": 54.3,
+          "language": "spa+eng",
+          "engine": "tesseract-local",
+          "parser": "tesseract-tsv-literal-v2",
+          "url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/Concurso-Publico-Slider-Movil.png",
+          "final_url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/Concurso-Publico-Slider-Movil.png",
+          "mime": "image/png",
+          "http_status": 200,
+          "bytes": 125265,
+          "sha256": "68d6d6d2ac306da6854c574612f99f649bff7e5e885a9dd14112e9b730d0ccfe",
+          "fields": {
+            "role": null,
+            "company": null,
+            "workplace_evidence": null,
+            "work_communes": [],
+            "emails": [],
+            "phones": [],
+            "source_published_at": null,
+            "missing": [
+              "cargo",
+              "empresa",
+              "lugar_real",
+              "contacto",
+              "fecha_original"
+            ],
+            "hiring_language": false,
+            "published": false
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+      "title": "Concurso Público – Abogado para Centro de las Mujeres Mulchén",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false,
+      "final_url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+      "http": 200,
+      "page": {
+        "title": "Concurso Público – Abogado para Centro de las Mujeres Mulchén |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Concurso Público - Abogado para Centro de las Mujeres Mulchén\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nLa Ilustre Municipalidad de Mulchén, en convenio con el Servicio Nacional de la Mujer y la Equidad de Género Región del Biobío, llama a presentar antecedentes para proveer el cargo (1) de Abogado/a 44 horas para Dispositivo Centro de las Mujeres de Mulchén.\nPROGRAMA ATENCIÓN INICIAL DE LAS VIOLENCIAS DE GÉNERO\nCENTRO DE LAS MUJERES\nREQUISITOS DEL CARGO:\n• Título profesional de Abogada/o, otorgado por la Excelentísima Corte Suprema de Chile.\n• Experiencia y/o conocimiento en legislación internacional y nacional de violencia contra la mujer, derecho penal, familia y litigación en reforma\nprocesal penal y Tribunales de Familia.\n• Experiencia como mínimo dos años en trabajo comunitario y/o atención a grupos vulnerables, especialmente mujeres.\n• Contar como mínimo un año de experiencia acreditable, como Abogado/a, en tramitación de causas de familia y penales.\n• Conocimientos en Enfoque de Derechos Humanos y Género.\n• Deseable experiencia en intervención con mujeres sobrevivientes de violencia, que considere intervención en crisis de primer orden y manejo de intervención grupal.\n• Deseable especialización en violencias de género.\n• Deseable experiencia en trabajo en redes y/u organizaciones locales.\n• Conocimiento y manejo de tecnologías en computación y programas informáticos básicos a nivel usuario/a (Excel, Power Point, Word, etc.)\n• No haber tenido una evaluación deficiente en cargo similar en programas SernamEG.\n \n \n \n \n \n \n \n \n \n \nDocumentos relacionados\n \n \n \n \nLlamado a Presentación de Antecedentes - Abogado Centro de las Mujeres\n \n \n \n \nDecreto que aprueba las Bases\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "candidates": [
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+            "title": "Clinica Veterinaria Municipal",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.munimulchen.cl/wp-content/uploads/2026/01/bases-vacantes-1.pdf",
+            "title": "Llamado a Presentación de Antecedentes - Abogado Centro de las Mujeres",
+            "kind": "document"
+          }
+        ],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "images": [
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/twitter.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo-trans.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo1.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo2.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo3.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo4.jpg",
+          "https://www.munimulchen.cl/wp-content/uploads/2024/09/concurso-publico.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/mulchen.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png"
+        ],
+        "source_published_at": null
+      },
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": "redes y/u organizaciones locales.",
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false
+      }
+    },
+    {
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+      "title": "Concurso Público – Abogado para Dispositivo Centro de las Mujeres Mulchén",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false,
+      "final_url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+      "http": 200,
+      "page": {
+        "title": "Concurso Público – Abogado para Dispositivo Centro de las Mujeres Mulchén |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Concurso Público - Abogado para Dispositivo Centro de las Mujeres Mulchén\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nLa Ilustre Municipalidad de Mulchén, en convenio con el Servicio Nacional de la Mujer y la Equidad de Género Región del Biobío, llama a presentar antecedentes para proveer el cargo (1) de Abogado/a 44 horas para Dispositivo Centro de las Mujeres de Mulchén.\n“PROGRAMA ATENCIÓN INICIAL DE LAS VIOLENCIAS DE GÉNERO\nCENTRO DE LAS MUJERES”\nREQUISITOS DEL CARGO:\nTítulo profesional de Abogada/o, otorgado por la Excelentísima Corte Suprema de Chile.\nExperiencia y/o conocimiento acreditable en legislación internacional y nacional de violencia contra la mujer, derecho penal, familia y litigación en reforma procesal penal y Tribunales de Familia.\nExperiencia como mínimo un año en trabajo comunitario y/o atención a grupos vulnerables, especialmente mujeres.\nContar como mínimo un año de experiencia acreditable, como Abogado/a, en tramitación de causas de familia y penales, especialmente causas asociadas a violencia de Género (violencia de género hacia las mujeres o sus diversidades de sus parejas, ex parejas, padres de hijo en común, cónyuges o ex cónyuges).\nConocimientos en Enfoque de Derechos Humanos y Género. Presentar certificado de diplomados, magíster, cursos o seminarios.\nDeseable experiencia en intervención con mujeres sobrevivientes de violencia, que considere intervención en crisis de primer orden y manejo de intervención grupal, acreditable.\nDeseable especialización en violencias de género (diplomados, magíster, cursos o seminarios).\nDeseable experiencia en trabajo en redes y/u organizaciones locales.\nConocimiento y manejo de tecnologías en computación y programas informáticos básicos a nivel usuario/a (Excel, Power Point, Word, etc.).\nNo haber tenido una evaluación deficiente en cargo similar en programas SernamEG.\n \n \n \n \n \n \n \n \n \n \nDocumentos relacionados\n \n \n \n \nBases Concurso Público - Abogado para Dispositivo Centro de las Mujeres Mulchén\n \n \n \n \nDecreto Alcaldicio que aprueba bases\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "candidates": [
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+            "title": "Clinica Veterinaria Municipal",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.munimulchen.cl/wp-content/uploads/2026/02/bases-vacantes-3.pdf",
+            "title": "Bases Concurso Público - Abogado para Dispositivo Centro de las Mujeres Mulchén",
+            "kind": "document"
+          }
+        ],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "images": [
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/twitter.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo-trans.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo1.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo2.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo3.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo4.jpg",
+          "https://www.munimulchen.cl/wp-content/uploads/2024/09/concurso-publico.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/mulchen.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png"
+        ],
+        "source_published_at": null
+      },
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": "redes y/u organizaciones locales.",
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false
+      }
+    },
+    {
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+      "title": "Concurso Público – Profesional Equipo Previene",
+      "kind": "page",
+      "source": "Municipalidad / OMIL Mulchén",
+      "source_key": "omil-mulchen",
+      "family": "municipal",
+      "territory_hint": "Mulchén",
+      "published": false,
+      "final_url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+      "http": 200,
+      "page": {
+        "title": "Concurso Público – Profesional Equipo Previene |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Concurso Público - Profesional Equipo Previene\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nObjetivo del cargo\nApoyar la adecuada implementación del sistema de gestión local para la reducción de la demanda del consumo de drogas, a través de la efectiva ejecución de la oferta programática SENDA asignada a la comuna. Dicha implementación deberá realizarse ajustada a los diseños y lineamientos técnicos desarrollados por SENDA con una implementación sistémica, integrada, orientada a las personas, alineada con los objetivos institucionales y con pertinencia territorial.\n \nNivel educacional requerido\nTítulo profesional de una carrera de al menos 10 semestres de duración, otorgado por una universidad o instituto profesional del Estado o reconocido por éste o aquellos validados en Chile de acuerdo a la legislación vigente, de las ciencias sociales. Experiencia previa profesional de al menos 1 año en sector público o privado. \nTítulo profesional de una carrera de, al menos 8 semestres de duración, otorgado por una universidad o instituto profesional del Estado o reconocido por éste o aquellos validados en Chile de acuerdo a la legislación vigente, de las ciencias sociales. Experiencia previa de profesional de al menos 1 año en el sector público o privado. \n \nEstudios académicos\nDe preferencia carreras del área de las ciencias sociales como, por ejemplo:\n– Psicología\n– Trabajo Social\n– Sociología\nOtras afines: docente, educador, educador social, antropólogo, terapeuta ocupacional.\n \n \n \n \n \n \n \n \n \n \nDocumentos relacionados\n \n \n \n \nCONCURSO PÚBLICO CARGO PROFESIONAL COMUNAL - SENDA REGIONAL\n \n \n \n \nAnexo 1: Ficha de postulación Concurso Público\n \n \n \n \nAnexo 2: Declaración Jurada Simple ley 18.883\n \n \n \n \nDeclaración Jurada no consumo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "candidates": [
+          {
+            "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+            "title": "Clinica Veterinaria Municipal",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.munimulchen.cl/wp-content/uploads/2025/06/CONCURSO-PUBLICO-CARGO-PROFESIONAL-COMUNAL-SENDA-REGIONAL.docx",
+            "title": "CONCURSO PÚBLICO CARGO PROFESIONAL COMUNAL - SENDA REGIONAL",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.munimulchen.cl/wp-content/uploads/2025/06/anexo-1-Ficha-de-postulacion-Concurso-Publico.pdf",
+            "title": "Anexo 1: Ficha de postulación Concurso Público",
+            "kind": "document"
+          }
+        ],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "images": [
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/twitter.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo-trans.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo1.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo2.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo3.jpg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo4.jpg",
+          "https://www.munimulchen.cl/wp-content/uploads/2024/09/concurso-publico.png",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/mulchen.svg",
+          "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png"
+        ],
+        "source_published_at": null
+      },
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false
+      }
+    }
+  ],
+  "coverage_complete": false,
+  "published": 0,
+  "paid_provider_calls": 0,
+  "unresolved_requested_sources": [
+    "Otras radios y diarios de las nueve comunas",
+    "Empresas agrícolas y forestales locales aún sin dirección identificada",
+    "Radio Mininco: la dirección de prueba no respondió; identificar su canal verdadero sin inventar un perfil"
+  ]
+}

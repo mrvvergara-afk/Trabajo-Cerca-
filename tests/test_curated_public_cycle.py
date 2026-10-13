@@ -75,9 +75,19 @@ class CuratedCycleTests(unittest.TestCase):
         row={'url':'https://www.facebook.com/municipio','territory':'Lumaco','discovered_from':'https://munilumaco.cl/'}
         for title, expected in [('Log in to Facebook','login_required'),('Municipio','no_readable_posts')]:
             raw=('<title>'+title+'</title><input value="private-cookie"><script>token="private-token"</script>').encode()
-            result=social_access_probe.inspect_channel(row,Budget(5),fetcher=lambda *a:(raw,row['url'],'text/html',200))
+            result=social_access_probe.inspect_channel(row,Budget(5),fetcher=lambda *a,**k:(raw,row['url'],'text/html',200))
             self.assertEqual(result['access'],expected);self.assertFalse(result['coverage_complete'])
             self.assertNotIn('private-token',json.dumps(result));self.assertNotIn('private-cookie',json.dumps(result))
+
+    def test_large_social_shell_has_a_separate_byte_bound_and_is_not_an_access_denial(self):
+        row={'url':'https://www.facebook.com/municipio'}
+        calls=[]
+        def fetcher(url,budget,**kwargs):
+            calls.append(kwargs['max_bytes'])
+            return b'<title>Municipio</title><script>'+b' '*900001+b'</script>',url,'text/html',200
+        result=social_access_probe.inspect_channel(row,Budget(5),fetcher=fetcher)
+        self.assertEqual(calls,[4*1024*1024]);self.assertGreater(result['bytes'],900000)
+        self.assertEqual(result['access'],'no_readable_posts');self.assertFalse(result['coverage_complete'])
 
 
 if __name__ == '__main__':unittest.main()

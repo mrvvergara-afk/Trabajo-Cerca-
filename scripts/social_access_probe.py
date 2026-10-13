@@ -7,6 +7,8 @@ from .common import Budget, canonical_url, decode_public_html, utcnow, write_jso
 from .local_source_audit import Document, fetch_public, public_social_url, source_error
 from .radar import SOURCE_CONFIG
 
+MAX_PROFILE_BYTES = 4 * 1024 * 1024
+
 
 def channels(path=SOURCE_CONFIG):
     seen, rows = set(), []
@@ -23,7 +25,7 @@ def channels(path=SOURCE_CONFIG):
 def inspect_channel(row, budget, fetcher=fetch_public):
     result = {**row, 'read_only':True,'paid_provider_calls':0,'coverage_complete':False}
     try:
-        raw, final, mime, status = fetcher(row['url'], budget)
+        raw, final, mime, status = fetcher(row['url'], budget, max_bytes=MAX_PROFILE_BYTES)
         result.update(http_status=status, bytes=len(raw), mime=mime)
         if status != 200 or mime not in ('text/html','application/xhtml+xml'):
             return {**result,'access':'unavailable','reason':'public_page_unavailable'}

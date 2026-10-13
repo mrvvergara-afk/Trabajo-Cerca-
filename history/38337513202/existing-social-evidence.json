@@ -1,0 +1,198 @@
+{
+  "items": [
+    {
+      "id": "bb969334-59d4-4ef5-b840-e248ae266d88",
+      "sourceKey": "lumaco-municipio",
+      "sourceName": "Municipalidad de Lumaco",
+      "sourceUrl": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco · Capitán Pastene",
+      "status": "processed",
+      "capturedAt": "2026-10-07T23:10:24.559Z",
+      "processedAt": "2026-10-10T10:31:19.619Z",
+      "posts": 12,
+      "postCursor": 12,
+      "mediaCursor": 0,
+      "images": 42,
+      "imagesRead": 36,
+      "jobNotices": 0,
+      "textPostsRead": 4,
+      "findingsKnown": true,
+      "findingsTotal": 0,
+      "findingsTruncated": false,
+      "findings": []
+    },
+    {
+      "id": "c1500f4b-498b-47bf-b23c-c50f9e875797",
+      "sourceKey": "angol-municipio",
+      "sourceName": "Ilustre Municipalidad de Angol",
+      "sourceUrl": "https://www.facebook.com/municipalidad.angol/",
+      "territory": "Angol",
+      "status": "pending",
+      "capturedAt": "2026-10-08T23:10:23.587Z",
+      "processedAt": null,
+      "posts": null,
+      "postCursor": null,
+      "mediaCursor": null,
+      "images": null,
+      "imagesRead": null,
+      "jobNotices": null,
+      "textPostsRead": null,
+      "findingsKnown": false,
+      "findingsTotal": null,
+      "findingsTruncated": false,
+      "findings": []
+    },
+    {
+      "id": "cce502bf-f149-422f-ad43-ff10b9cc3057",
+      "sourceKey": "lumaco-municipio",
+      "sourceName": "Municipalidad de Lumaco",
+      "sourceUrl": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco · Capitán Pastene",
+      "status": "processed",
+      "capturedAt": "2026-10-06T22:36:20.007Z",
+      "processedAt": "2026-10-08T23:25:40.739Z",
+      "posts": 12,
+      "postCursor": 12,
+      "mediaCursor": null,
+      "images": 18,
+      "imagesRead": 15,
+      "jobNotices": 0,
+      "textPostsRead": null,
+      "findingsKnown": true,
+      "findingsTotal": 0,
+      "findingsTruncated": false,
+      "findings": []
+    },
+    {
+      "id": "db1622fe-b449-4616-b671-35fe5a3ffe1e",
+      "sourceKey": "lumaco-radio",
+      "sourceName": "Radio Nativa",
+      "sourceUrl": "https://www.facebook.com/RadioNativaCl/",
+      "territory": "Lumaco · Capitán Pastene",
+      "status": "processed",
+      "capturedAt": "2026-10-07T23:10:24.928Z",
+      "processedAt": "2026-10-12T09:31:18.377Z",
+      "posts": 12,
+      "postCursor": 12,
+      "mediaCursor": 0,
+      "images": 38,
+      "imagesRead": 36,
+      "jobNotices": 0,
+      "textPostsRead": 12,
+      "findingsKnown": true,
+      "findingsTotal": 0,
+      "findingsTruncated": false,
+      "findings": []
+    },
+    {
+      "id": "dfd6f758-d026-4bb0-98d0-85adbecd9641",
+      "sourceKey": "nacimiento-municipio",
+      "sourceName": "Municipalidad de Nacimiento",
+      "sourceUrl": "https://www.facebook.com/MunicipalidadDeNacimiento/",
+      "territory": "Nacimiento",
+      "status": "pending",
+      "capturedAt": "2026-10-08T23:10:24.631Z",
+      "processedAt": null,
+      "posts": null,
+      "postCursor": null,
+      "mediaCursor": null,
+      "images": null,
+      "imagesRead": null,
+      "jobNotices": null,
+      "textPostsRead": null,
+      "findingsKnown": false,
+      "findingsTotal": null,
+      "findingsTruncated": false,
+      "findings": []
+    },
+    {
+      "id": "f0e29bee-9e11-4c9c-a850-e7b568e2e462",
+      "sourceKey": "nacimiento-municipio",
+      "sourceName": "Municipalidad de Nacimiento",
+      "sourceUrl": "https://www.facebook.com/MunicipalidadDeNacimiento/",
+      "territory": "Nacimiento",
+      "status": "pending",
+      "capturedAt": "2026-10-07T23:10:25.205Z",
+      "processedAt": "2026-10-13T01:31:18.673Z",
+      "posts": 12,
+      "postCursor": 5,
+      "mediaCursor": 2,
+      "images": 27,
+      "imagesRead": 1,
+      "jobNotices": 0,
+      "textPostsRead": 6,
+      "findingsKnown": true,
+      "findingsTotal": 0,
+      "findingsTruncated": false,
+      "findings": []
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "runsReturned": 3,
+      "findingsReturned": 0,
+      "hasMore": true,
+      "runs": [
+        {
+          "source": "Municipalidad de Lumaco",
+          "status": "processed",
+          "posts": 12,
+          "imagesRead": 36,
+          "jobNotices": 0,
+          "findingsKnown": true
+        },
+        {
+          "source": "Ilustre Municipalidad de Angol",
+          "status": "pending",
+          "posts": null,
+          "imagesRead": null,
+          "jobNotices": null,
+          "findingsKnown": false
+        },
+        {
+          "source": "Municipalidad de Lumaco",
+          "status": "processed",
+          "posts": 12,
+          "imagesRead": 15,
+          "jobNotices": 0,
+          "findingsKnown": true
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "runsReturned": 3,
+      "findingsReturned": 0,
+      "hasMore": false,
+      "runs": [
+        {
+          "source": "Radio Nativa",
+          "status": "processed",
+          "posts": 12,
+          "imagesRead": 36,
+          "jobNotices": 0,
+          "findingsKnown": true
+        },
+        {
+          "source": "Municipalidad de Nacimiento",
+          "status": "pending",
+          "posts": null,
+          "imagesRead": null,
+          "jobNotices": null,
+          "findingsKnown": false
+        },
+        {
+          "source": "Municipalidad de Nacimiento",
+          "status": "pending",
+          "posts": 12,
+          "imagesRead": 1,
+          "jobNotices": 0,
+          "findingsKnown": true
+        }
+      ]
+    }
+  ],
+  "remaining_pages": false,
+  "coverage_complete": true
+}

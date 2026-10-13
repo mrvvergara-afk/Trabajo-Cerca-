@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.local-source-audit.v1",
-  "checked_at": "2026-10-13T02:23:17.929046+00:00",
+  "checked_at": "2026-10-13T02:35:26.524928+00:00",
   "source_access": [
     {
       "key": "omil-angol",
@@ -312,19 +312,8 @@
       "territory": "Collipulli",
       "identity_requires_check": true,
       "identity_note": "El sitio devuelve SUREÑA RADIO Y TELEVISIÓN; falta acreditar su vínculo territorial con Collipulli.",
-      "access": "public_page_read",
-      "http": 200,
-      "final_url": "https://www.radiodelsur.cl/",
-      "page_title": "SUREÑA RADIO Y TELEVISIÓN",
-      "candidate_links": [],
-      "social_links_from_page": [
-        "https://www.facebook.com/chile.poster",
-        "https://www.facebook.com/maurocerdaflores",
-        "https://www.facebook.com/radiodelsur.cl/",
-        "https://www.instagram.com/radiodelsur.cl",
-        "https://www.instagram.com/radiodelsur.cl/"
-      ],
-      "source_published_at": null
+      "access": "unavailable",
+      "reason": "redirect_outside_publisher"
     },
     {
       "key": "social-angol",
@@ -350,8 +339,20 @@
       "family": "social",
       "url": "https://www.instagram.com/radionativacl/",
       "territory": "Lumaco",
-      "access": "unavailable",
-      "reason": "HTTP 429"
+      "access": "login_or_public_content_unavailable",
+      "http": 200,
+      "final_url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F&is_from_rle",
+      "page_title": "InstagramDown chevron icon",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/help/instagram/261704639352628",
+        "https://www.instagram.com/explore/locations/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
+        "https://www.instagram.com/legal/privacy/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
+        "https://www.instagram.com/legal/terms/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
+        "https://www.instagram.com/popular/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F",
+        "https://www.instagram.com/web/lite/?next=https%3A%2F%2Fwww.instagram.com%2Fradionativacl%2F"
+      ],
+      "source_published_at": null
     },
     {
       "key": "cmpc",
@@ -748,7 +749,40 @@
         ],
         "hiring_language": false,
         "published": false
-      }
+      },
+      "public_attachments": [
+        {
+          "text": "LLAMADO A\n»\n“E | República de Chile CONCURSO PÚBLICO\nKy Región de La Araucanía 7\nVe llustre Municipalidad Llámase a concurso público para\ngy) de Lumaco proveer, en calidad de planta, los\n= siguientes cargos:\n[Vacantes ] cargo | Escalatón | Grado |\na [vetado Tuismoy Medioambiente] Jefatura | 8\nRequisitos y antecedentes: Los establecidos en las leyes N° 18.883 y N° 18.575,\nen el Reglamento que modifica la Planta de Personal Yo019) y en las respectivas\nbases del concurso.\nRetiro de Bases: Entre el 17 y el 29 de julio de 2026, en Oficina de Partes (N° 19),\nen días hábiles, entre las 08:15 y las 14:00 horas, o a través del sitio web\nwww.munilumaco.cl.\nRecepción de postulaciones: Entre el 17 y el 29 de julio de 2026, en Oficina\nde Partes (N° 19), en días hábiles, entre las 08:15 y las 14:00 horas,\nEntrevista: Entre el 03 y el 05 de agosto de 2026.\nResolución del concurso: 07 de agosto de 2026.\nDirección: Calle Arturo Prat N* 506, cuidad de Lumaco, comuna de Lumaco.\nPublicación efectuada en conformidad con el artículo 18 de la Ley 18.883,\nEstatuto Administrativo para Funcionarios Municipales.",
+          "mean_confidence": 89.6,
+          "language": "spa+eng",
+          "engine": "tesseract-local",
+          "parser": "tesseract-tsv-literal-v2",
+          "url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "final_url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "mime": "image/jpeg",
+          "http_status": 200,
+          "bytes": 213229,
+          "sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+          "fields": {
+            "role": null,
+            "company": null,
+            "workplace_evidence": null,
+            "work_communes": [],
+            "emails": [],
+            "phones": [],
+            "source_published_at": null,
+            "missing": [
+              "cargo",
+              "empresa",
+              "lugar_real",
+              "contacto",
+              "fecha_original"
+            ],
+            "hiring_language": true,
+            "published": false
+          }
+        }
+      ]
     },
     {
       "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
@@ -759,10 +793,11 @@
       "family": "municipal",
       "territory_hint": "Renaico",
       "published": false,
-      "text": "| MUNICIPALIDAD DE RENAICO |\nDEPARTAMENTO DE SALUD |\n|\n| LLAMADO A CONCURSO PUBLICO INTERNO |\n[En conformidad al artículo 2 de la ley 21.308 se llama a concurso publico |\ninterno para regularizar la dotación del personal contemplado en la ley 19.378\nREQUISITOS DE POSTULACIÓN:\n= Los requisitos de postulación serán los contemplados en la ley 19.378 y\nlos señalados en las bases del concurso\n|\nLos\n5\t1\t1\t1\t11\t2\t217\t657\t193\t25\t92.816841\tantecedentes\n5\t1\t1\t1\t11\t3\t422\t658\t152\t30\t96.954041\trequeridos\n5\t1\t1\t1\t11\t4\t585\t665\t47\t17\t96.980194\tson\n5\t1\t1\t1\t11\t5\t645\t658\t37\t24\t96.959312\tlos\n5\t1\t1\t1\t11\t6\t693\t657\t138\t25\t97.001884\tseñalados\n5\t1\t1\t1\t11\t7\t842\t664\t32\t17\t96.862907\ten\n5\t1\t1\t1\t11\t8\t887\t656\t36\t24\t97.017410\tlas\n5\t1\t1\t1\t11\t9\t935\t656\t105\t30\t93.290970\tpáginas\n5\t1\t1\t1\t11\t10\t1053\t655\t49\t23\t92.327370\tN°4\n5\t1\t1\t1\t11\t11\t1113\t661\t14\t23\t96.952942\ty\n5\t1\t1\t1\t11\t12\t1140\t653\t48\t24\t58.694515\tN*5\n4\t1\t1\t1\t12\t0\t159\t698\t367\t25\t-1\t\n5\t1\t1\t1\t12\t1\t159\t698\t34\t24\t97.001846\tde\n5\t1\t1\t1\t12\t2\t204\t698\t36\t24\t96.885574\tlas\n5\t1\t1\t1\t12\t3\t251\t698\t78\t25\t96.769096\tbases\n5\t1\t1\t1\t12\t4\t339\t699\t41\t24\t96.579773\tdel\n5\t1\t1\t1\t12\t5\t391\t706\t135\t17\t96.858452\tconcurso.\n4\t1\t1\t1\t13\t0\t46\t751\t3\t34\t-1\t\n5\t1\t1\t1\t13\t1\t46\t751\t3\t34\t72.568054\t|\n4\t1\t1\t1\t14\t0\t60\t777\t832\t31\t-1\t\n5\t1\t1\t1\t14\t1\t60\t782\t148\t25\t96.445587\tENTREGA\n5\t1\t1\t1\t14\t2\t219\t783\t40\t24\t96.712517\tDE\n5\t1\t1\t1\t14\t3\t271\t783\t97\t25\t93.242195\tBASES\n5\t1\t1\t1\t14\t4\t377\t783\t19\t25\t92.566940\tY\n5\t1\t1\t1\t14\t5\t407\t777\t175\t31\t92.566940\tRECEPCION\n5\t1\t1\t1\t14\t6\t594\t783\t38\t25\t93.274773\tDE\n5\t1\t1\t1\t14\t7\t642\t782\t250\t26\t91.813866\tANTECEDENTES:\n4\t1\t1\t1\t15\t0\t107\t841\t1080\t34\t-1\t\n5\t1\t1\t1\t15\t1\t107\t850\t11\t11\t66.527756\t=\n5\t1\t1\t1\t15\t2\t157\t846\t42\t23\t91.147072\tLas\n5\t1\t1\t1\t15\t3\t213\t845\t79\t24\t96.890137\tbases\n5\t1\t1\t1\t15\t4\t306\t845\t100\t30\t96.687111\tpodrán\n5\t1\t1\t1\t15\t5\t420\t845\t141\t24\t96.977272\tsolicitarse\n5\t1\t1\t1\t15\t6\t574\t852\t32\t17\t96.896904\ten\n5\t1\t1\t1\t15\t7\t621\t845\t21\t24\t97.014534\tla\n5\t1\t1\t1\t15\t8\t656\t844\t91\t25\t96.700935\toficina\n5\t1\t1\t1\t15\t9\t761\t844\t32\t24\t96.968124\tde\n5\t1\t1\t1\t15\t10\t807\t847\t86\t27\t97.018593\tpartes\n5\t1\t1\t1\t15\t11\t907\t843\t33\t24\t97.020256\tde\n5\t1\t1\t1\t15\t12\t954\t843\t21\t24\t96.983429\tla\n5\t1\t1\t1\t15\t13\t990\t841\t197\t31\t96.816383\tmunicipalidad\n4\t1\t1\t1\t16\t0\t154\t884\t1034\t32\t-1\t\n5\t1\t1\t1\t16\t1\t154\t887\t34\t24\t93.303154\tde\n5\t1\t1\t1\t16\t2\t202\t888\t121\t28\t92.844315\tRenaico,\n5\t1\t1\t1\t16\t3\t337\t887\t109\t25\t96.706108\tubicada\n5\t1\t1\t1\t16\t4\t459\t894\t32\t18\t96.919365\ten\n5\t1\t1\t1\t16\t5\t505\t887\t62\t24\t96.533768\tcalle\n5\t1\t1\t1\t16\t6\t579\t887\t129\t24\t93.265518\tcomercio\n5\t1\t1\t1\t16\t7\t721\t886\t31\t24\t94.054276\tN°\n5\t1\t1\t1\t16\t8\t764\t887\t50\t23\t96.974464\t287\n5\t1\t1\t1\t16\t9\t826\t886\t33\t24\t96.989769\tde\n5\t1\t1\t1\t16\t10\t872\t885\t21\t25\t96.564232\tla\n5\t1\t1\t1\t16\t11\t906\t891\t111\t19\t96.335258\tcomuna\n5\t1\t1\t1\t16\t12\t1031\t884\t33\t25\t93.304642\tde\n5\t1\t1\t1\t16\t13\t1078\t884\t110\t24\t92.461250\tRenaico\n4\t1\t1\t1\t17\t0\t153\t926\t1035\t33\t-1\t\n5\t1\t1\t1\t17\t1\t153\t929\t85\t24\t96.600136\tdesde\n5\t1\t1\t1\t17\t2\t255\t929\t23\t25\t96.600136\tel\n5\t1\t1\t1\t17\t3\t296\t929\t41\t25\t96.894699\tdía\n5\t1\t1\t1\t17\t4\t355\t930\t33\t23\t96.966125\t22\n5\t1\t1\t1\t17\t5\t405\t929\t34\t24\t96.716820\tde\n5\t1\t1\t1\t17\t6\t455\t929\t163\t30\t96.497559\tSeptiembre\n5\t1\t1\t1\t17\t7\t634\t928\t33\t25\t96.832909\tde\n5\t1\t1\t1\t17\t8\t684\t929\t67\t23\t96.692924\t2023\n5\t1\t1\t1\t17\t9\t768\t934\t33\t18\t96.692924\ten\n5\t1\t1\t1\t17\t10\t818\t927\t122\t25\t96.786568\tadelante\n5\t1\t1\t1\t17\t11\t956\t926\t83\t25\t96.628105\tdesde\n5\t1\t1\t1\t17\t12\t1057\t926\t35\t24\t96.827965\tlas\n5\t1\t1\t1\t17\t13\t1109\t926\t79\t24\t96.723488\t08:30\n4\t1\t1\t1\t18\t0\t153\t971\t224\t25\t-1\t\n5\t1\t1\t1\t18\t1\t153\t971\t75\t24\t93.290321\thasta\n5\t1\t1\t1\t18\t2\t241\t972\t136\t24\t91.729851\t16:00Hrs.\n4\t1\t1\t1\t19\t0\t102\t1028\t1086\t34\t-1\t\n5\t1\t1\t1\t19\t1\t102\t1038\t11\t11\t92.341164\t=\n5\t1\t1\t1\t19\t2\t152\t1034\t27\t23\t88.280777\tLa\n5\t1\t1\t1\t19\t3\t198\t1032\t139\t30\t92.584885\trecepción\n5\t1\t1\t1\t19\t4\t354\t1031\t35\t25\t96.693161\tde\n5\t1\t1\t1\t19\t5\t405\t1031\t191\t25\t96.327957\tantecedentes\n5\t1\t1\t1\t19\t6\t611\t1037\t29\t18\t96.984123\tse\n5\t1\t1\t1\t19\t7\t656\t1029\t60\t25\t96.864128\thará\n5\t1\t1\t1\t19\t8\t732\t1029\t83\t25\t96.666695\tdesde\n5\t1\t1\t1\t19\t9\t831\t1029\t22\t24\t96.889343\tel\n5\t1\t1\t1\t19\t10\t869\t1029\t40\t24\t96.811584\tdía\n5\t1\t1\t1\t19\t11\t926\t1030\t32\t23\t96.898743\t25\n5\t1\t1\t1\t19\t12\t975\t1028\t33\t25\t96.579498\tde\n5\t1\t1\t1\t19\t13\t1024\t1028\t164\t30\t96.733612\tSeptiembre\n4\t1\t1\t1\t20\t0\t150\t1070\t1040\t30\t-1\t\n5\t1\t1\t1\t20\t1\t150\t1076\t70\t23\t96.993668\t2023\n5\t1\t1\t1\t20\t2\t232\t1074\t22\t25\t96.875435\tal\n5\t1\t1\t1\t20\t3\t266\t1075\t34\t24\t96.313370\t06\n5\t1\t1\t1\t20\t4\t312\t1074\t34\t24\t96.902328\tde\n5\t1\t1\t1\t20\t5\t358\t1073\t115\t25\t96.538177\tOctubre\n5\t1\t1\t1\t20\t6\t484\t1074\t68\t23\t96.674110\t2023\n5\t1\t1\t1\t20\t7\t564\t1072\t82\t25\t96.625786\tdesde\n5\t1\t1\t1\t20\t8\t658\t1072\t35\t24\t95.771690\tlas\n5\t1\t1\t1\t20\t9\t704\t1073\t78\t23\t95.636452\t08:30\n5\t1\t1\t1\t20\t10\t792\t1072\t56\t23\t96.345833\tA.M\n5\t1\t1\t1\t20\t11\t860\t1078\t13\t17\t96.643082\ta\n5\t1\t1\t1\t20\t12\t887\t1072\t77\t23\t96.869453\t14:00\n5\t1\t1\t1\t20\t13\t976\t1072\t52\t22\t96.966499\tP.M\n5\t1\t1\t1\t20\t14\t1040\t1077\t15\t23\t96.763023\ty\n5\t1\t1\t1\t20\t15\t1065\t1070\t34\t25\t95.686844\tde\n5\t1\t1\t1\t20\t16\t1111\t1071\t79\t24\t95.686844\t15:00\n4\t1\t1\t1\t21\t0\t149\t1115\t521\t26\t-1\t\n5\t1\t1\t1\t21\t1\t149\t1118\t54\t23\t96.224472\tP.M\n5\t1\t1\t1\t21\t2\t215\t1124\t14\t17\t95.770393\ta\n5\t1\t1\t1\t21\t3\t242\t1117\t79\t24\t95.770393\t16:00\n5\t1\t1\t1\t21\t4\t332\t1117\t54\t23\t96.178543\tP.M\n5\t1\t1\t1\t21\t5\t397\t1115\t34\t25\t96.214798\tde\n5\t1\t1\t1\t21\t6\t443\t1116\t80\t23\t96.728889\tLunes\n5\t1\t1\t1\t21\t7\t525\t1111\t14\t39\t97.008659\ta\n5\t1\t1\t1\t21\t8\t557\t1115\t113\t23\t96.211792\tViernes.\n4\t1\t1\t1\t22\t0\t49\t1201\t465\t29\t-1\t\n5\t1\t1\t1\t22\t1\t49\t1204\t204\t26\t96.839386\tRESOLUCION\n5\t1\t1\t1\t22\t2\t266\t1203\t58\t26\t94.856255\tDEL\n5\t1\t1\t1\t22\t3\t334\t1201\t180\t27\t95.861763\tCONCURSO\n4\t1\t1\t1\t23\t0\t1209\t1235\t3\t17\t-1\t\n5\t1\t1\t1\t23\t1\t1209\t1235\t3\t17\t92.821686\t|\n4\t1\t1\t1\t24\t0\t95\t1255\t1117\t38\t-1\t\n5\t1\t1\t1\t24\t1\t95\t1274\t11\t12\t28.982605\t*\n5\t1\t1\t1\t24\t2\t144\t1270\t115\t23\t89.235046\tDecreto\n5\t1\t1\t1\t24\t3\t282\t1266\t134\t26\t92.730820\talcaldicio\n5\t1\t1\t1\t24\t4\t438\t1267\t98\t23\t93.279724\texento\n5\t1\t1\t1\t24\t5\t559\t1264\t102\t24\t88.731293\tN°2463\n5\t1\t1\t1\t24\t6\t684\t1263\t34\t25\t96.791473\tde\n5\t1\t1\t1\t24\t7\t739\t1262\t76\t26\t96.935432\tfecha\n5\t1\t1\t1\t24\t8\t839\t1263\t32\t24\t96.957687\t12\n5\t1\t1\t1\t24\t9\t894\t1262\t34\t25\t96.660362\tde\n5\t1\t1\t1\t24\t10\t950\t1262\t166\t31\t96.396965\tSeptiembre\n5\t1\t1\t1\t24\t11\t1139\t1255\t73\t40\t58.833050\tque]\n4\t1\t1\t1\t25\t0\t142\t1297\t1070\t45\t-1\t\n5\t1\t1\t1\t25\t1\t142\t1310\t120\t32\t93.024628\taprueba\n5\t1\t1\t1\t25\t2\t274\t1309\t37\t26\t96.528358\tlas\n5\t1\t1\t1\t25\t3\t321\t1309\t80\t25\t96.951180\tbases\n5\t1\t1\t1\t25\t4\t410\t1308\t43\t25\t96.276237\tdel\n5\t1\t1\t1\t25\t5\t464\t1309\t126\t30\t93.220284\tpresente\n5\t1\t1\t1\t25\t6\t600\t1312\t136\t20\t92.069389\tconcurso.\n5\t1\t1\t1\t25\t7\t1210\t1297\t2\t13\t71.851578\t|\n4\t1\t1\t1\t26\t0\t29\t1392\t1093\t51\t-1\t\n5\t1\t1\t1\t26\t1\t29\t1400\t2\t43\t89.893143\t|\n5\t1\t1\t1\t26\t2\t952\t1401\t20\t18\t68.644966\tLA\n5\t1\t1\t1\t26\t3\t1092\t1392\t30\t37\t67.603333\tES\n4\t1\t1\t1\t27\t0\t28\t1426\t1184\t27\t-1\t\n5\t1\t1\t1\t27\t1\t28\t1445\t2\t8\t92.857475\t|\n5\t1\t1\t1\t27\t2\t976\t1426\t97\t20\t45.046013\ta_i\n5\t1\t1\t1\t27\t3\t1210\t1431\t2\t16\t94.027573\t|\n4\t1\t1\t1\t28\t0\t24\t1469\t1190\t120\t-1\t\n5\t1\t1\t1\t28\t1\t24\t1469\t6\t120\t89.901009\t|\n5\t1\t1\t1\t28\t2\t480\t1527\t132\t26\t93.305946\tALCALDE\n5\t1\t1\t1\t28\t3\t622\t1524\t37\t33\t86.688461\t(S)\n5\t1\t1\t1\t28\t4\t950\t1507\t66\t59\t68.816956\ten\n5\t1\t1\t1\t28\t5\t1029\t1474\t87\t95\t36.715931\tFA.\n5\t1\t1\t1\t28\t6\t1212\t1529\t2\t18\t70.745399\t|\n4\t1\t1\t1\t29\t0\t345\t1549\t870\t53\t-1\t\n5\t1\t1\t1\t29\t1\t345\t1572\t249\t26\t96.524399\tMUNICIPALIDAD\n5\t1\t1\t1\t29\t2\t604\t1571\t38\t25\t93.293709\tDE\n5\t1\t1\t1\t29\t3\t652\t1570\t133\t26\t92.645020\tRENAICO\n5\t1\t1\t1\t29\t4\t994\t1563\t81\t13\t0.000000\tES\n5\t1\t1\t1\t29\t5\t1213\t1549\t2\t53\t82.664436\t|\n4\t1\t1\t1\t30\t0\t20\t1610\t1196\t42\t-1\t\n5\t1\t1\t1\t30\t1\t20\t1612\t104\t40\t79.000580\t=\n5\t1\t1\t1\t30\t2\t229\t1649\t137\t2\t39.059189\tin\n5\t1\t1\t1\t30\t3\t478\t1610\t738\t39\t38.134556\tA\n4\t1\t1\t1\t31\t0\t802\t1746\t420\t36\t-1\t\n5\t1\t1\t1\t31\t1\t802\t1746\t150\t29\t91.955376\tScanned\n5\t1\t1\t1\t31\t2\t963\t1746\t41\t36\t93.296371\tby\n5\t1\t1\t1\t31\t3\t1017\t1747\t205\t35\t91.474312\tTapScanner",
-      "mean_confidence": 93.4,
+      "text": "| MUNICIPALIDAD DE RENAICO |\nDEPARTAMENTO DE SALUD |\n|\n| LLAMADO A CONCURSO PUBLICO INTERNO |\n[En conformidad al artículo 2 de la ley 21.308 se llama a concurso publico |\ninterno para regularizar la dotación del personal contemplado en la ley 19.378\nREQUISITOS DE POSTULACIÓN:\n= Los requisitos de postulación serán los contemplados en la ley 19.378 y\nlos señalados en las bases del concurso\n|\n\"Los antecedentes requeridos son los señalados en las páginas N°4 y N*5\nde las bases del concurso.\n|\nENTREGA DE BASES Y RECEPCION DE ANTECEDENTES:\n= Las bases podrán solicitarse en la oficina de partes de la municipalidad\nde Renaico, ubicada en calle comercio N° 287 de la comuna de Renaico\ndesde el día 22 de Septiembre de 2023 en adelante desde las 08:30\nhasta 16:00Hrs.\n= La recepción de antecedentes se hará desde el día 25 de Septiembre\n2023 al 06 de Octubre 2023 desde las 08:30 A.M a 14:00 P.M y de 15:00\nP.M a 16:00 P.M de Lunes a Viernes.\nRESOLUCION DEL CONCURSO\n|\n* Decreto alcaldicio exento N°2463 de fecha 12 de Septiembre que]\naprueba las bases del presente concurso. |\n| LA ES\n| a_i |\n| ALCALDE (S) en FA. |\nMUNICIPALIDAD DE RENAICO ES |\n= in A\nScanned by TapScanner",
+      "mean_confidence": 91.6,
       "language": "spa+eng",
       "engine": "tesseract-local",
+      "parser": "tesseract-tsv-literal-v2",
       "pages_limit": 1,
       "final_url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
       "mime": "application/pdf",
@@ -775,18 +810,13 @@
         "workplace_evidence": null,
         "work_communes": [],
         "emails": [],
-        "phones": [
-          "438\t1267\t98",
-          "45\t-1\t\n5\t1\t1\t1\t25",
-          "455\t929\t163",
-          "9\t761\t844\t32",
-          "9\t768\t934\t33"
-        ],
+        "phones": [],
         "source_published_at": null,
         "missing": [
           "cargo",
           "empresa",
           "lugar_real",
+          "contacto",
           "fecha_original"
         ],
         "hiring_language": true,
@@ -860,7 +890,40 @@
         ],
         "hiring_language": true,
         "published": false
-      }
+      },
+      "public_attachments": [
+        {
+          "text": "Llamadoa coe\nCONCURSO\nPÚBLICO",
+          "mean_confidence": 54.3,
+          "language": "spa+eng",
+          "engine": "tesseract-local",
+          "parser": "tesseract-tsv-literal-v2",
+          "url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/Concurso-Publico-Slider-Movil.png",
+          "final_url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/Concurso-Publico-Slider-Movil.png",
+          "mime": "image/png",
+          "http_status": 200,
+          "bytes": 125265,
+          "sha256": "68d6d6d2ac306da6854c574612f99f649bff7e5e885a9dd14112e9b730d0ccfe",
+          "fields": {
+            "role": null,
+            "company": null,
+            "workplace_evidence": null,
+            "work_communes": [],
+            "emails": [],
+            "phones": [],
+            "source_published_at": null,
+            "missing": [
+              "cargo",
+              "empresa",
+              "lugar_real",
+              "contacto",
+              "fecha_original"
+            ],
+            "hiring_language": false,
+            "published": false
+          }
+        }
+      ]
     },
     {
       "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",

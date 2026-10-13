@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.local-evidence-checkpoint.v1",
-  "nextCursor": "eyJwayI6InRyYWJham8tY2VyY2EtbGFib3JhdG9yaW8tM29qZ3JvI3NvY2lhbF9jYXB0dXJlX3J1bnMiLCJzayI6ImIzOTQwNzUwLTMwZWMtNGIwYS05MzkzLTlmOGE2YTBhNTZmZSJ9",
-  "checked_at": "2026-10-13T02:22:39.207474+00:00",
-  "complete": false
+  "nextCursor": null,
+  "checked_at": "2026-10-13T02:34:46.148092+00:00",
+  "complete": true
 }

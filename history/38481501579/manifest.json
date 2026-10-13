@@ -1,0 +1,1 @@
+{"archive_bytes": 294632, "archive_sha256": "c99f0c82724c7bcffc744a44d6c459221ab6a3826d8efbed4a744a56f17885a7", "bytes": 1814528, "counts": {"attempts": 25, "candidates": 359, "checkpoints": 4, "observations": 3069, "publication_receipts": 2, "runs": 6}, "schema": "trabajo-cerca.backup.v1", "sqlite_sha256": "baff83d67ab03a67e5de7a6787363606a51dc13099db2d1ac760d16a2447b16a"}

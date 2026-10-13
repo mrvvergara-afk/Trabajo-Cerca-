@@ -66,3 +66,5 @@ Los artefactos siguen teniendo 7 días de retención. **Esto no es una base de d
 El piloto ya creó snapshots verificados de SQLite en `radar-state-laboratorio` y una segunda ejecución restauró y continuó el histórico: 190 candidatos y 2.750 observaciones conservados. El cron del laboratorio recibe los lotes firmados de esa rama; no se añade una ruta pública de escritura ni se cambian claves. Los artefactos temporales del job general y este respaldo del laboratorio son mecanismos distintos; producción todavía requiere revisión.
 
 Apify mantiene bloqueado el inicio de Actors. Con un token existente solo se comprueban la conexión y resultados de ejecuciones previas; no se cambian credenciales.
+
+La revisión de fuentes locales, afiches y PDF está documentada en [fuentes-locales-y-afiches-2026-10-12.md](docs/fuentes-locales-y-afiches-2026-10-12.md). Distingue la reparación aplicada en la app de la cobertura y publicación automática local aún pendientes.

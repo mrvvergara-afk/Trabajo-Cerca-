@@ -31,6 +31,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Instalar lectores y generador de pruebas gratuitos en el runner temporal
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
       - name: Pruebas sin red ni escrituras
         run: |
           python -m unittest tests.test_local_source_audit tests.test_local_evidence_archive tests.test_laboratory_observer -v
@@ -38,10 +43,6 @@ jobs:
           node tests/appdeploy-social-evidence.test.mjs
           node tests/appdeploy-social-evidence-store.test.mjs
           node tests/appdeploy-social-repair.test.mjs
-      - name: Instalar lectores locales gratuitos en el runner temporal
-        run: |
-          sudo apt-get -qq update
-          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa
       - name: Restaurar el cursor sin sustituir un fallo por un reinicio
         env:
           LOCAL_AUDIT_ARCHIVE_OPERATION: restore

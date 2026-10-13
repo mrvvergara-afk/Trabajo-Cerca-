@@ -1,0 +1,341 @@
+{
+  "schema": "trabajo-cerca.local-source-result.v1",
+  "dateChile": "2026-10-12",
+  "timezone": "America/Santiago",
+  "app": {
+    "id": "trabajo-cerca-laboratorio-3ojgro",
+    "version": "1791858508959",
+    "url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+    "status": "ready",
+    "qaErrors": 0
+  },
+  "codeCommit": "a7332a4a2c823568988fac63131c84197c07f14f",
+  "mainUnchanged": "fab392b824e4100a4bba6dfe9289825297d24707",
+  "evidenceCommit": "7c8516584d6e2d1315b9c128589886428bf7ec85",
+  "runs": [
+    38334394231,
+    38336544304,
+    38337513202
+  ],
+  "sourceSeeds": 24,
+  "candidateLinksDetected": 23,
+  "newLocalPublications": 0,
+  "paidProviderCallsInAudit": 0,
+  "existingCaptures": {
+    "distinct": 24,
+    "statuses": {
+      "processed": 11,
+      "pending": 13
+    },
+    "recordedImageReads": 133,
+    "extractedFindings": 0,
+    "continuationReachedEnd": true,
+    "scope": "Existing configured social targets only; not all requested OMIL/radio/company profiles"
+  },
+  "tests": {
+    "python": 63,
+    "node": 89,
+    "total": 152,
+    "externalJobFixturesPublished": 0
+  },
+  "sources": [
+    {
+      "name": "Municipalidad / OMIL Angol",
+      "family": "municipal",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "access": "unavailable",
+      "reason": "HTTP 403"
+    },
+    {
+      "name": "Municipalidad / OMIL Lumaco",
+      "family": "municipal",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Municipalidad / OMIL Los Sauces",
+      "family": "municipal",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Municipalidad / OMIL Traiguén",
+      "family": "municipal",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "territory": "Traiguén",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Municipalidad / OMIL Renaico",
+      "family": "municipal",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Municipalidad / OMIL Nacimiento",
+      "family": "municipal",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Municipalidad / OMIL Negrete",
+      "family": "municipal",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Municipalidad / OMIL Mulchén",
+      "family": "municipal",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "territory": "Mulchén",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Municipalidad / OMIL Collipulli",
+      "family": "municipal",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Malleco 7",
+      "family": "media",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Radio Mininco",
+      "family": "media",
+      "url": "https://www.radiomininco.cl/",
+      "territory": "Mininco",
+      "access": "unavailable",
+      "reason": "URLError"
+    },
+    {
+      "name": "Radio Nativa",
+      "family": "media",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Radio del Sur",
+      "family": "media",
+      "url": "https://www.radiodelsur.cl/",
+      "territory": "Collipulli",
+      "access": "unavailable",
+      "reason": "redirect_outside_publisher"
+    },
+    {
+      "name": "Municipalidad de Angol · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "territory": "Angol",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "name": "Municipalidad de Lumaco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "name": "Radio Nativa · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/radionativacl/",
+      "territory": "Lumaco",
+      "access": "login_or_public_content_unavailable",
+      "reason": null
+    },
+    {
+      "name": "CMPC · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.cmpc.com/",
+      "territory": "zona forestal",
+      "access": "public_page_read",
+      "reason": null
+    },
+    {
+      "name": "Arauco · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.arauco.com/",
+      "territory": "zona forestal",
+      "access": "unavailable",
+      "reason": "redirect_outside_publisher"
+    },
+    {
+      "name": "Municipalidad de Traiguén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munitraiguen/",
+      "territory": "Traiguén",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "name": "Municipalidad de Renaico · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadrenaico",
+      "territory": "Renaico",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "name": "Municipalidad de Negrete · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MuniNegreteCL",
+      "territory": "Negrete",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "name": "Municipalidad de Mulchén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munimulchen",
+      "territory": "Mulchén",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "name": "Municipalidad de Collipulli · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MunicipalidadCollipulli",
+      "territory": "Collipulli",
+      "access": "unavailable",
+      "reason": "source_byte_budget_exceeded"
+    },
+    {
+      "name": "Malleco 7 · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/Malleco7",
+      "territory": "Malleco",
+      "access": "login_or_public_content_unavailable",
+      "reason": null
+    }
+  ],
+  "publicMedia": [
+    {
+      "url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+      "sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+      "engine": "tesseract-local",
+      "parser": "tesseract-tsv-literal-v2",
+      "mean_confidence": 89.6,
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false
+      },
+      "sourceUrl": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "sha256": "dac8226bc7627eed6aa728ff9a4bef94cf6c8bbd72591caeb1e9642131357b58",
+      "engine": "tesseract-local",
+      "parser": "tesseract-tsv-literal-v2",
+      "mean_confidence": 91.6,
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false
+      },
+      "sourceUrl": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf"
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/Concurso-Publico-Slider-Movil.png",
+      "sha256": "68d6d6d2ac306da6854c574612f99f649bff7e5e885a9dd14112e9b730d0ccfe",
+      "engine": "tesseract-local",
+      "parser": "tesseract-tsv-literal-v2",
+      "mean_confidence": 54.3,
+      "fields": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "fecha_original"
+        ],
+        "hiring_language": false,
+        "published": false
+      },
+      "sourceUrl": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/"
+    }
+  ],
+  "laboratoryObservation": {
+    "stored": 2,
+    "published": 2,
+    "published_ids": [
+      "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+      "43f60fcc-b8ea-4a84-a094-131649c14c37"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "01d35bdc68538e6627d3990a880fdefd98dea6a8",
+    "ingestion_run_id": "38264847681",
+    "feed_complete": true,
+    "feed_manifest": "39ce40a6-e0b8-41ee-8525-92053bbab9a0",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "artifact": {
+    "id": 11784784055,
+    "sha256": "411f42f487bea20b18a0faba877130fea9ba162a112f3d771532dfb598abb540"
+  }
+}

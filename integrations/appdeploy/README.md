@@ -1,6 +1,6 @@
 # Reparaciones de AppDeploy en el laboratorio
 
-Estado actual de la app indicada por el usuario: versión **`1791924889565`** aplicada y `ready`. La [conexión de documentos](../../docs/conexion-documentos-2026-10-13.md) añade el puente de trabajo y admite la ingesta firmada del productor revisado. Sus 239 pruebas locales pasaron; el piloto real está pendiente del guardado remoto cancelado. `main` sigue sin integrar.
+Estado actual de la app indicada por el usuario: versión **`1791924889565`** aplicada y `ready`. La [conexión de documentos](../../docs/conexion-documentos-2026-10-13.md) quedó comprobada en cuatro ciclos reales, con OCR completo dentro de sus límites y respaldo durable. Pasaron 242 pruebas en GitHub. No se obtuvo una oferta documental elegible; se conservaron el lote y los IDs anteriores. `main` sigue sin integrar.
 
 La [continuación regional anterior](../../docs/continuacion-fuentes-regionales-2026-10-13.md) confirmó una oferta nueva de BNE en Negrete y dos del piloto previo. Su [evidencia por ID](regional-source-observation-2026-10-13.json) y [parches regionales](regional-source-repair.json) corresponden a esa comprobación histórica.
 

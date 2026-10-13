@@ -1,0 +1,195 @@
+{
+  "run_id": 38480768906,
+  "run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38480768906",
+  "commit": "a90872ab73b8b153e27229671156e20904ace312",
+  "schema": "trabajo-cerca.document-cycle.v1",
+  "checked_at": "2026-10-13T22:55:05.684992+00:00",
+  "work_items_received": 71,
+  "checked": 3,
+  "reviewed": [
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-914-DEL-22.04.2026-LLAMADO-CONCURSO-OMIL.pdf",
+      "status": "pending",
+      "reason": "source_byte_budget_exceeded",
+      "engine": null,
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": null,
+      "page_count": null,
+      "mean_confidence": null
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+      "status": "pending",
+      "reason": "source_byte_budget_exceeded",
+      "engine": null,
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": null,
+      "page_count": null,
+      "mean_confidence": null
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Tecnico-Grado-10%C2%B0-1.pdf",
+      "status": "pending",
+      "reason": "source_byte_budget_exceeded",
+      "engine": null,
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": null,
+      "page_count": null,
+      "mean_confidence": null
+    }
+  ],
+  "local_verified": 0,
+  "documents_ready": 0,
+  "batch_records": 0,
+  "discovered_channels": [
+    {
+      "channel": "https://www.facebook.com/municipalidadrenaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "publisher": "Municipalidad / OMIL Renaico",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/munirenaico/",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "publisher": "Municipalidad / OMIL Renaico",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/munimulchen",
+      "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "publisher": "Municipalidad / OMIL Mulchén",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/municipalidaddemulchen",
+      "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "publisher": "Municipalidad / OMIL Mulchén",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/Malleco7",
+      "discovered_from": "https://www.malleco7.cl/",
+      "publisher": "Malleco 7",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/diariolasnoticias/",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "publisher": "Las Noticias de Malleco",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/lasnoticiasdia/",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "publisher": "Las Noticias de Malleco",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    }
+  ],
+  "local_diagnostics": [
+    {
+      "source": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Radio Nativa",
+      "url": "https://www.radionativa.cl/page/2/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 2,
+      "media_read": 0
+    },
+    {
+      "source": "CMPC · sitio corporativo",
+      "url": "https://www.cmpc.com/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Arauco · sitio corporativo",
+      "url": "https://www.arauco.com/",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "redirect_outside_publisher"
+    },
+    {
+      "source": "Bolsa Nacional de Empleo · Negrete",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "unsupported_media_type"
+    },
+    {
+      "source": "CMPC · portal de empleo",
+      "url": "https://cmpc.trabajando.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Arauco · portal de empleo",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 2,
+      "media_read": 1
+    },
+    {
+      "source": "Radio Viaducto",
+      "url": "https://radioviaducto.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": "2025-09-22T13:58:32+00:00",
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Las Noticias de Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 1,
+      "media_read": 1
+    }
+  ],
+  "inventory_count": 358,
+  "paid_provider_calls": 0,
+  "published": 0,
+  "publication_confirmed": false,
+  "coverage_complete": false,
+  "data_commit": "99bd08fddcd689c1bc033c7cffd3df8e5a61f4b7",
+  "backup_counts": {
+    "attempts": 22,
+    "candidates": 358,
+    "checkpoints": 4,
+    "observations": 2992,
+    "publication_receipts": 2,
+    "runs": 5
+  },
+  "signed_batch_created": false,
+  "previous_exchange_preserved": true
+}

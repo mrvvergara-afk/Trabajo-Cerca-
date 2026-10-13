@@ -1,6 +1,6 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
-La [conexión del lector de documentos](docs/conexion-documentos-2026-10-13.md) está implementada, con 239 pruebas locales y el puente nativo aplicado en la app. El guardado del commit en GitHub fue cancelado; el piloto real y la programación permanente permanecen pendientes. El informe distingue lo aplicado de lo aún no comprobado.
+La [conexión del lector de documentos](docs/conexion-documentos-2026-10-13.md) está aplicada. Cuatro ciclos gratuitos comprobaron lectura, límites, OCR completo y continuidad del respaldo; pasaron 242 pruebas en GitHub. Los documentos revisados aún no aportaron una oferta publicable, y los IDs anteriores siguieron visibles. La programación permanente del lector externo requiere integrar después de revisión; `main` conserva su versión.
 
 La [continuación del radar regional](docs/continuacion-fuentes-regionales-2026-10-13.md) registra una oferta nueva de BNE confirmada en la app, las correcciones de fuentes y selección de candidatos, 225 pruebas aprobadas y los pendientes de redes sociales y afiches. El límite es 45 días desde la fecha original; detectar, guardar y publicar se comprueban por separado. `main` sigue sin integrar.
 

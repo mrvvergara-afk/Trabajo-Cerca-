@@ -1,0 +1,19 @@
+{
+  "schema": "trabajo-cerca.ingestion.v1",
+  "generated_at": "2026-10-13T14:24:24.354394+00:00",
+  "dry_run": true,
+  "publisher_status": "not_connected",
+  "ready_count": 0,
+  "published_count": 0,
+  "records": [],
+  "blocked": [
+    {
+      "id": "047ee8fe39ac1365737f7a21",
+      "reason": "verification_requires_recheck"
+    },
+    {
+      "id": "4e1e1f2f38f8444271557469",
+      "reason": "verification_requires_recheck"
+    }
+  ]
+}

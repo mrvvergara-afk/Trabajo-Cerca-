@@ -1,0 +1,116 @@
+{
+  "checked_at": "2026-10-13T14:24:24.354394+00:00",
+  "source_candidates": 92,
+  "checked": 10,
+  "review_ready": 5,
+  "verified": 0,
+  "published": 0,
+  "errors": 0,
+  "results": [
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/qu%C3%ADmico-farmac%C3%A9utico-traigu%C3%A9n-at-farmacias-vitasur-4478701904?pageNum=0&position=31&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=QXhitLhQ1A9oPor%2FbwvM3w%3D%3D",
+      "commune_query": "Angol",
+      "title": "Químico Farmacéutico Traiguén",
+      "company": "Farmacias Vitasur",
+      "work_commune": "Traiguén",
+      "work_location_verified": true,
+      "url": "https://cl.linkedin.com/jobs/view/qu%C3%ADmico-farmac%C3%A9utico-traigu%C3%A9n-at-farmacias-vitasur-4478701904?pageNum=0&position=31&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=QXhitLhQ1A9oPor%2FbwvM3w%3D%3D",
+      "source": "LinkedIn",
+      "source_published_at": "2026-10-12T23:08:40.000Z",
+      "status": "review_ready",
+      "reason": "application_or_employer_requires_review"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4476938921?pageNum=0&position=31&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=1axF%2BWhjrOsZxjHNb4mUaA%3D%3D",
+      "commune_query": "Collipulli",
+      "status": "pending",
+      "reason": "HTTP 429"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/jefe-a-de-valores-ft-42hrs-tottus-los-%C3%A1ngeles-alemania-at-tottus-4452625477?pageNum=0&position=7&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=tKjFJXrKZuHX%2BmpvvsOpMg%3D%3D",
+      "commune_query": "Angol",
+      "status": "pending",
+      "reason": "HTTP 429"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/analista-vibraciones-at-cmpc-4476313755?pageNum=0&position=5&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=51dAT4AEa7nkTMoS38uTPA%3D%3D",
+      "commune_query": "Collipulli",
+      "title": "Analista Vibraciones",
+      "company": "CMPC",
+      "work_commune": "Collipulli",
+      "work_location_verified": true,
+      "url": "https://cl.linkedin.com/jobs/view/analista-vibraciones-at-cmpc-4476313755?pageNum=0&position=5&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=51dAT4AEa7nkTMoS38uTPA%3D%3D",
+      "source": "LinkedIn",
+      "source_published_at": "2026-10-06T15:20:33.000Z",
+      "status": "review_ready",
+      "reason": "application_or_employer_requires_review"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/vendedor-promotor-retail-part-time-los-angeles-at-festina-group-4476914652?pageNum=0&position=54&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=fQC7Yed9ro4v44oek8ItVw%3D%3D",
+      "commune_query": "Angol",
+      "status": "pending",
+      "reason": "HTTP 429"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/cajera-o-apoyo-evento-especial-navidad-2026-jornada-full-time-5x2-rotativo-angol-falabella-at-falabella-4477849870?pageNum=0&position=6&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=78aiDJ29eSZRXq3ntLV1Xg%3D%3D",
+      "commune_query": "Collipulli",
+      "title": "Cajera/o Apoyo Evento Especial Navidad 2026/ Jornada Full Time 5x2 Rotativo/ Angol Falabella",
+      "company": "Falabella",
+      "work_commune": "Angol",
+      "work_location_verified": true,
+      "url": "https://cl.linkedin.com/jobs/view/cajera-o-apoyo-evento-especial-navidad-2026-jornada-full-time-5x2-rotativo-angol-falabella-at-falabella-4477849870?pageNum=0&position=6&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=78aiDJ29eSZRXq3ntLV1Xg%3D%3D",
+      "source": "LinkedIn",
+      "source_published_at": "2026-10-09T20:03:43.000Z",
+      "status": "review_ready",
+      "reason": "application_or_employer_requires_review"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/vendedor-promotor-retail-part-time-los-angeles-at-festina-chile-limitada-4462045438?pageNum=0&position=57&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=VyNbqj0jLwxXtum5rnyurg%3D%3D",
+      "commune_query": "Angol",
+      "status": "pending",
+      "reason": "worksite_missing_or_multiple"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4477496147?pageNum=0&position=30&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=7izPKgCAXsUh7qS8v2%2B95w%3D%3D",
+      "commune_query": "Collipulli",
+      "title": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "company": "ATCOM Chile",
+      "work_commune": "Mulchén",
+      "work_location_verified": true,
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4477496147?pageNum=0&position=30&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=7izPKgCAXsUh7qS8v2%2B95w%3D%3D",
+      "source": "LinkedIn",
+      "source_published_at": "2026-10-08T23:42:42.000Z",
+      "status": "review_ready",
+      "reason": "application_or_employer_requires_review"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/encargado-a-de-reposici%C3%B3n-nocturna-pt-s%C3%A1bado-y-domingo-tottus-los-%C3%A1ngeles-alemania-at-tottus-4449694381?pageNum=0&position=38&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=Wg1o4O5MR%2BIZkEKcFU8%2FVg%3D%3D",
+      "commune_query": "Angol",
+      "status": "pending",
+      "reason": "worksite_missing_or_multiple"
+    },
+    {
+      "candidate_url": "https://cl.linkedin.com/jobs/view/vendedor-a-sodimac-hc-angol-jornada-pt25-hrs-at-sodimac-4457681032?pageNum=0&position=21&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=Jmoo2ZQY8QoxaEqKN1br6w%3D%3D",
+      "commune_query": "Collipulli",
+      "title": "Vendedor/a Sodimac HC Angol Jornada PT25 hrs",
+      "company": "Sodimac",
+      "work_commune": "Angol",
+      "work_location_verified": true,
+      "url": "https://cl.linkedin.com/jobs/view/vendedor-a-sodimac-hc-angol-jornada-pt25-hrs-at-sodimac-4457681032?pageNum=0&position=21&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=Jmoo2ZQY8QoxaEqKN1br6w%3D%3D",
+      "source": "LinkedIn",
+      "source_published_at": "2026-10-08T15:24:54.000Z",
+      "status": "review_ready",
+      "reason": "application_or_employer_requires_review"
+    }
+  ],
+  "unsupported_candidates": 0,
+  "reasons": {
+    "application_or_employer_requires_review": 5,
+    "HTTP 429": 3,
+    "worksite_missing_or_multiple": 2
+  },
+  "statuses": {
+    "review_ready": 5,
+    "pending": 5
+  }
+}

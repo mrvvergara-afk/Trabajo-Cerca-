@@ -1,0 +1,993 @@
+{
+  "generated_at": "2026-10-13T14:24:24.354394+00:00",
+  "lookback_days": 45,
+  "candidates": [
+    {
+      "url": "https://cl.linkedin.com/jobs/view/senior-tech-lead-fullstack-react-node-remote-work-ref%23305560-at-bairesdev-4476503168?pageNum=0&position=1&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=cz5H30r%2FC0hLSjGQWj1L6A%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Senior Tech Lead, Fullstack (React & Node) - Remote Work | REF#305560",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/jefe-de-tienda-at-lippi-outdoor-4477424345?pageNum=0&position=2&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=6T34jFCC%2BIYst%2FFnLgRE3Q%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Jefe de tienda",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/recepcionista-cajero-at-ghl-4474469263?pageNum=0&position=3&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=6i9KWoH1cGetRNgw1qgYHg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "RECEPCIONISTA CAJERO",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/auxiliar-de-lavanderia-at-ghl-4474486607?pageNum=0&position=4&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=agh1%2Bbt4p6oL0nEqS88wlg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "AUXILIAR DE LAVANDERIA",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/analista-de-vibraciones-senior-%E2%80%93-responsable-t%C3%A9cnico-at-sgs-4472172760?pageNum=0&position=5&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=sBa9xe4s81TIL%2BC%2BL%2BD%2FGQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Analista de Vibraciones Senior – Responsable Técnico",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/ejecuci%C3%B3n-de-fuerza-de-venta-directa-fintech-at-mercado-libre-4470154543?pageNum=0&position=6&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=hwkC9XrpwZv%2BABUKqR3A%2FA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Ejecución de Fuerza de Venta Directa - Fintech",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/jefe-a-de-valores-ft-42hrs-tottus-los-%C3%A1ngeles-alemania-at-tottus-4452625477?pageNum=0&position=7&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=tKjFJXrKZuHX%2BmpvvsOpMg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Jefe/a de Valores, FT 42Hrs, Tottus Los Ángeles Alemania",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/ejecutivo-de-cuentas-preferente-region-del-bio-bio-at-banco-de-chile-4469941648?pageNum=0&position=8&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=fYyiMaq9PtOZR10Hml3GVQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Ejecutivo de cuentas Preferente - Region del Bio Bio",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/inspector-api510-refiner%C3%ADa-at-delpro-ingenier%C3%ADa-project-management-4473283403?pageNum=0&position=9&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=036csbmecbySBoPk9uP9CQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Inspector API510 - Refinería",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/ingeniero-de-proyectos-senior-concepci%C3%B3n-at-wood-4459656625?pageNum=0&position=10&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=eaic%2Fov34aHOcWNEHy1rfw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Ingeniero de proyectos senior - Concepción",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/sub-gerente-de-ventas-paris-barros-arana-at-cencosud-4473006892?pageNum=0&position=11&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=ZGY4gLFwtUldgplPxIvCGw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Sub Gerente de Ventas- Paris Barros Arana",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/jefe-a-de-sucursal-los-%C3%A1ngeles-at-sur-talent-4468804576?pageNum=0&position=12&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=%2BtEMo0vLqyqBamOgPHJXJg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Jefe(a) de Sucursal - Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/tecnico-mantenimiento-telecomunicaciones-concepci%C3%B3n-at-servicios-de-telecomunicaciones-olitel-4466822968?pageNum=0&position=13&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=2qtYMlHcbMKUJUnlvA1n%2Fw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Tecnico Mantenimiento Telecomunicaciones - Concepción",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/ejecutivo-comercial-full-time-jumbo-los-%C3%A1ngeles-at-cencosud-scotiabank-4477847928?pageNum=0&position=14&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=SeNTXiv9nyp9pJP7gr4N2A%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Ejecutivo Comercial Full Time / Jumbo Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/ejecutivo-banca-personas-regi%C3%B3n-del-biob%C3%ADo-at-banco-de-chile-4475582623?pageNum=0&position=15&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=r4dtVcI%2B4DlkPUaaZPL3rA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Ejecutivo Banca Personas - Región del Biobío",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/control-de-documentos-concepci%C3%B3n-at-wood-4459043636?pageNum=0&position=16&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=w%2FGkUPaQ3419WIsXM5sI0g%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Control de Documentos - Concepción",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/encargado-a-de-bodega-full-time-los-%C3%A1ngeles-falabella-at-falabella-4450528437?pageNum=0&position=17&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=zfbqS8NcSRugN%2FRejgboLQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Encargado/a de Bodega Full Time, Los Ángeles, Falabella.",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/se-busca-contador-a-%E2%80%93-angol-y-alrededores-at-chilenerg%C3%ADa-4463624606?pageNum=0&position=18&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=%2FiRiNpvwvCroJplHoGAa4g%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Se busca Contador/a – Angol y alrededores",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/op-implementaciones-comerciales-sodimac-hc-los-%C3%A1ngeles-ft42-at-sodimac-4452633318?pageNum=0&position=19&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=f5ZQywIr1Vd1Pss5825S2A%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Op. Implementaciones Comerciales Sodimac HC Los Ángeles FT42",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/ito-civil-los-angeles-at-intexa-ingenier%C3%ADa-colombia-4462034705?pageNum=0&position=20&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=iiJjfxK2Ur5RAxqtBpS1%2BA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "ITO CIVIL - LOS ANGELES",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/operador-ssee-at-engie-4477853105?pageNum=0&position=21&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=hRY7knNtfNfhbR6aUwjt3Q%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Operador SSEE",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/t%C3%A9cnico-mantenimiento-easy-coronel-at-cencosud-4466398198?pageNum=0&position=22&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=%2BNp6JDiAgUmtmsVksQCl3g%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Técnico Mantenimiento - Easy Coronel",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/operativo-a-tienda-sodimac-hc-angol-jornada-ft42hrs-at-sodimac-4465397115?pageNum=0&position=23&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=qQKimSGpNNn0ghzl01qL0Q%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Operativo/a Tienda Sodimac HC Angol Jornada FT42hrs",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/cajera-o-apoyo-evento-especial-navidad-2026-jornada-full-time-5x2-rotativo-los-angeles-falabella-at-falabella-4477846987?pageNum=0&position=24&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=%2FoPjyh4EwPfoWw8RDfCtvA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Cajera/o Apoyo Evento Especial Navidad 2026/ Jornada Full Time 5x2 Rotativo/Los Angeles Falabella",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/inspector-de-vibraciones-at-cmpc-4476320541?pageNum=0&position=25&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=uL7KoaJm%2BPWrs3GDU98SbQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Inspector de Vibraciones",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/2523678-asesor-en-prevenci%C3%B3n-de-riesgos-at-sgs-4476449332?pageNum=0&position=26&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=VhaRGPrMPjBoTKBFJs5aAQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "2523678- Asesor en Prevención de Riesgos",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/mec%C3%A1nico-de-rental-at-xylem-4465844370?pageNum=0&position=27&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=pa%2FOru42DSLgD7X5DzmP9w%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Mecánico de Rental",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/analista-vibraciones-at-cmpc-4476313755?pageNum=0&position=28&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=6xA9QOfQ0yE7A36eVoh36Q%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Analista Vibraciones",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/especialista-operaciones-mec%C3%A1nicas-at-empresa-confidencial-4471687178?pageNum=0&position=29&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=f4S4jmbjL80wkP9F18iy4A%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Especialista Operaciones Mecánicas",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-t%C3%A9cnico-de-obra-mulch%C3%A9n-at-aguas-andinas-4470610551?pageNum=0&position=30&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=x5Pd6yMz9Ams3SZK4Pc%2FiA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor Técnico de Obra - Mulchén",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/qu%C3%ADmico-farmac%C3%A9utico-traigu%C3%A9n-at-farmacias-vitasur-4478701904?pageNum=0&position=31&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=QXhitLhQ1A9oPor%2FbwvM3w%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Químico Farmacéutico Traiguén",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/planificador-de-servicios-los-%C3%A1ngeles-at-salfa-rent-4461352055?pageNum=0&position=32&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=Wmak3%2BGxCrG1ifou7g9CBg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Planificador de Servicios - Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/asesor-de-servicio-salazar-israel-los-%C3%A1ngeles-at-automotriz-coseche-4477206005?pageNum=0&position=33&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=Gft3JT7wrjqwAIu47Y9nLQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Asesor de Servicio - Salazar Israel, Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/subcontratistas-y-maestros-en-urbanizaci%C3%B3n-los-%C3%A1ngeles-at-galilea-s-a-4471668792?pageNum=0&position=34&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=tpKt2aPt3KrQlV4KVhpc3w%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Subcontratistas y Maestros en Urbanización - Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/service-technician-at-epta-group-4476779342?pageNum=0&position=35&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=C8cuYkp0TlEdl9N%2FUkjnUQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Service Technician",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/tens-enfermera-administrativa-angol-at-inmunom%C3%A9dica-4477865225?pageNum=0&position=36&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=F1tCPPqhc37vHJRbbdspyA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Tens/ Enfermera Administrativa Angol",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/secretaria-o-contable-dce-los-%C3%A1ngeles-at-fundaci%C3%B3n-prodere-4475016759?pageNum=0&position=37&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=o%2B95s%2F9VqWCQkcqM6C0Bkg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "SECRETARIA/O CONTABLE - DCE LOS ÁNGELES",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/encargado-a-de-reposici%C3%B3n-nocturna-pt-s%C3%A1bado-y-domingo-tottus-los-%C3%A1ngeles-alemania-at-tottus-4449694381?pageNum=0&position=38&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=Wg1o4O5MR%2BIZkEKcFU8%2FVg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Encargado/a de Reposición Nocturna, PT sábado y domingo, Tottus Los Ángeles Alemania",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/encargado-a-de-calidad-at-err%C3%A1zuriz-consultores-4465917387?pageNum=0&position=39&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=jlKoV7iYzJdSRfZljbLorQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Encargado(a) de Calidad",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/educadora-diferencial-reemplazo-at-liceo-agr%C3%ADcola-de-negrete-4462459788?pageNum=0&position=40&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=OP0ANFiS3%2B%2B7qmTC5bL%2F5A%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "EDUCADORA DIFERENCIAL REEMPLAZO",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/profesional-de-programas-generales-lae-angol-reemplazo-at-fundacion-tierra-de-esperanza-4472408367?pageNum=0&position=41&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=NWsJu%2FAe867HuUclE3CRdg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Profesional de Programas Generales / LAE Angol Reemplazo",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/administrador-de-brigadas-de-emergencias-at-ambipar-4475024379?pageNum=0&position=42&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=%2BG%2BxnpE5aebZI7U0MMmThw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Administrador de Brigadas de Emergencias",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/recibidor-a-log%C3%ADstica-los-%C3%A1ngeles-at-ideal-s-a-4471231096?pageNum=0&position=43&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=yfR1UOyss3hxuc4mMuR4wg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Recibidor/a Logística - Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/se-busca-psic%C3%B3loga-infantojuvenil-en-los-%C3%A1ngeles-at-centro-de-estimulaci%C3%B3n-temprana-little-genius-s-l-4470617125?pageNum=0&position=44&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=vxCO6BbpiZ68mf5N%2BylQfw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "SE BUSCA PSICÓLOGA INFANTOJUVENIL EN LOS ÁNGELES",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/asesor-de-servicio-salazar-israel-paicav%C3%AD-at-automotriz-coseche-4477910369?pageNum=0&position=45&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=JdzODZoWu6hydztsN0%2ByfQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Asesor de Servicio - Salazar Israel, Paicaví",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/operador-planta-de-riles-los-angeles-reemplazo-vacaciones-at-aguas-andinas-4476360818?pageNum=0&position=46&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=7ZM3aqY%2BFpj7w6WDNHd%2FfQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Operador planta de Riles - Los Angeles (reemplazo vacaciones)",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/subjefe-de-tienda-los-%C3%A1ngeles-at-maconline-chile-4465325534?pageNum=0&position=47&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=YDAQLZAaDvMWAxJkxdgNow%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Subjefe de Tienda / Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/operarios-full-time-at-g-n-brands-4475312499?pageNum=0&position=48&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=ZBA%2BdIUkqFub4ifENjBJ7g%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Operarios Full Time",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-reciclaje-los-%C3%A1ngeles-at-kdm-empresas-4464403623?pageNum=0&position=49&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=VwOA2MJTRrKA%2BN8yU2CYnQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor Reciclaje/Los Ángeles",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/terapeuta-ocupacional-%E2%80%93-programa-de-salud-mental-contulmo-regi%C3%B3n-del-biob%C3%ADo-at-incognito-4472075530?pageNum=0&position=50&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=23n9Tb8LNEAWfgSC0lMidA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Terapeuta Ocupacional – Programa de Salud Mental  Contulmo, Región del Biobío",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/conductor-profesional-at-jcs-log%C3%ADstica-transporte-4471808461?pageNum=0&position=51&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=nmt4HyFYBW0UPbIeSfm93g%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Conductor profesional",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/online-data-analyst-spanish-speakers-in-chile-at-telus-digital-4468262875?pageNum=0&position=52&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=K%2Bw%2BP1lob3q94iRL42%2FPoA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Online Data Analyst - Spanish Speakers in Chile",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/captadores-de-socios-at-coaniquem-oficial-4472291879?pageNum=0&position=53&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=rthoQuCqInZL%2BR2Sqovzsw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "CAPTADORES DE SOCIOS",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/vendedor-promotor-retail-part-time-los-angeles-at-festina-group-4476914652?pageNum=0&position=54&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=fQC7Yed9ro4v44oek8ItVw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "VENDEDOR-PROMOTOR RETAIL /PART TIME/ LOS ANGELES",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/terapeuta-ocupacional-at-servicios-de-salud-medika-4473287447?pageNum=0&position=55&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=ZNDmX%2BJ1sEPi8A2iz%2F5Psw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Terapeuta ocupacional",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/operador-mantenedor-at-atcom-chile-4470918766?pageNum=0&position=56&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=T6ii7vLmBH9I3FZZdkCTrw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Operador Mantenedor",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/vendedor-promotor-retail-part-time-los-angeles-at-festina-chile-limitada-4462045438?pageNum=0&position=57&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=VyNbqj0jLwxXtum5rnyurg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "VENDEDOR-PROMOTOR RETAIL /PART TIME/ LOS ANGELES",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/auxiliar-estafeta-reemplazo-media-jornada-programa-prm-angol-reg-la-araucan-at-fundaci%C3%B3n-ciudad-del-ni%C3%B1o-4464678556?pageNum=0&position=58&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=pE3gHiLxKzgMbzB6avg8Dw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "AUXILIAR ESTAFETA, Reemplazo, media jornada, programa PRM ANGOL, Reg. La Araucan",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4463135687?pageNum=0&position=59&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=ws6Hq4ucjvD0ARPJ5%2BA3Wg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/conductor-at-davita-chile-4475890747?pageNum=0&position=60&refId=AEWb8LQSUe%2F01Vn5ZCwhUw%3D%3D&trackingId=61ZyhUfTmfSfonpbCS%2F%2B8g%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Conductor",
+      "commune_query": "Angol",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/analista-de-vibraciones-senior-%E2%80%93-responsable-t%C3%A9cnico-at-sgs-4472172760?pageNum=0&position=1&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=4Kbf5aS0hMzZsmiS3PqM%2BQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Analista de Vibraciones Senior – Responsable Técnico",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/se-busca-contador-a-%E2%80%93-angol-y-alrededores-at-chilenerg%C3%ADa-4463624606?pageNum=0&position=2&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=TPKv1l%2F9%2Bdyre%2FHNC9%2Bgzg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Se busca Contador/a – Angol y alrededores",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/operativo-a-tienda-sodimac-hc-angol-jornada-ft42hrs-at-sodimac-4465386232?pageNum=0&position=3&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=als5HYKPo2iHD08LdmoUGQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Operativo/a Tienda Sodimac HC Angol Jornada FT42hrs",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/mec%C3%A1nico-de-rental-at-xylem-4465844370?pageNum=0&position=4&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=spi9W1OWyMMRumXw4%2FLvyA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Mecánico de Rental",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/analista-vibraciones-at-cmpc-4476313755?pageNum=0&position=5&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=51dAT4AEa7nkTMoS38uTPA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Analista Vibraciones",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/cajera-o-apoyo-evento-especial-navidad-2026-jornada-full-time-5x2-rotativo-angol-falabella-at-falabella-4477849870?pageNum=0&position=6&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=78aiDJ29eSZRXq3ntLV1Xg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Cajera/o Apoyo Evento Especial Navidad 2026/ Jornada Full Time 5x2 Rotativo/ Angol Falabella",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/jefe-de-lubricaci%C3%B3n-at-cmpc-4477473259?pageNum=0&position=7&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=ziUCfUpAwE8CvGuGuwi2qg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Jefe de Lubricación",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/qu%C3%ADmico-farmac%C3%A9utico-traigu%C3%A9n-at-farmacias-vitasur-4478701904?pageNum=0&position=8&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=IIzWdtqBpzzWpJN5%2FOwyAw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Químico Farmacéutico Traiguén",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/asistente-de-bodega-alto-valor-jornada-full-time-5x2-rotativos-42-hrs-semanales-falabella-angol-at-falabella-4468847935?pageNum=0&position=9&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=EKHhzH%2BpS1u7TC43I1V9JQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Asistente de Bodega Alto Valor/ Jornada Full Time 5x2 rotativos 42 hrs semanales/ Falabella Angol",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/tens-enfermera-administrativa-angol-at-inmunom%C3%A9dica-4477865225?pageNum=0&position=10&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=gDcXYgf7RP6%2BDzs%2BsNsivA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Tens/ Enfermera Administrativa Angol",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/profesional-de-programas-generales-lae-angol-reemplazo-at-fundacion-tierra-de-esperanza-4472408367?pageNum=0&position=11&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=DbO5t45uWGCquWQnC7um9Q%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Profesional de Programas Generales / LAE Angol Reemplazo",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/subgerente-de-local-trainee-jumbo-antofagasta-at-cencosud-4456321893?pageNum=0&position=12&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=A2E0a0u%2FlcPKKGDjEARrew%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Subgerente de Local Trainee Jumbo - Antofagasta",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/auxiliar-estafeta-reemplazo-media-jornada-programa-prm-angol-reg-la-araucan-at-fundaci%C3%B3n-ciudad-del-ni%C3%B1o-4464678556?pageNum=0&position=13&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=sS%2FktpsptQ4XT0SHzalu8A%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "AUXILIAR ESTAFETA, Reemplazo, media jornada, programa PRM ANGOL, Reg. La Araucan",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4467408389?pageNum=0&position=14&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=UjlT6Bbz9cUE3P7e8khuLg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/vendedor-a-sodimac-hc-angol-jornada-pt20-hrs-at-sodimac-4457684010?pageNum=0&position=15&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=qbavaFkNZUzEK28%2Bg01qNA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Vendedor/a Sodimac HC Angol Jornada PT20 hrs",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/conductor-at-davita-chile-4475890747?pageNum=0&position=16&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=iW53CqoD8XN4QAZmT1w%2B%2BQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Conductor",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/encargado-lista-de-espera-jornada-completa-prm-angol-la-araucan%C3%ADa-at-fundaci%C3%B3n-ciudad-del-ni%C3%B1o-4460857103?pageNum=0&position=17&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=dwFdEvW6KhqRxubCK5w%2FZg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "ENCARGADO LISTA DE ESPERA, jornada completa, PRM Angol, La Araucanía",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/especialista-sgi-planta-laja-y-pacifico-at-cmpc-4473591727?pageNum=0&position=18&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=EFcIIYqm6Dwff4lal04IDQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Especialista SGI - Planta Laja y Pacifico.",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/administrativo-a-de-tesorer%C3%ADa-jornada-pt-tienda-angol-at-falabella-4461259756?pageNum=0&position=19&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=C7CDfwizTH3F3oRrRfde%2Bw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Administrativo/a de Tesorería Jornada PT Tienda Angol",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/administrativo-a-de-tesorer%C3%ADa-media-jornada-tarde-angol-at-falabella-4450529391?pageNum=0&position=20&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=m98zf43Dy6pHXno6Gfqo0g%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Administrativo/a de Tesorería, Media Jornada Tarde, Angol",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/vendedor-a-sodimac-hc-angol-jornada-pt25-hrs-at-sodimac-4457681032?pageNum=0&position=21&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=Jmoo2ZQY8QoxaEqKN1br6w%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Vendedor/a Sodimac HC Angol Jornada PT25 hrs",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/vendedor-a-sodimac-hc-angol-jornada-pt25-hrs-at-sodimac-4475862441?pageNum=0&position=22&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=7VcFsIWT%2FGm8s3FiqbO%2BkQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Vendedor/a Sodimac HC Angol Jornada PT25 hrs",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-clinico-jornada-10-hs-cdc-las-araucania-at-fundaci%C3%B3n-ciudad-del-ni%C3%B1o-4466716355?pageNum=0&position=23&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=%2BsHNrUiFBs4GQvvooHDiBQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "SUPERVISOR CLINICO, jornada 10 HS., CDC LAS ARAUCANIA",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/analista-de-vibraciones-senior-%E2%80%93-responsable-t%C3%A9cnico-at-sgs-4472177647?pageNum=0&position=24&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=7QPvVzyETSGB9YDttkvffw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Analista de Vibraciones Senior – Responsable Técnico",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/operativo-a-tienda-sodimac-hc-angol-jornada-ft42hrs-at-sodimac-4465397115?pageNum=0&position=25&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=L67fdR%2BesXZHPTD%2FLqvmgg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Operativo/a Tienda Sodimac HC Angol Jornada FT42hrs",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4463135687?pageNum=0&position=26&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=oqc6QYgsWlamQFvTnVr%2B0w%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4471137982?pageNum=0&position=27&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=OTkf2q0iA7AXXe2Pce%2BMMg%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4469999851?pageNum=0&position=28&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=oXEZE1Nyg5aG0w3v3xL%2F%2Bw%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4468620419?pageNum=0&position=29&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=0Nfb6gE7br%2B6AFzWrwruaQ%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4477496147?pageNum=0&position=30&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=7izPKgCAXsUh7qS8v2%2B95w%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/supervisor-a-t%C3%A9cnico-a-de-obra-proyecto-at-atcom-chile-4476938921?pageNum=0&position=31&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=1axF%2BWhjrOsZxjHNb4mUaA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Supervisor(a) Técnico(a) de Obra (Proyecto)",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    },
+    {
+      "url": "https://cl.linkedin.com/jobs/view/vendedor-a-sodimac-hc-angol-jornada-pt20-hrs-at-sodimac-4475868235?pageNum=0&position=32&refId=fQEfA1SCcbAMoF%2BDmDQSLw%3D%3D&trackingId=WC%2F2GuPbztAzQZekSeRqhA%3D%3D",
+      "source": "LinkedIn",
+      "title_hint": "Vendedor/a Sodimac HC Angol Jornada PT20 hrs",
+      "commune_query": "Collipulli",
+      "work_location_verified": false,
+      "discovered_at": "2026-10-13T14:24:24.354394+00:00",
+      "state": "pending_verification"
+    }
+  ],
+  "candidate_count": 92,
+  "diagnostics": [
+    {
+      "key": "indeed:Angol",
+      "source": "Indeed",
+      "commune_query": "Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "request_url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "error",
+      "lookback_days": 45,
+      "error": "HTTP 403"
+    },
+    {
+      "key": "computrabajo:Angol",
+      "source": "Computrabajo",
+      "commune_query": "Angol",
+      "url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "request_url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "linkedin:Angol",
+      "source": "LinkedIn",
+      "commune_query": "Angol",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "request_url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 60,
+      "status": "ok",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "laborum:Angol",
+      "source": "Laborum",
+      "commune_query": "Angol",
+      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "request_url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "opcionempleo:Angol",
+      "source": "Opción Empleo",
+      "commune_query": "Angol",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "request_url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "indeed:Collipulli",
+      "source": "Indeed",
+      "commune_query": "Collipulli",
+      "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "request_url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "error",
+      "lookback_days": 45,
+      "error": "HTTP 403"
+    },
+    {
+      "key": "computrabajo:Collipulli",
+      "source": "Computrabajo",
+      "commune_query": "Collipulli",
+      "url": "https://cl.computrabajo.com/trabajo-en-collipulli",
+      "request_url": "https://cl.computrabajo.com/trabajo-en-collipulli",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "linkedin:Collipulli",
+      "source": "LinkedIn",
+      "commune_query": "Collipulli",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "request_url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 32,
+      "status": "ok",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "laborum:Collipulli",
+      "source": "Laborum",
+      "commune_query": "Collipulli",
+      "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "request_url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "opcionempleo:Collipulli",
+      "source": "Opción Empleo",
+      "commune_query": "Collipulli",
+      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "request_url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    }
+  ],
+  "requests": 10,
+  "published_count": 0,
+  "paid_provider_calls": 0,
+  "checkpoints": {
+    "public_portal_history_v1": {
+      "position": 0,
+      "queues": {
+        "indeed:Angol": [
+          "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45"
+        ],
+        "computrabajo:Angol": [],
+        "linkedin:Angol": [],
+        "laborum:Angol": [],
+        "opcionempleo:Angol": [],
+        "indeed:Collipulli": [
+          "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45"
+        ],
+        "computrabajo:Collipulli": [],
+        "linkedin:Collipulli": [],
+        "laborum:Collipulli": [],
+        "opcionempleo:Collipulli": []
+      }
+    }
+  },
+  "coverage_complete": false,
+  "note": "Individual source pages require verification; pagination and blocked sources remain pending."
+}

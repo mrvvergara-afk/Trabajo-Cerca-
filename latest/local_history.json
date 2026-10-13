@@ -1,0 +1,440 @@
+{
+  "schema": "trabajo-cerca.local-history.v1",
+  "generated_at": "2026-10-13T14:24:24.354394+00:00",
+  "lookback_days": 45,
+  "candidates": [
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "source": "Fuente local",
+      "title_hint": null,
+      "state": "pending_verification",
+      "work_location_verified": false
+    }
+  ],
+  "candidate_count": 1,
+  "notice_evidence": [
+    {
+      "role": null,
+      "company": null,
+      "workplace_evidence": null,
+      "work_communes": [],
+      "emails": [
+        "afuentess@mtraiguen.cl",
+        "jrojo@mtraiguen.cl",
+        "jtapia@mtraiguen.cl",
+        "malracon@mtraiguen.cl",
+        "nflores@mtraiguen.cl"
+      ],
+      "phones": [
+        "45-2-886707",
+        "45-2-886710",
+        "45-2-886723",
+        "45-2-886725",
+        "45-2-886733"
+      ],
+      "source_published_at": null,
+      "missing": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "fecha_original"
+      ],
+      "hiring_language": true,
+      "published": false,
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "status": "pending",
+      "reason": "local_notice_requires_review"
+    },
+    {
+      "role": "proveer el cargo de Orientador/a Laboral por 44 horas semanales para el Programa Fortalecimiento OMIL 2024, para prestar",
+      "company": null,
+      "workplace_evidence": null,
+      "work_communes": [],
+      "emails": [],
+      "phones": [],
+      "source_published_at": null,
+      "missing": [
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "hiring_language": true,
+      "published": false,
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": "pending",
+      "reason": "local_notice_requires_review"
+    },
+    {
+      "role": null,
+      "company": null,
+      "workplace_evidence": null,
+      "work_communes": [],
+      "emails": [],
+      "phones": [],
+      "source_published_at": null,
+      "missing": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "hiring_language": true,
+      "published": false,
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "status": "pending",
+      "reason": "source_date_missing_or_future",
+      "media_url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "engine": "tesseract-local"
+    },
+    {
+      "role": null,
+      "company": null,
+      "workplace_evidence": null,
+      "work_communes": [],
+      "emails": [],
+      "phones": [],
+      "source_published_at": null,
+      "missing": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "hiring_language": true,
+      "published": false,
+      "url": "https://www.muninegrete.cl/",
+      "status": "pending",
+      "reason": "local_notice_requires_review"
+    },
+    {
+      "role": "de Ventas Día de Todos los Santos",
+      "company": null,
+      "workplace_evidence": null,
+      "work_communes": [],
+      "emails": [],
+      "phones": [],
+      "source_published_at": null,
+      "missing": [
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "hiring_language": true,
+      "published": false,
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "status": "pending",
+      "reason": "local_notice_requires_review"
+    },
+    {
+      "role": "CANTIDAD DE VACANTESFECHA DE INICIO LLAMADO A CONCURSOFECHA DE TERMINO LLAMADO A CONCURSODESCARGAR BASES/DECRETOSDESCARG",
+      "company": null,
+      "workplace_evidence": null,
+      "work_communes": [],
+      "emails": [],
+      "phones": [],
+      "source_published_at": null,
+      "missing": [
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "hiring_language": true,
+      "published": false,
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "status": "pending",
+      "reason": "local_notice_requires_review"
+    }
+  ],
+  "verified_notices": 0,
+  "diagnostics": [
+    {
+      "source": "Municipalidad / OMIL Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Municipalidad / OMIL Lumaco",
+      "url": "https://www.munilumaco.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 1,
+      "media_read": 0
+    },
+    {
+      "source": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Municipalidad / OMIL Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Municipalidad / OMIL Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 5,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Mulchén",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 12,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "ValueError"
+    },
+    {
+      "source": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Radio Nativa",
+      "url": "https://www.radionativa.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 2,
+      "media_read": 1
+    },
+    {
+      "source": "CMPC · sitio corporativo",
+      "url": "https://www.cmpc.com/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Arauco · sitio corporativo",
+      "url": "https://www.arauco.com/",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "ValueError"
+    }
+  ],
+  "published_count": 0,
+  "paid_provider_calls": 0,
+  "coverage_complete": false,
+  "checkpoints": {
+    "local_document_history_v1": {
+      "position": 0,
+      "queues": {
+        "Municipalidad / OMIL Angol": [
+          {
+            "url": "https://noticias.angol.cl/index.php/noticias",
+            "published_at": null
+          }
+        ],
+        "Municipalidad / OMIL Lumaco": [
+          {
+            "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+            "published_at": null
+          }
+        ],
+        "Municipalidad / OMIL Los Sauces": [],
+        "Municipalidad / OMIL Traiguén": [],
+        "Municipalidad / OMIL Renaico": [],
+        "Municipalidad / OMIL Nacimiento": [],
+        "Municipalidad / OMIL Negrete": [
+          {
+            "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.muninegrete.cl/page/2/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.muninegrete.cl/page/3/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.muninegrete.cl/page/40/",
+            "published_at": null
+          }
+        ],
+        "Municipalidad / OMIL Mulchén": [
+          {
+            "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-psicologo-omil/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-3/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/llamado-a-concurso-publico/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/",
+            "published_at": null
+          }
+        ],
+        "Municipalidad / OMIL Collipulli": [
+          {
+            "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+            "published_at": null
+          }
+        ],
+        "Malleco 7": [],
+        "Radio Nativa": [
+          {
+            "url": "https://www.radionativa.cl/page/2/",
+            "published_at": null
+          },
+          {
+            "url": "https://www.radionativa.cl/page/100/",
+            "published_at": null
+          }
+        ],
+        "CMPC · sitio corporativo": [],
+        "Arauco · sitio corporativo": [
+          {
+            "url": "https://www.arauco.com/",
+            "published_at": null
+          }
+        ]
+      },
+      "seen": {
+        "Municipalidad / OMIL Angol": [],
+        "Municipalidad / OMIL Lumaco": [
+          "https://www.munilumaco.cl/"
+        ],
+        "Municipalidad / OMIL Los Sauces": [
+          "https://www.munilossauces.cl/noticias"
+        ],
+        "Municipalidad / OMIL Traiguén": [
+          "https://mtraiguen.cl/direccion-de-fomento-productivo/"
+        ],
+        "Municipalidad / OMIL Renaico": [
+          "https://municipalidadrenaico.cl/concursos-publicos/"
+        ],
+        "Municipalidad / OMIL Nacimiento": [
+          "https://www.nacimiento.cl/noticias"
+        ],
+        "Municipalidad / OMIL Negrete": [
+          "https://www.muninegrete.cl/"
+        ],
+        "Municipalidad / OMIL Mulchén": [
+          "https://www.munimulchen.cl/?s=oferta+laboral"
+        ],
+        "Municipalidad / OMIL Collipulli": [
+          "https://municipalidadcollipulli.cl/concursos-publicos/"
+        ],
+        "Malleco 7": [
+          "https://www.malleco7.cl/"
+        ],
+        "Radio Nativa": [
+          "https://www.radionativa.cl/"
+        ],
+        "CMPC · sitio corporativo": [
+          "https://www.cmpc.com/"
+        ],
+        "Arauco · sitio corporativo": []
+      }
+    }
+  }
+}

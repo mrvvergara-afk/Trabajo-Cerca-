@@ -1,0 +1,271 @@
+{
+  "checked_at": "2026-10-13T14:24:24.354394+00:00",
+  "portal_candidates": 92,
+  "local_candidates": 1,
+  "local_notices_verified": 0,
+  "portal_verified": 0,
+  "ready": 0,
+  "published": 0,
+  "publication_confirmed": false,
+  "paid_provider_calls": 0,
+  "historical_coverage_complete": false,
+  "inventory_count": 283,
+  "portal_diagnostics": [
+    {
+      "key": "indeed:Angol",
+      "source": "Indeed",
+      "commune_query": "Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "request_url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "error",
+      "lookback_days": 45,
+      "error": "HTTP 403"
+    },
+    {
+      "key": "computrabajo:Angol",
+      "source": "Computrabajo",
+      "commune_query": "Angol",
+      "url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "request_url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "linkedin:Angol",
+      "source": "LinkedIn",
+      "commune_query": "Angol",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "request_url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 60,
+      "status": "ok",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "laborum:Angol",
+      "source": "Laborum",
+      "commune_query": "Angol",
+      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "request_url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "opcionempleo:Angol",
+      "source": "Opción Empleo",
+      "commune_query": "Angol",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "request_url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "indeed:Collipulli",
+      "source": "Indeed",
+      "commune_query": "Collipulli",
+      "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "request_url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "error",
+      "lookback_days": 45,
+      "error": "HTTP 403"
+    },
+    {
+      "key": "computrabajo:Collipulli",
+      "source": "Computrabajo",
+      "commune_query": "Collipulli",
+      "url": "https://cl.computrabajo.com/trabajo-en-collipulli",
+      "request_url": "https://cl.computrabajo.com/trabajo-en-collipulli",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "linkedin:Collipulli",
+      "source": "LinkedIn",
+      "commune_query": "Collipulli",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "request_url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 32,
+      "status": "ok",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "laborum:Collipulli",
+      "source": "Laborum",
+      "commune_query": "Collipulli",
+      "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "request_url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    },
+    {
+      "key": "opcionempleo:Collipulli",
+      "source": "Opción Empleo",
+      "commune_query": "Collipulli",
+      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "request_url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "coverage_complete": false,
+      "historical_coverage_verified": false,
+      "candidates": 0,
+      "status": "limited",
+      "lookback_days": 45,
+      "next_pages": 0
+    }
+  ],
+  "local_diagnostics": [
+    {
+      "source": "Municipalidad / OMIL Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Municipalidad / OMIL Lumaco",
+      "url": "https://www.munilumaco.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 1,
+      "media_read": 0
+    },
+    {
+      "source": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Municipalidad / OMIL Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 0
+    },
+    {
+      "source": "Municipalidad / OMIL Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 5,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Mulchén",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 12,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "ValueError"
+    },
+    {
+      "source": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Radio Nativa",
+      "url": "https://www.radionativa.cl/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 2,
+      "media_read": 1
+    },
+    {
+      "source": "CMPC · sitio corporativo",
+      "url": "https://www.cmpc.com/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Arauco · sitio corporativo",
+      "url": "https://www.arauco.com/",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "ValueError"
+    }
+  ]
+}

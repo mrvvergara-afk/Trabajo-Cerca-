@@ -1,6 +1,6 @@
 # Avisos recientes y ejecución horaria — 13 de octubre de 2026
 
-Esta continuación comprueba la entrada de avisos recientes y prepara la revisión de la programación, después de los cuatro pilotos documentales. No modifica `main`, credenciales ni cuotas de proveedores. El resultado de los pilotos anteriores está en [conexión de documentos](conexion-documentos-2026-10-13.md).
+Esta continuación consiguió **dos publicaciones nuevas de BNE**, confirmó sus IDs mediante el SDK y prepara la revisión de la programación. No modifica `main`, credenciales ni cuotas de proveedores. El resultado de los pilotos documentales anteriores está en [conexión de documentos](conexion-documentos-2026-10-13.md).
 
 ## Problema y corrección
 
@@ -21,14 +21,30 @@ Estas son ofertas de portal. No se presentan como avisos recuperados de Facebook
 
 Las consultas públicas de los perfiles municipales de Renaico y Mulchén, Facebook de Malleco 7 e Instagram de Renaico devolvieron restricciones o errores de lectura. Eso no demuestra que no existan avisos: demuestra que esos accesos no entregaron las publicaciones. OCR interpreta un archivo descargado; no abre una cuenta, un perfil bloqueado ni una publicación inaccesible.
 
-Se preparó un diagnóstico gratuito de hasta seis canales institucionales enlazados desde páginas primarias, alternando Facebook e Instagram. Solo registra estado HTTP, formato, tamaño, título y cantidad de referencias a publicaciones; no conserva HTML, cookies ni tokens. Un perfil sin enlaces legibles sigue sin cobertura acreditada. El diagnóstico no inicia sesión ni llama a servicios de captura pagos.
+El diagnóstico gratuito comprobó seis canales institucionales enlazados desde páginas primarias, alternando Facebook e Instagram. Solo registra estado HTTP, formato, tamaño, título y cantidad de referencias a publicaciones; no conserva HTML, cookies ni tokens. El límite inicial de 900 kB impedía leer los tres perfiles de Facebook: se corrigió con un límite específico de 4 MiB, sin ampliar el de otros sitios. Traiguén, Renaico y Negrete devolvieron perfiles HTTP 200 de aproximadamente 1 MiB, sin enlaces a publicaciones en el HTML inicial. Instagram de Las Noticias, Renaico y Mulchén devolvió pantallas de inicio de sesión.
+
+Una comprobación adicional con un navegador público nuevo, sin cookies ni credenciales, **sí encontró una publicación enlazada en Renaico y otra en Negrete**. El contenido renderizado cambia respecto al HTML inicial; se acreditó una vía gratuita de descubrimiento para esos dos perfiles. Esto no demuestra que todas las publicaciones sean accesibles ni que los enlaces correspondan a empleo. La lectura individual adicional registra únicamente campos y metadatos acotados; no publica a partir de un perfil, un horario relativo o una coincidencia territorial. Las URLs de publicaciones conservan sus IDs y excluyen parámetros opacos de seguimiento.
 
 ## Pruebas y piloto
 
-Las pruebas nuevas comprueban selección de fuentes revisadas, cuotas, deduplicación, prioridad documental, relectura y conservación del histórico, además del tratamiento de una pantalla de acceso social. Los resultados del conjunto completo y la observación de IDs se completarán con el piloto real. Detectar o firmar una oferta no se declara publicación hasta comprobarla en el feed completo mediante el SDK.
+Pasaron **248 pruebas: 110 Python y 138 Node**, en [Actions 38484614196](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38484614196), después de ampliar el límite social. La comprobación con navegador y el conjunto completo también pasaron en [38484931875](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38484931875). Las pruebas nuevas comprueban selección de fuentes revisadas, cuotas, deduplicación, prioridad documental, relectura y conservación del histórico, además de distinguir una pantalla de acceso social de un límite de bytes propio.
+
+El [piloto 38484271444](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38484271444) releyó directamente las tres ofertas BNE y firmó un lote de tres. El escritor existente lo procesó a las **23:35 UTC / 20:35 de Chile**. La [lectura independiente 38487142764](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38487142764), a las 23:55 UTC, confirmó el mismo lote y un feed completo, sin rechazo de ingesta:
+
+| Resultado | ID visible |
+| --- | --- |
+| Nueva oferta de Operativo/a de tienda en Angol | `1772eb49-18de-4fa8-9bdd-7aea3c9fd9a8` |
+| Nueva oferta de Coordinador/a Visual Merchandising en Traiguén | `2f0f424e-d10b-4d7d-98e2-b8e1b29b9783` |
+| Oferta anterior de peaje en Negrete, reverificada con el mismo ID | `free-d294f2d92f9e56840e53553adef2420f48b30847` |
+
+Las dos ofertas Chiletrabajos del piloto anterior seguían visibles. El manifiesto `bc3f9bd3-c93a-4d44-90b4-2a68896ea43b` tiene 56 elementos públicos: el aumento fue de dos, no de 56 publicaciones nuevas. Sus tres recibos corresponden a las tres ofertas de este lote; Negrete no es una oferta nueva ni veinte publicaciones separadas.
+
+No hubo ofertas documentales nuevas aptas en esta pasada: tres PDF siguieron sin fecha original comprobable, y dos eran parciales. El snapshot durable `420c571bb1926162787d17cf876487540ac6a6d2` conservó 365 candidatos, 3.219 observaciones, 34 intentos, cuatro checkpoints, ocho runs y los dos recibos anteriores. El lote nuevo y los snapshots previos permanecen guardados. No se ejecutaron proveedores pagos ni se cambiaron los seis cron de AppDeploy.
 
 ## Activación del horario
 
 El workflow conserva `17 * * * *`. GitHub ejecuta las programaciones desde la rama predeterminada, `main`. La rama independiente permite ejecutar pilotos explícitos; no activa un lector horario permanente. La app ya admite el lote firmado del workflow exacto del repositorio desde `main`, pero el código actual de esa rama todavía no lo produce.
 
-La revisión debe comprobar pruebas, evidencia de ingesta/feed y preservación del histórico antes de integrar el flujo a `main`. No se creó un servicio pago ni un mecanismo de autoejecución para sustituir esa revisión. Sigue pendiente acreditar un aviso social/documental reciente completo y un recorrido histórico de 45 días en cada canal.
+La reparación está en el [PR #1, en borrador](https://github.com/mrvvergara-afk/Trabajo-Cerca-/pull/1). `main` conserva `fab392b824e4100a4bba6dfe9289825297d24707`; no se integró el PR. La revisión debe comprobar pruebas, evidencia de ingesta/feed y preservación del histórico antes de activar el productor horario desde la rama predeterminada.
+
+Para ampliar las fuentes difíciles sin costos, la vía comprobada es leer publicaciones públicas mediante navegador, conservar enlace/fecha/archivo y verificar cada aviso; para canales que exigen acceso se necesitan permisos o una entrega del afiche/PDF por el publicador o la OMIL. No se contrataron servicios ni se añadieron credenciales. Sigue pendiente conectar esa recolección social al verificador con identidad y fecha originales, acreditar un aviso social/documental reciente completo y un recorrido histórico de 45 días en cada canal. Indeed, Computrabajo, LinkedIn, Laborum y Opción Empleo tienen adaptadores preparados, pero no se acredita aquí cobertura ni publicaciones nuevas procedentes de esos cinco portales.

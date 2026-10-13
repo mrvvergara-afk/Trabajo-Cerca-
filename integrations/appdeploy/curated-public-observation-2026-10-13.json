@@ -1,0 +1,508 @@
+{
+  "schema": "trabajo-cerca.curated-public-observation.v1",
+  "producer_commit": "9724b7dd72e14992ae11b6335cae98871b451629",
+  "producer_run_id": 38484271444,
+  "tests": {
+    "python": 110,
+    "node": 138,
+    "total": 248,
+    "run_id": 38484614196
+  },
+  "document_and_portal_pilot": {
+    "schema": "trabajo-cerca.document-cycle.v1",
+    "checked_at": "2026-10-13T23:27:24.948703+00:00",
+    "work_items_received": 69,
+    "checked": 3,
+    "reviewed": [
+      {
+        "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Auxiliares-1.pdf",
+        "status": "pending",
+        "reason": "source_date_missing_or_future",
+        "engine": "tesseract-local",
+        "source_published_at": null,
+        "valid_through": null,
+        "complete_document": false,
+        "page_count": 17,
+        "mean_confidence": 93
+      },
+      {
+        "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-ORIENTADOR-LABORAL-2025.pdf",
+        "status": "pending",
+        "reason": "source_date_missing_or_future",
+        "engine": "tesseract-local",
+        "source_published_at": null,
+        "valid_through": null,
+        "complete_document": false,
+        "page_count": 8,
+        "mean_confidence": 92.9
+      },
+      {
+        "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N%C2%B0-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+        "status": "pending",
+        "reason": "source_date_missing_or_future",
+        "engine": "tesseract-local",
+        "source_published_at": null,
+        "valid_through": null,
+        "complete_document": true,
+        "page_count": 2,
+        "mean_confidence": 75.8
+      }
+    ],
+    "local_verified": 0,
+    "documents_ready": 0,
+    "batch_records": 3,
+    "discovered_channels": [
+      {
+        "channel": "https://www.facebook.com/municipalidadrenaico",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "publisher": "Municipalidad / OMIL Renaico",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.instagram.com/munirenaico/",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "publisher": "Municipalidad / OMIL Renaico",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.facebook.com/munimulchen",
+        "discovered_from": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+        "publisher": "Municipalidad / OMIL Mulchén",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.instagram.com/municipalidaddemulchen",
+        "discovered_from": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+        "publisher": "Municipalidad / OMIL Mulchén",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.facebook.com/Malleco7",
+        "discovered_from": "https://www.malleco7.cl/",
+        "publisher": "Malleco 7",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.facebook.com/diariolasnoticias/",
+        "discovered_from": "https://lasnoticiasdemalleco.cl/policial/carabineros-abrio-postulaciones-para-120-cupos-en-tres-especialidades/",
+        "publisher": "Las Noticias de Malleco",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.instagram.com/lasnoticiasdia/",
+        "discovered_from": "https://lasnoticiasdemalleco.cl/policial/carabineros-abrio-postulaciones-para-120-cupos-en-tres-especialidades/",
+        "publisher": "Las Noticias de Malleco",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.facebook.com/MuniNegreteCL",
+        "discovered_from": "https://www.muninegrete.cl/page/2/",
+        "publisher": "Municipalidad / OMIL Negrete",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      },
+      {
+        "channel": "https://www.instagram.com/muninegrete/",
+        "discovered_from": "https://www.muninegrete.cl/page/2/",
+        "publisher": "Municipalidad / OMIL Negrete",
+        "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+      }
+    ],
+    "local_diagnostics": [
+      {
+        "source": "Municipalidad / OMIL Angol",
+        "url": "https://noticias.angol.cl/index.php/noticias",
+        "status": "error",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "error": "HTTP 403"
+      },
+      {
+        "source": "Municipalidad / OMIL Lumaco",
+        "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+        "status": "error",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "error": "unsupported_media_type"
+      },
+      {
+        "source": "Municipalidad / OMIL Los Sauces",
+        "url": "https://www.munilossauces.cl/noticias",
+        "status": "ok",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "page_date": null,
+        "next_pages": 0,
+        "media_read": 1
+      },
+      {
+        "source": "Municipalidad / OMIL Traiguén",
+        "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+        "status": "ok",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "page_date": null,
+        "next_pages": 0,
+        "media_read": 1
+      },
+      {
+        "source": "Municipalidad / OMIL Renaico",
+        "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "status": "ok",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "page_date": null,
+        "next_pages": 0,
+        "media_read": 2
+      },
+      {
+        "source": "Municipalidad / OMIL Nacimiento",
+        "url": "https://www.nacimiento.cl/noticias",
+        "status": "ok",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "page_date": null,
+        "next_pages": 0,
+        "media_read": 2
+      },
+      {
+        "source": "Municipalidad / OMIL Negrete",
+        "url": "https://www.muninegrete.cl/page/2/",
+        "status": "ok",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "page_date": null,
+        "next_pages": 5,
+        "media_read": 2
+      },
+      {
+        "source": "Municipalidad / OMIL Mulchén",
+        "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+        "status": "ok",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "page_date": null,
+        "next_pages": 10,
+        "media_read": 3
+      },
+      {
+        "source": "Municipalidad / OMIL Collipulli",
+        "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+        "status": "ok",
+        "lookback_days": 45,
+        "coverage_complete": false,
+        "page_date": null,
+        "next_pages": 0,
+        "media_read": 3
+      }
+    ],
+    "inventory_count": 365,
+    "paid_provider_calls": 0,
+    "published": 0,
+    "publication_confirmed": false,
+    "coverage_complete": false,
+    "curated_portals": {
+      "schema": "trabajo-cerca.curated-public-cycle.v1",
+      "checked_at": "2026-10-13T23:28:03.993410+00:00",
+      "catalog_offers": 3,
+      "checked": 3,
+      "reviewed": [
+        {
+          "candidate_url": "https://www.bne.gob.cl/oferta/2026-107065",
+          "status": "verified",
+          "reason": "live_jobposting_with_deadline_and_application",
+          "title": "Operativo/a Tienda Sodimac HC Angol Jornada FT42hrs (1 vacantes)",
+          "company": "SODIMAC S.A.",
+          "work_commune": "Angol",
+          "source_published_at": "2026-09-09T03:00:00.000Z",
+          "valid_through": "2026-10-15T02:59:59.999Z"
+        },
+        {
+          "candidate_url": "https://www.bne.gob.cl/oferta/2026-112312",
+          "status": "verified",
+          "reason": "live_jobposting_with_deadline_and_application",
+          "title": "Coordinador/a Visual Merchandising - Traiguén (1 vacantes)",
+          "company": "ABC S.A.",
+          "work_commune": "Traiguén",
+          "source_published_at": "2026-09-22T03:00:00.000Z",
+          "valid_through": "2026-11-18T02:59:59.999Z"
+        },
+        {
+          "candidate_url": "https://www.bne.gob.cl/oferta/2026-109726",
+          "status": "verified",
+          "reason": "live_jobposting_with_deadline_and_application",
+          "title": "Cajeros/as peaje Negrete (20 vacantes)",
+          "company": "O & C SERVICIOS GENERALES SPA",
+          "work_commune": "Negrete",
+          "source_published_at": "2026-09-15T03:00:00.000Z",
+          "valid_through": "2026-11-18T02:59:59.999Z"
+        }
+      ],
+      "ready_count": 3,
+      "published": 0,
+      "publication_confirmed": false,
+      "paid_provider_calls": 0,
+      "coverage_complete": false
+    },
+    "data_commit": "420c571bb1926162787d17cf876487540ac6a6d2",
+    "backup_counts": {
+      "attempts": 34,
+      "candidates": 365,
+      "checkpoints": 4,
+      "observations": 3219,
+      "publication_receipts": 2,
+      "runs": 8
+    },
+    "signed_batch_created": true,
+    "previous_exchange_preserved": false
+  },
+  "initial_social_diagnostic": {
+    "checked_at": "2026-10-13T23:27:11.146712+00:00",
+    "read_only": true,
+    "paid_provider_calls": 0,
+    "checked": 6,
+    "coverage_complete": false,
+    "results": [
+      {
+        "url": "https://www.facebook.com/munitraiguen/",
+        "territory": "Traiguén",
+        "discovered_from": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "access": "unavailable",
+        "reason": "source_byte_budget_exceeded"
+      },
+      {
+        "url": "https://www.instagram.com/lasnoticiasdia/",
+        "territory": "Malleco",
+        "discovered_from": "https://lasnoticiasdemalleco.cl/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 505922,
+        "mime": "text/html",
+        "title": "InstagramDown chevron icon",
+        "post_references": 0,
+        "access": "login_required",
+        "reason": "login_wall"
+      },
+      {
+        "url": "https://www.facebook.com/municipalidadrenaico",
+        "territory": "Renaico",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "access": "unavailable",
+        "reason": "source_byte_budget_exceeded"
+      },
+      {
+        "url": "https://www.instagram.com/munirenaico/",
+        "territory": "Renaico",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 510415,
+        "mime": "text/html",
+        "title": "InstagramDown chevron icon",
+        "post_references": 0,
+        "access": "login_required",
+        "reason": "login_wall"
+      },
+      {
+        "url": "https://www.facebook.com/MuniNegreteCL",
+        "territory": "Negrete",
+        "discovered_from": "https://www.muninegrete.cl/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "access": "unavailable",
+        "reason": "source_byte_budget_exceeded"
+      },
+      {
+        "url": "https://www.instagram.com/municipalidaddemulchen",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 506357,
+        "mime": "text/html",
+        "title": "InstagramDown chevron icon",
+        "post_references": 0,
+        "access": "login_required",
+        "reason": "login_wall"
+      }
+    ]
+  },
+  "expanded_social_diagnostic": {
+    "checked_at": "2026-10-13T23:30:26.091790+00:00",
+    "read_only": true,
+    "paid_provider_calls": 0,
+    "checked": 6,
+    "coverage_complete": false,
+    "results": [
+      {
+        "url": "https://www.facebook.com/munitraiguen/",
+        "territory": "Traiguén",
+        "discovered_from": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 995975,
+        "mime": "text/html",
+        "title": "Municipalidad de Traiguén",
+        "post_references": 0,
+        "access": "no_readable_posts",
+        "reason": "individual_notices_not_verified"
+      },
+      {
+        "url": "https://www.instagram.com/lasnoticiasdia/",
+        "territory": "Malleco",
+        "discovered_from": "https://lasnoticiasdemalleco.cl/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 505470,
+        "mime": "text/html",
+        "title": "InstagramDown chevron icon",
+        "post_references": 0,
+        "access": "login_required",
+        "reason": "login_wall"
+      },
+      {
+        "url": "https://www.facebook.com/municipalidadrenaico",
+        "territory": "Renaico",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 1039713,
+        "mime": "text/html",
+        "title": "Municipalidad de Renaico | Renaico",
+        "post_references": 0,
+        "access": "no_readable_posts",
+        "reason": "individual_notices_not_verified"
+      },
+      {
+        "url": "https://www.instagram.com/munirenaico/",
+        "territory": "Renaico",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 505343,
+        "mime": "text/html",
+        "title": "InstagramDown chevron icon",
+        "post_references": 0,
+        "access": "login_required",
+        "reason": "login_wall"
+      },
+      {
+        "url": "https://www.facebook.com/MuniNegreteCL",
+        "territory": "Negrete",
+        "discovered_from": "https://www.muninegrete.cl/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 1000254,
+        "mime": "text/html",
+        "title": "Municipalidad de Negrete | Negrete",
+        "post_references": 0,
+        "access": "no_readable_posts",
+        "reason": "individual_notices_not_verified"
+      },
+      {
+        "url": "https://www.instagram.com/municipalidaddemulchen",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "http_status": 200,
+        "bytes": 505972,
+        "mime": "text/html",
+        "title": "InstagramDown chevron icon",
+        "post_references": 0,
+        "access": "login_required",
+        "reason": "login_wall"
+      }
+    ]
+  },
+  "rendered_facebook_diagnostic": {
+    "checked_at": "2026-10-13T23:33:41.333116+00:00",
+    "read_only": true,
+    "paid_provider_calls": 0,
+    "checked": 2,
+    "coverage_complete": false,
+    "results": [
+      {
+        "url": "https://www.facebook.com/municipalidadrenaico",
+        "territory": "Renaico",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "title": "Municipalidad de Renaico | Renaico  | FacebookFacebookShared with Public",
+        "post_references": 1,
+        "post_urls": [
+          "https://www.facebook.com/municipalidadrenaico/posts/pfbid0snvSzg1cDd8TPohNoA3PLXKRi2KL9SuYksdZu4GKJa4N4B6teBbxCMbRqXVCpWRol"
+        ],
+        "access": "post_links_visible",
+        "reason": "individual_notices_not_verified"
+      },
+      {
+        "url": "https://www.facebook.com/MuniNegreteCL",
+        "territory": "Negrete",
+        "discovered_from": "https://www.muninegrete.cl/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "title": "Municipalidad de Negrete | Negrete  | FacebookFacebookShared with Public",
+        "post_references": 1,
+        "post_urls": [
+          "https://www.facebook.com/MuniNegreteCL/posts/pfbid0JGYa7953gnYMCuuThAGgshGqJrSpvsY7TizLZfcnekM38MkVUc8h88w82UJG41kdl"
+        ],
+        "access": "post_links_visible",
+        "reason": "individual_notices_not_verified"
+      }
+    ]
+  },
+  "publication_observation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "free-d294f2d92f9e56840e53553adef2420f48b30847",
+      "1772eb49-18de-4fa8-9bdd-7aea3c9fd9a8",
+      "2f0f424e-d10b-4d7d-98e2-b8e1b29b9783"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "420c571bb1926162787d17cf876487540ac6a6d2",
+    "ingestion_run_id": "38484271444",
+    "feed_complete": true,
+    "feed_manifest": "bc3f9bd3-c93a-4d44-90b4-2a68896ea43b",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "publication_new_count": 2,
+  "reverified_previous_count": 1,
+  "main_changed": false,
+  "credentials_changed": false,
+  "manual_paid_provider_calls": 0
+}

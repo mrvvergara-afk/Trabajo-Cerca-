@@ -1,5 +1,5 @@
 {
   "schema": "trabajo-cerca.laboratory-observation.v1",
-  "attempt": 5,
-  "purpose": "Read actual ingestion and feed progress; do not collect or write offers"
+  "attempt": 6,
+  "purpose": "Confirm the reviewed BNE batch after the existing scheduled writer; read only, no providers"
 }

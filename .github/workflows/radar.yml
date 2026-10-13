@@ -27,7 +27,8 @@ jobs:
     if: >-
       github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
       github.event.repository.private == false &&
-      contains(github.event.head_commit.message, '[public sources]')
+      (contains(github.event.head_commit.message, '[public sources]') ||
+       contains(github.event.head_commit.message, '[public browser]'))
     runs-on: ubuntu-latest
     timeout-minutes: 12
     permissions:
@@ -45,6 +46,7 @@ jobs:
           sudo apt-get -qq update
           sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa
       - name: Leer portales, archivos y afiches sin proveedores pagos
+        if: contains(github.event.head_commit.message, '[public sources]')
         run: python -m scripts.public_sources_probe
       - name: Comprobar el recolector gratuito mediante la interfaz y el SDK de la app
         run: node scripts/observe_public_sources.mjs

@@ -97,7 +97,13 @@ class LocalSourceAuditTests(unittest.TestCase):
         pdf+=b''.join((f'{offset:010} 00000 n \n').encode() for offset in offsets[1:])
         pdf+=('trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n'+str(start)+'\n%%EOF').encode()
         url='https://municipio.example/aviso.pdf'
-        with patch('scripts.local_source_audit.fetch_public',return_value=(pdf,url,'application/pdf',200)):
+        # Municipal scan PDFs in the real pilot exceeded the former 2 MiB cap.
+        # A valid PDF padded with comments exercises the actual reader above that limit.
+        pdf += b'% municipal document padding\n' * 100000
+        def fetcher(source,budget,max_bytes):
+            if len(pdf)>max_bytes:raise ValueError('source_byte_budget_exceeded')
+            return pdf,url,'application/pdf',200
+        with patch('scripts.local_source_audit.fetch_public',side_effect=fetcher):
             read=read_medium(url,url,Budget(25))
         self.assertEqual(read['engine'],'pdftotext-local')
         self.assertIn('empleo@example.cl',read['text'])

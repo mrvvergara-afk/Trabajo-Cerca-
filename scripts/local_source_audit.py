@@ -216,7 +216,7 @@ def read_medium(url, source_url, budget):
     host = urllib.parse.urlsplit(url).hostname or ''
     if not same_publisher(url,source_url) and not re.search(r'\.(fbcdn\.net|cdninstagram\.com)$',host):
         raise ValueError('media_publisher_not_allowed')
-    data,final,mime,status = fetch_public(url,budget,max_bytes=2*1024*1024)
+    data,final,mime,status = fetch_public(url,budget,max_bytes=8*1024*1024)
     with tempfile.TemporaryDirectory() as directory:
         path = Path(directory)/('evidence.pdf' if mime=='application/pdf' else 'evidence.image')
         path.write_bytes(data)

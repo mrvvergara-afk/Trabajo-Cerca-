@@ -11,7 +11,7 @@ function page(source=url) {
   return '<title>Operador</title><main>Requisitos de empleo</main><script type="application/ld+json">'+JSON.stringify({ '@type':'JobPosting',url:source,title:'Operador',hiringOrganization:{ name:'Empresa de prueba' },jobLocation:{ address:{ addressLocality:'Angol',addressCountry:'CL' } },datePosted:'2026-10-12T12:00:00Z',validThrough:'2026-10-25T12:00:00Z' })+'</script><a href="/postular/123">Postula</a>';
 }
 
-function harness({ blocked=false,abort=false }={}) {
+function harness({ blocked=false,abort=false,fetcher }={}) {
   const tables=new Map(),calls=[],registered=[];
   let time=stamp;
   const table=name=>{if (!tables.has(name)) tables.set(name,new Map());return tables.get(name);};
@@ -36,7 +36,7 @@ function harness({ blocked=false,abort=false }={}) {
   };
   class Clock extends Date {constructor(...args) {super(...(args.length?args:[time]));}static now(){return time;}}
   const ctx={ URL,Intl,Date:Clock,Buffer,createHash,db,structuredClone,
-    fetchPublicPage:async source=>{calls.push({ method:'http',source });return { url:source,status:blocked?403:200,raw:blocked?'':page(source),mime:'text/html',bytes:500 };},
+    fetchPublicPage:async source=>{calls.push({ method:'http',source });return fetcher ? fetcher(source) : { url:source,status:blocked?403:200,raw:blocked?'':page(source),mime:'text/html',bytes:500 };},
     registerPublicFeedChange:async (table,id)=>registered.push({ table,id }),
     currentPublicFeedManifest:async()=>null };
   vm.createContext(ctx);
@@ -108,4 +108,36 @@ test('A blocked recheck preserves the historical offer and never refreshes its v
   assert.equal(result.stored,0);assert.equal(result.trackedOffers,1);assert.equal(h.registered.length,0);
   assert.equal(h.table(name).get('historical-source-id').externalVerifiedAt,stale);
   assert.equal(h.table('free_public_source_cursor').get('cursor').rechecks.length,1);
+});
+
+test('Local notices are selected alongside portals while media remains saved for the local reader',()=>{
+ const h=harness(),items=[{url:url,source:'Indeed'},{url:'https://www.munilumaco.cl/aviso.pdf',source:'OMIL'},{url:'https://www.munilumaco.cl/oferta-laboral',source:'OMIL'}];
+ assert.equal(h.ctx.pendingCandidateIndex(items,0),2);assert.equal(h.ctx.pendingCandidateIndex(items,1),0);
+ assert.equal(h.ctx.pendingCandidateIndex([items[1]],0),-1);assert.equal(items.length,3);
+});
+
+test('A reviewed source can enter a full queue once without evicting historical candidates',async()=>{
+ const h=harness();const pending=Array.from({length:100},(_,i)=>({url:'https://www.munilumaco.cl/archivo-'+i+'.pdf',source:'Archivo'}));
+ h.table('free_public_source_cursor').set('cursor',{id:'cursor',position:0,queues:{},seen:{},pending,runId:'older-run-001'});
+ h.sources[0].bootstrap=true;
+ const result=await h.ctx.runFreePublicSources(h.sources,'bootstrap-scan-001',stamp);
+ assert.equal(result.stored,1);assert.equal(result.pending,100);assert.equal(result.documentsAwaitingLocalReader,100);
+ assert.equal(h.table('free_public_source_cursor').get('cursor').pending.length,100);
+ assert.equal(h.table('free_public_source_reads').size,1);
+});
+
+test('Navigation and staff pages are not job candidates; literal job announcements still are',()=>{
+ const h=harness(),origin='https://radioviaducto.cl/';
+ const raw='<nav><a href="/oferta-laboral-antigua">Oferta laboral</a></nav><a href="/equipo-de-trabajo">Equipo de trabajo</a><a href="/omil-en-terreno">OMIL en terreno</a><a href="/oferta-laboral-operador">Oferta laboral: operador</a>';
+ const links=h.ctx.publicPageLinks(raw,origin);assert.equal(links.candidates.length,1);assert.ok(links.candidates[0].url.endsWith('/oferta-laboral-operador'));
+});
+
+test('Source evidence retains overflow discoveries even when the work queue is full',async()=>{
+ const candidate=url.replace('0123456789abcdef','abcdef0123456789');
+ const h=harness({fetcher:async source=>({url:source,status:200,raw:'<a href="'+candidate+'">Operador</a>',mime:'text/html',bytes:100})});
+ const pending=Array.from({length:100},(_,i)=>({url:'https://www.munilumaco.cl/archivo-'+i+'.pdf',source:'Archivo'}));
+ h.table('free_public_source_cursor').set('cursor',{id:'cursor',position:0,queues:{},seen:{},pending,runId:'older-run-002'});
+ const result=await h.ctx.runFreePublicSources(h.sources,'overflow-scan-001',stamp);
+ assert.equal(result.pending,100);assert.equal(result.audits[0].queueFull,true);
+ const read=[...h.table('free_public_source_reads').values()][0];assert.ok(read.candidateEvidence.some(entry=>entry.url===candidate));
 });

@@ -14,6 +14,7 @@ LOCAL_PUBLISHERS = {
     'muninegrete.cl':'Municipalidad de Negrete', 'munimulchen.cl':'Municipalidad de Mulchén',
     'municipalidadcollipulli.cl':'Municipalidad de Collipulli', 'malleco7.cl':'Malleco 7',
     'radionativa.cl':'Radio Nativa', 'cmpc.com':'CMPC', 'arauco.com':'Arauco',
+    'radioviaducto.cl':'Radio Viaducto', 'lasnoticiasdemalleco.cl':'Las Noticias de Malleco',
 }
 
 
@@ -28,7 +29,9 @@ def source_adapter(value):
     host, path = url.hostname.removeprefix('www.'), url.path
     query = urllib.parse.parse_qs(url.query)
     name, identity, family = '', '', 'portal'
-    if host == 'chiletrabajos.cl' and re.fullmatch(r'/trabajo/[^/]+/?',path):
+    if host in ('bne.gob.cl','bne.cl') and (match := re.fullmatch(r'/oferta/(20\d{2}-\d{1,9})/?',path)):
+        name, identity = 'Bolsa Nacional de Empleo', 'https://www.bne.gob.cl/oferta/'+match[1]
+    elif host == 'chiletrabajos.cl' and re.fullmatch(r'/trabajo/[^/]+/?',path):
         name, identity = 'Chiletrabajos', 'https://www.chiletrabajos.cl'+path.rstrip('/')
     elif host in ('indeed.com','cl.indeed.com') and path in ('/viewjob','/rc/clk') and re.fullmatch(r'[a-f0-9]{16}',query.get('jk',[''])[0],re.I):
         name, identity = 'Indeed', 'https://cl.indeed.com/viewjob?jk='+query['jk'][0].lower()
@@ -40,9 +43,12 @@ def source_adapter(value):
         name, identity = 'Laborum', 'https://www.laborum.cl/empleos/oferta-'+match[1]+'.html'
     elif host == 'opcionempleo.cl' and (match := re.fullmatch(r'/jobad/([a-z0-9]{12,})(?:\.html)?/?',path,re.I)):
         name, identity, family = 'Opción Empleo', 'https://www.opcionempleo.cl/jobad/'+match[1].lower(), 'aggregator'
+    elif host == 'jobs.arauco.com' and (match := re.fullmatch(r'/(?:Chile/)?job/(?:[^/]+/)?(\d{5,})/?',path,re.I)):
+        name, identity = 'Arauco · portal de empleo', 'https://jobs.arauco.com/job/'+match[1]
     elif host in LOCAL_PUBLISHERS and path.strip('/') and not url.query and not re.fullmatch(r'/(?:noticias?|concursos-publicos|direccion-de-fomento-productivo|category|categoria|tag|page|wp-json|feed)(?:/\d+)?/?',path):
         name, identity, family = LOCAL_PUBLISHERS[host], 'https://'+host+path.rstrip('/'), 'local'
-    return {'name':name,'family':family,'identityUrl':identity,'verificationMethod':name+' individual page + matching JobPosting'} if name else None
+    method = ' individual page + official labelled offer' if name == 'Bolsa Nacional de Empleo' else ' individual page + matching JobPosting'
+    return {'name':name,'family':family,'identityUrl':identity,'verificationMethod':name+method} if name else None
 
 
 def same_job(left, right):

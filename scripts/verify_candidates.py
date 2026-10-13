@@ -16,11 +16,11 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 try:
-    from .common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
+    from .common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json, decode_public_html
     from .state import choose_candidates
     from .public_source_adapters import source_adapter, same_job
 except ImportError:
-    from common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
+    from common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json, decode_public_html
     from state import choose_candidates
     from public_source_adapters import source_adapter, same_job
 
@@ -252,7 +252,8 @@ def check(item, *, opener=None, budget=None, now=None):
             data = response.read(600001)
             if len(data)>600000:
                 return {'status':'pending','reason':'source_byte_budget_exceeded'}
-            raw = data.decode('utf-8', 'replace')
+            headers=getattr(response,'headers',{})
+            raw = decode_public_html(data,headers.get('Content-Type',''))
             if source_adapter(item['url'])['family'] == 'aggregator' and response.status == 200:
                 originals = original_source_links(raw,response.geturl())
                 if len(originals) != 1:
@@ -265,6 +266,7 @@ def check(item, *, opener=None, budget=None, now=None):
     except urllib.error.HTTPError as exc:
         return evaluate(item, '', item['url'], status=exc.code, now=now)
     except ValueError as exc:
+        if str(exc)=='source_encoding_unsupported':return {'status':'pending','reason':'source_encoding_unsupported'}
         if str(exc) == 'redirected_outside_job':
             return {'status': 'rejected', 'reason': 'redirected_outside_job'}
         raise

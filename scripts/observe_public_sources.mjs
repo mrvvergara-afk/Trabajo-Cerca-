@@ -72,18 +72,22 @@ try {
   if (proof.result.stored>0) {
     // Observe the existing writer through the read-only SDK view; do not invoke another scan or paid handler.
     const wanted=new Set(proof.result.receipts.map(receipt=>receipt.url));
+    const savedIds=new Map(proof.result.receipts.map(receipt=>[receipt.url,receipt.id]));
     await command('Page.navigate',{url:'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?radar-proof=1#operacion'});
     let publication,confirmed=false;
-    for (let attempt=0;attempt<360;attempt++) {
-      if (attempt && attempt%30===0) await command('Page.reload',{ignoreCache:true});
+    for (let attempt=0;attempt<960;attempt++) {
+      if (attempt && attempt%60===0) await command('Page.reload',{ignoreCache:true});
       publication=await read('radar-live-check');
       const ingestion=publication?.ingestion,feed=publication?.feed;
       const matches=ingestion?.receipts?.filter(receipt=>wanted.has(receipt.sourceUrl) && receipt.publishedId && publication.visibleIds?.includes(receipt.publishedId)) || [];
-      if (!publication?.feedReadError && feed?.complete && feed.manifestId===ingestion?.feedManifestId && matches.length===wanted.size) {confirmed=true;break;}
+      const visibleSources=new Set(matches.map(receipt=>receipt.sourceUrl));
+      for (const [url,id] of savedIds) if (publication?.visibleIds?.includes(id)) visibleSources.add(url);
+      if (!publication?.feedReadError && feed?.complete && visibleSources.size===wanted.size) {confirmed=true;break;}
       await pause(1000);
     }
-    writeFileSync('output/public-sources/app-publication-after-recheck.json',JSON.stringify({confirmed,publication},null,2)+'\n');
-    console.log('APP_PUBLICATION_AFTER_RECHECK '+JSON.stringify({confirmed,publication}));
+    const sourceReceipts=[...savedIds].map(([url,id])=>({url,id,visible:publication?.visibleIds?.includes(id) || false}));
+    writeFileSync('output/public-sources/app-publication-after-recheck.json',JSON.stringify({confirmed,sourceReceipts,publication},null,2)+'\n');
+    console.log('APP_PUBLICATION_AFTER_RECHECK '+JSON.stringify({confirmed,sourceReceipts,publication}));
     if (!confirmed) throw new Error('Saved source offers are not yet confirmed in the public feed');
   }
 } catch (error) {

@@ -2,7 +2,7 @@
 import json
 import re
 from pathlib import Path
-from .common import Budget, utcnow, write_json
+from .common import Budget, utcnow, write_json, decode_public_html
 from .local_source_audit import fetch_public, source_error, Document
 
 URLS = ["https://www.bne.gob.cl/oferta/2026-109726","https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral","https://www.munimulchen.cl/wp-json/wp/v2/posts?search=oferta%20laboral&per_page=10","https://www.muninegrete.cl/feed/","https://www.cmpc.com/trabaja-con-nosotros/","https://cmpc.trabajando.cl/","https://jobs.arauco.com/","https://radioviaducto.cl/","https://lasnoticiasdemalleco.cl/","https://www.djkamikaze.cl/"]
@@ -14,15 +14,17 @@ def main():
         row={'url':url,'paid_provider_calls':0}
         try:
             data,final,mime,status=fetch_public(url,budget,max_bytes=900000)
-            raw=data.decode('utf-8','replace')
+            raw=decode_public_html(data)
             parsed=Document();parsed.feed(raw)
             row.update(final_url=final,status=status,mime=mime,bytes=len(data),title=parsed.title[:180])
             # Retain a bounded structural fixture, not scripts, cookies, hidden tokens or contact details in logs.
             sanitized=re.sub(r'<script\b[^>]*>[\s\S]*?</script>|<input\b[^>]*>|<style\b[^>]*>[\s\S]*?</style>','',raw,flags=re.I)
-            (output/('regional-source-'+str(index)+'.html')).write_text(sanitized)
-            relevant=[(href,label[:120]) for href,label in parsed.links if re.search(r'oferta|empleo|job|trabaj|facebook|instagram|feed|omil',href+' '+label,re.I)]
+            # Keep only the structural comparison in the artifact, not entire news articles.
+            relevant=[(href,label[:120]) for href,label in parsed.links if re.search(r'oferta|empleo|job|trabaj|facebook|instagram|feed|omil|postul',href+' '+label,re.I)]
             row.update(links=relevant[:25])
             if 'bne.gob.cl/oferta/' in final:
+                from .verify_candidates import evaluate
+                row['verification']=evaluate({'url':url},raw,final,status=status,now=utcnow())
                 markers=['DATOS DE CONTACTO','DESCRIPCI','15/09/2026','Origen de la Oferta','Postular','Negrete']
                 row['structure']=[sanitized[max(0,match.start()-120):match.start()+650] for marker in markers for match in list(re.finditer(re.escape(marker),sanitized,re.I))[:1]]
             if mime=='application/json':

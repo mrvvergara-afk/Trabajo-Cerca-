@@ -63,6 +63,15 @@ def parse_date(value):
         return None
 
 
+def decode_public_html(data, content_type=''):
+    declared = re.search(r'charset\s*=\s*["\']?([^\s;"\']+)',content_type,re.I)
+    meta = re.search(rb'charset\s*=\s*["\']?([a-z0-9_-]+)',data[:4096],re.I)
+    encoding = (declared[1] if declared else meta[1].decode('ascii') if meta else 'utf-8').lower()
+    if encoding not in ('utf-8','utf8','iso-8859-1','latin1','windows-1252'):
+        raise ValueError('source_encoding_unsupported')
+    return data.decode('cp1252' if encoding in ('iso-8859-1','latin1','windows-1252') else 'utf-8','replace')
+
+
 def bounded_int(name, default, minimum, maximum):
     value = int(os.environ.get(name, default))
     if not minimum <= value <= maximum:

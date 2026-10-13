@@ -36,7 +36,12 @@ export async function fetchPublicPage(value:string, expectedJob?:string):Promise
         if (bytes>600000) return { url:current,status:200,raw:'',mime,bytes,error:'source_byte_budget_exceeded' };
         parts.push(raw);
       }
-      return { url:current,status:200,raw:Buffer.concat(parts).toString('utf8'),mime,bytes };
+      const buffer=Buffer.concat(parts);
+      const declared=(response.headers.get('content-type') || '').match(/charset\s*=\s*["']?([^\s;"']+)/i)?.[1]?.toLowerCase();
+      const meta=buffer.subarray(0,4096).toString('ascii').match(/charset\s*=\s*["']?([a-z0-9_-]+)/i)?.[1]?.toLowerCase();
+      const encoding=declared || meta || 'utf-8';
+      if (!['utf-8','utf8','iso-8859-1','latin1','windows-1252'].includes(encoding)) return { url:current,status:200,raw:'',mime,bytes,error:'source_encoding_unsupported' };
+      return { url:current,status:200,raw:new TextDecoder(encoding==='utf8'?'utf-8':encoding).decode(buffer),mime,bytes };
     }
     return { url:current,status:0,raw:'',mime:'',bytes:0,error:'redirect_budget_exhausted' };
   } catch {

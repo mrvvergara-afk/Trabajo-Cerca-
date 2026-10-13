@@ -22,6 +22,10 @@ def page(url=URL, *, form=False, deadline=True):
 
 
 class PublicAdapterTests(unittest.TestCase):
+    def test_declared_public_encoding_preserves_literal_accents_without_trusting_unknown_charsets(self):
+        from scripts.common import decode_public_html
+        self.assertEqual(decode_public_html('Traiguén'.encode('latin1'),'text/html;charset=iso-8859-1'),'Traiguén')
+        with self.assertRaisesRegex(ValueError,'source_encoding_unsupported'):decode_public_html(b'text','text/html;charset=koi8-r')
     def test_chiletrabajos_uses_the_same_civil_date_parser_as_the_app(self):
         url='https://www.chiletrabajos.cl/trabajo/operador-1234567'
         raw=page(url).replace('2026-10-12T12:00:00Z','2026-10-08 11:58:01').replace('2026-10-25T12:00:00Z','2026-12-22T11:58:01')

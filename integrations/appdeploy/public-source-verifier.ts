@@ -72,6 +72,32 @@ function postings(raw:string) {
   return result;
 }
 
+function bneLabelledPosting(raw:string, url:string):Data | null {
+  // The official detail page has one offer heading, employer label and two calendar fields.
+  const headings=[...raw.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
+  if (headings.length!==1 || !/\bid=["']nombreOferta["']/i.test(headings[0][1])) return null;
+  for (const tag of raw.matchAll(/<(link|meta)\b([^>]*)>/gi)) {
+    const declared=tag[1].toLowerCase()==='link' && attribute(tag[2],'rel')==='canonical' ? attribute(tag[2],'href') : attribute(tag[2],'property')==='og:url' ? attribute(tag[2],'content') : '';
+    if (declared && !samePublicJob(url,safePublicUrl(declared,url) || '')) return null;
+  }
+  const title=publicText(headings[0][1].replace(/<small\b[^>]*>[\s\S]*?<\/small>/gi,''));
+  const scope=raw.slice(headings[0].index).split(/modalCvIncompleto/)[0];
+  if (!/DATOS DE CONTACTO/i.test(scope) || !/Origen de la Oferta/i.test(publicText(scope))) return null;
+  const employer=scope.match(/<strong\b[^>]*>\s*<span\b[^>]*>\s*Empresa:\s*<\/span>\s*<\/strong>\s*<br\s*\/?>\s*<span\b[^>]*>([\s\S]*?)<\/span>/i);
+  const calendars=[...scope.matchAll(/<i\b[^>]*class=["'][^"']*\bfa-calendar\b[^"']*["'][^>]*>\s*<\/i>\s*<span\b[^>]*>\s*(\d{2}\/\d{2}\/20\d{2})\s*<\/span>/gi)];
+  if (!employer || calendars.length!==2) return null;
+  const beforeDates=publicText(scope.slice(0,calendars[0].index));
+  const region=beforeDates.match(/(Araucan[ií]a|B[ií]o\s*B[ií]o)\s*,\s*([a-záéíóúñ ]{3,45})\s*$/i);
+  const locality=region?.[2]?.trim() || '';
+  const eligible=SOURCE_WORK_PLACES.filter(place=>sourceFold(locality)===sourceFold(place));
+  if (eligible.length!==1 || !title || !applicationLink(scope,url)) return null;
+  const isBiobio=['Nacimiento','Negrete','Mulchén'].includes(eligible[0]);
+  if (isBiobio!==sourceFold(region![1]).replace(/\s/g,'').includes('biobio')) return null;
+  return { '@type':'JobPosting',url,title,hiringOrganization:{ name:publicText(employer[1]) },
+    jobLocation:{ address:{ addressCountry:'CL',addressLocality:locality } },
+    datePosted:calendars[0][1],validThrough:calendars[1][1] };
+}
+
 function worksite(job:Data) {
   const locations = Array.isArray(job.jobLocation) ? job.jobLocation : [job.jobLocation];
   const found = new Set<string>();
@@ -133,6 +159,10 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   if (/verify you are human|access denied|unusual traffic|log in to view|iniciar sesi[oó]n para ver/i.test(body)) return { status:'pending',reason:'public_access_challenge' };
   if (/oferta (?:expirada|finalizada|cerrada)|postulaci[oó]n(?:es)? (?:cerradas?|finalizadas?)|esta oferta ya no|job (?:expired|closed)|no longer accepting applications/i.test(body)) return { status:'rejected',reason:'closed_notice' };
   const all = postings(raw);
+  if (!all.length && adapter.name==='Bolsa Nacional de Empleo') {
+    const labelled=bneLabelledPosting(visible,finalUrl);
+    if (labelled) all.push(labelled);
+  }
   const matched = all.filter(job => {
     const entity = job.mainEntityOfPage;
     return [job.url,sourceObject(entity)?entity['@id']:entity].some(value => typeof value==='string' && samePublicJob(finalUrl,safePublicUrl(value,finalUrl) || ''));

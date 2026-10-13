@@ -235,11 +235,18 @@ def read_medium(url, source_url, budget):
             if len(extracted['text'].strip())<100:
                 if not shutil.which('pdftoppm'): raise RuntimeError('local_pdf_rasterizer_not_installed')
                 prefix = Path(directory)/'page'
-                subprocess.run(['pdftoppm','-f','1','-l','1','-scale-to','1800','-png',str(path),str(prefix)],
+                raster_pages = page_count if page_count and page_count <= 4 else 1
+                subprocess.run(['pdftoppm','-f','1','-l',str(raster_pages),'-scale-to','1800','-png',str(path),str(prefix)],
                   capture_output=True,timeout=min(15,max(1,budget.remaining())),check=True)
-                images=list(Path(directory).glob('page-*.png'))
+                images=sorted(Path(directory).glob('page-*.png'))
                 if not images: raise ValueError('pdf_image_unavailable')
-                extracted=tesseract_text(images[0],budget);extracted.update(pages_limit=1,page_count=page_count,complete_document=page_count==1)
+                pages=[tesseract_text(image,budget) for image in images]
+                text='\n'.join(page['text'] for page in pages)
+                extracted={'text':text[:18000],'textTruncated':len(text)>18000 or any(page['textTruncated'] for page in pages),
+                  'textOriginalLength':sum(page['textOriginalLength'] for page in pages),
+                  'engine':'tesseract-local','mean_confidence':min(page['mean_confidence'] or 0 for page in pages),
+                  'pages_limit':raster_pages,'page_count':page_count,'pages_read':len(pages),
+                  'complete_document':bool(page_count and page_count<=4 and len(pages)==page_count)}
         elif mime in ('image/jpeg','image/png','image/webp'):
             extracted=tesseract_text(path,budget);extracted['complete_document']=not extracted['textTruncated']
         else: raise ValueError('unsupported_media_type')

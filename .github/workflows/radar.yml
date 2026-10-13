@@ -62,6 +62,23 @@ jobs:
         run: python -m scripts.document_cycle
         env:
           RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Comprobar todas las páginas de un PDF escaneado observado en el piloto
+        if: contains(github.event.head_commit.message, '[full OCR proof]')
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.common import Budget, write_json
+          from scripts.local_history import verify_notice
+          from scripts.local_source_audit import read_medium
+          url='https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf'
+          value=read_medium(url,url,Budget(180))
+          notice=verify_notice(value['text'],url,None,sha256=value['sha256'],complete=value['complete_document'] and not value['textTruncated'])
+          result={key:value.get(key) for key in ['url','engine','page_count','pages_read','complete_document','textTruncated','mean_confidence','bytes','sha256']}
+          result.update(read_only=True,paid_provider_calls=0,verification_status=notice['status'],verification_reason=notice['reason'])
+          write_json(Path('output/documents/full-scan-proof.json'),result)
+          print('DOCUMENT_FULL_SCAN '+json.dumps(result))
+          PY
       - name: Conservar resultados y bloqueos de documentos
         if: always()
         uses: actions/upload-artifact@v4

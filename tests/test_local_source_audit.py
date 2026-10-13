@@ -10,6 +10,25 @@ from scripts.common import Budget, Links
 
 
 class LocalSourceAuditTests(unittest.TestCase):
+    def test_a_supported_scanned_pdf_reads_every_page_and_keeps_the_lowest_confidence(self):
+        import subprocess
+        url='https://municipio.example/oferta.pdf'
+        def command(args,**kwargs):
+            if args[0]=='pdftotext':return subprocess.CompletedProcess(args,0,stdout='',stderr='')
+            if args[0]=='pdfinfo':return subprocess.CompletedProcess(args,0,stdout='Pages: 3\n',stderr='')
+            self.assertEqual(args[args.index('-l')+1],'3')
+            for n in (1,2,3):Path(args[-1]+'-'+str(n)+'.png').write_bytes(b'fixture')
+            return subprocess.CompletedProcess(args,0,stdout='',stderr='')
+        pages=[{'text':value,'textTruncated':False,'textOriginalLength':len(value),'mean_confidence':confidence}
+               for value,confidence in [('Cargo: Operador',95),('Empresa: Empresa de prueba',91),('Enviar CV: empleo@example.cl',73)]]
+        with patch('scripts.local_source_audit.fetch_public',return_value=(b'%PDF-fixture',url,'application/pdf',200)),\
+             patch('scripts.local_source_audit.shutil.which',return_value='/available'),\
+             patch('scripts.local_source_audit.subprocess.run',side_effect=command),\
+             patch('scripts.local_source_audit.tesseract_text',side_effect=pages):
+            value=read_medium(url,url,Budget(50))
+        self.assertTrue(value['complete_document']);self.assertEqual(value['pages_read'],3)
+        self.assertEqual(value['mean_confidence'],73);self.assertIn('empleo@example.cl',value['text'])
+
     def test_facebook_page_widgets_recover_one_literal_profile_and_reject_foreign_or_ambiguous_targets(self):
         prefix='https://web.facebook.com/plugins/page.php?href='
         raw='<iframe src="'+prefix+'https%3A%2F%2Fwww.facebook.com%2Fmunicipio.prueba%2F"></iframe>'

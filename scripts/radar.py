@@ -17,7 +17,7 @@ SOURCES = [
     ('Municipalidad de Collipulli', 'https://www.municipalidadcollipulli.cl/'),
 ]
 KEYWORDS = re.compile(r'empleo|trabajo|vacante|postulaci[oó]n|oferta.laboral|se.busca|omil|convocatoria', re.I)
-HIRING = re.compile(r'ofertas? laborales?|vacantes?|se (?:busca|requiere|necesita)|contrataci[oó]n|postulaciones|omil', re.I)
+HIRING = re.compile(r'ofertas? laboral(?:es)?|vacantes?|se (?:busca|requiere|necesita)|contrataci[oó]n|postulaciones|omil', re.I)
 EXCLUDE = re.compile(r'subsidio|inversi[oó]n|exportaciones|inteligencia artificial|dossier art[ií]stico|pymes|villarruel|argentina|tamaulipas|rancahuaso', re.I)
 ARCHIVE = re.compile(r'page/\d+|[?&](?:paged|page)=\d+|/category/|/categoria/|/tag/|/ofertas?|/empleo|/trabajo|/omil|/convocatoria|/concursos?', re.I)
 OLD_ARCHIVE = re.compile(r'/20(?:0\d|1\d|2[0-4])/')
@@ -67,7 +67,7 @@ def run(*, fetcher=fetch_text, output=None, sources=None, places=None,
                     parsed = urllib.parse.urlsplit(link)
                     if parsed.hostname.lower().removeprefix('www.') != host or OLD_ARCHIVE.search(link):
                         continue
-                    if KEYWORDS.search(link):
+                    if KEYWORDS.search(link + ' ' + title):
                         found += add(name, link, title)
                     if depth < 3 and not BINARY.search(link) and ARCHIVE.search(link):
                         if link not in visited and all(pair[0] != link for pair in queue):

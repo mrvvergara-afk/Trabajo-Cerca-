@@ -1,0 +1,26 @@
+{
+  "schema": "trabajo-cerca.local-source-priorities.v1",
+  "territories": ["Angol", "Lumaco", "Los Sauces", "Traiguén", "Renaico", "Nacimiento", "Negrete", "Mulchén", "Collipulli", "Mininco"],
+  "paid_providers_enabled": false,
+  "sources": [
+    {"key":"omil-angol","name":"Municipalidad / OMIL Angol","family":"municipal","url":"https://noticias.angol.cl/index.php/noticias","territory":"Angol"},
+    {"key":"omil-lumaco","name":"Municipalidad / OMIL Lumaco","family":"municipal","url":"https://www.munilumaco.cl/","territory":"Lumaco"},
+    {"key":"omil-los-sauces","name":"Municipalidad / OMIL Los Sauces","family":"municipal","url":"https://www.munilossauces.cl/noticias","territory":"Los Sauces"},
+    {"key":"omil-traiguen","name":"Municipalidad / OMIL Traiguén","family":"municipal","url":"https://mtraiguen.cl/direccion-de-fomento-productivo/","territory":"Traiguén"},
+    {"key":"omil-renaico","name":"Municipalidad / OMIL Renaico","family":"municipal","url":"https://municipalidadrenaico.cl/concursos-publicos/","territory":"Renaico"},
+    {"key":"omil-nacimiento","name":"Municipalidad / OMIL Nacimiento","family":"municipal","url":"https://www.nacimiento.cl/noticias","territory":"Nacimiento"},
+    {"key":"omil-negrete","name":"Municipalidad / OMIL Negrete","family":"municipal","url":"https://www.muninegrete.cl/","territory":"Negrete"},
+    {"key":"omil-mulchen","name":"Municipalidad / OMIL Mulchén","family":"municipal","url":"https://www.munimulchen.cl/?s=oferta+laboral","territory":"Mulchén"},
+    {"key":"omil-collipulli","name":"Municipalidad / OMIL Collipulli","family":"municipal","url":"https://municipalidadcollipulli.cl/concursos-publicos/","territory":"Collipulli"},
+    {"key":"malleco7","name":"Malleco 7","family":"media","url":"https://www.malleco7.cl/","territory":"Malleco","identity_requires_check":true},
+    {"key":"radio-mininco","name":"Radio Mininco","family":"media","url":"https://www.radiomininco.cl/","territory":"Mininco","identity_requires_check":true},
+    {"key":"radio-nativa","name":"Radio Nativa","family":"media","url":"https://www.radionativa.cl/","territory":"Lumaco"},
+    {"key":"radio-sur-collipulli","name":"Radio del Sur","family":"media","url":"https://www.radiodelsur.cl/","territory":"Collipulli"},
+    {"key":"social-angol","name":"Municipalidad de Angol · Facebook","family":"social","url":"https://www.facebook.com/municipalidad.angol/","territory":"Angol"},
+    {"key":"social-lumaco","name":"Municipalidad de Lumaco · Facebook","family":"social","url":"https://www.facebook.com/municipalidadlumaco/","territory":"Lumaco"},
+    {"key":"social-radio-nativa","name":"Radio Nativa · Instagram","family":"social","url":"https://www.instagram.com/radionativacl/","territory":"Lumaco"},
+    {"key":"cmpc","name":"CMPC · sitio corporativo","family":"employer","url":"https://www.cmpc.com/","territory":"zona forestal"},
+    {"key":"arauco","name":"Arauco · sitio corporativo","family":"employer","url":"https://www.arauco.com/","territory":"zona forestal"}
+  ],
+  "unresolved_requested_sources": ["Otras radios y diarios de las nueve comunas", "Empresas agrícolas y forestales locales aún sin dirección identificada"]
+}

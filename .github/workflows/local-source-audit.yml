@@ -1,0 +1,48 @@
+name: Evidencia de fuentes locales sin proveedores pagos
+on:
+  push:
+    branches: [repair/radar-audit-2026-10-11]
+    paths:
+      - 'scripts/local_source_audit.py'
+      - 'config/local-source-priorities.json'
+      - 'tests/test_local_source_audit.py'
+      - 'integrations/appdeploy/local-source-evidence*'
+      - '.github/workflows/local-source-audit.yml'
+permissions:
+  contents: read
+concurrency:
+  group: local-source-audit-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  evidence:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      github.event.repository.private == false &&
+      contains(github.event.head_commit.message, '[local sources]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Pruebas sin red ni escrituras
+        run: |
+          python -m unittest tests.test_local_source_audit tests.test_laboratory_observer -v
+          node tests/appdeploy-local-evidence.test.mjs
+      - name: Instalar lectores locales gratuitos en el runner temporal
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa
+      - name: Leer fuentes públicas, capturas existentes y afiches con OCR local
+        run: python scripts/local_source_audit.py
+      - name: Conservar evidencia y bloqueos reales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-source-evidence
+          path: output/local-source-audit/
+          retention-days: 7

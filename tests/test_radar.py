@@ -77,6 +77,16 @@ class OfflineTests(unittest.TestCase):
         report = backfill.run(fetcher=lambda *a, **k: rss, output=self.root, places=['Angol'], now=NOW)
         self.assertIsNone(report['candidates'][0]['published_at'])
 
+    def test_singular_local_offer_and_numbered_municipal_article_are_discovered(self):
+        rss='<rss><channel><item><title>Oferta laboral en Angol</title><link>https://municipio.example/noticia/123</link><pubDate>Sat, 10 Oct 2026 12:00:00 GMT</pubDate></item></channel></rss>'
+        for runner in [radar.run,backfill.run]:
+            kwargs={'sources':[]} if runner is radar.run else {}
+            report=runner(fetcher=lambda *args,**kw:rss,output=self.root,places=['Angol'],now=NOW,**kwargs)
+            self.assertEqual(report['candidate_count'],1)
+        report=radar.run(fetcher=lambda *args,**kwargs:'<a href="/noticia/123">Oferta laboral OMIL Angol</a>',
+          sources=[('OMIL Angol','https://municipio.example/')],places=[],output=self.root,now=NOW)
+        self.assertEqual(report['candidates'][0]['url'],'https://municipio.example/noticia/123')
+
     def test_archive_pagination_resumes_and_binary_is_not_fetched(self):
         pages = {
             'https://example.cl/': '<a href="/page/2">Siguiente</a><a href="/2017/oferta-laboral">Antigua</a><a href="/oferta-laboral.pdf">PDF</a>',

@@ -11,13 +11,14 @@ URL = 'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?radar-proof=1#o
 
 
 class ProofElement(HTMLParser):
-    def __init__(self):
+    def __init__(self, element_id='radar-live-check'):
         super().__init__(convert_charrefs=True)
+        self.element_id = element_id
         self.capture = False
         self.parts = []
 
     def handle_starttag(self, tag, attrs):
-        if tag == 'pre' and dict(attrs).get('id') == 'radar-live-check':
+        if tag == 'pre' and dict(attrs).get('id') == self.element_id:
             self.capture = True
 
     def handle_endtag(self, tag):

@@ -10,7 +10,7 @@ try:
 except ImportError:
     from common import COMMUNES, bounded_int, canonical_url, communes, fetch_text, output_dir, safe_error, utcnow, write_json
 
-HIRING = re.compile(r'ofertas? laborales?|vacantes?|se (?:busca|necesita|requiere)|contrataci[oó]n|postulaciones|omil', re.I)
+HIRING = re.compile(r'ofertas? laboral(?:es)?|vacantes?|se (?:busca|necesita|requiere)|contrataci[oó]n|postulaciones|omil', re.I)
 EXCLUDE = re.compile(r'argentina|villarruel|subsidio|inversiones|victoria electoral|victoria de', re.I)
 
 

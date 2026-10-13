@@ -20,7 +20,7 @@ def configured_sources(path=SOURCE_CONFIG):
     config = json.loads(Path(path).read_text(encoding='utf-8'))
     sources = []
     for source in config['sources']:
-        if source.get('family') not in ('municipal', 'media', 'employer') or source.get('identity_requires_check'):
+        if source.get('family') not in ('municipal', 'media', 'employer', 'official') or source.get('identity_requires_check'):
             continue
         entry = (source['name'], canonical_url(source['url']))
         if entry not in sources:

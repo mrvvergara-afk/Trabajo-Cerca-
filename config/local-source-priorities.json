@@ -91,7 +91,12 @@
       "family": "media",
       "url": "https://www.radiomininco.cl/",
       "territory": "Mininco",
-      "identity_requires_check": true
+      "identity_requires_check": true,
+      "identity_note": "Se acredita la existencia territorial de Radio Mininco 107.1 mediante una nota de Corprix del 2026-10-06 y un acta municipal de Collipulli de 2023; sigue pendiente el canal oficial publicador. La URL de prueba no se convierte en canal validado.",
+      "identity_references": [
+        "https://corprix.cl/2026/10/06/fae-victoria-participa-en-radio-mininco-para-promover-el-acogimiento-familiar-en-malleco/",
+        "https://transparencia.municipalidadcollipulli.cl/2023/actas/acta28.pdf"
+      ]
     },
     {
       "key": "radio-nativa",
@@ -196,6 +201,67 @@
       "url": "https://www.facebook.com/Malleco7",
       "territory": "Malleco",
       "discovered_from": "https://www.malleco7.cl/",
+      "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "bne-negrete-pilot-2026-109726",
+      "name": "Bolsa Nacional de Empleo · Negrete",
+      "family": "official",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "territory": "Negrete",
+      "scope": "curated_real_pilot",
+      "identity_evidence": "Página individual BNE leída directamente por el runner el 2026-10-13; título, empresa, lugar y fechas presentes."
+    },
+    {
+      "key": "cmpc-empleo",
+      "name": "CMPC · portal de empleo",
+      "family": "employer",
+      "url": "https://cmpc.trabajando.cl/",
+      "territory": "zona forestal",
+      "discovered_from": "https://www.cmpc.com/trabaja-con-nosotros/",
+      "scope": "discovery_only_until_individual_offer_verified"
+    },
+    {
+      "key": "arauco-empleo",
+      "name": "Arauco · portal de empleo",
+      "family": "employer",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "territory": "zona forestal",
+      "discovered_from": "https://jobs.arauco.com/",
+      "scope": "individual_offer_requires_literal_target_worksite"
+    },
+    {
+      "key": "radio-viaducto",
+      "name": "Radio Viaducto",
+      "family": "media",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "identity_evidence": "Página pública con título Radio Viaducto Collipulli Noticias; lectura directa el 2026-10-13."
+    },
+    {
+      "key": "las-noticias-malleco",
+      "name": "Las Noticias de Malleco",
+      "family": "media",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página propia con título del diario de la Provincia Región de la Araucanía; lectura directa el 2026-10-13."
+    },
+    {
+      "key": "social-las-noticias-facebook",
+      "name": "Las Noticias de Malleco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/diariolasnoticias/",
+      "territory": "Malleco",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "social-las-noticias-instagram",
+      "name": "Las Noticias de Malleco · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/lasnoticiasdia/",
+      "territory": "Malleco",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/",
       "scope": "public_read_only_probe; no paid target added"
     }
   ],

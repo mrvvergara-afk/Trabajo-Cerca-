@@ -124,7 +124,7 @@ def fetch_text(url, *, budget=None, max_bytes=900000):
         'Accept': 'text/html,application/rss+xml,application/xml',
     })
     with urllib.request.urlopen(request, timeout=timeout) as response:
-        return response.read(max_bytes).decode('utf-8', 'replace')
+        return decode_public_html(response.read(max_bytes),response.headers.get('Content-Type',''))
 
 
 class Links(HTMLParser):

@@ -10,6 +10,18 @@ from scripts.common import Budget, Links
 
 
 class LocalSourceAuditTests(unittest.TestCase):
+    def test_facebook_page_widgets_recover_one_literal_profile_and_reject_foreign_or_ambiguous_targets(self):
+        prefix='https://web.facebook.com/plugins/page.php?href='
+        raw='<iframe src="'+prefix+'https%3A%2F%2Fwww.facebook.com%2Fmunicipio.prueba%2F"></iframe>'
+        self.assertEqual(discover(raw,'https://municipio.example/')['public_social_links'],['https://www.facebook.com/municipio.prueba/'])
+        for target in ['https%3A%2F%2Fattacker.example%2F','https%3A%2F%2Fwww.facebook.com%2Ffirst%2F&amp;href=https%3A%2F%2Fwww.facebook.com%2Fsecond%2F']:
+            self.assertEqual(discover('<iframe src="'+prefix+target+'"></iframe>','https://municipio.example/')['public_social_links'],[])
+
+    def test_institutional_channels_accept_facebook_web_alias_but_do_not_collect_the_website_developer(self):
+        html='<a href="https://web.facebook.com/municipio.prueba/">Facebook</a>'\
+          '<footer>Sitio web desarrollado por <a href="https://www.instagram.com/desarrollador.prueba/">Nombre del desarrollador</a></footer>'
+        self.assertEqual(discover(html,'https://municipio.example/')['public_social_links'],['https://web.facebook.com/municipio.prueba/'])
+
     def test_image_alt_and_link_title_find_notices_without_a_keyword_in_the_url(self):
         html='<main><a href="/noticias/123"><img src="/afiche.png" alt="OMIL: se necesita soldador"></a></main>'
         value=discover(html,'https://municipio.example/')

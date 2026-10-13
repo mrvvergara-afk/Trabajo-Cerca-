@@ -26,12 +26,7 @@ type Jwks = { keys:Array<JsonWebKey & { kid?:string; alg?:string }> };
 const REPOSITORY = 'mrvvergara-afk/Trabajo-Cerca-';
 const REPOSITORY_ID = '1411752840';
 const OWNER_ID = '291955988';
-const PRODUCER_REF = 'refs/heads/repair/radar-audit-2026-10-11';
-const WORKFLOW_REF = REPOSITORY + '/.github/workflows/radar.yml@' + PRODUCER_REF;
-const SUBJECTS = [
-  'repo:' + REPOSITORY + ':ref:' + PRODUCER_REF,
-  'repo:mrvvergara-afk@' + OWNER_ID + '/Trabajo-Cerca-@' + REPOSITORY_ID + ':ref:' + PRODUCER_REF,
-];
+const PRODUCER_REFS = new Set(['refs/heads/repair/radar-audit-2026-10-11','refs/heads/main']);
 const AUDIENCE = 'urn:trabajo-cerca:lab:' + REPOSITORY_ID + ':';
 const STATE_TABLE = 'radar_external_pull_state';
 const MAX_AGE = 86400000;
@@ -61,7 +56,7 @@ export function jobIdentity(url:string) {
 }
 
 // A historical, digest-bound proof of a GitHub job; it never authorizes a new HTTP request.
-export function verifySignedBatch(envelope:Envelope, jwks:Jwks, now=Date.now()) {
+export function verifySignedBatch(envelope:Envelope, jwks:Jwks, now=Date.now(), acceptedDigest?:string) {
   if (envelope.schema !== 'trabajo-cerca.signed-exchange.v1' || typeof envelope.body_base64 !== 'string' ||
       envelope.body_base64.length > 180000 || !envelope.proof) reject('Invalid exchange envelope');
   const raw = Buffer.from(envelope.body_base64, 'base64');
@@ -77,17 +72,19 @@ export function verifySignedBatch(envelope:Envelope, jwks:Jwks, now=Date.now()) 
   const digest = sha(raw);
   if (claims.iss !== 'https://token.actions.githubusercontent.com' || claims.aud !== AUDIENCE + digest ||
       claims.repository !== REPOSITORY || String(claims.repository_id) !== REPOSITORY_ID ||
-      String(claims.repository_owner_id) !== OWNER_ID || claims.ref !== PRODUCER_REF ||
-      claims.workflow_ref !== WORKFLOW_REF) reject('Untrusted GitHub producer');
-  if (typeof claims.sub !== 'string' || !SUBJECTS.includes(claims.sub)) reject('Untrusted GitHub subject');
+      String(claims.repository_owner_id) !== OWNER_ID || typeof claims.ref!=='string' || !PRODUCER_REFS.has(claims.ref) ||
+      claims.workflow_ref !== REPOSITORY+'/.github/workflows/radar.yml@'+claims.ref) reject('Untrusted GitHub producer');
+  const subjects=['repo:'+REPOSITORY+':ref:'+claims.ref,
+    'repo:mrvvergara-afk@'+OWNER_ID+'/Trabajo-Cerca-@'+REPOSITORY_ID+':ref:'+claims.ref];
+  if (typeof claims.sub !== 'string' || !subjects.includes(claims.sub)) reject('Untrusted GitHub subject');
   const issued = Number(claims.iat) * 1000;
   const expires = Number(claims.exp) * 1000;
-  if (!Number.isFinite(issued) || !Number.isFinite(expires) || issued > now + 60000 || now - issued > MAX_AGE ||
+  if (!Number.isFinite(issued) || !Number.isFinite(expires) || issued > now + 60000 || (now - issued > MAX_AGE && digest!==acceptedDigest) ||
       expires <= issued || expires - issued > 600000 || (claims.nbf !== undefined && Number(claims.nbf) * 1000 > now + 60000)) reject('Invalid proof issuance window');
   let batch:Batch;
   try { batch = JSON.parse(raw.toString('utf8')) as Batch; } catch { return reject('Invalid batch JSON'); }
   if (batch.schema !== 'trabajo-cerca.exchange.v1' || batch.environment !== 'laboratory' ||
-      batch.repository !== REPOSITORY || batch.repository_id !== REPOSITORY_ID || batch.ref !== PRODUCER_REF ||
+      batch.repository !== REPOSITORY || batch.repository_id !== REPOSITORY_ID || batch.ref !== claims.ref ||
       batch.sha !== claims.sha || batch.run_id !== String(claims.run_id) || !/^[a-f0-9]{40}$/.test(batch.sha) ||
       !/^\d+$/.test(batch.run_id) || !Array.isArray(batch.records) || batch.records.length > 3) reject('Batch provenance mismatch');
   const generated = Date.parse(batch.generated_at);
@@ -118,7 +115,9 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
         !/^[a-f0-9]{64}$/.test(evidence.source_sha256) || !safePublicUrl(evidence.form_action) ||
         new URL(evidence.form_action).hostname.replace(/^www\./,'')!==new URL(item.source_url).hostname.replace(/^www\./,'')) reject('Missing current application form proof');
   } else if (!Number.isFinite(deadline) || deadline<=now || deadline<=published) reject('Stale or invalid source evidence');
-  if (item.application.startsWith('mailto:')) {
+  if (item.application.startsWith('tel:')) {
+    if (!localMethod || !/^tel:\+56(?:9\d{8}|(?:43|45)\d{7})$/.test(item.application)) reject('Invalid application contact');
+  } else if (item.application.startsWith('mailto:')) {
     if (!/^mailto:[^@\s?]+@[^@\s?]+\.[^@\s?]+(?:\?.*)?$/.test(item.application)) reject('Invalid application contact');
   } else {
     let application:URL;
@@ -220,10 +219,8 @@ export async function pullRadarBatch(mapRecord:(item:VerifiedOffer) => Stored) {
     if (previous?.dataCommit === commit) return { stored:0, published:Number(previous.publishedCount || 0), status:'unchanged' };
     const envelope = await fetchJson('https://raw.githubusercontent.com/' + REPOSITORY + '/' + commit + '/exchange/latest.json', 210000);
     const jwks = await fetchJson('https://token.actions.githubusercontent.com/.well-known/jwks', 64000);
-    const { batch, digest } = verifySignedBatch(envelope as unknown as Envelope, jwks as unknown as Jwks);
-    // Validate the whole batch before writing any offer.
-    batch.records.forEach(item => validateOffer(item));
-    if (previous && previous.digest === digest) {
+    const { batch, digest } = verifySignedBatch(envelope as unknown as Envelope, jwks as unknown as Jwks,Date.now(),previous?.digest);
+    if (previous && previous.digest===digest) {
       // A backup commit may retain the already accepted exchange. Preserve its IDs and receipts.
       const published = Number(previous.publishedCount || 0);
       const count = previous.receipts?.length ?? 0;
@@ -231,6 +228,8 @@ export async function pullRadarBatch(mapRecord:(item:VerifiedOffer) => Stored) {
       await saveState({ dataCommit:commit, status, rejection:null, transportError:null, checkedAt:new Date().toISOString() });
       return { stored:0, published, status:'unchanged_batch' };
     }
+    // Signatures always verify. A known payload is a historical copy, never a fresh publication.
+    batch.records.forEach(item => validateOffer(item));
     const result = await storeVerifiedBatch(batch, digest, mapRecord);
     await saveState({ dataCommit:commit });
     return result;

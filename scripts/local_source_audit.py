@@ -54,6 +54,12 @@ class Document(HTMLParser):
                 self.dates.append(attrs['content'])
             if key == 'og:image' and attrs.get('content'): self.images.append(attrs['content'])
         if tag == 'a': self.href, self.label = attrs.get('href'), []
+        if tag == 'iframe' and attrs.get('src'):
+            try:
+                embedded = urllib.parse.urlsplit(attrs['src'])
+                if (embedded.hostname or '').removeprefix('www.') in ('facebook.com','web.facebook.com','m.facebook.com') and embedded.path == '/plugins/page.php':
+                    self.links.append((attrs['src'],'Facebook'))
+            except ValueError: pass
         if tag == 'img':
             if attrs.get('src'): self.images.append(attrs['src'])
             if self.href and attrs.get('alt'): self.label.append(attrs['alt'])
@@ -86,7 +92,18 @@ def public_social_url(value):
     except ValueError:
         return False
     host = url.hostname.lower().removeprefix('www.')
-    return (host in ('facebook.com','instagram.com') and not re.search(r'/sharer|/share\.php|/dialog|/login|/accounts|/plugins', url.path, re.I))
+    return (host in ('facebook.com','web.facebook.com','m.facebook.com','instagram.com') and not re.search(r'/sharer|/share\.php|/dialog|/login|/accounts|/plugins', url.path, re.I))
+
+
+def institutional_social_link(value, label):
+    try:
+        parsed = urllib.parse.urlsplit(value)
+        if parsed.hostname.removeprefix('www.') in ('facebook.com','web.facebook.com','m.facebook.com') and parsed.path == '/plugins/page.php':
+            embedded = urllib.parse.parse_qs(parsed.query).get('href',[])
+            if len(embedded) != 1: return None
+            value = canonical_url(embedded[0])
+        return value if public_social_url(value) and re.search(r'facebook|instagram|omil|municipalidad|radio|diario',label,re.I) else None
+    except (ValueError,AttributeError): return None
 
 
 def source_error(exc):
@@ -101,7 +118,8 @@ def discover(raw, url):
     for href, label in parser.links:
         try: target = canonical_url(urllib.parse.urljoin(url, href))
         except ValueError: continue
-        if public_social_url(target): social.add(target)
+        channel = institutional_social_link(target,label)
+        if channel: social.add(channel)
         if same_publisher(url,target) and HIRING.search(label + ' ' + target) and not NON_JOB.search(label):
             candidates[target] = {'url':target,'title':label[:300],'kind':'document' if MEDIA.search(target) else 'page'}
     source_dates = list(parser.dates)

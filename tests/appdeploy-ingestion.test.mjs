@@ -97,6 +97,13 @@ test('Digest-bound GitHub proof accepts the exact authorized laboratory producer
   assert.equal(result.batch.run_id,'123');
 });
 
+test('The scheduled producer can use main only with the matching workflow, branch, subject and signed body',()=>{
+  const h=harness(),batch=body({ref:'refs/heads/main'});
+  assert.equal(h.ctx.verifySignedBatch(signed(batch),jwks,now).batch.ref,'refs/heads/main');
+  assert.throws(()=>h.ctx.verifySignedBatch(signed(batch,{ref:'refs/heads/other'}),jwks,now),/Untrusted/);
+  assert.throws(()=>h.ctx.verifySignedBatch(signed(batch,{workflow_ref:batch.repository+'/.github/workflows/other.yml@'+batch.ref}),jwks,now),/Untrusted/);
+});
+
 test('Real GitHub subject with immutable owner and repository IDs is accepted', () => {
   const h = harness();
   const sub = 'repo:mrvvergara-afk@291955988/Trabajo-Cerca-@1411752840:ref:refs/heads/repair/radar-audit-2026-10-11';
@@ -120,7 +127,7 @@ test('Changed batch bytes fail the signed audience binding', () => {
   assert.throws(() => h.ctx.verifySignedBatch(envelope,jwks,now), /Untrusted/);
 });
 
-test('Proof rejects forks, main, another workflow and another deployment audience', () => {
+test('Proof rejects forks, mismatched branch claims, another workflow and another deployment audience', () => {
   const h = harness();
   for (const change of [{ repository_id:'999' },{ repository_owner_id:'999' },{ ref:'refs/heads/main' },
     { workflow_ref:'other-workflow' },{ aud:'different-app' },{ iss:'https://attacker.test' },{ sub:'repo:fork/repo:ref:any' }]) {
@@ -196,8 +203,30 @@ test('A local document proof must be complete, hashed and tied to the literal so
   const row=offer({ source_url,source:'Municipalidad de Lumaco',verification_method:'Municipalidad de Lumaco individual notice + local document text',
     source_evidence:{ sha256:'a'.repeat(64),source_url,complete_document:true,text:'Cargo: Operador\nEmpresa: Empresa de prueba\nLugar de trabajo: Angol\nEnviar CV a empleo@example.cl' } });
   h.ctx.validateOffer(row,now);
+  h.ctx.validateOffer({...row,application:'tel:+56912345678'},now);
+  assert.throws(()=>h.ctx.validateOffer({...row,application:'tel:+54912345678'},now));
+  assert.throws(()=>h.ctx.validateOffer(offer({application:'tel:+56912345678'}),now));
   assert.throws(()=>h.ctx.validateOffer({ ...row,source_evidence:{ ...row.source_evidence,complete_document:false } },now));
   assert.throws(()=>h.ctx.validateOffer({ ...row,source_evidence:undefined },now));
+});
+
+test('A historical exact payload keeps its valid signature and receipts; it never refreshes source evidence',async()=>{
+  const h=harness(),old=now-2*86400000;
+  const batch=body({generated_at:new Date(old).toISOString()});
+  const envelope=signed(batch,{iat:old/1000,exp:old/1000+300});
+  const accepted=digest(Buffer.from(envelope.body_base64,'base64'));
+  assert.throws(()=>h.ctx.verifySignedBatch(envelope,jwks,now),/issuance/);
+  h.ctx.verifySignedBatch(envelope,jwks,now,accepted);
+  const tampered={...envelope,proof:{...envelope.proof,signature:'a'.repeat(340)}};
+  assert.throws(()=>h.ctx.verifySignedBatch(tampered,jwks,now,accepted),/signature/);
+  const name='radar_external_pull_state';
+  h.table(name).set('accepted',{digest:accepted,dataCommit:'b'.repeat(40),status:'published',publishedCount:1,
+    storedCount:1,receipts:[{table:'old',id:'source-id',identity:'d'.repeat(64),candidateId:'a'.repeat(24)}]});
+  const response=value=>({status:200,ok:true,headers:new Headers(),arrayBuffer:async()=>Buffer.from(JSON.stringify(value))});
+  h.ctx.fetch=async url=>response(url.includes('/git/ref/')?{object:{sha:'c'.repeat(40)}}:url.includes('/jwks')?jwks:envelope);
+  assert.equal((await h.ctx.pullRadarBatch(h.mapper)).status,'unchanged_batch');
+  assert.equal(h.calls.filter(call=>/^radar_external_[a-f0-9]{32}$/.test(call.table||'')).length,0);
+  assert.equal(h.table(name).get('accepted').publishedCount,1);
 });
 
 test('Storing a verified offer confirms a real SDK ID but does not claim publication before the feed', async () => {

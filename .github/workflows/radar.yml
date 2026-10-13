@@ -6,6 +6,10 @@ on:
         description: 'Crear el primer checkpoint solo después de revisar los artefactos anteriores'
         type: boolean
         default: false
+      document_pilot:
+        description: 'Ejecutar el lector gratuito de documentos y su ingesta firmada en la rama de reparación'
+        type: boolean
+        default: false
   push:
     branches: [main, repair/radar-audit-2026-10-11]
     paths:
@@ -23,6 +27,48 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  documents:
+    if: >-
+      github.event.repository.private == false &&
+      ((github.ref == 'refs/heads/main' && github.event_name == 'schedule') ||
+       (github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+        ((github.event_name == 'push' && contains(github.event.head_commit.message, '[document pilot]')) ||
+         (github.event_name == 'workflow_dispatch' && inputs.document_pilot == true))))
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos de documentos
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Comprobar lectores e ingesta antes de escribir
+        run: |
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Recuperar el respaldo existente sin sustituir main
+        run: git fetch origin refs/heads/radar-state-laboratorio:refs/remotes/origin/radar-state-laboratorio
+      - name: Leer documentos y conservar un lote firmado de hasta tres ofertas
+        run: python -m scripts.document_cycle
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Conservar resultados y bloqueos de documentos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-cycle-evidence
+          path: output/documents/
+          retention-days: 7
   public_sources:
     if: >-
       github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&

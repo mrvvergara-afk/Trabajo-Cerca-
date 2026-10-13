@@ -6,7 +6,7 @@ import { evaluatePublicJob, publicText, type PublicVerification } from './public
 import { fetchPublicPage } from './public-source-http';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean };
-type PublicCandidate = { url:string; source:string; priority?:boolean };
+type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
 type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;
   pending:PublicCandidate[]; priorityCandidates?:PublicCandidate[]; reviewLane?:number;
   rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;
@@ -29,7 +29,26 @@ export function publicPageLinks(raw:string, origin:string) {
     if (publicPublisher(url)?.group===publicPublisher(origin)?.group &&
         (/\brel=["']next["']/i.test(anchor[1]+' '+anchor[3]) || /\/page\/\d+|[?&](?:page|paged)=\d+/i.test(url))) archives.add(url);
   }
+  if (publicSourceAdapter(origin)?.family==='local' && /ofertas? laboral|vacantes?|se (?:busca|necesita|requiere)|postulaciones?/i.test(publicText(raw))) {
+    for (const image of raw.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)) {
+      const url=safePublicUrl(image[1].replace(/&amp;/g,'&'),origin);
+      if (url && publicPublisher(url)?.group===publicPublisher(origin)?.group && /\.(?:png|jpe?g|webp)(?:[?#]|$)/i.test(url) &&
+          !/logo|banner|icon|slider|cropped|avatar|favicon/i.test(url)) candidates.set(url,'Imagen de la publicación laboral');
+    }
+  }
   return { candidates:[...candidates].slice(0,40).map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };
+}
+
+export function publicDocumentWork(current?:ScanState | null) {
+  const items=(current?.pending || []).flatMap(item=>{
+    const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);
+    if (!url || !publisherPage || publicSourceAdapter(url)?.family!=='local' ||
+        publicPublisher(url)?.group!==publicPublisher(publisherPage)?.group) return [];
+    return [{ url,source:item.source,publisher_page:publisherPage,
+      kind:/\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(url)?'document':'local_page' }];
+  });
+  return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,
+    items:items.slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };
 }
 
 export function pendingCandidateIndex(items:PublicCandidate[], lane=0) {
@@ -124,7 +143,8 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     const source = onboarding ? bootstrapSource! : sources[state.position%sources.length];
     const seedId = hash(source.key);
     const [previousSeed] = await db.get<Stored>(SEEDS,[seedId],{ consistent:true });
-    let queue = (previousSeed?.queue as string[] | undefined) || state.queues[source.key];
+    let queue = ((previousSeed?.queue as string[] | undefined) || state.queues[source.key])
+      ?.filter(url=>! /\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(url));
     let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];
     if (!queue?.length) { queue=[source.url];seen=[]; }
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
@@ -135,13 +155,14 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });
       audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));
       for (const item of links.candidates) if (!seenPending.has(item.url)) {
-        if (onboarding && state.priorityCandidates.length<3) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true });
-        else if (state.pending.length<100) state.pending.push({ url:item.url,source:source.name });
+        if (onboarding && state.priorityCandidates.length<3) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url });
+        else if (state.pending.length<100) state.pending.push({ url:item.url,source:source.name,publisherPage:page.url });
         else audit.queueFull=true;
         seenPending.add(item.url);
       }
       seen = [...new Set([...seen,url])].slice(-64);
-      queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local').map(item => item.url)])]
+      queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&
+        ! /\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url)).map(item => item.url)])]
         .filter(item => !seen.includes(item)).slice(0,30);
       audit.candidates = links.candidates.length;
     }
@@ -209,5 +230,6 @@ export async function freePublicSourceStatus() {
   const visible = snapshot ? receipts.filter(receipt => snapshot.manifest.pages.some(page => page.keys.includes(String(receipt.table)+':'+String(receipt.id)))) : [];
   return { readOnly:true,providerCalls:0,initialized:Boolean(current),summary:current?.summary || null,
     publishedConfirmed:snapshot ? visible.length : null,feedManifestId:snapshot?.manifestId || null,
-    historicalCoverageComplete:false,pending:current?.pending.length ?? null,checkedAt:current?.checkedAt || null };
+    historicalCoverageComplete:false,pending:current?.pending.length ?? null,checkedAt:current?.checkedAt || null,
+    documentWork:publicDocumentWork(current) };
 }

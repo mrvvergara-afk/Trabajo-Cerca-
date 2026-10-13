@@ -86,10 +86,14 @@ def verify_notice(text, source_url, published_at, *, sha256, complete=True, now=
     if NON_JOB.search(text) or not HIRING.search(text):return {**result,'reason':'job_notice_unconfirmed'}
     if fields['missing'] or len(places)!=1 or not deadline or not re.fullmatch('[a-f0-9]{64}',sha256):return result
     email = fields['emails'][0] if fields['emails'] else None
-    if not email:return {**result,'reason':'application_contact_requires_review'}
+    phones = {re.sub(r'\D','',value) for value in fields['phones']}
+    phones = {'56'+value if len(value)==9 else value for value in phones}
+    phone = next(iter(phones)) if len(phones)==1 else None
+    if not email and (not phone or not re.fullmatch(r'56(?:9\d{8}|(?:43|45)\d{7})',phone)):
+        return {**result,'reason':'application_contact_requires_review'}
     return {**result,'status':'verified','reason':'live_dated_local_notice_with_deadline_and_application',
             'title':fields['role'],'company':fields['company'],'work_commune':places[0],'work_location_verified':True,
-            'source':adapter['name'],'valid_through':deadline.isoformat(),'application':'mailto:'+email,
+            'source':adapter['name'],'valid_through':deadline.isoformat(),'application':'mailto:'+email if email else 'tel:+'+phone,
             'verification_method':adapter['name']+' individual notice + local document text',
             'source_evidence':{'sha256':sha256,'source_url':source_url,'complete_document':True,'text':text[:18000]}}
 
@@ -102,7 +106,7 @@ def run(*, output=None, checkpoints=None, fetcher=fetch_public, reader=read_medi
     queues = {key:list(value) for key,value in prior.get('queues',{}).items()}
     seen = {key:set(value) for key,value in prior.get('seen',{}).items()}
     position = int(prior.get('position',0))%max(1,len(sources))
-    records, candidates, diagnostics = [],{},[]
+    records, candidates, diagnostics, channels = [],{},[],[]
     pages, media_read = 0,0
     while sources and pages<max_pages and budget.remaining()>0:
         name, root = sources[position]
@@ -117,6 +121,9 @@ def run(*, output=None, checkpoints=None, fetcher=fetch_public, reader=read_medi
             if status!=200:raise ValueError('HTTP '+str(status))
             if mime not in ('text/html','application/xhtml+xml'):raise ValueError('not_html_source_page')
             page = discover(raw.decode('utf-8','replace'),final)
+            channels.extend({'channel':channel,'discovered_from':final,'publisher':name,
+                             'scope':'linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed'}
+                            for channel in page['public_social_links'])
             seen.setdefault(name,set()).add(url)
             published = page['source_published_at']
             source_sha = hashlib.sha256(raw).hexdigest()
@@ -160,7 +167,7 @@ def run(*, output=None, checkpoints=None, fetcher=fetch_public, reader=read_medi
               'title_hint':notice.get('title') or notice.get('role'),'state':'pending_verification','work_location_verified':False})
     report={'schema':'trabajo-cerca.local-history.v1','generated_at':now.isoformat(),'lookback_days':45,'candidates':list(candidates.values()),
       'candidate_count':len(candidates),'notice_evidence':records,'verified_notices':sum(row['status']=='verified' for row in records),
-      'diagnostics':diagnostics,'published_count':0,'paid_provider_calls':0,'coverage_complete':False,
+      'diagnostics':diagnostics,'discovered_channels':channels,'published_count':0,'paid_provider_calls':0,'coverage_complete':False,
       'checkpoints':{CHECKPOINT:{'position':position,'queues':queues,'seen':{key:sorted(value)[-200:] for key,value in seen.items()}}}}
     write_json(output/'local_history.json',report)
     return report

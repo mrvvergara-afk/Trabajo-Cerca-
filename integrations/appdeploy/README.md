@@ -1,6 +1,8 @@
 # Reparaciones de AppDeploy en el laboratorio
 
-Estado actual de la app indicada por el usuario: versión **`1791920772060`** aplicada y `ready`. Se confirmó una oferta nueva de BNE en Negrete, además de las dos del piloto anterior. Véase la [continuación regional](../../docs/continuacion-fuentes-regionales-2026-10-13.md), la [evidencia por ID](regional-source-observation-2026-10-13.json) y los [parches regionales aplicados](regional-source-repair.json). `main` sigue sin integrar.
+Estado actual de la app indicada por el usuario: versión **`1791924889565`** aplicada y `ready`. La [conexión de documentos](../../docs/conexion-documentos-2026-10-13.md) añade el puente de trabajo y admite la ingesta firmada del productor revisado. Sus 239 pruebas locales pasaron; el piloto real está pendiente del guardado remoto cancelado. `main` sigue sin integrar.
+
+La [continuación regional anterior](../../docs/continuacion-fuentes-regionales-2026-10-13.md) confirmó una oferta nueva de BNE en Negrete y dos del piloto previo. Su [evidencia por ID](regional-source-observation-2026-10-13.json) y [parches regionales](regional-source-repair.json) corresponden a esa comprobación histórica.
 
 El respaldo del piloto anterior conserva dos recibos, 190 candidatos y 2.750 observaciones. Su [informe del 12 de octubre](../../docs/resultado-publicacion-laboratorio-2026-10-12.md), [evidencia](publication-confirmation-2026-10-12.json) y [arreglo de repetición](backup-replay-repair.json) describen ese momento, no el conteo actual de la app.
 

@@ -263,6 +263,17 @@
       "territory": "Malleco",
       "discovered_from": "https://lasnoticiasdemalleco.cl/",
       "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "social-lumaco-facebook-municipal",
+      "name": "Municipalidad de Lumaco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco",
+      "discovered_from": "https://munilumaco.cl/",
+      "identity_evidence": "El widget Facebook page.php del sitio oficial enlaza literalmente este perfil en su parámetro href, comprobado el 2026-10-13.",
+      "scope": "institutional_municipal_channel; dedicated_OMIL_profile_not_assumed; no paid target added",
+      "access_observation": "La lectura del widget mediante búsqueda pública fue throttled; no acredita acceso a los avisos."
     }
   ],
   "unresolved_requested_sources": [

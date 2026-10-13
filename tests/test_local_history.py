@@ -16,6 +16,12 @@ SHA=hashlib.sha256(TEXT.encode()).hexdigest()
 
 
 class LocalHistoryTests(unittest.TestCase):
+    def test_a_single_literal_chilean_phone_can_be_the_application_for_a_complete_current_notice(self):
+        text=TEXT.replace('empleo@example.cl','+56 9 1234 5678')
+        self.assertEqual(local_history.verify_notice(text,URL,'2026-10-12T12:00:00Z',sha256=SHA,now=NOW)['application'],'tel:+56912345678')
+        ambiguous=text+'\nOtro contacto: +56 9 8765 4321'
+        self.assertEqual(local_history.verify_notice(ambiguous,URL,'2026-10-12T12:00:00Z',sha256=SHA,now=NOW)['status'],'pending')
+
     def test_matching_article_publication_date_is_used_but_modified_and_related_dates_are_not(self):
         raw='<script type="application/ld+json">{"@type":"NewsArticle","url":"'+URL+'","datePublished":"2026-10-12","dateModified":"2026-10-13"}</script>'
         self.assertEqual(discover(raw,URL)['source_published_at'],'2026-10-12T00:00:00+00:00')

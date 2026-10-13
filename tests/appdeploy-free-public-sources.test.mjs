@@ -7,6 +7,17 @@ import vm from 'node:vm';
 
 const stamp=Date.parse('2026-10-13T12:00:00Z');
 const url='https://cl.indeed.com/viewjob?jk=0123456789abcdef';
+
+test('Image-only local notices keep their media URL and export read-only work without using capture dates',()=>{
+  const h=harness(),article='https://www.munilumaco.cl/oferta-laboral-operador';
+  const links=h.ctx.publicPageLinks('<main><h1>Oferta laboral</h1><img src="/images/afiche.png"><img src="/logo.png"></main>',article);
+  assert.equal(links.candidates.length,1);
+  const work=h.ctx.publicDocumentWork({pending:[{url:links.candidates[0].url,source:'OMIL',publisherPage:article},
+    {url:'https://attacker.example/afiche.png',source:'Unknown',publisherPage:article}],checkedAt:new Date(stamp).toISOString()});
+  assert.equal(work.items.length,1);assert.equal(work.items[0].publisher_page,article);
+  assert.equal(work.read_only,true);assert.equal(work.paid_provider_calls,0);
+  assert.equal(work.items[0].source_published_at,undefined);
+});
 function page(source=url) {
   return '<title>Operador</title><main>Requisitos de empleo</main><script type="application/ld+json">'+JSON.stringify({ '@type':'JobPosting',url:source,title:'Operador',hiringOrganization:{ name:'Empresa de prueba' },jobLocation:{ address:{ addressLocality:'Angol',addressCountry:'CL' } },datePosted:'2026-10-12T12:00:00Z',validThrough:'2026-10-25T12:00:00Z' })+'</script><a href="/postular/123">Postula</a>';
 }
@@ -140,4 +151,17 @@ test('Source evidence retains overflow discoveries even when the work queue is f
  const result=await h.ctx.runFreePublicSources(h.sources,'overflow-scan-001',stamp);
  assert.equal(result.pending,100);assert.equal(result.audits[0].queueFull,true);
  const read=[...h.table('free_public_source_reads').values()][0];assert.ok(read.candidateEvidence.some(entry=>entry.url===candidate));
+});
+
+test('Historical PDF URLs stay pending but cannot block the HTML source cursor',async()=>{
+  const root='https://www.munilumaco.cl/',pdf=root+'bases-concurso.pdf';
+  const h=harness({fetcher:async source=>({url:source,status:200,raw:'<h1>Municipalidad</h1>',mime:'text/html',bytes:100})});
+  const sources=[{key:'lumaco',name:'OMIL Lumaco',url:root,territory:'Lumaco'}];
+  const id=createHash('sha256').update('lumaco').digest('hex');
+  h.table('free_public_seed_state').set(id,{id,key:'lumaco',queue:[pdf],seen:[],revision:1});
+  h.table('free_public_source_cursor').set('cursor',{id:'cursor',position:0,queues:{},seen:{},pending:[{url:pdf,source:'OMIL Lumaco'}]});
+  await h.ctx.runFreePublicSources(sources,'document-seed-001',stamp);
+  assert.ok(h.calls.some(call=>call.method==='http' && call.source===root));
+  assert.equal(h.calls.some(call=>call.method==='http' && call.source===pdf),false);
+  assert.equal((await h.ctx.freePublicSourceStatus()).documentWork.items[0].url,pdf);
 });

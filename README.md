@@ -1,5 +1,7 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
+La [conexión del lector de documentos](docs/conexion-documentos-2026-10-13.md) está implementada, con 239 pruebas locales y el puente nativo aplicado en la app. El guardado del commit en GitHub fue cancelado; el piloto real y la programación permanente permanecen pendientes. El informe distingue lo aplicado de lo aún no comprobado.
+
 La [continuación del radar regional](docs/continuacion-fuentes-regionales-2026-10-13.md) registra una oferta nueva de BNE confirmada en la app, las correcciones de fuentes y selección de candidatos, 225 pruebas aprobadas y los pendientes de redes sociales y afiches. El límite es 45 días desde la fecha original; detectar, guardar y publicar se comprueban por separado. `main` sigue sin integrar.
 
 El radar externo recolecta candidatos públicos, conserva el historial y verifica páginas individuales de Chiletrabajos, Indeed, Computrabajo, LinkedIn y Laborum cuando contienen evidencia suficiente. Opción Empleo exige comprobar su fuente original. También prepara avisos locales y documentos mediante lectores gratuitos. La app indicada por el usuario tiene un recolector público propio y recibe lotes firmados de GitHub; guardar un aviso solo se confirma como publicación cuando su ID aparece en el feed. El productor programado de `main` sigue pendiente de integrar la reparación después de su revisión. La ejecución local de `pipeline.py` prepara una cola y no publica por sí sola.

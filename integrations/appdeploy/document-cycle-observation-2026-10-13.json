@@ -1,0 +1,63 @@
+{
+  "app": {
+    "id": "trabajo-cerca-laboratorio-3ojgro",
+    "url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+    "applied_version": "1791924889565",
+    "status": "ready",
+    "frontend_errors": [],
+    "backend_errors": [],
+    "network_errors": []
+  },
+  "changes": {
+    "native_files": [
+      "backend/free-public-sources.ts",
+      "backend/radar-ingestion.ts"
+    ],
+    "external_producer": "scripts/document_cycle.py",
+    "paid_provider_calls": 0,
+    "maximum_signed_batch": 3,
+    "previous_exchange_preserved_if_no_document_offer": true,
+    "scheduled_activation_requires_reviewed_default_branch_workflow": true
+  },
+  "tests": {
+    "python": 101,
+    "node": 138,
+    "total": 239,
+    "execution": "local",
+    "passed": true,
+    "github_checks_for_this_revision": "not_executed"
+  },
+  "remote": {
+    "repair_ref": "repair/radar-audit-2026-10-11",
+    "repair_sha": "b9c570148e604c39b9e9f75936a59947552952b9",
+    "main_sha": "fab392b824e4100a4bba6dfe9289825297d24707",
+    "main_modified": false
+  },
+  "pilot": {
+    "executed": false,
+    "new_document_publications_confirmed": 0,
+    "blocker": {
+      "tool": "github_create_commit",
+      "result": "user cancelled MCP tool call",
+      "branch_update_performed": false
+    },
+    "local_sdk_read": {
+      "executed": false,
+      "blocker": "Chromium process sandbox: setsockopt Operation not permitted"
+    }
+  },
+  "credentials_modified": false,
+  "historical_offers_deleted": false,
+  "new_paid_services": false,
+  "existing_app_crons_modified": false,
+  "source_channels": [
+    {
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "primary_source": "https://munilumaco.cl/",
+      "method": "literal href of Facebook page.php widget linked from the official municipality site",
+      "dedicated_omil_identity_confirmed": false,
+      "job_posts_access_confirmed": false,
+      "paid_target_added": false
+    }
+  ]
+}

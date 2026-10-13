@@ -294,6 +294,24 @@
       "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
       "scope": "institutional_municipal_channel; dedicated_OMIL_profile_not_assumed; no paid target added",
       "identity_evidence": "Enlace literal encontrado por el piloto gratuito de Actions 38479791274 en la página primaria del municipio el 2026-10-13."
+    },
+    {
+      "key": "bne-traiguen-pilot-2026-112312",
+      "name": "Bolsa Nacional de Empleo · Traiguén",
+      "family": "official",
+      "url": "https://www.bne.gob.cl/oferta/2026-112312",
+      "territory": "Traiguén",
+      "scope": "curated_real_pilot",
+      "identity_evidence": "Página individual revisada el 2026-10-13: ABC S.A., trabajo en Traiguén, publicación 22/09/2026 y cierre 17/11/2026. Requiere relectura directa antes de la ingesta."
+    },
+    {
+      "key": "bne-angol-pilot-2026-107065",
+      "name": "Bolsa Nacional de Empleo · Angol",
+      "family": "official",
+      "url": "https://www.bne.gob.cl/oferta/2026-107065",
+      "territory": "Angol",
+      "scope": "curated_real_pilot",
+      "identity_evidence": "Página individual revisada el 2026-10-13: SODIMAC S.A., trabajo en Angol, publicación 09/09/2026 y cierre 14/10/2026. Requiere relectura directa; nunca renovar el plazo por rastreo."
     }
   ],
   "unresolved_requested_sources": [

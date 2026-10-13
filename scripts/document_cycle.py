@@ -10,7 +10,7 @@ import tempfile
 import urllib.parse
 from pathlib import Path
 
-from . import durable_backup, laboratory_exchange, local_history, observe_laboratory, publication_queue, public_sources_probe
+from . import curated_public_cycle, durable_backup, laboratory_exchange, local_history, observe_laboratory, publication_queue, public_sources_probe
 from .common import Budget, canonical_url, parse_date, safe_error, utcnow, write_json
 from .local_source_audit import MEDIA, discover, fetch_public, read_medium, same_publisher, source_error
 from .public_source_adapters import source_adapter
@@ -128,7 +128,7 @@ def verify_work_item(item, *, fetcher=fetch_public, reader=read_medium, budget=N
     return {**result,'engine':'html-literal'}
 
 
-def run(store, output, work, *, reader=verify_work_item, collector=local_history.run, now=None, budget=None):
+def run(store, output, work, *, reader=verify_work_item, collector=local_history.run, now=None, budget=None, record_run=True):
     now, output, budget = now or utcnow(),Path(output),budget or Budget(420)
     prior = store.checkpoints().get(CHECKPOINT,{})
     incoming = []
@@ -169,7 +169,8 @@ def run(store, output, work, *, reader=verify_work_item, collector=local_history
       'discovered_channels':list(channels.values()),'local_diagnostics':local['diagnostics'],
       'inventory_count':len(store.inventory()),'paid_provider_calls':0,'published':0,'publication_confirmed':False,
       'coverage_complete':False}
-    store.record_run(summary,now); write_json(output/'document-cycle.json',summary)
+    if record_run: store.record_run(summary,now)
+    write_json(output/'document-cycle.json',summary)
     return {**queue,'records':documents[:3],'ready_count':min(3,len(documents))},summary
 
 
@@ -193,7 +194,12 @@ def main():
     try:
         merge_history(store,public_path)
         work = read_app_work(output)
-        queue,summary = run(store,output,work)
+        queue,summary = run(store,output,work,record_run=False)
+        portals,portal_summary = curated_public_cycle.run(store,output,budget=Budget(60))
+        queue = curated_public_cycle.merge_batch(queue,portals)
+        summary.update(curated_portals=portal_summary,batch_records=len(queue['records']),inventory_count=len(store.inventory()))
+        store.record_run(summary)
+        write_json(output/'document-cycle.json',summary)
     finally: store.close()
     backup = output/'backup'; manifest = durable_backup.snapshot(path,backup)
     files = {'state/radar.sqlite3.gz':(backup/'radar.sqlite3.gz').read_bytes(),
@@ -201,6 +207,7 @@ def main():
              'history/'+context['run_id']+'/radar.sqlite3.gz':(backup/'radar.sqlite3.gz').read_bytes(),
              'history/'+context['run_id']+'/manifest.json':(backup/'manifest.json').read_bytes(),
              'history/'+context['run_id']+'/document-cycle.json':(output/'document-cycle.json').read_bytes(),
+             'history/'+context['run_id']+'/curated-public-cycle.json':(output/'curated-public-cycle.json').read_bytes(),
              'reports/document-cycle.json':(output/'document-cycle.json').read_bytes()}
     if queue['records']:
         body = exchange_body(queue,context)

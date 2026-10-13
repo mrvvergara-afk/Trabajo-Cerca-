@@ -44,6 +44,10 @@ jobs:
           node tests/appdeploy-ingestion.test.mjs
           node tests/verification-schedule.test.mjs
           node tests/workflow-checkpoint.test.mjs
+          node tests/appdeploy-local-evidence.test.mjs
+          node tests/appdeploy-social-evidence.test.mjs
+          node tests/appdeploy-social-evidence-store.test.mjs
+          node tests/appdeploy-social-repair.test.mjs
       - name: Localizar checkpoint anterior
         id: checkpoint
         uses: actions/github-script@v7
@@ -157,6 +161,10 @@ jobs:
           node tests/appdeploy-ingestion.test.mjs
           node tests/verification-schedule.test.mjs
           node tests/workflow-checkpoint.test.mjs
+          node tests/appdeploy-local-evidence.test.mjs
+          node tests/appdeploy-social-evidence.test.mjs
+          node tests/appdeploy-social-evidence-store.test.mjs
+          node tests/appdeploy-social-repair.test.mjs
       - name: Localizar respaldo durable o histórico anterior
         id: laboratory_history
         uses: actions/github-script@v7

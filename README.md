@@ -17,6 +17,10 @@ node tests/appdeploy-public-feed.test.mjs
 node tests/appdeploy-ingestion.test.mjs
 node tests/verification-schedule.test.mjs
 node tests/workflow-checkpoint.test.mjs
+node tests/appdeploy-local-evidence.test.mjs
+node tests/appdeploy-social-evidence.test.mjs
+node tests/appdeploy-social-evidence-store.test.mjs
+node tests/appdeploy-social-repair.test.mjs
 ```
 
 Las ofertas de las pruebas son ficticias. No se ejecutan Actors, IA ni peticiones a AppDeploy.

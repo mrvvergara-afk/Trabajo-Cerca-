@@ -128,6 +128,8 @@ class Links(HTMLParser):
         if tag == 'a':
             self.href = dict(attrs).get('href')
             self.label = []
+        if tag == 'img' and self.href and dict(attrs).get('alt'):
+            self.label.append(dict(attrs)['alt'])
 
     def handle_data(self, data):
         if self.href is not None:

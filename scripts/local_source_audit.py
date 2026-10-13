@@ -78,6 +78,12 @@ def public_social_url(value):
     return (host in ('facebook.com','instagram.com') and not re.search(r'/sharer|/share\.php|/dialog|/login|/accounts|/plugins', url.path, re.I))
 
 
+def source_error(exc):
+    if isinstance(exc,ValueError) and str(exc) in ('redirect_outside_publisher','source_byte_budget_exceeded','media_publisher_not_allowed','unsupported_media_type','unexpected_seed_type'):
+        return str(exc)
+    return safe_error(exc)
+
+
 def discover(raw, url):
     parser = Document(); parser.feed(raw)
     candidates, social = {}, set()
@@ -182,10 +188,10 @@ def read_medium(url, source_url, budget):
             'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
 
 
-def saved_social_evidence(output, *, max_pages=6):
+def saved_social_evidence(output, *, max_pages=6, cursor=None):
     browser=shutil.which('google-chrome') or shutil.which('chromium') or shutil.which('chromium-browser')
     if not browser: raise RuntimeError('readonly_browser_unavailable')
-    all_items,cursor,pages=[],None,[]
+    all_items,pages=[],[]
     for page in range(max_pages):
         suffix='&local-cursor='+urllib.parse.quote(cursor,safe='') if cursor else ''
         url=APP_URL+'?radar-local-proof=1'+suffix+'#operacion'
@@ -200,9 +206,13 @@ def saved_social_evidence(output, *, max_pages=6):
         if value.get('schema')!='trabajo-cerca.existing-local-evidence.v1' or value.get('readOnly') is not True or value.get('providerCalls')!=0:
             raise ValueError('untrusted_existing_evidence_result')
         write_json(output/('social-evidence-page-'+str(page+1)+'.json'),value)
-        all_items.extend(value['items']);pages.append({'page':page+1,**value['stats'],'hasMore':value['hasMore']})
+        all_items.extend(value['items']);pages.append({'page':page+1,**value['stats'],'hasMore':value['hasMore'],
+          'runs':[{'source':row['sourceName'],'status':row['status'],'posts':row['posts'],'imagesRead':row['imagesRead'],
+                   'jobNotices':row['jobNotices'],'findingsKnown':row['findingsKnown']} for row in value['items']]})
         print('LOCAL_CAPTURE_PAGE '+json.dumps(pages[-1]),flush=True)
         cursor=value.get('nextCursor')
+        write_json(output/'social-checkpoint.json',{'schema':'trabajo-cerca.local-evidence-checkpoint.v1',
+          'nextCursor':cursor,'checked_at':utcnow().isoformat(),'complete':not cursor})
         if not cursor: break
     return {'items':all_items,'pages':pages,'remaining_pages':bool(cursor),'coverage_complete':not cursor}
 
@@ -229,10 +239,11 @@ def run(output, *, fetcher=fetch_public, config=None):
               'family':source['family'],'territory_hint':source['territory'],'published':False})
             write_json(output/('seed-'+source['key']+'.json'),page)
         except Exception as exc:
-            sources.append({**source,'access':'unavailable','reason':safe_error(exc)})
+            sources.append({**source,'access':'unavailable','reason':source_error(exc)})
         print('LOCAL_SOURCE_ACCESS '+json.dumps(sources[-1],ensure_ascii=False),flush=True)
     evidence=[]
-    for candidate in list({row['url']:row for row in candidates}.values())[:6]:
+    specific=[row for row in candidates if not re.search(r'/concursos-publicos/?$|intermediacion-laboral|fiestas-patrias|feria-navidena',row['url'],re.I)]
+    for candidate in list({row['url']:row for row in specific}.values())[:6]:
         if budget.remaining()<5:break
         try:
             if MEDIA.search(candidate['url']):
@@ -245,7 +256,10 @@ def run(output, *, fetcher=fetch_public, config=None):
                 item={**candidate,'final_url':final,'http':status,'page':page,
                   'fields':evidence_fields(page['text'],page['source_published_at'])}
             evidence.append(item)
-        except Exception as exc:evidence.append({**candidate,'read_error':safe_error(exc)})
+            print('LOCAL_SOURCE_EVIDENCE '+json.dumps({'url':candidate['url'],'source':candidate['source'],
+              'fields':item['fields'],'text':item.get('page',item).get('text','')[:10000],
+              'images':item.get('page',{}).get('images',[])[:6]},ensure_ascii=False),flush=True)
+        except Exception as exc:evidence.append({**candidate,'read_error':source_error(exc)})
     summary={'schema':'trabajo-cerca.local-source-audit.v1','checked_at':utcnow().isoformat(),
       'source_access':sources,'candidates':candidates,'evidence':evidence,'coverage_complete':False,
       'published':0,'paid_provider_calls':0,'unresolved_requested_sources':config['unresolved_requested_sources']}
@@ -255,7 +269,11 @@ def run(output, *, fetcher=fetch_public, config=None):
 
 def main():
     output=Path('output/local-source-audit');output.mkdir(parents=True,exist_ok=True)
-    captured=saved_social_evidence(output)
+    checkpoint=Path('state/local-social-checkpoint.json')
+    previous=json.loads(checkpoint.read_text()) if checkpoint.exists() else None
+    if previous and previous.get('schema')!='trabajo-cerca.local-evidence-checkpoint.v1':
+        raise ValueError('invalid_local_evidence_checkpoint')
+    captured=saved_social_evidence(output,cursor=previous.get('nextCursor') if previous else None)
     write_json(output/'existing-social-evidence.json',captured)
     summary=run(output)
     budget=Budget(90);media=[]

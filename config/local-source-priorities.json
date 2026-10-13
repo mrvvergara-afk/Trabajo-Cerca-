@@ -1,26 +1,207 @@
 {
   "schema": "trabajo-cerca.local-source-priorities.v1",
-  "territories": ["Angol", "Lumaco", "Los Sauces", "Traiguén", "Renaico", "Nacimiento", "Negrete", "Mulchén", "Collipulli", "Mininco"],
+  "territories": [
+    "Angol",
+    "Lumaco",
+    "Los Sauces",
+    "Traiguén",
+    "Renaico",
+    "Nacimiento",
+    "Negrete",
+    "Mulchén",
+    "Collipulli",
+    "Mininco"
+  ],
   "paid_providers_enabled": false,
   "sources": [
-    {"key":"omil-angol","name":"Municipalidad / OMIL Angol","family":"municipal","url":"https://noticias.angol.cl/index.php/noticias","territory":"Angol"},
-    {"key":"omil-lumaco","name":"Municipalidad / OMIL Lumaco","family":"municipal","url":"https://www.munilumaco.cl/","territory":"Lumaco"},
-    {"key":"omil-los-sauces","name":"Municipalidad / OMIL Los Sauces","family":"municipal","url":"https://www.munilossauces.cl/noticias","territory":"Los Sauces"},
-    {"key":"omil-traiguen","name":"Municipalidad / OMIL Traiguén","family":"municipal","url":"https://mtraiguen.cl/direccion-de-fomento-productivo/","territory":"Traiguén"},
-    {"key":"omil-renaico","name":"Municipalidad / OMIL Renaico","family":"municipal","url":"https://municipalidadrenaico.cl/concursos-publicos/","territory":"Renaico"},
-    {"key":"omil-nacimiento","name":"Municipalidad / OMIL Nacimiento","family":"municipal","url":"https://www.nacimiento.cl/noticias","territory":"Nacimiento"},
-    {"key":"omil-negrete","name":"Municipalidad / OMIL Negrete","family":"municipal","url":"https://www.muninegrete.cl/","territory":"Negrete"},
-    {"key":"omil-mulchen","name":"Municipalidad / OMIL Mulchén","family":"municipal","url":"https://www.munimulchen.cl/?s=oferta+laboral","territory":"Mulchén"},
-    {"key":"omil-collipulli","name":"Municipalidad / OMIL Collipulli","family":"municipal","url":"https://municipalidadcollipulli.cl/concursos-publicos/","territory":"Collipulli"},
-    {"key":"malleco7","name":"Malleco 7","family":"media","url":"https://www.malleco7.cl/","territory":"Malleco","identity_requires_check":true},
-    {"key":"radio-mininco","name":"Radio Mininco","family":"media","url":"https://www.radiomininco.cl/","territory":"Mininco","identity_requires_check":true},
-    {"key":"radio-nativa","name":"Radio Nativa","family":"media","url":"https://www.radionativa.cl/","territory":"Lumaco"},
-    {"key":"radio-sur-collipulli","name":"Radio del Sur","family":"media","url":"https://www.radiodelsur.cl/","territory":"Collipulli"},
-    {"key":"social-angol","name":"Municipalidad de Angol · Facebook","family":"social","url":"https://www.facebook.com/municipalidad.angol/","territory":"Angol"},
-    {"key":"social-lumaco","name":"Municipalidad de Lumaco · Facebook","family":"social","url":"https://www.facebook.com/municipalidadlumaco/","territory":"Lumaco"},
-    {"key":"social-radio-nativa","name":"Radio Nativa · Instagram","family":"social","url":"https://www.instagram.com/radionativacl/","territory":"Lumaco"},
-    {"key":"cmpc","name":"CMPC · sitio corporativo","family":"employer","url":"https://www.cmpc.com/","territory":"zona forestal"},
-    {"key":"arauco","name":"Arauco · sitio corporativo","family":"employer","url":"https://www.arauco.com/","territory":"zona forestal"}
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "family": "municipal",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol"
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "family": "municipal",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco"
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "family": "municipal",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces"
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "family": "municipal",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "territory": "Traiguén"
+    },
+    {
+      "key": "omil-renaico",
+      "name": "Municipalidad / OMIL Renaico",
+      "family": "municipal",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico"
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "family": "municipal",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento"
+    },
+    {
+      "key": "omil-negrete",
+      "name": "Municipalidad / OMIL Negrete",
+      "family": "municipal",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete"
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "family": "municipal",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "territory": "Mulchén"
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "family": "municipal",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli"
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "family": "media",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página pública con título MALLECO 7, leída el 2026-10-12 (Chile)."
+    },
+    {
+      "key": "radio-mininco",
+      "name": "Radio Mininco",
+      "family": "media",
+      "url": "https://www.radiomininco.cl/",
+      "territory": "Mininco",
+      "identity_requires_check": true
+    },
+    {
+      "key": "radio-nativa",
+      "name": "Radio Nativa",
+      "family": "media",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco"
+    },
+    {
+      "key": "radio-sur-collipulli",
+      "name": "Radio del Sur",
+      "family": "media",
+      "url": "https://www.radiodelsur.cl/",
+      "territory": "Collipulli",
+      "identity_requires_check": true,
+      "identity_note": "El sitio devuelve SUREÑA RADIO Y TELEVISIÓN; falta acreditar su vínculo territorial con Collipulli."
+    },
+    {
+      "key": "social-angol",
+      "name": "Municipalidad de Angol · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "territory": "Angol"
+    },
+    {
+      "key": "social-lumaco",
+      "name": "Municipalidad de Lumaco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco"
+    },
+    {
+      "key": "social-radio-nativa",
+      "name": "Radio Nativa · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/radionativacl/",
+      "territory": "Lumaco"
+    },
+    {
+      "key": "cmpc",
+      "name": "CMPC · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.cmpc.com/",
+      "territory": "zona forestal"
+    },
+    {
+      "key": "arauco",
+      "name": "Arauco · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.arauco.com/",
+      "territory": "zona forestal"
+    },
+    {
+      "key": "social-traiguen",
+      "name": "Municipalidad de Traiguén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munitraiguen/",
+      "territory": "Traiguén",
+      "discovered_from": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "social-renaico",
+      "name": "Municipalidad de Renaico · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadrenaico",
+      "territory": "Renaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "social-negrete",
+      "name": "Municipalidad de Negrete · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MuniNegreteCL",
+      "territory": "Negrete",
+      "discovered_from": "https://www.muninegrete.cl/",
+      "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "social-mulchen",
+      "name": "Municipalidad de Mulchén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munimulchen",
+      "territory": "Mulchén",
+      "discovered_from": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "social-collipulli",
+      "name": "Municipalidad de Collipulli · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MunicipalidadCollipulli",
+      "territory": "Collipulli",
+      "discovered_from": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "scope": "public_read_only_probe; no paid target added"
+    },
+    {
+      "key": "social-malleco7",
+      "name": "Malleco 7 · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/Malleco7",
+      "territory": "Malleco",
+      "discovered_from": "https://www.malleco7.cl/",
+      "scope": "public_read_only_probe; no paid target added"
+    }
   ],
-  "unresolved_requested_sources": ["Otras radios y diarios de las nueve comunas", "Empresas agrícolas y forestales locales aún sin dirección identificada"]
+  "unresolved_requested_sources": [
+    "Otras radios y diarios de las nueve comunas",
+    "Empresas agrícolas y forestales locales aún sin dirección identificada",
+    "Radio Mininco: la dirección de prueba no respondió; identificar su canal verdadero sin inventar un perfil"
+  ]
 }

@@ -9,7 +9,7 @@ const code = stripTypeScriptTypes(readFileSync(new URL('../integrations/appdeplo
 
 function harness(result) {
   const calls = [];
-  const context = vm.createContext({ URL, Date, db:{ async list(table,options) {
+  const context = vm.createContext({ URL, Date, hydrateSocialFindings:async findings=>findings, db:{ async list(table,options) {
     calls.push({ table,options });
     if (result instanceof Error) throw result;
     return result;
@@ -41,7 +41,8 @@ test('A bounded projection reports omitted findings rather than claiming complet
   assert.equal(result.items[0].findingsTotal,25);
   assert.equal(result.items[0].findings.length,20);
   assert.equal(result.items[0].findingsTruncated,true);
-  assert.equal(result.items[0].findings[0].text.length,4000);
+  assert.equal(result.items[0].findings[0].text.length,6000);
+  assert.equal(result.items[0].findings[0].textTruncated,true);
   assert.equal(result.coverage,'one_bounded_page_of_existing_captures');
 });
 

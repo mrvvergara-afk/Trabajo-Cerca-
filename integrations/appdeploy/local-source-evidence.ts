@@ -1,4 +1,5 @@
 import { db } from '@appdeploy/sdk';
+import { hydrateSocialFindings } from './social-evidence-store';
 
 type Stored = Record<string, unknown>;
 const SOCIAL_HOSTS = new Set(['facebook.com','www.facebook.com','m.facebook.com','instagram.com','www.instagram.com']);
@@ -33,7 +34,10 @@ function finding(value:unknown) {
     mediaUrl:sourceUrl(row.mediaUrl, true), medium:text(row.medium, 30),
     title:text(row.title, 300), company:text(row.company, 300), commune:text(row.commune, 300),
     contact:text(row.contact, 600), deadline:text(row.deadline, 150),
-    requirements:text(row.requirements, 1000), text:text(row.text, 4000),
+    requirements:text(row.requirements, 1000), text:text(row.text, 6000),
+    textTruncated:row.textTruncated===true || text(row.text,10000).length>6000,
+    textOriginalLength:count(row.textOriginalLength),
+    transcriptionAvailable:typeof row.transcriptionAvailable==='boolean' ? row.transcriptionAvailable : null,
   };
 }
 
@@ -41,6 +45,9 @@ function finding(value:unknown) {
 export async function readLocalSourceEvidence(cursor?:string) {
   if (cursor && (cursor.length > 4096 || /[\r\n]/.test(cursor))) throw new Error('Invalid local evidence cursor');
   const rows = await db.list<Stored>('social_capture_runs', { limit:PAGE_SIZE, ...(cursor ? { nextToken:cursor } : {}) });
+  const references=rows.items.flatMap(row=>(Array.isArray(row.findings)?row.findings:[]).slice(0,FINDINGS_PER_RUN)) as Stored[];
+  const full=await hydrateSocialFindings(references);
+  let at=0;
   const items = rows.items.map(row => {
     const all = Array.isArray(row.findings) ? row.findings : [];
     return {
@@ -51,7 +58,7 @@ export async function readLocalSourceEvidence(cursor?:string) {
       images:count(row.images), imagesRead:count(row.imagesRead), jobNotices:count(row.jobNotices),
       textPostsRead:count(row.textPostsRead), findingsKnown:Array.isArray(row.findings),
       findingsTotal:Array.isArray(row.findings) ? all.length : null,
-      findingsTruncated:all.length > FINDINGS_PER_RUN, findings:all.slice(0, FINDINGS_PER_RUN).map(finding),
+      findingsTruncated:all.length > FINDINGS_PER_RUN, findings:full.slice(at,at+=Math.min(all.length,FINDINGS_PER_RUN)).map(finding),
     };
   });
   return {

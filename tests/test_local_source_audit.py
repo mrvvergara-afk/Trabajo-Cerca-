@@ -1,10 +1,12 @@
 import datetime as dt
 import tempfile
 import unittest
+import shutil
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts.local_source_audit import Document, PublisherRedirectGuard, discover, evidence_fields, run
+from scripts.local_source_audit import Document, PublisherRedirectGuard, discover, evidence_fields, read_medium, run, tesseract_text
+from scripts.common import Budget, Links
 
 
 class LocalSourceAuditTests(unittest.TestCase):
@@ -13,6 +15,8 @@ class LocalSourceAuditTests(unittest.TestCase):
         value=discover(html,'https://municipio.example/')
         self.assertEqual(value['candidates'][0]['url'],'https://municipio.example/noticias/123')
         self.assertIn('soldador',value['candidates'][0]['title'])
+        actual=Links();actual.feed(html)
+        self.assertIn('soldador',actual.links[0][1])
 
     def test_social_links_are_discovered_from_the_publisher_without_counting_share_buttons(self):
         html='<a href="https://www.facebook.com/omil.prueba/">Facebook</a><a href="https://www.facebook.com/sharer/sharer.php">Compartir</a>'
@@ -65,6 +69,45 @@ class LocalSourceAuditTests(unittest.TestCase):
         self.assertEqual(result['paid_provider_calls'],0)
         self.assertEqual(result['published'],0)
         self.assertFalse(result['coverage_complete'])
+
+    @unittest.skipUnless(shutil.which('pdftotext'),'local PDF reader unavailable')
+    def test_actual_local_pdf_reader_extracts_a_labeled_notice_without_a_provider(self):
+        lines=['Cargo: Operador forestal','Empresa: Empresa de prueba','Lugar de trabajo: Angol','Enviar CV a empleo@example.cl']
+        stream='BT /F1 14 Tf 50 720 Td '+' 0 -24 Td '.join('('+line+') Tj' for line in lines)+' ET'
+        objects=[b'<< /Type /Catalog /Pages 2 0 R >>',b'<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+          b'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>',
+          b'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+          ('<< /Length '+str(len(stream))+' >>\nstream\n'+stream+'\nendstream').encode()]
+        pdf=b'%PDF-1.4\n';offsets=[0]
+        for number,obj in enumerate(objects,1):
+            offsets.append(len(pdf));pdf+=(str(number)+' 0 obj\n').encode()+obj+b'\nendobj\n'
+        start=len(pdf);pdf+=b'xref\n0 6\n0000000000 65535 f \n'
+        pdf+=b''.join((f'{offset:010} 00000 n \n').encode() for offset in offsets[1:])
+        pdf+=('trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n'+str(start)+'\n%%EOF').encode()
+        url='https://municipio.example/aviso.pdf'
+        with patch('scripts.local_source_audit.fetch_public',return_value=(pdf,url,'application/pdf',200)):
+            read=read_medium(url,url,Budget(25))
+        self.assertEqual(read['engine'],'pdftotext-local')
+        self.assertIn('empleo@example.cl',read['text'])
+        self.assertEqual(evidence_fields(read['text'])['work_communes'],['Angol'])
+        self.assertIsNone(evidence_fields(read['text'])['source_published_at'])
+
+    @unittest.skipUnless(shutil.which('tesseract'),'local OCR unavailable')
+    def test_actual_local_ocr_preserves_a_visible_contact_in_a_synthetic_poster(self):
+        try:from PIL import Image,ImageDraw,ImageFont
+        except ImportError:self.skipTest('Pillow test-fixture generator unavailable')
+        font_path=Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+        if not font_path.exists():self.skipTest('Fixture font unavailable')
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/'synthetic-test-poster.png'
+            image=Image.new('RGB',(1300,450),'white');draw=ImageDraw.Draw(image)
+            font=ImageFont.truetype(str(font_path),40)
+            draw.multiline_text((35,30),'SE NECESITA OPERADOR\nEmpresa: Empresa de prueba\nLugar de trabajo: Angol\nEnviar CV: empleo@example.cl',font=font,fill='black',spacing=20)
+            image.save(path)
+            result=tesseract_text(path,Budget(25))
+        self.assertEqual(result['engine'],'tesseract-local')
+        self.assertIn('empleo@example.cl',result['text'])
+        self.assertIn('Angol',result['text'])
 
 
 if __name__=='__main__':unittest.main()

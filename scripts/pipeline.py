@@ -5,11 +5,11 @@ from pathlib import Path
 
 try:
     from . import apify_existing_results, apify_probe, apify_run_bounded, backfill, chiletrabajos_direct, publication_queue, radar, verify_candidates
-    from .common import Budget, bounded_int, output_dir, safe_error, utcnow, write_json
+    from .common import MAX_SOURCE_AGE_DAYS, Budget, bounded_int, output_dir, safe_error, utcnow, write_json
     from .state import State
 except ImportError:
     import apify_existing_results, apify_probe, apify_run_bounded, backfill, chiletrabajos_direct, publication_queue, radar, verify_candidates
-    from common import Budget, bounded_int, output_dir, safe_error, utcnow, write_json
+    from common import MAX_SOURCE_AGE_DAYS, Budget, bounded_int, output_dir, safe_error, utcnow, write_json
     from state import State
 
 
@@ -20,7 +20,7 @@ def run(*, output=None, state_path=None, collectors=None, checker=verify_candida
     # Validate before any collector can make a request.
     if not 0 <= limit <= 60:
         raise ValueError('VERIFY_LIMIT must be between 0 and 60')
-    bounded_int('BACKFILL_DAYS', 60, 1, 60)
+    bounded_int('BACKFILL_DAYS', MAX_SOURCE_AGE_DAYS, 1, MAX_SOURCE_AGE_DAYS)
     total_seconds = bounded_int('RADAR_BUDGET_SECONDS', 1100, 30, 1100)
     budget = Budget(total_seconds)
     state_path = state_path or Path(os.environ.get('RADAR_STATE_DIR', 'state')) / 'radar.sqlite3'

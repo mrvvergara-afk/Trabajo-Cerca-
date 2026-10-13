@@ -93,7 +93,7 @@ function harness(data = database()) {
       return due.length ? Math.min(...due) : null;
     },
   };
-  return { ...data, context, advance:() => context.advancePublicFeed(projector),
+  return { ...data, context, projector, advance:() => context.advancePublicFeed(projector),
     page:cursor => context.readPublicFeedPage(cursor), now(value) { time = value; } };
 }
 
@@ -122,6 +122,54 @@ async function items(h, first) {
   assert.equal(cursor, undefined);
   return result;
 }
+
+test('A 45-day policy reprojects existing feed pages in bounded steps and keeps source and historical snapshots', async () => {
+  const h = harness();
+  const jobs = Array.from({ length:86 }, (_, i) => record('age'+i, {
+    sourcePublishedAt:new Date(startTime-(i%2===0?50:21)*86400000).toISOString(),
+  }));
+  h.seed('radar_jobs', jobs);
+  await finish(h);
+  const original = await h.page();
+  const oldCursor = original.nextCursor;
+  const historicalPage = await h.page(oldCursor);
+  assert.equal((await items(h)).length, 86);
+  h.projector.revision = 'original-source-45-days-v1';
+  h.projector.project = item => startTime-Date.parse(item.sourcePublishedAt)<=45*86400000 ? item : null;
+  const beginning = h.calls.length;
+  let steps = 0;
+  while (steps++<8) {
+    await h.advance();
+    const current = [...h.table('public_feed_control').values()][0];
+    const manifest = h.table('public_feed_manifests').get(current.manifestId);
+    if (manifest.pages.every(page => page.projectionRevision === h.projector.revision)) break;
+  }
+  assert.ok(steps<=original.pageCount, 'One existing page is reprojected per step');
+  assert.equal((await items(h)).length, 43);
+  assert.equal(h.table('radar_jobs').size, 86);
+  assert.deepEqual(await h.page(oldCursor), historicalPage, 'Historical version remains readable');
+  const reads = h.calls.slice(beginning).filter(call => call.method==='get' && call.table==='radar_jobs');
+  assert.ok(reads.every(call => call.ids.length<=40));
+  assert.equal(new Set(reads.flatMap(call => call.ids)).size, 86);
+  assert.ok(h.calls.every(call => call.method!=='delete' || call.table!=='radar_jobs'));
+});
+
+test('A failed policy reprojection keeps the visible manifest and retries without deleting source records', async () => {
+  const h = harness();
+  h.seed('radar_jobs', [record('old')]);
+  await finish(h);
+  const before = (await h.page()).items;
+  const manifestId = [...h.table('public_feed_control').values()][0].manifestId;
+  h.projector.revision = 'changed-age-policy';
+  h.projector.project = () => null;
+  h.fail('get','radar_jobs',[]);
+  await assert.rejects(h.advance(), /count mismatch/);
+  assert.equal([...h.table('public_feed_control').values()][0].manifestId, manifestId);
+  assert.deepEqual((await h.page()).items, before);
+  await h.advance();
+  assert.equal((await h.page()).items.length, 0);
+  assert.equal(h.table('radar_jobs').size, 1);
+});
 
 test('More than 200 records from both sources form a complete, globally ordered feed', async () => {
   const h = harness();

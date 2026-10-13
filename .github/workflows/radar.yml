@@ -23,6 +23,37 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  review:
+    # Revisión gratuita en repositorio público: pruebas aisladas, sin recolectores.
+    if: github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos para las pruebas de OCR y PDF
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Probar sin red, credenciales ni escrituras a la app
+        run: |
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Observar la app mediante lectura del SDK sin ejecutar motores
+        run: python scripts/observe_laboratory.py
+      - name: Conservar la comprobación de lectura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-review-observation
+          path: output/laboratory_observation*.json
+          retention-days: 7
   scan:
     # La rama de reparación no ejecuta recolectores, crons ni publicaciones.
     if: github.ref == 'refs/heads/main'
@@ -48,6 +79,7 @@ jobs:
           node tests/appdeploy-social-evidence.test.mjs
           node tests/appdeploy-social-evidence-store.test.mjs
           node tests/appdeploy-social-repair.test.mjs
+          node tests/appdeploy-age-policy.test.mjs
       - name: Localizar checkpoint anterior
         id: checkpoint
         uses: actions/github-script@v7
@@ -165,6 +197,7 @@ jobs:
           node tests/appdeploy-social-evidence.test.mjs
           node tests/appdeploy-social-evidence-store.test.mjs
           node tests/appdeploy-social-repair.test.mjs
+          node tests/appdeploy-age-policy.test.mjs
       - name: Localizar respaldo durable o histórico anterior
         id: laboratory_history
         uses: actions/github-script@v7

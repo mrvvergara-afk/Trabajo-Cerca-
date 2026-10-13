@@ -156,6 +156,16 @@ test('Canonical individual-job identity folds host, protocol, trailing slash and
   assert.equal(h.ctx.jobIdentity('http://chiletrabajos.cl/trabajo/operador-1/?utm_source=x'),h.ctx.jobIdentity(offer().source_url));
 });
 
+test('Ingestion accepts original dates exactly 45 days old and blocks older dates before any database write', () => {
+  const h = harness();
+  const edge = now-45*86400000;
+  h.ctx.validateOffer(offer({ source_published_at:new Date(edge).toISOString() }), now);
+  for (const stamp of [edge-1, now-50*86400000]) {
+    assert.throws(() => h.ctx.validateOffer(offer({ source_published_at:new Date(stamp).toISOString() }), now), /Stale/);
+  }
+  assert.equal(h.calls.length, 0);
+});
+
 test('Storing a verified offer confirms a real SDK ID but does not claim publication before the feed', async () => {
   const h = harness();
   const result = await h.ctx.storeVerifiedBatch(body(),'batch-1',h.mapper,now);

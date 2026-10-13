@@ -102,7 +102,7 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
       !PLACES.includes(item.work_commune) || item.verification_method !== 'Chiletrabajos individual page + matching JobPosting') reject('Unsupported verification evidence');
   const checked = Date.parse(item.verified_at), published = Date.parse(item.source_published_at), deadline = Date.parse(item.valid_through);
   if (![checked,published,deadline].every(Number.isFinite) || checked > now || now - checked > MAX_AGE ||
-      published > now || now - published > 60 * MAX_AGE || deadline <= now || deadline <= published) reject('Stale or invalid source evidence');
+      published > now || now - published > 45 * MAX_AGE || deadline <= now || deadline <= published) reject('Stale or invalid source evidence');
   if (item.application.startsWith('mailto:')) {
     if (!/^mailto:[^@\s?]+@[^@\s?]+\.[^@\s?]+(?:\?.*)?$/.test(item.application)) reject('Invalid application contact');
   } else {

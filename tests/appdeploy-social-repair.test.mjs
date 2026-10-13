@@ -6,7 +6,11 @@ import vm from 'node:vm';
 
 const patch=JSON.parse(readFileSync(new URL('../integrations/appdeploy/local-social-evidence-repair.json',import.meta.url),'utf8'));
 const diffs=patch.files.find(file=>file.filename==='backend/index.ts').diffs;
-const verifier=diffs.find(diff=>diff.from.startsWith('async function verifyPendingOffer')).to;
+let verifier=diffs.find(diff=>diff.from.startsWith('async function verifyPendingOffer')).to;
+const agePatch=JSON.parse(readFileSync(new URL('../integrations/appdeploy/age-policy-repair.json',import.meta.url),'utf8'));
+for (const diff of agePatch.files.find(file=>file.filename==='backend/index.ts').diffs) {
+  if (verifier.includes(diff.from)) verifier=diff.multiple?verifier.split(diff.from).join(diff.to):verifier.replace(diff.from,diff.to);
+}
 const recovery=diffs.find(diff=>diff.from.startsWith('async function recoverHistoricVisualFindings')).to;
 const mapper=diffs.find(diff=>diff.to.includes('function socialFindingRecord(')).to.split('\n\nexport const socialTerritorialCollectHandler')[0];
 const pure=readFileSync(new URL('../integrations/appdeploy/social-evidence.ts',import.meta.url),'utf8').replace(/^export /gm,'');
@@ -25,7 +29,7 @@ function harness({ findings=[],partial=false }={}) {
     moderate:()=>true,isLikelyJobOpportunity:()=>true,unsafeContentReason:()=>'',
     staleDiscoveryDate:()=>false,parseDiscoveryDate:value=>Date.parse(value)||undefined,
     verificationTargets:record=>[...record.workCommunes,...record.recruitmentCommunes],
-    VERIFICATION_VERSION:'test',DISCOVERY_MAX_AGE_DAYS:60,
+    VERIFICATION_VERSION:'test',DISCOVERY_MAX_AGE_DAYS:45,
     hydrateSocialFindings:async rows=>rows,
     db:{
       async list(table,options) {

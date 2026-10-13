@@ -1,8 +1,10 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
-El radar recolecta candidatos públicos, conserva un historial local y verifica páginas individuales de Chiletrabajos cuando contienen evidencia suficiente. La integración del laboratorio recibe lotes firmados de GitHub y confirma IDs en el feed; **producción continúa sin integrar**. La ejecución local de `pipeline.py` prepara una cola y no publica por sí sola.
+El radar externo recolecta candidatos públicos, conserva un historial local y verifica páginas individuales de Chiletrabajos cuando contienen evidencia suficiente. La app indicada por el usuario recibe lotes firmados de GitHub y confirma IDs en el feed. El productor programado de `main` sigue pendiente de integrar la reparación después de su revisión. La ejecución local de `pipeline.py` prepara una cola y no publica por sí sola.
 
-La reparación está en una rama independiente. Producción y la rama principal no se actualizan durante esta auditoría.
+La reparación está en una rama independiente y la rama principal se conserva para la revisión. Los cambios aplicados en la app autorizada se documentan por versión; no sustituyen la activación del recolector externo actualizado.
+
+La política solicitada de 45 días y el diagnóstico de cobertura están en el [informe del 13 de octubre](docs/diagnostico-cobertura-45-dias-2026-10-13.md). El informe distingue los cambios aplicados en la app indicada por el usuario de los recolectores preparados en la rama para revisión.
 
 Consulta el [resultado actual y pendientes](docs/resultado-publicacion-laboratorio-2026-10-12.md), el [informe de auditoría](docs/auditoria-radar-2026-10-11.md), la [continuación del feed](docs/continuacion-feed-laboratorio-2026-10-12.md) y la [integración y respaldo del laboratorio](docs/integracion-y-respaldo-laboratorio-2026-10-12.md). La lectura real confirmó **dos ofertas publicadas y visibles**, con el feed completo y sus recibos guardados en el respaldo del laboratorio.
 
@@ -21,6 +23,7 @@ node tests/appdeploy-local-evidence.test.mjs
 node tests/appdeploy-social-evidence.test.mjs
 node tests/appdeploy-social-evidence-store.test.mjs
 node tests/appdeploy-social-repair.test.mjs
+node tests/appdeploy-age-policy.test.mjs
 ```
 
 Las ofertas de las pruebas son ficticias. No se ejecutan Actors, IA ni peticiones a AppDeploy.
@@ -33,7 +36,9 @@ Este comando consulta páginas públicas; debe ejecutarse después de revisar la
 python scripts/pipeline.py
 ```
 
-`VERIFY_LIMIT` acepta 0–60; `BACKFILL_DAYS`, 1–60; `RADAR_BUDGET_SECONDS`, 30–1100. Las rutas locales se configuran con `RADAR_OUTPUT_DIR` y `RADAR_STATE_DIR`.
+`VERIFY_LIMIT` acepta 0–60; `BACKFILL_DAYS`, 1–45 (45 por defecto); `RADAR_BUDGET_SECONDS`, 30–1100. Las rutas locales se configuran con `RADAR_OUTPUT_DIR` y `RADAR_STATE_DIR`. La fecha original debe tener como máximo 45 días y la postulación debe seguir vigente. La captura o reverificación no rejuvenece el aviso. Los registros históricos se conservan aunque dejen de ser publicables.
+
+El recolector público consume el catálogo `config/local-source-priorities.json`: nueve sitios municipales, Malleco 7, Radio Nativa y dos sitios corporativos. Excluye identidades pendientes y perfiles sociales de este rastreo HTML. Lee una página por fuente en cada ronda y conserva la fuente siguiente cuando agota el tiempo; una cola terminada no demuestra cobertura completa de 45 días. Las redes y los portales distintos de Chiletrabajos todavía necesitan rutas propias de extracción, verificación e ingesta.
 
 | Archivo | Contenido |
 | --- | --- |

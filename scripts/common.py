@@ -15,6 +15,7 @@ from pathlib import Path
 COMMUNES = ['Angol', 'Collipulli', 'Ercilla', 'Renaico', 'Mininco',
             'Los Sauces', 'Purén', 'Traiguén', 'Lumaco', 'Nacimiento',
             'Negrete', 'Mulchén', 'Victoria']
+MAX_SOURCE_AGE_DAYS = 45
 
 
 def normalized(text):

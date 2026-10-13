@@ -2,9 +2,9 @@
 import datetime as dt
 
 try:
-    from .common import COMMUNES, canonical_url, output_dir, parse_date, utcnow, write_json
+    from .common import COMMUNES, MAX_SOURCE_AGE_DAYS, canonical_url, output_dir, parse_date, utcnow, write_json
 except ImportError:
-    from common import COMMUNES, canonical_url, output_dir, parse_date, utcnow, write_json
+    from common import COMMUNES, MAX_SOURCE_AGE_DAYS, canonical_url, output_dir, parse_date, utcnow, write_json
 
 
 def prepare(state, *, output=None, now=None):
@@ -22,6 +22,9 @@ def prepare(state, *, output=None, now=None):
             continue
         if not deadline or deadline <= now or not published or published > now:
             blocked.append({'id': item['id'], 'reason': 'source_date_or_deadline_invalid'})
+            continue
+        if now - published > dt.timedelta(days=MAX_SOURCE_AGE_DAYS):
+            blocked.append({'id': item['id'], 'reason': 'source_older_than_45_days'})
             continue
         if (not result.get('title') or not result.get('company') or not result.get('application')
                 or result.get('work_commune') not in COMMUNES or not result.get('work_location_verified')):

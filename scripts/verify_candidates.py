@@ -14,10 +14,10 @@ import urllib.request
 from html.parser import HTMLParser
 
 try:
-    from .common import Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
+    from .common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
     from .state import choose_candidates
 except ImportError:
-    from common import Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
+    from common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
     from state import choose_candidates
 
 INPUT_FILES = ('report.json', 'backfill.json', 'chiletrabajos_direct.json', 'apify_existing_results.json')
@@ -182,8 +182,8 @@ def evaluate(item, raw, final_url, *, status=200, now=None):
     if not date_posted or date_posted > now:
         return {**base, 'status': 'pending', 'reason': 'source_date_missing_or_future'}
     base['source_published_at'] = date_posted.isoformat()
-    if now - date_posted > dt.timedelta(days=60):
-        return {**base, 'status': 'pending', 'reason': 'source_date_requires_review'}
+    if now - date_posted > dt.timedelta(days=MAX_SOURCE_AGE_DAYS):
+        return {**base, 'status': 'pending', 'reason': 'source_older_than_45_days'}
     application = application_method(raw, final_url)
     if not HIRING.search(body):
         return {**base, 'status': 'pending', 'reason': 'hiring_text_missing'}

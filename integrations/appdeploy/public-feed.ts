@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
-type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored };
+type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored; projectionRevision?:string };
 type Order = { time:number; key:string };
 type Counts = { jobs:number; newJobs24h:number; people:number; needs:number; services:number };
 type Summary = {
@@ -11,12 +11,13 @@ type Summary = {
   totalProvisionalJobOffers:number; communeStats:Record<string, Counts>;
   kindStats:Omit<Counts, 'newJobs24h'>;
 };
-type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary };
+type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary; projectionRevision?:string };
 type Manifest = Summary & { schema:2; updatedAt:string; pages:PageRef[]; pageCount:number };
 type Build = Manifest & { source:FeedSource | 'complete'; nextToken?:string };
 type Change = { source:FeedSource; sourceId:string; queuedAt:string };
 type Control = Stored & { manifestId?:string };
 type Projector = {
+  revision?:string;
   project:(item:Stored & { id:string }) => Stored | null;
   refreshAt:(item:Stored) => number | null;
 };
@@ -202,7 +203,7 @@ class Editor {
     if (!entries) {
       const [page] = await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id]);
       if (!page) throw new Error('Public feed page missing; previous feed retained');
-      entries = page.entries;
+      entries = page.entries.map(entry => ({ ...entry, projectionRevision:entry.projectionRevision ?? ref.projectionRevision }));
       this.cache.set(ref, entries);
     }
     return entries;
@@ -248,7 +249,7 @@ class Editor {
         if (!remaining.length) this.pages.splice(this.pages.indexOf(page), 1);
       }
     }
-    const entry:Entry = { key, source, sourceId, item };
+    const entry:Entry = { key, source, sourceId, item, ...(this.projector.revision ? { projectionRevision:this.projector.revision } : {}) };
     checkSize({ entries:[entry] });
     let ref = this.pages.find(page => compare(order(entry), page.last) <= 0) ?? this.pages[this.pages.length - 1];
     if (!ref) {
@@ -289,6 +290,10 @@ class Editor {
       const [id] = await db.add('public_feed_versions', [record]);
       if (!id) throw new Error('Public feed page insertion failed; previous feed retained');
       ref.id = id;
+      if (this.projector.revision) {
+        if (entries.every(entry => entry.projectionRevision === this.projector.revision)) ref.projectionRevision = this.projector.revision;
+        else delete ref.projectionRevision;
+      }
       ref.summary = summarize(entries, this.now);
       const times = entries.map(entry => this.projector.refreshAt(entry.item)).filter((value):value is number => value !== null && value > this.now);
       ref.refreshAt = times.length ? Math.min(...times) : null;
@@ -371,7 +376,9 @@ export async function advancePublicFeed(projector:Projector) {
     return publish(manifest(await editor.persist(), now));
   }
   const changes = await db.list<Change>('public_feed_changes', { limit:STEP_SIZE });
-  const due = current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];
+  // Reproject one existing page per writer step when eligibility rules change.
+  const policyDue = projector.revision ? current.pages.find(page => page.projectionRevision !== projector.revision) : undefined;
+  const due = policyDue ?? current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];
   if (!changes.items.length && !due) return readPublicFeedSummary();
   const wanted = new Map<string, { source:FeedSource; sourceId:string }>();
   for (const change of changes.items) {

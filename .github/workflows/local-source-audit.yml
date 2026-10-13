@@ -48,6 +48,10 @@ jobs:
         run: python scripts/local_evidence_archive.py
       - name: Leer fuentes públicas, capturas existentes y afiches con OCR local
         run: python scripts/local_source_audit.py
+      - name: Confirmar la app y las publicaciones previas mediante lectura del SDK
+        run: |
+          python scripts/observe_laboratory.py
+          cp output/laboratory_observation.json output/local-source-audit/laboratory-observation.json
       - name: Conservar evidencia acumulada en su propia rama sin modificar ofertas
         env:
           LOCAL_AUDIT_ARCHIVE_OPERATION: save

@@ -23,7 +23,7 @@ class LocalEvidenceArchiveTests(unittest.TestCase):
         self.assertIn(('push','origin','commit-sha:refs/heads/radar-local-evidence'),commands)
         self.assertFalse(any('--force' in args for args in commands))
         paths=[args[-1].split(',')[-1] for args in commands if args[0]=='update-index']
-        self.assertEqual(len(paths),8)
+        self.assertEqual(len(paths),10)
         self.assertTrue(all(path.startswith(('latest/','history/123/')) for path in paths))
 
     def test_a_missing_or_invalid_checkpoint_never_replaces_an_existing_cursor(self):

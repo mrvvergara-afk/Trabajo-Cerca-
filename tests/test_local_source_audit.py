@@ -109,5 +109,20 @@ class LocalSourceAuditTests(unittest.TestCase):
         self.assertIn('empleo@example.cl',result['text'])
         self.assertIn('Angol',result['text'])
 
+    def test_tesseract_literal_quotes_never_import_tsv_coordinates_into_notice_text_or_contacts(self):
+        class Result:
+            stdout=''
+        header='level\tpage_num\tblock_num\tpar_num\tline_num\tword_num\tleft\ttop\twidth\theight\tconf\ttext\n'
+        rows=['5\t1\t1\t1\t1\t1\t9\t761\t844\t32\t90\t"Los',
+              '5\t1\t1\t1\t1\t2\t455\t929\t163\t30\t95\trequisitos',
+              '5\t1\t1\t1\t2\t1\t955\t129\t463\t35\t91\templeo@example.cl']
+        langs=Result();langs.stdout='List of available languages (2):\neng\nspa\n'
+        ocr=Result();ocr.stdout=header+'\n'.join(rows)+'\n'
+        with patch('scripts.local_source_audit.shutil.which',return_value='/fake/tesseract'),patch('scripts.local_source_audit.subprocess.run',side_effect=[langs,ocr]):
+            result=tesseract_text(Path('fixture.png'),Budget(25))
+        self.assertEqual(result['text'],'"Los requisitos\nempleo@example.cl')
+        self.assertEqual(evidence_fields(result['text'])['phones'],[])
+        self.assertEqual(result['mean_confidence'],92.0)
+
 
 if __name__=='__main__':unittest.main()

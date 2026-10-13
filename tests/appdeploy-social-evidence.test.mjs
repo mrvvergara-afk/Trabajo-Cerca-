@@ -65,6 +65,9 @@ test('Profile pages, URLs with credentials and unsourced legacy records never pa
     assert.equal(result.ready,false);
   }
   assert.match(h.socialVerificationBlock({},places,now),/transcripción/);
+  assert.equal(h.sameSocialPost('https://www.facebook.com/page/posts/123','https://m.facebook.com/page/posts/123?fbclid=tracking'),true);
+  assert.equal(h.sameSocialPost('https://www.facebook.com/page/posts/123','https://www.facebook.com/page/posts/456'),false);
+  assert.equal(h.sameSocialPost('https://www.facebook.com/page/posts/123','https://www.facebook.com/login/'),false);
 });
 
 test('Dates and recapture requirements are reevaluated before a social notice can publish',()=>{

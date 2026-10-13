@@ -21,6 +21,7 @@ function harness({ findings=[],partial=false }={}) {
   const context={ Date:ClockDate,URL,Intl,Buffer,console,AbortSignal,
     normalizeText:value=>String(value??'').trim().replace(/\s+/g,' '),extractCommunes:places,
     sourceDateLabel:value=>value,verificationHost:()=> 'facebook.com',
+    sourceVerificationTier:()=> 'social',hasTargetEvidence:()=>true,isSpecificJobResult:()=>true,
     moderate:()=>true,isLikelyJobOpportunity:()=>true,unsafeContentReason:()=>'',
     staleDiscoveryDate:()=>false,parseDiscoveryDate:value=>Date.parse(value)||undefined,
     verificationTargets:record=>[...record.workCommunes,...record.recruitmentCommunes],
@@ -89,4 +90,28 @@ test('A partial candidate insert never advances the social recovery cursor',asyn
   await assert.rejects(h.context.recoverHistoricVisualFindings(),/Partial social recovery insertion/);
   assert.equal(h.checkpoint,undefined);
   assert.equal(h.calls.filter(call=>call.method==='add'||call.method==='update').length,0);
+});
+
+test('A blocked original social post remains pending without an extra paid scrape fallback',async()=>{
+  const h=harness();
+  const literal={ ...finding(1),company:'Empresa de prueba',title:'Operador forestal',deadline:'2026-10-20',
+    text:'Se necesita Operador forestal\nEmpresa: Empresa de prueba\nLugar de trabajo: Mininco\nContacto: empleo@example.cl\nPlazo: 20 de octubre de 2026' };
+  const candidate=h.context.socialFindingRecord(literal,'Radio local','Angol','2026-10-13T01:00:00Z');
+  assert.equal(candidate.socialEvidence.missing.length,0);
+  h.context.fetch=async()=>({ status:403,ok:false,url:literal.postUrl });
+  const result=await h.context.verifyPendingOffer({ ...candidate,id:'blocked' });
+  assert.equal(result.record.verified,false);
+  assert.equal(h.calls.filter(call=>call.method==='provider').length,0);
+});
+
+test('A redirect to another social post cannot verify the original captured offer',async()=>{
+  const h=harness();
+  const literal={ ...finding(1),company:'Empresa de prueba',title:'Operador forestal',deadline:'2026-10-20',
+    text:'Se necesita Operador forestal\nEmpresa: Empresa de prueba\nLugar de trabajo: Mininco\nContacto: empleo@example.cl\nPlazo: 20 de octubre de 2026' };
+  const candidate=h.context.socialFindingRecord(literal,'Radio local','Angol','2026-10-13T01:00:00Z');
+  h.context.fetch=async()=>({ status:200,ok:true,url:'https://www.facebook.com/municipio/posts/other' });
+  const result=await h.context.verifyPendingOffer({ ...candidate,id:'redirect' });
+  assert.equal(result.record.verified,false);
+  assert.match(result.record.verificationReason,/otra publicación/);
+  assert.equal(h.calls.filter(call=>call.method==='provider').length,0);
 });

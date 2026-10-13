@@ -149,15 +149,18 @@ def tesseract_text(path, budget):
     result = subprocess.run(['tesseract',str(path),'stdout','-l',language,'--psm','6','tsv'],
       capture_output=True,text=True,timeout=min(18,max(1,budget.remaining())),check=True)
     groups,confidence = {},[]
-    for row in csv.DictReader(io.StringIO(result.stdout),delimiter='\t'):
+    # Tesseract TSV is not CSV-quoted. A literal quote in a word must never absorb
+    # later rows (and turn bounding-box coordinates into apparent phone numbers).
+    for row in csv.DictReader(io.StringIO(result.stdout),delimiter='\t',quoting=csv.QUOTE_NONE):
+        if row.get('level')!='5' or None in row:continue
         word = row.get('text','').strip()
         try: score = float(row.get('conf','-1'))
         except ValueError: continue
-        if word and score>=0:
+        if word and 0<=score<=100:
             key = tuple(row.get(name) for name in ('page_num','block_num','par_num','line_num'))
             groups.setdefault(key,[]).append(word);confidence.append(score)
     return {'text':'\n'.join(' '.join(words) for words in groups.values())[:18000],
-            'mean_confidence':round(sum(confidence)/len(confidence),1) if confidence else None,'language':language,'engine':'tesseract-local'}
+            'mean_confidence':round(sum(confidence)/len(confidence),1) if confidence else None,'language':language,'engine':'tesseract-local','parser':'tesseract-tsv-literal-v2'}
 
 
 def read_medium(url, source_url, budget):
@@ -260,6 +263,21 @@ def run(output, *, fetcher=fetch_public, config=None):
               'fields':item['fields'],'text':item.get('page',item).get('text','')[:10000],
               'images':item.get('page',{}).get('images',[])[:6]},ensure_ascii=False),flush=True)
         except Exception as exc:evidence.append({**candidate,'read_error':source_error(exc)})
+    attachment_reads=0
+    for item in evidence:
+        if attachment_reads>=2 or budget.remaining()<20:break
+        images=item.get('page',{}).get('images',[])
+        targets=[url for url in images if re.search(r'afiches?|concurso|oferta|vacante',url,re.I) and not re.search(r'logo|banner|searchbutton',url,re.I)]
+        for url in targets[:1]:
+            attachment_reads+=1
+            try:
+                extracted=read_medium(url,item['url'],budget)
+                fields=evidence_fields(extracted['text'],item['page']['source_published_at'])
+                item.setdefault('public_attachments',[]).append({**extracted,'fields':fields})
+                print('LOCAL_PUBLIC_POSTER_READ '+json.dumps({'source':item['source'],'post_url':item['url'],
+                  'media_url':url,'engine':extracted['engine'],'mean_confidence':extracted.get('mean_confidence'),
+                  'fields':fields,'text':extracted['text'][:4000]},ensure_ascii=False),flush=True)
+            except Exception as exc:item.setdefault('public_attachments',[]).append({'url':url,'read_error':source_error(exc)})
     summary={'schema':'trabajo-cerca.local-source-audit.v1','checked_at':utcnow().isoformat(),
       'source_access':sources,'candidates':candidates,'evidence':evidence,'coverage_complete':False,
       'published':0,'paid_provider_calls':0,'unresolved_requested_sources':config['unresolved_requested_sources']}
@@ -292,6 +310,7 @@ def main():
     print('LOCAL_SOURCE_AUDIT '+json.dumps({'sources_checked':len(summary['source_access']),
       'candidate_links':len(summary['candidates']),'captured_runs_read':len(captured['items']),
       'captured_pages_remaining':captured['remaining_pages'],'media_read':sum('ocr' in row for row in media),
+      'municipal_media_read':sum(bool(row.get('engine'))+sum(bool(medium.get('engine')) for medium in row.get('public_attachments',[])) for row in summary['evidence']),
       'paid_provider_calls':0,'published':0}),flush=True)
 
 

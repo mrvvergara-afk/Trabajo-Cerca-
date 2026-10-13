@@ -8,7 +8,7 @@ from pathlib import Path
 
 BRANCH='radar-local-evidence'
 REPAIR='refs/heads/repair/radar-audit-2026-10-11'
-FILES=('social-checkpoint.json','existing-social-evidence.json','existing-posters-ocr.json','local-source-audit.json')
+FILES=('social-checkpoint.json','existing-social-evidence.json','existing-posters-ocr.json','local-source-audit.json','laboratory-observation.json')
 
 
 def git(*args, data=None, env=None):

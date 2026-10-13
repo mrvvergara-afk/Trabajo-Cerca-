@@ -61,6 +61,18 @@ function specificSocialPost(value:string) {
   } catch { return false; }
 }
 
+export function sameSocialPost(left:string, right:string) {
+  const identity=(value:string)=>{
+    if (!specificSocialPost(value)) return null;
+    const url=new URL(value), host=url.hostname.replace(/^(www\.|m\.)/,'');
+    const match=url.pathname.match(/\/(posts|permalink|p|reel)\/([^/]+)/);
+    if (match) return host+':'+match[1]+':'+match[2];
+    return host+':photo:'+String(url.searchParams.get('fbid') || url.searchParams.get('story_fbid'));
+  };
+  const expected=identity(left);
+  return expected!==null && expected===identity(right);
+}
+
 function supportedContact(text:string, claimed:string) {
   const compact=text.toLowerCase().replace(/\s+/g,'');
   const emails=text.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/gi) ?? [];

@@ -23,6 +23,38 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  public_sources:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      github.event.repository.private == false &&
+      contains(github.event.head_commit.message, '[public sources]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectura local gratuita
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa
+      - name: Leer portales, archivos y afiches sin proveedores pagos
+        run: python -m scripts.public_sources_probe
+      - name: Comprobar el recolector gratuito mediante la interfaz y el SDK de la app
+        run: node scripts/observe_public_sources.mjs
+      - name: Conservar resultados y bloqueos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-source-evidence
+          path: output/public-sources/
+          retention-days: 7
   review:
     # Revisión gratuita en repositorio público: pruebas aisladas, sin recolectores.
     if: github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false

@@ -7,6 +7,7 @@ import vm from 'node:vm';
 
 const source = readFileSync(new URL('../integrations/appdeploy/public-feed.ts', import.meta.url), 'utf8');
 const code = stripTypeScriptTypes(source, { mode:'strip' }).replace(/^import .*;$/gm, '').replace(/^export /gm, '');
+const adapterCode = stripTypeScriptTypes(readFileSync(new URL('../integrations/appdeploy/public-source-adapters.ts',import.meta.url),'utf8'),{ mode:'strip' }).replace(/^export /gm,'');
 const patch = JSON.parse(readFileSync(new URL('../integrations/appdeploy/public-feed-repair.json', import.meta.url), 'utf8'));
 const startTime = Date.parse('2026-10-12T10:00:00Z');
 
@@ -83,6 +84,7 @@ function harness(data = database()) {
   }
   const context = { db:data.db, Buffer, Date:Clock, console, URL, createHash };
   vm.createContext(context);
+  vm.runInContext(adapterCode,context);
   vm.runInContext(code, context);
   const projector = {
     project:item => item.active && !item.review && item.verified && (!item.expiresAt || Date.parse(item.expiresAt) >= time) ? item : null,

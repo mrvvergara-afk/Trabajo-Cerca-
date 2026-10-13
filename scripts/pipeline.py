@@ -4,11 +4,11 @@ import os
 from pathlib import Path
 
 try:
-    from . import apify_existing_results, apify_probe, apify_run_bounded, backfill, chiletrabajos_direct, publication_queue, radar, verify_candidates
+    from . import apify_existing_results, apify_probe, apify_run_bounded, backfill, chiletrabajos_direct, local_history, publication_queue, public_portals, radar, verify_candidates
     from .common import MAX_SOURCE_AGE_DAYS, Budget, bounded_int, output_dir, safe_error, utcnow, write_json
     from .state import State
 except ImportError:
-    import apify_existing_results, apify_probe, apify_run_bounded, backfill, chiletrabajos_direct, publication_queue, radar, verify_candidates
+    import apify_existing_results, apify_probe, apify_run_bounded, backfill, chiletrabajos_direct, local_history, publication_queue, public_portals, radar, verify_candidates
     from common import MAX_SOURCE_AGE_DAYS, Budget, bounded_int, output_dir, safe_error, utcnow, write_json
     from state import State
 
@@ -38,6 +38,8 @@ def run(*, output=None, state_path=None, collectors=None, checker=verify_candida
                 ('municipal_and_rss', lambda: radar.run(output=output, budget=stage_budget(120),
                                                        checkpoints=store.checkpoints(), now=now)),
                 ('rss_backfill', lambda: backfill.run(output=output, budget=stage_budget(60), now=now)),
+                ('public_portals', lambda: public_portals.run(output=output,budget=stage_budget(90),checkpoints=store.checkpoints(),now=now)),
+                ('local_history', lambda: local_history.run(output=output,budget=stage_budget(120),checkpoints=store.checkpoints(),now=now)),
                 ('chiletrabajos', lambda: chiletrabajos_direct.run(output=output, budget=stage_budget(160), now=now)),
                 ('apify_connection', lambda: apify_probe.run(output=output, budget=stage_budget(30))),
                 ('apify_actor_gate', lambda: apify_run_bounded.run(output=output)),
@@ -48,6 +50,11 @@ def run(*, output=None, state_path=None, collectors=None, checker=verify_candida
                 report = collect()
                 candidates = report.get('candidates', [])
                 added = store.ingest(candidates, now)
+                if name=='local_history' and report.get('schema')=='trabajo-cerca.local-history.v1':
+                    inventory = {item['url']:item for item in store.inventory()}
+                    for notice in report.get('notice_evidence',[]):
+                        if notice.get('status')=='verified' and notice.get('url') in inventory:
+                            store.record_result(inventory[notice['url']],notice,now)
                 diagnostics = report.get('diagnostics', [])
                 failures = sum(d.get('status') == 'error' for d in diagnostics)
                 partial = any(d.get('status') in ('partial', 'deferred') for d in diagnostics)

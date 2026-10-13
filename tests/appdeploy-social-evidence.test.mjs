@@ -76,3 +76,17 @@ test('Dates and recapture requirements are reevaluated before a social notice ca
   assert.match(h.socialVerificationBlock({ socialEvidence:evidence },places,now+86400001),/lectura reciente/);
   assert.match(h.socialVerificationBlock({ socialEvidence:{ ...evidence,deadline:'2026-10-12T00:00:00Z' } },places,now),/plazo/);
 });
+
+test('An explicitly published Unix date is retained while the capture timestamp never becomes the post date',()=>{
+  const stamp=Date.parse('2026-10-12T12:00:00Z');
+  assert.equal(h.originalSocialDate({ date_posted:stamp/1000 }),new Date(stamp).toISOString());
+  assert.equal(h.originalSocialDate({ date_posted:String(stamp) }),new Date(stamp).toISOString());
+  assert.equal(h.originalSocialDate({ timestamp:stamp,extractedAt:new Date(stamp).toISOString() }),'');
+});
+
+test('A literal caption is preserved for review without an AI call, source-town fallback or invented employer',()=>{
+  const result=h.captionSocialFinding({ post_url:'https://www.facebook.com/municipio/posts/123',content:'Se necesita operador\nEnviar CV a empleo@example.cl',timestamp:Date.now() });
+  assert.equal(result.company,'');assert.equal(result.commune,'');assert.equal(result.postDate,'');
+  assert.equal(result.contact,'empleo@example.cl');
+  assert.equal(h.captionSocialFinding({ url:'https://www.facebook.com/municipio/',content:'Se necesita operador' }),null);
+});

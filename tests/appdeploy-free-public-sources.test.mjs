@@ -1,0 +1,85 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { stripTypeScriptTypes } from 'node:module';
+import test from 'node:test';
+import vm from 'node:vm';
+
+const stamp=Date.parse('2026-10-13T12:00:00Z');
+const url='https://cl.indeed.com/viewjob?jk=0123456789abcdef';
+function page(source=url) {
+  return '<title>Operador</title><main>Requisitos de empleo</main><script type="application/ld+json">'+JSON.stringify({ '@type':'JobPosting',url:source,title:'Operador',hiringOrganization:{ name:'Empresa de prueba' },jobLocation:{ address:{ addressLocality:'Angol',addressCountry:'CL' } },datePosted:'2026-10-12T12:00:00Z',validThrough:'2026-10-25T12:00:00Z' })+'</script><a href="/postular/123">Postula</a>';
+}
+
+function harness({ blocked=false,abort=false }={}) {
+  const tables=new Map(),calls=[],registered=[];
+  let time=stamp;
+  const table=name=>{if (!tables.has(name)) tables.set(name,new Map());return tables.get(name);};
+  const execute=(op, target=tables)=>{
+    const name=op.table;if (!target.has(name)) target.set(name,new Map());
+    const rows=target.get(name);
+    if (op.method==='add') return op.records.map(record=>{if (rows.has(record.id)) return null;rows.set(record.id,structuredClone(record));return record.id;});
+    return op.records.map(change=>{const old=rows.get(change.id);if (!old || Object.entries(change.if || {}).some(([key,value])=>old[key]!==value)) return false;rows.set(change.id,structuredClone(change.record));return true;});
+  };
+  const handle=operation=>({ operation,then(resolve,reject) {try{return Promise.resolve(execute(operation)).then(resolve,reject);}catch(error){return Promise.reject(error).then(resolve,reject);} } });
+  const db={
+    async list(name,{ limit }={}) {calls.push({ method:'list',name,limit });return { items:[...table(name).values()].slice(0,limit).map(row=>structuredClone(row)) };},
+    async get(name,ids,options) {calls.push({ method:'get',name,ids,options });return ids.map(id=>structuredClone(table(name).get(id)||null));},
+    async update(name,records) {calls.push({ method:'update',name });return execute({ method:'update',table:name,records });},
+    tx:{ add:(name,records)=>handle({ method:'add',table:name,records }),update:(name,records)=>handle({ method:'update',table:name,records }) },
+    async transact(handles) {
+      calls.push({ method:'transact' });if (abort) {abort=false;throw new Error('simulated_atomic_abort');}
+      const staged=structuredClone(tables),results=handles.map(item=>execute(item.operation,staged));
+      if (results.flat().some(value=>!value)) throw new Error('Atomic condition failed');
+      tables.clear();for (const [key,value] of staged) tables.set(key,value);return results;
+    },
+  };
+  class Clock extends Date {constructor(...args) {super(...(args.length?args:[time]));}static now(){return time;}}
+  const ctx={ URL,Intl,Date:Clock,Buffer,createHash,db,structuredClone,
+    fetchPublicPage:async source=>{calls.push({ method:'http',source });return { url:source,status:blocked?403:200,raw:blocked?'':page(source),mime:'text/html',bytes:500 };},
+    registerPublicFeedChange:async (table,id)=>registered.push({ table,id }),
+    currentPublicFeedManifest:async()=>null };
+  vm.createContext(ctx);
+  for (const name of ['social-evidence.ts','public-source-adapters.ts','public-source-verifier.ts','free-public-sources.ts']) {
+    vm.runInContext(stripTypeScriptTypes(readFileSync(new URL('../integrations/appdeploy/'+name,import.meta.url),'utf8'),{ mode:'strip' }).replace(/^import .*;$/gm,'').replace(/^export /gm,''),ctx);
+  }
+  return { ctx,tables,table,calls,registered,now(next){time=next;},sources:[{ key:'indeed-angol',name:'Indeed',url,territory:'Angol' }] };
+}
+
+test('A verified free source saves a real ID and audit receipt before advancing its cursor, without claiming publication',async()=>{
+  const h=harness();const result=await h.ctx.runFreePublicSources(h.sources,'public-run-00001',stamp);
+  assert.equal(result.verified,1);assert.equal(result.stored,1);assert.equal(result.published,0);assert.equal(result.providerCalls,0);
+  assert.equal(h.registered.length,1);assert.ok(h.registered[0].id.startsWith('free-'));
+  assert.equal(h.table('free_public_source_runs').size,1);assert.equal(h.table('free_public_source_cursor').size,1);
+});
+
+test('Repeating a completed request reuses the receipt without network reads or duplicate offers',async()=>{
+  const h=harness();await h.ctx.runFreePublicSources(h.sources,'public-run-00002',stamp);
+  const calls=h.calls.filter(call=>call.method==='http').length;
+  const result=await h.ctx.runFreePublicSources(h.sources,'public-run-00002',stamp);
+  assert.equal(result.replayed,true);assert.equal(h.calls.filter(call=>call.method==='http').length,calls);assert.equal(h.registered.length,1);
+});
+
+test('The public cooldown prevents extra scans and blocked sources remain explicit',async()=>{
+  const h=harness({ blocked:true });const result=await h.ctx.runFreePublicSources(h.sources,'public-run-00003',stamp);
+  assert.equal(result.verified,0);assert.equal(result.audits[0].http,403);
+  assert.equal((await h.ctx.runFreePublicSources(h.sources,'public-run-00004',stamp)).deferred,true);
+  assert.equal(h.registered.length,0);
+});
+
+test('An atomic checkpoint failure preserves the saved offer and retry never creates a duplicate ID',async()=>{
+  const h=harness({ abort:true });await assert.rejects(h.ctx.runFreePublicSources(h.sources,'public-run-00005',stamp),/atomic_abort/);
+  assert.equal(h.table('free_public_source_cursor').size,0);assert.equal(h.table('free_public_source_runs').size,0);
+  const existingId=h.registered[0].id;
+  h.now(stamp+900000);await h.ctx.runFreePublicSources(h.sources,'public-run-00006',stamp+900000);
+  assert.equal(h.registered[1].id,existingId);
+  assert.equal(h.table(h.registered[0].table).size,1);
+});
+
+test('Different jobs receive globally distinct source IDs and storage-only receipts never mean visible publication',async()=>{
+  const h=harness();await h.ctx.runFreePublicSources(h.sources,'public-run-00007',stamp);
+  h.now(stamp+900000);h.sources[0].url=url.replace('0123456789abcdef','abcdef0123456789');
+  await h.ctx.runFreePublicSources(h.sources,'public-run-00008',stamp+900000);
+  assert.notEqual(h.registered[0].id,h.registered[1].id);
+  const status=await h.ctx.freePublicSourceStatus();assert.equal(status.publishedConfirmed,null);assert.equal(status.readOnly,true);
+});

@@ -1,6 +1,6 @@
-"""Verify specific Chiletrabajos jobs against structured, current source evidence.
+"""Verify supported individual public jobs against current source evidence.
 
-All other source families remain pending until a dedicated verifier exists.
+Unreadable or incomplete pages remain pending; no paid fallback is invoked.
 This module never publishes or calls AI, Apify Actors or AppDeploy.
 """
 import collections
@@ -8,30 +8,39 @@ import datetime as dt
 import html
 import json
 import re
+import subprocess
 import urllib.parse
 import urllib.error
 import urllib.request
 from html.parser import HTMLParser
+from pathlib import Path
 
 try:
     from .common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
     from .state import choose_candidates
+    from .public_source_adapters import source_adapter, same_job
 except ImportError:
     from common import MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, normalized, output_dir, parse_date, safe_error, utcnow, write_json
     from state import choose_candidates
+    from public_source_adapters import source_adapter, same_job
 
-INPUT_FILES = ('report.json', 'backfill.json', 'chiletrabajos_direct.json', 'apify_existing_results.json')
+INPUT_FILES = ('report.json', 'backfill.json', 'chiletrabajos_direct.json', 'public_portals.json', 'apify_existing_results.json')
 CLOSED = re.compile(r'oferta (?:expirada|finalizada|cerrada)|postulaci[oó]n(?:es)? (?:cerradas?|finalizadas?)|esta oferta ya no', re.I)
 HIRING = re.compile(r'oferta laboral|postul|requisitos|descripci[oó]n del (?:empleo|trabajo)|jornada|vacante|empleo', re.I)
 
 
 def supported_url(url):
-    try:
-        parsed = urllib.parse.urlsplit(canonical_url(url))
-        return parsed.hostname in ('chiletrabajos.cl', 'www.chiletrabajos.cl') and bool(
-            re.fullmatch(r'/trabajo/[^/]+/?', parsed.path))
-    except ValueError:
-        return False
+    return source_adapter(url) is not None
+
+
+def evaluate_public(item, raw, final_url, status, now):
+    inputs = {'url':item['url'], 'raw':raw, 'final_url':final_url,
+              'status':status, 'now':int(now.timestamp()*1000)}
+    result = subprocess.run(['node','--disable-warning=ExperimentalWarning',
+                              str(Path(__file__).with_name('verify_public_source.mjs'))],
+                            input=json.dumps(inputs,ensure_ascii=False),capture_output=True,
+                            text=True,timeout=8,check=True)
+    return json.loads(result.stdout)
 
 
 class Extract(HTMLParser):
@@ -129,15 +138,35 @@ def application_method(raw, url):
     return None
 
 
+def original_source_links(raw, url):
+    parser = Links()
+    parser.feed(raw)
+    originals = set()
+    for href, label in parser.links:
+        if not re.search(r'postul|aplicar|apply|ver (?:la )?oferta|fuente original', label, re.I):
+            continue
+        try:
+            target = canonical_url(urllib.parse.urljoin(url,href))
+        except ValueError:
+            continue
+        adapter = source_adapter(target)
+        if adapter and adapter['family'] != 'aggregator':
+            originals.add(target)
+    return sorted(originals)
+
+
 def evaluate(item, raw, final_url, *, status=200, now=None):
     now = now or utcnow()
+    adapter = source_adapter(item['url'])
+    if adapter and adapter['name'] != 'Chiletrabajos':
+        return evaluate_public(item, raw, final_url, status, now)
     if status in (404, 410):
         return {'status': 'rejected', 'reason': 'source_removed'}
     if status != 200:
         return {'status': 'pending', 'reason': f'HTTP {status}'}
     if not supported_url(final_url):
         return {'status': 'rejected', 'reason': 'redirected_outside_job'}
-    if urllib.parse.urlsplit(item['url']).path.rstrip('/') != urllib.parse.urlsplit(final_url).path.rstrip('/'):
+    if not same_job(item['url'], final_url):
         return {'status': 'pending', 'reason': 'redirected_to_other_job'}
     parser = Extract()
     parser.feed(raw)
@@ -195,8 +224,12 @@ def evaluate(item, raw, final_url, *, status=200, now=None):
 
 
 class JobRedirectGuard(urllib.request.HTTPRedirectHandler):
+    def __init__(self, original=None):
+        super().__init__()
+        self.original = original
+
     def redirect_request(self, req, fp, code, msg, headers, newurl):
-        if not supported_url(newurl):
+        if not supported_url(newurl) or (self.original and not same_job(self.original,newurl)):
             raise ValueError('redirected_outside_job')
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
@@ -207,12 +240,23 @@ def check(item, *, opener=None, budget=None, now=None):
     timeout = min(12, budget.remaining()) if budget else 12
     if timeout <= 0:
         return {'status': 'pending', 'reason': 'stage_budget_exhausted'}
-    opener = opener or urllib.request.build_opener(JobRedirectGuard()).open
+    opener = opener or urllib.request.build_opener(JobRedirectGuard(item['url'])).open
     request = urllib.request.Request(canonical_url(item['url']), headers={
         'User-Agent': 'Mozilla/5.0 (compatible; TrabajoCerca/1.1)'})
     try:
         with opener(request, timeout=timeout) as response:
-            raw = response.read(600000).decode('utf-8', 'replace')
+            data = response.read(600001)
+            if len(data)>600000:
+                return {'status':'pending','reason':'source_byte_budget_exceeded'}
+            raw = data.decode('utf-8', 'replace')
+            if source_adapter(item['url'])['family'] == 'aggregator' and response.status == 200:
+                originals = original_source_links(raw,response.geturl())
+                if len(originals) != 1:
+                    return {'status':'pending','reason':'aggregator_requires_unambiguous_original_source',
+                            'original_candidates':originals[:5]}
+                original = originals[0]
+                result = check({**item,'url':original},budget=budget,now=now)
+                return {**result,'discovery_source':item['url'],'origin_resolution':'individual_original_source'}
             return evaluate(item, raw, response.geturl(), status=response.status, now=now)
     except urllib.error.HTTPError as exc:
         return evaluate(item, '', item['url'], status=exc.code, now=now)

@@ -1,12 +1,16 @@
 import { db } from '@appdeploy/sdk';
 import { createHash, createPublicKey, verify, type JsonWebKey } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
+import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
 
 type Stored = Record<string, unknown>;
 export type VerifiedOffer = {
   idempotency_key:string; candidate_id:string; source_url:string; source:string;
   title:string; company:string; work_commune:string; source_published_at:string;
   valid_through:string; application:string; verified_at:string; verification_method:string;
+  validity_method?:'explicit_deadline' | 'live_application';
+  validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
+  source_evidence?:{ sha256:string; source_url:string; complete_document:boolean; text:string };
 };
 type Receipt = { table:string; id:string; identity:string; candidateId:string };
 type PullState = {
@@ -51,11 +55,9 @@ function jsonPart(part:string) {
 }
 
 export function jobIdentity(url:string) {
-  let parsed:URL;
-  try { parsed = new URL(url); } catch { return reject('Invalid source URL'); }
-  if (!['http:','https:'].includes(parsed.protocol) || parsed.username || parsed.password || parsed.port ||
-      !['chiletrabajos.cl','www.chiletrabajos.cl'].includes(parsed.hostname) || !/^\/trabajo\/[^/]+\/?$/.test(parsed.pathname)) reject('Unsupported individual source URL');
-  return sha('https://www.chiletrabajos.cl' + parsed.pathname.replace(/\/$/, ''));
+  const adapter = publicSourceAdapter(url);
+  if (!adapter || adapter.family === 'aggregator') reject('Unsupported individual source URL');
+  return sha(adapter.identityUrl);
 }
 
 // A historical, digest-bound proof of a GitHub job; it never authorizes a new HTTP request.
@@ -94,15 +96,28 @@ export function verifySignedBatch(envelope:Envelope, jwks:Jwks, now=Date.now()) 
 }
 
 export function validateOffer(item:VerifiedOffer, now=Date.now()) {
-  for (const field of ['source_url','title','company','work_commune','source_published_at','valid_through','application','verified_at','verification_method','candidate_id','idempotency_key'] as const) {
+  for (const field of ['source_url','title','company','work_commune','source_published_at','application','verified_at','verification_method','candidate_id','idempotency_key'] as const) {
     if (typeof item[field] !== 'string' || !item[field].trim() || item[field].length > 2000) reject('Missing or oversized offer evidence');
   }
   const identity = jobIdentity(item.source_url);
+  const adapter = publicSourceAdapter(item.source_url)!;
+  const localMethod = adapter.family==='local' && item.verification_method===adapter.name+' individual notice + local document text';
   if (!/^[a-f0-9]{24}$/.test(item.candidate_id) || item.idempotency_key !== 'radar:' + item.candidate_id ||
-      !PLACES.includes(item.work_commune) || item.verification_method !== 'Chiletrabajos individual page + matching JobPosting') reject('Unsupported verification evidence');
+      !PLACES.includes(item.work_commune) || (item.verification_method !== adapter.verificationMethod && !localMethod)) reject('Unsupported verification evidence');
+  if (typeof item.valid_through !== 'string' || item.valid_through.length>2000) reject('Invalid source deadline');
+  if (localMethod && (!item.source_evidence || item.source_evidence.source_url!==item.source_url ||
+      !item.source_evidence.complete_document || !/^[a-f0-9]{64}$/.test(item.source_evidence.sha256) ||
+      typeof item.source_evidence.text!=='string' || item.source_evidence.text.length>18000)) reject('Missing local document proof');
   const checked = Date.parse(item.verified_at), published = Date.parse(item.source_published_at), deadline = Date.parse(item.valid_through);
-  if (![checked,published,deadline].every(Number.isFinite) || checked > now || now - checked > MAX_AGE ||
-      published > now || now - published > 45 * MAX_AGE || deadline <= now || deadline <= published) reject('Stale or invalid source evidence');
+  if (![checked,published].every(Number.isFinite) || checked > now || now - checked > MAX_AGE ||
+      published > now || now - published > 45 * MAX_AGE) reject('Stale or invalid source evidence');
+  if (item.validity_method==='live_application') {
+    const evidence = item.validity_evidence;
+    if (localMethod || item.valid_through || !evidence || !samePublicJob(item.source_url,evidence.form_url) ||
+        evidence.form_action!==item.application || Date.parse(evidence.checked_at)!==checked ||
+        !/^[a-f0-9]{64}$/.test(evidence.source_sha256) || !safePublicUrl(evidence.form_action) ||
+        new URL(evidence.form_action).hostname.replace(/^www\./,'')!==new URL(item.source_url).hostname.replace(/^www\./,'')) reject('Missing current application form proof');
+  } else if (!Number.isFinite(deadline) || deadline<=now || deadline<=published) reject('Stale or invalid source evidence');
   if (item.application.startsWith('mailto:')) {
     if (!/^mailto:[^@\s?]+@[^@\s?]+\.[^@\s?]+(?:\?.*)?$/.test(item.application)) reject('Invalid application contact');
   } else {

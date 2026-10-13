@@ -50,6 +50,32 @@ export function preservedSocialFinding(input:Finding):Finding {
   return { ...result,text:original.slice(0,6000),textTruncated:input.textTruncated===true || originalLength>6000,textOriginalLength:originalLength };
 }
 
+export function originalSocialDate(post:Finding):string {
+  const value=post.date_posted ?? post.datePosted ?? post.published_at ?? post.datetime ?? post.date;
+  const numeric=typeof value==='number' ? value : typeof value==='string' && /^\d{10}(?:\d{3})?$/.test(value) ? Number(value) : null;
+  if (numeric!==null && Number.isFinite(numeric)) {
+    const stamp=numeric<100000000000 ? numeric*1000 : numeric;
+    const date=new Date(stamp);
+    return date.getUTCFullYear()>=2000 && date.getUTCFullYear()<2100 ? date.toISOString() : '';
+  }
+  return socialSourceDate(value) || '';
+}
+
+export function captionSocialFinding(post:Finding, now=Date.now()):Finding | null {
+  const text=[post.content,post.caption,post.message,post.text,post.description].find(value => typeof value==='string' && value.trim()) as string | undefined || '';
+  const url=literal(post.post_url || post.url,4000);
+  if (!specificSocialPost(url) || !/se necesita|se busca|se requiere|buscamos|vacante|oferta laboral|enviar (?:cv|curr[ií]culum)|contrata/i.test(text)) return null;
+  const field=(pattern:RegExp)=>text.match(pattern)?.[1]?.trim() || '';
+  const title=field(/(?:^|\n)\s*(?:cargo|puesto|se necesita|se busca|se requiere|buscamos)\s*[:\-]?\s*([^\n]{3,180})/i) || text.split('\n')[0].trim().slice(0,180);
+  const company=field(/(?:^|\n)\s*(?:empresa|empleador)\s*[:\-]\s*([^\n]{3,180})/i);
+  const commune=field(/(?:lugar de trabajo|ubicaci[oó]n de (?:la )?faena|faena en|trabajo en)\s*[:\-]?\s*([^\n]{3,180})/i);
+  const contact=text.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/i)?.[0] ||
+    text.match(/(?<!\d)(?:\+?56[\s-]*)?(?:9(?:[\s-]*\d){8}|(?:43|45)(?:[\s-]*\d){7})(?!\d)/)?.[0] || '';
+  const deadline=field(/(?:postulaciones? hasta|fecha l[ií]mite|cierre)\s*[:\-]?\s*([^\n]{3,150})/i);
+  return preservedSocialFinding({ postUrl:url,postDate:originalSocialDate(post),extractedAt:new Date(now).toISOString(),
+    medium:'text',text,title,company,commune,contact,deadline });
+}
+
 function specificSocialPost(value:string) {
   try {
     const url=new URL(value);

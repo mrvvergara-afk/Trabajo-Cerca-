@@ -35,9 +35,16 @@ class Document(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.title, self.body, self.links, self.images, self.dates = '', [], [], [], []
         self.in_title, self.skip, self.href, self.label = False, [], None, []
+        self.ld, self.script, self.schemas = False, [], []
+        self.article_depth = 0
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'article': self.article_depth += 1
+        if tag == 'time' and self.article_depth and attrs.get('datetime'): self.dates.append(attrs['datetime'])
+        if tag == 'script':
+            self.ld = attrs.get('type','').lower() == 'application/ld+json'
+            self.script = []
         if tag in ('p','div','br','li','tr','h1','h2','h3','section','article') and not self.skip: self.body.append('\n')
         if tag == 'title': self.in_title = True
         if tag in ('script','style','nav','footer','header','aside'): self.skip.append(tag)
@@ -52,6 +59,9 @@ class Document(HTMLParser):
             if self.href and attrs.get('alt'): self.label.append(attrs['alt'])
 
     def handle_endtag(self, tag):
+        if tag == 'script' and self.ld:
+            self.schemas.append(''.join(self.script));self.ld = False
+        if tag == 'article': self.article_depth = max(0,self.article_depth-1)
         if tag == 'title': self.in_title = False
         if tag in ('p','div','li','tr','h1','h2','h3','section','article') and not self.skip: self.body.append('\n')
         if tag == 'a' and self.href:
@@ -60,6 +70,7 @@ class Document(HTMLParser):
         if self.skip and self.skip[-1] == tag: self.skip.pop()
 
     def handle_data(self, value):
+        if self.ld:self.script.append(value)
         if self.in_title: self.title += value
         if not self.skip and not self.in_title: self.body.append(value)
         if self.href: self.label.append(value)
@@ -93,7 +104,26 @@ def discover(raw, url):
         if public_social_url(target): social.add(target)
         if same_publisher(url,target) and HIRING.search(label + ' ' + target) and not NON_JOB.search(label):
             candidates[target] = {'url':target,'title':label[:300],'kind':'document' if MEDIA.search(target) else 'page'}
-    dates = {value.isoformat() for value in (parse_date(date) for date in parser.dates) if value}
+    source_dates = list(parser.dates)
+    for schema in parser.schemas:
+        try:nodes = [json.loads(schema)]
+        except (ValueError,TypeError):continue
+        visited = 0
+        while nodes and visited<2000:
+            node = nodes.pop();visited += 1
+            if isinstance(node,list):nodes.extend(node)
+            elif isinstance(node,dict):
+                types = node.get('@type',[])
+                types = types if isinstance(types,list) else [types]
+                entity = node.get('mainEntityOfPage')
+                entity = entity.get('@id') if isinstance(entity,dict) else entity
+                for candidate in [node.get('url'),entity]:
+                    try:matched = candidate and canonical_url(urllib.parse.urljoin(url,candidate))==canonical_url(url)
+                    except (ValueError,TypeError):matched = False
+                    if matched and any(kind in types for kind in ('Article','NewsArticle','BlogPosting','JobPosting')):
+                        source_dates.append(node.get('datePublished') or node.get('datePosted'));break
+                nodes.extend(value for value in node.values() if isinstance(value,(dict,list)))
+    dates = {value.isoformat() for value in (parse_date(date) for date in source_dates) if value}
     body=re.sub(r'[ \t\r\f\v]+',' ', ''.join(parser.body))
     body=re.sub(r'\n[ \t]*\n+','\n',body).strip()
     return {'title':parser.title.strip()[:300],'text':body[:14000],
@@ -159,7 +189,8 @@ def tesseract_text(path, budget):
         if word and 0<=score<=100:
             key = tuple(row.get(name) for name in ('page_num','block_num','par_num','line_num'))
             groups.setdefault(key,[]).append(word);confidence.append(score)
-    return {'text':'\n'.join(' '.join(words) for words in groups.values())[:18000],
+    full_text = '\n'.join(' '.join(words) for words in groups.values())
+    return {'text':full_text[:18000],'textTruncated':len(full_text)>18000,'textOriginalLength':len(full_text),
             'mean_confidence':round(sum(confidence)/len(confidence),1) if confidence else None,'language':language,'engine':'tesseract-local','parser':'tesseract-tsv-literal-v2'}
 
 
@@ -175,7 +206,14 @@ def read_medium(url, source_url, budget):
             if not shutil.which('pdftotext'): raise RuntimeError('local_pdf_reader_not_installed')
             result = subprocess.run(['pdftotext','-f','1','-l','4','-layout',str(path),'-'],
               capture_output=True,text=True,timeout=min(15,max(1,budget.remaining())),check=True)
-            extracted = {'text':result.stdout[:18000],'engine':'pdftotext-local','pages_limit':4}
+            page_count = None
+            if shutil.which('pdfinfo'):
+                info = subprocess.run(['pdfinfo',str(path)],capture_output=True,text=True,timeout=min(5,max(1,budget.remaining())),check=True)
+                count = re.search(r'^Pages:\s*(\d+)',info.stdout,re.M)
+                page_count = int(count[1]) if count else None
+            extracted = {'text':result.stdout[:18000],'textTruncated':len(result.stdout)>18000,
+                         'textOriginalLength':len(result.stdout),'engine':'pdftotext-local','pages_limit':4,
+                         'page_count':page_count,'complete_document':bool(page_count and page_count<=4)}
             if len(extracted['text'].strip())<100:
                 if not shutil.which('pdftoppm'): raise RuntimeError('local_pdf_rasterizer_not_installed')
                 prefix = Path(directory)/'page'
@@ -183,9 +221,9 @@ def read_medium(url, source_url, budget):
                   capture_output=True,timeout=min(15,max(1,budget.remaining())),check=True)
                 images=list(Path(directory).glob('page-*.png'))
                 if not images: raise ValueError('pdf_image_unavailable')
-                extracted=tesseract_text(images[0],budget);extracted['pages_limit']=1
+                extracted=tesseract_text(images[0],budget);extracted.update(pages_limit=1,page_count=page_count,complete_document=page_count==1)
         elif mime in ('image/jpeg','image/png','image/webp'):
-            extracted=tesseract_text(path,budget)
+            extracted=tesseract_text(path,budget);extracted['complete_document']=not extracted['textTruncated']
         else: raise ValueError('unsupported_media_type')
     return {**extracted,'url':url,'final_url':final,'mime':mime,'http_status':status,
             'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}

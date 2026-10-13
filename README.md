@@ -1,5 +1,7 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
+La [ampliación aplicada de fuentes públicas](docs/ampliacion-fuentes-publicas-2026-10-13.md) añade adaptadores de portales, recuperación local y una comprobación gratuita en la app. El límite es 45 días desde la fecha original; el informe distingue preparación, lectura real y publicación confirmada.
+
 El radar externo recolecta candidatos públicos, conserva un historial local y verifica páginas individuales de Chiletrabajos cuando contienen evidencia suficiente. La app indicada por el usuario recibe lotes firmados de GitHub y confirma IDs en el feed. El productor programado de `main` sigue pendiente de integrar la reparación después de su revisión. La ejecución local de `pipeline.py` prepara una cola y no publica por sí sola.
 
 La reparación está en una rama independiente y la rama principal se conserva para la revisión. Los cambios aplicados en la app autorizada se documentan por versión; no sustituyen la activación del recolector externo actualizado.

@@ -1,0 +1,50 @@
+"""Public source identities, mirrored and parity-tested against the app adapter."""
+import re
+import urllib.parse
+
+try:
+    from .common import canonical_url
+except ImportError:
+    from common import canonical_url
+
+LOCAL_PUBLISHERS = {
+    'noticias.angol.cl':'Municipalidad de Angol', 'munilumaco.cl':'Municipalidad de Lumaco',
+    'munilossauces.cl':'Municipalidad de Los Sauces', 'mtraiguen.cl':'Municipalidad de Traiguén',
+    'municipalidadrenaico.cl':'Municipalidad de Renaico', 'nacimiento.cl':'Municipalidad de Nacimiento',
+    'muninegrete.cl':'Municipalidad de Negrete', 'munimulchen.cl':'Municipalidad de Mulchén',
+    'municipalidadcollipulli.cl':'Municipalidad de Collipulli', 'malleco7.cl':'Malleco 7',
+    'radionativa.cl':'Radio Nativa', 'cmpc.com':'CMPC', 'arauco.com':'Arauco',
+}
+
+
+def source_adapter(value):
+    try:
+        url = urllib.parse.urlsplit(canonical_url(value))
+        if url.port or any(re.fullmatch(r'access_token|token|api_key|apikey|session|authorization',key,re.I)
+                           for key,_ in urllib.parse.parse_qsl(url.query)):
+            return None
+    except (ValueError, TypeError):
+        return None
+    host, path = url.hostname.removeprefix('www.'), url.path
+    query = urllib.parse.parse_qs(url.query)
+    name, identity, family = '', '', 'portal'
+    if host == 'chiletrabajos.cl' and re.fullmatch(r'/trabajo/[^/]+/?',path):
+        name, identity = 'Chiletrabajos', 'https://www.chiletrabajos.cl'+path.rstrip('/')
+    elif host in ('indeed.com','cl.indeed.com') and path in ('/viewjob','/rc/clk') and re.fullmatch(r'[a-f0-9]{16}',query.get('jk',[''])[0],re.I):
+        name, identity = 'Indeed', 'https://cl.indeed.com/viewjob?jk='+query['jk'][0].lower()
+    elif host in ('cl.computrabajo.com','computrabajo.cl') and (match := re.fullmatch(r'/ofertas-de-trabajo/(oferta-de-trabajo-de-[^/]+)/?',path)):
+        name, identity = 'Computrabajo', 'https://cl.computrabajo.com/ofertas-de-trabajo/'+match[1]
+    elif host in ('linkedin.com','cl.linkedin.com') and (match := re.fullmatch(r'/jobs/view/(?:[^/]*-)?(\d{6,})/?',path)):
+        name, identity = 'LinkedIn', 'https://www.linkedin.com/jobs/view/'+match[1]
+    elif host == 'laborum.cl' and (match := re.fullmatch(r'/empleos/[^/]+-(\d{5,})\.html/?',path)):
+        name, identity = 'Laborum', 'https://www.laborum.cl/empleos/oferta-'+match[1]+'.html'
+    elif host == 'opcionempleo.cl' and (match := re.fullmatch(r'/jobad/([a-z0-9]{12,})(?:\.html)?/?',path,re.I)):
+        name, identity, family = 'Opción Empleo', 'https://www.opcionempleo.cl/jobad/'+match[1].lower(), 'aggregator'
+    elif host in LOCAL_PUBLISHERS and path.strip('/') and not url.query and not re.fullmatch(r'/(?:noticias?|concursos-publicos|direccion-de-fomento-productivo|category|categoria|tag|page|wp-json|feed)(?:/\d+)?/?',path):
+        name, identity, family = LOCAL_PUBLISHERS[host], 'https://'+host+path.rstrip('/'), 'local'
+    return {'name':name,'family':family,'identityUrl':identity,'verificationMethod':name+' individual page + matching JobPosting'} if name else None
+
+
+def same_job(left, right):
+    first, second = source_adapter(left), source_adapter(right)
+    return bool(first and second and first['identityUrl']==second['identityUrl'])

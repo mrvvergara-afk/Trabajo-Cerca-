@@ -1,5 +1,6 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
+import { publicSourceAdapter } from './public-source-adapters';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -34,12 +35,8 @@ function allowedSource(source:string) {
 
 function identity(item:Stored) {
   if (item.kind !== 'job_offer' || typeof item.url !== 'string') return null;
-  try {
-    const parsed = new URL(item.url);
-    if (!['http:','https:'].includes(parsed.protocol) || parsed.username || parsed.password || parsed.port ||
-        !['chiletrabajos.cl','www.chiletrabajos.cl'].includes(parsed.hostname) || !/^\/trabajo\/[^/]+\/?$/.test(parsed.pathname)) return null;
-    return createHash('sha256').update('https://www.chiletrabajos.cl' + parsed.pathname.replace(/\/$/, '')).digest('hex');
-  } catch { return null; }
+  const adapter = publicSourceAdapter(item.url);
+  return adapter && adapter.family!=='aggregator' ? createHash('sha256').update(adapter.identityUrl).digest('hex') : null;
 }
 
 function bytes(value:unknown) {

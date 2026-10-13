@@ -12,6 +12,7 @@ const code = path => stripTypeScriptTypes(readFileSync(new URL(path, import.meta
   .replace(/^import .*;$/gm,'').replace(/^export /gm,'');
 const feedCode = code('../integrations/appdeploy/public-feed.ts');
 const ingestionCode = code('../integrations/appdeploy/radar-ingestion.ts');
+const adapterCode = code('../integrations/appdeploy/public-source-adapters.ts');
 const digest = value => createHash('sha256').update(value).digest('hex');
 const offer = (changes = {}) => ({ source_url:'https://www.chiletrabajos.cl/trabajo/operador-1',source:'Chiletrabajos',
   title:'Operador',company:'Empresa de prueba',work_commune:'Angol',source_published_at:new Date(now - 10000).toISOString(),
@@ -78,6 +79,7 @@ function harness() {
   class Clock extends Date { constructor(...args) { super(...(args.length ? args : [now])); } static now() { return now; } }
   const ctx = { db,Buffer,URL,Date:Clock,console,AbortSignal,createHash,createPublicKey,verify };
   vm.createContext(ctx);
+  vm.runInContext(adapterCode,ctx);
   vm.runInContext(feedCode,ctx);
   vm.runInContext(ingestionCode,ctx);
   const mapper = item => ({ kind:'job_offer',active:true,verified:true,review:false,title:item.title,company:item.company,
@@ -164,6 +166,38 @@ test('Ingestion accepts original dates exactly 45 days old and blocks older date
     assert.throws(() => h.ctx.validateOffer(offer({ source_published_at:new Date(stamp).toISOString() }), now), /Stale/);
   }
   assert.equal(h.calls.length, 0);
+});
+
+test('Every primary portal requires its matching verification method and its individual identity', () => {
+  const h=harness();
+  for (const [source_url,source] of [['https://cl.indeed.com/viewjob?jk=0123456789abcdef','Indeed'],
+    ['https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-operador-AB12','Computrabajo'],
+    ['https://cl.linkedin.com/jobs/view/operador-4456391320/','LinkedIn'],
+    ['https://www.laborum.cl/empleos/operador-123456789.html','Laborum']]) {
+    h.ctx.validateOffer(offer({ source_url,source,verification_method:source+' individual page + matching JobPosting' }),now);
+    assert.throws(()=>h.ctx.validateOffer(offer({ source_url,verification_method:'AI guessed worksite' }),now));
+  }
+  assert.throws(()=>h.ctx.validateOffer(offer({ source_url:'https://www.opcionempleo.cl/jobad/cl0123456789abcdef' }),now));
+});
+
+test('A missing closing date requires fresh form proof and cannot be substituted by a contact', () => {
+  const h=harness(),source_url='https://cl.indeed.com/viewjob?jk=0123456789abcdef';
+  const row=offer({ source_url,source:'Indeed',valid_through:'',application:'https://cl.indeed.com/postular/123',
+    verification_method:'Indeed individual page + matching JobPosting',validity_method:'live_application',
+    validity_evidence:{ form_url:source_url,form_action:'https://cl.indeed.com/postular/123',checked_at:new Date(now).toISOString(),source_sha256:'a'.repeat(64) } });
+  h.ctx.validateOffer(row,now);
+  for (const change of [{ validity_evidence:undefined },{ application:'mailto:empleo@example.cl' },
+    { validity_evidence:{ ...row.validity_evidence,form_url:source_url.replace('0123456789abcdef','abcdef0123456789') } },
+    { validity_evidence:{ ...row.validity_evidence,checked_at:new Date(now-1000).toISOString() } }]) assert.throws(()=>h.ctx.validateOffer({ ...row,...change },now));
+});
+
+test('A local document proof must be complete, hashed and tied to the literal source', () => {
+  const h=harness(),source_url='https://www.munilumaco.cl/afiches/oferta-laboral.png';
+  const row=offer({ source_url,source:'Municipalidad de Lumaco',verification_method:'Municipalidad de Lumaco individual notice + local document text',
+    source_evidence:{ sha256:'a'.repeat(64),source_url,complete_document:true,text:'Cargo: Operador\nEmpresa: Empresa de prueba\nLugar de trabajo: Angol\nEnviar CV a empleo@example.cl' } });
+  h.ctx.validateOffer(row,now);
+  assert.throws(()=>h.ctx.validateOffer({ ...row,source_evidence:{ ...row.source_evidence,complete_document:false } },now));
+  assert.throws(()=>h.ctx.validateOffer({ ...row,source_evidence:undefined },now));
 });
 
 test('Storing a verified offer confirms a real SDK ID but does not claim publication before the feed', async () => {

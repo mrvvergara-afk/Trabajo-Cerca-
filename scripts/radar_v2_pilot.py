@@ -254,11 +254,14 @@ def main():
         config=json.loads(CONFIG.read_text());social=json.loads((output/'social-observation.json').read_text())
         first=run(store,config,social)
         second=run(store,config,social,limit=18)
+        # Finish already downloaded evidence without opening another source or browser.
+        drain=run(store,{**config,'sources':[]},{'captures':[]},limit=40)
         write_json(output/'first-pass.json',first);write_json(output/'second-pass.json',second)
+        write_json(output/'drain-pass.json',drain)
         write_json(output/'work-inventory.json',{'jobs':store.results()})
         manifest=store.snapshot(output/'backup')
-        commit=push_snapshot(store,manifest,output/'backup',os.environ['GITHUB_RUN_ID'],parent,{'first-pass.json':first,'second-pass.json':second})
-        print('RADAR_V2_PILOT '+json.dumps({'data_commit':commit,'first':{key:value for key,value in first.items() if key!='evaluations'},'second':{key:value for key,value in second.items() if key!='evaluations'}},ensure_ascii=False))
+        commit=push_snapshot(store,manifest,output/'backup',os.environ['GITHUB_RUN_ID'],parent,{'first-pass.json':first,'second-pass.json':second,'drain-pass.json':drain})
+        print('RADAR_V2_PILOT '+json.dumps({'data_commit':commit,'first':{key:value for key,value in first.items() if key!='evaluations'},'second':{key:value for key,value in second.items() if key!='evaluations'},'drain':{key:value for key,value in drain.items() if key!='evaluations'}},ensure_ascii=False))
     finally:store.close()
 
 

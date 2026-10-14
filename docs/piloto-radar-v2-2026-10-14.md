@@ -42,6 +42,14 @@ Esta pasada identificó dos defectos de captación: faltaba abrir cada publicaci
 
 La segunda comprobación abrirá las publicaciones individuales, leerá sus adjuntos y probará obtener una fecha completa visible del mismo enlace. Una antigüedad relativa seguirá sin convertirse en fecha original. Se amplió además el contador de días observados y se mantiene compatibilidad con el snapshot anterior, sin reiniciar la base. No hubo publicaciones del piloto ni llamadas a proveedores pagos.
 
+## Segunda ejecución y continuidad del respaldo
+
+La ejecución [38573547778](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38573547778), sobre `a3c71c9491e33b14bf7226bde6265bf3b4deb9a3`, aprobó **269 pruebas: 123 Python y 146 Node**. Restauró la base y los originales del primer piloto, mantuvo sus 30 tareas terminadas y continuó el trabajo con el lector corregido.
+
+Terminó con 87 tareas registradas, 66 realizadas y 21 pendientes; 47 objetos originales/resultados archivados, 394 observaciones y cuatro pasadas acumuladas en un día. El respaldo posterior es `eadd99c2b4a3985772818d04098fdc0cab5214d6`. Se evaluaron 18 casos sin un aviso elegible. Las páginas públicas de Facebook volvieron a variar: Renaico no entregó enlaces y Negrete entregó uno, sin fecha completa ni adjuntos recuperables en esta lectura. No se forzó inicio de sesión ni se sustituyó esa falta de fecha por el horario del navegador.
+
+El cambio sí permitió descubrir y descargar PDF municipales que antes quedaban fuera por estar enlazados como «Bases» o «Decreto». Sus páginas quedaron en la cola para continuar, con el archivo original y su índice separados. Se añadió una pasada final que procesa únicamente trabajo ya recuperado, sin otra lectura de perfiles. Su resultado se incorpora al completar el respaldo siguiente. La evidencia de esta fase está en [segundo resultado](evidence/radar-v2-second-pilot-2026-10-14.json).
+
 ## Condiciones pendientes
 
 La lectura social puede no entregar la fecha o los archivos necesarios. Se registra la falta de datos y no se inventa la fecha. El piloto mantiene deshabilitada la publicación y no amplía la lista de fuentes admitidas por el puente de producción. Una oferta social que parezca completa sigue requiriendo validar esa integración antes de publicarla.

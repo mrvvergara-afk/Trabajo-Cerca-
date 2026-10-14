@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+<html lang="es">
+<head>
+
+<meta charset="windows-1252">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="La BNE es el portal de búsqueda y publicación de ofertas laborales para todos los chilenos y chilenas">
+<meta name="keywords" content="Publica totalmente GRATIS, ofertas laborales, ofertas trabajo, ofertas empleo, Bolsa de empleo, ofertas laborales en todo Chile"/>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/static/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="/static/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/static/manifest.json">
+<link rel="shortcut icon" href="/static/favicon.ico">
+<meta name="msapplication-TileColor" content="#603cba">
+<meta name="msapplication-TileImage" content="/static/mstile-144x144.png">
+<meta name="msapplication-config" content="/static/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+	
+
+<script type="application/ld+json"> {
+  "@context" : "http://schema.org/",
+  "@type" : "JobPosting",
+  "title" : "Cajeros (as)",
+  "description" : "<h1>Cajeros/as peaje Negrete</h1>
+<h2>Cajeros (as)</h2>
+<p>Oferta Laboral: Cajeros/as  Peaje Coihue, Comuna de Negrete 
+Empresa OyC Servicios Generales busca integrar a su equipo a cajeros/as responsables de la atención a clientes en el cobro de peajes.
+
+Residencia:
+
+Exclusivamente en la comuna de Negrete, sector Coihue (excluyente).
+
+Funciones principales:
+
+Atención a clientes en el cobro de peajes.
+
+Manejo de dinero y medios de pago.
+
+Registro y control de ingresos, garantizando precisión en la información.
+
+Cumplimiento de protocolos internos y estándares de calidad.
+
+Jornada laboral:
+
+Ordinaria bajo modalidad de turnos rotativos:
+
+Mañana: 07:00 a 15:00 horas
+
+Tarde: 15:00 a 23:00 horas
+
+Noche: 23:00 a 07:00 horas
+
+Renta líquida:
+
+Full time: $590.000 mensual.
+
+Part time: $23.000 por turno (con disponibilidad obligatoria sábados, domingos y festivos).
+
+Se ofrece:
+
+Contrato inicial a plazo fijo, con posibilidad de pasar a indefinido según desempeño y lo establecido en la legislación laboral vigente.
+
+Transporte contemplado para el traslado de los trabajadores (por eso es requisito residir en la comuna indicada).</p>
+
+
+    <p><strong>Jornada:</strong> Jornada Completa</p>
+
+<p><strong>Ubicación: </strong> Bío Bío, Negrete</p>
+<p><strong>Oferta para prácticas:</strong> NO</p>
+",
+  "datePosted" : "2026-09-15",
+  "validThrough" : "2026-11-17",
+  "hiringOrganization" : {
+     "@type" : "Organization",
+     "name" : "O & C SERVICIOS GENERALES SPA"
+  },
+  "jobLocation" : {
+    "@type" : "Place",
+    "address" : {
+      "@type" : "PostalAddress",
+      "addressLocality" : "Negrete",
+      "addressRegion" : "Bío Bío",
+      "addressCountry": "CL"
+    }
+  }
+  
+  ,"baseSalary" : {
+    "@type": "MonetaryAmount",
+    "currency": "CLP",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": 539000,
+      "maxValue": 610000,
+      "unitText": "YEAR"
+     }
+  }
+  
+}
+</script>
+
+
+
+
+
+	<link rel="stylesheet" href="/static/css/css2/accesibilidad.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/bootstrap2/bootstrap.min.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/bootstrap2/bootstrap-theme.min.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/normalizer.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/jquery-ui.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/header.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/footer.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/accesibilidad.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/public/practicas-laborales/buscador-ofertas/ptpBuscadorOfertas.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/accesibilidad.css?v=3.88.01_20260930090159_" />
+
+	<link rel="stylesheet" href="/static/css/css2/public/oferta/detalleOferta.css?v=3.88.01_20260930090159_" />
+
+
+
+<title>Bolsa Nacional de Empleo</title>
+</head>
+<body>
+	<div class="body">
+		
+
+
+
+<script src="https://cdn.userway.org/widget.js" data-account="bUUfSZnhUn"></script>
+<div id="header">
+	<header>
+
+    <div id="divGeneralHeader">
+    
+        <div id="divImagenHeader">
+            <a href="/">
+                <img src="/static/images/logoNuevaBne.png" id="" alt="Logo BNE">
+            </a>
+        </div>
+
+        <div id="divImagenPersonas">
+            <img src="/static/images/Imagenheader.png" style="max-height: 100px" alt="Personas" class="personasHeaderDesktop">
+        </div>
+
+        <div id="divOpciones" class="divOpcionesMobile" style="margin-right: 75px;">
+            <div id="divOpcionesHeader">
+                <span style=" white-space:nowrap">Mi cuenta</span> <img id="imagenFlecha" alt="Icono abrir menu empleador"
+                    src="/static/images/home/iconoAbrirMenu.png" style="padding-right: 10px;">
+            </div>
+        </div>
+
+        <div id="headerDerechaDesktop" style="margin-top: auto;">
+            <div id="divInformacionOpcionesDesktop">
+                <div id="divDatosUsuarioDesktop">
+                    <img alt="Icono usuario logeado" src="/static/images/home/postulanteLogeadoDesktop.svg">
+                    
+                </div>
+
+                <div id="divOpcionesHeader" class="divOpcionesHeaderDesktop">
+                        <span>Mi cuenta</span> <img id="imagenFlecha" alt="Icono abrir menu empleador"
+                            src="/static/images/home/iconoAbrirMenu.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="containerDropdownDesktop">
+<!--     WEB -->
+        <div id="headerDropdownDesktop" class="ocultar">
+            <div class="datosUsuarioHeader" style="width: 30%; padding-right: 5px; margin-left: 1px;">
+                
+            </div>
+            <div class="azules">
+                <div class="divPaginaPrincipal">
+                    <img alt="Icono p&aacute;gina principal" src="/static/images/home/iconoPaginaPrincipal.png">
+                    <a href="/postulantes">P&aacute;gina principal</a>
+                </div>
+                <div class="azulOscuro">
+                    <a href="/postulantes/perfil/datos-personales">Datos personales</a>
+                </div>
+                <div class="azulOscuro">
+                    <a href="/postulantes/perfil/datos-curriculares">Datos laborales</a>
+                </div>
+    <!--             <div class="azulOscuro"> -->
+    <!--                 <a href="/postulantes/certificacion">Seguro de cesantia solidario</a> -->
+    <!--             </div> -->
+                <div class="azulOscuro">
+                    <a href="/ofertas">Buscar empleo</a>
+                </div>
+            </div>
+            <div class="enlacesSimplesHeader">
+                <a href="/postulantes/busquedas">Mis b&uacute;squedas habituales</a>
+                <a href="/postulantes/perfil/datos-documentos">Agregar documentos al CV</a>
+                <a href="/postulantes/perfil/datos-generarCv">Descargar mi CV</a>
+                <a href="/postulantes/beneficios">Beneficios</a>
+                <a href="/postulantes/eventos">Eventos</a>
+                <a href="/postulantes/cambiar-pass">Cambiar contrase&ntilde;a</a>
+                <a href="/postulantes/atenciones">Atenciones recibidas</a>
+                <a href="/contacto">Contacto</a>
+                <a href="/docs/manual/manual-postulante.pdf">Manual de usuario</a>
+            </div>
+        </div>
+<!-- MOBILE -->
+        <div id="headerDropdown" class="ocultar">
+            <div>
+                
+            </div>
+
+            <div class="azules">
+                <div class="divPaginaPrincipal">
+                    <img alt="Icono p&aacute;gina principal" src="/static/images/home/iconoPaginaPrincipal.png">
+                    <a href="/postulantes">P&aacute;gina principal</a>
+                </div>
+
+                <div class="azulOscuro">
+                    <a href="/postulantes/perfil/datos-personales">Datos personales</a>
+                </div>
+
+                <div class="azulOscuro">
+                    <a href="/postulantes/perfil/datos-curriculares">Datos laborales</a>
+                </div>
+
+<!--                     <div class="azulOscuro"> -->
+<!--                         <a href="/postulantes/certificacion">Seguro de cesantia solidario</a> -->
+<!--                     </div> -->
+
+                <div class="azulOscuro">
+                    <a href="/ofertas">Buscar empleo</a>
+                </div>
+            </div>
+
+            <div class="enlacesSimplesHeader">
+                <a href="/postulantes/busquedas">Mis b&uacute;squedas habituales</a>
+                <a href="/postulantes/perfil/datos-documentos">Agregar documentos al CV</a>
+                <a href="/postulantes/perfil/datos-generarCv">Descargar mi CV</a>
+                <a href="/postulantes/beneficios">Beneficios</a>
+                <a href="/postulantes/eventos">Eventos</a>
+                <a href="/postulantes/cambiar-pass">Cambiar contrase&ntilde;a</a>
+                <a href="/postulantes/atenciones">Atenciones recibidas</a>
+                <a href="/contacto">Contacto</a>
+                <a href="/docs/manual/manual-postulante.pdf">Manual de usuario</a>
+            </div>
+        </div>
+	</header>
+</div>
+
+		<div class="row noMargingLaterales">
+			<div class="col-sm-12 col-centered width1000">
+				<div class="row">
+
+					<div class="col-xs-10 col-xs-offset-1 noPaddingLaterales">
+						
+
+
+
+
+
+
+
+
+<section>
+    
+    <div class="row noMarginLaterales" style="padding-bottom: 10px;">
+        <div class="col-md-12 breadCrumb-margin">
+            
+                
+                
+                    <div class="margin-enlace">
+                        <a href="/">
+                            <span>Inicio</span>
+                        </a>
+                        <a href="/ofertas">
+                            <span> / Ofertas de empleo </span>
+                        </a>
+                        <span> / Detalle de oferta </span>
+                    </div>
+                
+            
+        </div>
+        <div class="col-sm-12 col-12">
+            <div class=" col-sm-2 dropdown noPaddingLaterales"
+                style="right: 20px; float:right;">
+                <a class="btn btn-share" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="false"
+                    aria-expanded="false" onclick="butCompartirOferta()">
+                    Compartir <i class="fa fa-share-alt"></i>
+                </a>
+                <div id="btn-share-submenu" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <!-- Contenido de menu compartir, se agrega desde js-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    
+    <div class="row fondo_blanco titulo noMargingLaterales margenInferior">
+        <div class="col-sm-12">
+            <h1>
+                <span id="nombreOferta">  <span> Cajeros/as peaje Negrete (20 vacantes)
+                </span> <small> Cajeros (as) 
+                </small>
+            </h1>
+        </div>
+    </div>
+    <div class="row noMargingLaterales">
+        <div class="col-sm-12 noPaddingLaterales">
+            
+            <article class="panel panel-default panelFormulario">
+                
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        DATOS DE CONTACTO
+                    </h3>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="row">
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                                
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <strong><span>Empresa:</span></strong>
+                                            <br> <span>O & C SERVICIOS GENERALES SPA</span>
+                                        </div>
+                                    </div>
+                                    
+                                        <div class="row margenSuperior">
+                                            <div class="col-sm-12">
+                                                <strong><span>Actividad económica:</span></strong> <br /> <span>Otras actividades de servicios de apoyo a las empresas n.c.p.</span>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                        <div class="row margenSuperior">
+                                            <div class="col-sm-12">
+                                                
+                                                <strong><span>Descripción de la Empresa:</span></strong> <br /> <span> Empresa dedicada al suministro de personal</span>
+                                            </div>
+                                        </div>
+                                    
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    
+                                    
+                                        <img src="/data/img/logo-empresa/225720?temporal=false&1791989656717" alt="Logo empresa"
+                                            class="margenVerticales margenIzquierda img-response imagen-logo"
+                                            onerror="this.style.display='none'" />
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="panel panel-default panelFormulario">
+                
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        DESCRIPCIÓN
+                    </h3>
+                </div>
+                
+                <div class="panel-body">
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                Oferta Laboral: Cajeros/as  Peaje Coihue, Comuna de Negrete 
+Empresa OyC Servicios Generales busca integrar a su equipo a cajeros/as responsables de la atención a clientes en el cobro de peajes.
+
+Residencia:
+
+Exclusivamente en la comuna de Negrete, sector Coihue (excluyente).
+
+Funciones principales:
+
+Atención a clientes en el cobro de peajes.
+
+Manejo de dinero y medios de pago.
+
+Registro y control de ingresos, garantizando precisión en la información.
+
+Cumplimiento de protocolos internos y estándares de calidad.
+
+Jornada laboral:
+
+Ordinaria bajo modalidad de turnos rotativos:
+
+Mañana: 07:00 a 15:00 horas
+
+Tarde: 15:00 a 23:00 horas
+
+Noche: 23:00 a 07:00 horas
+
+Renta líquida:
+
+Full time: $590.000 mensual.
+
+Part time: $23.000 por turno (con disponibilidad obligatoria sábados, domingos y festivos).
+
+Se ofrece:
+
+Contrato inicial a plazo fijo, con posibilidad de pasar a indefinido según desempeño y lo establecido en la legislación laboral vigente.
+
+Transporte contemplado para el traslado de los trabajadores (por eso es requisito residir en la comuna indicada).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        
+                        <div class="col-sm-3">
+                            <i class="fa fa-map-marker"></i> <span> Bío Bío, Negrete</span>
+                        </div>
+                        
+                        
+                        
+                        
+                                <i class="fa fa-calendar"></i> <span> 15/09/2026
+                                </span>&nbsp;-&nbsp;
+                                <i class="fa fa-calendar"></i> <span> 17/11/2026
+                                </span>
+                        
+                        
+                        
+                        
+                        
+                        <!--                             <div class="col-sm-3"> -->
+                        
+                        
+                        <!--                             </div> -->
+                        
+                        
+                        <div class="col-sm-3">
+                            <span class="fa fa-dollar"></span>
+                            
+                            
+                            
+                                
+                                
+                                    
+                                    
+                                        <span> 539.000
+                                            &nbsp;-&nbsp; 610.000
+                                        </span>
+                                    
+                                
+                            
+                        </div>
+                        
+                        <div class="col-sm-3">
+                            <i class="fa fa-clock-o"></i>
+                            
+                                
+                                
+                                    <span> Jornada Completa</span>
+                                
+                                
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="panel panel-default panelFormulario">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        REQUISITOS SOLICITADOS
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    
+                    <div class="row">
+                        
+                        <div class="col-sm-8">
+                            <strong><span>Nivel educacional:</span></strong><br> <span>
+                                </span>
+                        </div>
+                        
+                        <div class="col-sm-4">
+                            <strong><span>Experiencia:</span></strong><br>
+                            
+                                
+                                
+                                    <span> 1 años</span>
+                                
+                                
+                                
+                            
+                        </div>
+                    </div>
+                    <br>
+
+                    
+                    
+
+                    
+
+                    
+                    
+
+
+                    <!-- Otros requisitos -->
+                    
+
+                </div>
+            </article>
+
+
+            
+            <article class="panel panel-default panelFormulario">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        CARACTERÍSTICAS
+                    </h3>
+                </div>
+
+                
+                <div class="panel-body">
+                    
+                    <div class="row">
+                        
+                        <div class="col-sm-6">
+                            <strong><span> Tipo de contrato:
+                            </span></strong> <br> <span>Contrato a plazo Fijo</span>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <strong><span> Nivel de Cargo ofrecido:
+                            </span></strong> <br>
+                            
+                                
+                                
+                                    <span>Otro</span>
+                                
+                                
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            
+                                <strong><span> Origen de la Oferta:
+                                </span></strong>
+                                <br>
+                                <span>WEB</span>
+                            
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div>
+                                <strong><span> Oferta de tipo práctica profesional:
+                                </span></strong><br>
+                                
+                                
+                                    <label>No</label>
+                                
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        
+                        <div class="col-sm-6">
+                            
+                            
+                        </div>
+                        <div class="col-sm-6">
+                            
+                        </div>
+
+                    </div>
+                    <div id="modalEncuestaDiscapacidad" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="gridSystemModalLabel">
+                                        Perfil funcional postulante
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body" data-content="contenidoModal">
+                                    <div class="row cuadroGris">
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Realizar tareas de pie</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Realizar tareas sentado</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Desplazarse para realizar las tareas</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Realizar actividades en diferentes niveles (pisos)</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Alcanzar y coger objetos en diferentes alturas</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Uso herramientas/ objetos pequeños</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Tareas que demandan visión del trabajador para la ejecución</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Capacidad auditiva</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Comunicarse en el trabajo</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Leer y escribir para el desarrollo de tareas</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Flexibilidad</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Trabajo colaborativo</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Manejo de tensiones y conflictos</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Resolución de problemas</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-sm-12 ">
+                                                <div>
+                                                    <span class="preguntaDiscapacidad">Desarrollo de tareas estresantes</span>
+                                                </div>
+                                                <div style="margin-left: 2%; margin-bottom: 2%">
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                        
+                                                    
+                                                </div>
+                                            </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="text-align: center;">
+                                    <!--                                                     <div class=""> -->
+                                    <!--                                                         <div style="margin-left: 45%;"> -->
+                                    <button type="button" class="btn-secundario" data-dismiss="modal">
+                                        Cancelar
+                                    </button>
+                                    <!--                                                         </div> -->
+                                    <!--                                                     </div> -->
+                                </div>
+                            </div>
+                            <!-- FIN -->
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            
+            
+            
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+                        
+                            
+                                <a
+                                    href='/empleadores/login?desactivarBanners=true'
+                                    class="btn btn-primary">
+                                    Postular
+                                </a>
+                            
+                            
+                        
+                    </div>
+                </div>
+            
+            
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- Div que se mostrarï¿½ cuando el CV estï¿½ incompleto -->
+<div class="modal fade" id="modalCvIncompleto" tabindex="-1" role="dialog" aria-labelledby="modalCvIncompletoLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalCvIncompletoLabel">Confirma tu postulaciï¿½n</h4>
+            </div>
+            <div class="modal-body text-center">
+                <H3>Para postular debes completar al menos la informaciï¿½n acadï¿½mica y experiencia laboral de tu CV</H3>
+                <BR>
+                <div class="mt-4">
+                
+                        
+                            
+                                <a href="/postulantes/perfil/datos-curriculares" class="btn btn-primary">Completar mi curriculum</a>&nbsp;&nbsp;&nbsp;
+                            
+                            
+                        
+                    
+                    <button type="button" class="btn btn-secondary ml-2" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+
+<!-- INICIO Footer -->
+
+	<footer class="col-sm-12 col-centered width1000 fondo_blanco Text">
+		<div >
+			<div class="bicolor">
+				<span class="azul"></span> <span class="rojo"></span>
+			</div>
+
+			<div class="row top">
+
+				<div class="col-xs-12 listas">
+					<div class="row">
+
+                    <div class="col-xs-6 col-md-3 lista">
+                        
+                        <a href="https://www.mintrab.gob.cl/certificacion-sello-40h/" target="_blank">
+                            <img src="/static/images/inclusion/sello-inclusivo.png" alt="Logotipo del Sello Inclusivo"  style="width:146px; height:146px;"/>
+                        </a> 
+                    </div>
+
+					<div class="col-xs-6 col-md-4 lista">
+						<h5>
+							Qué es la BNE
+						</h5>
+						<ul>
+							<li><a href='/politica-privacidad'>
+								Política de privacidad</a></li>
+							<li><a href='http://www.leychile.cl/Navegar?idNorma=184979' target="_blank">
+							         Ley 19.728 (Seguro de Cesantía)
+							         <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                     <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+                            <li><a href='https://www.leychile.cl/Navegar?idNorma=1103997' target="_blank">
+                                    Ley 21.015 inclusión de personas con discapacidad al mundo laboral
+                                    <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+                                </a>
+                            </li>
+                            <li><a href='https://www.leychile.cl/Navegar?idNorma=1138819' target="_blank">
+                                    Política Nacional de Intermediación Laboral (PNIL)
+                                    <i class="fa fa-fw fa-external-link" aria-hidden="true"></i>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+                                </a>
+                            </li>
+							<li><a href='/docs/manual/manual-zonaweb.pdf' target="_blank">
+								    Manual de usuario
+								    <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                     <span class="sr-only">(Enlace abre nueva ventana)</span>
+                                </a>
+                            </li>							
+							<li><a href='/faq' target="_blank">
+									Preguntas Frecuentes-FAQ
+									<span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+	                                <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+						    </li>
+						</ul>
+					</div>
+
+					<div class="col-xs-5 col-md-4 lista">
+						<h5>Links de interés</h5>
+						<ul>
+							<li><a href="http://www.mintrab.gob.cl" target="_blank">
+								    Ministerio del Trabajo
+								    <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+							<li><a href="http://dt.gob.cl" target="_blank">
+									Dirección del Trabajo
+									<span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+	                                <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+							<li><a href="http://www.sil.gob.cl" target="_blank">
+								    SIL
+								    <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+							<li><a href="http://www.sence.cl" target="_blank">
+							        SENCE
+							        <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+							<li><a href="https://www.afc.cl" target="_blank">
+								    AFC
+								    <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+							<li><a href="https://www.empleospublicos.cl" target="_blank">
+									Portal de Empleos Públicos
+									<span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+							<li><a href="http://www.safp.cl/" target="_blank">
+								    Superintendencia de Pensiones
+								    <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+							<li><a href="http://www.senadis.gob.cl" target="_blank">
+								    Senadis
+								    <span class="fa fa-fw fa-external-link" aria-hidden="true"></span>
+                                    <span class="sr-only">(Enlace abre nueva ventana)</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-xs-6 col-md-4 lista">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<div class="sep"></div>
+			</div>
+
+			<div class="bottom">
+
+				<div class="col-xs-9">
+					<span>Copyright © 2016 Ministerio del Trabajo y Previsión Social</span>
+				</div>
+				<div class="col-xs-3 text-right">
+                   <a href='/mapa-sitio'>
+                       <span class="siteMap">Mapa del sitio</span>
+                    </a>
+                 </div>
+				<div class="clearfix"></div>
+
+				<div class="bicolor">
+					<span class="azul"></span> <span class="rojo"></span>
+				</div>
+
+			</div>
+
+		</div>
+
+	</footer>
+
+	</div>
+
+	
+	
+	
+		<script src="/static/scripts/jquery3/jquery-3.6.0.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/jquery2/jquery-ui.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/i18next/i18next-7.1.0.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/i18next/i18nextXHRBackend-1.3.0.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/i18next/i18nextBrowserLanguageDetector-1.0.1.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/i18next/i18nextLocalStorageCache-1.0.1.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/moment/moment-with-locales-2.30.1.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/numeral/numeral-2.0.4.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/numeral/locales/es.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/underscore/underscore-1.13.7-min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/bootstrap/bootstrap.min2.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/bootstrap/bootstrap-hover-dropdown.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/jquery-validate/jquery.validate.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/jquery2/jquery.timepicker.min.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/js/i18n/comunI18n.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/js/common.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/js/common/documentReady.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/js/public/accesibilidad.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/js/public/practicasLaborales/buscador-ofertas/detallesv4.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/ga/ga.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/js/public/accesibilidad.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+		<script src="/static/scripts/js/tjs/feria/botonesRRSS.js?v=3.88.01_20260930090159_" charset="utf-8"></script>
+</body>
+</html>

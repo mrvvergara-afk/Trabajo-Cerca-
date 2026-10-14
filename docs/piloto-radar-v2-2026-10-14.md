@@ -1,5 +1,7 @@
 # Piloto aislado del radar — 14 de octubre de 2026
 
+Este informe describe la fase de captación anterior a la conexión. La [comprobación posterior del receptor firmado](conexion-radar-v2-2026-10-14.md) ya recibió un control BNE real y conservó su ID. No aporta avisos sociales nuevos ni altera las cifras históricas de las tres ejecuciones descritas aquí.
+
 Se implementó la primera versión del motor propuesto en [la decisión de arquitectura](decision-arquitectura-radar-2026-10-14.md), dentro de la rama independiente. El piloto no despliega código en AppDeploy, no publica ofertas, no integra `main`, no modifica credenciales ni ejecuta proveedores pagos. Es una comprobación de captación y procesamiento antes de conectar una nueva vía de publicación.
 
 ## Alcance y fuentes

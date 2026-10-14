@@ -1,5 +1,7 @@
 # Reparaciones de AppDeploy en el laboratorio
 
+La [conexión del nuevo motor](../../docs/conexion-radar-v2-2026-10-14.md) reutilizó el receptor firmado de la app v99. El lote `38584587407` quedó confirmado mediante el SDK, con el mismo ID del aviso BNE de Negrete y un recibo durable nuevo. Pasaron 277 pruebas. No se desplegó otra versión ni se integró `main`; el control ya estaba publicado y no cuenta como una oferta nueva o captación social demostrada.
+
 Estado actual de la app indicada por el usuario: versión **`1791924889565`** aplicada y `ready`. La [conexión de documentos](../../docs/conexion-documentos-2026-10-13.md) quedó comprobada en cuatro ciclos reales, con OCR completo dentro de sus límites y respaldo durable. Pasaron 242 pruebas en GitHub. No se obtuvo una oferta documental elegible; se conservaron el lote y los IDs anteriores. `main` sigue sin integrar.
 
 La [continuación regional anterior](../../docs/continuacion-fuentes-regionales-2026-10-13.md) confirmó una oferta nueva de BNE en Negrete y dos del piloto previo. Su [evidencia por ID](regional-source-observation-2026-10-13.json) y [parches regionales](regional-source-repair.json) corresponden a esa comprobación histórica.

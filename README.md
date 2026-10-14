@@ -1,5 +1,7 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
+La [continuación de avisos recientes](docs/avisos-recientes-y-horario-2026-10-13.md) confirmó **dos publicaciones nuevas de BNE**, en Angol y Traiguén, mediante sus IDs en un feed completo. Pasaron 248 pruebas. Un navegador público encontró publicaciones enlazadas de Renaico y Negrete; esos enlaces aún necesitan verificación laboral individual. La reparación quedó en el [PR #1, en borrador](https://github.com/mrvvergara-afk/Trabajo-Cerca-/pull/1); no se integró a `main` ni se activó el horario externo permanente.
+
 La [conexión del lector de documentos](docs/conexion-documentos-2026-10-13.md) está aplicada. Cuatro ciclos gratuitos comprobaron lectura, límites, OCR completo y continuidad del respaldo; pasaron 242 pruebas en GitHub. Los documentos revisados aún no aportaron una oferta publicable, y los IDs anteriores siguieron visibles. La programación permanente del lector externo requiere integrar después de revisión; `main` conserva su versión.
 
 La [continuación del radar regional](docs/continuacion-fuentes-regionales-2026-10-13.md) registra una oferta nueva de BNE confirmada en la app, las correcciones de fuentes y selección de candidatos, 225 pruebas aprobadas y los pendientes de redes sociales y afiches. El límite es 45 días desde la fecha original; detectar, guardar y publicar se comprueban por separado. `main` sigue sin integrar.
@@ -33,7 +35,7 @@ python scripts/pipeline.py
 
 `VERIFY_LIMIT` acepta 0–60; `BACKFILL_DAYS`, 1–45 (45 por defecto); `RADAR_BUDGET_SECONDS`, 30–1100. Las rutas locales se configuran con `RADAR_OUTPUT_DIR` y `RADAR_STATE_DIR`. La fecha original debe tener como máximo 45 días y la postulación debe seguir vigente. La captura o reverificación no rejuvenece el aviso. Los registros históricos se conservan aunque dejen de ser publicables.
 
-El recolector público consume `config/local-source-priorities.json`: 18 fuentes HTML admitidas, incluidos nueve sitios municipales, medios regionales, sitios/portales de empresas y un piloto individual de BNE. El catálogo de portales está en `config/portal-source-priorities.json`. Excluye identidades pendientes y perfiles sociales del rastreo HTML. Conserva rotación y paginación por fuente; una cola terminada no demuestra cobertura completa de 45 días. Los accesos bloqueados y los formatos que no aportan datos suficientes quedan pendientes, sin iniciar proveedores pagos.
+El recolector público consume `config/local-source-priorities.json`: 20 fuentes HTML admitidas, incluidos nueve sitios municipales, medios regionales, sitios/portales de empresas y tres ofertas individuales revisadas de BNE. El catálogo de portales está en `config/portal-source-priorities.json`. Excluye identidades pendientes y perfiles sociales del rastreo HTML. Conserva rotación y paginación por fuente; una cola terminada no demuestra cobertura completa de 45 días. Los accesos bloqueados y los formatos que no aportan datos suficientes quedan pendientes, sin iniciar proveedores pagos.
 
 | Archivo | Contenido |
 | --- | --- |
@@ -58,6 +60,8 @@ La importación deduplica y exige reverificar antes de preparar publicaciones. N
 ## GitHub Actions preparado
 
 El job general del workflow propuesto solo ejecuta el radar en `main`. En la rama de reparación hay un piloto acotado que necesita un commit explícito `[lab pilot]` o inicialización manual; consulta una sola comuna, hasta tres ofertas y no usa proveedores de pago. `[public sources]` ejecuta una lectura pública con respaldo separado y `[public browser]` comprueba el recolector gratuito de la app mediante su SDK. Estos marcadores no activan el productor de `main` ni los motores pagos. Los cambios de scripts, parches y pruebas quedan cubiertos por el disparador.
+
+`[document pilot]` ejecuta el lector gratuito de hasta tres documentos, nueve páginas locales y hasta tres ofertas oficiales individuales del catálogo. El lote combinado conserva prioridad documental y un máximo de tres ofertas firmadas. `[social access]` y `[social browser]` diagnostican accesos públicos sin iniciar sesión ni publicar. El HTML social tiene un límite propio de 4 MiB; las URLs guardadas excluyen seguimiento opaco. `[lab read]` confirma IDs mediante el SDK y conserva recibos en la rama de datos sin recolectar ni publicar. La programación `17 * * * *` solo incorpora esta ruta cuando el código revisado esté en la rama predeterminada.
 
 Entre ejecuciones se restaura un checkpoint de SQLite. Si falta o expiró, la ejecución programada se detiene para evitar reiniciar el historial. La primera inicialización manual necesita `initialize_state=true`, después de revisar y respaldar los artefactos; importa el último artefacto de candidatos disponible.
 

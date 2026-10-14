@@ -6,7 +6,7 @@
     "python": 110,
     "node": 138,
     "total": 248,
-    "run_id": 38484614196
+    "run_id": 38487573060
   },
   "document_and_portal_pilot": {
     "schema": "trabajo-cerca.document-cycle.v1",
@@ -504,5 +504,93 @@
   "reverified_previous_count": 1,
   "main_changed": false,
   "credentials_changed": false,
-  "manual_paid_provider_calls": 0
+  "manual_paid_provider_calls": 0,
+  "individual_social_read": {
+    "checked_at": "2026-10-14T00:00:23.548740+00:00",
+    "read_only": true,
+    "paid_provider_calls": 0,
+    "checked": 2,
+    "coverage_complete": false,
+    "results": [
+      {
+        "url": "https://www.facebook.com/municipalidadrenaico",
+        "territory": "Renaico",
+        "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "title": "Municipalidad de Renaico | Renaico  | FacebookFacebookShared with Public",
+        "post_references": 1,
+        "post_urls": [
+          "https://www.facebook.com/municipalidadrenaico/posts/pfbid0snvSzg1cDd8TPohNoA3PLXKRi2KL9SuYksdZu4GKJa4N4B6teBbxCMbRqXVCpWRol"
+        ],
+        "access": "post_links_visible",
+        "reason": "individual_notices_not_verified"
+      },
+      {
+        "url": "https://www.facebook.com/MuniNegreteCL",
+        "territory": "Negrete",
+        "discovered_from": "https://www.muninegrete.cl/",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "title": "Municipalidad de Negrete | Negrete  | FacebookFacebookShared with Public",
+        "post_references": 0,
+        "post_urls": [],
+        "access": "no_readable_posts",
+        "reason": "individual_notices_not_verified"
+      }
+    ],
+    "individual_posts": [
+      {
+        "url": "https://www.facebook.com/municipalidadrenaico/posts/pfbid0snvSzg1cDd8TPohNoA3PLXKRi2KL9SuYksdZu4GKJa4N4B6teBbxCMbRqXVCpWRol",
+        "profile": "https://www.facebook.com/municipalidadrenaico",
+        "territory": "Renaico",
+        "read_only": true,
+        "paid_provider_calls": 0,
+        "coverage_complete": false,
+        "title": "🏛️ Municipalidad de Renaico... - Municipalidad de Renaico | FacebookFacebookShared with Public",
+        "post_references": 1,
+        "post_urls": [
+          "https://www.facebook.com/municipalidadrenaico/posts/pfbid0snvSzg1cDd8TPohNoA3PLXKRi2KL9SuYksdZu4GKJa4N4B6teBbxCMbRqXVCpWRol"
+        ],
+        "access": "post_links_visible",
+        "reason": "individual_notices_not_verified",
+        "source_published_at": null,
+        "notice_fields": {
+          "role": null,
+          "company": null,
+          "workplace_evidence": null,
+          "work_communes": [],
+          "emails": [],
+          "phones": [],
+          "source_published_at": null,
+          "missing": [
+            "cargo",
+            "empresa",
+            "lugar_real",
+            "contacto",
+            "fecha_original"
+          ],
+          "hiring_language": false,
+          "published": false
+        },
+        "media_references": 9
+      }
+    ]
+  },
+  "receipt_confirmation": {
+    "published": 3,
+    "data_commit": "d2f0e2276d8d7070ec34003aa8cbaa6967474c71",
+    "feed_manifest": "bc3f9bd3-c93a-4d44-90b4-2a68896ea43b",
+    "run_id": 38487573060,
+    "counts": {
+      "attempts": 34,
+      "candidates": 365,
+      "checkpoints": 4,
+      "observations": 3219,
+      "publication_receipts": 5,
+      "runs": 8
+    }
+  }
 }

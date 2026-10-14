@@ -2,6 +2,8 @@
 
 La [continuación de avisos recientes](docs/avisos-recientes-y-horario-2026-10-13.md) confirmó **dos publicaciones nuevas de BNE**, en Angol y Traiguén, mediante sus IDs en un feed completo. Pasaron 248 pruebas. Un navegador público encontró publicaciones enlazadas de Renaico y Negrete; esos enlaces aún necesitan verificación laboral individual. La reparación quedó en el [PR #1, en borrador](https://github.com/mrvvergara-afk/Trabajo-Cerca-/pull/1); no se integró a `main` ni se activó el horario externo permanente.
 
+Las nuevas ofertas BNE fueron incorporadas al catálogo mediante la búsqueda de esta continuación. La publicación es real; el piloto no acredita descubrimiento automático completo ni cobertura de 45 días en todos los portales o redes. El lector oficial relee fuentes curadas, por lo que el horario por sí solo no sustituye la ampliación de su descubrimiento.
+
 La [conexión del lector de documentos](docs/conexion-documentos-2026-10-13.md) está aplicada. Cuatro ciclos gratuitos comprobaron lectura, límites, OCR completo y continuidad del respaldo; pasaron 242 pruebas en GitHub. Los documentos revisados aún no aportaron una oferta publicable, y los IDs anteriores siguieron visibles. La programación permanente del lector externo requiere integrar después de revisión; `main` conserva su versión.
 
 La [continuación del radar regional](docs/continuacion-fuentes-regionales-2026-10-13.md) registra una oferta nueva de BNE confirmada en la app, las correcciones de fuentes y selección de candidatos, 225 pruebas aprobadas y los pendientes de redes sociales y afiches. El límite es 45 días desde la fecha original; detectar, guardar y publicar se comprueban por separado. `main` sigue sin integrar.

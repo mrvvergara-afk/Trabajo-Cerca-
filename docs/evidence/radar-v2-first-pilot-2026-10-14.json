@@ -1,0 +1,66 @@
+{
+  "schema": "trabajo-cerca.radar-v2-observation.v1",
+  "producer_commit": "576d0539d9edd4ad5d442a422782b86471bd0cb6",
+  "run_id": 38570040009,
+  "tests": {
+    "python": 120,
+    "node": 144,
+    "total": 264
+  },
+  "result": {
+    "data_commit": "89dc35744fea0bb7e3b8142fe8e2a55a0e5d8a4e",
+    "first": {
+      "schema": "trabajo-cerca.radar-v2-pilot-result.v1",
+      "checked_at": "2026-10-14T13:14:39.587196+00:00",
+      "processed": 18,
+      "counts": {
+        "jobs": 25,
+        "attempts": 18,
+        "observations": 31,
+        "objects": 15,
+        "statuses": {
+          "done": 18,
+          "queued": 7
+        }
+      },
+      "eligible_local_notices": 0,
+      "evaluated": 4,
+      "paid_provider_calls": 0,
+      "published": 0,
+      "publication_confirmed": false,
+      "production_modified": false,
+      "coverage_complete": false,
+      "independent_reference_count": 0,
+      "recall_measured": false,
+      "seven_day_observation_complete": false
+    },
+    "second": {
+      "schema": "trabajo-cerca.radar-v2-pilot-result.v1",
+      "checked_at": "2026-10-14T13:15:03.301208+00:00",
+      "processed": 12,
+      "counts": {
+        "jobs": 30,
+        "attempts": 30,
+        "observations": 98,
+        "objects": 20,
+        "statuses": {
+          "done": 30
+        }
+      },
+      "eligible_local_notices": 0,
+      "evaluated": 11,
+      "paid_provider_calls": 0,
+      "published": 0,
+      "publication_confirmed": false,
+      "production_modified": false,
+      "coverage_complete": false,
+      "independent_reference_count": 0,
+      "recall_measured": false,
+      "seven_day_observation_complete": false
+    }
+  },
+  "publish_enabled": false,
+  "main_changed": false,
+  "credentials_changed": false,
+  "paid_provider_calls": 0
+}

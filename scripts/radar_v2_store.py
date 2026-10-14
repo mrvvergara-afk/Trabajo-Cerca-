@@ -116,6 +116,8 @@ class PilotStore:
 
     def counts(self):
         return {'jobs':self.connection.execute('SELECT count(*) FROM jobs').fetchone()[0],
+          'runs':self.connection.execute('SELECT count(*) FROM runs').fetchone()[0],
+          'observed_days':self.connection.execute('SELECT count(DISTINCT substr(completed_at,1,10)) FROM runs').fetchone()[0],
           'attempts':self.connection.execute('SELECT count(*) FROM attempts').fetchone()[0],
           'observations':self.connection.execute('SELECT count(*) FROM observations').fetchone()[0],
           'objects':self.connection.execute('SELECT count(*) FROM objects').fetchone()[0],
@@ -154,7 +156,10 @@ def restore(archive,manifest_path,root,object_reader):
         temporary=Path(folder);(temporary/'pilot.sqlite3').write_bytes(data)
         staged=PilotStore(temporary)
         try:
-            if staged.connection.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or staged.counts()!=metadata['counts']:raise ValueError('Pilot snapshot integrity failure')
+            actual=staged.counts();declared=metadata['counts']
+            required={'jobs','attempts','observations','objects','statuses'}
+            if (staged.connection.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or
+                    not required.issubset(declared) or any(actual.get(key)!=value for key,value in declared.items())):raise ValueError('Pilot snapshot integrity failure')
             for identity,fields in metadata['objects'].items():
                 if len(identity)!=64 or any(c not in '0123456789abcdef' for c in identity):raise ValueError('Invalid evidence identity in snapshot')
                 value=object_reader(identity)

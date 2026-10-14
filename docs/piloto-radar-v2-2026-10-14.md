@@ -32,6 +32,16 @@ Las regresiones comprueban reanudación tras caída, rechazo de leases viejos, c
 
 La ejecución gratuita explícita usa `[radar v2 pilot]` o el input `radar_v2_pilot` en la rama de reparación de este repositorio público. No añade un cron ni autoejecuciones continuas. El resultado real se incorporará al terminar las dos pasadas y comprobar el respaldo.
 
+## Primera ejecución real
+
+La ejecución [38570040009](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38570040009) terminó correctamente sobre `576d0539d9edd4ad5d442a422782b86471bd0cb6`, con **264 pruebas aprobadas: 120 Python y 144 Node**. El navegador encontró un enlace público en cada perfil Facebook, pero no obtuvo fecha ni adjuntos en el HTML/JSON de esos perfiles. Los cuatro puntos web se leyeron y la cola continuó en la segunda pasada.
+
+La primera pasada completó 18 tareas y dejó siete pendientes. La segunda completó doce más; el inventario terminó con 30 tareas realizadas, 30 intentos, 98 observaciones y 20 objetos archivados. Se evaluaron 11 casos y ninguno fue elegible. El snapshot `89dc35744fea0bb7e3b8142fe8e2a55a0e5d8a4e` quedó en la rama aislada `radar-pilot-v2-state`; no se tocó el respaldo del radar anterior. La evidencia compacta está en [primer resultado](evidence/radar-v2-first-pilot-2026-10-14.json).
+
+Esta pasada identificó dos defectos de captación: faltaba abrir cada publicación social y leer sus elementos propios, y varios archivos locales conservaban la URL de un índice general como identidad de evaluación. También se estaba omitiendo la selección de algunos enlaces PDF titulados «Bases» o «Decreto». Se preparó una corrección que conserva el índice como procedencia y usa el archivo original como identidad cuando el publicador ya es admitido.
+
+La segunda comprobación abrirá las publicaciones individuales, leerá sus adjuntos y probará obtener una fecha completa visible del mismo enlace. Una antigüedad relativa seguirá sin convertirse en fecha original. Se amplió además el contador de días observados y se mantiene compatibilidad con el snapshot anterior, sin reiniciar la base. No hubo publicaciones del piloto ni llamadas a proveedores pagos.
+
 ## Condiciones pendientes
 
 La lectura social puede no entregar la fecha o los archivos necesarios. Se registra la falta de datos y no se inventa la fecha. El piloto mantiene deshabilitada la publicación y no amplía la lista de fuentes admitidas por el puente de producción. Una oferta social que parezca completa sigue requiriendo validar esa integración antes de publicarla.

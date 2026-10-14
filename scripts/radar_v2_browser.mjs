@@ -3,7 +3,8 @@ import { spawn } from 'node:child_process';
 import { readFileSync,writeFileSync,mkdtempSync,rmSync,existsSync,mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { extractJsonText,mergeStories,postIdentity } from './radar_v2_social.mjs';
+import { extractJsonText,mergeStories,postIdentity,visiblePost } from './radar_v2_social.mjs';
+import { postSnapshot,hoveredDate } from './radar_v2_dom.mjs';
 
 const config=JSON.parse(readFileSync('config/radar-v2-pilot.json','utf8'));
 if(config.paid_providers_enabled!==false || config.publish_enabled!==false)throw new Error('Pilot must remain isolated');
@@ -41,6 +42,7 @@ try {
     if(msg.method==='Network.loadingFinished' && responses.has(msg.params.requestId))responses.get(msg.params.requestId).ready=true;
   };
   await command('Page.enable');await command('Runtime.enable');await command('Network.enable');
+  await command('Emulation.setTimezoneOverride',{timezoneId:'America/Santiago'});
   for(const source of selected) {
     active=source;responses.clear();const found=[];
     const result={key:source.key,url:source.url,read_only:true,paid_provider_calls:0,coverage_complete:false};
@@ -51,7 +53,7 @@ try {
         const value=await command('Runtime.evaluate',{returnByValue:true,expression:`JSON.stringify({
           title:document.title,url:location.href,
           links:[...document.querySelectorAll('a[href]')].map(a=>a.href).slice(0,500),
-          scripts:[...document.querySelectorAll('script[type="application/json"],script[type="application/ld+json"]')].map(s=>s.textContent).filter(s=>s.length<4000000).slice(0,25)
+          scripts:[...document.querySelectorAll('script[type="application/json"],script[type="application/ld+json"]')].map(s=>s.textContent).reduce((a,s)=>{if(a.bytes+s.length<4000000 && a.items.length<25){a.items.push(s);a.bytes+=s.length;}return a;},{bytes:0,items:[]}).items
         })`});
         const page=JSON.parse(value.result?.value || '{}');result.title=String(page.title||'').slice(0,180);
         for(const raw of page.scripts||[])found.push(...extractJsonText(raw,source.url));
@@ -64,6 +66,19 @@ try {
           try {const body=await command('Network.getResponseBody',{requestId:id});if(!body.base64Encoded)found.push(...extractJsonText(body.body,source.url));}catch{}
         }
         if(round<2){await command('Runtime.evaluate',{expression:'window.scrollBy(0,Math.min(innerHeight*2,1500))'});await pause(1800);}
+      }
+      for(const post of mergeStories(found).slice(0,2)) {
+        await command('Page.navigate',{url:post.url});await pause(2500);
+        const value=await command('Runtime.evaluate',{returnByValue:true,expression:'JSON.stringify(('+postSnapshot.toString()+')('+JSON.stringify(post.url)+'))'});
+        if(value.exceptionDetails)throw new Error('Public post DOM unavailable');
+        const snapshot=JSON.parse(value.result?.value || '{}');
+        if(snapshot.hover) {
+          await command('Input.dispatchMouseEvent',{type:'mouseMoved',...snapshot.hover});await pause(700);
+          const literal=await command('Runtime.evaluate',{returnByValue:true,expression:'JSON.stringify(('+hoveredDate.toString()+')())'});
+          if(literal.exceptionDetails)throw new Error('Public date DOM unavailable');
+          Object.assign(snapshot,JSON.parse(literal.result?.value || '{}'));
+        }
+        const observation=visiblePost(snapshot,source.url);if(observation)found.push(observation);
       }
       result.posts=mergeStories(found);result.access=result.posts.length?'public_posts_observed':'no_readable_posts';
       result.dated_posts=result.posts.filter(row=>row.source_published_at).length;

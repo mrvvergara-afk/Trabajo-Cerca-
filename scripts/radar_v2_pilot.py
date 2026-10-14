@@ -36,9 +36,10 @@ def original_date(payload,now):
     if not date or date>now:return None
     if payload.get('profile'):
         proof=payload.get('date_proof') or {}
-        if (proof.get('kind')!='facebook_story_creation_time' or proof.get('post_url')!=payload.get('source_url')
+        if (proof.get('kind') not in ('facebook_story_creation_time','facebook_visible_datetime') or proof.get('post_url')!=payload.get('source_url')
                 or not isinstance(proof.get('literal_epoch'),(int,float)) or date.timestamp()!=proof['literal_epoch']
                 or not re.fullmatch('[a-f0-9]{64}',proof.get('source_sha256',''))):return None
+        if proof['kind']=='facebook_visible_datetime' and (proof.get('timezone')!='America/Santiago' or not re.search(r'\b20\d{2}\b',proof.get('literal_label',''))):return None
     return date
 
 
@@ -70,7 +71,15 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
     old=date and now-date>dt.timedelta(days=45)
     if value['text']:children.append(('evaluate',value['source_url']+':'+value['sha256'],value))
     if not old:
-        for candidate in page['candidates'][:6]:
+        parser=Document();parser.feed(decode_public_html(raw))
+        candidates=list(page['candidates'])
+        for href,label in parser.links:
+            try:target=canonical_url(urllib.parse.urljoin(final,href))
+            except ValueError:continue
+            if same_publisher(target,final) and MEDIA.search(target) and re.search(r'\bbases?\b|decreto|concurso|convocatoria',label,re.I):
+                candidates.append({'url':target,'kind':'document'})
+        candidates=list({row['url']:row for row in candidates}.values())
+        for candidate in candidates[:6]:
             target=canonical_url(candidate['url'])
             if MEDIA.search(target) and media_allowed(target,final):children.append(('media',target,{**value,'media_url':target}))
             elif same_publisher(target,final) and payload.get('depth',0)<1:
@@ -94,6 +103,8 @@ def media_work(store,payload,budget,fetcher=fetch_public):
         if status!=200 or not media_allowed(final,origin):raise ValueError('media_source_unavailable')
     if mime not in IMAGE_MIMES and mime!='application/pdf':raise ValueError('unsupported_media_type')
     digest=store.put(raw,mime);base={**payload,'object_sha256':digest,'mime':mime}
+    if not payload.get('local_object_sha256') and source_adapter(final) and source_adapter(final)['family']=='local':
+        base['verification_source_url']=canonical_url(final)
     if mime=='application/pdf':
         value=subprocess.run(['pdfinfo',str(store.object(digest))],capture_output=True,text=True,timeout=8,check=True)
         count=re.search(r'^Pages:\s*(\d+)',value.stdout,re.M);pages=int(count[1]) if count else 0
@@ -130,6 +141,7 @@ def evaluate_work(store,payload,now):
         from .local_source_audit import evidence_fields
         fields=evidence_fields(text,date.isoformat() if date else None)
         return {'status':'pending','reason':'social_or_employer_publication_bridge_not_validated','fields':fields,'archive':digest},[]
+    if not HIRING.search(text):return {'status':'pending','reason':'job_notice_unconfirmed','archive':digest},[]
     result=verify_notice(text,payload['source_url'],date.isoformat() if date else None,sha256=digest,complete=complete,now=now)
     if payload.get('contribution_requires_review'):
         return {'status':'pending','reason':'contribution_origin_requires_confirmation','content_check_status':result['status'],
@@ -149,7 +161,10 @@ def assemble_documents(store,now):
         values=[json.loads(store.object(row['result']['archive']).read_text()) for row in sorted(pages,key=lambda row:row['payload']['page'])]
         text='\n'.join(value['text'] for value in values)
         complete=len(text)<=18000 and not any(value['textTruncated'] or value.get('engine')=='tesseract-local' and (value.get('mean_confidence') or 0)<70 for value in values)
-        store.seed('evaluate',payload['source_url']+':'+digest,{**payload,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
+        verification_url=payload.get('verification_source_url')
+        if not verification_url and payload.get('media_url') and source_adapter(payload['media_url']) and source_adapter(payload['media_url'])['family']=='local':verification_url=canonical_url(payload['media_url'])
+        verification_url=verification_url or payload['source_url']
+        store.seed('evaluate',verification_url+':'+digest+':v2',{**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
 
 
 def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public):
@@ -158,10 +173,10 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
     if config.get('paid_providers_enabled') is not False or config.get('publish_enabled') is not False:raise ValueError('Pilot must remain isolated and free')
     slot=int(now.timestamp()//14400)
     for source in config['sources']:
-        if source['kind']=='web':store.seed('web',source['key']+':'+str(slot),{'url':source['url'],'source':source,'depth':0},now)
+        if source['kind']=='web':store.seed('web',source['key']+':'+str(slot)+':v2',{'url':source['url'],'source':source,'depth':0},now)
     for capture in social.get('captures',[]):
         digest=json_blob(store,capture)
-        store.seed('social',capture['key']+':'+str(slot),{'capture':capture,'archive':digest},now)
+        store.seed('social',capture['key']+':'+str(slot)+':'+digest,{'source_key':capture['key'],'archive':digest},now)
     processed=0
     while processed<limit and budget.remaining()>5:
         assemble_documents(store,now)
@@ -170,7 +185,9 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
         if not job:break
         try:
             if job['kind']=='web':result,children=web_work(store,job['payload'],budget,fetcher,now)
-            elif job['kind']=='social':result,children={'status':'captured','archive':job['payload']['archive'],'posts':len(job['payload']['capture'].get('posts',[]))},social_children(job['payload']['capture'],now)
+            elif job['kind']=='social':
+                capture=job['payload'].get('capture') or json.loads(store.object(job['payload']['archive']).read_text())
+                result,children={'status':'captured','archive':job['payload']['archive'],'posts':len(capture.get('posts',[]))},social_children(capture,now)
             elif job['kind']=='media':result,children=media_work(store,job['payload'],budget,fetcher)
             elif job['kind']=='page':result,children=page_work(store,job['payload'],budget)
             else:result,children=evaluate_work(store,job['payload'],now)
@@ -185,7 +202,10 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
       'paid_provider_calls':0,'published':0,'publication_confirmed':False,'production_modified':False,
       'coverage_complete':False,'independent_reference_count':len(config.get('independent_reference',[])),
       'recall_measured':False,'seven_day_observation_complete':False}
-    with store.connection:store.connection.execute('INSERT INTO runs(completed_at,summary) VALUES(?,?)',(now.isoformat(),json.dumps(report,ensure_ascii=False)))
+    with store.connection:
+        cursor=store.connection.execute('INSERT INTO runs(completed_at,summary) VALUES(?,?)',(now.isoformat(),json.dumps(report,ensure_ascii=False)))
+        report['counts']=store.counts()
+        store.connection.execute('UPDATE runs SET summary=? WHERE id=?',(json.dumps(report,ensure_ascii=False),cursor.lastrowid))
     return report
 
 

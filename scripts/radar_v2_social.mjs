@@ -88,3 +88,19 @@ export function mergeStories(rows) {
   }
   return [...map.values()].slice(0,20);
 }
+
+export function visiblePost(snapshot,profile,now=Date.now()) {
+  const url=postIdentity(snapshot.url,profile);if(!url)return null;
+  const message=String(snapshot.caption || ''),selected=hiring(message);
+  const images=(snapshot.images || []).flatMap(item=>{
+    try {const image=new URL(item.url);return image.protocol==='https:' && !image.username && !image.password && /\.fbcdn\.net$/.test(image.hostname) &&
+      (selected || /text|texto/i.test(item.alt || '')) ? [image.toString()] : [];}catch{return [];}
+  }).slice(0,3);
+  const epoch=snapshot.literal_epoch;
+  const dated=typeof epoch==='number' && Number.isFinite(epoch) && epoch*1000<=now && epoch*1000>=Date.UTC(2006,0,1) && /\b20\d{2}\b/.test(snapshot.date_label || '') && snapshot.timezone==='America/Santiago';
+  const digest=createHash('sha256').update(JSON.stringify({url,caption:message,date_label:snapshot.date_label,images:snapshot.images})).digest('hex');
+  return {url,profile,text:selected?message.slice(0,18000):'',text_truncated:selected && message.length>18000,hiring_language:selected,media:images,
+    source_published_at:dated?new Date(epoch*1000).toISOString():null,
+    date_proof:dated?{kind:'facebook_visible_datetime',post_url:url,literal_label:snapshot.date_label,literal_epoch:epoch,timezone:snapshot.timezone,source_sha256:digest}:null,
+    reason:dated?'literal_visible_post_date':'source_date_missing_or_conflicting'};
+}

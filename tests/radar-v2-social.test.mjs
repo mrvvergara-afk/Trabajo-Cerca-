@@ -1,6 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { extractStories,extractJsonText,postIdentity,mergeStories } from '../scripts/radar_v2_social.mjs';
+import { extractStories,extractJsonText,postIdentity,mergeStories,visiblePost } from '../scripts/radar_v2_social.mjs';
+import { postSnapshot,hoveredDate } from '../scripts/radar_v2_dom.mjs';
+import vm from 'node:vm';
 
 const profile='https://www.facebook.com/municipalidadrenaico';
 const url=profile+'/posts/pfbidABCDEFGHIJKLMNOPQRSTUVWX';
@@ -41,4 +43,18 @@ test('A later undated observation never revives a conflicted original timestamp'
   const a=extractStories(story,profile,now)[0],b={...a,source_published_at:'2026-10-13T10:00:00.000Z'};
   const [row]=mergeStories([a,b,{...a,source_published_at:null,date_proof:null}]);
   assert.equal(row.source_published_at,null);assert.equal(row.date_proof,null);
+});
+test('A visible full date requires a bound public post and never accepts a relative label',()=>{
+  const base={url,caption:'Se necesita operador',images:[{url:'https://scontent.example.fbcdn.net/notice.png',alt:'image of text'}],
+    date_label:'Monday, October 12, 2026 at 7:00AM',literal_epoch:epoch,timezone:'America/Santiago'};
+  assert.equal(visiblePost(base,profile,now).date_proof.kind,'facebook_visible_datetime');
+  assert.equal(visiblePost({...base,date_label:'2 days ago'},profile,now).source_published_at,null);
+  assert.equal(visiblePost({...base,url:'https://www.facebook.com/other/posts/12345'},profile,now),null);
+});
+test('Browser function transport preserves regexes and cannot borrow a related article or a yearless tooltip',()=>{
+  const fakeDocument={querySelectorAll:()=>[],querySelector:selector=>selector.includes('og:url')?{content:url}:selector.includes('og:description')?{content:'Se necesita operador'}:null};
+  const result=vm.runInNewContext('('+postSnapshot.toString()+')('+JSON.stringify(url)+')',{document:fakeDocument,URL});
+  assert.equal(result.caption,'Se necesita operador');assert.equal(result.hover,null);
+  const label=vm.runInNewContext('('+hoveredDate.toString()+')()',{document:{querySelectorAll:()=>[{innerText:'2 days ago'}]},Date});
+  assert.equal(label.literal_epoch,null);
 });

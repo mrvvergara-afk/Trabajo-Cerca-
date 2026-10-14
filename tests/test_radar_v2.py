@@ -17,6 +17,32 @@ CONFIG={'sources':[],'territories':['Renaico','Negrete'],'paid_providers_enabled
 
 
 class PilotQueueTests(unittest.TestCase):
+    def test_large_social_capture_is_archived_without_overflowing_the_queue_payload(self):
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder)
+            capture={'key':'test','posts':[{'url':'https://www.facebook.com/municipalidadrenaico/posts/12345','text':'x'*100000,'media':[]}]}
+            result=pilot.run(store,CONFIG,{'captures':[capture]},now=NOW,limit=0)
+            self.assertEqual(result['counts']['jobs'],1);self.assertEqual(result['counts']['runs'],1)
+            payload=store.results()[0]['payload'];self.assertNotIn('capture',payload)
+            self.assertGreater(store.object(payload['archive']).stat().st_size,80000);store.close()
+
+    def test_old_snapshot_counts_restore_after_new_observation_metrics_are_added(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);store=PilotStore(root/'a');store.seed('web',URL,{},NOW);store.snapshot(root/'snapshot');store.close()
+            manifest=root/'snapshot'/'manifest.json';metadata=json.loads(manifest.read_text())
+            metadata['counts'].pop('runs');metadata['counts'].pop('observed_days');manifest.write_text(json.dumps(metadata))
+            restore(root/'snapshot'/'pilot.sqlite3.gz',manifest,root/'b',lambda sha:b'')
+            recovered=PilotStore(root/'b');self.assertEqual(recovered.counts()['jobs'],1);recovered.close()
+
+    def test_a_document_evaluation_uses_the_original_file_and_keeps_its_index_as_provenance(self):
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder);digest=store.put(b'original','image/png');text=store.put(json.dumps({'text':'Se necesita operador','textTruncated':False,'engine':'pdftotext-local'}).encode(),'application/json')
+            source='https://municipalidadrenaico.cl/concursos-publicos/';file='https://municipalidadrenaico.cl/oferta-laboral.pdf'
+            store.seed('page','test',{'source_url':source,'media_url':file,'object_sha256':digest,'page':1,'pages':1},NOW)
+            job=store.claim(NOW);store.finish(job,{'archive':text},now=NOW);pilot.assemble_documents(store,NOW)
+            evaluation=[row for row in store.results() if row['kind']=='evaluate'][0]
+            self.assertEqual(evaluation['payload']['source_url'],file);self.assertEqual(evaluation['payload']['publisher_page'],source);store.close()
+
     def test_contributed_declared_dates_are_archived_but_require_origin_confirmation(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);store=PilotStore(root/'state');(root/'notice.png').write_bytes(b'test contribution')

@@ -1,0 +1,17 @@
+{
+  "schema": "trabajo-cerca.radar-v2-pilot.v1",
+  "territories": ["Renaico", "Negrete"],
+  "paid_providers_enabled": false,
+  "publish_enabled": false,
+  "sources": [
+    {"key":"renaico-web","name":"Municipalidad de Renaico","kind":"web","url":"https://municipalidadrenaico.cl/concursos-publicos/","family":"municipal","territory":"Renaico","identity_evidence":"Sitio municipal primario revisado en la auditoría."},
+    {"key":"negrete-omil","name":"OMIL Negrete","kind":"web","url":"https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/","family":"municipal","territory":"Negrete","identity_evidence":"Página dedicada a OMIL en el sitio municipal primario."},
+    {"key":"renaico-facebook","name":"Municipalidad de Renaico · Facebook","kind":"social","url":"https://www.facebook.com/municipalidadrenaico","family":"municipal","territory":"Renaico","identity_evidence":"Enlace literal del sitio municipal; no se presupone perfil dedicado OMIL."},
+    {"key":"negrete-facebook","name":"Municipalidad de Negrete · Facebook","kind":"social","url":"https://www.facebook.com/MuniNegreteCL","family":"municipal","territory":"Negrete","identity_evidence":"Enlace literal del sitio municipal; no se presupone perfil dedicado OMIL."},
+    {"key":"radio-barnachea","name":"Radio Barnachea","kind":"web","url":"https://radiobarnachea.cl/","family":"media","territory":"Nacimiento / Negrete","identity_evidence":"La página primaria se identifica como radio de Nacimiento con cobertura de Negrete; acceso por comprobar en el piloto."},
+    {"key":"cmpc-empleo","name":"CMPC · portal de empleo","kind":"web","url":"https://cmpc.trabajando.cl/","family":"employer","territory":"regional; lugar real de cada oferta pendiente","identity_evidence":"Portal enlazado por https://www.cmpc.com/trabaja-con-nosotros/. No se atribuye trabajo en las comunas del piloto por el nombre de la empresa."}
+  ],
+  "independent_reference": [],
+  "reference_status": "awaiting_independent_real_notices",
+  "observation_days_required": 7
+}

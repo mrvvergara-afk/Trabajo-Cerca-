@@ -10,6 +10,10 @@ on:
         description: 'Ejecutar documentos y ofertas oficiales revisadas con ingesta firmada en la rama de reparación'
         type: boolean
         default: false
+      radar_v2_pilot:
+        description: 'Probar el radar aislado de Renaico y Negrete sin publicar ni usar proveedores pagos'
+        type: boolean
+        default: false
   push:
     branches: [main, repair/radar-audit-2026-10-11]
     paths:
@@ -28,6 +32,41 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  radar-v2:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false &&
+      ((github.event_name == 'push' && contains(github.event.head_commit.message, '[radar v2 pilot]')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.radar_v2_pilot == true))
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos y pruebas antes del piloto
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Leer perfiles públicos sin iniciar sesión ni ejecutar motores de la app
+        run: node scripts/radar_v2_browser.mjs
+      - name: Dos pasadas recuperables y respaldo aislado sin publicar
+        run: python -m scripts.radar_v2_pilot
+      - name: Conservar evidencia y pendientes del piloto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-v2-evidence
+          path: output/radar-v2/
+          retention-days: 7
   documents:
     if: >-
       github.event.repository.private == false &&

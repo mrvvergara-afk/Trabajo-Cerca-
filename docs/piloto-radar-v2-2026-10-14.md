@@ -4,7 +4,7 @@ Se implementó la primera versión del motor propuesto en [la decisión de arqui
 
 ## Alcance y fuentes
 
-Las comunas iniciales son Renaico y Negrete. Se prueban sus sitios municipales/OMIL y los dos Facebook municipales enlazados desde fuentes primarias. Los perfiles municipales no se presentan como perfiles dedicados de OMIL. El catálogo incluye Radio Barnachea como fuente regional que declara cobertura de Negrete, con acceso pendiente de la comprobación real, y el portal CMPC enlazado por su página corporativa. CMPC es una empresa regional; no se atribuye trabajo en las dos comunas a partir de su nombre.
+Las comunas iniciales son Renaico y Negrete. Se prueban sus sitios municipales/OMIL y los dos Facebook municipales enlazados desde fuentes primarias. Los perfiles municipales no se presentan como perfiles dedicados de OMIL. El catálogo incluye Radio Barnachea como fuente regional que declara cobertura de Negrete y cuya página respondió al lector, y el portal CMPC enlazado por su página corporativa. CMPC es una empresa regional; no se atribuye trabajo en las dos comunas a partir de su nombre.
 
 El catálogo de seis entradas está en `config/radar-v2-pilot.json`. Los cuatro puntos web respondieron en las ejecuciones reales. Eso confirma acceso a esas páginas, no cobertura de su contenido dinámico o de sus archivos históricos. Todavía falta una muestra independiente de avisos reales que permita medir qué recupera el lector y qué omite. Una lista de fuentes o una ejecución exitosa no prueba cobertura de 45 días.
 
@@ -41,7 +41,7 @@ La primera pasada completó 18 tareas y dejó siete pendientes. La segunda compl
 
 Esta pasada identificó dos defectos de captación: faltaba abrir cada publicación social y leer sus elementos propios, y varios archivos locales conservaban la URL de un índice general como identidad de evaluación. También se estaba omitiendo la selección de algunos enlaces PDF titulados «Bases» o «Decreto». Se preparó una corrección que conserva el índice como procedencia y usa el archivo original como identidad cuando el publicador ya es admitido.
 
-La segunda comprobación abrirá las publicaciones individuales, leerá sus adjuntos y probará obtener una fecha completa visible del mismo enlace. Una antigüedad relativa seguirá sin convertirse en fecha original. Se amplió además el contador de días observados y se mantiene compatibilidad con el snapshot anterior, sin reiniciar la base. No hubo publicaciones del piloto ni llamadas a proveedores pagos.
+La segunda comprobación abrió las publicaciones individuales y probó leer sus adjuntos y una fecha completa visible del mismo enlace. Una antigüedad relativa no se convierte en fecha original. Se amplió además el contador de días observados y se mantiene compatibilidad con el snapshot anterior, sin reiniciar la base. No hubo publicaciones del piloto ni llamadas a proveedores pagos.
 
 ## Segunda ejecución y continuidad del respaldo
 
@@ -55,7 +55,7 @@ El cambio sí permitió descubrir y descargar PDF municipales que antes quedaban
 
 La ejecución [38576653077](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38576653077), sobre `6aa54cc5f80f53593019e64a74be3f28a24c71b6`, aprobó las mismas **269 pruebas** y continuó el snapshot anterior. Terminó con **94 tareas realizadas, cero pendientes, 94 intentos, 704 observaciones y 69 objetos archivados**. Conserva los 47 objetos del respaldo anterior. La integridad de SQLite devolvió `ok`. El nuevo snapshot es `9d73a79f6529272f1c0da5a5b824527f99ade751`, en la rama de datos independiente.
 
-Se completaron **40 páginas de cinco PDF** y cinco páginas de imágenes. No se confundió un límite de trabajo por pasada con un documento terminado. Tres documentos largos quedaron señalados como incompletos para la evaluación porque el texto reunido se trunca o la confianza OCR no basta, aunque sus páginas y resultados individuales están archivados. Leer todas las páginas no garantiza extracción suficiente para publicar.
+La comparación directa de las dos bases conservó las 87 tareas previas: las 66 terminadas mantienen estado e intentos y las 21 pendientes terminaron. Se completaron **40 páginas de cinco PDF** y cinco páginas de imágenes. No se confundió un límite de trabajo por pasada con un documento terminado. Tres documentos largos quedaron señalados como incompletos para la evaluación porque el texto reunido se trunca o la confianza OCR no basta, aunque sus páginas y resultados individuales están archivados. Leer todas las páginas no garantiza extracción suficiente para publicar.
 
 Hubo **24 evaluaciones acumuladas y cero avisos elegibles**. Los motivos fueron: 13 casos con puente social/empresarial sin validar, cinco sin confirmación de aviso laboral, cinco sin fecha original suficiente y uno de más de 45 días. Son motivos de evaluación, no 24 ofertas laborales distintas. Los PDF enlazados desde Renaico incluyen concursos de junio/julio y un archivo de 2023; el índice primario revisado contiene un cierre de julio. Su ruta o fecha de captura no se usa como fecha original del aviso.
 
@@ -67,7 +67,7 @@ En paralelo, la comprobación de lectura de AppDeploy encontró los tres IDs de 
 
 La revisión detectó que una página de directorio con una fecha antigua detenía sus enlaces, y que una fecha reciente del mismo directorio podía heredarse a documentos sin fecha. El cambio final etiqueta los cuatro puntos web como directorios, sigue sus enlaces y conserva su fecha solo como metadato de la página. No evalúa el conjunto del directorio como una oferta individual. Los hijos recuperan evidencia propia.
 
-Dos regresiones nuevas comprueban un directorio antiguo que enlaza una oferta/PDF y un directorio reciente que contiene un afiche sin fecha. La suite final suma **271 pruebas: 125 Python y 146 Node**. Esta última corrección se comprobó con casos controlados; las cifras de la tercera ejecución corresponden a su commit anterior. No se volvió a rastrear Facebook para comprobar un cambio sobre directorios.
+Dos regresiones nuevas comprueban un directorio antiguo que enlaza una oferta/PDF y un directorio reciente que contiene un afiche sin fecha. La [revisión final 38577913584](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38577913584), sobre `5192cb0773daf9f3d95c611cf8c233635c2bb30a`, aprobó **271 pruebas: 125 Python y 146 Node**. Esta última corrección se comprobó con casos controlados; las cifras de la tercera ejecución corresponden a su commit anterior. No se volvió a rastrear Facebook para comprobar un cambio sobre directorios. La [evidencia de pruebas](evidence/radar-v2-final-tests-2026-10-14.json) conserva el commit exacto y los conteos.
 
 ## Qué falta para publicaciones automáticas reales
 

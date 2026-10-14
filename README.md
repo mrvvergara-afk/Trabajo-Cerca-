@@ -1,5 +1,9 @@
 # Trabajo Cerca — Reparación del radar en revisión
 
+El [piloto del nuevo motor del 14 de octubre](docs/piloto-radar-v2-2026-10-14.md) se ejecutó tres veces en Renaico y Negrete: **94 tareas completadas, 40 páginas de cinco PDF procesadas y 69 objetos archivados**, con reanudación desde respaldos anteriores. Terminó con **cero avisos elegibles y cero publicaciones nuevas del piloto**. La suite final contiene 271 pruebas. La cola y su persistencia están comprobadas; la captación social suficiente y la publicación automática de esas ofertas siguen pendientes.
+
+El piloto está aislado en la rama de reparación y conserva sus datos en `radar-pilot-v2-state`. No despliega cambios en AppDeploy, no añade proveedores pagos ni activa un nuevo horario. Facebook entregó enlaces sin fecha/adjuntos suficientes; falta una muestra independiente de avisos recientes y siete días de observación. La [decisión de arquitectura](docs/decision-arquitectura-radar-2026-10-14.md) propone mantener la app y sustituir gradualmente el motor de captación, con revisión antes de integrar `main`.
+
 La [continuación de avisos recientes](docs/avisos-recientes-y-horario-2026-10-13.md) confirmó **dos publicaciones nuevas de BNE**, en Angol y Traiguén, mediante sus IDs en un feed completo. Pasaron 248 pruebas. Un navegador público encontró publicaciones enlazadas de Renaico y Negrete; esos enlaces aún necesitan verificación laboral individual. La reparación quedó en el [PR #1, en borrador](https://github.com/mrvvergara-afk/Trabajo-Cerca-/pull/1); no se integró a `main` ni se activó el horario externo permanente.
 
 Las nuevas ofertas BNE fueron incorporadas al catálogo mediante la búsqueda de esta continuación. La publicación es real; el piloto no acredita descubrimiento automático completo ni cobertura de 45 días en todos los portales o redes. El lector oficial relee fuentes curadas, por lo que el horario por sí solo no sustituye la ampliación de su descubrimiento.
@@ -36,6 +40,8 @@ python scripts/pipeline.py
 ```
 
 `VERIFY_LIMIT` acepta 0–60; `BACKFILL_DAYS`, 1–45 (45 por defecto); `RADAR_BUDGET_SECONDS`, 30–1100. Las rutas locales se configuran con `RADAR_OUTPUT_DIR` y `RADAR_STATE_DIR`. La fecha original debe tener como máximo 45 días y la postulación debe seguir vigente. La captura o reverificación no rejuvenece el aviso. Los registros históricos se conservan aunque dejen de ser publicables.
+
+El nuevo motor se prueba por separado con el input `radar_v2_pilot=true` en un despacho manual del workflow sobre la rama de reparación. Su configuración exige `paid_providers_enabled=false` y `publish_enabled=false`. El marcador `[radar v2 pilot]` permite la misma comprobación acotada en un commit explícito. No ejecuta el productor de `main` ni sustituye el respaldo del laboratorio. El comando `python -m scripts.radar_v2_intake manifest.json --state state/radar-v2` permite archivar afiches/PDF aportados localmente; sus fechas declaradas requieren confirmar el origen.
 
 El recolector público consume `config/local-source-priorities.json`: 20 fuentes HTML admitidas, incluidos nueve sitios municipales, medios regionales, sitios/portales de empresas y tres ofertas individuales revisadas de BNE. El catálogo de portales está en `config/portal-source-priorities.json`. Excluye identidades pendientes y perfiles sociales del rastreo HTML. Conserva rotación y paginación por fuente; una cola terminada no demuestra cobertura completa de 45 días. Los accesos bloqueados y los formatos que no aportan datos suficientes quedan pendientes, sin iniciar proveedores pagos.
 

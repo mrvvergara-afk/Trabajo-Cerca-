@@ -64,13 +64,15 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
     raw,final,mime,status=fetcher(url,budget)
     if status!=200 or mime not in ('text/html','application/xhtml+xml') or not same_publisher(url,final):raise ValueError('publisher_page_unavailable')
     page=discover(decode_public_html(raw),final)
+    directory=payload.get('page_type')=='directory'
     value={'source_url':canonical_url(final),'source':payload['source']['key'],'source_family':payload['source']['family'],
-      'source_published_at':page['source_published_at'],'text':page['text'] if HIRING.search(page['title']+' '+page['text']) else '',
+      'source_published_at':None if directory else page['source_published_at'],'text':page['text'] if HIRING.search(page['title']+' '+page['text']) else '',
       'complete':len(page['text'])<14000,'sha256':hashlib.sha256(raw).hexdigest(),'title':page['title']}
-    archive=json_blob(store,value);children=[];date=original_date(value,now)
+    archive=json_blob(store,{**value,'page_last_published_at':page['source_published_at'],'page_type':'directory' if directory else 'notice'})
+    children=[];date=parse_date(page['source_published_at'])
     old=date and now-date>dt.timedelta(days=45)
-    if value['text']:children.append(('evaluate',value['source_url']+':'+value['sha256'],value))
-    if not old:
+    if value['text'] and not directory:children.append(('evaluate',value['source_url']+':'+value['sha256'],value))
+    if directory or not old:
         parser=Document();parser.feed(decode_public_html(raw))
         candidates=list(page['candidates'])
         for href,label in parser.links:
@@ -83,12 +85,13 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
             target=canonical_url(candidate['url'])
             if MEDIA.search(target) and media_allowed(target,final):children.append(('media',target,{**value,'media_url':target}))
             elif same_publisher(target,final) and payload.get('depth',0)<1:
-                children.append(('web',target,{'url':target,'source':payload['source'],'depth':1}))
+                children.append(('web',target,{'url':target,'source':payload['source'],'depth':1,'page_type':'notice'}))
         if value['text']:
             for target in page['images'][:8]:
                 if media_allowed(target,final) and not re.search(r'logo|avatar|icon|banner|favicon|slider',target,re.I):
                     children.append(('media',value['source_url']+':'+target,{**value,'media_url':target}))
     return {'status':'captured','source_url':final,'archive':archive,'source_published_at':value['source_published_at'],
+            'page_last_published_at':page['source_published_at'],'page_type':'directory' if directory else 'notice',
             'discovered':len(children),'old_source':bool(old),'coverage_complete':False},children
 
 
@@ -173,7 +176,7 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
     if config.get('paid_providers_enabled') is not False or config.get('publish_enabled') is not False:raise ValueError('Pilot must remain isolated and free')
     slot=int(now.timestamp()//14400)
     for source in config['sources']:
-        if source['kind']=='web':store.seed('web',source['key']+':'+str(slot)+':v2',{'url':source['url'],'source':source,'depth':0},now)
+        if source['kind']=='web':store.seed('web',source['key']+':'+str(slot)+':v3',{'url':source['url'],'source':source,'depth':0,'page_type':source.get('page_type','notice')},now)
     for capture in social.get('captures',[]):
         digest=json_blob(store,capture)
         store.seed('social',capture['key']+':'+str(slot)+':'+digest,{'source_key':capture['key'],'archive':digest},now)

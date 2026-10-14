@@ -17,6 +17,31 @@ CONFIG={'sources':[],'territories':['Renaico','Negrete'],'paid_providers_enabled
 
 
 class PilotQueueTests(unittest.TestCase):
+    def test_old_directory_keeps_discovery_without_dating_or_verifying_its_children(self):
+        raw=b'<title>OMIL</title><meta property="article:published_time" content="2025-07-28T20:23:02Z"><a href="/avisos/oferta-laboral-nueva">Oferta laboral</a><a href="/avisos/bases.pdf">Descargar Bases</a>'
+        source={'key':'test','family':'municipal'}
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder)
+            result,children=pilot.web_work(store,{'url':URL,'source':source,'depth':0,'page_type':'directory'},Budget(5),lambda *a:(raw,URL,'text/html',200),NOW)
+            self.assertTrue(result['old_source']);self.assertIsNone(result['source_published_at'])
+            self.assertEqual(result['page_last_published_at'],'2025-07-28T20:23:02+00:00')
+            self.assertEqual({child[0] for child in children},{'web','media'})
+            medium=next(child[2] for child in children if child[0]=='media')
+            self.assertIsNone(medium['source_published_at'])
+            notice=next(child[2] for child in children if child[0]=='web')
+            self.assertEqual(notice['page_type'],'notice');store.close()
+
+    def test_a_recent_directory_date_never_rejuvenates_an_undated_poster(self):
+        raw=b'<title>Ofertas laborales</title><meta property="article:published_time" content="2026-10-13T12:00:00Z"><a href="/oferta-laboral.png">Oferta laboral</a>'
+        source={'key':'test','family':'municipal'}
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder)
+            _,children=pilot.web_work(store,{'url':URL,'source':source,'page_type':'directory'},Budget(5),lambda *a:(raw,URL,'text/html',200),NOW)
+            medium=next(child[2] for child in children if child[0]=='media')
+            text='Se necesita operador\nCargo: Operador forestal\nEmpresa: Empresa ficticia\nLugar de trabajo: Renaico\nEnviar CV: empleo@example.cl\nPostulaciones hasta el 20 de octubre de 2026'
+            result,_=pilot.evaluate_work(store,{**medium,'text':text,'complete':True,'sha256':hashlib.sha256(text.encode()).hexdigest()},NOW)
+            self.assertEqual(result['reason'],'source_date_missing_or_future');self.assertFalse(any(child[0]=='evaluate' for child in children));store.close()
+
     def test_large_social_capture_is_archived_without_overflowing_the_queue_payload(self):
         with tempfile.TemporaryDirectory() as folder:
             store=PilotStore(folder)

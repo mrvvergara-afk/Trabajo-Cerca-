@@ -110,9 +110,12 @@ class PilotStore:
         return path
 
     def results(self):
-        return [{'kind':row['kind'],'key':row['key'],'status':row['status'],'attempts':row['attempts'],
+        return [{'id':row['id'],'kind':row['kind'],'key':row['key'],'status':row['status'],'attempts':row['attempts'],
+                 'completed_at':row['completed_at'],
                  'payload':json.loads(row['payload']),'result':json.loads(row['result']) if row['result'] else None}
-                for row in self.connection.execute('SELECT * FROM jobs ORDER BY created_at,id')]
+                for row in self.connection.execute('''SELECT jobs.*,
+                  (SELECT finished_at FROM attempts WHERE job_id=jobs.id ORDER BY attempt DESC LIMIT 1) AS completed_at
+                  FROM jobs ORDER BY created_at,id''')]
 
     def counts(self):
         return {'jobs':self.connection.execute('SELECT count(*) FROM jobs').fetchone()[0],

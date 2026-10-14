@@ -14,6 +14,10 @@ on:
         description: 'Probar el radar aislado de Renaico y Negrete sin publicar ni usar proveedores pagos'
         type: boolean
         default: false
+      radar_v2_handoff:
+        description: 'Conectar evidencia del piloto al receptor firmado con un control BNE real, conservando IDs y respaldos'
+        type: boolean
+        default: false
   push:
     branches: [main, repair/radar-audit-2026-10-11]
     paths:
@@ -32,6 +36,44 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  radar-v2-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false &&
+      ((github.event_name == 'push' && contains(github.event.head_commit.message, '[radar v2 handoff]')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.radar_v2_handoff == true))
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Comprobar lectores y conexión antes de firmar o escribir
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Conectar el piloto al receptor existente y confirmar el lote exacto
+        run: python -m scripts.radar_v2_publish
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Conservar evidencia de la conexión y sus pendientes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-v2-handoff-evidence
+          path: |
+            output/radar-v2-handoff/
+            output/laboratory_observation*.json
+          retention-days: 7
   radar-v2:
     if: >-
       github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false &&

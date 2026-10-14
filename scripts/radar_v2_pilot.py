@@ -61,8 +61,19 @@ def social_children(capture,now):
 
 def web_work(store,payload,budget,fetcher=fetch_public,now=None):
     now=now or utcnow();url=payload['url']
+    control = payload['source'].get('scope') == 'publication_control'
+    if control:
+        adapter = source_adapter(url)
+        if not adapter or adapter['name'] != 'Bolsa Nacional de Empleo' or payload.get('page_type') != 'notice':
+            raise ValueError('unsupported_official_control')
     raw,final,mime,status=fetcher(url,budget)
     if status!=200 or mime not in ('text/html','application/xhtml+xml') or not same_publisher(url,final):raise ValueError('publisher_page_unavailable')
+    if control:
+        from .verify_candidates import evaluate
+        archive = store.put(raw, mime)
+        result = evaluate({'url':url}, decode_public_html(raw), final, status=status, now=now)
+        return {**result, 'archive':archive, 'source_url':url, 'source_family':'official_control',
+                'captured_at':now.isoformat(), 'coverage_complete':False}, []
     page=discover(decode_public_html(raw),final)
     directory=payload.get('page_type')=='directory'
     value={'source_url':canonical_url(final),'source':payload['source']['key'],'source_family':payload['source']['family'],
@@ -198,7 +209,8 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
         except Exception as exc:store.fail(job,source_error(exc),now if frozen else utcnow())
         processed+=1
     assemble_documents(store,now)
-    evaluations=[row['result'] for row in store.results() if row['kind']=='evaluate' and row['status']=='done']
+    evaluations=[row['result'] for row in store.results() if row['status']=='done' and
+                 (row['kind']=='evaluate' or row['kind']=='web' and row['result'].get('source_family')=='official_control')]
     ready=[row for row in evaluations if row.get('status')=='verified' and row.get('work_commune') in config['territories']]
     report={'schema':'trabajo-cerca.radar-v2-pilot-result.v1','checked_at':now.isoformat(),'processed':processed,
       'counts':store.counts(),'eligible_local_notices':len(ready),'evaluated':len(evaluations),'evaluations':evaluations,

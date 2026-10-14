@@ -162,6 +162,13 @@ class PilotQueueTests(unittest.TestCase):
             self.assertEqual(first['eligible_local_notices'],0)
             second=pilot.run(store,CONFIG,{'captures':[]},now=NOW,limit=8,fetcher=fetcher)
             self.assertEqual(second['eligible_local_notices'],1);self.assertEqual(second['published'],0)
+            from scripts.radar_v2_publish import prepare
+            from scripts.state import State
+            history=State(root/'history.sqlite3')
+            queue,_=prepare(store,history,root,now=NOW)
+            self.assertEqual(queue['ready_count'],1);self.assertEqual(queue['records'][0]['source_url'],URL+'.pdf')
+            self.assertEqual(queue['records'][0]['source_evidence']['sha256'],hashlib.sha256(raw).hexdigest())
+            self.assertTrue(queue['records'][0]['source_evidence']['complete_document']);history.close()
             jobs=store.counts()['jobs'];pilot.run(store,CONFIG,{'captures':[]},now=NOW,limit=8,fetcher=fetcher)
             self.assertEqual(store.counts()['jobs'],jobs);self.assertEqual(len([r for r in store.results() if r['kind']=='page']),5);store.close()
 

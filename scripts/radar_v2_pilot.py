@@ -18,6 +18,7 @@ from .local_history import verify_notice
 from .local_source_audit import Document, HIRING, MEDIA, discover, fetch_public, same_publisher, source_error, tesseract_text
 from .public_source_adapters import source_adapter
 from .radar_v2_store import PilotStore, restore
+from .radar_v2_diagnostics import describe
 
 DATA_BRANCH='radar-pilot-v2-state'
 CONFIG=Path('config/radar-v2-pilot.json')
@@ -50,12 +51,14 @@ def json_blob(store,value):
 def social_children(capture,now):
     children=[]
     for post in capture.get('posts',[])[:12]:
-        value={**post,'source_url':post['url'],'source':capture.get('key'), 'source_family':'social'}
+        value={**post,'source_url':post['url'],'source':capture.get('key'), 'source_family':'social',
+               'capture_slot':int(now.timestamp()//14400)}
         date=original_date(value,now)
         if date and now-date>dt.timedelta(days=45):continue
-        children.append(('evaluate',post['url']+':caption',value))
+        suffix=':'+str(value['capture_slot'])+':v4'
+        children.append(('evaluate',post['url']+':caption'+suffix,value))
         for medium in post.get('media',[])[:3]:
-            if media_allowed(medium,post['url']):children.append(('media',post['url']+':'+medium,{**value,'media_url':medium}))
+            if media_allowed(medium,post['url']):children.append(('media',post['url']+':'+medium+suffix,{**value,'media_url':medium}))
     return children
 
 
@@ -74,15 +77,18 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
         result = evaluate({'url':url}, decode_public_html(raw), final, status=status, now=now)
         return {**result, 'archive':archive, 'source_url':url, 'source_family':'official_control',
                 'captured_at':now.isoformat(), 'coverage_complete':False}, []
+    original=store.put(raw,mime)
     page=discover(decode_public_html(raw),final)
     directory=payload.get('page_type')=='directory'
     value={'source_url':canonical_url(final),'source':payload['source']['key'],'source_family':payload['source']['family'],
       'source_published_at':None if directory else page['source_published_at'],'text':page['text'] if HIRING.search(page['title']+' '+page['text']) else '',
-      'complete':len(page['text'])<14000,'sha256':hashlib.sha256(raw).hexdigest(),'title':page['title']}
+      'complete':len(page['text'])<14000,'sha256':original,'html_object_sha256':original,
+      'capture_slot':int(now.timestamp()//14400),'title':page['title']}
     archive=json_blob(store,{**value,'page_last_published_at':page['source_published_at'],'page_type':'directory' if directory else 'notice'})
     children=[];date=parse_date(page['source_published_at'])
     old=date and now-date>dt.timedelta(days=45)
-    if value['text'] and not directory:children.append(('evaluate',value['source_url']+':'+value['sha256'],value))
+    suffix=':'+str(value['capture_slot'])+':v4'
+    if value['text'] and not directory:children.append(('evaluate',value['source_url']+':'+value['sha256']+suffix,value))
     if directory or not old:
         parser=Document();parser.feed(decode_public_html(raw))
         candidates=list(page['candidates'])
@@ -94,14 +100,16 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
         candidates=list({row['url']:row for row in candidates}.values())
         for candidate in candidates[:6]:
             target=canonical_url(candidate['url'])
-            if MEDIA.search(target) and media_allowed(target,final):children.append(('media',target,{**value,'media_url':target}))
+            if MEDIA.search(target) and media_allowed(target,final):children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
             elif same_publisher(target,final) and payload.get('depth',0)<1:
-                children.append(('web',target,{'url':target,'source':payload['source'],'depth':1,'page_type':'notice'}))
-        if value['text']:
+                children.append(('web',target+suffix,{'url':target,'source':payload['source'],'depth':1,'page_type':'notice'}))
+        if value['text'] or not directory:
             for target in page['images'][:8]:
-                if media_allowed(target,final) and not re.search(r'logo|avatar|icon|banner|favicon|slider',target,re.I):
-                    children.append(('media',value['source_url']+':'+target,{**value,'media_url':target}))
-    return {'status':'captured','source_url':final,'archive':archive,'source_published_at':value['source_published_at'],
+                relevant=value['text'] or HIRING.search(target+' '+page['image_labels'].get(target,''))
+                if relevant and media_allowed(target,final) and not re.search(r'logo|avatar|icon|banner|favicon|slider',target,re.I):
+                    children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
+    return {'status':'captured','source_url':final,'archive':archive,'html_object_sha256':original,
+            'captured_at':now.isoformat(),'capture_slot':value['capture_slot'],'source_published_at':value['source_published_at'],
             'page_last_published_at':page['source_published_at'],'page_type':'directory' if directory else 'notice',
             'discovered':len(children),'old_source':bool(old),'coverage_complete':False},children
 
@@ -124,7 +132,8 @@ def media_work(store,payload,budget,fetcher=fetch_public):
         count=re.search(r'^Pages:\s*(\d+)',value.stdout,re.M);pages=int(count[1]) if count else 0
         if not 1<=pages<=40:return {'status':'pending','reason':'document_page_budget_exceeded','archive':digest},[]
     else:pages=1
-    children=[('page',origin+':'+digest+':'+str(page),{**base,'page':page,'pages':pages}) for page in range(1,pages+1)]
+    children=[('page',origin+':'+digest+':'+str(page)+':'+str(payload.get('capture_slot','legacy')),
+               {**base,'page':page,'pages':pages}) for page in range(1,pages+1)]
     return {'status':'downloaded','archive':digest,'bytes':len(raw),'page_count':pages},children
 
 
@@ -167,9 +176,9 @@ def assemble_documents(store,now):
     documents={}
     for row in store.results():
         if row['kind']!='page':continue
-        payload=row['payload'];group=documents.setdefault((payload['source_url'],payload['object_sha256']),{'payload':payload,'pages':[]})
+        payload=row['payload'];group=documents.setdefault((payload['source_url'],payload['object_sha256'],payload.get('capture_slot')),{'payload':payload,'pages':[]})
         group['pages'].append(row)
-    for (_,digest),group in documents.items():
+    for (_,digest,slot),group in documents.items():
         payload=group['payload'];pages=group['pages']
         if len(pages)!=payload['pages'] or any(row['status']!='done' for row in pages):continue
         values=[json.loads(store.object(row['result']['archive']).read_text()) for row in sorted(pages,key=lambda row:row['payload']['page'])]
@@ -178,7 +187,7 @@ def assemble_documents(store,now):
         verification_url=payload.get('verification_source_url')
         if not verification_url and payload.get('media_url') and source_adapter(payload['media_url']) and source_adapter(payload['media_url'])['family']=='local':verification_url=canonical_url(payload['media_url'])
         verification_url=verification_url or payload['source_url']
-        store.seed('evaluate',verification_url+':'+digest+':v2',{**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
+        store.seed('evaluate',verification_url+':'+digest+':'+str(slot)+':v3',{**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
 
 
 def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public):
@@ -187,7 +196,7 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
     if config.get('paid_providers_enabled') is not False or config.get('publish_enabled') is not False:raise ValueError('Pilot must remain isolated and free')
     slot=int(now.timestamp()//14400)
     for source in config['sources']:
-        if source['kind']=='web':store.seed('web',source['key']+':'+str(slot)+':v3',{'url':source['url'],'source':source,'depth':0,'page_type':source.get('page_type','notice')},now)
+        if source['kind']=='web':store.seed('web',source['key']+':'+str(slot)+':v4',{'url':source['url'],'source':source,'depth':0,'page_type':source.get('page_type','notice')},now)
     for capture in social.get('captures',[]):
         digest=json_blob(store,capture)
         store.seed('social',capture['key']+':'+str(slot)+':'+digest,{'source_key':capture['key'],'archive':digest},now)
@@ -201,7 +210,10 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
             if job['kind']=='web':result,children=web_work(store,job['payload'],budget,fetcher,now)
             elif job['kind']=='social':
                 capture=job['payload'].get('capture') or json.loads(store.object(job['payload']['archive']).read_text())
-                result,children={'status':'captured','archive':job['payload']['archive'],'posts':len(capture.get('posts',[]))},social_children(capture,now)
+                result,children={'status':'captured','archive':job['payload']['archive'],
+                    'access':capture.get('access'),'dated_posts':capture.get('dated_posts',0),
+                    'media_count':sum(len(post.get('media',[])) for post in capture.get('posts',[])),
+                    'posts':len(capture.get('posts',[]))},social_children(capture,now)
             elif job['kind']=='media':result,children=media_work(store,job['payload'],budget,fetcher)
             elif job['kind']=='page':result,children=page_work(store,job['payload'],budget)
             else:result,children=evaluate_work(store,job['payload'],now)
@@ -211,9 +223,10 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
     assemble_documents(store,now)
     evaluations=[row['result'] for row in store.results() if row['status']=='done' and
                  (row['kind']=='evaluate' or row['kind']=='web' and row['result'].get('source_family')=='official_control')]
-    ready=[row for row in evaluations if row.get('status')=='verified' and row.get('work_commune') in config['territories']]
+    diagnostics=describe(store.results(),config,now)
     report={'schema':'trabajo-cerca.radar-v2-pilot-result.v1','checked_at':now.isoformat(),'processed':processed,
-      'counts':store.counts(),'eligible_local_notices':len(ready),'evaluated':len(evaluations),'evaluations':evaluations,
+      'counts':store.counts(),'eligible_local_notices':diagnostics['eligible_hard_source_notices'],
+      **diagnostics,'evaluated':len(evaluations),'evaluations':evaluations,
       'paid_provider_calls':0,'published':0,'publication_confirmed':False,'production_modified':False,
       'coverage_complete':False,'independent_reference_count':len(config.get('independent_reference',[])),
       'recall_measured':False,'seven_day_observation_complete':False}
@@ -267,16 +280,20 @@ def main():
     root=Path('state/radar-v2');parent=restore_git(root);store=PilotStore(root)
     try:
         config=json.loads(CONFIG.read_text());social=json.loads((output/'social-observation.json').read_text())
-        first=run(store,config,social)
-        second=run(store,config,social,limit=18)
+        first=run(store,config,social,budget=Budget(180))
+        second=run(store,config,social,limit=18,budget=Budget(180))
         # Finish already downloaded evidence without opening another source or browser.
-        drain=run(store,{**config,'sources':[]},{'captures':[]},limit=40)
+        drain=run(store,{**config,'sources':[]},{'captures':[]},limit=40,budget=Budget(180))
         write_json(output/'first-pass.json',first);write_json(output/'second-pass.json',second)
+        # Drain intentionally has no seed sources, but the final diagnostics must keep the catalog.
+        diagnostics=describe(store.results(),config,utcnow())
+        write_json(output/'source-diagnostics.json',diagnostics)
+        write_json(output/'review-queue.json',diagnostics['review_queue'])
         write_json(output/'drain-pass.json',drain)
         write_json(output/'work-inventory.json',{'jobs':store.results()})
         manifest=store.snapshot(output/'backup')
-        commit=push_snapshot(store,manifest,output/'backup',os.environ['GITHUB_RUN_ID'],parent,{'first-pass.json':first,'second-pass.json':second,'drain-pass.json':drain})
-        print('RADAR_V2_PILOT '+json.dumps({'data_commit':commit,'first':{key:value for key,value in first.items() if key!='evaluations'},'second':{key:value for key,value in second.items() if key!='evaluations'},'drain':{key:value for key,value in drain.items() if key!='evaluations'}},ensure_ascii=False))
+        commit=push_snapshot(store,manifest,output/'backup',os.environ['GITHUB_RUN_ID'],parent,{'first-pass.json':first,'second-pass.json':second,'drain-pass.json':drain,'source-diagnostics.json':diagnostics})
+        print('RADAR_V2_PILOT '+json.dumps({'data_commit':commit,'first':{key:value for key,value in first.items() if key not in ('evaluations','review_queue','source_diagnostics')},'second':{key:value for key,value in second.items() if key not in ('evaluations','review_queue','source_diagnostics')},'drain':{key:value for key,value in drain.items() if key not in ('evaluations','review_queue','source_diagnostics')}},ensure_ascii=False))
     finally:store.close()
 
 

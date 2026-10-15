@@ -48,16 +48,32 @@ def revalidate(pilot, row, rows, now):
     adapter = source_adapter(url)
     if not adapter or adapter['family'] != 'local':
         raise ValueError('social_or_employer_publication_bridge_not_validated')
+    html = payload.get('html_object_sha256') if not payload.get('object_sha256') else None
+    if html:
+        captures = [item for item in rows if item['kind'] == 'web' and item['status'] == 'done'
+                    and item['result'].get('html_object_sha256') == html
+                    and item['result'].get('source_url') == url
+                    and item['result'].get('page_type') == 'notice'
+                    and item['result'].get('capture_slot') == payload.get('capture_slot')]
+        if not captures:
+            raise ValueError('original_html_capture_missing')
+        captured = min(fresh_time(item['result'].get('captured_at'), now) for item in captures)
+        page = radar_v2_pilot.discover(decode_public_html(pilot.object(html).read_bytes()), url)
+        result = local_history.verify_notice(page['text'], url, page['source_published_at'],
+            sha256=html, complete=len(page['text']) < 14000, now=now)
+        return result, min(completed, captured), html
     digest = payload.get('object_sha256')
     pilot.object(digest)
     origin = payload.get('publisher_page') or url
     media = [item for item in rows if item['kind'] == 'media' and item['status'] == 'done'
-             and item['result'].get('archive') == digest and item['payload']['source_url'] == origin]
+             and item['result'].get('archive') == digest and item['payload']['source_url'] == origin
+             and item['payload'].get('capture_slot') == payload.get('capture_slot')]
     if not media:
         raise ValueError('original_document_download_missing')
     captured = min(fresh_time(item.get('completed_at'), now) for item in media)
     pages = [item for item in rows if item['kind'] == 'page'
-             and item['payload'].get('object_sha256') == digest and item['payload']['source_url'] == origin]
+             and item['payload'].get('object_sha256') == digest and item['payload']['source_url'] == origin
+             and item['payload'].get('capture_slot') == payload.get('capture_slot')]
     count = payload.get('original_page_count')
     if (not isinstance(count, int) or not 1 <= count <= 40 or len(pages) != count
             or any(item['status'] != 'done' for item in pages)

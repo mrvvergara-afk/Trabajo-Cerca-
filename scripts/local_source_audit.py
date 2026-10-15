@@ -34,6 +34,7 @@ class Document(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.title, self.body, self.links, self.images, self.dates = '', [], [], [], []
+        self.image_labels = {}
         self.in_title, self.skip, self.href, self.label = False, [], None, []
         self.ld, self.script, self.schemas = False, [], []
         self.article_depth = 0
@@ -61,7 +62,10 @@ class Document(HTMLParser):
                     self.links.append((attrs['src'],'Facebook'))
             except ValueError: pass
         if tag == 'img':
-            if attrs.get('src'): self.images.append(attrs['src'])
+            image = attrs.get('data-src') or attrs.get('data-lazy-src') or attrs.get('src')
+            if image:
+                self.images.append(image)
+                self.image_labels[image] = attrs.get('alt') or ''
             if self.href and attrs.get('alt'): self.label.append(attrs['alt'])
 
     def handle_endtag(self, tag):
@@ -147,6 +151,7 @@ def discover(raw, url):
     return {'title':parser.title.strip()[:300],'text':body[:14000],
             'candidates':list(candidates.values())[:12], 'public_social_links':sorted(social)[:12],
             'images':list(dict.fromkeys(urllib.parse.urljoin(url,image) for image in parser.images))[:20],
+            'image_labels':{urllib.parse.urljoin(url,image):label for image,label in list(parser.image_labels.items())[:20]},
             'source_published_at':next(iter(dates)) if len(dates)==1 else None}
 
 

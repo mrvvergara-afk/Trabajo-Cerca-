@@ -38,7 +38,9 @@ class PilotPublicationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             pilot, history = PilotStore(root / 'pilot'), State(root / 'history.sqlite3')
-            self.assertEqual(capture(pilot)['eligible_local_notices'], 1)
+            metrics = capture(pilot)
+            self.assertEqual(metrics['eligible_local_notices'], 0)
+            self.assertEqual(metrics['eligible_official_controls'], 1)
             queue, report = radar_v2_publish.prepare(pilot, history, root, now=NOW)
             self.assertEqual(queue['ready_count'], 1)
             offer = queue['records'][0]

@@ -85,7 +85,11 @@ def verify_notice(text, source_url, published_at, *, sha256, complete=True, now=
     if set(places)=={'Mininco','Collipulli'}:places=['Mininco']
     if len(roles)>1 or len(companies)>1:return {**result,'reason':'multiple_notices_require_separation'}
     if NON_JOB.search(text) or not HIRING.search(text):return {**result,'reason':'job_notice_unconfirmed'}
-    if fields['missing'] or len(places)!=1 or not deadline or not re.fullmatch('[a-f0-9]{64}',sha256):return result
+    blockers = list(fields['missing'])
+    if len(places)!=1:blockers.append('lugar_unico_sin_confirmar')
+    if not deadline:blockers.append('plazo_explicito_sin_confirmar')
+    if not re.fullmatch('[a-f0-9]{64}',sha256):blockers.append('original_sin_hash_valido')
+    if blockers:return {**result,'review_blockers':blockers}
     email = fields['emails'][0] if fields['emails'] else None
     phones = {re.sub(r'\D','',value) for value in fields['phones']}
     phones = {'56'+value if len(value)==9 else value for value in phones}

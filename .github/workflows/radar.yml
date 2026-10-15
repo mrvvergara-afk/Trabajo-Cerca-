@@ -11,7 +11,7 @@ on:
         type: boolean
         default: false
       radar_v2_pilot:
-        description: 'Probar el radar aislado de Renaico y Negrete sin publicar ni usar proveedores pagos'
+        description: 'Diagnosticar fuentes de las nueve comunas sin publicar ni usar proveedores pagos'
         type: boolean
         default: false
       radar_v2_handoff:

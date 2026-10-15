@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Sitio Oficial Municipalidad de Mulchén">
+        <title> oferta laboral | Resultados de la búsqueda  | </title>
+        <link rel="stylesheet" href="https://unpkg.com/flickity-fade@1/flickity-fade.css">
+        <meta name='robots' content='noindex, follow, max-image-preview:large' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='ui-font-css' href='https://www.munimulchen.cl/wp-content/plugins/wp-accessibility/toolbar/fonts/css/a11y-toolbar.css' media='all' />
+<link rel='stylesheet' id='wpa-toolbar-css' href='https://www.munimulchen.cl/wp-content/plugins/wp-accessibility/toolbar/css/a11y.css' media='all' />
+<link rel='stylesheet' id='wpa-style-css' href='https://www.munimulchen.cl/wp-content/plugins/wp-accessibility/css/wpa-style.css' media='all' />
+<style id="wpa-style-inline-css">
+
+.wpa-visible-ltr#skiplinks a,  .wpa-visible-ltr#skiplinks a:visited {
+	
+}
+.wpa-visible-ltr#skiplinks a:active, .wpa-visible-ltr#skiplinks a:hover, .wpa-visible-ltr#skiplinks a:focus {
+	
+}
+	:root { --admin-bar-top : 7px; }
+/*# sourceURL=wpa-style-inline-css */
+</style>
+<link rel='stylesheet' id='animate_css-css' href='https://www.munimulchen.cl/wp-content/themes/mulchen/css/animate.css' media='all' />
+<link rel='stylesheet' id='hover_css-css' href='https://www.munimulchen.cl/wp-content/themes/mulchen/css/hover.css' media='all' />
+<link rel='stylesheet' id='flickyti_mulchen-css' href='https://www.munimulchen.cl/wp-content/themes/mulchen/css/flickity-docs.css' media='all' />
+<link rel='stylesheet' id='style_mulchen-css' href='https://www.munimulchen.cl/wp-content/themes/mulchen/css/stylos.css' media='' />
+<link rel='stylesheet' id='style_grid-css' href='https://www.munimulchen.cl/wp-content/themes/mulchen/css/grid.css' media='' />
+<link rel='stylesheet' id='google-font2-css' href='https://fonts.googleapis.com/css?family=Montserrat%3A100%2C300%2C400%2C700%2C800&#038;display=swap' media='all' />
+<script id="jquery-core-js" src="https://www.munimulchen.cl/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="https://www.munimulchen.cl/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="script_mulchen-js" src="https://www.munimulchen.cl/wp-content/themes/mulchen/js/codigos.js"></script>
+<script id="iconos_mulchen-js" src="https://www.munimulchen.cl/wp-content/themes/mulchen/js/c1586e8790.js"></script>
+<style class="wp-fonts-local">
+@font-face{font-family:Montserrat;font-style:normal;font-weight:100;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:200;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:300;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:400;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:500;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:600;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:700;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:800;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:normal;font-weight:900;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w7Y3tcoqK5.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:100;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R8aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:200;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR9aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:300;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq_p9aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:400;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R9aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:500;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq5Z9aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:600;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq3p6aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:700;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq0N6aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:800;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR6aXp-p7K5ILg.woff2') format('woff2');}
+@font-face{font-family:Montserrat;font-style:italic;font-weight:900;font-display:fallback;src:url('https://www.munimulchen.cl/wp-content/uploads/fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqw16aXp-p7K5ILg.woff2') format('woff2');}
+</style>
+<link rel="icon" href="https://www.munimulchen.cl/wp-content/uploads/2025/02/cropped-BASE-05-01-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.munimulchen.cl/wp-content/uploads/2025/02/cropped-BASE-05-01-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.munimulchen.cl/wp-content/uploads/2025/02/cropped-BASE-05-01-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.munimulchen.cl/wp-content/uploads/2025/02/cropped-BASE-05-01-270x270.png" />
+        <style>
+    .single h1, .single h2, .single h3, .single h4, .single h5, .single h6 {
+    color: #245b8f;
+    }
+    h3.titulo-pequeno-azul {
+
+    color:#245b8f;
+
+    }
+    .info-item-list h3{ color:#245b8f;}
+    .contendor-tramits .item-botonera-menu li a {
+    color:#245b8f;
+
+    }
+    .cel-carru .carousel-cell {
+    background:#0a3156;
+    }
+    .noticia-destacada-seccion {
+    background:#0a3156;
+    }
+    @media (max-width: 812px){
+    .header {
+    background: #0a3156;
+    }
+    .head-notonera.mobil {
+    background: #0a3156;
+    }
+    a.flot {
+    background: #f15a3d;
+    }
+    ul.botones li a.boton.activo {
+    background: #f15a3d;
+    }
+    .item-botonera-menu li:hover {
+    background:#f15a3d;
+    }
+    a.up {
+    background: #f15a3d;
+    }
+                }
+    </style>
+</head>
+<body>
+   <div class="buscador">
+      <div class="contenedor-buscador">
+          <div class="close_buscador"><i class="fas fa-times"></i></div>
+          <div class="indica">Busca entre los contenidos de nuestro sitio web.</div>
+           [wpdreams_ajaxsearchpro id=1]           
+      </div>
+      
+   </div>
+    
+
+    <div class="botonera" style="background:#0a3156;">
+       <div class="head-notonera mobil">
+           <div class="contenedor-head">
+               <div class="menu">Menú de navegación</div>
+               <a href="#" class="cerrar">&#10005; Cerrar</a>
+           </div>
+       </div>
+        <ul class="botones">
+                                              <li><a href="https://www.munimulchen.cl" class="boton2">Inicio</a></li>
+                  
+                                              <li><a href="#dos" class="boton">Municipalidad </a></li> 
+                <div class="nivel-botones" id="dos" style="background:#0a3156">
+                   <a href="#" class="flot">Municipalidad </a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Municipalidad  <strong>de Mulchén</strong>                            </div>
+                            <div class="desc-botonera">
+                               Toda la información y actividades municipalidades están aquí. 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-municipalidad" class="navigation"><li id="menu-item-285" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-285"><a href="https://www.munimulchen.cl/saludos-alcalde/">Saludos Alcalde<i class="fas fa-hand-sparkles"></i></a></li>
+<li id="menu-item-426" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-426"><a href="https://www.munimulchen.cl/concejo-municipal/">Concejo Municipal<i class="fas fa-users"></i></a></li>
+<li id="menu-item-289" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-289"><a href="https://www.munimulchen.cl/mision-vision/">Misión, Visión<i class="fas fa-landmark"></i></a></li>
+<li id="menu-item-425" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-425"><a href="https://www.munimulchen.cl/nuestros-valores/">Nuestros valores<i class="fab fa-angellist"></i></a></li>
+<li id="menu-item-430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-430"><a href="https://www.munimulchen.cl/departamentos-municipales/">Direcciones Municipales<i class="fal fa-building"></i></a></li>
+<li id="menu-item-39" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39"><a href="https://www.munimulchen.cl/salud">Salud<i class="fas fa-user-nurse"></i></a></li>
+<li id="menu-item-2850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2850"><a href="https://www.munimulchen.cl/planificacion-comunal/">Planificación Comunal<i class="fas fa-map"></i></a></li>
+<li id="menu-item-11575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11575"><a href="https://www.munimulchen.cl/estados-financieros/">Estados Financieros</a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#nueve" class="boton">Concejo Municipal</a></li> 
+                <div class="nivel-botones" id="nueve" style="background:#0a3156">
+                   <a href="#" class="flot">Concejo Municipal</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Concejo Municipal Mulchén                            </div>
+                            <div class="desc-botonera">
+                               Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-menu-concejo-municipal" class="navigation"><li id="menu-item-6499" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6499"><a href="https://www.munimulchen.cl/concejo-municipal/">Concejo Municipal</a></li>
+<li id="menu-item-6498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6498"><a href="https://www.munimulchen.cl/sesiones-concejo-municipal/">Sesiones Concejo Municipal</a></li>
+<li id="menu-item-6500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6500"><a href="https://www.munimulchen.cl/actas-del-concejo-municipal-de-mulchen/">Actas del Concejo Municipal de Mulchén</a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#uno" class="boton">Trámites</a></li> 
+                <div class="nivel-botones" id="uno" style="background:#0a3156">
+                   <a href="#" class="flot">Trámites</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Trámites <strong>Municipales</strong>                            </div>
+                            <div class="desc-botonera">
+                               Revisa aquí todos los trámites disponibles en la municipalidad. 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-menu-tramites" class="navigation"><li id="menu-item-90" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-90"><a href="https://portalweb.insico.cl/Mulchen/Permisos/">Permisos de Circulación<i class="fas fa-car-side"></i></a></li>
+<li id="menu-item-94" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-94"><a href="https://domenlinea.minvu.cl/">Certificados Dirección de Obras<i class="far fa-file-check"></i></a></li>
+<li id="menu-item-11728" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11728"><a href="https://portalweb.insico.cl/Mulchen/Aseo/">Derechos de Aseo Domiciliario<i class="fa-solid fa-trash"></i></a></li>
+<li id="menu-item-12072" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12072"><a href="https://www.munimulchen.cl/permisos-municipales-para-eventos/">Permisos Municipales</a></li>
+<li id="menu-item-14083" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14083"><a href="https://portal2.insico.cl/Mulchen/MultasTAG/">Multas TAG</a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#seguridad" class="boton">Seguridad</a></li> 
+                <div class="nivel-botones" id="seguridad" style="background:#0a3156">
+                   <a href="#" class="flot">Seguridad</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Mulchén  <strong>seguro</strong>                            </div>
+                            <div class="desc-botonera">
+                               Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-menu-seguridad" class="navigation"><li id="menu-item-752" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-752"><a href="https://www.munimulchen.cl/seguridad-2/">Seguridad<i class="far fa-siren-on"></i></a></li>
+<li id="menu-item-749" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-749"><a href="https://www.munimulchen.cl/senda-previene/">Senda Previene<i class="fas fa-user-secret"></i></a></li>
+<li id="menu-item-750" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-750"><a href="https://www.munimulchen.cl/centro-de-la-mujer/">Centro de la Mujer<i class="fas fa-female"></i></a></li>
+<li id="menu-item-751" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-751"><a href="https://www.munimulchen.cl/opd/">OLN<i class="fas fa-child"></i></a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#turismo" class="boton">Turismo</a></li> 
+                <div class="nivel-botones" id="turismo" style="background:#0a3156">
+                   <a href="#" class="flot">Turismo</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Mulchén  <strong>turístico</strong>                            </div>
+                            <div class="desc-botonera">
+                               Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-botonera-de-turismo" class="navigation"><li id="menu-item-961" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-961"><a href="https://www.munimulchen.cl/turismo-local/">Turismo Local<i class="fas fa-monument"></i></a></li>
+<li id="menu-item-963" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-963"><a href="https://www.munimulchen.cl/principales-atractivos-turisticos/">Principales Atractivos Turísticos<i class="fas fa-compass"></i></a></li>
+<li id="menu-item-960" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-960"><a href="https://www.munimulchen.cl/turismo-patrimonial/">Turismo Patrimonial<i class="fas fa-map-marked-alt"></i></a></li>
+<li id="menu-item-962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-962"><a href="https://www.munimulchen.cl/servicios-turisticos/">Servicios Turísticos<i class="fas fa-building"></i></a></li>
+<li id="menu-item-2001" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2001"><a href="https://www.munimulchen.cl/turismo-local/">Página Web Turismo<i class="fas fa-spider-web"></i></a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#ambiente" class="boton">Medio Ambiente</a></li> 
+                <div class="nivel-botones" id="ambiente" style="background:#0a3156">
+                   <a href="#" class="flot">Medio Ambiente</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Médio <strong>Ambiente</strong>                            </div>
+                            <div class="desc-botonera">
+                               Descubre toda la información sobre medio ambiente de la comuna aquí 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-medio-ambiente" class="navigation"><li id="menu-item-721" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-721"><a href="https://www.munimulchen.cl/medio-ambiente/">Medio Ambiente<i class="fas fa-leaf-heart"></i></a></li>
+<li id="menu-item-743" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-743"><a href="https://www.munimulchen.cl/sistema-de-reciclaje-municipal/">Sistema de Reciclaje Municipal<i class="fas fa-recycle"></i></a></li>
+<li id="menu-item-894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-894"><a href="https://www.munimulchen.cl/estrategia-ambiental-comunal/">Estrategia Ambiental Comunal<i class="fal fa-trash-alt"></i></a></li>
+<li id="menu-item-725" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-725"><a href="#">Ordenanzas ambientales<i class="fal fa-gavel"></i></a></li>
+<li id="menu-item-895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-895"><a href="https://www.munimulchen.cl/sistema-de-certificacion-ambiental-municipal-scam/">Sistema de Certificación Ambiental Municipal (SCAM)<i class="fal fa-passport"></i></a></li>
+<li id="menu-item-728" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-728"><a href="https://www.munimulchen.cl/category/medio-ambiente/">Noticias<i class="fal fa-newspaper"></i></a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#cultura" class="boton">Cultura y Recreación</a></li> 
+                <div class="nivel-botones" id="cultura" style="background:#0a3156">
+                   <a href="#" class="flot">Cultura y Recreación</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Cultura y recreación                            </div>
+                            <div class="desc-botonera">
+                               Descubre toda la información cultural de la comuna aquí 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-menu-de-cultura" class="navigation"><li id="menu-item-646" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-646"><a href="https://www.munimulchen.cl/cultura/">Cultura<i class="fas fa-palette"></i></a></li>
+<li id="menu-item-654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-654"><a href="https://www.munimulchen.cl/actividades-tradicionales/">Actividades Tradicionales<i class="fas fa-horse"></i></a></li>
+<li id="menu-item-655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-655"><a href="https://www.munimulchen.cl/biblioteca-municipal/">Biblioteca Municipal<i class="far fa-book"></i></a></li>
+<li id="menu-item-656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-656"><a href="https://www.munimulchen.cl/proyectos-culturales/">Proyectos culturales<i class="fas fa-paint-brush-alt"></i></a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#tres" class="boton">Noticias</a></li> 
+                <div class="nivel-botones" id="tres" style="background:#0a3156">
+                   <a href="#" class="flot">Noticias</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Toda la Actualidad                            </div>
+                            <div class="desc-botonera">
+                               Revisas las noticias de la Municipalidad de Mulchén 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-noticias" class="navigation"><li id="menu-item-131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-131"><a href="https://www.munimulchen.cl/noticias/">Todas las Noticias<i class="far fa-newspaper"></i></a></li>
+<li id="menu-item-137" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-137"><a href="https://www.munimulchen.cl/category/municipalidad/">Municipalidad<i class="fas fa-landmark"></i></a></li>
+<li id="menu-item-136" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-136"><a href="https://www.munimulchen.cl/category/mulchen-salud/">Mulchén Salud<i class="fas fa-stethoscope"></i></a></li>
+<li id="menu-item-135" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-135"><a href="https://www.munimulchen.cl/category/deporte/">Deporte<i class="fas fa-running"></i></a></li>
+<li id="menu-item-134" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-134"><a href="https://www.munimulchen.cl/category/cultura-y-recreacion/">Cultura<i class="fas fa-theater-masks"></i></a></li>
+<li id="menu-item-729" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-729"><a href="https://www.munimulchen.cl/category/medio-ambiente/">Medio Ambiente<i class="far fa-leaf"></i></a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                                              <li><a href="#cuatro" class="boton">Actividades</a></li> 
+                <div class="nivel-botones" id="cuatro" style="background:#0a3156">
+                   <a href="#" class="flot">Actividades</a>
+                    <div class="contenedor-botonera">
+                        <div class="iten-botonera">
+                            <div class="tit-botonera">
+                              Galerías de Actividades                            </div>
+                            <div class="desc-botonera">
+                               Revisa aquí los álbumes de todos de las actividades de la municipalidad 
+                            </div>
+                        </div>
+                        <div class="item-botonera-menu">
+                                                       <div class="nav"><ul id="menu-actividades-mulchen" class="navigation"><li id="menu-item-270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-270"><a href="https://www.munimulchen.cl/galerias/">Galerías de Imágenes<i class="far fa-image-polaroid"></i></a></li>
+<li id="menu-item-269" class="menu-item menu-item-type-taxonomy menu-item-object-galeria menu-item-269"><a href="https://www.munimulchen.cl/galeria/paseos-municipalidad/">Paseos Municipalidad<i class="far fa-camera"></i></a></li>
+<li id="menu-item-275" class="menu-item menu-item-type-taxonomy menu-item-object-galeria menu-item-275"><a href="https://www.munimulchen.cl/galeria/imagenes-turismo/">Imágenes turismo<i class="fas fa-image"></i></a></li>
+</ul></div>                        </div>
+                    </div>
+                </div>  
+                  
+                             
+        </ul>
+                    
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+               
+    </div>
+    
+    
+<div class="barra-iconos" style="background:#0a3156;">
+    <ul>
+        <li id="buscar"><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="https://www.facebook.com/munimulchen" target="_blank"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png" alt="Facebook"></a></li>
+        <li><a href="https://www.instagram.com/municipalidaddemulchen" target="_blank"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png" alt="Instagram"></a></li>
+        <li><a href="" target="_blank"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/twitter.png" alt="Twitter"></a></li>
+                        <li><a href="mailto:partes@munimulchen.cl" target="_blank"><i class="far fa-envelope"></i></a></li>
+            </ul>
+</div>
+<div class="contenedor-general">
+    <div class="header" id="header">
+    <div class="contenedor-header">
+        <div class="logo"><a href="https://www.munimulchen.cl"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo-trans.svg" alt=""></a></div>
+        <a href="" class="abrir">Menú</a>
+
+         <div class="logos-gobierno pc">
+            <a href="https://www.munimulchen.cl/informacion-elecciones-organizaciones-comunitarias/" target="_blank"><div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo1.jpg" alt=""></div></a>
+            <a href="https://www.leylobby.gob.cl/instituciones/MU177" target="_blank"> <div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo2.jpg" alt=""></div> </a>
+            <a href="https://www.portaltransparencia.cl/PortalPdT/web/guest/directorio-de-organismos-regulados?p_p_id=pdtorganismos_WAR_pdtorganismosportlet&orgcode=886b85e61cecd3f8ab5b545eccdc61ef" target="_blank"><div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo3.jpg" alt=""></div> </a>
+            <a href="https://www.portaltransparencia.cl/PortalPdT/directorio-de-organismos-regulados/?org=MU177" target="_blank"><div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo4.jpg" alt=""></div> </a> 
+        </div>
+      
+    </div>
+</div>
+</div>
+<div class="contenedor-logos-gob mobil">
+         <div class="logos-gobierno">
+            <a href="https://www.munimulchen.cl/informacion-elecciones-organizaciones-comunitarias/" target="_blank"><div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo1.jpg" alt=""></div></a>
+            <a href="https://www.leylobby.gob.cl/instituciones/MU177" target="_blank"> <div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo2.jpg" alt=""></div> </a>
+            <a href="https://www.portaltransparencia.cl/PortalPdT/web/guest/directorio-de-organismos-regulados?p_p_id=pdtorganismos_WAR_pdtorganismosportlet&orgcode=886b85e61cecd3f8ab5b545eccdc61ef" target="_blank"><div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo3.jpg" alt=""></div> </a>
+            <a href="https://www.portaltransparencia.cl/PortalPdT/directorio-de-organismos-regulados/?org=MU177" target="_blank"><div class="log -gob"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo4.jpg" alt=""></div> </a> 
+        </div>
+</div>
+	<main role="main">
+		<!-- section -->
+		<section>
+
+			     
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+    
+			   <div class="top-space"></div>
+			   <div class="contenedor">
+			       			   </div>  
+
+
+     
+      
+     
+
+			
+
+		</section>
+		<!-- /section -->
+	</main>
+
+	<div id="sidebar" role="complementary">
+		<ul>
+						<li>
+				<!-- search -->
+<form class="search" method="get" action="https://www.munimulchen.cl" role="search">
+	<input class="search-input" type="search" name="s" placeholder="Buscar productos" value="oferta laboral">
+	<button class="search-submit" type="submit" role="button"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/lupa2b.svg" alt=""></button>
+	<input type="hidden" value="product" name="post_type" id="post_type">
+</form>
+<!-- /search -->
+ 			</li>
+
+			<!-- Author information is disabled per default. Uncomment and fill in your details if you want to use it.
+			<li><h2>Autor</h2>
+			<p>A little something about you, the author. Nothing lengthy, just an overview.</p>
+			</li>
+			-->
+
+							<li>
+
+									<p>
+				Has buscado <strong>«oferta laboral»</strong> en el archivo del blog <a href="https://www.munimulchen.cl/">Municipalidad de Mulchén</a> . Si no consigues encontrar nada en estos resultados de búsqueda, puedes probar con uno de estos enlaces.				</p>
+
+			
+			</li>
+					</ul>
+		<ul role="navigation">
+				<li class="pagenav"><h2>Páginas</h2><ul><li class="page_item page-item-16826"><a href="https://www.munimulchen.cl/1ra-feria-gastronomica-y-expo-lana-mulchen-2026/">1ra Feria Gastronómica y Expo Lana Mulchén 2026</a></li>
+<li class="page_item page-item-9681"><a href="https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/">2° Versión Concursos Arreglos Navideños</a></li>
+<li class="page_item page-item-13545"><a href="https://www.munimulchen.cl/3-version-concursos-arreglos-navidenos/">3° Versión Concursos Arreglos Navideños</a></li>
+<li class="page_item page-item-8104"><a href="https://www.munimulchen.cl/3er-concurso-microcuentos-bureanos/">3er Concurso Microcuentos Bureanos</a></li>
+<li class="page_item page-item-10965"><a href="https://www.munimulchen.cl/4to-concurso-microcuentos-bureanos/">4to Concurso Microcuentos Bureanos</a></li>
+<li class="page_item page-item-16346"><a href="https://www.munimulchen.cl/5to-concurso-microcuentos-bureanos/">5to Concurso Microcuentos Bureanos</a></li>
+<li class="page_item page-item-3167"><a href="https://www.munimulchen.cl/actas-del-concejo-municipal-de-mulchen/">Actas del Concejo Municipal de Mulchén</a></li>
+<li class="page_item page-item-652"><a href="https://www.munimulchen.cl/actividades-tradicionales/">Actividades Tradicionales</a></li>
+<li class="page_item page-item-3592"><a href="https://www.munimulchen.cl/admisibilidad-cuentos/">ADMISIBILIDAD CUENTOS</a></li>
+<li class="page_item page-item-3252"><a href="https://www.munimulchen.cl/apadrina-un-arbol/">APADRINA UN ÁRBOL</a></li>
+<li class="page_item page-item-1240"><a href="https://www.munimulchen.cl/aprueba_tarifa_aseo/">Aprueba tarifa anual de extracción de basuras</a></li>
+<li class="page_item page-item-17259"><a href="https://www.munimulchen.cl/asociacion-de-municipalidades-de-chile/">Asociación de Municipalidades de Chile</a></li>
+<li class="page_item page-item-13976"><a href="https://www.munimulchen.cl/bases-concesion-local-y-banos-las-canoas/">Bases Concesión Local y Baños Las Canoas</a></li>
+<li class="page_item page-item-13366"><a href="https://www.munimulchen.cl/bases-concurso-alza-la-voz/">Bases Concurso Alza la Voz</a></li>
+<li class="page_item page-item-3268"><a href="https://www.munimulchen.cl/bases-concurso-de-cueca-adulto-mayor/">BASES CONCURSO DE CUECA ADULTO MAYOR</a></li>
+<li class="page_item page-item-13901"><a href="https://www.munimulchen.cl/bases-feria-navidena-2025/">Bases de Postulación Feria Navideña 2025</a></li>
+<li class="page_item page-item-12094"><a href="https://www.munimulchen.cl/bases-festival-de-la-voz-canta-juventud/">Bases Festival de la Voz «Canta Juventud»</a></li>
+<li class="page_item page-item-8574"><a href="https://www.munimulchen.cl/bases-festival-de-la-voz-las-voces-del-cochento-2025/">BASES FESTIVAL DE LA VOZ LAS VOCES DEL COCHENTO 2025</a></li>
+<li class="page_item page-item-9975"><a href="https://www.munimulchen.cl/bases-fiesta-de-las-tradiciones-2025/">Bases Fiesta de las Tradiciones 2025</a></li>
+<li class="page_item page-item-14618"><a href="https://www.munimulchen.cl/bases-fiesta-de-las-tradiciones-2026/">Bases Fiesta de las Tradiciones 2026</a></li>
+<li class="page_item page-item-3532"><a href="https://www.munimulchen.cl/bases-fonda-familiar-2023/">Bases FONDA FAMILIAR 2023</a></li>
+<li class="page_item page-item-8882"><a href="https://www.munimulchen.cl/bases-fonda-familiar-2024/">Bases FONDA FAMILIAR 2024</a></li>
+<li class="page_item page-item-12301"><a href="https://www.munimulchen.cl/bases-fonda-familiar-2025/">Bases Fonda Familiar 2025</a></li>
+<li class="page_item page-item-17497"><a href="https://www.munimulchen.cl/bases-fonda-familiar-2026/">Bases Fonda Familiar 2026</a></li>
+<li class="page_item page-item-13159"><a href="https://www.munimulchen.cl/bases-licitacion-publica-concesion-local-comercial-puesto-n2-mercado-municipal/">Bases Licitación Pública: Concesión Local Comercial Puesto N°2 Mercado Municipal</a></li>
+<li class="page_item page-item-10589"><a href="https://www.munimulchen.cl/beca-de-autocuidado-juvenil-2/">Beca de Autocuidado Juvenil</a></li>
+<li class="page_item page-item-9569"><a href="https://www.munimulchen.cl/becas-deportistas/">BECAS DEPORTISTAS</a></li>
+<li class="page_item page-item-2901"><a href="https://www.munimulchen.cl/becas-estudiantiles/">Becas Estudiantiles</a></li>
+<li class="page_item page-item-15549"><a href="https://www.munimulchen.cl/becas-estudiantiles-2026/">Becas Estudiantiles 2026</a></li>
+<li class="page_item page-item-650"><a href="https://www.munimulchen.cl/biblioteca-municipal/">Biblioteca Municipal</a></li>
+<li class="page_item page-item-1052"><a href="https://www.munimulchen.cl/cafeteria-salones-de-te-pasteleria/">Cafetería-Salones de Té-Pastelería</a></li>
+<li class="page_item page-item-11496"><a href="https://www.munimulchen.cl/caja-los-andes/">CAJA LOS ANDES</a></li>
+<li class="page_item page-item-11497"><a href="https://www.munimulchen.cl/calendario-mes-del-medio-ambientes/">Calendario Mes del Medio Ambiente</a></li>
+<li class="page_item page-item-8430"><a href="https://www.munimulchen.cl/capital-abeja-emprende-provincia-del-bio-bio/">Capital Abeja Emprende Provincia del Bio Bio</a></li>
+<li class="page_item page-item-8226"><a href="https://www.munimulchen.cl/capital-semilla-provincia-del-bio-bio/">Capital Semilla Emprende Provincia del Bio Bio</a></li>
+<li class="page_item page-item-10167"><a href="https://www.munimulchen.cl/capital-semilla-inicia/">Capital Semilla Inicia</a></li>
+<li class="page_item page-item-1040"><a href="https://www.munimulchen.cl/casa-de-pension/">Casa de Pensión</a></li>
+<li class="page_item page-item-7223"><a href="https://www.munimulchen.cl/censo-2024/">CENSO 2024</a></li>
+<li class="page_item page-item-984"><a href="https://www.munimulchen.cl/centro-de-la-mujer/">Centro de la Mujer</a></li>
+<li class="page_item page-item-9437"><a href="https://www.munimulchen.cl/charla-de-educacion-financiera-para-personas-mayores/">CHARLA DE EDUCACIÓN FINANCIERA PARA PERSONAS MAYORES</a></li>
+<li class="page_item page-item-1078"><a href="https://www.munimulchen.cl/comida-rapida/">Comida Rápida</a></li>
+<li class="page_item page-item-6732"><a href="https://www.munimulchen.cl/comisiones-electorales-fecha-de-elecciones-y-o-candidatos/">Comisiones Electorales, Fecha de Elecciones y/o Candidatos</a></li>
+<li class="page_item page-item-313"><a href="https://www.munimulchen.cl/concejo-municipal/">Concejo Municipal</a></li>
+<li class="page_item page-item-9605"><a href="https://www.munimulchen.cl/concejo-municipal-mulchen/">Concejo Municipal 2024</a></li>
+<li class="page_item page-item-4994"><a href="https://www.munimulchen.cl/concesion-electrica/">Concesión Eléctrica</a></li>
+<li class="page_item page-item-8501"><a href="https://www.munimulchen.cl/concurso-de-escritura/">Concurso de Escritura</a></li>
+<li class="page_item page-item-12087"><a href="https://www.munimulchen.cl/concurso-de-vitrinas-y-locales-comerciales-2025/">Concurso de Locales Comerciales 2025</a></li>
+<li class="page_item page-item-17534"><a href="https://www.munimulchen.cl/concurso-de-locales-comerciales-2026/">Concurso de Locales Comerciales 2026</a></li>
+<li class="page_item page-item-3327"><a href="https://www.munimulchen.cl/concurso-de-vitrinas-y-locales-comerciales-2023/">Concurso de Vitrinas y Locales Comerciales 2023</a></li>
+<li class="page_item page-item-8846"><a href="https://www.munimulchen.cl/concurso-de-vitrinas-y-locales-comerciales-2024/">Concurso de Vitrinas y Locales Comerciales 2024</a></li>
+<li class="page_item page-item-1625 page_item_has_children"><a href="https://www.munimulchen.cl/concurso-microcuentos-bureanos/">Concurso Microcuentos Bureanos</a>
+<ul class='children'>
+	<li class="page_item page-item-3063"><a href="https://www.munimulchen.cl/concurso-microcuentos-bureanos/bases-concurso-microcuentos/">BASES CONCURSO MICROCUENTOS</a></li>
+</ul>
+</li>
+<li class="page_item page-item-16813"><a href="https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/">Concurso Público &#8211; Abogado Centro de las Mujeres Mulchén</a></li>
+<li class="page_item page-item-14892"><a href="https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/">Concurso Público &#8211; Abogado para Centro de las Mujeres Mulchén</a></li>
+<li class="page_item page-item-15399"><a href="https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/">Concurso Público &#8211; Abogado para Dispositivo Centro de las Mujeres Mulchén</a></li>
+<li class="page_item page-item-10652"><a href="https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/">Concurso Público &#8211; Profesional Equipo Previene</a></li>
+<li class="page_item page-item-10726"><a href="https://www.munimulchen.cl/concurso-publico-psicologo-omil/">Concurso Público &#8211; Psicólogo OMIL</a></li>
+<li class="page_item page-item-1255"><a href="https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/">CONCURSO PÚBLICO 01 Cargo, Grado 8º Planta Directivos, Director de Obras Municipales</a></li>
+<li class="page_item page-item-8461"><a href="https://www.munimulchen.cl/concursonaturaleza-bajo-el-lente/">Concurso»Naturaleza Bajo el Lente»</a></li>
+<li class="page_item page-item-7845"><a href="https://www.munimulchen.cl/condiciones-sanitarias-ventas-de-pescados-y-mariscos/">Condiciones Sanitarias Ventas de Pescados y Mariscos</a></li>
+<li class="page_item page-item-5402"><a href="https://www.munimulchen.cl/conformacion-cosoc-comunal/">Conformación COSOC comunal</a></li>
+<li class="page_item page-item-1946"><a href="https://www.munimulchen.cl/nueva-constitucion/">Conoce la Propuesta Definitiva de la Nueva Constitución</a></li>
+<li class="page_item page-item-9478"><a href="https://www.munimulchen.cl/convocatoria-abierta/">CONVOCATORIA ABIERTA</a></li>
+<li class="page_item page-item-7677"><a href="https://www.munimulchen.cl/convocatoria-creacion-cooperativas/">Convocatoria Creación Cooperativas</a></li>
+<li class="page_item page-item-7685"><a href="https://www.munimulchen.cl/convocatoria-fortalecimiento-cooperativas/">Convocatoria Fortalecimiento Cooperativas</a></li>
+<li class="page_item page-item-5753"><a href="https://www.munimulchen.cl/cuarto-carnaval-navideno/">Cuarto Carnaval Navideño</a></li>
+<li class="page_item page-item-635"><a href="https://www.munimulchen.cl/cultura/">Cultura</a></li>
+<li class="page_item page-item-8479"><a href="https://www.munimulchen.cl/curso-comercializacion-y-ventas/">Curso Comercialización y Ventas</a></li>
+<li class="page_item page-item-8474"><a href="https://www.munimulchen.cl/curso-de-atencion-al-cliente/">Curso de Atención al Cliente</a></li>
+<li class="page_item page-item-7096"><a href="https://www.munimulchen.cl/curso-de-capacitacion-aguas-lluvias/">Curso de Capacitación Aguas Lluvias</a></li>
+<li class="page_item page-item-7019"><a href="https://www.munimulchen.cl/curso-de-capacitacion-educacion-financiera/">Curso de Capacitación Educación Financiera</a></li>
+<li class="page_item page-item-7013"><a href="https://www.munimulchen.cl/curso-de-capacitacion-emprendimiento/">Curso de Capacitación Emprendimiento</a></li>
+<li class="page_item page-item-13690"><a href="https://www.munimulchen.cl/curso-de-capacitacion-guardia-de-seguridad-os-10-presencial/">Curso de Capacitación Guardia de Seguridad OS-10 (Presencial)</a></li>
+<li class="page_item page-item-8788"><a href="https://www.munimulchen.cl/curso-de-capacitacion-pasteleria/">Curso de Capacitación Pastelería</a></li>
+<li class="page_item page-item-6904"><a href="https://www.munimulchen.cl/curso-de-capacitacion/">Curso de Capacitación Peluquería</a></li>
+<li class="page_item page-item-7588"><a href="https://www.munimulchen.cl/programa-yo-puedo/">Curso de Capacitación Yo Puedo</a></li>
+<li class="page_item page-item-9098"><a href="https://www.munimulchen.cl/curso-de-conducir-para-mujeres/">Curso de Conducir para Mujeres</a></li>
+<li class="page_item page-item-9375"><a href="https://www.munimulchen.cl/curso-formacion-para-cuidadores-de-personas-mayores/">Curso Formación para Cuidadores de Personas Mayores</a></li>
+<li class="page_item page-item-13265"><a href="https://www.munimulchen.cl/derechos-de-aseo/">Derechos de Aseo</a></li>
+<li class="page_item page-item-6887"><a href="https://www.munimulchen.cl/digitaliza-tu-almacen/">Digitaliza tu Almacén</a></li>
+<li class="page_item page-item-7500"><a href="https://www.munimulchen.cl/direcciones-juntas-de-vecinos-sector-rural/">Direcciones Juntas de Vecinos Sector Rural</a></li>
+<li class="page_item page-item-7479"><a href="https://www.munimulchen.cl/direcciones-juntas-de-vecinos/">Direcciones Juntas de Vecinos Sector Urbano</a></li>
+<li class="page_item page-item-427"><a href="https://www.munimulchen.cl/departamentos-municipales/">Direcciones Municipales</a></li>
+<li class="page_item page-item-6739"><a href="https://www.munimulchen.cl/directivas-juntas-vecinales-y-organizaciones-comunitarias/">Directivas Juntas Vecinales y Organizaciones Comunitarias</a></li>
+<li class="page_item page-item-7310"><a href="https://www.munimulchen.cl/documentos-cuentas-publicas/">Documentos Cuentas Públicas</a></li>
+<li class="page_item page-item-7520"><a href="https://www.munimulchen.cl/documentos-de-planificacion-comunal-doc/">Documentos de Planificación Comunal (doc)</a></li>
+<li class="page_item page-item-7521"><a href="https://www.munimulchen.cl/documentos-de-planificacion-comunal-tarjetas/">Documentos de Planificación Comunal (tarjetas)</a></li>
+<li class="page_item page-item-7249"><a href="https://www.munimulchen.cl/documentos-importantes-documentos-organizaciones-comunitarias/">Documentos Importantes (Documentos Organizaciones Comunitarias)</a></li>
+<li class="page_item page-item-3424"><a href="https://www.munimulchen.cl/educacion/">Educación</a></li>
+<li class="page_item page-item-7121"><a href="https://www.munimulchen.cl/elecciones-juntas-de-vecinos-2/">Elecciones Juntas de Vecinos 2 (preguntas y respuestas)</a></li>
+<li class="page_item page-item-9440"><a href="https://www.munimulchen.cl/escuela-de-lideres-ambientales/">ESCUELA DE LIDERES AMBIENTALES</a></li>
+<li class="page_item page-item-551"><a href="https://www.munimulchen.cl/esta-pagina-es-de-prueba/">Esta página es de prueba</a></li>
+<li class="page_item page-item-1232"><a href="https://www.munimulchen.cl/valor_licencia_clase_c/">Establece valor Licencia de conducir Clase C</a></li>
+<li class="page_item page-item-11572"><a href="https://www.munimulchen.cl/estados-financieros/">Estados Financieros</a></li>
+<li class="page_item page-item-864"><a href="https://www.munimulchen.cl/estrategia-ambiental-comunal/">Estrategia Ambiental Comunal</a></li>
+<li class="page_item page-item-6743"><a href="https://www.munimulchen.cl/fallos-tribunal-electoral-regional-respecto-a-organizaciones-de-mulchen/">Fallos Tribunal Electoral Regional Respecto a Organizaciones de Mulchén</a></li>
+<li class="page_item page-item-17584"><a href="https://www.munimulchen.cl/feria-de-emprendedores-desfile-fiestas-patrias/">Feria de Emprendedores &#8211; Desfile Fiestas Patrias</a></li>
+<li class="page_item page-item-9545"><a href="https://www.munimulchen.cl/festival-provincial-de-la-voz/">Festival Provincial de la Voz</a></li>
+<li class="page_item page-item-7789"><a href="https://www.munimulchen.cl/fondos-concursables-subvenciones-fndr-2024/">Fondos Concursables Subvenciones FNDR 2024</a></li>
+<li class="page_item page-item-263"><a href="https://www.munimulchen.cl/galerias/">Galerías</a></li>
+<li class="page_item page-item-3799"><a href="https://www.munimulchen.cl/ganadores-microcuentos/">Ganadores Microcuentos</a></li>
+<li class="page_item page-item-1492"><a href="https://www.munimulchen.cl/gas-con-descuento-para-nuestros-vecinos/">Gas con descuento para nuestros vecinos</a></li>
+<li class="page_item page-item-13703"><a href="https://www.munimulchen.cl/gobierno-en-terreno/">Gobierno en Terreno</a></li>
+<li class="page_item page-item-9331"><a href="https://www.munimulchen.cl/horario-buses-rurales/">Horario Buses Rurales</a></li>
+<li class="page_item page-item-1032"><a href="https://www.munimulchen.cl/hostales/">Hostales</a></li>
+<li class="page_item page-item-1028"><a href="https://www.munimulchen.cl/hoteles/">Hoteles</a></li>
+<li class="page_item page-item-7139"><a href="https://www.munimulchen.cl/informacion-elecciones-organizaciones-comunitarias/">Información Elecciones Juntas de Vecinos Mulchén (tarjetas)</a></li>
+<li class="page_item page-item-11730"><a href="https://www.munimulchen.cl/informacion-relevante/">Información Relevante</a></li>
+<li class="page_item page-item-61"><a href="https://www.munimulchen.cl/">Inicio</a></li>
+<li class="page_item page-item-8978"><a href="https://www.munimulchen.cl/instalaciones-electricas-fiestas-patrias-2024/">INSTALACIONES ELÉCTRICAS FIESTAS PATRIAS 2024</a></li>
+<li class="page_item page-item-2834"><a href="https://www.munimulchen.cl/instrumentos-de-planificacion-comunal/">Instrumentos de Planificación Comunal</a></li>
+<li class="page_item page-item-10352"><a href="https://www.munimulchen.cl/llamado-a-concurso-apoyo-familiar-integral/">Llamado a Concurso &#8211; Apoyo Familiar Integral</a></li>
+<li class="page_item page-item-1214"><a href="https://www.munimulchen.cl/llamado-a-concurso-interno/">LLAMADO A CONCURSO INTERNO</a></li>
+<li class="page_item page-item-1432"><a href="https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/">Llamado a Concurso para proveer cargo de Director de Control</a></li>
+<li class="page_item page-item-9224"><a href="https://www.munimulchen.cl/llamado-a-concurso-publico-3/">LLAMADO A CONCURSO PUBLICO</a></li>
+<li class="page_item page-item-10815"><a href="https://www.munimulchen.cl/llamado-a-concurso-publico/">LLAMADO A CONCURSO PUBLICO</a></li>
+<li class="page_item page-item-11558"><a href="https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/">LLAMADO A CONCURSO PUBLICO</a></li>
+<li class="page_item page-item-13940"><a href="https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/">Llamado a Concurso Público &#8211; Directivo Grado 6 E.M.R. (Dirección de Control Interno)</a></li>
+<li class="page_item page-item-16369"><a href="https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-terapeuta-ocupacional/">Llamado a Concurso Público &#8211; Profesional Terapeuta Ocupacional</a></li>
+<li class="page_item page-item-10292"><a href="https://www.munimulchen.cl/llamado-a-recepcion-de-antecedentes-monitor-a-comunal-del-programa-4-a-7/">Llamado a Recepción de Antecedentes &#8211; Monitor/a Comunal del Programa 4 a 7</a></li>
+<li class="page_item page-item-10145"><a href="https://www.munimulchen.cl/llamado-a-recepcion-de-antecedentes-profesional-programa-mujeres-jefas-de-hogar/">Llamado a Recepción de Antecedentes &#8211; Profesional Programa Mujeres Jefas de Hogar</a></li>
+<li class="page_item page-item-718"><a href="https://www.munimulchen.cl/medio-ambiente/">Medio Ambiente</a></li>
+<li class="page_item page-item-8621"><a href="https://www.munimulchen.cl/mes-de-la-prevencion-del-consumo-de-drogas/">Mes de la Prevención del Consumo de Drogas</a></li>
+<li class="page_item page-item-11701"><a href="https://www.munimulchen.cl/microtalleres-en-terreno/">Microtalleres en Terreno</a></li>
+<li class="page_item page-item-286"><a href="https://www.munimulchen.cl/mision-vision/">Misión, Visión</a></li>
+<li class="page_item page-item-4751"><a href="https://www.munimulchen.cl/nomina-espacios-publicos/">Nómina Espacios Públicos</a></li>
+<li class="page_item page-item-125"><a href="https://www.munimulchen.cl/noticias/">Noticias</a></li>
+<li class="page_item page-item-362"><a href="https://www.munimulchen.cl/nuestros-valores/">Nuestros valores</a></li>
+<li class="page_item page-item-11451"><a href="https://www.munimulchen.cl/oferta-laboral-02-operadores-de-cargador-frontal/">Oferta Laboral: 02 Operadores de Cargador Frontal</a></li>
+<li class="page_item page-item-11796"><a href="https://www.munimulchen.cl/oferta-laboral-03-operadores-de-secado-y-caldera/">Oferta Laboral: 03 Operadores de Secado y Caldera</a></li>
+<li class="page_item page-item-10885"><a href="https://www.munimulchen.cl/oferta-laboral-alarife/">Oferta Laboral: Alarife</a></li>
+<li class="page_item page-item-10689"><a href="https://www.munimulchen.cl/oferta-laboral-asistente-contable/">Oferta Laboral: Asistente Contable</a></li>
+<li class="page_item page-item-11919"><a href="https://www.munimulchen.cl/oferta-laboral-asistente-de-perecible-part-time-y-cajero/">Oferta Laboral: Asistente de Perecible (Part-Time) y Cajero</a></li>
+<li class="page_item page-item-14986"><a href="https://www.munimulchen.cl/oferta-laboral-asistentes-de-control-de-calidad/">Oferta Laboral: Asistentes de Control de Calidad</a></li>
+<li class="page_item page-item-14743"><a href="https://www.munimulchen.cl/oferta-laboral-ayudantes-de-maestro-y-maestros-carpinteros/">Oferta Laboral: Ayudantes de Maestro y Maestros Carpinteros</a></li>
+<li class="page_item page-item-8769"><a href="https://www.munimulchen.cl/oferta-laboral-comercio/">Oferta Laboral: Comercio</a></li>
+<li class="page_item page-item-17123"><a href="https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/">Oferta Laboral: Conductor Camión Tolva – Proyecto Rucalhue</a></li>
+<li class="page_item page-item-13286"><a href="https://www.munimulchen.cl/oferta-laboral-conductor-de-camion-aljibe/">Oferta Laboral: Conductor de Camión Aljibe</a></li>
+<li class="page_item page-item-13625"><a href="https://www.munimulchen.cl/oferta-laboral-conductor-profesional-licencia-a4/">Oferta Laboral: Conductor Profesional Licencia A4</a></li>
+<li class="page_item page-item-12357"><a href="https://www.munimulchen.cl/oferta-laboral-conductores-profesionales-con-corma/">Oferta Laboral: Conductores Profesionales con CORMA</a></li>
+<li class="page_item page-item-13645"><a href="https://www.munimulchen.cl/oferta-laboral-conductores-profesionales-licencia-a-4/">Oferta Laboral: Conductores profesionales Licencia A-4</a></li>
+<li class="page_item page-item-8551"><a href="https://www.munimulchen.cl/oferta-laboral-construccion/">Oferta Laboral: Construcción</a></li>
+<li class="page_item page-item-11791"><a href="https://www.munimulchen.cl/oferta-laboral-constructor-civil-o-ingeniero-civil/">Oferta Laboral: Constructor Civil o Ingeniero Civil</a></li>
+<li class="page_item page-item-17487"><a href="https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/">Oferta Laboral: Convocatoria Conaf &#8211; Temporada 2026-2027 (Brigadistas Forestales, Jefes de Brigada, Jefes de Cuadrilla, Motosierristas)</a></li>
+<li class="page_item page-item-11407"><a href="https://www.munimulchen.cl/oferta-laboral-cuidador-de-campo/">Oferta Laboral: Cuidador de Campo</a></li>
+<li class="page_item page-item-9183"><a href="https://www.munimulchen.cl/oferta-laboral-electrico-de-planta/">Oferta Laboral: Eléctrico de Planta</a></li>
+<li class="page_item page-item-10889"><a href="https://www.munimulchen.cl/oferta-laboral-electricos-2/">Oferta Laboral: Eléctricos 2</a></li>
+<li class="page_item page-item-10418"><a href="https://www.munimulchen.cl/oferta-laboral-electricos-en-mantencion/">Oferta Laboral: Eléctricos en mantención</a></li>
+<li class="page_item page-item-11457"><a href="https://www.munimulchen.cl/oferta-laboral-electricos-en-mantencion-2/">Oferta Laboral: Eléctricos en mantención 2</a></li>
+<li class="page_item page-item-17599"><a href="https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/">Oferta Laboral: Embalaje de Frutas</a></li>
+<li class="page_item page-item-13658"><a href="https://www.munimulchen.cl/oferta-laboral-empresa-agricola-varias-vacantes/">Oferta Laboral: Empresa Agrícola &#8211; varias vacantes</a></li>
+<li class="page_item page-item-10617"><a href="https://www.munimulchen.cl/oferta-laboral-empresa-agroindustrial/">Oferta Laboral: Empresa Agroindustrial</a></li>
+<li class="page_item page-item-14748"><a href="https://www.munimulchen.cl/oferta-laboral-encargado-de-huerto-de-cerezos/">Oferta Laboral: Encargado de Huerto de Cerezos</a></li>
+<li class="page_item page-item-8204"><a href="https://www.munimulchen.cl/oferta-encargado-de-perecibles/">Oferta Laboral: Encargado de Perecibles</a></li>
+<li class="page_item page-item-14990"><a href="https://www.munimulchen.cl/oferta-laboral-encargado-de-turno-seccion-packing/">Oferta Laboral: Encargado de Turno sección Packing</a></li>
+<li class="page_item page-item-8554"><a href="https://www.munimulchen.cl/oferta-laboral-guardia-de-seguridad-con-curso-os-10/">Oferta Laboral: Guardia de Seguridad con curso OS &#8211; 10</a></li>
+<li class="page_item page-item-10178"><a href="https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad/">Oferta Laboral: Guardias de Seguridad</a></li>
+<li class="page_item page-item-14745"><a href="https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad-con-os-10/">Oferta Laboral: Guardias de Seguridad Central Hidroeléctrica con OS-10</a></li>
+<li class="page_item page-item-11445"><a href="https://www.munimulchen.cl/oferta-laboral-guardia-de-seguridad-con-curso-os-10-2/">Oferta Laboral: Guardias de Seguridad con curso OS &#8211; 10</a></li>
+<li class="page_item page-item-13647"><a href="https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad-con-curso-os-10-vigente/">Oferta Laboral: Guardias de Seguridad con curso OS-10 vigente</a></li>
+<li class="page_item page-item-13628"><a href="https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad-con-curso-vigente/">Oferta Laboral: Guardias de Seguridad con curso vigente</a></li>
+<li class="page_item page-item-16482"><a href="https://www.munimulchen.cl/oferta-laboral-ingenieria-en-gestion-de-proyectos-ingenieria-civil-ingenieria-en-obras-hidraulicas-o-carrera-afin-proyecto-rucalhue/">Oferta Laboral: Ingeniería en Gestión de Proyectos / Ingeniería Civil / Ingeniería en Obras Hidráulicas o carrera afín – Proyecto Rucalhue</a></li>
+<li class="page_item page-item-10435"><a href="https://www.munimulchen.cl/oferta-laboral-ingeniero-civil/">Oferta Laboral: Ingeniero Civil</a></li>
+<li class="page_item page-item-16472"><a href="https://www.munimulchen.cl/oferta-laboral-jefe-de-despacho/">Oferta Laboral: Jefe de Despacho</a></li>
+<li class="page_item page-item-17601"><a href="https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/">Oferta Laboral: Jefe de Terreno</a></li>
+<li class="page_item page-item-9118"><a href="https://www.munimulchen.cl/oferta-laboral-labores-agricolas-y-cuidado-de-parcela/">Oferta Laboral: Labores Agrícolas y Cuidado de Parcela</a></li>
+<li class="page_item page-item-8445"><a href="https://www.munimulchen.cl/oferta-laboral-labores-de-campo-y-cuidado-de-parcela/">Oferta Laboral: Labores de campo y cuidado de parcela</a></li>
+<li class="page_item page-item-9460"><a href="https://www.munimulchen.cl/oferta-laboral-labores-de-campo-y-cuidado-de-parcela-2/">Oferta Laboral: Labores de campo y cuidado de parcela 2</a></li>
+<li class="page_item page-item-16478"><a href="https://www.munimulchen.cl/oferta-laboral-m1-enfierradores-12-cupos-proyecto-rucalhue/">Oferta Laboral: M1 Enfierradores (12 cupos) – Proyecto Rucalhue</a></li>
+<li class="page_item page-item-16476"><a href="https://www.munimulchen.cl/oferta-laboral-maestro-andamiero-04-cupos-proyecto-rucalhue/">Oferta Laboral: Maestro Andamiero (04 cupos) – Proyecto Rucalhue</a></li>
+<li class="page_item page-item-8447"><a href="https://www.munimulchen.cl/oferta-laboral-maestro-carpintero-y-albanil/">Oferta Laboral: Maestro Carpintero y Albañil</a></li>
+<li class="page_item page-item-16474"><a href="https://www.munimulchen.cl/oferta-laboral-maestro-de-primera-electrico-05-cupos-proyecto-rucalhue/">Oferta Laboral: Maestro de Primera Eléctrico (05 cupos) – Proyecto Rucalhue</a></li>
+<li class="page_item page-item-11786"><a href="https://www.munimulchen.cl/oferta-laboral-maestros-andamieros/">Oferta Laboral: Maestros Andamieros</a></li>
+<li class="page_item page-item-8211"><a href="https://www.munimulchen.cl/oferta-laboral-maestros-carpinteros/">Oferta Laboral: Maestros Carpinteros</a></li>
+<li class="page_item page-item-11626"><a href="https://www.munimulchen.cl/oferta-laboral-maestros-construccion/">Oferta Laboral: Maestros Construcción</a></li>
+<li class="page_item page-item-11638"><a href="https://www.munimulchen.cl/oferta-maestros-construccion-2/">Oferta Laboral: Maestros Construcción 2</a></li>
+<li class="page_item page-item-17234"><a href="https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/">Oferta Laboral: Manipulador de Alimentos / Chef / Maestro de Cocina (08 cupos)</a></li>
+<li class="page_item page-item-9576"><a href="https://www.munimulchen.cl/oferta-laboral-mecanico-y-electrico/">Oferta Laboral: Mecánico y Eléctrico</a></li>
+<li class="page_item page-item-11124"><a href="https://www.munimulchen.cl/oferta-laboral-medidor-y-conductor/">Oferta Laboral: Medidor y Conductor</a></li>
+<li class="page_item page-item-15758"><a href="https://www.munimulchen.cl/oferta-laboral-nutricionista/">Oferta Laboral: Nutricionista</a></li>
+<li class="page_item page-item-16309"><a href="https://www.munimulchen.cl/oferta-laboral-operador-bomba-telescopica-conductor-camion-mixer-y-mecanico-maquinaria-a-proyecto-rucalhue/">Oferta Laboral: Operador Bomba Telescópica, Conductor Camión Mixer y Mecánico Maquinaria A &#8211; Proyecto Rucalhue</a></li>
+<li class="page_item page-item-17119"><a href="https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/">Oferta Laboral: Operador Cargador Frontal – Proyecto Rucalhue</a></li>
+<li class="page_item page-item-10881"><a href="https://www.munimulchen.cl/oferta-laboral-operador-de-retroexcavadora-2-2/">Oferta Laboral: Operador de Bulldozer 2</a></li>
+<li class="page_item page-item-13283"><a href="https://www.munimulchen.cl/oferta-laboral-operador-de-maquinaria-pesada-retroexcavadora/">Oferta Laboral: Operador de Maquinaria Pesada (Retroexcavadora)</a></li>
+<li class="page_item page-item-8765"><a href="https://www.munimulchen.cl/oferta-laboral-operador-de-retroexcavadora/">Oferta Laboral: Operador de Retroexcavadora</a></li>
+<li class="page_item page-item-13295"><a href="https://www.munimulchen.cl/oferta-laboral-operador-de-retroexcavadora-3/">Oferta Laboral: Operador de Retroexcavadora</a></li>
+<li class="page_item page-item-9187"><a href="https://www.munimulchen.cl/oferta-laboral-operador-de-retroexcavadora-conductor-de-camion-tolva-y-conductor-de-camion-aljibe/">Oferta Laboral: Operador de Retroexcavadora , Conductor de Camión Tolva y Conductor de Camión Aljibe</a></li>
+<li class="page_item page-item-10877"><a href="https://www.munimulchen.cl/oferta-laboral-operador-de-retroexcavadora-2/">Oferta Laboral: Operador de Retroexcavadora 2</a></li>
+<li class="page_item page-item-8744"><a href="https://www.munimulchen.cl/oferta-laboral-operador-de-tractor/">Oferta Laboral: Operador de Tractor</a></li>
+<li class="page_item page-item-10682"><a href="https://www.munimulchen.cl/oferta-laboral-operador-grua-horquilla/">Oferta Laboral: Operador Grúa Horquilla</a></li>
+<li class="page_item page-item-10625"><a href="https://www.munimulchen.cl/oferta-laboral-operador-linea/">Oferta Laboral: Operador Línea Sorter y Cracker</a></li>
+<li class="page_item page-item-9181"><a href="https://www.munimulchen.cl/oferta-laboral-operador-a-de-secado-y-caldera/">Oferta Laboral: Operador/a de Secado y Caldera</a></li>
+<li class="page_item page-item-10431"><a href="https://www.munimulchen.cl/oferta-laboral-operadores-de-bulldozer/">Oferta Laboral: Operadores de Bulldozer</a></li>
+<li class="page_item page-item-10428"><a href="https://www.munimulchen.cl/oferta-laboral-operadores-de-camion-tolva/">Oferta Laboral: Operadores de Camión Tolva</a></li>
+<li class="page_item page-item-10424"><a href="https://www.munimulchen.cl/oferta-laboral-operadores-de-cargador-fontal/">Oferta Laboral: Operadores de Cargador Frontal</a></li>
+<li class="page_item page-item-14984"><a href="https://www.munimulchen.cl/oferta-laboral-operadores-de-grua-horquilla/">Oferta Laboral: Operadores de Grúa Horquilla</a></li>
+<li class="page_item page-item-11402"><a href="https://www.munimulchen.cl/oferta-laboral-operario-agricola/">Oferta Laboral: Operario Agrícola</a></li>
+<li class="page_item page-item-13634"><a href="https://www.munimulchen.cl/oferta-laboral-operarios-de-mantencion/">Oferta Laboral: Operarios de mantención</a></li>
+<li class="page_item page-item-13651"><a href="https://www.munimulchen.cl/oferta-laboral-operarios-de-mantencion-2/">Oferta Laboral: Operarios de Mantención</a></li>
+<li class="page_item page-item-8348"><a href="https://www.munimulchen.cl/oferta-laboral-otros-trabajos/">Oferta Laboral: Otros Trabajos</a></li>
+<li class="page_item page-item-9341"><a href="https://www.munimulchen.cl/oferta-laboral-parada-de-planta/">Oferta Laboral: Parada de Planta</a></li>
+<li class="page_item page-item-8413"><a href="https://www.munimulchen.cl/oferta-laboral-persona-con-experiencia-en-cuidado-de-adulto-mayor/">Oferta Laboral: Persona con experiencia en cuidado de adulto mayor</a></li>
+<li class="page_item page-item-15965"><a href="https://www.munimulchen.cl/oferta-laboral-personal-area-electrica-y-administrativa-empresa-de-ingenieria/">Oferta Laboral: Personal Área Eléctrica y Administrativa &#8211; Empresa de Ingeniería</a></li>
+<li class="page_item page-item-13631"><a href="https://www.munimulchen.cl/oferta-laboral-personal-para-cosecha-de-arandanos/">Oferta Laboral: Personal para Cosecha de Arándanos</a></li>
+<li class="page_item page-item-13649"><a href="https://www.munimulchen.cl/oferta-laboral-personal-para-cosecha-de-arandanos-2/">Oferta Laboral: Personal para cosecha de Arándanos</a></li>
+<li class="page_item page-item-16342"><a href="https://www.munimulchen.cl/oferta-laboral-personal-para-packing-embalaje-y-enzunchado-los-angeles/">Oferta Laboral: Personal para Packing &#8211; Embalaje y Enzunchado (Los Ángeles)</a></li>
+<li class="page_item page-item-13643"><a href="https://www.munimulchen.cl/oferta-laboral-personal-para-rubro-agricola/">Oferta Laboral: Personal para rubro agrícola</a></li>
+<li class="page_item page-item-13290"><a href="https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/">Oferta Laboral: Personal Temporada Agrícola (Packing y Cosecha de Arándanos)</a></li>
+<li class="page_item page-item-15968"><a href="https://www.munimulchen.cl/oferta-laboral-profesional-area-construccion-oficina-tecnica-mulchen/">Oferta Laboral: Profesional Área Construcción &#8211; Oficina Técnica (Mulchén)</a></li>
+<li class="page_item page-item-14741"><a href="https://www.munimulchen.cl/oferta-laboral-profesionales-oficina-tecnica/">Oferta Laboral: Profesionales Oficina Técnica</a></li>
+<li class="page_item page-item-13300"><a href="https://www.munimulchen.cl/oferta-laboral-psicologoa-trabajadora-social/">Oferta Laboral: Psicólogo(a) / Trabajador(a) Social</a></li>
+<li class="page_item page-item-13623"><a href="https://www.munimulchen.cl/oferta-laboral-rubro-agricola/">Oferta Laboral: Rubro Agrícola</a></li>
+<li class="page_item page-item-11623"><a href="https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa/">Oferta Laboral: Secretaria Administrativa</a></li>
+<li class="page_item page-item-17604"><a href="https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/">Oferta Laboral: Secretaria Administrativa Contable</a></li>
+<li class="page_item page-item-10685"><a href="https://www.munimulchen.cl/oferta-laboral-supervisor-a-de-proceso/">Oferta Laboral: Supervisor/a de Proceso</a></li>
+<li class="page_item page-item-16480"><a href="https://www.munimulchen.cl/oferta-laboral-tecnico-en-construccion-tecnico-en-obras-civiles-o-carrera-afin-proyecto-rucalhue/">Oferta Laboral: Técnico en Construcción, Técnico en Obras Civiles o carrera afín – Proyecto Rucalhue</a></li>
+<li class="page_item page-item-8410"><a href="https://www.munimulchen.cl/oferta-laboral-topografos/">Oferta Laboral: Topógrafos</a></li>
+<li class="page_item page-item-11926"><a href="https://www.munimulchen.cl/oferta-laboral-tornero-y-ejecutivo-de-cuentas/">Oferta Laboral: Tornero y Ejecutivo de Cuentas</a></li>
+<li class="page_item page-item-9185"><a href="https://www.munimulchen.cl/oferta-laboral-trabajador-agricola-con-experiencia-en-riego/">Oferta Laboral: Trabajador Agrícola con experiencia en riego</a></li>
+<li class="page_item page-item-14739"><a href="https://www.munimulchen.cl/oferta-laboral-tractoristas/">Oferta Laboral: Tractoristas</a></li>
+<li class="page_item page-item-13956"><a href="https://www.munimulchen.cl/oferta-laboral-varias-vacantes-empresa-de-montaje-y-mantenimiento-industrial/">Oferta Laboral: Varias Vacantes &#8211; Empresa de Montaje y Mantenimiento Industrial</a></li>
+<li class="page_item page-item-12361"><a href="https://www.munimulchen.cl/oferta-laboral-varios/">Oferta Laboral: Varios</a></li>
+<li class="page_item page-item-16080"><a href="https://www.munimulchen.cl/oferta-laboral-varios-cargos-proyecto-central-hidroelectrica-rucalhue/">Oferta Laboral: Varios Cargos &#8211; Proyecto Central Hidroeléctrica Rucalhue</a></li>
+<li class="page_item page-item-15962"><a href="https://www.munimulchen.cl/oferta-laboral-varios-cargos-proyecto-de-construccion-los-angeles/">Oferta Laboral: Varios Cargos &#8211; Proyecto de Construcción (Los Ángeles)</a></li>
+<li class="page_item page-item-11411"><a href="https://www.munimulchen.cl/oferta-laboral-central-hidroelectrica/">Oferta Laboral: Varios Central Hidroeléctrica</a></li>
+<li class="page_item page-item-10892"><a href="https://www.munimulchen.cl/oferta-laboral-varios-construccion/">Oferta Laboral: Varios Construcción</a></li>
+<li class="page_item page-item-8338"><a href="https://www.munimulchen.cl/oferta-laboral-varios-trabajos/">Oferta Laboral: Varios Trabajos</a></li>
+<li class="page_item page-item-8699"><a href="https://www.munimulchen.cl/oferta-laboral-varios-trabajos-2/">Oferta Laboral: Varios Trabajos 2</a></li>
+<li class="page_item page-item-996"><a href="https://www.munimulchen.cl/opd/">OLN</a></li>
+<li class="page_item page-item-9369"><a href="https://www.munimulchen.cl/operativo-oftalmologico-gratuito-para-personas-mayores/">OPERATIVO OFTALMOLÓGICO GRATUITO PARA PERSONAS MAYORES</a></li>
+<li class="page_item page-item-1083"><a href="https://www.munimulchen.cl/otros/">Otros</a></li>
+<li class="page_item page-item-7280"><a href="https://www.munimulchen.cl/pagina-central-cursos-de-capacitacion/">Pagina Central Cursos de Capacitacion</a></li>
+<li class="page_item page-item-7544"><a href="https://www.munimulchen.cl/pagina-central-fondos-concursables/">Pagina Central Fondos Concursables</a></li>
+<li class="page_item page-item-8192"><a href="https://www.munimulchen.cl/pagina-central-ofertas-laborales/">Pagina Central Ofertas Laborales</a></li>
+<li class="page_item page-item-306"><a href="https://www.munimulchen.cl/pagina-turismo/">Pagina Turismo</a></li>
+<li class="page_item page-item-2252"><a href="https://www.munimulchen.cl/participa-en-el-concurso-de-vitrinas-y-locales-comerciales/">Participa en el Concurso de Vitrinas y Locales Comerciales</a></li>
+<li class="page_item page-item-2573"><a href="https://www.munimulchen.cl/patentes-municipales/">Patentes Municipales</a></li>
+<li class="page_item page-item-12008"><a href="https://www.munimulchen.cl/permisos-municipales-para-eventos/">PERMISOS MUNICIPALES PARA EVENTOS</a></li>
+<li class="page_item page-item-1065"><a href="https://www.munimulchen.cl/picadas-y-cocinerias/">Picadas y Cocinerías</a></li>
+<li class="page_item page-item-1073"><a href="https://www.munimulchen.cl/pizzerias-fuentes-de-soda-centros-de-eventos/">Pizzerías / Fuentes de Soda / Centros de Eventos</a></li>
+<li class="page_item page-item-7462"><a href="https://www.munimulchen.cl/plan-de-desarrollo-comunal-pladeco/">Plan de Desarrollo Comunal (PLADECO)</a></li>
+<li class="page_item page-item-2847"><a href="https://www.munimulchen.cl/planificacion-comunal/">planificación comunal</a></li>
+<li class="page_item page-item-10770"><a href="https://www.munimulchen.cl/corredor-biobio/">Postula a la Feria de Programación Corredor Biobío</a></li>
+<li class="page_item page-item-931"><a href="https://www.munimulchen.cl/principales-atractivos-turisticos/">Principales atractivos turísticos</a></li>
+<li class="page_item page-item-2611"><a href="https://www.munimulchen.cl/programa-aniversario-2022/">PROGRAMA ANIVERSARIO 2022</a></li>
+<li class="page_item page-item-6092"><a href="https://www.munimulchen.cl/programa-aniversario-mulchen/">Programa Aniversario Mulchén 2023</a></li>
+<li class="page_item page-item-9728"><a href="https://www.munimulchen.cl/programa-aniversario-mulchen-2024/">Programa Aniversario Mulchén 2024</a></li>
+<li class="page_item page-item-2340"><a href="https://www.munimulchen.cl/programa-fiestas-patrias-2022/">PROGRAMA FIESTAS PATRIAS 2022</a></li>
+<li class="page_item page-item-3479"><a href="https://www.munimulchen.cl/programa-oficial-fiestas-patrias-2023/">Programa Oficial Fiestas Patrias 2023</a></li>
+<li class="page_item page-item-8904"><a href="https://www.munimulchen.cl/programa-oficial-fiestas-patrias-2024/">Programa Oficial Fiestas Patrias 2024</a></li>
+<li class="page_item page-item-12425"><a href="https://www.munimulchen.cl/programa-oficial-fiestas-patrias-2025/">Programa Oficial Fiestas Patrias 2025</a></li>
+<li class="page_item page-item-8115"><a href="https://www.munimulchen.cl/programa-poda-2024/">Programa PODA 2024</a></li>
+<li class="page_item page-item-10903"><a href="https://www.munimulchen.cl/programa-poda-2025/">Programa PODA 2025</a></li>
+<li class="page_item page-item-1747"><a href="https://www.munimulchen.cl/programa-vacaciones-tercera-edad/">Programa Vacaciones Tercera Edad</a></li>
+<li class="page_item page-item-648"><a href="https://www.munimulchen.cl/proyectos-culturales/">Proyectos culturales</a></li>
+<li class="page_item page-item-471"><a href="https://www.munimulchen.cl/prueba-para-creacion-de-manual/">Prueba para creación de manual</a></li>
+<li class="page_item page-item-3092"><a href="https://www.munimulchen.cl/publicacion-regularizaciones-a-traves-de-bienes-nacionales/">Publicación Regularizaciones a través de Bienes Nacionales</a></li>
+<li class="page_item page-item-5095"><a href="https://www.munimulchen.cl/puesto-de-ventas-dia-de-todos-los-santos/">Puesto de Ventas Día de Todos los Santos</a></li>
+<li class="page_item page-item-9139"><a href="https://www.munimulchen.cl/recepcion-de-antecedentes/">Recepción de Antecedentes</a></li>
+<li class="page_item page-item-1601"><a href="https://www.munimulchen.cl/recepcion-de-antecedentes-coordinadora-programa-4-a-7/">Recepción de Antecedentes Coordinador(a) programa 4 a 7</a></li>
+<li class="page_item page-item-9265"><a href="https://www.munimulchen.cl/recepcion-de-antecedentes-2/">Recepción de Antecedentes Técnico &#8211; Administrativo &#8211; Auxiliar</a></li>
+<li class="page_item page-item-12518"><a href="https://www.munimulchen.cl/remate-municipal-2025/">REMATE MUNICIPAL 2025</a></li>
+<li class="page_item page-item-1037"><a href="https://www.munimulchen.cl/residenciales/">Residenciales</a></li>
+<li class="page_item page-item-1047"><a href="https://www.munimulchen.cl/restaurantes/">Restaurantes</a></li>
+<li class="page_item page-item-9909"><a href="https://www.munimulchen.cl/resultado-becas/">RESULTADO BECAS</a></li>
+<li class="page_item page-item-8677"><a href="https://www.munimulchen.cl/resultados-3er-concurso-microcuentos-bureanos/">Resultados 3er Concurso Microcuentos Bureanos</a></li>
+<li class="page_item page-item-2765"><a href="https://www.munimulchen.cl/bases-8va-fiesta-tradicional-del-trigo/">Resultados 8va. versión de la Fiesta Tradicional del Trigo</a></li>
+<li class="page_item page-item-3022"><a href="https://www.munimulchen.cl/resultados-becas/">RESULTADOS BECAS</a></li>
+<li class="page_item page-item-16439"><a href="https://www.munimulchen.cl/resultados-becas-2/">RESULTADOS BECAS</a></li>
+<li class="page_item page-item-1508"><a href="https://www.munimulchen.cl/becas/">Resultados Becas Apoyo al Estudiante y Fray Alejandro Manera</a></li>
+<li class="page_item page-item-11344"><a href="https://www.munimulchen.cl/resultados-becas-estudiantes-2025/">RESULTADOS BECAS ESTUDIANTES 2025</a></li>
+<li class="page_item page-item-5742"><a href="https://www.munimulchen.cl/resultados-feria-artes-y-oficios/">RESULTADOS FERIA ARTES Y OFICIOS</a></li>
+<li class="page_item page-item-10208"><a href="https://www.munimulchen.cl/resultados-fiesta-de-las-tradiciones-2025/">Resultados Fiesta de las Tradiciones 2025</a></li>
+<li class="page_item page-item-14760"><a href="https://www.munimulchen.cl/resultados-fiesta-de-las-tradiciones-2026/">Resultados Fiesta de las Tradiciones 2026</a></li>
+<li class="page_item page-item-6380"><a href="https://www.munimulchen.cl/resultados-fiesta-del-trigo-2024/">RESULTADOS FIESTA DEL TRIGO</a></li>
+<li class="page_item page-item-3811"><a href="https://www.munimulchen.cl/resultados-fonda-familiar-2023/">Resultados FONDA FAMILIAR 2023</a></li>
+<li class="page_item page-item-9051"><a href="https://www.munimulchen.cl/resultados-fonda-familiar-2024/">Resultados FONDA FAMILIAR 2024</a></li>
+<li class="page_item page-item-12512"><a href="https://www.munimulchen.cl/resultados-fonda-familiar-2025/">Resultados Fonda Familiar 2025</a></li>
+<li class="page_item page-item-17563"><a href="https://www.munimulchen.cl/resultados-fonda-familiar-2026/">Resultados Fonda Familiar 2026</a></li>
+<li class="page_item page-item-14172"><a href="https://www.munimulchen.cl/resultados-postulacion-feria-navidena-2025/">Resultados Postulación Feria Navideña 2025</a></li>
+<li class="page_item page-item-1189"><a href="https://www.munimulchen.cl/salto-rehuen/">Salto Rehuén Santuario de la Naturaleza</a></li>
+<li class="page_item page-item-1093"><a href="https://www.munimulchen.cl/salud/">Salud</a></li>
+<li class="page_item page-item-278"><a href="https://www.munimulchen.cl/saludos-alcalde/">Saludos Alcalde</a></li>
+<li class="page_item page-item-2"><a href="https://www.munimulchen.cl/sample-page/">Sample Page</a></li>
+<li class="page_item page-item-9403"><a href="https://www.munimulchen.cl/sectores-medios-compra-o-construccion-de-vivienda/">Sectores Medios &#8211; Compra o Construcción de Vivienda</a></li>
+<li class="page_item page-item-753"><a href="https://www.munimulchen.cl/seguridad-2/">Seguridad</a></li>
+<li class="page_item page-item-1882"><a href="https://www.munimulchen.cl/seminario-municipal-proceso-de-transformacion-digital/">Seminario Municipal: Proceso de Transformación Digital</a></li>
+<li class="page_item page-item-992"><a href="https://www.munimulchen.cl/senda-previene/">Senda Previene</a></li>
+<li class="page_item page-item-953"><a href="https://www.munimulchen.cl/servicios-turisticos/">Servicios Turísticos</a></li>
+<li class="page_item page-item-2921"><a href="https://www.munimulchen.cl/sesiones-concejo-municipal/">Sesiones Concejo Municipal</a></li>
+<li class="page_item page-item-836"><a href="https://www.munimulchen.cl/sistema-de-certificacion-ambiental-municipal-scam/">Sistema de Certificación Ambiental Municipal (SCAM)</a></li>
+<li class="page_item page-item-740"><a href="https://www.munimulchen.cl/sistema-de-reciclaje-municipal/">Sistema de Reciclaje Municipal</a></li>
+<li class="page_item page-item-3663"><a href="https://www.munimulchen.cl/subvenciones-municipales/">Subvenciones Municipales</a></li>
+<li class="page_item page-item-8596"><a href="https://www.munimulchen.cl/taller-de-cueca-para-personas-mayores/">TALLER DE CUECA PARA PERSONAS MAYORES</a></li>
+<li class="page_item page-item-9163"><a href="https://www.munimulchen.cl/taller-prevencion-de-los-trastornos-de-la-deglucion-en-personas-mayores/">TALLER PREVENCIÓN DE LOS TRASTORNOS DE LA DEGLUCIÓN EN PERSONAS MAYORES</a></li>
+<li class="page_item page-item-17593"><a href="https://www.munimulchen.cl/todo-sobre-el-desfile-de-fiestas-patrias-2026/">TODO SOBRE EL DESFILE DE FIESTAS PATRIAS 2026</a></li>
+<li class="page_item page-item-921"><a href="https://www.munimulchen.cl/turismo-local/">Turismo Local</a></li>
+<li class="page_item page-item-945"><a href="https://www.munimulchen.cl/turismo-patrimonial/">Turismo Patrimonial</a></li>
+</ul></li>
+			<li><h2>Archivos</h2>
+				<ul>
+					<li><a href='https://www.munimulchen.cl/2026/10/'>octubre 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/09/'>septiembre 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/08/'>agosto 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/07/'>julio 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/06/'>junio 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/05/'>mayo 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/04/'>abril 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/03/'>marzo 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/02/'>febrero 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2026/01/'>enero 2026</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/12/'>diciembre 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/11/'>noviembre 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/10/'>octubre 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/09/'>septiembre 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/08/'>agosto 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/07/'>julio 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/06/'>junio 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/05/'>mayo 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/04/'>abril 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/03/'>marzo 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/02/'>febrero 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2025/01/'>enero 2025</a></li>
+	<li><a href='https://www.munimulchen.cl/2024/12/'>diciembre 2024</a></li>
+				</ul>
+			</li>
+
+				<li class="categories"><h2>Categorías</h2><ul>	<li class="cat-item cat-item-10"><a href="https://www.munimulchen.cl/category/cultura-y-recreacion/">Cultura y Recreación</a> (2)
+</li>
+	<li class="cat-item cat-item-9"><a href="https://www.munimulchen.cl/category/deporte/">Deporte</a> (21)
+</li>
+	<li class="cat-item cat-item-58"><a href="https://www.munimulchen.cl/category/educacion/">Educación</a> (19)
+</li>
+	<li class="cat-item cat-item-82"><a href="https://www.munimulchen.cl/category/importante/">Importante</a> (10)
+</li>
+	<li class="cat-item cat-item-21"><a href="https://www.munimulchen.cl/category/medio-ambiente/">Medio Ambiente</a> (8)
+</li>
+	<li class="cat-item cat-item-11"><a href="https://www.munimulchen.cl/category/mulchen-salud/">Mulchén Salud</a> (1)
+</li>
+	<li class="cat-item cat-item-8"><a href="https://www.munimulchen.cl/category/municipalidad/">Municipalidad</a> (241)
+</li>
+	<li class="cat-item cat-item-25"><a href="https://www.munimulchen.cl/category/recreacion/">Recreación</a> (9)
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.munimulchen.cl/category/uncategorized/">Uncategorized</a> (1)
+</li>
+</ul></li>		</ul>
+		<ul>
+				
+					</ul>
+	</div>
+
+</div>
+<div class="footer" style="background:#0a3156;">
+    <div class="contenedor-footer">
+        <div class="item-footer log">
+     <div class="logo-footer" style="background:#0a3156;"><a href="https://www.munimulchen.cl"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/logo-trans.svg" alt=""></a></div>
+       <div class="logo-medioambiente"><img src="https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png" alt=""></div>
+        </div>
+        <div class="item-footer">
+        <h3>SITIOS DE INTERÉS</h3>
+        <div class="contenedor-menu-footer">
+            <div class="menufoot"><ul id="menu-menu-sitios-interes" class="navi"><li id="menu-item-83" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="https://www.biblioredes.gob.cl/bibliotecas/mulchen">Biblioteca Municipal</a></li>
+<li id="menu-item-84" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="https://saborcampesino.cl/">Comité Sabor Campesino</a></li>
+<li id="menu-item-85" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85"><a href="https://www.amcordi.cl/">Asociación de Municipios Cordilleranos</a></li>
+<li id="menu-item-17262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17262"><a href="http://www.amuch.cl">Asociación de Municipalidades de Chile</a></li>
+<li id="menu-item-86" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="https://www.achm.cl/">Asociación Chilena de Municipalidades</a></li>
+</ul></div>            
+        </div>
+        
+        <h3>FRECUENTES</h3>
+        <div class="contenedor-menu-footer">
+            <div class="menufoot"><ul id="menu-frecuentes" class="navi"><li id="menu-item-831" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-831"><a href="https://portal.munimulchen.cl/">Permisos de Circulación</a></li>
+<li id="menu-item-832" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-832"><a href="#">Licencias de Conducir</a></li>
+<li id="menu-item-833" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-833"><a href="#">Pago de Patentes Comerciales</a></li>
+<li id="menu-item-834" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-834"><a href="#">Regularizaciones de Viviendas</a></li>
+<li id="menu-item-835" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-835"><a href="#">Certificados Dirección de Obras</a></li>
+</ul></div>            
+        </div>
+
+        <h3>ASISTENCIA SOCIAL</h3>
+        <div class="contenedor-menu-footer">
+            <div class="menufoot"><ul id="menu-menu-informacion-apoyo" class="navi"><li id="menu-item-99" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99"><a href="#">Oficina Municipal de Intermediación Laboral</a></li>
+<li id="menu-item-100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100"><a href="#">Clinica Veterinaria Municipal</a></li>
+</ul></div>            
+        </div>
+        </div>
+        <div class="item-footer">
+        <h3>JUZGADO DE POLICÍA LOCAL</h3>
+        <ul class="cementerio">
+            <li>Horario de atención a público: 8:00 a 14:00 horas</li>
+            <li>Horario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas</li>
+            <li>Dirección: Villagra 025</li>
+            <li>Correo electrónico: jpl@munimulchen.cl</li>
+            <li>Teléfono: 961649480</li>
+        </ul>
+
+        <h3>CEMENTERIO MUNICIPAL</h3>
+        <ul class="cementerio">
+            <li>Atención: Lunes a viernes</li>
+            <li>Horario: 08:15 a 17:00 horas</li>
+            <li>Dirección: Contreras 399</li>
+            <li>Teléfono: 940190530</li>
+        </ul>
+
+        </div>
+        <div class="item-footer"><h3>EMERGENCIAS MULCHÉN</h3>
+        
+        
+       
+         <div class="item-contacto">
+            <div class="tit-item">Carabineros</div>
+            <div class="dato-item" style="color:#f15a3d;">
+                <div class="icono-item"><i class="fas fa-shield-alt"></i></div>
+                <div class="tex-item">(43) 224 3061</div>
+            </div>
+        </div>
+        <div class="item-contacto">
+            <div class="tit-item">Policia Investigaciones</div>
+            <div class="dato-item" style="color:#f15a3d;">
+                <div class="icono-item pdi">PDI</div>
+                <div class="tex-item">(41) 2570386</div>
+            </div>
+        </div>
+        <div class="item-contacto">
+            <div class="tit-item">Bomberos</div>
+            <div class="dato-item" style="color:#f15a3d;">
+                <div class="icono-item"><i class="fas fa-fire-alt"></i></div>
+                <div class="tex-item">(43) 2561589</div>
+            </div>
+        </div>
+        <div class="item-contacto">
+            <div class="tit-item">Mesa Central</div>
+            <div class="dato-item" style="color:#f15a3d;">
+                <div class="icono-item"><i class="fas fa-home"></i></div>
+                <div class="tex-item">(43) 2401401</div>
+                <div class="correo">partes@munimulchen.cl</div>
+            </div>
+        </div>
+        
+       
+        </div>
+        
+    </div>
+</div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mulchen/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-accessibility-js-extra">
+var wpa = {"skiplinks":{"enabled":true,"output":""},"target":"1","tabindex":"1","underline":{"enabled":false,"target":"a"},"videos":"","dir":"ltr","viewport":"1","lang":"es","titles":"1","labels":"1","wpalabels":{"s":"Buscar","author":"Nombre","email":"Correo electr\u00f3nico","url":"Web","comment":"Comentario"},"alt":"","altSelector":".hentry img[alt]:not([alt=\"\"]), .comment-content img[alt]:not([alt=\"\"]), #content img[alt]:not([alt=\"\"]),.entry-content img[alt]:not([alt=\"\"])","current":"","errors":"","tracking":"","ajaxurl":"https://www.munimulchen.cl/wp-admin/admin-ajax.php","security":"6346a59006","action":"wpa_stats_action","url":"https://www.munimulchen.cl/","post_id":"","continue":"","pause":"Pausar v\u00eddeo","play":"Reproducir v\u00eddeo","restUrl":"https://www.munimulchen.cl/wp-json/wp/v2/media","ldType":"button","ldHome":"https://www.munimulchen.cl","ldText":"\u003Cspan class=\"dashicons dashicons-media-text\" aria-hidden=\"true\"\u003E\u003C/span\u003E\u003Cspan class=\"screen-reader\"\u003ELarga descripci\u00f3n\u003C/span\u003E"};
+//# sourceURL=wp-accessibility-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="wp-accessibility-js" src="https://www.munimulchen.cl/wp-content/plugins/wp-accessibility/js/wp-accessibility.min.js"></script>
+<script id="wpa-toolbar-js-extra">
+var wpatb = {"location":"body","is_rtl":"ltr","is_right":"reversed","responsive":"a11y-non-responsive","contrast":"Alternar alto contraste","grayscale":"Alternar escala de grises","fontsize":"Alternar tama\u00f1o de letra","custom_fontsize":"0","custom_location":"standard-location","enable_grayscale":"false","enable_fontsize":"true","enable_contrast":"true","factor":"1.6"};
+var wpa11y = {"path":"https://www.munimulchen.cl/wp-content/plugins/wp-accessibility/toolbar/css/a11y-contrast.css?version=2.4.3"};
+//# sourceURL=wpa-toolbar-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="wpa-toolbar-js" src="https://www.munimulchen.cl/wp-content/plugins/wp-accessibility/js/wpa-toolbar.min.js"></script>
+<script id="fliky_js-js" src="https://www.munimulchen.cl/wp-content/themes/mulchen/js/flickity-docs.min.js"></script>
+<script id="wow_js-js" src="https://www.munimulchen.cl/wp-content/themes/mulchen/js/wow.min.js"></script>
+<script>
+  new WOW().init(); 
+</script>
+<!-- Inicio Etiqueta HTML BindBot-->
+<link rel="stylesheet"
+href="https://munimulchentb.azurewebsites.net/Content/bindbot.min.css">
+<script src="https://munimulchentb.azurewebsites.net/Content/bindbot.min.js"></script>
+<!-- Fin Etiqueta HTML BindBot-->
+</body>
+</html>

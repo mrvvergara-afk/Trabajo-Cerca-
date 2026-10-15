@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 from scripts import radar_v2_pilot as pilot, radar_v2_publish as publish
 from scripts.common import Budget
-from scripts.radar_v2_store import PilotStore
+from scripts.radar_v2_store import PilotStore, observation_payload, restore
 from scripts.state import State
 
 NOW = dt.datetime(2026, 10, 15, 15, tzinfo=dt.timezone.utc)
@@ -100,6 +100,40 @@ ctx.validateOffer(JSON.parse(readFileSync(0,'utf8')),Date.parse('2026-10-15T15:0
             self.assertEqual(report['eligible_hard_source_notices'],1)
             remaining = [row for row in store.results() if row['status']=='queued']
             self.assertEqual({row['kind'] for row in remaining},{'web','media'})
+            counts=store.counts()
+            pilot.assemble_documents(store,NOW)
+            pilot.assemble_documents(store,NOW)
+            self.assertEqual(store.counts(),counts)
+            store.close()
+
+    def test_large_legacy_audit_is_compacted_and_restored_without_losing_rows_or_payloads(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);store=PilotStore(root/'pilot')
+            store.seed('evaluate','notice',{'text':TEXT},NOW)
+            raw=json.dumps({'text':'Oferta laboral '+('Texto de OCR completo. '*2500)},ensure_ascii=False)
+            with store.connection:
+                store.connection.executemany('INSERT INTO observations(job_id,observed_at,payload) VALUES(?,?,?)',
+                    [('original',NOW.isoformat(),raw) for _ in range(330)])
+            before=store.counts()
+            self.assertGreater((root/'pilot/pilot.sqlite3').stat().st_size,16*1024*1024)
+            metadata=store.snapshot(root/'backup')
+            self.assertEqual(metadata['counts'],before)
+            self.assertLess(metadata['bytes'],16*1024*1024)
+            restored=restore(root/'backup/pilot.sqlite3.gz',root/'backup/manifest.json',root/'restored',lambda _:self.fail('no objects'))
+            recovered=PilotStore(root/'restored')
+            values=[observation_payload(row[0]) for row in recovered.connection.execute("SELECT payload FROM observations WHERE job_id='original'")]
+            self.assertEqual(values,[raw]*330)
+            self.assertEqual(recovered.counts(),before)
+            store.close();recovered.close()
+
+    def test_tampered_compressed_audit_payload_cannot_be_backed_up(self):
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder);store.seed('evaluate','notice',{'text':'repeated '*1000},NOW)
+            row=store.connection.execute('SELECT id,payload FROM observations').fetchone()
+            value=json.loads(row['payload']);value['sha256']='0'*64
+            with store.connection:store.connection.execute('UPDATE observations SET payload=? WHERE id=?',(json.dumps(value),row['id']))
+            with self.assertRaisesRegex(ValueError,'Observation payload integrity'):
+                store.snapshot(Path(folder)/'backup')
             store.close()
 
     def test_directory_and_foreign_original_cannot_be_promoted_by_a_verified_flag(self):

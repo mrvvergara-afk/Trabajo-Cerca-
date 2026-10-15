@@ -177,8 +177,9 @@ def evaluate_work(store,payload,now):
 
 
 def assemble_documents(store,now):
-    documents={}
-    for row in store.results():
+    documents={};rows=store.results()
+    evaluated={row['key'] for row in rows if row['kind']=='evaluate'}
+    for row in rows:
         if row['kind']!='page':continue
         payload=row['payload'];group=documents.setdefault((payload['source_url'],payload['object_sha256'],payload.get('capture_slot')),{'payload':payload,'pages':[]})
         group['pages'].append(row)
@@ -191,7 +192,9 @@ def assemble_documents(store,now):
         verification_url=payload.get('verification_source_url')
         if not verification_url and payload.get('media_url') and source_adapter(payload['media_url']) and source_adapter(payload['media_url'])['family']=='local':verification_url=canonical_url(payload['media_url'])
         verification_url=verification_url or payload['source_url']
-        store.seed('evaluate',verification_url+':'+digest+':'+str(slot)+':v3',{**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
+        key=verification_url+':'+digest+':'+str(slot)+':v3'
+        if key not in evaluated:
+            store.seed('evaluate',key,{**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
 
 
 def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public,work_kinds=None):

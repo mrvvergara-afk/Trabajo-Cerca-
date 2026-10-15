@@ -1,5 +1,6 @@
 """Isolated durable work queue and content-addressed evidence. Never deletes legacy data."""
 import datetime as dt
+import base64
 import gzip
 import hashlib
 import json
@@ -14,6 +15,27 @@ from .common import utcnow
 MAX_OBJECT_BYTES = 8 * 1024 * 1024
 MAX_ARCHIVE_BYTES = 32 * 1024 * 1024
 KINDS = {'web','social','media','page','evaluate'}
+OBSERVATION_ENCODING='trabajo-cerca.pilot-observation.gzip.v1'
+
+
+def compact_payload(raw):
+    """Losslessly encode large repeated audit payloads; keep every observation."""
+    data=raw.encode()
+    if len(data)<512:return raw
+    value=json.dumps({'schema':OBSERVATION_ENCODING,'sha256':hashlib.sha256(data).hexdigest(),
+                      'gzip_base64':base64.b64encode(gzip.compress(data,mtime=0)).decode()},sort_keys=True)
+    return value if len(value.encode())<len(data) else raw
+
+
+def observation_payload(raw):
+    import io
+    value=json.loads(raw)
+    if value.get('schema')!=OBSERVATION_ENCODING:return raw
+    with gzip.GzipFile(fileobj=io.BytesIO(base64.b64decode(value['gzip_base64'],validate=True))) as handle:
+        data=handle.read(80001)
+    if len(data)>80000 or hashlib.sha256(data).hexdigest()!=value['sha256']:
+        raise ValueError('Observation payload integrity failure')
+    return data.decode()
 
 
 class PilotStore:
@@ -43,7 +65,7 @@ class PilotStore:
         stamp=(now or utcnow()).isoformat();identity=hashlib.sha256((kind+'\0'+key).encode()).hexdigest()
         self.connection.execute('INSERT OR IGNORE INTO jobs(id,kind,key,payload,available_at,created_at) VALUES(?,?,?,?,?,?)',
           (identity,kind,key,raw,stamp,stamp))
-        self.connection.execute('INSERT INTO observations(job_id,observed_at,payload) VALUES(?,?,?)',(identity,stamp,raw))
+        self.connection.execute('INSERT INTO observations(job_id,observed_at,payload) VALUES(?,?,?)',(identity,stamp,compact_payload(raw)))
         return identity
 
     def seed(self,kind,key,payload,now=None):
@@ -132,10 +154,21 @@ class PilotStore:
 
     def snapshot(self,destination):
         destination=Path(destination);destination.mkdir(parents=True,exist_ok=True)
+        # Earlier snapshots repeated uncompressed OCR text on every assembly pass.
+        # Encode that text reversibly; neither rows nor original evidence are deleted.
+        with self.connection:
+            for row in self.connection.execute('SELECT id,payload FROM observations').fetchall():
+                raw=row['payload']
+                if json.loads(raw).get('schema')==OBSERVATION_ENCODING:
+                    observation_payload(raw)
+                    continue
+                compact=compact_payload(raw)
+                if compact!=raw:self.connection.execute('UPDATE observations SET payload=? WHERE id=?',(compact,row['id']))
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/'copy.sqlite3'
             with sqlite3.connect(path) as target:self.connection.backup(target)
             with sqlite3.connect(path) as checked:
+                checked.execute('VACUUM')
                 if checked.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise ValueError('Pilot SQLite integrity failure')
             data=path.read_bytes()
         if len(data)>16*1024*1024:raise ValueError('Pilot state snapshot exceeds budget')

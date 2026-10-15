@@ -23,6 +23,7 @@ from .radar_v2_diagnostics import describe
 DATA_BRANCH='radar-pilot-v2-state'
 CONFIG=Path('config/radar-v2-pilot.json')
 IMAGE_MIMES={'image/png','image/jpeg','image/webp'}
+POSTER_HINT=re.compile(r'ofertas? laboral|vacantes?|se (?:busca|necesita|requiere)|buscamos|postulaci[oó]n|concurso|empleo|cargo|afiche',re.I)
 
 
 def media_allowed(url,origin):
@@ -103,11 +104,14 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
             if MEDIA.search(target) and media_allowed(target,final):children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
             elif same_publisher(target,final) and payload.get('depth',0)<1:
                 children.append(('web',target+suffix,{'url':target,'source':payload['source'],'depth':1,'page_type':'notice'}))
-        if value['text'] or not directory:
-            for target in page['images'][:8]:
-                relevant=value['text'] or HIRING.search(target+' '+page['image_labels'].get(target,''))
-                if relevant and media_allowed(target,final) and not re.search(r'logo|avatar|icon|banner|favicon|slider',target,re.I):
-                    children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
+        images=[]
+        for target in page['images']:
+            hint=bool(POSTER_HINT.search(target+' '+page['image_labels'].get(target,'')))
+            relevant=hint or not directory and bool(POSTER_HINT.search(page['title']))
+            if relevant and media_allowed(target,final) and not re.search(r'logo|avatar|icon|banner|favicon|slider|\.(?:svg|gif|ico)(?:\?|$)',target,re.I):
+                images.append((not hint,target))
+        for _,target in sorted(images)[:3]:
+            children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
     return {'status':'captured','source_url':final,'archive':archive,'html_object_sha256':original,
             'captured_at':now.isoformat(),'capture_slot':value['capture_slot'],'source_published_at':value['source_published_at'],
             'page_last_published_at':page['source_published_at'],'page_type':'directory' if directory else 'notice',
@@ -190,7 +194,7 @@ def assemble_documents(store,now):
         store.seed('evaluate',verification_url+':'+digest+':'+str(slot)+':v3',{**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
 
 
-def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public):
+def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public,work_kinds=None):
     frozen=now is not None
     now=now or utcnow();budget=budget or Budget(400)
     if config.get('paid_providers_enabled') is not False or config.get('publish_enabled') is not False:raise ValueError('Pilot must remain isolated and free')
@@ -204,7 +208,7 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
     while processed<limit and budget.remaining()>5:
         assemble_documents(store,now)
         step_now=now if frozen else utcnow()
-        job=store.claim(step_now)
+        job=store.claim(step_now,kinds=work_kinds)
         if not job:break
         try:
             if job['kind']=='web':result,children=web_work(store,job['payload'],budget,fetcher,now)
@@ -279,21 +283,26 @@ def main():
     output=Path('output/radar-v2');output.mkdir(parents=True,exist_ok=True)
     root=Path('state/radar-v2');parent=restore_git(root);store=PilotStore(root)
     try:
-        config=json.loads(CONFIG.read_text());social=json.loads((output/'social-observation.json').read_text())
-        first=run(store,config,social,budget=Budget(180))
-        second=run(store,config,social,limit=18,budget=Budget(180))
-        # Finish already downloaded evidence without opening another source or browser.
-        drain=run(store,{**config,'sources':[]},{'captures':[]},limit=40,budget=Budget(180))
-        write_json(output/'first-pass.json',first);write_json(output/'second-pass.json',second)
+        config=json.loads(CONFIG.read_text());reports={}
+        drain_only=os.environ.get('RADAR_V2_DRAIN_ONLY')=='true'
+        if not drain_only:
+            social=json.loads((output/'social-observation.json').read_text())
+            reports['first-pass.json']=run(store,config,social,budget=Budget(180))
+            reports['second-pass.json']=run(store,config,social,limit=18,budget=Budget(180))
+        # An empty seed catalog does not prevent old queued downloads. Filter work kinds too.
+        drain=run(store,{**config,'sources':[]},{'captures':[]},limit=180,budget=Budget(300),work_kinds=('page','evaluate'))
+        reports['drain-pass.json']=drain
+        for name,value in reports.items():write_json(output/name,value)
         # Drain intentionally has no seed sources, but the final diagnostics must keep the catalog.
         diagnostics=describe(store.results(),config,utcnow())
         write_json(output/'source-diagnostics.json',diagnostics)
         write_json(output/'review-queue.json',diagnostics['review_queue'])
-        write_json(output/'drain-pass.json',drain)
         write_json(output/'work-inventory.json',{'jobs':store.results()})
         manifest=store.snapshot(output/'backup')
-        commit=push_snapshot(store,manifest,output/'backup',os.environ['GITHUB_RUN_ID'],parent,{'first-pass.json':first,'second-pass.json':second,'drain-pass.json':drain,'source-diagnostics.json':diagnostics})
-        print('RADAR_V2_PILOT '+json.dumps({'data_commit':commit,'first':{key:value for key,value in first.items() if key not in ('evaluations','review_queue','source_diagnostics')},'second':{key:value for key,value in second.items() if key not in ('evaluations','review_queue','source_diagnostics')},'drain':{key:value for key,value in drain.items() if key not in ('evaluations','review_queue','source_diagnostics')}},ensure_ascii=False))
+        commit=push_snapshot(store,manifest,output/'backup',os.environ['GITHUB_RUN_ID'],parent,{**reports,'source-diagnostics.json':diagnostics})
+        print('RADAR_V2_PILOT '+json.dumps({'data_commit':commit,'drain_only':drain_only,'passes':{
+            name:{key:value for key,value in report.items() if key not in ('evaluations','review_queue','source_diagnostics')}
+            for name,report in reports.items()}},ensure_ascii=False))
     finally:store.close()
 
 

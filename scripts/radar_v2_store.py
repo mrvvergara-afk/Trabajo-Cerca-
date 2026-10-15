@@ -49,12 +49,16 @@ class PilotStore:
     def seed(self,kind,key,payload,now=None):
         with self.connection:return self.enqueue(kind,key,payload,now)
 
-    def claim(self,now=None,lease_seconds=150):
+    def claim(self,now=None,lease_seconds=150,*,kinds=None):
         now=now or utcnow();stamp=now.isoformat()
+        if kinds is not None and (not kinds or not set(kinds)<=KINDS):raise ValueError('Unsupported work filter')
+        clause=' AND kind IN ('+','.join('?' for _ in kinds)+')' if kinds else ''
         self.connection.execute('BEGIN IMMEDIATE')
         try:
             self.connection.execute("UPDATE jobs SET status='retry',available_at=?,lease_token=NULL,lease_until=NULL WHERE status='running' AND lease_until<=?",(stamp,stamp))
-            row=self.connection.execute("SELECT * FROM jobs WHERE status IN ('queued','retry') AND available_at<=? ORDER BY attempts,created_at,id LIMIT 1",(stamp,)).fetchone()
+            row=self.connection.execute("SELECT * FROM jobs WHERE status IN ('queued','retry') AND available_at<=?"+clause+
+                " ORDER BY CASE WHEN kind='evaluate' THEN 0 ELSE 1 END,attempts,created_at,id LIMIT 1",
+                (stamp,*(kinds or ()))).fetchone()
             if not row:self.connection.commit();return None
             token=uuid.uuid4().hex;until=(now+dt.timedelta(seconds=lease_seconds)).isoformat()
             attempt=row['attempts']+1

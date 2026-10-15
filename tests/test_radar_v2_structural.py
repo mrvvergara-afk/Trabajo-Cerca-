@@ -73,6 +73,35 @@ ctx.validateOffer(JSON.parse(readFileSync(0,'utf8')),Date.parse('2026-10-15T15:0
             self.assertEqual(children[0][2]['text'], '')
             store.close()
 
+    def test_directory_does_not_send_service_icons_and_generic_photos_to_ocr(self):
+        raw = ('<title>OMIL</title><p>Oficina OMIL</p><img src="/t-activa.svg">'
+               '<img src="/foto-plaza.jpg"><img src="/afiche-empleo.png" alt="Oferta laboral">').encode()
+        with tempfile.TemporaryDirectory() as folder:
+            store = PilotStore(folder)
+            _, children = pilot.web_work(store, {'url':URL,'source':SOURCE,'page_type':'directory'},
+                Budget(10), lambda *a:(raw, URL, 'text/html', 200), NOW)
+            self.assertEqual([row[2]['media_url'] for row in children],
+                ['https://municipalidadrenaico.cl/afiche-empleo.png'])
+            store.close()
+
+    def test_drain_reads_downloaded_evidence_before_backlog_without_opening_any_url(self):
+        with tempfile.TemporaryDirectory() as folder:
+            store = PilotStore(folder)
+            store.seed('web', 'queued-page', {'url':URL,'source':SOURCE}, NOW)
+            store.seed('media', 'queued-download', {'source_url':URL,'media_url':URL+'.png'}, NOW)
+            digest = store.put(b'archived test image', 'image/png')
+            store.seed('page','downloaded-page',{'source_url':URL,'object_sha256':digest,
+                'mime':'image/png','page':1,'pages':1,'source_published_at':'2026-10-12T03:00:00Z'},NOW)
+            with patch.object(pilot, 'tesseract_text', return_value={'text':TEXT,'textTruncated':False,
+                    'engine':'tesseract-local','mean_confidence':95}):
+                report = pilot.run(store, {**CONFIG,'sources':[]}, {'captures':[]}, now=NOW,
+                    limit=10, work_kinds=('page','evaluate'), fetcher=lambda *a:self.fail('drain opened a URL'))
+            self.assertEqual(report['processed'],2)
+            self.assertEqual(report['eligible_hard_source_notices'],1)
+            remaining = [row for row in store.results() if row['status']=='queued']
+            self.assertEqual({row['kind'] for row in remaining},{'web','media'})
+            store.close()
+
     def test_directory_and_foreign_original_cannot_be_promoted_by_a_verified_flag(self):
         with tempfile.TemporaryDirectory() as folder:
             store, history = PilotStore(Path(folder)/'pilot'), State(Path(folder)/'history.sqlite3')

@@ -18,6 +18,10 @@ on:
         description: 'Conectar evidencia del piloto al receptor firmado con un control BNE real, conservando IDs y respaldos'
         type: boolean
         default: false
+      radar_v2_drain:
+        description: 'Terminar solo OCR y evaluaciones descargadas; sin abrir fuentes nuevas ni publicar'
+        type: boolean
+        default: false
   push:
     branches: [main, repair/radar-audit-2026-10-11]
     paths:
@@ -77,8 +81,9 @@ jobs:
   radar-v2:
     if: >-
       github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false &&
-      ((github.event_name == 'push' && contains(github.event.head_commit.message, '[radar v2 pilot]')) ||
-       (github.event_name == 'workflow_dispatch' && inputs.radar_v2_pilot == true))
+      ((github.event_name == 'push' && (contains(github.event.head_commit.message, '[radar v2 pilot]') ||
+                                      contains(github.event.head_commit.message, '[radar v2 drain]'))) ||
+       (github.event_name == 'workflow_dispatch' && (inputs.radar_v2_pilot == true || inputs.radar_v2_drain == true)))
     runs-on: ubuntu-latest
     timeout-minutes: 16
     permissions:
@@ -99,9 +104,12 @@ jobs:
           python -m unittest discover -s tests -v
           for suite in tests/*.test.mjs; do node "$suite"; done
       - name: Leer perfiles públicos sin iniciar sesión ni ejecutar motores de la app
+        if: '!contains(github.event.head_commit.message, ''[radar v2 drain]'') && inputs.radar_v2_drain != true'
         run: node scripts/radar_v2_browser.mjs
-      - name: Dos pasadas recuperables y respaldo aislado sin publicar
+      - name: Procesar capturas o terminar evidencia descargada y conservar respaldo sin publicar
         run: python -m scripts.radar_v2_pilot
+        env:
+          RADAR_V2_DRAIN_ONLY: ${{ contains(github.event.head_commit.message, '[radar v2 drain]') || inputs.radar_v2_drain == true }}
       - name: Conservar evidencia y pendientes del piloto
         if: always()
         uses: actions/upload-artifact@v4

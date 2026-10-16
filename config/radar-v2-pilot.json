@@ -83,6 +83,26 @@
       "page_type": "directory"
     },
     {
+      "key": "arauco-empleo",
+      "name": "Arauco · portal de empleo",
+      "kind": "web",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "family": "employer",
+      "territory": "regional; lugar real de cada oferta pendiente",
+      "identity_evidence": "Portal de empleo enlazado por jobs.arauco.com; cada aviso requiere ubicación literal dentro del territorio solicitado.",
+      "page_type": "directory"
+    },
+    {
+      "key": "radio-nativa",
+      "name": "Radio Nativa",
+      "kind": "web",
+      "url": "https://www.radionativa.cl/",
+      "family": "media",
+      "territory": "Lumaco",
+      "identity_evidence": "Fuente territorial incluida en el catálogo auditado; cualquier aviso requiere original individual, fecha y lugar verificables.",
+      "page_type": "directory"
+    },
+    {
       "key": "omil-angol",
       "name": "Municipalidad / OMIL Angol",
       "family": "municipal",

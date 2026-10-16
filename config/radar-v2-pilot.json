@@ -42,7 +42,27 @@
       "url": "https://www.facebook.com/profile.php?id=102913642090515",
       "family": "municipal",
       "territory": "Nacimiento",
-      "identity_evidence": "Perfil dedicado identificado por ID estable 102913642090515; la lectura pública redirige a OMIL-Municipalidad-de-Nacimiento."
+      "identity_evidence": "Perfil dedicado identificado por ID estable 102913642090515; la lectura pública redirige a OMIL-Municipalidad-de-Nacimiento.",
+      "probe_enabled": false,
+      "access_observation": "El perfil expuso un permalink, pero el aviso individual exigió inicio de sesión y la lectura pública posterior no entregó posts; no repetir durante este piloto."
+    },
+    {
+      "key": "collipulli-municipal-facebook",
+      "name": "Municipalidad de Collipulli · Facebook",
+      "kind": "social",
+      "url": "https://www.facebook.com/MunicipalidadCollipulli",
+      "family": "municipal",
+      "territory": "Collipulli",
+      "identity_evidence": "Perfil municipal enlazado en el catálogo auditado; no se presume que cada publicación sea de OMIL."
+    },
+    {
+      "key": "radio-nativa-instagram",
+      "name": "Radio Nativa · Instagram",
+      "kind": "social",
+      "url": "https://www.instagram.com/radionativacl/",
+      "family": "media",
+      "territory": "Lumaco",
+      "identity_evidence": "Canal social incluido en el catálogo auditado de Radio Nativa; lectura pública sin inicio de sesión."
     },
     {
       "key": "renaico-facebook",

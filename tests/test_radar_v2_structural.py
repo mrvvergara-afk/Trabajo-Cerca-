@@ -32,6 +32,7 @@ class StructuralPipelineTests(unittest.TestCase):
         source = Path('scripts/radar_v2_browser.mjs').read_text()
         self.assertIn("'--no-sandbox'", source)
         self.assertIn("'--disable-dev-shm-usage'", source)
+        self.assertIn("row.probe_enabled!==false", source)
 
     def test_html_original_reaches_handoff_and_payload_cannot_replace_evidence(self):
         with tempfile.TemporaryDirectory() as folder:

@@ -36,6 +36,15 @@
       "page_type": "directory"
     },
     {
+      "key": "nacimiento-omil-facebook",
+      "name": "OMIL Municipalidad de Nacimiento · Facebook",
+      "kind": "social",
+      "url": "https://www.facebook.com/profile.php?id=102913642090515",
+      "family": "municipal",
+      "territory": "Nacimiento",
+      "identity_evidence": "Perfil dedicado identificado por ID estable 102913642090515; la lectura pública redirige a OMIL-Municipalidad-de-Nacimiento."
+    },
+    {
       "key": "renaico-facebook",
       "name": "Municipalidad de Renaico · Facebook",
       "kind": "social",
@@ -81,7 +90,9 @@
       "territory": "Angol",
       "kind": "web",
       "page_type": "directory",
-      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado.",
+      "probe_enabled": false,
+      "access_observation": "HTTP 403 en lectura pública del 2026-10-16; no repetir hasta revisar una ruta oficial alternativa."
     },
     {
       "key": "omil-lumaco",

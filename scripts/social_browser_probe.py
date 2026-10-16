@@ -1,4 +1,4 @@
-"""Read two reviewed Facebook profiles in a fresh public browser, without login."""
+"""Read selected reviewed Facebook profiles in a fresh public browser, without login."""
 import json
 import os
 import re
@@ -53,7 +53,11 @@ def inspect(row, *, individual=False):
 
 def main():
     reviewed={row['url'].rstrip('/'):row for row in channels()}
-    targets=['https://www.facebook.com/municipalidadrenaico','https://www.facebook.com/MuniNegreteCL']
+    targets=[
+        'https://www.facebook.com/municipalidadrenaico',
+        'https://www.facebook.com/MuniNegreteCL',
+        'https://www.facebook.com/profile.php?id=102913642090515',
+    ]
     rows=[inspect(reviewed[url]) for url in targets if url in reviewed]
     posts=[inspect({'url':row['post_urls'][0],'profile':row['url'],'territory':row['territory']},individual=True)
            for row in rows if row.get('post_urls')]

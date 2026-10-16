@@ -8,7 +8,7 @@ import { postSnapshot,hoveredDate } from './radar_v2_dom.mjs';
 
 const config=JSON.parse(readFileSync('config/radar-v2-pilot.json','utf8'));
 if(config.paid_providers_enabled!==false || config.publish_enabled!==false)throw new Error('Pilot must remain isolated');
-const selected=config.sources.filter(row=>row.kind==='social').slice(0,2);
+const selected=config.sources.filter(row=>row.kind==='social' && row.probe_enabled!==false).slice(0,Math.max(0,Number(config.social_capture_limit)||2));
 const executable=['/usr/bin/google-chrome','/usr/bin/chromium','/usr/bin/chromium-browser'].find(existsSync);
 if(!executable)throw new Error('Public browser unavailable');
 const directory=mkdtempSync(join(tmpdir(),'tc-v2-browser-')),environment={...process.env};

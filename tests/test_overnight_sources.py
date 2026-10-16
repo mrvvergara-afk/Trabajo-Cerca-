@@ -22,6 +22,12 @@ class OvernightSourcesTests(unittest.TestCase):
         clues = page_clues("Portada\fAvisos\nSe busca maestro para faena en Angol\nEnviar CV", "https://example.test/a.pdf")
         self.assertEqual(clues[0]["page"], 2)
 
+    def test_a_fair_page_produces_one_aggregate_event_and_no_individual_candidates(self):
+        text = "Feria de empleo con 13 empresas y distintos perfiles laborales\nSe buscan trabajadores agrícolas\nOMIL informa vacantes"
+        clues = page_clues(text, "https://example.test/a.pdf")
+        self.assertEqual(len(clues), 1)
+        self.assertEqual(clues[0]["kind"], "aggregate_event_not_individual_offer")
+
 
 if __name__ == "__main__":
     unittest.main()

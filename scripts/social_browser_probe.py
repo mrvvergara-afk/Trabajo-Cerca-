@@ -13,6 +13,12 @@ from .local_source_audit import Document, discover, evidence_fields, source_erro
 from .social_access_probe import channels, MAX_PROFILE_BYTES
 
 
+def login_wall(text):
+    visible=' '.join(text.split()).lower()[:400]
+    return bool(re.match(r'^(?:log into facebook|iniciar sesi[oó]n en facebook)\\b',visible)
+                or 'email or mobile number password log in' in visible[:250])
+
+
 def inspect(row, *, individual=False):
     result={**row,'read_only':True,'paid_provider_calls':0,'coverage_complete':False}
     browser=shutil.which('google-chrome') or shutil.which('chromium') or shutil.which('chromium-browser')
@@ -38,11 +44,12 @@ def inspect(row, *, individual=False):
                                             if key in ('story_fbid','id')])
                 url=urllib.parse.urlunsplit((parts.scheme,parts.netloc,parts.path,query,''))
                 refs.add(url)
+        page=discover(value.stdout,row['url']) if individual else None
+        wall=bool(page and login_wall(page['text']))
         result.update(title=parser.title.strip()[:180],post_references=len(refs),post_urls=sorted(refs)[:10],
-                      access='post_links_visible' if refs else 'no_readable_posts',
-                      reason='individual_notices_not_verified')
+                      access='login_required' if wall else 'post_links_visible' if refs else 'no_readable_posts',
+                      reason='login_wall' if wall else 'individual_notices_not_verified')
         if individual:
-            page=discover(value.stdout,row['url'])
             result.update(source_published_at=page['source_published_at'],
                           notice_fields=evidence_fields(page['text'],page['source_published_at']),
                           page_text_preview=' '.join(page['text'].split()[:25]),

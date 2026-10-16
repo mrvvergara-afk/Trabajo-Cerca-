@@ -203,7 +203,8 @@ def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public
     if config.get('paid_providers_enabled') is not False or config.get('publish_enabled') is not False:raise ValueError('Pilot must remain isolated and free')
     slot=int(now.timestamp()//14400)
     for source in config['sources']:
-        if source['kind']=='web':store.seed('web',source['key']+':'+str(slot)+':v4',{'url':source['url'],'source':source,'depth':0,'page_type':source.get('page_type','notice')},now)
+        if source['kind']=='web' and source.get('probe_enabled',True):
+            store.seed('web',source['key']+':'+str(slot)+':v4',{'url':source['url'],'source':source,'depth':0,'page_type':source.get('page_type','notice')},now)
     for capture in social.get('captures',[]):
         digest=json_blob(store,capture)
         store.seed('social',capture['key']+':'+str(slot)+':'+digest,{'source_key':capture['key'],'archive':digest},now)

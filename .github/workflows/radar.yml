@@ -211,9 +211,11 @@ jobs:
       - name: Contrastar fechas literales de las dos ofertas del piloto
         if: contains(github.event.head_commit.message, '[public dates]')
         run: python -m scripts.inspect_public_job_dates
-      - name: Comprobar formatos regionales y fuentes oficiales sin publicar
+      - name: Comprobar formatos regionales, ediciones completas y fuentes oficiales sin publicar
         if: contains(github.event.head_commit.message, '[regional probe]')
-        run: python -m scripts.regional_source_probe
+        run: |
+          python -m scripts.regional_source_probe
+          python -m scripts.overnight_sources
       - name: Diagnosticar lectura pública de canales sociales institucionales sin iniciar sesión
         if: contains(github.event.head_commit.message, '[social access]')
         run: python -m scripts.social_access_probe

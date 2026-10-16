@@ -65,13 +65,21 @@ def page_clues(text: str, source_url: str) -> list[dict]:
     clues = []
     for page, value in enumerate(text.split("\f"), 1):
         lines = [line.strip() for line in value.splitlines() if line.strip()]
+        aggregate_page = bool(
+            re.search(r"\bferia\b", value, re.I)
+            and re.search(r"\b(?:empresas|cupos|perfiles\s+laborales)\b", value, re.I)
+        )
         for index, line in enumerate(lines):
             if not HIRING.search(line):
                 continue
             start, end = max(0, index - 4), min(len(lines), index + 8)
             clue = classify_snippet("\n".join(lines[start:end]), page=page, source_url=source_url)
+            if clue and aggregate_page:
+                clue["kind"] = "aggregate_event_not_individual_offer"
             if clue and not any(existing["page"] == page and existing["excerpt"] == clue["excerpt"] for existing in clues):
                 clues.append(clue)
+                if aggregate_page:
+                    break
     return clues[:40]
 
 
@@ -160,7 +168,7 @@ def main() -> None:
         "sources": sources,
         "edition": edition,
         "counts": {
-            "candidates": len(edition.get("clues", [])),
+            "candidates": sum(item["kind"] == "candidate_requires_original_verification" for item in edition.get("clues", [])),
             "historical_closed": sum(item["kind"] == "historical_closed_notice" for item in edition.get("clues", [])),
             "aggregate_events": sum(item["kind"] == "aggregate_event_not_individual_offer" for item in edition.get("clues", [])),
             "verified_current_offers": 0,

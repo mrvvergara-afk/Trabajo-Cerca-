@@ -28,6 +28,11 @@ def html(text=TEXT, date='2026-10-12T03:00:00Z'):
 
 
 class StructuralPipelineTests(unittest.TestCase):
+    def test_public_browser_runner_uses_runner_safe_chromium_flags(self):
+        source = Path('scripts/radar_v2_browser.mjs').read_text()
+        self.assertIn("'--no-sandbox'", source)
+        self.assertIn("'--disable-dev-shm-usage'", source)
+
     def test_html_original_reaches_handoff_and_payload_cannot_replace_evidence(self):
         with tempfile.TemporaryDirectory() as folder:
             store, history = PilotStore(Path(folder)/'pilot'), State(Path(folder)/'history.sqlite3')

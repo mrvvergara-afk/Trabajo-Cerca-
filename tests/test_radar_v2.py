@@ -42,6 +42,16 @@ class PilotQueueTests(unittest.TestCase):
             result,_=pilot.evaluate_work(store,{**medium,'text':text,'complete':True,'sha256':hashlib.sha256(text.encode()).hexdigest()},NOW)
             self.assertEqual(result['reason'],'source_date_missing_or_future');self.assertFalse(any(child[0]=='evaluate' for child in children));store.close()
 
+    def test_disabled_web_source_is_not_requested_or_seeded(self):
+        config={'sources':[{'key':'blocked','kind':'web','url':'https://blocked.example/','probe_enabled':False}],
+                'territories':['Angol'],'paid_providers_enabled':False,'publish_enabled':False}
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder)
+            result=pilot.run(store,config,{'captures':[]},now=NOW,limit=0,
+                             fetcher=lambda *a,**k:self.fail('disabled source must not be requested'))
+            self.assertEqual(result['counts']['jobs'],0)
+            store.close()
+
     def test_large_social_capture_is_archived_without_overflowing_the_queue_payload(self):
         with tempfile.TemporaryDirectory() as folder:
             store=PilotStore(folder)

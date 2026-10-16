@@ -168,6 +168,16 @@
       "scope": "public_read_only_probe; no paid target added"
     },
     {
+      "key": "social-nacimiento-omil",
+      "name": "OMIL Municipalidad de Nacimiento · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/profile.php?id=102913642090515",
+      "territory": "Nacimiento",
+      "discovered_from": "user_verified_profile_id:102913642090515",
+      "identity_evidence": "Perfil dedicado de OMIL Nacimiento identificado por ID estable 102913642090515; la lectura pública del 2026-10-15 redirigió a OMIL-Municipalidad-de-Nacimiento.",
+      "scope": "public_read_only_probe; dedicated_OMIL_channel; no paid target added"
+    },
+    {
       "key": "social-negrete",
       "name": "Municipalidad de Negrete · Facebook",
       "family": "social",

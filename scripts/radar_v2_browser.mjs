@@ -13,7 +13,7 @@ const executable=['/usr/bin/google-chrome','/usr/bin/chromium','/usr/bin/chromiu
 if(!executable)throw new Error('Public browser unavailable');
 const directory=mkdtempSync(join(tmpdir(),'tc-v2-browser-')),environment={...process.env};
 delete environment.GITHUB_TOKEN;delete environment.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
-const browser=spawn(executable,['--headless','--disable-gpu','--no-first-run','--disable-background-networking',
+const browser=spawn(executable,['--headless','--disable-gpu','--no-sandbox','--disable-dev-shm-usage','--no-first-run','--disable-background-networking',
   '--remote-debugging-port=0','--user-data-dir='+directory,'about:blank'],{stdio:'ignore',env:environment});
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 let socket,active,serial=0;const pending=new Map(),responses=new Map(),captures=[];

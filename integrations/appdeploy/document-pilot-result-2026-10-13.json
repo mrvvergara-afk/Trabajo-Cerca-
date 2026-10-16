@@ -1,0 +1,177 @@
+{
+  "run_id": 38479791274,
+  "run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38479791274",
+  "commit": "580351d9d76c69820a4477c2ff5070dd2cd3e5bc",
+  "schema": "trabajo-cerca.document-cycle.v1",
+  "checked_at": "2026-10-13T22:45:00.554121+00:00",
+  "work_items_received": 71,
+  "checked": 3,
+  "reviewed": [
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "status": "pending",
+      "reason": "source_date_missing_or_future",
+      "engine": "pdftotext-local",
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": false,
+      "page_count": 15,
+      "mean_confidence": null
+    },
+    {
+      "url": "https://www.munimulchen.cl/3er-concurso-microcuentos-bureanos/",
+      "status": "pending",
+      "reason": "source_date_missing_or_future",
+      "engine": "html-literal",
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": null,
+      "page_count": null,
+      "mean_confidence": null
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/01/CONCURSO-FAMILIA-MEDIA-JORNADA.pdf",
+      "status": "pending",
+      "reason": "ValueError",
+      "engine": null,
+      "source_published_at": null,
+      "valid_through": null,
+      "complete_document": null,
+      "page_count": null,
+      "mean_confidence": null
+    }
+  ],
+  "local_verified": 0,
+  "documents_ready": 0,
+  "batch_records": 0,
+  "discovered_channels": [
+    {
+      "channel": "https://www.facebook.com/municipalidadrenaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "publisher": "Municipalidad / OMIL Renaico",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/munirenaico/",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "publisher": "Municipalidad / OMIL Renaico",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.facebook.com/munimulchen",
+      "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "publisher": "Municipalidad / OMIL Mulchén",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    },
+    {
+      "channel": "https://www.instagram.com/municipalidaddemulchen",
+      "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "publisher": "Municipalidad / OMIL Mulchén",
+      "scope": "linked_by_primary_publisher; dedicated_OMIL_identity_not_assumed"
+    }
+  ],
+  "local_diagnostics": [
+    {
+      "source": "Municipalidad / OMIL Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Municipalidad / OMIL Lumaco",
+      "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+      "status": "error",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "error": "unsupported_media_type"
+    },
+    {
+      "source": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 1
+    },
+    {
+      "source": "Municipalidad / OMIL Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 2
+    },
+    {
+      "source": "Municipalidad / OMIL Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 2
+    },
+    {
+      "source": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": "2025-07-28T20:23:02+00:00",
+      "next_pages": 4,
+      "media_read": 3
+    },
+    {
+      "source": "Municipalidad / OMIL Mulchén",
+      "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 12,
+      "media_read": 3
+    },
+    {
+      "source": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "status": "ok",
+      "lookback_days": 45,
+      "coverage_complete": false,
+      "page_date": null,
+      "next_pages": 0,
+      "media_read": 3
+    }
+  ],
+  "inventory_count": 357,
+  "paid_provider_calls": 0,
+  "published": 0,
+  "publication_confirmed": false,
+  "coverage_complete": false,
+  "data_commit": "96a14f611d9b5fa9cf31bb5e3632d070f24ca2bb",
+  "backup_counts": {
+    "attempts": 19,
+    "candidates": 357,
+    "checkpoints": 4,
+    "observations": 2920,
+    "publication_receipts": 2,
+    "runs": 4
+  },
+  "signed_batch_created": false,
+  "previous_exchange_preserved": true
+}

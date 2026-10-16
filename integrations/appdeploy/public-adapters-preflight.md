@@ -1,0 +1,5 @@
+# Adaptadores públicos y recuperación local
+
+Implementación: compartir el verificador determinista entre la app y el productor; usar páginas individuales e identidad estable; comprobar fecha original de hasta 45 días, empresa y lugar real. Mantener pendiente lo bloqueado o incompleto. Para avisos sin cierre, exigir un formulario de postulación visible y habilitado en la página comprobada, con prueba reciente; el contacto aislado no sustituye vigencia. Guardar el historial y avanzar por cursores acotados.
+
+Preflight: leer la versión aplicada y las referencias del SDK; ejecutar regresiones de identidad, páginas relacionadas, fechas, cierre, formularios y escrituras parciales; usar solo HTTP público y OCR local gratuito; mantener secretos, proveedores pagos y calendario; enviar solamente archivos cambiados a `trabajo-cerca-laboratorio-3ojgro`; comprobar el estado final y la lectura del feed. La rama principal conserva su cabeza hasta revisión. Las barreras de sesión o acceso quedan registradas, sin eludirlas.

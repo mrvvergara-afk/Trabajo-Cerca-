@@ -1,0 +1,391 @@
+{
+  "schema": "trabajo-cerca.local-source-probe-record.v1",
+  "runId": 38334394231,
+  "jobId": 115091113407,
+  "commit": "385aa83b65c8e2711a7f9399f722f83871267f9f",
+  "dateChile": "2026-10-12",
+  "paid_provider_calls": 0,
+  "published": 0,
+  "sources": [
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "family": "municipal",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "access": "unavailable",
+      "reason": "HTTP 403"
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "family": "municipal",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.munilumaco.cl/",
+      "page_title": "Municipalidad de Lumaco",
+      "candidate_links": [
+        {
+          "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "title": "Llamados a concurso público",
+          "kind": "page"
+        }
+      ],
+      "social_links_from_page": [],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "family": "municipal",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.munilossauces.cl/noticias",
+      "page_title": "Municipalidad Los Sauces",
+      "candidate_links": [],
+      "social_links_from_page": [],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "family": "municipal",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "territory": "Traiguén",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "page_title": "Dirección de Fomento Productivo - Ilustre Municipalidad de TraiguénHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteContraste negativoFondo claroSubrayar enlacesFuente legibleRestablecer",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/munitraiguen/",
+        "https://www.instagram.com/munitraiguen"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-renaico",
+      "name": "Municipalidad / OMIL Renaico",
+      "family": "municipal",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "page_title": "Postulaciones a cargos públicos - Municipalidad de RenaicoHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteSubrayar enlacesRestablecer",
+      "candidate_links": [
+        {
+          "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+          "title": "DESCARGAR LLAMADO A CONCURSO PÚBLICO INTERNO",
+          "kind": "document"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/municipalidadrenaico",
+        "https://www.instagram.com/gonzalo.fotos/",
+        "https://www.instagram.com/munirenaico/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "family": "municipal",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.nacimiento.cl/noticias",
+      "page_title": "Nacimiento",
+      "candidate_links": [],
+      "social_links_from_page": [],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-negrete",
+      "name": "Municipalidad / OMIL Negrete",
+      "family": "municipal",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.muninegrete.cl/",
+      "page_title": "Ilustre Municipalidad de Negrete",
+      "candidate_links": [
+        {
+          "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+          "title": "Oficina Municipal de Intermediación Laboral (OMIL)",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+          "title": "¡YA ESTÁN ABIERTAS LAS POSTULACIONES PARA PUESTOS DE VENTA EN FIESTAS PATRIAS 2026!",
+          "kind": "page"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/MuniNegreteCL",
+        "https://www.instagram.com/muninegrete/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "family": "municipal",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "territory": "Mulchén",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "page_title": "oferta laboral | Resultados de la búsqueda  |",
+      "candidate_links": [
+        {
+          "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+          "title": "Bases de Postulación Feria Navideña 2025",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+          "title": "Concurso Público – Abogado Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Dispositivo Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+          "title": "Concurso Público – Profesional Equipo Previene",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-psicologo-omil/",
+          "title": "Concurso Público – Psicólogo OMIL",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/",
+          "title": "CONCURSO PÚBLICO 01 Cargo, Grado 8º Planta Directivos, Director de Obras Municipales",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/",
+          "title": "Llamado a Concurso para proveer cargo de Director de Control",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-3/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/",
+          "title": "Llamado a Concurso Público – Directivo Grado 6 E.M.R. (Dirección de Control Interno)",
+          "kind": "page"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/munimulchen",
+        "https://www.instagram.com/municipalidaddemulchen"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "family": "municipal",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "page_title": "Concursos Públicos - I. Municipalidad de Collipulli",
+      "candidate_links": [
+        {
+          "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+          "title": "Concursos Públicos",
+          "kind": "page"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-914-DEL-22.04.2026-LLAMADO-CONCURSO-OMIL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N%C2%B0-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Decreto-deroga-bases-concursos-publicos.pdf",
+          "title": "Descargar Decreto Deroga Bases Concursos Públicos",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2023/09/Bases-concurso-publico-tecnico-grado-15%C2%B0.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "http://municipalidadcollipulli.cl/wp-content/uploads/2016/11/Decreto-concurso-publico.pdf",
+          "title": "Decreto Aclaratorio",
+          "kind": "document"
+        }
+      ],
+      "social_links_from_page": [
+        "https://www.facebook.com/MunicipalidadCollipulli",
+        "https://www.instagram.com/Municipalidad_Collipulli/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "family": "media",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "identity_requires_check": true,
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.malleco7.cl/",
+      "page_title": "MALLECO 7 - En el corazón de nuestra gente",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/Malleco7",
+        "https://www.instagram.com/gonzalo.fotos/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "radio-mininco",
+      "name": "Radio Mininco",
+      "family": "media",
+      "url": "https://www.radiomininco.cl/",
+      "territory": "Mininco",
+      "identity_requires_check": true,
+      "access": "unavailable",
+      "reason": "URLError"
+    },
+    {
+      "key": "radio-nativa",
+      "name": "Radio Nativa",
+      "family": "media",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.radionativa.cl/",
+      "page_title": "✓ Radio Nativa | Inicio",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://instagram.com/radionativacl",
+        "https://www.facebook.com/radionativacl"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "radio-sur-collipulli",
+      "name": "Radio del Sur",
+      "family": "media",
+      "url": "https://www.radiodelsur.cl/",
+      "territory": "Collipulli",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.radiodelsur.cl/",
+      "page_title": "SUREÑA RADIO Y TELEVISIÓN",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/chile.poster",
+        "https://www.facebook.com/maurocerdaflores",
+        "https://www.facebook.com/radiodelsur.cl/",
+        "https://www.instagram.com/radiodelsur.cl",
+        "https://www.instagram.com/radiodelsur.cl/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "social-angol",
+      "name": "Municipalidad de Angol · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "territory": "Angol",
+      "access": "unavailable",
+      "reason": "ValueError"
+    },
+    {
+      "key": "social-lumaco",
+      "name": "Municipalidad de Lumaco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco",
+      "access": "unavailable",
+      "reason": "ValueError"
+    },
+    {
+      "key": "social-radio-nativa",
+      "name": "Radio Nativa · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/radionativacl/",
+      "territory": "Lumaco",
+      "access": "unavailable",
+      "reason": "HTTP 429"
+    },
+    {
+      "key": "cmpc",
+      "name": "CMPC · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.cmpc.com/",
+      "territory": "zona forestal",
+      "access": "public_page_read",
+      "http": 200,
+      "final_url": "https://www.cmpc.com/",
+      "page_title": "CMPC » Desde una empresa del fin del mundo… a una empresa del mundo",
+      "candidate_links": [],
+      "social_links_from_page": [
+        "https://www.facebook.com/SomosCMPC/",
+        "https://www.instagram.com/somoscmpc/"
+      ],
+      "source_published_at": null
+    },
+    {
+      "key": "arauco",
+      "name": "Arauco · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.arauco.com/",
+      "territory": "zona forestal",
+      "access": "unavailable",
+      "reason": "ValueError"
+    }
+  ],
+  "coverage": "18 seeds; 18 existing capture records; further pages remain; no real posters read in this initial batch",
+  "artifact": {
+    "id": 11784470191,
+    "sha256": "8483329d8a93f209514df39d3e7241a8eeea7959a8d56f42b0c6781a75a18b29"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "trabajo-cerca.public-portal-sources.v1",
+  "paid_providers_enabled": false,
+  "lookback_days": 45,
+  "sources": [
+    {"key":"indeed", "name":"Indeed", "home":"https://cl.indeed.com/", "search":"https://cl.indeed.com/jobs?q=&l={place}&fromage=45"},
+    {"key":"computrabajo", "name":"Computrabajo", "home":"https://cl.computrabajo.com/", "search":"https://cl.computrabajo.com/trabajo-en-{slug}"},
+    {"key":"linkedin", "name":"LinkedIn", "home":"https://www.linkedin.com/jobs/", "search":"https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000"},
+    {"key":"laborum", "name":"Laborum", "home":"https://www.laborum.cl/", "search":"https://www.laborum.cl/empleos-busqueda-{slug}.html"},
+    {"key":"opcionempleo", "name":"Opción Empleo", "home":"https://www.opcionempleo.cl/", "search":"https://www.opcionempleo.cl/empleo-en-{slug}.html"}
+  ],
+  "coverage_note": "Public search entrypoints require access checks. Query age hints never substitute original job dates or prove complete coverage."
+}

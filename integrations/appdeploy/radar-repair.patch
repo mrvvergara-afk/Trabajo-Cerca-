@@ -1,0 +1,205 @@
+--- a/backend/index.ts
++++ b/backend/index.ts
+@@ -62,6 +62,8 @@
+   verificationReason?: string;
+   verificationMethod?: string;
+   verificationVersion?: string;
++  enrichmentCheckedAt?: string;
++  radarJobId?: string;
+   verifiedAt?: string;
+   firstVerifiedAt?: string;
+   lastVerifiedAt?: string;
+@@ -745,6 +747,11 @@
+     db.list<ListingRecord>('community_posts', { limit:200 }),
+     db.list<PublicFeedControl>('public_feed_control', { limit:1 }),
+   ]);
++  // Preserve the existing materialized feed rather than publish a truncated inventory.
++  // A paginated shadow snapshot is required for feeds larger than this bounded page.
++  if (radar.nextToken || community.nextToken) {
++    throw new Error('Incomplete inventory: public feed retained; paginated snapshot required');
++  }
+   const updatedAt = new Date().toISOString();
+   const publicItems = [...radar.items, ...community.items]
+     .filter(item => {
+@@ -1286,30 +1293,48 @@
+   }
+ }
+ 
++type RadarPageCursor = { nextToken?:string | null; updatedAt?:string };
++
++async function saveRadarPageCursor(table:string, current:(RadarPageCursor & { id:string }) | undefined, nextToken:string | undefined) {
++  const checkpoint = { nextToken:nextToken || null, updatedAt:new Date().toISOString() };
++  if (current) {
++    const { id, ...record } = current;
++    const [ok] = await db.update(table, [{ id, record:{ ...record, ...checkpoint } }]);
++    if (!ok) throw new Error('Radar cursor update failed');
++  } else {
++    const [id] = await db.add(table, [checkpoint]);
++    if (!id) throw new Error('Radar cursor creation failed');
++  }
++}
++
+ async function enrichRadarCandidates(limit=40) {
++  const cursor = await db.list<RadarPageCursor>('radar_enrichment_cursor', { limit:1 });
+   const [candidates, radarJobs] = await Promise.all([
+-    db.list<ListingRecord>('radar_candidates', { limit:200 }),
++    db.list<ListingRecord>('radar_candidates', {
++      limit:200, ...(cursor.items[0]?.nextToken ? { nextToken:cursor.items[0].nextToken } : {}),
++    }),
+     db.list<ListingRecord>('radar_jobs', { limit:200 }),
+   ]);
+   const knownUrls = new Set(radarJobs.items.map(item => item.url).filter(Boolean));
+   const knownSignatures = new Set(radarJobs.items.map(item => candidateSignature(item.title, item.workCommunes)));
+   const selected = candidates.items
+     .filter(item => item.active && item.kind === 'candidate' && Boolean(item.url))
+-    .filter(item => isSpecificJobResult(item.title, item.url))
++    .filter(item => isSpecificJobResult(item.title, item.url) && !knownUrls.has(item.url))
++    .sort((a,b) => (Date.parse(a.enrichmentCheckedAt || '') || 0) - (Date.parse(b.enrichmentCheckedAt || '') || 0))
+     .slice(0, limit);
+-  const additions: ListingRecord[] = [];
+-  const closures: Array<{ id:string; record:Record<string, unknown> }> = [];
+-
++  const checkedAt = new Date().toISOString();
++  const results:Array<{ id:string; original:ListingRecord; promoted:ListingRecord | null }> = [];
+   for (let i=0; i<selected.length; i+=8) {
+     const batch = selected.slice(i, i+8);
+     const resolved = await Promise.all(batch.map(async item => {
++      const { id, ...record } = item;
++      const original = { ...record, enrichmentCheckedAt:checkedAt };
+       try {
+         let pageText = '';
+         try {
+           const response = await fetch(item.url!, {
+             headers:{ 'user-agent':'Mozilla/5.0 TrabajoCercaEnricher/1.0', 'accept':'text/html,application/xhtml+xml' },
+-            redirect:'follow',
+-            signal:AbortSignal.timeout(3500),
++            redirect:'follow', signal:AbortSignal.timeout(3500),
+           });
+           if (response.ok) pageText = cleanHtml((await response.text()).slice(0, 600000)).slice(0, 180000);
+         } catch {
+@@ -1323,60 +1348,55 @@
+             pageText = pageText || '';
+           }
+         }
+-        if (!pageText) return null;
+         const evidence = [item.title, item.note, item.url, pageText].filter(Boolean).join(' ');
+-        if (!relevantEmploymentSignal(evidence) || !moderate(evidence) || expiredSourceSignal(pageText)) return null;
+-        const detected = extractCommunes(evidence);
+-        if (!detected.length) return null;
++        const detected = pageText ? extractCommunes(evidence) : [];
+         const signature = candidateSignature(item.title, detected);
+-        if (knownUrls.has(item.url) || knownSignatures.has(signature)) return null;
+-        const { id, ...record } = item;
++        if (!pageText || !relevantEmploymentSignal(evidence) || !moderate(evidence) ||
++            expiredSourceSignal(pageText) || !detected.length ||
++            knownUrls.has(item.url) || knownSignatures.has(signature)) {
++          return { id, original, promoted:null };
++        }
+         const recruitmentCommunes = [...new Set([...item.recruitmentCommunes.filter(place => PILOT.includes(place)), ...detected])];
+         const recruitmentZones = [...new Set([...item.recruitmentZones.filter(place => PILOT.includes(place)), ...detected])];
+-        const promoted: ListingRecord = {
+-          ...record,
+-          kind:'job_offer',
+-          workLocation:detected.join(' · '),
+-          workCommunes:detected,
+-          recruitmentZones,
+-          recruitmentCommunes,
+-          status:'Por confirmar',
+-          review:true,
+-          verified:false,
+-          active:true,
++        const promoted:ListingRecord = {
++          ...original, kind:'job_offer', workLocation:detected.join(' · '), workCommunes:detected,
++          recruitmentZones, recruitmentCommunes, status:'Por confirmar',
++          review:true, verified:false, active:true,
+           evidence:[item.evidence, 'La página específica confirma una señal laboral y una comuna objetivo; pasa a verificación automática.'].filter(Boolean).join(' '),
+         };
+         knownUrls.add(item.url);
+         knownSignatures.add(signature);
+-        return { id, original:record, promoted };
++        return { id, original, promoted };
+       } catch {
+-        return null;
++        return { id, original, promoted:null };
+       }
+     }));
+-    for (const result of resolved) {
+-      if (!result) continue;
+-      additions.push(result.promoted);
+-      closures.push({ id:result.id, record:{ ...result.original, active:false, status:'Promovido a oferta pública' } });
+-    }
+-  }
+-
+-  if (!additions.length) return { scanned:selected.length, promoted:0 };
+-  const addedIds = await db.add('radar_jobs', additions);
+-  const promotedCount = Math.min(addedIds.length, closures.length);
+-  if (promotedCount) await db.update('radar_candidates', closures.slice(0, promotedCount));
+-  return { scanned:selected.length, promoted:promotedCount };
++    results.push(...resolved);
++  }
++  const additions = results.filter(result => result.promoted !== null);
++  const addedIds = additions.length ? await db.add('radar_jobs', additions.map(result => result.promoted!)) : [];
++  const successful = new Map<string,string>(additions.flatMap((result, i) => addedIds[i] ? [[result.id, addedIds[i]!] as [string,string]] : []));
++  const updates = results.map(result => ({
++    id:result.id,
++    record:successful.has(result.id)
++      ? { ...result.original, active:false, status:'Promovido a verificación', radarJobId:successful.get(result.id) }
++      : { ...result.original },
++  }));
++  const saved = updates.length ? await db.update('radar_candidates', updates) : [];
++  if (saved.length !== updates.length || saved.some(ok => !ok)) {
++    throw new Error('Candidate checkpoint write failed; review partial writes before retry');
++  }
++  await saveRadarPageCursor('radar_enrichment_cursor', cursor.items[0], candidates.nextToken);
++  const failed = additions.length - successful.size;
++  if (failed) throw new Error('Partial radar job insertion: ' + failed + ' candidates remain active');
++  return { scanned:selected.length, promoted:successful.size, failed:0 };
+ }
+ 
+ async function processPendingOffers(limit=40) {
+-  const allItems: ListingRecord[] = [];
+-  let nextToken: string | undefined;
+-  for (let page = 0; page < 10; page++) {
+-    const batch = await db.list<ListingRecord>('radar_jobs', { limit:200, ...(nextToken ? { nextToken } : {}) });
+-    allItems.push(...batch.items);
+-    if (!batch.nextToken) break;
+-    nextToken = batch.nextToken;
+-  }
+-  const rows = { items: allItems };
++  const cursor = await db.list<RadarPageCursor>('radar_verification_cursor', { limit:1 });
++  const rows = await db.list<ListingRecord>('radar_jobs', {
++    limit:200, ...(cursor.items[0]?.nextToken ? { nextToken:cursor.items[0].nextToken } : {}),
++  });
+   const reviewCutoff = Date.now() - 6 * 3600000;
+   const liveRecheckCutoff = Date.now() - 24 * 3600000;
+   const pending = rows.items
+@@ -1398,20 +1418,22 @@
+       const aTier = sourceVerificationTier(verificationHost(a.url, a.sourceDomain));
+       const bTier = sourceVerificationTier(verificationHost(b.url, b.sourceDomain));
+       if (rank[aTier] !== rank[bTier]) return rank[aTier] - rank[bTier];
+-      return Date.parse(b.sourcePublishedAt || b.createdAt) - Date.parse(a.sourcePublishedAt || a.createdAt);
++      return (Date.parse(a.verificationCheckedAt || '') || 0) - (Date.parse(b.verificationCheckedAt || '') || 0);
+     })
+     .slice(0, limit);
+-  const updates: Array<{ id:string; record:Record<string, unknown> }> = [];
++  const updates:Array<{ id:string; record:Record<string,unknown> }> = [];
+   for (let i=0; i<pending.length; i+=16) {
+-    const batch = pending.slice(i, i+16);
+-    const resolved = await Promise.all(batch.map(item => verifyPendingOffer(item)));
++    const resolved = await Promise.all(pending.slice(i, i+16).map(item => verifyPendingOffer(item)));
+     updates.push(...resolved);
+   }
+-  if (updates.length) await db.update('radar_jobs', updates);
++  const saved = updates.length ? await db.update('radar_jobs', updates) : [];
++  if (saved.length !== updates.length || saved.some(ok => !ok)) {
++    throw new Error('Partial verification write; publication counters must not claim success');
++  }
++  await saveRadarPageCursor('radar_verification_cursor', cursor.items[0], rows.nextToken);
+   const verified = updates.filter(update => update.record.verified === true).length;
+   const rejected = updates.filter(update => update.record.active === false).length;
+-  const kept = updates.length - verified - rejected;
+-  return { processed:updates.length, verified, rejected, kept };
++  return { processed:updates.length, verified, rejected, kept:updates.length - verified - rejected };
+ }
+ 
+ async function reactivateOverstrictFalseNegatives() {

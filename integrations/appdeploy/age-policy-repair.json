@@ -1,0 +1,84 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "baseline_version": "1791861145815",
+  "applied": true,
+  "files": [
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "const DISCOVERY_MAX_AGE_DAYS = 60;",
+          "to": "const DISCOVERY_MAX_AGE_DAYS = 45;"
+        },
+        {
+          "from": "function parseDiscoveryDate(value:string) {\n  const text = normalizeText(value).toLocaleLowerCase('es-CL');\n  const iso = text.match(/\\b(20\\d{2})-(\\d{2})-(\\d{2})/);\n  if (iso) {\n    const parsed = Date.parse(iso[1] + '-' + iso[2] + '-' + iso[3] + 'T12:00:00Z');\n    if (Number.isFinite(parsed)) return parsed;\n  }\n  const months:Record<string,number> = { ene:0,enero:0,feb:1,febrero:1,mar:2,marzo:2,abr:3,abril:3,may:4,mayo:4,jun:5,junio:5,jul:6,julio:6,ago:7,agosto:7,sep:8,sept:8,septiembre:8,oct:9,octubre:9,nov:10,noviembre:10,dic:11,diciembre:11 };\n  const dayMonth = text.match(/\\b(\\d{1,2})\\s+(ene(?:ro)?|feb(?:rero)?|mar(?:zo)?|abr(?:il)?|may(?:o)?|jun(?:io)?|jul(?:io)?|ago(?:sto)?|sep(?:t|tiembre)?|oct(?:ubre)?|nov(?:iembre)?|dic(?:iembre)?)\\s+(20\\d{2})\\b/);\n  if (dayMonth) { const month = months[dayMonth[2]]; if (month !== undefined) return Date.UTC(Number(dayMonth[3]), month, Number(dayMonth[1]), 12); }\n  const monthDay = text.match(/\\b(ene(?:ro)?|feb(?:rero)?|mar(?:zo)?|abr(?:il)?|may(?:o)?|jun(?:io)?|jul(?:io)?|ago(?:sto)?|sep(?:t|tiembre)?|oct(?:ubre)?|nov(?:iembre)?|dic(?:iembre)?)\\s+(\\d{1,2}),?\\s+(20\\d{2})\\b/);\n  if (monthDay) { const month = months[monthDay[1]]; if (month !== undefined) return Date.UTC(Number(monthDay[3]), month, Number(monthDay[2]), 12); }\n  const currentYear = new Date().getUTCFullYear();\n  const dayMonthCurrent = text.match(/\\b(\\d{1,2})\\s+(ene(?:ro)?|feb(?:rero)?|mar(?:zo)?|abr(?:il)?|may(?:o)?|jun(?:io)?|jul(?:io)?|ago(?:sto)?|sep(?:t|tiembre)?|oct(?:ubre)?|nov(?:iembre)?|dic(?:iembre)?)\\b/);\n  if (dayMonthCurrent) { const month = months[dayMonthCurrent[2]]; if (month !== undefined) return Date.UTC(currentYear, month, Number(dayMonthCurrent[1]), 12); }\n  const relative = text.match(/\\b(hoy|ayer|hace\\s+(\\d{1,2})\\s+d[ií]as?)\\b/);\n  if (relative) { const days = relative[1] === 'hoy' ? 0 : relative[1] === 'ayer' ? 1 : Math.min(30, Number(relative[2] || 0)); return Date.now() - days * 86400000; }\n  return undefined;\n}",
+          "to": "function parseDiscoveryDate(value:string) {\n  const original = socialSourceDate(value);\n  return original ? Date.parse(original) : undefined;\n}"
+        },
+        {
+          "from": "function staleDiscoveryDate(value:string, maxAgeDays=DISCOVERY_MAX_AGE_DAYS) {\n  const parsed = parseDiscoveryDate(value);\n  if (!parsed) return false;\n  const age = Date.now() - parsed;\n  return age > maxAgeDays * 86400000 || age < -2 * 86400000;\n}",
+          "to": "function staleDiscoveryDate(value:string, maxAgeDays=DISCOVERY_MAX_AGE_DAYS) {\n  const parsed = parseDiscoveryDate(value);\n  if (!parsed) return false;\n  const age = Date.now() - parsed;\n  return age > maxAgeDays * 86400000 || age < 0;\n}"
+        },
+        {
+          "from": "const sourceDateEvidence = [record.sourcePublishedAt, record.date].filter(Boolean).join(' ');",
+          "to": "const sourceDateEvidence = record.sourcePublishedAt || record.date || '';"
+        },
+        {
+          "from": "La publicación supera la antigüedad máxima de 60 días.",
+          "to": "La publicación supera la antigüedad máxima de 45 días.",
+          "multiple": true
+        },
+        {
+          "from": "publishedTs !== null && !staleDiscoveryDate(record.sourcePublishedAt || '')",
+          "to": "typeof publishedTs === 'number' && !staleDiscoveryDate(record.sourcePublishedAt || '')"
+        },
+        {
+          "from": "const feed=await advancePublicFeed({ project:projectFeedListing, refreshAt:feedRefreshAt });",
+          "to": "const feed=await advancePublicFeed({ revision:'original-source-45-days-v1', project:projectFeedListing, refreshAt:feedRefreshAt });"
+        }
+      ]
+    },
+    {
+      "filename": "backend/radar-ingestion.ts",
+      "diffs": [
+        {
+          "from": "published > now || now - published > 60 * MAX_AGE || deadline <= now || deadline <= published)",
+          "to": "published > now || now - published > 45 * MAX_AGE || deadline <= now || deadline <= published)"
+        }
+      ]
+    },
+    {
+      "filename": "backend/public-feed.ts",
+      "diffs": [
+        {
+          "from": "type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary };",
+          "to": "type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary; projectionRevision?:string };"
+        },
+        {
+          "from": "type Projector = {\n  project:",
+          "to": "type Projector = {\n  revision?:string;\n  project:"
+        },
+        {
+          "from": "      ref.id = id;\n      ref.summary = summarize(entries, this.now);",
+          "to": "      ref.id = id;\n      if (this.projector.revision) {\n        if (entries.every(entry => entry.projectionRevision === this.projector.revision)) ref.projectionRevision = this.projector.revision;\n        else delete ref.projectionRevision;\n      }\n      ref.summary = summarize(entries, this.now);"
+        },
+        {
+          "from": "  const due = current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];",
+          "to": "  // Reproject one existing page per writer step when eligibility rules change.\n  const policyDue = projector.revision ? current.pages.find(page => page.projectionRevision !== projector.revision) : undefined;\n  const due = policyDue ?? current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];"
+        },
+        {
+          "from": "type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored };",
+          "to": "type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored; projectionRevision?:string };"
+        },
+        {
+          "from": "      entries = page.entries;",
+          "to": "      entries = page.entries.map(entry => ({ ...entry, projectionRevision:entry.projectionRevision ?? ref.projectionRevision }));"
+        },
+        {
+          "from": "    const entry:Entry = { key, source, sourceId, item };",
+          "to": "    const entry:Entry = { key, source, sourceId, item, ...(this.projector.revision ? { projectionRevision:this.projector.revision } : {}) };"
+        }
+      ]
+    }
+  ],
+  "applied_version": "1791892758639"
+}

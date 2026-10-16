@@ -1,0 +1,7 @@
+# Conexión gratuita de documentos
+
+Implementación: exportar mediante el diagnóstico de lectura las URLs locales pendientes; procesar imágenes/PDF con Tesseract/Poppler en el runner público; conservar SQLite y evidencia en las ramas de datos existentes; emitir como máximo tres ofertas comprobadas mediante la prueba OIDC ya usada; dejar al escritor de la app confirmar el feed. Registrar canales sociales enlazados por fuentes primarias y sus bloqueos, sin iniciar proveedores pagos.
+
+La ejecución de revisión permanece en `repair/radar-audit-2026-10-11`. El horario de GitHub requiere que el workflow aprobado esté en la rama predeterminada; no se modifica `main` para activarlo. Se prepara esa ruta y se comprueba el piloto explícito. No se incorpora un servicio externo de OCR, una clave ni un nuevo cron en AppDeploy.
+
+Preflight: leer el snapshot aplicado y los contratos del SDK; comprobar que el lote está ligado a repositorio, rama, workflow y digest; preservar el lote aceptado cuando una copia histórica trae la misma carga; exigir fecha original de hasta 45 días, empleador, lugar, documento completo, confianza de OCR y postulación vigente; probar persistencia y escrituras parciales; enviar solo archivos nativos cambiados y observar `ready`. El diagnóstico de documentos es interno y de lectura; conserva la interfaz y las pruebas existentes de usuario. Los cambios no ejecutan IA, Actors, capturas ni conexiones pagas.

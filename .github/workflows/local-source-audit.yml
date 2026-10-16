@@ -1,0 +1,66 @@
+name: Evidencia de fuentes locales sin proveedores pagos
+on:
+  push:
+    branches: [repair/radar-audit-2026-10-11]
+    paths:
+      - 'scripts/local_source_audit.py'
+      - 'scripts/local_evidence_archive.py'
+      - 'config/local-source-priorities.json'
+      - 'tests/test_local_source_audit.py'
+      - 'tests/test_local_evidence_archive.py'
+      - 'integrations/appdeploy/local-source-evidence*'
+      - '.github/workflows/local-source-audit.yml'
+permissions:
+  contents: write
+concurrency:
+  group: local-source-audit-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  evidence:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      github.event.repository.private == false &&
+      contains(github.event.head_commit.message, '[local sources]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Instalar lectores y generador de pruebas gratuitos en el runner temporal
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Pruebas sin red ni escrituras
+        run: |
+          python -m unittest tests.test_local_source_audit tests.test_local_evidence_archive tests.test_laboratory_observer -v
+          node tests/appdeploy-local-evidence.test.mjs
+          node tests/appdeploy-social-evidence.test.mjs
+          node tests/appdeploy-social-evidence-store.test.mjs
+          node tests/appdeploy-social-repair.test.mjs
+      - name: Restaurar el cursor sin sustituir un fallo por un reinicio
+        env:
+          LOCAL_AUDIT_ARCHIVE_OPERATION: restore
+        run: python scripts/local_evidence_archive.py
+      - name: Leer fuentes públicas, capturas existentes y afiches con OCR local
+        run: python scripts/local_source_audit.py
+      - name: Confirmar la app y las publicaciones previas mediante lectura del SDK
+        run: |
+          python scripts/observe_laboratory.py
+          cp output/laboratory_observation.json output/local-source-audit/laboratory-observation.json
+      - name: Conservar evidencia acumulada en su propia rama sin modificar ofertas
+        env:
+          LOCAL_AUDIT_ARCHIVE_OPERATION: save
+        run: python scripts/local_evidence_archive.py
+      - name: Conservar evidencia y bloqueos reales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-source-evidence
+          path: output/local-source-audit/
+          retention-days: 7

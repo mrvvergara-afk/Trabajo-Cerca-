@@ -1,39 +1,73 @@
-"""Public RSS backfill, with per-source cursor and review-only candidates."""
-import datetime as dt, email.utils, hashlib, json, os, re, urllib.parse, urllib.request, xml.etree.ElementTree as ET
-from pathlib import Path
-NOW=dt.datetime.now(dt.timezone.utc)
-DAYS=int(os.getenv("BACKFILL_DAYS","60"))
-PLACES=["Angol","Collipulli","Ercilla","Renaico","Mininco","Los Sauces","Purén","Traiguén","Lumaco","Nacimiento","Negrete","Mulchén","Victoria"]
-SOURCES={
- "GoogleNewsLocal": lambda p: "https://news.google.com/rss/search?q="+urllib.parse.quote(f'"{p}" ("oferta laboral" OR "se necesita" OR "se busca" OR "vacantes" OR OMIL) when:{DAYS}d')+"&hl=es-419&gl=CL&ceid=CL:es-419",
- "GoogleNewsPortals": lambda p: "https://news.google.com/rss/search?q="+urllib.parse.quote(f'"{p}" (site:chiletrabajos.cl OR site:cl.indeed.com OR site:computrabajo.cl OR site:linkedin.com/jobs OR site:laborum.cl OR site:jobsora.com) when:{DAYS}d')+"&hl=es-419&gl=CL&ceid=CL:es-419",
-}
-HIRING=re.compile(r'ofertas? laborales?|vacantes?|se (?:busca|necesita|requiere)|contrataci[oó]n|postulaciones|omil',re.I)
-EXCLUDE=re.compile(r'argentina|villarruel|subsidio|inversiones|victoria electoral|victoria de',re.I)
-Path("output").mkdir(exist_ok=True)
-all_items=[];stats=[];seen=set()
-for source,make_url in SOURCES.items():
- for place in PLACES:
-  url=make_url(place);status="ok";error=None;scanned=0;accepted=0
-  try:
-   req=urllib.request.Request(url,headers={"User-Agent":"TrabajoCercaRadar/0.3"})
-   with urllib.request.urlopen(req,timeout=15) as resp: raw=resp.read(900000)
-   root=ET.fromstring(raw)
-   for item in root.findall("./channel/item"):
-    scanned+=1
-    title=item.findtext("title","").strip();link=item.findtext("link","").strip()
-    published=item.findtext("pubDate","")
-    try: when=email.utils.parsedate_to_datetime(published).astimezone(dt.timezone.utc)
-    except Exception: when=None
-    if not link or not HIRING.search(title) or EXCLUDE.search(title): continue
-    if not re.search(r"\\b"+re.escape(place)+r"\\b",title,re.I):continue
-    if when is not None and (NOW-when).days>DAYS:continue
-    key=hashlib.sha256(link.encode()).hexdigest()[:20]
-    if key in seen:continue
-    seen.add(key);accepted+=1
-    all_items.append({"id":key,"source":source,"commune_hint":place,"title":title,"url":link,"published_at":when.isoformat() if when else None,"discovered_at":NOW.isoformat(),"state":"pending_verification","work_location_verified":False})
-  except Exception as exc:status="error";error=str(exc)[:160]
-  stats.append({"source":source,"commune":place,"status":status,"scanned":scanned,"candidates":accepted,"error":error})
-report={"generated_at":NOW.isoformat(),"lookback_days":DAYS,"candidate_count":len(all_items),"published_count":0,"candidates":all_items,"diagnostics":stats,"coverage_note":"Only public Google News RSS indexed content; no direct Facebook, Instagram, LinkedIn or job-board crawling. These require individual adapters."}
-Path("output/backfill.json").write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
-print(json.dumps({"candidates":len(all_items),"scanned":sum(x["scanned"] for x in stats),"errors":sum(x["status"]=="error" for x in stats),"published":0},ensure_ascii=False))
+"""Bounded public RSS backfill. Dates are source dates, never invented."""
+import datetime as dt
+import email.utils
+import hashlib
+import re
+import urllib.parse
+import xml.etree.ElementTree as ET
+try:
+    from .common import COMMUNES, MAX_SOURCE_AGE_DAYS, bounded_int, canonical_url, communes, fetch_text, output_dir, safe_error, utcnow, write_json
+except ImportError:
+    from common import COMMUNES, MAX_SOURCE_AGE_DAYS, bounded_int, canonical_url, communes, fetch_text, output_dir, safe_error, utcnow, write_json
+
+HIRING = re.compile(r'ofertas? laboral(?:es)?|vacantes?|se (?:busca|necesita|requiere)|contrataci[oó]n|postulaciones|omil', re.I)
+EXCLUDE = re.compile(r'argentina|villarruel|subsidio|inversiones|victoria electoral|victoria de', re.I)
+
+
+def run(*, fetcher=fetch_text, output=None, places=None, days=None, budget=None, now=None):
+    now = now or utcnow()
+    days = bounded_int('BACKFILL_DAYS', MAX_SOURCE_AGE_DAYS, 1, MAX_SOURCE_AGE_DAYS) if days is None else days
+    if not isinstance(days, int) or isinstance(days, bool) or not 1 <= days <= MAX_SOURCE_AGE_DAYS:
+        raise ValueError('BACKFILL_DAYS must be between 1 and 45')
+    items, diagnostics, seen = [], [], set()
+    for source in ('GoogleNewsLocal', 'GoogleNewsPortals'):
+        for place in (COMMUNES if places is None else places):
+            record = {'source': source, 'commune': place, 'status': 'ok', 'scanned': 0,
+                      'candidates': 0, 'error': None, 'coverage_complete': False}
+            if budget and budget.remaining() <= 0:
+                record.update(status='deferred', error='stage_budget_exhausted')
+                diagnostics.append(record)
+                continue
+            terms = '("oferta laboral" OR "se necesita" OR "se busca" OR "vacantes" OR OMIL)' if source == 'GoogleNewsLocal' else '(site:chiletrabajos.cl OR site:cl.indeed.com OR site:cl.computrabajo.com OR site:computrabajo.cl OR site:linkedin.com/jobs OR site:laborum.cl OR site:opcionempleo.cl)'
+            url = 'https://news.google.com/rss/search?q=' + urllib.parse.quote(f'"{place}" {terms} when:{days}d') + '&hl=es-419&gl=CL&ceid=CL:es-419'
+            try:
+                root = ET.fromstring(fetcher(url, budget=budget))
+                for item in root.findall('./channel/item'):
+                    record['scanned'] += 1
+                    title, link = item.findtext('title', '').strip(), item.findtext('link', '').strip()
+                    if not link or not HIRING.search(title) or EXCLUDE.search(title) or place not in communes(title):
+                        continue
+                    try:
+                        when = email.utils.parsedate_to_datetime(item.findtext('pubDate', ''))
+                        when = when.replace(tzinfo=when.tzinfo or dt.timezone.utc).astimezone(dt.timezone.utc)
+                    except (ValueError, TypeError, OverflowError):
+                        when = None
+                    if when and (when > now or now - when > dt.timedelta(days=days)):
+                        continue
+                    link = canonical_url(link)
+                    if link in seen:
+                        continue
+                    seen.add(link)
+                    record['candidates'] += 1
+                    items.append({'id': hashlib.sha256(link.encode()).hexdigest()[:24],
+                                  'source': source, 'commune_hint': place, 'title': title, 'url': link,
+                                  'published_at': when.isoformat() if when else None,
+                                  'discovered_at': now.isoformat(), 'state': 'pending_verification',
+                                  'work_location_verified': False})
+            except Exception as exc:
+                record.update(status='error', error=safe_error(exc))
+            diagnostics.append(record)
+    report = {'generated_at': now.isoformat(), 'lookback_days': days, 'candidate_count': len(items),
+              'published_count': 0, 'candidates': items, 'diagnostics': diagnostics,
+              'coverage_note': f'Only indexed news RSS content, not a complete {days}-day job archive. Source pages still require date and vacancy verification.'}
+    write_json((output or output_dir()) / 'backfill.json', report)
+    return report
+
+
+if __name__ == '__main__':
+    import json
+    result = run()
+    print(json.dumps({'candidates': result['candidate_count'],
+                      'scanned': sum(d['scanned'] for d in result['diagnostics']),
+                      'errors': sum(d['status'] == 'error' for d in result['diagnostics']),
+                      'published': 0}, ensure_ascii=False))

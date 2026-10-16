@@ -1,0 +1,18 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "base_version": "1791828227760",
+  "applied_version": "1791842683706",
+  "status": "applied_to_laboratory",
+  "purpose": "Backup-only data commits checkpoint the identical verified batch without resetting receipts or writing offer/change records",
+  "files": [
+    {
+      "filename": "backend/radar-ingestion.ts",
+      "diffs": [
+        {
+          "from": "    batch.records.forEach(item => validateOffer(item));\n    const result = await storeVerifiedBatch(batch, digest, mapRecord);",
+          "to": "    batch.records.forEach(item => validateOffer(item));\n    if (previous && previous.digest === digest) {\n      // A backup commit may retain the already accepted exchange. Preserve its IDs and receipts.\n      const published = Number(previous.publishedCount || 0);\n      const count = previous.receipts?.length ?? 0;\n      const status = !count ? 'no_verified_offers' : published === count ? 'published' : 'stored_waiting_for_feed';\n      await saveState({ dataCommit:commit, status, rejection:null, transportError:null, checkedAt:new Date().toISOString() });\n      return { stored:0, published, status:'unchanged_batch' };\n    }\n    const result = await storeVerifiedBatch(batch, digest, mapRecord);"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "trabajo-cerca.source-coverage-review.v1",
+  "observed_at": "2026-10-13T12:21:22.6437453Z",
+  "code_commit": "eee4c23f9b8c0f36c4838063d49a5c12a7d60a38",
+  "repair_branch": "repair/radar-audit-2026-10-11",
+  "main_unchanged": "fab392b824e4100a4bba6dfe9289825297d24707",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_version": "1791892758639",
+  "deployment_status": "ready",
+  "qa_errors": {
+    "frontend": [],
+    "network": [],
+    "backend": []
+  },
+  "tests": {
+    "python": 72,
+    "node": 96,
+    "total": 168,
+    "failures": 0,
+    "skips": 0,
+    "local": true,
+    "github_actions": true
+  },
+  "run_id": 38396625562,
+  "review_job_id": 115293364720,
+  "skipped_jobs": [
+    "scan",
+    "laboratory",
+    "laboratory-read"
+  ],
+  "artifact": {
+    "id": 11811703046,
+    "digest": "sha256:f572afa010c23d1b4900735c1162e2d86e56a087b200676ae6d18b1c6e7f0706",
+    "expires_at": "2026-10-20T12:21:22Z"
+  },
+  "readonly_publication_observation": {
+    "stored": 2,
+    "published": 2,
+    "published_ids": [
+      "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+      "43f60fcc-b8ea-4a84-a094-131649c14c37"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "01d35bdc68538e6627d3990a880fdefd98dea6a8",
+    "ingestion_run_id": "38264847681",
+    "feed_complete": true,
+    "feed_manifest": "dafe734c-5a2b-45bb-ac3e-3bdf2b5d0dae",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "new_hard_source_publications_confirmed_by_this_audit": 0,
+  "source_record_deletions_by_this_change": 0,
+  "manual_paid_provider_calls": 0,
+  "changed_paid_target_count": 0,
+  "public_website_sources_prepared_on_repair_branch": 13,
+  "full_45_day_history_coverage_proven": false,
+  "complete_feed_age_policy_migration_proven": false
+}

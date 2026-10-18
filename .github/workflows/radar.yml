@@ -57,6 +57,7 @@ jobs:
       - name: Leer fuentes públicas desde el flujo SDK autorizado
         run: node scripts/observe_public_sources.mjs
       - name: Comprobar la revalidación real y sus IDs visibles
+        if: always()
         run: python -m scripts.observe_document_revalidation
       - name: Conservar las comprobaciones y los errores
         if: always()

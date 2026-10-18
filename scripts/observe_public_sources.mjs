@@ -9,7 +9,10 @@ const environment={ ...process.env };
 delete environment.GITHUB_TOKEN;delete environment.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
 const browser=spawn('google-chrome',['--headless','--disable-gpu','--no-first-run','--disable-background-networking',
   '--disable-background-timer-throttling','--disable-renderer-backgrounding',
-  '--remote-debugging-port=9227','--user-data-dir='+profile,'about:blank'],{ stdio:'ignore',env:environment });
+  '--remote-debugging-port=9227','--user-data-dir='+profile,'about:blank'],{ stdio:['ignore','ignore','pipe'],env:environment });
+let browserStartup='';
+browser.stderr.on('data',chunk=>{browserStartup=(browserStartup+chunk.toString()).slice(-3000);});
+browser.on('error',error=>{browserStartup='Browser startup '+error.code;});
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 let socket;
 const diagnostics={ responseStatuses:{},failedRequests:0,exceptions:[],page:null };
@@ -25,11 +28,15 @@ const saveDiagnostics=async()=>{
 };
 try {
   let tabs;
-  for (let attempt=0;attempt<30;attempt++) {
+  for (let attempt=0;attempt<60;attempt++) {
     try { tabs=await (await fetch('http://127.0.0.1:9227/json')).json();if (tabs.length) break; } catch {}
-    await pause(200);
+    if (browser.exitCode!==null) break;
+    await pause(500);
   }
-  if (!tabs?.length) throw new Error('Read-only browser unavailable');
+  if (!tabs?.length) {
+    console.log('APP_BROWSER_STARTUP '+JSON.stringify({exitCode:browser.exitCode,stderr:browserStartup}));
+    throw new Error('Public-source browser unavailable');
+  }
   const tab=tabs.find(item=>item.type==='page');
   if (!tab) throw new Error('Browser page unavailable');
   socket=new WebSocket(tab.webSocketDebuggerUrl);

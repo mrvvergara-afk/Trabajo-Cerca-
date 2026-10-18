@@ -1,8 +1,8 @@
 {
   "app_id": "trabajo-cerca-laboratorio-3ojgro",
   "baseline_version": "1791924889565",
-  "applied": false,
-  "deployment_requested": false,
+  "applied": true,
+  "deployment_requested": true,
   "preserves_existing_ids": true,
   "credential_changes": false,
   "paid_providers_enabled": false,
@@ -71,5 +71,10 @@
     }
   ],
   "controller_changes_required": false,
-  "activation": "Explicit reviewed-document handoff only; no workflow or cron activated."
+  "activation": "Explicit reviewed-document workflow completed once on the independent repair branch. No new cron or schedule activated.",
+  "applied_version": "1792284993128",
+  "current_applied_version": "1792288685274",
+  "publication_confirmed": true,
+  "confirmed_run_id": "39088489568",
+  "followup": "The current applied version also permits only the exact reviewed branch repair/mulchen-captura-2026-10-17; signature and workflow validation remain mandatory."
 }

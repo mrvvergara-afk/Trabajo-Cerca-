@@ -30,8 +30,31 @@ el PDF sin cambios, 37 objetos restaurados y tres cargos elegibles. El cierre
 es el 2 de noviembre de 2026 a las 14:00, con recepción presencial en
 Balmaceda 424, Traiguén. Estos datos proceden de las bases, no de la captura.
 
-La confirmación de publicación requiere el ID de ejecución firmado, tres
-recibos distintos y sus tres IDs presentes en el mismo feed completo.
-Mientras no exista esa comprobación, no se declara publicación confirmada.
-Facebook e Instagram y el descubrimiento de otras fuentes siguen pendientes;
-esta prueba solo cubre el documento municipal revisado.
+La publicación quedó confirmada en la app a las 23:05 del 17 de octubre,
+hora de Chile. La ejecución 39088489568 terminó correctamente y una lectura
+independiente del navegador confirmó el mismo lote y los tres IDs en el
+feed completo 63466eef-90bb-4d2b-b898-694d498d2c60:
+
+| Cargo | ID publicado |
+| --- | --- |
+| Químico Farmacéutico (A) | de9067f5-59f2-4e0c-ba02-fc9584debe0f |
+| Ingeniero(a) en Prevención de Riesgos | 8b75b282-d838-45bc-9309-d10874aae023 |
+| Nutricionista | 3c875b30-eec8-4d2a-9410-797e9ad37c07 |
+
+Los recibos también quedaron respaldados en el commit de datos
+adf8f570bcfe7986ffb7e0588009e47e6fb9145e. El historial restaurado conserva
+365 candidatos, 3.220 observaciones, 35 intentos y los seis recibos anteriores;
+ahora suma tres unidades documentales y nueve recibos. La comparación de filas
+confirma que los registros anteriores siguen presentes, sin borrados.
+
+Ejecución: https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/39088489568.
+Evidencia permanente: docs/evidence/despliegue-documental-2026-10-17.json.
+
+El piloto demuestra lectura del PDF escaneado, separación de cargos, envío
+firmado, persistencia y publicación visible. Facebook e Instagram y el
+descubrimiento de otras fuentes siguen pendientes. Tampoco demuestra todavía
+una operación diaria autónoma: el controlador existente oculta evidencia
+externa de más de 24 horas. Estos cargos necesitan una nueva comprobación
+real antes de las 20:05 del 18 de octubre para conservar visibilidad después
+de esa hora; la fecha límite de postulación sigue siendo el 2 de noviembre.
+No se cambió esa política ni se inventaron fechas para prolongar el resultado.

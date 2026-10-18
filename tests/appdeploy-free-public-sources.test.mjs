@@ -18,6 +18,35 @@ test('Image-only local notices keep their media URL and export read-only work wi
   assert.equal(work.read_only,true);assert.equal(work.paid_provider_calls,0);
   assert.equal(work.items[0].source_published_at,undefined);
 });
+
+test('Embedded municipal PDFs retain their original publisher and cannot inject cross-domain or unsafe documents',()=>{
+  const h=harness(),source='https://mtraiguen.cl/municipalidad/concurso/';
+  const raw='<main><h1>Concurso público</h1><iframe src="about:blank" data-emsrc="/wp-content/uploads/2026/10/bases.pdf"></iframe>'
+    +'<object data="/wp-content/uploads/2026/10/calendario.pdf"></object><embed src="https://attacker.example/empleo.pdf">'
+    +'<iframe src="javascript:bad.pdf"></iframe></main>';
+  const links=h.ctx.publicPageLinks(raw,source);
+  assert.equal(links.candidates.length,2);
+  const work=h.ctx.publicDocumentWork({pending:links.candidates.map(item=>({url:item.url,source:'Municipalidad',publisherPage:source}))});
+  assert.equal(work.items.length,2);assert.ok(work.items.every(item=>item.publisher_page===source&&item.kind==='document'));
+  assert.equal(work.paid_provider_calls,0);
+});
+
+test('Local roots keep three of five discovery slots and their own cursor even with many portal searches',()=>{
+  const h=harness(),state={};
+  const local=[{key:'angol',url:'https://noticias.angol.cl/index.php/noticias',discoveryGroup:'local'},
+    {key:'lumaco',url:'https://www.munilumaco.cl/',discoveryGroup:'local'},
+    {key:'traiguen',url:'https://mtraiguen.cl/',discoveryGroup:'local'},
+    {key:'mulchen',url:'https://www.munimulchen.cl/',discoveryGroup:'local'}];
+  const portals=Array.from({length:45},(_,i)=>({key:'portal-'+i,url:url+'&l='+i,discoveryGroup:'portal'}));
+  const first=Array.from({length:5},(_,i)=>h.ctx.nextPublicSource([...local,...portals],state,i));
+  assert.equal(first.filter(source=>source.discoveryGroup==='local').length,3);
+  assert.deepEqual(first.filter(source=>source.discoveryGroup==='local').map(source=>source.key),['angol','lumaco','traiguen']);
+  const second=Array.from({length:5},(_,i)=>h.ctx.nextPublicSource([...local,...portals],state,i));
+  assert.equal(second[0].key,'mulchen');
+  assert.equal(second[1].key,'portal-2');
+  assert.equal(h.ctx.nextPublicSource(portals,{},0).key,'portal-0');
+  assert.equal(h.ctx.nextPublicSource(local,{},1).key,'angol');
+});
 function page(source=url) {
   return '<title>Operador</title><main>Requisitos de empleo</main><script type="application/ld+json">'+JSON.stringify({ '@type':'JobPosting',url:source,title:'Operador',hiringOrganization:{ name:'Empresa de prueba' },jobLocation:{ address:{ addressLocality:'Angol',addressCountry:'CL' } },datePosted:'2026-10-12T12:00:00Z',validThrough:'2026-10-25T12:00:00Z' })+'</script><a href="/postular/123">Postula</a>';
 }
@@ -119,6 +148,19 @@ test('A blocked recheck preserves the historical offer and never refreshes its v
   assert.equal(result.stored,0);assert.equal(result.trackedOffers,1);assert.equal(h.registered.length,0);
   assert.equal(h.table(name).get('historical-source-id').externalVerifiedAt,stale);
   assert.equal(h.table('free_public_source_cursor').get('cursor').rechecks.length,1);
+});
+
+test('A multi-role document cannot be collapsed into a generic URL recheck or a duplicate offer',async()=>{
+  const h=harness({blocked:true}),source='https://mtraiguen.cl/municipalidad/concurso/';
+  const name='radar_external_'+'a'.repeat(32),record={id:'document-unit-id',url:source,documentUnitVerified:true,externalVerifiedAt:'2026-10-12T00:00:00Z'};
+  h.table(name).set(record.id,structuredClone(record));
+  h.table('radar_external_pull_state').set('accepted',{id:'accepted',receipts:[{table:name,id:record.id}]});
+  h.table('free_public_source_cursor').set('cursor',{id:'cursor',position:0,queues:{},seen:{},pending:[{url:source,source:'Municipalidad'}],
+    priorityCandidates:[{url:source,source:'Municipalidad'}],rechecks:[{url:source}]});
+  const result=await h.ctx.runFreePublicSources(h.sources,'document-lane-001',stamp);
+  assert.equal(result.documentsManagedSeparately,1);assert.equal(result.trackedOffers,0);
+  assert.equal(h.calls.some(call=>call.method==='http'&&call.source===source),false);
+  assert.deepEqual(h.table(name).get(record.id),record);assert.equal(h.table(name).size,1);
 });
 
 test('Local notices are selected alongside portals while media remains saved for the local reader',()=>{

@@ -40,6 +40,34 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  document-revalidation-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[document revalidation proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Leer fuentes públicas desde el flujo SDK autorizado
+        run: node scripts/observe_public_sources.mjs
+      - name: Comprobar la revalidación real y sus IDs visibles
+        run: python -m scripts.observe_document_revalidation
+      - name: Conservar las comprobaciones y los errores
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-revalidation-proof
+          path: |
+            output/document-revalidation/
+            output/public-sources/
+            output/laboratory_observation*.json
+          retention-days: 7
   reviewed-document-handoff:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

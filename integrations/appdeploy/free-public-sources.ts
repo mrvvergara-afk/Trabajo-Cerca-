@@ -5,9 +5,10 @@ import { publicPublisher, publicSourceAdapter, safePublicUrl } from './public-so
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
 
-export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean };
+export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal' };
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
 type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;
+  localPosition?:number; portalPosition?:number;
   pending:PublicCandidate[]; priorityCandidates?:PublicCandidate[]; reviewLane?:number;
   rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;
   checkedAt?:string; runId?:string; recheckPolicy?:string; summary?:Record<string,unknown> };
@@ -28,6 +29,16 @@ export function publicPageLinks(raw:string, origin:string) {
     if (adapter && (adapter.family!=='local' || /ofertas? (?:laboral|de (?:empleo|trabajo))|vacantes?|se (?:busca|necesita|requiere)|postul|concurso.{0,25}(?:p[uú]blico|cargo)|recluta/i.test(title+' '+new URL(url).pathname.replace(/[-_]/g,' ')))) candidates.set(url,title.slice(0,200));
     if (publicPublisher(url)?.group===publicPublisher(origin)?.group &&
         (/\brel=["']next["']/i.test(anchor[1]+' '+anchor[3]) || /\/page\/\d+|[?&](?:page|paged)=\d+/i.test(url))) archives.add(url);
+  }
+  if (publicSourceAdapter(origin)?.family==='local') {
+    for (const embed of raw.matchAll(/<(?:iframe|embed|object)\b[^>]*>/gi)) {
+      for (const attribute of embed[0].matchAll(/\b(?:src|data-emsrc|data-src|data)\s*=\s*["']([^"']+)["']/gi)) {
+        const url=safePublicUrl(attribute[1].replace(/&amp;/g,'&'),origin);
+        if (url && /\.pdf(?:[?#]|$)/i.test(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group) {
+          candidates.set(url,'Documento PDF de la publicación municipal');
+        }
+      }
+    }
   }
   if (publicSourceAdapter(origin)?.family==='local' && /ofertas? laboral|vacantes?|se (?:busca|necesita|requiere)|postulaciones?/i.test(publicText(raw))) {
     for (const image of raw.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)) {
@@ -61,6 +72,22 @@ export function pendingCandidateIndex(items:PublicCandidate[], lane=0) {
     if (index>=0) return index;
   }
   return -1;
+}
+
+function localDiscoverySource(source:FreeSource) {
+  return source.discoveryGroup==='local' || source.discoveryGroup!=='portal' && publicSourceAdapter(source.url)?.family==='local';
+}
+
+export function nextPublicSource(sources:FreeSource[], state:Pick<ScanState,'localPosition' | 'portalPosition'>, slot:number) {
+  const local=sources.filter(localDiscoverySource), portals=sources.filter(source=>!localDiscoverySource(source));
+  // Three local roots and two portals per five-root pass, with independent cursors.
+  const useLocal=local.length>0 && (!portals.length || slot%2===0);
+  const pool=useLocal ? local : portals;
+  if (!pool.length) throw new Error('No public discovery pool');
+  const field=useLocal ? 'localPosition' : 'portalPosition';
+  const position=Math.max(0,Number(state[field]) || 0)%pool.length;
+  state[field]=(position+1)%pool.length;
+  return pool[position];
 }
 
 export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):Stored {
@@ -114,12 +141,16 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   if (!lease) return { deferred:true,reason:'public_scan_cooldown',providerCalls:0,nextAllowedAt:new Date((Math.floor(now/900000)+1)*900000).toISOString() };
   const state:ScanState = current ? structuredClone(current) : { position:0,queues:{},seen:{},pending:[] };
   const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));
+  const documentManagedUrls=new Set<string>();
   // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.
   const accepted = (await db.list<Stored>('radar_external_pull_state',{ limit:1 })).items[0];
   for (const receipt of (Array.isArray(accepted?.receipts) ? accepted.receipts as Stored[] : []).slice(0,3)) {
     if (typeof receipt.table!=='string' || !/^radar_external_[a-f0-9]{32}$/.test(receipt.table) || typeof receipt.id!=='string') continue;
     const [offer] = await db.get<Stored>(receipt.table,[receipt.id],{ consistent:true });
     const url = typeof offer?.url==='string' ? safePublicUrl(offer.url) : null;
+    if (url && offer?.documentUnitVerified===true) {
+      documentManagedUrls.add(url);rechecks.delete(url);continue;
+    }
     const adapter=url ? publicSourceAdapter(url) : null;
     if (url && adapter && adapter.family!=='aggregator' && !rechecks.has(url)) rechecks.set(url,{ url,lastAttemptAt:String(offer?.externalVerifiedAt || '') });
   }
@@ -130,8 +161,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   }).sort((a,b) => (Date.parse(a.nextCheckAt || a.lastAttemptAt || '') || 0)-(Date.parse(b.nextCheckAt || b.lastAttemptAt || '') || 0));
   const priority = due.slice(0,2).map(item => ({ url:item.url,source:'Reverificación pública' }));
   const priorityUrls = new Set(priority.map(item => item.url));
-  state.priorityCandidates=[...priority,...(state.priorityCandidates || []).filter(item=>!priorityUrls.has(item.url))];
-  const seenPending = new Set([...state.pending.map(item => item.url),...state.priorityCandidates.map(item=>item.url),...rechecks.keys()]);
+  state.priorityCandidates=[...priority,...(state.priorityCandidates || []).filter(item=>!priorityUrls.has(item.url) && !documentManagedUrls.has(item.url))];
+  state.pending=state.pending.filter(item=>!documentManagedUrls.has(item.url));
+  const seenPending = new Set([...state.pending.map(item => item.url),...state.priorityCandidates.map(item=>item.url),...rechecks.keys(),...documentManagedUrls]);
   const audits:Stored[] = [],receipts:Stored[] = [];
   const changedSeeds = new Map<string,{ previous:Stored | null; record:Stored }>();
   let reads = 0, roots = 0;
@@ -140,7 +172,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   const bootstrapState=bootstrapSource ? (await db.get<Stored>(SEEDS,[hash(bootstrapSource.key)],{ consistent:true }))[0] : null;
   while (reads<5 && roots<Math.min(5,sources.length) && Date.now()-started<35000) {
     const onboarding=Boolean(roots===0 && bootstrapSource && !bootstrapState);
-    const source = onboarding ? bootstrapSource! : sources[state.position%sources.length];
+    const source = onboarding ? bootstrapSource! : nextPublicSource(sources,state,roots);
     const seedId = hash(source.key);
     const [previousSeed] = await db.get<Stored>(SEEDS,[seedId],{ consistent:true });
     let queue = ((previousSeed?.queue as string[] | undefined) || state.queues[source.key])
@@ -149,6 +181,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     if (!queue?.length) { queue=[source.url];seen=[]; }
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
     const audit:Stored = { source:source.name,territory:source.territory,url,http:page.status,
+      discoveryGroup:localDiscoverySource(source)?'local':'portal',
       error:page.error || null,coverageComplete:false,candidates:0 };
     if (page.status===200 && !page.error) {
       const links = publicPageLinks(page.raw,page.url);
@@ -200,6 +233,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     else { state.pending.splice(selected,1);state.reviewLane=((state.reviewLane || 0)+1)%3; }
   }
   const summary = { checkedAt:new Date(now).toISOString(),sourcesRead:roots,httpReads:reads,
+    localSourcesRead:audits.filter(item=>item.discoveryGroup==='local').length,
+    portalSourcesRead:audits.filter(item=>item.discoveryGroup==='portal').length,
+    documentsManagedSeparately:documentManagedUrls.size,
     noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,
     pending:state.pending.length,priorityPending:state.priorityCandidates.length,
     documentsAwaitingLocalReader:state.pending.filter(item=>/\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url)).length,

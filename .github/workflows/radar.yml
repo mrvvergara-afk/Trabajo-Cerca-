@@ -40,6 +40,32 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  hard-source-evidence:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[hard source evidence]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar lectores locales y probar documentos mixtos
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest tests.test_document_reference_proof -v
+      - name: Leer cuatro referencias públicas sin publicar ni ejecutar proveedores
+        run: python -m scripts.hard_document_sweep
+      - name: Conservar originales, lecturas y respaldos de la prueba
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hard-document-sweep
+          path: output/hard-document-sweep/
+          retention-days: 7
   document-revalidation-proof:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

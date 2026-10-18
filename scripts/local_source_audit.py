@@ -30,6 +30,25 @@ PHONE = re.compile(r'(?<!\d)(?:\+?56[\s-]*)?(?:9(?:[\s-]*\d){8}|(?:43|45)(?:[\s-
 APP_URL = 'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/'
 
 
+def public_medium_url(value):
+    """Recognize media paths and Lumaco's public Joomla download endpoint.
+
+    A download query is media work, never a new offer identity or a date.
+    """
+    try:
+        url = urllib.parse.urlsplit(canonical_url(value))
+        if MEDIA.search(url.path):return True
+        pairs = urllib.parse.parse_qsl(url.query, keep_blank_values=True)
+        query = dict(pairs)
+        return (url.hostname.removeprefix('www.') == 'munilumaco.cl'
+                and url.path == '/index.php/component/phocadownload/category/1-concursos'
+                and len(pairs) == len(query)
+                and set(query) <= {'Itemid', 'download'}
+                and bool(re.fullmatch(r'[1-9]\d{0,8}(?::[a-z0-9-]+)?', query.get('download', ''), re.I))
+                and ('Itemid' not in query or bool(re.fullmatch(r'[1-9]\d{0,8}', query['Itemid']))))
+    except (ValueError, TypeError, AttributeError):return False
+
+
 class Document(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -142,8 +161,10 @@ def discover(raw, url):
         except ValueError: continue
         channel = institutional_social_link(target,label)
         if channel: social.add(channel)
-        if same_publisher(url,target) and (target in embedded or HIRING.search(label + ' ' + target)) and not NON_JOB.search(label):
-            candidates[target] = {'url':target,'title':label[:300],'kind':'document' if MEDIA.search(target) else 'page'}
+        document = public_medium_url(target)
+        document_label = document and re.search(r'\bbases?\b|decreto|concurso|convocatoria|descargar\s+pdf', label, re.I)
+        if same_publisher(url,target) and (target in embedded or HIRING.search(label + ' ' + target) or document_label) and not NON_JOB.search(label):
+            candidates[target] = {'url':target,'title':label[:300],'kind':'document' if document else 'page'}
     source_dates = list(parser.dates)
     for schema in parser.schemas:
         try:nodes = [json.loads(schema)]

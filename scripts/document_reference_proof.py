@@ -62,7 +62,7 @@ def verify_persistence(store,output,reviews):
         'sqlite_sha256':snapshot['sqlite_sha256']}
 
 
-def prove(url,output,*,budget=None,fetcher=fetch_public,now=None,max_work=35):
+def prove(url,output,*,budget=None,fetcher=fetch_public,now=None,max_work=35,ocr_all_pdf_pages=False):
     url=canonical_url(url);adapter=source_adapter(url)
     if not adapter or adapter['family']!='local':raise ValueError('local_primary_reference_required')
     if type(max_work) is not int or not 1<=max_work<=40:raise ValueError('reference_work_limit_invalid')
@@ -96,7 +96,8 @@ def prove(url,output,*,budget=None,fetcher=fetch_public,now=None,max_work=35):
             requests.append({'url':target,'error':source_error(exc)})
             raise
 
-    source={'key':'document-reference','url':url,'kind':'web','family':'municipal','name':adapter['name']}
+    source={'key':'document-reference','url':url,'kind':'web','family':'municipal','name':adapter['name'],
+            'ocr_all_pdf_pages':ocr_all_pdf_pages}
     config={'sources':[],'territories':json.loads(Path('config/radar-v2-pilot.json').read_text())['territories'],
             'paid_providers_enabled':False,'publish_enabled':False}
     store=PilotStore(output/'state');history=State(output/'history.sqlite3')
@@ -121,7 +122,9 @@ def prove(url,output,*,budget=None,fetcher=fetch_public,now=None,max_work=35):
                 pages.append({'page':page['payload']['page'],'status':page['status'],'engine':value.get('engine'),
                     'language':value.get('language'),
                     'confidence':value.get('mean_confidence'),'characters':len(value.get('text','')),
-                    'text_object_sha256':(page['result'] or {}).get('archive')})
+                    'text_object_sha256':(page['result'] or {}).get('archive'),
+                    'alternate_readings':[{'engine':item.get('engine'),'characters':len(item.get('text','')),
+                        'confidence':item.get('mean_confidence')} for item in value.get('alternate_readings',[])]})
             documents.append({'url':medium['payload'].get('media_url'),'sha256':digest,
                 'status':medium['result'].get('status'),'reason':medium['result'].get('reason'),
                 'bytes':medium['result'].get('bytes'),'page_count':medium['result'].get('page_count'),'pages':pages})
@@ -142,8 +145,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('url');parser.add_argument('--output',required=True)
     parser.add_argument('--max-work',type=int,default=35,help='Maximum queued steps, 1..40 (includes every PDF page)')
+    parser.add_argument('--ocr-all-pdf-pages',action='store_true',help='Also OCR text-bearing pages to read image-only advertisements')
     args=parser.parse_args()
-    report=prove(args.url,args.output,max_work=args.max_work)
+    report=prove(args.url,args.output,max_work=args.max_work,ocr_all_pdf_pages=args.ocr_all_pdf_pages)
     print(json.dumps({key:report[key] for key in ('source_url','counts','documents','local_handoff_ready','published','production_modified')},ensure_ascii=False))
 
 

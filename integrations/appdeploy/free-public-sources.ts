@@ -17,6 +17,20 @@ const CURSOR = 'free_public_source_cursor';
 const SEEDS = 'free_public_seed_state';
 const hash = (value:string) => createHash('sha256').update(value).digest('hex');
 
+export function publicDocumentUrl(value:string) {
+  const clean = safePublicUrl(value);
+  if (!clean) return false;
+  const url = new URL(clean);
+  if (/\.(?:pdf|png|jpe?g|webp)$/i.test(url.pathname)) return true;
+  const pairs = [...url.searchParams.entries()];
+  return url.hostname.replace(/^www\./,'')==='munilumaco.cl' &&
+    url.pathname==='/index.php/component/phocadownload/category/1-concursos' &&
+    new Set(pairs.map(([key])=>key)).size===pairs.length &&
+    pairs.every(([key])=>['Itemid','download'].includes(key)) &&
+    /^[1-9]\d{0,8}(?::[a-z0-9-]+)?$/i.test(url.searchParams.get('download') || '') &&
+    (!url.searchParams.has('Itemid') || /^[1-9]\d{0,8}$/.test(url.searchParams.get('Itemid') || ''));
+}
+
 export function publicPageLinks(raw:string, origin:string) {
   const candidates = new Map<string,string>(), archives = new Set<string>();
   raw=raw.replace(/<(nav|header|footer)\b[^>]*>[\s\S]*?<\/\1>/gi,'');
@@ -26,6 +40,8 @@ export function publicPageLinks(raw:string, origin:string) {
     const alt = [...anchor[4].matchAll(/\balt=["']([^"']+)["']/gi)].map(match => match[1]).join(' ');
     const title = publicText(anchor[4]+' '+alt);
     const adapter = publicSourceAdapter(url);
+    if (publicDocumentUrl(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group &&
+        /\bbases?\b|decreto|concurso|convocatoria|descargar\s+pdf/i.test(title)) candidates.set(url,title.slice(0,200));
     if (adapter && (adapter.family!=='local' || /ofertas? (?:laboral|de (?:empleo|trabajo))|vacantes?|se (?:busca|necesita|requiere)|postul|concurso.{0,25}(?:p[uú]blico|cargo)|recluta/i.test(title+' '+new URL(url).pathname.replace(/[-_]/g,' ')))) candidates.set(url,title.slice(0,200));
     if (publicPublisher(url)?.group===publicPublisher(origin)?.group &&
         (/\brel=["']next["']/i.test(anchor[1]+' '+anchor[3]) || /\/page\/\d+|[?&](?:page|paged)=\d+/i.test(url))) archives.add(url);
@@ -53,10 +69,10 @@ export function publicPageLinks(raw:string, origin:string) {
 export function publicDocumentWork(current?:ScanState | null) {
   const items=(current?.pending || []).flatMap(item=>{
     const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);
-    if (!url || !publisherPage || publicSourceAdapter(url)?.family!=='local' ||
+    if (!url || !publisherPage || !(publicSourceAdapter(url)?.family==='local' || publicDocumentUrl(url) && publicPublisher(url)?.group==='munilumaco.cl') ||
         publicPublisher(url)?.group!==publicPublisher(publisherPage)?.group) return [];
     return [{ url,source:item.source,publisher_page:publisherPage,
-      kind:/\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(url)?'document':'local_page' }];
+      kind:publicDocumentUrl(url)?'document':'local_page' }];
   });
   return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,
     items:items.slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };
@@ -68,7 +84,7 @@ export function pendingCandidateIndex(items:PublicCandidate[], lane=0) {
   const lanes=['local','portal','aggregator'];
   for (let offset=0;offset<lanes.length;offset++) {
     const kind=lanes[(lane+offset)%lanes.length];
-    const index=items.findIndex(item=>! /\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url) && publicSourceAdapter(item.url)?.family===kind);
+    const index=items.findIndex(item=>!publicDocumentUrl(item.url) && publicSourceAdapter(item.url)?.family===kind);
     if (index>=0) return index;
   }
   return -1;
@@ -176,7 +192,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     const seedId = hash(source.key);
     const [previousSeed] = await db.get<Stored>(SEEDS,[seedId],{ consistent:true });
     let queue = ((previousSeed?.queue as string[] | undefined) || state.queues[source.key])
-      ?.filter(url=>! /\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(url));
+      ?.filter(url=>!publicDocumentUrl(url));
     let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];
     if (!queue?.length) { queue=[source.url];seen=[]; }
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
@@ -195,7 +211,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       }
       seen = [...new Set([...seen,url])].slice(-64);
       queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&
-        ! /\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url)).map(item => item.url)])]
+        !publicDocumentUrl(item.url)).map(item => item.url)])]
         .filter(item => !seen.includes(item)).slice(0,30);
       audit.candidates = links.candidates.length;
     }
@@ -238,7 +254,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     documentsManagedSeparately:documentManagedUrls.size,
     noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,
     pending:state.pending.length,priorityPending:state.priorityCandidates.length,
-    documentsAwaitingLocalReader:state.pending.filter(item=>/\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url)).length,
+    documentsAwaitingLocalReader:state.pending.filter(item=>publicDocumentUrl(item.url)).length,
     reverificationBacklog:due.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,
     nextSource:state.position,coverageComplete:false,audits:audits.map(({ candidateEvidence,...audit })=>audit),reviewed,receipts };
   state.rechecks=[...rechecks.values()];

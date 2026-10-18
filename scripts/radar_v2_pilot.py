@@ -15,7 +15,7 @@ from pathlib import Path
 from .common import Budget, canonical_url, decode_public_html, parse_date, utcnow, write_json
 from .laboratory_exchange import git, REPOSITORY, PRODUCER_BRANCH
 from .local_history import verify_notice
-from .local_source_audit import Document, HIRING, MEDIA, discover, fetch_public, same_publisher, source_error, tesseract_text
+from .local_source_audit import Document, HIRING, MEDIA, discover, fetch_public, same_publisher, source_error, tesseract_text, public_medium_url
 from .public_source_adapters import source_adapter
 from .radar_v2_store import MAX_OBJECT_BYTES, MAX_PDF_BYTES, PilotStore, restore
 from .radar_v2_diagnostics import describe
@@ -106,6 +106,7 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
       'source_published_at':None if directory else page['source_published_at'],'text':page['text'] if HIRING.search(page['title']+' '+page['text']) else '',
       'complete':len(page['text'])<14000,'sha256':original,'html_object_sha256':original,
       'capture_slot':int(now.timestamp()//14400),'title':page['title']}
+    if payload['source'].get('ocr_all_pdf_pages') is True:value['ocr_all_pdf_pages']=True
     if payload.get('listing_evidence'):value['listing_evidence']=payload['listing_evidence']
     archive=json_blob(store,{**value,'page_last_published_at':page['source_published_at'],'page_type':'directory' if directory else 'notice'})
     children=[];date=parse_date(page['source_published_at'])
@@ -118,12 +119,12 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
         for href,label in parser.links:
             try:target=canonical_url(urllib.parse.urljoin(final,href))
             except ValueError:continue
-            if same_publisher(target,final) and MEDIA.search(target) and re.search(r'\bbases?\b|decreto|concurso|convocatoria',label,re.I):
+            if same_publisher(target,final) and public_medium_url(target) and re.search(r'\bbases?\b|decreto|concurso|convocatoria',label,re.I):
                 candidates.append({'url':target,'kind':'document'})
         candidates=list({row['url']:row for row in candidates}.values())
         for candidate in candidates[:candidate_limit]:
             target=canonical_url(candidate['url'])
-            if MEDIA.search(target) and media_allowed(target,final):children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
+            if public_medium_url(target) and media_allowed(target,final):children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
             elif same_publisher(target,final) and payload.get('depth',0)<1:
                 child={'url':target,'source':payload['source'],'depth':1,'page_type':'notice'}
                 if directory:child['listing_evidence']={'source_url':final,'notice_url':target,'html_object_sha256':original}
@@ -149,7 +150,7 @@ def media_work(store,payload,budget,fetcher=fetch_public):
     else:
         url=payload['media_url']
         if not media_allowed(url,origin):raise ValueError('media_publisher_not_allowed')
-        maximum=MAX_PDF_BYTES if urllib.parse.urlsplit(url).path.lower().endswith('.pdf') else MAX_OBJECT_BYTES
+        maximum=MAX_PDF_BYTES if not re.search(r'\.(?:png|jpe?g|webp)$',urllib.parse.urlsplit(url).path,re.I) else MAX_OBJECT_BYTES
         raw,final,mime,status=fetcher(url,budget,max_bytes=maximum)
         if status!=200 or not media_allowed(final,origin):raise ValueError('media_source_unavailable')
     if mime not in IMAGE_MIMES and mime!='application/pdf':raise ValueError('unsupported_media_type')
@@ -171,16 +172,24 @@ def page_work(store,payload,budget):
     if payload['mime']=='application/pdf':
         text=subprocess.run(['pdftotext','-f',str(page),'-l',str(page),'-layout',str(path),'-'],capture_output=True,text=True,timeout=min(15,max(1,budget.remaining())),check=True).stdout
         value={'text':text[:18000],'textTruncated':len(text)>18000,'engine':'pdftotext-local','mean_confidence':None}
-        if len(text.strip())<100:
+        if len(text.strip())<100 or payload.get('ocr_all_pdf_pages') is True:
             with tempfile.TemporaryDirectory() as directory:
                 prefix=Path(directory)/'page'
                 subprocess.run(['pdftoppm','-f',str(page),'-l',str(page),'-singlefile','-scale-to','1800','-png',str(path),str(prefix)],capture_output=True,timeout=min(20,max(1,budget.remaining())),check=True)
-                value=tesseract_text(prefix.with_suffix('.png'),budget)
-                if re.search(r'cronograma',value['text'],re.I) and budget.remaining()>20:
+                optical=tesseract_text(prefix.with_suffix('.png'),budget)
+                if len(text.strip())>=100:
+                    # Preserve the searchable layer and a separate optical reading.
+                    # Embedded posters must not disappear behind a long news article.
+                    value['alternate_readings']=[optical]
+                    value['ocr_all_pdf_pages']=True
+                else:value=optical
+                if re.search(r'cronograma',optical['text'],re.I) and budget.remaining()>20:
                     # A uniform text block can lose table cells and detach dates
                     # from their labels. Archive a second layout, without replacing
                     # the original reading or treating either as verified data.
-                    try:value['alternate_readings']=[tesseract_text(prefix.with_suffix('.png'),budget,segmentation=4)]
+                    try:
+                        alternate=tesseract_text(prefix.with_suffix('.png'),budget,segmentation=4)
+                        value.setdefault('alternate_readings',[]).append(alternate)
                     except Exception as exc:value['alternate_reading_error']=source_error(exc)
     else:value=tesseract_text(path,budget)
     artifact=json_blob(store,value)
@@ -195,6 +204,8 @@ def evaluate_work(store,payload,now):
     if not digest:digest=json_blob(store,{'text':text,'date_proof':payload.get('date_proof')})
     if listing_is_closed(store,payload):
         return {'status':'rejected','reason':'listing_marks_notice_closed','archive':digest},[]
+    if payload.get('ocr_all_pdf_pages') is True:
+        return {'status':'pending','reason':'mixed_pdf_requires_review','archive':digest},[]
     if (payload.get('document_review_sha256') and not payload.get('contribution_requires_review')
             and (source_adapter(payload['source_url']) or {}).get('family')=='local'):
         review=json.loads(store.object(payload['document_review_sha256']).read_text())

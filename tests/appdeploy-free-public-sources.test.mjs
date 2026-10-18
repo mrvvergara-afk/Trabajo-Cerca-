@@ -8,6 +8,22 @@ import vm from 'node:vm';
 const stamp=Date.parse('2026-10-13T12:00:00Z');
 const url='https://cl.indeed.com/viewjob?jk=0123456789abcdef';
 
+test('Lumaco downloads without a PDF extension reach the document lane without creating offer identities',()=>{
+  const h=harness(),origin='https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico';
+  const download='https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8';
+  const links=h.ctx.publicPageLinks('<a href="'+download.replace('&','&amp;')+'">Bases Jefatura grado 8°</a>',origin);
+  assert.equal(links.candidates.length,1);
+  assert.equal(h.ctx.publicSourceAdapter(download),null);
+  const pending=[{url:links.candidates[0].url,source:'Lumaco',publisherPage:origin}];
+  const work=h.ctx.publicDocumentWork({pending});
+  assert.equal(work.items.length,1);assert.equal(work.items[0].kind,'document');
+  assert.equal(work.items[0].publisher_page,origin);
+  assert.equal(h.ctx.pendingCandidateIndex(pending),-1);
+  for (const invalid of [download+'&token=x',download+'&download=24:other',download.replace('munilumaco.cl','attacker.example'),download+'&redirect=https://attacker.example/a.pdf',download.replace('download=23','download=0')]) {
+    assert.equal(h.ctx.publicDocumentUrl(invalid),false);
+  }
+});
+
 test('Image-only local notices keep their media URL and export read-only work without using capture dates',()=>{
   const h=harness(),article='https://www.munilumaco.cl/oferta-laboral-operador';
   const links=h.ctx.publicPageLinks('<main><h1>Oferta laboral</h1><img src="/images/afiche.png"><img src="/logo.png"></main>',article);

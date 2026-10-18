@@ -12,7 +12,7 @@ from scripts import radar_v2_pilot as pilot, radar_v2_publish as publish
 from scripts.common import Budget
 from scripts.document_reference_proof import prove
 from scripts.document_review import review_document
-from scripts.local_source_audit import discover,tesseract_text
+from scripts.local_source_audit import discover,tesseract_text,public_medium_url
 from scripts.radar_v2_store import PilotStore
 from scripts.state import State
 
@@ -23,6 +23,58 @@ NOW=dt.datetime(2026,10,17,22,tzinfo=dt.timezone.utc)
 
 
 class EmbeddedDocumentTests(unittest.TestCase):
+    def test_lumaco_public_download_without_extension_keeps_the_publisher_and_has_no_fake_date(self):
+        origin='https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico'
+        target='https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8'
+        raw=('<h1>Llamados a concurso público</h1><a href="'+target.replace('&','&amp;')+'">Bases Jefatura grado 8°</a>').encode()
+        page=discover(raw.decode(),origin)
+        self.assertEqual(len(page['candidates']),1);self.assertEqual(page['candidates'][0]['kind'],'document')
+        self.assertIsNone(page['source_published_at'])
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder)
+            _,children=pilot.web_work(store,{'url':origin,'source':{'key':'lumaco','family':'municipal'},'depth':1},
+                Budget(10),lambda *args:(raw,origin,'text/html',200),NOW)
+            self.assertEqual([kind for kind,_,_ in children],['evaluate','media'])
+            medium=children[1][2]
+            self.assertEqual(medium['source_url'],origin);self.assertIsNone(medium['source_published_at'])
+            store.close()
+        for invalid in [target+'&token=x',target+'&download=24:other',target.replace('munilumaco.cl','attacker.example'),
+                        target+'&redirect=https://attacker.example/a.pdf',target.replace('download=23','download=0')]:
+            self.assertFalse(public_medium_url(invalid),invalid)
+
+    @unittest.skipUnless(all(shutil.which(tool) for tool in ('pdftotext','pdftoppm','tesseract')),'local PDF and OCR tools required')
+    def test_text_bearing_pdf_also_reads_an_image_poster_without_replacing_the_original_text(self):
+        import io
+        from PIL import Image,ImageDraw,ImageFont
+        image=Image.new('RGB',(1300,300),'white')
+        font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',44)
+        ImageDraw.Draw(image).multiline_text((25,25),'SE NECESITA OPERADOR\nEnviar CV: empleo@example.cl',font=font,fill='black',spacing=20)
+        stream=io.BytesIO();image.save(stream,format='JPEG');jpeg=stream.getvalue()
+        text='A newspaper article with searchable text about municipal activities. ' * 4
+        commands=('BT /F1 10 Tf 40 740 Td ('+text+') Tj ET\nq 530 0 0 123 40 100 cm /Poster Do Q').encode()
+        objects=[b'<< /Type /Catalog /Pages 2 0 R >>',b'<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+            b'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> /XObject << /Poster 6 0 R >> >> /Contents 5 0 R >>',
+            b'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+            ('<< /Length '+str(len(commands))+' >>\nstream\n').encode()+commands+b'\nendstream',
+            ('<< /Type /XObject /Subtype /Image /Width 1300 /Height 300 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+str(len(jpeg))+' >>\nstream\n').encode()+jpeg+b'\nendstream']
+        raw=b'%PDF-1.4\n';offsets=[]
+        for number,obj in enumerate(objects,1):
+            offsets.append(len(raw));raw+=(str(number)+' 0 obj\n').encode()+obj+b'\nendobj\n'
+        start=len(raw);raw+=b'xref\n0 7\n0000000000 65535 f \n'
+        raw+=b''.join((f'{offset:010} 00000 n \n').encode() for offset in offsets)
+        raw+=('trailer\n<< /Size 7 /Root 1 0 R >>\nstartxref\n'+str(start)+'\n%%EOF').encode()
+        with tempfile.TemporaryDirectory() as folder:
+            store=PilotStore(folder);digest=store.put(raw,'application/pdf')
+            payload={'source_url':URL,'object_sha256':digest,'mime':'application/pdf','page':1,'pages':1,'ocr_all_pdf_pages':True}
+            result,_=pilot.page_work(store,payload,Budget(40))
+            value=json.loads(store.object(result['archive']).read_text())
+            self.assertEqual(value['engine'],'pdftotext-local');self.assertIn('newspaper article',value['text'])
+            self.assertNotIn('empleo@example.cl',value['text'])
+            self.assertIn('empleo@example.cl',value['alternate_readings'][0]['text'])
+            self.assertEqual(value['alternate_readings'][0]['engine'],'tesseract-local')
+            status,_=pilot.evaluate_work(store,{**payload,'text':value['text'],'sha256':digest},NOW)
+            self.assertEqual(status['reason'],'mixed_pdf_requires_review');store.close()
+
     def test_actual_traiguen_markup_discovers_the_pdf_once_and_preserves_its_parent_date(self):
         raw=(ROOT/'tests/fixtures/traiguen-embedded-document.html').read_bytes()
         page=discover(raw.decode(),URL)

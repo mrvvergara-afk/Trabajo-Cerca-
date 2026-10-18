@@ -7,7 +7,9 @@ La ejecución de terminal de la noche se interrumpió antes de desplegar esta
 tanda. No se presenta esa preparación como trabajo ejecutado en segundo plano.
 La revalidación se desplegó después en la versión 1792325715151; la versión
 1792326173643 añade mejoras de descubrimiento y diagnóstico. El resultado del
-ciclo real se comprobará por SDK, no por el estado exitoso de un cron.
+ciclo real quedó comprobado por SDK en la ejecución 39127690563, además del
+estado exitoso del cron. Ambos despliegues terminaron ready, sin errores de
+frontend, backend o red en QA.
 
 ## Cambios
 
@@ -48,6 +50,35 @@ La continuidad del trabajo queda programada para tres noches en horario de
 Chile. La revalidación de la app es independiente de esa tarea y sigue activa.
 Se conservan exactamente los seis crons existentes, sin nuevos proveedores pagos
 ni cambios de secretos. Persisten dos advertencias previas de inspección de iconos.
+
+## Resultado real comprobado
+
+El cron revalidó los tres cargos a las 09:20 del 18 de octubre, hora de Chile.
+La comprobación independiente de las 09:32 confirmó los mismos tres IDs en el
+feed completo a0075e6a-4edf-4fdd-9f6e-8f141a9bde3f. La fecha editorial sigue
+siendo el 1 de octubre y la próxima comprobación quedó para las 21:20. El plazo
+de postulación sigue siendo el 2 de noviembre a las 14:00; no se prolongó.
+
+La pasada pública adicional consultó cinco orígenes: tres locales y dos portales,
+con ocho lecturas HTTP y tres candidatos examinados. No verificó, guardó ni
+publicó ofertas nuevas. Angol, Indeed y Computrabajo respondieron HTTP 403;
+Lumaco y Los Sauces respondieron HTTP 200 sin avisos nuevos recuperados en esas
+páginas. Dos avisos de Mulchén quedaron pendientes por falta de datos
+estructurados y uno de LinkedIn requiere revisar empleador y postulación.
+
+La cola conserva 94 candidatos, incluidos 29 PDFs pendientes de lectura local.
+Son trabajo pendiente, no nuevas ofertas publicadas. Varios documentos antiguos
+no conservan la página editorial como publicador; hay que recuperar esa
+procedencia y verificar su fecha real antes de aprobarlos. Una carpeta de
+WordPress no acredita la fecha editorial.
+
+El primer verificador externo no encontró una pestaña de navegador durante su
+ventana inicial de seis segundos. Se amplió la espera acotada y se añadieron
+diagnósticos; además, la lectura documental corre aunque falle el barrido.
+La ejecución posterior completó ambos pasos correctamente:
+https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/39127690563.
+Las pruebas y los resultados permanentes están en
+docs/evidence/revalidacion-nocturna-2026-10-18.json.
 
 ## Alcance pendiente
 

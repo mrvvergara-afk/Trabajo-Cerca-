@@ -101,5 +101,10 @@
         }
       ]
     }
-  ]
+  ],
+  "applied": true,
+  "applied_version": "1792326173643",
+  "actual_cron_revalidation_confirmed": true,
+  "proof_run": "39127690563",
+  "new_offers_published_in_proof": 0
 }

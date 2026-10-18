@@ -1,0 +1,156 @@
+{
+  "schema": "trabajo-cerca.document-unit-review.v1",
+  "source_url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+  "document_url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+  "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
+  "reviewed_at": "2026-10-17T23:26:28.833858+00:00",
+  "units": [
+    {
+      "title": "QUÍMICO FARMACÉUTICO (A)",
+      "company": "Municipalidad de Traiguén",
+      "work_commune": "Traiguén",
+      "fields": {
+        "title": {
+          "page": 5,
+          "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106",
+          "reading": "primary",
+          "literal": "QUÍMICO FARMACÉUTICO (A) CATEGORIA A EN DEPARTAMENTO DE"
+        },
+        "company": {
+          "page": 5,
+          "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106",
+          "reading": "primary",
+          "literal": "La Municipalidad de Traiguén llama a concurso Público de antecedentes"
+        },
+        "workplace": {
+          "page": 5,
+          "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106",
+          "reading": "primary",
+          "literal": "Categoría N° de [N° de Calidad [Establecimiento |\nFuncionari Cargos |Hrs.Sem. |\na |\nA QUÍMICO 1 44 Indefinid Departamento de |\nFARMACÉUTICO o Salud Municipal de |\nTraiguén"
+        },
+        "deadline": {
+          "page": 2,
+          "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00",
+          "reading": "alternate_readings:0",
+          "literal": "Cierre de periodo de recepción de postulaciones | 02 de Noviembre de 2026"
+        },
+        "deadline_time": {
+          "page": 11,
+          "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516",
+          "reading": "primary",
+          "literal": "a\nlas 14 hrs., impostergablemente."
+        },
+        "application": {
+          "page": 11,
+          "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516",
+          "reading": "primary",
+          "literal": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nde Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de lunes a viernes de 09:30 a 14:00 hrs. El sobre deberá indicar\nen su parte exterior el nombre del concurso y los datos del postulante."
+        },
+        "scope": {
+          "page": 2,
+          "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00",
+          "reading": "primary",
+          "literal": "APRUEBA BASES PARA LLAMADO A CONCURSO PÚBLICO DE 3 CARGOS"
+        }
+      }
+    },
+    {
+      "title": "Ingeniero(a) en Prevención de Riesgos",
+      "company": "Municipalidad de Traiguén",
+      "work_commune": "Traiguén",
+      "fields": {
+        "title": {
+          "page": 20,
+          "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b",
+          "reading": "primary",
+          "literal": "1. Perfil de Cargo: Ingeniero(a) en Prevención de Riesgos"
+        },
+        "company": {
+          "page": 5,
+          "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106",
+          "reading": "primary",
+          "literal": "La Municipalidad de Traiguén llama a concurso Público de antecedentes"
+        },
+        "workplace": {
+          "page": 20,
+          "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b",
+          "reading": "primary",
+          "literal": "todas las dependencias del DSM Traiguén (Oficinas centrales, EMR,\nCECOSF y Postas Rurales), "
+        },
+        "deadline": {
+          "page": 2,
+          "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00",
+          "reading": "alternate_readings:0",
+          "literal": "Cierre de periodo de recepción de postulaciones | 02 de Noviembre de 2026"
+        },
+        "deadline_time": {
+          "page": 24,
+          "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3",
+          "reading": "primary",
+          "literal": "a las 14:00 hrs., impostergablemente."
+        },
+        "application": {
+          "page": 24,
+          "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3",
+          "reading": "primary",
+          "literal": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nA de Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de Lunes a Viernes en horarios de 09:00 a 14:00 hrs. El sobre\ndeberá indicar en su parte exterior el Nombre del concurso y los Datos\ndel postulante."
+        },
+        "scope": {
+          "page": 2,
+          "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00",
+          "reading": "primary",
+          "literal": "APRUEBA BASES PARA LLAMADO A CONCURSO PÚBLICO DE 3 CARGOS"
+        }
+      }
+    },
+    {
+      "title": "Nutricionista",
+      "company": "Municipalidad de Traiguén",
+      "work_commune": "Traiguén",
+      "fields": {
+        "title": {
+          "page": 22,
+          "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861",
+          "reading": "primary",
+          "literal": "2. Perfil de Cargo: Nutricionista"
+        },
+        "company": {
+          "page": 5,
+          "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106",
+          "reading": "primary",
+          "literal": "La Municipalidad de Traiguén llama a concurso Público de antecedentes"
+        },
+        "workplace": {
+          "page": 22,
+          "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861",
+          "reading": "primary",
+          "literal": "usuarios de la red de salud municipal de Traiguén a lo largo de todo"
+        },
+        "deadline": {
+          "page": 2,
+          "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00",
+          "reading": "alternate_readings:0",
+          "literal": "Cierre de periodo de recepción de postulaciones | 02 de Noviembre de 2026"
+        },
+        "deadline_time": {
+          "page": 24,
+          "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3",
+          "reading": "primary",
+          "literal": "a las 14:00 hrs., impostergablemente."
+        },
+        "application": {
+          "page": 24,
+          "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3",
+          "reading": "primary",
+          "literal": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nA de Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de Lunes a Viernes en horarios de 09:00 a 14:00 hrs. El sobre\ndeberá indicar en su parte exterior el Nombre del concurso y los Datos\ndel postulante."
+        },
+        "scope": {
+          "page": 2,
+          "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00",
+          "reading": "primary",
+          "literal": "APRUEBA BASES PARA LLAMADO A CONCURSO PÚBLICO DE 3 CARGOS"
+        }
+      }
+    }
+  ]
+}

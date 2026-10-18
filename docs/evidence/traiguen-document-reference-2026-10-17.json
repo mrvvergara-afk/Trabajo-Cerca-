@@ -1,0 +1,851 @@
+{
+  "real_reference": {
+    "schema": "trabajo-cerca.public-document-reference-proof.v1",
+    "checked_at": "2026-10-17T22:29:36.700463+00:00",
+    "source_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+    "source_name": "Municipalidad de Traiguén",
+    "requests": [
+      {
+        "url": "https://mtraiguen.cl/robots.txt",
+        "status": 200,
+        "file": "robots-f5c7114e7dff.txt",
+        "sha256": "5ecfa57bf622cbcf90171706051c17f3bf1c9efd403aa9c6d41b516c3ce63ec4"
+      },
+      {
+        "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "final_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "status": 200,
+        "mime": "text/html",
+        "bytes": 253785,
+        "sha256": "51cf5a150433883d91304d24b918764bc6d1f47b43f3ec55a62e46356e7be567"
+      },
+      {
+        "url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+        "final_url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+        "status": 200,
+        "mime": "application/pdf",
+        "bytes": 1519267,
+        "sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2"
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+        "sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
+        "status": "downloaded",
+        "reason": null,
+        "bytes": 1519267,
+        "page_count": 11,
+        "pages": [
+          {
+            "page": 1,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 93.3,
+            "characters": 2760,
+            "text_object_sha256": "373e8f87a83a8e0a43393dcf0f043185558b2515ca3dd4bf3421c79d5b53cdd1"
+          },
+          {
+            "page": 2,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 77.3,
+            "characters": 1239,
+            "text_object_sha256": "4baa000d7cf3e74861f5ad75d07306a2fa2d75855b971bbf3773750a9010ae7d"
+          },
+          {
+            "page": 3,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 92.4,
+            "characters": 2110,
+            "text_object_sha256": "20db75f4f86cfb4c8317e6a46f15e49b152e86641ef913bbc41b51cee6ac10ad"
+          },
+          {
+            "page": 4,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 87.8,
+            "characters": 4054,
+            "text_object_sha256": "5bc95f3ad4823ca3fd98bee57c4a7120340cff83a23b847bb3a632b982095b2c"
+          },
+          {
+            "page": 5,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 91.2,
+            "characters": 3841,
+            "text_object_sha256": "12389f972521b77950b12cbb11fe36db69d88fc91a596aa370065440f3c26f7c"
+          },
+          {
+            "page": 6,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 86.4,
+            "characters": 1860,
+            "text_object_sha256": "5ade00de5ff6f1d0cf2e8ee779f9c402b78be47ed90a5fdb8d5094fe7ef70bf9"
+          },
+          {
+            "page": 7,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 86.3,
+            "characters": 2033,
+            "text_object_sha256": "43cff5cb55c8ccbecbaf94d6f7dad7aac3d2a4c559619f6b65f2f76111075097"
+          },
+          {
+            "page": 8,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 87.2,
+            "characters": 2700,
+            "text_object_sha256": "697e5b8625f727e2d3c4a0438530ecf5940c3298dc746c1f6ad74020c0d9156c"
+          },
+          {
+            "page": 9,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 78.3,
+            "characters": 4030,
+            "text_object_sha256": "e07617e2205b3bbc15e4a9e2e7d980381b3865f4e2dcbee66cae7db7768a55cf"
+          },
+          {
+            "page": 10,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 89.0,
+            "characters": 4099,
+            "text_object_sha256": "46788a790118a78ba55455f22610618d5493dc04036592d59f404d0db36a7c15"
+          },
+          {
+            "page": 11,
+            "status": "done",
+            "engine": "tesseract-local",
+            "language": "spa+eng",
+            "confidence": 89.0,
+            "characters": 1867,
+            "text_object_sha256": "024b99e2ebaf11a4e028bc97beaa1609f627b3fffd683e8d1b02cbce1af9e193"
+          }
+        ]
+      }
+    ],
+    "counts": {
+      "jobs": 15,
+      "runs": 1,
+      "observed_days": 1,
+      "attempts": 15,
+      "observations": 15,
+      "objects": 15,
+      "statuses": {
+        "done": 15
+      }
+    },
+    "evaluations": [
+      {
+        "archive": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
+        "document_review_sha256": "fc2570c3250fb502f6cb6c00ac7ff4af181ac9011ab305c87c201d3718bb6dcd",
+        "reason": "multiple_notice_document_requires_review",
+        "review_notice_count": 2,
+        "status": "pending"
+      },
+      {
+        "archive": "51cf5a150433883d91304d24b918764bc6d1f47b43f3ec55a62e46356e7be567",
+        "company": null,
+        "emails": [],
+        "hiring_language": true,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto"
+        ],
+        "phones": [],
+        "published": false,
+        "reason": "local_notice_requires_review",
+        "review_blockers": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "lugar_unico_sin_confirmar",
+          "plazo_explicito_sin_confirmar"
+        ],
+        "role": null,
+        "source_published_at": "2026-09-14T16:00:11+00:00",
+        "status": "pending",
+        "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "work_communes": [],
+        "workplace_evidence": null
+      }
+    ],
+    "document_reviews": [
+      {
+        "document_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
+        "publication_approved": false,
+        "records": [
+          {
+            "active": false,
+            "application": {
+              "evidence": {
+                "literal": "Los documentos deberán ser entregados en sobre cerrado a nombre del DIDECO Sr. Jorge Hernández Arias\ny en el sobre se debe indicar el Programa, el nombre del/ la postulante, el cargo al que postula, número de celular y\ncorreo electrónico. Las postulaciones deberán ser ingresadas a través de la Oficina de Partes del Municipio, ubicada\nen calle Basilio Urrutia N°914, primer piso, edificio Municipal frente a plaza de armas, en horario de 09:00 a 14:00\nhoras. No se aceptarán postulaciones fuera de plazo.\nLa presentación de documentos o antecedentes de postulación incompletos, alterados y/ o la no presentación",
+                "page": 11,
+                "text_object_sha256": "024b99e2ebaf11a4e028bc97beaa1609f627b3fffd683e8d1b02cbce1af9e193"
+              },
+              "instructions": "Los documentos deberán ser entregados en sobre cerrado a nombre del DIDECO Sr. Jorge Hernández Arias\ny en el sobre se debe indicar el Programa, el nombre del/ la postulante, el cargo al que postula, número de celular y\ncorreo electrónico. Las postulaciones deberán ser ingresadas a través de la Oficina de Partes del Municipio, ubicada\nen calle Basilio Urrutia N°914, primer piso, edificio Municipal frente a plaza de armas, en horario de 09:00 a 14:00\nhoras. No se aceptarán postulaciones fuera de plazo.\nLa presentación de documentos o antecedentes de postulación incompletos, alterados y/ o la no presentación",
+              "kind": "in_person"
+            },
+            "contract_literal": "A Honorarios",
+            "document_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
+            "document_url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+            "employer": "Municipalidad de Traiguén",
+            "employer_evidence": {
+              "literal": "La Municipalidad de Traiguén requiere contratar el recurso humano necesario, según descripción de los",
+              "page": 3,
+              "text_object_sha256": "20db75f4f86cfb4c8317e6a46f15e49b152e86641ef913bbc41b51cee6ac10ad"
+            },
+            "original_application_window": {
+              "end": "2026-09-23T02:59:59.999000+00:00",
+              "evidence": {
+                "literal": "Convocatoria y Recepción de Antecedentes 14 al 22 de Septiembre 2026",
+                "page": 10,
+                "text_object_sha256": "46788a790118a78ba55455f22610618d5493dc04036592d59f404d0db36a7c15"
+              },
+              "start": "2026-09-14T03:00:00+00:00"
+            },
+            "original_deadline_status": "expired",
+            "published": false,
+            "review_id": "b8d76f84db9f9ee7bfd2a585b9291b57f5703644e28df4bb8c9cacfdb8846c51",
+            "role_evidence": {
+              "literal": "T | Kinesiólogo ‘A Honorarios Desde el 01 de Octubre de |$ 1.100.000 mensual",
+              "page": 3,
+              "text_object_sha256": "20db75f4f86cfb4c8317e6a46f15e49b152e86641ef913bbc41b51cee6ac10ad"
+            },
+            "salary_literal": "$ 1.100.000 mensual",
+            "source_date_status": "within_45_days",
+            "source_published_at": "2026-09-14T16:00:11+00:00",
+            "source_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+            "status": "pending_review",
+            "title": "Kinesiólogo",
+            "verified": false,
+            "work_commune": null,
+            "workplace_requires_review": true
+          },
+          {
+            "active": false,
+            "application": {
+              "evidence": {
+                "literal": "Los documentos deberán ser entregados en sobre cerrado a nombre del DIDECO Sr. Jorge Hernández Arias\ny en el sobre se debe indicar el Programa, el nombre del/ la postulante, el cargo al que postula, número de celular y\ncorreo electrónico. Las postulaciones deberán ser ingresadas a través de la Oficina de Partes del Municipio, ubicada\nen calle Basilio Urrutia N°914, primer piso, edificio Municipal frente a plaza de armas, en horario de 09:00 a 14:00\nhoras. No se aceptarán postulaciones fuera de plazo.\nLa presentación de documentos o antecedentes de postulación incompletos, alterados y/ o la no presentación",
+                "page": 11,
+                "text_object_sha256": "024b99e2ebaf11a4e028bc97beaa1609f627b3fffd683e8d1b02cbce1af9e193"
+              },
+              "instructions": "Los documentos deberán ser entregados en sobre cerrado a nombre del DIDECO Sr. Jorge Hernández Arias\ny en el sobre se debe indicar el Programa, el nombre del/ la postulante, el cargo al que postula, número de celular y\ncorreo electrónico. Las postulaciones deberán ser ingresadas a través de la Oficina de Partes del Municipio, ubicada\nen calle Basilio Urrutia N°914, primer piso, edificio Municipal frente a plaza de armas, en horario de 09:00 a 14:00\nhoras. No se aceptarán postulaciones fuera de plazo.\nLa presentación de documentos o antecedentes de postulación incompletos, alterados y/ o la no presentación",
+              "kind": "in_person"
+            },
+            "contract_literal": "A Honorarios",
+            "document_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
+            "document_url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+            "employer": "Municipalidad de Traiguén",
+            "employer_evidence": {
+              "literal": "La Municipalidad de Traiguén requiere contratar el recurso humano necesario, según descripción de los",
+              "page": 3,
+              "text_object_sha256": "20db75f4f86cfb4c8317e6a46f15e49b152e86641ef913bbc41b51cee6ac10ad"
+            },
+            "original_application_window": {
+              "end": "2026-09-23T02:59:59.999000+00:00",
+              "evidence": {
+                "literal": "Convocatoria y Recepción de Antecedentes 14 al 22 de Septiembre 2026",
+                "page": 10,
+                "text_object_sha256": "46788a790118a78ba55455f22610618d5493dc04036592d59f404d0db36a7c15"
+              },
+              "start": "2026-09-14T03:00:00+00:00"
+            },
+            "original_deadline_status": "expired",
+            "published": false,
+            "review_id": "a3942077c331ab76691326bb7b8397ac25db0220c6a7730f622901b30ff320e8",
+            "role_evidence": {
+              "literal": "2 | Terapeuta Ocupacional — | A Honorarios Desde el 01 de Octubre de [$ 1.100.000 mensual",
+              "page": 3,
+              "text_object_sha256": "20db75f4f86cfb4c8317e6a46f15e49b152e86641ef913bbc41b51cee6ac10ad"
+            },
+            "salary_literal": "$ 1.100.000 mensual",
+            "source_date_status": "within_45_days",
+            "source_published_at": "2026-09-14T16:00:11+00:00",
+            "source_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+            "status": "pending_review",
+            "title": "Terapeuta Ocupacional",
+            "verified": false,
+            "work_commune": null,
+            "workplace_requires_review": true
+          }
+        ],
+        "schema": "trabajo-cerca.document-review.v1"
+      }
+    ],
+    "review_queue": [
+      {
+        "task_id": "0c80daa9279b3e82a052e870fcab84653963bb1823d09a921be9b813000cf092",
+        "source_key": "document-reference",
+        "source_url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+        "reason": "multiple_notice_document_requires_review",
+        "fresh_evidence": true,
+        "missing_fields": [
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "fecha_original"
+        ],
+        "review_blockers": [],
+        "role": "1y2",
+        "company": null,
+        "work_communes": [],
+        "original_date": null,
+        "contact_present": false,
+        "original_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
+        "document_review_sha256": "fc2570c3250fb502f6cb6c00ac7ff4af181ac9011ab305c87c201d3718bb6dcd",
+        "review_notice_count": 2,
+        "publication_confirmed": false
+      },
+      {
+        "task_id": "8d8b60e1d18cc311b08dd65dd415351f704bcd8f321990f79ebe133575bb4be0",
+        "source_key": "document-reference",
+        "source_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "reason": "local_notice_requires_review",
+        "fresh_evidence": true,
+        "missing_fields": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto"
+        ],
+        "review_blockers": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "lugar_unico_sin_confirmar",
+          "plazo_explicito_sin_confirmar"
+        ],
+        "role": null,
+        "company": null,
+        "work_communes": [],
+        "original_date": "2026-09-14T16:00:11+00:00",
+        "contact_present": false,
+        "original_sha256": "51cf5a150433883d91304d24b918764bc6d1f47b43f3ec55a62e46356e7be567",
+        "document_review_sha256": null,
+        "review_notice_count": 0,
+        "publication_confirmed": false
+      }
+    ],
+    "local_handoff_ready": 0,
+    "handoff": {
+      "schema": "trabajo-cerca.radar-v2-handoff.v1",
+      "checked_at": "2026-10-17T22:29:36.700463+00:00",
+      "pilot_verified_candidates": 0,
+      "batch_records": 0,
+      "source_urls": [],
+      "blocked": [],
+      "paid_provider_calls": 0,
+      "published": 0,
+      "publication_confirmed": false,
+      "social_capture_proven": false,
+      "coverage_complete": false
+    },
+    "max_work": 35,
+    "coverage_complete": false,
+    "publication_confirmed": false,
+    "production_modified": false,
+    "paid_provider_calls": 0,
+    "published": 0
+  },
+  "validation": {
+    "python_tests": 153,
+    "node_test_files": 16,
+    "all_passed": true
+  },
+  "other_source_probe": [
+    {
+      "key": "negrete",
+      "records": [
+        {
+          "url": "https://www.muninegrete.cl/robots.txt",
+          "final_url": "https://www.muninegrete.cl/robots.txt",
+          "status": 200,
+          "mime": "text/plain",
+          "bytes": 389,
+          "sha256": "669416eda5ae76c9b40731bcd1590e7eae42f226e4beea7bb85045e5cd826d91",
+          "file": "negrete-robots.txt",
+          "captured_at": "2026-10-17T22:10:58.349298+00:00"
+        },
+        {
+          "url": "https://www.muninegrete.cl/wp-json/wp/v2/posts?after=2026-09-02T00%3A00%3A00&per_page=30&_fields=id%2Cdate%2Cdate_gmt%2Clink%2Ctitle%2Ccontent%2Cfeatured_media",
+          "final_url": "https://www.muninegrete.cl/wp-json/wp/v2/posts?after=2026-09-02T00%3A00%3A00&per_page=30&_fields=id%2Cdate%2Cdate_gmt%2Clink%2Ctitle%2Ccontent%2Cfeatured_media",
+          "status": 200,
+          "mime": "application/json",
+          "bytes": 55733,
+          "sha256": "03bc49bef2e4d365f471ea930d7ba5c59b080d51bb1c8d0c5e8dbbd6bdfdf1cd",
+          "file": "negrete-source.txt",
+          "captured_at": "2026-10-17T22:11:00.722640+00:00"
+        }
+      ],
+      "job_candidates": [
+        {
+          "date": "2026-09-07T09:07:08",
+          "date_gmt": "2026-09-07T12:07:08",
+          "url": "https://www.muninegrete.cl/ya-estan-publicadas-las-bases-de-las-regatas-y-cuecas-premiadas-2026/",
+          "title": {
+            "rendered": "¡YA ESTÁN PUBLICADAS LAS BASES DE LAS REGATAS Y CUECAS PREMIADAS 2026"
+          },
+          "text": "\n     \n\n\n\n En el marco de las celebraciones de Fiestas Patrias, la Municipalidad de Negrete invita a la comunidad a conocer las bases y participar en dos de nuestras actividades más tradicionales: las  Regatas del Río Biobío  y el concurso  Cuecas Premiadas 2026 . \n\n\n\n Ambas actividades se realizarán el  sábado 19 de septiembre : \n\n\n\n  Regatas del Río Biobío  De 10:00 a 13:00 horas, en la sede de la Agrupación de Boteros de Negrete. La competencia contempla distintas categorías para niños, jóvenes, mujeres, adultos y personas mayores. \n\n\n\n  DESCARGAR BASES Y FORMULARIO DE INSCRIPCIÓN  \n\n\n\n    DECRETO APRUEBA BASES DE REGATA 2026  Descargar  \n\n\n\n  Cuecas Premiadas 2026  De 15:30 a 19:00 horas, en la Carpa Fonda Familiar, ubicada en el Recinto Municipal, ex CMPC. Podrán participar parejas en las categorías infantil, juvenil, adulto y adulto mayor. \n\n\n\n  DESCARGAR BASES Y FORMULARIO DE INSCRIPCIÓN  \n\n\n\n    DECRETO APRUEBA BASES DE CUECAS PREMIADAS 2026  Descargar  \n\n\n\n Las inscripciones son gratuitas. Los requisitos, plazos, categorías, premios y antecedentes necesarios para participar se encuentran detallados en los respectivos documentos. \n\n\n\n  ¡Los invitamos a sumarse y disfrutar de nuestras tradiciones durante estas Fiestas Patrias!  \n\n\n\n  \n      0        0        0        0        0    ",
+          "featured_media": 0
+        }
+      ],
+      "returned_posts": 8
+    },
+    {
+      "key": "traiguen",
+      "error": "HTTPError: HTTP Error 401: Unauthorized",
+      "records": [
+        {
+          "url": "https://mtraiguen.cl/robots.txt",
+          "final_url": "https://mtraiguen.cl/robots.txt",
+          "status": 200,
+          "mime": "text/plain",
+          "bytes": 170,
+          "sha256": "5ecfa57bf622cbcf90171706051c17f3bf1c9efd403aa9c6d41b516c3ce63ec4",
+          "file": "traiguen-robots.txt",
+          "captured_at": "2026-10-17T22:10:57.374358+00:00"
+        }
+      ]
+    },
+    {
+      "key": "nacimiento-mirror",
+      "records": [
+        {
+          "url": "https://www.govern1.com/robots.txt",
+          "final_url": "https://www.govern1.com/robots.txt",
+          "status": 200,
+          "mime": "text/plain",
+          "bytes": 918,
+          "sha256": "b5eced39f769480b3272007b18aa56879c10f764757b55044df8e60d5cac92c1",
+          "file": "nacimiento-mirror-robots.txt",
+          "captured_at": "2026-10-17T22:10:56.173320+00:00"
+        },
+        {
+          "url": "https://www.govern1.com/CL/Nacimiento/102913642090515/OMIL-Municipalidad-de-Nacimiento",
+          "final_url": "https://www.govern1.com/CL/Nacimiento/102913642090515/OMIL-Municipalidad-de-Nacimiento",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 132019,
+          "sha256": "3e71adc3f56714f6525081c5c7df9c01c12e548533da6d1c084cb5a194886f0a",
+          "file": "nacimiento-mirror-source.txt",
+          "captured_at": "2026-10-17T22:10:56.733678+00:00"
+        }
+      ],
+      "preview": "<!DOCTYPE html>\n<html lang=\"es\">\n  <head>\n        <link rel=\"canonical\" href=\"https://www.govern1.com/CL/Nacimiento/102913642090515/OMIL-Municipalidad-de-Nacimiento\">\n        <meta"
+    }
+  ],
+  "primary_source_probe": [
+    {
+      "key": "nacimiento-primary",
+      "records": [
+        {
+          "url": "https://www.nacimiento.cl/robots.txt",
+          "final_url": "https://www.nacimiento.cl/robots.txt",
+          "status": 200,
+          "mime": "text/plain",
+          "bytes": 48,
+          "sha256": "a441efba2b43cee9bf71ad08d1d59fb2605c7d518afc07942dcb7473226bbd06",
+          "file": "nacimiento-primary-robots.txt",
+          "captured_at": "2026-10-17T22:16:06.359821+00:00"
+        },
+        {
+          "url": "https://www.nacimiento.cl/noticias/5888",
+          "final_url": "https://www.nacimiento.cl/noticias/5888",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 113264,
+          "sha256": "884c2f6f9a5c73d31877ce3cefe608a0a9f0f65c0e56fe9be6695b8debec7505",
+          "file": "nacimiento-primary.html",
+          "captured_at": "2026-10-17T22:16:07.195736+00:00"
+        }
+      ],
+      "title": "Ofertas laborales OMIL Municipalidad de Nacimiento",
+      "source_published_at": null,
+      "text": "Ofertas laborales OMIL Municipalidad de Nacimiento\nhace 5 años\n(NUEVA) Empresa de servicios forestales requiere recepcionistas y/o despachadores de productos forestales, para desarrollar funciones de control de ingreso y salida de maderas de fundos, canchas y aserraderos, resguardando el cumplimiento de las normas de  seguridad de todos los involucrados en la operación. Requisitos: enseñanza media completa, experiencia laboral de 6 meses. Horario de lunes a sábado en turnos rotativos. Renta líquida mensual $480.000.- \nLas personas interesadas en la vacante laboral deben enviar un mensaje con la palabra “recepcionista forestal” al número de whatsapp +56991622459 y seguir las instrucciones correspondientes. \nConsultas al teléfono/whatsapp OMIL +56991622459 \nVence: 27/10/21 \n///////////////////////////////// \n(NUEVA) Importante cadena de supermercados requiere operador de tienda para su local en Nacimiento. Las funciones a desarrollar son atender/asistir al cliente en su compra, vender, reponer, trasladar, cambiar precios y recepcionar mercadería. Horario de lunes a domingo, con días libres a la semana. Requisitos: enseñanza media completa. Renta líquida mensual $337.000.- \nLas personas interesadas en la vacante laboral deben enviar un mensaje con la palabra “operador de tienda” al número de whatsapp +56991622459 y seguir las instrucciones correspondientes. \nConsultas al teléfono/whatsapp OMIL +56991622459 \nVence: 25/10/21 \n///////////////////////////////// \n(NUEVA) Empresa constructora requiere capataz, maestro carpintero/albañiles y jornales, para obra de construcción en Puente Cea y Santa Emilia Ruta Q-340. Tiempo de ejecución de la obra: 6 meses. Horario de lunes a viernes, de 08:00 a 18:00 horas. \nLas personas interesadas en las vacantes laborales deben enviar un mensaje con la palabra “Obra rural”, al número de whatsapp +56991622459 y seguir las instrucciones correspondientes. \nConsultas al teléfono/whatsapp OMIL +56991622459 \nVence: 31/10/21 \n///////////////////////////////// \n(NUEVA) Empresa de transportes requiere conductores con conocimientos de mecánica básica, para realizar humectación de canchas de acopio. Turnos rotativos 4x4. Renta líquida mensual $500.000.- \nLas personas interesadas en la vacante laboral deben enviar un mensaje con la palabra “humectación de canchas” al número de whatsapp +56991622459 y seguir las instrucciones correspondientes.",
+      "images": [
+        "https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6Im5hY2ltaWVudG8vbmV3cy84MTY4MF9sb2dvX211bmljaXBhbF9uYWNpbWllbnRvXzFfLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NzYyLCJoZWlnaHQiOjI4MywiZml0IjoiY292ZXIifSwicm90YXRlIjpudWxsfX0=",
+        "https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6Im5hY2ltaWVudG8vbmV3cy84MTY4MF9sb2dvX211bmljaXBhbF9uYWNpbWllbnRvXzFfLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwMCwiaGVpZ2h0IjoyMDAwLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsfX0=",
+        "https://ligup-v2.s3-sa-east-1.amazonaws.com/general/post_footer/logoligup.png"
+      ],
+      "links": [
+        {
+          "url": "mailto:oficinadigital.omilnacimiento@gmaill.com",
+          "label": "oficinadigital.omilnacimiento@gmaill.com"
+        },
+        {
+          "url": "mailto:oficinadigital.omilnacimiento@gmail.com",
+          "label": "oficinadigital.omilnacimiento@gmail.com"
+        },
+        {
+          "url": "mailto:oficinadigital.omilnacimiento@gmail.com",
+          "label": "oficinadigital.omilnacimiento@gmail.com"
+        }
+      ]
+    },
+    {
+      "key": "traiguen-primary",
+      "records": [
+        {
+          "url": "https://mtraiguen.cl/robots.txt",
+          "final_url": "https://mtraiguen.cl/robots.txt",
+          "status": 200,
+          "mime": "text/plain",
+          "bytes": 170,
+          "sha256": "5ecfa57bf622cbcf90171706051c17f3bf1c9efd403aa9c6d41b516c3ce63ec4",
+          "file": "traiguen-primary-robots.txt",
+          "captured_at": "2026-10-17T22:16:07.436205+00:00"
+        },
+        {
+          "url": "https://mtraiguen.cl/",
+          "final_url": "https://mtraiguen.cl/",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 278350,
+          "sha256": "8496d2b7b0943eb784ed930967ee9719b44cef68b9a690ba7e17a4a2e977c25b",
+          "file": "traiguen-primary.html",
+          "captured_at": "2026-10-17T22:16:09.890997+00:00"
+        }
+      ],
+      "title": "Ilustre Municipalidad de Traiguén | Traiguén Lo Hacemos TodosHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteContraste negativoFondo claroSubrayar enlacesFuente legibleRestablecer",
+      "source_published_at": null,
+      "text": "Municipalidad de Traiguén\n \n \n \n \n \n \n \n \nMunicipalidad\n🗳️ ¡Comienza el proceso de renovación del COSOC 2026-2030!\n13 Oct a las 8:24 pm\n0\n¡Comienza el proceso de renovación del COSOC 2026-2030! Informamos a las organizaciones de nuestra comuna que inició el proceso de…\n \n \n \n \n \nMunicipalidad\nBases para llamado a Concurso Público de 3 Cargos.\n1 Oct a las 9:04 am\n0\nLa necesidad de dotar al departamento de Salud Municipal de Traiguén del personal profesional idóneo para la atención integral de…\n \n \n \n \n \nMunicipalidad\nBASES DE SEGUNDO LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\n14 Sep a las 1:00 pm\n0\nLa Municipalidad de Traiguén requiere contratar el recurso humano necesario, según descripción de los cargos señalados en las presentes bases,…\n \n \n \n \n \nMunicipalidad\nBASES LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\n24 Ago a las 8:22 pm\n0\nLa Municipalidad de Traiguén requiere contratar el recurso humano necesario, según descripción de los cargos señalados en las presentes bases,…\n \n \n \n \n \nMunicipalidad\ninicio de las obras correspondientes al proyecto “Mejoramiento Ruta Patrimonial en Parque Cementerio Municipal»\n2 Jun a las 5:32 pm\n0\nAtención vecinos y vecinas La Municipalidad de Traiguén, representada por su alcalde Luis Álvarez Valenzuela, informa a la comunidad el…\n \n \n \n \n \nMunicipalidad\nRealizan primer encuentro Empresarial de OMIL Traiguén 2026\n2 Jun a las 5:28 pm\n0\n  Realizan primer encuentro Empresarial de OMIL Traiguén 2026 La actividad llevó por nombre: «Alianzas por el Empleo: Fortaleciendo el…\n \n \n \n \n \nMunicipalidad\nAGENDA DEL ALCALDE – reunión con representantes de la Corporación ADES\n2 Jun a las 5:23 pm\n0\nEl día de hoy, nuestro alcalde Luis Álvarez Valenzuela junto al administrador Andres Levy, sostuvo una reunión con representantes de…\n \n \n \n \n \nEDUCACIONMunicipalidad\nDESFILE DE HONOR A LAS GLORIAS NAVALES TRAIGUÉN 2026\n2 Jun a las 5:17 pm\n0\nDESFILE DE HONOR A LAS GLORIAS NAVALES TRAIGUÉN 2026 ¡Vecinos y Vecinas! Compartimos con ustedes algunas imágenes del desfile realizado…\n \n \n \n \n \nMunicipalidad\nCharla Informativa Subsidio Sectores Medios DS1\n2 Jun a las 4:19 pm\n0\nCharla Informativa Subsidio Sectores Medios DS1 El día de hoy, en el Salón Municipal, se realizó una importante charla informativa…\n \n \n \n \n \nMunicipalidad\nLiceo Lucila Godoy Alcayaga celebró 120 años f",
+      "images": [
+        "https://mtraiguen.cl/wp-content/uploads/2023/09/Share-Mtraiguen.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2024/12/1-2-848x1024.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2023/05/t-activa.svg",
+        "https://mtraiguen.cl/wp-content/uploads/2023/05/t-info.svg",
+        "https://mtraiguen.cl/wp-content/uploads/2023/05/t-lobby.svg",
+        "https://mtraiguen.cl/wp-content/uploads/2024/12/LOGO-FOOTER-4.png",
+        "https://mtraiguen.cl/wp-content/uploads/2023/05/LOGO-MUNI-3-1024x390.webp",
+        "https://mtraiguen.cl/wp-content/plugins/revslider/public/assets/assets/dummy.png",
+        "https://mtraiguen.cl/wp-content/uploads/2026/03/pcv-2026-819x1024.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2023/07/4-2-848x1024.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2024/07/CONCEJO-WEB-2.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2026/10/Azul-Beige-y-Blanco-Moderno-Veterinaria-Post-para-Instagram-1dfasfs-1024x430.png",
+        "https://mtraiguen.cl/wp-content/uploads/2024/10/LOGO-MUNICIPALIDADNOTICIAS.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2026/06/706144147_1045851007768639_6555863660258319979_n-1024x576.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2026/06/707270435_1045387864481620_5652111326196696381_n-1024x589.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2026/06/705052595_1042907131396360_8290696726074744388_n-1024x576.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2026/06/2-1024x613.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2026/06/705046472_1041256258228114_7046789545630663835_n-1024x576.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2026/05/DSC_0082-768x512-1.jpg",
+        "https://mtraiguen.cl/wp-content/uploads/2025/01/LOGO-TRANSPARENTE.fw_-300x120.png"
+      ],
+      "links": [
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "label": ""
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "label": "Bases para llamado a Concurso Público de 3 Cargos."
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/#respond",
+          "label": "0"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "label": ""
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "label": "BASES DE SEGUNDO LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/#respond",
+          "label": "0"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "label": ""
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "label": "BASES LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/#respond",
+          "label": "0"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+          "label": ""
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+          "label": "Realizan primer encuentro Empresarial de OMIL Traiguén 2026"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/#respond",
+          "label": "0"
+        },
+        {
+          "url": "https://www.portaltransparencia.cl/PortalPdT/documents/10179/62801/PLADECO+TRAIGUEN+2025-2028.pdf",
+          "label": "Pladeco 2025-2028"
+        },
+        {
+          "url": "https://www.portaltransparencia.cl/PortalPdT/documents/10179/62801/PLAN+COMUNAL+SP+TRAIGUEN+%28ACTUALIZACIÓN%29.pdf",
+          "label": "Consejo de Seguridad Pública"
+        },
+        {
+          "url": "https://www.portaltransparencia.cl/PortalPdT/documents/10179/62801/DAEX+Y+REGLAMENTO+COSOC.pdf",
+          "label": "Consejo de Sociedad Civil"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Plano-Traiguen.pdf",
+          "label": "Mapa"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/ROL_REAVALUO_AGRICOLA_2020.pdf",
+          "label": "Bienes Raíces Agrícolas 2020"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/ROL_REAVALUOS_NO_AGRICOLA_2020.pdf",
+          "label": "Bienes Raíces No Agrícolas 2020"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Informe_EAE_Traiguen.pdf",
+          "label": "Informe EAE Traiguén"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Diario_Oficial-Inicio.pdf",
+          "label": "Diario Oficial"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/12/DAEX-3401-APRUEBA-ESCALAFON-DE-MERITO-2024.pdf",
+          "label": "Escalafón de Mérito año 2024"
+        }
+      ]
+    },
+    {
+      "key": "collipulli-primary",
+      "records": [
+        {
+          "url": "https://municipalidadcollipulli.cl/robots.txt",
+          "final_url": "https://municipalidadcollipulli.cl/robots.txt",
+          "status": 200,
+          "mime": "text/plain",
+          "bytes": 67,
+          "sha256": "9311bab30d8b5d05f5fa5563a251b8c96b8470873bb77c62d3d17c146d7acab7",
+          "file": "collipulli-primary-robots.txt",
+          "captured_at": "2026-10-17T22:16:06.532716+00:00"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+          "final_url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 153862,
+          "sha256": "347684cee98828f289cc0c6f4c82a4773454fb672db65f898693cbc4bcb07051",
+          "file": "collipulli-primary.html",
+          "captured_at": "2026-10-17T22:16:07.150981+00:00"
+        }
+      ],
+      "title": "Concursos Públicos - I. Municipalidad de Collipulli",
+      "source_published_at": null,
+      "text": "Cerrar\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nConcursos Públicos\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n CARGOCANTIDAD DE VACANTESFECHA DE INICIO LLAMADO A CONCURSOFECHA DE TERMINO LLAMADO A CONCURSODESCARGAR BASES/DECRETOSDESCARGAR ANEXOSRESULTADO LLAMADO A CONCURSO\n CONCURO PÚBLICO PARA PROVEER EL CARGO DE PROFESIONAL PARA EL PROGRAMA DE DESARROLLO TERRITORIAL INDÍGENA (PDTI)0131/AGOSTO/202607/SEPTIEMBRE/2026Descargar BasesDescargar Anexo 01 \nDescargar Anexo 02 \nDescargar Anexo 03 \n CONCURSO PUBLICO PARA PROVEER EL CARGO PROFESIONAL EJECUTIVO ATENCIÓN A EMPRESAS DE LA OFICINA MUNICIPAL DE INTERMEDIACIÓN LABORAL DE LA MUNICIPALIDAD DE COLLIPULLI0124/ABRIL/202630/ABRIL/2026Descargar Bases\n CONCURSO PUBLICO PARA PROVEER EL CARGO TECNICO PDTI Y PRODESAL0120/ABRIL/202629/ABRIL/2026Descargar Bases\n CONCURSO PUBLICO PARA PROVEER EL CARGO DE TITULAR DE PLANTA DE LA MUNICIPALIDAD DE COLLIPULLI GRADO 180115/ABRIL/202624/ABRIL/2026Descargar Bases\n CONCURSO PUBLICO PARA PROVEER EL CARGO DE TITULAR DE PLANTA DE LA MUNICIPALIDAD DE COLLIPULLI GRADO 150115/ABRIL/202624/ABRIL/2026Descargar Bases\n CONCURSO PUBLICO PARA PROVEER EL CARGO DE TITULAR DE PLANTA DE LA MUNICIPALIDAD DE COLLIPULLI GRADO 130115/ABRIL/202624/ABRIL/2026Descargar Bases\n CONCURSO PUBLICO PARA PROVEER EL CARGO DE PROFESIONAL COORDINADOR/A DE LA OFICINA LOCAL NIÑEZ COLLIPULLI 0109/MARZO/202614/MARZO/2026Descargar BasesDescargar Anexo 01 \nDescargar Anexo 02 \nDescargar Anexo 03 \n CONCURSO PUBLICO PARA PROVEER EL CARGO DE PROFESIONAL CARGO GESTOR/A DE CASOS DE LA OFICINA DE LA NIÑEZ COLLIPULLI0109/MARZO/202614/MARZO/2026Descargar BasesDescargar Anexo 01 \nDescargar Anexo 02 \nDescargar Anexo 03 \n CONCURSO PÚBLICO PARA PROVEER EL CARGO DE PROFESIONAL PROGRAMA DESARROLLO TERRITORIAL INDÍGENA (PDTI)0115/09/202526/09/2025Descargar Bases\nDescargar Decreto\n EJECUTIVO ATENCIÓN DE EMPRESAS, PROFESIONAL PROGRAMA OMIL01\n11/AGOSTO/202515/AGOSTO/2025 A LAS 14:00 HORASDescargar BasesDescargar Anexo 01 \n Concurso Público para proveer el cargo de Auxiliar, grado 16° E.M.0125/04/202507/05/2025 A LAS 14:00 HORASDescargar BasesDescargar Anexo 01 \nDescargar Anexo 02 \nDescargar Anexo 03 \n CONCURSO PÚBLICO PARA PROVEER EL CARGO DE PROFEIONAL PROGRAMA ACOMPAÑAMIENTO FAMILIAR INTEGRAL\n0104/04/202511/04/2025Descargar Bases\n ORIENTADOR LABORAL DE LA OFICINA MUNICIPAL DE INTERMEDIACIÓN LABORAL (OMIL).0126",
+      "images": [
+        "https://municipalidadcollipulli.cl/wp-content/uploads/2021/12/logo_principal.png",
+        "https://municipalidadcollipulli.cl/wp-content/uploads/2021/12/logo-blanco.png"
+      ],
+      "links": [
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/09/BASES-CONCURSO-PDTI-PROFESIONAL.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N°-914-DEL-22.04.2026-LLAMADO-CONCURSO-OMIL.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N°-876-DEL-17.04.2026-LLAMADO-A-CONCURSO-TECNICO-PDTI-Y-PRODESAL.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N°755-10.04.2026-BASES-GRADO-18.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N°-764-DEL-10.04.2026-BASES-GRADO-15.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N°-765-DEL-10.04.2026-BASES-GRADO-13.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/03/Decreto-bases-administrativas.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/03/Decreto-bases-administrativas.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/09/ANEXO-4-BASES-ADMINISTRATIVAS-Profesional-PDTI-septiembre-2025-1.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/09/Decreto-bases-PDTI.pdf",
+          "label": "Descargar Decreto"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N°-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/04/Decreto-y-bases-auxiliar-grado-16.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/04/CCF_000596.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/03/Profesional-reemplazo-pre-y-post-natal.pdf",
+          "label": "Descargar Documentos"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/03/Decreto.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/03/Profesional-programa-oficina-intermediacion-laboral.pdf",
+          "label": "Descargar Documentos"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/03/Decreto-aprueba-bases-1.pdf",
+          "label": "Descargar Decreto"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/03/Bases-llamado.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/02/LLAMADO-ANTECEDENTES-JEFE-UTP-DAEM_0001.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/02/Revoca-decreto-exento-N°308-que-convoca-y-aprueba-bases-administrativas-generales-de-llamado-antecedentes-para-proveer-cargo-de-jefe-unidad-tecnico-pedagogica-DAEM.pdf",
+          "label": "Descargar Decreto Revocado"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/09/Decreto-aprueba-bases.pdf",
+          "label": "Descargar Decreto"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/09/Bases-profesional-prodesal.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Bases-administrativas.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Decreto-aprueba-bases-1.pdf",
+          "label": "Descargar Decreto"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/ANEXO-1-CV.pdf",
+          "label": "Descargar Anexos"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/ANEXO-2-DECLARACION-INGRESO-A-LA-ADM.-PUBLICA.pdf",
+          "label": "Descargar Anexos"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/ANEXO-3-NO-DEUDORA-PENSION-DE-ALIMENTOS.pdf",
+          "label": "Descargar Anexos"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Decreto-aprueba-bases.pdf",
+          "label": "Descargar Decreto"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Bases-adm.-tecnico-grado-15.pdf",
+          "label": "Descargar Bases"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/07/Decreto-aprueba-bases.pdf",
+          "label": "Descargar Decreto"
+        }
+      ]
+    }
+  ],
+  "unavailable_mirror_images": {
+    "robots": [
+      {
+        "url": "https://img4.govern1.com/robots.txt",
+        "final_url": "https://img4.govern1.com/robots.txt",
+        "status": 200,
+        "mime": "text/plain",
+        "bytes": 1248,
+        "sha256": "8fa3036c68bfcbd32365f6225d24333264093b7cd38d306e106b4dbdc934fd5b",
+        "file": "img4.govern1.com-robots.txt",
+        "captured_at": "2026-10-17T22:14:15.525315+00:00"
+      },
+      {
+        "url": "https://img5.govern1.com/robots.txt",
+        "final_url": "https://img5.govern1.com/robots.txt",
+        "status": 200,
+        "mime": "text/plain",
+        "bytes": 1248,
+        "sha256": "8fa3036c68bfcbd32365f6225d24333264093b7cd38d306e106b4dbdc934fd5b",
+        "file": "img5.govern1.com-robots.txt",
+        "captured_at": "2026-10-17T22:14:16.049725+00:00"
+      }
+    ],
+    "captures": [
+      {
+        "key": "psicologia",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "key": "mecanica",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "key": "electromecanica",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "larger_document_head": {
+    "url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+    "method": "HEAD",
+    "status": 200,
+    "content_type": "application/pdf",
+    "content_length": "13988452"
+  },
+  "spanish_model": {
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/spa.traineddata",
+    "file": "spa.traineddata",
+    "bytes": 2294433,
+    "sha256": "6f2e04d02774a18f01bed44b1111f2cd7f3ba7ac9dc4373cd3f898a40ea6b464"
+  },
+  "main_modified": false,
+  "app_deployed": false,
+  "paid_provider_calls": 0,
+  "published": 0
+}

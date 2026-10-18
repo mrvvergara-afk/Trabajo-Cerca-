@@ -1,5 +1,7 @@
 # Reparaciones de AppDeploy en el laboratorio
 
+El [puente documental de Traiguén](../../docs/puente-documental-traiguen-2026-10-17.md) tiene un [paquete incremental pendiente de aplicar](document-unit-repair.json) sobre tres módulos de la versión `1791924889565`. La prueba local confirmó tres cargos distintos en el feed, con postulación presencial y persistencia. La app pública no fue modificada. Antes de desplegar se deben comprobar de nuevo versión y hashes; el transporte firmado real y la publicación en AppDeploy de este lote siguen pendientes.
+
 La [conexión del nuevo motor](../../docs/conexion-radar-v2-2026-10-14.md) reutilizó el receptor firmado de la app v99. El lote `38584587407` quedó confirmado mediante el SDK, con el mismo ID del aviso BNE de Negrete y un recibo durable nuevo. Pasaron 277 pruebas. No se desplegó otra versión ni se integró `main`; el control ya estaba publicado y no cuenta como una oferta nueva o captación social demostrada.
 
 Estado actual de la app indicada por el usuario: versión **`1791924889565`** aplicada y `ready`. La [conexión de documentos](../../docs/conexion-documentos-2026-10-13.md) quedó comprobada en cuatro ciclos reales, con OCR completo dentro de sus límites y respaldo durable. Pasaron 242 pruebas en GitHub. No se obtuvo una oferta documental elegible; se conservaron el lote y los IDs anteriores. `main` sigue sin integrar.

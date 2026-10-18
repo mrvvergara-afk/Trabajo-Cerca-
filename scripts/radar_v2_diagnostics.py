@@ -39,6 +39,8 @@ def describe(rows, config, now):
                 'work_communes':fields['work_communes'], 'original_date':fields.get('source_published_at'),
                 'contact_present':bool(fields['emails'] or fields['phones']),
                 'original_sha256':payload.get('object_sha256') or payload.get('html_object_sha256'),
+                'document_review_sha256':result.get('document_review_sha256'),
+                'review_notice_count':result.get('review_notice_count',0),
                 'publication_confirmed':False})
     sources = []
     for source in config['sources']:

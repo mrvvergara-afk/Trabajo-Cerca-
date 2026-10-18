@@ -4,16 +4,16 @@ import re
 
 try:
     from .common import COMMUNES, MAX_SOURCE_AGE_DAYS, canonical_url, output_dir, parse_date, utcnow, write_json
-    from .public_source_adapters import source_adapter
+    from .public_source_adapters import source_adapter, offer_identity
 except ImportError:
     from common import COMMUNES, MAX_SOURCE_AGE_DAYS, canonical_url, output_dir, parse_date, utcnow, write_json
-    from public_source_adapters import source_adapter
+    from public_source_adapters import source_adapter, offer_identity
 
 
 def prepare(state, *, output=None, now=None):
     now = now or utcnow()
     records, blocked, identities = [], [], set()
-    for item in state.inventory():
+    for item in state.inventory()+state.document_inventory():
         result = item.get('verification') or {}
         if item['state'] != 'verified' or result.get('status') != 'verified':
             continue
@@ -42,7 +42,7 @@ def prepare(state, *, output=None, now=None):
             blocked.append({'id': item['id'], 'reason': 'required_evidence_missing'})
             continue
         adapter = source_adapter(result.get('url'))
-        identity = adapter['identityUrl'] if adapter else canonical_url(result['url'])
+        identity = offer_identity(result['url'],(result.get('document_unit') or {}).get('key')) if adapter else canonical_url(result['url'])
         if identity in identities:
             blocked.append({'id':item['id'],'reason':'same_original_offer_already_in_batch'})
             continue
@@ -56,6 +56,7 @@ def prepare(state, *, output=None, now=None):
                         'verified_at': checked.isoformat(),
                         'verification_method': result['verification_method'],
                         **({'source_evidence':result['source_evidence']} if result.get('source_evidence') else {}),
+                        **({'document_unit':result['document_unit'],'application_details':result['application_details']} if result.get('document_unit') else {}),
                         **({'validity_method':validity,'validity_evidence':evidence} if live_form else {})})
     report = {'schema': 'trabajo-cerca.ingestion.v1', 'generated_at': now.isoformat(),
               'dry_run': True, 'publisher_status': 'not_connected',

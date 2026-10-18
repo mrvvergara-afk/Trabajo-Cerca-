@@ -16,6 +16,7 @@ def counts(connection):
     if not required.issubset(tables):
         raise ValueError('Backup is missing required history tables')
     audited = required | ({'publication_receipts'} if 'publication_receipts' in tables else set())
+    audited |= tables & {'document_units','document_unit_attempts'}
     return {name: connection.execute('SELECT count(*) FROM ' + name).fetchone()[0]
             for name in sorted(audited)}
 

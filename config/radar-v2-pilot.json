@@ -107,11 +107,11 @@
       "key": "omil-traiguen",
       "name": "Municipalidad / OMIL Traiguén",
       "family": "municipal",
-      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "url": "https://mtraiguen.cl/",
       "territory": "Traiguén",
       "kind": "web",
       "page_type": "directory",
-      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+      "identity_evidence": "La portada municipal enlaza convocatorias de Salud Municipal (01/10/2026) y PRLAC (14/09/2026), comprobadas en HTML original el 17/10/2026. Sus bases y vigencia se verifican por separado."
     },
     {
       "key": "omil-nacimiento",
@@ -127,11 +127,12 @@
       "key": "omil-mulchen",
       "name": "Municipalidad / OMIL Mulchén",
       "family": "municipal",
-      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
       "territory": "Mulchén",
       "kind": "web",
       "page_type": "directory",
-      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+      "candidate_limit": 12,
+      "identity_evidence": "Listado laboral dedicado del sitio municipal, con siete enlaces recuperados del HTML original el 17/10/2026; figuraban cerrados y sin fecha original confirmada. No acredita vigencia."
     },
     {
       "key": "omil-collipulli",

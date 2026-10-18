@@ -17,8 +17,9 @@ from .laboratory_exchange import git, REPOSITORY, PRODUCER_BRANCH
 from .local_history import verify_notice
 from .local_source_audit import Document, HIRING, MEDIA, discover, fetch_public, same_publisher, source_error, tesseract_text
 from .public_source_adapters import source_adapter
-from .radar_v2_store import PilotStore, restore
+from .radar_v2_store import MAX_OBJECT_BYTES, MAX_PDF_BYTES, PilotStore, restore
 from .radar_v2_diagnostics import describe
+from .document_review import review_document
 
 DATA_BRANCH='radar-pilot-v2-state'
 CONFIG=Path('config/radar-v2-pilot.json')
@@ -63,8 +64,28 @@ def social_children(capture,now):
     return children
 
 
+def listing_is_closed(store,payload):
+    proof=payload.get('listing_evidence')
+    if not proof:return False
+    origin=payload.get('publisher_page') or payload.get('source_url') or payload.get('url')
+    if (not same_publisher(proof['source_url'],origin)
+            or canonical_url(proof['notice_url'])!=canonical_url(origin)):
+        raise ValueError('listing_evidence_mismatch')
+    parser=Document();parser.feed(decode_public_html(store.object(proof['html_object_sha256']).read_bytes()))
+    labels=[]
+    for href,label in parser.links:
+        try:target=canonical_url(urllib.parse.urljoin(proof['source_url'],href))
+        except ValueError:continue
+        if target==canonical_url(origin):labels.append(label)
+    if not labels:raise ValueError('listing_notice_link_missing')
+    return any(re.search(r'postulaci[oó]n(?:es)?\s+(?:cerradas?|finalizadas?)|oferta\s+(?:cerrada|expirada)',label,re.I) for label in labels)
+
+
 def web_work(store,payload,budget,fetcher=fetch_public,now=None):
     now=now or utcnow();url=payload['url']
+    candidate_limit=payload['source'].get('candidate_limit',6)
+    if type(candidate_limit) is not int or not 1<=candidate_limit<=12:
+        raise ValueError('invalid_candidate_limit')
     control = payload['source'].get('scope') == 'publication_control'
     if control:
         adapter = source_adapter(url)
@@ -85,6 +106,7 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
       'source_published_at':None if directory else page['source_published_at'],'text':page['text'] if HIRING.search(page['title']+' '+page['text']) else '',
       'complete':len(page['text'])<14000,'sha256':original,'html_object_sha256':original,
       'capture_slot':int(now.timestamp()//14400),'title':page['title']}
+    if payload.get('listing_evidence'):value['listing_evidence']=payload['listing_evidence']
     archive=json_blob(store,{**value,'page_last_published_at':page['source_published_at'],'page_type':'directory' if directory else 'notice'})
     children=[];date=parse_date(page['source_published_at'])
     old=date and now-date>dt.timedelta(days=45)
@@ -99,15 +121,17 @@ def web_work(store,payload,budget,fetcher=fetch_public,now=None):
             if same_publisher(target,final) and MEDIA.search(target) and re.search(r'\bbases?\b|decreto|concurso|convocatoria',label,re.I):
                 candidates.append({'url':target,'kind':'document'})
         candidates=list({row['url']:row for row in candidates}.values())
-        for candidate in candidates[:6]:
+        for candidate in candidates[:candidate_limit]:
             target=canonical_url(candidate['url'])
             if MEDIA.search(target) and media_allowed(target,final):children.append(('media',value['source_url']+':'+target+suffix,{**value,'media_url':target}))
             elif same_publisher(target,final) and payload.get('depth',0)<1:
-                children.append(('web',target+suffix,{'url':target,'source':payload['source'],'depth':1,'page_type':'notice'}))
+                child={'url':target,'source':payload['source'],'depth':1,'page_type':'notice'}
+                if directory:child['listing_evidence']={'source_url':final,'notice_url':target,'html_object_sha256':original}
+                children.append(('web',target+suffix,child))
         images=[]
         for target in page['images']:
             hint=bool(POSTER_HINT.search(target+' '+page['image_labels'].get(target,'')))
-            relevant=hint or not directory and bool(POSTER_HINT.search(page['title']))
+            relevant=hint or not directory and not parser.embedded_documents and bool(POSTER_HINT.search(page['title']))
             if relevant and media_allowed(target,final) and not re.search(r'logo|avatar|icon|banner|favicon|slider|\.(?:svg|gif|ico)(?:\?|$)',target,re.I):
                 images.append((not hint,target))
         for _,target in sorted(images)[:3]:
@@ -125,7 +149,8 @@ def media_work(store,payload,budget,fetcher=fetch_public):
     else:
         url=payload['media_url']
         if not media_allowed(url,origin):raise ValueError('media_publisher_not_allowed')
-        raw,final,mime,status=fetcher(url,budget,max_bytes=8*1024*1024)
+        maximum=MAX_PDF_BYTES if urllib.parse.urlsplit(url).path.lower().endswith('.pdf') else MAX_OBJECT_BYTES
+        raw,final,mime,status=fetcher(url,budget,max_bytes=maximum)
         if status!=200 or not media_allowed(final,origin):raise ValueError('media_source_unavailable')
     if mime not in IMAGE_MIMES and mime!='application/pdf':raise ValueError('unsupported_media_type')
     digest=store.put(raw,mime);base={**payload,'object_sha256':digest,'mime':mime}
@@ -151,6 +176,12 @@ def page_work(store,payload,budget):
                 prefix=Path(directory)/'page'
                 subprocess.run(['pdftoppm','-f',str(page),'-l',str(page),'-singlefile','-scale-to','1800','-png',str(path),str(prefix)],capture_output=True,timeout=min(20,max(1,budget.remaining())),check=True)
                 value=tesseract_text(prefix.with_suffix('.png'),budget)
+                if re.search(r'cronograma',value['text'],re.I) and budget.remaining()>20:
+                    # A uniform text block can lose table cells and detach dates
+                    # from their labels. Archive a second layout, without replacing
+                    # the original reading or treating either as verified data.
+                    try:value['alternate_readings']=[tesseract_text(prefix.with_suffix('.png'),budget,segmentation=4)]
+                    except Exception as exc:value['alternate_reading_error']=source_error(exc)
     else:value=tesseract_text(path,budget)
     artifact=json_blob(store,value)
     return {'status':'extracted','archive':artifact,'document_sha256':payload['object_sha256'],'page':page,
@@ -162,6 +193,14 @@ def evaluate_work(store,payload,now):
     text=payload.get('text','');date=original_date(payload,now)
     complete=payload.get('complete',not payload.get('text_truncated',False));digest=payload.get('sha256')
     if not digest:digest=json_blob(store,{'text':text,'date_proof':payload.get('date_proof')})
+    if listing_is_closed(store,payload):
+        return {'status':'rejected','reason':'listing_marks_notice_closed','archive':digest},[]
+    if (payload.get('document_review_sha256') and not payload.get('contribution_requires_review')
+            and (source_adapter(payload['source_url']) or {}).get('family')=='local'):
+        review=json.loads(store.object(payload['document_review_sha256']).read_text())
+        if len(review['records'])>1:
+            return {'status':'pending','reason':'multiple_notice_document_requires_review','archive':digest,
+                'document_review_sha256':payload['document_review_sha256'],'review_notice_count':len(review['records'])},[]
     adapter=source_adapter(payload['source_url'])
     if not adapter or adapter['family']!='local':
         # Capture evidence now, but the pilot never expands the production source allowlist.
@@ -194,7 +233,14 @@ def assemble_documents(store,now):
         verification_url=verification_url or payload['source_url']
         key=verification_url+':'+digest+':'+str(slot)+':v3'
         if key not in evaluated:
-            store.seed('evaluate',key,{**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],'complete':complete,'sha256':digest,'original_page_count':payload['pages']},now)
+            value={**payload,'publisher_page':payload['source_url'],'source_url':verification_url,'text':text[:18000],
+                'complete':complete,'sha256':digest,'original_page_count':payload['pages']}
+            review=review_document([{**item,'page':row['payload']['page'],'text_object_sha256':row['result']['archive']}
+                for row,item in zip(sorted(pages,key=lambda row:row['payload']['page']),values)],
+                source_url=payload['source_url'],document_url=payload.get('media_url'),document_sha256=digest,
+                published_at=payload.get('source_published_at'),now=now)
+            if review['records']:value['document_review_sha256']=json_blob(store,review)
+            store.seed('evaluate',key,value,now)
 
 
 def run(store,config,social,*,now=None,budget=None,limit=18,fetcher=fetch_public,work_kinds=None):

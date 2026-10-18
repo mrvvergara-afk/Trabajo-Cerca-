@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.radar-v2-publication-control.v1",
-  "territories": ["Renaico", "Negrete"],
+  "territories": ["Renaico", "Negrete", "Traiguén"],
   "paid_providers_enabled": false,
   "publish_enabled": false,
   "sources": [

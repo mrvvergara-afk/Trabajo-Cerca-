@@ -1,9 +1,15 @@
 import { db } from '@appdeploy/sdk';
 import { createHash, createPublicKey, verify, type JsonWebKey } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
-import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
+import { publicSourceAdapter, safePublicUrl, samePublicJob, publicOfferIdentity } from './public-source-adapters';
 
 type Stored = Record<string, unknown>;
+type DocumentField = { page:number; text_object_sha256:string; reading?:string; literal:string };
+type DocumentUnit = {
+  schema:string; key:string; publisher_url:string; html_sha256:string; document_url:string; document_sha256:string;
+  page_count:number; pages:Array<{ page:number; text_object_sha256:string }>;
+  fields:Record<string,DocumentField>; review_method:string; reviewed_at:string;
+};
 export type VerifiedOffer = {
   idempotency_key:string; candidate_id:string; source_url:string; source:string;
   title:string; company:string; work_commune:string; source_published_at:string;
@@ -11,6 +17,8 @@ export type VerifiedOffer = {
   validity_method?:'explicit_deadline' | 'live_application';
   validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
   source_evidence?:{ sha256:string; source_url:string; complete_document:boolean; text:string };
+  document_unit?:DocumentUnit;
+  application_details?:{ method:'in_person'; instructions:string };
 };
 type Receipt = { table:string; id:string; identity:string; candidateId:string };
 type PullState = {
@@ -49,10 +57,61 @@ function jsonPart(part:string) {
   catch { return reject('Malformed proof JSON'); }
 }
 
-export function jobIdentity(url:string) {
-  const adapter = publicSourceAdapter(url);
-  if (!adapter || adapter.family === 'aggregator') reject('Unsupported individual source URL');
-  return sha(adapter.identityUrl);
+export function jobIdentity(url:string, documentKey?:string) {
+  const identity=publicOfferIdentity(url,documentKey);
+  if (!identity) reject('Unsupported individual source URL');
+  return sha(identity);
+}
+
+function documentFlat(value:string) {
+  return value.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
+}
+
+function validateDocumentUnit(item:VerifiedOffer, now:number) {
+  const unit=item.document_unit, application=item.application_details;
+  if (!unit || unit.schema!=='trabajo-cerca.document-unit.v1' || unit.review_method!=='page_bound_review' ||
+      unit.publisher_url!==item.source_url || !safePublicUrl(unit.document_url) ||
+      new URL(unit.document_url).hostname.replace(/^www\./,'')!==new URL(item.source_url).hostname.replace(/^www\./,'') ||
+      !/\.pdf$/i.test(new URL(unit.document_url).pathname) || unit.key!==sha(documentFlat(item.title)) ||
+      !/^[a-f0-9]{64}$/.test(unit.html_sha256) || !/^[a-f0-9]{64}$/.test(unit.document_sha256) || item.source_evidence ||
+      !Number.isInteger(unit.page_count) || unit.page_count<1 || unit.page_count>40 || !Array.isArray(unit.pages) ||
+      unit.pages.length!==unit.page_count) reject('Invalid page-bound document proof');
+  const reviewed=Date.parse(unit.reviewed_at);
+  if (!Number.isFinite(reviewed) || reviewed>now || now-reviewed>MAX_AGE || reviewed<Date.parse(item.verified_at)) reject('Stale document review');
+  const pages=new Map<number,string>();
+  unit.pages.forEach(page=>{
+    if (!Number.isInteger(page.page) || page.page<1 || page.page>unit.page_count || pages.has(page.page) ||
+        !/^[a-f0-9]{64}$/.test(page.text_object_sha256)) reject('Incomplete document pages');
+    pages.set(page.page,page.text_object_sha256);
+  });
+  const required=['title','company','workplace','deadline','deadline_time','application','scope'];
+  if (!unit.fields || Object.keys(unit.fields).length!==required.length) reject('Missing document field proof');
+  let size=0;
+  for (const name of required) {
+    const field=unit.fields[name];
+    if (!field || pages.get(field.page)!==field.text_object_sha256 || typeof field.literal!=='string' ||
+        !field.literal.length || field.literal.length>4000 || field.reading!==undefined && field.reading!=='primary' &&
+        !/^alternate_readings:\d+$/.test(field.reading)) reject('Invalid document field proof');
+    size+=field.literal.length;
+  }
+  if (size>18000 || !documentFlat(unit.fields.title.literal).includes(documentFlat(item.title)) ||
+      !documentFlat(unit.fields.company.literal).includes(documentFlat(item.company)) ||
+      !documentFlat(unit.fields.workplace.literal).includes(documentFlat(item.work_commune)) ||
+      !/lugar de trabajo|establecimiento|departamento de salud|red de salud|\bDSM\b/i.test(unit.fields.workplace.literal) ||
+      !/\d+\s+CARGOS/i.test(unit.fields.scope.literal)) reject('Unbound document field value');
+  const close=documentFlat(unit.fields.deadline.literal).match(/cierre\s+de\s+periodo\s+de\s+recepcion\s+de\s+postulaciones\s*\|?\s*(\d{1,2})\s+de\s+([a-z]+)\s+(?:de\s+)?(20\d{2})/);
+  const clock=unit.fields.deadline_time.literal.match(/a\s+las\s+(\d{1,2})(?::(\d{2}))?\s*(?:hrs|horas)/i);
+  const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'America/Santiago',day:'numeric',month:'numeric',year:'numeric',
+    hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date(item.valid_through));
+  const part=(type:string)=>Number(parts.find(p=>p.type===type)?.value);
+  const months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  if (!close || !clock || part('day')!==Number(close[1]) || part('month')!==months.indexOf(close[2])+1 ||
+      part('year')!==Number(close[3]) || part('hour')!==Number(clock[1]) || part('minute')!==Number(clock[2] || 0)) reject('Document deadline differs from literal');
+  const literal=unit.fields.application.literal;
+  if (!application || application.method!=='in_person' || application.instructions!==literal ||
+      !/Oficina[\s\S]{0,30}de Partes/i.test(literal) || !/ubicad[oa] en|\bcalle\b/i.test(literal) ||
+      !/#?\d{2,5}/.test(literal) || !/postulante|postulaci[oó]n|sobre/i.test(literal) ||
+      item.application!==unit.document_url+'#page='+unit.fields.application.page) reject('Invalid in-person application proof');
 }
 
 // A historical, digest-bound proof of a GitHub job; it never authorizes a new HTTP request.
@@ -96,11 +155,13 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
   for (const field of ['source_url','title','company','work_commune','source_published_at','application','verified_at','verification_method','candidate_id','idempotency_key'] as const) {
     if (typeof item[field] !== 'string' || !item[field].trim() || item[field].length > 2000) reject('Missing or oversized offer evidence');
   }
-  const identity = jobIdentity(item.source_url);
+  const identity = jobIdentity(item.source_url,item.document_unit?.key);
   const adapter = publicSourceAdapter(item.source_url)!;
   const localMethod = adapter.family==='local' && item.verification_method===adapter.name+' individual notice + local document text';
+  const unitMethod = adapter.family==='local' && item.verification_method===adapter.name+' individual notice + page-bound document review';
   if (!/^[a-f0-9]{24}$/.test(item.candidate_id) || item.idempotency_key !== 'radar:' + item.candidate_id ||
-      !PLACES.includes(item.work_commune) || (item.verification_method !== adapter.verificationMethod && !localMethod)) reject('Unsupported verification evidence');
+      !PLACES.includes(item.work_commune) || (item.verification_method !== adapter.verificationMethod && !localMethod && !unitMethod)) reject('Unsupported verification evidence');
+  if ((item.document_unit || item.application_details) && !unitMethod) reject('Unsupported document unit evidence');
   if (typeof item.valid_through !== 'string' || item.valid_through.length>2000) reject('Invalid source deadline');
   if (localMethod && (!item.source_evidence || item.source_evidence.source_url!==item.source_url ||
       !item.source_evidence.complete_document || !/^[a-f0-9]{64}$/.test(item.source_evidence.sha256) ||
@@ -108,6 +169,11 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
   const checked = Date.parse(item.verified_at), published = Date.parse(item.source_published_at), deadline = Date.parse(item.valid_through);
   if (![checked,published].every(Number.isFinite) || checked > now || now - checked > MAX_AGE ||
       published > now || now - published > 45 * MAX_AGE) reject('Stale or invalid source evidence');
+  if (unitMethod) {
+    if (!Number.isFinite(deadline) || deadline<=now || deadline<=published || item.validity_method==='live_application') reject('Stale or invalid source evidence');
+    validateDocumentUnit(item,now);
+    if (item.candidate_id!==identity.slice(0,24)) reject('Document candidate identity mismatch');
+  }
   if (item.validity_method==='live_application') {
     const evidence = item.validity_evidence;
     if (localMethod || item.valid_through || !evidence || !samePublicJob(item.source_url,evidence.form_url) ||
@@ -174,6 +240,9 @@ async function saveState(fields:Stored) {
 }
 
 export async function storeVerifiedBatch(batch:Batch, digest:string, mapRecord:(item:VerifiedOffer) => Stored, now=Date.now()) {
+  if (!Array.isArray(batch.records) || batch.records.length>3) reject('Batch size exceeded');
+  const identities=batch.records.map(offer=>validateOffer(offer,now));
+  if (new Set(identities).size!==identities.length) reject('Duplicate offer identity in batch');
   const receipts:Receipt[] = [];
   for (const offer of batch.records) {
     const identity = validateOffer(offer, now);
@@ -183,7 +252,11 @@ export async function storeVerifiedBatch(batch:Batch, digest:string, mapRecord:(
     const previous = rows.items[0];
     if (previous && previous.externalIdentity !== identity) throw new Error('Identity collision; preserve history');
     const { id:_id, ...fields } = previous ?? {};
-    const record:Stored = { ...fields, ...mapRecord(offer), createdAt:previous?.createdAt ?? new Date(now).toISOString(),
+    const documentFields:Stored=offer.document_unit ? {documentUnitKey:offer.document_unit.key,documentUnitVerified:true,
+      documentUnitProof:offer.document_unit,applicationMethod:'in_person',applicationInstructions:offer.application_details!.instructions,
+      applicationUrl:offer.application,sourceValidThrough:offer.valid_through,expiresAt:offer.valid_through,
+      note:'Postulación presencial. '+offer.application_details!.instructions.replace(/\s+/g,' ')+' · Bases: '+offer.application} : {};
+    const record:Stored = { ...fields, ...mapRecord(offer), ...documentFields, createdAt:previous?.createdAt ?? new Date(now).toISOString(),
       externalIdentity:identity, externalCandidateId:offer.candidate_id, externalBatchDigest:digest,
       externalRunId:batch.run_id, externalVerifiedAt:offer.verified_at, feedRegistered:false };
     if (Buffer.byteLength(JSON.stringify(record)) > 230 * 1024) throw new Error('External offer byte budget exceeded');

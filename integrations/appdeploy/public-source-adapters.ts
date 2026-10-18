@@ -87,3 +87,12 @@ export function samePublicJob(left:string, right:string) {
   const first = publicSourceAdapter(left), second = publicSourceAdapter(right);
   return Boolean(first && second && first.identityUrl === second.identityUrl);
 }
+
+// Keep legacy URL identities unchanged. Several reviewed jobs may share a document.
+export function publicOfferIdentity(value:string, documentKey?:string):string | null {
+  const adapter=publicSourceAdapter(value);
+  if (!adapter || adapter.family==='aggregator') return null;
+  if (documentKey===undefined) return adapter.identityUrl;
+  if (adapter.family!=='local' || typeof documentKey!=='string' || !/^[a-f0-9]{64}$/.test(documentKey)) return null;
+  return adapter.identityUrl+'\0document-unit-v1\0'+documentKey;
+}

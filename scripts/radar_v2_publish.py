@@ -57,6 +57,8 @@ def revalidate(pilot, row, rows, now):
                     and item['result'].get('capture_slot') == payload.get('capture_slot')]
         if not captures:
             raise ValueError('original_html_capture_missing')
+        if any(radar_v2_pilot.listing_is_closed(pilot,item['payload']) for item in captures):
+            raise ValueError('listing_marks_notice_closed')
         captured = min(fresh_time(item['result'].get('captured_at'), now) for item in captures)
         page = radar_v2_pilot.discover(decode_public_html(pilot.object(html).read_bytes()), url)
         result = local_history.verify_notice(page['text'], url, page['source_published_at'],
@@ -70,6 +72,8 @@ def revalidate(pilot, row, rows, now):
              and item['payload'].get('capture_slot') == payload.get('capture_slot')]
     if not media:
         raise ValueError('original_document_download_missing')
+    if any(radar_v2_pilot.listing_is_closed(pilot,item['payload']) for item in media):
+        raise ValueError('listing_marks_notice_closed')
     captured = min(fresh_time(item.get('completed_at'), now) for item in media)
     pages = [item for item in rows if item['kind'] == 'page'
              and item['payload'].get('object_sha256') == digest and item['payload']['source_url'] == origin
@@ -91,12 +95,26 @@ def revalidate(pilot, row, rows, now):
     return result, min(completed, captured), digest
 
 
-def prepare(pilot, history, output, *, now=None, territories=('Renaico', 'Negrete')):
+def prepare(pilot, history, output, *, now=None, territories=('Renaico', 'Negrete'), document_reviews=()):
     now = now or utcnow()
     output = Path(output)
     rows = pilot.results()
     eligible = set()
     blocked = []
+    document_ids=set()
+    if document_reviews:
+        from .document_unit_bridge import prepare_reviewed_units
+        for manifest in document_reviews:
+            try:
+                _, reviewed=prepare_reviewed_units(pilot,history,manifest,output,now=now)
+                # Every selected unit is revalidated above, even on a replay.
+                for item in history.document_inventory():
+                    result=item['verification']
+                    if (item['id'] in reviewed['candidate_ids'] and result['status']=='verified'
+                            and result['work_commune'] in territories):document_ids.add(item['id'])
+            except (ValueError,KeyError,TypeError) as exc:
+                blocked.append({'source_url':manifest.get('source_url'),'reason':str(exc) if isinstance(exc,ValueError) else safe_error(exc)})
+        eligible.update(document_ids)
     candidates = [row for row in rows if row['status'] == 'done' and row['kind'] in ('evaluate', 'web')
                   and (row.get('result') or {}).get('status') == 'verified']
     for row in candidates:
@@ -122,10 +140,12 @@ def prepare(pilot, history, output, *, now=None, territories=('Renaico', 'Negret
             reason = str(exc) if isinstance(exc, ValueError) and re.fullmatch('[a-z_]+', str(exc)) else safe_error(exc)
             blocked.append({'task_id':row['id'], 'reason':reason})
     queue = publication_queue.prepare(history, output=output, now=now)
-    queue['records'] = [item for item in queue['records'] if item['candidate_id'] in eligible][:3]
+    selected=[item for item in queue['records'] if item['candidate_id'] in eligible]
+    queue['records'] = sorted(selected,key=lambda item:item['candidate_id'] not in document_ids)[:3]
     queue['ready_count'] = len(queue['records'])
     report = {'schema':'trabajo-cerca.radar-v2-handoff.v1', 'checked_at':now.isoformat(),
               'pilot_verified_candidates':len(candidates), 'batch_records':len(queue['records']),
+              'reviewed_document_candidates':len(document_ids),
               'source_urls':[item['source_url'] for item in queue['records']], 'blocked':blocked,
               'paid_provider_calls':0, 'published':0, 'publication_confirmed':False,
               'social_capture_proven':False, 'coverage_complete':False}
@@ -186,7 +206,15 @@ def main():
     try:
         control = json.loads(CONTROL.read_text())
         captured = radar_v2_pilot.run(pilot, control, {'captures':[]}, limit=6, budget=Budget(80))
-        queue, report = prepare(pilot, history, output, territories=control['territories'])
+        review_files=json.loads(os.environ.get('RADAR_V2_DOCUMENT_REVIEW_FILES','[]'))
+        if not isinstance(review_files,list) or len(review_files)>5:raise ValueError('Invalid reviewed document file list')
+        reviews=[];review_root=Path('config/document-reviews').resolve()
+        for name in review_files:
+            path=Path(name).resolve()
+            if not path.is_relative_to(review_root) or path.suffix!='.json' or path.stat().st_size>80000:
+                raise ValueError('Document review must be a bounded reviewed configuration file')
+            reviews.append(json.loads(path.read_text()))
+        queue, report = prepare(pilot, history, output, territories=control['territories'],document_reviews=reviews)
         report.update(control_capture=captured, pilot_parent=pilot_parent, history_parent=history_parent,
                       before_pilot=before_pilot, before_history=before_history)
         history.record_run(report)

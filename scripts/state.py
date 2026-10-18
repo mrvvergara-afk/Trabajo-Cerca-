@@ -151,6 +151,39 @@ class State:
                  'last_attempt_at': r['last_attempt_at'],
                  'verification': json.loads(r['result']) if r['result'] else None} for r in rows]
 
+    def document_inventory(self):
+        if not self.connection.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='document_units'").fetchone():return []
+        return [{'id':r['id'],'url':r['source_url'],'state':r['status'],
+                 'verification':json.loads(r['result'])} for r in self.connection.execute('SELECT * FROM document_units ORDER BY id')]
+
+    def record_document_result(self,result,now=None):
+        """Separate reviewed units; never rewrite the legacy URL-unique candidates."""
+        try:from .public_source_adapters import offer_identity
+        except ImportError:from public_source_adapters import offer_identity
+        unit=result['document_unit'];url=canonical_url(result['url'])
+        identity=hashlib.sha256(offer_identity(url,unit['key']).encode()).hexdigest()[:24]
+        stamp=(now or utcnow()).isoformat()
+        raw=json.dumps({**result,'checked_at':stamp},ensure_ascii=False,sort_keys=True)
+        self.connection.executescript('''
+          CREATE TABLE IF NOT EXISTS document_units(id TEXT PRIMARY KEY,source_url TEXT NOT NULL,
+            unit_key TEXT NOT NULL,first_seen_at TEXT NOT NULL,last_seen_at TEXT NOT NULL,status TEXT NOT NULL,result TEXT NOT NULL,
+            UNIQUE(source_url,unit_key));
+          CREATE TABLE IF NOT EXISTS document_unit_attempts(id INTEGER PRIMARY KEY,candidate_id TEXT NOT NULL,
+            checked_at TEXT NOT NULL,result TEXT NOT NULL);
+        ''')
+        with self.connection:
+            old=self.connection.execute('SELECT result FROM document_units WHERE id=?',(identity,)).fetchone()
+            if old and json.loads(old['result']).get('checked_at','')>stamp:raise ValueError('newer_document_history_preserved')
+            if not old:
+                self.connection.execute('INSERT INTO document_units VALUES(?,?,?,?,?,?,?)',
+                    (identity,url,unit['key'],stamp,stamp,result['status'],raw))
+            elif old['result']!=raw:
+                self.connection.execute('UPDATE document_units SET last_seen_at=?,status=?,result=? WHERE id=?',
+                    (stamp,result['status'],raw,identity))
+            if not old or old['result']!=raw:
+                self.connection.execute('INSERT INTO document_unit_attempts(candidate_id,checked_at,result) VALUES(?,?,?)',(identity,stamp,raw))
+        return identity
+
     def checkpoints(self):
         return {r['source']: json.loads(r['payload']) for r in
                 self.connection.execute('SELECT * FROM checkpoints')}
@@ -185,6 +218,8 @@ class State:
             for receipt in published:
                 candidate = self.connection.execute('SELECT result FROM candidates WHERE id=?',
                                                     (receipt.get('candidateId'),)).fetchone()
+                if not candidate and self.connection.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='document_units'").fetchone():
+                    candidate=self.connection.execute('SELECT result FROM document_units WHERE id=?',(receipt.get('candidateId'),)).fetchone()
                 if not candidate:
                     raise ValueError('Receipt refers to a candidate absent from durable history')
                 result = json.loads(candidate['result'] or '{}')

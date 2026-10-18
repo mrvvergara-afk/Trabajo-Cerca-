@@ -13,6 +13,9 @@ from pathlib import Path
 from .common import utcnow
 
 MAX_OBJECT_BYTES = 8 * 1024 * 1024
+# Scanned municipal bases can exceed the image/object limit. Keep the archive
+# ceiling unchanged, and use the larger limit only for original PDF bytes.
+MAX_PDF_BYTES = 16 * 1024 * 1024
 MAX_ARCHIVE_BYTES = 32 * 1024 * 1024
 KINDS = {'web','social','media','page','evaluate'}
 OBSERVATION_ENCODING='trabajo-cerca.pilot-observation.gzip.v1'
@@ -111,7 +114,9 @@ class PilotStore:
             self.connection.execute('UPDATE attempts SET finished_at=?,result=? WHERE job_id=? AND attempt=?',(now.isoformat(),raw,job['id'],job['attempts']))
 
     def put(self,data,mime):
-        if not isinstance(data,bytes) or len(data)>MAX_OBJECT_BYTES:raise ValueError('Evidence object exceeds budget')
+        if not isinstance(data,bytes):raise ValueError('Evidence object exceeds budget')
+        maximum=MAX_PDF_BYTES if mime=='application/pdf' and data.startswith(b'%PDF-') else MAX_OBJECT_BYTES
+        if len(data)>maximum:raise ValueError('Evidence object exceeds budget')
         identity=hashlib.sha256(data).hexdigest();path=self.root/'objects'/identity
         if path.exists():
             if hashlib.sha256(path.read_bytes()).hexdigest()!=identity:raise ValueError('Stored evidence hash mismatch')

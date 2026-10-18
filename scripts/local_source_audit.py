@@ -34,6 +34,7 @@ class Document(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.title, self.body, self.links, self.images, self.dates = '', [], [], [], []
+        self.embedded_documents = []
         self.image_labels = {}
         self.in_title, self.skip, self.href, self.label = False, [], None, []
         self.ld, self.script, self.schemas = False, [], []
@@ -55,6 +56,19 @@ class Document(HTMLParser):
                 self.dates.append(attrs['content'])
             if key == 'og:image' and attrs.get('content'): self.images.append(attrs['content'])
         if tag == 'a': self.href, self.label = attrs.get('href'), []
+        if tag in ('iframe','embed','object'):
+            for key in ('data-emsrc','data-src','data','src'):
+                value = attrs.get(key)
+                if not value:continue
+                try:
+                    parsed = urllib.parse.urlsplit(value)
+                    if parsed.path.lower().endswith('/viewer.html'):
+                        value = urllib.parse.parse_qs(parsed.query).get('file',[''])[0]
+                        parsed = urllib.parse.urlsplit(value)
+                    if not parsed.path.lower().endswith('.pdf'):continue
+                except ValueError:continue
+                self.embedded_documents.append(value)
+                self.links.append((value, attrs.get('title') or 'Documento PDF incrustado'))
         if tag == 'iframe' and attrs.get('src'):
             try:
                 embedded = urllib.parse.urlsplit(attrs['src'])
@@ -119,12 +133,16 @@ def source_error(exc):
 def discover(raw, url):
     parser = Document(); parser.feed(raw)
     candidates, social = {}, set()
+    embedded = set()
+    for value in parser.embedded_documents:
+        try:embedded.add(canonical_url(urllib.parse.urljoin(url,value)))
+        except ValueError:continue
     for href, label in parser.links:
         try: target = canonical_url(urllib.parse.urljoin(url, href))
         except ValueError: continue
         channel = institutional_social_link(target,label)
         if channel: social.add(channel)
-        if same_publisher(url,target) and HIRING.search(label + ' ' + target) and not NON_JOB.search(label):
+        if same_publisher(url,target) and (target in embedded or HIRING.search(label + ' ' + target)) and not NON_JOB.search(label):
             candidates[target] = {'url':target,'title':label[:300],'kind':'document' if MEDIA.search(target) else 'page'}
     source_dates = list(parser.dates)
     for schema in parser.schemas:
@@ -195,16 +213,22 @@ def evidence_fields(text, published_at=None):
             'missing':missing, 'hiring_language':bool(HIRING.search(text)), 'published':False}
 
 
-def tesseract_text(path, budget):
+def tesseract_text(path, budget, *, segmentation=6):
+    if segmentation not in (4,6):raise ValueError('unsupported_ocr_segmentation')
     if not shutil.which('tesseract'): raise RuntimeError('local_ocr_not_installed')
     languages = subprocess.run(['tesseract','--list-langs'],capture_output=True,text=True,timeout=5,check=True).stdout
-    language = 'spa+eng' if '\nspa\n' in '\n'+languages else 'eng'
-    result = subprocess.run(['tesseract',str(path),'stdout','-l',language,'--psm','6','tsv'],
+    available=set(languages.splitlines())
+    language='+'.join(value for value in ('spa','eng') if value in available)
+    if not language:raise RuntimeError('local_ocr_language_unavailable')
+    result = subprocess.run(['tesseract',str(path),'stdout','-l',language,'--psm',str(segmentation),'-c','tessedit_create_tsv=1'],
       capture_output=True,text=True,timeout=min(18,max(1,budget.remaining())),check=True)
     groups,confidence = {},[]
     # Tesseract TSV is not CSV-quoted. A literal quote in a word must never absorb
     # later rows (and turn bounding-box coordinates into apparent phone numbers).
-    for row in csv.DictReader(io.StringIO(result.stdout),delimiter='\t',quoting=csv.QUOTE_NONE):
+    reader=csv.DictReader(io.StringIO(result.stdout),delimiter='\t',quoting=csv.QUOTE_NONE)
+    if not reader.fieldnames or not {'level','text','conf','page_num','block_num','par_num','line_num'}<=set(reader.fieldnames):
+        raise RuntimeError('local_ocr_tsv_unavailable')
+    for row in reader:
         if row.get('level')!='5' or None in row:continue
         word = row.get('text','').strip()
         try: score = float(row.get('conf','-1'))
@@ -214,7 +238,8 @@ def tesseract_text(path, budget):
             groups.setdefault(key,[]).append(word);confidence.append(score)
     full_text = '\n'.join(' '.join(words) for words in groups.values())
     return {'text':full_text[:18000],'textTruncated':len(full_text)>18000,'textOriginalLength':len(full_text),
-            'mean_confidence':round(sum(confidence)/len(confidence),1) if confidence else None,'language':language,'engine':'tesseract-local','parser':'tesseract-tsv-literal-v2'}
+            'mean_confidence':round(sum(confidence)/len(confidence),1) if confidence else None,'language':language,'engine':'tesseract-local','parser':'tesseract-tsv-literal-v2',
+            'segmentation':segmentation}
 
 
 def read_medium(url, source_url, budget):

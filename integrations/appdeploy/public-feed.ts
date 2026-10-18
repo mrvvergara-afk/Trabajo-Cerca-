@@ -1,6 +1,6 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
-import { publicSourceAdapter } from './public-source-adapters';
+import { publicSourceAdapter, publicOfferIdentity } from './public-source-adapters';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -35,6 +35,10 @@ function allowedSource(source:string) {
 
 function identity(item:Stored) {
   if (item.kind !== 'job_offer' || typeof item.url !== 'string') return null;
+  if (typeof item.documentUnitKey==='string' && item.documentUnitVerified===true) {
+    const unit=publicOfferIdentity(item.url,item.documentUnitKey);
+    return unit ? createHash('sha256').update(unit).digest('hex') : null;
+  }
   const adapter = publicSourceAdapter(item.url);
   return adapter && adapter.family!=='aggregator' ? createHash('sha256').update(adapter.identityUrl).digest('hex') : null;
 }

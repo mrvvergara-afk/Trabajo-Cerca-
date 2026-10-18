@@ -18,6 +18,15 @@ LOCAL_PUBLISHERS = {
 }
 
 
+def offer_identity(value,document_key=None):
+    adapter=source_adapter(value)
+    if not adapter or adapter['family']=='aggregator':raise ValueError('unsupported_offer_identity')
+    if document_key is None:return adapter['identityUrl']
+    if adapter['family']!='local' or not isinstance(document_key,str) or not re.fullmatch('[a-f0-9]{64}',document_key):
+        raise ValueError('invalid_document_unit_identity')
+    return adapter['identityUrl']+'\0document-unit-v1\0'+document_key
+
+
 def source_adapter(value):
     try:
         url = urllib.parse.urlsplit(canonical_url(value))

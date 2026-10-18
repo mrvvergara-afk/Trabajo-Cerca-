@@ -21,6 +21,7 @@ except ImportError:
 REPOSITORY = 'mrvvergara-afk/Trabajo-Cerca-'
 REPOSITORY_ID = '1411752840'
 PRODUCER_BRANCH = 'repair/radar-audit-2026-10-11'
+DOCUMENT_PRODUCER_BRANCH = 'repair/mulchen-captura-2026-10-17'
 DATA_BRANCH = 'radar-state-laboratorio'
 AUDIENCE = 'urn:trabajo-cerca:lab:1411752840:'
 
@@ -76,7 +77,8 @@ def pilot(state_path, output, *, now=None, collector=None, checker=verify_candid
 
 def unsigned_body(queue, context, *, now=None):
     now = now or utcnow()
-    if context.get('repository') != REPOSITORY or context.get('repository_id') != REPOSITORY_ID or context.get('ref') != 'refs/heads/' + PRODUCER_BRANCH:
+    reviewed_refs = {'refs/heads/' + PRODUCER_BRANCH, 'refs/heads/' + DOCUMENT_PRODUCER_BRANCH}
+    if context.get('repository') != REPOSITORY or context.get('repository_id') != REPOSITORY_ID or context.get('ref') not in reviewed_refs:
         raise ValueError('Producer must be the authorized laboratory repository and branch')
     if not re.fullmatch('[a-f0-9]{40}', context.get('sha', '')) or not re.fullmatch('[0-9]+', context.get('run_id', '')):
         raise ValueError('Invalid producer SHA or run ID')

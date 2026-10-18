@@ -306,8 +306,9 @@ def restore_git(root):
     return parent
 
 
-def push_snapshot(store,manifest,folder,run_id,parent,reports):
+def push_snapshot(store,manifest,folder,run_id,parent,reports,*,data_branch=DATA_BRANCH):
     if not re.fullmatch('[0-9]+',run_id):raise ValueError('Invalid pilot run identity')
+    if data_branch not in {DATA_BRANCH,'radar-reviewed-document-state'}:raise ValueError('Unexpected pilot data branch')
     files={'state/pilot.sqlite3.gz':(folder/'pilot.sqlite3.gz').read_bytes(),
       'state/manifest.json':(folder/'manifest.json').read_bytes(),
       'history/'+run_id+'/pilot.sqlite3.gz':(folder/'pilot.sqlite3.gz').read_bytes(),
@@ -323,7 +324,7 @@ def push_snapshot(store,manifest,folder,run_id,parent,reports):
             git('update-index','--add','--cacheinfo','100644,'+digest+','+path,env=env)
         tree=git('write-tree',env=env).decode().strip()
         commit=git('commit-tree',tree,*(['-p',parent] if parent else []),data=('Isolated pilot snapshot '+run_id+'\n').encode(),env=env).decode().strip()
-        git('push','origin',commit+':refs/heads/'+DATA_BRANCH,env=env)
+        git('push','origin',commit+':refs/heads/'+data_branch,env=env)
     return commit
 
 

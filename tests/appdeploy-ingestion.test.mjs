@@ -111,6 +111,14 @@ test('Real GitHub subject with immutable owner and repository IDs is accepted', 
   assert.equal(result.batch.run_id,'123');
 });
 
+test('The isolated document branch requires the same signed repository, workflow and exact branch', () => {
+  const h=harness(), batch=body({ref:'refs/heads/repair/mulchen-captura-2026-10-17'});
+  assert.equal(h.ctx.verifySignedBatch(signed(batch),jwks,now).batch.ref,batch.ref);
+  assert.throws(()=>h.ctx.verifySignedBatch(signed(body({ref:batch.ref+'-other'})),jwks,now),/Untrusted/);
+  assert.throws(()=>h.ctx.verifySignedBatch(signed(batch,{workflow_ref:batch.repository+'/.github/workflows/other.yml@'+batch.ref}),jwks,now),/Untrusted/);
+  assert.throws(()=>h.ctx.verifySignedBatch(signed(batch,{repository_owner_id:'999'}),jwks,now),/Untrusted/);
+});
+
 test('Immutable subjects from other IDs, owners, repository names or branches are rejected', () => {
   const h = harness();
   const valid = 'repo:mrvvergara-afk@291955988/Trabajo-Cerca-@1411752840:ref:refs/heads/repair/radar-audit-2026-10-11';

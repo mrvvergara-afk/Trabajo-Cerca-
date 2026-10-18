@@ -23,7 +23,7 @@ on:
         type: boolean
         default: false
   push:
-    branches: [main, repair/radar-audit-2026-10-11]
+    branches: [main, repair/radar-audit-2026-10-11, repair/mulchen-captura-2026-10-17]
     paths:
       - 'scripts/**'
       - 'tests/**'
@@ -40,6 +40,43 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  reviewed-document-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[reviewed document handoff]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Comprobar evidencia documental y firma antes de publicar
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Revalidar el original y enviar exactamente los tres cargos revisados
+        run: python -m scripts.reviewed_document_handoff
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Conservar recibos sin duplicar el PDF en artefactos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-document-handoff
+          path: |
+            output/reviewed-document-handoff/*.json
+            output/laboratory_observation*.json
+          retention-days: 7
   radar-v2-handoff:
     if: >-
       github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false &&

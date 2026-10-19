@@ -1,0 +1,60 @@
+{
+  "schema": "trabajo-cerca.new-poster-proof.v1",
+  "sources": [
+    {
+      "publisher": "https://www.munimulchen.cl/oferta-laboral-profesional-area-construccion-oficina-tecnica-mulchen/",
+      "html_sha256": "057b22fb6615a59f9bb582137080a4deaeaf10e9e6f9c21d2cd0f01f5316ab2c",
+      "image": "https://www.munimulchen.cl/wp-content/uploads/2025/01/OFERTA-Y-CAPACITACION-1.jpg",
+      "source_published_at": null,
+      "verified": false,
+      "published": 0,
+      "http": 200,
+      "image_sha256": "b430f9ebbcb784d41cef8799a26e7b33d6857205299e0340f71ed4be16d06349",
+      "bytes": 208401,
+      "engine": "tesseract-local",
+      "text": "W/IIIIILLL, \"Nu E ao.\nOferta Laboral WWW\no] By y 1\n= E\n",
+      "text_sha256": "f4a42edcd820b5222903dc5bfcebaa4fc4bb5d37c2464b8f30f55634a1bdb8b4",
+      "reason": "requires_original_date_and_employer_review"
+    },
+    {
+      "publisher": "https://www.munimulchen.cl/oferta-laboral-labores-de-campo-y-cuidado-de-parcela/",
+      "html_sha256": "94bf5801711a6fa5c4d439cfa55cfbcc7cf8e8c3f5ed8e71abca4be93839cfb3",
+      "image": "https://www.munimulchen.cl/wp-content/uploads/2024/06/oferta-campo.jpg",
+      "source_published_at": null,
+      "verified": false,
+      "published": 0,
+      "http": 200,
+      "image_sha256": "7d3037e8b8fed5317574f652944c22735e9963827365a9e4d480ed6327fb2a65",
+      "bytes": 258347,
+      "engine": "tesseract-local",
+      "text": "OI A AN\nLABORES DE CAMPO Y CUIDADO\nDE PARCELA (SOLO O ACOMPAÑADO)\nRequisitos:\n- Experiencia relacionada al rubro\n- Referencias de trabajos anteriores\n- De preferencia con licencia de conducir clase B\nDocumentos necesarios para postular:\n- Curriculum vitae (que indique experiencia)\n- Cédula de identidad\n- Certificado de antecedentes\n. Más información en la Oficina OMIL,\nubicada en calle Anibal Pinto #495, de 08:15 a 13:45 hrs.\nMulchen\n",
+      "text_sha256": "37e9e5458f1f9de9698c5ab1c6e560e860cec9f0b6e9d8d6d3683f22027a1867",
+      "reason": "requires_original_date_and_employer_review"
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://www.munimulchen.cl/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "sha256": "72d53bffe3c32924b8766cc96917e7d90da568353f1f1ff10d091fdaf45ca1bb"
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/uploads/2025/01/OFERTA-Y-CAPACITACION-1.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "bytes": 208401,
+      "sha256": "b430f9ebbcb784d41cef8799a26e7b33d6857205299e0340f71ed4be16d06349"
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/uploads/2024/06/oferta-campo.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "bytes": 258347,
+      "sha256": "7d3037e8b8fed5317574f652944c22735e9963827365a9e4d480ed6327fb2a65"
+    }
+  ],
+  "new_offers_confirmed": 0,
+  "published": 0,
+  "paid_provider_calls": 0
+}

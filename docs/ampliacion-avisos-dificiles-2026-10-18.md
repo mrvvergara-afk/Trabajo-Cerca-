@@ -97,3 +97,12 @@ Los artefactos de Actions duran siete días; el resumen queda en el repositorio.
 
 Se mantienen los seis crons existentes, credenciales y registros históricos.
 Persisten dos advertencias previas de inspección de los iconos PWA.
+
+## Continuación comprobada del 19 de octubre
+
+El lector ya se conectó a la cola SDK, con respaldos durables en la rama
+radar-document-reader-state. Se probaron las páginas renderizadas y se corrigió
+la redirección de robots de Renaico. El resultado sigue siendo cero ofertas
+nuevas confirmadas. Véase [informe del 19](lector-cola-documental-2026-10-19.md)
+y su evidencia JSON antes de repetir trabajo. No se repiten las cuatro
+referencias antiguas ni los dos renderizados bloqueados sin cambios reales.

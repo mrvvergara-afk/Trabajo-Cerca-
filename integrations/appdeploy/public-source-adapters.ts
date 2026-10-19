@@ -78,11 +78,13 @@ export function publicSourceAdapter(value:string):PublicAdapter | null {
     name = 'Opción Empleo'; family = 'aggregator'; identityUrl = 'https://www.opcionempleo.cl/jobad/'+match[1].toLowerCase();
   } else if (host==='jobs.arauco.com' && (match=url.pathname.match(/^\/(?:Chile\/)?job\/(?:[^/]+\/)?(\d{5,})\/?$/i))) {
     name='Arauco · portal de empleo';identityUrl='https://jobs.arauco.com/job/'+match[1];
+  } else if (host==='cmpc.csod.com' && (match=url.pathname.match(/^\/ux\/ats\/careersite\/4\/home\/requisition\/(\d{1,9})\/?$/)) && url.searchParams.get('c')==='cmpc' && [...url.searchParams.keys()].every(key=>key==='c')) {
+    name='CMPC · portal de empleo';identityUrl='https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/'+match[1]+'?c=cmpc';
   } else if (LOCAL_PUBLISHERS[host] && url.pathname.split('/').filter(Boolean).length &&
       !/^\/(?:noticias?|concursos-publicos|direccion-de-fomento-productivo|category|categoria|tag|page|wp-json|feed)(?:\/\d+)?\/?$/.test(url.pathname) && !url.search) {
     name = LOCAL_PUBLISHERS[host]; family = 'local'; identityUrl = 'https://'+host+url.pathname.replace(/\/$/,'');
   }
-  return name ? { name, family, identityUrl, verificationMethod:name+(name==='Bolsa Nacional de Empleo'?' individual page + official labelled offer':' individual page + matching JobPosting') } : null;
+  return name ? { name, family, identityUrl, verificationMethod:name+(host==='cmpc.csod.com'?' public career page + official requisition response':name==='Bolsa Nacional de Empleo'?' individual page + official labelled offer':' individual page + matching JobPosting') } : null;
 }
 
 export function samePublicJob(left:string, right:string) {
@@ -131,8 +133,11 @@ export function publicJobExclusion(item:Record<string,unknown>):string | null {
   const recorded=Array.isArray(item.workCommunes) ? item.workCommunes.map(value=>String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()) : [];
   if (explicit && !recorded.includes(explicit)) return 'workplace_conflicts_with_explicit_job_title';
   if (Array.isArray(item.workCommunes) && item.workCommunes.includes('Victoria')) {
-    const stripped=title.replace(/victoria\s*[’'´`]?\s*s\s+secret/g,'').replace(/nueva\s+victoria/g,'');
-    if (stripped!==title && !/\bvictoria\b/.test(stripped)) return 'brand_or_remote_site_is_not_victoria_commune';
+    const path=url.pathname.toLowerCase().replace(/-/g,' ');
+    const confirmedBrand=/victoria\s+s\s+secret/.test(path);
+    const context=(confirmedBrand ? title.replace(/victoria\s*[’'´`]?\s*s(?=&#8230;|…|$)/g,'') : title)+' '+path;
+    const stripped=context.replace(/victoria\s*[’'´`]?\s*s\s+secret/g,'').replace(/nueva\s+victoria/g,'');
+    if (stripped!==context && !/\bvictoria\b/.test(stripped)) return 'brand_or_remote_site_is_not_victoria_commune';
   }
   return null;
 }

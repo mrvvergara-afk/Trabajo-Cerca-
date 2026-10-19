@@ -125,6 +125,45 @@ async function items(h, first) {
   return result;
 }
 
+async function rejectedDuplicateWinner() {
+  const h=harness(),equivalent=h.context.publicFeedIdentity;
+  h.context.publicFeedIdentity=value=>h.context.publicOfferIdentity(value);
+  const base='https://www.chiletrabajos.cl/trabajo/';
+  h.seed('radar_jobs',[record('bad',{url:base+'social-3902639',verifiedAt:new Date(startTime-1000).toISOString()}),record('good',{url:base+'3902639',verifiedAt:new Date(startTime-2000).toISOString()})]);
+  await finish(h);
+  const baseline=(await h.context.currentPublicFeedManifest()).manifestId;
+  h.context.publicFeedIdentity=equivalent;
+  h.projector.revision='dedupe-first';await h.advance();
+  assert.deepEqual((await items(h)).map(item=>item.id),['bad']);
+  h.projector.revision='exclude-bad';h.projector.project=item=>item.id==='bad'?null:item;
+  await h.advance();assert.equal((await items(h)).length,0);
+  h.projector.reconcileManifestId=baseline;h.projector.revision='recover-current-equivalents';
+  return {h,baseline};
+}
+
+test('a rejected duplicate winner recovers its eligible current original from an immutable baseline',async()=>{
+  const {h,baseline}=await rejectedDuplicateWinner();
+  const sourceBefore=JSON.stringify([...h.table('radar_jobs')]);
+  await h.advance();
+  assert.deepEqual((await items(h)).map(item=>item.id),['good']);
+  assert.equal(JSON.stringify([...h.table('radar_jobs')]),sourceBefore);
+  assert.equal((await h.page('v2:'+baseline+':0')).items.length,2);
+  const checkpoint=(await h.context.publicFeedProgress()).identityReconciliation;
+  assert.equal(checkpoint.queuedReferences,2);
+  const writes=h.calls.filter(call=>call.method==='add'&&call.table==='public_feed_changes').length;
+  await h.advance();
+  assert.equal(h.calls.filter(call=>call.method==='add'&&call.table==='public_feed_changes').length,writes);
+});
+
+test('failed duplicate requeue preserves the visible pointer and retries without a false checkpoint',async()=>{
+  const {h}=await rejectedDuplicateWinner(),before=await h.context.currentPublicFeedManifest();
+  h.fail('add','public_feed_changes',[null,null]);
+  await assert.rejects(h.advance(),/registration failed/);
+  assert.equal((await h.context.currentPublicFeedManifest()).manifestId,before.manifestId);
+  assert.equal(h.table('public_feed_identity_policy').size,0);
+  await h.advance();assert.deepEqual((await items(h)).map(item=>item.id),['good']);
+});
+
 test('A 45-day policy reprojects existing feed pages in bounded steps and keeps source and historical snapshots', async () => {
   const h = harness();
   const jobs = Array.from({ length:86 }, (_, i) => record('age'+i, {

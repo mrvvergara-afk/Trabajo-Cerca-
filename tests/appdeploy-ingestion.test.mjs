@@ -12,6 +12,7 @@ const code = path => stripTypeScriptTypes(readFileSync(new URL(path, import.meta
   .replace(/^import .*;$/gm,'').replace(/^export /gm,'');
 const feedCode = code('../integrations/appdeploy/public-feed.ts');
 const ingestionCode = code('../integrations/appdeploy/radar-ingestion.ts');
+const cmpcCode=code('../integrations/appdeploy/cmpc-evidence.ts');
 const adapterCode = code('../integrations/appdeploy/public-source-adapters.ts');
 const digest = value => createHash('sha256').update(value).digest('hex');
 const offer = (changes = {}) => ({ source_url:'https://www.chiletrabajos.cl/trabajo/operador-1',source:'Chiletrabajos',
@@ -81,6 +82,7 @@ function harness() {
   vm.createContext(ctx);
   vm.runInContext(adapterCode,ctx);
   vm.runInContext(feedCode,ctx);
+  vm.runInContext(cmpcCode,ctx);
   vm.runInContext(ingestionCode,ctx);
   const mapper = item => ({ kind:'job_offer',active:true,verified:true,review:false,title:item.title,company:item.company,
     url:item.source_url,workCommunes:[item.work_commune],createdAt:new Date(now).toISOString(),
@@ -95,6 +97,30 @@ test('Digest-bound GitHub proof accepts the exact authorized laboratory producer
   const result = h.ctx.verifySignedBatch(signed(),jwks,now);
   assert.equal(result.batch.records.length,1);
   assert.equal(result.batch.run_id,'123');
+});
+
+function cmpcOffer() {
+  const fixture=JSON.parse(readFileSync(new URL('fixtures/cmpc-public-18859.json',import.meta.url),'utf8'));
+  const page=fixture.page,checked='2026-10-19T23:45:00.000Z',candidate=digest(page.url).slice(0,24);
+  return offer({source_url:page.url,application:page.url,title:'Ingeniero/a Procesos y Excelencia Sr',company:'CMPC',work_commune:'Collipulli',work_site:'Ubicación: Planta Pacífico - Mininco.',source_published_at:'2026-10-13T03:00:00.000Z',valid_through:'2027-01-09T03:00:00.000Z',verified_at:checked,candidate_id:candidate,idempotency_key:'radar:'+candidate,
+    verification_method:'CMPC · portal de empleo public career page + official requisition response',
+    source_evidence:{source_url:page.url,sha256:digest(page.text),text:page.text,complete_document:true},
+    cmpc_evidence:{schema:'trabajo-cerca.cmpc-public-review.v1',requisition_id:18859,api_url:'https://us.api.csod.com/rec-job-search/external/jobs',api_json:fixture.api_raw,api_sha256:digest(fixture.api_raw),workplace_literal:'Ubicación: Planta Pacífico - Mininco.',employer_literal:'En CMPC',application_label:'Apply Now',reviewed_at:checked,date_precision:'day',deadline_policy:'start_of_local_date'}});
+}
+test('the receiver requires CMPC primary evidence and cannot accept a search page or forged JobPosting method',()=>{
+  const h=harness(),item=cmpcOffer(),checked=Date.parse(item.verified_at);
+  assert.equal(h.ctx.validateOffer(item,checked),digest(item.source_url));
+  assert.throws(()=>h.ctx.validateOffer({...item,cmpc_evidence:undefined},checked),/Invalid CMPC/);
+  assert.throws(()=>h.ctx.validateOffer({...item,verification_method:'CMPC · portal de empleo individual page + matching JobPosting'},checked),/Unsupported/);
+  assert.throws(()=>h.ctx.validateOffer({...item,source_url:'https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc'},checked));
+});
+test('accepted CMPC records keep the original public proof in durable storage on idempotent retries',async()=>{
+  const h=harness(),item=cmpcOffer(),checked=Date.parse(item.verified_at),batch=body({records:[item]});
+  await h.ctx.storeVerifiedBatch(batch,'proof-cmpc',h.mapper,checked);
+  await h.ctx.storeVerifiedBatch(batch,'proof-cmpc',h.mapper,checked);
+  const rows=[...h.table('radar_external_'+digest(item.source_url).slice(0,32)).values()];
+  assert.equal(rows.length,1);assert.equal(rows[0].cmpcPrimaryReview.api_sha256,item.cmpc_evidence.api_sha256);
+  assert.equal(rows[0].primarySourceEvidence.text,item.source_evidence.text);
 });
 
 test('The scheduled producer can use main only with the matching workflow, branch, subject and signed body',()=>{

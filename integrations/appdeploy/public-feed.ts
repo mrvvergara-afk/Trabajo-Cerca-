@@ -19,6 +19,7 @@ type Change = { source:FeedSource; sourceId:string; queuedAt:string };
 type Control = Stored & { manifestId?:string };
 type Projector = {
   revision?:string;
+  reconcileManifestId?:string;
   project:(item:Stored & { id:string }) => Stored | null;
   refreshAt:(item:Stored) => number | null;
 };
@@ -97,6 +98,34 @@ async function queueChanges(source:string, ids:string[]) {
 export async function registerPublicFeedChange(source:string, id:string) {
   if (!allowedSource(source) || !id) throw new Error('Invalid external feed source');
   await queueChanges(source, [id]);
+}
+
+// A rejected winner must not permanently hide its formerly deduplicated copies.
+// Read immutable baseline references; requeue current originals, never old copies.
+async function reconcileFeedEquivalents(projector:Projector) {
+  if (!projector.reconcileManifestId || !projector.revision) return;
+  const saved=await single<Stored>('public_feed_identity_policy');
+  if (saved?.revision===projector.revision && saved?.baselineManifestId===projector.reconcileManifestId) return;
+  const [baseline]=await db.get<Manifest>('public_feed_manifests',[projector.reconcileManifestId]);
+  if (!baseline || baseline.pages.length>20 || baseline.pages.reduce((count,page)=>count+page.keys.length,0)>800) throw new Error('Identity reconciliation baseline unavailable or oversized');
+  const groups=new Map<string,Entry[]>();
+  for (const ref of baseline.pages) {
+    const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id]);
+    if (!leaf || leaf.entries.length>40) throw new Error('Identity reconciliation page unavailable');
+    for (const entry of leaf.entries) {
+      if (!allowedSource(entry.source) || !entry.sourceId || entry.key!==entry.source+':'+entry.sourceId) throw new Error('Identity reconciliation reference invalid');
+      const key=identity(entry.item);
+      if (key) groups.set(key,[...(groups.get(key)??[]),entry]);
+    }
+  }
+  const wanted=new Map<string,Entry>();
+  for (const members of groups.values()) if (members.length>1) for (const entry of members) wanted.set(entry.key,entry);
+  for (const source of new Set([...wanted.values()].map(entry=>entry.source))) {
+    await queueChanges(source,[...wanted.values()].filter(entry=>entry.source===source).map(entry=>entry.sourceId));
+  }
+  // A partial queue failure leaves this unset; retries are safe and idempotent.
+  await replaceSingle('public_feed_identity_policy',{revision:projector.revision,baselineManifestId:projector.reconcileManifestId,
+    queuedReferences:wanted.size,completedAt:new Date().toISOString()});
 }
 
 // Return the original per-item results. Never treat an array length as success.
@@ -337,10 +366,13 @@ export async function currentPublicFeedManifest() {
 export async function publicFeedProgress() {
   const current = await single<Control>('public_feed_control');
   const build = await single<Build>('public_feed_build_state');
+  const identityPolicy=await single<Stored>('public_feed_identity_policy');
   return { complete:Boolean(current?.manifestId), manifestId:current?.manifestId ?? null,
     visibleItemCount:Number(current?.itemCount || 0), buildSource:build?.source ?? null,
     stagedPages:build?.pages?.length ?? 0, stagedPublicItems:build?.itemCount ?? 0,
-    hasNextSourcePage:Boolean(build?.nextToken), updatedAt:current?.updatedAt ?? null };
+    hasNextSourcePage:Boolean(build?.nextToken), updatedAt:current?.updatedAt ?? null,
+    identityReconciliation:identityPolicy ? {revision:identityPolicy.revision,baselineManifestId:identityPolicy.baselineManifestId,
+      queuedReferences:identityPolicy.queuedReferences,completedAt:identityPolicy.completedAt} : null };
 }
 
 // Single scheduled writer: the existing verify-publish cron. Other handlers only read the summary.
@@ -370,6 +402,7 @@ export async function advancePublicFeed(projector:Projector) {
 
   const [current] = await db.get<Manifest>('public_feed_manifests', [control.manifestId]);
   if (!current) throw new Error('Public feed manifest missing; previous feed retained');
+  await reconcileFeedEquivalents(projector);
   const legacy = current.pages.find(page => !Array.isArray(page.identities));
   if (legacy) {
     const editor = new Editor(current.pages, projector, now);

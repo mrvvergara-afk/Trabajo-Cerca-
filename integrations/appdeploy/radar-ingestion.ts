@@ -2,6 +2,7 @@ import { db } from '@appdeploy/sdk';
 import { createHash, createPublicKey, verify, type JsonWebKey } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
 import { publicSourceAdapter, safePublicUrl, samePublicJob, publicOfferIdentity } from './public-source-adapters';
+import { validateCmpcEvidence, type CmpcEvidence } from './cmpc-evidence';
 
 type Stored = Record<string, unknown>;
 type DocumentField = { page:number; text_object_sha256:string; reading?:string; literal:string };
@@ -18,6 +19,8 @@ export type VerifiedOffer = {
   validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
   source_evidence?:{ sha256:string; source_url:string; complete_document:boolean; text:string };
   document_unit?:DocumentUnit;
+  cmpc_evidence?:CmpcEvidence;
+  work_site?:string;
   application_details?:{ method:'in_person'; instructions:string };
 };
 type Receipt = { table:string; id:string; identity:string; candidateId:string };
@@ -159,6 +162,9 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
   const adapter = publicSourceAdapter(item.source_url)!;
   const localMethod = adapter.family==='local' && item.verification_method===adapter.name+' individual notice + local document text';
   const unitMethod = adapter.family==='local' && item.verification_method===adapter.name+' individual notice + page-bound document review';
+  const cmpcMethod=new URL(item.source_url).hostname==='cmpc.csod.com';
+  if (cmpcMethod) { try { validateCmpcEvidence(item,now); } catch { reject('Invalid CMPC primary evidence'); } }
+  if ((item.cmpc_evidence || item.work_site) && !cmpcMethod) reject('Unsupported CMPC evidence');
   if (!/^[a-f0-9]{24}$/.test(item.candidate_id) || item.idempotency_key !== 'radar:' + item.candidate_id ||
       !PLACES.includes(item.work_commune) || (item.verification_method !== adapter.verificationMethod && !localMethod && !unitMethod)) reject('Unsupported verification evidence');
   if ((item.document_unit || item.application_details) && !unitMethod) reject('Unsupported document unit evidence');
@@ -256,7 +262,8 @@ export async function storeVerifiedBatch(batch:Batch, digest:string, mapRecord:(
       documentUnitProof:offer.document_unit,applicationMethod:'in_person',applicationInstructions:offer.application_details!.instructions,
       applicationUrl:offer.application,sourceValidThrough:offer.valid_through,expiresAt:offer.valid_through,
       note:'Postulación presencial. '+offer.application_details!.instructions.replace(/\s+/g,' ')+' · Bases: '+offer.application} : {};
-    const record:Stored = { ...fields, ...mapRecord(offer), ...documentFields, createdAt:previous?.createdAt ?? new Date(now).toISOString(),
+    const primaryFields:Stored=offer.cmpc_evidence ? {cmpcPrimaryReview:offer.cmpc_evidence,primarySourceEvidence:offer.source_evidence} : {};
+    const record:Stored = { ...fields, ...mapRecord(offer), ...documentFields, ...primaryFields, createdAt:previous?.createdAt ?? new Date(now).toISOString(),
       externalIdentity:identity, externalCandidateId:offer.candidate_id, externalBatchDigest:digest,
       externalRunId:batch.run_id, externalVerifiedAt:offer.verified_at, feedRegistered:false };
     if (Buffer.byteLength(JSON.stringify(record)) > 230 * 1024) throw new Error('External offer byte budget exceeded');

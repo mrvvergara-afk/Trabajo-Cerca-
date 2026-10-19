@@ -37,6 +37,10 @@ test('distinct reviewed municipal roles and community posts are preserved',()=>{
   assert.equal(ctx.publicJobExclusion({kind:'worker_need',title:'Cosecheros'}),null);
 });
 
+test('a truncated brand title is checked against its individual URL too',()=>{
+  assert.equal(ctx.publicJobExclusion({kind:'job_offer',title:'Vendedor(a) Full Time/Part Time - Victoria´s&#8230;',url:'https://www.chiletrabajos.cl/trabajo/vendedor-a-full-time-part-time-victoria-s-secret-parque-arauco-3905068',workCommunes:['Victoria']}),'brand_or_remote_site_is_not_victoria_commune');
+});
+
 test('an explicit comuna de Ercilla cannot be displayed as a workplace in Angol',()=>{
   const item={kind:'job_offer',title:'Psicólogo/a Clínico - Comuna de Ercilla',url:standard,workCommunes:['Angol']};
   assert.equal(ctx.publicJobExclusion(item),'workplace_conflicts_with_explicit_job_title');

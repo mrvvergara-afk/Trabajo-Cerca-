@@ -40,6 +40,50 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  cmpc-reviewed-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[cmpc reviewed handoff]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar solo navegador público, sin sesión
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Validar revisión primaria, rechazo de cambios y recuperación de duplicados
+        run: |
+          python -m unittest tests.test_cmpc_reviewed_handoff tests.test_cmpc_public_scope -v
+          node tests/appdeploy-cmpc-evidence.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+      - name: Contrastar originales y entregar dos cargos por el receptor firmado existente
+        run: python -m scripts.cmpc_reviewed_handoff
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Confirmar feed completo y tarjetas públicas después de recibir
+        run: python -m scripts.observe_site_inventory
+      - name: Exigir coincidencia de recibos, IDs y tarjetas y conservar respaldo durable
+        run: python -m scripts.confirm_cmpc_cards
+      - name: Respaldar originales, firma sin tokens y confirmación real
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmpc-reviewed-handoff
+          path: |
+            output/cmpc-reviewed-handoff/
+            output/site-inventory/
+            output/cmpc-cards-proof/
+            output/laboratory_observation*.json
+          retention-days: 7
   cmpc-public-api-proof:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

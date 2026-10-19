@@ -55,9 +55,11 @@ def source_adapter(value):
         name, identity, family = 'Opción Empleo', 'https://www.opcionempleo.cl/jobad/'+match[1].lower(), 'aggregator'
     elif host == 'jobs.arauco.com' and (match := re.fullmatch(r'/(?:Chile/)?job/(?:[^/]+/)?(\d{5,})/?',path,re.I)):
         name, identity = 'Arauco · portal de empleo', 'https://jobs.arauco.com/job/'+match[1]
+    elif host=='cmpc.csod.com' and (match := re.fullmatch(r'/ux/ats/careersite/4/home/requisition/(\d{1,9})/?',path)) and query=={'c':['cmpc']}:
+        name,identity='CMPC · portal de empleo','https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/'+match[1]+'?c=cmpc'
     elif host in LOCAL_PUBLISHERS and path.strip('/') and not url.query and not re.fullmatch(r'/(?:noticias?|concursos-publicos|direccion-de-fomento-productivo|category|categoria|tag|page|wp-json|feed)(?:/\d+)?/?',path):
         name, identity, family = LOCAL_PUBLISHERS[host], 'https://'+host+path.rstrip('/'), 'local'
-    method = ' individual page + official labelled offer' if name == 'Bolsa Nacional de Empleo' else ' individual page + matching JobPosting'
+    method = ' public career page + official requisition response' if host=='cmpc.csod.com' and name else ' individual page + official labelled offer' if name == 'Bolsa Nacional de Empleo' else ' individual page + matching JobPosting'
     return {'name':name,'family':family,'identityUrl':identity,'verificationMethod':name+method} if name else None
 
 

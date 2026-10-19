@@ -1,0 +1,738 @@
+{
+  "schema": "trabajo-cerca.document-queue-read.v1",
+  "checked_at": "2026-10-19T11:42:52.666923+00:00",
+  "sdk_queue_items": 36,
+  "classified": [
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-07-24T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 23 de julio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO EN CALIDAD DE PRESTADOR DE SERVICIO HONORARIO, CARGO TECNICO EXTENSIONISTA DEL PROGRAMA PRODESAL DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 10 de julio de 2026, y podrán ser descargadas de la página web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico, como también en la página web de INDAP o en sus oficinas de INDAP Angol. Los antecedentes se recibirán hasta las 14:00 hrs del día 23 de julio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico, como también en la página web de INDAP o en sus oficinas de INDAP Angol. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-07-24T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 23 de julio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO EN CALIDAD DE PRESTADOR DE SERVICIO HONORARIO, CARGO JEFE TECNICO DEL PROGRAMA PRODESAL DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 10 de julio de 2026, y podrán ser descargadas de la página web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico, como también en la página web de INDAP o en sus oficinas de INDAP Angol. Los antecedentes se recibirán hasta las 14:00 hrs del día 23 de julio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico, como también en la página web de INDAP o en sus oficinas de INDAP Angol. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR DE LA PLANTA ADMINISTRATIVOS, GRADO 16° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03980020260612135730.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03980020260612135730.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR DE LA PLANTA ADMINISTRATIVOS, GRADO 16° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-1959.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-1959.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR DE LA PLANTA ADMINISTRATIVOS, GRADO 16° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-Cargo-Auxiliar-grado-16-y-17.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-Cargo-Auxiliar-grado-16-y-17.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR DE LA PLANTA AUXILIARES, GRADO 16° Y 17° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979820260612135631.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979820260612135631.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR DE LA PLANTA AUXILIARES, GRADO 16° Y 17° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargos-Tecnico-grado-11.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargos-Tecnico-grado-11.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR EN LA PLANTA TECNICO, GRADO 11° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979720260612135542.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979720260612135542.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR EN LA PLANTA TECNICO, GRADO 11° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-2065.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-2065.pdf",
+      "status": "expired",
+      "reason": "catalogue_explicit_reception_closed",
+      "deadline": "2026-06-16T03:59:59.999000+00:00",
+      "literal": "antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA INGRESO A CARGOS EN CALIDAD DE TITULAR EN LA PLANTA TECNICO, GRADO 11° DE LA MUNICIPALIDAD DE RENAICO Las bases del concurso estarán disponibles a contar del 02 de junio de 2026, y podrán ser descargadas de la pagina web municipal: www.municipalidadrenaico.cl, baner concursos públicos, a partir de la misma fecha o ser retiradas en la oficina de informaciones de la municipalidad de Renaico. Los antecedentes se recibirán hasta las 14:00 hrs del día 15 de junio de 2026 en la oficina de partes Municipales de Renaico, ubicada en calle Comercio N°287 de Renaico DESCARGAR BASES DEL CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA PROVEER EL CARGO DE MÉDICO CIRUJANO La Municipalidad de Renaico llama a concurso público para proveer el cargo de médico cirujano en el area de salud de atención primaria, en calidad de plazo fijo en el centro de salud familiar de renaico, dependiente del departamento de salud comunal LAS BASES PODRÁN DESCARGARSE EN EL SITIO WEB WWW.MUNICIPALIDADRENAICO.CL Y PODRÁN SER RETIRADAS EN LA OFICINA DE PARTES DE LA I. MUNICIPALIDAD DE RENAICO UBICADA EN CALLE COMERCIO NRO. 206 DE LA COMUNA DE RENAICO O EN SECRETARÍA DEL DEPARTAMENTO DE SALUD COMUNAL UBICADA EN CALLE AMÉRICA NRO. 360 DE LUNES A VIERNES EN HORARIO DE 09:00 A 13:30 HORAS Y DE 15:00 A 17:00 HORAS, DESDE EL 29 DE DICIEMBRE DEL 2025, HASTA EL 12 DE ENERO DEL 2026, AMBAS FECHAS INCLUSIVE. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "LLAMADO A CONCURSO PÚBLICO PARA PROVEER EL CARGO DE SALVAVIDAS (5 VACANTES) , PROFESIONAL TENS (2 VACANTES), PERSONAL DE SERVICIO DE ASEO (2 VACANTES) Y PERSONAL APOYO DE SEGURIDAD (2 VACANTES) La Municipalidad de Renaico llama a concurso público para proveer el cargo de SALVAVIDAS (5 VACANTES) , PROFESIONAL TENS (2 VACANTES), PERSONAL DE SERVICIO DE ASEO (2 VACANTES) Y PERSONAL APOYO DE SEGURIDAD (2 VACANTES). LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO A CONTAR DEL 14 AL 21 DE NOVIEMBRE DE 2025. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-PROG-FAMILIA-2025.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-PROG-FAMILIA-2025.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "BASES DE CONCURSO PÚBLICO PARA PROVEER EL CARGO DE APOYO FAMILIA INTEGRAL, PROGRAMA FAMILIAS. (2 VACANTES) La Municipalidad de Renaico llama a concurso público para proveer el cargo de APOYO FAMILIA INTEGRAL, PROGRAMA FAMILIAS. (2 VACANTES) LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO A CONTAR DEL 05 AL 15 DE SEPTIEMBRE DE 2025. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-ORIENTADOR-LABORAL-2025.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-ORIENTADOR-LABORAL-2025.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "BASES DE CONCURSO PÚBLICO PARA PROVEER EL CARGO DE ORIENTADOR LABORAL OMIL La Municipalidad de Renaico llama a concurso público para proveer el cargo de ORIENTADOR LABORAL OMIL LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO A CONTAR DEL 05 AL 15 DE SEPTIEMBRE DE 2025. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/07/Bases-Consurso-Publico-Director-CESFAM-2025-Renaico.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/07/Bases-Consurso-Publico-Director-CESFAM-2025-Renaico.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "BASES DE CONCURSO PÚBLICO PARA PROVEER EL CARGO DE DIRECTOR DEL CENTRO DE SALUD FAMILIAR DE RENAICO La Municipalidad de Renaico llama a concurso público para proveer el cargo de DIRECTOR DEL CENTRO DE SALUD FAMILIAR DE RENAICO LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO HASTA EL 22 DE AGOSTO DEL 2025. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/doc02014120250508171500.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/doc02014120250508171500.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "BASES DE CONCURSO PÚBLICO DE ANTECEDENTES Y OPOSICIÓN PARA POSTULAR AL CARGO TÉCNICO GRADO 10° La Municipalidad de Renaico informa la modificación al llamado a concurso público para proveer el siguientes cargo TÉCNICO GRADO 10° LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO HASTA EL 22 DE MAYO DE 2025. DESCARGAR MODIFICACIÓN DE BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Tecnico-Grado-10%C2%B0-1.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Tecnico-Grado-10%C2%B0-1.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "BASES DE CONCURSO PÚBLICO DE ANTECEDENTES Y OPOSICIÓN PARA POSTULAR AL CARGO TÉCNICO GRADO 10° La Municipalidad de Renaico llama a concurso público para proveer los siguientes cargos TÉCNICO GRADO 10° LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO HASTA EL 22 DE MAYO DE 2025. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Auxiliares-1.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Auxiliares-1.pdf",
+      "status": "requires_document_reading",
+      "reason": "catalogue_deadline_not_confirmed",
+      "section": "BASES DE CONCURSO PÚBLICO DE ANTECEDENTES Y OPOSICIÓN PARA POSTULAR AL CARGO DE AUXILIARES GRADO 16° Y 17° La Municipalidad de Renaico llama a concurso público para proveer los siguientes cargos AUXILIARES GRADO 16° Y 17°. LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO HASTA EL 15 DE MAYO DE 2025. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/01/CONCURSO-FAMILIA-MEDIA-JORNADA.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/01/CONCURSO-FAMILIA-MEDIA-JORNADA.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO APOYO FAMILIAR INTEGRAL MEDIA JORNADA DEL PROGRAMA FAMILIAS ACOMPAÑAMIENTO FAMILIAR INTEGRAL SUBSISTEMA DE SEGURIDADES Y OPORTUNIDADES Y EJE (CERRADO) La Municipalidad de Renaico llama a concurso público para proveer los siguientes cargos APOYO FAMILIAR INTEGRAL MEDIA JORNADA DEL PROGRAMA FAMILIAS ACOMPAÑAMIENTO FAMILIAR INTEGRAL SUBSISTEMA DE SEGURIDADES Y OPORTUNIDADES Y EJE. LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRHH DE LA MUNICIPALIDAD DE LA RENAICO HASTA EL 27 DE ENERO DEL 2025. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/11/Bases-cargo-medicos.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/11/Bases-cargo-medicos.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "LLAMADO MEDICO CIRUJANO DE ATENCION PRIMARIA (CERRADO) La Municipalidad de Renaico llama a concurso público para proveer los siguientes cargos MÉDICO CIRUJANO EN EL AREA DE SALUD DETENCIÓN PRIMARIA, EN CALIDAD DE PLAZO FIJO EN EL CENTRO DE SALUD FAMILIAR DE RENAICO, DEPENDIENTE DEL DEPARTAMENTO DE SALUD COMUNAL LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRSS DEL CESFAM DE RENAICO DESDE EL 27 DE NOVIEMBRE DEL 2024. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/10/BASES-PROG.-MUJERES-JEFAS-DE-HOGAR-1.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/10/BASES-PROG.-MUJERES-JEFAS-DE-HOGAR-1.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "PROGRAMA MUJERES JEFAS DE HOGAR (CERRADO) La Municipalidad de Renaico llama a concurso público para proveer los siguientes cargos PRESTADOR DE SERVICIOS “PROFESIONAL PROGRAMA MUJERES JEFA DE HOGAR, COMUNA RENAICO LAS BASES DEL CONCURSO PÚBLICO SE ENCONTRARÁN DISPONIBLES EN LA OFICINA DE INFORMACIONES DE LA MUNICIPALIDAD DE RENAICO O PÁGINA WEB DEL MUNICIPIO WWW.MUNICIPALIDADRENAICO.CL Y/O EN RRSS DE LA MUNICIPALIDAD DE RENAICO DESDE EL 04 DE OCTUBRE DEL 2024. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-FAMILIA-I-Y-II.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-FAMILIA-I-Y-II.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "APOYO FAMILIA INTEGRAL (2) (CERRADO) La Municipalidad de Renaico llama a concurso público para proveer los siguientes cargos de Apoyo Familia Integral jornada completa y Apoyo Familia Integral media jornada en Programa Familias del Subsistema de Seguridades y Oportunidades Las postulaciones son hasta las 14 horas del jueves 25 de abril y deberán ser entregadas físicamente en sobre cerrado en la Oficina de Partes de la Municipalidad de Renaico, ubicada en Calle Comercio N° 287. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-PRODESAL.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-PRODESAL.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "Técnico extensionista Programa Prodesal (CERRADO) La Municipalidad de Renaico llama a concurso público para proveer el cargo de Técnico extensionista Programa Prodesal Renaico. Las postulaciones son hasta las 14 horas del jueves 25 de abril y deberán ser entregadas físicamente en sobre cerrado en la Oficina de Partes de la Municipalidad de Renaico, ubicada en Calle Comercio N° 287 y en Oficina de Indap Angol, ubicada en Prat °191, segundo piso. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/doc00271020240404085846.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/doc00271020240404085846.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "Orientador/a Laboral (CERRADO) Se necesita proveer el cargo de Orientador/a Laboral por 44 horas semanales para el Programa Fortalecimiento OMIL 2024, para prestar el servicio de orientación laboral avanzada a los/as usuarios/as, contribuyendo al desarrollo de habilidades y competencias de las personas en búsqueda de empleo. Las postulaciones deberán ser realizadas en la Bolsa Nacional de Empleo, BNE, en www.bne.cl , y entregadas físicamente en sobre cerrado en la Oficina de Partes de la Municipalidad de Renaico, ubicada en Comercio N° 287 de Renaico, desde el 05 al 18 de abril de 2024 de 08:30 hrs. a las 14:00 hrs. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/12/DECRETO-ALCALDICIO-EXENTO-3613.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/12/DECRETO-ALCALDICIO-EXENTO-3613.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "Llamado a Concurso Público cargos de Salvavidas (CERRADO) El profesional deberá velar por la seguridad de los visitantes del Balneario Municipal de Renaico, ubicado en la ribera del río del mismo nombre, durante la temporada estival. La recepción de antecedentes será de lunes a viernes, entre el 11 al 13 de diciembre de 2023, de 08:30 hrs. a 14:00 hrs., en la Oficina de Partes de la Municipalidad de Renaico, ubicada en calle Comercio Nº 287. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05110720231120143211.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05110720231120143211.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "Llamado a Concurso Público cargo de Técnico de Nivel Medio o Superior en Enfermería (CERRADO) El profesional deberá velar por la seguridad de los visitantes del Balneario Municipal de Renaico, ubicado en la ribera del río del mismo nombre, durante la temporada estival. La recepción de antecedentes será de lunes a viernes, entre el 17 al 23 de noviembre de 2023, de 08:30 hrs. a 14:00 hrs., en la Oficina de Partes de la Municipalidad de Renaico, ubicada en calle Comercio Nº 287. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05015020231106090029.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05015020231106090029.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "Llamado a Concurso Público cargos de Salvavidas y Auxiliar de Aseo (CERRADO) Se requiere dotar de personal necesario (4 Salvavidas y 1 Auxiliar de Aseo) para habilitar el funcionamiento del Balneario Municipal de Renaico, ubicado en la ribera del río Renaico. La recepción de antecedentes será de lunes a viernes, hasta el 23 de noviembre de 2023, de 08:30 hrs. a 14:00 hrs., en la Oficina de Partes de la Municipalidad de Renaico, ubicada en calle Comercio Nº 287. DESCARGAR BASES DEL CONCURSO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "Llamado a Concurso Público Interno - Departamento de Salud (CERRADO) En conformidad al artículo 2 de la Ley 21.308 se llama a concurso público interno para regularizar la dotación del personal contemplado en la Ley 19.378. DESCARGAR LLAMADO A CONCURSO PÚBLICO INTERNO"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf",
+      "status": "closed",
+      "reason": "catalogue_explicit_closed_marker",
+      "historical_recentness": "not_confirmed",
+      "section": "Profesional Apoyo Programa Senda Previene Renaico (CERRADO) ● Perfil del cargo: Título profesional de una carrera de, a lo menos, 8 semestres de duración, otorgado por una universidad o instituto profesional del Estado o reconocido por este o aquellos validados en Chile de acuerdo a la legislación vigente. ● Recepción de antecedentes: La recepción de antecedentes será del 23 al 28 de agosto de 2023 de 08:30 hrs. a las 14:00 hrs. en la Oficina de Partes de la Municipalidad de Renaico, ubicada en calle Comercio Nº 287. ● Experiencia solicitada: 1 año de experiencia profesional en el sector público o privado. A lo menos 1 de experiencia profesional en áreas relacionadas a las Ciencias Sociales y en alguno de los siguientes ámbitos: gestión de programaspúblicos, sector público, ámbito comunitario, prevención en consumo de alcohol y otras drogas, fundaciones y/o corporaciones. DESCARGAR BASES DEL CONCURSO Usted se encuentra en Postulaciones a cargos públicos"
+    },
+    {
+      "url": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+      "publisher_page": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+      "parent_html_sha256": "4e52e8b619bd219e96c334be365b277ba625428ccc741060d875bbdc0b8e0488",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "status": "not_employment",
+      "reason": "primary_title_is_non_employment_contest"
+    },
+    {
+      "url": "https://www.muninegrete.cl/bases-llamado-a-concurso-para-proveer-cargo-de-director-a-del-cesfam-yanequen/",
+      "publisher_page": "https://www.muninegrete.cl/bases-llamado-a-concurso-para-proveer-cargo-de-director-a-del-cesfam-yanequen/",
+      "parent_html_sha256": "15cc84387539bd9459c0ff5fac2bc8bdfe40628b1e663833b365a191c1d0e7f8",
+      "source_published_at": "2026-07-07T12:43:23+00:00",
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.muninegrete.cl/page/2/",
+      "status": "older_than_45_days",
+      "reason": "original_editorial_date_outside_window"
+    },
+    {
+      "url": "https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/",
+      "publisher_page": "https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/",
+      "parent_html_sha256": "06125d0a2d4cb11539d2720ed68f72cbcbbce12584f0294ad44f84f611def02d",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "status": "not_employment",
+      "reason": "primary_title_is_non_employment_contest"
+    },
+    {
+      "url": "https://www.munimulchen.cl/3-version-concursos-arreglos-navidenos/",
+      "publisher_page": "https://www.munimulchen.cl/3-version-concursos-arreglos-navidenos/",
+      "parent_html_sha256": "93024ff561746903744f12fa1e83fd5e7706fff294c1fc034905fdbeb9fe994c",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "status": "not_employment",
+      "reason": "primary_title_is_non_employment_contest"
+    },
+    {
+      "url": "https://www.muninegrete.cl/concurso-publico-cargo-de-monitor-comunitario-vinculos/",
+      "publisher_page": "https://www.muninegrete.cl/concurso-publico-cargo-de-monitor-comunitario-vinculos/",
+      "parent_html_sha256": "f5ba3eb7df95565893bddb96ad022ecefa75d1dfdf54b8441dd220d68e6156d1",
+      "source_published_at": "2018-03-19T14:36:45+00:00",
+      "verified": false,
+      "active": false,
+      "discovered_from": "https://www.muninegrete.cl/page/40/",
+      "status": "older_than_45_days",
+      "reason": "original_editorial_date_outside_window"
+    },
+    {
+      "url": "https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png",
+      "publisher_page": "https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/",
+      "parent_html_sha256": "df370f54a03f071de203fc612729b735fca2d5b694f7e2d295349c5c78bffc05",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "status": "not_employment",
+      "reason": "primary_title_is_non_employment_contest"
+    },
+    {
+      "url": "https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/amp/",
+      "publisher_page": "https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/amp/",
+      "parent_html_sha256": "e8b40c8612fdf4b9ee716f1d43ba57fab67b45c320c30fb69394e6ca035e93e8",
+      "source_published_at": null,
+      "verified": false,
+      "active": false,
+      "status": "not_employment",
+      "reason": "primary_title_is_non_employment_contest"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-jueves-15-de-octubre-de-2026/",
+      "publisher_page": "https://www.malleco7.cl/edicion-jueves-15-de-octubre-de-2026/",
+      "source": "Malleco 7 · edición digital",
+      "edition_label": "Edición jueves 15 de octubre de 2026",
+      "edition_date": "2026-10-15T03:00:00+00:00",
+      "parent_html_sha256": "7d362c7b93c29a2a459f71b4b12b1a9aad07433a7c8d72dc1be5215a804e30d0",
+      "status": "previously_read_unchanged",
+      "reason": "durable_reading_reused"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-martes-13-de-octubre-de-2026/",
+      "publisher_page": "https://www.malleco7.cl/edicion-martes-13-de-octubre-de-2026/",
+      "source": "Malleco 7 · edición digital",
+      "edition_label": "Edición martes  13 de octubre de 2026",
+      "edition_date": "2026-10-13T03:00:00+00:00",
+      "parent_html_sha256": "16fb384850135f37e50c524b4ddd948b8b0f44b1823db16467dfa62cc6de215f",
+      "status": "previously_reviewed_not_repeated",
+      "reason": "no_changed_document_reference_proven"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-jueves-08-de-octubre-de-2026/",
+      "publisher_page": "https://www.malleco7.cl/edicion-jueves-08-de-octubre-de-2026/",
+      "source": "Malleco 7 · edición digital",
+      "edition_label": "Edición jueves 08 de octubre de 2026",
+      "edition_date": "2026-10-08T03:00:00+00:00",
+      "parent_html_sha256": "cc028f7ac73ae2290a81eb26aba6f493033c8ace02119e7097b576970fb1045a",
+      "status": "previously_reviewed_not_repeated",
+      "reason": "no_changed_document_reference_proven"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+      "publisher_page": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+      "source": "Malleco 7 · edición digital",
+      "edition_label": "Edición martes 06 de octubre de 2026",
+      "edition_date": "2026-10-06T03:00:00+00:00",
+      "parent_html_sha256": "7fba6f14b7c7fdc3556ac3fdb944a4ce9df546ccb9fe9e554af7e43af4e69302",
+      "status": "previously_reviewed_not_repeated",
+      "reason": "no_changed_document_reference_proven"
+    }
+  ],
+  "readings": [
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "documents": [],
+      "document_reviews": [],
+      "evaluations": [],
+      "persistence_check": {
+        "snapshot_restored": true,
+        "counts_preserved": true,
+        "review_objects_preserved": 0,
+        "archive_original_bytes": 370476,
+        "sqlite_sha256": "d3c2e6a045f1bbaa157df2a3be6a531a35f321c58b80c44ab14647a0ca30c668"
+      },
+      "reading_complete": false,
+      "source_published_at": null,
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "reading_saved": true,
+      "verified": false,
+      "published": 0
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "documents": [],
+      "document_reviews": [],
+      "evaluations": [],
+      "persistence_check": {
+        "snapshot_restored": true,
+        "counts_preserved": true,
+        "review_objects_preserved": 0,
+        "archive_original_bytes": 370476,
+        "sqlite_sha256": "57693d1a7cc945e139fa57f198fb3b4a8de8a6ad421531931c589e95c0141963"
+      },
+      "reading_complete": false,
+      "source_published_at": null,
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "reading_saved": true,
+      "verified": false,
+      "published": 0
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-PROG-FAMILIA-2025.pdf",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "documents": [],
+      "document_reviews": [],
+      "evaluations": [],
+      "persistence_check": {
+        "snapshot_restored": true,
+        "counts_preserved": true,
+        "review_objects_preserved": 0,
+        "archive_original_bytes": 370476,
+        "sqlite_sha256": "3ced702a3ddcd6ea97359f8058535f297b37becb27e36d9aa01664ce6e7b664a"
+      },
+      "reading_complete": false,
+      "source_published_at": null,
+      "parent_html_sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491",
+      "reading_saved": true,
+      "verified": false,
+      "published": 0
+    }
+  ],
+  "read_candidates": 8,
+  "read_references": 3,
+  "new_offers_confirmed": 0,
+  "published": 0,
+  "paid_provider_calls": 0,
+  "coverage_complete": false,
+  "publication_bridge_invoked": false,
+  "requests": [
+    {
+      "url": "https://municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 370476,
+      "sha256": "4f7552dd2b9dbe1b42a9e95ba44d7e14dc2b043267404a6fb5ece4cb1b2ed491"
+    },
+    {
+      "url": "https://www.muninegrete.cl/robots.txt",
+      "status": 200,
+      "sha256": "669416eda5ae76c9b40731bcd1590e7eae42f226e4beea7bb85045e5cd826d91"
+    },
+    {
+      "url": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 246229,
+      "sha256": "4e52e8b619bd219e96c334be365b277ba625428ccc741060d875bbdc0b8e0488"
+    },
+    {
+      "url": "https://www.muninegrete.cl/bases-llamado-a-concurso-para-proveer-cargo-de-director-a-del-cesfam-yanequen/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 244804,
+      "sha256": "15cc84387539bd9459c0ff5fac2bc8bdfe40628b1e663833b365a191c1d0e7f8"
+    },
+    {
+      "url": "https://www.munimulchen.cl/robots.txt",
+      "status": 200,
+      "sha256": "72d53bffe3c32924b8766cc96917e7d90da568353f1f1ff10d091fdaf45ca1bb"
+    },
+    {
+      "url": "https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 47404,
+      "sha256": "06125d0a2d4cb11539d2720ed68f72cbcbbce12584f0294ad44f84f611def02d"
+    },
+    {
+      "url": "https://www.munimulchen.cl/3-version-concursos-arreglos-navidenos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 47382,
+      "sha256": "93024ff561746903744f12fa1e83fd5e7706fff294c1fc034905fdbeb9fe994c"
+    },
+    {
+      "url": "https://www.muninegrete.cl/concurso-publico-cargo-de-monitor-comunitario-vinculos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 241949,
+      "sha256": "f5ba3eb7df95565893bddb96ad022ecefa75d1dfdf54b8441dd220d68e6156d1"
+    },
+    {
+      "url": "https://www.radionativa.cl/robots.txt",
+      "status": 200,
+      "sha256": "1aed0a7e2d2cf99bc0f96f4063580adbb19836a43b7e18ba4888d0e296553773"
+    },
+    {
+      "url": "https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 367690,
+      "sha256": "df370f54a03f071de203fc612729b735fca2d5b694f7e2d295349c5c78bffc05"
+    },
+    {
+      "url": "https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/amp/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 72745,
+      "sha256": "e8b40c8612fdf4b9ee716f1d43ba57fab67b45c320c30fb69394e6ca035e93e8"
+    },
+    {
+      "url": "https://www.malleco7.cl/robots.txt",
+      "status": 200,
+      "sha256": "bf86ad9f31d7282f7fbc080eb4ffe2e7f18a45c2a8c43a1d5b8d4265361f28ff"
+    },
+    {
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 216862,
+      "sha256": "0034178fc2262cd2b8adc3a9d90f6d4da914cdaba604b92b568c7844007d199e"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-jueves-15-de-octubre-de-2026/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 225669,
+      "sha256": "7d362c7b93c29a2a459f71b4b12b1a9aad07433a7c8d72dc1be5215a804e30d0"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-martes-13-de-octubre-de-2026/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 225668,
+      "sha256": "16fb384850135f37e50c524b4ddd948b8b0f44b1823db16467dfa62cc6de215f"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-jueves-08-de-octubre-de-2026/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 225504,
+      "sha256": "cc028f7ac73ae2290a81eb26aba6f493033c8ace02119e7097b576970fb1045a"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 225504,
+      "sha256": "7fba6f14b7c7fdc3556ac3fdb944a4ce9df546ccb9fe9e554af7e43af4e69302"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 181,
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 370476,
+      "sha256": "650d6c11d14ad48345685a84ac7ffee3e4957208f888a96fb19798901fc9a6df"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 181,
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 370476,
+      "sha256": "e133c67d7d1b068e8747b374b2cb1e3c9e160f936c1f29cdc26616c3119311fa"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 181,
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 370476,
+      "sha256": "cc5da3a046074c680aca955762e649148906f4a1f241dd4e64b9dcde7d3df91e"
+    }
+  ],
+  "rendered_sources": []
+}

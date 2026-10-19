@@ -1,0 +1,66 @@
+{
+  "schema": "trabajo-cerca.public-document-reference-proof.v1",
+  "checked_at": "2026-10-19T11:42:52.666923+00:00",
+  "source_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+  "source_name": "Municipalidad de Renaico",
+  "requests": [
+    {
+      "url": "https://municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "file": "robots-039da815c229.txt",
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "final_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 370476,
+      "sha256": "e133c67d7d1b068e8747b374b2cb1e3c9e160f936c1f29cdc26616c3119311fa"
+    }
+  ],
+  "documents": [],
+  "counts": {
+    "jobs": 1,
+    "runs": 1,
+    "observed_days": 1,
+    "attempts": 1,
+    "observations": 1,
+    "objects": 1,
+    "statuses": {
+      "retry": 1
+    }
+  },
+  "evaluations": [],
+  "document_reviews": [],
+  "persistence_check": {
+    "snapshot_restored": true,
+    "counts_preserved": true,
+    "review_objects_preserved": 0,
+    "archive_original_bytes": 370476,
+    "sqlite_sha256": "57693d1a7cc945e139fa57f198fb3b4a8de8a6ad421531931c589e95c0141963"
+  },
+  "review_preview": "review-preview.html",
+  "review_queue": [],
+  "local_handoff_ready": 0,
+  "handoff": {
+    "schema": "trabajo-cerca.radar-v2-handoff.v1",
+    "checked_at": "2026-10-19T11:42:52.666923+00:00",
+    "pilot_verified_candidates": 0,
+    "batch_records": 0,
+    "reviewed_document_candidates": 0,
+    "source_urls": [],
+    "blocked": [],
+    "paid_provider_calls": 0,
+    "published": 0,
+    "publication_confirmed": false,
+    "social_capture_proven": false,
+    "coverage_complete": false
+  },
+  "max_work": 40,
+  "coverage_complete": false,
+  "publication_confirmed": false,
+  "production_modified": false,
+  "paid_provider_calls": 0,
+  "published": 0
+}

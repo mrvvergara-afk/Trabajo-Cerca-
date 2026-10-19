@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="es" data-amp-auto-lightbox-disable transformed="self;v=1" i-amphtml-layout="" i-amphtml-no-boilerplate="">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><link rel="preconnect" href="https://cdn.ampproject.org"><style amp-runtime="" i-amphtml-version="012608131752000">html{overflow-x:hidden!important}html.i-amphtml-fie{height:100%!important;width:100%!important}html:not([amp4ads]),html:not([amp4ads]) body{height:auto!important}html:not([amp4ads]) body{margin:0!important}body{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}html.i-amphtml-singledoc.i-amphtml-embedded{-ms-touch-action:pan-y pinch-zoom;touch-action:pan-y pinch-zoom}html.i-amphtml-fie>body,html.i-amphtml-singledoc>body{overflow:visible!important}html.i-amphtml-fie:not(.i-amphtml-inabox)>body,html.i-amphtml-singledoc:not(.i-amphtml-inabox)>body{position:relative!important}html.i-amphtml-ios-embed-legacy>body{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important}html.i-amphtml-ios-embed{overflow-y:auto!important;position:static}#i-amphtml-wrapper{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;display:block!important}html.i-amphtml-ios-embed.i-amphtml-ios-overscroll,html.i-amphtml-ios-embed.i-amphtml-ios-overscroll>#i-amphtml-wrapper{-webkit-overflow-scrolling:touch!important}#i-amphtml-wrapper>body{position:relative!important;border-top:1px solid transparent!important}#i-amphtml-wrapper+body{visibility:visible}#i-amphtml-wrapper+body .i-amphtml-lightbox-element,#i-amphtml-wrapper+body[i-amphtml-lightbox]{visibility:hidden}#i-amphtml-wrapper+body[i-amphtml-lightbox] .i-amphtml-lightbox-element{visibility:visible}#i-amphtml-wrapper.i-amphtml-scroll-disabled,.i-amphtml-scroll-disabled{overflow-x:hidden!important;overflow-y:hidden!important}amp-instagram{padding:54px 0px 0px!important;background-color:#fff}amp-iframe iframe{box-sizing:border-box!important}[amp-access][amp-access-hide]{display:none}[subscriptions-dialog],body:not(.i-amphtml-subs-ready) [subscriptions-action],body:not(.i-amphtml-subs-ready) [subscriptions-section]{display:none!important}amp-experiment,amp-live-list>[update]{display:none}amp-list[resizable-children]>.i-amphtml-loading-container.amp-hidden{display:none!important}amp-list [fetch-error],amp-list[load-more] [load-more-button],amp-list[load-more] [load-more-end],amp-list[load-more] [load-more-failed],amp-list[load-more] [load-more-loading]{display:none}amp-list[diffable] div[role=list]{display:block}amp-story-page,amp-story[standalone]{min-height:1px!important;display:block!important;height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;width:100%!important}amp-story[standalone]{background-color:#000!important;position:relative!important}amp-story-page{background-color:#757575}amp-story .amp-active>div,amp-story .i-amphtml-loader-background{display:none!important}amp-story-page:not(:first-of-type):not([distance]):not([active]){transform:translateY(1000vh)!important}amp-autocomplete{position:relative!important;display:inline-block!important}amp-autocomplete>input,amp-autocomplete>textarea{padding:0.5rem;border:1px solid rgba(0,0,0,.33)}.i-amphtml-autocomplete-results,amp-autocomplete>input,amp-autocomplete>textarea{font-size:1rem;line-height:1.5rem}[amp-fx^=fly-in]{visibility:hidden}amp-script[nodom],amp-script[sandboxed]{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}
+/*# sourceURL=/css/ampdoc.css*/[hidden]{display:none!important}.i-amphtml-element{display:inline-block}.i-amphtml-blurry-placeholder{transition:opacity 0.3s cubic-bezier(0.0,0.0,0.2,1)!important;pointer-events:none}[layout=nodisplay]:not(.i-amphtml-element){display:none!important}.i-amphtml-layout-fixed,[layout=fixed][width][height]:not(.i-amphtml-layout-fixed){display:inline-block;position:relative}.i-amphtml-layout-responsive,[layout=responsive][width][height]:not(.i-amphtml-layout-responsive),[width][height][heights]:not([layout]):not(.i-amphtml-layout-responsive),[width][height][sizes]:not(img):not([layout]):not(.i-amphtml-layout-responsive){display:block;position:relative}.i-amphtml-layout-intrinsic,[layout=intrinsic][width][height]:not(.i-amphtml-layout-intrinsic){display:inline-block;position:relative;max-width:100%}.i-amphtml-layout-intrinsic .i-amphtml-sizer{max-width:100%}.i-amphtml-intrinsic-sizer{max-width:100%;display:block!important}.i-amphtml-layout-container,.i-amphtml-layout-fixed-height,[layout=container],[layout=fixed-height][height]:not(.i-amphtml-layout-fixed-height){display:block;position:relative}.i-amphtml-layout-fill,.i-amphtml-layout-fill.i-amphtml-notbuilt,[layout=fill]:not(.i-amphtml-layout-fill),body noscript>*{display:block;overflow:hidden!important;position:absolute;top:0;left:0;bottom:0;right:0}body noscript>*{position:absolute!important;width:100%;height:100%;z-index:2}body noscript{display:inline!important}.i-amphtml-layout-flex-item,[layout=flex-item]:not(.i-amphtml-layout-flex-item){display:block;position:relative;-ms-flex:1 1 auto;flex:1 1 auto}.i-amphtml-layout-fluid{position:relative}.i-amphtml-layout-size-defined{overflow:hidden!important}.i-amphtml-layout-awaiting-size{position:absolute!important;top:auto!important;bottom:auto!important}i-amphtml-sizer{display:block!important}@supports (aspect-ratio:1/1){i-amphtml-sizer.i-amphtml-disable-ar{display:none!important}}.i-amphtml-blurry-placeholder,.i-amphtml-fill-content{display:block;height:0;max-height:100%;max-width:100%;min-height:100%;min-width:100%;width:0;margin:auto}.i-amphtml-layout-size-defined .i-amphtml-fill-content{position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-replaced-content,.i-amphtml-screen-reader{padding:0!important;border:none!important}.i-amphtml-screen-reader{position:fixed!important;top:0px!important;left:0px!important;width:4px!important;height:4px!important;opacity:0!important;overflow:hidden!important;margin:0!important;display:block!important;visibility:visible!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:8px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:12px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:16px!important}.i-amphtml-unresolved{position:relative;overflow:hidden!important}.i-amphtml-select-disabled{-webkit-user-select:none!important;-ms-user-select:none!important;user-select:none!important}.i-amphtml-notbuilt,[layout]:not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not(img):not([layout]):not(.i-amphtml-element){position:relative;overflow:hidden!important;color:transparent!important}.i-amphtml-notbuilt:not(.i-amphtml-layout-container)>*,[layout]:not([layout=container]):not(.i-amphtml-element)>*,[width][height][heights]:not([layout]):not(.i-amphtml-element)>*,[width][height][sizes]:not([layout]):not(.i-amphtml-element)>*{display:none}amp-img:not(.i-amphtml-element)[i-amphtml-ssr]>img.i-amphtml-fill-content{display:block}.i-amphtml-notbuilt:not(.i-amphtml-layout-container),[layout]:not([layout=container]):not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not(img):not([layout]):not(.i-amphtml-element){color:transparent!important;line-height:0!important}.i-amphtml-ghost{visibility:hidden!important}.i-amphtml-element>[placeholder],[layout]:not(.i-amphtml-element)>[placeholder],[width][height][heights]:not([layout]):not(.i-amphtml-element)>[placeholder],[width][height][sizes]:not([layout]):not(.i-amphtml-element)>[placeholder]{display:block;line-height:normal}.i-amphtml-element>[placeholder].amp-hidden,.i-amphtml-element>[placeholder].hidden{visibility:hidden}.i-amphtml-element:not(.amp-notsupported)>[fallback],.i-amphtml-layout-container>[placeholder].amp-hidden,.i-amphtml-layout-container>[placeholder].hidden{display:none}.i-amphtml-layout-size-defined>[fallback],.i-amphtml-layout-size-defined>[placeholder]{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;z-index:1}amp-img[i-amphtml-ssr]:not(.i-amphtml-element)>[placeholder]{z-index:auto}.i-amphtml-notbuilt>[placeholder]{display:block!important}.i-amphtml-hidden-by-media-query{display:none!important}.i-amphtml-element-error{background:red!important;color:#fff!important;position:relative!important}.i-amphtml-element-error:before{content:attr(error-message)}i-amp-scroll-container,i-amphtml-scroll-container{position:absolute;top:0;left:0;right:0;bottom:0;display:block}i-amp-scroll-container.amp-active,i-amphtml-scroll-container.amp-active{overflow:auto;-webkit-overflow-scrolling:touch}.i-amphtml-loading-container{display:block!important;pointer-events:none;z-index:1}.i-amphtml-notbuilt>.i-amphtml-loading-container{display:block!important}.i-amphtml-loading-container.amp-hidden{visibility:hidden}.i-amphtml-element>[overflow]{cursor:pointer;position:relative;z-index:2;visibility:hidden;display:initial;line-height:normal}.i-amphtml-layout-size-defined>[overflow]{position:absolute}.i-amphtml-element>[overflow].amp-visible{visibility:visible}template{display:none!important}.amp-border-box,.amp-border-box *,.amp-border-box :after,.amp-border-box :before{box-sizing:border-box}amp-pixel{display:none!important}amp-analytics,amp-auto-ads,amp-story-auto-ads{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}amp-story{visibility:hidden!important}html.i-amphtml-fie>amp-analytics{position:initial!important}[visible-when-invalid]:not(.visible),form [submit-error],form [submit-success],form [submitting]{display:none}amp-accordion{display:block!important}@media (min-width:1px){:where(amp-accordion>section)>:first-child{margin:0;background-color:#efefef;padding-right:20px;border:1px solid #dfdfdf}:where(amp-accordion>section)>:last-child{margin:0}}amp-accordion>section{float:none!important}amp-accordion>section>*{float:none!important;display:block!important;overflow:hidden!important;position:relative!important}amp-accordion,amp-accordion>section{margin:0}amp-accordion:not(.i-amphtml-built)>section>:last-child{display:none!important}amp-accordion:not(.i-amphtml-built)>section[expanded]>:last-child{display:block!important}
+/*# sourceURL=/css/ampshared.css*/</style><meta name="amp-to-amp-navigation" content="AMP-Redirect-To; AMP.navigateTo"><meta name="description" content="Radio Nativa 106.5 transmite desde la ciudad de Lumaco, Región de La Araucanía, las 24 horas del día para todo Chile y el Mundo"><meta property="og:locale" content="es_ES"><meta property="og:type" content="article"><meta property="og:title" content="✓ Radio Nativa | Capitán Pastene postula a reconocimiento mundial de turismo rural"><meta property="og:description" content="Radio Nativa 106.5 transmite desde la ciudad de Lumaco, Región de La Araucanía, las 24 horas del día para todo Chile y el Mundo"><meta property="og:url" content="https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/"><meta property="og:site_name" content="Radio Nativa"><meta property="article:publisher" content="https://www.facebook.com/radionativacl"><meta property="article:published_time" content="2022-07-24T17:17:46+00:00"><meta property="article:modified_time" content="2022-07-24T17:17:48+00:00"><meta property="og:image" content="https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png"><meta property="og:image:width" content="700"><meta property="og:image:height" content="244"><meta property="og:image:type" content="image/png"><meta name="author" content="Omar"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@radionativacl"><meta name="twitter:site" content="@radionativacl"><meta name="twitter:label1" content="Escrito por"><meta name="twitter:data1" content="Omar"><meta name="twitter:label2" content="Tiempo de lectura"><meta name="twitter:data2" content="3 minutos"><meta name="msapplication-TileImage" content="https://www.radionativa.cl/wp-content/uploads/2019/04/cropped-ico-nativa-4-270x270.png"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="generator" content="AMP Plugin v2.5.5; mode=reader; theme=legacy; sandboxing-level=1:1"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="https://fonts.gstatic.com"><script async="" src="https://cdn.ampproject.org/v0.mjs" type="module" crossorigin="anonymous"></script><script async nomodule src="https://cdn.ampproject.org/v0.js" crossorigin="anonymous"></script><script src="https://cdn.ampproject.org/v0/amp-analytics-0.1.mjs" async="" custom-element="amp-analytics" type="module" crossorigin="anonymous"></script><script async nomodule src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js" crossorigin="anonymous" custom-element="amp-analytics"></script><script custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.mjs" async type="module" crossorigin="anonymous"></script><script async nomodule src="https://cdn.ampproject.org/v0/amp-form-0.1.js" crossorigin="anonymous" custom-element="amp-form"></script><script custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.mjs" async type="module" crossorigin="anonymous"></script><script async nomodule src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js" crossorigin="anonymous" custom-element="amp-sidebar"></script><link rel="icon" href="https://www.radionativa.cl/wp-content/uploads/2019/04/cropped-ico-nativa-4-32x32.png" sizes="32x32"><link rel="icon" href="https://www.radionativa.cl/wp-content/uploads/2019/04/cropped-ico-nativa-4-192x192.png" sizes="192x192"><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" data-px-verified-tag data-px-verified-attrs="href rel"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work%20Sans%3Aregular%2C600%7CLibre%20Baskerville%3Aregular%2Citalic%2C700&amp;display=swap" data-px-verified-tag data-px-verified-attrs="href rel"><style amp-custom data-px-verified-tag>
+		
+/*** Generic WP ***/
+/*.alignright {
+	float: right;
+}
+.alignleft {
+	float: left;
+}*/
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+.amp-wp-unknown-size img {
+
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Clearfix */
+.clearfix:before, .clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/*** Theme Styles ***/
+.amp-wp-content, .amp-wp-title-bar div {
+	margin: 0 auto;
+	max-width: 600px;
+}
+body, html {
+	height: 100%;
+	margin: 0;
+}
+body {
+	background-color: #FFFFFF;
+	color: #333333;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+	font-size: 14px;
+	line-height: 1.785714285714286em;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.amp-wp-title {
+	color: #333333;
+}
+
+body,
+input,
+textarea,
+select,
+.chosen-container-single .chosen-single,
+.btn,
+.button {
+	font-family: Work Sans;
+}
+
+.amp-wp-article-content p {
+	font-family: Droid Serif;
+}
+
+
+
+.amp-wp-title {
+	font-family: Libre Baskerville;
+}
+
+::-moz-selection {
+	background: #fde69a;
+	color: #212121;
+	text-shadow: none;
+}
+::-webkit-selection {
+	background: #fde69a;
+	color: #212121;
+	text-shadow: none;
+}
+::selection {
+	background: #fde69a;
+	color: #212121;
+	text-shadow: none;
+}
+p, ol, ul, figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+a, a:visited {
+	text-decoration: none;
+}
+a:hover, a:active, a:focus {
+	color: #212121;
+}
+
+/*** Global Color ***/
+a,
+a:visited,
+#breadcrumbs a:hover,
+.amp-related-content h3 a:hover,
+.amp-related-content h3 a:focus,
+.bestprice .price, .jeg_review_title
+{
+	color: #007a53;
+}
+
+/*** Header ***/
+.amp-wp-header {
+	text-align: center;
+	background-color: #fff;
+	height: 60px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0,.1);
+}
+.amp-wp-header.dark {
+	background-color: #212121;
+}
+.amp-wp-header .jeg_mobile_logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1 0 0%;
+	background-image: url(https://www.radionativa.cl/wp-content/uploads/2026/08/logo-27-full.png);}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+	.amp-wp-header .jeg_mobile_logo {
+		background-image: url(https://www.radionativa.cl/wp-content/uploads/2026/08/logo-27-full.png);background-size: auto 40px;	}
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
+.amp-wp-header a {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	display: block;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.amp-wp-site-icon {
+	vertical-align: middle;
+}
+
+/*** Article ***/
+.amp-wp-article {
+	color: #333;
+	font-size: 16px;
+	line-height: 1.625em;
+	margin: 22px auto 30px;
+	padding: 0 15px;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Breadcrumb */
+.amp-wp-breadcrumb {
+	margin: -5px auto 10px;
+	font-size: 11px;
+	color: #a0a0a0;
+}
+#breadcrumbs a {
+	color: #53585c;
+}
+#breadcrumbs .fa {
+	padding: 0 3px
+}
+#breadcrumbs .breadcrumb_last_link a {
+	color: #a0a0a0
+}
+
+/* Article Header */
+.amp-wp-article-header {
+	margin-bottom: 15px;
+}
+.amp-wp-title {
+	display: block;
+	width: 100%;
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 1.15;
+	margin: 0 0 .4em;
+	letter-spacing: -0.04em;
+}
+
+h2.amp-wp-subtitle {
+	font: inherit;
+	font-size: 20px;
+	line-height: 1.4em;
+	margin-bottom: 20px;
+	color: #a0a0a0;
+}
+
+/* Article Meta */
+.amp-wp-meta {
+	color: #a0a0a0;
+	list-style: none;
+	font-size: smaller;
+}
+.amp-wp-meta li {
+	display: inline-block;
+	line-height: 1;
+}
+.amp-wp-byline amp-img, .amp-wp-byline .amp-wp-author {
+	display: inline-block;
+}
+.amp-wp-author a {
+	font-weight: bold;
+}
+.amp-wp-byline amp-img {
+	border-radius: 100%;
+	position: relative;
+	margin-right: 6px;
+	vertical-align: middle;
+}
+.amp-wp-posted-on {
+	margin-left: 5px;
+}
+.amp-wp-posted-on:before {
+	content: '\2014';
+	margin-right: 5px;
+}
+
+/* Featured image */
+/* .amp-wp-article .amp-wp-article-featured-image {
+	margin: 0 -15px 15px;
+	max-width: none;
+} */
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Social Share */
+.jeg_share_amp_container {
+	margin: 0 0 15px;
+}
+.jeg_sharelist {
+	float: none;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+}
+.jeg_share_button a {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.jeg_share_button a {
+	float: left;
+	width: auto;
+	height: 32px;
+	line-height: 32px;
+	white-space: nowrap;
+	padding: 0 10px;
+	color: #fff;
+	background: #212121;
+	margin: 0 5px 5px 0;
+	border-radius: 3px;
+	text-align: center;
+	-webkit-transition: .2s;
+	-o-transition: .2s;
+	transition: .2s;
+}
+.jeg_share_button a:last-child {
+	margin-right: 0
+}
+.jeg_share_button a:hover {
+	opacity: .75
+}
+.jeg_share_button a > span {
+	display: none;
+}
+.jeg_share_button .fa {
+	font-size: 16px;
+	line-height: inherit;
+}
+.jeg_share_button .jeg_btn-facebook {
+	background: #45629f;
+}
+.jeg_share_button .jeg_btn-xing {
+	background: #005658;
+}
+.jeg_share_button a svg {
+	position: relative;
+	top: 2px;
+	fill: #fff;
+}
+.jeg_share_button .jeg_btn-twitter ,.jeg_share_button .jeg_btn-threads {
+	background: #000;
+}
+.fa-twitter:before {
+	content : none ;
+}
+.jeg_share_button .jeg_btn-pinterest {
+	background: #e02647;
+}
+.jeg_share_button .jeg_btn-linkedin {
+	background: #0083bb;
+}
+.jeg_share_button .jeg_btn-reddit {
+	background: #FF4500;
+}
+.jeg_share_button .jeg_btn-stumbleupon {
+	background: #ff4e2e;
+}
+.jeg_share_button .jeg_btn-telegram {
+	background: #0088cc;
+}
+.jeg_share_button .jeg_btn-tumbrl {
+	background: #314358;
+}
+.jeg_share_button .jeg_btn-vk {
+	background: #4C75A3;
+}
+.jeg_share_button .jeg_btn-whatsapp {
+	background: #075e54;
+}
+.jeg_share_button .jeg_btn-wechat {
+	background: #7bb32e;
+}
+.jeg_share_button .jeg_btn-line {
+	background: #00b900;
+}
+.jeg_share_button .jeg_btn-discord {
+	background: #7289da;
+}
+.jeg_share_button .jeg_btn-odnoklassniki {
+	background: #f87b00;
+}
+
+/*** Article Content ***/
+.amp-wp-article-content {
+	color: #333333;
+}
+.amp-wp-article-content ul, .amp-wp-article-content ol {
+	margin: 0 0 1.5em 1.5em;
+}
+.amp-wp-article-content li {
+	margin-bottom: 0.5em;
+}
+.amp-wp-article-content ul {
+	list-style: square;
+}
+.amp-wp-article-content ol {
+	list-style: decimal;
+}
+.amp-wp-article-content ul.fa-ul {
+	list-style: none;
+	margin-left: inherit;
+	padding-left: inherit;
+}
+.amp-wp-article-content amp-img {
+	margin: 0 auto 15px;
+}
+.amp-wp-article-content .wp-caption amp-img {
+	margin-bottom: 0px;
+}
+.amp-wp-article-content amp-img.alignright {
+	margin: 5px -15px 15px 15px;
+	max-width: 60%;
+}
+.amp-wp-article-content amp-img.alignleft {
+	margin: 5px 15px 15px -15px;
+	max-width: 60%;
+}
+
+.amp-wp-article-content h1, .amp-wp-article-content h2, .amp-wp-article-content h3, .amp-wp-article-content h4, .amp-wp-article-content h5, .amp-wp-article-content h6 {
+	font-weight: 500;
+}
+
+dt {
+	font-weight: 600;
+}
+dd {
+	margin-bottom: 1.25em;
+}
+em, cite {
+	font-style: italic;
+}
+ins {
+	background: #fcf8e3;
+}
+sub, sup {
+	font-size: 62.5%;
+}
+sub {
+	vertical-align: sub;
+	bottom: 0;
+}
+sup {
+	vertical-align: super;
+	top: 0.25em;
+}
+
+/* Table */
+table {
+	width: 100%;
+	margin: 1em 0 30px;
+	line-height: normal;
+	color: #7b7b7b;
+}
+tr {
+	border-bottom: 1px solid #eee;
+}
+tbody tr:hover {
+	color: #53585c;
+	background: #f7f7f7;
+}
+thead tr {
+	border-bottom: 2px solid #eee;
+}
+th, td {
+	font-size: 0.85em;
+	padding: 8px 20px;
+	text-align: left;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+}
+th {
+	color: #53585c;
+	font-weight: bold;
+	vertical-align: middle;
+}
+tbody tr:last-child, th:first-child, td:first-child, th:last-child, td:last-child {
+	border: 0;
+}
+
+/* Quotes */
+blockquote {
+	display: block;
+	color: #7b7b7b;
+	font-style: italic;
+	padding-left: 1em;
+	border-left: 4px solid #eee;
+	margin: 0 0 15px 0;
+}
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* Captions */
+.wp-caption {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+.wp-caption.alignleft {
+	margin: 5px 20px 20px 0;
+}
+.wp-caption.alignright {
+	margin: 5px 0 20px 20px;
+}
+.wp-caption .wp-caption-text {
+	margin: 3px 0 1em;
+	font-size: 12px;
+	color: #a0a0a0;
+	text-align: center;
+}
+.wp-caption a {
+	color: #a0a0a0;
+	text-decoration: underline;
+}
+
+/* AMP Media */
+article > amp-carousel {
+	margin-top: -25px;
+}
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+.amp-wp-iframe-placeholder {
+	background-color: #212121;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Shortcodes */
+.intro-text {
+	font-size: larger;
+	line-height: 1.421em;
+	letter-spacing: -0.01em;
+}
+
+.dropcap {
+	display: block;
+	float: left;
+	margin: 0.04em 0.2em 0 0;
+	color: #212121;
+	font-size: 3em;
+	line-height: 1;
+	padding: 10px 15px;
+}
+.dropcap.rounded {
+	border-radius: 10px;
+}
+
+/* Pull Quote */
+.pullquote {
+	font-size: larger;
+	border: none;
+	padding: 0 1em;
+	position: relative;
+	text-align: center;
+}
+.pullquote:before, .pullquote:after {
+	content: '';
+	display: block;
+	width: 50px;
+	height: 2px;
+	background: #eee;
+}
+.pullquote:before {
+	margin: 1em auto 0.65em;
+}
+.pullquote:after {
+	margin: 0.75em auto 1em;
+}
+
+/* Article Review */
+.jeg_review_wrap {
+	border-top: 3px solid #eee;
+	padding-top: 20px;
+	margin: 40px 0;
+}
+.jeg_reviewheader {
+	margin-bottom: 20px;
+}
+.jeg_review_title {
+	font-weight: bold;
+	margin: 0 0 20px;
+}
+.jeg_review_wrap .jeg_review_subtitle {
+	font-size: smaller;
+	line-height: 1.4em;
+	margin: 0 0 5px;
+}
+.jeg_review_wrap h3 {
+	font-size: 16px;
+	font-weight: bolder;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+}
+.review_score {
+	float: left;
+	color: #fff;
+	text-align: center;
+	width: 70px;
+	margin-right: 15px;
+}
+.review_score .score_text {
+	background: rgba(0, 0, 0, 0.08);
+}
+.score_good {
+	background: #0D86F7;
+}
+.score_avg {
+	background: #A20DF7;
+}
+.score_bad {
+	background: #F70D0D;
+}
+.score_value {
+	display: block;
+	font-size: 26px;
+	font-weight: bold;
+	line-height: normal;
+	padding: 10px 0;
+}
+.score_value .percentsym {
+	font-size: 50%;
+	vertical-align: super;
+	margin-right: -0.45em;
+}
+.score_text {
+	display: block;
+	padding: 3px 0;
+	font-size: 12px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	text-rendering: auto;
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+.jeg_reviewdetail {
+	margin-bottom: 30px;
+	background: #f5f5f5;
+	border-radius: 3px;
+	width: 100%;
+}
+.conspros {
+	padding: 15px 20px;
+}
+.jeg_reviewdetail .conspros:first-child {
+	border-bottom: 1px solid #e0e0e0;
+}
+.jeg_reviewdetail ul {
+	margin: 0;
+	list-style-type: none;
+	font-size: smaller;
+}
+.jeg_reviewdetail li {
+	padding-left: 22px;
+	position: relative;
+}
+.jeg_reviewdetail li > i {
+	color: #a0a0a0;
+	position: absolute;
+	left: 0;
+	top: -1px;
+	font-style: normal;
+	font-size: 14px;
+}
+.jeg_reviewdetail li > i:before {
+	font-family: 'FontAwesome';
+	content: "\f00c";
+	display: inline-block;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.jeg_reviewdetail .conspros:last-child li > i:before {
+	content: "\f00d";
+}
+
+/* Review Breakdown */
+.jeg_reviewscore {
+	padding: 15px 20px;
+	border: 2px solid #eee;
+	border-radius: 3px;
+	margin-bottom: 30px;
+}
+.jeg_reviewscore ul {
+	margin: 0;
+	font-family: inherit;
+}
+.jeg_reviewscore li {
+	margin: 1em 0;
+	padding: 0;
+	font-size: 13px;
+	list-style: none;
+}
+
+/* Review Stars */
+.jeg_review_stars {
+	font-size: 14px;
+	color: #F7C90D;
+}
+.jeg_reviewstars li {
+	border-top: 1px dotted #eee;
+	padding-top: 8px;
+	margin: 8px 0;
+}
+.jeg_reviewstars .reviewscore {
+	float: right;
+	font-size: 18px;
+	color: #F7C90D;
+}
+
+/* Review Bars */
+.jeg_reviewbars .reviewscore {
+	font-weight: bold;
+	float: right;
+}
+.jeg_reviewbars .jeg_reviewbar_wrap, .jeg_reviewbars .barbg {
+	height: 4px;
+	border-radius: 2px;
+}
+.jeg_reviewbars .jeg_reviewbar_wrap {
+	position: relative;
+	background: #eee;
+	clear: both;
+}
+.jeg_reviewbars .barbg {
+	position: relative;
+	display: block;
+	background: #F7C90D;
+	background: -moz-linear-gradient(left, rgba(247, 201, 13, 1) 0%, rgba(247, 201, 13, 1) 45%, rgba(247, 126, 13, 1) 100%);
+	background: -webkit-linear-gradient(left, rgba(247, 201, 13, 1) 0%, rgba(247, 201, 13, 1) 45%, rgba(247, 126, 13, 1) 100%);
+	background: linear-gradient(to right, rgba(247, 201, 13, 1) 0%, rgba(247, 201, 13, 1) 45%, rgba(247, 126, 13, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7c90d', endColorstr='#f77e0d', GradientType=1);
+}
+.jeg_reviewbars .barbg:after {
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background: #fff;
+	content: '';
+	position: absolute;
+	right: 0;
+	display: block;
+	border: 3px solid #F77E0D;
+	top: -3px;
+	box-sizing: border-box;
+}
+
+/* Product Deals */
+.jeg_deals h3 {
+	text-transform: none;
+	font-size: 18px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+.dealstitle p {
+	font-size: smaller;
+}
+.bestprice {
+	margin-bottom: 1em;
+}
+.bestprice h4 {
+	font-size: smaller;
+	font-weight: bold;
+	text-transform: uppercase;
+	display: inline;
+}
+.bestprice .price {
+	font-size: 1em;
+}
+.jeg_deals .price {
+	font-weight: bold;
+}
+.jeg_deals a {
+	color: #212121
+}
+
+/* Deals on Top Article */
+.jeg_deals_float {
+	width: 100%;
+	padding: 10px 15px 15px;
+	background: #f5f5f5;
+	border-radius: 3px;
+	margin: 0 0 1.25em;
+	box-sizing: border-box;
+}
+.jeg_deals_float h3 {
+	font-size: smaller;
+	margin: 0 0 5px;
+}
+.jeg_deals_float .jeg_storelist li {
+	padding: 3px 7px;
+	font-size: small;
+}
+ul.jeg_storelist {
+	list-style: none;
+	margin: 0;
+	border: 1px solid #e0e0e0;
+	font-family: inherit;
+}
+.jeg_storelist li {
+	background: #fff;
+	border-bottom: 1px solid #e0e0e0;
+	padding: 5px 10px;
+	margin: 0;
+	font-size: 13px;
+}
+.jeg_storelist li:last-child {
+	border-bottom: 0
+}
+.jeg_storelist li .priceinfo {
+	float: right;
+}
+.jeg_storelist .productlink {
+	display: inline-block;
+	padding: 0 10px;
+	color: #fff;
+	border-radius: 2px;
+	font-size: 11px;
+	line-height: 20px;
+	margin-left: 5px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+/* Article Footer Meta */
+.amp-wp-meta-taxonomy {
+	display: block;
+	list-style: none;
+	margin: 20px 0;
+	border-bottom: 2px solid #eee;
+}
+.amp-wp-meta-taxonomy span {
+	font-weight: bold;
+}
+.amp-wp-tax-category, .amp-wp-tax-tag {
+	font-size: smaller;
+	line-height: 1.4em;
+	margin: 0 0 1em;
+}
+.amp-wp-tax-tag span {
+	font-weight: bold;
+	margin-right: 3px;
+}
+.amp-wp-tax-tag a {
+	color: #616161;
+	background: #f5f5f5;
+	display: inline-block;
+	line-height: normal;
+	padding: 3px 8px;
+	margin: 0 3px 5px 0;
+	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+.amp-wp-tax-tag a:hover,
+.jeg_storelist .productlink,
+.jpw_btn_wrapper .btn {
+	color: #fff;
+	background: #007a53;
+}
+
+/* AMP Related */
+.amp-related-wrapper h2 {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.amp-related-content {
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+.amp-related-content amp-img {
+	float: left;
+	width: 100px;
+}
+.amp-related-text {
+	margin-left: 100px;
+	padding-left: 15px;
+}
+.amp-related-content h3 {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.4em;
+	margin: 0 0 5px;
+}
+.amp-related-content h3 a {
+	color: #212121;
+}
+.amp-related-content .amp-related-meta {
+	color: #a0a0a0;
+	font-size: 10px;
+	line-height: normal;
+	text-transform: uppercase;
+}
+.amp-related-date {
+	margin-left: 5px;
+}
+.amp-related-date:before {
+	content: '\2014';
+	margin-right: 5px;
+}
+
+/* AMP Comment */
+.amp-wp-comments-link {
+}
+.amp-wp-comments-link a {
+}
+
+/* AMP Footer */
+.amp-wp-footer {
+	background: #f5f5f5;
+	color: #999;
+	text-align: center;
+}
+.amp-wp-footer .amp-wp-footer-inner {
+	margin: 0 auto;
+	padding: 15px;
+	position: relative;
+}
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+.amp-wp-footer .back-to-top {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.amp-wp-footer p {
+	font-size: 12px;
+	line-height: 1.5em;
+	margin: 1em 2em .6em;
+}
+.amp-wp-footer a {
+	color: #53585c;
+	text-decoration: none;
+}
+.amp-wp-social-footer a:not(:last-child) {
+	margin-right: 0.8em;
+}
+
+/* AMP Ads */
+.amp_ad_wrapper {
+	text-align: center;
+}
+
+/* AMP Sidebar */
+.toggle_btn,
+.amp-wp-header .jeg_search_toggle {
+	color: #212121;
+	background: transparent;
+	font-size: 24px;
+	flex: 0 1 50px;
+	width: 50px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	border: none;
+	padding: 0;
+	outline: 0;
+}
+
+.dark .toggle_btn,
+.dark.amp-wp-header .jeg_search_toggle {
+	color: #fff;
+}
+
+
+.amp-wp-header .jeg_search_toggle {
+	left: auto;
+	right: 0;
+}
+#sidebar {
+	background-color: #fff;
+	width: 100%;
+	max-width: 320px;
+}
+#sidebar > div:nth-child(3) {
+	display: none;
+}
+.jeg_mobile_wrapper {
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.jeg_mobile_wrapper .nav_wrap {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+.jeg_mobile_wrapper .nav_wrap:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	min-height: 100%;
+	z-index: -1;
+}
+.jeg_mobile_wrapper .item_main {
+	flex: 1;
+}
+.jeg_mobile_wrapper .item_bottom {
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+}
+.jeg_aside_item {
+	display: block;
+	padding: 20px;
+	border-bottom: 1px solid #eee;
+}
+.item_bottom .jeg_aside_item {
+	padding: 10px 20px;
+	border-bottom: 0;
+}
+.item_bottom .jeg_aside_item:first-child {
+	padding-top: 20px;
+}
+.item_bottom .jeg_aside_item:last-child {
+	padding-bottom: 20px;
+}
+.jeg_aside_item:last-child {
+	border-bottom: 0;
+}
+.jeg_aside_item:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+/* Mobile Aside Widget */
+.jeg_mobile_wrapper .widget {
+	display: block;
+	padding: 20px;
+	margin-bottom: 0;
+	border-bottom: 1px solid #eee;
+}
+.jeg_mobile_wrapper .widget:last-child {
+	border-bottom: 0;
+}
+
+.jeg_mobile_wrapper .widget .jeg_ad_module {
+	margin-bottom: 0;
+}
+
+/* Mobile Menu Account */
+.jeg_aside_item.jeg_mobile_profile {
+	display: none;
+}
+
+/* Mobile Menu */
+
+.jeg_navbar_mobile_wrapper {
+	position: relative;
+	z-index: 9;
+}
+.jeg_mobile_menu li a {
+	color: #212121;
+	margin-bottom: 15px;
+	display: block;
+	font-size: 18px;
+	line-height: 1.444em;
+	font-weight: bold;
+	position: relative;
+}
+.jeg_mobile_menu li.sfHover > a, .jeg_mobile_menu li a:hover {
+	color: #f70d28;
+}
+.jeg_mobile_menu,
+.jeg_mobile_menu ul {
+	list-style: none;
+	margin: 0px;
+}
+.jeg_mobile_menu ul {
+	padding-bottom: 10px;
+	padding-left: 20px;
+}
+.jeg_mobile_menu ul li a {
+	color: #757575;
+	font-size: 15px;
+	font-weight: normal;
+	margin-bottom: 12px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #eee;
+}
+.jeg_mobile_menu.sf-arrows .sfHover .sf-with-ul:after {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+/** Mobile Socials **/
+.jeg_mobile_wrapper .socials_widget {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+.jeg_mobile_wrapper .socials_widget a {
+	margin-bottom: 0;
+	display: block;
+}
+
+/* Mobile: Social Icon */
+.jeg_mobile_topbar .jeg_social_icon_block.nobg a {
+	margin-right: 10px;
+}
+.jeg_mobile_topbar .jeg_social_icon_block.nobg a .fa {
+	font-size: 14px;
+}
+	.jeg_aside_item.socials_widget > a > i.fa:before {
+		color: #ffffffFFF;
+	}
+
+/* Mobile Search */
+.jeg_navbar_mobile .jeg_search_wrapper {
+	position: static;
+}
+.jeg_navbar_mobile .jeg_search_popup_expand {
+	float: none;
+}
+.jeg_search_expanded .jeg_search_popup_expand .jeg_search_toggle {
+	position: relative;
+}
+.jeg_navbar_mobile .jeg_search_expanded .jeg_search_popup_expand .jeg_search_toggle:before {
+	border-color: transparent transparent #fff;
+	border-style: solid;
+	border-width: 0 8px 8px;
+	content: "";
+	right: 0;
+	position: absolute;
+	bottom: -1px;
+	z-index: 98;
+}
+.jeg_navbar_mobile .jeg_search_expanded .jeg_search_popup_expand .jeg_search_toggle:after {
+	border-color: transparent transparent #eee;
+	border-style: solid;
+	border-width: 0 9px 9px;
+	content: "";
+	right: -1px;
+	position: absolute;
+	bottom: 0px;
+	z-index: 97;
+}
+.jeg_navbar_mobile .jeg_search_popup_expand .jeg_search_form:before,
+.jeg_navbar_mobile .jeg_search_popup_expand .jeg_search_form:after {
+	display: none;
+}
+.jeg_navbar_mobile .jeg_search_popup_expand .jeg_search_form {
+	width: auto;
+	border-left: 0;
+	border-right: 0;
+	left: -15px;
+	right: -15px;
+	padding: 20px;
+	-webkit-transform: none;
+	transform: none;
+}
+.jeg_navbar_mobile .jeg_search_popup_expand .jeg_search_result {
+	margin-top: 84px;
+	width: auto;
+	left: -15px;
+	right: -15px;
+	border: 0;
+}
+.jeg_navbar_mobile .jeg_search_form .jeg_search_button {
+	font-size: 18px;
+}
+.jeg_navbar_mobile .jeg_search_wrapper .jeg_search_input {
+	font-size: 18px;
+	padding: .5em 40px .5em 15px;
+	height: 42px;
+}
+.jeg_navbar_mobile .jeg_nav_left .jeg_search_popup_expand .jeg_search_form:before {
+	right: auto;
+	left: 16px;
+}
+.jeg_navbar_mobile .jeg_nav_left .jeg_search_popup_expand .jeg_search_form:after {
+	right: auto;
+	left: 15px;
+}
+.jeg_search_wrapper .jeg_search_input {
+	width: 100%;
+	vertical-align: middle;
+	height: 40px;
+	padding: 0.5em 30px 0.5em 14px;
+	box-sizing: border-box;
+}
+.jeg_mobile_wrapper .jeg_search_result {
+	width: 100%;
+	border-left: 0;
+	border-right: 0;
+	right: 0;
+}
+.admin-bar .jeg_mobile_wrapper {
+	padding-top: 32px;
+}
+.admin-bar .jeg_show_menu .jeg_menu_close {
+	top: 65px;
+}
+
+/* Mobile Copyright */
+.jeg_aside_copyright {
+	font-size: 11px;
+	color: #757575;
+	letter-spacing: .5px;
+}
+.jeg_aside_copyright a {
+	color: inherit;
+	border-bottom: 1px solid #aaa;
+}
+.jeg_aside_copyright p {
+	margin-bottom: 1.2em;
+}
+.jeg_aside_copyright p:last-child {
+	margin-bottom: 0;
+}
+
+/* Social Icon */
+.socials_widget a {
+	display: inline-block;
+	margin: 0 10px 10px 0;
+	text-decoration: none;
+}
+.socials_widget.nobg a {
+	margin: 0 20px 15px 0;
+}
+.socials_widget a:last-child {
+	margin-right: 0
+}
+.socials_widget.nobg a .fa {
+	font-size: 18px;
+	width: auto;
+	height: auto;
+	line-height: inherit;
+	background: transparent;
+}
+.socials_widget a .fa {
+	font-size: 1em;
+	display: inline-block;
+	width: 38px;
+	line-height: 36px;
+	white-space: nowrap;
+	color: #fff;
+	text-align: center;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.socials_widget.circle a .fa {
+	border-radius: 100%;
+}
+
+/* Social Color */
+.socials_widget .jeg_rss .fa {
+	background: #ff6f00;
+}
+.socials_widget .jeg_facebook .fa {
+	background: #45629f;
+}
+.socials_widget .jeg_twitter .fa {
+	background: #000;
+}
+.socials_widget .jeg_linkedin .fa {
+	background: #0083bb;
+}
+.socials_widget .jeg_instagram .fa {
+	background: #125d8f;
+}
+.socials_widget .jeg_pinterest .fa {
+	background: #e02647;
+}
+.socials_widget .jeg_behance .fa {
+	background: #1e72ff;
+}
+.socials_widget .jeg_dribbble .fa {
+	background: #eb5590;
+}
+.socials_widget .jeg_reddit .fa {
+	background: #FF4500;
+}
+.socials_widget .jeg_stumbleupon .fa {
+	background: #ff4e2e;
+}
+.socials_widget .jeg_vimeo .fa {
+	background: #a1d048;
+}
+.socials_widget .jeg_github .fa {
+	background: #313131;
+}
+.socials_widget .jeg_flickr .fa {
+	background: #ff0077;
+}
+.socials_widget .jeg_tumblr .fa {
+	background: #2d4862;
+}
+.socials_widget .jeg_soundcloud .fa {
+	background: #ffae00;
+}
+.socials_widget .jeg_youtube .fa {
+	background: #c61d23;
+}
+.socials_widget .jeg_twitch .fa {
+	background: #6441a5;
+}
+.socials_widget .jeg_vk .fa {
+	background: #3e5c82;
+}
+.socials_widget .jeg_weibo .fa {
+	background: #ae2c00;
+}
+
+/* Social Color No Background*/
+.socials_widget.nobg .jeg_rss .fa {
+	color: #ff6f00;
+}
+.socials_widget.nobg .jeg_facebook .fa {
+	color: #45629f;
+}
+.socials_widget.nobg .jeg_twitter .fa {
+	color: #5eb2ef;
+}
+.socials_widget.nobg .jeg_linkedin .fa {
+	color: #0083bb;
+}
+.socials_widget.nobg .jeg_instagram .fa {
+	color: #125d8f;
+}
+.socials_widget.nobg .jeg_pinterest .fa {
+	color: #e02647;
+}
+.socials_widget.nobg .jeg_behance .fa {
+	color: #1e72ff;
+}
+.socials_widget.nobg .jeg_dribbble .fa {
+	color: #eb5590;
+}
+.socials_widget.nobg .jeg_reddit .fa {
+	color: #FF4500;
+}
+.socials_widget.nobg .jeg_stumbleupon .fa {
+	color: #ff4e2e;
+}
+.socials_widget.nobg .jeg_vimeo .fa {
+	color: #a1d048;
+}
+.socials_widget.nobg .jeg_github .fa {
+	color: #313131;
+}
+.socials_widget.nobg .jeg_flickr .fa {
+	color: #ff0077;
+}
+.socials_widget.nobg .jeg_tumblr .fa {
+	color: #2d4862;
+}
+.socials_widget.nobg .jeg_soundcloud .fa {
+	color: #ffae00;
+}
+.socials_widget.nobg .jeg_youtube .fa {
+	color: #c61d23;
+}
+.socials_widget.nobg .jeg_twitch .fa {
+	color: #6441a5;
+}
+.socials_widget.nobg .jeg_vk .fa {
+	color: #3e5c82;
+}
+.socials_widget.nobg .jeg_weibo .fa {
+	color: #ae2c00;
+}
+
+/** Mobile Search Form **/
+.jeg_search_wrapper {
+	position: relative;
+}
+.jeg_search_wrapper .jeg_search_form {
+	display: block;
+	position: relative;
+	line-height: normal;
+	min-width: 60%;
+}
+.jeg_search_no_expand .jeg_search_toggle {
+	display: none;
+}
+.jeg_mobile_wrapper .jeg_search_result {
+	width: 100%;
+	border-left: 0;
+	border-right: 0;
+	right: 0;
+}
+.jeg_search_hide {
+	display: none;
+}
+.jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_input {
+	box-shadow: inset 0 2px 2px rgba(0,0,0,.05);
+}
+.jeg_mobile_wrapper .jeg_search_result {
+	width: 100%;
+	border-left: 0;
+	border-right: 0;
+	right: 0;
+}
+.jeg_search_no_expand.round .jeg_search_input {
+	border-radius: 33px;
+	padding: .5em 15px;
+}
+.jeg_search_no_expand.round .jeg_search_button {
+	padding-right: 12px;
+}
+input:not([type="submit"]) {
+	display: inline-block;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 0;
+	padding: 7px 14px;
+	height: 40px;
+	outline: none;
+	font-size: 14px;
+	font-weight: 300;
+	margin: 0;
+	width: 100%;
+	max-width: 100%;
+	-webkit-transition: all 0.2s ease;
+	transition: .25s ease;
+	box-shadow: none;
+}
+input[type="submit"], .btn {
+	border: none;
+	background: #f70d28;
+	color: #fff;
+	padding: 0 20px;
+	line-height: 40px;
+	height: 40px;
+	display: inline-block;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	outline: 0;
+	-webkit-appearance: none;
+	-webkit-transition: .3s ease;
+	transition: .3s ease;
+}
+.jeg_search_wrapper .jeg_search_button {
+	color: #212121;
+	background: transparent;
+	border: 0;
+	font-size: 14px;
+	outline: none;
+	cursor: pointer;
+	position: absolute;
+	height: auto;
+	min-height: unset;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	padding: 0 10px;
+	transition: none;
+}
+
+/** Mobile Dark Scheme **/
+.dark .jeg_bg_overlay {
+	background: #fff;
+}
+.dark .jeg_mobile_wrapper {
+	background-color: #212121;
+	color: #f5f5f5;
+}
+.dark .jeg_mobile_wrapper .jeg_search_result {
+	background: rgba(0, 0, 0, .9);
+	color: #f5f5f5;
+	border: 0;
+}
+.dark .jeg_menu_close {
+	color: #212121;
+}
+.dark .jeg_aside_copyright,
+.dark .profile_box a,
+.dark .jeg_mobile_menu li a,
+.dark .jeg_mobile_wrapper .jeg_search_result a,
+.dark .jeg_mobile_wrapper .jeg_search_result .search-link {
+	color: #f5f5f5;
+}
+.dark .jeg_aside_copyright a {
+	border-color: rgba(255, 255, 255, .8)
+}
+.dark .jeg_aside_item,
+.dark .jeg_mobile_menu ul li a,
+.dark .jeg_search_result.with_result .search-all-button {
+	border-color: rgba(255, 255, 255, .15);
+}
+
+.dark .profile_links li a,
+.dark .jeg_mobile_menu.sf-arrows .sf-with-ul:after,
+.dark .jeg_mobile_menu ul li a {
+	color: rgba(255, 255, 255, .5)
+}
+
+.dark .jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_input {
+	background: rgba(255, 255, 255, 0.1);
+	border: 0;
+}
+.dark .jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_button,
+.dark .jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_input {
+	color: #fafafa;
+}
+.dark .jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_input::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.75);
+}
+.dark .jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_input:-moz-placeholder {
+	color: rgba(255, 255, 255, 0.75);
+}
+.dark .jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_input::-moz-placeholder {
+	color: rgba(255, 255, 255, 0.75);
+}
+.dark .jeg_mobile_wrapper .jeg_search_no_expand .jeg_search_input:-ms-input-placeholder {
+	color: rgba(255, 255, 255, 0.75);
+}
+
+/* RTL */
+.rtl .socials_widget.nobg a {
+	margin: 0 0 15px 20px;
+}
+.rtl .amp-wp-social-footer a:not(:last-child) {
+	margin-left: 0.8em;
+	margin-right: 0;
+}
+.rtl .jeg_search_no_expand.round .jeg_search_input {
+	padding: 15px 2.5em 15px .5em;
+}
+.rtl .jeg_share_button a {
+	margin: 0 0px 5px 5px;
+}
+.rtl .jeg_share_button a:last-child {
+	margin-left: 0;
+}
+.rtl blockquote {
+	padding-left: 0;
+	padding-right: 1em;
+	border-left: 0;
+	border-right-width: 4px;
+	border-right: 4px solid #eee;
+}
+.rtl .jeg_reviewstars .reviewscore,
+.rtl .jeg_storelist li .priceinfo,
+.rtl .jeg_reviewbars .reviewscore {
+	float: left;
+}
+.rtl .jeg_reviewdetail li {
+	padding-right: 22px;
+	padding-left: unset;
+}
+.rtl .jeg_reviewdetail li > i {
+	right: 0;
+	left: unset;
+}
+.rtl .dealstitle {
+	float: right;
+}
+.rtl .bestprice {
+	float: left;
+	text-align: left;
+}
+/* Font Awesome Right to Left */
+/* Horizontal Flip */
+.rtl .fa-star-half-o {
+	-moz-transform: scale(-1, 1);
+	-webkit-transform: scale(-1, 1);
+	-o-transform: scale(-1, 1);
+	-ms-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+}
+.rtl .jeg_reviewbars .barbg:after {
+	left: 0;
+	right: unset;
+}
+.rtl .amp-carousel-button-next {
+	left: 16px;
+	right: unset;
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+
+}
+
+.rtl .amp-carousel-button-prev {
+	right: 16px;
+	left: unset;
+	-webkit-transform: scaleX(-1) translateY(-50%);
+	transform: scaleX(-1) translateY(-50%);
+}
+amp-consent {
+	position: relative;
+}
+.gdpr-consent {
+	bottom: 0;
+	left: 0;
+	overflow: hiddent;
+	z-index: 1000;
+	width: 100%;
+	position: fixed;
+}
+.gdpr-consent-wrapper {
+	text-align: center;
+	padding: 15px 10px;
+	background: #f5f5f5;
+	position: relative;
+}
+.gdpr-consent-content h2 {
+	margin: 10px 0;
+}
+.gdpr-consent-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 24px;
+	border:none;
+}
+.btn.gdpr-consent-button-y {
+	background: #ddd;
+	color: #212121;
+	margin-right:10px;
+}
+#post-consent-ui {
+	text-align: center;
+}
+#post-consent-ui a {
+	background: none;
+	color: #666;
+	text-decoration: underline;
+	font-weight: normal;
+	font-size: 12px;
+	letter-spacing: normal;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+	.admin-bar .jeg_mobile_wrapper {
+		padding-top: 46px;
+	}
+}
+@media only screen and (max-width: 320px) {
+	#sidebar {
+		max-width: 275px;
+	}
+}
+
+/* Paywall button */
+.jpw-truncate-btn {
+	height: fit-content;
+	left: 0;
+	position: relative;
+	right: 0;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.jpw-truncate-btn:before {
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+	content: "";
+	height: 200px;
+	margin-top: -200px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	width: 100%;
+}
+
+.jpw-truncate-btn span {
+	display: block;
+	font-size: 14px;
+	padding: 0 5px;
+}
+
+.jpw-truncate-btn .jpw_subscribe span,
+.jpw-truncate-btn .jpw_unlock span {
+	min-height:65px;
+}
+
+.jpw-truncate-btn h3 {
+	font-size: 1.5em;
+	margin: 0.5em 0 1em;
+}
+
+.jpw-truncate-btn .jpw-truncate-header {
+	padding: 30px 10px;
+}
+
+.jpw-truncate-btn .jpw_subscribe,
+.jpw-truncate-btn .jpw_unlock { 
+	border: 1px solid #ededed;
+	display: inline-block;
+	width: 40%;
+	max-width: 400px;
+	margin: 5px 10px;
+	padding: 20px;
+	vertical-align: top;
+}
+
+.jpw-truncate-btn .button {
+	background-color: #555;
+	border-radius: 100px;
+	display: inline-block;
+	height: fit-content;
+	margin: 5px 15px;
+	padding: 0;
+	width: fit-content;
+}
+
+.jpw-truncate-btn .button a {
+	color: #fff;
+	display: block;
+	padding: 5px 20px;
+	text-decoration: none;
+}
+
+.jpw-truncate-btn .button input {
+	color: #fff;
+	display: block;
+	padding: 0 20px;
+	text-decoration: none;
+}
+
+.jpw-truncate.jpw-no-comment div#respond {
+	display: none;
+}
+
+@media only screen and (max-width: 567px) {
+	.jpw-truncate-btn .jpw_subscribe,
+	.jpw-truncate-btn .jpw_unlock { 
+		display: block;
+		margin: 10px auto;
+		width: 90%;
+	}
+}
+
+.amp-wp-social-footer a .jeg-icon svg {
+	height: 14px;
+}
+			</style><link rel="canonical" href="https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/"><script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/#article","isPartOf":{"@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/"},"author":{"name":"Omar","@id":"https://www.radionativa.cl/#/schema/person/906790e6b132a568ab43c6da97cf1d67"},"headline":"Capitán Pastene postula a reconocimiento mundial de turismo rural","datePublished":"2022-07-24T17:17:46+00:00","dateModified":"2022-07-24T17:17:48+00:00","mainEntityOfPage":{"@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/"},"wordCount":413,"publisher":{"@id":"https://www.radionativa.cl/#organization"},"image":{"@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/#primaryimage"},"thumbnailUrl":"https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png","articleSection":["Capitán Pastene"],"inLanguage":"es"},{"@type":"WebPage","@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/","url":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/","name":"✓ Radio Nativa | Capitán Pastene postula a reconocimiento mundial de turismo rural","isPartOf":{"@id":"https://www.radionativa.cl/#website"},"primaryImageOfPage":{"@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/#primaryimage"},"image":{"@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/#primaryimage"},"thumbnailUrl":"https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png","datePublished":"2022-07-24T17:17:46+00:00","dateModified":"2022-07-24T17:17:48+00:00","description":"Radio Nativa 106.5 transmite desde la ciudad de Lumaco, Región de La Araucanía, las 24 horas del día para todo Chile y el Mundo","breadcrumb":{"@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/#breadcrumb"},"inLanguage":"es","potentialAction":[{"@type":"ReadAction","target":["https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/"]}]},{"@type":"ImageObject","inLanguage":"es","@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/#primaryimage","url":"https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png","contentUrl":"https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png","width":700,"height":244},{"@type":"BreadcrumbList","@id":"https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Portada","item":"https://www.radionativa.cl/"},{"@type":"ListItem","position":2,"name":"Capitán Pastene postula a reconocimiento mundial de turismo rural"}]},{"@type":"WebSite","@id":"https://www.radionativa.cl/#website","url":"https://www.radionativa.cl/","name":"www.radionativa.cl","description":"Radio Nativa 106.5 FM transmite desde la ciudad de Lumaco, Región de La Araucanía, las 24 horas del día para todo Chile y el Mundo.","publisher":{"@id":"https://www.radionativa.cl/#organization"},"alternateName":"www.radionativa.cl","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.radionativa.cl/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"es"},{"@type":"Organization","@id":"https://www.radionativa.cl/#organization","name":"Radio Nativa","url":"https://www.radionativa.cl/","logo":{"@type":"ImageObject","inLanguage":"es","@id":"https://www.radionativa.cl/#/schema/logo/image/","url":"https://www.radionativa.cl/wp-content/uploads/2019/08/logo-nativa-e1566912707613.png","contentUrl":"https://www.radionativa.cl/wp-content/uploads/2019/08/logo-nativa-e1566912707613.png","width":300,"height":66,"caption":"Radio Nativa"},"image":{"@id":"https://www.radionativa.cl/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/radionativacl","https://x.com/radionativacl","https://www.instagram.com/radionativacl"]},{"@type":"Person","@id":"https://www.radionativa.cl/#/schema/person/906790e6b132a568ab43c6da97cf1d67","name":"Omar","image":{"@type":"ImageObject","inLanguage":"es","@id":"https://secure.gravatar.com/avatar/127899b34bd6d036683a68734b58a4d2710b6eb21e71bc4059de1957e7506826?s=96\u0026d=mm\u0026r=g","url":"https://secure.gravatar.com/avatar/127899b34bd6d036683a68734b58a4d2710b6eb21e71bc4059de1957e7506826?s=96\u0026d=mm\u0026r=g","contentUrl":"https://secure.gravatar.com/avatar/127899b34bd6d036683a68734b58a4d2710b6eb21e71bc4059de1957e7506826?s=96\u0026d=mm\u0026r=g","caption":"Omar"},"sameAs":["https://www.instagram.com/agenciack.cl","https://www.youtube.com/@agenciack9605"]}]}</script><link rel="apple-touch-icon" href="https://www.radionativa.cl/wp-content/uploads/2019/04/cropped-ico-nativa-4-180x180.png"><style data-px-verified-tag>#amp-mobile-version-switcher{left:0;position:absolute;width:100%;z-index:100}#amp-mobile-version-switcher>a{background-color:#444;border:0;color:#eaeaea;display:block;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;font-size:16px;font-weight:600;padding:15px 0;text-align:center;-webkit-text-decoration:none;text-decoration:none}#amp-mobile-version-switcher>a:active,#amp-mobile-version-switcher>a:focus,#amp-mobile-version-switcher>a:hover{-webkit-text-decoration:underline;text-decoration:underline}</style><title>✓ Radio Nativa | Capitán Pastene postula a reconocimiento mundial de turismo rural</title><script data-amp-unvalidated-tag>
+                var loadDeferredStyles = function() {
+                    var addStylesNode = document.getElementById("deferred-styles");
+                    var replacement = document.createElement("div");
+                    replacement.innerHTML = addStylesNode.textContent;
+                        document.body.appendChild(replacement)
+                        addStylesNode.parentElement.removeChild(addStylesNode);
+                };
+                var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                      webkitRequestAnimationFrame || msRequestAnimationFrame;
+                if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+                else window.addEventListener('load', loadDeferredStyles);
+            </script><script data-amp-unvalidated-tag></script></head>
+
+<body data-rsssl=1 class="" data-burst_id="15630" data-burst_type="post">
+
+
+
+<header id="#top" class="amp-wp-header normal">
+	<div>
+		<button on="tap:sidebar.toggle" class="toggle_btn">
+			<i class="fa fa-bars"></i>
+		</button>
+		<a class="jeg_mobile_logo" href="https://www.radionativa.cl/?amp" aria-label="Visit Homepage">
+                    </a>
+		<a class="jeg_search_toggle" aria-label="Search Button" href="https://www.radionativa.cl/?s&amp;amp">
+			<i class="fa fa-search"></i>
+		</a>
+	</div>
+</header>
+
+
+<amp-sidebar id="sidebar" layout="nodisplay" side="left" class="normal i-amphtml-layout-nodisplay" hidden="hidden" i-amphtml-layout="nodisplay">
+	<div class="jeg_mobile_wrapper">
+		<div class="nav_wrap">
+    <div class="item_main">
+        
+<div class="jeg_aside_item jeg_search_wrapper jeg_search_no_expand square">
+    <a href="#" aria-label="Search Button" class="jeg_search_toggle"><i class="fa fa-search"></i></a>
+    <form action="https://www.radionativa.cl/?amp" method="get" class="jeg_search_form" target="_top">
+    <input name="s" class="jeg_search_input" placeholder="Search..." type="text" value="" autocomplete="off">
+	<button aria-label="Search Button" type="submit" class="jeg_search_button btn"><i class="fa fa-search"></i></button>
+<input name="amp" value="" type="hidden"></form>
+
+<div class="jeg_search_result jeg_search_hide with_result">
+    <div class="search-result-wrapper">
+    </div>
+    <div class="search-link search-noresult">
+        No Result    </div>
+    <div class="search-link search-all-button">
+        <i class="fa fa-search"></i> View All Result    </div>
+</div></div><div class="jeg_aside_item">
+    <ul class="jeg_mobile_menu sf-js-hover"><li id="menu-item-16546" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16546"><a href="https://www.radionativa.cl/?amp">Home</a></li>
+<li id="menu-item-16585" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16585"><a href="https://www.radionativa.cl/somos/?amp">Somos</a></li>
+<li id="menu-item-16592" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16592"><a href="https://www.radionativa.cl/servicios/?amp">Servicios</a></li>
+<li id="menu-item-16591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16591"><a href="https://www.radionativa.cl/publicidad/?amp">Publicidad</a></li>
+<li id="menu-item-16753" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16753"><a href="https://www.radionativa.cl/tarifa-elecciones-2025/?amp">Tarifa Elecciones 2025</a></li>
+<li id="menu-item-16553" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-16553"><a href="https://www.radionativa.cl/category/noticias/?amp">Noticias</a></li>
+</ul></div>    </div>
+    <div class="item_bottom">
+        <div class="jeg_aside_item socials_widget rounded">
+    <a href="https://www.facebook.com/radionativacl" target="_blank" rel="external noopener nofollow" aria-label="Find us on Facebook" class="jeg_facebook"><i class="fa fa-facebook"></i> </a><a href="https://instagram.com/radionativacl" target="_blank" rel="external noopener nofollow" aria-label="Find us on Instagram" class="jeg_instagram"><i class="fa fa-instagram"></i> </a><a href="https://twitter.com/radionativacl" target="_blank" rel="external noopener nofollow" aria-label="Find us on Twitter" class="jeg_twitter"><i class="fa fa-twitter"><span class="jeg-icon icon-twitter"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewbox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" /></svg></span></i> </a></div><div class="jeg_aside_item jeg_aside_copyright">
+	<p>© 2023 <a href="https://www.radionativa.cl?amp" title="Premium WordPress news &amp; magazine theme">Radio Nativa</a> - Otro sitio administrado por <a href="https://www.publicom.cl" title="Publicom">Publicom</a>.</p>
+</div>    </div>
+</div>	</div>
+</amp-sidebar>
+
+
+<article class="amp-wp-article">
+
+	<div class="amp-wp-breadcrumb">
+		<div id="breadcrumbs"><span class="">
+                <a href="https://www.radionativa.cl?amp">Home</a>
+            </span><i class="fa fa-angle-right"></i><span class="">
+                <a href="https://www.radionativa.cl/category/noticias/?amp">Noticias</a>
+            </span><i class="fa fa-angle-right"></i><span class="breadcrumb_last_link">
+                <a href="https://www.radionativa.cl/category/noticias/capitan-pastene/?amp">Capitán Pastene</a>
+            </span></div>	</div>
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Capitán Pastene postula a reconocimiento mundial de turismo rural</h1>
+				<ul class="amp-wp-meta">
+			<li class="amp-wp-byline">
+		<amp-img src="https://secure.gravatar.com/avatar/127899b34bd6d036683a68734b58a4d2710b6eb21e71bc4059de1957e7506826?s=24&amp;d=mm&amp;r=g" width="24" height="24" layout="fixed" class="i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:24px;height:24px" i-amphtml-layout="fixed"></amp-img>
+		<span class="amp-wp-author">By <a href="https://www.radionativa.cl/author/admin_om/?amp">Omar</a></span>
+</li>
+<li class="amp-wp-posted-on">
+	<time datetime="2022-07-24T17:17:46+00:00">
+		4 años Ago	</time>
+</li>
+		</ul>
+	</header>
+
+		<figure class="amp-wp-article-featured-image wp-caption">
+		<img width="700" height="244" src="https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" decoding="async" srcset="https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png 700w, https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823-300x105.png 300w" sizes="auto, (max-width: 700px) 100vw, 700px" data-hero-candidate="">			</figure>
+	
+	<div class="amp-wp-share">
+		<div class="jeg_share_amp_container"><div class="jeg_share_button share-amp clearfix">
+                <div class="jeg_sharelist">
+                    <a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.radionativa.cl%2Fcapitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural%2F" rel="nofollow" aria-label="Share on Facebook" class="jeg_btn-facebook expanded"><i class="fa fa-facebook-official"></i><span>Share on Facebook</span></a><a href="https://twitter.com/intent/tweet?text=Capit%C3%A1n%20Pastene%20postula%20a%20reconocimiento%20mundial%20de%20turismo%20rural&amp;url=https%3A%2F%2Fwww.radionativa.cl%2Fcapitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural%2F" rel="nofollow" aria-label="Share on Twitter" class="jeg_btn-twitter expanded"><i class="fa fa-twitter"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewbox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" /></svg></i><span>Share on Twitter</span></a>
+                </div>
+            </div></div>	</div>
+
+	
+	<div class="amp-wp-article-content">
+		
+<p class="has-white-color has-luminous-vivid-orange-background-color has-text-color has-background wp-block-paragraph"><em>La multicultural localidad de Capitán Pastene junto a Ninhue y Puqueldón, postularon en nuestro país al sello Best Tourism Villages, iniciativa internacional que premia a territorios que preservan la cultura y tradiciones rurales.</em></p>
+
+
+
+<p class="wp-block-paragraph">Por <strong>segundo año consecutivo la Organización Mundial del Turismo (OMT),</strong> reconocerá a las localidades que son ejemplo de turismo rural a nivel mundial, a través del sello <strong>Best Tourism Villages</strong>, que en su <strong>versión 2021 fue otorgado a dos pueblos chilenos: Pica y Puerto Williams. </strong></p>
+
+
+
+<p class="wp-block-paragraph">En esta oportunidad nuestro país, miembro de la <strong>OMT desde 1975</strong>, postuló a tres localidades al premio: <strong>Capitán Pastene, perteneciente a la comuna de Lumaco en la región de La Araucanía, Ninhue, en la región de Ñuble y Puqueldón, una de las islas del archipiélago de Chiloé en la región de Los Lagos.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="640" height="424" src="https://www.radionativa.cl/wp-content/uploads/2022/07/1267098B-5A06-48ED-9A23-E53EE8461D97.jpeg" alt="" class="wp-image-15631 amp-wp-enforced-sizes" srcset="https://www.radionativa.cl/wp-content/uploads/2022/07/1267098B-5A06-48ED-9A23-E53EE8461D97.jpeg 640w, https://www.radionativa.cl/wp-content/uploads/2022/07/1267098B-5A06-48ED-9A23-E53EE8461D97-300x199.jpeg 300w" sizes="(max-width: 640px) 100vw, 640px"></figure>
+
+
+
+<p class="wp-block-paragraph">El sello <strong>Best Tourism Villages</strong> también reconoce a quienes mantienen el turismo como un motor de desarrollo rural, beneficiando a las comunidades y mostrando compromiso con la sostenibilidad en el desarrollo del sector.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="684" src="https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA-1024x684.jpeg" alt="" class="wp-image-15296 amp-wp-enforced-sizes" srcset="https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA-1024x684.jpeg 1024w, https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA-300x200.jpeg 300w, https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA-768x513.jpeg 768w, https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA-750x501.jpeg 750w, https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA-1140x762.jpeg 1140w, https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA.jpeg 1440w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><p>El Seremi de Economía Vicente Painel destacó esta postulación que permitirá “poner en valor la interculturalidad mapuche-italiana a escala mundial, posicionar a Nahuelbuta internacionalmente a través de esta categoría lo que es un tremendo aporte y trabajo que merece ser apoyado por todos”.</p><p>En tanto, el alcalde de Lumaco, Richard Leonelli, comentó que la postulación “representa una oportunidad para abrir una puerta al mundo, para mostrar la singular y rica combinación de culturas y llevar a Capitán Pastene a ser un foco cultural vivo, ejemplo de trascendencia, donde el campesino, el mapuche y el colono italiano, han logrado cuidar su historia y cultura, usándola como una base de crecimiento sustentable para las futuras generaciones”.</p><p>Por su parte el director de Sernatur Araucanía Alexis Figueroa, aseguró que “lograr un reconocimiento de esta categoría viene a dar un espaldarazo al trabajo que por décadas se ha desarrollado en esta hermosa localidad a fin de mantener su esencia y tradiciones vigentes, además de entregar un significativo realce al desarrollo turístico de la comuna y el Destino Nahuelbuta”.</p></blockquote>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="683" src="https://www.radionativa.cl/wp-content/uploads/2022/05/F76DB72A-A888-47FB-9D7C-02F894D58744-1024x683.jpeg" alt="" class="wp-image-15300 amp-wp-enforced-sizes" srcset="https://www.radionativa.cl/wp-content/uploads/2022/05/F76DB72A-A888-47FB-9D7C-02F894D58744-1024x683.jpeg 1024w, https://www.radionativa.cl/wp-content/uploads/2022/05/F76DB72A-A888-47FB-9D7C-02F894D58744-300x200.jpeg 300w, https://www.radionativa.cl/wp-content/uploads/2022/05/F76DB72A-A888-47FB-9D7C-02F894D58744-768x513.jpeg 768w, https://www.radionativa.cl/wp-content/uploads/2022/05/F76DB72A-A888-47FB-9D7C-02F894D58744-750x501.jpeg 750w, https://www.radionativa.cl/wp-content/uploads/2022/05/F76DB72A-A888-47FB-9D7C-02F894D58744-1140x761.jpeg 1140w, https://www.radionativa.cl/wp-content/uploads/2022/05/F76DB72A-A888-47FB-9D7C-02F894D58744.jpeg 1440w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p class="wp-block-paragraph">Se espera que la<strong> Organización Mundial del Turismo</strong> entregué los resultados de esta postulación a fines de este año.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity">
+	</div>
+	
+	<ul class="amp-wp-meta-taxonomy">	<li class="amp-wp-tax-category">
+		<span class="screen-reader-text">Categories:</span>
+		<a href="https://www.radionativa.cl/category/noticias/capitan-pastene/?amp" rel="category tag">Capitán Pastene</a>	</li>
+
+</ul>
+
+	<div class="amp-related-wrapper">
+                        <h2>Related Content</h2>
+                        <div class="amp-related-content">
+                            <amp-img src="https://www.radionativa.cl/wp-content/uploads/2022/05/3E60B121-6771-46DE-8495-DD126AF57DCA-120x86.jpeg" width="120" height="86" layout="responsive" class="amp-related-image i-amphtml-layout-responsive i-amphtml-layout-size-defined" i-amphtml-layout="responsive"><i-amphtml-sizer slot="i-amphtml-svc" style="display:block;padding-top:71.6667%"></i-amphtml-sizer></amp-img>
+                            <div class="amp-related-text">
+                                <h3><a href="https://www.radionativa.cl/tras-un-ano-suspendida-vuelve-la-tradicional-sagra-carretada-a-capitan-pastene/amp/">Tras un año suspendida: vuelve la tradicional Sagra Carretada a Capitán Pastene</a></h3>
+                                <div class="amp-related-meta">
+                                    By
+                                    <span class="amp-related-author">Omar</span>
+                                    <span class="amp-related-date">mayo 19, 2022</span>
+                                </div>
+                            </div>
+                        </div><div class="amp-related-content">
+                            <amp-img src="https://www.radionativa.cl/wp-content/uploads/2022/03/275291636_2793215724305554_2896026951982603100_n-1-120x86.jpg" width="120" height="86" layout="responsive" class="amp-related-image i-amphtml-layout-responsive i-amphtml-layout-size-defined" i-amphtml-layout="responsive"><i-amphtml-sizer slot="i-amphtml-svc" style="display:block;padding-top:71.6667%"></i-amphtml-sizer></amp-img>
+                            <div class="amp-related-text">
+                                <h3><a href="https://www.radionativa.cl/incendio-consume-casona-en-remodelacion-de-capitan-pastene-propietario-habia-sido-amenazado/amp/">Incendio consume casona en remodelación de Capitán Pastene: propietario había sido amenazado</a></h3>
+                                <div class="amp-related-meta">
+                                    By
+                                    <span class="amp-related-author">Admin_Ed</span>
+                                    <span class="amp-related-date">marzo 7, 2022</span>
+                                </div>
+                            </div>
+                        </div><div class="amp-related-content">
+                            <amp-img src="https://www.radionativa.cl/wp-content/uploads/2021/12/CDF44688-407D-4288-9842-039911D29FE5-120x86.jpeg" width="120" height="86" layout="responsive" class="amp-related-image i-amphtml-layout-responsive i-amphtml-layout-size-defined" i-amphtml-layout="responsive"><i-amphtml-sizer slot="i-amphtml-svc" style="display:block;padding-top:71.6667%"></i-amphtml-sizer></amp-img>
+                            <div class="amp-related-text">
+                                <h3><a href="https://www.radionativa.cl/encapuchados-amenazaron-y-golpearon-a-trabajadores-previo-a-ataque-incendiario-en-capitan-pastene/amp/">Encapuchados amenazaron y golpearon a trabajadores previo a ataque incendiario en Capitán Pastene </a></h3>
+                                <div class="amp-related-meta">
+                                    By
+                                    <span class="amp-related-author">Omar</span>
+                                    <span class="amp-related-date">diciembre 7, 2021</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</article>
+
+
+<footer class="amp-wp-footer">
+	<div class="amp-wp-footer-inner">
+		<a href="#top" class="back-to-top">Back to top</a>
+
+		<p class="copyright">
+			© 2023 <a href="https://www.radionativa.cl?amp" title="Premium WordPress news &amp; magazine theme">Radio Nativa</a> - Otro sitio administrado por <a href="https://www.publicom.cl" title="Publicom">Publicom</a>.		</p>
+		
+		<div class="amp-wp-social-footer">
+			<a href="https://www.facebook.com/radionativacl" target="_blank" rel="external noopener nofollow" aria-label="Find us on Facebook" class="jeg_facebook"><i class="fa fa-facebook"></i> </a><a href="https://instagram.com/radionativacl" target="_blank" rel="external noopener nofollow" aria-label="Find us on Instagram" class="jeg_instagram"><i class="fa fa-instagram"></i> </a><a href="https://twitter.com/radionativacl" target="_blank" rel="external noopener nofollow" aria-label="Find us on Twitter" class="jeg_twitter"><i class="fa fa-twitter"><span class="jeg-icon icon-twitter"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewbox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" /></svg></span></i> </a>		</div>
+	</div>
+</footer>
+
+		<div id="amp-mobile-version-switcher">
+			<a rel="nofollow" href="https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/?noamp=mobile">
+				Salir de la versión móvil			</a>
+		</div>
+
+				<amp-analytics id="94298159c3d8" type="GoogleAnalytics" class="i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:1px;height:1px" i-amphtml-layout="fixed"><script type="application/json">{"vars":{"account":"UA-24075083-1"},"triggers":{"trackPageview":{"on":"visible","request":"pageview"}}}</script></amp-analytics><script data-amp-unvalidated-tag></script>
+
+</body></html>
+
+<!-- Dynamic page generated in 1.193 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2026-10-19 08:43:15 -->
+
+<!-- super cache -->

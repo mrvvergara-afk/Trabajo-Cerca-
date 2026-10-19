@@ -22,6 +22,12 @@ def page(url=URL, *, form=False, deadline=True):
 
 
 class PublicAdapterTests(unittest.TestCase):
+    def test_cmpc_identity_is_an_individual_requisition_for_the_official_tenant(self):
+        url='https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc'
+        self.assertEqual(source_adapter(url)['identityUrl'],url)
+        self.assertIn('official requisition response',source_adapter(url)['verificationMethod'])
+        for bad in [url.replace('c=cmpc','c=another'),url.replace('/requisition/18859',''),url+'&session=private']:
+            self.assertIsNone(source_adapter(bad))
     def test_declared_public_encoding_preserves_literal_accents_without_trusting_unknown_charsets(self):
         from scripts.common import decode_public_html
         self.assertEqual(decode_public_html('Traiguén'.encode('latin1'),'text/html;charset=iso-8859-1'),'Traiguén')

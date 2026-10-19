@@ -1,5 +1,6 @@
 """Read-only browser check through the supported AppDeploy frontend SDK, with no provider actions."""
 import json
+import asyncio
 import os
 import shutil
 import subprocess
@@ -57,16 +58,12 @@ def main():
     browser = shutil.which('google-chrome') or shutil.which('chromium') or shutil.which('chromium-browser')
     if not browser:
         raise RuntimeError('The runner has no browser; no fallback transport is invented')
-    with tempfile.TemporaryDirectory() as directory:
-        child_env = dict(os.environ)
-        child_env.pop('ACTIONS_ID_TOKEN_REQUEST_TOKEN', None)
-        child_env.pop('GITHUB_TOKEN', None)
-        result = subprocess.run([browser, '--headless', '--disable-gpu', '--no-first-run',
-          '--disable-background-networking', '--user-data-dir=' + directory,
-          '--virtual-time-budget=20000', '--dump-dom', URL], capture_output=True, text=True,
-          timeout=90, env=child_env, check=True)
+    if os.environ.get('RADAR_OPERATOR_WAIT_BROWSER')=='1':
+        raw=asyncio.run(read_operator_browser(browser))
+    else:
+        raw=read_operator_dump(browser)
     parser = ProofElement()
-    parser.feed(result.stdout)
+    parser.feed(raw)
     if not parser.parts:
         raise RuntimeError('The SDK operator view did not return a readable result')
     proof = json.loads(''.join(parser.parts))
@@ -75,6 +72,32 @@ def main():
     Path('output/laboratory_observation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2) + '\n')
     Path('output/laboratory_observation_proof.json').write_text(json.dumps(proof,ensure_ascii=False,indent=2) + '\n')
     print('LABORATORY_READ ' + json.dumps(report,ensure_ascii=False))
+
+
+async def read_operator_browser(browser):
+    from playwright.async_api import async_playwright
+    environment={key:value for key,value in os.environ.items() if key not in ('GITHUB_TOKEN','ACTIONS_ID_TOKEN_REQUEST_TOKEN','ACTIONS_ID_TOKEN_REQUEST_URL')}
+    async with async_playwright() as playwright:
+        instance=await playwright.chromium.launch(executable_path=browser,headless=True,env=environment)
+        try:
+            page=await instance.new_page()
+            await page.goto(URL,wait_until='domcontentloaded',timeout=30000)
+            await page.wait_for_function("""() => {const node=document.getElementById('radar-live-check');if(!node)return false;try{const value=JSON.parse(node.textContent);return Boolean(value.ingestion && value.feed && value.feedReadComplete===true && !value.feedReadError);}catch{return false;}}""",timeout=60000)
+            return await page.content()
+        finally:
+            await instance.close()
+
+
+def read_operator_dump(browser):
+    with tempfile.TemporaryDirectory() as directory:
+        child_env = dict(os.environ)
+        child_env.pop('ACTIONS_ID_TOKEN_REQUEST_TOKEN', None)
+        child_env.pop('GITHUB_TOKEN', None)
+        result = subprocess.run([browser, '--headless', '--disable-gpu', '--no-first-run',
+          '--disable-background-networking', '--user-data-dir=' + directory,
+          '--virtual-time-budget=20000', '--dump-dom', URL], capture_output=True, text=True,
+          timeout=90, env=child_env, check=True)
+    return result.stdout
 
 
 if __name__ == '__main__':

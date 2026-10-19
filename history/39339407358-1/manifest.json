@@ -1,0 +1,202 @@
+{
+  "sources": [
+    {
+      "key": "cmpc",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "verified": false,
+      "published": 0,
+      "coverage_complete": false,
+      "http": 200,
+      "original_html_sha256": "ffe2a4a3ea0267c48639faa769bb1e3f5e99f125c703840e91a6d8c8ab945e5f",
+      "access": "rendered",
+      "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "html_file": "output/cmpc-public/cmpc.html",
+      "rendered_html_sha256": "3ab7132f3d04c7973d7b8f14faeb870d3713263c32a77189acaab451eb4c9456",
+      "text_characters": 339,
+      "text": "Skip to Main Content\n \nEnglish Version\nVersión en Español\nVersão Em Português\nAbout us\nJob opportunities\nInternship Program\n    \n    \n      \nSign In\nCreate Profile\nEnglish (US)\nPortuguese (Brazil)\nSpanish (Latin America)\nSearch\nFilters\nReset\nCurrent Openings\nThe Candidate\nRoute at CMPC\nTips for\nyour CV\nAcknowledgments\nFollow us\nFollow us",
+      "title": "Current Openings - cmpcCMPC",
+      "candidates": [],
+      "public_social_links": [],
+      "source_published_at": null,
+      "blocked_requests": [
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5J8VG6Z",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://maps.googleapis.com/maps/api/js?key=AIzaSyDrTorpg6_LzW-5R_idZeAvi_HhCksQRJo&libraries=places",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://us.api.csod.com/rec-job-search/external/jobs",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/nunito/Nunito-Black.ttf",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/nunito/Nunito-Italic.ttf",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/nunito/Nunito-Regular.ttf",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/css/style.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://www.diezpalmeras.cl/labs/CMPC-BENEFICIOS/slider.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free.min.css?token=7ae5aaf9af",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free-v4-shims.min.css?token=7ae5aaf9af",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free-v5-font-face.min.css?token=7ae5aaf9af",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free-v4-font-face.min.css?token=7ae5aaf9af",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://www.skynettechnologies.com/add-ons/license-api.php",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/js/carousel.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/logo.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide2.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide3.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide4.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide5.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide6.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-02.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-03.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-04.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-05.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-06.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/conune.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/celulosa.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/Biopackaging.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/softys.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/ver-eng.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/ruta.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/Consejos.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/reconocimientos/activos/reconocimiento-01.jpg",
+          "reason": "publisher_not_allowed"
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://cmpc.csod.com/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "sha256": "90cfe6339dce22b807225baffbe0be39b591fcf8966240612919878542bcb397"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 5471,
+      "sha256": "ffe2a4a3ea0267c48639faa769bb1e3f5e99f125c703840e91a6d8c8ab945e5f"
+    }
+  ]
+}

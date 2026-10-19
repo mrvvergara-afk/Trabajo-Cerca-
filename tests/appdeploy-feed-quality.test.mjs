@@ -36,3 +36,9 @@ test('distinct reviewed municipal roles and community posts are preserved',()=>{
   }
   assert.equal(ctx.publicJobExclusion({kind:'worker_need',title:'Cosecheros'}),null);
 });
+
+test('an explicit comuna de Ercilla cannot be displayed as a workplace in Angol',()=>{
+  const item={kind:'job_offer',title:'Psicólogo/a Clínico - Comuna de Ercilla',url:standard,workCommunes:['Angol']};
+  assert.equal(ctx.publicJobExclusion(item),'workplace_conflicts_with_explicit_job_title');
+  assert.equal(ctx.publicJobExclusion({...item,workCommunes:['Ercilla']}),null);
+});

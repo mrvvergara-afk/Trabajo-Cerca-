@@ -14,6 +14,7 @@ from .document_queue_reader import restore_checkpoint, publish_evidence
 from .local_source_audit import discover, same_publisher
 from .public_document_http import PublicCapture, public_error
 from .observe_site_inventory import main as observe_inventory
+from .ssan_primary_index import parse_index
 
 ROOTS = [
     'https://www.munimulchen.cl/oferta-laboral-profesional-area-construccion-oficina-tecnica-mulchen/',
@@ -66,7 +67,10 @@ def capture_sources(output, *, fetcher=None, budget=None):
             row.update(html_sha256=capture.put(raw),http=status,text=page['text'],
                        source_published_at=page.get('source_published_at'),images=page['images'],
                        candidates=page['candidates'])
-            meta=metadata_address(raw,final)
+            if urllib.parse.urlsplit(final).hostname=='ssan.redsalud.gob.cl':
+                row['individual_notices']=parse_index(decode_public_html(raw),final,row['html_sha256'])
+                meta=None
+            else:meta=metadata_address(raw,final)
             if meta:
                 try:
                     data,address,mime,status=capture(meta,budget)

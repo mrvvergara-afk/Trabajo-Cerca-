@@ -40,6 +40,35 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  new-poster-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[new poster proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar OCR local gratuito
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y tesseract-ocr tesseract-ocr-spa
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Comprobar fechas por convocatoria antes de leer nuevas imágenes
+        run: python -m unittest tests.test_ssan_primary_index tests.test_primary_source_discovery -v
+      - name: Leer solo las dos imágenes nuevas enlazadas por sus páginas primarias
+        run: python -m scripts.new_poster_proof
+      - name: Conservar originales y lectura sin publicar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: new-poster-proof
+          path: output/new-poster-proof/
+          retention-days: 7
   feed-quality-proof:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

@@ -127,6 +127,9 @@ export function publicJobExclusion(item:Record<string,unknown>):string | null {
   if (/^(?:angol|lumaco|los sauces|traiguen|renaico|nacimiento|negrete|mulchen|collipulli|victoria|puren|ercilla|talca|temuco|pozo almonte|los angeles)\s*$/.test(title)) {
     return 'place_name_is_not_a_job_title';
   }
+  const explicit=title.match(/\bcomuna\s+(?:de\s+)?(los angeles|los sauces|angol|lumaco|traiguen|renaico|nacimiento|negrete|mulchen|collipulli|victoria|puren|ercilla|temuco)\b/)?.[1];
+  const recorded=Array.isArray(item.workCommunes) ? item.workCommunes.map(value=>String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()) : [];
+  if (explicit && !recorded.includes(explicit)) return 'workplace_conflicts_with_explicit_job_title';
   if (Array.isArray(item.workCommunes) && item.workCommunes.includes('Victoria')) {
     const stripped=title.replace(/victoria\s*[’'´`]?\s*s\s+secret/g,'').replace(/nueva\s+victoria/g,'');
     if (stripped!==title && !/\bvictoria\b/.test(stripped)) return 'brand_or_remote_site_is_not_victoria_commune';

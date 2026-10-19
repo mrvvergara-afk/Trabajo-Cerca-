@@ -40,6 +40,32 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  primary-source-discovery:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[primary source discovery]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probar la procedencia de fechas primarias
+        run: python -m unittest tests.test_primary_source_discovery -v
+      - name: Leer inventario actual y fuentes primarias sin OCR ni publicaciones
+        run: python -m scripts.primary_source_discovery
+      - name: Conservar capturas y comparación SDK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: primary-source-discovery
+          path: |
+            output/primary-source-discovery/
+            output/site-inventory/
+          retention-days: 7
   site-inventory-proof:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

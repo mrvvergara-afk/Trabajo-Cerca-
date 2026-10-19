@@ -8,6 +8,7 @@ except ImportError:
     from common import canonical_url
 
 LOCAL_PUBLISHERS = {
+    'ssan.redsalud.gob.cl':'Servicio de Salud Araucanía Norte',
     'noticias.angol.cl':'Municipalidad de Angol', 'munilumaco.cl':'Municipalidad de Lumaco',
     'munilossauces.cl':'Municipalidad de Los Sauces', 'mtraiguen.cl':'Municipalidad de Traiguén',
     'municipalidadrenaico.cl':'Municipalidad de Renaico', 'nacimiento.cl':'Municipalidad de Nacimiento',

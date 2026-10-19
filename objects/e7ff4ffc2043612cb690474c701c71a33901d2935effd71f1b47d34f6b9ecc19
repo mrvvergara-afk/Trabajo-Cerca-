@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Error</title>
+  </head>
+  <body>
+    <h1>Error</h1>
+    <p>no Route matched with those values.</p>
+    <p>request_id: 9836e14ddaf91108c432c3487d804f68</p>
+  </body>
+</html>

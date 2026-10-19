@@ -1,0 +1,535 @@
+{
+  "sources": [
+    {
+      "key": "cmpc",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "verified": false,
+      "published": 0,
+      "coverage_complete": false,
+      "http": 200,
+      "original_html_sha256": "6773cea0e67dbbd387768d2d8cefadbf463b7050a68fd7e2d806380eba4a972f",
+      "access": "rendered",
+      "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "html_file": "output/cmpc-public/cmpc.html",
+      "rendered_html_sha256": "a96059254de50621d1dc7a0f342c8832ae029202cbe31306c7afeef8fd84a0db",
+      "text_characters": 2839,
+      "text": "Skip to Main Content\n \nEnglish Version\nVersión en Español\nVersão Em Português\nAbout us\nJob opportunities\nInternship Program\n    \n    \n      \nSign In\nCreate Profile\nEnglish (US)\nPortuguese (Brazil)\nSpanish (Latin America)\nSearch\nFilters\nReset\nCountry\nChile (24)\nMexico (11)\nPeru (4)\nArgentina (3)\nState / Province\nRegion Del Biobio (8)\nJalisco (6)\nRegion Metropolitana (6)\nRegión De La Araucanía (3)\nRegión De Los Lagos (3)\nBuenos Aires (2)\nNuevo León (1)\nPuebla (1)\nRegion De La Araucanía (1)\nCity\nTlajomulco (6)\nSantiago (5)\nNacimiento (4)\nCollipulli (3)\nLaja (3)\nOsorno (3)\nZarate (2)\nChillán (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nQuilicura (1)\nSan Andres Cholula, Puebla (1)\nVilla Mininco (1)\nDate Posted\nWithin 1 day (4)\nWithin 3 days (4)\nWithin 7 days (15)\nWithin 15 days (19)\nWithin 30 days (24)\nAnytime (43)\nBusiness Unit\nCMPC Cellulose (10)\nCMPC BioPackaging (13)\nSoftys (15)\nEmpresas CMPC (5)\nCurrent Openings\n\nANALISTA GESTION CALIDAD\n\nTLAJOMULCO, JALISCO, Mexico\n\n10/19/2026\n\nPROGRAMADOR DE MANTENIMIENTO\n\nTLAJOMULCO, JALISCO, Mexico\n\n10/19/2026\n\nSUPERVISOR EMBARQUES Y PT\n\nTLAJOMULCO, JALISCO, Mexico\n\n10/19/2026\n\nJefe Unidad Mantención\n\nLaja, REGION DEL BIOBIO, Chile\n\n10/19/2026\n\nOperador/a logística (con experiencia en Grúa Horquilla) - Chillán\n\nChillán, REGION DEL BIOBIO, Chile\n\n10/16/2026\n\nPlanner de la Demanda\n\nPeru\n\n10/15/2026\n\nNombre del cargo - copy\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n10/15/2026\n\nNombre del cargo\n\nOsorno, REGIÓN DE LOS LAGOS, Chile\n\n10/14/2026\n\nIT Lead Senior\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/13/2026\n\nPrograma de Prácticas y Memorias 2027: \"Mi Primer Papel\"\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/13/2026\n\nSupervisor/a Eléctrico - Osorno\n\nOsorno, REGIÓN DE LOS LAGOS, Chile\n\n10/13/2026\n\nSupervisor/a Mecánico - Osorno\n\nOsorno, REGIÓN DE LOS LAGOS, Chile\n\n10/13/2026\n\nMotorista Turno - Puente Alto\n\nChile\n\n10/13/2026\n\nNombre del cargo - copy\n\nLaja, REGION DEL BIOBIO, Chile\n\n10/13/2026\n\nIngeniero/a Procesos y Excelencia Sr\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n10/13/2026\n\nNombre del cargo - copy\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n10/8/2026\n\nNombre del cargo\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/7/2026\n\nAnalista Vibraciones\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n10/6/2026\n\nInspector de Vibraciones\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n10/6/2026\n\nNombre del cargo\n\nChile\n\n10/2/2026\n\nNombre del cargo\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n9/29/2026\n\nNombre del cargo\n\nVilla Mininco, REGION DE LA ARAUCANÍA, Chile\n\n9/28/2026\n\nNombre del cargo - copy\n\nQuilicura, REGION METROPOLITANA, Chile\n\n9/22/2026\n\nSupervisor/a de Servicios Externos - Puente Alto\n\nChile\n\n9/21/2026\n\nSupervisor Servicio Limpieza Zona Norte\n\nSantiago, REGION METROPOLITANA, Chile\n\n9/4/2026\n\n12\nThe Candidate\nRoute at CMPC\nTips for\nyour CV\nAcknowledgments\nFollow us\nFollow us",
+      "title": "Current Openings - cmpcCMPC",
+      "candidates": [],
+      "public_social_links": [],
+      "source_published_at": null,
+      "public_job_api_responses": [
+        {
+          "url": "https://us.api.csod.com/rec-job-search/external/jobs",
+          "http": 200,
+          "sha256": "34f2ae0f483b7f0f031ef7e75566384f94a947d76ddb9b371abbb6dc49dae12c",
+          "bytes": 34968,
+          "jobs": [
+            {
+              "requisitionId": 19185,
+              "postingEffectiveDate": "10/19/2026",
+              "postingExpirationDate": "10/26/2026",
+              "displayJobTitle": "ANALISTA GESTION CALIDAD",
+              "locations": [
+                {
+                  "city": "TLAJOMULCO",
+                  "state": "JALISCO",
+                  "country": "MX"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19145,
+              "postingEffectiveDate": "10/19/2026",
+              "postingExpirationDate": "10/26/2026",
+              "displayJobTitle": "PROGRAMADOR DE MANTENIMIENTO",
+              "locations": [
+                {
+                  "city": "TLAJOMULCO",
+                  "state": "JALISCO",
+                  "country": "MX"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19144,
+              "postingEffectiveDate": "10/19/2026",
+              "postingExpirationDate": "10/26/2026",
+              "displayJobTitle": "SUPERVISOR EMBARQUES Y PT",
+              "locations": [
+                {
+                  "city": "TLAJOMULCO",
+                  "state": "JALISCO",
+                  "country": "MX"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19153,
+              "postingEffectiveDate": "10/19/2026",
+              "postingExpirationDate": "10/27/2026",
+              "displayJobTitle": "Jefe Unidad Mantención",
+              "locations": [
+                {
+                  "city": "Laja",
+                  "state": "REGION DEL BIOBIO",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19112,
+              "postingEffectiveDate": "10/16/2026",
+              "postingExpirationDate": "10/23/2026",
+              "displayJobTitle": "Operador/a logística (con experiencia en Grúa Horquilla) - Chillán",
+              "locations": [
+                {
+                  "city": "Chillán",
+                  "state": "REGION DEL BIOBIO",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19130,
+              "postingEffectiveDate": "10/15/2026",
+              "postingExpirationDate": "10/19/2026",
+              "displayJobTitle": "Planner de la Demanda",
+              "locations": [
+                {
+                  "country": "PE"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18106,
+              "postingEffectiveDate": "10/15/2026",
+              "postingExpirationDate": "10/20/2026",
+              "displayJobTitle": "Nombre del cargo - copy",
+              "locations": [
+                {
+                  "city": "Nacimiento",
+                  "state": "REGION DEL BIOBIO",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19095,
+              "postingEffectiveDate": "10/14/2026",
+              "postingExpirationDate": "10/31/2026",
+              "displayJobTitle": "Nombre del cargo",
+              "locations": [
+                {
+                  "city": "Osorno",
+                  "state": "REGIÓN DE LOS LAGOS",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19099,
+              "postingEffectiveDate": "10/13/2026",
+              "postingExpirationDate": "10/20/2026",
+              "displayJobTitle": "IT Lead Senior",
+              "locations": [
+                {
+                  "city": "Santiago",
+                  "state": "REGION METROPOLITANA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19080,
+              "postingEffectiveDate": "10/13/2026",
+              "postingExpirationDate": "3/31/2027",
+              "displayJobTitle": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
+              "locations": [
+                {
+                  "city": "Santiago",
+                  "state": "REGION METROPOLITANA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19108,
+              "postingEffectiveDate": "10/13/2026",
+              "postingExpirationDate": "10/20/2026",
+              "displayJobTitle": "Supervisor/a Eléctrico - Osorno",
+              "locations": [
+                {
+                  "city": "Osorno",
+                  "state": "REGIÓN DE LOS LAGOS",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19107,
+              "postingEffectiveDate": "10/13/2026",
+              "postingExpirationDate": "10/20/2026",
+              "displayJobTitle": "Supervisor/a Mecánico - Osorno",
+              "locations": [
+                {
+                  "city": "Osorno",
+                  "state": "REGIÓN DE LOS LAGOS",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19106,
+              "postingEffectiveDate": "10/13/2026",
+              "postingExpirationDate": "10/20/2026",
+              "displayJobTitle": "Motorista Turno - Puente Alto",
+              "locations": [
+                {
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19079,
+              "postingEffectiveDate": "10/13/2026",
+              "postingExpirationDate": "11/7/2026",
+              "displayJobTitle": "Nombre del cargo - copy",
+              "locations": [
+                {
+                  "city": "Laja",
+                  "state": "REGION DEL BIOBIO",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18859,
+              "postingEffectiveDate": "10/13/2026",
+              "postingExpirationDate": "1/9/2027",
+              "displayJobTitle": "Ingeniero/a Procesos y Excelencia Sr",
+              "locations": [
+                {
+                  "city": "Collipulli",
+                  "state": "REGIÓN DE LA ARAUCANÍA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18957,
+              "postingEffectiveDate": "10/8/2026",
+              "postingExpirationDate": "10/19/2026",
+              "displayJobTitle": "Nombre del cargo - copy",
+              "locations": [
+                {
+                  "city": "Collipulli",
+                  "state": "REGIÓN DE LA ARAUCANÍA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19066,
+              "postingEffectiveDate": "10/7/2026",
+              "postingExpirationDate": "10/31/2026",
+              "displayJobTitle": "Nombre del cargo",
+              "locations": [
+                {
+                  "city": "Santiago",
+                  "state": "REGION METROPOLITANA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18959,
+              "postingEffectiveDate": "10/6/2026",
+              "postingExpirationDate": "10/19/2026",
+              "displayJobTitle": "Analista Vibraciones",
+              "locations": [
+                {
+                  "city": "Collipulli",
+                  "state": "REGIÓN DE LA ARAUCANÍA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18943,
+              "postingEffectiveDate": "10/6/2026",
+              "postingExpirationDate": "10/20/2026",
+              "displayJobTitle": "Inspector de Vibraciones",
+              "locations": [
+                {
+                  "city": "Nacimiento",
+                  "state": "REGION DEL BIOBIO",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 19008,
+              "postingEffectiveDate": "10/2/2026",
+              "postingExpirationDate": "10/30/2026",
+              "displayJobTitle": "Nombre del cargo",
+              "locations": [
+                {
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18994,
+              "postingEffectiveDate": "9/29/2026",
+              "postingExpirationDate": "10/31/2026",
+              "displayJobTitle": "Nombre del cargo",
+              "locations": [
+                {
+                  "city": "Nacimiento",
+                  "state": "REGION DEL BIOBIO",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18949,
+              "postingEffectiveDate": "9/28/2026",
+              "postingExpirationDate": "10/28/2026",
+              "displayJobTitle": "Nombre del cargo",
+              "locations": [
+                {
+                  "city": "Villa Mininco",
+                  "state": "REGION DE LA ARAUCANÍA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18980,
+              "postingEffectiveDate": "9/22/2026",
+              "postingExpirationDate": "12/2/2026",
+              "displayJobTitle": "Nombre del cargo - copy",
+              "locations": [
+                {
+                  "city": "Quilicura",
+                  "state": "REGION METROPOLITANA",
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18835,
+              "postingEffectiveDate": "9/21/2026",
+              "postingExpirationDate": "10/21/2026",
+              "displayJobTitle": "Supervisor/a de Servicios Externos - Puente Alto",
+              "locations": [
+                {
+                  "country": "CL"
+                }
+              ]
+            },
+            {
+              "requisitionId": 18822,
+              "postingEffectiveDate": "9/4/2026",
+              "postingExpirationDate": "10/21/2026",
+              "displayJobTitle": "Supervisor Servicio Limpieza Zona Norte",
+              "locations": [
+                {
+                  "city": "Santiago",
+                  "state": "REGION METROPOLITANA",
+                  "country": "CL"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "blocked_requests": [
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5J8VG6Z",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://maps.googleapis.com/maps/api/js?key=%5Bredacted%5D&libraries=places",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/nunito/Nunito-Black.ttf",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/nunito/Nunito-Italic.ttf",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/nunito/Nunito-Regular.ttf",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/css/style.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://www.diezpalmeras.cl/labs/CMPC-BENEFICIOS/slider.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free.min.css?token=%5Bredacted%5D",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free-v4-shims.min.css?token=%5Bredacted%5D",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free-v5-font-face.min.css?token=%5Bredacted%5D",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://ka-f.fontawesome.com/releases/v6.4.2/css/free-v4-font-face.min.css?token=%5Bredacted%5D",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://www.skynettechnologies.com/add-ons/license-api.php",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/js/carousel.js",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/logo.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide2.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide3.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide4.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide5.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide6.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-02.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-03.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-04.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-05.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/slide-mobile-06.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/conune.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/celulosa.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/Biopackaging.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/softys.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img-eng/ver-eng.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/ruta.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/Consejos.png",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/reconocimientos/activos/reconocimiento-01.jpg",
+          "reason": "publisher_not_allowed"
+        },
+        {
+          "url": "https://carreras.diezpalmeras.cl/cmpc/img/reconocimientos/activos/reconocimiento-02.jpg",
+          "reason": "publisher_not_allowed"
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://cmpc.csod.com/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "sha256": "90cfe6339dce22b807225baffbe0be39b591fcf8966240612919878542bcb397"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 5471,
+      "sha256": "6773cea0e67dbbd387768d2d8cefadbf463b7050a68fd7e2d806380eba4a972f"
+    },
+    {
+      "url": "https://us.api.csod.com/robots.txt",
+      "status": 404,
+      "mime": "text/html",
+      "sha256": "e7ff4ffc2043612cb690474c701c71a33901d2935effd71f1b47d34f6b9ecc19"
+    }
+  ]
+}

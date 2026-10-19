@@ -206,3 +206,11 @@ Código de esta tanda: 8b017ec22565f73be8898f4df15e30a8c7197f0c,
 5171ad3650900bae2734aa36207e16d8804278aa y
 1126b611f3adfa44cdbeded08cb6375b06420c0d.
 Main se comprobó sin cambios en fab392b824e4100a4bba6dfe9289825297d24707.
+
+## Aclaración posterior del inventario visible
+
+La comprobación de las 09:25 corrigió el recorrido completo del feed: antes
+se detenía al encontrar los tres IDs. Confirmó 15 tarjetas en la primera
+carga y los tres cargos de Traiguén presentes. El total bruto del SDK incluye
+registros heredados de calidad pendiente y no se presenta como nuevas vacantes.
+Véase [evaluación en la página](evaluacion-inventario-visible-2026-10-19.md).

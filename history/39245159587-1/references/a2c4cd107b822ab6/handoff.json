@@ -1,0 +1,14 @@
+{
+  "schema": "trabajo-cerca.radar-v2-handoff.v1",
+  "checked_at": "2026-10-19T11:31:42.975666+00:00",
+  "pilot_verified_candidates": 0,
+  "batch_records": 0,
+  "reviewed_document_candidates": 0,
+  "source_urls": [],
+  "blocked": [],
+  "paid_provider_calls": 0,
+  "published": 0,
+  "publication_confirmed": false,
+  "social_capture_proven": false,
+  "coverage_complete": false
+}

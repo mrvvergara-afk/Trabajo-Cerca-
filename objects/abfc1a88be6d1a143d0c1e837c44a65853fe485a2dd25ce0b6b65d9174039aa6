@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8" data-next-head=""/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" data-next-head=""/><title data-next-head="">Municipalidad Los Sauces</title><meta name="description" content="Municipalidad Los Sauces" data-next-head=""/><link rel="icon" href="https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6ImxpZ3VwL21lZGlhLzc5OTU1X2dydXBvXzgwNDMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MCwiaGVpZ2h0Ijo0MCwiZml0IjoiY292ZXIifSwicm90YXRlIjpudWxsfX0=" sizes="32x32" data-next-head=""/><link rel="preload" href="/_next/static/chunks/29zwpok9-9r6z.css" as="style"/><link rel="preload" href="/_next/static/chunks/39enw3kxuyhtf.css" as="style"/><link rel="preload" href="/_next/static/chunks/0jlj6xjlo146m.css" as="style"/><link rel="preload" href="/_next/static/chunks/2x29npldu7v35.css" as="style"/><link rel="stylesheet" href="/_next/static/chunks/29zwpok9-9r6z.css" data-n-g=""/><link rel="stylesheet" href="/_next/static/chunks/39enw3kxuyhtf.css" data-n-g=""/><link rel="stylesheet" href="/_next/static/chunks/0jlj6xjlo146m.css" data-n-g=""/><link rel="stylesheet" href="/_next/static/chunks/2x29npldu7v35.css" data-n-g=""/><noscript data-n-css=""></noscript><script src="/_next/static/chunks/2k2s_zjzxjs-c.js" defer=""></script><script src="/_next/static/chunks/1yogtx555gslh.js" defer=""></script><script src="/_next/static/chunks/1bjzgw_k9jfot.js" defer=""></script><script src="/_next/static/chunks/1tqe6qyu1hmsv.js" defer=""></script><script src="/_next/static/chunks/0bn87eqkjj-e3.js" defer=""></script><script src="/_next/static/chunks/2a452c33qto00.js" defer=""></script><script src="/_next/static/chunks/0twvtlzy5daho.js" defer=""></script><script src="/_next/static/chunks/40c1n58hli8z_.js" defer=""></script><script src="/_next/static/chunks/348ev_z0z11-4.js" defer=""></script><script src="/_next/static/chunks/21js6die-ufzm.js" defer=""></script><script src="/_next/static/chunks/3qckb9t5ugkcx.js" defer=""></script><script src="/_next/static/chunks/0eogmmj0z3dh-.js" defer=""></script><script src="/_next/static/chunks/39s4nrd2owt0x.js" defer=""></script><script src="/_next/static/chunks/2dq_rou66vqgj.js" defer=""></script><script src="/_next/static/chunks/turbopack-02oi4udv2kgwb.js" defer=""></script><script src="/_next/static/chunks/1_t7fgnq2jtqg.js" defer=""></script><script src="/_next/static/chunks/42z8ne4cm4fp_.js" defer=""></script><script src="/_next/static/chunks/2pbb_-jakdobc.js" defer=""></script><script src="/_next/static/chunks/turbopack-21l0giks8aq6e.js" defer=""></script><script src="/_next/static/Lwvg4qa7TacMzZcda5DW2/_buildManifest.js" defer=""></script><script src="/_next/static/Lwvg4qa7TacMzZcda5DW2/_ssgManifest.js" defer=""></script><script src="/_next/static/Lwvg4qa7TacMzZcda5DW2/_clientMiddlewareManifest.js" defer=""></script><style data-styled="" data-styled-version="6.5.3">:root{--primary-color:#0185CA;--secondary-color:#03873C;--accent-color:#03873C;--full-height:100vh;--full-height:100dvh;}/*!sc*/
+@layer base{a,a:hover{color:#03873C;}}/*!sc*/
+.theme--Header{background-color:#FFF;}/*!sc*/
+.theme--Navbar{background-color:#0185CA;}/*!sc*/
+.theme--Navbar__item>a{color:#FFF;}/*!sc*/
+.theme--Navbar__item>a:hover:after{content:"";width:100%;height:4px;position:absolute;bottom:-10px;left:0;display:block;background-color:#03873C;}/*!sc*/
+.theme--Submenu__item,.theme--Submenu__item:hover{color:#0185CA;}/*!sc*/
+.theme--Footer{background-color:#FFF;}/*!sc*/
+.theme--Footer__item-text,.theme--Footer__item-text a{color:#03873C;}/*!sc*/
+input[type='radio']{accent-color:#0185CA;}/*!sc*/
+data-styled.g2[id="sc-global-cHHVuH"]{content:"sc-global-cHHVuH1,"}/*!sc*/
+</style></head><body><link rel="preload" as="image" href="./images/loading-icon.gif"/><link rel="preload" as="image" href="https://ligup-v2.s3-sa-east-1.amazonaws.com/general/post_footer/logoligup.png"/><div id="__next"><style id="customer-appearance-css" data-customer-appearance="true">
+body {
+padding-top:0;
+}
+
+.footer {
+padding-top: 0;
+padding-bottom: 0;
+}
+
+
+.mainHeader header .container .mainHeader-logo a img {
+    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/munilossauces/media/logo-header.png);
+    height: 60px;
+}
+
+.hamburgerMenu header .hamburgerMenu-logo img {
+    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/munilossauces/media/logo-header.png);
+}
+
+.mainHeader .mainHeader-menu,
+.hamburgerMenu .hamburgerMenuContent {
+border:0;
+background-color: #0185CA;
+}
+
+.navTabs-anchor:not(.navTabs-anchor--championshipMenuButton), .navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor:not(.navTabs-anchor--championshipMenuButton), .navbar-default .navbar-nav > li:not(.navTabs-item--championshipMenu) > a:hover, .navbar-default .navbar-nav > li:not(.navTabs-item--championshipMenu) > a:focus, .hamburgerMenu .hamburgerMenuContent nav > ul li a, .hamburgerMenu .hamburgerMenuContent .hamburgerMenuContent-socialNetwork i {
+    color: #FFF !important;
+}
+
+.hamburgerMenu header .hamburgerMenu-control {
+color: #8F1313;
+}
+
+.navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor:after {
+    background: #8F1313 !important;
+}
+
+.hamburgerMenu .hamburgerMenuContent nav > ul li {
+border-color: #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+.autogen_widget_1508_style--bgConfig { background-color: #F7F7F7; }
+
+
+
+
+
+
+
+
+
+
+.autogen_widget_1473_style--bgConfig { background-color: #FFFFFF; }
+
+
+
+.autogen_widget_1475_style--bgConfig { background-color: #0185CA; color: #FFFFFF;}
+
+.autogen_widget_1475_style--text { color: #FFFFFF; border-color: #FFFFFF; }
+.autogen_widget_1475_style--text:hover { color: #FFFFFF; }
+.autogen_widget_1475_style--titleNav-title { display: inline-block; margin: 10px; }
+.autogen_widget_1472_style--bgConfig { background-color: #FFFFFF; }
+
+
+
+
+
+
+
+
+
+.autogen_widget_1474_style--bgConfig { background-color: #FFFFFF; }</style><div class="Layout__Layout Layout-module-scss-module__rGjB5a__Layout  "><main class="Layout__Layout Layout__Layout__content Layout-module-scss-module__rGjB5a__Layout__content Layout_Layout_"><section class="ui-bg-gray Page ui-relative NewsPage"><section class="Container ui-margin-b-md"><div><img width="60" src="./images/loading-icon.gif" alt="Loading"/></div><div class="ui-padding-t-lg"><div class="Grid__Grid Grid__Grid-xs--1-columns Grid__Grid-sm--1-columns Grid__Grid-md--2-columns Grid__Grid-lg--4-columns Grid__Grid-xl--4-columns Grid-module-scss-module__0JmOaG__Grid Grid-module-scss-module__0JmOaG__Grid-xs--1-columns Grid-module-scss-module__0JmOaG__Grid-sm--1-columns Grid-module-scss-module__0JmOaG__Grid-md--2-columns Grid-module-scss-module__0JmOaG__Grid-lg--4-columns Grid-module-scss-module__0JmOaG__Grid-xl--4-columns"></div></div></section></section></main><footer class="Footer-module-scss-module__wcgw9G__Footer--customFooter theme--Footer" style="display:none"><div class="Footer-module-scss-module__wcgw9G__Footer--basicFooter Footer--basicFooter Container"><div class="Grid__Grid Grid__Grid-xs--gap-xs Grid__Grid-lg--3-columns Grid-module-scss-module__0JmOaG__Grid Grid-module-scss-module__0JmOaG__Grid-xs--gap-xs Grid-module-scss-module__0JmOaG__Grid-lg--3-columns"><div class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__logo Footer--basicFooter__logo"></div><div class="Grid__Grid Footer-module-scss-module__wcgw9G__Footer--basicFooter__menu-columns Grid-module-scss-module__0JmOaG__Grid"></div><div class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn"><ul class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__social ui-padding-l-0 ui-margin-t-0"></ul><div><p class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn__item ui-margin-t-0"></p><p class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn__item ui-margin-t-0"></p><p class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn__item ui-margin-t-0"></p></div></div></div></div><section class="Footer-module-scss-module__wcgw9G__Footer--customFooter__underFooter Footer--customFooter__underFooter"><div class="Container"><a target="_blank" href="https://ligup.com"><img src="https://ligup-v2.s3-sa-east-1.amazonaws.com/general/post_footer/logoligup.png"/></a></div></section></footer></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{},"globalBootstrap":{"globalInfo":{"data":{"id":265,"name":"Municipalidad Los Sauces","country_id":40,"subdomain":"munilossauces","externalURL":"munilossauces.cl","ssl":1,"enabled":1,"access_status":"enabled","access_status_changed_at":null,"customer_template_id":2,"plan_id":1,"logo":"ligup/media/79955_grupo_8043.png","mobile_logo":"ligup/media/52891_grupo_8043.png","app_visible":0,"deleted_at":null,"created_at":"2024-01-18 07:04:31","updated_at":"2024-12-16 06:47:53","template":{"id":2,"name":"Extended","type":"extended"},"schema":null,"analytics_code":"G-LJ4PRBL5DB","facebook_url":"https://www.facebook.com/MuniLosSauces?ref=embed_page","instagram_url":"https://www.instagram.com/munilossauces?igsh=MXh5MXdtd3k0YWF1MA==","default_latitude":"-37.98302","default_longitude":"-72.83168","recaptcha_tag":"Ligup-v2-Captcha-Unlimited","is_front_react":"1","map_enabled":"1"},"error":""},"appearance":{"data":{"schema":"[{\"vOrder\":1,\"backgroundColor\":null,\"backgroundImage\":null,\"color\":null,\"fullWidth\":true,\"class\":\"container-fluid fullWidthSlider--small\",\"children\":[{\"name\":\"carousel\",\"colSize\":12,\"hOrder\":1,\"options\":{\"horizontal\":false,\"autoplay\":false,\"elementsCount\":6}}]},{\"vOrder\":2,\"backgroundColor\":\"#FFFFFF\",\"backgroundImage\":null,\"fullWidth\":false,\"color\":\"\",\"class\":\"\",\"children\":[{\"name\":\"client_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"widgetId\":1472}}]},{\"vOrder\":3,\"backgroundColor\":\"#F7F7F7\",\"backgroundImage\":null,\"color\":null,\"fullWidth\":false,\"class\":\"containerSection indexActivitiesEmphasizedBackground\",\"children\":[{\"name\":\"news_grid\",\"colSize\":9,\"hOrder\":1,\"options\":{\"showTitle\":true,\"title\":\"Noticias Generales\",\"viewMore\":true,\"elementsCount\":3,\"xlColumns\":1,\"lgColumns\":1,\"mdColumns\":1,\"smColumns\":1,\"xsColumns\":1,\"horizontalCards\":true}},{\"name\":\"client_widget\",\"colSize\":3,\"hOrder\":1,\"options\":{\"widgetId\":1508}}]},{\"vOrder\":4,\"backgroundColor\":\"#FFFFFF\",\"backgroundImage\":null,\"fullWidth\":false,\"color\":\"\",\"class\":\"\",\"children\":[{\"name\":\"client_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"widgetId\":1474}}]},{\"vOrder\":5,\"backgroundColor\":null,\"backgroundImage\":null,\"color\":null,\"fullWidth\":false,\"class\":\"containerSection indexVideosBg\",\"children\":[{\"name\":\"videos_grid\",\"colSize\":12,\"hOrder\":1,\"options\":{\"showTitle\":true,\"title\":\"Videos\",\"viewMore\":true,\"elementsCount\":3,\"gridStyle\":1,\"xlColumns\":3,\"lgColumns\":3,\"mdColumns\":3,\"smColumns\":3,\"xsColumns\":1}}]},{\"vOrder\":6,\"backgroundColor\":\"#FFFFFF\",\"backgroundImage\":null,\"fullWidth\":false,\"color\":\"\",\"class\":\"\",\"children\":[{\"name\":\"client_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"widgetId\":1473}}]},{\"vOrder\":7,\"backgroundColor\":null,\"backgroundImage\":null,\"color\":null,\"fullWidth\":false,\"class\":\"container-fluid customGallery\",\"children\":[{\"name\":\"gallery_top_principal_album\",\"colSize\":12,\"hOrder\":1,\"options\":{\"showTitle\":true,\"title\":\"Galer\\u00edas\",\"viewMore\":true,\"elementsCount\":3}}]}]","css":"\r\nbody {\r\npadding-top:0;\r\n}\r\n\r\n.footer {\r\npadding-top: 0;\r\npadding-bottom: 0;\r\n}\r\n\r\n\r\n.mainHeader header .container .mainHeader-logo a img {\r\n    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/munilossauces/media/logo-header.png);\r\n    height: 60px;\r\n}\r\n\r\n.hamburgerMenu header .hamburgerMenu-logo img {\r\n    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/munilossauces/media/logo-header.png);\r\n}\r\n\r\n.mainHeader .mainHeader-menu,\r\n.hamburgerMenu .hamburgerMenuContent {\r\nborder:0;\r\nbackground-color: #0185CA;\r\n}\r\n\r\n.navTabs-anchor:not(.navTabs-anchor--championshipMenuButton), .navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor:not(.navTabs-anchor--championshipMenuButton), .navbar-default .navbar-nav \u003e li:not(.navTabs-item--championshipMenu) \u003e a:hover, .navbar-default .navbar-nav \u003e li:not(.navTabs-item--championshipMenu) \u003e a:focus, .hamburgerMenu .hamburgerMenuContent nav \u003e ul li a, .hamburgerMenu .hamburgerMenuContent .hamburgerMenuContent-socialNetwork i {\r\n    color: #FFF !important;\r\n}\r\n\r\n.hamburgerMenu header .hamburgerMenu-control {\r\ncolor: #8F1313;\r\n}\r\n\r\n.navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor:after {\r\n    background: #8F1313 !important;\r\n}\r\n\r\n.hamburgerMenu .hamburgerMenuContent nav \u003e ul li {\r\nborder-color: #FFF;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.autogen_widget_1508_style--bgConfig { background-color: #F7F7F7; }\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.autogen_widget_1473_style--bgConfig { background-color: #FFFFFF; }\r\n\r\n\r\n\r\n.autogen_widget_1475_style--bgConfig { background-color: #0185CA; color: #FFFFFF;}\r\n\r\n.autogen_widget_1475_style--text { color: #FFFFFF; border-color: #FFFFFF; }\r\n.autogen_widget_1475_style--text:hover { color: #FFFFFF; }\r\n.autogen_widget_1475_style--titleNav-title { display: inline-block; margin: 10px; }\n.autogen_widget_1472_style--bgConfig { background-color: #FFFFFF; }\n\n\n\n\n\n\n\n\n\n.autogen_widget_1474_style--bgConfig { background-color: #FFFFFF; }","color_palette":{"colors":{"primary":"#0185CA","secondary":"#03873C","accent":"#03873C"}},"use_home_schema":"1"},"error":""}}},"page":"/noticias","query":{},"buildId":"Lwvg4qa7TacMzZcda5DW2","isFallback":false,"isExperimentalCompile":false,"appGip":true,"scriptLoader":[]}</script></body></html>

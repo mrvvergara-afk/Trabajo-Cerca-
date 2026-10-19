@@ -1,0 +1,240 @@
+{
+  "schema": "trabajo-cerca.public-document-reference-proof.v1",
+  "checked_at": "2026-10-19T11:31:42.975666+00:00",
+  "source_url": "https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/",
+  "source_name": "Municipalidad de Mulchén",
+  "requests": [
+    {
+      "url": "https://www.munimulchen.cl/robots.txt",
+      "status": 200,
+      "file": "robots-57afa026174e.txt",
+      "sha256": "72d53bffe3c32924b8766cc96917e7d90da568353f1f1ff10d091fdaf45ca1bb"
+    },
+    {
+      "url": "https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/",
+      "final_url": "https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 47404,
+      "sha256": "06125d0a2d4cb11539d2720ed68f72cbcbbce12584f0294ad44f84f611def02d"
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png",
+      "final_url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 20370,
+      "sha256": "43fe5354f5e97b31d5e78968c9b5d1f0df80667e1dd18d955728c25b8566f2d5"
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+      "final_url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 4181,
+      "sha256": "52c8073fa6570d96185c58b535efbcb761afe7bd9b3f84e66dccee351ad002ba"
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+      "final_url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 4921,
+      "sha256": "c9dc7d90abb20636fc39c397d088417ac4f3ab98e59e85de3108596c63ddeb56"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png",
+      "sha256": "43fe5354f5e97b31d5e78968c9b5d1f0df80667e1dd18d955728c25b8566f2d5",
+      "status": "downloaded",
+      "reason": null,
+      "bytes": 20370,
+      "page_count": 1,
+      "pages": [
+        {
+          "page": 1,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": 62.4,
+          "characters": 30,
+          "text_object_sha256": "088becf77ee1a8af8d82128b2b98b9bef345e7bf815a7f8ebbe10c626cb48f29",
+          "alternate_readings": []
+        }
+      ]
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+      "sha256": "52c8073fa6570d96185c58b535efbcb761afe7bd9b3f84e66dccee351ad002ba",
+      "status": "downloaded",
+      "reason": null,
+      "bytes": 4181,
+      "page_count": 1,
+      "pages": [
+        {
+          "page": 1,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": 42.1,
+          "characters": 3,
+          "text_object_sha256": "60f9560307224f52804b10eca698005e8584e54f2ae9e415b9ce33ce00cbbd80",
+          "alternate_readings": []
+        }
+      ]
+    },
+    {
+      "url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+      "sha256": "c9dc7d90abb20636fc39c397d088417ac4f3ab98e59e85de3108596c63ddeb56",
+      "status": "downloaded",
+      "reason": null,
+      "bytes": 4921,
+      "page_count": 1,
+      "pages": [
+        {
+          "page": 1,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": null,
+          "characters": 0,
+          "text_object_sha256": "dea1c2b37496d8dd60c91cba733c4f6a6476d7d4af7c17cd16cadea6728cd416",
+          "alternate_readings": []
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "jobs": 10,
+    "runs": 1,
+    "observed_days": 1,
+    "attempts": 10,
+    "observations": 10,
+    "objects": 8,
+    "statuses": {
+      "done": 10
+    }
+  },
+  "evaluations": [
+    {
+      "archive": "43fe5354f5e97b31d5e78968c9b5d1f0df80667e1dd18d955728c25b8566f2d5",
+      "reason": "job_notice_unconfirmed",
+      "status": "pending"
+    },
+    {
+      "archive": "c9dc7d90abb20636fc39c397d088417ac4f3ab98e59e85de3108596c63ddeb56",
+      "reason": "job_notice_unconfirmed",
+      "status": "pending"
+    },
+    {
+      "archive": "52c8073fa6570d96185c58b535efbcb761afe7bd9b3f84e66dccee351ad002ba",
+      "reason": "job_notice_unconfirmed",
+      "status": "pending"
+    }
+  ],
+  "document_reviews": [],
+  "persistence_check": {
+    "snapshot_restored": true,
+    "counts_preserved": true,
+    "review_objects_preserved": 0,
+    "archive_original_bytes": 78017,
+    "sqlite_sha256": "0a2c18c595ba65b5163516a5640bb1bb9e8bf5bce7129c2c6e7f358483e17d72"
+  },
+  "review_preview": "review-preview.html",
+  "review_queue": [
+    {
+      "task_id": "2cd823203e3839c7ddd8955250a87f4110bd15c9d334906dd33fbfacf0f99fae",
+      "source_key": "document-reference",
+      "source_url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/certificacion-medioambiente.png",
+      "reason": "job_notice_unconfirmed",
+      "fresh_evidence": true,
+      "missing_fields": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "review_blockers": [],
+      "role": null,
+      "company": null,
+      "work_communes": [],
+      "original_date": null,
+      "contact_present": false,
+      "original_sha256": "43fe5354f5e97b31d5e78968c9b5d1f0df80667e1dd18d955728c25b8566f2d5",
+      "document_review_sha256": null,
+      "review_notice_count": 0,
+      "publication_confirmed": false
+    },
+    {
+      "task_id": "494a4bc3baaa0efd90f6d0cca15219e4ae7d345c64ec85c25251f82ebbe7ba2f",
+      "source_key": "document-reference",
+      "source_url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/instagram.png",
+      "reason": "job_notice_unconfirmed",
+      "fresh_evidence": true,
+      "missing_fields": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "review_blockers": [],
+      "role": null,
+      "company": null,
+      "work_communes": [],
+      "original_date": null,
+      "contact_present": false,
+      "original_sha256": "c9dc7d90abb20636fc39c397d088417ac4f3ab98e59e85de3108596c63ddeb56",
+      "document_review_sha256": null,
+      "review_notice_count": 0,
+      "publication_confirmed": false
+    },
+    {
+      "task_id": "a1f40acd0cefd9bdc22fe41c9127b773127fc1def9de62459bba133cc69061b7",
+      "source_key": "document-reference",
+      "source_url": "https://www.munimulchen.cl/wp-content/themes/mulchen/imagenes/redes-sociales/facebook.png",
+      "reason": "job_notice_unconfirmed",
+      "fresh_evidence": true,
+      "missing_fields": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "review_blockers": [],
+      "role": null,
+      "company": null,
+      "work_communes": [],
+      "original_date": null,
+      "contact_present": false,
+      "original_sha256": "52c8073fa6570d96185c58b535efbcb761afe7bd9b3f84e66dccee351ad002ba",
+      "document_review_sha256": null,
+      "review_notice_count": 0,
+      "publication_confirmed": false
+    }
+  ],
+  "local_handoff_ready": 0,
+  "handoff": {
+    "schema": "trabajo-cerca.radar-v2-handoff.v1",
+    "checked_at": "2026-10-19T11:31:42.975666+00:00",
+    "pilot_verified_candidates": 0,
+    "batch_records": 0,
+    "reviewed_document_candidates": 0,
+    "source_urls": [],
+    "blocked": [],
+    "paid_provider_calls": 0,
+    "published": 0,
+    "publication_confirmed": false,
+    "social_capture_proven": false,
+    "coverage_complete": false
+  },
+  "max_work": 40,
+  "coverage_complete": false,
+  "publication_confirmed": false,
+  "production_modified": false,
+  "paid_provider_calls": 0,
+  "published": 0
+}

@@ -1,0 +1,186 @@
+{
+  "sources": [
+    {
+      "key": "los-sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "verified": false,
+      "published": 0,
+      "coverage_complete": false,
+      "http": 200,
+      "original_html_sha256": "abfc1a88be6d1a143d0c1e837c44a65853fe485a2dd25ce0b6b65d9174039aa6",
+      "access": "rendered_content_unavailable",
+      "final_url": "https://www.munilossauces.cl/noticias",
+      "html_file": "output/document-reader/rendered/los-sauces.html",
+      "rendered_html_sha256": "2eae593088db909344834c2656d74cfc97ed3d31b351b251eb969d2a38791566",
+      "text_characters": 0,
+      "title": "Municipalidad Los Sauces",
+      "candidates": [],
+      "public_social_links": [],
+      "source_published_at": null,
+      "blocked_requests": [
+        {
+          "url": "https://ligup-v2.s3-sa-east-1.amazonaws.com/general/post_footer/logoligup.png",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/rubik/v28/iJWKBXyIfDnIV7nBrXw.woff2",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://connect.facebook.net/en_US/sdk.js",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/news?emphasized=true&page_size=4",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/news?page=1&page_size=16",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/widgets/footer",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/navigation",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/countries/administrative_areas/one",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6ImxpZ3VwL21lZGlhLzc5OTU1X2dydXBvXzgwNDMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MCwiaGVpZ2h0Ijo0MCwiZml0IjoiY292ZXIifSwicm90YXRlIjpudWxsfX0=",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/customer_metadatas/has_accesibility_helper",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/public/services/custom_javascripts",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-LJ4PRBL5DB",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.munilossauces.cl/api/v3/widgets/header",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6ImxpZ3VwL21lZGlhLzc5OTU1X2dydXBvXzgwNDMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAwLCJoZWlnaHQiOjIwMDAsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGx9fQ==",
+          "reason": "ValueError"
+        }
+      ]
+    },
+    {
+      "key": "nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "verified": false,
+      "published": 0,
+      "coverage_complete": false,
+      "http": 200,
+      "original_html_sha256": "f6e0e028fcddb60cb6fbc24ce33c98f1e724b47df36d30328a1acc8ab451ee76",
+      "access": "rendered_content_unavailable",
+      "final_url": "https://www.nacimiento.cl/noticias",
+      "html_file": "output/document-reader/rendered/nacimiento.html",
+      "rendered_html_sha256": "bc9a890690100555152db1003eb6588826195b1c49a616c363915c1fd5d52fa0",
+      "text_characters": 0,
+      "title": "Nacimiento",
+      "candidates": [],
+      "public_social_links": [],
+      "source_published_at": null,
+      "blocked_requests": [
+        {
+          "url": "https://ligup-v2.s3-sa-east-1.amazonaws.com/general/post_footer/logoligup.png",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/rubik/v28/iJWKBXyIfDnIV7nBrXw.woff2",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://connect.facebook.net/en_US/sdk.js",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/news?emphasized=true&page_size=4",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/news?page=1&page_size=16",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/widgets/footer",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6ImxpZ3VwL21lZGlhLzU3ODk5X2xvZ29fbmFjaW1pZW50by5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwLCJoZWlnaHQiOjQwLCJmaXQiOiJjb3ZlciJ9LCJyb3RhdGUiOm51bGx9fQ==",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/navigation",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/countries/administrative_areas/one",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/customer_metadatas/has_accesibility_helper",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/public/services/custom_javascripts",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-TQSY83DRGW",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://www.nacimiento.cl/api/v3/widgets/header",
+          "reason": "ValueError"
+        },
+        {
+          "url": "https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6ImxpZ3VwL21lZGlhLzU3ODk5X2xvZ29fbmFjaW1pZW50by5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMDAsImhlaWdodCI6MjAwMCwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbH19",
+          "reason": "ValueError"
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://www.munilossauces.cl/robots.txt",
+      "status": 200,
+      "sha256": "a441efba2b43cee9bf71ad08d1d59fb2605c7d518afc07942dcb7473226bbd06"
+    },
+    {
+      "url": "https://www.munilossauces.cl/noticias",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 14063,
+      "sha256": "abfc1a88be6d1a143d0c1e837c44a65853fe485a2dd25ce0b6b65d9174039aa6"
+    },
+    {
+      "url": "https://www.nacimiento.cl/robots.txt",
+      "status": 200,
+      "sha256": "a441efba2b43cee9bf71ad08d1d59fb2605c7d518afc07942dcb7473226bbd06"
+    },
+    {
+      "url": "https://www.nacimiento.cl/noticias",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 51365,
+      "sha256": "f6e0e028fcddb60cb6fbc24ce33c98f1e724b47df36d30328a1acc8ab451ee76"
+    }
+  ]
+}

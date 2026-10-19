@@ -1,0 +1,833 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8" data-next-head=""/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" data-next-head=""/><title data-next-head="">Nacimiento</title><meta name="description" content="Nacimiento" data-next-head=""/><link rel="icon" href="https://images.ligup2.com/eyJidWNrZXQiOiJsaWd1cC12MiIsImtleSI6ImxpZ3VwL21lZGlhLzU3ODk5X2xvZ29fbmFjaW1pZW50by5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwLCJoZWlnaHQiOjQwLCJmaXQiOiJjb3ZlciJ9LCJyb3RhdGUiOm51bGx9fQ==" sizes="32x32" data-next-head=""/><link rel="preload" href="/_next/static/chunks/29zwpok9-9r6z.css" as="style"/><link rel="preload" href="/_next/static/chunks/39enw3kxuyhtf.css" as="style"/><link rel="preload" href="/_next/static/chunks/0jlj6xjlo146m.css" as="style"/><link rel="preload" href="/_next/static/chunks/2x29npldu7v35.css" as="style"/><link rel="stylesheet" href="/_next/static/chunks/29zwpok9-9r6z.css" data-n-g=""/><link rel="stylesheet" href="/_next/static/chunks/39enw3kxuyhtf.css" data-n-g=""/><link rel="stylesheet" href="/_next/static/chunks/0jlj6xjlo146m.css" data-n-g=""/><link rel="stylesheet" href="/_next/static/chunks/2x29npldu7v35.css" data-n-g=""/><noscript data-n-css=""></noscript><script src="/_next/static/chunks/2k2s_zjzxjs-c.js" defer=""></script><script src="/_next/static/chunks/1yogtx555gslh.js" defer=""></script><script src="/_next/static/chunks/1bjzgw_k9jfot.js" defer=""></script><script src="/_next/static/chunks/1tqe6qyu1hmsv.js" defer=""></script><script src="/_next/static/chunks/0bn87eqkjj-e3.js" defer=""></script><script src="/_next/static/chunks/2a452c33qto00.js" defer=""></script><script src="/_next/static/chunks/0twvtlzy5daho.js" defer=""></script><script src="/_next/static/chunks/40c1n58hli8z_.js" defer=""></script><script src="/_next/static/chunks/348ev_z0z11-4.js" defer=""></script><script src="/_next/static/chunks/21js6die-ufzm.js" defer=""></script><script src="/_next/static/chunks/3qckb9t5ugkcx.js" defer=""></script><script src="/_next/static/chunks/0eogmmj0z3dh-.js" defer=""></script><script src="/_next/static/chunks/39s4nrd2owt0x.js" defer=""></script><script src="/_next/static/chunks/2dq_rou66vqgj.js" defer=""></script><script src="/_next/static/chunks/turbopack-02oi4udv2kgwb.js" defer=""></script><script src="/_next/static/chunks/1_t7fgnq2jtqg.js" defer=""></script><script src="/_next/static/chunks/42z8ne4cm4fp_.js" defer=""></script><script src="/_next/static/chunks/2pbb_-jakdobc.js" defer=""></script><script src="/_next/static/chunks/turbopack-21l0giks8aq6e.js" defer=""></script><script src="/_next/static/Lwvg4qa7TacMzZcda5DW2/_buildManifest.js" defer=""></script><script src="/_next/static/Lwvg4qa7TacMzZcda5DW2/_ssgManifest.js" defer=""></script><script src="/_next/static/Lwvg4qa7TacMzZcda5DW2/_clientMiddlewareManifest.js" defer=""></script><style data-styled="" data-styled-version="6.5.3">:root{--primary-color:#7C953B;--secondary-color:#F9BF2D;--accent-color:#F9BF2D;--full-height:100vh;--full-height:100dvh;}/*!sc*/
+@layer base{a,a:hover{color:#F9BF2D;}}/*!sc*/
+.theme--Header{background-color:#FFF;}/*!sc*/
+.theme--Navbar{background-color:#7C953B;}/*!sc*/
+.theme--Navbar__item>a{color:#FFF;}/*!sc*/
+.theme--Navbar__item>a:hover:after{content:"";width:100%;height:4px;position:absolute;bottom:-10px;left:0;display:block;background-color:#F9BF2D;}/*!sc*/
+.theme--Submenu__item,.theme--Submenu__item:hover{color:#7C953B;}/*!sc*/
+.theme--Footer{background-color:#FFF;}/*!sc*/
+.theme--Footer__item-text,.theme--Footer__item-text a{color:#F9BF2D;}/*!sc*/
+input[type='radio']{accent-color:#7C953B;}/*!sc*/
+data-styled.g2[id="sc-global-cHHVuH"]{content:"sc-global-cHHVuH1,"}/*!sc*/
+</style></head><body><link rel="preload" as="image" href="./images/loading-icon.gif"/><link rel="preload" as="image" href="https://ligup-v2.s3-sa-east-1.amazonaws.com/general/post_footer/logoligup.png"/><div id="__next"><style id="customer-appearance-css" data-customer-appearance="true">.twinButtons a.active {
+    color: #d75e24;
+}
+
+.extendedButton--primary:hover {
+	background-color: #a0481d;
+	color:white;
+}
+
+.extendedButton--primary {
+	background-color: #d75e24;
+	border-color: #d75e24;
+    color:white;
+}
+.mapListButtons a.active {
+    color: #d75e24;
+}
+
+.metabar--championship .navTabs-anchor {
+	    color: #6b6b6b !important;
+}
+
+.metabar--championship .navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor {
+	color: #464646 !important;
+}
+
+.metabar--championship .navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor:after {
+	color: #464646 !important;
+}
+
+.metabar--championship .secondaryNavtabs > .navTabs-item > a:hover {
+    color: #464646 !important;
+}
+
+.navbar-fixed-top.hidden-xs {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.fullWidthHeader.hidden-lg {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.navbar-fixed-top.hidden-lg {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.galleryBackgroundGray {
+    background-color: #f1f1f1;
+}
+
+
+.fullWidthHeader-logo {
+    margin-top: 36px;
+}
+
+
+.fullWidthHeader-logo img {
+   display: none;
+}
+
+.fullWidthHeader-title {
+	visibility:hidden;  
+}
+
+
+.fullWidthHeader-social {
+    display: none;
+}
+
+.fullWidthHeader .socialNetworkIcon  {
+    font-size: 15px;
+}
+
+.fullwidthImageBanner .selectsContainer div select {
+	color: #2b2b2d !important;
+
+}
+
+
+.fullwidthImageBanner .buttonContainer button {
+	background-color: #005cc3 !important;
+}
+
+.fullwidthImageBanner {
+	background-image: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/buscador_nac.png) !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .fullwidthImageBanner .title {
+        color: white;
+        font-size: calc(25px + 1vw);
+        margin-top: 12px;
+        padding-top: 20px;
+        margin-bottom: 0px;
+    }
+}
+
+.section-content > p > img,
+.td-post-content  > p > img,
+div > p > img {
+    height: auto;
+    max-width: 100%;
+}
+
+.ucWidget {
+	background-image: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/widget_background.png);
+	height: auto;
+	background-size: cover;
+}
+
+/*minimal header*/
+
+.fullWidthHeader {
+    background-color: white !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 1px;
+    margin-bottom: 0px;
+}
+
+.fullWidthHeader.hidden-xs {
+    border: none !important;
+}
+
+.fullWidthHeader-wrap {
+    min-height: 53px !important;
+}
+
+.fullWidthHeader-logo {
+    margin-top: 0px;
+}
+
+
+.fullWidthHeader-logo img {
+   display: none;
+}
+
+.fullWidthHeader-title {
+    display: none;
+}
+
+.fullWidthHeader-social {
+    display: none;
+}
+
+.navTabs-anchor,
+.secondaryNavtabs .navTabs-item i {
+    color: white !important;
+    font-weight: bolder;
+}
+
+.navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor {
+    color: #6ba31e !important;
+    font-weight: bolder;
+}
+
+.navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor:after {
+    content: '';
+    width: 100%;
+    height: 4px;
+    background: #6ba31e !important;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+.secondaryNavtabs > .navTabs-item > a:hover {
+    color: #6ba31e !important;
+}
+
+.minimalNavBar .minimalNavBar-customerImage img {
+    /*content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/amuch/media/logoheader.jpg);*/
+}
+
+.fullWidthHeader.hidden-xs.hidden-sm.hidden-md {
+    background-color: #005cc3 !important;
+}
+
+.bigSectionContent span {
+    color: #005cc3;
+}
+
+.bigSectionContent h3 {
+    color: #005cc3;
+}
+
+.bigSectionContent .bigSectionContent-item a {
+    color: #005cc3;
+}
+
+.mainMenuOption-activities {
+    display: none !important;
+}
+
+.mainMenuOption-videos {
+    display: none !important;
+}
+
+/* end minimal header */
+
+/* Shrink header*/
+.mainHeader.shrink {
+    background-color: #fff;
+    position:   sticky;
+    -webkit-animation: slideIn 3s forwards;
+    animation: slideIn 3s forwards;
+    -webkit-transition: max-height 0.8s;
+    -moz-transition: max-height 0.8s;
+    transition: max-height 0.8s;
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+.mainHeader.shrink header .container {
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.mainHeader.shrink header .container .mainHeader-logo a img {
+    height: 35px;
+    content:url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/logo_nacimiento.png);
+    padding-top:0px;
+}
+
+.mainHeader.shrink header {
+    background:none;
+    background-color:#fff;
+}
+
+.mainHeader.shrink .mainHeaderWidget-item2 img {
+    width: 60%;
+}
+
+.mainHeader.shrink header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul {
+    padding-top:0px; 
+}
+
+.mainHeader.shrink header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li a img {
+height: 25px;
+width: auto;
+}
+
+
+/*End shrink header*/
+
+
+/* customizable header */
+
+body {
+    padding-top: 0px;
+}
+
+.mainHeader header {
+    border-bottom:unset;
+    background-color:#fff;
+}
+
+.mainHeader header .container {
+    height:120px;
+}
+
+.mainHeader .mainHeader-menu {
+    background-color: #7C953B;
+    border-bottom: unset
+}
+
+
+
+.mainHeader header .container .mainHeader-logo {
+    align-items: flex-start;
+}
+
+.mainHeader header .container .mainHeader-logo a img {
+    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/logo_nacimiento.png);
+    height: 100px;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul {
+    padding-top:10px;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li {
+    margin-right: 5px;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li a img {
+    height:30px;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li .separator {
+    color:#fff;
+    font-size:30px;
+    padding:0px 10px 0px 10px;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li .btn-info {
+    color:#005eb8;
+    background-color:#fff!important;
+    border-radius:50px!important;
+    padding:5px 10px 5px 10px !important;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li .btn-outline-primary {
+    color:#fff!important;
+    border:1px solid #fff!important;
+    border-radius:50px!important;
+    padding:5px 10px 5px 10px !important;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-lastRow {
+    flex-grow: 0;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul .header-widget-items {
+    margin-right: 10px;
+    border-right: 2px solid #7C953B;
+}
+
+.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul .header-widget-items:nth-child(3) {
+    border-right: 0;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus,
+.navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor {
+color:#FFF !important
+}
+
+.navbar-collapse > .navbar-nav > .navTabs-item.is-active > a.navTabs-anchor:after {
+background:#fff !important;
+}
+
+/*Hamburger menu*/
+.hamburgerMenu {
+     background-color: #7C953B;
+}
+
+.hamburgerMenu .hamburgerMenuContent {
+  background-color: #7C953B;
+ }
+
+.hamburgerMenu header .hamburgerMenu-control {
+  color: white;
+}
+
+.hamburgerMenu .hamburgerMenuContent nav > ul li {
+    border-bottom: 1px solid #ffffff5c;
+}
+
+.hamburgerMenu .hamburgerMenuContent nav > ul li a {
+  color: white;
+}
+
+.hamburgerMenu .hamburgerMenuContent nav > ul li i {
+  color: white;
+}
+
+.hamburgerMenu .hamburgerMenuContent nav > ul li ul {
+  color: white;
+}
+
+.hamburgerMenu .hamburgerMenuContent .hamburgerMenuContent-socialNetwork i {
+  color: white;
+}
+
+.hamburgerMenu header .hamburgerMenu-logo img {
+    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/logo_nacimiento.png); 
+}
+
+.underNavHamburgerList {
+list-style: none;
+display:flex;
+padding-left:0px;
+margin-bottom: 18vh;
+justify-content: center;
+flex-wrap: wrap;
+}
+.underNavHamburgerList li {
+margin:10px;
+}
+
+.underNavHamburgerList li img {
+height: 30px;
+}
+
+
+/**/
+
+.mainMenuOption-galleries {
+    display: none !important;
+}
+
+.mainMenuOption-championships {
+    display: none !important;
+}
+
+
+/* Custom Banner hover effect */
+.customBgColor {
+    background-color:#005eb8;
+}
+
+.customBannerHover--futbolpadel:hover {
+    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/futbolpadelactive.png);
+}
+
+.customBannerHover--recintos:hover {
+    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/recintosactive.png);
+}
+
+.customBannerHover--sendero:hover {
+    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/senderoactive.png);
+}
+
+.customBannerHover--deporteescolar:hover {
+    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/deporteescolaractive.png);
+}
+
+.customBannerHover--sustentabilidad:hover {
+    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/sustentabilidadactive.png);
+}
+
+.customBannerHover--redsocial:hover {
+    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/redsocialactive.png);
+}
+
+.customBannerHover--socio:hover {
+    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/socioactive.png);
+}
+
+
+/*owl slider*/
+
+.owl-stage-outer {
+    height: 600px !important;
+}
+
+@media only screen and (max-width: 991px) {
+    
+    .owl-stage-outer {
+        height: 200px !important;
+    }
+
+}
+
+.owl-carousel.fullScreenSlider div:not(.owl-controls) div:not(.owl-nav) {
+    height:99%;
+}
+
+.mainMenuOption-news,.mainMenuOption-home {
+    display:none !important;
+}
+
+/*ACCESOS RÁPIDOS*/
+
+.autogen_widget_252_style .js-component {
+    text-align: center;
+}
+.autogen_widget_252_style .js-component a {
+    font-weight: bold;
+    cursor: pointer;
+color: #F9BF2D;
+}
+.autogen_widget_252_style .js-component img {
+    max-width: 68px;
+    margin: 20px auto 10px;
+}
+/*Footer*/
+.footer {
+background-color:#7C953B;
+border-top: 8px solid #F9BF2D;
+}
+.footer .defaultFooter-logo img {
+max-width: 230px;
+}
+.footer ul {
+list-style:none;
+padding-left:0;
+}
+.footer .defaultFooter-titleNav ul li .triangle{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 8px;
+    border-color: transparent transparent transparent #ED6A1C;
+margin-right:3px;
+}
+.footer .defaultFooter-titleNav li a{
+color:#FFF !important;
+font-weight: bold;
+padding: 3px 0;
+display:inline-block;
+}
+
+.footer .defaultFooter-social {
+text-align: right;
+}
+.footer .defaultFooter-social li{
+display: inline-block;
+margin-left:5px;
+}
+.footer .defaultFooter-social li a img{
+width: 40px
+}
+
+.footer .defaultFooter-infoColumn {
+text-align: right;
+}
+
+.footer .footer-info,
+.footer .footer-phone {
+color:#FFF;
+text-decoration:none;
+margin-bottom:5px;
+}
+.autogen_widget_241_style--bgConfig { background-color: #FFFFFF!important; }
+
+@media (max-width:991px){
+.footer .defaultFooter-titleNav li a {
+font-size: 12px;
+}
+.footer .defaultFooter-social li a img {
+    width: 30px;
+}
+}
+
+@media (max-width:767px){
+.footer .defaultFooter-logo,
+.footer .defaultFooter-titleNav,
+.footer .defaultFooter-infoColumn {
+text-align:center;
+margin-bottom:20px;
+}
+.footer .defaultFooter-social {
+text-align:center;
+margin-top: 20px;
+}
+
+.footer .defaultFooter-infoColumn {
+display:flex;
+flex-direction: column-reverse;
+}
+
+.footer .defaultFooter-logo img {
+    max-width: 80px;
+}
+}
+/*End footer*/
+
+.indexVideosBackground {
+background-image: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/fondo_videos.png);
+background-size:cover;
+bacground-position:center;
+background-repeat: no-repeat;
+}
+
+.indexVideosBackground .u-importantBorderLeft {
+color: #fff;
+border-color: #FFF;
+}
+
+.indexVideosBackground a.viewMore,
+.indexVideosBackground .itemBox-header{
+color: #fff;
+}
+
+.indexSecondaryNewsBg {
+background-color: #F7F7F7 !important;
+}
+.indexSecondaryNewsBg  .itemBox-newsSection {
+background-color: transparent;
+}
+
+.bigSectionContent {
+background-color: #1A171BC4;
+border: 0;
+}
+
+.bigSectionContent h3,
+.bigSectionContent span,
+.bigSectionContent .bigSectionContent-item a,
+.bigSectionContent .bigSectionContent-item a:hover {
+color:#FFF;
+}
+
+.autogen_widget_246_style--bgConfig { background-color: #FFFFFF!important; }
+
+
+
+
+
+
+
+
+
+
+
+/*styles footer*/
+.autogen_widget_footer_style--defaultFooter .container { background-color: unset; }
+
+.autogen_widget_footer_style--xs p{ color: #FFFFFF; margin: 0 0 2px; }
+
+.autogen_widget_footer_style--xs--logo img{ width:100%; max-width: 400px; }
+
+.autogen_widget_footer_style--xs--rrss a img{ width:10%; margin-left: 5px; max-width: 40px;}
+
+.autogen_widget_footer_style--logo { min-height: 210px; display: flex; align-items: center; justify-content: center; padding-left: 0px;}
+
+.autogen_widget_footer_style--logo img{ width:100%; }
+
+.autogen_widget_footer_style--titleNav { margin-top:20px;margin-bottom:20px;min-height: 210px;}
+
+.autogen_widget_footer_style--titleNav-title { display: inline-block !important; height: 21px;}
+
+.autogen_widget_footer_style--titleNav ul { list-style-type:none; padding-left: 10px; font-size:14px; }
+
+.autogen_widget_footer_style--social { min-height: 210px; text-align: right;}
+
+.autogen_widget_footer_style--social a img{ width:10%; margin-left: 5px; transition: 0.3s;}
+
+.autogen_widget_footer_style--social a img:hover { filter: invert(0.35) }
+
+.autogen_widget_footer_style--phone { color: #FFFFFF; font-size: 13px; border-right: 1px solid #FFFFFF; }
+
+.autogen_widget_footer_style--social p { color: #FFFFFF; margin: 0 0 2px; }
+
+.autogen_widget_footer_style--defaultFooter .container a { color: #FFFFFF; }
+
+.autogen_widget_footer_style--titleNav ul li a {color: #FFFFFF; text-decoration:none;}
+
+.autogen_widget_footer_style--email { color: #FFFFFF; font-size: 13px; border-right: 1px solid #FFFFFF; }
+
+.autogen_widget_footer_style--bgConfig { background-color: #7C953B!important; min-height: 210px; color: #FFFFFF;}
+/*end styles footer*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.autogen_widget_1339_style--bgConfig { background-color: #FFFFFF; }
+
+
+
+
+
+
+
+
+
+
+.autogen_widget_266_style--bgConfig { background-color: #FFFFFF; }
+
+
+
+
+
+.autogen_widget_318_style--bgConfig { background-color: #7C953B; color: #FFFFFF;}
+
+.autogen_widget_318_style--text { color: #FFFFFF; border-color: #FFFFFF; }
+.autogen_widget_318_style--text:hover { color: #FFFFFF; }
+.autogen_widget_318_style--titleNav-title { display: inline-block; margin: 10px; }</style><div class="Layout__Layout Layout-module-scss-module__rGjB5a__Layout  "><main class="Layout__Layout Layout__Layout__content Layout-module-scss-module__rGjB5a__Layout__content Layout_Layout_"><section class="ui-bg-gray Page ui-relative NewsPage"><section class="Container ui-margin-b-md"><div><img width="60" src="./images/loading-icon.gif" alt="Loading"/></div><div class="ui-padding-t-lg"><div class="Grid__Grid Grid__Grid-xs--1-columns Grid__Grid-sm--1-columns Grid__Grid-md--2-columns Grid__Grid-lg--4-columns Grid__Grid-xl--4-columns Grid-module-scss-module__0JmOaG__Grid Grid-module-scss-module__0JmOaG__Grid-xs--1-columns Grid-module-scss-module__0JmOaG__Grid-sm--1-columns Grid-module-scss-module__0JmOaG__Grid-md--2-columns Grid-module-scss-module__0JmOaG__Grid-lg--4-columns Grid-module-scss-module__0JmOaG__Grid-xl--4-columns"></div></div></section></section></main><footer class="Footer-module-scss-module__wcgw9G__Footer--customFooter theme--Footer" style="display:none"><div class="Footer-module-scss-module__wcgw9G__Footer--basicFooter Footer--basicFooter Container"><div class="Grid__Grid Grid__Grid-xs--gap-xs Grid__Grid-lg--3-columns Grid-module-scss-module__0JmOaG__Grid Grid-module-scss-module__0JmOaG__Grid-xs--gap-xs Grid-module-scss-module__0JmOaG__Grid-lg--3-columns"><div class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__logo Footer--basicFooter__logo"></div><div class="Grid__Grid Footer-module-scss-module__wcgw9G__Footer--basicFooter__menu-columns Grid-module-scss-module__0JmOaG__Grid"></div><div class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn"><ul class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__social ui-padding-l-0 ui-margin-t-0"></ul><div><p class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn__item ui-margin-t-0"></p><p class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn__item ui-margin-t-0"></p><p class="Footer-module-scss-module__wcgw9G__Footer--basicFooter__infoColumn__item ui-margin-t-0"></p></div></div></div></div><section class="Footer-module-scss-module__wcgw9G__Footer--customFooter__underFooter Footer--customFooter__underFooter"><div class="Container"><a target="_blank" href="https://ligup.com"><img src="https://ligup-v2.s3-sa-east-1.amazonaws.com/general/post_footer/logoligup.png"/></a></div></section></footer></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{},"globalBootstrap":{"globalInfo":{"data":{"id":105,"name":"Nacimiento","country_id":40,"subdomain":"nacimiento","externalURL":"nacimiento.cl","ssl":1,"enabled":1,"access_status":"enabled","access_status_changed_at":"2026-07-31 08:50:42","customer_template_id":2,"plan_id":1,"logo":"ligup/media/57899_logo_nacimiento.png","mobile_logo":null,"app_visible":0,"deleted_at":null,"created_at":"2021-10-05 10:09:49","updated_at":"2026-07-31 08:50:42","template":{"id":2,"name":"Extended","type":"extended"},"schema":null,"analytics_code":"G-TQSY83DRGW","facebook_url":"https://www.facebook.com/MunicipalidadDeNacimiento/","instagram_url":"https://www.instagram.com/muninacto/","instagram_widget":"\u003cblockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/p/Ck-5fjkrVnB/?utm_source=ig_embed\u0026utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"\u003e\u003cdiv style=\"padding:16px;\"\u003e \u003ca href=\"https://www.instagram.com/p/Ck-5fjkrVnB/?utm_source=ig_embed\u0026utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"\u003e \u003cdiv style=\" display: flex; flex-direction: row; align-items: center;\"\u003e \u003cdiv style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"\u003e\u003c/div\u003e \u003cdiv style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"\u003e \u003cdiv style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"\u003e\u003c/div\u003e \u003cdiv style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv style=\"padding: 19% 0;\"\u003e\u003c/div\u003e \u003cdiv style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"\u003e\u003csvg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"\u003e\u003cg stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"\u003e\u003cg transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"\u003e\u003cg\u003e\u003cpath d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"\u003e\u003c/path\u003e\u003c/g\u003e\u003c/g\u003e\u003c/g\u003e\u003c/svg\u003e\u003c/div\u003e\u003cdiv style=\"padding-top: 8px;\"\u003e \u003cdiv style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\"\u003eVer esta publicación en Instagram\u003c/div\u003e\u003c/div\u003e\u003cdiv style=\"padding: 12.5% 0;\"\u003e\u003c/div\u003e \u003cdiv style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"\u003e\u003cdiv\u003e \u003cdiv style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"\u003e\u003c/div\u003e \u003cdiv style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"\u003e\u003c/div\u003e \u003cdiv style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv style=\"margin-left: 8px;\"\u003e \u003cdiv style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"\u003e\u003c/div\u003e \u003cdiv style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv style=\"margin-left: auto;\"\u003e \u003cdiv style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"\u003e\u003c/div\u003e \u003cdiv style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"\u003e\u003c/div\u003e \u003cdiv style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e \u003cdiv style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"\u003e \u003cdiv style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"\u003e\u003c/div\u003e \u003cdiv style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/a\u003e\u003cp style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"\u003e\u003ca href=\"https://www.instagram.com/p/Ck-5fjkrVnB/?utm_source=ig_embed\u0026utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\"\u003eUna publicación compartida por Municipalidad de Nacimiento (@muninacto)\u003c/a\u003e\u003c/p\u003e\u003c/div\u003e\u003c/blockquote\u003e \u003cscript async src=\"//www.instagram.com/embed.js\"\u003e\u003c/script\u003e","twitter_url":"https://twitter.com/muninacto?lang=es","default_latitude":"-37.5020337","default_longitude":"-72.6764587","youtube_url":"https://www.youtube.com/channel/UCMNow5rv7q1uRZmBNDvW98Q","recaptcha_tag":"Ligup-v2-Captcha-Unlimited","is_front_react":"1","map_enabled":"0"},"error":""},"appearance":{"data":{"schema":"[{\"vOrder\":1,\"backgroundColor\":null,\"backgroundImage\":null,\"color\":null,\"fullWidth\":true,\"class\":\"container-fluid\",\"children\":[{\"name\":\"carousel\",\"colSize\":12,\"hOrder\":1,\"options\":{\"horizontal\":false,\"autoplay\":false,\"elementsCount\":5}}]},{\"vOrder\":2,\"backgroundColor\":\"#FFFFFF\",\"backgroundImage\":null,\"fullWidth\":false,\"color\":\"\",\"class\":\"\",\"children\":[{\"name\":\"client_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"widgetId\":266}}]},{\"vOrder\":3,\"backgroundColor\":\"#FFFFFF\",\"backgroundImage\":null,\"fullWidth\":false,\"color\":\"\",\"class\":\"\",\"children\":[{\"name\":\"client_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"widgetId\":1339}}]},{\"vOrder\":4,\"backgroundColor\":null,\"backgroundImage\":null,\"fullWidth\":false,\"color\":\"\",\"class\":\"\",\"children\":[{\"name\":\"client_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"widgetId\":1667}}]},{\"vOrder\":5,\"backgroundColor\":null,\"backgroundImage\":null,\"color\":null,\"fullWidth\":false,\"class\":\"containerSection indexActivitiesEmphasizedBackground\",\"children\":[{\"name\":\"activities_grid\",\"colSize\":12,\"hOrder\":1,\"options\":{\"showTitle\":true,\"title\":\"Actividades Destacadas\",\"viewMore\":true,\"elementsCount\":4,\"xlColumns\":4,\"lgColumns\":2,\"mdColumns\":2,\"smColumns\":1,\"xsColumns\":1}}]},{\"vOrder\":6,\"backgroundColor\":\"#F7F7F7\",\"backgroundImage\":null,\"color\":null,\"fullWidth\":false,\"class\":\"containerSection\",\"children\":[{\"name\":\"news_left_grid\",\"colSize\":12,\"hOrder\":1,\"options\":{\"showTitle\":true,\"title\":\"Noticias\",\"viewMore\":true}}]},{\"vOrder\":7,\"backgroundColor\":null,\"backgroundImage\":\"nacimiento\\/media\\/fondo_videos.png\",\"color\":\"#FFF\",\"fullWidth\":false,\"class\":\"containerSection\",\"children\":[{\"name\":\"videos_grid\",\"colSize\":12,\"hOrder\":1,\"options\":{\"showTitle\":true,\"title\":\"Videos\",\"viewMore\":true,\"elementsCount\":3,\"gridStyle\":1,\"xlColumns\":3,\"lgColumns\":3,\"mdColumns\":2,\"smColumns\":1,\"xsColumns\":1}}]},{\"vOrder\":8,\"backgroundColor\":null,\"backgroundImage\":\"nacimiento\\/media\\/buscador_nac.png\",\"color\":\"#FFF\",\"fullWidth\":false,\"class\":\"container-fluid\",\"children\":[{\"name\":\"search_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"title\":\"Busca nuestras actividades y participa\"}}]},{\"vOrder\":9,\"backgroundColor\":null,\"backgroundImage\":null,\"fullWidth\":false,\"color\":\"\",\"class\":\"\",\"children\":[{\"name\":\"client_widget\",\"colSize\":12,\"hOrder\":1,\"options\":{\"widgetId\":7286}}]},{\"vOrder\":10,\"backgroundColor\":null,\"backgroundImage\":null,\"color\":null,\"fullWidth\":false,\"class\":\"container-fluid\",\"children\":[{\"name\":\"gallery_top_principal_album\",\"colSize\":12,\"hOrder\":1,\"options\":{\"showTitle\":true,\"title\":\"Galer\\u00edas\",\"viewMore\":true,\"elementsCount\":3}}]}]","css":".twinButtons a.active {\r\n    color: #d75e24;\r\n}\r\n\r\n.extendedButton--primary:hover {\r\n\tbackground-color: #a0481d;\r\n\tcolor:white;\r\n}\r\n\r\n.extendedButton--primary {\r\n\tbackground-color: #d75e24;\r\n\tborder-color: #d75e24;\r\n    color:white;\r\n}\r\n.mapListButtons a.active {\r\n    color: #d75e24;\r\n}\r\n\r\n.metabar--championship .navTabs-anchor {\r\n\t    color: #6b6b6b !important;\r\n}\r\n\r\n.metabar--championship .navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor {\r\n\tcolor: #464646 !important;\r\n}\r\n\r\n.metabar--championship .navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor:after {\r\n\tcolor: #464646 !important;\r\n}\r\n\r\n.metabar--championship .secondaryNavtabs \u003e .navTabs-item \u003e a:hover {\r\n    color: #464646 !important;\r\n}\r\n\r\n.navbar-fixed-top.hidden-xs {\r\n    border-bottom: 1px solid #e6e6e6;\r\n}\r\n\r\n.fullWidthHeader.hidden-lg {\r\n    border-bottom: 1px solid #e6e6e6;\r\n}\r\n\r\n.navbar-fixed-top.hidden-lg {\r\n    border-bottom: 1px solid #e6e6e6;\r\n}\r\n\r\n.galleryBackgroundGray {\r\n    background-color: #f1f1f1;\r\n}\r\n\r\n\r\n.fullWidthHeader-logo {\r\n    margin-top: 36px;\r\n}\r\n\r\n\r\n.fullWidthHeader-logo img {\r\n   display: none;\r\n}\r\n\r\n.fullWidthHeader-title {\r\n\tvisibility:hidden;  \r\n}\r\n\r\n\r\n.fullWidthHeader-social {\r\n    display: none;\r\n}\r\n\r\n.fullWidthHeader .socialNetworkIcon  {\r\n    font-size: 15px;\r\n}\r\n\r\n.fullwidthImageBanner .selectsContainer div select {\r\n\tcolor: #2b2b2d !important;\r\n\r\n}\r\n\r\n\r\n.fullwidthImageBanner .buttonContainer button {\r\n\tbackground-color: #005cc3 !important;\r\n}\r\n\r\n.fullwidthImageBanner {\r\n\tbackground-image: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/buscador_nac.png) !important;\r\n}\r\n\r\n@media only screen and (max-width: 991px) {\r\n    .fullwidthImageBanner .title {\r\n        color: white;\r\n        font-size: calc(25px + 1vw);\r\n        margin-top: 12px;\r\n        padding-top: 20px;\r\n        margin-bottom: 0px;\r\n    }\r\n}\r\n\r\n.section-content \u003e p \u003e img,\r\n.td-post-content  \u003e p \u003e img,\r\ndiv \u003e p \u003e img {\r\n    height: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.ucWidget {\r\n\tbackground-image: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/widget_background.png);\r\n\theight: auto;\r\n\tbackground-size: cover;\r\n}\r\n\r\n/*minimal header*/\r\n\r\n.fullWidthHeader {\r\n    background-color: white !important;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    margin-top: 1px;\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.fullWidthHeader.hidden-xs {\r\n    border: none !important;\r\n}\r\n\r\n.fullWidthHeader-wrap {\r\n    min-height: 53px !important;\r\n}\r\n\r\n.fullWidthHeader-logo {\r\n    margin-top: 0px;\r\n}\r\n\r\n\r\n.fullWidthHeader-logo img {\r\n   display: none;\r\n}\r\n\r\n.fullWidthHeader-title {\r\n    display: none;\r\n}\r\n\r\n.fullWidthHeader-social {\r\n    display: none;\r\n}\r\n\r\n.navTabs-anchor,\r\n.secondaryNavtabs .navTabs-item i {\r\n    color: white !important;\r\n    font-weight: bolder;\r\n}\r\n\r\n.navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor {\r\n    color: #6ba31e !important;\r\n    font-weight: bolder;\r\n}\r\n\r\n.navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor:after {\r\n    content: '';\r\n    width: 100%;\r\n    height: 4px;\r\n    background: #6ba31e !important;\r\n    bottom: 0;\r\n    left: 0;\r\n    position: absolute;\r\n}\r\n\r\n.secondaryNavtabs \u003e .navTabs-item \u003e a:hover {\r\n    color: #6ba31e !important;\r\n}\r\n\r\n.minimalNavBar .minimalNavBar-customerImage img {\r\n    /*content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/amuch/media/logoheader.jpg);*/\r\n}\r\n\r\n.fullWidthHeader.hidden-xs.hidden-sm.hidden-md {\r\n    background-color: #005cc3 !important;\r\n}\r\n\r\n.bigSectionContent span {\r\n    color: #005cc3;\r\n}\r\n\r\n.bigSectionContent h3 {\r\n    color: #005cc3;\r\n}\r\n\r\n.bigSectionContent .bigSectionContent-item a {\r\n    color: #005cc3;\r\n}\r\n\r\n.mainMenuOption-activities {\r\n    display: none !important;\r\n}\r\n\r\n.mainMenuOption-videos {\r\n    display: none !important;\r\n}\r\n\r\n/* end minimal header */\r\n\r\n/* Shrink header*/\r\n.mainHeader.shrink {\r\n    background-color: #fff;\r\n    position:   sticky;\r\n    -webkit-animation: slideIn 3s forwards;\r\n    animation: slideIn 3s forwards;\r\n    -webkit-transition: max-height 0.8s;\r\n    -moz-transition: max-height 0.8s;\r\n    transition: max-height 0.8s;\r\n    animation-duration: 3s;\r\n    animation-name: slidein;\r\n}\r\n\r\n.mainHeader.shrink header .container {\r\n    height: 50px;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n\r\n.mainHeader.shrink header .container .mainHeader-logo a img {\r\n    height: 35px;\r\n    content:url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/logo_nacimiento.png);\r\n    padding-top:0px;\r\n}\r\n\r\n.mainHeader.shrink header {\r\n    background:none;\r\n    background-color:#fff;\r\n}\r\n\r\n.mainHeader.shrink .mainHeaderWidget-item2 img {\r\n    width: 60%;\r\n}\r\n\r\n.mainHeader.shrink header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul {\r\n    padding-top:0px; \r\n}\r\n\r\n.mainHeader.shrink header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li a img {\r\nheight: 25px;\r\nwidth: auto;\r\n}\r\n\r\n\r\n/*End shrink header*/\r\n\r\n\r\n/* customizable header */\r\n\r\nbody {\r\n    padding-top: 0px;\r\n}\r\n\r\n.mainHeader header {\r\n    border-bottom:unset;\r\n    background-color:#fff;\r\n}\r\n\r\n.mainHeader header .container {\r\n    height:120px;\r\n}\r\n\r\n.mainHeader .mainHeader-menu {\r\n    background-color: #7C953B;\r\n    border-bottom: unset\r\n}\r\n\r\n\r\n\r\n.mainHeader header .container .mainHeader-logo {\r\n    align-items: flex-start;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-logo a img {\r\n    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/logo_nacimiento.png);\r\n    height: 100px;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul {\r\n    padding-top:10px;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li {\r\n    margin-right: 5px;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li a img {\r\n    height:30px;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li .separator {\r\n    color:#fff;\r\n    font-size:30px;\r\n    padding:0px 10px 0px 10px;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li .btn-info {\r\n    color:#005eb8;\r\n    background-color:#fff!important;\r\n    border-radius:50px!important;\r\n    padding:5px 10px 5px 10px !important;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul li .btn-outline-primary {\r\n    color:#fff!important;\r\n    border:1px solid #fff!important;\r\n    border-radius:50px!important;\r\n    padding:5px 10px 5px 10px !important;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-lastRow {\r\n    flex-grow: 0;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul .header-widget-items {\r\n    margin-right: 10px;\r\n    border-right: 2px solid #7C953B;\r\n}\r\n\r\n.mainHeader header .container .mainHeader-widgets .mainHeaderWidget-firstRow .mainHeaderWidget-item2 ul .header-widget-items:nth-child(3) {\r\n    border-right: 0;\r\n}\r\n\r\n.navbar-default .navbar-nav \u003e li \u003e a:hover, .navbar-default .navbar-nav \u003e li \u003e a:focus,\r\n.navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor {\r\ncolor:#FFF !important\r\n}\r\n\r\n.navbar-collapse \u003e .navbar-nav \u003e .navTabs-item.is-active \u003e a.navTabs-anchor:after {\r\nbackground:#fff !important;\r\n}\r\n\r\n/*Hamburger menu*/\r\n.hamburgerMenu {\r\n     background-color: #7C953B;\r\n}\r\n\r\n.hamburgerMenu .hamburgerMenuContent {\r\n  background-color: #7C953B;\r\n }\r\n\r\n.hamburgerMenu header .hamburgerMenu-control {\r\n  color: white;\r\n}\r\n\r\n.hamburgerMenu .hamburgerMenuContent nav \u003e ul li {\r\n    border-bottom: 1px solid #ffffff5c;\r\n}\r\n\r\n.hamburgerMenu .hamburgerMenuContent nav \u003e ul li a {\r\n  color: white;\r\n}\r\n\r\n.hamburgerMenu .hamburgerMenuContent nav \u003e ul li i {\r\n  color: white;\r\n}\r\n\r\n.hamburgerMenu .hamburgerMenuContent nav \u003e ul li ul {\r\n  color: white;\r\n}\r\n\r\n.hamburgerMenu .hamburgerMenuContent .hamburgerMenuContent-socialNetwork i {\r\n  color: white;\r\n}\r\n\r\n.hamburgerMenu header .hamburgerMenu-logo img {\r\n    content: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/logo_nacimiento.png); \r\n}\r\n\r\n.underNavHamburgerList {\r\nlist-style: none;\r\ndisplay:flex;\r\npadding-left:0px;\r\nmargin-bottom: 18vh;\r\njustify-content: center;\r\nflex-wrap: wrap;\r\n}\r\n.underNavHamburgerList li {\r\nmargin:10px;\r\n}\r\n\r\n.underNavHamburgerList li img {\r\nheight: 30px;\r\n}\r\n\r\n\r\n/**/\r\n\r\n.mainMenuOption-galleries {\r\n    display: none !important;\r\n}\r\n\r\n.mainMenuOption-championships {\r\n    display: none !important;\r\n}\r\n\r\n\r\n/* Custom Banner hover effect */\r\n.customBgColor {\r\n    background-color:#005eb8;\r\n}\r\n\r\n.customBannerHover--futbolpadel:hover {\r\n    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/futbolpadelactive.png);\r\n}\r\n\r\n.customBannerHover--recintos:hover {\r\n    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/recintosactive.png);\r\n}\r\n\r\n.customBannerHover--sendero:hover {\r\n    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/senderoactive.png);\r\n}\r\n\r\n.customBannerHover--deporteescolar:hover {\r\n    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/deporteescolaractive.png);\r\n}\r\n\r\n.customBannerHover--sustentabilidad:hover {\r\n    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/sustentabilidadactive.png);\r\n}\r\n\r\n.customBannerHover--redsocial:hover {\r\n    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/redsocialactive.png);\r\n}\r\n\r\n.customBannerHover--socio:hover {\r\n    content: url(https://ligup-v2.s3-sa-east-1.amazonaws.com/uc/media/widgets/socioactive.png);\r\n}\r\n\r\n\r\n/*owl slider*/\r\n\r\n.owl-stage-outer {\r\n    height: 600px !important;\r\n}\r\n\r\n@media only screen and (max-width: 991px) {\r\n    \r\n    .owl-stage-outer {\r\n        height: 200px !important;\r\n    }\r\n\r\n}\r\n\r\n.owl-carousel.fullScreenSlider div:not(.owl-controls) div:not(.owl-nav) {\r\n    height:99%;\r\n}\r\n\r\n.mainMenuOption-news,.mainMenuOption-home {\r\n    display:none !important;\r\n}\r\n\r\n/*ACCESOS RÁPIDOS*/\r\n\r\n.autogen_widget_252_style .js-component {\r\n    text-align: center;\r\n}\r\n.autogen_widget_252_style .js-component a {\r\n    font-weight: bold;\r\n    cursor: pointer;\r\ncolor: #F9BF2D;\r\n}\r\n.autogen_widget_252_style .js-component img {\r\n    max-width: 68px;\r\n    margin: 20px auto 10px;\r\n}\r\n/*Footer*/\r\n.footer {\r\nbackground-color:#7C953B;\r\nborder-top: 8px solid #F9BF2D;\r\n}\r\n.footer .defaultFooter-logo img {\r\nmax-width: 230px;\r\n}\r\n.footer ul {\r\nlist-style:none;\r\npadding-left:0;\r\n}\r\n.footer .defaultFooter-titleNav ul li .triangle{\r\n    display: inline-block;\r\n    width: 0;\r\n    height: 0;\r\n    border-style: solid;\r\n    border-width: 4px 0 4px 8px;\r\n    border-color: transparent transparent transparent #ED6A1C;\r\nmargin-right:3px;\r\n}\r\n.footer .defaultFooter-titleNav li a{\r\ncolor:#FFF !important;\r\nfont-weight: bold;\r\npadding: 3px 0;\r\ndisplay:inline-block;\r\n}\r\n\r\n.footer .defaultFooter-social {\r\ntext-align: right;\r\n}\r\n.footer .defaultFooter-social li{\r\ndisplay: inline-block;\r\nmargin-left:5px;\r\n}\r\n.footer .defaultFooter-social li a img{\r\nwidth: 40px\r\n}\r\n\r\n.footer .defaultFooter-infoColumn {\r\ntext-align: right;\r\n}\r\n\r\n.footer .footer-info,\r\n.footer .footer-phone {\r\ncolor:#FFF;\r\ntext-decoration:none;\r\nmargin-bottom:5px;\r\n}\r\n.autogen_widget_241_style--bgConfig { background-color: #FFFFFF!important; }\r\n\r\n@media (max-width:991px){\r\n.footer .defaultFooter-titleNav li a {\r\nfont-size: 12px;\r\n}\r\n.footer .defaultFooter-social li a img {\r\n    width: 30px;\r\n}\r\n}\r\n\r\n@media (max-width:767px){\r\n.footer .defaultFooter-logo,\r\n.footer .defaultFooter-titleNav,\r\n.footer .defaultFooter-infoColumn {\r\ntext-align:center;\r\nmargin-bottom:20px;\r\n}\r\n.footer .defaultFooter-social {\r\ntext-align:center;\r\nmargin-top: 20px;\r\n}\r\n\r\n.footer .defaultFooter-infoColumn {\r\ndisplay:flex;\r\nflex-direction: column-reverse;\r\n}\r\n\r\n.footer .defaultFooter-logo img {\r\n    max-width: 80px;\r\n}\r\n}\r\n/*End footer*/\r\n\r\n.indexVideosBackground {\r\nbackground-image: url(https://ligup-v2.s3.sa-east-1.amazonaws.com/nacimiento/media/fondo_videos.png);\r\nbackground-size:cover;\r\nbacground-position:center;\r\nbackground-repeat: no-repeat;\r\n}\r\n\r\n.indexVideosBackground .u-importantBorderLeft {\r\ncolor: #fff;\r\nborder-color: #FFF;\r\n}\r\n\r\n.indexVideosBackground a.viewMore,\r\n.indexVideosBackground .itemBox-header{\r\ncolor: #fff;\r\n}\r\n\r\n.indexSecondaryNewsBg {\r\nbackground-color: #F7F7F7 !important;\r\n}\r\n.indexSecondaryNewsBg  .itemBox-newsSection {\r\nbackground-color: transparent;\r\n}\r\n\r\n.bigSectionContent {\r\nbackground-color: #1A171BC4;\r\nborder: 0;\r\n}\r\n\r\n.bigSectionContent h3,\r\n.bigSectionContent span,\r\n.bigSectionContent .bigSectionContent-item a,\r\n.bigSectionContent .bigSectionContent-item a:hover {\r\ncolor:#FFF;\r\n}\r\n\r\n.autogen_widget_246_style--bgConfig { background-color: #FFFFFF!important; }\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/*styles footer*/\r\n.autogen_widget_footer_style--defaultFooter .container { background-color: unset; }\r\n\r\n.autogen_widget_footer_style--xs p{ color: #FFFFFF; margin: 0 0 2px; }\r\n\r\n.autogen_widget_footer_style--xs--logo img{ width:100%; max-width: 400px; }\r\n\r\n.autogen_widget_footer_style--xs--rrss a img{ width:10%; margin-left: 5px; max-width: 40px;}\r\n\r\n.autogen_widget_footer_style--logo { min-height: 210px; display: flex; align-items: center; justify-content: center; padding-left: 0px;}\r\n\r\n.autogen_widget_footer_style--logo img{ width:100%; }\r\n\r\n.autogen_widget_footer_style--titleNav { margin-top:20px;margin-bottom:20px;min-height: 210px;}\r\n\r\n.autogen_widget_footer_style--titleNav-title { display: inline-block !important; height: 21px;}\r\n\r\n.autogen_widget_footer_style--titleNav ul { list-style-type:none; padding-left: 10px; font-size:14px; }\r\n\r\n.autogen_widget_footer_style--social { min-height: 210px; text-align: right;}\r\n\r\n.autogen_widget_footer_style--social a img{ width:10%; margin-left: 5px; transition: 0.3s;}\r\n\r\n.autogen_widget_footer_style--social a img:hover { filter: invert(0.35) }\r\n\r\n.autogen_widget_footer_style--phone { color: #FFFFFF; font-size: 13px; border-right: 1px solid #FFFFFF; }\r\n\r\n.autogen_widget_footer_style--social p { color: #FFFFFF; margin: 0 0 2px; }\r\n\r\n.autogen_widget_footer_style--defaultFooter .container a { color: #FFFFFF; }\r\n\r\n.autogen_widget_footer_style--titleNav ul li a {color: #FFFFFF; text-decoration:none;}\r\n\r\n.autogen_widget_footer_style--email { color: #FFFFFF; font-size: 13px; border-right: 1px solid #FFFFFF; }\r\n\r\n.autogen_widget_footer_style--bgConfig { background-color: #7C953B!important; min-height: 210px; color: #FFFFFF;}\r\n/*end styles footer*/\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n\n\n\n\n\n\n\n\n\n.autogen_widget_1339_style--bgConfig { background-color: #FFFFFF; }\n\n\n\n\n\n\n\n\n\n\n.autogen_widget_266_style--bgConfig { background-color: #FFFFFF; }\n\n\n\n\n\n.autogen_widget_318_style--bgConfig { background-color: #7C953B; color: #FFFFFF;}\n\n.autogen_widget_318_style--text { color: #FFFFFF; border-color: #FFFFFF; }\n.autogen_widget_318_style--text:hover { color: #FFFFFF; }\n.autogen_widget_318_style--titleNav-title { display: inline-block; margin: 10px; }","color_palette":{"colors":{"primary":"#7C953B","secondary":"#F9BF2D","accent":"#F9BF2D"}},"use_home_schema":"1"},"error":""}}},"page":"/noticias","query":{},"buildId":"Lwvg4qa7TacMzZcda5DW2","isFallback":false,"isExperimentalCompile":false,"appGip":true,"scriptLoader":[]}</script></body></html>

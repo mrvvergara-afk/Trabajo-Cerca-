@@ -301,6 +301,7 @@ def read_queue(work, output, checkpoint, *, capture=None, now=None, proof=prove)
             reading = {'url':item.get('attachment_url') or item['publisher_page'],'publisher_page':item['publisher_page'],'documents':report['documents'],
                        'document_reviews':report['document_reviews'],'evaluations':report['evaluations'],
                        'persistence_check':report['persistence_check'],'reading_complete':complete,
+                       'work_statuses':report['counts']['statuses'],
                        'source_published_at':item.get('source_published_at'),
                        'parent_html_sha256':item['parent_html_sha256'],'reading_saved':True,
                        'verified':False,'published':0}

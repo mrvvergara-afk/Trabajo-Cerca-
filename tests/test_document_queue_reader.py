@@ -198,6 +198,27 @@ class QueueReaderTests(unittest.TestCase):
 
 
 class PublicDownloadTests(unittest.TestCase):
+    def test_public_www_robots_redirect_keeps_its_rules_and_never_accepts_an_html_loading_page_as_policy(self):
+        address='https://www.municipalidadrenaico.cl/wp-content/uploads/file.pdf'
+        calls=[]
+        def transport(url,budget,maximum):
+            calls.append(url)
+            if url=='https://www.municipalidadrenaico.cl/robots.txt':
+                return b'','text/html',301,'https://municipalidadrenaico.cl/robots.txt'
+            if url.endswith('/robots.txt'):
+                return b'User-agent: *\nDisallow: /private/\n','text/plain',200,None
+            return b'%PDF-fixture','application/pdf',200,None
+        with tempfile.TemporaryDirectory() as folder:
+            capture=PublicCapture(folder,transport)
+            raw,_,mime,_=capture(address,Budget(5))
+            self.assertEqual(raw,b'%PDF-fixture');self.assertEqual(mime,'application/pdf')
+            self.assertEqual([row['status'] for row in capture.requests],[301,200,200])
+            self.assertFalse(capture.allowed('https://www.municipalidadrenaico.cl/private/secret',Budget(5)))
+        with tempfile.TemporaryDirectory() as folder:
+            capture=PublicCapture(folder,lambda *args:(b'<html><div id="app">Loading</div></html>','text/html',200,None))
+            with self.assertRaisesRegex(ValueError,'robots_policy_unavailable'):
+                capture(address,Budget(5))
+
     def test_public_error_codes_are_informative_without_leaking_unknown_exception_text(self):
         self.assertEqual(public_error(ValueError('public_source_robots_disallowed')),'public_source_robots_disallowed')
         self.assertEqual(public_error(ValueError('public_source_http_403')),'public_source_http_403')

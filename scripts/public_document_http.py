@@ -78,15 +78,25 @@ class PublicCapture:
         parts = urllib.parse.urlsplit(url)
         origin = parts.scheme+'://'+parts.netloc
         if origin not in self.robots:
-            raw, mime, status, _ = self.transport(origin+'/robots.txt', budget, 50000)
+            address = original_policy = origin+'/robots.txt'
+            for _ in range(4):
+                raw, mime, status, location = self.transport(address, budget, 50000)
+                self.requests.append({'url':address,'status':status,'mime':mime,'sha256':self.put(raw)})
+                if status not in (301,302,303,307,308):
+                    break
+                address = public_url(urllib.parse.urljoin(address,location or ''))
+                if not same_publisher(original_policy,address):
+                    raise ValueError('robots_policy_unavailable')
+            else:
+                raise ValueError('robots_policy_unavailable')
             if status not in (200, 404):
                 raise ValueError('robots_policy_unavailable')
-            if status == 200 and mime not in ('text/plain','text/html'):
+            if status == 200 and (mime not in ('text/plain','text/html') or
+                                  mime == 'text/html' and not re.search(rb'^\s*User-agent\s*:',raw,re.I|re.M)):
                 raise ValueError('robots_policy_unavailable')
             parser = urllib.robotparser.RobotFileParser()
             parser.parse(raw.decode('utf-8','replace').splitlines() if status == 200 else [])
             self.robots[origin] = parser
-            self.requests.append({'url':origin+'/robots.txt','status':status,'sha256':self.put(raw)})
         return self.robots[origin].can_fetch(USER_AGENT, url)
 
     def __call__(self, value, budget, max_bytes=900000):

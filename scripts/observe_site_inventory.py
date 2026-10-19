@@ -1,5 +1,6 @@
 """Compare the actual public homepage with all SDK feed pages, without collection or publication."""
 import json
+import asyncio
 import os
 import shutil
 import subprocess
@@ -65,18 +66,36 @@ def main():
     proof=json.loads(Path('output/laboratory_observation_proof.json').read_text())
     browser=shutil.which('google-chrome') or shutil.which('chromium') or shutil.which('chromium-browser')
     if not browser:raise RuntimeError('readonly_browser_unavailable')
-    environment={k:v for k,v in os.environ.items() if k not in ('GITHUB_TOKEN','ACTIONS_ID_TOKEN_REQUEST_TOKEN')}
-    with tempfile.TemporaryDirectory() as directory:
-        result=subprocess.run([browser,'--headless','--disable-gpu','--no-first-run','--disable-background-networking',
-            '--user-data-dir='+directory,'--virtual-time-budget=20000','--dump-dom',
-            'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/'],capture_output=True,text=True,
-            timeout=90,check=True,env=environment)
-    report=inventory(proof,result.stdout)
+    if os.environ.get('RADAR_OPERATOR_WAIT_BROWSER')=='1':
+        raw=asyncio.run(read_homepage_browser(browser))
+    else:
+        environment={k:v for k,v in os.environ.items() if k not in ('GITHUB_TOKEN','ACTIONS_ID_TOKEN_REQUEST_TOKEN')}
+        with tempfile.TemporaryDirectory() as directory:
+            result=subprocess.run([browser,'--headless','--disable-gpu','--no-first-run','--disable-background-networking',
+                '--user-data-dir='+directory,'--virtual-time-budget=20000','--dump-dom',
+                'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/'],capture_output=True,text=True,
+                timeout=90,check=True,env=environment)
+        raw=result.stdout
+    report=inventory(proof,raw)
     output=Path('output/site-inventory');output.mkdir(parents=True,exist_ok=True)
     write_json(output/'proof.json',report)
     write_json(output/'operator-proof.json',proof)
-    (output/'homepage.html').write_text(result.stdout)
+    (output/'homepage.html').write_text(raw)
     print('SITE_INVENTORY_PROOF '+json.dumps(report,ensure_ascii=False),flush=True)
+
+
+async def read_homepage_browser(browser):
+    from playwright.async_api import async_playwright
+    environment={key:value for key,value in os.environ.items() if key not in ('GITHUB_TOKEN','ACTIONS_ID_TOKEN_REQUEST_TOKEN','ACTIONS_ID_TOKEN_REQUEST_URL')}
+    async with async_playwright() as playwright:
+        instance=await playwright.chromium.launch(executable_path=browser,headless=True,env=environment)
+        try:
+            page=await instance.new_page()
+            await page.goto('https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/',wait_until='domcontentloaded',timeout=30000)
+            await page.wait_for_selector('article.neoJobCard',timeout=60000)
+            return await page.content()
+        finally:
+            await instance.close()
 
 
 if __name__=='__main__':main()

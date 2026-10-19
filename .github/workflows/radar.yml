@@ -40,6 +40,28 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  site-inventory-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[site inventory proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probar el observador de inventario
+        run: python -m unittest tests.test_site_inventory_observer -v
+      - name: Leer feed completo y tarjetas públicas sin recolectar ni publicar
+        run: python -m scripts.observe_site_inventory
+      - name: Conservar la comparación del inventario visible
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-inventory-proof
+          path: output/site-inventory/
+          retention-days: 7
   live-document-reader:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

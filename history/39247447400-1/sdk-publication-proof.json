@@ -1,0 +1,19 @@
+{
+  "schema": "trabajo-cerca.actual-document-revalidation-proof.v1",
+  "checked_at": "2026-10-19T11:50:20.493836+00:00",
+  "revalidated_at": "2026-10-19T00:20:36.630000+00:00",
+  "next_check_at": "2026-10-19T12:20:36.630Z",
+  "original_published_at": "2026-10-01T12:04:54+00:00",
+  "published_ids": [
+    "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+    "8b75b282-d838-45bc-9309-d10874aae023",
+    "de9067f5-59f2-4e0c-ba02-fc9584debe0f"
+  ],
+  "feed_manifest": "1f07ac8d-5ddf-4ae9-a3ef-8c3b06504245",
+  "visible_count": 3,
+  "new_offers": 0,
+  "provider_calls": 0,
+  "read_only": true,
+  "actual_cron_revalidation_confirmed": true,
+  "social_capture_proven": false
+}

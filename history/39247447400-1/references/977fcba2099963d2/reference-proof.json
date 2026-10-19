@@ -1,0 +1,189 @@
+{
+  "schema": "trabajo-cerca.public-document-reference-proof.v1",
+  "checked_at": "2026-10-19T11:50:22.960030+00:00",
+  "source_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+  "source_name": "Municipalidad de Renaico",
+  "requests": [
+    {
+      "url": "https://municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "file": "robots-039da815c229.txt",
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "final_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 370476,
+      "sha256": "c1f04a6fccda894ffaea8fda189396e86aa19b54bad0ac0abff02a4fe3aee8c6"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "file": "robots-e4c6875e2ad1.txt",
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "final_url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "status": 200,
+      "mime": "application/pdf",
+      "bytes": 1550719,
+      "sha256": "296c34b75ab9043e98a186aaabae2c1eb0723a6380a2a220513f92080e4d4ad0"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "sha256": "296c34b75ab9043e98a186aaabae2c1eb0723a6380a2a220513f92080e4d4ad0",
+      "status": "downloaded",
+      "reason": null,
+      "bytes": 1550719,
+      "page_count": 5,
+      "pages": [
+        {
+          "page": 1,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": 93.0,
+          "characters": 2010,
+          "text_object_sha256": "0d0a8c183f75f541b62bd1f0d86d2fc34c16ec8f0e6dbc35803bc48e1445f975",
+          "alternate_readings": []
+        },
+        {
+          "page": 2,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": 90.3,
+          "characters": 1749,
+          "text_object_sha256": "647764b442babe3888f2d5cc9eae52e8b85a5db6acfb563a224b7ed93fcfebd7",
+          "alternate_readings": []
+        },
+        {
+          "page": 3,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": 88.3,
+          "characters": 1908,
+          "text_object_sha256": "1c24f127be5852b0e9ab4f6d1a90c4b86309e4c31241d3cebad28cf57bb182cb",
+          "alternate_readings": []
+        },
+        {
+          "page": 4,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": 92.2,
+          "characters": 2146,
+          "text_object_sha256": "a29b012cf69191803b544c4f673cd5bf7990d7b4124e00cc28f77c3ac464b250",
+          "alternate_readings": []
+        },
+        {
+          "page": 5,
+          "status": "done",
+          "engine": "tesseract-local",
+          "language": "spa+eng",
+          "confidence": 88.0,
+          "characters": 1603,
+          "text_object_sha256": "d8c17bc7d89d5b270c7429fae997f0a7713adf09638b4ede6d136bb3fcd09c6a",
+          "alternate_readings": []
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "jobs": 7,
+    "runs": 1,
+    "observed_days": 1,
+    "attempts": 7,
+    "observations": 7,
+    "objects": 7,
+    "statuses": {
+      "done": 7
+    }
+  },
+  "evaluations": [
+    {
+      "archive": "296c34b75ab9043e98a186aaabae2c1eb0723a6380a2a220513f92080e4d4ad0",
+      "company": null,
+      "emails": [
+        "rrhh@municipalidadrenaico.cl"
+      ],
+      "hiring_language": true,
+      "missing": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "fecha_original"
+      ],
+      "phones": [],
+      "published": false,
+      "reason": "source_date_missing_or_future",
+      "role": null,
+      "source_published_at": null,
+      "status": "pending",
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "work_communes": [],
+      "workplace_evidence": null
+    }
+  ],
+  "document_reviews": [],
+  "persistence_check": {
+    "snapshot_restored": true,
+    "counts_preserved": true,
+    "review_objects_preserved": 0,
+    "archive_original_bytes": 1931943,
+    "sqlite_sha256": "3deb90bdaf85aac3a910a89a155d1ab6828af9733dc1efad53e56c75f588c6ff"
+  },
+  "review_preview": "review-preview.html",
+  "review_queue": [
+    {
+      "task_id": "90e49b489cfa8785348e097579b7674b8921569f40736d9ed896b1c2a2517d96",
+      "source_key": "document-reference",
+      "source_url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+      "reason": "source_date_missing_or_future",
+      "fresh_evidence": true,
+      "missing_fields": [
+        "cargo",
+        "empresa",
+        "lugar_real",
+        "fecha_original"
+      ],
+      "review_blockers": [],
+      "role": null,
+      "company": null,
+      "work_communes": [],
+      "original_date": null,
+      "contact_present": true,
+      "original_sha256": "296c34b75ab9043e98a186aaabae2c1eb0723a6380a2a220513f92080e4d4ad0",
+      "document_review_sha256": null,
+      "review_notice_count": 0,
+      "publication_confirmed": false
+    }
+  ],
+  "local_handoff_ready": 0,
+  "handoff": {
+    "schema": "trabajo-cerca.radar-v2-handoff.v1",
+    "checked_at": "2026-10-19T11:50:22.960030+00:00",
+    "pilot_verified_candidates": 0,
+    "batch_records": 0,
+    "reviewed_document_candidates": 0,
+    "source_urls": [],
+    "blocked": [],
+    "paid_provider_calls": 0,
+    "published": 0,
+    "publication_confirmed": false,
+    "social_capture_proven": false,
+    "coverage_complete": false
+  },
+  "max_work": 40,
+  "coverage_complete": false,
+  "publication_confirmed": false,
+  "production_modified": false,
+  "paid_provider_calls": 0,
+  "published": 0
+}

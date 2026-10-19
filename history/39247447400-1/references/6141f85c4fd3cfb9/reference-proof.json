@@ -1,0 +1,287 @@
+{
+  "schema": "trabajo-cerca.public-document-reference-proof.v1",
+  "checked_at": "2026-10-19T11:50:22.960030+00:00",
+  "source_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+  "source_name": "Municipalidad de Renaico",
+  "requests": [
+    {
+      "url": "https://municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "file": "robots-039da815c229.txt",
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "final_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 370476,
+      "sha256": "1b29f3d8a9f661261a177d9bb794e7e12697fceef67d20df6a00ef7c78998b2c"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/robots.txt",
+      "status": 200,
+      "file": "robots-e4c6875e2ad1.txt",
+      "sha256": "ae971185ba921ac259966bd85b67343d4cb94929cb1ba0f3b4d47d76337087e8"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "final_url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "status": 200,
+      "mime": "application/pdf",
+      "bytes": 656554,
+      "sha256": "e49d214ee10d696f956c2072b3fbe63a5cf13d4546e510cb124a9cae9ab685ab"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "sha256": "e49d214ee10d696f956c2072b3fbe63a5cf13d4546e510cb124a9cae9ab685ab",
+      "status": "downloaded",
+      "reason": null,
+      "bytes": 656554,
+      "page_count": 15,
+      "pages": [
+        {
+          "page": 1,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 2436,
+          "text_object_sha256": "d29d324533ea76d1d08a0607bcfcbc00c024ecc5b3d5d4e8ab9a9ccdd41ff527",
+          "alternate_readings": []
+        },
+        {
+          "page": 2,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 2714,
+          "text_object_sha256": "73fe61b32db7315edc8824716a9dc263a38904dab125089ee3ad2a9e194f8dbf",
+          "alternate_readings": []
+        },
+        {
+          "page": 3,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 2402,
+          "text_object_sha256": "9149e6a3c06f3851456162150b4f7e7496c983c48b7a27253660a0134e2881ee",
+          "alternate_readings": []
+        },
+        {
+          "page": 4,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 2516,
+          "text_object_sha256": "f543b0533faf2e4e487fb477a409c4f7f3b46b7a2b177d40217391d9d76f5840",
+          "alternate_readings": []
+        },
+        {
+          "page": 5,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 2416,
+          "text_object_sha256": "fccc2bd62181dfb0ffc482284143cec2dfb8e0d381e1ca0c9dd60e8200cb7635",
+          "alternate_readings": []
+        },
+        {
+          "page": 6,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 3187,
+          "text_object_sha256": "ddf9aad4b51f43961de60b91e48c135e6147e0ec536249818a4ea7c122544544",
+          "alternate_readings": []
+        },
+        {
+          "page": 7,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 1744,
+          "text_object_sha256": "1b903979ee5b4047bea27c047bcec6754485314d5f775b6855b4b227b7465dd3",
+          "alternate_readings": []
+        },
+        {
+          "page": 8,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 1760,
+          "text_object_sha256": "5d93fab4040a755f584039c38162bcb707cbed3cfd5f3c37cc152f8bc441966c",
+          "alternate_readings": []
+        },
+        {
+          "page": 9,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 2151,
+          "text_object_sha256": "5003ba6c1b90ae8b6f8cd2c564c8affc51afcd6ec27fa7e2cbefc846c7ae0188",
+          "alternate_readings": []
+        },
+        {
+          "page": 10,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 1236,
+          "text_object_sha256": "9c9ac8fac241da73596b5eb8e03619657e219ff9afd1f40fd19aeb6aa285a31a",
+          "alternate_readings": []
+        },
+        {
+          "page": 11,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 1328,
+          "text_object_sha256": "66ffa12737f5deb68fdb551f764586511822cdf250889b53862d9f8ba853b3d3",
+          "alternate_readings": []
+        },
+        {
+          "page": 12,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 958,
+          "text_object_sha256": "3a95ddf0930c2be9ba8797c1140b2cb448f28862c47ae88c31fc94fd221cc53b",
+          "alternate_readings": []
+        },
+        {
+          "page": 13,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 761,
+          "text_object_sha256": "fcd09fdf808cd844ddf4b366b90322f3313a632d026421fb5286397fef7d4bd5",
+          "alternate_readings": []
+        },
+        {
+          "page": 14,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 723,
+          "text_object_sha256": "02811b5b970a9a3fb55b6464e25bd76697ae5b6a6b00ef3b32c283661d91c2d2",
+          "alternate_readings": []
+        },
+        {
+          "page": 15,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 520,
+          "text_object_sha256": "a9b4d7d58a373e380eb8fd0c4633d5b0d20ed95dfeeef8535c284a46e0246476",
+          "alternate_readings": []
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "jobs": 17,
+    "runs": 1,
+    "observed_days": 1,
+    "attempts": 17,
+    "observations": 17,
+    "objects": 17,
+    "statuses": {
+      "done": 17
+    }
+  },
+  "evaluations": [
+    {
+      "archive": "e49d214ee10d696f956c2072b3fbe63a5cf13d4546e510cb124a9cae9ab685ab",
+      "company": null,
+      "emails": [],
+      "hiring_language": true,
+      "missing": [
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "phones": [],
+      "published": false,
+      "reason": "source_date_missing_or_future",
+      "role": "DE MÉDICO CIRUJANO EN EL AREA DE SALUD DE ATENCIÓN",
+      "source_published_at": null,
+      "status": "pending",
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "work_communes": [],
+      "workplace_evidence": "equipo, planificación, normativas técnicas"
+    }
+  ],
+  "document_reviews": [],
+  "persistence_check": {
+    "snapshot_restored": true,
+    "counts_preserved": true,
+    "review_objects_preserved": 0,
+    "archive_original_bytes": 1056564,
+    "sqlite_sha256": "8fe69680e198ec69233460a584d9e0177598ab5de7510ff97f2f7d65c35dce58"
+  },
+  "review_preview": "review-preview.html",
+  "review_queue": [
+    {
+      "task_id": "efe14329cf710c30c54d845f7938bf3942db5f5325398cf4649ad3b0e0338eb9",
+      "source_key": "document-reference",
+      "source_url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+      "reason": "source_date_missing_or_future",
+      "fresh_evidence": true,
+      "missing_fields": [
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "review_blockers": [],
+      "role": "DE MÉDICO CIRUJANO EN EL AREA DE SALUD DE ATENCIÓN",
+      "company": null,
+      "work_communes": [],
+      "original_date": null,
+      "contact_present": false,
+      "original_sha256": "e49d214ee10d696f956c2072b3fbe63a5cf13d4546e510cb124a9cae9ab685ab",
+      "document_review_sha256": null,
+      "review_notice_count": 0,
+      "publication_confirmed": false
+    }
+  ],
+  "local_handoff_ready": 0,
+  "handoff": {
+    "schema": "trabajo-cerca.radar-v2-handoff.v1",
+    "checked_at": "2026-10-19T11:50:22.960030+00:00",
+    "pilot_verified_candidates": 0,
+    "batch_records": 0,
+    "reviewed_document_candidates": 0,
+    "source_urls": [],
+    "blocked": [],
+    "paid_provider_calls": 0,
+    "published": 0,
+    "publication_confirmed": false,
+    "social_capture_proven": false,
+    "coverage_complete": false
+  },
+  "max_work": 40,
+  "coverage_complete": false,
+  "publication_confirmed": false,
+  "production_modified": false,
+  "paid_provider_calls": 0,
+  "published": 0
+}

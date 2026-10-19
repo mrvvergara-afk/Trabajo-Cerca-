@@ -1,0 +1,307 @@
+{
+  "schema": "trabajo-cerca.public-document-reference-proof.v1",
+  "checked_at": "2026-10-19T11:50:22.960030+00:00",
+  "source_url": "https://www.malleco7.cl/edicion-jueves-15-de-octubre-de-2026/",
+  "source_name": "Malleco 7",
+  "requests": [
+    {
+      "url": "https://www.malleco7.cl/robots.txt",
+      "status": 200,
+      "file": "robots-b9da6f5b3cb6.txt",
+      "sha256": "bf86ad9f31d7282f7fbc080eb4ffe2e7f18a45c2a8c43a1d5b8d4265361f28ff"
+    },
+    {
+      "url": "https://www.malleco7.cl/edicion-jueves-15-de-octubre-de-2026/",
+      "final_url": "https://www.malleco7.cl/edicion-jueves-15-de-octubre-de-2026/",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 225669,
+      "sha256": "b8e73089b1626e34e9c64335a4e054057ddcc1671d5af925c8a0cd81556887ce"
+    },
+    {
+      "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1486.pdf",
+      "final_url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1486.pdf",
+      "status": 200,
+      "mime": "application/pdf",
+      "bytes": 4203175,
+      "sha256": "4ec420b179203c5de66c9a96c8e75243ec4e1b42bef45ed8cc389b27824dc7cb"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1486.pdf",
+      "sha256": "4ec420b179203c5de66c9a96c8e75243ec4e1b42bef45ed8cc389b27824dc7cb",
+      "status": "downloaded",
+      "reason": null,
+      "bytes": 4203175,
+      "page_count": 12,
+      "pages": [
+        {
+          "page": 1,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 2297,
+          "text_object_sha256": "57b744d54963a37f5a278655e0e6eeae7dbcc9b5470bd32faa067a8afc896235",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 893,
+              "confidence": 66.0
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 8853,
+          "text_object_sha256": "adab41b6c3840588854ac6065727c080a753db82829269670b2bb46f2fff37a9",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6638,
+              "confidence": 82.8
+            }
+          ]
+        },
+        {
+          "page": 3,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 10026,
+          "text_object_sha256": "b78b5f8558a746538b46fc1d18ea7a35d3a8b539c0b5edfa1bacda475410c8d4",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6411,
+              "confidence": 81.5
+            }
+          ]
+        },
+        {
+          "page": 4,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 9222,
+          "text_object_sha256": "a08edea2cc802d36b5ccc46dee94daf41b3b5a919d42200ccf4461ba79d184c0",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6205,
+              "confidence": 77.8
+            }
+          ]
+        },
+        {
+          "page": 5,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 4500,
+          "text_object_sha256": "095d4a129a2af1d3f5bb0507fe33117b945d8f5f5ffd1ff578631162bf3d9ee0",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 3369,
+              "confidence": 71.8
+            }
+          ]
+        },
+        {
+          "page": 6,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 7654,
+          "text_object_sha256": "bb5a29bf48309deb36a5e2d6c2e76a0277b122d93efcaeab061143061e697ae4",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6289,
+              "confidence": 84.6
+            }
+          ]
+        },
+        {
+          "page": 7,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 8319,
+          "text_object_sha256": "0d400274b4755e6cefb4d5d284f1e6f9e54f58e18e270bb281bb2761f2e5103d",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6081,
+              "confidence": 80.6
+            }
+          ]
+        },
+        {
+          "page": 8,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 10196,
+          "text_object_sha256": "9431e314bf6b2979cfff5a3ee27ad70359c1658f534d3181ae6b1b1f583d1418",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 5585,
+              "confidence": 79.1
+            }
+          ]
+        },
+        {
+          "page": 9,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 10424,
+          "text_object_sha256": "7c843f97e52f0b1ebee519b816cfc945bff2c3e6703f619d5a3bae7b28e3b366",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6775,
+              "confidence": 82.2
+            }
+          ]
+        },
+        {
+          "page": 10,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 10454,
+          "text_object_sha256": "93d076dad50f1eb41adb70dde0a8decbf2bb0ccad315281aef314acadf55c0b7",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6977,
+              "confidence": 83.8
+            }
+          ]
+        },
+        {
+          "page": 11,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 7805,
+          "text_object_sha256": "e84bcff4c99a95acf7c534092305b9145e7cd59d6166a19619cef0a82a7c6bdc",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6532,
+              "confidence": 84.7
+            }
+          ]
+        },
+        {
+          "page": 12,
+          "status": "done",
+          "engine": "pdftotext-local",
+          "language": null,
+          "confidence": null,
+          "characters": 8923,
+          "text_object_sha256": "840a4af8dbca55d9d0144a27581d5a38f5707179182e7522fa61339d0bc25190",
+          "alternate_readings": [
+            {
+              "engine": "tesseract-local",
+              "characters": 6065,
+              "confidence": 80.9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "jobs": 15,
+    "runs": 1,
+    "observed_days": 1,
+    "attempts": 15,
+    "observations": 15,
+    "objects": 15,
+    "statuses": {
+      "done": 15
+    }
+  },
+  "evaluations": [
+    {
+      "archive": "4ec420b179203c5de66c9a96c8e75243ec4e1b42bef45ed8cc389b27824dc7cb",
+      "reason": "mixed_pdf_requires_review",
+      "status": "pending"
+    }
+  ],
+  "document_reviews": [],
+  "persistence_check": {
+    "snapshot_restored": true,
+    "counts_preserved": true,
+    "review_objects_preserved": 0,
+    "archive_original_bytes": 4604638,
+    "sqlite_sha256": "8855be2445a818a220a183b4a02b58abd87da8da58dabfd2577da1fc605e4e94"
+  },
+  "review_preview": "review-preview.html",
+  "review_queue": [
+    {
+      "task_id": "80dec36d66f0a2d6a57cc409f22821533465770613747607d0d9b28df0da7b90",
+      "source_key": "document-reference",
+      "source_url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1486.pdf",
+      "reason": "mixed_pdf_requires_review",
+      "fresh_evidence": true,
+      "missing_fields": [
+        "empresa",
+        "lugar_real",
+        "contacto",
+        "fecha_original"
+      ],
+      "review_blockers": [],
+      "role": "en contacto con la organización.      culturales, entre otras entidades.            Ibar explicó que los carros alegóric",
+      "company": null,
+      "work_communes": [],
+      "original_date": null,
+      "contact_present": false,
+      "original_sha256": "4ec420b179203c5de66c9a96c8e75243ec4e1b42bef45ed8cc389b27824dc7cb",
+      "document_review_sha256": null,
+      "review_notice_count": 0,
+      "publication_confirmed": false
+    }
+  ],
+  "local_handoff_ready": 0,
+  "handoff": {
+    "schema": "trabajo-cerca.radar-v2-handoff.v1",
+    "checked_at": "2026-10-19T11:50:22.960030+00:00",
+    "pilot_verified_candidates": 0,
+    "batch_records": 0,
+    "reviewed_document_candidates": 0,
+    "source_urls": [],
+    "blocked": [],
+    "paid_provider_calls": 0,
+    "published": 0,
+    "publication_confirmed": false,
+    "social_capture_proven": false,
+    "coverage_complete": false
+  },
+  "max_work": 40,
+  "coverage_complete": false,
+  "publication_confirmed": false,
+  "production_modified": false,
+  "paid_provider_calls": 0,
+  "published": 0
+}

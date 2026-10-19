@@ -173,6 +173,28 @@ test('A failed policy reprojection keeps the visible manifest and retries withou
   assert.equal(h.table('radar_jobs').size, 1);
 });
 
+test('Quality migration hides search pages, joins company aliases and preserves every source record and reviewed role',async()=>{
+  const h=harness();
+  const jobs=[
+    record('alias1',{url:'https://portal.chiletrabajos.cl/empresa/layner/trabajo/tens-3902931',title:'TENS',workCommunes:['Lumaco']}),
+    record('alias2',{url:'https://www.chiletrabajos.cl/trabajo/tens-3902931',title:'TENS',workCommunes:['Lumaco']}),
+    record('search',{url:'https://www.chiletrabajos.cl/encuentra-un-empleo/?2=CMPC',title:'Trabajos CMPC'}),
+    ...['Farmacéutico','Prevencionista','Nutricionista'].map((title,i)=>record('unit'+i,{url:'https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/',title,workCommunes:['Traiguén'],documentUnitVerified:true,documentUnitKey:String(i).repeat(64)})),
+  ];
+  h.seed('radar_jobs',jobs);await finish(h);
+  h.projector.revision='quality-v3';
+  h.projector.project=item=>h.context.publicJobExclusion(item)?null:item;
+  for(let i=0;i<4;i++)await h.advance();
+  const visible=await items(h);
+  assert.equal(visible.length,4);
+  assert.equal(visible.filter(x=>x.documentUnitVerified).length,3);
+  assert.equal(visible.filter(x=>x.title==='TENS').length,1);
+  assert.equal(visible.some(x=>x.id==='search'),false);
+  assert.equal(h.table('radar_jobs').size,6);
+  for (const original of jobs)assert.deepEqual({...h.table('radar_jobs').get(original.id),id:original.id},original);
+  assert.ok(h.calls.every(call=>call.method!=='delete'||call.table!=='radar_jobs'));
+});
+
 test('More than 200 records from both sources form a complete, globally ordered feed', async () => {
   const h = harness();
   const jobs = Array.from({ length:257 }, (_, i) => record('r' + (i * 2)));

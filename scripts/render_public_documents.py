@@ -14,9 +14,9 @@ ROOTS = [('los-sauces','https://www.munilossauces.cl/noticias'),
          ('nacimiento','https://www.nacimiento.cl/noticias')]
 
 
-async def main():
+async def main(roots=None, destination=None):
     from playwright.async_api import async_playwright
-    output = Path('output/document-reader/rendered')
+    output = Path(destination or 'output/document-reader/rendered')
     output.mkdir(parents=True, exist_ok=False)
     capture = PublicCapture(output)
     results = []
@@ -27,7 +27,7 @@ async def main():
             executable_path=shutil.which('google-chrome') or shutil.which('chromium'),
             headless=True, env=environment)
         try:
-            for key, url in ROOTS:
+            for key, url in (roots if roots is not None else ROOTS):
                 blocked = []
                 budget = Budget(70)
                 context = await browser.new_context(user_agent='TrabajoCercaLocalAudit/1.0')
@@ -70,7 +70,7 @@ async def main():
                     record.update(access='rendered' if len(text.strip())>160 else 'rendered_content_unavailable',
                                   final_url=page.url,html_file=str(path),
                                   rendered_html_sha256=hashlib.sha256(html.encode()).hexdigest(),
-                                  text_characters=len(text),title=body['title'],candidates=body['candidates'],
+                                  text_characters=len(text),text=text[:20000],title=body['title'],candidates=body['candidates'],
                                   public_social_links=body['public_social_links'],
                                   source_published_at=body['source_published_at'])
                 except Exception as exc:

@@ -40,6 +40,45 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  feed-quality-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[feed quality proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 38
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar navegador público sin credenciales
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar cambios de calidad antes de observar
+        run: |
+          python -m unittest tests.test_primary_source_discovery tests.test_document_queue_reader -v
+          node tests/appdeploy-feed-quality.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+          node tests/appdeploy-quality-entrypoint.test.mjs
+      - name: Confirmar cambios del cron en IDs y preservar los tres de Traiguén
+        run: python -m scripts.observe_feed_quality
+      - name: Probar solo el nuevo portal público de CMPC y guardar respaldo durable
+        if: always()
+        run: python -m scripts.cmpc_public_probe
+      - name: Conservar comparación completa y bloqueos reales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feed-quality-proof
+          path: |
+            output/feed-quality/
+            output/site-inventory/
+            output/cmpc-public/
+          retention-days: 7
   primary-source-discovery:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

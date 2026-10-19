@@ -6,6 +6,7 @@ export type PublicAdapter = {
 };
 
 const LOCAL_PUBLISHERS:Record<string,string> = {
+  'ssan.redsalud.gob.cl':'Servicio de Salud Araucanía Norte',
   'noticias.angol.cl':'Municipalidad de Angol',
   'munilumaco.cl':'Municipalidad de Lumaco',
   'munilossauces.cl':'Municipalidad de Los Sauces',
@@ -96,4 +97,39 @@ export function publicOfferIdentity(value:string, documentKey?:string):string | 
   if (documentKey===undefined) return adapter.identityUrl;
   if (adapter.family!=='local' || typeof documentKey!=='string' || !/^[a-f0-9]{64}$/.test(documentKey)) return null;
   return adapter.identityUrl+'\0document-unit-v1\0'+documentKey;
+}
+
+// Feed-only equivalence: preserve ingestion keys and source records unchanged.
+export function publicFeedIdentity(value:string, documentKey?:string):string | null {
+  if (documentKey!==undefined) return publicOfferIdentity(value,documentKey);
+  const clean=safePublicUrl(value);
+  if (!clean) return null;
+  const url=new URL(clean),host=url.hostname.replace(/^www\./,'');
+  const path=host==='portal.chiletrabajos.cl'
+    ? url.pathname.match(/^\/empresa\/[^/]+\/trabajo\/([^/]+)\/?$/)?.[1]
+    : host==='chiletrabajos.cl' ? url.pathname.match(/^\/trabajo\/([^/]+)\/?$/)?.[1] : null;
+  const id=path?.match(/(?:^|-)(\d{5,12})$/)?.[1];
+  return id ? 'https://www.chiletrabajos.cl/trabajo/'+id : publicOfferIdentity(clean);
+}
+
+export function publicJobExclusion(item:Record<string,unknown>):string | null {
+  if (item.kind!=='job_offer') return null;
+  const clean=typeof item.url==='string' ? safePublicUrl(item.url) : null;
+  if (!clean) return 'original_individual_url_missing';
+  const url=new URL(clean),host=url.hostname.replace(/^www\./,'');
+  if (['chiletrabajos.cl','portal.chiletrabajos.cl'].includes(host) && !publicFeedIdentity(clean)) {
+    return 'portal_index_not_individual_offer';
+  }
+  const publisher=publicPublisher(clean),adapter=publicSourceAdapter(clean);
+  if (publisher && !adapter && !publicFeedIdentity(clean)) return 'portal_index_not_individual_offer';
+  if (adapter?.family==='aggregator') return 'aggregator_requires_primary_source';
+  const title=String(item.title || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  if (/^(?:angol|lumaco|los sauces|traiguen|renaico|nacimiento|negrete|mulchen|collipulli|victoria|puren|ercilla|talca|temuco|pozo almonte|los angeles)\s*$/.test(title)) {
+    return 'place_name_is_not_a_job_title';
+  }
+  if (Array.isArray(item.workCommunes) && item.workCommunes.includes('Victoria')) {
+    const stripped=title.replace(/victoria\s*[’'´`]?\s*s\s+secret/g,'').replace(/nueva\s+victoria/g,'');
+    if (stripped!==title && !/\bvictoria\b/.test(stripped)) return 'brand_or_remote_site_is_not_victoria_commune';
+  }
+  return null;
 }

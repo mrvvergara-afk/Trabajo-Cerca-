@@ -12,6 +12,7 @@ from .local_source_audit import same_publisher
 from .public_source_adapters import LOCAL_PUBLISHERS
 
 USER_AGENT = 'TrabajoCercaLocalAudit/1.0'
+PUBLIC_CAPTURE_PUBLISHERS = set(LOCAL_PUBLISHERS) | {'cmpc.csod.com'}
 
 
 def public_error(exc):
@@ -28,7 +29,7 @@ def public_error(exc):
 def public_url(value):
     url = canonical_url(value)
     parts = urllib.parse.urlsplit(url)
-    if parts.port or parts.hostname.removeprefix('www.') not in LOCAL_PUBLISHERS:
+    if parts.port or parts.hostname.removeprefix('www.') not in PUBLIC_CAPTURE_PUBLISHERS:
         raise ValueError('publisher_not_allowed')
     if any(key.lower() in ('token','access_token','api_key','apikey','session','authorization')
            for key, _ in urllib.parse.parse_qsl(parts.query)):

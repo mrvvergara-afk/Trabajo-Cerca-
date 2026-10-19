@@ -1,3 +1,4 @@
+import { Buffer } from 'node:buffer';
 import { publicPublisher, safePublicUrl, samePublicJob } from './public-source-adapters';
 
 export type PublicPage = { url:string; status:number; raw:string; mime:string; bytes:number; error?:string };

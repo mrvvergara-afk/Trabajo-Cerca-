@@ -1,0 +1,27 @@
+{
+  "schema": "trabajo-cerca.feed-quality-repair.v1",
+  "baseline_version": "1792412862351",
+  "files": [
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "import { publicSourceAdapter } from './public-source-adapters';",
+          "to": "import { publicSourceAdapter, publicJobExclusion } from './public-source-adapters';"
+        },
+        {
+          "from": "  if (item.kind === 'job_offer') {\n    if (!item.verified || item.review) return null;\n    if (!item.workCommunes",
+          "to": "  if (item.kind === 'job_offer') {\n    if (!item.verified || item.review) return null;\n    if (publicJobExclusion(value)) return null;\n    if (!item.workCommunes"
+        },
+        {
+          "from": "revision:'public-source-adapters-45-days-v2', project:projectFeedListing",
+          "to": "revision:'public-individual-place-quality-v3', project:projectFeedListing"
+        },
+        {
+          "from": "  const safetyEvidence = [record.title, record.company, record.note, record.source, record.sourceDomain, record.url].filter(Boolean).join(' ');",
+          "to": "  const qualityReason=publicJobExclusion(record as unknown as Record<string,unknown>);\n  if (qualityReason) return pending('Procedencia o ubicación por revisar: '+qualityReason,'Validación de fuente individual');\n  const safetyEvidence = [record.title, record.company, record.note, record.source, record.sourceDomain, record.url].filter(Boolean).join(' ');"
+        }
+      ]
+    }
+  ]
+}

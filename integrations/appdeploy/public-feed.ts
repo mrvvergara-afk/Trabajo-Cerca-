@@ -1,6 +1,6 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
-import { publicSourceAdapter, publicOfferIdentity } from './public-source-adapters';
+import { publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -39,8 +39,8 @@ function identity(item:Stored) {
     const unit=publicOfferIdentity(item.url,item.documentUnitKey);
     return unit ? createHash('sha256').update(unit).digest('hex') : null;
   }
-  const adapter = publicSourceAdapter(item.url);
-  return adapter && adapter.family!=='aggregator' ? createHash('sha256').update(adapter.identityUrl).digest('hex') : null;
+  const equivalent = publicFeedIdentity(item.url);
+  return equivalent ? createHash('sha256').update(equivalent).digest('hex') : null;
 }
 
 function bytes(value:unknown) {
@@ -377,16 +377,25 @@ export async function advancePublicFeed(projector:Projector) {
     return publish(manifest(await editor.persist(), now));
   }
   const changes = await db.list<Change>('public_feed_changes', { limit:STEP_SIZE });
-  // Reproject one existing page per writer step when eligibility rules change.
-  const policyDue = projector.revision ? current.pages.find(page => page.projectionRevision !== projector.revision) : undefined;
-  const due = policyDue ?? current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];
-  if (!changes.items.length && !due) return readPublicFeedSummary();
+  // Reproject whole pages up to forty existing records; the cron cadence is unchanged.
+  const due:PageRef[] = [];
+  let policyKeys=0;
+  if (projector.revision) for (const page of current.pages) {
+    if (page.projectionRevision===projector.revision) continue;
+    if (due.length && policyKeys+page.keys.length>STEP_SIZE) break;
+    due.push(page);policyKeys+=page.keys.length;
+  }
+  if (!due.length) {
+    const expired=current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];
+    if (expired) due.push(expired);
+  }
+  if (!changes.items.length && !due.length) return readPublicFeedSummary();
   const wanted = new Map<string, { source:FeedSource; sourceId:string }>();
   for (const change of changes.items) {
     if (!allowedSource(change.source) || !change.sourceId) throw new Error('Invalid public feed change; reconciliation required');
     wanted.set(change.source + ':' + change.sourceId, change);
   }
-  if (due) for (const key of due.keys) {
+  for (const page of due) for (const key of page.keys) {
     const colon = key.indexOf(':');
     wanted.set(key, { source:key.slice(0, colon) as FeedSource, sourceId:key.slice(colon + 1) });
   }

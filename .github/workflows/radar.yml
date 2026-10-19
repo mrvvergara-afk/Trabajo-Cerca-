@@ -43,7 +43,7 @@ jobs:
   cmpc-public-api-proof:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
-      github.event_name == 'push' && contains(github.event.head_commit.message, '[cmpc public api proof]')
+      github.event_name == 'push' && (contains(github.event.head_commit.message, '[cmpc public api proof]') || contains(github.event.head_commit.message, '[cmpc individual proof]'))
     runs-on: ubuntu-latest
     timeout-minutes: 8
     permissions:
@@ -58,6 +58,8 @@ jobs:
       - name: Probar el alcance público y la redacción de claves en diagnósticos
         run: python -m unittest tests.test_cmpc_public_scope -v
       - name: Probar la API observada solo cuando robots lo permita
+        env:
+          CMPC_INDIVIDUAL_PROOF: ${{ contains(github.event.head_commit.message, '[cmpc individual proof]') && '1' || '0' }}
         run: python -m scripts.cmpc_public_probe
       - name: Conservar evidencia y bloqueos
         if: always()

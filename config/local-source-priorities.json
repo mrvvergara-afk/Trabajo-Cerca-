@@ -312,6 +312,15 @@
       "territory": "Angol",
       "scope": "curated_real_pilot",
       "identity_evidence": "Página individual revisada el 2026-10-13: SODIMAC S.A., trabajo en Angol, publicación 09/09/2026 y cierre 14/10/2026. Requiere relectura directa; nunca renovar el plazo por rastreo."
+    },
+    {
+      "key": "malleco7-ediciones",
+      "name": "Malleco 7 · ediciones digitales",
+      "family": "media",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "territory": "Malleco",
+      "scope": "public_document_discovery; individual_ads_require_review",
+      "discovered_from": "https://www.malleco7.cl/"
     }
   ],
   "unresolved_requested_sources": [

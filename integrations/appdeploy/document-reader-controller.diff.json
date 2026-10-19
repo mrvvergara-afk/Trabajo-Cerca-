@@ -1,0 +1,9 @@
+{
+  "filename": "backend/index.ts",
+  "diffs": [
+    {
+      "from": "  { key:'malleco7', name:'Malleco 7', url:'https://www.malleco7.cl/', territory:'Malleco' },",
+      "to": "  { key:'malleco7', name:'Malleco 7', url:'https://www.malleco7.cl/', territory:'Malleco' },\n  { key:'malleco7-ediciones', name:'Malleco 7 · ediciones digitales', url:'https://www.malleco7.cl/ediciones-digitales-malleco7/', territory:'Malleco' },"
+    }
+  ]
+}

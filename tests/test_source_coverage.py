@@ -86,7 +86,8 @@ class SourceCoverageTests(unittest.TestCase):
     def test_public_registry_includes_requested_towns_and_employers_but_excludes_unconfirmed_profiles(self):
         sources = radar.configured_sources()
         names = [name for name,_ in sources]
-        self.assertEqual(len(sources), 20)
+        self.assertEqual(len(sources), 21)
+        self.assertIn('https://www.malleco7.cl/ediciones-digitales-malleco7/',{url for _,url in sources})
         self.assertIn('https://www.bne.gob.cl/oferta/2026-112312', [url for _,url in sources])
         self.assertIn('https://www.bne.gob.cl/oferta/2026-107065', [url for _,url in sources])
         for place in ['Angol','Lumaco','Los Sauces','Traiguén','Renaico','Nacimiento','Negrete','Mulchén','Collipulli']:

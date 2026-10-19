@@ -9,6 +9,7 @@ export type FreeSource = { key:string; name:string; url:string; territory:string
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
 type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;
   localPosition?:number; portalPosition?:number;
+  renderPending?:PublicCandidate[];
   pending:PublicCandidate[]; priorityCandidates?:PublicCandidate[]; reviewLane?:number;
   rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;
   checkedAt?:string; runId?:string; recheckPolicy?:string; summary?:Record<string,unknown> };
@@ -40,6 +41,10 @@ export function publicPageLinks(raw:string, origin:string) {
     const alt = [...anchor[4].matchAll(/\balt=["']([^"']+)["']/gi)].map(match => match[1]).join(' ');
     const title = publicText(anchor[4]+' '+alt);
     const adapter = publicSourceAdapter(url);
+    if (publicPublisher(origin)?.group==='malleco7.cl' && new URL(origin).pathname==='/ediciones-digitales-malleco7/' &&
+        adapter?.family==='local' && /^\/edicion-[a-z0-9-]+\/$/.test(new URL(url).pathname) && /^Edici[oó]n\s/i.test(title)) {
+      candidates.set(url,title.slice(0,200));
+    }
     if (publicDocumentUrl(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group &&
         /\bbases?\b|decreto|concurso|convocatoria|descargar\s+pdf/i.test(title)) candidates.set(url,title.slice(0,200));
     if (adapter && (adapter.family!=='local' || /ofertas? (?:laboral|de (?:empleo|trabajo))|vacantes?|se (?:busca|necesita|requiere)|postul|concurso.{0,25}(?:p[uú]blico|cargo)|recluta/i.test(title+' '+new URL(url).pathname.replace(/[-_]/g,' ')))) candidates.set(url,title.slice(0,200));
@@ -66,6 +71,13 @@ export function publicPageLinks(raw:string, origin:string) {
   return { candidates:[...candidates].slice(0,40).map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };
 }
 
+export function publicRenderRequired(raw:string) {
+  const text=publicText(raw.replace(/<head\b[^>]*>[\s\S]*?<\/head>/gi,''));
+  return /<script\b/i.test(raw) && text.length<160 &&
+    (/\bloading\b|cargando|habilit[ae].{0,20}javascript|enable.{0,20}javascript/i.test(text) ||
+     /<(?:app-root|nuxt)\b|<(?:div|main)\b[^>]*\bid=["'](?:app|root|__next|__nuxt)["']|<img\b[^>]*alt=["']loading["']/i.test(raw));
+}
+
 export function publicDocumentWork(current?:ScanState | null) {
   const items=(current?.pending || []).flatMap(item=>{
     const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);
@@ -74,8 +86,13 @@ export function publicDocumentWork(current?:ScanState | null) {
     return [{ url,source:item.source,publisher_page:publisherPage,
       kind:publicDocumentUrl(url)?'document':'local_page' }];
   });
+  const rendered=(current?.renderPending || []).flatMap(item=>{
+    const url=safePublicUrl(item.url);
+    return url && ['munilossauces.cl','nacimiento.cl'].includes(publicPublisher(url)?.group || '')
+      ? [{ url,source:item.source,publisher_page:url,kind:'rendered_page' }] : [];
+  });
   return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,
-    items:items.slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };
+    items:[...rendered,...items].slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };
 }
 
 export function pendingCandidateIndex(items:PublicCandidate[], lane=0) {
@@ -156,6 +173,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   const [lease] = await db.tx.add('free_public_run_leases',[{ id:String(Math.floor(now/900000)),requestId,startedAt:new Date(now).toISOString() }]);
   if (!lease) return { deferred:true,reason:'public_scan_cooldown',providerCalls:0,nextAllowedAt:new Date((Math.floor(now/900000)+1)*900000).toISOString() };
   const state:ScanState = current ? structuredClone(current) : { position:0,queues:{},seen:{},pending:[] };
+  state.renderPending=state.renderPending || [];
   const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));
   const documentManagedUrls=new Set<string>();
   // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.
@@ -201,6 +219,13 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       error:page.error || null,coverageComplete:false,candidates:0 };
     if (page.status===200 && !page.error) {
       const links = publicPageLinks(page.raw,page.url);
+      if (publicRenderRequired(page.raw)) {
+        audit.error='source_render_required';audit.renderRequired=true;
+        if (['munilossauces.cl','nacimiento.cl'].includes(publicPublisher(page.url)?.group || '') &&
+            !state.renderPending.some(item=>item.url===page.url) && state.renderPending.length<12) {
+          state.renderPending.push({ url:page.url,source:source.name,publisherPage:page.url });
+        }
+      }
       if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });
       audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));
       for (const item of links.candidates) if (!seenPending.has(item.url)) {

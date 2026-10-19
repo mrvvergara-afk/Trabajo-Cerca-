@@ -8,6 +8,28 @@ import vm from 'node:vm';
 const stamp=Date.parse('2026-10-13T12:00:00Z');
 const url='https://cl.indeed.com/viewjob?jk=0123456789abcdef';
 
+test('A municipal loading shell stays explicit browser work and cannot count as a read job source',async()=>{
+  const origin='https://www.nacimiento.cl/noticias';
+  const raw='<html><body><div class="shell" id="app"><img alt="Loading"></div><script src="/app.js"></script></body></html>';
+  const h=harness({fetcher:async source=>({url:source,status:200,raw,mime:'text/html',bytes:raw.length})});
+  assert.equal(h.ctx.publicRenderRequired(raw),true);
+  assert.equal(h.ctx.publicRenderRequired('<article>Sin ofertas laborales nuevas en esta página.</article><script src="/analytics.js"></script>'),false);
+  const result=await h.ctx.runFreePublicSources([{key:'nacimiento',name:'Nacimiento',url:origin,territory:'Nacimiento',discoveryGroup:'local'}],'render-test-00001',stamp);
+  assert.equal(result.audits[0].error,'source_render_required');
+  const status=await h.ctx.freePublicSourceStatus();
+  assert.equal(status.documentWork.items[0].kind,'rendered_page');
+  assert.equal(status.documentWork.items[0].url,origin);
+  assert.equal(result.verified,0);assert.equal(result.stored,0);
+});
+
+test('The primary digital-edition index discovers edition pages without turning their dates into job dates',()=>{
+  const h=harness(),origin='https://www.malleco7.cl/ediciones-digitales-malleco7/';
+  const links=h.ctx.publicPageLinks('<a href="/edicion-jueves-15-de-octubre-de-2026/">Edición jueves 15 de octubre de 2026</a>'
+    +'<a href="https://attacker.example/edicion-nueva/">Edición nueva</a><a href="/contacto/">Contacto</a>',origin);
+  assert.equal(links.candidates.length,1);assert.ok(links.candidates[0].url.includes('15-de-octubre'));
+  assert.equal(links.candidates[0].source_published_at,undefined);
+});
+
 test('Lumaco downloads without a PDF extension reach the document lane without creating offer identities',()=>{
   const h=harness(),origin='https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico';
   const download='https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8';

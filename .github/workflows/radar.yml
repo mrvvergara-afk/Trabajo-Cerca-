@@ -40,6 +40,45 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  live-document-reader:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[live document reader]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos y comprobar el código
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0 playwright==1.62.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Confirmar feed completo y los tres IDs revalidados mediante el SDK
+        run: python -m scripts.observe_document_revalidation
+      - name: Comprobar páginas municipales renderizadas sin iniciar sesión
+        run: python -m scripts.render_public_documents
+      - name: Procesar la cola SDK y conservar evidencia en la rama de datos
+        run: python -m scripts.document_queue_reader
+      - name: Conservar diagnósticos, originales y comprobaciones del SDK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-document-reader
+          path: |
+            output/document-reader/
+            output/document-revalidation/
+            output/laboratory_observation*.json
+          retention-days: 7
   hard-source-evidence:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

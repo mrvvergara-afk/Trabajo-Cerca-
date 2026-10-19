@@ -29,7 +29,8 @@ def public_error(exc):
 def public_url(value):
     url = canonical_url(value)
     parts = urllib.parse.urlsplit(url)
-    if parts.port or parts.hostname.removeprefix('www.') not in PUBLIC_CAPTURE_PUBLISHERS:
+    public_cmpc_search=(parts.hostname=='us.api.csod.com' and parts.path in ('/robots.txt','/rec-job-search/external/jobs'))
+    if parts.port or not (parts.hostname.removeprefix('www.') in PUBLIC_CAPTURE_PUBLISHERS or public_cmpc_search):
         raise ValueError('publisher_not_allowed')
     if any(key.lower() in ('token','access_token','api_key','apikey','session','authorization')
            for key, _ in urllib.parse.parse_qsl(parts.query)):

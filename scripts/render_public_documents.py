@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import shutil
+import urllib.parse
 from pathlib import Path
 
 from .common import Budget, write_json
@@ -12,6 +13,35 @@ from .public_document_http import PublicCapture, public_url, public_error as sou
 
 ROOTS = [('los-sauces','https://www.munilossauces.cl/noticias'),
          ('nacimiento','https://www.nacimiento.cl/noticias')]
+
+
+def diagnostic_url(value):
+    parts=urllib.parse.urlsplit(value)
+    query=urllib.parse.parse_qsl(parts.query,keep_blank_values=True)
+    query=[(key,'[redacted]' if key.lower() in ('key','token','api_key','apikey','access_token','authorization','session') else item) for key,item in query]
+    return urllib.parse.urlunsplit((parts.scheme,parts.netloc,parts.path,urllib.parse.urlencode(query),''))[:2000]
+
+
+def public_job_rows(value):
+    rows=[]
+    def safe(item):
+        if isinstance(item,dict):return {key:safe(value) for key,value in item.items() if not any(part in key.lower() for part in ('token','password','authorization','secret','description','html'))}
+        if isinstance(item,list):return [safe(value) for value in item[:100]]
+        if isinstance(item,str):return item[:2000]
+        return item
+    def visit(node,depth=0):
+        if depth>7 or len(rows)>=80:return
+        if isinstance(node,dict):
+            if any('title' in key.lower() and isinstance(item,str) for key,item in node.items()):
+                allowed=('title','requisition','post','location','date','status','apply','company','description','job','city','region')
+                clean={key:item for key,item in node.items() if not any(part in key.lower() for part in ('token','password','authorization','secret')) and (key.lower()=='id' or any(part in key.lower() for part in allowed))}
+                rows.append(safe(clean))
+            else:
+                for item in node.values():visit(item,depth+1)
+        elif isinstance(node,list):
+            for item in node[:100]:visit(item,depth+1)
+    visit(value)
+    return rows
 
 
 async def main(roots=None, destination=None):
@@ -29,12 +59,18 @@ async def main(roots=None, destination=None):
         try:
             for key, url in (roots if roots is not None else ROOTS):
                 blocked = []
+                api_results=[];api_tasks=[];search_calls=0
                 budget = Budget(70)
                 context = await browser.new_context(user_agent='TrabajoCercaLocalAudit/1.0')
                 async def route_request(route):
+                    nonlocal search_calls
                     target = route.request.url
                     try:
                         public_url(target)
+                        if urllib.parse.urlsplit(target).hostname=='us.api.csod.com':
+                            if route.request.method not in ('GET','POST','OPTIONS') or search_calls>=3:
+                                raise ValueError('public_search_request_budget_exceeded')
+                            search_calls+=1
                         allowed = await asyncio.to_thread(capture.allowed, target, budget)
                         if not allowed:
                             raise ValueError('public_source_robots_disallowed')
@@ -43,10 +79,20 @@ async def main(roots=None, destination=None):
                             return
                         await route.continue_()
                     except Exception as exc:
-                        blocked.append({'url':target[:2000],'reason':source_error(exc)})
+                        blocked.append({'url':diagnostic_url(target),'reason':source_error(exc)})
                         await route.abort()
                 await context.route('**/*', route_request)
                 page = await context.new_page()
+                async def capture_job_response(response):
+                    if urllib.parse.urlsplit(response.url).hostname!='us.api.csod.com':return
+                    entry={'url':diagnostic_url(response.url),'http':response.status}
+                    try:
+                        raw=await response.body()
+                        if len(raw)>2500000:raise ValueError('response_byte_budget_exceeded')
+                        entry.update(sha256=capture.put(raw),bytes=len(raw),jobs=public_job_rows(json.loads(raw)))
+                    except Exception as exc:entry['error']=source_error(exc)
+                    api_results.append(entry)
+                page.on('response',lambda response:api_tasks.append(asyncio.create_task(capture_job_response(response))))
                 record = {'key':key,'url':url,'read_only':True,'paid_provider_calls':0,
                           'verified':False,'published':0,'coverage_complete':False}
                 try:
@@ -76,6 +122,8 @@ async def main(roots=None, destination=None):
                 except Exception as exc:
                     record.update(access='blocked_or_unavailable',error=source_error(exc))
                 finally:
+                    if api_tasks:await asyncio.gather(*api_tasks,return_exceptions=True)
+                    record['public_job_api_responses']=api_results
                     record['blocked_requests'] = blocked[:40]
                     await context.close()
                 results.append(record)

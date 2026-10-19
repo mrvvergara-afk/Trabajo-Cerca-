@@ -5,6 +5,7 @@ still requires the existing evidence review and authorized signed receiver.
 """
 import datetime as dt
 import hashlib
+import html
 import json
 import os
 import re
@@ -19,8 +20,8 @@ from .document_cycle import read_app_work
 from .document_reference_proof import prove
 from .laboratory_exchange import REPOSITORY, DOCUMENT_PRODUCER_BRANCH
 from .local_history import DATE, literal_date
-from .local_source_audit import discover, public_medium_url, same_publisher, source_error
-from .public_document_http import PublicCapture, public_url
+from .local_source_audit import discover, public_medium_url, same_publisher
+from .public_document_http import PublicCapture, public_url, public_error as source_error
 from .public_source_adapters import source_adapter
 
 DATA_BRANCH = 'radar-document-reader-state'
@@ -75,6 +76,9 @@ class LinkSections(HTMLParser):
 
 def reception_status(text, now):
     """Only an explicit reception deadline in this attachment's section can close it."""
+    if re.search(r'\(cerrad[oa]\)|postulaci[oó]n(?:es)?\s+cerrad[oa]s?|concurso\s+desierto',text,re.I):
+        return {'status':'closed','reason':'catalogue_explicit_closed_marker','source_published_at':None,
+                'historical_recentness':'not_confirmed','verified':False,'active':False}
     pattern = r'(?:antecedentes|postulaciones)\s+(?:se\s+)?(?:recibir[aá]n|recepcionar[aá]n).{0,35}?hasta.{0,70}?('+DATE+r')'
     deadlines = [(literal_date(match[1], True),match[0]) for match in re.finditer(pattern,text,re.I)]
     dates = {date for date,_ in deadlines if date}
@@ -87,11 +91,43 @@ def reception_status(text, now):
             'source_published_at':None,'verified':False,'active':False}
 
 
+def non_employment_title(title):
+    return bool(re.search(r'arreglos.{0,12}navide[nñ]os|puestos de venta|concurso.{0,20}(?:literario|gastron[oó]mico|talentos)|reconocimiento.{0,30}turismo',title,re.I))
+
+
+def archive_publication_date(raw, origin, target):
+    from .local_source_audit import Document
+    found = []
+    for match in re.finditer(r'<article\b[^>]*>([\s\S]*?)</article>',raw,re.I):
+        body = match[1]
+        parser = Document()
+        parser.feed(body)
+        links = []
+        for href,_ in parser.links:
+            try:links.append(identity(urllib.parse.urljoin(origin,href)))
+            except ValueError:continue
+        if identity(target) not in links:
+            continue
+        literals = re.findall(r'<span\b[^>]*class=["\'][^"\']*\belementor-post-date\b[^"\']*["\'][^>]*>([\s\S]*?)</span>',body,re.I)
+        for literal in literals:
+            literal = re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]+>',' ',literal))).strip()
+            date = literal_date(literal)
+            month_first = re.fullmatch(r'([A-Za-záéíóúÁÉÍÓÚ]+)\s+(\d{1,2}),\s*(20\d{2})',literal)
+            if not date and month_first:
+                date = literal_date(month_first[2]+' de '+month_first[1]+' de '+month_first[3])
+            if date:found.append((date,literal))
+    dates = {date for date,_ in found}
+    return {'date':next(iter(dates)),'literal':found[0][1]} if len(dates)==1 else None
+
+
 def recover_parent(item, capture, budget, cache, now):
     url = public_url(item['url'])
     parent = public_url(item.get('publisher_page') or url)
     if not same_publisher(url,parent):
         raise ValueError('publisher_page_mismatch')
+    discovered_from = parent
+    if not public_medium_url(url):
+        parent = url
     if identity(parent) == identity(url) and public_medium_url(url):
         parent = CATALOGUES.get(urllib.parse.urlsplit(url).hostname.removeprefix('www.'))
         if not parent:
@@ -106,18 +142,35 @@ def recover_parent(item, capture, budget, cache, now):
     raw, final, parser = cache[parent]
     result = {'url':url,'publisher_page':final,'parent_html_sha256':hashlib.sha256(raw).hexdigest(),
               'source_published_at':None,'verified':False,'active':False}
+    page = discover(decode_public_html(raw),final)
+    if non_employment_title(page['title']):
+        return {**result,'status':'not_employment','reason':'primary_title_is_non_employment_contest'}
+    result['discovered_from'] = discovered_from
     if public_medium_url(url):
         section = parser.section(url)
         if not section:
             return {**result,'status':'provenance_missing','reason':'attachment_link_not_found_in_primary_page'}
         return {**result,**reception_status(section,now),'section':section[:5000]}
-    page = discover(decode_public_html(raw),final)
     published = parse_date(page['source_published_at'])
+    if not published and identity(discovered_from) != identity(url):
+        if discovered_from not in cache:
+            archive, archive_final, mime, _ = capture(discovered_from,budget)
+            if mime not in ('text/html','application/xhtml+xml'):
+                raise ValueError('primary_page_not_html')
+            archive_parser = LinkSections(archive_final)
+            archive_parser.feed(decode_public_html(archive))
+            cache[discovered_from] = (archive,archive_final,archive_parser)
+        archive, archive_final, _ = cache[discovered_from]
+        bound_date = archive_publication_date(decode_public_html(archive),archive_final,url)
+        if bound_date:
+            published = bound_date['date']
+            result['source_date_evidence'] = {'kind':'archive_article_publication_date','url':archive_final,
+                'html_sha256':hashlib.sha256(archive).hexdigest(),'literal':bound_date['literal']}
     if published and now-published > dt.timedelta(days=45):
         return {**result,'status':'older_than_45_days','reason':'original_editorial_date_outside_window',
                 'source_published_at':published.isoformat()}
     return {**result,'status':'requires_document_reading','reason':'primary_page_recovered',
-            'source_published_at':page['source_published_at']}
+            'source_published_at':published.isoformat() if published else None}
 
 
 def recent_editions(raw, now):
@@ -201,14 +254,15 @@ def read_queue(work, output, checkpoint, *, capture=None, now=None, proof=prove)
             outcome = recover_parent(item,capture,overall,cache,now)
             if outcome['status'] == 'requires_document_reading':
                 parent = outcome['publisher_page']
-                old = checkpoint['items'].get(identity(parent),{})
+                selection_key = identity(outcome['url']) if public_medium_url(outcome['url']) else identity(parent)
+                old = checkpoint['items'].get(selection_key,{})
                 parent_bytes = next(value[0] for value in cache.values() if identity(value[1]) == identity(parent))
                 if prior_reference_same_documents(parent,parent_bytes,known):
                     outcome.update(status='previously_reviewed_not_repeated',reason='no_changed_document_reference_proven')
                 elif old.get('parent_html_sha256') == outcome['parent_html_sha256'] and old.get('reading_complete') is True:
                     outcome.update(status='previously_read_unchanged',reason='durable_reading_reused')
-                elif (source_adapter(parent) or {}).get('family') == 'local':
-                    selected.setdefault(identity(parent),outcome)
+                elif (source_adapter(parent) or {}).get('family') == 'local' or public_medium_url(outcome['url']):
+                    selected.setdefault(selection_key,{**outcome,'attachment_url':outcome['url'] if public_medium_url(outcome['url']) else None})
             results.append(outcome)
         except Exception as exc:
             results.append({'url':item.get('url'),'status':'blocked_or_unavailable','reason':source_error(exc)})
@@ -239,11 +293,12 @@ def read_queue(work, output, checkpoint, *, capture=None, now=None, proof=prove)
             if overall.remaining()<15:
                 readings.append({'url':item['publisher_page'],'reading_saved':False,'reason':'reader_run_budget_exhausted'})
                 continue
+            options = {'attachment_url':item['attachment_url']} if item.get('attachment_url') else {}
             report = proof(item['publisher_page'],root,budget=Budget(min(220,overall.remaining())),max_work=40,
-                           fetcher=capture,now=now,ocr_all_pdf_pages='malleco7.cl' in key)
+                           fetcher=capture,now=now,ocr_all_pdf_pages='malleco7.cl' in key,**options)
             complete = not any(status != 'done' for status in report['counts']['statuses']) and all(
                 row['status']=='done' for document in report['documents'] for row in document['pages'])
-            reading = {'url':item['publisher_page'],'documents':report['documents'],
+            reading = {'url':item.get('attachment_url') or item['publisher_page'],'publisher_page':item['publisher_page'],'documents':report['documents'],
                        'document_reviews':report['document_reviews'],'evaluations':report['evaluations'],
                        'persistence_check':report['persistence_check'],'reading_complete':complete,
                        'source_published_at':item.get('source_published_at'),
@@ -323,6 +378,9 @@ def main():
         raise ValueError('document_reader_restricted_to_authorized_branch')
     output = Path('output/document-reader')
     output.mkdir(parents=True,exist_ok=True)
+    sdk_proof = Path('output/document-revalidation/confirmed.json')
+    if sdk_proof.exists():
+        (output/'sdk-publication-proof.json').write_bytes(sdk_proof.read_bytes())
     parent, checkpoint = restore_checkpoint()
     work = read_app_work(output)
     summary = read_queue(work,output,checkpoint)

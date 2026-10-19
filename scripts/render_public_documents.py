@@ -7,8 +7,8 @@ import shutil
 from pathlib import Path
 
 from .common import Budget, write_json
-from .local_source_audit import discover, source_error
-from .public_document_http import PublicCapture, public_url
+from .local_source_audit import discover
+from .public_document_http import PublicCapture, public_url, public_error as source_error
 
 ROOTS = [('los-sauces','https://www.munilossauces.cl/noticias'),
          ('nacimiento','https://www.nacimiento.cl/noticias')]

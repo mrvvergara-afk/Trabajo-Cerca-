@@ -94,7 +94,7 @@ class Document(HTMLParser):
                 if (embedded.hostname or '').removeprefix('www.') in ('facebook.com','web.facebook.com','m.facebook.com') and embedded.path == '/plugins/page.php':
                     self.links.append((attrs['src'],'Facebook'))
             except ValueError: pass
-        if tag == 'img':
+        if tag == 'img' and not self.skip:
             image = attrs.get('data-src') or attrs.get('data-lazy-src') or attrs.get('src')
             if image:
                 self.images.append(image)

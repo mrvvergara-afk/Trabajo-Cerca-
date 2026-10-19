@@ -23,6 +23,23 @@ NOW=dt.datetime(2026,10,17,22,tzinfo=dt.timezone.utc)
 
 
 class EmbeddedDocumentTests(unittest.TestCase):
+    def test_footer_and_header_images_never_become_notice_media(self):
+        html=('<header><img src="/facebook.png"></header><main><img src="/afiche-empleo.png"></main>'
+              '<footer><img src="/certificacion-medioambiente.png"><img src="/instagram.png"></footer>')
+        self.assertEqual(discover(html,URL)['images'],['https://mtraiguen.cl/afiche-empleo.png'])
+
+    def test_a_catalogue_attachment_must_be_linked_before_any_document_is_downloaded(self):
+        catalogue='https://municipalidadrenaico.cl/concursos-publicos/'
+        document='https://municipalidadrenaico.cl/unlinked.pdf'
+        calls=[]
+        def fetch(url,*args,**kwargs):
+            calls.append(url)
+            return (b'User-agent: *\nDisallow:\n' if url.endswith('robots.txt') else b'<h1>Concursos</h1>'),url,'text/plain' if url.endswith('robots.txt') else 'text/html',200
+        with tempfile.TemporaryDirectory() as folder:
+            with self.assertRaisesRegex(ValueError,'attachment_not_linked'):
+                prove(catalogue,Path(folder)/'proof',fetcher=fetch,now=NOW,attachment_url=document)
+        self.assertNotIn(document,calls)
+
     def test_lumaco_public_download_without_extension_keeps_the_publisher_and_has_no_fake_date(self):
         origin='https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico'
         target='https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8'

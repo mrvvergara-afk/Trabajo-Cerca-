@@ -13,8 +13,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .common import Budget, canonical_url, parse_date, utcnow, write_json
-from .local_source_audit import fetch_public, source_error
-from .public_source_adapters import source_adapter
+from .local_source_audit import fetch_public, source_error, Document, public_medium_url, discover, same_publisher
+from .public_source_adapters import source_adapter, LOCAL_PUBLISHERS
+from .public_document_http import public_url
 from .radar_v2_pilot import run
 from .radar_v2_publish import prepare
 from .radar_v2_store import PilotStore,restore
@@ -62,8 +63,16 @@ def verify_persistence(store,output,reviews):
         'sqlite_sha256':snapshot['sqlite_sha256']}
 
 
-def prove(url,output,*,budget=None,fetcher=fetch_public,now=None,max_work=35,ocr_all_pdf_pages=False):
+def prove(url,output,*,budget=None,fetcher=fetch_public,now=None,max_work=35,ocr_all_pdf_pages=False,attachment_url=None):
     url=canonical_url(url);adapter=source_adapter(url)
+    directory = not adapter
+    if attachment_url:
+        url=public_url(url);attachment_url=public_url(attachment_url)
+        if not public_medium_url(attachment_url) or not same_publisher(url,attachment_url):
+            raise ValueError('local_attachment_reference_required')
+        if directory:
+            name=LOCAL_PUBLISHERS.get(urllib.parse.urlsplit(url).hostname.removeprefix('www.'))
+            if name:adapter={'family':'local','name':name}
     if not adapter or adapter['family']!='local':raise ValueError('local_primary_reference_required')
     if type(max_work) is not int or not 1<=max_work<=40:raise ValueError('reference_work_limit_invalid')
     output=Path(output);output.mkdir(parents=True,exist_ok=False)
@@ -102,8 +111,30 @@ def prove(url,output,*,budget=None,fetcher=fetch_public,now=None,max_work=35,ocr
             'paid_providers_enabled':False,'publish_enabled':False}
     store=PilotStore(output/'state');history=State(output/'history.sqlite3')
     try:
-        # Follow document embeds from this reference only; do not crawl related notices.
-        store.seed('web',url,{'url':url,'source':source,'depth':1,'page_type':'notice'},now)
+        # A catalogue attachment must be literally linked. Its catalogue timestamp
+        # cannot become the original publication date of each individual contest.
+        if attachment_url:
+            raw,final,mime,status=capture(url,budget)
+            if mime not in ('text/html','application/xhtml+xml') or not same_publisher(url,final):
+                raise ValueError('attachment_primary_page_unavailable')
+            parser=Document();parser.feed(raw.decode('utf-8','replace'))
+            def match_target(value):
+                try:
+                    target=urllib.parse.urlsplit(canonical_url(urllib.parse.urljoin(final,value)))
+                    return (target.hostname.removeprefix('www.'),target.path,target.query)
+                except ValueError:return None
+            linked=[href for href,_ in parser.links]+parser.images
+            if not any(match_target(value)==match_target(attachment_url) for value in linked):
+                raise ValueError('attachment_not_linked_by_primary_page')
+            original=store.put(raw,mime)
+            page=discover(raw.decode('utf-8','replace'),final)
+            store.seed('media',url+':'+attachment_url,{
+                'source_url':url,'media_url':attachment_url,'source':'document-reference','source_family':'municipal',
+                'html_object_sha256':original,'source_published_at':None if directory else page['source_published_at'],
+                'capture_slot':int(now.timestamp()//14400),'ocr_all_pdf_pages':ocr_all_pdf_pages},now)
+        else:
+            # Follow document embeds from this reference only; do not crawl related notices.
+            store.seed('web',url,{'url':url,'source':source,'depth':1,'page_type':'notice'},now)
         result=run(store,config,{'captures':[]},now=now,budget=budget,limit=max_work,fetcher=capture)
         queue,handoff=prepare(store,history,output,now=now,territories=config['territories'])
         documents=[]

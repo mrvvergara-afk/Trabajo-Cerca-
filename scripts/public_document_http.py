@@ -1,5 +1,6 @@
 """Bounded public downloads with publisher and robots checks before each redirect."""
 import hashlib
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -11,6 +12,17 @@ from .local_source_audit import same_publisher
 from .public_source_adapters import LOCAL_PUBLISHERS
 
 USER_AGENT = 'TrabajoCercaLocalAudit/1.0'
+
+
+def public_error(exc):
+    code = str(exc)
+    if isinstance(exc,ValueError) and re.fullmatch(
+            r'(?:publisher_not_allowed|credential_query_not_allowed|robots_policy_unavailable|'
+            r'public_source_robots_disallowed|source_byte_budget_exceeded|redirect_outside_publisher|'
+            r'redirect_budget_exhausted|publisher_page_mismatch|primary_page_not_html|'
+            r'rendered_page_budget_exceeded|public_access_challenge|(?:public_source|rendered)_http_\d{3})',code):
+        return code
+    return type(exc).__name__
 
 
 def public_url(value):

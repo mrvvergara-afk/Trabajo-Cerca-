@@ -11,8 +11,9 @@ from scripts.document_queue_reader import (
     DATA_BRANCH, SCHEMA, EDITIONS, identity, read_queue, recover_parent,
     recent_editions, reception_status, prior_reference_same_documents,
     publish_evidence, restore_checkpoint,
+    archive_publication_date,
 )
-from scripts.public_document_http import PublicCapture
+from scripts.public_document_http import PublicCapture, public_error
 
 NOW = dt.datetime(2026,10,18,22,tzinfo=dt.timezone.utc)
 ROOT = 'https://municipalidadrenaico.cl/concursos-publicos/'
@@ -36,6 +37,54 @@ class Capture:
 
 
 class QueueReaderTests(unittest.TestCase):
+    def test_original_date_can_be_recovered_from_the_exact_archive_article_without_using_its_neighbors(self):
+        archive = 'https://www.muninegrete.cl/page/2/'
+        notice = 'https://www.muninegrete.cl/concurso-director/'
+        raw = ('<article><a href="/other/">Otra noticia</a><span class="elementor-post-date">Octubre 17, 2026</span></article>'
+               '<article><a href="'+notice+'">Concurso director</a><span class="elementor-post-date">Julio 7, 2026</span></article>')
+        date = archive_publication_date(raw,archive,notice)
+        self.assertEqual(date['literal'],'Julio 7, 2026')
+        self.assertEqual(date['date'].month,7)
+        capture = Capture({archive:raw.encode(),notice:b'<title>Concurso director</title><p>Bases para el cargo.</p>'})
+        row = recover_parent({'url':notice,'publisher_page':archive},capture,Budget(5),{},NOW)
+        self.assertEqual(row['status'],'older_than_45_days')
+        self.assertEqual(row['source_date_evidence']['literal'],'Julio 7, 2026')
+        self.assertEqual(row['publisher_page'],notice)
+        ambiguous = raw.replace('Julio 7, 2026','Julio 7, 2026</span><span class="elementor-post-date">Octubre 17, 2026')
+        self.assertIsNone(archive_publication_date(ambiguous,archive,notice))
+
+    def test_individual_html_is_read_instead_of_the_archive_that_discovered_it(self):
+        archive = 'https://www.muninegrete.cl/page/2/'
+        notice = 'https://www.muninegrete.cl/bases-llamado-a-concurso-para-proveer-cargo-de-director-a-del-cesfam-yanequen/'
+        old = b'<meta property="article:published_time" content="2026-07-07T12:00:00Z"><h1>Concurso director CESFAM</h1>'
+        capture = Capture({notice:old})
+        row = recover_parent({'url':notice,'publisher_page':archive},capture,Budget(5),{},NOW)
+        self.assertEqual(row['status'],'older_than_45_days')
+        self.assertEqual(row['publisher_page'],notice)
+        self.assertEqual(row['discovered_from'],archive)
+        self.assertEqual(capture.calls,[notice])
+
+    def test_explicit_closed_sections_and_non_employment_contests_do_not_enter_ocr(self):
+        closed = reception_status('Concurso cargo de apoyo familiar (CERRADO). Bases disponibles en el sitio.',NOW)
+        self.assertEqual(closed['status'],'closed')
+        notice = 'https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/'
+        capture = Capture({notice:'<title>2° versión concursos arreglos navideños</title><footer><img src="/facebook.png"></footer>'.encode()})
+        row = recover_parent({'url':notice,'publisher_page':notice},capture,Budget(5),{},NOW)
+        self.assertEqual(row['status'],'not_employment')
+        self.assertFalse(row['verified'])
+
+    def test_catalogue_media_without_a_separate_article_reaches_the_targeted_attachment_reader(self):
+        capture = Capture({ROOT:CATALOGUE,EDITIONS:b''})
+        calls = []
+        def reader(url,root,**kwargs):
+            calls.append((url,kwargs.get('attachment_url')))
+            return {'counts':{'statuses':{'done':1}},'documents':[],'document_reviews':[],
+                    'evaluations':[],'persistence_check':{'snapshot_restored':True}}
+        with tempfile.TemporaryDirectory() as folder:
+            read_queue({'items':[{'url':SECOND,'publisher_page':SECOND}]},folder,
+                       {'schema':SCHEMA,'items':{}},capture=capture,now=NOW,proof=reader)
+        self.assertEqual(calls,[(ROOT,SECOND)])
+
     def test_recover_original_catalogue_and_close_only_the_attachment_with_its_own_deadline(self):
         capture = Capture({ROOT:CATALOGUE})
         cache = {}
@@ -149,6 +198,11 @@ class QueueReaderTests(unittest.TestCase):
 
 
 class PublicDownloadTests(unittest.TestCase):
+    def test_public_error_codes_are_informative_without_leaking_unknown_exception_text(self):
+        self.assertEqual(public_error(ValueError('public_source_robots_disallowed')),'public_source_robots_disallowed')
+        self.assertEqual(public_error(ValueError('public_source_http_403')),'public_source_http_403')
+        self.assertEqual(public_error(ValueError('untrusted detail with private material')),'ValueError')
+
     def test_disallowed_redirect_target_is_checked_before_downloading_it(self):
         root = 'https://www.nacimiento.cl/noticias'
         calls = []

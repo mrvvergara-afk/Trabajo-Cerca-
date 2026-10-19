@@ -1,0 +1,62 @@
+{
+  "schema": "trabajo-cerca.cmpc-visible-publication-proof.v1",
+  "checked_at": "2026-10-19T23:51:13.962940+00:00",
+  "published_new_difficult_offers": 2,
+  "published_ids": [
+    "9fc7362f-fb6e-41cf-ae38-68f016c257c5",
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+  ],
+  "titles": [
+    "Ingeniero/a Procesos y Excelencia Sr",
+    "Inspector de Vibraciones"
+  ],
+  "sdk_total_items": 33,
+  "sdk_job_offer_records": 31,
+  "homepage_cards_confirmed": true,
+  "homepage_job_cards": 9,
+  "feed_manifest": "e9e7ee52-8225-40fc-9d93-733af9dfe4d0",
+  "traiguen_ids_preserved": [
+    "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+    "8b75b282-d838-45bc-9309-d10874aae023",
+    "de9067f5-59f2-4e0c-ba02-fc9584debe0f"
+  ],
+  "baseline_feed_manifest": "a7425daf-c460-4d88-98fc-adfae0b807fd",
+  "added_ids_since_baseline": [
+    "9fc7362f-fb6e-41cf-ae38-68f016c257c5",
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+  ],
+  "removed_ids_since_baseline": [
+    "03104c78-3a39-41b9-8ec1-9abe10f3429e",
+    "036dcd1e-9097-4cc8-956c-f67d5f86b7f1",
+    "0860d464-e486-4103-b2e9-57826b935800",
+    "0bc3065c-f772-4394-9355-f8b4f3e63a5a",
+    "0db32001-2271-4eb5-b583-f71bde2d3c07",
+    "11e84ad2-2250-408d-9498-9e9a349e4783",
+    "16e8629e-3f85-428e-ab1c-8ef40fffc048",
+    "1a71f5a2-6a51-46dd-80d9-289ab90f46cf",
+    "1efc1adf-af5e-40dd-9102-43761469b211",
+    "1fd9274f-dc90-4efc-8238-d61cb3e93c86",
+    "202c0db8-7c01-4547-9743-989891f2d0dd",
+    "250c3ee0-893e-4601-b945-509033af6e1b",
+    "266784be-8ad6-48be-9570-51bd2c001439",
+    "3681872e-6462-4e8d-b019-4c368293dc7e",
+    "3c500a73-e5f3-47bd-be81-37c8c7fd32ad",
+    "3ff62fe2-3824-481c-9db3-e544116740cd",
+    "4a93c1e6-dd15-4e10-b078-5f17ed8a4499",
+    "50a280a4-8992-4957-9906-251ea7a4546c",
+    "64d52710-3c5e-4be0-81a3-a973c13b1579",
+    "70e52b53-ecf3-4fdf-94bb-24acf007c950",
+    "75a40aca-0c0a-4019-a556-c095de6fd446",
+    "a08a77a7-c79b-4344-8fe4-b46020ec3477",
+    "abba13ea-fd01-4eb4-a093-b8d62f0179f8",
+    "c4be30bb-57c1-45c1-9832-18065b54d498",
+    "e35e4124-3d9e-4562-9b0d-47a582208dc1",
+    "e656f36d-35a9-44fb-b64e-67c04a363429",
+    "ee66bce0-46cd-4bab-b82c-1b9a9d65a82a"
+  ],
+  "restored_existing_ids_not_new": [
+    "0b54a8ad-1f4a-47f4-b351-8aa8dfa582f1"
+  ],
+  "paid_provider_calls": 0,
+  "expiry_inferred": false
+}

@@ -12,6 +12,7 @@ from scripts.document_queue_reader import (
     recent_editions, reception_status, prior_reference_same_documents,
     publish_evidence, restore_checkpoint,
     archive_publication_date,
+    cached_reference_matches,
 )
 from scripts.public_document_http import PublicCapture, public_error
 
@@ -37,6 +38,15 @@ class Capture:
 
 
 class QueueReaderTests(unittest.TestCase):
+    def test_newspaper_nonce_changes_reuse_the_completed_reading_but_a_different_pdf_is_new_work(self):
+        page='https://www.malleco7.cl/edicion-jueves-15-de-octubre-de-2026/'
+        pdf='https://www.malleco7.cl/wp-content/uploads/2026/10/1486.pdf'
+        old={'reading_complete':True,'parent_html_sha256':'a'*64,'document_targets':[identity(pdf)]}
+        raw=('<script>nonce="different"</script><a href="'+pdf+'">DESCARGAR PDF</a>').encode()
+        self.assertTrue(cached_reference_matches(page,raw,old))
+        self.assertFalse(cached_reference_matches(page,raw.replace(b'1486',b'new'),old))
+        self.assertFalse(cached_reference_matches(page,raw,{**old,'reading_complete':False}))
+
     def test_original_date_can_be_recovered_from_the_exact_archive_article_without_using_its_neighbors(self):
         archive = 'https://www.muninegrete.cl/page/2/'
         notice = 'https://www.muninegrete.cl/concurso-director/'

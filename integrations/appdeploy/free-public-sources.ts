@@ -74,7 +74,7 @@ export function publicPageLinks(raw:string, origin:string) {
 export function publicRenderRequired(raw:string) {
   const text=publicText(raw.replace(/<head\b[^>]*>[\s\S]*?<\/head>/gi,''));
   return /<script\b/i.test(raw) && text.length<160 &&
-    (/\bloading\b|cargando|habilit[ae].{0,20}javascript|enable.{0,20}javascript/i.test(text) ||
+    (text.length===0 || /\bloading\b|cargando|habilit[ae].{0,20}javascript|enable.{0,20}javascript/i.test(text) ||
      /<(?:app-root|nuxt)\b|<(?:div|main)\b[^>]*\bid=["'](?:app|root|__next|__nuxt)["']|<img\b[^>]*alt=["']loading["']/i.test(raw));
 }
 

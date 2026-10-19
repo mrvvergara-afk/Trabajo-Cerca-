@@ -213,13 +213,17 @@
       "identity_evidence": "Página individual BNE leída directamente por el runner el 2026-10-13; título, empresa, lugar y fechas presentes."
     },
     {
-      "key": "cmpc-empleo",
+      "key": "cmpc-empleo-csod",
       "name": "CMPC · portal de empleo",
       "family": "employer",
-      "url": "https://cmpc.trabajando.cl/",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
       "territory": "zona forestal",
       "discovered_from": "https://www.cmpc.com/trabaja-con-nosotros/",
-      "scope": "discovery_only_until_individual_offer_verified"
+      "scope": "official_employer_portal; individual_offer_access_and_verification_pending",
+      "previous_urls": [
+        "https://cmpc.trabajando.cl/"
+      ],
+      "identity_evidence": "El enlace Ir al portal de https://www.cmpc.com/trabaja-con-nosotros/ dirige literalmente a este portal el 2026-10-19."
     },
     {
       "key": "arauco-empleo",

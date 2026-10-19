@@ -1,0 +1,9 @@
+{
+  "filename": "backend/index.ts",
+  "diffs": [
+    {
+      "from": "  { key:'cmpc-empleo', name:'CMPC · portal de empleo', url:'https://cmpc.trabajando.cl/', territory:'zona forestal' },",
+      "to": "  { key:'cmpc-empleo-csod', name:'CMPC · portal de empleo', url:'https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc', territory:'zona forestal' },"
+    }
+  ]
+}

@@ -222,6 +222,21 @@ def prior_reference_same_documents(parent, raw, known):
     return documents == previous['documents']
 
 
+def document_targets(parent, raw):
+    page=discover(decode_public_html(raw),parent)
+    return sorted({identity(row['url']) for row in page['candidates']
+                   if '.pdf' in urllib.parse.urlsplit(row['url']).path.lower() or 'phocadownload' in row['url']})
+
+
+def cached_reference_matches(parent, raw, old):
+    if old.get('reading_complete') is not True:return False
+    if hashlib.sha256(raw).hexdigest()==old.get('parent_html_sha256'):return True
+    # Reuse an unapproved newspaper reading when only its surrounding HTML changes.
+    # This never renews a job, a review timestamp or an original publication date.
+    return ('malleco7.cl' in identity(parent) and bool(old.get('document_targets')) and
+            document_targets(parent,raw)==old['document_targets'])
+
+
 def read_queue(work, output, checkpoint, *, capture=None, now=None, proof=prove):
     now = now or utcnow()
     output = Path(output)
@@ -259,7 +274,7 @@ def read_queue(work, output, checkpoint, *, capture=None, now=None, proof=prove)
                 parent_bytes = next(value[0] for value in cache.values() if identity(value[1]) == identity(parent))
                 if prior_reference_same_documents(parent,parent_bytes,known):
                     outcome.update(status='previously_reviewed_not_repeated',reason='no_changed_document_reference_proven')
-                elif old.get('parent_html_sha256') == outcome['parent_html_sha256'] and old.get('reading_complete') is True:
+                elif cached_reference_matches(parent,parent_bytes,old):
                     outcome.update(status='previously_read_unchanged',reason='durable_reading_reused')
                 elif (source_adapter(parent) or {}).get('family') == 'local' or public_medium_url(outcome['url']):
                     selected.setdefault(selection_key,{**outcome,'attachment_url':outcome['url'] if public_medium_url(outcome['url']) else None})
@@ -275,7 +290,7 @@ def read_queue(work, output, checkpoint, *, capture=None, now=None, proof=prove)
             outcome = {**item,'parent_html_sha256':digest,'status':'requires_document_reading'}
             if prior_reference_same_documents(parent,raw,known):
                 outcome.update(status='previously_reviewed_not_repeated',reason='no_changed_document_reference_proven')
-            elif checkpoint['items'].get(identity(parent),{}).get('parent_html_sha256') == digest and checkpoint['items'][identity(parent)].get('reading_complete') is True:
+            elif cached_reference_matches(parent,raw,checkpoint['items'].get(identity(parent),{})):
                 outcome.update(status='previously_read_unchanged',reason='durable_reading_reused')
             else:
                 selected.setdefault(identity(parent),{**outcome,'publisher_page':final})
@@ -306,7 +321,9 @@ def read_queue(work, output, checkpoint, *, capture=None, now=None, proof=prove)
                        'parent_html_sha256':item['parent_html_sha256'],'reading_saved':True,
                        'verified':False,'published':0}
             readings.append(reading)
-            checkpoint['items'][key] = {**item,'reading_saved':True,'reading_complete':complete,'checked_at':now.isoformat()}
+            targets=sorted({identity(document['url']) for document in report['documents']})
+            checkpoint['items'][key] = {**item,'reading_saved':True,'reading_complete':complete,
+                                      'document_targets':targets,'checked_at':now.isoformat()}
         except Exception as exc:
             readings.append({'url':item['publisher_page'],'reading_saved':False,'reason':source_error(exc)})
     for row in results:
@@ -339,6 +356,11 @@ def restore_checkpoint(repository=None):
     state = json.loads(raw)
     if state.get('schema') != SCHEMA or not isinstance(state.get('items'),dict):
         raise ValueError('reader_checkpoint_invalid_preserve_prior')
+    for url,item in state['items'].items():
+        if (url.startswith('https://malleco7.cl/edicion-') and item.get('reading_complete') is True
+                and not item.get('document_targets') and re.fullmatch('[a-f0-9]{64}',item.get('parent_html_sha256',''))):
+            original=git('show',parent+':objects/'+item['parent_html_sha256'],cwd=repository)
+            item['document_targets']=document_targets(url,original)
     return parent,state
 
 

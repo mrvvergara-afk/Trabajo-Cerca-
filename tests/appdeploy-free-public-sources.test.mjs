@@ -8,6 +8,13 @@ import vm from 'node:vm';
 const stamp=Date.parse('2026-10-13T12:00:00Z');
 const url='https://cl.indeed.com/viewjob?jk=0123456789abcdef';
 
+test('The CMPC portal linked from its corporate site is discovery work and never an individual verified job',()=>{
+  const h=harness(),portal='https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc';
+  assert.equal(h.ctx.publicPublisher(portal).group,'cmpc_jobs');
+  assert.equal(h.ctx.publicSourceAdapter(portal),null);
+  assert.equal(h.ctx.publicRenderRequired('<html><body><div id="career-root"></div><script src="/career.js"></script></body></html>'),true);
+});
+
 test('A municipal loading shell stays explicit browser work and cannot count as a read job source',async()=>{
   const origin='https://www.nacimiento.cl/noticias';
   const raw='<html><body><div class="shell" id="app"><img alt="Loading"></div><script src="/app.js"></script></body></html>';

@@ -36,6 +36,7 @@ export function publicPublisher(value:string):{ name:string; host:string; group:
     'chiletrabajos.cl':['Chiletrabajos','chiletrabajos'],
     'bne.gob.cl':['Bolsa Nacional de Empleo','bne'], 'bne.cl':['Bolsa Nacional de Empleo','bne'],
     'cmpc.trabajando.cl':['CMPC · portal de empleo','cmpc_jobs'],
+    'cmpc.csod.com':['CMPC · portal de empleo','cmpc_jobs'],
     'jobs.arauco.com':['Arauco · portal de empleo','arauco_jobs'],
   };
   return portals[host] ? { name:portals[host][0],host,group:portals[host][1] } : null;

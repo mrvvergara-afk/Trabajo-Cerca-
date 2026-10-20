@@ -1,0 +1,32 @@
+{
+  "batch": "1",
+  "exchange_commit": "33b23d6faff971f8c2f7a3019982b7197e4f00cc",
+  "confirmation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+      "b92528e5-61b5-4498-88ca-808c2443a044",
+      "cb47b13c-00cf-4d12-9043-c6906da31736"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "33b23d6faff971f8c2f7a3019982b7197e4f00cc",
+    "ingestion_run_id": "39515321623",
+    "feed_complete": true,
+    "feed_manifest": "61a78b7d-7954-462e-a2d5-f77803d87f56",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "source_urls": [
+    "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
+    "https://www.laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
+    "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752"
+  ]
+}

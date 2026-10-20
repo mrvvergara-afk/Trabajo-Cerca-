@@ -1,0 +1,32 @@
+{
+  "batch": "4",
+  "exchange_commit": "c254cb03df2d949f94927a1d7c356d01ba622e36",
+  "confirmation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "bdaed372-0383-4771-9c3e-d4a80207d823",
+      "361dab2c-87ef-4bce-9bda-ef731822244d",
+      "1c23fbb3-3317-4e97-86bd-8db6827af3c4"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "c254cb03df2d949f94927a1d7c356d01ba622e36",
+    "ingestion_run_id": "39515321623",
+    "feed_complete": true,
+    "feed_manifest": "44b2b76a-4116-4a85-b6d4-d0687a98f9d7",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "source_urls": [
+    "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+    "https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+    "https://www.laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html"
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "schema": "trabajo-cerca.expanded-reviewed-publication.v1",
+  "checked_at": "2026-10-20T23:33:56.224923+00:00",
+  "deliveries": [
+    {
+      "batch": "1",
+      "exchange_commit": "33b23d6faff971f8c2f7a3019982b7197e4f00cc",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+          "b92528e5-61b5-4498-88ca-808c2443a044",
+          "cb47b13c-00cf-4d12-9043-c6906da31736"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "33b23d6faff971f8c2f7a3019982b7197e4f00cc",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "61a78b7d-7954-462e-a2d5-f77803d87f56",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
+        "https://www.laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
+        "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752"
+      ]
+    },
+    {
+      "batch": "2",
+      "exchange_commit": "cd2be5ff78c5f27cf7d1b5585a2b674ecff9d52b",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+          "cb724831-6a31-4fbf-9d8c-c067596f9237",
+          "9e30fb6a-c41e-4b8a-814c-440f0da08ca1"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "cd2be5ff78c5f27cf7d1b5585a2b674ecff9d52b",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "963fda0a-744f-4359-99bb-c2523c51cdc0",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+        "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+        "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746"
+      ]
+    },
+    {
+      "batch": "3",
+      "exchange_commit": "b0a9b9d1dec8911ddfb494123f96e18fab302af6",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+          "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+          "4ba4e5d1-8556-4b33-8304-329a35184274"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "b0a9b9d1dec8911ddfb494123f96e18fab302af6",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "c4e1ca7b-e3e0-49f9-bfae-c0e83f61a7eb",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+        "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+        "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738"
+      ]
+    },
+    {
+      "batch": "4",
+      "exchange_commit": "c254cb03df2d949f94927a1d7c356d01ba622e36",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "bdaed372-0383-4771-9c3e-d4a80207d823",
+          "361dab2c-87ef-4bce-9bda-ef731822244d",
+          "1c23fbb3-3317-4e97-86bd-8db6827af3c4"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "c254cb03df2d949f94927a1d7c356d01ba622e36",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "44b2b76a-4116-4a85-b6d4-d0687a98f9d7",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+        "https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+        "https://www.laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html"
+      ]
+    },
+    {
+      "batch": "5",
+      "exchange_commit": "4f56115212ca8463c1e5c1a29868f077a6b498cf",
+      "confirmation": {
+        "stored": 1,
+        "published": 1,
+        "published_ids": [
+          "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "4f56115212ca8463c1e5c1a29868f077a6b498cf",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "09f21d13-722b-4a0d-867f-47ff59ccf9fd",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc"
+      ]
+    }
+  ],
+  "new_offers_confirmed": 15,
+  "published_ids": [
+    "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+    "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+    "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+    "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+    "361dab2c-87ef-4bce-9bda-ef731822244d",
+    "4ba4e5d1-8556-4b33-8304-329a35184274",
+    "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+    "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+    "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+    "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+    "b92528e5-61b5-4498-88ca-808c2443a044",
+    "bdaed372-0383-4771-9c3e-d4a80207d823",
+    "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+    "cb47b13c-00cf-4d12-9043-c6906da31736",
+    "cb724831-6a31-4fbf-9d8c-c067596f9237",
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+  ],
+  "already_visible_ids": [
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+  ],
+  "added_ids": [
+    "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+    "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+    "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+    "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+    "361dab2c-87ef-4bce-9bda-ef731822244d",
+    "4ba4e5d1-8556-4b33-8304-329a35184274",
+    "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+    "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+    "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+    "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+    "b92528e5-61b5-4498-88ca-808c2443a044",
+    "bdaed372-0383-4771-9c3e-d4a80207d823",
+    "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+    "cb47b13c-00cf-4d12-9043-c6906da31736",
+    "cb724831-6a31-4fbf-9d8c-c067596f9237",
+    "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+    "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45"
+  ],
+  "removed_ids": [
+    "bf77e561-ccca-48a7-9ecf-f8de424f8104"
+  ],
+  "removal_reasons_confirmed": false,
+  "sdk_job_offer_records": 50,
+  "all_cards_confirmed": true,
+  "paid_provider_calls": 0,
+  "skipped": [
+    {
+      "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "reason": "already_visible_or_same_identity"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
+      "reason": "already_visible_or_same_identity"
+    },
+    {
+      "url": "https://www.laborum.cl/empleos/promotora-20-horas-traiguen-1118460788.html",
+      "reason": "already_visible_or_same_identity"
+    }
+  ]
+}

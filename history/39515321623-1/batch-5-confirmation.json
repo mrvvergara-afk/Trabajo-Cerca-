@@ -1,0 +1,28 @@
+{
+  "batch": "5",
+  "exchange_commit": "4f56115212ca8463c1e5c1a29868f077a6b498cf",
+  "confirmation": {
+    "stored": 1,
+    "published": 1,
+    "published_ids": [
+      "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "4f56115212ca8463c1e5c1a29868f077a6b498cf",
+    "ingestion_run_id": "39515321623",
+    "feed_complete": true,
+    "feed_manifest": "09f21d13-722b-4a0d-867f-47ff59ccf9fd",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "source_urls": [
+    "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc"
+  ]
+}

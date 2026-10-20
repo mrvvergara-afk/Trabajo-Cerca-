@@ -1,0 +1,138 @@
+{
+  "status": "published",
+  "ingestion": {
+    "stored": 3,
+    "published": 0,
+    "status": "stored_waiting_for_feed"
+  },
+  "feed": {
+    "itemCount": 46,
+    "totalJobOffers": 44,
+    "totalVerifiedJobOffers": 44,
+    "totalProvisionalJobOffers": 0,
+    "recentJobOffers24h": 16,
+    "recentJobOffers7d": 20,
+    "communeStats": {
+      "Angol": {
+        "jobs": 18,
+        "newJobs24h": 9,
+        "newJobs7d": 9,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Collipulli": {
+        "jobs": 2,
+        "newJobs24h": 2,
+        "newJobs7d": 2,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Lumaco": {
+        "jobs": 3,
+        "newJobs24h": 2,
+        "newJobs7d": 2,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Traiguén": {
+        "jobs": 5,
+        "newJobs24h": 1,
+        "newJobs7d": 5,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Mulchén": {
+        "jobs": 4,
+        "newJobs24h": 1,
+        "newJobs7d": 1,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Nacimiento": {
+        "jobs": 4,
+        "newJobs24h": 1,
+        "newJobs7d": 1,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Los Ángeles": {
+        "jobs": 3,
+        "newJobs24h": 0,
+        "newJobs7d": 0,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Negrete": {
+        "jobs": 1,
+        "newJobs24h": 0,
+        "newJobs7d": 0,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Temuco": {
+        "jobs": 3,
+        "newJobs24h": 0,
+        "newJobs7d": 0,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Victoria": {
+        "jobs": 6,
+        "newJobs24h": 0,
+        "newJobs7d": 0,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Ercilla": {
+        "jobs": 2,
+        "newJobs24h": 0,
+        "newJobs7d": 0,
+        "people": 0,
+        "needs": 0,
+        "services": 0
+      },
+      "Mininco": {
+        "jobs": 0,
+        "newJobs24h": 0,
+        "newJobs7d": 0,
+        "people": 1,
+        "needs": 0,
+        "services": 0
+      },
+      "Renaico": {
+        "jobs": 0,
+        "newJobs24h": 0,
+        "newJobs7d": 0,
+        "people": 0,
+        "needs": 1,
+        "services": 0
+      }
+    },
+    "kindStats": {
+      "jobs": 44,
+      "people": 1,
+      "needs": 1,
+      "services": 0
+    },
+    "schema": 2,
+    "updatedAt": "2026-10-20T23:30:59.575Z",
+    "pageCount": 4,
+    "manifestId": "963fda0a-744f-4359-99bb-c2523c51cdc0",
+    "rebuilding": false
+  },
+  "receipts": {
+    "published": 3,
+    "status": "published"
+  },
+  "providerCalls": 0
+}

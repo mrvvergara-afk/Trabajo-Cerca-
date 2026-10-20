@@ -1,0 +1,32 @@
+{
+  "batch": "2",
+  "exchange_commit": "cd2be5ff78c5f27cf7d1b5585a2b674ecff9d52b",
+  "confirmation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+      "cb724831-6a31-4fbf-9d8c-c067596f9237",
+      "9e30fb6a-c41e-4b8a-814c-440f0da08ca1"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "cd2be5ff78c5f27cf7d1b5585a2b674ecff9d52b",
+    "ingestion_run_id": "39515321623",
+    "feed_complete": true,
+    "feed_manifest": "963fda0a-744f-4359-99bb-c2523c51cdc0",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "source_urls": [
+    "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+    "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+    "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746"
+  ]
+}

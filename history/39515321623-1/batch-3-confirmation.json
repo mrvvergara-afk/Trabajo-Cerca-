@@ -1,0 +1,32 @@
+{
+  "batch": "3",
+  "exchange_commit": "b0a9b9d1dec8911ddfb494123f96e18fab302af6",
+  "confirmation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+      "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+      "4ba4e5d1-8556-4b33-8304-329a35184274"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "b0a9b9d1dec8911ddfb494123f96e18fab302af6",
+    "ingestion_run_id": "39515321623",
+    "feed_complete": true,
+    "feed_manifest": "c4e1ca7b-e3e0-49f9-bfae-c0e83f61a7eb",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "source_urls": [
+    "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+    "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+    "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738"
+  ]
+}

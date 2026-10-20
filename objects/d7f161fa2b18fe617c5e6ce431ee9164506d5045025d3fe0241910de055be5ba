@@ -1,0 +1,20 @@
+# START YOAST BLOCK
+# ---------------------------
+User-agent: *
+Disallow:
+
+Sitemap: https://arauco.com/sitemap_index.xml
+Sitemap: https://arauco.com/chile/sitemap_index.xml
+Sitemap: https://arauco.com/argentina/sitemap_index.xml
+Sitemap: https://arauco.com/aus-nz/sitemap_index.xml
+Sitemap: https://arauco.com/brasil/sitemap_index.xml
+Sitemap: https://arauco.com/colombia/sitemap_index.xml
+Sitemap: https://arauco.com/europe/sitemap_index.xml
+Sitemap: https://arauco.com/mexico/sitemap_index.xml
+Sitemap: https://arauco.com/peru/sitemap_index.xml
+Sitemap: https://arauco.com/na/sitemap_index.xml
+Sitemap: https://arauco.com/mo/sitemap_index.xml
+Sitemap: https://arauco.com/uk/sitemap_index.xml
+Sitemap: https://arauco.com/hilam/sitemap_index.xml
+# ---------------------------
+# END YOAST BLOCK

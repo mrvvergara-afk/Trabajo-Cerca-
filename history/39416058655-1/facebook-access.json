@@ -1,0 +1,110 @@
+{
+  "results": [
+    {
+      "url": "https://www.facebook.com/munitraiguen/",
+      "territory": "Traiguén",
+      "discovered_from": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.facebook.com/municipalidadrenaico",
+      "territory": "Renaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.facebook.com/MuniNegreteCL",
+      "territory": "Negrete",
+      "discovered_from": "https://www.muninegrete.cl/",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.facebook.com/munimulchen",
+      "territory": "Mulchén",
+      "discovered_from": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.facebook.com/MunicipalidadCollipulli",
+      "territory": "Collipulli",
+      "discovered_from": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.facebook.com/Malleco7",
+      "territory": "Malleco",
+      "discovered_from": "https://www.malleco7.cl/",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.facebook.com/diariolasnoticias/",
+      "territory": "Malleco",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco",
+      "discovered_from": "https://munilumaco.cl/",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://www.facebook.com/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "sha256": "09faa68d995b50cae45d086c8f220a54d84ad9bf25efc7b11fd61400fad77159"
+    }
+  ],
+  "published": 0,
+  "paid_provider_calls": 0
+}

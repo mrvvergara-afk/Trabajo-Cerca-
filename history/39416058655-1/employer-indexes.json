@@ -1,0 +1,224 @@
+{
+  "sources": [
+    {
+      "url": "https://www.arauco.com/",
+      "error": "publisher_not_allowed"
+    },
+    {
+      "url": "https://jobs.arauco.com/search/?q=&locationsearch=Chile",
+      "final_url": "https://jobs.arauco.com/search/?locationsearch=Chile&q=",
+      "http": 200,
+      "sha256": "f0d9c868c57ffe982e4a8499f716af15b8d7eed93ca9d3517cb7fa8fb0b971dc",
+      "individual_jobs": {
+        "links": [
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Niederweningen-Bi-de-Chile-Mantenedor-General-Vivero-Quivolgo-%28Proyecto-PF%29-ML/1431012000/",
+            "title_hint": "Mantenedor General - Vivero Quivolgo (Proyecto PF)",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1431012000",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Niederweningen-Bi-de-Chile-Operadora-Motoniveladora-Caminos-Zona-Norte-BI/1427524300/",
+            "title_hint": "Operador/a Motoniveladora - Caminos - Zona Norte",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1427524300",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Niederweningen-Bi-de-Chile-Ingenierao-Compras-y-Contratos-de-Materiales-Forestal-Arauco%2C-Chill%C3%A1n-BI/1439501100/",
+            "title_hint": "Ingeniera/o Compras y Contratos de Materiales - Forestal Arauco, Chillán",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1439501100",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Niederweningen-Bi-de-Chile-Conductor-Cami%C3%B3n-Transporte-Rollizos-Zona-Norte-%28Chill%C3%A1n%29-BI/1436672200/",
+            "title_hint": "Conductor Camión Transporte Rollizos - Zona Norte (Chillán)",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1436672200",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Supervisor-Producci%C3%B3n-Aserradero-CFI-Vi%C3%B1ales/1438387200/",
+            "title_hint": "Supervisor Producción Aserradero - CFI Viñales",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1438387200",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Operador-Relevo-Excavadora-Bulldozer-Retroexcavadora-%28Zona-Norte%29/1431084600/",
+            "title_hint": "Operador Relevo Excavadora - Bulldozer - Retroexcavadora (Zona Norte)",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1431084600",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Coordinador-Brigada-HT-Zona-Constituci%C3%B3n/1436800900/",
+            "title_hint": "Coordinador Brigada HT - Zona Constitución",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1436800900",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Conductora-Cami%C3%B3n-Batea-Zona-Chill%C3%A1n/1408897500/",
+            "title_hint": "Conductor/a Camión Batea - Zona Chillán",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1408897500",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Coordinador-Brigada-HT-Zona-Chill%C3%A1n/1408389800/",
+            "title_hint": "Coordinador Brigada HT  - Zona Chillán",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1408389800",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Operadora-Rodillo-Zona-Chill%C3%A1n/1408924000/",
+            "title_hint": "Operador/a Rodillo - Zona Chillán",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1408924000",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Constituci%C3%B3n-Ingenieroa-Oleohidr%C3%A1ulico-Cel-Constiuci%C3%B3n-ML/1441104100/",
+            "title_hint": "Ingeniero/a Oleohidráulico - Cel Constiución",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1441104100",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Constituci%C3%B3n-Planificadora-Programadora-PGP-Cel-Constituci%C3%B3n-ML/1438340300/",
+            "title_hint": "Planificador/a Programador/a PGP  - Cel Constitución",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1438340300",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Excavadora-Caminos-Zona-Valdivia-LR-5110467/1404400900/",
+            "title_hint": "Operador/a Excavadora - Caminos - Zona Valdivia",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1404400900",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Brigadista-Operadora-Motosierrista-Zona-Chill%C3%A1n-BI-3780000/1390397000/",
+            "title_hint": "Brigadista Operador/a Motosierrista - Zona Chillán",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1390397000",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Valdivia-Mantenedora-Negocio-Forestal-Zona-Valdivia-ARAUCO-LR-5110467/1408059600/",
+            "title_hint": "Mantenedor/a Negocio Forestal - Zona Valdivia ARAUCO",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1408059600",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Rodillo-Compactador-Caminos-Zona-Valdivia-LR-5110467/1408056000/",
+            "title_hint": "Operador/a Rodillo Compactador - Caminos - Zona Valdivia",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1408056000",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Maquinaria-Forestal-Procesadora-CIMA-64-Zona-Valdivia-BI-5110467/1391341600/",
+            "title_hint": "Operador/a Maquinaria Forestal Procesador/a CIMA 64- Zona Valdivia",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1391341600",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Valdivia-Mantenedora-Mec%C3%A1nicoa-CIMA-64-Zona-Valdivia-LR-5110467/1391342700/",
+            "title_hint": "Mantenedor/a Mecánico/a - CIMA 64- Zona Valdivia",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1391342700",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Valdivia-L%C3%ADder-de-Operaci%C3%B3n-Forestal-CIMA-64-Zona-Valdivia-LR-5110467/1391343500/",
+            "title_hint": "Líder de Operación Forestal CIMA 64 - Zona Valdivia",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1391343500",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Arauco-Mantenedor-Preventivo-Zona-Arauco-BI-4360000/1436139600/",
+            "title_hint": "Mantenedor Preventivo - Zona Arauco",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1436139600",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Operadora-Maquinaria-Forestal-Procesador-Zona-Norte-BI-3780000/1402854900/",
+            "title_hint": "Operador/a Maquinaria Forestal Procesador- Zona Norte",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1402854900",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Constituci%C3%B3n-Brigadista-de-Incendios-Forestales-Zona-Constituci%C3%B3n-ML-3560000/1408219100/",
+            "title_hint": "Brigadista de Incendios Forestales- Zona Constitución",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1408219100",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Arauco-Brigadista-Incendios-Forestales-Zona-Arauco-BI-4360000/1438797500/",
+            "title_hint": "Brigadista Incendios Forestales - Zona Arauco",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1438797500",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Brigadista-de-Incendios-Forestales-Zona-Chill%C3%A1n-BI-3780000/1390365600/",
+            "title_hint": "Brigadista de Incendios Forestales- Zona Chillán",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1390365600",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          },
+          {
+            "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Maquinaria-Forestal-Clasificado-CIMA-64-Zona-Valdivia-LR-5110467/1391342000/",
+            "title_hint": "Operador/a Maquinaria Forestal Clasificado CIMA 64 - Zona Valdivia",
+            "source": "Arauco · portal de empleo",
+            "source_identity": "https://jobs.arauco.com/job/1391342000",
+            "work_location_verified": false,
+            "state": "pending_verification"
+          }
+        ],
+        "individual_links_found": 25,
+        "returned_links": 25,
+        "truncated": false,
+        "coverage_complete": false,
+        "published": 0
+      }
+    }
+  ],
+  "published": 0
+}

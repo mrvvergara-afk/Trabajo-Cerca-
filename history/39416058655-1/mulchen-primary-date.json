@@ -1,0 +1,24 @@
+{
+  "source_url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+  "id_evidence": "shortlink in the retained primary HTML: ?p=17979",
+  "results": [
+    {
+      "url": "https://www.munimulchen.cl/wp-json/wp/v2/pages/17979",
+      "http": 200,
+      "sha256": "a459a41e568aa3a71214b0a1c95a14d246370336e2a8191319ca3729a34ecce3",
+      "id": 17979,
+      "status": "publish",
+      "link": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "date_gmt": "2026-10-19T23:37:41",
+      "modified_gmt": "2026-10-19T23:42:51",
+      "title": {
+        "rendered": "Oferta Laboral: Operarios Agrícolas &#8211; Cosecha de Arándanos"
+      },
+      "content": {
+        "rendered": "",
+        "protected": false
+      }
+    }
+  ],
+  "published": 0
+}

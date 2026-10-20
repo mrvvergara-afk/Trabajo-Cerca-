@@ -42,7 +42,7 @@ export function runtime(db,now) {
   }
   const ctx=vm.createContext({db,URL,Buffer,Intl,Date:Clock,createHash,createPublicKey,verify,AbortSignal,
     fetch:()=>{throw new Error('Network is disabled in the isolated consumer');}});
-  for (const file of ['public-source-adapters.ts','public-feed.ts','radar-ingestion.ts']) {
+  for (const file of ['public-source-adapters.ts','public-feed.ts','offer-retention.ts','radar-ingestion.ts']) {
     const path=new URL('../integrations/appdeploy/'+file,import.meta.url);
     const source=stripTypeScriptTypes(readFileSync(path,'utf8'),{mode:'strip'}).replace(/^import .*;$/gm,'').replace(/^export /gm,'');
     vm.runInContext(source,ctx);
@@ -102,7 +102,7 @@ export async function proveConsumer(records,output,now=Date.now()) {
     restart_preserved:3,replay_preserved_ids:true,duplicates:0,legacy_control_preserved:true,
     expired_visible:0,expired_source_records_retained:3,visible_snapshot:visible.filter(r=>r.documentUnitKey),
     storage_adapter:'Local SQLite implementing the SDK interface; no AppDeploy connection',
-    consumer_files:['public-source-adapters.ts','public-feed.ts','radar-ingestion.ts'],
+    consumer_files:['public-source-adapters.ts','public-feed.ts','offer-retention.ts','radar-ingestion.ts'],
     controller_policy_snapshot:'1791924889565',verification_freshness_hours:24,
     reviewed_evidence_required:true,github_signature_transport_tested:false,production_modified:false,
     paid_provider_calls:0,production_published:0};

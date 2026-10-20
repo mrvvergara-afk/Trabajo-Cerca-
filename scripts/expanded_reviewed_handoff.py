@@ -118,7 +118,7 @@ def main():
         queue=cmpc_prepare(json.loads((destination/'manifest.json').read_text()),destination/'objects',role_ids=ids,outcomes=outcomes)
         write_json(output/'cmpc-per-role-outcomes.json',{'outcomes':outcomes,'revalidations':len(queue['records']),'new_offers':0})
         records.extend(queue['records'])
-        parent,checkpoint=restore_checkpoint();publish_evidence(destination,checkpoint,parent,context['run_id']+'-cmpc-capture')
+        parent,checkpoint=restore_checkpoint();publish_evidence(destination,checkpoint,parent,context['run_id']+'-0')
     write_json(output/'reviewed-queue.json',{'records':records,'skipped':skipped,'published':0})
     all_ids=set(recovered_ids);deliveries=[]
     for batch_index in range(0,len(records),3):
@@ -160,4 +160,12 @@ def main():
     parent,checkpoint=restore_checkpoint();commit=publish_evidence(output,checkpoint,parent,context['run_id']+'-'+os.environ.get('GITHUB_RUN_ATTEMPT','1'))
     print('EXPANDED_REVIEWED_CONFIRMED '+json.dumps({**report,'data_commit':commit},ensure_ascii=False),flush=True)
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except Exception:
+        output=Path('output/expanded-reviewed-handoff')
+        if output.exists() and os.environ.get('GITHUB_RUN_ID'):
+            parent,checkpoint=restore_checkpoint()
+            saved=publish_evidence(output,checkpoint,parent,os.environ['GITHUB_RUN_ID']+'-'+os.environ.get('GITHUB_RUN_ATTEMPT','1'))
+            print('EXPANDED_FAILURE_BACKED_UP '+saved,flush=True)
+        raise

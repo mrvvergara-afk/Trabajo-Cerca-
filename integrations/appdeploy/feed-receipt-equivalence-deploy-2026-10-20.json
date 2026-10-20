@@ -1,0 +1,24 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_name": "Trabajo Cerca",
+  "app_type": "frontend+backend",
+  "model": "gpt-6",
+  "intent": "Confirmar recibos por la misma equivalencia del feed sin cambiar identidades de ingesta ni publicar copias",
+  "initiator": "agent",
+  "type": "fix",
+  "files": [
+    {
+      "filename": "backend/radar-ingestion.ts",
+      "diffs": [
+        {
+          "from": "publicOfferIdentity } from './public-source-adapters';",
+          "to": "publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';"
+        },
+        {
+          "from": "  let published = 0;\n  for (const receipt of current.receipts) {\n    const page = snapshot.manifest.pages.find(ref => ref.identities?.includes(receipt.identity));\n    const at = page?.identities?.indexOf(receipt.identity) ?? -1;\n    const visibleKey = at >= 0 ? page?.keys[at] : undefined;\n    const [record] = await db.get<Stored>(receipt.table, [receipt.id]);\n    if (!record) throw new Error('External receipt source missing');\n",
+          "to": "  let published = 0;\n  for (const receipt of current.receipts) {\n    const [record] = await db.get<Stored>(receipt.table, [receipt.id]);\n    if (!record) throw new Error('External receipt source missing');\n    const equivalent=typeof record.url==='string' ? publicFeedIdentity(record.url) : null;\n    const visibleIdentity=record.documentUnitVerified===true ? receipt.identity : equivalent ? sha(equivalent) : receipt.identity;\n    const page = snapshot.manifest.pages.find(ref => ref.identities?.includes(visibleIdentity));\n    const at = page?.identities?.indexOf(visibleIdentity) ?? -1;\n    const visibleKey = at >= 0 ? page?.keys[at] : undefined;\n"
+        }
+      ]
+    }
+  ]
+}

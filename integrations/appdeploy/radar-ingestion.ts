@@ -1,7 +1,7 @@
 import { db } from '@appdeploy/sdk';
 import { createHash, createPublicKey, verify, type JsonWebKey } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
-import { publicSourceAdapter, safePublicUrl, samePublicJob, publicOfferIdentity } from './public-source-adapters';
+import { publicSourceAdapter, safePublicUrl, samePublicJob, publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
 import { validateCmpcEvidence, type CmpcEvidence } from './cmpc-evidence';
 import { validateLocalContactEvidence, localContactDescription, localContactIndexStatus, type LocalContactEvidence } from './local-contact-evidence';
 import { fetchPublicPage } from './public-source-http';
@@ -357,11 +357,13 @@ export async function confirmRadarPublications() {
   }
   let published = 0;
   for (const receipt of current.receipts) {
-    const page = snapshot.manifest.pages.find(ref => ref.identities?.includes(receipt.identity));
-    const at = page?.identities?.indexOf(receipt.identity) ?? -1;
-    const visibleKey = at >= 0 ? page?.keys[at] : undefined;
     const [record] = await db.get<Stored>(receipt.table, [receipt.id]);
     if (!record) throw new Error('External receipt source missing');
+    const equivalent=typeof record.url==='string' ? publicFeedIdentity(record.url) : null;
+    const visibleIdentity=record.documentUnitVerified===true ? receipt.identity : equivalent ? sha(equivalent) : receipt.identity;
+    const page = snapshot.manifest.pages.find(ref => ref.identities?.includes(visibleIdentity));
+    const at = page?.identities?.indexOf(visibleIdentity) ?? -1;
+    const visibleKey = at >= 0 ? page?.keys[at] : undefined;
     const visible = Boolean(visibleKey);
     const [ok] = await db.update(receipt.table, [{ id:receipt.id, record:{ ...record,
       externalPublicationState:visible ? 'published' : 'not_visible',

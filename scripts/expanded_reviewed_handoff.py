@@ -92,7 +92,7 @@ def main():
     for commit in sorted({row['capture_commit'] for row in targets}):subprocess.run(['git','fetch','origin',commit],check=True)
     originals={row['url']:subprocess.check_output(['git','show',row['capture_commit']+':'+row['original_path']]) for row in targets}
     observe_site_inventory.main();baseline=json.loads(Path('output/site-inventory/proof.json').read_text());write_json(output/'before-inventory.json',baseline)
-    resume=settings.get('resume_exchange')
+    recovered_ids=set();resume=settings.get('resume_exchange')
     if resume:
         subprocess.run(['git','fetch','origin',resume['commit']],check=True)
         old=json.loads(subprocess.check_output(['git','show',resume['commit']+':'+resume['path']]))['records']
@@ -106,9 +106,21 @@ def main():
         if not confirmed:
             parent,checkpoint=restore_checkpoint();saved=publish_evidence(output,checkpoint,parent,context['run_id']+'-'+os.environ.get('GITHUB_RUN_ATTEMPT','1'))
             raise RuntimeError('previous_signed_exchange_not_fully_visible:'+saved)
+        recovered_ids=set(confirmed['published_ids'])
+        observe_site_inventory.main();baseline=json.loads(Path('output/site-inventory/proof.json').read_text())
     records,skipped=prepare(targets,originals,baseline['visible_items'])
+    if settings.get('revalidate_cmpc'):
+        from .cmpc_reviewed_handoff import prepare as cmpc_prepare
+        from .render_public_documents import main as render_public
+        ids=settings['revalidate_cmpc'];destination=output/'cmpc-revalidation'
+        roots=[('cmpc-'+str(job),'https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/'+str(job)+'?c=cmpc') for job in ids]
+        asyncio.run(render_public(roots,destination));outcomes=[]
+        queue=cmpc_prepare(json.loads((destination/'manifest.json').read_text()),destination/'objects',role_ids=ids,outcomes=outcomes)
+        write_json(output/'cmpc-per-role-outcomes.json',{'outcomes':outcomes,'revalidations':len(queue['records']),'new_offers':0})
+        records.extend(queue['records'])
+        parent,checkpoint=restore_checkpoint();publish_evidence(destination,checkpoint,parent,context['run_id']+'-cmpc-capture')
     write_json(output/'reviewed-queue.json',{'records':records,'skipped':skipped,'published':0})
-    all_ids=set();deliveries=[]
+    all_ids=set(recovered_ids);deliveries=[]
     for batch_index in range(0,len(records),3):
         batch_records=records[batch_index:batch_index+3];batch_name=str(batch_index//3+1)
         queue={'schema':'trabajo-cerca.ingestion.v1','generated_at':utcnow().isoformat(),'published_count':0,'records':batch_records}
@@ -135,7 +147,8 @@ def main():
         deliveries.append(delivery);write_json(output/('batch-'+batch_name+'-confirmation.json'),delivery)
         print('EXPANDED_BATCH_CONFIRMED '+json.dumps(delivery,ensure_ascii=False),flush=True)
     observe_site_inventory.main();after=json.loads(Path('output/site-inventory/proof.json').read_text());write_json(output/'after-inventory.json',after)
-    visible={row['id'] for row in after['visible_items']};before={row['id'] for row in baseline['visible_items']}
+    comparison=json.loads(Path(settings['comparison_baseline']).read_text()) if settings.get('comparison_baseline') else baseline
+    visible={row['id'] for row in after['visible_items']};before={row['id'] for row in comparison['visible_items']}
     if not after['feed_read_complete'] or not all_ids<=visible:raise ValueError('published_ids_missing_from_complete_feed')
     view=asyncio.run(cards({row['id'] for row in after['visible_items'] if row.get('kind')=='job_offer'}));write_json(output/'cards.json',view)
     if not all_ids<=set(view['all_cards']['ids']):raise ValueError('published_ids_not_visible_on_cards')

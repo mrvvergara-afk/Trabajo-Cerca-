@@ -30,6 +30,18 @@ class CmpcReviewedHandoffTests(unittest.TestCase):
         self.assertEqual(role['source_published_at'],'2026-10-13T03:00:00.000Z')
         self.assertEqual(role['candidate_id'],hashlib.sha256(role['source_url'].encode()).hexdigest()[:24])
 
+    def test_selected_role_does_not_require_or_recapture_the_closed_inspector(self):
+        with tempfile.TemporaryDirectory() as folder:
+            page=self.fixture['page'];digest=page['public_job_api_responses'][0]['sha256']
+            Path(folder,digest).write_text(self.fixture['api_raw'])
+            queue=handoff.prepare({'sources':[page]},folder,now=self.now,role_ids=[18859])
+            self.assertEqual(len(queue['records']),1)
+            self.assertEqual(queue['records'][0]['source_published_at'],'2026-10-13T03:00:00.000Z')
+            outcomes=[]
+            closed=handoff.prepare({'sources':[page]},folder,now=datetime(2027,1,10,tzinfo=timezone.utc),role_ids=[18859],outcomes=outcomes)
+            self.assertFalse(closed['records']);self.assertEqual(outcomes[0]['status'],'closed')
+            self.assertEqual(outcomes[0]['original_published_at'],'2026-10-13T03:00:00.000Z')
+
     def test_changed_title_missing_contact_or_tampered_original_fail_before_signing(self):
         for field,value in [('text','No hay aviso individual'),('access','blocked_or_unavailable')]:
             fixture=copy.deepcopy(self.fixture);fixture['page'][field]=value

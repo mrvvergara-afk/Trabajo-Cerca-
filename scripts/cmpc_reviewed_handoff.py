@@ -30,10 +30,13 @@ def source_date(value):
     return parsed.astimezone(timezone.utc).isoformat(timespec='milliseconds').replace('+00:00','Z')
 
 
-def prepare(manifest,objects,*,now=None):
+def prepare(manifest,objects,*,now=None,role_ids=None,outcomes=None):
     now=now or utcnow()
     records=[]
-    for job,(title,commune,site) in ROLES.items():
+    selected=list(ROLES) if role_ids is None else list(role_ids)
+    if not selected or len(set(selected))!=len(selected) or any(job not in ROLES for job in selected):raise ValueError('unsupported_cmpc_role_selection')
+    for job in selected:
+        title,commune,site=ROLES[job]
         url='https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/'+str(job)+'?c=cmpc'
         pages=[page for page in manifest['sources'] if page['url']==url]
         if len(pages)!=1 or pages[0].get('access')!='rendered' or any(block.get('url','').startswith('https://us.api.csod.com/') for block in pages[0].get('blocked_requests',[])):
@@ -52,6 +55,8 @@ def prepare(manifest,objects,*,now=None):
         if row['requisitionId']!=job or row['displayJobTitle']!=title or not any(place.get('city')==commune and place.get('country')=='CL' for place in row['locations']):
             raise ValueError('cmpc_role_or_workplace_changed')
         published=source_date(row['postingEffectiveDate']);deadline=source_date(row['postingExpirationDate'])
+        if datetime.fromisoformat(deadline)<=now and outcomes is not None:
+            outcomes.append({'requisition_id':job,'status':'closed','original_published_at':published,'deadline':deadline,'new_offer':False});continue
         if ('Posted on: '+row['postingEffectiveDate'] not in normalized or
             not 0<=(now-datetime.fromisoformat(published)).total_seconds()<=45*86400 or datetime.fromisoformat(deadline)<=now):
             raise ValueError('cmpc_role_not_recent_or_closed')

@@ -404,6 +404,18 @@ test('Identity conflicts fail visibly instead of deleting duplicate historical r
   assert.equal(h.calls.filter(call => call.method === 'delete').length,0);
 });
 
+test('publication receipt follows numeric feed equivalence while ingestion keys and existing IDs stay unchanged',async()=>{
+  const h=harness();await h.build();
+  const row=offer({source_url:'https://www.chiletrabajos.cl/trabajo/practica-nacimiento-3915394',application:'https://www.chiletrabajos.cl/trabajo/postular/3915394'});
+  const identity=h.ctx.jobIdentity(row.source_url);
+  await h.ctx.storeVerifiedBatch(body({records:[row]}),'numeric-receipt',h.mapper,now);
+  await h.ctx.advancePublicFeed(h.projector);
+  assert.equal((await h.ctx.confirmRadarPublications()).published,1);
+  const state=await h.ctx.externalRadarStatus();assert.ok(state.receipts[0].publishedId);
+  const table='radar_external_'+identity.slice(0,32);assert.equal(h.table(table).size,1);
+  assert.equal([...h.table(table).values()][0].externalIdentity,identity);
+});
+
 test('Failed receipt write cannot report a successful publication', async () => {
   const h = harness(); await h.build();
   await h.ctx.storeVerifiedBatch(body(),'batch-1',h.mapper,now);

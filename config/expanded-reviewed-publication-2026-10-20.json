@@ -170,5 +170,9 @@
     "commit": "2fc29aa2be032e37047810324893d0259c24fb44",
     "path": "history/39418449238/batches/1-review.json",
     "run_id": "39418449238"
-  }
+  },
+  "comparison_baseline": "docs/evidence/inventario-antes-ampliacion-2026-10-20.json",
+  "revalidate_cmpc": [
+    18859
+  ]
 }

@@ -58,7 +58,12 @@ export function originalSocialDate(post:Finding):string {
     const date=new Date(stamp);
     return date.getUTCFullYear()>=2000 && date.getUTCFullYear()<2100 ? date.toISOString() : '';
   }
-  return socialSourceDate(value) || '';
+  const metadata=socialSourceDate(value);
+  if (metadata) return metadata;
+  const caption=[post.content,post.caption,post.message,post.text,post.description]
+    .find(item=>typeof item==='string' && item.trim()) as string | undefined || '';
+  const labelled=caption.match(/(?:^|\n)\s*(?:fecha de publicaci[oó]n|publicado(?: el)?)\s*[:\-]?\s*([^\n]{8,100})/i)?.[1];
+  return socialSourceDate(labelled) || '';
 }
 
 export function captionSocialFinding(post:Finding, now=Date.now()):Finding | null {
@@ -130,12 +135,43 @@ function supportedContact(text:string, claimed:string) {
     claim.length>=9 && contact.replace(/\D/g,'')===claim) ?? contacts[0] ?? '';
 }
 
+export function socialApplicationDestination(text:string, claimed='') {
+  const contact=supportedContact(text.replace(/https?:\/\/[^\s<>()]+/gi,''),claimed);
+  if (contact) return { kind:contact.includes('@') ? 'email' : 'phone',value:contact };
+  const blocks=[...text.matchAll(/(?:postulaci[oó]n(?:es)?|postul(?:ar|a|e)|enviar (?:cv|curr[ií]culum)|presenta(?:r|te|rse)|dirigir(?:se|te)|interesados)[^\n]*(?:\n[^\n]*){0,2}/gi)]
+    .map(match=>match[0].slice(0,400));
+  for (const block of blocks) {
+    for (const match of block.matchAll(/(?:https?:\/\/|(?:www\.)?[a-z0-9.-]+\.(?:cl|com|org|net)\/)[^\s<>()]+/gi)) {
+      try {
+        const raw=match[0].replace(/[.,;]+$/,'');
+        const url=new URL(/^https?:/i.test(raw) ? raw : 'https://'+raw);
+        if (url.protocol!=='https:' || url.username || url.password || url.port ||
+            !/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(url.hostname) ||
+            /(?:^|\.)(?:localhost|local|internal|test|example|invalid)$/i.test(url.hostname) ||
+            [...url.searchParams.keys()].some(key=>/^(token|access_token|api_key|apikey|session|authorization)$/i.test(key))) continue;
+        return {kind:'url',value:url.toString()};
+      } catch { /* Keep the literal instructions when a link is malformed. */ }
+    }
+    const addressLines=block.split('\n').filter(line=>!/(?:hasta|plazo|cierre|fecha|vigencia|horario|experiencia|a[nñ]os?|vacantes?|cupos)/i.test(line));
+    if (/presencial|presenta(?:r|te|rse)|dirigir(?:se|te)/i.test(block) && addressLines.some(line=>
+        /(?:av(?:enida)?\.?|calle|pasaje|pje\.?|[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:[ \t]+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+){1,4})[ \t]+(?:N[º°o.]?[ \t]*|#[ \t]*)?(?:\d{1,5}|S\/N)\b/i.test(line))) {
+      return {kind:'address',value:block.trim()};
+    }
+  }
+  return null;
+}
+
+export function socialExplicitClosure(text:string) {
+  return /postulaci[oó]n(?:es)?\s+(?:ya\s+)?cerrad[ao]s?|vacantes?\s+(?:ya\s+)?cubiertas?|proceso\s+(?:de selecci[oó]n\s+)?finalizado|no se (?:reciben|aceptan) postulaciones/i.test(text);
+}
+
 export function prepareSocialEvidence(input:Finding, capturedAt:string, places:(text:string)=>string[], now=Date.now()) {
   const row=preservedSocialFinding(input);
   const text=literal(row.text,6000), postUrl=literal(row.postUrl,4000);
   const claimCompany=literal(row.company);
   const company=claimCompany && fold(text).includes(fold(claimCompany)) ? claimCompany : '';
-  const contact=supportedContact(text,literal(row.contact,600));
+  const application=socialApplicationDestination(text,literal(row.contact,600));
+  const contact=application?.value || '';
   const workplaceMatch=text.match(/(?:lugar de trabajo|ubicaci[oó]n de (?:la )?faena|faena en|trabajo en|para trabajar en)\s*[:\-]?\s*([^\n;.]{2,160})/i);
   const workplace=workplaceMatch?.[1].split(/\b(?:empresa|contacto|enviar cv|plazo|requisitos)\s*:/i)[0].trim() ?? '';
   const workCommunes=places(workplace);
@@ -153,19 +189,21 @@ export function prepareSocialEvidence(input:Finding, capturedAt:string, places:(
   if (workCommunes.length!==1) missing.push('lugar real de trabajo inequívoco');
   if (!contact) missing.push('contacto literal');
   if (!published || Date.parse(published)>now || now-Date.parse(published)>45*86400000) missing.push('fecha original reciente');
-  if (!deadline || Date.parse(deadline)<=now || published && Date.parse(deadline)<=Date.parse(published) || claimedDeadline && deadline!==claimedDeadline) missing.push('plazo vigente explícito y coherente');
+  if (socialExplicitClosure(text)) missing.push('postulación cerrada explícitamente');
+  if (deadlineText && (!deadline || Date.parse(deadline)<=now || published && Date.parse(deadline)<=Date.parse(published)) ||
+      claimedDeadline && deadline!==claimedDeadline) missing.push('plazo vigente explícito y coherente');
   if (!/(?:oferta laboral|se necesita|se busca|se requiere|buscamos|vacante|enviar cv|contrata)/i.test(text)) missing.push('vacante concreta');
   const evidence:SocialEvidence={ version:'local-social-evidence-v1',text,textTruncated:row.textTruncated===true,
     originalLength:Number(row.textOriginalLength),postUrl,postDate:published,capturedAt,title:literal(row.title),
     company,workplace,contact,deadline,missing };
-  return { row,evidence,workCommunes,company,contact,workplace,published,deadline,ready:missing.length===0 };
+  return { row,evidence,workCommunes,company,contact,application,workplace,published,deadline,ready:missing.length===0 };
 }
 
 export function socialVerificationBlock(record:{ socialEvidence?:SocialEvidence }, places:(text:string)=>string[], now=Date.now()):string | null {
   const evidence=record.socialEvidence;
-  if (!evidence || evidence.version!=='local-social-evidence-v1') return 'Falta la transcripción original para comprobar empresa, lugar real, contacto y plazo del aviso social.';
+  if (!evidence || evidence.version!=='local-social-evidence-v1') return 'Falta la transcripción original para comprobar los datos del aviso social.';
   const captured=Date.parse(evidence.capturedAt);
-  if (!Number.isFinite(captured) || captured>now || now-captured>86400000) return 'La evidencia social necesita una lectura reciente de la publicación original.';
+  if (!Number.isFinite(captured) || captured>now) return 'La evidencia social necesita una fecha válida de lectura de la publicación original.';
   const checked=prepareSocialEvidence({ text:evidence.text,textTruncated:evidence.textTruncated,textOriginalLength:evidence.originalLength,
     title:evidence.title,company:evidence.company,contact:evidence.contact,postUrl:evidence.postUrl,
     postDate:evidence.postDate,deadline:evidence.deadline },evidence.capturedAt,places,now);

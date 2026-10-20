@@ -87,3 +87,16 @@ test('The applied controller policy hides evidence after 24 hours and keeps the 
     assert.equal(kept.length,3);assert.deepEqual(kept.map(r=>JSON.parse(r.record).expiresAt).sort(),Array.from(deadlines).sort());
   } finally {sdk.close();}
 });
+
+test('a reviewed municipal PDF is the application evidence for its role, while another PDF or page is rejected',()=>{
+ const sdk=localSdk(':memory:');const app=runtime(sdk.db,now);
+ try {
+  for (const original of clone()) {
+   assert.equal(app.ctx.validateOffer(original,now),app.ctx.jobIdentity(original.source_url,original.document_unit.key));
+   for (const application of [original.application.replace('#page=1','#page=999')+'9',
+     'https://mtraiguen.cl/wp-content/uploads/otro-concurso.pdf#page=1']) {
+    assert.throws(()=>app.ctx.validateOffer({...original,application},now),/Invalid in-person application proof/);
+   }
+  }
+ } finally {sdk.close();}
+});

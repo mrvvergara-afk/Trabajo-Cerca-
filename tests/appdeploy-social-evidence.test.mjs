@@ -70,10 +70,11 @@ test('Profile pages, URLs with credentials and unsourced legacy records never pa
   assert.equal(h.sameSocialPost('https://www.facebook.com/page/posts/123','https://www.facebook.com/login/'),false);
 });
 
-test('Dates and recapture requirements are reevaluated before a social notice can publish',()=>{
+test('Original dates and deadlines are checked without requiring a duplicate read after 24 hours',()=>{
   const { evidence }=h.prepareSocialEvidence(source(),new Date(now).toISOString(),places,now);
   assert.equal(h.socialVerificationBlock({ socialEvidence:evidence },places,now),null);
-  assert.match(h.socialVerificationBlock({ socialEvidence:evidence },places,now+86400001),/lectura reciente/);
+  assert.equal(h.socialVerificationBlock({ socialEvidence:evidence },places,now+86400001),null);
+  assert.match(h.socialVerificationBlock({ socialEvidence:{...evidence,capturedAt:new Date(now+1).toISOString()} },places,now),/fecha válida/);
   assert.match(h.socialVerificationBlock({ socialEvidence:{ ...evidence,deadline:'2026-10-12T00:00:00Z' } },places,now),/plazo/);
 });
 
@@ -127,4 +128,40 @@ test('the actual collector path saves usable evidence when the deadline and cont
  assert.equal(h.jobs,1);assert.equal(h.findings.length,1);
  const result=h.prepareSocialEvidence(h.findings[0],new Date(now).toISOString(),places,now);
  assert.equal(result.ready,true);assert.equal(result.contact,'empleo@example.cl');assert.equal(result.company,'Empresa de prueba');
+});
+
+
+test('an explicit original publication date in the caption is sufficient without an image date',()=>{
+ const post={url:'https://www.instagram.com/p/datedCaption/',caption:'Fecha de publicación: 12 de octubre de 2026\nEmpresa: Empresa de prueba\nPostular: empleo@example.cl'};
+ const merged=h.socialPosterFinding(post,{title:'Operador forestal',text:'Oferta laboral Operador forestal\nLugar de trabajo: Mininco'},now);
+ assert.equal(h.prepareSocialEvidence(merged,new Date(now).toISOString(),places,now).ready,true);
+ assert.equal(merged.postDate,'2026-10-12T03:00:00.000Z');
+});
+
+test('a complete recent notice needs no invented closing date',()=>{
+ const prepared=h.prepareSocialEvidence(source({deadline:'',text:'Se necesita Operador forestal\nEmpresa: Empresa de prueba\nLugar de trabajo: Mininco\nEnviar CV a empleo@example.cl'}),new Date(now).toISOString(),places,now);
+ assert.equal(prepared.ready,true);assert.equal(prepared.deadline,null);
+});
+
+test('presential application accepts the stated street address without demanding an email or telephone',()=>{
+ for (const address of ['Andrés Bello N° 146, Primer Piso','Av. La Cruz 567 interior','CORONEL URRUTIA S/N, EX REGIMIENTO']) {
+ const prepared=h.prepareSocialEvidence(source({deadline:'',contact:'',text:'Se necesita Operador forestal\nEmpresa: Empresa de prueba\nLugar de trabajo: Mininco\nPostulación presencial en OMIL\n'+address}),new Date(now).toISOString(),places,now);
+ assert.equal(prepared.ready,true,address);assert.equal(prepared.application.kind,'address');
+ }
+});
+
+test('an application link can be the contact and unsafe destinations or a workplace alone are insufficient',()=>{
+ const text='Se necesita Operador forestal\nEmpresa: Empresa de prueba\nLugar de trabajo: Mininco\nPostula en: wof-chile.com/postular';
+ const prepared=h.prepareSocialEvidence(source({deadline:'',contact:'',text}),new Date(now).toISOString(),places,now);
+ assert.equal(prepared.ready,true);assert.equal(prepared.application.value,'https://wof-chile.com/postular');
+ for (const value of ['http://wof-chile.com/postular','https://user:secret@wof-chile.com/postular','https://127.0.0.1/postular','https://wof-chile.com/postular?access_token=secret']) {
+ assert.equal(h.socialApplicationDestination('Postular: '+value),null,value);
+ }
+ assert.equal(h.socialApplicationDestination('Lugar de trabajo: Calle Los Robles 123, Angol'),null);
+ assert.equal(h.socialApplicationDestination('Postulación presencial hasta el 25 de octubre'),null);
+});
+
+test('explicit closure in a caption cannot pass merely because there is no deadline field',()=>{
+ const result=h.prepareSocialEvidence(source({deadline:'',text:'Oferta laboral Operador forestal\nEmpresa: Empresa de prueba\nLugar de trabajo: Mininco\nEnviar CV a empleo@example.cl\nPostulaciones cerradas'}),new Date(now).toISOString(),places,now);
+ assert.equal(result.ready,false);assert.ok(result.evidence.missing.includes('postulación cerrada explícitamente'));
 });

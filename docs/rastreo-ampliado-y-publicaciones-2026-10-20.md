@@ -68,7 +68,7 @@ No se volvió a leer/OCR Malleco 7 del 15 de octubre, las cuatro referencias ant
 
 El SDK acredita revalidación nativa de los tres cargos de Traiguén el **20-oct a las 13:05:37 UTC**, con los mismos IDs y fecha editorial 1-oct. Su próxima revisión figura para el **21-oct a las 01:05:37 UTC**; no se declara ejecutada por anticipado.
 
-Pasaron **242 pruebas Python** y los **29 archivos de pruebas Node**, incluyendo 36 pruebas del receptor firmado, siete del consumidor documental y cuatro del nuevo original municipal y sus estados abierto/cerrado/bloqueado. La ejecución completa detectó una importación faltante en el harness del consumidor al añadir el diagnóstico de retención; se corrigió y se repitió con éxito.
+Pasaron **243 pruebas Python** y los **29 archivos de pruebas Node**, incluyendo 36 pruebas del receptor firmado, siete del consumidor documental y cuatro del nuevo original municipal y sus estados abierto/cerrado/bloqueado. La ejecución completa detectó una importación faltante en el harness del consumidor al añadir el diagnóstico de retención; se corrigió y se repitió con éxito.
 
 La última corrección del contador quedó ready en `1792539546631`, sin errores de frontend, backend o red en QA. Persisten las dos advertencias anteriores de inspección de iconos PWA. No se cambió main, ninguna credencial ni la cantidad/frecuencia de los seis crons. Los originales históricos y las 40 referencias del checkpoint se conservan.
 
@@ -76,4 +76,13 @@ La nueva comprobación presencial queda instalada en el slot existente; su prime
 
 La revisión CMPC 18859 quedó comprobada en SDK con `lastVerifiedAt=2026-10-20T23:30:06.889673+00:00`, ID `d73ebbc0-c815-455d-b6ed-015e620cedf6` y fecha original `2026-10-13T03:00:00.000Z`. La tarjeta sigue en el recorrido completo. El inspector cerrado no se volvió a capturar, firmar ni contar.
 
-Se añadieron pruebas de reemplazo de representante e incorporación histórica: el total no baja y el cambio de ID no se cuenta como aviso reciente. La comprobación final del contador se ejecuta en modo observación, sin fuentes nuevas, OCR ni firma.
+Se añadieron pruebas de reemplazo de representante e incorporación histórica: el total no baja y el cambio de ID no se cuenta como aviso reciente. La comprobación final del contador [39517138783](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/39517138783) terminó correctamente en modo observación, sin fuentes nuevas, OCR ni firma: cero publicaciones adicionales y los 16 IDs comprobados conservados (15 nuevos de esta ampliación más CMPC existente).
+
+
+## Comprobación final de permanencia y novedades
+
+A las **23:52:04 UTC** el SDK completo conserva **52 registros / 50 ofertas tipadas** y se recorrieron las **50 tarjetas**; el total siguió en 50 al paginar, activar/desactivar novedades y recargar. La carga inicial contiene 23 tarjetas, por lo que tampoco ese número es el total. El banner muestra **24 incorporaciones en siete días y 20 en 24 horas**, ventanas móviles que incluyen otras tandas; no se confunden con las 15 publicaciones revisadas de esta ampliación.
+
+La oferta TENS 3902931 conserva `firstPublishedAt=2026-10-03T14:56:19.870Z`, recuperado del representante histórico, aunque el registro nativo actual se creara el 20. Se conserva fecha editorial 23-sept y la tarjeta actual con empleador Layner y trabajo real Lumaco. El primer comprobador exigía la fecha del snapshot intermedio (15-oct) y rechazó el valor histórico anterior. La prueba 39516826846 falló por esa comparación demasiado rígida; se corrigió y una prueba específica acepta evidencia anterior y rechaza reiniciar la antigüedad al día actual. No fue pérdida de oferta ni vencimiento.
+
+El respaldo final es `bd5c3cf623e03ca73409942f8ca2af8990c80ab0`, `history/39517138783-1/`. El manifiesto SDK es `654d330d-53c0-4947-a5d6-f0683d86e65a`. Se conservan el [inventario final](evidence/inventario-final-ampliacion-2026-10-20.json), las [tarjetas finales](evidence/tarjetas-finales-ampliacion-2026-10-20.json) y la [prueba de antigüedad](evidence/contador-y-antiguedad-confirmados-2026-10-20.json). Los tres IDs Traiguén y el ID CMPC siguen presentes. Ningún ID cambió durante esta última corrección. `main` sigue en `fab392b824e4100a4bba6dfe9289825297d24707`.

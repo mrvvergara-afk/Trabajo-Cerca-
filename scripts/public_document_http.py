@@ -11,8 +11,8 @@ from .local_source_audit import same_publisher
 from .public_source_adapters import LOCAL_PUBLISHERS
 
 USER_AGENT = 'TrabajoCercaLocalAudit/1.0'
-PUBLIC_PORTAL_HOSTS={'cl.indeed.com','indeed.com','cl.computrabajo.com','computrabajo.cl','linkedin.com','cl.linkedin.com','es.linkedin.com','laborum.cl','opcionempleo.cl','chiletrabajos.cl','bne.gob.cl','empleospublicos.cl'}
-PUBLIC_CAPTURE_PUBLISHERS = set(LOCAL_PUBLISHERS) | {'cmpc.csod.com','wof-chile.com'} | PUBLIC_PORTAL_HOSTS
+PUBLIC_PORTAL_HOSTS={'cl.indeed.com','indeed.com','cl.computrabajo.com','computrabajo.cl','linkedin.com','cl.linkedin.com','es.linkedin.com','laborum.cl','opcionempleo.cl','chiletrabajos.cl','portal.chiletrabajos.cl','bne.gob.cl','empleospublicos.cl'}
+PUBLIC_CAPTURE_PUBLISHERS = set(LOCAL_PUBLISHERS) | {'cmpc.csod.com','jobs.arauco.com','wof-chile.com'} | PUBLIC_PORTAL_HOSTS
 
 
 def robots_allow(raw,url,agent=USER_AGENT):

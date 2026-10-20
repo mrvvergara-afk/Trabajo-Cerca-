@@ -1,8 +1,9 @@
-"""Read two municipal pages in a real browser without login or paid providers."""
+"""Read allowed public pages and job responses without login or paid providers."""
 import asyncio
 import hashlib
 import json
 import os
+import re
 import shutil
 import urllib.parse
 from pathlib import Path
@@ -32,8 +33,8 @@ def public_job_rows(value):
     def visit(node,depth=0):
         if depth>7 or len(rows)>=80:return
         if isinstance(node,dict):
-            if any('title' in key.lower() and isinstance(item,str) for key,item in node.items()):
-                allowed=('title','requisition','post','location','date','status','apply','company','description','job','city','region')
+            if any(('title' in key.lower() or key.lower() in ('titulo','título','puesto')) and isinstance(item,str) for key,item in node.items()):
+                allowed=('title','titulo','título','puesto','requisition','post','location','date','status','apply','company','description','job','city','region','empresa','fecha','ubicacion','ubicación','provincia','ciudad','pais','país','vacantes')
                 clean={key:item for key,item in node.items() if not any(part in key.lower() for part in ('token','password','authorization','secret')) and (key.lower()=='id' or any(part in key.lower() for part in allowed))}
                 rows.append(safe(clean))
             else:
@@ -84,12 +85,20 @@ async def main(roots=None, destination=None):
                 await context.route('**/*', route_request)
                 page = await context.new_page()
                 async def capture_job_response(response):
-                    if urllib.parse.urlsplit(response.url).hostname!='us.api.csod.com':return
+                    host=urllib.parse.urlsplit(response.url).hostname.removeprefix('www.')
+                    if host not in ('us.api.csod.com','laborum.cl'):return
+                    if 'json' not in response.headers.get('content-type',''):return
                     entry={'url':diagnostic_url(response.url),'http':response.status}
                     try:
                         raw=await response.body()
                         if len(raw)>2500000:raise ValueError('response_byte_budget_exceeded')
-                        entry.update(sha256=capture.put(raw),bytes=len(raw),jobs=public_job_rows(json.loads(raw)))
+                        data=json.loads(raw)
+                        jobs=public_job_rows(data)
+                        if host=='laborum.cl' and not jobs:return
+                        entry.update(bytes=len(raw),jobs=jobs)
+                        if re.search(rb'"(?:access_?token|password|authorization|secret)"\s*:',raw,re.I):
+                            entry['original_omitted']='sensitive_response_shape'
+                        else:entry['sha256']=capture.put(raw)
                     except Exception as exc:entry['error']=source_error(exc)
                     api_results.append(entry)
                 page.on('response',lambda response:api_tasks.append(asyncio.create_task(capture_job_response(response))))

@@ -37,7 +37,7 @@ export function publicPublisher(value:string):{ name:string; host:string; group:
     'es.linkedin.com':['LinkedIn','linkedin'],
     'empleospublicos.cl':['Servicio Civil · Empleos Públicos','empleos_publicos'],
     'laborum.cl':['Laborum','laborum'], 'opcionempleo.cl':['Opción Empleo','opcionempleo'],
-    'chiletrabajos.cl':['Chiletrabajos','chiletrabajos'],
+    'chiletrabajos.cl':['Chiletrabajos','chiletrabajos'], 'portal.chiletrabajos.cl':['Chiletrabajos','chiletrabajos'],
     'bne.gob.cl':['Bolsa Nacional de Empleo','bne'], 'bne.cl':['Bolsa Nacional de Empleo','bne'],
     'cmpc.trabajando.cl':['CMPC · portal de empleo','cmpc_jobs'],
     'cmpc.csod.com':['CMPC · portal de empleo','cmpc_jobs'],
@@ -67,6 +67,8 @@ export function publicSourceAdapter(value:string):PublicAdapter | null {
   let match:RegExpMatchArray | null;
   if (['bne.gob.cl','bne.cl'].includes(host) && (match=url.pathname.match(/^\/oferta\/(20\d{2}-\d{1,9})\/?$/))) {
     name='Bolsa Nacional de Empleo';identityUrl='https://www.bne.gob.cl/oferta/'+match[1];
+  } else if (host === 'portal.chiletrabajos.cl' && (match=url.pathname.match(/^\/empresa\/[^/]+\/trabajo\/([^/]+)\/?$/))) {
+    name = 'Chiletrabajos'; identityUrl = 'https://www.chiletrabajos.cl/trabajo/'+match[1];
   } else if (host === 'chiletrabajos.cl' && /^\/trabajo\/[^/]+\/?$/.test(url.pathname)) {
     name = 'Chiletrabajos'; identityUrl = 'https://www.chiletrabajos.cl'+url.pathname.replace(/\/$/,'');
   } else if (['indeed.com','cl.indeed.com'].includes(host) && ['/viewjob','/rc/clk'].includes(url.pathname) && /^[a-f0-9]{16}$/i.test(url.searchParams.get('jk') || '')) {

@@ -14,7 +14,7 @@ test('three observed URL shapes share a feed identity while old ingestion identi
     assert.equal(ctx.publicFeedIdentity(url),'https://www.chiletrabajos.cl/trabajo/3902931');
   }
   assert.equal(ctx.publicOfferIdentity(standard),standard);
-  assert.equal(ctx.publicOfferIdentity(portal),null);
+  assert.equal(ctx.publicOfferIdentity(portal),standard);
   assert.notEqual(ctx.publicFeedIdentity(standard),ctx.publicFeedIdentity(standard.replace('3902931','3902932')));
 });
 test('portal city and search pages are not individual offers even when old records say verified',()=>{

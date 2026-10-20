@@ -1,0 +1,33 @@
+{
+  "baseline_version": "1792493312372",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_name": "Trabajo Cerca",
+  "app_type": "frontend+backend",
+  "model": "gpt-6",
+  "intent": "Completar lotes ya firmados y sus recibos sin ejecutar proveedores ni esperar al próximo cron",
+  "initiator": "agent",
+  "type": "fix",
+  "files": [
+    {
+      "filename": "backend/reviewed-receiver.ts",
+      "content": "type Ingestion = { status:string; stored:number; published:number };\ntype Dependencies = {\n  ingest:()=>Promise<Ingestion>;\n  advance:()=>Promise<Record<string,unknown>>;\n  confirm:()=>Promise<{status:string;published:number}>;\n};\n\n// Consume only the existing GitHub-signed exchange. No request data, source\n// collection, OCR, AI, document revalidation or notification capability is used.\nexport function reviewedReceiver(dependencies:Dependencies, clock=Date.now) {\n  let running:Promise<Record<string,unknown>> | null=null;\n  let lastStarted=Number.NEGATIVE_INFINITY;\n  return ():Promise<Record<string,unknown>> => {\n    if (running) return running;\n    const now=clock();\n    if (now-lastStarted<60000) return Promise.resolve({\n      status:'cooldown', retryAfterSeconds:Math.ceil((60000-now+lastStarted)/1000), providerCalls:0,\n    });\n    lastStarted=now;\n    running=(async()=>{\n      const ingestion=await dependencies.ingest();\n      if (!['stored_waiting_for_feed','published','unchanged','unchanged_batch'].includes(ingestion.status)) {\n        return {status:ingestion.status,ingestion,providerCalls:0};\n      }\n      const feed=await dependencies.advance();\n      const receipts=await dependencies.confirm();\n      return {status:receipts.status,ingestion,feed,receipts,providerCalls:0};\n    })().finally(()=>{running=null;});\n    return running;\n  };\n}\n"
+    },
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "import { revalidateReviewedDocuments, documentRevalidationStatus } from './document-revalidation';",
+          "to": "import { revalidateReviewedDocuments, documentRevalidationStatus } from './document-revalidation';\nimport { reviewedReceiver } from './reviewed-receiver';"
+        },
+        {
+          "from": "export const handler = router({",
+          "to": "const consumeReviewedExchange=reviewedReceiver({\n  ingest:()=>pullRadarBatch(externalOfferRecord),\n  advance:()=>advancePublicFeed({ revision:'published-retention-counts-v6', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt }),\n  confirm:confirmRadarPublications,\n});\n\nexport const handler = router({"
+        },
+        {
+          "from": "  'GET /api/ops/radar-external': [async () => json(await externalRadarStatus())],",
+          "to": "  'GET /api/ops/radar-external': [async () => json(await externalRadarStatus())],\n  // Only the existing signed receiver and feed; no collector or provider is invoked.\n  'POST /api/ops/radar-external/consume': [async () => json(await consumeReviewedExchange())],"
+        }
+      ]
+    }
+  ]
+}

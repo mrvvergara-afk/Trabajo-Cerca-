@@ -40,6 +40,41 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  expanded-source-drain:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[expanded source drain]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    permissions:
+      contents: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar únicamente navegador público
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar ubicaciones, alias y el receptor que solo consume lotes firmados
+        run: |
+          python -m unittest tests.test_portal_index tests.test_public_adapters tests.test_document_queue_reader -q
+          node tests/appdeploy-public-adapters.test.mjs
+          node tests/appdeploy-reviewed-receiver.test.mjs
+          node tests/reviewed-receiver-ui.test.mjs
+      - name: Terminar avisos no leídos y recuperar metadatos primarios sin repetir PDFs
+        run: python -m scripts.expanded_source_drain
+      - name: Conservar originales y diferencias de revisión
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-source-drain
+          path: output/expanded-source-drain/
+          retention-days: 7
   expanded-source-pass:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

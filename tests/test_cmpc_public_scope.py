@@ -14,3 +14,11 @@ class CMPCPublicScopeTests(unittest.TestCase):
         self.assertNotIn('secret',diagnostic_url('https://example.org/file?key=secret&lang=es'))
         rows=public_job_rows({'data':[{'title':'Operador','requisitionId':123,'location':'Nacimiento','accessToken':'secret','jobDescription':'long text'}]})
         self.assertEqual(rows,[{'title':'Operador','requisitionId':123,'location':'Nacimiento'}])
+
+class SpanishPublicJobResponseTests(unittest.TestCase):
+    def test_public_portal_job_fields_are_retained_without_tokens_or_personal_account_fields(self):
+        rows=public_job_rows({'content':[{'id':123,'titulo':'Operador','empresa':{'nombre':'Empresa local'},
+            'fechaPublicacion':'2026-10-19','ubicacion':'Nacimiento','accessToken':'secret','password':'private'}]})
+        self.assertEqual(rows[0]['titulo'],'Operador')
+        self.assertEqual(rows[0]['fechaPublicacion'],'2026-10-19')
+        self.assertNotIn('accessToken',rows[0]);self.assertNotIn('password',rows[0])

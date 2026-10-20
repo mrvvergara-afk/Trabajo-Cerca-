@@ -10,6 +10,7 @@ export type PublicVerification = {
   company?:string;
   work_commune?:string;
   work_location_verified?:boolean;
+  work_location_evidence?:{method:string;literal:string};
   url?:string;
   source?:string;
   source_published_at?:string;
@@ -98,6 +99,22 @@ function bneLabelledPosting(raw:string, url:string):Data | null {
     datePosted:calendars[0][1],validThrough:calendars[1][1] };
 }
 
+function descriptionWorksite(value:unknown) {
+  const text=typeof value==='string' ? sourceDecode(value.replace(/<br\s*\/?>|<\/p>/gi,'\n').replace(/<[^>]*>/g,' ')) : '';
+  const scopes=[...text.matchAll(/(?:(?:lugar (?:real )?de trabajo|ubicaci[oó]n de (?:la )?faena)\s*:\s*|(?:para (?:un |el )?proyecto|servicio de atenci[oó]n domiciliaria|realizar (?:su |la )?pr[aá]ctica presencial|para trabajar|desempe[nñ]arse(?: de forma presencial)?)\s+en\s+)([^\n.;]{2,140})/gi)]
+    .filter(match=>!/^(?:equipo|conjunto|colaboraci[oó]n|turnos|jornadas)\b/i.test(match[1]));
+  if (!scopes.length) return {observed:false,commune:null,literal:''};
+  const places=new Set<string>();
+  for (const match of scopes) {
+    const scope=sourceFold(match[1]);
+    const found=SOURCE_WORK_PLACES.filter(place=>new RegExp('\\b'+sourceFold(place)+'\\b').test(scope));
+    if (!found.length) return {observed:true,commune:null,literal:match[0]};
+    if (found.length===2 && found.includes('Mininco') && found.includes('Collipulli')) found.splice(found.indexOf('Collipulli'),1);
+    for (const place of found) places.add(place);
+  }
+  return {observed:true,commune:places.size===1 ? [...places][0] : null,literal:scopes.map(match=>match[0]).join(' | ')};
+}
+
 function worksite(job:Data) {
   const locations = Array.isArray(job.jobLocation) ? job.jobLocation : [job.jobLocation];
   const found = new Set<string>();
@@ -107,6 +124,13 @@ function worksite(job:Data) {
     const address = location.address;
     const country = sourceObject(address.addressCountry) ? address.addressCountry.name || address.addressCountry.identifier : address.addressCountry;
     if (!country || !['cl','chile'].includes(sourceFold(country).trim())) return null;
+  }
+  // A portal city is not necessarily the worksite. Only an explicit workplace
+  // statement in this matching job's own description can replace that city.
+  const explicit=descriptionWorksite(job.description);
+  if (locations.length===1 && explicit.observed) return explicit.commune;
+  for (const location of locations) {
+    const address=(location as Data).address as Data;
     const text = sourceFold(address.addressLocality);
     const places = SOURCE_WORK_PLACES.filter(place => new RegExp('\\b'+sourceFold(place)+'\\b').test(text));
     if (places.length===2 && places.includes('Mininco') && places.includes('Collipulli')) places.splice(places.indexOf('Collipulli'),1);
@@ -190,7 +214,9 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   const place = worksite(job);
   if (!title || title.length>300) return { status:'pending',reason:'job_title_missing' };
   if (!place) return { status:'pending',reason:'worksite_missing_or_multiple' };
-  const base = { title,company:employer,work_commune:place,work_location_verified:true,url:finalUrl,source:adapter.name };
+  const explicitPlace=descriptionWorksite(job.description);
+  const base = { title,company:employer,work_commune:place,work_location_verified:true,url:finalUrl,source:adapter.name,
+    ...(explicitPlace.observed ? {work_location_evidence:{method:'explicit_worksite_in_own_job_description',literal:explicitPlace.literal}} : {}) };
   const published = publicJobDate(job.datePosted,adapter.name);
   const deadline = job.validThrough ? publicJobDate(job.validThrough,adapter.name,true) : null;
   if (deadline && Date.parse(deadline)<=now) return { ...base,status:'rejected',reason:'expired_deadline' };

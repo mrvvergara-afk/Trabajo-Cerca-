@@ -130,3 +130,40 @@ test('Laborum rapid application is accepted only inside the same named main-job 
  const result=ctx.evaluatePublicJob(original,raw,original,200,now);assert.equal(result.status,'verified');assert.equal(result.application,original);
  assert.notEqual(ctx.evaluatePublicJob(original,raw.replace('form-salario-pretendido','recommended-form'),original,200,now).status,'verified');
 });
+
+test('real portal city mismatches use explicit worksite statements in the matching job description',()=>{
+ for (const [description,city,expected] of [
+  ['En LAYNER buscamos TENS para incorporarse a servicio de atención domiciliaria en Lumaco.','Temuco','Lumaco'],
+  ['Disponibilidad para realizar práctica presencial en Nacimiento, Región del Biobío.','Los Ángeles','Nacimiento'],
+  ['En ECORILES queremos integrar una persona para un proyecto en Mulchén.','Los Ángeles','Mulchén'],
+ ]) {
+ const result=ctx.evaluatePublicJob(url,page({job:{description,jobLocation:{address:{addressLocality:city,addressCountry:'CL'}}}}),url,200,now);
+ assert.equal(result.status,'verified');assert.equal(result.work_commune,expected);
+ assert.equal(result.work_location_evidence.method,'explicit_worksite_in_own_job_description');
+ assert.ok(result.work_location_evidence.literal.includes(expected));
+ }
+});
+
+test('residence, title, footer, past project experience and recommendations cannot replace the source worksite',()=>{
+ for (const description of ['Preferencia por residentes de Lumaco.','Experiencia en proyectos en Mulchén.','Trabajo en equipo y conocimientos de Angol.']) {
+ const result=ctx.evaluatePublicJob(url,page({job:{title:'Operador Lumaco',description,jobLocation:{address:{addressLocality:'Temuco',addressCountry:'CL'}}},tail:'<footer>Lugar de trabajo: Angol</footer>'}),url,200,now);
+ assert.equal(result.status,'pending');assert.equal(result.reason,'worksite_missing_or_multiple');
+ }
+});
+
+test('an explicit outside or multiple workplace, foreign country or multiple locations still cannot pass',()=>{
+ for (const job of [
+  {description:'Lugar de trabajo: Santiago',jobLocation:{address:{addressLocality:'Angol',addressCountry:'CL'}}},
+  {description:'Servicio de atención domiciliaria en Lumaco y Angol.',jobLocation:{address:{addressLocality:'Temuco',addressCountry:'CL'}}},
+  {description:'Lugar de trabajo: Angol',jobLocation:{address:{addressLocality:'Angol',addressCountry:'AR'}}},
+  {description:'Lugar de trabajo: Angol',jobLocation:[{address:{addressLocality:'Angol',addressCountry:'CL'}},{address:{addressLocality:'Santiago',addressCountry:'CL'}}]},
+ ]) assert.equal(ctx.evaluatePublicJob(url,page({job}),url,200,now).status,'pending');
+});
+
+test('the public employer microsite and standard Chiletrabajos URL identify the same existing job',()=>{
+ const alias='https://portal.chiletrabajos.cl/empresa/layner/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931';
+ const standard='https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931';
+ assert.equal(ctx.samePublicJob(alias,standard),true);
+ assert.equal(ctx.publicPublisher(alias).group,'chiletrabajos');
+ assert.equal(ctx.publicSourceAdapter(alias.replace('/trabajo/','/otro/')),null);
+});

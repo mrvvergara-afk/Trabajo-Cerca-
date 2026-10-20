@@ -41,6 +41,8 @@ def source_adapter(value):
     name, identity, family = '', '', 'portal'
     if host in ('bne.gob.cl','bne.cl') and (match := re.fullmatch(r'/oferta/(20\d{2}-\d{1,9})/?',path)):
         name, identity = 'Bolsa Nacional de Empleo', 'https://www.bne.gob.cl/oferta/'+match[1]
+    elif host == 'portal.chiletrabajos.cl' and (match := re.fullmatch(r'/empresa/[^/]+/trabajo/([^/]+)/?',path)):
+        name, identity = 'Chiletrabajos', 'https://www.chiletrabajos.cl/trabajo/'+match[1]
     elif host == 'chiletrabajos.cl' and re.fullmatch(r'/trabajo/[^/]+/?',path):
         name, identity = 'Chiletrabajos', 'https://www.chiletrabajos.cl'+path.rstrip('/')
     elif host in ('indeed.com','cl.indeed.com') and path in ('/viewjob','/rc/clk') and re.fullmatch(r'[a-f0-9]{16}',query.get('jk',[''])[0],re.I):

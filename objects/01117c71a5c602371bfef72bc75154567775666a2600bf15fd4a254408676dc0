@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+
+
+        <title>Bolsa Nacional de Empleo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="La BNE es el portal de búsqueda y publicación de ofertas laborales para todos los chilenos y chilenas">
+        <meta name="keywords" content="Publica totalmente GRATIS, ofertas laborales, ofertas trabajo, ofertas empleo, Bolsa de empleo, ofertas laborales en todo Chile"/>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/static/favicon-194x194.png" sizes="194x194">
+        <link rel="icon" type="image/png" href="/static/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/static/manifest.json">
+        <link rel="shortcut icon" href="/static/favicon.ico">
+        <meta name="msapplication-TileColor" content="#603cba">
+        <meta name="msapplication-TileImage" content="/static/mstile-144x144.png">
+        <meta name="msapplication-config" content="/static/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/comun/estilos-bne.css?v=3.88.01_20260930090204" />  
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/bootstrap4/bootstrap.min.css?v=3.88.01_20260930090204" />
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/bootstrap4/tempusdominus-bootstrap-4.min.css?v=3.88.01_20260930090204" />                             
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/select2/select2.min.css?v=3.88.01_20260930090204" />
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/select2/select2-bootstrap.min.css?v=3.88.01_20260930090204" />
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/fontawesome5.all.min.css?v=3.88.01_20260930090204" />            
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/bootstrap-table/bootstrap-table.min.css?v=3.88.01_20260930090204" />            
+        <link rel="stylesheet" type="text/css" media="all" href="/static/tcss/common.css?v=3.88.01_20260930090204" />
+        <link rel="stylesheet" type="text/css" media="all" href="/static/tcss/headerNueva.css?v=3.88.01_20260930090204" />
+        <link rel="stylesheet" type="text/css" media="all" href="/static/tcss/footerNueva.css?v=3.88.01_20260930090204" />
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/css2/accesibilidad.css?v=3.88.01_20260930090204" />  
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/comun/panel.css?v=3.88.01_20260930090204" /> 
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/comun/calendar.css?v=3.88.01_20260930090204" />
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/css2/jquery-ui.css?v=3.88.01_20260930090204" />     
+        <link rel="stylesheet" type="text/css" media="all" href="/static/css/css2/jquery.timepicker.css?v=3.88.01_20260930090204" />                  
+    
+<link rel="stylesheet" type="text/css" media="all" href="/static/tcss/empleador/headerEmpleador.css?v=3.88.01_20260930090204" />
+<link rel="stylesheet" type="text/css" media="all" href="/static/css/css2/footer.css?v=3.88.01_20260930090204" />
+<link rel="stylesheet" type="text/css" media="all" href="/static/css/comun/panel.css?v=3.88.01_20260930090204" />
+    
+</head>
+
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/static/css/css2/buscador/buscador.css?v=3.88.01_20260930090204" />
+    <link rel="stylesheet" type="text/css" media="all" href="/static/css/css2/buscador/vanillaSelectBox.css?v=3.88.01_20260930090204" />
+</head>
+
+<body>
+    <div class="container-fluid px-0">
+        <header>
+        <section class="cabecera linea-azul">
+            <div class="content d-flex minWidht">
+                <div class='navbar-default px-4 mt-3'>
+                    <div class="navbar-header">
+                        <div class="margin-top text-center mb-3 w-100">
+                            <button id="menuHome" class="navbar-toggle navbar-toggle-home menuHome" type="button" data-target="#navbar"
+                                data-toggle="collapse" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <span id="abrirIcon" class="fas fa-bars mt-1"></span> <span id="cerrarIcon" class="d-none"> <img
+                                    src='/static/images/home/icon-cierre.png' class="icono-x mb-1" alt="Icono cerrar" />
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <div class="mb-2 pt-2">
+                            <div class="rombo"></div>
+                        </div>
+                        <div id="main_menus" class="nav navbar-nav ">
+
+                            <div id="desplegable" class="menu-desplegable px-4">
+                                <div class="d-flex justify-content-between iconos-contacto">
+                                    <div class="d-flex align-items-center">
+                                        <a class="btn" href="tel:224055200">
+                                            <img class="mr-2" src="/static/images/home/telefono-contacto.png" alt="Icono tel&eacute;fono" />
+                                            2 2405 5200
+                                        </a>
+                                    </div>
+                                    <div class="align-items-center">
+                                        <a class="btn" id="emailContactoHeaderHref">
+                                            <img class="mr-2" src="/static/images/home/email-menu.png" alt="Icono email" /> <span
+                                                class="txt-btn" data-dir="soporte" data-server="bne.gob" data-extension="cl"
+                                                id="emailContactoHeader"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between mt-4 iconos-rrss">
+                                    <div>
+                                        <a style="font-size: 28px;" href="https://www.linkedin.com/company/bne-cl"
+                                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','LinkedIn');" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <span class="fab fa-linkedin-in"></span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="font-size: 28px; padding-left: 5px;" href="https://www.facebook.com/bne.cl"
+                                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','Facebook');" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <span class="fab fa-facebook-f"></span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="font-size: 25px;" href="https://twitter.com/BNEChile"
+                                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','Twitter');" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <span class="fab fa-twitter"></span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="font-size: 23px;" href="https://www.youtube.com/channel/UCsmScFPr_UXmBm81DUVvNTg"
+                                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','Youtube');" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <span style="vertical-align: text-bottom; padding-bottom: 2px;" class="fab fa-youtube"></span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="font-size: 27px;" href="https://www.instagram.com/bnechile"
+                                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','Instagram');" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <span style="vertical-align: text-top; padding-top: 3px;" class="fab fa-instagram"></span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="font-size: 27px;" href="https://www.tiktok.com/@bne.chile"
+                                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','TikTok');" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <span style="vertical-align: text-top; padding-top: 3px;" class="fab fa-tiktok"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div id="opciones">
+
+                                    <div class="mt-3 principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a
+                                                href="/ofertas?mostrar=empleo&amp;numPaginaRecuperar=1&amp;numResultadosPorPagina=10&amp;clasificarYPaginar=true"
+                                                class="" data-hover="" data-close-others="true" role="button" aria-haspopup="true"
+                                                aria-expanded="false"> Buscar Empleo </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="/postulantes/login-cesantia" class="" data-toggle="" data-hover=""
+                                                data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false">
+                                                Certificación Seguro de Cesantía </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="/faq" class="" data-toggle="" data-hover="" data-close-others="true"
+                                                role="button" aria-haspopup="true" aria-expanded="false" target="_blank"> Preguntas
+                                                Frecuentes </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a rel="noopener noreferrer" href="https://sence.gob.cl/personas/orientacion-laboral"
+                                                data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false"
+                                                target="_blank"> Orientaci&oacute;n Laboral </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Inicio Menú Donde buscar empleo -->
+
+                                    <div id="dondeBuscarEmpleoSubSeccion" class="principal pl-0 pt-2">
+
+                                        <div class="col-md-11">
+                                            <a onclick="despliegueSeccionBusquedaEmpleo();" href="#" data-close-others="true"
+                                                role="button" aria-haspopup="true" aria-expanded="false"> D&oacute;nde buscar empleo </a>
+                                        </div>
+                                        <div class="text-white pr-3">
+                                            <a onclick="despliegueSeccionBusquedaEmpleo();" href="#" data-close-others="true"
+                                                role="button" aria-haspopup="true" aria-expanded="false" class="no-underline">
+                                                <span id="angleDown2" class="fa fa-angle-down"></span> <span id="angleUp2"
+                                                    style="display: none" class="fa fa-angle-up"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="w-100" id="subOpcionesBusquedaEmpleo" style="display: none">
+                                        <div id="" class="container text-left flex-column">
+                                            <div class="flex-row justify-content-between">
+                                                <div class="p-2 pl-0 pt-2 pb-2">
+                                                    <a href="/feria-laboral" target="_blank"
+                                                        class="" data-toggle="" data-hover="" data-close-others="true" role="button"
+                                                        aria-haspopup="true" aria-expanded="false" rel="noopener noreferrer"> Ferias
+                                                        Laborales </a>
+                                                </div>
+                                                <div class="text-white pt-2">
+                                                    <span class="fa fa-fw fas fa-external-link-alt external-icon pr-2" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-row justify-content-between">
+                                                <div class="p-2 pl-0 pt-2 pb-2">
+                                                <a href="https://sence.gob.cl/personas/plataformas-laborales" target="_blank" class="" data-toggle=""
+                                                    data-hover="" data-close-others="true" role="button" aria-haspopup="true"
+                                                    aria-expanded="false" rel="noopener noreferrer">Plataformas Laborales SENCE </a>
+                                                </div>
+                                                <div class="text-white pt-2">
+                                                    <span class="fa fa-fw fas fa-external-link-alt external-icon pr-2" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                         <div class="flex-row justify-content-between">
+                                                <div class="p-2 pl-0 pt-2 pb-2">
+                                                    <a href="https://sence.gob.cl/empresas/ferias-laborales-sence-y-bne-empresas"
+                                                        target="_blank" class="" data-toggle="" data-hover="" data-close-others="true"
+                                                        role="button" aria-haspopup="true" aria-expanded="false" rel="noopener noreferrer">Empresas
+                                                    </a>
+                                                </div>
+                                                <div class="text-white pt-2">
+                                                    <span class="fa fa-fw fas fa-external-link-alt external-icon pr-2" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-row justify-content-between">
+                                                <div class="p-2 pl-0 pt-2 pb-2">
+                                                    <a href="https://sence.gob.cl/personas/oficina-chile-atiende-alameda"
+                                                        target="_blank" class="" data-toggle="" data-hover="" data-close-others="true"
+                                                        role="button" aria-haspopup="true" aria-expanded="false" rel="noopener noreferrer">
+                                                        ChileAtiende </a>
+                                                </div>
+                                                <div class="text-white pt-2">
+                                                    <span class="fa fa-fw fas fa-external-link-alt external-icon pr-2" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-row justify-content-between">
+                                                <div class="p-2 pl-0 pt-2 pb-2">
+                                                    <a href="https://www.sence.gob.cl/sence/regiones.html" target="_blank" class=""
+                                                        data-toggle="" data-hover="" data-close-others="true" role="button"
+                                                        aria-haspopup="true" aria-expanded="false" rel="noopener noreferrer"> Oficina
+                                                        Municipal </a>
+                                                </div>
+                                                <div class="text-white pt-2">
+                                                    <span class="fa fa-fw fas fa-external-link-alt external-icon pr-2" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Fin menú Donde buscar empleo -->
+
+
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="https://eligemejor.sence.cl/" class="" data-toggle="" data-hover=""
+                                                data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false">
+                                                Capacitaciones </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="https://sence.gob.cl/personas/subsidio-al-empleo-joven" class="" data-toggle=""
+                                                data-hover="" data-close-others="true" role="button" aria-haspopup="true"
+                                                aria-expanded="false"> Subsidio al empleo joven </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="https://sence.gob.cl/personas/bono-al-trabajo-de-la-mujer" class=""
+                                                data-toggle="" data-hover="" data-close-others="true" role="button" aria-haspopup="true"
+                                                aria-expanded="false"> Bono al trabajo mujer </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="https://www.mintrab.gob.cl/certificacion-sello-40h/" class="" data-toggle=""
+                                                data-hover="" data-close-others="true" role="button" aria-haspopup="true"
+                                                aria-expanded="false"> Sello 40 Horas </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="http://www.sil.mintrab.gob.cl/#menu1" class="" data-toggle="" data-hover=""
+                                                data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false">
+                                                Información del Mercado laboral </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="/listado-omil" class="" data-toggle="" data-hover="" data-close-others="true"
+                                                role="button" aria-haspopup="true" aria-expanded="false"> Listado OMIL </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="principal">
+                                        <div class="col-md-10 pl-0 pt-2">
+                                            <a href="/tutoriales" class="" data-toggle="" data-hover="" data-close-others="true"
+                                                role="button" aria-haspopup="true" aria-expanded="false"> Video tutoriales </a>
+                                        </div>
+                                        <div class="col-md-1 text-white pt-2">
+                                            <span class="fa fa-fw fas fa-external-link-alt pr-2" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3">
+                    <a href="/">
+                        <img src="/static/images/logoNuevaBne.png" alt="Logo BNe" />
+                    </a>
+                </div>
+
+
+
+                
+                <section class="w-100 d-flex align-items-end flex-column">
+                    <div class="mt-auto d-flex justify-content-end header-logins">
+                        
+                        <div class="ml-2 pt-3 heightSpan" id="spanInstitucional_dropDown" style="width: 9rem;">
+                            <ul class="m-0 p-0">
+                                <li class="dropdown dropdown_institucional">
+                                    <a rel="noopener noreferrer" href="/empleadores/login?desactivarBanners=true">
+                                        <img class="icono-login" alt="Icono instituciones" src="/static/images/home/institucional.png"><span>Iniciar sesión</span>
+                                    </a>
+                                </li>
+                                </ul>
+                        </div>
+                        
+                        <span class="ml-2 pt-3 heightSpan" id="spanEmpleador_dropDown" style="width: 6rem;">
+                             <ul class="m-0 p-0">
+                                <li class="dropdown dropdown_empleador">
+                                    <a href="#">
+                                        <span>Registrarme</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu_empleador" style="width: 160px;">
+                                        <li>
+                                            <a rel="noopener noreferrer" href="/registro/clave"> Soy trabajador </a>
+                                        </li>
+                                        <li>
+                                            <a rel="noopener noreferrer" href="/registrar/empleador"> Soy empresa </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                </ul>
+                        </span>
+                        <div class="ml-2 pt-3 heightSpan" id="spanInstitucional_dropDown" style="width: 10rem;">
+                            <ul class="m-0 p-0">
+                                <li class="dropdown dropdown_institucional">
+                                    <a rel="noopener noreferrer" href="/postulantes/login/recuperar">
+                                        <span>Recuperar contrase&ntilde;a</span>
+                                    </a>
+                                </li>
+                                </ul>
+                        </div>
+                    </div>
+
+                </section>
+        
+        
+            </div>
+        </section>
+
+
+    </header>
+        <main class="fondoGris ocuparPagina pt25 centrarElementos">
+    
+    <input type="hidden" id="csrf-token" name="_csrf" value="7b7ddff7-4236-4d95-b453-34bf94c8ba72" />
+    
+    <div >
+        <div>
+    <div class="row">
+        <div class="col-md-12 breadCrumb-margin">
+        
+            <div>
+                 <div class="margin-enlace">
+                    <a href="/">
+                        <span>Inicio</span>
+                    </a>
+                    <span> / Ofertas de empleo </span>
+                </div>    
+            </div>
+            
+        </div>
+    </div>
+    <div class="row noMargingLateralesImportant nav-tabs">
+        <div id="pestanaOfertasBNE">
+            <span class="w-100" >Ofertas BNE</span>
+        </div>
+        <div id="pestanaOfertasExternas">
+            <span class="w-100" onclick="gaEnviarPulsacionBoton(&#39;Ofertas Externas&#39;, &#39;Tab Ofertas Externas Web&#39;);">Ofertas Externas</span>
+        </div>
+    </div>
+    <div id="filtros_resultado" class="seccionFiltros noMargingLateralesImportant panel-body">
+        <div class="row form-group minWidth1200 ">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-0">
+                <!--<select id="buscadorOfertas" class="form-control buscar" multiple="multiple"></select>-->
+                <input id="buscadorOfertas"
+                    class=".select2-container--bootstrap .select2-selection.form-control select2-search__field form-control buscar"
+                    style="border-radius: 12px;" title='<s:message code="public.home.buscador.inputTitle"/>'>
+            </div>
+            <div class="col-xs-10 col-xs-offset-2 col-sm-2 col-sm-offset-0">
+                <button type="submit" id="botonBuscarOfertas" name="botonBuscarOfertas" class="btn btn-primary btn-block">
+                    <span >BUSCAR</span> <span class="fas fa-search"></span>
+                </button>
+            </div>
+        </div>
+        <form id="filtrosOfertas" name="filtrosOfertas" modelAttribute="filtros">
+            <div>
+    <div>
+        <div class="row form-group">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+                <select id="filtroFecha" class="vsb-main-fecha" field="filtroFecha">
+                    <option value="">Fecha de publicación</option>
+                    <option value="Hoy">Hoy<option value="Ayer">Ayer<option value="Menor a 3 días">Menor a 3 días<option value="Menor a 1 semana">Menor a 1 semana<option value="Menor a 15 días">Menor a 15 días<option value="Menor a 1 mes">Menor a 1 mes<option value="Menor a 2 meses">Menor a 2 meses</select>
+            </div>
+            <!-- Regiones  --> 
+            <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectRegiones" title="selectRegiones" multiple size="5" data-placeholder="Región" class="filtrosSeleccion">
+          <option value="378" >Metropolitana</option>
+          <option value="388" >Arica y Parinacota</option>
+          <option value="376" >Tarapacá</option>
+          <option value="387" >Antofagasta</option>
+          <option value="386" >Atacama</option>
+          <option value="383" >Coquimbo</option>
+          <option value="375" >Valparaíso</option>
+          <option value="377" >O&#39;Higgins</option>
+          <option value="379" >Maule</option>
+          <option value="391" >Ñuble</option>
+          <option value="384" >Bío Bío</option>
+          <option value="382" >La Araucanía</option>
+          <option value="389" >Los Ríos</option>
+          <option value="381" >Los Lagos</option>
+          <option value="385" >Aysén</option>
+          <option value="380" >Magallanes y Antártica Chilena</option> 
+        </select>
+        <div id="errorMaxSelect_selectRegiones" class="error" style="display: none;">Puedes aplicar máximo 5 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectRegiones" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectRegiones" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div>
+            <!-- COMUNAS  --> 
+            <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectComuna" title="selectComuna" multiple size="5" data-placeholder="Comuna" class="filtrosSeleccion">
+           
+        </select>
+        <div id="errorMaxSelect_selectComuna" class="error" style="display: none;">Puedes aplicar máximo 5 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectComuna" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectComuna" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div>
+            <!-- Ocupaciones  --> 
+            <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectOcupaciones" title="selectOcupaciones" multiple size="5" data-placeholder="Ocupación" class="filtrosSeleccion">
+          <option value="7646" >Abogados (as)</option>
+          <option value="7975" >Acarreadores de agua y recolectores  de  leña</option>
+          <option value="7792" >Acompañantes y ayudantes de cámara</option>
+          <option value="7664" >Actores, actrices y directores de cine, radio, teatro, television y afines</option>
+          <option value="8098" >Administradores (as) Edificios o Comunidades</option>
+          <option value="8153" >Administrativo(a) de obra</option>
+          <option value="8099" >Administrativos (as)</option>
+          <option value="7710" >Agentes de bolsa, cambio y otros servicios financieros</option>
+          <option value="7718" >Agentes de compras y consignatarios</option>
+          <option value="7733" >Agentes de la administración pública para la aplicación de la ley y afines no clasificados bajo otros epígrafes</option>
+          <option value="7723" >Agentes de servicios comerciales no clasificados bajo otros epígrafes</option>
+          <option value="7731" >Agentes de servicios de expedición de licencias y permisos</option>
+          <option value="7730" >Agentes de servicios de seguridad social</option>
+          <option value="7759" >Agentes de viajes</option>
+          <option value="7717" >Agentes intermediarios de compras</option>
+          <option value="8016" >Agricultores (as)/ trabajadores (as) de huertas, plantaciones, invernaderos, viveros y jardines</option>
+          <option value="7820" >Agricultores y agricultoras, trabajadores y trabajadoras calificadas de cultivos extensivos</option>
+          <option value="7821" >Agricultores y agricultoras, trabajadores y trabajadoras calificadas de plantaciones de árboles y arbustos</option>
+          <option value="7823" >Agricultores y trabajadores calificados de cultivos mixtos</option>
+          <option value="7822" >Agricultores y trabajadores calificados de huertas, invernaderos, viveros y jardines</option>
+          <option value="7581" >Agronomos (as)</option>
+          <option value="7931" >Ajustadores de equipos electrónicos</option>
+          <option value="7839" >Albañiles</option>
+          <option value="8028" >Albañiles y mamposteros</option>
+          <option value="7629" >Analistas de gestión, organización y afines</option>
+          <option value="7644" >Analistas de Redes o Administradores (as) de redes (TI)</option>
+          <option value="7637" >Analistas de sistemas</option>
+          <option value="7628" >Analistas financieros</option>
+          <option value="8092" >Analistas/ area salud</option>
+          <option value="8106" >Analistas/ area seguridad</option>
+          <option value="7858" >Aparejadores y empalmadores de cables</option>
+          <option value="7897" >Apelambradores, pellejeros y curtidores</option>
+          <option value="7649" >Archivistas y curadores de museos</option>
+          <option value="7593" >Arquitectos (as)/ Urbanistas/ ingenieros( as) de transito/ Alarifes</option>
+          <option value="7594" >Arquitectos paisajistas</option>
+          <option value="8029" >Arquitectos, ingenieros y afines, no clasificados bajo otros epígrafes</option>
+          <option value="8030" >Arquitectos, urbanistas e ingenieros de tránsito</option>
+          <option value="8000" >Arquitectos, urbanistas, agrimensores y diseñadores</option>
+          <option value="7870" >Artesanos en barro, arcilla y abrazivos</option>
+          <option value="7873" >Artesanos en madera, cestería y materiales similares</option>
+          <option value="7875" >Artesanos no clasificados bajo otros epígrafes</option>
+          <option value="7874" >Artesanos y artesanas de los tejidos, el cuero y materiales similares</option>
+          <option value="8004" >Artistas creativos e interpretativos</option>
+          <option value="7666" >Artistas creativos e interpretativos no clasificados bajo otros epígrafes</option>
+          <option value="7660" >Artistas de artes plásticas, creativos e interpretativos</option>
+          <option value="8125" >Asesoras (es) de hogar / Trabajadora de casa Particular/nana (puertas adentro)</option>
+          <option value="8071" >Asesoras (es) de hogar / Trabajadora de casa Particular/nana (puertas afuera)</option>
+          <option value="7687" >Asesores agrícolas y forestales</option>
+          <option value="7627" >Asesores financieros y en inversiones</option>
+          <option value="8232" >Asistente de educación</option>
+          <option value="7566" >Asistentes / trabajadores(as) sociales / Visitadores(as) sociales</option>
+          <option value="7549" >Asistentes administrativos de registros financieros, de costos y salarios</option>
+          <option value="7791" >Astrólogos, adivinadores y afines</option>
+          <option value="8053" >Auxiliares de aseo / Mantenedores (as) / limpiadores (as)</option>
+          <option value="8013" >Auxiliares de buses o Turismo terrestre</option>
+          <option value="7811" >Auxiliares de maestros</option>
+          <option value="7736" >Auxiliares laicos de las religiones</option>
+          <option value="7780" >Auxiliares y Tripulacion de vuelos</option>
+          <option value="8154" >Ayudante administrativo(a)</option>
+          <option value="8188" >Ayudante de faena húmeda</option>
+          <option value="8191" >Ayudante de faena seca</option>
+          <option value="8134" >Ayudante de mantenimiento para ascensores y montacargas</option>
+          <option value="8229" >Ayudante de pavimentación</option>
+          <option value="8224" >Ayudante de topografía</option>
+          <option value="8135" >Ayudante instalaciones de ascensores y montacargas </option>
+          <option value="8177" >Ayudante instalaciones sanitarias</option>
+          <option value="8181" >Ayudante instrumentista</option>
+          <option value="8216" >Ayudante obras civiles</option>
+          <option value="8221" >Ayudante piping</option>
+          <option value="8225" >Ayudante trazador(a)</option>
+          <option value="7708" >Ayudantes de ambulancias</option>
+          <option value="7966" >Ayudantes de cocina</option>
+          <option value="8031" >Ayudantes de enfermeria a domicilio</option>
+          <option value="8032" >Ayudantes de enfermeria en instituciones</option>
+          <option value="8093" >Ayudantes y Auxiliares de Ortodoncia / Odontologia</option>
+          <option value="7852" >Barnizadores y afines</option>
+          <option value="7971" >Barrenderos y barrenderas</option>
+          <option value="7650" >Bibliotecarios, documentalistas y afines</option>
+          <option value="7580" >Biólogos y biólogas, botánicos y botánicas, zoologos y zoologas y afines</option>
+          <option value="8143" >Bodeguero(a)</option>
+          <option value="7815" >Bomberos</option>
+          <option value="7807" >Bomberos (as) de estacion de servicios</option>
+          <option value="7755" >Cajeros (as)</option>
+          <option value="7802" >Cajeros y expendedores de billetes</option>
+          <option value="7876" >Cajistas, tipógrafos y afines</option>
+          <option value="7785" >Camareros de barra</option>
+          <option value="8033" >Camareros y taberneros</option>
+          <option value="8091" >Camarografos (as) areas audiovisuales</option>
+          <option value="8159" >Capataz de instalaciones eléctricas</option>
+          <option value="8178" >Capataz de instalaciones sanitarias</option>
+          <option value="8155" >Capataz de obra gruesa y obras preliminares</option>
+          <option value="8144" >Capataz de patio o logística</option>
+          <option value="8156" >Capataz de terminaciones y obras complementarias</option>
+          <option value="8131" >Capataz entrega y postventa</option>
+          <option value="8034" >Carpinteros de armar y de blanco</option>
+          <option value="7597" >Cartógrafos y agrimensores</option>
+          <option value="7856" >Chapistas y caldereros</option>
+          <option value="7743" >Chefs</option>
+          <option value="8184" >Chofer</option>
+          <option value="7970" >Clasificadores de desechos</option>
+          <option value="7758" >Cobradores de deudas</option>
+          <option value="7965" >Cocineros de comidas rápidas</option>
+          <option value="7799" >Compradores de servicios y bienes mayorista o minorista</option>
+          <option value="8114" >Conductores (as) de camiones o maquinaria pesada / Yale</option>
+          <option value="7938" >Conductores (as) de camiones o maquinaria pesada /Todas las maquinas</option>
+          <option value="7936" >Conductores (Clase A1)/ Chofer</option>
+          <option value="8115" >Conductores (Clase A2)/ Chofer</option>
+          <option value="8116" >Conductores (Clase A3)/ Chofer</option>
+          <option value="8117" >Conductores (Clase A4)/ Chofer</option>
+          <option value="8118" >Conductores (Clase A5)/ Chofer</option>
+          <option value="8119" >Conductores (Clase B)/ Chofer</option>
+          <option value="8120" >Conductores (Clase C)/ Chofer</option>
+          <option value="8121" >Conductores (Clase D)/ Chofer</option>
+          <option value="8122" >Conductores (Clase E)/ Chofer</option>
+          <option value="8123" >Conductores (Clase F)/ Chofer</option>
+          <option value="7935" >Conductores de motocicletas</option>
+          <option value="7961" >Conductores de vehículos accionados a pedal o a brazo</option>
+          <option value="7962" >Conductores de vehículos y máquinas de tracción animal</option>
+          <option value="7937" >Conductores(as) de autobuses/ Chofer</option>
+          <option value="7790" >Conserjes de edificios y/o comunidades / Mayordomos / Amas de llave</option>
+          <option value="7838" >Constructores de casas</option>
+          <option value="8036" >Contadores</option>
+          <option value="7626" >Contadores y contadoras</option>
+          <option value="7683" >Controladores (as) / Controller Procesos</option>
+          <option value="7681" >Controladores de instalaciones de procesamiento de productos químicos</option>
+          <option value="7722" >Corredores (as) de propiedades / Agentes inmobiliarios</option>
+          <option value="7895" >Cortadores (as), bordadores (as), Confección ropa / textil</option>
+          <option value="8037" >Creadores y analistas de sistemas informáticos</option>
+          <option value="8038" >Criadores de ganado y otros animales domésticos, productores de leche y sus derivados</option>
+          <option value="7794" >Criadores y criadoras de animales domésticos diversos</option>
+          <option value="7824" >Criadores y criadoras de ganado y otros animales domésticos y productores de leche y sus derivados</option>
+          <option value="8039" >Criadores y trabajadores calificados de la cría de animales domésticos diversos</option>
+          <option value="7827" >Criadores y trabajadores pecuarios calificados de la cría de animales no clasificados bajo otros epígrafes</option>
+          <option value="8017" >Criadores y trabajadores pecuarios calificados de la cría de animales para el mercado y afines</option>
+          <option value="7848" >Cristaleros</option>
+          <option value="8124" >Cuidadores (as) de Adulto mayor</option>
+          <option value="7810" >Cuidadores (as) de niños / BabySitter</option>
+          <option value="8107" >Cuidadores (as) de parcelas / propiedades particulares</option>
+          <option value="8108" >Cuidadores (as) de vehiculos / estacionador / parquimetros</option>
+          <option value="8063" >Cuidadores de niños</option>
+          <option value="7753" >Dactilógrafos y mecanógrafos</option>
+          <option value="7719" >Declarantes o gestores de aduana</option>
+          <option value="8040" >Decoradores (as) y Diseñadores (as) de interior</option>
+          <option value="7674" >Delineantes Tecnicos y dibujantes</option>
+          <option value="7804" >Demostradores de tiendas</option>
+          <option value="7606" >Dentistas</option>
+          <option value="7737" >Deportistas, entrenadores y empleados de organizaciones deportivas</option>
+          <option value="7638" >Desarrolladores de software</option>
+          <option value="7639" >Desarrolladores Web y multimedia</option>
+          <option value="7643" >Desarrolladores y analistas de sistemas informáticos</option>
+          <option value="8003" >Desarrolladores y analistas de software y multimedia</option>
+          <option value="7641" >Desarrolladores y analistas de software y multimedia y analistas no clasificados bajo otros epígrafes</option>
+          <option value="7610" >Dietistas y nutricionistas</option>
+          <option value="7754" >Digitador y digitadora de datos</option>
+          <option value="7775" >Digitadores (as), codificadores (as) o correctores (as) de datos</option>
+          <option value="8088" >Directores (as) areas audiovisuales/sociales/culturales</option>
+          <option value="7994" >Directores (as), organizadores (as) y/o Productores (as) de eventos</option>
+          <option value="7552" >Directores de administración y servicios no clasificados bajo otros epígrafes</option>
+          <option value="7663" >Directores de cine, de teatro y afines</option>
+          <option value="7561" >Directores de empresas de abastecimiento, distribución y afines</option>
+          <option value="7560" >Directores de empresas de construcción</option>
+          <option value="7995" >Directores de industrias manufactureras, de minería, construcción y distribución</option>
+          <option value="7555" >Directores de investigación y desarrollo</option>
+          <option value="7557" >Directores de producción de piscicultura y pesca</option>
+          <option value="7554" >Directores de publicidad y relaciones públicas</option>
+          <option value="7550" >Directores de recursos humanos</option>
+          <option value="7563" >Directores de servicios de cuidados infantiles</option>
+          <option value="7567" >Directores de servicios de educación</option>
+          <option value="7564" >Directores de servicios de salud</option>
+          <option value="7553" >Directores de ventas y comercialización</option>
+          <option value="7981" >Directores y gerentes</option>
+          <option value="7983" >Directores y gerentes de producción y operaciones</option>
+          <option value="7569" >Directores y gerentes de servicios profesionales no clasificados bajo otros epígrafes</option>
+          <option value="7547" >Dirigentes de organizaciones que presentan un interés especial</option>
+          <option value="7598" >Diseñadores (as) Grafico y/o Multimedia</option>
+          <option value="7595" >Diseñadores de productos y de prendas</option>
+          <option value="7642" >Diseñadores y administradores de bases de datos</option>
+          <option value="7741" >Diseñadores y decoradores de interior</option>
+          <option value="7616" >Docentes / Profesores (as)</option>
+          <option value="7891" >Ebanistas y afines</option>
+          <option value="7651" >Economistas</option>
+          <option value="7789" >Ecónomos, mayordomos y amas de llave</option>
+          <option value="8055" >Educadores (as) de parvulos</option>
+          <option value="8204" >Electromecánico(a)</option>
+          <option value="7669" >Electrotécnicos</option>
+          <option value="8041" >Embaladores (as) y empaquetadores (as)</option>
+          <option value="7959" >Empacadores manuales</option>
+          <option value="7773" >Empleados de bibliotecas</option>
+          <option value="8042" >Empleados de bibliotecas y archivos</option>
+          <option value="7760" >Empleados de centros de llamadas</option>
+          <option value="7768" >Empleados de servicios estadísticos, financieros y de seguros</option>
+          <option value="7778" >Empleados del servicio de personal</option>
+          <option value="7990" >Empleados en trato directo con el público</option>
+          <option value="7769" >Empleados encargados de las nóminas</option>
+          <option value="8012" >Empleados encargados del registro de materiales y de transportes</option>
+          <option value="7777" >Empleados y empleadas de bibliotecas y archivos</option>
+          <option value="7763" >Empleados y empleadas de servicio al cliente, ventanillas etc.</option>
+          <option value="7774" >Empleados y empleadas de servicios de correos</option>
+          <option value="8145" >Encargado(a) de adquisiciones</option>
+          <option value="7878" >Encuadernadores y afines</option>
+          <option value="7765" >Encuestadores (as) / Promotores (as) / Repartidores (as) de mercandising o volantes</option>
+          <option value="7565" >Enfermeros (as)</option>
+          <option value="7932" >Ensambladores ? armaduria</option>
+          <option value="7738" >Entrenadores, instructores y árbitros de actividades deportivas</option>
+          <option value="7776" >Escribientes públicos y afines</option>
+          <option value="7657" >Escritores redactores y periodistas</option>
+          <option value="7645" >Especialistas en bases de datos y en redes de computadores no clasificados bajo otros epígrafes</option>
+          <option value="7632" >Especialistas en formación del personal</option>
+          <option value="7619" >Especialistas en metodos pedagogicos y material didactico</option>
+          <option value="7986" >Especialistas en organización de la administración publica y de empresas</option>
+          <option value="8043" >Especialistas en organización y administración de empresas y afines, no clasificados bajo otros epígrafes</option>
+          <option value="7630" >Especialistas en políticas de administración</option>
+          <option value="7631" >Especialistas en politicas y servicios de personal y afines</option>
+          <option value="7846" >Estucadores</option>
+          <option value="8102" >Evaluadores (as) / Examinador (test/pruebas)</option>
+          <option value="7868" >Fabricantes y afinadores de instrumentos musicales</option>
+          <option value="7653" >Filosofos historiadores y especialistas en ciencias politicas</option>
+          <option value="7609" >Fisioterapeutas </option>
+          <option value="8044" >Fisioterapeutas</option>
+          <option value="8094" >Fonoaudiologos (as)</option>
+          <option value="7740" >Fotografos (as) y/o videografos (as)</option>
+          <option value="7902" >Fumigadores (as) / Control de Plagas</option>
+          <option value="7647" >Funcionarios del fisco</option>
+          <option value="7854" >Fundición de metales</option>
+          <option value="7849" >Gasfiter</option>
+          <option value="7817" >Gendarmes</option>
+          <option value="7578" >Geólogos y geofísicos</option>
+          <option value="7573" >Gerentes de centros deportivos, de esparcimiento y culturales</option>
+          <option value="7572" >Gerentes de comercios al por mayor y al por menor</option>
+          <option value="7997" >Gerentes de comercios al por mayor y al por menor</option>
+          <option value="8046" >Gerentes de comercios mayoristas y minoristas</option>
+          <option value="7556" >Gerentes de empresas de agricultura caza silvicultura y pesca</option>
+          <option value="8047" >Gerentes de empresas de construccion y obras publicas</option>
+          <option value="8048" >Gerentes de empresas de intermediacion y servicios a empresas</option>
+          <option value="8049" >Gerentes de empresas de restauración y hostelería</option>
+          <option value="7562" >Gerentes de empresas de transporte almacenamiento y comunicaciones</option>
+          <option value="8050" >Gerentes de empresas, no clasificados bajo otros epígrafes</option>
+          <option value="7996" >Gerentes de hoteles y restaurantes</option>
+          <option value="7558" >Gerentes de industrias manufactureras</option>
+          <option value="7571" >Gerentes de restaurantes</option>
+          <option value="7570" >Gerentes de restoranes y hoteles</option>
+          <option value="7574" >Gerentes de servicios no clasificados bajo otros epígrafes</option>
+          <option value="7548" >Gerentes de servicios recreativos de enseñanza y salud</option>
+          <option value="7568" >Gerentes de sucursales de bancos, de servicios financieros y de seguros</option>
+          <option value="7934" >Guardafrenos, guardagujas y agentes de maniobras</option>
+          <option value="8133" >Guardia</option>
+          <option value="7782" >Guias turisticos</option>
+          <option value="7859" >Herreros y forjadores</option>
+          <option value="8020" >Herreros, herramentistas y afines</option>
+          <option value="7877" >Impresores</option>
+          <option value="7584" >Ingenieros (as ) de Obras civiles</option>
+          <option value="7998" >Ingenieros (excluyendo electrotecnólogos)</option>
+          <option value="7588" >Ingenieros de minas, metalúrgicos y afines</option>
+          <option value="7590" >Ingenieros e ingenieras electricistas</option>
+          <option value="7591" >Ingenieros e ingenieras electronicas y de telecomunicaciones</option>
+          <option value="7586" >Ingenieros e ingenieras mecanicas</option>
+          <option value="7999" >Ingenieros en electrotecnología</option>
+          <option value="7592" >Ingenieros en telecomunicaciones</option>
+          <option value="7583" >Ingenieros industriales y de producción</option>
+          <option value="7585" >Ingenieros medioambientales</option>
+          <option value="7589" >Ingenieros no clasificados</option>
+          <option value="7587" >Ingenieros quimicos</option>
+          <option value="8212" >Inspector Mantenedor De Redes De Gas</option>
+          <option value="8136" >Inspector(a)-certificador(a) de ascensores y montacargas</option>
+          <option value="8051" >Inspectores (as) de seguridad y/o calidad</option>
+          <option value="7781" >Inspectores e inspectoras cobradores y cobradoras de los transportes publicos</option>
+          <option value="7845" >Instalador de piso</option>
+          <option value="8173" >Instalador(a) de escaleras y rampas mecánicas</option>
+          <option value="8137" >Instalador(a) eléctrico de ascensores y montacargas</option>
+          <option value="8138" >Instalador(a) eléctrico mayor de ascensores y montacargas</option>
+          <option value="8147" >Instalador(a) mantenedor(a) de equipos de clima y refrigeración</option>
+          <option value="8148" >Instalador(a) mantenedor(a) de sistemas de calefacción</option>
+          <option value="8149" >Instalador(a) mantenedor(a) mayor de equipos de clima y refrigeración</option>
+          <option value="8150" >Instalador(a) mantenedor(a) mayor de sistemas de calefacción </option>
+          <option value="8139" >Instalador(a) mecánico(a) de ascensores y montacargas</option>
+          <option value="8140" >Instalador(a) mecánico(a) mayor de ascensores y montacargas</option>
+          <option value="8230" >Instalador(a) señalética vial</option>
+          <option value="7847" >Instaladores de material aislante</option>
+          <option value="8052" >Instaladores e instaladoras y reparadores de lineas electricas</option>
+          <option value="7881" >Instaladores y reparadores de líneas eléctricas </option>
+          <option value="8022" >Instaladores y reparadores de telefonos</option>
+          <option value="7883" >Instaladores y reparadores en tecnología de la información y las comunicaciones</option>
+          <option value="8174" >Instructor</option>
+          <option value="8175" >Instructor senior</option>
+          <option value="7795" >Instructores de conduccion</option>
+          <option value="7739" >Instructores de educación física y actividades recreativas</option>
+          <option value="7624" >Instructores en tecnología de la información</option>
+          <option value="8045" >Integrantes de las fuerzas armadas</option>
+          <option value="8157" >Jefe(a) de obra</option>
+          <option value="7546" >Jefes de pequeñas poblaciones</option>
+          <option value="8130" >Jornal</option>
+          <option value="7869" >Joyeros orfebres y plateros</option>
+          <option value="8215" >Laboratorista</option>
+          <option value="7948" >Lavadores de ventanas</option>
+          <option value="7946" >Lavanderos lavanderas y planchadores manuales</option>
+          <option value="7853" >Limpiadores de fachadas y deshollinadores</option>
+          <option value="8026" >Limpiadores de vehículos, ventanas, ropa y otra limpieza a mano</option>
+          <option value="7945" >Limpiadores y asistentes de oficinas, hoteles y otros establecimientos</option>
+          <option value="7944" >Limpiadores y asistentes domésticos</option>
+          <option value="7665" >Locutores de radio y television y afines</option>
+          <option value="8213" >Maestro gasfíter instalador(a) clase 3 </option>
+          <option value="8189" >Maestro(a) albañil</option>
+          <option value="8192" >Maestro(a) andamiero(a)</option>
+          <option value="8194" >Maestro(a) carpintero(a) obra gruesa</option>
+          <option value="8195" >Maestro(a) carpintero(a) terminaciones</option>
+          <option value="8200" >Maestro(a) ceramista</option>
+          <option value="8202" >Maestro(a) concretero(a)</option>
+          <option value="8196" >Maestro(a) ductero</option>
+          <option value="8160" >Maestro(a) eléctrico(a)</option>
+          <option value="8205" >Maestro(a) enfierrador(a)</option>
+          <option value="8209" >Maestro(a) estructurero(a)</option>
+          <option value="8211" >Maestro(a) excavador(a)</option>
+          <option value="8179" >Maestro(a) instalaciones sanitarias</option>
+          <option value="8197" >Maestro(a) instalador papel mural</option>
+          <option value="8182" >Maestro(a) instrumentista</option>
+          <option value="8190" >Maestro(a) mayor albañil</option>
+          <option value="8193" >Maestro(a) mayor andamiero(a)</option>
+          <option value="8198" >Maestro(a) mayor carpintero(a) obra gruesa</option>
+          <option value="8199" >Maestro(a) mayor carpintero(a) terminaciones</option>
+          <option value="8201" >Maestro(a) mayor ceramista</option>
+          <option value="8203" >Maestro(a) mayor concretero(a)</option>
+          <option value="8161" >Maestro(a) mayor eléctrico(a)</option>
+          <option value="8206" >Maestro(a) mayor enfierrador(a)</option>
+          <option value="8210" >Maestro(a) mayor estructurero(a)</option>
+          <option value="8214" >Maestro(a) mayor gasfíter instalador(a) clase 3</option>
+          <option value="8180" >Maestro(a) mayor instalaciones sanitarias</option>
+          <option value="8183" >Maestro(a) mayor instrumentista</option>
+          <option value="8217" >Maestro(a) mayor obras civiles</option>
+          <option value="8219" >Maestro(a) mayor pintor(a)</option>
+          <option value="8222" >Maestro(a) mayor piping</option>
+          <option value="8186" >Maestro(a) mayor soldador(a)</option>
+          <option value="8226" >Maestro(a) mayor trazador(a)</option>
+          <option value="8207" >Maestro(a) mayor yesero(a)</option>
+          <option value="8218" >Maestro(a) obras civiles</option>
+          <option value="8220" >Maestro(a) pintor(a)</option>
+          <option value="8223" >Maestro(a) piping</option>
+          <option value="8132" >Maestro(a) postventa</option>
+          <option value="8187" >Maestro(a) soldador(a)</option>
+          <option value="8227" >Maestro(a) trazador(a)</option>
+          <option value="8208" >Maestro(a) yesero(a)</option>
+          <option value="8111" >Maestros (as) Construccion / Andamios</option>
+          <option value="8112" >Maestros (as) Construccion / Capataz</option>
+          <option value="7842" >Maestros (as) Construccion / Carpinteros (as) / Mueblistas / Albañiles</option>
+          <option value="8113" >Maestros (as) Construccion / Enfierrador</option>
+          <option value="7857" >Maestros (as) Construccion / Montajistas</option>
+          <option value="7924" >Maestros (as) Construccion / Papel mural</option>
+          <option value="7855" >Maestros (as) Construccion / Soldaduras y oxicorte</option>
+          <option value="7678" >Maestros (as) Construccion / Supervisores (as)</option>
+          <option value="8054" >Maestros de nivel medio de la enseñanza preescolar</option>
+          <option value="8056" >Maestros de nivel superior de la enseñanza primaria</option>
+          <option value="8057" >Maestros e instructores de nivel superior de la enseñanza especial</option>
+          <option value="8035" >Maestros(as) Construccion / General</option>
+          <option value="8128" >Manicuristas / Pedicuristas / Cosmetologos (as)</option>
+          <option value="7884" >Manipuladores (as) alimentos / Carniceros (as) y/o Pescaderos (as)</option>
+          <option value="7783" >Manipuladores (as) alimentos / Cocineros (as)</option>
+          <option value="8141" >Mantenedor(a) de ascensores y montacargas</option>
+          <option value="8142" >Mantenedor(a) mayor de ascensores y montacargas</option>
+          <option value="7933" >Maquinistas de locomotoras</option>
+          <option value="7943" >Marineros de cubierta y afines</option>
+          <option value="7689" >Marineros y marineras de cubierta y afines</option>
+          <option value="7579" >Matemáticos, actuarios y estadísticos</option>
+          <option value="8059" >Mecánicos y ajustadores de vehículos de motor</option>
+          <option value="7867" >Mecanicos y reparadores de aparatos electronicos</option>
+          <option value="8021" >Mecánicos y reparadores de máquinas</option>
+          <option value="7865" >Mecánicos y reparadores de máquinas agrícolas e industriales</option>
+          <option value="7864" >Mecánicos y reparadores de motores de avión</option>
+          <option value="7863" >Mecánicos y reparadores de vehículos de motor</option>
+          <option value="7882" >Mecánicos y reparadores en electrónica</option>
+          <option value="7850" >Mecánicos-montadores de instalaciones de refrigeración y climatización</option>
+          <option value="8001" >Medicos distintas especialidades</option>
+          <option value="7600" >Médicos especialistas </option>
+          <option value="7599" >Médicos generales</option>
+          <option value="7972" >Mensajeros (as) y Repartidores (as) de encargos y encomiendas / Carteros (as)</option>
+          <option value="8060" >Mensajeros, porteadores y repartidores</option>
+          <option value="7576" >Meteorologos</option>
+          <option value="7993" >Miembros del poder ejecutivo y de los cuerpos legislativos; directivos de la Administración Pública y organizaciones de interés social</option>
+          <option value="7544" >Miembros del poder legislativo</option>
+          <option value="8061" >Mineros y mineras canteros y canteras</option>
+          <option value="7803" >Modelos de moda arte y publicidad</option>
+          <option value="8019" >Moldeadores, soldadores, chapistas, caldereros, montadores de estructuras metálicas y afines</option>
+          <option value="7662" >Musicos cantantes y bailarines callejeros de cabaret y afines</option>
+          <option value="7661" >Musicos cantantes y compositores</option>
+          <option value="7611" >Nutricionistas (as) y/o Nutriologos (as)</option>
+          <option value="7963" >Obreros y obreras de carga</option>
+          <option value="7840" >Obreros y obreras de la construccion de edificios</option>
+          <option value="7833" >Obreros y obreras de la pesca la caza y la trampa</option>
+          <option value="7900" >Obreros y obreras de minas y canteras</option>
+          <option value="7957" >Obreros y obreras de obras publicas y mantenimiento: carreteras presas y obras similares</option>
+          <option value="7796" >Obreros y obreras forestales</option>
+          <option value="7976" >Ocupaciones elementales no clasificadas bajo otros epígrafes</option>
+          <option value="7980" >Ocupaciones militares</option>
+          <option value="7701" >Odontologos (as) y/o Ortodoncistas (as)</option>
+          <option value="7977" >Oficiales de las fuerzas armadas</option>
+          <option value="7711" >Oficiales de préstamos y créditos</option>
+          <option value="7688" >Oficiales maquinistas en navegación</option>
+          <option value="8018" >Oficiales y operarios de la construcción (obra gruesa) y afines</option>
+          <option value="7843" >Oficiales y operarios de la construcción (obra gruesa) y afines no clasificados bajo otros epígrafes</option>
+          <option value="8064" >Oficiales y operarios de la construcción (obra gruesa) y afines, no clasificados bajo otros epígrafes</option>
+          <option value="8023" >Oficiales y operarios de procesamiento de alimentos y afines</option>
+          <option value="8151" >Operador De Sistemas De Refrigeración Con Amoníaco</option>
+          <option value="8162" >Operador(a) camión asfaltador</option>
+          <option value="8163" >Operador(a) camión imprimador</option>
+          <option value="8164" >Operador(a) camión pluma</option>
+          <option value="8165" >Operador(a) de equipos de movimiento de tierra avanzado</option>
+          <option value="8166" >Operador(a) de equipos de movimiento de tierra básico</option>
+          <option value="8167" >Operador(a) de equipos de transporte al interior de la obra</option>
+          <option value="8168" >Operador(a) de equipos de transporte de carga</option>
+          <option value="8169" >Operador(a) equipo de demarcación vial, Operador(a) equipos de compactación</option>
+          <option value="8170" >Operador(a) equipo izaje vertical</option>
+          <option value="8171" >Operador(a) grúa sobre neumáticos</option>
+          <option value="8172" >Operador(a) grúa torre</option>
+          <option value="8065" >Operadores de grúas de aparatos elevadores y afines</option>
+          <option value="7941" >Operadores de grúas, aparatos elevadores y afines</option>
+          <option value="7908" >Operadores de instalaciones de procesamiento de metales</option>
+          <option value="7905" >Operadores de instalaciones de procesamiento de minerales y rocas</option>
+          <option value="7682" >Operadores de instalaciones de refinación de petróleo y gas natural</option>
+          <option value="7926" >Operadores de instalaciones de vidriería y cerámica</option>
+          <option value="7992" >Operadores de instalaciones fijas y maquinas</option>
+          <option value="8025" >Operadores de instalaciones y maquinas de productos quimicos y fotograficos</option>
+          <option value="7939" >Operadores de maquinaria agrícola y forestal móvil</option>
+          <option value="7928" >Operadores de maquinas de embalaje embotellamiento y etiquetado</option>
+          <option value="8011" >Operadores de máquinas de oficina</option>
+          <option value="7916" >Operadores de maquinas de preparacion de fibras  hilado y devanado</option>
+          <option value="7915" >Operadores de máquinas de preparación de fibras, hilado y devanado</option>
+          <option value="7919" >Operadores de maquinas de tratamiento de pieles y cueros</option>
+          <option value="7927" >Operadores de maquinas de vapor y calderas</option>
+          <option value="7923" >Operadores de máquinas para elaborar alimentos y productos afines</option>
+          <option value="7911" >Operadores de máquinas para fabricar productos fotográficos</option>
+          <option value="7922" >Operadores de máquinas para fabricar productos textiles y artículos de piel y cuero no clasificados bajo otros epígrafes</option>
+          <option value="7920" >Operadores de maquinas para la fabricacion de calzado y afines</option>
+          <option value="7909" >Operadores de maquinas pulidoras galvanizadoras y recubridoras de metales</option>
+          <option value="7929" >Operadores de máquinas y de instalaciones fijas no clasificados bajo otros epígrafes</option>
+          <option value="7746" >Operadores de mesa de ayuda</option>
+          <option value="7910" >Operadores de plantas y maquinas de productos quimicos</option>
+          <option value="7918" >Operadores maquinaria textil</option>
+          <option value="7680" >Operadores y operadoras de incineradores instalaciones de tratamiento de agua y afines</option>
+          <option value="7925" >Operadores y operadoras de instalaciones de procesamiento de la madera</option>
+          <option value="7907" >Operadores y operadoras de instalaciones de procesamiento de minerales y rocas</option>
+          <option value="7904" >Operadores y operadoras de instalaciones mineras</option>
+          <option value="7917" >Operadores y operadoras de maquinas de coser</option>
+          <option value="7921" >Operadores y operadoras de maquinas de lavanderia blanqueo teñido y tintura</option>
+          <option value="7886" >Operadores y operadoras de maquinas para elaborar productos lacteos</option>
+          <option value="7912" >Operadores y operadoras de maquinas para fabricar productos de caucho</option>
+          <option value="7914" >Operadores y operadoras de maquinas para fabricar productos de madera</option>
+          <option value="7913" >Operadores y operadoras de maquinas para fabricar productos de material plastico</option>
+          <option value="7889" >Operario maquina de fabricación de tabaco</option>
+          <option value="7887" >Operarios de la conservación de frutas, legumbres, verduras y afines</option>
+          <option value="8066" >Operarios y operarias de maquinaria agricola y forestal motorizada</option>
+          <option value="7940" >Operarios y operarias de maquinas de movimiento de tierras y afines</option>
+          <option value="8067" >Operarios y operarias de maquinas para elaborar carne pescado y mariscos</option>
+          <option value="7890" >Operarios y operarias del tratamiento de la madera</option>
+          <option value="7841" >Operarios y operarias en cemento armado enfoscadores y afines</option>
+          <option value="7612" >Optometristas</option>
+          <option value="7720" >Organizador de eventos</option>
+          <option value="8087" >Orientador</option>
+          <option value="7543" >Otras ocupaciones</option>
+          <option value="7949" >Otro personal de limpieza</option>
+          <option value="7979" >Otros miembros de las fuerzas armadas</option>
+          <option value="7744" >Otros profesionales de nivel medio en actividades culturales y artísticas</option>
+          <option value="7623" >Otros profesores de artes</option>
+          <option value="7621" >Otros profesores de idiomas</option>
+          <option value="7622" >Otros profesores de música</option>
+          <option value="8015" >Otros vendedores</option>
+          <option value="8146" >Pañolero(a)</option>
+          <option value="7706" >Paramedico, auxiliar medico / asistentes medicos</option>
+          <option value="7894" >Patronistas y cortadores de tela y afines</option>
+          <option value="7786" >Peluqueros</option>
+          <option value="7787" >Peluqueros (as) y Estilistas</option>
+          <option value="8014" >Peluqueros, especialistas en tratamientos de belleza y afines</option>
+          <option value="8027" >Peones agropecuarios, pesqueros y forestales</option>
+          <option value="7952" >Peones de explotaciones de cultivos mixtos y ganaderos</option>
+          <option value="7951" >Peones de explotaciones ganaderas</option>
+          <option value="7953" >Peones de jardinería y horticultura</option>
+          <option value="7958" >Peones de la construcción de edificios</option>
+          <option value="7960" >Peones de la industria manufacturera no clasificados bajo otros epígrafes</option>
+          <option value="7956" >Peones de minas y canteras</option>
+          <option value="8068" >Peones de obras públicas y mantenimiento carreteras, presas y obras similares</option>
+          <option value="7955" >Peones de pesca y acuicultura</option>
+          <option value="7954" >Peones forestales</option>
+          <option value="7906" >Perforadores y sondistas de pozos y afines</option>
+          <option value="7658" >Periodistas</option>
+          <option value="8103" >Personal Captador (a)</option>
+          <option value="7779" >Personal de apoyo administrativo no clasificado bajo otros epígrafes</option>
+          <option value="8231" >Personal de aseo</option>
+          <option value="8095" >Personal de emergencia / Brigadista</option>
+          <option value="8070" >Personal de enfermería y partería de nivel superior</option>
+          <option value="8129" >Personal deportivo / Arbitros / Entrenadores(as) / Asesores(as)</option>
+          <option value="7545" >Personal directivo de la administración pública</option>
+          <option value="7973" >Personas que realizan trabajos varios</option>
+          <option value="7899" >Pescadores (as) / Trabajadores (as) de vehiculos navales / Buzos</option>
+          <option value="7832" >Pescadores de alta mar</option>
+          <option value="7831" >Pescadores y pescadoras de agua dulce y en aguas costeras</option>
+          <option value="7837" >Pescadores, cazadores, tramperos y recolectores de subsistencia</option>
+          <option value="7690" >Pilotos de aviación y afines</option>
+          <option value="7691" >Pilotos de aviacion, controladores de tráfico aéreo, técnico en seguridad aeronautica y afines</option>
+          <option value="7851" >Pintores y empapeladores</option>
+          <option value="7732" >Policia de investigaciones y detectives</option>
+          <option value="7816" >Policias</option>
+          <option value="8072" >Porteros y guardianes y afines</option>
+          <option value="7604" >Practicantes paramédicos</option>
+          <option value="7707" >Prevencionistas de Riesgo</option>
+          <option value="8089" >Productores (as) areas audiovisuales / sociales / culturales</option>
+          <option value="7828" >Productores y trabajadores agropecuarios calificados cuya produccion se destina al mercado</option>
+          <option value="7982" >Profesionales científicos e intelectuales</option>
+          <option value="7601" >Profesionales de enfermería</option>
+          <option value="7985" >Profesionales de la enseñanza</option>
+          <option value="7625" >Profesionales de la enseñanza no clasificados bajo otros epígrafes</option>
+          <option value="7633" >Profesionales de la publicidad y la comercialización</option>
+          <option value="7709" >Profesionales de la salud de nivel medio no clasificados bajo otros epígrafes</option>
+          <option value="7613" >Profesionales de la salud no clasificados bajo otros epígrafes</option>
+          <option value="7608" >Profesionales de la salud y la higiene laboral y ambiental</option>
+          <option value="7984" >Profesionales de las ciencias y de la ingenieria</option>
+          <option value="7988" >Profesionales de las ciencias y la ingeniería de nivel medio</option>
+          <option value="7603" >Profesionales de medicina alternativa</option>
+          <option value="7697" >Profesionales de nivel medio de enfermería</option>
+          <option value="7699" >Profesionales de nivel medio de medicina tradicional y alternativa</option>
+          <option value="7698" >Profesionales de nivel medio de partería</option>
+          <option value="8073" >Profesionales de nivel medio de servicios administrativos y afines</option>
+          <option value="8074" >Profesionales de nivel medio de servicios de administración, no clasificados bajo otros epígrafes</option>
+          <option value="7713" >Profesionales de nivel medio de servicios estadisticos matematicos y afines</option>
+          <option value="7989" >Profesionales de nivel medio del derecho y servicios legales o afines</option>
+          <option value="7734" >Profesionales de nivel medio del derecho y servicios legales y afines</option>
+          <option value="8010" >Profesionales de nivel medio en actividades culturales artisticas y culinarias</option>
+          <option value="7602" >Profesionales de partería</option>
+          <option value="7634" >Profesionales de relaciones públicas</option>
+          <option value="7987" >Profesionales de tecnologia de la informacion </option>
+          <option value="7636" >Profesionales de ventas de tecnología de la información y las comunicaciones</option>
+          <option value="7635" >Profesionales de ventas técnicas y médicas (excluyendo la TIC)</option>
+          <option value="7655" >Profesionales del trabajo social</option>
+          <option value="7648" >Profesionales en derecho no clasificados bajo otros epígrafes</option>
+          <option value="7656" >Profesionales religiosos</option>
+          <option value="7615" >Profesores de formación profesional</option>
+          <option value="8075" >Profesores de la enseñanza secundaria</option>
+          <option value="7614" >Profesores de universidades y de la enseñanza superior</option>
+          <option value="8076" >Profesores de universidades y otros establecimientos de la enseñanza superior</option>
+          <option value="7620" >Profesores e instructores de nivel superior de la enseñanza especial</option>
+          <option value="7617" >Profesores y profesoras de educacion basica</option>
+          <option value="7640" >Programadores(as) / Desarrollares (as) informaticos (TI)</option>
+          <option value="7654" >Psicologos (as)</option>
+          <option value="7862" >Pulidores de metales y afiladores de herramientas</option>
+          <option value="7577" >Químicos</option>
+          <option value="7607" >Quimicos (as) farmaceuticos (as) / Quimicos (as)</option>
+          <option value="7888" >Quimicos y quimicas</option>
+          <option value="7762" >Recepcionistas de hoteles</option>
+          <option value="8077" >Recepcionistas y empleados de informaciones</option>
+          <option value="7756" >Receptores de apuestas y afines</option>
+          <option value="7969" >Recolectores (as) de basura</option>
+          <option value="7974" >Recolectores de dinero en aparatos de venta automatica lectores de medidores y afines</option>
+          <option value="7872" >Redactores de carteles, pintores decorativos y grabadores</option>
+          <option value="7892" >Reguladores operadores y operadoras de maquinas de labrar madera</option>
+          <option value="7861" >Reguladores y operadores de maquinas herramientas</option>
+          <option value="7866" >Reparadores de bicicletas y afines</option>
+          <option value="7964" >Reponedores (as) / Mantenedores (as) de estanterias y/o vitrinas</option>
+          <option value="7716" >Representantes comerciales</option>
+          <option value="8185" >Rigger en alta, Rigger en baja, Rigger en media</option>
+          <option value="8024" >Sastres modistos y modistas sombrereros y sombrereras</option>
+          <option value="8079" >Sastres, modistos y sombrereros</option>
+          <option value="7893" >Sastres, modistos, peleteros y sombrereros</option>
+          <option value="7764" >Secretarios (as) / Recepcionistas / Secretarios (as) Ejecutivos (as)</option>
+          <option value="7752" >Secretarios (general)</option>
+          <option value="7726" >Secretarios administrativos</option>
+          <option value="7725" >Secretarios jurídicos</option>
+          <option value="7727" >Secretarios médicos</option>
+          <option value="8080" >Secretarios y secretarias</option>
+          <option value="7575" >Sociologos antropologos geografos y afines</option>
+          <option value="7652" >Sociologos antropologos y afines</option>
+          <option value="8090" >Sonidistas</option>
+          <option value="7871" >Sopladores modeladores laminadores cortadores y pulidores de vidrio</option>
+          <option value="7978" >Suboficiales de las fuerzas armadas</option>
+          <option value="8152" >Supervisor De Operaciones Y Mantenimiento En Sistemas De Refrigeración Con Amoníaco</option>
+          <option value="7677" >Supervisores de industrias manufactureras</option>
+          <option value="7788" >Supervisores de mantenimiento y limpieza en oficinas, hoteles y otros establecimientos</option>
+          <option value="7724" >Supervisores de secretaría</option>
+          <option value="7676" >Supervisores en ingeniería de minas</option>
+          <option value="8006" >Supervisores en ingeniería de minas, de industrias manufactureras y de la construcción</option>
+          <option value="8081" >Taladores y otros trabajadores forestales</option>
+          <option value="7896" >Tapiceros colchoneros y afines</option>
+          <option value="7714" >Tasadores</option>
+          <option value="7844" >Techadores</option>
+          <option value="7582" >Tecnico o encargado de medio ambiente</option>
+          <option value="8069" >Tecnicos (as) en enfermeria</option>
+          <option value="7618" >Tecnicos (as) en parvulos</option>
+          <option value="7686" >Técnicos agropecuarios</option>
+          <option value="7748" >Técnicos de la Web</option>
+          <option value="7694" >Técnicos de laboratorios médicos</option>
+          <option value="7696" >Técnicos de prótesis médicas y dentales</option>
+          <option value="7749" >Técnicos de radiodifusión y grabación audio visual</option>
+          <option value="7670" >Tecnicos electronicos</option>
+          <option value="7693" >Técnicos en aparatos de diagnóstico y tratamiento médico</option>
+          <option value="7685" >Técnicos en ciencias biológicas (excluyendo la medicina)</option>
+          <option value="8005" >Técnicos en ciencias físicas y en ingeniería</option>
+          <option value="7675" >Técnicos en ciencias físicas y en ingeniería no clasificados bajo otros epígrafes</option>
+          <option value="7667" >Tecnicos en ciencias fisicas y quimicas</option>
+          <option value="8007" >Técnicos en control de procesos</option>
+          <option value="7684" >Técnicos en control de procesos no clasificados bajo otros epígrafes</option>
+          <option value="7702" >Técnicos en documentación sanitaria</option>
+          <option value="7742" >Técnicos en galerías de arte, museos y bibliotecas</option>
+          <option value="7668" >Tecnicos en ingenieria civil</option>
+          <option value="7673" >Tecnicos en ingenieria de minas y metalurgia</option>
+          <option value="7671" >Tecnicos en mecanica y construccion mecanica</option>
+          <option value="7745" >Técnicos en operaciones de tecnología de la información y las comunicaciones</option>
+          <option value="7704" >Técnicos en optometría y ópticos</option>
+          <option value="8082" >Tecnicos en programacion informatica</option>
+          <option value="7672" >Técnicos en química industrial</option>
+          <option value="7747" >Técnicos en redes y sistemas de computadores</option>
+          <option value="7692" >Técnicos en seguridad aeronáutica</option>
+          <option value="7695" >Técnicos y asistentes farmacéuticos</option>
+          <option value="7705" >Técnicos y asistentes fisioterapeutas</option>
+          <option value="8009" >Técnicos y controladores en navegación marítima y aeronáutica</option>
+          <option value="8008" >Técnicos y profesionales de nivel medio en ciencias biológicas y afines</option>
+          <option value="8096" >Tecnologos medicos</option>
+          <option value="7712" >Tenedores de libros</option>
+          <option value="8228" >Topógrafo(a)</option>
+          <option value="7903" >Torneros (as)</option>
+          <option value="7750" >Trabajadores (as) / Ejecutivos del area de telecomunicaciones</option>
+          <option value="8078" >Trabajadores (as) / Ejecutivos del area de ventas y comercialización</option>
+          <option value="7826" >Trabajadores (as) area Apicultura / Sericicultura</option>
+          <option value="7825" >Trabajadores (as) area Avicultura</option>
+          <option value="7551" >Trabajadores (as) area Control y gestion de procesos</option>
+          <option value="8104" >Trabajadores (as) area hotelera y gastronomica / Barman / Bartender</option>
+          <option value="8105" >Trabajadores (as) area hotelera y gastronomica / Croupier (as)</option>
+          <option value="7784" >Trabajadores (as) area hotelera y gastronomica / Garzones (as) / Copero</option>
+          <option value="8100" >Trabajadores (as) area RRHH / Clima organizacional</option>
+          <option value="7721" >Trabajadores (as) area RRHH / Reclutamiento y Seleccion</option>
+          <option value="8101" >Trabajadores (as) area RRHH / Remuneraciones y Compensaciones</option>
+          <option value="7830" >Trabajadores (as) areas pesca y/o acuicultura</option>
+          <option value="7761" >Trabajadores (as) Call centers / Telefonistas / Encuestadores o vendedores telefonicos</option>
+          <option value="7770" >Trabajadores (as) Control de abastecimiento y/o inventarios / Etiquetador</option>
+          <option value="7771" >Trabajadores (as) de apoyo a la produccion</option>
+          <option value="7793" >Trabajadores (as) de la industria funebre</option>
+          <option value="7947" >Trabajadores (as) de limpieza de vehiculos</option>
+          <option value="7559" >Trabajadores (as) de minas y metalurgicas</option>
+          <option value="7885" >Trabajadores (as) de pastelerías y/o panaderías</option>
+          <option value="8002" >Trabajadores (as) de Relaciones publicas</option>
+          <option value="7819" >Trabajadores (as) de Seguridad / Guardia con curso OS10</option>
+          <option value="8109" >Trabajadores (as) de Seguridad / Guardia Portuario</option>
+          <option value="7818" >Trabajadores (as) de Seguridad / Guardia sin curso OS10</option>
+          <option value="8110" >Trabajadores (as) de Seguridad / Operadores (as) CCTV</option>
+          <option value="7772" >Trabajadores (as) de servicio de Transporte / Auxiliares / Boletería</option>
+          <option value="7800" >Trabajadores (as) de tiendas y almacenes</option>
+          <option value="7879" >Trabajadores (as) Electricistas / Electronicos</option>
+          <option value="7880" >Trabajadores (as) Electromecanicos</option>
+          <option value="7860" >Trabajadores (as) Especialista en herramientas</option>
+          <option value="7751" >Trabajadores (as) Junior de Oficinas, Estafetas / Auxiliares administrativos</option>
+          <option value="7930" >Trabajadores (as) Mecanicos automotrices / Carrocero (as)</option>
+          <option value="8058" >Trabajadores (as) Mecanicos de maquinarias industrial</option>
+          <option value="7950" >Trabajadores (as) Obreros</option>
+          <option value="7679" >Trabajadores (as) Operacion/Mantencion/Reparacion de equipos e instalaciones</option>
+          <option value="7766" >Trabajadores (as) Personal / Ejecutivos (as) Servicio al Cliente y/o Informaciones</option>
+          <option value="7767" >Trabajadores (as)/ Agentes area Contabilidad y Auditoria / Contadores (as)</option>
+          <option value="7729" >Trabajadores (as)/ Agentes area Finanzas / Banca e inversiones</option>
+          <option value="7715" >Trabajadores (as)/ Agentes/ Corredores (as) area Seguros</option>
+          <option value="7942" >Trabajadores (as)/ Operarios (as) / mantenedores (as) / reguladores (as) de gruas y maquinaria</option>
+          <option value="7901" >Trabajadores (as)/ Operarios (as) / mantenedores (as) / reguladores (as) de lineas de procesamiento</option>
+          <option value="7834" >Trabajadores agrícolas de subsistencia</option>
+          <option value="7836" >Trabajadores agropecuarios de subsistencia</option>
+          <option value="8083" >Trabajadores agropecuarios y pesqueros de subsistencia</option>
+          <option value="7967" >Trabajadores ambulantes de servicios y afines</option>
+          <option value="7703" >Trabajadores comunitarios de la salud</option>
+          <option value="7813" >Trabajadores de los cuidados personales a domicilio</option>
+          <option value="7812" >Trabajadores de los cuidados personales en instituciones</option>
+          <option value="7814" >Trabajadores de los cuidados personales en servicios de salud no clasificados bajo otros epígrafes</option>
+          <option value="7991" >Trabajadores de los servicios personales</option>
+          <option value="7829" >Trabajadores forestales calificados y afines</option>
+          <option value="7835" >Trabajadores pecuarios de subsistencia</option>
+          <option value="7735" >Trabajadores y asistentes sociales de nivel medio</option>
+          <option value="8062" >Trabajadores y trabajadoras agropecuarias y pesqueras de autoconsumo</option>
+          <option value="7728" >trabajadores y trabajadoras de fronteras y aduana</option>
+          <option value="7659" >Traductores interpretes y lingüistas</option>
+          <option value="8176" >Tutor</option>
+          <option value="7596" >Urbanistas e ingenieros de tránsito</option>
+          <option value="8084" >Vendedores (as) a domicilio / terreno / ambulante</option>
+          <option value="7808" >Vendedores (as) de quioscos y de puestos</option>
+          <option value="7801" >Vendedores (as) de tiendas y almacenes</option>
+          <option value="8085" >Vendedores ambulantes de productos no comestibles</option>
+          <option value="7797" >Vendedores de quioscos y de puestos de mercado</option>
+          <option value="7809" >Vendedores no clasificados bajo otros epígrafes</option>
+          <option value="7806" >Vendedores por teléfono</option>
+          <option value="7805" >Vendedores puerta a puerta</option>
+          <option value="8086" >Vendedores y demostradores de tiendas y almacenes</option>
+          <option value="7798" >Vendedores y vendedoras ambulantes de productos comestibles</option>
+          <option value="7968" >Vendedores y vendedoras ambulantes de productos no comestibles</option>
+          <option value="7605" >Veterinarios</option>
+          <option value="7700" >Veterinarios (as)</option>
+          <option value="8097" >Visitadores medicos</option>
+          <option value="7898" >Zapateros zapateras y afines</option> 
+        </select>
+        <div id="errorMaxSelect_selectOcupaciones" class="error" style="display: none;">Puedes aplicar máximo 15 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectOcupaciones" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectOcupaciones" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div> 
+        </div>
+        
+        <div class="row form-group">
+            <!-- GrupoEmpleo.  --> 
+           <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectGrupoEmpleo" title="selectGrupoEmpleo" multiple size="5" data-placeholder="Grupo de empleo" class="filtrosSeleccion">
+          <option value="1" >Indígenas</option>
+          <option value="2" >Migrantes</option>
+          <option value="3" >Adultos mayores</option>
+          <option value="4" >Personas infractoras de ley</option>
+          <option value="5" >Jóvenes</option>
+          <option value="8" >Mujer</option> 
+        </select>
+        <div id="errorMaxSelect_selectGrupoEmpleo" class="error" style="display: none;">Puedes aplicar máximo 5 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectGrupoEmpleo" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectGrupoEmpleo" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div>
+            <!-- NivelEducacional  --> 
+            <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectNivelEducacional" title="selectNivelEducacional" multiple size="5" data-placeholder="Nivel educativo" class="filtrosSeleccion">
+          <option value="1" >Sin Educación formal</option>
+          <option value="2" >Educación básica incompleta</option>
+          <option value="3" >Educación básica completa</option>
+          <option value="4" >Educación media incompleta</option>
+          <option value="5" >Educación media completa</option>
+          <option value="6" >Educación superior Incompleta</option>
+          <option value="7" >Educación superior Completa</option>
+          <option value="8" >Magíster</option>
+          <option value="9" >Educación especial</option>
+          <option value="10" >Doctorado</option> 
+        </select>
+        <div id="errorMaxSelect_selectNivelEducacional" class="error" style="display: none;">Puedes aplicar máximo 5 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectNivelEducacional" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectNivelEducacional" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div>
+            <!-- TiposJornada  --> 
+            <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectJornada" title="selectJornada" multiple size="5" data-placeholder="Jornada laboral" class="filtrosSeleccion">
+          <option value="9" >Jornada Completa</option>
+          <option value="10" >Jornada Parcial/part time</option>
+          <option value="11" >Sin limitación horaria</option> 
+        </select>
+        <div id="errorMaxSelect_selectJornada" class="error" style="display: none;">Puedes aplicar máximo 5 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectJornada" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectJornada" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div>
+            <!-- TipoContrato  --> 
+            <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectTipoContrato" title="selectTipoContrato" multiple size="5" data-placeholder="Tipo de contrato" class="filtrosSeleccion">
+          <option value="1" >Contrato por obra o faena</option>
+          <option value="2" >Contrato a plazo Fijo</option>
+          <option value="3" >Contrato indefinido</option>
+          <option value="4" >Administración Pública</option>
+          <option value="5" >Honorarios</option>
+          <option value="7" >Indiferente</option>
+          <option value="8" >Acuerdo de práctica</option>
+          <option value="9" >Contrato de aprendizaje</option>
+          <option value="10" >Sin Contrato</option> 
+        </select>
+        <div id="errorMaxSelect_selectTipoContrato" class="error" style="display: none;">Puedes aplicar máximo 5 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectTipoContrato" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectTipoContrato" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div>
+        </div>
+        
+         <!--OrigenOferta   
+         <div class="row form-group">              
+                <div data-th-replace="fragments/filters/filtroSeleccion :: filtroSeleccion(titulo=#{Origen de la Oferta}, id=#{selectOrigenOferta} ,data=${filtros.origenOferta}, class='col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0')"></div>
+        </div>  --> 
+    </div>
+</div>
+
+        </form>
+
+        <form id="filtrosOfertasExternas" name="filtrosOfertasExternas" modelAttribute="filtros">
+            <div class="row form-group">
+                <!--OrigenOferta  -->
+                <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+    
+        <select id="selectOrigenOferta" title="selectOrigenOferta" multiple size="5" data-placeholder="Origen de la Oferta" class="filtrosSeleccion">
+          <option value="1" >Ofertas BNE</option>
+          <option value="2" >API</option>
+          <option value="3" >ER</option>
+          <option value="4" >Feria</option>
+          <option value="100" >PE</option>
+          <option value="200" >EP</option>
+          <option value="100" >Portales de Empleo</option>
+          <option value="200" >Empleo público</option> 
+        </select>
+        <div id="errorMaxSelect_selectOrigenOferta" class="error" style="display: none;">Puedes aplicar máximo 5 criterios por filtro.</div>
+		<label for="multiselectCount" id="multiselectCount_selectOrigenOferta" class="multiselect-count float-right">0</label>
+        
+        <p id="close_selectOrigenOferta" style="display: none;" class="closeDropDown"> <i class="fas fa-times closeIcon"></i> </p>
+       
+    </div>
+            </div>
+
+            <div id="seccionDiscapacidad">
+            <br>
+            <input type="checkbox" style="width:15px;height:15px" name="seleccionDiscapacidad" id="seleccionDiscapacidad" value="7">
+            <label class="labelSeccionEditableCheck">
+                <span >Puestos de trabajos con ajustes razonables para personas con discapacidad</span></span>
+            </label>
+                        
+            <br>
+            </div>
+
+        </form>
+
+        <div id="filtros_seleccionados" class="row form-group minWidth1200 ">
+            <!-- Aqui se annadiran dinamicamente los filtros que seleccione el usuario -->
+            <div class="col-12 form-group">
+             <p id="numFiltrosAplis" class="numFiltrosAplis"><span >Filtros aplicados: </span></span></p>
+             </div>
+             <div class="row form-group">
+             <ul id="listaSeleccionados" class="listaSeleccionados"></ul>
+             </div>
+        </div>
+
+        <a href="#" onclick="javascript:return false;">
+            <p name="btnRefresh" id="btnRefresh" style="float: right; bottom: 15%;right: 5%;">
+                <i class="fas fa-sync"></i>&nbsp&nbsp<span>Reiniciar filtros</span></span>
+            </p>
+        </a>
+        <br>
+    </div>
+</div>
+                
+        <div>
+    <div id="contenedorOfertas" >
+        <div id="paginaOfertas"></div>
+        <div id="paginacionOfertas"></div>
+    </div>
+    <div id="contenedorOfertasExternas" >
+        <div id="paginaOfertasExternas"></div>
+        <div id="paginacionOfertasExternas"></div>
+    </div>
+</div>
+        
+        <div>
+
+    
+    <div>
+        <span class="d-none" id="idRegion">[]</span>
+    </div>
+    <div>
+        <span class="d-none" id="notIdRegion">[]</span>
+    </div>
+    
+    <div>
+        <span class="d-none" id="notIdOcupacionPrincipal">[]</span>
+    </div>
+    <div>
+        <span class="d-none" id="idOcupacion">[]</span>
+    </div>
+    <div>
+        <span class="d-none" id="idNivelEducacional">[]</span>
+    </div>
+     <div>
+        <span class="d-none" id="notIdNivelEducacional">[]</span>
+    </div>
+    <div>
+        <span class="d-none" id="idTipoJornada">[]</span>
+    </div>
+    <div>
+        <span class="d-none" id="notIdTipoJornada">[]</span>
+    </div>
+    <div>
+        <span class="d-none" id="idTipoContrato">[]</span>
+    </div>
+    <div>
+        <span class="d-none" id="notIdTipoContrato">[]</span>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+        <span class="d-none" id="idGrupoEmpleo">[]</span>
+    </div>
+    
+    <div>
+        <span class="d-none" id="notIdGrupoEmpleo">[]</span>
+    </div>
+    
+     <div>
+        <span class="d-none" id="idOrigenOferta">[]</span>
+    </div>
+    
+    <div>
+        <span class="d-none" id="notIdOrigenOferta">[]</span>
+    </div>
+    
+     <div>
+        <span class="d-none" id="idComuna">[]</span>
+    </div>    
+     <div>
+        <span class="d-none" id="notIdComuna">[]</span>
+    </div>
+        
+    <script>
+        var arrayMostrar = null;
+        var arrayIdOcupacion =[];
+        var arrayTextoLibre = [];
+        var idRegion = [];
+        var idOcupacionPrincipal = null;
+        var idNivelEducacional = [];
+        var idTipoContrato = [];
+        var idTipoJornada = [];
+        var fechaIniPublicacion = null;
+        var arrayNotIdRegion = [];
+        var arrayNotIdOcupacionPrincipal = [];
+        var arrayNotIdNivelEducacional = [];
+        var arrayNotIdTipoContrato = [];
+        var arrayNotIdTipoJornada = [];
+        var numPaginaRecuperar = null;
+        var arrayIdNivelCargoOfrecido = null;
+        var arrayIdNombreComercial = null;
+        var idPersonaGestiondada = null;
+        var idCentroGestor = null;
+        var idGrupoEmpleo = [];
+        var arrayNotIdGrupoEmpleo = [];
+        var idOrigenOferta = [];
+        var arrayNotIdOrigenOferta = [];
+        var idComuna = [];
+        var arrayNotIdComuna = [];
+        
+        var criteriosBusquedaIniciales = {
+            mostrar : arrayMostrar,
+            idOcupacion : arrayIdOcupacion,
+            textoLibre : arrayTextoLibre,
+            idRegion : idRegion,
+            idOcupacionPrincipal : idOcupacionPrincipal,
+            idNivelEducacional : idNivelEducacional,
+            idTipoContrato : idTipoContrato,
+            idTipoJornada : idTipoJornada,
+            fechaIniPublicacion : fechaIniPublicacion,
+            notIdRegion : arrayNotIdRegion,
+            notIdOcupacionPrincipal : arrayNotIdOcupacionPrincipal,
+            notIdNivelEducacional : arrayNotIdNivelEducacional,
+            notIdTipoContrato : arrayNotIdTipoContrato,
+            notIdTipoJornada : arrayNotIdTipoJornada,
+            numPaginaRecuperar : numPaginaRecuperar,
+            numPaginasTotal : null,
+            numResultadosPorPagina : 10,
+            numResultadosTotal : null,
+            clasificarYPaginar : true,
+            totalOfertasActivas : null,
+            idNivelCargoOfrecido : arrayIdNivelCargoOfrecido,
+            idNombreComercial : arrayIdNombreComercial,
+            idPersonaGestiondada : idPersonaGestiondada,
+            idCentroGestor : idCentroGestor,
+            idGrupoEmpleo : idGrupoEmpleo,
+            notIdGrupoEmpleo : arrayNotIdGrupoEmpleo,
+            idOrigenOferta : idOrigenOferta,
+            notIdOrigenOferta : arrayNotIdOrigenOferta,
+            idComuna : idComuna,
+            notIdComuna : arrayNotIdComuna
+        }
+    </script>
+
+</div>
+        
+        <!-- Modal -->
+        <div>
+    <div class="modal fade" id="modalBH" tabindex="-1" role="dialog" aria-labelledby="guardarBusquedaLabel">
+            <div class="modal-dialog modaldialogBH" role="document">
+                <!-- Modal si es postulante -->
+                
+                 <!-- Modal si no ha iniciado sesion o la ha iniciado con otro rol -->
+                <div id="logueado" class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-10 col-10">
+                                <label for="nombreBH" class="control-label"><span>Para poder guardar tu búsqueda habitual, es necesario que estés registrado(a) en </span><b>BNE</b></label>
+                              </div>
+                            <div class="col-sm-2 col-2">
+                               <button id="cerrarHeaderModalBH" type="button" class="close" data-dismiss="modal" aria-label="Close">  <img  alt="cerrar" src="/static//images/home/cerrarModalBH.png"/></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer modalfooterBH">
+                        <button id="registroModalBH" type="button" class="btnRegistroModal" onclick="window.location='/registro/clave';"><span>Registrarme en BNE</span></button>
+                        <button id="inicioSesionModalBH" type="button" class="btnLoginModal" onclick="window.location='/postulantes/verBusqueda';"><span>Iniciar sesión</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    </div>
+    
+    	<script src="/static/scripts/popper/popper.min.js?v=3.88.01_20260930090204"></script>
+        <script src="/static/scripts/js/common/barraPaginacionBuscador.js?v=3.88.01_20260930090204"></script>
+        <script src="/static/scripts/js/public/buscadorOfertas.js?v=3.88.01_20260930090204"></script>
+        <script src="/static/scripts/js/public/ofertas/listaOfertasBNE.js?v=3.88.01_20260930090204"></script>
+        <script src="/static/scripts/js/public/ofertas/listaOfertasExternas.js?v=3.88.01_20260930090204"></script>
+        <script src="/static/scripts/js/public/ofertas/resultadoOfertas.js?v=3.88.01_20260930090204"></script>
+        <script src="/static/scripts/js/public/ofertas/modalBusquedasHabituales.js?v=3.88.01_20260930090204"></script>
+        <script src="/static/scripts/js/public/vanillaSelectBox.js?v=3.88.01_20260930090204"></script>
+        
+</main>
+        <footer>
+
+    <section class="soporte">
+        <div class="content py-5">
+            <div class="d-flex justify-content-around">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <a href="tel:224055200">
+                            <img src="/static/images/home/telefono-contacto.png" alt="Icono telefono" class="mr-3" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="tel:224055200">2 2405 5200</a>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div>
+                        <a data-dir="soporte" data-server="bne.gob" data-extension="cl" id="emailContactoFooterEnlace1">
+                            <img src="/static/images/home/email-icon.png" alt="Icono correo"  class="mr-3" />
+                        </a>
+                    </div>
+                    <div>
+                        <a data-dir="soporte" data-server="bne.gob" data-extension="cl" id="emailContactoFooterEnlace2" class="mt-4">
+                            <span data-dir="soporte" data-server="bne.gob" data-extension="cl" id="emailContactoFooter"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-items-around">
+                    <div class="mx-3">
+                        <a href="https://www.facebook.com/bne.cl" 
+                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','Facebook');" target="_blank" rel="noopener noreferrer">
+                            <span class="fab fa-facebook-square fa-3x"></span>
+                        </a>
+                    </div>
+                    <div class="mx-3">
+                        <a href="https://twitter.com/BNEChile" 
+                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','Twitter');" target="_blank" rel="noopener noreferrer">
+                            <span class="fab fa-twitter-square fa-3x"></span>
+                        </a>
+                    </div>
+                    <div class="mx-3">
+                        <a href="https://www.youtube.com/channel/UCsmScFPr_UXmBm81DUVvNTg" 
+                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','YouTube');" target="_blank" rel="noopener noreferrer">
+                            <span class="fab fa-youtube-square fa-3x"></span>
+                        </a>
+                    </div>
+                    <div class="mx-3">
+                        <a href="https://www.linkedin.com/company/bne-cl" 
+                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','LinkedIn');" target="_blank" rel="noopener noreferrer">
+                            <span class="fab fa-linkedin fa-3x"></span>
+                        </a>
+                    </div>
+                    <div class="mx-3">
+                        <a href="https://www.instagram.com/bnechile" 
+                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','Instagram');" target="_blank" rel="noopener noreferrer">
+                            <span class="fab fa-instagram-square fa-3x"></span>
+                        </a>
+                    </div>
+                    <div class="mx-3">
+                        <a href="https://www.tiktok.com/@bne.chile" 
+                            onclick="gaEnviarPulsacionEnlaceNoNavegar('Redes Sociales','TikTok');" target="_blank" rel="noopener noreferrer">
+                            <span class="fab fa-tiktok fa-3x"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="links">
+        <div class="content d-flex justify-content-between">
+            <div><a href="https://www.mintrab.gob.cl/certificacion-sello-40h/" target="_blank">
+            <img style="width:258px; height:258px;" src="/static/images/inclusion/sello-inclusivo-nueva.png" alt="Sello inclusivo"/></a></div>
+            <div>
+                <div class="text-titulo-links">
+                    <span>Links de inter&eacute;s</span>
+                </div>
+                <div>
+                    <a href="/politica-privacidad">
+                        Pol&iacute;tica de privacidad
+                    </a>
+                </div>
+                <div class="my-2">
+                    <a href="http://www.leychile.cl/Navegar?idNorma=184979" target="_blank">
+                        Ley 19.728 (Seguro de Cesant&iacute;a)                        
+                    </a>
+                </div>
+                <div class="my-2">
+                    <a href="https://www.leychile.cl/Navegar?idNorma=1103997" target="_blank">
+                        Ley 21.015 inclusi&oacute;n de personas con discapacidad 
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.leychile.cl/Navegar?idNorma=1138819" target="_blank">
+                       Política Nacional de Intermediaci&oacute;n Laboral (PNIL)
+                    </a>
+                </div>
+                <div  class="my-2">
+                    <a href="/docs/manual/manual-zonaweb.pdf">
+                        Manual de usuario
+                    </a>
+                </div>
+                <div>
+                    <a href="/faq" target="_blank">
+                        Preguntas Frecuentes-FAQ
+                    </a>
+                </div>
+            </div>
+            <div class="ml-2">
+                <div class="text-titulo-links">
+                    <span>Instituciones relacionadas</span>
+                </div>
+                <div>
+                    <a href="http://www.mintrab.gob.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','Ministerio del Trabajo y Prevision Social');" target="_blank" rel="noopener noreferrer"> 
+                        Ministerio del Trabajo 
+                    </a>
+                </div>
+                <div class="my-2">
+                    <a href="http://dt.gob.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','Direccion del Trabajo');" target="_blank" rel="noopener noreferrer"> 
+                        Direcci&oacute;n del Trabajo 
+                    </a>
+                </div>
+                <div>
+                    <a href="http://www.sil.gob.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','SIL');" target="_blank" rel="noopener noreferrer"> 
+                        Sistema de Informaci&oacute;n Laboral SIL 
+                    </a>
+                </div>
+                <div class="my-2">
+                    <a href="http://www.sence.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','SENCE');" target="_blank" rel="noopener noreferrer"> 
+                        SENCE 
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.afc.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','AFC Chile');" target="_blank" rel="noopener noreferrer"> 
+                        AFC 
+                    </a>
+                </div>
+                <div class="my-2">
+                    <a href="https://www.empleospublicos.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','Portal de Empleos Publicos');" target="_blank" rel="noopener noreferrer"> 
+                        Portal de Empleos P&uacute;blicos 
+                    </a>
+                </div>
+                <div>
+                    <a href="http://www.safp.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','Superintendencia de Pensiones');" target="_blank" rel="noopener noreferrer"> 
+                        Superintendencia de Pensiones 
+                    </a>
+                </div>
+                <div class="mt-2">
+                    <a href="http://www.senadis.gob.cl/"
+                        onclick="gaEnviarPulsacionEnlaceNoNavegar('Enlace','SENADIS');" target="_blank" rel="noopener noreferrer"> 
+                        Senadis
+                    </a>
+                </div>
+            </div>        
+        </div>
+    </section>
+
+</footer>
+    </div>
+    
+    
+     
+
+        <script charset="UTF-8" src="/static/scripts/jquery3/jquery-3.6.0.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/jquery2/jquery-ui.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/jquery2/jquery.timepicker.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/js/common/documentReady.js?v=3.88.01_20260930090204"></script>        
+        <script charset="UTF-8" src="/static/scripts/i18next/i18next-7.1.0.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/i18next/i18nextXHRBackend-1.3.0.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/i18next/i18nextBrowserLanguageDetector-1.0.1.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/i18next/i18nextLocalStorageCache-1.0.1.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/moment/moment-with-locales-2.30.1.min.js?v=3.88.01_20260930090204"></script>   
+                <script charset="UTF-8" src="/static/scripts/moment/moment-2.30.1.min.js?v=3.88.01_20260930090204"></script>
+<!--         <script charset="UTF-8" src="/scripts/moment/es.js" th:src="@{~/static/scripts/moment/es.js(v=${timestampVersion})}"></script>    -->
+        <script charset="UTF-8" src="/static/scripts/numeral/numeral-2.0.4.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/popper/popper.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/numeral/locales/es.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/bootstrap4/bootstrap.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/bootstrap4/tempusdominus-bootstrap-4.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/bootstrap/bootstrap-hover-dropdown.min.js?v=3.88.01_20260930090204"></script> 
+        <script charset="UTF-8" src="/static/scripts/bootbox/bootbox.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/bootsnipp/waitingDialog.js?v=3.88.01_20260930090204"></script>                 
+        <script charset="UTF-8" src="/static/scripts/bootstrap-validator/validator-0.11.9.min.js?v=3.88.01_20260930090204"></script>                                                                                                                                    
+        <script charset="UTF-8" src="/static/scripts/underscore/underscore-1.13.7-min.js?v=3.88.01_20260930090204"></script>                
+        <script charset="UTF-8" src="/static/scripts/bootstrap-table/bootstrap-table.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/bootstrap-table/bootstrap-table-es-ES.js?v=3.88.01_20260930090204"></script>        
+        <script charset="UTF-8" src="/static/scripts/countup/countUp.min.js?v=3.88.01_20260930090204"></script>
+  
+        <script charset="UTF-8" src="/static/scripts/js/i18n/comunI18n.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/js/i18n/postulantesI18n.js?v=3.88.01_20260930090204"></script>    
+        <script charset="UTF-8" src="/static/scripts/js/public/accesibilidad.js?v=3.88.01_20260930090204"></script>      
+        <script charset="UTF-8" src="/static/scripts/ga/ga.js"></script>    
+        <script charset="UTF-8" src="/static/scripts/js/common/initDatepicker.js?v=3.88.01_20260930090204"></script>           
+        <script charset="UTF-8" src="/static/scripts/js/common.js?v=3.88.01_20260930090204"></script> 
+        <script charset="UTF-8" src="/static/scripts/select2/select2.full.min-4.0.13.js?v=3.88.01_20260930090204"></script>                   
+        <script charset="UTF-8" src="/static/scripts/js/common/relatedSimpleCombos.js?v=3.88.01_20260930090204"></script>           
+        <script charset="UTF-8" src="/static/scripts/js/common/filterCombo.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/js/common/barraPaginacion.js?v=3.88.01_20260930090204"></script>
+
+        <script charset="UTF-8" src="/static/scripts/js/public/accesibilidad.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/format_rut/jquery.rut.min.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/js/tjs/empleadores/menuEmpleador.js?v=3.88.01_20260930090204"></script>  
+        <script charset="UTF-8" src="/static/scripts/js/common/pintarIconoErrorOk.js?v=3.88.01_20260930090204"></script>
+        <script charset="UTF-8" src="/static/scripts/js/empleadores/modalNuevoProyecto.js?v=3.88.01_20260930090204"></script>
+        <script src=https://cdn.userway.org/widget.js data-account="bUUfSZnhUn"></script>
+ 
+
+</body>
+</html>

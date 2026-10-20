@@ -64,6 +64,11 @@ def prepare(targets, originals, visible, now=None):
     return records,skipped
 
 
+def publication_age_preserved(target, known='2026-10-15T10:18:22.963Z'):
+    actual=parse_date(target.get('firstPublishedAt'));prior=parse_date(known)
+    return bool(actual and prior and actual<=prior)
+
+
 async def consume_once():
     from playwright.async_api import async_playwright
     environment={key:value for key,value in os.environ.items() if key not in ('GITHUB_TOKEN','ACTIONS_ID_TOKEN_REQUEST_TOKEN','ACTIONS_ID_TOKEN_REQUEST_URL')}
@@ -97,7 +102,7 @@ def main():
             proof=json.loads(Path('output/laboratory_observation_proof.json').read_text())
             write_json(output/'after-inventory.json',inventory);write_json(output/'operator-proof.json',proof)
             target=next((row for row in inventory['visible_items'] if '3902931' in str(row.get('url',''))),{})
-            if target.get('firstPublishedAt')=='2026-10-15T10:18:22.963Z' and not consumed.get('feed',{}).get('rebuilding'):
+            if publication_age_preserved(target) and not consumed.get('feed',{}).get('rebuilding'):
                 break
             print('FIRST_PUBLICATION_WAIT '+json.dumps({'status':consumed.get('status'),'firstPublishedAt':target.get('firstPublishedAt')}),flush=True);time.sleep(30)
         else:raise RuntimeError('first_publication_migration_not_confirmed')

@@ -2,7 +2,7 @@ import datetime as dt
 import hashlib
 import unittest
 from unittest.mock import patch
-from scripts.expanded_reviewed_handoff import prepare
+from scripts.expanded_reviewed_handoff import prepare, publication_age_preserved
 
 NOW=dt.datetime(2026,10,20,12,tzinfo=dt.timezone.utc)
 URL='https://www.laborum.cl/empleos/cargo-1118466023.html'
@@ -14,6 +14,12 @@ RESULT={'status':'verified','title':'Asesor','company':'Empresa','work_commune':
  'verification_method':'Laborum individual page + matching JobPosting'}
 
 class ExpandedHandoffTests(unittest.TestCase):
+    def test_prior_incorporation_can_be_earlier_than_one_snapshot_but_never_reset_to_today(self):
+        for stamp in ['2026-10-15T10:18:22.963Z','2026-10-07T12:00:00Z']:
+            self.assertTrue(publication_age_preserved({'firstPublishedAt':stamp}))
+        for stamp in [None,'invalid','2026-10-20T12:00:00Z']:
+            self.assertFalse(publication_age_preserved({'firstPublishedAt':stamp}))
+
     @patch('scripts.expanded_reviewed_handoff.evaluate',return_value=RESULT)
     def test_only_exact_reviewed_fields_and_hash_prepare_an_idempotent_record(self,evaluate):
         records,skipped=prepare([TARGET],{URL:RAW},[],NOW)

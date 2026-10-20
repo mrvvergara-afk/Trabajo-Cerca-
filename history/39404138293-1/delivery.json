@@ -1,0 +1,9 @@
+{
+  "schema": "trabajo-cerca.portal-reviewed-delivery.v1",
+  "capture_commit": "d5704078106d121a6368338b41f1b64397aae266",
+  "exchange_commit": "7868e00051a22f1f63fa04cd882c1e93baede363",
+  "run_id": "39404138293",
+  "reviewed": 3,
+  "published_new": 0,
+  "paid_provider_calls": 0
+}

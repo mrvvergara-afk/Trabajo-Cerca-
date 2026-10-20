@@ -1,0 +1,48 @@
+{
+  "schema": "trabajo-cerca.portal-reviewed-delivery.v1",
+  "capture_commit": "d5704078106d121a6368338b41f1b64397aae266",
+  "exchange_commit": "7868e00051a22f1f63fa04cd882c1e93baede363",
+  "run_id": "39404138293",
+  "reviewed": 3,
+  "published_new": 3,
+  "paid_provider_calls": 0,
+  "published_ids": [
+    "688c0421-4ed4-46e5-9592-694a2669fad7",
+    "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+    "adee2128-1fb0-45ae-ab28-8bb8cf87313e"
+  ],
+  "already_present_ids": [],
+  "sdk_total_items": 36,
+  "sdk_job_offers": 34,
+  "added_ids": [
+    "688c0421-4ed4-46e5-9592-694a2669fad7",
+    "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+    "adee2128-1fb0-45ae-ab28-8bb8cf87313e"
+  ],
+  "removed_ids": [],
+  "confirmation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+      "688c0421-4ed4-46e5-9592-694a2669fad7",
+      "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "7868e00051a22f1f63fa04cd882c1e93baede363",
+    "ingestion_run_id": "39404138293",
+    "feed_complete": true,
+    "feed_manifest": "c9f1ad85-e57e-4f26-ab7e-651a1361301a",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "all_cards_confirmed": true,
+  "feed_manifest": "c9f1ad85-e57e-4f26-ab7e-651a1361301a"
+}

@@ -86,12 +86,26 @@ def main():
         'ref':os.environ.get('GITHUB_REF'),'sha':os.environ.get('GITHUB_SHA'),'run_id':os.environ.get('GITHUB_RUN_ID')}
     if context['repository']!=laboratory_exchange.REPOSITORY or context['ref']!='refs/heads/'+laboratory_exchange.DOCUMENT_PRODUCER_BRANCH:
         raise ValueError('authorized_repair_branch_required')
-    targets=json.loads(CONFIG.read_text())['approved']
+    settings=json.loads(CONFIG.read_text());targets=settings['approved']
     if not 0<len(targets)<=24:raise ValueError('reviewed_delivery_budget_exceeded')
     output=Path('output/expanded-reviewed-handoff');output.mkdir(parents=True,exist_ok=True)
     for commit in sorted({row['capture_commit'] for row in targets}):subprocess.run(['git','fetch','origin',commit],check=True)
     originals={row['url']:subprocess.check_output(['git','show',row['capture_commit']+':'+row['original_path']]) for row in targets}
     observe_site_inventory.main();baseline=json.loads(Path('output/site-inventory/proof.json').read_text());write_json(output/'before-inventory.json',baseline)
+    resume=settings.get('resume_exchange')
+    if resume:
+        subprocess.run(['git','fetch','origin',resume['commit']],check=True)
+        old=json.loads(subprocess.check_output(['git','show',resume['commit']+':'+resume['path']]))['records']
+        consumed=asyncio.run(consume_once());observe_laboratory.main()
+        proof=json.loads(Path('output/laboratory_observation_proof.json').read_text())
+        expected={row['candidate_id'] for row in old}
+        diagnostics=[row for row in proof.get('ingestion',{}).get('receipts',[]) if row.get('candidateId') in expected]
+        write_json(output/'recovered-exchange-proof.json',proof)
+        print('EXPANDED_RECOVERY_DIAGNOSTICS '+json.dumps({'consumed':consumed,'receipts':diagnostics},ensure_ascii=False),flush=True)
+        confirmed=matching_publication(proof,{'run_id':resume['run_id']},old)
+        if not confirmed:
+            parent,checkpoint=restore_checkpoint();saved=publish_evidence(output,checkpoint,parent,context['run_id']+'-'+os.environ.get('GITHUB_RUN_ATTEMPT','1'))
+            raise RuntimeError('previous_signed_exchange_not_fully_visible:'+saved)
     records,skipped=prepare(targets,originals,baseline['visible_items'])
     write_json(output/'reviewed-queue.json',{'records':records,'skipped':skipped,'published':0})
     all_ids=set();deliveries=[]

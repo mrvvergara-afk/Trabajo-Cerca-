@@ -1,0 +1,33 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_name": "Trabajo Cerca",
+  "app_type": "frontend+backend",
+  "model": "gpt-6",
+  "intent": "Diagnosticar entrega firmada pendiente sin exponer pruebas originales en el feed público",
+  "initiator": "agent",
+  "type": "fix",
+  "files": [
+    {
+      "filename": "backend/radar-ingestion.ts",
+      "diffs": [
+        {
+          "from": "import { fetchPublicPage } from './public-source-http';",
+          "to": "import { fetchPublicPage } from './public-source-http';\nimport { offerRetentionReason } from './offer-retention';"
+        },
+        {
+          "from": "export async function externalRadarStatus() {\n  const current = await state();\n  const receipts:Array<{ candidateId:string; publishedId:string | null; state:string; sourceUrl:string | null }> = [];\n  for (const receipt of current?.receipts?.slice(0, 3) ?? []) {\n    const [record] = await db.get<Stored>(receipt.table, [receipt.id]);\n    receipts.push({ candidateId:receipt.candidateId,\n      publishedId:typeof record?.externalPublishedId === 'string' ? record.externalPublishedId : null,\n      state:String(record?.externalPublicationState || 'not_confirmed'),\n      sourceUrl:typeof record?.url === 'string' ? record.url : null });\n  }\n  return { status:current?.status || 'awaiting_signed_batch', stored:Number(current?.storedCount || 0),\n    published:Number(current?.publishedCount || 0), checkedAt:current?.checkedAt ?? null,\n    feedManifestId:current?.feedManifestId ?? null, dataCommit:current?.dataCommit ?? null,\n    rejection:current?.rejection ?? null, runId:current?.runId ?? null, receipts };\n}",
+          "to": "export async function externalRadarStatus() {\n  const current = await state();\n  const receipts:Array<Record<string,unknown>> = [];\n  for (const receipt of current?.receipts?.slice(0, 3) ?? []) {\n    const [record] = await db.get<Stored>(receipt.table, [receipt.id]);\n    receipts.push({ candidateId:receipt.candidateId,sourceId:receipt.id,\n      publishedId:typeof record?.externalPublishedId === 'string' ? record.externalPublishedId : null,\n      state:String(record?.externalPublicationState || 'not_confirmed'),\n      sourceUrl:typeof record?.url === 'string' ? record.url : null,\n      projection:record ? {kind:record.kind,active:record.active,verified:record.verified,review:record.review,\n        sourcePublishedAt:record.sourcePublishedAt,sourceValidThrough:record.sourceValidThrough,expiresAt:record.expiresAt,\n        workCommunes:record.workCommunes,title:record.title,note:record.note,\n        retentionReason:offerRetentionReason(record)} : null });\n  }\n  return { status:current?.status || 'awaiting_signed_batch', stored:Number(current?.storedCount || 0),\n    published:Number(current?.publishedCount || 0), checkedAt:current?.checkedAt ?? null,\n    feedManifestId:current?.feedManifestId ?? null, dataCommit:current?.dataCommit ?? null,\n    rejection:current?.rejection ?? null, runId:current?.runId ?? null, receipts };\n}"
+        }
+      ]
+    },
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "  return { ...safe, hasContact: Boolean(contact) };",
+          "to": "  const projected={...safe} as Record<string,unknown>;\n  for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof']) delete projected[field];\n  return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) };"
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { publicSourceAdapter, safePublicUrl, samePublicJob, publicOfferIdentity 
 import { validateCmpcEvidence, type CmpcEvidence } from './cmpc-evidence';
 import { validateLocalContactEvidence, localContactDescription, localContactIndexStatus, type LocalContactEvidence } from './local-contact-evidence';
 import { fetchPublicPage } from './public-source-http';
+import { offerRetentionReason } from './offer-retention';
 
 type Stored = Record<string, unknown>;
 type DocumentField = { page:number; text_object_sha256:string; reading?:string; literal:string };
@@ -377,13 +378,17 @@ export async function confirmRadarPublications() {
 
 export async function externalRadarStatus() {
   const current = await state();
-  const receipts:Array<{ candidateId:string; publishedId:string | null; state:string; sourceUrl:string | null }> = [];
+  const receipts:Array<Record<string,unknown>> = [];
   for (const receipt of current?.receipts?.slice(0, 3) ?? []) {
     const [record] = await db.get<Stored>(receipt.table, [receipt.id]);
-    receipts.push({ candidateId:receipt.candidateId,
+    receipts.push({ candidateId:receipt.candidateId,sourceId:receipt.id,
       publishedId:typeof record?.externalPublishedId === 'string' ? record.externalPublishedId : null,
       state:String(record?.externalPublicationState || 'not_confirmed'),
-      sourceUrl:typeof record?.url === 'string' ? record.url : null });
+      sourceUrl:typeof record?.url === 'string' ? record.url : null,
+      projection:record ? {kind:record.kind,active:record.active,verified:record.verified,review:record.review,
+        sourcePublishedAt:record.sourcePublishedAt,sourceValidThrough:record.sourceValidThrough,expiresAt:record.expiresAt,
+        workCommunes:record.workCommunes,title:record.title,note:record.note,
+        retentionReason:offerRetentionReason(record)} : null });
   }
   return { status:current?.status || 'awaiting_signed_batch', stored:Number(current?.storedCount || 0),
     published:Number(current?.publishedCount || 0), checkedAt:current?.checkedAt ?? null,

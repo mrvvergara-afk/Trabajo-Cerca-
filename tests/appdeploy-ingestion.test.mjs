@@ -11,6 +11,7 @@ const jwks = { keys:[{ ...publicKey.export({ format:'jwk' }), kid:'test-only', a
 const code = path => stripTypeScriptTypes(readFileSync(new URL(path, import.meta.url),'utf8'), { mode:'strip' })
   .replace(/^import .*;$/gm,'').replace(/^export /gm,'');
 const feedCode = code('../integrations/appdeploy/public-feed.ts');
+const retentionCode=code('../integrations/appdeploy/offer-retention.ts');
 const ingestionCode = code('../integrations/appdeploy/radar-ingestion.ts');
 const cmpcCode=code('../integrations/appdeploy/cmpc-evidence.ts');
 const adapterCode = code('../integrations/appdeploy/public-source-adapters.ts');
@@ -83,6 +84,7 @@ function harness() {
   vm.runInContext(adapterCode,ctx);
   vm.runInContext(feedCode,ctx);
   vm.runInContext(cmpcCode,ctx);
+  vm.runInContext(retentionCode,ctx);
   vm.runInContext(ingestionCode,ctx);
   const mapper = item => ({ kind:'job_offer',active:true,verified:true,review:false,title:item.title,company:item.company,
     url:item.source_url,workCommunes:[item.work_commune],createdAt:new Date(now).toISOString(),

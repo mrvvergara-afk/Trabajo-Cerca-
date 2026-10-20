@@ -40,6 +40,43 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  expanded-reviewed-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[expanded reviewed handoff]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+      RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar navegador público y SDK sin proveedores pagos
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar revisión, firma, receptor y evidencia municipal
+        run: |
+          python -m unittest tests.test_expanded_reviewed_handoff tests.test_durable_exchange -q
+          node tests/local-contact-evidence.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
+          node tests/appdeploy-reviewed-receiver.test.mjs
+      - name: Entregar solo cargos revisados y comprobar SDK completo y tarjetas
+        run: python -m scripts.expanded_reviewed_handoff
+      - name: Conservar comprobantes e inventario antes y después
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-reviewed-handoff
+          path: output/expanded-reviewed-handoff/
+          retention-days: 7
   expanded-source-drain:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

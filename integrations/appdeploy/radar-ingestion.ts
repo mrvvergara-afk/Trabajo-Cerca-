@@ -3,6 +3,8 @@ import { createHash, createPublicKey, verify, type JsonWebKey } from 'node:crypt
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
 import { publicSourceAdapter, safePublicUrl, samePublicJob, publicOfferIdentity } from './public-source-adapters';
 import { validateCmpcEvidence, type CmpcEvidence } from './cmpc-evidence';
+import { validateLocalContactEvidence, localContactDescription, localContactIndexStatus, type LocalContactEvidence } from './local-contact-evidence';
+import { fetchPublicPage } from './public-source-http';
 
 type Stored = Record<string, unknown>;
 type DocumentField = { page:number; text_object_sha256:string; reading?:string; literal:string };
@@ -15,7 +17,9 @@ export type VerifiedOffer = {
   idempotency_key:string; candidate_id:string; source_url:string; source:string;
   title:string; company:string; work_commune:string; source_published_at:string;
   valid_through:string; application:string; verified_at:string; verification_method:string;
-  validity_method?:'explicit_deadline' | 'live_application';
+  validity_method?:'explicit_deadline' | 'live_application' | 'dated_in_person';
+  local_contact_evidence?:LocalContactEvidence;
+  vacancies?:number;
   validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
   source_evidence?:{ sha256:string; source_url:string; complete_document:boolean; text:string };
   document_unit?:DocumentUnit;
@@ -162,12 +166,15 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
   const adapter = publicSourceAdapter(item.source_url)!;
   const localMethod = adapter.family==='local' && item.verification_method===adapter.name+' individual notice + local document text';
   const unitMethod = adapter.family==='local' && item.verification_method===adapter.name+' individual notice + page-bound document review';
+  const contactMethod=adapter.family==='local' && item.verification_method===adapter.name+' individual notice + dated public in-person application';
+  if (contactMethod) { try { validateLocalContactEvidence(item,now); } catch { reject('Invalid dated in-person primary evidence'); } }
+  if ((item.local_contact_evidence || item.validity_method==='dated_in_person') && !contactMethod) reject('Unsupported local contact evidence');
   const cmpcMethod=new URL(item.source_url).hostname==='cmpc.csod.com';
   if (cmpcMethod) { try { validateCmpcEvidence(item,now); } catch { reject('Invalid CMPC primary evidence'); } }
   if ((item.cmpc_evidence || item.work_site) && !cmpcMethod) reject('Unsupported CMPC evidence');
   if (!/^[a-f0-9]{24}$/.test(item.candidate_id) || item.idempotency_key !== 'radar:' + item.candidate_id ||
-      !PLACES.includes(item.work_commune) || (item.verification_method !== adapter.verificationMethod && !localMethod && !unitMethod)) reject('Unsupported verification evidence');
-  if ((item.document_unit || item.application_details) && !unitMethod) reject('Unsupported document unit evidence');
+      !PLACES.includes(item.work_commune) || (item.verification_method !== adapter.verificationMethod && !localMethod && !unitMethod && !contactMethod)) reject('Unsupported verification evidence');
+  if (item.document_unit && !unitMethod || item.application_details && !unitMethod && !contactMethod) reject('Unsupported document unit evidence');
   if (typeof item.valid_through !== 'string' || item.valid_through.length>2000) reject('Invalid source deadline');
   if (localMethod && (!item.source_evidence || item.source_evidence.source_url!==item.source_url ||
       !item.source_evidence.complete_document || !/^[a-f0-9]{64}$/.test(item.source_evidence.sha256) ||
@@ -180,7 +187,9 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
     validateDocumentUnit(item,now);
     if (item.candidate_id!==identity.slice(0,24)) reject('Document candidate identity mismatch');
   }
-  if (item.validity_method==='live_application') {
+  if (contactMethod) {
+    if (item.validity_method!=='dated_in_person' || item.candidate_id!==identity.slice(0,24)) reject('Local contact identity mismatch');
+  } else if (item.validity_method==='live_application') {
     const evidence = item.validity_evidence;
     if (localMethod || item.valid_through || !evidence || !samePublicJob(item.source_url,evidence.form_url) ||
         evidence.form_action!==item.application || Date.parse(evidence.checked_at)!==checked ||
@@ -264,7 +273,12 @@ export async function storeVerifiedBatch(batch:Batch, digest:string, mapRecord:(
       applicationUrl:offer.application,sourceValidThrough:offer.valid_through,expiresAt:offer.valid_through,
       note:'Postulación presencial. '+offer.application_details!.instructions.replace(/\s+/g,' ')+' · Bases: '+offer.application} : {};
     const primaryFields:Stored=offer.cmpc_evidence ? {cmpcPrimaryReview:offer.cmpc_evidence,primarySourceEvidence:offer.source_evidence} : {};
-    const record:Stored = { ...fields, ...mapRecord(offer), ...documentFields, ...primaryFields, createdAt:previous?.createdAt ?? new Date(now).toISOString(),
+    const contactFields:Stored=offer.local_contact_evidence ? {localContactEvidence:offer.local_contact_evidence,
+      applicationMethod:'in_person',applicationInstructions:offer.application_details!.instructions,applicationUrl:offer.application,
+      vacancies:offer.vacancies,workLocation:offer.work_commune+' · '+offer.local_contact_evidence.workplace_literal,
+      note:'Postulación presencial. '+offer.application_details!.instructions+' · '+localContactDescription(offer.local_contact_evidence)+' · La fuente no informa fecha de cierre.'+
+        (offer.local_contact_evidence.employer_identity==='not_named_by_publisher' ? ' El municipio no publica la razón social del empleador.' : '')} : {};
+    const record:Stored = { ...fields, ...mapRecord(offer), ...documentFields, ...primaryFields, ...contactFields, createdAt:previous?.createdAt ?? new Date(now).toISOString(),
       externalIdentity:identity, externalCandidateId:offer.candidate_id, externalBatchDigest:digest,
       externalRunId:batch.run_id, externalVerifiedAt:offer.verified_at, feedRegistered:false };
     if (Buffer.byteLength(JSON.stringify(record)) > 230 * 1024) throw new Error('External offer byte budget exceeded');
@@ -277,6 +291,13 @@ export async function storeVerifiedBatch(batch:Batch, digest:string, mapRecord:(
       if (!id) throw new Error('External offer insertion failed');
     }
     // The identity and full offer are one durable record: retries can find an unregistered insert.
+    if (offer.local_contact_evidence) {
+      const checks=await db.list<Stored>('radar_local_contact_rechecks',{limit:20});
+      if (!checks.items.some(row=>row.identity===identity)) {
+        const [key]=await db.add('radar_local_contact_rechecks',[{identity,table,sourceId:id}]);
+        if (!key) throw new Error('Local contact recheck registration failed');
+      }
+    }
     await registerPublicFeedChange(table, id);
     const [registered] = await db.update(table, [{ id, record:{ ...record, feedRegistered:true } }]);
     if (!registered) throw new Error('External feed registration checkpoint failed');
@@ -368,4 +389,35 @@ export async function externalRadarStatus() {
     published:Number(current?.publishedCount || 0), checkedAt:current?.checkedAt ?? null,
     feedManifestId:current?.feedManifestId ?? null, dataCommit:current?.dataCommit ?? null,
     rejection:current?.rejection ?? null, runId:current?.runId ?? null, receipts };
+}
+
+// Runs in the existing verification slot; no new schedule or paid fallback.
+export async function revalidateLocalContactOffers(now=Date.now()) {
+  const rows=await db.list<Stored>('radar_local_contact_rechecks',{limit:20});
+  let checked=0,closed=0,inconclusive=0;
+  for (const ref of rows.items) {
+    if (typeof ref.table!=='string' || !/^radar_external_[a-f0-9]{32}$/.test(ref.table) || typeof ref.sourceId!=='string') throw new Error('Invalid local recheck reference');
+    const [record]=await db.get<Stored>(ref.table,[ref.sourceId]);
+    if (!record || record.externalIdentity!==ref.identity || !record.localContactEvidence) throw new Error('Missing local primary proof');
+    const stamp=Date.parse(String(record.localContactCheckedAt || record.lastVerifiedAt || ''));
+    if (Number.isFinite(stamp) && now-stamp<86400000 || record.active===false) continue;
+    const proof=record.localContactEvidence as LocalContactEvidence;
+    const index=await fetchPublicPage(proof.index_url,proof.index_url);
+    const state=index.error || index.status!==200 ? 'unknown' : localContactIndexStatus(index.raw,String(record.url),String(record.title));
+    let reason='Fuente temporalmente limitada; se conserva la aprobación anterior.',update:Stored={};
+    if (state==='closed') {update={active:false,verified:false,review:false,status:'Cerrada',sourceUnavailableConfirmed:true};reason='El índice oficial marca esta oferta como cerrada.';closed++;}
+    else if (state==='open') {
+      const page=await fetchPublicPage(String(record.url),String(record.url));
+      if ([404,410].includes(page.status)) {update={active:false,verified:false,review:false,status:'Cerrada',sourceUnavailableConfirmed:true};reason='El aviso individual dejó de estar disponible.';closed++;}
+      else if (!page.error && page.status===200 && localContactDescription({...proof,source_html:page.raw})===localContactDescription(proof) &&
+          page.raw.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').includes(String(record.applicationInstructions))) {
+        update={lastVerifiedAt:new Date(now).toISOString()};reason='Índice oficial abierto, cargo y postulación presencial sin cambios.';
+      } else inconclusive++;
+    } else inconclusive++;
+    const next={...record,...update,localContactCheckedAt:new Date(now).toISOString(),verificationReason:reason};
+    const [ok]=await db.update(ref.table,[{id:ref.sourceId,record:next}]);
+    if (!ok) throw new Error('Local revalidation write failed');
+    await registerPublicFeedChange(ref.table,ref.sourceId);checked++;
+  }
+  return {checked,closed,inconclusive,hasMore:Boolean(rows.nextToken),paidCalls:0};
 }

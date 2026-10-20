@@ -1,0 +1,169 @@
+{
+  "approved": [
+    {
+      "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "title": "OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS",
+      "company": "Empresa del rubro agrícola de la comuna de Mulchén",
+      "commune": "Mulchén",
+      "capture_commit": "a6a2e6be225a79349ffabeb2047a1f272e184338",
+      "original_path": "objects/d62de654ce1eb6bdaf1daf988597fa2d24e3fb62ddbd7fdc2a0057270d1f295a",
+      "sha256": "d62de654ce1eb6bdaf1daf988597fa2d24e3fb62ddbd7fdc2a0057270d1f295a",
+      "captured_at": "2026-10-20T11:38:09.162435Z",
+      "local_contact_proof": "config/evidence/mulchen-17979-2026-10-20.json",
+      "published_at": "2026-10-19T23:37:41Z",
+      "vacancies": 100,
+      "application_instructions": "Interesados deben presentar la documentación en la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs."
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
+      "title": "Práctica Profesional Ingeniería Civil Industrial - MASSO - Nacimiento",
+      "company": "Serfonac",
+      "commune": "Nacimiento",
+      "capture_commit": "a6a2e6be225a79349ffabeb2047a1f272e184338",
+      "original_path": "objects/40343bfd19468ea85c1eaf0ff9dc8247c1aa46d155b2152f3bf9d3918f6066cb",
+      "sha256": "40343bfd19468ea85c1eaf0ff9dc8247c1aa46d155b2152f3bf9d3918f6066cb",
+      "captured_at": "2026-10-20T11:20:12.818559+00:00"
+    },
+    {
+      "url": "https://www.laborum.cl/empleos/promotora-20-horas-traiguen-1118460788.html",
+      "title": "Promotora 20 horas - Traiguén",
+      "company": "Confidencial",
+      "commune": "Traiguén",
+      "capture_commit": "a6a2e6be225a79349ffabeb2047a1f272e184338",
+      "original_path": "history/39413875293-1/rendered-jobs/08f1b47f28af2937.html",
+      "sha256": "dc8006062693ab1032f9037331cbb509da494e254c9496c7824ab2517d56c643",
+      "captured_at": "2026-10-20T11:21:58.883806+00:00"
+    },
+    {
+      "url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
+      "title": "Cajero(a) con experiencia Unimarc Collipulli",
+      "company": "Supermercados Unimarc",
+      "commune": "Collipulli",
+      "capture_commit": "a6a2e6be225a79349ffabeb2047a1f272e184338",
+      "original_path": "history/39413875293-1/rendered-jobs/3dd20d168a7b9ddf.html",
+      "sha256": "9ee9d942e064bfc40ca3de5055b13a640d03cbd4199ad1a86bb62368c8d09425",
+      "captured_at": "2026-10-20T11:21:59.107494+00:00"
+    },
+    {
+      "url": "https://www.laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
+      "title": "Asesor/a de Ventas y Servicio en Sucursal - Angol",
+      "company": "Atento Chile S.A",
+      "commune": "Angol",
+      "capture_commit": "a6a2e6be225a79349ffabeb2047a1f272e184338",
+      "original_path": "history/39413875293-1/rendered-jobs/ff28b8bf320765b7.html",
+      "sha256": "4c1c0cf578ba629165d6cd9e77fa4adc35d3c757e667b820d158556c2dfb0b04",
+      "captured_at": "2026-10-20T11:21:59.231220+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+      "title": "Técnico en Administración para AIF - Angol",
+      "company": "Consultores 2000",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/77f827cfa789042ece2eb69ae59b75f7b0700911a3f41921e02ffa804c3c5911",
+      "sha256": "77f827cfa789042ece2eb69ae59b75f7b0700911a3f41921e02ffa804c3c5911",
+      "captured_at": "2026-10-20T11:36:06.332401+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+      "title": "Laboratorista Vial Clase B para AIF - Angol",
+      "company": "Consultores 2000",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/a3a3696fd2b3cedccfdd8277b8358e39545964ceea032575e24dcbe4cd1b776f",
+      "sha256": "a3a3696fd2b3cedccfdd8277b8358e39545964ceea032575e24dcbe4cd1b776f",
+      "captured_at": "2026-10-20T11:36:06.827053+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "title": "Prevencionista de Riesgos para AIF - Angol",
+      "company": "Consultores 2000",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/07b90b3e9610cc7dd571330bb98989f3160cc362313e9b5ffd5a822d89dc662b",
+      "sha256": "07b90b3e9610cc7dd571330bb98989f3160cc362313e9b5ffd5a822d89dc662b",
+      "captured_at": "2026-10-20T11:36:07.274761+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+      "title": "Encargado Ambiental y Participación Ciudadana para AIF - Angol",
+      "company": "Consultores 2000",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/aaa34da98669df7bb059083c27b809f7eb0d2410f50238e3cea0ed365a3081f1",
+      "sha256": "aaa34da98669df7bb059083c27b809f7eb0d2410f50238e3cea0ed365a3081f1",
+      "captured_at": "2026-10-20T11:36:07.759828+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+      "title": "Jefe de Asesoría - Angol",
+      "company": "Consultores 2000",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/8bfa1d9078818ba4b9c6000a3b866a2254079e0f0b2d0c62e82eba3081ec944b",
+      "sha256": "8bfa1d9078818ba4b9c6000a3b866a2254079e0f0b2d0c62e82eba3081ec944b",
+      "captured_at": "2026-10-20T11:36:08.205259+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+      "title": "Geomensor - Angol",
+      "company": "Consultores 2000",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/5bf7c0a2aed2a1e600bc98bb27b6f9c7f1707773c1fa9f2e80d947fc267ce80f",
+      "sha256": "5bf7c0a2aed2a1e600bc98bb27b6f9c7f1707773c1fa9f2e80d947fc267ce80f",
+      "captured_at": "2026-10-20T11:36:08.635759+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+      "title": "Encargado Calidad para AIF - Angol",
+      "company": "Consultores 2000",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/dc0d6951ab59bf23079468f34d2b7f74bbd1b1d09d1a1d7beb101e3a4f8b8b98",
+      "sha256": "dc0d6951ab59bf23079468f34d2b7f74bbd1b1d09d1a1d7beb101e3a4f8b8b98",
+      "captured_at": "2026-10-20T11:36:09.131628+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+      "title": "TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR)",
+      "company": "CONFIDENCIAL",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/97bbd1746730117e8c32d59465ae762f4f52e8bf0bbf20a87d7be8ed490dd06a",
+      "sha256": "97bbd1746730117e8c32d59465ae762f4f52e8bf0bbf20a87d7be8ed490dd06a",
+      "captured_at": "2026-10-20T11:36:09.603753+00:00"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+      "title": "Práctica Profesional Contador Auditor - Nacimiento",
+      "company": "Serfonac Ltda",
+      "commune": "Nacimiento",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "objects/a2fe0aaee07c8eaf48e9858052d22c92c9c164b24da8cbe93c08123456da8a11",
+      "sha256": "a2fe0aaee07c8eaf48e9858052d22c92c9c164b24da8cbe93c08123456da8a11",
+      "captured_at": "2026-10-20T11:36:21.339250+00:00"
+    },
+    {
+      "url": "https://www.laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html",
+      "title": "Promotor(a) Full Time Martes a Sábado Angol Falabella -TOP",
+      "company": "TOP",
+      "commune": "Angol",
+      "capture_commit": "2739d31ae8905fe1a8ad2675687757503ebde293",
+      "original_path": "history/39416058655-1/rendered-jobs/478fb835479bde36.html",
+      "sha256": "0cd9b18bcbcd87bae2ea6f252dde1880096b97c21d66af6b5eef336cb67257b6",
+      "captured_at": "2026-10-20T11:37:51.159402+00:00"
+    }
+  ],
+  "excluded_same_underlying_role": [
+    "Atento1118466019",
+    "Manpower five Laborum repetitions",
+    "FashionPark3915270",
+    "Preunic1118461814",
+    "Layner3902931 and3913134",
+    "AguasAndinas3900996"
+  ],
+  "excluded_incorrect_worksite": [
+    "Manpower1118446500: Antofagasta body"
+  ]
+}

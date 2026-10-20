@@ -124,3 +124,9 @@ test('related job links cannot supply missing application evidence on any portal
  const row=ctx.evaluatePublicJob(url,page({anchor:false,tail:'<a href="'+other+'">Postular</a>'}),url,200,now);
  assert.notEqual(row.status,'verified');assert.equal(row.application,undefined);
 });
+test('Laborum rapid application is accepted only inside the same named main-job form',()=>{
+ const original='https://www.laborum.cl/empleos/cajero-navidad-1118483484.html';
+ const raw=page({job:{url:original},anchor:false,tail:'<form id="form-salario-pretendido"><button type="submit"><span>Postulación rápida</span></button></form>'});
+ const result=ctx.evaluatePublicJob(original,raw,original,200,now);assert.equal(result.status,'verified');assert.equal(result.application,original);
+ assert.notEqual(ctx.evaluatePublicJob(original,raw.replace('form-salario-pretendido','recommended-form'),original,200,now).status,'verified');
+});

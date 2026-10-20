@@ -126,7 +126,7 @@ function applicationLink(raw:string, url:string) {
       const buttons=[...forms[0][2].matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)];
       if (buttons.some(button=>attribute(button[1],'type')==='submit' &&
           !/\bdisabled\b|aria-disabled\s*=\s*["']true["']/i.test(button[1]) &&
-          /^postularme$/i.test(publicText(button[2]).trim()))) return url;
+          /^(?:postularme|postulaci[oó]n r[aá]pida)$/i.test(publicText(button[2]).trim()))) return url;
     }
   }
   for (const anchor of raw.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {

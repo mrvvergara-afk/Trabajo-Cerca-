@@ -32,7 +32,7 @@ def prepare(config,manifest,review,originals,now=None):
             raise ValueError('original_capture_identity_or_hash_changed')
         result=evaluate({'url':target['url']},raw.decode(),page['final_url'],status=page['http'],now=now)
         if result.get('status')!='verified' or result.get('work_commune')!='Angol' or result.get('title')!=target['title_hint']:
-            raise ValueError('individual_role_not_verified')
+            raise ValueError('individual_role_not_verified:'+target['key']+':'+str(result.get('reason')))
         if not same_job(target['url'],result.get('application','')):raise ValueError('application_points_to_another_job')
         adapter=source_adapter(target['url']);identity=hashlib.sha256(adapter['identityUrl'].encode()).hexdigest();candidate=identity[:24]
         records.append({'source_url':target['url'],'source':result['source'],'title':result['title'],'company':result['company'],

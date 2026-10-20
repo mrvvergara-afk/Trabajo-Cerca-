@@ -60,5 +60,9 @@
   "paid_provider_calls": 0,
   "list_dates_used_as_original": false,
   "data_commit": "d5704078106d121a6368338b41f1b64397aae266",
-  "run_id": 39401994040
+  "run_id": 39401994040,
+  "publication_review_gate": {
+    "approved": false,
+    "reason": "La primera lectura seleccionó application de otra recomendación. No se entregó ese resultado al receptor. Se conserva como evidencia del fallo; el lote se reconstruye sobre los mismos originales con el parser corregido."
+  }
 }

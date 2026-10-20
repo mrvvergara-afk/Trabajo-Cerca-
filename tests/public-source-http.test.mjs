@@ -1,6 +1,7 @@
+import {createHash} from 'node:crypto';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';import {stripTypeScriptTypes} from 'node:module';import vm from 'node:vm';
-function context(fetcher){const ctx={URL,Buffer,TextDecoder,AbortSignal,fetch:fetcher};vm.createContext(ctx);for(const name of ['public-source-adapters.ts','public-source-http.ts'])vm.runInContext(stripTypeScriptTypes(readFileSync(new URL('../integrations/appdeploy/'+name,import.meta.url),'utf8'),{mode:'strip'}).replace(/^import .*;$/gm,'').replace(/^export /gm,''),ctx);return ctx;}
+function context(fetcher){const ctx={URL,Buffer,TextDecoder,AbortSignal,createHash,fetch:async(url,options)=>url.endsWith('/robots.txt')?new Response('User-agent: *\nAllow: /',{headers:{'content-type':'text/plain'}}):fetcher(url,options)};vm.createContext(ctx);for(const name of ['public-source-adapters.ts','public-robots.ts','public-source-http.ts'])vm.runInContext(stripTypeScriptTypes(readFileSync(new URL('../integrations/appdeploy/'+name,import.meta.url),'utf8'),{mode:'strip'}).replace(/^import .*;$/gm,'').replace(/^export /gm,''),ctx);return ctx;}
 test('Declared Latin-1 public pages retain accents needed to verify the worksite',async()=>{
  const ctx=context(async()=>new Response(Buffer.from('<h1>Traiguén</h1>','latin1'),{headers:{'content-type':'text/html;charset=ISO-8859-1'}}));
  const r=await ctx.fetchPublicPage('https://www.bne.gob.cl/oferta/2026-109726');assert.equal(r.raw,'<h1>Traiguén</h1>');assert.equal(r.error,undefined);

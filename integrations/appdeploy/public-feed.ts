@@ -6,11 +6,12 @@ type FeedSource = string;
 type Stored = Record<string, unknown>;
 type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored; projectionRevision?:string };
 type Order = { time:number; key:string };
-type Counts = { jobs:number; newJobs24h:number; people:number; needs:number; services:number };
+type Counts = { jobs:number; newJobs24h:number; newJobs7d:number; people:number; needs:number; services:number };
 type Summary = {
   itemCount:number; totalJobOffers:number; totalVerifiedJobOffers:number;
+  recentJobOffers24h:number; recentJobOffers7d:number;
   totalProvisionalJobOffers:number; communeStats:Record<string, Counts>;
-  kindStats:Omit<Counts, 'newJobs24h'>;
+  kindStats:Omit<Counts, 'newJobs24h' | 'newJobs7d'>;
 };
 type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary; projectionRevision?:string };
 type Manifest = Summary & { schema:2; updatedAt:string; pages:PageRef[]; pageCount:number };
@@ -175,6 +176,7 @@ function compare(a:Order, b:Order) {
 
 function emptySummary():Summary {
   return { itemCount:0, totalJobOffers:0, totalVerifiedJobOffers:0, totalProvisionalJobOffers:0,
+    recentJobOffers24h:0,recentJobOffers7d:0,
     communeStats:{}, kindStats:{ jobs:0, people:0, needs:0, services:0 } };
 }
 
@@ -189,12 +191,17 @@ function summarize(entries:Entry[], now:number):Summary {
     if (kind === 'jobs') {
       summary.totalJobOffers++;
       if (item.verified && !item.review) summary.totalVerifiedJobOffers++;
+      const first=Date.parse(String(item.firstPublishedAt || item.createdAt || ''));
+      if (first<=now && first>=now-86400000) summary.recentJobOffers24h++;
+      if (first<=now && first>=now-7*86400000) summary.recentJobOffers7d++;
     }
     const places = Array.isArray(item.workCommunes) ? [...new Set(item.workCommunes.map(String))] : [];
     for (const place of places) {
-      const stat = summary.communeStats[place] ??= { jobs:0, newJobs24h:0, people:0, needs:0, services:0 };
+      const stat = summary.communeStats[place] ??= { jobs:0, newJobs24h:0, newJobs7d:0, people:0, needs:0, services:0 };
       stat[kind]++;
-      if (kind === 'jobs' && Date.parse(String(item.createdAt)) >= now - 86400000) stat.newJobs24h++;
+      const first=Date.parse(String(item.firstPublishedAt || item.createdAt || ''));
+      if (kind === 'jobs' && first<=now && first>=now-86400000) stat.newJobs24h++;
+      if (kind === 'jobs' && first<=now && first>=now-7*86400000) stat.newJobs7d++;
     }
   }
   return summary;
@@ -206,10 +213,12 @@ function total(pages:PageRef[]):Summary {
     result.itemCount += summary.itemCount;
     result.totalJobOffers += summary.totalJobOffers;
     result.totalVerifiedJobOffers += summary.totalVerifiedJobOffers;
+    result.recentJobOffers24h += summary.recentJobOffers24h || 0;
+    result.recentJobOffers7d += summary.recentJobOffers7d || 0;
     for (const kind of ['jobs', 'people', 'needs', 'services'] as const) result.kindStats[kind] += summary.kindStats[kind];
     for (const [place, counts] of Object.entries(summary.communeStats)) {
-      const current = result.communeStats[place] ??= { jobs:0, newJobs24h:0, people:0, needs:0, services:0 };
-      for (const kind of ['jobs', 'newJobs24h', 'people', 'needs', 'services'] as const) current[kind] += counts[kind];
+      const current = result.communeStats[place] ??= { jobs:0, newJobs24h:0, newJobs7d:0, people:0, needs:0, services:0 };
+      for (const kind of ['jobs', 'newJobs24h', 'newJobs7d', 'people', 'needs', 'services'] as const) current[kind] += counts[kind] || 0;
     }
   }
   return result;

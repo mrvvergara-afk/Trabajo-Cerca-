@@ -4,7 +4,6 @@ import re
 import urllib.error
 import urllib.parse
 import urllib.request
-import urllib.robotparser
 from pathlib import Path
 
 from .common import canonical_url
@@ -12,7 +11,33 @@ from .local_source_audit import same_publisher
 from .public_source_adapters import LOCAL_PUBLISHERS
 
 USER_AGENT = 'TrabajoCercaLocalAudit/1.0'
-PUBLIC_CAPTURE_PUBLISHERS = set(LOCAL_PUBLISHERS) | {'cmpc.csod.com'}
+PUBLIC_PORTAL_HOSTS={'cl.indeed.com','indeed.com','cl.computrabajo.com','computrabajo.cl','linkedin.com','cl.linkedin.com','es.linkedin.com','laborum.cl','opcionempleo.cl','chiletrabajos.cl','bne.gob.cl','empleospublicos.cl'}
+PUBLIC_CAPTURE_PUBLISHERS = set(LOCAL_PUBLISHERS) | {'cmpc.csod.com'} | PUBLIC_PORTAL_HOSTS
+
+
+def robots_allow(raw,url,agent=USER_AGENT):
+    groups=[];current=None;has_rules=False
+    for line in raw.splitlines():
+        match=re.match(r'^\s*([a-z-]+)\s*:\s*(.*?)\s*$',line.split('#',1)[0],re.I)
+        if not match:continue
+        key,value=match.group(1).lower(),match.group(2)
+        if key=='user-agent':
+            if current is None or has_rules:
+                current={'agents':[],'rules':[]};groups.append(current);has_rules=False
+            current['agents'].append(value.lower())
+        elif current is not None and key in ('allow','disallow'):
+            has_rules=True
+            if value:current['rules'].append((value,key=='allow'))
+    scores=[max([-1]+[0 if value=='*' else len(value) if agent.lower().startswith(value) else -1 for value in group['agents']]) for group in groups]
+    best=max([-1]+scores);parts=urllib.parse.urlsplit(url);path=parts.path+('?' +parts.query if parts.query else '')
+    matches=[]
+    for index,group in enumerate(groups):
+        if best<0 or scores[index]!=best:continue
+        for rule,allow in group['rules']:
+            anchored=rule.endswith('$');value=rule[:-1] if anchored else rule
+            pattern='^'+'.*'.join(re.escape(part) for part in value.split('*'))+('$' if anchored else '')
+            if re.search(pattern,path):matches.append((len(rule.replace('*','').replace('$','')),allow))
+    return max(matches,default=(0,True))[1]
 
 
 def public_error(exc):
@@ -96,10 +121,8 @@ class PublicCapture:
             if status == 200 and (mime not in ('text/plain','text/html') or
                                   mime == 'text/html' and not re.search(rb'^\s*User-agent\s*:',raw,re.I|re.M)):
                 raise ValueError('robots_policy_unavailable')
-            parser = urllib.robotparser.RobotFileParser()
-            parser.parse(raw.decode('utf-8','replace').splitlines() if status == 200 else [])
-            self.robots[origin] = parser
-        return self.robots[origin].can_fetch(USER_AGENT, url)
+            self.robots[origin] = raw.decode('utf-8','replace') if status == 200 else ''
+        return robots_allow(self.robots[origin],url)
 
     def __call__(self, value, budget, max_bytes=900000):
         original = current = public_url(value)

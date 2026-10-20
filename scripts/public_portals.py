@@ -5,11 +5,11 @@ import urllib.parse
 from pathlib import Path
 
 try:
-    from .common import COMMUNES, Links, canonical_url, normalized, output_dir, safe_error, utcnow, write_json
+    from .common import COMMUNES, Links, canonical_url, normalized, output_dir, safe_error, utcnow, write_json, Budget
     from .local_source_audit import fetch_public
     from .public_source_adapters import source_adapter
 except ImportError:
-    from common import COMMUNES, Links, canonical_url, normalized, output_dir, safe_error, utcnow, write_json
+    from common import COMMUNES, Links, canonical_url, normalized, output_dir, safe_error, utcnow, write_json, Budget
     from local_source_audit import fetch_public
     from public_source_adapters import source_adapter
 
@@ -39,8 +39,12 @@ def plans(places=None):
     return result
 
 
-def run(*, output=None, places=None, checkpoints=None, budget=None, fetcher=fetch_public, max_requests=10, now=None):
+def run(*, output=None, places=None, checkpoints=None, budget=None, fetcher=None, max_requests=10, now=None):
     now, output = now or utcnow(), output or output_dir()
+    budget=budget or Budget(180)
+    if fetcher is None:
+        from .public_document_http import PublicCapture
+        fetcher=PublicCapture(output/'public-capture')
     searches = plans(places)
     checkpoint = (checkpoints or {}).get(CHECKPOINT,{})
     queues = {key:list(value) for key,value in checkpoint.get('queues',{}).items()}
@@ -79,7 +83,8 @@ def run(*, output=None, places=None, checkpoints=None, budget=None, fetcher=fetc
             record['next_pages'] = len(queues[plan['key']])
             if not record['candidates']:record['status']='limited'
         except Exception as exc:
-            record.update(status='error',error=str(exc) if isinstance(exc,ValueError) and str(exc) in ('public_access_challenge',) else safe_error(exc))
+            from .public_document_http import public_error
+            record.update(status='error',error=public_error(exc))
             queues[plan['key']] = pending
         diagnostics.append(record)
         requests += 1

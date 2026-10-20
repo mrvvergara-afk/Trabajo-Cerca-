@@ -244,8 +244,8 @@ export async function revalidateReviewedDocuments(invocationId:string, now=Date.
     const dates = refs.map(ref => Date.parse(String(ref.record.sourceValidThrough)));
     const published = Date.parse(document.sourcePublishedAt);
     if (dates.some(deadline => !Number.isFinite(deadline) || deadline <= now)
-        || !Number.isFinite(published) || published > now || now - published > 45 * DAY) {
-      status='expired'; reason='source_deadline_or_45_day_window_expired';
+        || !Number.isFinite(published) || published > now) {
+      status='expired'; reason='source_deadline_elapsed_or_original_date_invalid';
     } else if (refs.some(ref => ref.record.active !== true || ref.record.verified !== true || ref.record.review !== false)) {
       status='requires_review'; reason='existing_record_requires_review';
     } else {

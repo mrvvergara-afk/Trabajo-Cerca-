@@ -22,6 +22,7 @@ const LOCAL_PUBLISHERS:Record<string,string> = {
   'arauco.com':'Arauco',
   'radioviaducto.cl':'Radio Viaducto',
   'lasnoticiasdemalleco.cl':'Las Noticias de Malleco',
+  'wof-chile.com':'WOF Chile',
 };
 
 export function publicPublisher(value:string):{ name:string; host:string; group:string } | null {
@@ -33,6 +34,8 @@ export function publicPublisher(value:string):{ name:string; host:string; group:
     'indeed.com':['Indeed','indeed'], 'cl.indeed.com':['Indeed','indeed'],
     'cl.computrabajo.com':['Computrabajo','computrabajo'], 'computrabajo.cl':['Computrabajo','computrabajo'],
     'linkedin.com':['LinkedIn','linkedin'], 'cl.linkedin.com':['LinkedIn','linkedin'],
+    'es.linkedin.com':['LinkedIn','linkedin'],
+    'empleospublicos.cl':['Servicio Civil · Empleos Públicos','empleos_publicos'],
     'laborum.cl':['Laborum','laborum'], 'opcionempleo.cl':['Opción Empleo','opcionempleo'],
     'chiletrabajos.cl':['Chiletrabajos','chiletrabajos'],
     'bne.gob.cl':['Bolsa Nacional de Empleo','bne'], 'bne.cl':['Bolsa Nacional de Empleo','bne'],
@@ -70,7 +73,7 @@ export function publicSourceAdapter(value:string):PublicAdapter | null {
     name = 'Indeed'; identityUrl = 'https://cl.indeed.com/viewjob?jk='+url.searchParams.get('jk')!.toLowerCase();
   } else if (['cl.computrabajo.com','computrabajo.cl'].includes(host) && (match = url.pathname.match(/^\/ofertas-de-trabajo\/(oferta-de-trabajo-de-[^/]+)\/?$/))) {
     name = 'Computrabajo'; identityUrl = 'https://cl.computrabajo.com/ofertas-de-trabajo/'+match[1];
-  } else if (['linkedin.com','cl.linkedin.com'].includes(host) && (match = url.pathname.match(/^\/jobs\/view\/(?:[^/]*-)?(\d{6,})\/?$/))) {
+  } else if (['linkedin.com','cl.linkedin.com','es.linkedin.com'].includes(host) && (match = url.pathname.match(/^\/jobs\/view\/(?:[^/]*-)?(\d{6,})\/?$/))) {
     name = 'LinkedIn'; identityUrl = 'https://www.linkedin.com/jobs/view/'+match[1];
   } else if (host === 'laborum.cl' && (match = url.pathname.match(/^\/empleos\/[^/]+-(\d{5,})\.html\/?$/))) {
     name = 'Laborum'; identityUrl = 'https://www.laborum.cl/empleos/oferta-'+match[1]+'.html';
@@ -80,7 +83,7 @@ export function publicSourceAdapter(value:string):PublicAdapter | null {
     name='Arauco · portal de empleo';identityUrl='https://jobs.arauco.com/job/'+match[1];
   } else if (host==='cmpc.csod.com' && (match=url.pathname.match(/^\/ux\/ats\/careersite\/4\/home\/requisition\/(\d{1,9})\/?$/)) && url.searchParams.get('c')==='cmpc' && [...url.searchParams.keys()].every(key=>key==='c')) {
     name='CMPC · portal de empleo';identityUrl='https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/'+match[1]+'?c=cmpc';
-  } else if (LOCAL_PUBLISHERS[host] && url.pathname.split('/').filter(Boolean).length &&
+  } else if (LOCAL_PUBLISHERS[host] && host!=='wof-chile.com' && url.pathname.split('/').filter(Boolean).length &&
       !/^\/(?:noticias?|concursos-publicos|direccion-de-fomento-productivo|category|categoria|tag|page|wp-json|feed)(?:\/\d+)?\/?$/.test(url.pathname) && !url.search) {
     name = LOCAL_PUBLISHERS[host]; family = 'local'; identityUrl = 'https://'+host+url.pathname.replace(/\/$/,'');
   }

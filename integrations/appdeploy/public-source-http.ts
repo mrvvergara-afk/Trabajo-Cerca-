@@ -1,5 +1,6 @@
 import { Buffer } from 'node:buffer';
 import { publicPublisher, safePublicUrl, samePublicJob } from './public-source-adapters';
+import { checkPublicRobots } from './public-robots';
 
 export type PublicPage = { url:string; status:number; raw:string; mime:string; bytes:number; error?:string };
 
@@ -10,6 +11,8 @@ export async function fetchPublicPage(value:string, expectedJob?:string):Promise
   let current = clean;
   try {
     for (let redirect=0;redirect<4;redirect++) {
+      const policy=await checkPublicRobots(current);
+      if (!policy.allowed) return {url:current,status:0,raw:'',mime:'',bytes:0,error:policy.error};
       const response = await fetch(current,{ headers:{ 'user-agent':'TrabajoCercaPublic/1.0','accept':'text/html,application/xhtml+xml,application/rss+xml,application/xml' },redirect:'manual',signal });
       if ([301,302,303,307,308].includes(response.status)) {
         const next = safePublicUrl(response.headers.get('location') || '',current);

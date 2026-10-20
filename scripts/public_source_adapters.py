@@ -47,7 +47,7 @@ def source_adapter(value):
         name, identity = 'Indeed', 'https://cl.indeed.com/viewjob?jk='+query['jk'][0].lower()
     elif host in ('cl.computrabajo.com','computrabajo.cl') and (match := re.fullmatch(r'/ofertas-de-trabajo/(oferta-de-trabajo-de-[^/]+)/?',path)):
         name, identity = 'Computrabajo', 'https://cl.computrabajo.com/ofertas-de-trabajo/'+match[1]
-    elif host in ('linkedin.com','cl.linkedin.com') and (match := re.fullmatch(r'/jobs/view/(?:[^/]*-)?(\d{6,})/?',path)):
+    elif host in ('linkedin.com','cl.linkedin.com','es.linkedin.com') and (match := re.fullmatch(r'/jobs/view/(?:[^/]*-)?(\d{6,})/?',path)):
         name, identity = 'LinkedIn', 'https://www.linkedin.com/jobs/view/'+match[1]
     elif host == 'laborum.cl' and (match := re.fullmatch(r'/empleos/[^/]+-(\d{5,})\.html/?',path)):
         name, identity = 'Laborum', 'https://www.laborum.cl/empleos/oferta-'+match[1]+'.html'

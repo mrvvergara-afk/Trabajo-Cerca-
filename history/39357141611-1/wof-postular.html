@@ -1,0 +1,2845 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+        <!-- http://getbootstrap.com/docs/5.1/ -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+        <!-- https://favicon.io/emoji-favicons/money-bag/ -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://use.fontawesome.com/6e865d9abf.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/brands.min.js" integrity="sha512-KYlRezs7yAa59UnX6zAvY7I96Te02kycQn02Sr6FU/fBpxcXAwumRe5DHVrqVnWTt9HY/PktrAPZzSe9UE1Yxg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="/static/estilos.css" rel="stylesheet">
+        <script type="application/javascript" src="/static/functions.js"></script>
+        <title></title>
+       
+        <script>
+            $(document).ready(function(){
+                
+                
+                $( "#datepicker,.fechas" ).datepicker({
+                  onClose: function(){
+                    $('input[name="no"]').focus()
+                  }
+                });
+                
+                $('.timepicker').timepicker({
+                    timeFormat: 'H:mm',
+                    interval: 15,
+                    dropdown: true,
+                    scrollbar: true
+                });
+
+
+                $.datepicker.regional['es'] = {
+                    closeText: 'Cerrar',
+                    prevText: '< Ant',
+                    nextText: 'Sig >',
+                    currentText: 'Hoy',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                    weekHeader: 'Sm',
+                    dateFormat: 'yy-mm-dd',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: ''
+                    };
+                    $.datepicker.setDefaults($.datepicker.regional['es']);
+                   $(function () {
+                   $("#fecha").datepicker();
+                   });
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                
+              <a class="navbar-brand" href="/">
+                <img width="70" height="30" src="https://static.wixstatic.com/media/9e1268_dc4e439f08184bec9086cddc1f634101~mv2.png/v1/crop/x_0,y_327,w_1080,h_426/fill/w_261,h_103,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/LOGO%20(1).png">
+              </a>
+                           
+              
+            </div>
+          </nav>
+
+    
+
+        <main class="container-fluid">
+            
+<head>
+    <style>
+        :root {
+            --brand-blue: #2f80dc;
+            --brand-green: #49bf88;
+            --brand-teal: #12a98c;
+            --brand-lime: #7bc637;
+            --brand-blue-dark: #1f5fae;
+            --primary-color: var(--brand-blue);
+            --secondary-color: #64748b;
+            --success-color: var(--brand-teal);
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --border-radius: 0.75rem;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-top: 5px solid var(--brand-green);
+        }
+
+        .form-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            background: linear-gradient(120deg, #ffffff 0%, #f7fbff 58%, #eef8f3 100%);
+            color: var(--brand-blue-dark);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #dbeafe;
+        }
+
+        .form-header::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-blue) 0 52%, var(--brand-green) 52% 78%, var(--brand-lime) 78%);
+        }
+
+        .brand-logo {
+            display: block;
+            width: clamp(150px, 20vw, 235px);
+            height: auto;
+            flex: 0 0 auto;
+        }
+
+        .header-copy { text-align: left; }
+
+        .header-eyebrow {
+            margin: 0 0 .3rem;
+            color: var(--brand-green);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .form-header h2 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-blue-dark);
+        }
+
+        .header-copy p:last-child {
+            margin: .35rem 0 0;
+            color: #475569;
+        }
+
+        .form-body {
+            padding: 2rem;
+        }
+
+        .contact-notice {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #b7e4d1;
+            border-left: 5px solid var(--brand-teal);
+            border-radius: var(--border-radius);
+            background: #f0faf6;
+            color: #145c50;
+        }
+
+        .contact-notice i { font-size: 1.4rem; margin-top: .15rem; }
+        .contact-notice p { margin: 0; }
+        .contact-notice strong { display: block; margin-bottom: .25rem; }
+
+        .completion-reminder {
+            margin: 1rem 0;
+            padding: 1rem 1.15rem;
+            border: 1px solid #f59e0b;
+            border-left: 5px solid #d97706;
+            border-radius: var(--border-radius);
+            background: #fffbeb;
+            color: #78350f;
+            text-align: left;
+        }
+        .completion-reminder strong { display: block; margin-bottom: .35rem; }
+        .completion-reminder ol { margin: .45rem 0 0; padding-left: 1.25rem; }
+        .file-reminder {
+            grid-column: 2;
+            color: #9a3412;
+            font-weight: 700;
+        }
+        .file-formats-note {
+            margin: 0 0 1rem;
+            color: #475569;
+            font-size: .85rem;
+        }
+
+        .privacy-notice {
+            margin-top: 1.25rem;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid #bfdbfe;
+            border-left: 5px solid var(--brand-blue);
+            border-radius: var(--border-radius);
+            background: #eff6ff;
+            color: #1e3a5f;
+            text-align: left;
+        }
+        .privacy-notice strong { display: block; margin-bottom: .35rem; }
+        .privacy-notice p { margin: 0 0 .45rem; }
+        .privacy-notice a { color: var(--brand-blue-dark); font-weight: 700; }
+        .privacy-version { color: #64748b; font-size: .78rem; }
+        .privacy-consent {
+            padding: 1rem 1rem 1rem 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: #fff;
+        }
+        .confidentiality-note {
+            margin: 1rem 0 0;
+            color: #475569;
+            font-size: .85rem;
+        }
+
+        .wizard-progress {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: .5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .progress-step {
+            color: #64748b;
+            font-size: .78rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .progress-step::before {
+            content: attr(data-number);
+            display: grid;
+            place-items: center;
+            width: 2rem;
+            height: 2rem;
+            margin: 0 auto .4rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .progress-step.active { color: var(--primary-color); }
+        .progress-step.active::before, .progress-step.complete::before {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-teal));
+            color: white;
+        }
+
+        .wizard-panel { display: none; }
+        .wizard-panel.active { display: block; animation: fadeIn .25s ease; }
+
+        .cargo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .cargo-option { position: relative; }
+        .cargo-option input { position: absolute; opacity: 0; pointer-events: none; }
+        .cargo-card {
+            display: block;
+            height: 100%;
+            padding: 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .cargo-card:hover { border-color: #93c5fd; box-shadow: var(--shadow-sm); }
+        .cargo-option input:checked + .cargo-card {
+            border-color: var(--primary-color);
+            background: linear-gradient(145deg, #f4f9ff, #f0faf6);
+            box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+        }
+        .cargo-card h4 { margin: 0 0 .45rem; color: var(--dark-color); font-size: 1.05rem; }
+        .cargo-card p { color: #475569; font-size: .88rem; }
+        .cargo-card ul { padding-left: 1.1rem; margin: .7rem 0 0; color: #475569; font-size: .82rem; }
+        .required-note { color: var(--danger-color); font-weight: 600; }
+
+        .field-feedback {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            min-height: 1.25rem;
+            margin-top: .4rem;
+            font-size: .8rem;
+            font-weight: 600;
+        }
+        .field-feedback.is-muted { color: #64748b; }
+        .field-feedback.is-checking { color: var(--brand-blue-dark); }
+        .field-feedback.is-valid { color: #087f5b; }
+        .field-feedback.is-invalid { color: var(--danger-color); }
+        #id_rut.rut-valid { border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(73,191,136,.12); }
+        #id_rut.rut-invalid { border-color: var(--danger-color); box-shadow: 0 0 0 3px rgba(220,38,38,.1); }
+
+        .wizard-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn-wizard {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: .8rem 1.4rem;
+            background: white;
+            color: var(--dark-color);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-next { margin-left: auto; border-color: var(--primary-color); background: var(--primary-color); color: white; }
+        .btn-next:hover { background: var(--brand-blue-dark); }
+        .review-box { padding: 1.25rem; border-radius: var(--border-radius); background: #f8fafc; }
+        .review-box dt { color: #64748b; font-size: .78rem; text-transform: uppercase; }
+        .review-box dd { margin: .15rem 0 1rem; font-weight: 600; }
+
+        .section-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .section-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .section-header {
+            background: linear-gradient(110deg, #f6faff, #f1faf6);
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-content {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+            font-size: 0.875rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: calc(var(--border-radius) - 0.25rem);
+            background: white;
+            font-size: 0.875rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+
+        .switch-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .switch-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: calc(var(--border-radius) - 0.25rem);
+            transition: var(--transition);
+            min-width: 200px;
+        }
+
+        .switch-item:hover {
+            background: #f1f5f9;
+            border-color: var(--primary-color);
+        }
+
+        .switch-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-color);
+        }
+
+        .switch-label {
+            margin: 0;
+            font-weight: 500;
+            color: var(--dark-color);
+            font-size: 0.875rem;
+        }
+
+        .file-input-group {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: calc(var(--border-radius) - 0.25rem);
+            margin-bottom: 1rem;
+        }
+
+        .file-label {
+            font-weight: 500;
+            color: var(--dark-color);
+            white-space: nowrap;
+            font-size: 0.875rem;
+        }
+
+        .file-input {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: calc(var(--border-radius) - 0.5rem);
+            background: white;
+            font-size: 0.875rem;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--brand-teal), var(--brand-green));
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #087f6b, #31a873);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-submit:disabled {
+            background: var(--secondary-color);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border: 1px solid transparent;
+        }
+
+        .alert-danger {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border-color: #fecaca;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .contact-fields {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: .25rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-fields .form-group {
+            min-width: 0;
+            margin-bottom: 0;
+        }
+
+        .contact-fields .form-control {
+            min-height: 44px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: auto 1fr auto 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hidden-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .contact-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .contact-fields .form-group:first-child { grid-column: 1 / -1; }
+        }
+
+        @media (max-width: 768px) {
+            .container-fluid{
+                padding:0.2rem !important;
+            }
+
+            .form-container {
+                margin: 0.2rem;
+                border-radius: 0.5rem;
+            }
+            
+            .form-header {
+                flex-direction: column;
+                gap: .75rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .brand-logo { width: min(210px, 70vw); }
+            .header-copy { text-align: center; }
+            .form-header h2 { font-size: 1.5rem; }
+            
+            .form-body {
+                padding: 1rem;
+            }
+            
+            .section-content {
+                padding: 1rem;
+            }
+            
+            .grid-2, .grid-3, .grid-4, .contact-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-fields .form-group:first-child { grid-column: auto; }
+
+            .cargo-grid { grid-template-columns: 1fr; }
+            .progress-step span { display: none; }
+            
+            .form-row, .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .switch-group {
+                flex-direction: column;
+            }
+            
+            .switch-item {
+                min-width: auto;
+            }
+                        .file-input-group {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .file-label {
+                text-align: left;
+                white-space: normal;
+                font-weight: 600;
+                color: var(--primary-color);
+            }
+
+            .file-input {
+                width: 100%;
+            }
+
+            .file-reminder { grid-column: 1; }
+        }
+    </style>
+</head>
+
+<div class="container-fluid py-4">
+    <div class="form-container">
+        <div class="form-header">
+            <img class="brand-logo" src="/static/logo_recortado.png" alt="WOF Chile">
+            <div class="header-copy">
+                <p class="header-eyebrow">Trabaja con nosotros</p>
+                <h2>Ficha de Postulación</h2>
+                <p>Temporada 2026-2027 · El primer paso para integrarte a una brigada forestal</p>
+            </div>
+        </div>
+        
+        <div class="form-body">
+            <div class="contact-notice" role="note">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                <div>
+                    <strong>Mantén tus datos de contacto personales y vigentes</strong>
+                    <p>El correo electrónico y el número telefónico deben ser personales y mantenerse vigentes durante todo el proceso. <strong>Después de enviar la ficha deberás confirmar ambos datos en la pantalla siguiente; no cierres esa página hasta que correo y teléfono aparezcan como verificados.</strong></p>
+                </div>
+            </div>
+
+            <div class="wizard-progress" aria-label="Progreso de la postulación">
+                <div class="progress-step active" data-step="1" data-number="1"><span>Cargo</span></div>
+                <div class="progress-step" data-step="2" data-number="2"><span>Datos personales</span></div>
+                <div class="progress-step" data-step="3" data-number="3"><span>Antecedentes</span></div>
+                <div class="progress-step" data-step="4" data-number="4"><span>Documentos</span></div>
+                <div class="progress-step" data-step="5" data-number="5"><span>Revisar</span></div>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" id="postulacion-form" novalidate>
+                <input type="hidden" name="csrfmiddlewaretoken" value="bZE08fF1sBsBdL7rl4VgJjuz9GWG3Jy9U4kCSx1nU7o22dnWYs0g02Tb6moWg6oQ">
+                
+                
+
+                <!-- Cargo al que postula -->
+                <div class="section-card wizard-panel active" data-wizard-step="1">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-briefcase text-primary"></i>
+                            Cargo al que postula
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <p>Selecciona sólo un cargo. Revisa sus requisitos antes de continuar.</p>
+                        
+                        <div class="cargo-grid">
+                            
+                            <div class="cargo-option">
+                                <input type="radio" name="cargo_postulado" value="1" data-codigo="brigadista" id="cargo_1"  required>
+                                <label class="cargo-card" for="cargo_1">
+                                    <h4><i class="fas fa-briefcase me-2"></i>BRIGADISTA</h4>
+                                    <p>Participar directamente en prevención y combate de incendios forestales.</p>
+                                    <strong>Requisitos básicos</strong>
+                                    <ul><li>Condición física compatible con labores de alta exigencia.</li><li>Disponibilidad para capacitación, trabajo en terreno y sistema de turnos.</li><li>Capacidad para trabajar en equipo y seguir protocolos de seguridad.</li></ul>
+                                    
+                                    <strong>Documentos obligatorios</strong><ul><li>Cédula de identidad (anverso)</li><li>Cédula de identidad (reverso)</li><li>Certificado de antecedentes</li></ul>
+                                </label>
+                            </div>
+                            
+                            <div class="cargo-option">
+                                <input type="radio" name="cargo_postulado" value="2" data-codigo="motosierrista" id="cargo_2"  required>
+                                <label class="cargo-card" for="cargo_2">
+                                    <h4><i class="fas fa-briefcase me-2"></i>MOTOSIERRISTA</h4>
+                                    <p>Apoyar el control de incendios mediante trabajo especializado con motosierra.</p>
+                                    <strong>Requisitos básicos</strong>
+                                    <ul><li>Experiencia en operación segura de motosierra.</li><li>Condición física compatible con trabajo forestal.</li><li>Disponibilidad para trabajo en terreno y sistema de turnos.</li></ul>
+                                    
+                                    <strong>Documentos obligatorios</strong><ul><li>Cédula de identidad (anverso)</li><li>Cédula de identidad (reverso)</li><li>Certificado de antecedentes</li></ul>
+                                </label>
+                            </div>
+                            
+                            <div class="cargo-option">
+                                <input type="radio" name="cargo_postulado" value="3" data-codigo="jefe_brigada" id="cargo_3"  required>
+                                <label class="cargo-card" for="cargo_3">
+                                    <h4><i class="fas fa-briefcase me-2"></i>JEFE BRIGADA</h4>
+                                    <p>Liderar y coordinar al equipo durante las operaciones forestales.</p>
+                                    <strong>Requisitos básicos</strong>
+                                    <ul><li>Experiencia en combate de incendios forestales.</li><li>Capacidad de liderazgo y coordinación.</li><li>Disponibilidad para trabajo en terreno y sistema de turnos.</li></ul>
+                                    
+                                    <strong>Documentos obligatorios</strong><ul><li>Cédula de identidad (anverso)</li><li>Cédula de identidad (reverso)</li><li>Certificado de antecedentes</li></ul>
+                                </label>
+                            </div>
+                            
+                            <div class="cargo-option">
+                                <input type="radio" name="cargo_postulado" value="10" data-codigo="conductor" id="cargo_10"  required>
+                                <label class="cargo-card" for="cargo_10">
+                                    <h4><i class="fas fa-briefcase me-2"></i>CONDUCTOR</h4>
+                                    <p>Trasladar personal y recursos de forma segura durante la operación.</p>
+                                    <strong>Requisitos básicos</strong>
+                                    <ul><li>Licencia de conducir vigente y adecuada al vehículo.</li><li>Experiencia comprobable en conducción.</li><li>Hoja de vida del conductor obligatoria.</li><li>Disponibilidad para trabajo en terreno y sistema de turnos.</li></ul>
+                                    <strong>Licencia habilitante (debe cumplir una de estas combinaciones)</strong><ul><li>A2 + A4</li><li>A3 + A5</li></ul>
+                                    <strong>Documentos obligatorios</strong><ul><li>Cédula de identidad (anverso)</li><li>Cédula de identidad (reverso)</li><li>Certificado de antecedentes</li><li>Hoja de vida del conductor</li><li>Licencia de conducir (anverso)</li><li>Licencia de conducir (reverso)</li></ul>
+                                </label>
+                            </div>
+                            
+                            <div class="cargo-option">
+                                <input type="radio" name="cargo_postulado" value="8" data-codigo="op_skidder" id="cargo_8"  required>
+                                <label class="cargo-card" for="cargo_8">
+                                    <h4><i class="fas fa-briefcase me-2"></i>OPERADOR DE SKIDDER</h4>
+                                    <p>Operar maquinaria Skidder de forma segura durante las labores forestales.</p>
+                                    <strong>Requisitos básicos</strong>
+                                    <ul><li>Licencia clase D vigente.</li><li>Experiencia comprobable en operación segura de maquinaria Skidder.</li><li>Hoja de vida del conductor obligatoria.</li><li>Disponibilidad para trabajo en terreno y sistema de turnos.</li></ul>
+                                    <strong>Licencia habilitante (debe cumplir una de estas combinaciones)</strong><ul><li>D</li></ul>
+                                    <strong>Documentos obligatorios</strong><ul><li>Cédula de identidad (anverso)</li><li>Cédula de identidad (reverso)</li><li>Certificado de antecedentes</li><li>Hoja de vida del conductor</li><li>Licencia de conducir (anverso)</li><li>Licencia de conducir (reverso)</li></ul>
+                                </label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manejo del Idioma Español -->
+                <div class="section-card wizard-panel" data-wizard-step="2">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-language text-primary"></i>
+                            Manejo del Idioma Español
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="switch-group">
+                            <div class="switch-item">
+                                <input type="checkbox" name="español_hablado" class="form-check-input" role="switch" id="id_español_hablado">
+                                <label class="switch-label" for="id_español_hablado">Español Hablado</label>
+                            </div>
+                            <div class="switch-item">
+                                <input type="checkbox" name="español_escrito" class="form-check-input" role="switch" id="id_español_escrito">
+                                <label class="switch-label" for="id_español_escrito">Español Escrito</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Antecedentes Personales -->
+                <div class="section-card wizard-panel" data-wizard-step="2">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-user text-primary"></i>
+                            Antecedentes Personales
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Apellido Paterno</label>
+                                <input type="text" name="apellido_paterno" class="form-control form-control-sm" required autocomplete="family-name" data-lpignore="true" data-form-type="name" maxlength="100" id="id_apellido_paterno">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Apellido Materno</label>
+                                <input type="text" name="apellido_materno" class="form-control form-control-sm" required autocomplete="family-name" data-lpignore="true" data-form-type="name" maxlength="100" id="id_apellido_materno">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Nombres</label>
+                            <input type="text" name="nombres" class="form-control form-control-sm" required autocomplete="given-name" data-lpignore="true" data-form-type="name" maxlength="100" id="id_nombres">
+                        </div>
+
+                        <div class="grid-3">
+                            <div class="form-group">
+                                <label class="form-label">RUT</label>
+                                <input type="text" name="rut" class="form-control form-control-sm" required maxlength="100" id="id_rut">
+                                <div id="rut-feedback" class="field-feedback is-muted" aria-live="polite">
+                                    <i class="fas fa-keyboard" aria-hidden="true"></i>
+                                    <span>Escribe sólo números y K; aplicaremos el formato automáticamente.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nacionalidad</label>
+                                <select name="nacionalidad" class="form-control form-control-sm" required id="id_nacionalidad">
+  <option value="" selected>---------</option>
+
+  <option value="1">CHILENA</option>
+
+  <option value="2">VENEZOLANA</option>
+
+  <option value="5">COLOMBIANA</option>
+
+  <option value="4">HAITIANA</option>
+
+  <option value="3">ARGENTINA</option>
+
+  <option value="6">BRASILEÑA</option>
+
+  <option value="7">PARAGUAYA</option>
+
+  <option value="8">ECUATORIANA</option>
+
+  <option value="9">PERUANA</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Género</label>
+                                <select name="genero" class="form-control form-control-sm" required id="id_genero">
+  <option value="" selected>---------</option>
+
+  <option value="1">MASCULINO</option>
+
+  <option value="2">FEMENINO</option>
+
+</select>
+                            </div>
+                        </div>
+
+                        <div class="grid-3">
+                            <div class="form-group">
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" name="fecha_nacimiento" class="form-control form-control-sm" required id="id_fecha_nacimiento">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Edad</label>
+                                <input type="number" name="edad" class="form-control form-control-sm" required id="id_edad">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Estado Civil</label>
+                                <select name="estado_civil" class="form-control form-control-sm" required id="id_estado_civil">
+  <option value="" selected>---------</option>
+
+  <option value="1">SOLTERO/A</option>
+
+  <option value="2">CASADO/A</option>
+
+  <option value="3">CONVIVIENTE/CONCUBINATO</option>
+
+  <option value="4">DIVORCIADO/A</option>
+
+  <option value="5">NO IFORMA</option>
+
+  <option value="6">SEPARADO/A</option>
+
+  <option value="7">UNIÓN CIVIL</option>
+
+  <option value="8">VIUDO/A</option>
+
+</select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Domicilio</label>
+                            <input type="text" name="domicilio" class="form-control form-control-sm" required autocomplete="street-address" data-lpignore="true" data-form-type="address" maxlength="100" id="id_domicilio">
+                        </div>
+
+                        <div class="grid-4">
+                            <div class="form-group">
+                                <label class="form-label">Región de residencia</label>
+                                <select name="region" class="form-control form-control-sm" id="idregion" required>
+  <option value="" selected>---------</option>
+
+  <option value="1">ÑUBLE</option>
+
+  <option value="2">BIOBIO</option>
+
+  <option value="3">MAULE</option>
+
+  <option value="4">ARAUCANÍA</option>
+
+  <option value="5">ARICA Y PARINACOTA</option>
+
+  <option value="6">TARAPACÁ</option>
+
+  <option value="7">ANTOFAGASTA</option>
+
+  <option value="8">ATACAMA</option>
+
+  <option value="9">COQUIMBO</option>
+
+  <option value="10">VALPARAÍSO</option>
+
+  <option value="11">LIBERTADOR GRAL. BERNARDO O&#x27;HIGGINS</option>
+
+  <option value="13">LOS RÍOS</option>
+
+  <option value="14">LOS LAGOS</option>
+
+  <option value="15">AISÉN DEL GRAL. CARLOS IBÁÑEZ DEL CAMPO</option>
+
+  <option value="16">MAGALLANES Y DE LA ANTÁRTICA CHILENA</option>
+
+  <option value="17">METROPOLITANA DE SANTIAGO</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Provincia de residencia</label>
+                                <select name="provincia" class="form-control form-control-sm" id="idprovincia" required>
+  <option value="" selected>---------</option>
+
+  <option value="1">PUNILLA</option>
+
+  <option value="2">DIGUILLIN</option>
+
+  <option value="3">ITATA</option>
+
+  <option value="4">CONCEPCIÓN</option>
+
+  <option value="5">TALCA</option>
+
+  <option value="6">CURICÓ</option>
+
+  <option value="7">LINARES</option>
+
+  <option value="8">CAUQUENES</option>
+
+  <option value="9">ARICA</option>
+
+  <option value="11">PARINACOTA</option>
+
+  <option value="20">IQUIQUE</option>
+
+  <option value="21">TAMARUGAL</option>
+
+  <option value="22">ANTOFAGASTA</option>
+
+  <option value="23">EL LOA</option>
+
+  <option value="24">TOCOPILLA</option>
+
+  <option value="25">COPIAPÓ</option>
+
+  <option value="26">CHAÑARAL</option>
+
+  <option value="27">HUASCO</option>
+
+  <option value="28">ELQUI</option>
+
+  <option value="29">CHOAPA</option>
+
+  <option value="30">LIMARÍ</option>
+
+  <option value="31">VALPARAÍSO</option>
+
+  <option value="32">ISLA DE PASCUA</option>
+
+  <option value="33">LOS ANDES</option>
+
+  <option value="34">PETORCA</option>
+
+  <option value="35">QUILLOTA</option>
+
+  <option value="36">SAN ANTONIO</option>
+
+  <option value="37">SAN FELIPE DE ACONCAGUA</option>
+
+  <option value="38">MARGA MARGA</option>
+
+  <option value="39">CACHAPOAL</option>
+
+  <option value="40">CARDENAL CARO</option>
+
+  <option value="41">COLCHAGUA</option>
+
+  <option value="42">ARAUCO</option>
+
+  <option value="43">BIOBÍO</option>
+
+  <option value="44">CAUTÍN</option>
+
+  <option value="45">MALLECO</option>
+
+  <option value="46">VALDIVIA</option>
+
+  <option value="47">RANCO</option>
+
+  <option value="48">LLANQUIHUE</option>
+
+  <option value="49">CHILOÉ</option>
+
+  <option value="50">OSORNO</option>
+
+  <option value="51">PALENA</option>
+
+  <option value="52">COIHAIQUE</option>
+
+  <option value="53">AISÉN</option>
+
+  <option value="54">CAPITÁN PRAT</option>
+
+  <option value="55">GENERAL CARRERA</option>
+
+  <option value="56">MAGALLANES</option>
+
+  <option value="57">ANTÁRTICA CHILENA</option>
+
+  <option value="58">TIERRA DEL FUEGO</option>
+
+  <option value="59">ULTIMA ESPERANZA</option>
+
+  <option value="60">SANTIAGO</option>
+
+  <option value="61">CORDILLERA</option>
+
+  <option value="62">CHACABUCO</option>
+
+  <option value="63">MAIPO</option>
+
+  <option value="64">MELIPILLA</option>
+
+  <option value="65">TALAGANTE</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Comuna de residencia</label>
+                                <select name="comuna" class="form-control form-control-sm" id="idcomuna" required>
+  <option value="" selected>---------</option>
+
+  <option value="1">SAN FABIAN</option>
+
+  <option value="2">CHILLAN</option>
+
+  <option value="3">COIHUECO</option>
+
+  <option value="4">YUNGAY</option>
+
+  <option value="5">QUIRIHUE</option>
+
+  <option value="6">QUILLON</option>
+
+  <option value="7">COELEMU</option>
+
+  <option value="8">TOMÉ</option>
+
+  <option value="9">PENCO</option>
+
+  <option value="10">CUREPTO</option>
+
+  <option value="11">MOLINA</option>
+
+  <option value="12">PELARCO</option>
+
+  <option value="14">EMPEDRADO</option>
+
+  <option value="15">CONSTITUCIÓN</option>
+
+  <option value="16">CHANCO</option>
+
+  <option value="17">FLORIDA</option>
+
+  <option value="18">HUALQUI</option>
+
+  <option value="19">COBQUECURA</option>
+
+  <option value="20">NINHUE</option>
+
+  <option value="21">PORTEZUELO</option>
+
+  <option value="22">RÁNQUIL</option>
+
+  <option value="23">TREHUACO</option>
+
+  <option value="24">BULNES</option>
+
+  <option value="25">CHILLÁN VIEJO</option>
+
+  <option value="26">EL CARMEN</option>
+
+  <option value="27">PEMUCO</option>
+
+  <option value="28">PINTO</option>
+
+  <option value="29">SAN IGNACIO</option>
+
+  <option value="30">ÑIQUÉN</option>
+
+  <option value="31">SAN CARLOS</option>
+
+  <option value="32">SAN NICOLÁS</option>
+
+  <option value="40">IQUIQUE</option>
+
+  <option value="41">ALTO HOSPICIO</option>
+
+  <option value="42">POZO ALMONTE</option>
+
+  <option value="43">CAMIÑA</option>
+
+  <option value="44">COLCHANE</option>
+
+  <option value="45">HUARA</option>
+
+  <option value="46">PICA</option>
+
+  <option value="47">ANTOFAGASTA</option>
+
+  <option value="48">MEJILLONES</option>
+
+  <option value="49">SIERRA GORDA</option>
+
+  <option value="50">TALTAL</option>
+
+  <option value="51">CALAMA</option>
+
+  <option value="52">OLLAGÜE</option>
+
+  <option value="53">SAN PEDRO DE ATACAMA</option>
+
+  <option value="54">TOCOPILLA</option>
+
+  <option value="55">MARÍA ELENA</option>
+
+  <option value="56">COPIAPÓ</option>
+
+  <option value="57">CALDERA</option>
+
+  <option value="58">TIERRA AMARILLA</option>
+
+  <option value="59">CHAÑARAL</option>
+
+  <option value="60">DIEGO DE ALMAGRO</option>
+
+  <option value="61">VALLENAR</option>
+
+  <option value="62">ALTO DEL CARMEN</option>
+
+  <option value="63">FREIRINA</option>
+
+  <option value="64">HUASCO</option>
+
+  <option value="65">LA SERENA</option>
+
+  <option value="66">COQUIMBO</option>
+
+  <option value="67">ANDACOLLO</option>
+
+  <option value="68">LA HIGUERA</option>
+
+  <option value="69">PAIHUANO</option>
+
+  <option value="70">VICUÑA</option>
+
+  <option value="71">ILLAPEL</option>
+
+  <option value="72">CANELA</option>
+
+  <option value="73">LOS VILOS</option>
+
+  <option value="74">SALAMANCA</option>
+
+  <option value="75">OVALLE</option>
+
+  <option value="76">COMBARBALÁ</option>
+
+  <option value="77">MONTE PATRIA</option>
+
+  <option value="78">PUNITAQUI</option>
+
+  <option value="79">RÍO HURTADO</option>
+
+  <option value="80">VALPARAÍSO</option>
+
+  <option value="81">CASABLANCA</option>
+
+  <option value="82">CONCÓN</option>
+
+  <option value="83">JUAN FERNÁNDEZ</option>
+
+  <option value="84">PUCHUNCAVÍ</option>
+
+  <option value="85">QUINTERO</option>
+
+  <option value="86">VIÑA DEL MAR</option>
+
+  <option value="87">ISLA DE PASCUA</option>
+
+  <option value="88">LOS ANDES</option>
+
+  <option value="89">CALLE LARGA</option>
+
+  <option value="90">RINCONADA</option>
+
+  <option value="91">SAN ESTEBAN</option>
+
+  <option value="92">LA LIGUA</option>
+
+  <option value="93">CABILDO</option>
+
+  <option value="94">PAPUDO</option>
+
+  <option value="95">PETORCA</option>
+
+  <option value="96">ZAPALLAR</option>
+
+  <option value="97">QUILLOTA</option>
+
+  <option value="98">CALERA</option>
+
+  <option value="99">HIJUELAS</option>
+
+  <option value="100">LA CRUZ</option>
+
+  <option value="101">NOGALES</option>
+
+  <option value="102">SAN ANTONIO</option>
+
+  <option value="103">ALGARROBO</option>
+
+  <option value="104">CARTAGENA</option>
+
+  <option value="105">EL QUISCO</option>
+
+  <option value="106">EL TABO</option>
+
+  <option value="107">SANTO DOMINGO</option>
+
+  <option value="108">SAN FELIPE</option>
+
+  <option value="109">CATEMU</option>
+
+  <option value="110">LLAILLAY</option>
+
+  <option value="111">PANQUEHUE</option>
+
+  <option value="112">PUTAENDO</option>
+
+  <option value="113">SANTA MARÍA</option>
+
+  <option value="114">LIMACHE</option>
+
+  <option value="115">QUILPUÉ</option>
+
+  <option value="116">VILLA ALEMANA</option>
+
+  <option value="117">OLMUÉ</option>
+
+  <option value="118">RANCAGUA</option>
+
+  <option value="119">CODEGUA</option>
+
+  <option value="120">COINCO</option>
+
+  <option value="121">COLTAUCO</option>
+
+  <option value="122">DOÑIHUE</option>
+
+  <option value="123">GRANEROS</option>
+
+  <option value="124">LAS CABRAS</option>
+
+  <option value="125">MACHALÍ</option>
+
+  <option value="126">MALLOA</option>
+
+  <option value="127">MOSTAZAL</option>
+
+  <option value="128">OLIVAR</option>
+
+  <option value="129">PEUMO</option>
+
+  <option value="130">PICHIDEGUA</option>
+
+  <option value="131">QUINTA DE TILCOCO</option>
+
+  <option value="132">RENGO</option>
+
+  <option value="133">REQUÍNOA</option>
+
+  <option value="134">SAN VICENTE</option>
+
+  <option value="135">PICHILEMU</option>
+
+  <option value="136">LA ESTRELLA</option>
+
+  <option value="137">LITUECHE</option>
+
+  <option value="138">MARCHIHUE</option>
+
+  <option value="139">NAVIDAD</option>
+
+  <option value="140">PAREDONES</option>
+
+  <option value="141">SAN FERNANDO</option>
+
+  <option value="142">CHÉPICA</option>
+
+  <option value="143">CHIMBARONGO</option>
+
+  <option value="144">LOLOL</option>
+
+  <option value="145">NANCAGUA</option>
+
+  <option value="146">PALMILLA</option>
+
+  <option value="147">PERALILLO</option>
+
+  <option value="148">PLACILLA</option>
+
+  <option value="149">PUMANQUE</option>
+
+  <option value="150">SANTA CRUZ</option>
+
+  <option value="151">TALCA</option>
+
+  <option value="152">MAULE</option>
+
+  <option value="153">PENCAHUE</option>
+
+  <option value="154">RÍO CLARO</option>
+
+  <option value="155">SAN CLEMENTE</option>
+
+  <option value="156">SAN RAFAEL</option>
+
+  <option value="157">CAUQUENES</option>
+
+  <option value="158">PELLUHUE</option>
+
+  <option value="159">CURICÓ</option>
+
+  <option value="160">HUALAÑÉ</option>
+
+  <option value="161">LICANTÉN</option>
+
+  <option value="162">RAUCO</option>
+
+  <option value="163">ROMERAL</option>
+
+  <option value="164">SAGRADA FAMILIA</option>
+
+  <option value="165">TENO</option>
+
+  <option value="166">VICHUQUÉN</option>
+
+  <option value="167">LINARES</option>
+
+  <option value="168">COLBÚN</option>
+
+  <option value="169">LONGAVÍ</option>
+
+  <option value="170">PARRAL</option>
+
+  <option value="171">RETIRO</option>
+
+  <option value="172">SAN JAVIER</option>
+
+  <option value="173">VILLA ALEGRE</option>
+
+  <option value="174">YERBAS BUENAS</option>
+
+  <option value="175">CONCEPCIÓN</option>
+
+  <option value="176">CORONEL</option>
+
+  <option value="177">CHIGUAYANTE</option>
+
+  <option value="178">LOTA</option>
+
+  <option value="179">SAN PEDRO DE LA PAZ</option>
+
+  <option value="180">SANTA JUANA</option>
+
+  <option value="181">TALCAHUANO</option>
+
+  <option value="182">HUALPÉN</option>
+
+  <option value="183">LEBU</option>
+
+  <option value="184">ARAUCO</option>
+
+  <option value="185">CAÑETE</option>
+
+  <option value="186">CONTULMO</option>
+
+  <option value="187">CURANILAHUE</option>
+
+  <option value="188">LOS ALAMOS</option>
+
+  <option value="189">TIRÚA</option>
+
+  <option value="190">LOS ANGELES</option>
+
+  <option value="191">ANTUCO</option>
+
+  <option value="192">CABRERO</option>
+
+  <option value="193">LAJA</option>
+
+  <option value="194">MULCHÉN</option>
+
+  <option value="195">NACIMIENTO</option>
+
+  <option value="196">NEGRETE</option>
+
+  <option value="197">QUILACO</option>
+
+  <option value="198">QUILLECO</option>
+
+  <option value="199">SAN ROSENDO</option>
+
+  <option value="200">SANTA BÁRBARA</option>
+
+  <option value="201">TUCAPEL</option>
+
+  <option value="202">YUMBEL</option>
+
+  <option value="203">ALTO BIOBÍO</option>
+
+  <option value="204">TEMUCO</option>
+
+  <option value="205">CARAHUE</option>
+
+  <option value="206">CUNCO</option>
+
+  <option value="207">CURARREHUE</option>
+
+  <option value="208">FREIRE</option>
+
+  <option value="209">GALVARINO</option>
+
+  <option value="210">GORBEA</option>
+
+  <option value="211">LAUTARO</option>
+
+  <option value="212">LONCOCHE</option>
+
+  <option value="213">MELIPEUCO</option>
+
+  <option value="214">NUEVA IMPERIAL</option>
+
+  <option value="215">PADRE LAS CASAS</option>
+
+  <option value="216">PERQUENCO</option>
+
+  <option value="217">PITRUFQUÉN</option>
+
+  <option value="218">PUCÓN</option>
+
+  <option value="219">SAAVEDRA</option>
+
+  <option value="220">TEODORO SCHMIDT</option>
+
+  <option value="221">TOLTÉN</option>
+
+  <option value="222">VILCÚN</option>
+
+  <option value="223">VILLARRICA</option>
+
+  <option value="224">CHOLCHOL</option>
+
+  <option value="226">COLLIPULLI</option>
+
+  <option value="227">CURACAUTÍN</option>
+
+  <option value="228">ERCILLA</option>
+
+  <option value="229">LONQUIMAY</option>
+
+  <option value="230">LOS SAUCES</option>
+
+  <option value="231">LUMACO</option>
+
+  <option value="232">PURÉN</option>
+
+  <option value="233">RENAICO</option>
+
+  <option value="234">TRAIGUÉN</option>
+
+  <option value="235">VICTORIA</option>
+
+  <option value="236">VALDIVIA</option>
+
+  <option value="237">CORRAL</option>
+
+  <option value="238">LANCO</option>
+
+  <option value="239">LOS LAGOS</option>
+
+  <option value="240">MÁFIL</option>
+
+  <option value="241">MARIQUINA</option>
+
+  <option value="242">PAILLACO</option>
+
+  <option value="243">PANGUIPULLI</option>
+
+  <option value="244">LA UNIÓN</option>
+
+  <option value="245">FUTRONO</option>
+
+  <option value="246">LAGO RANCO</option>
+
+  <option value="247">RÍO BUENO</option>
+
+  <option value="248">PUERTO MONTT</option>
+
+  <option value="249">CALBUCO</option>
+
+  <option value="250">COCHAMÓ</option>
+
+  <option value="251">FRESIA</option>
+
+  <option value="252">FRUTILLAR</option>
+
+  <option value="253">LOS MUERMOS</option>
+
+  <option value="254">LLANQUIHUE</option>
+
+  <option value="255">MAULLÍN</option>
+
+  <option value="256">PUERTO VARAS</option>
+
+  <option value="257">CASTRO</option>
+
+  <option value="258">ANCUD</option>
+
+  <option value="259">CHONCHI</option>
+
+  <option value="260">CURACO DE VÉLEZ</option>
+
+  <option value="261">DALCAHUE</option>
+
+  <option value="262">PUQUELDÓN</option>
+
+  <option value="263">QUEILÉN</option>
+
+  <option value="264">QUELLÓN</option>
+
+  <option value="265">QUEMCHI</option>
+
+  <option value="266">QUINCHAO</option>
+
+  <option value="267">OSORNO</option>
+
+  <option value="268">PUERTO OCTAY</option>
+
+  <option value="269">PURRANQUE</option>
+
+  <option value="270">PUYEHUE</option>
+
+  <option value="271">RÍO NEGRO</option>
+
+  <option value="272">SAN JUAN DE LA COSTA</option>
+
+  <option value="273">SAN PABLO</option>
+
+  <option value="274">CHAITÉN</option>
+
+  <option value="275">FUTALEUFÚ</option>
+
+  <option value="276">HUALAIHUÉ</option>
+
+  <option value="277">PALENA</option>
+
+  <option value="278">COIHAIQUE</option>
+
+  <option value="279">LAGO VERDE</option>
+
+  <option value="280">AISÉN</option>
+
+  <option value="281">CISNES</option>
+
+  <option value="282">GUAITECAS</option>
+
+  <option value="283">COCHRANE</option>
+
+  <option value="284">O&#x27;HIGGINS</option>
+
+  <option value="285">TORTEL</option>
+
+  <option value="286">CHILE CHICO</option>
+
+  <option value="287">RÍO IBÁÑEZ</option>
+
+  <option value="288">PUNTA ARENAS</option>
+
+  <option value="289">LAGUNA BLANCA</option>
+
+  <option value="290">RÍO VERDE</option>
+
+  <option value="291">SAN GREGORIO</option>
+
+  <option value="292">CABO DE HORNOS (EX-NAVARINO)</option>
+
+  <option value="293">ANTÁRTICA</option>
+
+  <option value="294">PORVENIR</option>
+
+  <option value="295">PRIMAVERA</option>
+
+  <option value="296">TIMAUKEL</option>
+
+  <option value="297">NATALES</option>
+
+  <option value="298">TORRES DEL PAINE</option>
+
+  <option value="299">SANTIAGO</option>
+
+  <option value="300">CERRILLOS</option>
+
+  <option value="301">CERRO NAVIA</option>
+
+  <option value="302">CONCHALÍ</option>
+
+  <option value="303">EL BOSQUE</option>
+
+  <option value="304">ESTACIÓN CENTRAL</option>
+
+  <option value="305">HUECHURABA</option>
+
+  <option value="306">INDEPENDENCIA</option>
+
+  <option value="307">LA CISTERNA</option>
+
+  <option value="308">LA FLORIDA</option>
+
+  <option value="309">LA GRANJA</option>
+
+  <option value="310">LA PINTANA</option>
+
+  <option value="311">LA REINA</option>
+
+  <option value="312">LAS CONDES</option>
+
+  <option value="313">LO BARNECHEA</option>
+
+  <option value="314">LO ESPEJO</option>
+
+  <option value="315">LO PRADO</option>
+
+  <option value="316">MACUL</option>
+
+  <option value="317">MAIPÚ</option>
+
+  <option value="318">ÑUÑOA</option>
+
+  <option value="319">PEDRO AGUIRRE CERDA</option>
+
+  <option value="320">PEÑALOLÉN</option>
+
+  <option value="321">PROVIDENCIA</option>
+
+  <option value="322">PUDAHUEL</option>
+
+  <option value="323">QUILICURA</option>
+
+  <option value="324">QUINTA NORMAL</option>
+
+  <option value="325">RECOLETA</option>
+
+  <option value="326">RENCA</option>
+
+  <option value="327">SAN JOAQUÍN</option>
+
+  <option value="328">SAN MIGUEL</option>
+
+  <option value="329">SAN RAMÓN</option>
+
+  <option value="330">VITACURA</option>
+
+  <option value="331">PUENTE ALTO</option>
+
+  <option value="332">PIRQUE</option>
+
+  <option value="333">SAN JOSÉ DE MAIPO</option>
+
+  <option value="334">COLINA</option>
+
+  <option value="335">LAMPA</option>
+
+  <option value="336">TILTIL</option>
+
+  <option value="337">SAN BERNARDO</option>
+
+  <option value="338">BUIN</option>
+
+  <option value="339">CALERA DE TANGO</option>
+
+  <option value="340">PAINE</option>
+
+  <option value="341">MELIPILLA</option>
+
+  <option value="342">ALHUÉ</option>
+
+  <option value="343">CURACAVÍ</option>
+
+  <option value="344">MARÍA PINTO</option>
+
+  <option value="345">SAN PEDRO</option>
+
+  <option value="346">TALAGANTE</option>
+
+  <option value="347">EL MONTE</option>
+
+  <option value="348">ISLA DE MAIPO</option>
+
+  <option value="349">PADRE HURTADO</option>
+
+  <option value="350">PEÑAFLOR</option>
+
+  <option value="351">ARICA</option>
+
+  <option value="352">CAMARONES</option>
+
+  <option value="353">PUTRE</option>
+
+  <option value="354">GENERAL LAGOS</option>
+
+  <option value="225">ANGOL</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Región de preferencia para trabajar</label>
+                                <select name="region_preferencia" class="form-control form-control-sm" id="idregionpreferencia" required>
+  <option value="" selected>---------</option>
+
+  <option value="1">ÑUBLE</option>
+
+  <option value="2">BIOBIO</option>
+
+  <option value="3">MAULE</option>
+
+  <option value="4">ARAUCANÍA</option>
+
+  <option value="11">LIBERTADOR GRAL. BERNARDO O&#x27;HIGGINS</option>
+
+</select>
+                            </div>
+                        </div>
+                        <div class="contact-fields">
+                            <div class="form-group">
+                                <label class="form-label">Teléfono</label>
+                                <input type="tel" name="telefono" class="form-control form-control-sm" required placeholder="912345678" pattern="[0-9]{9}" maxlength="100" id="id_telefono">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control form-control-sm" required autocomplete="email" data-lpignore="true" maxlength="100" id="id_email">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Confirmar email</label>
+                                <input type="email" name="confirmar_email" class="form-control form-control-sm" autocomplete="email" placeholder="Repita su correo electrónico" maxlength="320" required id="id_confirmar_email">
+                                
+                            </div>
+                            <div class="form-group d-none">
+                                <div class="switch-item">
+                                    <input type="checkbox" name="instruccion_militar" class="form-check-input" role="switch" id="id_instruccion_militar">
+                                    <label class="switch-label" for="id_instruccion_militar">Instrucción Militar</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentos -->
+                <div class="section-card wizard-panel" data-wizard-step="4">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-file-image text-primary"></i>
+                            Documentos y Fotografías
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <p class="file-formats-note">
+                            <i class="fas fa-circle-info me-1" aria-hidden="true"></i>
+                            Imágenes permitidas: JPG, JPEG y PNG. También se admite PDF y, para el CV y certificado de estudios, DOC o DOCX. No se admite HEIC.
+                        </p>
+                        <div class="grid-2">
+                            <div class="file-input-group" data-document-field="foto_ci">
+                                <span class="file-label">Foto Carnet Frontal <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                                <input type="file" name="foto_ci" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_foto_ci">
+                            </div>
+                            <div class="file-input-group" data-document-field="foto_ci_reverso">
+                                <span class="file-label">Foto Carnet Reverso <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                                <input type="file" name="foto_ci_reverso" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_foto_ci_reverso">
+                            </div>
+                        </div>
+
+                        <div class="file-input-group" data-document-field="foto_pasaporte_pdi">
+                            <span class="file-label">Si es extranjero, foto pasaporte <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                            <input type="file" name="foto_pasaporte_pdi" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_foto_pasaporte_pdi">
+                        </div>
+
+                        <div class="file-input-group" data-document-field="foto_certificado_antecedentes">
+                            <span class="file-label">Certificado de antecedentes <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                            <input type="file" name="foto_certificado_antecedentes" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_foto_certificado_antecedentes">
+                            <small class="file-reminder"><i class="fas fa-calendar-day me-1" aria-hidden="true"></i>Debe haber sido obtenido el mismo día en que envías esta postulación.</small>
+                        </div>
+
+                        <div class="file-input-group">
+                            <span class="file-label">¿Posee credencial de discapacidad?</span>
+                            <div class="d-flex gap-4 mt-2">
+                                
+                                    <div class="form-check">
+                                        <input type="radio" name="posee_credencial_discapacidad" value="true" class="form-check-input" id="id_posee_credencial_discapacidad_0" required>
+                                        <label class="form-check-label" for="id_posee_credencial_discapacidad_0">Sí</label>
+                                    </div>
+                                
+                                    <div class="form-check">
+                                        <input type="radio" name="posee_credencial_discapacidad" value="false" class="form-check-input" id="id_posee_credencial_discapacidad_1" required>
+                                        <label class="form-check-label" for="id_posee_credencial_discapacidad_1">No</label>
+                                    </div>
+                                
+                            </div>
+                            
+                        </div>
+
+                        <div class="file-input-group" id="credencial-discapacidad-row" data-document-field="copia_credencial_discapacidad" style="display: none;">
+                            <span class="file-label">Adjunte una copia de la credencial de discapacidad <span class="required-note doc-required-indicator">(obligatoria si respondió Sí o lo exige el cargo)</span></span>
+                            <input type="file" name="copia_credencial_discapacidad" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_copia_credencial_discapacidad">
+                            
+                        </div>
+
+                        <div class="hidden-section" id="licenciarow" style="display: none;">
+                            <div class="grid-2">
+                                <div class="file-input-group" data-document-field="foto_licencia">
+                                    <span class="file-label">Foto Licencia de Conducir Frontal <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                                    <input type="file" name="foto_licencia" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_foto_licencia">
+                                </div>
+                                <div class="file-input-group" data-document-field="foto_licencia_reverso">
+                                    <span class="file-label">Foto Licencia de Conducir Reverso <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                                    <input type="file" name="foto_licencia_reverso" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_foto_licencia_reverso">
+                                </div>
+                            </div>
+                            <div class="file-input-group" id="hojavidaconductorrow" data-document-field="foto_hoja_vida_conductor" style="display: none;">
+                                <span class="file-label">Hoja de Vida del Conductor <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                                <input type="file" name="foto_hoja_vida_conductor" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf" id="id_foto_hoja_vida_conductor">
+                            </div>
+                        </div>
+
+                        <div class="hidden-section" id="cvprevencionistarow" style="display: none;">
+                            <div class="grid-2">
+                                <div class="file-input-group" data-document-field="copia_cv">
+                                    <span class="file-label">Copia CV <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                                    <input type="file" name="copia_cv" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" id="id_copia_cv">
+                                </div>
+                                <div class="file-input-group" data-document-field="copia_certificado_estudios">
+                                    <span class="file-label">Copia Certificado de Estudios <span class="required-note doc-required-indicator" hidden>(obligatorio)</span></span>
+                                    <input type="file" name="copia_certificado_estudios" class="form-control form-control-sm" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" id="id_copia_certificado_estudios">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antecedentes Académicos -->
+                <div class="section-card wizard-panel" data-wizard-step="3">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-graduation-cap text-primary"></i>
+                            Antecedentes Académicos
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Estudios</label>
+                                <select name="estudios" class="form-control form-control-sm" required id="id_estudios">
+  <option value="" selected>---------</option>
+
+  <option value="1">EDUCACIÓN BÁSICA</option>
+
+  <option value="2">EDUCACIÓN MEDIA</option>
+
+  <option value="3">EDUCACIÓN SUPERIOR</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Último Curso Rendido</label>
+                                <input type="text" name="ultimo_curso" class="form-control form-control-sm" required maxlength="100" id="id_ultimo_curso">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Profesión u Oficio</label>
+                            <input type="text" name="profesion_oficio" class="form-control form-control-sm" maxlength="300" id="id_profesion_oficio">
+                        </div>
+
+                        <div class="grid-3">
+                            <div class="form-group">
+                                <label class="form-label">Licencia de Conducir (Selección múltiple)</label>
+                                <select name="licencia_conducir" class="form-control form-control-sm" id="idlicenciaconducir" multiple>
+  <option value="1">A1</option>
+
+  <option value="2">A2</option>
+
+  <option value="3">A3</option>
+
+  <option value="4">A4</option>
+
+  <option value="5">A5</option>
+
+  <option value="6">B</option>
+
+  <option value="7">C</option>
+
+  <option value="8">D</option>
+
+  <option value="9">E</option>
+
+  <option value="10">F</option>
+
+</select>
+                                <div id="licencia-cargo-ayuda" class="small text-muted mt-1">Seleccione todas las clases vigentes que posee.</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Vencimiento de la licencia</label>
+                                <input type="date" name="fecha_vencimiento_licencia" class="form-control form-control-sm" id="idvencimientolicencia">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Años de experiencia en conducción</label>
+                                <input type="number" name="años_experiencia_conduccion" class="form-control form-control-sm" id="id_años_experiencia_conduccion">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antecedentes Previsionales -->
+                <div class="section-card wizard-panel" data-wizard-step="3">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-shield-alt text-primary"></i>
+                            Antecedentes Previsionales
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="grid-4">
+                            <div class="form-group">
+                                <label class="form-label">A.F.P</label>
+                                <select name="afp" class="form-control form-control-sm" required id="id_afp">
+  <option value="" selected>---------</option>
+
+  <option value="1">AFP CAPITAL</option>
+
+  <option value="2">AFP CUPRUM</option>
+
+  <option value="3">AFP HABITAT</option>
+
+  <option value="4">AFP MODELO</option>
+
+  <option value="5">AFP PLANVITAL</option>
+
+  <option value="6">AFP PROVIDA</option>
+
+  <option value="7">AFP UNO</option>
+
+  <option value="8">NO TIENE, NO CONOCE O NO PERTENECE AL SISTEMA</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Inst. de Salud</label>
+                                <select name="isapre" class="form-control form-control-sm" required id="id_isapre">
+  <option value="" selected>---------</option>
+
+  <option value="1">FONASA</option>
+
+  <option value="2">BANMÉDICA S.A.</option>
+
+  <option value="3">ISALUD LTDA.</option>
+
+  <option value="4">COLMENA GOLDEN CROSS S.A.</option>
+
+  <option value="5">CONSALUD S.A.</option>
+
+  <option value="6">CRUZ BLANCA S.A.</option>
+
+  <option value="7">CRUZ DEL NORTE LTDA.</option>
+
+  <option value="8">NUEVA MASVIDA S.A.</option>
+
+  <option value="9">FUNDACIÓN LTDA.</option>
+
+  <option value="10">VIDA TRES S.A.</option>
+
+  <option value="11">ESENCIAL S.A.</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Cargas Familiares</label>
+                                <input type="number" name="cargas_familiares" class="form-control form-control-sm" id="id_cargas_familiares">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Número de Hijos</label>
+                                <input type="number" name="n_hijos" class="form-control form-control-sm" id="id_n_hijos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antecedentes Generales -->
+                <div class="section-card wizard-panel" data-wizard-step="3">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-info-circle text-primary"></i>
+                            Antecedentes Generales
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="grid-4">
+                            <div class="form-group">
+                                <label class="form-label">Estatura</label>
+                                <input type="number" name="estatura" class="form-control form-control-sm" required step="any" id="id_estatura">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Peso</label>
+                                <input type="number" name="peso" class="form-control form-control-sm" step="any" id="id_peso">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nº Calzado</label>
+                                <select name="talla_calzado" class="form-control form-control-sm" required id="id_talla_calzado">
+  <option value="" selected>---------</option>
+
+  <option value="10">35</option>
+
+  <option value="11">36</option>
+
+  <option value="12">37</option>
+
+  <option value="1">38</option>
+
+  <option value="2">39</option>
+
+  <option value="3">40</option>
+
+  <option value="4">41</option>
+
+  <option value="5">42</option>
+
+  <option value="6">43</option>
+
+  <option value="7">44</option>
+
+  <option value="8">45</option>
+
+  <option value="9">46</option>
+
+  <option value="13">47</option>
+
+  <option value="14">48</option>
+
+  <option value="15">49</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Talla Camisa</label>
+                                <select name="talla_camisa" class="form-control form-control-sm" required id="id_talla_camisa">
+  <option value="" selected>---------</option>
+
+  <option value="1">S</option>
+
+  <option value="2">M</option>
+
+  <option value="3">L</option>
+
+  <option value="4">XL</option>
+
+  <option value="5">XXL</option>
+
+  <option value="6">XXXL</option>
+
+</select>
+                            </div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Talla Pantalón</label>
+                                <select name="talla_pantalon" class="form-control form-control-sm" required id="id_talla_pantalon">
+  <option value="" selected>---------</option>
+
+  <option value="1">S</option>
+
+  <option value="2">M</option>
+
+  <option value="3">L</option>
+
+  <option value="4">XL</option>
+
+  <option value="5">XXL</option>
+
+  <option value="6">XXXL</option>
+
+</select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Talla Guante</label>
+                                <select name="talla_guante" class="form-control form-control-sm" required id="id_talla_guante">
+  <option value="" selected>---------</option>
+
+  <option value="1">8</option>
+
+  <option value="2">9</option>
+
+  <option value="3">10</option>
+
+  <option value="4">11</option>
+
+</select>
+                            </div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Alérgico a</label>
+                                <input type="text" name="alergico_a" class="form-control form-control-sm" required maxlength="100" id="id_alergico_a">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nombre a quien avisar en caso de emergencia</label>
+                            <input type="text" name="contacto_emergencias" class="form-control form-control-sm" required maxlength="100" id="id_contacto_emergencias">
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Dirección</label>
+                                <input type="text" name="direccion_emergencias" class="form-control form-control-sm" required maxlength="100" id="id_direccion_emergencias">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ciudad</label>
+                                <input type="text" name="ciudad_emergencias" class="form-control form-control-sm" required maxlength="100" id="id_ciudad_emergencias">
+                            </div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Teléfono</label>
+                                <input type="text" name="telefono_emergencias" class="form-control form-control-sm" required maxlength="100" id="id_telefono_emergencias">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Parentesco</label>
+                                <input type="text" name="parentesco_emergencias" class="form-control form-control-sm" required maxlength="100" id="id_parentesco_emergencias">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antecedentes Laborales -->
+                <div class="section-card wizard-panel" data-wizard-step="3">
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-hard-hat text-primary"></i>
+                            Antecedentes Laborales
+                        </h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="switch-item mb-3">
+                            <input type="checkbox" name="experiencia_incendios" class="form-check-input" role="switch" id="idexperienciaincendios">
+                            <label class="switch-label" for="idexperienciaincendios">Experiencia en Incendios Forestales</label>
+                        </div>
+
+                        <div class="hidden-section" id="experiencias" style="display: none;">
+                            <div class="grid-3">
+                                <div class="form-group">
+                                    <label class="form-label">Cargo</label>
+                                    <input type="text" name="experiencia_incendios_cargo" class="form-control form-control-sm" id="idexperienciaincendioscargo" maxlength="300">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Temporadas</label>
+                                    <input type="number" name="experiencia_incendios_temporadas" class="form-control form-control-sm" id="idexperienciaincendiostemporadas">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Lugar</label>
+                                    <input type="text" name="experiencia_incendios_lugar" class="form-control form-control-sm" id="idexperienciaincendioslugar" maxlength="300">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Trabajo o actividad que desempeña después de la temporada de incendios</label>
+                            <select name="actividad_post_temporada" class="form-control form-control-sm" id="idactividadposttemporada">
+  <option value="" selected>---------</option>
+
+  <option value="1">ESTUDIANTE</option>
+
+  <option value="2">FAENAS SILVICOLAS</option>
+
+  <option value="3">FAENAS DE COSECHA</option>
+
+  <option value="4">FAENAS DE RALEO</option>
+
+  <option value="5">OTRA</option>
+
+</select>
+                        </div>
+
+                        <div class="switch-group">
+                            <div class="switch-item">
+                                <input type="checkbox" name="consume_drogas" class="form-check-input" role="switch" id="id_consume_drogas">
+                                <label class="switch-label" for="id_consume_drogas">¿Consume drogas?</label>
+                            </div>
+                            <div class="switch-item">
+                                <input type="checkbox" name="capacitacion_combate_incendios" class="form-check-input" role="switch" id="idcapacitacioncombateincendios">
+                                <label class="switch-label" for="idcapacitacioncombateincendios">Ha realizado curso de capacitación sobre el combate de incendios</label>
+                            </div>
+                        </div>
+
+                        <div class="hidden-section año_capacitacion_col" style="display: none;">
+                            <div class="form-group">
+                                <label class="form-label">Año capacitación en incendios</label>
+                                <input type="text" name="año_capacitacion_incendios" class="form-control form-control-sm" id="idañocapacitacionincendios" maxlength="300">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card wizard-panel" data-wizard-step="5">
+                    <div class="section-header"><h3 class="section-title"><i class="fas fa-clipboard-check text-primary"></i>Revisa tu postulación</h3></div>
+                    <div class="section-content">
+                        <p>Confirma que los datos y documentos estén correctos. Después del envío no podrás postular a otro cargo durante esta temporada.</p>
+                        <dl class="review-box">
+                            <dt>Persona</dt><dd id="review-persona">—</dd>
+                            <dt>Cargo</dt><dd id="review-cargo">—</dd>
+                            <dt>Contacto</dt><dd id="review-contacto">—</dd>
+                            <dt>Documentos</dt><dd id="review-documentos">—</dd>
+                        </dl>
+                        <div class="completion-reminder" role="alert">
+                            <strong><i class="fas fa-exclamation-triangle me-1" aria-hidden="true"></i>Tu postulación no termina al presionar “Enviar Postulación”</strong>
+                            <ol>
+                                <li>Comprueba que adjuntaste el certificado de antecedentes obtenido el mismo día de esta postulación.</li>
+                                <li>Después del envío, mantén abierta la pantalla de verificación.</li>
+                                <li>Confirma el enlace enviado a tu correo e ingresa el código recibido por SMS.</li>
+                            </ol>
+                            <div class="mt-2"><strong>No abandones el proceso hasta que correo y teléfono indiquen “Verificado”.</strong></div>
+                        </div>
+                        <div class="privacy-notice" role="note" aria-labelledby="privacy-notice-title">
+                            <strong id="privacy-notice-title"><i class="fas fa-shield-alt me-1" aria-hidden="true"></i>Tratamiento de datos personales</strong>
+                            <p>WOF Chile utilizará los datos y documentos que entregues para gestionar tu postulación, verificar los requisitos del cargo, comunicarse contigo y, si avanzas, gestionar una eventual contratación. Podrán acceder únicamente personas autorizadas y proveedores que apoyan este proceso bajo deberes de confidencialidad.</p>
+                            <p>Puedes solicitar acceso, rectificación, eliminación o revocar tu autorización escribiendo a <a href="mailto:reclutamiento@wof-chile.com?subject=Solicitud%20de%20privacidad%20-%20Postulaci%C3%B3n">reclutamiento@wof-chile.com</a>.</p>
+                            <a href="/administracion/aviso-privacidad-postulantes/" target="_blank" rel="noopener noreferrer">Leer el Aviso de Privacidad para Postulantes</a>
+                            <div class="privacy-version">Versión 2026-08-18</div>
+                        </div>
+                        <div class="form-check mt-3 privacy-consent">
+                            <input type="checkbox" name="acepta_tratamiento_datos" class="form-check-input" required id="id_acepta_tratamiento_datos">
+                            <label class="form-check-label" for="id_acepta_tratamiento_datos">He leído el Aviso de Privacidad para Postulantes y autorizo expresamente el tratamiento de mis datos personales y, cuando corresponda, de los datos sensibles que aporte, para gestionar esta postulación y las finalidades allí informadas.</label>
+                            
+                        </div>
+                        <div class="form-check mt-3 privacy-consent">
+                            <input type="checkbox" name="declara_informacion_fidedigna" class="form-check-input" required id="id_declara_informacion_fidedigna">
+                            <label class="form-check-label" for="id_declara_informacion_fidedigna">Declaro que toda la información que he brindado es fidedigna y que mi correo y teléfono son personales y se mantendrán vigentes.</label>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-actions">
+                    <button type="button" class="btn-wizard" id="wizard-prev" style="display:none"><i class="fas fa-arrow-left me-1"></i>Anterior</button>
+                    <button type="button" class="btn-wizard btn-next" id="wizard-next">Continuar <i class="fas fa-arrow-right ms-1"></i></button>
+                </div>
+
+                <div class="text-center mt-4 wizard-panel" data-wizard-step="5">
+                    <div id="estado-envio-postulacion" class="alert mb-3 text-start" role="status" hidden></div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Postulación
+                    </button>
+                    <p class="confidentiality-note"><i class="fas fa-lock me-1" aria-hidden="true"></i>Los datos de los postulantes son confidenciales según la Ley N.º 21.719.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script id="requisitos-cargos-data" type="application/json">{"1": {"nombre": "BRIGADISTA", "codigo": "brigadista", "resumen": "Participar directamente en prevenci\u00f3n y combate de incendios forestales.", "requisitos": ["Condici\u00f3n f\u00edsica compatible con labores de alta exigencia.", "Disponibilidad para capacitaci\u00f3n, trabajo en terreno y sistema de turnos.", "Capacidad para trabajar en equipo y seguir protocolos de seguridad."], "documentos": [{"campo": "foto_ci", "etiqueta": "C\u00e9dula de identidad (anverso)"}, {"campo": "foto_ci_reverso", "etiqueta": "C\u00e9dula de identidad (reverso)"}, {"campo": "foto_certificado_antecedentes", "etiqueta": "Certificado de antecedentes"}], "documentos_campos": ["foto_ci", "foto_ci_reverso", "foto_certificado_antecedentes"], "alternativas_licencias": []}, "2": {"nombre": "MOTOSIERRISTA", "codigo": "motosierrista", "resumen": "Apoyar el control de incendios mediante trabajo especializado con motosierra.", "requisitos": ["Experiencia en operaci\u00f3n segura de motosierra.", "Condici\u00f3n f\u00edsica compatible con trabajo forestal.", "Disponibilidad para trabajo en terreno y sistema de turnos."], "documentos": [{"campo": "foto_ci", "etiqueta": "C\u00e9dula de identidad (anverso)"}, {"campo": "foto_ci_reverso", "etiqueta": "C\u00e9dula de identidad (reverso)"}, {"campo": "foto_certificado_antecedentes", "etiqueta": "Certificado de antecedentes"}], "documentos_campos": ["foto_ci", "foto_ci_reverso", "foto_certificado_antecedentes"], "alternativas_licencias": []}, "3": {"nombre": "JEFE BRIGADA", "codigo": "jefe_brigada", "resumen": "Liderar y coordinar al equipo durante las operaciones forestales.", "requisitos": ["Experiencia en combate de incendios forestales.", "Capacidad de liderazgo y coordinaci\u00f3n.", "Disponibilidad para trabajo en terreno y sistema de turnos."], "documentos": [{"campo": "foto_ci", "etiqueta": "C\u00e9dula de identidad (anverso)"}, {"campo": "foto_ci_reverso", "etiqueta": "C\u00e9dula de identidad (reverso)"}, {"campo": "foto_certificado_antecedentes", "etiqueta": "Certificado de antecedentes"}], "documentos_campos": ["foto_ci", "foto_ci_reverso", "foto_certificado_antecedentes"], "alternativas_licencias": []}, "10": {"nombre": "CONDUCTOR", "codigo": "conductor", "resumen": "Trasladar personal y recursos de forma segura durante la operaci\u00f3n.", "requisitos": ["Licencia de conducir vigente y adecuada al veh\u00edculo.", "Experiencia comprobable en conducci\u00f3n.", "Hoja de vida del conductor obligatoria.", "Disponibilidad para trabajo en terreno y sistema de turnos."], "documentos": [{"campo": "foto_ci", "etiqueta": "C\u00e9dula de identidad (anverso)"}, {"campo": "foto_ci_reverso", "etiqueta": "C\u00e9dula de identidad (reverso)"}, {"campo": "foto_certificado_antecedentes", "etiqueta": "Certificado de antecedentes"}, {"campo": "foto_hoja_vida_conductor", "etiqueta": "Hoja de vida del conductor"}, {"campo": "foto_licencia", "etiqueta": "Licencia de conducir (anverso)"}, {"campo": "foto_licencia_reverso", "etiqueta": "Licencia de conducir (reverso)"}], "documentos_campos": ["foto_ci", "foto_ci_reverso", "foto_certificado_antecedentes", "foto_hoja_vida_conductor", "foto_licencia", "foto_licencia_reverso"], "alternativas_licencias": [["A2", "A4"], ["A3", "A5"]]}, "8": {"nombre": "OPERADOR DE SKIDDER", "codigo": "op_skidder", "resumen": "Operar maquinaria Skidder de forma segura durante las labores forestales.", "requisitos": ["Licencia clase D vigente.", "Experiencia comprobable en operaci\u00f3n segura de maquinaria Skidder.", "Hoja de vida del conductor obligatoria.", "Disponibilidad para trabajo en terreno y sistema de turnos."], "documentos": [{"campo": "foto_ci", "etiqueta": "C\u00e9dula de identidad (anverso)"}, {"campo": "foto_ci_reverso", "etiqueta": "C\u00e9dula de identidad (reverso)"}, {"campo": "foto_certificado_antecedentes", "etiqueta": "Certificado de antecedentes"}, {"campo": "foto_hoja_vida_conductor", "etiqueta": "Hoja de vida del conductor"}, {"campo": "foto_licencia", "etiqueta": "Licencia de conducir (anverso)"}, {"campo": "foto_licencia_reverso", "etiqueta": "Licencia de conducir (reverso)"}], "documentos_campos": ["foto_ci", "foto_ci_reverso", "foto_certificado_antecedentes", "foto_hoja_vida_conductor", "foto_licencia", "foto_licencia_reverso"], "alternativas_licencias": [["D"]]}}</script>
+<script>
+    const requisitosCargos = JSON.parse(
+        document.getElementById('requisitos-cargos-data').textContent
+    );
+
+    function configuracionCargoSeleccionado() {
+        const seleccionado = document.querySelector("input[name='cargo_postulado']:checked");
+        return seleccionado ? (requisitosCargos[seleccionado.value] || {}) : {};
+    }
+
+    // Función para obtener el CSRF token de las cookies
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
+    // Configurar CSRF token para todas las peticiones AJAX
+    const csrftoken = getCookie('csrftoken');
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    
+    // Si el input con nombre "experiencia_incendios" se marca, se muestra el div con id "experiencias"
+    $("#idexperienciaincendios").change(function () {
+        const experienciasDiv = $("#experiencias");
+        if ($(this).is(":checked")) {
+            experienciasDiv.show().addClass('hidden-section');
+            // Hacer requeridos los campos de experiencias
+            $("#idexperienciaincendioscargo").prop('required', true);
+            $("#idexperienciaincendiostemporadas").prop('required', true);
+            $("#idexperienciaincendioslugar").prop('required', true);
+        } else {
+            experienciasDiv.hide();
+            // Quitar requeridos los campos de experiencias
+            $("#idexperienciaincendioscargo").prop('required', false);
+            $("#idexperienciaincendiostemporadas").prop('required', false);
+            $("#idexperienciaincendioslugar").prop('required', false);
+        }
+    });
+
+    // Al elegir una región, llenar las provincias select con las provincias de esa región 
+    $("#idregion").change(function () {
+        var regionId = $(this).val();
+        $.ajax({
+            url: '/reclutamiento/getprovincias/' + regionId,
+            success: function (data) {
+                $("#idprovincia").html(data.provincias);
+            }
+        });
+    });
+
+    // Al elegir una provincia, llenar las comunas select con las comunas de esa provincia 
+    $("#idprovincia").change(function () {
+        var provinciaId = $(this).val();
+        $.ajax({
+            url: '/reclutamiento/getcomunas/' + provinciaId,
+            success: function (data) {
+                $("#idcomuna").html(data.comunas);
+            }
+        });
+    });
+
+    $('#idcapacitacioncombateincendios').change(function(){
+        const añoCapacitacion = $(".año_capacitacion_col");
+        if ($(this).is(":checked")) {
+            añoCapacitacion.show().addClass('hidden-section');
+            $("#idañocapacitacionincendios").prop('required', true);
+        } else {
+            añoCapacitacion.hide();
+            $("#idañocapacitacionincendios").prop('required', false);
+        }
+    });
+
+    // Si se selecciona el cargo de prevencionista, entonces los campos de copia de cv y certificado de estudios son requeridos
+    $('#idcargoprevencionista').change(function(){
+        const cvPrevencionistaRow = $("#cvprevencionistarow");
+        if ($(this).is(":checked")) {
+            $("#id_copia_cv").prop('required', true);
+            $("#id_copia_certificado_estudios").prop('required', true);
+            cvPrevencionistaRow.show().addClass('hidden-section');
+        } else {
+            $("#id_copia_cv").prop('required', false);
+            $("#id_copia_certificado_estudios").prop('required', false);
+            cvPrevencionistaRow.hide();
+        }
+    });
+
+    $(document).ready(function () {
+        document.querySelectorAll('#postulacion-form input[type="file"]').forEach(function(entrada) {
+            entrada.addEventListener('change', function() {
+                entrada.setCustomValidity('');
+                if (!entrada.files.length) return;
+
+                const nombre = entrada.files[0].name.toLowerCase();
+                const formatosPermitidos = (entrada.accept || '')
+                    .split(',')
+                    .map(function(formato) { return formato.trim().toLowerCase(); })
+                    .filter(Boolean);
+                const formatoValido = formatosPermitidos.some(function(formato) {
+                    return formato.startsWith('.') && nombre.endsWith(formato);
+                });
+
+                if (!formatoValido) {
+                    const formatosLegibles = formatosPermitidos
+                        .map(function(formato) { return formato.replace('.', '').toUpperCase(); })
+                        .join(', ');
+                    entrada.setCustomValidity(
+                        'Formato no permitido. Seleccione un archivo ' + formatosLegibles + '.'
+                    );
+                    entrada.reportValidity();
+                }
+            });
+        });
+
+        // Añadimos una validación para que el usuario deba seleccionar al menos un cargo antes de enviar el formulario
+        $("#postulacion-form").submit(function (e) {
+            const formulario = this;
+            const enviarBtn = $(formulario).find("button[type='submit']");
+            const estadoEnvio = document.getElementById('estado-envio-postulacion');
+
+            if (formulario.dataset.enviando === '1') {
+                e.preventDefault();
+                return false;
+            }
+
+            if (!$("input[name='cargo_postulado']:checked").length) {
+                alert("Debe seleccionar un cargo");
+                e.preventDefault();
+                return false;
+            }
+
+            // Verificamos el rut
+            let rutInput = document.getElementById('id_rut').value;
+            if (!validarRUT(rutInput)) {
+                alert('RUT inválido');
+                e.preventDefault();
+                return false;
+            }
+
+            if (!this.checkValidity()) {
+                e.preventDefault();
+                this.reportValidity();
+                return false;
+            }
+
+            // Enviar con XHR permite mostrar el avance de los documentos y
+            // recuperar la pantalla si ngrok o la conexión se interrumpen.
+            e.preventDefault();
+            formulario.dataset.enviando = '1';
+            enviarBtn.prop('disabled', true);
+            enviarBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Preparando documentos…');
+            estadoEnvio.hidden = false;
+            estadoEnvio.className = 'alert alert-info mb-3 text-start';
+            estadoEnvio.textContent = 'Subiendo documentos. No cierre esta ventana.';
+
+            const restaurarEnvio = function (mensaje) {
+                formulario.dataset.enviando = '0';
+                enviarBtn.prop('disabled', false);
+                enviarBtn.html('<i class="fas fa-paper-plane me-2"></i>Enviar Postulación');
+                estadoEnvio.hidden = false;
+                estadoEnvio.className = 'alert alert-danger mb-3 text-start';
+                estadoEnvio.textContent = mensaje;
+            };
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', formulario.action || window.location.href, true);
+            xhr.timeout = 180000;
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+            xhr.upload.onprogress = function (evento) {
+                if (!evento.lengthComputable) return;
+                const porcentaje = Math.min(100, Math.round((evento.loaded / evento.total) * 100));
+                enviarBtn.html(`<i class="fas fa-spinner fa-spin me-2"></i>Subiendo documentos ${porcentaje}%`);
+                estadoEnvio.textContent = `Subiendo documentos: ${porcentaje}%. No cierre esta ventana.`;
+            };
+
+            xhr.upload.onload = function () {
+                enviarBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Guardando postulación…');
+                estadoEnvio.textContent = 'Documentos recibidos. Estamos guardando su postulación.';
+            };
+
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    const destino = xhr.responseURL || '';
+                    if (destino.includes('/postulacion/verificacion/')) {
+                        window.location.assign(destino);
+                        return;
+                    }
+
+                    // Django devolvió el mismo formulario con errores de validación.
+                    document.open();
+                    document.write(xhr.responseText);
+                    document.close();
+                    return;
+                }
+                restaurarEnvio(`No fue posible guardar la postulación (error ${xhr.status}). Revise los documentos e intente nuevamente.`);
+            };
+
+            xhr.onerror = function () {
+                restaurarEnvio('Se perdió la conexión con el servidor. Antes de repetir el envío, verifique nuevamente su RUT: si aparece como ya registrado, la postulación sí quedó guardada.');
+            };
+
+            xhr.ontimeout = function () {
+                restaurarEnvio('El envío tardó más de 3 minutos. Antes de repetirlo, verifique nuevamente su RUT para confirmar si la postulación alcanzó a guardarse.');
+            };
+
+            xhr.send(new FormData(formulario));
+            return false;
+        });
+
+        function normalizarClaseLicencia(nombre) {
+            return (nombre || '').toUpperCase().replace(/\s|-/g, '').replace(/^LICENCIA/, '').replace(/^CLASE/, '');
+        }
+
+        function actualizarRequisitosLicencia() {
+            const configuracion = configuracionCargoSeleccionado();
+            const alternativas = configuracion.alternativas_licencias || [];
+            const documentosRequeridos = configuracion.documentos_campos || [];
+            const requiereLicencia = alternativas.length > 0;
+            const seleccionadas = new Set($('#idlicenciaconducir option:selected').map(function(){
+                return normalizarClaseLicencia($(this).text());
+            }).get());
+            const selectorLicencias = document.getElementById('idlicenciaconducir');
+            const cumple = !requiereLicencia || alternativas.some(function(alternativa) {
+                return alternativa.every(function(nombre) {
+                    return seleccionadas.has(normalizarClaseLicencia(nombre));
+                });
+            });
+            const textoAlternativas = alternativas.map(function(alternativa) {
+                return alternativa.join(' + ');
+            }).join(' o ');
+
+            const muestraDocumentosLicencia = ['foto_licencia', 'foto_licencia_reverso', 'foto_hoja_vida_conductor'].some(
+                campo => documentosRequeridos.includes(campo)
+            );
+            $('#licenciarow').toggle(requiereLicencia || muestraDocumentosLicencia).addClass('hidden-section');
+            $('#hojavidaconductorrow').toggle(documentosRequeridos.includes('foto_hoja_vida_conductor'));
+            $('#idvencimientolicencia').prop('required', requiereLicencia || seleccionadas.size > 0);
+            $('#licencia-cargo-ayuda').text(
+                requiereLicencia
+                    ? `Requisito para el cargo: ${textoAlternativas}, con vigencia registrada.`
+                    : 'Este cargo no exige una licencia habilitante. Puede registrar las que posee.'
+            );
+            if (selectorLicencias) {
+                selectorLicencias.setCustomValidity(
+                    cumple ? '' : `Seleccione una combinación válida: ${textoAlternativas}.`
+                );
+            }
+
+            document.querySelectorAll('[data-document-field]').forEach(function(contenedor) {
+                const campo = contenedor.dataset.documentField;
+                if (campo === 'copia_credencial_discapacidad') return;
+                const entrada = contenedor.querySelector('input[type="file"]');
+                const indicador = contenedor.querySelector('.doc-required-indicator');
+                const obligatorio = documentosRequeridos.includes(campo);
+                if (entrada) entrada.required = obligatorio;
+                if (indicador) indicador.hidden = !obligatorio;
+            });
+            $('#cvprevencionistarow').toggle(
+                documentosRequeridos.includes('copia_cv') ||
+                documentosRequeridos.includes('copia_certificado_estudios')
+            );
+            actualizarCredencialDiscapacidad();
+        }
+
+        $("input[name='cargo_postulado']").change(actualizarRequisitosLicencia);
+        $('#idlicenciaconducir').on('change', actualizarRequisitosLicencia);
+
+        const rutField = document.getElementById('id_rut');
+        const rutFeedback = document.getElementById('rut-feedback');
+        let rutRequest = null;
+        let rutTimer = null;
+
+        rutField.setAttribute('placeholder', '12.345.678-9');
+        rutField.setAttribute('inputmode', 'text');
+        rutField.setAttribute('maxlength', '12');
+        rutField.setAttribute('autocomplete', 'off');
+
+        function rutLimpio(value) {
+            return (value || '').toUpperCase().replace(/[^0-9K]/g, '').slice(0, 9);
+        }
+
+        function formatearRUT(value) {
+            const limpio = rutLimpio(value);
+            if (limpio.length <= 1) return limpio;
+            const cuerpo = limpio.slice(0, -1);
+            const dv = limpio.slice(-1);
+            return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + dv;
+        }
+
+        function mostrarEstadoRut(tipo, mensaje, icono) {
+            rutFeedback.className = 'field-feedback ' + tipo;
+            rutFeedback.innerHTML = '<i class="fas ' + icono + '" aria-hidden="true"></i><span></span>';
+            rutFeedback.querySelector('span').textContent = mensaje;
+            rutField.classList.toggle('rut-valid', tipo === 'is-valid');
+            rutField.classList.toggle('rut-invalid', tipo === 'is-invalid');
+        }
+
+        function consultarRut(rut) {
+            if (rutRequest) rutRequest.abort();
+            mostrarEstadoRut('is-checking', 'Verificando disponibilidad en este proceso…', 'fa-spinner fa-spin');
+            rutField.setCustomValidity('Estamos verificando el RUT.');
+            rutRequest = $.ajax({
+                url: '/reclutamiento/verificarpostulacion',
+                type: 'POST',
+                data: { rut: rut },
+                success: function(data) {
+                    if (!data.valido) {
+                        rutField.setCustomValidity('Ingrese un RUT chileno válido.');
+                        mostrarEstadoRut('is-invalid', 'El RUT ingresado no es válido.', 'fa-times-circle');
+                    } else if (data.existe) {
+                        rutField.setCustomValidity('Este RUT ya fue utilizado en el proceso de postulación actual.');
+                        mostrarEstadoRut('is-invalid', 'Este RUT ya tiene una postulación en el proceso actual.', 'fa-times-circle');
+                    } else {
+                        rutField.setCustomValidity('');
+                        mostrarEstadoRut('is-valid', 'RUT válido y disponible para postular.', 'fa-circle-check');
+                    }
+                },
+                error: function(xhr, status) {
+                    if (status === 'abort') return;
+                    const mensaje = xhr.status === 403
+                        ? 'La URL pública no está autorizada por el servidor. Recarga la página o contacta al administrador.'
+                        : 'No fue posible verificar el RUT. Revisa tu conexión e intenta nuevamente.';
+                    rutField.setCustomValidity(mensaje);
+                    mostrarEstadoRut('is-invalid', mensaje, 'fa-triangle-exclamation');
+                }
+            });
+        }
+
+        rutField.addEventListener('input', function() {
+            const limpio = rutLimpio(rutField.value);
+            rutField.value = formatearRUT(limpio);
+            rutField.setCustomValidity('');
+            clearTimeout(rutTimer);
+            if (rutRequest) rutRequest.abort();
+
+            if (!limpio) {
+                mostrarEstadoRut('is-muted', 'Escribe sólo números y K; aplicaremos el formato automáticamente.', 'fa-keyboard');
+                return;
+            }
+            if (limpio.length < 8) {
+                rutField.setCustomValidity('Complete su RUT.');
+                mostrarEstadoRut('is-muted', 'Continúa escribiendo el RUT completo.', 'fa-keyboard');
+                return;
+            }
+            if (!validarRUT(limpio)) {
+                rutField.setCustomValidity('Ingrese un RUT chileno válido.');
+                mostrarEstadoRut('is-invalid', 'El dígito verificador no corresponde.', 'fa-times-circle');
+                return;
+            }
+            rutTimer = setTimeout(function() { consultarRut(limpio); }, 250);
+        });
+
+        if (rutField.value) rutField.dispatchEvent(new Event('input'));
+    });
+
+    function calcularDV(rut) {
+        var M = 0, S = 1;
+        for (; rut; rut = Math.floor(rut / 10)) {
+            S = (S + rut % 10 * (9 - M++ % 6)) % 11;
+        }
+        return S ? S - 1 : 'k';
+    }
+
+    function validarRUT(rutCompleto) {
+        rutCompleto = (rutCompleto || '').replace(/\./g, '').replace(/-/g, '');
+        if (!/^\d{7,8}[0-9kK]$/.test(rutCompleto)) {
+            return false;
+        }
+        var digv = rutCompleto.slice(-1).toLowerCase();
+        var rut = parseInt(rutCompleto.slice(0, -1));
+
+        return calcularDV(rut) == digv;
+    }
+
+
+    // Agregar al template
+    document.addEventListener('DOMContentLoaded', function() {
+        const emailField = document.getElementById('id_email');
+        const apellidoPaternoField = document.getElementById('id_apellido_paterno');
+        const apellidoMaternoField = document.getElementById('id_apellido_materno');
+        const nombresField = document.getElementById('id_nombres');
+        
+        function validateEmailNotInNames() {
+            const email = emailField.value.toLowerCase();
+            if (email && (
+                apellidoPaternoField.value.toLowerCase().includes('@') ||
+                apellidoMaternoField.value.toLowerCase().includes('@') ||
+                nombresField.value.toLowerCase().includes('@')
+            )) {
+                alert('Los nombres y apellidos no pueden contener direcciones de email');
+                return false;
+            }
+            return true;
+        }
+        
+        // Validar al enviar el formulario
+        document.querySelector('form').addEventListener('submit', function(e) {
+            if (!validateEmailNotInNames()) {
+                e.preventDefault();
+            }
+        });
+
+        const form = document.getElementById('postulacion-form');
+        const nextButton = document.getElementById('wizard-next');
+        const prevButton = document.getElementById('wizard-prev');
+        const submitArea = form.querySelector('.text-center.wizard-panel[data-wizard-step="5"]');
+        let currentStep = 1;
+
+        function panelsForStep(step) {
+            return Array.from(form.querySelectorAll('[data-wizard-step="' + step + '"]'));
+        }
+
+        function showStep(step) {
+            currentStep = Math.max(1, Math.min(5, step));
+            form.querySelectorAll('.wizard-panel').forEach(function(panel) {
+                panel.classList.toggle('active', Number(panel.dataset.wizardStep) === currentStep);
+            });
+            document.querySelectorAll('.progress-step').forEach(function(item) {
+                const itemStep = Number(item.dataset.step);
+                item.classList.toggle('active', itemStep === currentStep);
+                item.classList.toggle('complete', itemStep < currentStep);
+            });
+            prevButton.style.display = currentStep === 1 ? 'none' : 'inline-flex';
+            nextButton.style.display = currentStep === 5 ? 'none' : 'inline-flex';
+            if (submitArea) submitArea.classList.toggle('active', currentStep === 5);
+            if (currentStep === 5) updateReview();
+            window.scrollTo({ top: document.querySelector('.form-container').offsetTop, behavior: 'smooth' });
+        }
+
+        function validateCurrentStep() {
+            const controls = panelsForStep(currentStep).flatMap(function(panel) {
+                return Array.from(panel.querySelectorAll('input, select, textarea'));
+            }).filter(function(control) { return !control.disabled; });
+            for (const control of controls) {
+                if (!control.checkValidity()) {
+                    control.reportValidity();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function value(id) {
+            const field = document.getElementById(id);
+            return field ? field.value.trim() : '';
+        }
+
+        function updateReview() {
+            const selectedCargo = form.querySelector("input[name='cargo_postulado']:checked");
+            const cargoLabel = selectedCargo ? form.querySelector('label[for="' + selectedCargo.id + '"] h4').textContent.trim() : 'Sin seleccionar';
+            document.getElementById('review-persona').textContent = [value('id_nombres'), value('id_apellido_paterno'), value('id_apellido_materno')].filter(Boolean).join(' ') || 'Sin completar';
+            document.getElementById('review-cargo').textContent = cargoLabel;
+            document.getElementById('review-contacto').textContent = [value('id_email'), value('id_telefono')].filter(Boolean).join(' · ') || 'Sin completar';
+            const antecedentes = document.getElementById('id_foto_certificado_antecedentes');
+            const hojaVida = document.getElementById('id_foto_hoja_vida_conductor');
+            const licenciaFrontal = document.getElementById('id_foto_licencia');
+            const licenciaReversa = document.getElementById('id_foto_licencia_reverso');
+            const credencialDiscapacidad = document.getElementById('id_copia_credencial_discapacidad');
+            const docs = [];
+            if (antecedentes && antecedentes.files.length) docs.push('Certificado de antecedentes del día adjunto');
+            if (selectedCargo && ['conductor', 'op_skidder'].includes(selectedCargo.dataset.codigo) && hojaVida && hojaVida.files.length) docs.push('Hoja de vida del conductor adjunta');
+            if (selectedCargo && ['conductor', 'op_skidder'].includes(selectedCargo.dataset.codigo) && licenciaFrontal && licenciaFrontal.files.length && licenciaReversa && licenciaReversa.files.length) docs.push('Licencia frontal y reversa adjunta');
+            if (credencialDiscapacidad && credencialDiscapacidad.files.length) docs.push('Credencial de discapacidad adjunta');
+            document.getElementById('review-documentos').textContent = docs.join(' · ') || 'Documentos pendientes';
+        }
+
+        function actualizarCredencialDiscapacidad() {
+            const seleccion = form.querySelector("input[name='posee_credencial_discapacidad']:checked");
+            const fila = document.getElementById('credencial-discapacidad-row');
+            const archivo = document.getElementById('id_copia_credencial_discapacidad');
+            const poseeCredencial = seleccion && seleccion.value === 'true';
+            const obligatorioCargo = (
+                configuracionCargoSeleccionado().documentos_campos || []
+            ).includes('copia_credencial_discapacidad');
+            fila.style.display = (poseeCredencial || obligatorioCargo) ? '' : 'none';
+            archivo.required = Boolean(poseeCredencial || obligatorioCargo);
+            if (!poseeCredencial && !obligatorioCargo) archivo.value = '';
+        }
+
+        form.querySelectorAll("input[name='posee_credencial_discapacidad']").forEach(function(opcion) {
+            opcion.addEventListener('change', actualizarCredencialDiscapacidad);
+        });
+
+        nextButton.addEventListener('click', function() {
+            if (validateCurrentStep()) showStep(currentStep + 1);
+        });
+        prevButton.addEventListener('click', function() { showStep(currentStep - 1); });
+
+        form.addEventListener('submit', function(e) {
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                const invalid = form.querySelector(':invalid');
+                const panel = invalid && invalid.closest('[data-wizard-step]');
+                showStep(panel ? Number(panel.dataset.wizardStep) : 1);
+                if (invalid) invalid.reportValidity();
+            }
+        });
+
+        // Restablece correctamente los documentos condicionales al volver con errores.
+        $("input[name='cargo_postulado']:checked").trigger('change');
+        actualizarCredencialDiscapacidad();
+        showStep(currentStep);
+    });
+
+</script>
+
+
+        </main>
+
+       
+
+    </body>
+
+</html>

@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /*recientes=true
+Disallow: /*relevantes=true
+Disallow: /empleos.html/111
+Disallow: /empleos.html/100
+Disallow: /empleos-area-*/111
+Disallow: /empleos-area-*/100
+Disallow: /en-*/empleos.html/111
+Disallow: /en-*/empleos.html/100
+Disallow: /empleos-busquedaext-
+Disallow: /*?localidades=*
+Disallow: /*&localidades=*
+
+Sitemap: https://www.laborum.cl/sitemap_avisos_bum.xml
+Sitemap: https://www.laborum.cl/sitemap_core_bum.xml
+Sitemap: https://www.laborum.cl/sitemap_empresas_bum.xml
+Sitemap: https://www.laborum.cl/sitemap_listados_ubicacion_bum.xml
+Sitemap: https://www.laborum.cl/sitemap_tags_bum.xml

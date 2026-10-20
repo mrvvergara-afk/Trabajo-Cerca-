@@ -1,0 +1,47 @@
+{
+  "sources": [
+    {
+      "url": "https://wof-chile.com/postular",
+      "final_url": "https://wof-chile.com/postular",
+      "http": 200,
+      "sha256": "c5f604bc1576ee211583e3898e2dee8502753eecea4e9617469b011790b88706",
+      "mime": "text/html"
+    },
+    {
+      "url": "https://wof-chile.com/",
+      "final_url": "https://wof-chile.com/administracion/login?next=%2F",
+      "http": 200,
+      "sha256": "7347453ea34eb9fc6ada0264bb4e6916f193f0dab31ee310de62c5d043236fcc",
+      "mime": "text/html"
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://wof-chile.com/robots.txt",
+      "status": 404,
+      "mime": "text/html",
+      "sha256": "5547992afdadb59737c5c0feb1a35dff294cd27145bf290c031737ecf8a2577d"
+    },
+    {
+      "url": "https://wof-chile.com/postular",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 117202,
+      "sha256": "c5f604bc1576ee211583e3898e2dee8502753eecea4e9617469b011790b88706"
+    },
+    {
+      "url": "https://wof-chile.com/",
+      "status": 302,
+      "mime": "text/html",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://wof-chile.com/administracion/login?next=%2F",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 2654,
+      "sha256": "7347453ea34eb9fc6ada0264bb4e6916f193f0dab31ee310de62c5d043236fcc"
+    }
+  ]
+}

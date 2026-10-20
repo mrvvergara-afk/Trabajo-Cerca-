@@ -1,0 +1,69 @@
+{
+  "schema": "trabajo-cerca.inventory-retention-proof.v1",
+  "checked_at": "2026-10-20T02:07:25.960284+00:00",
+  "sdk_total_items": 33,
+  "sdk_job_offers": 31,
+  "initial_cards": 7,
+  "all_job_cards": 31,
+  "total_stable_after_pagination_and_reload": true,
+  "novelty_banner": "8 ofertas incorporadas en los últimos 7 días\n\nSe suman al total del radar. Las anteriores siguen publicadas hasta su cierre o vencimiento confirmado.\n\n2 incorporadas en las últimas 24 horas.\nVer novedades",
+  "traiguen_ids": [
+    "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+    "8b75b282-d838-45bc-9309-d10874aae023",
+    "de9067f5-59f2-4e0c-ba02-fc9584debe0f"
+  ],
+  "document_revalidation": {
+    "schema": "trabajo-cerca.document-revalidation-status.v1",
+    "readOnly": true,
+    "providerCalls": 0,
+    "intervalHours": 12,
+    "documents": [
+      {
+        "key": "traiguen-salud-2026-10",
+        "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "originalPublishedAt": "2026-10-01T12:04:54+00:00",
+        "approvedJobs": 3,
+        "publishedIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "visibleIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "status": "revalidated",
+        "lastCheckAt": "2026-10-20T00:50:37.897Z",
+        "lastSuccessAt": "2026-10-20T00:50:37.897Z",
+        "nextCheckAt": "2026-10-20T12:50:37.897Z",
+        "reason": null,
+        "registrationPending": false
+      }
+    ],
+    "feedManifestId": "81b0a625-c576-4fd4-ad76-7d9b87044135",
+    "newOffersDiscovered": 0,
+    "socialCaptureProven": false
+  },
+  "added_ids": [],
+  "removed_ids": [],
+  "removal_reasons_confirmed": false,
+  "new_publications_confirmed": 0,
+  "paid_provider_calls": 0,
+  "sources": [
+    {
+      "url": "https://wof-chile.com/postular",
+      "final_url": "https://wof-chile.com/postular",
+      "http": 200,
+      "sha256": "c5f604bc1576ee211583e3898e2dee8502753eecea4e9617469b011790b88706",
+      "mime": "text/html"
+    },
+    {
+      "url": "https://wof-chile.com/",
+      "final_url": "https://wof-chile.com/administracion/login?next=%2F",
+      "http": 200,
+      "sha256": "7347453ea34eb9fc6ada0264bb4e6916f193f0dab31ee310de62c5d043236fcc",
+      "mime": "text/html"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Iniciar Sesión</title>
+  <link href="/static/loginform.css" rel="stylesheet">
+  <style>
+    /* ── Error alert ── */
+    .alert-error {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff0f0;
+      border: 1px solid #f5c2c7;
+      border-left: 4px solid #dc3545;
+      border-radius: 6px;
+      color: #842029;
+      font-family: "Roboto", sans-serif;
+      font-size: 13.5px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      animation: slideDown .25s ease;
+    }
+    .alert-error svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      fill: #dc3545;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* ── Input shake on error ── */
+    .shake {
+      animation: shake .35s ease;
+    }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-6px); }
+      40%      { transform: translateX(6px); }
+      60%      { transform: translateX(-4px); }
+      80%      { transform: translateX(4px); }
+    }
+    .form input.input-error {
+      border: 1.5px solid #dc3545;
+      background: #fff5f5;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-page">
+    <div class="form">
+      <img style="margin-bottom:1.25rem;" src="https://static.wixstatic.com/media/9e1268_dc4e439f08184bec9086cddc1f634101~mv2.png/v1/crop/x_0,y_327,w_1080,h_426/fill/w_261,h_103,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/LOGO%20(1).png" alt="Logo">
+
+      
+
+      <form class="login-form" method="post" action="/login" id="login-form">
+        <input type="hidden" name="csrfmiddlewaretoken" value="NB9gYPirIkxOjFDTSZtn0EGwRAAATiOWUz2vvLlf1nmou8cITWktWSUaqO8rSk9d">
+        <input type="text" name="next" value="/" hidden>
+        <input
+          type="text"
+          required
+          placeholder="Usuario"
+          name="username"
+          autocomplete="off"
+          class=""
+          id="id_username"
+        />
+        <input
+          type="password"
+          required
+          placeholder="Contraseña"
+          name="password"
+          class=""
+          id="id_password"
+        />
+        <div>
+          <button type="submit">Ingresar</button>
+        </div>
+        <div>
+          <a style="display:block;margin-top:15px;text-decoration:none;" href="/administracion/cambiarcontrasena">Restablecer Contraseña</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+</body>
+</html>
+

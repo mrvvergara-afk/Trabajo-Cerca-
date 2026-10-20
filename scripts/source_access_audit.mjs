@@ -7,7 +7,7 @@ import vm from 'node:vm';
 const output='output/source-access-baseline';
 mkdirSync(output+'/objects',{recursive:true});
 const context=vm.createContext({URL,Buffer,TextDecoder,AbortSignal,fetch,createHash,console});
-for(const name of ['public-source-adapters.ts','public-robots.ts','public-source-http.ts','free-public-sources.ts']) {
+for(const name of ['social-evidence.ts','public-source-adapters.ts','public-robots.ts','public-source-http.ts','public-source-verifier.ts','free-public-sources.ts']) {
   const raw=readFileSync(new URL('../integrations/appdeploy/'+name,import.meta.url),'utf8');
   vm.runInContext(stripTypeScriptTypes(raw,{mode:'strip'}).replace(/^import .*;$/gm,'').replace(/^export /gm,''),context);
 }

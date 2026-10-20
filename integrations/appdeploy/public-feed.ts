@@ -221,6 +221,11 @@ function total(pages:PageRef[]):Summary {
       for (const kind of ['jobs', 'newJobs24h', 'newJobs7d', 'people', 'needs', 'services'] as const) current[kind] += counts[kind] || 0;
     }
   }
+  if (pages.some(page=>typeof page.summary.recentJobOffers7d!=='number')) {
+    delete (result as Partial<Summary>).recentJobOffers7d;
+    delete (result as Partial<Summary>).recentJobOffers24h;
+    for (const stat of Object.values(result.communeStats)) delete (stat as Partial<Counts>).newJobs7d;
+  }
   return result;
 }
 

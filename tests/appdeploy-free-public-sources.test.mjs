@@ -252,3 +252,28 @@ test('Historical PDF URLs stay pending but cannot block the HTML source cursor',
   assert.equal(h.calls.some(call=>call.method==='http' && call.source===pdf),false);
   assert.equal((await h.ctx.freePublicSourceStatus()).documentWork.items[0].url,pdf);
 });
+
+test('all portal providers advance fairly before returning to another town for the same provider',()=>{
+ const h=harness(),state={};
+ const urls=['https://cl.indeed.com/jobs','https://cl.computrabajo.com/trabajo-en-angol','https://www.linkedin.com/jobs/search/','https://www.laborum.cl/','https://www.opcionempleo.cl/'];
+ const sources=['Angol','Lumaco'].flatMap(town=>urls.map((value,i)=>({key:i+'-'+town,url:value+'?town='+town,discoveryGroup:'portal'})));
+ const first=Array.from({length:5},(_,i)=>h.ctx.nextPublicSource(sources,state,i));
+ assert.equal(new Set(first.map(x=>h.ctx.publicPublisher(x.url).group)).size,5);
+ assert.ok(first.every(x=>x.key.endsWith('Angol')));
+ assert.ok(h.ctx.nextPublicSource(sources,state,0).key.endsWith('Lumaco'));
+});
+test('RSS CDATA and structured job lists discover individual candidates without inventing publication dates',()=>{
+ const h=harness(),origin='https://www.munimulchen.cl/feed/';
+ const rss=h.ctx.publicPageLinks('<rss><channel><item><title><![CDATA[Vacante para operador]]></title><link>https://www.munimulchen.cl/seleccion-operador/</link></item></channel></rss>',origin);
+ assert.equal(rss.candidates.length,1);assert.equal(rss.candidates[0].source_published_at,undefined);
+ const links=h.ctx.publicPageLinks('<script type="application/ld+json">'+JSON.stringify({'@type':'ItemList',itemListElement:[{'@type':'ListItem',item:{'@type':'JobPosting',url,title:'Operador'}}]})+'</script>','https://cl.indeed.com/jobs');
+ assert.equal(links.candidates.length,1);assert.equal(links.candidates[0].source_published_at,undefined);
+});
+test('a real closed notice marks the original inactive with evidence, without deleting it or creating a job',async()=>{
+ const h=harness({fetcher:async source=>({url:source,status:200,raw:'<h1>Operador</h1><p>Esta oferta ha finalizado. Postulación cerrada.</p>',mime:'text/html',bytes:100})});
+ const identity=createHash('sha256').update(url).digest('hex'),name='radar_external_'+identity.slice(0,32),created='2026-10-01T12:00:00Z';
+ h.table(name).set('original-id',{id:'original-id',active:true,url,externalIdentity:identity,externalVerifiedAt:'2026-10-11T12:00:00Z',createdAt:created,sourcePublishedAt:created});
+ h.table('radar_external_pull_state').set('accepted',{id:'accepted',receipts:[{table:name,id:'original-id'}]});
+ const result=await h.ctx.runFreePublicSources(h.sources,'closed-source-00001',stamp);
+ const original=h.table(name).get('original-id');assert.equal(original.active,false);assert.equal(original.createdAt,created);assert.equal(original.sourcePublishedAt,created);assert.equal(original.closureEvidence.http,200);assert.equal(original.closureReason,'closed_notice');assert.equal(h.table(name).size,1);assert.equal(result.stored,0);assert.equal(result.closuresConfirmed,1);
+});

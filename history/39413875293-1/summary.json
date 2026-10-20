@@ -1,0 +1,528 @@
+{
+  "schema": "trabajo-cerca.expanded-source-pass.v1",
+  "checked_at": "2026-10-20T11:21:59.915948+00:00",
+  "requested_towns": [
+    "Angol",
+    "Lumaco",
+    "Los Sauces",
+    "Traiguén",
+    "Renaico",
+    "Nacimiento",
+    "Negrete",
+    "Mulchén",
+    "Collipulli"
+  ],
+  "index_rows": 94,
+  "distinct_individual_job_links": 106,
+  "already_visible": 12,
+  "selected_for_review": 36,
+  "reviewed": 36,
+  "verified_for_handoff": 10,
+  "local_individual_pages_reviewed": 18,
+  "local_indexes": [
+    {
+      "name": "Municipalidad / OMIL Angol",
+      "territory": "Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "access": "blocked_or_unavailable",
+      "error": "robots_policy_unavailable",
+      "local_candidates": null,
+      "public_social_links": null
+    },
+    {
+      "name": "Municipalidad / OMIL Lumaco",
+      "territory": "Lumaco",
+      "url": "https://www.munilumaco.cl/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "title": "Llamados a concurso público",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": [
+        "https://www.facebook.com/municipalidadlumaco/"
+      ]
+    },
+    {
+      "name": "Municipalidad / OMIL Los Sauces",
+      "territory": "Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "access": "read",
+      "error": null,
+      "local_candidates": [],
+      "public_social_links": []
+    },
+    {
+      "name": "Municipalidad / OMIL Traiguén",
+      "territory": "Traiguén",
+      "url": "https://mtraiguen.cl/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "title": "0",
+          "kind": "page"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "title": "0",
+          "kind": "page"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "title": "0",
+          "kind": "page"
+        },
+        {
+          "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+          "title": "0",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": []
+    },
+    {
+      "name": "Municipalidad / OMIL Renaico",
+      "territory": "Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
+          "title": "DESCARGAR BASES DEL CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+          "title": "DESCARGAR BASES DEL CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+          "title": "DESCARGAR BASES DEL CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03980020260612135730.pdf",
+          "title": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-1959.pdf",
+          "title": "DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-Cargo-Auxiliar-grado-16-y-17.pdf",
+          "title": "DESCARGAR BASES DEL CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979820260612135631.pdf",
+          "title": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargos-Tecnico-grado-11.pdf",
+          "title": "DESCARGAR BASES DEL CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979720260612135542.pdf",
+          "title": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-2065.pdf",
+          "title": "DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2",
+          "kind": "document"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+          "title": "DESCARGAR BASES DEL CONCURSO",
+          "kind": "document"
+        }
+      ],
+      "public_social_links": [
+        "https://www.facebook.com/municipalidadrenaico",
+        "https://www.instagram.com/munirenaico/"
+      ]
+    },
+    {
+      "name": "Municipalidad / OMIL Nacimiento",
+      "territory": "Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "access": "read",
+      "error": null,
+      "local_candidates": [],
+      "public_social_links": []
+    },
+    {
+      "name": "Municipalidad / OMIL Negrete",
+      "territory": "Negrete",
+      "url": "https://www.muninegrete.cl/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+          "title": "Oficina Municipal de Intermediación Laboral (OMIL)",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+          "title": "¡Disponibles las postulaciones para puestos de venta de “Todos los Santos” 2026!",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": [
+        "https://www.facebook.com/MuniNegreteCL",
+        "https://www.instagram.com/muninegrete/"
+      ]
+    },
+    {
+      "name": "Municipalidad / OMIL Mulchén",
+      "territory": "Mulchén",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+          "title": "Postulación  Abierta \n         OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS (100 CUPOS)",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+          "title": "Postulación  Cerrada \n         SECRETARIA ADMINISTRATIVA CONTABLE",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+          "title": "Postulación  Cerrada \n         JEFE DE TERRENO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+          "title": "Postulación  Cerrada \n         EMBALAJE DE FRUTAS",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
+          "title": "Postulación  Cerrada \n         CONVOCATORIA NACIONAL CONAF – TEMPORADA 2026-2027 (BRIGADISTAS FORESTALES, JEFES DE BRIGADA, JEFES DE CUADRILLA, MOTOSIERRISTAS)",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+          "title": "Postulación  Cerrada \n         MANIPULADOR DE ALIMENTOS / CHEF / MAESTRO DE COCINA (08 CUPOS)",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/",
+          "title": "Postulación  Cerrada \n         CONDUCTOR CAMIÓN TOLVA (PROYECTO RUCALHUE)",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/",
+          "title": "Postulación  Cerrada \n         OPERADOR CARGADOR FRONTAL (PROYECTO RUCALHUE)",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": [
+        "https://www.facebook.com/munimulchen",
+        "https://www.instagram.com/municipalidaddemulchen"
+      ]
+    },
+    {
+      "name": "Municipalidad / OMIL Collipulli",
+      "territory": "Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+          "title": "Concursos Públicos",
+          "kind": "page"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/09/BASES-CONCURSO-PDTI-PROFESIONAL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-914-DEL-22.04.2026-LLAMADO-CONCURSO-OMIL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-876-DEL-17.04.2026-LLAMADO-A-CONCURSO-TECNICO-PDTI-Y-PRODESAL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0755-10.04.2026-BASES-GRADO-18.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-764-DEL-10.04.2026-BASES-GRADO-15.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-765-DEL-10.04.2026-BASES-GRADO-13.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/03/Decreto-bases-administrativas.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/09/ANEXO-4-BASES-ADMINISTRATIVAS-Profesional-PDTI-septiembre-2025-1.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/09/Decreto-bases-PDTI.pdf",
+          "title": "Descargar Decreto",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N%C2%B0-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        },
+        {
+          "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/04/Decreto-y-bases-auxiliar-grado-16.pdf",
+          "title": "Descargar Bases",
+          "kind": "document"
+        }
+      ],
+      "public_social_links": []
+    },
+    {
+      "name": "Malleco 7",
+      "territory": "Malleco",
+      "url": "https://www.malleco7.cl/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [],
+      "public_social_links": [
+        "https://www.facebook.com/Malleco7"
+      ]
+    },
+    {
+      "name": "Radio Nativa",
+      "territory": "Lumaco",
+      "url": "https://www.radionativa.cl/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/",
+          "title": "agosto 31, 2024",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": []
+    },
+    {
+      "name": "Radio Viaducto",
+      "territory": "Collipulli",
+      "url": "https://radioviaducto.cl/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [],
+      "public_social_links": []
+    },
+    {
+      "name": "Las Noticias de Malleco",
+      "territory": "Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+          "title": "Leer más »",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": [
+        "https://www.facebook.com/diariolasnoticias/",
+        "https://www.instagram.com/lasnoticiasdia/"
+      ]
+    },
+    {
+      "name": "Malleco 7 · ediciones digitales",
+      "territory": "Malleco",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [],
+      "public_social_links": [
+        "https://www.facebook.com/Malleco7"
+      ]
+    },
+    {
+      "name": "Angol · búsqueda OMIL",
+      "territory": "Angol",
+      "url": "https://noticias.angol.cl/index.php/component/search/?searchphrase=all&searchword=oferta+laboral",
+      "access": "blocked_shared_host",
+      "error": "robots_policy_unavailable",
+      "local_candidates": null,
+      "public_social_links": null
+    },
+    {
+      "name": "Lumaco · prensa",
+      "territory": "Lumaco",
+      "url": "https://www.munilumaco.cl/index.php/sala-de-prensa",
+      "access": "read",
+      "error": null,
+      "local_candidates": [],
+      "public_social_links": []
+    },
+    {
+      "name": "Traiguén · búsqueda laboral",
+      "territory": "Traiguén",
+      "url": "https://mtraiguen.cl/?s=oferta+laboral",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://mtraiguen.cl/municipalidad/bono-clase-media-sii-la-municipalidad-de-traiguen-a-traves-de-la-omil-ayudara-en-la-postulacion-a-este-beneficio/",
+          "title": "Bono Clase Media SII: La Municipalidad de Traiguén a través de la Omil ayudará en la postulación a este beneficio",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": []
+    },
+    {
+      "name": "Negrete · RSS",
+      "territory": "Negrete",
+      "url": "https://www.muninegrete.cl/feed/",
+      "access": "read",
+      "error": null,
+      "local_candidates": [],
+      "public_social_links": []
+    },
+    {
+      "name": "Mulchén · búsqueda laboral",
+      "territory": "Mulchén",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "access": "read",
+      "error": null,
+      "local_candidates": [
+        {
+          "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+          "title": "Bases de Postulación Feria Navideña 2025",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+          "title": "Concurso Público – Abogado Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Dispositivo Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+          "title": "Concurso Público – Profesional Equipo Previene",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-psicologo-omil/",
+          "title": "Concurso Público – Psicólogo OMIL",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/",
+          "title": "CONCURSO PÚBLICO 01 Cargo, Grado 8º Planta Directivos, Director de Obras Municipales",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/",
+          "title": "Llamado a Concurso para proveer cargo de Director de Control",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-3/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/",
+          "title": "Llamado a Concurso Público – Directivo Grado 6 E.M.R. (Dirección de Control Interno)",
+          "kind": "page"
+        }
+      ],
+      "public_social_links": [
+        "https://www.facebook.com/munimulchen",
+        "https://www.instagram.com/municipalidaddemulchen"
+      ]
+    },
+    {
+      "name": "Malleco7 · ediciones",
+      "territory": "Malleco",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "access": "shared_index",
+      "error": null,
+      "local_candidates": null,
+      "public_social_links": null
+    },
+    {
+      "name": "Radio Viaducto",
+      "territory": "Nacimiento",
+      "url": "https://radioviaducto.cl/",
+      "access": "shared_index",
+      "error": null,
+      "local_candidates": null,
+      "public_social_links": null
+    },
+    {
+      "name": "Las Noticias de Malleco",
+      "territory": "Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "access": "shared_index",
+      "error": null,
+      "local_candidates": null,
+      "public_social_links": null
+    }
+  ],
+  "coverage_complete": false,
+  "new_offers_confirmed": 0,
+  "published": 0,
+  "paid_provider_calls": 0,
+  "social_profiles_not_retried": "Instagram policy captured 39409845792: User-agent * Disallow /; indexed search recorded separately, timelines not read"
+}

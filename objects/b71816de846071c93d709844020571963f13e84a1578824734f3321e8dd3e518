@@ -1,0 +1,11 @@
+#linkedin
+User-agent: *
+disallow: /partners/
+#scrapy 
+User-agent: Scrapy,proximic
+disallow: /
+#sitemap
+Sitemap: https://www.chiletrabajos.cl/sitemap.xml 
+User-agent:* 
+Disallow:/ofertasmuchomas
+

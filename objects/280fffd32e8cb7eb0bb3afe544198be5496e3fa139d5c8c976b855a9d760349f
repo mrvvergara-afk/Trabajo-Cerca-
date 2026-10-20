@@ -1,0 +1,2021 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Trabajos     de Nacimiento</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name='description' content='Se han encontrado 139 Ofertas de trabajo de Nacimiento | Chiletrabajos busca y publica empleos en chile.'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://s3.amazonaws.com/cht2/public/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="alternate" type="application/rss+xml" href="https://www.chiletrabajos.cl/rss.xml">
+    <link href="https://s3.amazonaws.com/cht2/public/favicon.ico" rel="shortcut icon">
+    <meta name='keywords' content='chile, puesto, descripciÓn'>
+    <meta name='application-name' content='chiletrabajos.cl'>
+    <meta name='msapplication-TileColor' content='#ffffff'>
+    <meta name='msapplication-TileImage' content=''>
+    <meta property="fb:app_id" content="159839844064190" />
+            <meta property='og:site_name' content='Chiletrabajos Empleos Trabajos'>
+            <link rel="publisher" href="https://plus.google.com/+chiletrabajos">
+    <link rel="canonical" href="https://www.chiletrabajos.cl/encuentra-un-empleo">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/cht2/front/css/all.min.css">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/cht2/front/css/main.css">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/cht2/front/css/menu.css">
+    <!-- ADS -->
+    <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+    <link rel="manifest" href="https://www.chiletrabajos.cl/manifest.json" />
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "a89866a6-b3f6-4caa-8a05-c6ebf4d02840",
+            });
+        });
+    </script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    <style>
+        .btn-facebook {
+            color: #fff;
+            background-color: #1877f2;
+            border-color: #1877f2;
+        }
+
+        .btn-facebook:hover {
+            color: #fff;
+            background-color: #1877f2;
+            border-color: #1877f2;
+        }
+
+        .btn-linkedin {
+            color: #fff;
+            background-color: #0077b5;
+            border-color: #0077b5;
+        }
+
+        .btn-linkedin:hover {
+            color: #fff;
+            background-color: #0077b5;
+            border-color: #0077b5;
+        }
+
+        .social-share {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 10px 0;
+        }
+
+        .social-share a {
+            margin-right: 10px;
+        }
+
+        .social-share a:last-child {
+            margin-right: 0px;
+        }
+
+        .v-separator {
+            display: inline-block;
+            height: 40px;
+            border-right: 1px solid #ddd;
+            width: 2px;
+            margin: 0 15px 0 5px;
+        }
+
+        #login .box .social-login .btn {
+            padding-left: 20px;
+            padding-right: 20px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+        }
+
+        #login .box .social-login .btn i,
+        #login .box .social-login .btn svg {
+            margin-right: .5rem;
+        }
+
+        #login .box .social-login .btn i {
+            font-size: 25px;
+        }
+    </style>
+    <!-- ANALITYCS -->
+            <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CP8H0S0YGF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-CP8H0S0YGF');
+        </script>
+
+        <style>
+        #scrollButton {
+            display: none;
+            position: fixed;
+            bottom: 110px;
+            right: 20px;
+            padding: 10px 12px;
+            background-color: #1f5372;
+            color: #fff;
+            cursor: pointer;
+            z-index: 9999;
+            border: 0;
+            border-radius: 3px;
+        }
+
+        #footer .copyright {
+            padding-bottom: 120px;
+        }
+    </style>
+    <script async src="https://cdn.fuseplatform.net/publift/tags/2/4177/fuse.js?v=574126"></script>
+    <script>
+        const fusetag = window.fusetag || (window.fusetag = {
+            que: []
+        });
+        let slot;
+        fusetag.que.push(function() {
+            fusetag.pageInit({
+                blockingFuseIds: []
+            });
+            fusetag.onSlotViewable(function(e) {
+                slot = document.querySelector(`div[data-fuse-slot="${e.slotId}"]`);
+                slot.style.minHeight = slot.offsetHeight + 'px';
+            });
+        });
+    </script>
+    <style>
+        .ad-container {
+            position: relative;
+            background-image: radial-gradient(rgba(34, 34, 34, .119) 1px, transparent 1px);
+            background-size: calc(10 * .5px) calc(10 * .5px);
+            padding-bottom: 20px;
+        }
+
+        .ad-container>div:first-of-type::before {
+            content: "PUBLICIDAD";
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            text-transform: uppercase;
+            color: #707070;
+            font-size: 11px
+        }
+    </style>
+</head>
+
+<body data-baseurl="https://www.chiletrabajos.cl/">
+    <!-- boton scroll up -->
+    <button id="scrollButton"><i class="fas fa-arrow-up"></i></button>
+    <script>
+        window.addEventListener('scroll', function() {
+            var scrollButton = document.getElementById('scrollButton');
+            if (window.scrollY > 200) {
+                scrollButton.style.display = 'block';
+            } else {
+                scrollButton.style.display = 'none';
+            }
+        });
+
+        document.getElementById('scrollButton').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <div class="menuOverlay"></div>
+    <!-- nuevo menu -->
+    <div id="chtSidenav" class="sidenav">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo position-relative">
+                        <a class="" href="https://www.chiletrabajos.cl/">
+                            <img src="https://s3.amazonaws.com/cht2/front/img/logo.png" alt="Chiletrabajos">
+                        </a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 0;top: -7px;font-size: 40px;font-weight: 400;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="menu-movil">
+                        <ul>
+                                                        <li>
+                                <a href="https://www.chiletrabajos.cl/" class="link">
+                                    <i class="fas fa-home"></i> Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.chiletrabajos.cl/encuentra-un-empleo" class="link">
+                                    <i class="fas fa-search"></i> Buscar empleos
+                                </a>
+                            </li>
+                                                            <li>
+                                    <div class="separator"></div>
+                                </li>
+                                <li>
+                                    <a href="https://www.chiletrabajos.cl/chtregister" class="link">
+                                        <i class="fas fa-user"></i> Crear cuenta
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.chiletrabajos.cl/chtlogin" class="link">
+                                        <i class="fas fa-user"></i> Ingresa a tu cuenta
+                                    </a>
+                                </li>
+                                                                                    <li>
+                                <a href="https://www.chiletrabajos.cl/empleadores/" class="link" target="_blank">
+                                    <i class="fas fa-briefcase"></i> Empleadores
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 px-0 px-md-auto">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand justify-content-start p-0 mb-lg-2" href="https://www.chiletrabajos.cl/">
+                            <img src="https://s3.amazonaws.com/cht2/front/img/logo.png" alt="Chiletrabajos" style="width: auto!important;">
+                        </a>
+                        <div class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active px-0"><a class="nav-link px-3 " href="https://www.chiletrabajos.cl/">Home <span class="sr-only">(current)</span></a></li>
+                                <li class="nav-item --separator-right px-0"><a class="nav-link px-3 active" href="https://www.chiletrabajos.cl/encuentra-un-empleo">Buscar empleos</a></li>
+                                                                    <li class="nav-item px-0"><a class="nav-link px-3 " href="https://www.chiletrabajos.cl/chtregister">Crea cuenta</a></li>
+                                    <li class="nav-item px-0"><a class="nav-link px-3  login no-border" href="https://www.chiletrabajos.cl/chtlogin">Ingresa a tu cuenta</a></li>
+                                                                <li class="nav-item px-0 ml-3">
+                                    <a href="https://www.chiletrabajos.cl/empleadores/" class="nav-link no-border empleadores px-3" target="_blank">Empleadores</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="navbar p-0 m-0 d-flex d-sm-none d-md-none d-lg-none d-xl-none" style="list-style: none;position: relative;right: 80px;">
+                                                                                </ul>
+                        <button class="navbar-toggler custom-toggler menu-open float-right mr-3" type="button" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+        <main id="content" >
+                <div class="container-lg"><div class="container" id="buscador">
+	<div class="row">
+				<!-- AD -->
+									<div class="col-sm-12 px-0 mt-2 mb-2 overflow-hidden py-2 mb-2 ad-container" align="center" style="min-height: 106px;">
+    <p class="m-0 text-center text-muted d-none"><small>PUBLICIDAD</small></p>
+    
+	<!-- GAM 4550765/CHTRA_chiletrabajo/CHLT_Global_Header_Desktop -->
+	<div data-fuse="CHLT_Global_Header_Desktop"></div>
+</div>						</div>
+</div>
+<div class="row ">
+	<div class="col-md-12">
+		<ul class="breadcrumb mt-2 p-0 mb-3">
+			<li class="breadcrumb-item">
+				<a href="https://www.chiletrabajos.cl/">Home</a>
+			</li>
+			<li class="breadcrumb-item"><a class="text-dark" style="text-decoration: none;" href="https://www.chiletrabajos.cl/encuentra-un-empleo">Encuentra un Empleo</a></li>		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 px-1">
+		<aside id="filtro">
+						<div class="box with-shadow px-3 " style="width: 277px; margin: 0 auto;">
+				<span class="title mt-2">B&uacute;squeda</span>
+				<form action="https://www.chiletrabajos.cl/encuentra-un-empleo" method="GET" id="buscadorForm" class="mt-3">
+					<div class="form-group">
+						<label for="trabajo">Trabajo</label>
+						<input type="text" name="2" id="trabajo" class="form-control form-control-sm" value="Nacimiento">
+					</div>
+										<div class=" mobile-search">
+						<div class="form-group">
+							<label for="ubicacion">Ubicaci&oacute;n</label>
+							<select name="13" class="form-control form-control-sm">
+								<option value="">--</option>
+								<option value="1022"  data-seo="santiago">Santiago</option>
+								<option value="1035"  data-seo="concepcion">Concepci&oacute;n</option>
+								<option value="1014"  data-seo="valparaiso">Valpara&iacute;so</option>
+								<option value="1004"  data-seo="antofagasta">Antofagasta</option>
+								<option value="1028"  data-seo="rancagua">Rancagua</option>
+								<option value="">--</option>
+																										<option  value="1000" data-seo="arica">Arica</option>
+																										<option  value="1001" data-seo="putre">Putre</option>
+																										<option  value="1002" data-seo="iquique">Iquique</option>
+																										<option  value="1003" data-seo="pozo-almonte">Pozo Almonte</option>
+																										<option  value="1004" data-seo="antofagasta">Antofagasta</option>
+																										<option  value="1005" data-seo="tocopilla">Tocopilla</option>
+																										<option  value="1006" data-seo="calama">Calama</option>
+																										<option  value="1007" data-seo="copiapo">Copiapó</option>
+																										<option  value="1008" data-seo="chanaral">Chañaral</option>
+																										<option  value="1009" data-seo="vallenar">Vallenar</option>
+																										<option  value="1010" data-seo="la-serena">La Serena</option>
+																										<option  value="1011" data-seo="coquimbo">Coquimbo</option>
+																										<option  value="1012" data-seo="ovalle">Ovalle</option>
+																										<option  value="1013" data-seo="illapel">Illapel</option>
+																										<option  value="1014" data-seo="valparaiso">Valparaíso</option>
+																										<option  value="1015" data-seo="la-ligua">La Ligua</option>
+																										<option  value="1016" data-seo="los-andes">Los Andes</option>
+																										<option  value="1017" data-seo="san-felipe">San Felipe</option>
+																										<option  value="1018" data-seo="quillota">Quillota</option>
+																										<option  value="1019" data-seo="san-antonio">San Antonio</option>
+																										<option  value="1020" data-seo="hanga-roa">Hanga Roa</option>
+																										<option  value="1021" data-seo="quilpue">Quilpué</option>
+																										<option  value="1022" data-seo="santiago">Santiago</option>
+																										<option  value="1023" data-seo="colina">Colina</option>
+																										<option  value="1024" data-seo="puente-alto">Puente Alto</option>
+																										<option  value="1025" data-seo="san-bernardo">San Bernardo</option>
+																										<option  value="1026" data-seo="melipilla">Melipilla</option>
+																										<option  value="1027" data-seo="talagante">Talagante</option>
+																										<option  value="1028" data-seo="rancagua">Rancagua</option>
+																										<option  value="1029" data-seo="san-fernando">San Fernando</option>
+																										<option  value="1030" data-seo="pichilemu">Pichilemu</option>
+																										<option  value="1031" data-seo="talca">Talca</option>
+																										<option  value="1032" data-seo="curico">Curicó</option>
+																										<option  value="1033" data-seo="linares">Linares</option>
+																										<option  value="1034" data-seo="cauquenes">Cauquenes</option>
+																										<option  value="1035" data-seo="concepcion">Concepción</option>
+																										<option  value="1055" data-seo="quirihue">Quirihue</option>
+																										<option  value="1056" data-seo="bulnes">Bulnes</option>
+																										<option  value="1057" data-seo="san-carlos">San Carlos</option>
+																										<option  value="1036" data-seo="chillan">Chillán</option>
+																										<option  value="1037" data-seo="los-angeles">Los Ángeles</option>
+																										<option  value="1038" data-seo="lebu">Lebu</option>
+																										<option  value="1039" data-seo="temuco">Temuco</option>
+																										<option  value="1040" data-seo="angol">Angol</option>
+																										<option  value="1041" data-seo="valdivia">Valdivia</option>
+																										<option  value="1042" data-seo="la-union">La Unión</option>
+																										<option  value="1043" data-seo="puerto-montt">Puerto Montt</option>
+																										<option  value="1044" data-seo="osorno">Osorno</option>
+																										<option  value="1045" data-seo="castro">Castro</option>
+																										<option  value="1046" data-seo="chaiten">Chaitén</option>
+																										<option  value="1047" data-seo="coyhaique">Coyhaique</option>
+																										<option  value="1048" data-seo="puerto-aysen">Puerto Aysén</option>
+																										<option  value="1049" data-seo="chile-chico">Chile Chico</option>
+																										<option  value="1050" data-seo="cochrane">Cochrane</option>
+																										<option  value="1051" data-seo="punta-arenas">Punta Arenas</option>
+																										<option  value="1052" data-seo="puerto-natales">Puerto Natales</option>
+																										<option  value="1053" data-seo="porvenir">Porvenir</option>
+																										<option  value="1054" data-seo="puerto-williams">Puerto Williams</option>
+															</select>
+						</div>
+						<div class="form-group">
+							<label for="fecha">Fecha</label>
+							<select class="form-control form-control-sm" name="fecha" id="fecha">
+								<option value="">--</option>
+								<option>Cualquiera</option>
+								<option value="1" >Hoy</option>
+								<option value="2" >Desde Ayer</option>
+								<option value="3" >Menor a 3 d&iacute;as</option>
+								<option value="4" >Menor a 6 d&iacute;as</option>
+								<option value="5" >Hace una semana</option>
+								<option value="6" >Hace un mes</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="categoria">Categor&iacute;a</label>
+							<select name="categoria" class="form-control form-control-sm" id="categoria">
+								<option value="">--</option>
+																										<option  value="2020" data-seo="administracion">Administración</option>
+																										<option  value="2003" data-seo="arte-diseno-medios">Arte/Diseño/Medios</option>
+																										<option  value="2024" data-seo="asistente-administrativo">Asistente administrativo</option>
+																										<option  value="2008" data-seo="economia-contabilidad">Economía / Contabilidad</option>
+																										<option  value="2005" data-seo="educacion-y-psicopedagogia">Educación y Psicopedagogía</option>
+																										<option  value="2022" data-seo="estetica-y-cuidado-personal">Estética y Cuidado Personal</option>
+																										<option  value="2009" data-seo="hoteleria-turismo-y-gastronomia">Hotelería Turismo y Gastronomía</option>
+																										<option  value="2007" data-seo="informatica-telecomunicaciones">Informática / Telecomunicaciones</option>
+																										<option  value="2001" data-seo="profesionales-y-tecnicos">Profesionales y Técnicos</option>
+																										<option  value="2021" data-seo="logistica-distribucion">Logística / Distribución</option>
+																										<option  value="2016" data-seo="marketing-y-publicidad">Marketing y Publicidad</option>
+																										<option  value="2017" data-seo="medicina-salud">Medicina / Salud</option>
+																										<option  value="2025" data-seo="operarios">Operarios</option>
+																										<option  value="2019" data-seo="otros">Otros</option>
+																										<option  value="2026" data-seo="practicas-profesionales">Prácticas profesionales</option>
+																										<option  value="2023" data-seo="recepcion-secretaria">Recepción / Secretaria</option>
+																										<option  value="2028" data-seo="seguridad">Seguridad</option>
+																										<option  value="2027" data-seo="ventas-comercial">Ventas / Comercial</option>
+																										<option  value="2029" data-seo="servicios-domesticos">Servicios Domésticos</option>
+																										<option  value="2031" data-seo="recursos-humanos">Recursos Humanos</option>
+																										<option  value="2032" data-seo="trabajos-universitarios">Trabajos Universitarios</option>
+															</select>
+						</div>
+						<div class="form-group">
+							<label for="empresa">Empresa</label>
+							<input type="text" name="8" class="form-control form-control-sm" value="" placeholder="Empresa">
+						</div>
+						<div class="form-group">
+							<label for="tipo">Tipo</label>
+							<select name="14" class="form-control form-control-sm" id="tipo">
+								<option value="">--</option>
+																										<option  value="21" data-seo="part-time">Part-time</option>
+																										<option  value="22" data-seo="full-time">Full-time</option>
+																										<option  value="26" data-seo="part-time-full-time">Part-time &amp; Full-time</option>
+															</select>
+						</div>
+						<div class="form-group">
+							<label for="discapacidad">Ley de Inclusión</label>
+							<select class="form-control form-control-sm" name="inclusion" id="discapacidad">
+								<option value="" >--</option>
+								<option value="1"  >Si</option>
+								<option value="0" >Indiferente</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group mb-0">
+						<button type="submit" class="btn btn-primary btn-block btn-sm">Buscar</button>
+					</div>
+					<div class="d-block d-md-none d-lg-none d-sm-none form-group">
+						<a class="mt10 btn-block" onclick="$('.mobile-search').removeClass('d-none').show().append('<input type='+'text'+' name='+'avanzada'+' value='+'1'+' class='+'d-none'+' />'); $(this).hide(); return false;">B&uacute;squeda avanzada</a>
+					</div>
+					<input type="hidden" name="f" id="f" value="2">
+				</form>
+			</div>
+												<div class="col-sm-12 px-0 mt-2 mb-2 overflow-hidden py-2 ad-container" align="center" style="min-height: 250px;">
+    <p class="mb-2 text-center text-muted d-none"><small>PUBLICIDAD</small></p>
+    
+	<!-- GAM 4550765/CHTRA_chiletrabajo/CHLT_Sidebar_Left_Desktop -->
+	<div data-fuse="CHLT_Sidebar_Left_Desktop"></div>
+</div>									</aside>
+	</div>
+	<div class="col-md-8 mb-3 px-1" id="buscador">
+					<!-- titulo buscador -->
+							<div class="titulo">
+					<h1 class="font-weight-bold">
+						Trabajos     de <a href='https://www.chiletrabajos.cl/encuentra-un-empleo?2=Nacimiento'>Nacimiento</a> 											</h1>
+				</div>
+				<div class="title-lines">
+																	<h2 class="">139 Trabajos     de <a href='https://www.chiletrabajos.cl/encuentra-un-empleo?2=Nacimiento' style='color: #333;'>Nacimiento</a> </h2>
+									</div>
+							<!-- sort -->
+		<div class="btn-group btn-group-sm mb-3 sort-group" role="group" aria-label="Basic example">
+						<span class="d-inline-block sort mr-3">Ordenar por</span>
+			<button type="button" class="btn btn-primary" onclick="$('#f').val('2'); $('#f').parent('form').submit();">Fecha</button>
+			<button type="button" class="btn btn-gray" onclick="$('#f').val('1'); $('#f').parent('form').submit();">Relevancia</button>
+		</div>
+		<!-- end sort -->
+		<!-- paginador -->
+		<div class="d-block overflow-hidden mb-2">
+							<nav aria-label="Paginacion Chiletrabajos">
+					<ul class="pagination m-0 float-right"><li class="page-item active"><b>1</b></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/30?2=Nacimiento" class="page-link" data-ci-pagination-page="2">2</a></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/60?2=Nacimiento" class="page-link" data-ci-pagination-page="3">3</a></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/90?2=Nacimiento" class="page-link" data-ci-pagination-page="4">4</a></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/30?2=Nacimiento" class="page-link" data-ci-pagination-page="2" rel="next">&gt;</a></li></ul>				</nav>
+					</div>
+		<!-- end paginador -->
+		<!-- jobs -->
+		<div class="">
+			<!-- AQUI VA LOOP -->
+							<div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/supervisor-a-higiene-hospitalaria-turno-noche-san-ramon-3916728';">
+                                    <div class="thumb" style="background:url('/upload_files/images/thumbs/8/7/d/87d84682546875914b30a6b8bbccaa9b.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-higiene-hospitalaria-turno-noche-san-ramon-3916728" class="font-weight-bold">Supervisor/a Higiene Hospitalaria Turno Noche -&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Limchile,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/supervisor-a-higiene-hospitalaria-turno-noche-san-ramon-3916728'><i class="far fa-calendar"></i> 19 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/supervisor-a-higiene-hospitalaria-turno-noche-san-ramon-3916728';">
+        <p class="description" style="word-break: break-all;">
+            ¡Únete a limchile!
+
+en limchile, contamos con más de 42 años de experiencia&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-higiene-hospitalaria-turno-noche-san-ramon-3916728" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-higiene-hospitalaria-turno-noche-san-ramon-3916728" class="btn guardar" data-id="3916728" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3916728" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394';">
+                                    <div class="thumb" style="background:url('https://s3.amazonaws.com/cht2/thumbs/empresas/23170f64ee78a883e6762f68bbb23ed3.png') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394" class="font-weight-bold">Práctica Profesional Ingeniería Civil Industrial -&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Serfonac,
+                        <a href="https://www.chiletrabajos.cl/ciudad/los-angeles.html">Los Ángeles</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394'><i class="far fa-calendar"></i> 16 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394';">
+        <p class="description" style="word-break: break-all;">
+            Cultiva talento – práctica profesional - nacimiento
+
+ingeniería civil industrial – masso (medio&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394" class="btn guardar" data-id="3915394" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3915394" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/administrador-de-contrato-faena-kaufmann-casa-matriz-3915499';">
+                    <div class="thumb" style="background-color: #1565C0">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/administrador-de-contrato-faena-kaufmann-casa-matriz-3915499" class="font-weight-bold">Administrador de Contrato Faena - Kaufmann&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/administrador-de-contrato-faena-kaufmann-casa-matriz-3915499'><i class="far fa-calendar"></i> 16 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/administrador-de-contrato-faena-kaufmann-casa-matriz-3915499';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/administrador-de-contrato-faena-kaufmann-casa-matriz-3915499" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/administrador-de-contrato-faena-kaufmann-casa-matriz-3915499" class="btn guardar" data-id="3915499" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3915499" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-ingenieria-civil-mecanica-industrial-comercial-andes-motor-casa-matriz-3914518';">
+                    <div class="thumb" style="background-color: #1565C0">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-ingenieria-civil-mecanica-industrial-comercial-andes-motor-casa-matriz-3914518" class="font-weight-bold">Práctica Ingeniería Civil Mecánica/Industrial/Comercial - Andes&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/practica-ingenieria-civil-mecanica-industrial-comercial-andes-motor-casa-matriz-3914518'><i class="far fa-calendar"></i> 15 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-ingenieria-civil-mecanica-industrial-comercial-andes-motor-casa-matriz-3914518';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+cargo: práctica Área gerencia de camiones
+
+funciones:
+análisis del mercado.&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/practica-ingenieria-civil-mecanica-industrial-comercial-andes-motor-casa-matriz-3914518" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-ingenieria-civil-mecanica-industrial-comercial-andes-motor-casa-matriz-3914518" class="btn guardar" data-id="3914518" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3914518" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/vidriero-altura-maipu-3914508';">
+                                    <div class="thumb" style="background:url('/upload_files/images/thumbs/8/7/d/87d84682546875914b30a6b8bbccaa9b.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/vidriero-altura-maipu-3914508" class="font-weight-bold">Vidriero Altura - Maipú</a>
+        </h2>
+        <h3 class="meta">
+                            Limchile,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/vidriero-altura-maipu-3914508'><i class="far fa-calendar"></i> 15 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/vidriero-altura-maipu-3914508';">
+        <p class="description" style="word-break: break-all;">
+            Importante hospital ubicado en la comuna de maipú requiere incorporar a un vidriero&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/vidriero-altura-maipu-3914508" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a la mutual de seguridad">
+                    <i class="fas fa-hard-hat"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a una caja de compensación">
+                    <i class="fas fa-money-bill"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa provee el uniforme de trabajo">
+                    <i class="fab fa-black-tie"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/vidriero-altura-maipu-3914508" class="btn guardar" data-id="3914508" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3914508" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-maquinaria-andesmaq-chillan-3914523';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-maquinaria-andesmaq-chillan-3914523" class="font-weight-bold">Ejecutivo de Ventas Maquinaria - AndesMaq&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/chillan.html">Chillán</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-maquinaria-andesmaq-chillan-3914523'><i class="far fa-calendar"></i> 15 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-maquinaria-andesmaq-chillan-3914523';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-maquinaria-andesmaq-chillan-3914523" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-maquinaria-andesmaq-chillan-3914523" class="btn guardar" data-id="3914523" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3914523" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/supervisor-a-de-aseo-hospitalario-noche-estacion-central-3914297';">
+                                    <div class="thumb" style="background:url('/upload_files/images/thumbs/8/7/d/87d84682546875914b30a6b8bbccaa9b.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-de-aseo-hospitalario-noche-estacion-central-3914297" class="font-weight-bold">Supervisor/a de Aseo Hospitalario Noche -&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Limchile,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/supervisor-a-de-aseo-hospitalario-noche-estacion-central-3914297'><i class="far fa-calendar"></i> 14 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/supervisor-a-de-aseo-hospitalario-noche-estacion-central-3914297';">
+        <p class="description" style="word-break: break-all;">
+            Supervisor(a) de higiene hospitalaria
+
+¡Únete a limchile!
+
+en limchile, contamos con más de&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-de-aseo-hospitalario-noche-estacion-central-3914297" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-de-aseo-hospitalario-noche-estacion-central-3914297" class="btn guardar" data-id="3914297" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3914297" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/tens-encargado-de-supervisar-higiene-hospitalario-independencia-3914300';">
+                                    <div class="thumb" style="background:url('/upload_files/images/thumbs/8/7/d/87d84682546875914b30a6b8bbccaa9b.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/tens-encargado-de-supervisar-higiene-hospitalario-independencia-3914300" class="font-weight-bold">Tens encargado de Supervisar Higiene Hospitalario&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Limchile,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/tens-encargado-de-supervisar-higiene-hospitalario-independencia-3914300'><i class="far fa-calendar"></i> 14 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/tens-encargado-de-supervisar-higiene-hospitalario-independencia-3914300';">
+        <p class="description" style="word-break: break-all;">
+            Supervisor(a) de higiene hospitalaria
+
+¡Únete a limchile!
+
+en limchile, contamos con más de&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/tens-encargado-de-supervisar-higiene-hospitalario-independencia-3914300" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/tens-encargado-de-supervisar-higiene-hospitalario-independencia-3914300" class="btn guardar" data-id="3914300" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3914300" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operador-logistico-iii-kaufmann-copiapo-3913874';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/operador-logistico-iii-kaufmann-copiapo-3913874" class="font-weight-bold">Operador Logístico III - Kaufmann Copiapo</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/copiap.html">Copiapó</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/operador-logistico-iii-kaufmann-copiapo-3913874'><i class="far fa-calendar"></i> 14 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operador-logistico-iii-kaufmann-copiapo-3913874';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/operador-logistico-iii-kaufmann-copiapo-3913874" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/operador-logistico-iii-kaufmann-copiapo-3913874" class="btn guardar" data-id="3913874" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3913874" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/montaje-y-servicio-antofagasta-3913254';">
+                                    <div class="thumb" style="background:url('https://s3.amazonaws.com/cht2/thumbs/empresas/332e61952b464720fe618f604dd0624c.png') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/montaje-y-servicio-antofagasta-3913254" class="font-weight-bold">MONTAJE Y SERVICIO ANTOFAGASTA</a>
+        </h2>
+        <h3 class="meta">
+                            Supermercado del neumatico ltda,
+                        <a href="https://www.chiletrabajos.cl/ciudad/antofagasta.html">Antofagasta</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/montaje-y-servicio-antofagasta-3913254'><i class="far fa-calendar"></i> 13 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/montaje-y-servicio-antofagasta-3913254';">
+        <p class="description" style="word-break: break-all;">
+            Somos una empresa líder a nivel nacional con más de 70 años de&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/montaje-y-servicio-antofagasta-3913254" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa paga o copaga una cobertura de salud adicional.">
+                    <i class="far fa-plus-square"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="¡La salud es lo más importante! La empresa paga el seguro de vida">
+                    <i class="fas fa-user-shield"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="paga o copaga un seguro dental.">
+                    <i class="fas fa-tooth"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a la mutual de seguridad">
+                    <i class="fas fa-hard-hat"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a una caja de compensación">
+                    <i class="fas fa-money-bill"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/montaje-y-servicio-antofagasta-3913254" class="btn guardar" data-id="3913254" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3913254" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>HB</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290" class="font-weight-bold">(Recepción cvs) Auxiliares Servicios Generales Hospital&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Hospital barros luco trudeau,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290'><i class="far fa-calendar"></i> 12 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290';">
+        <p class="description" style="word-break: break-all;">
+            * hospital barros luco trudeau requiere en modalidad de reemplazos para sus diversas&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a la mutual de seguridad">
+                    <i class="fas fa-hard-hat"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a una caja de compensación">
+                    <i class="fas fa-money-bill"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa incluye casino para la alimentación">
+                    <i class="fas fa-utensils"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290" class="btn guardar" data-id="3687290" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3687290" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150';">
+                    <div class="thumb" style="background-color: #37474F">
+                <span>HB</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150" class="font-weight-bold">AUXILIARES DE SERVICIO (JORNADA: DIURNA, 3ER&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Hospital barros luco trudeau,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150'><i class="far fa-calendar"></i> 12 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150';">
+        <p class="description" style="word-break: break-all;">
+            ¡¡queremos que seas parte de nuestro hospital!!
+
+buscamos auxiliares de servicio (jornada: diurna,&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a la mutual de seguridad">
+                    <i class="fas fa-hard-hat"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a una caja de compensación">
+                    <i class="fas fa-money-bill"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa incluye casino para la alimentación">
+                    <i class="fas fa-utensils"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150" class="btn guardar" data-id="3654150" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3654150" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/buscamos-pedidor-a-de-importaciones-y-pedidor-a-junior-de-importaciones-3912824';">
+                                    <div class="thumb" style="background:url('https://s3.amazonaws.com/cht2/thumbs/empresas/8afa573e4d828a26440e366e296b2ded.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/buscamos-pedidor-a-de-importaciones-y-pedidor-a-junior-de-importaciones-3912824" class="font-weight-bold">BUSCAMOS PEDIDOR(A) DE IMPORTACIONES Y PEDIDOR(A)&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            López &amp;amp; lavín consultores..,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/buscamos-pedidor-a-de-importaciones-y-pedidor-a-junior-de-importaciones-3912824'><i class="far fa-calendar"></i> 12 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/buscamos-pedidor-a-de-importaciones-y-pedidor-a-junior-de-importaciones-3912824';">
+        <p class="description" style="word-break: break-all;">
+            Buscamos pedidor(a) de importaciones y pedidor(a) junior de importaciones
+
+lópez &amp; lavín consultores&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/buscamos-pedidor-a-de-importaciones-y-pedidor-a-junior-de-importaciones-3912824" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/buscamos-pedidor-a-de-importaciones-y-pedidor-a-junior-de-importaciones-3912824" class="btn guardar" data-id="3912824" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3912824" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>HB</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143" class="font-weight-bold">TÉCNICOS EN ENFERMERÍA (JORNADA: DIURNA, 3ER&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Hospital barros luco trudeau,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143'><i class="far fa-calendar"></i> 12 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143';">
+        <p class="description" style="word-break: break-all;">
+            ¡¡queremos que seas parte de nuestro hospital!!
+                     
+buscamos tÉcnicos en enfermerÍa (jornada: diurna,&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a la mutual de seguridad">
+                    <i class="fas fa-hard-hat"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a una caja de compensación">
+                    <i class="fas fa-money-bill"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa incluye casino para la alimentación">
+                    <i class="fas fa-utensils"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143" class="btn guardar" data-id="3654143" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3654143" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/mecanico-turno-fin-de-semana-kaufmann-antofagasta-3912292';">
+                    <div class="thumb" style="background-color: #AD1457">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/mecanico-turno-fin-de-semana-kaufmann-antofagasta-3912292" class="font-weight-bold">Mecánico Turno Fin de Semana  -&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/antofagasta.html">Antofagasta</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/mecanico-turno-fin-de-semana-kaufmann-antofagasta-3912292'><i class="far fa-calendar"></i> 09 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/mecanico-turno-fin-de-semana-kaufmann-antofagasta-3912292';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/mecanico-turno-fin-de-semana-kaufmann-antofagasta-3912292" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/mecanico-turno-fin-de-semana-kaufmann-antofagasta-3912292" class="btn guardar" data-id="3912292" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3912292" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316';">
+                                    <div class="thumb" style="background:url('https://s3.amazonaws.com/cht2/thumbs/empresas/23170f64ee78a883e6762f68bbb23ed3.png') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316" class="font-weight-bold">Práctica Profesional Contador Auditor - Nacimiento</a>
+        </h2>
+        <h3 class="meta">
+                            Serfonac ltda,
+                        <a href="https://www.chiletrabajos.cl/ciudad/concepcion.html">Concepción</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316'><i class="far fa-calendar"></i> 08 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316';">
+        <p class="description" style="word-break: break-all;">
+            Cultiva talento – práctica profesional contador auditor
+
+en cultiva talento buscamos estudiantes de&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316" class="btn guardar" data-id="3911316" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3911316" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/jefe-a-area-de-compras-repuestos-kaufmann-lampa-3911679';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-area-de-compras-repuestos-kaufmann-lampa-3911679" class="font-weight-bold">Jefe(a) Área de Compras Repuestos -&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/jefe-a-area-de-compras-repuestos-kaufmann-lampa-3911679'><i class="far fa-calendar"></i> 08 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/jefe-a-area-de-compras-repuestos-kaufmann-lampa-3911679';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-area-de-compras-repuestos-kaufmann-lampa-3911679" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-area-de-compras-repuestos-kaufmann-lampa-3911679" class="btn guardar" data-id="3911679" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3911679" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3910499';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>L</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3910499" class="font-weight-bold">Operario con credencial de aplicador de&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Lagniel,
+                        <a href="https://www.chiletrabajos.cl/ciudad/los-angeles.html">Los Ángeles</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3910499'><i class="far fa-calendar"></i> 07 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3910499';">
+        <p class="description" style="word-break: break-all;">
+            Se busca operario multifuncional con credencial de aplicador de plaguicidas reconocido sag
+para&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3910499" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3910499" class="btn guardar" data-id="3910499" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3910499" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/profesor-3910365';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>CE</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/profesor-3910365" class="font-weight-bold">Profesor</a>
+        </h2>
+        <h3 class="meta">
+                            Corporación educacional academia tarapacá,
+                        <a href="https://www.chiletrabajos.cl/ciudad/iquique.html">Iquique</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/profesor-3910365'><i class="far fa-calendar"></i> 07 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/profesor-3910365';">
+        <p class="description" style="word-break: break-all;">
+            Corporación educacional academia tarapacá ubicado en iquique, busca docente de lenguaje básica  y&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/profesor-3910365" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="Cuidamos sus pertenencias y ofrecen un lugar para estacionar bicicletas. ">
+                    <i class="fas fa-bicycle"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a la mutual de seguridad">
+                    <i class="fas fa-hard-hat"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa esta adscrita a una caja de compensación">
+                    <i class="fas fa-money-bill"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/profesor-3910365" class="btn guardar" data-id="3910365" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3910365" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-tecnico-ingenieria-en-administracion-de-empresas-kaufmann-castro-3910902';">
+                    <div class="thumb" style="background-color: #37474F">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-tecnico-ingenieria-en-administracion-de-empresas-kaufmann-castro-3910902" class="font-weight-bold">Práctica Técnico/Ingeniería en Administración de Empresas&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/castro.html">Castro</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/practica-tecnico-ingenieria-en-administracion-de-empresas-kaufmann-castro-3910902'><i class="far fa-calendar"></i> 07 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/practica-tecnico-ingenieria-en-administracion-de-empresas-kaufmann-castro-3910902';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+cargo: práctica Área administración
+
+funciones:
+apoyo con base de datos&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/practica-tecnico-ingenieria-en-administracion-de-empresas-kaufmann-castro-3910902" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/practica-tecnico-ingenieria-en-administracion-de-empresas-kaufmann-castro-3910902" class="btn guardar" data-id="3910902" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3910902" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/supervisor-a-de-operaciones-de-higiene-industrial-3910813';">
+                                    <div class="thumb" style="background:url('/upload_files/images/thumbs/8/7/d/87d84682546875914b30a6b8bbccaa9b.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-de-operaciones-de-higiene-industrial-3910813" class="font-weight-bold">Supervisor/a de Operaciones de Higiene Industrial</a>
+        </h2>
+        <h3 class="meta">
+                            Limchile,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/supervisor-a-de-operaciones-de-higiene-industrial-3910813'><i class="far fa-calendar"></i> 07 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/supervisor-a-de-operaciones-de-higiene-industrial-3910813';">
+        <p class="description" style="word-break: break-all;">
+            ¡Únete al equipo limchile!
+
+en limchile contamos con más de 42 años de&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-de-operaciones-de-higiene-industrial-3910813" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/supervisor-a-de-operaciones-de-higiene-industrial-3910813" class="btn guardar" data-id="3910813" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3910813" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/jefe-a-de-logistica-kaufmann-osorno-3910565';">
+                    <div class="thumb" style="background-color: #6A1B9A">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-de-logistica-kaufmann-osorno-3910565" class="font-weight-bold">Jefe(a) de Logística - Kaufmann Osorno</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/osorno.html">Osorno</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/jefe-a-de-logistica-kaufmann-osorno-3910565'><i class="far fa-calendar"></i> 07 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/jefe-a-de-logistica-kaufmann-osorno-3910565';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-de-logistica-kaufmann-osorno-3910565" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-de-logistica-kaufmann-osorno-3910565" class="btn guardar" data-id="3910565" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3910565" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operarios-as-de-planta-calama-con-o-sin-experiencia-3909607';">
+                    <div class="thumb" style="background-color: #9E9D24">
+                <span>X</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/operarios-as-de-planta-calama-con-o-sin-experiencia-3909607" class="font-weight-bold">Operarios(as) de Planta/Calama - con o&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Xinerlink,
+                        <a href="https://www.chiletrabajos.cl/ciudad/calama.html">Calama</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/operarios-as-de-planta-calama-con-o-sin-experiencia-3909607'><i class="far fa-calendar"></i> 06 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operarios-as-de-planta-calama-con-o-sin-experiencia-3909607';">
+        <p class="description" style="word-break: break-all;">
+            ¡Únete a nuestro equipo!
+en xinerlink nos encontramos en búsqueda de operarios(as) de&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/operarios-as-de-planta-calama-con-o-sin-experiencia-3909607" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/operarios-as-de-planta-calama-con-o-sin-experiencia-3909607" class="btn guardar" data-id="3909607" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3909607" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operadores-as-de-planta-3909815';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>X</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/operadores-as-de-planta-3909815" class="font-weight-bold">Operadores (as) de planta</a>
+        </h2>
+        <h3 class="meta">
+                            Xinerlink,
+                        <a href="https://www.chiletrabajos.cl/ciudad/calama.html">Calama</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/operadores-as-de-planta-3909815'><i class="far fa-calendar"></i> 06 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operadores-as-de-planta-3909815';">
+        <p class="description" style="word-break: break-all;">
+            ¡Únete a nuestro equipo!
+
+en xinerlink nos encontramos en búsqueda de operarios(as) de&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/operadores-as-de-planta-3909815" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa provee un bus de acercamiento">
+                    <i class="fas fa-bus"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa incluye casino para la alimentación">
+                    <i class="fas fa-utensils"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/operadores-as-de-planta-3909815" class="btn guardar" data-id="3909815" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3909815" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operador-logistico-i-kaufmann-coquimbo-la-serena-3910038';">
+                    <div class="thumb" style="background-color: #37474F">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/operador-logistico-i-kaufmann-coquimbo-la-serena-3910038" class="font-weight-bold">Operador Logístico I - Kaufmann Coquimbo&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/vallenar.html">Vallenar</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/operador-logistico-i-kaufmann-coquimbo-la-serena-3910038'><i class="far fa-calendar"></i> 06 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/operador-logistico-i-kaufmann-coquimbo-la-serena-3910038';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/operador-logistico-i-kaufmann-coquimbo-la-serena-3910038" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/operador-logistico-i-kaufmann-coquimbo-la-serena-3910038" class="btn guardar" data-id="3910038" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3910038" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/senior-outsystems-developer-con-ingles-3908885';">
+                    <div class="thumb" style="background-color: #00695C">
+                <span>IT</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/senior-outsystems-developer-con-ingles-3908885" class="font-weight-bold">Senior OutSystems Developer con inglés</a>
+        </h2>
+        <h3 class="meta">
+                            I2b tech,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/senior-outsystems-developer-con-ingles-3908885'><i class="far fa-calendar"></i> 05 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/senior-outsystems-developer-con-ingles-3908885';">
+        <p class="description" style="word-break: break-all;">
+            ¡hola comunidad tech de latam!
+
+
+ ¡estamos ampliando nuestro equipo!
+
+en i2b tech estamos&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/senior-outsystems-developer-con-ingles-3908885" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="Ten libertad para hacer tus trámites, el horario de entrada y salida es flexible. ">
+                    <i class="far fa-clock"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="Utiliza lo que desees, sin dresscode.">
+                    <i class="fas fa-tshirt"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="No es necesario ir a la oficina, puedes trabajar completamente desde tu casa.">
+                    <i class="fas fa-laptop"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="El día de tu cumpleaños es canjeable por un día completo de vacaciones.">
+                    <i class="fas fa-birthday-cake"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/senior-outsystems-developer-con-ingles-3908885" class="btn guardar" data-id="3908885" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3908885" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/jefe-a-de-aseguramiento-de-calidad-y-medio-ambiente-3909271';">
+                                    <div class="thumb" style="background:url('https://s3.amazonaws.com/cht2/thumbs/empresas/8e2c588ace82f6d890d35171a72f04a8.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-de-aseguramiento-de-calidad-y-medio-ambiente-3909271" class="font-weight-bold">Jefe (a) de Aseguramiento de Calidad&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Icb food service spa.,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/jefe-a-de-aseguramiento-de-calidad-y-medio-ambiente-3909271'><i class="far fa-calendar"></i> 05 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/jefe-a-de-aseguramiento-de-calidad-y-medio-ambiente-3909271';">
+        <p class="description" style="word-break: break-all;">
+            Icb food service, empresa líder en el canal food service en chile, que&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-de-aseguramiento-de-calidad-y-medio-ambiente-3909271" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+                    <div class="col-sm-12 px-0 mt-3 botones beneficio">
+            <div class="btn-group">
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa paga o copaga una cobertura de salud adicional.">
+                    <i class="far fa-plus-square"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="La empresa provee un bus de acercamiento">
+                    <i class="fas fa-bus"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="¡La salud es lo más importante! La empresa paga el seguro de vida">
+                    <i class="fas fa-user-shield"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="paga o copaga un seguro dental.">
+                    <i class="fas fa-tooth"></i>                </a>
+                            <a href="javascript:void(0);" class="btn icon-beneficio" data-toggle="tooltip" data-placement="top" title="El día de tu cumpleaños es canjeable por un día completo de vacaciones.">
+                    <i class="fas fa-birthday-cake"></i>                </a>
+                        </div>
+        </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/jefe-a-de-aseguramiento-de-calidad-y-medio-ambiente-3909271" class="btn guardar" data-id="3909271" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3909271" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/vendedor-de-repuestos-en-terreno-kaufmann-punta-arenas-3909389';">
+                    <div class="thumb" style="background-color: #00695C">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/vendedor-de-repuestos-en-terreno-kaufmann-punta-arenas-3909389" class="font-weight-bold">Vendedor de Repuestos en Terreno -&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/punta-arenas.html">Punta arenas</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/vendedor-de-repuestos-en-terreno-kaufmann-punta-arenas-3909389'><i class="far fa-calendar"></i> 05 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/vendedor-de-repuestos-en-terreno-kaufmann-punta-arenas-3909389';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/vendedor-de-repuestos-en-terreno-kaufmann-punta-arenas-3909389" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/vendedor-de-repuestos-en-terreno-kaufmann-punta-arenas-3909389" class="btn guardar" data-id="3909389" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3909389" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/asesor-a-comercial-kaufmann-antofagasta-3908727';">
+                    <div class="thumb" style="background-color: #C62828">
+                <span>GK</span>
+            </div>
+                <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/asesor-a-comercial-kaufmann-antofagasta-3908727" class="font-weight-bold">Asesor(a) Comercial - Kaufmann Antofagasta</a>
+        </h2>
+        <h3 class="meta">
+                            Grupo kaufmann,
+                        <a href="https://www.chiletrabajos.cl/ciudad/antofagasta.html">Antofagasta</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/asesor-a-comercial-kaufmann-antofagasta-3908727'><i class="far fa-calendar"></i> 05 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/asesor-a-comercial-kaufmann-antofagasta-3908727';">
+        <p class="description" style="word-break: break-all;">
+            DescripciÓn del puesto 
+
+esta oferta laboral se rige bajo la ley n° 21.015&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/asesor-a-comercial-kaufmann-antofagasta-3908727" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/asesor-a-comercial-kaufmann-antofagasta-3908727" class="btn guardar" data-id="3908727" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3908727" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                        <a href="javascript:void(0);" class="btn" data-toggle="tooltip" title="Elegible ley de inclusion" style="padding-left: 15px;border-left: 1px solid #ddd;line-height: 24px;color: #28a745!important;">
+                        <i class="fas fa-wheelchair"></i>
+                </a>
+                                            </div>
+                    </div>
+</div><div class="job-item with-thumb destacado no-hover ">
+    <div class="col-sm-12 px-0" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/2-pedidor-a-de-importaciones-agencia-de-aduanas-santiago-3908598';">
+                                    <div class="thumb" style="background:url('https://s3.amazonaws.com/cht2/thumbs/empresas/8afa573e4d828a26440e366e296b2ded.jpg') no-repeat center center;"></div>
+                            <h2 class="title overflow-hidden">
+            <a href="https://www.chiletrabajos.cl/trabajo/2-pedidor-a-de-importaciones-agencia-de-aduanas-santiago-3908598" class="font-weight-bold">2 PEDIDOR(A) DE IMPORTACIONES – AGENCIA&#8230;</a>
+        </h2>
+        <h3 class="meta">
+                            López &amp;amp; lavín consultores..,
+                        <a href="https://www.chiletrabajos.cl/ciudad/santiago.html">Santiago</a>
+        </h3>
+        <h3 class="meta"><a href='https://www.chiletrabajos.cl/trabajo/2-pedidor-a-de-importaciones-agencia-de-aduanas-santiago-3908598'><i class="far fa-calendar"></i> 04 de  Octubre de 2026</a></h3>
+    </div>
+    <div class="col-sm-12 px-0 mt-2" onclick="window.location.href='https://www.chiletrabajos.cl/trabajo/2-pedidor-a-de-importaciones-agencia-de-aduanas-santiago-3908598';">
+        <p class="description" style="word-break: break-all;">
+            2 pedidor(a) de importaciones – agencia de aduanas  santiago
+
+somos lópez &amp; lavín&#8230;                            <a href="https://www.chiletrabajos.cl/trabajo/2-pedidor-a-de-importaciones-agencia-de-aduanas-santiago-3908598" class="ver-mas-btn">Ver m&aacute;s</a>
+                    </p>
+                    </div>
+        <div class="col-sm-12 px-0 mt-1 botones mb-1">
+        <div class="btn-group">
+            <a href="https://www.chiletrabajos.cl/trabajo/2-pedidor-a-de-importaciones-agencia-de-aduanas-santiago-3908598" class="btn guardar" data-id="3908598" data-toggle="tooltip" data-placement="top" title="Guardar">
+                <i class="fas fa-bookmark"></i>
+            </a>
+                            <a href="https://www.chiletrabajos.cl/enviar-amigo/3908598" class="btn" data-toggle="tooltip" data-placement="top" title="Compartir">
+                    <i class="fas fa-share"></i>
+                </a>
+                                                        </div>
+                    </div>
+</div>						<!-- END -->
+		</div>
+		<!-- jobs -->
+		<!-- paginador -->
+		<div class="d-block overflow-hidden mb-2">
+							<nav aria-label="Paginacion Chiletrabajos">
+					<ul class="pagination m-0 float-right"><li class="page-item active"><b>1</b></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/30?2=Nacimiento" class="page-link" data-ci-pagination-page="2">2</a></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/60?2=Nacimiento" class="page-link" data-ci-pagination-page="3">3</a></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/90?2=Nacimiento" class="page-link" data-ci-pagination-page="4">4</a></li><li class="page-item"><a href="https://www.chiletrabajos.cl/encuentra-un-empleo/30?2=Nacimiento" class="page-link" data-ci-pagination-page="2" rel="next">&gt;</a></li></ul>				</nav>
+					</div>
+		<!-- end paginador -->
+				<!-- publicidad -->
+					<div class="col-sm-12 px-0 mt-2 mb-2 overflow-hidden py-2 ad-container" align="center" style="min-height: 90px;">
+    <p class="mb-2 text-center text-muted d-none"><small>PUBLICIDAD</small></p>
+    
+	<!-- GAM 4550765/CHTRA_chiletrabajo/CHLT_Secciones_Multisize_Desktop -->
+	<div data-fuse="CHLT_Secciones_Multisize_Desktop"></div>
+</div>				<div class="box border no-pointer mt-2">
+			<h6 class="title font-weight-bold text-uppercase">Encuentra más:</h6>
+		</div>
+		<style>
+			.seo-links .list-group-item:hover {
+				background-color: #ddd;
+				-webkit-transition: background-color 1000ms linear;
+				-ms-transition: background-color 1000ms linear;
+				transition: background-color 1000ms linear;
+			}
+		</style>
+		<ul class="list-group mt-2 mb-4 seo-links px-0">
+			
+			<li class="list-group-item">
+				<a class="text-dark" style="text-decoration: none;" href="https://www.chiletrabajos.cl/encuentra-un-empleo">
+					<i class="fas fa-arrow-right mr-2"></i> Trabajos en Chile    
+				</a>
+			</li>
+										</ul>
+							<div class="titulo">
+				<h1 class="font-weight-bold">
+					Trabajos     de <a href='https://www.chiletrabajos.cl/encuentra-un-empleo?2=Nacimiento'>Nacimiento</a> 									</h1>
+			</div>
+			</div>
+	</div></div>
+</main>
+            <div class="container">
+            <div class="row">
+                <div class="col-sm-12 mb-3" align="center">
+                                    </div>
+            </div>
+        </div>
+    <footer id="footer" class="pt20">
+    <div class="container">
+        <div class="row">
+            <div class=" col-xs-12 col-sm-6 col-md-4 mt-3 mb-2">
+                <div class="widget mb-0">
+                    <div class="widget-content">
+                        <img class="logo mb-0" src="https://s3.amazonaws.com/cht2/front/img/logo.png" alt="Chiletrabajos">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 mt-3">
+                <div class="widget mb-0">
+                    <div class="widget-content">
+                        <ul class="list-inline">
+                            <li><a href="https://www.chiletrabajos.cl/rss.xml" class="rss">RSS</a></li>
+                                                        <li><a href="https://www.chiletrabajos.cl/privacidad">Privacidad</a></li>
+                            <li><a href="https://www.chiletrabajos.cl/terminos-y-condiciones">T&eacute;rminos y condiciones</a></li>
+                            <li><a href="https://www.chiletrabajos.cl/contacto">Cont&aacute;ctanos</a></li>
+                            <li><a href="https://www.chiletrabajos.cl/contacto-empresa">Venta Empresas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <p>&copy; Copyright 2026 <a href="https://www.chiletrabajos.cl/">Chiletrabajos</a>
+                | Todos los derechos reservados |
+            </p>
+            <ul class="footer-social">
+                <li><a href="https://www.facebook.com/chtrabajos" class="fab fa-facebook d-flex flex-column" target="_blank" alt="Facebook Chiletrabajos">
+                        <span style="
+    font-size: 7px;
+">Facebook</span>
+                    </a></li>
+                <li><a href="https://twitter.com/chiletrabajos" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" style="
+    fill: #747474;
+    /* height: 100px; */
+    /* width: 100px; */
+    /* float: left; */
+    clear: both;
+    text-align: center;
+    margin: 0 auto;
+"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                        </svg>
+                        <span style="
+    clear: both;
+    /* float: left; */
+    display: block;
+    font-size: 7px;
+">X</span>
+                    </a></li>
+                <li><a href="https://www.linkedin.com/company/chiletrabajos" target="_blank" class="fab fa-linkedin d-flex flex-column"><span style="
+    clear: both;
+    /* float: left; */
+    display: block;
+    font-size: 7px;
+">Linkedin</span></a></li>
+                <li><a href="https://www.instagram.com/chiletrabajos/" target="_blank" class="fab fa-instagram d-flex flex-column"><span style="
+    clear: both;
+    /* float: left; */
+    display: block;
+    font-size: 7px;
+">Instagram</span></a></li>
+            </ul>
+        </div>
+    </div>
+</footer> <!-- end #footer -->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script defer src="https://s3.amazonaws.com/cht2/front/js/jquery.cookie.js"></script>
+
+
+
+<script>
+    $(function() {
+
+        /* nuevo guardar
+        ==================*/
+        if (typeof $('.job') !== 'undefined') {
+            // guardar oferta como favorita
+            var requestGuardar = false;
+            $(document).on('click', '.guardar', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var $this = $(this);
+                if (requestGuardar) return;
+
+                var ajaxOpts = {
+                    type: 'post',
+                    url: $('body').data('baseurl') + 'encuentra-un-empleo/save',
+                    data: {
+                        id: $this.data('id'),
+                        cht2015: $.cookie('cht2015')
+                    },
+                    success: function(data) {
+
+                    },
+                    complete: function() {
+                        if ($this.parent().hasClass('datos-empresa')) {
+                            if ($this.hasClass('active')) {
+                                $this.removeClass('active');
+                                $this.html('<i class="fas fa-bookmark"></i> Guardar');
+                            } else {
+                                $this.addClass('active');
+                                $this.html('<i class="fas fa-bookmark"></i> Guardado');
+                            }
+                        } else {
+                            if ($this.hasClass('active')) {
+                                $this.removeClass('active');
+                                $this.find('i').removeClass('text-orange');
+                            } else {
+                                $this.addClass('active');
+                                $this.find('i').addClass('text-orange');
+                            }
+                        }
+                        requestGuardar = false;
+                    }
+                };
+                requestGuardar = true;
+                $.ajax(ajaxOpts);
+                return false;
+            });
+        }
+
+        if ($(".nav.nav-tabs").length > 0) {
+            $(".nav.nav-tabs li").on("click", "a", function(e) {
+                e.preventDefault();
+                var $target = $(this).attr("href");
+                $(".nav.nav-tabs li").removeClass("active");
+                $(this).parent().addClass("active");
+                $(".tab-content .tab-pane").removeClass("active").hide();
+                $(".tab-content div" + $target + "").addClass("active").show()
+            })
+        }
+    });
+</script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-0723528803036913",
+            enable_page_level_ads: true
+        });
+    </script>
+<!-- Begin comScore Tag -->
+<script>
+    var _comscore = _comscore || [];
+    _comscore.push({
+        c1: "2",
+        c2: "11223757"
+    });
+    (function() {
+        var s = document.createElement("script"),
+            el = document.getElementsByTagName("script")[0];
+        s.async = true;
+        s.src = "https://sb.scorecardresearch.com/cs/11223757/beacon.js";
+        el.parentNode.insertBefore(s, el);
+    })();
+</script>
+<noscript>
+    <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=11223757&amp;cv=3.6.0&amp;cj=1">
+</noscript>
+<!-- End comScore Tag -->
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "ItemList",
+            "numberOfItems": 30,
+            "itemListElement": [
+                
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "url": "https://www.chiletrabajos.cl/trabajo/supervisor-a-higiene-hospitalaria-turno-noche-san-ramon-3916728"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "url": "https://www.chiletrabajos.cl/trabajo/administrador-de-contrato-faena-kaufmann-casa-matriz-3915499"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 4,
+                            "url": "https://www.chiletrabajos.cl/trabajo/practica-ingenieria-civil-mecanica-industrial-comercial-andes-motor-casa-matriz-3914518"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 5,
+                            "url": "https://www.chiletrabajos.cl/trabajo/vidriero-altura-maipu-3914508"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 6,
+                            "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-maquinaria-andesmaq-chillan-3914523"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 7,
+                            "url": "https://www.chiletrabajos.cl/trabajo/supervisor-a-de-aseo-hospitalario-noche-estacion-central-3914297"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 8,
+                            "url": "https://www.chiletrabajos.cl/trabajo/tens-encargado-de-supervisar-higiene-hospitalario-independencia-3914300"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 9,
+                            "url": "https://www.chiletrabajos.cl/trabajo/operador-logistico-iii-kaufmann-copiapo-3913874"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 10,
+                            "url": "https://www.chiletrabajos.cl/trabajo/montaje-y-servicio-antofagasta-3913254"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 11,
+                            "url": "https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 12,
+                            "url": "https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 13,
+                            "url": "https://www.chiletrabajos.cl/trabajo/buscamos-pedidor-a-de-importaciones-y-pedidor-a-junior-de-importaciones-3912824"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 14,
+                            "url": "https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 15,
+                            "url": "https://www.chiletrabajos.cl/trabajo/mecanico-turno-fin-de-semana-kaufmann-antofagasta-3912292"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 16,
+                            "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 17,
+                            "url": "https://www.chiletrabajos.cl/trabajo/jefe-a-area-de-compras-repuestos-kaufmann-lampa-3911679"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 18,
+                            "url": "https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3910499"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 19,
+                            "url": "https://www.chiletrabajos.cl/trabajo/profesor-3910365"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 20,
+                            "url": "https://www.chiletrabajos.cl/trabajo/practica-tecnico-ingenieria-en-administracion-de-empresas-kaufmann-castro-3910902"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 21,
+                            "url": "https://www.chiletrabajos.cl/trabajo/supervisor-a-de-operaciones-de-higiene-industrial-3910813"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 22,
+                            "url": "https://www.chiletrabajos.cl/trabajo/jefe-a-de-logistica-kaufmann-osorno-3910565"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 23,
+                            "url": "https://www.chiletrabajos.cl/trabajo/operarios-as-de-planta-calama-con-o-sin-experiencia-3909607"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 24,
+                            "url": "https://www.chiletrabajos.cl/trabajo/operadores-as-de-planta-3909815"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 25,
+                            "url": "https://www.chiletrabajos.cl/trabajo/operador-logistico-i-kaufmann-coquimbo-la-serena-3910038"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 26,
+                            "url": "https://www.chiletrabajos.cl/trabajo/senior-outsystems-developer-con-ingles-3908885"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 27,
+                            "url": "https://www.chiletrabajos.cl/trabajo/jefe-a-de-aseguramiento-de-calidad-y-medio-ambiente-3909271"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 28,
+                            "url": "https://www.chiletrabajos.cl/trabajo/vendedor-de-repuestos-en-terreno-kaufmann-punta-arenas-3909389"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 29,
+                            "url": "https://www.chiletrabajos.cl/trabajo/asesor-a-comercial-kaufmann-antofagasta-3908727"
+                        }
+                    ,
+                        {
+                            "@type": "ListItem",
+                            "position": 30,
+                            "url": "https://www.chiletrabajos.cl/trabajo/2-pedidor-a-de-importaciones-agencia-de-aduanas-santiago-3908598"
+                        }
+                                ]
+        }
+    </script>
+
+<!-- rand adx -->
+<!-- 27-01-2020 -->
+    <!-- tooltip -->
+    <script type="text/javascript">
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip({
+                boundary: 'viewport',
+                container: '#buscador'
+            });
+        });
+    </script>
+
+<!-- nuevo header -->
+<script>
+    $(function() {
+
+        $('#chtSidenav').css({
+            'transition': '0.5s'
+        });
+        $('body').on('click', '.menuOverlay', function() {
+            closeNav();
+            $('#chtSidenav').removeClass('open')
+            $('.menuOverlay').hide();
+        })
+        /* menu */
+        $('body').on('click', '.menu-open, .sidenav .logo', function(e) {
+            e.preventDefault();
+            if ($('#chtSidenav').hasClass('open')) {
+                closeNav();
+                $('#chtSidenav').removeClass('open')
+                $('.menuOverlay').hide();
+            } else {
+                openNav();
+                $('#chtSidenav').addClass('open');
+                $('.menuOverlay').show();
+            }
+        });
+
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("chtSidenav").style.width = "100vw";
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("chtSidenav").style.width = "0";
+        }
+
+        $('#cv').on('click', function(e) {
+                    });
+
+        $('.custom-file-input:not(.video)').on('change', function(e) {
+            var file = document.getElementById("cv").files[0];
+            var fileName = file.name;
+            var nextSibling = e.target.nextElementSibling;
+            nextSibling.innerText = fileName;
+                    });
+    });
+</script>
+</body>
+
+</html>

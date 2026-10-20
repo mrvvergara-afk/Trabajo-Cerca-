@@ -1,0 +1,1211 @@
+{
+  "rows": [
+    {
+      "candidate": {
+        "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+        "title": "Llamados a concurso público",
+        "kind": "page",
+        "territory": "Lumaco",
+        "discovered_from": "https://www.munilumaco.cl/"
+      },
+      "page": {
+        "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+        "final_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "337bedf0ae785fe16d08f91324a0cbc2ca030b0dddef38f11fd02456e437e841",
+        "title": "Llamados a concurso público",
+        "text": "Bases Jefatura grado 8°\n \nBases Profesional grado 12°\n \nAnexo 1\n \nAnexo 2\n \nDecreto que aprueba llamado a concurso y bases",
+        "local_candidates": [
+          {
+            "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+            "title": "Open menu",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+            "title": "Bases Jefatura grado 8°",
+            "kind": "document"
+          },
+          {
+            "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+            "title": "Bases Profesional grado 12°",
+            "kind": "document"
+          },
+          {
+            "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+            "title": "Decreto que aprueba llamado a concurso y bases",
+            "kind": "document"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "fecha_original"
+        ],
+        "hiring_language": false,
+        "published": false,
+        "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "title": "0",
+        "kind": "page",
+        "territory": "Traiguén",
+        "discovered_from": "https://mtraiguen.cl/"
+      },
+      "page": {
+        "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "final_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "54a201bf6c2928c8e87ebd16c1a7c30c837e82b4fe65302cc7a99505c4ca4f15",
+        "title": "BASES DE SEGUNDO LLAMADO A CONCURSO PUBLICO - PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN - Ilustre Municipalidad de TraiguénHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteContraste negativoFondo claroSubrayar enlacesFuente legibleRestablecer",
+        "text": "BASES DE SEGUNDO LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\nInicio\nMunicipalidad\nBASES DE SEGUNDO LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\nPublicado el 14 Sep a las 1:00 pm\nLa Municipalidad de Traiguén requiere contratar el recurso humano necesario, según descripción de los cargos señalados en las presentes bases, para atender de manera integral a personas con dependencia funcional y apoyo a su cuidador/a principal.\n \n \n \n \n¿Te gustó? ¡Comparte!\nBASES LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\nBases para llamado a Concurso Público de 3 Cargos.\n \n \n Menú \n \n \n \n \n \n \n Ir al contenido",
+        "local_candidates": [
+          {
+            "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+            "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+            "kind": "page"
+          },
+          {
+            "url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+            "title": "decreto y bases 2do llamado",
+            "kind": "document"
+          },
+          {
+            "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+            "title": "BASES LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN",
+            "kind": "page"
+          },
+          {
+            "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+            "title": "Bases para llamado a Concurso Público de 3 Cargos.",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2026-09-14T16:00:11+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": "2026-09-14T16:00:11+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "status": "pending",
+        "reason": "local_notice_requires_review",
+        "review_blockers": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "lugar_unico_sin_confirmar",
+          "plazo_explicito_sin_confirmar"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "title": "0",
+        "kind": "page",
+        "territory": "Traiguén",
+        "discovered_from": "https://mtraiguen.cl/"
+      },
+      "page": {
+        "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "final_url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "db0c4d1090f619b920130cccd9c8ac7119799f4f61051585090d261e5d35a86c",
+        "title": "BASES LLAMADO A CONCURSO PUBLICO - PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN - Ilustre Municipalidad de TraiguénHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteContraste negativoFondo claroSubrayar enlacesFuente legibleRestablecer",
+        "text": "BASES LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\nInicio\nMunicipalidad\nBASES LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\nPublicado el 24 Ago a las 8:22 pm\nLa Municipalidad de Traiguén requiere contratar el recurso humano necesario, según descripción de los cargos señalados en las presentes bases, para atender de manera integral a personas con dependencia funcional y apoyo a su cuidador/a principal.\n \n \n \n \n \n \n \n¿Te gustó? ¡Comparte!\ninicio de las obras correspondientes al proyecto “Mejoramiento Ruta Patrimonial en Parque Cementerio Municipal»\nBASES DE SEGUNDO LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN\n \n \n Menú \n \n \n \n \n \n \n Ir al contenido",
+        "local_candidates": [
+          {
+            "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+            "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+            "kind": "page"
+          },
+          {
+            "url": "https://mtraiguen.cl/wp-content/uploads/2026/08/DECRETO-PRLAC.pdf",
+            "title": "DECRETO PRLAC",
+            "kind": "document"
+          },
+          {
+            "url": "https://mtraiguen.cl/wp-content/uploads/2026/08/BASES-PRLAC.pdf",
+            "title": "BASES PRLAC",
+            "kind": "document"
+          },
+          {
+            "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+            "title": "BASES DE SEGUNDO LLAMADO A CONCURSO PUBLICO – PROGRAMA RED LOCAL DE APOYOS Y CUIDADOS PRLAC-TRAIGUÉN",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2026-08-24T20:22:57+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": "2026-08-24T20:22:57+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+        "status": "pending",
+        "reason": "source_older_than_45_days"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+        "title": "0",
+        "kind": "page",
+        "territory": "Traiguén",
+        "discovered_from": "https://mtraiguen.cl/"
+      },
+      "page": {
+        "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+        "final_url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "bb857319cc7bb65d15cda2a5edbd457dc84d14df9f0e66c2a1c4461689d73725",
+        "title": "Realizan primer encuentro Empresarial de OMIL Traiguén 2026 - Ilustre Municipalidad de TraiguénHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteContraste negativoFondo claroSubrayar enlacesFuente legibleRestablecer",
+        "text": "Realizan primer encuentro Empresarial de OMIL Traiguén 2026\nInicio\nMunicipalidad\nRealizan primer encuentro Empresarial de OMIL Traiguén 2026\nPublicado el 2 Jun a las 5:28 pm\n \n Realizan primer encuentro Empresarial de OMIL Traiguén 2026\nLa actividad llevó por nombre: «Alianzas por el Empleo: Fortaleciendo el Capital Humano y la Productividad Local», el que se realizó en dependencias del salón multiuso del Punto Limpio y contó con la presencia de nuestro alcalde Luis Álvarez, el Seremi del Trabajo y Previsión Social de La Araucanía Juan Pablo Carrasco Vergara y la Directora de SENCE Araucanía Minerva Castañeda Meliñán.\nEl encuentro, tuvo como objetivo principal fortalecer el vínculo entre empresas, servicios públicos y actores del mundo laboral, promoviendo herramientas de apoyo para la contratación, capacitación y certificación de competencias laborales en la comuna.\nAgradecemos a las siguientes empresas que fueron parte de este primer encuentro:\n– Banco estado\n– Serviaseo\n– Copec\n– Aramco\n– Allipen\n– Banco Chile\n– Ganadera Sta Isidora\n– Trébol\n– Cft Araucanía\nNuestro alcalde, agradeció al equipo OMIL Traiguen por esta instancia de conversación y acercamiento entre autoridades y empresas, lo que sin duda generará un fuerte vínculo en pos de generar y buscar nuevas fuentes laborales para la comuna.\n¿Te gustó? ¡Comparte!\nAGENDA DEL ALCALDE – reunión con representantes de la Corporación ADES\ninicio de las obras correspondientes al proyecto “Mejoramiento Ruta Patrimonial en Parque Cementerio Municipal»\n \n \n Menú \n \n \n \n \n \n \n Ir al contenido",
+        "local_candidates": [
+          {
+            "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+            "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2026-06-02T17:28:15+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": "2026-06-02T17:28:15+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://mtraiguen.cl/municipalidad/realizan-primer-encuentro-empresarial-de-omil-traiguen-2026/",
+        "status": "pending",
+        "reason": "source_older_than_45_days"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+        "title": "Oficina Municipal de Intermediación Laboral (OMIL)",
+        "kind": "page",
+        "territory": "Negrete",
+        "discovered_from": "https://www.muninegrete.cl/"
+      },
+      "page": {
+        "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+        "final_url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "66a0ce5a709d7c55c937b2487572dc687237415f8382445e5072c1f0eb28bc0b",
+        "title": "Oficina Municipal de Intermediación Laboral (OMIL) – Ilustre Municipalidad de Negrete",
+        "text": "Ir al contenido\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nOFICINA OMIL NEGRETE\n \n \n \n \nLidia Aguilera Román, quien ejerce la responsabilidad administrativa del programa, encabeza la Oficina Municipal de Intermediación Laboral (OMIL). Desde su rol, coordina y supervisa las acciones orientadas a fortalecer la empleabilidad de los vecinos y vecinas, mediante un acompañamiento personalizado y una vinculación efectiva con empresas, organismos públicos y privados.\n \n \n \n \n LIDIA AGUILERA ROMÁN\n \n \n \n \n \nLa Oficina Municipal de Intermediación Laboral (OMIL) es un servicio que orienta y acompaña a las personas en su búsqueda de empleo y formación, conectando a quienes buscan trabajo con las oportunidades del mercado laboral. A través de una atención cercana y profesional, fortalece la empleabilidad y fomenta el emprendimiento.\n \nAdemás, gestiona acciones de capacitación, nivelación de estudios, postulación a fondos concursables y apoyo a microemprendimientos, trabajando en coordinación con empresas públicas y privadas para facilitar contrataciones y potenciar el desarrollo laboral de la comuna. Su labor se complementa con presencia en terreno, operativos comunitarios y redes con otras comunas del territorio Biobío Centro.\n \n \n \n LÍNEAS DE ACCIÓN \n \n \n \n \n \nDifusión de ofertas laborales a través de la Bolsa Nacional de Empleo.\nTalleres y sesiones personalizadas de apresto laboral.\nCoordinación de cursos de capacitación con enfoque en empleabilidad y emprendimiento.\nApoyo en la postulación a proyectos y fondos como FOSIS y SERCOTEC.\nNivelación de estudios para jóvenes y adultos.\nOrientación sobre el Seguro de Cesantía.\nPromoción de la igualdad de oportunidades laborales, especialmente para mujeres jefas de hogar y personas mayores.\n \n \n \n \n \nPROFESIONALES OFICINA OMIL NEGRETE\n \n \n \n \n PASCUAL MANOSALVA O.\n \n \n \n \n \n CECILIA ZEGPI MELO\n \n \n \n \n \n \n \n \n \n \n \n \n CONTACTO \n \n \n \n \n \n \n \n \n Teléfono \n (43) 2638210\n \n \n \n \n \n Correo Electrónico \n dideco@muninegrete.cl \n \n \n \n \n \n Horario - Lunes a viernes \n 08:30 a 14:00 horas\n \n \n \n \n \n \n \n \n \n \n \n0\n0\n0\n0\n0\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Desplazamiento al inicio",
+        "local_candidates": [
+          {
+            "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+            "title": "0",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2025-07-28T20:23:02+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "dideco@muninegrete.cl"
+        ],
+        "phones": [],
+        "source_published_at": "2025-07-28T20:23:02+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+        "status": "pending",
+        "reason": "source_older_than_45_days"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+        "title": "¡Disponibles las postulaciones para puestos de venta de “Todos los Santos” 2026!",
+        "kind": "page",
+        "territory": "Negrete",
+        "discovered_from": "https://www.muninegrete.cl/"
+      },
+      "page": {
+        "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+        "final_url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "ccf3d053fa1bb7360e3402b95bb0b81ed88d1d77bcb9424292bbd9275d9cc199",
+        "title": "¡Disponibles las postulaciones para puestos de venta de “Todos los Santos” 2026! – Ilustre Municipalidad de Negrete",
+        "text": "Ir al contenido\n \n \n \n \n \n \n \n \n \n \n \n \nLa Municipalidad de Negrete informa a la comunidad que se encuentran disponibles las Bases para la instalación y funcionamiento de puestos de venta con motivo de Todos los Santos 2026, actividad que se desarrollará en el Cementerio Municipal de nuestra comuna. Podrán postular artesanos, microempresarios, familias, personas naturales y agrupaciones sociales, entre otros, que cumplan con los requisitos establecidos en las bases. Las postulaciones podrán realizarse de manera individual o asociativa.\nPostulaciones: desde el 13 al 16 de octubre de 2026, entre las 08:30 y 14:00 horas, en la Oficina de Partes de la Municipalidad de Negrete, ubicada en Alberto Möller N°293. No se aceptarán postulaciones fuera de plazo. La actividad contempla puestos ubicados tanto al exterior como al interior del Cementerio Municipal, con funcionamiento entre el 29 de octubre y el 1 de noviembre, de acuerdo con la ubicación asignada y los horarios establecidos en las bases. \nLa selección de participantes será realizada por una comisión organizadora y la nómina de seleccionados se dará a conocer el 21 de octubre de 2026. Las bases consideran un máximo de 10 puestos de comida y 10 puestos de artesanía y productos, cuya selección considerará, entre otros aspectos, la variedad de la oferta. Invitamos a las personas interesadas a revisar detenidamente las bases y descargar el formulario de postulación, donde se detallan requisitos, obligaciones, valores, condiciones sanitarias y funcionamiento de los puestos.\nDescarga las Bases Puestos de Venta Todos los Santos 2026 y formulario de postulación aquí:\nBASES PUESTOS DE VENTAS TODOS LOS SANTOS_000918 (1)Descargar\n0\n0\n0\n0\n0\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Desplazamiento al inicio",
+        "local_candidates": [
+          {
+            "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+            "title": "0",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+            "title": "Oficina Municipal de Intermediación Laboral (OMIL)",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.muninegrete.cl/wp-content/uploads/2026/10/BASES-PUESTOS-DE-VENTAS-TODOS-LOS-SANTOS_000918-1.pdf",
+            "title": "Descargar",
+            "kind": "document"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2026-10-13T12:42:12+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": "2026-10-13T12:42:12+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+        "status": "pending",
+        "reason": "local_notice_requires_review",
+        "review_blockers": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto",
+          "lugar_unico_sin_confirmar",
+          "plazo_explicito_sin_confirmar"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "title": "Postulación  Abierta \n         OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS (100 CUPOS)",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "d62de654ce1eb6bdaf1daf988597fa2d24e3fb62ddbd7fdc2a0057270d1f295a",
+        "title": "Oferta Laboral: Operarios Agrícolas – Cosecha de Arándanos |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nOFERTA LABORAL\nOPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS\n Empresa del rubro agrícola de la comuna de Mulchén iniciará el reclutamiento de personal para realizar labores de cosecha de arándanos en un predio ubicado en el sector Campamento.\nVacantes disponibles:\n100 cupos\nFunciones:\nIdentificar y cosechar únicamente los arándanos que presenten un color azul uniforme y el grado de madurez requerido por la empresa o el mercado de destino.\nDejar en la planta los frutos verdes o dañados, siguiendo las instrucciones y los estándares establecidos por la empresa.\nRequisitos:\nSer mayor de 18 años.\nContar con o sin experiencia en labores agrícolas.\nDocumentos requeridos:\nCurrículum Vitae básico.\nFotocopia de cédula de identidad.\n \n 📍 Interesados deben presentar la documentación en la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": "s disponibles:",
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+        "title": "Postulación  Cerrada \n         SECRETARIA ADMINISTRATIVA CONTABLE",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "7fd10c0e993aea0018a575be3dfb950194d161aabb38eca575c7f5e6ddee74d2",
+        "title": "Oferta Laboral: Secretaria Administrativa Contable |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSECRETARIA ADMINISTRATIVA CONTABLE\n Empresa constructora de la comuna de Los Ángeles se encuentra en búsqueda de personal que cumpla con los requisitos solicitados. Se ofrece trabajo estable a largo plazo.\nVacantes disponibles:\n01 cupo\nFunciones:\nApoyo en labores administrativas y de secretaría.\nRecepción, orden y archivo de documentos.\nIngreso y actualización de información en planillas Excel.\nApoyo en facturación y documentación contable.\nAtención de llamadas y correos.\nOtras labores administrativas propias del cargo.\nRequisitos:\nIdealmente, contar con estudios de nivel técnico o superior en Administración, Contabilidad o carrera afín.\nExperiencia en labores administrativas o de secretaría.\nOrden, responsabilidad y buena disposición.\nDisponibilidad para trasladarse diariamente a la comuna de Los Ángeles.\nDocumentos requeridos:\nCurrículum Vitae que acredite experiencia en el rubro.\nFotocopia de cédula de identidad.\nCertificado de estudios.\nCertificado de antecedentes.\n \n 📍 Interesados deben presentar la documentación en la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": "s disponibles:",
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+        "title": "Postulación  Cerrada \n         JEFE DE TERRENO",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "df264a2b4ba45bc7d63a112961fc02c5cf15cdf4b4ec0111980fecd0ff806cfa",
+        "title": "Oferta Laboral: Jefe de Terreno |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nJEFE DE TERRENO\n Empresa del rubro agrícola de la comuna de Angol requiere contratar persona para desempeñar labores en agrícola ubicada en sector rural, entre Mulchén y sector Campamento.\nVacantes disponibles:\n01 cupo\nRequisitos:\nExperiencia en el rubro agrícola de al menos 2 años.\nFunciones:\nApoyo directo al administrador del predio.\nSupervisar, coordinar y ejecutar directamente las labores productivas diarias en el campo.\nDocumentos requeridos:\nCurrículum Vitae que acredite experiencia en el rubro de al menos 2 años.\nFotocopia de cédula de identidad.\nCertificado de antecedentes.\n \n 📍 Interesados deben presentar la documentación en la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": "s disponibles:",
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+        "title": "Postulación  Cerrada \n         EMBALAJE DE FRUTAS",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "be464d104ef2ca02b1f4dde3bcec4c645fc6110847b66bae1ec5e85e2d431da2",
+        "title": "Oferta Laboral: Embalaje de Frutas |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nEMBALAJE DE FRUTAS\nEmpresa del sector agrícola de la comuna de Los Ángeles requiere contratar personal femenino para desempeñar labores de embalaje de frutas.\nVacantes disponibles:\n15 cupos\nDescripción del cargo:\nOrdenar, proteger y envasar la fruta seleccionada en cajas o contenedores finales, cumpliendo con los estándares de calidad y las normas de inocuidad para su comercialización o exportación.\nRequisitos:\nContar con experiencia en el rubro.\nTener disponibilidad para traslado diario.\nDisponibilidad para trabajar en modalidad de turnos.\nBeneficios:\nLa empresa cuenta con locomoción de traslado.\nDocumentos requeridos:\nCurrículum Vitae actualizado.\nCédula de identidad vigente.\nCertificado de afiliación de AFP y salud.\n📍 Para mayor información y consultas, dirigirse a la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": "s disponibles:",
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
+        "title": "Postulación  Cerrada \n         CONVOCATORIA NACIONAL CONAF – TEMPORADA 2026-2027 (BRIGADISTAS FORESTALES, JEFES DE BRIGADA, JEFES DE CUADRILLA, MOTOSIERRISTAS)",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "4149a7531898962290c9c59f0b369f66fd0d2129f5c3a912f73192baf080ab28",
+        "title": "Oferta Laboral: Convocatoria Conaf – Temporada 2026-2027 (Brigadistas Forestales, Jefes de Brigada, Jefes de Cuadrilla, Motosierristas) |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nCONVOCATORIA NACIONAL CONAF – TEMPORADA 2026-2027\nLa Corporación Nacional Forestal (CONAF) informa que se encuentra abierta la convocatoria nacional para la temporada 2026-2027. Las personas interesadas pueden acercarse a la Oficina OMIL de Mulchén para retirar la ficha de inscripción, presentar documentación, recibir orientación sobre el proceso y obtener información sobre los cargos disponibles.\nCargos disponibles:\nBrigadistas Forestales.\nJefes de Brigada.\nJefes de Cuadrilla.\nMotosierristas.\nRequisitos mínimos:\nTener 18 años o más al momento de postular.\nNacionalidad chilena o extranjera con documentación de trabajo vigente en Chile.\nEnseñanza básica completa.\nContar con salud física y médica compatible con labores de alta exigencia.\nDocumentos requeridos:\nCédula de identidad por ambos lados.\nCertificado de estudios que acredite enseñanza básica completa.\nCertificado de afiliación AFP.\nCertificado de afiliación a Fonasa o Isapre.\nCertificado de antecedentes para fines especiales o particulares, con una vigencia máxima de 30 días.\nCertificado médico que acredite salud compatible con el cargo, con una vigencia máxima de 3 meses.\nImportante:\nEl certificado médico debe señalar expresamente que el paciente se encuentra físicamente apto para ejercer la labor correspondiente al cargo al que postula en incendios forestales.\n📍 Para retirar la ficha de inscripción, presentar documentación, recibir orientación y obtener mayor información, dirigirse a la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": "s disponibles:",
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+        "title": "Postulación  Cerrada \n         MANIPULADOR DE ALIMENTOS / CHEF / MAESTRO DE COCINA (08 CUPOS)",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "3ab6a03bdc7e87fe19e10b254ce347d4c74767c73c0c511ec9f670b0023c5e2c",
+        "title": "Oferta Laboral: Manipulador de Alimentos / Chef / Maestro de Cocina (08 cupos) |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nOFERTA LABORAL\nMANIPULADOR DE ALIMENTOS / CHEF / MAESTRO DE COCINA (08 CUPOS)\n Empresa de la comuna de Los Ángeles, dedicada al rubro alimentario, requiere contratar personal para desempeñarse en diversos recintos públicos de las comunas de Mulchén y Santa Bárbara.\nVacantes disponibles:\n(03 cupos) Jornada 10×5 – Lugar de trabajo: Mulchén.\n(03 cupos) Jornada 7×7 – Lugar de trabajo: Mulchén.\n(02 cupos) Jornada domingo, lunes y festivos – Lugar de trabajo: Mulchén y Santa Bárbara.\nFunciones:\nElaboración de desayuno, almuerzo, cena y colaciones según minuta establecida.\nMantener el orden, limpieza y sanitización del área de trabajo.\nApoyar en la recepción y almacenamiento de insumos.\nCumplir con las normas de manipulación de alimentos (BPM) y uso de elementos de protección personal (EPP).\nRequisitos:\nExperiencia mínima de 2 años en casinos de alimentación colectiva.\nDisponibilidad para trabajar en régimen de turnos.\nIndicar contacto de referencia de una jefatura anterior.\nCondiciones laborales:\nContrato a plazo fijo con posibilidad de pasar a contrato indefinido.\nLa empresa proporciona alojamiento y alimentación durante la jornada laboral.\nBono de movilización.\n \n 📍 Para mayor información y consultas, dirigirse a la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": "s disponibles:",
+        "company": null,
+        "workplace_evidence": "Mulchén.",
+        "work_communes": [
+          "Mulchén"
+        ],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "empresa",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/",
+        "title": "Postulación  Cerrada \n         CONDUCTOR CAMIÓN TOLVA (PROYECTO RUCALHUE)",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "c865513eae164d64810f36c8b008183d8d738da9ed8c6b9092f117ee70c7b8a1",
+        "title": "Oferta Laboral: Conductor Camión Tolva – Proyecto Rucalhue |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nOFERTA LABORAL\nCONDUCTOR CAMIÓN TOLVA (PROYECTO RUCALHUE)\n Empresa China First Highway Engineering, a cargo de la ejecución y construcción de la Central Hidroeléctrica Rucalhue, informa la apertura de una nueva vacante para desempeñarse como Conductor de Camión Tolva.\nRequisitos:\nLicencia de conducir profesional vigente clase A4 o A5.\nExperiencia comprobable en conducción de camiones de alto tonelaje o camión tolva.\nConocimiento en seguridad vial y operación en faenas.\nDeseable experiencia en minería, construcción o movimiento de tierra.\nDisponibilidad para trabajar en turnos o en terreno, según requerimientos de la operación.\nDocumentos requeridos:\nCurrículum Vitae actualizado que acredite la experiencia requerida.\nCédula de identidad vigente.\nCertificado de afiliación AFP.\nCertificado de afiliación al sistema de salud.\nLicencia de conducir vigente.\nCertificado de residencia.\nCertificado de antecedentes para fines especiales.\n \n 📍 Para mayor información y consultas, dirigirse a la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/",
+        "title": "Postulación  Cerrada \n         OPERADOR CARGADOR FRONTAL (PROYECTO RUCALHUE)",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "8173f5c843b21c0aefa5d85b7f5fa5d995a6479e9442d20169d07884073edacd",
+        "title": "Oferta Laboral: Operador Cargador Frontal – Proyecto Rucalhue |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Oferta Laboral \n \nLa Municipalidad informa a la comunidad, que están abiertas las postulaciones para el siguiente trabajo.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nOFERTA LABORAL\nOPERADOR CARGADOR FRONTAL (PROYECTO RUCALHUE)\n Empresa China First Highway Engineering, a cargo de la ejecución y construcción de la Central Hidroeléctrica Rucalhue, informa la apertura de una nueva vacante para desempeñarse como Operador de Cargador Frontal.\nRequisitos:\nSer mayor de 25 años.\nExperiencia mínima comprobable de 2 años en el cargo.\nLicencia de conducir clase D vigente.\nCertificación o experiencia comprobable en operación de maquinaria pesada.\nExperiencia en minería, construcción o movimiento de tierra.\nConocimiento en seguridad operacional y trabajo en faena.\nDisponibilidad para turnos o trabajo en terreno, según requerimiento operacional.\nDisponibilidad inmediata.\nDocumentos requeridos:\nCurrículum Vitae actualizado.\nFotocopia de cédula de identidad vigente.\nFotocopia de licencia de conducir.\n \n 📍 Para mayor información y consultas, dirigirse a la Oficina OMIL, ubicada en calle Aníbal Pinto N°495 (al interior del edificio municipal). Atención de lunes a viernes, de 08:15 a 13:45 hrs.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": "faena.",
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/",
+        "title": "agosto 31, 2024",
+        "kind": "page",
+        "territory": "Lumaco",
+        "discovered_from": "https://www.radionativa.cl/"
+      },
+      "page": {
+        "url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/",
+        "final_url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "b05a7b84cd50ec2e4c2a4d29c6ec38162e58f43209312540226543abc7b98e84",
+        "title": "✓ Radio Nativa | Entregan resultados de postulación al subsidio eléctrico: revisa aquí si eres beneficiario",
+        "text": "martes, octubre 20, 2026\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nHome\nSomos\nServicios\nPublicidad\nTarifa Elecciones 2025\nNoticias\n \nAll\nActualidad\nBiobío\nCañete\nCapitán Pastene\nContulmo\nDestacadas\nLa Araucanía\nLumaco\nNacional\nTirúa\n \n \n \n \n¡Radio Nativa 106.5 FM de Lumaco está de aniversario 27!\n \n \nRadio Nativa en alianza con NIC Televisión transmitirán de manera exclusiva parte de esta importante fiesta local.\n \n \nElecciones Regionales y Municipales 2024 (Programación Especial)\n \n \nLa Fondita de Nativa\n \n \nEncuentran cuerpo semienterrado en el patio de una vivienda en Purén: víctima es un adulto mayor\n \n \nUna persona fallece en operativo contra la Weichan Auka Mapu\n \n \nEntregan restos de joven víctima de femicidio en Angol: fue recibida por sus compañeros\n \n \nQuiso hacerlo pasar como un suicidio: detienen en Angol a adolescente de 17 años por asesinato de su pareja\n \n \nIncendio deja dos viviendas destruidas en Los Álamos\n \n \n🔴 [#Angol] Estudiante de cuarto medio fue asesinada por su pololo.\n \n \n \n \n \n \n \n \n \n \nTrending Tags\nGolden Globes\nMr. Robot\nMotoGP 2017\nClimate Change\nFlat Earth\n \n \n \n \n \n \n \n \n \n \n \n \n \nHome\nSomos\nServicios\nPublicidad\nTarifa Elecciones 2025\nNoticias\n \nAll\nActualidad\nBiobío\nCañete\nCapitán Pastene\nContulmo\nDestacadas\nLa Araucanía\nLumaco\nNacional\nTirúa\n \n \n \n \n¡Radio Nativa 106.5 FM de Lumaco está de aniversario 27!\n \n \nRadio Nativa en alianza con NIC Televisión transmitirán de manera exclusiva parte de esta importante fiesta local.\n \n \nElecciones Regionales y Municipales 2024 (Programación Especial)\n \n \nLa Fondita de Nativa\n \n \nEncuentran cuerpo semienterrado en el patio de una vivienda en Purén: víctima es un adulto mayor\n \n \nUna persona fallece en operativo contra la Weichan Auka Mapu\n \n \nEntregan restos de joven víctima de femicidio en Angol: fue recibida por sus compañeros\n \n \nQuiso hacerlo pasar como un suicidio: detienen en Angol a adolescente de 17 años por asesinato de su pareja\n \n \nIncendio deja dos viviendas destruidas en Los Álamos\n \n \n🔴 [#Angol] Estudiante de cuarto medio fue asesinada por su pololo.\n \n \n \n \n \n \n \n \n \n \nTrending Tags\nGolden Globes\nMr. Robot\nMotoGP 2017\nClimate Change\nFlat Earth\n \n \n \n \n \n \n No Result \n View All Result \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Home Noticias Nacional \nEntregan resultados de postulación al subsidio eléctrico: revisa aquí si eres beneficiario\nbyOmar\nagosto 31, 2024\ninNacional, Noticias\n 0 0 \n 0\n \n \n0\n SHARES \n \n13\n VIEWS \n \n Share on FacebookShare on Twitter \n \nEste sábado 31 de agosto, el Ministerio de Energía dio a conocer los resultados de la postulación al subsidio eléctrico, un beneficio transitorio del Gobierno.\nCabe recordar que el descuento en tu boleta de la luz se reflejará automáticamente en la cuenta correspondiente a la facturación de septiembre.\nPara revisar si eres unos de los beneficiarios o beneficiarias de esta primera convocatoria, ingresa a esteenlace,donde te solicitarán tu RUT y Clave Única.\nFuente: Bio Bio Chile\n \nOmar\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n © 2023 Radio Nativa - Otro sitio administrado por Publicom. \n \n \n \nNavegación\n \nHome\nSomos\nServicios\nPublicidad\nTarifa Elecciones 2025\nNoticias\n \n \nSíguenos\n \n \n \n \n \nWelcome Back!\nLogin to your account below\nRemember Me\nForgotten Password?\n \nRetrieve your password\nPlease enter your username or email address to reset your password.\n \n \n \n Log In \n \n \n \n \n \n \n \n \n \n \n No Result \n View All Result \n \nHome\nSomos\nServicios\nPublicidad\nTarifa Elecciones 2025\nNoticias\n \n \n© 2023 Radio Nativa - Otro sitio administrado por Publicom.\n \n \nSaludos y pedidos musicales\nIr a la versión móvil",
+        "local_candidates": [
+          {
+            "url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/",
+            "title": "",
+            "kind": "page"
+          },
+          {
+            "url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/amp/",
+            "title": "Ir a la versión móvil",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2024-08-31T21:13:23+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [],
+        "source_published_at": "2024-08-31T21:13:23+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "contacto"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/",
+        "status": "pending",
+        "reason": "source_older_than_45_days"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+        "title": "Leer más »",
+        "kind": "page",
+        "territory": "Malleco",
+        "discovered_from": "https://lasnoticiasdemalleco.cl/"
+      },
+      "page": {
+        "url": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+        "final_url": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "82a80cf178dd2b84c657231e47dacfec806d6cf5469886522a4f88cfb59e2b82",
+        "title": "Se inician las postulaciones 2027 para las carreras técnicas y de Continuidad de Estudios en la UNAP Sede Victoria - Las Noticias de Malleco, el diario de la Provincia Región de la Araucanía",
+        "text": "[rank_math_breadcrumb]\n \n \n \n \n \nSe inician las postulaciones 2027 para las carreras técnicas y de Continuidad de Estudios en la UNAP Sede Victoria\n \n \n \n \n \n \n Categorías: \n Educación \n \n \n \n \n \n \n \n \n \n Victoria \n \n \n \n \n \n A partir de este lunes 19 de octubre y hasta finales de marzo de 2027, dependiendo de la disponibilidad de cupos por especialidad \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Octubre 17, 2026 \n \n \n \n \n 23:06 \n \n \n \n \n \nLa Universidad Arturo Prat Sede Victoria se enorgullece en anunciar la apertura\noficial de su proceso de Admisión 2027, invitando a jóvenes, trabajadores y\nadultos de la provincia y de toda La Araucanía a postular a sus carreras técnicas y\nprogramas de Continuidad de Estudios.\nEsta nueva instancia se enmarca en un hito especialmente significativo para la\ninstitución, dado que este 2026 conmemora 35 años de presencia en la comuna\nde Victoria, consolidándose como la principal alternativa de Educación Superior en\nMalleco. Durante estas más de tres décadas, la UNAP ha contribuido activamente\na la formación de capital humano para el territorio, generando una comunidad de\nmás de 18.000 egresados y titulados, quienes hoy se desempeñan en diversos\nsectores productivos, sociales y de servicios a nivel regional y nacional.\nLa Universidad Arturo Prat ha sido parte del crecimiento de miles de familias de\nMalleco, ofreciendo oportunidades de formación para quienes buscan iniciar una\ncarrera profesional, perfeccionar sus competencias o concretar el anhelado sueño\nde obtener un título de Educación Superior. En este contexto, la apertura de las\npostulaciones para 2027 representa una nueva oportunidad para acceder a\nprogramas formativos, diseñados para responder a las necesidades actuales del\nmercado laboral y del territorio.\n“La educación transforma vidas y genera nuevas oportunidades de desarrollo\npersonal, familiar y profesional. Durante 35 años hemos acompañado los\nproyectos de vida de miles de estudiantes, contribuyendo al crecimiento de\nnuestra zona y reafirmando nuestro compromiso con la formación de personas\nque aporten al desarrollo de la región”, destacó Ricardo Miranda Vásquez,\nEncargado de la Unidad de Admisión de la UNAP en Malleco.\nPor último, es importante recalcar en que las postulaciones se abren este 19 de\noctubre y se mantendrán hasta el 31 de marzo de 2027, hecho que dependerá de\nsi se completan los cupos para cada carrera. Quienes deseen obtener más\ninformación sobre los requisitos y matrículas en la Sede Victoria, pueden acudir a\nlos canales oficiales de atención, ya sea de manera presencial en las oficinas de la\nUnidad, de lunes a viernes, desde las 8.45 hasta las 17 horas; por teléfono, al\nnúmero 452 913000; y por WhatsApp, al +56978618581.\n \n \n \n \n \nComparte esta noticia en tus RRSS\n \n \n \n \n \n \n \n \n \n Facebook \n \n \n \n \n \n \n \n Twitter \n \n \n \n \n \n \n \n WhatsApp \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nEdición del Día\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nEdición 11613 martes 20 de octubre de 2026\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Todas las Ediciones \n \n \n \n \n \n \n \n \n \n \nSuplemento\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSuplemento Especial Fiestas Patrias 2026\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nNoticias Relacionadas\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nEducación\n \n \n \n \nGala Folclórica del Colegio Instituto Victoria\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nEducación\n \n \n \n \nCONECTA+: Una oportunidad única para fortalecer el emprendimiento local en la era digital\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nEducación\n \n \n \n \nRed Comunal de Bibliotecas de Victoria\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nEducación\n \n \n \n \nMás de $418 millones permitieron renovar infraestructura de la Escuela de Los Sauces\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nCategorías\n \nUbicaciones\n \n \n \nCategorías\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nUbicaciones",
+        "local_candidates": [
+          {
+            "url": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+            "title": "",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [
+          "https://www.facebook.com/diariolasnoticias/",
+          "https://www.instagram.com/lasnoticiasdia/"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2026-10-18T02:06:23+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [],
+        "phones": [
+          "+56978618581",
+          "452 913000"
+        ],
+        "source_published_at": "2026-10-18T02:06:23+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+        "status": "pending",
+        "reason": "local_notice_requires_review",
+        "review_blockers": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "lugar_unico_sin_confirmar",
+          "plazo_explicito_sin_confirmar"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://mtraiguen.cl/municipalidad/bono-clase-media-sii-la-municipalidad-de-traiguen-a-traves-de-la-omil-ayudara-en-la-postulacion-a-este-beneficio/",
+        "title": "Bono Clase Media SII: La Municipalidad de Traiguén a través de la Omil ayudará en la postulación a este beneficio",
+        "kind": "page",
+        "territory": "Traiguén",
+        "discovered_from": "https://mtraiguen.cl/?s=oferta+laboral"
+      },
+      "page": {
+        "url": "https://mtraiguen.cl/municipalidad/bono-clase-media-sii-la-municipalidad-de-traiguen-a-traves-de-la-omil-ayudara-en-la-postulacion-a-este-beneficio/",
+        "final_url": "https://mtraiguen.cl/municipalidad/bono-clase-media-sii-la-municipalidad-de-traiguen-a-traves-de-la-omil-ayudara-en-la-postulacion-a-este-beneficio/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "79ad6583bf4d89ef0ab8147deb6fa8d3f66e1b5144242dfc8fbc43badca8a57e",
+        "title": "Bono Clase Media SII: La Municipalidad de Traiguén a través de la Omil ayudará en la postulación a este beneficio - Ilustre Municipalidad de TraiguénHerramientas de accesibilidadAumentar textoDisminuir textoEscala de grisesAlto contrasteContraste negativoFondo claroSubrayar enlacesFuente legibleRest",
+        "text": "Bono Clase Media SII: La Municipalidad de Traiguén a través de la Omil ayudará en la postulación a este beneficio\nInicio\nMunicipalidad\nBono Clase Media SII: La Municipalidad de Traiguén a través de la Omil ayudará en la postulación a este beneficio\nPublicado el 19/04/2021\nBono Clase Media SII: La Municipalidad de Traiguén a través de la Omil ayudará en la postulación a este beneficio\n¿Hasta cuándo se puede postular, cuándo se paga y cómo consultar con RUT?\nBuscando ayudar a la ciudadanía en la obtención de este beneficio el alcalde (s) de la comuna, Gustavo Tejo Torres, instruyó a la Oficina Municipal de Información Laboral –Omil- en el asesoramiento a las personas que deseen postular a este bono, comprendiendo que existen muchas familias que no cuentan con un buen acceso a internet ni tampoco el manejo de las tecnologías.\nEl proceso de postulaciones para el Bono Clase Media comenzó durante la tarde de este sábado, y para quienes deseen asesoría en la postulación, pueden dirigirse a las oficinas de la Omil, ubicadas en dependencias del ex regimiento, de lunes a viernes de 9:00 a 14:00 horas.\nPara solicitar este beneficio solo se debe llevar el carnet de identidad, y tener clave tributaria SII o la Clave Única.\nPara mayor información comunicarse al 452886710 – 452886706 -452886705 o al correo ofertasomiltraiguen@gmail.com\nBono Clase Media\nEl Bono Clase Media es uno de los aportes del Estado más esperados desde que comenzó la pandemia, debido al monto de dinero directo que le llegará a los beneficiarios que cumplan con los requisitos.\nEl proceso de solicitudes se inició la tarde de este sábado, por lo que el 30 de abril, a más tardar, deberían comenzar a llegar los primeros pagos a las personas que hayan hecho sus solicitudes en un comienzo.\nEl proceso de postulaciones está disponible desde el 17 de abril hasta el 17 de mayo, según informó el Servicio de Impuestos Internos en su página web.\nSi la solicitud es aceptada y es elegible para recibir el beneficio, el pago debería llegar en un plazo máximo de 10 días hábiles desde que se realizó la solicitud.\nPara consultar si es elegible para este beneficio y también postular con el RUT, se debe ingresar a la página web del Servicio de Impuestos Internos, a lo que adicionalmente se debe tener la clave tributaria o la Clave Única.\n¿Te gustó? ¡Comparte!\nPrograma de discapacidad: Ayudas técnicas – Mesa comunal de discapacidad\nEstadio Fiscal de Traiguén abre sus puertas para franja horaria deportiva\n \n \n Menú \n \n \n \n \n \n \n Ir al contenido",
+        "local_candidates": [
+          {
+            "url": "https://mtraiguen.cl/municipalidad/bono-clase-media-sii-la-municipalidad-de-traiguen-a-traves-de-la-omil-ayudara-en-la-postulacion-a-este-beneficio/",
+            "title": "Restablecer \n\t\t\t\t\t\t\t\t Restablecer",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": "2021-04-19T17:55:23+00:00",
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "ofertasomiltraiguen@gmail.com"
+        ],
+        "phones": [
+          "452886705",
+          "452886706",
+          "452886710"
+        ],
+        "source_published_at": "2021-04-19T04:00:00+00:00",
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://mtraiguen.cl/municipalidad/bono-clase-media-sii-la-municipalidad-de-traiguen-a-traves-de-la-omil-ayudara-en-la-postulacion-a-este-beneficio/",
+        "status": "pending",
+        "reason": "source_older_than_45_days"
+      }
+    },
+    {
+      "candidate": {
+        "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+        "title": "Bases de Postulación Feria Navideña 2025",
+        "kind": "page",
+        "territory": "Mulchén",
+        "discovered_from": "https://www.munimulchen.cl/?s=oferta+laboral"
+      },
+      "page": {
+        "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+        "final_url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+        "http": 200,
+        "mime": "text/html",
+        "html_sha256": "d91dcfd50c1c72e9aa6c776016a26c0e057ecd264be0920cb9f1a6fe8280b7dc",
+        "title": "Bases de Postulación Feria Navideña 2025 |",
+        "text": "Busca entre los contenidos de nuestro sitio web.\n [wpdreams_ajaxsearchpro id=1] \n \n \n \n \n \n \nMenú de navegación\n ✕ Cerrar\n \n \nInicio\n \nMunicipalidad \n \n Municipalidad \n \n \n Municipalidad de Mulchén \n \n Toda la información y actividades municipalidades están aquí. \n \n \n \nSaludos Alcalde\nConcejo Municipal\nMisión, Visión\nNuestros valores\nDirecciones Municipales\nSalud\nPlanificación Comunal\nEstados Financieros\n \n \n \n \nConcejo Municipal\n \n Concejo Municipal\n \n \n Concejo Municipal Mulchén \n \n Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén \n \n \n \nConcejo Municipal\nSesiones Concejo Municipal\nActas del Concejo Municipal de Mulchén\n \n \n \n \nTrámites\n \n Trámites\n \n \n Trámites Municipales \n \n Revisa aquí todos los trámites disponibles en la municipalidad. \n \n \n \nPermisos de Circulación\nCertificados Dirección de Obras\nDerechos de Aseo Domiciliario\nPermisos Municipales\nMultas TAG\n \n \n \n \nSeguridad\n \n Seguridad\n \n \n Mulchén seguro \n \n Revisa aquí lo mas relevante sobre la seguridad de nuestra comuna. \n \n \n \nSeguridad\nSenda Previene\nCentro de la Mujer\nOLN\n \n \n \n \nTurismo\n \n Turismo\n \n \n Mulchén turístico \n \n Revisa aquí lo mas relevante sobre el turismo en nuestra comuna. \n \n \n \nTurismo Local\nPrincipales Atractivos Turísticos\nTurismo Patrimonial\nServicios Turísticos\nPágina Web Turismo\n \n \n \n \nMedio Ambiente\n \n Medio Ambiente\n \n \n Médio Ambiente \n \n Descubre toda la información sobre medio ambiente de la comuna aquí \n \n \n \nMedio Ambiente\nSistema de Reciclaje Municipal\nEstrategia Ambiental Comunal\nOrdenanzas ambientales\nSistema de Certificación Ambiental Municipal (SCAM)\nNoticias\n \n \n \n \nCultura y Recreación\n \n Cultura y Recreación\n \n \n Cultura y recreación \n \n Descubre toda la información cultural de la comuna aquí \n \n \n \nCultura\nActividades Tradicionales\nBiblioteca Municipal\nProyectos culturales\n \n \n \n \nNoticias\n \n Noticias\n \n \n Toda la Actualidad \n \n Revisas las noticias de la Municipalidad de Mulchén \n \n \n \nTodas las Noticias\nMunicipalidad\nMulchén Salud\nDeporte\nCultura\nMedio Ambiente\n \n \n \n \nActividades\n \n Actividades\n \n \n Galerías de Actividades \n \n Revisa aquí los álbumes de todos de las actividades de la municipalidad \n \n \n \nGalerías de Imágenes\nPaseos Municipalidad\nImágenes turismo\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Menú\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n Bases de Postulación Feria Navideña 2025\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nBASES DE POSTULACIÓN FERIA NAVIDEÑA MULCHÉN 2025\nLa Ilustre Municipalidad de Mulchén, a través de su Oficina de Turismo y Cultura, invita a participar en la Feria Navideña Mulchén 2025, actividad que busca fomentar el emprendimiento local, promover el trabajo de nuestros artesanos y emprendedores, y ofrecer a la comunidad un espacio de encuentro y celebración en vísperas de Navidad.\nOBJETIVO\nBrindar una instancia de comercialización, difusión y fortalecimiento del trabajo de los artesanos y emprendedores de la comuna, permitiendo acercar sus productos a la comunidad en el marco de las celebraciones navideñas.\nMODALIDADES DE PARTICIPACIÓN\nLa Feria Navideña Mulchén 2025 se desarrollará los días 19, 20, 21, 22 y 23 de diciembre en dos modalidades:\na) Modalidad Artesanía, Manualidades y productores locales\n• Espacio destinado a artesanos, manualistas y productores locales.\n• Se realizará en la Plaza de Armas de Mulchén.\n• Los participantes deberán postular previamente para adjudicar un espacio, la municipalidad designada una comisión para elegir a los participantes.\n• Junto con la entrega del formulario de postulación, deberán adjuntar fotografías de los productos que elaboran.\nb) Modalidad Emprendimientos Locales\n• Espacio destinado a emprendimientos locales de diverso tipo (gastronomía, vestuario, productos decorativos, regalos, etc.).\n• Se llevará a cabo en calle Arriagada, a un costado del Mercado Municipal.\n• Los interesados deberán enviar su formulario de postulación y fotografías de los productos que pretenden comercializar durante la actividad.\nHORARIOS DE FUNCIONAMIENTO\nLa Feria Navideña Mulchén 2025 estará autorizada para funcionar desde las 10:00 hasta las 21:00 horas, tanto en la Plaza de Armas como en calle Arriagada.\nREQUISITOS DE POSTULACIÓN\nPodrán postular todas las personas que cumplan con los siguientes requisitos:\n1. Ser residente de la comuna de Mulchén.\n2. Contar con Registro Social de Hogares vigente o certificado de residencia emitido para la participación en la feria navideña.\n3. Completar la Ficha de Postulación disponible en la Oficina de Turismo y Cultura o en la página web municipal.\n4. Adjuntar los siguientes documentos:\no Fotocopia de la Cédula de Identidad.\no Copia del Registro Social de Hogares.\no Fotografía del producto que el postulante elabora o comercializa.\nCUPOS Y SELECCIÓN\n• Los cupos son limitados y entregaran de acuerdo a la evaluación de antecedentes por parte de la comisión.\n• La comisión organizadora evaluará la calidad, originalidad y pertinencia de los productos presentados.\n• Se priorizará la participación de artesanos y emprendedores locales que acrediten residencia en la comuna.\n \nLa Ilustre Municipalidad de Mulchén, a través de su Oficina de Turismo y Cultura, invita a participar en la Feria Navideña Mulchén 2025, actividad que busca fomentar el emprendimiento local, promover el trabajo de nuestros artesanos y emprendedores, y ofrecer a la comunidad un espacio de encuentro y celebración en vísperas de Navidad.\n \nOBJETIVO\nBrindar una instancia de comercialización, difusión y fortalecimiento del trabajo de los artesanos y emprendedores de la comuna, permitiendo acercar sus productos a la comunidad en el marco de las celebraciones navideñas.\n \nMODALIDADES DE PARTICIPACIÓN\nLa Feria Navideña Mulchén 2025 se desarrollará los días 19, 20, 21, 22 y 23 de diciembre en dos modalidades:\na) Modalidad Artesanía, Manualidades y productores locales\nEspacio destinado a artesanos, manualistas y productores locales.\nSe realizará en la Plaza de Armas de Mulchén.\nLos participantes deberán postular previamente para adjudicar un espacio, la municipalidad designada una comisión para elegir a los participantes.\nJunto con la entrega del formulario de postulación, deberán adjuntar fotografías de los productos que elaboran.\nb) Modalidad Emprendimientos Locales\nEspacio destinado a emprendimientos locales de diverso tipo (gastronomía, vestuario, productos decorativos, regalos, etc.).\nSe llevará a cabo en calle Arriagada, a un costado del Mercado Municipal.\nLos interesados deberán enviar su formulario de postulación y fotografías de los productos que pretenden comercializar durante la actividad.\n \nHORARIOS DE FUNCIONAMIENTO\n \nLa Feria Navideña Mulchén 2025 estará autorizada para funcionar desde las 10:00 hasta las 21:00 horas, tanto en la Plaza de Armas como en calle Arriagada.\n \nREQUISITOS DE POSTULACIÓN\nPodrán postular todas las personas que cumplan con los siguientes requisitos:\nSer residente de la comuna de Mulchén.\nContar con Registro Social de Hogares vigente o certificado de residencia emitido para la participación en la feria navideña.\nCompletar la Ficha de Postulación disponible en la Oficina de Turismo y Cultura o en la página web municipal.\nAdjuntar los siguientes documentos:\nFotocopia de la Cédula de Identidad.\nCopia del Registro Social de Hogares.\nFotografía del producto que el postulante elabora o comercializa.\n \nCUPOS Y SELECCIÓN\nLos cupos son limitados y entregaran de acuerdo a la evaluación de antecedentes por parte de la comisión.\nLa comisión organizadora evaluará la calidad, originalidad y pertinencia de los productos presentados.\nSe priorizará la participación de artesanos y emprendedores locales que acrediten residencia en la comuna.\nDescarga las Bases y Ficha de Postulación\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSITIOS DE INTERÉS\n \n \nBiblioteca Municipal\nComité Sabor Campesino\nAsociación de Municipios Cordilleranos\nAsociación de Municipalidades de Chile\nAsociación Chilena de Municipalidades\n \n \nFRECUENTES\n \n \nPermisos de Circulación\nLicencias de Conducir\nPago de Patentes Comerciales\nRegularizaciones de Viviendas\nCertificados Dirección de Obras\n \n \nASISTENCIA SOCIAL\n \n \nOficina Municipal de Intermediación Laboral\nClinica Veterinaria Municipal\n \n \n \n \nJUZGADO DE POLICÍA LOCAL\n \nHorario de atención a público: 8:00 a 14:00 horas\n \nHorario de audiencias: Martes, Miércoles y Jueves, de 10:00 a 14:00 horas\n \nDirección: Villagra 025\n \nCorreo electrónico: jpl@munimulchen.cl\n \nTeléfono: 961649480\n \n \nCEMENTERIO MUNICIPAL\n \nAtención: Lunes a viernes\n \nHorario: 08:15 a 17:00 horas\n \nDirección: Contreras 399\n \nTeléfono: 940190530\n \n \n \nEMERGENCIAS MULCHÉN\n \n \n \nCarabineros\n \n \n \n(43) 224 3061\n \n \n \n \nPolicia Investigaciones\n \n \nPDI\n \n(41) 2570386\n \n \n \n \nBomberos\n \n \n \n(43) 2561589\n \n \n \n \nMesa Central\n \n \n \n(43) 2401401\n \npartes@munimulchen.cl",
+        "local_candidates": [
+          {
+            "url": "https://www.munimulchen.cl/wp-content/uploads/2025/11/BASES-DE-POSTULACION-FERIA-NAVIDENA-2025.docx",
+            "title": "Descarga las Bases y Ficha de Postulación",
+            "kind": "page"
+          }
+        ],
+        "public_social_links": [
+          "https://www.facebook.com/munimulchen",
+          "https://www.instagram.com/municipalidaddemulchen"
+        ],
+        "portal_index": {
+          "links": [],
+          "individual_links_found": 0,
+          "returned_links": 0,
+          "truncated": false,
+          "coverage_complete": false,
+          "published": 0
+        },
+        "source_published_at": null,
+        "access": "read",
+        "coverage_complete": false
+      },
+      "review": {
+        "role": null,
+        "company": null,
+        "workplace_evidence": null,
+        "work_communes": [],
+        "emails": [
+          "jpl@munimulchen.cl",
+          "partes@munimulchen.cl"
+        ],
+        "phones": [
+          "940190530",
+          "961649480"
+        ],
+        "source_published_at": null,
+        "missing": [
+          "cargo",
+          "empresa",
+          "lugar_real",
+          "fecha_original"
+        ],
+        "hiring_language": true,
+        "published": false,
+        "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+        "status": "pending",
+        "reason": "source_date_missing_or_future"
+      }
+    }
+  ],
+  "new_pdf_references": [
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/09/BASES-CONCURSO-PDTI-PROFESIONAL.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-914-DEL-22.04.2026-LLAMADO-CONCURSO-OMIL.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-876-DEL-17.04.2026-LLAMADO-A-CONCURSO-TECNICO-PDTI-Y-PRODESAL.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0755-10.04.2026-BASES-GRADO-18.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-764-DEL-10.04.2026-BASES-GRADO-15.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/04/DECRETO-EXENTO-N%C2%B0-765-DEL-10.04.2026-BASES-GRADO-13.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2026/03/Decreto-bases-administrativas.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/09/ANEXO-4-BASES-ADMINISTRATIVAS-Profesional-PDTI-septiembre-2025-1.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/09/Decreto-bases-PDTI.pdf",
+      "title": "Descargar Decreto",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/08/DECRETO-EXENTO-N%C2%B0-1965-11-AGOSTO-2025-PROGRAMA-OMIL.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    },
+    {
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2025/04/Decreto-y-bases-auxiliar-grado-16.pdf",
+      "title": "Descargar Bases",
+      "kind": "document"
+    }
+  ],
+  "published": 0
+}

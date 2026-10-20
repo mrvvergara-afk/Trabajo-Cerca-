@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html lang="es-es" dir="ltr"
+	  class='com_content view-article layout-blog itemid-242 j44 j40 mm-hover '>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="admin">
+	<title>Llamados a concurso público</title>
+	<link href="/templates/purity_iii/favicon.ico" rel="icon" type="image/vnd.microsoft.icon">
+	<link href="/media/vendor/chosen/css/chosen.css?1.8.7" rel="stylesheet" />
+	<link href="/media/vendor/awesomplete/css/awesomplete.css?1.1.5" rel="stylesheet" />
+	<link href="/media/vendor/joomla-custom-elements/css/joomla-alert.min.css?0.2.0" rel="stylesheet" />
+	<link href="/templates/purity_iii/local/css/bootstrap.css" rel="stylesheet" />
+	<link href="/media/plg_content_socialshare/css/socialshare.css?4174c3981f78a369278ad7ab055e1ddc" rel="stylesheet" />
+	<link href="/media/com_phocadownload/css/main/phocadownload.css?4174c3981f78a369278ad7ab055e1ddc" rel="stylesheet" />
+	<link href="/media/plg_content_phocadownload/css/phocadownload.css?4174c3981f78a369278ad7ab055e1ddc" rel="stylesheet" />
+	<link href="/media/system/css/joomla-fontawesome.min.css" rel="stylesheet" />
+	<link href="/templates/purity_iii/local/css/template.css" rel="stylesheet" />
+	<link href="/templates/purity_iii/local/css/megamenu.css" rel="stylesheet" />
+	<link href="/templates/purity_iii/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/templates/purity_iii/css/custom.css" rel="stylesheet" />
+	<link href="/templates/purity_iii/local/css/layouts/corporate.css" rel="stylesheet" />
+	<link href="/modules/mod_maximenuck/themes/custom/css/maximenuck_maximenuck160.css" rel="stylesheet" />
+	<style>
+#mod-custom144{background-image: url("/images/estructura/backfooter.png");}
+</style>
+	<script type="application/json" class="joomla-script-options new">{"joomla.jtext":{"RLTA_BUTTON_SCROLL_LEFT":"Scroll buttons to the left","RLTA_BUTTON_SCROLL_RIGHT":"Scroll buttons to the right","MOD_FINDER_SEARCH_VALUE":"Buscar&hellip;","ERROR":"Error","MESSAGE":"Mensaje","NOTICE":"Aviso","WARNING":"Advertencia","JCLOSE":"Cerrar","JOK":"OK","JOPEN":"Abrir"},"finder-search":{"url":"\/index.php\/component\/finder\/?task=suggestions.suggest&amp;format=json&amp;tmpl=component&amp;Itemid=101"},"system.paths":{"root":"","rootFull":"https:\/\/www.munilumaco.cl\/","base":"","baseFull":"https:\/\/www.munilumaco.cl\/"},"csrf.token":"3cf549afa8488004bf84c1bc2116165e"}</script>
+	<script src="/media/system/js/core.min.js?37ffe4186289eba9c5df81bea44080aff77b9684"></script>
+	<script src="/media/vendor/bootstrap/js/bootstrap-es5.min.js?5.3.2" nomodule defer></script>
+	<script src="/media/com_finder/js/finder-es5.min.js?e6d3d1f535e33b5641e406eb08d15093e7038cc2" nomodule defer></script>
+	<script src="/media/system/js/messages-es5.min.js?c29829fd2432533d05b15b771f86c6637708bd9d" nomodule defer></script>
+	<script src="/media/vendor/bootstrap/js/popover.min.js?5.3.2" type="module"></script>
+	<script src="/media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
+	<script src="/media/legacy/js/jquery-noconflict.min.js?647005fc12b79b3ca2bb30c059899d5994e3e34d"></script>
+	<script src="/media/vendor/chosen/js/chosen.jquery.min.js?1.8.7"></script>
+	<script src="/media/legacy/js/joomla-chosen.min.js?4174c3981f78a369278ad7ab055e1ddc"></script>
+	<script src="/media/vendor/awesomplete/js/awesomplete.min.js?1.1.5" defer></script>
+	<script src="/media/com_finder/js/finder.min.js?a2c3894d062787a266d59d457ffba5481b639f64" type="module"></script>
+	<script src="/media/system/js/messages.min.js?7f7aa28ac8e8d42145850e8b45b3bc82ff9a6411" type="module"></script>
+	<script src="/plugins/system/t3/base-bs3/bootstrap/js/bootstrap.js"></script>
+	<script src="/plugins/system/t3/base-bs3/js/jquery.tap.min.js"></script>
+	<script src="/plugins/system/t3/base-bs3/js/script.js"></script>
+	<script src="/plugins/system/t3/base-bs3/js/menu.js"></script>
+	<script src="/templates/purity_iii/js/script.js"></script>
+	<script src="/plugins/system/t3/base-bs3/js/nav-collapse.js"></script>
+	<script src="/modules/mod_maximenuck/assets/maximenuck.min.js?ver=10.1.11"></script>
+	<script>
+		jQuery(document).ready(function (){
+			jQuery('.advancedSelect').jchosen({"disable_search_threshold":10,"search_contains":true,"allow_single_deselect":true,"placeholder_text_multiple":"Escriba o seleccione algunas opciones","placeholder_text_single":"Selecione una opci\u00f3n","no_results_text":"Sin resultados que coincidan"});
+		});
+	</script>
+	<script>jQuery(document).ready(function(){new Maximenuck('#maximenuck160', {fxtransition : 'linear',dureeIn : 0,dureeOut : 0,menuID : 'maximenuck160',testoverflow : '0',orientation : 'horizontal',behavior : 'mouseover',opentype : 'noeffect',fxdirection : 'normal',directionoffset1 : '30',directionoffset2 : '30',showactivesubitems : '0',ismobile : 0,menuposition : '0',effecttype : 'dropdown',topfixedeffect : '1',topfixedoffset : '',clickclose : '0',closeclickoutside : '1',clicktoggler : '0',fxduration : 500});});</script>
+
+	
+<!-- META FOR IOS & HANDHELD -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<style type="text/stylesheet">
+		@-webkit-viewport   { width: device-width; }
+		@-moz-viewport      { width: device-width; }
+		@-ms-viewport       { width: device-width; }
+		@-o-viewport        { width: device-width; }
+		@viewport           { width: device-width; }
+	</style>
+	<script type="text/javascript">
+		//<![CDATA[
+		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			var msViewportStyle = document.createElement("style");
+			msViewportStyle.appendChild(
+				document.createTextNode("@-ms-viewport{width:auto!important}")
+			);
+			document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+		}
+		//]]>
+	</script>
+<meta name="HandheldFriendly" content="true"/>
+<meta name="apple-mobile-web-app-capable" content="YES"/>
+<!-- //META FOR IOS & HANDHELD -->
+
+
+
+
+<!-- Le HTML5 shim and media query for IE8 support -->
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="/plugins/system/t3/base-bs3/js/respond.min.js"></script>
+<![endif]-->
+
+<!-- You can add Google Analytics here or use T3 Injection feature -->
+
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="/templates/purity_iii/css/ie8.css" type="text/css" />
+<![endif]-->
+	</head>
+
+<body>
+
+<div class="t3-wrapper corporate"> <!-- Need this wrapper for off-canvas menu. Remove if you don't use of-canvas -->
+
+	
+<!-- MAIN NAVIGATION -->
+<header id="t3-mainnav" class="wrap navbar navbar-default navbar-fixed-top t3-mainnav">
+
+	<!-- OFF-CANVAS -->
+		<!-- //OFF-CANVAS -->
+
+	<div class="container">
+
+		<!-- NAVBAR HEADER -->
+		<div class="navbar-header">
+
+			<!-- LOGO -->
+			<div class="logo logo-image">
+				<div class="logo-image">
+					<a href="/" title="Municipalidad de Lumaco">
+													<img class="logo-img" src="/images/465.png#joomlaImage://local-images/465.png?width=629&height=758" alt="Municipalidad de Lumaco" />
+						
+												
+						<span>Municipalidad de Lumaco</span>
+					</a>
+				</div>
+			</div>
+			<!-- //LOGO -->
+
+											<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".t3-navbar-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+			
+	    	    <!-- HEAD SEARCH -->
+	    <div class="head-search">     
+	      	<div class="search">
+		<form class="mod-finder js-finder-searchform form-search" action="/index.php/component/finder/search?Itemid=101" method="get" role="search">
+			<label for="mod-finder-searchword121" class="visually-hidden finder">Buscar</label><div class="mod-finder__search input-group"><input type="text" name="q" id="mod-finder-searchword121" class="js-finder-search-query form-control" value="" placeholder="Buscar&hellip;"><button class="btn btn-primary" type="submit"><span class="icon-search icon-white" aria-hidden="true"></span> Buscar</button></div>
+									<input type="hidden" name="Itemid" value="101">		</form>
+	</div>
+
+<div id="mod-custom142" class="mod-custom custom">
+    <p><a href="/index.php/busqueda-prueba"><img src="/images/searchButton.gif" /></a></p></div>
+
+<div id="mod-custom143" class="mod-custom custom">
+    <p><a href="https://www.portaltransparencia.cl/PortalPdT/directorio-de-organismos-regulados/?org=MU159" target="_blank" rel="noopener"><img src="/images/muni%20lumaco/ban_ta.png" /></a> <a href="https://www.portaltransparencia.cl/PortalPdT/web/guest/directorio-de-organismos-regulados?p_p_id=pdtorganismos_WAR_pdtorganismosportlet&amp;orgcode=2b2feb38a20b1daa135ef21cafd88f4c" target="_blank" rel="noopener"><img src="/images/muni%20lumaco/ban_si.png" /></a> <a href="https://www.leylobby.gob.cl/instituciones/MU159" target="_blank" rel="noopener"><img src="/images/muni%20lumaco/ban_lobby.png" /></a></p></div>
+<!-- debut Maximenu CK -->
+	<div class="maximenuckh ltr" id="maximenuck160" style="z-index:10;">
+			<label for="maximenuck160-maximenumobiletogglerck" class="maximenumobiletogglericonck" style="display:none;">&#x2261;</label><a href="#" class="maximenuck-toggler-anchor" aria-label="Open menu" >Open menu</a><input id="maximenuck160-maximenumobiletogglerck" class="maximenumobiletogglerck" type="checkbox" style="display:none;"/>			<ul class=" maximenuck">
+				<li data-level="1" class="maximenuck item101 first level1 " style="z-index : 12000;" ><a  data-hover="Inicio" class="maximenuck " href="/index.php" data-align="top"><span class="titreck"  data-hover="Inicio"><span class="titreck-text"><span class="titreck-title">Inicio</span></span></span></a>
+		</li><li data-level="1" class="maximenuck item133 parent level1 " style="z-index : 11999;" ><span tabindex="0" role="button"  aria-haspopup="true"  data-hover="Comuna" class="separator " data-align="top"><span class="titreck"  data-hover="Comuna"><span class="titreck-text"><span class="titreck-title">Comuna</span></span></span></span>
+	<div class="floatck" style=""><div class="maxidrop-main" style=""><div class="maximenuck2 first " >
+	<ul class="maximenuck2"><li data-level="2" class="maximenuck item134 first level2 " style="z-index : 11998;" ><a  data-hover="Antecedentes generales" class="maximenuck " href="/index.php/comuna/antecedentes-generales" data-align="top"><span class="titreck"  data-hover="Antecedentes generales"><span class="titreck-text"><span class="titreck-title">Antecedentes generales</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item135 level2 " style="z-index : 11997;" ><a  data-hover="Lumaco" class="maximenuck " href="/index.php/comuna/lumaco" data-align="top"><span class="titreck"  data-hover="Lumaco"><span class="titreck-text"><span class="titreck-title">Lumaco</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item136 level2 " style="z-index : 11996;" ><a  data-hover="Capitán Pastene" class="maximenuck " href="/index.php/comuna/capitan-pastene" data-align="top"><span class="titreck"  data-hover="Capitán Pastene"><span class="titreck-text"><span class="titreck-title">Capitán Pastene</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item137 last level2 " style="z-index : 11995;" ><a  data-hover="Pichi Pellahuen" class="maximenuck " href="/index.php/comuna/pichi-pellahuen" data-align="top"><span class="titreck"  data-hover="Pichi Pellahuen"><span class="titreck-text"><span class="titreck-title">Pichi Pellahuen</span></span></span></a>
+	</li>
+	</ul>
+	</div></div></div>
+	</li><li data-level="1" class="maximenuck item138 parent level1 " style="z-index : 11994;" ><span tabindex="0" role="button"  aria-haspopup="true"  data-hover="Municipalidad" class="separator " data-align="top"><span class="titreck"  data-hover="Municipalidad"><span class="titreck-text"><span class="titreck-title">Municipalidad</span></span></span></span>
+	<div class="floatck" style=""><div class="maxidrop-main" style=""><div class="maximenuck2 first " >
+	<ul class="maximenuck2"><li data-level="2" class="maximenuck item139 first level2 " style="z-index : 11993;" ><a  data-hover="Alcalde" class="maximenuck " href="/index.php/municipalidad/alcalde" data-align="top"><span class="titreck"  data-hover="Alcalde"><span class="titreck-text"><span class="titreck-title">Alcalde</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item140 level2 " style="z-index : 11992;" ><a  data-hover="Concejo" class="maximenuck " href="/index.php/municipalidad/concejo" data-align="top"><span class="titreck"  data-hover="Concejo"><span class="titreck-text"><span class="titreck-title">Concejo</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item141 level2 " style="z-index : 11991;" ><a  data-hover="Organigrama" class="maximenuck " href="/index.php/municipalidad/organigrama" data-align="top"><span class="titreck"  data-hover="Organigrama"><span class="titreck-text"><span class="titreck-title">Organigrama</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item142 level2 " style="z-index : 11990;" ><a  data-hover="Delegación M. de Capitán Pastene" class="maximenuck " href="/index.php/municipalidad/delegacion-m-de-capitan-pastene" data-align="top"><span class="titreck"  data-hover="Delegación M. de Capitán Pastene"><span class="titreck-text"><span class="titreck-title">Delegación M. de Capitán Pastene</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item143 last level2 " style="z-index : 11989;" ><a  data-hover="Delegación M. de Pichi Pellahuén" class="maximenuck " href="/index.php/municipalidad/delegacion-m-de-pichi-pellahuen" data-align="top"><span class="titreck"  data-hover="Delegación M. de Pichi Pellahuén"><span class="titreck-text"><span class="titreck-title">Delegación M. de Pichi Pellahuén</span></span></span></a>
+	</li>
+	</ul>
+	</div></div></div>
+	</li><li data-level="1" class="maximenuck item144 parent level1 " style="z-index : 11988;" ><span tabindex="0" role="button"  aria-haspopup="true"  data-hover="Departamentos Municipales" class="separator " data-align="top"><span class="titreck"  data-hover="Departamentos Municipales"><span class="titreck-text"><span class="titreck-title">Departamentos Municipales</span></span></span></span>
+	<div class="floatck" style=""><div class="maxidrop-main" style=""><div class="maximenuck2 first " >
+	<ul class="maximenuck2"><li data-level="2" class="maximenuck item145 first level2 " style="z-index : 11987;" ><a  data-hover="Administración Municipal" class="maximenuck " href="/index.php/departamentos-municipales/administracion-municipal" data-align="top"><span class="titreck"  data-hover="Administración Municipal"><span class="titreck-text"><span class="titreck-title">Administración Municipal</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item146 level2 " style="z-index : 11986;" ><a  data-hover="Dirección Secretaría Municipal" class="maximenuck " href="/index.php/departamentos-municipales/direccion-secretaria-municipal" data-align="top"><span class="titreck"  data-hover="Dirección Secretaría Municipal"><span class="titreck-text"><span class="titreck-title">Dirección Secretaría Municipal</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item147 level2 " style="z-index : 11985;" ><a  data-hover="Dirección Control Interno" class="maximenuck " href="/index.php/departamentos-municipales/direccion-control-interno" data-align="top"><span class="titreck"  data-hover="Dirección Control Interno"><span class="titreck-text"><span class="titreck-title">Dirección Control Interno</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item148 level2 " style="z-index : 11984;" ><a  data-hover="Deportes" class="maximenuck " href="/index.php/departamentos-municipales/deportes" data-align="top"><span class="titreck"  data-hover="Deportes"><span class="titreck-text"><span class="titreck-title">Deportes</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item149 level2 " style="z-index : 11983;" ><a  data-hover="Dirección de Obras" class="maximenuck " href="/index.php/departamentos-municipales/direccion-de-obras" data-align="top"><span class="titreck"  data-hover="Dirección de Obras"><span class="titreck-text"><span class="titreck-title">Dirección de Obras</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item150 level2 " style="z-index : 11982;" ><a  data-hover="Administración y Finanzas" class="maximenuck " href="/index.php/departamentos-municipales/administracion-y-finanzas" data-align="top"><span class="titreck"  data-hover="Administración y Finanzas"><span class="titreck-text"><span class="titreck-title">Administración y Finanzas</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item151 level2 " style="z-index : 11981;" ><a  data-hover="UDEL" class="maximenuck " href="/index.php/departamentos-municipales/udel" data-align="top"><span class="titreck"  data-hover="UDEL"><span class="titreck-text"><span class="titreck-title">UDEL</span></span></span></a>
+		</li><li data-level="2" class="maximenuck item152 last level2 " style="z-index : 11980;" ><a  data-hover="SECPLAN" class="maximenuck " href="/index.php/departamentos-municipales/secplan" data-align="top"><span class="titreck"  data-hover="SECPLAN"><span class="titreck-text"><span class="titreck-title">SECPLAN</span></span></span></a>
+	</li>
+	</ul>
+	</div></div></div>
+	</li><li data-level="1" class="maximenuck item153 level1 " style="z-index : 11979;" ><a  data-hover="Turismo" class="maximenuck " href="/index.php/turismo" data-align="top"><span class="titreck"  data-hover="Turismo"><span class="titreck-text"><span class="titreck-title">Turismo</span></span></span></a>
+		</li><li data-level="1" class="maximenuck item154 level1 " style="z-index : 11978;" ><a  data-hover="Sala de Prensa" class="maximenuck " href="/index.php/sala-de-prensa" data-align="top"><span class="titreck"  data-hover="Sala de Prensa"><span class="titreck-text"><span class="titreck-title">Sala de Prensa</span></span></span></a>
+		</li><li data-level="1" class="maximenuck item155 level1 " style="z-index : 11977;" ><a  data-hover="Direcciones" class="maximenuck " href="/index.php/direcciones" data-align="top"><span class="titreck"  data-hover="Direcciones"><span class="titreck-text"><span class="titreck-title">Direcciones</span></span></span></a>
+		</li><li data-level="1" class="maximenuck item156 level1 " style="z-index : 11976;" ><a  data-hover="Webmail" class="maximenuck " href="https://webmail.munilumaco.cl/" target="_blank"  data-align="top"><span class="titreck"  data-hover="Webmail"><span class="titreck-text"><span class="titreck-title">Webmail</span></span></span></a>
+		</li><li data-level="1" class="maximenuck item242 current active last first level1 " style="z-index : 11975;" ><a aria-current="page"  data-hover="Afiches municipales" class="maximenuck " href="/index.php/afiches-municipales" data-align="top"><span class="titreck"  data-hover="Afiches municipales"><span class="titreck-text"><span class="titreck-title">Afiches municipales</span></span></span></a></li>            </ul>
+    </div>
+    <!-- fin maximenuCK -->
+
+	    </div>
+	    <!-- //HEAD SEARCH -->
+	    
+		</div>
+		<!-- //NAVBAR HEADER -->
+
+		<!-- NAVBAR MAIN -->
+				<nav class="t3-navbar-collapse navbar-collapse collapse"></nav>
+		
+		<nav class="t3-navbar navbar-collapse collapse">
+			<div  class="t3-megamenu animate fading"  data-duration="400" data-responsive="true">
+<ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="nav navbar-nav level0">
+<li itemprop='name'  data-id="101" data-level="1">
+<a itemprop='url' class=""  href="/index.php"   data-target="#">Inicio </a>
+
+</li>
+<li itemprop='name' class="dropdown mega" data-id="133" data-level="1">
+<span class=" dropdown-toggle separator"   data-target="#" data-toggle="dropdown"> Comuna<em class="caret"></em></span>
+
+<div class="nav-child dropdown-menu mega-dropdown-menu"  ><div class="mega-dropdown-inner">
+<div class="row">
+<div class="col-xs-12 mega-col-nav" data-width="12"><div class="mega-inner">
+<ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="mega-nav level1">
+<li itemprop='name'  data-id="134" data-level="2">
+<a itemprop='url' class=""  href="/index.php/comuna/antecedentes-generales"   data-target="#">Antecedentes generales </a>
+
+</li>
+<li itemprop='name'  data-id="135" data-level="2">
+<a itemprop='url' class=""  href="/index.php/comuna/lumaco"   data-target="#">Lumaco </a>
+
+</li>
+<li itemprop='name'  data-id="136" data-level="2">
+<a itemprop='url' class=""  href="/index.php/comuna/capitan-pastene"   data-target="#">Capitán Pastene </a>
+
+</li>
+<li itemprop='name'  data-id="137" data-level="2">
+<a itemprop='url' class=""  href="/index.php/comuna/pichi-pellahuen"   data-target="#">Pichi Pellahuen </a>
+
+</li>
+</ul>
+</div></div>
+</div>
+</div></div>
+</li>
+<li itemprop='name' class="dropdown mega" data-id="138" data-level="1">
+<span class=" dropdown-toggle separator"   data-target="#" data-toggle="dropdown"> Municipalidad<em class="caret"></em></span>
+
+<div class="nav-child dropdown-menu mega-dropdown-menu"  ><div class="mega-dropdown-inner">
+<div class="row">
+<div class="col-xs-12 mega-col-nav" data-width="12"><div class="mega-inner">
+<ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="mega-nav level1">
+<li itemprop='name'  data-id="139" data-level="2">
+<a itemprop='url' class=""  href="/index.php/municipalidad/alcalde"   data-target="#">Alcalde </a>
+
+</li>
+<li itemprop='name'  data-id="140" data-level="2">
+<a itemprop='url' class=""  href="/index.php/municipalidad/concejo"   data-target="#">Concejo </a>
+
+</li>
+<li itemprop='name'  data-id="141" data-level="2">
+<a itemprop='url' class=""  href="/index.php/municipalidad/organigrama"   data-target="#">Organigrama </a>
+
+</li>
+<li itemprop='name'  data-id="142" data-level="2">
+<a itemprop='url' class=""  href="/index.php/municipalidad/delegacion-m-de-capitan-pastene"   data-target="#">Delegación M. de Capitán Pastene </a>
+
+</li>
+<li itemprop='name'  data-id="143" data-level="2">
+<a itemprop='url' class=""  href="/index.php/municipalidad/delegacion-m-de-pichi-pellahuen"   data-target="#">Delegación M. de Pichi Pellahuén </a>
+
+</li>
+</ul>
+</div></div>
+</div>
+</div></div>
+</li>
+<li itemprop='name' class="dropdown mega" data-id="144" data-level="1">
+<span class=" dropdown-toggle separator"   data-target="#" data-toggle="dropdown"> Departamentos Municipales<em class="caret"></em></span>
+
+<div class="nav-child dropdown-menu mega-dropdown-menu"  ><div class="mega-dropdown-inner">
+<div class="row">
+<div class="col-xs-12 mega-col-nav" data-width="12"><div class="mega-inner">
+<ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="mega-nav level1">
+<li itemprop='name'  data-id="145" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/administracion-municipal"   data-target="#">Administración Municipal </a>
+
+</li>
+<li itemprop='name'  data-id="146" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/direccion-secretaria-municipal"   data-target="#">Dirección Secretaría Municipal </a>
+
+</li>
+<li itemprop='name'  data-id="147" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/direccion-control-interno"   data-target="#">Dirección Control Interno </a>
+
+</li>
+<li itemprop='name'  data-id="148" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/deportes"   data-target="#">Deportes </a>
+
+</li>
+<li itemprop='name'  data-id="149" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/direccion-de-obras"   data-target="#">Dirección de Obras </a>
+
+</li>
+<li itemprop='name'  data-id="150" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/administracion-y-finanzas"   data-target="#">Administración y Finanzas </a>
+
+</li>
+<li itemprop='name'  data-id="151" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/udel"   data-target="#">UDEL </a>
+
+</li>
+<li itemprop='name'  data-id="152" data-level="2">
+<a itemprop='url' class=""  href="/index.php/departamentos-municipales/secplan"   data-target="#">SECPLAN </a>
+
+</li>
+</ul>
+</div></div>
+</div>
+</div></div>
+</li>
+<li itemprop='name'  data-id="153" data-level="1">
+<a itemprop='url' class=""  href="/index.php/turismo"   data-target="#">Turismo </a>
+
+</li>
+<li itemprop='name'  data-id="154" data-level="1">
+<a itemprop='url' class=""  href="/index.php/sala-de-prensa"   data-target="#">Sala de Prensa </a>
+
+</li>
+<li itemprop='name'  data-id="155" data-level="1">
+<a itemprop='url' class=""  href="/index.php/direcciones"   data-target="#">Direcciones </a>
+
+</li>
+<li itemprop='name'  data-id="156" data-level="1">
+<a itemprop='url' class=""  href="https://webmail.munilumaco.cl/" target="_blank"   data-target="#">Webmail</a>
+
+</li>
+<li itemprop='name' class="current active" data-id="242" data-level="1">
+<a itemprop='url' class=""  href="/index.php/afiches-municipales"   data-target="#">Afiches municipales </a>
+
+</li>
+</ul>
+</div>
+
+		</nav>
+    <!-- //NAVBAR MAIN -->
+
+	</div>
+</header>
+<!-- //MAIN NAVIGATION -->
+
+
+
+
+
+
+  
+
+
+  
+
+
+	
+
+<div id="t3-mainbody" class="container t3-mainbody">
+	<div class="row">
+
+		<!-- MAIN CONTENT -->
+		<div id="t3-content" class="t3-content col-xs-12">
+						<div id="system-message-container" aria-live="polite"></div>
+
+						<div class="item-page clearfix">
+
+
+<!-- Article -->
+<article>
+	<meta itemprop="inLanguage" content="es-ES" />
+	<meta itemprop="url" content="/index.php/afiches-municipales/811-llamados-a-concurso-publico" />
+
+      
+<header class="article-header clearfix">
+	<h1 class="article-title" itemprop="headline">
+					Llamados a concurso público			<meta itemprop="url" content="https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico" />
+			</h1>
+
+			</header>
+    
+    
+  <!-- Aside -->
+    <!-- //Aside -->
+
+  
+  
+  
+	
+  
+	
+	<section class="article-content clearfix">
+		<p><img src="/images/afiches/llamados%20a%20concurso%20publico.jpeg" alt="llamados a concurso publico" width="967" height="752" /></p>
+<p><div class="pd-filename phocadownloadfile phoca-dl-file-box-mod"><div class="pd-document32" style="background: url('https://www.munilumaco.cl/media/com_phocadownload/images/mime/32/icon-pdf.png') 0 center no-repeat;"><a href="/index.php/component/phocadownload/category/1-concursos?download=23:bases-jefatura-grado-8&amp;Itemid=101" target="_blank" >Bases Jefatura grado 8°</a></div></div></p>
+<p><div class="pd-filename phocadownloadfile phoca-dl-file-box-mod"><div class="pd-document32" style="background: url('https://www.munilumaco.cl/media/com_phocadownload/images/mime/32/icon-pdf.png') 0 center no-repeat;"><a href="/index.php/component/phocadownload/category/1-concursos?download=24:bases-profesional-grado-12&amp;Itemid=101" target="_blank" >Bases Profesional grado 12°</a></div></div></p>
+<p><div class="pd-filename phocadownloadfile phoca-dl-file-box-mod"><div class="pd-document32" style="background: url('https://www.munilumaco.cl/media/com_phocadownload/images/mime/32/icon-pdf.png') 0 center no-repeat;"><a href="/index.php/component/phocadownload/category/1-concursos?download=25:anexo-1&amp;Itemid=101" target="_blank" >Anexo 1</a></div></div></p>
+<p><div class="pd-filename phocadownloadfile phoca-dl-file-box-mod"><div class="pd-document32" style="background: url('https://www.munilumaco.cl/media/com_phocadownload/images/mime/32/icon-pdf.png') 0 center no-repeat;"><a href="/index.php/component/phocadownload/category/1-concursos?download=26:anexo-2&amp;Itemid=101" target="_blank" >Anexo 2</a></div></div></p>
+<p><div class="pd-filename phocadownloadfile phoca-dl-file-box-mod"><div class="pd-document32" style="background: url('https://www.munilumaco.cl/media/com_phocadownload/images/mime/32/icon-pdf.png') 0 center no-repeat;"><a href="/index.php/component/phocadownload/category/1-concursos?download=27:decreto-que-aprueba-llamado-a-concurso-y-bases&amp;Itemid=101" target="_blank" >Decreto que aprueba llamado a concurso y bases</a></div></div></p> 	</section>
+  
+  <!-- footer -->
+    <!-- //footer -->
+
+	
+	
+	</article>
+<!-- //Article -->
+
+
+</div>
+		</div>
+		<!-- //MAIN CONTENT -->
+
+	</div>
+</div> 
+
+
+  
+
+
+  
+
+
+	
+<!-- BACK TOP TOP BUTTON -->
+<div id="back-to-top" data-spy="affix" data-offset-top="300" class="back-to-top hidden-xs hidden-sm affix-top">
+  <button class="btn btn-primary" title="Back to Top"><i class="fa fa-caret-up"></i></button>
+</div>
+<script type="text/javascript">
+(function($) {
+	// Back to top
+	$('#back-to-top').on('click', function(){
+		$("html, body").animate({scrollTop: 0}, 500);
+		return false;
+	});
+    $(window).on('load', function(){
+        // hide button to top if the document height not greater than window height*2;using window load for more accurate calculate.    
+        if ((parseInt($(window).height())*2)>(parseInt($(document).height()))) {
+            $('#back-to-top').hide();
+        } 
+    });
+})(jQuery);
+</script>
+<!-- BACK TO TOP BUTTON -->
+
+<!-- FOOTER -->
+<footer id="t3-footer" class="wrap t3-footer">
+
+			<!-- FOOTER SPOTLIGHT -->
+		<div class="container hidden-xs">
+				<!-- SPOTLIGHT -->
+	<div class="t3-spotlight t3-footer-sl  row">
+					<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								
+<div id="mod-custom144" class="mod-custom custom">
+    <p><img style="display: block; margin-left: auto; margin-right: auto;" src="/images/muni%20lumaco/asd.png" /></p></div>
+
+							</div>
+			</div>
+<!-- SPOTLIGHT -->
+		</div>
+		<!-- //FOOTER SPOTLIGHT -->
+	
+	<section class="t3-copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 copyright ">
+					
+<div id="mod-custom134" class="mod-custom custom">
+    <p style="text-align: center;"><span style="font-size: 14px;">Arturo Prat 506 Lumaco, Provincia de Malleco, Región de la Araucanía, Chile // (45) 656920 Fax: (45) 656959 // <a href="mailto:lumaco.alcaldia@gmail.com">lumaco.alcaldia@gmail.com</a></span></p>
+<p style="text-align: center;"><span style="font-size: 12px;">Desarrollado por</span></p>
+<p style="text-align: center;"><a href="https://www.applicatta.cl/" target="_blank" rel="noopener"><span style="font-size: 12px;"><img src="/images/muni%20lumaco/app_ico.png" /></span></a></p></div>
+
+          <small>
+            <a href="http://twitter.github.io/bootstrap/" title="Bootstrap by Twitter" target="_blank">Bootstrap</a> is a front-end framework of Twitter, Inc. Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" title="MIT License" target="_blank">MIT License.</a>
+          </small>
+          <small>
+            <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> font licensed under <a href="http://scripts.sil.org/OFL">SIL OFL 1.1</a>.
+          </small>
+				</div>
+							</div>
+		</div>
+	</section>
+
+</footer>
+<!-- //FOOTER -->
+
+</div>
+
+
+</body>
+</html>

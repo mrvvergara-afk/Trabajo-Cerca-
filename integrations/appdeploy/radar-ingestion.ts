@@ -195,6 +195,7 @@ export function validateOffer(item:VerifiedOffer, now=Date.now()) {
     let application:URL;
     try { application = new URL(item.application); } catch { return reject('Invalid application URL'); }
     if (application.protocol !== 'https:' || application.username || application.password) reject('Invalid application URL');
+    if (publicSourceAdapter(item.application) && !samePublicJob(item.source_url,item.application)) reject('Application belongs to another job');
   }
   return identity;
 }

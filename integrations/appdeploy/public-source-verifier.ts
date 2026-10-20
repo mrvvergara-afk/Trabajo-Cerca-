@@ -117,12 +117,25 @@ function worksite(job:Data) {
 }
 
 function applicationLink(raw:string, url:string) {
+  // Laborum's main job owns this named form; recommendation cards also carry
+  // Postular labels and must never become this job's application destination.
+  if (new URL(url).hostname.replace(/^www\./,'')==='laborum.cl') {
+    const forms=[...raw.matchAll(/<form\b([^>]*)>([\s\S]*?)<\/form>/gi)]
+      .filter(form=>attribute(form[1],'id')==='form-salario-pretendido');
+    if (forms.length===1 && !/\bhidden\b|aria-hidden\s*=\s*["']true["']/i.test(forms[0][1])) {
+      const buttons=[...forms[0][2].matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)];
+      if (buttons.some(button=>attribute(button[1],'type')==='submit' &&
+          !/\bdisabled\b|aria-disabled\s*=\s*["']true["']/i.test(button[1]) &&
+          /^postularme$/i.test(publicText(button[2]).trim()))) return url;
+    }
+  }
   for (const anchor of raw.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
     if (!/postul|aplicar|apply|envi.{0,20}(?:cv|curr[ií]culum)/i.test(publicText(anchor[2]))) continue;
     if (/\bdisabled\b|aria-disabled\s*=\s*["']true["']/i.test(anchor[1])) continue;
     const href = attribute(anchor[1],'href');
     if (/^mailto:[^@\s?]+@[^@\s?]+\.[^@\s?]+(?:\?.*)?$/i.test(href)) return href;
     const target = safePublicUrl(href,url);
+    if (target && publicSourceAdapter(target) && !samePublicJob(url,target)) continue;
     if (target?.startsWith('https:')) return target;
   }
   return null;

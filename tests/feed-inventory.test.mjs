@@ -35,3 +35,7 @@ test('an authoritative empty snapshot is distinguishable from a failed read',asy
   assert.equal(empty.complete,true);assert.equal(empty.totalJobOffers,0);assert.equal(empty.items.length,0);
   assert.equal((await readInventory(async()=>{throw Error('offline');})).complete,false);
 });
+test('complete SDK evidence preserves original dates and the application URL per job ID',async()=>{
+ const source={...item('one'),sourcePublishedAt:'2026-10-06T00:00:00Z',sourceValidThrough:'2027-02-03T00:00:00Z',applicationUrl:'https://www.laborum.cl/empleos/unimarc-1118469523.html',lastVerifiedAt:'2026-10-20T09:37:00Z'};
+ const result=await readInventory(async()=>({data:{items:[source],totalItems:1}}));assert.equal(result.items[0].applicationUrl,source.applicationUrl);assert.equal(result.items[0].sourcePublishedAt,source.sourcePublishedAt);assert.equal(result.items[0].sourceValidThrough,source.sourceValidThrough);
+});

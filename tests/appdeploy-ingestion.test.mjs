@@ -466,3 +466,6 @@ test('Operator diagnostics return public counts and never return proofs or backu
   assert.ok(!JSON.stringify(response.body).includes('body_base64'));
   assert.equal(h.calls.filter(call => ['add','update','delete'].includes(call.method)).length,0);
 });
+test('signed receiver refuses an application belonging to a different individual job',()=>{
+ const h=harness();assert.throws(()=>h.ctx.validateOffer(offer({application:'https://www.chiletrabajos.cl/trabajo/otro-cargo-2'}),now),/Application belongs to another job/);
+});

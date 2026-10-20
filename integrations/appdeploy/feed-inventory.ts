@@ -19,8 +19,10 @@ export async function readFeedInventory(read:Read, maxPages=100) {
       for (const item of data.items) {
         if (typeof item.id!=='string' || !item.id || ids.has(item.id)) throw new Error('duplicate_or_invalid_id');
         ids.add(item.id);
-        const { id,kind,title,company,source,workLocation,workCommunes,date,createdAt,url,verified,review }=item;
-        items.push({ id,kind,title,company,source,workLocation,workCommunes,date,createdAt,url,verified,review });
+        const { id,kind,title,company,source,workLocation,workCommunes,date,createdAt,url,verified,review,
+          sourcePublishedAt,sourceValidThrough,expiresAt,applicationUrl,applicationMethod,firstPublishedAt,lastVerifiedAt,externalVerifiedAt,revalidationDue,active,closureReason }=item;
+        items.push({ id,kind,title,company,source,workLocation,workCommunes,date,createdAt,url,verified,review,
+          sourcePublishedAt,sourceValidThrough,expiresAt,applicationUrl,applicationMethod,firstPublishedAt,lastVerifiedAt,externalVerifiedAt,revalidationDue,active,closureReason });
       }
       if (!data.nextCursor) {
         if (totalItems!==undefined && (!Number.isSafeInteger(totalItems) || totalItems!==items.length)) throw new Error('incomplete_count');

@@ -111,3 +111,16 @@ test('A copied aggregator notice requires verification of the original publisher
   const aggregate = 'https://www.opcionempleo.cl/jobad/cl0123456789abcdef';
   assert.equal(ctx.evaluatePublicJob(aggregate,page(),aggregate,200,now).reason,'aggregator_requires_original_source');
 });
+
+test('Laborum main application form stays on its own job instead of a recommended vacancy',()=>{
+ const original='https://www.laborum.cl/empleos/cajero-unimarc-1118469523.html';
+ const unrelated='https://www.laborum.cl/empleos/cajero-brinks-1118486145.html';
+ const raw=page({job:{url:original},anchor:false,tail:'<form id="form-salario-pretendido"><button form="form-salario-pretendido" type="submit">Postularme</button></form><a href="'+unrelated+'">Postular</a>'});
+ const row=ctx.evaluatePublicJob(original,raw,original,200,now);assert.equal(row.status,'verified');assert.equal(row.application,original);
+ const disabled=raw.replace('type="submit"','type="submit" disabled');const blocked=ctx.evaluatePublicJob(original,disabled,original,200,now);assert.notEqual(blocked.status,'verified');assert.equal(blocked.application,undefined);
+});
+test('related job links cannot supply missing application evidence on any portal',()=>{
+ const other='https://cl.indeed.com/viewjob?jk=abcdef0123456789';
+ const row=ctx.evaluatePublicJob(url,page({anchor:false,tail:'<a href="'+other+'">Postular</a>'}),url,200,now);
+ assert.notEqual(row.status,'verified');assert.equal(row.application,undefined);
+});

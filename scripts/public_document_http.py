@@ -69,10 +69,11 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 
 class PublicCapture:
-    def __init__(self, root, transport=None):
+    def __init__(self, root, transport=None, *, url_validator=public_url):
         self.root = Path(root)
         (self.root/'objects').mkdir(parents=True, exist_ok=True)
         self.transport = transport or self._transport
+        self.validate_url = url_validator
         self.robots = {}
         self.requests = []
 
@@ -101,17 +102,20 @@ class PublicCapture:
             return raw, response.headers.get_content_type(), response.code, response.headers.get('Location')
 
     def allowed(self, value, budget):
-        url = public_url(value)
+        url = self.validate_url(value)
         parts = urllib.parse.urlsplit(url)
         origin = parts.scheme+'://'+parts.netloc
         if origin not in self.robots:
             address = original_policy = origin+'/robots.txt'
             for _ in range(4):
-                raw, mime, status, location = self.transport(address, budget, 50000)
+                try:
+                    raw, mime, status, location = self.transport(address, budget, 50000)
+                except OSError:
+                    raise ValueError('robots_policy_unavailable') from None
                 self.requests.append({'url':address,'status':status,'mime':mime,'sha256':self.put(raw)})
                 if status not in (301,302,303,307,308):
                     break
-                address = public_url(urllib.parse.urljoin(address,location or ''))
+                address = self.validate_url(urllib.parse.urljoin(address,location or ''))
                 if not same_publisher(original_policy,address):
                     raise ValueError('robots_policy_unavailable')
             else:
@@ -125,7 +129,7 @@ class PublicCapture:
         return robots_allow(self.robots[origin],url)
 
     def __call__(self, value, budget, max_bytes=900000):
-        original = current = public_url(value)
+        original = current = self.validate_url(value)
         for _ in range(4):
             if not same_publisher(original, current):
                 raise ValueError('redirect_outside_publisher')
@@ -135,7 +139,7 @@ class PublicCapture:
             self.requests.append({'url':current,'status':status,'mime':mime,
                                   'bytes':len(raw),'sha256':self.put(raw)})
             if status in (301,302,303,307,308):
-                current = public_url(urllib.parse.urljoin(current, location or ''))
+                current = self.validate_url(urllib.parse.urljoin(current, location or ''))
                 continue
             if status != 200:
                 if status == 404 and urllib.parse.urlsplit(current).path == '/robots.txt':

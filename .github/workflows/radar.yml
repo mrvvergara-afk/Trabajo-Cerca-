@@ -40,6 +40,30 @@ concurrency:
   group: radar-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  omil-public-access:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[omil public access]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probar límites y restricciones sin red ni proveedores
+        run: python -m unittest tests.test_social_access_probe tests.test_document_queue_reader -v
+      - name: Comprobar acceso público a las cuentas aportadas, sin sesión ni reintentos
+        run: python -m scripts.social_access_probe
+      - name: Conservar diagnóstico y respuestas originales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: omil-public-access
+          path: output/social-access/
+          retention-days: 7
   portal-individual-proof:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&

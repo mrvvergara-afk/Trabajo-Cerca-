@@ -542,3 +542,9 @@ test('The actual listings route exposes complete immutable pagination and preser
   h.fail('get', 'public_feed_manifests', new Error('429 AppDatabaseQuotaExceeded'));
   await assert.rejects(read({}), /429 AppDatabaseQuotaExceeded/);
 });
+
+test('recent counters use unique feed entries and incomplete old-page counters stay unknown',()=>{
+ const h=harness(),rows=[{key:'a',source:'radar_jobs',sourceId:'a',item:record('a',{workCommunes:['Angol','Lumaco'],createdAt:new Date(startTime-3*86400000).toISOString()})}];
+ const summary=h.context.summarize(rows,startTime);assert.equal(summary.totalJobOffers,1);assert.equal(summary.recentJobOffers7d,1);assert.equal(summary.recentJobOffers24h,0);assert.equal(summary.communeStats.Angol.newJobs7d,1);assert.equal(summary.communeStats.Lumaco.newJobs7d,1);
+ const old={...summary};delete old.recentJobOffers7d;assert.equal(h.context.total([{summary},{summary:old}]).recentJobOffers7d,undefined);
+});

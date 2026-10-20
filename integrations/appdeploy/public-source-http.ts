@@ -45,7 +45,12 @@ export async function fetchPublicPage(value:string, expectedJob?:string):Promise
       const meta=buffer.subarray(0,4096).toString('ascii').match(/charset\s*=\s*["']?([a-z0-9_-]+)/i)?.[1]?.toLowerCase();
       const encoding=declared || meta || 'utf-8';
       if (!['utf-8','utf8','iso-8859-1','latin1','windows-1252'].includes(encoding)) return { url:current,status:200,raw:'',mime,bytes,error:'source_encoding_unsupported' };
-      return { url:current,status:200,raw:new TextDecoder(encoding==='utf8'?'utf-8':encoding).decode(buffer),mime,bytes };
+      const raw=new TextDecoder(encoding==='utf8'?'utf-8':encoding).decode(buffer);
+      const accessText=raw.replace(/<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ');
+      if (/verify you are human|unusual traffic|verificaci[oó]n requerida|tr[aá]fico inusual|verifica si realmente|no (?:es|eres) un robot/i.test(accessText)) {
+        return {url:current,status:200,raw,mime,bytes,error:'public_access_challenge'};
+      }
+      return { url:current,status:200,raw,mime,bytes };
     }
     return { url:current,status:0,raw:'',mime:'',bytes:0,error:'redirect_budget_exhausted' };
   } catch {

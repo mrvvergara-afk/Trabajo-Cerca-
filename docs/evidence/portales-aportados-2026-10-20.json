@@ -1,0 +1,125 @@
+{
+  "schema": "trabajo-cerca.user-portal-images.v1",
+  "method": "direct_visual_inspection",
+  "new_verified_offers": 0,
+  "images": [
+    {
+      "file": "1-162176.jpg",
+      "portal": "Indeed (apariencia; sin URL visible)",
+      "roles": [
+        "Supervisores de Cuadrilla"
+      ],
+      "employer": "CHISA SA",
+      "work_location": "Angol, Araucanía",
+      "vacancies_visible": 5,
+      "source_date": null,
+      "application_url": null,
+      "sha256": "445847e75f6f208e12c89335836571c025f2abcf111df8ce53dcecaa64de291d",
+      "state": "candidate_reference_only; individual_URL_and_original_date_not_visible"
+    },
+    {
+      "file": "2-162177.jpg",
+      "portal": "Indeed (apariencia; sin URL visible)",
+      "roles": [
+        "Cajeros/as con experiencia Unimarc Angol"
+      ],
+      "employer": "Unimarc",
+      "work_location": "Angol, Araucanía",
+      "source_date": null,
+      "application_url": null,
+      "conflict": "Detalle dice tiempo completo; descripción Part Time",
+      "sha256": "0366a3c1279ca544b4f5019000c46b58e7e997fc1410436da6f4b8982c6617ee",
+      "state": "candidate_reference_only; individual_URL_and_original_date_not_visible"
+    },
+    {
+      "file": "3-162180.jpg",
+      "portal": "Opción Empleo",
+      "roles": [
+        "Auxiliar de cocina",
+        "Asistente de tienda autopartes",
+        "Operativo/a de tienda",
+        "Fiscalizador de obras",
+        "Prevencionista de riesgos",
+        "Cajero/a asistente integral",
+        "TENS domiciliario"
+      ],
+      "employers_visible": [
+        "Sodexo",
+        "Grupo Rh",
+        "Banco Falabella",
+        "Inspecciones Ildygardy",
+        "Consultores 2000",
+        "Fashion’s Park",
+        "Layner"
+      ],
+      "search_location": "Angol, radio 25 km",
+      "search_count_visible": 102,
+      "source_date": null,
+      "application_url": null,
+      "duplicates_visible": true,
+      "sha256": "4d2da26607971a3c0c4b5d1b6b0e7a969f19f2d12ad5192301c4311fbca6e33d",
+      "state": "candidate_reference_only; individual_URL_and_original_date_not_visible"
+    },
+    {
+      "file": "4-162182.jpg",
+      "portal": "Laborum",
+      "roles": [
+        "Vendedor en terreno",
+        "Auditor/a planta calidad e inocuidad alimentaria",
+        "Asesor/a de ventas y servicio sucursal",
+        "Ejecutivo/a de venta terreno",
+        "Ejecutivo/a ventas y experiencia clientes",
+        "Asistente dental Full Time",
+        "Ejecutivo comercial intangible"
+      ],
+      "employers_visible": [
+        "ManpowerGroup Chile",
+        "SMU",
+        "Atento Chile",
+        "Confidencial"
+      ],
+      "search_location": "Angol, Victoria y Traiguén (texto de varios cargos)",
+      "source_date": null,
+      "application_url": null,
+      "duplicates_visible": true,
+      "sha256": "5032a0ef888b7be6bbc4815f6531411758c94ae0129ae1c983fe0536257c6e7e",
+      "state": "candidate_reference_only; individual_URL_and_original_date_not_visible"
+    },
+    {
+      "file": "5-162184.jpg",
+      "portal": "no identificado inequívocamente: captura lista móvil",
+      "roles": [
+        "Promovendedor/a multitienda",
+        "Asistente visual",
+        "Auxiliar de cocina reemplazo 1 mes",
+        "Jefe de ventas",
+        "Asesor/a comercial integral",
+        "Ergónomo/a honorarios",
+        "Ejecutivo venta terreno",
+        "Vendedor/a Full Time 42 horas",
+        "Repartidor 20 y 30 horas",
+        "Ejecutivo atención cliente cobranza reemplazo"
+      ],
+      "employers_visible": [
+        "Tricot",
+        "Sodexo Chile",
+        "Atento Chile",
+        "Achs Servicios",
+        "Manpower Chile",
+        "Papa Johns",
+        "Eurofirms"
+      ],
+      "search_location": "Angol, Araucanía",
+      "search_count_visible": 48,
+      "source_date": null,
+      "application_url": null,
+      "sha256": "e79265e3500c184245d5ee0ce57a6d857f18cf1544a8855cd4f156ace4a23326",
+      "state": "candidate_reference_only; individual_URL_and_original_date_not_visible"
+    }
+  ],
+  "notes": [
+    "Los conteos de búsqueda no son ofertas verificadas únicas.",
+    "Justo ahora, actualizado o hace horas no acreditan fecha original.",
+    "No inventamos IDs, URLs, años o modalidades para completar capturas."
+  ]
+}

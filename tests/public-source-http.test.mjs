@@ -33,3 +33,7 @@ test('a genuine missing robots file allows a bounded public read',async()=>{
  ctx.fetch=async address=>{calls.push(address);return address.endsWith('/robots.txt')?new Response(null,{status:404}):new Response('Oferta',{headers:{'content-type':'text/html'}});};
  assert.equal((await ctx.fetchPublicPage('https://www.munimulchen.cl/oferta-laboral')).raw,'Oferta');assert.equal(calls.length,2);
 });
+test('a Spanish verification challenge is blocked rather than reported as no vacancies',async()=>{
+ const ctx=context(async()=>new Response('<h1>Verificación requerida</h1><p>Nuestros sistemas detectaron tráfico inusual.</p>',{headers:{'content-type':'text/html'}}));
+ assert.equal((await ctx.fetchPublicPage('https://www.opcionempleo.cl/empleo-en-angol.html')).error,'public_access_challenge');
+});

@@ -174,5 +174,6 @@
   "comparison_baseline": "docs/evidence/inventario-antes-ampliacion-2026-10-20.json",
   "revalidate_cmpc": [
     18859
-  ]
+  ],
+  "observation_only": true
 }

@@ -548,3 +548,15 @@ test('recent counters use unique feed entries and incomplete old-page counters s
  const summary=h.context.summarize(rows,startTime);assert.equal(summary.totalJobOffers,1);assert.equal(summary.recentJobOffers7d,1);assert.equal(summary.recentJobOffers24h,0);assert.equal(summary.communeStats.Angol.newJobs7d,1);assert.equal(summary.communeStats.Lumaco.newJobs7d,1);
  const old={...summary};delete old.recentJobOffers7d;assert.equal(h.context.total([{summary},{summary:old}]).recentJobOffers7d,undefined);
 });
+
+test('a replacement representative and a later recheck preserve the first incorporation date and novelty counts',async()=>{
+ const h=harness(),oldTime=new Date(startTime-10*86400000).toISOString();
+ const url='https://www.chiletrabajos.cl/trabajo/tens-lumaco-3902931';
+ const [old]=await h.context.trackedFeedAdd('radar_jobs',[record('old',{url,createdAt:oldTime,verifiedAt:oldTime})]);
+ await finish(h);
+ const [fresh]=await h.context.trackedFeedAdd('radar_jobs',[record('fresh',{url,createdAt:new Date(startTime).toISOString(),verifiedAt:new Date(startTime).toISOString()})]);
+ await h.advance();
+ const page=await h.context.readPublicFeedPage();assert.equal(page.items.length,1);assert.equal(page.items[0].id,fresh);assert.equal(page.items[0].firstPublishedAt,oldTime);
+ assert.equal(page.recentJobOffers24h,0);assert.equal(page.recentJobOffers7d,0);
+ assert.equal(h.table('radar_jobs').size,2);assert.equal(h.table('radar_jobs').get(old).createdAt,oldTime);
+});

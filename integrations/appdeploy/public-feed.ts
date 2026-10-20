@@ -266,17 +266,26 @@ class Editor {
 
   async put(source:FeedSource, sourceId:string, record:Stored | null) {
     const key = source + ':' + sourceId;
+    const firstTimes:number[]=[];
+    const remember=(value:Stored)=>{
+      const time=Date.parse(String(value.firstPublishedAt || value.createdAt || ''));
+      if (Number.isFinite(time) && time<=this.now) firstTimes.push(time);
+    };
     const old = this.pages.find(ref => ref.keys.includes(key));
     if (old) {
-      const remaining = (await this.entries(old)).filter(entry => entry.key !== key);
+      const current=await this.entries(old);
+      const previous=current.find(entry=>entry.key===key);if (previous) remember(previous.item);
+      const remaining = current.filter(entry => entry.key !== key);
       this.set(old, remaining);
       if (!remaining.length) this.pages.splice(this.pages.indexOf(old), 1);
     }
     const item = record ? this.projector.project({ ...record, id:sourceId }) : null;
     if (!item) return;
+    remember(item);
     const incomingIdentity = identity(item);
     if (incomingIdentity) {
       const duplicates = this.pages.filter(page => page.identities?.includes(incomingIdentity));
+      for (const page of duplicates) for (const entry of await this.entries(page)) if (identity(entry.item)===incomingIdentity) remember(entry.item);
       for (const page of duplicates) {
         const existing = await this.entries(page);
         const duplicate = existing.find(entry => identity(entry.item) === incomingIdentity);
@@ -285,7 +294,10 @@ class Editor {
           const stamp = Date.parse(String(value.externalVerifiedAt || value.verificationCheckedAt || value.verifiedAt || ''));
           return Number.isFinite(stamp) && stamp <= this.now ? stamp : 0;
         };
-        if (checked(duplicate.item) > checked(item)) return;
+        if (checked(duplicate.item) > checked(item)) {
+          if (firstTimes.length) {duplicate.item={...duplicate.item,firstPublishedAt:new Date(Math.min(...firstTimes)).toISOString()};this.set(page,existing);}
+          return;
+        }
       }
       for (const page of duplicates) {
         const remaining = (await this.entries(page)).filter(entry => identity(entry.item) !== incomingIdentity);
@@ -293,6 +305,7 @@ class Editor {
         if (!remaining.length) this.pages.splice(this.pages.indexOf(page), 1);
       }
     }
+    if (firstTimes.length) item.firstPublishedAt=new Date(Math.min(...firstTimes)).toISOString();
     const entry:Entry = { key, source, sourceId, item, ...(this.projector.revision ? { projectionRevision:this.projector.revision } : {}) };
     checkSize({ entries:[entry] });
     let ref = this.pages.find(page => compare(order(entry), page.last) <= 0) ?? this.pages[this.pages.length - 1];

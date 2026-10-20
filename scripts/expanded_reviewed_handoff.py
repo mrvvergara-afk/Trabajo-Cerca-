@@ -86,7 +86,30 @@ def main():
         'ref':os.environ.get('GITHUB_REF'),'sha':os.environ.get('GITHUB_SHA'),'run_id':os.environ.get('GITHUB_RUN_ID')}
     if context['repository']!=laboratory_exchange.REPOSITORY or context['ref']!='refs/heads/'+laboratory_exchange.DOCUMENT_PRODUCER_BRANCH:
         raise ValueError('authorized_repair_branch_required')
-    settings=json.loads(CONFIG.read_text());targets=settings['approved']
+    settings=json.loads(CONFIG.read_text())
+    if settings.get('observation_only'):
+        output=Path('output/expanded-reviewed-handoff');output.mkdir(parents=True,exist_ok=True)
+        retained=json.loads(Path('docs/evidence/publicaciones-ampliacion-2026-10-20.json').read_text())
+        expected=set(retained['published_ids']);deadline=time.monotonic()+480
+        while time.monotonic()<deadline:
+            consumed=asyncio.run(consume_once());observe_site_inventory.main()
+            inventory=json.loads(Path('output/site-inventory/proof.json').read_text())
+            proof=json.loads(Path('output/laboratory_observation_proof.json').read_text())
+            write_json(output/'after-inventory.json',inventory);write_json(output/'operator-proof.json',proof)
+            target=next((row for row in inventory['visible_items'] if '3902931' in str(row.get('url',''))),{})
+            if target.get('firstPublishedAt')=='2026-10-15T10:18:22.963Z' and not consumed.get('feed',{}).get('rebuilding'):
+                break
+            print('FIRST_PUBLICATION_WAIT '+json.dumps({'status':consumed.get('status'),'firstPublishedAt':target.get('firstPublishedAt')}),flush=True);time.sleep(30)
+        else:raise RuntimeError('first_publication_migration_not_confirmed')
+        if not expected<={row['id'] for row in inventory['visible_items']}:raise ValueError('reviewed_offer_ids_changed_during_projection')
+        view=asyncio.run(cards({row['id'] for row in inventory['visible_items'] if row.get('kind')=='job_offer'}));write_json(output/'cards.json',view)
+        report={'schema':'trabajo-cerca.first-publication-proof.v1','checked_at':inventory['checked_at'],'sdk_job_offers':inventory['sdk_job_offers'],
+            'all_reviewed_ids_preserved':sorted(expected),'new_offers_in_this_check':0,'first_publication_preserved':target,
+            'total_stable':view['all_cards']['total']==retained['sdk_job_offer_records'],'cards_confirmed':True,'paid_calls':0}
+        write_json(output/'confirmation.json',report);parent,checkpoint=restore_checkpoint()
+        saved=publish_evidence(output,checkpoint,parent,context['run_id']+'-'+os.environ.get('GITHUB_RUN_ATTEMPT','1'))
+        print('FIRST_PUBLICATION_CONFIRMED '+json.dumps({**report,'data_commit':saved},ensure_ascii=False),flush=True);return
+    targets=settings['approved']
     if not 0<len(targets)<=24:raise ValueError('reviewed_delivery_budget_exceeded')
     output=Path('output/expanded-reviewed-handoff');output.mkdir(parents=True,exist_ok=True)
     for commit in sorted({row['capture_commit'] for row in targets}):subprocess.run(['git','fetch','origin',commit],check=True)

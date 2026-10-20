@@ -9,7 +9,7 @@ function projectFeedListing(value:Record<string, unknown> & { id:string }) {
   if (unsafeContentReason(evidence,item.url)) return null;
   const published=parseDiscoveryDate(item.sourcePublishedAt || item.date);
   if (!published || published>Date.now()) return null;
-  return { ...publicRecord(item),revalidationDue:offerRecheckDue(value) };
+  return { ...publicRecord(item),firstPublishedAt:knownFirstPublication(value),revalidationDue:offerRecheckDue(value) };
 }
 
 function feedRefreshAt(item:Record<string, unknown>) {

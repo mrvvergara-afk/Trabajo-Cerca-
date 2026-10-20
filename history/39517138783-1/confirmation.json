@@ -1,0 +1,50 @@
+{
+  "schema": "trabajo-cerca.first-publication-proof.v1",
+  "checked_at": "2026-10-20T23:52:04.366255+00:00",
+  "sdk_job_offers": 50,
+  "all_reviewed_ids_preserved": [
+    "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+    "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+    "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+    "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+    "361dab2c-87ef-4bce-9bda-ef731822244d",
+    "4ba4e5d1-8556-4b33-8304-329a35184274",
+    "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+    "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+    "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+    "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+    "b92528e5-61b5-4498-88ca-808c2443a044",
+    "bdaed372-0383-4771-9c3e-d4a80207d823",
+    "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+    "cb47b13c-00cf-4d12-9043-c6906da31736",
+    "cb724831-6a31-4fbf-9d8c-c067596f9237",
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+  ],
+  "new_offers_in_this_check": 0,
+  "first_publication_preserved": {
+    "id": "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+    "kind": "job_offer",
+    "title": "TENS para Cuidados Pacientes Domiciliarios / Lumaco",
+    "company": "Layner",
+    "source": "Chiletrabajos",
+    "workLocation": "Lumaco",
+    "workCommunes": [
+      "Lumaco"
+    ],
+    "date": "23 sept 2026",
+    "createdAt": "2026-10-20T23:05:29.616Z",
+    "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+    "verified": true,
+    "review": false,
+    "sourcePublishedAt": "2026-09-23T18:32:45.000Z",
+    "sourceValidThrough": "2026-12-07T18:32:45.000Z",
+    "expiresAt": "2026-12-07T18:32:45.000Z",
+    "firstPublishedAt": "2026-10-03T14:56:19.870Z",
+    "externalVerifiedAt": "2026-10-20T23:05:29.616Z",
+    "revalidationDue": false,
+    "active": true
+  },
+  "total_stable": true,
+  "cards_confirmed": true,
+  "paid_calls": 0
+}

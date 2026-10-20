@@ -90,3 +90,41 @@ test('A literal caption is preserved for review without an AI call, source-town 
   assert.equal(result.contact,'empleo@example.cl');
   assert.equal(h.captionSocialFinding({ url:'https://www.facebook.com/municipio/',content:'Se necesita operador' }),null);
 });
+
+test('poster and caption jointly supply employer, contact and deadline from the same original post',()=>{
+ const post={url:'https://www.instagram.com/p/testJob123/',date_posted:'2026-10-12T18:00:00-03:00',caption:'Empresa: Empresa de prueba\nEnviar CV a empleo@example.cl\nPlazo de postulación: 20 de octubre de 2026'};
+ const poster={postUrl:post.url,title:'Operador forestal',text:'Se necesita Operador forestal\nLugar de trabajo: Mininco'};
+ const merged=h.socialPosterFinding(post,poster,now);assert.ok(merged);assert.ok(merged.text.includes(post.caption));assert.ok(merged.text.includes(poster.text));
+ const prepared=h.prepareSocialEvidence(merged,new Date(now).toISOString(),places,now);
+ assert.equal(prepared.ready,true);assert.equal(prepared.contact,'empleo@example.cl');assert.equal(prepared.company,'Empresa de prueba');assert.equal(prepared.deadline,'2026-10-21T02:59:59.999Z');
+ assert.equal(prepared.published,'2026-10-12T21:00:00.000Z');
+});
+test('a caption deadline or capture timestamp never substitutes for the original post date',()=>{
+ const post={url:'https://www.instagram.com/p/testJob123/',caption:'Empresa: Empresa de prueba\nEnviar CV a empleo@example.cl\nPlazo de postulación: 20 de octubre de 2026',extractedAt:new Date(now).toISOString()};
+ const merged=h.socialPosterFinding(post,{title:'Operador forestal',postDate:'2026-10-12',text:'Se necesita Operador forestal\nLugar de trabajo: Mininco'},now);
+ assert.equal(merged.postDate,'');assert.equal(h.prepareSocialEvidence(merged,new Date(now).toISOString(),places,now).ready,false);
+});
+test('evidence from another post or the adjacent profile timeline cannot be joined',()=>{
+ const post={url:'https://www.instagram.com/p/firstJob/',caption:'Plazo de postulación: 20 de octubre de 2026'};
+ assert.equal(h.socialPosterFinding(post,{postUrl:'https://www.instagram.com/p/otherJob/',text:'Se necesita Operador'},now),null);
+ assert.equal(h.socialPosterFinding({...post,url:'https://www.instagram.com/municipio/'},{text:'Se necesita Operador'},now),null);
+});
+test('adding a long caption preserves the original length and cannot silently approve truncated evidence',()=>{
+ const merged=h.socialPosterFinding({url:'https://www.instagram.com/p/testJob123/',caption:'a'.repeat(5900)},{text:'b'.repeat(500)},now);
+ assert.equal(merged.text.length,6000);assert.equal(merged.textTruncated,true);assert.ok(merged.textOriginalLength>6400);
+});
+test('a closed deadline written only in the caption stays closed after combining the poster',()=>{
+ const merged=h.socialPosterFinding({url:'https://www.instagram.com/p/testJob123/',date_posted:'2026-10-10',caption:'Empresa: Empresa de prueba\nContacto: empleo@example.cl\nPlazo de postulación: 11 de octubre de 2026'},{title:'Operador forestal',text:'Se necesita Operador forestal\nLugar de trabajo: Mininco'},now);
+ const prepared=h.prepareSocialEvidence(merged,new Date(now).toISOString(),places,now);assert.equal(prepared.ready,false);assert.ok(prepared.evidence.missing.includes('plazo vigente explícito y coherente'));
+});
+
+test('the actual collector path saves usable evidence when the deadline and contact are only in the caption',()=>{
+ const patch=JSON.parse(readFileSync(new URL('../integrations/appdeploy/social-caption-controller-repair-2026-10-20.json',import.meta.url),'utf8'));
+ h.post={url:'https://www.instagram.com/p/collectorJob123/',date_posted:'2026-10-12T18:00:00-03:00',caption:'Empresa: Empresa de prueba\nContacto: empleo@example.cl\nPlazo de postulación: 20 de octubre de 2026'};
+ h.x={isJobNotice:true,title:'Operador forestal',text:'Se necesita Operador forestal\nLugar de trabajo: Mininco'};
+ h.jobs=0;h.findings=[];h.mediaUrl='https://images.example.cl/afiche.jpg';h.socialOriginalDate=h.originalSocialDate;
+ vm.runInContext(patch.diffs[1].to,h);
+ assert.equal(h.jobs,1);assert.equal(h.findings.length,1);
+ const result=h.prepareSocialEvidence(h.findings[0],new Date(now).toISOString(),places,now);
+ assert.equal(result.ready,true);assert.equal(result.contact,'empleo@example.cl');assert.equal(result.company,'Empresa de prueba');
+});

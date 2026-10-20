@@ -1,0 +1,56 @@
+{
+  "schema": "trabajo-cerca.user-identified-public-social-sources.v1",
+  "scope": "public_only; no paid source added",
+  "sources": [
+    {
+      "url": "https://www.instagram.com/omilnacimiento/",
+      "territory": "Nacimiento",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_throttled",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false
+    },
+    {
+      "url": "https://www.instagram.com/omilangol2026/",
+      "territory": "Angol",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_throttled",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false
+    },
+    {
+      "url": "https://www.instagram.com/omil_traiguen/",
+      "territory": "Traiguén",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_throttled",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false
+    },
+    {
+      "url": "https://www.instagram.com/munilumaco/",
+      "territory": "Lumaco",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_failed",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false
+    },
+    {
+      "url": "https://www.instagram.com/munidetraiguen/",
+      "territory": "Traiguén",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_failed",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false
+    }
+  ]
+}

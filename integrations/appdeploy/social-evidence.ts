@@ -76,6 +76,27 @@ export function captionSocialFinding(post:Finding, now=Date.now()):Finding | nul
     medium:'text',text,title,company,commune,contact,deadline });
 }
 
+// OCR and caption are complementary evidence owned by one original post.
+// A poster without a date/contact must retain those literal caption fields.
+export function socialPosterFinding(post:Finding, poster:Finding, now=Date.now()):Finding | null {
+  const postUrl=literal(post.post_url || post.url,4000);
+  if (!specificSocialPost(postUrl) || poster.postUrl && !sameSocialPost(postUrl,String(poster.postUrl))) return null;
+  const caption=[post.content,post.caption,post.message,post.text,post.description]
+    .find(value=>typeof value==='string' && value.trim()) as string | undefined || '';
+  const imageText=typeof poster.text==='string' ? poster.text.trim() : '';
+  const parts=[caption.trim() ? '[TEXTO DE LA PUBLICACIÓN]\n'+caption.trim() : '',
+    imageText ? '[TEXTO DEL AFICHE]\n'+imageText : ''].filter(Boolean);
+  const text=parts.join('\n\n');
+  const statedLength=Number(poster.textOriginalLength);
+  const omitted=Number.isSafeInteger(statedLength) && statedLength>imageText.length ? statedLength-imageText.length : 0;
+  const captionFields=captionSocialFinding(post,now);
+  const captionCompany=caption.match(/(?:^|\n)\s*(?:empresa|empleador)\s*[:\-]\s*([^\n]{3,180})/i)?.[1]?.trim() || '';
+  return preservedSocialFinding({ ...poster,postUrl,postDate:originalSocialDate(post),medium:'image',
+    extractedAt:new Date(now).toISOString(),title:literal(poster.title) || captionFields?.title,
+    company:literal(poster.company) || captionFields?.company || captionCompany,
+    text,textOriginalLength:text.length+omitted,textTruncated:poster.textTruncated===true || omitted>0 });
+}
+
 function specificSocialPost(value:string) {
   try {
     const url=new URL(value);

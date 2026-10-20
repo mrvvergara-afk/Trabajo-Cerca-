@@ -32,4 +32,12 @@ El respaldo durable quedó en `radar-document-reader-state`, commit `47579c04f68
 
 **Publicaciones sociales nuevas confirmadas en esta tanda: 0.** No se volvió a leer/OCR material agotado para producir métricas. La simplificación permite tramitar un original completo cuando se obtiene; el acceso automatizado a esos perfiles de Instagram sigue limitado por su política. Para aumentar resultados dentro del alcance actual, se pueden procesar las réplicas primarias accesibles y originales completos que lleguen por canales permitidos. El acceso automático directo a Meta requiere una vía autorizada; no se soluciona insistiendo con el navegador.
 
-La comparación final del feed e IDs se adjuntará a la evidencia de esta revisión. No se atribuirán salidas a vencimiento sin una decisión o evidencia que lo pruebe, ni se contarán revalidaciones como avisos nuevos.
+## Inventario posterior al despliegue
+
+El run [39410789439](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/39410789439) leyó a las **10:50:56 UTC** las **cuatro páginas completas del SDK**: 36 registros, **34 tipados como oferta**. No se presenta ese total como 34 nuevas vacantes auditadas. La portada muestra 34 ofertas y 11 incorporadas en siete días; se observaron nueve tarjetas en la captura inicial, incluido cada cargo de Traiguén y los tres Laborum ya firmados. No se hizo aquí un recorrido de todas las tarjetas, ni se afirma que nueve sea el total del inventario.
+
+Los tres IDs de Traiguén siguen presentes. El SDK conserva como última revalidación exitosa el 20-oct a las 00:50:37 UTC y como próxima revisión las 12:50:37 UTC; esta lectura no ejecutó ni anticipó esa revisión.
+
+Respecto al respaldo de las 10:06:29 UTC, el total sigue en 34 ofertas y hay **un cambio de ID visible**: sale `79b81cf7-7c2a-4409-aad9-3be7a78260f6` y entra `80c05369-4a99-4508-9b5b-239ac5bb13c5`. Ambos representan **Conductor**, la misma URL Chiletrabajos `conductor-3904934`, la misma fecha editorial 28-sept y plazo 12-dic; los registros fueron creados el 6 y el 8 de octubre. **No es un aviso nuevo ni evidencia de vencimiento.** Falta acreditar por qué la proyección eligió ahora el otro representante y estabilizar esa selección sin tocar los originales históricos. La comparación y todos los IDs están en `docs/evidence/inventario-tras-simplificar-2026-10-20.json`.
+
+No se atribuyen salidas a vencimiento sin una decisión o evidencia que lo pruebe. Ninguna revalidación, cambio de representante o candidato se cuenta como nueva vacante.

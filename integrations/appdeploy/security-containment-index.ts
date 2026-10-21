@@ -1,4 +1,4 @@
-import { db, router, json, error, secrets, storage, ai, notifications, requireAuth } from '@appdeploy/sdk';
+import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
 import { advancePublicFeed, readPublicFeedPage, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
@@ -2763,21 +2763,24 @@ const consumeReviewedExchange=reviewedReceiver({
   confirm:confirmRadarPublications,
 });
 
+const ADMIN_EMAILS = ['mrvvergara@gmail.com'];
+
 export const handler = router({
+  'GET /api/admin/session': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => json({ administrator:true, userId:ctx.user!.userId, backupExportEnabled:false })],
   'GET /api/_healthcheck': [async () => json({ message: 'Success' })],
   'GET /api/ops/security-policy': [async () => json({ revision:'security-containment-v2',...SECURITY_POLICY })],
 
   // Operator diagnostics only; no writes, proofs, keys or history payloads are returned.
   'GET /api/ops/radar-external': [async () => json(await externalRadarStatus())],
   // Only the existing signed receiver and feed; no collector or provider is invoked.
-  'POST /api/ops/radar-external/consume': [requireAuth(), async () => error('Operación manual deshabilitada hasta configurar un operador autorizado.',403)],
+  'POST /api/ops/radar-external/consume': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
   'GET /api/ops/document-revalidation': [async () => json(await documentRevalidationStatus())],
   'GET /api/ops/radar-feed': [async () => json(await publicFeedProgress())],
   'GET /api/ops/local-source-evidence': [async ({ query }) => json(await readLocalSourceEvidence(query.cursor))],
   'GET /api/ops/free-public-sources': [async () => json(await freePublicSourceStatus())],
-  'POST /api/ops/free-public-sources/run': [requireAuth(), async () => error('Operación manual deshabilitada hasta configurar un operador autorizado.',403)],
+  'POST /api/ops/free-public-sources/run': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
-  'POST /api/radar/social-run': [requireAuth(), async () => error('Operación manual deshabilitada hasta configurar un operador autorizado.',403)],
+  'POST /api/radar/social-run': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
   'GET /api/radar/social-results': [async () => {
     const runs=await db.list<Record<string,unknown>>('social_capture_runs',{limit:30});
@@ -2785,7 +2788,7 @@ export const handler = router({
     return json({ runs:latest.map(x=>({source:x.sourceName,territory:x.territory,status:x.status,createdAt:x.createdAt,processedAt:x.processedAt,posts:x.posts,images:x.images,imagesRead:x.imagesRead,jobNotices:x.jobNotices,findings:x.findings})) });
   }],
 
-  'POST /api/radar/social-collect': [requireAuth(), async () => error('Operación manual deshabilitada hasta configurar un operador autorizado.',403)],
+  'POST /api/radar/social-collect': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
   'POST /api/analytics': [async ({ body }) => {
     if (!SECURITY_POLICY.externalAnalytics) return json({received:false,disabled:true,reason:'security_policy_disabled'},202);
@@ -2941,7 +2944,7 @@ export const handler = router({
     return json({ received:true, id }, 201);
   }],
 
-  'GET /api/radar/run-territorial-now': [requireAuth(), async () => error('Operación manual deshabilitada hasta configurar un operador autorizado.',403)],
+  'GET /api/radar/run-territorial-now': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
   'GET /api/radar/status': [async () => {
     await ensureSourceRegistry();

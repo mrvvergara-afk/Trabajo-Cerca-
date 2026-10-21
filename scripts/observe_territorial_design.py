@@ -74,6 +74,12 @@ async def observe():
                     'global_header':total, 'city_selection_and_return':True, 'advertiser_form_opened_only':True,
                     'dated_news_and_official_resources':True, 'legal_keyboard_checks':legal_checks,
                     'description':description, 'canonical':canonical, 'horizontal_overflow':overflow,'page_errors':errors})
+                await page.goto(URL+'?admin-proof=1#operacion', wait_until='domcontentloaded', timeout=30000)
+                panel = page.get_by_role('region', name='Acceso administrativo')
+                await panel.get_by_role('button', name='Verificar acceso', exact=True).click()
+                await panel.get_by_text('Inicia sesión con la cuenta administradora autorizada.', exact=True).wait_for(timeout=30000)
+                assert not await panel.get_by_text('Acceso administrativo confirmado.', exact=False).count()
+                results[-1]['anonymous_admin_denied'] = True
                 await page.close()
         finally:
             await instance.close()

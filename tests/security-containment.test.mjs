@@ -20,6 +20,28 @@ function database() {
 }
 const error=(message,status)=>({statusCode:status,body:JSON.stringify({error:message})});
 const isAppDatabaseError=e=>Boolean(e?.code?.startsWith('AppDatabase'));
+test('administrator identity comes only from SDK authenticated context; spoofed body and other accounts fail',async()=>{
+  const routes=load('index.ts','handler',{
+    confirmRadarPublications:()=>{},ai:{},denyRemoteCapabilities:()=>({}),checkedLegacyFetch:()=>{},
+    SECURITY_POLICY:{paidProviders:false,remoteAi:false,externalAnalytics:false,manualOperations:false},
+    publicQuota:()=>()=>{},opaqueOwnerToken:()=>'',reviewedReceiver:()=>()=>{},
+    router:r=>r,json:(data,status=200)=>({statusCode:status,body:JSON.stringify(data)}),error,
+    requireAuth:()=>ctx=>ctx.user?undefined:error('Unauthorized',401),
+    requireAdminEmailAllowlist:emails=>ctx=>emails.includes(ctx.user?.email)?undefined:error('Forbidden',403),
+  }).handler;
+  for(const [user,status] of [[undefined,401],[{userId:'other',email:'other@example.org'},403],[{userId:'no-scope'},403],[{userId:'authorized',email:'mrvvergara@gmail.com'},200]]){
+    let response;
+    const ctx={user,body:{email:'mrvvergara@gmail.com'},query:{email:'mrvvergara@gmail.com'}};
+    for(const middleware of routes['GET /api/admin/session']){response=await middleware(ctx);if(response)break;}
+    assert.equal(response.statusCode,status);
+    if(status===200){const body=JSON.parse(response.body);assert.equal(body.userId,'authorized');assert.equal(body.backupExportEnabled,false);}
+  }
+  let response;
+  for(const middleware of routes['POST /api/ops/free-public-sources/run']){
+    response=await middleware({user:{userId:'authorized',email:'mrvvergara@gmail.com'}});if(response)break;
+  }
+  assert.equal(response.statusCode,403,'authorization never enables manual collection');
+});
 test('remote AI is denied before touching the real capability; owner tokens are cryptographically random',async()=>{
   let calls=0;
   const policy=load('security-policy.ts','SECURITY_POLICY,denyRemoteCapabilities,opaqueOwnerToken',{fetchPublicPage:async()=>{throw Error('unexpected fetch');},publicSourceAdapter:()=>null});
@@ -75,6 +97,7 @@ test('manual routes deny anonymous and ordinary authenticated users without runn
     publicQuota:()=>()=>{quotaCalls++;},opaqueOwnerToken:()=>'',reviewedReceiver:()=>()=>{effects++;},
     router:r=>r,json:(data,status=200)=>({statusCode:status,body:JSON.stringify(data)}),error,
     requireAuth:()=>ctx=>ctx.user?undefined:error('Unauthorized',401),
+    requireAdminEmailAllowlist:emails=>ctx=>emails.includes(ctx.user?.email)?undefined:error('Forbidden',403),
   }).handler;
   for(const key of ['POST /api/ops/radar-external/consume','POST /api/ops/free-public-sources/run','POST /api/radar/social-run','POST /api/radar/social-collect','GET /api/radar/run-territorial-now']){
     for(const [user,status] of [[undefined,401],[{userId:'ordinary-user'},403]]){
@@ -94,3 +117,4 @@ test('original source date is immutable on rediscovery; new impression events ha
   assert(!source.includes('Date.parse(freshIncoming) > Date.parse(base.sourcePublishedAt)'));
   assert(source.includes("'tc_sponsor_viewable_impression'"));assert(source.includes("'visible_ms'"));
 });
+

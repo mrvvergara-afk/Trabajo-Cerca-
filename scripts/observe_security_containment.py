@@ -19,7 +19,7 @@ async def observe():
             await page.wait_for_function("""() => {try {let v=JSON.parse(document.getElementById('security-live-check')?.textContent);return Boolean(v?.results || v?.error);}catch{return false;}}""",timeout=60000)
             proof=json.loads(await page.locator('#security-live-check').inner_text())
             assert not proof.get('error'),proof
-            assert proof['policy']['revision']=='security-containment-v1'
+            assert proof['policy']['revision']=='security-containment-v2'
             assert all(proof['policy'][key] is False for key in ('paidProviders','remoteAi','externalAnalytics','manualOperations'))
             assert len(proof['results'])==6
             for row in proof['results']:

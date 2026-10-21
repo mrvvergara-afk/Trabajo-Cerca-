@@ -7,6 +7,7 @@ export type PublicPage = { url:string; status:number; raw:string; mime:string; b
 export async function fetchPublicPage(value:string, expectedJob?:string):Promise<PublicPage> {
   const clean = safePublicUrl(value), publisher = publicPublisher(value);
   if (!clean || !publisher) return { url:value,status:0,raw:'',mime:'',bytes:0,error:'publisher_not_allowed' };
+  if (new URL(clean).protocol !== 'https:') return { url:value,status:0,raw:'',mime:'',bytes:0,error:'https_required' };
   const signal = AbortSignal.timeout(6500);
   let current = clean;
   try {
@@ -17,7 +18,7 @@ export async function fetchPublicPage(value:string, expectedJob?:string):Promise
       if ([301,302,303,307,308].includes(response.status)) {
         const next = safePublicUrl(response.headers.get('location') || '',current);
         await response.body?.cancel();
-        if (!next || publicPublisher(next)?.group !== publisher.group || (expectedJob && !samePublicJob(expectedJob,next))) return { url:current,status:response.status,raw:'',mime:'',bytes:0,error:'redirect_identity_unconfirmed' };
+        if (!next || new URL(next).protocol !== 'https:' || publicPublisher(next)?.group !== publisher.group || (expectedJob && !samePublicJob(expectedJob,next))) return { url:current,status:response.status,raw:'',mime:'',bytes:0,error:'redirect_identity_unconfirmed' };
         current = next;continue;
       }
       const mime = (response.headers.get('content-type') || '').split(';')[0].toLowerCase();

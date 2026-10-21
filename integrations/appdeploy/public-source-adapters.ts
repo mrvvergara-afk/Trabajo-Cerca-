@@ -50,6 +50,9 @@ export function safePublicUrl(value:string, base?:string):string | null {
   try {
     if (typeof value!=='string' || value.length>2000) return null;
     const url = new URL(value, base);
+    const host = url.hostname.toLowerCase();
+    if (!host.includes('.') || host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local') ||
+        host.startsWith('[') || /^(?:\d+\.){3}\d+$/.test(host)) return null;
     if (!['https:','http:'].includes(url.protocol) || url.username || url.password || url.port) return null;
     if ([...url.searchParams.keys()].some(key => /^(access_token|token|api_key|apikey|session|authorization)$/i.test(key))) return null;
     url.hash = '';

@@ -525,7 +525,7 @@ jobs:
   site-inventory-proof:
     if: >-
       github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
-      github.event_name == 'push' && contains(github.event.head_commit.message, '[site inventory proof]')
+      github.event_name == 'push' && (contains(github.event.head_commit.message, '[site inventory proof]') || contains(github.event.head_commit.message, '[security checks only]'))
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
@@ -538,11 +538,15 @@ jobs:
       - name: Leer feed completo y tarjetas públicas sin recolectar ni publicar
         env:
           RADAR_OPERATOR_WAIT_BROWSER: '1'
+          SECURITY_CHECKS_ONLY: ${{ contains(github.event.head_commit.message, '[security checks only]') }}
         run: |
+          node --test tests/*.test.mjs
+          if [ "$SECURITY_CHECKS_ONLY" = 'true' ]; then exit 0; fi
           python -m pip install playwright
           python -m scripts.observe_site_inventory
           python -m scripts.observe_territorial_design
           if [ -f scripts/observe_production_readiness.py ]; then python -m scripts.observe_production_readiness; fi
+          if [ -f scripts/observe_security_containment.py ]; then python -m scripts.observe_security_containment; fi
       - name: Conservar la comparación del inventario visible
         if: always()
         uses: actions/upload-artifact@v4

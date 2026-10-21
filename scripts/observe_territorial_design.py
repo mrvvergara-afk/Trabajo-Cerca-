@@ -48,6 +48,7 @@ async def observe():
                 canonical = await page.locator('link[rel=canonical]').get_attribute('href')
                 assert description and description.startswith('Encuentra oportunidades laborales'), 'public_description_missing'
                 assert canonical == URL, 'canonical_mismatch'
+                assert await page.get_by_role('button', name='Administración', exact=True).count() == 0, 'anonymous_admin_shortcut_visible'
                 counts = await page.locator('.tcExploreCities button').all_text_contents()
                 total = await page.locator('.neoHeroMeta span').first.inner_text()
                 assert 'total del radar' in total, total
@@ -80,6 +81,15 @@ async def observe():
                 await panel.get_by_text('Inicia sesión con la cuenta administradora autorizada.', exact=True).wait_for(timeout=30000)
                 assert not await panel.get_by_text('Acceso administrativo confirmado.', exact=False).count()
                 results[-1]['anonymous_admin_denied'] = True
+                buttons = panel.locator('.tcAdminActions button')
+                boxes = [await buttons.nth(i).bounding_box() for i in range(await buttons.count())]
+                assert len(boxes) == 3 and all(box and box['height'] >= 44 for box in boxes), 'admin_touch_target'
+                for i, a in enumerate(boxes):
+                    for b in boxes[i+1:]:
+                        overlap = a['x'] < b['x']+b['width'] and b['x'] < a['x']+a['width'] and a['y'] < b['y']+b['height'] and b['y'] < a['y']+a['height']
+                        assert not overlap, 'admin_buttons_overlap'
+                results[-1]['anonymous_admin_shortcut_hidden'] = True
+                results[-1]['admin_buttons_separated'] = True
                 await page.close()
         finally:
             await instance.close()

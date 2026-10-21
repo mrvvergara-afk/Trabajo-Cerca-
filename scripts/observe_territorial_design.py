@@ -90,6 +90,19 @@ async def observe():
                         assert not overlap, 'admin_buttons_overlap'
                 results[-1]['anonymous_admin_shortcut_hidden'] = True
                 results[-1]['admin_buttons_separated'] = True
+                await page.get_by_role('heading', name='Panel de administración', exact=True).wait_for()
+                assert await page.get_by_role('region', name='Preparación para producción').is_visible()
+                title_box = await page.get_by_role('heading', name='Panel de administración', exact=True).bounding_box()
+                session_box = await panel.bounding_box()
+                assert title_box['y'] < session_box['y'], 'admin_heading_order'
+                assert not await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), 'admin_horizontal_overflow'
+                title_size = await page.get_by_role('heading', name='Panel de administración', exact=True).evaluate('(e) => parseFloat(getComputedStyle(e).fontSize)')
+                status_size = await panel.locator('[role=status]').evaluate('(e) => parseFloat(getComputedStyle(e).fontSize)')
+                assert title_size >= 28 and status_size >= 14, 'admin_readability'
+                results[-1]['admin_panel_readable'] = True
+                results[-1]['admin_heading_precedes_session'] = True
+                results[-1]['admin_horizontal_overflow'] = False
+
                 await page.close()
         finally:
             await instance.close()

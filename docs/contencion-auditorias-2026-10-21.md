@@ -18,3 +18,7 @@ Antes de la desconexión del entorno local pasaron ocho casos nuevos, las 31 sui
 Respaldo fuente de la versión anterior: docs/evidence/security-containment-source-backup-2026-10-21.json. El manifiesto incremental está en integrations/appdeploy/security-containment-update.json. Los tests usan security-containment-index.ts como copia exacta del backend propuesto, no como un nuevo servicio.
 
 Pendientes: autorización real de un operador, DNS/egress en profundidad, restauración integral de AppDeploy, calidad y revalidaciones, notificaciones, legales, cabeceras/infraestructura, PWA, accesibilidad y gate de release. Esta etapa no cierra los 18 hallazgos ni declara la app apta. No se cambian credenciales, main, históricos ni número/frecuencia de crons. Cero ofertas publicadas por esta reparación.
+
+## Aplicación en laboratorio
+
+La versión 1792609521216 quedó ready el 21 de octubre de 2026, sin errores frontend/backend ni de red reportados por AppDeploy. GitHub Actions 39658273763 ejecutó 265 casos Node sin fallos sobre los archivos guardados antes del despliegue. Las advertencias PWA siguen abiertas. Se inicia ahora la comprobación SDK de denegaciones y del inventario completo; no se declarará exitosa hasta leer su resultado.

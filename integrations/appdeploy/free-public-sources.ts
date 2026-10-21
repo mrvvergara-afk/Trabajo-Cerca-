@@ -5,11 +5,12 @@ import { publicPublisher, publicSourceAdapter, safePublicUrl } from './public-so
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
 
-export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal' };
+export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal'; discoveryPriority?:'secondary' };
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
 type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;
   localPosition?:number; portalPosition?:number;
   portalProviderPosition?:number; providerPositions?:Record<string,number>;
+  secondaryPosition?:number; corePortalSelections?:number;
   renderPending?:PublicCandidate[];
   pending:PublicCandidate[]; priorityCandidates?:PublicCandidate[]; reviewLane?:number;
   reviewProviderPosition?:number;
@@ -142,14 +143,27 @@ function localDiscoverySource(source:FreeSource) {
   return source.discoveryGroup==='local' || source.discoveryGroup!=='portal' && publicSourceAdapter(source.url)?.family==='local';
 }
 
-export function nextPublicSource(sources:FreeSource[], state:Pick<ScanState,'localPosition' | 'portalPosition' | 'portalProviderPosition' | 'providerPositions'>, slot:number) {
-  const local=sources.filter(localDiscoverySource), portals=sources.filter(source=>!localDiscoverySource(source));
+export function nextPublicSource(sources:FreeSource[], state:Pick<ScanState,'localPosition' | 'portalPosition' | 'portalProviderPosition' | 'providerPositions' | 'secondaryPosition' | 'corePortalSelections'>, slot:number) {
+  const local=sources.filter(localDiscoverySource), allPortals=sources.filter(source=>!localDiscoverySource(source));
+  const primary=allPortals.filter(source=>source.discoveryPriority!=='secondary');
+  const secondary=allPortals.filter(source=>source.discoveryPriority==='secondary');
+  const portals=primary.length ? primary : allPortals;
   // Three local roots and two portals per five-root pass, with independent cursors.
   const useLocal=local.length>0 && (!portals.length || slot%2===0);
   const pool=useLocal ? local : portals;
   if (!pool.length) throw new Error('No public discovery pool');
   const field=useLocal ? 'localPosition' : 'portalPosition';
   if (!useLocal) {
+    // Secondary cities use one in four portal slots, within the existing read budget.
+    if (primary.length && secondary.length) {
+      const turn=Math.max(0, Number(state.corePortalSelections) || 0)%4;
+      state.corePortalSelections=(turn+1)%4;
+      if (turn===3) {
+        const position=Math.max(0, Number(state.secondaryPosition) || 0)%secondary.length;
+        state.secondaryPosition=(position+1)%secondary.length;
+        return secondary[position];
+      }
+    }
     const providers=[...new Set(pool.map(source=>publicPublisher(source.url)?.group || source.key))];
     const provider=providers[(state.portalProviderPosition || 0)%providers.length];
     state.portalProviderPosition=((state.portalProviderPosition || 0)+1)%providers.length;
@@ -177,6 +191,7 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
     tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,
     createdAt:new Date(now).toISOString(),discoveredBy:'free-public-sources-v1',
+    secondaryMarket:['Los Ángeles','Victoria','Temuco'].includes(offer.work_commune),
     verificationCheckedAt:new Date(now).toISOString(),verifiedAt:new Date(now).toISOString(),
     verificationMethod:offer.verification_method,verificationReason:offer.reason };
 }
@@ -391,3 +406,4 @@ export async function freePublicSourceStatus() {
     historicalCoverageComplete:false,pending:current?.pending.length ?? null,checkedAt:current?.checkedAt || null,
     documentWork:publicDocumentWork(current) };
 }
+

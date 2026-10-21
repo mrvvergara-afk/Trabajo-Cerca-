@@ -5,6 +5,19 @@ import { stripTypeScriptTypes } from 'node:module';
 import test from 'node:test';
 import vm from 'node:vm';
 
+test('secondary cities share the existing budget: one of four portal slots, while local discovery remains first',()=>{
+  const h=harness(),state={};
+  const sources=[
+    {key:'angol',name:'Angol',url:'https://www.muninegrete.cl/',territory:'Angol',discoveryGroup:'local'},
+    {key:'main',name:'Local portal',url:'https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol',territory:'Angol',discoveryGroup:'portal'},
+    ...['Los Ángeles','Victoria','Temuco'].map((town,index)=>({key:'secondary-'+index,name:town,url:'https://www.chiletrabajos.cl/encuentra-un-empleo/?2='+encodeURIComponent(town),territory:town,discoveryGroup:'portal',discoveryPriority:'secondary'})),
+  ];
+  const selected=Array.from({length:24},(_,slot)=>h.ctx.nextPublicSource(sources,state,slot));
+  assert.equal(selected.filter(source=>source.discoveryGroup==='local').length,12);
+  assert.equal(selected.filter(source=>source.key==='main').length,9);
+  assert.deepEqual(Array.from(selected.filter(source=>source.discoveryPriority==='secondary').map(source=>source.territory)),['Los Ángeles','Victoria','Temuco']);
+});
+
 const stamp=Date.parse('2026-10-13T12:00:00Z');
 const url='https://cl.indeed.com/viewjob?jk=0123456789abcdef';
 

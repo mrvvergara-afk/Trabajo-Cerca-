@@ -147,7 +147,7 @@ test('real portal city mismatches use explicit worksite statements in the matchi
 test('residence, title, footer, past project experience and recommendations cannot replace the source worksite',()=>{
  for (const description of ['Preferencia por residentes de Lumaco.','Experiencia en proyectos en Mulchén.','Trabajo en equipo y conocimientos de Angol.']) {
  const result=ctx.evaluatePublicJob(url,page({job:{title:'Operador Lumaco',description,jobLocation:{address:{addressLocality:'Temuco',addressCountry:'CL'}}},tail:'<footer>Lugar de trabajo: Angol</footer>'}),url,200,now);
- assert.equal(result.status,'pending');assert.equal(result.reason,'worksite_missing_or_multiple');
+ assert.equal(result.status,'verified');assert.equal(result.work_commune,'Temuco');
  }
 });
 

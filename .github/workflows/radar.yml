@@ -539,6 +539,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Preparar dependencias gratuitas de las pruebas PDF e imagen
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
       - name: Probar todas las suites Python sin recolectores ni credenciales
         run: python -m unittest discover -s tests -v
       - name: Leer feed completo y tarjetas públicas sin recolectar ni publicar
@@ -924,6 +929,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Preparar dependencias gratuitas de las pruebas PDF e imagen
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
       - name: Pruebas sin red ni servicios de pago
         run: |
           python -m unittest discover -s tests -v

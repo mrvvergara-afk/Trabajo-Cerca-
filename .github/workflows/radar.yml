@@ -542,6 +542,7 @@ jobs:
           python -m pip install playwright
           python -m scripts.observe_site_inventory
           python -m scripts.observe_territorial_design
+          if [ -f scripts/observe_production_readiness.py ]; then python -m scripts.observe_production_readiness; fi
       - name: Conservar la comparación del inventario visible
         if: always()
         uses: actions/upload-artifact@v4

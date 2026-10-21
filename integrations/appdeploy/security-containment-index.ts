@@ -1997,8 +1997,7 @@ async function runTavilySweep(corePlaces:readonly string[]=PILOT, includeSeconda
         method:'POST',
         headers:{ 'Authorization':`Bearer ${key}`, 'Content-Type':'application/json' },
         body:JSON.stringify({
-          query:plan.query,
-          search_depth:'basic',
+          query:plan.query,          search_depth:'basic',
           topic:'general',
           max_results:8,
           time_range:'week',
@@ -2016,7 +2015,8 @@ async function runTavilySweep(corePlaces:readonly string[]=PILOT, includeSeconda
       return { place:plan.place, family:plan.family, bridge:plan.bridge, results:[] as TavilyResult[], failed:true };
     }
     }));
-    sweeps.push(...batchResults);    if (offset + 4 < searchPlans.length) await new Promise(resolve => setTimeout(resolve, 250));
+    sweeps.push(...batchResults);
+    if (offset + 4 < searchPlans.length) await new Promise(resolve => setTimeout(resolve, 250));
   }
 
   for (const sweep of sweeps) {
@@ -2765,7 +2765,7 @@ const consumeReviewedExchange=reviewedReceiver({
 
 export const handler = router({
   'GET /api/_healthcheck': [async () => json({ message: 'Success' })],
-  'GET /api/ops/security-policy': [async () => json({ revision:'security-containment-v1',...SECURITY_POLICY })],
+  'GET /api/ops/security-policy': [async () => json({ revision:'security-containment-v2',...SECURITY_POLICY })],
 
   // Operator diagnostics only; no writes, proofs, keys or history payloads are returned.
   'GET /api/ops/radar-external': [async () => json(await externalRadarStatus())],
@@ -2823,7 +2823,7 @@ export const handler = router({
     return json({ active:false });
   }],
 
-  'POST /api/notifications/test': [publicQuota('notification-test',2,3600000,10), requireAuth(), async (ctx) => {
+  'POST /api/notifications/test': [requireAuth(), publicQuota('notification-test',2,3600000,10), async (ctx) => {
     const pref = await getNotificationPreference(ctx.user!.userId);
     if (!pref?.active) return error('Activa tus avisos antes de probarlos.', 400);
     const result = await notifications.send({

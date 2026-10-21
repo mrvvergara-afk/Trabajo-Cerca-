@@ -68,11 +68,11 @@ test('missing source address uses a shared conservative bucket instead of disabl
   assert.equal((await guard({event:{headers:{'x-forwarded-for':'198.51.100.8'}},body:{clientToken:'two'}})).statusCode,429);
 });
 test('manual routes deny anonymous and ordinary authenticated users without running collectors',async()=>{
-  let effects=0;
+  let effects=0;let quotaCalls=0;
   const routes=load('index.ts','handler',{
     confirmRadarPublications:()=>{effects++;},ai:{},denyRemoteCapabilities:()=>({}),checkedLegacyFetch:()=>{effects++;},
     SECURITY_POLICY:{paidProviders:false,remoteAi:false,externalAnalytics:false,manualOperations:false},
-    publicQuota:()=>()=>undefined,opaqueOwnerToken:()=>'',reviewedReceiver:()=>()=>{effects++;},
+    publicQuota:()=>()=>{quotaCalls++;},opaqueOwnerToken:()=>'',reviewedReceiver:()=>()=>{effects++;},
     router:r=>r,json:(data,status=200)=>({statusCode:status,body:JSON.stringify(data)}),error,
     requireAuth:()=>ctx=>ctx.user?undefined:error('Unauthorized',401),
   }).handler;
@@ -84,6 +84,8 @@ test('manual routes deny anonymous and ordinary authenticated users without runn
   }
   assert.equal((await routes['POST /api/radar/photo-tip'][0]({body:{}})).statusCode,503);
   assert.equal(JSON.parse((await routes['POST /api/analytics'][0]({body:{}})).body).disabled,true);
+  let denied;for(const middleware of routes['POST /api/notifications/test']){denied=await middleware({});if(denied)break;}
+  assert.equal(denied.statusCode,401);assert.equal(quotaCalls,0);
   assert.equal(effects,0);
 });
 test('original source date is immutable on rediscovery; new impression events have a backend contract',()=>{

@@ -40,8 +40,9 @@ export function publicQuota(scope:string, limit:number, windowMs:number, globalL
     const address = typeof candidate==='string' && candidate.length<=64 && /^[a-f0-9:.]+$/i.test(candidate)
       ? candidate.toLowerCase() : 'unattributed';
     try {
+      const subject = ctx.user?.userId ? 'user-'+ctx.user.userId : address;
       if (!await takeQuota(store,scope,'global',globalLimit,windowMs) ||
-          !await takeQuota(store,scope,address,limit,windowMs)) {
+          !await takeQuota(store,scope,subject,limit,windowMs)) {
         return error('Límite de solicitudes alcanzado. Intenta nuevamente más tarde.',429);
       }
     } catch (cause) {

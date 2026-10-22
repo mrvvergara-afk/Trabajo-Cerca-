@@ -1,10 +1,11 @@
+import {withSecurityHeaders} from './security-headers';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
 import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, commercialAdmin, commercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { adminBackupPage } from './admin-backup';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
-import { advancePublicFeed, readPublicFeedPage, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
+import { advancePublicFeed, readPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
 import { readLocalSourceEvidence } from './local-source-evidence';
 import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';
@@ -2770,7 +2771,7 @@ const consumeReviewedExchange=reviewedReceiver({
 
 const ADMIN_EMAILS = ['mrvvergara@gmail.com'];
 
-export const handler = router({
+const applicationRouter = router({
   'GET /api/growth/advertising': [async ({query}) => json(await advertisingCatalog(query))],
   'POST /api/growth/house-events': [publicQuota('house-events',60,60000,600), houseClientEvent],
   'GET /api/admin/marketing/house': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), houseDashboard],
@@ -2862,6 +2863,8 @@ export const handler = router({
     if (!feed) return error('El Radar está preparando su inventario. Reintenta en unos minutos.', 503);
     return query.fresh === '1' ? json(feed) : cacheable(feed, 60);
   }],
+
+  'GET /api/listings/:id': [async ({params})=>{const item=await readPublicFeedItem(params.id);return item?json({item}):error('Esta publicación ya no está disponible en el feed público.',404);}],
 
   'GET /api/ops/summary': [async () => {
     const [radarJobs, community, candidates, audits, leads, drafts, campaigns] = await Promise.all([
@@ -3214,3 +3217,5 @@ export const handler = router({
   }],
 });
 
+
+export const handler:ReturnType<typeof router> = async event => withSecurityHeaders(await applicationRouter(event));

@@ -1,3 +1,5 @@
+import {listingShareUrl} from '../shared/listing-links';
+import {LEGAL_RESPONSIBLE} from './legal-responsible';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {OwnedPublicationEditor} from './owned-publication-editor';
 import { HouseBanner, useAdvertising, sendHouseEvent, completeHouseGoal, type HouseAttribution } from './house-advertising';
@@ -1035,6 +1037,13 @@ function App() {
     track('tc_app_open', { surface:'pwa_web' });
     void load();
   }, []);
+  useEffect(()=>{
+    const id=new URLSearchParams(window.location.search).get('listing');
+    if(!id||!/^[A-Za-z0-9_-]{1,128}$/.test(id))return;
+    let active=true;
+    void api.get('/api/listings/'+encodeURIComponent(id)).then(response=>{if(active)setSelected(response.data.item);}).catch(()=>{if(active)setNotice('Esta publicación no está disponible. Puedes explorar otras oportunidades.');});
+    return()=>{active=false;};
+  },[]);
   useEffect(() => {
     if (place !== 'Todas') track('tc_commune_selected', { commune:place });
   }, [place]);
@@ -1228,7 +1237,7 @@ function App() {
   };
 
   const shareListing = async (item: Listing) => {
-    const url = window.location.href.split('#')[0];
+    const url = listingShareUrl(window.location.href,item.id);
     const text = `${item.title} · ${item.workLocation}\nTrabajo Cerca`;
     track('tc_listing_shared', { listing_id:item.id, kind:item.kind, commune:item.workLocation, origin:item.origin });
     try {
@@ -1451,7 +1460,7 @@ function App() {
 
         <footer className='neoFooter'>
           <div className='neoBrand'><span className='neoBrandMark'><MapPin /><Radar /></span><span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span></div>
-          <p>Diseñado para conectar territorio, personas y oportunidades. · trabajocerca.malleco.biobio@gmail.com</p>
+          <p>Diseñado para conectar territorio, personas y oportunidades. · {LEGAL_RESPONSIBLE.privacyEmail}</p>
           <div><button onClick={() => setLegalView('privacy')}>Privacidad</button><button onClick={() => setLegalView('terms')}>Términos</button></div>
         </footer>
 
@@ -1524,7 +1533,8 @@ function App() {
               <h3>Qué datos tratamos</h3><p>Si publicas directamente, usamos los datos que ingresas para mostrar la publicación y facilitar el contacto. No solicitamos CV, RUT, dirección exacta, claves, datos bancarios ni datos sensibles.</p>
               <h3>Contacto protegido</h3><p>El teléfono o WhatsApp no forma parte del listado público masivo y se revela solamente mediante una acción explícita.</p>
               <h3>Avisos personalizados</h3><p>Si activas notificaciones, el sistema requiere identificar el dispositivo/usuario una vez y guarda únicamente un identificador técnico, las comunas y los cargos u oficios que elijas. No usamos esta función para crear perfiles publicitarios personales.</p>
-              <h3>Tus derechos</h3><p>Para consultas, correcciones o solicitudes sobre tus datos puedes escribir a trabajocerca.malleco.biobio@gmail.com. La identificación legal completa del responsable se incorporará antes del lanzamiento público.</p>
+              <h3>Responsable del tratamiento</h3><p>{LEGAL_RESPONSIBLE.ownerConfirmed&&LEGAL_RESPONSIBLE.fullName ? `${LEGAL_RESPONSIBLE.fullName} · ${LEGAL_RESPONSIBLE.commune} · ${LEGAL_RESPONSIBLE.country}` : 'Identificación completa pendiente de confirmación del titular antes del lanzamiento público.'}</p>
+              <h3>Tus derechos</h3><p>Para consultas, correcciones o solicitudes sobre tus datos puedes escribir a {LEGAL_RESPONSIBLE.privacyEmail}. La identificación legal completa del responsable se incorporará antes del lanzamiento público.</p>
             </> : <>
               <h2 id='legal-dialog-title'>Términos de uso</h2>
               <p className='legalLead'>Trabajo Cerca conecta personas y oportunidades. No es una agencia de reclutamiento y no garantiza contratación.</p>
@@ -1824,7 +1834,7 @@ function App() {
             <h3>Contacto protegido</h3><p>El teléfono o WhatsApp no se incluye en la descarga masiva del listado. Se entrega solo cuando una persona abre un aviso y solicita ver el contacto.</p>
             <h3>Conservación y control</h3><p>Las publicaciones directas caducan automáticamente. Desde el mismo dispositivo puedes cerrarlas o eliminarlas definitivamente antes. Los avisos aportados al Radar se revisan antes de publicarse.</p>
             <h3>Fuentes externas</h3><p>El Radar también trabaja con información laboral publicada por empresas, organismos públicos, OMIL, medios y otras fuentes lícitas. Conservamos la fuente y evitamos reproducir datos personales innecesarios.</p>
-            <h3>Tus derechos</h3><p>El diseño contempla acceso, corrección y eliminación de datos. Para consultas o solicitudes puedes escribir a trabajocerca.malleco.biobio@gmail.com. Esta versión del laboratorio no debe considerarse todavía el aviso legal definitivo.</p>
+            <h3>Tus derechos</h3><p>El diseño contempla acceso, corrección y eliminación de datos. Para consultas o solicitudes puedes escribir a {LEGAL_RESPONSIBLE.privacyEmail}. Esta versión del laboratorio no debe considerarse todavía el aviso legal definitivo.</p>
             <p className='legalFoot'>Referencia normativa: Ley 19.628 y reforma introducida por Ley 21.719, con vigencia diferida al 1 de diciembre de 2026. La versión final será revisada antes de publicación.</p>
           </> : <>
             <h2 id='legal-dialog-title'>Términos de uso</h2>

@@ -528,7 +528,7 @@ jobs:
     if: >-
       github.event_name == 'pull_request' ||
       (github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
-      github.event_name == 'push' && (contains(github.event.head_commit.message, '[site inventory proof]') || contains(github.event.head_commit.message, '[security checks only]')))
+      github.event_name == 'push' && (contains(github.event.head_commit.message, '[site inventory proof]') || contains(github.event.head_commit.message, '[security checks only]') || contains(github.event.head_commit.message, '[release candidate checks]')))
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -549,10 +549,17 @@ jobs:
       - name: Leer feed completo y tarjetas públicas sin recolectar ni publicar
         env:
           RADAR_OPERATOR_WAIT_BROWSER: '1'
-          SECURITY_CHECKS_ONLY: ${{ github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[security checks only]') }}
+          RC_CHECKS: ${{ contains(github.event.head_commit.message, '[release candidate checks]') && '1' || '0' }}
+          SECURITY_CHECKS_ONLY: ${{ github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[security checks only]') || contains(github.event.head_commit.message, '[release candidate checks]') }}
         run: |
           node --test tests/*.test.mjs
           if [ -f integrations/appdeploy/house-ads/qa/run-check.mjs ]; then (cd integrations/appdeploy/house-ads && node qa/run-check.mjs); fi
+          if [ "$RC_CHECKS" = '1' ]; then
+            python -m pip install playwright==1.62.0
+            python -m scripts.observe_site_inventory
+            python -m scripts.observe_production_readiness
+            python -m scripts.observe_security_containment
+          fi
           if [ "$SECURITY_CHECKS_ONLY" = 'true' ]; then exit 0; fi
           python -m pip install playwright
           python -m scripts.observe_site_inventory

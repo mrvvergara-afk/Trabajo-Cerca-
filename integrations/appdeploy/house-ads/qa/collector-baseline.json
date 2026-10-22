@@ -1,0 +1,50 @@
+{
+  "live_version": "1792676091153",
+  "algorithm": "export declaration through next export, trim whitespace; SHA256",
+  "handlers": {
+    "socialTerritorialTriggerHandler": "24b2d538a0ff672b2c5a02d697d19bfebeed04f58c55985796852f8d331d69c8",
+    "socialTerritorialCollectHandler": "997f775232bc8dae2aead530674c8fda735dd20a48257b7850d7137f64793d3e",
+    "v17HardWebHandler": "e9c450aaae585c71f390a432c337fbb5c762ad4ce06ad8bfe0547be505da44c9",
+    "v16TerritorialDirectBatchHandler": "35071160e1d1184d86762405f4bf26ccb8672275e3e2e49e8772ab620d339e34",
+    "v14VerificationHandler": "7c88094f91785725f631fcbb15de2d5d667bb370d6cae283cf9e48ef7a35efdf",
+    "radarEnrichmentWorker": "c31d4f90eaf8958c06b553154ff59d1c3f476dd51a55fb57b7bb633b11f6cc31"
+  },
+  "cron": [
+    {
+      "name": "collect-direct",
+      "cron": "5 0,4,8,12,16,20 * * *",
+      "handler": "v16TerritorialDirectBatchHandler",
+      "timezone": "America/Santiago"
+    },
+    {
+      "name": "collect-web",
+      "cron": "18 1,5,7,9,13,17,21 * * *",
+      "handler": "v17HardWebHandler",
+      "timezone": "America/Santiago"
+    },
+    {
+      "name": "enrich-candidates",
+      "cron": "25 1,5,9,13,17,21 * * *",
+      "handler": "radarEnrichmentWorker",
+      "timezone": "America/Santiago"
+    },
+    {
+      "name": "verify-publish",
+      "cron": "5,20,35,50 * * * *",
+      "handler": "v14VerificationHandler",
+      "timezone": "America/Santiago"
+    },
+    {
+      "name": "social-discover-night",
+      "cron": "21 7,23 * * *",
+      "handler": "socialTerritorialTriggerHandler",
+      "timezone": "America/Santiago"
+    },
+    {
+      "name": "social-ocr-night",
+      "cron": "31 0,3,6,7,8,10,12,14,16,18,20,22 * * *",
+      "handler": "socialTerritorialCollectHandler",
+      "timezone": "America/Santiago"
+    }
+  ]
+}

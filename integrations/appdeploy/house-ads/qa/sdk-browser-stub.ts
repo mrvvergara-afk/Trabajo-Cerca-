@@ -8,6 +8,7 @@ export const auth={isSignedIn:()=>state.houseFixture==='admin',signIn:async()=>{
 export const notifications={configure:async()=>{},onMessage:(_callback:unknown)=>()=>{},getEnableGuidance:async()=>({kind:'unsupported'}),getStatus:async()=>({enabled:false}),isSupported:()=>false,enable:async()=>{},disable:async()=>{},subscribe:async()=>{},unsubscribe:async()=>{}};
 export const image={resizeIfNeeded:async()=>({data:'fixture',mimeType:'image/png'})};
 const commercial=(id:string,communes:string[],placements=['search'])=>({id,communes,businessName:'Empresa ficticia solo en pruebas',headline:'Anuncio de prueba',detail:'Nunca se publica este fixture',category:'Comercio local',status:'active',priority:10,startAt:'2000-01-01T00:00:00Z',endAt:'2099-01-01T00:00:00Z',placements,adType:'COMMERCIAL_PAID',url:'https://example.org'});
+const layoutItems=()=>state.houseFixture==='admin'?Array.from({length:3},(_,i)=>({id:'layout-fixture-'+i,kind:'job_offer',origin:'external',title:'Puesto de ensayo '+(i+1)+' · solo prueba visual',company:'Empleador ficticio del ensayo',workLocation:'Angol',workCommunes:['Angol'],recruitmentZones:['Angol'],recruitmentCommunes:['Angol'],area:'Prueba visual',status:'Activa',date:'Solo prueba',source:'Ensayo local',sourceDomain:'example.org',url:'https://example.org/layout-'+i,note:'Fixture exclusivo para evaluar diseño; nunca publicado en Trabajo Cerca.',tags:['fixture'],visual:'field',icon:'map',review:false,verified:true,active:true,createdAt:'2026-10-22T00:00:00Z',sourcePublishedAt:'2026-10-22T00:00:00Z',expiresAt:'2099-01-01T00:00:00Z'})):[];
 async function call(method:string,path:string,body?:Record<string,unknown>){
  state.houseCalls!.push({method,path,body});
  if(path.startsWith('/api/growth/promotion'))return {data:promotionOffer(COMMERCIAL_DEFAULTS)};
@@ -15,8 +16,9 @@ async function call(method:string,path:string,body?:Record<string,unknown>){
  if(path.startsWith('/api/admin/marketing/commercial'))return {data:COMMERCIAL_DEFAULTS};
  if(path.startsWith('/api/growth/advertising'))return {data:{complete:true,house:config.campaigns,commercial:state.houseFixture==='paid'?[commercial('paid-angol',['Angol'])]:[]}};
  if(path.startsWith('/api/growth/house-events'))return {data:{received:true,type:'HOUSE_AD',billing:false}};
+ if(/^\/api\/listings\/[^/?]+$/.test(path)&&method==='GET'){const item=layoutItems().find(x=>x.id===decodeURIComponent(path.split('/').pop()!));if(!item)throw {response:{status:404}};return {data:{item}};}
  if(path.startsWith('/api/listings')&&method==='GET'){
-  const items=state.houseFixture==='admin'?Array.from({length:3},(_,i)=>({id:'layout-fixture-'+i,kind:'job_offer',origin:'external',title:'Puesto de ensayo '+(i+1)+' · solo prueba visual',company:'Empleador ficticio del ensayo',workLocation:'Angol',workCommunes:['Angol'],recruitmentZones:['Angol'],recruitmentCommunes:['Angol'],area:'Prueba visual',status:'Activa',date:'Solo prueba',source:'Ensayo local',sourceDomain:'example.org',url:'https://example.org/layout-'+i,note:'Fixture exclusivo para evaluar diseño; nunca publicado en Trabajo Cerca.',tags:['fixture'],visual:'field',icon:'map',review:false,verified:true,active:true,createdAt:'2026-10-22T00:00:00Z',sourcePublishedAt:'2026-10-22T00:00:00Z',expiresAt:'2099-01-01T00:00:00Z'})):[];
+  const items=layoutItems();
   return {data:{...emptyFeed,items,totalItems:items.length,totalJobOffers:items.length,totalVerifiedJobOffers:items.length,kindStats:{...emptyFeed.kindStats,jobs:items.length}}};
  }
  if(path==='/api/listings'&&method==='POST')return {data:{item:{id:'fixture-published',kind:body?.kind},ownerToken:'fixture-owner-only'}};

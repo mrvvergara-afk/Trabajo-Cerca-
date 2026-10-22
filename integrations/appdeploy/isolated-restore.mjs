@@ -53,15 +53,25 @@ export function createTemporaryRestoreTarget() {
   chmodSync(path, 0o600);
   db.exec('PRAGMA journal_mode=MEMORY; CREATE TABLE units (key TEXT PRIMARY KEY, iv BLOB NOT NULL, tag BLOB NOT NULL, payload BLOB NOT NULL)');
   let disposed = false;
+  function saveEntry(entry, replace) {
+    if (disposed) throw Error('target_closed');
+    const iv = randomBytes(12);
+    const cipher = createCipheriv('aes-256-gcm', key, iv);
+    cipher.setAAD(Buffer.from(entry.key));
+    const payload = Buffer.concat([cipher.update(entry.text, 'utf8'), cipher.final()]);
+    if (replace) {
+      const result = db.prepare('UPDATE units SET iv = ?, tag = ?, payload = ? WHERE key = ?').run(iv, cipher.getAuthTag(), payload, entry.key);
+      if (Number(result.changes) !== 1) throw Error('missing_target_unit');
+    } else db.prepare('INSERT INTO units VALUES (?, ?, ?, ?)').run(entry.key, iv, cipher.getAuthTag(), payload);
+  }
   return {
     identity: { kind: 'temporary-local-sqlite', sourceApp: SOURCE_APP, sideEffectsDisabled: true },
     count() { return Number(db.prepare('SELECT count(*) AS n FROM units').get().n); },
-    write(entry) {
-      const iv = randomBytes(12);
-      const cipher = createCipheriv('aes-256-gcm', key, iv);
-      cipher.setAAD(Buffer.from(entry.key));
-      const payload = Buffer.concat([cipher.update(entry.text, 'utf8'), cipher.final()]);
-      db.prepare('INSERT INTO units VALUES (?, ?, ?, ?)').run(entry.key, iv, cipher.getAuthTag(), payload);
+    write(entry) { saveEntry(entry, false); },
+    replace(entry) { saveEntry(entry, true); },
+    remove(entryKey) {
+      if (disposed) throw Error('target_closed');
+      return Number(db.prepare('DELETE FROM units WHERE key = ?').run(entryKey).changes);
     },
     reopen() { db.close(); db = new DatabaseSync(path); },
     read(entryKey) {

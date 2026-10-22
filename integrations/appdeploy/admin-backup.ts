@@ -40,10 +40,11 @@ async function readBackupPage(ctx: RouterContext) {
     const page = await storage.list({ ...options, limit: 5 });
     return privateResponse({ kind: 'storage', paths: page.paths, nextToken: page.nextToken || null });
   }
-  if (body.kind === 'file') {
+  if (body.kind === 'file' || body.kind === 'file-status') {
     const path = body.path;
     if (typeof path !== 'string' || !path || path.length > 1024 || path.startsWith('/') || path.includes('\\') || path.split('/').some(part => !part || part === '..' || part === '.')) return error('Ruta inválida.', 400);
     const [file] = await storage.read([path]);
+    if (body.kind === 'file-status') return privateResponse({ kind: 'file-status', available: Boolean(file && file.path === path && typeof file.content === 'string'), bytes: file?.content === null || file?.content === undefined ? null : Buffer.byteLength(file.content, 'utf8') });
     if (!file || file.path !== path || file.content === null) return error('El archivo no está disponible. La copia está incompleta.', 409);
     if (Buffer.byteLength(file.content, 'utf8') > 1500000) return error('Archivo demasiado grande para este exportador. Requiere respaldo de plataforma.', 413);
     return privateResponse({ kind: 'file', path, content: file.content });
@@ -60,7 +61,7 @@ export async function adminBackupPage(ctx: RouterContext) {
     const incomplete = code === 'AppDatabaseReadIncomplete';
     const body = (ctx.body || {}) as Record<string, unknown>;
     console.warn('backup_export_read_failed', {
-      kind: ['scope','table','storage','file'].includes(String(body.kind)) ? body.kind : 'unknown',
+      kind: ['scope','table','storage','file','file-status'].includes(String(body.kind)) ? body.kind : 'unknown',
       table: backupTableAllowed(body.table) ? body.table : undefined,
       code
     });

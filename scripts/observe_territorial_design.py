@@ -119,6 +119,11 @@ async def observe():
                 assert local_restore['temporaryStoreDeleted'] is True
                 assert local_restore['privateValuesStoredEncrypted'] is True
                 assert local_restore['productionWrites'] == 0 and local_restore['platformRestoreTested'] is False
+                storage_audit = local_restore['storageAuditFixture']
+                assert storage_audit['missingReferencedObjects']['closed'] == 1
+                assert storage_audit['externalMediaReferences'] == 1
+                assert storage_audit['currentSdkStorageObjects'] == 0
+                assert storage_audit['productionWrites'] == 0 and storage_audit['fullPlatformStorageCertified'] is False
                 results[-1]['synthetic_local_restore'] = local_restore
 
 

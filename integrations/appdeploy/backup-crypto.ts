@@ -30,7 +30,7 @@ export async function appendEncrypted(envelope: BackupEnvelope, key: CryptoKey, 
   const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv, additionalData }, key, encoder.encode(JSON.stringify(value)));
   envelope.parts.push({ iv: base64(iv), content: base64(new Uint8Array(ciphertext)) });
 }
-export async function verifyEncryptedBackup(text: string, password: string) {
+export async function verifyEncryptedBackup(text: string, password: string, visit?: (block: Record<string, unknown>) => Promise<void>) {
   if (text.length > 60000000) throw new Error('El archivo supera el límite de comprobación.');
   const envelope = JSON.parse(text) as BackupEnvelope;
   if (envelope.format !== FORMAT || envelope.iterations !== ITERATIONS || typeof envelope.id !== 'string' || envelope.id.length > 100 || !Array.isArray(envelope.parts) || envelope.parts.length < 1 || envelope.parts.length > 2000) throw new Error('Formato de respaldo no válido.');
@@ -61,6 +61,7 @@ export async function verifyEncryptedBackup(text: string, password: string) {
       if (typeof value.path !== 'string' || typeof value.content !== 'string' || paths.has(value.path)) throw new Error('Archivo duplicado o inválido.');
       paths.add(value.path);
     } else throw new Error('Bloque desconocido.');
+    if (visit) await visit(value);
   }
   if (!manifest?.complete || manifest.parts !== envelope.parts.length - 1 || !Array.isArray(manifest.tables) || manifest.tables.length !== tables.size || manifest.files !== paths.size) throw new Error('Respaldo incompleto.');
   const listed = new Set<string>();

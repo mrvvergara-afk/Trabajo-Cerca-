@@ -110,6 +110,17 @@ async def observe():
                 results[-1]['admin_panel_readable'] = True
                 results[-1]['admin_heading_precedes_session'] = True
                 results[-1]['admin_horizontal_overflow'] = False
+                await page.goto(URL+'?restore-proof=1#operacion', wait_until='domcontentloaded', timeout=30000)
+                await page.wait_for_function("""() => {try {const r=JSON.parse(document.getElementById('restore-local-proof')?.textContent);return Boolean(r?.schema || r?.error);}catch{return false;}}""", timeout=60000)
+                local_restore = json.loads(await page.locator('#restore-local-proof').inner_text())
+                assert not local_restore.get('error'), local_restore
+                assert local_restore['tables'] == 2 and local_restore['records'] == 2 and local_restore['files'] == 1
+                assert local_restore['comparedElements'] == 3 and local_restore['mismatches'] == 0
+                assert local_restore['temporaryStoreDeleted'] is True
+                assert local_restore['privateValuesStoredEncrypted'] is True
+                assert local_restore['productionWrites'] == 0 and local_restore['platformRestoreTested'] is False
+                results[-1]['synthetic_local_restore'] = local_restore
+
 
                 await page.close()
         finally:

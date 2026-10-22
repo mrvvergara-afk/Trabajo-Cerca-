@@ -36,10 +36,10 @@ try {
     if(mobile){
       await nav.waitFor();const rect=await nav.boundingBox();bottomHeight=rect.height;assert(rect.height<=72,'bottom_nav_too_tall');
       assert.equal(await nav.getByRole('button').count(),4);
-      await page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));
+      await page.evaluate(()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:'instant'}));
       const headerAfter=await header.boundingBox();assert(headerAfter.y+headerAfter.height<=0,'header_still_occupies_screen');
       const footerButton=page.locator('.neoFooter').getByRole('button',{name:'Términos',exact:true});
-      const box=await footerButton.boundingBox();assert(box.y+box.height<=rect.y,'footer_hidden_by_navigation');
+      const box=await footerButton.boundingBox();assert(box.y+box.height<=rect.y,'footer_hidden_by_navigation '+JSON.stringify({footer:box,nav:rect}));
     }else assert.equal(await nav.isVisible(),false);
     const order=await page.evaluate(()=>{
       const jobs=document.getElementById('neo-jobs');const cities=document.getElementById('tc-other-cities');const news=document.getElementById('actualidad-laboral');
@@ -48,7 +48,7 @@ try {
     assert.deepEqual(errors,[]);
     mkdirSync('qa-output',{recursive:true});
     await page.screenshot({path:'qa-output/layout-'+viewport.width+'.png',fullPage:true});
-    await page.evaluate(()=>window.scrollTo(0,0));
+    await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
     await page.screenshot({path:'qa-output/layout-'+viewport.width+'-top.png'});
     results.push({viewport,headerHeight:headerRect.height,bottomHeight,headerScrollsAway:mobile,accountAndAdminInsideMenu:true,professionalEmployerServiceForms:true,secondaryContentAfterJobs:true,footerNotCovered:true,noHorizontalOverflow:true,pageErrors:errors});
     await context.close();

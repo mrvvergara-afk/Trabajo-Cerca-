@@ -74,3 +74,15 @@
 .neoShell .neoJobFacts small{font-size:11px}
 .neoShell .neoJobFacts b,.neoShell .neoJobFoot>span{font-size:12px;line-height:1.45}
 .neoShell .neoJobFoot button{font-size:14px;min-height:44px}
+
+/* Align advertising and reduce the introduction so results arrive sooner. */
+.neoShell .neoHeroCopy{padding-top:0;padding-bottom:0}
+.neoShell .neoHero h1{font-size:clamp(36px,4.2vw,58px);margin:10px 0}
+.neoShell .neoHeroLead{margin:10px 0 14px}
+.neoShell .neoHero .neoSearchDock{margin-top:12px;margin-bottom:12px}
+.neoShell>.tcHouseAd,.neoShell>.tcLocalAdvertising{box-sizing:border-box;width:calc(100% - 32px);max-width:1320px;margin:18px auto;padding:18px 20px}
+.neoShell .neoRecentArrivals{box-sizing:border-box;width:calc(100% - 32px);max-width:1320px;margin:14px auto}
+@media(max-width:800px){
+  .neoShell .neoHero h1{font-size:clamp(34px,9vw,44px)}
+  .neoShell>.tcHouseAd,.neoShell>.tcLocalAdvertising{padding:16px}
+}

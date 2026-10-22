@@ -1294,10 +1294,9 @@ function App() {
           <div className='neoHeroGlow neoGlowA' />
           <div className='neoHeroGlow neoGlowB' />
           <div className='neoHeroCopy'>
-            <span className='neoEyebrow'><Radio /> TRABAJO CERCA · RADAR LOCAL</span>
             <h1>Trabajo y oficios<br /><em>cerca de ti.</em></h1>
-            <p className='neoHeroLead'>Menos búsqueda, más resultados. Reunimos oportunidades vigentes de tus comunas y te mostramos primero lo nuevo.</p>
-            <div className='neoSourceRibbon' aria-label='Fuentes que rastrea Trabajo Cerca'><span><Radio /> Redes</span><span>OMIL</span><span>Radios</span><span>Medios locales</span><span>Empresas</span><span>Portales</span></div>
+            <p className='neoHeroLead'>Encuentra trabajo en tu zona o haz visible tu oficio.</p>
+
             <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}>
               <Search />
               <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
@@ -1317,7 +1316,7 @@ function App() {
           </div>
 
           <div className='neoRadarCanvas neoPhotoHero neoHeroCompact neoHeroVisualReborn' aria-label='Radar territorial visual'>
-            <img className='neoHeroPhoto neoHeroPhotoMain' src='https://images.unsplash.com/photo-1772852340517-b11ec88979fc?auto=format&fit=crop&fm=webp&q=72&w=1200' alt='Persona trabajando en una faena de construcción' loading='lazy' />
+            <img className='neoHeroPhoto neoHeroPhotoMain' src='https://images.unsplash.com/photo-1772852340517-b11ec88979fc?auto=format&fit=crop&fm=webp&q=72&w=1200' alt='' loading='lazy' />
             <div className='neoPhotoShade' />
             <div className='neoMapMesh' />
             <div className='neoRadarCore'><Radar /><span /></div>

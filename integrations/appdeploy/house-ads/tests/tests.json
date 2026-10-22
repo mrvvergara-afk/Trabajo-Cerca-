@@ -1,0 +1,462 @@
+[
+  {
+    "name": "El inventario existente se puede consultar después de recargar",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "GET /api/listings",
+      "lectura del feed existente",
+      "conservación del inventario",
+      "recarga",
+      "paginación por versión",
+      "conservación del feed durante reconstrucción",
+      "deduplicación de ofertas individuales de Chiletrabajos",
+      "cargos distintos de un mismo documento municipal",
+      "conservación de identidad documental al recargar",
+      "exclusión de páginas de búsqueda heredadas",
+      "deduplicación de portal empresarial y URL individual",
+      "ubicación real separada de marcas y faenas remotas",
+      "total global independiente de paginación",
+      "novedades en ventana móvil de siete días",
+      "permanencia hasta cierre real",
+      "postulación vinculada al cargo correcto"
+    ],
+    "description": "Comprueba únicamente la lectura pública existente; no publica avisos ni activa motores o proveedores.",
+    "qa_faults": [
+      {
+        "method": "POST",
+        "path": "/api/analytics",
+        "status": 503,
+        "body_json": {
+          "error": "QA: envío externo de analítica bloqueado"
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/api/growth/sponsor",
+        "status": 503,
+        "body_json": {
+          "error": "QA: consulta comercial bloqueada"
+        }
+      }
+    ],
+    "steps": [
+      "Abrir la raíz de Trabajo Cerca",
+      "Revisar el listado de empleos y su estado de carga",
+      "Recargar la página",
+      "Si el inventario ofrece más resultados, continuar la paginación hasta una segunda página; si el inventario guardado no tiene una segunda página, dejar constancia de que esa precondición no existe, sin crear avisos ni ejecutar motores",
+      "Revisar nuevamente el listado",
+      "Si el inventario contiene los cargos documentales de Traiguén, comprobar que Químico Farmacéutico, Ingeniero en Prevención de Riesgos y Nutricionista son tarjetas distintas, abrir sus detalles y recargar; si todavía no han llegado, registrar esa precondición sin crear avisos ni iniciar motores.",
+      "Comparar el total publicado de portada antes y después de Cargar más y recargar; revisar el aviso prominente de incorporadas en los últimos 7 días y las etiquetas NUEVA EN LA APP. Pulsar Ver novedades y luego Ver todas las ofertas.",
+      "Abrir el detalle de una oferta y su enlace de fuente original; si es de Laborum, comprobar que no conduce al ID de otra recomendación."
+    ],
+    "expected": "El Radar termina la carga y permite consultar el inventario guardado. Si no hay ofertas publicables muestra su estado vacío explicativo; si existen, conserva sus tarjetas al recargar. No aparece el error No pudimos cargar el Radar central. Si hay una segunda página, se consulta sin errores ni duplicación de tarjetas y la recarga vuelve al inicio del feed. Al cargar más, las tarjetas de una misma oferta individual de Chiletrabajos no se repiten por variantes de su URL. Si los tres cargos documentales de Traiguén ya forman parte del inventario, permanecen separados al recargar y sus detalles conservan la fuente oficial y las instrucciones presenciales. La ausencia de esa precondición no confirma su publicación. La portada muestra el total de ofertas publicadas calculado sobre el feed completo; ese total no aumenta al cargar una segunda página. El listado distingue tarjetas mostradas del total. El aviso de novedades cuenta incorporaciones en los últimos 7 días, sin cambiar la fecha original ni contar revalidaciones. Ver todas conserva las ofertas anteriores válidas. Las páginas de búsqueda por ciudad no aparecen como cargos; las variantes de un mismo aviso TENS representan una sola tarjeta y los tres cargos revisados de Traiguén conservan identidades separadas. Victoria's Secret o faena Nueva Victoria no acreditan por sí solas trabajo en la comuna de Victoria."
+  },
+  {
+    "name": "Explorar ciudades adicionales conserva el inventario y permite volver a la zona local",
+    "viewport": "mobile",
+    "covers": [
+      "Buscar también en",
+      "Los Ángeles",
+      "Victoria",
+      "Temuco",
+      "conteos del feed completo",
+      "ciudades secundarias optativas",
+      "retorno a comuna original"
+    ],
+    "description": "Consulta inventario existente en ciudades optativas sin publicar ni iniciar recolectores.",
+    "qa_faults": [
+      {
+        "method": "POST",
+        "path": "/api/analytics",
+        "status": 503,
+        "body_json": {
+          "error": "QA analytics disabled"
+        }
+      }
+    ],
+    "steps": [
+      "Abrir Trabajo Cerca y esperar la carga del inventario. Anotar el total publicado del radar.",
+      "Elegir Angol en el selector de comuna y localizar Buscar también en.",
+      "Pulsar Los Ángeles. Esperar que termine la paginación de ofertas guardadas; revisar que las tarjetas correspondan a esa ciudad, o que se muestre el estado vacío sin inventar ofertas.",
+      "Pulsar Volver a Angol; después explorar Victoria y Temuco desde sus accesos. Comprobar el regreso a Angol.",
+      "Volver a Toda la zona y comparar el total publicado con el anotado, sin confundirlo con tarjetas mostradas ni sumar ciudades dos veces."
+    ],
+    "expected": "Los tres accesos muestran los conteos guardados o un error de recuento explícito. Explorar es optativo, conserva la comuna de origen y no crea avisos. Los Ángeles y Temuco no se mezclan con la vista local por defecto; Victoria se explora también por elección. Volver restaura la zona de origen y el total global sigue procediendo del feed completo. Publicidad está identificada y muestra la ciudad seleccionada o alcance regional; una campaña de otra ciudad no queda visible tras cambiar. El formulario se abre sin enviar solicitudes."
+  },
+  {
+    "name": "Actualidad regional separa noticias, fuentes oficiales y ofertas",
+    "viewport": "desktop",
+    "covers": [
+      "noticias laborales de La Araucanía",
+      "fecha editorial",
+      "fuente original",
+      "fuentes oficiales",
+      "publicidad diferenciada de ofertas",
+      "retención de identidad de ofertas"
+    ],
+    "description": "Comprueba lectura editorial y accesos oficiales, sin contar noticias ni anuncios como vacantes.",
+    "qa_faults": [
+      {
+        "method": "POST",
+        "path": "/api/analytics",
+        "status": 503,
+        "body_json": {
+          "error": "QA analytics disabled"
+        }
+      }
+    ],
+    "steps": [
+      "Abrir Trabajo Cerca y anotar el total de ofertas publicado.",
+      "Pulsar Actualidad en la navegación superior.",
+      "Revisar la noticia regional: fuente Tiempo21, fecha original 30/09/2026 y enlace a la publicación original, si continúa dentro de su ventana de 45 días; fuera de ella, comprobar el estado sin noticias revisadas.",
+      "Revisar los accesos SENCE, INE La Araucanía, Servicio Civil, CORFO, AFC, Superintendencia de Pensiones y SERNAC. Abrir un acceso en una nueva pestaña sin completar trámites.",
+      "Volver al listado y comprobar que el total de ofertas no cambió al consultar noticias o publicidad."
+    ],
+    "expected": "Actualidad tiene sección propia, con contenidos laborales y fecha/fuente claramente identificadas; no presenta una feria como un cargo ni una guía permanente como noticia recién publicada. Los enlaces apuntan a sus fuentes originales oficiales o al medio de la noticia. No hay titulares inventados ni noticias políticas o sindicales en la selección. El listado y sus IDs se conservan; anuncios y noticias no incrementan el contador."
+  },
+  {
+    "name": "El filtro territorial móvil conserva la consulta sin escrituras",
+    "viewport": "mobile",
+    "covers": [
+      "GET /api/listings",
+      "filtro territorial",
+      "Angol",
+      "Renaico",
+      "vista móvil"
+    ],
+    "description": "Valida la navegación territorial sobre el feed existente sin crear publicaciones, ejecutar barridos ni usar IA.",
+    "qa_faults": [
+      {
+        "method": "POST",
+        "path": "/api/analytics",
+        "status": 503,
+        "body_json": {
+          "error": "QA: envío externo de analítica bloqueado"
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/api/growth/sponsor",
+        "status": 503,
+        "body_json": {
+          "error": "QA: consulta comercial bloqueada"
+        }
+      }
+    ],
+    "steps": [
+      "Abrir Trabajo Cerca en móvil",
+      "Elegir Angol en el selector de comuna",
+      "Revisar el resumen TU CIUDAD y el listado",
+      "Cambiar a Renaico",
+      "Volver a Toda la zona"
+    ],
+    "expected": "El selector y el resumen corresponden a la comuna elegida; los resultados o el mensaje de ausencia de ofertas son visibles y no hay desbordes horizontales. Volver a Toda la zona conserva la consulta disponible. El total de Toda la zona coincide al volver y no suma las ofertas multicomuna dos veces."
+  },
+  {
+    "name": "Un fallo de lectura no se presenta como un feed vacío confirmado",
+    "viewport": "desktop",
+    "covers": [
+      "GET /api/listings",
+      "HTTP 503",
+      "error visible",
+      "reintento"
+    ],
+    "description": "Comprueba un error simulado de lectura y la acción Reintentar sin tocar el inventario.",
+    "qa_faults": [
+      {
+        "method": "GET",
+        "path": "/api/listings",
+        "status": 503,
+        "body_json": {
+          "error": "simulated_read_failure"
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/analytics",
+        "status": 503,
+        "body_json": {
+          "error": "QA: envío externo de analítica bloqueado"
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/api/growth/sponsor",
+        "status": 503,
+        "body_json": {
+          "error": "QA: consulta comercial bloqueada"
+        }
+      }
+    ],
+    "steps": [
+      "Abrir Trabajo Cerca con el fallo de lectura simulado",
+      "Revisar el mensaje de error y el botón Reintentar",
+      "Pulsar Reintentar"
+    ],
+    "expected": "Se muestra No pudimos cargar el Radar central y el botón Reintentar. El fallo permanece visible y no se describe como ausencia confirmada de ofertas."
+  },
+  {
+    "name": "El panel de integración distingue ofertas guardadas de publicaciones visibles",
+    "viewport": "desktop",
+    "covers": [
+      "GET /api/ops/radar-external",
+      "GET /api/ops/radar-feed",
+      "GET /api/listings",
+      "lectura de recibos",
+      "avance del feed",
+      "GET /api/ops/document-revalidation",
+      "estado de revalidación documental",
+      "fecha original y última comprobación diferenciadas",
+      "lectura de todas las páginas del inventario visible",
+      "rechazo de inventario parcial",
+      "conservación de fechas y URL de postulación por ID",
+      "POST /api/ops/radar-external/consume",
+      "incorporación acotada de lotes ya firmados",
+      "error de incorporación visible"
+    ],
+    "description": "Consulta de lectura del laboratorio; no dispara motores, no escribe avisos ni envía notificaciones.",
+    "qa_faults": [
+      {
+        "method": "POST",
+        "path": "/api/analytics",
+        "status": 503,
+        "body_json": {
+          "error": "QA: envío externo de analítica bloqueado"
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/api/growth/sponsor",
+        "status": 503,
+        "body_json": {
+          "error": "QA: consulta comercial bloqueada"
+        }
+      }
+    ],
+    "steps": [
+      "Abrir /?radar-proof=1#operacion",
+      "Leer OFERTAS EXTERNAS GUARDADAS, PUBLICACIONES CONFIRMADAS y ESTADO DEL FEED",
+      "Revisar el bloque COMPROBACIÓN DE LECTURA",
+      "Recargar sin pulsar acciones del radar",
+      "Revisar documentRevalidation en COMPROBACIÓN DE LECTURA: estado, fecha original, última comprobación y próxima revisión. Si falla la lectura debe mostrarse el error sin impedir consultar el feed.",
+      "Comprobar que feedReadComplete solo es true al agotar la última página, sin feedReadError, y que visibleItems conserva cargo y fuente para evaluar el inventario",
+      "Abrir /?radar-receiver-proof=1#operacion y pulsar Aplicar ofertas revisadas; esperar el resultado y recargar. No iniciar fuentes, OCR, motores sociales ni notificaciones."
+    ],
+    "expected": "Se muestran valores guardados y un estado de feed completo o en construcción. El bloque permite verificar IDs y fechas sin mostrar claves ni respaldos. Un fallo de lectura aparece como error; no se convierte en cero publicaciones confirmado. La revalidación documental muestra su estado guardado y distingue la fecha original de la última comprobación. Esta consulta no revalida ni publica; un fallo se muestra como error y no como comprobación exitosa. El bloque incluye visibleItems, feedPagesRead y feedReadComplete; encontrar los tres IDs esperados no interrumpe la lectura de las páginas restantes. Un error o un límite de lectura no confirma el inventario completo. visibleItems conserva fecha original, plazo y URL de postulación cuando esos campos existen, sin derivarlos de la fecha de revisión. La incorporación devuelve el estado del lote y sus recibos, o un error visible o cooldown. No declara ofertas nuevas por el simple hecho de pulsar y no acepta registros nuevos desde ese formulario. La consulta posterior conserva el inventario."
+  },
+  {
+    "name": "La consulta de fuentes locales muestra evidencia guardada sin iniciar motores",
+    "viewport": "desktop",
+    "covers": [
+      "GET /api/ops/local-source-evidence",
+      "lectura acotada del historial social",
+      "fecha original diferenciada de captura",
+      "evidencia de fuentes locales",
+      "modo de solo lectura",
+      "GET /api/ops/free-public-sources",
+      "POST /api/ops/free-public-sources/run",
+      "recolección pública sin proveedores pagos",
+      "separación de guardado y publicación"
+    ],
+    "description": "Comprueba la lectura de capturas ya guardadas y el alcance limitado de la página consultada.",
+    "steps": [
+      "Abrir /?radar-local-proof=1#operacion",
+      "Leer los indicadores de capturas y avisos devueltos",
+      "Revisar el bloque de evidencia de fuentes locales",
+      "Abrir /?radar-public-proof=1#operacion",
+      "Pulsar Leer fuentes públicas y esperar el resultado o un error visible",
+      "Recargar y consultar el registro; no pulsar motores sociales ni notificaciones"
+    ],
+    "expected": "Se muestran conteos de la página consultada y el bloque JSON de evidencia con readOnly true y providerCalls 0, o un error visible si la lectura falla. No se declara cobertura completa del historial. En el panel de fuentes públicas, la lectura queda registrada con providerCalls 0 o muestra un error visible. Si la lectura coincide con otra reciente, conserva la comprobación anterior y señala el aplazamiento. Los resultados guardados no se presentan como publicaciones confirmadas sin un manifiesto visible."
+  },
+  {
+    "name": "El aporte de fotos explica su deshabilitación sin ejecutar OCR remoto",
+    "viewport": "mobile",
+    "covers": [
+      "política de denegación de OCR remoto",
+      "continuidad de búsqueda tras cerrar formulario"
+    ],
+    "description": "Comprueba que el aporte informa su deshabilitación sin simular lectura ni publicación.",
+    "steps": [
+      "Abrir el aporte al Radar desde Alimenta el Radar.",
+      "Comprobar que Lectura de fotos deshabilitada y la alternativa de texto o enlace están visibles.",
+      "Cerrar el formulario y volver al listado."
+    ],
+    "expected": "El selector de archivo está deshabilitado, se explica el motivo y las ofertas existentes siguen visibles."
+  },
+  {
+    "name": "Los cuadros legales se pueden recorrer y cerrar con teclado",
+    "viewport": "desktop",
+    "covers": [
+      "foco inicial del cuadro legal",
+      "Tab y Shift+Tab contenidos",
+      "Escape cierra privacidad y términos",
+      "retorno del foco al botón de origen"
+    ],
+    "description": "Comprueba la navegación legal con teclado sin enviar formularios ni modificar registros.",
+    "steps": [
+      "Abrir Privacidad desde el pie de página con teclado",
+      "Comprobar que el foco está en Cerrar y recorrer con Tab y Shift+Tab sin salir del cuadro",
+      "Pulsar Escape y comprobar que el foco regresa a Privacidad",
+      "Abrir Términos y repetir cierre con Escape"
+    ],
+    "expected": "Ambos cuadros reciben y conservan el foco mientras están abiertos y devuelven el foco al botón de origen al cerrarse."
+  },
+  {
+    "name": "El acceso administrativo rechaza sesiones anónimas",
+    "viewport": "desktop",
+    "covers": [
+      "panel de acceso administrativo",
+      "denegación anónima",
+      "comprobación sin exportación ni operaciones manuales"
+    ],
+    "description": "Comprueba que verificar acceso sin iniciar sesión no otorga permisos ni muestra datos privados.",
+    "steps": [
+      "Abrir la página con #operacion sin iniciar sesión",
+      "En Acceso administrativo pulsar Verificar acceso",
+      "Comprobar que se solicita iniciar sesión con una cuenta autorizada"
+    ],
+    "expected": "No se concede acceso, no se muestran datos privados y la exportación no se habilita."
+  },
+  {
+    "name": "El acceso de administración no aparece a usuarios sin sesión",
+    "viewport": "mobile",
+    "covers": [
+      "ocultación del botón administrativo a anónimos",
+      "controles administrativos separados en móvil"
+    ],
+    "description": "Comprueba que la portada pública no muestra Administración y que el panel presenta controles legibles sin abrir sesión.",
+    "steps": [
+      "Abrir la portada sin iniciar sesión",
+      "Comprobar que no aparece el botón Administración",
+      "Abrir #operacion",
+      "Comprobar que Ingresar como administrador, Verificar acceso y Cerrar sesión son botones separados sin superposición"
+    ],
+    "expected": "No se ofrece Administración a usuarios anónimos; los controles del panel tienen separación y se pueden pulsar individualmente."
+  },
+  {
+    "name": "El panel administrativo conserva una lectura clara en móvil",
+    "viewport": "mobile",
+    "covers": [
+      "jerarquía del panel",
+      "conteos internos identificados",
+      "estado de respaldo pendiente",
+      "controles sin superposición",
+      "lectura sin desplazamiento horizontal"
+    ],
+    "description": "Verifica la presentación del panel sin iniciar sesión ni ejecutar operaciones.",
+    "steps": [
+      "Abrir #operacion en móvil",
+      "Comprobar el título Panel de administración antes del bloque Acceso administrativo",
+      "Comprobar que se muestra Preparación para producción con respaldo pendiente",
+      "Comprobar que los conteos se presentan como registros internos y no como nuevas vacantes verificadas",
+      "Comprobar que botones y tarjetas no se superponen y no hay desplazamiento horizontal"
+    ],
+    "expected": "El panel presenta título, sesión, estado pendiente e indicadores legibles; no se alteran los datos ni se habilitan operaciones."
+  },
+  {
+    "name": "El respaldo no expone datos a visitantes",
+    "viewport": "mobile",
+    "covers": [
+      "respaldo solo después de autorización",
+      "ausencia de formulario cifrado para anónimo"
+    ],
+    "description": "Comprueba que la copia de datos no está disponible al visitar el panel sin una sesión autorizada.",
+    "steps": [
+      "Abrir #operacion sin iniciar sesión",
+      "Pulsar Verificar acceso",
+      "Comprobar que se solicita iniciar sesión y no aparecen Crear copia cifrada ni Contraseña del respaldo"
+    ],
+    "expected": "La exportación no se ofrece al visitante anónimo y no se descargan datos."
+  },
+  {
+    "name": "La portada permite iniciar sesión sin mostrar Administración al público",
+    "viewport": "mobile",
+    "covers": [
+      "entrada Mi cuenta",
+      "acceso al inicio de sesión desde portada",
+      "ocultación de Administración a anónimos",
+      "menú de cuenta sin desbordamiento"
+    ],
+    "description": "Comprueba la entrada de cuenta desde la portada sin usar credenciales ni ejecutar operaciones.",
+    "steps": [
+      "Abrir la portada sin sesión",
+      "Pulsar Mi cuenta",
+      "Comprobar que aparece Iniciar sesión y no aparece Administración",
+      "Cerrar menú y comprobar que se puede seguir consultando ofertas"
+    ],
+    "expected": "Mi cuenta permite encontrar el inicio de sesión; Administración sigue oculto y el menú no tapa permanentemente la navegación."
+  },
+  {
+    "name": "El respaldo permanece restringido durante una visita anónima",
+    "viewport": "desktop",
+    "covers": [
+      "respaldo restringido",
+      "reanudación sin acceso anónimo"
+    ],
+    "description": "Comprueba que los nuevos controles de copia no aparecen sin autorización.",
+    "steps": [
+      "Abrir #operacion sin sesión",
+      "Pulsar Verificar acceso",
+      "Comprobar que no se muestran Crear copia cifrada ni Reanudar copia"
+    ],
+    "expected": "La mejora de reanudación no expone la exportación a visitantes sin sesión."
+  },
+  {
+    "name": "La prueba local usa datos ficticios y no modifica la app",
+    "viewport": "mobile",
+    "covers": [
+      "reconstrucción IndexedDB aislada",
+      "comparación por registro",
+      "limpieza temporal",
+      "ninguna escritura a producción",
+      "clasificación de referencias con almacenamiento simulado",
+      "referencia cerrada ausente no equivale a vacante perdida"
+    ],
+    "description": "Ejecuta únicamente el fixture local incorporado para comprobar el navegador sin credenciales ni archivos del usuario.",
+    "steps": [
+      "Abrir ?restore-proof=1#operacion",
+      "Esperar el resultado de restore-local-proof",
+      "Comprobar dos tablas, dos registros, un archivo, cero diferencias y temporaryStoreDeleted true",
+      "Comprobar productionWrites 0 y platformRestoreTested false"
+    ],
+    "expected": "La prueba reconstruye, compara y elimina su base local de datos ficticios; no se presenta como restauración real de AppDeploy. El resultado storageAuditFixture muestra missingReferencedObjects.closed=1 y externalMediaReferences=1, sin acceder a imágenes externas."
+  },
+  {
+    "name": "Campañas propias con inventario comercial vacío en entorno de ensayo",
+    "viewport": "mobile",
+    "covers": [
+      "HOUSE_AD sin anunciantes",
+      "formulario real de oficio",
+      "sin contenido ficticio publicado",
+      "frecuencia y objetivos completados",
+      "interfaz móvil"
+    ],
+    "description": "Verifica el relleno propio en un entorno controlado con catálogo comercial vacío.",
+    "steps": [
+      "En el entorno local de ensayo con SDK simulado, abre la portada sin anuncios comerciales ni perfiles.",
+      "Pulsa Publicar mis servicios en la campaña propia.",
+      "Comprueba que abre el formulario de oficio y ciérralo sin publicar.",
+      "Verifica ausencia de desbordamiento horizontal."
+    ],
+    "expected": "Se muestra una campaña propia identificada, el formulario funciona y no se crean perfiles ni ofertas."
+  },
+  {
+    "name": "Administración de campañas propias y separación de métricas",
+    "viewport": "desktop",
+    "covers": [
+      "edición HOUSE_AD",
+      "pausa de campañas",
+      "CTR propio separado",
+      "prueba comercial gratuita sin venta"
+    ],
+    "description": "Comprueba la edición mediante adaptador de ensayo y el rechazo de conversiones falsas.",
+    "steps": [
+      "En el ensayo administrativo local autorizado, pausa una campaña y guarda.",
+      "Comprueba el estado guardado.",
+      "Consulta rendimiento sin registros e identifica el estado vacío."
+    ],
+    "expected": "La pausa se conserva en el adaptador del ensayo y no hay ventas ni métricas de ejemplo."
+  }
+]

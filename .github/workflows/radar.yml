@@ -530,7 +530,7 @@ jobs:
       (github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
       github.event_name == 'push' && (contains(github.event.head_commit.message, '[site inventory proof]') || contains(github.event.head_commit.message, '[security checks only]')))
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -552,6 +552,7 @@ jobs:
           SECURITY_CHECKS_ONLY: ${{ github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[security checks only]') }}
         run: |
           node --test tests/*.test.mjs
+          if [ -f integrations/appdeploy/house-ads/qa/run-check.mjs ]; then (cd integrations/appdeploy/house-ads && node qa/run-check.mjs); fi
           if [ "$SECURITY_CHECKS_ONLY" = 'true' ]; then exit 0; fi
           python -m pip install playwright
           python -m scripts.observe_site_inventory
@@ -563,7 +564,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: site-inventory-proof
-          path: output/site-inventory/
+          path: |
+            output/site-inventory/
+            integrations/appdeploy/house-ads/qa-output/
           retention-days: 7
   live-document-reader:
     if: >-

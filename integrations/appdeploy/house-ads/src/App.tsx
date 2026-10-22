@@ -996,6 +996,14 @@ function App() {
     };
   }, [legalView]);
 
+  useEffect(()=>{
+    if(!selected)return;const dialog=document.querySelector<HTMLElement>('.neoDrawer');if(!dialog)return;
+    const previous=document.activeElement as HTMLElement|null,overflow=document.body.style.overflow;document.body.style.overflow='hidden';
+    const controls=()=>[...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],input,select,textarea')].filter(e=>e.getClientRects().length>0);
+    (controls()[0]||dialog).focus();const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){e.preventDefault();setSelected(null);}else if(e.key==='Tab'){const nodes=controls(),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};document.addEventListener('keydown',key);
+    return()=>{document.removeEventListener('keydown',key);document.body.style.overflow=overflow;previous?.isConnected&&previous.focus();};
+  },[selected?.id]);
+
   const [revealingContact, setRevealingContact] = useState(false);
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
   const [homePlace, setHomePlace] = useState(places.includes(initialPlace) && !travelPlaces.includes(initialPlace) ? initialPlace : 'Todas');
@@ -1182,15 +1190,9 @@ function App() {
   };
 
   const openTravel = (city:string) => {
-    if (!travelPlaces.includes(place)) setHomePlace(place);
-    setSection('opportunities');
-    setFilterMode('work');
-    setArea('Todas');
-    setQ('');
-    setOnlyNew(false);
-    setPlace(city);
-    track('tc_travel_opened', { commune:city, surface:'travel_corridor' });
-    setTimeout(() => document.getElementById('neo-jobs')?.scrollIntoView({ behavior:'smooth' }), 0);
+    if(!travelPlaces.includes(place))setHomePlace(place);
+    navigateResults('opportunities',city);
+    track('tc_travel_opened',{commune:city,surface:'travel_corridor'});
   };
 
   const installApp = async () => {
@@ -1213,9 +1215,9 @@ function App() {
   const afterPublish = (kind: Listing['kind']) => {
     void load(undefined, true);
     const next: Section = kind === 'worker_available' ? 'people' : kind === 'worker_need' ? 'needs' : kind === 'service_request' ? 'services' : 'opportunities';
-    setSection(next);
+    navigateResults(next);
     setNotice(kind === 'candidate' ? 'Aviso recibido. Quedó en revisión interna del Radar antes de publicarse.' : 'Publicado. Ya quedó guardado y visible en Trabajo Cerca.');
-    setTimeout(() => document.getElementById('neo-jobs')?.scrollIntoView({ behavior:'smooth' }), 50);
+
   };
 
   const closeOwn = async (item: Listing) => {
@@ -1318,7 +1320,7 @@ function App() {
             <span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span>
           </button>
           <nav className='neoTopNav' aria-label='Navegación vNext'>
-            <button onClick={() => document.getElementById('neo-jobs')?.scrollIntoView({ behavior:'smooth' })}>Descubrir</button>
+            <button onClick={() => navigateResults('opportunities')}>Descubrir</button>
             <button onClick={() => setFlow('trabajadores')}>Publicar</button>
             <button onClick={() => document.getElementById('neo-radar')?.scrollIntoView({ behavior:'smooth' })}>Radar</button>
             <button onClick={() => openSecondary('actualidad-laboral')}>Actualidad</button>
@@ -1445,7 +1447,7 @@ function App() {
 
         {selected && (
           <div className='neoDrawerBackdrop' role='presentation' onMouseDown={event => { if (event.target === event.currentTarget) setSelected(null); }}>
-            <aside className='neoDrawer' role='dialog' aria-modal='true' aria-label={'Detalle de ' + selected.title}>
+            <aside className='neoDrawer' tabIndex={-1} role='dialog' aria-modal='true' aria-label={'Detalle de ' + selected.title}>
               <button className='neoDrawerClose' onClick={() => setSelected(null)} aria-label='Cerrar detalle'><X /></button>
               {originalPoster(selected,window.location.href)&&<a className='tcDetailPoster' href={originalPoster(selected,window.location.href)!} target='_blank' rel='noopener noreferrer'><img src={originalPoster(selected,window.location.href)!} alt={'Afiche original de '+selected.title} referrerPolicy='no-referrer'/>Abrir afiche completo</a>}
               <div className='neoDrawerScroll'>

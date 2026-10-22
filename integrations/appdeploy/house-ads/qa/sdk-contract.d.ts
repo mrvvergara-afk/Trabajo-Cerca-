@@ -307,6 +307,74 @@ export interface AuthAPI {
 export const auth: AuthAPI;
  export const api: {get(url:string,data?:unknown):Promise<{data:any}>;post(url:string,data?:unknown):Promise<{data:any}>;put(url:string,data?:unknown):Promise<{data:any}>;delete(url:string,data?:unknown):Promise<{data:any}>};
  export const image:{resizeIfNeeded(file:File,options:{maxDimension:number;maxPixels:number;quality:number;mimeType:string}):Promise<{data:string;mimeType:string}>};
- export const notifications:{configure(options:{showSystemNotificationOnForeground:boolean}):Promise<void>;onMessage(callback:(payload:{notification?:{title?:string}})=>void):()=>void;getEnableGuidance():Promise<{kind:string;message?:string;steps:string[]}>;subscribe(options:{showUi:boolean}):Promise<void>;unsubscribe(options:{showUi:boolean}):Promise<void>};
+export interface NotificationMessage {
+    title: string;
+    body: string;
+    icon?: string;
+    image?: string;
+    url?: string;
+}
+
+export type NotificationPayload =
+    | {
+          notification: NotificationMessage;
+          data: Record<string, string>;
+      }
+    | {
+          notification: NotificationMessage;
+      }
+    | {
+          data: Record<string, string>;
+      };
+
+export interface NotificationEnvironment {
+    platform: "ios" | "android" | "desktop" | "unknown";
+    browser: "safari" | "chrome" | "firefox" | "edge" | "other";
+    mode: "pwa" | "browser_tab";
+    permission: "default" | "granted" | "denied";
+    isSupported: boolean;
+    canRequestPermission: boolean;
+}
+
+export interface NotificationEnableGuidance {
+    kind:
+        | "ready"
+        | "sign_in_required"
+        | "permission_prompt"
+        | "permission_denied"
+        | "ios_install_required"
+        | "unsupported";
+    title: string;
+    message: string;
+    steps: string[];
+    primaryActionLabel?: string;
+    secondaryActionLabel?: string;
+}
+
+export interface NotificationsAPI {
+    /** Detect runtime platform/browser/mode and permission capability */
+    getEnvironment(): Promise<NotificationEnvironment>;
+    /** Get SDK-provided guidance for enable/blocked/unsupported notification states */
+    getEnableGuidance(): Promise<NotificationEnableGuidance>;
+    /** Configure runtime notification behavior. */
+    configure(options?: { showSystemNotificationOnForeground?: boolean }): Promise<{ ok: true }>;
+    /**
+     * Request notification permission (if needed) and register current user push token with the platform.
+     * Defaults to showUi=true (SDK guidance/soft-prompt UI). Pass showUi=false when app provides custom guidance UI.
+     * On successful explicit subscribe, SDK clears local explicit-unsubscribe marker for current user on this device.
+     * Call from explicit user action (for example, "Enable notifications" button), not from app load/refresh effects.
+     */
+    subscribe(options?: { showUi?: boolean }): Promise<{ ok: true }>;
+    /**
+     * Unregister user push token from the platform.
+     * Stores local explicit-unsubscribe marker for current user (hashed user-id key in localStorage), so silent re-registration is skipped until explicit subscribe.
+     * Always performs local token cleanup; pass showUi:false to skip guidance popup.
+     */
+    unsubscribe(options?: { showUi?: boolean; showUI?: boolean }): Promise<{ ok: true }>;
+    /** Register foreground push handler for in-app state updates. SDK also shows foreground system popups and applies managed dedupe. Returns unsubscribe function. */
+    onMessage(callback: (payload: NotificationPayload) => void): () => void;
+}
+
+export const notifications: NotificationsAPI;
 }
 

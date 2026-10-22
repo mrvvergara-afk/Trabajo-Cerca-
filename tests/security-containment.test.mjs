@@ -22,7 +22,7 @@ const error=(message,status)=>({statusCode:status,body:JSON.stringify({error:mes
 const isAppDatabaseError=e=>Boolean(e?.code?.startsWith('AppDatabase'));
 test('administrator identity comes only from SDK authenticated context; spoofed body and other accounts fail',async()=>{
   const routes=load('index.ts','handler',{
-    confirmRadarPublications:()=>{},ai:{},denyRemoteCapabilities:()=>({}),checkedLegacyFetch:()=>{},
+    adminBackupPage:async()=>({statusCode:200,body:'{"scope":"fixture"}'}),confirmRadarPublications:()=>{},ai:{},denyRemoteCapabilities:()=>({}),checkedLegacyFetch:()=>{},
     SECURITY_POLICY:{paidProviders:false,remoteAi:false,externalAnalytics:false,manualOperations:false},
     publicQuota:()=>()=>{},opaqueOwnerToken:()=>'',reviewedReceiver:()=>()=>{},
     router:r=>r,json:(data,status=200)=>({statusCode:status,body:JSON.stringify(data)}),error,
@@ -34,7 +34,12 @@ test('administrator identity comes only from SDK authenticated context; spoofed 
     const ctx={user,body:{email:'mrvvergara@gmail.com'},query:{email:'mrvvergara@gmail.com'}};
     for(const middleware of routes['GET /api/admin/session']){response=await middleware(ctx);if(response)break;}
     assert.equal(response.statusCode,status);
-    if(status===200){const body=JSON.parse(response.body);assert.equal(body.userId,'authorized');assert.equal(body.backupExportEnabled,false);}
+    if(status===200){const body=JSON.parse(response.body);assert.equal(body.userId,'authorized');assert.equal(body.backupExportEnabled,true);}
+  }
+  for(const [user,status] of [[undefined,401],[{userId:'ordinary',email:'ordinary@example.org'},403],[{userId:'authorized',email:'mrvvergara@gmail.com'},200]]){
+    let result;
+    for(const middleware of routes['POST /api/admin/backup/page']){result=await middleware({user,body:{email:'mrvvergara@gmail.com'}});if(result)break;}
+    assert.equal(result.statusCode,status,'backup route authorization');
   }
   let response;
   for(const middleware of routes['POST /api/ops/free-public-sources/run']){

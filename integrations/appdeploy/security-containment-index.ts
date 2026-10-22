@@ -1,4 +1,5 @@
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
+import { adminBackupPage } from './admin-backup';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
 import { advancePublicFeed, readPublicFeedPage, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
@@ -2766,7 +2767,8 @@ const consumeReviewedExchange=reviewedReceiver({
 const ADMIN_EMAILS = ['mrvvergara@gmail.com'];
 
 export const handler = router({
-  'GET /api/admin/session': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => json({ administrator:true, userId:ctx.user!.userId, backupExportEnabled:false })],
+  'POST /api/admin/backup/page': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => adminBackupPage(ctx)],
+  'GET /api/admin/session': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => json({ administrator:true, userId:ctx.user!.userId, backupExportEnabled:true })],
   'GET /api/_healthcheck': [async () => json({ message: 'Success' })],
   'GET /api/ops/security-policy': [async () => json({ revision:'security-containment-v2',...SECURITY_POLICY })],
 

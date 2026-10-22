@@ -21,7 +21,7 @@ async def observe():
             assert not proof.get('error'),proof
             assert proof['policy']['revision']=='security-containment-v2'
             assert all(proof['policy'][key] is False for key in ('paidProviders','remoteAi','externalAnalytics','manualOperations'))
-            assert len(proof['results'])==6
+            assert len(proof['results'])==7
             for row in proof['results']:
                 expected=503 if row['path'].endswith('/photo-tip') else 401
                 assert row.get('status')==expected,row

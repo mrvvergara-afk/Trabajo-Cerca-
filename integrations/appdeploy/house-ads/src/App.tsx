@@ -1014,7 +1014,7 @@ function App() {
     const append = Boolean(cursor);
     const generation=append?requestGeneration.current:++requestGeneration.current;
     if (append) setLoadingMore(true);
-    else {setLoading(true);setLoadingMore(false);setFeedComplete(false);exploredCursors.current.clear();if(fresh)setSessionStartedAt(new Date().toISOString());}
+    else {setResultPage(0);setLoading(true);setLoadingMore(false);setFeedComplete(false);exploredCursors.current.clear();if(fresh)setSessionStartedAt(new Date().toISOString());}
     setLoadError('');
     try {
       const params = new URLSearchParams({ limit:'40' });
@@ -1362,6 +1362,7 @@ function App() {
           {!feedComplete&&<small role='status'>Cargando más resultados…</small>}
         </section>
 
+        {feedState==='degraded_last_good'&&<p className='tcResultStatus' role='status'>Mostrando el último catálogo disponible. Actualización pendiente.</p>}
         {notice && <div className='neoNotice'><CheckCircle /><span>{notice}</span><button onClick={() => setNotice('')}><X /></button></div>}
 
         <section className='neoDiscover' id='neo-jobs' tabIndex={-1} aria-labelledby='tc-results-title' aria-busy={loading||loadingMore}>
@@ -1373,7 +1374,7 @@ function App() {
           <div className='neoControlDeck'>
             <div className='neoTabs'>
               <button className={section === 'opportunities' ? 'active' : ''} onClick={() => navigateResults('opportunities')}><Briefcase /> Empleos</button>
-              <button className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch /> Personas disponibles <b>{people}</b></button>
+              <button className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch /> Personas disponibles <b>{feedComplete?items.filter(item=>item.kind==='worker_available'&&!item.review&&matchesTerritorialView(item,place,places)).length:'…'}</b></button>
               <button className={section === 'needs' ? 'active' : ''} onClick={() => navigateResults('needs')}><Users /> Necesitan gente</button>
               <button className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => navigateResults('services')}><Wrench /> Servicios</button>
             </div>

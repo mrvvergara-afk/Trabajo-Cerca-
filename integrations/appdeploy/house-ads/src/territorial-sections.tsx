@@ -72,7 +72,7 @@ export function LocalAdvertising({ sponsor, place, loading, onAdvertise, track, 
 
 export function LaborNewsSection() {
   const news = visibleLaborNews(LABOR_NEWS);
-  return <section className='tcLaborNews' id='actualidad-laboral' aria-labelledby='tc-news-title'>
+  return <section className='tcLaborNews' aria-labelledby='tc-news-title'>
     <header><div><span className='neoKicker'>INFORMACIÓN ÚTIL PARA TU VIDA LABORAL</span><h2 id='tc-news-title'>Actualidad laboral de La Araucanía</h2>
       <p>Empleo, ferias, capacitación, concursos y previsión. Selección informativa, sin contenido político ni sindical.</p></div><Newspaper aria-hidden='true'/></header>
     <div className='tcNewsLayout'><div className='tcNewsArticles'>{news.length ? news.map(item => <article key={item.id}>

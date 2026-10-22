@@ -305,6 +305,8 @@ export interface AuthAPI {
 }
 
 export const auth: AuthAPI;
- export const api: {get(url:string,data?:unknown):Promise<{data:any}>;post(url:string,data?:unknown):Promise<{data:any}>;put(url:string,data?:unknown):Promise<{data:any}>};
+ export const api: {get(url:string,data?:unknown):Promise<{data:any}>;post(url:string,data?:unknown):Promise<{data:any}>;put(url:string,data?:unknown):Promise<{data:any}>;delete(url:string,data?:unknown):Promise<{data:any}>};
+ export const image:{resizeIfNeeded(file:File,options:{maxDimension:number;maxPixels:number;quality:number;mimeType:string}):Promise<{data:string;mimeType:string}>};
+ export const notifications:{configure(options:{showSystemNotificationOnForeground:boolean}):Promise<void>;onMessage(callback:(payload:{notification?:{title?:string}})=>void):()=>void;getEnableGuidance():Promise<{kind:string;message?:string;steps:string[]}>;subscribe(options:{showUi:boolean}):Promise<void>;unsubscribe(options:{showUi:boolean}):Promise<void>};
 }
 

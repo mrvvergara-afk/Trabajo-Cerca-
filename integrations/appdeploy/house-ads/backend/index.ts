@@ -200,6 +200,7 @@ const ANALYTICS_EVENTS = new Set([
   'tc_app_open', 'tc_commune_selected', 'tc_listing_opened', 'tc_contact_revealed',
   'tc_external_offer_click', 'tc_listing_shared', 'tc_sponsor_impression', 'tc_sponsor_click',
   'tc_sponsor_viewable_impression', 'tc_photo_tip_submitted', 'tc_advertiser_interest_submitted', 'tc_install_started', 'tc_app_installed', 'tc_travel_opened',
+  'tc_install_prompt_available', 'tc_install_prompt_accepted', 'tc_install_prompt_dismissed',
   'tc_notifications_enabled', 'tc_notifications_disabled', 'tc_notifications_test',
 ]);
 const ANALYTICS_PROPERTY_KEYS = new Set([

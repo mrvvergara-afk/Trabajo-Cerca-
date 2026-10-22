@@ -24,7 +24,7 @@ try{
  await page.getByRole('button',{name:'Privacidad',exact:true}).click();
  const privacy=page.locator('.legalModal');await privacy.waitFor();assert(await privacy.evaluate(e=>e.contains(document.activeElement)));
  await page.keyboard.press('Escape');await privacy.waitFor({state:'hidden'});
- await page.getByLabel('Abrir menú de Trabajo Cerca',{exact:true}).click();await page.getByRole('button',{name:'Configurar avisos',exact:true}).click();
+ await page.getByLabel('Abrir menú de Trabajo Cerca',{exact:true}).click();await page.getByRole('button',{name:'Configurar avisos',exact:true}).click();await page.getByRole('button',{name:'Información sobre notificaciones push',exact:true}).click();
  assert(await page.getByRole('button',{name:'Avisos automáticos en preparación',exact:true}).isDisabled());
  assert(!(await page.evaluate(()=>window.houseCalls)).some(c=>c.method==='POST'&&c.path.startsWith('/api/notifications')));
  const violations=await page.evaluate(()=>window.rcViolations);assert.deepEqual(violations,[]);assert.deepEqual(errors,[]);

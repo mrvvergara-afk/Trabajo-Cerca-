@@ -15,6 +15,7 @@ export function SiteMenu(props:Props) {
         <button onClick={()=>action(props.onAdvertise)}>Promocionar mi negocio</button>
         <button onClick={()=>action(props.onPeople)}>Ver personas y oficios</button>
         <button onClick={()=>action(props.onService)}>Necesito un servicio</button>
+        <button onClick={()=>action(()=>document.getElementById('neo-radar')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}))}>Radar territorial</button>
         <button onClick={()=>action(props.onCities)}>Buscar en otras ciudades</button>
         <button onClick={()=>action(props.onNews)}>Actualidad laboral</button>
         <button onClick={()=>action(props.onContribute)}>Compartir un aviso con el Radar</button>

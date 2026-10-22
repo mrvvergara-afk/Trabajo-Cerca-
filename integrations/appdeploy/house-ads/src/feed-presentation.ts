@@ -4,7 +4,7 @@ const PRESENTATION_DAY=86400000;
 
 export function recentInApp(item:VisibleItem,now=Date.now(),days=7) {
   const first=Date.parse(item.firstPublishedAt || item.createdAt);
-  return item.kind==='job_offer' && !item.review && Number.isFinite(first) && first<=now && first>=now-days*PRESENTATION_DAY;
+  return item.kind==='job_offer' && Number.isFinite(first) && first<=now && first>=now-days*PRESENTATION_DAY;
 }
 
 // Counts come from the complete immutable feed, never the loaded card page or

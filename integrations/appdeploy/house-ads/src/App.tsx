@@ -1,3 +1,7 @@
+import {loadReading,saveReading,markReading} from './reading-history';
+import {reviewLabel,identifiedEmployer,originalPoster,shortDate} from './compact-presentation';
+import {TerritorialRadar} from './territorial-radar';
+import {ActivityCenter} from './activity-center';
 import {listingShareUrl} from '../shared/listing-links';
 import {LEGAL_RESPONSIBLE} from './legal-responsible';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
@@ -160,6 +164,9 @@ type Listing = {
   createdAt: string;
   firstPublishedAt?:string;
   revalidationDue?:boolean;
+  originalPosterUrl?:string;
+  sourceImageUrl?:string;
+  active?:boolean;
   contact?: string;
   contactLabel?: string;
   hasContact?: boolean;
@@ -939,6 +946,13 @@ function App() {
   const exploredCursors = useRef(new Set<string>());
   const [showAdvertiser, setShowAdvertiser] = useState(false);
   const [showAlerts, setShowAlerts] = useState(false);
+  const [showActivity,setShowActivity]=useState(false);
+  const [onlyUnread,setOnlyUnread]=useState(false);
+  const [reading,setReading]=useState(()=>{try{return loadReading(localStorage);}catch{return {version:1 as const,known:false,previousVisitAt:null,read:{}};}});
+  const [feedUpdatedAt,setFeedUpdatedAt]=useState<string|null>(null);
+  const [feedComplete,setFeedComplete]=useState(false);
+  const requestGeneration=useRef(0);
+  const [resultFocus,setResultFocus]=useState(0);
   const [legalView, setLegalView] = useState<LegalView>(null);
   useEffect(() => {
     if (!legalView) return;
@@ -983,20 +997,24 @@ function App() {
   const [revealingContact, setRevealingContact] = useState(false);
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
   const [homePlace, setHomePlace] = useState(places.includes(initialPlace) && !travelPlaces.includes(initialPlace) ? initialPlace : 'Todas');
-  const [sessionStartedAt] = useState(() => new Date().toISOString());
+  const [sessionStartedAt,setSessionStartedAt] = useState(() => new Date().toISOString());
   const noveltyCutoff=Date.parse(sessionStartedAt)-7*86400000;
 
   const load = async (cursor?: string, fresh = false) => {
     const append = Boolean(cursor);
+    const generation=append?requestGeneration.current:++requestGeneration.current;
     if (append) setLoadingMore(true);
-    else setLoading(true);
+    else {setLoading(true);setLoadingMore(false);setFeedComplete(false);exploredCursors.current.clear();if(fresh)setSessionStartedAt(new Date().toISOString());}
     setLoadError('');
     try {
       const params = new URLSearchParams({ limit:'40' });
       if (cursor) params.set('cursor', cursor);
       if (fresh) params.set('fresh', '1');
       const response = await api.get('/api/listings?' + params.toString());
+      if(generation!==requestGeneration.current)return;
       const incoming = response.data.items as Listing[];
+      setFeedUpdatedAt(typeof response.data.updatedAt==='string'?response.data.updatedAt:null);
+      setFeedComplete(!response.data.nextCursor);
       setFeedState((response.data.feedState || (Number(response.data.totalVerifiedJobOffers ?? 0) === 0 ? 'authoritative_empty' : 'fresh')) as 'fresh'|'degraded_last_good'|'authoritative_empty');
       if (false && !append && !fresh && Number(response.data.totalVerifiedJobOffers ?? 0) === 0) {
         const today = new Date().toISOString().slice(0, 10);
@@ -1013,7 +1031,7 @@ function App() {
         }
       }
       setItems(current => {
-        if (!append) return incoming;
+        if (!append) return [...new Map(incoming.map(item=>[item.id,item])).values()];
         const merged = new Map<string, Listing>(current.map(item => [item.id, item]));
         for (const item of incoming) merged.set(item.id, item);
         return [...merged.values()];
@@ -1030,10 +1048,10 @@ function App() {
         kindStats:response.data.kindStats ?? { jobs:0, people:0, needs:0, services:0 },
       });
     } catch {
+      if(generation!==requestGeneration.current)return;
       setLoadError('No pudimos cargar el Radar central. Intenta nuevamente.');
     } finally {
-      if (append) setLoadingMore(false);
-      else setLoading(false);
+      if(generation===requestGeneration.current){if (append) setLoadingMore(false);else setLoading(false);}
     }
   };
 
@@ -1052,15 +1070,17 @@ function App() {
     if (place !== 'Todas') track('tc_commune_selected', { commune:place });
   }, [place]);
   useEffect(() => {
+    if(selected){const next=markReading(reading,selected.id);setReading(next);try{saveReading(localStorage,next);}catch{}}
     if (selected) track('tc_listing_opened', { listing_id:selected.id, kind:selected.kind, commune:selected.workLocation, area:selected.area, origin:selected.origin, verified:selected.verified, review:selected.review });
   }, [selected?.id]);
   useEffect(() => {
-    localStorage.setItem('trabajo-cerca-last-visit', sessionStartedAt);
+    try{saveReading(localStorage,reading);}catch{}
   }, [sessionStartedAt]);
   useEffect(() => {
     const beforeInstall = (event:Event) => {
       event.preventDefault();
       setInstallPrompt(event as InstallPromptEvent);
+      track('tc_install_prompt_available',{surface:'pwa'});
     };
     const installed = () => {
       setInstallPrompt(null);
@@ -1101,7 +1121,7 @@ function App() {
 
   const visible = useMemo(() => {
     const base = items.filter(item => {
-      if (section === 'opportunities') return item.kind === 'job_offer' || (item.kind === 'worker_need' && !item.review);
+      if (section === 'opportunities') return item.kind === 'job_offer';
       if (section === 'people') return item.kind === 'worker_available' && !item.review;
       if (section === 'needs') return item.kind === 'worker_need' && !item.review;
       return item.kind === 'service_request' && !item.review;
@@ -1113,10 +1133,11 @@ function App() {
         : (filterMode === 'work' ? item.workCommunes.includes(place) : item.recruitmentCommunes.includes(place));
       const areaMatch = area === 'Todas' || item.area === area;
       const freshnessMatch = !onlyNew || isFresh(item);
+      const readMatch = !onlyUnread || (reading.known && !reading.read[item.id]);
       const haystack = [item.title,item.company,item.note,item.workLocation,item.recruitmentZones.join(' '),item.portalPlace || '',item.evidence || '',...item.tags].join(' ').toLocaleLowerCase('es-CL');
-      return communeMatch && areaMatch && freshnessMatch && haystack.includes(q.toLocaleLowerCase('es-CL'));
+      return communeMatch && areaMatch && freshnessMatch && readMatch && haystack.includes(q.toLocaleLowerCase('es-CL'));
     });
-  }, [items, section, place, filterMode, q, area, onlyNew, noveltyCutoff]);
+  }, [items, section, place, filterMode, q, area, onlyNew, onlyUnread, reading, noveltyCutoff]);
 
   const sourceCounts = useMemo(() => { const counts = new Map<string,number>(); for (const item of items) { if (item.kind !== 'job_offer' || !item.workCommunes.some(commune => places.includes(commune) && commune !== 'Todas')) continue; const source = item.source || 'Fuente no identificada'; counts.set(source,(counts.get(source)||0)+1); } return [...counts.entries()].sort((a,b)=>b[1]-a[1]); },[items]);
   const availableJobs = feedSummary.totalJobOffers;
@@ -1128,13 +1149,19 @@ function App() {
   const directNeeds = feedSummary.kindStats.needs || items.filter(i => i.kind === 'worker_need').length;
   const selectedStat = place === 'Todas' ? emptyCommuneStat : (feedSummary.communeStats[place] ?? emptyCommuneStat);
   const isTravelView = travelPlaces.includes(place);
-  useEffect(() => { exploredCursors.current.clear(); }, [place]);
   useEffect(() => {
-    if (!isTravelView || !nextCursor || loading || loadingMore || loadError) return;
-    if (exploredCursors.current.has(nextCursor) || exploredCursors.current.size >= 100) return;
-    exploredCursors.current.add(nextCursor);
-    void load(nextCursor);
-  }, [place, isTravelView, nextCursor, loading, loadingMore, loadError]);
+    if (!nextCursor || loading || loadingMore || loadError) return;
+    if(exploredCursors.current.has(nextCursor)||exploredCursors.current.size>=100)return;
+    exploredCursors.current.add(nextCursor);void load(nextCursor);
+  },[nextCursor,loading,loadingMore,loadError]);
+  useEffect(()=>{if(!resultFocus)return;const target=document.getElementById('neo-jobs');target?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});target?.focus({preventScroll:true});},[resultFocus]);
+  const navigateResults=(next:Section='opportunities',town=place,recent=false,unread=false)=>{setSection(next);setPlace(town);setFilterMode('work');setQ('');setArea('Todas');setOnlyNew(recent);setOnlyUnread(unread);setResultFocus(n=>n+1);};
+  const scopedJobs=items.filter(item=>item.kind==='job_offer'&&matchesTerritorialView(item,place,places));
+  const scopedRecent=scopedJobs.filter(isFresh);
+  const scopeCount=feedComplete?scopedJobs.length:null;
+  const scopeRecent=feedComplete?scopedRecent.length:null;
+  const scopeUnread=feedComplete?scopedRecent.filter(item=>!reading.read[item.id]).length:0;
+  const resultsTitle=(section==='opportunities'?'Empleos':section==='people'?'Personas disponibles':section==='needs'?'Necesitan gente':'Servicios')+' · '+(place==='Todas'?'zona local':place)+(onlyNew?' · Incorporadas en 7 días':'')+(onlyUnread?' · No leídas':'');
   const reviewCount = provisionalJobs;
   const ownerTokens = getOwnerTokens();
   useEffect(()=>{
@@ -1172,31 +1199,21 @@ function App() {
       return;
     }
     await installPrompt.prompt();
-    await installPrompt.userChoice;
+    const choice=await installPrompt.userChoice;
+    track(choice.outcome==='accepted'?'tc_install_prompt_accepted':'tc_install_prompt_dismissed',{surface:'pwa'});
     setInstallPrompt(null);
   };
 
-  const goRadar = (next: Section = 'opportunities') => {
-    setSection(next);
-    setTimeout(() => document.getElementById('radar')?.scrollIntoView({ behavior:'smooth' }), 0);
-  };
+  const goRadar = (next:Section='opportunities') => navigateResults(next);
 
-  const openFresh = (commune?: string) => {
-    setSection('opportunities');
-    setFilterMode('work');
-    setArea('Todas');
-    setQ('');
-    setPlace(commune || 'Todas');
-    setOnlyNew(true);
-    setTimeout(() => document.getElementById('radar')?.scrollIntoView({ behavior:'smooth' }), 0);
-  };
+  const openFresh = (commune?:string) => navigateResults('opportunities',commune||place,true);
 
   const afterPublish = (kind: Listing['kind']) => {
     void load(undefined, true);
     const next: Section = kind === 'worker_available' ? 'people' : kind === 'worker_need' ? 'needs' : kind === 'service_request' ? 'services' : 'opportunities';
     setSection(next);
     setNotice(kind === 'candidate' ? 'Aviso recibido. Quedó en revisión interna del Radar antes de publicarse.' : 'Publicado. Ya quedó guardado y visible en Trabajo Cerca.');
-    setTimeout(() => document.getElementById('radar')?.scrollIntoView({ behavior:'smooth' }), 50);
+    setTimeout(() => document.getElementById('neo-jobs')?.scrollIntoView({ behavior:'smooth' }), 50);
   };
 
   const closeOwn = async (item: Listing) => {
@@ -1269,13 +1286,14 @@ function App() {
     }
   };
 
+  function openSecondary(id:string){const node=document.getElementById(id) as HTMLDetailsElement|null;if(node){node.open=true;node.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
   const isVNext = true;
   function openHouseGoal(goal:Goal,attribution:HouseAttribution) {
     setHouseAttribution(attribution);
     if(goal==='professional') {setFlow('ofrezco');}
     else if(goal==='advertiser') {setShowAdvertiser(true);}
     else if(goal==='employer') {setFlow('trabajadores');}
-    else {completeHouseGoal('explore');setSection('opportunities');document.getElementById('radar')?.scrollIntoView({behavior:'smooth'});document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}
+    else {completeHouseGoal('explore');navigateResults('opportunities');}
   }
   function renderAdvertising(slot:Slot) {
     const selection=advertising.selections[slot];
@@ -1301,94 +1319,66 @@ function App() {
             <button onClick={() => document.getElementById('neo-jobs')?.scrollIntoView({ behavior:'smooth' })}>Descubrir</button>
             <button onClick={() => setFlow('trabajadores')}>Publicar</button>
             <button onClick={() => document.getElementById('neo-radar')?.scrollIntoView({ behavior:'smooth' })}>Radar</button>
-            <button onClick={() => document.getElementById('actualidad-laboral')?.scrollIntoView({ behavior:'smooth' })}>Actualidad</button>
+            <button onClick={() => openSecondary('actualidad-laboral')}>Actualidad</button>
           </nav>
-          <SiteMenu onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowAlerts(true)} onInstall={()=>void installApp()}
+          <SiteMenu onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
             onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
-            onCities={()=>document.getElementById('tc-other-cities')?.scrollIntoView({behavior:'smooth'})}
-            onNews={()=>document.getElementById('actualidad-laboral')?.scrollIntoView({behavior:'smooth'})}
-            onPeople={()=>{setSection('people');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}/>
+            onCities={()=>openSecondary('tc-other-cities')}
+            onNews={()=>openSecondary('actualidad-laboral')}
+            onPeople={()=>navigateResults('people')}/>
         </header>
 
         <section className='neoHero neoHeroReborn' id='neo-home'>
           <div className='neoHeroGlow neoGlowA' />
           <div className='neoHeroGlow neoGlowB' />
           <div className='neoHeroCopy'>
-            <h1>Trabajo, servicios y oportunidades<br /><em>cerca de ti.</em></h1>
-            <p className='neoHeroLead'>Encuentra empleo, ofrece tus servicios, contrata personas y promociona tu negocio. Fácil, cercano y pensado para nuestras comunas.</p>
+            <h1>Trabajo, servicios y oportunidades <em>cerca de ti.</em></h1>
+            <p className='neoHeroLead'>Encuentra empleo, ofrece tus servicios o contrata personas de tu zona.</p>
 
-            <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}>
+            <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setSection('opportunities');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
               <Search />
               <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
               <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
               <button type='submit'>Buscar <ArrowRight /></button>
             </form>
             <nav className='tcQuickActions' aria-label='Qué necesitas hacer'>
-              <button onClick={()=>{setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}><Search aria-hidden='true'/><span>Buscar trabajo</span></button>
+              <button onClick={()=>navigateResults('opportunities')}><Search aria-hidden='true'/><span>Buscar trabajo</span></button>
               <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrezco mi trabajo u oficio</span></button>
               <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Necesito contratar</span></button>
               <button onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span>Promocionar mi negocio</span></button>
             </nav>
-            <div className='neoHeroMeta'>
-              <span><b>{loading || (loadError && !items.length) ? '…' : place === 'Todas' ? availableJobs : selectedStat.jobs}</b><small>{place === 'Todas' ? 'ofertas publicadas · total del radar' : `ofertas publicadas en ${place}`}</small></span>
-              <span><b>{loading ? '…' : recentJobs ?? '…'}</b><small>incorporadas en los últimos 7 días</small></span>
-              <span className={'neoLive ' + feedState}><i /> {feedState === 'fresh' ? 'Radar actualizado' : feedState === 'degraded_last_good' ? 'Actualización pendiente' : 'Buscando nuevas'}</span>
-            </div>
-          </div>
-
-          <div className='neoRadarCanvas neoPhotoHero neoHeroCompact neoHeroVisualReborn' aria-label='Radar territorial visual'>
-            <img className='neoHeroPhoto neoHeroPhotoMain' src='https://images.unsplash.com/photo-1772852340517-b11ec88979fc?auto=format&fit=crop&fm=webp&q=72&w=1200' alt='' loading='lazy' />
-            <div className='neoPhotoShade' />
-            <div className='neoMapMesh' />
-            <div className='neoRadarCore'><Radar /><span /></div>
-            <div className='neoOrbit neoOrbitOne' />
-            <div className='neoOrbit neoOrbitTwo' />
-            <div className='neoTown neoTownA'><MapPin /><span>Angol</span></div>
-            <div className='neoTown neoTownB'><MapPin /><span>Victoria</span></div>
-            <div className='neoTown neoTownC'><MapPin /><span>Nacimiento</span></div>
-
-            <div className='neoCanvasLabel'><span>AHORA EN EL RADAR</span><b>Fuentes locales + oportunidades verificadas</b><small>Imágenes referenciales</small></div>
           </div>
         </section>
 
-        {renderAdvertising('search')}
-
-        {place !== 'Todas' && <section className={'neoCitySnapshot ' + (isTravelView ? 'travel' : '')}>
-          <div><span>{isTravelView ? 'TAMBIÉN PUEDO VIAJAR' : 'TU CIUDAD'}</span><b>{place}</b></div>
-          <strong>{selectedStat.jobs} {selectedStat.jobs === 1 ? 'oferta publicada' : 'ofertas publicadas'}</strong>
-          {selectedStat.newJobs24h > 0 && <em><Sparkles /> {selectedStat.newJobs24h} {selectedStat.newJobs24h === 1 ? 'nueva' : 'nuevas'} en 24 h</em>}
-          {isTravelView && homePlace !== 'Todas' && <button onClick={() => chooseLocalPlace(homePlace)}>Volver a {homePlace}</button>}
-        </section>}
-
-        {!loading && !loadError && <section className='neoRecentArrivals' aria-label='Nuevas ofertas'>
-          <span className='neoRecentIcon'><Sparkles /></span>
-          <div><strong>{recentJobs===null ? 'Actualizando el recuento de novedades' : `${recentJobs} ${recentJobs===1 ? 'oferta incorporada' : 'ofertas incorporadas'} en los últimos 7 días`}</strong>
-            <p>Se suman al total del radar. Las anteriores siguen publicadas hasta su cierre o vencimiento confirmado.</p>
-            {inventoryCounts.recent24h!==null && <small>{inventoryCounts.recent24h} incorporadas en las últimas 24 horas{place!=='Todas' ? ` en ${place}` : ''}.</small>}
-          </div>
-          <button onClick={() => onlyNew ? setOnlyNew(false) : openFresh()}>{onlyNew ? 'Ver todas las ofertas' : 'Ver novedades'} <ArrowRight /></button>
-        </section>}
+        <section className='neoRecentArrivals tcActivityStrip' aria-label='Actividad del catálogo'>
+          <button onClick={()=>navigateResults('opportunities')}><b>{scopeCount??'…'}</b> ofertas disponibles{place!=='Todas'?' · '+place:''}</button>
+          <button onClick={()=>openFresh()}><b>{scopeRecent??'…'}</b> incorporadas en 7 días</button>
+          <button onClick={()=>navigateResults('people')}>Personas disponibles</button>
+          <button onClick={()=>navigateResults('needs')}>Necesitan gente</button>
+          <button onClick={()=>setShowActivity(true)}>Centro de novedades</button>
+          {!feedComplete&&<small role='status'>Cargando más resultados…</small>}
+        </section>
 
         {notice && <div className='neoNotice'><CheckCircle /><span>{notice}</span><button onClick={() => setNotice('')}><X /></button></div>}
 
-        <section className='neoDiscover' id='neo-jobs'>
+        <section className='neoDiscover' id='neo-jobs' tabIndex={-1} aria-labelledby='tc-results-title' aria-busy={loading||loadingMore}>
           <div className='neoDiscoverHead'>
-            <div><span className='neoKicker'>DESCUBRIR</span><h2>{section === 'opportunities' ? 'Oportunidades que importan.' : section === 'people' ? 'Personas listas para trabajar.' : section === 'needs' ? 'Equipos que necesitan gente.' : 'Servicios de la zona.'}</h2></div>
-            <div className='neoCount'><b>{loading ? '…' : visible.length}</b><span>{section === 'opportunities' && place === 'Todas' && !q && area === 'Todas' && !onlyNew ? `mostradas · ${availableJobs} disponibles` : 'resultados'}</span></div>
+            <div><h2 id='tc-results-title'>{resultsTitle}</h2><p className='tcResultStatus' role='status'>{visible.length} resultados{!feedComplete?' cargados · consulta incompleta':''}{loadingMore?' · Cargando más resultados…':''}</p></div>
+            <button className='tcClearFilters' onClick={()=>navigateResults('opportunities','Todas')}>Quitar filtros</button>
           </div>
 
           <div className='neoControlDeck'>
             <div className='neoTabs'>
-              <button className={section === 'opportunities' ? 'active' : ''} onClick={() => setSection('opportunities')}><Briefcase /> Empleos</button>
-              <button className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => setSection('people')}><UserRoundSearch /> Personas <b>{people}</b></button>
-              <button className={section === 'needs' ? 'active' : ''} onClick={() => setSection('needs')}><Users /> Necesitan gente</button>
-              <button className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => setSection('services')}><Wrench /> Servicios</button>
+              <button className={section === 'opportunities' ? 'active' : ''} onClick={() => navigateResults('opportunities')}><Briefcase /> Empleos</button>
+              <button className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch /> Personas <b>{people}</b></button>
+              <button className={section === 'needs' ? 'active' : ''} onClick={() => navigateResults('needs')}><Users /> Necesitan gente</button>
+              <button className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => navigateResults('services')}><Wrench /> Servicios</button>
             </div>
             <div className='neoFilters'>
               <label className='neoFilterSearch'><Search /><input value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' /></label>
               <label><MapPin /><span className='tcVisuallyHidden'>Comuna de resultados</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
               <label><Building2 /><span className='tcVisuallyHidden'>Área laboral</span><select value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
-              <button className={onlyNew ? 'active' : ''} onClick={() => setOnlyNew(value => !value)}><Sparkles /> Nuevas</button>
+              <button className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles /> Incorporadas en 7 días</button>
             </div>
           </div>
 
@@ -1399,23 +1389,22 @@ function App() {
               const own = Boolean(ownerTokens[item.id]);
               return (
                 <Fragment key={item.id}><article data-offer-id={item.id} className={'neoJobCard neoKind-' + item.kind + ' ' + (selected?.id === item.id ? 'isSelected' : '')} key={item.id}>
-                  <NeoArtwork item={item} />
+                  {originalPoster(item,window.location.href)&&<button className='tcPosterThumb' onClick={()=>setSelected(item)} aria-label={'Ver afiche de '+item.title}><img src={originalPoster(item,window.location.href)!} alt={'Afiche original de '+item.title} loading='lazy' referrerPolicy='no-referrer'/></button>}
                   <div className='neoJobBody'>
                     <div className='neoJobTop'>
                       <span className='neoJobPlace'><MapPin /> {item.workLocation}</span>
-                      <span className={'neoJobState ' + (item.review || item.revalidationDue ? 'pending' : item.verified ? 'verified' : 'direct')}>{item.review ? 'Por confirmar' : item.revalidationDue ? 'Por revalidar' : item.verified ? 'Verificada' : 'Directa'}</span>
+                      <span className={'neoJobState ' + (item.review || item.revalidationDue ? 'pending' : item.verified ? 'verified' : 'direct')}>{reviewLabel(item)}</span>
                     </div>
-                    <span className='neoJobArea'>{item.area}</span>
-                    {isFresh(item) && <span className='neoNewOfferBadge'><Sparkles /> NUEVA EN LA APP</span>}
+
+                    {isFresh(item)&&<span className='neoNewOfferBadge'>Incorporada recientemente</span>}{reading.known&&!reading.read[item.id]&&<span className='tcUnreadBadge'>No leída</span>}
                     <h3>{item.title}</h3>
-                    <p className='neoJobCompany'>{item.company}</p>
+                    {identifiedEmployer(item)&&<p className='neoJobCompany'>{identifiedEmployer(item)}</p>}
                     {item.salary && <strong className='neoSalary'>{item.salary}</strong>}
                     <div className='neoJobFacts'>
-                      <span><small>Zona</small><b>{item.recruitmentZones.join(' · ')}</b></span>
                       <span><small>Fuente</small><b>{item.source}</b></span>
                     </div>
                     <div className='neoJobFoot'>
-                      <span>{item.date}</span>
+                      <span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}{item.firstPublishedAt&&<small>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</small>}</span>
                       <button onClick={() => setSelected(item)}>Ver oportunidad <ArrowRight /></button>
                     </div>
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}
@@ -1432,35 +1421,12 @@ function App() {
           {nextCursor && !loadError && <div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando…' : 'Cargar más'} <ArrowRight /></button></div>}
         </section>
 
-        <div id='tc-other-cities'>
-        <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place}
-          onExplore={openTravel} onReturn={() => chooseLocalPlace(homePlace)} origin={homePlace} />
-        </div>
-
-        <LaborNewsSection />
-
-        <section className='neoRadarSection' id='neo-radar'>
-          <div className='neoRadarPanel'>
-            <span className='neoKicker'>RADAR TERRITORIAL · MOTOR 3 CONTROLADO</span>
-            <h2>Buscamos donde normalmente<br />tendrías que buscar tú.</h2>
-            <p>El foco está en las comunas objetivo: redes públicas, OMIL, radios, diarios comunales, páginas locales, empresas y portales. Las ciudades grandes quedan como movilidad complementaria y no contaminan tu búsqueda local.</p>
-            <div className='neoRadarStats'>
-              <span><b>{radarStatus?.searchEngines ?? 3}</b><small>motores</small></span>
-              <span><b>{people}</b><small>personas disponibles</small></span>
-              <span><b>{directNeeds}</b><small>necesitan gente</small></span>
-            </div>
-            <button onClick={() => void loadCoverage()}>{showCoverage ? 'Ocultar cobertura' : 'Ver cómo funciona el Radar'} <ArrowRight /></button>
-          </div>
-          <div className='neoRadarVisual'>
-            <div className='neoScanLine' />
-            <Radar />
-            <span className='neoPing p1' /><span className='neoPing p2' /><span className='neoPing p3' /><span className='neoPing p4' />
-          </div>
-          {showCoverage && radarStatus && <div className='neoCoverageGrid'><article><b>Diagnóstico en vivo</b><span>Datos de producción, no estimaciones</span><small>Los cron exitosos no implican nuevas ofertas.</small></article><article><b>{radarStatus.inventoryDiagnostics?.precargadas ?? '—'}</b><span>Ofertas precargadas verificadas (muestra)</span></article><article><b>{radarStatus.inventoryDiagnostics?.automaticas ?? '—'}</b><span>Ofertas no precargadas verificadas (muestra)</span></article><article><b>{radarStatus.inventoryDiagnostics?.socialPublicadas ?? '—'}</b><span>Ofertas visuales sociales publicadas (muestra)</span></article><article><b>{radarStatus.socialOverview?.pending ?? '—'}</b><span>Capturas sociales pendientes (muestra)</span></article><article><b>{radarStatus.socialOverview?.imagesRead ?? '—'}</b><span>Imágenes leídas por OCR (muestra)</span></article><article><b>{radarStatus.socialOverview?.jobNotices ?? '—'}</b><span>Afiches laborales detectados, no necesariamente publicados</span></article><article><b>Fuentes</b><span>{Object.entries(radarStatus.inventoryDiagnostics?.bySource ?? {}).sort((a,b)=>b[1]-a[1]).map(([name,n])=>name+': '+n).join(' · ') || 'Sin datos'}</span><small>{radarStatus.inventoryDiagnostics?.hasMore || radarStatus.socialOverview?.hasMore ? 'Muestra incompleta; cifras no representan el total.' : 'Registros incluidos en la consulta.'}</small></article></div>}
-          {showCoverage && <div className='neoCoverageGrid'>
-            {(radarStatus?.territoryCoverage ?? []).map(row => <article key={row.place}><b>{row.place}</b><span>{row.officialSources} oficiales · {row.communitySources} comunitarias</span><small>{row.gap}</small></article>)}
-          </div>}
-        </section>
+        {renderAdvertising('search')}
+        <TerritorialRadar stats={feedSummary.communeStats} ready={!loading&&!loadError} failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt} onSelect={town=>navigateResults('opportunities',town)}/>
+        <details className='tcSecondary' id='tc-other-cities'><summary>Buscar también en otras ciudades</summary>
+          <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>
+        </details>
+        <details className='tcSecondary' id='actualidad-laboral'><summary>Actualidad laboral, trámites y fuentes oficiales</summary><LaborNewsSection/></details>
 
         <footer className='neoFooter'>
           <div className='neoBrand'><span className='neoBrandMark'><MapPin /><Radar /></span><span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span></div>
@@ -1468,9 +1434,9 @@ function App() {
           <div><button onClick={() => setLegalView('privacy')}>Privacidad</button><button onClick={() => setLegalView('terms')}>Términos</button></div>
         </footer>
 
-        {!flow && !showAdvertiser && !showAlerts && !legalView && !selected && <nav className='neoMobileNav' aria-label='Navegación móvil'>
+        {!flow && !showAdvertiser && !showAlerts && !showActivity && !legalView && !selected && <nav className='neoMobileNav' aria-label='Navegación móvil'>
           <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><Sparkles aria-hidden='true'/><span>Inicio</span></button>
-          <button onClick={()=>{setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}><Search aria-hidden='true'/><span>Buscar</span></button>
+          <button onClick={()=>navigateResults('opportunities')}><Search aria-hidden='true'/><span>Buscar</span></button>
           <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrecerme</span></button>
           <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Contratar</span></button>
         </nav>}
@@ -1479,11 +1445,11 @@ function App() {
           <div className='neoDrawerBackdrop' role='presentation' onMouseDown={event => { if (event.target === event.currentTarget) setSelected(null); }}>
             <aside className='neoDrawer' role='dialog' aria-modal='true' aria-label={'Detalle de ' + selected.title}>
               <button className='neoDrawerClose' onClick={() => setSelected(null)} aria-label='Cerrar detalle'><X /></button>
-              <NeoArtwork item={selected} />
+              {originalPoster(selected,window.location.href)&&<a className='tcDetailPoster' href={originalPoster(selected,window.location.href)!} target='_blank' rel='noopener noreferrer'><img src={originalPoster(selected,window.location.href)!} alt={'Afiche original de '+selected.title} referrerPolicy='no-referrer'/>Abrir afiche completo</a>}
               <div className='neoDrawerScroll'>
                 <div className='neoDrawerHeader'>
                   <div className='neoDrawerBadges'>
-                    <span className={'neoJobState ' + (selected.review ? 'pending' : selected.verified ? 'verified' : 'direct')}>{selected.review ? 'Por confirmar' : selected.verified ? 'Verificada' : 'Directa'}</span>
+                    <span className={'neoJobState ' + (selected.review ? 'pending' : selected.verified ? 'verified' : 'direct')}>{reviewLabel(selected)}</span>
                     <span className='neoDrawerArea'>{selected.area}</span>
                   </div>
                   <h2>{selected.title}</h2>
@@ -1493,8 +1459,8 @@ function App() {
 
                 <div className='neoDrawerGrid'>
                   <div><MapPin /><span><small>LUGAR / LOCALIDAD</small><b>{selected.workLocation}</b></span></div>
-                  <div><Users /><span><small>ZONA</small><b>{selected.recruitmentZones.join(' · ')}</b></span></div>
-                  <div><Radio /><span><small>PUBLICADO</small><b>{selected.date}</b></span></div>
+                  {selected.recruitmentZones.length>0&&<div><Users /><span><small>ZONA</small><b>{selected.recruitmentZones.join(' · ')}</b></span></div>}
+                  <div><Radio /><span><small>PUBLICACIÓN ORIGINAL</small><b>{shortDate(selected.sourcePublishedAt)||selected.date||'No informada'}</b></span></div>{selected.firstPublishedAt&&<div><Radio/><span><small>INCORPORADA EN TRABAJO CERCA</small><b>{shortDate(selected.firstPublishedAt)}</b></span></div>}
                   <div><BadgeCheck /><span><small>FUENTE</small><b>{selected.source}</b></span></div>
                 </div>
 
@@ -1523,6 +1489,7 @@ function App() {
           </div>
         )}
 
+        {showActivity&&<ActivityCenter places={places} place={place} count={scopedRecent.length} unread={scopeUnread} known={reading.known} complete={feedComplete} failed={Boolean(loadError)} onPlace={chooseLocalPlace} onOpen={unread=>{setShowActivity(false);navigateResults('opportunities',place,true,unread);}} onRefresh={()=>void load(undefined,true)} onPush={()=>{setShowActivity(false);setShowAlerts(true);}} onClose={()=>setShowActivity(false)}/>}
         {showAlerts && <AlertsPanel defaultPlace={place === 'Todas' ? homePlace : place} onClose={() => setShowAlerts(false)} onSaved={message => { setNotice(message); setShowAlerts(false); }} />}
 
         {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. La promoción y su duración se confirmarán al aprobar el anuncio. Tu contacto no fue publicado.')} />}
@@ -1655,10 +1622,10 @@ function App() {
         </div>
 
         <div className='sectionTabs modernTabs'>
-          <button className={section === 'opportunities' ? 'active' : ''} onClick={() => setSection('opportunities')}><Briefcase /> Empleos</button>
-          <button className={section === 'people' ? 'active' : ''} onClick={() => setSection('people')}><UserRoundSearch /> Personas</button>
-          <button className={section === 'needs' ? 'active' : ''} onClick={() => setSection('needs')}><Users /> Necesitan gente</button>
-          <button className={section === 'services' ? 'active' : ''} onClick={() => setSection('services')}><Wrench /> Servicios</button>
+          <button className={section === 'opportunities' ? 'active' : ''} onClick={() => navigateResults('opportunities')}><Briefcase /> Empleos</button>
+          <button className={section === 'people' ? 'active' : ''} onClick={() => navigateResults('people')}><UserRoundSearch /> Personas</button>
+          <button className={section === 'needs' ? 'active' : ''} onClick={() => navigateResults('needs')}><Users /> Necesitan gente</button>
+          <button className={section === 'services' ? 'active' : ''} onClick={() => navigateResults('services')}><Wrench /> Servicios</button>
         </div>
 
         {section === 'opportunities' && <div className='sourceOverview' style={{padding:'14px',marginBottom:'14px',background:'var(--surface, #fff)',border:'1px solid #dce5dd',borderRadius:'14px'}}><b>Ofertas por fuente</b><p style={{fontSize:'12px',margin:'5px 0'}}>Distribución de avisos locales cargados. Los Ángeles y Temuco se consultan por separado. Si hay más páginas pendientes, las cifras son parciales.</p><div style={{display:'flex',flexWrap:'wrap',gap:'8px'}}>{sourceCounts.map(([source,count])=><span key={source} style={{padding:'7px 10px',borderRadius:'10px',background:'#eef3ef',fontSize:'12px'}}>{source}: <b>{count}</b></span>)}</div></div>}
@@ -1680,7 +1647,7 @@ function App() {
             </div>
           </div>
           <div className='freshFilterBar'>
-            <button className={onlyNew ? 'active' : ''} onClick={() => setOnlyNew(value => !value)}><Sparkles /> {onlyNew ? 'Solo novedades' : 'Ver solo novedades'}</button>
+            <button className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles /> {onlyNew ? 'Solo novedades' : 'Ver solo novedades'}</button>
             {onlyNew && <span>{recentJobs ?? '…'} incorporadas en 7 días</span>}
           </div>
         </div>
@@ -1781,7 +1748,7 @@ function App() {
         <button onClick={() => document.getElementById('novedades')?.scrollIntoView({behavior:'smooth'})}><Sparkles /><span>Novedades</span></button>
         <button className='publishNav' onClick={() => setFlow('trabajadores')}><PlusCircle /><span>Publicar</span></button>
         <button onClick={() => goRadar('people')}><UserRoundSearch /><span>Personas</span></button>
-        <button onClick={() => document.getElementById('radar')?.scrollIntoView({behavior:'smooth'})}><Search /><span>Buscar</span></button>
+        <button onClick={() => document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'})}><Search /><span>Buscar</span></button>
       </nav>
 
       {selected && (

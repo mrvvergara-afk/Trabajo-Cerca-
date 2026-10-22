@@ -23,9 +23,9 @@ export function useAdvertising(place:string,category:string,page='home') {
   const seen=useRef(readSession<Record<string,number>>('tc-house-seen',{}));
   useEffect(()=>{
     let active=true;
-    void api.get('/api/growth/advertising').then(r=>{if(active){setCatalog(r.data);setFailed(false);}}).catch(()=>{if(active)setFailed(true);});
+    void api.get('/api/growth/advertising?place='+encodeURIComponent(place)+'&turn='+turn).then(r=>{if(active){setCatalog(r.data);setFailed(false);}}).catch(()=>{if(active)setFailed(true);});
     return()=>{active=false;};
-  },[]);
+  },[place,turn]);
   useEffect(()=>{const changed=()=>setCompleted(completedHouseGoals());window.addEventListener('tc-house-completed',changed);return()=>window.removeEventListener('tc-house-completed',changed);},[]);
   // Reassess editorial dates each minute without additional SDK requests.
   const [now,setNow]=useState(Date.now);
@@ -53,7 +53,7 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
   if(!house)return null;
   return <aside ref={node} className='tcHouseAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD'>
     {house.creative.imageUrl&&<img src={house.creative.imageUrl} alt='' width='96' height='96' loading='lazy' decoding='async'/>}
-    <div><small>TRABAJO CERCA · CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{house.creative.title}</h3><p className='tcHouseDesktop'>{house.creative.message}</p><p className='tcHouseMobile'>{house.creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>30 días desde la aprobación del anuncio. Sin cobro ni renovación automática.</small>}</div>
+    <div><small>TRABAJO CERCA · CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{house.creative.title}</h3><p className='tcHouseDesktop'>{house.creative.message}</p><p className='tcHouseMobile'>{house.creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Duración según la promoción vigente y la revisión del negocio. Sin cobro ni renovación automática.</small>}</div>
     <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{house.creative.button} <span aria-hidden='true'>→</span></button>
   </aside>;
 }

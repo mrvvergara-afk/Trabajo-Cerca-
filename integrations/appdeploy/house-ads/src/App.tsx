@@ -1,3 +1,4 @@
+import {OwnedPublicationEditor} from './owned-publication-editor';
 import { HouseBanner, useAdvertising, sendHouseEvent, completeHouseGoal, type HouseAttribution } from './house-advertising';
 import type { Goal, Slot } from '../shared/house-ads';
 import { Fragment, type FormEvent, useEffect, useMemo, useRef, useState } from 'react';
@@ -369,8 +370,8 @@ function FormPanel({
         <form onSubmit={event => { event.preventDefault(); setPreview(true); }}>
           {flow === 'ofrezco' && (
             <>
-              <label>Nombre o nombre abreviado
-                <input required value={data.name} onChange={e => set('name', e.target.value)} placeholder='Ej. Juan M.' />
+              <label>Nombre o nombre abreviado (opcional)
+                <input value={data.name} onChange={e => set('name', e.target.value)} placeholder='Ej. Juan M.' />
               </label>
               <label>¿Qué trabajo u oficio ofreces?
                 <input required value={data.title} onChange={e => set('title', e.target.value)} placeholder='Ej. Tractorista, jornalero, carpintero…' />
@@ -480,6 +481,7 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
   const [sending, setSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [consent, setConsent] = useState(false);
+  const [advertisingConsent,setAdvertisingConsent]=useState(false);
   const [website, setWebsite] = useState('');
   const [data, setData] = useState({
     businessName:'',
@@ -489,6 +491,8 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
     contact:'',
     note:'',
   });
+  const [promotion,setPromotion]=useState<{days:number;kind:string;remaining:number;message:string;conditions:string}|null>(null);
+  useEffect(()=>{let alive=true;void api.get('/api/growth/promotion').then(r=>{if(alive)setPromotion(r.data);}).catch(()=>{});return()=>{alive=false;};},[]);
   const started=useRef(false);
   const set = (key:string, value:string) => {
     if(attribution&&!started.current){started.current=true;sendHouseEvent(attribution,'form_started');}
@@ -499,7 +503,7 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
     setSending(true);
     setErrorMessage('');
     try {
-      const response=await api.post('/api/growth/advertiser-leads', { ...data, consent, website, clientToken:analyticsId(), houseAttribution:attribution });
+      const response=await api.post('/api/growth/advertiser-leads', { ...data, consent, advertisingConsent, website, clientToken:analyticsId(), houseAttribution:attribution });
       if (!response.data.id && !response.data.duplicate) throw new Error('La solicitud no fue confirmada.');
       completeHouseGoal('advertiser');
       track('tc_advertiser_interest_submitted', { commune:data.commune, category:data.category, presence:data.presence });
@@ -516,8 +520,9 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
       <div className='panel advertiserPanel'>
         <button className='close' onClick={onClose} aria-label='Cerrar'><X /></button>
         <span className='lab'>TRABAJO CERCA · COMERCIO LOCAL</span>
-        <h2>Solicita tus 30 días de publicidad gratis</h2>
-        <p><b>30 días desde la aprobación de tu anuncio.</b> Revisaremos tu solicitud antes de activarla. No necesitas página web: puede ser Facebook, Instagram, WhatsApp o un contacto comercial. No existe renovación automática ni se realizará ningún cobro sin informarte antes.</p>
+        <h2>Promociona tu negocio en Trabajo Cerca</h2>
+        <p><b>{promotion ? promotion.days ? `${promotion.days} días gratuitos desde la aprobación · ${promotion.kind==='founder'?'Fundadores':'Prueba estándar'}` : promotion.message : 'Consultando la promoción vigente…'}</b> Revisaremos tu solicitud antes de activarla. No necesitas página web: puede ser Facebook, Instagram, WhatsApp o un contacto comercial. No existe renovación automática ni se realizará ningún cobro sin informarte antes.</p>
+        {promotion&&<p>{promotion.conditions}{promotion.kind==='founder'&&` Cupos disponibles: ${promotion.remaining}. La disponibilidad se comprueba al aprobar.`}</p>}
         <form onSubmit={submit}>
           <label>Nombre del negocio
             <input required value={data.businessName} onChange={e => set('businessName', e.target.value)} placeholder='Ej. Ferretería El Roble' />
@@ -527,7 +532,7 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
           </label>
           <label>Rubro
             <select value={data.category} onChange={e => set('category', e.target.value)}>
-              <option>Comercio local</option><option>Ferretería / herramientas</option><option>Alimentación</option><option>Transporte</option><option>Servicios técnicos</option><option>EPP / seguridad</option><option>Capacitación</option><option>Otro</option>
+              <option>Alojamiento y hosterías</option><option>Servicios agrícolas</option><option>Comercio local</option><option>Ferretería / herramientas</option><option>Alimentación</option><option>Transporte</option><option>Servicios técnicos</option><option>EPP / seguridad</option><option>Capacitación</option><option>Otro</option>
             </select>
           </label>
           <label>Presencia principal
@@ -540,6 +545,7 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
             <textarea value={data.note} onChange={e => set('note', e.target.value)} placeholder='Ej. aparecer en Angol por un mes / destacar ofertas de trabajo…' />
           </label>
           <label className='hp' aria-hidden='true'>Sitio<input tabIndex={-1} autoComplete='off' value={website} onChange={e => setWebsite(e.target.value)} /></label>
+          <label className='consentRow'><input type='checkbox' required checked={advertisingConsent} onChange={e=>setAdvertisingConsent(e.target.checked)}/><span>Autorizo la publicidad del negocio que represento, sujeta a revisión. El contacto de esta solicitud permanece privado; no acepto cobros.</span></label>
           <label className='consentRow'><input type='checkbox' required checked={consent} onChange={e => setConsent(e.target.checked)} /><span>Autorizo a Trabajo Cerca a usar estos datos únicamente para responder esta solicitud comercial. Mi contacto no se publicará por enviar este formulario.</span></label>
           {errorMessage && <div className='formError'><AlertCircle /> {errorMessage}</div>}
           <button className='primary' disabled={sending}><Megaphone size={17} /> {sending ? 'Enviando…' : 'Solicitar espacio gratuito'}</button>
@@ -1283,7 +1289,7 @@ function App() {
             <button onClick={() => document.getElementById('neo-radar')?.scrollIntoView({ behavior:'smooth' })}>Radar</button>
             <button onClick={() => document.getElementById('actualidad-laboral')?.scrollIntoView({ behavior:'smooth' })}>Actualidad</button>
           </nav>
-          <SiteMenu onAlerts={()=>setShowAlerts(true)} onInstall={()=>void installApp()}
+          <SiteMenu onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowAlerts(true)} onInstall={()=>void installApp()}
             onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
             onCities={()=>document.getElementById('tc-other-cities')?.scrollIntoView({behavior:'smooth'})}
             onNews={()=>document.getElementById('actualidad-laboral')?.scrollIntoView({behavior:'smooth'})}
@@ -1294,8 +1300,8 @@ function App() {
           <div className='neoHeroGlow neoGlowA' />
           <div className='neoHeroGlow neoGlowB' />
           <div className='neoHeroCopy'>
-            <h1>Trabajo y oficios<br /><em>cerca de ti.</em></h1>
-            <p className='neoHeroLead'>Encuentra trabajo en tu zona o haz visible tu oficio.</p>
+            <h1>Trabajo, servicios y oportunidades<br /><em>cerca de ti.</em></h1>
+            <p className='neoHeroLead'>Encuentra empleo, ofrece tus servicios, contrata personas y promociona tu negocio. Fácil, cercano y pensado para nuestras comunas.</p>
 
             <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}>
               <Search />
@@ -1307,6 +1313,7 @@ function App() {
               <button onClick={()=>{setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}><Search aria-hidden='true'/><span>Buscar trabajo</span></button>
               <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrezco mi trabajo u oficio</span></button>
               <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Necesito contratar</span></button>
+              <button onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span>Promocionar mi negocio</span></button>
             </nav>
             <div className='neoHeroMeta'>
               <span><b>{loading || (loadError && !items.length) ? '…' : place === 'Todas' ? availableJobs : selectedStat.jobs}</b><small>{place === 'Todas' ? 'ofertas publicadas · total del radar' : `ofertas publicadas en ${place}`}</small></span>
@@ -1494,6 +1501,7 @@ function App() {
                   </div>}
                   {!selected.url && !selected.contact && !selected.hasContact && <span className='neoDrawerPending'>Este aviso aún no tiene un canal útil de contacto confirmado.</span>}
                   <button className='neoDrawerSecondary' onClick={() => void shareListing(selected)}><Share2 /> Compartir oportunidad</button>
+                  {ownerTokens[selected.id]&&selected.origin==='direct'&&<OwnedPublicationEditor key={selected.id} item={selected} ownerToken={ownerTokens[selected.id]} onSaved={()=>{setSelected(null);setNotice('Publicación actualizada gratuitamente.');void load(undefined,true);}}/>}
                   {ownerTokens[selected.id] && <button className='neoDrawerDanger' onClick={() => void deleteOwn(selected)}>Eliminar mi publicación y datos</button>}
                 </div>
               </div>
@@ -1503,7 +1511,7 @@ function App() {
 
         {showAlerts && <AlertsPanel defaultPlace={place === 'Todas' ? homePlace : place} onClose={() => setShowAlerts(false)} onSaved={message => { setNotice(message); setShowAlerts(false); }} />}
 
-        {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. Los 30 días gratuitos comienzan al aprobarse el anuncio. Tu contacto no fue publicado.')} />}
+        {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. La promoción y su duración se confirmarán al aprobar el anuncio. Tu contacto no fue publicado.')} />}
 
         {legalView && <div className='modal legalModal' role='dialog' aria-modal='true' aria-labelledby='legal-dialog-title' tabIndex={-1}> 
           <div className='panel legalPanel'>
@@ -1800,7 +1808,7 @@ function App() {
         </div>
       )}
 
-      {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. Los 30 días gratuitos comienzan al aprobarse el anuncio. Tu contacto no fue publicado.')} />}
+      {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. La promoción y su duración se confirmarán al aprobar el anuncio. Tu contacto no fue publicado.')} />}
 
       {legalView && <div className='modal legalModal' role='dialog' aria-modal='true' aria-labelledby='legal-dialog-title' tabIndex={-1}>
         <div className='panel legalPanel'>

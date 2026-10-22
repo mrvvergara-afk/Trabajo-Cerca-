@@ -13,7 +13,7 @@ try{
   const banner=page.locator('[data-ad-type="HOUSE_AD"]');await banner.first().waitFor();assert.equal(await banner.count(),1);
   await page.getByRole('button',{name:'Publicar mis servicios',exact:true}).first().click();
   await page.getByRole('heading',{name:'Ofrezco mi trabajo',exact:true}).waitFor();
-  await page.getByLabel('Nombre o nombre abreviado',{exact:true}).fill('Fixture profesional');
+  await page.getByLabel('Nombre o nombre abreviado (opcional)',{exact:true}).fill('Fixture profesional');
   await page.getByRole('button',{name:'Cerrar',exact:true}).last().click();
   assert.equal(await page.getByRole('heading',{name:'Ofrezco mi trabajo',exact:true}).count(),0);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
@@ -32,8 +32,8 @@ try{
  await page.addInitScript(()=>{sessionStorage.setItem('tc-house-turn','0');});
  await page.goto('http://127.0.0.1:4174/',{waitUntil:'networkidle'});
  await page.getByRole('button',{name:'Publicitar mi negocio',exact:true}).first().click();
- await page.getByRole('heading',{name:'Solicita tus 30 días de publicidad gratis',exact:true}).waitFor();
- assert((await page.locator('.advertiserPanel').innerText()).includes('desde la aprobación'));results.push({advertiserFormReal:true,trialNotFalselyActivated:true});await context.close();
+ await page.getByRole('heading',{name:'Promociona tu negocio en Trabajo Cerca',exact:true}).waitFor();
+ assert((await page.locator('.advertiserPanel').innerText()).includes('No existe renovación automática'));results.push({advertiserFormReal:true,trialNotFalselyActivated:true});await context.close();
  const paid=await browser.newContext({viewport:{width:1440,height:1000}});const pp=await paid.newPage();
  await pp.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
  await pp.addInitScript(()=>{window.houseFixture='paid';});await pp.goto('http://127.0.0.1:4174/?place=Angol',{waitUntil:'networkidle'});

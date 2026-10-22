@@ -1,4 +1,5 @@
-import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial } from './house-marketing';
+import {ownedPublicationPatch} from '../shared/owned-publication';
+import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, commercialAdmin, commercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { adminBackupPage } from './admin-backup';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
@@ -2769,7 +2770,7 @@ const consumeReviewedExchange=reviewedReceiver({
 const ADMIN_EMAILS = ['mrvvergara@gmail.com'];
 
 export const handler = router({
-  'GET /api/growth/advertising': [async () => json(await advertisingCatalog())],
+  'GET /api/growth/advertising': [async ({query}) => json(await advertisingCatalog(query))],
   'POST /api/growth/house-events': [publicQuota('house-events',60,60000,600), houseClientEvent],
   'GET /api/admin/marketing/house': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), houseDashboard],
   'PUT /api/admin/marketing/house': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), saveHouseConfiguration],
@@ -2869,7 +2870,7 @@ export const handler = router({
       db.list<SourceAudit>('source_audits', { limit:100 }),
       db.list<AdvertiserLead>('growth_advertiser_leads', { limit:100 }),
       db.list<SocialDraft>('growth_social_queue', { limit:100 }),
-      db.list<GrowthCampaign>('growth_campaigns', { limit:100 }),
+      commercialInventory(),
     ]);
     const now = Date.now();
     const activeRadar = radarJobs.items.filter(item => isCurrentlyActive(item));
@@ -2881,7 +2882,7 @@ export const handler = router({
     }
     const latestAudits = [...latestAuditBySource.values()];
     const lastSweep = latestAudits.map(item => item.checkedAt).sort().at(-1);
-    const activeCampaigns = campaigns.items.filter(item => item.status === 'active' && Date.parse(item.startAt) <= now && now <= Date.parse(item.endAt));
+    const activeCampaigns = campaigns.filter(item => item.status === 'active' && Date.parse(item.startAt) <= now && now <= Date.parse(item.endAt));
     const payload = {
       updatedAt:new Date().toISOString(),
       jobs:{
@@ -2908,25 +2909,17 @@ export const handler = router({
     return cacheable(payload, 30);
   }],
 
-  'GET /api/growth/sponsor': [async ({ query }) => {
-    const requested = normalizeText(query.place || 'Todas');
-    const place = MARKET_PLACES.includes(requested) ? requested : 'Todas';
-    const campaigns = await db.list<GrowthCampaign>('growth_campaigns', { limit:50 });
-    const now = Date.now();
-    const active = campaigns.items
-      .filter(item => item.status === 'active')
-      .filter(item => Date.parse(item.startAt) <= now && now <= Date.parse(item.endAt));
-    const nearby = new Set(NEARBY[place] ?? []);
-    const scored = active.map(item => {
-      const exact = place !== 'Todas' && item.communes.includes(place);
-      const close = place !== 'Todas' && item.communes.some(commune => nearby.has(commune));
-      const regional = item.communes.includes('Todas');
-      const score = exact ? 3 : close ? 2 : regional ? 1 : 0;
-      return { item, score, scope:exact ? 'exact' : close ? 'nearby' : regional ? 'regional' : 'none' };
-    }).filter(entry => entry.scope === 'exact' || entry.scope === 'regional')
-      .sort((a,b) => b.score - a.score || b.item.priority - a.item.priority || Date.parse(b.item.createdAt) - Date.parse(a.item.createdAt));
-    const chosen = scored[0];
-    return cacheable({ sponsor:chosen ? { ...chosen.item, id:chosen.item.id, scope:chosen.scope } : null, place }, 180);
+  'POST /api/growth/commercial-events': [publicQuota('commercial-events',60,60000,600), commercialClientEvent],
+  'GET /api/admin/marketing/commercial-metrics': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialMetrics],
+  'GET /api/growth/promotion': [async () => json(await publicPromotion())],
+  'GET /api/admin/marketing/commercial': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialAdmin],
+  'PUT /api/admin/marketing/commercial': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialAdmin],
+  'GET /api/admin/marketing/campaigns': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialCampaigns],
+  'PUT /api/admin/marketing/campaigns': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialCampaigns],
+  'GET /api/growth/sponsor': [async ({query}) => {
+    const catalog=await advertisingCatalog(query);
+    const chosen=catalog.commercial.find(ad=>ad.placements?.includes('search'));
+    return json({sponsor:chosen?{...chosen,scope:chosen.communes.includes(query.place)?'exact':'regional'}:null,place:query.place||'Todas'});
   }],
 
   'POST /api/growth/advertiser-leads': [publicQuota('advertiser',3,3600000,30), async ({ body }) => {
@@ -2944,17 +2937,23 @@ export const handler = router({
     const consent = input.consent === true;
     if (!businessName || !commune || !category || !contact) return error('Completa negocio, comuna, rubro y contacto.', 400);
     if (!MARKET_PLACES.includes(commune)) return error('Selecciona una comuna de Trabajo Cerca.', 400);
+    if(input.advertisingConsent!==true)return error('Autoriza la publicidad del negocio que representas, sin cobros.',400);
     if (!consent) return error('Debes aceptar el aviso de privacidad para solicitar información comercial.', 400);
     if (!moderate([businessName, category, contact, note].join(' '))) return error('La solicitud requiere revisión.', 400);
-    const recent = await db.list<AdvertiserLead>('growth_advertiser_leads', { limit:100 });
-    const duplicate = recent.items.some(item => item.contact.toLocaleLowerCase('es-CL') === contact.toLocaleLowerCase('es-CL') && Date.now() - Date.parse(item.createdAt) < 86400000);
+    let duplicate=false; let leadCursor:string|undefined; const leadTokens=new Set<string>();
+    for(let page=0;page<200;page++){
+      const recent=await db.list<AdvertiserLead>('growth_advertiser_leads',{limit:100,...(leadCursor?{nextToken:leadCursor}:{})});
+      duplicate=recent.items.some(item=>item.contact.toLocaleLowerCase('es-CL')===contact.toLocaleLowerCase('es-CL')&&Date.now()-Date.parse(item.createdAt)<86400000);
+      leadCursor=recent.nextToken;if(duplicate||!leadCursor)break;
+      if(leadTokens.has(leadCursor)||page===199)return error('No se completó la comprobación comercial. Reintenta más tarde.',503);leadTokens.add(leadCursor);
+    }
     if (duplicate) return json({ received:true, duplicate:true }, 202);
     const record: AdvertiserLead = { businessName, commune, category, presence, contact, note, source:'self_service', status:'new', createdAt:new Date().toISOString() };
-    const [id] = await db.add('growth_advertiser_leads', [{...record, trialState:'pending_review', houseAttribution:input.houseAttribution && typeof input.houseAttribution === 'object' ? {campaignId:String((input.houseAttribution as Record<string,unknown>).campaignId||'').slice(0,60),creativeId:String((input.houseAttribution as Record<string,unknown>).creativeId||'').slice(0,60)} : null}]);
+    const [id] = await db.add('growth_advertiser_leads', [{...record, advertisingConsent:true, consentAcceptedAt:new Date().toISOString(), trialState:'pending_review', houseAttribution:input.houseAttribution && typeof input.houseAttribution === 'object' ? {campaignId:String((input.houseAttribution as Record<string,unknown>).campaignId||'').slice(0,60),creativeId:String((input.houseAttribution as Record<string,unknown>).creativeId||'').slice(0,60)} : null}]);
     if (!id) return error('No se pudo registrar tu interés.', 500);
     await houseConversion(input.houseAttribution,'advertiser_captured',id);
     await houseConversion(input.houseAttribution,'registration_completed',id);
-    return json({ received:true, id, trialState:'pending_review', trialDays:30 }, 201);
+    return json({ received:true, id, trialState:'pending_review', promotion:await publicPromotion() }, 201);
   }],
 
   'GET /api/radar/run-territorial-now': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
@@ -3184,6 +3183,18 @@ export const handler = router({
     if (!ok) return error('No se pudo cerrar la publicación.', 500);
     await rebuildPublicFeed();
     return json({ closed: true });
+  }],
+
+  'POST /api/listings/:id/manage': [publicQuota('owner-manage',5,600000,50), async ({params,body})=>{
+    const input=(body??{}) as Record<string,unknown>;
+    const [record]=await db.get<ListingRecord>('community_posts',[params.id],{consistent:true});
+    if(!record)return error('Publicación no encontrada.',404);
+    let patch:ReturnType<typeof ownedPublicationPatch>;
+    try{patch=ownedPublicationPatch(record,input);}catch{return error('No se autorizaron los cambios o faltan datos válidos.',403);}
+    if(!moderate([patch.title,patch.note,patch.contact].join(' ')))return error('Los cambios requieren revisión.',400);
+    const [ok]=await trackedFeedUpdate('community_posts',[{id:params.id,record:{...record,...patch,workCommunes:extractCommunes(patch.workLocation)}}]);
+    if(!ok)return error('No se pudo guardar la publicación.',500);
+    await rebuildPublicFeed();return json({updated:true,id:params.id});
   }],
 
   'POST /api/listings/:id/delete': [publicQuota('delete',5,600000,50), async ({ params, body }) => {

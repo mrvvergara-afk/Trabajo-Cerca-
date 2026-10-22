@@ -5,26 +5,10 @@ import vm from 'node:vm';
 import {stripTypeScriptTypes} from 'node:module';
 import {createHash,randomUUID} from 'node:crypto';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const shared=await import('data:text/javascript;base64,'+Buffer.from(stripTypeScriptTypes(read('shared/house-ads.ts'))).toString('base64'));
-function setup(){
- let tables=new Map();const writes=[];let fail=false;
- const table=(t,map=tables)=>{if(!map.has(t))map.set(t,new Map());return map.get(t);};
- const operation=(kind,t,rows,options={})=>({kind,t,rows,options,then(resolve,reject){try{resolve(apply(this,tables));}catch(e){reject(e);}}});
- const conflict=()=>Object.assign(Error('conflict'),{code:'AppDatabaseConditionFailed'});
- function apply(op,map){writes.push(op.kind);const dest=table(op.t,map);return op.rows.map(row=>{
-   if(op.kind==='add'){if(dest.has(row.id))return null;dest.set(row.id,structuredClone(row));return row.id;}
-   const old=dest.get(row.id);if(!old||Object.entries(row.if||{}).some(([k,v])=>old[k]!==v))return false;
-   const patch=Object.fromEntries(Object.entries(row.record).map(([k,v])=>[k,v&&typeof v==='object'&&'inc'in v?(old[k]||0)+v.inc:v]));dest.set(row.id,{...old,...patch});return true;
- });}
- const db={get:async(t,ids)=>ids.map(id=>structuredClone(table(t).get(id)||null)),list:async(t)=>({items:[...table(t).values()].map(structuredClone)}),tx:{add:(t,rows)=>operation('add',t,rows),update:(t,rows,options)=>operation('update',t,rows,options)},transact:async ops=>{if(fail)throw conflict();const copy=structuredClone(tables);for(const op of ops){const r=apply(op,copy);if(r.some(v=>v===null||v===false))throw conflict();}tables=copy;}};
- const json=(value,statusCode=200)=>({statusCode,headers:{},body:JSON.stringify(value)});const storage={url:async paths=>paths.map(path=>({path,url:'https://example.org/signed'})),write:async()=>[true]};
- const source=stripTypeScriptTypes(read('backend/house-marketing.ts')).replace(/^import .*;$/gm,'').replace(/^export /gm,'');
- const exports=vm.runInNewContext('(function(){'+source+';return {houseConfiguration,saveHouseConfiguration,advertisingCatalog,houseClientEvent,recordHouseEvent,houseDashboard,activateFreeTrial,uploadHouseCreative};})()',{db,storage,json,error:(message,statusCode)=>json({error:message},statusCode),increment:n=>({inc:n}),isAppDatabaseError:e=>!!e?.code,createHash,randomUUID,Buffer,URL,console,...shared});
- return {...exports,table:(t)=>table(t),setFail:v=>{fail=v;},writes};
-}
+import {setup,shared,launch,lead} from './marketing-harness.mjs';
 const attrib={campaignId:'house-professionals',creativeId:'a'};
-test('zero advertisers returns four defaults without seeding commercial records or writing data',async()=>{
- const b=setup();const r=await b.advertisingCatalog();assert.equal(r.complete,true);assert.equal(r.house.length,4);assert.equal(r.commercial.length,0);assert.equal(b.writes.length,0);
+test('zero advertisers returns six defaults without seeding commercial records or writing data',async()=>{
+ const b=setup();const r=await b.advertisingCatalog();assert.equal(r.complete,true);assert.equal(r.house.length,6);assert.equal(r.commercial.length,0);assert.equal(b.writes.length,0);
 });
 test('configuration persists pause/creative changes and rejects stale revision',async()=>{
  const b=setup();const campaigns=structuredClone(shared.HOUSE_DEFAULTS);campaigns[0].status='paused';
@@ -42,7 +26,7 @@ test('failed atomic event cannot increment counters without a receipt',async()=>
  const b=setup();b.setFail(true);await assert.rejects(b.recordHouseEvent(attrib,'click','event-fail'));assert.equal([...b.table('growth_house_metrics').values()][0].click,0);assert.equal(b.table('growth_house_events').size,0);
 });
 test('trial approval activates exactly 30 days, stays free and never renews on replay',async()=>{
- const b=setup();b.table('growth_advertiser_leads').set('lead',{id:'lead',businessName:'Fixture empresa',category:'Comercio',commune:'Angol',houseAttribution:attrib});
+ const b=setup();await launch(b);b.table('growth_advertiser_leads').set('lead',{id:'lead',businessName:'Fixture empresa',category:'Comercio',commune:'Angol',advertisingConsent:true,houseAttribution:attrib});
  const ctx={body:{leadId:'lead',headline:'Contenido revisado',detail:'Anuncio de fixture',url:'https://example.org'}};
  const first=JSON.parse((await b.activateFreeTrial(ctx)).body);const second=JSON.parse((await b.activateFreeTrial(ctx)).body);
  assert.equal(Date.parse(first.endAt)-Date.parse(first.startAt),30*86400000);assert.equal(first.id,second.id);assert.equal(first.endAt,second.endAt);assert.equal(second.duplicate,true);

@@ -1,3 +1,4 @@
+import {CommercialControls} from './commercial-admin';
 import { useEffect, useState } from 'react';
 import { api } from '@appdeploy/client';
 import { HOUSE_DEFAULTS, type HouseCampaign, type Creative } from '../shared/house-ads';
@@ -53,10 +54,10 @@ export function HouseCampaignAdmin() {
     <h3>Rendimiento de campañas propias</h3><p>Reportes del navegador y efectos confirmados por el servidor. No son impresiones facturables. Comparación descriptiva de variantes; no acredita significancia estadística. PostHog permanece deshabilitado.</p>
     <div className='tcHouseTable'><table><thead><tr><th>Fecha / campaña / variante</th><th>Impresiones</th><th>Clics / CTR</th><th>Formularios iniciados / guardados</th><th>Perfiles / empleadores</th><th>Anunciantes / pruebas</th></tr></thead><tbody>{stats.map(r=><tr key={r.id}><td>{r.day} · {r.campaignId} · {r.creativeId}</td><td>{r.impression||0}</td><td>{r.click||0} / {r.impression?((r.click||0)/r.impression*100).toFixed(1):'0'}%</td><td>{r.form_started||0} / {r.registration_completed||0}</td><td>{r.profile_published||0} / {r.employer_added||0}</td><td>{r.advertiser_captured||0} / {r.trial_activated||0}</td></tr>)}</tbody></table></div>
     {!stats.length&&<p>Todavía no hay eventos registrados. No se generan métricas de ejemplo.</p>}{cursor&&<button disabled={busy} onClick={()=>void moreStats()}>Cargar más métricas</button>}
-    <h3>Pruebas comerciales gratuitas</h3><p>Revisa el texto público antes de activar. La prueba dura 30 días desde la aprobación, sin renovación ni cobro automático.</p>
+    <CommercialControls/><h3>Pruebas comerciales gratuitas</h3><p>Revisa el texto público antes de activar. La duración se obtiene de la promoción central al aprobar cada negocio. Sin renovación ni cobro automático.</p>
     <button disabled={busy} onClick={()=>void loadTrials()}>Consultar solicitudes reales</button>
     {applications.map(a=><p key={a.id}>{a.businessName} · {a.commune} · {a.trialState==='active'?'Activada':<button disabled={busy} onClick={()=>setTrial({leadId:a.id,headline:'',detail:'',url:''})}>Revisar solicitud</button>}</p>)}
     {trialCursor&&<button disabled={busy} onClick={()=>void loadTrials(true)}>Cargar más solicitudes</button>}
-    {trial.leadId&&<fieldset disabled={busy}><legend>Preparar anuncio revisado</legend><label>Título público<input maxLength={120} value={trial.headline} onChange={e=>setTrial({...trial,headline:e.target.value})}/></label><label>Descripción pública<textarea maxLength={300} value={trial.detail} onChange={e=>setTrial({...trial,detail:e.target.value})}/></label><label>Enlace HTTPS opcional<input type='url' value={trial.url} onChange={e=>setTrial({...trial,url:e.target.value})}/></label><button onClick={()=>void activate()}>Aprobar y activar 30 días gratis</button></fieldset>}
+    {trial.leadId&&<fieldset disabled={busy}><legend>Preparar anuncio revisado</legend><label>Título público<input maxLength={120} value={trial.headline} onChange={e=>setTrial({...trial,headline:e.target.value})}/></label><label>Descripción pública<textarea maxLength={300} value={trial.detail} onChange={e=>setTrial({...trial,detail:e.target.value})}/></label><label>Enlace HTTPS opcional<input type='url' value={trial.url} onChange={e=>setTrial({...trial,url:e.target.value})}/></label><button onClick={()=>void activate()}>Aprobar y activar promoción gratuita</button></fieldset>}
   </section>;
 }

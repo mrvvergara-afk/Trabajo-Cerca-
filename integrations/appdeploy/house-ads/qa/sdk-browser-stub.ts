@@ -1,3 +1,4 @@
+import {COMMERCIAL_DEFAULTS,promotionOffer} from '../shared/commercial-policy';
 import { HOUSE_DEFAULTS } from '../shared/house-ads';
 const state=window as unknown as {houseFixture?:string;houseCalls?:Array<{method:string;path:string;body:unknown}>;houseConfig?:unknown;houseRows?:unknown[];houseTrials?:unknown[]};
 state.houseCalls=[];
@@ -9,6 +10,9 @@ export const image={resizeIfNeeded:async()=>({data:'fixture',mimeType:'image/png
 const commercial=(id:string,communes:string[],placements=['search'])=>({id,communes,businessName:'Empresa ficticia solo en pruebas',headline:'Anuncio de prueba',detail:'Nunca se publica este fixture',category:'Comercio local',status:'active',priority:10,startAt:'2000-01-01T00:00:00Z',endAt:'2099-01-01T00:00:00Z',placements,adType:'COMMERCIAL_PAID',url:'https://example.org'});
 async function call(method:string,path:string,body?:Record<string,unknown>){
  state.houseCalls!.push({method,path,body});
+ if(path.startsWith('/api/growth/promotion'))return {data:promotionOffer(COMMERCIAL_DEFAULTS)};
+ if(path.startsWith('/api/admin/marketing/commercial-metrics'))return {data:{items:[],nextToken:null}};
+ if(path.startsWith('/api/admin/marketing/commercial'))return {data:COMMERCIAL_DEFAULTS};
  if(path.startsWith('/api/growth/advertising'))return {data:{complete:true,house:config.campaigns,commercial:state.houseFixture==='paid'?[commercial('paid-angol',['Angol'])]:[]}};
  if(path.startsWith('/api/growth/house-events'))return {data:{received:true,type:'HOUSE_AD',billing:false}};
  if(path.startsWith('/api/listings')&&method==='GET'){

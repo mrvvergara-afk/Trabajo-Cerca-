@@ -18,7 +18,7 @@
 .neoShell .neoHero h1{font-size:clamp(40px,5.5vw,72px);line-height:1.02;margin:16px 0;letter-spacing:-.045em}
 .neoShell .neoHeroLead{font-size:16px;line-height:1.55;max-width:55ch}
 .neoShell .neoRadarCanvas{min-height:300px;max-height:340px}
-.tcQuickActions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.tcQuickActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
 .tcQuickActions button{display:flex;align-items:center;gap:9px;min-height:58px;padding:12px;border:1px solid #cbd9cf;border-radius:12px;background:#fff;color:#06231c;font:inherit;font-size:14px;line-height:1.35;text-align:left;cursor:pointer}
 .tcQuickActions button svg{width:20px;height:20px;flex-shrink:0}
 .tcQuickActions button:nth-child(2){background:#e9f6df;border-color:#aed27f;font-weight:750}
@@ -86,3 +86,5 @@
   .neoShell .neoHero h1{font-size:clamp(34px,9vw,44px)}
   .neoShell>.tcHouseAd,.neoShell>.tcLocalAdvertising{padding:16px}
 }
+
+.tcOwnedEditor form{display:grid;gap:12px;padding:14px 0}.tcOwnedEditor label{display:grid;gap:6px}.tcOwnedEditor input:not([type=checkbox]),.tcOwnedEditor textarea,.tcOwnedEditor select{box-sizing:border-box;width:100%;max-width:100%;padding:10px;border:1px solid #bdcdc4;border-radius:8px}.tcOwnedEditor button{min-height:44px}

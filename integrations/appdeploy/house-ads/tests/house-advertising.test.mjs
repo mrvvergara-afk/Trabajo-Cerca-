@@ -8,11 +8,11 @@ const now=Date.parse('2026-10-22T12:00:00Z');
 const base={house:HOUSE_DEFAULTS,commercial:[],complete:true,place:'Angol',category:'Todas',page:'home',now,turn:0,seen:{},completed:[],slots:['search','listing']};
 const ad=(id,extra={})=>({id,businessName:'Fixture únicamente en pruebas',headline:'Anuncio de prueba',detail:'Contenido sintético',category:'Comercio',communes:['Angol'],status:'active',startAt:'2026-10-01T00:00:00Z',endAt:'2026-12-01T00:00:00Z',priority:0,...extra});
 test('zero advertisers, professionals or employers still produce distinct own campaigns',()=>{
- const r=allocateAdvertising(base);assert.equal(r.search.type,'HOUSE_AD');assert.equal(r.listing.type,'HOUSE_AD');assert.notEqual(r.search.campaign.id,r.listing.campaign.id);assert.equal(HOUSE_DEFAULTS.length,4);
+ const r=allocateAdvertising(base);assert.equal(r.search.type,'HOUSE_AD');assert.equal(r.listing.type,'HOUSE_AD');assert.notEqual(r.search.campaign.id,r.listing.campaign.id);assert.equal(HOUSE_DEFAULTS.length,6);
  assert(HOUSE_DEFAULTS.every(c=>validateHouseCampaign(c).type==='HOUSE_AD'));
 });
-test('rotation reaches all four campaigns and multiple creatives without timers',()=>{
- const ids=new Set();for(let turn=0;turn<8;turn++){const r=allocateAdvertising({...base,turn});ids.add(r.search.campaign.id);}assert.equal(ids.size,4);
+test('rotation reaches all six campaigns and multiple creatives without timers',()=>{
+ const ids=new Set();for(let turn=0;turn<8;turn++){const r=allocateAdvertising({...base,turn});ids.add(r.search.campaign.id);}assert.equal(ids.size,6);
  const c=structuredClone(HOUSE_DEFAULTS[0]);c.creatives.push({...c.creatives[0],id:'b'});assert.equal(allocateAdvertising({...base,house:[c],turn:1}).search.creative.id,'b');
 });
 test('single active legacy advertiser retains both prior placements',()=>{

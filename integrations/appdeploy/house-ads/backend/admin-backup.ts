@@ -1,7 +1,7 @@
 import { db, storage, json, error, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 
 export const BACKUP_TABLES = [
-  'growth_house_config', 'growth_house_metrics', 'growth_house_events', 'community_posts', 'free_public_run_leases', 'free_public_source_reads', 'free_public_source_runs',
+  'growth_commercial_metrics', 'growth_commercial_events', 'growth_commercial_config', 'growth_trial_entitlements', 'growth_commercial_audit', 'growth_house_config', 'growth_house_metrics', 'growth_house_events', 'community_posts', 'free_public_run_leases', 'free_public_source_reads', 'free_public_source_runs',
   'growth_advertiser_leads', 'growth_campaigns', 'growth_social_queue', 'hard_exa_cursor', 'motor3_web_cursor',
   'notification_dispatch_log', 'notification_dispatch_state', 'notification_preferences',
   'public_feed_build_state', 'public_feed_changes', 'public_feed_control', 'public_feed_identity_policy',

@@ -18,4 +18,5 @@ try{
  if(!ready)throw Error('localhost_preview_not_ready');
  run('node',['qa/browser-check.mjs']);
  run('node',['qa/layout-check.mjs']);
+ run('node',['qa/capacity-check.mjs']);
 }finally{try{process.kill(-server.pid,'SIGTERM');}catch{}}

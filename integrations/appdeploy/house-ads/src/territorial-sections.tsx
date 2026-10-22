@@ -1,3 +1,4 @@
+import {api} from '@appdeploy/client';
 import { useEffect, useRef } from 'react';
 import { ArrowRight, MapPin, Megaphone, Newspaper } from 'lucide-react';
 import { EXPLORATION_CITIES, safeSponsorUrl, sponsorMatchesPlace } from './territorial-exploration';
@@ -35,6 +36,7 @@ export function LocalAdvertising({ sponsor, place, loading, onAdvertise, track, 
   const shown = useRef(new Set<string>());
   const eligible = sponsorMatchesPlace(sponsor, place) ? sponsor : null;
   const url = safeSponsorUrl(eligible?.url);
+  function commercialEvent(event:'impression'|'click'){if(eligible)void api.post('/api/growth/commercial-events',{campaignId:eligible.id,event,eventId:crypto.randomUUID(),place,placement}).catch(()=>undefined);}
   useEffect(() => {
     const node = element.current;
     if (loading || !eligible || !node || typeof IntersectionObserver === 'undefined') return;
@@ -48,6 +50,7 @@ export function LocalAdvertising({ sponsor, place, loading, onAdvertise, track, 
       timer = setTimeout(() => {
         if (document.visibilityState !== 'visible' || shown.current.has(key)) return;
         shown.current.add(key);
+        commercialEvent('impression');
         track('tc_sponsor_viewable_impression', { sponsor_id:eligible.id, commune:place, scope:eligible.scope, surface:placement, visible_ms:1000 });
         observer.disconnect();
       }, 1000);
@@ -61,7 +64,7 @@ export function LocalAdvertising({ sponsor, place, loading, onAdvertise, track, 
     <div className='tcAdLabel'><Megaphone aria-hidden='true'/><span>PUBLICIDAD{eligible?.scope === 'regional' ? ' REGIONAL' : ' LOCAL'}</span>
       <small>{place === 'Todas' ? 'Tu zona' : place}</small></div>
     {eligible && !loading ? <div className='tcAdContent'><div><strong>{eligible.businessName}</strong><b>{eligible.headline}</b><p>{eligible.detail}</p></div>
-      {url && <a href={url} target='_blank' rel='noopener noreferrer' onClick={() => track('tc_sponsor_click', { sponsor_id:eligible.id, commune:place, scope:eligible.scope, surface:placement })}>Conocer negocio <ArrowRight aria-hidden='true'/></a>}
+      {url && <a href={url} target='_blank' rel='noopener noreferrer' onClick={() => {commercialEvent('click');track('tc_sponsor_click', { sponsor_id:eligible.id, commune:place, scope:eligible.scope, surface:placement });}}>Conocer negocio <ArrowRight aria-hidden='true'/></a>}
     </div> : <div className='tcAdContent'><div><strong>{loading ? 'Consultando publicidad de esta zona…' : `Tu negocio, cerca de quienes buscan trabajo${place === 'Todas' ? '' : ' en '+place}`}</strong>
       <p>Espacio disponible para comercios y servicios locales. Sin cobros activos.</p></div><button type='button' onClick={onAdvertise}>Anunciar aquí <ArrowRight aria-hidden='true'/></button></div>}
   </section>;

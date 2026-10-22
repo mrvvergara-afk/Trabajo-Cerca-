@@ -1,3 +1,4 @@
+import { COMMERCIAL_DEFAULTS, COMMERCIAL_PLACES, promotionOffer, validateCommercialConfig, businessIdentity, selectCommercial, type CommercialConfig } from '../shared/commercial-policy';
 import { db, storage, json, error, increment, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 import { createHash, randomUUID } from 'node:crypto';
 import { HOUSE_DEFAULTS, validateHouseCampaign, type HouseCampaign, type CommercialAd } from '../shared/house-ads';
@@ -11,15 +12,81 @@ const privateJson = (value: unknown, status=200) => {
 };
 export async function houseConfiguration() {
   const [saved] = await db.get<{ revision:string; campaigns:HouseCampaign[] }>(CONFIG,['current'],{consistent:true});
-  return saved ?? { revision:'defaults-v1', campaigns:HOUSE_DEFAULTS };
+  if(!saved)return {revision:'defaults-v1',campaigns:HOUSE_DEFAULTS};
+  const campaigns=saved.campaigns.map(c=>({...c,creatives:c.creatives.map(v=>({...v,message:v.message==='¡Promociona tu negocio! 30 días de publicidad gratis en Trabajo Cerca.'?'Promociona tu negocio y conoce la promoción vigente.':v.message,mobileMessage:v.mobileMessage==='Tu negocio: 30 días de publicidad gratis.'?'Conoce la promoción vigente.':v.mobileMessage}))}));
+  for(const extra of HOUSE_DEFAULTS.filter(c=>['house-inclusion','house-local-business'].includes(c.id)))if(!campaigns.some(c=>c.id===extra.id))campaigns.push(extra);
+  return {...saved,campaigns};
 }
-export async function advertisingCatalog() {
-  const [config, commercial] = await Promise.all([houseConfiguration(),db.list<CommercialAd>('growth_campaigns',{limit:100})]);
-  if (commercial.nextToken) throw Error('advertising_catalog_incomplete');
-  const campaigns = config.campaigns.filter(c => c.status === 'active');
-  const paths = [...new Set(campaigns.flatMap(c=>c.creatives.map(v=>v.storagePath).filter((p):p is string=>Boolean(p))))];
-  const urls = paths.length ? await storage.url(paths) : [];
-  return { complete:true, revision:config.revision, house:campaigns.map(c=>({...c,creatives:c.creatives.map(v=>({...v,imageUrl:urls.find(u=>u.path===v.storagePath)?.url}))})),commercial:commercial.items.map(c=>({id:c.id,businessName:c.businessName,headline:c.headline,detail:c.detail,url:c.url,communes:c.communes,category:c.category,status:c.status,startAt:c.startAt,endAt:c.endAt,priority:c.priority,placements:c.placements,adType:c.adType})),generatedAt:new Date().toISOString() };
+// Complete pagination is server-side. Never send the entire commercial table to a browser.
+let inventoryCache: {at:number;items:CommercialAd[]}|null=null;
+let inventoryEpoch=0;
+let inventoryFlight:Promise<CommercialAd[]>|null=null;
+export function invalidateCommercialInventory(){inventoryCache=null;inventoryEpoch++;}
+export async function commercialInventory() {
+  if(inventoryCache&&Date.now()-inventoryCache.at<30000)return inventoryCache.items;
+  if(inventoryFlight)return inventoryFlight;
+  const epoch=inventoryEpoch;
+  inventoryFlight=(async()=>{
+    const items:CommercialAd[]=[];const tokens=new Set<string>();let nextToken:string|undefined;
+    let bytes=0;
+    for(let page=0;page<200;page++){
+      const batch=await db.list<CommercialAd>('growth_campaigns',{limit:100,...(nextToken?{nextToken}:{})});
+      for(const row of batch.items){
+        const ad={id:row.id,businessName:row.businessName,headline:row.headline,detail:row.detail,url:row.url,communes:row.communes,category:row.category,status:row.status,startAt:row.startAt,endAt:row.endAt,priority:row.priority,placements:row.placements,adType:row.adType};
+        bytes+=Buffer.byteLength(JSON.stringify(ad));
+        if(bytes>8*1024*1024)throw Error('advertising_inventory_byte_budget');
+        items.push(ad);
+      }
+      nextToken=batch.nextToken;
+      if(!nextToken){if(epoch!==inventoryEpoch)throw Error('advertising_inventory_changed');inventoryCache={at:Date.now(),items};return items;}
+      if(tokens.has(nextToken))throw Error('advertising_cursor_cycle');tokens.add(nextToken);
+    }
+    throw Error('advertising_inventory_page_budget');
+  })();
+  try{return await inventoryFlight;}finally{inventoryFlight=null;}
+}
+export async function commercialConfiguration():Promise<CommercialConfig> {
+  const [saved]=await db.get<CommercialConfig>('growth_commercial_config',['current'],{consistent:true});
+  return saved??structuredClone(COMMERCIAL_DEFAULTS);
+}
+export async function publicPromotion(){return promotionOffer(await commercialConfiguration());}
+export async function advertisingCatalog(query:Record<string,string>={}) {
+  const [config,commercial,promotion]=await Promise.all([houseConfiguration(),commercialInventory(),publicPromotion()]);
+  const campaigns=config.campaigns.filter(c=>c.status==='active');
+  const paths=[...new Set(campaigns.flatMap(c=>c.creatives.map(v=>v.storagePath).filter((p):p is string=>Boolean(p))))];
+  const urls=paths.length?await storage.url(paths):[];
+  const place=COMMERCIAL_PLACES.includes(query.place)?query.place:'Todas';
+  const parsedTurn=Number(query.turn);const turn=Number.isSafeInteger(parsedTurn)&&parsedTurn>=0?parsedTurn:0;
+  return {complete:true,revision:config.revision,promotion,house:campaigns.map(c=>({...c,creatives:c.creatives.map(v=>({...v,imageUrl:urls.find(u=>u.path===v.storagePath)?.url}))})),commercial:selectCommercial(commercial,place,turn),generatedAt:new Date().toISOString()};
+}
+export async function commercialAdmin(ctx:RouterContext){
+  if(ctx.body){
+    const current=await commercialConfiguration();const input=ctx.body as CommercialConfig;
+    if(input.revision!==current.revision)return error('La configuración cambió. Recarga.',409);
+    let next:CommercialConfig;
+    try{next={...validateCommercialConfig(input,current),revision:randomUUID()};}catch(cause){return error(cause instanceof Error?cause.message:'Configuración inválida.',400);}
+    const record={...next,updatedAt:new Date().toISOString(),updatedBy:ctx.user?.userId};
+    try{
+      await db.transact([
+        current.revision==='commercial-defaults-v1'?db.tx.add('growth_commercial_config',[{id:'current',...record}]):db.tx.update('growth_commercial_config',[{id:'current',record,if:{revision:current.revision,foundersUsed:current.foundersUsed}}],{patch:true}),
+        db.tx.add('growth_commercial_audit',[{id:randomUUID(),action:'configuration',actor:ctx.user?.userId,revision:next.revision,at:new Date().toISOString()}]),
+      ]);
+    }catch(cause){if(isAppDatabaseError(cause)&&['AppDatabaseConditionFailed','AppDatabaseConflict','AppDatabaseDuplicateId','AppDatabaseUnknownOutcome'].includes(cause.code))return error('No se confirmó el cambio; recarga antes de reintentar.',409);throw cause;}
+    return privateJson({...next,promotion:promotionOffer(next)});
+  }
+  const config=await commercialConfiguration();return privateJson({...config,promotion:promotionOffer(config)});
+}
+export async function commercialCampaigns(ctx:RouterContext){
+  if(!ctx.body){const page=await db.list('growth_campaigns',{limit:25,...(ctx.query.cursor?{nextToken:ctx.query.cursor}:{})});return privateJson({items:page.items,nextToken:page.nextToken||null});}
+  const input=ctx.body as {id?:string;status?:string};
+  if(!input?.id||input.id.length>150||!['active','paused','rejected'].includes(input.status||''))return error('Estado inválido.',400);
+  const [current]=await db.get<CommercialAd>('growth_campaigns',[input.id],{consistent:true});
+  if(!current)return error('Campaña inexistente.',404);
+  if(input.status==='active'&&(!Number.isFinite(Date.parse(current.endAt))||Date.parse(current.endAt)<=Date.now()))return error('La campaña venció. No se renueva al activarla.',409);
+  await db.transact([
+    db.tx.update('growth_campaigns',[{id:input.id,record:{status:input.status},if:{status:current.status}}],{patch:true}),
+    db.tx.add('growth_commercial_audit',[{id:randomUUID(),action:'campaign_status',campaignId:input.id,actor:ctx.user?.userId,status:input.status,at:new Date().toISOString()}]),
+  ]);invalidateCommercialInventory();return privateJson({id:input.id,status:input.status});
 }
 export async function saveHouseConfiguration(ctx: RouterContext) {
   const input = ctx.body as { revision?:string; campaigns?:unknown[] };
@@ -62,16 +129,19 @@ export async function recordHouseEvent(attribution:unknown,event:HouseEvent,effe
   const a=attribution as {campaignId?:string;creativeId?:string};
   const config=await houseConfiguration();const campaign=config.campaigns.find(c=>c.id===a.campaignId);
   if(!campaign||!campaign.creatives.some(v=>v.id===a.creativeId))return false;
-  const day=new Date().toISOString().slice(0,10);const id=digest(campaign.id+':'+a.creativeId+':'+day);
-  const receipt=digest(event+':'+effectId);
-  const table='growth_house_events';
+  return recordCampaignMetric('growth_house',campaign.id,a.creativeId!,event,effectId,'HOUSE_AD');
+}
+async function recordCampaignMetric(prefix:'growth_house'|'growth_commercial',campaignId:string,creativeId:string,event:HouseEvent,effectId:string,type:string){
+  const day=new Date().toISOString().slice(0,10);const id=digest(campaignId+':'+creativeId+':'+day);
+  const receipt=digest(campaignId+':'+event+':'+effectId);
+  const table=prefix+'_events';
   const [prior]=await db.get(table,[receipt],{consistent:true});
   if(prior)return true;
-  await db.tx.add(METRICS,[{id,day,campaignId:campaign.id,creativeId:a.creativeId,type:'HOUSE_AD',impression:0,click:0,form_started:0,registration_completed:0,profile_published:0,employer_added:0,advertiser_captured:0,trial_activated:0,paid_conversion:0}]);
+  await db.tx.add(prefix+'_metrics',[{id,day,campaignId:campaignId,creativeId:creativeId,type,impression:0,click:0,form_started:0,registration_completed:0,profile_published:0,employer_added:0,advertiser_captured:0,trial_activated:0,paid_conversion:0}]);
   try{
     await db.transact([
-      db.tx.add(table,[{id:receipt,event,type:'HOUSE_AD',createdAt:new Date().toISOString()}]),
-      db.tx.update(METRICS,[{id,record:{[event]:increment(1)}}],{patch:true}),
+      db.tx.add(table,[{id:receipt,event,type,createdAt:new Date().toISOString()}]),
+      db.tx.update(prefix+'_metrics',[{id,record:{[event]:increment(1)}}],{patch:true}),
     ]);
   }catch(cause){
     if(isAppDatabaseError(cause)&&['AppDatabaseDuplicateId','AppDatabaseUnknownOutcome'].includes(cause.code)){
@@ -96,6 +166,20 @@ export async function houseConversion(attribution:unknown,event:HouseEvent,effec
   catch { console.warn('house_conversion_metric_pending',{event});return false; }
 }
 
+export async function commercialClientEvent(ctx:RouterContext){
+  const input=ctx.body as {campaignId?:string;event?:string;eventId?:string;place?:string;placement?:string};
+  if(!input||!['impression','click'].includes(input.event||'')||typeof input.campaignId!=='string'||input.campaignId.length>150||!/^[-a-zA-Z0-9]{16,80}$/.test(input.eventId||'')||!['search','listing'].includes(input.placement||''))return error('Evento inválido.',400);
+  const [campaign]=await db.get<CommercialAd>('growth_campaigns',[input.campaignId]);
+  const now=Date.now();
+  if(!campaign||campaign.status!=='active'||!Number.isFinite(Date.parse(campaign.startAt))||Date.parse(campaign.startAt)>now||!Number.isFinite(Date.parse(campaign.endAt))||Date.parse(campaign.endAt)<=now||!campaign.communes?.some(p=>p==='Todas'||p===input.place)||!(campaign.placements??['search','listing']).includes(input.placement as 'search'|'listing'))return error('Campaña no elegible.',400);
+  const received=await recordCampaignMetric('growth_commercial',input.campaignId,input.placement!,input.event as HouseEvent,input.eventId!,campaign.adType||'COMMERCIAL_LEGACY');
+  return json({received,billing:false},202);
+}
+export async function commercialMetrics(ctx:RouterContext){
+  const page=await db.list('growth_commercial_metrics',{limit:50,...(ctx.query.cursor?{nextToken:ctx.query.cursor}:{})});
+  return privateJson({items:page.items,nextToken:page.nextToken||null,billing:false,source:'first_party_browser_reports'});
+}
+
 export async function trialApplications(ctx:RouterContext) {
   const page=await db.list('growth_advertiser_leads',{limit:25,...(ctx.query.cursor?{nextToken:ctx.query.cursor}:{})});
   return privateJson({items:page.items,nextToken:page.nextToken||null});
@@ -106,20 +190,44 @@ export async function activateFreeTrial(ctx:RouterContext) {
   if(input.url){try{const u=new URL(input.url);if(u.protocol!=='https:'||u.username||u.password||u.hostname==='localhost'||!u.hostname.includes('.'))throw Error();}catch{return error('Enlace comercial inválido.',400);}}
   const [lead]=await db.get('growth_advertiser_leads',[input.leadId],{consistent:true});
   if(!lead)return error('Solicitud no encontrada.',404);
+  if(lead.advertisingConsent!==true)return error('La solicitud no acredita autorización publicitaria. No se activa.',409);
+  if(!COMMERCIAL_PLACES.includes(lead.commune))return error('Comuna fuera de cobertura comercial.',400);
+  if(!businessIdentity(String(lead.businessName||'')))return error('Identifica el negocio.',400);
+  const key=digest(businessIdentity(lead.businessName));
   const campaignId='trial-'+digest(input.leadId);
+  const reconcile=async()=>{
+    const [receipt]=await db.get('growth_trial_entitlements',[key],{consistent:true});
+    if(!receipt)return null;
+    return receipt.leadId===input.leadId?privateJson({id:receipt.campaignId,duplicate:true,startAt:receipt.startAt,endAt:receipt.endAt,promotion:receipt.promotion}):error('Este negocio ya recibió su promoción gratuita. No son acumulables.',409);
+  };
+  const prior=await reconcile();if(prior)return prior;
+  // Protect legacy trials from being renewed through the new programme.
   const [existing]=await db.get('growth_campaigns',[campaignId],{consistent:true});
   if(existing)return privateJson({id:campaignId,duplicate:true,startAt:existing.startAt,endAt:existing.endAt});
-  const startAt=new Date().toISOString();const endAt=new Date(Date.parse(startAt)+30*86400000).toISOString();
-  try{
-    await db.transact([
-      db.tx.add('growth_campaigns',[{id:campaignId,adType:'COMMERCIAL_FREE',businessName:lead.businessName,category:lead.category,communes:[lead.commune],headline:input.headline.trim(),detail:input.detail.trim(),url:input.url||undefined,startAt,endAt,status:'active',label:'Publicidad local',priority:0,placements:['search'],createdAt:startAt}]),
-      db.tx.update('growth_advertiser_leads',[{id:input.leadId,record:{trialCampaignId:campaignId,trialState:'active',trialStartAt:startAt,trialEndAt:endAt},if:{trialCampaignId:undefined}}],{patch:true}),
-    ]);
-  }catch(cause){
-    if(isAppDatabaseError(cause)&&['AppDatabaseDuplicateId','AppDatabaseUnknownOutcome'].includes(cause.code)){
-      const [saved]=await db.get('growth_campaigns',[campaignId],{consistent:true});if(saved)return privateJson({id:campaignId,duplicate:true,startAt:saved.startAt,endAt:saved.endAt});
-    }throw cause;
+  const legacy=(await commercialInventory()).some(ad=>(ad.adType==='COMMERCIAL_FREE'||ad.id.startsWith('trial-'))&&businessIdentity(ad.businessName)===businessIdentity(lead.businessName));
+  if(legacy)return error('El negocio ya tiene una promoción histórica; requiere revisión, no otra prueba gratuita.',409);
+  for(let attempt=0;attempt<3;attempt++){
+    const config=await commercialConfiguration();const offer=promotionOffer(config);
+    if(!offer.days||config.revision==='commercial-defaults-v1')return error('Configura y aprueba explícitamente el lanzamiento antes de activar promociones.',409);
+    const startAt=new Date().toISOString();const endAt=new Date(Date.parse(startAt)+offer.days*86400000).toISOString();
+    const record={id:campaignId,advertiserId:key,promotion:offer.kind,adType:'COMMERCIAL_FREE',businessName:lead.businessName,category:lead.category,communes:[lead.commune],headline:input.headline.trim(),detail:input.detail.trim(),url:input.url||undefined,startAt,endAt,status:'active',label:'Publicidad local',priority:0,placements:['search'],createdAt:startAt};
+    try{
+      await db.transact([
+        db.tx.add('growth_trial_entitlements',[{id:key,leadId:input.leadId,campaignId,startAt,endAt,promotion:offer.kind,days:offer.days,createdAt:startAt}]),
+        db.tx.add('growth_campaigns',[record]),
+        db.tx.update('growth_advertiser_leads',[{id:input.leadId,record:{advertiserId:key,trialCampaignId:campaignId,trialState:'active',trialStartAt:startAt,trialEndAt:endAt,promotion:offer.kind},if:{trialCampaignId:undefined}}],{patch:true}),
+        db.tx.update('growth_commercial_config',[{id:'current',record:{foundersUsed:config.foundersUsed+(offer.kind==='founder'?1:0)},if:{revision:config.revision,foundersUsed:config.foundersUsed}}],{patch:true}),
+        db.tx.add('growth_commercial_audit',[{id:randomUUID(),action:'trial_approved',campaignId,actor:ctx.user?.userId,promotion:offer.kind,at:startAt}]),
+      ]);
+    }catch(cause){
+      if(isAppDatabaseError(cause)&&['AppDatabaseDuplicateId','AppDatabaseConditionFailed','AppDatabaseConflict','AppDatabaseUnknownOutcome'].includes(cause.code)){
+        const recovered=await reconcile();if(recovered)return recovered;
+        if(cause.code==='AppDatabaseUnknownOutcome')return error('Resultado pendiente de confirmación. Comprueba antes de repetir.',409);
+        continue;
+      }throw cause;
+    }
+    invalidateCommercialInventory();await houseConversion(lead.houseAttribution,'trial_activated',campaignId);
+    return privateJson({id:campaignId,startAt,endAt,promotion:offer.kind,days:offer.days},201);
   }
-  await houseConversion(lead.houseAttribution,'trial_activated',campaignId);
-  return privateJson({id:campaignId,startAt,endAt},201);
+  return error('Otra aprobación está en curso; recarga y vuelve a comprobar.',409);
 }

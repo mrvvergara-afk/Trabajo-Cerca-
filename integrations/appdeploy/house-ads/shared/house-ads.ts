@@ -38,7 +38,7 @@ export function allocateAdvertising(input: {
   const used = new Set<string>();
   for (const slot of input.slots.slice(0,2)) {
     const paid = input.commercial.filter(ad => ad.status === 'active' && activeAt(ad.startAt, ad.endAt, input.now) && inPlace(ad.communes, input.place) && (ad.placements ?? ['search','listing']).includes(slot))
-      .sort((a,b) => (b.adType === 'COMMERCIAL_PAID' ? 1 : 0) - (a.adType === 'COMMERCIAL_PAID' ? 1 : 0) || b.priority-a.priority || a.id.localeCompare(b.id));
+      .sort((a,b) => (b.adType === 'COMMERCIAL_PAID' ? 1 : 0) - (a.adType === 'COMMERCIAL_PAID' ? 1 : 0) || (b.communes.includes(input.place) && input.place !== 'Todas' ? 1 : 0) - (a.communes.includes(input.place) && input.place !== 'Todas' ? 1 : 0) || b.priority-a.priority || a.id.localeCompare(b.id));
     // Explicit/legacy commitments win even over frequency and cross-slot deduplication.
     if (paid.length) { result[slot] = { type: 'COMMERCIAL', campaign: paid[0] }; continue; }
     const pool = input.house.filter(ad => ad.status === 'active' && activeAt(ad.startAt, ad.endAt, input.now) && inPlace(ad.communes,input.place) && ad.pages.includes(input.page ?? 'home') && ad.placements.includes(slot) && (!ad.categories.length || ad.categories.includes(input.category ?? '')) && !input.completed.includes(ad.goal) && !used.has(ad.id) && (input.seen[ad.id] ?? 0) < ad.maxPerSession)

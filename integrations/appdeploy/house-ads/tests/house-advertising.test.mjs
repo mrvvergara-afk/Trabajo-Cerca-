@@ -45,3 +45,7 @@ test('invalid configuration and arbitrary destination/asset fields cannot become
  assert.throws(()=>validateHouseCampaign({...HOUSE_DEFAULTS[0],creatives:[{...HOUSE_DEFAULTS[0].creatives[0],storagePath:'../../private'}]}));
  const clean=validateHouseCampaign({...HOUSE_DEFAULTS[0],url:'javascript:alert(1)',revenue:1000});assert(!('url'in clean));assert(!('revenue'in clean));
 });
+
+test('legacy exact territorial priority remains ahead of regional inventory',()=>{
+ const r=allocateAdvertising({...base,commercial:[ad('regional',{communes:['Todas'],priority:99}),ad('local',{priority:0})]});assert.equal(r.search.campaign.id,'local');
+});

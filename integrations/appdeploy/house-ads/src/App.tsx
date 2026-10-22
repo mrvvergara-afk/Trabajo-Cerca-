@@ -220,7 +220,11 @@ function FormPanel({
     sourceUrl:/^https?:\/\//i.test(sharedUrl) ? sharedUrl.slice(0,600) : '',
   }));
 
-  const set = (key: string, value: string) => setData(d => ({ ...d, [key]: value }));
+  const started = useRef(false);
+  const set = (key: string, value: string) => {
+    if(attribution&&!started.current){started.current=true;sendHouseEvent(attribution,'form_started');}
+    setData(d => ({ ...d, [key]: value }));
+  };
   const toggleZone = (zone: string) => {
     setData(d => ({
       ...d,
@@ -483,7 +487,11 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
     contact:'',
     note:'',
   });
-  const set = (key:string, value:string) => setData(current => ({ ...current, [key]:value }));
+  const started=useRef(false);
+  const set = (key:string, value:string) => {
+    if(attribution&&!started.current){started.current=true;sendHouseEvent(attribution,'form_started');}
+    setData(current => ({ ...current, [key]:value }));
+  };
   const submit = async (event:FormEvent) => {
     event.preventDefault();
     setSending(true);
@@ -1242,9 +1250,9 @@ function App() {
   const isVNext = true;
   function openHouseGoal(goal:Goal,attribution:HouseAttribution) {
     setHouseAttribution(attribution);
-    if(goal==='professional') {sendHouseEvent(attribution,'form_started');setFlow('ofrezco');}
-    else if(goal==='advertiser') {sendHouseEvent(attribution,'form_started');setShowAdvertiser(true);}
-    else if(goal==='employer') {sendHouseEvent(attribution,'form_started');setFlow('trabajadores');}
+    if(goal==='professional') {setFlow('ofrezco');}
+    else if(goal==='advertiser') {setShowAdvertiser(true);}
+    else if(goal==='employer') {setFlow('trabajadores');}
     else {completeHouseGoal('explore');setSection('opportunities');document.getElementById('radar')?.scrollIntoView({behavior:'smooth'});document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}
   }
   function renderAdvertising(slot:Slot) {

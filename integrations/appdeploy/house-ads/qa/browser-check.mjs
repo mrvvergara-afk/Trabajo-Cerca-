@@ -13,6 +13,7 @@ try{
   const banner=page.locator('[data-ad-type="HOUSE_AD"]');await banner.first().waitFor();assert.equal(await banner.count(),1);
   await page.getByRole('button',{name:'Publicar mis servicios',exact:true}).first().click();
   await page.getByRole('heading',{name:'Ofrezco mi trabajo',exact:true}).waitFor();
+  await page.getByLabel('Nombre o nombre abreviado',{exact:true}).fill('Fixture profesional');
   await page.getByRole('button',{name:'Cerrar',exact:true}).last().click();
   assert.equal(await page.getByRole('heading',{name:'Ofrezco mi trabajo',exact:true}).count(),0);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
@@ -21,6 +22,8 @@ try{
   assert(calls.some(c=>c.path==='/api/growth/house-events'&&c.body.event==='click'));
   assert(calls.some(c=>c.path==='/api/growth/house-events'&&c.body.event==='form_started'));
   assert(!calls.some(c=>c.path==='/api/listings'&&c.method==='POST'));
+  await page.locator('.neoTabs').getByRole('button',{name:/Personas/}).click();
+  await page.getByText('Todavía no hay profesionales registrados en esta categoría. ¡Sé de los primeros en ofrecer tus servicios!',{exact:true}).waitFor();
   assert.deepEqual(errors,[]);results.push({viewport,zeroAdvertisers:true,zeroProfiles:true,realProfessionalFormOpened:true,formNotSubmitted:true,noHorizontalOverflow:true,consoleErrors:errors});
   await context.close();
  }
@@ -31,11 +34,17 @@ try{
  await page.getByRole('button',{name:'Publicitar mi negocio',exact:true}).first().click();
  await page.getByRole('heading',{name:'Solicita tus 30 días de publicidad gratis',exact:true}).waitFor();
  assert((await page.locator('.advertiserPanel').innerText()).includes('desde la aprobación'));results.push({advertiserFormReal:true,trialNotFalselyActivated:true});await context.close();
+ const paid=await browser.newContext({viewport:{width:1440,height:1000}});const pp=await paid.newPage();
+ await pp.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
+ await pp.addInitScript(()=>{window.houseFixture='paid';});await pp.goto('http://127.0.0.1:4174/?place=Angol',{waitUntil:'networkidle'});
+ await pp.locator('.tcLocalAdvertising').getByText('Anuncio de prueba',{exact:true}).waitFor();assert.equal(await pp.locator('.tcHouseAd').count(),0);results.push({paidPositionPreserved:true,houseDoesNotReplacePaid:true});await paid.close();
  const admin=await browser.newContext({viewport:{width:390,height:844}});const ap=await admin.newPage();
+ ap.on('pageerror',e=>console.error('ADMIN_BROWSER_ERROR '+e.message));
  await ap.addInitScript(()=>{window.houseFixture='admin';});await ap.goto('http://127.0.0.1:4174/qa/marketing.html',{waitUntil:'networkidle'});
- await ap.getByLabel('Estado',{exact:true}).selectOption('paused');await ap.getByRole('button',{name:'Guardar campañas propias',exact:true}).click();
+ await ap.getByRole('heading',{name:'Campañas propias',exact:true}).waitFor();
+ await ap.getByLabel('Estado').selectOption('paused');await ap.getByRole('button',{name:'Guardar campañas propias',exact:true}).click();
  await ap.getByText('Campañas guardadas. La configuración se aplicará en las siguientes visitas.',{exact:true}).waitFor();
- assert.equal(await ap.getByLabel('Estado',{exact:true}).inputValue(),'paused');
+ assert.equal(await ap.getByLabel('Estado').inputValue(),'paused');
  assert.equal(await ap.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
  results.push({administrationLocalFixture:true,pauseSavedThroughAdapter:true,noHorizontalOverflow:true});await admin.close();
 }finally{await browser.close();}

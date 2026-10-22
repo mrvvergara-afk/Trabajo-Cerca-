@@ -17,6 +17,7 @@ try {
     assert.equal(await header.getByRole('button',{name:'Administración',exact:true}).isVisible(),false);
     await menu.locator('summary').click();await menu.getByRole('button',{name:'Administración',exact:true}).waitFor();
     await menu.getByRole('button',{name:'Configurar avisos',exact:true}).waitFor();
+    if(viewport.width<=800){const panelBox=await page.locator('.tcSiteMenuPanel').boundingBox();const barBox=await page.locator('.neoMobileNav').boundingBox();assert(panelBox.y+panelBox.height<barBox.y,'menu_hidden_by_bottom_nav');}
     await menu.locator('summary').focus();await page.keyboard.press('Escape');assert.equal(await menu.getAttribute('open'),null);
     const quick=page.getByRole('navigation',{name:'Qué necesitas hacer',exact:true});
     await quick.getByRole('button',{name:'Ofrezco mi trabajo u oficio',exact:true}).click();
@@ -47,6 +48,8 @@ try {
     assert.deepEqual(errors,[]);
     mkdirSync('qa-output',{recursive:true});
     await page.screenshot({path:'qa-output/layout-'+viewport.width+'.png',fullPage:true});
+    await page.evaluate(()=>window.scrollTo(0,0));
+    await page.screenshot({path:'qa-output/layout-'+viewport.width+'-top.png'});
     results.push({viewport,headerHeight:headerRect.height,bottomHeight,headerScrollsAway:mobile,accountAndAdminInsideMenu:true,professionalEmployerServiceForms:true,secondaryContentAfterJobs:true,footerNotCovered:true,noHorizontalOverflow:true,pageErrors:errors});
     await context.close();
   }

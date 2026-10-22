@@ -5,7 +5,7 @@
 .tcSiteMenu>summary{display:flex;align-items:center;gap:8px;list-style:none;min-height:44px;padding:8px 14px;border:1px solid #cad8ce;border-radius:12px;background:#fff;font-size:14px;font-weight:700;cursor:pointer}
 .tcSiteMenu>summary::-webkit-details-marker{display:none}
 .tcSiteMenu>summary svg{width:20px;height:20px}
-.tcSiteMenuPanel{position:absolute;right:0;top:calc(100% + 10px);width:min(330px,calc(100vw - 32px));max-height:calc(100dvh - 100px);overflow:auto;padding:16px;background:#fff;border:1px solid #d7e1d9;border-radius:16px;box-shadow:0 16px 40px #06231c24;z-index:110}
+.tcSiteMenuPanel{position:absolute;right:0;top:calc(100% + 10px);width:min(330px,calc(100vw - 32px));max-height:calc(100dvh - 154px - env(safe-area-inset-bottom));overflow:auto;padding:16px;background:#fff;border:1px solid #d7e1d9;border-radius:16px;box-shadow:0 16px 40px #06231c24;z-index:110}
 .tcSiteMenuPanel nav{display:grid;gap:4px}
 .tcSiteMenuPanel button{min-height:44px;display:block;width:100%;text-align:left;border:0;border-radius:8px;background:transparent;padding:10px 12px;color:#06231c;font:inherit;font-size:14px;cursor:pointer}
 .tcSiteMenuPanel button:hover{background:#f0f6ef}
@@ -69,3 +69,8 @@
   .neoShell #neo-jobs,.neoShell #tc-other-cities,.neoShell #actualidad-laboral{scroll-margin-top:12px}
 }
 @media(prefers-reduced-motion:reduce){.neoShell *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+.neoShell .neoJobPlace,.neoShell .neoJobState,.neoShell .neoJobArea{font-size:12px}
+.neoShell .neoJobCompany{font-size:14px;line-height:1.45}
+.neoShell .neoJobFacts small{font-size:11px}
+.neoShell .neoJobFacts b,.neoShell .neoJobFoot>span{font-size:12px;line-height:1.45}
+.neoShell .neoJobFoot button{font-size:14px;min-height:44px}

@@ -1298,12 +1298,12 @@ function App() {
             <h1>Trabajo y oficios<br /><em>cerca de ti.</em></h1>
             <p className='neoHeroLead'>Menos búsqueda, más resultados. Reunimos oportunidades vigentes de tus comunas y te mostramos primero lo nuevo.</p>
             <div className='neoSourceRibbon' aria-label='Fuentes que rastrea Trabajo Cerca'><span><Radio /> Redes</span><span>OMIL</span><span>Radios</span><span>Medios locales</span><span>Empresas</span><span>Portales</span></div>
-            <div className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna'>
+            <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}>
               <Search />
               <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
               <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
-              <button onClick={() => document.getElementById('neo-jobs')?.scrollIntoView({ behavior:'smooth' })}>Buscar <ArrowRight /></button>
-            </div>
+              <button type='submit'>Buscar <ArrowRight /></button>
+            </form>
             <nav className='tcQuickActions' aria-label='Qué necesitas hacer'>
               <button onClick={()=>{setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}><Search aria-hidden='true'/><span>Buscar trabajo</span></button>
               <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrezco mi trabajo u oficio</span></button>
@@ -1366,8 +1366,8 @@ function App() {
             </div>
             <div className='neoFilters'>
               <label className='neoFilterSearch'><Search /><input value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' /></label>
-              <label><MapPin /><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
-              <label><Building2 /><select value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
+              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de resultados</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
+              <label><Building2 /><span className='tcVisuallyHidden'>Área laboral</span><select value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
               <button className={onlyNew ? 'active' : ''} onClick={() => setOnlyNew(value => !value)}><Sparkles /> Nuevas</button>
             </div>
           </div>

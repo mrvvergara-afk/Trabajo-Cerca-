@@ -58,7 +58,7 @@
 .neoShell .neoJobPlace svg{width:15px;height:15px}
 .neoShell .neoJobCard h3{font-size:18px;line-height:1.3;margin:6px 0;min-height:0;letter-spacing:-.015em}
 .neoShell .neoJobCompany{font-size:14px;line-height:1.4;margin:5px 0}
-.neoShell .neoNewOfferBadge,.tcUnreadBadge{display:inline-flex;margin:2px 5px 2px 0;border-radius:5px;padding:3px 6px;font-size:11px;font-weight:600;line-height:1.3;background:#edf5e5;color:#315225;letter-spacing:0}
+.neoShell .neoNewOfferBadge,.tcUnreadBadge{display:inline-flex;margin:2px 5px 2px 0;border-radius:5px;padding:3px 6px;font-size:12px;font-weight:600;line-height:1.3;background:#edf5e5;color:#315225;letter-spacing:0}
 .tcUnreadBadge{background:#edf2fc;color:#304b71}
 .neoShell .neoSalary{font-size:14px;line-height:1.4;margin:6px 0}
 .neoShell .neoJobFacts{display:block;margin:6px 0;padding:0;border:0}
@@ -126,3 +126,7 @@
  .neoShell{padding-bottom:calc(74px + env(safe-area-inset-bottom))}.neoShell .neoNotice{bottom:calc(74px + env(safe-area-inset-bottom))}.neoShell button,.neoShell a{scroll-margin-bottom:calc(80px + env(safe-area-inset-bottom))}.neoShell .neoFooter{padding:18px 14px}.neoShell .neoDrawer{width:100%;max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){.neoShell *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+.tcResultsPagination{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 0}.tcResultsPagination button{min-height:44px;padding:8px 12px;border:1px solid #cbd9cf;border-radius:8px;background:#fff;color:#123b2a;font-size:14px}.tcResultsPagination button:disabled{opacity:.5}.tcResultsPagination span{font-size:13px}
+
+.neoShell .neoJobState{text-transform:none;letter-spacing:0}

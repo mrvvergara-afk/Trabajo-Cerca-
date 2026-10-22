@@ -948,6 +948,7 @@ function App() {
   const [showAlerts, setShowAlerts] = useState(false);
   const [showActivity,setShowActivity]=useState(false);
   const [onlyUnread,setOnlyUnread]=useState(false);
+  const [resultPage,setResultPage]=useState(0);
   const [reading,setReading]=useState(()=>{try{return loadReading(localStorage);}catch{return {version:1 as const,known:false,previousVisitAt:null,read:{}};}});
   const [feedUpdatedAt,setFeedUpdatedAt]=useState<string|null>(null);
   const [feedComplete,setFeedComplete]=useState(false);
@@ -1139,6 +1140,9 @@ function App() {
     });
   }, [items, section, place, filterMode, q, area, onlyNew, onlyUnread, reading, noveltyCutoff]);
 
+  useEffect(()=>setResultPage(0),[section,place,filterMode,q,area,onlyNew,onlyUnread]);
+  const shownResults=visible.slice(resultPage*10,resultPage*10+10);
+  const resultPages=Math.max(1,Math.ceil(visible.length/10));
   const sourceCounts = useMemo(() => { const counts = new Map<string,number>(); for (const item of items) { if (item.kind !== 'job_offer' || !item.workCommunes.some(commune => places.includes(commune) && commune !== 'Todas')) continue; const source = item.source || 'Fuente no identificada'; counts.set(source,(counts.get(source)||0)+1); } return [...counts.entries()].sort((a,b)=>b[1]-a[1]); },[items]);
   const availableJobs = feedSummary.totalJobOffers;
   const inventoryCounts=publishedInventoryCounts(feedSummary,place);
@@ -1155,7 +1159,7 @@ function App() {
     exploredCursors.current.add(nextCursor);void load(nextCursor);
   },[nextCursor,loading,loadingMore,loadError]);
   useEffect(()=>{if(!resultFocus)return;const target=document.getElementById('neo-jobs');target?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});target?.focus({preventScroll:true});},[resultFocus]);
-  const navigateResults=(next:Section='opportunities',town=place,recent=false,unread=false)=>{setSection(next);setPlace(town);setFilterMode('work');setQ('');setArea('Todas');setOnlyNew(recent);setOnlyUnread(unread);setResultFocus(n=>n+1);};
+  const navigateResults=(next:Section='opportunities',town=place,recent=false,unread=false)=>{setResultPage(0);setSection(next);setPlace(town);setFilterMode('work');setQ('');setArea('Todas');setOnlyNew(recent);setOnlyUnread(unread);setResultFocus(n=>n+1);};
   const scopedJobs=items.filter(item=>item.kind==='job_offer'&&matchesTerritorialView(item,place,places));
   const scopedRecent=scopedJobs.filter(isFresh);
   const scopeCount=feedComplete?scopedJobs.length:null;
@@ -1198,10 +1202,7 @@ function App() {
       setNotice('Para instalar, abre el menú de tu navegador y elige “Instalar Trabajo Cerca” o “Agregar a pantalla de inicio”.');
       return;
     }
-    await installPrompt.prompt();
-    const choice=await installPrompt.userChoice;
-    track(choice.outcome==='accepted'?'tc_install_prompt_accepted':'tc_install_prompt_dismissed',{surface:'pwa'});
-    setInstallPrompt(null);
+    try{await installPrompt.prompt();const choice=await installPrompt.userChoice;track(choice.outcome==='accepted'?'tc_install_prompt_accepted':'tc_install_prompt_dismissed',{surface:'pwa'});}catch{setNotice('No se pudo abrir la instalación. Puedes usar el menú de tu navegador.');}finally{setInstallPrompt(null);}
   };
 
   const goRadar = (next:Section='opportunities') => navigateResults(next);
@@ -1364,7 +1365,7 @@ function App() {
 
         <section className='neoDiscover' id='neo-jobs' tabIndex={-1} aria-labelledby='tc-results-title' aria-busy={loading||loadingMore}>
           <div className='neoDiscoverHead'>
-            <div><h2 id='tc-results-title'>{resultsTitle}</h2><p className='tcResultStatus' role='status'>{visible.length} resultados{!feedComplete?' cargados · consulta incompleta':''}{loadingMore?' · Cargando más resultados…':''}</p></div>
+            <div><h2 id='tc-results-title'>{resultsTitle}</h2><p className='tcResultStatus' role='status'>{shownResults.length} mostrados · {visible.length} resultados{!feedComplete?' cargados · consulta incompleta':''}{loadingMore?' · Cargando más resultados…':''}</p></div>
             <button className='tcClearFilters' onClick={()=>navigateResults('opportunities','Todas')}>Quitar filtros</button>
           </div>
 
@@ -1386,7 +1387,7 @@ function App() {
           {loadError && <div className='neoEmpty'><AlertCircle /><b>{loadError}</b><button onClick={() => void load()}>Reintentar</button></div>}
 
           <div className='neoJobsGrid'>
-            {visible.map((item, index) => {
+            {shownResults.map((item, index) => {
               const own = Boolean(ownerTokens[item.id]);
               return (
                 <Fragment key={item.id}><article data-offer-id={item.id} className={'neoJobCard neoKind-' + item.kind + ' ' + (selected?.id === item.id ? 'isSelected' : '')} key={item.id}>
@@ -1417,6 +1418,7 @@ function App() {
             })}
           </div>
 
+          {visible.length>10&&<nav className='tcResultsPagination' aria-label='Páginas de resultados'><button disabled={resultPage===0} onClick={()=>{setResultPage(n=>Math.max(0,n-1));setResultFocus(n=>n+1);}}>Página anterior</button><span>Página {resultPage+1} de {resultPages} · {visible.length} resultados{!feedComplete?' cargados':''}</span><button disabled={resultPage+1>=resultPages} onClick={()=>{setResultPage(n=>n+1);setResultFocus(n=>n+1);}}>Siguiente página</button></nav>}
           {!loading && visible.length === 0 && !loadError && section !== 'opportunities' && <div className='neoEmpty'><b>{nextCursor ? 'Hay más publicaciones por cargar antes de confirmar esta categoría.' : section === 'people' ? 'Todavía no hay profesionales registrados en esta categoría. ¡Sé de los primeros en ofrecer tus servicios!' : '¿Necesitas personal o un servicio en tu comuna? Publica tu oportunidad.'}</b><button onClick={()=>nextCursor?void load(nextCursor):setFlow(section==='people'?'ofrezco':section==='services'?'servicio':'trabajadores')}>{nextCursor?'Cargar más publicaciones':section==='people'?'Publicar mis servicios':'Publicar una oportunidad'}</button></div>}
           {!loading && visible.length === 0 && !loadError && section === 'opportunities' && <div className='neoEmpty'><Radar /><b>{nextCursor ? 'Hay más ofertas por cargar para completar esta búsqueda.' : 'No hay ofertas que coincidan con esta vista.'}</b><span>Eso no significa que no existan empleos: solo mostramos avisos cuya fuente, vigencia y ubicación logramos confirmar.</span><button onClick={() => nextCursor ? void load(nextCursor) : (setOnlyNew(false),setQ(''),setArea('Todas'))}>{nextCursor ? 'Cargar más ofertas' : 'Ver todas las ofertas'}</button></div>}
           {nextCursor && !loadError && <div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando…' : 'Cargar más'} <ArrowRight /></button></div>}

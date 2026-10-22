@@ -28,7 +28,11 @@ async def observe():
             assert proof['analytics'].get('disabled') is True,proof
             await page.goto(URL,wait_until='domcontentloaded',timeout=30000)
             await page.wait_for_selector('article.neoJobCard',timeout=60000)
-            await page.locator('.neoTileRadar').click()
+            if await page.locator('.tcSiteMenu').count():
+                await page.locator('.tcSiteMenu summary').click()
+                await page.get_by_role('button',name='Compartir un aviso con el Radar',exact=True).click()
+            else:
+                await page.locator('.neoTileRadar').click()
             assert await page.locator('.photoTipBox input[type=file]').is_disabled()
             assert 'deshabilitada' in await page.locator('.photoTipBox').inner_text()
             await page.locator('.smartForm button.close').click()

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '@appdeploy/client';
 import { HOUSE_DEFAULTS, type HouseCampaign, type Creative } from '../shared/house-ads';
 import './house-advertising.css';
-type Metric={id:string;day:string;campaignId:string;creativeId:string;impression?:number;click?:number;form_started?:number;profile_published?:number;employer_added?:number;advertiser_captured?:number;trial_activated?:number;paid_conversion?:number};
+type Metric={id:string;day:string;campaignId:string;creativeId:string;impression?:number;click?:number;form_started?:number;registration_completed?:number;profile_published?:number;employer_added?:number;advertiser_captured?:number;trial_activated?:number;paid_conversion?:number};
 type Application={id:string;businessName:string;commune:string;trialState?:string};
 const split=(s:string)=>s.split(',').map(v=>v.trim()).filter(Boolean);
 export function HouseCampaignAdmin() {
@@ -51,7 +51,7 @@ export function HouseCampaignAdmin() {
     </fieldset>}
     <button disabled={busy||!revision} onClick={()=>void save()}>Guardar campañas propias</button>
     <h3>Rendimiento de campañas propias</h3><p>Reportes del navegador y efectos confirmados por el servidor. No son impresiones facturables. Comparación descriptiva de variantes; no acredita significancia estadística. PostHog permanece deshabilitado.</p>
-    <div className='tcHouseTable'><table><thead><tr><th>Fecha / campaña / variante</th><th>Impresiones</th><th>Clics / CTR</th><th>Formularios iniciados</th><th>Perfiles / empleadores</th><th>Anunciantes / pruebas</th></tr></thead><tbody>{stats.map(r=><tr key={r.id}><td>{r.day} · {r.campaignId} · {r.creativeId}</td><td>{r.impression||0}</td><td>{r.click||0} / {r.impression?((r.click||0)/r.impression*100).toFixed(1):'0'}%</td><td>{r.form_started||0}</td><td>{r.profile_published||0} / {r.employer_added||0}</td><td>{r.advertiser_captured||0} / {r.trial_activated||0}</td></tr>)}</tbody></table></div>
+    <div className='tcHouseTable'><table><thead><tr><th>Fecha / campaña / variante</th><th>Impresiones</th><th>Clics / CTR</th><th>Formularios iniciados / guardados</th><th>Perfiles / empleadores</th><th>Anunciantes / pruebas</th></tr></thead><tbody>{stats.map(r=><tr key={r.id}><td>{r.day} · {r.campaignId} · {r.creativeId}</td><td>{r.impression||0}</td><td>{r.click||0} / {r.impression?((r.click||0)/r.impression*100).toFixed(1):'0'}%</td><td>{r.form_started||0} / {r.registration_completed||0}</td><td>{r.profile_published||0} / {r.employer_added||0}</td><td>{r.advertiser_captured||0} / {r.trial_activated||0}</td></tr>)}</tbody></table></div>
     {!stats.length&&<p>Todavía no hay eventos registrados. No se generan métricas de ejemplo.</p>}{cursor&&<button disabled={busy} onClick={()=>void moreStats()}>Cargar más métricas</button>}
     <h3>Pruebas comerciales gratuitas</h3><p>Revisa el texto público antes de activar. La prueba dura 30 días desde la aprobación, sin renovación ni cobro automático.</p>
     <button disabled={busy} onClick={()=>void loadTrials()}>Consultar solicitudes reales</button>

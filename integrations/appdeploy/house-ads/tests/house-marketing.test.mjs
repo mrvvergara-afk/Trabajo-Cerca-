@@ -57,3 +57,7 @@ test('new management endpoints retain SDK authentication and admin allowlist; pu
  const source=read('backend/index.ts');for(const name of ['GET /api/admin/marketing/house','PUT /api/admin/marketing/house','POST /api/admin/marketing/creative','GET /api/admin/marketing/trials','POST /api/admin/marketing/trial'])assert(source.includes("'"+name+"': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS),"));
  assert(source.includes("'POST /api/growth/house-events': [publicQuota("));
 });
+
+test('both public form views pass house attribution through the actual FormPanel',()=>{
+ const source=read('src/App.tsx');const forms=[...source.matchAll(/<FormPanel flow=\{flow\}[^>]+/g)];assert.equal(forms.length,2);assert(forms.every(m=>m[0].includes('attribution={houseAttribution}')));
+});

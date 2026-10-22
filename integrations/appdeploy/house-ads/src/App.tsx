@@ -1455,7 +1455,7 @@ function App() {
             })}
           </div>
 
-          {!loading && visible.length === 0 && !loadError && section !== 'opportunities' && <div className='neoEmpty'><b>{section === 'people' ? 'Todavía no hay profesionales registrados en esta categoría. ¡Sé de los primeros en ofrecer tus servicios!' : '¿Necesitas personal o un servicio en tu comuna? Publica tu oportunidad.'}</b><button onClick={()=>setFlow(section==='people'?'ofrezco':section==='services'?'servicio':'trabajadores')}>{section==='people'?'Publicar mis servicios':'Publicar una oportunidad'}</button></div>}
+          {!loading && visible.length === 0 && !loadError && section !== 'opportunities' && <div className='neoEmpty'><b>{nextCursor ? 'Hay más publicaciones por cargar antes de confirmar esta categoría.' : section === 'people' ? 'Todavía no hay profesionales registrados en esta categoría. ¡Sé de los primeros en ofrecer tus servicios!' : '¿Necesitas personal o un servicio en tu comuna? Publica tu oportunidad.'}</b><button onClick={()=>nextCursor?void load(nextCursor):setFlow(section==='people'?'ofrezco':section==='services'?'servicio':'trabajadores')}>{nextCursor?'Cargar más publicaciones':section==='people'?'Publicar mis servicios':'Publicar una oportunidad'}</button></div>}
           {!loading && visible.length === 0 && !loadError && section === 'opportunities' && <div className='neoEmpty'><Radar /><b>{nextCursor ? 'Hay más ofertas por cargar para completar esta búsqueda.' : 'No hay ofertas que coincidan con esta vista.'}</b><span>Eso no significa que no existan empleos: solo mostramos avisos cuya fuente, vigencia y ubicación logramos confirmar.</span><button onClick={() => nextCursor ? void load(nextCursor) : (setOnlyNew(false),setQ(''),setArea('Todas'))}>{nextCursor ? 'Cargar más ofertas' : 'Ver todas las ofertas'}</button></div>}
           {nextCursor && !loadError && <div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando…' : 'Cargar más'} <ArrowRight /></button></div>}
         </section>
@@ -1570,7 +1570,7 @@ function App() {
           </div>
         </div>}
 
-        {flow && <FormPanel flow={flow} onClose={() => { setFlow(null); if (new URLSearchParams(window.location.search).has('share_target')) window.history.replaceState({}, '', window.location.pathname + window.location.hash); }} onPublished={afterPublish} />}
+        {flow && <FormPanel flow={flow} attribution={houseAttribution} onClose={() => { setFlow(null); setHouseAttribution(null); if (new URLSearchParams(window.location.search).has('share_target')) window.history.replaceState({}, '', window.location.pathname + window.location.hash); }} onPublished={afterPublish} />}
       </main>
     );
   }

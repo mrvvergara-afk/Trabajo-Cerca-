@@ -559,6 +559,8 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
 }
 
 function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; onClose:()=>void; onSaved:(message:string)=>void }) {
+  // No periodic delivery is installed in the six existing schedules.
+  const automaticAlertsAvailable = false;
   const selectable = [...new Set([...places.filter(value => value !== 'Todas'), ...travelPlaces])];
   const [selected, setSelected] = useState<string[]>(() => selectable.includes(defaultPlace) ? [defaultPlace] : []);
   const [keywords, setKeywords] = useState('');
@@ -588,6 +590,7 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
   const parsedKeywords = () => keywords.split(',').map(value => value.trim()).filter(Boolean).slice(0, 8);
 
   const activate = async () => {
+    if (!automaticAlertsAvailable) return;
     if (!selected.length) { setErrorMessage('Elige al menos una comuna.'); return; }
     setSaving(true); setErrorMessage('');
     try {
@@ -609,6 +612,7 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
   };
 
   const testNotification = async () => {
+    if (!automaticAlertsAvailable) return;
     setSaving(true); setErrorMessage('');
     try {
       await api.post('/api/notifications/test');
@@ -636,19 +640,19 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
       <div className='neoAlertsVisual'>
         <img src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&fm=webp&q=78&w=1200' alt='' />
         <span className='neoAlertsShade' />
-        <div><span><Bell /> ALERTAS TRABAJO CERCA</span><h2>Que la oportunidad te encuentre.</h2><p>Activa avisos y mañana, si aparece algo nuevo y verificado en tu zona, Trabajo Cerca te lo hará saber.</p></div>
+        <div><span><Bell /> ALERTAS TRABAJO CERCA</span><h2>Que la oportunidad te encuentre.</h2><p>Los avisos automáticos están en preparación. Mientras tanto, revisa las oportunidades disponibles en la búsqueda.</p></div>
       </div>
       <div className='neoAlertsForm'>
         <span className='neoKicker'>TUS ZONAS DE INTERÉS</span>
         <h3>¿Dónde quieres que busquemos por ti?</h3>
-        <p>Selecciona hasta 5 comunas. El barrido de la mañana notifica solamente ofertas nuevas, verificadas y vigentes.</p>
+        <p>El envío periódico todavía no está habilitado. Si ya guardaste preferencias, puedes desactivarlas; no se enviarán resúmenes automáticos en esta etapa.</p>
         <div className='neoAlertPlaces'>{selectable.map(value => <button key={value} className={selected.includes(value) ? 'active' : ''} onClick={() => togglePlace(value)}>{selected.includes(value) && <CheckCircle />} {value}</button>)}</div>
         <label className='neoAlertKeywords'><span>Cargo u oficio <small>opcional</small></span><input value={keywords} onChange={event => setKeywords(event.target.value)} placeholder='Ej. soldador, conductor, TENS' /></label>
-        <div className='neoAlertPromise'><ShieldCheck /><span><b>Sin spam.</b><small>Un resumen cuando haya coincidencias nuevas. No enviamos pistas sin verificar.</small></span></div>
+        <div className='neoAlertPromise'><ShieldCheck /><span><b>Sin spam.</b><small>No se activará ningún envío sin una función de entrega comprobada.</small></span></div>
         {errorMessage && <div className='formError'><AlertCircle /> {errorMessage}</div>}
         <div className='neoAlertActions'>
-          <button className='neoAlertPrimary' onClick={() => void activate()} disabled={saving || loading}><Bell /> {saving ? 'Guardando…' : enabled ? 'Actualizar mis avisos' : 'Activar avisos'}</button>
-          {enabled && <button className='neoAlertTest' onClick={() => void testNotification()} disabled={saving}>Probar ahora</button>}
+          <button className='neoAlertPrimary' onClick={() => void activate()} disabled={!automaticAlertsAvailable || saving || loading}><Bell /> {!automaticAlertsAvailable ? 'Avisos automáticos en preparación' : saving ? 'Guardando…' : enabled ? 'Actualizar mis avisos' : 'Activar avisos'}</button>
+          {enabled && automaticAlertsAvailable && <button className='neoAlertTest' onClick={() => void testNotification()} disabled={saving}>Probar ahora</button>}
           {enabled && <button className='neoAlertDisable' onClick={() => void disable()} disabled={saving}>Desactivar</button>}
         </div>
         <small className='neoAlertFoot'>Para enviar notificaciones el dispositivo debe quedar identificado una sola vez. Trabajo Cerca guarda únicamente el identificador técnico y tus intereses seleccionados, no tu contraseña.</small>

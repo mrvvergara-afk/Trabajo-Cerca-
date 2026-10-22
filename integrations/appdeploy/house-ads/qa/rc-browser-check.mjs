@@ -20,8 +20,15 @@ try{
  const seo=await page.evaluate(async()=>{
   const robots=await fetch('/robots.txt'),sitemap=await fetch('/sitemap.xml');return {robotsStatus:robots.status,robots:await robots.text(),sitemapStatus:sitemap.status,sitemap:await sitemap.text()};
  });assert.equal(seo.robotsStatus,200);assert.equal(seo.sitemapStatus,200);assert(seo.robots.includes('Disallow: /'));assert(!/admin|ownerToken|contact/.test(seo.sitemap));
+ await page.getByRole('button',{name:'Cerrar detalle',exact:true}).click();
+ await page.getByRole('button',{name:'Privacidad',exact:true}).click();
+ const privacy=page.locator('.legalModal');await privacy.waitFor();assert(await privacy.evaluate(e=>e.contains(document.activeElement)));
+ await page.keyboard.press('Escape');await privacy.waitFor({state:'hidden'});
+ await page.getByLabel('Abrir menú de Trabajo Cerca',{exact:true}).click();await page.getByRole('button',{name:'Configurar avisos',exact:true}).click();
+ assert(await page.getByRole('button',{name:'Avisos automáticos en preparación',exact:true}).isDisabled());
+ assert(!(await page.evaluate(()=>window.houseCalls)).some(c=>c.method==='POST'&&c.path.startsWith('/api/notifications')));
  const violations=await page.evaluate(()=>window.rcViolations);assert.deepEqual(violations,[]);assert.deepEqual(errors,[]);
  const cacheKeys=await page.evaluate(async()=>{const all=[];for(const key of await caches.keys()){const cache=await caches.open(key);all.push(...(await cache.keys()).map(r=>new URL(r.url).pathname));}return all;});assert(!cacheKeys.some(p=>p.startsWith('/api/')||p.includes('__appdeploy')));
- const report={checkedAt:new Date().toISOString(),fixturesOnly:true,deployed:false,productionWrites:0,sharedListingOpened:true,staticSitemapStatus:seo.sitemapStatus,staticRobotsStatus:seo.robotsStatus,indexingDisabled:true,cspViolations:violations,pageErrors:errors,manifestErrors:manifest.errors,chromiumInstallabilityErrors:significant,serviceWorkerReady:true,noPrivateApiCached:true,osInstallationTested:false,realSdkUsed:false};
+ const report={checkedAt:new Date().toISOString(),fixturesOnly:true,deployed:false,productionWrites:0,sharedListingOpened:true,privacyFocusAndEscape:true,automaticNotificationsNotAdvertisedAsAvailable:true,staticSitemapStatus:seo.sitemapStatus,staticRobotsStatus:seo.robotsStatus,indexingDisabled:true,cspViolations:violations,pageErrors:errors,manifestErrors:manifest.errors,chromiumInstallabilityErrors:significant,serviceWorkerReady:true,noPrivateApiCached:true,osInstallationTested:false,realSdkUsed:false};
  writeFileSync('qa-output/rc-browser.json',JSON.stringify(report,null,2));console.log('RC_BROWSER_PROOF '+JSON.stringify(report));await context.close();
 }finally{await context.close();rmSync(profile,{recursive:true,force:true});}

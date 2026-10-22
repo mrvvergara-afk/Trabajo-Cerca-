@@ -242,6 +242,69 @@ export const storage: {
 
 }
 declare module '@appdeploy/client' {
+/** Authenticated user information */
+export interface AuthUser {
+    /** Stable AppDeploy user ID (UUID) */
+    userId: string;
+    /** User's email address (requires 'email' scope) */
+    email?: string;
+    /** User's display name (requires 'profile' scope) */
+    name?: string;
+    /** User's profile picture URL (requires 'profile' scope) */
+    picture?: string;
+    /** Space-separated list of granted scopes */
+    scope: string;
+}
+
+/** Sign-in options */
+export interface SignInOptions {
+    /** Space-separated list of scopes to request (default: "openid email profile offline_access") Do not include 'offline_access' if you intentionally do not want refresh tokens. */
+    scope?: string;
+}
+
+/** Sign-in result */
+export interface SignInResult {
+    /** The authenticated user */
+    user: AuthUser;
+    /** Access token (automatically attached to API requests) */
+    accessToken: string;
+    /** Token expiration time in seconds */
+    expiresIn: number;
+}
+
+/** Authentication API */
+export interface AuthAPI {
+    /**
+     * Opens a popup for user sign-in.
+     * Returns the authenticated user on success, or throws on failure/cancel.
+     * Error codes: 'popup_blocked' (browser blocked the popup), 'popup_closed' (user closed before completing), 'auth_error' (authentication failed).
+     */
+    signIn(options?: SignInOptions): Promise<SignInResult>;
+
+    /**
+     * Gets the currently authenticated user, or null if not signed in.
+     * Automatically refreshes expired access tokens if a refresh token exists.
+     */
+    getUser(): Promise<AuthUser | null>;
+
+    /**
+     * Gets the current access token, or null if not signed in.
+     * Automatically refreshes expired tokens if a refresh token exists.
+     */
+    getAccessToken(): Promise<string | null>;
+
+    /**
+     * Signs out the current user and clears stored tokens.
+     */
+    signOut(): Promise<void>;
+
+    /**
+     * Returns true if the user is signed in (has a valid or refreshable token).
+     */
+    isSignedIn(): boolean;
+}
+
+export const auth: AuthAPI;
  export const api: {get(url:string,data?:unknown):Promise<{data:any}>;post(url:string,data?:unknown):Promise<{data:any}>;put(url:string,data?:unknown):Promise<{data:any}>};
 }
 

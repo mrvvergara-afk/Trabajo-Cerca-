@@ -58,7 +58,7 @@ export function AdministratorAccess() {
   );
 }
 
-export function AdministratorShortcut() {
+export function AdministratorShortcut({ inline = false }: { inline?: boolean }) {
   const [allowed, setAllowed] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -128,18 +128,18 @@ export function AdministratorShortcut() {
   }
 
   return (
-    <div className='tcAccountControl'>
+    <div className={'tcAccountControl' + (inline ? ' tcAccountInline' : '')}>
       {allowed && <button className='tcAdminShortcut' disabled={busy} onClick={() => void openPanel()}>Administración</button>}
-      <button className='tcAccountButton' disabled={busy} aria-expanded={menuOpen} onClick={() => { setMenuOpen(!menuOpen); }}>Mi cuenta</button>
-      {menuOpen && <div className='tcAccountMenu' role='region' aria-label='Mi cuenta'>
+      {!inline && <button className='tcAccountButton' disabled={busy} aria-expanded={menuOpen} onClick={() => { setMenuOpen(!menuOpen); }}>Mi cuenta</button>}
+      {(inline || menuOpen) && <div className='tcAccountMenu' role='region' aria-label='Mi cuenta'>
         <b>{signedIn ? 'Tu sesión' : 'Accede a tu cuenta'}</b>
         <p>{signedIn ? 'Puedes cambiar o cerrar la sesión de este dispositivo.' : 'Inicia sesión para acceder a las funciones de tu cuenta.'}</p>
         <button onClick={() => void login()} disabled={busy}>{signedIn ? 'Cambiar cuenta' : 'Iniciar sesión'}</button>
         {signedIn && <button onClick={() => void logout()} disabled={busy}>Cerrar sesión</button>}
-        <button onClick={() => setMenuOpen(false)}>Cerrar menú</button>
+        {!inline && <button onClick={() => setMenuOpen(false)}>Cerrar menú</button>}
         {message && <p role='status'>{message}</p>}
       </div>}
-      {!menuOpen && message && <span className='tcAccountFeedback' role='status'>{message}</span>}
+      {!inline && !menuOpen && message && <span className='tcAccountFeedback' role='status'>{message}</span>}
     </div>
   );
 }

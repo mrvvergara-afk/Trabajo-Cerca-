@@ -16,6 +16,8 @@ import {
   Store, TreePine, Truck, UserRoundSearch, Users, Warehouse, Wrench, X
 } from 'lucide-react';
 import './vnext.css';
+import './compact-layout.css';
+import { SiteMenu } from './site-menu';
 function analyticsId() {
   try {
     const existing = localStorage.getItem('tc_analytics_id');
@@ -1281,17 +1283,11 @@ function App() {
             <button onClick={() => document.getElementById('neo-radar')?.scrollIntoView({ behavior:'smooth' })}>Radar</button>
             <button onClick={() => document.getElementById('actualidad-laboral')?.scrollIntoView({ behavior:'smooth' })}>Actualidad</button>
           </nav>
-          <div className='neoTopActions'>
-            <label className='neoPlace'>
-              <MapPin />
-              <select value={place} onChange={e => chooseLocalPlace(e.target.value)}>
-                {isTravelView && <option value={place}>{place} · para viajar</option>}
-                {places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value} value={value}>{value === 'Todas' ? 'Toda la zona' : value}</option>)}
-              </select>
-            </label>
-            <AdministratorShortcut />
-            <button className='neoHeaderAlert' onClick={() => setShowAlerts(true)}><Bell /> <span>Avisos</span></button>
-          </div>
+          <SiteMenu onAlerts={()=>setShowAlerts(true)} onInstall={()=>void installApp()}
+            onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
+            onCities={()=>document.getElementById('tc-other-cities')?.scrollIntoView({behavior:'smooth'})}
+            onNews={()=>document.getElementById('actualidad-laboral')?.scrollIntoView({behavior:'smooth'})}
+            onPeople={()=>{setSection('people');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}/>
         </header>
 
         <section className='neoHero neoHeroReborn' id='neo-home'>
@@ -1299,19 +1295,20 @@ function App() {
           <div className='neoHeroGlow neoGlowB' />
           <div className='neoHeroCopy'>
             <span className='neoEyebrow'><Radio /> TRABAJO CERCA · RADAR LOCAL</span>
-            <h1>Tu zona se mueve.<br /><em>Encuentra la oportunidad.</em></h1>
+            <h1>Trabajo y oficios<br /><em>cerca de ti.</em></h1>
             <p className='neoHeroLead'>Menos búsqueda, más resultados. Reunimos oportunidades vigentes de tus comunas y te mostramos primero lo nuevo.</p>
             <div className='neoSourceRibbon' aria-label='Fuentes que rastrea Trabajo Cerca'><span><Radio /> Redes</span><span>OMIL</span><span>Radios</span><span>Medios locales</span><span>Empresas</span><span>Portales</span></div>
-            <div className='neoSearchDock'>
+            <div className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna'>
               <Search />
-              <input value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
-              <label><MapPin /><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
+              <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
+              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
               <button onClick={() => document.getElementById('neo-jobs')?.scrollIntoView({ behavior:'smooth' })}>Buscar <ArrowRight /></button>
             </div>
-            <div className='neoHeroCtas'>
-              <button className='neoHeroInstall' onClick={() => void installApp()}><Download /><span><b>Instalar app</b><small>Acceso directo desde tu teléfono</small></span><ArrowRight /></button>
-              <button className='neoHeroAlerts' onClick={() => setShowAlerts(true)}><Bell /><span><b>Activar avisos</b><small>Nuevas ofertas verificadas en tu zona</small></span><ArrowRight /></button>
-            </div>
+            <nav className='tcQuickActions' aria-label='Qué necesitas hacer'>
+              <button onClick={()=>{setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}><Search aria-hidden='true'/><span>Buscar trabajo</span></button>
+              <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrezco mi trabajo u oficio</span></button>
+              <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Necesito contratar</span></button>
+            </nav>
             <div className='neoHeroMeta'>
               <span><b>{loading || (loadError && !items.length) ? '…' : place === 'Todas' ? availableJobs : selectedStat.jobs}</b><small>{place === 'Todas' ? 'ofertas publicadas · total del radar' : `ofertas publicadas en ${place}`}</small></span>
               <span><b>{loading ? '…' : recentJobs ?? '…'}</b><small>incorporadas en los últimos 7 días</small></span>
@@ -1320,7 +1317,7 @@ function App() {
           </div>
 
           <div className='neoRadarCanvas neoPhotoHero neoHeroCompact neoHeroVisualReborn' aria-label='Radar territorial visual'>
-            <img className='neoHeroPhoto neoHeroPhotoMain' src='https://images.unsplash.com/photo-1772852340517-b11ec88979fc?auto=format&fit=crop&fm=webp&q=72&w=1200' alt='Persona trabajando en una faena de construcción' loading='eager' />
+            <img className='neoHeroPhoto neoHeroPhotoMain' src='https://images.unsplash.com/photo-1772852340517-b11ec88979fc?auto=format&fit=crop&fm=webp&q=72&w=1200' alt='Persona trabajando en una faena de construcción' loading='lazy' />
             <div className='neoPhotoShade' />
             <div className='neoMapMesh' />
             <div className='neoRadarCore'><Radar /><span /></div>
@@ -1342,51 +1339,6 @@ function App() {
           {selectedStat.newJobs24h > 0 && <em><Sparkles /> {selectedStat.newJobs24h} {selectedStat.newJobs24h === 1 ? 'nueva' : 'nuevas'} en 24 h</em>}
           {isTravelView && homePlace !== 'Todas' && <button onClick={() => chooseLocalPlace(homePlace)}>Volver a {homePlace}</button>}
         </section>}
-
-        <section className='neoPulseStrip'>
-          <span><Sparkles /> <b>{recentJobs ?? '…'}</b> incorporadas en los últimos 7 días · revisa primero lo reciente</span>
-          <div className='neoPulseCities'>
-            {freshByPlace.slice(0,4).map(([commune,count]) => <button key={commune} onClick={() => openFresh(commune)}>{commune} <b>{count}</b></button>)}
-          </div>
-          <button onClick={() => openFresh()}>Ver novedades <ArrowRight /></button>
-        </section>
-
-        <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place}
-          onExplore={openTravel} onReturn={() => chooseLocalPlace(homePlace)} origin={homePlace} />
-
-        <section className='neoActions'>
-          <div className='neoSectionIntro neoSectionIntroCompact'>
-            <span className='neoKicker'>ACCESOS RÁPIDOS</span>
-            <h2>Todo desde aquí.</h2>
-          </div>
-          <div className='neoBento'>
-            <button className='neoTile neoTileSearch' onClick={() => document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'})}>
-              <span className='neoTileIcon'><Search /></span>
-              <div><small>01 · DESCUBRIR</small><b>Busco trabajo</b><p>Vacantes locales, fuente visible y filtros rápidos.</p></div>
-              <ArrowRight />
-            </button>
-            <button className='neoTile neoTileOffer' onClick={() => setFlow('ofrezco')}>
-              <span className='neoTileIcon'><UserRoundSearch /></span>
-              <div><small>02 · PUBLICAR</small><b>Ofrezco mi trabajo</b><p>Tu oficio visible sin subir CV.</p></div>
-              <ArrowRight />
-            </button>
-            <button className='neoTile neoTilePeople' onClick={() => setFlow('trabajadores')}>
-              <span className='neoTileIcon'><Users /></span>
-              <div><small>03 · CONECTAR</small><b>Necesito personas</b><p>Publica una necesidad en tu comuna.</p></div>
-              <ArrowRight />
-            </button>
-            <button className='neoTile neoTileService' onClick={() => setFlow('servicio')}>
-              <span className='neoTileIcon'><Wrench /></span>
-              <div><small>04 · RESOLVER</small><b>Necesito un servicio</b><p>Encuentra oficios y apoyo local.</p></div>
-              <ArrowRight />
-            </button>
-            <button className='neoTile neoTileRadar' onClick={() => setFlow('aporte')}>
-              <span className='neoTileIcon'><PlusCircle /></span>
-              <div><small>COMUNIDAD</small><b>Alimenta el Radar</b><p>¿Viste una vacante en una radio, red o cartel? Compártela.</p></div>
-              <Radar />
-            </button>
-          </div>
-        </section>
 
         {!loading && !loadError && <section className='neoRecentArrivals' aria-label='Nuevas ofertas'>
           <span className='neoRecentIcon'><Sparkles /></span>
@@ -1460,6 +1412,11 @@ function App() {
           {nextCursor && !loadError && <div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando…' : 'Cargar más'} <ArrowRight /></button></div>}
         </section>
 
+        <div id='tc-other-cities'>
+        <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place}
+          onExplore={openTravel} onReturn={() => chooseLocalPlace(homePlace)} origin={homePlace} />
+        </div>
+
         <LaborNewsSection />
 
         <section className='neoRadarSection' id='neo-radar'>
@@ -1491,13 +1448,12 @@ function App() {
           <div><button onClick={() => setLegalView('privacy')}>Privacidad</button><button onClick={() => setLegalView('terms')}>Términos</button></div>
         </footer>
 
-        <nav className='neoMobileNav' aria-label='Navegación móvil vNext'>
-          <button onClick={() => window.scrollTo({top:0,behavior:'smooth'})}><Sparkles /><span>Inicio</span></button>
-          <button onClick={() => document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'})}><Search /><span>Buscar</span></button>
-          <button className='neoMobilePublish' onClick={() => setFlow('trabajadores')}><PlusCircle /><span>Publicar</span></button>
-          <button onClick={() => { setSection('people'); document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'}); }}><UserRoundSearch /><span>Personas</span></button>
-          <button onClick={() => document.getElementById('neo-radar')?.scrollIntoView({behavior:'smooth'})}><Radar /><span>Radar</span></button>
-        </nav>
+        {!flow && !showAdvertiser && !showAlerts && !legalView && !selected && <nav className='neoMobileNav' aria-label='Navegación móvil'>
+          <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><Sparkles aria-hidden='true'/><span>Inicio</span></button>
+          <button onClick={()=>{setSection('opportunities');document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}><Search aria-hidden='true'/><span>Buscar</span></button>
+          <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrecerme</span></button>
+          <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Contratar</span></button>
+        </nav>}
 
         {selected && (
           <div className='neoDrawerBackdrop' role='presentation' onMouseDown={event => { if (event.target === event.currentTarget) setSelected(null); }}>

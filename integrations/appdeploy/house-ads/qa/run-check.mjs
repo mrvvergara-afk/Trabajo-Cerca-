@@ -8,7 +8,7 @@ run('npm',['install','--no-save','--ignore-scripts','--no-audit','--no-fund','--
 if(!existsSync('/usr/bin/google-chrome'))run('npx',['playwright','install','--with-deps','chromium']);
 run('npx',['vite','build','--config','qa/vite.qa.config.mjs']);
 // SDK contract types are an offline test declaration, not a replacement SDK runtime.
-const tscConfig={compilerOptions:{target:'ES2022',module:'ESNext',moduleResolution:'bundler',skipLibCheck:true,strict:true,noEmit:true,jsx:'react-jsx',types:['node'],allowSyntheticDefaultImports:true},include:['shared/*.ts','src/house-*.tsx','backend/house-marketing.ts','qa/sdk-contract.d.ts']};
+const tscConfig={compilerOptions:{target:'ES2022',module:'ESNext',moduleResolution:'bundler',skipLibCheck:true,strict:true,noEmit:true,jsx:'react-jsx',types:['node'],allowSyntheticDefaultImports:true},include:['shared/*.ts','src/house-*.tsx','src/site-menu.tsx','backend/house-marketing.ts','qa/sdk-contract.d.ts']};
 writeFileSync('qa/tsconfig.json',JSON.stringify({...tscConfig,include:tscConfig.include.map(p=>'../'+p)},null,2));
 run('npx',['tsc','-p','qa/tsconfig.json']);
 const server=spawn('npx',['vite','--config','qa/vite.qa.config.mjs'],{stdio:'inherit',detached:true});
@@ -17,4 +17,5 @@ try{
  for(let i=0;i<60;i++){try{const r=await fetch('http://127.0.0.1:4174/');if(r.ok){ready=true;break;}}catch{}await new Promise(resolve=>setTimeout(resolve,500));}
  if(!ready)throw Error('localhost_preview_not_ready');
  run('node',['qa/browser-check.mjs']);
+ run('node',['qa/layout-check.mjs']);
 }finally{try{process.kill(-server.pid,'SIGTERM');}catch{}}

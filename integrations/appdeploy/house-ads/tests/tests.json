@@ -371,22 +371,21 @@
     "expected": "La exportación no se ofrece al visitante anónimo y no se descargan datos."
   },
   {
-    "name": "La portada permite iniciar sesión sin mostrar Administración al público",
+    "name": "El menú permite iniciar sesión sin ocupar la cabecera con controles de cuenta",
     "viewport": "mobile",
     "covers": [
-      "entrada Mi cuenta",
-      "acceso al inicio de sesión desde portada",
-      "ocultación de Administración a anónimos",
-      "menú de cuenta sin desbordamiento"
+      "entrada de cuenta dentro de menú",
+      "ocultación administrativa a anónimos",
+      "cabecera compacta",
+      "cierre del menú"
     ],
     "description": "Comprueba la entrada de cuenta desde la portada sin usar credenciales ni ejecutar operaciones.",
     "steps": [
-      "Abrir la portada sin sesión",
-      "Pulsar Mi cuenta",
-      "Comprobar que aparece Iniciar sesión y no aparece Administración",
-      "Cerrar menú y comprobar que se puede seguir consultando ofertas"
+      "Abre el menú de Trabajo Cerca desde la cabecera.",
+      "Comprueba que aparece Iniciar sesión dentro de Mi cuenta y no Administración para visitantes anónimos.",
+      "Cierra el menú principal y verifica que la cabecera conserva una fila compacta."
     ],
-    "expected": "Mi cuenta permite encontrar el inicio de sesión; Administración sigue oculto y el menú no tapa permanentemente la navegación."
+    "expected": "El acceso de cuenta está dentro del menú y Administración no se expone a visitantes sin autorización."
   },
   {
     "name": "El respaldo permanece restringido durante una visita anónima",
@@ -458,5 +457,26 @@
       "Consulta rendimiento sin registros e identifica el estado vacío."
     ],
     "expected": "La pausa se conserva en el adaptador del ensayo y no hay ventas ni métricas de ejemplo."
+  },
+  {
+    "name": "Navegación despejada y publicación sencilla en celular",
+    "viewport": "mobile",
+    "covers": [
+      "cabecera no fija",
+      "barra inferior compacta",
+      "ofrecer oficio en una acción",
+      "contratar en una acción",
+      "menú con Escape",
+      "ciudades y noticias posteriores a resultados"
+    ],
+    "description": "Comprueba el orden del contenido y que los controles persistentes no tapen formularios.",
+    "steps": [
+      "Abre la portada en el entorno controlado de ensayo.",
+      "Desde Ofrezco mi trabajo u oficio abre el formulario y ciérralo.",
+      "Desde Necesito contratar abre el formulario correspondiente y ciérralo.",
+      "Abre el menú y ciérralo con Escape.",
+      "Desplázate al final y comprueba que Privacidad y Términos son accesibles."
+    ],
+    "expected": "Formularios correctos, sin barra inferior sobre ellos ni desbordamiento lateral; la cabecera sale de pantalla al desplazarse."
   }
 ]

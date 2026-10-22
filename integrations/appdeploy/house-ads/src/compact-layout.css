@@ -1,0 +1,71 @@
+/* Final layer: compact public layout; leaves operations/authentication unchanged. */
+.tcVisuallyHidden{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.neoShell .neoTopbar{height:72px;min-height:0;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;flex-wrap:nowrap}
+.tcSiteMenu{position:relative;justify-self:end;color:#06231c}
+.tcSiteMenu>summary{display:flex;align-items:center;gap:8px;list-style:none;min-height:44px;padding:8px 14px;border:1px solid #cad8ce;border-radius:12px;background:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.tcSiteMenu>summary::-webkit-details-marker{display:none}
+.tcSiteMenu>summary svg{width:20px;height:20px}
+.tcSiteMenuPanel{position:absolute;right:0;top:calc(100% + 10px);width:min(330px,calc(100vw - 32px));max-height:calc(100dvh - 100px);overflow:auto;padding:16px;background:#fff;border:1px solid #d7e1d9;border-radius:16px;box-shadow:0 16px 40px #06231c24;z-index:110}
+.tcSiteMenuPanel nav{display:grid;gap:4px}
+.tcSiteMenuPanel button{min-height:44px;display:block;width:100%;text-align:left;border:0;border-radius:8px;background:transparent;padding:10px 12px;color:#06231c;font:inherit;font-size:14px;cursor:pointer}
+.tcSiteMenuPanel button:hover{background:#f0f6ef}
+.tcSiteMenuPanel .tcAccountInline{display:block;margin-top:12px;border-top:1px solid #d7e1d9;padding-top:12px}
+.tcSiteMenuPanel .tcAccountMenu{position:static;width:auto;border:0;box-shadow:none;padding:0;margin:10px 0 0}
+.tcSiteMenuPanel .tcAccountMenu p{font-size:13px}
+.tcSiteMenuPanel .tcCloseSiteMenu{margin-top:12px;border-top:1px solid #d7e1d9;font-weight:700}
+.tcSiteMenu summary:focus-visible,.tcSiteMenuPanel button:focus-visible,.tcQuickActions button:focus-visible{outline:3px solid #72ad18;outline-offset:3px}
+.neoShell .neoHero{min-height:0;padding-top:36px;padding-bottom:24px;gap:32px;grid-template-columns:minmax(0,1.25fr) minmax(240px,.75fr);align-items:center}
+.neoShell .neoHero h1{font-size:clamp(40px,5.5vw,72px);line-height:1.02;margin:16px 0;letter-spacing:-.045em}
+.neoShell .neoHeroLead{font-size:16px;line-height:1.55;max-width:55ch}
+.neoShell .neoRadarCanvas{min-height:300px;max-height:340px}
+.tcQuickActions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.tcQuickActions button{display:flex;align-items:center;gap:9px;min-height:58px;padding:12px;border:1px solid #cbd9cf;border-radius:12px;background:#fff;color:#06231c;font:inherit;font-size:14px;line-height:1.35;text-align:left;cursor:pointer}
+.tcQuickActions button svg{width:20px;height:20px;flex-shrink:0}
+.tcQuickActions button:nth-child(2){background:#e9f6df;border-color:#aed27f;font-weight:750}
+.neoShell .neoDiscover{padding-top:28px}
+.neoShell .neoRecentArrivals{margin-top:12px;margin-bottom:12px;padding:14px 18px}
+.neoShell .neoRecentArrivals p{font-size:13px}
+.neoShell #neo-jobs,.neoShell #tc-other-cities,.neoShell #actualidad-laboral{scroll-margin-top:90px}
+@media(max-width:800px){
+  .neoShell .neoTopbar{position:relative;top:auto;height:64px;min-height:64px;grid-template-columns:minmax(0,1fr) auto;padding:8px 16px;gap:12px;backdrop-filter:none;background:#fbfcf8}
+  .neoShell .neoTopNav{display:none}
+  .neoShell .neoBrand{min-width:0;gap:10px}
+  .neoShell .neoBrandMark{width:34px;height:34px;border-radius:11px;flex-shrink:0}
+  .neoShell .neoTopbar .neoBrand b{font-size:19px;line-height:1.2;white-space:nowrap}
+  .neoShell .neoTopbar .neoBrand small{display:none}
+  .neoShell .neoHero{display:block;padding:24px 16px 12px}
+  .neoShell .neoHero h1{font-size:clamp(34px,9vw,48px);line-height:1.06;margin:14px 0}
+  .neoShell .neoHeroLead{font-size:15px;margin-bottom:14px}
+  .neoShell .neoSourceRibbon{display:none}
+  .neoShell .neoRadarCanvas{display:none}
+  .neoShell .neoSearchDock{display:grid;grid-template-columns:22px minmax(0,1fr) auto;padding:10px;gap:8px;border-radius:14px;min-height:0}
+  .neoShell .neoSearchDock input{font-size:16px;min-width:0;width:100%}
+  .neoShell .neoSearchDock>label{display:flex;grid-column:1/3;grid-row:2;height:44px;min-width:0;border-top:1px solid #e2e9e1;padding:4px 0 0}
+  .neoShell .neoSearchDock label select{max-width:100%;font-size:15px;width:100%;min-width:0}
+  .neoShell .neoSearchDock>button{grid-column:3;grid-row:1/3;font-size:14px;padding:10px;min-height:44px;align-self:stretch;gap:4px}
+  .neoShell .neoSearchDock>button svg{width:16px}
+  .tcQuickActions{grid-template-columns:1fr;gap:8px;margin:14px 0}
+  .tcQuickActions button{min-height:48px;font-size:15px;padding:10px 12px}
+  .neoShell .neoHeroMeta{flex-wrap:wrap;gap:14px;margin:16px 0 0}
+  .neoShell .neoHeroMeta b{font-size:21px}
+  .neoShell .neoHeroMeta small{font-size:12px;line-height:1.35;max-width:145px}
+  .neoShell .neoLive{font-size:12px}
+  .neoShell .neoControlDeck{position:static}
+  .neoShell .neoDiscover{padding:22px 16px}
+  .neoShell .neoDiscoverHead h2{font-size:30px}
+  .neoShell .neoTabs button{font-size:13px;min-height:44px}
+  .neoShell .neoFilters input,.neoShell .neoFilters select{font-size:15px;max-width:100%}
+  .neoShell .neoFilters label,.neoShell .neoFilters>button{min-height:44px;font-size:13px}
+  .neoShell .neoRecentArrivals{margin:14px 16px;padding:14px;flex-wrap:wrap}
+  .neoShell .neoRecentArrivals strong{font-size:15px}
+  .neoShell .neoRecentArrivals p,.neoShell .neoRecentArrivals small{font-size:13px}
+  .neoShell .neoRecentArrivals button{font-size:14px;min-height:44px}
+  .neoShell .neoMobileNav{display:grid;position:fixed;left:0;right:0;bottom:0;height:calc(58px + env(safe-area-inset-bottom));padding:3px 8px calc(3px + env(safe-area-inset-bottom));box-sizing:border-box;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:16px 16px 0 0;box-shadow:0 -4px 18px #06231c14}
+  .neoShell .neoMobileNav button{font-size:11px;min-height:48px;line-height:1.2}
+  .neoShell .neoMobileNav svg{width:20px;height:20px}
+  .neoShell{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  .neoShell .neoNotice{bottom:calc(74px + env(safe-area-inset-bottom))}
+  .neoShell button,.neoShell a{scroll-margin-bottom:calc(80px + env(safe-area-inset-bottom))}
+  .neoShell #neo-jobs,.neoShell #tc-other-cities,.neoShell #actualidad-laboral{scroll-margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){.neoShell *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

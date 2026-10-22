@@ -423,60 +423,40 @@
     "expected": "La prueba reconstruye, compara y elimina su base local de datos ficticios; no se presenta como restauración real de AppDeploy. El resultado storageAuditFixture muestra missingReferencedObjects.closed=1 y externalMediaReferences=1, sin acceder a imágenes externas."
   },
   {
-    "name": "Campañas propias con inventario comercial vacío en entorno de ensayo",
+    "name": "Navegación móvil compacta y formularios reales",
     "viewport": "mobile",
     "covers": [
-      "HOUSE_AD sin anunciantes",
-      "formulario real de oficio",
-      "sin contenido ficticio publicado",
-      "frecuencia y objetivos completados",
-      "interfaz móvil"
+      "cabecera compacta",
+      "ofrecer oficio",
+      "contratar",
+      "menú y cuenta",
+      "pie accesible"
     ],
-    "description": "Verifica el relleno propio en un entorno controlado con catálogo comercial vacío.",
+    "description": "Solo abre y cierra formularios, sin enviar datos.",
     "steps": [
-      "En el entorno local de ensayo con SDK simulado, abre la portada sin anuncios comerciales ni perfiles.",
-      "Pulsa Publicar mis servicios en la campaña propia.",
-      "Comprueba que abre el formulario de oficio y ciérralo sin publicar.",
-      "Verifica ausencia de desbordamiento horizontal."
+      "Abrir portada en celular y desplazarse; comprobar que la cabecera sale de pantalla.",
+      "Abrir Ofrezco mi trabajo u oficio y cerrar sin enviar.",
+      "Abrir Necesito contratar y cerrar sin enviar.",
+      "Abrir Menú, comprobar Mi cuenta y cerrar con Escape.",
+      "Desplazarse al pie y abrir y cerrar Privacidad."
     ],
-    "expected": "Se muestra una campaña propia identificada, el formulario funciona y no se crean perfiles ni ofertas."
+    "expected": "Sin desbordamiento lateral ni barra inferior tapando formularios. Administración no aparece a visitantes anónimos."
   },
   {
-    "name": "Administración de campañas propias y separación de métricas",
+    "name": "Campañas propias y contenido público",
     "viewport": "desktop",
     "covers": [
-      "edición HOUSE_AD",
-      "pausa de campañas",
-      "CTR propio separado",
-      "prueba comercial gratuita sin venta"
+      "HOUSE_AD",
+      "enlaces de campañas",
+      "publicidad comercial preservada",
+      "ciudades y noticias después de empleos"
     ],
-    "description": "Comprueba la edición mediante adaptador de ensayo y el rechazo de conversiones falsas.",
+    "description": "No crea anunciantes, registros ni campañas de prueba.",
     "steps": [
-      "En el ensayo administrativo local autorizado, pausa una campaña y guarda.",
-      "Comprueba el estado guardado.",
-      "Consulta rendimiento sin registros e identifica el estado vacío."
+      "Abrir portada y revisar los espacios publicitarios.",
+      "Si se muestra una campaña propia, abrir su botón y volver sin enviar formularios. Si no es elegible por frecuencia, objetivo o publicidad comercial, registrar esa condición.",
+      "Consultar empleos y después Buscar en otras ciudades y Actualidad laboral."
     ],
-    "expected": "La pausa se conserva en el adaptador del ensayo y no hay ventas ni métricas de ejemplo."
-  },
-  {
-    "name": "Navegación despejada y publicación sencilla en celular",
-    "viewport": "mobile",
-    "covers": [
-      "cabecera no fija",
-      "barra inferior compacta",
-      "ofrecer oficio en una acción",
-      "contratar en una acción",
-      "menú con Escape",
-      "ciudades y noticias posteriores a resultados"
-    ],
-    "description": "Comprueba el orden del contenido y que los controles persistentes no tapen formularios.",
-    "steps": [
-      "Abre la portada en el entorno controlado de ensayo.",
-      "Desde Ofrezco mi trabajo u oficio abre el formulario y ciérralo.",
-      "Desde Necesito contratar abre el formulario correspondiente y ciérralo.",
-      "Abre el menú y ciérralo con Escape.",
-      "Desplázate al final y comprueba que Privacidad y Términos son accesibles."
-    ],
-    "expected": "Formularios correctos, sin barra inferior sobre ellos ni desbordamiento lateral; la cabecera sale de pantalla al desplazarse."
+    "expected": "Las campañas propias se identifican como tales, no como empleos ni ventas. Los anuncios comerciales elegibles conservan su espacio. Los enlaces visibles funcionan."
   }
 ]

@@ -147,6 +147,7 @@ type Listing = {
   until?: string;
   vacancies?: number;
   apply?: string;
+  applicationUrl?:string;
   source: string;
   sourceDomain: string;
   discoveredBy?: string;
@@ -1165,7 +1166,7 @@ function App() {
   const scopeCount=feedComplete?scopedJobs.length:null;
   const scopeRecent=feedComplete?scopedRecent.length:null;
   const scopeUnread=feedComplete?scopedRecent.filter(item=>!reading.read[item.id]).length:0;
-  const resultsTitle=(section==='opportunities'?'Empleos':section==='people'?'Personas disponibles':section==='needs'?'Necesitan gente':'Servicios')+' · '+(place==='Todas'?'zona local':place)+(onlyNew?' · Incorporadas en 7 días':'')+(onlyUnread?' · No leídas':'');
+  const resultsTitle=(section==='opportunities'?'Empleos':section==='people'?'Personas disponibles':section==='needs'?'Necesitan gente':'Servicios')+' · '+(place==='Todas'?'zona local':place)+(onlyNew?' · Incorporadas en 7 días':'')+(onlyUnread?' · No leídas':'')+(q?' · '+q:'')+(area!=='Todas'?' · '+area:'');
   const reviewCount = provisionalJobs;
   const ownerTokens = getOwnerTokens();
   useEffect(()=>{
@@ -1336,7 +1337,7 @@ function App() {
             <h1>Trabajo, servicios y oportunidades <em>cerca de ti.</em></h1>
             <p className='neoHeroLead'>Encuentra empleo, ofrece tus servicios o contrata personas de tu zona.</p>
 
-            <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setSection('opportunities');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
+            <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setResultPage(0);setSection('opportunities');setArea('Todas');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
               <Search />
               <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
               <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
@@ -1355,8 +1356,6 @@ function App() {
         <section className='neoRecentArrivals tcActivityStrip' aria-label='Actividad del catálogo'>
           <button onClick={()=>navigateResults('opportunities')}><b>{scopeCount??'…'}</b> ofertas disponibles{place!=='Todas'?' · '+place:''}</button>
           <button onClick={()=>openFresh()}><b>{scopeRecent??'…'}</b> incorporadas en 7 días</button>
-          <button onClick={()=>navigateResults('people')}>Personas disponibles</button>
-          <button onClick={()=>navigateResults('needs')}>Necesitan gente</button>
           <button onClick={()=>setShowActivity(true)}>Centro de novedades</button>
           {!feedComplete&&<small role='status'>Cargando más resultados…</small>}
         </section>
@@ -1372,7 +1371,7 @@ function App() {
           <div className='neoControlDeck'>
             <div className='neoTabs'>
               <button className={section === 'opportunities' ? 'active' : ''} onClick={() => navigateResults('opportunities')}><Briefcase /> Empleos</button>
-              <button className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch /> Personas <b>{people}</b></button>
+              <button className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch /> Personas disponibles <b>{people}</b></button>
               <button className={section === 'needs' ? 'active' : ''} onClick={() => navigateResults('needs')}><Users /> Necesitan gente</button>
               <button className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => navigateResults('services')}><Wrench /> Servicios</button>
             </div>
@@ -1380,7 +1379,7 @@ function App() {
               <label className='neoFilterSearch'><Search /><input value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' /></label>
               <label><MapPin /><span className='tcVisuallyHidden'>Comuna de resultados</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
               <label><Building2 /><span className='tcVisuallyHidden'>Área laboral</span><select value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
-              <button className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles /> Incorporadas en 7 días</button>
+              {section==='opportunities'&&<button className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles /> Incorporadas en 7 días</button>}
             </div>
           </div>
 
@@ -1475,7 +1474,9 @@ function App() {
                   <p>{selected.note || 'Sin descripción adicional.'}</p>
                 </div>
 
+                {(selected.apply||selected.evidence)&&<div className='neoDrawerSection'><h3>Postulación y evidencia</h3>{selected.apply&&<p>{selected.apply}</p>}{selected.evidence&&<p>{selected.evidence}</p>}</div>}
                 <div className='neoDrawerActions'>
+                  {selected.applicationUrl&&/^https:\/\//i.test(selected.applicationUrl)&&<a href={selected.applicationUrl} target='_blank' rel='noopener noreferrer'>Ver canal de postulación <ArrowRight/></a>}
                   {selected.url && <a href={selected.url} target='_blank' rel='noreferrer' onClick={() => track('tc_external_offer_click', { listing_id:selected.id, kind:selected.kind, commune:selected.workLocation, origin:selected.origin })}>Ver oferta original <ArrowRight /></a>}
                   {!selected.contact && selected.hasContact && <button className='neoDrawerPrimary' onClick={() => void revealContact(selected)} disabled={revealingContact}>{revealingContact ? 'Cargando contacto…' : 'Mostrar contacto'} <ArrowRight /></button>}
                   {selected.contact && <div className='neoContactReveal'>

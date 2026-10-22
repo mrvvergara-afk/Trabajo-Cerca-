@@ -4,7 +4,7 @@ state.houseCalls=[];
 let config={revision:'defaults-v1',campaigns:structuredClone(HOUSE_DEFAULTS)};
 const emptyFeed={items:[],nextCursor:null,totalItems:0,totalJobOffers:0,totalVerifiedJobOffers:0,totalProvisionalJobOffers:0,recentJobOffers7d:0,kindStats:{jobs:0,people:0,needs:0,services:0},communeStats:{},feedState:'fresh',state:'fresh'};
 export const auth={isSignedIn:()=>state.houseFixture==='admin',signIn:async()=>{},signOut:async()=>{},getAccessToken:async()=>''};
-export const notifications={getStatus:async()=>({enabled:false}),isSupported:()=>false,enable:async()=>{},disable:async()=>{},subscribe:async()=>{},unsubscribe:async()=>{}};
+export const notifications={configure:async()=>{},onMessage:(_callback:unknown)=>()=>{},getEnableGuidance:async()=>({kind:'unsupported'}),getStatus:async()=>({enabled:false}),isSupported:()=>false,enable:async()=>{},disable:async()=>{},subscribe:async()=>{},unsubscribe:async()=>{}};
 export const image={resizeIfNeeded:async()=>({data:'fixture',mimeType:'image/png'})};
 const commercial=(id:string,communes:string[],placements=['search'])=>({id,communes,businessName:'Empresa ficticia solo en pruebas',headline:'Anuncio de prueba',detail:'Nunca se publica este fixture',category:'Comercio local',status:'active',priority:10,startAt:'2000-01-01T00:00:00Z',endAt:'2099-01-01T00:00:00Z',placements,adType:'COMMERCIAL_PAID',url:'https://example.org'});
 async function call(method:string,path:string,body?:Record<string,unknown>){

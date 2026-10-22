@@ -1,12 +1,12 @@
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
-import {writeFileSync,mkdirSync} from 'node:fs';
-const browser=await chromium.launch({headless:true});
+import {writeFileSync,mkdirSync,existsSync} from 'node:fs';
+const browser=await chromium.launch({headless:true,...(existsSync('/usr/bin/google-chrome')?{executablePath:'/usr/bin/google-chrome'}:{})});
 const results=[];
 try{
  for(const viewport of [{width:390,height:844},{width:1440,height:1000}]){
   const context=await browser.newContext({viewport});
-  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const page=await context.newPage();const errors=[];page.on('pageerror',e=>{errors.push(e.message);console.error('BROWSER_ERROR '+e.message);});
   await page.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
   await page.addInitScript(()=>{sessionStorage.setItem('tc-house-turn','-1');});
   await page.goto('http://127.0.0.1:4174/',{waitUntil:'networkidle'});

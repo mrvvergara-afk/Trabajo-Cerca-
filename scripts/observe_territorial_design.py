@@ -49,6 +49,14 @@ async def observe():
                 assert description and description.startswith('Encuentra oportunidades laborales'), 'public_description_missing'
                 assert canonical == URL, 'canonical_mismatch'
                 assert await page.get_by_role('button', name='Administración', exact=True).count() == 0, 'anonymous_admin_shortcut_visible'
+                account_button = page.get_by_role('button', name='Mi cuenta', exact=True)
+                await account_button.click()
+                account_menu = page.get_by_role('region', name='Mi cuenta')
+                assert await account_menu.get_by_role('button', name='Iniciar sesión', exact=True).is_visible()
+                assert not await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), 'account_menu_overflow'
+                await account_menu.get_by_role('button', name='Cerrar menú', exact=True).click()
+                assert not await account_menu.count()
+
                 counts = await page.locator('.tcExploreCities button').all_text_contents()
                 total = await page.locator('.neoHeroMeta span').first.inner_text()
                 assert 'total del radar' in total, total

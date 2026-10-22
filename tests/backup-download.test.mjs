@@ -50,7 +50,7 @@ function backend(overrides={}) {
   const json=(data,statusCode=200)=>({statusCode,headers:{},body:JSON.stringify(data)});
   const error=(message,statusCode)=>json({error:message},statusCode);
   const source=stripTypeScriptTypes(read('admin-backup.ts'),{mode:'strip'}).replace(/^import .*;$/gm,'').replace(/^export /gm,'');
-  const functions=vm.runInNewContext('(function(){'+source+';return {adminBackupPage,backupTableAllowed};})()',{db,storage,json,error,Buffer});
+  const functions=vm.runInNewContext('(function(){'+source+';return {adminBackupPage,backupTableAllowed};})()',{db,storage,json,error,Buffer,isAppDatabaseError:e=>Boolean(e?.code?.startsWith('AppDatabase')),console:{warn:()=>{}}});
   return {...functions,reads};
 }
 test('export returns one bounded page and no-cache headers while keeping physical IDs/history',async()=>{
@@ -70,8 +70,8 @@ test('file absence, oversized pages and quota errors abort instead of reporting 
   assert.equal((await missing.adminBackupPage({body:{kind:'file',path:'images/missing.png'}})).statusCode,409);
   const large=backend({db:{list:async()=>({items:[{id:'big',payload:'x'.repeat(1500001)}]})}});
   assert.equal((await large.adminBackupPage({body:{kind:'table',table:'community_posts'}})).statusCode,413);
-  let calls=0;const quota=backend({db:{list:async()=>{calls++;throw Error('AppDatabaseQuotaExceeded');}}});
-  await assert.rejects(quota.adminBackupPage({body:{kind:'table',table:'community_posts'}}),/QuotaExceeded/);assert.equal(calls,1);
+  let calls=0;const quota=backend({db:{list:async()=>{calls++;throw Object.assign(Error('private-fixture-must-not-leak'),{code:'AppDatabaseQuotaExceeded'});}}});
+  const denied=await quota.adminBackupPage({body:{kind:'table',table:'community_posts'}});assert.equal(denied.statusCode,429);assert.equal(JSON.parse(denied.body).code,'backup_quota');assert(!denied.body.includes('private-fixture'));assert.equal(calls,1);
 });
 test('scope and storage traversal are bounded and do not mint signed public links',async()=>{
   const b=backend();const scope=JSON.parse((await b.adminBackupPage({body:{kind:'scope'}})).body);

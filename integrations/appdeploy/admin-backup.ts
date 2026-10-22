@@ -1,4 +1,4 @@
-import { db, storage, json, error, type RouterContext } from '@appdeploy/sdk';
+import { db, storage, json, error, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 
 export const BACKUP_TABLES = [
   'community_posts', 'free_public_run_leases', 'free_public_source_reads', 'free_public_source_runs',
@@ -24,7 +24,7 @@ function privateResponse(data: unknown) {
 
 // Mounted only after requireAuth + requireAdminEmailAllowlist in index.ts.
 // Reads one bounded page or one object. No writes, retries or growing-table drain.
-export async function adminBackupPage(ctx: RouterContext) {
+async function readBackupPage(ctx: RouterContext) {
   const body = (ctx.body || {}) as Record<string, unknown>;
   if (body.kind === 'scope') return privateResponse({ tables: BACKUP_TABLES, revision: 'application-backup-v1', consistency: 'rolling_non_atomic', fullPlatformBackup: false });
   const cursor = body.cursor;
@@ -49,4 +49,23 @@ export async function adminBackupPage(ctx: RouterContext) {
     return privateResponse({ kind: 'file', path, content: file.content });
   }
   return error('Operación de respaldo inválida.', 400);
+}
+
+export async function adminBackupPage(ctx: RouterContext) {
+  try {
+    return await readBackupPage(ctx);
+  } catch (cause: unknown) {
+    const code = isAppDatabaseError(cause) ? cause.code : 'UnknownReadFailure';
+    const quota = code === 'AppDatabaseQuotaExceeded';
+    const incomplete = code === 'AppDatabaseReadIncomplete';
+    const body = (ctx.body || {}) as Record<string, unknown>;
+    console.warn('backup_export_read_failed', {
+      kind: ['scope','table','storage','file'].includes(String(body.kind)) ? body.kind : 'unknown',
+      table: backupTableAllowed(body.table) ? body.table : undefined,
+      code
+    });
+    const response = json({ error: quota ? 'Cuota de lectura alcanzada.' : 'No se completó la lectura del respaldo.', code: quota ? 'backup_quota' : incomplete ? 'backup_read_incomplete' : 'backup_read_failed' }, quota ? 429 : 503);
+    response.headers = { ...response.headers, 'Cache-Control': 'no-store, private', 'Vary': 'Authorization' };
+    return response;
+  }
 }

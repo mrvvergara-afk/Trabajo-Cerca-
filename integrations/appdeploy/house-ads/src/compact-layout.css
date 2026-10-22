@@ -140,3 +140,4 @@
 
 .neoShell .tcActivityStrip .tcActivityCenterButton{min-width:44px;justify-content:center;padding:8px}.tcActivityCenterButton svg{width:20px;height:20px}
 @media(max-width:430px){.neoShell .tcHouseAd{grid-template-columns:minmax(0,1fr);gap:8px}.neoShell .tcHouseAd button{justify-self:start;max-width:100%;width:auto}.neoShell .tcHouseAd h3,.neoShell .tcHouseAd p{margin:3px 0}.neoShell .tcHouseAd small{line-height:1.3}}
+@media(max-width:430px){.neoShell .tcHouseAd h3{font-size:16px;line-height:1.2}}

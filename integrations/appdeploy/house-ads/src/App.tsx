@@ -1338,7 +1338,7 @@ function App() {
             <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setSection('opportunities');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
               <Search />
               <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
-              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
+              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
               <button type='submit'>Buscar <ArrowRight /></button>
             </form>
             <nav className='tcQuickActions' aria-label='Qué necesitas hacer'>
@@ -1350,6 +1350,7 @@ function App() {
           </div>
         </section>
 
+        {advertising.selections.search?.type==='COMMERCIAL'&&renderAdvertising('search')}
         <section className='neoRecentArrivals tcActivityStrip' aria-label='Actividad del catálogo'>
           <button onClick={()=>navigateResults('opportunities')}><b>{scopeCount??'…'}</b> ofertas disponibles{place!=='Todas'?' · '+place:''}</button>
           <button onClick={()=>openFresh()}><b>{scopeRecent??'…'}</b> incorporadas en 7 días</button>
@@ -1376,7 +1377,7 @@ function App() {
             </div>
             <div className='neoFilters'>
               <label className='neoFilterSearch'><Search /><input value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' /></label>
-              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de resultados</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && <option value={place}>{place} · para viajar</option>}{places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value}>{value}</option>)}</select></label>
+              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de resultados</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
               <label><Building2 /><span className='tcVisuallyHidden'>Área laboral</span><select value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
               <button className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles /> Incorporadas en 7 días</button>
             </div>
@@ -1392,7 +1393,7 @@ function App() {
                   {originalPoster(item,window.location.href)&&<button className='tcPosterThumb' onClick={()=>setSelected(item)} aria-label={'Ver afiche de '+item.title}><img src={originalPoster(item,window.location.href)!} alt={'Afiche original de '+item.title} loading='lazy' referrerPolicy='no-referrer'/></button>}
                   <div className='neoJobBody'>
                     <div className='neoJobTop'>
-                      <span className='neoJobPlace'><MapPin /> {item.workLocation}</span>
+                      {item.workLocation?.trim()&&<span className='neoJobPlace'><MapPin /> {item.workLocation}</span>}
                       <span className={'neoJobState ' + (item.review || item.revalidationDue ? 'pending' : item.verified ? 'verified' : 'direct')}>{reviewLabel(item)}</span>
                     </div>
 
@@ -1401,7 +1402,7 @@ function App() {
                     {identifiedEmployer(item)&&<p className='neoJobCompany'>{identifiedEmployer(item)}</p>}
                     {item.salary && <strong className='neoSalary'>{item.salary}</strong>}
                     <div className='neoJobFacts'>
-                      <span><small>Fuente</small><b>{item.source}</b></span>
+                      <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
                     </div>
                     <div className='neoJobFoot'>
                       <span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}{item.firstPublishedAt&&<small>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</small>}</span>
@@ -1421,7 +1422,7 @@ function App() {
           {nextCursor && !loadError && <div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando…' : 'Cargar más'} <ArrowRight /></button></div>}
         </section>
 
-        {renderAdvertising('search')}
+        {advertising.selections.search?.type!=='COMMERCIAL'&&renderAdvertising('search')}
         <TerritorialRadar stats={feedSummary.communeStats} ready={!loading&&!loadError} failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt} onSelect={town=>navigateResults('opportunities',town)}/>
         <details className='tcSecondary' id='tc-other-cities'><summary>Buscar también en otras ciudades</summary>
           <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>
@@ -1533,7 +1534,7 @@ function App() {
             <MapPin size={15} />
             <span className='communeLabel'>Comuna</span>
             <select value={place} onChange={e => { setPlace(e.target.value); setFilterMode('work'); }}>
-              {places.filter(value => !travelPlaces.includes(value)).map(value => <option key={value} value={value}>{value === 'Todas' ? 'Todas las comunas' : value}</option>)}
+              {places.map(value => <option key={value} value={value}>{value === 'Todas' ? 'Todas las comunas' : value}</option>)}
             </select>
           </label>
           <span className='radarLive'><span /> Radar activo</span>

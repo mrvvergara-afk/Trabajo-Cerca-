@@ -1,0 +1,41 @@
+{
+  "schema": "trabajo-cerca.technical-closure.v1",
+  "checkedAt": "2026-10-22T17:18:54.499Z",
+  "candidateCode": "87e6bb9a9d2ae404edf760093398a7897c342ace",
+  "baseBranchHead": "3d72f2246c95c13f9b1e7328d42d2fcb9cc8ca44",
+  "main": "fab392b824e4100a4bba6dfe9289825297d24707",
+  "liveVersion": "1792676091153",
+  "draftPR": 2,
+  "productionDeployed": false,
+  "mainModified": false,
+  "productionFixtureWrites": 0,
+  "newOffersPublished": 0,
+  "chargesEnabled": false,
+  "ci": {
+    "finalCandidatePRRun": 39820868682,
+    "conclusion": "success",
+    "publicSDKReadRun": 39820553743,
+    "publicSDKRunConclusion": "success",
+    "python": 243,
+    "node": 345,
+    "capacity5000Repeated": false,
+    "previousPublicSDKReadRun": 39820132089
+  },
+  "artifact": {
+    "id": 12444666276,
+    "sha256": "659234cbf08ce0f475f7167c68f1c664975caaeb33c8479fcf6df2610ce42b90",
+    "downloadedAndVerified": true
+  },
+  "releaseBlockers": [
+    "hosting_document_headers",
+    "main_protection",
+    "owner_legal_identification",
+    "isolated_platform_sdk_restore_and_authenticated_flows"
+  ],
+  "liveInventoryQuality": {
+    "revalidationDue": 49,
+    "portalNamedEmployerCandidates": 11,
+    "notAllVerifiedFresh": true
+  },
+  "verdict": "NOT_READY_FOR_PUBLIC_LAUNCH"
+}

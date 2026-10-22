@@ -1,0 +1,66 @@
+{
+  "schema": "trabajo-cerca.restore-rehearsal-deployment.v1",
+  "app_version": "1792631384853",
+  "run": 39704236446,
+  "job": 119580377578,
+  "python_passed": 243,
+  "node_passed": 295,
+  "native_browser_fixtures": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "report": {
+        "schema": "trabajo-cerca.local-restore-rehearsal.v1",
+        "checkedAt": "2026-10-22T01:12:38.356Z",
+        "tables": 2,
+        "records": 2,
+        "files": 1,
+        "comparedElements": 3,
+        "mismatches": 0,
+        "encryptedFileSha256": "53bc2695bea5760599e3e4e506d15123b3c939385937b90f0c5d09d698cace19",
+        "temporaryStoreDeleted": true,
+        "privateValuesStoredEncrypted": true,
+        "networkRequests": 0,
+        "productionWrites": 0,
+        "platformRestoreTested": false,
+        "limitations": [
+          "No certifica recuperación funcional en AppDeploy.",
+          "No certifica tablas sin referencias ni elementos ausentes de la copia.",
+          "Un total de cero archivos no acredita que el almacenamiento de origen esté vacío."
+        ]
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "report": {
+        "schema": "trabajo-cerca.local-restore-rehearsal.v1",
+        "checkedAt": "2026-10-22T01:12:44.430Z",
+        "tables": 2,
+        "records": 2,
+        "files": 1,
+        "comparedElements": 3,
+        "mismatches": 0,
+        "encryptedFileSha256": "9af4dfbb2046bc878e794276b2ee5db6ad19600631ea9b0b46645763abec58be",
+        "temporaryStoreDeleted": true,
+        "privateValuesStoredEncrypted": true,
+        "networkRequests": 0,
+        "productionWrites": 0,
+        "platformRestoreTested": false,
+        "limitations": [
+          "No certifica recuperación funcional en AppDeploy.",
+          "No certifica tablas sin referencias ni elementos ausentes de la copia.",
+          "Un total de cero archivos no acredita que el almacenamiento de origen esté vacío."
+        ]
+      }
+    }
+  ],
+  "real_user_file_restored": false,
+  "appdeploy_functional_restore_tested": false,
+  "a08_closed": false,
+  "new_offers_published": 0
+}

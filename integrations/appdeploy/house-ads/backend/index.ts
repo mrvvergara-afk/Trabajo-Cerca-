@@ -1,3 +1,4 @@
+import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
 import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, commercialAdmin, commercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
@@ -2898,6 +2899,8 @@ export const handler = router({
       },
       growth:{
         advertiserLeads:leads.items.filter(item => item.status === 'new').length,
+        advertiserLeadsPartial:Boolean(leads.nextToken),
+        socialDraftsPartial:Boolean(drafts.nextToken),
         socialDrafts:drafts.items.filter(item => item.status === 'draft').length,
         activeCampaigns:activeCampaigns.length,
       },
@@ -2936,7 +2939,7 @@ export const handler = router({
     const note = normalizeText(input.note).slice(0, 600);
     const consent = input.consent === true;
     if (!businessName || !commune || !category || !contact) return error('Completa negocio, comuna, rubro y contacto.', 400);
-    if (!MARKET_PLACES.includes(commune)) return error('Selecciona una comuna de Trabajo Cerca.', 400);
+    if (!COMMERCIAL_PLACES.includes(commune)) return error('Selecciona una comuna de Trabajo Cerca.', 400);
     if(input.advertisingConsent!==true)return error('Autoriza la publicidad del negocio que representas, sin cobros.',400);
     if (!consent) return error('Debes aceptar el aviso de privacidad para solicitar información comercial.', 400);
     if (!moderate([businessName, category, contact, note].join(' '))) return error('La solicitud requiere revisión.', 400);

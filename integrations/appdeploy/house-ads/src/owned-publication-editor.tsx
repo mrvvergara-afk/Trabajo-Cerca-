@@ -1,11 +1,11 @@
-import {useState} from 'react';
+import {useState,type FormEvent} from 'react';
 import {api} from '@appdeploy/client';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 export function OwnedPublicationEditor({item,ownerToken,onSaved}:{item:{id:string;title:string;note:string;workLocation:string};ownerToken:string;onSaved:()=>void}){
   const [title,setTitle]=useState(item.title);const [detail,setDetail]=useState(item.note);
   const [place,setPlace]=useState(item.workLocation);const [contact,setContact]=useState('');
   const [renew,setRenew]=useState(false);const [consent,setConsent]=useState(false);const [busy,setBusy]=useState(false);const [message,setMessage]=useState('');
-  async function save(e:React.FormEvent){e.preventDefault();setBusy(true);try{await api.post('/api/listings/'+item.id+'/manage',{ownerToken,title,detail,workLocation:place,contact,renew,consent});onSaved();}catch{setMessage('No se guardó. Revisa los datos y utiliza el dispositivo desde el que publicaste.');}finally{setBusy(false);}}
+  async function save(e:FormEvent){e.preventDefault();setBusy(true);try{await api.post('/api/listings/'+item.id+'/manage',{ownerToken,title,detail,workLocation:place,contact,renew,consent});onSaved();}catch{setMessage('No se guardó. Revisa los datos y utiliza el dispositivo desde el que publicaste.');}finally{setBusy(false);}}
   return <details className='tcOwnedEditor'><summary>Editar o renovar mi publicación gratuita</summary><form onSubmit={save}>
     <label>Oficio, servicio o necesidad<input required maxLength={140} value={title} onChange={e=>setTitle(e.target.value)}/></label>
     <label>Descripción<textarea maxLength={1200} value={detail} onChange={e=>setDetail(e.target.value)}/></label>

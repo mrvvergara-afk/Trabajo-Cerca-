@@ -1,3 +1,4 @@
+import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {OwnedPublicationEditor} from './owned-publication-editor';
 import { HouseBanner, useAdvertising, sendHouseEvent, completeHouseGoal, type HouseAttribution } from './house-advertising';
 import type { Goal, Slot } from '../shared/house-ads';
@@ -71,7 +72,7 @@ type OpsSummary = {
   updatedAt:string;
   jobs:{active:number;verified:number;publicPending:number;direct:number};
   radar:{pendingCandidates:number;sourceFailures:number;lastSweep:string|null};
-  growth:{advertiserLeads:number;socialDrafts:number;activeCampaigns:number};
+  growth:{advertiserLeads:number;socialDrafts:number;activeCampaigns:number;advertiserLeadsPartial?:boolean;socialDraftsPartial?:boolean};
   privacy:{personalDetailsIncluded:boolean;note:string};
 };
 
@@ -485,7 +486,7 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
   const [website, setWebsite] = useState('');
   const [data, setData] = useState({
     businessName:'',
-    commune:initialCommune === 'Todas' ? 'Angol' : initialCommune,
+    commune:COMMERCIAL_PLACES.includes(initialCommune)?initialCommune:'Angol',
     category:'Comercio local',
     presence:'Facebook / Instagram',
     contact:'',
@@ -528,7 +529,7 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
             <input required value={data.businessName} onChange={e => set('businessName', e.target.value)} placeholder='Ej. Ferretería El Roble' />
           </label>
           <label>Comuna
-            <select value={data.commune} onChange={e => set('commune', e.target.value)}>{[...new Set([...places.filter(p => p !== 'Todas'), ...travelPlaces])].map(p => <option key={p}>{p}</option>)}</select>
+            <select value={data.commune} onChange={e => set('commune', e.target.value)}>{COMMERCIAL_PLACES.map(p => <option key={p}>{p}</option>)}</select>
           </label>
           <label>Rubro
             <select value={data.category} onChange={e => set('category', e.target.value)}>
@@ -843,8 +844,8 @@ export function OperationsPanel() {
           </div>
           <div className='opsCard'>
             <span className='overline'>CRECIMIENTO Y COMERCIAL</span>
-            <div className='opsLine'><div><Store /><span>Solicitudes de anunciantes</span></div><b>{summary.growth.advertiserLeads}</b></div>
-            <div className='opsLine'><div><Megaphone /><span>Borradores sociales</span></div><b>{summary.growth.socialDrafts}</b></div>
+            <div className='opsLine'><div><Store /><span>Solicitudes de anunciantes</span></div><b>{summary.growth.advertiserLeadsPartial?'Al menos ':''}{summary.growth.advertiserLeads}</b></div>
+            <div className='opsLine'><div><Megaphone /><span>Borradores sociales</span></div><b>{summary.growth.socialDraftsPartial?'Al menos ':''}{summary.growth.socialDrafts}</b></div>
             <div className='opsLine'><div><BadgeCheck /><span>Campañas activas</span></div><b>{summary.growth.activeCampaigns}</b></div>
           </div>
         </section>

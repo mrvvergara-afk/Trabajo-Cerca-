@@ -100,3 +100,20 @@ test('concurrent repeated approval of one lead creates only one campaign and one
  const b=setup();await launch(b);const ctx=lead(b,'same');const results=await Promise.all(Array.from({length:10},()=>b.activateFreeTrial(ctx)));
  assert(results.every(r=>[200,201].includes(r.statusCode)));assert.equal(b.table('growth_campaigns').size,1);assert.equal((await b.commercialConfiguration()).foundersUsed,1);
 });
+test('actual direct-publication handler persists free arbitrary trades and hiring needs with private contacts',async()=>{
+ const {readFileSync}=await import('node:fs');const {stripTypeScriptTypes}=await import('node:module');const vm=await import('node:vm');
+ const code=readFileSync(new URL('../backend/index.ts',import.meta.url),'utf8');
+ const begin=code.indexOf("  'POST /api/listings':");const end=code.indexOf("  'POST /api/listings/:id/contact':",begin);
+ const section=code.slice(begin,end);const arrow=section.slice(section.indexOf('async ({ body })'),section.lastIndexOf('}],')+1);
+ const pub=code.slice(code.indexOf('function publicRecord<'),code.indexOf('function cacheable('));
+ const records=[];let rebuilt=0;
+ const json=(v,statusCode=200)=>({body:JSON.stringify(v),statusCode});
+ const handler=vm.runInNewContext(stripTypeScriptTypes(pub+'\nconst handler='+arrow+';handler;'),{Date,JSON,URL,db:{list:async()=>({items:[]})},normalizeText:v=>typeof v==='string'?v.trim():'',cleanClientToken:v=>v==='local-fixture-token'?v:'',allowBurst:()=>true,moderate:s=>!s.includes('BLOCKED'),extractCommunes:s=>policy.COMMERCIAL_PLACES.filter(p=>s.includes(p)),token:()=> 'private-owner-token',trackedFeedAdd:async(_table,rows)=>{records.push(...rows);return ['isolated-'+records.length];},rebuildPublicFeed:async()=>{rebuilt++;},houseConversion:async()=>true,json,error:(message,status)=>json({error:message},status)});
+ for(const kind of ['worker_available','worker_need']){
+  const result=await handler({body:{kind,title:kind==='worker_available'?'Oficio libre no catalogado':'Necesito trabajador agrícola',workLocation:'Angol',contact:'+56912345678',consent:true,clientToken:'local-fixture-token'}});
+  assert.equal(result.statusCode,201);const value=JSON.parse(result.body);assert(value.ownerToken);assert(!value.item.ownerToken);assert(!value.item.contact);assert.equal(value.item.hasContact,true);assert(!('price'in value));
+ }
+ assert.equal(records.length,2);assert.equal(rebuilt,2);assert(records.every(r=>r.origin==='direct'&&r.verified===false));
+ assert.equal((await handler({body:{kind:'worker_available',title:'X',workLocation:'Angol',contact:'+56912345678',clientToken:'local-fixture-token',consent:false}})).statusCode,400);
+ assert.equal(records.length,2);
+});

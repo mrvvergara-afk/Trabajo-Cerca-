@@ -133,7 +133,7 @@ export async function recordHouseEvent(attribution:unknown,event:HouseEvent,effe
 }
 async function recordCampaignMetric(prefix:'growth_house'|'growth_commercial',campaignId:string,creativeId:string,event:HouseEvent,effectId:string,type:string){
   const day=new Date().toISOString().slice(0,10);const id=digest(campaignId+':'+creativeId+':'+day);
-  const receipt=digest(campaignId+':'+event+':'+effectId);
+  const receipt=digest((prefix==='growth_house'?'':campaignId+':')+event+':'+effectId);
   const table=prefix+'_events';
   const [prior]=await db.get(table,[receipt],{consistent:true});
   if(prior)return true;

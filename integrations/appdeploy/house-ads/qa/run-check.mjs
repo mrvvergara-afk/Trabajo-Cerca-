@@ -19,4 +19,5 @@ try{
  run('node',['qa/browser-check.mjs']);
  run('node',['qa/layout-check.mjs']);
  run('node',['qa/capacity-check.mjs']);
+ run('node',['qa/publication-check.mjs']);
 }finally{try{process.kill(-server.pid,'SIGTERM');}catch{}}

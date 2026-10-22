@@ -1358,7 +1358,7 @@ function App() {
         <section className='neoRecentArrivals tcActivityStrip' aria-label='Actividad del catálogo'>
           <button onClick={()=>navigateResults('opportunities')}><b>{scopeCount??'…'}</b> ofertas disponibles{place!=='Todas'?' · '+place:''}</button>
           <button onClick={()=>openFresh()}><b>{scopeRecent??'…'}</b> incorporadas en 7 días</button>
-          <button onClick={()=>setShowActivity(true)}>Centro de novedades</button>
+          <button className='tcActivityCenterButton' aria-label='Centro de novedades' title='Centro de novedades' onClick={()=>setShowActivity(true)}><Bell aria-hidden='true'/></button>
           {!feedComplete&&<small role='status'>Cargando más resultados…</small>}
         </section>
 

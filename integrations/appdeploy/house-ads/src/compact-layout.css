@@ -137,3 +137,5 @@
 @media(max-width:430px){.neoShell .neoTabs svg{display:none}}
 
 .neoShell .neoTopbar .neoBrand{min-height:44px}.neoShell .neoFooter button{min-height:44px;padding:8px}.neoShell .neoNotice>button{min-width:44px;min-height:44px}
+
+.neoShell .tcActivityStrip .tcActivityCenterButton{min-width:44px;justify-content:center;padding:8px}.tcActivityCenterButton svg{width:20px;height:20px}

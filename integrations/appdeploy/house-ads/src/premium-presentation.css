@@ -63,3 +63,5 @@
  .neoShell .neoJobFoot{margin-top:6px;padding-top:6px}
 }
 @media(prefers-reduced-motion:reduce){.tcPremiumAd,.tcPremiumAd button{transition:none!important;transform:none!important}}
+
+.tcCompactNews[data-expanded=false] article p{-webkit-line-clamp:2}

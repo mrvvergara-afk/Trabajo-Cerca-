@@ -1,0 +1,35 @@
+name: Exportar fotos HOUSE_AD (solo recursos)
+on:
+  push:
+    branches:
+      - handoff/house-photo-assets-2026-10-23
+permissions:
+  contents: read
+jobs:
+  export-photographs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Obtener recursos originales desde el commit aprobado para QA
+        uses: actions/checkout@v4
+      - name: Comprobar 12 imágenes WebP de referencia
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          root=Path('integrations/appdeploy/house-ads')
+          manifest=json.loads((root/'qa/photo-resources.json').read_text())
+          assert len(manifest)==12, f'Archivos esperados: 12, encontrados: {len(manifest)}'
+          for item in manifest:
+            path=root/item['target_path']
+            content=path.read_bytes()
+            assert hashlib.sha256(content).hexdigest()==item['sha256'], str(path)
+          print('12 fotografias verificadas contra el manifiesto; no se toca AppDeploy')
+          PY
+      - name: Exportar exclusivamente fotos originales
+        uses: actions/upload-artifact@v4
+        with:
+          name: trabajo-cerca-12-fotos-originales
+          path: integrations/appdeploy/house-ads/public/resources/house-*-photo-v2-*.webp
+          retention-days: 2
+          if-no-files-found: error

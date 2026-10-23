@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '@appdeploy/client';
 import { allocateAdvertising, type HouseCampaign, type CommercialAd, type Goal, type Selection } from '../shared/house-ads';
 import './house-advertising.css';
+import {AdImage} from './ad-image';
 export type HouseAttribution = {campaignId:string; creativeId:string};
 export function sendHouseEvent(a:HouseAttribution,event:'impression'|'click'|'form_started') {
   void api.post('/api/growth/house-events',{...a,event,eventId:crypto.randomUUID()}).catch(()=>undefined);
@@ -52,7 +53,7 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
   },[key]);
   if(!house)return null;
   return <aside ref={node} className='tcHouseAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD'>
-    {house.creative.imageUrl&&<img src={house.creative.imageUrl} alt='' width='96' height='96' loading='lazy' decoding='async'/>}
+    <AdImage url={house.creative.imageUrl}/>
     <div><small>TRABAJO CERCA · CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{house.creative.title}</h3><p className='tcHouseDesktop'>{house.creative.message}</p><p className='tcHouseMobile'>{house.creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Duración según la promoción vigente y la revisión del negocio. Sin cobro ni renovación automática.</small>}</div>
     <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{house.creative.button} <span aria-hidden='true'>→</span></button>
   </aside>;

@@ -6,6 +6,8 @@ const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const js=p=>stripTypeScriptTypes(read(p)).replace(/^import .*;$/gm,'');
 export const shared=await import('data:text/javascript;base64,'+Buffer.from(js('shared/house-ads.ts')).toString('base64'));
 export const policy=await import('data:text/javascript;base64,'+Buffer.from(js('shared/commercial-policy.ts')).toString('base64'));
+const media=await import('data:text/javascript;base64,'+Buffer.from(js('shared/ad-images.ts')).toString('base64'));
+const validation=await import('data:text/javascript;base64,'+Buffer.from(js('backend/image-validation.ts')).toString('base64'));
 export const NOW=Date.parse('2026-10-22T12:00:00Z');
 export function setup({delay=0,cycle=false}={}){
  let tables=new Map();const writes=[];const reads=[];let fail=false;
@@ -18,8 +20,9 @@ export function setup({delay=0,cycle=false}={}){
    const patch=Object.fromEntries(Object.entries(row.record).map(([k,v])=>[k,v&&typeof v==='object'&&'inc'in v?(old[k]||0)+v.inc:v]));dest.set(row.id,{...old,...patch});return true;
  });}
  const db={get:async(t,ids)=>ids.map(id=>structuredClone(table(t).get(id)||null)),list:async(t,options={})=>{reads.push({table:t,...options});if(delay)await new Promise(r=>setTimeout(r,delay));const rows=[...table(t).values()];const offset=Number(options.nextToken)||0;const end=offset+(options.limit||100);return {items:rows.slice(offset,end).map(row=>structuredClone(row)),...(cycle?{nextToken:'100'}:end<rows.length?{nextToken:String(end)}:{})};},tx:{add:(t,rows)=>operation('add',t,rows),update:(t,rows,options)=>operation('update',t,rows,options)},transact:async ops=>{if(fail)throw conflict();const copy=structuredClone(tables);for(const op of ops){const r=apply(op,copy);if(r.some(v=>v===null||v===false))throw conflict();}tables=copy;}};
- const json=(value,statusCode=200)=>({statusCode,headers:{},body:JSON.stringify(value)});const storage={url:async paths=>paths.map(path=>({path,url:'https://example.org/signed'})),write:async()=>[true]};
- const exports=vm.runInNewContext('(function(){'+js('backend/house-marketing.ts').replace(/^export /gm,'')+';return {houseConfiguration,saveHouseConfiguration,advertisingCatalog,houseClientEvent,recordHouseEvent,houseDashboard,activateFreeTrial,uploadHouseCreative,commercialAdmin,commercialCampaigns,commercialConfiguration,publicPromotion,commercialInventory,invalidateCommercialInventory,commercialClientEvent,commercialMetrics};})()',{db,storage,json,error:(message,statusCode)=>json({error:message},statusCode),increment:n=>({inc:n}),isAppDatabaseError:e=>!!e?.code,createHash,randomUUID,Buffer,URL,console,structuredClone,...shared,...policy});
+ const files=new Map();
+ const json=(value,statusCode=200)=>({statusCode,headers:{},body:JSON.stringify(value)});const storage={url:async paths=>paths.map(path=>({path,url:'https://fixture.appdeploy.ai/'+path})),write:async rows=>rows.map(r=>{files.set(r.path,r.content);return true;}),read:async paths=>paths.map(path=>({path,content:files.get(path)??null}))};
+ const exports=vm.runInNewContext('(function(){'+js('backend/house-marketing.ts').replace(/^export /gm,'')+';return {houseConfiguration,saveHouseConfiguration,advertisingCatalog,houseClientEvent,recordHouseEvent,houseDashboard,activateFreeTrial,uploadHouseCreative,commercialAdmin,commercialCampaigns,commercialConfiguration,publicPromotion,commercialInventory,invalidateCommercialInventory,commercialClientEvent,commercialMetrics};})()',{db,storage,json,error:(message,statusCode)=>json({error:message},statusCode),increment:n=>({inc:n}),isAppDatabaseError:e=>!!e?.code,createHash,randomUUID,Buffer,URL,console,structuredClone,...shared,...policy,...media,...validation});
  return {...exports,table:(t)=>table(t),setFail:v=>{fail=v;},writes,reads};
 }
 export async function launch(b,extra={}){

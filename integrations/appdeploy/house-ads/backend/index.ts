@@ -4,6 +4,7 @@ import {ownedPublicationPatch} from '../shared/owned-publication';
 import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, commercialAdmin, commercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { adminBackupPage } from './admin-backup';
+import { recheckPriority } from '../shared/offer-public-state';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
 import { advancePublicFeed, readPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
@@ -1456,15 +1457,8 @@ async function processPendingOffers(limit=40) {
       return false;
     })
     .sort((a,b) => {
-      if (a.review !== b.review) return a.review ? -1 : 1;
-      const aNeverChecked = !a.verificationCheckedAt;
-      const bNeverChecked = !b.verificationCheckedAt;
-      if (aNeverChecked !== bNeverChecked) return aNeverChecked ? -1 : 1;
-      const rank:Record<string,number> = { official:0, portal:1, social:2, other:3, secondary:4 };
-      const aTier = sourceVerificationTier(verificationHost(a.url, a.sourceDomain));
-      const bTier = sourceVerificationTier(verificationHost(b.url, b.sourceDomain));
-      if (rank[aTier] !== rank[bTier]) return rank[aTier] - rank[bTier];
-      return (Date.parse(a.verificationCheckedAt || '') || 0) - (Date.parse(b.verificationCheckedAt || '') || 0);
+      const frequent=(item:ListingRecord)=>['portal','social'].includes(sourceVerificationTier(verificationHost(item.url,item.sourceDomain)));
+      return recheckPriority(b,Date.now(),frequent(b))-recheckPriority(a,Date.now(),frequent(a)) || (Date.parse(a.verificationCheckedAt || '') || 0)-(Date.parse(b.verificationCheckedAt || '') || 0);
     })
     .slice(0, limit);
   const updates:Array<{ id:string; record:Record<string,unknown> }> = [];

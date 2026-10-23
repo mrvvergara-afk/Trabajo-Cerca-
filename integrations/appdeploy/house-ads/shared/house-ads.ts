@@ -1,6 +1,6 @@
 export type Goal = 'professional' | 'advertiser' | 'employer' | 'explore';
 export type Slot = 'search' | 'listing';
-export type Creative = { id: string; title: string; message: string; mobileMessage: string; button: string; storagePath?: string; imageUrl?: string };
+export type Creative = { id: string; title: string; message: string; mobileMessage: string; button: string; storagePath?: string; imageUrl?: string; imageDisabled?:boolean };
 export type HouseCampaign = {
   id: string; type: 'HOUSE_AD'; goal: Goal; status: 'active' | 'paused';
   communes: string[]; categories: string[]; pages: string[]; placements: Slot[];
@@ -11,6 +11,7 @@ export type CommercialAd = {
   id: string; businessName: string; headline: string; detail: string; url?: string;
   communes: string[]; category: string; status: string; startAt: string; endAt: string;
   priority: number; placements?: Slot[]; scope?: string;
+  image?:import('./ad-images').AdMedia|null; logo?:import('./ad-images').AdMedia|null; imageUrl?:string; logoUrl?:string; mediaRevision?:string;
   // Existing campaigns without a type are protected legacy inventory, never HOUSE_AD.
   adType?: 'COMMERCIAL_FREE' | 'COMMERCIAL_PAID';
 };
@@ -24,7 +25,7 @@ export const HOUSE_DEFAULTS: HouseCampaign[] = [
   { id:'house-inclusion',type:'HOUSE_AD',goal:'professional',status:'active',communes:[],categories:[],pages:['home','people','needs','services'],placements:['search','listing'],startAt:null,endAt:null,priority:15,maxPerSession:3,creatives:[variant('a','Aquí hay espacio para todos.','Desde el trabajo agrícola hasta los servicios técnicos y profesionales. Si sabes hacer algo, puedes ofrecerlo.','Todos los oficios tienen espacio aquí.','Ofrecer mis servicios')] },
   { id:'house-local-business',type:'HOUSE_AD',goal:'advertiser',status:'active',communes:[],categories:[],pages:['home','people','needs','services'],placements:['search','listing'],startAt:null,endAt:null,priority:5,maxPerSession:3,creatives:[variant('a','¿Ofreces alojamiento, alimentación o servicios para empresas?','Da a conocer tus servicios a personas, trabajadores y empresas de nuestro territorio.','Alojamiento, alimentación y servicios locales.','Promocionar mi negocio')] },
 
-];
+].map(c=>({...c,creatives:c.creatives.map(v=>({...v,imageUrl:'/house-creatives/'+({'house-professionals':'professionals','house-advertisers':'advertisers','house-employers':'employers','house-explore':'explore','house-inclusion':'inclusion','house-local-business':'local-business'} as Record<string,string>)[c.id]+'.svg'}))})) as HouseCampaign[];
 const activeAt = (start: string | null, end: string | null, now: number) =>
   (start === null || (Number.isFinite(Date.parse(start)) && Date.parse(start) <= now)) &&
   (end === null || (Number.isFinite(Date.parse(end)) && now < Date.parse(end)));
@@ -71,8 +72,9 @@ export function validateHouseCampaign(value: unknown): HouseCampaign {
   for (const v of c.creatives) {
     if (!validId(v.id)) throw Error('Variante inválida.');
     for (const [field,max] of [['title',100],['message',300],['mobileMessage',150],['button',60]] as const) if (typeof v[field] !== 'string' || !v[field].trim() || v[field].length > max) throw Error('Texto de creatividad inválido.');
+    if(v.imageDisabled!==undefined&&typeof v.imageDisabled!=='boolean')throw Error('Estado de imagen inválido.');
     if (v.storagePath && !/^house-creatives\/[a-f0-9]{64}\.(png|jpg|webp)$/.test(v.storagePath)) throw Error('Archivo de creatividad inválido.');
   }
   // Whitelist fields: no editable destination URLs, scripts, revenue or HTML.
-  return { id:c.id,type:'HOUSE_AD',goal:c.goal,status:c.status,communes:c.communes,categories:c.categories,pages:c.pages,placements:c.placements,startAt:c.startAt,endAt:c.endAt,priority:c.priority,maxPerSession:c.maxPerSession,creatives:c.creatives.map(v=>({id:v.id,title:v.title.trim(),message:v.message.trim(),mobileMessage:v.mobileMessage.trim(),button:v.button.trim(),...(v.storagePath?{storagePath:v.storagePath}:{})})) };
+  return { id:c.id,type:'HOUSE_AD',goal:c.goal,status:c.status,communes:c.communes,categories:c.categories,pages:c.pages,placements:c.placements,startAt:c.startAt,endAt:c.endAt,priority:c.priority,maxPerSession:c.maxPerSession,creatives:c.creatives.map(v=>({id:v.id,title:v.title.trim(),message:v.message.trim(),mobileMessage:v.mobileMessage.trim(),button:v.button.trim(),...(v.storagePath?{storagePath:v.storagePath}:{}),...(v.imageDisabled?{imageDisabled:true}:{})})) };
 }

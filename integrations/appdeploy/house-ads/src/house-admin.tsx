@@ -1,3 +1,4 @@
+import {uploadCreative} from './creative-upload';
 import {CommercialControls} from './commercial-admin';
 import { useEffect, useState } from 'react';
 import { api } from '@appdeploy/client';
@@ -18,7 +19,7 @@ export function HouseCampaignAdmin() {
   function update(patch:Partial<HouseCampaign>){setCampaigns(all=>all.map(c=>c.id===selected?{...c,...patch}:c));}
   function creative(index:number,patch:Partial<Creative>){if(current)update({creatives:current.creatives.map((c,i)=>i===index?{...c,...patch}:c)});}
   async function save(){setBusy(true);setMessage('');try{const r=await api.put('/api/admin/marketing/house',{revision,campaigns});setRevision(r.data.revision);setCampaigns(r.data.campaigns);setMessage('Campañas guardadas. La configuración se aplicará en las siguientes visitas.');}catch{setMessage('No se guardó. Puede haber cambios de otra sesión o datos inválidos; recarga antes de sobrescribir.');}finally{setBusy(false);}}
-  async function upload(file:File,index:number){if(file.size>200000){setMessage('Usa una imagen hasta 200 KB.');return;}setBusy(true);try{const content=await new Promise<string>((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result).split(',')[1]);r.onerror=reject;r.readAsDataURL(file);});const r=await api.post('/api/admin/marketing/creative',{content,mime:file.type});creative(index,{storagePath:r.data.storagePath});setMessage('Imagen guardada. Guarda también la campaña para asociarla.');}catch{setMessage('No se pudo guardar la imagen. Usa PNG, JPEG o WebP válido.');}finally{setBusy(false);}}
+  async function upload(file:File,index:number){setBusy(true);try{const storagePath=await uploadCreative(file);creative(index,{storagePath,imageDisabled:false});setMessage('Imagen optimizada y guardada. Guarda la campaña para aprobar su uso público.');}catch(cause){setMessage(cause instanceof Error?cause.message:'No se pudo guardar la imagen.');}finally{setBusy(false);}}
   async function moreStats(){setBusy(true);try{const r=await api.get('/api/admin/marketing/house?cursor='+encodeURIComponent(cursor||''));setStats(rows=>[...rows,...r.data.stats]);setCursor(r.data.nextToken);}catch{setMessage('No se completó la lectura de métricas.');}finally{setBusy(false);}}
   async function loadTrials(more=false){setBusy(true);try{const r=await api.get('/api/admin/marketing/trials'+(more?'?cursor='+encodeURIComponent(trialCursor||''):''));setApplications(rows=>more?[...rows,...r.data.items]:r.data.items);setTrialCursor(r.data.nextToken);}catch{setMessage('No se pudieron leer las solicitudes.');}finally{setBusy(false);}}
   async function activate(){setBusy(true);try{const r=await api.post('/api/admin/marketing/trial',trial);setApplications(rows=>rows.map(a=>a.id===trial.leadId?{...a,trialState:'active'}:a));setMessage('Prueba comercial gratuita activada hasta '+new Date(r.data.endAt).toLocaleDateString('es-CL')+'. No se registró una venta.');setTrial({leadId:'',headline:'',detail:'',url:''});}catch{setMessage('No se activó la prueba. Revisa los datos o vuelve a comprobar su estado.');}finally{setBusy(false);}}
@@ -45,9 +46,9 @@ export function HouseCampaignAdmin() {
         <label>Mensaje en computador<textarea maxLength={300} value={v.message} onChange={e=>creative(index,{message:e.target.value})}/></label>
         <label>Mensaje en celular<textarea maxLength={150} value={v.mobileMessage} onChange={e=>creative(index,{mobileMessage:e.target.value})}/></label>
         <label>Texto del botón<input maxLength={60} value={v.button} onChange={e=>creative(index,{button:e.target.value})}/></label>
-        <label>Imagen opcional, hasta 200 KB<input type='file' accept='image/png,image/jpeg,image/webp' onChange={e=>{const file=e.target.files?.[0];if(file)void upload(file,index);e.target.value='';}}/></label>
-        {v.storagePath&&<p>Creatividad guardada. <button type='button' onClick={()=>creative(index,{storagePath:undefined})}>Quitar de esta campaña</button></p>}
-      </details>)}
+        <label>Imagen propia o autorizada; se optimiza hasta 200 KB<input type='file' accept='image/png,image/jpeg,image/webp' onChange={e=>{const file=e.target.files?.[0];if(file)void upload(file,index);e.target.value='';}}/></label>
+        {!v.imageDisabled&&<p>Creatividad guardada. <button type='button' onClick={()=>creative(index,{storagePath:undefined,imageUrl:undefined,imageDisabled:true})}>Quitar de esta campaña</button></p>}
+      {v.imageDisabled&&<button type='button' onClick={()=>creative(index,{imageDisabled:false})}>Restablecer ilustración propia</button>}</details>)}
       <button type='button' disabled={current.creatives.length>=4} onClick={()=>update({creatives:[...current.creatives,{...current.creatives[0],id:crypto.randomUUID().slice(0,8)}]})}>Añadir variante para comparar</button>
     </fieldset>}
     <button disabled={busy||!revision} onClick={()=>void save()}>Guardar campañas propias</button>

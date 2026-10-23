@@ -1,8 +1,9 @@
+import {uploadCreative} from './creative-upload';
 import {useEffect,useState} from 'react';
 import {api} from '@appdeploy/client';
 import type {CommercialConfig} from '../shared/commercial-policy';
 type Metric={id:string;day:string;campaignId:string;type:string;impression?:number;click?:number};
-type Campaign={id:string;businessName:string;status:string;endAt:string};
+type Campaign={id:string;businessName:string;status:string;endAt:string;image?:{storagePath:string}|null;logo?:{storagePath:string}|null};
 export function CommercialControls(){
   const [config,setConfig]=useState<CommercialConfig|null>(null);
   const [rows,setRows]=useState<Campaign[]>([]);const [cursor,setCursor]=useState<string|null>(null);
@@ -14,6 +15,7 @@ export function CommercialControls(){
   async function load(more=false){setBusy(true);try{const r=await api.get('/api/admin/marketing/campaigns'+(more?'?cursor='+encodeURIComponent(cursor||''):''));setRows(old=>more?[...old,...r.data.items]:r.data.items);setCursor(r.data.nextToken);}catch{setMessage('No se completó la consulta de campañas.');}finally{setBusy(false);}}
   async function loadMetrics(more=false){setBusy(true);try{const r=await api.get('/api/admin/marketing/commercial-metrics'+(more?'?cursor='+encodeURIComponent(metricCursor||''):''));setMetrics(old=>more?[...old,...r.data.items]:r.data.items);setMetricCursor(r.data.nextToken);setMetricsLoaded(true);}catch{setMessage('No se completó la lectura de métricas comerciales.');}finally{setBusy(false);}}
   async function status(id:string,status:string){setBusy(true);try{await api.put('/api/admin/marketing/campaigns',{id,status});setRows(old=>old.map(r=>r.id===id?{...r,status}:r));setMessage('Estado actualizado. No se modificaron fechas ni beneficios.');}catch{setMessage('No se cambió el estado; una campaña vencida no puede renovarse así.');}finally{setBusy(false);}}
+  async function media(id:string,slot:'image'|'logo',file:File|null,approved=false){setBusy(true);try{if(file&&!approved)throw Error('Debes confirmar autorización y contenido antes de aprobar.');const storagePath=file?await uploadCreative(file):null;await api.put('/api/admin/marketing/campaigns',{id,media:{slot,storagePath,rightsConfirmed:approved,contentApproved:approved}});setRows(rows=>rows.map(row=>row.id===id?{...row,[slot]:storagePath?{storagePath}:null}:row));setMessage(file?'Imagen aprobada y asociada. No se alteraron fechas ni promociones.':'Imagen retirada de la campaña. El original se conserva para auditoría y respaldos.');}catch(cause){setMessage(cause instanceof Error?cause.message:'No se pudo actualizar la imagen.');}finally{setBusy(false);}}
   return <section aria-label='Promociones y campañas comerciales'><h3>Promoción vigente</h3><p>La fecha oficial solo se configura cuando el lanzamiento esté aprobado. Una promoción por negocio revisado; beneficios no acumulables.</p><p role='status'>{message}</p>
     {config&&<fieldset disabled={busy}><legend>Configuración centralizada</legend>
       <label><input type='checkbox' checked={config.enabled} onChange={e=>update({enabled:e.target.checked})}/>Promoción habilitada</label>
@@ -33,7 +35,13 @@ export function CommercialControls(){
     {metricCursor&&<button disabled={busy} onClick={()=>void loadMetrics(true)}>Cargar más métricas comerciales</button>}
     <h3>Campañas comerciales</h3><button disabled={busy} onClick={()=>void load()}>Consultar campañas</button>
     {!rows.length&&<p>Sin datos cargados.</p>}
-    {rows.map(row=><article key={row.id}><b>{row.businessName}</b><p>{row.status} · cierre {new Date(row.endAt).toLocaleDateString('es-CL')}</p>{(['active','paused','rejected'] as const).map(value=><button key={value} disabled={busy||row.status===value} onClick={()=>void status(row.id,value)}>{value==='active'?'Activar':value==='paused'?'Pausar':'Rechazar'}</button>)}</article>)}
+    {rows.map(row=><article key={row.id}><b>{row.businessName}</b><p>{row.status} · cierre {new Date(row.endAt).toLocaleDateString('es-CL')}</p><CommercialMedia row={row} busy={busy} onChange={media}/>{(['active','paused','rejected'] as const).map(value=><button key={value} disabled={busy||row.status===value} onClick={()=>void status(row.id,value)}>{value==='active'?'Activar':value==='paused'?'Pausar':'Rechazar'}</button>)}</article>)}
     {cursor&&<button disabled={busy} onClick={()=>void load(true)}>Cargar más campañas</button>}
   </section>;
+}
+
+function CommercialMedia({row,busy,onChange}:{row:Campaign;busy:boolean;onChange:(id:string,slot:'image'|'logo',file:File|null,approved?:boolean)=>Promise<void>}) {
+ const [file,setFile]=useState<File|null>(null),[preview,setPreview]=useState(''),[slot,setSlot]=useState<'image'|'logo'>('image'),[approved,setApproved]=useState(false);
+ useEffect(()=>{if(!file){setPreview('');return;}const url=URL.createObjectURL(file);setPreview(url);return()=>URL.revokeObjectURL(url);},[file]);
+ return <fieldset disabled={busy}><legend>Imagen del negocio / logo</legend><label>Tipo<select value={slot} onChange={e=>{setSlot(e.target.value as 'image'|'logo');setApproved(false);}}><option value='image'>Fotografía o creatividad</option><option value='logo'>Logo opcional</option></select></label><label>Archivo propio o autorizado (PNG, JPEG, WebP; hasta 8 MB antes de optimizar)<input type='file' accept='image/png,image/jpeg,image/webp' onChange={e=>{setFile(e.target.files?.[0]??null);setApproved(false);}}/></label>{preview&&<img src={preview} alt='Vista previa para aprobación; todavía no publicada' style={{width:160,height:100,objectFit:'contain'}}/>}<label><input type='checkbox' checked={approved} onChange={e=>setApproved(e.target.checked)}/>Confirmo autorización del negocio y revisé el contenido de esta imagen.</label><button type='button' disabled={!file||!approved} onClick={()=>void onChange(row.id,slot,file,approved)}>Optimizar, aprobar y asociar imagen</button>{row[slot]&&<button type='button' onClick={()=>void onChange(row.id,slot,null)}>Retirar {slot==='image'?'imagen':'logo'}</button>}<small>Se guarda una versión de hasta 1200 px y 200 KB. Las campañas sin imagen conservan su presentación textual.</small></fieldset>;
 }

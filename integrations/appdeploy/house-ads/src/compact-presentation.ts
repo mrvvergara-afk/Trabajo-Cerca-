@@ -1,5 +1,7 @@
+import {publicReviewLabel,lastConfirmedAt} from '../shared/offer-public-state';
+export {lastConfirmedAt};
 export type PublicCard={company?:string;source?:string;review?:boolean;verified?:boolean;revalidationDue?:boolean;originalPosterUrl?:string;sourceImageUrl?:string};
-export function reviewLabel(item:PublicCard) {return item.revalidationDue?'Por revalidar':item.review?'Por confirmar':item.verified?'Verificada':'Publicación directa';}
+export const reviewLabel=publicReviewLabel;
 export function identifiedEmployer(item:PublicCard) {
  const company=item.company?.trim();if(!company)return null;
  const normalized=company.toLocaleLowerCase('es-CL').replace(/[^a-záéíóúñ0-9]/g,'');

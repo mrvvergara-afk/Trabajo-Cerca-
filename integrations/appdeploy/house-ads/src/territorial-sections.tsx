@@ -4,10 +4,11 @@ import { ArrowRight, MapPin, Megaphone, Newspaper } from 'lucide-react';
 import { EXPLORATION_CITIES, safeSponsorUrl, sponsorMatchesPlace } from './territorial-exploration';
 import { LABOR_NEWS, LABOR_NEWS_REVIEWED_ON, LABOR_RESOURCES, visibleLaborNews } from './labor-news';
 import './territorial-sections.css';
+import {AdImage} from './ad-image';
 
 type Sponsor = {
   id:string; businessName:string; category:string; headline:string; detail:string;
-  communes:string[]; url?:string; scope:string;
+  communes:string[]; url?:string; scope:string; imageUrl?:string; logoUrl?:string;endAt?:string;
 };
 type Track = (event:string, properties:Record<string,string|number|boolean|undefined>) => void;
 
@@ -63,7 +64,7 @@ export function LocalAdvertising({ sponsor, place, loading, onAdvertise, track, 
   return <section ref={element} className='tcLocalAdvertising' aria-label={'Publicidad · '+ (place === 'Todas' ? 'zona local' : place)} data-placement={placement}>
     <div className='tcAdLabel'><Megaphone aria-hidden='true'/><span>PUBLICIDAD{eligible?.scope === 'regional' ? ' REGIONAL' : ' LOCAL'}</span>
       <small>{place === 'Todas' ? 'Tu zona' : place}</small></div>
-    {eligible && !loading ? <div className='tcAdContent'><div><strong>{eligible.businessName}</strong><b>{eligible.headline}</b><p>{eligible.detail}</p></div>
+    {eligible && !loading ? <div className='tcAdContent'><AdImage url={eligible.imageUrl}/><div><AdImage url={eligible.logoUrl} logo/><strong>{eligible.businessName}</strong><b>{eligible.headline}</b><p>{eligible.detail}</p>{eligible.endAt&&<small>Vigente hasta {new Date(eligible.endAt).toLocaleDateString('es-CL',{timeZone:'America/Santiago'})}</small>}</div>
       {url && <a href={url} target='_blank' rel='noopener noreferrer' onClick={() => {commercialEvent('click');track('tc_sponsor_click', { sponsor_id:eligible.id, commune:place, scope:eligible.scope, surface:placement });}}>Conocer negocio <ArrowRight aria-hidden='true'/></a>}
     </div> : <div className='tcAdContent'><div><strong>{loading ? 'Consultando publicidad de esta zona…' : `Tu negocio, cerca de quienes buscan trabajo${place === 'Todas' ? '' : ' en '+place}`}</strong>
       <p>Espacio disponible para comercios y servicios locales. Sin cobros activos.</p></div><button type='button' onClick={onAdvertise}>Anunciar aquí <ArrowRight aria-hidden='true'/></button></div>}

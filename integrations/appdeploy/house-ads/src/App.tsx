@@ -1,5 +1,5 @@
 import {loadReading,saveReading,markReading} from './reading-history';
-import {reviewLabel,identifiedEmployer,originalPoster,shortDate} from './compact-presentation';
+import {reviewLabel,lastConfirmedAt,identifiedEmployer,originalPoster,shortDate} from './compact-presentation';
 import {TerritorialRadar} from './territorial-radar';
 import {ActivityCenter} from './activity-center';
 import {listingShareUrl} from '../shared/listing-links';
@@ -165,6 +165,7 @@ type Listing = {
   createdAt: string;
   firstPublishedAt?:string;
   revalidationDue?:boolean;
+  lastVerifiedAt?:string; externalVerifiedAt?:string; verifiedAt?:string; verificationMethod?:string; verificationReason?:string; evidenceSources?:string[];
   originalPosterUrl?:string;
   sourceImageUrl?:string;
   active?:boolean;
@@ -1397,7 +1398,7 @@ function App() {
                   <div className='neoJobBody'>
                     <div className='neoJobTop'>
                       {item.workLocation?.trim()&&<span className='neoJobPlace'><MapPin /> {item.workLocation}</span>}
-                      <span className={'neoJobState ' + (item.review || item.revalidationDue ? 'pending' : item.verified ? 'verified' : 'direct')}>{reviewLabel(item)}</span>
+                      <span className={'neoJobState ' + (reviewLabel(item)==='Verificada'?'verified':reviewLabel(item)==='Vigencia por confirmar'?'pending':'direct')}>{reviewLabel(item)}</span>
                     </div>
 
                     {isFresh(item)&&<span className='neoNewOfferBadge'>Incorporada recientemente</span>}{reading.known&&!reading.read[item.id]&&<span className='tcUnreadBadge'>No leída</span>}
@@ -1408,7 +1409,7 @@ function App() {
                       <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
                     </div>
                     <div className='neoJobFoot'>
-                      <span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}{item.firstPublishedAt&&<small>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</small>}</span>
+                      <span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}{item.firstPublishedAt&&<small>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</small>}{lastConfirmedAt(item)&&<small>Última comprobación: {shortDate(lastConfirmedAt(item)!)}</small>}</span>
                       <button onClick={() => setSelected(item)}>Ver oportunidad <ArrowRight /></button>
                     </div>
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}
@@ -1454,7 +1455,7 @@ function App() {
               <div className='neoDrawerScroll'>
                 <div className='neoDrawerHeader'>
                   <div className='neoDrawerBadges'>
-                    <span className={'neoJobState ' + (selected.review ? 'pending' : selected.verified ? 'verified' : 'direct')}>{reviewLabel(selected)}</span>
+                    <span className={'neoJobState ' + (reviewLabel(selected)==='Verificada'?'verified':reviewLabel(selected)==='Vigencia por confirmar'?'pending':'direct')}>{reviewLabel(selected)}</span>
                     <span className='neoDrawerArea'>{selected.area}</span>
                   </div>
                   <h2>{selected.title}</h2>
@@ -1466,6 +1467,7 @@ function App() {
                   <div><MapPin /><span><small>LUGAR / LOCALIDAD</small><b>{selected.workLocation}</b></span></div>
                   {selected.recruitmentZones.length>0&&<div><Users /><span><small>ZONA</small><b>{selected.recruitmentZones.join(' · ')}</b></span></div>}
                   <div><Radio /><span><small>PUBLICACIÓN ORIGINAL</small><b>{shortDate(selected.sourcePublishedAt)||selected.date||'No informada'}</b></span></div>{selected.firstPublishedAt&&<div><Radio/><span><small>INCORPORADA EN TRABAJO CERCA</small><b>{shortDate(selected.firstPublishedAt)}</b></span></div>}
+                  {lastConfirmedAt(selected)&&<div><BadgeCheck/><span><small>ÚLTIMA COMPROBACIÓN CON EVIDENCIA</small><b>{shortDate(lastConfirmedAt(selected)!)}</b></span></div>}
                   <div><BadgeCheck /><span><small>FUENTE</small><b>{selected.source}</b></span></div>
                 </div>
 

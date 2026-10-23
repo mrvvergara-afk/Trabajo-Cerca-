@@ -54,7 +54,7 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
   if(!house)return null;
   return <aside ref={node} className='tcHouseAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD'>
     <AdImage url={house.creative.imageUrl}/>
-    <div><small>TRABAJO CERCA · CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{house.creative.title}</h3><p className='tcHouseDesktop'>{house.creative.message}</p><p className='tcHouseMobile'>{house.creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Duración según la promoción vigente y la revisión del negocio. Sin cobro ni renovación automática.</small>}</div>
+    <div><small>CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{house.creative.title}</h3><p className='tcHouseDesktop'>{house.creative.message}</p><p className='tcHouseMobile'>{house.creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Promoción vigente sujeta a revisión. Sin cobros automáticos.</small>}</div>
     <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{house.creative.button} <span aria-hidden='true'>→</span></button>
   </aside>;
 }

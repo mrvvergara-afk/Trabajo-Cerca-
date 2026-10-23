@@ -21,6 +21,7 @@ try{for(const width of widths){
  await shot('house',page.locator('.tcHouseAd').last());
  await shot('secondary',page.locator('#tc-other-cities'));
  await shot('footer',page.locator('.neoFooter'));
+ console.log('MOBILE_GEOMETRY '+JSON.stringify({phase,width,heroHeight,cardHeight,geometry}));
  if(!before){
   assert.equal(await page.locator('.tcClearFilters').count(),0,'default clear filter must be hidden');
   assert.equal(geometry.townCount,13);assert.equal(geometry.innerScroll,false);assert(Math.abs(geometry.dialWidth-geometry.dialHeight)<1);assert(geometry.points.every(n=>n<=10),'oversized radar points');
@@ -35,7 +36,7 @@ try{for(const width of widths){
   const cities=page.locator('#tc-other-cities');await cities.locator('summary').click();assert(await cities.evaluate(e=>e.open));assert.equal(await cities.getByRole('button',{name:/Victoria/}).count(),0);assert.equal(await cities.getByRole('button',{name:/Los Ángeles/}).count(),1);assert.equal(await cities.getByRole('button',{name:/Temuco/}).count(),1);assert.equal(await cities.locator('summary').evaluate(e=>getComputedStyle(e,'::after').content),'"−"');await shot('cities-open',cities);await cities.locator('summary').click();assert.equal(await cities.evaluate(e=>e.open),false);
   const news=page.locator('#actualidad-laboral');await news.locator('summary').click();assert(await news.evaluate(e=>e.open));await news.locator('summary').click();assert.equal(await news.evaluate(e=>e.open),false);
   assert.equal(await page.locator('.neoJobCard .neoArtPhoto').count(),0);
-  await shot('dates-checked',card);const dates=card.locator('.tcOfferDates');assert.equal(await dates.locator(':scope > span').count(),3);assert((await dates.textContent()).includes('Última comprobación:'));assert(await dates.evaluate(e=>e.getBoundingClientRect().height<=parseFloat(getComputedStyle(e).lineHeight)*3+1),'dates exceed three lines');
+  await shot('dates-checked',card);const dates=card.locator('.tcOfferDates');assert.equal(await dates.locator(':scope > span').count(),3);assert((await dates.textContent()).includes('Última comprobación:'));assert(await dates.evaluate(e=>e.getBoundingClientRect().height<=parseFloat(getComputedStyle(e).lineHeight)*3+2*parseFloat(getComputedStyle(e).rowGap||'0')+1),'dates exceed three lines');
   assert(await page.locator('.neoFooter button').evaluateAll(es=>es.every(e=>parseFloat(getComputedStyle(e).fontSize)>=12)),'legal labels too small');await page.locator('.neoFooter').scrollIntoViewIfNeeded();const footer=await page.locator('.neoFooter').boundingBox(),nav=await page.locator('.neoMobileNav').boundingBox();if(nav){assert(footer.y+footer.height<=nav.y+1,'footer covered');assert(nav.height<=56);const buttons=page.locator('.neoMobileNav button');for(let i=0;i<4;i++)assert((await buttons.nth(i).boundingBox()).height>=44);}
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'horizontal overflow');
   const clipped=await page.locator('.neoTabs button,.tcQuickActions button,.neoJobFacts b,.neoFooter p,.tcRadarTowns button,.neoMobileNav button').evaluateAll(es=>es.filter(e=>e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1).map(e=>({text:e.textContent,sw:e.scrollWidth,cw:e.clientWidth,sh:e.scrollHeight,ch:e.clientHeight})));

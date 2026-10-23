@@ -1369,7 +1369,7 @@ function App() {
         <section className='neoDiscover' id='neo-jobs' tabIndex={-1} aria-labelledby='tc-results-title' aria-busy={loading||loadingMore}>
           <div className='neoDiscoverHead'>
             <div><h2 id='tc-results-title'>{resultsTitle}</h2><p className='tcResultStatus' role='status'>{shownResults.length} mostrados · {visible.length} resultados{!feedComplete?' cargados · consulta incompleta':''}{loadingMore?' · Cargando más resultados…':''}</p></div>
-            <button className='tcClearFilters' onClick={()=>navigateResults('opportunities','Todas')}>Quitar filtros</button>
+            {(q.trim()!==''||place!=='Todas'||area!=='Todas'||onlyNew||onlyUnread||filterMode!=='work')&&<button className='tcClearFilters' onClick={()=>navigateResults('opportunities','Todas')}>Quitar filtros</button>}
           </div>
 
           <div className='neoControlDeck'>
@@ -1409,7 +1409,7 @@ function App() {
                       <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
                     </div>
                     <div className='neoJobFoot'>
-                      <span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}{item.firstPublishedAt&&<small>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</small>}{lastConfirmedAt(item)&&<small>Última comprobación: <time dateTime={lastConfirmedAt(item)!}>{shortDate(lastConfirmedAt(item)!)}</time></small>}</span>
+                      <span className='tcOfferDates'><span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}</span>{item.firstPublishedAt&&<span>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</span>}{lastConfirmedAt(item)&&<span>Última comprobación: <time dateTime={lastConfirmedAt(item)!}>{shortDate(lastConfirmedAt(item)!)}</time></span>}</span>
                       <button onClick={() => setSelected(item)}>Ver oportunidad <ArrowRight /></button>
                     </div>
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}
@@ -1436,7 +1436,7 @@ function App() {
 
         <footer className='neoFooter'>
           <div className='neoBrand'><span className='neoBrandMark'><MapPin /><Radar /></span><span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span></div>
-          <p>Diseñado para conectar territorio, personas y oportunidades. · {LEGAL_RESPONSIBLE.privacyEmail}</p>
+          <p>Diseñado para conectar territorio, personas y oportunidades.<a href={'mailto:'+LEGAL_RESPONSIBLE.privacyEmail}>{LEGAL_RESPONSIBLE.privacyEmail}</a></p>
           <div><button onClick={() => setLegalView('privacy')}>Privacidad</button><button onClick={() => setLegalView('terms')}>Términos</button></div>
         </footer>
 

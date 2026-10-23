@@ -21,7 +21,7 @@ export function NearbyCities({ stats, ready, failed, current, onExplore, onRetur
       <h2 id='tc-explore-title'>Buscar también en</h2>
       <p>Explora estas ciudades si te interesa trasladarte. Sus ofertas se consultan aparte de tu zona local.</p>
     </div>
-    <div className='tcExploreCities'>{EXPLORATION_CITIES.map(city => <button type='button'
+    <div className='tcExploreCities'>{EXPLORATION_CITIES.filter(city => city !== 'Victoria').map(city => <button type='button'
       key={city} aria-pressed={current === city} onClick={() => onExplore(city)}>
       <MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed ? 'Recuento no disponible' : !ready ? 'Consultando oportunidades…' : `${stats[city]?.jobs ?? 0} ${(stats[city]?.jobs ?? 0) === 1 ? 'oferta publicada' : 'ofertas publicadas'}`}</small></span><ArrowRight aria-hidden='true'/>
     </button>)}</div>

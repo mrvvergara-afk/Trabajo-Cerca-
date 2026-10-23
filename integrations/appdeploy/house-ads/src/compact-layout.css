@@ -92,11 +92,11 @@
 .tcTerritorialRadar,.tcSecondary{box-sizing:border-box;width:calc(100% - 40px);max-width:1180px;margin:12px auto;border:1px solid #d1dfd2;border-radius:12px;background:#fff;color:#123b2a;padding:16px;scroll-margin-top:82px}
 .tcRadarHeading{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .tcRadarHeading h2{font-size:22px;margin:0}.tcRadarHeading p,.tcRadarNote{font-size:13px;line-height:1.4;margin:5px 0;color:#526b5b}.tcRadarHeading>svg{width:26px;height:26px}
-.tcRadarExplorer{display:flex;align-items:center;gap:20px;margin-top:10px}.tcRadarDial{position:relative;width:180px;height:180px;flex-shrink:0;border-radius:50%;overflow:hidden;border:1px solid #7b9c83;background:repeating-radial-gradient(circle,#0b3025 0 29px,#50755a 30px,#0b3025 31px)}
+.tcRadarExplorer{display:flex;align-items:center;gap:20px;margin-top:10px}.tcRadarDial{position:relative;width:180px;height:180px;flex-shrink:0;border-radius:50%;overflow:hidden;border:1px solid #7b9c83;background:#0b3025}
 .tcRadarSweep{position:absolute;inset:0;background:conic-gradient(from 0deg,transparent 0 260deg,#99ef4d65 359deg,transparent 360deg);animation:tcSweep 16s linear infinite;animation-play-state:paused}
 .tcTerritorialRadar[data-animated=true] .tcRadarSweep{animation-play-state:running}
-.tcRadarDial i{position:absolute;width:7px;height:7px;border-radius:50%;background:#809688;transform:translate(-50%,-50%)}.tcRadarDial i.available{background:#b7ff4e}.tcRadarDial i.unknown{background:#d2c087}.tcRadarDial i.selected{background:#ffb396;box-shadow:0 0 0 4px #ffffff35}
-.tcRadarDial>span{position:absolute;bottom:22%;left:4%;right:4%;text-align:center;font-size:13px;color:#fff;line-height:1.3;text-shadow:0 1px 4px #000}.tcRadarDial b{display:block;font-size:12px}
+.tcRadarDial .tcRadarPoint{position:absolute;width:7px;height:7px;border-radius:50%;background:#809688;transform:translate(-50%,-50%)}.tcRadarDial .tcRadarPoint.available{background:#b7ff4e}.tcRadarDial .tcRadarPoint.unknown{background:#d2c087}.tcRadarDial .tcRadarPoint.selected{background:#ffb396;box-shadow:0 0 0 4px #ffffff35}
+.tcRadarCaption{position:absolute;bottom:22%;left:4%;right:4%;text-align:center;font-size:13px;color:#fff;line-height:1.3;text-shadow:0 1px 4px #000}.tcRadarDial b{display:block;font-size:12px}
 .tcRadarTowns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;width:100%}
 .tcRadarTowns button{display:flex;flex-direction:column;justify-content:center;text-align:left;gap:3px;border:1px solid #d5e0d2;border-radius:8px;padding:6px 8px;min-height:44px;background:#f9fbf6;color:#123b2a;font-size:13px;cursor:pointer}
 .tcRadarTowns small{font-size:11px;color:#536752}.tcRadarTowns button[aria-pressed=true]{border-color:#5a8b3c;background:#e8f5dc}.tcRadarNote{display:block;margin-top:10px}
@@ -120,9 +120,9 @@
  .neoShell .neoJobsGrid{grid-template-columns:minmax(0,1fr);gap:12px}.neoShell .neoJobBody{padding:14px}.neoShell .neoJobCard h3{font-size:17px}.neoShell .neoJobFoot{gap:8px}.neoShell .neoJobFoot button{font-size:13px;padding:8px}.neoShell .neoJobFoot button svg{display:none}
  .neoShell .tcHouseAd{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:12px;gap:8px;min-height:0;max-height:none}.neoShell .tcHouseAd h3{font-size:17px}.neoShell .tcHouseAd p{font-size:13px;margin:5px 0}.neoShell .tcHouseAd img{display:none}.neoShell .tcHouseAd button{width:auto;max-width:145px;font-size:13px;padding:8px;white-space:normal}.neoShell .tcHouseAd small{font-size:10px;line-height:1.35}
  .neoShell>.tcHouseAd,.neoShell>.tcLocalAdvertising{width:calc(100% - 28px);margin:10px auto;padding:12px}
- .tcTerritorialRadar,.tcSecondary{width:calc(100% - 28px);padding:12px;margin:10px auto;scroll-margin-top:12px}.tcRadarHeading h2{font-size:20px}.tcRadarExplorer{gap:10px;align-items:flex-start}.tcRadarDial{width:112px;height:112px;position:sticky;top:10px}.tcRadarDial>span{font-size:11px;bottom:24%}.tcRadarDial b{font-size:10px}.tcRadarTowns{grid-template-columns:repeat(2,minmax(0,1fr));max-height:172px;overflow:auto;padding:2px}.tcRadarTowns button{font-size:12px;padding:5px;min-height:48px}.tcRadarTowns small{font-size:11px}.tcRadarNote{font-size:12px}
+ .tcTerritorialRadar,.tcSecondary{width:calc(100% - 28px);padding:12px;margin:10px auto;scroll-margin-top:12px}.tcRadarHeading h2{font-size:20px}.tcRadarExplorer{flex-direction:column;gap:12px;align-items:stretch}.tcRadarDial{width:144px;height:144px;position:relative;top:auto;align-self:center}.tcRadarCaption{font-size:11px;bottom:24%}.tcRadarDial b{font-size:10px}.tcRadarTowns{grid-template-columns:repeat(3,minmax(0,1fr));max-height:none;overflow:visible;padding:0}.tcRadarTowns button{font-size:12px;padding:5px;min-height:48px}.tcRadarTowns small{font-size:11px}.tcRadarNote{font-size:12px}
  .neoShell .tcExploreCities{display:grid;grid-template-columns:1fr}.neoShell .tcExploreCities>button{min-height:48px}.neoShell .tcNewsLayout{display:block}.neoShell .tcNewsArticles article h3{font-size:18px}.neoShell .tcNewsArticles article p{font-size:14px}
- .neoShell .neoMobileNav{display:grid;position:fixed;left:0;right:0;bottom:0;height:calc(58px + env(safe-area-inset-bottom));padding:3px 8px calc(3px + env(safe-area-inset-bottom));box-sizing:border-box;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:14px 14px 0 0;box-shadow:0 -4px 18px #06231c14;z-index:80}.neoShell .neoMobileNav button{font-size:11px;min-height:48px;line-height:1.2}.neoShell .neoMobileNav svg{width:20px;height:20px}
+ .neoShell .neoMobileNav{display:grid;position:fixed;left:0;right:0;bottom:0;height:calc(54px + env(safe-area-inset-bottom));padding:3px 8px calc(3px + env(safe-area-inset-bottom));box-sizing:border-box;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:14px 14px 0 0;box-shadow:0 -4px 18px #06231c14;z-index:80}.neoShell .neoMobileNav button{font-size:11px;min-height:44px;line-height:1.2}.neoShell .neoMobileNav svg{width:20px;height:20px}
  .neoShell{padding-bottom:calc(74px + env(safe-area-inset-bottom))}.neoShell .neoNotice{bottom:calc(74px + env(safe-area-inset-bottom))}.neoShell button,.neoShell a{scroll-margin-bottom:calc(80px + env(safe-area-inset-bottom))}.neoShell .neoFooter{padding:18px 14px}.neoShell .neoDrawer{width:100%;max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){.neoShell *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
@@ -156,3 +156,44 @@
 @media(max-width:430px){.neoShell .tcHouseAd{padding:10px;gap:6px 10px}}
 
 .tcLocalAdvertising .tcAdBusiness{display:flex;align-items:center;gap:6px}.tcLocalAdvertising .tcAdBusiness .tcAdLogo{flex-shrink:0;margin-right:0}.tcLocalAdvertising .tcAdBusiness strong{margin:0;min-width:0;overflow-wrap:anywhere}.neoJobFoot time{white-space:nowrap}
+
+/* Final mobile polish: scoped presentation only, no inventory or campaign rules. */
+.tcRadarDial .tcRadarGrid{position:absolute;inset:0;display:block;width:100%;height:100%;stroke:#719c7b;stroke-width:.8;opacity:.65;pointer-events:none}
+.tcRadarDial .tcRadarPoint{display:block;padding:0;margin:0;min-width:0;min-height:0;border:0;box-sizing:border-box}
+.tcRadarCaption{position:absolute;bottom:18%;left:4%;right:4%;text-align:center;color:#fff;font-size:13px;line-height:1.35;text-shadow:0 1px 4px #000}
+.tcRadarTowns button span{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.3}
+.neoShell .neoJobFacts span{background:none;padding:0;gap:5px;flex-wrap:wrap}
+.neoShell .neoJobFacts b{white-space:normal;overflow:visible;text-overflow:clip;margin:0}
+.neoShell .neoJobFoot{flex-wrap:wrap;gap:6px 10px}
+.neoShell .neoJobFoot .tcOfferDates{display:flex;flex-wrap:wrap;gap:2px 12px;flex:1 1 240px;line-height:1.4}
+.tcOfferDates>span{display:inline;max-width:100%;overflow-wrap:anywhere}
+.neoShell .neoJobFoot button{margin-left:auto}
+.tcSecondary>summary{display:flex;justify-content:space-between;gap:12px;list-style:none;line-height:1.35}
+.tcSecondary>summary::-webkit-details-marker{display:none}
+.tcSecondary>summary::after{content:'+';display:grid;place-items:center;flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:#eef5e8;font-size:22px;font-weight:400;color:#224c32}
+.tcSecondary[open]>summary::after{content:'−'}
+.neoShell .neoFooter p{margin:0;line-height:1.5;min-width:0}
+.neoShell .neoFooter p a{display:block;color:#315a48;overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px;padding:4px 0}
+.neoShell .neoFooter .neoBrand small{letter-spacing:.08em}
+@media(max-width:800px){
+ .neoShell .neoHero{padding-top:12px;padding-bottom:10px}
+ .neoShell .neoHero h1{font-size:clamp(30px,7.4vw,34px);line-height:1.1;margin-bottom:8px;text-wrap:pretty}
+ .neoShell .neoHeroLead{font-size:14px;margin-bottom:8px}
+ .neoShell .neoSearchDock{margin:8px 0;padding:3px 8px}
+ .tcQuickActions{gap:6px;margin-top:8px}.tcQuickActions button{padding:6px 8px;min-height:46px}
+ .neoShell .neoControlDeck{margin-bottom:10px}.neoShell .neoTabs{margin:0;padding:3px;gap:3px}
+ .neoShell .neoJobBody{padding:12px}.neoShell .neoJobCard h3{margin:4px 0;line-height:1.25}
+ .neoShell .neoJobTop{gap:4px;margin-bottom:4px}.neoShell .neoJobCompany{margin:4px 0}
+ .neoShell .neoJobPlace,.neoShell .neoJobState{padding:2px 5px}
+ .neoShell .neoJobFoot .tcOfferDates{flex-basis:100%;font-size:12px;gap:2px 10px}
+ .neoShell .tcHouseAd{grid-template-columns:52px minmax(0,1fr);gap:6px 10px;padding:10px 12px}
+ .neoShell .tcHouseAd .tcAdImage{width:52px;height:52px}
+ .neoShell .tcHouseAd h3{font-size:16px;line-height:1.2;margin:2px 0}
+ .neoShell .tcHouseAd p{font-size:13px;line-height:1.3;margin:3px 0}
+ .neoShell .tcHouseAd button{padding:7px 10px;min-height:44px}
+ .tcRadarTowns button{min-height:48px;padding:6px;font-size:12px;min-width:0}
+ .tcSecondary{padding:6px 12px;margin:8px auto}.tcSecondary>summary{font-size:14px}
+ .neoShell .neoFooter{padding:14px;gap:8px;margin-top:12px}
+ .neoShell .neoMobileNav{backdrop-filter:none;background:#092c23}
+ .neoShell{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+}

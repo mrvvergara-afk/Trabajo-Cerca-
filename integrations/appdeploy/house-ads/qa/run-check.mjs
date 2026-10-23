@@ -12,6 +12,7 @@ writeFileSync('qa/tsconfig.json',JSON.stringify({...tscConfig,include:tscConfig.
 run('npx',['tsc','-p','qa/tsconfig.json']);
 run('npx',['esbuild','backend/index.ts','--bundle','--platform=node','--format=esm','--packages=external','--outfile=qa-output/backend-candidate.mjs']);
 if(process.env.RC_CHECKS==='1')run('node',['qa/rc-local-check.mjs']);
+run('node',['qa/prepare-mobile-before.mjs']);
 if(process.env.AD_IMAGE_CHECKS==='1')run('node',['qa/prepare-ad-before.mjs']);
 else if(process.env.UI_CHECKS==='1')run('node',['qa/prepare-before.mjs']);
 const server=spawn('npx',['vite','preview','--config','qa/vite.qa.config.mjs'],{stdio:'inherit',detached:true});
@@ -21,6 +22,7 @@ try{
  if(!ready)throw Error('localhost_preview_not_ready');
  run('node',['qa/browser-check.mjs']);
  run('node',['qa/layout-check.mjs']);
+ run('node',['qa/mobile-final-check.mjs']);
  if(process.env.RC_CHECKS!=='1')run('node',['qa/capacity-check.mjs']);
  run('node',['qa/publication-check.mjs']);
  if(process.env.RC_CHECKS==='1')run('node',['qa/rc-browser-check.mjs']);

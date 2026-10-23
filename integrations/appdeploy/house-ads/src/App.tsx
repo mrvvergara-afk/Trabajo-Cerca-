@@ -1312,6 +1312,7 @@ function App() {
     return advertising.failed ? <p role='status'>No se pudo consultar la publicidad. La búsqueda de ofertas sigue disponible.</p> : null;
   }
   const neoFeatured = items.filter(item => item.kind === 'job_offer').slice(0, 3);
+  const searchHouseWouldFollowAd=section==='opportunities'&&shownResults.length===3&&Boolean(advertising.selections.listing);
 
   if (isVNext) {
     return (
@@ -1428,7 +1429,7 @@ function App() {
           {nextCursor && !loadError && <div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando…' : 'Cargar más'} <ArrowRight /></button></div>}
         </section>
 
-        {advertising.selections.search?.type!=='COMMERCIAL'&&renderAdvertising('search')}
+        {advertising.selections.search?.type!=='COMMERCIAL'&&!searchHouseWouldFollowAd&&renderAdvertising('search')}
         <TerritorialRadar stats={feedSummary.communeStats} ready={!loading&&!loadError} failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt} onSelect={town=>navigateResults('opportunities',town)}/>
         <details className='tcSecondary' id='tc-other-cities'><summary>Buscar también en otras ciudades</summary>
           <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>

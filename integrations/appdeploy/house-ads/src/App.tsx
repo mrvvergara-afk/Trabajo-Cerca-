@@ -1339,20 +1339,20 @@ function App() {
           <div className='neoHeroGlow neoGlowA' />
           <div className='neoHeroGlow neoGlowB' />
           <div className='neoHeroCopy'>
-            <h1>Trabajo, servicios y oportunidades <em>cerca de ti.</em></h1>
-            <p className='neoHeroLead'>Encuentra empleo, ofrece tus servicios o contrata personas de tu zona.</p>
+            <h1>Trabajo y servicios <em>cerca de ti.</em></h1>
+            <p className='neoHeroLead'>Empleo, servicios y personas de tu zona.</p>
 
             <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setResultPage(0);setSection('opportunities');setArea('Todas');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
               <Search />
-              <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué trabajo buscas?' />
+              <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué buscas?' />
               <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
               <button type='submit'>Buscar <ArrowRight /></button>
             </form>
             <nav className='tcQuickActions' aria-label='Qué necesitas hacer'>
               <button onClick={()=>navigateResults('opportunities')}><Search aria-hidden='true'/><span>Buscar trabajo</span></button>
-              <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrezco mi trabajo u oficio</span></button>
+              <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrecer mi trabajo</span></button>
               <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Necesito contratar</span></button>
-              <button onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span>Promocionar mi negocio</span></button>
+              <button onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span>Promocionar negocio</span></button>
             </nav>
           </div>
         </section>

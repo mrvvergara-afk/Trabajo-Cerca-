@@ -37,11 +37,13 @@ const legacy:Record<string,Pick<Creative,'title'|'message'|'mobileMessage'|'butt
     "button": "Promocionar mi negocio"
   }
 };
+const lastPresentation={"house-professionals": {"title": "¿Buscas trabajo? Hazte visible.", "message": "Publica gratis lo que sabes hacer y desde cuándo estás disponible.", "mobileMessage": "Publica gratis lo que sabes hacer y tu disponibilidad.", "button": "Ofrecer mi trabajo"}, "house-advertisers": {"title": "Tu negocio puede destacar aquí.", "message": "Promociona tus productos o servicios cerca de tus clientes.", "mobileMessage": "Promociona tu negocio cerca de tus clientes.", "button": "Publicitar mi negocio"}, "house-employers": {"title": "¿Necesitas alguien para trabajar?", "message": "Encuentra personas disponibles o publica lo que necesitas.", "mobileMessage": "Encuentra personas o publica lo que necesitas.", "button": "Necesito contratar"}, "house-explore": {"title": "Oportunidades cerca de ti.", "message": "Descubre empleos, personas y servicios de tu territorio.", "mobileMessage": "Empleos, personas y servicios de tu territorio.", "button": "Explorar oportunidades"}, "house-inclusion": {"title": "Lo que sabes hacer tiene valor.", "message": "Agricultura, construcción, oficios, servicios técnicos y profesiones. Todos tienen espacio aquí.", "mobileMessage": "Oficios, servicios y profesiones. Todos tienen espacio aquí.", "button": "Publicar mis servicios"}, "house-local-business": {"title": "Que conozcan tu negocio local.", "message": "Alojamiento, alimentación, transporte y servicios para trabajadores y empresas.", "mobileMessage": "Alojamiento, alimentación, transporte y servicios locales.", "button": "Promocionar mi negocio"}};
 // Upgrade untouched defaults only. Administrator edits and image withdrawals win.
 export function presentHouseCreative(campaignId:string,creative:Creative):Creative {
  const defaults=HOUSE_DEFAULTS.find(c=>c.id===campaignId)?.creatives.find(c=>c.id===creative.id);
- const previous=legacy[campaignId];
- const untouched=previous&&(['title','message','mobileMessage','button'] as const).every(key=>creative[key]===previous[key]);
+ const previous=legacy[campaignId];const recent=(lastPresentation as Record<string,typeof previous>)[campaignId];
+ const untouched=[previous,recent].some(old=>old&&(['title','message','mobileMessage','button'] as const).every(key=>creative[key]===old[key]));
  const text=untouched&&defaults?{...creative,title:defaults.title,message:defaults.message,mobileMessage:defaults.mobileMessage,button:defaults.button}:creative;
- return {...text,...(!creative.imageDisabled&&!creative.storagePath&&!creative.imageUrl&&defaults?.imageUrl?{imageUrl:defaults.imageUrl}:{}),...(creative.imageDisabled?{imageUrl:undefined}:{})};
+ const priorDefault=creative.imageUrl==='/house-creatives/'+campaignId.replace('house-','')+'.svg';
+ return {...text,...(!creative.imageDisabled&&!creative.storagePath&&(!creative.imageUrl||priorDefault)&&defaults?.imageUrl?{imageUrl:defaults.imageUrl}:{}),...(creative.imageDisabled?{imageUrl:undefined}:{})};
 }

@@ -20,7 +20,7 @@ try {
     if(viewport.width<=800){const panelBox=await page.locator('.tcSiteMenuPanel').boundingBox();const barBox=await page.locator('.neoMobileNav').boundingBox();assert(panelBox.y+panelBox.height<barBox.y,'menu_hidden_by_bottom_nav');}
     await menu.locator('summary').focus();await page.keyboard.press('Escape');assert.equal(await menu.getAttribute('open'),null);
     const quick=page.getByRole('navigation',{name:'Qué necesitas hacer',exact:true});
-    await quick.getByRole('button',{name:'Ofrezco mi trabajo u oficio',exact:true}).click();
+    await quick.getByRole('button',{name:'Ofrecer mi trabajo',exact:true}).click();
     await page.getByRole('heading',{name:'Ofrezco mi trabajo',exact:true}).waitFor();
     assert.equal(await page.locator('.neoMobileNav').count(),0,'bottom_nav_over_form');
     await page.getByRole('button',{name:'Cerrar',exact:true}).last().click();

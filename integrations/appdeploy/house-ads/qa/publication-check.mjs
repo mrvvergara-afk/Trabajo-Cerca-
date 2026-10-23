@@ -8,7 +8,7 @@ try{
  page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
  await page.goto('http://127.0.0.1:4174/',{waitUntil:'networkidle'});
  const quick=page.getByRole('navigation',{name:'Qué necesitas hacer',exact:true});
- for(const [button,field,title,kind] of [['Ofrezco mi trabajo u oficio','¿Qué trabajo u oficio ofreces?','Oficio libre del ensayo','worker_available'],['Necesito contratar','¿Qué trabajador necesitas?','Necesito un trabajador del ensayo','worker_need']]){
+ for(const [button,field,title,kind] of [['Ofrecer mi trabajo','¿Qué trabajo u oficio ofreces?','Oficio libre del ensayo','worker_available'],['Necesito contratar','¿Qué trabajador necesitas?','Necesito un trabajador del ensayo','worker_need']]){
   await quick.getByRole('button',{name:button,exact:true}).click();
   await page.getByLabel(field,{exact:true}).fill(title);
   await page.getByLabel('WhatsApp o teléfono de contacto',{exact:true}).fill('+56912345678');
@@ -20,7 +20,7 @@ try{
   const call=calls.find(c=>c.path==='/api/listings'&&c.method==='POST'&&c.body.kind===kind);assert(call&&call.body.consent===true);assert(!('price'in call.body));
   rows.push({kind,formSubmittedToIsolatedAdapter:true,consent:true,accountNotRequired:true,priceNotRequested:true});
  }
- await quick.getByRole('button',{name:'Promocionar mi negocio',exact:true}).click();
+ await quick.getByRole('button',{name:'Promocionar negocio',exact:true}).click();
  await page.getByLabel('Nombre del negocio',{exact:true}).fill('Negocio ficticio del ensayo');
  await page.getByLabel('Correo, WhatsApp o teléfono comercial',{exact:true}).fill('fixture@example.org');
  for(const c of await page.locator('.advertiserPanel input[type=checkbox]').all())await c.check();

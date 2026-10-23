@@ -13,29 +13,29 @@
 .tcSiteMenuPanel .tcAccountMenu{position:static;width:auto;border:0;box-shadow:none;padding:0;margin:10px 0 0}
 .tcSiteMenuPanel .tcAccountMenu p{font-size:13px}
 .tcSiteMenuPanel .tcCloseSiteMenu{margin-top:12px;border-top:1px solid #d7e1d9;font-weight:700}
-.tcSiteMenu summary:focus-visible,.tcSiteMenuPanel button:focus-visible,.tcQuickActions button:focus-visible{outline:3px solid #72ad18;outline-offset:3px}
+.tcSiteMenu summary:focus-visible,.tcSiteMenuPanel button:focus-visible{outline:3px solid #72ad18;outline-offset:3px}
 .tcOwnedEditor form{display:grid;gap:12px;padding:14px 0}.tcOwnedEditor label{display:grid;gap:6px}.tcOwnedEditor input:not([type=checkbox]),.tcOwnedEditor textarea,.tcOwnedEditor select{box-sizing:border-box;width:100%;max-width:100%;padding:10px;border:1px solid #bdcdc4;border-radius:8px}.tcOwnedEditor button{min-height:44px}
 
 /* Single public compact layer; operational/authentication views remain independent. */
-.neoShell .neoHero{display:block;min-height:0;padding:24px max(20px,calc((100% - 1180px)/2));margin:0;position:relative}
-.neoShell .neoHeroCopy{max-width:1180px;padding:0}
-.neoShell .neoHero h1{font-size:clamp(32px,3.3vw,46px);line-height:1.12;letter-spacing:-.035em;margin:0 0 10px;max-width:34ch}
-.neoShell .neoHeroLead{font-size:16px;line-height:1.45;margin:0 0 14px;max-width:65ch}
-.neoShell .neoHeroGlow{display:none}
-.neoShell .neoSearchDock{display:grid;grid-template-columns:20px minmax(0,1fr) minmax(140px,200px) auto;gap:8px;padding:6px 10px;min-height:0;border-radius:12px;margin:12px 0;max-width:100%;box-shadow:none}
-.neoShell .neoSearchDock>svg{width:20px;height:20px;align-self:center}
-.neoShell .neoSearchDock input{font-size:16px;min-height:44px;min-width:0;width:100%;padding:6px 0}
-.neoShell .neoSearchDock label{display:flex;align-items:center;gap:4px;min-width:0;height:auto;border-left:1px solid #d6e0d7;padding-left:8px}
-.neoShell .neoSearchDock select{font-size:15px;width:100%;min-width:0;min-height:44px}
-.neoShell .neoSearchDock button{min-height:44px;font-size:15px;padding:8px 12px;border-radius:9px;gap:5px}
-.neoShell .neoSearchDock button svg{width:18px;height:18px}
-.tcQuickActions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 0}
-.tcQuickActions button{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 10px;border:1px solid #cbd9cf;border-radius:10px;background:#fff;color:#06231c;font:inherit;font-size:14px;line-height:1.25;text-align:left;cursor:pointer}
-.tcQuickActions button svg{width:20px;height:20px;flex-shrink:0}
-.tcQuickActions button:nth-child(2){background:#edf6e5;font-weight:700}
-.neoShell .tcActivityStrip{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:4px 10px;width:calc(100% - 40px);max-width:1180px;box-sizing:border-box;margin:0 auto 12px;padding:8px 12px;border:1px solid #d4e1d7;border-radius:12px;background:#f0f6ed;box-shadow:none}
-.neoShell .tcActivityStrip button{min-height:44px;padding:6px 8px;background:transparent;border:0;color:#123c2c;font-size:14px;text-align:left;line-height:1.35;cursor:pointer}
-.neoShell .tcActivityStrip small{font-size:13px;color:#486153}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .neoShell .neoDiscover{max-width:1220px;padding:12px 20px 20px;margin:auto;scroll-margin-top:82px;outline:none}
 .neoShell .neoDiscover:focus-visible{outline:2px solid #7fa553;outline-offset:-2px}
 .neoShell .neoDiscoverHead{align-items:center;gap:12px;margin:4px 0 12px}
@@ -83,12 +83,12 @@
 .neoShell .neoLoadMore{padding:14px 0;gap:8px}
 .neoShell .neoLoadMore small{font-size:13px}
 .neoShell .neoLoadMore button{min-height:44px;font-size:14px}
-.neoShell>.tcHouseAd,.neoShell>.tcLocalAdvertising{width:calc(100% - 40px);max-width:1180px;box-sizing:border-box;margin:12px auto;padding:14px 16px}
-.neoShell .tcHouseAd{grid-column:1/-1;margin:0;padding:14px 16px;gap:14px;border-radius:12px}
-.neoShell .tcHouseAd h3{font-size:18px;margin:5px 0;line-height:1.2}
-.neoShell .tcHouseAd p{font-size:14px;line-height:1.4;margin:5px 0}
-.neoShell .tcHouseAd button{min-height:44px;font-size:14px;padding:9px 12px;flex-shrink:0}
-.neoShell .tcHouseAd img{width:56px;height:56px;object-fit:cover}
+.neoShell>.tcLocalAdvertising{width:calc(100% - 40px);max-width:1180px;box-sizing:border-box;margin:12px auto;padding:14px 16px}
+
+
+
+
+
 .tcTerritorialRadar,.tcSecondary{box-sizing:border-box;width:calc(100% - 40px);max-width:1180px;margin:12px auto;border:1px solid #d1dfd2;border-radius:12px;background:#fff;color:#123b2a;padding:16px;scroll-margin-top:82px}
 .tcRadarHeading{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .tcRadarHeading h2{font-size:22px;margin:0}.tcRadarHeading p,.tcRadarNote{font-size:13px;line-height:1.4;margin:5px 0;color:#526b5b}.tcRadarHeading>svg{width:26px;height:26px}
@@ -109,17 +109,17 @@
 @media(max-width:800px){
  .neoShell .neoTopbar{position:relative;top:auto;height:60px;min-height:60px;grid-template-columns:minmax(0,1fr) auto;padding:8px 14px;gap:8px;background:#fbfcf8;backdrop-filter:none}
  .neoShell .neoTopNav{display:none}.neoShell .neoBrand{min-width:0;gap:8px}.neoShell .neoBrandMark{width:32px;height:32px;flex-shrink:0;border-radius:10px}.neoShell .neoTopbar .neoBrand b{font-size:18px;white-space:nowrap}.neoShell .neoTopbar .neoBrand small{display:none}.tcSiteMenu>summary{padding:6px 9px;font-size:14px}
- .neoShell .neoHero{padding:18px 14px 12px}.neoShell .neoHero h1{font-size:clamp(30px,7.8vw,36px);line-height:1.08;margin:0 0 10px}.neoShell .neoHeroLead{font-size:15px;line-height:1.4;margin:0 0 10px}
- .neoShell .neoSearchDock{grid-template-columns:18px minmax(0,1fr) auto;padding:5px 8px;gap:4px 6px;margin:10px 0}
- .neoShell .neoSearchDock>label{grid-column:1/3;grid-row:2;border-left:0;border-top:1px solid #e4e9df;padding:0;min-height:44px}.neoShell .neoSearchDock>button{grid-column:3;grid-row:1/3;align-self:stretch;padding:8px;min-width:60px}.neoShell .neoSearchDock>button svg{display:none}
- .tcQuickActions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 0}.tcQuickActions button{min-height:48px;font-size:14px;padding:7px 8px;gap:6px}.tcQuickActions button svg{width:18px;height:18px}
- .neoShell .tcActivityStrip{width:calc(100% - 28px);padding:6px 8px;gap:2px 4px;margin:0 auto 8px}.neoShell .tcActivityStrip button{font-size:13px;padding:5px 6px;min-height:44px}
+ 
+ 
+ 
+ 
+ 
  .neoShell .neoDiscover{padding:10px 14px 16px;scroll-margin-top:10px}.neoShell .neoDiscoverHead{display:block;margin-bottom:8px}.neoShell .neoDiscoverHead h2{font-size:21px;overflow-wrap:anywhere}.tcClearFilters{margin-top:7px}
  .neoShell .neoTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.neoShell .neoTabs button{font-size:14px;justify-content:flex-start;padding:8px}.neoShell .neoTabs button b{font-size:12px}
  .neoShell .neoFilters .neoFilterSearch{flex-basis:100%}.neoShell .neoFilters label{flex-basis:calc(50% - 8px);box-sizing:border-box}.neoShell .neoFilters svg{width:16px;height:16px;flex-shrink:0}
  .neoShell .neoJobsGrid{grid-template-columns:minmax(0,1fr);gap:12px}.neoShell .neoJobBody{padding:14px}.neoShell .neoJobCard h3{font-size:17px}.neoShell .neoJobFoot{gap:8px}.neoShell .neoJobFoot button{font-size:13px;padding:8px}.neoShell .neoJobFoot button svg{display:none}
- .neoShell .tcHouseAd{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:12px;gap:8px;min-height:0;max-height:none}.neoShell .tcHouseAd h3{font-size:17px}.neoShell .tcHouseAd p{font-size:13px;margin:5px 0}.neoShell .tcHouseAd img{display:none}.neoShell .tcHouseAd button{width:auto;max-width:145px;font-size:13px;padding:8px;white-space:normal}.neoShell .tcHouseAd small{font-size:10px;line-height:1.35}
- .neoShell>.tcHouseAd,.neoShell>.tcLocalAdvertising{width:calc(100% - 28px);margin:10px auto;padding:12px}
+ 
+ .neoShell>.tcLocalAdvertising{width:calc(100% - 28px);margin:10px auto;padding:12px}
  .tcTerritorialRadar,.tcSecondary{width:calc(100% - 28px);padding:12px;margin:10px auto;scroll-margin-top:12px}.tcRadarHeading h2{font-size:20px}.tcRadarExplorer{flex-direction:column;gap:12px;align-items:stretch}.tcRadarDial{width:144px;height:144px;position:relative;top:auto;align-self:center}.tcRadarCaption{font-size:11px;bottom:24%}.tcRadarDial b{font-size:10px}.tcRadarTowns{grid-template-columns:repeat(3,minmax(0,1fr));max-height:none;overflow:visible;padding:0}.tcRadarTowns button{font-size:12px;padding:5px;min-height:48px}.tcRadarTowns small{font-size:11px}.tcRadarNote{font-size:12px}
  .neoShell .tcExploreCities{display:grid;grid-template-columns:1fr}.neoShell .tcExploreCities>button{min-height:48px}.neoShell .tcNewsLayout{display:block}.neoShell .tcNewsArticles article h3{font-size:18px}.neoShell .tcNewsArticles article p{font-size:14px}
  .neoShell .neoMobileNav{display:grid;position:fixed;left:0;right:0;bottom:0;height:calc(54px + env(safe-area-inset-bottom));padding:3px 8px calc(3px + env(safe-area-inset-bottom));box-sizing:border-box;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:14px 14px 0 0;box-shadow:0 -4px 18px #06231c14;z-index:80}.neoShell .neoMobileNav button{font-size:11px;min-height:44px;line-height:1.2}.neoShell .neoMobileNav svg{width:20px;height:20px}
@@ -131,29 +131,29 @@
 
 .neoShell .neoJobState{text-transform:none;letter-spacing:0}
 
-.neoShell .tcActivityStrip button{width:auto;flex:0 1 auto;display:inline-flex;align-items:center;justify-content:flex-start;gap:4px;margin:0;white-space:normal}
-@media(max-width:800px){.neoShell .neoSearchDock input{grid-column:2/4;grid-row:1}.neoShell .neoSearchDock>button{grid-row:2;grid-column:3;align-self:center;height:44px;min-height:44px}.neoShell .neoSearchDock>label{grid-row:2;grid-column:1/3}}
+
+
 
 @media(max-width:430px){.neoShell .neoTabs svg{display:none}}
 
 .neoShell .neoTopbar .neoBrand{min-height:44px}.neoShell .neoFooter button{min-height:44px;padding:8px;font-size:13px}.neoShell .neoNotice>button{min-width:44px;min-height:44px}
 
-.neoShell .tcActivityStrip .tcActivityCenterButton{min-width:44px;justify-content:center;padding:8px}.tcActivityCenterButton svg{width:20px;height:20px}
-@media(max-width:430px){.neoShell .tcHouseAd{grid-template-columns:minmax(0,1fr);gap:8px}.neoShell .tcHouseAd button{justify-self:start;max-width:100%;width:auto}.neoShell .tcHouseAd h3,.neoShell .tcHouseAd p{margin:3px 0}.neoShell .tcHouseAd small{line-height:1.3}}
-@media(max-width:430px){.neoShell .tcHouseAd h3{font-size:16px;line-height:1.2}}
-@media(max-width:360px){.neoShell .tcHouseAd h3{font-size:15px}}
+.tcActivityCenterButton svg{width:20px;height:20px}
+
+
+
 
 /* Shared compact creative layout: no hero photographs. */
-.neoShell .tcHouseAd{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:14px;align-items:center}
-.neoShell .tcHouseAd:not(:has(>.tcAdImage)){grid-template-columns:minmax(0,1fr) auto}
-.neoShell .tcHouseAd .tcAdImage,.tcLocalAdvertising .tcAdImage{display:block;width:104px;height:82px;object-fit:cover;border-radius:10px}
+
+
+.tcLocalAdvertising .tcAdImage{display:block;width:104px;height:82px;object-fit:cover;border-radius:10px}
 .tcLocalAdvertising .tcAdContent{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
 .tcLocalAdvertising .tcAdContent:not(:has(>.tcAdImage)){grid-template-columns:minmax(0,1fr) auto}
 .tcAdLogo{display:inline-block;width:32px;height:32px;object-fit:contain;vertical-align:middle;margin-right:8px;border-radius:5px}
 .tcLocalAdvertising .tcAdContent>div{min-width:0}.tcLocalAdvertising small{font-size:11px}
-@media(max-width:800px){.neoShell .tcHouseAd{grid-template-columns:64px minmax(0,1fr);gap:8px 10px}.neoShell .tcHouseAd .tcAdImage{display:block;width:64px;height:64px}.neoShell .tcHouseAd>button{grid-column:1/-1;justify-self:start;max-width:100%;width:auto}.neoShell .tcHouseAd:not(:has(>.tcAdImage)){grid-template-columns:minmax(0,1fr)}.tcLocalAdvertising .tcAdContent{grid-template-columns:64px minmax(0,1fr);gap:10px}.tcLocalAdvertising .tcAdImage{width:64px;height:64px}.tcLocalAdvertising .tcAdContent>a{grid-column:1/-1;justify-self:start;min-height:44px}.tcLocalAdvertising .tcAdContent:not(:has(>.tcAdImage)){grid-template-columns:minmax(0,1fr)}.tcAdLogo{width:26px;height:26px}}
+@media(max-width:800px){.tcLocalAdvertising .tcAdContent{grid-template-columns:64px minmax(0,1fr);gap:10px}.tcLocalAdvertising .tcAdImage{width:64px;height:64px}.tcLocalAdvertising .tcAdContent>a{grid-column:1/-1;justify-self:start;min-height:44px}.tcLocalAdvertising .tcAdContent:not(:has(>.tcAdImage)){grid-template-columns:minmax(0,1fr)}.tcAdLogo{width:26px;height:26px}}
 
-@media(max-width:430px){.neoShell .tcHouseAd{padding:10px;gap:6px 10px}}
+
 
 .tcLocalAdvertising .tcAdBusiness{display:flex;align-items:center;gap:6px}.tcLocalAdvertising .tcAdBusiness .tcAdLogo{flex-shrink:0;margin-right:0}.tcLocalAdvertising .tcAdBusiness strong{margin:0;min-width:0;overflow-wrap:anywhere}.neoJobFoot time{white-space:nowrap}
 
@@ -176,21 +176,21 @@
 .neoShell .neoFooter p a{display:block;color:#315a48;overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px;padding:4px 0}
 .neoShell .neoFooter .neoBrand small{letter-spacing:.08em}
 @media(max-width:800px){
- .neoShell .neoHero{padding-top:12px;padding-bottom:10px}
- .neoShell .neoHero h1{font-size:clamp(30px,7.4vw,34px);line-height:1.1;margin-bottom:8px;text-wrap:pretty}
- .neoShell .neoHeroLead{font-size:14px;margin-bottom:8px}
- .neoShell .neoSearchDock{margin:8px 0;padding:3px 8px}
- .tcQuickActions{gap:6px;margin-top:8px}.tcQuickActions button{padding:6px 8px;min-height:46px}
+ 
+ 
+ 
+ 
+ 
  .neoShell .neoControlDeck{margin-bottom:10px}.neoShell .neoTabs{margin:0;padding:3px;gap:3px}
  .neoShell .neoJobBody{padding:12px}.neoShell .neoJobCard h3{margin:4px 0;line-height:1.25}
  .neoShell .neoJobTop{gap:4px;margin-bottom:4px}.neoShell .neoJobCompany{margin:4px 0}
  .neoShell .neoJobPlace,.neoShell .neoJobState{padding:2px 5px}
  .neoShell .neoJobFoot .tcOfferDates{flex-basis:200px;font-size:12px;gap:2px 10px}
- .neoShell .tcHouseAd{grid-template-columns:52px minmax(0,1fr);gap:6px 10px;padding:10px 12px}
- .neoShell .tcHouseAd .tcAdImage{width:52px;height:52px}
- .neoShell .tcHouseAd h3{font-size:16px;line-height:1.2;margin:2px 0}
- .neoShell .tcHouseAd p{font-size:13px;line-height:1.3;margin:3px 0}
- .neoShell .tcHouseAd button{padding:7px 10px;min-height:44px}
+ 
+ 
+ 
+ 
+ 
  .tcRadarTowns button{min-height:48px;padding:6px;font-size:12px;min-width:0}
  .tcSecondary{padding:6px 12px;margin:8px auto}.tcSecondary>summary{font-size:14px}
  .neoShell .neoFooter{padding:14px;gap:8px;margin-top:12px}
@@ -201,11 +201,7 @@
 @media(max-width:390px){.neoShell .neoJobFoot .tcOfferDates{flex-basis:100%}}
 
 .neoShell .neoFooter>div:last-child button{font-size:13px;line-height:1.4}
-@media(max-width:800px){
- .neoShell .tcActivityStrip{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;gap:2px 4px;align-items:center}
- .neoShell .tcActivityStrip>button{min-width:0;width:100%;padding:5px 4px}
- .neoShell .tcActivityStrip>small{grid-column:1/-1}
-}
+
 @media(max-width:800px){
  .neoShell .neoMobileNav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0;background:transparent;color:#d3e4da}
 }

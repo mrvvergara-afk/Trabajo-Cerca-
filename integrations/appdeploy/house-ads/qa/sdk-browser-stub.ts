@@ -17,6 +17,8 @@ const layoutItems=()=>state.houseFixture==='territory'?[
 ]:basicLayoutItems();
 async function call(method:string,path:string,body?:Record<string,unknown>){
  state.houseCalls!.push({method,path,body});
+ if(state.houseFixture==='real-public'&&path.startsWith('/api/listings')&&method==='GET'){const snapshot=await fetch('/__review_public_feed').then(r=>r.json());if(/^\/api\/listings\/[^/?]+$/.test(path)){const item=snapshot.items.find((x:{id:string})=>x.id===decodeURIComponent(path.split('/').pop()!));return {data:{item}};}return {data:snapshot};}
+
  if(path.startsWith('/api/growth/promotion'))return {data:promotionOffer(COMMERCIAL_DEFAULTS)};
  if(path==='/api/admin/marketing/creative'){if(state.houseFixture!=='admin')throw {response:{status:401}};return {data:{storagePath:'house-creatives/'+'a'.repeat(64)+'.webp'}};}
  if(path.startsWith('/api/admin/marketing/campaigns')){if(state.houseFixture!=='admin')throw {response:{status:401}};if(method==='PUT'&&body?.media){const m=body.media as {slot:'image'|'logo';storagePath:string|null};mediaRows=mediaRows.map(r=>r.id===body.id?{...r,[m.slot]:m.storagePath?{storagePath:m.storagePath}:null}:r);}return {data:{items:mediaRows,nextToken:null}};}

@@ -1,19 +1,19 @@
 /* Presentation only: allocation, editorial evidence and commercial terms are unchanged. */
-.neoShell .tcHouseAd.tcPremiumAd{display:grid;grid-template-columns:38% minmax(0,1fr);padding:0;gap:0;align-items:stretch;border:1px solid #c7d7c8;border-radius:14px;background:#f6f8ee;overflow:hidden;box-shadow:0 3px 12px #133a2508;transition:border-color .18s,box-shadow .18s}
-.neoShell>.tcHouseAd.tcPremiumAd{margin:12px auto}
-.tcPremiumAd .tcCampaignVisual,.tcPremiumCommercial .tcCommercialVisual{position:relative;min-width:0;overflow:hidden;background:#dce8d6;align-self:stretch}
-.neoShell .tcHouseAd.tcPremiumAd .tcCampaignVisual .tcAdImage,.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 43%;border-radius:0}
+
+
+.tcPremiumCommercial .tcCommercialVisual{position:relative;min-width:0;overflow:hidden;background:#dce8d6;align-self:stretch}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0}
 .tcCreativeFallback{position:absolute;inset:0;display:grid;place-items:center;padding:14px;text-align:center;color:#31533b;font-size:14px;font-weight:700;background:repeating-linear-gradient(140deg,#edf3e5 0 28px,#e1ebd8 28px 29px)}
-.tcCampaignVisual:has(>.tcAdImage)>.tcCreativeFallback,.tcCommercialVisual:has(>.tcAdImage)>.tcCreativeFallback{display:none}
+.tcCommercialVisual:has(>.tcAdImage)>.tcCreativeFallback{display:none}
 .tcCreativeExample{position:absolute;bottom:8px;left:8px;right:8px;justify-self:start;border-radius:5px;padding:4px 6px;font-size:10px;line-height:1.2;color:#173c2b;background:#fafdf1ed}
-.neoShell .tcPremiumAd .tcCampaignCopy{padding:16px 20px;min-width:0;min-height:174px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px}
-.neoShell .tcPremiumAd .tcCampaignCopy h3{font-size:22px;line-height:1.17;letter-spacing:-.025em;margin:0;color:#102f22}
-.neoShell .tcPremiumAd .tcCampaignCopy p{font-size:14px;line-height:1.4;margin:0;max-width:55ch;color:#3c5747}
-.neoShell .tcPremiumAd .tcCampaignCopy small{font-size:10px;line-height:1.3;color:#4c6552}
-.neoShell .tcPremiumAd .tcCampaignCopy button{width:auto;max-width:100%;min-height:44px;font-size:14px;line-height:1.3;padding:8px 12px;margin-top:3px;background:#b0ff32;color:#123323;border:1px solid #94dc22;border-radius:9px;font-weight:750;transition:transform .16s,background .16s;white-space:normal}
-@media(hover:hover){.neoShell .tcHouseAd.tcPremiumAd:hover{border-color:#80a175;box-shadow:0 7px 20px #123b2510}.tcPremiumAd button:hover{transform:translateY(-1px)}}
-.tcPremiumAd button:active{transform:translateY(1px)}
-.tcPremiumAd button:focus-visible,.tcNewsExpand:focus-visible,.tcResourceMore summary:focus-visible{outline:3px solid #407a31;outline-offset:3px}
+
+
+
+
+
+
+
+.tcNewsExpand:focus-visible,.tcResourceMore summary:focus-visible{outline:3px solid #407a31;outline-offset:3px}
 .tcLocalAdvertising .tcAdContent.tcPremiumCommercial{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:10px}
 .tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true]{grid-template-columns:38% minmax(0,1fr) auto}
 .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual{min-height:156px;border-radius:10px}
@@ -44,11 +44,11 @@
 .tcNewsExpand{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 12px;margin:8px 0;background:#eef5e6;border:1px solid #d1ddc8;border-radius:8px;font:inherit;font-size:13px;color:#193e2a;cursor:pointer}
 .neoShell .tcCompactNews .tcNewsReview{font-size:11px;line-height:1.4;margin:8px 0}
 @media(max-width:800px){
- .neoShell .tcHouseAd.tcPremiumAd{grid-template-columns:35% minmax(0,1fr);padding:0;gap:0}
- .neoShell .tcPremiumAd .tcCampaignCopy{padding:12px;min-height:176px;gap:5px}
- .neoShell .tcPremiumAd .tcCampaignCopy h3{font-size:17px;line-height:1.2}
- .neoShell .tcPremiumAd .tcCampaignCopy p{font-size:13px;line-height:1.35}
- .neoShell .tcPremiumAd .tcCampaignCopy button{font-size:13px;padding:8px 10px;grid-column:auto;justify-self:start}
+ 
+ 
+ 
+ 
+ 
  .tcLocalAdvertising .tcAdContent.tcPremiumCommercial{grid-template-columns:minmax(0,1fr);gap:8px}
  .tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true]{grid-template-columns:35% minmax(0,1fr);align-items:start}
  .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual{grid-row:1/3;min-height:170px;height:100%}
@@ -63,6 +63,28 @@
  .neoShell .neoJobCompany{margin:3px 0}
  .neoShell .neoJobFoot{margin-top:6px;padding-top:6px}
 }
-@media(prefers-reduced-motion:reduce){.tcPremiumAd,.tcPremiumAd button{transition:none!important;transform:none!important}}
+
 
 .tcCompactNews[data-expanded=false] article p{-webkit-line-clamp:2}
+
+/* Single owner: public home/search/activity. Earlier rules were removed, not overridden. */
+.neoHero{display:block;max-width:1220px;margin:0 auto;padding:24px 20px 16px;min-height:0;background:none}
+.neoHeroGlow{display:none}.neoHeroCopy{max-width:none;width:100%}
+.neoHero h1{font-size:42px;line-height:1.08;letter-spacing:-.035em;color:#092c23;font-weight:650;margin:0}
+.neoHero h1 em{color:#f36d52;font-style:normal}.neoHeroLead{font-size:16px;line-height:1.4;margin:8px 0 0;color:#456256}
+.neoSearchDock{display:grid;grid-template-columns:20px minmax(0,1fr) auto auto;align-items:center;gap:8px;background:#fff;border:1px solid #cddbd0;border-radius:10px;padding:4px 6px 4px 12px;min-height:52px;margin:14px 0 0;box-shadow:none}
+.neoSearchDock>svg{width:20px;height:20px;color:#5b7266}.neoSearchDock input{border:0;outline:0;min-width:0;width:100%;height:44px;font-size:16px;background:transparent;color:#163f2e}
+.neoSearchDock>label{display:flex;align-items:center;gap:5px;border-left:1px solid #dce5d9;padding:0 10px;min-height:44px;min-width:0}
+.neoSearchDock>label>svg{width:16px;height:16px;flex-shrink:0;color:#e76550}.neoSearchDock select{font:inherit;font-size:14px;border:0;background:transparent;min-height:44px;min-width:0;color:#12382a;max-width:180px}
+.neoSearchDock>button{display:flex;align-items:center;justify-content:center;gap:6px;background:#092c23;color:#fff;border:0;border-radius:8px;min-height:44px;padding:8px 14px;font-size:14px;font-weight:650}.neoSearchDock>button svg{width:18px;height:18px}
+.tcQuickActions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 0}
+.tcQuickActions button{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0;min-height:46px;padding:7px 10px;border:1px solid #cedbcf;border-radius:8px;color:#153b2b;background:#fff;font-size:14px;line-height:1.2;text-align:left;cursor:pointer}
+.tcQuickActions button:nth-child(2){background:#eef6e7;border-color:#c5d9b8}.tcQuickActions button svg{width:18px;height:18px;flex-shrink:0}.tcQuickActions button span{min-width:0}
+.tcActivityStrip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;gap:4px;align-items:center;width:calc(100% - 40px);max-width:1180px;margin:0 auto 10px;padding:2px 8px;background:#f0f6ed;border:1px solid #d4e1d7;border-radius:9px;min-height:50px}
+.tcActivityStrip>button{display:flex;align-items:center;justify-content:flex-start;gap:4px;min-width:0;min-height:44px;padding:4px;border:0;background:transparent;color:#234c35;font-size:13px;line-height:1.25;text-align:left;cursor:pointer}.tcActivityStrip b{font-size:15px}.tcActivityStrip .tcActivityCenterButton{justify-content:center}.tcActivityCenterButton svg{width:20px;height:20px}.tcActivityStrip>small{grid-column:1/-1;font-size:12px}
+@media(max-width:800px){
+ .neoHero{padding:10px 14px 10px}.neoHero h1{max-width:23ch;font-size:30px;line-height:1.06;letter-spacing:-.035em}.neoHero h1 em{white-space:nowrap}.neoHeroLead{font-size:14px;line-height:1.3;margin-top:6px}
+ .neoSearchDock{grid-template-columns:minmax(90px,1fr) 104px 60px;gap:3px;padding:3px 4px 3px 8px;margin-top:8px;min-height:50px}.neoSearchDock>svg{display:none}.neoSearchDock input{grid-column:1;grid-row:1;height:44px;font-size:16px}.neoSearchDock>label{grid-column:2;grid-row:1;padding:0 3px;gap:3px;display:flex}.neoSearchDock>label>svg{width:14px;height:14px}.neoSearchDock select{width:100%;max-width:100%;font-size:13px}.neoSearchDock>button{grid-column:3;grid-row:1;height:44px;padding:6px;font-size:14px}.neoSearchDock>button svg{display:none}
+ .tcQuickActions{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}.tcQuickActions button{min-height:46px;padding:6px 8px;font-size:14px;gap:6px}
+ .tcActivityStrip{width:calc(100% - 28px);margin-bottom:6px;min-height:50px}.tcActivityStrip>button{font-size:12px}.tcActivityStrip b{font-size:14px}
+}

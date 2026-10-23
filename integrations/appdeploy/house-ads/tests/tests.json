@@ -47,8 +47,10 @@
       "Si el inventario ofrece más resultados, continuar la paginación hasta una segunda página; si el inventario guardado no tiene una segunda página, dejar constancia de que esa precondición no existe, sin crear avisos ni ejecutar motores",
       "Revisar nuevamente el listado",
       "Si el inventario contiene los cargos documentales de Traiguén, comprobar que Químico Farmacéutico, Ingeniero en Prevención de Riesgos y Nutricionista son tarjetas distintas, abrir sus detalles y recargar; si todavía no han llegado, registrar esa precondición sin crear avisos ni iniciar motores.",
-      "Comparar el total publicado de portada antes y después de Cargar más y recargar; revisar el aviso prominente de incorporadas en los últimos 7 días y las etiquetas NUEVA EN LA APP. Pulsar Ver novedades y luego Ver todas las ofertas.",
-      "Abrir el detalle de una oferta y su enlace de fuente original; si es de Laborum, comprobar que no conduce al ID de otra recomendación."
+      "Comparar el total publicado de portada antes y después de Siguiente página o completar la carga pendiente y recargar; revisar el franja compacta de incorporadas en los últimos 7 días y las etiquetas Incorporada recientemente. Pulsar Ver novedades y luego Ver todas las ofertas.",
+      "Abrir el detalle de una oferta y su enlace de fuente original; si es de Laborum, comprobar que no conduce al ID de otra recomendación.",
+      "Abrir Centro de novedades desde la campana o Menú > Configurar avisos, elegir localidad y consultar incorporadas en siete días. Si hay más de diez, recorrer sus páginas y comprobar que no se presentan diez como el total. No crear avisos para forzar esa precondición.",
+      "Abrir el detalle de un aviso y recargar; comprobar lectura local conservada, fecha original y etiqueta Por revalidar cuando corresponda. No enviar notificaciones ni formularios."
     ],
     "expected": "El Radar termina la carga y permite consultar el inventario guardado. Si no hay ofertas publicables muestra su estado vacío explicativo; si existen, conserva sus tarjetas al recargar. No aparece el error No pudimos cargar el Radar central. Si hay una segunda página, se consulta sin errores ni duplicación de tarjetas y la recarga vuelve al inicio del feed. Al cargar más, las tarjetas de una misma oferta individual de Chiletrabajos no se repiten por variantes de su URL. Si los tres cargos documentales de Traiguén ya forman parte del inventario, permanecen separados al recargar y sus detalles conservan la fuente oficial y las instrucciones presenciales. La ausencia de esa precondición no confirma su publicación. La portada muestra el total de ofertas publicadas calculado sobre el feed completo; ese total no aumenta al cargar una segunda página. El listado distingue tarjetas mostradas del total. El aviso de novedades cuenta incorporaciones en los últimos 7 días, sin cambiar la fecha original ni contar revalidaciones. Ver todas conserva las ofertas anteriores válidas. Las páginas de búsqueda por ciudad no aparecen como cargos; las variantes de un mismo aviso TENS representan una sola tarjeta y los tres cargos revisados de Traiguén conservan identidades separadas. Victoria's Secret o faena Nueva Victoria no acreditan por sí solas trabajo en la comuna de Victoria."
   },
@@ -77,7 +79,7 @@
     ],
     "steps": [
       "Abrir Trabajo Cerca y esperar la carga del inventario. Anotar el total publicado del radar.",
-      "Elegir Angol en el selector de comuna y localizar Buscar también en.",
+      "Elegir Angol en el selector. Abrir Menú > Buscar en otras ciudades o desplegar Buscar también en otras ciudades.",
       "Pulsar Los Ángeles. Esperar que termine la paginación de ofertas guardadas; revisar que las tarjetas correspondan a esa ciudad, o que se muestre el estado vacío sin inventar ofertas.",
       "Pulsar Volver a Angol; después explorar Victoria y Temuco desde sus accesos. Comprobar el regreso a Angol.",
       "Volver a Toda la zona y comparar el total publicado con el anotado, sin confundirlo con tarjetas mostradas ni sumar ciudades dos veces."
@@ -108,7 +110,7 @@
     ],
     "steps": [
       "Abrir Trabajo Cerca y anotar el total de ofertas publicado.",
-      "Pulsar Actualidad en la navegación superior.",
+      "En escritorio pulsar Actualidad; en móvil abrir Menú > Actualidad laboral. Comprobar que se abre la sección desplegable.",
       "Revisar la noticia regional: fuente Tiempo21, fecha original 30/09/2026 y enlace a la publicación original, si continúa dentro de su ventana de 45 días; fuera de ella, comprobar el estado sin noticias revisadas.",
       "Revisar los accesos SENCE, INE La Araucanía, Servicio Civil, CORFO, AFC, Superintendencia de Pensiones y SERNAC. Abrir un acceso en una nueva pestaña sin completar trámites.",
       "Volver al listado y comprobar que el total de ofertas no cambió al consultar noticias o publicidad."
@@ -241,7 +243,7 @@
       "Recargar sin pulsar acciones del radar",
       "Revisar documentRevalidation en COMPROBACIÓN DE LECTURA: estado, fecha original, última comprobación y próxima revisión. Si falla la lectura debe mostrarse el error sin impedir consultar el feed.",
       "Comprobar que feedReadComplete solo es true al agotar la última página, sin feedReadError, y que visibleItems conserva cargo y fuente para evaluar el inventario",
-      "Abrir /?radar-receiver-proof=1#operacion y pulsar Aplicar ofertas revisadas; esperar el resultado y recargar. No iniciar fuentes, OCR, motores sociales ni notificaciones."
+      "Abrir /?radar-receiver-proof=1#operacion solo para comprobar los límites de acceso. No pulsar Aplicar ofertas revisadas ni consumir entregas; no iniciar fuentes, OCR, motores sociales ni notificaciones. Si requiere administración, registrar esa precondición sin intentar obtenerla."
     ],
     "expected": "Se muestran valores guardados y un estado de feed completo o en construcción. El bloque permite verificar IDs y fechas sin mostrar claves ni respaldos. Un fallo de lectura aparece como error; no se convierte en cero publicaciones confirmado. La revalidación documental muestra su estado guardado y distingue la fecha original de la última comprobación. Esta consulta no revalida ni publica; un fallo se muestra como error y no como comprobación exitosa. El bloque incluye visibleItems, feedPagesRead y feedReadComplete; encontrar los tres IDs esperados no interrumpe la lectura de las páginas restantes. Un error o un límite de lectura no confirma el inventario completo. visibleItems conserva fecha original, plazo y URL de postulación cuando esos campos existen, sin derivarlos de la fecha de revisión. La incorporación devuelve el estado del lote y sus recibos, o un error visible o cooldown. No declara ofertas nuevas por el simple hecho de pulsar y no acepta registros nuevos desde ese formulario. La consulta posterior conserva el inventario."
   },
@@ -279,7 +281,7 @@
     ],
     "description": "Comprueba que el aporte informa su deshabilitación sin simular lectura ni publicación.",
     "steps": [
-      "Abrir el aporte al Radar desde Alimenta el Radar.",
+      "Abrir Menú > Compartir un aviso con el Radar.",
       "Comprobar que Lectura de fotos deshabilitada y la alternativa de texto o enlace están visibles.",
       "Cerrar el formulario y volver al listado."
     ],
@@ -438,7 +440,9 @@
       "Abrir Ofrezco mi trabajo u oficio y cerrar sin enviar.",
       "Abrir Necesito contratar y cerrar sin enviar.",
       "Abrir Menú, comprobar Mi cuenta y cerrar con Escape.",
-      "Desplazarse al pie y abrir y cerrar Privacidad."
+      "Desplazarse al pie y abrir y cerrar Privacidad.",
+      "Revisar las cuatro acciones principales, pestañas completas y tarjetas sin fotografías genéricas. Abrir Radar territorial desde Menú, elegir una localidad y comprobar el título de resultados y su filtro.",
+      "Abrir Centro de novedades sin permisos push; la información push debe aparecer En preparación, sin activación exitosa ni envío de pruebas."
     ],
     "expected": "Sin desbordamiento lateral ni barra inferior tapando formularios. Administración no aparece a visitantes anónimos."
   },

@@ -5,7 +5,7 @@ export function lastConfirmedAt(item:OfferEvidence,now=Date.now()):string|null {
  return dates.sort((a,b)=>Date.parse(b)-Date.parse(a))[0]??null;
 }
 export function hasVerificationEvidence(item:OfferEvidence,now=Date.now()) {
- return !!lastConfirmedAt(item,now)&&!!(item.verificationMethod?.trim()||item.verificationReason?.trim()||item.evidence?.trim()||item.evidenceSources?.length);
+ return !!lastConfirmedAt(item,now)&&[item.verificationMethod,item.verificationReason,item.evidence,...(Array.isArray(item.evidenceSources)?item.evidenceSources:[])].some(value=>typeof value==='string'&&!!value.trim());
 }
 export function publicReviewLabel(item:OfferEvidence,now=Date.now()) {
  if(item.kind&&item.kind!=='job_offer')return 'Publicación directa';

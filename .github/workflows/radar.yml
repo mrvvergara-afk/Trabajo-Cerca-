@@ -559,7 +559,7 @@ jobs:
           if [ "$RC_CHECKS" = '1' ] && [ "$GITHUB_EVENT_NAME" != 'pull_request' ]; then
             python -m pip install playwright==1.62.0
             python -m scripts.observe_site_inventory
-            (cd integrations/appdeploy/house-ads && node qa/audit-recheck-inventory.mjs)
+            (cd integrations/appdeploy/house-ads && node qa/capture-sdk-evidence.mjs && node qa/audit-recheck-inventory.mjs)
             python -m scripts.observe_production_readiness
             python -m scripts.observe_security_containment
           fi

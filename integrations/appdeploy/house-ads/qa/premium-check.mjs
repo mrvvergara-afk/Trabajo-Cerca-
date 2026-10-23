@@ -23,6 +23,7 @@ async function shot(page,width,name,locator){
   }else{
    await page.setViewportSize({...viewport,height:Math.min(16000,await page.evaluate(()=>document.documentElement.scrollHeight))});
    await page.waitForFunction(()=>[...document.querySelectorAll('.neoJobCard')].every(e=>e.checkVisibility({contentVisibilityAuto:true})));
+   await page.waitForTimeout(400); // Let deferred card layout commit before measuring the footer.
    const naturalHeight=await page.evaluate(()=>{const footer=document.querySelector('.neoFooter');return footer?Math.ceil(footer.getBoundingClientRect().bottom+scrollY+parseFloat(getComputedStyle(document.querySelector('.neoShell')).paddingBottom)+8):document.documentElement.scrollHeight;});
    await page.setViewportSize({...viewport,height:Math.min(16000,Math.max(viewport.height,naturalHeight))});
    await page.waitForFunction(()=>[...document.querySelectorAll('.neoJobCard')].every(e=>e.checkVisibility({contentVisibilityAuto:true})));

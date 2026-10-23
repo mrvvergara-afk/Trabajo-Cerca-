@@ -1,0 +1,25 @@
+{
+  "sameBytesAsBase": {
+    "cron.json": true,
+    "shared/commercial-policy.ts": true,
+    "backend/reviewed-receiver.ts": true,
+    "backend/document-revalidation.ts": true,
+    "backend/security-policy.ts": true,
+    "backend/radar-ingestion.ts": true,
+    "package.json": true,
+    "package-lock.json": true,
+    "vite.config.ts": true
+  },
+  "closingAndRetentionRulesUnchanged": true,
+  "scheduledHandlersUnchanged": [
+    "socialTerritorialTriggerHandler",
+    "socialTerritorialCollectHandler",
+    "v17HardWebHandler",
+    "v16TerritorialDirectBatchHandler",
+    "v14VerificationHandler",
+    "radarEnrichmentWorker"
+  ],
+  "scheduledCount": 6,
+  "paidProvidersEnabled": false,
+  "deployedByThisTask": false
+}

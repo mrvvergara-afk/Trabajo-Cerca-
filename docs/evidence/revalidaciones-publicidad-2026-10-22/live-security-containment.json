@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-10-23T10:48:19.205267+00:00",
+  "sdk_security_proof": {
+    "policy": {
+      "revision": "security-containment-v2",
+      "paidProviders": false,
+      "remoteAi": false,
+      "externalAnalytics": false,
+      "manualOperations": false
+    },
+    "results": [
+      {
+        "method": "POST",
+        "path": "/api/ops/radar-external/consume",
+        "status": 401,
+        "message": "Request failed with status code 401"
+      },
+      {
+        "method": "POST",
+        "path": "/api/ops/free-public-sources/run",
+        "status": 401,
+        "message": "Request failed with status code 401"
+      },
+      {
+        "method": "POST",
+        "path": "/api/radar/social-run",
+        "status": 401,
+        "message": "Request failed with status code 401"
+      },
+      {
+        "method": "POST",
+        "path": "/api/radar/social-collect",
+        "status": 401,
+        "message": "Request failed with status code 401"
+      },
+      {
+        "method": "GET",
+        "path": "/api/radar/run-territorial-now",
+        "status": 401,
+        "message": "Request failed with status code 401"
+      },
+      {
+        "method": "POST",
+        "path": "/api/radar/photo-tip",
+        "status": 503,
+        "message": "Request failed with status code 503"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/backup/page",
+        "status": 401,
+        "message": "Request failed with status code 401"
+      }
+    ],
+    "analytics": {
+      "received": false,
+      "disabled": true,
+      "reason": "security_policy_disabled"
+    },
+    "checkedAt": "2026-10-23T10:48:18.037Z"
+  },
+  "photo_upload_disabled_with_explanation": true,
+  "existing_cards_remain_available": true,
+  "collector_calls": 0,
+  "remote_ocr_calls": 0,
+  "new_offers_published": 0
+}

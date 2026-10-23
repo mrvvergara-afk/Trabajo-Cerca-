@@ -1,0 +1,243 @@
+{
+  "checkedAt": "2026-10-23T10:46:07.780Z",
+  "phase": "before",
+  "fixturesOnly": true,
+  "realSdkWrite": false,
+  "productionWrites": 0,
+  "deployed": false,
+  "widths": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "rows": [
+    {
+      "width": 320,
+      "verifiedLabel": "Por revalidar",
+      "pageErrors": []
+    },
+    {
+      "width": 320,
+      "turn": 0,
+      "houseHeight": 136.1875,
+      "image": 0
+    },
+    {
+      "width": 320,
+      "turn": 1,
+      "houseHeight": 198.375,
+      "image": 0
+    },
+    {
+      "width": 320,
+      "turn": 2,
+      "houseHeight": 136.1875,
+      "image": 0
+    },
+    {
+      "width": 320,
+      "turn": 3,
+      "houseHeight": 136.1875,
+      "image": 0
+    },
+    {
+      "width": 320,
+      "turn": 4,
+      "houseHeight": 154.1875,
+      "image": 0
+    },
+    {
+      "width": 320,
+      "turn": 5,
+      "houseHeight": 198.375,
+      "image": 0
+    },
+    {
+      "width": 320,
+      "fixture": "paid",
+      "adHeight": 199.5
+    },
+    {
+      "width": 320,
+      "fixture": "paid-image",
+      "adHeight": 199.5
+    },
+    {
+      "width": 320,
+      "fixture": "paid-broken",
+      "adHeight": 199.5
+    },
+    {
+      "width": 390,
+      "verifiedLabel": "Por revalidar",
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "turn": 0,
+      "houseHeight": 137.375,
+      "image": 0
+    },
+    {
+      "width": 390,
+      "turn": 1,
+      "houseHeight": 163.375,
+      "image": 0
+    },
+    {
+      "width": 390,
+      "turn": 2,
+      "houseHeight": 137.375,
+      "image": 0
+    },
+    {
+      "width": 390,
+      "turn": 3,
+      "houseHeight": 137.375,
+      "image": 0
+    },
+    {
+      "width": 390,
+      "turn": 4,
+      "houseHeight": 156.5625,
+      "image": 0
+    },
+    {
+      "width": 390,
+      "turn": 5,
+      "houseHeight": 182.5625,
+      "image": 0
+    },
+    {
+      "width": 390,
+      "fixture": "paid",
+      "adHeight": 179.25
+    },
+    {
+      "width": 390,
+      "fixture": "paid-image",
+      "adHeight": 179.25
+    },
+    {
+      "width": 390,
+      "fixture": "paid-broken",
+      "adHeight": 179.25
+    },
+    {
+      "width": 768,
+      "verifiedLabel": "Por revalidar",
+      "pageErrors": []
+    },
+    {
+      "width": 768,
+      "turn": 0,
+      "houseHeight": 93.078125,
+      "image": 0
+    },
+    {
+      "width": 768,
+      "turn": 1,
+      "houseHeight": 124.765625,
+      "image": 0
+    },
+    {
+      "width": 768,
+      "turn": 2,
+      "houseHeight": 111.265625,
+      "image": 0
+    },
+    {
+      "width": 768,
+      "turn": 3,
+      "houseHeight": 111.265625,
+      "image": 0
+    },
+    {
+      "width": 768,
+      "turn": 4,
+      "houseHeight": 93.078125,
+      "image": 0
+    },
+    {
+      "width": 768,
+      "turn": 5,
+      "houseHeight": 106.578125,
+      "image": 0
+    },
+    {
+      "width": 768,
+      "fixture": "paid",
+      "adHeight": 125.9375
+    },
+    {
+      "width": 768,
+      "fixture": "paid-image",
+      "adHeight": 125.9375
+    },
+    {
+      "width": 768,
+      "fixture": "paid-broken",
+      "adHeight": 125.9375
+    },
+    {
+      "width": 1440,
+      "verifiedLabel": "Por revalidar",
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "turn": 0,
+      "houseHeight": 103.78125,
+      "image": 0
+    },
+    {
+      "width": 1440,
+      "turn": 1,
+      "houseHeight": 121.375,
+      "image": 0
+    },
+    {
+      "width": 1440,
+      "turn": 2,
+      "houseHeight": 103.78125,
+      "image": 0
+    },
+    {
+      "width": 1440,
+      "turn": 3,
+      "houseHeight": 103.78125,
+      "image": 0
+    },
+    {
+      "width": 1440,
+      "turn": 4,
+      "houseHeight": 103.78125,
+      "image": 0
+    },
+    {
+      "width": 1440,
+      "turn": 5,
+      "houseHeight": 121.375,
+      "image": 0
+    },
+    {
+      "width": 1440,
+      "fixture": "paid",
+      "adHeight": 129.9375
+    },
+    {
+      "width": 1440,
+      "fixture": "paid-image",
+      "adHeight": 129.9375
+    },
+    {
+      "width": 1440,
+      "fixture": "paid-broken",
+      "adHeight": 129.9375
+    }
+  ],
+  "noPayments": true,
+  "originalSvgAssets": true,
+  "adminUploadApprovalRemovalTested": false
+}

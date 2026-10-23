@@ -1,0 +1,560 @@
+{
+  "checkedAt": "2026-10-23T10:48:14.097Z",
+  "readOnly": true,
+  "complete": true,
+  "sourceFeedManifest": "79a73186-80bf-49ac-a279-7fedb06a7fe7",
+  "totalJobs": 59,
+  "dueCount": 49,
+  "candidateQueueDueCount": 48,
+  "causesOverlap": true,
+  "counts": {
+    "programacion_mayor_24_horas": 47,
+    "fecha_priorizada_por_cola_anterior_a_otra_comprobacion": 2
+  },
+  "publicLabelCounts": {
+    "Verificada": 49
+  },
+  "rows": [
+    {
+      "id": "612daf87-5014-47ea-8421-c6a96420e873",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-21T08:35:36.028Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-16T19:12:35.000Z",
+      "firstPublishedAt": "2026-10-21T00:18:16.478Z"
+    },
+    {
+      "id": "361dab2c-87ef-4bce-9bda-ef731822244d",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:21.339250+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-08T14:13:19.000Z",
+      "firstPublishedAt": "2026-10-20T23:33:36.181Z"
+    },
+    {
+      "id": "bdaed372-0383-4771-9c3e-d4a80207d823",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:09.603753+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T16:15:34.000Z",
+      "firstPublishedAt": "2026-10-20T23:33:36.181Z"
+    },
+    {
+      "id": "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:37:51.159402+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-25T00:00:00.000Z",
+      "firstPublishedAt": "2026-10-20T23:33:36.181Z"
+    },
+    {
+      "id": "4ba4e5d1-8556-4b33-8304-329a35184274",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:09.131628+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T19:57:22.000Z",
+      "firstPublishedAt": "2026-10-20T23:32:17.268Z"
+    },
+    {
+      "id": "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:08.205259+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T19:48:05.000Z",
+      "firstPublishedAt": "2026-10-20T23:32:17.268Z"
+    },
+    {
+      "id": "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:08.635759+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T19:55:16.000Z",
+      "firstPublishedAt": "2026-10-20T23:32:17.268Z"
+    },
+    {
+      "id": "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:07.759828+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T20:03:39.000Z",
+      "firstPublishedAt": "2026-10-20T23:30:58.415Z"
+    },
+    {
+      "id": "cb724831-6a31-4fbf-9d8c-c067596f9237",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:07.274761+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T20:00:32.000Z",
+      "firstPublishedAt": "2026-10-20T23:30:58.415Z"
+    },
+    {
+      "id": "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:06.827053+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T19:59:20.000Z",
+      "firstPublishedAt": "2026-10-20T23:30:58.415Z"
+    },
+    {
+      "id": "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:21:59.107494+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-06T00:00:00.000Z",
+      "firstPublishedAt": "2026-10-20T23:30:48.267Z"
+    },
+    {
+      "id": "cb47b13c-00cf-4d12-9043-c6906da31736",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:36:06.332401+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T20:05:24.000Z",
+      "firstPublishedAt": "2026-10-20T23:30:48.267Z"
+    },
+    {
+      "id": "b92528e5-61b5-4498-88ca-808c2443a044",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:21:59.231220+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-02T00:00:00.000Z",
+      "firstPublishedAt": "2026-10-20T23:30:48.267Z"
+    },
+    {
+      "id": "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T19:05:32.243Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-13T15:08:58.000Z",
+      "firstPublishedAt": "2026-10-20T19:05:32.243Z"
+    },
+    {
+      "id": "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T11:21:58.883806+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-29T00:00:00.000Z",
+      "firstPublishedAt": "2026-10-20T11:56:00.689Z"
+    },
+    {
+      "id": "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+      "source": "Chiletrabajos",
+      "causes": [
+        "fecha_priorizada_por_cola_anterior_a_otra_comprobacion"
+      ],
+      "lastConfirmedAt": "2026-10-23T03:05:27.611Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T14:58:10.000Z",
+      "firstPublishedAt": "2026-10-20T11:56:00.689Z"
+    },
+    {
+      "id": "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T09:37:55.097260+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-13T00:00:00.000Z",
+      "firstPublishedAt": "2026-10-20T10:05:34.195Z"
+    },
+    {
+      "id": "688c0421-4ed4-46e5-9592-694a2669fad7",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T09:37:55.011953+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-16T00:00:00.000Z",
+      "firstPublishedAt": "2026-10-20T10:05:34.195Z"
+    },
+    {
+      "id": "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T09:37:54.926892+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-06T00:00:00.000Z",
+      "firstPublishedAt": "2026-10-20T10:05:34.195Z"
+    },
+    {
+      "id": "free-149bb65066307aa45733b5f251ca3055f042eeeb",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-21T19:05:29.911Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-19T19:04:05.000Z",
+      "firstPublishedAt": "2026-10-20T07:05:28.386Z"
+    },
+    {
+      "id": "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+      "source": "CMPC · portal de empleo",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T23:30:06.889673+00:00",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-13T03:00:00.000Z",
+      "firstPublishedAt": "2026-10-19T23:50:35.434Z"
+    },
+    {
+      "id": "2f0f424e-d10b-4d7d-98e2-b8e1b29b9783",
+      "source": "Bolsa Nacional de Empleo",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-22T07:05:27.583Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-22T03:00:00.000Z",
+      "firstPublishedAt": "2026-10-13T23:35:36.557Z"
+    },
+    {
+      "id": "free-d294f2d92f9e56840e53553adef2420f48b30847",
+      "source": "Bolsa Nacional de Empleo",
+      "causes": [
+        "fecha_priorizada_por_cola_anterior_a_otra_comprobacion"
+      ],
+      "lastConfirmedAt": "2026-10-22T15:05:30.099Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-15T03:00:00.000Z",
+      "firstPublishedAt": "2026-10-13T19:52:06.176Z"
+    },
+    {
+      "id": "1f723e1a-993c-4033-b1a0-9cd4c5d3cd36",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-16T16:35:35.078Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-25T08:37:38.000Z",
+      "firstPublishedAt": "2026-10-12T19:05:30.327Z"
+    },
+    {
+      "id": "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-21T19:05:29.911Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-08T14:58:01.000Z",
+      "firstPublishedAt": "2026-10-12T18:05:37.435Z"
+    },
+    {
+      "id": "2acda2c7-e657-4656-860e-1645badef65b",
+      "source": "ChileTrabajos · Victoria",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-10T16:35:35.156Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-10T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-10T15:05:35.616Z"
+    },
+    {
+      "id": "851ba560-b9d9-4a7e-9263-3d32e302bcb3",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-21T10:35:34.723Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-05T17:00:59.000Z",
+      "firstPublishedAt": "2026-10-10T03:05:30.174Z"
+    },
+    {
+      "id": "80c05369-4a99-4508-9b5b-239ac5bb13c5",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-20T10:35:35.345Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-28T13:51:26.000Z",
+      "firstPublishedAt": "2026-10-08T15:05:34.766Z"
+    },
+    {
+      "id": "ad82eb1f-2919-4f74-a1b1-e677fe0c22ca",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-21T12:35:37.526Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-19T19:01:50.000Z",
+      "firstPublishedAt": "2026-10-07T05:20:32.109Z"
+    },
+    {
+      "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
+      "source": "LinkedIn · Falabella",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-09T20:35:36.354Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-30T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-06T10:41:16.915Z"
+    },
+    {
+      "id": "02c3f426-3500-42ee-8ac2-f5a2a6733c48",
+      "source": "ChileTrabajos · Victoria",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-11T10:35:34.218Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-05T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-06T10:22:29.439Z"
+    },
+    {
+      "id": "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+      "source": "ChileTrabajos · Victoria",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-13T08:35:36.467Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-30T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-06T10:22:29.439Z"
+    },
+    {
+      "id": "0c9d9edf-98c7-41e8-a864-604fd8069445",
+      "source": "ChileTrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-10T08:35:36.121Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-25T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-05T09:10:32.315Z"
+    },
+    {
+      "id": "28b9b9be-fbc1-4eeb-bd46-56f859188231",
+      "source": "ChileTrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-10T08:35:36.123Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-16T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T14:56:19.870Z"
+    },
+    {
+      "id": "0b54a8ad-1f4a-47f4-b351-8aa8dfa582f1",
+      "source": "ChileTrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-10T10:35:34.401Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-23T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-05T09:10:32.311Z"
+    },
+    {
+      "id": "adf0dee9-a506-4dd0-a8fa-378264da8deb",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-21T12:35:37.544Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-30T18:40:56.000Z",
+      "firstPublishedAt": "2026-10-05T05:20:37.158Z"
+    },
+    {
+      "id": "aea2a4f5-b0c5-4bfb-9e71-1536fabd6c20",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-21T12:35:37.515Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-20T19:59:04.000Z",
+      "firstPublishedAt": "2026-10-05T05:20:37.157Z"
+    },
+    {
+      "id": "a4478588-785e-4545-824e-e94de6d8916a",
+      "source": "ChileTrabajos · Ercilla",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-13T08:35:36.473Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-23T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-05T05:20:34.429Z"
+    },
+    {
+      "id": "33ddef7b-e071-480a-86fb-79db4f966de7",
+      "source": "Computrabajo",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-09T20:35:36.340Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-01T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T15:05:21.290Z"
+    },
+    {
+      "id": "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+      "source": "Laborum",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-09T20:35:36.352Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-21T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T14:56:19.870Z"
+    },
+    {
+      "id": "40b91274-90ed-4742-bfe6-f197949c7914",
+      "source": "ChileTrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-03T15:00:23.053Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-23T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T14:56:19.870Z"
+    },
+    {
+      "id": "0b79c530-f4cd-4b5a-90df-a9479324ea7e",
+      "source": "munilumaco.cl",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-10T10:35:34.403Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-03T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T11:21:19.688Z"
+    },
+    {
+      "id": "13b09236-bb04-42b1-a010-b7743d25c5d4",
+      "source": "ChileTrabajos · Angol",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-09T16:35:37.121Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-21T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T11:19:23.401Z"
+    },
+    {
+      "id": "b80928c9-6bb1-46fc-b1d9-eea732003c5c",
+      "source": "Chiletrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-19T00:35:37.691Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-07T15:27:59.000Z",
+      "firstPublishedAt": "2026-10-03T11:19:23.401Z"
+    },
+    {
+      "id": "16e43079-56d9-4ac1-81a4-3993af7fecd4",
+      "source": "ChileTrabajos · Los Ángeles",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-09T12:35:35.601Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-22T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T11:19:18.801Z"
+    },
+    {
+      "id": "2dbb852b-abd3-45c0-83f2-6044155916c4",
+      "source": "ChileTrabajos · Los Ángeles",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-09T08:35:34.759Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-10-01T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-03T11:19:18.801Z"
+    },
+    {
+      "id": "13a8bb11-2ea3-4f70-a265-b8e3079a19c9",
+      "source": "ChileTrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-09T10:35:34.566Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-30T12:00:00.000Z",
+      "firstPublishedAt": "2026-10-02T17:00:31.317Z"
+    },
+    {
+      "id": "420b5063-4a7f-4db5-bac8-2b4634ebaf13",
+      "source": "ChileTrabajos",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-12T08:35:34.619Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-27T12:00:00.000Z",
+      "firstPublishedAt": "2026-09-30T15:00:00.000Z"
+    },
+    {
+      "id": "696b1b8c-ecaf-40e2-92aa-f6621ab9a282",
+      "source": "Municipalidad de Mulchén · OMIL",
+      "causes": [
+        "programacion_mayor_24_horas"
+      ],
+      "lastConfirmedAt": "2026-10-12T00:35:37.303Z",
+      "publicLabel": "Verificada",
+      "sourcePublishedAt": "2026-09-26T12:00:00.000Z",
+      "firstPublishedAt": "2026-09-30T15:00:00.000Z"
+    }
+  ],
+  "newOffers": 0,
+  "approvals": 0
+}

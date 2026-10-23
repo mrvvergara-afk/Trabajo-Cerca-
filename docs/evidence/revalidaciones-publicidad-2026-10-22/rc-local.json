@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-23T10:45:17.925Z",
+  "deployed": false,
+  "scheduledHandlersUnchanged": [
+    "socialTerritorialTriggerHandler",
+    "socialTerritorialCollectHandler",
+    "v17HardWebHandler",
+    "v16TerritorialDirectBatchHandler",
+    "v14VerificationHandler",
+    "radarEnrichmentWorker"
+  ],
+  "cronCount": 6,
+  "cronSchedulesUnchanged": true,
+  "fullBackendBundleBytes": 469237,
+  "backendBundleSha256": "994c36e2d0a12a75a2bb3d20f8eb1d487dc7b8f3366b978439195f4e7955f536",
+  "lockSha256": "b1cfea09a050a69ab54b513454339218a7eba55e0ceb74cb020bd000f48f0337",
+  "runtimeVulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "realSdkMutationTested": false,
+  "capacity5000ReRun": false
+}

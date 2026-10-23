@@ -145,6 +145,7 @@
 
 /* Shared compact creative layout: no hero photographs. */
 .neoShell .tcHouseAd{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:14px;align-items:center}
+.neoShell .tcHouseAd:not(:has(>.tcAdImage)){grid-template-columns:minmax(0,1fr) auto}
 .neoShell .tcHouseAd .tcAdImage,.tcLocalAdvertising .tcAdImage{display:block;width:104px;height:82px;object-fit:cover;border-radius:10px}
 .tcLocalAdvertising .tcAdContent{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
 .tcLocalAdvertising .tcAdContent:not(:has(>.tcAdImage)){grid-template-columns:minmax(0,1fr) auto}

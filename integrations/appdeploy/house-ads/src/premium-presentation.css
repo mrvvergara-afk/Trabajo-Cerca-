@@ -1,0 +1,65 @@
+/* Presentation only: allocation, editorial evidence and commercial terms are unchanged. */
+.neoShell .tcHouseAd.tcPremiumAd{display:grid;grid-template-columns:38% minmax(0,1fr);padding:0;gap:0;align-items:stretch;border:1px solid #c7d7c8;border-radius:14px;background:#f6f8ee;overflow:hidden;box-shadow:0 3px 12px #133a2508;transition:border-color .18s,box-shadow .18s}
+.tcPremiumAd .tcCampaignVisual,.tcPremiumCommercial .tcCommercialVisual{position:relative;min-width:0;overflow:hidden;background:#dce8d6;align-self:stretch}
+.neoShell .tcHouseAd.tcPremiumAd .tcCampaignVisual .tcAdImage,.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 43%;border-radius:0}
+.tcCreativeFallback{position:absolute;inset:0;display:grid;place-items:center;padding:14px;text-align:center;color:#31533b;font-size:14px;font-weight:700;background:repeating-linear-gradient(140deg,#edf3e5 0 28px,#e1ebd8 28px 29px)}
+.tcCampaignVisual:has(>.tcAdImage)>.tcCreativeFallback,.tcCommercialVisual:has(>.tcAdImage)>.tcCreativeFallback{display:none}
+.tcCreativeExample{position:absolute;bottom:8px;left:8px;right:8px;justify-self:start;border-radius:5px;padding:4px 6px;font-size:10px;line-height:1.2;color:#173c2b;background:#fafdf1ed}
+.neoShell .tcPremiumAd .tcCampaignCopy{padding:16px 20px;min-width:0;min-height:174px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px}
+.neoShell .tcPremiumAd .tcCampaignCopy h3{font-size:22px;line-height:1.17;letter-spacing:-.025em;margin:0;color:#102f22}
+.neoShell .tcPremiumAd .tcCampaignCopy p{font-size:14px;line-height:1.4;margin:0;max-width:55ch;color:#3c5747}
+.neoShell .tcPremiumAd .tcCampaignCopy small{font-size:10px;line-height:1.3;color:#4c6552}
+.neoShell .tcPremiumAd .tcCampaignCopy button{width:auto;max-width:100%;min-height:44px;font-size:14px;line-height:1.3;padding:8px 12px;margin-top:3px;background:#b0ff32;color:#123323;border:1px solid #94dc22;border-radius:9px;font-weight:750;transition:transform .16s,background .16s;white-space:normal}
+@media(hover:hover){.neoShell .tcHouseAd.tcPremiumAd:hover{border-color:#80a175;box-shadow:0 7px 20px #123b2510}.tcPremiumAd button:hover{transform:translateY(-1px)}}
+.tcPremiumAd button:active{transform:translateY(1px)}
+.tcPremiumAd button:focus-visible,.tcNewsExpand:focus-visible,.tcResourceMore summary:focus-visible{outline:3px solid #407a31;outline-offset:3px}
+.tcLocalAdvertising .tcAdContent.tcPremiumCommercial{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:10px}
+.tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true]{grid-template-columns:38% minmax(0,1fr) auto}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual{min-height:156px;border-radius:10px}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual:has(>.tcAdImage){min-height:156px}
+.tcLocalAdvertising .tcPremiumCommercial p{font-size:14px;line-height:1.4;margin:6px 0}
+.tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong{font-size:18px;line-height:1.3}
+.neoShell .tcCompactNews{width:100%;max-width:100%;padding:12px 0;margin:0;border:0}
+.neoShell .tcCompactNews>header{margin-bottom:10px;gap:10px;align-items:flex-start}
+.neoShell .tcCompactNews>header h2{font-size:20px;line-height:1.25;margin:0}
+.neoShell .tcCompactNews>header p{font-size:13px;line-height:1.35;margin:5px 0}
+.neoShell .tcCompactNews>header>svg{width:22px;height:22px}
+.neoShell .tcCompactNews .tcNewsLayout{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:12px}
+.neoShell .tcCompactNews .tcNewsArticles article{padding:12px 14px;border-radius:10px}
+.neoShell .tcCompactNews .tcNewsArticles article+article{margin-top:10px}
+.neoShell .tcCompactNews .tcNewsArticles h3{font-size:17px;line-height:1.25;letter-spacing:-.015em;margin:5px 0}
+.neoShell .tcCompactNews .tcNewsArticles p{font-size:13px;line-height:1.4;margin:5px 0;color:#4a6150}
+.tcCompactNews[data-expanded=false] article h3,.tcCompactNews[data-expanded=false] article p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.tcNewsBottom{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.neoShell .tcCompactNews .tcNewsBottom small{font-size:12px;line-height:1.3;margin:0;color:#546a59}
+.neoShell .tcCompactNews .tcNewsBottom a{font-size:13px;line-height:1.3;min-height:44px;gap:6px;flex-shrink:0}
+.neoShell .tcCompactNews .tcNewsLayout aside{padding:10px 12px;border-radius:10px}
+.neoShell .tcCompactNews .tcNewsLayout aside h3{font-size:16px;margin:0 0 6px}
+.neoShell .tcCompactNews .tcNewsLayout aside a{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #e3eadd;min-height:44px;padding:6px 0;color:#183c2a;text-decoration:none;box-sizing:border-box}
+.neoShell .tcCompactNews .tcNewsLayout aside b{font-size:13px;line-height:1.2;margin:0}
+.neoShell .tcCompactNews .tcNewsLayout aside small{font-size:12px;line-height:1.3;margin:2px 0 0}
+.tcResourceMore>summary{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px;font-size:13px;cursor:pointer;font-weight:650;list-style:none;border-top:1px solid #d4dfd0}
+.tcResourceMore>summary::-webkit-details-marker{display:none}.tcResourceMore[open]>summary>span{font-size:0}.tcResourceMore[open]>summary>span::after{content:'−';font-size:16px}
+.tcNewsExpand{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 12px;margin:8px 0;background:#eef5e6;border:1px solid #d1ddc8;border-radius:8px;font:inherit;font-size:13px;color:#193e2a;cursor:pointer}
+.neoShell .tcCompactNews .tcNewsReview{font-size:11px;line-height:1.4;margin:8px 0}
+@media(max-width:800px){
+ .neoShell .tcHouseAd.tcPremiumAd{grid-template-columns:35% minmax(0,1fr);padding:0;gap:0}
+ .neoShell .tcPremiumAd .tcCampaignCopy{padding:12px;min-height:176px;gap:5px}
+ .neoShell .tcPremiumAd .tcCampaignCopy h3{font-size:17px;line-height:1.2}
+ .neoShell .tcPremiumAd .tcCampaignCopy p{font-size:13px;line-height:1.35}
+ .neoShell .tcPremiumAd .tcCampaignCopy button{font-size:13px;padding:8px 10px;grid-column:auto;justify-self:start}
+ .tcLocalAdvertising .tcAdContent.tcPremiumCommercial{grid-template-columns:minmax(0,1fr);gap:8px}
+ .tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true]{grid-template-columns:35% minmax(0,1fr);align-items:start}
+ .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual{grid-row:1/3;min-height:170px;height:100%}
+ .tcLocalAdvertising .tcPremiumCommercial>a{grid-column:2;min-height:44px;justify-self:start;font-size:13px;padding:8px 10px;max-width:100%;box-sizing:border-box}
+ .tcLocalAdvertising .tcPremiumCommercial:not([data-has-image=true])>a{grid-column:1}
+ .tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong{font-size:16px}
+ .tcLocalAdvertising .tcPremiumCommercial p{font-size:13px}
+ .neoShell .tcCompactNews .tcNewsLayout{display:block}
+ .neoShell .tcCompactNews .tcNewsLayout aside{margin-top:10px}
+ .neoShell .tcJobDates{font-size:12px}
+ .neoShell .neoJobCard h3{margin:3px 0}
+ .neoShell .neoJobCompany{margin:3px 0}
+ .neoShell .neoJobFoot{margin-top:6px;padding-top:6px}
+}
+@media(prefers-reduced-motion:reduce){.tcPremiumAd,.tcPremiumAd button{transition:none!important;transform:none!important}}

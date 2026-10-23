@@ -13,7 +13,7 @@ run('npx',['tsc','-p','qa/tsconfig.json']);
 run('npx',['esbuild','backend/index.ts','--bundle','--platform=node','--format=esm','--packages=external','--outfile=qa-output/backend-candidate.mjs']);
 if(process.env.RC_CHECKS==='1')run('node',['qa/rc-local-check.mjs']);
 run('node',['qa/prepare-mobile-before.mjs']);
-if(process.env.AD_IMAGE_CHECKS==='1')run('node',['qa/prepare-ad-before.mjs']);
+if(process.env.AD_IMAGE_CHECKS==='1')run('node',['qa/prepare-premium-before.mjs']);
 else if(process.env.UI_CHECKS==='1')run('node',['qa/prepare-before.mjs']);
 const server=spawn('npx',['vite','preview','--config','qa/vite.qa.config.mjs'],{stdio:'inherit',detached:true});
 try{
@@ -26,6 +26,6 @@ try{
  if(process.env.RC_CHECKS!=='1')run('node',['qa/capacity-check.mjs']);
  run('node',['qa/publication-check.mjs']);
  if(process.env.RC_CHECKS==='1')run('node',['qa/rc-browser-check.mjs']);
- if(process.env.AD_IMAGE_CHECKS==='1')run('node',['qa/ad-images-check.mjs']);
+ if(process.env.AD_IMAGE_CHECKS==='1')run('node',['qa/premium-check.mjs']);
  else if(process.env.UI_CHECKS==='1')run('node',['qa/territorial-ui-check.mjs']);
 }finally{try{process.kill(-server.pid,'SIGTERM');}catch{}}

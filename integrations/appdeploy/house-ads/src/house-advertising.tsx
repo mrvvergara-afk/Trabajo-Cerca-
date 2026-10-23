@@ -3,6 +3,7 @@ import { api } from '@appdeploy/client';
 import { allocateAdvertising, type HouseCampaign, type CommercialAd, type Goal, type Selection } from '../shared/house-ads';
 import './house-advertising.css';
 import {AdImage} from './ad-image';
+import {presentHouseCreative} from './house-creative-presentation';
 export type HouseAttribution = {campaignId:string; creativeId:string};
 export function sendHouseEvent(a:HouseAttribution,event:'impression'|'click'|'form_started') {
   void api.post('/api/growth/house-events',{...a,event,eventId:crypto.randomUUID()}).catch(()=>undefined);
@@ -52,9 +53,10 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
     return()=>{cancel();observer.disconnect();document.removeEventListener('visibilitychange',observe);};
   },[key]);
   if(!house)return null;
-  return <aside ref={node} className='tcHouseAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD'>
-    <AdImage url={house.creative.imageUrl}/>
-    <div><small>CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{house.creative.title}</h3><p className='tcHouseDesktop'>{house.creative.message}</p><p className='tcHouseMobile'>{house.creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Promoción vigente sujeta a revisión. Sin cobros automáticos.</small>}</div>
-    <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{house.creative.button} <span aria-hidden='true'>→</span></button>
+  const creative=presentHouseCreative(house.campaign.id,house.creative);
+  return <aside ref={node} className='tcHouseAd tcPremiumAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD'>
+    <div className='tcCampaignVisual' aria-hidden='true'><AdImage url={creative.imageUrl}/><span className='tcCreativeFallback'>Trabajo Cerca</span>{house.campaign.id==='house-advertisers'&&<span className='tcCreativeExample'>Ejemplo institucional</span>}</div>
+    <div className='tcCampaignCopy'><small>CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{creative.title}</h3><p className='tcHouseDesktop'>{creative.message}</p><p className='tcHouseMobile'>{creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Sin cobros automáticos. Condiciones en el formulario.</small>}
+    <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{creative.button} <span aria-hidden='true'>→</span></button></div>
   </aside>;
 }

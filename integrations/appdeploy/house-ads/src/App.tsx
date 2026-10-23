@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import './vnext.css';
 import './compact-layout.css';
+import './premium-presentation.css';
 import { SiteMenu } from './site-menu';
 function analyticsId() {
   try {
@@ -1409,7 +1410,7 @@ function App() {
                       <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
                     </div>
                     <div className='neoJobFoot'>
-                      <span className='tcOfferDates'><span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}</span>{item.firstPublishedAt&&<span>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</span>}{lastConfirmedAt(item)&&<span>Última comprobación: <time dateTime={lastConfirmedAt(item)!}>{shortDate(lastConfirmedAt(item)!)}</time></span>}</span>
+                      <span className='tcOfferDates'><span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}</span>{item.firstPublishedAt&&<span>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</span>}</span>
                       <button onClick={() => setSelected(item)}>Ver oportunidad <ArrowRight /></button>
                     </div>
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}

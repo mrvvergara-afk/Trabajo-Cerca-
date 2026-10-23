@@ -11,7 +11,7 @@ try{
   await page.addInitScript(()=>{sessionStorage.setItem('tc-house-turn','-1');});
   await page.goto('http://127.0.0.1:4174/',{waitUntil:'networkidle'});
   const banner=page.locator('[data-ad-type="HOUSE_AD"]');await banner.first().waitFor();assert.equal(await banner.count(),1);
-  await page.getByRole('button',{name:'Publicar mis servicios',exact:true}).first().click();
+  await page.getByRole('button',{name:'Ofrecer mi trabajo',exact:true}).first().click();
   await page.getByRole('heading',{name:'Ofrezco mi trabajo',exact:true}).waitFor();
   await page.getByLabel('Nombre o nombre abreviado (opcional)',{exact:true}).fill('Fixture profesional');
   await page.getByRole('button',{name:'Cerrar',exact:true}).last().click();

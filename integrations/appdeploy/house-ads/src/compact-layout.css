@@ -206,3 +206,6 @@
  .neoShell .tcActivityStrip>button{min-width:0;width:100%;padding:5px 4px}
  .neoShell .tcActivityStrip>small{grid-column:1/-1}
 }
+@media(max-width:800px){
+ .neoShell .neoMobileNav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0;background:transparent;color:#d3e4da}
+}

@@ -165,7 +165,7 @@
 .neoShell .neoJobFacts span{background:none;padding:0;gap:5px;flex-wrap:wrap}
 .neoShell .neoJobFacts b{white-space:normal;overflow:visible;text-overflow:clip;margin:0}
 .neoShell .neoJobFoot{flex-wrap:wrap;gap:6px 10px}
-.neoShell .neoJobFoot .tcOfferDates{display:flex;flex-wrap:wrap;gap:2px 12px;flex:1 1 240px;line-height:1.4}
+.neoShell .neoJobFoot .tcOfferDates{color:#52675b;display:flex;flex-wrap:wrap;gap:2px 12px;flex:1 1 240px;line-height:1.4}
 .tcOfferDates>span{display:inline;max-width:100%;overflow-wrap:anywhere}
 .neoShell .neoJobFoot button{margin-left:auto}
 .tcSecondary>summary{display:flex;justify-content:space-between;gap:12px;list-style:none;line-height:1.35}
@@ -185,7 +185,7 @@
  .neoShell .neoJobBody{padding:12px}.neoShell .neoJobCard h3{margin:4px 0;line-height:1.25}
  .neoShell .neoJobTop{gap:4px;margin-bottom:4px}.neoShell .neoJobCompany{margin:4px 0}
  .neoShell .neoJobPlace,.neoShell .neoJobState{padding:2px 5px}
- .neoShell .neoJobFoot .tcOfferDates{flex-basis:240px;font-size:12px;gap:2px 10px}
+ .neoShell .neoJobFoot .tcOfferDates{flex-basis:200px;font-size:12px;gap:2px 10px}
  .neoShell .tcHouseAd{grid-template-columns:52px minmax(0,1fr);gap:6px 10px;padding:10px 12px}
  .neoShell .tcHouseAd .tcAdImage{width:52px;height:52px}
  .neoShell .tcHouseAd h3{font-size:16px;line-height:1.2;margin:2px 0}
@@ -199,3 +199,5 @@
 }
 
 @media(max-width:390px){.neoShell .neoJobFoot .tcOfferDates{flex-basis:100%}}
+
+.neoShell .neoFooter>div:last-child button{font-size:13px;line-height:1.4}

@@ -56,7 +56,7 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
   const creative=presentHouseCreative(house.campaign.id,house.creative);
   return <aside ref={node} className='tcHouseAd tcPremiumAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD'>
     <div className='tcCampaignVisual' aria-hidden='true'><AdImage url={creative.imageUrl}/><span className='tcCreativeFallback'>Trabajo Cerca</span>{house.campaign.id==='house-advertisers'&&<span className='tcCreativeExample'>Ejemplo institucional</span>}</div>
-    <div className='tcCampaignCopy'><small>CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{creative.title}</h3><p className='tcHouseDesktop'>{creative.message}</p><p className='tcHouseMobile'>{creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Sin cobros automáticos. Condiciones en el formulario.</small>}
-    <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{creative.button} <span aria-hidden='true'>→</span></button></div>
+    <div className='tcCampaignCopy'><small>CAMPAÑA PROPIA · {place==='Todas'?'TU ZONA':place}</small><h3>{creative.title}</h3><p className='tcHouseDesktop'>{creative.message}</p><p className='tcHouseMobile'>{creative.mobileMessage}</p>{house.campaign.goal==='advertiser'&&<small>Sin cobros automáticos.</small>}
+    <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{creative.button}</button></div>
   </aside>;
 }

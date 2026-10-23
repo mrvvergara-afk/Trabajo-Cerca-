@@ -2,7 +2,7 @@ import {spawn,spawnSync} from 'node:child_process';
 import {resolve} from 'node:path';
 import {writeFileSync,readFileSync,existsSync} from 'node:fs';
 function run(command,args){const r=spawnSync(command,args,{stdio:'inherit',env:process.env});if(r.status!==0)throw Error(command+' failed');}
-// Runs only against localhost and mock SDK. Never deploys or reads live app data.
+// Candidate tests use localhost and an isolated SDK adapter. The visual review first reads the live public catalog without mutations. Never deploys.
 run('npm',[(existsSync('package-lock.json')?'ci':'install'),'--ignore-scripts','--no-audit','--no-fund','--fetch-retries=0']);
 if(!existsSync('/usr/bin/google-chrome'))run('npx',['playwright','install','--with-deps','chromium']);
 if(process.env.AD_IMAGE_CHECKS==='1')run('node',['qa/capture-real-public-feed.mjs']);
@@ -27,6 +27,6 @@ try{
  if(process.env.RC_CHECKS!=='1')run('node',['qa/capacity-check.mjs']);
  run('node',['qa/publication-check.mjs']);
  if(process.env.RC_CHECKS==='1')run('node',['qa/rc-browser-check.mjs']);
- if(process.env.AD_IMAGE_CHECKS==='1')run('node',['qa/premium-check.mjs']);
+ if(process.env.AD_IMAGE_CHECKS==='1'){run('node',['qa/premium-check.mjs']);run('node',['qa/ad-images-check.mjs','--commercial-only']);}
  else if(process.env.UI_CHECKS==='1')run('node',['qa/territorial-ui-check.mjs']);
 }finally{try{process.kill(-server.pid,'SIGTERM');}catch{}}

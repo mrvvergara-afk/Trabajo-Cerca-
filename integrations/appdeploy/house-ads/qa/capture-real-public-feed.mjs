@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 mkdirSync('qa-output/visual-review',{recursive:true});
 const browser=await chromium.launch({headless:true,...(existsSync('/usr/bin/google-chrome')?{executablePath:'/usr/bin/google-chrome'}:{})});
-const fields=['id','kind','origin','title','company','workLocation','workCommunes','recruitmentZones','recruitmentCommunes','area','status','date','source','sourceDomain','url','note','tags','visual','icon','review','verified','active','createdAt','firstPublishedAt','sourcePublishedAt','lastVerifiedAt','verifiedAt','externalVerifiedAt','verificationMethod','verificationReason','revalidationDue','expiresAt','closedAt','originalPosterUrl'];
+const fields=['id','kind','origin','title','company','workLocation','workCommunes','recruitmentZones','recruitmentCommunes','area','status','date','source','sourceDomain','url','note','tags','visual','icon','review','verified','active','createdAt','firstPublishedAt','sourcePublishedAt','lastVerifiedAt','verifiedAt','externalVerifiedAt','verificationMethod','verificationReason','revalidationDue','expiresAt','closedAt','hasContact','contactLabel','originalPosterUrl'];
 const rows=new Map(),pending=[],metrics=[],errors=[];let metadata={};
 function extract(value,depth=0){if(depth>12||!value)return;if(typeof value==='string'){if(value.length<6000000&&/^[\[{]/.test(value.trim())){try{extract(JSON.parse(value),depth+1);}catch{}}return;}if(typeof value!=='object')return;
  if(Array.isArray(value.items)&&value.items.some(x=>x?.id&&x.kind)){

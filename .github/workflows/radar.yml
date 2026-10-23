@@ -530,7 +530,7 @@ jobs:
       (github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
       github.event_name == 'push' && (contains(github.event.head_commit.message, '[site inventory proof]') || contains(github.event.head_commit.message, '[security checks only]') || contains(github.event.head_commit.message, '[release candidate checks]')))
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 14
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

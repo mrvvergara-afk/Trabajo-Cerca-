@@ -1,5 +1,6 @@
 /* Presentation only: allocation, editorial evidence and commercial terms are unchanged. */
 .neoShell .tcHouseAd.tcPremiumAd{display:grid;grid-template-columns:38% minmax(0,1fr);padding:0;gap:0;align-items:stretch;border:1px solid #c7d7c8;border-radius:14px;background:#f6f8ee;overflow:hidden;box-shadow:0 3px 12px #133a2508;transition:border-color .18s,box-shadow .18s}
+.neoShell>.tcHouseAd.tcPremiumAd{margin:12px auto}
 .tcPremiumAd .tcCampaignVisual,.tcPremiumCommercial .tcCommercialVisual{position:relative;min-width:0;overflow:hidden;background:#dce8d6;align-self:stretch}
 .neoShell .tcHouseAd.tcPremiumAd .tcCampaignVisual .tcAdImage,.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 43%;border-radius:0}
 .tcCreativeFallback{position:absolute;inset:0;display:grid;place-items:center;padding:14px;text-align:center;color:#31533b;font-size:14px;font-weight:700;background:repeating-linear-gradient(140deg,#edf3e5 0 28px,#e1ebd8 28px 29px)}

@@ -26,6 +26,8 @@ export function recheckCauses(item:OfferEvidence,now=Date.now()) {
  const reasons:string[]=[];
  if(!lastConfirmedAt(item,now))reasons.push(values.length?'fecha_comprobacion_invalida_o_futura':'sin_fecha_comprobacion_exitosa');
  else if(now-Date.parse(lastConfirmedAt(item,now)!)>86400000)reasons.push('programacion_mayor_24_horas');
+ const legacy=Date.parse(String(item.lastVerifiedAt||item.externalVerifiedAt||item.verifiedAt||''));
+ if(item.revalidationDue&&lastConfirmedAt(item,now)&&now-Date.parse(lastConfirmedAt(item,now)!)<=86400000&&Number.isFinite(legacy)&&now-legacy>86400000)reasons.push('fecha_priorizada_por_cola_anterior_a_otra_comprobacion');
  if(!hasVerificationEvidence(item,now))reasons.push('sin_evidencia_verificacion_publica');
  if(item.review||!item.verified)reasons.push('primera_confirmacion_o_revision_pendiente');
  return reasons;

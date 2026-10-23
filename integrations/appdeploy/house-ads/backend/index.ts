@@ -5,7 +5,7 @@ import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseC
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { adminBackupPage } from './admin-backup';
 import { recheckPriority } from '../shared/offer-public-state';
-import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
+import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue, latestOfferCheckAt } from './offer-retention';
 import { advancePublicFeed, readPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
 import { readLocalSourceEvidence } from './local-source-evidence';
@@ -844,7 +844,7 @@ function feedRefreshAt(item:Record<string, unknown>) {
   const now=Date.now(),deadline=confirmedOfferDeadline(item);
   const candidates:number[]=[];
   if (deadline!==null) candidates.push(deadline+1);
-  const checked=Date.parse(String(item.lastVerifiedAt || item.externalVerifiedAt || item.verifiedAt || ''));
+  const checked=latestOfferCheckAt(item);
   if (Number.isFinite(checked)) candidates.push(checked+86400000+1);
   const first=Date.parse(String(item.firstPublishedAt || item.createdAt || ''));
   if (Number.isFinite(first)) candidates.push(first+86400000+1,first+7*86400000+1);
@@ -1453,7 +1453,7 @@ async function processPendingOffers(limit=40) {
       if (item.verificationVersion !== VERIFICATION_VERSION) return true;
       const checked = Date.parse(item.verificationCheckedAt || '');
       if (item.review) return !checked || checked < reviewCutoff;
-      if (item.verified) return !checked || checked < liveRecheckCutoff;
+      if (item.verified) return offerRecheckDue(item as unknown as Record<string,unknown>) && (!checked || checked < liveRecheckCutoff);
       return false;
     })
     .sort((a,b) => {

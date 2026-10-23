@@ -21,9 +21,13 @@ export function offerRetentionReason(item:Offer,now=Date.now()):string | null {
   return null;
 }
 
+export function latestOfferCheckAt(item:Offer):number {
+  const times=[item.lastVerifiedAt,item.externalVerifiedAt,item.verifiedAt].map(value=>Date.parse(String(value||''))).filter(Number.isFinite);
+  return times.length?Math.max(...times):NaN;
+}
 export function offerRecheckDue(item:Offer,now=Date.now()) {
   if (item.kind!=='job_offer') return false;
-  const checked=Date.parse(String(item.lastVerifiedAt || item.externalVerifiedAt || item.verifiedAt || ''));
+  const checked=latestOfferCheckAt(item);
   return !Number.isFinite(checked) || checked>now || now-checked>RETENTION_DAY;
 }
 

@@ -1,6 +1,6 @@
 # Trabajo Cerca — revalidaciones y publicidad visual
 
-Versión candidata de la rama `repair/mulchen-captura-2026-10-17`, PR #2. Sin fusión, despliegue, cobros ni modificaciones de registros reales. Código funcional probado: `3d88ee5750e277b59c5d5439ad817aa393bcb6ae`. La entrega añade evidencia durable y pruebas de formatos; el HEAD vigente está identificado en el PR #2.
+Versión candidata de la rama `repair/mulchen-captura-2026-10-17`, PR #2. Sin fusión, despliegue, cobros ni modificaciones de registros reales. Base funcional validada: `3d88ee5750e277b59c5d5439ad817aa393bcb6ae`. El cierre añade pruebas de formatos y exige confirmación también en ofertas directas; la versión final se identifica y valida como HEAD del PR #2.
 
 La línea base fue el PR `2dc9a82d3d90e013b8588f407e2203c541428cd9`. Se consultó la app ready `1792716300276` y se cotejaron los ocho módulos afectados con la candidata anterior: coinciden ignorando espacios. Se mantuvo el rediseño compacto.
 
@@ -8,7 +8,7 @@ La línea base fue el PR `2dc9a82d3d90e013b8588f407e2203c541428cd9`. Se consult�
 
 - El plazo interno de 24 horas sigue programando comprobaciones; ya no decide la etiqueta pública.
 - «Verificada» exige la marca de verificación, una fecha exitosa válida no futura y evidencia documentada (método, motivo o referencias). Se muestra por separado la última comprobación. No se sustituye por la fecha de un intento fallido.
-- Si falta la primera confirmación o existe revisión pendiente: «Vigencia por confirmar». Una publicación directa se identifica como tal. La revisión pendiente no desaparece por tener una verificación histórica.
+- Si falta la primera confirmación o existe revisión pendiente: «Vigencia por confirmar». Los perfiles y necesidades directas se identifican como publicaciones directas. Una oferta laboral directa sin primera confirmación muestra «Vigencia por confirmar»; no se exime por su origen. La revisión pendiente no desaparece por tener una verificación histórica.
 - Se conservan las fechas original, de incorporación y de última comprobación; no se editan fechas, IDs ni evidencias al calcular la etiqueta.
 - El retiro por cierre explícito/inactividad o plazo confirmado mantiene la política existente. La antigüedad automática de 45 días no se convierte en una fecha de cierre inventada.
 - Se ajustó la prioridad del lote ya existente: antigüedad, datos insuficientes y fuentes de cambio frecuente. Se conservan límite del lote, paginación, verificadores, deduplicación y seis crons/horarios. La elegibilidad de ofertas ya verificadas respeta la comprobación exitosa más reciente y el intervalo previo entre intentos. La prioridad opera dentro de cada lote recuperado, no demuestra una prioridad global ilimitada.

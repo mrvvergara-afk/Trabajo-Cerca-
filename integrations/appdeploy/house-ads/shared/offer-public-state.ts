@@ -11,7 +11,7 @@ export function publicReviewLabel(item:OfferEvidence,now=Date.now()) {
  if(item.kind&&item.kind!=='job_offer')return 'Publicación directa';
  if(item.review)return 'Vigencia por confirmar';
  if(item.verified&&hasVerificationEvidence(item,now))return 'Verificada';
- return item.origin==='direct'||item.origin==='community'?'Publicación directa':'Vigencia por confirmar';
+ return 'Vigencia por confirmar';
 }
 // Internal queue priority only; never approves, changes dates, or publishes a record.
 export function recheckPriority(item:OfferEvidence,now=Date.now(),frequent=false) {

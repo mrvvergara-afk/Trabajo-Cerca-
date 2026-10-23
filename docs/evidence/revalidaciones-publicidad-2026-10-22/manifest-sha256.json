@@ -2,7 +2,7 @@
   "algorithm": "SHA-256",
   "functionalCommit": "3d88ee5750e277b59c5d5439ad817aa393bcb6ae",
   "files": {
-    "docs/informe-revalidaciones-publicidad-2026-10-22.md": "4d406d5606a2cd7115b095f97ef2bf1026af090b6fcc8a8835fbeb2709ae1bfe",
+    "docs/informe-revalidaciones-publicidad-2026-10-22.md": "c873c740a88a6778111ce699fae40f129517356643d6afbc84363bcbd4af864e",
     "docs/evidence/revalidaciones-publicidad-2026-10-22/p0-publication.json": "7e8ab0156c15e59fcc02c0f9fe2eac9b4c8e7e53baaae6d6d40d1a86bf79454a",
     "docs/evidence/revalidaciones-publicidad-2026-10-22/live-security-containment.json": "a750272cd689f8b5a6f7056799ed493c355c5b9cb6d6e45e32a0e7b0caf383d4",
     "docs/evidence/revalidaciones-publicidad-2026-10-22/rc-pwa.json": "22ab783572f07b58a25229590748ccf1c9b358cb808f5412a4432b6652798a20",

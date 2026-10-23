@@ -23,6 +23,9 @@ async function shot(page,width,name,locator){
   }else{
    await page.setViewportSize({...viewport,height:Math.min(16000,await page.evaluate(()=>document.documentElement.scrollHeight))});
    await page.waitForFunction(()=>[...document.querySelectorAll('.neoJobCard')].every(e=>e.checkVisibility({contentVisibilityAuto:true})));
+   const naturalHeight=await page.evaluate(()=>{const footer=document.querySelector('.neoFooter');return footer?Math.ceil(footer.getBoundingClientRect().bottom+scrollY+parseFloat(getComputedStyle(document.querySelector('.neoShell')).paddingBottom)+8):document.documentElement.scrollHeight;});
+   await page.setViewportSize({...viewport,height:Math.min(16000,Math.max(viewport.height,naturalHeight))});
+   await page.waitForFunction(()=>[...document.querySelectorAll('.neoJobCard')].every(e=>e.checkVisibility({contentVisibilityAuto:true})));
    await page.screenshot({path:`qa-output/premium/${phase}-${width}-${name}.png`,fullPage:true});
   }
  }finally{if(page.viewportSize().height!==viewport.height)await page.setViewportSize(viewport);}

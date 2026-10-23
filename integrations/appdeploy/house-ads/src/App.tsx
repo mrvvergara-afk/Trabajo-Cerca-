@@ -1409,7 +1409,7 @@ function App() {
                       <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
                     </div>
                     <div className='neoJobFoot'>
-                      <span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}{item.firstPublishedAt&&<small>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</small>}{lastConfirmedAt(item)&&<small>Última comprobación: {shortDate(lastConfirmedAt(item)!)}</small>}</span>
+                      <span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}{item.firstPublishedAt&&<small>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</small>}{lastConfirmedAt(item)&&<small>Última comprobación: <time dateTime={lastConfirmedAt(item)!}>{shortDate(lastConfirmedAt(item)!)}</time></small>}</span>
                       <button onClick={() => setSelected(item)}>Ver oportunidad <ArrowRight /></button>
                     </div>
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}

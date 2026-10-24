@@ -17,16 +17,16 @@ export function NearbyCities({ stats, ready, failed, current, onExplore, onRetur
   onExplore:(city:string)=>void; onReturn:()=>void; origin:string;
 }) {
   return <section className='tcExplore' aria-labelledby='tc-explore-title'>
-    <div className='tcExploreIntro'><span className='neoKicker'>TÚ ELIGES HASTA DÓNDE BUSCAR</span>
-      <h2 id='tc-explore-title'>Buscar también en</h2>
-      <p>Explora estas ciudades si te interesa trasladarte. Sus ofertas se consultan aparte de tu zona local.</p>
+    <div className='tcExploreIntro'>
+      <h2 id='tc-explore-title' className='tcVisuallyHidden'>Buscar también en</h2>
+      <p>Explora otras ciudades si te interesa trasladarte.</p>
     </div>
     <div className='tcExploreCities'>{EXPLORATION_CITIES.filter(city => city !== 'Victoria').map(city => <button type='button'
       key={city} aria-pressed={current === city} onClick={() => onExplore(city)}>
       <MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed ? 'Recuento no disponible' : !ready ? 'Consultando oportunidades…' : `${stats[city]?.jobs ?? 0} ${(stats[city]?.jobs ?? 0) === 1 ? 'oferta publicada' : 'ofertas publicadas'}`}</small></span><ArrowRight aria-hidden='true'/>
     </button>)}</div>
     {EXPLORATION_CITIES.some(city => city === current) && <button className='tcReturn' type='button' onClick={onReturn}>Volver a {origin === 'Todas' ? 'mi zona local' : origin}</button>}
-    <small className='tcExploreNote'>Conteos del inventario completo publicado. Cero ofertas no significa que no existan empleos en la ciudad.</small>
+    <small className='tcExploreNote'>Conteos publicados. Cero avisos no significa que no haya empleos en la ciudad.</small>
   </section>;
 }
 
@@ -77,7 +77,7 @@ export function LaborNewsSection() {
   const shown=expanded?news:news.slice(0,2);
   const resource=(item:typeof LABOR_RESOURCES[number])=><a key={item.source} href={item.url} target='_blank' rel='noopener noreferrer'><span><b>{item.source}</b><small>{item.title}</small></span><ArrowRight aria-hidden='true'/></a>;
   return <section className='tcLaborNews tcCompactNews' data-expanded={expanded} aria-labelledby='tc-news-title'>
-    <header><div><h2 id='tc-news-title'>Actualidad laboral de La Araucanía</h2><p>Noticias y enlaces útiles para tu vida laboral.</p></div><Newspaper aria-hidden='true'/></header>
+    <header><div><h2 id='tc-news-title' className='tcVisuallyHidden'>Actualidad laboral de La Araucanía</h2><p>Noticias y enlaces útiles para tu vida laboral.</p></div><Newspaper aria-hidden='true'/></header>
     <div className='tcNewsLayout'><div className='tcNewsArticles'>
       {shown.length?shown.map(item=><article key={item.id} data-news-id={item.id}>
         <span className='tcNewsTopic'>{item.topic}</span><h3>{item.title}</h3><p>{item.summary}</p>

@@ -22,7 +22,7 @@
  .tcHouseAd{display:block;min-height:154px}.neoShell>.tcHouseAd{width:calc(100% - 28px);margin:8px auto}
  .tcHouseAd .tcCampaignVisual{position:absolute;inset:0;min-height:0}.tcHouseAd .tcCampaignVisual .tcAdImage{object-fit:contain;object-position:right center}
  .tcHouseAd .tcCampaignCopy{width:100%;min-height:154px;padding:10px 13px;justify-content:center;background:linear-gradient(90deg,#09271ff7 0%,#09271fea 32%,#09271fa3 58%,#09271f12 90%,transparent 100%);gap:3px}
-  .tcHouseAd .tcCampaignCopy>*{max-width:80%}.tcHouseAd .tcCampaignEyebrow{font-size:9px;line-height:1.22;letter-spacing:.025em}.tcHouseAd h3{font-size:18px;line-height:1.12}.tcHouseAd p{font-size:12px;line-height:1.28;margin:1px 0}.tcHouseAd button{min-height:44px;max-width:100%;width:max-content;white-space:nowrap;padding:7px 10px;font-size:12.5px;margin-top:4px}
+  .tcHouseAd .tcCampaignCopy>*{max-width:80%}.tcHouseAd .tcCampaignEyebrow{font-size:9px;line-height:1.22;letter-spacing:.025em}.tcHouseAd h3{font-size:18px;line-height:1.15;max-width:76%}.tcHouseAd p{font-size:12px;line-height:1.35;margin:1px 0;max-width:76%}.tcHouseAd button{min-height:44px;max-width:100%;width:max-content;white-space:nowrap;padding:7px 10px;font-size:12.5px;margin-top:4px}
  .tcHouseMobile{display:block}.tcHouseDesktop{display:none}.tcHouseAd .tcPhotoCredit{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 }
 @media(prefers-reduced-motion:reduce){.tcHouseAd button{transition:none;transform:none}}

@@ -15,7 +15,7 @@ const {HOUSE_DEFAULTS}=await import(pathToFileURL(join(dir,'shared/house-ads.ts'
 process.on('exit',()=>rmSync(dir,{recursive:true,force:true}));
 test('six existing campaigns keep IDs, destinations and distinct visible resources',()=>{
  assert.equal(HOUSE_DEFAULTS.length,6);assert.equal(new Set(HOUSE_DEFAULTS.map(c=>c.id)).size,6);
- for(const c of HOUSE_DEFAULTS){const v=c.creatives[0];assert.equal(c.type,'HOUSE_AD');assert(v.imageUrl.endsWith('.webp'));const image=readFileSync(join(root,'public',v.imageUrl));assert.equal(image.subarray(0,4).toString(),'RIFF');assert.equal(image.subarray(8,12).toString(),'WEBP');assert(['professional','advertiser','employer','explore'].includes(c.goal));}
+ for(const c of HOUSE_DEFAULTS){const v=c.creatives[0];assert.equal(c.type,'HOUSE_AD');assert(v.imageUrl.endsWith('.webp'));const image=readFileSync(join(root,'public/resources',new URL(v.imageUrl,'https://local.invalid').pathname.split('/').pop()));assert.equal(image.subarray(0,4).toString(),'RIFF');assert.equal(image.subarray(8,12).toString(),'WEBP');assert(['professional','advertiser','employer','explore'].includes(c.goal));}
 });
 test('legacy untouched campaign receives current presentation and an image without data mutation',()=>{
  const c={id:'a',title:'¿Tienes un oficio o profesión?',message:'¿Tienes un oficio o profesión? Ofrece tus servicios gratis en Trabajo Cerca.',mobileMessage:'Ofrece tu oficio o profesión gratis.',button:'Publicar mis servicios'};const original=structuredClone(c);const output=presentHouseCreative('house-professionals',c);assert.equal(output.title,'¿Buscas trabajo?');assert(output.imageUrl);assert.deepEqual(c,original);
@@ -32,3 +32,5 @@ test('a pending approved storage resource is not replaced by a default URL',()=>
 
 const {safeAdImage}=await import(pathToFileURL(join(dir,'shared/ad-images.ts')).href);
 test('only the twelve declared local photographic paths are allowed',()=>{assert(safeAdImage('/resources/house-professionals-photo-v2-640.webp'));assert(safeAdImage('/resources/house-advertisers-photo-v2-1200.webp'));for(const url of ['/resources/private.webp','/resources/../secret.png','http://127.0.0.1/a.png','https://unapproved.example/a.png'])assert.equal(safeAdImage(url),undefined);});
+
+test('approved deployed photographs stay pinned to the reviewed repository and commit',()=>{const prefix='https://raw.githubusercontent.com/mrvvergara-afk/Trabajo-Cerca-/c445112b9cdb78adfce9d8065e32411c4f412c4b/integrations/appdeploy/house-ads/public/resources/';for(const name of ['professionals','advertisers','employers','explore','inclusion','local-business'])for(const width of [640,1200])assert(safeAdImage(prefix+'house-'+name+'-photo-v2-'+width+'.webp'));assert.equal(safeAdImage(prefix.replace('c445112b9cdb78adfce9d8065e32411c4f412c4b','main')+'house-professionals-photo-v2-640.webp'),undefined);assert.equal(safeAdImage(prefix+'private.png'),undefined);});

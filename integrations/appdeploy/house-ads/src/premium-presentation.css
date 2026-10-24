@@ -13,36 +13,36 @@
 
 
 
-.tcNewsExpand:focus-visible,.tcResourceMore summary:focus-visible{outline:3px solid #407a31;outline-offset:3px}
+
 .tcLocalAdvertising .tcAdContent.tcPremiumCommercial{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:10px}
 .tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true]{grid-template-columns:38% minmax(0,1fr) auto}
 .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual{min-height:156px;border-radius:10px}
 .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual:has(>.tcAdImage){min-height:156px}
 .tcLocalAdvertising .tcPremiumCommercial p{font-size:14px;line-height:1.4;margin:6px 0}
 .tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong{font-size:18px;line-height:1.3}
-.neoShell .tcCompactNews{width:100%;max-width:100%;padding:12px 0;margin:0;border:0}
-.neoShell .tcCompactNews>header{margin-bottom:10px;gap:10px;align-items:flex-start}
-.neoShell .tcCompactNews>header h2{font-size:20px;line-height:1.25;margin:0}
-.neoShell .tcCompactNews>header p{font-size:13px;line-height:1.35;margin:5px 0}
-.neoShell .tcCompactNews>header>svg{width:22px;height:22px}
-.neoShell .tcCompactNews .tcNewsLayout{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:12px}
-.neoShell .tcCompactNews .tcNewsArticles article{padding:12px 14px;border-radius:10px}
-.neoShell .tcCompactNews .tcNewsArticles article+article{margin-top:10px}
-.neoShell .tcCompactNews .tcNewsArticles h3{font-size:17px;line-height:1.25;letter-spacing:-.015em;margin:5px 0}
-.neoShell .tcCompactNews .tcNewsArticles p{font-size:13px;line-height:1.4;margin:5px 0;color:#4a6150}
-.tcCompactNews[data-expanded=false] article h3,.tcCompactNews[data-expanded=false] article p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
-.tcNewsBottom{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
-.neoShell .tcCompactNews .tcNewsBottom small{font-size:12px;line-height:1.3;margin:0;color:#546a59}
-.neoShell .tcCompactNews .tcNewsBottom a{font-size:13px;line-height:1.3;min-height:44px;gap:6px;flex-shrink:0}
-.neoShell .tcCompactNews .tcNewsLayout aside{padding:10px 12px;border-radius:10px}
-.neoShell .tcCompactNews .tcNewsLayout aside h3{font-size:16px;margin:0 0 6px}
-.neoShell .tcCompactNews .tcNewsLayout aside a{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #e3eadd;min-height:44px;padding:6px 0;color:#183c2a;text-decoration:none;box-sizing:border-box}
-.neoShell .tcCompactNews .tcNewsLayout aside b{font-size:13px;line-height:1.2;margin:0}
-.neoShell .tcCompactNews .tcNewsLayout aside small{font-size:12px;line-height:1.3;margin:2px 0 0}
-.tcResourceMore>summary{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px;font-size:13px;cursor:pointer;font-weight:650;list-style:none;border-top:1px solid #d4dfd0}
-.tcResourceMore>summary::-webkit-details-marker{display:none}.tcResourceMore[open]>summary>span{font-size:0}.tcResourceMore[open]>summary>span::after{content:'−';font-size:16px}
-.tcNewsExpand{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 12px;margin:8px 0;background:#eef5e6;border:1px solid #d1ddc8;border-radius:8px;font:inherit;font-size:13px;color:#193e2a;cursor:pointer}
-.neoShell .tcCompactNews .tcNewsReview{font-size:11px;line-height:1.4;margin:8px 0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width:800px){
  
  
@@ -56,8 +56,8 @@
  .tcLocalAdvertising .tcPremiumCommercial:not([data-has-image=true])>a{grid-column:1}
  .tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong{font-size:16px}
  .tcLocalAdvertising .tcPremiumCommercial p{font-size:13px}
- .neoShell .tcCompactNews .tcNewsLayout{display:block}
- .neoShell .tcCompactNews .tcNewsLayout aside{margin-top:10px}
+ 
+ 
  .neoShell .tcJobDates{font-size:12px}
  .neoShell .neoJobCard h3{margin:3px 0}
  .neoShell .neoJobCompany{margin:3px 0}
@@ -65,7 +65,7 @@
 }
 
 
-.tcCompactNews[data-expanded=false] article p{-webkit-line-clamp:2}
+
 
 /* Single owner: public home/search/activity. Earlier rules were removed, not overridden. */
 .neoHero{display:block;max-width:1220px;margin:0 auto;padding:24px 20px 16px;min-height:0;background:none}
@@ -85,19 +85,19 @@
 @media(max-width:800px){
  /* Compact fintech-like density: no loss of the four primary actions. */
  .neoShell .neoHero{padding:7px 14px 3px;min-height:0}
- .neoShell .neoHero h1{font-size:21px;max-width:27ch;line-height:1.07;letter-spacing:-.025em}
+ .neoShell .neoHero h1{font-size:22px;max-width:27ch;line-height:1.1;letter-spacing:-.025em}
  .neoShell .neoHero h1 em{white-space:nowrap}
- .neoShell .neoHeroLead{font-size:11.5px;line-height:1.25;margin-top:4px}
+ .neoShell .neoHeroLead{font-size:12px;line-height:1.35;margin-top:4px}
  .neoShell .neoSearchDock{grid-template-columns:minmax(80px,1fr) 94px 59px;gap:3px;padding:0 3px 0 7px;margin-top:8px;min-height:44px;border-radius:9px}
  .neoShell .neoSearchDock>svg{display:none}
- .neoShell .neoSearchDock input{grid-column:1;grid-row:1;height:44px;min-height:44px;font-size:16px}
+ .neoShell .neoSearchDock input{grid-column:1;grid-row:1;height:44px;min-height:44px;font-size:14px}
  .neoShell .neoSearchDock>label{grid-column:2;grid-row:1;padding:0 3px;gap:2px;min-height:44px}
  .neoShell .neoSearchDock>label>svg{width:13px;height:13px}
  .neoShell .neoSearchDock select{width:100%;max-width:100%;font-size:11.5px;min-height:44px}
  .neoShell .neoSearchDock>button{grid-column:3;grid-row:1;height:44px;min-height:44px;padding:5px;font-size:11.5px;border-radius:7px}
  .neoShell .neoSearchDock>button svg{display:none}
  .neoShell .tcQuickActions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:8px 0 4px}
- .neoShell .tcQuickActions button{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;height:57px;min-height:57px;min-width:0;padding:4px 1px;border:1px solid #dee7dd;border-radius:11px;background:#fff;color:#18392c;font-size:10.5px;line-height:1.12;font-weight:600;box-shadow:0 2px 8px #082b2010}
+ .neoShell .tcQuickActions button{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;height:52px;min-height:52px;min-width:0;padding:4px 1px;border:1px solid #dee7dd;border-radius:11px;background:#fff;color:#18392c;font-size:12px;line-height:1.15;font-weight:600;box-shadow:0 2px 8px #082b2010}
  .neoShell .tcQuickActions button:nth-child(2){background:#f2f7ec}
  .neoShell .tcQuickActions button svg{width:19px;height:19px;flex-shrink:0}
  .neoShell .tcQuickActions .tcQuickLong{display:none}
@@ -107,15 +107,18 @@
  .neoShell .tcActivityStrip b{font-size:14px}
  .neoShell .tcActivityCenterButton svg{width:17px;height:17px}
  /* Advertisement inherits typography from the shell: override it at this final layer. */
- .neoShell .tcHouseAd{min-height:154px;border-radius:12px}
- .neoShell .tcHouseAd .tcCampaignCopy{min-height:154px;padding:10px 13px;gap:3px}
- .neoShell .tcHouseAd .tcCampaignEyebrow{font-size:9px;line-height:1.15;letter-spacing:.025em}
- .neoShell .tcHouseAd h3{font-size:17px;line-height:1.13;letter-spacing:-.02em;max-width:66%}
- .neoShell .tcHouseAd p{font-size:11px;line-height:1.25;max-width:67%;margin:0}
- .neoShell .tcHouseAd button{font-family:inherit;font-size:11px;font-weight:650;line-height:1.1;min-height:44px;min-width:0;width:max-content;max-width:68%;white-space:normal;text-align:center;padding:7px 10px;border-radius:7px;margin-top:3px;background:#e0efbb}
+ 
+ 
+ 
+ 
+ 
+ 
 }
 @media(max-width:359px){
  .neoShell .tcQuickActions{gap:4px}
- .neoShell .tcQuickActions button{font-size:9.5px}
+ .neoShell .tcQuickActions button{font-size:11px}
  .neoShell .neoSearchDock{grid-template-columns:minmax(62px,1fr) 84px 54px}
 }
+
+/* iOS keeps 16px text inputs to avoid focus zoom; viewport zoom stays available. */
+@supports(-webkit-touch-callout:none){@media(max-width:800px){.neoShell .neoSearchDock input,.neoShell .neoFilterSearch input{font-size:16px}}}

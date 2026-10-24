@@ -1383,7 +1383,7 @@ function App() {
               <button type='button' aria-label='Servicios' aria-pressed={section==='services'} className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => navigateResults('services')}><Wrench aria-hidden='true'/><span>Servicios</span></button>
             </div>
             <div className='neoFilters'>
-              <label className='neoFilterSearch'><Search aria-hidden='true'/><input aria-label='Buscar por cargo, oficio o empresa' value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' /></label>
+              <label className='neoFilterSearch'><Search aria-hidden='true'/><input aria-label='Buscar por cargo, oficio o empresa' value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo u oficio' /></label>
               <button type='button' className='tcFiltersToggle' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}>Filtros{(area!=='Todas'||onlyNew)?' •':''}</button>
               <div className='tcAdvancedFilters' id='tc-advanced-filters' data-open={advancedFiltersOpen}>
                 <label><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de resultados</span><select aria-label='Comuna de resultados' value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
@@ -1438,7 +1438,7 @@ function App() {
         <details className='tcSecondary' id='tc-other-cities'><summary>Buscar también en otras ciudades</summary>
           <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>
         </details>
-        <details className='tcSecondary' id='actualidad-laboral'><summary>Actualidad laboral, trámites y fuentes oficiales</summary><LaborNewsSection/></details>
+        <details className='tcSecondary' id='actualidad-laboral'><summary>Actualidad laboral y trámites</summary><LaborNewsSection/></details>
 
         <footer className='neoFooter'>
           <div className='neoBrand'><span className='neoBrandMark'><MapPin /><Radar /></span><span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span></div>
@@ -1647,7 +1647,7 @@ function App() {
         <div className='filterPanel'>
           <div className='searchBox stitchSearch'>
             <Search />
-            <input value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' />
+            <input value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo u oficio' />
             <select value={area} onChange={e => setArea(e.target.value)}>
               {areas.map(value => <option key={value}>{value}</option>)}
             </select>

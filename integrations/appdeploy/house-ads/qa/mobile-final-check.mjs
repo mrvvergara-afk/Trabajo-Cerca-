@@ -16,7 +16,7 @@ try{for(const width of widths){
  const heroHeight=await page.locator('.neoHero').evaluate(e=>e.getBoundingClientRect().height);
  const card=page.locator('[data-offer-id="territory-0"]');await shot('card',card);const cardHeight=await card.evaluate(e=>e.getBoundingClientRect().height);
  await shot('results',page.locator('.neoControlDeck'));
- const radar=page.locator('#neo-radar');await shot('radar',radar);
+ const radar=page.locator('#neo-radar');if(await radar.locator('.tcRadarDetails').count())await radar.locator('.tcRadarDetails').evaluate(e=>e.open=true);await shot('radar',radar);
  const geometry=await radar.evaluate(e=>{const d=e.querySelector('.tcRadarDial').getBoundingClientRect(),t=e.querySelector('.tcRadarTowns'),b=t.getBoundingClientRect();return {dialHeight:d.height,dialWidth:d.width,townsTop:b.top,dialBottom:d.bottom,innerScroll:t.scrollHeight>t.clientHeight+1,points:[...e.querySelectorAll('.tcRadarPoint,i')].map(x=>x.getBoundingClientRect().width),townCount:t.querySelectorAll('button').length};});
  await shot('house',page.locator('.tcHouseAd').last());
  await shot('secondary',page.locator('#tc-other-cities'));

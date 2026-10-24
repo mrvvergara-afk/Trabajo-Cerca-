@@ -1,0 +1,961 @@
+[
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExplore"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExplore h2"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExplore p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExploreCities"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExploreCities>button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExploreCities strong"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExploreCities small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExploreCities svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcExploreNote"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcLaborNews"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcLaborNews h2"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcLaborNews header p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcNewsLayout"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcExploreCities"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcExploreCities>button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcNewsLayout"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcNewsArticles article h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcNewsArticles article p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcNewsExpand:focus-visible",
+      ".tcResourceMore summary:focus-visible"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews>header"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews>header h2"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews>header p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews>header>svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsArticles article"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsArticles article+article"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsArticles h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsArticles p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcCompactNews[data-expanded=false] article h3",
+      ".tcCompactNews[data-expanded=false] article p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcNewsBottom"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsBottom small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsBottom a"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout aside"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout aside h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout aside a"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout aside b"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout aside small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcResourceMore>summary"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcResourceMore>summary::-webkit-details-marker"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcResourceMore[open]>summary>span"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcResourceMore[open]>summary>span::after"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcNewsExpand"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsReview"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcCompactNews .tcNewsLayout aside"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcCompactNews[data-expanded=false] article p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExplore",
+      ".tcLaborNews"
+    ],
+    "kept": [
+      ".tcLocalAdvertising"
+    ]
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExplore"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreIntro h2",
+      ".tcLaborNews h2"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreIntro p",
+      ".tcLaborNews header p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreCities"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreCities button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreCities button[aria-pressed=true]"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreCities svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreCities button>svg:last-child"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreCities strong"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreCities small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExploreNote"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcLaborNews"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcLaborNews>header"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcLaborNews>header>svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsLayout"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsArticles article",
+      ".tcNewsLayout aside"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsArticles article+article"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsTopic"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsArticles h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsArticles p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsArticles article>small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsArticles a"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsArticles svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsReview"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsLayout aside h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsLayout aside>p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsLayout aside>a"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsLayout aside b"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsLayout aside small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcNewsLayout aside svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "",
+    "removed": [
+      ".tcExplore button:focus-visible",
+      ".tcLaborNews a:focus-visible"
+    ],
+    "kept": [
+      ".tcLocalAdvertising :is(button,a):focus-visible"
+    ]
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:1000px)",
+    "removed": [
+      ".tcExplore"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:1000px)",
+    "removed": [
+      ".tcNewsLayout"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcExplore",
+      ".tcLaborNews"
+    ],
+    "kept": [
+      ".tcLocalAdvertising"
+    ]
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcExplore"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcExploreCities"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcExploreCities button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcExploreCities strong"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcNewsLayout"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcLaborNews"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcNewsArticles article",
+      ".tcNewsLayout aside"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcNewsArticles h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcNewsArticles p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcLaborNews>header"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/territorial-sections.css",
+    "context": "@media(max-width:640px)",
+    "removed": [
+      ".tcLaborNews>header>svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoFooter"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoFooter p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoFooter>div:last-child"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoFooter>div:last-child button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoFooter"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoFooter .neoBrand"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoFooter p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoFooter>div:last-child"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter .neoBrandMark"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter .neoBrand b"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoFooter"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter p a"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter .neoBrand small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoFooter"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoFooter>div:last-child button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd .tcCampaignCopy"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd .tcCampaignEyebrow"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd button"
+    ],
+    "kept": []
+  }
+]

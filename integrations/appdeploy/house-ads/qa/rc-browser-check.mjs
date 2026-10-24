@@ -9,6 +9,8 @@ try{
  const page=await context.newPage();const errors=[];
  page.on('pageerror',e=>errors.push(e.message));await context.route('**/*',r=>(new URL(r.request().url()).hostname==='127.0.0.1'||/^https:\/\/raw\.githubusercontent\.com\/mrvvergara-afk\/Trabajo-Cerca-\/c445112b9cdb78adfce9d8065e32411c4f412c4b\/integrations\/appdeploy\/house-ads\/public\/icon-(?:maskable-)?512\.png$/.test(r.request().url()))?r.continue():r.abort());
  await page.addInitScript(()=>{window.houseFixture='admin';window.rcViolations=[];document.addEventListener('securitypolicyviolation',e=>window.rcViolations.push({directive:e.violatedDirective,resource:e.blockedURI}));});
+ await page.goto('http://127.0.0.1:4174/robots.txt');
+ await page.evaluate(async()=>{const cache=await caches.open('trabajo-cerca-previous-ui-test');await cache.put('/obsolete-ui-test',new Response('old shell fixture'));});
  await page.goto('http://127.0.0.1:4174/?listing=layout-fixture-1',{waitUntil:'networkidle'});
  await page.getByRole('dialog',{name:'Detalle de Puesto de ensayo 2 · solo prueba visual'}).waitFor();
  const cdp=await context.newCDPSession(page);await cdp.send('Page.enable');
@@ -28,7 +30,8 @@ try{
  assert(await page.getByRole('button',{name:'Avisos automáticos en preparación',exact:true}).isDisabled());
  assert(!(await page.evaluate(()=>window.houseCalls)).some(c=>c.method==='POST'&&c.path.startsWith('/api/notifications')));
  const violations=await page.evaluate(()=>window.rcViolations);assert.deepEqual(violations,[]);assert.deepEqual(errors,[]);
+ const cacheNames=await page.evaluate(()=>caches.keys());assert(!cacheNames.includes('trabajo-cerca-previous-ui-test'),'previous shell cache was not retired');
  const cacheKeys=await page.evaluate(async()=>{const all=[];for(const key of await caches.keys()){const cache=await caches.open(key);all.push(...(await cache.keys()).map(r=>new URL(r.url).pathname));}return all;});assert(!cacheKeys.some(p=>p.startsWith('/api/')||p.includes('__appdeploy')));
- const report={checkedAt:new Date().toISOString(),fixturesOnly:true,deployed:false,productionWrites:0,sharedListingOpened:true,privacyFocusAndEscape:true,automaticNotificationsNotAdvertisedAsAvailable:true,staticSitemapStatus:seo.sitemapStatus,staticRobotsStatus:seo.robotsStatus,indexingDisabled:true,cspViolations:violations,pageErrors:errors,manifestErrors:manifest.errors,chromiumInstallabilityErrors:significant,serviceWorkerReady:true,noPrivateApiCached:true,osInstallationTested:false,realSdkUsed:false};
+ const report={checkedAt:new Date().toISOString(),fixturesOnly:true,deployed:false,productionWrites:0,sharedListingOpened:true,privacyFocusAndEscape:true,automaticNotificationsNotAdvertisedAsAvailable:true,staticSitemapStatus:seo.sitemapStatus,staticRobotsStatus:seo.robotsStatus,indexingDisabled:true,cspViolations:violations,pageErrors:errors,manifestErrors:manifest.errors,chromiumInstallabilityErrors:significant,serviceWorkerReady:true,previousShellCacheRetired:true,noPrivateApiCached:true,osInstallationTested:false,realSdkUsed:false};
  writeFileSync('qa-output/rc-browser.json',JSON.stringify(report,null,2));console.log('RC_BROWSER_PROOF '+JSON.stringify(report));await context.close();
 }finally{await context.close();rmSync(profile,{recursive:true,force:true});}

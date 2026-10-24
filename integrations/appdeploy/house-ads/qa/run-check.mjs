@@ -28,6 +28,6 @@ try{
  if(process.env.RC_CHECKS!=='1')run('node',['qa/capacity-check.mjs']);
  run('node',['qa/publication-check.mjs']);
  if(process.env.RC_CHECKS==='1')run('node',['qa/rc-browser-check.mjs']);
- if(process.env.AD_IMAGE_CHECKS==='1'){run('node',['qa/premium-check.mjs']);run('node',['qa/ad-images-check.mjs','--commercial-only']);run('node',['qa/live-ui-check.mjs']);}
+ if(process.env.AD_IMAGE_CHECKS==='1'){run('node',['qa/premium-check.mjs']);run('node',['qa/ad-images-check.mjs','--commercial-only']);run('node',['qa/live-ui-check.mjs']);run('node',['qa/build-ui-gallery.mjs']);}
  else if(process.env.UI_CHECKS==='1')run('node',['qa/territorial-ui-check.mjs']);
 }finally{try{process.kill(-server.pid,'SIGTERM');}catch{}}

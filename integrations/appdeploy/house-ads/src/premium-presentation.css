@@ -369,15 +369,15 @@
   }
   .neoShell .tcQuickActions button {
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    gap:4px;
+    gap:2px;
     height:auto;
     min-height:46px;
     min-width:0;
-    padding:4px;
+    padding:3px;
     border:1px solid #dee7dd;
     border-radius:11px;
     background:#fff;

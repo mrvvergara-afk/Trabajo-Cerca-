@@ -13,7 +13,7 @@ try {
   const context = await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
   await context.route('**/*', route => {
     const request = route.request(), body = request.postData() || '';
-    if (!['GET','HEAD'].includes(request.method()) && /house-events|growth\/events|sponsor-impression|analytics/i.test(body+' '+request.url())) {
+    if (!['GET','HEAD'].includes(request.method()) && /house-events|commercial-events|growth\/events|sponsor-impression|analytics/i.test(body+' '+request.url())) {
       suppressed.push('measurement blocked');
       return route.abort();
     }

@@ -17,7 +17,7 @@ function extract(value,depth=0){if(depth>12||!value)return;if(typeof value==='st
 }
 try{
  const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'}),page=await context.newPage();
- await context.route('**/*',route=>{const req=route.request(),body=req.postData()||'',url=req.url();if(req.method()!=='GET'&&req.method()!=='HEAD'&&/house-events|growth\/events|sponsor-impression|analytics/i.test(body+' '+url)){metrics.push('measurement request blocked');return route.abort();}return route.continue();});
+ await context.route('**/*',route=>{const req=route.request(),body=req.postData()||'',url=req.url();if(req.method()!=='GET'&&req.method()!=='HEAD'&&/house-events|commercial-events|growth\/events|sponsor-impression|analytics/i.test(body+' '+url)){metrics.push('measurement request blocked');return route.abort();}return route.continue();});
  page.on('response',r=>{if(r.status()>=500)networkErrors.push({url:r.url().split('?')[0],status:r.status()});if((r.headers()['content-type']||'').includes('json'))pending.push((async()=>{try{const j=await r.json();if(JSON.stringify(j).includes('503'))networkErrors.push({transportStatus:r.status(),sdk503Observed:true});extract(j);}catch{}})());});page.on('pageerror',e=>errors.push(e.message));
  await page.goto('https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/',{waitUntil:'domcontentloaded',timeout:45000});
  await page.locator('.neoJobCard').first().waitFor({timeout:90000});

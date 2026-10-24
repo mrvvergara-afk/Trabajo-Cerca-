@@ -215,7 +215,6 @@
       "lectura de todas las páginas del inventario visible",
       "rechazo de inventario parcial",
       "conservación de fechas y URL de postulación por ID",
-      "POST /api/ops/radar-external/consume",
       "incorporación acotada de lotes ya firmados",
       "error de incorporación visible"
     ],
@@ -260,7 +259,6 @@
       "evidencia de fuentes locales",
       "modo de solo lectura",
       "GET /api/ops/free-public-sources",
-      "POST /api/ops/free-public-sources/run",
       "recolección pública sin proveedores pagos",
       "separación de guardado y publicación"
     ],

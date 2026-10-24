@@ -500,6 +500,13 @@
   animation:tcSweep 10s linear infinite;
   animation-play-state:paused
 }
+.tcTerritorialRadar[data-animated=true] .tcRadarPoint.selected {
+  animation-play-state:running;
+}
+@keyframes tcRadarFocus {
+  from { opacity:.65; transform:translate(-50%,-50%) scale(1.25); }
+  to { opacity:1; transform:translate(-50%,-50%) scale(1); }
+}
 .tcTerritorialRadar[data-animated=true] .tcRadarSweep {
   animation-play-state:running
 }
@@ -519,7 +526,9 @@
 }
 .tcRadarDial .tcRadarPoint.selected {
   background:#ffb396;
-  box-shadow:0 0 0 4px #ffffff35
+  box-shadow:0 0 0 4px #ffffff35;
+  animation:tcRadarFocus .6s ease-out;
+  animation-play-state:paused
 }
 .tcRadarCaption {
   position:absolute;

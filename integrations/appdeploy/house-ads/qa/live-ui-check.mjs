@@ -9,10 +9,12 @@ const snapshot = JSON.parse(readFileSync('qa-output/visual-review/public-feed.js
 mkdirSync('qa-output/deployed-ui', {recursive:true});
 const browser = await chromium.launch({headless:true, ...(existsSync('/usr/bin/google-chrome') ? {executablePath:'/usr/bin/google-chrome'} : {})});
 const rows = [], errors = [], serverErrors = [], suppressed = [];
+let catalogueRequests = 0;
 try {
   const context = await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
   await context.route('**/*', route => {
     const request = route.request(), body = request.postData() || '';
+    if (/\/api\/listings/.test(body+' '+request.url())) catalogueRequests++;
     if (!['GET','HEAD'].includes(request.method()) && /house-events|commercial-events|growth\/events|sponsor-impression|analytics/i.test(body+' '+request.url())) {
       suppressed.push('measurement blocked');
       return route.abort();
@@ -73,6 +75,7 @@ try {
     await page.locator('.neoFooter').screenshot({path:`qa-output/deployed-ui/${width}-footer.png`});
     rows.push({width,id,metrics});
   }
+  if(applied){const next=page.getByRole('button',{name:'Siguiente página',exact:true});if(await next.isEnabled()){const id=await page.locator('.neoJobCard').first().getAttribute('data-offer-id');await next.click();assert.notEqual(await page.locator('.neoJobCard').first().getAttribute('data-offer-id'),id);await page.getByRole('button',{name:'Página anterior',exact:true}).click();assert.equal(await page.locator('.neoJobCard').first().getAttribute('data-offer-id'),id);}}
   await page.locator('.neoJobCard').first().locator('.neoJobFoot button').click();
   const detail=page.getByRole('dialog');await detail.waitFor();
   assert((await detail.innerText()).includes('PUBLICACIÓN ORIGINAL'));
@@ -86,6 +89,32 @@ try {
   await page.locator('.tcClearFilters').click();
   await page.locator('.neoJobCard').first().waitFor();
   assert.equal(await filter.inputValue(),'');
+  let nativeRadar = {tested:false};
+  if(applied) {
+    const radar=page.locator('#neo-radar');
+    await page.emulateMedia({reducedMotion:'no-preference'});
+    await radar.scrollIntoViewIfNeeded();
+    await page.waitForFunction(()=>document.querySelector('#neo-radar')?.getAttribute('data-rotating')==='true');
+    const first=await radar.getAttribute('data-focus-town'), requests=catalogueRequests;
+    await page.waitForFunction(town=>document.querySelector('#neo-radar')?.getAttribute('data-focus-town')!==town,first,{timeout:5500});
+    assert.equal(catalogueRequests,requests,'visual rotation must not call the catalog');
+    const second=await radar.getAttribute('data-focus-town');
+    const town=radar.locator('.tcRadarTowns button').first();
+    await town.click();
+    await page.waitForFunction(()=>document.querySelector('#tc-results-title')?.textContent.includes('Angol'));
+    await radar.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(3200);
+    assert.equal(await radar.getAttribute('data-focus-town'),'Angol');
+    assert.equal(await radar.getAttribute('data-rotating'),'false');
+    nativeRadar={tested:true,first,second,manualTown:'Angol',manualSelectionPaused:true,noCatalogRequestPerRotation:true};
+    await page.locator('.tcClearFilters').click();
+    await page.emulateMedia({reducedMotion:'reduce'});
+    for(const [name,heading] of [['Ofrecer mi trabajo','Ofrezco mi trabajo'],['Necesito contratar','Necesito trabajadores'],['Promocionar negocio','Promociona tu negocio en Trabajo Cerca']]) {
+      await page.getByRole('navigation',{name:'Qué necesitas hacer'}).getByRole('button',{name,exact:true}).click();
+      await page.getByRole('heading',{name:heading,exact:true}).waitFor();
+      await page.getByRole('button',{name:'Cerrar',exact:true}).first().click();
+    }
+  }
   const manifestResponse=await page.request.get(base+'manifest.webmanifest');
   assert.equal(manifestResponse.status(),200);
   const manifest=await manifestResponse.json(), icons=[];
@@ -100,7 +129,7 @@ try {
   const installability=await cdp.send('Page.getInstallabilityErrors');
   if(applied)assert.deepEqual(installability.installabilityErrors,[]);
   if(applied)assert.deepEqual(errors,[]);
-  const report={checkedAt:new Date().toISOString(),url:base,applied,expectedCache:'trabajo-cerca-shell-ui-20261024',widths,rows,errors,serverErrors,icons,installability,realNativeSdk:true,syntheticListings:0,validFormSubmissions:0,productionWrites:0,measurementRequestsSuppressed:suppressed.length,physicalOsInstallationTested:false,pushDeliveryTested:false};
+  const report={checkedAt:new Date().toISOString(),url:base,applied,expectedCache:'trabajo-cerca-shell-ui-20261024',widths,rows,errors,serverErrors,icons,installability,nativeRadar,realNativeSdk:true,syntheticListings:0,validFormSubmissions:0,productionWrites:0,measurementRequestsSuppressed:suppressed.length,physicalOsInstallationTested:false,pushDeliveryTested:false};
   writeFileSync('qa-output/deployed-ui/report.json',JSON.stringify(report,null,2));
   console.log('DEPLOYED_UI_PROOF '+JSON.stringify(report));
   await context.close();

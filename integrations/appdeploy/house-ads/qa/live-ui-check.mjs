@@ -1,17 +1,19 @@
 // Read-only verification of the deployed app and its native SDK. No aliases, no synthetic listings.
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
-import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
+import {existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 
 const base = 'https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/';
 const widths = [360,390,430,768,1440];
 const snapshot = JSON.parse(readFileSync('qa-output/visual-review/public-feed.json','utf8'));
 mkdirSync('qa-output/deployed-ui', {recursive:true});
-const browser = await chromium.launch({headless:true, ...(existsSync('/usr/bin/google-chrome') ? {executablePath:'/usr/bin/google-chrome'} : {})});
+const profile = mkdtempSync(join(tmpdir(),'tc-native-pwa-'));
+const context = await chromium.launchPersistentContext(profile,{headless:true,viewport:{width:390,height:844},reducedMotion:'reduce', ...(existsSync('/usr/bin/google-chrome') ? {executablePath:'/usr/bin/google-chrome'} : {})});
 const rows = [], errors = [], serverErrors = [], suppressed = [];
 let catalogueRequests = 0;
 try {
-  const context = await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
   await context.route('**/*', route => {
     const request = route.request(), body = request.postData() || '';
     if (/\/api\/listings/.test(body+' '+request.url())) catalogueRequests++;
@@ -127,6 +129,7 @@ try {
   await page.evaluate(()=>navigator.serviceWorker.ready.then(()=>true));
   const cdp=await context.newCDPSession(page);await cdp.send('Page.enable');
   const installability=await cdp.send('Page.getInstallabilityErrors');
+  writeFileSync('qa-output/deployed-ui/pwa-diagnostics.json',JSON.stringify({checkedAt:new Date().toISOString(),applied,normalIsolatedProfile:true,icons,installability,nativeRadar,physicalOsInstallationTested:false},null,2));
   if(applied)assert.deepEqual(installability.installabilityErrors,[]);
   if(applied)assert.deepEqual(errors,[]);
   const report={checkedAt:new Date().toISOString(),url:base,applied,expectedCache:'trabajo-cerca-shell-ui-20261024',widths,rows,errors,serverErrors,icons,installability,nativeRadar,realNativeSdk:true,syntheticListings:0,validFormSubmissions:0,productionWrites:0,measurementRequestsSuppressed:suppressed.length,physicalOsInstallationTested:false,pushDeliveryTested:false};
@@ -136,4 +139,4 @@ try {
 } catch(error) {
   writeFileSync('qa-output/deployed-ui/failure.json',JSON.stringify({message:String(error),rows,errors,serverErrors},null,2));
   throw error;
-} finally { await browser.close(); }
+} finally { await context.close(); rmSync(profile,{recursive:true,force:true}); }

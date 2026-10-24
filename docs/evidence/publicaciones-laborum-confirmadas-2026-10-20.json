@@ -1,0 +1,236 @@
+{
+  "schema": "trabajo-cerca.portal-reviewed-delivery.v1",
+  "capture_commit": "d5704078106d121a6368338b41f1b64397aae266",
+  "exchange_commit": "7868e00051a22f1f63fa04cd882c1e93baede363",
+  "run_id": "39404138293",
+  "reviewed": 3,
+  "published_new": 3,
+  "paid_provider_calls": 0,
+  "published_ids": [
+    "688c0421-4ed4-46e5-9592-694a2669fad7",
+    "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+    "adee2128-1fb0-45ae-ab28-8bb8cf87313e"
+  ],
+  "already_present_ids": [],
+  "sdk_total_items": 36,
+  "sdk_job_offers": 34,
+  "added_ids": [
+    "688c0421-4ed4-46e5-9592-694a2669fad7",
+    "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+    "adee2128-1fb0-45ae-ab28-8bb8cf87313e"
+  ],
+  "removed_ids": [],
+  "confirmation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+      "688c0421-4ed4-46e5-9592-694a2669fad7",
+      "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "7868e00051a22f1f63fa04cd882c1e93baede363",
+    "ingestion_run_id": "39404138293",
+    "feed_complete": true,
+    "feed_manifest": "c9f1ad85-e57e-4f26-ab7e-651a1361301a",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "all_cards_confirmed": true,
+  "feed_manifest": "c9f1ad85-e57e-4f26-ab7e-651a1361301a",
+  "data_commit": "61ca6fc054810cf52913a92ad64759ff3532690a",
+  "app_ready_version": "1792490035683",
+  "confirmed_jobs": [
+    {
+      "id": "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+      "kind": "job_offer",
+      "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria (Terreno) - Angol",
+      "company": "SMU 1",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "13-10-2026",
+      "createdAt": "2026-10-20T10:05:34.195Z",
+      "url": "https://www.laborum.cl/empleos/auditora-relatora-de-calidad-e-inocuidad-alimentaria-terreno-angol-smu-1-1118452584.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-13T00:00:00.000Z",
+      "sourceValidThrough": "2027-02-10T00:00:00.000Z",
+      "expiresAt": "2027-02-10T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T09:37:55.097260+00:00",
+      "externalVerifiedAt": "2026-10-20T09:37:55.097260+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "688c0421-4ed4-46e5-9592-694a2669fad7",
+      "kind": "job_offer",
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
+      "company": "Comercial Fashion´s park s.a.",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T10:05:34.195Z",
+      "url": "https://www.laborum.cl/empleos/cajero-a-asistente-integral--temporada-navidad--angol-comercial-fashions-park-s.a.-1118483484.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T00:00:00.000Z",
+      "sourceValidThrough": "2027-02-13T00:00:00.000Z",
+      "expiresAt": "2027-02-13T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T09:37:55.011953+00:00",
+      "externalVerifiedAt": "2026-10-20T09:37:55.011953+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+      "kind": "job_offer",
+      "title": "Cajero(a) con experiencia Unimarc Angol",
+      "company": "Supermercados Unimarc",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "06-10-2026",
+      "createdAt": "2026-10-20T10:05:34.195Z",
+      "url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-angol-supermercados-unimarc-1118469523.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-06T00:00:00.000Z",
+      "sourceValidThrough": "2027-02-03T00:00:00.000Z",
+      "expiresAt": "2027-02-03T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T09:37:54.926892+00:00",
+      "externalVerifiedAt": "2026-10-20T09:37:54.926892+00:00",
+      "revalidationDue": false,
+      "active": true
+    }
+  ],
+  "before_job_offers": 31,
+  "after_job_offers": 34,
+  "homepage_proof": {
+    "initial": {
+      "total": 34,
+      "ids": [
+        "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+        "688c0421-4ed4-46e5-9592-694a2669fad7",
+        "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+        "free-149bb65066307aa45733b5f251ca3055f042eeeb",
+        "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+        "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+        "8b75b282-d838-45bc-9309-d10874aae023",
+        "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+        "bf77e561-ccca-48a7-9ecf-f8de424f8104"
+      ],
+      "banner": "11 ofertas incorporadas en los últimos 7 días\n\nSe suman al total del radar. Las anteriores siguen publicadas hasta su cierre o vencimiento confirmado.\n\n5 incorporadas en las últimas 24 horas.\nVer novedades"
+    },
+    "all_cards": {
+      "total": 34,
+      "ids": [
+        "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+        "688c0421-4ed4-46e5-9592-694a2669fad7",
+        "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+        "free-149bb65066307aa45733b5f251ca3055f042eeeb",
+        "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+        "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+        "8b75b282-d838-45bc-9309-d10874aae023",
+        "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+        "bf77e561-ccca-48a7-9ecf-f8de424f8104",
+        "2f0f424e-d10b-4d7d-98e2-b8e1b29b9783",
+        "free-d294f2d92f9e56840e53553adef2420f48b30847",
+        "1f723e1a-993c-4033-b1a0-9cd4c5d3cd36",
+        "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+        "2acda2c7-e657-4656-860e-1645badef65b",
+        "3bcab40f-161b-4c92-94cd-89a137c16609",
+        "02236bf2-6346-43a2-a30b-734f328e7f95",
+        "02c3f426-3500-42ee-8ac2-f5a2a6733c48",
+        "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+        "79b81cf7-7c2a-4409-aad9-3be7a78260f6",
+        "0c9d9edf-98c7-41e8-a864-604fd8069445",
+        "28b9b9be-fbc1-4eeb-bd46-56f859188231",
+        "0b54a8ad-1f4a-47f4-b351-8aa8dfa582f1",
+        "a4478588-785e-4545-824e-e94de6d8916a",
+        "33ddef7b-e071-480a-86fb-79db4f966de7",
+        "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+        "40b91274-90ed-4742-bfe6-f197949c7914",
+        "0b79c530-f4cd-4b5a-90df-a9479324ea7e",
+        "13b09236-bb04-42b1-a010-b7743d25c5d4",
+        "b80928c9-6bb1-46fc-b1d9-eea732003c5c",
+        "16e43079-56d9-4ac1-81a4-3993af7fecd4",
+        "2dbb852b-abd3-45c0-83f2-6044155916c4",
+        "13a8bb11-2ea3-4f70-a265-b8e3079a19c9",
+        "420b5063-4a7f-4db5-bac8-2b4634ebaf13",
+        "696b1b8c-ecaf-40e2-92aa-f6621ab9a282"
+      ],
+      "banner": "11 ofertas incorporadas en los últimos 7 días\n\nSe suman al total del radar. Las anteriores siguen publicadas hasta su cierre o vencimiento confirmado.\n\n5 incorporadas en las últimas 24 horas.\nVer novedades"
+    },
+    "reload": {
+      "total": 34,
+      "ids": [
+        "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+        "688c0421-4ed4-46e5-9592-694a2669fad7",
+        "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+        "free-149bb65066307aa45733b5f251ca3055f042eeeb",
+        "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+        "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+        "8b75b282-d838-45bc-9309-d10874aae023",
+        "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+        "bf77e561-ccca-48a7-9ecf-f8de424f8104"
+      ],
+      "banner": "11 ofertas incorporadas en los últimos 7 días\n\nSe suman al total del radar. Las anteriores siguen publicadas hasta su cierre o vencimiento confirmado.\n\n5 incorporadas en las últimas 24 horas.\nVer novedades"
+    },
+    "new_filter_roundtrip_preserved": true,
+    "readonly": true
+  },
+  "traiguen_ids": [
+    "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+    "8b75b282-d838-45bc-9309-d10874aae023",
+    "de9067f5-59f2-4e0c-ba02-fc9584debe0f"
+  ],
+  "document_revalidation": {
+    "schema": "trabajo-cerca.document-revalidation-status.v1",
+    "readOnly": true,
+    "providerCalls": 0,
+    "intervalHours": 12,
+    "documents": [
+      {
+        "key": "traiguen-salud-2026-10",
+        "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "originalPublishedAt": "2026-10-01T12:04:54+00:00",
+        "approvedJobs": 3,
+        "publishedIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "visibleIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "status": "revalidated",
+        "lastCheckAt": "2026-10-20T00:50:37.897Z",
+        "lastSuccessAt": "2026-10-20T00:50:37.897Z",
+        "nextCheckAt": "2026-10-20T12:50:37.897Z",
+        "reason": null,
+        "registrationPending": false
+      }
+    ],
+    "feedManifestId": "c9f1ad85-e57e-4f26-ab7e-651a1361301a",
+    "newOffersDiscovered": 0,
+    "socialCaptureProven": false
+  },
+  "new_difficult_publications": 0
+}

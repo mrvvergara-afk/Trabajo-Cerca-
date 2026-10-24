@@ -1,0 +1,18 @@
+{
+  "schema": "trabajo-cerca.radar-v2-publication-control.v1",
+  "territories": ["Renaico", "Negrete", "Traiguén"],
+  "paid_providers_enabled": false,
+  "publish_enabled": false,
+  "sources": [
+    {
+      "key": "negrete-bne-publication-control",
+      "name": "Bolsa Nacional de Empleo · control de conexión",
+      "kind": "web",
+      "page_type": "notice",
+      "family": "official",
+      "scope": "publication_control",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "identity_evidence": "Oferta individual de BNE revisada, publicada el 15/09/2026, cierre 17/11/2026. Ya tiene un ID visible: sirve para comprobar conexión y deduplicación, no captación social ni una oferta nueva."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "icons": [
+    {
+      "name": "icon-192.png",
+      "size": [
+        192,
+        192
+      ],
+      "bytes": 1868,
+      "sha256": "f3c64a1f0f9c63f670b20a3df5c4c3fde78d3d9438897f358e96350b78ad3d91",
+      "decoded": true,
+      "crc_valid": true
+    },
+    {
+      "name": "icon-512.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 7469,
+      "sha256": "eddfe4b4a7a0b1cd88c223f03f36c2fcc97a23f6334d9b0e120d6b8fa264c63e",
+      "decoded": true,
+      "crc_valid": true
+    },
+    {
+      "name": "icon-maskable-512.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 4926,
+      "sha256": "a7ca82f2a42ab8364700c4cceb516c9be5febeb0b1ad6b37cf7d628debbab12b",
+      "decoded": true,
+      "crc_valid": true
+    }
+  ],
+  "maskable_foreground_outside_safe_circle": 0,
+  "manifest_validated": true,
+  "derived_from_existing_192_icon": true,
+  "os_installation_tested": false,
+  "deployed": false
+}

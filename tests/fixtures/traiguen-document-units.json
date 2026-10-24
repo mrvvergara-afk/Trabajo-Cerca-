@@ -1,0 +1,632 @@
+{
+  "schema": "trabajo-cerca.ingestion.v1",
+  "generated_at": "2026-10-17T23:26:28.911583+00:00",
+  "dry_run": true,
+  "publisher_status": "not_connected",
+  "ready_count": 3,
+  "published_count": 0,
+  "records": [
+    {
+      "idempotency_key": "radar:39515f1faa2264b877e35a61",
+      "candidate_id": "39515f1faa2264b877e35a61",
+      "source_url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "source": "Municipalidad de Traiguén",
+      "title": "QUÍMICO FARMACÉUTICO (A)",
+      "company": "Municipalidad de Traiguén",
+      "work_commune": "Traiguén",
+      "source_published_at": "2026-10-01T12:04:54+00:00",
+      "valid_through": "2026-11-02T17:00:00+00:00",
+      "application": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf#page=11",
+      "verified_at": "2026-10-17T23:05:28.287974+00:00",
+      "verification_method": "Municipalidad de Traiguén individual notice + page-bound document review",
+      "document_unit": {
+        "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
+        "document_url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+        "fields": {
+          "application": {
+            "literal": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nde Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de lunes a viernes de 09:30 a 14:00 hrs. El sobre deberá indicar\nen su parte exterior el nombre del concurso y los datos del postulante.",
+            "page": 11,
+            "reading": "primary",
+            "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516"
+          },
+          "company": {
+            "literal": "La Municipalidad de Traiguén llama a concurso Público de antecedentes",
+            "page": 5,
+            "reading": "primary",
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          },
+          "deadline": {
+            "literal": "Cierre de periodo de recepción de postulaciones | 02 de Noviembre de 2026",
+            "page": 2,
+            "reading": "alternate_readings:0",
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          "deadline_time": {
+            "literal": "a\nlas 14 hrs., impostergablemente.",
+            "page": 11,
+            "reading": "primary",
+            "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516"
+          },
+          "scope": {
+            "literal": "APRUEBA BASES PARA LLAMADO A CONCURSO PÚBLICO DE 3 CARGOS",
+            "page": 2,
+            "reading": "primary",
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          "title": {
+            "literal": "QUÍMICO FARMACÉUTICO (A) CATEGORIA A EN DEPARTAMENTO DE",
+            "page": 5,
+            "reading": "primary",
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          },
+          "workplace": {
+            "literal": "Categoría N° de [N° de Calidad [Establecimiento |\nFuncionari Cargos |Hrs.Sem. |\na |\nA QUÍMICO 1 44 Indefinid Departamento de |\nFARMACÉUTICO o Salud Municipal de |\nTraiguén",
+            "page": 5,
+            "reading": "primary",
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          }
+        },
+        "html_sha256": "4bd94e322cbe05e482b02e8fee467d7af06a3d25dab31349715d0a07f1a02d6f",
+        "key": "bce0df7b921b195ba5f60b598e7dcefaf2eac6f5733180fd180012af5a887ea9",
+        "page_count": 33,
+        "pages": [
+          {
+            "page": 1,
+            "text_object_sha256": "5d706206b99b881c7504a9d86f17f68067376a79707614d1937d051dcc950429"
+          },
+          {
+            "page": 2,
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          {
+            "page": 3,
+            "text_object_sha256": "5801c3ff4e29ab4cf07874c94ea104cc4312cc46d0d06216c9874103dcaef05f"
+          },
+          {
+            "page": 4,
+            "text_object_sha256": "e557adb19a18c809d813b9d3b5efc458a832bcc6eab2733014307cdd37eadd83"
+          },
+          {
+            "page": 5,
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          },
+          {
+            "page": 6,
+            "text_object_sha256": "01d1780b20a1a788b60db2ae9c375549b39eceac25e40b2157aec96026ac4af8"
+          },
+          {
+            "page": 7,
+            "text_object_sha256": "3e8cd32c3eff8e4d119b19b2d1f735a8788e5ab1018726141879c639d9c36e97"
+          },
+          {
+            "page": 8,
+            "text_object_sha256": "2f7ccb2e87ee2c5278069eb0510caa2206efeab739aa852ab7d49a48c88797bd"
+          },
+          {
+            "page": 9,
+            "text_object_sha256": "05b98c0a871dcf19f29824968f1ee3144ef206ec22c23738052a52d63f16182e"
+          },
+          {
+            "page": 10,
+            "text_object_sha256": "39cee5d7a6fc437dd341ffe438b6e3508189c041d29e04715c5a2dab47d82742"
+          },
+          {
+            "page": 11,
+            "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516"
+          },
+          {
+            "page": 12,
+            "text_object_sha256": "9000e4a36a144617ba346f0b527884222787c680edfc19399ce1aad9f5434f7c"
+          },
+          {
+            "page": 13,
+            "text_object_sha256": "6c4381f5f5ff7b509f03964e7fe9e3601b9a0c34d792a4aa96c0601f48ad0887"
+          },
+          {
+            "page": 14,
+            "text_object_sha256": "898be4d78a4a7901b41bcaf486c4c4898cf016b7f5083b1723419865ea6a9c10"
+          },
+          {
+            "page": 15,
+            "text_object_sha256": "7f72aff00853ba35edbc0f01578aace73922db9b68e4359a638c00ef4b609cd2"
+          },
+          {
+            "page": 16,
+            "text_object_sha256": "9c35c9a68f988e1ac3dedaa27b44ca40ae51011cb7ca40062358a7bda6f05d63"
+          },
+          {
+            "page": 17,
+            "text_object_sha256": "88f0f1821803b8014f6d25cb728ff17ebac3f0d390e1531457d15585c1a54b2c"
+          },
+          {
+            "page": 18,
+            "text_object_sha256": "0cf491f81c3d5c372697b8ba1230bd837aef27b453b07aa7e6a48d73c2f582fe"
+          },
+          {
+            "page": 19,
+            "text_object_sha256": "595bba8acfe7705a04d0aaffc21141614c96f9f9c6eaa0030e42f01b020f06db"
+          },
+          {
+            "page": 20,
+            "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b"
+          },
+          {
+            "page": 21,
+            "text_object_sha256": "9b07f5efe424745dd89faae3314a6b62612fc9e13188e6fce47455e0502beb61"
+          },
+          {
+            "page": 22,
+            "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861"
+          },
+          {
+            "page": 23,
+            "text_object_sha256": "9ef066156a2a9dc2462127c01ec893e3930f74eb9c664a021a38d7393c3e5398"
+          },
+          {
+            "page": 24,
+            "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+          },
+          {
+            "page": 25,
+            "text_object_sha256": "0f33f0c0d8d41a1c3d5b9b84325ed49c4522b87485496afce67166dfc5f9302c"
+          },
+          {
+            "page": 26,
+            "text_object_sha256": "722109ef2f11661bf43991d7a7f667c46c96f9f3f79af55ea1f8a69a79d81f6d"
+          },
+          {
+            "page": 27,
+            "text_object_sha256": "5c4a679c437a57e8a880a3d8b37c0f312ed90af77fd3dd5e1a846c1964a277f1"
+          },
+          {
+            "page": 28,
+            "text_object_sha256": "78df212cdd815b11cec4b9c2b7b8fa47c9f61b9d1b0e0fc893b1e0b452256184"
+          },
+          {
+            "page": 29,
+            "text_object_sha256": "d18cbadd51fdac684ba1768961de808d78e03d66bfb28210967e8f33eb777cc7"
+          },
+          {
+            "page": 30,
+            "text_object_sha256": "29b2264eecbcbb4da5403be8c6558d93b44b3f85419cac673e83a1334dbb43f8"
+          },
+          {
+            "page": 31,
+            "text_object_sha256": "371186ce37e6fa8d153c005baec52c5e271bbf2657ee08626481b05678d7c92e"
+          },
+          {
+            "page": 32,
+            "text_object_sha256": "8c0f98cd4e46485717972f2056123da7968b268a9d1b2ec057eb60e6c82f4161"
+          },
+          {
+            "page": 33,
+            "text_object_sha256": "af4a2f193a767a80f9369d426f2d2ab8d1f865bd19759989a89f51f5abf1349e"
+          }
+        ],
+        "publisher_url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "review_method": "page_bound_review",
+        "reviewed_at": "2026-10-17T23:26:28.833858+00:00",
+        "schema": "trabajo-cerca.document-unit.v1"
+      },
+      "application_details": {
+        "instructions": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nde Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de lunes a viernes de 09:30 a 14:00 hrs. El sobre deberá indicar\nen su parte exterior el nombre del concurso y los datos del postulante.",
+        "method": "in_person"
+      }
+    },
+    {
+      "idempotency_key": "radar:5e1b494fc86fe4b7a3c9df68",
+      "candidate_id": "5e1b494fc86fe4b7a3c9df68",
+      "source_url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "source": "Municipalidad de Traiguén",
+      "title": "Ingeniero(a) en Prevención de Riesgos",
+      "company": "Municipalidad de Traiguén",
+      "work_commune": "Traiguén",
+      "source_published_at": "2026-10-01T12:04:54+00:00",
+      "valid_through": "2026-11-02T17:00:00+00:00",
+      "application": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf#page=24",
+      "verified_at": "2026-10-17T23:05:28.287974+00:00",
+      "verification_method": "Municipalidad de Traiguén individual notice + page-bound document review",
+      "document_unit": {
+        "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
+        "document_url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+        "fields": {
+          "application": {
+            "literal": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nA de Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de Lunes a Viernes en horarios de 09:00 a 14:00 hrs. El sobre\ndeberá indicar en su parte exterior el Nombre del concurso y los Datos\ndel postulante.",
+            "page": 24,
+            "reading": "primary",
+            "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+          },
+          "company": {
+            "literal": "La Municipalidad de Traiguén llama a concurso Público de antecedentes",
+            "page": 5,
+            "reading": "primary",
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          },
+          "deadline": {
+            "literal": "Cierre de periodo de recepción de postulaciones | 02 de Noviembre de 2026",
+            "page": 2,
+            "reading": "alternate_readings:0",
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          "deadline_time": {
+            "literal": "a las 14:00 hrs., impostergablemente.",
+            "page": 24,
+            "reading": "primary",
+            "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+          },
+          "scope": {
+            "literal": "APRUEBA BASES PARA LLAMADO A CONCURSO PÚBLICO DE 3 CARGOS",
+            "page": 2,
+            "reading": "primary",
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          "title": {
+            "literal": "1. Perfil de Cargo: Ingeniero(a) en Prevención de Riesgos",
+            "page": 20,
+            "reading": "primary",
+            "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b"
+          },
+          "workplace": {
+            "literal": "todas las dependencias del DSM Traiguén (Oficinas centrales, EMR,\nCECOSF y Postas Rurales), ",
+            "page": 20,
+            "reading": "primary",
+            "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b"
+          }
+        },
+        "html_sha256": "4bd94e322cbe05e482b02e8fee467d7af06a3d25dab31349715d0a07f1a02d6f",
+        "key": "985ed179393b976abe6896c0480ef7141504535232d03d2f95b6a71588020878",
+        "page_count": 33,
+        "pages": [
+          {
+            "page": 1,
+            "text_object_sha256": "5d706206b99b881c7504a9d86f17f68067376a79707614d1937d051dcc950429"
+          },
+          {
+            "page": 2,
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          {
+            "page": 3,
+            "text_object_sha256": "5801c3ff4e29ab4cf07874c94ea104cc4312cc46d0d06216c9874103dcaef05f"
+          },
+          {
+            "page": 4,
+            "text_object_sha256": "e557adb19a18c809d813b9d3b5efc458a832bcc6eab2733014307cdd37eadd83"
+          },
+          {
+            "page": 5,
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          },
+          {
+            "page": 6,
+            "text_object_sha256": "01d1780b20a1a788b60db2ae9c375549b39eceac25e40b2157aec96026ac4af8"
+          },
+          {
+            "page": 7,
+            "text_object_sha256": "3e8cd32c3eff8e4d119b19b2d1f735a8788e5ab1018726141879c639d9c36e97"
+          },
+          {
+            "page": 8,
+            "text_object_sha256": "2f7ccb2e87ee2c5278069eb0510caa2206efeab739aa852ab7d49a48c88797bd"
+          },
+          {
+            "page": 9,
+            "text_object_sha256": "05b98c0a871dcf19f29824968f1ee3144ef206ec22c23738052a52d63f16182e"
+          },
+          {
+            "page": 10,
+            "text_object_sha256": "39cee5d7a6fc437dd341ffe438b6e3508189c041d29e04715c5a2dab47d82742"
+          },
+          {
+            "page": 11,
+            "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516"
+          },
+          {
+            "page": 12,
+            "text_object_sha256": "9000e4a36a144617ba346f0b527884222787c680edfc19399ce1aad9f5434f7c"
+          },
+          {
+            "page": 13,
+            "text_object_sha256": "6c4381f5f5ff7b509f03964e7fe9e3601b9a0c34d792a4aa96c0601f48ad0887"
+          },
+          {
+            "page": 14,
+            "text_object_sha256": "898be4d78a4a7901b41bcaf486c4c4898cf016b7f5083b1723419865ea6a9c10"
+          },
+          {
+            "page": 15,
+            "text_object_sha256": "7f72aff00853ba35edbc0f01578aace73922db9b68e4359a638c00ef4b609cd2"
+          },
+          {
+            "page": 16,
+            "text_object_sha256": "9c35c9a68f988e1ac3dedaa27b44ca40ae51011cb7ca40062358a7bda6f05d63"
+          },
+          {
+            "page": 17,
+            "text_object_sha256": "88f0f1821803b8014f6d25cb728ff17ebac3f0d390e1531457d15585c1a54b2c"
+          },
+          {
+            "page": 18,
+            "text_object_sha256": "0cf491f81c3d5c372697b8ba1230bd837aef27b453b07aa7e6a48d73c2f582fe"
+          },
+          {
+            "page": 19,
+            "text_object_sha256": "595bba8acfe7705a04d0aaffc21141614c96f9f9c6eaa0030e42f01b020f06db"
+          },
+          {
+            "page": 20,
+            "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b"
+          },
+          {
+            "page": 21,
+            "text_object_sha256": "9b07f5efe424745dd89faae3314a6b62612fc9e13188e6fce47455e0502beb61"
+          },
+          {
+            "page": 22,
+            "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861"
+          },
+          {
+            "page": 23,
+            "text_object_sha256": "9ef066156a2a9dc2462127c01ec893e3930f74eb9c664a021a38d7393c3e5398"
+          },
+          {
+            "page": 24,
+            "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+          },
+          {
+            "page": 25,
+            "text_object_sha256": "0f33f0c0d8d41a1c3d5b9b84325ed49c4522b87485496afce67166dfc5f9302c"
+          },
+          {
+            "page": 26,
+            "text_object_sha256": "722109ef2f11661bf43991d7a7f667c46c96f9f3f79af55ea1f8a69a79d81f6d"
+          },
+          {
+            "page": 27,
+            "text_object_sha256": "5c4a679c437a57e8a880a3d8b37c0f312ed90af77fd3dd5e1a846c1964a277f1"
+          },
+          {
+            "page": 28,
+            "text_object_sha256": "78df212cdd815b11cec4b9c2b7b8fa47c9f61b9d1b0e0fc893b1e0b452256184"
+          },
+          {
+            "page": 29,
+            "text_object_sha256": "d18cbadd51fdac684ba1768961de808d78e03d66bfb28210967e8f33eb777cc7"
+          },
+          {
+            "page": 30,
+            "text_object_sha256": "29b2264eecbcbb4da5403be8c6558d93b44b3f85419cac673e83a1334dbb43f8"
+          },
+          {
+            "page": 31,
+            "text_object_sha256": "371186ce37e6fa8d153c005baec52c5e271bbf2657ee08626481b05678d7c92e"
+          },
+          {
+            "page": 32,
+            "text_object_sha256": "8c0f98cd4e46485717972f2056123da7968b268a9d1b2ec057eb60e6c82f4161"
+          },
+          {
+            "page": 33,
+            "text_object_sha256": "af4a2f193a767a80f9369d426f2d2ab8d1f865bd19759989a89f51f5abf1349e"
+          }
+        ],
+        "publisher_url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "review_method": "page_bound_review",
+        "reviewed_at": "2026-10-17T23:26:28.833858+00:00",
+        "schema": "trabajo-cerca.document-unit.v1"
+      },
+      "application_details": {
+        "instructions": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nA de Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de Lunes a Viernes en horarios de 09:00 a 14:00 hrs. El sobre\ndeberá indicar en su parte exterior el Nombre del concurso y los Datos\ndel postulante.",
+        "method": "in_person"
+      }
+    },
+    {
+      "idempotency_key": "radar:dfe66c57250c29b5efab22fb",
+      "candidate_id": "dfe66c57250c29b5efab22fb",
+      "source_url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "source": "Municipalidad de Traiguén",
+      "title": "Nutricionista",
+      "company": "Municipalidad de Traiguén",
+      "work_commune": "Traiguén",
+      "source_published_at": "2026-10-01T12:04:54+00:00",
+      "valid_through": "2026-11-02T17:00:00+00:00",
+      "application": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf#page=24",
+      "verified_at": "2026-10-17T23:05:28.287974+00:00",
+      "verification_method": "Municipalidad de Traiguén individual notice + page-bound document review",
+      "document_unit": {
+        "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
+        "document_url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+        "fields": {
+          "application": {
+            "literal": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nA de Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de Lunes a Viernes en horarios de 09:00 a 14:00 hrs. El sobre\ndeberá indicar en su parte exterior el Nombre del concurso y los Datos\ndel postulante.",
+            "page": 24,
+            "reading": "primary",
+            "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+          },
+          "company": {
+            "literal": "La Municipalidad de Traiguén llama a concurso Público de antecedentes",
+            "page": 5,
+            "reading": "primary",
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          },
+          "deadline": {
+            "literal": "Cierre de periodo de recepción de postulaciones | 02 de Noviembre de 2026",
+            "page": 2,
+            "reading": "alternate_readings:0",
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          "deadline_time": {
+            "literal": "a las 14:00 hrs., impostergablemente.",
+            "page": 24,
+            "reading": "primary",
+            "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+          },
+          "scope": {
+            "literal": "APRUEBA BASES PARA LLAMADO A CONCURSO PÚBLICO DE 3 CARGOS",
+            "page": 2,
+            "reading": "primary",
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          "title": {
+            "literal": "2. Perfil de Cargo: Nutricionista",
+            "page": 22,
+            "reading": "primary",
+            "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861"
+          },
+          "workplace": {
+            "literal": "usuarios de la red de salud municipal de Traiguén a lo largo de todo",
+            "page": 22,
+            "reading": "primary",
+            "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861"
+          }
+        },
+        "html_sha256": "4bd94e322cbe05e482b02e8fee467d7af06a3d25dab31349715d0a07f1a02d6f",
+        "key": "5a9b2f149ad1495197bc2bd2b1042faef529a733f079ca2f82cf3ad8f5764092",
+        "page_count": 33,
+        "pages": [
+          {
+            "page": 1,
+            "text_object_sha256": "5d706206b99b881c7504a9d86f17f68067376a79707614d1937d051dcc950429"
+          },
+          {
+            "page": 2,
+            "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+          },
+          {
+            "page": 3,
+            "text_object_sha256": "5801c3ff4e29ab4cf07874c94ea104cc4312cc46d0d06216c9874103dcaef05f"
+          },
+          {
+            "page": 4,
+            "text_object_sha256": "e557adb19a18c809d813b9d3b5efc458a832bcc6eab2733014307cdd37eadd83"
+          },
+          {
+            "page": 5,
+            "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+          },
+          {
+            "page": 6,
+            "text_object_sha256": "01d1780b20a1a788b60db2ae9c375549b39eceac25e40b2157aec96026ac4af8"
+          },
+          {
+            "page": 7,
+            "text_object_sha256": "3e8cd32c3eff8e4d119b19b2d1f735a8788e5ab1018726141879c639d9c36e97"
+          },
+          {
+            "page": 8,
+            "text_object_sha256": "2f7ccb2e87ee2c5278069eb0510caa2206efeab739aa852ab7d49a48c88797bd"
+          },
+          {
+            "page": 9,
+            "text_object_sha256": "05b98c0a871dcf19f29824968f1ee3144ef206ec22c23738052a52d63f16182e"
+          },
+          {
+            "page": 10,
+            "text_object_sha256": "39cee5d7a6fc437dd341ffe438b6e3508189c041d29e04715c5a2dab47d82742"
+          },
+          {
+            "page": 11,
+            "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516"
+          },
+          {
+            "page": 12,
+            "text_object_sha256": "9000e4a36a144617ba346f0b527884222787c680edfc19399ce1aad9f5434f7c"
+          },
+          {
+            "page": 13,
+            "text_object_sha256": "6c4381f5f5ff7b509f03964e7fe9e3601b9a0c34d792a4aa96c0601f48ad0887"
+          },
+          {
+            "page": 14,
+            "text_object_sha256": "898be4d78a4a7901b41bcaf486c4c4898cf016b7f5083b1723419865ea6a9c10"
+          },
+          {
+            "page": 15,
+            "text_object_sha256": "7f72aff00853ba35edbc0f01578aace73922db9b68e4359a638c00ef4b609cd2"
+          },
+          {
+            "page": 16,
+            "text_object_sha256": "9c35c9a68f988e1ac3dedaa27b44ca40ae51011cb7ca40062358a7bda6f05d63"
+          },
+          {
+            "page": 17,
+            "text_object_sha256": "88f0f1821803b8014f6d25cb728ff17ebac3f0d390e1531457d15585c1a54b2c"
+          },
+          {
+            "page": 18,
+            "text_object_sha256": "0cf491f81c3d5c372697b8ba1230bd837aef27b453b07aa7e6a48d73c2f582fe"
+          },
+          {
+            "page": 19,
+            "text_object_sha256": "595bba8acfe7705a04d0aaffc21141614c96f9f9c6eaa0030e42f01b020f06db"
+          },
+          {
+            "page": 20,
+            "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b"
+          },
+          {
+            "page": 21,
+            "text_object_sha256": "9b07f5efe424745dd89faae3314a6b62612fc9e13188e6fce47455e0502beb61"
+          },
+          {
+            "page": 22,
+            "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861"
+          },
+          {
+            "page": 23,
+            "text_object_sha256": "9ef066156a2a9dc2462127c01ec893e3930f74eb9c664a021a38d7393c3e5398"
+          },
+          {
+            "page": 24,
+            "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+          },
+          {
+            "page": 25,
+            "text_object_sha256": "0f33f0c0d8d41a1c3d5b9b84325ed49c4522b87485496afce67166dfc5f9302c"
+          },
+          {
+            "page": 26,
+            "text_object_sha256": "722109ef2f11661bf43991d7a7f667c46c96f9f3f79af55ea1f8a69a79d81f6d"
+          },
+          {
+            "page": 27,
+            "text_object_sha256": "5c4a679c437a57e8a880a3d8b37c0f312ed90af77fd3dd5e1a846c1964a277f1"
+          },
+          {
+            "page": 28,
+            "text_object_sha256": "78df212cdd815b11cec4b9c2b7b8fa47c9f61b9d1b0e0fc893b1e0b452256184"
+          },
+          {
+            "page": 29,
+            "text_object_sha256": "d18cbadd51fdac684ba1768961de808d78e03d66bfb28210967e8f33eb777cc7"
+          },
+          {
+            "page": 30,
+            "text_object_sha256": "29b2264eecbcbb4da5403be8c6558d93b44b3f85419cac673e83a1334dbb43f8"
+          },
+          {
+            "page": 31,
+            "text_object_sha256": "371186ce37e6fa8d153c005baec52c5e271bbf2657ee08626481b05678d7c92e"
+          },
+          {
+            "page": 32,
+            "text_object_sha256": "8c0f98cd4e46485717972f2056123da7968b268a9d1b2ec057eb60e6c82f4161"
+          },
+          {
+            "page": 33,
+            "text_object_sha256": "af4a2f193a767a80f9369d426f2d2ab8d1f865bd19759989a89f51f5abf1349e"
+          }
+        ],
+        "publisher_url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "review_method": "page_bound_review",
+        "reviewed_at": "2026-10-17T23:26:28.833858+00:00",
+        "schema": "trabajo-cerca.document-unit.v1"
+      },
+      "application_details": {
+        "instructions": "El sobre que envié cada postulante deberá ser entregado en la Oficina\nA de Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de Lunes a Viernes en horarios de 09:00 a 14:00 hrs. El sobre\ndeberá indicar en su parte exterior el Nombre del concurso y los Datos\ndel postulante.",
+        "method": "in_person"
+      }
+    }
+  ],
+  "blocked": []
+}

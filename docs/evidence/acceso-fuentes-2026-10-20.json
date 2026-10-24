@@ -1,0 +1,362 @@
+{
+  "data_commit": "769245d05364cd35c50b320fb4c995d3d923f2c9",
+  "checked_at": "2026-10-20T01:59:07.307Z",
+  "sources": [
+    {
+      "source": "Indeed",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "final_url": "https://cl.indeed.com/jobs?fromage=45&l=Angol&q=",
+      "http": 403,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://cl.indeed.com/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "1189922fa6724d518dfa4f636276c1f8cd5397f2fbd7ab997183c4a0fd6391a4"
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "source": "Computrabajo",
+      "url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "final_url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "http": 0,
+      "error": "robots_policy_unavailable",
+      "robots": {
+        "allowed": false,
+        "error": "robots_policy_unavailable",
+        "robotsUrl": "https://cl.computrabajo.com/robots.txt",
+        "robotsHttp": 403
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "source": "LinkedIn",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "final_url": "https://www.linkedin.com/jobs/search/?f_TPR=r3888000&keywords=&location=Angol%2C+Chile",
+      "http": 0,
+      "error": "robots_policy_unavailable",
+      "robots": {
+        "allowed": false,
+        "error": "robots_policy_unavailable",
+        "robotsUrl": "https://www.linkedin.com/robots.txt",
+        "robotsHttp": 200
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "source": "Laborum",
+      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "final_url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "http": 200,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://www.laborum.cl/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "cba0f74978b953cb844f01d6541429f9b4fac7029e17a2435f4848b264243a68"
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false,
+      "decoded_html_sha256": "a6aa2e70ca4c8a710ab155093980178ca19c1da52845e2446e5f8db1a2487827"
+    },
+    {
+      "source": "Opción Empleo",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "final_url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "http": 200,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://www.opcionempleo.cl/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "415c61a727f4e5ef85fff3c4cb06243a1fbc19ef3d4fa46665445113ae641586"
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false,
+      "decoded_html_sha256": "0f181735c0465f2313e18f320b0536b68ce5b912f4d77296a7f19a3899f62d10"
+    },
+    {
+      "source": "ChileTrabajos",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+      "final_url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+      "http": 200,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://www.chiletrabajos.cl/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "b71816de846071c93d709844020571963f13e84a1578824734f3321e8dd3e518"
+      },
+      "candidate_links": [
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-en-terreno-canete-lebu-y-curanilahue-1150000-comision-3916593",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/vendedor-en-terreno-zona-victoria-angol-traiguen-3915323",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3909138",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-call-center-atencion-a-usuario-tarde-y-noche-part-time-30-hrs-3907734",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-call-center-atencion-a-usuarios-part-time-30-hrs-3907738",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-full-time-preunic-angol-3906496",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3906561",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/conductor-3904934",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3900906",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-venta-terreno-angol-y-paillaco-cooperativa-3899786",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/agente-comercial-terreno-araucania-gana-comisiones-recurrentes-3898836",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-venta-en-terreno-angol-importante-cooperativa-3897417",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/auxiliar-estafeta-reemplazo-media-jornada-programa-prm-angol-reg-la-araucan-3894880",
+          "title": ""
+        },
+        {
+          "url": "https://www.chiletrabajos.cl/trabajo/se-busca-contador-a-angol-y-alrededores-3893595",
+          "title": ""
+        }
+      ],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false,
+      "decoded_html_sha256": "50699b493cd2360cd598ba4f6b23e225aa129143dbd659d962490d76bfc701fa"
+    },
+    {
+      "source": "Bolsa Nacional de Empleo",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "final_url": "https://www.bne.gob.cl/ofertas",
+      "http": 200,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://www.bne.gob.cl/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "c84b41268b34a8368e8156b7e196a90c99abd944f0ca0627a211baf88e4c9e2b"
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false,
+      "decoded_html_sha256": "01117c71a5c602371bfef72bc75154567775666a2600bf15fd4a254408676dc0"
+    },
+    {
+      "source": "Servicio Civil · Empleos Públicos",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "final_url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "http": 0,
+      "error": "robots_policy_unavailable",
+      "robots": {
+        "allowed": false,
+        "error": "robots_policy_unavailable",
+        "robotsUrl": "https://www.empleospublicos.cl/robots.txt",
+        "robotsHttp": 403
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "source": "Municipalidad de Negrete · RSS",
+      "url": "https://www.muninegrete.cl/feed/",
+      "final_url": "https://www.muninegrete.cl/feed/",
+      "http": 200,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://www.muninegrete.cl/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "669416eda5ae76c9b40731bcd1590e7eae42f226e4beea7bb85045e5cd826d91"
+      },
+      "candidate_links": [
+        {
+          "url": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+          "title": "¡Disponibles las postulaciones para puestos de venta de &#8220;Todos los Santos&#8221; 2026!"
+        }
+      ],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false,
+      "decoded_html_sha256": "1d6a3f4448bf4c07df1ac6d5ac350914bf0e3d6b25a8aeda144eb1c6e3828168"
+    },
+    {
+      "source": "Municipalidad de Mulchén · RSS",
+      "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "final_url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "http": 500,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://www.munimulchen.cl/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "72d53bffe3c32924b8766cc96917e7d90da568353f1f1ff10d091fdaf45ca1bb"
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "source": "Las Noticias de Malleco · índice",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "final_url": "https://lasnoticiasdemalleco.cl/",
+      "http": 200,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://lasnoticiasdemalleco.cl/robots.txt",
+        "robotsHttp": 200,
+        "robotsSha256": "73d669194aedbd622f70b16e80bb50191d58b55a7f9d7ff90484caaaebabca26"
+      },
+      "candidate_links": [
+        {
+          "url": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+          "title": "Leer más »"
+        }
+      ],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false,
+      "decoded_html_sha256": "98d4481fec123bab3ff4c3658ffdc4f707d373a8e5c10232d5d0f1e459ee987e"
+    },
+    {
+      "source": "WOF Chile · enlace visible en afiche aportado",
+      "url": "https://wof-chile.com/postular/",
+      "final_url": "https://wof-chile.com/postular/",
+      "http": 404,
+      "error": null,
+      "robots": {
+        "allowed": true,
+        "robotsUrl": "https://wof-chile.com/robots.txt",
+        "robotsHttp": 404
+      },
+      "candidate_links": [],
+      "archive_links": [],
+      "verified": 0,
+      "published": 0,
+      "coverage_complete": false
+    }
+  ],
+  "published": 0,
+  "paid_provider_calls": 0,
+  "coverage_complete": false,
+  "run_id": 39356375295
+}

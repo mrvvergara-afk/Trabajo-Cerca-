@@ -1,0 +1,5 @@
+Implementación: conservar transcripción, fecha original y origen; distinguir empresa y faena del difusor; mantener candidatos incompletos en revisión; exigir evidencia literal y plazo para nueva verificación social; leer fuentes mediante lotes y cursor; conservar informes sin tocar el historial de ofertas.
+
+Preflight: únicamente la app `trabajo-cerca-laboratorio-3ojgro`; diffs únicos sobre versión 1791855183582 y módulos nuevos; SDK documentado; ninguna modificación de secretos, cron, objetivos del capturador pagado, notificaciones o rama principal; ninguna invocación manual a recolectores pagados; pruebas puras de evidencia y validación de archivo; diagnóstico de solo lectura conservado; polling hasta estado terminal con revisión de QA y errores.
+
+Las pruebas de backend se ejecutan con registros ficticios identificados como tales. No se insertan ofertas de prueba en la base de la app. La existencia de contactos no prueba por sí sola la vigencia; los avisos con fecha/plazo o ubicación desconocidos quedan pendientes.

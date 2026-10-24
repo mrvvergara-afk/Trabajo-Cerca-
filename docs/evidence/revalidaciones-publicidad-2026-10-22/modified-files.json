@@ -1,0 +1,43 @@
+{
+  "app": [
+    "backend/house-marketing.ts",
+    "backend/image-validation.ts",
+    "backend/index.ts",
+    "backend/offer-retention.ts",
+    "public/house-creatives/README.md",
+    "public/house-creatives/advertisers.svg",
+    "public/house-creatives/employers.svg",
+    "public/house-creatives/explore.svg",
+    "public/house-creatives/inclusion.svg",
+    "public/house-creatives/local-business.svg",
+    "public/house-creatives/professionals.svg",
+    "qa/ad-images-check.mjs",
+    "qa/audit-recheck-inventory.mjs",
+    "qa/capture-sdk-evidence.mjs",
+    "qa/prepare-ad-before.mjs",
+    "qa/run-check.mjs",
+    "qa/sdk-browser-stub.ts",
+    "qa/territorial-ui-check.mjs",
+    "shared/ad-images.ts",
+    "shared/house-ads.ts",
+    "shared/offer-public-state.ts",
+    "src/App.tsx",
+    "src/ad-image.tsx",
+    "src/commercial-admin.tsx",
+    "src/compact-layout.css",
+    "src/compact-presentation.ts",
+    "src/creative-upload.ts",
+    "src/feed-inventory.ts",
+    "src/house-admin.tsx",
+    "src/house-advertising.tsx",
+    "src/territorial-sections.tsx",
+    "tests/marketing-harness.mjs",
+    "tests/revalidation-images.test.mjs",
+    "tests/territorial-ui.test.mjs"
+  ],
+  "repo": [
+    ".github/workflows/radar.yml",
+    "tests/revalidation-images.test.mjs"
+  ],
+  "comparedTo": "2dc9a82d3d90e013b8588f407e2203c541428cd9"
+}

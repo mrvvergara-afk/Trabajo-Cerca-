@@ -1,0 +1,68 @@
+{
+  "schema": "trabajo-cerca.portal-individual-review.v1",
+  "rows": [
+    {
+      "title": "Cajero(a) con experiencia Unimarc Angol",
+      "company": "Supermercados Unimarc",
+      "work_commune": "Angol",
+      "work_location_verified": true,
+      "url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-angol-supermercados-unimarc-1118469523.html",
+      "source": "Laborum",
+      "source_published_at": "2026-10-06T00:00:00.000Z",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "application": "https://www.laborum.cl/empleos/cajero-a-de-recuento-de-valores-ley-de-inclusion-21.015-brinks-chile-1118486145.html",
+      "valid_through": "2027-02-03T00:00:00.000Z",
+      "verification_method": "Laborum individual page + matching JobPosting",
+      "validity_method": "explicit_deadline",
+      "source_url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-angol-supermercados-unimarc-1118469523.html",
+      "rendered_html_sha256": "92731b11c68565c42a886784550f5dfd2e6b703aed30bd147d82d6cfb7001b8e",
+      "captured_at": "2026-10-20T09:37:54.926892+00:00"
+    },
+    {
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
+      "company": "Comercial Fashion´s park s.a.",
+      "work_commune": "Angol",
+      "work_location_verified": true,
+      "url": "https://www.laborum.cl/empleos/cajero-a-asistente-integral--temporada-navidad--angol-comercial-fashions-park-s.a.-1118483484.html",
+      "source": "Laborum",
+      "source_published_at": "2026-10-16T00:00:00.000Z",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "application": "https://www.laborum.cl/empleos/ejecutivoa-de-evaluacion-de-credito-comercial-fashions-park-s.a.-1118485838.html",
+      "valid_through": "2027-02-13T00:00:00.000Z",
+      "verification_method": "Laborum individual page + matching JobPosting",
+      "validity_method": "explicit_deadline",
+      "source_url": "https://www.laborum.cl/empleos/cajero-a-asistente-integral--temporada-navidad--angol-comercial-fashions-park-s.a.-1118483484.html",
+      "rendered_html_sha256": "199f24526ca58fdd658169ba4ab51f45f145b72620895e542df4f43e77f5202c",
+      "captured_at": "2026-10-20T09:37:55.011953+00:00"
+    },
+    {
+      "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria (Terreno) - Angol",
+      "company": "SMU 1",
+      "work_commune": "Angol",
+      "work_location_verified": true,
+      "url": "https://www.laborum.cl/empleos/auditora-relatora-de-calidad-e-inocuidad-alimentaria-terreno-angol-smu-1-1118452584.html",
+      "source": "Laborum",
+      "source_published_at": "2026-10-13T00:00:00.000Z",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "application": "https://www.laborum.cl/empleos/prevencionista-de-riesgos-con-experiencia-en-protocolos-minsal-y-medio-ambiente-cerrillos-manpowergroup-chile-1118483978.html",
+      "valid_through": "2027-02-10T00:00:00.000Z",
+      "verification_method": "Laborum individual page + matching JobPosting",
+      "validity_method": "explicit_deadline",
+      "source_url": "https://www.laborum.cl/empleos/auditora-relatora-de-calidad-e-inocuidad-alimentaria-terreno-angol-smu-1-1118452584.html",
+      "rendered_html_sha256": "a22b7a5dc702fc8fd148ed758fc79069c5a4d6ed74911a95a75163b0e1186bdd",
+      "captured_at": "2026-10-20T09:37:55.097260+00:00"
+    }
+  ],
+  "published": 0,
+  "paid_provider_calls": 0,
+  "list_dates_used_as_original": false,
+  "data_commit": "d5704078106d121a6368338b41f1b64397aae266",
+  "run_id": 39401994040,
+  "publication_review_gate": {
+    "approved": false,
+    "reason": "La primera lectura seleccionó application de otra recomendación. No se entregó ese resultado al receptor. Se conserva como evidencia del fallo; el lote se reconstruye sobre los mismos originales con el parser corregido."
+  }
+}

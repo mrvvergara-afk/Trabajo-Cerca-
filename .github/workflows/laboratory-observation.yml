@@ -1,0 +1,34 @@
+name: Lectura puntual del radar de laboratorio
+on:
+  push:
+    branches: [repair/radar-audit-2026-10-11]
+    paths:
+      - '.github/workflows/laboratory-observation.yml'
+      - '.github/laboratory-observation.json'
+permissions:
+  contents: read
+concurrency:
+  group: laboratory-observation-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  observe:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      contains(github.event.head_commit.message, '[lab observe]') &&
+      github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Leer estado, feed e IDs mediante el SDK
+        run: python scripts/observe_laboratory.py
+      - name: Conservar lectura verificable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-laboratory-observation
+          path: output/
+          retention-days: 7

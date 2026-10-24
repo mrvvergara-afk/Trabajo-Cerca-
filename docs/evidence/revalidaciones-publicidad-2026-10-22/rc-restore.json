@@ -1,0 +1,33 @@
+{
+  "schema": "trabajo-cerca.isolated-sqlite-restore.v1",
+  "checkedAt": "2026-10-23T10:45:17.681Z",
+  "tables": 14,
+  "records": 72,
+  "files": 1,
+  "platformRestoreTested": false,
+  "sourceSha256": "b2e500eb42e1385c8fec7cfe72e725d64f242e84b6dc24fa442e703bbd9b207b",
+  "comparedUnits": 87,
+  "mismatches": 0,
+  "durableReopenTested": true,
+  "payloadsEncryptedAtRest": true,
+  "networkRequests": 0,
+  "productionWrites": 0,
+  "authenticatedFlowsTested": false,
+  "fixturesOnly": true,
+  "source": "representative synthetic app snapshot saved and reread as encrypted file",
+  "recoveredFounderSlots": 20,
+  "standardTrialDaysAfterRecovery": 14,
+  "advertiserCampaignRelationsChecked": 20,
+  "privateOwnerDataRecovered": true,
+  "wrongOwnerRejected": true,
+  "postRestoreEditRenewDelete": true,
+  "jobOriginalDatePreserved": true,
+  "houseAndCommercialMetricsSeparated": true,
+  "automaticNotificationsDisabled": true,
+  "realSdkUsed": false,
+  "limitations": [
+    "No restaura identidades OAuth, secretos ni infraestructura de AppDeploy.",
+    "No es la copia privada del propietario: no se solicitó ni obtuvo su contraseña.",
+    "Valida formato, persistencia SQLite cifrada, relaciones y reglas funcionales recuperadas."
+  ]
+}

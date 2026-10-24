@@ -1,0 +1,1426 @@
+[
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHero"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroGlow"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCopy"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHero h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHero h1 em"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCopy>p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock>svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock>input"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock label"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock label svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock select"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoSearchDock button svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroMeta"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroMeta>span:not(.neoLive)"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroMeta b"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroMeta small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroPhoto"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroPhotoMain"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:1100px)",
+    "removed": [
+      ".neoHeroMiniGallery"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:1100px)",
+    "removed": [
+      ".neoHero"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHero"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHero h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroCopy>p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoSearchDock"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoSearchDock label"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoSearchDock button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoSearchDock button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoSearchDock button svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroMeta"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroMeta b"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroMeta small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:390px)",
+    "removed": [
+      ".neoHero h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroReborn"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroReborn .neoHeroCopy"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroReborn h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroLead"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroVisualReborn"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas button:hover"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas>button>svg:first-child"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas>button>svg:last-child"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas button span"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas button b"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroCtas button small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroInstall"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroAlerts"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "",
+    "removed": [
+      ".neoHeroAlerts>svg:first-child"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHero"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroReborn"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroReborn h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroReborn .neoHeroVisualReborn"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroReborn .neoHeroCopy"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroReborn .neoSourceRibbon"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroReborn .neoSourceRibbon span"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroCopy>p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroCopy>p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoRadarCanvas.neoHeroCompact"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoRadarCanvas.neoHeroCompact .neoFloatJob1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoRadarCanvas.neoHeroCompact .neoOrbitTwo"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoRadarCanvas.neoHeroCompact .neoRadarCore"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroCtas"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/vnext.css",
+    "context": "@media(max-width:720px)",
+    "removed": [
+      ".neoHeroCtas button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".tcQuickActions button:focus-visible"
+    ],
+    "kept": [
+      ".tcSiteMenu summary:focus-visible",
+      ".tcSiteMenuPanel button:focus-visible"
+    ]
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoHero"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoHeroCopy"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoHero h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoHeroLead"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoHeroGlow"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoSearchDock"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoSearchDock>svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoSearchDock input"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoSearchDock label"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoSearchDock select"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoSearchDock button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .neoSearchDock button svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".tcQuickActions"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".tcQuickActions button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".tcQuickActions button svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".tcQuickActions button:nth-child(2)"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcActivityStrip"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcActivityStrip button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcActivityStrip small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell>.tcHouseAd"
+    ],
+    "kept": [
+      ".neoShell>.tcLocalAdvertising"
+    ]
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd img"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoHero"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoHero h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoHeroLead"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock>label"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock>button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock>button svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".tcQuickActions"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".tcQuickActions button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".tcQuickActions button svg"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcActivityStrip"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcActivityStrip button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd img"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell>.tcHouseAd"
+    ],
+    "kept": [
+      ".neoShell>.tcLocalAdvertising"
+    ]
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcActivityStrip button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock input"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock>button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock>label"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcActivityStrip .tcActivityCenterButton"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:430px)",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:430px)",
+    "removed": [
+      ".neoShell .tcHouseAd button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:430px)",
+    "removed": [
+      ".neoShell .tcHouseAd h3",
+      ".neoShell .tcHouseAd p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:430px)",
+    "removed": [
+      ".neoShell .tcHouseAd small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:430px)",
+    "removed": [
+      ".neoShell .tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:360px)",
+    "removed": [
+      ".neoShell .tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd:not(:has(>.tcAdImage))"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd .tcAdImage"
+    ],
+    "kept": [
+      ".tcLocalAdvertising .tcAdImage"
+    ]
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd .tcAdImage"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd>button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd:not(:has(>.tcAdImage))"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:430px)",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoHero"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoHero h1"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoHeroLead"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .neoSearchDock"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".tcQuickActions"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".tcQuickActions button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd .tcAdImage"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcActivityStrip"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcActivityStrip>button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/compact-layout.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcActivityStrip>small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd.tcPremiumAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell>.tcHouseAd.tcPremiumAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcPremiumAd .tcCampaignVisual"
+    ],
+    "kept": [
+      ".tcPremiumCommercial .tcCommercialVisual"
+    ]
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcHouseAd.tcPremiumAd .tcCampaignVisual .tcAdImage"
+    ],
+    "kept": [
+      ".tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage"
+    ]
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcCampaignVisual:has(>.tcAdImage)>.tcCreativeFallback"
+    ],
+    "kept": [
+      ".tcCommercialVisual:has(>.tcAdImage)>.tcCreativeFallback"
+    ]
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(hover:hover)",
+    "removed": [
+      ".neoShell .tcHouseAd.tcPremiumAd:hover"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(hover:hover)",
+    "removed": [
+      ".tcPremiumAd button:hover"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcPremiumAd button:active"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "",
+    "removed": [
+      ".tcPremiumAd button:focus-visible"
+    ],
+    "kept": [
+      ".tcNewsExpand:focus-visible",
+      ".tcResourceMore summary:focus-visible"
+    ]
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcHouseAd.tcPremiumAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(max-width:800px)",
+    "removed": [
+      ".neoShell .tcPremiumAd .tcCampaignCopy button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/premium-presentation.css",
+    "context": "@media(prefers-reduced-motion:reduce)",
+    "removed": [
+      ".tcPremiumAd",
+      ".tcPremiumAd button"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd div"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd small"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd p"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd button"
+    ],
+    "kept": [
+      ".tcHouseAdmin button"
+    ]
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd img"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "",
+    "removed": [
+      ".tcHouseAd button:focus-visible"
+    ],
+    "kept": [
+      ".tcHouseAdmin button:focus-visible"
+    ]
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "@media(max-width:600px)",
+    "removed": [
+      ".tcHouseAd"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "@media(max-width:600px)",
+    "removed": [
+      ".tcHouseAd img"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "@media(max-width:600px)",
+    "removed": [
+      ".tcHouseAd h3"
+    ],
+    "kept": []
+  },
+  {
+    "file": "src/house-advertising.css",
+    "context": "@media(max-width:600px)",
+    "removed": [
+      ".tcHouseAd button"
+    ],
+    "kept": []
+  }
+]

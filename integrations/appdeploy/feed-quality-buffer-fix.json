@@ -1,0 +1,17 @@
+{
+  "baseline_version": "1792412862351",
+  "failed_snapshot": "1792450881799",
+  "validation_error": "Missing explicit Buffer import in backend/public-source-http.ts",
+  "applied_version": "1792450955994",
+  "files": [
+    {
+      "filename": "backend/public-source-http.ts",
+      "diffs": [
+        {
+          "from": "import { publicPublisher, safePublicUrl, samePublicJob } from './public-source-adapters';",
+          "to": "import { Buffer } from 'node:buffer';\nimport { publicPublisher, safePublicUrl, samePublicJob } from './public-source-adapters';"
+        }
+      ]
+    }
+  ]
+}

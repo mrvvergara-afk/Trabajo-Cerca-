@@ -1,0 +1,38 @@
+[
+  {
+    "name": "collect-direct",
+    "cron": "5 0,4,8,12,16,20 * * *",
+    "handler": "v16TerritorialDirectBatchHandler",
+    "timezone": "America/Santiago"
+  },
+  {
+    "name": "collect-web",
+    "cron": "18 1,5,7,9,13,17,21 * * *",
+    "handler": "v17HardWebHandler",
+    "timezone": "America/Santiago"
+  },
+  {
+    "name": "enrich-candidates",
+    "cron": "25 1,5,9,13,17,21 * * *",
+    "handler": "radarEnrichmentWorker",
+    "timezone": "America/Santiago"
+  },
+  {
+    "name": "verify-publish",
+    "cron": "5,20,35,50 * * * *",
+    "handler": "v14VerificationHandler",
+    "timezone": "America/Santiago"
+  },
+  {
+    "name": "social-discover-night",
+    "cron": "21 7,23 * * *",
+    "handler": "socialTerritorialTriggerHandler",
+    "timezone": "America/Santiago"
+  },
+  {
+    "name": "social-ocr-night",
+    "cron": "31 0,3,6,7,8,10,12,14,16,18,20,22 * * *",
+    "handler": "socialTerritorialCollectHandler",
+    "timezone": "America/Santiago"
+  }
+]

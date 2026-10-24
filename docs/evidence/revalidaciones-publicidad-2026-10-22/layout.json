@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-23T10:46:19.247Z",
+  "fixturesOnly": true,
+  "deployed": false,
+  "productionWrites": 0,
+  "views": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "headerHeight": 60,
+      "bottomHeight": 58,
+      "headerScrollsAway": true,
+      "accountAndAdminInsideMenu": true,
+      "professionalEmployerServiceForms": true,
+      "secondaryContentAfterJobs": true,
+      "footerNotCovered": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "headerHeight": 60,
+      "bottomHeight": 58,
+      "headerScrollsAway": true,
+      "accountAndAdminInsideMenu": true,
+      "professionalEmployerServiceForms": true,
+      "secondaryContentAfterJobs": true,
+      "footerNotCovered": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "headerHeight": 60,
+      "bottomHeight": 58,
+      "headerScrollsAway": true,
+      "accountAndAdminInsideMenu": true,
+      "professionalEmployerServiceForms": true,
+      "secondaryContentAfterJobs": true,
+      "footerNotCovered": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "headerHeight": 72,
+      "bottomHeight": 0,
+      "headerScrollsAway": false,
+      "accountAndAdminInsideMenu": true,
+      "professionalEmployerServiceForms": true,
+      "secondaryContentAfterJobs": true,
+      "footerNotCovered": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": []
+    }
+  ]
+}

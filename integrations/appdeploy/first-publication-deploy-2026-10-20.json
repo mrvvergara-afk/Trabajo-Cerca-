@@ -1,0 +1,55 @@
+{
+  "baseline_version": "1792538786429",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_name": "Trabajo Cerca",
+  "app_type": "frontend+backend",
+  "model": "gpt-6",
+  "intent": "Conservar antigüedad pública de ofertas equivalentes al cambiar su registro representante, sin alterar originales ni fechas editoriales",
+  "initiator": "agent",
+  "type": "fix",
+  "files": [
+    {
+      "filename": "backend/public-feed.ts",
+      "diffs": [
+        {
+          "from": "  async put(source:FeedSource, sourceId:string, record:Stored | null) {\n    const key = source + ':' + sourceId;\n    const old = this.pages.find(ref => ref.keys.includes(key));\n    if (old) {\n      const remaining = (await this.entries(old)).filter(entry => entry.key !== key);\n      this.set(old, remaining);\n      if (!remaining.length) this.pages.splice(this.pages.indexOf(old), 1);\n",
+          "to": "  async put(source:FeedSource, sourceId:string, record:Stored | null) {\n    const key = source + ':' + sourceId;\n    const firstTimes:number[]=[];\n    const remember=(value:Stored)=>{\n      const time=Date.parse(String(value.firstPublishedAt || value.createdAt || ''));\n      if (Number.isFinite(time) && time<=this.now) firstTimes.push(time);\n    };\n    const old = this.pages.find(ref => ref.keys.includes(key));\n    if (old) {\n      const current=await this.entries(old);\n      const previous=current.find(entry=>entry.key===key);if (previous) remember(previous.item);\n      const remaining = current.filter(entry => entry.key !== key);\n      this.set(old, remaining);\n      if (!remaining.length) this.pages.splice(this.pages.indexOf(old), 1);\n"
+        },
+        {
+          "from": "    const item = record ? this.projector.project({ ...record, id:sourceId }) : null;\n    if (!item) return;\n    const incomingIdentity = identity(item);\n    if (incomingIdentity) {\n      const duplicates = this.pages.filter(page => page.identities?.includes(incomingIdentity));\n      for (const page of duplicates) {\n        const existing = await this.entries(page);\n",
+          "to": "    const item = record ? this.projector.project({ ...record, id:sourceId }) : null;\n    if (!item) return;\n    remember(item);\n    const incomingIdentity = identity(item);\n    if (incomingIdentity) {\n      const duplicates = this.pages.filter(page => page.identities?.includes(incomingIdentity));\n      for (const page of duplicates) for (const entry of await this.entries(page)) if (identity(entry.item)===incomingIdentity) remember(entry.item);\n      for (const page of duplicates) {\n        const existing = await this.entries(page);\n"
+        },
+        {
+          "from": "          return Number.isFinite(stamp) && stamp <= this.now ? stamp : 0;\n        };\n        if (checked(duplicate.item) > checked(item)) return;\n      }\n      for (const page of duplicates) {\n",
+          "to": "          return Number.isFinite(stamp) && stamp <= this.now ? stamp : 0;\n        };\n        if (checked(duplicate.item) > checked(item)) {\n          if (firstTimes.length) {duplicate.item={...duplicate.item,firstPublishedAt:new Date(Math.min(...firstTimes)).toISOString()};this.set(page,existing);}\n          return;\n        }\n      }\n      for (const page of duplicates) {\n"
+        },
+        {
+          "from": "      }\n    }\n    const entry:Entry = { key, source, sourceId, item, ...(this.projector.revision ? { projectionRevision:this.projector.revision } : {}) };\n    checkSize({ entries:[entry] });\n",
+          "to": "      }\n    }\n    if (firstTimes.length) item.firstPublishedAt=new Date(Math.min(...firstTimes)).toISOString();\n    const entry:Entry = { key, source, sourceId, item, ...(this.projector.revision ? { projectionRevision:this.projector.revision } : {}) };\n    checkSize({ entries:[entry] });\n"
+        }
+      ]
+    },
+    {
+      "filename": "backend/first-publication.ts",
+      "content": "import {publicFeedIdentity} from './public-source-adapters';\n\n// Prior visible SDK records, 20-Oct 11:55:54 UTC. Projection metadata only.\nconst FIRST_KNOWN:Record<string,string>={\n  \"https://www.laborum.cl/empleos/oferta-1118452584.html\": \"2026-10-20T10:05:34.195Z\",\n  \"https://www.laborum.cl/empleos/oferta-1118483484.html\": \"2026-10-20T10:05:34.195Z\",\n  \"https://www.laborum.cl/empleos/oferta-1118469523.html\": \"2026-10-20T10:05:34.195Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3916595\": \"2026-10-20T07:05:28.386Z\",\n  \"https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc\": \"2026-10-19T23:50:35.434Z\",\n  \"https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos\": \"2026-10-18T02:05:32.661Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3902931\": \"2026-10-15T10:18:22.963Z\",\n  \"https://www.bne.gob.cl/oferta/2026-112312\": \"2026-10-13T23:35:36.557Z\",\n  \"https://www.bne.gob.cl/oferta/2026-109726\": \"2026-10-13T19:52:06.176Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3844114\": \"2026-10-12T19:05:30.327Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3911374\": \"2026-10-12T18:05:37.435Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3896966\": \"2026-10-10T15:05:35.616Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3889603\": \"2026-10-10T00:18:20.748Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3904934\": \"2026-10-08T15:05:34.766Z\",\n  \"https://www.linkedin.com/jobs/view/4461259756\": \"2026-10-06T10:41:16.915Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3907378\": \"2026-10-06T10:22:29.439Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3903963\": \"2026-10-06T10:22:29.439Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3904472\": \"2026-10-05T09:10:32.315Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3899926\": \"2026-10-05T09:10:32.313Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3902639\": \"2026-10-05T09:10:32.311Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3895266\": \"2026-10-05T05:20:34.429Z\",\n  \"https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-ingreso-inmediato-apoyo-auxiliar-bodega-armado-abc-angol-proyecto-del-03-octubre-al-30-nov-en-angol-7b9dda2687f57b4f61373e686dcf3405\": \"2026-10-03T15:05:21.290Z\",\n  \"https://www.laborum.cl/empleos/oferta-1118449360.html\": \"2026-10-03T14:56:19.870Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3902541\": \"2026-10-03T14:56:19.870Z\",\n  \"https://munilumaco.cl/index.php/sala-de-prensa/89-oferta-laboral-para-recolectores-y-supervisores\": \"2026-10-03T11:21:19.688Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3900906\": \"2026-10-03T11:19:23.401Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3894880\": \"2026-10-03T11:19:23.401Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3902218\": \"2026-10-03T11:19:18.801Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3907827\": \"2026-10-03T11:19:18.801Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3906496\": \"2026-10-02T17:00:31.317Z\",\n  \"https://www.chiletrabajos.cl/trabajo/3904674\": \"2026-09-30T12:00:00-03:00\",\n  \"https://munimulchen.cl/oferta-laboral-labores-agricolas-y-cuidado-de-parcela\": \"2026-09-30T12:00:00-03:00\"\n};\n\nexport function knownFirstPublication(item:Record<string,unknown>) {\n  const key=typeof item.url==='string' ? publicFeedIdentity(item.url) : null;\n  const prior=key ? FIRST_KNOWN[key] : undefined;\n  const current=String(item.firstPublishedAt || item.createdAt || '');\n  return prior && (!Number.isFinite(Date.parse(current)) || Date.parse(prior)<Date.parse(current)) ? prior : current;\n}\n"
+    },
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "import { publicSourceAdapter, publicJobExclusion } from './public-source-adapters';",
+          "to": "import { publicSourceAdapter, publicJobExclusion } from './public-source-adapters';\nimport { knownFirstPublication } from './first-publication';"
+        },
+        {
+          "from": "return { ...publicRecord(item),revalidationDue:offerRecheckDue(value) };",
+          "to": "return { ...publicRecord(item),firstPublishedAt:knownFirstPublication(value),revalidationDue:offerRecheckDue(value) };"
+        },
+        {
+          "from": "revision:'published-retention-counts-v6'",
+          "to": "revision:'published-retention-counts-v7'",
+          "multiple": true
+        }
+      ]
+    }
+  ]
+}

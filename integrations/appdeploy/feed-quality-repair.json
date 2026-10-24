@@ -1,0 +1,70 @@
+{
+  "schema": "trabajo-cerca.quality-deploy.v1",
+  "baseline_version": "1792412862351",
+  "files": [
+    {
+      "filename": "backend/public-source-adapters.ts",
+      "diffs": [
+        {
+          "from": "\nconst LOCAL_PUBLISHERS:Record<string,string> = {\n  'noticias.angol.cl':'Municipalidad de Angol',\n  'munilumaco.cl':'Municipalidad de Lumaco',\n",
+          "to": "\nconst LOCAL_PUBLISHERS:Record<string,string> = {\n  'ssan.redsalud.gob.cl':'Servicio de Salud Araucanía Norte',\n  'noticias.angol.cl':'Municipalidad de Angol',\n  'munilumaco.cl':'Municipalidad de Lumaco',\n"
+        },
+        {
+          "from": "  return adapter.identityUrl+'\\0document-unit-v1\\0'+documentKey;\n}\n",
+          "to": "  return adapter.identityUrl+'\\0document-unit-v1\\0'+documentKey;\n}\n\n// Feed-only equivalence: preserve ingestion keys and source records unchanged.\nexport function publicFeedIdentity(value:string, documentKey?:string):string | null {\n  if (documentKey!==undefined) return publicOfferIdentity(value,documentKey);\n  const clean=safePublicUrl(value);\n  if (!clean) return null;\n  const url=new URL(clean),host=url.hostname.replace(/^www\\./,'');\n  const path=host==='portal.chiletrabajos.cl'\n    ? url.pathname.match(/^\\/empresa\\/[^/]+\\/trabajo\\/([^/]+)\\/?$/)?.[1]\n    : host==='chiletrabajos.cl' ? url.pathname.match(/^\\/trabajo\\/([^/]+)\\/?$/)?.[1] : null;\n  const id=path?.match(/(?:^|-)(\\d{5,12})$/)?.[1];\n  return id ? 'https://www.chiletrabajos.cl/trabajo/'+id : publicOfferIdentity(clean);\n}\n\nexport function publicJobExclusion(item:Record<string,unknown>):string | null {\n  if (item.kind!=='job_offer') return null;\n  const clean=typeof item.url==='string' ? safePublicUrl(item.url) : null;\n  if (!clean) return 'original_individual_url_missing';\n  const url=new URL(clean),host=url.hostname.replace(/^www\\./,'');\n  if (['chiletrabajos.cl','portal.chiletrabajos.cl'].includes(host) && !publicFeedIdentity(clean)) {\n    return 'portal_index_not_individual_offer';\n  }\n  const publisher=publicPublisher(clean),adapter=publicSourceAdapter(clean);\n  if (publisher && !adapter && !publicFeedIdentity(clean)) return 'portal_index_not_individual_offer';\n  if (adapter?.family==='aggregator') return 'aggregator_requires_primary_source';\n  const title=String(item.title || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();\n  if (/^(?:angol|lumaco|los sauces|traiguen|renaico|nacimiento|negrete|mulchen|collipulli|victoria|puren|ercilla|talca|temuco|pozo almonte|los angeles)\\s*$/.test(title)) {\n    return 'place_name_is_not_a_job_title';\n  }\n  if (Array.isArray(item.workCommunes) && item.workCommunes.includes('Victoria')) {\n    const stripped=title.replace(/victoria\\s*[’'´`]?\\s*s\\s+secret/g,'').replace(/nueva\\s+victoria/g,'');\n    if (stripped!==title && !/\\bvictoria\\b/.test(stripped)) return 'brand_or_remote_site_is_not_victoria_commune';\n  }\n  return null;\n}\n"
+        }
+      ]
+    },
+    {
+      "filename": "backend/public-feed.ts",
+      "diffs": [
+        {
+          "from": "import { db } from '@appdeploy/sdk';\nimport { createHash } from 'node:crypto';\nimport { publicSourceAdapter, publicOfferIdentity } from './public-source-adapters';\n\ntype FeedSource = string;\n",
+          "to": "import { db } from '@appdeploy/sdk';\nimport { createHash } from 'node:crypto';\nimport { publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';\n\ntype FeedSource = string;\n"
+        },
+        {
+          "from": "    return unit ? createHash('sha256').update(unit).digest('hex') : null;\n  }\n  const adapter = publicSourceAdapter(item.url);\n  return adapter && adapter.family!=='aggregator' ? createHash('sha256').update(adapter.identityUrl).digest('hex') : null;\n}\n\n",
+          "to": "    return unit ? createHash('sha256').update(unit).digest('hex') : null;\n  }\n  const equivalent = publicFeedIdentity(item.url);\n  return equivalent ? createHash('sha256').update(equivalent).digest('hex') : null;\n}\n\n"
+        },
+        {
+          "from": "  }\n  const changes = await db.list<Change>('public_feed_changes', { limit:STEP_SIZE });\n  // Reproject one existing page per writer step when eligibility rules change.\n  const policyDue = projector.revision ? current.pages.find(page => page.projectionRevision !== projector.revision) : undefined;\n  const due = policyDue ?? current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];\n  if (!changes.items.length && !due) return readPublicFeedSummary();\n  const wanted = new Map<string, { source:FeedSource; sourceId:string }>();\n  for (const change of changes.items) {\n",
+          "to": "  }\n  const changes = await db.list<Change>('public_feed_changes', { limit:STEP_SIZE });\n  // Reproject whole pages up to forty existing records; the cron cadence is unchanged.\n  const due:PageRef[] = [];\n  let policyKeys=0;\n  if (projector.revision) for (const page of current.pages) {\n    if (page.projectionRevision===projector.revision) continue;\n    if (due.length && policyKeys+page.keys.length>STEP_SIZE) break;\n    due.push(page);policyKeys+=page.keys.length;\n  }\n  if (!due.length) {\n    const expired=current.pages.filter(page => page.refreshAt !== null && page.refreshAt <= now).sort((a,b) => a.refreshAt! - b.refreshAt!)[0];\n    if (expired) due.push(expired);\n  }\n  if (!changes.items.length && !due.length) return readPublicFeedSummary();\n  const wanted = new Map<string, { source:FeedSource; sourceId:string }>();\n  for (const change of changes.items) {\n"
+        },
+        {
+          "from": "    wanted.set(change.source + ':' + change.sourceId, change);\n  }\n  if (due) for (const key of due.keys) {\n    const colon = key.indexOf(':');\n    wanted.set(key, { source:key.slice(0, colon) as FeedSource, sourceId:key.slice(colon + 1) });\n",
+          "to": "    wanted.set(change.source + ':' + change.sourceId, change);\n  }\n  for (const page of due) for (const key of page.keys) {\n    const colon = key.indexOf(':');\n    wanted.set(key, { source:key.slice(0, colon) as FeedSource, sourceId:key.slice(colon + 1) });\n"
+        }
+      ]
+    },
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "import { publicSourceAdapter } from './public-source-adapters';",
+          "to": "import { publicSourceAdapter, publicJobExclusion } from './public-source-adapters';"
+        },
+        {
+          "from": "  if (item.kind === 'job_offer') {\n    if (!item.verified || item.review) return null;\n    if (!item.workCommunes",
+          "to": "  if (item.kind === 'job_offer') {\n    if (!item.verified || item.review) return null;\n    if (publicJobExclusion(value)) return null;\n    if (!item.workCommunes"
+        },
+        {
+          "from": "revision:'public-source-adapters-45-days-v2', project:projectFeedListing",
+          "to": "revision:'public-individual-place-quality-v3', project:projectFeedListing"
+        },
+        {
+          "from": "  const safetyEvidence = [record.title, record.company, record.note, record.source, record.sourceDomain, record.url].filter(Boolean).join(' ');",
+          "to": "  const qualityReason=publicJobExclusion(record as unknown as Record<string,unknown>);\n  if (qualityReason) return pending('Procedencia o ubicación por revisar: '+qualityReason,'Validación de fuente individual');\n  const safetyEvidence = [record.title, record.company, record.note, record.source, record.sourceDomain, record.url].filter(Boolean).join(' ');"
+        }
+      ]
+    },
+    {
+      "filename": "tests/tests.json",
+      "diffs": [
+        {
+          "from": "  {\n    \"name\": \"El inventario existente se puede consultar después de recargar\",\n    \"sanity\": true,\n    \"viewport\": \"desktop\",\n    \"covers\": [\n      \"GET /api/listings\",\n      \"lectura del feed existente\",\n      \"conservación del inventario\",\n      \"recarga\",\n      \"paginación por versión\",\n      \"conservación del feed durante reconstrucción\",\n      \"deduplicación de ofertas individuales de Chiletrabajos\",\n      \"cargos distintos de un mismo documento municipal\",\n      \"conservación de identidad documental al recargar\"\n    ],\n    \"description\": \"Comprueba únicamente la lectura pública existente; no publica avisos ni activa motores o proveedores.\",\n    \"qa_faults\": [\n      {\n        \"method\": \"POST\",\n        \"path\": \"/api/analytics\",\n        \"status\": 503,\n        \"body_json\": {\n          \"error\": \"QA: envío externo de analítica bloqueado\"\n        }\n      },\n      {\n        \"method\": \"GET\",\n        \"path\": \"/api/growth/sponsor\",\n        \"status\": 503,\n        \"body_json\": {\n          \"error\": \"QA: consulta comercial bloqueada\"\n        }\n      }\n    ],\n    \"steps\": [\n      \"Abrir la raíz de Trabajo Cerca\",\n      \"Revisar el listado de empleos y su estado de carga\",\n      \"Recargar la página\",\n      \"Si el inventario ofrece más resultados, continuar la paginación hasta una segunda página; si el inventario guardado no tiene una segunda página, dejar constancia de que esa precondición no existe, sin crear avisos ni ejecutar motores\",\n      \"Revisar nuevamente el listado\",\n      \"Si el inventario contiene los cargos documentales de Traiguén, comprobar que Químico Farmacéutico, Ingeniero en Prevención de Riesgos y Nutricionista son tarjetas distintas, abrir sus detalles y recargar; si todavía no han llegado, registrar esa precondición sin crear avisos ni iniciar motores.\"\n    ],\n    \"expected\": \"El Radar termina la carga y permite consultar el inventario guardado. Si no hay ofertas publicables muestra su estado vacío explicativo; si existen, conserva sus tarjetas al recargar. No aparece el error No pudimos cargar el Radar central. Si hay una segunda página, se consulta sin errores ni duplicación de tarjetas y la recarga vuelve al inicio del feed. Al cargar más, las tarjetas de una misma oferta individual de Chiletrabajos no se repiten por variantes de su URL. Si los tres cargos documentales de Traiguén ya forman parte del inventario, permanecen separados al recargar y sus detalles conservan la fuente oficial y las instrucciones presenciales. La ausencia de esa precondición no confirma su publicación. Si existe Cargar más, el contador inicial indica ofertas cargadas y aclara que hay más avisos; no presenta esa página como el total del inventario.\"\n  }",
+          "to": "  {\n    \"name\": \"El inventario existente se puede consultar después de recargar\",\n    \"sanity\": true,\n    \"viewport\": \"desktop\",\n    \"covers\": [\n      \"GET /api/listings\",\n      \"lectura del feed existente\",\n      \"conservación del inventario\",\n      \"recarga\",\n      \"paginación por versión\",\n      \"conservación del feed durante reconstrucción\",\n      \"deduplicación de ofertas individuales de Chiletrabajos\",\n      \"cargos distintos de un mismo documento municipal\",\n      \"conservación de identidad documental al recargar\",\n      \"exclusión de páginas de búsqueda heredadas\",\n      \"deduplicación de portal empresarial y URL individual\",\n      \"ubicación real separada de marcas y faenas remotas\"\n    ],\n    \"description\": \"Comprueba únicamente la lectura pública existente; no publica avisos ni activa motores o proveedores.\",\n    \"qa_faults\": [\n      {\n        \"method\": \"POST\",\n        \"path\": \"/api/analytics\",\n        \"status\": 503,\n        \"body_json\": {\n          \"error\": \"QA: envío externo de analítica bloqueado\"\n        }\n      },\n      {\n        \"method\": \"GET\",\n        \"path\": \"/api/growth/sponsor\",\n        \"status\": 503,\n        \"body_json\": {\n          \"error\": \"QA: consulta comercial bloqueada\"\n        }\n      }\n    ],\n    \"steps\": [\n      \"Abrir la raíz de Trabajo Cerca\",\n      \"Revisar el listado de empleos y su estado de carga\",\n      \"Recargar la página\",\n      \"Si el inventario ofrece más resultados, continuar la paginación hasta una segunda página; si el inventario guardado no tiene una segunda página, dejar constancia de que esa precondición no existe, sin crear avisos ni ejecutar motores\",\n      \"Revisar nuevamente el listado\",\n      \"Si el inventario contiene los cargos documentales de Traiguén, comprobar que Químico Farmacéutico, Ingeniero en Prevención de Riesgos y Nutricionista son tarjetas distintas, abrir sus detalles y recargar; si todavía no han llegado, registrar esa precondición sin crear avisos ni iniciar motores.\"\n    ],\n    \"expected\": \"El Radar termina la carga y permite consultar el inventario guardado. Si no hay ofertas publicables muestra su estado vacío explicativo; si existen, conserva sus tarjetas al recargar. No aparece el error No pudimos cargar el Radar central. Si hay una segunda página, se consulta sin errores ni duplicación de tarjetas y la recarga vuelve al inicio del feed. Al cargar más, las tarjetas de una misma oferta individual de Chiletrabajos no se repiten por variantes de su URL. Si los tres cargos documentales de Traiguén ya forman parte del inventario, permanecen separados al recargar y sus detalles conservan la fuente oficial y las instrucciones presenciales. La ausencia de esa precondición no confirma su publicación. Si existe Cargar más, el contador inicial indica ofertas cargadas y aclara que hay más avisos; no presenta esa página como el total del inventario. Las páginas de búsqueda por ciudad no aparecen como cargos; las variantes de un mismo aviso TENS representan una sola tarjeta y los tres cargos revisados de Traiguén conservan identidades separadas. Victoria's Secret o faena Nueva Victoria no acreditan por sí solas trabajo en la comuna de Victoria.\"\n  }"
+        }
+      ]
+    }
+  ]
+}

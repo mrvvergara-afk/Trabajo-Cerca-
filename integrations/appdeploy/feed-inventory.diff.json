@@ -1,0 +1,21 @@
+{
+  "filename": "src/App.tsx",
+  "diffs": [
+    {
+      "from": "import { api, auth, image as appImage, notifications } from '@appdeploy/client';",
+      "to": "import { api, auth, image as appImage, notifications } from '@appdeploy/client';\nimport { readFeedInventory } from './feed-inventory';"
+    },
+    {
+      "from": "    visibleIds:string[]; feedReadError:string | null; checkedAt:string;",
+      "to": "    visibleIds:string[]; visibleItems:Record<string,unknown>[]; feedReadComplete:boolean; feedPagesRead:number;\n    feedReadError:string | null; checkedAt:string;"
+    },
+    {
+      "from": "          const visibleIds:string[] = [];\n          let cursor:string | undefined;\n          let feedReadError:string | null = null;\n          try {\n            for (let page=0; page<5; page++) {\n              const suffix = cursor ? '&cursor=' + encodeURIComponent(cursor) : '';\n              const response = await api.get('/api/listings?fresh=1' + suffix);\n              visibleIds.push(...response.data.items.map((item:{ id:string }) => item.id));\n              const expected = external.data.receipts.map((item:{ publishedId:string | null }) => item.publishedId).filter(Boolean);\n              if (!response.data.nextCursor || expected.every((id:string) => visibleIds.includes(id))) break;\n              cursor = response.data.nextCursor;\n            }\n          } catch { feedReadError = 'No se pudo comprobar la lectura del feed.'; }\n",
+      "to": "          const inventory=await readFeedInventory(path => api.get(path));\n          const visibleIds=inventory.items.map(item=>item.id);\n          const feedReadError=inventory.error;\n"
+    },
+    {
+      "from": "          if (active) setProof({ ingestion:external.data, feed:feed.data, visibleIds, feedReadError,",
+      "to": "          if (active) setProof({ ingestion:external.data, feed:feed.data, visibleIds, feedReadError,\n            visibleItems:inventory.items,feedReadComplete:inventory.complete,feedPagesRead:inventory.pagesRead,"
+    }
+  ]
+}

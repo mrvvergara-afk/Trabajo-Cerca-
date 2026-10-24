@@ -1,0 +1,169 @@
+{
+  "before": {
+    "checked_at": "2026-10-17T22:03:58.027467+00:00",
+    "configured_seed": "https://www.munimulchen.cl/?s=oferta+laboral",
+    "production_modified": false,
+    "published": 0,
+    "configured_seed_capture": {
+      "status": 200,
+      "bytes": 94052,
+      "sha256": "a325914385e619941ec91a3f4869fdadd3fccab9e432a8e54ffc16f16ba3fcff",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "candidates": [
+        {
+          "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+          "title": "Bases de Postulación Feria Navideña 2025",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+          "title": "Concurso Público – Abogado Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+          "title": "Concurso Público – Abogado para Dispositivo Centro de las Mujeres Mulchén",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+          "title": "Concurso Público – Profesional Equipo Previene",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-psicologo-omil/",
+          "title": "Concurso Público – Psicólogo OMIL",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/",
+          "title": "CONCURSO PÚBLICO 01 Cargo, Grado 8º Planta Directivos, Director de Obras Municipales",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/",
+          "title": "Llamado a Concurso para proveer cargo de Director de Control",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-3/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/",
+          "title": "LLAMADO A CONCURSO PUBLICO",
+          "kind": "page"
+        },
+        {
+          "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/",
+          "title": "Llamado a Concurso Público – Directivo Grado 6 E.M.R. (Dirección de Control Interno)",
+          "kind": "page"
+        }
+      ]
+    },
+    "archived_index_replay": {
+      "input_kind": "original_html_downloaded_this_session",
+      "discovered_candidates": 7,
+      "queued_notice_urls": [
+        "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+        "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+        "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+        "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
+        "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+        "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/"
+      ],
+      "queued_media_urls": [],
+      "coverage_complete": false
+    }
+  },
+  "after": {
+    "checked_at": "2026-10-17T22:06:03.806338+00:00",
+    "source_url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+    "input_kind": "replay_of_original_html_downloaded_this_session",
+    "source_candidate_limit": 12,
+    "queued_notice_urls": [
+      "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+      "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+      "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+      "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
+      "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+      "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/",
+      "https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/"
+    ],
+    "coverage_complete": false,
+    "original_date_confirmed": false,
+    "published": 0,
+    "production_modified": false
+  },
+  "captures": {
+    "records": [
+      {
+        "url": "https://www.munimulchen.cl/robots.txt",
+        "final_url": "https://www.munimulchen.cl/robots.txt",
+        "file": "robots.txt",
+        "status": 200,
+        "mime": "text/plain",
+        "bytes": 119,
+        "sha256": "72d53bffe3c32924b8766cc96917e7d90da568353f1f1ff10d091fdaf45ca1bb",
+        "captured_at": "2026-10-17T22:02:25.164763+00:00"
+      },
+      {
+        "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+        "final_url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+        "file": "listado.html",
+        "status": 200,
+        "mime": "text/html",
+        "bytes": 48324,
+        "sha256": "5521a0101485eeb56788e147934909682f8ff8d3e59fa62e2301519a04197021",
+        "captured_at": "2026-10-17T22:02:26.452556+00:00"
+      },
+      {
+        "url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+        "final_url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+        "file": "aviso.html",
+        "status": 200,
+        "mime": "text/html",
+        "bytes": 43942,
+        "sha256": "b0e9efd9bb8d0c61772c61b57e67d08efce67849bf291544dad86530455ad4f0",
+        "captured_at": "2026-10-17T22:02:26.861961+00:00"
+      },
+      {
+        "url": "https://www.munimulchen.cl/wp-content/uploads/2026/07/Oferta-Laboral.png",
+        "final_url": "https://www.munimulchen.cl/wp-content/uploads/2026/07/Oferta-Laboral.png",
+        "file": "imagen.png",
+        "status": 200,
+        "mime": "image/png",
+        "bytes": 349876,
+        "sha256": "f9b7f7a41c658cb87b0af7d43725ffa62b7ebbb1c51f53da22f0b905c5f0c94e",
+        "captured_at": "2026-10-17T22:02:27.609952+00:00"
+      }
+    ],
+    "production_modified": false,
+    "paid_provider_calls": 0
+  },
+  "generic_image_ocr": {
+    "text": "~~ Nueva\nOferta Laboral\nGiz\nWAN ig.’?\nQt, .\n. o",
+    "textTruncated": false,
+    "textOriginalLength": 47,
+    "mean_confidence": 37.4,
+    "language": "eng",
+    "engine": "tesseract-local",
+    "parser": "tesseract-tsv-literal-v2"
+  },
+  "regression_checks": {
+    "passed": 50,
+    "production_modified": false,
+    "published": 0
+  }
+}

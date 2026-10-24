@@ -1,0 +1,183 @@
+{
+  "schema": "trabajo-cerca.radar-v2-pilot.v1",
+  "territories": [
+    "Angol",
+    "Lumaco",
+    "Los Sauces",
+    "Traiguén",
+    "Renaico",
+    "Nacimiento",
+    "Negrete",
+    "Mulchén",
+    "Collipulli",
+    "Mininco"
+  ],
+  "paid_providers_enabled": false,
+  "publish_enabled": false,
+  "sources": [
+    {
+      "key": "renaico-web",
+      "name": "Municipalidad de Renaico",
+      "kind": "web",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "family": "municipal",
+      "territory": "Renaico",
+      "identity_evidence": "Sitio municipal primario revisado en la auditoría.",
+      "page_type": "directory"
+    },
+    {
+      "key": "negrete-omil",
+      "name": "OMIL Negrete",
+      "kind": "web",
+      "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+      "family": "municipal",
+      "territory": "Negrete",
+      "identity_evidence": "Página dedicada a OMIL en el sitio municipal primario.",
+      "page_type": "directory"
+    },
+    {
+      "key": "renaico-facebook",
+      "name": "Municipalidad de Renaico · Facebook",
+      "kind": "social",
+      "url": "https://www.facebook.com/municipalidadrenaico",
+      "family": "municipal",
+      "territory": "Renaico",
+      "identity_evidence": "Enlace literal del sitio municipal; no se presupone perfil dedicado OMIL."
+    },
+    {
+      "key": "negrete-facebook",
+      "name": "Municipalidad de Negrete · Facebook",
+      "kind": "social",
+      "url": "https://www.facebook.com/MuniNegreteCL",
+      "family": "municipal",
+      "territory": "Negrete",
+      "identity_evidence": "Enlace literal del sitio municipal; no se presupone perfil dedicado OMIL."
+    },
+    {
+      "key": "radio-barnachea",
+      "name": "Radio Barnachea",
+      "kind": "web",
+      "url": "https://radiobarnachea.cl/",
+      "family": "media",
+      "territory": "Nacimiento / Negrete",
+      "identity_evidence": "La página primaria se identifica como radio de Nacimiento con cobertura de Negrete; acceso por comprobar en el piloto.",
+      "page_type": "directory"
+    },
+    {
+      "key": "cmpc-empleo",
+      "name": "CMPC · portal de empleo",
+      "kind": "web",
+      "url": "https://cmpc.trabajando.cl/",
+      "family": "employer",
+      "territory": "regional; lugar real de cada oferta pendiente",
+      "identity_evidence": "Portal enlazado por https://www.cmpc.com/trabaja-con-nosotros/. No se atribuye trabajo en las comunas del piloto por el nombre de la empresa.",
+      "page_type": "directory"
+    },
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "family": "municipal",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "family": "municipal",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "family": "municipal",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "family": "municipal",
+      "url": "https://mtraiguen.cl/",
+      "territory": "Traiguén",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "La portada municipal enlaza convocatorias de Salud Municipal (01/10/2026) y PRLAC (14/09/2026), comprobadas en HTML original el 17/10/2026. Sus bases y vigencia se verifican por separado."
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "family": "municipal",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "family": "municipal",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+      "territory": "Mulchén",
+      "kind": "web",
+      "page_type": "directory",
+      "candidate_limit": 12,
+      "identity_evidence": "Listado laboral dedicado del sitio municipal, con siete enlaces recuperados del HTML original el 17/10/2026; figuraban cerrados y sin fecha original confirmada. No acredita vigencia."
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "family": "municipal",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado."
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "family": "media",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página pública con título MALLECO 7, leída el 2026-10-12 (Chile).",
+      "kind": "web",
+      "page_type": "directory"
+    },
+    {
+      "key": "radio-viaducto",
+      "name": "Radio Viaducto",
+      "family": "media",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "identity_evidence": "Página pública con título Radio Viaducto Collipulli Noticias; lectura directa el 2026-10-13.",
+      "kind": "web",
+      "page_type": "directory"
+    },
+    {
+      "key": "las-noticias-malleco",
+      "name": "Las Noticias de Malleco",
+      "family": "media",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página propia con título del diario de la Provincia Región de la Araucanía; lectura directa el 2026-10-13.",
+      "kind": "web",
+      "page_type": "directory"
+    }
+  ],
+  "independent_reference": [],
+  "reference_status": "no_independent_recent_positive_reference_confirmed",
+  "observation_days_required": 7,
+  "automatic_collection_enabled": false,
+  "social_capture_limit": 2
+}

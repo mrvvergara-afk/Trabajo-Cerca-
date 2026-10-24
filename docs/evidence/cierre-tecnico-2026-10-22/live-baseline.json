@@ -1,0 +1,235 @@
+{
+  "inventory": {
+    "checkedAt": "2026-10-22T17:15:10.118712+00:00",
+    "source": "public SDK read of deployed1792676091153, not candidate write test",
+    "total": 57,
+    "jobTyped": 56,
+    "revalidationDue": 49,
+    "portalNamedEmployerCandidates": [
+      {
+        "id": "2acda2c7-e657-4656-860e-1645badef65b",
+        "company": "ChileTrabajos · Victoria"
+      },
+      {
+        "id": "02c3f426-3500-42ee-8ac2-f5a2a6733c48",
+        "company": "ChileTrabajos · Victoria"
+      },
+      {
+        "id": "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+        "company": "ChileTrabajos · Victoria"
+      },
+      {
+        "id": "a4478588-785e-4545-824e-e94de6d8916a",
+        "company": "ChileTrabajos · Ercilla"
+      },
+      {
+        "id": "33ddef7b-e071-480a-86fb-79db4f966de7",
+        "company": "cl.computrabajo.com"
+      },
+      {
+        "id": "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+        "company": "laborum.cl"
+      },
+      {
+        "id": "40b91274-90ed-4742-bfe6-f197949c7914",
+        "company": "chiletrabajos.cl"
+      },
+      {
+        "id": "13b09236-bb04-42b1-a010-b7743d25c5d4",
+        "company": "ChileTrabajos · Angol"
+      },
+      {
+        "id": "16e43079-56d9-4ac1-81a4-3993af7fecd4",
+        "company": "ChileTrabajos · Los Ángeles"
+      },
+      {
+        "id": "2dbb852b-abd3-45c0-83f2-6044155916c4",
+        "company": "ChileTrabajos · Los Ángeles"
+      },
+      {
+        "id": "13a8bb11-2ea3-4f70-a265-b8e3079a19c9",
+        "company": "chiletrabajos.cl"
+      }
+    ],
+    "cm": [
+      {
+        "id": "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+        "title": "Ingeniero/a Procesos y Excelencia Sr",
+        "revalidationDue": true
+      }
+    ],
+    "inventoryNewPublicationsByThisTask": 0,
+    "documentRevalidation": {
+      "schema": "trabajo-cerca.document-revalidation-status.v1",
+      "readOnly": true,
+      "providerCalls": 0,
+      "intervalHours": 12,
+      "documents": [
+        {
+          "key": "traiguen-salud-2026-10",
+          "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "originalPublishedAt": "2026-10-01T12:04:54+00:00",
+          "approvedJobs": 3,
+          "publishedIds": [
+            "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+            "8b75b282-d838-45bc-9309-d10874aae023",
+            "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+          ],
+          "visibleIds": [
+            "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+            "8b75b282-d838-45bc-9309-d10874aae023",
+            "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+          ],
+          "status": "revalidated",
+          "lastCheckAt": "2026-10-22T13:35:37.173Z",
+          "lastSuccessAt": "2026-10-22T13:35:37.173Z",
+          "nextCheckAt": "2026-10-23T01:35:37.173Z",
+          "reason": null,
+          "registrationPending": false
+        }
+      ],
+      "feedManifestId": "b8101cb9-c7e7-49e3-8e58-598683bb04e4",
+      "newOffersDiscovered": 0,
+      "socialCaptureProven": false
+    }
+  },
+  "runtime": {
+    "checked_at": "2026-10-22T17:15:12.809915+00:00",
+    "http_status": 200,
+    "headers": {
+      "content-security-policy": null,
+      "strict-transport-security": null,
+      "x-frame-options": null,
+      "x-content-type-options": null,
+      "referrer-policy": null,
+      "permissions-policy": null,
+      "cache-control": "no-cache, no-store, must-revalidate"
+    },
+    "resources": {
+      "manifest.webmanifest": {
+        "status": 200,
+        "mime": "application/manifest+json",
+        "bytes": 1195
+      },
+      "sw.js": {
+        "status": 200,
+        "mime": "text/javascript",
+        "bytes": 2742
+      },
+      "icon-192.png": {
+        "status": 200,
+        "mime": "image/png",
+        "bytes": 1868
+      },
+      "icon-512.png": {
+        "status": 200,
+        "mime": "image/png",
+        "bytes": 5498
+      },
+      "icon-maskable-512.png": {
+        "status": 200,
+        "mime": "image/png",
+        "bytes": 5175
+      },
+      "robots.txt": {
+        "status": 200,
+        "mime": "text/plain; charset=utf-8",
+        "bytes": 68
+      },
+      "sitemap.xml": {
+        "status": 403,
+        "mime": "application/xml",
+        "bytes": 111
+      }
+    },
+    "accessibility_sample": {
+      "unnamedButtons": [],
+      "missingImageAlt": 0,
+      "horizontalOverflow": false,
+      "title": "Trabajo Cerca · Oportunidades locales",
+      "description": "Encuentra oportunidades laborales en Malleco y Biobío norte. Explora empleos por comuna, requisitos y formas de postular en Trabajo Cerca.",
+      "canonical": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+      "serviceWorkerAvailable": true,
+      "navigation": [
+        {
+          "domContentLoadedMs": 248.20000000001164,
+          "responseMs": 154.70000000001164
+        }
+      ]
+    },
+    "privacy_text": "TRABAJO CERCA · PILOTO\nPrivacidad y tus datos\n\nTrabajo Cerca usa únicamente la información necesaria para conectar personas con trabajo y proteger las publicaciones.\n\nQué datos tratamos\n\nSi publicas directamente, usamos los datos que ingresas para mostrar la publicación y facilitar el contacto. No solicitamos CV, RUT, dirección exacta, claves, datos bancarios ni datos sensibles.\n\nContacto protegido\n\nEl teléfono o WhatsApp no forma parte del listado público masivo y se revela solamente mediante una acción explícita.\n\nAvisos personalizados\n\nSi activas notificaciones, el sistema requiere identificar el dispositivo/usuario una vez y guarda únicamente un identificador técnico, las comunas y los cargos u oficios que elijas. No usamos esta función para crear perfiles publicitarios personales.\n\nTus derechos\n\nPara consultas, correcciones o solicitudes sobre tus datos puedes escribir a trabajocerca.malleco.biobio@gmail.com. La identificación legal completa del responsable se incorporará antes del lanzamiento público.",
+    "privacy_modal_focus_on_open_inside": true,
+    "privacy_modal_escape_closes": true,
+    "scope": "passive_public_browser_chromium_mobile",
+    "dangerous_operational_routes_called": false,
+    "forms_submitted": 0,
+    "collector_calls": 0
+  },
+  "security": {
+    "checked_at": "2026-10-22T17:15:19.346067+00:00",
+    "sdk_security_proof": {
+      "policy": {
+        "revision": "security-containment-v2",
+        "paidProviders": false,
+        "remoteAi": false,
+        "externalAnalytics": false,
+        "manualOperations": false
+      },
+      "results": [
+        {
+          "method": "POST",
+          "path": "/api/ops/radar-external/consume",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/ops/free-public-sources/run",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/radar/social-run",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/radar/social-collect",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "GET",
+          "path": "/api/radar/run-territorial-now",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/radar/photo-tip",
+          "status": 503,
+          "message": "Request failed with status code 503"
+        },
+        {
+          "method": "POST",
+          "path": "/api/admin/backup/page",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        }
+      ],
+      "analytics": {
+        "received": false,
+        "disabled": true,
+        "reason": "security_policy_disabled"
+      },
+      "checkedAt": "2026-10-22T17:15:17.926Z"
+    },
+    "photo_upload_disabled_with_explanation": true,
+    "existing_cards_remain_available": true,
+    "collector_calls": 0,
+    "remote_ocr_calls": 0,
+    "new_offers_published": 0
+  }
+}

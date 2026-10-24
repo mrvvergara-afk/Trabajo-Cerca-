@@ -1,0 +1,28 @@
+.tcAdminActions { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+.tcAdminActions button, .tcAdminShortcut { min-height: 44px; padding: 10px 16px; border: 1px solid #b8c9c2; border-radius: 12px; background: #fff; color: #06231c; font: inherit; font-size: 14px; font-weight: 650; cursor: pointer; }
+.tcAdminActions button:first-child, .tcAdminShortcut { background: #06231c; color: #fff; }
+.tcAdminActions button:disabled, .tcAdminShortcut:disabled { opacity: .6; cursor: wait; }
+.tcAdminActions button:focus-visible, .tcAdminShortcut:focus-visible { outline: 3px solid #66a80f; outline-offset: 3px; }
+.tcAdminAccess p { overflow-wrap: anywhere; }
+@media (max-width: 600px) { .tcAdminActions { flex-direction: column; } .tcAdminActions button { width: 100%; } .tcAdminShortcut { padding: 8px 10px; font-size: 12px; } }
+
+.tcAccountControl { position: relative; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.tcAccountButton { min-height: 44px; padding: 10px 14px; background: #fff; color: #06231c; border: 1px solid #dce5de; border-radius: 24px; font: inherit; font-size: 13px; font-weight: 650; cursor: pointer; }
+.tcAccountMenu { position: absolute; top: calc(100% + 12px); right: 0; width: min(300px, calc(100vw - 32px)); padding: 20px; border: 1px solid #dce5de; border-radius: 18px; background: #fff; box-shadow: 0 16px 40px #06231c26; z-index: 100; color: #163d32; }
+.tcAccountMenu b { font-size: 16px; }
+.tcAccountMenu p { margin: 10px 0; font-size: 13px; line-height: 1.6; color: #526b5f; white-space: normal; }
+.tcAccountMenu button { display: block; min-height: 44px; width: 100%; padding: 10px 14px; margin-top: 8px; font: inherit; font-size: 14px; background: #fff; color: #06231c; border: 1px solid #b8c9c2; border-radius: 10px; cursor: pointer; }
+.tcAccountMenu button:first-of-type { background: #06231c; color: #fff; }
+.tcAccountFeedback { position: absolute; top: 100%; right: 0; background: white; padding: 8px; font-size: 12px; max-width: 250px; }
+.tcAccountButton:focus-visible, .tcAccountMenu button:focus-visible { outline: 3px solid #66a80f; outline-offset: 3px; }
+@media (max-width: 700px) { .tcAccountButton { padding: 8px 10px; font-size: 12px; } .tcAccountControl { flex-wrap: wrap; justify-content: flex-end; } }
+
+@media (max-width: 720px) {
+  .neoShell .neoTopbar { grid-template-columns: minmax(0, 1fr); height: auto; min-height: 64px; padding: 12px 16px; gap: 10px; }
+  .neoShell .neoTopActions { justify-self: stretch; flex-wrap: wrap; gap: 8px; }
+  .neoShell .tcAccountControl { flex-wrap: nowrap; position: static; }
+  .neoShell .tcAccountMenu { top: calc(100% + 8px); left: 16px; right: 16px; width: auto; }
+  .appShell .topbar { height: auto; min-height: 62px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; gap: 10px; }
+  .appShell .topbarActions { flex-wrap: wrap; }
+}
+

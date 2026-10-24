@@ -1,0 +1,13 @@
+{
+  "headline": "Ingresa a Trabajo Cerca",
+  "subtitle": "Accede a tu cuenta o configura tus avisos. La administración requiere autorización adicional.",
+  "style": {
+    "mode": "light",
+    "accentColor": "#06231c",
+    "backgroundColor": "#f8faf5",
+    "panelColor": "#ffffff",
+    "textColor": "#06231c",
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "borderRadius": 20
+  }
+}

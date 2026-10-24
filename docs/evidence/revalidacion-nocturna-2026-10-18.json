@@ -1,0 +1,143 @@
+{
+  "schema": "trabajo-cerca.night-revalidation-release.v1",
+  "app_url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+  "applied_version": "1792326173643",
+  "source_branch": "repair/mulchen-captura-2026-10-17",
+  "source_commit": "81283a5518203139fbd8965b8fdec58257a506d3",
+  "proof_run": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/39127690563",
+  "proof_status": "success",
+  "original_failed_run": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/39127569539",
+  "original_failure": "Browser startup did not expose a tab in the six-second startup window; extended bounded startup wait, diagnostic capture and independent document check succeeded.",
+  "document_revalidation": {
+    "schema": "trabajo-cerca.actual-document-revalidation-proof.v1",
+    "checked_at": "2026-10-18T12:32:47.666455+00:00",
+    "revalidated_at": "2026-10-18T12:20:34.693000+00:00",
+    "next_check_at": "2026-10-19T00:20:34.693Z",
+    "original_published_at": "2026-10-01T12:04:54+00:00",
+    "published_ids": [
+      "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+      "8b75b282-d838-45bc-9309-d10874aae023",
+      "de9067f5-59f2-4e0c-ba02-fc9584debe0f"
+    ],
+    "feed_manifest": "a0075e6a-4edf-4fdd-9f6e-8f141a9bde3f",
+    "visible_count": 3,
+    "new_offers": 0,
+    "provider_calls": 0,
+    "read_only": true,
+    "actual_cron_revalidation_confirmed": true,
+    "social_capture_proven": false
+  },
+  "public_scan": {
+    "checkedAt": "2026-10-18T12:32:39.469Z",
+    "sourcesRead": 5,
+    "httpReads": 8,
+    "localSourcesRead": 3,
+    "portalSourcesRead": 2,
+    "documentsManagedSeparately": 1,
+    "noticesChecked": 3,
+    "verified": 0,
+    "stored": 0,
+    "published": 0,
+    "providerCalls": 0,
+    "pending": 94,
+    "priorityPending": 0,
+    "documentsAwaitingLocalReader": 29,
+    "reverificationBacklog": 0,
+    "trackedOffers": 5,
+    "nextSource": 45,
+    "coverageComplete": false,
+    "audits": [
+      {
+        "source": "Municipalidad / OMIL Angol",
+        "territory": "Angol",
+        "url": "https://noticias.angol.cl/index.php/noticias",
+        "http": 403,
+        "discoveryGroup": "local",
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      },
+      {
+        "source": "Indeed · Angol",
+        "territory": "Angol",
+        "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+        "http": 403,
+        "discoveryGroup": "portal",
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      },
+      {
+        "source": "Municipalidad / OMIL Lumaco",
+        "territory": "Lumaco",
+        "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+        "http": 200,
+        "discoveryGroup": "local",
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      },
+      {
+        "source": "Computrabajo · Angol",
+        "territory": "Angol",
+        "url": "https://cl.computrabajo.com/trabajo-en-angol",
+        "http": 403,
+        "discoveryGroup": "portal",
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      },
+      {
+        "source": "Municipalidad / OMIL Los Sauces",
+        "territory": "Los Sauces",
+        "url": "https://www.munilossauces.cl/noticias",
+        "http": 200,
+        "discoveryGroup": "local",
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      }
+    ],
+    "reviewed": [
+      {
+        "url": "https://www.munimulchen.cl/oferta-laboral-asistente-de-perecible-part-time-y-cajero/",
+        "status": "pending",
+        "reason": "structured_jobposting_missing"
+      },
+      {
+        "url": "https://cl.linkedin.com/jobs/view/vendedor-a-sodimac-hc-angol-jornada-pt25-hrs-at-sodimac-4475862441?pageNum=0&position=24&refId=tk3n7AVRRHpUJVINmU0hgw%3D%3D",
+        "status": "review_ready",
+        "reason": "application_or_employer_requires_review"
+      },
+      {
+        "url": "https://www.munimulchen.cl/oferta-laboral-asistentes-de-control-de-calidad/",
+        "status": "pending",
+        "reason": "structured_jobposting_missing"
+      }
+    ],
+    "receipts": []
+  },
+  "document_work": {
+    "items": 39,
+    "pdf_waiting": 29,
+    "pending": 94
+  },
+  "tests": {
+    "python": 185,
+    "node_test_files": 18
+  },
+  "main_merged": false,
+  "credential_changes": false,
+  "paid_provider_calls": 0,
+  "night_continuation": {
+    "enabled": true,
+    "nights": 3,
+    "approximate_local_time": "19:00",
+    "timezone": "America/Santiago"
+  },
+  "limitations": [
+    "No additional offers published in this scan.",
+    "Only the previously reviewed Traiguen health document is approved for automatic revalidation.",
+    "Facebook/Instagram capture and other document reviews remain to be proven."
+  ]
+}

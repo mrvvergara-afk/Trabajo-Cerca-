@@ -1,0 +1,85 @@
+
+.opsShell {
+  min-height: 100vh;
+  background: #f4f6f3;
+  color: #163d32;
+  padding-bottom: 24px;
+}
+.opsShell *, .opsShell *::before, .opsShell *::after { box-sizing: border-box; }
+.opsShell .opsHeader {
+  min-height: 80px; height: auto; gap: 16px; padding: 16px max(24px, calc((100% - 1092px) / 2));
+  background: #fff; border-bottom: 1px solid #dce5de;
+}
+.opsShell .opsHeader .brand { min-width: 0; }
+.opsShell .opsHeader .brand b { font-size: 18px; }
+.opsShell .opsHeader .brand span { font-size: 10px; letter-spacing: .08em; }
+.opsShell .opsHeader > button {
+  min-height: 44px; padding: 10px 16px; font-size: 12px; border-radius: 12px; flex-shrink: 0;
+}
+.opsShell .opsHero { max-width: 1140px; padding: 32px 24px 24px; margin: 0 auto; }
+.opsShell .overline { font-size: 11px; font-weight: 750; line-height: 1.5; letter-spacing: .09em; color: #536e61; }
+.opsShell .opsHero h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -.035em; margin: 10px 0; }
+.opsShell .opsHero p { font-size: 15px; line-height: 1.6; color: #5c7167; margin: 0; }
+.opsShell .tcAdminAccess {
+  max-width: 1092px; margin: 0 auto 20px; padding: 24px;
+  background: #fff; border: 1px solid #dce5de; border-radius: 20px; box-shadow: 0 4px 18px #143c2d05;
+}
+.tcAdminTitle { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.opsShell .tcAdminAccess h2 { font-size: 19px; line-height: 1.3; letter-spacing: -.02em; margin: 0; }
+.tcAdminBadge { display: inline-flex; padding: 5px 10px; border-radius: 99px; background: #f0f3ef; color: #5e6e63; font-size: 12px; font-weight: 650; }
+.tcAdminBadge[data-allowed=true] { background: #e4f3e8; color: #23663d; }
+.opsShell .tcAdminAccess p { font-size: 14px; line-height: 1.6; color: #5c7167; margin: 12px 0 0; max-width: 720px; }
+.opsShell .tcAdminActions { margin: 20px 0 0; gap: 10px; }
+.opsShell .tcAdminActions button { border-radius: 12px; font-size: 14px; padding: 12px 18px; min-height: 46px; }
+.opsShell .opsReadiness {
+  max-width: 1092px; margin: 0 auto 24px; padding: 18px 20px; display: flex; gap: 14px;
+  align-items: flex-start; background: #fff7e9; border: 1px solid #ead8b5; border-radius: 16px;
+}
+.opsReadiness > svg { width: 22px; height: 22px; flex-shrink: 0; color: #926219; }
+.opsReadiness > div { flex: 1; min-width: 0; }
+.opsReadiness b { font-size: 14px; }
+.opsReadiness p { font-size: 13px; line-height: 1.6; margin: 6px 0 0; color: #78643e; }
+.opsReadiness > span { font-size: 11px; padding: 4px 8px; border-radius: 6px; background: #f5e8ce; color: #765018; }
+.opsShell .opsGrid { max-width: 1140px; padding: 0 24px; gap: 14px; }
+.opsShell .opsGrid article { min-width: 0; border: 1px solid #dce5de; border-radius: 18px; padding: 20px; box-shadow: 0 3px 12px #143c2d03; }
+.opsShell .opsGrid article span { font-size: 11px; line-height: 1.5; color: #5c7167; letter-spacing: .055em; }
+.opsShell .opsGrid article b { font-size: 38px; line-height: 1.15; margin: 12px 0 8px; letter-spacing: -.04em; }
+.opsShell .opsGrid article small { font-size: 12px; line-height: 1.6; color: #65766d; }
+.opsInventoryNote { max-width: 1140px; margin: 12px auto 0; padding: 0 24px; font-size: 12px; line-height: 1.6; color: #65766d; }
+.opsShell .opsColumns { max-width: 1140px; padding: 0 24px; gap: 16px; margin-top: 24px; }
+.opsShell .opsColumns .opsCard { padding: 24px; border: 1px solid #dce5de; border-radius: 18px; }
+.opsShell .opsLine { padding: 16px 0; gap: 16px; align-items: flex-start; border-color: #e9eee9; }
+.opsShell .opsLine > div { min-width: 0; gap: 10px; align-items: flex-start; }
+.opsShell .opsLine svg { height: 18px; width: 18px; flex-shrink: 0; }
+.opsShell .opsLine span { font-size: 14px; line-height: 1.5; }
+.opsShell .opsLine b { font-size: 14px; line-height: 1.5; text-align: right; max-width: 45%; }
+.opsShell .opsPrivacy { max-width: 1092px; padding: 18px 20px; margin: 20px auto 0; border: 1px solid #dce5de; gap: 12px; }
+.opsShell .opsPrivacy > svg { width: 22px; height: 22px; flex-shrink: 0; }
+.opsShell .opsPrivacy b { font-size: 13px; }
+.opsShell .opsPrivacy span { font-size: 12px; line-height: 1.6; }
+.opsShell .opsUpdated { font-size: 12px; line-height: 1.6; padding: 16px 24px 28px; }
+.opsShell .opsError, .opsShell .opsLoading { font-size: 14px; }
+.opsShell pre { max-width: 100%; overflow: auto; font-size: 12px; }
+@media (max-width: 700px) {
+  .opsShell .opsHeader { padding: 14px 16px; min-height: 72px; }
+  .opsShell .opsHeader .brand b { font-size: 16px; }
+  .opsShell .opsHeader .brand span { font-size: 8px; }
+  .opsShell .opsHeader > button { max-width: 124px; padding: 9px 12px; font-size: 11px; }
+  .opsShell .opsHero { padding: 26px 16px 22px; }
+  .opsShell .tcAdminAccess { margin: 0 16px 16px; padding: 20px; border-radius: 18px; }
+  .opsShell .opsReadiness { margin: 0 16px 20px; padding: 16px; gap: 10px; }
+  .opsReadiness > span { display: none; }
+  .opsShell .opsGrid { padding: 0 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .opsShell .opsGrid article { padding: 16px; }
+  .opsShell .opsGrid article b { font-size: 34px; }
+  .opsShell .opsGrid article span { font-size: 10px; letter-spacing: .03em; }
+  .opsShell .opsColumns { padding: 0 16px; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 20px; }
+  .opsShell .opsColumns .opsCard { padding: 20px; }
+  .opsInventoryNote { padding: 0 16px; }
+  .opsShell .opsPrivacy { margin: 16px 16px 0; padding: 16px; }
+  .opsShell .opsUpdated { padding: 16px 16px 28px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tcAdminActions button { transition: background-color .15s, border-color .15s; }
+}
+

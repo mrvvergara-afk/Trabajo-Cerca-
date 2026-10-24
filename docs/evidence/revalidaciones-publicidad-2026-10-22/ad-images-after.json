@@ -1,0 +1,243 @@
+{
+  "checkedAt": "2026-10-23T10:48:05.764Z",
+  "phase": "after",
+  "fixturesOnly": true,
+  "realSdkWrite": false,
+  "productionWrites": 0,
+  "deployed": false,
+  "widths": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "rows": [
+    {
+      "width": 320,
+      "verifiedLabel": "Verificada",
+      "pageErrors": []
+    },
+    {
+      "width": 320,
+      "turn": 0,
+      "houseHeight": 166.375,
+      "image": 1
+    },
+    {
+      "width": 320,
+      "turn": 1,
+      "houseHeight": 192.375,
+      "image": 1
+    },
+    {
+      "width": 320,
+      "turn": 2,
+      "houseHeight": 166.375,
+      "image": 1
+    },
+    {
+      "width": 320,
+      "turn": 3,
+      "houseHeight": 166.375,
+      "image": 1
+    },
+    {
+      "width": 320,
+      "turn": 4,
+      "houseHeight": 166.375,
+      "image": 1
+    },
+    {
+      "width": 320,
+      "turn": 5,
+      "houseHeight": 210.375,
+      "image": 1
+    },
+    {
+      "width": 320,
+      "fixture": "paid",
+      "adHeight": 221.5
+    },
+    {
+      "width": 320,
+      "fixture": "paid-image",
+      "adHeight": 221.5
+    },
+    {
+      "width": 320,
+      "fixture": "paid-broken",
+      "adHeight": 221.5
+    },
+    {
+      "width": 390,
+      "verifiedLabel": "Verificada",
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "turn": 0,
+      "houseHeight": 136,
+      "image": 1
+    },
+    {
+      "width": 390,
+      "turn": 1,
+      "houseHeight": 194.75,
+      "image": 1
+    },
+    {
+      "width": 390,
+      "turn": 2,
+      "houseHeight": 150.5625,
+      "image": 1
+    },
+    {
+      "width": 390,
+      "turn": 3,
+      "houseHeight": 136,
+      "image": 1
+    },
+    {
+      "width": 390,
+      "turn": 4,
+      "houseHeight": 150.5625,
+      "image": 1
+    },
+    {
+      "width": 390,
+      "turn": 5,
+      "houseHeight": 213.9375,
+      "image": 1
+    },
+    {
+      "width": 390,
+      "fixture": "paid",
+      "adHeight": 201.25
+    },
+    {
+      "width": 390,
+      "fixture": "paid-image",
+      "adHeight": 221.5
+    },
+    {
+      "width": 390,
+      "fixture": "paid-broken",
+      "adHeight": 201.25
+    },
+    {
+      "width": 768,
+      "verifiedLabel": "Verificada",
+      "pageErrors": []
+    },
+    {
+      "width": 768,
+      "turn": 0,
+      "houseHeight": 145.078125,
+      "image": 1
+    },
+    {
+      "width": 768,
+      "turn": 1,
+      "houseHeight": 158.578125,
+      "image": 1
+    },
+    {
+      "width": 768,
+      "turn": 2,
+      "houseHeight": 145.078125,
+      "image": 1
+    },
+    {
+      "width": 768,
+      "turn": 3,
+      "houseHeight": 163.265625,
+      "image": 1
+    },
+    {
+      "width": 768,
+      "turn": 4,
+      "houseHeight": 145.078125,
+      "image": 1
+    },
+    {
+      "width": 768,
+      "turn": 5,
+      "houseHeight": 158.578125,
+      "image": 1
+    },
+    {
+      "width": 768,
+      "fixture": "paid",
+      "adHeight": 203.9375
+    },
+    {
+      "width": 768,
+      "fixture": "paid-image",
+      "adHeight": 207
+    },
+    {
+      "width": 768,
+      "fixture": "paid-broken",
+      "adHeight": 203.9375
+    },
+    {
+      "width": 1440,
+      "verifiedLabel": "Verificada",
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "turn": 0,
+      "houseHeight": 112,
+      "image": 1
+    },
+    {
+      "width": 1440,
+      "turn": 1,
+      "houseHeight": 121.375,
+      "image": 1
+    },
+    {
+      "width": 1440,
+      "turn": 2,
+      "houseHeight": 112,
+      "image": 1
+    },
+    {
+      "width": 1440,
+      "turn": 3,
+      "houseHeight": 112,
+      "image": 1
+    },
+    {
+      "width": 1440,
+      "turn": 4,
+      "houseHeight": 112,
+      "image": 1
+    },
+    {
+      "width": 1440,
+      "turn": 5,
+      "houseHeight": 121.375,
+      "image": 1
+    },
+    {
+      "width": 1440,
+      "fixture": "paid",
+      "adHeight": 153.9375
+    },
+    {
+      "width": 1440,
+      "fixture": "paid-image",
+      "adHeight": 163
+    },
+    {
+      "width": 1440,
+      "fixture": "paid-broken",
+      "adHeight": 153.9375
+    }
+  ],
+  "noPayments": true,
+  "originalSvgAssets": true,
+  "adminUploadApprovalRemovalTested": true
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "trabajo-cerca.partial-feed-label-repair.v1",
+  "baseline_version": "1792412685799",
+  "files": [
+    {
+      "filename": "src/App.tsx",
+      "diffs": [
+        {
+          "from": "<small>{place === 'Todas' ? 'oportunidades vigentes' : `vigentes en ${place}`}</small>",
+          "to": "<small>{place === 'Todas' ? (nextCursor ? 'ofertas cargadas · hay más en el listado' : 'oportunidades vigentes') : `vigentes en ${place}`}</small>"
+        }
+      ]
+    },
+    {
+      "filename": "tests/tests.json",
+      "diffs": [
+        {
+          "from": "\"expected\": \"El Radar termina la carga y permite consultar el inventario guardado. Si no hay ofertas publicables muestra su estado vacío explicativo; si existen, conserva sus tarjetas al recargar. No aparece el error No pudimos cargar el Radar central. Si hay una segunda página, se consulta sin errores ni duplicación de tarjetas y la recarga vuelve al inicio del feed. Al cargar más, las tarjetas de una misma oferta individual de Chiletrabajos no se repiten por variantes de su URL. Si los tres cargos documentales de Traiguén ya forman parte del inventario, permanecen separados al recargar y sus detalles conservan la fuente oficial y las instrucciones presenciales. La ausencia de esa precondición no confirma su publicación.\"",
+          "to": "\"expected\": \"El Radar termina la carga y permite consultar el inventario guardado. Si no hay ofertas publicables muestra su estado vacío explicativo; si existen, conserva sus tarjetas al recargar. No aparece el error No pudimos cargar el Radar central. Si hay una segunda página, se consulta sin errores ni duplicación de tarjetas y la recarga vuelve al inicio del feed. Al cargar más, las tarjetas de una misma oferta individual de Chiletrabajos no se repiten por variantes de su URL. Si los tres cargos documentales de Traiguén ya forman parte del inventario, permanecen separados al recargar y sus detalles conservan la fuente oficial y las instrucciones presenciales. La ausencia de esa precondición no confirma su publicación. Si existe Cargar más, el contador inicial indica ofertas cargadas y aclara que hay más avisos; no presenta esa página como el total del inventario.\""
+        }
+      ]
+    }
+  ]
+}

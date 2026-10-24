@@ -1,0 +1,98 @@
+{
+  "schema": "trabajo-cerca.radar-v2-connection-evidence.v1",
+  "run_id": 38584587407,
+  "run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38584587407",
+  "code_commit": "626c9327841279dec24185eb961de18941d4e2d8",
+  "tests": {
+    "run_id": 38584587407,
+    "code_commit": "626c9327841279dec24185eb961de18941d4e2d8",
+    "python_tests": 131,
+    "node_tests": 146,
+    "total_tests": 277,
+    "failed_node_tests": 0,
+    "conclusion": "success"
+  },
+  "control_source": "https://www.bne.gob.cl/oferta/2026-109726",
+  "control_already_published": true,
+  "pilot_data_commit": "74a3ac25dcf1b15cb3f03ab5c95e87eb72ebd143",
+  "exchange_data_commit": "bba03e1ae4ad07c834c179f03ce9d78202243d51",
+  "before_pilot": {
+    "jobs": 94,
+    "runs": 7,
+    "observed_days": 1,
+    "attempts": 94,
+    "observations": 704,
+    "objects": 69,
+    "statuses": {
+      "done": 94
+    }
+  },
+  "before_history": {
+    "attempts": 34,
+    "candidates": 365,
+    "checkpoints": 4,
+    "observations": 3219,
+    "publication_receipts": 5,
+    "runs": 8
+  },
+  "pilot_counts": {
+    "attempts": 95,
+    "jobs": 95,
+    "objects": 70,
+    "observations": 735,
+    "observed_days": 1,
+    "runs": 8,
+    "statuses": {
+      "done": 95
+    }
+  },
+  "history_counts_before_receipt": {
+    "attempts": 35,
+    "candidates": 365,
+    "checkpoints": 5,
+    "observations": 3220,
+    "publication_receipts": 5,
+    "runs": 9
+  },
+  "previous_original_objects_preserved": 69,
+  "batch_records": 1,
+  "publication_confirmation": {
+    "data_commit": "d0477d30e1ea5ea9236e398643412acb2332630e",
+    "backup_counts": {
+      "attempts": 35,
+      "candidates": 365,
+      "checkpoints": 5,
+      "observations": 3220,
+      "publication_receipts": 6,
+      "runs": 9
+    },
+    "published_ids": [
+      "free-d294f2d92f9e56840e53553adef2420f48b30847"
+    ],
+    "known_published_ids_reused": [
+      "free-d294f2d92f9e56840e53553adef2420f48b30847"
+    ],
+    "published": 1,
+    "publication_confirmed": true,
+    "feed_manifest": "631bd259-62f5-4de8-b99c-ed971cf0c4ab",
+    "paid_provider_calls": 0
+  },
+  "new_difficult_offers": 0,
+  "app_code_redeployed": false,
+  "main_merged": false,
+  "paid_provider_calls": 0,
+  "confirmed_history_data_commit": "d0477d30e1ea5ea9236e398643412acb2332630e",
+  "confirmed_history_counts": {
+    "attempts": 35,
+    "candidates": 365,
+    "checkpoints": 5,
+    "observations": 3220,
+    "publication_receipts": 6,
+    "runs": 9
+  },
+  "observed_at": "2026-10-14T15:06:10.705155+00:00",
+  "new_publications": 0,
+  "prior_bne_ids_still_visible": true,
+  "sqlite_integrity": "ok",
+  "note": "Un control real ya publicado fue recibido desde el nuevo motor y confirmado con el mismo ID. No se cuentan publicaciones nuevas ni captación social demostrada."
+}

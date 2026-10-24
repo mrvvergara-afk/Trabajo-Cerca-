@@ -1,0 +1,72 @@
+{
+  "checked_at": "2026-10-23T10:48:15.890175+00:00",
+  "http_status": 200,
+  "headers": {
+    "content-security-policy": null,
+    "strict-transport-security": null,
+    "x-frame-options": null,
+    "x-content-type-options": null,
+    "referrer-policy": null,
+    "permissions-policy": null,
+    "cache-control": "no-cache, no-store, must-revalidate"
+  },
+  "resources": {
+    "manifest.webmanifest": {
+      "status": 200,
+      "mime": "application/manifest+json",
+      "bytes": 1195
+    },
+    "sw.js": {
+      "status": 200,
+      "mime": "text/javascript",
+      "bytes": 3445
+    },
+    "icon-192.png": {
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1868
+    },
+    "icon-512.png": {
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 5498
+    },
+    "icon-maskable-512.png": {
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 5175
+    },
+    "robots.txt": {
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 171
+    },
+    "sitemap.xml": {
+      "status": 200,
+      "mime": "application/xml",
+      "bytes": 192
+    }
+  },
+  "accessibility_sample": {
+    "unnamedButtons": [],
+    "missingImageAlt": 0,
+    "horizontalOverflow": false,
+    "title": "Trabajo Cerca · Oportunidades locales",
+    "description": "Encuentra oportunidades laborales en Malleco y Biobío norte. Explora empleos por comuna, requisitos y formas de postular en Trabajo Cerca.",
+    "canonical": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+    "serviceWorkerAvailable": true,
+    "navigation": [
+      {
+        "domContentLoadedMs": 340.4000000000233,
+        "responseMs": 178
+      }
+    ]
+  },
+  "privacy_text": "TRABAJO CERCA · PILOTO\nPrivacidad y tus datos\n\nTrabajo Cerca usa únicamente la información necesaria para conectar personas con trabajo y proteger las publicaciones.\n\nQué datos tratamos\n\nSi publicas directamente, usamos los datos que ingresas para mostrar la publicación y facilitar el contacto. No solicitamos CV, RUT, dirección exacta, claves, datos bancarios ni datos sensibles.\n\nContacto protegido\n\nEl teléfono o WhatsApp no forma parte del listado público masivo y se revela solamente mediante una acción explícita.\n\nAvisos personalizados\n\nSi activas notificaciones, el sistema requiere identificar el dispositivo/usuario una vez y guarda únicamente un identificador técnico, las comunas y los cargos u oficios que elijas. No usamos esta función para crear perfiles publicitarios personales.\n\nResponsable del tratamiento\n\nIdentificación completa pendiente de confirmación del titular antes del lanzamiento público.\n\nTus derechos\n\nPara consultas, correcciones o solicitudes sobre tus datos puedes escribir a trabajocerca.malleco.biobio@gmail.com. La identificación legal completa del responsable se incorporará antes del lanzamiento público.",
+  "privacy_modal_focus_on_open_inside": true,
+  "privacy_modal_escape_closes": true,
+  "scope": "passive_public_browser_chromium_mobile",
+  "dangerous_operational_routes_called": false,
+  "forms_submitted": 0,
+  "collector_calls": 0
+}

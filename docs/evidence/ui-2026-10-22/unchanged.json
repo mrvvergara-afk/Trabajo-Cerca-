@@ -1,0 +1,62 @@
+[
+  {
+    "path": "cron.json",
+    "sha256": "96e295cd875cfe313049c080936202e8e69786cd3a50848356ae7598133d0ae6",
+    "unchanged": true
+  },
+  {
+    "path": "shared/house-ads.ts",
+    "sha256": "78361e55392646b45b0d45e0db6d4c2274cafb59ea7b2db8413c523daa9cc5ef",
+    "unchanged": true
+  },
+  {
+    "path": "shared/commercial-policy.ts",
+    "sha256": "878f672dde615e0fb7e6b61f6b6558d6abbbf7717163c540b8221fc46edc2f0b",
+    "unchanged": true
+  },
+  {
+    "path": "backend/house-marketing.ts",
+    "sha256": "1c743206e52f7287c987fac6efc3e5c04e569fcadfeed47b0b9fa97b9b25fc1f",
+    "unchanged": true
+  },
+  {
+    "path": "backend/security-policy.ts",
+    "sha256": "60edf49c0e83cf7db6644e3d7bd2ed5e6bb86d8f156f1e2765866120fe5eed5c",
+    "unchanged": true
+  },
+  {
+    "path": "package.json",
+    "sha256": "beafbb5b9ad86f7303bfe90c87f3df2853d15811dbf209060a1f08c0f87d3aad",
+    "unchanged": true
+  },
+  {
+    "path": "package-lock.json",
+    "sha256": "b1cfea09a050a69ab54b513454339218a7eba55e0ceb74cb020bd000f48f0337",
+    "unchanged": true
+  },
+  {
+    "path": "vite.config.ts",
+    "sha256": "608239a5f2c500d7a00e0787bcad58fcff9e9c622bf0e2cf71b7a2cb5455f3ac",
+    "unchanged": true
+  },
+  {
+    "path": "public/icon-192.png",
+    "sha256": "f3c64a1f0f9c63f670b20a3df5c4c3fde78d3d9438897f358e96350b78ad3d91",
+    "unchanged": true
+  },
+  {
+    "path": "public/icon-512.png",
+    "sha256": "eddfe4b4a7a0b1cd88c223f03f36c2fcc97a23f6334d9b0e120d6b8fa264c63e",
+    "unchanged": true
+  },
+  {
+    "path": "public/icon-maskable-512.png",
+    "sha256": "a7ca82f2a42ab8364700c4cceb516c9be5febeb0b1ad6b37cf7d628debbab12b",
+    "unchanged": true
+  },
+  {
+    "path": "public/manifest.webmanifest",
+    "sha256": "f622a33975461d0eaabd0408f8a10ba88991195f64f6bcc199609f836038e7a4",
+    "unchanged": true
+  }
+]

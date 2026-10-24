@@ -301,8 +301,8 @@
     min-height:0
   }
   .neoShell .neoHero h1 {
-    font-size:23px;
-    max-width:27ch;
+    font-size:21px;
+    max-width:none;
     line-height:1.1;
     letter-spacing:-.025em
   }

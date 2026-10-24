@@ -1,0 +1,130 @@
+{
+  "appId": "trabajo-cerca-laboratorio-3ojgro",
+  "url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+  "previousSnapshot": "1792800590888",
+  "snapshot": "1792850979108",
+  "candidateCommit": "ab917972be79666b3d70d1e19c9d8baee1028e5c",
+  "candidateTests": {
+    "runId": 40099284668,
+    "jobId": 120888155249,
+    "python": 243,
+    "node": 368,
+    "result": "success"
+  },
+  "scope": [
+    "src/App.tsx",
+    "src/index.css",
+    "src/vnext.css",
+    "src/compact-layout.css",
+    "src/premium-presentation.css",
+    "src/house-advertising.tsx",
+    "src/house-advertising.css",
+    "src/territorial-radar.tsx",
+    "src/territorial-sections.tsx",
+    "src/territorial-sections.css",
+    "public/manifest.webmanifest",
+    "public/sw.js",
+    "tests/tests.json"
+  ],
+  "sourceChanges": {
+    "applied": true,
+    "sync_required": false,
+    "items": [
+      {
+        "path": "public/manifest.webmanifest",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "public/sw.js",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/App.tsx",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/compact-layout.css",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/house-advertising.css",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/house-advertising.tsx",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/index.css",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/premium-presentation.css",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/territorial-radar.tsx",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/territorial-sections.css",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/territorial-sections.tsx",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "src/vnext.css",
+        "operation": "modified",
+        "reason": "requested_change"
+      },
+      {
+        "path": "tests/tests.json",
+        "operation": "modified",
+        "reason": "requested_change"
+      }
+    ]
+  },
+  "backendSent": false,
+  "dataMutationRequested": false,
+  "mainMerged": false,
+  "billingActivated": false,
+  "postDeploymentVerification": "pending real SDK/browser check; ready alone is insufficient",
+  "catalog503Observed": {
+    "frontend": [
+      {
+        "timestamp": 1792851017423,
+        "message": "XHR error: 503  - GET https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings?limit=40\nResponse: {\"error\":\"El Radar está preparando su inventario. Reintenta en unos minutos.\"}"
+      },
+      {
+        "timestamp": 1792851017141,
+        "message": "XHR error: 503  - GET https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings?limit=40\nResponse: {\"error\":\"El Radar está preparando su inventario. Reintenta en unos minutos.\"}"
+      }
+    ],
+    "backend": [
+      {
+        "timestamp": 1792851017354,
+        "message": "GET /api/listings - handler=handler - HTTP 503: {\"error\":\"El Radar está preparando su inventario. Reintenta en unos minutos.\"}"
+      }
+    ]
+  },
+  "validationWarnings": [
+    "tests/tests.json: Found 18 tests, consider focusing on 3-5.",
+    "PWA manifest.webmanifest: Icon 2 is external or outside the app base; it was not verified.",
+    "PWA manifest.webmanifest: Icon 3 is external or outside the app base; it was not verified."
+  ],
+  "cronConfigurationUnchanged": true,
+  "rollback": "Restore only 13 public files from identified v99 source backup; do not roll back unrelated backend changes."
+}

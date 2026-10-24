@@ -7,7 +7,7 @@ const profile=mkdtempSync(join(tmpdir(),'tc-rc-browser-'));
 const context=await chromium.launchPersistentContext(profile,{headless:true,viewport:{width:390,height:844},...(existsSync('/usr/bin/google-chrome')?{executablePath:'/usr/bin/google-chrome'}:{})});
 try{
  const page=await context.newPage();const errors=[];
- page.on('pageerror',e=>errors.push(e.message));await context.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
+ page.on('pageerror',e=>errors.push(e.message));await context.route('**/*',r=>(new URL(r.request().url()).hostname==='127.0.0.1'||/^https:\/\/raw\.githubusercontent\.com\/mrvvergara-afk\/Trabajo-Cerca-\/c445112b9cdb78adfce9d8065e32411c4f412c4b\/integrations\/appdeploy\/house-ads\/public\/icon-(?:maskable-)?512\.png$/.test(r.request().url()))?r.continue():r.abort());
  await page.addInitScript(()=>{window.houseFixture='admin';window.rcViolations=[];document.addEventListener('securitypolicyviolation',e=>window.rcViolations.push({directive:e.violatedDirective,resource:e.blockedURI}));});
  await page.goto('http://127.0.0.1:4174/?listing=layout-fixture-1',{waitUntil:'networkidle'});
  await page.getByRole('dialog',{name:'Detalle de Puesto de ensayo 2 · solo prueba visual'}).waitFor();

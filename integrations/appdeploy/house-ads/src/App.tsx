@@ -1411,12 +1411,13 @@ function App() {
                     <h3>{item.title}</h3>
                     {identifiedEmployer(item)&&<p className='neoJobCompany'>{identifiedEmployer(item)}</p>}
                     {item.salary && <strong className='neoSalary'>{item.salary}</strong>}
-                    <div className='neoJobFacts'>
-                      <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
-                    </div>
-                    <div className='neoJobFoot'>
-                      <span className='tcOfferDates'><span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}</span>{item.firstPublishedAt&&<span>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</span>}</span>
-                      <button aria-label={'Ver oportunidad: '+item.title} onClick={() => setSelected(item)}>Ver oferta <ArrowRight /></button>
+                    <div className='tcOfferActionRow'>
+                      <div className='neoJobFacts'>
+                        <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
+                      </div>
+                      <div className='neoJobFoot'>
+                        <button aria-label={'Ver oferta: '+item.title} onClick={() => setSelected(item)}>Ver oferta <ArrowRight /></button>
+                      </div>
                     </div>
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}
                   </div>

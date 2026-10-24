@@ -1,0 +1,23 @@
+[
+  {
+    "file": "public/icon-192.png",
+    "bytes": 1868,
+    "valid": true,
+    "size": [
+      192,
+      192
+    ]
+  },
+  {
+    "file": "public/icon-512.png",
+    "bytes": 5498,
+    "valid": false,
+    "error": "unrecognized data stream contents when reading image file"
+  },
+  {
+    "file": "public/icon-maskable-512.png",
+    "bytes": 5175,
+    "valid": false,
+    "error": "unrecognized data stream contents when reading image file"
+  }
+]

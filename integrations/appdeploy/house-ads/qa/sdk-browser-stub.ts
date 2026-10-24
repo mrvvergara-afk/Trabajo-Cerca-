@@ -17,6 +17,7 @@ const layoutItems=()=>state.houseFixture==='territory'?[
 ]:basicLayoutItems();
 async function call(method:string,path:string,body?:Record<string,unknown>){
  state.houseCalls!.push({method,path,body});
+ if(state.houseFixture==='catalog-503'&&path.startsWith('/api/listings')&&method==='GET')throw {response:{status:503},message:'QA isolated catalog unavailable'};
  if(state.houseFixture==='real-public'&&path.startsWith('/api/listings')&&method==='GET'){const snapshot=await fetch('/__review_public_feed').then(r=>r.json());if(/^\/api\/listings\/[^/?]+$/.test(path)){const item=snapshot.items.find((x:{id:string})=>x.id===decodeURIComponent(path.split('/').pop()!));return {data:{item}};}return {data:snapshot};}
 
  if(path.startsWith('/api/growth/promotion'))return {data:promotionOffer(COMMERCIAL_DEFAULTS)};

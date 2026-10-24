@@ -1,0 +1,200 @@
+[
+  {
+    "path": "cron.json",
+    "unchangedFromPr": true,
+    "sha256": "96e295cd875cfe313049c080936202e8e69786cd3a50848356ae7598133d0ae6",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "src/activity-center.tsx",
+    "unchangedFromPr": true,
+    "sha256": "9d46f4f4d933e4b0dab570ca7bc2c8fbe2cf64779475a77978c413aa5f9640d8",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "src/feed-inventory.ts",
+    "unchangedFromPr": true,
+    "sha256": "886bbe5cd0b34bf96a87071f689c2b30ec3f2a17afba9efe0dc9004163b2901f",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "src/commercial-admin.tsx",
+    "unchangedFromPr": true,
+    "sha256": "8f5d303853fc343585601d21d67df224bef100a1b0a720cee649974471ed6392",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "src/reading-history.ts",
+    "unchangedFromPr": true,
+    "sha256": "e85acd414e5c65797c5e2f2e47d784c0e2aee96ae2d9de8a2b5c8ce8186e4e38",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "src/feed-presentation.ts",
+    "unchangedFromPr": true,
+    "sha256": "de3a0b6a7970f61fa7555b4e780c620edd2d19d5c7306a50e4ee23fe3f28ab4a",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "src/house-admin.tsx",
+    "unchangedFromPr": true,
+    "sha256": "21ff3731c98d10b3689dabe71f32b94362078550b0e3750cc9188652d7a59624",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/local-source-evidence.ts",
+    "unchangedFromPr": true,
+    "sha256": "ae83da2e3db4142fe631ce9064fa35efa0ad30a36c5c1f2cd51a5f32a0c6d358",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/public-source-http.ts",
+    "unchangedFromPr": true,
+    "sha256": "c9576e77f543d95e8d19eef5caf78881da74904a100b9c1b012ea492d64f8276",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/offer-retention.ts",
+    "unchangedFromPr": true,
+    "sha256": "4697b4f7e2ec0a48508622d9a7cda67efa598ebbcb562955cc127d8fa397fc0b",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/social-evidence-store.ts",
+    "unchangedFromPr": true,
+    "sha256": "4a93f8e7494fa54fcb9c4bcc3bcc5f8396dc1713267c8d61a034793f2653bb26",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/public-feed.ts",
+    "unchangedFromPr": true,
+    "sha256": "0b260398c78731d3381b95e59adc358a3cba963bef1123c770fad6a7eb34230c",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/document-revalidation.ts",
+    "unchangedFromPr": true,
+    "sha256": "11a06dc519fb2b587e251a31d3d4e807f3fd5bb933c47552fad027226fdcec53",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/reviewed-receiver.ts",
+    "unchangedFromPr": true,
+    "sha256": "a79c3a7accaa771c6c6453ea12b34bc0b1b883e3206369fd50d78134e8c3abbd",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/index.ts",
+    "unchangedFromPr": true,
+    "sha256": "b41022714f4e9d510576a3a10a41d9b73cd609825509c83afd274f13f014cd47",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/radar-ingestion.ts",
+    "unchangedFromPr": true,
+    "sha256": "632b0dc9a2f427e0b3ecb60dcdb77da2ebcf344e963c1508c53adafb2952734d",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/verification-schedule.ts",
+    "unchangedFromPr": true,
+    "sha256": "16cd9bfa03d4a3666c9918e031bbdfaf04688d0e08e46300c8f122edf4a87413",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/public-source-adapters.ts",
+    "unchangedFromPr": true,
+    "sha256": "4778e1e4e59cc07bdf08e3e3fb3c679b0dd70cafc0817f1470168c5d09c8a581",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/free-public-sources.ts",
+    "unchangedFromPr": true,
+    "sha256": "6ceba516b646ad1a0565d020f1d0abd9dfc23c0e824296995741940a1273b5c8",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/admin-backup.ts",
+    "unchangedFromPr": true,
+    "sha256": "785175f3cf28ef9669544f7a5229df06075b65de892451e4575a9c469eb84548",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/security-policy.ts",
+    "unchangedFromPr": true,
+    "sha256": "60edf49c0e83cf7db6644e3d7bd2ed5e6bb86d8f156f1e2765866120fe5eed5c",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/social-evidence.ts",
+    "unchangedFromPr": true,
+    "sha256": "930abb061e3b644061a31486c4c2d416d25606cebb323019fdc213b526772d89",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/first-publication.ts",
+    "unchangedFromPr": true,
+    "sha256": "260d928caa065d88c8c5094b587b2b68971efbc5f3671fc860b25155a603d405",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/security-quota.ts",
+    "unchangedFromPr": true,
+    "sha256": "14236fa1a50a0affe3dbf9e2f537df9721cf74b3303e90d942a011e68230aae6",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/security-headers.ts",
+    "unchangedFromPr": true,
+    "sha256": "47e82155ff90beb8d142c4a009cf88fb8e4ba594b189bda81c23d89766cc2961",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/social-application.ts",
+    "unchangedFromPr": true,
+    "sha256": "fc0a1009fa07daa8f9ac5fc6fe3c90e8216b7451afc97f85c5276abcbb804ce7",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/public-source-verifier.ts",
+    "unchangedFromPr": true,
+    "sha256": "8d90269c9a8bf960c928c10237edd5d0bc9335fc909886cdc9a4ee9e60d8a2bf",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/image-validation.ts",
+    "unchangedFromPr": true,
+    "sha256": "d60208bd518d07c55362fbe5d9dedfc2612ba3bd3986629ae10347325f435896",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/public-robots.ts",
+    "unchangedFromPr": true,
+    "sha256": "b6fc00b19d1b9175506bdd8754fe6ec2dd8c0714ac68276bfebad8eaf203d25b",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/cmpc-evidence.ts",
+    "unchangedFromPr": true,
+    "sha256": "923d7ae73682248f54915e0880136f86372b8c58ba660ccab7a9a164cde23254",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/house-marketing.ts",
+    "unchangedFromPr": true,
+    "sha256": "87c640620dbc0d6e7ab682d722ac6aa3aaf5887c3a871bd953aaf1ac03108d12",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "backend/local-contact-evidence.ts",
+    "unchangedFromPr": true,
+    "sha256": "ddfa8cc5af39327fa86f6e3decfa667d7f14d324c1e7e7f3974221bbb63b563b",
+    "unchangedInUiIntegral": true
+  },
+  {
+    "path": "shared/commercial-policy.ts",
+    "unchangedFromPr": true,
+    "sha256": "878f672dde615e0fb7e6b61f6b6558d6abbbf7717163c540b8221fc46edc2f0b",
+    "unchangedInUiIntegral": true
+  }
+]

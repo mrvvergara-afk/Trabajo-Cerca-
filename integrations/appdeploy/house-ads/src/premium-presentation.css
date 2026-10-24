@@ -1,124 +1,448 @@
 /* Presentation only: allocation, editorial evidence and commercial terms are unchanged. */
-
-
-.tcPremiumCommercial .tcCommercialVisual{position:relative;min-width:0;overflow:hidden;background:#dce8d6;align-self:stretch}
-.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0}
-.tcCreativeFallback{position:absolute;inset:0;display:grid;place-items:center;padding:14px;text-align:center;color:#31533b;font-size:14px;font-weight:700;background:repeating-linear-gradient(140deg,#edf3e5 0 28px,#e1ebd8 28px 29px)}
-.tcCommercialVisual:has(>.tcAdImage)>.tcCreativeFallback{display:none}
-.tcCreativeExample{position:absolute;bottom:8px;left:8px;right:8px;justify-self:start;border-radius:5px;padding:4px 6px;font-size:10px;line-height:1.2;color:#173c2b;background:#fafdf1ed}
-
-
-
-
-
-
-
-
-.tcLocalAdvertising .tcAdContent.tcPremiumCommercial{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:10px}
-.tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true]{grid-template-columns:38% minmax(0,1fr) auto}
-.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual{min-height:156px;border-radius:10px}
-.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual:has(>.tcAdImage){min-height:156px}
-.tcLocalAdvertising .tcPremiumCommercial p{font-size:14px;line-height:1.4;margin:6px 0}
-.tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong{font-size:18px;line-height:1.3}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media(max-width:800px){
- 
- 
- 
- 
- 
- .tcLocalAdvertising .tcAdContent.tcPremiumCommercial{grid-template-columns:minmax(0,1fr);gap:8px}
- .tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true]{grid-template-columns:35% minmax(0,1fr);align-items:start}
- .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual{grid-row:1/3;min-height:170px;height:100%}
- .tcLocalAdvertising .tcPremiumCommercial>a{grid-column:2;min-height:44px;justify-self:start;font-size:13px;padding:8px 10px;max-width:100%;box-sizing:border-box}
- .tcLocalAdvertising .tcPremiumCommercial:not([data-has-image=true])>a{grid-column:1}
- .tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong{font-size:16px}
- .tcLocalAdvertising .tcPremiumCommercial p{font-size:13px}
- 
- 
- .neoShell .tcJobDates{font-size:12px}
- .neoShell .neoJobCard h3{margin:3px 0}
- .neoShell .neoJobCompany{margin:3px 0}
- .neoShell .neoJobFoot{margin-top:6px;padding-top:6px}
+.tcPremiumCommercial .tcCommercialVisual {
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  background:#dce8d6;
+  align-self:stretch
 }
-
-
-
-
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage {
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  border-radius:0
+}
+.tcCreativeFallback {
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:14px;
+  text-align:center;
+  color:#31533b;
+  font-size:14px;
+  font-weight:700;
+  background:repeating-linear-gradient(140deg,#edf3e5 0 28px,#e1ebd8 28px 29px)
+}
+.tcCommercialVisual:has(>.tcAdImage)>.tcCreativeFallback {
+  display:none
+}
+.tcCreativeExample {
+  position:absolute;
+  bottom:8px;
+  left:8px;
+  right:8px;
+  justify-self:start;
+  border-radius:5px;
+  padding:4px 6px;
+  font-size:10px;
+  line-height:1.2;
+  color:#173c2b;
+  background:#fafdf1ed
+}
+.tcLocalAdvertising .tcAdContent.tcPremiumCommercial {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  margin-top:10px
+}
+.tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true] {
+  grid-template-columns:38% minmax(0,1fr) auto
+}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual {
+  min-height:140px;
+  border-radius:10px
+}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual:has(>.tcAdImage) {
+  min-height:140px
+}
+.tcLocalAdvertising .tcPremiumCommercial p {
+  font-size:14px;
+  line-height:1.4;
+  margin:6px 0
+}
+.tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong {
+  font-size:18px;
+  line-height:1.3
+}
+@media(max-width:800px) {
+  .tcLocalAdvertising .tcAdContent.tcPremiumCommercial {
+    grid-template-columns:minmax(0,1fr);
+    gap:8px
+  }
+  .tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true] {
+    grid-template-columns:minmax(92px,30%) minmax(0,1fr);
+    align-items:center
+  }
+  .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual {
+    grid-row:1;
+    min-height:116px;
+    height:100%
+  }
+  .tcLocalAdvertising .tcPremiumCommercial>a {
+    grid-column:1/-1;
+    min-height:44px;
+    justify-self:end;
+    font-size:13px;
+    padding:8px 10px;
+    max-width:100%;
+    box-sizing:border-box
+  }
+  .tcLocalAdvertising .tcPremiumCommercial:not([data-has-image=true])>a {
+    grid-column:1/-1
+  }
+  .tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong {
+    font-size:15px
+  }
+  .tcLocalAdvertising .tcPremiumCommercial p {
+    font-size:12px
+  }
+}
 /* Single owner: public home/search/activity. Earlier rules were removed, not overridden. */
-.neoHero{display:block;max-width:1220px;margin:0 auto;padding:24px 20px 16px;min-height:0;background:none}
-.neoHeroGlow{display:none}.neoHeroCopy{max-width:none;width:100%}
-.neoHero h1{font-size:42px;line-height:1.08;letter-spacing:-.035em;color:#092c23;font-weight:650;margin:0}
-.neoHero h1 em{color:#f36d52;font-style:normal}.neoHeroLead{font-size:16px;line-height:1.4;margin:8px 0 0;color:#456256}
-.neoSearchDock{display:grid;grid-template-columns:20px minmax(0,1fr) auto auto;align-items:center;gap:8px;background:#fff;border:1px solid #cddbd0;border-radius:10px;padding:4px 6px 4px 12px;min-height:52px;margin:14px 0 0;box-shadow:none}
-.neoSearchDock>svg{width:20px;height:20px;color:#5b7266}.neoSearchDock input{border:0;outline:0;min-width:0;width:100%;height:44px;font-size:16px;background:transparent;color:#163f2e}
-.neoSearchDock>label{display:flex;align-items:center;gap:5px;border-left:1px solid #dce5d9;padding:0 10px;min-height:44px;min-width:0}
-.neoSearchDock>label>svg{width:16px;height:16px;flex-shrink:0;color:#e76550}.neoSearchDock select{font:inherit;font-size:14px;border:0;background:transparent;min-height:44px;min-width:0;color:#12382a;max-width:180px}
-.neoSearchDock>button{display:flex;align-items:center;justify-content:center;gap:6px;background:#092c23;color:#fff;border:0;border-radius:8px;min-height:44px;padding:8px 14px;font-size:14px;font-weight:650}.neoSearchDock>button svg{width:18px;height:18px}
-.tcQuickActions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 0}
-.tcQuickActions button{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0;min-height:46px;padding:7px 10px;border:1px solid #cedbcf;border-radius:8px;color:#153b2b;background:#fff;font-size:14px;line-height:1.2;text-align:left;cursor:pointer}
-.tcQuickActions button:nth-child(2){background:#eef6e7;border-color:#c5d9b8}.tcQuickActions button svg{width:18px;height:18px;flex-shrink:0}.tcQuickActions button span{min-width:0}.tcQuickShort{display:none}.tcQuickLong{display:inline}
-.tcActivityStrip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;gap:4px;align-items:center;width:calc(100% - 40px);max-width:1180px;margin:0 auto 10px;padding:2px 8px;background:#f0f6ed;border:1px solid #d4e1d7;border-radius:9px;min-height:50px}
-.tcActivityStrip>button{display:flex;align-items:center;justify-content:flex-start;gap:4px;min-width:0;min-height:44px;padding:4px;border:0;background:transparent;color:#234c35;font-size:13px;line-height:1.25;text-align:left;cursor:pointer}.tcActivityStrip b{font-size:15px}.tcActivityStrip .tcActivityCenterButton{justify-content:center}.tcActivityCenterButton svg{width:20px;height:20px}.tcActivityStrip>small{grid-column:1/-1;font-size:12px}
-@media(max-width:800px){
- /* Compact fintech-like density: no loss of the four primary actions. */
- .neoShell .neoHero{padding:7px 14px 3px;min-height:0}
- .neoShell .neoHero h1{font-size:28px;max-width:25ch;line-height:1.1;letter-spacing:-.025em}
- .neoShell .neoHero h1 em{white-space:nowrap}
- .neoShell .neoHeroLead{font-size:12px;line-height:1.35;margin-top:4px}
- .neoShell .neoSearchDock{grid-template-columns:minmax(80px,1fr) 94px 59px;gap:3px;padding:0 3px 0 7px;margin-top:8px;min-height:44px;border-radius:9px}
- .neoShell .neoSearchDock>svg{display:none}
- .neoShell .neoSearchDock input{grid-column:1;grid-row:1;height:44px;min-height:44px;font-size:14px}
- .neoShell .neoSearchDock>label{grid-column:2;grid-row:1;padding:0 3px;gap:2px;min-height:44px}
- .neoShell .neoSearchDock>label>svg{width:13px;height:13px}
- .neoShell .neoSearchDock select{width:100%;max-width:100%;font-size:11.5px;min-height:44px}
- .neoShell .neoSearchDock>button{grid-column:3;grid-row:1;height:44px;min-height:44px;padding:5px;font-size:11.5px;border-radius:7px}
- .neoShell .neoSearchDock>button svg{display:none}
- .neoShell .tcQuickActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:8px 0 4px}
- .neoShell .tcQuickActions button{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;text-align:left;gap:6px;height:auto;min-height:48px;min-width:0;padding:6px 8px;border:1px solid #dee7dd;border-radius:11px;background:#fff;color:#18392c;font-size:14px;line-height:1.2;font-weight:600;box-shadow:0 2px 8px #082b2010}
- .neoShell .tcQuickActions button:nth-child(2){background:#f2f7ec}
- .neoShell .tcQuickActions button svg{width:19px;height:19px;flex-shrink:0}
- .neoShell .tcQuickActions .tcQuickLong{display:inline}
- .neoShell .tcQuickActions .tcQuickShort{display:none}
- .neoShell .tcActivityStrip{width:calc(100% - 28px);min-height:44px;margin-bottom:0;padding:0 8px;gap:3px;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;border-radius:9px}
- .neoShell .tcActivityStrip>button{display:flex;gap:4px;min-height:44px;padding:2px 1px;font-size:10.5px;line-height:1.1;align-items:center}
- .neoShell .tcActivityStrip b{font-size:14px}
- .neoShell .tcActivityCenterButton svg{width:17px;height:17px}
- /* Advertisement inherits typography from the shell: override it at this final layer. */
- 
- 
- 
- 
- 
- 
+.neoHero {
+  display:block;
+  max-width:1220px;
+  margin:0 auto;
+  padding:24px 20px 16px;
+  min-height:0;
+  background:none
 }
-@media(max-width:359px){
- .neoShell .tcQuickActions{gap:4px}
- .neoShell .tcQuickActions button{font-size:13px}
- .neoShell .neoSearchDock{grid-template-columns:minmax(62px,1fr) 84px 54px}
+.neoHeroGlow {
+  display:none
 }
-
+.neoHeroCopy {
+  max-width:none;
+  width:100%
+}
+.neoHero h1 {
+  font-size:36px;
+  line-height:1.08;
+  letter-spacing:-.035em;
+  color:#092c23;
+  font-weight:650;
+  margin:0
+}
+.neoHero h1 em {
+  color:#f36d52;
+  font-style:normal
+}
+.neoHeroLead {
+  font-size:16px;
+  line-height:1.4;
+  margin:8px 0 0;
+  color:#456256
+}
+.neoSearchDock {
+  display:grid;
+  grid-template-columns:20px minmax(0,1fr) auto auto;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  border:1px solid #cddbd0;
+  border-radius:10px;
+  padding:4px 6px 4px 12px;
+  min-height:52px;
+  margin:14px 0 0;
+  box-shadow:none
+}
+.neoSearchDock>svg {
+  width:20px;
+  height:20px;
+  color:#5b7266
+}
+.neoSearchDock input {
+  border:0;
+  outline:0;
+  min-width:0;
+  width:100%;
+  height:44px;
+  font-size:16px;
+  background:transparent;
+  color:#163f2e
+}
+.neoSearchDock>label {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  border-left:1px solid #dce5d9;
+  padding:0 10px;
+  min-height:44px;
+  min-width:0
+}
+.neoSearchDock>label>svg {
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+  color:#e76550
+}
+.neoSearchDock select {
+  font:inherit;
+  font-size:14px;
+  border:0;
+  background:transparent;
+  min-height:44px;
+  min-width:0;
+  color:#12382a;
+  max-width:180px
+}
+.neoSearchDock>button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  background:#092c23;
+  color:#fff;
+  border:0;
+  border-radius:8px;
+  min-height:44px;
+  padding:8px 14px;
+  font-size:14px;
+  font-weight:650
+}
+.neoSearchDock>button svg {
+  width:18px;
+  height:18px
+}
+.tcQuickActions {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin:10px 0 0
+}
+.tcQuickActions button {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:8px;
+  min-width:0;
+  min-height:46px;
+  padding:7px 10px;
+  border:1px solid #cedbcf;
+  border-radius:8px;
+  color:#153b2b;
+  background:#fff;
+  font-size:14px;
+  line-height:1.2;
+  text-align:left;
+  cursor:pointer
+}
+.tcQuickActions button:nth-child(2) {
+  background:#eef6e7;
+  border-color:#c5d9b8
+}
+.tcQuickActions button svg {
+  width:18px;
+  height:18px;
+  flex-shrink:0
+}
+.tcQuickActions button span {
+  min-width:0
+}
+.tcQuickShort {
+  display:none
+}
+.tcQuickLong {
+  display:inline
+}
+.tcActivityStrip {
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;
+  gap:4px;
+  align-items:center;
+  width:calc(100% - 40px);
+  max-width:1180px;
+  margin:0 auto 10px;
+  padding:2px 8px;
+  background:#f0f6ed;
+  border:1px solid #d4e1d7;
+  border-radius:9px;
+  min-height:50px
+}
+.tcActivityStrip>button {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:4px;
+  min-width:0;
+  min-height:44px;
+  padding:4px;
+  border:0;
+  background:transparent;
+  color:#234c35;
+  font-size:13px;
+  line-height:1.25;
+  text-align:left;
+  cursor:pointer
+}
+.tcActivityStrip b {
+  font-size:15px
+}
+.tcActivityStrip .tcActivityCenterButton {
+  justify-content:center
+}
+.tcActivityCenterButton svg {
+  width:20px;
+  height:20px
+}
+.tcActivityStrip>small {
+  grid-column:1/-1;
+  font-size:12px
+}
+@media(max-width:800px) {
+  /* Compact fintech-like density: no loss of the four primary actions. */
+  .neoShell .neoHero {
+    padding:7px 14px 3px;
+    min-height:0
+  }
+  .neoShell .neoHero h1 {
+    font-size:23px;
+    max-width:27ch;
+    line-height:1.1;
+    letter-spacing:-.025em
+  }
+  .neoShell .neoHero h1 em {
+    white-space:nowrap
+  }
+  .neoShell .neoHeroLead {
+    font-size:12px;
+    line-height:1.35;
+    margin-top:4px
+  }
+  .neoShell .neoSearchDock {
+    grid-template-columns:minmax(80px,1fr) 94px 59px;
+    gap:3px;
+    padding:0 3px 0 7px;
+    margin-top:8px;
+    min-height:44px;
+    border-radius:9px
+  }
+  .neoShell .neoSearchDock>svg {
+    display:none
+  }
+  .neoShell .neoSearchDock input {
+    grid-column:1;
+    grid-row:1;
+    height:44px;
+    min-height:44px;
+    font-size:14px
+  }
+  .neoShell .neoSearchDock>label {
+    grid-column:2;
+    grid-row:1;
+    padding:0 3px;
+    gap:2px;
+    min-height:44px
+  }
+  .neoShell .neoSearchDock>label>svg {
+    width:13px;
+    height:13px
+  }
+  .neoShell .neoSearchDock select {
+    width:100%;
+    max-width:100%;
+    font-size:11.5px;
+    min-height:44px
+  }
+  .neoShell .neoSearchDock>button {
+    grid-column:3;
+    grid-row:1;
+    height:44px;
+    min-height:44px;
+    padding:5px;
+    font-size:11.5px;
+    border-radius:7px
+  }
+  .neoShell .neoSearchDock>button svg {
+    display:none
+  }
+  .neoShell .tcQuickActions {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:5px;
+    margin:7px 0 4px
+  }
+  .neoShell .tcQuickActions button {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:4px;
+    height:auto;
+    min-height:46px;
+    min-width:0;
+    padding:4px;
+    border:1px solid #dee7dd;
+    border-radius:11px;
+    background:#fff;
+    color:#18392c;
+    font-size:12px;
+    line-height:1.2;
+    font-weight:600;
+    box-shadow:none
+  }
+  .neoShell .tcQuickActions button:nth-child(2) {
+    background:#f2f7ec
+  }
+  .neoShell .tcQuickActions button svg {
+    width:18px;
+    height:18px;
+    flex-shrink:0
+  }
+  .neoShell .tcQuickActions .tcQuickLong {
+    display:none
+  }
+  .neoShell .tcQuickActions .tcQuickShort {
+    display:inline
+  }
+  .neoShell .tcActivityStrip {
+    width:calc(100% - 28px);
+    min-height:44px;
+    margin-bottom:0;
+    padding:0 8px;
+    gap:3px;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;
+    border-radius:9px
+  }
+  .neoShell .tcActivityStrip>button {
+    display:flex;
+    gap:4px;
+    min-height:44px;
+    padding:2px 1px;
+    font-size:10.5px;
+    line-height:1.1;
+    align-items:center
+  }
+  .neoShell .tcActivityStrip b {
+    font-size:14px
+  }
+  .neoShell .tcActivityCenterButton svg {
+    width:17px;
+    height:17px
+  }
+}
+@media(max-width:359px) {
+  .neoShell .tcQuickActions {
+    gap:4px
+  }
+  .neoShell .tcQuickActions button {
+    font-size:11px
+  }
+  .neoShell .neoSearchDock {
+    grid-template-columns:minmax(62px,1fr) 84px 54px
+  }
+}
 /* iOS keeps 16px text inputs to avoid focus zoom; viewport zoom stays available. */
-@supports(-webkit-touch-callout:none){@media(max-width:800px){.neoShell .neoSearchDock input,.neoShell .neoFilterSearch input{font-size:16px}}}
+@supports(-webkit-touch-callout:none) {
+  @media(max-width:800px) {
+    .neoShell .neoSearchDock input,.neoShell .neoFilterSearch input {
+      font-size:16px
+    }
+  }
+}

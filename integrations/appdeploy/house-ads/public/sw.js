@@ -1,4 +1,4 @@
-const CACHE='trabajo-cerca-shell-rc20261022';
+const CACHE='trabajo-cerca-shell-density-20261023c';
 const SHARE_CACHE='trabajo-cerca-share-v1';
 const CORE=['./','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 self.addEventListener('install',event=>{

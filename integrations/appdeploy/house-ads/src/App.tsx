@@ -939,6 +939,7 @@ function App() {
   const [filterMode, setFilterMode] = useState<FilterMode>('work');
   const [q, setQ] = useState('');
   const [area, setArea] = useState('Todas');
+  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
   const [showCoverage, setShowCoverage] = useState(false);
   const [notice, setNotice] = useState('');
   const [radarStatus, setRadarStatus] = useState<RadarStatus | null>(null);
@@ -1340,19 +1341,19 @@ function App() {
           <div className='neoHeroGlow neoGlowB' />
           <div className='neoHeroCopy'>
             <h1>Trabajo y servicios <em>cerca de ti.</em></h1>
-            <p className='neoHeroLead'>Empleo, servicios y personas de tu zona.</p>
+            <p className='neoHeroLead'>Ofertas de empleo, oficios y servicios locales.</p>
 
             <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setResultPage(0);setSection('opportunities');setArea('Todas');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
               <Search />
-              <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='¿Qué buscas?' />
+              <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='Buscar…' />
               <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
               <button type='submit'>Buscar <ArrowRight /></button>
             </form>
             <nav className='tcQuickActions' aria-label='Qué necesitas hacer'>
-              <button onClick={()=>navigateResults('opportunities')}><Search aria-hidden='true'/><span>Buscar trabajo</span></button>
-              <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrecer mi trabajo</span></button>
-              <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Necesito contratar</span></button>
-              <button onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span>Promocionar negocio</span></button>
+              <button aria-label='Buscar trabajo' onClick={()=>navigateResults('opportunities')}><Search aria-hidden='true'/><span className='tcQuickLong'>Buscar trabajo</span><span className='tcQuickShort'>Empleos</span></button>
+              <button aria-label='Ofrecer mi trabajo' onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span className='tcQuickLong'>Ofrecer mi trabajo</span><span className='tcQuickShort'>Ofrecer</span></button>
+              <button aria-label='Necesito contratar' onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span className='tcQuickLong'>Necesito contratar</span><span className='tcQuickShort'>Contratar</span></button>
+              <button aria-label='Promocionar negocio' onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span className='tcQuickLong'>Promocionar negocio</span><span className='tcQuickShort'>Anunciar</span></button>
             </nav>
           </div>
         </section>
@@ -1375,17 +1376,20 @@ function App() {
           </div>
 
           <div className='neoControlDeck'>
-            <div className='neoTabs'>
-              <button className={section === 'opportunities' ? 'active' : ''} onClick={() => navigateResults('opportunities')}><Briefcase /> Empleos</button>
-              <button className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch /> Personas disponibles <b>{feedComplete?items.filter(item=>item.kind==='worker_available'&&!item.review&&matchesTerritorialView(item,place,places)).length:'…'}</b></button>
-              <button className={section === 'needs' ? 'active' : ''} onClick={() => navigateResults('needs')}><Users /> Necesitan gente</button>
-              <button className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => navigateResults('services')}><Wrench /> Servicios</button>
+            <div className='neoTabs' role='group' aria-label='Tipos de oportunidades'>
+              <button type='button' aria-label='Empleos' aria-pressed={section==='opportunities'} className={section === 'opportunities' ? 'active' : ''} onClick={() => navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>
+              <button type='button' aria-label='Personas disponibles' aria-pressed={section==='people'} className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch aria-hidden='true'/><span className='tcTabLong'>Personas disponibles</span><span className='tcTabShort'>Personas</span><b>{feedComplete?items.filter(item=>item.kind==='worker_available'&&!item.review&&matchesTerritorialView(item,place,places)).length:'…'}</b></button>
+              <button type='button' aria-label='Necesitan gente' aria-pressed={section==='needs'} className={section === 'needs' ? 'active' : ''} onClick={() => navigateResults('needs')}><Users aria-hidden='true'/><span className='tcTabLong'>Necesitan gente</span><span className='tcTabShort'>Contratan</span></button>
+              <button type='button' aria-label='Servicios' aria-pressed={section==='services'} className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => navigateResults('services')}><Wrench aria-hidden='true'/><span>Servicios</span></button>
             </div>
             <div className='neoFilters'>
-              <label className='neoFilterSearch'><Search /><input value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' /></label>
-              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de resultados</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
-              <label><Building2 /><span className='tcVisuallyHidden'>Área laboral</span><select value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
-              {section==='opportunities'&&<button className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles /> Incorporadas en 7 días</button>}
+              <label className='neoFilterSearch'><Search aria-hidden='true'/><input aria-label='Buscar por cargo, oficio o empresa' value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo, oficio o empresa' /></label>
+              <button type='button' className='tcFiltersToggle' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}>Filtros{(area!=='Todas'||onlyNew)?' •':''}</button>
+              <div className='tcAdvancedFilters' id='tc-advanced-filters' data-open={advancedFiltersOpen}>
+                <label><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de resultados</span><select aria-label='Comuna de resultados' value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
+                <label><Building2 aria-hidden='true'/><span className='tcVisuallyHidden'>Área laboral</span><select aria-label='Área laboral' value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
+                {section==='opportunities'&&<button type='button' className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles aria-hidden='true'/> Incorporadas en 7 días</button>}
+              </div>
             </div>
           </div>
 
@@ -1412,7 +1416,7 @@ function App() {
                     </div>
                     <div className='neoJobFoot'>
                       <span className='tcOfferDates'><span>Original: {shortDate(item.sourcePublishedAt)||item.date||'Fecha no informada'}</span>{item.firstPublishedAt&&<span>En Trabajo Cerca: {shortDate(item.firstPublishedAt)}</span>}</span>
-                      <button onClick={() => setSelected(item)}>Ver oportunidad <ArrowRight /></button>
+                      <button aria-label={'Ver oportunidad: '+item.title} onClick={() => setSelected(item)}>Ver oferta <ArrowRight /></button>
                     </div>
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}
                   </div>
@@ -1836,4 +1840,3 @@ function App() {
 }
 
 export default App;
-

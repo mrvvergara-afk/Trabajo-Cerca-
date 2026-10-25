@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-25",
+  "projectId": 639798,
+  "apiHost": "https://us.i.posthog.com",
+  "anonymizeIps": true,
+  "sessionRecordingOptIn": false,
+  "billingReadAvailable": false,
+  "billingPlanVerified": false,
+  "pricingDocumentation": "https://posthog.com/docs/product-analytics/pricing",
+  "publishedMonthlyFreeEvents": 1000000,
+  "candidateDailyGlobalLimit": 2000,
+  "candidateExternalDefault": "disabled until POSTHOG_ENABLE_INGESTION=free-tier-confirmed",
+  "requiredTokenSecret": "POSTHOG_PROJECT_KEY",
+  "syntheticEventsSent": 0
+}

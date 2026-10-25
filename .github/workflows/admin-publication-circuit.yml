@@ -1,0 +1,44 @@
+name: Verify administrative publication circuit
+on:
+  push:
+    branches: [repair/admin-publication-circuit-2026-10-25]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: admin-publication-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Existing offline PDF and OCR test dependencies
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Offline behavioral regression suites
+        run: |
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite" || exit 1; done
+      - name: Candidate build, typed SDK contract, real read-only source observations and browser tests
+        working-directory: integrations/appdeploy/house-ads
+        env:
+          CLOSURE_CHECKS: '1'
+          ADMIN_PUBLICATION_CHECKS: '1'
+        run: node qa/run-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: admin-publication-circuit
+          path: integrations/appdeploy/house-ads/qa-output/
+          retention-days: 7

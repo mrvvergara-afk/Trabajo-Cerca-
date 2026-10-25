@@ -1,6 +1,7 @@
 import { db, storage, json, error, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 
 export const BACKUP_TABLES = [
+  'radar_review_inbox','radar_admin_verification_control','radar_admin_verification_queue',
   'growth_usage_events','growth_usage_metrics','growth_usage_visitors',
   'growth_commercial_metrics', 'growth_commercial_events', 'growth_commercial_config', 'growth_trial_entitlements', 'growth_commercial_audit', 'growth_house_config', 'growth_house_metrics', 'growth_house_events', 'community_posts', 'free_public_run_leases', 'free_public_source_reads', 'free_public_source_runs',
   'growth_advertiser_leads', 'growth_campaigns', 'growth_social_queue', 'hard_exa_cursor', 'motor3_web_cursor',

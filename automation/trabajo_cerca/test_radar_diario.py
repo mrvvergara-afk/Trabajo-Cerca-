@@ -27,7 +27,7 @@ class DailyRadarTests(unittest.TestCase):
         self.assertNotEqual(radar_diario.canonical('https://municipalidadquilaco.cl/w/?page_id=100'),
                             radar_diario.canonical('https://municipalidadquilaco.cl/w/?page_id=200'))
         self.assertEqual(radar_diario.canonical('http://evil.test/'), '')
-        self.assertEqual(radar_diario.canonical('https://trusted.test@evil.test/a'), 'https://evil.test/a')
+        self.assertEqual(radar_diario.canonical('https://trusted.test@evil.test/a'), '')
 
     def test_dayparts_in_santiago(self):
         zone=radar_diario.LOCAL_TIMEZONE

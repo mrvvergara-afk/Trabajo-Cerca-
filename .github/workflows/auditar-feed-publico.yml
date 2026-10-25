@@ -1,0 +1,30 @@
+name: Trabajo Cerca - Auditoria feed publico sin escrituras
+on:
+  push:
+    branches: [poc/lector-documental-gratis-2026-10-25]
+    paths:
+      - tools/auditar_feed_publico.py
+      - .github/workflows/auditar-feed-publico.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Consultar feed público existente y anonimizar
+        run: python tools/auditar_feed_publico.py
+      - name: Guardar evidencia sin publicar avisos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-feed-publico
+          path: reporte_feed_publico.json
+          retention-days: 3

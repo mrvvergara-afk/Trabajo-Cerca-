@@ -31,6 +31,11 @@ class LectorDocumentalTests(unittest.TestCase):
         self.assertEqual(classify("Municipalidad anuncia talleres de capacitación en soldadura.",
                                   dt.date(2026, 10, 25))["decision"], "sin_evidencia_suficiente")
 
+    def test_manifest_endpoint_is_public_app_and_read_only(self):
+        from trabajo_cerca_lector_documental import ENDPOINT
+        self.assertEqual(ENDPOINT,
+          "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/api/ops/free-public-sources")
+
     def test_image_reader_invokes_local_ocr_only(self):
         with patch("trabajo_cerca_lector_documental.ocr_bytes", return_value="Oferta laboral Victoria"):
             text, mode = extract_text(b"image_fixture", "image/png", "https://victoriachile.cl/afiche.png")

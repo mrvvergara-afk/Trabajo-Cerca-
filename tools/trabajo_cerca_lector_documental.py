@@ -50,6 +50,11 @@ def allowed(url: str) -> bool:
         return False
 
 
+def maximum_for_url(url: str) -> int:
+    """Solo PDF autorizados pueden alcanzar 16 MiB; imágenes y HTML, 6 MB."""
+    return 16 * 1024 * 1024 if urlsplit(url).path.lower().endswith(".pdf") else 6000000
+
+
 def fetch_bytes(url: str, maximum: int = 6000000) -> tuple[bytes, str]:
     # No redirects. Network-level proxy must also deny private IP targets.
     req = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/pdf,text/html,text/plain"})
@@ -221,7 +226,7 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
     if not robots_ok(url):
         return {**base, "decision": "robots_no_confirmado"}
     try:
-        content, mime = fetch_bytes(url)
+        content, mime = fetch_bytes(url, maximum_for_url(url))
         text, extraction = extract_text(content, mime, url)
         result = classify(text, today)
         return {**base, **result, "extractor": extraction,

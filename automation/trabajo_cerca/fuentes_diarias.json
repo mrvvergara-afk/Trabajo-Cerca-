@@ -1,0 +1,662 @@
+{
+  "schema": "trabajo-cerca.sources-daily.v1",
+  "territories": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Renaico",
+    "Mininco",
+    "Los Sauces",
+    "Purén",
+    "Traiguén",
+    "Lumaco",
+    "Nacimiento",
+    "Negrete",
+    "Mulchén",
+    "Victoria",
+    "Quilaco"
+  ],
+  "seed_cutoff": "2026-10-25",
+  "seed_urls": [
+    {
+      "id": "TC-001",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569"
+    },
+    {
+      "id": "TC-002",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381"
+    },
+    {
+      "id": "TC-003",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578"
+    },
+    {
+      "id": "TC-004",
+      "work_cities": [
+        "Angol",
+        "Victoria",
+        "Traiguén"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595"
+    },
+    {
+      "id": "TC-005",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967"
+    },
+    {
+      "id": "TC-006",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481"
+    },
+    {
+      "id": "TC-007",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746"
+    },
+    {
+      "id": "TC-008",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725"
+    },
+    {
+      "id": "TC-009",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270"
+    },
+    {
+      "id": "TC-010",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752"
+    },
+    {
+      "id": "TC-011",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735"
+    },
+    {
+      "id": "TC-012",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738"
+    },
+    {
+      "id": "TC-013",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741"
+    },
+    {
+      "id": "TC-014",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742"
+    },
+    {
+      "id": "TC-015",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374"
+    },
+    {
+      "id": "TC-016",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109303504/asistente-de-visual-angol"
+    },
+    {
+      "id": "TC-017",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109467988/administrador-de-huerto-angol"
+    },
+    {
+      "id": "TC-018",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109456638/supervisor-de-terreno-angol"
+    },
+    {
+      "id": "TC-019",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109453960/supervisores-de-cuadrilla-angol"
+    },
+    {
+      "id": "TC-020",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109456558/supervisores-de-calidad-angol"
+    },
+    {
+      "id": "TC-021",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109828727/cosechero-frutales-traiguen"
+    },
+    {
+      "id": "TC-022",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/107893007/trabajos-de-mantencion-huerto-fruticola-traiguen"
+    },
+    {
+      "id": "TC-023",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas/"
+    },
+    {
+      "id": "TC-024",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://traiguencity.cl/abren-concursos-publicos-para-proveer-los-cargos-de-director-en-el-liceo-lucila-godoy-alcayaga-y-la-escuela-especial-las-lilas-de-traiguen/"
+    },
+    {
+      "id": "TC-025",
+      "work_cities": [
+        "Angol",
+        "Victoria",
+        "Traiguén"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-en-terreno-zona-victoria-angol-traiguen-3915323"
+    },
+    {
+      "id": "TC-026",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109901397/cajera-administrativa-victoria"
+    },
+    {
+      "id": "TC-027",
+      "work_cities": [
+        "Collipulli"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110102473/visual-merchandising-collipulli"
+    },
+    {
+      "id": "TC-028",
+      "work_cities": [
+        "Collipulli"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110041583/conductor-traslado-de-pacientes-collipulli"
+    },
+    {
+      "id": "TC-029",
+      "work_cities": [
+        "Collipulli"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110226625/jefe-de-tienda-collipulli"
+    },
+    {
+      "id": "TC-030",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-produccion-de-miel-en-la-comuna-de-mulchen-3919935"
+    },
+    {
+      "id": "TC-031",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110253332/supervisor-a-tecnico-a-de-obra-proyecto-mulchen"
+    },
+    {
+      "id": "TC-032",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110032101/operador-de-grua-horquilla-mulchen"
+    },
+    {
+      "id": "TC-033",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110036216/agente-atencion-al-cliente-mulchen-mulchen"
+    },
+    {
+      "id": "TC-034",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109209990/conductor-profesional-negrete"
+    },
+    {
+      "id": "TC-035",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109327893/vulcanizador-empresa-de-transporte-forestal-negrete"
+    },
+    {
+      "id": "TC-036",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110128066/jefe-de-taller-negrete"
+    },
+    {
+      "id": "TC-037",
+      "work_cities": [
+        "Nacimiento"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110103196/analista-de-sistemas-nacimiento"
+    },
+    {
+      "id": "TC-038",
+      "work_cities": [
+        "Los Sauces"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109379051/ingeniero-en-electricidad-en-terreno-los-sauces"
+    },
+    {
+      "id": "TC-039",
+      "work_cities": [
+        "Quilaco"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109378828/ingeniero-en-telecomunicaciones-en-terreno-quilaco"
+    },
+    {
+      "id": "TC-040",
+      "work_cities": [
+        "Lumaco"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-administracion-gastronomica-3919940"
+    }
+  ],
+  "discovery": [
+    {
+      "id": "M01",
+      "territory": "Quilaco",
+      "url": "https://municipalidadquilaco.cl/w/?page_id=1468",
+      "type": "municipal"
+    },
+    {
+      "id": "M02",
+      "territory": "Mulchén",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+      "type": "municipal"
+    },
+    {
+      "id": "M03",
+      "territory": "Negrete",
+      "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+      "type": "municipal"
+    },
+    {
+      "id": "M04",
+      "territory": "Victoria",
+      "url": "https://victoriachile.cl/category/omil/",
+      "type": "municipal"
+    },
+    {
+      "id": "M05",
+      "territory": "Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "type": "municipal"
+    },
+    {
+      "id": "M06",
+      "territory": "Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "type": "municipal"
+    },
+    {
+      "id": "M07",
+      "territory": "Lumaco",
+      "url": "https://munilumaco.cl/",
+      "type": "municipal"
+    },
+    {
+      "id": "M08",
+      "territory": "Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "type": "municipal"
+    },
+    {
+      "id": "M09",
+      "territory": "Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "type": "municipal"
+    },
+    {
+      "id": "M10",
+      "territory": "Purén",
+      "url": "https://munipuren.cl/llamados-a-concurso-2026/",
+      "type": "municipal"
+    },
+    {
+      "id": "M11",
+      "territory": "Ercilla",
+      "url": "https://muniercilla.cl/",
+      "type": "municipal"
+    },
+    {
+      "id": "M12",
+      "territory": "Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "type": "municipal"
+    },
+    {
+      "id": "M13",
+      "territory": "Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "type": "municipal"
+    },
+    {
+      "id": "M14",
+      "territory": "Mininco",
+      "url": "https://municipalidadcollipulli.cl/",
+      "type": "municipal"
+    },
+    {
+      "id": "P01",
+      "territory": "Traiguén",
+      "url": "https://traiguencity.cl/noticias/traiguen/laboral-traiguen/",
+      "type": "press"
+    },
+    {
+      "id": "P02",
+      "territory": "Traiguén",
+      "url": "https://traiguencity.cl/noticias/traiguen/general/",
+      "type": "press"
+    },
+    {
+      "id": "P03",
+      "territory": "Angol",
+      "url": "https://www.angolnoticiasnew.cl/",
+      "type": "press"
+    },
+    {
+      "id": "P04",
+      "territory": "Malleco",
+      "url": "https://www.malleco7.cl/",
+      "type": "press"
+    },
+    {
+      "id": "P05",
+      "territory": "Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "type": "press"
+    },
+    {
+      "id": "P06",
+      "territory": "Lumaco",
+      "url": "https://www.radionativa.cl/",
+      "type": "radio"
+    },
+    {
+      "id": "P07",
+      "territory": "Collipulli",
+      "url": "https://radioviaducto.cl/",
+      "type": "radio"
+    },
+    {
+      "id": "D01",
+      "territory": "Región",
+      "url": "https://sence.gob.cl/personas/omil",
+      "type": "directory"
+    },
+    {
+      "id": "D02",
+      "territory": "Chile",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "type": "portal"
+    },
+    {
+      "id": "D03",
+      "territory": "Chile",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "type": "portal"
+    }
+  ],
+  "social_reference": [
+    {
+      "id": "S01",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/omil.angol.5/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S02",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.instagram.com/omilangol2026/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S03",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S04",
+      "work_cities": [
+        "Collipulli",
+        "Mininco"
+      ],
+      "url": "https://www.facebook.com/MunicipioCollipulli/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S05",
+      "work_cities": [
+        "Ercilla"
+      ],
+      "url": "https://www.facebook.com/municipio.ercilla/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S06",
+      "work_cities": [
+        "Renaico"
+      ],
+      "url": "https://www.facebook.com/p/OMIL-Renaico-100068789023921/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S07",
+      "work_cities": [
+        "Renaico"
+      ],
+      "url": "https://www.facebook.com/municipalidadrenaico/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S08",
+      "work_cities": [
+        "Los Sauces"
+      ],
+      "url": "https://www.facebook.com/MuniLosSauces/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S09",
+      "work_cities": [
+        "Purén"
+      ],
+      "url": "https://www.facebook.com/omilpurenaraucania/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S10",
+      "work_cities": [
+        "Purén"
+      ],
+      "url": "https://www.facebook.com/MunicipalidadDePuren/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S11",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://www.facebook.com/omil.traiguen.5/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S12",
+      "work_cities": [
+        "Lumaco"
+      ],
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S13",
+      "work_cities": [
+        "Nacimiento"
+      ],
+      "url": "https://www.facebook.com/p/OMIL-Municipalidad-de-Nacimiento-100072332712701/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S14",
+      "work_cities": [
+        "Nacimiento"
+      ],
+      "url": "https://www.facebook.com/MunicipalidadDeNacimiento/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S15",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.facebook.com/NegreteOmil/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S16",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.facebook.com/MuniNegreteCL/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S17",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.facebook.com/munimulchen/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S18",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.facebook.com/omil.victoria/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S19",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.instagram.com/omil_victoria/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S20",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.facebook.com/victoriachile/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S21",
+      "work_cities": [
+        "Malleco"
+      ],
+      "url": "https://www.facebook.com/RadioNativaCl/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S22",
+      "work_cities": [
+        "Los Sauces"
+      ],
+      "url": "https://www.facebook.com/Canal8LosSaucesTV/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S23",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/groups/6118694138210991/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S24",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/groups/empleosenangol.arau/",
+      "mode": "manual_or_authorized_api_only"
+    },
+    {
+      "id": "S25",
+      "work_cities": [
+        "Nacimiento",
+        "Negrete"
+      ],
+      "url": "https://www.facebook.com/p/OMIL-Territorio-Biobio-Centro-100072292644529/",
+      "mode": "manual_or_authorized_api_only"
+    }
+  ],
+  "rules": {
+    "max_published_age_days": 20,
+    "no_auto_publish": true,
+    "no_new_paid_providers": true,
+    "read_only": true
+  }
+}

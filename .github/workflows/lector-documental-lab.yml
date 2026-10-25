@@ -39,6 +39,8 @@ jobs:
           python -m pip install --disable-pip-version-check --quiet 'pymupdf>=1.24,<2' 'pytesseract>=0.3.10,<1' 'pillow>=10,<13'
       - name: Pruebas locales con datos sinteticos
         run: python -m unittest discover -s tools -p 'test_lector_documental.py' -v
+      - name: Diagnóstico de accesibilidad API y guardia administrativa, sin credenciales
+        run: python tools/probe_appdeploy_api.py
       - name: Lector de muestra municipal pública, sin dependencia de API
         run: |
           python tools/trabajo_cerca_lector_documental.py \
@@ -64,5 +66,6 @@ jobs:
             reporte_documental.json
             reporte_municipal.json
             reporte_descubrimiento.json
+            diagnostico_api.json
           if-no-files-found: ignore
           retention-days: 7

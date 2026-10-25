@@ -248,28 +248,33 @@ def classify(text: str, today: dt.date | None = None) -> dict:
             "preview": excerpt}
 
 
+class ArticleDateParser(HTMLParser):
+    """Use only explicit author-published HTML metadata or article time tags."""
+    def __init__(self):
+        super().__init__()
+        self.published: dt.date | None = None
+
+    def handle_starttag(self, tag, attrs):
+        if self.published:
+            return
+        data = dict(attrs)
+        stamp = None
+        if tag == "meta" and (data.get("property") in ("article:published_time", "datePublished") or
+                              data.get("name") in ("pubdate", "datePublished")):
+            stamp = data.get("content")
+        elif tag == "time" and data.get("datetime"):
+            stamp = data["datetime"]
+        if isinstance(stamp, str):
+            try:
+                self.published = dt.date.fromisoformat(stamp[:10])
+            except ValueError:
+                pass
+
+
 def verified_article_date(html: str) -> dt.date | None:
-    """Read publication date from publisher markup, never from an unrelated footer date."""
-    metadata = re.search(
-        r'<meta\\b[^>]*?(?:property|name)\\s*=\\s*["\\\'](?:article:published_time|datePublished|pubdate)["\\\'][^>]*?content\\s*=\\s*["\\\'](20\\d{2}-\\d{2}-\\d{2})',
-        html[:40000], re.I
-    )
-    if metadata is None:
-        metadata = re.search(
-            r'<meta\\b[^>]*?content\\s*=\\s*["\\\'](20\\d{2}-\\d{2}-\\d{2})[^"\\\']*["\\\'][^>]*?(?:property|name)\\s*=\\s*["\\\'](?:article:published_time|datePublished|pubdate)',
-            html[:40000], re.I
-        )
-    if metadata is None:
-        metadata = re.search(
-            r'<time\\b[^>]*?datetime\\s*=\\s*["\\\'](20\\d{2}-\\d{2}-\\d{2})',
-            html[:50000], re.I
-        )
-    if not metadata:
-        return None
-    try:
-        return dt.date.fromisoformat(metadata.group(1))
-    except ValueError:
-        return None
+    parsed = ArticleDateParser()
+    parsed.feed(html[:120000])
+    return parsed.published
 
 
 def read_one(entry: dict, today: dt.date | None = None) -> dict:

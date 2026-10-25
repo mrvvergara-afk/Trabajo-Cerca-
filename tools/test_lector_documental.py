@@ -22,6 +22,10 @@ class LectorDocumentalTests(unittest.TestCase):
         text = "CONVOCATORIA LABORAL. Se necesita persona para Ercilla. Postular hasta el 23/10/2026."
         self.assertEqual(classify(text, dt.date(2026, 10, 25))["decision"], "plazo_vencido_no_publicar")
 
+    def test_chilean_deadline_with_del(self):
+        self.assertEqual(parse_deadline("Postulación hasta 26 de octubre del 2026"),
+                         dt.date(2026, 10, 26))
+
     def test_recent_candidate_always_requires_review(self):
         # Datos deliberadamente ficticios de prueba; nunca se transmiten a la aplicación.
         text = "OFERTA LABORAL. Se necesita pioneta para Victoria. Postular hasta el 26/10/2026."

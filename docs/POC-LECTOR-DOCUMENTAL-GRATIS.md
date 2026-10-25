@@ -35,6 +35,8 @@ python tools/trabajo_cerca_lector_documental.py --input inventario.json --max-it
 
 **Siguiente paso, solo después de obtener resultados reales:** enlazar un proceso de revisión/autorización y publicación con recibos de origen, deduplicación y fecha de vencimiento. No reactivar proveedores pagados ni habilitar endpoints de escritura anónimos.
 
+El workflow ejecuta primero una muestra acotada de fuentes municipales de URL pública, y diagnostica por separado la ruta interna de la cola. La prueba de la cola se registra como fallo si devuelve HTML en vez de JSON; la prueba sobre fuentes públicas puede finalizar aunque esa dependencia no esté accesible.
+
 El workflow puede ejecutarse al abrir un PR borrador hacia main, sin fusionar archivos. Los trabajos `push` están acotados a esta rama y la acción no tiene permiso de escritura.
 
 Este PoC no está integrado todavía al motor diario. No cuenta como publicaciones nuevas.

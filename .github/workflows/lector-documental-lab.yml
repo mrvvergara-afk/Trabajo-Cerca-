@@ -8,6 +8,7 @@ on:
       - tools/test_lector_documental.py
       - tools/descubrir_ofertas_municipales.py
       - tools/test_descubrir_ofertas_municipales.py
+      - tools/auditar_feed_publico.py
       - tools/conciliar_prensa_local.py
       - tools/test_conciliar_prensa.py
       - tools/test_candidatos_prensa.py
@@ -22,6 +23,7 @@ on:
       - tools/test_lector_documental.py
       - tools/descubrir_ofertas_municipales.py
       - tools/test_descubrir_ofertas_municipales.py
+      - tools/auditar_feed_publico.py
       - tools/conciliar_prensa_local.py
       - tools/test_conciliar_prensa.py
       - tools/test_candidatos_prensa.py
@@ -93,6 +95,8 @@ jobs:
           python tools/conciliar_prensa_local.py \
             --input reporte_prensa_local.json reporte_prensa_directa.json \
             --output reporte_candidatos_unicos.json
+      - name: Leer inventario real desde API pública sin modificarlo
+        run: python tools/auditar_feed_publico.py
       - name: Adjuntar evidencia de prueba
         if: always()
         uses: actions/upload-artifact@v4
@@ -108,5 +112,6 @@ jobs:
             reporte_prensa_directa.json
             diagnostico_robots.json
             reporte_candidatos_unicos.json
+            reporte_feed_publico.json
           if-no-files-found: ignore
           retention-days: 7

@@ -18,7 +18,7 @@ type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; fir
 type Manifest = Summary & { schema:2; updatedAt:string; pages:PageRef[]; pageCount:number };
 type Build = Manifest & { source:FeedSource | 'complete'; nextToken?:string };
 type Change = { source:FeedSource; sourceId:string; queuedAt:string };
-type Control = Stored & { manifestId?:string;previousManifestId?:string };
+type Control = { manifestId?:string;previousManifestId?:string;updatedAt?:string };
 type Projector = {
   revision?:string;
   reconcileManifestId?:string;

@@ -108,6 +108,8 @@ type ListingRecord = {
   createdAt: string;
   contact?: string;
   contactLabel?: string;
+  contactPublicationConsent?:boolean;
+  contactConsentAt?:string;
   ownerToken?: string;
   socialEvidence?: SocialEvidence;
   sourceValidThrough?:string | null;
@@ -258,7 +260,7 @@ async function relayAnalytics(event: string, distinctId: string, properties: Rec
 
 const SEED_VERSION = '2026-10-06-v17-live-benchmark';
 const SOURCE_VERSION = '2026-10-06-radar-v17-web-discovery';
-const PILOT = [...PRIMARY_PLACES];
+const PILOT:string[] = [...PRIMARY_PLACES];
 const TRAVEL_HUBS = COMPLEMENTARY_PLACES;
 const MARKET_PLACES = WORK_PLACES;
 const SOURCE_HUBS = ['Los Ángeles','Temuco','Lautaro','Concepción','Chillán'] as const;
@@ -1247,7 +1249,7 @@ async function enrichRadarCandidates(limit=40) {
   const knownSignatures = new Set(radarJobs.items.map(item => candidateSignature(item.title, item.workCommunes)));
   const selected = candidates.items
     .filter(item => item.active && item.kind === 'candidate' && Boolean(item.url))
-    .filter(item => isSpecificJobResult(item.title, item.url) && !knownUrls.has(item.url))
+    .filter(item => isSpecificJobResult(item.title, item.url || '') && !knownUrls.has(item.url))
     .sort((a,b) => (Date.parse(a.enrichmentCheckedAt || '') || 0) - (Date.parse(b.enrichmentCheckedAt || '') || 0))
     .slice(0, limit);
   const checkedAt = new Date().toISOString();
@@ -2368,7 +2370,7 @@ export const notificationSweepHandler = async () => {
   return { statusCode:200 };
 };
 
-export const v14DirectSourcesHandler = async () => { await finishPublicSweep(); return { statusCode:200 }; };
+export const v14DirectSourcesHandler = async () => { await finishPublicSweep(PILOT); return { statusCode:200 }; };
 export const v14TavilyGapsHandler = async () => { await finishTavilySweep(PILOT, true); return { statusCode:200 }; };
 export const v16TerritorialSourceHandler = async () => {
   const cursorRows=await db.list<{position:number}>('motor3_web_cursor',{limit:1});

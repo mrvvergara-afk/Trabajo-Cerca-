@@ -122,6 +122,43 @@ def clean_text(raw: str) -> str:
     return re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
 
 
+class ArticleTextParser(HTMLParser):
+    """Limit news analysis to the article body; exclude login, menu and related posts."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.depth = 0
+        self.capture = None
+        self.parts: list[str] = []
+        self.hidden = 0
+
+    def handle_starttag(self, tag, attrs):
+        self.depth += 1
+        a = dict(attrs)
+        classes = str(a.get("class") or "").split()
+        if self.capture is None and tag in ("article", "main", "div"):
+            if tag == "article" or "td-post-content" in classes or "entry-content" in classes:
+                self.capture = self.depth
+        if tag in ("script", "style", "noscript"):
+            self.hidden += 1
+
+    def handle_data(self, data):
+        if self.capture is not None and self.depth >= self.capture and not self.hidden:
+            self.parts.append(data)
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style", "noscript") and self.hidden:
+            self.hidden -= 1
+        if self.capture == self.depth:
+            self.capture = None
+        self.depth = max(0, self.depth - 1)
+
+
+def article_body_text(raw: str) -> str:
+    parser = ArticleTextParser()
+    parser.feed(raw[:700000])
+    return re.sub(r"\\s+", " ", " ".join(parser.parts)).strip()
+
+
 def ocr_bytes(body: bytes) -> str:
     """OCR español local, acotado. No utiliza APIs, no almacena imágenes."""
     try:
@@ -223,6 +260,15 @@ def classify(text: str, today: dt.date | None = None) -> dict:
                          "convocatoria laboral", "llamado a concurso", "postular",
                          "requisitos del cargo", "enviar currículum")
             if x in folded]
+    individual_roles = bool(re.search(
+        r"(?:profesor(?:a|/a)?\\s+de\\s+(?:educaci[oó]n|matem[aá]ticas)|"
+        r"director(?:a|/a)?\\s+(?:del?\\s+)?(?:liceo|escuela)|"
+        r"(?:cargos|puestos)\\s+(?:requeridos|disponibles)\\s*:?|"
+        r"concurso[s]?\\s+p[uú]blicos?\\s+para\\s+proveer\\s+(?:los\\s+)?cargos)",
+        folded, re.I))
+    application = bool(re.search(
+        r"(?:postul|antecedentes|curr[ií]culum|enviar\\s+(?:su\\s+)?cv|"
+        r"proceso\\s+de\\s+reclutamiento)", folded, re.I))
     places = [x for x in WORK_TOWNS if re.search(r"\b" + re.escape(x) + r"\b", text, re.I)]
     expires = parse_deadline(text)
     source_date = parse_source_date(text)
@@ -232,9 +278,9 @@ def classify(text: str, today: dt.date | None = None) -> dict:
         state = "plazo_vencido_no_publicar"
     elif source_date and source_date < today - dt.timedelta(days=20):
         state = "documento_antiguo_no_publicar"
-    elif len(cues) >= 2 and not source_date:
+    elif (len(cues) >= 2 or (individual_roles and application)) and not source_date:
         state = "candidato_fecha_pendiente"
-    elif len(cues) >= 2:
+    elif len(cues) >= 2 or (individual_roles and application):
         state = "candidato_para_revision"
     else:
         state = "sin_evidencia_suficiente"
@@ -290,6 +336,11 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
     try:
         content, mime = fetch_bytes(url, maximum_for_url(url))
         text, extraction = extract_text(content, mime, url)
+        if mime in ("text/html", "application/xhtml+xml"):
+            focused = article_body_text(content.decode("utf-8", "replace"))
+            if len(focused) >= 140:
+                text = focused
+                extraction = "article_body_text"
         result = classify(text, today)
         if mime in ("text/html", "application/xhtml+xml"):
             original = verified_article_date(content.decode("utf-8", "replace"))

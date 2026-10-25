@@ -984,6 +984,16 @@ function App() {
   const requestGeneration=useRef(0);
   const [resultFocus,setResultFocus]=useState(0);
   const [legalView, setLegalView] = useState<LegalView>(()=>{const value=new URLSearchParams(window.location.search).get('legal');return value==='privacy'||value==='terms'?value:null;});
+  useEffect(()=>{
+    if(!installHelp)return;
+    const dialog=document.querySelector<HTMLElement>('.tcInstallGuide');if(!dialog)return;
+    const previous=document.activeElement as HTMLElement|null,overflow=document.body.style.overflow;
+    const controls=()=>[...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),a[href]')].filter(e=>e.getClientRects().length>0);
+    document.body.style.overflow='hidden';(controls()[0]||dialog).focus();
+    const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){e.preventDefault();setInstallHelp(false);}else if(e.key==='Tab'){const nodes=controls(),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};
+    document.addEventListener('keydown',key);
+    return()=>{document.removeEventListener('keydown',key);document.body.style.overflow=overflow;previous?.isConnected&&previous.focus();};
+  },[installHelp]);
   useEffect(() => {
     if (!legalView) return;
     const dialog = document.querySelector<HTMLElement>('.legalModal');
@@ -1548,7 +1558,7 @@ function App() {
 
         {showActivity&&<ActivityCenter places={places} place={place} count={scopedRecent.length} unread={scopeUnread} known={reading.known} complete={feedComplete} failed={Boolean(loadError)} onPlace={chooseLocalPlace} onOpen={unread=>{setShowActivity(false);navigateResults('opportunities',place,true,unread);}} onRefresh={()=>void load(undefined,true)} onPush={()=>{setShowActivity(false);setShowAlerts(true);}} onClose={()=>setShowActivity(false)}/>}
         {showAlerts && <AlertsPanel defaultPlace={place === 'Todas' ? homePlace : place} onClose={() => setShowAlerts(false)} onSaved={message => { setNotice(message); setShowAlerts(false); }} />}
-        {installHelp&&<div className='modal tcInstallBackdrop' role='presentation' onMouseDown={event=>{if(event.target===event.currentTarget)setInstallHelp(false);}}><div className='tcInstallGuide' role='dialog' aria-modal='true' aria-labelledby='tc-install-title'><button className='tcInstallClose' aria-label='Cerrar instrucciones' onClick={()=>setInstallHelp(false)}><X/></button><h2 id='tc-install-title'>Instala Trabajo Cerca</h2><p>Accede desde el icono de tu celular, como cualquier aplicación.</p><div><b>Android · Chrome</b><p>Abre esta página en Chrome, toca el menú ⋮ y elige «Instalar app» o «Agregar a pantalla principal».</p></div><div><b>iPhone · Safari</b><p>Abre la página en Safari, toca Compartir y selecciona «Agregar a pantalla de inicio».</p></div><small>Si estás en un navegador integrado, primero elige «Abrir en navegador». La instalación depende de las opciones disponibles en tu teléfono.</small><button className='tcInstallDone' onClick={()=>setInstallHelp(false)}>Entendido</button></div></div>}
+        {installHelp&&<div className='modal tcInstallBackdrop' role='presentation' onMouseDown={event=>{if(event.target===event.currentTarget)setInstallHelp(false);}}><div className='tcInstallGuide' tabIndex={-1} role='dialog' aria-modal='true' aria-labelledby='tc-install-title'><button className='tcInstallClose' aria-label='Cerrar instrucciones' onClick={()=>setInstallHelp(false)}><X/></button><h2 id='tc-install-title'>Instala Trabajo Cerca</h2><p>Accede desde el icono de tu celular, como cualquier aplicación.</p><div><b>Android · Chrome</b><p>Abre esta página en Chrome, toca el menú ⋮ y elige «Instalar app» o «Agregar a pantalla principal».</p></div><div><b>iPhone · Safari</b><p>Abre la página en Safari, toca Compartir y selecciona «Agregar a pantalla de inicio».</p></div><small>Si estás en un navegador integrado, primero elige «Abrir en navegador». La instalación depende de las opciones disponibles en tu teléfono.</small><button className='tcInstallDone' onClick={()=>setInstallHelp(false)}>Entendido</button></div></div>}
 
         {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. La promoción y su duración se confirmarán al aprobar el anuncio. Tu contacto no fue publicado.')} />}
 

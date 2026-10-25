@@ -228,7 +228,8 @@ def main(argv=None):
             f"- Costo de proveedores externos: **$0**. Escrituras: **0**.\n")
     (folder/'resumen.md').write_text(note, encoding='utf8')
     print(note)
-    return 0
+    # An inaccessible catalog is a failed run, never a falsely successful daily check.
+    return 2 if not feed_complete else 0
 
 
 if __name__ == '__main__':

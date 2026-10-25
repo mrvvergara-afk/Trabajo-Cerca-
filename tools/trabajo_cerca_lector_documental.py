@@ -148,19 +148,25 @@ def extract_text(body: bytes, mime: str, url: str) -> tuple[str, str]:
         except ImportError:
             return "", "pdf_dependency_missing"
         try:
-            doc = fitz.open(stream=body, filetype="pdf")
-            if len(doc) > 30:
-                return "", "pdf_over_page_budget"
-            text = " ".join(page.get_text() for page in doc)
-            if len(text.strip()) >= 140:
-                return re.sub(r"\s+", " ", text).strip(), "pdf_text"
-            # First three pages only. The remaining pages require a separate review.
-            snippets = []
-            for page in list(doc)[:3]:
-                pix = page.get_pixmap(matrix=fitz.Matrix(1.6, 1.6), alpha=False)
-                snippets.append(ocr_bytes(pix.tobytes("png")))
-            combined = re.sub(r"\s+", " ", text + " " + " ".join(snippets)).strip()
-            return combined, "pdf_ocr_local" if any(snippets) else "image_pdf_needs_ocr"
+            with fitz.open(stream=body, filetype="pdf") as doc:
+                total = len(doc)
+                if not total:
+                    return "", "pdf_empty"
+                # Large public files receive a bounded six-page PREVIEW.
+                # A preview is NEVER sufficient to approve or publish a job.
+                limit = min(total, 6 if total > 30 else 30)
+                text = " ".join(doc[i].get_text() for i in range(limit))
+                partial = total > 30
+                if len(text.strip()) >= 140:
+                    return re.sub(r"\s+", " ", text).strip(), ("pdf_preview_partial" if partial else "pdf_text")
+                snippets = []
+                for i in range(min(limit, 3)):
+                    pix = doc[i].get_pixmap(matrix=fitz.Matrix(1.6, 1.6), alpha=False)
+                    snippets.append(ocr_bytes(pix.tobytes("png")))
+                combined = re.sub(r"\s+", " ", text + " " + " ".join(snippets)).strip()
+                mode = ("pdf_preview_partial" if partial else
+                        "pdf_ocr_local" if any(snippets) else "image_pdf_needs_ocr")
+                return combined, mode
         except Exception:
             return "", "pdf_unreadable"
     if mime in ("image/jpeg", "image/png", "image/webp"):
@@ -229,6 +235,10 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
         content, mime = fetch_bytes(url, maximum_for_url(url))
         text, extraction = extract_text(content, mime, url)
         result = classify(text, today)
+        if extraction == "pdf_preview_partial":
+            # Not even a strong signal can authorize a partial PDF.
+            result = {**result, "original_classification": result["decision"],
+                      "decision": "documento_parcial_revision_obligatoria"}
         return {**base, **result, "extractor": extraction,
                 "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest(),
                 "read_at": dt.datetime.now(dt.timezone.utc).isoformat()}

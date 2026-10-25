@@ -36,7 +36,22 @@ class LectorDocumentalTests(unittest.TestCase):
     def test_recent_candidate_always_requires_review(self):
         # Datos deliberadamente ficticios de prueba; nunca se transmiten a la aplicación.
         text = "OFERTA LABORAL. Se necesita pioneta para Victoria. Postular hasta el 26/10/2026."
-        self.assertEqual(classify(text, dt.date(2026, 10, 25))["decision"], "candidato_para_revision")
+        self.assertEqual(classify(text, dt.date(2026, 10, 25))["decision"], "candidato_fecha_pendiente")
+
+    def test_old_decree_is_not_current_offer(self):
+        text = ("MUNICIPALIDAD DE LUMACO DEPARTAMENTO DE RECURSOS HUMANOS "
+                "APRUEBA LLAMADO A CONCURSOS PÚBLICOS Y BASES ADMINISTRATIVAS "
+                "DE LOS CARGOS VACANTES. Lumaco, lunes 13 de julio de 2026. "
+                "La comuna llama a concurso. Se puede postular.")
+        out = classify(text, dt.date(2026, 10, 25))
+        self.assertEqual(out["source_date_evidence"], "2026-07-13")
+        self.assertEqual(out["decision"], "documento_antiguo_no_publicar")
+
+    def test_unclear_document_date_does_not_count_as_verified(self):
+        out=classify("Oferta laboral. Se necesita personal. Postular en Victoria.",
+                     dt.date(2026,10,25))
+        self.assertFalse(out["publication_date_confirmed"])
+        self.assertEqual(out["decision"], "candidato_fecha_pendiente")
 
     def test_news_is_not_job(self):
         self.assertEqual(classify("Municipalidad anuncia talleres de capacitación en soldadura.",

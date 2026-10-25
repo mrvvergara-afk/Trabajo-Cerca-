@@ -1,0 +1,37 @@
+{
+  "documentWork": {
+    "schema": "trabajo-cerca.document-work.v1",
+    "items": [
+      {
+        "url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+        "source": "Municipalidad de Traiguén",
+        "publisher_page": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "kind": "document"
+      },
+      {
+        "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "source": "Municipalidad de Traiguén",
+        "publisher_page": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "kind": "local_page"
+      },
+      {
+        "url": "https://victoriachile.cl/category/omil/",
+        "source": "Municipalidad / OMIL Victoria",
+        "publisher_page": "https://victoriachile.cl/category/omil/",
+        "kind": "local_page"
+      },
+      {
+        "url": "https://munipuren.cl/llamados-a-concurso-2026/",
+        "source": "Municipalidad de Purén",
+        "publisher_page": "https://munipuren.cl/llamados-a-concurso-2026/",
+        "kind": "local_page"
+      },
+      {
+        "url": "https://muniercilla.cl/",
+        "source": "Municipalidad de Ercilla",
+        "publisher_page": "https://muniercilla.cl/",
+        "kind": "local_page"
+      }
+    ]
+  }
+}

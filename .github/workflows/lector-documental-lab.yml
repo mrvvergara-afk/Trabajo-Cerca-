@@ -53,6 +53,7 @@ jobs:
           python tools/diagnosticar_robots.py
       - name: Auditar antigüedad estimada y fuentes de las 52 referencias reales
         run: python tools/auditar_cola_documental.py
+      # Se usan URLs canónicas sin www, validadas con robots.txt del mismo medio.
       - name: Descubrimiento en prensa local de Traiguén, controlado y sin publicaciones
         run: |
           python tools/descubrir_ofertas_municipales.py \

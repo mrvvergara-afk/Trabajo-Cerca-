@@ -254,7 +254,7 @@ function cleanAnalyticsProperties(input: unknown): Record<string, string | numbe
 
 async function relayAnalytics(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
   if (!SECURITY_POLICY.externalAnalytics) return false;
-  const projectKey=await secrets.get('POSTHOG_PROJECT_KEY');
+  const projectKey=await secrets.readSecret('POSTHOG_PROJECT_KEY');
   if(!projectKey)return false;
   return sendPosthogEvent(projectKey,event,distinctId,properties);
 }

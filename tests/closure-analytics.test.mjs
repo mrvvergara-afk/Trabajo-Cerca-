@@ -32,3 +32,11 @@ test('unknown transaction outcome is reconciled without applying another increme
 test('contacts and arbitrary strings cannot become analytics dimensions',async()=>{
  const h=usage();await h.recordUsageEvent('isolated-event-0004','tc_app_open','visitor','private@example.invalid');assert.equal([...h.table('growth_usage_metrics').values()][0].commune,'Todas');assert(!JSON.stringify(h.all()).includes('@'));
 });
+
+test('external ingestion stays disabled until the free-tier setting is explicit',async()=>{
+ const source=readFileSync('integrations/appdeploy/house-ads/backend/index.ts','utf8'),start=source.indexOf('async function relayAnalytics('),end=source.indexOf('\n}',start)+2;
+ let flag='',sent=0;const names=[];
+ const relay=vm.runInNewContext('('+stripTypeScriptTypes(source.slice(start,end),{mode:'strip'})+')',{SECURITY_POLICY:{externalAnalytics:true},secrets:{readSecret:async name=>{names.push(name);return name==='POSTHOG_ENABLE_INGESTION'?flag:'isolated-public-key';}},sendPosthogEvent:async()=>{sent++;return true;}});
+ assert.equal(await relay('tc_app_open','daily-hash',{}),false);assert.equal(sent,0);assert.deepEqual(names,['POSTHOG_ENABLE_INGESTION']);
+ flag='free-tier-confirmed';assert.equal(await relay('tc_app_open','daily-hash',{}),true);assert.equal(sent,1);
+});

@@ -984,16 +984,7 @@ function App() {
   const requestGeneration=useRef(0);
   const [resultFocus,setResultFocus]=useState(0);
   const [legalView, setLegalView] = useState<LegalView>(()=>{const value=new URLSearchParams(window.location.search).get('legal');return value==='privacy'||value==='terms'?value:null;});
-  useEffect(()=>{
-    if(!installHelp)return;
-    const dialog=document.querySelector<HTMLElement>('.tcInstallGuide');if(!dialog)return;
-    const previous=document.activeElement as HTMLElement|null,overflow=document.body.style.overflow;
-    const controls=()=>[...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),a[href]')].filter(e=>e.getClientRects().length>0);
-    document.body.style.overflow='hidden';(controls()[0]||dialog).focus();
-    const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){e.preventDefault();setInstallHelp(false);}else if(e.key==='Tab'){const nodes=controls(),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};
-    document.addEventListener('keydown',key);
-    return()=>{document.removeEventListener('keydown',key);document.body.style.overflow=overflow;previous?.isConnected&&previous.focus();};
-  },[installHelp]);
+
   useEffect(() => {
     if (!legalView) return;
     const dialog = document.querySelector<HTMLElement>('.legalModal');
@@ -1045,6 +1036,16 @@ function App() {
   const [revealingContact, setRevealingContact] = useState(false);
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
   const [installHelp,setInstallHelp] = useState(false);
+  useEffect(()=>{
+    if(!installHelp)return;
+    const dialog=document.querySelector<HTMLElement>('.tcInstallGuide');if(!dialog)return;
+    const previous=document.activeElement as HTMLElement|null,overflow=document.body.style.overflow;
+    const controls=()=>[...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),a[href]')].filter(e=>e.getClientRects().length>0);
+    document.body.style.overflow='hidden';(controls()[0]||dialog).focus();
+    const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){e.preventDefault();setInstallHelp(false);}else if(e.key==='Tab'){const nodes=controls(),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};
+    document.addEventListener('keydown',key);
+    return()=>{document.removeEventListener('keydown',key);document.body.style.overflow=overflow;previous?.isConnected&&previous.focus();};
+  },[installHelp]);
   const [isStandalone,setIsStandalone] = useState(()=>window.matchMedia('(display-mode: standalone)').matches || (window.navigator as Navigator & {standalone?:boolean}).standalone===true);
   const [homePlace, setHomePlace] = useState(places.includes(initialPlace) && !travelPlaces.includes(initialPlace) ? initialPlace : 'Todas');
   const [sessionStartedAt,setSessionStartedAt] = useState(() => new Date().toISOString());

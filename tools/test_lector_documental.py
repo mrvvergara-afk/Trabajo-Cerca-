@@ -38,7 +38,7 @@ class LectorDocumentalTests(unittest.TestCase):
     def test_manifest_endpoint_is_public_app_and_read_only(self):
         from trabajo_cerca_lector_documental import ENDPOINT
         self.assertEqual(ENDPOINT,
-          "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/api/ops/free-public-sources")
+          "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/ops/free-public-sources")
 
     def test_large_pdf_is_only_a_six_page_preview(self):
         import fitz

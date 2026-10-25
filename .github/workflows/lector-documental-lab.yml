@@ -6,6 +6,9 @@ on:
       - .github/workflows/lector-documental-lab.yml
       - tools/trabajo_cerca_lector_documental.py
       - tools/test_lector_documental.py
+      - tools/descubrir_ofertas_municipales.py
+      - tools/test_descubrir_ofertas_municipales.py
+      - docs/fuentes-prensa-reciente-2026-10-25.json
   push:
     branches:
       - poc/lector-documental-gratis-2026-10-25
@@ -13,6 +16,9 @@ on:
       - .github/workflows/lector-documental-lab.yml
       - tools/trabajo_cerca_lector_documental.py
       - tools/test_lector_documental.py
+      - tools/descubrir_ofertas_municipales.py
+      - tools/test_descubrir_ofertas_municipales.py
+      - docs/fuentes-prensa-reciente-2026-10-25.json
   workflow_dispatch:
 
 permissions:
@@ -43,6 +49,11 @@ jobs:
         run: python tools/probe_appdeploy_api.py
       - name: Auditar antigüedad estimada y fuentes de las 52 referencias reales
         run: python tools/auditar_cola_documental.py
+      - name: Descubrimiento en prensa local de Traiguén, controlado y sin publicaciones
+        run: |
+          python tools/descubrir_ofertas_municipales.py \
+            --input docs/fuentes-prensa-reciente-2026-10-25.json \
+            --max-indexes 2 --max-links 5 --output reporte_prensa_local.json
       - name: Lector de muestra municipal pública, sin dependencia de API
         run: |
           python tools/trabajo_cerca_lector_documental.py \
@@ -69,5 +80,6 @@ jobs:
             reporte_descubrimiento.json
             diagnostico_api.json
             reporte_cola.json
+            reporte_prensa_local.json
           if-no-files-found: ignore
           retention-days: 7

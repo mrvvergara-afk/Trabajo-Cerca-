@@ -2,6 +2,8 @@
 
 **Rama aislada. No modifica AppDeploy, producción, base de datos, crons ni PR #2.**
 
+La ruta de diagnóstico **que expone el backend** es `/api/ops/free-public-sources`. Se prueba con el dominio público real del laboratorio. Si no es accesible desde GitHub Actions, la ejecución genera un recibo `endpoint_unavailable` y termina con fallo verificable. Nunca sustituye una respuesta real por datos simulados.
+
 El lector toma una exportación de solo lectura del endpoint
 \`GET /api/ops/free-public-sources\`, especialmente \`documentWork.items\`.
 
@@ -32,5 +34,7 @@ python tools/trabajo_cerca_lector_documental.py --input inventario.json --max-it
 \`\`\`
 
 **Siguiente paso, solo después de obtener resultados reales:** enlazar un proceso de revisión/autorización y publicación con recibos de origen, deduplicación y fecha de vencimiento. No reactivar proveedores pagados ni habilitar endpoints de escritura anónimos.
+
+El workflow puede ejecutarse al abrir un PR borrador hacia main, sin fusionar archivos. Los trabajos `push` están acotados a esta rama y la acción no tiene permiso de escritura.
 
 Este PoC no está integrado todavía al motor diario. No cuenta como publicaciones nuevas.

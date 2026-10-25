@@ -78,6 +78,32 @@ def candidate_links(index_url: str, html: str, limit=5):
     return list(found.values())[:limit]
 
 
+def attached_public_pdfs(article_url: str, html: str, limit=1) -> list[dict]:
+    """PDF visible y directamente vinculado al artículo; nunca en otro dominio."""
+    anchors = AnchorReader()
+    anchors.feed(html)
+    host = urlsplit(article_url).hostname.removeprefix("www.")
+    candidates: list[dict] = []
+    for href, label in anchors.links:
+        if not href:
+            continue
+        resolved = urljoin(article_url, href)
+        if not allowed(resolved):
+            continue
+        parts = urlsplit(resolved)
+        if parts.hostname.removeprefix("www.") != host:
+            continue
+        if not re.search(r"\.pdf$", parts.path, re.I):
+            continue
+        if OLD_DATE.search(parts.path):
+            continue
+        if resolved not in [x["url"] for x in candidates]:
+            candidates.append({"url": resolved, "kind": "document", "anchor": label[:120]})
+        if len(candidates) >= limit:
+            break
+    return candidates
+
+
 def discover(index: dict, max_links: int = 5) -> dict:
     url = str(index.get("url") or "")
     row = {"index_url": url, "source": str(index.get("source") or "")[:120],
@@ -100,6 +126,17 @@ def discover(index: dict, max_links: int = 5) -> dict:
             checked = read_one(item)
             # En la página índice hay textos generales; solo el detalle se evalúa.
             row["checked"].append(checked)
+            if item["kind"] == "local_page":
+                try:
+                    # Un único PDF por artículo para evitar procesar anexos masivos.
+                    article_bytes, article_mime = fetch_bytes(item["url"], 650000)
+                    if article_mime in ("text/html", "application/xhtml+xml"):
+                        for pdf in attached_public_pdfs(item["url"], article_bytes.decode("utf-8", "replace")):
+                            pdf["source"] = row["source"]
+                            pdf["publisher_page"] = item["url"]
+                            row["checked"].append(read_one(pdf))
+                except Exception:
+                    checked["attachment_scan"] = "not_available"
             time.sleep(0.25)
     except Exception as error:
         row["status"] = "index_fetch_failed"
@@ -127,12 +164,13 @@ def main():
               "indexes_checked":len(results),
               "links_found":sum(item["links_found"] for item in results),
               "individual_pages_checked":sum(len(item["checked"]) for item in results),
+              "pdfs_checked":sum(1 for row in results for x in row["checked"] if x.get("kind")=="document"),
               "candidate_for_review":sum(1 for row in results for x in row["checked"]
                                            if x.get("decision")=="candidato_para_revision"),
               "results":results}
     Path(args.output).write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({key:report[key] for key in
-                      ("indexes_checked","links_found","individual_pages_checked","candidate_for_review",
+                      ("indexes_checked","links_found","individual_pages_checked","pdfs_checked","candidate_for_review",
                        "paid_provider_calls","app_writes")},ensure_ascii=False))
 
 

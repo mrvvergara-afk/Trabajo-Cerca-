@@ -39,7 +39,13 @@ jobs:
           python -m pip install --disable-pip-version-check --quiet 'pymupdf>=1.24,<2' 'pytesseract>=0.3.10,<1' 'pillow>=10,<13'
       - name: Pruebas locales con datos sinteticos
         run: python -m unittest discover -s tools -p 'test_lector_documental.py' -v
-      - name: Lector de fuentes existentes sin publicar
+      - name: Lector de muestra municipal pública, sin dependencia de API
+        run: |
+          python tools/trabajo_cerca_lector_documental.py \
+            --input docs/muestra-documentos-municipales-publicos.json \
+            --max-items 6 --output reporte_municipal.json
+      - name: Comprobar acceso a cola real de AppDeploy (diagnóstico separado)
+        continue-on-error: true
         run: |
           python tools/trabajo_cerca_lector_documental.py \
             --max-items 8 --output reporte_documental.json
@@ -48,6 +54,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lector-documental-solo-lectura
-          path: reporte_documental.json
+          path: |
+            reporte_documental.json
+            reporte_municipal.json
           if-no-files-found: ignore
           retention-days: 7

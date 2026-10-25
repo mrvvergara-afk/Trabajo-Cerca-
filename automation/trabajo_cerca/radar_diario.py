@@ -193,6 +193,16 @@ def main(argv=None):
                            'status': 'error_lector', 'error_type': type(exc).__name__})
             counts['error_lector'] += 1
 
+    # Las 25 cuentas sociales están inventariadas, pero nunca se confunden
+    # con una visita exitosa: su lectura necesita un canal público autorizado.
+    for source in config['social_reference']:
+        status.append({
+            'source_id': source['id'], 'url': canonical(source['url']),
+            'territories_reported': source.get('work_cities', []),
+            'status': 'no_consultada_sin_acceso_publico_autorizado',
+            'method': 'aporte_de_afiche_o_api_autorizada',
+        })
+
     report = {
         'schema': 'trabajo-cerca.daily-radar-report.v1',
         'generated_at': dt.datetime.now(dt.timezone.utc).isoformat(),

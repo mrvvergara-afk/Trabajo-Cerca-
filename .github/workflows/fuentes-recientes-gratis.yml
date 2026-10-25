@@ -1,0 +1,37 @@
+name: Trabajo Cerca - Fuentes recientes gratis (diagnostico)
+on:
+  push:
+    branches:
+      - poc/lector-documental-gratis-2026-10-25
+    paths:
+      - tools/diagnosticar_robots.py
+      - tools/test_candidatos_prensa.py
+      - docs/candidatos-traiguen-para-revision-2026-10-25.json
+      - .github/workflows/fuentes-recientes-gratis.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fuente-lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validar que no se publican los candidatos sin revisión
+        run: python -m unittest discover -s tools -p test_candidatos_prensa.py -v
+      - name: Diagnosticar robots sin redirecciones automáticas
+        run: python tools/diagnosticar_robots.py
+      - name: Evidencia reproducible
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-fuentes-recientes
+          path: diagnostico_robots.json
+          retention-days: 7

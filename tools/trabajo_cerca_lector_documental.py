@@ -29,7 +29,7 @@ noticias.angol.cl munilumaco.cl munilossauces.cl mtraiguen.cl
 municipalidadrenaico.cl nacimiento.cl muninegrete.cl munimulchen.cl
 municipalidadcollipulli.cl victoriachile.cl munipuren.cl muniercilla.cl
 malleco7.cl radionativa.cl radioviaducto.cl lasnoticiasdemalleco.cl
-ssan.redsalud.gob.cl
+ssan.redsalud.gob.cl traiguencity.cl
 """.split())
 WORK_TOWNS = ("Angol", "Collipulli", "Ercilla", "Renaico", "Mininco",
               "Los Sauces", "Purén", "Traiguén", "Lumaco", "Nacimiento",
@@ -248,6 +248,30 @@ def classify(text: str, today: dt.date | None = None) -> dict:
             "preview": excerpt}
 
 
+def verified_article_date(html: str) -> dt.date | None:
+    """Read publication date from publisher markup, never from an unrelated footer date."""
+    metadata = re.search(
+        r'<meta\\b[^>]*?(?:property|name)\\s*=\\s*["\\\'](?:article:published_time|datePublished|pubdate)["\\\'][^>]*?content\\s*=\\s*["\\\'](20\\d{2}-\\d{2}-\\d{2})',
+        html[:40000], re.I
+    )
+    if metadata is None:
+        metadata = re.search(
+            r'<meta\\b[^>]*?content\\s*=\\s*["\\\'](20\\d{2}-\\d{2}-\\d{2})[^"\\\']*["\\\'][^>]*?(?:property|name)\\s*=\\s*["\\\'](?:article:published_time|datePublished|pubdate)',
+            html[:40000], re.I
+        )
+    if metadata is None:
+        metadata = re.search(
+            r'<time\\b[^>]*?datetime\\s*=\\s*["\\\'](20\\d{2}-\\d{2}-\\d{2})',
+            html[:50000], re.I
+        )
+    if not metadata:
+        return None
+    try:
+        return dt.date.fromisoformat(metadata.group(1))
+    except ValueError:
+        return None
+
+
 def read_one(entry: dict, today: dt.date | None = None) -> dict:
     url = entry.get("url") or ""
     base = {"url": url, "source": str(entry.get("source", ""))[:120],
@@ -262,6 +286,23 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
         content, mime = fetch_bytes(url, maximum_for_url(url))
         text, extraction = extract_text(content, mime, url)
         result = classify(text, today)
+        if mime in ("text/html", "application/xhtml+xml"):
+            original = verified_article_date(content.decode("utf-8", "replace"))
+            if original:
+                current = today or dt.date.today()
+                previous = result["decision"]
+                if original > current:
+                    status = "fecha_original_futura_no_publicar"
+                elif original < current - dt.timedelta(days=20):
+                    status = "documento_antiguo_no_publicar"
+                elif previous == "plazo_vencido_no_publicar":
+                    status = previous
+                elif previous in ("candidato_fecha_pendiente", "candidato_para_revision"):
+                    status = "candidato_para_revision"
+                else:
+                    status = previous
+                result.update(decision=status, publication_date_evidence=original.isoformat(),
+                              publication_date_confirmed=True)
         if extraction == "pdf_preview_partial":
             # Not even a strong signal can authorize a partial PDF.
             result = {**result, "original_classification": result["decision"],

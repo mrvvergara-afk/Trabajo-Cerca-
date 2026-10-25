@@ -1,5 +1,5 @@
 import unittest
-from descubrir_ofertas_municipales import candidate_links
+from descubrir_ofertas_municipales import candidate_links, attached_public_pdfs
 
 URL="https://victoriachile.cl/category/omil/"
 
@@ -20,6 +20,14 @@ class DescubrimientoTests(unittest.TestCase):
     def test_ignores_news_without_recruitment(self):
         html="<main><a href='/noticia/capacitacion-agricola/'>Taller gratuito</a></main>"
         self.assertEqual(candidate_links(URL,html),[])
+
+    def test_pdf_attachment_only_same_publisher(self):
+        html = """<main><a href='/files/bases-de-llamado.pdf'>Bases del concurso</a>
+          <a href='https://evil.example/bases.pdf'>Otro archivo</a>
+          <a href='/2025/09/archivo.pdf'>Expirado</a></main>"""
+        items = attached_public_pdfs("https://victoriachile.cl/convocatoria-laboral/", html)
+        self.assertEqual(len(items), 1)
+        self.assertTrue(items[0]["url"].endswith("bases-de-llamado.pdf"))
 
     def test_finite_limit(self):
         html="<main>"+''.join(

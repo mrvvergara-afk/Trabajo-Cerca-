@@ -1,0 +1,44 @@
+name: Trabajo Cerca - PoC documental gratis
+on:
+  push:
+    branches:
+      - poc/lector-documental-gratis-2026-10-25
+    paths:
+      - .github/workflows/lector-documental-lab.yml
+      - tools/trabajo_cerca_lector_documental.py
+      - tools/test_lector_documental.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  leer-documentos:
+    name: Extraer candidatos de fuentes publicas (solo lectura)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout sin credenciales persistidas
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar lector PDF local
+        run: python -m pip install --disable-pip-version-check --quiet 'pymupdf>=1.24,<2'
+      - name: Pruebas locales con datos sinteticos
+        run: python -m unittest discover -s tools -p 'test_lector_documental.py' -v
+      - name: Lector de fuentes existentes sin publicar
+        run: |
+          python tools/trabajo_cerca_lector_documental.py \
+            --max-items 8 --output reporte_documental.json
+      - name: Adjuntar evidencia de prueba
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lector-documental-solo-lectura
+          path: reporte_documental.json
+          if-no-files-found: ignore
+          retention-days: 7

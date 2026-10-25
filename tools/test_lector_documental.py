@@ -40,6 +40,11 @@ class LectorDocumentalTests(unittest.TestCase):
         self.assertEqual(ENDPOINT,
           "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/api/ops/free-public-sources")
 
+    def test_pdf_limited_to_16_mib_but_images_stay_small(self):
+        from trabajo_cerca_lector_documental import maximum_for_url
+        self.assertEqual(maximum_for_url("https://mtraiguen.cl/bases.pdf"), 16 * 1024 * 1024)
+        self.assertEqual(maximum_for_url("https://mtraiguen.cl/afiche.jpg"), 6000000)
+
     def test_image_reader_invokes_local_ocr_only(self):
         with patch("trabajo_cerca_lector_documental.ocr_bytes", return_value="Oferta laboral Victoria"):
             text, mode = extract_text(b"image_fixture", "image/png", "https://victoriachile.cl/afiche.png")

@@ -205,7 +205,6 @@ type NotificationDispatchState = {
   updatedAt: string;
 };
 
-const POSTHOG_PROJECT_KEY = 'phc_BnfcP6mKc3J2438WPTonKWZnuFfC7RvQ9jFJwTbtPSVz';
 const ANALYTICS_EVENTS = new Set([
   'tc_app_open', 'tc_commune_selected', 'tc_listing_opened', 'tc_contact_revealed',
   'tc_external_offer_click', 'tc_listing_shared', 'tc_sponsor_impression', 'tc_sponsor_click',
@@ -255,7 +254,9 @@ function cleanAnalyticsProperties(input: unknown): Record<string, string | numbe
 
 async function relayAnalytics(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
   if (!SECURITY_POLICY.externalAnalytics) return false;
-  return sendPosthogEvent(POSTHOG_PROJECT_KEY,event,distinctId,properties);
+  const projectKey=await secrets.get('POSTHOG_PROJECT_KEY');
+  if(!projectKey)return false;
+  return sendPosthogEvent(projectKey,event,distinctId,properties);
 }
 
 const SEED_VERSION = '2026-10-06-v17-live-benchmark';

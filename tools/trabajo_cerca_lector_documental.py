@@ -21,8 +21,9 @@ from urllib.request import Request, build_opener, HTTPRedirectHandler
 from urllib.robotparser import RobotFileParser
 
 USER_AGENT = "TrabajoCercaDocumentReader/0.1 (read-only)"
-# URL pública basada en la app real, no en una ruta interna supuesta.
-ENDPOINT = "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/api/ops/free-public-sources"
+# URL de API confirmada en la respuesta real de @appdeploy/client (2026-10-25).
+# Solo diagnóstico público de enlaces; la ruta admin está protegida y no se consulta.
+ENDPOINT = "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/ops/free-public-sources"
 ALLOWED_HOSTS = frozenset("""
 noticias.angol.cl munilumaco.cl munilossauces.cl mtraiguen.cl
 municipalidadrenaico.cl nacimiento.cl muninegrete.cl munimulchen.cl
@@ -265,9 +266,10 @@ def main():
     ap.add_argument("--input", help="JSON descargado del endpoint de diagnóstico; sin --input se lee API pública")
     ap.add_argument("--output", default="reporte_documental.json")
     ap.add_argument("--max-items", type=int, default=8)
+    ap.add_argument("--offset", type=int, default=0, help="Saltarse N referencias de la cola pública")
     args = ap.parse_args()
-    if not 1 <= args.max_items <= 20:
-        ap.error("--max-items debe estar entre 1 y 20")
+    if not 1 <= args.max_items <= 20 or not 0 <= args.offset <= 100:
+        ap.error("--max-items debe estar entre 1 y 20 y --offset entre 0 y 100")
     try:
         source = read_manifest(args.input)
     except (HTTPError, URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError) as exc:
@@ -287,17 +289,19 @@ def main():
     if not isinstance(entries, list):
         raise RuntimeError("No hay una lista documentWork.items válida")
     results = []
-    for entry in entries[:args.max_items]:
+    for entry in entries[args.offset:args.offset+args.max_items]:
         if isinstance(entry, dict):
             results.append(read_one(entry))
             time.sleep(0.5)
     report = {"schema": "trabajo-cerca.document-reader.v0.1",
               "read_only": True, "app_writes": 0, "paid_provider_calls": 0,
-              "source_items_total": len(entries), "items_processed": len(results),
+              "source_items_total": len(entries), "offset": args.offset,
+              "items_requested": args.max_items, "items_processed": len(results),
               "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
               "results": results}
     Path(args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"items_processed":len(results),
+    print(json.dumps({"queue_total":len(entries), "offset":args.offset,
+                      "items_processed":len(results),
                       "candidates":sum(x.get("decision")=="candidato_para_revision" for x in results),
                       "expired":sum(x.get("decision")=="plazo_vencido_no_publicar" for x in results),
                       "output":args.output, "paid_provider_calls":0}, ensure_ascii=False))

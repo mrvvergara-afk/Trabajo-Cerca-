@@ -2,7 +2,7 @@ import datetime as dt
 import unittest
 from unittest.mock import patch
 
-from trabajo_cerca_lector_documental import allowed, parse_deadline, classify, clean_text, extract_text, verified_article_date
+from trabajo_cerca_lector_documental import allowed, parse_deadline, classify, clean_text, extract_text, verified_article_date, article_body_text
 
 
 class LectorDocumentalTests(unittest.TestCase):
@@ -18,6 +18,19 @@ class LectorDocumentalTests(unittest.TestCase):
         html='<meta property="article:published_time" content="2026-10-23T09:31:00-03:00">'
         self.assertEqual(str(verified_article_date(html)), "2026-10-23")
         self.assertIsNone(verified_article_date("<footer>23 de octubre de 2026</footer>"))
+
+    def test_news_article_body_excludes_header_job_links(self):
+        html = """<nav>Oferta laboral falsa</nav><article><h1>Colegio requiere docentes</h1>
+        <p>Presentar currículum y antecedentes en Traiguén para Profesor/a de Matemáticas.</p>
+        </article><footer>Oferta laboral vieja</footer>"""
+        body = article_body_text(html)
+        self.assertIn("Profesor/a de Matemáticas", body)
+        self.assertNotIn("Oferta laboral falsa", body)
+        self.assertEqual(classify(body, dt.date(2026,10,25))["decision"], "candidato_fecha_pendiente")
+
+    def test_generic_training_news_is_not_vacancy(self):
+        self.assertEqual(classify("En Traiguén se realiza taller para profesores y docentes de matemáticas.",
+                                  dt.date(2026,10,25))["decision"], "sin_evidencia_suficiente")
 
     def test_deadlines(self):
         self.assertEqual(parse_deadline("Postula hasta el 26 de octubre de 2026"), dt.date(2026, 10, 26))

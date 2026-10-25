@@ -196,6 +196,25 @@ def parse_deadline(text: str) -> dt.date | None:
     return None
 
 
+def parse_source_date(text: str) -> dt.date | None:
+    """Detecta fecha de encabezado inequívoca, no menciones históricas genéricas."""
+    first = re.sub(r"\s+", " ", text[:1800])
+    cities = r"(?:Lumaco|Angol|Victoria|Renaico|Traigu[eé]n|Negrete|Nacimiento|Pur[eé]n|Mulch[eé]n|Collipulli|Ercilla)"
+    weekdays = r"(?:(?:lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)\s+)?"
+    marker = rf"{cities}\s*,\s*(?:a\s+)?{weekdays}"
+    marker += r"(\d{1,2})\s+de\s+([a-záéíóú]+)\s+(?:de(?:l)?\s+)?(20\d{2})"
+    found = re.search(marker, first, re.I)
+    if not found:
+        return None
+    month = MONTHS.get(found.group(2).lower())
+    if month is None:
+        return None
+    try:
+        return dt.date(int(found.group(3)), month, int(found.group(1)))
+    except ValueError:
+        return None
+
+
 def classify(text: str, today: dt.date | None = None) -> dict:
     today = today or dt.date.today()
     text = re.sub(r"\s+", " ", text).strip()
@@ -206,10 +225,15 @@ def classify(text: str, today: dt.date | None = None) -> dict:
             if x in folded]
     places = [x for x in WORK_TOWNS if re.search(r"\b" + re.escape(x) + r"\b", text, re.I)]
     expires = parse_deadline(text)
+    source_date = parse_source_date(text)
     if not text:
         state = "sin_texto_o_requiere_ocr"
     elif expires and expires < today:
         state = "plazo_vencido_no_publicar"
+    elif source_date and source_date < today - dt.timedelta(days=20):
+        state = "documento_antiguo_no_publicar"
+    elif len(cues) >= 2 and not source_date:
+        state = "candidato_fecha_pendiente"
     elif len(cues) >= 2:
         state = "candidato_para_revision"
     else:
@@ -219,6 +243,8 @@ def classify(text: str, today: dt.date | None = None) -> dict:
     excerpt = re.sub(r"(?:\+56\s?)?(?:\d[\s-]?){9,12}", "[teléfono]", excerpt)
     return {"decision": state, "signals": cues, "possible_communes": places,
             "deadline": expires.isoformat() if expires else None,
+            "source_date_evidence": source_date.isoformat() if source_date else None,
+            "publication_date_confirmed": False,
             "preview": excerpt}
 
 

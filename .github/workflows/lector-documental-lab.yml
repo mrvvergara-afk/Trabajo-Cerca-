@@ -41,6 +41,8 @@ jobs:
         run: python -m unittest discover -s tools -p 'test_lector_documental.py' -v
       - name: Diagnóstico de accesibilidad API y guardia administrativa, sin credenciales
         run: python tools/probe_appdeploy_api.py
+      - name: Auditar antigüedad estimada y fuentes de las 52 referencias reales
+        run: python tools/auditar_cola_documental.py
       - name: Lector de muestra municipal pública, sin dependencia de API
         run: |
           python tools/trabajo_cerca_lector_documental.py \
@@ -66,5 +68,6 @@ jobs:
             reporte_municipal.json
             reporte_descubrimiento.json
             diagnostico_api.json
+            reporte_cola.json
           if-no-files-found: ignore
           retention-days: 7

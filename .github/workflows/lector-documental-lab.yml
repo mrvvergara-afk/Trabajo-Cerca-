@@ -1,5 +1,11 @@
 name: Trabajo Cerca - PoC documental gratis
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/lector-documental-lab.yml
+      - tools/trabajo_cerca_lector_documental.py
+      - tools/test_lector_documental.py
   push:
     branches:
       - poc/lector-documental-gratis-2026-10-25

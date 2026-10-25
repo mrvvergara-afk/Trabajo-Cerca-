@@ -261,12 +261,30 @@ def read_manifest(path: str | None) -> dict:
         return json.loads(response.read(600000).decode("utf-8"))
 
 
+def likely_older_than_days(url: str, days: int = 20, today: dt.date | None = None) -> bool:
+    """URL mes/año solo permite excluir del lote prioritario meses concluidos.
+    No acredita publicación original ni justifica borrar un documento.
+    """
+    today = today or dt.date.today()
+    match = re.search(r"/(20\\d{2})/(0?[1-9]|1[0-2])/", urlsplit(url).path)
+    if not match:
+        return False
+    year, month = int(match.group(1)), int(match.group(2))
+    try:
+        first_next = dt.date(year + (month == 12), (month % 12) + 1, 1)
+    except ValueError:
+        return False
+    return first_next - dt.timedelta(days=1) < today - dt.timedelta(days=days)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", help="JSON descargado del endpoint de diagnóstico; sin --input se lee API pública")
     ap.add_argument("--output", default="reporte_documental.json")
     ap.add_argument("--max-items", type=int, default=8)
     ap.add_argument("--offset", type=int, default=0, help="Saltarse N referencias de la cola pública")
+    ap.add_argument("--priority-window", action="store_true",
+                    help="Priorizar solo URLs cuyo mes no demuestra una antigüedad superior a 20 días; no elimina datos.")
     args = ap.parse_args()
     if not 1 <= args.max_items <= 20 or not 0 <= args.offset <= 100:
         ap.error("--max-items debe estar entre 1 y 20 y --offset entre 0 y 100")
@@ -288,14 +306,20 @@ def main():
     entries = work.get("items", []) if isinstance(work, dict) else []
     if not isinstance(entries, list):
         raise RuntimeError("No hay una lista documentWork.items válida")
+    priority = [x for x in entries if isinstance(x,dict) and
+                not likely_older_than_days(str(x.get("url", "")), 20)]
+    chosen = priority if args.priority_window else entries
     results = []
-    for entry in entries[args.offset:args.offset+args.max_items]:
+    for entry in chosen[args.offset:args.offset+args.max_items]:
         if isinstance(entry, dict):
             results.append(read_one(entry))
             time.sleep(0.5)
     report = {"schema": "trabajo-cerca.document-reader.v0.1",
               "read_only": True, "app_writes": 0, "paid_provider_calls": 0,
-              "source_items_total": len(entries), "offset": args.offset,
+              "source_items_total": len(entries), "priority_window": args.priority_window,
+              "priority_items_total": len(priority),
+              "excluded_from_this_run": (len(entries)-len(priority)) if args.priority_window else 0,
+              "offset": args.offset,
               "items_requested": args.max_items, "items_processed": len(results),
               "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
               "results": results}

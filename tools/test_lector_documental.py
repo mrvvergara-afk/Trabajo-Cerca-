@@ -1,7 +1,8 @@
 import datetime as dt
 import unittest
+from unittest.mock import patch
 
-from trabajo_cerca_lector_documental import allowed, parse_deadline, classify, clean_text
+from trabajo_cerca_lector_documental import allowed, parse_deadline, classify, clean_text, extract_text
 
 
 class LectorDocumentalTests(unittest.TestCase):
@@ -29,6 +30,12 @@ class LectorDocumentalTests(unittest.TestCase):
     def test_news_is_not_job(self):
         self.assertEqual(classify("Municipalidad anuncia talleres de capacitación en soldadura.",
                                   dt.date(2026, 10, 25))["decision"], "sin_evidencia_suficiente")
+
+    def test_image_reader_invokes_local_ocr_only(self):
+        with patch("trabajo_cerca_lector_documental.ocr_bytes", return_value="Oferta laboral Victoria"):
+            text, mode = extract_text(b"image_fixture", "image/png", "https://victoriachile.cl/afiche.png")
+            self.assertEqual(text, "Oferta laboral Victoria")
+            self.assertEqual(mode, "imagen_ocr_local")
 
     def test_html_scripts_excluded(self):
         self.assertEqual(clean_text("<p>Oferta laboral</p><script>ignoreMe()</script>"),

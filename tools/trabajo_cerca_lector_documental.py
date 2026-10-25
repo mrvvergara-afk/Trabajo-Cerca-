@@ -21,7 +21,8 @@ from urllib.request import Request, build_opener, HTTPRedirectHandler
 from urllib.robotparser import RobotFileParser
 
 USER_AGENT = "TrabajoCercaDocumentReader/0.1 (read-only)"
-ENDPOINT = "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/ops/free-public-sources"
+# URL pública basada en la app real, no en una ruta interna supuesta.
+ENDPOINT = "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/api/ops/free-public-sources"
 ALLOWED_HOSTS = frozenset("""
 noticias.angol.cl munilumaco.cl munilossauces.cl mtraiguen.cl
 municipalidadrenaico.cl nacimiento.cl muninegrete.cl munimulchen.cl
@@ -234,7 +235,7 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
 def read_manifest(path: str | None) -> dict:
     if path:
         return json.loads(Path(path).read_text(encoding="utf-8"))
-    with OPENER.open(Request(ENDPOINT, headers={"User-Agent": USER_AGENT}), timeout=12) as response:
+    with OPENER.open(Request(ENDPOINT, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}), timeout=12) as response:
         if response.status != 200:
             raise RuntimeError("read_only_endpoint_http_" + str(response.status))
         return json.loads(response.read(600000).decode("utf-8"))
@@ -248,7 +249,19 @@ def main():
     args = ap.parse_args()
     if not 1 <= args.max_items <= 20:
         ap.error("--max-items debe estar entre 1 y 20")
-    source = read_manifest(args.input)
+    try:
+        source = read_manifest(args.input)
+    except (HTTPError, URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError) as exc:
+        # A factual failure receipt, not a fabricated successful run.
+        receipt = {"schema": "trabajo-cerca.document-reader.v0.1",
+                   "status": "endpoint_unavailable", "read_only": True,
+                   "app_writes": 0, "paid_provider_calls": 0, "items_processed": 0,
+                   "error_type": type(exc).__name__,
+                   "http_status": getattr(exc, "code", None),
+                   "created_at": dt.datetime.now(dt.timezone.utc).isoformat()}
+        Path(args.output).write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(json.dumps(receipt, ensure_ascii=False))
+        raise SystemExit(2)
     work = source.get("documentWork", source)
     entries = work.get("items", []) if isinstance(work, dict) else []
     if not isinstance(entries, list):

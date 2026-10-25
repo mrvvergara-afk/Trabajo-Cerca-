@@ -2,7 +2,7 @@ import datetime as dt
 import unittest
 from unittest.mock import patch
 
-from trabajo_cerca_lector_documental import allowed, parse_deadline, classify, clean_text, extract_text
+from trabajo_cerca_lector_documental import allowed, parse_deadline, classify, clean_text, extract_text, verified_article_date
 
 
 class LectorDocumentalTests(unittest.TestCase):
@@ -13,6 +13,11 @@ class LectorDocumentalTests(unittest.TestCase):
         self.assertFalse(allowed("http://munipuren.cl/archivo.pdf"))
         self.assertFalse(allowed("https://munipuren.cl:8080/archivo.pdf"))
         self.assertFalse(allowed("https://munipuren.cl@evil.example/archivo.pdf"))
+
+    def test_publication_metadata_date_is_evidence_not_web_crawl_time(self):
+        html='<meta property="article:published_time" content="2026-10-23T09:31:00-03:00">'
+        self.assertEqual(str(verified_article_date(html)), "2026-10-23")
+        self.assertIsNone(verified_article_date("<footer>23 de octubre de 2026</footer>"))
 
     def test_deadlines(self):
         self.assertEqual(parse_deadline("Postula hasta el 26 de octubre de 2026"), dt.date(2026, 10, 26))

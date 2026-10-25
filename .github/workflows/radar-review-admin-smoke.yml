@@ -1,0 +1,31 @@
+name: Trabajo Cerca - Seguridad bandeja admin (QA)
+on:
+  push:
+    branches: [feature/admin-radar-review-inbox-2026-10-25]
+    paths:
+      - auditoria/2026-10-25/anonymous_admin_smoke.py
+      - .github/workflows/radar-review-admin-smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  anonymous_access:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar 6 endpoints administrativos sin sesión
+        run: python auditoria/2026-10-25/anonymous_admin_smoke.py
+      - name: Conservar evidencia sin secretos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seguridad-bandeja-trabajo-cerca
+          path: resultado_seguridad_radar_review.json
+          retention-days: 3

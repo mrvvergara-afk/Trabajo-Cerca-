@@ -79,6 +79,12 @@ jobs:
         run: |
           python tools/trabajo_cerca_lector_documental.py \
             --max-items 15 --priority-window --offset 0 --output reporte_documental.json
+      - name: Conciliar artículos por URL sin contar dos veces la misma oferta
+        run: |
+          python -m unittest discover -s tools -p test_conciliar_prensa.py -v
+          python tools/conciliar_prensa_local.py \
+            --input reporte_prensa_local.json reporte_prensa_directa.json \
+            --output reporte_candidatos_unicos.json
       - name: Adjuntar evidencia de prueba
         if: always()
         uses: actions/upload-artifact@v4
@@ -93,5 +99,6 @@ jobs:
             reporte_prensa_local.json
             reporte_prensa_directa.json
             diagnostico_robots.json
+            reporte_candidatos_unicos.json
           if-no-files-found: ignore
           retention-days: 7

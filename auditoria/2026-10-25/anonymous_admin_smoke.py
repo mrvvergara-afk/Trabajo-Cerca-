@@ -11,6 +11,8 @@ ROUTES=[
     ("GET","/api/admin/radar-review",None),
     ("POST","/api/admin/radar-review/import",b'{"items":[]}'),
     ("POST","/api/admin/radar-review/decision",b'{"id":"tc_aaaaaaaaaaaaaaaaaaaaaa","status":"discarded"}'),
+    ("POST","/api/admin/radar-review/check",b'{"id":"tc_aaaaaaaaaaaaaaaaaaaaaa"}'),
+    ("POST","/api/admin/radar-review/submit",b'{"id":"tc_aaaaaaaaaaaaaaaaaaaaaa"}'),
     ("GET","/api/admin/session",None),
 ]
 def check(method,path,data):

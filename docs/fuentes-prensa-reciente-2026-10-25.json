@@ -3,15 +3,15 @@
     "schema": "trabajo-cerca.document-work.v1",
     "items": [
       {
-        "url": "https://www.traiguencity.cl/noticias/traiguen/general/",
+        "url": "https://traiguencity.cl/noticias/traiguen/general/",
         "source": "Traiguencity · prensa territorial",
-        "publisher_page": "https://www.traiguencity.cl/noticias/traiguen/general/",
+        "publisher_page": "https://traiguencity.cl/noticias/traiguen/general/",
         "kind": "local_page"
       },
       {
-        "url": "https://www.traiguencity.cl/noticias/traiguen/laboral-traiguen/",
+        "url": "https://traiguencity.cl/noticias/traiguen/laboral-traiguen/",
         "source": "Traiguencity · prensa territorial",
-        "publisher_page": "https://www.traiguencity.cl/noticias/traiguen/laboral-traiguen/",
+        "publisher_page": "https://traiguencity.cl/noticias/traiguen/laboral-traiguen/",
         "kind": "local_page"
       }
     ]

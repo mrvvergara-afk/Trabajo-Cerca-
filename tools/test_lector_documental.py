@@ -22,6 +22,13 @@ class LectorDocumentalTests(unittest.TestCase):
         text = "CONVOCATORIA LABORAL. Se necesita persona para Ercilla. Postular hasta el 23/10/2026."
         self.assertEqual(classify(text, dt.date(2026, 10, 25))["decision"], "plazo_vencido_no_publicar")
 
+    def test_month_based_priority_is_not_original_date_proof(self):
+        from trabajo_cerca_lector_documental import likely_older_than_days
+        today = dt.date(2026, 10, 25)
+        self.assertTrue(likely_older_than_days("https://munilumaco.cl/2026/09/bases.pdf", 20, today))
+        self.assertFalse(likely_older_than_days("https://munilumaco.cl/2026/10/bases.pdf", 20, today))
+        self.assertFalse(likely_older_than_days("https://munilumaco.cl/avisos/bases.pdf", 20, today))
+
     def test_chilean_deadline_with_del(self):
         self.assertEqual(parse_deadline("Postulación hasta 26 de octubre del 2026"),
                          dt.date(2026, 10, 26))

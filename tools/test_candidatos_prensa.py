@@ -19,7 +19,7 @@ class CandidatosReviewTests(unittest.TestCase):
             self.assertFalse(item['published_in_trabajo_cerca'])
             self.assertIsNone(item['original_employer_publication_date'])
             self.assertEqual(item['work_location'],'Traiguén')
-            self.assertTrue(item['source_url'].startswith('https://www.traiguencity.cl/'))
+            self.assertTrue(item['source_url'].startswith('https://traiguencity.cl/'))
             self.assertLessEqual(dt.date.fromisoformat(item['article_published_date']),dt.date(2026,10,25))
             self.assertIn('duplicados_feed',item['required_checks'])
 

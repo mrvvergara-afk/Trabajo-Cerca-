@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Read-only smoke of administrative access protection, without credentials."""
+"""Read-only smoke of administrative access protection, without credentials.
+QA trigger 2026-10-25: reject anonymous access to seven private routes.
+"""
 import json
 from datetime import datetime,timezone
 from pathlib import Path

@@ -645,7 +645,7 @@ function isCurrentlyActive(item: ListingRecord) {
 function publicRecord<T extends ListingRecord & { id: string }>(item: T) {
   const { ownerToken: _ownerToken, contact, evidenceImagePath: _evidenceImagePath, socialEvidence: _socialEvidence, ...safe } = item;
   const projected={...safe} as Record<string,unknown>;
-  for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof']) delete projected[field];
+  for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof','adminVerificationEvidence','adminVerificationAttempt']) delete projected[field];
   return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) };
 }
 
@@ -2676,6 +2676,32 @@ const applicationRouter = router({
   'POST /api/admin/radar-review/check': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await checkOneReview(body))],
   'POST /api/admin/radar-review/submit': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await enqueueAdminReviewedOffer(body))],
   'POST /api/admin/radar-review/status': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await readAdminReviewPublicationStatus(body))],
+  'GET /api/admin/document-work': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => {
+    const status = await freePublicSourceStatus();
+    const source = status.documentWork;
+    // Export only source references; never credentials, source page bodies or internal cursor state.
+    const items = source.items.slice(0, 100).map(item => ({
+      url: item.url,
+      source: item.source,
+      publisher_page: item.publisher_page,
+      kind: item.kind,
+    }));
+    return json({
+      schema: 'trabajo-cerca.document-export.v1',
+      read_only: true,
+      paid_provider_calls: 0,
+      created_at: new Date().toISOString(),
+      documentWork: {
+        schema: 'trabajo-cerca.document-work.v1',
+        read_only: true,
+        paid_provider_calls: 0,
+        coverage_complete: false,
+        checked_at: source.checked_at,
+        items,
+      },
+    });
+  }],
+
   'GET /api/admin/session': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => json({ administrator:true, userId:ctx.user!.userId, backupExportEnabled:true })],
   'GET /api/_healthcheck': [async () => json({ message: 'Success' })],
   'GET /api/ops/security-policy': [async () => json({ revision:'security-containment-v2',...SECURITY_POLICY })],

@@ -1,7 +1,7 @@
 // No deployment, credentials, collectors or production writes. SDK calls in the
 // browser candidate use an adapter; actual public catalog is read separately.
 import {spawn,spawnSync} from 'node:child_process';
-import {existsSync,mkdirSync,writeFileSync,readFileSync} from 'node:fs';
+import {existsSync,mkdirSync,writeFileSync,readFileSync,unlinkSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const output='qa-output/closure';mkdirSync(output,{recursive:true});
 function run(command,args){const r=spawnSync(command,args,{stdio:'inherit',env:process.env});assert.equal(r.status,0,command+' '+args.join(' '));}
@@ -16,7 +16,7 @@ run('node',['qa/closure-preservation.mjs']);
 if(process.env.ADMIN_PUBLICATION_CHECKS==='1'){
  run('node',['qa/admin-native-patch.mjs']);
  writeFileSync('backend/.admin-native-index.ts',readFileSync('qa-output/admin-publication/native-index.ts'));
- run('npx',['esbuild','backend/.admin-native-index.ts','--bundle','--platform=node','--format=esm','--packages=external','--outfile=qa-output/admin-publication/native-bundle.mjs']);
+ try{run('npx',['esbuild','backend/.admin-native-index.ts','--bundle','--platform=node','--format=esm','--packages=external','--outfile=qa-output/admin-publication/native-bundle.mjs']);}finally{unlinkSync('backend/.admin-native-index.ts');}
  run('npx',['esbuild','qa/admin-source-observer-entry.ts','--bundle','--platform=node','--format=esm','--outfile=qa-output/admin-publication/source-observer.mjs']);
  run('node',['qa/admin-source-observer.mjs']);
 }

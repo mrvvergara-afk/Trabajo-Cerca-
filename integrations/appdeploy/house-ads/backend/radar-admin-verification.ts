@@ -71,7 +71,7 @@ export async function processAdminReviewBatch(options:{scheduledTime:string;proj
      reason='public_projection_rejected';
     }
    }
-   const duplicate=reason==='already_in_internal_inventory';
+   const duplicate=['already_in_internal_inventory','already_in_public_catalog'].includes(reason);
    const rejected=check.status==='rejected'||reason==='expired_deadline';
    const blocked=check.status==='blocked'||reason==='original_source_date_changed'||reason==='public_projection_rejected';
    const motorState=duplicate?'duplicate':rejected?'rejected':blocked?'blocked':'pending';

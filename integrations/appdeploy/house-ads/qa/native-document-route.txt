@@ -1,0 +1,25 @@
+  'GET /api/admin/document-work': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => {
+    const status = await freePublicSourceStatus();
+    const source = status.documentWork;
+    // Export only source references; never credentials, source page bodies or internal cursor state.
+    const items = source.items.slice(0, 100).map(item => ({
+      url: item.url,
+      source: item.source,
+      publisher_page: item.publisher_page,
+      kind: item.kind,
+    }));
+    return json({
+      schema: 'trabajo-cerca.document-export.v1',
+      read_only: true,
+      paid_provider_calls: 0,
+      created_at: new Date().toISOString(),
+      documentWork: {
+        schema: 'trabajo-cerca.document-work.v1',
+        read_only: true,
+        paid_provider_calls: 0,
+        coverage_complete: false,
+        checked_at: source.checked_at,
+        items,
+      },
+    });
+  }],

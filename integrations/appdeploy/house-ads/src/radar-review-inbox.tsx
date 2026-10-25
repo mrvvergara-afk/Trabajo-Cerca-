@@ -8,6 +8,8 @@ type Entry={id:string;url:string;sourceId:string;territories:string[];
   publication?:{state:string;published:boolean;lastCheckedAt?:string|null;reason?:string|null;url?:string};};
 type CardNotice={tone:'info'|'success'|'warning';message:string};
 const reasonLabels:Record<string,string>={
+  already_in_public_catalog:'La oferta ya está publicada en el catálogo actual. Se conserva su publicación existente.',
+  public_duplicate_catalog_unavailable:'El catálogo no está disponible para terminar la revisión de duplicados.',
   already_in_internal_inventory:'La oferta ya está en el inventario o coincide con otra publicación.',
   duplicate_check_incomplete:'La revisión de duplicados todavía no termina.',
   duplicate_check_in_progress:'Revisando el inventario por páginas.',

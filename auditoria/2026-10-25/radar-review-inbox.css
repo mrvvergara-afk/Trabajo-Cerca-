@@ -1,0 +1,13 @@
+.tcReviewInbox{display:grid;gap:11px;min-width:0;margin:12px 0}
+.tcReviewHead,.tcReviewActions{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.tcReviewInbox h3{font-size:.98rem;margin:0}.tcReviewInbox p{font-size:.78rem;margin:5px 0;color:#5e6d69;line-height:1.5}
+.tcReviewInbox details{border:1px solid #e8eeea;border-radius:10px;padding:10px}
+.tcReviewInbox summary{cursor:pointer;font-size:.85rem;font-weight:650}
+.tcReviewInbox textarea{box-sizing:border-box;width:100%;margin:8px 0;min-height:70px;border:1px solid #dde6e0;border-radius:8px;background:#fff;color:#23372f;font-size:12px;padding:9px}
+.tcReviewInbox button{font-size:.75rem;min-height:30px;padding:5px 9px;border-radius:7px}
+.tcReviewInbox a{font-size:.75rem;word-break:break-word}
+.tcReviewGrid{display:grid;grid-template-columns:1fr;gap:8px}
+.tcReviewEntry{border:1px solid #e9f0ed;background:#fff;border-radius:10px;padding:10px;min-width:0}
+.tcReviewEntry strong{font-size:.83rem}.tcReviewEntry small{font-size:.71rem;color:#63736d}
+.tcReviewEntry .tcReviewActions{justify-content:flex-start;margin-top:8px}
+@media(min-width:920px){.tcReviewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}

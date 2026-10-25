@@ -44,6 +44,12 @@ jobs:
           python tools/trabajo_cerca_lector_documental.py \
             --input docs/muestra-documentos-municipales-publicos.json \
             --max-items 6 --output reporte_municipal.json
+      - name: Descubrir anuncios individuales enlazados desde índices municipales
+        run: |
+          python -m unittest discover -s tools -p 'test_descubrir_ofertas_municipales.py' -v
+          python tools/descubrir_ofertas_municipales.py \
+            --input docs/muestra-documentos-municipales-publicos.json \
+            --max-indexes 3 --max-links 4 --output reporte_descubrimiento.json
       - name: Comprobar acceso a cola real de AppDeploy (diagnóstico separado)
         continue-on-error: true
         run: |
@@ -57,5 +63,6 @@ jobs:
           path: |
             reporte_documental.json
             reporte_municipal.json
+            reporte_descubrimiento.json
           if-no-files-found: ignore
           retention-days: 7

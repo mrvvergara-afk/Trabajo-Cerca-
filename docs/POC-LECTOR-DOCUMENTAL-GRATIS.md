@@ -9,7 +9,8 @@ El lector toma una exportación de solo lectura del endpoint
 
 - HTTPS y lista cerrada de dominios institucionales.
 - Respeta robots.txt y rechaza redirecciones.
-- Límite de documentos de 6 MB, 30 páginas y 20 elementos por ejecución.
+- Límite de 6 MB por imagen y 16 MiB por PDF, coherente con el verificador documental de la aplicación.
+- Para PDF de más de 30 páginas se extrae **solo una vista previa de seis páginas** y queda marcado `documento_parcial_revision_obligatoria`; no es verificación integral ni publicación.
 - Extracción local de texto de PDF (PyMuPDF) y HTML.
 - OCR gratuito **Tesseract español** para imágenes públicas (JPEG/PNG/WebP) y hasta tres páginas de PDF escaneados, limitado en tiempo y tamaño.
 - No hay OCR externo, Bright Data, Tavily, EXA ni IA remota.

@@ -26,8 +26,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Instalar lector PDF local
-        run: python -m pip install --disable-pip-version-check --quiet 'pymupdf>=1.24,<2'
+      - name: Instalar OCR local y lector PDF sin proveedor externo
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-spa tesseract-ocr-eng
+          python -m pip install --disable-pip-version-check --quiet 'pymupdf>=1.24,<2' 'pytesseract>=0.3.10,<1' 'pillow>=10,<13'
       - name: Pruebas locales con datos sinteticos
         run: python -m unittest discover -s tools -p 'test_lector_documental.py' -v
       - name: Lector de fuentes existentes sin publicar

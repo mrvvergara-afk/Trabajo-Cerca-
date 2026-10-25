@@ -180,12 +180,17 @@ def main(argv=None):
                                    'kind': 'local_page', 'publisher_page': url}, today)
                 accept(record, source_id, 'semilla_2026_10_25', places)
             else:
-                # Bounded lookup: index plus no more than two individual article links.
+                # Every source receives an audit receipt, including a healthy
+                # index which contains zero usable vacancies.
                 data = discover({'url': url, 'source': source_id}, max_links=2)
-                if data.get('status') != 'index_read':
-                    counts['fuente_'+str(data.get('status'))] += 1
-                    status.append({'source_id': source_id, 'url': canonical(url),
-                                   'status': str(data.get('status')), 'checked_links': 0})
+                state = str(data.get('status') or 'sin_estado')
+                counts['fuente_'+state] += 1
+                status.append({
+                    'source_id': source_id, 'url': canonical(url),
+                    'status': 'fuente_'+state,
+                    'links_found': int(data.get('links_found') or 0),
+                    'individual_pages_checked': len(data.get('checked', []))
+                })
                 for record in data.get('checked', [])[:4]:
                     accept(record, source_id, 'fuente_web_publica', places)
         except Exception as exc:

@@ -2693,11 +2693,11 @@ const applicationRouter = router({
     if (!allowBurst('analytics', distinctId, 120, 60000)) return error('Demasiados eventos de analítica.', 429);
     const properties = cleanAnalyticsProperties(input.properties);
     const recorded=await recordUsageEvent(eventId,event,distinctId,properties.commune);
-    if(recorded.duplicate)return json({received:true,duplicate:true,internalRecorded:true,externalDelivered:false},202);
+    if(recorded.duplicate)return json({received:true,duplicate:true,internalRecorded:true,externalAccepted:false,externalQueryableConfirmed:false},202);
     try {
       const dailyId=createHash('sha256').update(new Date().toISOString().slice(0,10)+'\0'+distinctId).digest('hex');
       const delivered = await relayAnalytics(event, dailyId, properties);
-      return json({received:true,internalRecorded:true,externalDelivered:delivered},202);
+      return json({received:true,internalRecorded:true,externalAccepted:delivered,externalQueryableConfirmed:false},202);
     } catch {
       console.warn('analytics_external_delivery_failed',{event});
       return json({received:true,internalRecorded:true,externalDelivered:false},202);

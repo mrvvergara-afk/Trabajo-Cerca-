@@ -1,5 +1,10 @@
 name: Trabajo Cerca | QA seguridad administrativa
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - automation/trabajo_cerca/qa_admin_anon.py
+      - .github/workflows/trabajo-cerca-admin-security.yml
   push:
     branches: [main]
     paths:

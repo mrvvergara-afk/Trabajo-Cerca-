@@ -1,6 +1,6 @@
 {
-  "headline": "Ingresa a Trabajo Cerca",
-  "subtitle": "Accede a tu cuenta o configura tus avisos. La administración requiere autorización adicional.",
+  "headline": "Activa tus avisos de Trabajo Cerca",
+  "subtitle": "Identifica este dispositivo una sola vez para recibir nuevas ofertas verificadas de las comunas que elijas.",
   "style": {
     "mode": "light",
     "accentColor": "#06231c",
@@ -9,5 +9,7 @@
     "textColor": "#06231c",
     "fontFamily": "Inter, system-ui, sans-serif",
     "borderRadius": 20
-  }
+  },
+  "termsUrl": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?legal=terms",
+  "privacyUrl": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?legal=privacy"
 }

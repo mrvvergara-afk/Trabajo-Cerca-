@@ -1,6 +1,7 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
+import {queueNotificationOffers} from './notification-dispatch';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -17,7 +18,7 @@ type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; fir
 type Manifest = Summary & { schema:2; updatedAt:string; pages:PageRef[]; pageCount:number };
 type Build = Manifest & { source:FeedSource | 'complete'; nextToken?:string };
 type Change = { source:FeedSource; sourceId:string; queuedAt:string };
-type Control = Stored & { manifestId?:string };
+type Control = Stored & { manifestId?:string;previousManifestId?:string };
 type Projector = {
   revision?:string;
   reconcileManifestId?:string;
@@ -373,7 +374,7 @@ async function publish(record:Manifest) {
   const previous = await single<Control>('public_feed_control');
   const { id:_id, ...fields } = previous ?? {};
   const { pages:_pages, ...summary } = record;
-  await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId });
+  await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId,previousManifestId:previous?.manifestId || previous?.previousManifestId });
   return { ...summary, manifestId, rebuilding:false };
 }
 
@@ -385,7 +386,7 @@ export async function readPublicFeedSummary() {
 export async function currentPublicFeedManifest() {
   const current = await single<Control>('public_feed_control');
   if (!current?.manifestId) return null;
-  const [record] = await db.get<Manifest>('public_feed_manifests', [current.manifestId]);
+  const [record] = await db.get<Manifest>('public_feed_manifests', [current.manifestId],{consistent:true});
   if (!record) throw new Error('Public feed manifest missing');
   return { manifestId:current.manifestId, manifest:record };
 }
@@ -468,6 +469,13 @@ export async function advancePublicFeed(projector:Projector) {
     for (let i = 0; i < ids.length; i++) await editor.put(source, ids[i], records[i]);
   }
   const result = await publish(manifest(await editor.persist(), now));
+  // The change queue is acknowledged only after durable notification staging.
+  // Replay checks stable first-publication identities, including external tables.
+  const published:Stored[]=[];
+  for(const {sourceId} of wanted.values()){
+    const item=await readPublicFeedItem(sourceId);if(item?.kind==='job_offer')published.push(item);
+  }
+  await queueNotificationOffers(published);
   // Acknowledge only after the complete immutable manifest and visible pointer are durable.
   if (changes.items.length) {
     const removed = await db.delete('public_feed_changes', changes.items.map(change => change.id));
@@ -478,6 +486,8 @@ export async function advancePublicFeed(projector:Projector) {
 
 export async function readPublicFeedPage(cursor?:string) {
   let manifestId:string | undefined;
+  let previousManifestId:string | undefined;
+  let degraded=false;
   let page = 0;
   if (cursor?.startsWith('v2:')) {
     const match = /^v2:([A-Za-z0-9_-]{1,128}):(\d+)$/.exec(cursor);
@@ -487,25 +497,37 @@ export async function readPublicFeedPage(cursor?:string) {
   } else {
     if (cursor && !/^\d+$/.test(cursor)) throw new Error('Feed cursor invalid');
     page = Number(cursor || '0');
-    manifestId = (await single<Control>('public_feed_control'))?.manifestId;
+    const control=await single<Control>('public_feed_control');
+    manifestId=control?.manifestId;previousManifestId=control?.previousManifestId;
   }
   if (!Number.isSafeInteger(page) || page < 0 || page > 10000) throw new Error('Feed cursor invalid');
   if (!manifestId) return (await single<Stored>('public_feed_page_' + page)) ?? null;
-  const [current] = await db.get<Manifest>('public_feed_manifests', [manifestId]);
+  let [current] = await db.get<Manifest>('public_feed_manifests', [manifestId],{consistent:true});
+  if(!current&&!cursor&&previousManifestId){
+    [current]=await db.get<Manifest>('public_feed_manifests',[previousManifestId],{consistent:true});
+    if(current){manifestId=previousManifestId;degraded=true;}
+  }
   if (!current) throw new Error('Public feed manifest missing');
   if (page >= Math.max(1, current.pages.length)) throw new Error('Feed cursor invalid');
   const ref = current.pages[page];
-  const [leaf] = ref ? await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id]) : [null];
+  const [leaf] = ref ? await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id],{consistent:true}) : [null];
   if (ref && !leaf) throw new Error('Public feed page missing');
   const { pages:_pages, schema:_schema, itemCount, ...summary } = current;
   const hasMore = page + 1 < current.pages.length;
   return { ...summary, items:leaf?.entries.map(entry => entry.item) ?? [], totalItems:itemCount,
+    feedState:degraded?'degraded_last_good':'fresh',
     pageSize:PAGE_SIZE, hasMore, nextCursor:hasMore ? 'v2:' + manifestId + ':' + (page + 1) : undefined };
 }
 
 
 // Lookups must use the current public projection, never private source records.
 export async function readPublicFeedItem(id:string) {
+  return (await readPublicFeedEntry(id))?.item ?? null;
+}
+
+// Internal lookup: the source comes only from the current published manifest.
+// Never expose it as an endpoint or accept a caller-supplied table name.
+export async function readPublicFeedEntry(id:string) {
   if(!/^[A-Za-z0-9_-]{1,128}$/.test(id))return null;
   const current=await currentPublicFeedManifest();
   if(!current)return null;
@@ -513,5 +535,5 @@ export async function readPublicFeedItem(id:string) {
   if(!ref)return null;
   const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id]);
   if(!leaf)throw Error('Public feed page missing');
-  return leaf.entries.find(entry=>entry.sourceId===id)?.item??null;
+  return leaf.entries.find(entry=>entry.sourceId===id&&allowedSource(entry.source))??null;
 }

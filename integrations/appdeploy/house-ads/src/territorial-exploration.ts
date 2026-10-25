@@ -1,4 +1,5 @@
-export const EXPLORATION_CITIES = ['Los Ángeles', 'Victoria', 'Temuco'] as const;
+import {COMPLEMENTARY_PLACES} from '../shared/territories';
+export const EXPLORATION_CITIES = COMPLEMENTARY_PLACES;
 
 type TerritorialOffer = { id:string; kind:string; workCommunes:string[] };
 
@@ -22,4 +23,3 @@ export function safeSponsorUrl(value?:string) {
     return url.protocol === 'https:' && !url.username && !url.password ? url.href : null;
   } catch { return null; }
 }
-

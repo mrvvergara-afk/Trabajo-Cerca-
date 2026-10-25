@@ -68,14 +68,14 @@ export function TerritorialRadar({stats, ready, failed, updatedAt, selected, onS
       data-rotating={rotating} data-focus-town={active}>
       <div className='tcRadarHeading'>
         <div>
-          <h2 id='tc-radar-title'>Explora tu territorio</h2>
+          <h2 id='tc-radar-title'>Radar territorial</h2>
           <p>Publicaciones del catálogo, sin rastreo en vivo.</p>
         </div>
         <Radar aria-hidden='true'/>
       </div>
       <details className='tcRadarDetails' open={expanded} onToggle={event => setExpanded(event.currentTarget.open)}>
         <summary className='tcRadarExpand'>
-          {expanded ? 'Ocultar comunas' : 'Explorar las 13 localidades'}
+          {expanded ? 'Ocultar las comunas' : 'Ver las 13 comunas'}
           <span aria-hidden='true'>{expanded ? '−' : '+'}</span>
         </summary>
         <div className='tcRadarExplorer'>

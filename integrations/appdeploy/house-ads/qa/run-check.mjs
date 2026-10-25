@@ -1,6 +1,7 @@
 import {spawn,spawnSync} from 'node:child_process';
 import {resolve} from 'node:path';
 import {writeFileSync,readFileSync,existsSync} from 'node:fs';
+if(process.env.CLOSURE_CHECKS==='1'){await import('./closure-run-check.mjs');process.exit(0);}
 function run(command,args){const r=spawnSync(command,args,{stdio:'inherit',env:process.env});if(r.status!==0)throw Error(command+' failed');}
 // Candidate tests use localhost and an isolated SDK adapter. The visual review first reads the live public catalog without mutations. Never deploys.
 run('npm',[(existsSync('package-lock.json')?'ci':'install'),'--ignore-scripts','--no-audit','--no-fund','--fetch-retries=0']);

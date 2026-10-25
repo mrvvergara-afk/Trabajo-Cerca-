@@ -1,3 +1,5 @@
+import {LegalContent} from './legal-content';
+import {PRIMARY_PLACES,COMPLEMENTARY_PLACES} from '../shared/territories';
 import {loadReading,saveReading,markReading} from './reading-history';
 import {reviewLabel,lastConfirmedAt,identifiedEmployer,originalPoster,shortDate} from './compact-presentation';
 import {TerritorialRadar} from './territorial-radar';
@@ -40,7 +42,7 @@ function analyticsId() {
 }
 
 function track(event:string, properties:Record<string, string | number | boolean | undefined> = {}) {
-  void api.post('/api/analytics', { event, distinctId:analyticsId(), properties }).catch(() => undefined);
+  void api.post('/api/analytics', { eventId:crypto.randomUUID(), event, distinctId:analyticsId(), properties }).catch(() => undefined);
 }
 
 type Flow = 'ofrezco' | 'trabajadores' | 'servicio' | 'aporte';
@@ -175,8 +177,8 @@ type Listing = {
   hasContact?: boolean;
 };
 
-const places = ['Todas','Angol','Collipulli','Ercilla','Renaico','Mininco','Nacimiento','Negrete','Mulchén','Los Sauces','Purén','Traiguén','Lumaco','Victoria'];
-const travelPlaces = ['Los Ángeles','Victoria','Temuco','Lautaro'];
+const places = ['Todas',...PRIMARY_PLACES];
+const travelPlaces:readonly string[] = COMPLEMENTARY_PLACES;
 const emptyCommuneStat:CommuneStat = { jobs:0, newJobs24h:0, people:0, needs:0, services:0 };
 
 function getOwnerTokens(): Record<string,string> {
@@ -569,8 +571,6 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
 }
 
 function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; onClose:()=>void; onSaved:(message:string)=>void }) {
-  // No periodic delivery is installed in the six existing schedules.
-  const automaticAlertsAvailable = false;
   const selectable = [...new Set([...places.filter(value => value !== 'Todas'), ...travelPlaces])];
   const [selected, setSelected] = useState<string[]>(() => selectable.includes(defaultPlace) ? [defaultPlace] : []);
   const [keywords, setKeywords] = useState('');
@@ -578,7 +578,8 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
   const [loading, setLoading] = useState(auth.isSignedIn());
   const [saving, setSaving] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const [testMessage, setTestMessage] = useState('');
+  const [legacyPending,setLegacyPending] = useState(false);
   useEffect(() => {
     if (!auth.isSignedIn()) { setLoading(false); return; }
     api.get('/api/notifications/preferences').then(response => {
@@ -586,86 +587,88 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
       if (communes.length) setSelected(communes);
       setKeywords(Array.isArray(response.data.keywords) ? response.data.keywords.join(', ') : '');
       setEnabled(Boolean(response.data.active));
-    }).catch(() => undefined).finally(() => setLoading(false));
+      setLegacyPending(response.data.legacyPending===true);
+      if(response.data.legacyPending)setErrorMessage('Tus preferencias anteriores se están actualizando. Puedes guardarlas de nuevo o desactivarlas desde aquí.');
+    }).catch(() => setErrorMessage('No fue posible consultar tus preferencias anteriores.')).finally(() => setLoading(false));
   }, []);
-
   const togglePlace = (value:string) => {
     setErrorMessage('');
-    setSelected(current => {
-      if (current.includes(value)) return current.filter(item => item !== value);
-      if (current.length >= 5) { setErrorMessage('Puedes seguir hasta 5 comunas para evitar notificaciones excesivas.'); return current; }
-      return [...current, value];
-    });
+    setSelected(current => current.includes(value) ? current.filter(item => item !== value) : current.length >= 5 ? current : [...current,value]);
   };
-  const parsedKeywords = () => keywords.split(',').map(value => value.trim()).filter(Boolean).slice(0, 8);
-
+  const parsedKeywords = () => keywords.split(',').map(value => value.trim()).filter(Boolean).slice(0,8);
   const activate = async () => {
-    if (!automaticAlertsAvailable) return;
-    if (!selected.length) { setErrorMessage('Elige al menos una comuna.'); return; }
-    setSaving(true); setErrorMessage('');
+    if (!selected.length) { setErrorMessage('Elige al menos una comuna para recibir avisos.'); return; }
+    setSaving(true); setErrorMessage(''); setTestMessage('');
     try {
       if (!auth.isSignedIn()) await auth.signIn();
       const guidance = await notifications.getEnableGuidance();
-      if (guidance.kind === 'permission_denied' || guidance.kind === 'ios_install_required' || guidance.kind === 'unsupported') {
-        setErrorMessage([guidance.message, ...guidance.steps].filter(Boolean).join(' · '));
+      if (['permission_denied','ios_install_required','unsupported'].includes(guidance.kind)) {
+        setErrorMessage([guidance.message,...guidance.steps].filter(Boolean).join(' · '));
         return;
       }
       await notifications.subscribe({ showUi:false });
       await api.post('/api/notifications/preferences', { communes:selected, keywords:parsedKeywords() });
       setEnabled(true);
+      setLegacyPending(false);
       track('tc_notifications_enabled', { commune:selected.join(' · '), count:selected.length, keyword_count:parsedKeywords().length, surface:'alerts_panel' });
-      onSaved('Avisos activados. Te notificaremos solo cuando haya ofertas nuevas y verificadas en tus zonas.');
+      onSaved('Preferencias guardadas. Prueba el envío y comprueba que la notificación aparece en tu teléfono.');
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'No pudimos activar las notificaciones.';
-      setErrorMessage(message.includes('popup') ? 'Necesitamos que completes la identificación del dispositivo para activar los avisos.' : message);
+      const message=err instanceof Error ? err.message : 'No fue posible activar las notificaciones.';
+      setErrorMessage(message.includes('popup') ? 'Completa el inicio de sesión para activar tus avisos.' : message);
     } finally { setSaving(false); }
   };
-
   const testNotification = async () => {
-    if (!automaticAlertsAvailable) return;
-    setSaving(true); setErrorMessage('');
+    setSaving(true); setErrorMessage(''); setTestMessage('');
     try {
-      await api.post('/api/notifications/test');
+      const response = await api.post('/api/notifications/test');
+      if (!(Number(response.data?.sent)>0)) throw Error('El servicio no aceptó el envío. Revisa la suscripción y los permisos antes de volver a probar.');
       track('tc_notifications_test', { commune:selected.join(' · '), surface:'alerts_panel' });
-      onSaved('Notificación de prueba enviada. Si no aparece, revisa los permisos de Trabajo Cerca en tu teléfono.');
-    } catch { setErrorMessage('No pudimos enviar la prueba. Revisa que los avisos estén habilitados en este dispositivo.'); }
-    finally { setSaving(false); }
+      setTestMessage('El servicio aceptó la prueba. Comprueba en tu teléfono si apareció; esta respuesta no confirma su recepción física.');
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'No se pudo enviar la prueba.');
+    } finally { setSaving(false); }
   };
-
   const disable = async () => {
-    setSaving(true); setErrorMessage('');
+    setSaving(true); setErrorMessage(''); setTestMessage('');
     try {
       if (auth.isSignedIn()) await api.delete('/api/notifications/preferences');
       await notifications.unsubscribe({ showUi:false });
       setEnabled(false);
-      track('tc_notifications_disabled', { surface:'alerts_panel' });
-      onSaved('Avisos desactivados en este dispositivo.');
-    } catch { setErrorMessage('No pudimos desactivar los avisos. Intenta nuevamente.'); }
+      setLegacyPending(false);
+      track('tc_notifications_disabled',{surface:'alerts_panel'});
+      onSaved('Notificaciones desactivadas. No se enviarán nuevos avisos a tu cuenta.');
+    } catch { setErrorMessage('No fue posible desactivar los avisos. Vuelve a intentarlo.'); }
     finally { setSaving(false); }
   };
-
-  return <div className='modal neoAlertsModal' role='dialog' aria-modal='true'>
-    <div className='neoAlertsPanel'>
-      <button className='neoAlertsClose' onClick={onClose} aria-label='Cerrar'><X /></button>
-      <div className='neoAlertsVisual'>
-        <img src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&fm=webp&q=78&w=1200' alt='' />
-        <span className='neoAlertsShade' />
-        <div><span><Bell /> ALERTAS TRABAJO CERCA</span><h2>Que la oportunidad te encuentre.</h2><p>Los avisos automáticos están en preparación. Mientras tanto, revisa las oportunidades disponibles en la búsqueda.</p></div>
-      </div>
-      <div className='neoAlertsForm'>
-        <span className='neoKicker'>TUS ZONAS DE INTERÉS</span>
-        <h3>¿Dónde quieres que busquemos por ti?</h3>
-        <p>El envío periódico todavía no está habilitado. Si ya guardaste preferencias, puedes desactivarlas; no se enviarán resúmenes automáticos en esta etapa.</p>
-        <div className='neoAlertPlaces'>{selectable.map(value => <button key={value} className={selected.includes(value) ? 'active' : ''} onClick={() => togglePlace(value)}>{selected.includes(value) && <CheckCircle />} {value}</button>)}</div>
-        <label className='neoAlertKeywords'><span>Cargo u oficio <small>opcional</small></span><input value={keywords} onChange={event => setKeywords(event.target.value)} placeholder='Ej. soldador, conductor, TENS' /></label>
-        <div className='neoAlertPromise'><ShieldCheck /><span><b>Sin spam.</b><small>No se activará ningún envío sin una función de entrega comprobada.</small></span></div>
-        {errorMessage && <div className='formError'><AlertCircle /> {errorMessage}</div>}
-        <div className='neoAlertActions'>
-          <button className='neoAlertPrimary' onClick={() => void activate()} disabled={!automaticAlertsAvailable || saving || loading}><Bell /> {!automaticAlertsAvailable ? 'Avisos automáticos en preparación' : saving ? 'Guardando…' : enabled ? 'Actualizar mis avisos' : 'Activar avisos'}</button>
-          {enabled && automaticAlertsAvailable && <button className='neoAlertTest' onClick={() => void testNotification()} disabled={saving}>Probar ahora</button>}
-          {enabled && <button className='neoAlertDisable' onClick={() => void disable()} disabled={saving}>Desactivar</button>}
+  return <div className='modal neoAlertsModal tcNotifyBackdrop' role='presentation' onMouseDown={event=>{if(event.target===event.currentTarget)onClose();}}>
+    <div className='neoAlertsPanel tcNotifyPanel' role='dialog' aria-modal='true' aria-labelledby='tc-notify-heading'>
+      <button className='neoAlertsClose' onClick={onClose} aria-label='Cerrar avisos'><X/></button>
+      <div className='neoAlertsForm tcNotifyForm'>
+        <div className='tcNotifyHeading'><span className='tcNotifyIcon'><Bell aria-hidden='true'/></span><div><h2 id='tc-notify-heading'>Notificaciones automáticas</h2><p>Esta opción voluntaria envía alertas a tu teléfono, incluso si cierras la app.</p></div></div>
+        {enabled&&<div className='tcNotifyActive' role='status'><CheckCircle aria-hidden='true'/> Preferencias guardadas</div>}
+        <label className='tcNotifyMainPlace'>Comuna principal
+          <select value={selected[0]||''} onChange={event=>{const value=event.target.value;setSelected(current=>value?[value,...current.filter(x=>x!==value).slice(0,4)]:[]);}}>
+            <option value=''>Selecciona una comuna</option>
+            {selectable.map(value=><option key={value} value={value}>{value}</option>)}
+          </select>
+        </label>
+        <details className='tcNotifyMore'>
+          <summary>Más comunas y cargos (opcional)</summary>
+          <p>Selecciona hasta cinco comunas en total.</p>
+          <div className='neoAlertPlaces'>{selectable.map(value=><button type='button' key={value} aria-pressed={selected.includes(value)} className={selected.includes(value)?'active':''} onClick={()=>togglePlace(value)}>{selected.includes(value)&&<CheckCircle aria-hidden='true'/>}{value}</button>)}</div>
+          <label className='neoAlertKeywords'>Cargos de interés (opcional)
+            <input value={keywords} onChange={event=>setKeywords(event.target.value)} placeholder='Ej.: conductor, TENS' />
+          </label>
+        </details>
+        <p className='tcNotifyNote'>Buscar trabajo y consultar novedades es gratis y no requiere cuenta. Solo para recibir notificaciones automáticas con la app cerrada, el proveedor AppDeploy solicita iniciar sesión una vez y aceptar los permisos del teléfono. No tiene cobros. En iPhone puede ser necesario instalar la app primero.</p>
+        {errorMessage&&<div className='formError' role='alert'><AlertCircle/>{errorMessage}</div>}
+        {testMessage&&<p className='tcNotifyActive' role='status'>{testMessage}</p>}
+        <div className='neoAlertActions tcNotifyActions'>
+          <button type='button' className='neoAlertPrimary' disabled={saving||loading} onClick={()=>void activate()}><Bell aria-hidden='true'/>{saving?'Guardando…':enabled?'Actualizar avisos':auth.isSignedIn()?'Activar notificaciones':'Iniciar sesión y activar'}</button>
+          {enabled&&<button type='button' className='neoAlertTest' disabled={saving||loading} onClick={()=>void testNotification()}>Probar envío</button>}
+          {(enabled||legacyPending)&&<button type='button' className='neoAlertDisable' disabled={saving||loading} onClick={()=>void disable()}>Desactivar</button>}
         </div>
-        <small className='neoAlertFoot'>Para enviar notificaciones el dispositivo debe quedar identificado una sola vez. Trabajo Cerca guarda únicamente el identificador técnico y tus intereses seleccionados, no tu contraseña.</small>
+        <small className='neoAlertFoot'>Solo se notifican publicaciones verificadas que coincidan con tus zonas o cargos. Puedes desactivar las alertas cuando quieras.</small>
       </div>
     </div>
   </div>;
@@ -796,7 +799,7 @@ export function OperationsPanel() {
   return (
     <main className='opsShell'>
       <header className='opsHeader'>
-        <div className='brand'><div className='brandmark'><MapPin /><Radar /></div><div><b>Trabajo Cerca</b><span>PANEL OPERATIVO PRELIMINAR</span></div></div>
+        <div className='brand'><div className='brandmark'><img className='tcOfficialBrandIcon' src='/icon-192.png' width='192' height='192' alt='' aria-hidden='true' decoding='async' /></div><div><b>Trabajo Cerca</b><span>PANEL OPERATIVO PRELIMINAR</span></div></div>
         <button onClick={back}>Volver a Trabajo Cerca</button>
       </header>
       {securityMode && <pre id='security-live-check'>{JSON.stringify(securityProof,null,2)}</pre>}
@@ -922,6 +925,28 @@ function NeoArtwork({ item }: { item: Listing }) {
   );
 }
 
+// Visual identity only: use the actual work locality, never source or recruiter locality.
+// All tones are extremely light and stable across listings, filters and pagination.
+const CARD_TOWN_TONES: Record<string,string> = {
+  angol:'angol', collipulli:'collipulli', ercilla:'ercilla',
+  renaico:'renaico', mininco:'mininco', 'los sauces':'los-sauces',
+  puren:'puren', traiguen:'traiguen', lumaco:'lumaco',
+  nacimiento:'nacimiento', negrete:'negrete', mulchen:'mulchen',
+  victoria:'victoria',
+};
+function listingTownTone(workCommunes:string[],workLocation?:string):string {
+  const normalize=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL').trim();
+  const actual=normalize(workLocation||'');
+  for(const [town,key] of Object.entries(CARD_TOWN_TONES)) {
+    if(actual===town || actual.startsWith(town+' ') || actual.endsWith(' '+town) || actual.includes(', '+town)) return key;
+  }
+  for(const commune of workCommunes||[]) {
+    const key=CARD_TOWN_TONES[normalize(commune)];
+    if(key)return key;
+  }
+  return 'neutral';
+}
+
 function App() {
   const [items, setItems] = useState<Listing[]>([]);
   const [loading, setLoading] = useState(true);
@@ -958,7 +983,7 @@ function App() {
   const [feedComplete,setFeedComplete]=useState(false);
   const requestGeneration=useRef(0);
   const [resultFocus,setResultFocus]=useState(0);
-  const [legalView, setLegalView] = useState<LegalView>(null);
+  const [legalView, setLegalView] = useState<LegalView>(()=>{const value=new URLSearchParams(window.location.search).get('legal');return value==='privacy'||value==='terms'?value:null;});
   useEffect(() => {
     if (!legalView) return;
     const dialog = document.querySelector<HTMLElement>('.legalModal');
@@ -1009,6 +1034,8 @@ function App() {
 
   const [revealingContact, setRevealingContact] = useState(false);
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
+  const [installHelp,setInstallHelp] = useState(false);
+  const [isStandalone,setIsStandalone] = useState(()=>window.matchMedia('(display-mode: standalone)').matches || (window.navigator as Navigator & {standalone?:boolean}).standalone===true);
   const [homePlace, setHomePlace] = useState(places.includes(initialPlace) && !travelPlaces.includes(initialPlace) ? initialPlace : 'Todas');
   const [sessionStartedAt,setSessionStartedAt] = useState(() => new Date().toISOString());
   const noveltyCutoff=Date.parse(sessionStartedAt)-7*86400000;
@@ -1097,6 +1124,7 @@ function App() {
     };
     const installed = () => {
       setInstallPrompt(null);
+      setIsStandalone(true);
       track('tc_app_installed', { surface:'pwa' });
       setNotice('Trabajo Cerca quedó instalada en tu dispositivo.');
     };
@@ -1205,7 +1233,7 @@ function App() {
     }
     track('tc_install_started', { surface:'internal_campaign', commune:place });
     if (!installPrompt) {
-      setNotice('Para instalar, abre el menú de tu navegador y elige “Instalar Trabajo Cerca” o “Agregar a pantalla de inicio”.');
+      setInstallHelp(true);
       return;
     }
     try{await installPrompt.prompt();const choice=await installPrompt.userChoice;track(choice.outcome==='accepted'?'tc_install_prompt_accepted':'tc_install_prompt_dismissed',{surface:'pwa'});}catch{setNotice('No se pudo abrir la instalación. Puedes usar el menú de tu navegador.');}finally{setInstallPrompt(null);}
@@ -1320,7 +1348,7 @@ function App() {
       <main className='neoShell'>
         <header className='neoTopbar'>
           <button className='neoBrand' onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}>
-            <span className='neoBrandMark'><MapPin /><Radar /></span>
+            <span className='neoBrandMark'><img className='tcOfficialBrandIcon' src='/icon-192.png' width='192' height='192' alt='' aria-hidden='true' decoding='async' /></span>
             <span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span>
           </button>
           <nav className='neoTopNav' aria-label='Navegación vNext'>
@@ -1355,9 +1383,15 @@ function App() {
               <button aria-label='Necesito contratar' onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span className='tcQuickLong'>Necesito contratar</span><span className='tcQuickShort'>Contratar</span></button>
               <button aria-label='Promocionar negocio' onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span className='tcQuickLong'>Promocionar negocio</span><span className='tcQuickShort'>Anunciar</span></button>
             </nav>
+
           </div>
         </section>
-
+        {/* Anunciar, instalar y recibir avisos están disponibles aun cuando el hero móvil se oculta. */}
+        <div className='tcHomeUtilities' role='group' aria-label='Servicios rápidos de Trabajo Cerca'>
+              <button type='button' onClick={()=>setShowAdvertiser(true)} aria-label='Promocionar negocio'><Megaphone aria-hidden='true'/>Anunciar</button>
+              <button type='button' onClick={()=>void installApp()} aria-label={isStandalone?'Aplicación instalada':'Instalar aplicación'}><Download aria-hidden='true'/>{isStandalone?'Instalada':'Instalar app'}</button>
+              <button type='button' onClick={()=>setShowActivity(true)} aria-label='Ver novedades de trabajo sin registrarse'><Bell aria-hidden='true'/>Avisos</button>
+            </div>
         {advertising.selections.search?.type==='COMMERCIAL'&&renderAdvertising('search')}
         <section className='neoRecentArrivals tcActivityStrip' aria-label='Actividad del catálogo'>
           <button onClick={()=>navigateResults('opportunities')}><b>{scopeCount??'…'}</b> ofertas disponibles{place!=='Todas'?' · '+place:''}</button>
@@ -1399,7 +1433,7 @@ function App() {
             {shownResults.map((item, index) => {
               const own = Boolean(ownerTokens[item.id]);
               return (
-                <Fragment key={item.id}><article data-offer-id={item.id} className={'neoJobCard neoKind-' + item.kind + ' ' + (selected?.id === item.id ? 'isSelected' : '')} key={item.id}>
+                <Fragment key={item.id}><article data-offer-id={item.id} data-tone={listingTownTone(item.workCommunes,item.workLocation)} className={'neoJobCard neoKind-' + item.kind + ' ' + (selected?.id === item.id ? 'isSelected' : '')} key={item.id}>
                   {originalPoster(item,window.location.href)&&<button className='tcPosterThumb' onClick={()=>setSelected(item)} aria-label={'Ver afiche de '+item.title}><img src={originalPoster(item,window.location.href)!} alt={'Afiche original de '+item.title} loading='lazy' referrerPolicy='no-referrer'/></button>}
                   <div className='neoJobBody'>
                     <div className='neoJobTop'>
@@ -1407,7 +1441,7 @@ function App() {
                       <span className={'neoJobState ' + (reviewLabel(item)==='Verificada'?'verified':reviewLabel(item)==='Vigencia por confirmar'?'pending':'direct')}>{reviewLabel(item)}</span>
                     </div>
 
-                    {isFresh(item)&&<span className='neoNewOfferBadge'>Incorporada recientemente</span>}{reading.known&&!reading.read[item.id]&&<span className='tcUnreadBadge'>No leída</span>}
+                    {isFresh(item)&&<span className='neoNewOfferBadge' title='Añadida recientemente a Trabajo Cerca; no indica la fecha original'>Recién incorporada</span>}{reading.known&&!reading.read[item.id]&&<span className='tcUnreadBadge'>No leída</span>}
                     <h3>{item.title}</h3>
                     {identifiedEmployer(item)&&<p className='neoJobCompany'>{identifiedEmployer(item)}</p>}
                     {item.salary && <strong className='neoSalary'>{item.salary}</strong>}
@@ -1441,10 +1475,17 @@ function App() {
         </details>
         <details className='tcSecondary' id='actualidad-laboral'><summary>Actualidad laboral y trámites</summary><LaborNewsSection/></details>
 
-        <footer className='neoFooter'>
-          <div className='neoBrand'><span className='neoBrandMark'><MapPin /><Radar /></span><span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span></div>
-          <p>Diseñado para conectar territorio, personas y oportunidades.<a href={'mailto:'+LEGAL_RESPONSIBLE.privacyEmail}>{LEGAL_RESPONSIBLE.privacyEmail}</a></p>
-          <div><button onClick={() => setLegalView('privacy')}>Privacidad</button><button onClick={() => setLegalView('terms')}>Términos</button></div>
+        <footer className='neoFooter' aria-label='Información de Trabajo Cerca'>
+          <div className='neoBrand tcFooterBrand'>
+            <span className='neoBrandMark'><img className='tcOfficialBrandIcon' src='/icon-192.png' width='192' height='192' alt='' aria-hidden='true' decoding='async' /></span>
+            <span><b>Trabajo Cerca</b><small>PERSONAS ↔ TRABAJO</small></span>
+          </div>
+          <p className='tcFooterTagline'>Conectamos personas, trabajo y servicios locales.</p>
+          <a className='tcFooterEmail' href={'mailto:'+LEGAL_RESPONSIBLE.privacyEmail}>{LEGAL_RESPONSIBLE.privacyEmail}</a>
+          <nav className='tcFooterLegal' aria-label='Información legal'>
+            <button type='button' onClick={() => setLegalView('privacy')}>Privacidad</button>
+            <button type='button' onClick={() => setLegalView('terms')}>Términos</button>
+          </nav>
         </footer>
 
         {!flow && !showAdvertiser && !showAlerts && !showActivity && !legalView && !selected && <nav className='neoMobileNav' aria-label='Navegación móvil'>
@@ -1507,6 +1548,7 @@ function App() {
 
         {showActivity&&<ActivityCenter places={places} place={place} count={scopedRecent.length} unread={scopeUnread} known={reading.known} complete={feedComplete} failed={Boolean(loadError)} onPlace={chooseLocalPlace} onOpen={unread=>{setShowActivity(false);navigateResults('opportunities',place,true,unread);}} onRefresh={()=>void load(undefined,true)} onPush={()=>{setShowActivity(false);setShowAlerts(true);}} onClose={()=>setShowActivity(false)}/>}
         {showAlerts && <AlertsPanel defaultPlace={place === 'Todas' ? homePlace : place} onClose={() => setShowAlerts(false)} onSaved={message => { setNotice(message); setShowAlerts(false); }} />}
+        {installHelp&&<div className='modal tcInstallBackdrop' role='presentation' onMouseDown={event=>{if(event.target===event.currentTarget)setInstallHelp(false);}}><div className='tcInstallGuide' role='dialog' aria-modal='true' aria-labelledby='tc-install-title'><button className='tcInstallClose' aria-label='Cerrar instrucciones' onClick={()=>setInstallHelp(false)}><X/></button><h2 id='tc-install-title'>Instala Trabajo Cerca</h2><p>Accede desde el icono de tu celular, como cualquier aplicación.</p><div><b>Android · Chrome</b><p>Abre esta página en Chrome, toca el menú ⋮ y elige «Instalar app» o «Agregar a pantalla principal».</p></div><div><b>iPhone · Safari</b><p>Abre la página en Safari, toca Compartir y selecciona «Agregar a pantalla de inicio».</p></div><small>Si estás en un navegador integrado, primero elige «Abrir en navegador». La instalación depende de las opciones disponibles en tu teléfono.</small><button className='tcInstallDone' onClick={()=>setInstallHelp(false)}>Entendido</button></div></div>}
 
         {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. La promoción y su duración se confirmarán al aprobar el anuncio. Tu contacto no fue publicado.')} />}
 
@@ -1514,20 +1556,7 @@ function App() {
           <div className='panel legalPanel'>
             <button className='close' onClick={() => setLegalView(null)} aria-label='Cerrar'><X /></button>
             <span className='lab'>TRABAJO CERCA · PILOTO</span>
-            {legalView === 'privacy' ? <>
-              <h2 id='legal-dialog-title'>Privacidad y tus datos</h2>
-              <p className='legalLead'>Trabajo Cerca usa únicamente la información necesaria para conectar personas con trabajo y proteger las publicaciones.</p>
-              <h3>Qué datos tratamos</h3><p>Si publicas directamente, usamos los datos que ingresas para mostrar la publicación y facilitar el contacto. No solicitamos CV, RUT, dirección exacta, claves, datos bancarios ni datos sensibles.</p>
-              <h3>Contacto protegido</h3><p>El teléfono o WhatsApp no forma parte del listado público masivo y se revela solamente mediante una acción explícita.</p>
-              <h3>Avisos personalizados</h3><p>Si activas notificaciones, el sistema requiere identificar el dispositivo/usuario una vez y guarda únicamente un identificador técnico, las comunas y los cargos u oficios que elijas. No usamos esta función para crear perfiles publicitarios personales.</p>
-              <h3>Responsable del tratamiento</h3><p>{LEGAL_RESPONSIBLE.ownerConfirmed&&LEGAL_RESPONSIBLE.fullName ? `${LEGAL_RESPONSIBLE.fullName} · ${LEGAL_RESPONSIBLE.commune} · ${LEGAL_RESPONSIBLE.country}` : 'Identificación completa pendiente de confirmación del titular antes del lanzamiento público.'}</p>
-              <h3>Tus derechos</h3><p>Para consultas, correcciones o solicitudes sobre tus datos puedes escribir a {LEGAL_RESPONSIBLE.privacyEmail}. La identificación legal completa del responsable se incorporará antes del lanzamiento público.</p>
-            </> : <>
-              <h2 id='legal-dialog-title'>Términos de uso</h2>
-              <p className='legalLead'>Trabajo Cerca conecta personas y oportunidades. No es una agencia de reclutamiento y no garantiza contratación.</p>
-              <h3>Publicaciones</h3><p>La información publicada debe ser verdadera, pertinente y lícita. Se retiran avisos vencidos, duplicados, dudosos o denunciados.</p>
-              <h3>Publicidad</h3><p>Los espacios comerciales se identifican claramente. Pagar por visibilidad nunca modifica la verificación ni el orden de una oferta laboral.</p>
-            </>}
+            <LegalContent view={legalView}/>
           </div>
         </div>}
 
@@ -1755,7 +1784,7 @@ function App() {
       </section>
 
       <footer className='cleanFooter'>
-        <div className='brand'><div className='brandmark'><MapPin /><Radar /></div><div><b>Trabajo Cerca</b><span>PERSONAS ↔ TRABAJO</span></div></div>
+        <div className='brand'><div className='brandmark'><img className='tcOfficialBrandIcon' src='/icon-192.png' width='192' height='192' alt='' aria-hidden='true' decoding='async' /></div><div><b>Trabajo Cerca</b><span>PERSONAS ↔ TRABAJO</span></div></div>
         <div className='footerLegal'><button onClick={() => setLegalView('privacy')}>Privacidad y tus datos</button><button onClick={() => setLegalView('terms')}>Términos de uso</button><span>Piloto territorial · Malleco y Biobío norte · trabajocerca.malleco.biobio@gmail.com</span></div>
       </footer>
 
@@ -1812,26 +1841,7 @@ function App() {
         <div className='panel legalPanel'>
           <button className='close' onClick={() => setLegalView(null)} aria-label='Cerrar'><X /></button>
           <span className='lab'>TRABAJO CERCA · PREPARACIÓN PARA PUBLICACIÓN</span>
-          {legalView === 'privacy' ? <>
-            <h2 id='legal-dialog-title'>Privacidad y tus datos</h2>
-            <p className='legalLead'>Versión preliminar para el piloto. Durante esta etapa, el responsable del tratamiento será la persona natural titular del proyecto Trabajo Cerca. El canal oficial de contacto es trabajocerca.malleco.biobio@gmail.com; la identificación legal completa se incorporará antes del lanzamiento público.</p>
-            <h3>Responsable durante el piloto</h3><p>Trabajo Cerca opera actualmente como proyecto de una persona natural, no como sociedad constituida. El correo oficial del proyecto es trabajocerca.malleco.biobio@gmail.com. La identificación legal completa del responsable sigue pendiente de incorporación antes de abrir el servicio al público general.</p>
-            <h3>Qué datos tratamos</h3><p>Si publicas directamente, usamos solo los datos que ingresas para conectar personas con trabajo: nombre o nombre abreviado, oficio/cargo, comuna, zonas de disponibilidad, descripción y contacto. Si un negocio solicita información para anunciar, tratamos nombre comercial, comuna, rubro y un contacto comercial para responderle. No solicitamos CV, RUT, dirección exacta, claves, datos bancarios ni datos sensibles.</p>
-            <h3>Para qué</h3><p>Para mostrar tu publicación, facilitar contactos laborales, moderar abusos, mantener la vigencia y permitirte cerrar o eliminar el aviso.</p>
-            <h3>Contacto protegido</h3><p>El teléfono o WhatsApp no se incluye en la descarga masiva del listado. Se entrega solo cuando una persona abre un aviso y solicita ver el contacto.</p>
-            <h3>Conservación y control</h3><p>Las publicaciones directas caducan automáticamente. Desde el mismo dispositivo puedes cerrarlas o eliminarlas definitivamente antes. Los avisos aportados al Radar se revisan antes de publicarse.</p>
-            <h3>Fuentes externas</h3><p>El Radar también trabaja con información laboral publicada por empresas, organismos públicos, OMIL, medios y otras fuentes lícitas. Conservamos la fuente y evitamos reproducir datos personales innecesarios.</p>
-            <h3>Tus derechos</h3><p>El diseño contempla acceso, corrección y eliminación de datos. Para consultas o solicitudes puedes escribir a {LEGAL_RESPONSIBLE.privacyEmail}. Esta versión del laboratorio no debe considerarse todavía el aviso legal definitivo.</p>
-            <p className='legalFoot'>Referencia normativa: Ley 19.628 y reforma introducida por Ley 21.719, con vigencia diferida al 1 de diciembre de 2026. La versión final será revisada antes de publicación.</p>
-          </> : <>
-            <h2 id='legal-dialog-title'>Términos de uso</h2>
-            <p className='legalLead'>Trabajo Cerca conecta personas y oportunidades. No es una agencia de reclutamiento, no selecciona candidatos y no garantiza contratación.</p>
-            <h3>Publicaciones</h3><p>Quien publica debe entregar información verdadera, pertinente y lícita. Está prohibido publicar estafas, cobros por postular, servicios sexuales, claves, datos bancarios, información sensible innecesaria o contenido que vulnere derechos de terceros.</p>
-            <h3>Ofertas externas</h3><p>Los avisos provenientes de terceros mantienen su fuente. La vigencia, requisitos y contratación final dependen del empleador o fuente original. Trabajo Cerca puede retirar avisos vencidos, duplicados, dudosos o denunciados.</p>
-            <h3>Seguridad</h3><p>Nunca pagues por postular ni entregues claves, códigos de seguridad o datos bancarios. Verifica siempre la identidad del empleador antes de compartir información adicional.</p>
-            <h3>Publicidad y patrocinio</h3><p>Los espacios comerciales estarán identificados claramente como publicidad o patrocinio. Pagar por visibilidad comercial no modifica la verificación, vigencia ni orden de una oferta laboral. Buscar trabajo seguirá siendo gratuito para las personas.</p>
-            <h3>Disponibilidad</h3><p>Este servicio está en fase piloto y puede cambiar mientras se realizan pruebas de capacidad, seguridad y cumplimiento antes del lanzamiento público.</p>
-          </>}
+          <LegalContent view={legalView}/>
         </div>
       </div>}
 

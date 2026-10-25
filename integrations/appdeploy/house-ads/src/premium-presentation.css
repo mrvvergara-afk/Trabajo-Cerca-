@@ -446,3 +446,251 @@
     }
   }
 }
+
+/* 2026-10-24 · Density and calm home. This is the last visual stylesheet loaded.
+   Preserve 44px tap areas; distinguish communes by very subtle, non-semantic tints.
+   Avoid another pile of competing phone-specific styles elsewhere. */
+.neoShell .neoJobCard {
+  --tc-town-bg:#ffffff;
+  --tc-town-edge:#eef0ed;
+  background:var(--tc-town-bg);
+  border:0;
+  border-left:2px solid var(--tc-town-edge);
+  border-radius:9px;
+  box-shadow:0 1px 3px #09281d0d;
+}
+.neoShell .neoJobCard[data-tone="angol"]{--tc-town-bg:#fffdf4;--tc-town-edge:#f1e5be}
+.neoShell .neoJobCard[data-tone="collipulli"]{--tc-town-bg:#fdfbf7;--tc-town-edge:#eae1d0}
+.neoShell .neoJobCard[data-tone="ercilla"]{--tc-town-bg:#fffbfa;--tc-town-edge:#f3e1da}
+.neoShell .neoJobCard[data-tone="renaico"]{--tc-town-bg:#f8fbfc;--tc-town-edge:#dceaf1}
+.neoShell .neoJobCard[data-tone="mininco"]{--tc-town-bg:#fafbf9;--tc-town-edge:#e3eae3}
+.neoShell .neoJobCard[data-tone="los-sauces"]{--tc-town-bg:#fffdf8;--tc-town-edge:#f2ebd8}
+.neoShell .neoJobCard[data-tone="puren"]{--tc-town-bg:#f8fcfa;--tc-town-edge:#dcefe4}
+.neoShell .neoJobCard[data-tone="traiguen"]{--tc-town-bg:#fffbf8;--tc-town-edge:#f2e4d8}
+.neoShell .neoJobCard[data-tone="lumaco"]{--tc-town-bg:#fbfbf7;--tc-town-edge:#e9eadd}
+.neoShell .neoJobCard[data-tone="nacimiento"]{--tc-town-bg:#f8fbfe;--tc-town-edge:#dcebf6}
+.neoShell .neoJobCard[data-tone="negrete"]{--tc-town-bg:#f9fcf8;--tc-town-edge:#dfedda}
+.neoShell .neoJobCard[data-tone="mulchen"]{--tc-town-bg:#f8fbf9;--tc-town-edge:#dcebe1}
+.neoShell .neoJobCard[data-tone="victoria"]{--tc-town-bg:#fbf9fe;--tc-town-edge:#e9e2f0}
+.neoShell .neoJobCard:focus-within{outline:2px solid #648974;outline-offset:2px}
+@media(max-width:800px){
+  /* Native-app density: one search, one category rail, no redundant hero. */
+  .neoShell .neoHero{display:none}
+  .neoShell .tcQuickActions{display:none}
+  /* Lightweight primary shortcuts remain visible on the first screen. */
+  .neoShell .tcHomeUtilities{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;
+    width:calc(100% - 28px);margin:1px auto 3px;gap:3px;padding:0 0 2px;
+    background:transparent;border:0;box-shadow:none
+  }
+  .neoShell .tcHomeUtilities button,.neoShell .tcHomeUtilities button:first-child{
+    display:flex;align-items:center;justify-content:center;gap:6px;
+    min-height:44px;padding:7px 3px;font-size:11.5px;font-weight:600;
+    color:#22513e;background:transparent;border:0;border-radius:8px;box-shadow:none
+  }
+  .neoShell .tcHomeUtilities button+button{border-left:1px solid #e9eeea;border-radius:0}
+  .neoShell .tcHomeUtilities svg{width:16px;height:16px;flex:none}
+  /* Catalogue counts are already in the heading. The utility menu retains the full activity centre. */
+  .neoShell .tcActivityStrip{display:none}
+  .neoShell .neoDiscover{padding:0 14px 9px;scroll-margin-top:8px}
+  .neoShell .neoDiscoverHead{display:flex;justify-content:space-between;align-items:baseline;gap:5px;margin:0 0 6px}
+  .neoShell .neoDiscoverHead h2{
+    font-size:17px;line-height:1.15;letter-spacing:-.02em;
+    color:#0c3023;margin:0;font-weight:670
+  }
+  .neoShell .tcResultStatus{font-size:10.5px;line-height:1.15;color:#778078;margin-top:2px}
+  .neoShell .neoControlDeck{margin-bottom:5px;background:transparent;border:0;box-shadow:none}
+  .neoShell .neoTabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;margin:0;padding:0}
+  .neoShell .neoTabs button,.neoShell .neoTabs .neoPeopleTab,.neoShell .neoTabs .neoServiceTab{
+    display:flex;justify-content:center;align-items:center;gap:2px;min-width:0;
+    min-height:44px;padding:4px 2px;background:transparent;border:0;border-radius:8px;
+    color:#526a5b;font-size:11px;font-weight:590;line-height:1.12;
+    white-space:nowrap;box-shadow:none
+  }
+  .neoShell .neoTabs button.active,.neoShell .neoTabs .neoPeopleTab.active,.neoShell .neoTabs .neoServiceTab.active{
+    background:#edf4eb;color:#153e2b;font-weight:700;border:0;box-shadow:none
+  }
+  .neoShell .neoTabs button b{font-size:9px;line-height:1.1;background:#e4eee4;color:#496b54;border-radius:99px;padding:2px 3px}
+  .neoShell .neoTabs svg{display:none}
+  .neoShell .neoTabs .tcTabLong{display:none}
+  .neoShell .neoTabs .tcTabShort{display:inline}
+  .neoShell .neoFilters{display:grid;grid-template-columns:minmax(0,1fr) 72px;gap:6px;margin-top:3px}
+  .neoShell .neoFilters .neoFilterSearch{display:flex;grid-column:1;align-items:center;min-width:0;min-height:44px;padding:3px 8px;border:1px solid #e4eae4;background:#fff;border-radius:12px}
+  .neoShell .neoFilters .neoFilterSearch input{width:100%;min-width:0;font-size:15px;line-height:1.2;border:0;background:transparent}
+  .neoShell .neoFilters .tcFiltersToggle{
+    display:flex!important;grid-column:2;align-items:center;justify-content:center;
+    min-height:44px;padding:5px 6px;background:transparent;
+    color:#315745;font-size:11.5px;font-weight:620;border:0;border-radius:8px
+  }
+  .neoShell .neoFilters .tcFiltersToggle[aria-expanded=true]{background:#edf5ed}
+  .neoShell .neoFilters .tcAdvancedFilters{display:none;grid-column:1/-1}
+  .neoShell .neoFilters .tcAdvancedFilters[data-open=true]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+  .neoShell .neoJobsGrid{grid-template-columns:minmax(0,1fr);gap:5px}
+  .neoShell .neoJobCard{
+    border:0;border-left:2px solid var(--tc-town-edge);
+    background:var(--tc-town-bg);box-shadow:none;border-radius:8px;
+    transition:none
+  }
+  .neoShell .neoJobCard:hover{transform:none;box-shadow:none}
+  .neoShell .neoJobBody{padding:10px 10px}
+  .neoShell .neoJobTop{margin:0 0 3px;gap:4px}
+  .neoShell .neoJobPlace{padding:1px 0;font-size:10.5px;line-height:1.2;background:none;font-weight:630}
+  .neoShell .neoJobPlace svg{width:13px;height:13px}
+  .neoShell .neoJobState{padding:2px 4px;font-size:9px;line-height:1.16}
+  .neoShell .neoNewOfferBadge,.neoShell .tcUnreadBadge{
+    display:inline-flex;margin:0 3px 1px 0;padding:1px 3px;border-radius:3px;
+    font-size:9.5px;line-height:1.25;letter-spacing:0;font-weight:550
+  }
+  .neoShell .neoJobCard h3{font-size:14px;line-height:1.25;letter-spacing:-.01em;font-weight:620;margin:4px 0 3px;min-height:0}
+  .neoShell .neoJobCompany{font-size:11px;line-height:1.25;color:#6b776f;margin:1px 0 3px}
+  .neoShell .tcOfferActionRow{gap:4px;margin-top:3px}
+  .neoShell .neoJobFacts small,.neoShell .neoJobFacts b{font-size:10px;line-height:1.22}
+  .neoShell .neoJobFacts small{color:#717d73}
+  .neoShell .neoJobFoot button{
+    min-height:44px;white-space:nowrap;font-size:11px;font-weight:650;
+    padding:6px 9px;color:#16422f;background:#eaf2e9;border:0;
+    border-radius:7px;box-shadow:none
+  }
+  .neoShell .neoJobFoot button svg{display:none}
+  /* Light navigation like the user's reference; active icons use brand green. */
+  .neoShell .neoMobileNav{
+    height:calc(54px + env(safe-area-inset-bottom));
+    padding:2px 8px calc(2px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.96);color:#496053;
+    border-radius:0;border-top:1px solid #e9eee9;
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    box-shadow:0 -2px 8px #13281b0a
+  }
+  .neoShell .neoMobileNav button{
+    min-height:44px;color:#4d6055;gap:1px;font-size:10px;line-height:1.08;
+    background:transparent;border:0;font-weight:520
+  }
+  .neoShell .neoMobileNav button svg{width:19px;height:19px}
+  .neoShell{padding-bottom:calc(63px + env(safe-area-inset-bottom))}
+  .neoShell .neoNotice{bottom:calc(63px + env(safe-area-inset-bottom))}
+  .neoShell button,.neoShell a{scroll-margin-bottom:calc(68px + env(safe-area-inset-bottom))}
+  /* Do not overcrowd or clip filter options on smaller phones. */
+  .neoShell .tcClearFilters{font-size:11px;padding:4px 7px;min-height:44px}
+}
+@media(max-width:360px){
+  .neoShell .tcHomeUtilities button{font-size:10.5px;gap:3px}
+  .neoShell .neoTabs button{font-size:10.5px;letter-spacing:-.015em}
+  .neoShell .neoFilters{grid-template-columns:minmax(0,1fr) 68px}
+}
+
+/* Consistent device rendering: prevent browser's arbitrary text inflation
+   on two mobile contexts while preserving OS/browser accessibility zoom. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(max-width:800px){
+  /* Own publications have two management controls that must not enlarge the card's text. */
+  .neoShell .neoOwnActions{gap:6px;margin-top:6px}
+  .neoShell .neoOwnActions button{min-height:44px;font-size:10.5px;line-height:1.15;padding:6px 8px}
+  .neoShell .neoDiscoverHead h2{font-size:clamp(15px,4.1vw,17px);letter-spacing:-.012em}
+  .neoShell .neoJobCard h3{font-size:clamp(13px,3.6vw,14px)}
+  .tcActivityCenter .tcActivityPush{white-space:normal;line-height:1.22}
+}
+
+/* Mobile footer and territorial support sections, unified visual owner.
+   Keep these separate from the job feed; all links and accordions stay functional. */
+.neoShell .neoFooter{
+  display:grid;
+  grid-template-columns:minmax(0,auto) minmax(0,1fr) auto;
+  grid-template-areas:'brand tagline legal' 'brand email legal';
+  align-items:center;
+  column-gap:20px;
+  row-gap:2px;
+  max-width:1180px;
+  padding:14px 20px 18px;
+  box-sizing:border-box;
+  margin:12px auto 0;
+  border-top:1px solid #e7eee6;
+  font-size:12px;
+  background:transparent;
+}
+.neoShell .neoFooter .tcFooterBrand{grid-area:brand;min-width:0;gap:7px}
+.neoShell .neoFooter .tcFooterBrand .neoBrandMark{width:26px;height:26px;border-radius:8px;flex-shrink:0}
+.neoShell .neoFooter .tcFooterBrand b{font-size:15px;line-height:1.1;white-space:nowrap}
+.neoShell .neoFooter .tcFooterBrand small{display:none}
+.neoShell .neoFooter .tcFooterTagline{
+  display:block;grid-area:tagline;min-width:0;margin:0;
+  font-size:11.5px;line-height:1.3;color:#66776c
+}
+.neoShell .neoFooter .tcFooterEmail{
+  display:block;grid-area:email;min-width:0;width:fit-content;max-width:100%;
+  overflow-wrap:anywhere;text-decoration:none;
+  color:#3b5b49;font-size:11.5px;line-height:1.3
+}
+.neoShell .neoFooter .tcFooterLegal{
+  grid-area:legal;display:flex;flex-wrap:nowrap;gap:10px;
+  justify-self:end;align-items:center;min-width:0
+}
+.neoShell .neoFooter .tcFooterLegal button{
+  padding:4px 7px;min-height:44px;border:0;background:transparent;
+  font-size:11.5px;line-height:1.2;color:#355743;text-decoration:none;
+  cursor:pointer
+}
+@media(max-width:800px){
+  .neoShell .tcTerritorialRadar,.neoShell .tcSecondary{
+    box-sizing:border-box;width:calc(100% - 28px);
+    margin:2px auto;padding:0 6px;
+    border:0;border-bottom:1px solid #e8eee7;border-radius:0;
+    background:transparent;box-shadow:none;
+  }
+  .neoShell .tcTerritorialRadar{padding:7px 6px 0}
+  .neoShell .tcRadarHeading{gap:6px;min-height:24px}
+  .neoShell .tcRadarHeading h2{font-size:14.5px;line-height:1.2;font-weight:650;margin:0}
+  .neoShell .tcRadarHeading p{display:none}
+  .neoShell .tcRadarHeading>svg{width:17px;height:17px;flex-shrink:0}
+  .neoShell .tcRadarDetails>summary{
+    min-height:44px;font-size:11.5px;line-height:1.2;
+    padding:0 1px;color:#526f5b
+  }
+  .neoShell .tcRadarDetails>summary span{font-size:16px}
+  .neoShell .tcSecondary>summary{
+    display:flex;align-items:center;justify-content:space-between;
+    min-height:46px;padding:3px 1px;gap:12px;
+    font-size:13.5px;font-weight:640;line-height:1.2;
+    color:#203e2d;letter-spacing:-.005em;
+  }
+  .neoShell .tcSecondary>summary::after{
+    content:'+';display:grid;place-items:center;
+    flex:0 0 28px;width:28px;height:28px;border-radius:50%;
+    font-size:19px;background:transparent;color:#426a4b
+  }
+  .neoShell .tcSecondary[open]>summary::after{content:'−'}
+  .neoShell .tcSecondary[open]{padding-bottom:9px}
+  /* Footer is four distinct lines instead of logo + legal text collision. */
+  .neoShell .neoFooter{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:'brand' 'tagline' 'email' 'legal';
+    gap:3px;
+    align-items:start;
+    padding:11px 20px 18px;
+    margin:9px auto 0;
+    max-width:100%;
+    text-align:left;
+    border-top:1px solid #e7eee6;
+  }
+  .neoShell .neoFooter .tcFooterBrand{grid-column:auto;grid-row:auto;display:flex;align-items:center;gap:7px}
+  .neoShell .neoFooter .tcFooterBrand b{font-size:14px;white-space:nowrap}
+  .neoShell .neoFooter .tcFooterBrand .neoBrandMark{width:24px;height:24px;border-radius:7px}
+  .neoShell .neoFooter .tcFooterTagline{
+    grid-column:auto;grid-row:auto;display:block;
+    font-size:11px;line-height:1.3;color:#66786a
+  }
+  .neoShell .neoFooter .tcFooterEmail{
+    grid-column:auto;grid-row:auto;
+    display:block;min-height:0;font-size:11px;line-height:1.25;
+    padding:4px 0;word-break:break-word;overflow-wrap:anywhere
+  }
+  .neoShell .neoFooter .tcFooterLegal{
+    grid-column:auto;grid-row:auto;display:flex;
+    justify-self:start;flex-wrap:wrap;gap:14px;align-items:center;
+    margin-top:1px
+  }
+  .neoShell .neoFooter .tcFooterLegal button{
+    min-width:0;min-height:44px;font-size:11px;
+    padding:5px 0;text-align:left
+  }
+}

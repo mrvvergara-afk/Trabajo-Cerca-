@@ -1,9 +1,12 @@
 import { db, storage, json, error, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 
 export const BACKUP_TABLES = [
+  'growth_usage_events','growth_usage_metrics','growth_usage_visitors',
   'growth_commercial_metrics', 'growth_commercial_events', 'growth_commercial_config', 'growth_trial_entitlements', 'growth_commercial_audit', 'growth_house_config', 'growth_house_metrics', 'growth_house_events', 'community_posts', 'free_public_run_leases', 'free_public_source_reads', 'free_public_source_runs',
   'growth_advertiser_leads', 'growth_campaigns', 'growth_social_queue', 'hard_exa_cursor', 'motor3_web_cursor',
   'notification_dispatch_log', 'notification_dispatch_state', 'notification_preferences',
+  'notification_user_preferences','notification_offer_queue','notification_offer_history',
+  'notification_delivery_receipts','notification_delivery_retries','notification_dispatch_control',
   'public_feed_build_state', 'public_feed_changes', 'public_feed_control', 'public_feed_identity_policy',
   'public_feed_manifests', 'public_feed_versions', 'radar_candidates', 'radar_document_revalidation_receipts',
   'radar_document_revalidation_state', 'radar_empty_recovery', 'radar_enrichment_cursor',
@@ -70,4 +73,3 @@ export async function adminBackupPage(ctx: RouterContext) {
     return response;
   }
 }
-

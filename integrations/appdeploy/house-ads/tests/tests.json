@@ -97,7 +97,8 @@
       "fuente original",
       "fuentes oficiales",
       "publicidad diferenciada de ofertas",
-      "retención de identidad de ofertas"
+      "retención de identidad de ofertas",
+      "cron notification-sweep conectado a notificationSweepHandler sin alterar los seis recolectores existentes"
     ],
     "description": "Comprueba lectura editorial y accesos oficiales, sin contar noticias ni anuncios como vacantes.",
     "qa_faults": [
@@ -438,7 +439,25 @@
       "filtros adicionales desplegables y seleccionados",
       "cuatro accesos de iconos en una fila",
       "tarjetas laborales densas y legibles",
-      "radar de comunas expandible sin perder su selección"
+      "radar de comunas expandible sin perder su selección",
+      "CTA Instalar app visible en portada",
+      "instalación PWA por beforeinstallprompt o guía Android/iOS",
+      "activación de avisos por consentimiento y comuna",
+      "envío de prueba push y desactivación",
+      "Portada móvil sin accesos duplicados con barra inferior",
+      "Tres acciones ligeras Anunciar/Instalar/Avisos sin bordes",
+      "Tonos casi blancos estables por localidad real de trabajo",
+      "Tarjetas laborales sin marco cerrado y con CTA accesible",
+      "Portada móvil sin hero y sin búsqueda duplicada: solo búsqueda del catálogo",
+      "Métricas de portada movidas fuera de vista móvil, accesibles desde Novedades",
+      "Navegación inferior blanca semitransparente y botones funcionales",
+      "Acceso a novedades sin registro previo desde portada",
+      "Push opcional con login explícitamente anunciado",
+      "Comprobación de actualización PWA al reabrir sin recarga forzada",
+      "Text-size-adjust para uniformidad navegador y aplicación instalada",
+      "footer independiente con marca contacto y enlaces legales separados",
+      "radar y recursos secundarios compactos sin bordes pesados",
+      "Un solo ícono institucional original icon-192.png en header, footer y administración"
     ],
     "description": "Solo abre y cierra formularios, sin enviar datos.",
     "steps": [
@@ -453,9 +472,28 @@
       "Comprobar que el buscador del listado está visible y los selectores de Comuna y Área aparecen al pulsar Filtros; elegir un área, cerrar y reabrir Filtros y comprobar que el valor se conserva.",
       "En móvil de 360, 390 y 430 px comprobar que la portada presenta cuatro iconos de acceso en una sola fila y que el primer resultado empieza antes que en la revisión del 23-10.",
       "Comprobar que el detalle laboral no elimina fechas, fuente, ubicación ni estados, y que Ver oferta abre el panel.",
-      "Desplazarse al radar territorial, expandir las 13 localidades, seleccionar una comuna y comprobar navegación. Revisar controles con zonas táctiles de al menos 44px."
+      "Desplazarse al radar territorial, expandir las 13 localidades, seleccionar una comuna y comprobar navegación. Revisar controles con zonas táctiles de al menos 44px.",
+      "En móvil a 360, 390 y 430 px, comprobar dos controles discretos Instalar app y Activar avisos en portada, sin desplazamiento horizontal.",
+      "Pulsar Instalar app: si el navegador ofrece instalación, debe invocarse; si no, mostrar guía clara para Chrome en Android y Safari en iPhone.",
+      "Pulsar Activar avisos: seleccionar comuna, iniciar sesión si es necesario y activar con permiso del navegador. Verificar preferencia guardada, prueba de envío con confirmación real, y desactivación.",
+      "Abrir el Centro de novedades y comprobar modal compacto con enlace operativo a Activar avisos.",
+      "En móvil 360, 390 y 430 px, comprobar que la portada no repite los 4 accesos de la barra inferior, pero sí muestra Anunciar, Instalar app y Avisos, todos funcionales.",
+      "Inspeccionar al menos avisos de Angol (amarillo pálido), Nacimiento (azul pálido), Negrete (verde pálido) y Victoria (lavanda pálida): cada tarjeta lleva un tinte casi blanco y un borde izquierdo tenue, no un contorno completo.",
+      "Confirmar que ubicación, verificaciones, etiquetas de incorporación, nombre de empleador, fuente y Ver oferta conservan su función y legibilidad.",
+      "En 360x800, 390x844, 430x932 y escritorio 1440px, comprobar que solo existe UN buscador visible en móvil, la lista se muestra mucho más arriba y en escritorio sigue el hero completo.",
+      "Abrir menú y centro de novedades para comprobar que las métricas, búsqueda de ofertas recientes y avisos siguen siendo accesibles aunque ya no ocupen espacio de portada móvil.",
+      "Pulsar Anunciar, Instalar app y Avisos en móvil. Comprobar que los tres funcionan fuera del hero oculto.",
+      "Comprobar que el catálogo conserva filtro por comuna, tabs, etiquetas de estado, enlaces de oferta y tonos suaves por localidad, y que la navegación inferior clara no tapa ofertas.",
+      "Abrir Avisos desde portada sin iniciar sesión: debe mostrar Centro de novedades y permitir consultar nuevas y no leídas sin autenticación.",
+      "Elegir Notificaciones automáticas opcional: explicar explícitamente que AppDeploy requiere sesión, y solo tras pulsar Iniciar sesión y activar abrir el proveedor.",
+      "Comparar Android Chrome y PWA instalada en 360, 390 y 430 px, con misma escala de texto. Tras recarga, ambos deben reflejar el mismo diseño. Los formularios no se refrescan automáticamente.",
+      "En 360, 390 y 430 px, desplazarse al final: Trabajo Cerca, descripción, email, Privacidad y Términos deben aparecer sin tocarse ni superponerse, con botones funcionales.",
+      "Comprobar que Radar territorial, Otras ciudades y Actualidad laboral aparecen como filas compactas y que todos los acordeones abren y cierran correctamente.",
+      "En escritorio 768 y 1440px, verificar que el footer distribuye correctamente marca, explicación, correo y enlaces legales.",
+      "Comparar el ícono original de la pantalla inicial PWA con las marcas visibles del encabezado, pie de página y panel operativo: deben usar el mismo PNG /icon-192.png, sin dibujos lucide reconstruidos.",
+      "Verificar proporción cuadrada, ausencia de deformación y cache actualizado al abrir la aplicación instalada y el navegador móvil."
     ],
-    "expected": "Sin desbordamiento lateral ni barra inferior tapando formularios. Administración no aparece a visitantes anónimos. La búsqueda y la primera oferta deben quedar claramente más arriba; las cuatro pestañas ocupan una sola fila y los filtros avanzados son accesibles con un botón. Diseño con proporciones compactas comparables a una app financiera móvil: iconos en fila, tarjetas visualmente densas, anuncios editoriales compactos y sin textos recortados."
+    "expected": "Sin desbordamiento lateral ni barra inferior tapando formularios. Administración no aparece a visitantes anónimos. La búsqueda y la primera oferta deben quedar claramente más arriba; las cuatro pestañas ocupan una sola fila y los filtros avanzados son accesibles con un botón. Diseño con proporciones compactas comparables a una app financiera móvil: iconos en fila, tarjetas visualmente densas, anuncios editoriales compactos y sin textos recortados. La portada ofrece instalación y alertas visibles. No anuncia push operativo antes de la activación; la prueba se confirma solo con resultado positivo del servicio. La portada tiene menor densidad de cajas, y cada comuna tiene tono consistente que no indica prioridad ni verificación. La primera oferta aparece antes que en la captura anterior. La pantalla móvil muestra cabecera, enlaces útiles, categorías, un único buscador y avisos antes de la barra inferior, sin duplicados ni bloque de métricas grande. Buscar y consultar novedades no requiere sesión; el inicio de sesión solo es necesario si el usuario acepta push automático y no se oculta este requisito. En el footer móvil no existe colisión horizontal ni vertical entre marca, correo y vínculos legales; radar y secciones secundarias mantienen accesibilidad y contenido. La marca se muestra con el archivo original exacto en todas las ubicaciones, sin introducir variantes redibujadas."
   },
   {
     "name": "Campañas propias y contenido público",

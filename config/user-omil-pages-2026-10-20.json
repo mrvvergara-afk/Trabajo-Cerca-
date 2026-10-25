@@ -30,7 +30,9 @@
       "access_result": "fetch_throttled",
       "posts_read_from_profile": 0,
       "recent_timeline_coverage_complete": false,
-      "added_to_paid_targets": false
+      "added_to_paid_targets": false,
+      "fallback": "recepcion_hibrida_con_revision_literal",
+      "automatic_capture_enabled": false
     },
     {
       "url": "https://www.instagram.com/munilumaco/",
@@ -51,6 +53,18 @@
       "posts_read_from_profile": 0,
       "recent_timeline_coverage_complete": false,
       "added_to_paid_targets": false
+    },
+    {
+      "url": "https://www.instagram.com/omil_victoria/",
+      "territory": "Victoria",
+      "identified_from": "owner_audit_request",
+      "read_scope": "public permalink or authorized poster only",
+      "access_result": "not_automatically_integrated",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false,
+      "fallback": "recepcion_hibrida_con_revision_literal",
+      "automatic_capture_enabled": false
     }
   ]
 }

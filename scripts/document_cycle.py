@@ -184,6 +184,19 @@ def exchange_body(queue, context, now=None):
     return json.dumps(body,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
 
 
+def delivery_batch(store, queue, now=None):
+    """Stage at most three units fairly; staging is never a publication receipt."""
+    now = now or utcnow()
+    previous = store.checkpoints().get('signed_delivery_cursor_v1', {})
+    staged = dict(previous.get('staged_at', {}))
+    records = sorted(queue['records'], key=lambda row: (
+        bool(staged.get(row['candidate_id'])), staged.get(row['candidate_id'], ''),
+        not bool(row.get('document_unit')), row['candidate_id']))[:3]
+    for row in records: staged[row['candidate_id']] = now.isoformat()
+    store.checkpoint('signed_delivery_cursor_v1', {'staged_at': staged}, now)
+    return {**queue, 'records': records, 'ready_count': len(records)}
+
+
 def main():
     context = context_from_environment()
     output = Path('output/documents'); output.mkdir(parents=True,exist_ok=True)
@@ -193,10 +206,23 @@ def main():
     store = State(path)
     try:
         merge_history(store,public_path)
+        pipeline_path = os.environ.get('RADAR_PIPELINE_STATE')
+        if pipeline_path:
+            source = Path(pipeline_path)
+            if not source.is_file() or source.stat().st_size > durable_backup.MAX_BACKUP_BYTES:
+                raise ValueError('Scheduled pipeline history missing or exceeds budget')
+            check = sqlite3.connect('file:'+urllib.parse.quote(str(source.resolve()))+'?mode=ro', uri=True)
+            try:
+                if check.execute('PRAGMA integrity_check').fetchone()[0] != 'ok':
+                    raise ValueError('Scheduled pipeline history failed integrity check')
+            finally: check.close()
+            merge_history(store,source)
         work = read_app_work(output)
         queue,summary = run(store,output,work,record_run=False)
         portals,portal_summary = curated_public_cycle.run(store,output,budget=Budget(60))
-        queue = curated_public_cycle.merge_batch(queue,portals)
+        # Include the fresh verified output of the same scheduled scan, not just curated seeds.
+        ready = publication_queue.prepare(store,output=output)
+        queue = delivery_batch(store,{**ready,'records':ready['records']})
         summary.update(curated_portals=portal_summary,batch_records=len(queue['records']),inventory_count=len(store.inventory()))
         store.record_run(summary)
         write_json(output/'document-cycle.json',summary)

@@ -1,9 +1,10 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
-import { publicPublisher, publicSourceAdapter, safePublicUrl } from './public-source-adapters';
+import { publicPublisher, publicSourceAdapter, publicFeedIdentity, safePublicUrl } from './public-source-adapters';
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
+import {COMPLEMENTARY_PLACES} from '../shared/territories';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal'; discoveryPriority?:'secondary' };
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
@@ -191,7 +192,7 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
     tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,
     createdAt:new Date(now).toISOString(),discoveredBy:'free-public-sources-v1',
-    secondaryMarket:['Los Ángeles','Victoria','Temuco'].includes(offer.work_commune),
+    secondaryMarket:(COMPLEMENTARY_PLACES as readonly string[]).includes(offer.work_commune),
     verificationCheckedAt:new Date(now).toISOString(),verifiedAt:new Date(now).toISOString(),
     verificationMethod:offer.verification_method,verificationReason:offer.reason };
 }
@@ -203,7 +204,13 @@ async function saveOffer(offer:PublicVerification, now:number) {
   const previous = (await db.list<Stored>(table,{ limit:2 })).items;
   if (previous.length>1 || previous[0] && previous[0].externalIdentity!==identity) throw new Error('Public identity conflict; preserve history');
   const old = previous[0], { id:_id,...fields } = old || {};
+  const publishedBefore = await currentPublicFeedManifest();
+  const feedIdentity=publicFeedIdentity(offer.url!);
+  const previouslyPublished=Boolean(publishedBefore?.manifest.pages.some(page=>page.keys.includes(table+':'+old?.id)||feedIdentity&&page.identities?.includes(hash(feedIdentity))));
   const record = { ...fields,...verifiedPublicRecord(offer,now),createdAt:old?.createdAt || new Date(now).toISOString(),
+    sourcePublishedAt:old?.sourcePublishedAt || offer.source_published_at,
+    firstVerifiedAt:old?.firstVerifiedAt || old?.verifiedAt || new Date(now).toISOString(),
+    verifiedAt:old?.verifiedAt || new Date(now).toISOString(),lastVerifiedAt:new Date(now).toISOString(),
     externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString() };
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;
@@ -216,7 +223,7 @@ async function saveOffer(offer:PublicVerification, now:number) {
     id = created;
   }
   await registerPublicFeedChange(table,id);
-  return { table,id,url:offer.url };
+  return { table,id,url:offer.url,operation:old?'revalidated':'created',previouslyPublished };
 }
 
 async function closeKnownOffer(url:string,result:PublicVerification,page:{url:string;status:number;raw:string},now:number) {
@@ -300,6 +307,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     let queue = ((previousSeed?.queue as string[] | undefined) || state.queues[source.key])
       ?.filter(url=>!publicDocumentUrl(url));
     let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];
+    // Return to the current index instead of walking indefinitely into archives.
+    const rootDue=previousSeed?.discoveryPolicy!=='recent-index-v1' || now-Date.parse(String(previousSeed?.rootCheckedAt || ''))>=6*3600000;
+    if(rootDue){queue=[source.url];seen=[];}
     if (!queue?.length) { queue=[source.url];seen=[]; }
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
     const audit:Stored = { source:source.name,territory:source.territory,url,http:page.status,
@@ -323,13 +333,15 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         seenPending.add(item.url);
       }
       seen = [...new Set([...seen,url])].slice(-64);
-      queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&
-        !publicDocumentUrl(item.url)).map(item => item.url)])]
+      queue = [...new Set([...queue.slice(1),...links.archives.filter(value=>{
+        const pageNumber=value.match(/\/page\/(\d+)|[?&](?:page|paged|pagina)=(\d+)/i);
+        return !pageNumber || Number(pageNumber[1]||pageNumber[2])<=3;
+      })])]
         .filter(item => !seen.includes(item)).slice(0,30);
       audit.candidates = links.candidates.length;
     }
     const restricted=Boolean(page.error && /robots|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;
-    const seed = { id:seedId,key:source.key,queue,seen,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
+    const seed = { id:seedId,key:source.key,queue,seen,discoveryPolicy:'recent-index-v1',rootCheckedAt:url===source.url?new Date(now).toISOString():previousSeed?.rootCheckedAt,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
       lastError:audit.error || (page.status>=400?'HTTP '+page.status:null),nextAllowedAt:restricted ? new Date(now+12*3600000).toISOString() : null };
     if (Buffer.byteLength(JSON.stringify(seed))>230*1024) throw new Error('Source history checkpoint byte budget exceeded');
     changedSeeds.set(seedId,{ previous:previousSeed,record:seed });
@@ -372,7 +384,11 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     localSourcesRead:audits.filter(item=>item.discoveryGroup==='local').length,
     portalSourcesRead:audits.filter(item=>item.discoveryGroup==='portal').length,
     documentsManagedSeparately:documentManagedUrls.size,
-    noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,
+    requestId,noticesChecked:reviewed.length,verified,stored:receipts.length,published:null,publicationStatus:'awaiting_public_feed_confirmation',providerCalls:0,
+    newStored:receipts.filter(row=>row.operation==='created'&&!row.previouslyPublished).length,
+    revalidations:receipts.filter(row=>row.operation==='revalidated'||row.previouslyPublished).length,
+    rejected:reviewed.filter(row=>row.status==='rejected').length,
+    unresolved:reviewed.filter(row=>row.status==='pending'||row.status==='review_ready').length,
     closuresConfirmed:closures.length,closures,sourcesDeferred:audits.filter(item=>item.error==='source_retry_deferred').length,
     pending:state.pending.length,priorityPending:state.priorityCandidates.length,
     documentsAwaitingLocalReader:state.pending.filter(item=>publicDocumentUrl(item.url)).length,
@@ -402,8 +418,9 @@ export async function freePublicSourceStatus() {
   const receipts = Array.isArray(current?.summary?.receipts) ? current.summary.receipts as Stored[] : [];
   const visible = snapshot ? receipts.filter(receipt => snapshot.manifest.pages.some(page => page.keys.includes(String(receipt.table)+':'+String(receipt.id)))) : [];
   return { readOnly:true,providerCalls:0,initialized:Boolean(current),summary:current?.summary || null,
-    publishedConfirmed:snapshot ? visible.length : null,feedManifestId:snapshot?.manifestId || null,
+    publishedConfirmed:snapshot ? visible.length : null,
+    newPublishedConfirmed:snapshot ? visible.filter(row=>row.operation==='created'&&row.previouslyPublished===false).length : null,
+    publicationStatus:snapshot ? 'public_feed_checked':'awaiting_public_feed_confirmation',feedManifestId:snapshot?.manifestId || null,
     historicalCoverageComplete:false,pending:current?.pending.length ?? null,checkedAt:current?.checkedAt || null,
     documentWork:publicDocumentWork(current) };
 }
-

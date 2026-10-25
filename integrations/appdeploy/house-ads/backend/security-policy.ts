@@ -5,7 +5,7 @@ import { publicSourceAdapter } from './public-source-adapters';
 export const SECURITY_POLICY = Object.freeze({
   paidProviders: false,
   remoteAi: false,
-  externalAnalytics: false,
+  externalAnalytics: true,
   manualOperations: false,
 });
 
@@ -34,4 +34,3 @@ export async function checkedLegacyFetch(input:RequestInfo | URL, init?:RequestI
 export function opaqueOwnerToken() {
   return randomBytes(32).toString('base64url');
 }
-

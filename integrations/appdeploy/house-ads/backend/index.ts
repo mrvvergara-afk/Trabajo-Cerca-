@@ -1,3 +1,8 @@
+import {sendPosthogEvent,ANALYTICS_PROPERTY_KEYS} from './analytics-delivery';
+import {createHash} from 'node:crypto';
+import {recordUsageEvent,readUsageMetrics} from './usage-metrics';
+import {getAlertPreference,saveAlertPreference,disableAlertPreference,runNotificationDispatch} from './notification-dispatch';
+import {PRIMARY_PLACES,COMPLEMENTARY_PLACES,WORK_PLACES} from '../shared/territories';
 import {withSecurityHeaders} from './security-headers';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
@@ -6,7 +11,7 @@ import { db, router, json, error, secrets, storage, ai, notifications, requireAu
 import { adminBackupPage } from './admin-backup';
 import { recheckPriority } from '../shared/offer-public-state';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue, latestOfferCheckAt } from './offer-retention';
-import { advancePublicFeed, readPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
+import { advancePublicFeed, readPublicFeedPage, readPublicFeedItem, readPublicFeedEntry, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
 import { readLocalSourceEvidence } from './local-source-evidence';
 import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';
@@ -51,6 +56,8 @@ type SeedJob = {
   evidence?: string;
   contact?: string;
   contactLabel?: string;
+  contactPublicationConsent?:boolean;
+  contactConsentAt?:string;
   review?: boolean;
 };
 
@@ -204,10 +211,7 @@ const ANALYTICS_EVENTS = new Set([
   'tc_install_prompt_available', 'tc_install_prompt_accepted', 'tc_install_prompt_dismissed',
   'tc_notifications_enabled', 'tc_notifications_disabled', 'tc_notifications_test',
 ]);
-const ANALYTICS_PROPERTY_KEYS = new Set([
-  'surface', 'commune', 'listing_id', 'kind', 'area', 'origin', 'verified', 'review',
-  'sponsor_id', 'category', 'scope', 'presence', 'count', 'keyword_count', 'visible_ms',
-]);
+
 
 type RateBucket = { windowStart:number; count:number };
 const rateBuckets = new Map<string, RateBucket>();
@@ -249,23 +253,14 @@ function cleanAnalyticsProperties(input: unknown): Record<string, string | numbe
 
 async function relayAnalytics(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
   if (!SECURITY_POLICY.externalAnalytics) return false;
-  const response = await fetch('https://us.i.posthog.com/i/v0/e/', {
-    method:'POST',
-    headers:{ 'content-type':'application/json' },
-    body:JSON.stringify({
-      api_key:POSTHOG_PROJECT_KEY,
-      event,
-      properties:{ distinct_id:distinctId, '$process_person_profile':false, ...properties },
-    }),
-  });
-  return response.ok;
+  return sendPosthogEvent(POSTHOG_PROJECT_KEY,event,distinctId,properties);
 }
 
 const SEED_VERSION = '2026-10-06-v17-live-benchmark';
 const SOURCE_VERSION = '2026-10-06-radar-v17-web-discovery';
-const PILOT = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Nacimiento','Negrete','Mulchén','Los Sauces','Purén','Traiguén','Lumaco','Victoria'];
-const TRAVEL_HUBS = ['Los Ángeles','Temuco','Lautaro'] as const;
-const MARKET_PLACES = [...PILOT, ...TRAVEL_HUBS];
+const PILOT = [...PRIMARY_PLACES];
+const TRAVEL_HUBS = COMPLEMENTARY_PLACES;
+const MARKET_PLACES = WORK_PLACES;
 const SOURCE_HUBS = ['Los Ángeles','Temuco','Lautaro','Concepción','Chillán'] as const;
 const CORE_CORRIDORS = {
   mallecoWest:['Angol','Renaico','Collipulli','Mininco','Ercilla'],
@@ -343,13 +338,13 @@ const FREE_PORTAL_SEARCHES = [
   { key:'opcionempleo', name:'Opción Empleo', search:'https://www.opcionempleo.cl/empleo-en-{slug}.html' },
   { key:'chiletrabajos', name:'ChileTrabajos', search:'https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}' },
 ];
-const FREE_TARGET_TOWNS = ['Angol','Lumaco','Los Sauces','Traiguén','Renaico','Nacimiento','Negrete','Mulchén','Collipulli'];
+const FREE_TARGET_TOWNS = PRIMARY_PLACES;
 const FREE_PUBLIC_SOURCES:FreeSource[] = (() => {
   const searches = FREE_TARGET_TOWNS.flatMap(place => FREE_PORTAL_SEARCHES.map(portal => ({
     key:portal.key+'-'+place, name:portal.name+' · '+place, territory:place,
     url:portal.search.replace('{place}',encodeURIComponent(place)).replace('{slug}',place.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,'-')),
   })));
-  const secondary = ['Los Ángeles','Victoria','Temuco'].flatMap(place => FREE_PORTAL_SEARCHES.map(portal => ({
+  const secondary = COMPLEMENTARY_PLACES.flatMap(place => FREE_PORTAL_SEARCHES.map(portal => ({
     key:portal.key+'-secondary-'+place, name:portal.name+' · '+place, territory:place, discoveryPriority:'secondary' as const, discoveryGroup:'portal' as const,
     url:portal.search.replace('{place}',encodeURIComponent(place)).replace('{slug}',sourceSlug(place)),
   })));
@@ -707,128 +702,14 @@ function notificationPreferenceMatches(item: ListingRecord, pref: NotificationPr
   return pref.keywords.some(keyword => haystack.includes(keyword));
 }
 
-async function getNotificationPreference(userId: string) {
-  const rows = await db.list<NotificationPreference>('notification_preferences', { limit:200 });
-  return rows.items.find(item => item.userId === userId);
-}
-
-async function saveNotificationPreference(userId: string, communes: string[], keywords: string[]) {
-  const now = new Date().toISOString();
-  const existing = await getNotificationPreference(userId);
-  const record: NotificationPreference = { userId, communes, keywords, active:true, createdAt:existing?.createdAt || now, updatedAt:now };
-  if (existing?.id) {
-    const [ok] = await db.update('notification_preferences', [{ id:existing.id, record }]);
-    if (!ok) throw new Error('No se pudieron actualizar tus alertas.');
-  } else {
-    const [id] = await db.add('notification_preferences', [record]);
-    if (!id) throw new Error('No se pudieron guardar tus alertas.');
-  }
-  const state = await db.list<NotificationDispatchState>('notification_dispatch_state', { limit:1 });
-  if (!state.items[0]) await writeSingleRecord('notification_dispatch_state', { lastRunAt:now, updatedAt:now });
-  return record;
-}
-
-async function disableNotificationPreference(userId: string) {
-  const existing = await getNotificationPreference(userId);
-  if (!existing?.id) return;
-  const { id, ...record } = existing;
-  const [ok] = await db.update('notification_preferences', [{ id, record:{ ...record, active:false, updatedAt:new Date().toISOString() } }]);
-  if (!ok) throw new Error('No se pudieron desactivar tus alertas.');
-}
-
-async function runNotificationCatchup(hours=24) {
-  const now = new Date();
-  const [prefsRows, radarRows, communityRows] = await Promise.all([
-    db.list<NotificationPreference>('notification_preferences', { limit:200 }),
-    db.list<ListingRecord>('radar_jobs', { limit:200 }),
-    db.list<ListingRecord>('community_posts', { limit:200 }),
-  ]);
-  const eligible = [...radarRows.items, ...communityRows.items]
-    .filter(item => item.kind === 'job_offer' && item.verified && !item.review && isCurrentlyActive(item))
-    .filter(item => {
-      const publishedTs = parseDiscoveryDate(item.sourcePublishedAt || item.date);
-      return Boolean(publishedTs) && !staleDiscoveryDate(new Date(publishedTs!).toISOString());
-    });
-  let matchedUsers = 0;
-  let sent = 0;
-  let failed = 0;
-  for (const pref of prefsRows.items.filter(item => item.active)) {
-    const matches = eligible.filter(item => notificationPreferenceMatches(item, pref));
-    if (!matches.length) continue;
-    matchedUsers += 1;
-    const first = matches[0];
-    const primaryPlace = pref.communes.find(place => matches.some(item => item.workCommunes.includes(place))) || first.workCommunes[0] || pref.communes[0];
-    const title = matches.length === 1 ? `Nueva oferta en ${primaryPlace}` : `${matches.length} nuevas ofertas en tu zona`;
-    const body = matches.length === 1 ? `${first.title} · ${first.company}` : `${first.title} y ${matches.length - 1} más. Todas verificadas por Trabajo Cerca.`;
-    try {
-      const result = await notifications.send({
-        userIds:[pref.userId],
-        notification:{ title, body, url:`/?place=${encodeURIComponent(primaryPlace)}&new=1` },
-        data:{ kind:'new_verified_jobs_catchup', count:String(matches.length), commune:primaryPlace },
-        ttlSeconds:43200,
-      });
-      sent += result.sent;
-      failed += result.failed;
-    } catch { failed += 1; }
-  }
-  const checkedAt = now.toISOString();
-  await db.add('notification_dispatch_log', [{ checkedAt, offers:eligible.length, matchedUsers, sent, failed, catchup:true }]);
-  return { offers:eligible.length, matchedUsers, sent, failed };
-}
-
-async function runNotificationSweep() {
-  const now = new Date();
-  const nowIso = now.toISOString();
-  const [stateRows, prefsRows, radarRows, communityRows] = await Promise.all([
-    db.list<NotificationDispatchState>('notification_dispatch_state', { limit:1 }),
-    db.list<NotificationPreference>('notification_preferences', { limit:200 }),
-    db.list<ListingRecord>('radar_jobs', { limit:200 }),
-    db.list<ListingRecord>('community_posts', { limit:200 }),
-  ]);
-  const state = stateRows.items[0];
-  if (!state?.lastRunAt) {
-    await writeSingleRecord('notification_dispatch_state', { lastRunAt:nowIso, updatedAt:nowIso });
-    return { initialized:true, offers:0, matchedUsers:0, sent:0, failed:0 };
-  }
-  const since = Date.parse(state.lastRunAt);
-  const eligible = [...radarRows.items, ...communityRows.items]
-    .filter(item => item.kind === 'job_offer' && item.verified && !item.review && isCurrentlyActive(item))
-    .filter(item => {
-      const publishedTs = parseDiscoveryDate(item.sourcePublishedAt || item.date);
-      if (!publishedTs || staleDiscoveryDate(new Date(publishedTs).toISOString())) return false;
-      const becamePublic = Date.parse(item.firstVerifiedAt || item.verifiedAt || item.createdAt);
-      return Number.isFinite(becamePublic) && becamePublic > since && becamePublic <= now.getTime();
-    });
-  let matchedUsers = 0;
-  let sent = 0;
-  let failed = 0;
-  for (const pref of prefsRows.items.filter(item => item.active)) {
-    const matches = eligible.filter(item => notificationPreferenceMatches(item, pref));
-    if (!matches.length) continue;
-    matchedUsers += 1;
-    const first = matches[0];
-    const primaryPlace = pref.communes.find(place => matches.some(item => item.workCommunes.includes(place))) || first.workCommunes[0] || pref.communes[0];
-    const title = matches.length === 1 ? `Nueva oferta en ${primaryPlace}` : `${matches.length} nuevas ofertas en tu zona`;
-    const body = matches.length === 1 ? `${first.title} · ${first.company}` : `${first.title} y ${matches.length - 1} más. Todas verificadas por Trabajo Cerca.`;
-    try {
-      const result = await notifications.send({
-        userIds:[pref.userId],
-        notification:{ title, body, url:`/?place=${encodeURIComponent(primaryPlace)}&new=1` },
-        data:{ kind:'new_verified_jobs', count:String(matches.length), commune:primaryPlace },
-        ttlSeconds:43200,
-      });
-      sent += result.sent;
-      failed += result.failed;
-    } catch { failed += 1; }
-  }
-  await writeSingleRecord('notification_dispatch_state', { lastRunAt:nowIso, updatedAt:nowIso });
-  if (eligible.length || matchedUsers) await db.add('notification_dispatch_log', [{ checkedAt:nowIso, offers:eligible.length, matchedUsers, sent, failed }]);
-  return { initialized:false, offers:eligible.length, matchedUsers, sent, failed };
-}
+async function getNotificationPreference(userId:string){return getAlertPreference(userId);}
+async function saveNotificationPreference(userId:string,communes:string[],keywords:string[]){return saveAlertPreference(userId,communes,keywords);}
+async function disableNotificationPreference(userId:string){return disableAlertPreference(userId);}
+async function runNotificationSweep(){return runNotificationDispatch();}
 
 function projectFeedListing(value:Record<string, unknown> & { id:string }) {
   const item=value as unknown as ListingRecord & { id:string };
-  if (item.kind!=='job_offer') return isCurrentlyActive(item) ? publicRecord(item) : null;
+  if (item.kind!=='job_offer') return ['worker_available','worker_need','service_request'].includes(item.kind) && !item.review && isCurrentlyActive(item) ? publicRecord(item) : null;
   if (offerRetentionReason(value)) return null;
   if (publicJobExclusion(value)) return null;
   const projectionPlaces = value.secondaryMarket === true && value.discoveredBy === 'free-public-sources-v1' ? MARKET_PLACES : PILOT;
@@ -2799,26 +2680,34 @@ const applicationRouter = router({
 
   'POST /api/radar/social-collect': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
-  'POST /api/analytics': [async ({ body }) => {
-    if (!SECURITY_POLICY.externalAnalytics) return json({received:false,disabled:true,reason:'security_policy_disabled'},202);
+  'POST /api/analytics': [publicQuota('analytics-minute',30,60000,120),publicQuota('analytics-day',500,86400000,2000),async ({ body }) => {
     const input = (body ?? {}) as Record<string, unknown>;
     const event = normalizeText(input.event).slice(0, 80);
     const distinctId = cleanClientToken(input.distinctId);
     if (!ANALYTICS_EVENTS.has(event) || !distinctId) return error('Evento de analítica no válido.', 400);
+    const eventId=normalizeText(input.eventId);
+    if(!/^[A-Za-z0-9_-]{16,80}$/.test(eventId))return json({received:false,reason:'client_update_required'},202);
     if (!allowBurst('analytics', distinctId, 120, 60000)) return error('Demasiados eventos de analítica.', 429);
     const properties = cleanAnalyticsProperties(input.properties);
+    const recorded=await recordUsageEvent(eventId,event,distinctId,properties.commune);
+    if(recorded.duplicate)return json({received:true,duplicate:true,internalRecorded:true,externalDelivered:false},202);
     try {
-      const delivered = await relayAnalytics(event, distinctId, properties);
-      if (!delivered) return error('Analítica temporalmente no disponible.', 502);
-      return json({ received:true }, 202);
+      const dailyId=createHash('sha256').update(new Date().toISOString().slice(0,10)+'\0'+distinctId).digest('hex');
+      const delivered = await relayAnalytics(event, dailyId, properties);
+      return json({received:true,internalRecorded:true,externalDelivered:delivered},202);
     } catch {
-      return error('Analítica temporalmente no disponible.', 502);
+      console.warn('analytics_external_delivery_failed',{event});
+      return json({received:true,internalRecorded:true,externalDelivered:false},202);
     }
+  }],
+  'GET /api/admin/marketing/usage': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ctx=>{
+    const page=await readUsageMetrics(ctx.query.cursor);
+    return json({items:page.items,nextToken:page.nextToken||null,source:'first_party_server_receipts',billing:false,externalAnalyticsEnabled:SECURITY_POLICY.externalAnalytics});
   }],
 
   'GET /api/notifications/preferences': [requireAuth(), async (ctx) => {
     const pref = await getNotificationPreference(ctx.user!.userId);
-    return json({ active:Boolean(pref?.active), communes:pref?.communes ?? [], keywords:pref?.keywords ?? [] });
+    return json({ active:Boolean(pref?.active), communes:pref?.communes ?? [], keywords:pref?.keywords ?? [], legacyPending:'legacyPending' in pref && pref.legacyPending===true });
   }],
 
   'POST /api/notifications/preferences': [requireAuth(), async (ctx) => {
@@ -2840,11 +2729,11 @@ const applicationRouter = router({
     if (!pref?.active) return error('Activa tus avisos antes de probarlos.', 400);
     const result = await notifications.send({
       userIds:[ctx.user!.userId],
-      notification:{ title:'Trabajo Cerca · avisos activados', body:'Listo. Te avisaremos cuando aparezcan nuevas ofertas verificadas en tus zonas.', url:'/' },
+      notification:{ title:'Trabajo Cerca · prueba de avisos', body:'Si puedes leer este mensaje en tu dispositivo, la prueba de recepción ha llegado.', url:'/' },
       data:{ kind:'notification_test' },
       ttlSeconds:600,
     });
-    return json({ sent:result.sent, failed:result.failed });
+    return json({ sent:result.sent, failed:result.failed,providerAccepted:result.sent>0,deviceDeliveryConfirmed:false });
   }],
 
   'GET /api/listings': [async ({ query }) => {
@@ -3143,6 +3032,8 @@ const applicationRouter = router({
       active: true,
       createdAt,
       contact: review ? undefined : contact,
+      contactPublicationConsent:!review && consent,
+      contactConsentAt:!review && consent ? createdAt : undefined,
       ownerToken,
     };
 
@@ -3160,13 +3051,11 @@ const applicationRouter = router({
     const clientToken = cleanClientToken(input.clientToken);
     if (!clientToken) return error('Solicitud no válida.', 400);
     if (!allowBurst('contact', clientToken, 30, 600000)) return error('Has consultado muchos contactos en poco tiempo. Intenta nuevamente más tarde.', 429);
-    const [community, radar] = await Promise.all([
-      db.get<ListingRecord>('community_posts', [params.id]),
-      db.get<ListingRecord>('radar_jobs', [params.id]),
-    ]);
-    const record = community[0] ?? radar[0];
-    if (!record || !isCurrentlyActive(record)) return error('Publicación no disponible.', 404);
-    if (!record.contact) return error('Este aviso no tiene un contacto directo publicado.', 404);
+    const entry = await readPublicFeedEntry(params.id);
+    if (!entry || entry.item.hasContact!==true) return error('Publicación no disponible.',404);
+    const [record] = await db.get<ListingRecord>(entry.source,[entry.sourceId],{consistent:true});
+    // Recheck the current record, not just a possibly older materialized page.
+    if (!record || record.contactPublicationConsent===false || !record.contact || !projectFeedListing({...record,id:entry.sourceId})) return error('Publicación no disponible.',404);
     return json({ contact: record.contact, contactLabel: record.contactLabel });
   }],
 

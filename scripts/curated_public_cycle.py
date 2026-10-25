@@ -5,7 +5,7 @@ from pathlib import Path
 
 from . import publication_queue, verify_candidates
 from .common import Budget, canonical_url, parse_date, safe_error, utcnow, write_json
-from .public_source_adapters import source_adapter
+from .public_source_adapters import source_adapter, offer_identity
 from .radar import SOURCE_CONFIG
 
 
@@ -61,7 +61,7 @@ def merge_batch(document_queue, portal_records):
     records, identities = [], set()
     for row in [*document_queue['records'], *portal_records]:
         adapter = source_adapter(row['source_url'])
-        identity = adapter['identityUrl'] if adapter else canonical_url(row['source_url'])
+        identity = offer_identity(row['source_url'],(row.get('document_unit') or {}).get('key')) if adapter else canonical_url(row['source_url'])
         if identity not in identities:
             records.append(row); identities.add(identity)
         if len(records) == 3: break

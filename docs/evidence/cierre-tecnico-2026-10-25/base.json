@@ -1,0 +1,28 @@
+{
+  "baseCommit": "01ad7931612ee70c3134ccc70f8e5ba75030213e",
+  "nativeSnapshot": "1792875261995",
+  "nativeFilesPreserved": [
+    "src/App.tsx",
+    "src/main.tsx",
+    "src/activity-center.tsx",
+    "src/territorial-radar.tsx",
+    "src/compact-layout.css",
+    "src/premium-presentation.css",
+    "public/sw.js",
+    "cron.json",
+    "appdeploy.auth-login.json",
+    "tests/tests.json"
+  ],
+  "prImprovementsPreserved": [
+    "backend/index.ts: recheckPriority",
+    "backend/offer-retention.ts: latestOfferCheckAt",
+    "backend/house-marketing.ts: approved media",
+    "src/house-admin.tsx: optimized upload",
+    "src/commercial-admin.tsx: approved media",
+    "src/feed-inventory.ts: verification evidence"
+  ],
+  "binaryLogoModified": false,
+  "temporaryPlusAccepted": true,
+  "productionDeployed": false,
+  "mainModified": false
+}

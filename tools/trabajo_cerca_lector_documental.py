@@ -266,7 +266,7 @@ def likely_older_than_days(url: str, days: int = 20, today: dt.date | None = Non
     No acredita publicación original ni justifica borrar un documento.
     """
     today = today or dt.date.today()
-    match = re.search(r"/(20\\d{2})/(0?[1-9]|1[0-2])/", urlsplit(url).path)
+    match = re.search(r"/(20\d{2})/(0?[1-9]|1[0-2])/", urlsplit(url).path)
     if not match:
         return False
     year, month = int(match.group(1)), int(match.group(2))

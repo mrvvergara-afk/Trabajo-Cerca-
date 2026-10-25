@@ -1,0 +1,70 @@
+--- a/backend/index.ts
++++ b/backend/index.ts
+@@ -1,5 +1,6 @@
+ import { db, router, json, error, secrets, storage, ai, notifications, requireAuth } from '@appdeploy/sdk';
+ import { advancePublicFeed, readPublicFeedPage, readPublicFeedSummary, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
++import { pullRadarBatch, confirmRadarPublications, externalRadarStatus, type VerifiedOffer } from './radar-ingestion';
+ 
+ type SeedJob = {
+   title: string;
+@@ -744,6 +745,10 @@
+ 
+ function projectFeedListing(value:Record<string, unknown> & { id:string }) {
+   const item = value as unknown as ListingRecord & { id:string };
++  if (typeof value.externalIdentity === 'string') {
++    const checked = Date.parse(String(value.externalVerifiedAt || ''));
++    if (!Number.isFinite(checked) || checked > Date.now() || Date.now() - checked > 86400000) return null;
++  }
+   if (!isCurrentlyActive(item)) return null;
+   if (item.kind === 'job_offer') {
+     if (!item.verified || item.review) return null;
+@@ -759,6 +764,7 @@
+ function feedRefreshAt(item:Record<string, unknown>) {
+   const now = Date.now();
+   const candidates = [Date.parse(String(item.expiresAt || '')) + 1];
++  if (item.externalVerifiedAt) candidates.push(Date.parse(String(item.externalVerifiedAt)) + 86400000 + 1);
+   if (item.kind === 'job_offer') {
+     candidates.push(Date.parse(String(item.createdAt || '')) + 86400000 + 1);
+     const published = parseDiscoveryDate(String(item.sourcePublishedAt || item.date || ''));
+@@ -2465,11 +2471,30 @@
+   return {runs:runs.items.length,findingsSeen,recovered:additions.length};
+ }
+ 
++function externalOfferRecord(offer:VerifiedOffer):ListingRecord {
++  const now = new Date().toISOString();
++  return {
++    kind:'job_offer', origin:'radar', title:offer.title, company:offer.company,
++    workLocation:offer.work_commune, workCommunes:[offer.work_commune],
++    recruitmentZones:[], recruitmentCommunes:[], area:'Radar externo', status:'Verificada',
++    date:sourceDateLabel(offer.source_published_at), source:'Chiletrabajos', sourceDomain:'www.chiletrabajos.cl',
++    sourcePublishedAt:offer.source_published_at, expiresAt:offer.valid_through, url:offer.source_url,
++    note:'Postulación comprobada en la fuente: ' + offer.application, tags:[], visual:'field', icon:'work',
++    review:false, verified:true, active:true, createdAt:now, discoveredBy:'github-signed-laboratory',
++    verificationCheckedAt:offer.verified_at, verifiedAt:offer.verified_at, firstVerifiedAt:offer.verified_at,
++    lastVerifiedAt:offer.verified_at, verificationVersion:VERIFICATION_VERSION,
++    verificationMethod:offer.verification_method, verificationReason:'Fuente individual, ubicación real, fecha y vigencia confirmadas mediante JobPosting coincidente.',
++    lastSeenAt:offer.verified_at,
++  };
++}
++
+ export const v14VerificationHandler = async () => {
+   const history=await recoverHistoricVisualFindings();
+   const result=await processPendingOffers(8);
++  const ingestion=await pullRadarBatch(externalOfferRecord);
+   const feed=await advancePublicFeed({ project:projectFeedListing, refreshAt:feedRefreshAt });
+-  console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({history,result,publicJobs:feed.totalVerifiedJobOffers,feedRebuilding:feed.rebuilding}));
++  const receipts=await confirmRadarPublications();
++  console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({history,result,ingestion,receipts,publicJobs:feed.totalVerifiedJobOffers,feedRebuilding:feed.rebuilding}));
+   return {statusCode:200};
+ };
+ export const v15VerificationRecoveryHandler = async () => { const result = await processPendingOffers(12); const feed=await rebuildPublicFeed(); console.warn('V15_VERIFY_RECOVERY '+JSON.stringify({result,publicJobs:feed.totalVerifiedJobOffers})); return { statusCode:200 }; };
+@@ -2612,6 +2637,9 @@
+ 
+ export const handler = router({
+   'GET /api/_healthcheck': [async () => json({ message: 'Success' })],
++
++  // Operator diagnostics only; no writes, proofs, keys or history payloads are returned.
++  'GET /api/ops/radar-external': [async () => json(await externalRadarStatus())],
+ 
+   'POST /api/radar/social-run': [async () => {
+     await socialTerritorialTriggerHandler();

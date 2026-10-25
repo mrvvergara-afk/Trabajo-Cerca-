@@ -1,0 +1,22 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "base_version": "1791815781801",
+  "status": "applied_to_laboratory",
+  "applied_version": "1791828227760",
+  "purpose": "Accept the exact GitHub immutable-ID subject emitted by the authorized producer, while preserving all provenance and signature checks",
+  "files": [
+    {
+      "filename": "backend/radar-ingestion.ts",
+      "diffs": [
+        {
+          "from": "const WORKFLOW_REF = REPOSITORY + '/.github/workflows/radar.yml@' + PRODUCER_REF;",
+          "to": "const WORKFLOW_REF = REPOSITORY + '/.github/workflows/radar.yml@' + PRODUCER_REF;\nconst SUBJECTS = [\n  'repo:' + REPOSITORY + ':ref:' + PRODUCER_REF,\n  'repo:mrvvergara-afk@' + OWNER_ID + '/Trabajo-Cerca-@' + REPOSITORY_ID + ':ref:' + PRODUCER_REF,\n];"
+        },
+        {
+          "from": "      claims.workflow_ref !== WORKFLOW_REF || claims.sub !== 'repo:' + REPOSITORY + ':ref:' + PRODUCER_REF) reject('Untrusted GitHub producer');",
+          "to": "      claims.workflow_ref !== WORKFLOW_REF) reject('Untrusted GitHub producer');\n  if (typeof claims.sub !== 'string' || !SUBJECTS.includes(claims.sub)) reject('Untrusted GitHub subject');"
+        }
+      ]
+    }
+  ]
+}

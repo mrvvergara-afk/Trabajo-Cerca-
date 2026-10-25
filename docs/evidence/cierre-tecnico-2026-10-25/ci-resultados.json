@@ -1,0 +1,497 @@
+{
+  "commit": "741fec3d47379196772997b12ac1ee8c9078f560",
+  "run": 40189613359,
+  "url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/40189613359",
+  "artifactId": 12597618739,
+  "status": "success",
+  "checkedAt": "2026-10-25T11:39:41Z",
+  "pythonCases": 245,
+  "nodeCases": 392,
+  "browser": {
+    "commit": "741fec3d47379196772997b12ac1ee8c9078f560",
+    "checkedAt": "2026-10-25T11:39:24.368Z",
+    "rows": [
+      {
+        "width": 360,
+        "geometry": {
+          "header": {
+            "top": 0,
+            "height": 50,
+            "width": 360
+          },
+          "hero": null,
+          "utilities": {
+            "top": 51,
+            "height": 46,
+            "width": 332
+          },
+          "strip": null,
+          "firstCard": {
+            "top": 245.3125,
+            "height": 119,
+            "width": 332
+          },
+          "catalog": {
+            "top": 100,
+            "height": 1944.3125,
+            "width": 360
+          },
+          "nav": {
+            "top": 790,
+            "height": 54,
+            "width": 360
+          }
+        },
+        "realOfferId": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+        "readPersistence": true,
+        "filters": true,
+        "pagination": true,
+        "radar13": true,
+        "secondaryCities4": true,
+        "legalOwner": true,
+        "errors": []
+      },
+      {
+        "width": 390,
+        "geometry": {
+          "header": {
+            "top": 0,
+            "height": 50,
+            "width": 390
+          },
+          "hero": null,
+          "utilities": {
+            "top": 51,
+            "height": 46,
+            "width": 362
+          },
+          "strip": null,
+          "firstCard": {
+            "top": 246.4375,
+            "height": 120.25,
+            "width": 362
+          },
+          "catalog": {
+            "top": 100,
+            "height": 1962.9375,
+            "width": 390
+          },
+          "nav": {
+            "top": 790,
+            "height": 54,
+            "width": 390
+          }
+        },
+        "realOfferId": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+        "readPersistence": true,
+        "filters": true,
+        "pagination": true,
+        "radar13": true,
+        "secondaryCities4": true,
+        "legalOwner": true,
+        "errors": []
+      },
+      {
+        "width": 430,
+        "geometry": {
+          "header": {
+            "top": 0,
+            "height": 50,
+            "width": 430
+          },
+          "hero": null,
+          "utilities": {
+            "top": 51,
+            "height": 46,
+            "width": 402
+          },
+          "strip": null,
+          "firstCard": {
+            "top": 247.609375,
+            "height": 120.25,
+            "width": 402
+          },
+          "catalog": {
+            "top": 100,
+            "height": 1964.109375,
+            "width": 430
+          },
+          "nav": {
+            "top": 790,
+            "height": 54,
+            "width": 430
+          }
+        },
+        "realOfferId": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+        "readPersistence": true,
+        "filters": true,
+        "pagination": true,
+        "radar13": true,
+        "secondaryCities4": true,
+        "legalOwner": true,
+        "errors": []
+      },
+      {
+        "width": 768,
+        "geometry": {
+          "header": {
+            "top": 0,
+            "height": 50,
+            "width": 768
+          },
+          "hero": null,
+          "utilities": {
+            "top": 51,
+            "height": 46,
+            "width": 740
+          },
+          "strip": null,
+          "firstCard": {
+            "top": 254.609375,
+            "height": 120.25,
+            "width": 740
+          },
+          "catalog": {
+            "top": 100,
+            "height": 1901.109375,
+            "width": 768
+          },
+          "nav": {
+            "top": 790,
+            "height": 54,
+            "width": 768
+          }
+        },
+        "realOfferId": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+        "readPersistence": true,
+        "filters": true,
+        "pagination": true,
+        "radar13": true,
+        "secondaryCities4": true,
+        "legalOwner": true,
+        "errors": []
+      },
+      {
+        "width": 1440,
+        "geometry": {
+          "header": {
+            "top": 0,
+            "height": 64,
+            "width": 1440
+          },
+          "hero": {
+            "top": 64,
+            "height": 233.265625,
+            "width": 1220
+          },
+          "utilities": {
+            "top": 305.265625,
+            "height": 96,
+            "width": 1440
+          },
+          "strip": {
+            "top": 403.265625,
+            "height": 50,
+            "width": 1180
+          },
+          "firstCard": {
+            "top": 673.359375,
+            "height": 146.171875,
+            "width": 584
+          },
+          "catalog": {
+            "top": 463.265625,
+            "height": 1594.90625,
+            "width": 1220
+          },
+          "nav": null
+        },
+        "realOfferId": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+        "readPersistence": true,
+        "filters": true,
+        "pagination": true,
+        "radar13": true,
+        "secondaryCities4": true,
+        "legalOwner": true,
+        "errors": []
+      },
+      {
+        "campaign": "house-advertisers",
+        "visibleImage": true,
+        "cta": true,
+        "duplicateImpressions": false
+      },
+      {
+        "campaign": "house-employers",
+        "visibleImage": true,
+        "cta": true,
+        "duplicateImpressions": false
+      },
+      {
+        "campaign": "house-inclusion",
+        "visibleImage": true,
+        "cta": true,
+        "duplicateImpressions": false
+      },
+      {
+        "campaign": "house-explore",
+        "visibleImage": true,
+        "cta": true,
+        "duplicateImpressions": false
+      },
+      {
+        "campaign": "house-local-business",
+        "visibleImage": true,
+        "cta": true,
+        "duplicateImpressions": false
+      },
+      {
+        "campaign": "house-professionals",
+        "visibleImage": true,
+        "cta": true,
+        "duplicateImpressions": false
+      },
+      {
+        "test": "25 seven-day entries across pages; nine-day entry excluded",
+        "fixturesOnly": true,
+        "passed": true
+      },
+      {
+        "test": "warm PWA shell and online recovery",
+        "passed": true,
+        "physicalInstallation": false
+      },
+      {
+        "test": "radar rotates, issues no queries and respects manual selection",
+        "passed": true
+      },
+      {
+        "test": "catalog 503 error visible without fake offers",
+        "fixturesOnly": true,
+        "passed": true
+      }
+    ],
+    "feedProvenance": {
+      "readOnly": true,
+      "source": "deployed app public UI and existing SDK responses",
+      "observedAt": "2026-10-25T11:37:57.715Z",
+      "sdkMutation": false,
+      "syntheticRecords": 0,
+      "measurementRequestsSuppressed": 4,
+      "sourceErrors": [],
+      "networkErrors": [],
+      "itemsSha256": "e601b04c588e247132359bb314d219bc0324f79fdbf23e9beb69e104c2c82249"
+    },
+    "productionWrites": 0,
+    "rendering": "actual candidate React code with replayed read-only real public SDK data; synthetic tests explicitly labeled",
+    "realSdkWrites": false,
+    "physicalPushDelivery": false,
+    "physicalInstallation": false
+  },
+  "ads": {
+    "checkedAt": "2026-10-25T11:39:41.341Z",
+    "phase": "after",
+    "fixturesOnly": true,
+    "realSdkWrite": false,
+    "productionWrites": 0,
+    "deployed": false,
+    "widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "rows": [
+      {
+        "width": 320,
+        "fixture": "paid",
+        "adHeight": 220.796875
+      },
+      {
+        "width": 320,
+        "fixture": "paid-image",
+        "adHeight": 257.09375
+      },
+      {
+        "width": 320,
+        "fixture": "paid-broken",
+        "adHeight": 237.59375
+      },
+      {
+        "width": 390,
+        "fixture": "paid",
+        "adHeight": 201.296875
+      },
+      {
+        "width": 390,
+        "fixture": "paid-image",
+        "adHeight": 244.5
+      },
+      {
+        "width": 390,
+        "fixture": "paid-broken",
+        "adHeight": 220.796875
+      },
+      {
+        "width": 768,
+        "fixture": "paid",
+        "adHeight": 201.296875
+      },
+      {
+        "width": 768,
+        "fixture": "paid-image",
+        "adHeight": 244.5
+      },
+      {
+        "width": 768,
+        "fixture": "paid-broken",
+        "adHeight": 220.5
+      },
+      {
+        "width": 1440,
+        "fixture": "paid",
+        "adHeight": 159.984375
+      },
+      {
+        "width": 1440,
+        "fixture": "paid-image",
+        "adHeight": 196.5
+      },
+      {
+        "width": 1440,
+        "fixture": "paid-broken",
+        "adHeight": 196.5
+      }
+    ],
+    "noPayments": true,
+    "commercialOnly": true,
+    "originalSvgAssets": false,
+    "defaultHouseResources": "original referential WebP photographs",
+    "adminUploadApprovalRemovalTested": true
+  },
+  "pwa": {
+    "icons": [
+      {
+        "name": "icon-192.png",
+        "size": [
+          192,
+          192
+        ],
+        "bytes": 1868,
+        "sha256": "f3c64a1f0f9c63f670b20a3df5c4c3fde78d3d9438897f358e96350b78ad3d91",
+        "decoded": true,
+        "crc_valid": true
+      },
+      {
+        "name": "icon-512.png",
+        "size": [
+          512,
+          512
+        ],
+        "bytes": 7469,
+        "sha256": "eddfe4b4a7a0b1cd88c223f03f36c2fcc97a23f6334d9b0e120d6b8fa264c63e",
+        "decoded": true,
+        "crc_valid": true
+      },
+      {
+        "name": "icon-maskable-512.png",
+        "size": [
+          512,
+          512
+        ],
+        "bytes": 4926,
+        "sha256": "a7ca82f2a42ab8364700c4cceb516c9be5febeb0b1ad6b37cf7d628debbab12b",
+        "decoded": true,
+        "crc_valid": true
+      }
+    ],
+    "maskable_foreground_outside_safe_circle": 0,
+    "manifest_validated": true,
+    "derived_from_existing_192_icon": true,
+    "os_installation_tested": false,
+    "deployed": false
+  },
+  "restore": {
+    "schema": "trabajo-cerca.isolated-sqlite-restore.v1",
+    "checkedAt": "2026-10-25T11:37:52.879Z",
+    "tables": 14,
+    "records": 72,
+    "files": 1,
+    "platformRestoreTested": false,
+    "sourceSha256": "2c5003cc8eaf86ad41739d6c318ccf7d84c48afe5eaa291d03a0931ada1fe22c",
+    "comparedUnits": 87,
+    "mismatches": 0,
+    "durableReopenTested": true,
+    "payloadsEncryptedAtRest": true,
+    "networkRequests": 0,
+    "productionWrites": 0,
+    "authenticatedFlowsTested": false,
+    "fixturesOnly": true,
+    "source": "representative synthetic app snapshot saved and reread as encrypted file",
+    "recoveredFounderSlots": 20,
+    "standardTrialDaysAfterRecovery": 14,
+    "advertiserCampaignRelationsChecked": 20,
+    "privateOwnerDataRecovered": true,
+    "wrongOwnerRejected": true,
+    "postRestoreEditRenewDelete": true,
+    "jobOriginalDatePreserved": true,
+    "houseAndCommercialMetricsSeparated": true,
+    "automaticNotificationsDisabled": true,
+    "realSdkUsed": false,
+    "limitations": [
+      "No restaura identidades OAuth, secretos ni infraestructura de AppDeploy.",
+      "No es la copia privada del propietario: no se solicitó ni obtuvo su contraseña.",
+      "Valida formato, persistencia SQLite cifrada, relaciones y reglas funcionales recuperadas."
+    ]
+  },
+  "capacity": {
+    "sourceSnapshot": "741fec3d47379196772997b12ac1ee8c9078f560",
+    "scope": "Local loopback HTTP + SQLite in memory + native readPublicFeedPage. NOT AppDeploy capacity or human users.",
+    "syntheticRecords": 260,
+    "completePagination": true,
+    "externalRequests": 0,
+    "productionWrites": 0,
+    "scenarios": [
+      {
+        "concurrentHttpClients": 10,
+        "requests": 30,
+        "errors": 0,
+        "p50ms": 4.32,
+        "p95ms": 31.14,
+        "maxms": 32.75,
+        "elapsedMs": 45.17,
+        "sqliteReads": 60,
+        "rssBeforeBytes": 87990272,
+        "rssAfterBytes": 113111040
+      },
+      {
+        "concurrentHttpClients": 50,
+        "requests": 150,
+        "errors": 0,
+        "p50ms": 2.91,
+        "p95ms": 56.76,
+        "maxms": 59.36,
+        "elapsedMs": 71.81,
+        "sqliteReads": 300,
+        "rssBeforeBytes": 113111040,
+        "rssAfterBytes": 125538304
+      },
+      {
+        "concurrentHttpClients": 100,
+        "requests": 300,
+        "errors": 0,
+        "p50ms": 15.08,
+        "p95ms": 79.64,
+        "maxms": 84.29,
+        "elapsedMs": 114.03,
+        "sqliteReads": 600,
+        "rssBeforeBytes": 125538304,
+        "rssAfterBytes": 144674816
+      }
+    ],
+    "executedAt": "2026-10-25T11:37:53.194Z"
+  },
+  "deployed": false,
+  "mainModified": false,
+  "realSdkWritesTested": false
+}

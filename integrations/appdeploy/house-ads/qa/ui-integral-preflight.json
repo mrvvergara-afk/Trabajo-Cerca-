@@ -1,0 +1,21 @@
+{
+  "implementation": [
+    "Escala visual consistente y accesos en una fila",
+    "Fechas internas conservadas, retiradas solo de resumen",
+    "Campañas actuales y CTA compactos",
+    "Rotación visual del radar con selección y pausas",
+    "Validación aislada y lectura SDK real",
+    "Publicar solo archivos frontend, caché y pruebas en laboratorio existente",
+    "Verificar versión publicada, catálogo y recorridos sin datos nuevos"
+  ],
+  "preflight": [
+    "App existente frontend+backend; sin modificación de backend ni crons",
+    "Archivos de origen v99 respaldados, PR c63 actualizado",
+    "Sin nuevos servicios, cobros, credenciales ni dependencias de aplicación",
+    "SDK revisado y sin nuevas llamadas automáticas de red por el radar",
+    "Cada archivo solo una vez y solo archivos cambiados",
+    "Pruebas nativas JSON reconciliadas y sin acciones sobre datos reales",
+    "Controles técnicos y visuales aprobados antes de desplegar",
+    "Verificar fuente/SDK/fechas y recursos después de ready"
+  ]
+}

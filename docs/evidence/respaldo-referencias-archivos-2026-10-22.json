@@ -1,0 +1,216 @@
+{
+  "appVersion": "1792632646829",
+  "codeCommit": "1cb6d644e439dbd138f5accc06c937cbff42a883",
+  "run": 39706237206,
+  "job": 119586815718,
+  "result": "success",
+  "actualBackupAuditExecuted": false,
+  "actualUserLocalRestore": {
+    "tables": 68,
+    "records": 4666,
+    "files": 0,
+    "mismatches": 0,
+    "platformRestoreTested": false
+  },
+  "browserProof": {
+    "checked_at": "2026-10-22T01:33:14.937812+00:00",
+    "read_only": true,
+    "forms_submitted": 0,
+    "provider_calls": 0,
+    "new_offers_published": 0,
+    "views": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "city_counts": [
+          "Los Ángeles4 ofertas publicadas",
+          "Victoria6 ofertas publicadas",
+          "Temuco6 ofertas publicadas"
+        ],
+        "global_header": "55\nofertas publicadas · total del radar",
+        "city_selection_and_return": true,
+        "advertiser_form_opened_only": true,
+        "dated_news_and_official_resources": true,
+        "legal_keyboard_checks": [
+          {
+            "dialog": "Privacidad y tus datos",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          },
+          {
+            "dialog": "Términos de uso",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          }
+        ],
+        "description": "Encuentra oportunidades laborales en Malleco y Biobío norte. Explora empleos por comuna, requisitos y formas de postular en Trabajo Cerca.",
+        "canonical": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+        "horizontal_overflow": false,
+        "page_errors": [],
+        "anonymous_admin_denied": true,
+        "anonymous_admin_shortcut_hidden": true,
+        "admin_buttons_separated": true,
+        "admin_panel_readable": true,
+        "admin_heading_precedes_session": true,
+        "admin_horizontal_overflow": false,
+        "synthetic_local_restore": {
+          "schema": "trabajo-cerca.local-restore-rehearsal.v1",
+          "checkedAt": "2026-10-22T01:33:08.376Z",
+          "tables": 2,
+          "records": 2,
+          "files": 1,
+          "comparedElements": 3,
+          "mismatches": 0,
+          "encryptedFileSha256": "01b30e648597db72eb43cd3e54fbd0c317d65f27c4c665a511c1279605ee359d",
+          "temporaryStoreDeleted": true,
+          "privateValuesStoredEncrypted": true,
+          "networkRequests": 0,
+          "productionWrites": 0,
+          "platformRestoreTested": false,
+          "limitations": [
+            "No certifica recuperación funcional en AppDeploy.",
+            "No certifica tablas sin referencias ni elementos ausentes de la copia.",
+            "Un total de cero archivos no acredita que el almacenamiento de origen esté vacío."
+          ],
+          "storageAuditFixture": {
+            "schema": "trabajo-cerca.storage-reference-audit.v1",
+            "checkedAt": "2026-10-22T01:33:08.422Z",
+            "backupTables": 2,
+            "backupRecords": 2,
+            "backupFiles": 1,
+            "currentSdkStorageObjects": 0,
+            "listingCompleted": true,
+            "independentlyCheckedReferences": 1,
+            "storageReferencesInBackup": 1,
+            "referencesFoundOutsideListing": 0,
+            "missingReferencedObjects": {
+              "current": 0,
+              "closed": 1,
+              "unknown": 0
+            },
+            "unverifiedAbsentReferences": 0,
+            "externalMediaReferences": 1,
+            "bundledAssetReferences": 0,
+            "inlineMediaReferences": 0,
+            "unclassifiedReferenceValues": 0,
+            "currentObjectsNotCapturedInBackup": 0,
+            "capturedObjectsNotInCurrentListing": 1,
+            "sdkRequests": 2,
+            "passwordUploaded": false,
+            "recordBodiesUploaded": false,
+            "originalMediaFetched": false,
+            "productionWrites": 0,
+            "fullPlatformStorageCertified": false,
+            "limitations": [
+              "Compara una copia histórica con el almacenamiento SDK actual; no atribuye diferencias a pérdida o vencimiento.",
+              "Solo clasifica campos de archivo conocidos; referencias opacas o tablas fuera de la copia pueden quedar fuera.",
+              "Los archivos estáticos y las imágenes externas no pertenecen al listado SDK."
+            ]
+          }
+        }
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "city_counts": [
+          "Los Ángeles4 ofertas publicadas",
+          "Victoria6 ofertas publicadas",
+          "Temuco6 ofertas publicadas"
+        ],
+        "global_header": "55\nofertas publicadas · total del radar",
+        "city_selection_and_return": true,
+        "advertiser_form_opened_only": true,
+        "dated_news_and_official_resources": true,
+        "legal_keyboard_checks": [
+          {
+            "dialog": "Privacidad y tus datos",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          },
+          {
+            "dialog": "Términos de uso",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          }
+        ],
+        "description": "Encuentra oportunidades laborales en Malleco y Biobío norte. Explora empleos por comuna, requisitos y formas de postular en Trabajo Cerca.",
+        "canonical": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+        "horizontal_overflow": false,
+        "page_errors": [],
+        "anonymous_admin_denied": true,
+        "anonymous_admin_shortcut_hidden": true,
+        "admin_buttons_separated": true,
+        "admin_panel_readable": true,
+        "admin_heading_precedes_session": true,
+        "admin_horizontal_overflow": false,
+        "synthetic_local_restore": {
+          "schema": "trabajo-cerca.local-restore-rehearsal.v1",
+          "checkedAt": "2026-10-22T01:33:14.757Z",
+          "tables": 2,
+          "records": 2,
+          "files": 1,
+          "comparedElements": 3,
+          "mismatches": 0,
+          "encryptedFileSha256": "d130761efd6d16d9f828ed4bce913d138416be982852732c12b897ff0efd73d7",
+          "temporaryStoreDeleted": true,
+          "privateValuesStoredEncrypted": true,
+          "networkRequests": 0,
+          "productionWrites": 0,
+          "platformRestoreTested": false,
+          "limitations": [
+            "No certifica recuperación funcional en AppDeploy.",
+            "No certifica tablas sin referencias ni elementos ausentes de la copia.",
+            "Un total de cero archivos no acredita que el almacenamiento de origen esté vacío."
+          ],
+          "storageAuditFixture": {
+            "schema": "trabajo-cerca.storage-reference-audit.v1",
+            "checkedAt": "2026-10-22T01:33:14.804Z",
+            "backupTables": 2,
+            "backupRecords": 2,
+            "backupFiles": 1,
+            "currentSdkStorageObjects": 0,
+            "listingCompleted": true,
+            "independentlyCheckedReferences": 1,
+            "storageReferencesInBackup": 1,
+            "referencesFoundOutsideListing": 0,
+            "missingReferencedObjects": {
+              "current": 0,
+              "closed": 1,
+              "unknown": 0
+            },
+            "unverifiedAbsentReferences": 0,
+            "externalMediaReferences": 1,
+            "bundledAssetReferences": 0,
+            "inlineMediaReferences": 0,
+            "unclassifiedReferenceValues": 0,
+            "currentObjectsNotCapturedInBackup": 0,
+            "capturedObjectsNotInCurrentListing": 1,
+            "sdkRequests": 2,
+            "passwordUploaded": false,
+            "recordBodiesUploaded": false,
+            "originalMediaFetched": false,
+            "productionWrites": 0,
+            "fullPlatformStorageCertified": false,
+            "limitations": [
+              "Compara una copia histórica con el almacenamiento SDK actual; no atribuye diferencias a pérdida o vencimiento.",
+              "Solo clasifica campos de archivo conocidos; referencias opacas o tablas fuera de la copia pueden quedar fuera.",
+              "Los archivos estáticos y las imágenes externas no pertenecen al listado SDK."
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

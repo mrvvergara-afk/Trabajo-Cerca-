@@ -1,0 +1,1 @@
+Seis ilustraciones SVG originales creadas para Trabajo Cerca, sin recursos de terceros, scripts, fuentes externas ni marcas ajenas. No representan negocios reales. Cada archivo es vectorial optimizado (menos de 3 KB), viewBox 320×240 y se sirve desde el propio sitio. La administración permite sustituirlas por raster propio/autorizado y retirarlas.

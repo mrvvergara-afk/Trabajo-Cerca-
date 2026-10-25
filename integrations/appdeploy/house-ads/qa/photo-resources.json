@@ -1,0 +1,134 @@
+[
+  {
+    "target_path": "public/resources/house-professionals-photo-v2-640.webp",
+    "url": "/resources/house-professionals-photo-v2-640.webp",
+    "width": 640,
+    "height": 427,
+    "bytes": 24178,
+    "sha256": "246b4f668ff041ab25f56c71930102b4bd8c098fe0a01dd7a79a3c80680f8294",
+    "originalSha256": "6ce145044a69d64ea73d8617992f00d797d8e062ec762928d025247347e6a988",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "professionals"
+  },
+  {
+    "target_path": "public/resources/house-professionals-photo-v2-1200.webp",
+    "url": "/resources/house-professionals-photo-v2-1200.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 66666,
+    "sha256": "ca23e70f96c75dc33469929fd84259fda51899a2ea5ad72ee47dcc90e247a50b",
+    "originalSha256": "6ce145044a69d64ea73d8617992f00d797d8e062ec762928d025247347e6a988",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "professionals"
+  },
+  {
+    "target_path": "public/resources/house-advertisers-photo-v2-640.webp",
+    "url": "/resources/house-advertisers-photo-v2-640.webp",
+    "width": 640,
+    "height": 427,
+    "bytes": 49502,
+    "sha256": "d3a876a3399a01b030d6c0a442bc0535c341b8f9f6691dd48664dba40a6c537b",
+    "originalSha256": "14659ca0e7a8833415215a8c82b4a440e31cb8beafacb380873728b73b644d2f",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "advertisers"
+  },
+  {
+    "target_path": "public/resources/house-advertisers-photo-v2-1200.webp",
+    "url": "/resources/house-advertisers-photo-v2-1200.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 159080,
+    "sha256": "80e8e674fe2e8c91b8e965ec15d94c78019362835f0f6d2cc0b1d1cec03639d3",
+    "originalSha256": "14659ca0e7a8833415215a8c82b4a440e31cb8beafacb380873728b73b644d2f",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "advertisers"
+  },
+  {
+    "target_path": "public/resources/house-employers-photo-v2-640.webp",
+    "url": "/resources/house-employers-photo-v2-640.webp",
+    "width": 640,
+    "height": 427,
+    "bytes": 22322,
+    "sha256": "e65f64fb5f930f282003837186e2f8809cfe5010283ba4e12992ee6b84b02db2",
+    "originalSha256": "982011c3d507d3ba2a1a6587fedbd0bc384ff8bdf361c70f425945bda4b45f7a",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "employers"
+  },
+  {
+    "target_path": "public/resources/house-employers-photo-v2-1200.webp",
+    "url": "/resources/house-employers-photo-v2-1200.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 63106,
+    "sha256": "532e3eb750f54a87dbbc5d8c985b19eeb81975f804f2357a5f5dcd0e3ca926a8",
+    "originalSha256": "982011c3d507d3ba2a1a6587fedbd0bc384ff8bdf361c70f425945bda4b45f7a",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "employers"
+  },
+  {
+    "target_path": "public/resources/house-explore-photo-v2-640.webp",
+    "url": "/resources/house-explore-photo-v2-640.webp",
+    "width": 640,
+    "height": 427,
+    "bytes": 47130,
+    "sha256": "2a93293ae0ec5d2a22ff5fe7f773bfe8c129162da752d5089da2f3a055ee53bc",
+    "originalSha256": "0ab654324e96d70234a1f561b5f4c772c1c9f6da93ed765a67dcba03815f6acb",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "explore"
+  },
+  {
+    "target_path": "public/resources/house-explore-photo-v2-1200.webp",
+    "url": "/resources/house-explore-photo-v2-1200.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 172208,
+    "sha256": "a14d73df71499f1a5f87ce5ac4dd9f61458151bfed40a00989b10e13bae32b95",
+    "originalSha256": "0ab654324e96d70234a1f561b5f4c772c1c9f6da93ed765a67dcba03815f6acb",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "explore"
+  },
+  {
+    "target_path": "public/resources/house-inclusion-photo-v2-640.webp",
+    "url": "/resources/house-inclusion-photo-v2-640.webp",
+    "width": 640,
+    "height": 427,
+    "bytes": 46628,
+    "sha256": "c317290344e7aee207714f1b9eeb64ae109fbcd16b86559966f4dc12e65eb072",
+    "originalSha256": "3e34458c55076402234dc0bd8c976cbfe4f13a21c29b716b51e089a8f3af4d37",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "inclusion"
+  },
+  {
+    "target_path": "public/resources/house-inclusion-photo-v2-1200.webp",
+    "url": "/resources/house-inclusion-photo-v2-1200.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 129158,
+    "sha256": "5743027d9628566fee69cdc4eae570e9014d777ee5c468f15e17f51adf847465",
+    "originalSha256": "3e34458c55076402234dc0bd8c976cbfe4f13a21c29b716b51e089a8f3af4d37",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "inclusion"
+  },
+  {
+    "target_path": "public/resources/house-local-business-photo-v2-640.webp",
+    "url": "/resources/house-local-business-photo-v2-640.webp",
+    "width": 640,
+    "height": 427,
+    "bytes": 36516,
+    "sha256": "3cd0787e0614e31ec50009225a29c22e1ec4b964857bf3260f3a7244c3d36d67",
+    "originalSha256": "8e757d109eac02c30d13c1404f4f12d333f17170e6593d4bb6ce37c6bb4a0094",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "local-business"
+  },
+  {
+    "target_path": "public/resources/house-local-business-photo-v2-1200.webp",
+    "url": "/resources/house-local-business-photo-v2-1200.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 102074,
+    "sha256": "ced05b5aa0a936a08d9971c0f926ee7ffcefda4c83bea3dd8280baff100e38ac",
+    "originalSha256": "8e757d109eac02c30d13c1404f4f12d333f17170e6593d4bb6ce37c6bb4a0094",
+    "origin": "original generated reference image; not a real customer",
+    "campaign": "local-business"
+  }
+]

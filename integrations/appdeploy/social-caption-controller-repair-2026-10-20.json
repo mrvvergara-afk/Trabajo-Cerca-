@@ -1,0 +1,14 @@
+{
+  "baseline_version": "1792490035683",
+  "filename": "backend/index.ts",
+  "diffs": [
+    {
+      "from": "import { captionSocialFinding, originalSocialDate, prepareSocialEvidence, preservedSocialFinding, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';",
+      "to": "import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';"
+    },
+    {
+      "from": "if(x.isJobNotice===true){jobs++;findings.push(preservedSocialFinding({postUrl:post.post_url || post.url,postDate:socialOriginalDate(post),extractedAt:new Date().toISOString(),mediaUrl,medium:'image',title:x.title,company:x.company,commune:x.commune,requirements:x.requirements,contact:x.contact,deadline:x.deadline,text:x.text}));}",
+      "to": "if(x.isJobNotice===true){\n  const finding=socialPosterFinding(post,{postUrl:post.post_url || post.url,postDate:socialOriginalDate(post),mediaUrl,\n    title:x.title,company:x.company,commune:x.commune,requirements:x.requirements,contact:x.contact,deadline:x.deadline,text:x.text});\n  if(finding){jobs++;findings.push(finding);}\n}"
+    }
+  ]
+}

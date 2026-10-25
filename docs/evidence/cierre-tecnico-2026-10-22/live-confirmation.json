@@ -1,0 +1,247 @@
+{
+  "checkedAt": "2026-10-22T17:17:20.475691+00:00",
+  "liveSnapshot": "1792676091153",
+  "runId": 39820553743,
+  "manifest": "b8101cb9-c7e7-49e3-8e58-598683bb04e4",
+  "total": 57,
+  "jobTyped": 56,
+  "initialCards": 11,
+  "fullSDKRead": true,
+  "baselineAt": "2026-10-22T17:15:10.118712+00:00",
+  "addedIds": [],
+  "removedIds": [],
+  "ids": [
+    "02236bf2-6346-43a2-a30b-734f328e7f95",
+    "02c3f426-3500-42ee-8ac2-f5a2a6733c48",
+    "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+    "0b54a8ad-1f4a-47f4-b351-8aa8dfa582f1",
+    "0b79c530-f4cd-4b5a-90df-a9479324ea7e",
+    "0c9d9edf-98c7-41e8-a864-604fd8069445",
+    "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+    "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+    "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+    "13a8bb11-2ea3-4f70-a265-b8e3079a19c9",
+    "13b09236-bb04-42b1-a010-b7743d25c5d4",
+    "16e43079-56d9-4ac1-81a4-3993af7fecd4",
+    "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+    "1f723e1a-993c-4033-b1a0-9cd4c5d3cd36",
+    "28b9b9be-fbc1-4eeb-bd46-56f859188231",
+    "2acda2c7-e657-4656-860e-1645badef65b",
+    "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+    "2dbb852b-abd3-45c0-83f2-6044155916c4",
+    "2f0f424e-d10b-4d7d-98e2-b8e1b29b9783",
+    "33ddef7b-e071-480a-86fb-79db4f966de7",
+    "361dab2c-87ef-4bce-9bda-ef731822244d",
+    "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+    "40b91274-90ed-4742-bfe6-f197949c7914",
+    "420b5063-4a7f-4db5-bac8-2b4634ebaf13",
+    "4ba4e5d1-8556-4b33-8304-329a35184274",
+    "612daf87-5014-47ea-8421-c6a96420e873",
+    "688c0421-4ed4-46e5-9592-694a2669fad7",
+    "696b1b8c-ecaf-40e2-92aa-f6621ab9a282",
+    "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+    "80c05369-4a99-4508-9b5b-239ac5bb13c5",
+    "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+    "851ba560-b9d9-4a7e-9263-3d32e302bcb3",
+    "8b75b282-d838-45bc-9309-d10874aae023",
+    "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+    "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+    "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+    "a4478588-785e-4545-824e-e94de6d8916a",
+    "aa9caf38-6a23-4efa-aae8-9a85ef0bf9bd",
+    "ad82eb1f-2919-4f74-a1b1-e677fe0c22ca",
+    "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+    "adf0dee9-a506-4dd0-a8fa-378264da8deb",
+    "aea2a4f5-b0c5-4bfb-9e71-1536fabd6c20",
+    "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+    "b80928c9-6bb1-46fc-b1d9-eea732003c5c",
+    "b92528e5-61b5-4498-88ca-808c2443a044",
+    "bdaed372-0383-4771-9c3e-d4a80207d823",
+    "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+    "cb47b13c-00cf-4d12-9043-c6906da31736",
+    "cb724831-6a31-4fbf-9d8c-c067596f9237",
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+    "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+    "dead587c-c845-4e46-8578-bbebcc85068a",
+    "ffdc932c-bd30-453d-b5bd-742dead74008",
+    "free-149bb65066307aa45733b5f251ca3055f042eeeb",
+    "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+    "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45",
+    "free-d294f2d92f9e56840e53553adef2420f48b30847"
+  ],
+  "revalidationDue": 49,
+  "portalNamedEmployerCandidates": 11,
+  "newOffersPublishedByThisTask": 0,
+  "documentRevalidation": {
+    "schema": "trabajo-cerca.document-revalidation-status.v1",
+    "readOnly": true,
+    "providerCalls": 0,
+    "intervalHours": 12,
+    "documents": [
+      {
+        "key": "traiguen-salud-2026-10",
+        "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "originalPublishedAt": "2026-10-01T12:04:54+00:00",
+        "approvedJobs": 3,
+        "publishedIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "visibleIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "status": "revalidated",
+        "lastCheckAt": "2026-10-22T13:35:37.173Z",
+        "lastSuccessAt": "2026-10-22T13:35:37.173Z",
+        "nextCheckAt": "2026-10-23T01:35:37.173Z",
+        "reason": null,
+        "registrationPending": false
+      }
+    ],
+    "feedManifestId": "b8101cb9-c7e7-49e3-8e58-598683bb04e4",
+    "newOffersDiscovered": 0,
+    "socialCaptureProven": false
+  },
+  "security": {
+    "checked_at": "2026-10-22T17:17:28.588622+00:00",
+    "sdk_security_proof": {
+      "policy": {
+        "revision": "security-containment-v2",
+        "paidProviders": false,
+        "remoteAi": false,
+        "externalAnalytics": false,
+        "manualOperations": false
+      },
+      "results": [
+        {
+          "method": "POST",
+          "path": "/api/ops/radar-external/consume",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/ops/free-public-sources/run",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/radar/social-run",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/radar/social-collect",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "GET",
+          "path": "/api/radar/run-territorial-now",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        },
+        {
+          "method": "POST",
+          "path": "/api/radar/photo-tip",
+          "status": 503,
+          "message": "Request failed with status code 503"
+        },
+        {
+          "method": "POST",
+          "path": "/api/admin/backup/page",
+          "status": 401,
+          "message": "Request failed with status code 401"
+        }
+      ],
+      "analytics": {
+        "received": false,
+        "disabled": true,
+        "reason": "security_policy_disabled"
+      },
+      "checkedAt": "2026-10-22T17:17:27.084Z"
+    },
+    "photo_upload_disabled_with_explanation": true,
+    "existing_cards_remain_available": true,
+    "collector_calls": 0,
+    "remote_ocr_calls": 0,
+    "new_offers_published": 0
+  },
+  "runtime": {
+    "checked_at": "2026-10-22T17:17:23.610670+00:00",
+    "http_status": 200,
+    "headers": {
+      "content-security-policy": null,
+      "strict-transport-security": null,
+      "x-frame-options": null,
+      "x-content-type-options": null,
+      "referrer-policy": null,
+      "permissions-policy": null,
+      "cache-control": "no-cache, no-store, must-revalidate"
+    },
+    "resources": {
+      "manifest.webmanifest": {
+        "status": 200,
+        "mime": "application/manifest+json",
+        "bytes": 1195
+      },
+      "sw.js": {
+        "status": 200,
+        "mime": "text/javascript",
+        "bytes": 2742
+      },
+      "icon-192.png": {
+        "status": 200,
+        "mime": "image/png",
+        "bytes": 1868
+      },
+      "icon-512.png": {
+        "status": 200,
+        "mime": "image/png",
+        "bytes": 5498
+      },
+      "icon-maskable-512.png": {
+        "status": 200,
+        "mime": "image/png",
+        "bytes": 5175
+      },
+      "robots.txt": {
+        "status": 200,
+        "mime": "text/plain; charset=utf-8",
+        "bytes": 68
+      },
+      "sitemap.xml": {
+        "status": 403,
+        "mime": "application/xml",
+        "bytes": 111
+      }
+    },
+    "accessibility_sample": {
+      "unnamedButtons": [],
+      "missingImageAlt": 0,
+      "horizontalOverflow": false,
+      "title": "Trabajo Cerca · Oportunidades locales",
+      "description": "Encuentra oportunidades laborales en Malleco y Biobío norte. Explora empleos por comuna, requisitos y formas de postular en Trabajo Cerca.",
+      "canonical": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+      "serviceWorkerAvailable": true,
+      "navigation": [
+        {
+          "domContentLoadedMs": 448.3999999999942,
+          "responseMs": 363.8999999999942
+        }
+      ]
+    },
+    "privacy_text": "TRABAJO CERCA · PILOTO\nPrivacidad y tus datos\n\nTrabajo Cerca usa únicamente la información necesaria para conectar personas con trabajo y proteger las publicaciones.\n\nQué datos tratamos\n\nSi publicas directamente, usamos los datos que ingresas para mostrar la publicación y facilitar el contacto. No solicitamos CV, RUT, dirección exacta, claves, datos bancarios ni datos sensibles.\n\nContacto protegido\n\nEl teléfono o WhatsApp no forma parte del listado público masivo y se revela solamente mediante una acción explícita.\n\nAvisos personalizados\n\nSi activas notificaciones, el sistema requiere identificar el dispositivo/usuario una vez y guarda únicamente un identificador técnico, las comunas y los cargos u oficios que elijas. No usamos esta función para crear perfiles publicitarios personales.\n\nTus derechos\n\nPara consultas, correcciones o solicitudes sobre tus datos puedes escribir a trabajocerca.malleco.biobio@gmail.com. La identificación legal completa del responsable se incorporará antes del lanzamiento público.",
+    "privacy_modal_focus_on_open_inside": true,
+    "privacy_modal_escape_closes": true,
+    "scope": "passive_public_browser_chromium_mobile",
+    "dangerous_operational_routes_called": false,
+    "forms_submitted": 0,
+    "collector_calls": 0
+  }
+}

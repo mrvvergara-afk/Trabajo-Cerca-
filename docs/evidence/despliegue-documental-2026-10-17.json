@@ -1,0 +1,131 @@
+{
+  "schema": "trabajo-cerca.live-document-publication.v1",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+  "applied_version": "1792288685274",
+  "checked_at": "2026-10-18T02:06:20.841Z",
+  "run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/39088489568",
+  "source_branch": "repair/mulchen-captura-2026-10-17",
+  "source_commit": "14ad18e4861763a214b83cb0dc1422b304f4a061",
+  "data_commit": "adf8f570bcfe7986ffb7e0588009e47e6fb9145e",
+  "capture_data_commit": "d0507abd12bd755998d81316ad79f7ac7e61f110",
+  "main_unchanged_sha": "fab392b824e4100a4bba6dfe9289825297d24707",
+  "main_merged": false,
+  "credential_changes": false,
+  "paid_provider_calls": 0,
+  "tests": {
+    "python_tests": 181,
+    "node_test_files": 17,
+    "github_job": "success"
+  },
+  "confirmation": {
+    "stored": 3,
+    "published": 3,
+    "published_ids": [
+      "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+      "8b75b282-d838-45bc-9309-d10874aae023",
+      "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+    ],
+    "ingestion_status": "published",
+    "ingestion_rejection": null,
+    "ingestion_data_commit": "fbc35e4ffc3bf315e25291e0a55e514b47c51f2a",
+    "ingestion_run_id": "39088489568",
+    "feed_complete": true,
+    "feed_manifest": "63466eef-90bb-4d2b-b898-694d498d2c60",
+    "source_phase": "complete",
+    "staged_pages": 3,
+    "staged_public_items": 86,
+    "has_next_source_page": false,
+    "read_only": true,
+    "provider_calls": 0,
+    "publication_confirmed": true,
+    "status": "published_ids_confirmed"
+  },
+  "operator_proof": {
+    "ingestion": {
+      "status": "published",
+      "stored": 3,
+      "published": 3,
+      "checkedAt": "2026-10-18T02:05:32.661Z",
+      "feedManifestId": "63466eef-90bb-4d2b-b898-694d498d2c60",
+      "dataCommit": "fbc35e4ffc3bf315e25291e0a55e514b47c51f2a",
+      "rejection": null,
+      "runId": "39088489568",
+      "receipts": [
+        {
+          "candidateId": "39515f1faa2264b877e35a61",
+          "publishedId": "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "state": "published",
+          "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/"
+        },
+        {
+          "candidateId": "5e1b494fc86fe4b7a3c9df68",
+          "publishedId": "8b75b282-d838-45bc-9309-d10874aae023",
+          "state": "published",
+          "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/"
+        },
+        {
+          "candidateId": "dfe66c57250c29b5efab22fb",
+          "publishedId": "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+          "state": "published",
+          "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/"
+        }
+      ]
+    },
+    "feed": {
+      "complete": true,
+      "manifestId": "63466eef-90bb-4d2b-b898-694d498d2c60",
+      "visibleItemCount": 59,
+      "buildSource": "complete",
+      "stagedPages": 3,
+      "stagedPublicItems": 86,
+      "hasNextSourcePage": false,
+      "updatedAt": "2026-10-18T02:05:33.852Z"
+    },
+    "visibleIds": [
+      "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+      "8b75b282-d838-45bc-9309-d10874aae023",
+      "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+      "1ecc570a-eef6-4aab-a57d-c1acb767c35f",
+      "2f0f424e-d10b-4d7d-98e2-b8e1b29b9783",
+      "free-d294f2d92f9e56840e53553adef2420f48b30847",
+      "50a280a4-8992-4957-9906-251ea7a4546c",
+      "1f723e1a-993c-4033-b1a0-9cd4c5d3cd36",
+      "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+      "c4be30bb-57c1-45c1-9832-18065b54d498",
+      "31cc903f-428a-4b78-885c-598622fec047",
+      "e35e4124-3d9e-4562-9b0d-47a582208dc1",
+      "a08a77a7-c79b-4344-8fe4-b46020ec3477",
+      "036dcd1e-9097-4cc8-956c-f67d5f86b7f1",
+      "2acda2c7-e657-4656-860e-1645badef65b",
+      "e656f36d-35a9-44fb-b64e-67c04a363429",
+      "1a71f5a2-6a51-46dd-80d9-289ab90f46cf",
+      "250c3ee0-893e-4601-b945-509033af6e1b"
+    ],
+    "feedReadError": null,
+    "checkedAt": "2026-10-18T02:06:20.841Z"
+  },
+  "history_preservation": {
+    "candidates": {
+      "before": 365,
+      "after": 365,
+      "all_previous_rows_preserved": true
+    },
+    "observations": {
+      "before": 3220,
+      "after": 3220,
+      "all_previous_rows_preserved": true
+    },
+    "attempts": {
+      "before": 35,
+      "after": 35,
+      "all_previous_rows_preserved": true
+    },
+    "publication_receipts": {
+      "before": 6,
+      "after": 9,
+      "all_previous_rows_preserved": true
+    }
+  },
+  "limitation": "Explicit reviewed-document delivery; other source discovery and automatic daily evidence revalidation are not proven. Existing app hides external evidence older than 24 hours."
+}

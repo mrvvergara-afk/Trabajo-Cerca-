@@ -1,0 +1,27 @@
+{
+  "baseline_version": "1792490035683",
+  "files": [
+    {
+      "filename": "backend/social-evidence.ts",
+      "diffs": [
+        {
+          "from": "\nfunction specificSocialPost(value:string) {",
+          "to": "\n// OCR and caption are complementary evidence owned by one original post.\n// A poster without a date/contact must retain those literal caption fields.\nexport function socialPosterFinding(post:Finding, poster:Finding, now=Date.now()):Finding | null {\n  const postUrl=literal(post.post_url || post.url,4000);\n  if (!specificSocialPost(postUrl) || poster.postUrl && !sameSocialPost(postUrl,String(poster.postUrl))) return null;\n  const caption=[post.content,post.caption,post.message,post.text,post.description]\n    .find(value=>typeof value==='string' && value.trim()) as string | undefined || '';\n  const imageText=typeof poster.text==='string' ? poster.text.trim() : '';\n  const parts=[caption.trim() ? '[TEXTO DE LA PUBLICACIÓN]\\n'+caption.trim() : '',\n    imageText ? '[TEXTO DEL AFICHE]\\n'+imageText : ''].filter(Boolean);\n  const text=parts.join('\\n\\n');\n  const statedLength=Number(poster.textOriginalLength);\n  const omitted=Number.isSafeInteger(statedLength) && statedLength>imageText.length ? statedLength-imageText.length : 0;\n  const captionFields=captionSocialFinding(post,now);\n  const captionCompany=caption.match(/(?:^|\\n)\\s*(?:empresa|empleador)\\s*[:\\-]\\s*([^\\n]{3,180})/i)?.[1]?.trim() || '';\n  return preservedSocialFinding({ ...poster,postUrl,postDate:originalSocialDate(post),medium:'image',\n    extractedAt:new Date(now).toISOString(),title:literal(poster.title) || captionFields?.title,\n    company:literal(poster.company) || captionFields?.company || captionCompany,\n    text,textOriginalLength:text.length+omitted,textTruncated:poster.textTruncated===true || omitted>0 });\n}\n\nfunction specificSocialPost(value:string) {"
+        }
+      ]
+    },
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "import { captionSocialFinding, originalSocialDate, prepareSocialEvidence, preservedSocialFinding, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';",
+          "to": "import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';"
+        },
+        {
+          "from": "if(x.isJobNotice===true){jobs++;findings.push(preservedSocialFinding({postUrl:post.post_url || post.url,postDate:socialOriginalDate(post),extractedAt:new Date().toISOString(),mediaUrl,medium:'image',title:x.title,company:x.company,commune:x.commune,requirements:x.requirements,contact:x.contact,deadline:x.deadline,text:x.text}));}",
+          "to": "if(x.isJobNotice===true){\n  const finding=socialPosterFinding(post,{postUrl:post.post_url || post.url,postDate:socialOriginalDate(post),mediaUrl,\n    title:x.title,company:x.company,commune:x.commune,requirements:x.requirements,contact:x.contact,deadline:x.deadline,text:x.text});\n  if(finding){jobs++;findings.push(finding);}\n}"
+        }
+      ]
+    }
+  ]
+}

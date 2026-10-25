@@ -1,0 +1,15 @@
+{
+  "baseline_version": "1792489805555",
+  "ready_candidate_version": "1792490035683",
+  "files": [
+    {
+      "filename": "backend/public-source-verifier.ts",
+      "diffs": [
+        {
+          "from": "          /^postularme$/i.test(publicText(button[2]).trim()))) return url;",
+          "to": "          /^(?:postularme|postulaci[oó]n r[aá]pida)$/i.test(publicText(button[2]).trim()))) return url;"
+        }
+      ]
+    }
+  ]
+}

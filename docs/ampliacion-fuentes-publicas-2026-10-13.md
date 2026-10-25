@@ -1,0 +1,69 @@
+# Ampliación aplicada del radar — 13 de octubre de 2026
+
+Este informe conserva la entrega anterior. La [continuación regional](continuacion-fuentes-regionales-2026-10-13.md) registra la versión posterior, 225 pruebas y la publicación de BNE confirmada en el feed; sus cifras actualizan las de esta entrega.
+
+La app indicada por el usuario recibió la ampliación en **1791900925205**, la reverificación en **1791902576668** y la corrección del lector de fechas en **1791903387552**, actualmente `ready` y sin errores reportados de frontend, red o backend. Es la página que usa el usuario: https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/. No se integró `main` ni se cambiaron credenciales. El historial previo permanece guardado.
+
+La app ahora tiene adaptadores de páginas individuales de Indeed, Computrabajo, LinkedIn y Laborum, además de Chiletrabajos. Opción Empleo necesita resolver y verificar su origen; las copias no reciben una fecha nueva ni se publican como una vacante distinta. La selección persistente del productor, el puente de ingesta y la identidad del feed admiten los nuevos formatos. Las páginas sin datos estructurados suficientes, bloqueadas o con ubicación/fecha no comprobable quedan pendientes.
+
+El recolector directo de la app usa HTTP público, con **58 direcciones configuradas**: 13 sitios locales/corporativos y cinco consultas de portales para cada una de las nueve comunas solicitadas. El recorrido alterna fuentes, conserva paginación por fuente y limita cada ciclo a ocho lecturas HTTP. El calendario sigue igual. La comprobación gratuita se consulta y puede iniciarse en `/?radar-public-proof=1#operacion`; admite una ejecución por ventana de 15 minutos. La inscripción en el feed se confirma separadamente de la escritura de una oferta.
+
+Los cursores por fuente y el recibo de cada ejecución se guardan mediante una transacción. Las ofertas usan IDs estables y distintos entre vacantes; repetir una solicitud reutiliza el recibo. Un fallo conserva los registros fuente y no adelanta el cursor. Se conserva la evidencia de los resultados, incluso si un aviso no llega al feed.
+
+Había otro problema operativo: las ofertas externas dejan de proyectarse si su prueba de verificación supera 24 horas y faltaba una revisión automática en la app. El recolector gratuito ahora registra las URLs verificadas y recupera las del lote firmado ya aceptado. Revisa hasta dos ofertas pendientes de reverificación por ciclo, a partir de 18 horas desde la última comprobación válida; los intentos bloqueados se vuelven a intentar después de cuatro horas. Mantiene los IDs y la fecha de creación. Un fallo no renueva el sello de verificación ni la fecha original. Informa el atraso de reverificación; el límite de ocho lecturas sigue vigente.
+
+La fecha original debe estar dentro de 45 días. Cuando la fuente no informa cierre, solo se admite un formulario de postulación habilitado en la página individual comprobada, con prueba reciente ligada a esa URL y al contenido leído. Un contacto aislado no sustituye esa prueba. La fecha de fin de visibilidad no se presenta como un plazo informado por el empleador.
+
+El productor externo incorpora archivos locales y OCR/PDF gratuito: fecha original de metadatos de artículo coincidente o de una fecha literal completa; imágenes de la publicación; indicadores de documento parcial y texto truncado; confianza mínima de OCR; cargo, empleador, lugar y contacto literales; cierre futuro. Los avisos vencidos, sin año, incompletos o con varios cargos sin separar no se publican automáticamente. Los PDF mayores a cuatro páginas siguen pendientes de una lectura completa; no se declara completo un documento parcial.
+
+La fecha reciente de un artículo no rejuvenece un afiche que declara una publicación original antigua: las fechas contradictorias quedan para revisión. El lector también respeta una hora de cierre literal y distingue límites de tamaño y redirección en sus diagnósticos. Esta ruta de OCR/PDF está preparada en el productor externo; el recolector nativo de la app lee HTML y señala los documentos que necesitan ese lector. No se presenta como OCR automático ya operativo en todas las municipalidades.
+
+La extracción de captions sociales pasó de IA a lectura determinista. Conserva avisos incompletos para revisión y admite fechas Unix explícitas de publicación; la fecha de captura sigue excluida. Los perfiles, disparadores y límites de los proveedores sociales pagos permanecen iguales. No se lanzan Actors nuevos ni capturas pagas desde las pruebas o la comprobación pública.
+
+**212 pruebas aprobadas: 90 Python y 122 Node.** Incluyen fechas, identidad entre variantes, campos originales, rechazo de ubicación extranjera/no comprobable, cierres, formularios, conservación de evidencias, reanudación, escritura parcial, transacciones, repetición de solicitudes y separación entre guardado y publicación. Las pruebas son controladas y no insertan ofertas ficticias en la app. AppDeploy no devuelve un listado individual de resultados E2E en este estado; no se atribuye una cifra de pruebas de navegador aprobadas.
+
+La suite completa pasó en GitHub Actions sobre `14c45c85ec1fbf4a65def587607aeefce5346f84`, [ejecución 38418552056](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38418552056). El job de interfaz también terminó correctamente; el productor de `main` y los pilotos de escritura externa quedaron omitidos por sus guardas. `git diff --check` pasó en los cambios entregados.
+
+La comprobación de fuentes reales se ejecuta en un runner gratuito del repositorio público. Su evidencia se conserva en `radar-public-evidence`, con el SQLite acumulado restaurado desde el respaldo existente o desde el último checkpoint de esta rama, y archivos por ejecución. No modifica la rama principal ni el respaldo del piloto. La prueba de interfaz usa el SDK frontend de la app y únicamente el botón de fuentes públicas.
+
+## Errores confirmados en las lecturas reales
+
+| Error o límite | Comprobación y reparación |
+| --- | --- |
+| Faltaban rutas de descubrimiento, identidad y verificación para otros portales. | Se añadieron cinco consultas de portales y adaptadores individuales. El productor, el puente y el feed comparten las identidades; un enlace de búsqueda no se convierte en una oferta verificada. |
+| El lector nativo rechazaba fechas válidas de Chiletrabajos. | Dos páginas devolvieron HTTP 200 y fechas literales `2026-10-08 11:58:01` / `2026-09-23 12:08:47`, con cierres en diciembre. Python las aceptaba y la app respondía `source_date_missing_or_future`. Se agregó una regla específica para los timestamps civiles de ese portal, usando `America/Santiago` como convención del adaptador y conservando las cadenas originales. Los demás portales y las redes no reciben ese supuesto. El productor externo ahora llama al mismo lector. |
+| Faltaba reverificación antes de las 24 horas. | Se añadió el recorrido persistente descrito arriba. Las pruebas comprueban identidad estable y que una lectura bloqueada no renueve la oferta. |
+| No había prueba suficiente de operación del nuevo recolector. | La primera comprobación del navegador falló al esperar el estado; se corrigieron selección del tab, espera, timers y diagnósticos del observador. Las dos lecturas siguientes terminaron y guardaron sus resultados mediante el SDK real. El despliegue por sí solo no se contabiliza como publicación. |
+| Algunas fuentes responden con bloqueos o páginas no extraíbles. | Se conservaron los HTTP 403/429 y los avisos sin campos comprobables; no se activaron servicios pagos ni se atribuyó cobertura completa. |
+
+La [lectura externa 38413008651](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38413008651) encontró **92 enlaces de portales y un candidato local**. Verificó diez páginas de LinkedIn: cinco llegaron a revisión con empresa, ubicación y fecha originales; tres respondieron 429 y dos no confirmaron un lugar único dentro del territorio. Ninguna tuvo todos los requisitos de postulación para publicarse. Indeed respondió 403 en las dos consultas; Computrabajo, Laborum y Opción Empleo no produjeron candidatos en esa lectura. De trece fuentes locales, diez devolvieron HTML; Angol respondió 403 y otras dos alcanzaron límites del lector. Los avisos de directorios o documentos antiguos no se convirtieron en ofertas nuevas.
+
+El respaldo en `radar-public-evidence`, commit `07df7cb1a84c5fa8b861497f42c7a921a49b57c9`, conserva **283 candidatos, 2.843 observaciones, 16 intentos, tres checkpoints, tres runs y los dos recibos históricos**. Se restauraron los 190 candidatos y 2.750 observaciones anteriores antes de añadir la nueva lectura. Los snapshots anteriores y el respaldo del piloto permanecen en sus ramas originales.
+
+La [comprobación de interfaz 38414906867](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38414906867), a las 14:37 UTC, leyó cinco fuentes con seis peticiones, registró un aviso de Lumaco para revisión y avanzó el cursor a cinco. La [comprobación 38416295449](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38416295449), a las 14:47 UTC, avanzó a diez, guardó dos URLs para reverificación y dejó 56 candidatos en cola. Laborum respondió 403 desde AppDeploy; Renaico y LinkedIn aportaron enlaces, cuya presencia todavía no confirma ofertas vigentes. Ambas lecturas registraron cero llamadas a proveedores pagos y cero publicaciones nuevas. La prueba del [formato de fechas 38416998060](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38416998060) conserva los valores originales que permitieron reproducir el rechazo.
+
+## Publicación comprobada después de la corrección de fechas
+
+El ciclo de las **15:02 UTC** leyó cinco páginas fuente y tres avisos, dentro de ocho peticiones. Reverificó y guardó las dos ofertas existentes, conservando sus IDs y las fechas literales originales. El tercer aviso, de LinkedIn, quedó para revisión por su vía de postulación. El recorrido avanzó a quince y quedaron **97 candidatos en cola**; este conteo no se presenta como 97 ofertas vigentes.
+
+A las **15:05:52 UTC / 12:05:52 de Chile**, la [comprobación de interfaz 38418552056](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38418552056) confirmó ambos IDs mediante el SDK de lectura de la app. Los recibos y el feed completo coincidieron en el manifiesto `28d88afd-7c29-486a-a960-a6661c30036e`:
+
+| Oferta existente recuperada | ID confirmado en el feed |
+| --- | --- |
+| TENS / enfermera administrativa, Angol | `2ca4362e-d4fb-4d6c-a12e-dfa42849b019` |
+| Psicólogo/a clínico, Ercilla | `c4be30bb-57c1-45c1-9832-18065b54d498` |
+
+La lectura devolvió `stored: 2`, `published: 2`, estado `published` y esos IDs entre los elementos visibles, sin rechazo de ingesta. El cron directo y el escritor del feed ejecutados a las 15:05 UTC terminaron con `success` y cero fallos acumulados. No se invocaron manualmente los motores pagos. AppDeploy conservó el estado `ready`, sin errores reportados.
+
+**Son las mismas dos ofertas del piloto, recuperadas y mantenidas; no son dos avisos nuevos de fuentes difíciles.** La prueba demuestra la ruta real de reverificación, guardado y publicación, además de la conservación de IDs. Las publicaciones nuevas de Facebook, Instagram y las demás fuentes difíciles todavía son cero en estas comprobaciones.
+
+## Qué falta para ampliar las publicaciones automáticas
+
+- La rama principal conserva `fab392b824e4100a4bba6dfe9289825297d24707`. El productor externo ampliado y su OCR no tienen un schedule activo en esta rama: GitHub ejecuta los schedules desde la rama por defecto. Falta revisar e integrar o habilitar un ejecutor equivalente antes de afirmar ingesta automática externa continua. La app conserva su cron directo existente, que ahora usa el recolector gratuito.
+- Los accesos que requieren sesión, los HTTP 403/429 y los portales que sirven sus ofertas en otros formatos necesitan una vía autorizada o nuevos adaptadores contrastados con páginas reales. No se promete que comprar un scraper los resuelva.
+- Faltan perfiles concretos y comprobados de varias OMIL, radios, diarios y empresas forestales/agrícolas locales. Radio Mininco sigue sin canal validado. Las seis capturas sociales generales existentes no cubren las nueve comunas ni todas sus organizaciones.
+- El backfill de 45 días tiene cursores y evidencia parcial, pero todavía no ha demostrado un barrido completo por fuente. Hay 58 direcciones configuradas, hasta cinco páginas fuente y tres avisos por ciclo, seis ciclos programados al día. Este límite exige observar el atraso antes de ampliar capacidad; configurar una URL no demuestra haberla leído ni haber publicado una vacante.
+- Falta completar documentos mayores a cuatro páginas, avisos sin fecha/cierre comprobable y publicaciones con varios cargos. Tener teléfono o correo ayuda a extraer el aviso, pero no acredita por sí solo antigüedad, empresa, lugar o vigencia.
+- Antes de operación sostenida deben revisarse cuotas y crecimiento de las materializaciones y respaldos. Esta entrega no añade servicios, Actors, suscripciones ni capturas pagas; tampoco cambia los proveedores o cuotas preexistentes.
+
+La evidencia de cada fase está en [public-source-observation-2026-10-13.json](../integrations/appdeploy/public-source-observation-2026-10-13.json). Los parches aplicados son [public-adapters-repair.json](../integrations/appdeploy/public-adapters-repair.json), [public-reverification-repair.json](../integrations/appdeploy/public-reverification-repair.json) y [chile-source-date-repair.json](../integrations/appdeploy/chile-source-date-repair.json). La confirmación posterior del feed se registra por separado de los avisos detectados y guardados.

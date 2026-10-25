@@ -1,0 +1,1508 @@
+{
+  "schema": "trabajo-cerca.hard-source-expansion-evidence.v1",
+  "checked_at": "2026-10-18T13:04:18Z",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "applied_version": "1792328322207",
+  "deployment_status": "ready",
+  "branch": "repair/mulchen-captura-2026-10-17",
+  "source_commit": "dd1435802a512e2f0d642c1830e23758c5862560",
+  "workflow_run": 39129527420,
+  "workflow_job": 117681659735,
+  "workflow_conclusion": "success",
+  "tests": {
+    "python": 187,
+    "node_files": 18,
+    "discovery_cases": 17
+  },
+  "new_individual_job_ads_confirmed": 0,
+  "new_offers_published": 0,
+  "eligible_current_ads_from_lumaco": 0,
+  "lumaco_reason": "July 2026 deadlines expired; conflicting calendars do not establish current eligibility",
+  "malleco7_review": "No individual employment advertisement confirmed; the two hits on 6 October page 3 discuss energy infrastructure, not hiring",
+  "full_pdf_pages_read": 54,
+  "pdf_pages_also_read_with_ocr": 36,
+  "paid_provider_calls": 0,
+  "credentials_modified": false,
+  "historical_offers_deleted": false,
+  "main_modified": false,
+  "main_sha": "fab392b824e4100a4bba6dfe9289825297d24707",
+  "cron_changes": false,
+  "scope": "Four bounded primary references, not exhaustive source coverage or a general automated publishing bridge",
+  "references": [
+    {
+      "reference": "lumaco",
+      "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+      "documents": [
+        {
+          "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 268651,
+          "page_count": 8,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3063,
+              "text_object_sha256": "e32a6fc16525f777bd016ac8bc294fac29cbf5498731733f51ac26a668ff8864",
+              "alternate_readings": []
+            },
+            {
+              "page": 2,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3138,
+              "text_object_sha256": "509c027982ce5c687e63806a8a8b2b83f7b4c52b03d9b42813fc28557c4df438",
+              "alternate_readings": []
+            },
+            {
+              "page": 3,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3647,
+              "text_object_sha256": "e79825110daf938be546b1fa28b3a25554407b03eddc55722ba3646f199c64fb",
+              "alternate_readings": []
+            },
+            {
+              "page": 4,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 2796,
+              "text_object_sha256": "902a065b72c94729f5c3576f2536d6ce007b26681c7c71f463cf7a4e4f858f1e",
+              "alternate_readings": []
+            },
+            {
+              "page": 5,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 2821,
+              "text_object_sha256": "fd48af4de1d2b63735371c7c5fb24d679a8faeb0cdda8013ceffccf134384617",
+              "alternate_readings": []
+            },
+            {
+              "page": 6,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3253,
+              "text_object_sha256": "22e4413f4614640522e930ff299ad39c6c2e4cd149f70f67f02f510e1e517adf",
+              "alternate_readings": []
+            },
+            {
+              "page": 7,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3321,
+              "text_object_sha256": "8941441857abd7f64fec555d8c2d4120ab4107bc6fb04fde9f45db31431eea18",
+              "alternate_readings": []
+            },
+            {
+              "page": 8,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 1772,
+              "text_object_sha256": "0c7f5ba8c87779f198ab89a6c7f4b0b186a88cda620cc7a9266480e6f1ef8514",
+              "alternate_readings": []
+            }
+          ]
+        },
+        {
+          "url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 213229,
+          "page_count": 1,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "tesseract-local",
+              "language": "spa+eng",
+              "confidence": 89.6,
+              "characters": 1102,
+              "text_object_sha256": "fe95915fe1ccbfefa756e7bedb98ed72be3b80bb494233ed2539e9fc16f70452",
+              "alternate_readings": []
+            }
+          ]
+        },
+        {
+          "url": "https://www.munilumaco.cl/images/muni%20lumaco/app_ico.png",
+          "sha256": "40669095aae4737273e065453332ff12ea25edb1518b8fe86e76cb536aed5ccb",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 1432,
+          "page_count": 1,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "tesseract-local",
+              "language": "spa+eng",
+              "confidence": 44.9,
+              "characters": 2,
+              "text_object_sha256": "a5de1eb10695cc315bfb5e5145ad72d9ac4bbbd45950c0c5119e3c1408da0fa0",
+              "alternate_readings": []
+            }
+          ]
+        },
+        {
+          "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 272584,
+          "page_count": 8,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3088,
+              "text_object_sha256": "e41c5b0bb24015cb89f201304d66580b2416b4f931493fd6561a87eed5972e54",
+              "alternate_readings": []
+            },
+            {
+              "page": 2,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3146,
+              "text_object_sha256": "c5252452ab50bec6e265ea2c7f63f90b2e4af67767c4f18dfe221551149e57f8",
+              "alternate_readings": []
+            },
+            {
+              "page": 3,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3562,
+              "text_object_sha256": "a6867c2244c075e631fc6a34a26bd545f0c7b1d494aff3dd2be1cc899d2f1a63",
+              "alternate_readings": []
+            },
+            {
+              "page": 4,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3198,
+              "text_object_sha256": "699f84f19b9ef890c57a4acc03a72e2b8a07e6812e638ed54f75bdd67a5ec71a",
+              "alternate_readings": []
+            },
+            {
+              "page": 5,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 2848,
+              "text_object_sha256": "db375fc3bf0ac49fb62ca0a585421e975558df9a4b6f07220c18742096345b32",
+              "alternate_readings": []
+            },
+            {
+              "page": 6,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3094,
+              "text_object_sha256": "054a46f4a85296b2418fc392370a3b7e352fe87f42b2dfa4d01f78cb428c6bfb",
+              "alternate_readings": []
+            },
+            {
+              "page": 7,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3136,
+              "text_object_sha256": "e7987c1698a99eea57a54c2a183302e62f2ad842fa78c4f2b380a8776bc89724",
+              "alternate_readings": []
+            },
+            {
+              "page": 8,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 2928,
+              "text_object_sha256": "db3278fb43b3f814bb883d89f85d083ee63ce654d00a1f92a57b335915e9c089",
+              "alternate_readings": []
+            }
+          ]
+        },
+        {
+          "url": "https://www.munilumaco.cl/images/465.png#joomlaImage://local-images/465.png?width=629&height=758",
+          "sha256": "f1bf4f4dbd273f6bd1217bfecf85cacc7d3fad308f43c757590eea052d946a62",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 361090,
+          "page_count": 1,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "tesseract-local",
+              "language": "spa+eng",
+              "confidence": 53.5,
+              "characters": 26,
+              "text_object_sha256": "06c8b80fa6f733cba08078947b1ceb96c71a8f9c532fc9a3ddd1575fdd58e795",
+              "alternate_readings": []
+            }
+          ]
+        },
+        {
+          "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 251444,
+          "page_count": 2,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3651,
+              "text_object_sha256": "4389e7d8b9dce93da8dc3fd8f3828a52d785d22518218e463d9b0d95ba245562",
+              "alternate_readings": []
+            },
+            {
+              "page": 2,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 2702,
+              "text_object_sha256": "062378627a1e40ec45d5b567833aab0cae465881e12e256bf6b3aea271630eae",
+              "alternate_readings": []
+            }
+          ]
+        }
+      ],
+      "source_requests": [
+        {
+          "url": "https://www.munilumaco.cl/robots.txt",
+          "status": 200,
+          "file": "robots-2c12b66be091.txt",
+          "sha256": "f1a6b5e3f6e69a71c53516c4bce70e2414429d23dab6814239500999eb80907e"
+        },
+        {
+          "url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "final_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 31153,
+          "sha256": "47ef1ceb1d45577d552b2da1f46832045eb11f65a4a5d487ec4b54a5830e7892"
+        },
+        {
+          "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "final_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "status": 200,
+          "mime": "application/pdf",
+          "bytes": 268651,
+          "sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1"
+        },
+        {
+          "url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "final_url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "status": 200,
+          "mime": "image/jpeg",
+          "bytes": 213229,
+          "sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924"
+        },
+        {
+          "url": "https://www.munilumaco.cl/images/muni%20lumaco/app_ico.png",
+          "final_url": "https://www.munilumaco.cl/images/muni%20lumaco/app_ico.png",
+          "status": 200,
+          "mime": "image/png",
+          "bytes": 1432,
+          "sha256": "40669095aae4737273e065453332ff12ea25edb1518b8fe86e76cb536aed5ccb"
+        },
+        {
+          "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "final_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "status": 200,
+          "mime": "application/pdf",
+          "bytes": 272584,
+          "sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1"
+        },
+        {
+          "url": "https://www.munilumaco.cl/images/465.png",
+          "final_url": "https://www.munilumaco.cl/images/465.png",
+          "status": 200,
+          "mime": "image/png",
+          "bytes": 361090,
+          "sha256": "f1bf4f4dbd273f6bd1217bfecf85cacc7d3fad308f43c757590eea052d946a62"
+        },
+        {
+          "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "final_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "status": 200,
+          "mime": "application/pdf",
+          "bytes": 251444,
+          "sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3"
+        }
+      ],
+      "unprocessed_or_failed": [],
+      "reading_hits": [
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 8,
+          "reading": "primary",
+          "text_object_sha256": "0c7f5ba8c87779f198ab89a6c7f4b0b186a88cda620cc7a9266480e6f1ef8514",
+          "excerpt": "El Alcalde elegirá, de acuerdo con sus facultades, a uno de los tres candidatos de la terna para ocupar\nel cargo titular vacante. Una vez que la autoridad edilicia adopte una decisión, se notificará al candidato\nseleccionado vía correo electrónico.\n\nPracticada la notificación, se podrán verificar las siguientes situaciones:",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 2,
+          "reading": "primary",
+          "text_object_sha256": "509c027982ce5c687e63806a8a8b2b83f7b4c52b03d9b42813fc28557c4df438",
+          "excerpt": "\n   III.    RETIRO DE BASES Y RECEPCIÓN DE POSTULACIONES\n\nEl retiro de bases podrá efectuarse entre el 14 y el 24 de julio de 2026, en Oficina de Partes (N° 19) ubicada\nen Calle Arturo Prat N° 506 de la ciudad y comuna de Lumaco, en días hábiles, entre las 08:15 y las 14:00",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 3,
+          "reading": "primary",
+          "text_object_sha256": "e79825110daf938be546b1fa28b3a25554407b03eddc55722ba3646f199c64fb",
+          "excerpt": "\n Publicación del concurso público en sitio web www.munilumaco.cl y en             17 de julio de 2026\n periódico de circulación regional\n Retiro de bases                                                             17 al 29 de julio de 2026\n Recepción de postulaciones                                                  17 al 29 de julio de 2026",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 3,
+          "reading": "primary",
+          "text_object_sha256": "e79825110daf938be546b1fa28b3a25554407b03eddc55722ba3646f199c64fb",
+          "excerpt": " Retiro de bases                                                             17 al 29 de julio de 2026\n Recepción de postulaciones                                                  17 al 29 de julio de 2026\n Constitución del Comité de Selección                                              30 de julio de 2026\n Evaluación de las etapas de admisibilidad, evaluación curricular y                30 de julio de 2026\n experiencia laboral",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 7,
+          "reading": "primary",
+          "text_object_sha256": "e7987c1698a99eea57a54c2a183302e62f2ad842fa78c4f2b380a8776bc89724",
+          "excerpt": "Esta etapa tiene por objeto verificar que los postulantes cumplen con las aptitudes específicas y las\ncondiciones idóneas para el desempeño del cargo vacante.\n\nCada miembro del Comité de Selección podrá efectuar preguntas relacionadas al área personal, laboral,\nmunicipal, entre otras.",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "fe95915fe1ccbfefa756e7bedb98ed72be3b80bb494233ed2539e9fc16f70452",
+          "excerpt": "»\n“E | República de Chile CONCURSO PÚBLICO\nKy Región de La Araucanía 7\nVe llustre Municipalidad Llámase a concurso público para\ngy) de Lumaco proveer, en calidad de planta, los",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "fe95915fe1ccbfefa756e7bedb98ed72be3b80bb494233ed2539e9fc16f70452",
+          "excerpt": "Ky Región de La Araucanía 7\nVe llustre Municipalidad Llámase a concurso público para\ngy) de Lumaco proveer, en calidad de planta, los\n= siguientes cargos:\n[Vacantes ] cargo | Escalatón | Grado |",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "fe95915fe1ccbfefa756e7bedb98ed72be3b80bb494233ed2539e9fc16f70452",
+          "excerpt": "= siguientes cargos:\n[Vacantes ] cargo | Escalatón | Grado |\na [vetado Tuismoy Medioambiente] Jefatura | 8\nRequisitos y antecedentes: Los establecidos en las leyes N° 18.883 y N° 18.575,\nen el Reglamento que modifica la Planta de Personal Yo019) y en las respectivas",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/images/afiches/llamados%20a%20concurso%20publico.jpeg",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "32ebce3f5a409180c0b308ccbc793d45d41eee493fcaa2a7cf21112e66399924",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "fe95915fe1ccbfefa756e7bedb98ed72be3b80bb494233ed2539e9fc16f70452",
+          "excerpt": "www.munilumaco.cl.\nRecepción de postulaciones: Entre el 17 y el 29 de julio de 2026, en Oficina\nde Partes (N° 19), en días hábiles, entre las 08:15 y las 14:00 horas,\nEntrevista: Entre el 03 y el 05 de agosto de 2026.\nResolución del concurso: 07 de agosto de 2026.",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 2,
+          "reading": "primary",
+          "text_object_sha256": "c5252452ab50bec6e265ea2c7f63f90b2e4af67767c4f18dfe221551149e57f8",
+          "excerpt": "\n   III.    RETIRO DE BASES Y RECEPCIÓN DE POSTULACIONES\n\nEl retiro de bases podrá efectuarse entre el 14 y el 24 de julio de 2026, en Oficina de Partes (N° 19) ubicada\nen Calle Arturo Prat N° 506 de la ciudad y comuna de Lumaco, en días hábiles, entre las 08:15 y las 14:00",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "e32a6fc16525f777bd016ac8bc294fac29cbf5498731733f51ac26a668ff8864",
+          "excerpt": "\n               BASES ADMINISTRATIVAS CONCURSO PÚBLICO 2026\n\n\n   I.      DISPOSICIONES GENERALES",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "e32a6fc16525f777bd016ac8bc294fac29cbf5498731733f51ac26a668ff8864",
+          "excerpt": "   I.      DISPOSICIONES GENERALES\nLa Municipalidad de Lumaco llama a concurso público para proveer un cargo de planta genérico, grado\n12° del Escalafón Profesional.\nPodrán participar las personas que cumplan los requisitos establecidos en las leyes N° 18.883 y N° 18.575,\nen el Reglamento que modifica la Planta de Personal y en las presentes bases del concurso, que no se",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "e41c5b0bb24015cb89f201304d66580b2416b4f931493fd6561a87eed5972e54",
+          "excerpt": "\n               BASES ADMINISTRATIVAS CONCURSO PÚBLICO 2026\n\n\n   I.      DISPOSICIONES GENERALES",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "e41c5b0bb24015cb89f201304d66580b2416b4f931493fd6561a87eed5972e54",
+          "excerpt": "   I.      DISPOSICIONES GENERALES\nLa Municipalidad de Lumaco llama a concurso público para proveer un cargo de planta, Jefatura de\nTurismo y Medio Ambiente, grado 8° del Escalafón Jefatura.\nPodrán participar las personas que cumplan los requisitos establecidos en las leyes N° 18.883 y N° 18.575,\nen el Reglamento que modifica la Planta de Personal y en las presentes bases del concurso, que no se",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 4,
+          "reading": "primary",
+          "text_object_sha256": "902a065b72c94729f5c3576f2536d6ce007b26681c7c71f463cf7a4e4f858f1e",
+          "excerpt": "\n   b. Recepción de postulaciones.\n\nLos postulantes deberán entregar sus antecedentes en Oficina de Partes (N° 19) ubicada en Calle Arturo\nPrat N° 506 de la ciudad y comuna de Lumaco, en días hábiles, entre las 08:15 y las 14:00 horas.",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 4,
+          "reading": "primary",
+          "text_object_sha256": "902a065b72c94729f5c3576f2536d6ce007b26681c7c71f463cf7a4e4f858f1e",
+          "excerpt": "\n“CONCURSO PÚBLICO PARA PROVEER UN CARGO DE PLANTA GENÉRICO, GRADO 12°\nDEL ESCALAFÓN PROFESIONAL, MUNICIPALIDAD DE LUMACO”\n\nAdemás, deberá señalar:",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 8,
+          "reading": "primary",
+          "text_object_sha256": "db3278fb43b3f814bb883d89f85d083ee63ce654d00a1f92a57b335915e9c089",
+          "excerpt": "El Alcalde elegirá, de acuerdo con sus facultades, a uno de los tres candidatos de la terna para ocupar\nel cargo titular vacante. Una vez que la autoridad edilicia adopte una decisión, se notificará al candidato\nseleccionado vía correo electrónico.\n\nPracticada la notificación, se podrán verificar las siguientes situaciones:",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "b4a5b7f4becdd86630c077727e92c4566cecff8ffcb51b181154776452082df1",
+          "page": 7,
+          "reading": "primary",
+          "text_object_sha256": "8941441857abd7f64fec555d8c2d4120ab4107bc6fb04fde9f45db31431eea18",
+          "excerpt": "Esta etapa tiene por objeto verificar que los postulantes cumplen con las aptitudes específicas y las\ncondiciones idóneas para el desempeño del cargo vacante.\n\nCada miembro del Comité de Selección podrá efectuar preguntas relacionadas al área personal, laboral,\nmunicipal, entre otras.",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 4,
+          "reading": "primary",
+          "text_object_sha256": "699f84f19b9ef890c57a4acc03a72e2b8a07e6812e638ed54f75bdd67a5ec71a",
+          "excerpt": "\n Publicación del concurso público en sitio web www.munilumaco.cl y en                 17 de julio de 2026\n periódico de circulación regional\n Retiro de bases                                                                 17 al 29 de julio de 2026\n Recepción de postulaciones                                                      17 al 29 de julio de 2026",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 4,
+          "reading": "primary",
+          "text_object_sha256": "699f84f19b9ef890c57a4acc03a72e2b8a07e6812e638ed54f75bdd67a5ec71a",
+          "excerpt": " Retiro de bases                                                                 17 al 29 de julio de 2026\n Recepción de postulaciones                                                      17 al 29 de julio de 2026\n Constitución del Comité de Selección                                                  30 de julio de 2026\n Evaluación de las etapas de admisibilidad, evaluación curricular y                    30 de julio de 2026\n experiencia laboral",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 4,
+          "reading": "primary",
+          "text_object_sha256": "699f84f19b9ef890c57a4acc03a72e2b8a07e6812e638ed54f75bdd67a5ec71a",
+          "excerpt": "Por razones de buen servicio o fuerza mayor, estas fechas podrán ser sujetas de modificación\n   b. Recepción de postulaciones.\n\nLos postulantes deberán entregar sus antecedentes en Oficina de Partes (N° 19) ubicada en Calle Arturo\nPrat N° 506 de la ciudad y comuna de Lumaco, en días hábiles, entre las 08:15 y las 14:00 horas.",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "1c2baa81731ae90fd63fab0c66cff8df0beee80ac6f294268cbe1692ac1700d1",
+          "page": 4,
+          "reading": "primary",
+          "text_object_sha256": "699f84f19b9ef890c57a4acc03a72e2b8a07e6812e638ed54f75bdd67a5ec71a",
+          "excerpt": "\n“CONCURSO PÚBLICO PARA PROVEER UN CARGO DE PLANTA, JEFATURA DE\nTURISMO Y MEDIO AMBIENTE, GRADO 8° DEL ESCALAFÓN JEFATURAS,\nMUNICIPALIDAD DE LUMACO”\n",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "4389e7d8b9dce93da8dc3fd8f3828a52d785d22518218e463d9b0d95ba245562",
+          "excerpt": "                                                                          Y BASES ADMINISTRATIVAS DE LOS CARGOS\n                                                                          VACANTES DE LA PLANTA DEL PERSONAL\n                                                                          MUNICIPAL, QUE SE INDICAN.\n\n                                                                          Decreto Alcaldicio Exento Personal Nº 306.-",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "4389e7d8b9dce93da8dc3fd8f3828a52d785d22518218e463d9b0d95ba245562",
+          "excerpt": "                 indica.\n         11.     Las bases administrativas establecida para el llamado a Concurso Público de los cargos vacantes\n                 de la Planta del Personal Municipal, de la Municipalidad de Lumaco.\n         12.     En uso de las facultades y atribuciones que me confiere la Ley N° 18.695, Orgánica Constitucional\n                 de Municipalidades y sus modificaciones en actual vigencia.",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "4389e7d8b9dce93da8dc3fd8f3828a52d785d22518218e463d9b0d95ba245562",
+          "excerpt": "         1.      APRUÉBESE, las Bases Administrativas Concursos Públicos 2026, para el llamado a Concursos\n                 Públicos de los cargos vacantes a Planta del Personal, que se indican:\n\n                      Vacantes                           Cargo                                    Planta                Grado\n                         01                Jefe de Turismo y Medio Ambiente                      Jefatura                 8°",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "4389e7d8b9dce93da8dc3fd8f3828a52d785d22518218e463d9b0d95ba245562",
+          "excerpt": "\n                      Vacantes                           Cargo                                    Planta                Grado\n                         01                Jefe de Turismo y Medio Ambiente                      Jefatura                 8°\n                         01                             Genérico                                Profesional              12°\n",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3",
+          "page": 1,
+          "reading": "primary",
+          "text_object_sha256": "4389e7d8b9dce93da8dc3fd8f3828a52d785d22518218e463d9b0d95ba245562",
+          "excerpt": "\n         2.      LLÁMESE, a Concurso Público, para proveer los cargos vacantes de acuerdo al punto anterior y\n                 los requisitos generales establecidos en la Ley 18.883, Estatuto Administrativo para funcionarios\n                 Municipales; y el artículo 55 de la Ley 18.575.\n",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+          "source_url": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+          "document_sha256": "bfda3ab6f1cae1bebce2a95359cd5825fea327857d9662c167b67826bb0d01d3",
+          "page": 2,
+          "reading": "primary",
+          "text_object_sha256": "062378627a1e40ec45d5b567833aab0cae465881e12e256bf6b3aea271630eae",
+          "excerpt": "         4.      COMUNÍQUESE por única vez, a las municipalidades de la Región de la Araucanía, la existencia\n                 de los cargos vacantes en este municipio de que los funcionarios municipales pueden postular,\n                 acción que deberá ejecutar el Departamento de Recursos Humanos.\n\n         5.      PROCÉDASE a la entrega de las bases administrativas correspondientes, a través de la Oficina de",
+          "review_required": true,
+          "verified": false
+        }
+      ],
+      "persistence_check": {
+        "snapshot_restored": true,
+        "counts_preserved": true,
+        "review_objects_preserved": 0,
+        "archive_original_bytes": 1460778,
+        "sqlite_sha256": "f08a3ac728c3c560d0c0586c2c2b563d18723dc92f7b9d3344a104c8713d29f9"
+      },
+      "paid_provider_calls": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "reference": "malleco7-13-oct",
+      "url": "https://www.malleco7.cl/edicion-martes-13-de-octubre-de-2026/",
+      "documents": [
+        {
+          "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1485.pdf",
+          "sha256": "eeab4a7ef764d7b450e34af4e598b34f70a7e857b5779fd7a5c3fd6675cbe606",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 5794682,
+          "page_count": 12,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 2176,
+              "text_object_sha256": "21858f7bf72da1acd7934337b88dbc2ba02f8e0a360786cca1339900fbc5d113",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 1004,
+                  "confidence": 62.6
+                }
+              ]
+            },
+            {
+              "page": 2,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 8846,
+              "text_object_sha256": "34c221eac9bcb35cb268e0c5e722084e45a8d670248d78218bacc77ecac8dda8",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6675,
+                  "confidence": 83.2
+                }
+              ]
+            },
+            {
+              "page": 3,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7157,
+              "text_object_sha256": "378496c5bb9c710edcc87ed3fa781e4e6e01f905277002d94da96e8d12223420",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6130,
+                  "confidence": 77.5
+                }
+              ]
+            },
+            {
+              "page": 4,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 11213,
+              "text_object_sha256": "bc9bdb4a39c966f4f04b9bfdffd7f725892432ea5c4167d0acbf833bb001bf59",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 8514,
+                  "confidence": 91.6
+                }
+              ]
+            },
+            {
+              "page": 5,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 6570,
+              "text_object_sha256": "3205fe68a36dfd61d160648e235d73a4c145314de02ca4e3d97a8c2cca1a5191",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5240,
+                  "confidence": 72.6
+                }
+              ]
+            },
+            {
+              "page": 6,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 10278,
+              "text_object_sha256": "7e0d59669ee160d8ed9cbb9d9b65681810d94816559d66f46ebf00ead27a27aa",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6002,
+                  "confidence": 77.7
+                }
+              ]
+            },
+            {
+              "page": 7,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 6585,
+              "text_object_sha256": "def7c9a9eb99911b22b994472df02edb74f148a519b2d115ac4963718f46b3ec",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6522,
+                  "confidence": 81.8
+                }
+              ]
+            },
+            {
+              "page": 8,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 9619,
+              "text_object_sha256": "57df5804d4dad92ea44174f35f70fe8818e4b08b891cdd0c74347d13ba2d5d99",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6776,
+                  "confidence": 77.4
+                }
+              ]
+            },
+            {
+              "page": 9,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7208,
+              "text_object_sha256": "f886b9e4f1615cba51f527190c28b5489c1e7e796e810c07e3fd0735de0dd08a",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5941,
+                  "confidence": 85.3
+                }
+              ]
+            },
+            {
+              "page": 10,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7147,
+              "text_object_sha256": "70a73e3632b53b8383e48f0af25e7ed58093363567b705e1c650d14d99ad70ab",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6216,
+                  "confidence": 73.7
+                }
+              ]
+            },
+            {
+              "page": 11,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7411,
+              "text_object_sha256": "1722022f8596364e13bf92cea660d247eb4fec5256f00093395545de305f0530",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6196,
+                  "confidence": 80.2
+                }
+              ]
+            },
+            {
+              "page": 12,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 4998,
+              "text_object_sha256": "4fb7f8979e2163dfc9aef465bebc2c104f69fe5391c97eb3d264573144d49dda",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 3970,
+                  "confidence": 69.7
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "source_requests": [
+        {
+          "url": "https://www.malleco7.cl/robots.txt",
+          "status": 200,
+          "file": "robots-b9da6f5b3cb6.txt",
+          "sha256": "bf86ad9f31d7282f7fbc080eb4ffe2e7f18a45c2a8c43a1d5b8d4265361f28ff"
+        },
+        {
+          "url": "https://www.malleco7.cl/edicion-martes-13-de-octubre-de-2026/",
+          "final_url": "https://www.malleco7.cl/edicion-martes-13-de-octubre-de-2026/",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 225668,
+          "sha256": "599a3a7896d5fdfd416349233bbed603a87334fb03fd1ff72ad626be0e262bd8"
+        },
+        {
+          "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1485.pdf",
+          "final_url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1485.pdf",
+          "status": 200,
+          "mime": "application/pdf",
+          "bytes": 5794682,
+          "sha256": "eeab4a7ef764d7b450e34af4e598b34f70a7e857b5779fd7a5c3fd6675cbe606"
+        }
+      ],
+      "unprocessed_or_failed": [],
+      "reading_hits": [],
+      "persistence_check": {
+        "snapshot_restored": true,
+        "counts_preserved": true,
+        "review_objects_preserved": 0,
+        "archive_original_bytes": 6188203,
+        "sqlite_sha256": "da24f09b7b2ec641743a279ba95df936f422c50439f6648e5954f6e5ddd1e680"
+      },
+      "paid_provider_calls": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "reference": "malleco7-08-oct",
+      "url": "https://www.malleco7.cl/edicion-jueves-08-de-octubre-de-2026/",
+      "documents": [
+        {
+          "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1484.pdf",
+          "sha256": "a4476cc2012be1fbcdef6684191fcfa89001bf3c1c9860b0445cd77089fd408f",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 4247332,
+          "page_count": 12,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 1941,
+              "text_object_sha256": "6b09c7e14ad7a72b97255f220d44804eb89f5a2878a6d048db5ca32b7dba0af8",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 889,
+                  "confidence": 63.4
+                }
+              ]
+            },
+            {
+              "page": 2,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7261,
+              "text_object_sha256": "48db4b2e68ba3a5c72ac77cd7fb4adc2af37aac5e87c4e7a6cd1d7b75845ab50",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5794,
+                  "confidence": 82
+                }
+              ]
+            },
+            {
+              "page": 3,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7272,
+              "text_object_sha256": "eafaf486300037a028465fcf81cb241d07715f2feca8e398fe45a29440b0096f",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6518,
+                  "confidence": 84.9
+                }
+              ]
+            },
+            {
+              "page": 4,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 4699,
+              "text_object_sha256": "0a79440bce8a2b5b04e33d3702a53ba23c3e46f728297f48f550708c1b0283f6",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 4790,
+                  "confidence": 79.6
+                }
+              ]
+            },
+            {
+              "page": 5,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7319,
+              "text_object_sha256": "c40426589e8971b067dde974389ce8b13cda034551b634a2f1ae3b9f86cfa308",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5442,
+                  "confidence": 82.2
+                }
+              ]
+            },
+            {
+              "page": 6,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 8521,
+              "text_object_sha256": "29de38e2729fb7e49679f8fa9f00d2a02c38a92840a54d758448a8abbf45bbff",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5637,
+                  "confidence": 79.1
+                }
+              ]
+            },
+            {
+              "page": 7,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 6063,
+              "text_object_sha256": "07a45e3b38f1ffe1615968482cdd7aa02f3375c0372bc64a0577aef85e950052",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5594,
+                  "confidence": 80.4
+                }
+              ]
+            },
+            {
+              "page": 8,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 3551,
+              "text_object_sha256": "1669977392d0f3718ff1edd7f9849f0ca03475bbe675de06730ebf8e169b4a72",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 3936,
+                  "confidence": 73.4
+                }
+              ]
+            },
+            {
+              "page": 9,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 9404,
+              "text_object_sha256": "4e6a5d1063f12fecf7a4235a01519d7a4baebf91921c749fd14fa045158a562d",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6806,
+                  "confidence": 84.2
+                }
+              ]
+            },
+            {
+              "page": 10,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 11386,
+              "text_object_sha256": "0c69a1e045092a741caf3b6417a89f19f8fa05f1ae61de7dd82937e52fca7e9a",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 7011,
+                  "confidence": 83.3
+                }
+              ]
+            },
+            {
+              "page": 11,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 13149,
+              "text_object_sha256": "f9e77565e339100d82f1ec83f7e66f099e12bfd774492c8133d91e34cb8353d0",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 7038,
+                  "confidence": 77.8
+                }
+              ]
+            },
+            {
+              "page": 12,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 8758,
+              "text_object_sha256": "92b98cd798dd523d1d42bc4d3d4b1c41b53023d2ff0205d14d2451bc6e068f88",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6641,
+                  "confidence": 82.9
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "source_requests": [
+        {
+          "url": "https://www.malleco7.cl/robots.txt",
+          "status": 200,
+          "file": "robots-b9da6f5b3cb6.txt",
+          "sha256": "bf86ad9f31d7282f7fbc080eb4ffe2e7f18a45c2a8c43a1d5b8d4265361f28ff"
+        },
+        {
+          "url": "https://www.malleco7.cl/edicion-jueves-08-de-octubre-de-2026/",
+          "final_url": "https://www.malleco7.cl/edicion-jueves-08-de-octubre-de-2026/",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 225504,
+          "sha256": "5947cc0275e18ee5767186b44cc8f04dd75b6f77e743ca9bbf97a1e613fbe5fb"
+        },
+        {
+          "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1484.pdf",
+          "final_url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1484.pdf",
+          "status": 200,
+          "mime": "application/pdf",
+          "bytes": 4247332,
+          "sha256": "a4476cc2012be1fbcdef6684191fcfa89001bf3c1c9860b0445cd77089fd408f"
+        }
+      ],
+      "unprocessed_or_failed": [],
+      "reading_hits": [],
+      "persistence_check": {
+        "snapshot_restored": true,
+        "counts_preserved": true,
+        "review_objects_preserved": 0,
+        "archive_original_bytes": 4637586,
+        "sqlite_sha256": "32606e2c177ee3d78e35fcdcf1460dae5815f31a2ca2c61cc0038da7d2539ab3"
+      },
+      "paid_provider_calls": 0,
+      "published": 0,
+      "coverage_complete": false
+    },
+    {
+      "reference": "malleco7-06-oct",
+      "url": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+      "documents": [
+        {
+          "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1483.pdf",
+          "sha256": "8b75702c7b7cbbc661ae9e0e3477bb7873244c3c7baa0909673e25c3ef897ecc",
+          "status": "downloaded",
+          "reason": null,
+          "bytes": 4887066,
+          "page_count": 12,
+          "pages": [
+            {
+              "page": 1,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 1806,
+              "text_object_sha256": "540e5fc896639bf977c8512f7363be952610d7a6ed1f1f0f4ba403c540c1ac3e",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 1037,
+                  "confidence": 57.3
+                }
+              ]
+            },
+            {
+              "page": 2,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 10229,
+              "text_object_sha256": "03ff1a0c7c5221f97c7efa3c8f6d468bf5f447ef108c3166d841f9f8ad574066",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6505,
+                  "confidence": 80.4
+                }
+              ]
+            },
+            {
+              "page": 3,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 9113,
+              "text_object_sha256": "4b3a21627d18255df908a9d5b0d64dcfd2205ef50f29efc541edf839c4b0984e",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6513,
+                  "confidence": 80.4
+                }
+              ]
+            },
+            {
+              "page": 4,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 11771,
+              "text_object_sha256": "78f89f2ca3bf17cb40b13a270f56cc807e60da616da6f18ca85d3988c13ad43a",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 9202,
+                  "confidence": 90.9
+                }
+              ]
+            },
+            {
+              "page": 5,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7139,
+              "text_object_sha256": "ce2b29080852db43d7d92d5d9ff408bc75cdbff5383e81ca34614bfe519bfac0",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5382,
+                  "confidence": 81.1
+                }
+              ]
+            },
+            {
+              "page": 6,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 5230,
+              "text_object_sha256": "fdf2026791694cfa47b966b816bdb8b877326f2f0796379881a2cfb5b4f66dc3",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 5361,
+                  "confidence": 83
+                }
+              ]
+            },
+            {
+              "page": 7,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 8787,
+              "text_object_sha256": "d327bce8d777f19a773376c45132455efff334aa238d0d9a179e5e65d207a91d",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6431,
+                  "confidence": 84.9
+                }
+              ]
+            },
+            {
+              "page": 8,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7645,
+              "text_object_sha256": "717901e3c7d31f9c3e3b304eb1326faf5fd7aa91c68ecb986038553c5ae144d9",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6578,
+                  "confidence": 82.6
+                }
+              ]
+            },
+            {
+              "page": 9,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 11312,
+              "text_object_sha256": "af72700398d0fb0d593283bb5a81b550bacd7ad43914ba48706282148ba8da52",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6888,
+                  "confidence": 81
+                }
+              ]
+            },
+            {
+              "page": 10,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 8583,
+              "text_object_sha256": "afa7de65fc042ff550c4a9b542d9d26770eee14f66afb393f741a4ebe7e09d2c",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6615,
+                  "confidence": 83.4
+                }
+              ]
+            },
+            {
+              "page": 11,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 12183,
+              "text_object_sha256": "02008cd5300bfe9cfd4e60d5f74281fd045da8e12e13845c11f78069e95ddb72",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 7141,
+                  "confidence": 85.4
+                }
+              ]
+            },
+            {
+              "page": 12,
+              "status": "done",
+              "engine": "pdftotext-local",
+              "language": null,
+              "confidence": null,
+              "characters": 7829,
+              "text_object_sha256": "6386857516b496e421720ee6837bf41b2eaf661d57806173c459b4c659008d1a",
+              "alternate_readings": [
+                {
+                  "engine": "tesseract-local",
+                  "characters": 6037,
+                  "confidence": 78.5
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "source_requests": [
+        {
+          "url": "https://www.malleco7.cl/robots.txt",
+          "status": 200,
+          "file": "robots-b9da6f5b3cb6.txt",
+          "sha256": "bf86ad9f31d7282f7fbc080eb4ffe2e7f18a45c2a8c43a1d5b8d4265361f28ff"
+        },
+        {
+          "url": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+          "final_url": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 225504,
+          "sha256": "85a964b6672d39e9bd284dbb4ca461723e488ad010999395482eeaf520476edb"
+        },
+        {
+          "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1483.pdf",
+          "final_url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1483.pdf",
+          "status": 200,
+          "mime": "application/pdf",
+          "bytes": 4887066,
+          "sha256": "8b75702c7b7cbbc661ae9e0e3477bb7873244c3c7baa0909673e25c3ef897ecc"
+        }
+      ],
+      "unprocessed_or_failed": [],
+      "reading_hits": [
+        {
+          "document_url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1483.pdf",
+          "source_url": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+          "document_sha256": "8b75702c7b7cbbc661ae9e0e3477bb7873244c3c7baa0909673e25c3ef897ecc",
+          "page": 3,
+          "reading": "primary",
+          "text_object_sha256": "4b3a21627d18255df908a9d5b0d64dcfd2205ef50f29efc541edf839c4b0984e",
+          "excerpt": " energía en Malleco se traduzca en un           posibilidades de que baje”, pero\n beneﬁcio directo para los usuarios             explicó que para ello se requiere\n locales, particularmente en sus cuentas        avanzar en inversiones y proyectos de\n de electricidad.                               transmisión que permitan transportar                                                                          Fotografía cedida\n    Durante una visita técnica a las obras,     la energía generada. “Para eso tenemos",
+          "review_required": true,
+          "verified": false
+        },
+        {
+          "document_url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1483.pdf",
+          "source_url": "https://www.malleco7.cl/edicion-martes-06-de-octubre-de-2026/",
+          "document_sha256": "8b75702c7b7cbbc661ae9e0e3477bb7873244c3c7baa0909673e25c3ef897ecc",
+          "page": 3,
+          "reading": "alternate_readings:0",
+          "text_object_sha256": "4b3a21627d18255df908a9d5b0d64dcfd2205ef50f29efc541edf839c4b0984e",
+          "excerpt": "energía en Malleco se traduzca en un posibilidades de que baje”, pero L i q 2\nbeneficio directo para los usuarios explicó que para ello se requiere | ime pelt e 2 = =\nlocales, particularmente en sus cuentas avanzar en inversiones y proyectos de [== 3 S = = aks OS\nde electricidad. transmisión que permitan transportar A A\nDurante una visita técnica a las obras, _ la energía generada. “Para eso tenemos samme E",
+          "review_required": true,
+          "verified": false
+        }
+      ],
+      "persistence_check": {
+        "snapshot_restored": true,
+        "counts_preserved": true,
+        "review_objects_preserved": 0,
+        "archive_original_bytes": 5297847,
+        "sqlite_sha256": "3c4365be93d65b2dea1f32e0420f98e992550876024029d086ec19cd3024ec5c"
+      },
+      "paid_provider_calls": 0,
+      "published": 0,
+      "coverage_complete": false
+    }
+  ],
+  "tally": [
+    {
+      "reference": "lumaco",
+      "documents": 6,
+      "pdfPages": 18,
+      "allPagesRead": true,
+      "persistenceRestored": true,
+      "readingHits": 28,
+      "unprocessed": 0
+    },
+    {
+      "reference": "malleco7-13-oct",
+      "documents": 1,
+      "pdfPages": 12,
+      "allPagesRead": true,
+      "persistenceRestored": true,
+      "readingHits": 0,
+      "unprocessed": 0
+    },
+    {
+      "reference": "malleco7-08-oct",
+      "documents": 1,
+      "pdfPages": 12,
+      "allPagesRead": true,
+      "persistenceRestored": true,
+      "readingHits": 0,
+      "unprocessed": 0
+    },
+    {
+      "reference": "malleco7-06-oct",
+      "documents": 1,
+      "pdfPages": 12,
+      "allPagesRead": true,
+      "persistenceRestored": true,
+      "readingHits": 2,
+      "unprocessed": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12137856218,
+      "name": "hard-document-sweep",
+      "size_in_bytes": 32600282,
+      "url": "https://api.github.com/repos/mrvvergara-afk/Trabajo-Cerca-/actions/artifacts/12137856218",
+      "archive_download_url": "https://api.github.com/repos/mrvvergara-afk/Trabajo-Cerca-/actions/artifacts/12137856218/zip",
+      "expired": false,
+      "created_at": "2026-10-18T13:03:37Z",
+      "expires_at": "2026-10-25T13:03:35Z",
+      "updated_at": "2026-10-18T13:03:37Z",
+      "digest": "sha256:ac35b31f22fc236647eee84a0c74abf3ac24cc3270735a26a5f9a66d0e404854",
+      "workflow_run": {
+        "id": 39129527420,
+        "repository_id": 1411752840,
+        "head_repository_id": 1411752840,
+        "head_branch": "repair/mulchen-captura-2026-10-17",
+        "head_sha": "dd1435802a512e2f0d642c1830e23758c5862560"
+      }
+    }
+  ]
+}

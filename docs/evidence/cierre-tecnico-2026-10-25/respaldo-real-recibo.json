@@ -1,0 +1,13 @@
+{
+  "backupBytes": 22578220,
+  "backupSha256": "dbc7f605ac8074c073855377026c46f3a77b91b1405789ed61fca767c68f7186",
+  "matchesOwnerLocalRestoreReceipt": true,
+  "ownerPerformedAt": "2026-10-22T01:18:16.841Z",
+  "tables": 68,
+  "records": 4666,
+  "comparedElements": 4666,
+  "mismatches": 0,
+  "platformRestoreTested": false,
+  "credentialsOrDecryptedDataReceived": false,
+  "note": "Real owner-uploaded encrypted backup and matching local recovery receipt. Not a fresh SDK platform restore."
+}

@@ -1,0 +1,120 @@
+{
+  "schema": "trabajo-cerca.full-period-id-comparison.v1",
+  "before_checked_at": "2026-10-20T01:56:13.901318+00:00",
+  "after_checked_at": "2026-10-20T10:06:29.992680+00:00",
+  "added": [
+    {
+      "id": "688c0421-4ed4-46e5-9592-694a2669fad7",
+      "kind": "job_offer",
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
+      "company": "Comercial Fashion´s park s.a.",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T10:05:34.195Z",
+      "url": "https://www.laborum.cl/empleos/cajero-a-asistente-integral--temporada-navidad--angol-comercial-fashions-park-s.a.-1118483484.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T00:00:00.000Z",
+      "sourceValidThrough": "2027-02-13T00:00:00.000Z",
+      "expiresAt": "2027-02-13T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T09:37:55.011953+00:00",
+      "externalVerifiedAt": "2026-10-20T09:37:55.011953+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+      "kind": "job_offer",
+      "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria (Terreno) - Angol",
+      "company": "SMU 1",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "13-10-2026",
+      "createdAt": "2026-10-20T10:05:34.195Z",
+      "url": "https://www.laborum.cl/empleos/auditora-relatora-de-calidad-e-inocuidad-alimentaria-terreno-angol-smu-1-1118452584.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-13T00:00:00.000Z",
+      "sourceValidThrough": "2027-02-10T00:00:00.000Z",
+      "expiresAt": "2027-02-10T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T09:37:55.097260+00:00",
+      "externalVerifiedAt": "2026-10-20T09:37:55.097260+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+      "kind": "job_offer",
+      "title": "Cajero(a) con experiencia Unimarc Angol",
+      "company": "Supermercados Unimarc",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "06-10-2026",
+      "createdAt": "2026-10-20T10:05:34.195Z",
+      "url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-angol-supermercados-unimarc-1118469523.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-06T00:00:00.000Z",
+      "sourceValidThrough": "2027-02-03T00:00:00.000Z",
+      "expiresAt": "2027-02-03T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T09:37:54.926892+00:00",
+      "externalVerifiedAt": "2026-10-20T09:37:54.926892+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "free-149bb65066307aa45733b5f251ca3055f042eeeb",
+      "kind": "job_offer",
+      "title": "VVendedor en Terreno - Angol Victoria Traiguén",
+      "company": "Manpowergroup",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "19 oct 2026",
+      "createdAt": "2026-10-20T07:05:28.386Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-19T19:04:05.000Z",
+      "sourceValidThrough": "2027-01-02T19:04:05.000Z",
+      "expiresAt": "2027-01-02T19:04:05.000Z",
+      "externalVerifiedAt": "2026-10-20T07:05:28.386Z",
+      "revalidationDue": false,
+      "active": true
+    }
+  ],
+  "removed": [
+    {
+      "id": "9fc7362f-fb6e-41cf-ae38-68f016c257c5",
+      "kind": "job_offer",
+      "title": "Inspector de Vibraciones",
+      "company": "CMPC",
+      "source": "CMPC · portal de empleo",
+      "workLocation": "Nacimiento · Nacimiento.",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "date": "06-10-2026",
+      "createdAt": "2026-10-19T23:50:35.434Z",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18943?c=cmpc",
+      "verified": true,
+      "review": false
+    }
+  ],
+  "changed_shared": [],
+  "removal_cause_confirmed": false,
+  "expiry_inferred": false,
+  "note": "La ausencia en el feed no acredita por sí sola que una vacante haya cerrado. Comparar con el plazo original y la decisión guardada antes de atribuir la baja."
+}

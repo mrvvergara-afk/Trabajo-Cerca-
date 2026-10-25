@@ -1,0 +1,40 @@
+{
+  "base": "4ae11747107347812269e56cc10ac562cf10860d",
+  "code_commit": "0613092a3ef32dc3b77d9c018706da9219168b80",
+  "run": 39800053653,
+  "python_tests": 243,
+  "node_tests": 341,
+  "deployed": false,
+  "production_writes": 0,
+  "paid_services_added": 0,
+  "verdict": "NO_LISTA",
+  "sdk_live_validation_of_proposal": false,
+  "scope": "commercial_P0_and_isolated_tests",
+  "known_launch_blockers": [
+    "security_headers",
+    "two_invalid_PNG_icons",
+    "full_legal_identification",
+    "full_platform_restore_not_certified"
+  ],
+  "commercial_limits": {
+    "page_size": 100,
+    "page_budget": 200,
+    "projected_byte_budget": 8388608,
+    "cache_seconds": 30,
+    "max_visible": 2,
+    "distributed_cache": false
+  },
+  "promotion": {
+    "official_launch_at": null,
+    "founder_slots": 20,
+    "founder_days": 30,
+    "founder_window_days": 30,
+    "standard_days": 14,
+    "stackable": false,
+    "automatic_billing": false
+  },
+  "artifact": {
+    "id": 12434792976,
+    "sha256": "7040b0b775737d1a9d59605b15db00b0991d0aaa08206cc3ac7c73cdedf59641"
+  }
+}

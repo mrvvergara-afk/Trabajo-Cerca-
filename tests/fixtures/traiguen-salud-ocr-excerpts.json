@@ -1,0 +1,98 @@
+[
+  {
+    "alternate_readings": [
+      {
+        "engine": "tesseract-local",
+        "language": "spa+eng",
+        "mean_confidence": 94.0,
+        "parser": "tesseract-tsv-literal-v2",
+        "segmentation": 4,
+        "text": "Inicio Recepción de Antecedentes 01 de Octubre de 2026 E\nCierre de periodo de recepción de postulaciones | 02 de Noviembre de 2026",
+        "textOriginalLength": 2369,
+        "textTruncated": false
+      }
+    ],
+    "engine": "tesseract-local",
+    "language": "spa+eng",
+    "mean_confidence": 77.8,
+    "parser": "tesseract-tsv-literal-v2",
+    "segmentation": 6,
+    "text": "",
+    "textOriginalLength": 1697,
+    "textTruncated": false,
+    "page": 2,
+    "text_object_sha256": "43b400a9166c6b9cff8f7998e05d3bc0698a036edf7765486d755d4372942e00"
+  },
+  {
+    "engine": "tesseract-local",
+    "language": "spa+eng",
+    "mean_confidence": 91.7,
+    "parser": "tesseract-tsv-literal-v2",
+    "segmentation": 6,
+    "text": "BASES GENERALES Y ESPECÍFICAS PARA PROVEER CARGO DE\nQUÍMICO FARMACÉUTICO (A) CATEGORIA A EN DEPARTAMENTO DE\nLa Municipalidad de Traiguén llama a concurso Público de antecedentes",
+    "textOriginalLength": 1735,
+    "textTruncated": false,
+    "page": 5,
+    "text_object_sha256": "b442b415afae3ebcccb58c4f452b766fa3c6190e5b2d9d073352a4691300f106"
+  },
+  {
+    "engine": "tesseract-local",
+    "language": "spa+eng",
+    "mean_confidence": 94.7,
+    "parser": "tesseract-tsv-literal-v2",
+    "segmentation": 6,
+    "text": "RECEPCION DE ANTECEDENTES:\nEl sobre que envié cada postulante deberá ser entregado en la Oficina\nde Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de lunes a viernes de 09:30 a 14:00 hrs. El sobre deberá indicar",
+    "textOriginalLength": 2630,
+    "textTruncated": false,
+    "page": 11,
+    "text_object_sha256": "1bf59104316007478e60a2785bc9d0f78fe04a41c807e1f777d008f223367516"
+  },
+  {
+    "engine": "tesseract-local",
+    "language": "spa+eng",
+    "mean_confidence": 92.1,
+    "parser": "tesseract-tsv-literal-v2",
+    "segmentation": 6,
+    "text": "La Municipalidad de Traiguén llama a concurso Público de antecedentes",
+    "textOriginalLength": 1924,
+    "textTruncated": false,
+    "page": 19,
+    "text_object_sha256": "595bba8acfe7705a04d0aaffc21141614c96f9f9c6eaa0030e42f01b020f06db"
+  },
+  {
+    "engine": "tesseract-local",
+    "language": "spa+eng",
+    "mean_confidence": 94.4,
+    "parser": "tesseract-tsv-literal-v2",
+    "segmentation": 6,
+    "text": "1. Perfil de Cargo: Ingeniero(a) en Prevención de Riesgos",
+    "textOriginalLength": 2493,
+    "textTruncated": false,
+    "page": 20,
+    "text_object_sha256": "d56fcaf761fbb982edefcd95310b0010469d8cee681699b5fee1a9415104539b"
+  },
+  {
+    "engine": "tesseract-local",
+    "language": "spa+eng",
+    "mean_confidence": 92.2,
+    "parser": "tesseract-tsv-literal-v2",
+    "segmentation": 6,
+    "text": "2. Perfil de Cargo: Nutricionista",
+    "textOriginalLength": 2455,
+    "textTruncated": false,
+    "page": 22,
+    "text_object_sha256": "3c03fd42cb8cb8f680e2e501253886ea0977a2269b9fffbd8657f00cf25fe861"
+  },
+  {
+    "engine": "tesseract-local",
+    "language": "spa+eng",
+    "mean_confidence": 95.1,
+    "parser": "tesseract-tsv-literal-v2",
+    "segmentation": 6,
+    "text": "RECEPCION DE ANTECEDENTES:\nEl sobre que envié cada postulante deberá ser entregado en la Oficina\nA de Partes del Departamento de Salud de Traiguén, ubicado en Balmaceda\n#424, de Lunes a Viernes en horarios de 09:00 a 14:00 hrs. El sobre",
+    "textOriginalLength": 2713,
+    "textTruncated": false,
+    "page": 24,
+    "text_object_sha256": "c556ec9a898c8672be77f71b3c108e8e485e791b2ba2f4322608beeb028a9aa3"
+  }
+]

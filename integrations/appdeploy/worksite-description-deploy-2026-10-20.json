@@ -1,0 +1,42 @@
+{
+  "baseline_version": "1792495556728",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_name": "Trabajo Cerca",
+  "app_type": "frontend+backend",
+  "model": "gpt-6",
+  "intent": "Usar lugar real explícito del mismo aviso y reconocer micrositios del mismo empleo sin duplicarlo",
+  "initiator": "agent",
+  "type": "fix",
+  "files": [
+    {
+      "filename": "backend/public-source-verifier.ts",
+      "diffs": [
+        {
+          "from": "  work_location_verified?:boolean;",
+          "to": "  work_location_verified?:boolean;\n  work_location_evidence?:{method:string;literal:string};"
+        },
+        {
+          "from": "function worksite(job:Data) {\n  const locations = Array.isArray(job.jobLocation) ? job.jobLocation : [job.jobLocation];\n  const found = new Set<string>();\n  if (!locations.length) return null;\n  for (const location of locations) {\n    if (!sourceObject(location) || !sourceObject(location.address)) return null;\n    const address = location.address;\n    const country = sourceObject(address.addressCountry) ? address.addressCountry.name || address.addressCountry.identifier : address.addressCountry;\n    if (!country || !['cl','chile'].includes(sourceFold(country).trim())) return null;\n    const text = sourceFold(address.addressLocality);\n    const places = SOURCE_WORK_PLACES.filter(place => new RegExp('\\\\b'+sourceFold(place)+'\\\\b').test(text));\n    if (places.length===2 && places.includes('Mininco') && places.includes('Collipulli')) places.splice(places.indexOf('Collipulli'),1);\n    if (!places.length) return null;\n    for (const place of places) found.add(place);\n  }\n  return found.size===1 ? [...found][0] : null;\n}\n",
+          "to": "function descriptionWorksite(value:unknown) {\n  const text=typeof value==='string' ? sourceDecode(value.replace(/<br\\s*\\/?>|<\\/p>/gi,'\\n').replace(/<[^>]*>/g,' ')) : '';\n  const scopes=[...text.matchAll(/(?:(?:lugar (?:real )?de trabajo|ubicaci[oó]n de (?:la )?faena)\\s*:\\s*|(?:para (?:un |el )?proyecto|servicio de atenci[oó]n domiciliaria|realizar (?:su |la )?pr[aá]ctica presencial|para trabajar|desempe[nñ]arse(?: de forma presencial)?)\\s+en\\s+)([^\\n.;]{2,140})/gi)]\n    .filter(match=>!/^(?:equipo|conjunto|colaboraci[oó]n|turnos|jornadas)\\b/i.test(match[1]));\n  if (!scopes.length) return {observed:false,commune:null,literal:''};\n  const places=new Set<string>();\n  for (const match of scopes) {\n    const scope=sourceFold(match[1]);\n    const found=SOURCE_WORK_PLACES.filter(place=>new RegExp('\\\\b'+sourceFold(place)+'\\\\b').test(scope));\n    if (!found.length) return {observed:true,commune:null,literal:match[0]};\n    if (found.length===2 && found.includes('Mininco') && found.includes('Collipulli')) found.splice(found.indexOf('Collipulli'),1);\n    for (const place of found) places.add(place);\n  }\n  return {observed:true,commune:places.size===1 ? [...places][0] : null,literal:scopes.map(match=>match[0]).join(' | ')};\n}\n\nfunction worksite(job:Data) {\n  const locations = Array.isArray(job.jobLocation) ? job.jobLocation : [job.jobLocation];\n  const found = new Set<string>();\n  if (!locations.length) return null;\n  for (const location of locations) {\n    if (!sourceObject(location) || !sourceObject(location.address)) return null;\n    const address = location.address;\n    const country = sourceObject(address.addressCountry) ? address.addressCountry.name || address.addressCountry.identifier : address.addressCountry;\n    if (!country || !['cl','chile'].includes(sourceFold(country).trim())) return null;\n  }\n  // A portal city is not necessarily the worksite. Only an explicit workplace\n  // statement in this matching job's own description can replace that city.\n  const explicit=descriptionWorksite(job.description);\n  if (locations.length===1 && explicit.observed) return explicit.commune;\n  for (const location of locations) {\n    const address=(location as Data).address as Data;\n    const text = sourceFold(address.addressLocality);\n    const places = SOURCE_WORK_PLACES.filter(place => new RegExp('\\\\b'+sourceFold(place)+'\\\\b').test(text));\n    if (places.length===2 && places.includes('Mininco') && places.includes('Collipulli')) places.splice(places.indexOf('Collipulli'),1);\n    if (!places.length) return null;\n    for (const place of places) found.add(place);\n  }\n  return found.size===1 ? [...found][0] : null;\n}\n"
+        },
+        {
+          "from": "  const base = { title,company:employer,work_commune:place,work_location_verified:true,url:finalUrl,source:adapter.name };",
+          "to": "  const explicitPlace=descriptionWorksite(job.description);\n  const base = { title,company:employer,work_commune:place,work_location_verified:true,url:finalUrl,source:adapter.name,\n    ...(explicitPlace.observed ? {work_location_evidence:{method:'explicit_worksite_in_own_job_description',literal:explicitPlace.literal}} : {}) };"
+        }
+      ]
+    },
+    {
+      "filename": "backend/public-source-adapters.ts",
+      "diffs": [
+        {
+          "from": "    'chiletrabajos.cl':['Chiletrabajos','chiletrabajos'],",
+          "to": "    'chiletrabajos.cl':['Chiletrabajos','chiletrabajos'], 'portal.chiletrabajos.cl':['Chiletrabajos','chiletrabajos'],"
+        },
+        {
+          "from": "  } else if (host === 'chiletrabajos.cl' && /^\\/trabajo\\/[^/]+\\/?$/.test(url.pathname)) {",
+          "to": "  } else if (host === 'portal.chiletrabajos.cl' && (match=url.pathname.match(/^\\/empresa\\/[^/]+\\/trabajo\\/([^/]+)\\/?$/))) {\n    name = 'Chiletrabajos'; identityUrl = 'https://www.chiletrabajos.cl/trabajo/'+match[1];\n  } else if (host === 'chiletrabajos.cl' && /^\\/trabajo\\/[^/]+\\/?$/.test(url.pathname)) {"
+        }
+      ]
+    }
+  ]
+}

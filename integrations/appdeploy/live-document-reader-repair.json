@@ -1,0 +1,90 @@
+{
+  "schema": "trabajo-cerca.appdeploy-replay.v1",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "updates": [
+    {
+      "baseline_version": "1792328322207",
+      "applied_version": "1792409360435",
+      "files": [
+        {
+          "filename": "backend/free-public-sources.ts",
+          "diffs": [
+            {
+              "from": "type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };\ntype ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;\n  localPosition?:number; portalPosition?:number;\n  pending:PublicCandidate[]; priorityCandidates?:PublicCandidate[]; reviewLane?:number;\n  rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;\n  checkedAt?:string; runId?:string; recheckPolicy?:string; summary?:Record<string,unknown> };\n",
+              "to": "type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };\ntype ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;\n  localPosition?:number; portalPosition?:number;\n  renderPending?:PublicCandidate[];\n  pending:PublicCandidate[]; priorityCandidates?:PublicCandidate[]; reviewLane?:number;\n  rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;\n  checkedAt?:string; runId?:string; recheckPolicy?:string; summary?:Record<string,unknown> };\n"
+            },
+            {
+              "from": "    const alt = [...anchor[4].matchAll(/\\balt=[\"']([^\"']+)[\"']/gi)].map(match => match[1]).join(' ');\n    const title = publicText(anchor[4]+' '+alt);\n    const adapter = publicSourceAdapter(url);\n    if (publicDocumentUrl(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group &&\n        /\\bbases?\\b|decreto|concurso|convocatoria|descargar\\s+pdf/i.test(title)) candidates.set(url,title.slice(0,200));\n    if (adapter && (adapter.family!=='local' || /ofertas? (?:laboral|de (?:empleo|trabajo))|vacantes?|se (?:busca|necesita|requiere)|postul|concurso.{0,25}(?:p[uú]blico|cargo)|recluta/i.test(title+' '+new URL(url).pathname.replace(/[-_]/g,' ')))) candidates.set(url,title.slice(0,200));\n",
+              "to": "    const alt = [...anchor[4].matchAll(/\\balt=[\"']([^\"']+)[\"']/gi)].map(match => match[1]).join(' ');\n    const title = publicText(anchor[4]+' '+alt);\n    const adapter = publicSourceAdapter(url);\n    if (publicPublisher(origin)?.group==='malleco7.cl' && new URL(origin).pathname==='/ediciones-digitales-malleco7/' &&\n        adapter?.family==='local' && /^\\/edicion-[a-z0-9-]+\\/$/.test(new URL(url).pathname) && /^Edici[oó]n\\s/i.test(title)) {\n      candidates.set(url,title.slice(0,200));\n    }\n    if (publicDocumentUrl(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group &&\n        /\\bbases?\\b|decreto|concurso|convocatoria|descargar\\s+pdf/i.test(title)) candidates.set(url,title.slice(0,200));\n    if (adapter && (adapter.family!=='local' || /ofertas? (?:laboral|de (?:empleo|trabajo))|vacantes?|se (?:busca|necesita|requiere)|postul|concurso.{0,25}(?:p[uú]blico|cargo)|recluta/i.test(title+' '+new URL(url).pathname.replace(/[-_]/g,' ')))) candidates.set(url,title.slice(0,200));\n"
+            },
+            {
+              "from": "  return { candidates:[...candidates].slice(0,40).map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };\n}\n\nexport function publicDocumentWork(current?:ScanState | null) {\n  const items=(current?.pending || []).flatMap(item=>{\n    const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);\n",
+              "to": "  return { candidates:[...candidates].slice(0,40).map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };\n}\n\nexport function publicRenderRequired(raw:string) {\n  const text=publicText(raw.replace(/<head\\b[^>]*>[\\s\\S]*?<\\/head>/gi,''));\n  return /<script\\b/i.test(raw) && text.length<160 &&\n    (/\\bloading\\b|cargando|habilit[ae].{0,20}javascript|enable.{0,20}javascript/i.test(text) ||\n     /<(?:app-root|nuxt)\\b|<(?:div|main)\\b[^>]*\\bid=[\"'](?:app|root|__next|__nuxt)[\"']|<img\\b[^>]*alt=[\"']loading[\"']/i.test(raw));\n}\n\nexport function publicDocumentWork(current?:ScanState | null) {\n  const items=(current?.pending || []).flatMap(item=>{\n    const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);\n"
+            },
+            {
+              "from": "    return [{ url,source:item.source,publisher_page:publisherPage,\n      kind:publicDocumentUrl(url)?'document':'local_page' }];\n  });\n  return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,\n    items:items.slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };\n}\n\nexport function pendingCandidateIndex(items:PublicCandidate[], lane=0) {\n",
+              "to": "    return [{ url,source:item.source,publisher_page:publisherPage,\n      kind:publicDocumentUrl(url)?'document':'local_page' }];\n  });\n  const rendered=(current?.renderPending || []).flatMap(item=>{\n    const url=safePublicUrl(item.url);\n    return url && ['munilossauces.cl','nacimiento.cl'].includes(publicPublisher(url)?.group || '')\n      ? [{ url,source:item.source,publisher_page:url,kind:'rendered_page' }] : [];\n  });\n  return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,\n    items:[...rendered,...items].slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };\n}\n\nexport function pendingCandidateIndex(items:PublicCandidate[], lane=0) {\n"
+            },
+            {
+              "from": "  const [lease] = await db.tx.add('free_public_run_leases',[{ id:String(Math.floor(now/900000)),requestId,startedAt:new Date(now).toISOString() }]);\n  if (!lease) return { deferred:true,reason:'public_scan_cooldown',providerCalls:0,nextAllowedAt:new Date((Math.floor(now/900000)+1)*900000).toISOString() };\n  const state:ScanState = current ? structuredClone(current) : { position:0,queues:{},seen:{},pending:[] };\n  const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));\n  const documentManagedUrls=new Set<string>();\n  // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.\n",
+              "to": "  const [lease] = await db.tx.add('free_public_run_leases',[{ id:String(Math.floor(now/900000)),requestId,startedAt:new Date(now).toISOString() }]);\n  if (!lease) return { deferred:true,reason:'public_scan_cooldown',providerCalls:0,nextAllowedAt:new Date((Math.floor(now/900000)+1)*900000).toISOString() };\n  const state:ScanState = current ? structuredClone(current) : { position:0,queues:{},seen:{},pending:[] };\n  state.renderPending=state.renderPending || [];\n  const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));\n  const documentManagedUrls=new Set<string>();\n  // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.\n"
+            },
+            {
+              "from": "      error:page.error || null,coverageComplete:false,candidates:0 };\n    if (page.status===200 && !page.error) {\n      const links = publicPageLinks(page.raw,page.url);\n      if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });\n      audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));\n      for (const item of links.candidates) if (!seenPending.has(item.url)) {\n",
+              "to": "      error:page.error || null,coverageComplete:false,candidates:0 };\n    if (page.status===200 && !page.error) {\n      const links = publicPageLinks(page.raw,page.url);\n      if (publicRenderRequired(page.raw)) {\n        audit.error='source_render_required';audit.renderRequired=true;\n        if (['munilossauces.cl','nacimiento.cl'].includes(publicPublisher(page.url)?.group || '') &&\n            !state.renderPending.some(item=>item.url===page.url) && state.renderPending.length<12) {\n          state.renderPending.push({ url:page.url,source:source.name,publisherPage:page.url });\n        }\n      }\n      if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });\n      audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));\n      for (const item of links.candidates) if (!seenPending.has(item.url)) {\n"
+            }
+          ]
+        },
+        {
+          "filename": "backend/index.ts",
+          "diffs": [
+            {
+              "from": "  { key:'malleco7', name:'Malleco 7', url:'https://www.malleco7.cl/', territory:'Malleco' },",
+              "to": "  { key:'malleco7', name:'Malleco 7', url:'https://www.malleco7.cl/', territory:'Malleco' },\n  { key:'malleco7-ediciones', name:'Malleco 7 · ediciones digitales', url:'https://www.malleco7.cl/ediciones-digitales-malleco7/', territory:'Malleco' },"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "baseline_version": "1792409360435",
+      "applied_version": "1792411319391",
+      "files": [
+        {
+          "filename": "backend/public-source-adapters.ts",
+          "diffs": [
+            {
+              "from": "    'bne.gob.cl':['Bolsa Nacional de Empleo','bne'], 'bne.cl':['Bolsa Nacional de Empleo','bne'],\n    'cmpc.trabajando.cl':['CMPC · portal de empleo','cmpc_jobs'],\n    'jobs.arauco.com':['Arauco · portal de empleo','arauco_jobs'],\n  };\n",
+              "to": "    'bne.gob.cl':['Bolsa Nacional de Empleo','bne'], 'bne.cl':['Bolsa Nacional de Empleo','bne'],\n    'cmpc.trabajando.cl':['CMPC · portal de empleo','cmpc_jobs'],\n    'cmpc.csod.com':['CMPC · portal de empleo','cmpc_jobs'],\n    'jobs.arauco.com':['Arauco · portal de empleo','arauco_jobs'],\n  };\n"
+            }
+          ]
+        },
+        {
+          "filename": "backend/free-public-sources.ts",
+          "diffs": [
+            {
+              "from": "  const text=publicText(raw.replace(/<head\\b[^>]*>[\\s\\S]*?<\\/head>/gi,''));\n  return /<script\\b/i.test(raw) && text.length<160 &&\n    (/\\bloading\\b|cargando|habilit[ae].{0,20}javascript|enable.{0,20}javascript/i.test(text) ||\n     /<(?:app-root|nuxt)\\b|<(?:div|main)\\b[^>]*\\bid=[\"'](?:app|root|__next|__nuxt)[\"']|<img\\b[^>]*alt=[\"']loading[\"']/i.test(raw));\n}\n",
+              "to": "  const text=publicText(raw.replace(/<head\\b[^>]*>[\\s\\S]*?<\\/head>/gi,''));\n  return /<script\\b/i.test(raw) && text.length<160 &&\n    (text.length===0 || /\\bloading\\b|cargando|habilit[ae].{0,20}javascript|enable.{0,20}javascript/i.test(text) ||\n     /<(?:app-root|nuxt)\\b|<(?:div|main)\\b[^>]*\\bid=[\"'](?:app|root|__next|__nuxt)[\"']|<img\\b[^>]*alt=[\"']loading[\"']/i.test(raw));\n}\n"
+            }
+          ]
+        },
+        {
+          "filename": "backend/index.ts",
+          "diffs": [
+            {
+              "from": "  { key:'cmpc-empleo', name:'CMPC · portal de empleo', url:'https://cmpc.trabajando.cl/', territory:'zona forestal' },",
+              "to": "  { key:'cmpc-empleo-csod', name:'CMPC · portal de empleo', url:'https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc', territory:'zona forestal' },"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tests_reconciled": true,
+  "existing_tests_format": "tests/tests.json",
+  "new_endpoints": 0,
+  "credentials_changed": false,
+  "historical_records_deleted": false,
+  "cron_count_before": 6,
+  "cron_count_after": 6
+}

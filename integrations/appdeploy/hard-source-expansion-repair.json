@@ -1,0 +1,54 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "baseline_version": "1792326173643",
+  "applied_version": "1792328322207",
+  "applied": true,
+  "branch": "repair/mulchen-captura-2026-10-17",
+  "source_commit": "dd1435802a512e2f0d642c1830e23758c5862560",
+  "tests": {
+    "python": 187,
+    "node_files": 18
+  },
+  "ui_tests_reconciled": true,
+  "changed_endpoints": [],
+  "cron_changes": false,
+  "credential_changes": false,
+  "history_deletions": false,
+  "paid_provider_calls": 0,
+  "new_offers_published": 0,
+  "files": [
+    {
+      "filename": "backend/free-public-sources.ts",
+      "diffs": [
+        {
+          "from": "const SEEDS = 'free_public_seed_state';\nconst hash = (value:string) => createHash('sha256').update(value).digest('hex');\n\nexport function publicPageLinks(raw:string, origin:string) {\n  const candidates = new Map<string,string>(), archives = new Set<string>();\n  raw=raw.replace(/<(nav|header|footer)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi,'');\n",
+          "to": "const SEEDS = 'free_public_seed_state';\nconst hash = (value:string) => createHash('sha256').update(value).digest('hex');\n\nexport function publicDocumentUrl(value:string) {\n  const clean = safePublicUrl(value);\n  if (!clean) return false;\n  const url = new URL(clean);\n  if (/\\.(?:pdf|png|jpe?g|webp)$/i.test(url.pathname)) return true;\n  const pairs = [...url.searchParams.entries()];\n  return url.hostname.replace(/^www\\./,'')==='munilumaco.cl' &&\n    url.pathname==='/index.php/component/phocadownload/category/1-concursos' &&\n    new Set(pairs.map(([key])=>key)).size===pairs.length &&\n    pairs.every(([key])=>['Itemid','download'].includes(key)) &&\n    /^[1-9]\\d{0,8}(?::[a-z0-9-]+)?$/i.test(url.searchParams.get('download') || '') &&\n    (!url.searchParams.has('Itemid') || /^[1-9]\\d{0,8}$/.test(url.searchParams.get('Itemid') || ''));\n}\n\nexport function publicPageLinks(raw:string, origin:string) {\n  const candidates = new Map<string,string>(), archives = new Set<string>();\n  raw=raw.replace(/<(nav|header|footer)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi,'');\n"
+        },
+        {
+          "from": "    const alt = [...anchor[4].matchAll(/\\balt=[\"']([^\"']+)[\"']/gi)].map(match => match[1]).join(' ');\n    const title = publicText(anchor[4]+' '+alt);\n    const adapter = publicSourceAdapter(url);\n    if (adapter && (adapter.family!=='local' || /ofertas? (?:laboral|de (?:empleo|trabajo))|vacantes?|se (?:busca|necesita|requiere)|postul|concurso.{0,25}(?:p[uú]blico|cargo)|recluta/i.test(title+' '+new URL(url).pathname.replace(/[-_]/g,' ')))) candidates.set(url,title.slice(0,200));\n    if (publicPublisher(url)?.group===publicPublisher(origin)?.group &&\n        (/\\brel=[\"']next[\"']/i.test(anchor[1]+' '+anchor[3]) || /\\/page\\/\\d+|[?&](?:page|paged)=\\d+/i.test(url))) archives.add(url);\n",
+          "to": "    const alt = [...anchor[4].matchAll(/\\balt=[\"']([^\"']+)[\"']/gi)].map(match => match[1]).join(' ');\n    const title = publicText(anchor[4]+' '+alt);\n    const adapter = publicSourceAdapter(url);\n    if (publicDocumentUrl(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group &&\n        /\\bbases?\\b|decreto|concurso|convocatoria|descargar\\s+pdf/i.test(title)) candidates.set(url,title.slice(0,200));\n    if (adapter && (adapter.family!=='local' || /ofertas? (?:laboral|de (?:empleo|trabajo))|vacantes?|se (?:busca|necesita|requiere)|postul|concurso.{0,25}(?:p[uú]blico|cargo)|recluta/i.test(title+' '+new URL(url).pathname.replace(/[-_]/g,' ')))) candidates.set(url,title.slice(0,200));\n    if (publicPublisher(url)?.group===publicPublisher(origin)?.group &&\n        (/\\brel=[\"']next[\"']/i.test(anchor[1]+' '+anchor[3]) || /\\/page\\/\\d+|[?&](?:page|paged)=\\d+/i.test(url))) archives.add(url);\n"
+        },
+        {
+          "from": "export function publicDocumentWork(current?:ScanState | null) {\n  const items=(current?.pending || []).flatMap(item=>{\n    const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);\n    if (!url || !publisherPage || publicSourceAdapter(url)?.family!=='local' ||\n        publicPublisher(url)?.group!==publicPublisher(publisherPage)?.group) return [];\n    return [{ url,source:item.source,publisher_page:publisherPage,\n      kind:/\\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(url)?'document':'local_page' }];\n  });\n  return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,\n    items:items.slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };\n",
+          "to": "export function publicDocumentWork(current?:ScanState | null) {\n  const items=(current?.pending || []).flatMap(item=>{\n    const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);\n    if (!url || !publisherPage || !(publicSourceAdapter(url)?.family==='local' || publicDocumentUrl(url) && publicPublisher(url)?.group==='munilumaco.cl') ||\n        publicPublisher(url)?.group!==publicPublisher(publisherPage)?.group) return [];\n    return [{ url,source:item.source,publisher_page:publisherPage,\n      kind:publicDocumentUrl(url)?'document':'local_page' }];\n  });\n  return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,\n    items:items.slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };\n"
+        },
+        {
+          "from": "  const lanes=['local','portal','aggregator'];\n  for (let offset=0;offset<lanes.length;offset++) {\n    const kind=lanes[(lane+offset)%lanes.length];\n    const index=items.findIndex(item=>! /\\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url) && publicSourceAdapter(item.url)?.family===kind);\n    if (index>=0) return index;\n  }\n  return -1;\n",
+          "to": "  const lanes=['local','portal','aggregator'];\n  for (let offset=0;offset<lanes.length;offset++) {\n    const kind=lanes[(lane+offset)%lanes.length];\n    const index=items.findIndex(item=>!publicDocumentUrl(item.url) && publicSourceAdapter(item.url)?.family===kind);\n    if (index>=0) return index;\n  }\n  return -1;\n"
+        },
+        {
+          "from": "    const seedId = hash(source.key);\n    const [previousSeed] = await db.get<Stored>(SEEDS,[seedId],{ consistent:true });\n    let queue = ((previousSeed?.queue as string[] | undefined) || state.queues[source.key])\n      ?.filter(url=>! /\\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(url));\n    let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];\n    if (!queue?.length) { queue=[source.url];seen=[]; }\n    const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;\n",
+          "to": "    const seedId = hash(source.key);\n    const [previousSeed] = await db.get<Stored>(SEEDS,[seedId],{ consistent:true });\n    let queue = ((previousSeed?.queue as string[] | undefined) || state.queues[source.key])\n      ?.filter(url=>!publicDocumentUrl(url));\n    let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];\n    if (!queue?.length) { queue=[source.url];seen=[]; }\n    const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;\n"
+        },
+        {
+          "from": "      }\n      seen = [...new Set([...seen,url])].slice(-64);\n      queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&\n        ! /\\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url)).map(item => item.url)])]\n        .filter(item => !seen.includes(item)).slice(0,30);\n      audit.candidates = links.candidates.length;\n    }\n",
+          "to": "      }\n      seen = [...new Set([...seen,url])].slice(-64);\n      queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&\n        !publicDocumentUrl(item.url)).map(item => item.url)])]\n        .filter(item => !seen.includes(item)).slice(0,30);\n      audit.candidates = links.candidates.length;\n    }\n"
+        },
+        {
+          "from": "    documentsManagedSeparately:documentManagedUrls.size,\n    noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,\n    pending:state.pending.length,priorityPending:state.priorityCandidates.length,\n    documentsAwaitingLocalReader:state.pending.filter(item=>/\\.(?:pdf|png|jpe?g|webp)(?:[?#]|$)/i.test(item.url)).length,\n    reverificationBacklog:due.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,\n    nextSource:state.position,coverageComplete:false,audits:audits.map(({ candidateEvidence,...audit })=>audit),reviewed,receipts };\n  state.rechecks=[...rechecks.values()];\n",
+          "to": "    documentsManagedSeparately:documentManagedUrls.size,\n    noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,\n    pending:state.pending.length,priorityPending:state.priorityCandidates.length,\n    documentsAwaitingLocalReader:state.pending.filter(item=>publicDocumentUrl(item.url)).length,\n    reverificationBacklog:due.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,\n    nextSource:state.position,coverageComplete:false,audits:audits.map(({ candidateEvidence,...audit })=>audit),reviewed,receipts };\n  state.rechecks=[...rechecks.values()];\n"
+        }
+      ]
+    }
+  ]
+}

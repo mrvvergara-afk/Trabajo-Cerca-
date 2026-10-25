@@ -1,0 +1,23 @@
+{
+  "schema": "trabajo-cerca.backup-preparation-proof.v1",
+  "run": 39676770920,
+  "job": 119488559184,
+  "commit": "4474417e525cba931f2962db68deaa9ee85cb407",
+  "python": {
+    "total": 243,
+    "passed": 243
+  },
+  "node": {
+    "total": 271,
+    "passed": 271,
+    "skipped": 0
+  },
+  "new_backup_cases": 6,
+  "static_table_names": 37,
+  "dynamic_table_patterns": 2,
+  "real_data_exported": false,
+  "real_appdeploy_restore_tested": false,
+  "app_updated": false,
+  "new_offers_published": 0,
+  "a08_closed": false
+}

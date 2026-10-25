@@ -1,0 +1,41 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "base_version": "1792609521216",
+  "files": [
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "'POST /api/notifications/test': [publicQuota('notification-test',2,3600000,10), requireAuth(),",
+          "to": "'POST /api/notifications/test': [requireAuth(), publicQuota('notification-test',2,3600000,10),"
+        },
+        {
+          "from": "revision:'security-containment-v1'",
+          "to": "revision:'security-containment-v2'"
+        }
+      ]
+    },
+    {
+      "filename": "backend/security-quota.ts",
+      "diffs": [
+        {
+          "from": "      if (!await takeQuota(store,scope,'global'",
+          "to": "      const subject = ctx.user?.userId ? 'user-'+ctx.user.userId : address;\n      if (!await takeQuota(store,scope,'global'"
+        },
+        {
+          "from": "takeQuota(store,scope,address,limit,windowMs)",
+          "to": "takeQuota(store,scope,subject,limit,windowMs)"
+        }
+      ]
+    },
+    {
+      "filename": "src/App.tsx",
+      "diffs": [
+        {
+          "from": "policy.data.revision!=='security-containment-v1'",
+          "to": "policy.data.revision!=='security-containment-v2'"
+        }
+      ]
+    }
+  ]
+}

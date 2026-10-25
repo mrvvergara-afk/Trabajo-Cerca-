@@ -1,0 +1,39 @@
+{
+  "deployedVersion": "1792716300276",
+  "prHead": "2dc9a82d3d90e013b8588f407e2203c541428cd9",
+  "readOnly": true,
+  "files": [
+    {
+      "file": "src/territorial-sections.tsx",
+      "sameIgnoringWhitespace": true
+    },
+    {
+      "file": "src/compact-layout.css",
+      "sameIgnoringWhitespace": true
+    },
+    {
+      "file": "src/house-admin.tsx",
+      "sameIgnoringWhitespace": true
+    },
+    {
+      "file": "src/App.tsx",
+      "sameIgnoringWhitespace": true
+    },
+    {
+      "file": "backend/offer-retention.ts",
+      "sameIgnoringWhitespace": true
+    },
+    {
+      "file": "backend/index.ts",
+      "sameIgnoringWhitespace": true
+    },
+    {
+      "file": "backend/house-marketing.ts",
+      "sameIgnoringWhitespace": true
+    },
+    {
+      "file": "shared/house-ads.ts",
+      "sameIgnoringWhitespace": true
+    }
+  ]
+}

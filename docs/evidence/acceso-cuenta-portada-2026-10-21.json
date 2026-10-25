@@ -1,0 +1,98 @@
+{
+  "app_version": "1792628466817",
+  "run": 39699258697,
+  "job": 119564204560,
+  "proof": {
+    "checked_at": "2026-10-22T00:23:12.195324+00:00",
+    "read_only": true,
+    "forms_submitted": 0,
+    "provider_calls": 0,
+    "new_offers_published": 0,
+    "views": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "city_counts": [
+          "Los Ángeles4 ofertas publicadas",
+          "Victoria6 ofertas publicadas",
+          "Temuco6 ofertas publicadas"
+        ],
+        "global_header": "55\nofertas publicadas · total del radar",
+        "city_selection_and_return": true,
+        "advertiser_form_opened_only": true,
+        "dated_news_and_official_resources": true,
+        "legal_keyboard_checks": [
+          {
+            "dialog": "Privacidad y tus datos",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          },
+          {
+            "dialog": "Términos de uso",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          }
+        ],
+        "description": "Encuentra oportunidades laborales en Malleco y Biobío norte. Explora empleos por comuna, requisitos y formas de postular en Trabajo Cerca.",
+        "canonical": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+        "horizontal_overflow": false,
+        "page_errors": [],
+        "anonymous_admin_denied": true,
+        "anonymous_admin_shortcut_hidden": true,
+        "admin_buttons_separated": true,
+        "admin_panel_readable": true,
+        "admin_heading_precedes_session": true,
+        "admin_horizontal_overflow": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "city_counts": [
+          "Los Ángeles4 ofertas publicadas",
+          "Victoria6 ofertas publicadas",
+          "Temuco6 ofertas publicadas"
+        ],
+        "global_header": "55\nofertas publicadas · total del radar",
+        "city_selection_and_return": true,
+        "advertiser_form_opened_only": true,
+        "dated_news_and_official_resources": true,
+        "legal_keyboard_checks": [
+          {
+            "dialog": "Privacidad y tus datos",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          },
+          {
+            "dialog": "Términos de uso",
+            "initial_focus": true,
+            "tab_contained": true,
+            "escape_closes": true,
+            "focus_restored": true
+          }
+        ],
+        "description": "Encuentra oportunidades laborales en Malleco y Biobío norte. Explora empleos por comuna, requisitos y formas de postular en Trabajo Cerca.",
+        "canonical": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+        "horizontal_overflow": false,
+        "page_errors": [],
+        "anonymous_admin_denied": true,
+        "anonymous_admin_shortcut_hidden": true,
+        "admin_buttons_separated": true,
+        "admin_panel_readable": true,
+        "admin_heading_precedes_session": true,
+        "admin_horizontal_overflow": false
+      }
+    ]
+  },
+  "account_menu_open_close_tested": true,
+  "login_popup_not_automatically_completed": true
+}

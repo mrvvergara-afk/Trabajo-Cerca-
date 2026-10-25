@@ -1,0 +1,45 @@
+import {COMMERCIAL_DEFAULTS,promotionOffer} from '../shared/commercial-policy';
+import { HOUSE_DEFAULTS } from '../shared/house-ads';
+const state=window as unknown as {houseFixture?:string;houseCalls?:Array<{method:string;path:string;body:unknown}>;houseConfig?:unknown;houseRows?:unknown[];houseTrials?:unknown[]};
+state.houseCalls=[];
+let config={revision:'defaults-v1',campaigns:structuredClone(HOUSE_DEFAULTS)};
+const emptyFeed={items:[],nextCursor:null,totalItems:0,totalJobOffers:0,totalVerifiedJobOffers:0,totalProvisionalJobOffers:0,recentJobOffers7d:0,kindStats:{jobs:0,people:0,needs:0,services:0},communeStats:{},feedState:'fresh',state:'fresh'};
+export const auth={isSignedIn:()=>state.houseFixture==='admin',signIn:async()=>{},signOut:async()=>{},getAccessToken:async()=>''};
+export const notifications={configure:async()=>{},onMessage:(_callback:unknown)=>()=>{},getEnableGuidance:async()=>({kind:'unsupported'}),getStatus:async()=>({enabled:false}),isSupported:()=>false,enable:async()=>{},disable:async()=>{},subscribe:async()=>{},unsubscribe:async()=>{}};
+export const image={resizeIfNeeded:async()=>({data:'fixture',mimeType:'image/png'})};
+const commercial=(id:string,communes:string[],placements=['search'])=>({id,communes,businessName:'Empresa ficticia solo en pruebas',headline:'Anuncio de prueba',detail:'Nunca se publica este fixture',category:'Comercio local',status:'active',priority:10,startAt:'2000-01-01T00:00:00Z',endAt:'2099-01-01T00:00:00Z',placements,adType:'COMMERCIAL_PAID',url:'https://example.org'});
+let mediaRows=[commercial('media-fixture',['Angol'])] as Array<ReturnType<typeof commercial>&{image?:{storagePath:string}|null;logo?:{storagePath:string}|null}>;
+const basicLayoutItems=()=>state.houseFixture==='admin'?Array.from({length:3},(_,i)=>({id:'layout-fixture-'+i,kind:'job_offer',origin:'external',title:'Puesto de ensayo '+(i+1)+' · solo prueba visual',company:'Empleador ficticio del ensayo',workLocation:'Angol',workCommunes:['Angol'],recruitmentZones:['Angol'],recruitmentCommunes:['Angol'],area:'Prueba visual',status:'Activa',date:'Solo prueba',source:'Ensayo local',sourceDomain:'example.org',url:'https://example.org/layout-'+i,note:'Fixture exclusivo para evaluar diseño; nunca publicado en Trabajo Cerca.',tags:['fixture'],visual:'field',icon:'map',review:false,verified:true,active:true,createdAt:'2026-10-22T00:00:00Z',sourcePublishedAt:'2026-10-22T00:00:00Z',expiresAt:'2099-01-01T00:00:00Z'})):[];
+const layoutItems=()=>state.houseFixture==='territory'?[
+ ...Array.from({length:26},(_,i)=>({id:'territory-'+i,kind:'job_offer',origin:'radar',title:'Cargo sintético '+i,company:i===0?'Indeed':'Empleador sintético del ensayo',workLocation:i<13||i===25?'Angol':'Lumaco',workCommunes:[i<13||i===25?'Angol':'Lumaco'],recruitmentZones:[],recruitmentCommunes:[],area:'Ensayo',status:'Activa',date:'Original de ensayo',source:'Fuente pública de ensayo',sourceDomain:'example.org',url:'https://example.org/offer/'+i,note:'Requisitos y postulación sintéticos, exclusivamente para pruebas.',tags:[],visual:'field',icon:'work',review:false,verified:true,lastVerifiedAt:new Date(Date.now()-3*86400000).toISOString(),verificationMethod:'isolated-fixture-primary-source',revalidationDue:i===0,active:true,sourcePublishedAt:new Date(Date.now()-30*86400000).toISOString(),createdAt:new Date(Date.now()-(i===25?9:2)*86400000).toISOString(),firstPublishedAt:new Date(Date.now()-(i===25?9:2)*86400000).toISOString(),...(i===1?{originalPosterUrl:'https://mtraiguen.cl/fixture-poster.png'}:{})})),
+ {id:'territory-person',kind:'worker_available',origin:'direct',title:'Oficio sintético libre',company:'',workLocation:'Angol',workCommunes:['Angol'],recruitmentZones:[],recruitmentCommunes:[],area:'Oficios',status:'Activa',date:'Ensayo',source:'Publicación directa',note:'Ensayo aislado',tags:[],review:false,verified:false,createdAt:new Date().toISOString()},
+ {id:'territory-need',kind:'worker_need',origin:'direct',title:'Necesidad sintética',company:'',workLocation:'Angol',workCommunes:['Angol'],recruitmentZones:[],recruitmentCommunes:[],area:'Contratación',status:'Activa',date:'Ensayo',source:'Publicación directa',note:'Ensayo aislado',tags:[],review:false,verified:false,createdAt:new Date().toISOString()}
+]:basicLayoutItems();
+async function call(method:string,path:string,body?:Record<string,unknown>){
+ state.houseCalls!.push({method,path,body});
+ if(state.houseFixture==='catalog-503'&&path.startsWith('/api/listings')&&method==='GET')throw {response:{status:503},message:'QA isolated catalog unavailable'};
+ if(state.houseFixture==='real-public'&&path.startsWith('/api/listings')&&method==='GET'){const snapshot=await fetch('/__review_public_feed').then(r=>r.json());if(/^\/api\/listings\/[^/?]+$/.test(path)){const item=snapshot.items.find((x:{id:string})=>x.id===decodeURIComponent(path.split('/').pop()!));return {data:{item}};}return {data:snapshot};}
+
+ if(path.startsWith('/api/growth/promotion'))return {data:promotionOffer(COMMERCIAL_DEFAULTS)};
+ if(path==='/api/admin/marketing/creative'){if(state.houseFixture!=='admin')throw {response:{status:401}};return {data:{storagePath:'house-creatives/'+'a'.repeat(64)+'.webp'}};}
+ if(path.startsWith('/api/admin/marketing/campaigns')){if(state.houseFixture!=='admin')throw {response:{status:401}};if(method==='PUT'&&body?.media){const m=body.media as {slot:'image'|'logo';storagePath:string|null};mediaRows=mediaRows.map(r=>r.id===body.id?{...r,[m.slot]:m.storagePath?{storagePath:m.storagePath}:null}:r);}return {data:{items:mediaRows,nextToken:null}};}
+ if(path.startsWith('/api/admin/marketing/commercial-metrics'))return {data:{items:[],nextToken:null}};
+ if(path.startsWith('/api/admin/marketing/commercial'))return {data:COMMERCIAL_DEFAULTS};
+ if(path.startsWith('/api/growth/advertising'))return {data:{complete:true,house:config.campaigns,commercial:state.houseFixture==='paid'?[commercial('paid-angol',['Angol'])]:state.houseFixture==='paid-image'?[{...commercial('paid-angol',['Angol']),imageUrl:'https://fixture.appdeploy.ai/ad-image.png',logoUrl:'https://fixture.appdeploy.ai/logo.png'}]:state.houseFixture==='paid-broken'?[{...commercial('paid-angol',['Angol']),imageUrl:'https://fixture.appdeploy.ai/broken.png'}]:[]}};
+ if(path.startsWith('/api/growth/house-events'))return {data:{received:true,type:'HOUSE_AD',billing:false}};
+ if(/^\/api\/listings\/[^/?]+$/.test(path)&&method==='GET'){const item=layoutItems().find(x=>x.id===decodeURIComponent(path.split('/').pop()!));if(!item)throw {response:{status:404}};return {data:{item}};}
+ if(path.startsWith('/api/listings')&&method==='GET'){
+  const all=layoutItems();const page=Number(new URL(path,location.origin).searchParams.get('cursor')||0);const paged=state.houseFixture==='territory';const items=paged?all.slice(page*9,(page+1)*9):all;
+  if(paged){await new Promise(resolve=>setTimeout(resolve,120));return {data:{...emptyFeed,items,nextCursor:(page+1)*9<all.length?String(page+1):null,totalItems:28,totalJobOffers:26,totalVerifiedJobOffers:26,recentJobOffers7d:25,updatedAt:'2026-10-22T12:00:00Z',communeStats:{Angol:{jobs:14,newJobs7d:13,newJobs24h:0,people:1,needs:1,services:0},Lumaco:{jobs:12,newJobs7d:12,newJobs24h:0,people:0,needs:0,services:0}},kindStats:{jobs:26,people:1,needs:1,services:0}}};}
+  return {data:{...emptyFeed,items,totalItems:items.length,totalJobOffers:items.length,totalVerifiedJobOffers:items.length,communeStats:items.length?{Angol:{jobs:items.length,newJobs7d:items.length,newJobs24h:0,people:0,needs:0,services:0}}:{},updatedAt:'2026-10-22T12:00:00Z',kindStats:{...emptyFeed.kindStats,jobs:items.length}}};
+ }
+ if(path==='/api/listings'&&method==='POST')return {data:{item:{id:'fixture-published',kind:body?.kind},ownerToken:'fixture-owner-only'}};
+ if(path==='/api/growth/advertiser-leads')return {data:{id:'fixture-lead',received:true,trialState:'pending_review'}};
+ if(path==='/api/admin/session'){if(state.houseFixture!=='admin')throw {response:{status:401}};return {data:{administrator:true,backupExportEnabled:true}};}
+ if(path.startsWith('/api/admin/marketing/house')){if(state.houseFixture!=='admin')throw {response:{status:401}};if(method==='PUT')config={revision:'saved-fixture',campaigns:body!.campaigns as typeof HOUSE_DEFAULTS};return {data:{...config,stats:[],nextToken:null}};}
+ if(path.startsWith('/api/admin/marketing/trials'))return {data:{items:[],nextToken:null}};
+ if(path.startsWith('/api/ops/summary'))return {data:{totalActive:0,totalPending:0,totalInternal:0,totalDirect:0,totalSources:0,growth:{advertiserLeads:0,socialDrafts:0,activeCampaigns:0},health:{},sources:[],communes:[]}};
+ if(path.startsWith('/api/notifications'))return {data:{active:false,communes:[],keywords:[]}};
+ return {data:{items:[],runs:[],sources:[],total:0,readOnly:true,growth:{advertiserLeads:0,socialDrafts:0,activeCampaigns:0}}};
+}
+export const api={get:(p:string)=>call('GET',p),post:(p:string,b?:Record<string,unknown>)=>call('POST',p,b),put:(p:string,b?:Record<string,unknown>)=>call('PUT',p,b),delete:(p:string,b?:Record<string,unknown>)=>call('DELETE',p,b)};

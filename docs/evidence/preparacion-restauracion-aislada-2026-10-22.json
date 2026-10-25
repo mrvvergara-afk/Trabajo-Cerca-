@@ -1,0 +1,38 @@
+{
+  "schema": "trabajo-cerca.restore-preparation.v1",
+  "runtime": "Node 24.19.0",
+  "tests": 6,
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "fixturesOnly": true,
+  "actualBackupRestored": false,
+  "platformRestoreTested": false,
+  "appChanged": false,
+  "productionWrites": 0,
+  "newOffersPublished": 0,
+  "userStorageReport": {
+    "checkedAt": "2026-10-22T01:44:00.718Z",
+    "tables": 68,
+    "records": 4666,
+    "files": 0,
+    "currentSdkStorageObjects": 0,
+    "listingCompleted": true,
+    "storageReferencesInBackup": 0,
+    "missingReferencedObjects": {
+      "current": 0,
+      "closed": 0,
+      "unknown": 0
+    }
+  },
+  "blockers": [
+    "isolated AppDeploy destination and cost not certified",
+    "SDK physical ID restoration or complete reference mapping",
+    "platform users/secrets/resources recovery",
+    "production security headers",
+    "corrupt 512 PNG icons",
+    "legal identification",
+    "catalog revalidation and quality",
+    "mandatory CI gate/protection not proven"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "trabajo-cerca.backup-resume-fix.v1",
+  "app_version": "1792629633162",
+  "run": 39701272038,
+  "job": 119570815975,
+  "python_passed": 243,
+  "node_passed": 289,
+  "original_failure_cause_confirmed": false,
+  "confirmed_defects": [
+    "generic_error_discarded_cause",
+    "progress_lost_on_interruption"
+  ],
+  "resume_tested_with_synthetic_quota_and_file_failures": true,
+  "private_real_backup_completed": false,
+  "real_platform_restore_tested": false,
+  "new_offers_published": 0
+}

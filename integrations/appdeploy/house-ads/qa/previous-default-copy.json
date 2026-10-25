@@ -1,0 +1,38 @@
+{
+  "house-professionals": {
+    "title": "¿Buscas trabajo? Hazte visible.",
+    "message": "Publica gratis lo que sabes hacer y desde cuándo estás disponible.",
+    "mobileMessage": "Publica gratis lo que sabes hacer y tu disponibilidad.",
+    "button": "Ofrecer mi trabajo"
+  },
+  "house-advertisers": {
+    "title": "Tu negocio puede destacar aquí.",
+    "message": "Promociona tus productos o servicios cerca de tus clientes.",
+    "mobileMessage": "Promociona tu negocio cerca de tus clientes.",
+    "button": "Publicitar mi negocio"
+  },
+  "house-employers": {
+    "title": "¿Necesitas alguien para trabajar?",
+    "message": "Encuentra personas disponibles o publica lo que necesitas.",
+    "mobileMessage": "Encuentra personas o publica lo que necesitas.",
+    "button": "Necesito contratar"
+  },
+  "house-explore": {
+    "title": "Oportunidades cerca de ti.",
+    "message": "Descubre empleos, personas y servicios de tu territorio.",
+    "mobileMessage": "Empleos, personas y servicios de tu territorio.",
+    "button": "Explorar oportunidades"
+  },
+  "house-inclusion": {
+    "title": "Lo que sabes hacer tiene valor.",
+    "message": "Agricultura, construcción, oficios, servicios técnicos y profesiones. Todos tienen espacio aquí.",
+    "mobileMessage": "Oficios, servicios y profesiones. Todos tienen espacio aquí.",
+    "button": "Publicar mis servicios"
+  },
+  "house-local-business": {
+    "title": "Que conozcan tu negocio local.",
+    "message": "Alojamiento, alimentación, transporte y servicios para trabajadores y empresas.",
+    "mobileMessage": "Alojamiento, alimentación, transporte y servicios locales.",
+    "button": "Promocionar mi negocio"
+  }
+}

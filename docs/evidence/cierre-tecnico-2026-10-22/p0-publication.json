@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-22T17:15:16.173Z",
+  "fixturesOnly": true,
+  "productionWrites": 0,
+  "deployed": false,
+  "rows": [
+    {
+      "kind": "worker_available",
+      "formSubmittedToIsolatedAdapter": true,
+      "consent": true,
+      "accountNotRequired": true,
+      "priceNotRequested": true
+    },
+    {
+      "kind": "worker_need",
+      "formSubmittedToIsolatedAdapter": true,
+      "consent": true,
+      "accountNotRequired": true,
+      "priceNotRequested": true
+    },
+    {
+      "commercialLeadSubmittedToIsolatedAdapter": true,
+      "advertisingConsent": true,
+      "trialNotActivated": true,
+      "noPaymentCalls": true
+    }
+  ]
+}

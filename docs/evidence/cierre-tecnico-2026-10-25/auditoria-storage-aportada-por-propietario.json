@@ -1,0 +1,35 @@
+{
+  "schema": "trabajo-cerca.storage-reference-audit.v1",
+  "checkedAt": "2026-10-22T01:44:00.718Z",
+  "backupTables": 68,
+  "backupRecords": 4666,
+  "backupFiles": 0,
+  "currentSdkStorageObjects": 0,
+  "listingCompleted": true,
+  "independentlyCheckedReferences": 0,
+  "storageReferencesInBackup": 0,
+  "referencesFoundOutsideListing": 0,
+  "missingReferencedObjects": {
+    "current": 0,
+    "closed": 0,
+    "unknown": 0
+  },
+  "unverifiedAbsentReferences": 0,
+  "externalMediaReferences": 0,
+  "bundledAssetReferences": 0,
+  "inlineMediaReferences": 0,
+  "unclassifiedReferenceValues": 0,
+  "currentObjectsNotCapturedInBackup": 0,
+  "capturedObjectsNotInCurrentListing": 0,
+  "sdkRequests": 1,
+  "passwordUploaded": false,
+  "recordBodiesUploaded": false,
+  "originalMediaFetched": false,
+  "productionWrites": 0,
+  "fullPlatformStorageCertified": false,
+  "limitations": [
+    "Compara una copia histórica con el almacenamiento SDK actual; no atribuye diferencias a pérdida o vencimiento.",
+    "Solo clasifica campos de archivo conocidos; referencias opacas o tablas fuera de la copia pueden quedar fuera.",
+    "Los archivos estáticos y las imágenes externas no pertenecen al listado SDK."
+  ]
+}

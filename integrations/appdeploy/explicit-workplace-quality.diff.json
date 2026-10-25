@@ -1,0 +1,23 @@
+{
+  "baseline_version": "1792450955994",
+  "files": [
+    {
+      "filename": "backend/public-source-adapters.ts",
+      "diffs": [
+        {
+          "from": "  if (Array.isArray(item.workCommunes) && item.workCommunes.includes('Victoria')) {",
+          "to": "  const explicit=title.match(/\\bcomuna\\s+(?:de\\s+)?(los angeles|los sauces|angol|lumaco|traiguen|renaico|nacimiento|negrete|mulchen|collipulli|victoria|puren|ercilla|temuco)\\b/)?.[1];\n  const recorded=Array.isArray(item.workCommunes) ? item.workCommunes.map(value=>String(value).normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase()) : [];\n  if (explicit && !recorded.includes(explicit)) return 'workplace_conflicts_with_explicit_job_title';\n  if (Array.isArray(item.workCommunes) && item.workCommunes.includes('Victoria')) {"
+        }
+      ]
+    },
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "revision:'public-individual-place-quality-v3', project:projectFeedListing",
+          "to": "revision:'public-individual-place-quality-v4', project:projectFeedListing"
+        }
+      ]
+    }
+  ]
+}

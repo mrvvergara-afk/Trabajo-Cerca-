@@ -1,0 +1,37 @@
+{
+  "assets": [
+    {
+      "asset": "advertisers.svg",
+      "bytes": 1015,
+      "gzipBytes": 475
+    },
+    {
+      "asset": "employers.svg",
+      "bytes": 1103,
+      "gzipBytes": 513
+    },
+    {
+      "asset": "explore.svg",
+      "bytes": 1061,
+      "gzipBytes": 471
+    },
+    {
+      "asset": "inclusion.svg",
+      "bytes": 1146,
+      "gzipBytes": 504
+    },
+    {
+      "asset": "local-business.svg",
+      "bytes": 1038,
+      "gzipBytes": 468
+    },
+    {
+      "asset": "professionals.svg",
+      "bytes": 1061,
+      "gzipBytes": 489
+    }
+  ],
+  "totalBytes": 6424,
+  "totalGzipBytes": 2920,
+  "externalRequests": 0
+}

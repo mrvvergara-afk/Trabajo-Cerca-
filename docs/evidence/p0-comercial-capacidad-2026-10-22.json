@@ -1,0 +1,128 @@
+{
+  "checkedAt": "2026-10-22T14:57:17.521Z",
+  "environment": {
+    "node": "v24.22.0",
+    "platform": "linux",
+    "adapter": "in-memory paginated SDK model; simulated 1 ms per list call",
+    "network": false,
+    "productionWrites": 0
+  },
+  "rows": [
+    {
+      "records": 0,
+      "coldMs": 2.633,
+      "warmP50Ms": 1.339,
+      "warmP95Ms": 1.408,
+      "readPages": 1,
+      "maxBrowserBytes": 3482,
+      "heapDeltaBytes": 627496,
+      "rssBytes": 87646208,
+      "cpuMs": 13.944,
+      "concurrency": [
+        1,
+        5,
+        20
+      ],
+      "singleFlightReads": 1,
+      "errors": 0
+    },
+    {
+      "records": 20,
+      "coldMs": 2.304,
+      "warmP50Ms": 2.537,
+      "warmP95Ms": 2.602,
+      "readPages": 1,
+      "maxBrowserBytes": 4176,
+      "heapDeltaBytes": -555976,
+      "rssBytes": 93806592,
+      "cpuMs": 26.462,
+      "concurrency": [
+        1,
+        5,
+        20
+      ],
+      "singleFlightReads": 1,
+      "errors": 0
+    },
+    {
+      "records": 100,
+      "coldMs": 3.778,
+      "warmP50Ms": 8.875,
+      "warmP95Ms": 9.003,
+      "readPages": 1,
+      "maxBrowserBytes": 4176,
+      "heapDeltaBytes": -772368,
+      "rssBytes": 95510528,
+      "cpuMs": 17.965,
+      "concurrency": [
+        1,
+        5,
+        20
+      ],
+      "singleFlightReads": 1,
+      "errors": 0
+    },
+    {
+      "records": 500,
+      "coldMs": 10.997,
+      "warmP50Ms": 24.57,
+      "warmP95Ms": 24.684,
+      "readPages": 5,
+      "maxBrowserBytes": 4182,
+      "heapDeltaBytes": 1268416,
+      "rssBytes": 101277696,
+      "cpuMs": 53.451,
+      "concurrency": [
+        1,
+        5,
+        20
+      ],
+      "singleFlightReads": 5,
+      "errors": 0
+    },
+    {
+      "records": 1000,
+      "coldMs": 17.312,
+      "warmP50Ms": 37.749,
+      "warmP95Ms": 37.821,
+      "readPages": 10,
+      "maxBrowserBytes": 4182,
+      "heapDeltaBytes": 1616448,
+      "rssBytes": 102064128,
+      "cpuMs": 67.622,
+      "concurrency": [
+        1,
+        5,
+        20
+      ],
+      "singleFlightReads": 10,
+      "errors": 0
+    },
+    {
+      "records": 5000,
+      "coldMs": 88.157,
+      "warmP50Ms": 183.99,
+      "warmP95Ms": 184.028,
+      "readPages": 50,
+      "maxBrowserBytes": 4188,
+      "heapDeltaBytes": 13227840,
+      "rssBytes": 133914624,
+      "cpuMs": 310.444,
+      "concurrency": [
+        1,
+        5,
+        20
+      ],
+      "singleFlightReads": 50,
+      "errors": 0
+    }
+  ],
+  "limitations": [
+    "No mide latencia ni cuotas reales de AppDeploy.",
+    "Concurrencia de hasta 20 promesas en un proceso; no son 20 instancias distribuidas.",
+    "No mide capacidad total de almacenamiento, fotos, tráfico real o facturación.",
+    "Caché local 30 s; instancias distintas repiten lecturas.",
+    "Escaneo completo por SDK: filtros posteriores a lectura no equivalen a índices.",
+    "Presupuestos de protección: 200 páginas de 100 y 8 MiB proyectados; al superarlos falla explícitamente, sin ocultar anunciantes."
+  ]
+}

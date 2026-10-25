@@ -1,0 +1,75 @@
+{
+  "schema": "trabajo-cerca.house-ads-proof.v1",
+  "branch": "repair/mulchen-captura-2026-10-17",
+  "codeCommit": "570868f408ed7556fda67590ef209511ea2b405b",
+  "baseAppVersion": "1792632646829",
+  "run": 39773839122,
+  "job": 119807719578,
+  "conclusion": "success",
+  "python": {
+    "tests": 243,
+    "passed": 243
+  },
+  "node": {
+    "tests": 325,
+    "passed": 325,
+    "failed": 0,
+    "skipped": 0,
+    "newHouseTests": 17
+  },
+  "typeScriptCheck": true,
+  "viteBuild": true,
+  "browser": {
+    "checkedAt": "2026-10-22T11:53:39.218Z",
+    "fixturesOnly": true,
+    "productionWrites": 0,
+    "deployed": false,
+    "views": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "zeroAdvertisers": true,
+        "zeroProfiles": true,
+        "realProfessionalFormOpened": true,
+        "formNotSubmitted": true,
+        "noHorizontalOverflow": true,
+        "consoleErrors": []
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "zeroAdvertisers": true,
+        "zeroProfiles": true,
+        "realProfessionalFormOpened": true,
+        "formNotSubmitted": true,
+        "noHorizontalOverflow": true,
+        "consoleErrors": []
+      },
+      {
+        "advertiserFormReal": true,
+        "trialNotFalselyActivated": true
+      },
+      {
+        "paidPositionPreserved": true,
+        "houseDoesNotReplacePaid": true
+      },
+      {
+        "administrationLocalFixture": true,
+        "pauseSavedThroughAdapter": true,
+        "noHorizontalOverflow": true
+      }
+    ]
+  },
+  "deployed": false,
+  "productionWrites": 0,
+  "mainChanged": false,
+  "cronCountOrFrequencyChanged": false,
+  "posthogEnabled": false,
+  "paidConversionsImplemented": false,
+  "contractualImpressionPacingImplemented": false,
+  "liveSdkIntegrationVerified": false
+}

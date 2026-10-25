@@ -1,0 +1,704 @@
+{
+  "schema": "trabajo-cerca.expanded-reviewed-publication.v1",
+  "checked_at": "2026-10-20T23:33:56.224923+00:00",
+  "deliveries": [
+    {
+      "batch": "1",
+      "exchange_commit": "33b23d6faff971f8c2f7a3019982b7197e4f00cc",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+          "b92528e5-61b5-4498-88ca-808c2443a044",
+          "cb47b13c-00cf-4d12-9043-c6906da31736"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "33b23d6faff971f8c2f7a3019982b7197e4f00cc",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "61a78b7d-7954-462e-a2d5-f77803d87f56",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
+        "https://www.laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
+        "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752"
+      ]
+    },
+    {
+      "batch": "2",
+      "exchange_commit": "cd2be5ff78c5f27cf7d1b5585a2b674ecff9d52b",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+          "cb724831-6a31-4fbf-9d8c-c067596f9237",
+          "9e30fb6a-c41e-4b8a-814c-440f0da08ca1"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "cd2be5ff78c5f27cf7d1b5585a2b674ecff9d52b",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "963fda0a-744f-4359-99bb-c2523c51cdc0",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+        "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+        "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746"
+      ]
+    },
+    {
+      "batch": "3",
+      "exchange_commit": "b0a9b9d1dec8911ddfb494123f96e18fab302af6",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+          "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+          "4ba4e5d1-8556-4b33-8304-329a35184274"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "b0a9b9d1dec8911ddfb494123f96e18fab302af6",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "c4e1ca7b-e3e0-49f9-bfae-c0e83f61a7eb",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+        "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+        "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738"
+      ]
+    },
+    {
+      "batch": "4",
+      "exchange_commit": "c254cb03df2d949f94927a1d7c356d01ba622e36",
+      "confirmation": {
+        "stored": 3,
+        "published": 3,
+        "published_ids": [
+          "bdaed372-0383-4771-9c3e-d4a80207d823",
+          "361dab2c-87ef-4bce-9bda-ef731822244d",
+          "1c23fbb3-3317-4e97-86bd-8db6827af3c4"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "c254cb03df2d949f94927a1d7c356d01ba622e36",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "44b2b76a-4116-4a85-b6d4-d0687a98f9d7",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+        "https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+        "https://www.laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html"
+      ]
+    },
+    {
+      "batch": "5",
+      "exchange_commit": "4f56115212ca8463c1e5c1a29868f077a6b498cf",
+      "confirmation": {
+        "stored": 1,
+        "published": 1,
+        "published_ids": [
+          "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+        ],
+        "ingestion_status": "published",
+        "ingestion_rejection": null,
+        "ingestion_data_commit": "4f56115212ca8463c1e5c1a29868f077a6b498cf",
+        "ingestion_run_id": "39515321623",
+        "feed_complete": true,
+        "feed_manifest": "09f21d13-722b-4a0d-867f-47ff59ccf9fd",
+        "source_phase": "complete",
+        "staged_pages": 3,
+        "staged_public_items": 86,
+        "has_next_source_page": false,
+        "read_only": true,
+        "provider_calls": 0,
+        "publication_confirmed": true,
+        "status": "published_ids_confirmed"
+      },
+      "source_urls": [
+        "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc"
+      ]
+    }
+  ],
+  "new_offers_confirmed": 15,
+  "published_ids": [
+    "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+    "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+    "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+    "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+    "361dab2c-87ef-4bce-9bda-ef731822244d",
+    "4ba4e5d1-8556-4b33-8304-329a35184274",
+    "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+    "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+    "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+    "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+    "b92528e5-61b5-4498-88ca-808c2443a044",
+    "bdaed372-0383-4771-9c3e-d4a80207d823",
+    "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+    "cb47b13c-00cf-4d12-9043-c6906da31736",
+    "cb724831-6a31-4fbf-9d8c-c067596f9237",
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+  ],
+  "already_visible_ids": [
+    "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+  ],
+  "added_ids": [
+    "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+    "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+    "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+    "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+    "361dab2c-87ef-4bce-9bda-ef731822244d",
+    "4ba4e5d1-8556-4b33-8304-329a35184274",
+    "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+    "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+    "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+    "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+    "b92528e5-61b5-4498-88ca-808c2443a044",
+    "bdaed372-0383-4771-9c3e-d4a80207d823",
+    "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+    "cb47b13c-00cf-4d12-9043-c6906da31736",
+    "cb724831-6a31-4fbf-9d8c-c067596f9237",
+    "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+    "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45"
+  ],
+  "removed_ids": [
+    "bf77e561-ccca-48a7-9ecf-f8de424f8104"
+  ],
+  "removal_reasons_confirmed": false,
+  "sdk_job_offer_records": 50,
+  "all_cards_confirmed": true,
+  "paid_provider_calls": 0,
+  "skipped": [
+    {
+      "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "reason": "already_visible_or_same_identity"
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
+      "reason": "already_visible_or_same_identity"
+    },
+    {
+      "url": "https://www.laborum.cl/empleos/promotora-20-horas-traiguen-1118460788.html",
+      "reason": "already_visible_or_same_identity"
+    }
+  ],
+  "data_commit": "c3bd50b4f263806c6e3ac944030f2cd3a5884614",
+  "new_difficult_offers_confirmed": 1,
+  "new_portal_offers_confirmed": 14,
+  "new_social_offers_confirmed": 0,
+  "new_verified_roles": [
+    {
+      "id": "361dab2c-87ef-4bce-9bda-ef731822244d",
+      "kind": "job_offer",
+      "title": "Práctica Profesional Contador Auditor - Nacimiento",
+      "company": "Serfonac Ltda",
+      "source": "Chiletrabajos",
+      "workLocation": "Nacimiento",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "date": "08-10-2026",
+      "createdAt": "2026-10-20T23:33:36.181Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-08T14:13:19.000Z",
+      "sourceValidThrough": "2026-12-22T14:13:19.000Z",
+      "expiresAt": "2026-12-22T14:13:19.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:21.339250+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:21.339250+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "bdaed372-0383-4771-9c3e-d4a80207d823",
+      "kind": "job_offer",
+      "title": "TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR)",
+      "company": "CONFIDENCIAL",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:33:36.181Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T16:15:34.000Z",
+      "sourceValidThrough": "2026-12-30T16:15:34.000Z",
+      "expiresAt": "2026-12-30T16:15:34.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:09.603753+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:09.603753+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+      "kind": "job_offer",
+      "title": "Promotor(a) Full Time Martes a Sábado Angol Falabella -TOP",
+      "company": "TOP",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "25-09-2026",
+      "createdAt": "2026-10-20T23:33:36.181Z",
+      "url": "https://www.laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-09-25T00:00:00.000Z",
+      "sourceValidThrough": "2027-01-23T00:00:00.000Z",
+      "expiresAt": "2027-01-23T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T11:37:51.159402+00:00",
+      "externalVerifiedAt": "2026-10-20T11:37:51.159402+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "4ba4e5d1-8556-4b33-8304-329a35184274",
+      "kind": "job_offer",
+      "title": "Encargado Calidad para AIF - Angol",
+      "company": "Consultores 2000",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:32:17.268Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T19:57:22.000Z",
+      "sourceValidThrough": "2026-12-30T19:57:22.000Z",
+      "expiresAt": "2026-12-30T19:57:22.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:09.131628+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:09.131628+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+      "kind": "job_offer",
+      "title": "Jefe de Asesoría - Angol",
+      "company": "Consultores 2000",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:32:17.268Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T19:48:05.000Z",
+      "sourceValidThrough": "2026-12-30T19:48:05.000Z",
+      "expiresAt": "2026-12-30T19:48:05.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:08.205259+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:08.205259+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+      "kind": "job_offer",
+      "title": "Geomensor - Angol",
+      "company": "Consultores 2000",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:32:17.268Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T19:55:16.000Z",
+      "sourceValidThrough": "2026-12-30T19:55:16.000Z",
+      "expiresAt": "2026-12-30T19:55:16.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:08.635759+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:08.635759+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+      "kind": "job_offer",
+      "title": "Encargado Ambiental y Participación Ciudadana para AIF - Angol",
+      "company": "Consultores 2000",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:30:58.415Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T20:03:39.000Z",
+      "sourceValidThrough": "2026-12-30T20:03:39.000Z",
+      "expiresAt": "2026-12-30T20:03:39.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:07.759828+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:07.759828+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "cb724831-6a31-4fbf-9d8c-c067596f9237",
+      "kind": "job_offer",
+      "title": "Prevencionista de Riesgos para AIF - Angol",
+      "company": "Consultores 2000",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:30:58.415Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T20:00:32.000Z",
+      "sourceValidThrough": "2026-12-30T20:00:32.000Z",
+      "expiresAt": "2026-12-30T20:00:32.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:07.274761+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:07.274761+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+      "kind": "job_offer",
+      "title": "Laboratorista Vial Clase B para AIF - Angol",
+      "company": "Consultores 2000",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:30:58.415Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T19:59:20.000Z",
+      "sourceValidThrough": "2026-12-30T19:59:20.000Z",
+      "expiresAt": "2026-12-30T19:59:20.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:06.827053+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:06.827053+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+      "kind": "job_offer",
+      "title": "Cajero(a) con experiencia Unimarc Collipulli",
+      "company": "Supermercados Unimarc",
+      "source": "Laborum",
+      "workLocation": "Collipulli",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "date": "06-10-2026",
+      "createdAt": "2026-10-20T23:30:48.267Z",
+      "url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-06T00:00:00.000Z",
+      "sourceValidThrough": "2027-02-03T00:00:00.000Z",
+      "expiresAt": "2027-02-03T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T11:21:59.107494+00:00",
+      "externalVerifiedAt": "2026-10-20T11:21:59.107494+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "cb47b13c-00cf-4d12-9043-c6906da31736",
+      "kind": "job_offer",
+      "title": "Técnico en Administración para AIF - Angol",
+      "company": "Consultores 2000",
+      "source": "Chiletrabajos",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T23:30:48.267Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T20:05:24.000Z",
+      "sourceValidThrough": "2026-12-30T20:05:24.000Z",
+      "expiresAt": "2026-12-30T20:05:24.000Z",
+      "lastVerifiedAt": "2026-10-20T11:36:06.332401+00:00",
+      "externalVerifiedAt": "2026-10-20T11:36:06.332401+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "b92528e5-61b5-4498-88ca-808c2443a044",
+      "kind": "job_offer",
+      "title": "Asesor/a de Ventas y Servicio en Sucursal - Angol",
+      "company": "Atento Chile S.A",
+      "source": "Laborum",
+      "workLocation": "Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "date": "02-10-2026",
+      "createdAt": "2026-10-20T23:30:48.267Z",
+      "url": "https://www.laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-02T00:00:00.000Z",
+      "sourceValidThrough": "2027-01-30T00:00:00.000Z",
+      "expiresAt": "2027-01-30T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T11:21:59.231220+00:00",
+      "externalVerifiedAt": "2026-10-20T11:21:59.231220+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+      "kind": "job_offer",
+      "title": "Promotora 20 horas - Traiguén",
+      "company": "Confidencial",
+      "source": "Laborum",
+      "workLocation": "Traiguén",
+      "workCommunes": [
+        "Traiguén"
+      ],
+      "date": "29-09-2026",
+      "createdAt": "2026-10-20T11:56:00.689Z",
+      "url": "https://www.laborum.cl/empleos/promotora-20-horas-traiguen-1118460788.html",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-09-29T00:00:00.000Z",
+      "sourceValidThrough": "2027-01-27T00:00:00.000Z",
+      "expiresAt": "2027-01-27T00:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T11:21:58.883806+00:00",
+      "externalVerifiedAt": "2026-10-20T11:21:58.883806+00:00",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+      "kind": "job_offer",
+      "title": "OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS",
+      "company": "Empresa del rubro agrícola de la comuna de Mulchén",
+      "source": "Municipalidad de Mulchén",
+      "workLocation": "Mulchén · un predio ubicado en el sector Campamento",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "date": "19-10-2026",
+      "createdAt": "2026-10-20T11:56:00.689Z",
+      "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-19T23:37:41Z",
+      "sourceValidThrough": null,
+      "applicationUrl": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "applicationMethod": "in_person",
+      "lastVerifiedAt": "2026-10-20T11:49:01Z",
+      "externalVerifiedAt": "2026-10-20T11:49:01Z",
+      "revalidationDue": false,
+      "active": true
+    },
+    {
+      "id": "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+      "kind": "job_offer",
+      "title": "Práctica Profesional Ingeniería Civil Industrial - MASSO - Nacimiento",
+      "company": "Serfonac",
+      "source": "Chiletrabajos",
+      "workLocation": "Nacimiento",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "date": "16-10-2026",
+      "createdAt": "2026-10-20T11:56:00.689Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-16T14:58:10.000Z",
+      "sourceValidThrough": "2026-12-30T14:58:10.000Z",
+      "expiresAt": "2026-12-30T14:58:10.000Z",
+      "lastVerifiedAt": "2026-10-20T11:20:12.818559+00:00",
+      "externalVerifiedAt": "2026-10-20T11:20:12.818559+00:00",
+      "revalidationDue": false,
+      "active": true
+    }
+  ],
+  "checkpoint_entries_preserved": 40,
+  "final_feed_manifest": "09f21d13-722b-4a0d-867f-47ff59ccf9fd",
+  "raw_total_items": 52,
+  "raw_job_offer_records": 50,
+  "raw_inventory_is_not_new_or_fully_audited": true,
+  "cmpc_revalidation": [
+    {
+      "id": "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+      "kind": "job_offer",
+      "title": "Ingeniero/a Procesos y Excelencia Sr",
+      "company": "CMPC",
+      "source": "CMPC · portal de empleo",
+      "workLocation": "Collipulli · Planta Pacífico - Mininco.",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "date": "13-10-2026",
+      "createdAt": "2026-10-19T23:50:35.434Z",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-10-13T03:00:00.000Z",
+      "sourceValidThrough": "2027-01-09T03:00:00.000Z",
+      "expiresAt": "2027-01-09T03:00:00.000Z",
+      "lastVerifiedAt": "2026-10-20T23:30:06.889673+00:00",
+      "externalVerifiedAt": "2026-10-20T23:30:06.889673+00:00",
+      "revalidationDue": false,
+      "active": true
+    }
+  ],
+  "document_revalidation": {
+    "schema": "trabajo-cerca.document-revalidation-status.v1",
+    "readOnly": true,
+    "providerCalls": 0,
+    "intervalHours": 12,
+    "documents": [
+      {
+        "key": "traiguen-salud-2026-10",
+        "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+        "originalPublishedAt": "2026-10-01T12:04:54+00:00",
+        "approvedJobs": 3,
+        "publishedIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "visibleIds": [
+          "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "8b75b282-d838-45bc-9309-d10874aae023",
+          "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+        ],
+        "status": "revalidated",
+        "lastCheckAt": "2026-10-20T13:05:37.975Z",
+        "lastSuccessAt": "2026-10-20T13:05:37.975Z",
+        "nextCheckAt": "2026-10-21T01:05:37.975Z",
+        "reason": null,
+        "registrationPending": false
+      }
+    ],
+    "feedManifestId": "09f21d13-722b-4a0d-867f-47ff59ccf9fd",
+    "newOffersDiscovered": 0,
+    "socialCaptureProven": false
+  },
+  "final_incorporation_check": {
+    "schema": "trabajo-cerca.first-publication-proof.v1",
+    "checked_at": "2026-10-20T23:52:04.366255+00:00",
+    "sdk_job_offers": 50,
+    "all_reviewed_ids_preserved": [
+      "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+      "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+      "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+      "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+      "361dab2c-87ef-4bce-9bda-ef731822244d",
+      "4ba4e5d1-8556-4b33-8304-329a35184274",
+      "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+      "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+      "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+      "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+      "b92528e5-61b5-4498-88ca-808c2443a044",
+      "bdaed372-0383-4771-9c3e-d4a80207d823",
+      "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+      "cb47b13c-00cf-4d12-9043-c6906da31736",
+      "cb724831-6a31-4fbf-9d8c-c067596f9237",
+      "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+    ],
+    "new_offers_in_this_check": 0,
+    "first_publication_preserved": {
+      "id": "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+      "kind": "job_offer",
+      "title": "TENS para Cuidados Pacientes Domiciliarios / Lumaco",
+      "company": "Layner",
+      "source": "Chiletrabajos",
+      "workLocation": "Lumaco",
+      "workCommunes": [
+        "Lumaco"
+      ],
+      "date": "23 sept 2026",
+      "createdAt": "2026-10-20T23:05:29.616Z",
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+      "verified": true,
+      "review": false,
+      "sourcePublishedAt": "2026-09-23T18:32:45.000Z",
+      "sourceValidThrough": "2026-12-07T18:32:45.000Z",
+      "expiresAt": "2026-12-07T18:32:45.000Z",
+      "firstPublishedAt": "2026-10-03T14:56:19.870Z",
+      "externalVerifiedAt": "2026-10-20T23:05:29.616Z",
+      "revalidationDue": false,
+      "active": true
+    },
+    "total_stable": true,
+    "cards_confirmed": true,
+    "paid_calls": 0,
+    "data_commit": "bd5c3cf623e03ca73409942f8ca2af8990c80ab0"
+  },
+  "app_version": "1792539546631",
+  "tests": {
+    "python_full_passed": 243,
+    "node_test_files_passed": 29
+  },
+  "restrictions": {
+    "main_changed": false,
+    "credentials_changed": false,
+    "historical_originals_deleted": false,
+    "cron_count_or_frequency_changed": false,
+    "paid_services_used": false,
+    "third_parties_contacted": false,
+    "access_restrictions_bypassed": false
+  }
+}

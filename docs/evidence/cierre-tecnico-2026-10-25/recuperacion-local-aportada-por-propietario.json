@@ -1,0 +1,20 @@
+{
+  "schema": "trabajo-cerca.local-restore-rehearsal.v1",
+  "checkedAt": "2026-10-22T01:18:16.841Z",
+  "tables": 68,
+  "records": 4666,
+  "files": 0,
+  "comparedElements": 4666,
+  "mismatches": 0,
+  "encryptedFileSha256": "dbc7f605ac8074c073855377026c46f3a77b91b1405789ed61fca767c68f7186",
+  "temporaryStoreDeleted": true,
+  "privateValuesStoredEncrypted": true,
+  "networkRequests": 0,
+  "productionWrites": 0,
+  "platformRestoreTested": false,
+  "limitations": [
+    "No certifica recuperación funcional en AppDeploy.",
+    "No certifica tablas sin referencias ni elementos ausentes de la copia.",
+    "Un total de cero archivos no acredita que el almacenamiento de origen esté vacío."
+  ]
+}

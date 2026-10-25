@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-23T10:46:25.472Z",
+  "fixturesOnly": true,
+  "deployed": false,
+  "productionWrites": 0,
+  "sharedListingOpened": true,
+  "privacyFocusAndEscape": true,
+  "automaticNotificationsNotAdvertisedAsAvailable": true,
+  "staticSitemapStatus": 200,
+  "staticRobotsStatus": 200,
+  "indexingDisabled": true,
+  "cspViolations": [],
+  "pageErrors": [],
+  "manifestErrors": [],
+  "chromiumInstallabilityErrors": [],
+  "serviceWorkerReady": true,
+  "noPrivateApiCached": true,
+  "osInstallationTested": false,
+  "realSdkUsed": false
+}

@@ -1,20 +1,947 @@
 name: Radar local
 on:
   workflow_dispatch:
+    inputs:
+      initialize_state:
+        description: 'Crear el primer checkpoint solo después de revisar los artefactos anteriores'
+        type: boolean
+        default: false
+      document_pilot:
+        description: 'Ejecutar documentos y ofertas oficiales revisadas con ingesta firmada en la rama de reparación'
+        type: boolean
+        default: false
+      radar_v2_pilot:
+        description: 'Diagnosticar fuentes de las nueve comunas sin publicar ni usar proveedores pagos'
+        type: boolean
+        default: false
+      radar_v2_handoff:
+        description: 'Conectar evidencia del piloto al receptor firmado con un control BNE real, conservando IDs y respaldos'
+        type: boolean
+        default: false
+      radar_v2_drain:
+        description: 'Terminar solo OCR y evaluaciones descargadas; sin abrir fuentes nuevas ni publicar'
+        type: boolean
+        default: false
+  pull_request:
+    branches: [main, repair/mulchen-captura-2026-10-17]
   push:
-    branches: [main]
+    branches: [main, repair/radar-audit-2026-10-11, repair/mulchen-captura-2026-10-17]
     paths:
-      - 'scripts/apify_probe.py'
-      - 'scripts/apify_existing_results.py'
-      - 'scripts/verify_candidates.py'
-      - 'scripts/apify_run_bounded.py'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'config/**'
+      - 'integrations/appdeploy/**'
       - '.github/workflows/radar.yml'
+      - '.github/laboratory-pilot.json'
   schedule:
     - cron: '17 * * * *'
 permissions:
   contents: read
+  actions: read
+concurrency:
+  group: radar-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
+  expanded-reviewed-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[expanded reviewed handoff]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+      RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar navegador público y SDK sin proveedores pagos
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar revisión, firma, receptor y evidencia municipal
+        run: |
+          python -m unittest tests.test_expanded_reviewed_handoff tests.test_durable_exchange -q
+          node tests/local-contact-evidence.test.mjs
+          node tests/first-publication.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
+          node tests/appdeploy-reviewed-receiver.test.mjs
+      - name: Entregar solo cargos revisados y comprobar SDK completo y tarjetas
+        run: python -m scripts.expanded_reviewed_handoff
+      - name: Conservar comprobantes e inventario antes y después
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-reviewed-handoff
+          path: output/expanded-reviewed-handoff/
+          retention-days: 7
+  expanded-source-drain:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[expanded source drain]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    permissions:
+      contents: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar únicamente navegador público
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar ubicaciones, alias y el receptor que solo consume lotes firmados
+        run: |
+          python -m unittest tests.test_portal_index tests.test_public_adapters tests.test_document_queue_reader -q
+          node tests/appdeploy-public-adapters.test.mjs
+          node tests/appdeploy-reviewed-receiver.test.mjs
+          node tests/reviewed-receiver-ui.test.mjs
+      - name: Terminar avisos no leídos y recuperar metadatos primarios sin repetir PDFs
+        run: python -m scripts.expanded_source_drain
+      - name: Conservar originales y diferencias de revisión
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-source-drain
+          path: output/expanded-source-drain/
+          retention-days: 7
+  expanded-source-pass:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[expanded source pass]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    permissions:
+      contents: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar navegador público gratuito
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar descubrimiento de todas las tarjetas sin depender de palabras de contratación
+        run: python -m unittest tests.test_portal_index tests.test_social_access_probe tests.test_document_queue_reader -v
+      - name: Leer índices de las nueve comunas y revisar trabajo nuevo sin publicar
+        run: python -m scripts.expanded_source_pass
+      - name: Conservar índices completos, originales y pendientes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-source-pass
+          path: output/expanded-source-pass/
+          retention-days: 7
+  omil-public-access:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[omil public access]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probar límites y restricciones sin red ni proveedores
+        run: python -m unittest tests.test_social_access_probe tests.test_document_queue_reader -v
+      - name: Comprobar acceso público a las cuentas aportadas, sin sesión ni reintentos
+        run: python -m scripts.social_access_probe
+      - name: Conservar diagnóstico y respuestas originales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: omil-public-access
+          path: output/social-access/
+          retention-days: 7
+  portal-individual-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[portal individual proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar navegador público sin sesión
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Validar conteos, permanencia y robots
+        run: |
+          node tests/offer-retention.test.mjs
+          node tests/inventory-retention-controller.test.mjs
+          node tests/public-source-http.test.mjs
+      - name: Leer tres avisos originales nuevos recuperados de Laborum
+        run: python -m scripts.portal_individual_review
+      - name: Conservar resultados
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-individual-proof
+          path: |
+            output/portal-individual-proof/
+            output/site-inventory/
+          retention-days: 7
+  inventory-retention-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[inventory retention proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar navegador público sin sesión
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Validar conteos, permanencia y robots
+        run: |
+          node tests/offer-retention.test.mjs
+          node tests/inventory-retention-controller.test.mjs
+          node tests/public-source-http.test.mjs
+      - name: Comprobar tarjetas completas y fuentes nuevas sin iniciar motores pagos
+        run: python -m scripts.inventory_retention_proof
+      - name: Conservar resultados
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inventory-retention-proof
+          path: |
+            output/inventory-retention-proof/
+            output/site-inventory/
+          retention-days: 7
+  source-access-baseline:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[source access baseline]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectura SDK sin iniciar motores
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar permanencia, conteos y lectura pública
+        run: |
+          node tests/offer-retention.test.mjs
+          node tests/public-source-http.test.mjs
+          node tests/appdeploy-free-public-sources.test.mjs
+      - name: Conservar inventario antes del cambio y probar accesos primarios nuevos
+        run: python -m scripts.source_access_baseline
+      - name: Guardar resultados sin confundir candidatos con publicaciones
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-access-baseline
+          path: |
+            output/source-access-baseline/
+            output/site-inventory/
+          retention-days: 7
+  cmpc-receiver-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[cmpc receiver proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Esperar datos SDK con navegador público sin sesión
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Comprobar reglas de confirmación sin publicar ni volver a firmar
+        run: python -m unittest tests.test_confirm_cmpc_cards tests.test_public_adapters -v
+      - name: Observar únicamente el lote firmado ya entregado
+        run: python -m scripts.cmpc_receiver_proof
+      - name: Confirmar inventario SDK completo y tarjetas públicas
+        run: python -m scripts.observe_site_inventory
+      - name: Exigir IDs en tarjetas y conservar respaldo durable
+        run: python -m scripts.confirm_cmpc_cards
+      - name: Conservar comprobación y fallos reales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmpc-receiver-proof
+          path: |
+            output/cmpc-reviewed-handoff/
+            output/site-inventory/
+            output/cmpc-cards-proof/
+            output/laboratory_observation*.json
+          retention-days: 7
+  portal-reviewed-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[portal reviewed handoff]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar solo navegador público, sin sesión
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Validar revisión primaria, rechazo de cambios y recuperación de duplicados
+        run: |
+          python -m unittest tests.test_portal_reviewed_handoff -v
+          node tests/appdeploy-public-adapters.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+      - name: Contrastar originales y entregar tres cargos por el receptor firmado existente
+        run: python -m scripts.portal_reviewed_handoff
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Respaldar originales, firma sin tokens y confirmación real
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-reviewed-handoff
+          path: |
+            output/portal-reviewed-handoff/
+            output/site-inventory/
+            output/laboratory_observation*.json
+          retention-days: 7
+  cmpc-reviewed-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[cmpc reviewed handoff]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      RADAR_OPERATOR_WAIT_BROWSER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar solo navegador público, sin sesión
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Validar revisión primaria, rechazo de cambios y recuperación de duplicados
+        run: |
+          python -m unittest tests.test_cmpc_reviewed_handoff tests.test_cmpc_public_scope -v
+          node tests/appdeploy-cmpc-evidence.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+      - name: Contrastar originales y entregar dos cargos por el receptor firmado existente
+        run: python -m scripts.cmpc_reviewed_handoff
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Confirmar feed completo y tarjetas públicas después de recibir
+        run: python -m scripts.observe_site_inventory
+      - name: Exigir coincidencia de recibos, IDs y tarjetas y conservar respaldo durable
+        run: python -m scripts.confirm_cmpc_cards
+      - name: Respaldar originales, firma sin tokens y confirmación real
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmpc-reviewed-handoff
+          path: |
+            output/cmpc-reviewed-handoff/
+            output/site-inventory/
+            output/cmpc-cards-proof/
+            output/laboratory_observation*.json
+          retention-days: 7
+  cmpc-public-api-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && (contains(github.event.head_commit.message, '[cmpc public api proof]') || contains(github.event.head_commit.message, '[cmpc individual proof]'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar navegador público sin sesión
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar el alcance público y la redacción de claves en diagnósticos
+        run: python -m unittest tests.test_cmpc_public_scope -v
+      - name: Probar la API observada solo cuando robots lo permita
+        env:
+          CMPC_INDIVIDUAL_PROOF: ${{ contains(github.event.head_commit.message, '[cmpc individual proof]') && '1' || '0' }}
+        run: python -m scripts.cmpc_public_probe
+      - name: Conservar evidencia y bloqueos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmpc-public-api-proof
+          path: output/cmpc-public/
+          retention-days: 7
+  new-poster-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[new poster proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar OCR local gratuito
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y tesseract-ocr tesseract-ocr-spa
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Comprobar fechas por convocatoria antes de leer nuevas imágenes
+        run: python -m unittest tests.test_ssan_primary_index tests.test_primary_source_discovery -v
+      - name: Leer solo las dos imágenes nuevas enlazadas por sus páginas primarias
+        run: python -m scripts.new_poster_proof
+      - name: Conservar originales y lectura sin publicar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: new-poster-proof
+          path: output/new-poster-proof/
+          retention-days: 7
+  feed-quality-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[feed quality proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 38
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar navegador público sin credenciales
+        run: python -m pip install --disable-pip-version-check playwright==1.62.0
+      - name: Probar cambios de calidad antes de observar
+        run: |
+          python -m unittest tests.test_primary_source_discovery tests.test_document_queue_reader -v
+          node tests/appdeploy-feed-quality.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+          node tests/appdeploy-quality-entrypoint.test.mjs
+      - name: Confirmar cambios del cron en IDs y preservar los tres de Traiguén
+        run: python -m scripts.observe_feed_quality
+      - name: Probar solo el nuevo portal público de CMPC y guardar respaldo durable
+        if: always()
+        run: python -m scripts.cmpc_public_probe
+      - name: Conservar comparación completa y bloqueos reales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feed-quality-proof
+          path: |
+            output/feed-quality/
+            output/site-inventory/
+            output/cmpc-public/
+          retention-days: 7
+  primary-source-discovery:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[primary source discovery]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probar la procedencia de fechas primarias
+        run: python -m unittest tests.test_primary_source_discovery -v
+      - name: Leer inventario actual y fuentes primarias sin OCR ni publicaciones
+        run: python -m scripts.primary_source_discovery
+      - name: Conservar capturas y comparación SDK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: primary-source-discovery
+          path: |
+            output/primary-source-discovery/
+            output/site-inventory/
+          retention-days: 7
+  site-inventory-proof:
+    if: >-
+      github.event_name == 'pull_request' ||
+      (github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && (contains(github.event.head_commit.message, '[site inventory proof]') || contains(github.event.head_commit.message, '[security checks only]') || contains(github.event.head_commit.message, '[release candidate checks]')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar dependencias gratuitas de las pruebas PDF e imagen
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Probar todas las suites Python sin recolectores ni credenciales
+        run: python -m unittest discover -s tests -v
+      - name: Leer feed completo y tarjetas públicas sin recolectar ni publicar
+        env:
+          RADAR_OPERATOR_WAIT_BROWSER: '1'
+          UI_CHECKS: '1'
+          AD_IMAGE_CHECKS: '1'
+          CLOSURE_CHECKS: '1'
+          RC_CHECKS: ${{ (github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[release candidate checks]')) && '1' || '0' }}
+          SECURITY_CHECKS_ONLY: ${{ github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[security checks only]') || contains(github.event.head_commit.message, '[release candidate checks]') }}
+        run: |
+          for suite in tests/*.test.mjs; do node "$suite" || exit 1; done
+          if [ -f integrations/appdeploy/house-ads/qa/run-check.mjs ]; then (cd integrations/appdeploy/house-ads && node qa/run-check.mjs); fi
+          if [ "$RC_CHECKS" = '1' ] && [ "$GITHUB_EVENT_NAME" != 'pull_request' ]; then
+            python -m pip install playwright==1.62.0
+            python -m scripts.observe_site_inventory
+            (cd integrations/appdeploy/house-ads && node qa/capture-sdk-evidence.mjs && node qa/audit-recheck-inventory.mjs)
+            python -m scripts.observe_production_readiness
+            python -m scripts.observe_security_containment
+          fi
+          if [ "$SECURITY_CHECKS_ONLY" = 'true' ]; then exit 0; fi
+          python -m pip install playwright
+          python -m scripts.observe_site_inventory
+          python -m scripts.observe_territorial_design
+          if [ -f scripts/observe_production_readiness.py ]; then python -m scripts.observe_production_readiness; fi
+          if [ -f scripts/observe_security_containment.py ]; then python -m scripts.observe_security_containment; fi
+      - name: Conservar la comparación del inventario visible
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-inventory-proof
+          path: |
+            output/site-inventory/
+            integrations/appdeploy/house-ads/qa-output/
+          retention-days: 7
+  live-document-reader:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && (contains(github.event.head_commit.message, '[live document reader]') ||
+      contains(github.event.head_commit.message, '[document queue only]'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos y comprobar el código
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0 playwright==1.62.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Confirmar feed completo y los tres IDs revalidados mediante el SDK
+        run: python -m scripts.observe_document_revalidation
+      - name: Comprobar páginas municipales renderizadas sin iniciar sesión
+        if: "!contains(github.event.head_commit.message, '[document queue only]')"
+        run: python -m scripts.render_public_documents
+      - name: Procesar la cola SDK y conservar evidencia en la rama de datos
+        run: python -m scripts.document_queue_reader
+      - name: Conservar diagnósticos, originales y comprobaciones del SDK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-document-reader
+          path: |
+            output/document-reader/
+            output/document-revalidation/
+            output/laboratory_observation*.json
+          retention-days: 7
+  hard-source-evidence:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[hard source evidence]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar lectores locales y probar documentos mixtos
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest tests.test_document_reference_proof -v
+      - name: Leer cuatro referencias públicas sin publicar ni ejecutar proveedores
+        run: python -m scripts.hard_document_sweep
+      - name: Conservar originales, lecturas y respaldos de la prueba
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hard-document-sweep
+          path: output/hard-document-sweep/
+          retention-days: 7
+  document-revalidation-proof:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[document revalidation proof]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Leer fuentes públicas desde el flujo SDK autorizado
+        run: node scripts/observe_public_sources.mjs
+      - name: Comprobar la revalidación real y sus IDs visibles
+        if: always()
+        run: python -m scripts.observe_document_revalidation
+      - name: Conservar las comprobaciones y los errores
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-revalidation-proof
+          path: |
+            output/document-revalidation/
+            output/public-sources/
+            output/laboratory_observation*.json
+          retention-days: 7
+  reviewed-document-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/mulchen-captura-2026-10-17' && github.event.repository.private == false &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[reviewed document handoff]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Comprobar evidencia documental y firma antes de publicar
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Revalidar el original y enviar exactamente los tres cargos revisados
+        run: python -m scripts.reviewed_document_handoff
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Conservar recibos sin duplicar el PDF en artefactos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-document-handoff
+          path: |
+            output/reviewed-document-handoff/*.json
+            output/laboratory_observation*.json
+          retention-days: 7
+  radar-v2-handoff:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false &&
+      ((github.event_name == 'push' && contains(github.event.head_commit.message, '[radar v2 handoff]')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.radar_v2_handoff == true))
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Comprobar lectores y conexión antes de firmar o escribir
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Conectar el piloto al receptor existente y confirmar el lote exacto
+        run: python -m scripts.radar_v2_publish
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+      - name: Conservar evidencia de la conexión y sus pendientes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-v2-handoff-evidence
+          path: |
+            output/radar-v2-handoff/
+            output/laboratory_observation*.json
+          retention-days: 7
+  radar-v2:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false &&
+      ((github.event_name == 'push' && (contains(github.event.head_commit.message, '[radar v2 pilot]') ||
+                                      contains(github.event.head_commit.message, '[radar v2 drain]'))) ||
+       (github.event_name == 'workflow_dispatch' && (inputs.radar_v2_pilot == true || inputs.radar_v2_drain == true)))
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos y pruebas antes del piloto
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Leer perfiles públicos sin iniciar sesión ni ejecutar motores de la app
+        if: '!contains(github.event.head_commit.message, ''[radar v2 drain]'') && inputs.radar_v2_drain != true'
+        run: node scripts/radar_v2_browser.mjs
+      - name: Procesar capturas o terminar evidencia descargada y conservar respaldo sin publicar
+        run: python -m scripts.radar_v2_pilot
+        env:
+          RADAR_V2_DRAIN_ONLY: ${{ contains(github.event.head_commit.message, '[radar v2 drain]') || inputs.radar_v2_drain == true }}
+      - name: Conservar evidencia y pendientes del piloto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-v2-evidence
+          path: output/radar-v2/
+          retention-days: 7
+  documents:
+    needs: [scan]
+    if: >-
+      always() &&
+      github.event.repository.private == false &&
+      ((github.ref == 'refs/heads/main' && github.event_name == 'schedule' && needs.scan.result == 'success') ||
+       (github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+        ((github.event_name == 'push' && contains(github.event.head_commit.message, '[document pilot]')) ||
+         (github.event_name == 'workflow_dispatch' && inputs.document_pilot == true))))
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos de documentos
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Comprobar lectores e ingesta antes de escribir
+        run: |
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Recuperar el respaldo existente sin sustituir main
+        run: git fetch origin refs/heads/radar-state-laboratorio:refs/remotes/origin/radar-state-laboratorio
+      - name: Recuperar la captura verificada de esta misma ejecución
+        if: github.ref == 'refs/heads/main'
+        uses: actions/download-artifact@v4
+        with:
+          name: radar-checkpoint
+          path: state/scheduled-scan
+      - name: Leer documentos y conservar un lote firmado de hasta tres ofertas
+        run: python -m scripts.document_cycle
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+          RADAR_PIPELINE_STATE: ${{ github.ref == 'refs/heads/main' && 'state/scheduled-scan/radar.sqlite3' || '' }}
+      - name: Comprobar todas las páginas de un PDF escaneado observado en el piloto
+        if: contains(github.event.head_commit.message, '[full OCR proof]')
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.common import Budget, write_json
+          from scripts.local_history import verify_notice
+          from scripts.local_source_audit import read_medium
+          url='https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf'
+          value=read_medium(url,url,Budget(180))
+          notice=verify_notice(value['text'],url,None,sha256=value['sha256'],complete=value['complete_document'] and not value['textTruncated'])
+          result={key:value.get(key) for key in ['url','engine','page_count','pages_read','complete_document','textTruncated','mean_confidence','bytes','sha256']}
+          result.update(read_only=True,paid_provider_calls=0,verification_status=notice['status'],verification_reason=notice['reason'])
+          write_json(Path('output/documents/full-scan-proof.json'),result)
+          print('DOCUMENT_FULL_SCAN '+json.dumps(result))
+          PY
+      - name: Conservar resultados y bloqueos de documentos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-cycle-evidence
+          path: output/documents/
+          retention-days: 7
+  public_sources:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      github.event.repository.private == false &&
+      (contains(github.event.head_commit.message, '[public sources]') ||
+       contains(github.event.head_commit.message, '[public browser]') ||
+       contains(github.event.head_commit.message, '[public dates]') ||
+       contains(github.event.head_commit.message, '[regional probe]') ||
+       contains(github.event.head_commit.message, '[social access]') ||
+       contains(github.event.head_commit.message, '[social browser]'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectura local gratuita
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa
+      - name: Leer portales, archivos y afiches sin proveedores pagos
+        if: contains(github.event.head_commit.message, '[public sources]')
+        run: python -m scripts.public_sources_probe
+      - name: Comprobar el recolector gratuito mediante la interfaz y el SDK de la app
+        if: '!contains(github.event.head_commit.message, ''[public dates]'') && !contains(github.event.head_commit.message, ''[regional probe]'') && !contains(github.event.head_commit.message, ''[social access]'') && !contains(github.event.head_commit.message, ''[social browser]'')'
+        run: node scripts/observe_public_sources.mjs
+      - name: Contrastar fechas literales de las dos ofertas del piloto
+        if: contains(github.event.head_commit.message, '[public dates]')
+        run: python -m scripts.inspect_public_job_dates
+      - name: Comprobar formatos regionales y fuentes oficiales sin publicar
+        if: contains(github.event.head_commit.message, '[regional probe]')
+        run: python -m scripts.regional_source_probe
+      - name: Diagnosticar lectura pública de canales sociales institucionales sin iniciar sesión
+        if: contains(github.event.head_commit.message, '[social access]')
+        run: python -m scripts.social_access_probe
+      - name: Comprobar dos perfiles públicos de Facebook con navegador sin credenciales
+        if: contains(github.event.head_commit.message, '[social browser]')
+        run: python -m scripts.social_browser_probe
+      - name: Conservar resultados y bloqueos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-source-evidence
+          path: output/public-sources/
+          retention-days: 7
+  review:
+    # Revisión gratuita en repositorio público: pruebas aisladas, sin recolectores.
+    if: github.ref == 'refs/heads/repair/radar-audit-2026-10-11' && github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar lectores gratuitos para las pruebas de OCR y PDF
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Probar sin red, credenciales ni escrituras a la app
+        run: |
+          python -m unittest discover -s tests -v
+          for suite in tests/*.test.mjs; do node "$suite"; done
+      - name: Observar la app mediante lectura del SDK sin ejecutar motores
+        run: python scripts/observe_laboratory.py
+      - name: Conservar la comprobación de lectura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-review-observation
+          path: output/laboratory_observation*.json
+          retention-days: 7
   scan:
+    # La rama de reparación no ejecuta recolectores, crons ni publicaciones.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -22,27 +949,212 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python scripts/radar.py
-      - run: python scripts/backfill.py
-      - run: python scripts/chiletrabajos_direct.py
-      - run: python scripts/verify_candidates.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Preparar dependencias gratuitas de las pruebas PDF e imagen
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Pruebas sin red ni servicios de pago
+        run: |
+          python -m unittest discover -s tests -v
+          node --test tests/*.test.mjs
+      - name: Localizar checkpoint anterior
+        id: checkpoint
+        uses: actions/github-script@v7
+        env:
+          INITIALIZE_STATE: ${{ inputs.initialize_state }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const branch = context.ref.replace('refs/heads/', '');
+            const response = await github.rest.actions.listArtifactsForRepo({
+              owner, repo, name: 'radar-checkpoint', per_page: 100
+            });
+            const artifacts = response.data.artifacts
+              .filter(a => a.workflow_run?.head_branch === branch &&
+                           a.workflow_run?.id !== context.runId)
+              .sort((a, b) => b.id - a.id);
+            const latest = artifacts[0];
+            if (latest?.expired) {
+              throw new Error('Checkpoint expirado: restaurar un respaldo; no reiniciar el histórico.');
+            }
+            if (latest) {
+              core.setOutput('run_id', String(latest.workflow_run.id));
+            } else if (process.env.INITIALIZE_STATE !== 'true') {
+              throw new Error('No hay checkpoint durable. Revisar artefactos anteriores y autorizar la primera inicialización manual.');
+            } else {
+              const legacyResponse = await github.rest.actions.listArtifactsForRepo({
+                owner, repo, name: 'radar-candidatos', per_page: 100
+              });
+              const legacy = legacyResponse.data.artifacts
+                .filter(a => a.workflow_run?.head_branch === branch && !a.expired &&
+                             a.workflow_run?.id !== context.runId)
+                .sort((a, b) => b.id - a.id)[0];
+              if (legacy) core.setOutput('legacy_run_id', String(legacy.workflow_run.id));
+              core.warning('Primera inicialización explícita. Se importarán los últimos candidatos disponibles; los artefactos no sustituyen un respaldo durable.');
+            }
+      - name: Recuperar candidatos anteriores para la primera inicialización
+        if: steps.checkpoint.outputs.legacy_run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: radar-candidatos
+          path: historical_artifacts/
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.checkpoint.outputs.legacy_run_id }}
+      - name: Importar el histórico disponible sin publicar
+        if: steps.checkpoint.outputs.legacy_run_id != ''
+        run: python scripts/import_artifacts.py historical_artifacts/
+      - name: Restaurar estado
+        if: steps.checkpoint.outputs.run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: radar-checkpoint
+          path: state/
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.checkpoint.outputs.run_id }}
+      - name: Comprobar restauración
+        if: steps.checkpoint.outputs.run_id != ''
+        run: |
+          python -c "import sqlite3; from pathlib import Path; p=Path('state/radar.sqlite3'); assert p.exists(), 'Checkpoint faltante'; c=sqlite3.connect('file:state/radar.sqlite3?mode=ro',uri=True); assert c.execute('PRAGMA integrity_check').fetchone()[0]=='ok'; c.close()"
+      - name: Recolectar y preparar ingesta local
+        id: pipeline
+        run: python scripts/pipeline.py
         env:
           VERIFY_LIMIT: '60'
-      - run: python scripts/apify_probe.py
-        env:
+          RADAR_BUDGET_SECONDS: '1100'
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           APIFY_ACTOR_ID: ${{ vars.APIFY_ACTOR_ID }}
-      - run: python scripts/apify_run_bounded.py
-        env:
-          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           APIFY_RUN_ENABLED: 'false'
-      - run: python scripts/apify_existing_results.py
-        env:
-          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-          APIFY_ACTOR_ID: ${{ vars.APIFY_ACTOR_ID }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: radar-candidatos
+          path: output/
+          retention-days: 7
+      - name: Validar checkpoint antes de conservarlo
+        id: checkpoint_valid
+        if: always() && steps.pipeline.outcome != 'skipped' && hashFiles('state/radar.sqlite3') != ''
+        run: |
+          python -c "import sqlite3; c=sqlite3.connect('file:state/radar.sqlite3?mode=ro',uri=True); assert c.execute('PRAGMA integrity_check').fetchone()[0]=='ok'; c.close()"
+      - name: Conservar checkpoint
+        uses: actions/upload-artifact@v4
+        if: always() && steps.checkpoint_valid.outcome == 'success'
+        with:
+          name: radar-checkpoint
+          path: state/radar.sqlite3
+          retention-days: 7
+  laboratory:
+    # Explicit bounded pilot in the public repository. Never runs on main or on a schedule.
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      ((github.event_name == 'push' && contains(github.event.head_commit.message, '[lab pilot]')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.initialize_state == true))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Pruebas antes del piloto
+        run: |
+          python -m unittest discover -s tests -v
+          node tests/appdeploy-repair.test.mjs
+          node tests/appdeploy-public-feed.test.mjs
+          node tests/appdeploy-ingestion.test.mjs
+          node tests/verification-schedule.test.mjs
+          node tests/workflow-checkpoint.test.mjs
+          node tests/appdeploy-local-evidence.test.mjs
+          node tests/appdeploy-social-evidence.test.mjs
+          node tests/appdeploy-social-evidence-store.test.mjs
+          node tests/appdeploy-social-repair.test.mjs
+          node tests/appdeploy-age-policy.test.mjs
+      - name: Localizar respaldo durable o histórico anterior
+        id: laboratory_history
+        uses: actions/github-script@v7
+        with:
+          script: |
+            if (context.payload.repository?.private === true) throw new Error('El piloto solo está habilitado en el repositorio público; no consumir minutos privados de pago.');
+            const { owner, repo } = context.repo;
+            const fs = require('node:fs');
+            try {
+              const response = await github.rest.git.getRef({ owner, repo, ref:'heads/radar-state-laboratorio' });
+              core.setOutput('parent', response.data.object.sha);
+              return;
+            } catch (cause) {
+              if (cause.status !== 404) throw cause;
+            }
+            const available = [];
+            for (let page = 1; page <= 10; page++) {
+              const response = await github.rest.actions.listArtifactsForRepo({ owner, repo, name:'radar-candidatos', per_page:100, page });
+              available.push(...response.data.artifacts.filter(item => !item.expired && item.workflow_run?.head_branch === 'main'));
+              if (response.data.artifacts.length < 100) break;
+              if (page === 10) throw new Error('Histórico demasiado grande; conservarlo y preparar importación por checkpoints.');
+            }
+            if (!available.length || available.length > 64 || available.reduce((n,a) => n + a.size_in_bytes, 0) > 16 * 1024 * 1024) {
+              throw new Error('Primera inicialización bloqueada: falta histórico o supera el límite seguro.');
+            }
+            fs.mkdirSync('historical_archives', { recursive:true });
+            for (const artifact of available) {
+              const response = await github.rest.actions.downloadArtifact({ owner, repo, artifact_id:artifact.id, archive_format:'zip' });
+              fs.writeFileSync('historical_archives/' + artifact.id + '.zip', Buffer.from(response.data));
+            }
+            core.info('Se conservarán ' + available.length + ' archivos históricos disponibles de main.');
+      - name: Recuperar la rama de datos sin modificar la reparación
+        if: steps.laboratory_history.outputs.parent != ''
+        run: git fetch origin refs/heads/radar-state-laboratorio:refs/remotes/origin/radar-state-laboratorio
+      - name: Restaurar o importar sin reiniciar historial
+        run: python scripts/prepare_laboratory_history.py
+        env:
+          RADAR_DATA_PARENT: ${{ steps.laboratory_history.outputs.parent }}
+      - name: Piloto de una comuna y tres verificaciones, con respaldo y prueba firmada
+        run: python scripts/laboratory_exchange.py
+        env:
+          RADAR_REPOSITORY_ID: ${{ github.repository_id }}
+          RADAR_DATA_PARENT: ${{ steps.laboratory_history.outputs.parent }}
+      - name: Comprobar IDs publicados mediante el SDK de lectura de la app
+        run: python scripts/observe_laboratory.py
+      - name: Conservar diagnóstico del piloto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-laboratory-pilot
+          path: output/
+          retention-days: 7
+  laboratory-read:
+    if: >-
+      github.ref == 'refs/heads/repair/radar-audit-2026-10-11' &&
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[lab read]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 130
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recuperar respaldo durable sin consultar proveedores
+        run: |
+          git fetch origin refs/heads/radar-state-laboratorio:refs/remotes/origin/radar-state-laboratorio
+          python -c "from scripts.laboratory_exchange import restore_from_git; print(restore_from_git('state/radar.sqlite3'))"
+          python -c "import os,subprocess; from pathlib import Path; sha=subprocess.check_output(['git','rev-parse','refs/remotes/origin/radar-state-laboratorio'],text=True).strip(); Path(os.environ['GITHUB_ENV']).open('a').write('RADAR_DATA_PARENT='+sha+'\n')"
+      - name: Observar el SDK y respaldar IDs confirmados
+        run: python scripts/monitor_laboratory.py
+      - name: Conservar prueba de lectura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-laboratory-read
           path: output/
           retention-days: 7

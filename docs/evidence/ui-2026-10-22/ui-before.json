@@ -1,0 +1,251 @@
+{
+  "fixturesOnly": true,
+  "baseline": "3d4267fce57470fa4c899992002c5654bea2f932",
+  "views": [
+    {
+      "width": 320,
+      "pageHeight": 6629,
+      "firstJobsY": 1366.0264892578125,
+      "headerHeight": 64,
+      "cardHeight": 518.6763916015625,
+      "quickBottom": 644.84375,
+      "overflow": false,
+      "activityHeight": null,
+      "houseHeights": [
+        246.78125,
+        301.1337890625
+      ],
+      "cardGenericImages": 3,
+      "tabs": [
+        {
+          "text": " Empleos",
+          "readable": true
+        },
+        {
+          "text": " Personas 0",
+          "readable": true
+        },
+        {
+          "text": " Necesitan gente",
+          "readable": true
+        },
+        {
+          "text": " Servicios",
+          "readable": true
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedNetworkErrors": []
+    },
+    {
+      "width": 360,
+      "pageHeight": 6386,
+      "firstJobsY": 1251.4951171875,
+      "headerHeight": 64,
+      "cardHeight": 518.676513671875,
+      "quickBottom": 644.84375,
+      "overflow": false,
+      "activityHeight": null,
+      "houseHeights": [
+        183.890625,
+        266.227783203125
+      ],
+      "cardGenericImages": 3,
+      "tabs": [
+        {
+          "text": " Empleos",
+          "readable": true
+        },
+        {
+          "text": " Personas 0",
+          "readable": true
+        },
+        {
+          "text": " Necesitan gente",
+          "readable": true
+        },
+        {
+          "text": " Servicios",
+          "readable": true
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedNetworkErrors": []
+    },
+    {
+      "width": 390,
+      "pageHeight": 6215,
+      "firstJobsY": 1208.9013671875,
+      "headerHeight": 64,
+      "cardHeight": 518.676513671875,
+      "quickBottom": 626.625,
+      "overflow": false,
+      "activityHeight": null,
+      "houseHeights": [
+        183.890625,
+        266.227783203125
+      ],
+      "cardGenericImages": 3,
+      "tabs": [
+        {
+          "text": " Empleos",
+          "readable": true
+        },
+        {
+          "text": " Personas 0",
+          "readable": true
+        },
+        {
+          "text": " Necesitan gente",
+          "readable": true
+        },
+        {
+          "text": " Servicios",
+          "readable": true
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedNetworkErrors": []
+    },
+    {
+      "width": 430,
+      "pageHeight": 5996,
+      "firstJobsY": 1219.653564453125,
+      "headerHeight": 64,
+      "cardHeight": 439.03759765625,
+      "quickBottom": 638.109375,
+      "overflow": false,
+      "activityHeight": null,
+      "houseHeights": [
+        183.890625,
+        243.90771484375
+      ],
+      "cardGenericImages": 3,
+      "tabs": [
+        {
+          "text": " Empleos",
+          "readable": true
+        },
+        {
+          "text": " Personas 0",
+          "readable": true
+        },
+        {
+          "text": " Necesitan gente",
+          "readable": true
+        },
+        {
+          "text": " Servicios",
+          "readable": true
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedNetworkErrors": []
+    },
+    {
+      "width": 768,
+      "pageHeight": 4824,
+      "firstJobsY": 988.4296875,
+      "headerHeight": 64,
+      "cardHeight": 296.37939453125,
+      "quickBottom": 586.625,
+      "overflow": false,
+      "activityHeight": null,
+      "houseHeights": [
+        145.984375,
+        191.749267578125
+      ],
+      "cardGenericImages": 3,
+      "tabs": [
+        {
+          "text": " Empleos",
+          "readable": true
+        },
+        {
+          "text": " Personas 0",
+          "readable": true
+        },
+        {
+          "text": " Necesitan gente",
+          "readable": true
+        },
+        {
+          "text": " Servicios",
+          "readable": true
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedNetworkErrors": []
+    },
+    {
+      "width": 1024,
+      "pageHeight": 4576,
+      "firstJobsY": 883.2640380859375,
+      "headerHeight": 72,
+      "cardHeight": 296.8472900390625,
+      "quickBottom": 527,
+      "overflow": false,
+      "activityHeight": null,
+      "houseHeights": [
+        127.484375,
+        174.560302734375
+      ],
+      "cardGenericImages": 3,
+      "tabs": [
+        {
+          "text": " Empleos",
+          "readable": true
+        },
+        {
+          "text": " Personas 0",
+          "readable": true
+        },
+        {
+          "text": " Necesitan gente",
+          "readable": true
+        },
+        {
+          "text": " Servicios",
+          "readable": true
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedNetworkErrors": []
+    },
+    {
+      "width": 1440,
+      "pageHeight": 3793,
+      "firstJobsY": 928.7081298828125,
+      "headerHeight": 72,
+      "cardHeight": 296.748779296875,
+      "quickBottom": 572.84375,
+      "overflow": false,
+      "activityHeight": null,
+      "houseHeights": [
+        127.484375,
+        249.042724609375
+      ],
+      "cardGenericImages": 3,
+      "tabs": [
+        {
+          "text": " Empleos",
+          "readable": true
+        },
+        {
+          "text": " Personas 0",
+          "readable": true
+        },
+        {
+          "text": " Necesitan gente",
+          "readable": true
+        },
+        {
+          "text": " Servicios",
+          "readable": true
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedNetworkErrors": []
+    }
+  ]
+}

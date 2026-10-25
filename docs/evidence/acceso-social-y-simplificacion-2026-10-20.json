@@ -1,0 +1,91 @@
+{
+  "schema": "trabajo-cerca.public-social-access.v2",
+  "checked_at": "2026-10-20T10:42:44.383193+00:00",
+  "read_only": true,
+  "paid_provider_calls": 0,
+  "checked": 5,
+  "published": 0,
+  "new_offers_confirmed": 0,
+  "coverage_complete": false,
+  "results": [
+    {
+      "url": "https://www.instagram.com/omilnacimiento/",
+      "territory": "Nacimiento",
+      "identified_from": "user_supplied_screenshot",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.instagram.com/omilangol2026/",
+      "territory": "Angol",
+      "identified_from": "user_supplied_screenshot",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.instagram.com/omil_traiguen/",
+      "territory": "Traiguén",
+      "identified_from": "user_supplied_screenshot",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.instagram.com/munilumaco/",
+      "territory": "Lumaco",
+      "identified_from": "user_supplied_screenshot",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    },
+    {
+      "url": "https://www.instagram.com/munidetraiguen/",
+      "territory": "Traiguén",
+      "identified_from": "user_supplied_screenshot",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "coverage_complete": false,
+      "posts_read": 0,
+      "published": 0,
+      "access": "blocked_by_robots",
+      "reason": "public_source_robots_disallowed"
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://www.instagram.com/robots.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "sha256": "fe84b3913976aa37e983fd44f2ace9cf62973a512ae694eb18f3cf02066602b1"
+    }
+  ],
+  "automatic_retries": 0,
+  "credentials_used": false,
+  "data_commit": "47579c04f686c174e68ed88ff2d0d6ed3c2566f1",
+  "run_id": "39409845792",
+  "checkpoint_references_preserved": 40,
+  "app_ready_version": "1792493312372",
+  "tests": {
+    "python": 231,
+    "node_suites": 25,
+    "node_tests": 232
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "trabajo-cerca.user-image-evidence.v1",
+  "received_at": "2026-10-20",
+  "method": "direct_visual_inspection_of_user_supplied_files",
+  "new_verified_offers": 0,
+  "automated_discovery_proven": false,
+  "images": [
+    {
+      "file": "1-162164.jpg",
+      "sha256": "7a524bc40eb9c5d4f7d04187ecc67ea4d388b2906731182f3b09366aac358ad0",
+      "publisher": "omilnacimiento y tbb.cl",
+      "roles": [
+        "Psicóloga/o"
+      ],
+      "work_location": "Nacimiento",
+      "date_visible": "23 de septiembre, sin año",
+      "deadline_visible": "25 de septiembre, sin año",
+      "employer": null,
+      "state": "year_and_original_link_missing; closed_if_2026",
+      "application": "OMIL Av. La Cruz 567, interior, presencial o QR"
+    },
+    {
+      "file": "2-162166.jpg",
+      "sha256": "c243c4e2de3d1db2b8c0127402e74d50a8758dcc980bd22b43fe3115fe132ce0",
+      "publisher": "omilangol2026",
+      "roles": [
+        "Garzones Full Time"
+      ],
+      "caption_additional_role": "Part Time: falta segundo fotograma",
+      "employer": "Café Amelia",
+      "work_location": null,
+      "date_visible": null,
+      "deadline_visible": null,
+      "state": "original_date_and_worksite_unconfirmed",
+      "application": "OMIL Angol, Andrés Bello 146, primer piso, L-V 08:30–14:00"
+    },
+    {
+      "file": "3-162169.jpg",
+      "sha256": "8bb406f1848562b1ae20f279241ab54aefdf51530bce9f97617e621019bdf481",
+      "publisher": "munilumaco",
+      "roles": [
+        "TENS"
+      ],
+      "employer": null,
+      "work_location": "Sector Pililmapu, Lumaco",
+      "date_visible": null,
+      "deadline_visible": null,
+      "state": "original_date_employer_and_link_missing",
+      "application": "OMIL Lumaco, Arturo Prat 506"
+    },
+    {
+      "file": "4-162170.jpg",
+      "sha256": "9050ab9b2f6c5eb06f19258068aaa4aa3eca158f23a94e84a0e9347f0da42bfa",
+      "publisher": "omil_traiguen y munidetraiguen",
+      "roles": [
+        "Cuidadora adulta mayor"
+      ],
+      "employer": null,
+      "work_location": null,
+      "date_visible": null,
+      "deadline_visible": "08 de octubre por la mañana de 2026",
+      "deadline_date": "2026-10-08",
+      "state": "explicitly_closed; original_publication_date_missing",
+      "application": "OMIL Coronel Urrutia S/N, ex Regimiento"
+    },
+    {
+      "file": "5-162173.jpg",
+      "sha256": "db8ad30c4a4911eeb7875a64e32e6256f6282a023368c57eb77f20c4a797aa46",
+      "publisher": "omil_traiguen",
+      "roles": [
+        "Brigadista",
+        "Motosierrista",
+        "Jefe de brigada",
+        "Conductor",
+        "Operador de skidder"
+      ],
+      "employer": "WOF Chile",
+      "work_location": null,
+      "date_visible": "25 de septiembre, sin año",
+      "season": "2026–2027",
+      "deadline_visible": null,
+      "state": "primary_employer_link_to_investigate; not_five_verified_offers",
+      "application": "https://wof-chile.com/postular/"
+    }
+  ],
+  "notes": [
+    "No se transfieren fechas del post anterior en capturas de Instagram.",
+    "Una temporada o el nombre de la cuenta no acreditan fecha editorial original.",
+    "Dirección de OMIL es postulación, no necesariamente lugar de faena.",
+    "Las imágenes aportadas permiten extraer candidatos; no prueban acceso automatizado a Instagram.",
+    "No se republican cerrados como vacantes abiertas."
+  ]
+}

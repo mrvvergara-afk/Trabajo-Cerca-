@@ -1,0 +1,15 @@
+{
+  "headline": "Activa tus avisos de Trabajo Cerca",
+  "subtitle": "Identifica este dispositivo una sola vez para recibir nuevas ofertas verificadas de las comunas que elijas.",
+  "style": {
+    "mode": "light",
+    "accentColor": "#06231c",
+    "backgroundColor": "#f8faf5",
+    "panelColor": "#ffffff",
+    "textColor": "#06231c",
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "borderRadius": 20
+  },
+  "termsUrl": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?legal=terms",
+  "privacyUrl": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?legal=privacy"
+}

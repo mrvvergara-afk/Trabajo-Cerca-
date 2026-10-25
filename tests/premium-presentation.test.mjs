@@ -1,0 +1,36 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,readFileSync,writeFileSync,mkdirSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join,resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+const root=resolve('integrations/appdeploy/house-ads');
+const dir=mkdtempSync(join(tmpdir(),'tc-presentation-'));
+mkdirSync(join(dir,'src'));mkdirSync(join(dir,'shared'));
+writeFileSync(join(dir,'shared/ad-images.ts'),readFileSync(join(root,'shared/ad-images.ts')));
+writeFileSync(join(dir,'shared/house-ads.ts'),readFileSync(join(root,'shared/house-ads.ts')));
+writeFileSync(join(dir,'src/house-creative-presentation.ts'),readFileSync(join(root,'src/house-creative-presentation.ts'),'utf8').replace("'../shared/house-ads'","'../shared/house-ads.ts'"));
+const {presentHouseCreative}=await import(pathToFileURL(join(dir,'src/house-creative-presentation.ts')).href);
+const {HOUSE_DEFAULTS}=await import(pathToFileURL(join(dir,'shared/house-ads.ts')).href);
+process.on('exit',()=>rmSync(dir,{recursive:true,force:true}));
+test('six existing campaigns keep IDs, destinations and distinct visible resources',()=>{
+ assert.equal(HOUSE_DEFAULTS.length,6);assert.equal(new Set(HOUSE_DEFAULTS.map(c=>c.id)).size,6);
+ for(const c of HOUSE_DEFAULTS){const v=c.creatives[0];assert.equal(c.type,'HOUSE_AD');assert(v.imageUrl.endsWith('.webp'));const image=readFileSync(join(root,'public/resources',new URL(v.imageUrl,'https://local.invalid').pathname.split('/').pop()));assert.equal(image.subarray(0,4).toString(),'RIFF');assert.equal(image.subarray(8,12).toString(),'WEBP');assert(['professional','advertiser','employer','explore'].includes(c.goal));}
+});
+test('legacy untouched campaign receives current presentation and an image without data mutation',()=>{
+ const c={id:'a',title:'¿Tienes un oficio o profesión?',message:'¿Tienes un oficio o profesión? Ofrece tus servicios gratis en Trabajo Cerca.',mobileMessage:'Ofrece tu oficio o profesión gratis.',button:'Publicar mis servicios'};const original=structuredClone(c);const output=presentHouseCreative('house-professionals',c);assert.equal(output.title,'¿Buscas trabajo?');assert(output.imageUrl);assert.deepEqual(c,original);
+});
+test('administrator custom text and approved resource prevail over defaults',()=>{
+ const c={id:'a',title:'Texto aprobado propio',message:'Mensaje propio',mobileMessage:'Mensaje móvil',button:'Consultar',imageUrl:'https://approved.appdeploy.ai/photo.webp',storagePath:'house-creatives/'+'a'.repeat(64)+'.webp'};assert.deepEqual(presentHouseCreative('house-advertisers',c),c);
+});
+test('withdrawing an image does not silently reactivate the default',()=>{
+ const c={...HOUSE_DEFAULTS[0].creatives[0],imageDisabled:true};assert.equal(presentHouseCreative('house-professionals',c).imageUrl,undefined);
+});
+test('a pending approved storage resource is not replaced by a default URL',()=>{
+ const c={...HOUSE_DEFAULTS[0].creatives[0],imageUrl:undefined,storagePath:'house-creatives/'+'a'.repeat(64)+'.webp'};assert.equal(presentHouseCreative('house-professionals',c).imageUrl,undefined);
+});
+
+const {safeAdImage}=await import(pathToFileURL(join(dir,'shared/ad-images.ts')).href);
+test('only the twelve declared local photographic paths are allowed',()=>{assert(safeAdImage('/resources/house-professionals-photo-v2-640.webp'));assert(safeAdImage('/resources/house-advertisers-photo-v2-1200.webp'));for(const url of ['/resources/private.webp','/resources/../secret.png','http://127.0.0.1/a.png','https://unapproved.example/a.png'])assert.equal(safeAdImage(url),undefined);});
+
+test('approved deployed photographs stay pinned to the reviewed repository and commit',()=>{const prefix='https://raw.githubusercontent.com/mrvvergara-afk/Trabajo-Cerca-/c445112b9cdb78adfce9d8065e32411c4f412c4b/integrations/appdeploy/house-ads/public/resources/';for(const name of ['professionals','advertisers','employers','explore','inclusion','local-business'])for(const width of [640,1200])assert(safeAdImage(prefix+'house-'+name+'-photo-v2-'+width+'.webp'));assert.equal(safeAdImage(prefix.replace('c445112b9cdb78adfce9d8065e32411c4f412c4b','main')+'house-professionals-photo-v2-640.webp'),undefined);assert.equal(safeAdImage(prefix+'private.png'),undefined);});

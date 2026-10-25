@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-22T14:57:06.301Z",
+  "fixturesOnly": true,
+  "productionWrites": 0,
+  "deployed": false,
+  "views": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "zeroAdvertisers": true,
+      "zeroProfiles": true,
+      "realProfessionalFormOpened": true,
+      "formNotSubmitted": true,
+      "noHorizontalOverflow": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "zeroAdvertisers": true,
+      "zeroProfiles": true,
+      "realProfessionalFormOpened": true,
+      "formNotSubmitted": true,
+      "noHorizontalOverflow": true,
+      "consoleErrors": []
+    },
+    {
+      "advertiserFormReal": true,
+      "trialNotFalselyActivated": true
+    },
+    {
+      "paidPositionPreserved": true,
+      "houseDoesNotReplacePaid": true
+    },
+    {
+      "administrationLocalFixture": true,
+      "pauseSavedThroughAdapter": true,
+      "noHorizontalOverflow": true
+    }
+  ]
+}

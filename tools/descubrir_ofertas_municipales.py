@@ -18,7 +18,10 @@ SIGNAL = re.compile(r"(?:oferta[s]?(?:-| )laboral(?:es)?|oportunidad(?:es)?(?:-|
                     r"oferta(?:-| )de(?:-| )trabajo|convocatoria(?:-| )(?:laboral|abierta)|"
                     r"vacante[s]?|llamado(?:-| )a(?:-| )concurso|"
                     r"postulaci[oó]n|trabaja(?:-| )con(?:-| )nosotros|"
-                    r"(?:se(?:-| )(?:necesita|busca|requiere)))", re.I)
+                    r"(?:se(?:-| )(?:necesita|busca|requiere))|"
+                    r"(?:requiere(?:-| )(?:docentes|profesionales|personal))|"
+                    r"(?:abre(?:-| )(?:concurso|convocatoria|postulaciones))|"
+                    r"(?:empleo|trabajo)(?:-| )(?:para|en)(?:-| ))", re.I)
 IGNORE = re.compile(r"(?:/category/|/categoria/|/tag/|/author/|/page/\d+/?|"
                     r"/wp-json/|/feed/?|/api/|/login|/wp-admin/)", re.I)
 OLD_DATE = re.compile(r"/(?:201\d|202[0-5])(?:/|$)")

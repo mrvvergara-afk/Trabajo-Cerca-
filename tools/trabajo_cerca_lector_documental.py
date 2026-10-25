@@ -156,7 +156,7 @@ class ArticleTextParser(HTMLParser):
 def article_body_text(raw: str) -> str:
     parser = ArticleTextParser()
     parser.feed(raw[:700000])
-    return re.sub(r"\\s+", " ", " ".join(parser.parts)).strip()
+    return re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
 
 
 def ocr_bytes(body: bytes) -> str:
@@ -261,14 +261,14 @@ def classify(text: str, today: dt.date | None = None) -> dict:
                          "requisitos del cargo", "enviar currículum")
             if x in folded]
     individual_roles = bool(re.search(
-        r"(?:profesor(?:a|/a)?\\s+de\\s+(?:educaci[oó]n|matem[aá]ticas)|"
-        r"director(?:a|/a)?\\s+(?:del?\\s+)?(?:liceo|escuela)|"
-        r"(?:cargos|puestos)\\s+(?:requeridos|disponibles)\\s*:?|"
-        r"concurso[s]?\\s+p[uú]blicos?\\s+para\\s+proveer\\s+(?:los\\s+)?cargos)",
+        r"(?:profesor(?:a|/a)?\s+de\s+(?:educaci[oó]n|matem[aá]ticas)|"
+        r"director(?:a|/a)?\s+(?:del?\s+)?(?:liceo|escuela)|"
+        r"(?:cargos|puestos)\s+(?:requeridos|disponibles)\s*:?|"
+        r"concurso[s]?\s+p[uú]blicos?\s+para\s+proveer\s+(?:los\s+)?cargos)",
         folded, re.I))
     application = bool(re.search(
-        r"(?:postul|antecedentes|curr[ií]culum|enviar\\s+(?:su\\s+)?cv|"
-        r"proceso\\s+de\\s+reclutamiento)", folded, re.I))
+        r"(?:postul|antecedentes|curr[ií]culum|enviar\s+(?:su\s+)?cv|"
+        r"proceso\s+de\s+reclutamiento)", folded, re.I))
     places = [x for x in WORK_TOWNS if re.search(r"\b" + re.escape(x) + r"\b", text, re.I)]
     expires = parse_deadline(text)
     source_date = parse_source_date(text)

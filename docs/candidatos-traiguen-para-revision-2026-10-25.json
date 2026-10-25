@@ -1,0 +1,208 @@
+{
+  "schema": "trabajo-cerca.manual-evidence.v1",
+  "observed_on": "2026-10-25",
+  "read_only": true,
+  "app_writes": 0,
+  "paid_provider_calls": 0,
+  "warning": "Son posibles cargos provenientes de artículos indexados; no se publicaron ni se ha confirmado su vigencia, origen, autenticidad o inexistencia de duplicados.",
+  "items": [
+    {
+      "id": "tc-review-traiguen-merch-1",
+      "role": "Coordinador/a de Visual Merchandising",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/omil-traiguen-abre-convocatoria-para-el-cargo-de-coordinador-de-visual-merchandising/",
+      "article_published_date": "2026-10-22",
+      "original_employer_publication_date": null,
+      "closing_date": "2026-10-26",
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "OMIL Traiguén; postulación presencial con CV en Coronel Urrutia S/N (Ex Regimiento)."
+    },
+    {
+      "id": "tc-review-traiguen-school-1",
+      "role": "Profesor/a de Educación General Básica (Primer Ciclo)",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas/",
+      "article_published_date": "2026-10-23",
+      "original_employer_publication_date": null,
+      "closing_date": null,
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Colegio Bicentenario Louis Pasteur. Medio de postulación: CV a contactos institucionales indicados en la fuente."
+    },
+    {
+      "id": "tc-review-traiguen-school-2",
+      "role": "Profesor/a de Matemáticas (Enseñanza Media)",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas/",
+      "article_published_date": "2026-10-23",
+      "original_employer_publication_date": null,
+      "closing_date": null,
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Colegio Bicentenario Louis Pasteur. Medio de postulación: CV a contactos institucionales indicados en la fuente."
+    },
+    {
+      "id": "tc-review-traiguen-school-3",
+      "role": "Profesor/a de Educación Diferencial",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas/",
+      "article_published_date": "2026-10-23",
+      "original_employer_publication_date": null,
+      "closing_date": null,
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Colegio Bicentenario Louis Pasteur. Medio de postulación: CV a contactos institucionales indicados en la fuente."
+    },
+    {
+      "id": "tc-review-traiguen-health-1",
+      "role": "Químico/a Farmacéutico/a",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido/",
+      "article_published_date": "2026-10-18",
+      "original_employer_publication_date": null,
+      "closing_date": "2026-11-02",
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Departamento de Salud Municipal. La fuente sitúa el inicio de postulaciones el 1-oct, anterior a la fecha del artículo; comprobar política de vigencia."
+    },
+    {
+      "id": "tc-review-traiguen-health-2",
+      "role": "Ingeniero/a en Prevención de Riesgos",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido/",
+      "article_published_date": "2026-10-18",
+      "original_employer_publication_date": null,
+      "closing_date": "2026-11-02",
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Departamento de Salud Municipal. La fuente sitúa el inicio de postulaciones el 1-oct, anterior a la fecha del artículo; comprobar política de vigencia."
+    },
+    {
+      "id": "tc-review-traiguen-health-3",
+      "role": "Nutricionista",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido/",
+      "article_published_date": "2026-10-18",
+      "original_employer_publication_date": null,
+      "closing_date": "2026-11-02",
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Departamento de Salud Municipal. La fuente sitúa el inicio de postulaciones el 1-oct, anterior a la fecha del artículo; comprobar política de vigencia."
+    },
+    {
+      "id": "tc-review-traiguen-director-1",
+      "role": "Director/a Liceo Lucila Godoy Alcayaga",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/abren-concursos-publicos-para-proveer-los-cargos-de-director-en-el-liceo-lucila-godoy-alcayaga-y-la-escuela-especial-las-lilas-de-traiguen/",
+      "article_published_date": "2026-10-17",
+      "original_employer_publication_date": null,
+      "closing_date": "2026-11-27",
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Concursos directivos municipales; revisar bases y el canal oficial de postulación."
+    },
+    {
+      "id": "tc-review-traiguen-director-2",
+      "role": "Director/a Escuela Especial Las Lilas",
+      "work_location": "Traiguén",
+      "source": "Traiguencity · prensa local",
+      "source_url": "https://www.traiguencity.cl/abren-concursos-publicos-para-proveer-los-cargos-de-director-en-el-liceo-lucila-godoy-alcayaga-y-la-escuela-especial-las-lilas-de-traiguen/",
+      "article_published_date": "2026-10-17",
+      "original_employer_publication_date": null,
+      "closing_date": "2026-11-27",
+      "review_status": "pendiente_verificacion_humana",
+      "published_in_trabajo_cerca": false,
+      "source_access_status": "verificado_en_indice_web;lector_automático_no_pudo_confirmar_robots",
+      "required_checks": [
+        "fecha_original",
+        "vigencia",
+        "fuente_original",
+        "localidad_de_trabajo",
+        "duplicados_feed",
+        "postulacion"
+      ],
+      "notes": "Concursos directivos municipales; revisar bases y el canal oficial de postulación."
+    }
+  ]
+}

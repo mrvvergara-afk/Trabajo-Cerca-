@@ -28,8 +28,12 @@ concurrency:
 
 jobs:
   radar:
-    name: Rastrear fuentes y conservar evidencias
+    name: Rastrear lote ${{ matrix.batch }} · QA 3 franjas
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: ['0', '1', '2']
     timeout-minutes: 14
     steps:
       - name: Obtener repositorio sin credenciales persistentes
@@ -57,7 +61,7 @@ jobs:
         env:
           PYTHONPATH: automation/trabajo_cerca
         run: |
-          python automation/trabajo_cerca/radar_diario.py --batch auto --output resultados
+          python automation/trabajo_cerca/radar_diario.py --batch ${{ matrix.batch }} --output resultados
           
       - name: Resumen comprobable
         if: always()
@@ -69,7 +73,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: trabajo-cerca-radar-diario
+          name: trabajo-cerca-radar-diario-lote-${{ matrix.batch }}
           path: resultados/
           if-no-files-found: warn
           retention-days: 3

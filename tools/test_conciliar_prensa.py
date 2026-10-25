@@ -1,6 +1,11 @@
 import unittest
 from conciliar_prensa_local import merge_reports
 class ConciliarTest(unittest.TestCase):
+    def test_wordpress_query_ids_are_distinct_documents(self):
+        from conciliar_prensa_local import normal_url
+        self.assertNotEqual(normal_url('https://traiguencity.cl/?p=100'),
+                            normal_url('https://traiguencity.cl/?p=200'))
+
     def test_deduplicates_same_article_seen_on_two_indices(self):
         source={'results':[{'checked':[{'url':'https://traiguencity.cl/un-aviso/','decision':'candidato_para_revision','publication_date_evidence':'2026-10-23'}]}]}
         another={'results':[{'url':'https://www.traiguencity.cl/un-aviso/?utm_source=test','decision':'candidato_para_revision','publication_date_evidence':'2026-10-23'}]}

@@ -8,6 +8,10 @@ on:
       - tools/test_lector_documental.py
       - tools/descubrir_ofertas_municipales.py
       - tools/test_descubrir_ofertas_municipales.py
+      - tools/conciliar_prensa_local.py
+      - tools/test_conciliar_prensa.py
+      - tools/test_candidatos_prensa.py
+      - tools/diagnosticar_robots.py
       - docs/fuentes-prensa-reciente-2026-10-25.json
   push:
     branches:
@@ -18,6 +22,10 @@ on:
       - tools/test_lector_documental.py
       - tools/descubrir_ofertas_municipales.py
       - tools/test_descubrir_ofertas_municipales.py
+      - tools/conciliar_prensa_local.py
+      - tools/test_conciliar_prensa.py
+      - tools/test_candidatos_prensa.py
+      - tools/diagnosticar_robots.py
       - docs/fuentes-prensa-reciente-2026-10-25.json
   workflow_dispatch:
 

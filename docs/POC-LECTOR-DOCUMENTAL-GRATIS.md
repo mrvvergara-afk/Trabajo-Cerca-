@@ -4,6 +4,11 @@
 
 La ruta de diagnóstico **que expone el backend** es `/api/ops/free-public-sources`. Se prueba con el dominio público real del laboratorio. Si no es accesible desde GitHub Actions, la ejecución genera un recibo `endpoint_unavailable` y termina con fallo verificable. Nunca sustituye una respuesta real por datos simulados.
 
+El 25/10/2026 se confirmó la API pública real
+`https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/ops/free-public-sources`
+que devolvió JSON con 52 referencias, sin autenticación ni datos personales. La ruta
+`/api/admin/document-work` **sí exige sesión administrativa** y rechazó anónimos con HTTP 401.
+
 El lector toma una exportación de solo lectura del endpoint
 \`GET /api/ops/free-public-sources\`, especialmente \`documentWork.items\`.
 

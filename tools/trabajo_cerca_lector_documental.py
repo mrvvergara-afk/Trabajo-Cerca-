@@ -229,6 +229,7 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
                 "read_at": dt.datetime.now(dt.timezone.utc).isoformat()}
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
         return {**base, "decision": "lectura_fallida", "error":type(exc).__name__,
+                "failure_reason":str(exc)[:70] if isinstance(exc, ValueError) else None,
                 "http": getattr(exc, "code", None)}
 
 

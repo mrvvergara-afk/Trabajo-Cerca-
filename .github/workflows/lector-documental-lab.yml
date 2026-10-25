@@ -1,0 +1,117 @@
+name: Trabajo Cerca - PoC documental gratis
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/lector-documental-lab.yml
+      - tools/trabajo_cerca_lector_documental.py
+      - tools/test_lector_documental.py
+      - tools/descubrir_ofertas_municipales.py
+      - tools/test_descubrir_ofertas_municipales.py
+      - tools/auditar_feed_publico.py
+      - tools/conciliar_prensa_local.py
+      - tools/test_conciliar_prensa.py
+      - tools/test_candidatos_prensa.py
+      - tools/diagnosticar_robots.py
+      - docs/fuentes-prensa-reciente-2026-10-25.json
+  push:
+    branches:
+      - poc/lector-documental-gratis-2026-10-25
+    paths:
+      - .github/workflows/lector-documental-lab.yml
+      - tools/trabajo_cerca_lector_documental.py
+      - tools/test_lector_documental.py
+      - tools/descubrir_ofertas_municipales.py
+      - tools/test_descubrir_ofertas_municipales.py
+      - tools/auditar_feed_publico.py
+      - tools/conciliar_prensa_local.py
+      - tools/test_conciliar_prensa.py
+      - tools/test_candidatos_prensa.py
+      - tools/diagnosticar_robots.py
+      - docs/fuentes-prensa-reciente-2026-10-25.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  leer-documentos:
+    name: Extraer candidatos de fuentes publicas (solo lectura)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout sin credenciales persistidas
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar OCR local y lector PDF sin proveedor externo
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-spa tesseract-ocr-eng
+          python -m pip install --disable-pip-version-check --quiet 'pymupdf>=1.24,<2' 'pytesseract>=0.3.10,<1' 'pillow>=10,<13'
+      - name: Pruebas locales con datos sinteticos
+        run: python -m unittest discover -s tools -p 'test_lector_documental.py' -v
+      - name: Diagnóstico de accesibilidad API y guardia administrativa, sin credenciales
+        run: python tools/probe_appdeploy_api.py
+      - name: Diagnóstico preciso de robots en fuentes recientes
+        run: |
+          python -m unittest discover -s tools -p test_candidatos_prensa.py -v
+          python tools/diagnosticar_robots.py
+      - name: Auditar antigüedad estimada y fuentes de las 52 referencias reales
+        run: python tools/auditar_cola_documental.py
+      # Se usan URLs canónicas sin www, validadas con robots.txt del mismo medio.
+      - name: Descubrimiento en prensa local de Traiguén, controlado y sin publicaciones
+        run: |
+          python tools/descubrir_ofertas_municipales.py \
+            --input docs/fuentes-prensa-reciente-2026-10-25.json \
+            --max-indexes 2 --max-links 5 --output reporte_prensa_local.json
+      - name: Validar 4 notas laborales recientes publicadas en prensa de Traiguén
+        run: |
+          python tools/trabajo_cerca_lector_documental.py \
+            --input docs/avisos-prensa-reciente-2026-10-25.json \
+            --max-items 4 --output reporte_prensa_directa.json
+      - name: Lector de muestra municipal pública, sin dependencia de API
+        run: |
+          python tools/trabajo_cerca_lector_documental.py \
+            --input docs/muestra-documentos-municipales-publicos.json \
+            --max-items 6 --output reporte_municipal.json
+      - name: Descubrir anuncios individuales enlazados desde índices municipales
+        run: |
+          python -m unittest discover -s tools -p 'test_descubrir_ofertas_municipales.py' -v
+          python tools/descubrir_ofertas_municipales.py \
+            --input docs/muestra-documentos-municipales-publicos.json \
+            --max-indexes 3 --max-links 4 --output reporte_descubrimiento.json
+      - name: Leer referencias prioritarias REALES dentro de ventana 20 días
+        run: |
+          python tools/trabajo_cerca_lector_documental.py \
+            --max-items 15 --priority-window --offset 0 --output reporte_documental.json
+      - name: Conciliar artículos por URL sin contar dos veces la misma oferta
+        run: |
+          python -m unittest discover -s tools -p test_conciliar_prensa.py -v
+          python tools/conciliar_prensa_local.py \
+            --input reporte_prensa_local.json reporte_prensa_directa.json \
+            --output reporte_candidatos_unicos.json
+      - name: Leer inventario real desde API pública sin modificarlo
+        run: python tools/auditar_feed_publico.py
+      - name: Adjuntar evidencia de prueba
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lector-documental-solo-lectura
+          path: |
+            reporte_documental.json
+            reporte_municipal.json
+            reporte_descubrimiento.json
+            diagnostico_api.json
+            reporte_cola.json
+            reporte_prensa_local.json
+            reporte_prensa_directa.json
+            diagnostico_robots.json
+            reporte_candidatos_unicos.json
+            reporte_feed_publico.json
+          if-no-files-found: ignore
+          retention-days: 7

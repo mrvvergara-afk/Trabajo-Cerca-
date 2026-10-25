@@ -54,6 +54,11 @@ jobs:
           python tools/descubrir_ofertas_municipales.py \
             --input docs/fuentes-prensa-reciente-2026-10-25.json \
             --max-indexes 2 --max-links 5 --output reporte_prensa_local.json
+      - name: Validar 4 notas laborales recientes publicadas en prensa de Traiguén
+        run: |
+          python tools/trabajo_cerca_lector_documental.py \
+            --input docs/avisos-prensa-reciente-2026-10-25.json \
+            --max-items 4 --output reporte_prensa_directa.json
       - name: Lector de muestra municipal pública, sin dependencia de API
         run: |
           python tools/trabajo_cerca_lector_documental.py \
@@ -81,5 +86,6 @@ jobs:
             diagnostico_api.json
             reporte_cola.json
             reporte_prensa_local.json
+            reporte_prensa_directa.json
           if-no-files-found: ignore
           retention-days: 7

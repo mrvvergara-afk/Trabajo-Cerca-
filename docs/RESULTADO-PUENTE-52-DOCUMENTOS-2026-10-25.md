@@ -14,7 +14,7 @@ Snapshot **1792935124802**, estado `ready`, validación de compilación sin erro
 
 Reporte de la ejecución GitHub Actions `40198658290`, artefacto `12600014673`:
 - **52** referencias, todas tipo `document`.
-- **43** URL con año/mes anterior a septiembre de 2026, fuera de la ventana de 20 días por mes de ruta.
+- **43** URL con año/mes anterior a octubre de 2026, fuera de la ventana de 20 días por mes de ruta.
 - **6** URL con mes octubre de 2026; **3** sin mes deducible de URL. **Estos 9 solo son candidatos de LECTURA**: el mes en URL no acredita la fecha original del aviso.
 - Renaico 29, Negrete 9, Malleco 7 5, Lumaco 3, Las Noticias de Malleco 3, Radio Nativa 1, Mulchén 2.
 - No se eliminaron los 43 del inventario; se excluyeron únicamente de la muestra prioritaria.

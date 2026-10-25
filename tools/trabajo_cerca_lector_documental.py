@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import io
 import json
 import re
 import ssl
@@ -114,6 +115,26 @@ def clean_text(raw: str) -> str:
     return re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
 
 
+def ocr_bytes(body: bytes) -> str:
+    """OCR español local, acotado. No utiliza APIs, no almacena imágenes."""
+    try:
+        import pytesseract  # type: ignore
+        from PIL import Image, ImageOps  # type: ignore
+        Image.MAX_IMAGE_PIXELS = 8_000_000
+        with Image.open(io.BytesIO(body)) as original:
+            original.load()
+            if original.width * original.height > 8_000_000:
+                return ""
+            img = ImageOps.grayscale(original)
+            try:
+                return re.sub(r"\s+", " ", pytesseract.image_to_string(
+                    img, lang="spa+eng", config="--psm 6", timeout=18)).strip()[:14000]
+            finally:
+                img.close()
+    except Exception:
+        return ""
+
+
 def extract_text(body: bytes, mime: str, url: str) -> tuple[str, str]:
     if mime == "application/pdf" or body.startswith(b"%PDF-"):
         try:
@@ -125,9 +146,20 @@ def extract_text(body: bytes, mime: str, url: str) -> tuple[str, str]:
             if len(doc) > 30:
                 return "", "pdf_over_page_budget"
             text = " ".join(page.get_text() for page in doc)
-            return re.sub(r"\s+", " ", text).strip(), "pdf_text" if text.strip() else "image_pdf_needs_ocr"
+            if len(text.strip()) >= 140:
+                return re.sub(r"\s+", " ", text).strip(), "pdf_text"
+            # First three pages only. The remaining pages require a separate review.
+            snippets = []
+            for page in list(doc)[:3]:
+                pix = page.get_pixmap(matrix=fitz.Matrix(1.6, 1.6), alpha=False)
+                snippets.append(ocr_bytes(pix.tobytes("png")))
+            combined = re.sub(r"\s+", " ", text + " " + " ".join(snippets)).strip()
+            return combined, "pdf_ocr_local" if any(snippets) else "image_pdf_needs_ocr"
         except Exception:
             return "", "pdf_unreadable"
+    if mime in ("image/jpeg", "image/png", "image/webp"):
+        extracted = ocr_bytes(body)
+        return extracted, "imagen_ocr_local" if extracted else "imagen_no_legible"
     if mime in ("text/html", "application/xhtml+xml"):
         return clean_text(body.decode("utf-8", "replace")), "html_text"
     return "", "unsupported_mime"
@@ -185,8 +217,6 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
         return {**base, "decision": "origen_no_autorizado"}
     if entry.get("kind") == "rendered_page":
         return {**base, "decision": "requiere_render_js"}
-    if urlsplit(url).path.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
-        return {**base, "decision": "imagen_requiere_ocr_local"}
     if not robots_ok(url):
         return {**base, "decision": "robots_no_confirmado"}
     try:

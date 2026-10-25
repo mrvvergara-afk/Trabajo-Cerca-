@@ -1,6 +1,11 @@
 name: Trabajo Cerca | Radar diario gratuito
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - automation/trabajo_cerca/**
+      - .github/workflows/trabajo-cerca-radar-diario.yml
   push:
     branches: [main]
     paths:

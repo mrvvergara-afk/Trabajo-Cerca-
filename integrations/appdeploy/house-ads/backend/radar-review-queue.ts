@@ -1,6 +1,7 @@
 import { db, isAppDatabaseError } from '@appdeploy/sdk';
-import { registerPublicFeedChange, currentPublicFeedManifest } from './public-feed';
+import { registerPublicFeedChange, currentPublicFeedManifest, readPublicFeedItem } from './public-feed';
 import { checkOneReview } from './radar-review-check';
+import {publicFeedIdentity} from './public-source-adapters';
 import {offerRetentionReason} from './offer-retention';
 
 type Review={kind?:string;status?:string;url?:string;sourceId?:string};
@@ -111,7 +112,7 @@ export async function enqueueAdminReviewedOffer(body:unknown){
 export function reviewPublicationReader(){
  let root:ReturnType<typeof currentPublicFeedManifest>|undefined;
  const leaves=new Map<string,Promise<{entries?:Array<{source:string;sourceId:string;item:Record<string,unknown>}>}|null>>();
- return async (id:string,review:{kind?:string;status?:string;url?:string;motorState?:string;blockReason?:string;lastCheckedAt?:string;lastCheck?:{reason?:string;status?:string}})=>{
+ return async (id:string,review:{kind?:string;status?:string;url?:string;motorState?:string;blockReason?:string;lastCheckedAt?:string;lastCheck?:{reason?:string;status?:string;existingPublicId?:string}})=>{
   const jobId='tcq_'+id.slice(3);
   const base={jobId,published:false,lastCheckedAt:review.lastCheckedAt||null,reason:review.blockReason||review.lastCheck?.reason||null};
   if(!['submitting','queued_for_verification'].includes(review.status||''))return {...base,state:'not_queued'};
@@ -121,7 +122,15 @@ export function reviewPublicationReader(){
   const latest=[job.verificationCheckedAt,base.lastCheckedAt].filter((x):x is string=>typeof x==='string'&&Number.isFinite(Date.parse(x))).sort((a,b)=>Date.parse(b)-Date.parse(a))[0]||null;
   const dates={lastCheckedAt:latest,sourcePublishedAt:job.sourcePublishedAt||null,firstPublishedAt:job.firstPublishedAt||null};
   const excluded=offerRetentionReason(job);
-  if(job.active===false||(excluded&&excluded!=='approval_or_quality_review_required'))return {...base,...dates,reason,state:review.motorState==='duplicate'?'duplicate':'inactive_or_rejected'};
+  if(job.active===false||(excluded&&excluded!=='approval_or_quality_review_required')){
+   if(review.motorState==='duplicate'){
+    const existingId=review.lastCheck?.existingPublicId;
+    const existing=existingId?await readPublicFeedItem(existingId):null;
+    const same=existing&&existing.kind==='job_offer'&&typeof existing.url==='string'&&typeof review.url==='string'&&publicFeedIdentity(existing.url)===publicFeedIdentity(review.url);
+    return {...base,...dates,reason,state:'duplicate',...(same?{existingPublicId:existingId,existingPublicUrl:'/?listing='+encodeURIComponent(existingId!)}:{})};
+   }
+   return {...base,...dates,reason,state:'inactive_or_rejected'};
+  }
   if(job.review!==false||job.verified!==true)return {...base,...dates,reason,state:review.motorState==='blocked'?'blocked':'pending_verifier'};
   root??=currentPublicFeedManifest();
   const snapshot=await root;

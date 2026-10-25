@@ -5,7 +5,7 @@ import './radar-review-inbox.css';
 type Entry={id:string;url:string;sourceId:string;territories:string[];
   publishedEvidence:string|null;deadlineEvidence:string|null;status:string;
   lastCheckedAt?:string|null;nextCheckAt?:string|null;lastCheck?:{reason?:string;status?:string};
-  publication?:{state:string;published:boolean;lastCheckedAt?:string|null;reason?:string|null;url?:string};};
+  publication?:{state:string;published:boolean;lastCheckedAt?:string|null;reason?:string|null;url?:string;existingPublicUrl?:string};};
 type CardNotice={tone:'info'|'success'|'warning';message:string};
 const reasonLabels:Record<string,string>={
   already_in_public_catalog:'La oferta ya está publicada en el catálogo actual. Se conserva su publicación existente.',
@@ -81,7 +81,7 @@ export function RadarReviewInbox(){
         ' · rechazados '+result.data.rejected+' · publicados 0.');
       setJsonInput('');
       const updated=await api.get('/api/admin/radar-review');
-      if(Array.isArray(updated.data?.items)){setItems(updated.data.items);setLoaded(true);}
+      if(Array.isArray(updated.data?.items)){setItems(updated.data.items);setNextToken(updated.data.nextToken||null);setCursor(undefined);setPrevious([]);setLoaded(true);}
     }catch{setFeedback('No se completó la importación. Revisa el JSON y tu sesión antes de volver a intentar.');}
     finally{setBusy(false);}
   }
@@ -229,7 +229,7 @@ export function RadarReviewInbox(){
           {(item.publication?.reason||item.lastCheck?.reason)&&<small>{readableReason(item.publication?.reason||item.lastCheck?.reason)}</small>}
           {item.nextCheckAt&&<small>Próxima revisión: {new Date(item.nextCheckAt).toLocaleString('es-CL',{timeZone:'America/Santiago',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</small>}
           </div>
-          {item.publication?.published&&item.publication.url&&<a href={item.publication.url} target='_blank' rel='noopener noreferrer'>Ver oferta</a>}
+          {item.publication?.published&&item.publication.url?<a href={item.publication.url} target='_blank' rel='noopener noreferrer'>Ver oferta</a>:item.publication?.state==='duplicate'&&item.publication.existingPublicUrl?<a href={item.publication.existingPublicUrl} target='_blank' rel='noopener noreferrer'>Ver existente</a>:null}
         </li>)}
       </ul>
       <nav aria-label='Páginas de la bandeja' className='tcReviewPagination'>

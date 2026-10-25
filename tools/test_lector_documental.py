@@ -40,6 +40,19 @@ class LectorDocumentalTests(unittest.TestCase):
         self.assertEqual(ENDPOINT,
           "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/api/ops/free-public-sources")
 
+    def test_large_pdf_is_only_a_six_page_preview(self):
+        import fitz
+        document = fitz.open()
+        for index in range(31):
+            page = document.new_page()
+            if index == 0:
+                page.insert_text((70, 80), "OFERTA LABORAL. Convocatoria para la comuna de Traiguen. "*6)
+        data = document.tobytes()
+        document.close()
+        preview, mode = extract_text(data, "application/pdf", "https://mtraiguen.cl/bases.pdf")
+        self.assertEqual(mode, "pdf_preview_partial")
+        self.assertIn("OFERTA LABORAL", preview)
+
     def test_pdf_limited_to_16_mib_but_images_stay_small(self):
         from trabajo_cerca_lector_documental import maximum_for_url
         self.assertEqual(maximum_for_url("https://mtraiguen.cl/bases.pdf"), 16 * 1024 * 1024)

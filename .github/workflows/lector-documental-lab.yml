@@ -52,11 +52,10 @@ jobs:
           python tools/descubrir_ofertas_municipales.py \
             --input docs/muestra-documentos-municipales-publicos.json \
             --max-indexes 3 --max-links 4 --output reporte_descubrimiento.json
-      - name: Comprobar acceso a cola real de AppDeploy (diagnóstico separado)
-        continue-on-error: true
+      - name: Leer primeras 15 referencias REALES de cola, sin escribir en app
         run: |
           python tools/trabajo_cerca_lector_documental.py \
-            --max-items 8 --output reporte_documental.json
+            --max-items 15 --offset 0 --output reporte_documental.json
       - name: Adjuntar evidencia de prueba
         if: always()
         uses: actions/upload-artifact@v4

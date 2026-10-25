@@ -12,6 +12,7 @@ writeFileSync('qa/closure-tsconfig.json',JSON.stringify({compilerOptions:{target
 run('npx',['tsc','-p','qa/closure-tsconfig.json']);
 run('npx',['esbuild','backend/index.ts','--bundle','--platform=node','--format=esm','--packages=external','--outfile=qa-output/backend-candidate.mjs']);
 const audit=spawnSync('npm',['audit','--omit=dev','--json'],{encoding:'utf8'});const report=JSON.parse(audit.stdout);writeFileSync(output+'/runtime-dependencies.json',JSON.stringify(report,null,2));assert(!report.error,'dependency audit unavailable');assert.equal(report.metadata.vulnerabilities.high,0);assert.equal(report.metadata.vulnerabilities.critical,0);
+run('node',['qa/closure-preservation.mjs']);
 run('python',['qa/rc-pwa-check.py']);run('node',['qa/rc-restore-check.mjs']);
 run('node',['qa/closure-capacity.mjs']);
 // A failed live catalog read is a failure, never replaced by synthetic offers.

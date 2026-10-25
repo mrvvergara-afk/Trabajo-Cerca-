@@ -13,6 +13,19 @@ class DescubrimientoTests(unittest.TestCase):
         self.assertEqual(len(out),1)
         self.assertIn('oferta-laboral-junior',out[0]['url'])
 
+    def test_real_job_headlines_are_detected(self):
+        html = """<main>
+          <a href="/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas/">
+          OFERTA LABORAL: Colegio Bicentenario requiere docentes para diversas áreas</a>
+          <a href="/omil-traiguen-abre-convocatoria-para-el-cargo-de-coordinador-de-visual-merchandising/">
+          OMIL Traiguén abre convocatoria de visual merchandising</a>
+          <a href="/departamento-salud-traiguen-abre-concurso-publico/">
+          Departamento de Salud abre concurso público</a>
+          <a href="/visita-oficial-de-la-municipalidad/">Evento municipal</a>
+        </main>"""
+        urls=candidate_links("https://www.traiguencity.cl/noticias/traiguen/general/", html, limit=5)
+        self.assertEqual(len(urls),3)
+
     def test_old_year_never_eligible(self):
         html="<main><a href='/2025/10/oferta-laboral/'>Oferta laboral</a></main>"
         self.assertEqual(candidate_links(URL,html),[])

@@ -174,7 +174,7 @@ def parse_deadline(text: str) -> dt.date | None:
             return dt.date(int(numeric.group(3)), int(numeric.group(2)), int(numeric.group(1)))
         except ValueError:
             return None
-    prose = re.search(cues + r"(\d{1,2})\s+de\s+([a-záéíóú]+)\s+(?:de\s+)?(20\d{2})", text, re.I)
+    prose = re.search(cues + r"(\d{1,2})\s+de\s+([a-záéíóú]+)\s+(?:de(?:l)?\s+)?(20\d{2})", text, re.I)
     if prose:
         try:
             month = MONTHS[prose.group(2).lower()]
@@ -237,7 +237,10 @@ def read_manifest(path: str | None) -> dict:
         return json.loads(Path(path).read_text(encoding="utf-8"))
     with OPENER.open(Request(ENDPOINT, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}), timeout=12) as response:
         if response.status != 200:
-            raise RuntimeError("read_only_endpoint_http_" + str(response.status))
+            raise ValueError("read_only_endpoint_http_" + str(response.status))
+        content_type = response.headers.get_content_type()
+        if content_type not in ("application/json", "application/problem+json"):
+            raise ValueError("endpoint_non_json_" + content_type.replace("/", "_")[:50])
         return json.loads(response.read(600000).decode("utf-8"))
 
 
@@ -257,6 +260,7 @@ def main():
                    "status": "endpoint_unavailable", "read_only": True,
                    "app_writes": 0, "paid_provider_calls": 0, "items_processed": 0,
                    "error_type": type(exc).__name__,
+                   "failure_reason": str(exc)[:80] if isinstance(exc, ValueError) else "network_or_access_error",
                    "http_status": getattr(exc, "code", None),
                    "created_at": dt.datetime.now(dt.timezone.utc).isoformat()}
         Path(args.output).write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

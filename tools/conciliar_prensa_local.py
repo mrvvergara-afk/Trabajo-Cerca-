@@ -5,14 +5,17 @@ import argparse
 import datetime as dt
 import json
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, parse_qsl, urlencode
 
 def normal_url(raw: str) -> str:
     p=urlsplit(raw)
     host=(p.hostname or '').lower().removeprefix('www.')
     if p.scheme!='https' or not host or p.username or p.password or p.port is not None:
         return ''
-    return 'https://' + host + p.path.rstrip('/').lower() + '/'
+    identity = [(k,v) for k,v in parse_qsl(p.query,keep_blank_values=False)
+                if k.lower() in ('p','id','job_id','vacancy_id') and len(v) <= 50]
+    suffix = '?' + urlencode(sorted(identity)) if identity else ''
+    return 'https://' + host + p.path.rstrip('/').lower() + '/' + suffix
 
 def merge_reports(*reports: dict) -> dict:
     combined=[]

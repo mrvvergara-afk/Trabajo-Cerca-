@@ -1,0 +1,399 @@
+{
+  "checkedAt": "2026-10-25T22:37:44.264467-03:00",
+  "app": "trabajo-cerca-laboratorio-3ojgro",
+  "previousSnapshot": "1792976457555",
+  "deployedSnapshot": "1792978510233",
+  "change": "Replace desktop two-column utility grid with compact aligned flex row; retain mobile three-column override",
+  "before": [
+    {
+      "width": 360,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 332,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14,
+          "y": 51,
+          "width": 108.65625,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 125.65625,
+          "y": 51,
+          "width": 108.671875,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 237.328125,
+          "y": 51,
+          "width": 108.65625,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 362,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14,
+          "y": 51,
+          "width": 118.65625,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 135.65625,
+          "y": 51,
+          "width": 118.671875,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 257.328125,
+          "y": 51,
+          "width": 118.65625,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 430,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 402,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14,
+          "y": 51,
+          "width": 132,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 149,
+          "y": 51,
+          "width": 132,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 284,
+          "y": 51,
+          "width": 132,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 768,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 740,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14,
+          "y": 51,
+          "width": 244.65625,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 261.65625,
+          "y": 51,
+          "width": 244.671875,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 509.328125,
+          "y": 51,
+          "width": 244.671875,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "x": 0,
+      "height": 96,
+      "containerWidth": 1440,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 0,
+          "y": 305.265625,
+          "width": 716,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 724,
+          "y": 305.265625,
+          "width": 716,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 0,
+          "y": 357.265625,
+          "width": 716,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1920,
+      "x": 0,
+      "height": 96,
+      "containerWidth": 1920,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 0,
+          "y": 305.265625,
+          "width": 956,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 964,
+          "y": 305.265625,
+          "width": 956,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 0,
+          "y": 357.265625,
+          "width": 956,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "after": [
+    {
+      "width": 360,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 332,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14.015625,
+          "y": 51,
+          "width": 108.65625,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 125.671875,
+          "y": 51,
+          "width": 108.671875,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 237.34375,
+          "y": 51,
+          "width": 108.65625,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 362,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14.015625,
+          "y": 51,
+          "width": 118.65625,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 135.671875,
+          "y": 51,
+          "width": 118.671875,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 257.34375,
+          "y": 51,
+          "width": 118.65625,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 430,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 402,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14,
+          "y": 51,
+          "width": 132,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 149,
+          "y": 51,
+          "width": 132,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 284,
+          "y": 51,
+          "width": 132,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 768,
+      "x": 14,
+      "height": 46,
+      "containerWidth": 740,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 14,
+          "y": 51,
+          "width": 244.65625,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 261.65625,
+          "y": 51,
+          "width": 244.671875,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 509.328125,
+          "y": 51,
+          "width": 244.671875,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "x": 130,
+      "height": 44,
+      "containerWidth": 1180,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 996.515625,
+          "y": 297.265625,
+          "width": 98.46875,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 1102.984375,
+          "y": 297.265625,
+          "width": 116.890625,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 1227.875,
+          "y": 297.265625,
+          "width": 82.125,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1920,
+      "x": 370,
+      "height": 44,
+      "containerWidth": 1180,
+      "buttons": [
+        {
+          "text": "Anunciar",
+          "x": 1236.515625,
+          "y": 297.265625,
+          "width": 98.46875,
+          "height": 44
+        },
+        {
+          "text": "Instalar app",
+          "x": 1342.984375,
+          "y": 297.265625,
+          "width": 116.890625,
+          "height": 44
+        },
+        {
+          "text": "Avisos",
+          "x": 1467.875,
+          "y": 297.265625,
+          "width": 82.125,
+          "height": 44
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "workflowChecks": [
+    "Open and close advertising form without submitting",
+    "Open and close activity centre",
+    "Open and close installation guide"
+  ],
+  "publicCatalog": {
+    "status": 200,
+    "totalItems": 73,
+    "jobOffers": 71
+  },
+  "backendModified": false,
+  "mainMerged": false,
+  "physicalPwaInstallationTested": false,
+  "localBrowserProxyTlsException": true,
+  "desktopFilterTested": "Collipulli",
+  "afterScreenshotsWaitForRealOffer": true
+}

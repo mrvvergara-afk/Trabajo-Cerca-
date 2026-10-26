@@ -1,0 +1,35 @@
+{
+  "provenance": "Existing main e0d61ec6028575036178ea997fe09a919efa2039 automation/trabajo_cerca/fuentes_diarias.json; no invented offers",
+  "items": [
+    {
+      "id": "TC-001",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569"
+    },
+    {
+      "id": "TC-002",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381"
+    },
+    {
+      "id": "TC-003",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578"
+    },
+    {
+      "id": "TC-004",
+      "work_cities": [
+        "Angol",
+        "Victoria",
+        "Traiguén"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595"
+    }
+  ]
+}

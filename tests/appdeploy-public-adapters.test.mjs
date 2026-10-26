@@ -167,3 +167,25 @@ test('the public employer microsite and standard Chiletrabajos URL identify the 
  assert.equal(ctx.publicPublisher(alias).group,'chiletrabajos');
  assert.equal(ctx.publicSourceAdapter(alias.replace('/trabajo/','/otro/')),null);
 });
+
+// Isolated regression fixtures, not evidence of a real publication.
+test('functional requirements do not invalidate the individual source workplace',()=>{
+ for(const description of ['Para trabajar en el área de calidad e inocuidad alimentaria.','Debe desempeñarse en auditorías y relatorías.','Para trabajar en equipo.']){
+  const result=ctx.evaluatePublicJob(url,page({job:{description}}),url,200,now);
+  assert.equal(result.status,'verified');assert.equal(result.work_commune,'Angol');
+ }
+ for(const description of ['Lugar de trabajo: localidad no acreditada.','Para trabajar en Santiago.']){
+  assert.equal(ctx.evaluatePublicJob(url,page({job:{description}}),url,200,now).status,'pending');
+ }
+});
+
+test('TC-003 real source: working in the field does not invalidate accredited Angol',()=>{
+ const fixture=JSON.parse(readFileSync(new URL('./fixtures/tc003-public-jobposting-2026-10-26.json',import.meta.url),'utf8'));
+ const raw=fixture.htmlExcerpt;
+ const result=ctx.evaluatePublicJob(fixture.source,raw,fixture.source,200,Date.parse('2026-10-26T00:00:00Z'));
+ assert.equal(result.status,'verified',JSON.stringify(result));assert.equal(result.work_commune,'Angol');
+ for(const description of ['Disponibilidad para trabajar en terreno en Santiago.','Lugar de trabajo: Santiago.']){
+  const blocked=ctx.evaluatePublicJob(fixture.source,fixture.htmlExcerpt.replace(JSON.stringify(fixture.job.description),JSON.stringify(description)),fixture.source,200,Date.parse('2026-10-26T00:00:00Z'));
+  assert.equal(blocked.status,'pending');
+ }
+});

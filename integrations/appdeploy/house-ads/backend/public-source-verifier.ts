@@ -103,7 +103,14 @@ function bneLabelledPosting(raw:string, url:string):Data | null {
 function descriptionWorksite(value:unknown) {
   const text=typeof value==='string' ? sourceDecode(value.replace(/<br\s*\/?>|<\/p>/gi,'\n').replace(/<[^>]*>/g,' ')) : '';
   const scopes=[...text.matchAll(/(?:(?:lugar (?:real )?de trabajo|ubicaci[oó]n de (?:la )?faena)\s*:\s*|(?:para (?:un |el )?proyecto|servicio de atenci[oó]n domiciliaria|realizar (?:su |la )?pr[aá]ctica presencial|para trabajar|desempe[nñ]arse(?: de forma presencial)?)\s+en\s+)([^\n.;]{2,140})/gi)]
-    .filter(match=>!/^(?:equipo|conjunto|colaboraci[oó]n|turnos|jornadas)\b/i.test(match[1]));
+    .filter(match=>{
+      // Functional requirements are not contradictory geographic evidence.
+      // Explicit workplace labels remain authoritative, including unknown places.
+      if (/^(?:lugar |ubicaci[oó]n )/i.test(match[0])) return true;
+      if (/\b(?:en|ubicad[oa]s?|localidad|comuna|ciudad)\b/i.test(match[1])) return true;
+      if (/^terreno\s*$/i.test(match[1])) return false;
+      return !/^(?:equipo|conjunto|colaboraci[oó]n|turnos|jornadas|(?:el |un |una |las |los )?(?:[aá]rea|[aá]mbito|departamento|auditor[ií]as?|relator[ií]as?|capacitaciones?|procesos|gesti[oó]n|control de calidad))\b/i.test(match[1]);
+    });
   if (!scopes.length) return {observed:false,commune:null,literal:''};
   const places=new Set<string>();
   for (const match of scopes) {
@@ -239,3 +246,4 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   if (!deadline && form) result.validity_evidence = { form_url:finalUrl,form_action:form,checked_at:new Date(now).toISOString(),source_sha256:createHash('sha256').update(raw).digest('hex') };
   return result;
 }
+

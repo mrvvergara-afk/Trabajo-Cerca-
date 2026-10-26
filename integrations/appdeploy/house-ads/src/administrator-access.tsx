@@ -1,6 +1,8 @@
 import { HouseCampaignAdmin } from './house-admin';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BackupPanel } from './backup-panel';
+import { DocumentWorkExport } from './document-work-export';
+import { RadarReviewInbox } from './radar-review-inbox';
 import { administratorPermission } from './administrator-permission';
 import './administrator-access.css';
 import { api, auth } from '@appdeploy/client';
@@ -53,7 +55,7 @@ export function AdministratorAccess() {
       <button onClick={() => void verify(false)} disabled={busy}>Verificar acceso</button>
       <button onClick={() => void signOut()} disabled={busy}>Cerrar sesión</button>
       </div>
-      {allowed && <><p>Las operaciones manuales del radar continúan deshabilitadas.</p><BackupPanel /><HouseCampaignAdmin /></>}
+      {allowed && <><p>Las operaciones manuales del radar continúan deshabilitadas.</p><RadarReviewInbox /><DocumentWorkExport /><BackupPanel /><HouseCampaignAdmin /></>}
     </section>
   );
 }
@@ -143,4 +145,3 @@ export function AdministratorShortcut({ inline = false }: { inline?: boolean }) 
     </div>
   );
 }
-

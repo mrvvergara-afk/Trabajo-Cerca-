@@ -199,86 +199,70 @@
 .tcHouseMobile {
   display:none
 }
-.tcHouseDesktop {
-  display:block
-}
-@media(hover:hover) {
-  .tcHouseAd button:hover {
-    background:#eff9d5;
-    transform:translateY(-1px)
-  }
-}
-.tcHouseAd button:active {
-  transform:translateY(1px)
-}
-.tcHouseAd button:focus-visible {
-  outline:3px solid #fff;
-  outline-offset:3px
-}
-@media(max-width:800px) {
+
+/* Responsive companion to the desktop grid above; no fixed copy height. */
+@media (max-width: 800px) {
   .tcHouseAd {
-    display:block;
-    min-height:154px
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
   }
-  .neoShell>.tcHouseAd {
-    width:calc(100% - 28px);
-    margin:8px auto
+  .neoShell > .tcHouseAd {
+    width: calc(100% - 28px);
+    margin: 8px auto;
   }
   .tcHouseAd .tcCampaignVisual {
-    position:absolute;
-    inset:0;
-    min-height:0
+    min-height: 0;
+    height: 105px;
   }
   .tcHouseAd .tcCampaignVisual .tcAdImage {
-    object-fit:contain;
-    object-position:right center
+    object-fit: contain;
+    object-position: center;
   }
   .tcHouseAd .tcCampaignCopy {
-    width:100%;
-    min-height:154px;
-    padding:10px 13px;
-    justify-content:center;
-    background:linear-gradient(90deg,#09271ff7 0%,#09271fea 32%,#09271fa3 58%,#09271f12 90%,transparent 100%);
-    gap:3px
-  }
-  .tcHouseAd .tcCampaignCopy>* {
-    max-width:80%
-  }
-  .tcHouseAd .tcCampaignEyebrow {
-    font-size:9px;
-    line-height:1.22;
-    letter-spacing:.025em
+    min-height: 0;
+    padding: 10px 12px;
+    gap: 4px;
+    overflow-wrap: anywhere;
   }
   .tcHouseAd h3 {
-    font-size:18px;
-    line-height:1.15;
-    max-width:76%
+    font-size: 17px;
+    line-height: 1.2;
   }
   .tcHouseAd p {
-    font-size:12px;
-    line-height:1.35;
-    margin:1px 0;
-    max-width:76%
+    font-size: 12px;
+    line-height: 1.35;
   }
-  .tcHouseAd button {
-    min-height:44px;
-    max-width:100%;
-    width:max-content;
-    white-space:nowrap;
-    padding:7px 10px;
-    font-size:12.5px;
-    margin-top:4px
+  .tcHouseAd .tcHouseDesktop {
+    display: none;
   }
-  .tcHouseMobile {
-    display:block
+  .tcHouseAd .tcHouseMobile {
+    display: block;
   }
-  .tcHouseDesktop {
-    display:none
+  .neoShell .tcHouseAd button {
+    white-space: normal;
+    min-height: 44px;
+    margin-top: 2px;
   }
 }
-@media(prefers-reduced-motion:reduce) {
-  .tcHouseAd button {
-    transition:none;
-    transform:none
-  }
+
+/* Mobile administrative forms: no fixed width or inherited oversized controls. */
+.tcAdminAccess,.tcAdminAccess *,.tcHouseAdmin,.tcHouseAdmin *{box-sizing:border-box}
+.tcAdminAccess,.tcHouseAdmin,.tcHouseAdmin fieldset,.tcHouseAdmin details,
+.tcHouseAdmin .tcHouseFields,.tcHouseAdmin label{min-width:0;max-width:100%}
+.tcHouseAdmin .tcHouseFields{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tcHouseAdmin input:not([type=checkbox]),.tcHouseAdmin select,.tcHouseAdmin textarea{
+  display:block;width:100%;max-width:100%;min-width:0;font-size:16px;line-height:1.35
+}
+.tcHouseAdmin input[type=datetime-local]{min-width:0;max-width:100%;font-size:15px}
+.tcHouseAdmin details>label,.tcHouseAdmin fieldset>label{display:block;min-width:0;max-width:100%}
+.tcHouseAdmin legend,.tcHouseAdmin summary,.tcHouseAdmin label{overflow-wrap:anywhere}
+.tcHouseAdmin .tcHouseTable{width:100%;max-width:100%;overflow-x:auto}
+.tcHouseAdmin .tcHouseTable table{min-width:640px}
+@media(max-width:720px){
+  .tcHouseAdmin .tcHouseFields{grid-template-columns:minmax(0,1fr)}
+  .tcHouseAdmin fieldset{padding:12px;margin:12px 0}
+  .tcHouseAdmin details{padding:0}
+  .tcHouseAdmin details>label{padding:0 6px}
+  .tcHouseAdmin input[type=datetime-local]{font-size:14px}
+  .tcAdminAccess{padding-inline:12px}
 }

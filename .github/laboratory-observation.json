@@ -1,0 +1,5 @@
+{
+  "schema": "trabajo-cerca.laboratory-observation.v1",
+  "attempt": 6,
+  "purpose": "Confirm the reviewed BNE batch after the existing scheduled writer; read only, no providers"
+}

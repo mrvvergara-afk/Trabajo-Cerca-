@@ -1,0 +1,175 @@
+{
+  "app": {
+    "id": "trabajo-cerca-laboratorio-3ojgro",
+    "url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+    "applied_version": "1791924889565",
+    "status": "ready",
+    "frontend_errors": [],
+    "backend_errors": [],
+    "network_errors": []
+  },
+  "changes": {
+    "native_files": [
+      "backend/free-public-sources.ts",
+      "backend/radar-ingestion.ts"
+    ],
+    "external_producer": "scripts/document_cycle.py",
+    "paid_provider_calls": 0,
+    "maximum_signed_batch": 3,
+    "previous_exchange_preserved_if_no_document_offer": true,
+    "scheduled_activation_requires_reviewed_default_branch_workflow": true
+  },
+  "tests": {
+    "python": 104,
+    "node": 138,
+    "total": 242,
+    "execution": "local_and_github",
+    "passed": true,
+    "github_checks_for_this_revision": "success",
+    "run_id": 38482076134,
+    "run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38482076134",
+    "commit": "8b8c65665d7ddf4749b28965d7e648dc59bb76a0"
+  },
+  "remote": {
+    "repair_ref": "repair/radar-audit-2026-10-11",
+    "repair_sha": "8b8c65665d7ddf4749b28965d7e648dc59bb76a0",
+    "main_sha": "fab392b824e4100a4bba6dfe9289825297d24707",
+    "main_modified": false
+  },
+  "pilot": {
+    "executed": true,
+    "new_document_publications_confirmed": 0,
+    "local_sdk_read": {
+      "executed": false,
+      "blocker": "Chromium process sandbox: setsockopt Operation not permitted",
+      "resolved_by_github_runner": true
+    },
+    "cycles": 4,
+    "previous_blocker": {
+      "tool": "github_create_commit",
+      "result": "user cancelled MCP tool call",
+      "branch_update_performed": false
+    },
+    "previous_blocker_resolved": true,
+    "all_paid_provider_calls": 0,
+    "runs": [
+      {
+        "run_id": 38479791274,
+        "commit": "580351d9d76c69820a4477c2ff5070dd2cd3e5bc",
+        "checked_at": "2026-10-13T22:45:00.554121+00:00",
+        "work_items_received": 71,
+        "checked": 3,
+        "documents_ready": 0,
+        "data_commit": "96a14f611d9b5fa9cf31bb5e3632d070f24ca2bb",
+        "backup_counts": {
+          "attempts": 19,
+          "candidates": 357,
+          "checkpoints": 4,
+          "observations": 2920,
+          "publication_receipts": 2,
+          "runs": 4
+        }
+      },
+      {
+        "run_id": 38480768906,
+        "commit": "a90872ab73b8b153e27229671156e20904ace312",
+        "checked_at": "2026-10-13T22:55:05.684992+00:00",
+        "work_items_received": 71,
+        "checked": 3,
+        "documents_ready": 0,
+        "data_commit": "99bd08fddcd689c1bc033c7cffd3df8e5a61f4b7",
+        "backup_counts": {
+          "attempts": 22,
+          "candidates": 358,
+          "checkpoints": 4,
+          "observations": 2992,
+          "publication_receipts": 2,
+          "runs": 5
+        }
+      },
+      {
+        "run_id": 38481501579,
+        "commit": "52cf834c846376ebc0a7a0e929bfb501dc544fb7",
+        "checked_at": "2026-10-13T23:01:06.561541+00:00",
+        "work_items_received": 71,
+        "checked": 3,
+        "documents_ready": 0,
+        "data_commit": "27af6b77d7b734c72d1fc3236e7015f2d9c01951",
+        "backup_counts": {
+          "attempts": 25,
+          "candidates": 359,
+          "checkpoints": 4,
+          "observations": 3069,
+          "publication_receipts": 2,
+          "runs": 6
+        }
+      },
+      {
+        "run_id": 38482076134,
+        "commit": "8b8c65665d7ddf4749b28965d7e648dc59bb76a0",
+        "checked_at": "2026-10-13T23:06:16.132014+00:00",
+        "work_items_received": 69,
+        "checked": 3,
+        "documents_ready": 0,
+        "data_commit": "6a92ff044797e2d743277a6ed27563d4c3e60cb8",
+        "backup_counts": {
+          "attempts": 28,
+          "candidates": 362,
+          "checkpoints": 4,
+          "observations": 3142,
+          "publication_receipts": 2,
+          "runs": 7
+        }
+      }
+    ],
+    "full_scan_proof": {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf",
+      "engine": "tesseract-local",
+      "page_count": 4,
+      "pages_read": 4,
+      "complete_document": true,
+      "textTruncated": false,
+      "mean_confidence": 70,
+      "bytes": 914870,
+      "sha256": "086dc0893d31d0206f9b900bd1a81c74be7404b107ccc20887139bbf059fb696",
+      "read_only": true,
+      "paid_provider_calls": 0,
+      "verification_status": "pending",
+      "verification_reason": "source_date_missing_or_future"
+    }
+  },
+  "credentials_modified": false,
+  "historical_offers_deleted": false,
+  "new_paid_services": false,
+  "existing_app_crons_modified": false,
+  "source_channels": [
+    {
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "primary_source": "https://munilumaco.cl/",
+      "method": "literal href of Facebook page.php widget linked from the official municipality site",
+      "dedicated_omil_identity_confirmed": false,
+      "job_posts_access_confirmed": false,
+      "paid_target_added": false
+    }
+  ],
+  "preserved_feed_publications": {
+    "complete": true,
+    "manifest": "833783af-be41-4974-b524-abe9ea86305f",
+    "visible_count": 54,
+    "confirmed_previous_ids": [
+      "free-d294f2d92f9e56840e53553adef2420f48b30847",
+      "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+      "c4be30bb-57c1-45c1-9832-18065b54d498"
+    ],
+    "new_document_publications": 0,
+    "checked_at": "2026-10-13T23:06:18.771Z",
+    "github_run": 38482076134,
+    "accepted_data_commit": "27af6b77d7b734c72d1fc3236e7015f2d9c01951"
+  },
+  "scheduled_app_handlers": {
+    "checked_slot_utc": "2026-10-13T23:05:00Z",
+    "collect_direct": "success",
+    "verify_publish": "success",
+    "schedule_changed": false
+  }
+}

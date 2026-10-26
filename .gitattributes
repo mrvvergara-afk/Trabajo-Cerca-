@@ -1,0 +1,2 @@
+# Unified diffs require a space on empty context lines.
+integrations/appdeploy/*.patch whitespace=-blank-at-eol

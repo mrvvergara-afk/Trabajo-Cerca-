@@ -1,0 +1,294 @@
+{
+  "observed_at": "2026-10-13T20:06:22.243Z",
+  "app": {
+    "id": "trabajo-cerca-laboratorio-3ojgro",
+    "url": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/",
+    "applied_version": "1791920772060",
+    "deployment_status": "ready",
+    "reported_errors": {
+      "frontend": [],
+      "backend": [],
+      "network": []
+    }
+  },
+  "branch": {
+    "name": "repair/radar-audit-2026-10-11",
+    "native_repair_commit": "795c4947d3148ab0d9dc9e36abab456017eb94b4",
+    "source_registry_commit": "4793ce273297df199f5085013a42eca13897078f",
+    "main_sha": "fab392b824e4100a4bba6dfe9289825297d24707",
+    "merged": false
+  },
+  "collection": {
+    "checked_at": "2026-10-13T19:52:06.176Z",
+    "sources_read": 5,
+    "http_reads": 8,
+    "notices_checked": 3,
+    "verified": 1,
+    "stored": 1,
+    "published_at_collection": 0,
+    "paid_provider_calls": 0,
+    "pending": 96,
+    "documents_awaiting_local_reader": 29,
+    "coverage_complete": false,
+    "audits": [
+      {
+        "source": "Bolsa Nacional de Empleo · Negrete",
+        "territory": "Negrete",
+        "url": "https://www.bne.gob.cl/oferta/2026-109726",
+        "http": 200,
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 2
+      },
+      {
+        "source": "Radio Nativa",
+        "territory": "Lumaco",
+        "url": "https://www.radionativa.cl/",
+        "http": 200,
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 1
+      },
+      {
+        "source": "Indeed · Los Sauces",
+        "territory": "Los Sauces",
+        "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+        "http": 403,
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      },
+      {
+        "source": "CMPC · portal de empleo",
+        "territory": "zona forestal",
+        "url": "https://cmpc.trabajando.cl/",
+        "http": 200,
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      },
+      {
+        "source": "Computrabajo · Los Sauces",
+        "territory": "Los Sauces",
+        "url": "https://cl.computrabajo.com/trabajo-en-los-sauces",
+        "http": 403,
+        "error": null,
+        "coverageComplete": false,
+        "candidates": 0
+      }
+    ],
+    "reviewed": [
+      {
+        "url": "https://www.bne.gob.cl/oferta/2026-109726",
+        "status": "verified",
+        "reason": "live_jobposting_with_deadline_and_application"
+      },
+      {
+        "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+        "status": "pending",
+        "reason": "structured_jobposting_missing"
+      },
+      {
+        "url": "https://cl.linkedin.com/jobs/view/analista-vibraciones-at-cmpc-4476313755?pageNum=0&position=6&refId=tk3n7AVRRHpUJVINmU0hgw%3D%3D",
+        "status": "review_ready",
+        "reason": "application_or_employer_requires_review"
+      }
+    ],
+    "receipts": [
+      {
+        "table": "radar_external_d294f2d92f9e56840e53553adef2420f",
+        "id": "free-d294f2d92f9e56840e53553adef2420f48b30847",
+        "url": "https://www.bne.gob.cl/oferta/2026-109726"
+      }
+    ]
+  },
+  "publication": {
+    "confirmed": true,
+    "checked_at": "2026-10-13T20:06:22.243Z",
+    "source_receipts": [
+      {
+        "url": "https://www.bne.gob.cl/oferta/2026-109726",
+        "id": "free-d294f2d92f9e56840e53553adef2420f48b30847",
+        "visible": true
+      }
+    ],
+    "feed": {
+      "complete": true,
+      "manifestId": "bbf45265-796d-426f-b30b-fd3646ea4f89",
+      "visibleItemCount": 54,
+      "buildSource": "complete",
+      "stagedPages": 3,
+      "stagedPublicItems": 86,
+      "hasNextSourcePage": false,
+      "updatedAt": "2026-10-13T20:05:39.149Z"
+    },
+    "visible_ids_observed": [
+      "free-d294f2d92f9e56840e53553adef2420f48b30847",
+      "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+      "c4be30bb-57c1-45c1-9832-18065b54d498",
+      "31cc903f-428a-4b78-885c-598622fec047",
+      "e35e4124-3d9e-4562-9b0d-47a582208dc1",
+      "036dcd1e-9097-4cc8-956c-f67d5f86b7f1",
+      "2acda2c7-e657-4656-860e-1645badef65b",
+      "e656f36d-35a9-44fb-b64e-67c04a363429",
+      "1a71f5a2-6a51-46dd-80d9-289ab90f46cf",
+      "250c3ee0-893e-4601-b945-509033af6e1b",
+      "3c500a73-e5f3-47bd-be81-37c8c7fd32ad",
+      "75a40aca-0c0a-4019-a556-c095de6fd446",
+      "3bcab40f-161b-4c92-94cd-89a137c16609",
+      "0b8fb165-a63b-4803-a6ba-27487682ea11",
+      "266784be-8ad6-48be-9570-51bd2c001439",
+      "6db55c3f-f75c-4d6e-bc34-21da895e7521",
+      "0db32001-2271-4eb5-b583-f71bde2d3c07"
+    ],
+    "feed_read_error": null,
+    "existing_signed_ingestion_receipt": {
+      "status": "published",
+      "stored": 2,
+      "published": 2,
+      "checkedAt": "2026-10-13T03:50:37.041Z",
+      "feedManifestId": "bbf45265-796d-426f-b30b-fd3646ea4f89",
+      "dataCommit": "01d35bdc68538e6627d3990a880fdefd98dea6a8",
+      "rejection": null,
+      "runId": "38264847681",
+      "receipts": [
+        {
+          "candidateId": "047ee8fe39ac1365737f7a21",
+          "publishedId": "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+          "state": "published",
+          "sourceUrl": "https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374"
+        },
+        {
+          "candidateId": "4e1e1f2f38f8444271557469",
+          "publishedId": "c4be30bb-57c1-45c1-9832-18065b54d498",
+          "state": "published",
+          "sourceUrl": "https://www.chiletrabajos.cl/trabajo/psicologo-a-clinico-comuna-de-ercilla-3902679"
+        }
+      ]
+    }
+  },
+  "new_offer": {
+    "source_url": "https://www.bne.gob.cl/oferta/2026-109726",
+    "title": "Cajeros/as peaje Negrete (20 vacantes)",
+    "company": "O & C SERVICIOS GENERALES SPA",
+    "municipality": "Negrete",
+    "region": "Bío Bío",
+    "original_date_literal": "15/09/2026",
+    "application_deadline_literal": "17/11/2026",
+    "age_days_at_check": 28,
+    "source_method": "Individual BNE page with official labelled offer; no claim of source JobPosting JSON-LD",
+    "vacancies": 20,
+    "new_listings": 1,
+    "published_id": "free-d294f2d92f9e56840e53553adef2420f48b30847"
+  },
+  "official_source_reads": {
+    "checked_at": "2026-10-13T17:02:36.185565+00:00",
+    "run_id": 38435343271,
+    "paid_provider_calls": 0,
+    "results": [
+      {
+        "url": "https://www.bne.gob.cl/oferta/2026-109726",
+        "final_url": "https://www.bne.gob.cl/oferta/2026-109726",
+        "http": 200,
+        "bytes": 50077,
+        "mime": "text/html"
+      },
+      {
+        "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+        "error": "HTTP 500"
+      },
+      {
+        "url": "https://www.munimulchen.cl/wp-json/wp/v2/posts?search=oferta%20laboral&per_page=10",
+        "final_url": "https://www.munimulchen.cl/wp-json/wp/v2/posts?per_page=10&search=oferta+laboral",
+        "http": 200,
+        "bytes": 2,
+        "mime": "application/json"
+      },
+      {
+        "url": "https://www.muninegrete.cl/feed/",
+        "final_url": "https://www.muninegrete.cl/feed/",
+        "http": 200,
+        "bytes": 10639,
+        "mime": "application/rss+xml"
+      },
+      {
+        "url": "https://www.cmpc.com/trabaja-con-nosotros/",
+        "final_url": "https://www.cmpc.com/trabaja-con-nosotros/",
+        "http": 200,
+        "bytes": 341215,
+        "mime": "text/html"
+      },
+      {
+        "url": "https://cmpc.trabajando.cl/",
+        "final_url": "https://cmpc.trabajando.cl/",
+        "http": 200,
+        "bytes": 360021,
+        "mime": "text/html"
+      },
+      {
+        "url": "https://jobs.arauco.com/",
+        "final_url": "https://jobs.arauco.com/",
+        "http": 200,
+        "bytes": 63014,
+        "mime": "text/html"
+      },
+      {
+        "url": "https://radioviaducto.cl/",
+        "final_url": "https://radioviaducto.cl/",
+        "http": 200,
+        "bytes": 209585,
+        "mime": "text/html"
+      },
+      {
+        "url": "https://lasnoticiasdemalleco.cl/",
+        "final_url": "https://lasnoticiasdemalleco.cl/",
+        "http": 200,
+        "bytes": 331304,
+        "mime": "text/html"
+      },
+      {
+        "url": "https://www.djkamikaze.cl/",
+        "error": "URLError"
+      }
+    ]
+  },
+  "source_configuration": {
+    "native_addresses": 62,
+    "external_registry_entries": 31,
+    "external_html_sources": 18,
+    "unconfirmed_identities_excluded": true,
+    "social_profiles_not_paid_targets": true
+  },
+  "tests": {
+    "python": 91,
+    "node": 134,
+    "total": 225,
+    "completed_run": 38458175368,
+    "completed_run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38458175368",
+    "completed_run_commit": "795c4947d3148ab0d9dc9e36abab456017eb94b4",
+    "latest_registry_review": {
+      "run": 38461230472,
+      "commit": "4793ce273297df199f5085013a42eca13897078f",
+      "status": "success",
+      "url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38461230472",
+      "job": 115516615269
+    }
+  },
+  "restrictions": {
+    "main_modified": false,
+    "historical_offers_deleted": false,
+    "credentials_modified": false,
+    "new_paid_services": false,
+    "manual_paid_provider_calls": 0,
+    "existing_provider_schedules_changed": false
+  },
+  "limitations": [
+    "A published BNE listing does not prove current Facebook/Instagram/OMIL poster publications.",
+    "A discovered employer portal is not an individually verified job.",
+    "The 29 documents pending in the app require the local OCR/PDF producer.",
+    "HTTP 403 and absent literal dates/worksite/employer remain pending, not published.",
+    "The external main scheduler still needs reviewed integration or an equivalent authorized executor.",
+    "Radio Mininco exists; its official publishing channel remains unconfirmed.",
+    "A full 45-day backfill for all sources has not been proven."
+  ]
+}

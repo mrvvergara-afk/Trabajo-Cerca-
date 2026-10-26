@@ -1,84 +1,166 @@
-"""Trabajo Cerca: discovery of public local employment links; never auto-publish."""
-import json, re, urllib.request, urllib.parse, xml.etree.ElementTree as ET
+"""Public municipal and RSS discovery; records still require verification."""
+import re
+import datetime as dt
+import email.utils
+import json
+import urllib.parse
+import xml.etree.ElementTree as ET
 from pathlib import Path
-from datetime import datetime, timezone
-from html import unescape
+try:
+    from .common import COMMUNES, MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, fetch_text, output_dir, safe_error, utcnow, write_json
+except ImportError:
+    from common import COMMUNES, MAX_SOURCE_AGE_DAYS, Links, canonical_url, communes, fetch_text, output_dir, safe_error, utcnow, write_json
 
-COMMUNES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']
-SOURCES = [
- ('OMIL Mulchén','https://www.munimulchen.cl/'),
- ('OMIL Mulchén - Jefe de Terreno','https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/'),
- ('OMIL Nacimiento - publicaciones','https://www.govern1.com/CL/Nacimiento/102913642090515/OMIL-Municipalidad-de-Nacimiento'),
- ('Renaico - concursos','https://municipalidadrenaico.cl/concursos-publicos/'),
- ('Municipalidad de Angol','https://www.angol.cl/'),
- ('Municipalidad de Nacimiento','https://www.nacimiento.cl/'),
- ('Municipalidad de Collipulli','https://www.municipalidadcollipulli.cl/'),
-]
-KEYWORDS = re.compile(r'empleo|trabajo|vacante|postulaci[oó]n|oferta laboral|se busca|omil|convocatoria',re.I)
-HIRING = re.compile(r'oferta[s]? laboral(?:es)?|vacante[s]?|se busca|se requiere|se necesita|contrata(?:ci[oó]n|r)|postula(?:ciones|r)? a(?:l)? (?:cargo|puesto)|bolsa de empleo|omil',re.I)
-EXCLUDE = re.compile(r'subsidio|inversi[oó]n|exportaciones|inteligencia artificial|dossier art[ií]stico|pymes|villarruel|argentina|tamaulipas|rancahuaso',re.I)
-LINK = re.compile(r'href=["\\\']([^"\\\']+)["\\\']',re.I)
-candidates=[]; diagnostics=[]; seen=set()
+SOURCE_CONFIG = Path(__file__).resolve().parents[1] / 'config' / 'local-source-priorities.json'
+ROTATION_CHECKPOINT = '__public_source_rotation__'
 
-def fetch(url):
- req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (compatible; TrabajoCercaRadar/0.2)'})
- with urllib.request.urlopen(req,timeout=16) as response:
-  return response.read(900000).decode('utf-8','replace')
 
-def add(source,url,commune='pending_review',title=''):
- if not url.startswith('https://') and not url.startswith('http://'): return
- key=url.split('#')[0]
- if re.search(r'/20(?:0\\d|1\\d|2[0-4])/',key): return
- if key in seen: return
- seen.add(key)
- candidates.append({'source':source,'url':key,'title':title,'commune':commune,'status':'candidate_unverified'})
+def configured_sources(path=SOURCE_CONFIG):
+    """Use the reviewed public websites; social profiles need their own collector."""
+    config = json.loads(Path(path).read_text(encoding='utf-8'))
+    sources = []
+    for source in config['sources']:
+        if source.get('family') not in ('municipal', 'media', 'employer', 'official') or source.get('identity_requires_check'):
+            continue
+        entry = (source['name'], canonical_url(source['url']))
+        if entry not in sources:
+            sources.append(entry)
+    return sources
 
-# Backfill: traverse public archive/category/pagination links (bounded per source).
-ARCHIVE = re.compile(r'page/\\d+|[?&](?:paged|page)=\\d+|/category/|/categoria/|/tag/|/ofertas?|/empleo|/trabajo|/omil|/convocatoria|/concursos?',re.I)
-for name,url in SOURCES:
- queue=[(url,0)]; visited=set(); found=0; errors=[]
- origin=urllib.parse.urlparse(url).netloc.lower().removeprefix('www.')
- while queue and len(visited)<35:
-  current,depth=queue.pop(0)
-  if current in visited: continue
-  visited.add(current)
-  try:
-   html=fetch(current)
-   links=list(dict.fromkeys(urllib.parse.urljoin(current,unescape(x)) for x in LINK.findall(html)))
-   for link in links:
-    parsed=urllib.parse.urlparse(link)
-    if parsed.scheme not in ('http','https'): continue
-    host=parsed.netloc.lower().removeprefix('www.')
-    if host!=origin: continue
-    clean=link.split('#')[0]
-    if re.search(r'/20(?:0\\d|1\\d|2[0-4])/',clean): continue
-    if KEYWORDS.search(clean):
-     before=len(candidates);add(name,clean);found+=len(candidates)-before
-    if depth<3 and not re.search(r'\\.(?:pdf|jpe?g|png|docx?|xlsx?)(?:\\?|$)',clean,re.I) and ARCHIVE.search(clean) and clean not in visited and not any(x[0]==clean for x in queue) and len(queue)<100:
-     queue.append((clean,depth+1))
-   if KEYWORDS.search(current): add(name,current)
-  except Exception as exc:
-   errors.append({'url':current,'reason':str(exc)[:100]})
- diagnostics.append({'source':name,'status':'partial' if errors else 'ok','pages_scanned':len(visited),'candidate_links':found,'errors':errors[:5]})
 
-# Independent search discovery via public Google News RSS index. Results remain unverified.
-for commune in COMMUNES:
- query=f'"{commune}" ("oferta laboral" OR "se necesita" OR "se busca" OR "vacantes" OR OMIL) when:60d'
- url='https://news.google.com/rss/search?q='+urllib.parse.quote(query)+'&hl=es-419&gl=CL&ceid=CL:es-419'
- try:
-  root=ET.fromstring(fetch(url))
-  found=0
-  for item in root.findall('./channel/item')[:40]:
-   title=(item.findtext('title') or '').strip()
-   link=(item.findtext('link') or '').strip()
-   if link and HIRING.search(title) and not EXCLUDE.search(title) and re.search(r'\\b'+re.escape(commune)+r'\\b',title,re.I):
-    add('Google News RSS',link,commune,title)
-    found+=1
-  diagnostics.append({'source':'Google News RSS '+commune,'status':'ok','candidate_links':found})
- except Exception as exc:
-  diagnostics.append({'source':'Google News RSS '+commune,'status':'error','reason':str(exc)[:180]})
+KEYWORDS = re.compile(r'empleo|trabaj[oa]|vacante|postulaci[oó]n|oferta.laboral|se.busca|omil|convocatoria|career|join.our.team', re.I)
+HIRING = re.compile(r'ofertas? laboral(?:es)?|vacantes?|se (?:busca|requiere|necesita)|contrataci[oó]n|postulaciones|omil', re.I)
+EXCLUDE = re.compile(r'subsidio|inversi[oó]n|exportaciones|inteligencia artificial|dossier art[ií]stico|pymes|villarruel|argentina|tamaulipas|rancahuaso', re.I)
+ARCHIVE = re.compile(r'page/\d+|[?&](?:paged|page)=\d+|/category/|/categoria/|/tag/|/ofertas?|/empleo|/trabajo|/omil|/convocatoria|/concursos?', re.I)
+OLD_ARCHIVE = re.compile(r'/20(?:0\d|1\d|2[0-4])/')
+BINARY = re.compile(r'\.(?:pdf|jpe?g|png|docx?|xlsx?)(?:\?|$)', re.I)
 
-Path('output').mkdir(exist_ok=True)
-report={'run_at':datetime.now(timezone.utc).isoformat(),'candidates':candidates,'diagnostics':diagnostics,'published':0,'note':'Search results are NOT verified vacancies; review before publishing.'}
-Path('output/report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
-print(json.dumps({'candidate_links':len(candidates),'diagnostics':diagnostics},ensure_ascii=False))
+
+def run(*, fetcher=fetch_text, output=None, sources=None, places=None,
+        max_pages=35, budget=None, checkpoints=None, now=None):
+    now = now or utcnow()
+    records, diagnostics, saved = {}, [], {}
+
+    def add(source, url, title='', commune=None):
+        try:
+            url = canonical_url(url)
+        except ValueError:
+            return False
+        if OLD_ARCHIVE.search(url) or url in records:
+            return False
+        records[url] = {'source': source, 'url': url, 'title': title,
+                        'commune_hint': commune, 'state': 'pending_verification',
+                        'discovered_at': now.isoformat(), 'work_location_verified': False}
+        return True
+
+    sources = list(configured_sources() if sources is None else sources)
+    work = []
+    for name, origin_url in sources:
+        previous = (checkpoints or {}).get(name, {})
+        queue = [tuple(pair) for pair in previous.get('queue', [])] or [(origin_url, 0)]
+        visited = set(previous.get('visited', [])) if previous.get('queue') else set()
+        work.append({'name':name, 'origin':origin_url, 'queue':queue, 'visited':visited,
+                     'attempts':0, 'succeeded':0, 'found':0, 'errors':[], 'retry':[]})
+    start = (checkpoints or {}).get(ROTATION_CHECKPOINT, {}).get('next_source')
+    names = [source['name'] for source in work]
+    start_index = names.index(start) if start in names else 0
+    order = list(range(start_index, len(work))) + list(range(start_index))
+    last_served = None
+    # One page per source in each round. A slow archive cannot consume all quotas.
+    while any(source['queue'] and source['attempts'] < max_pages for source in work):
+        if budget and budget.remaining() <= 0:
+            break
+        for index in order:
+            source = work[index]
+            queue, visited = source['queue'], source['visited']
+            if not queue or source['attempts'] >= max_pages:
+                continue
+            if budget and budget.remaining() <= 0:
+                break
+            current, depth = queue.pop(0)
+            if current in visited:
+                continue
+            source['attempts'] += 1
+            last_served = index
+            host = urllib.parse.urlsplit(source['origin']).hostname.lower().removeprefix('www.')
+            try:
+                page = fetcher(current, budget=budget)
+                source['succeeded'] += 1
+                visited.add(current)
+                parser = Links()
+                parser.feed(page)
+                for href, title in parser.links:
+                    try:
+                        link = canonical_url(urllib.parse.urljoin(current, href))
+                    except ValueError:
+                        continue
+                    parsed = urllib.parse.urlsplit(link)
+                    if parsed.hostname.lower().removeprefix('www.') != host or OLD_ARCHIVE.search(link):
+                        continue
+                    if KEYWORDS.search(link + ' ' + title):
+                        source['found'] += add(source['name'], link, title)
+                    if depth < 3 and not BINARY.search(link) and ARCHIVE.search(link):
+                        if link not in visited and all(pair[0] != link for pair in queue):
+                            queue.append((link, depth + 1))
+                if KEYWORDS.search(current):
+                    source['found'] += add(source['name'], current)
+            except Exception as exc:
+                source['errors'].append({'url': current, 'reason': safe_error(exc)})
+                source['retry'].append((current, depth))
+    for source in work:
+        name = source['name']
+        queue, visited = source['queue'], source['visited']
+        attempts, succeeded, found = source['attempts'], source['succeeded'], source['found']
+        errors, retry = source['errors'], source['retry']
+        queue.extend(retry)
+        status = 'deferred' if not attempts and queue else 'error' if errors and not succeeded else 'partial' if errors or queue else 'ok'
+        diagnostics.append({'source': name, 'status': status, 'pages_scanned': attempts,
+                            'pages_succeeded': succeeded, 'candidate_links': found,
+                            'coverage_complete': False, 'crawl_queue_complete': not queue,
+                            'historical_coverage_verified': False, 'pages_pending': len(queue),
+                            'errors': errors})
+        saved[name] = {'queue': queue, 'visited': sorted(visited) if queue else [],
+                       'coverage_complete': not queue}
+    if work:
+        next_index = (last_served + 1) % len(work) if last_served is not None else start_index
+        saved[ROTATION_CHECKPOINT] = {'next_source':names[next_index]}
+
+    for place in (COMMUNES if places is None else places):
+        if budget and budget.remaining() <= 0:
+            diagnostics.append({'source': 'Google News RSS ' + place, 'status': 'deferred',
+                                'reason': 'stage_budget_exhausted'})
+            continue
+        query = f'"{place}" ("oferta laboral" OR "se necesita" OR "se busca" OR "vacantes" OR OMIL) when:{MAX_SOURCE_AGE_DAYS}d'
+        url = 'https://news.google.com/rss/search?q=' + urllib.parse.quote(query) + '&hl=es-419&gl=CL&ceid=CL:es-419'
+        try:
+            root = ET.fromstring(fetcher(url, budget=budget))
+            found = 0
+            for item in root.findall('./channel/item')[:40]:
+                title, link = item.findtext('title', '').strip(), item.findtext('link', '').strip()
+                try:
+                    when = email.utils.parsedate_to_datetime(item.findtext('pubDate', ''))
+                    when = when.replace(tzinfo=when.tzinfo or dt.timezone.utc).astimezone(dt.timezone.utc)
+                except (ValueError, TypeError, OverflowError):
+                    when = None
+                if when and (when > now or now - when > dt.timedelta(days=MAX_SOURCE_AGE_DAYS)):
+                    continue
+                if link and HIRING.search(title) and not EXCLUDE.search(title) and place in communes(title):
+                    found += add('Google News RSS', link, title, place)
+            diagnostics.append({'source': 'Google News RSS ' + place, 'status': 'ok',
+                                'candidate_links': found, 'coverage_complete': False})
+        except Exception as exc:
+            diagnostics.append({'source': 'Google News RSS ' + place, 'status': 'error',
+                                'reason': safe_error(exc)})
+    report = {'run_at': now.isoformat(), 'candidates': list(records.values()),
+              'candidate_count': len(records), 'diagnostics': diagnostics,
+              'checkpoints': saved, 'published': 0, 'lookback_days':MAX_SOURCE_AGE_DAYS,
+              'note': 'Discovery only. Website queue exhaustion does not prove 45-day coverage. RSS is indexed news, not a complete job archive; unknown dates remain pending.'}
+    write_json((output or output_dir()) / 'report.json', report)
+    return report
+
+
+if __name__ == '__main__':
+    import json
+    result = run()
+    print(json.dumps({'candidate_links': result['candidate_count'],
+                      'diagnostics': result['diagnostics']}, ensure_ascii=False))

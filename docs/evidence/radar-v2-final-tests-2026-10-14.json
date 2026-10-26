@@ -1,0 +1,16 @@
+{
+  "schema": "trabajo-cerca.radar-v2-test-evidence.v1",
+  "run_id": 38577913584,
+  "run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38577913584",
+  "job_id": 115899794958,
+  "code_commit": "5192cb0773daf9f3d95c611cf8c233635c2bb30a",
+  "conclusion": "success",
+  "python_tests": 125,
+  "node_tests": 146,
+  "total_tests": 271,
+  "node_failures": 0,
+  "live_collection_executed": false,
+  "new_publications": 0,
+  "paid_provider_calls": 0,
+  "directory_fix_validation": "Controlled regressions; no new source-capture run for this final change"
+}

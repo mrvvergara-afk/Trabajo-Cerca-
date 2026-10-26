@@ -1,0 +1,23 @@
+{
+  "status": "applied",
+  "baseline_version": "1791858508959",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "app_name": "Trabajo Cerca",
+  "app_type": "frontend+backend",
+  "model": "gpt-6",
+  "initiator": "agent",
+  "type": "fix",
+  "intent": "Preserve social verification and no-paid-fallback checks when rediscovery combines source tags",
+  "files": [
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "  const visualEvidence = record.discoveredBy === 'radar-social-visual' || record.discoveredBy === 'radar-social-text';",
+          "to": "  const visualEvidence = Boolean(record.socialEvidence) || /radar-social-(?:visual|text)/.test(record.discoveredBy || '');"
+        }
+      ]
+    }
+  ],
+  "applied_version": "1791861145815"
+}

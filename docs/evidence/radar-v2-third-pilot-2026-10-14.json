@@ -1,0 +1,134 @@
+{
+  "schema": "trabajo-cerca.radar-v2-pilot-evidence.v1",
+  "run_id": 38576653077,
+  "run_url": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/38576653077",
+  "code_commit": "6aa54cc5f80f53593019e64a74be3f28a24c71b6",
+  "tested": {
+    "python": 123,
+    "node": 146,
+    "total": 269
+  },
+  "social": [
+    {
+      "key": "renaico-facebook",
+      "access": "public_posts_observed",
+      "posts": 1,
+      "dated_posts": 0,
+      "media": 0
+    },
+    {
+      "key": "negrete-facebook",
+      "access": "public_posts_observed",
+      "posts": 1,
+      "dated_posts": 0,
+      "media": 0
+    }
+  ],
+  "result": {
+    "data_commit": "9d73a79f6529272f1c0da5a5b824527f99ade751",
+    "first": {
+      "schema": "trabajo-cerca.radar-v2-pilot-result.v1",
+      "checked_at": "2026-10-14T14:01:15.541314+00:00",
+      "processed": 18,
+      "counts": {
+        "jobs": 91,
+        "runs": 5,
+        "observed_days": 1,
+        "attempts": 84,
+        "observations": 558,
+        "objects": 67,
+        "statuses": {
+          "done": 84,
+          "queued": 7
+        }
+      },
+      "eligible_local_notices": 0,
+      "evaluated": 18,
+      "paid_provider_calls": 0,
+      "published": 0,
+      "publication_confirmed": false,
+      "production_modified": false,
+      "coverage_complete": false,
+      "independent_reference_count": 0,
+      "recall_measured": false,
+      "seven_day_observation_complete": false
+    },
+    "second": {
+      "schema": "trabajo-cerca.radar-v2-pilot-result.v1",
+      "checked_at": "2026-10-14T14:01:56.645021+00:00",
+      "processed": 10,
+      "counts": {
+        "jobs": 94,
+        "runs": 6,
+        "observed_days": 1,
+        "attempts": 94,
+        "observations": 684,
+        "objects": 69,
+        "statuses": {
+          "done": 94
+        }
+      },
+      "eligible_local_notices": 0,
+      "evaluated": 24,
+      "paid_provider_calls": 0,
+      "published": 0,
+      "publication_confirmed": false,
+      "production_modified": false,
+      "coverage_complete": false,
+      "independent_reference_count": 0,
+      "recall_measured": false,
+      "seven_day_observation_complete": false
+    },
+    "drain": {
+      "schema": "trabajo-cerca.radar-v2-pilot-result.v1",
+      "checked_at": "2026-10-14T14:02:00.051782+00:00",
+      "processed": 0,
+      "counts": {
+        "jobs": 94,
+        "runs": 7,
+        "observed_days": 1,
+        "attempts": 94,
+        "observations": 704,
+        "objects": 69,
+        "statuses": {
+          "done": 94
+        }
+      },
+      "eligible_local_notices": 0,
+      "evaluated": 24,
+      "paid_provider_calls": 0,
+      "published": 0,
+      "publication_confirmed": false,
+      "production_modified": false,
+      "coverage_complete": false,
+      "independent_reference_count": 0,
+      "recall_measured": false,
+      "seven_day_observation_complete": false
+    }
+  },
+  "persistence": {
+    "data_branch": "radar-pilot-v2-state",
+    "previous_data_commit": "eadd99c2b4a3985772818d04098fdc0cab5214d6",
+    "previous_objects_preserved": 47,
+    "missing_previous_objects": 0,
+    "sqlite_integrity": "ok"
+  },
+  "document_checks": {
+    "pdf_documents": 5,
+    "pdf_pages": 40,
+    "pdf_pages_processed": 40,
+    "image_pages": 5,
+    "all_jobs_finished": true,
+    "long_documents_with_incomplete_evaluation_text": 3
+  },
+  "evaluation_reasons": {
+    "social_or_employer_publication_bridge_not_validated": 13,
+    "source_older_than_45_days": 1,
+    "job_notice_unconfirmed": 5,
+    "source_date_missing_or_future": 5
+  },
+  "independent_reference_count": 0,
+  "recall_measured": false,
+  "seven_day_observation_complete": false,
+  "note": "Los tres pilotos ocurrieron el mismo día. Completar tareas o leer páginas no confirma un aviso ni la viabilidad de publicación social automática."
+}

@@ -1,0 +1,360 @@
+--- a/backend/index.ts
++++ b/backend/index.ts
+@@ -1,4 +1,5 @@
+ import { db, router, json, error, secrets, storage, ai, notifications, requireAuth } from '@appdeploy/sdk';
++import { advancePublicFeed, readPublicFeedPage, readPublicFeedSummary, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
+ 
+ type SeedJob = {
+   title: string;
+@@ -529,11 +530,11 @@
+   }
+ 
+   if (adds.length) {
+-    const ids = await db.add('radar_jobs', adds);
++    const ids = await trackedFeedAdd('radar_jobs', adds);
+     if (ids.some(id => !id)) throw new Error('No se pudo completar la migración de oportunidades.');
+   }
+   if (updates.length) {
+-    const ok = await db.update('radar_jobs', updates);
++    const ok = await trackedFeedUpdate('radar_jobs', updates);
+     if (ok.some(value => !value)) throw new Error('No se pudo actualizar el Radar.');
+   }
+ 
+@@ -741,91 +742,45 @@
+   return { initialized:false, offers:eligible.length, matchedUsers, sent, failed };
+ }
+ 
++function projectFeedListing(value:Record<string, unknown> & { id:string }) {
++  const item = value as unknown as ListingRecord & { id:string };
++  if (!isCurrentlyActive(item)) return null;
++  if (item.kind === 'job_offer') {
++    if (!item.verified || item.review) return null;
++    if (!item.workCommunes?.some(commune => PILOT.some(target => normalizeText(target).toLocaleLowerCase('es-CL') === normalizeText(commune).toLocaleLowerCase('es-CL')))) return null;
++    const evidence = [item.title, item.company, item.note, item.url, item.sourceDomain].filter(Boolean).join(' ');
++    if (unsafeContentReason(evidence, item.url)) return null;
++    const published = parseDiscoveryDate(item.sourcePublishedAt || item.date);
++    if (!published || staleDiscoveryDate(new Date(published).toISOString())) return null;
++  }
++  return publicRecord(item);
++}
++
++function feedRefreshAt(item:Record<string, unknown>) {
++  const now = Date.now();
++  const candidates = [Date.parse(String(item.expiresAt || '')) + 1];
++  if (item.kind === 'job_offer') {
++    candidates.push(Date.parse(String(item.createdAt || '')) + 86400000 + 1);
++    const published = parseDiscoveryDate(String(item.sourcePublishedAt || item.date || ''));
++    if (published) candidates.push(published + DISCOVERY_MAX_AGE_DAYS * 86400000 + 1);
++  }
++  const upcoming = candidates.filter(time => Number.isFinite(time) && time > now);
++  return upcoming.length ? Math.min(...upcoming) : null;
++}
++
++async function readFeedRows() {
++  const feed = await readPublicFeedPage();
++  return { items:feed ? [feed as unknown as PublicFeedPage] : [] };
++}
++
+ async function rebuildPublicFeed() {
+-  const [radar, community, control] = await Promise.all([
+-    db.list<ListingRecord>('radar_jobs', { limit:200 }),
+-    db.list<ListingRecord>('community_posts', { limit:200 }),
+-    db.list<PublicFeedControl>('public_feed_control', { limit:1 }),
+-  ]);
+-  // Preserve the existing materialized feed rather than publish a truncated inventory.
+-  // A paginated shadow snapshot is required for feeds larger than this bounded page.
+-  if (radar.nextToken || community.nextToken) {
+-    throw new Error('Incomplete inventory: public feed retained; paginated snapshot required');
+-  }
+-  const updatedAt = new Date().toISOString();
+-  const publicItems = [...radar.items, ...community.items]
+-    .filter(item => {
+-      if (!isCurrentlyActive(item)) return false;
+-      if (item.kind !== 'job_offer') return true;
+-      if (!item.verified || item.review) return false;
+-      if (!item.workCommunes?.some(commune => PILOT.some(target => normalizeText(target).toLocaleLowerCase('es-CL') === normalizeText(commune).toLocaleLowerCase('es-CL')))) return false;
+-      const sourceEvidence = [item.title, item.company, item.note, item.url, item.sourceDomain].filter(Boolean).join(' ');
+-      if (unsafeContentReason(sourceEvidence, item.url)) return false;
+-      const publishedTs = parseDiscoveryDate(item.sourcePublishedAt || item.date);
+-      if (!publishedTs) return false;
+-      if (staleDiscoveryDate(new Date(publishedTs).toISOString())) return false;
+-      return true;
+-    })
+-    .sort((a,b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+-    .map(publicRecord);
+-  const jobOffers = publicItems.filter(item => item.kind === 'job_offer');
+-  const totalJobOffers = jobOffers.length;
+-  const totalVerifiedJobOffers = jobOffers.filter(item => item.verified && !item.review).length;
+-  const totalProvisionalJobOffers = 0;
+-  const cutoff24h = Date.now() - 86400000;
+-  const communeStats: Record<string, CommuneStats> = {};
+-  const ensureCommune = (commune:string) => communeStats[commune] ??= { jobs:0, newJobs24h:0, people:0, needs:0, services:0 };
+-  for (const item of publicItems) {
+-    for (const commune of item.workCommunes) {
+-      const stat = ensureCommune(commune);
+-      if (item.kind === 'job_offer') {
+-        stat.jobs += 1;
+-        if (Date.parse(item.createdAt) >= cutoff24h) stat.newJobs24h += 1;
+-      } else if (item.kind === 'worker_available') stat.people += 1;
+-      else if (item.kind === 'worker_need') stat.needs += 1;
+-      else if (item.kind === 'service_request') stat.services += 1;
+-    }
+-  }
+-  const kindStats: KindStats = {
+-    jobs:jobOffers.length,
+-    people:publicItems.filter(item => item.kind === 'worker_available').length,
+-    needs:publicItems.filter(item => item.kind === 'worker_need').length,
+-    services:publicItems.filter(item => item.kind === 'service_request').length,
+-  };
+-  const pageCount = Math.max(1, Math.ceil(publicItems.length / PUBLIC_FEED_PAGE_SIZE));
+-
+-  for (let page = 0; page < pageCount; page += 1) {
+-    const start = page * PUBLIC_FEED_PAGE_SIZE;
+-    const items = publicItems.slice(start, start + PUBLIC_FEED_PAGE_SIZE);
+-    const hasMore = page < pageCount - 1;
+-    const record: PublicFeedPage = {
+-      items,
+-      updatedAt,
+-      hasMore,
+-      nextCursor:hasMore ? String(page + 1) : undefined,
+-      pageSize:PUBLIC_FEED_PAGE_SIZE,
+-      totalItems:publicItems.length,
+-      totalJobOffers,
+-      totalVerifiedJobOffers,
+-      totalProvisionalJobOffers,
+-      communeStats,
+-      kindStats,
+-    };
+-    await writeSingleRecord(publicFeedTable(page), record as unknown as Record<string, unknown>);
+-  }
+-
+-  const previousPageCount = control.items[0]?.pageCount ?? 0;
+-  for (let page = pageCount; page < previousPageCount; page += 1) {
+-    const old = await db.list<Record<string, unknown>>(publicFeedTable(page), { limit:1 });
+-    if (old.items[0]) await db.delete(publicFeedTable(page), [old.items[0].id]);
+-  }
+-  await writeSingleRecord('public_feed_control', { pageCount, updatedAt, itemCount:publicItems.length, totalJobOffers, totalVerifiedJobOffers, totalProvisionalJobOffers, communeStats, kindStats });
+-  return { pageCount, itemCount:publicItems.length, totalJobOffers, totalVerifiedJobOffers, totalProvisionalJobOffers, communeStats, kindStats, updatedAt };
++  // Only verify-publish advances the durable writer. Read/manual/collector paths keep the visible snapshot.
++  return readPublicFeedSummary();
+ }
+ 
+ async function refreshSocialDraftQueue() {
+   const [feed, existing] = await Promise.all([
+-    db.list<PublicFeedPage>(publicFeedTable(0), { limit:1 }),
++    readFeedRows(),
+     db.list<SocialDraft>('growth_social_queue', { limit:100 }),
+   ]);
+   const now = Date.now();
+@@ -1076,7 +1031,7 @@
+   const candidateUpdates = [...updates.values()].filter(item => item.table === 'radar_candidates').map(({ id, record }) => ({ id, record }));
+   const jobUpdates = [...updates.values()].filter(item => item.table === 'radar_jobs').map(({ id, record }) => ({ id, record }));
+   if (candidateUpdates.length) await db.update('radar_candidates', candidateUpdates);
+-  if (jobUpdates.length) await db.update('radar_jobs', jobUpdates);
++  if (jobUpdates.length) await trackedFeedUpdate('radar_jobs', jobUpdates);
+   return candidateUpdates.length + jobUpdates.length;
+ }
+ 
+@@ -1374,7 +1329,7 @@
+     results.push(...resolved);
+   }
+   const additions = results.filter(result => result.promoted !== null);
+-  const addedIds = additions.length ? await db.add('radar_jobs', additions.map(result => result.promoted!)) : [];
++  const addedIds = additions.length ? await trackedFeedAdd('radar_jobs', additions.map(result => result.promoted!)) : [];
+   const successful = new Map<string,string>(additions.flatMap((result, i) => addedIds[i] ? [[result.id, addedIds[i]!] as [string,string]] : []));
+   const updates = results.map(result => ({
+     id:result.id,
+@@ -1426,7 +1381,7 @@
+     const resolved = await Promise.all(pending.slice(i, i+16).map(item => verifyPendingOffer(item)));
+     updates.push(...resolved);
+   }
+-  const saved = updates.length ? await db.update('radar_jobs', updates) : [];
++  const saved = updates.length ? await trackedFeedUpdate('radar_jobs', updates) : [];
+   if (saved.length !== updates.length || saved.some(ok => !ok)) {
+     throw new Error('Partial verification write; publication counters must not claim success');
+   }
+@@ -1462,7 +1417,7 @@
+       },
+     };
+   });
+-  if (updates.length) await db.update('radar_jobs', updates);
++  if (updates.length) await trackedFeedUpdate('radar_jobs', updates);
+   return updates.length;
+ }
+ 
+@@ -1673,7 +1628,7 @@
+       seenSignatures.add(signature);
+     }
+     await flushRediscoveryUpdates(rediscoveryUpdates);
+-    if (autoPublic.length) await db.add('radar_jobs', autoPublic);
++    if (autoPublic.length) await trackedFeedAdd('radar_jobs', autoPublic);
+     if (additions.length) await db.add('radar_candidates', additions);
+     return { audit:{ sourceKey:source.key, checkedAt, status:'ok' as const, linksSeen:anchors.length, candidatesFound:matches.length, newCandidates:additions.length + autoPublic.length, refreshedExisting }, state };
+   } catch (err) {
+@@ -1858,7 +1813,7 @@
+  const token=await getBrightDataToken(); if(!token)throw new Error('SOCIAL_TARGET collect token_missing');
+  const pendingRows:Record<string,unknown>[]=[];let nextPendingToken:string|undefined;for(let page=0;page<3;page++){const batch=await db.list<Record<string,unknown>>('social_capture_runs',{limit:100,...(nextPendingToken?{nextToken:nextPendingToken}:{})});pendingRows.push(...batch.items.filter(x=>x.status==='pending'));if(pendingRows.length>=12||!batch.nextToken)break;nextPendingToken=batch.nextToken;}const rows=pendingRows.sort((a,b)=>Date.parse(normalizeText(a.createdAt))-Date.parse(normalizeText(b.createdAt))).slice(0,1); const report:Record<string,unknown>[]=[];
+  for(const row of rows){const id=normalizeText(row.snapshotId);if(!id)continue;try{const prog=await fetch(`https://api.brightdata.com/datasets/v3/progress/${id}`,{headers:{Authorization:`Bearer ${token}`},signal:AbortSignal.timeout(8000)});const p=await prog.json() as Record<string,unknown>;if(p.status!=='ready'){report.push({source:row.sourceName,snapshotId:id,status:p.status});const started=Date.parse(normalizeText(row.createdAt));const stalePending=Number.isFinite(started)&&Date.now()-started>48*3600000;if(row.id&&(p.status==='failed'||p.status==='error'||stalePending))await db.update('social_capture_runs',[{id:String(row.id),record:{...row,status:'failed',lastError:normalizeText(p.status)||'snapshot_timeout',closedAt:new Date().toISOString()}}]);continue;}const snap=await fetch(`https://api.brightdata.com/datasets/v3/snapshot/${id}?format=json`,{headers:{Authorization:`Bearer ${token}`},signal:AbortSignal.timeout(10000)});const snapshot=await snap.json() as unknown;const records=socialSnapshotPosts(snapshot);let images=0,read=0,jobs=0,textRead=0,textJobs=0;const findings:Record<string,unknown>[]=[];let postCursor=Math.max(0,Number(row.postCursor||0));let mediaCursor=Math.max(0,Number(row.mediaCursor||0));let postsCompleted=0;const sourcePosts=records;while(postCursor<sourcePosts.length&&postsCompleted<3&&images<3){const post=sourcePosts[postCursor];if(mediaCursor===0&&textRead<3){textRead++;try{const extracted=await socialTextOffers(post);textJobs+=extracted.length;jobs+=extracted.length;findings.push(...extracted);}catch(e){console.warn('SOCIAL_TEXT_EXTRACTION_ERROR '+(e instanceof Error?e.message:String(e)).slice(0,160));}}const media=[...new Set([...collectMediaUrls(post.attachments),...collectMediaUrls(post.media),...collectMediaUrls(post.images),...collectMediaUrls(post.image_url),...collectMediaUrls(post)])];while(mediaCursor<media.length&&images<3){const mediaUrl=media[mediaCursor];mediaCursor++;images++;try{const img=await fetch(mediaUrl,{signal:AbortSignal.timeout(7000)});if(!img.ok)continue;const mime=(img.headers.get('content-type')||'image/jpeg').split(';')[0];if(!['image/jpeg','image/png','image/webp'].includes(mime))continue;const bytes=new Uint8Array(await img.arrayBuffer());if(bytes.byteLength>6000000)continue;const b64=Buffer.from(bytes).toString('base64');const o=await ai.ocr({images:[{data:b64,mimeType:mime}],prompt:'Trabajo Cerca Chile. Lee TODO el texto visible del afiche o publicación. Detecta avisos laborales aunque no usen la palabra empleo: se necesita, se busca, buscamos, cupos, contratación, reemplazo, faena, turno, temporada, enviar CV, llamar o WhatsApp. Descarta cursos, beneficios, noticias y publicidad sin vacante. Si es empleo extrae cargo/oficio, empresa, localidad o comuna REAL de faena, requisitos, teléfono/correo/contacto y fecha límite. Conserva localidades como Coihue, Tijeral, Pidima, Pailahueque, Capitán Pastene, Selva Oscura, Quino y Mininco. No inventes.',schema:{type:'object',properties:{isJobNotice:{type:'boolean'},text:{type:'string'},title:{type:'string'},company:{type:'string'},commune:{type:'string'},requirements:{type:'string'},contact:{type:'string'},deadline:{type:'string'}},required:['isJobNotice','text']},thinkingMode:'FAST',cache:true});read++;const x=(o.data&&typeof o.data==='object'?o.data:{}) as Record<string,unknown>;if(x.isJobNotice===true){jobs++;findings.push({postUrl:post.url,postDate:socialOriginalDate(post),mediaUrl,medium:'image',title:x.title,company:x.company,commune:x.commune,requirements:x.requirements,contact:x.contact,deadline:x.deadline,text:normalizeText(x.text).slice(0,500)});}}catch{/* continue */}}if(mediaCursor>=media.length){postCursor++;mediaCursor=0;postsCompleted++;}}report.push({source:row.sourceName,territory:row.territory,posts:Array.isArray(records)?records.length:0,images,imagesRead:read,jobNotices:jobs,textPostsRead:textRead,textJobNotices:textJobs,findings});if(row.id)await db.update('social_capture_runs',[{id:String(row.id),record:{...row,status:postCursor<(Array.isArray(records)?records.length:0)?'pending':'processed',postCursor,mediaCursor,processedAt:new Date().toISOString(),posts:Array.isArray(records)?records.length:0,images:Number(row.images||0)+images,imagesRead:Number(row.imagesRead||0)+read,jobNotices:Number(row.jobNotices||0)+jobs,textPostsRead:Number(row.textPostsRead||0)+textRead,textJobNotices:Number(row.textJobNotices||0)+textJobs,findings:[...(Array.isArray(row.findings)?row.findings:[]),...findings]}}]);continue;}catch(e){report.push({source:row.sourceName,error:e instanceof Error?e.message:String(e)});}}
+- const existing=await db.list<ListingRecord>('radar_jobs',{limit:200}); const knownUrls=new Set(existing.items.filter(x=>x.url).map(x=>`${x.url}::${normalizeText(x.title).toLowerCase()}`)); const additions:ListingRecord[]=[]; for(const item of report){const sourceName=normalizeText(item.source)||'Fuente social local';const territory=normalizeText(item.territory);const findings=Array.isArray(item.findings)?item.findings as Record<string,unknown>[]:[];for(const f of findings){const url=normalizeText(f.postUrl);const title=normalizeText(f.title);const company=normalizeText(f.company)||sourceName;const commune=normalizeText(f.commune)||territory;if(!title||!commune||!url||!extractCommunes(commune).length||knownUrls.has(`${url}::${title.toLowerCase()}`))continue;const now=new Date().toISOString();additions.push({kind:'job_offer',origin:'radar',title,company,workLocation:commune,workCommunes:extractCommunes(commune),recruitmentZones:[commune],recruitmentCommunes:extractCommunes(commune),area:'Radar social',status:'En revisión',date:'Nueva',expiresAt:normalizeText(f.deadline)&&parseDiscoveryDate(normalizeText(f.deadline))?new Date(parseDiscoveryDate(normalizeText(f.deadline))!).toISOString():undefined,sourcePublishedAt:normalizeText(f.postDate)&&parseDiscoveryDate(normalizeText(f.postDate))?new Date(parseDiscoveryDate(normalizeText(f.postDate))!).toISOString():undefined,apply:'Sencilla',source:sourceName,sourceDomain:verificationHost(url,'facebook.com'),discoveredBy:normalizeText(f.medium)==='text'?'radar-social-text':'radar-social-visual',url,note:[normalizeText(f.text),normalizeText(f.requirements),normalizeText(f.contact)].filter(Boolean).join(' · ').slice(0,1200),tags:[title,company,commune].join(' ').toLocaleLowerCase('es-CL').split(/\s+/).filter(Boolean).slice(0,20),visual:'field',icon:'work',review:true,verified:false,lastSeenAt:now,active:true,createdAt:now,contact:normalizeText(f.contact)||undefined});knownUrls.add(`${url}::${title.toLowerCase()}`);}} if(additions.length){await db.add('radar_jobs',additions);await processPendingOffers(20);await rebuildPublicFeed();} await db.add('source_audits',[{sourceKey:'social-territorial-result',checkedAt:new Date().toISOString(),status:'ok',linksSeen:report.reduce((n,r)=>n+Number(r.posts||0),0),candidatesFound:report.reduce((n,r)=>n+Number(r.jobNotices||0),0),newCandidates:additions.length,message:JSON.stringify(report).slice(0,12000)}]);
++ const existing=await db.list<ListingRecord>('radar_jobs',{limit:200}); const knownUrls=new Set(existing.items.filter(x=>x.url).map(x=>`${x.url}::${normalizeText(x.title).toLowerCase()}`)); const additions:ListingRecord[]=[]; for(const item of report){const sourceName=normalizeText(item.source)||'Fuente social local';const territory=normalizeText(item.territory);const findings=Array.isArray(item.findings)?item.findings as Record<string,unknown>[]:[];for(const f of findings){const url=normalizeText(f.postUrl);const title=normalizeText(f.title);const company=normalizeText(f.company)||sourceName;const commune=normalizeText(f.commune)||territory;if(!title||!commune||!url||!extractCommunes(commune).length||knownUrls.has(`${url}::${title.toLowerCase()}`))continue;const now=new Date().toISOString();additions.push({kind:'job_offer',origin:'radar',title,company,workLocation:commune,workCommunes:extractCommunes(commune),recruitmentZones:[commune],recruitmentCommunes:extractCommunes(commune),area:'Radar social',status:'En revisión',date:'Nueva',expiresAt:normalizeText(f.deadline)&&parseDiscoveryDate(normalizeText(f.deadline))?new Date(parseDiscoveryDate(normalizeText(f.deadline))!).toISOString():undefined,sourcePublishedAt:normalizeText(f.postDate)&&parseDiscoveryDate(normalizeText(f.postDate))?new Date(parseDiscoveryDate(normalizeText(f.postDate))!).toISOString():undefined,apply:'Sencilla',source:sourceName,sourceDomain:verificationHost(url,'facebook.com'),discoveredBy:normalizeText(f.medium)==='text'?'radar-social-text':'radar-social-visual',url,note:[normalizeText(f.text),normalizeText(f.requirements),normalizeText(f.contact)].filter(Boolean).join(' · ').slice(0,1200),tags:[title,company,commune].join(' ').toLocaleLowerCase('es-CL').split(/\s+/).filter(Boolean).slice(0,20),visual:'field',icon:'work',review:true,verified:false,lastSeenAt:now,active:true,createdAt:now,contact:normalizeText(f.contact)||undefined});knownUrls.add(`${url}::${title.toLowerCase()}`);}} if(additions.length){await trackedFeedAdd('radar_jobs',additions);await processPendingOffers(20);await rebuildPublicFeed();} await db.add('source_audits',[{sourceKey:'social-territorial-result',checkedAt:new Date().toISOString(),status:'ok',linksSeen:report.reduce((n,r)=>n+Number(r.posts||0),0),candidatesFound:report.reduce((n,r)=>n+Number(r.jobNotices||0),0),newCandidates:additions.length,message:JSON.stringify(report).slice(0,12000)}]);
+  console.warn('SOCIAL_TERRITORIAL_RESULT '+JSON.stringify(report).slice(0,12000));
+  return {statusCode:200};
+ };
+@@ -2024,7 +1979,7 @@
+   }
+ 
+   await flushRediscoveryUpdates(rediscoveryUpdates);
+-  if (provisionalPublic.length) await db.add('radar_jobs', provisionalPublic.slice(0,120));
++  if (provisionalPublic.length) await trackedFeedAdd('radar_jobs', provisionalPublic.slice(0,120));
+   if (additions.length) await db.add('radar_candidates', additions.slice(0,120));
+   const audit: SourceAudit = {
+     sourceKey:'motor-tavily',
+@@ -2218,7 +2173,7 @@
+   }
+ 
+   await flushRediscoveryUpdates(rediscoveryUpdates);
+-  if (provisionalPublic.length) await db.add('radar_jobs', provisionalPublic.slice(0,100));
++  if (provisionalPublic.length) await trackedFeedAdd('radar_jobs', provisionalPublic.slice(0,100));
+   if (additions.length) await db.add('radar_candidates', additions.slice(0,100));
+   const familyStats = sweeps.reduce<Record<string, { searches:number; links:number; failed:number }>>((acc, sweep) => {
+     const current = acc[sweep.family] || { searches:0, links:0, failed:0 };
+@@ -2271,7 +2226,7 @@
+   };
+   const jobUpdates = jobs.items.map(evaluate).filter(Boolean) as Array<{ id:string; record:Record<string, unknown> }>;
+   const candidateUpdates = candidates.items.map(evaluate).filter(Boolean) as Array<{ id:string; record:Record<string, unknown> }>;
+-  if (jobUpdates.length) await db.update('radar_jobs', jobUpdates);
++  if (jobUpdates.length) await trackedFeedUpdate('radar_jobs', jobUpdates);
+   if (candidateUpdates.length) await db.update('radar_candidates', candidateUpdates);
+   return { jobs:jobUpdates.length, candidates:candidateUpdates.length };
+ }
+@@ -2290,7 +2245,7 @@
+       updates.push({ id, record:{ ...record, active:false, status:'Finalizada' } });
+     }
+   }
+-  if (updates.length) await db.update('community_posts', updates);
++  if (updates.length) await trackedFeedUpdate('community_posts', updates);
+   const stale: Array<{ id:string; record:Record<string, unknown> }> = [];
+   for (const item of candidates.items) {
+     if (item.active && now - Date.parse(item.createdAt) > 7 * 86400000) {
+@@ -2309,7 +2264,7 @@
+       unconfirmed.push({ id, record:{ ...record, active:false, status:'Archivado sin confirmar' } });
+     }
+   }
+-  if (unconfirmed.length) await db.update('radar_jobs', unconfirmed);
++  if (unconfirmed.length) await trackedFeedUpdate('radar_jobs', unconfirmed);
+   const expiredEvidencePaths = [...stale, ...unconfirmed].map(entry => normalizeText(entry.record.evidenceImagePath)).filter(Boolean);
+   if (expiredEvidencePaths.length) await storage.delete(expiredEvidencePaths);
+   return { expiredCommunity:updates.length, expiredCandidates:stale.length, archivedUnconfirmed:unconfirmed.length };
+@@ -2506,15 +2461,15 @@
+     }
+     if (additions.length>=12) break;
+   }
+-  if (additions.length) await db.add('radar_jobs',additions);
++  if (additions.length) await trackedFeedAdd('radar_jobs',additions);
+   return {runs:runs.items.length,findingsSeen,recovered:additions.length};
+ }
+ 
+ export const v14VerificationHandler = async () => {
+   const history=await recoverHistoricVisualFindings();
+   const result=await processPendingOffers(8);
+-  const feed=await rebuildPublicFeed();
+-  console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({history,result,publicJobs:feed.totalVerifiedJobOffers}));
++  const feed=await advancePublicFeed({ project:projectFeedListing, refreshAt:feedRefreshAt });
++  console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({history,result,publicJobs:feed.totalVerifiedJobOffers,feedRebuilding:feed.rebuilding}));
+   return {statusCode:200};
+ };
+ export const v15VerificationRecoveryHandler = async () => { const result = await processPendingOffers(12); const feed=await rebuildPublicFeed(); console.warn('V15_VERIFY_RECOVERY '+JSON.stringify({result,publicJobs:feed.totalVerifiedJobOffers})); return { statusCode:200 }; };
+@@ -2635,7 +2590,7 @@
+   await rebuildPublicFeed();
+   const [rows, feedRows, controlRows, snapshot] = await Promise.all([
+     db.list<Record<string, unknown>>('radar_live_tests', { limit:10 }),
+-    db.list<PublicFeedPage>(publicFeedTable(0), { limit:1 }),
++    readFeedRows(),
+     db.list<PublicFeedControl>('public_feed_control', { limit:1 }),
+     usableOfferSnapshot(),
+   ]);
+@@ -2726,40 +2681,15 @@
+   }],
+ 
+   'GET /api/listings': [async ({ query }) => {
+-    const page = Number.parseInt(query.cursor || '0', 10);
+-    if (!Number.isFinite(page) || page < 0 || page > 100) return error('Cursor de paginación no válido.', 400);
+-    let stored = await db.list<PublicFeedPage>(publicFeedTable(page), { limit:1 });
+-    if (page === 0 && (!stored.items[0] || !Number.isFinite(stored.items[0].totalJobOffers) || !stored.items[0].communeStats || !stored.items[0].kindStats)) {
+-      await rebuildPublicFeed();
+-      stored = await db.list<PublicFeedPage>(publicFeedTable(0), { limit:1 });
++    let feed;
++    try {
++      feed = await readPublicFeedPage(query.cursor);
++    } catch (cause) {
++      if (cause instanceof Error && cause.message === 'Feed cursor invalid') return error('Cursor de paginación no válido.', 400);
++      throw cause;
+     }
+-    const feed = stored.items[0];
+-    const payload = feed ? {
+-      items:feed.items,
+-      updatedAt:feed.updatedAt,
+-      hasMore:feed.hasMore,
+-      nextCursor:feed.nextCursor,
+-      pageSize:feed.pageSize,
+-      totalItems:feed.totalItems,
+-      totalJobOffers:feed.totalJobOffers,
+-      totalVerifiedJobOffers:feed.totalVerifiedJobOffers,
+-      totalProvisionalJobOffers:feed.totalProvisionalJobOffers,
+-      communeStats:feed.communeStats ?? {},
+-      kindStats:feed.kindStats ?? { jobs:feed.totalJobOffers, people:0, needs:0, services:0 },
+-    } : {
+-      items:[],
+-      updatedAt:new Date().toISOString(),
+-      hasMore:false,
+-      nextCursor:undefined,
+-      pageSize:PUBLIC_FEED_PAGE_SIZE,
+-      totalItems:0,
+-      totalJobOffers:0,
+-      totalVerifiedJobOffers:0,
+-      totalProvisionalJobOffers:0,
+-      communeStats:{},
+-      kindStats:{ jobs:0, people:0, needs:0, services:0 },
+-    };
+-    return query.fresh === '1' ? json(payload) : cacheable(payload, 60);
++    if (!feed) return error('El Radar está preparando su inventario. Reintenta en unos minutos.', 503);
++    return query.fresh === '1' ? json(feed) : cacheable(feed, 60);
+   }],
+ 
+   'GET /api/ops/summary': [async () => {
+@@ -3003,7 +2933,7 @@
+       evidence:'Imagen aportada anónimamente y leída automáticamente. Verificar vigencia y condiciones antes de postular.', evidenceImagePath,
+       review:true, verified:false, active:true, createdAt, contact:contact || undefined, contactLabel:contact ? 'Contacto visible en la imagen aportada' : undefined,
+     };
+-    const [id] = await db.add(canPublicProvisionally ? 'radar_jobs' : 'radar_candidates', [record]);
++    const [id] = await trackedFeedAdd(canPublicProvisionally ? 'radar_jobs' : 'radar_candidates', [record]);
+     if (!id) { await storage.delete([evidenceImagePath]); return error('No pudimos registrar el aviso.', 500); }
+     await rebuildPublicFeed();
+     return json({ received:true, id, public:canPublicProvisionally, title, workLocation:record.workLocation, status:record.status }, 201);
+@@ -3099,7 +3029,7 @@
+       ownerToken,
+     };
+ 
+-    const [id] = await db.add('community_posts', [record]);
++    const [id] = await trackedFeedAdd('community_posts', [record]);
+     if (!id) return error('No se pudo guardar la publicación.', 500);
+     await rebuildPublicFeed();
+     return json({ item: publicRecord({ ...record, id }), ownerToken }, 201);
+@@ -3127,7 +3057,7 @@
+     const [record] = await db.get<ListingRecord>('community_posts', [params.id]);
+     if (!record) return error('Publicación no encontrada.', 404);
+     if (record.ownerToken !== supplied) return error('No puedes cerrar esta publicación desde este dispositivo.', 403);
+-    const [ok] = await db.update('community_posts', [{
++    const [ok] = await trackedFeedUpdate('community_posts', [{
+       id: params.id,
+       record: { ...record, active: false, status: 'Finalizada' },
+     }]);
+@@ -3143,7 +3073,7 @@
+     const [record] = await db.get<ListingRecord>('community_posts', [params.id]);
+     if (!record) return error('Publicación no encontrada.', 404);
+     if (record.ownerToken !== supplied) return error('No puedes eliminar esta publicación desde este dispositivo.', 403);
+-    const [ok] = await db.delete('community_posts', [params.id]);
++    const [ok] = await trackedFeedDelete('community_posts', [params.id]);
+     if (!ok) return error('No se pudo eliminar la publicación.', 500);
+     await rebuildPublicFeed();
+     return json({ deleted: true });

@@ -54,8 +54,11 @@ export async function processAdminReviewBatch(options:{scheduledTime:string;proj
     await saveReview(id,row,{motorState:'blocked',blockReason:'queue_reconciliation_required'});report.blocked++;remaining.splice(index,1);continue;
    }
    if(job.active===false){await saveReview(id,row,{motorState:'rejected',blockReason:'inactive_or_rejected'});report.rejected++;remaining.splice(index,1);continue;}
-   // Previously verified rows need feed confirmation, not another source fetch every 15 minutes.
-   if(job.verified===true&&job.review===false){await registerPublicFeedChange('radar_jobs',jobId);report.waitingForFeed++;remaining.splice(index,1);continue;}
+   // Previously verified rows may already be represented by an external-source publication.
+   if(job.verified===true&&job.review===false){
+    const status=await reviewPublicationReader()(id,row);
+    if(status.published){report.waitingForFeed++;remaining.splice(index,1);continue;}
+   }
    const check=await checkOneReview({id},{queuedJobId:jobId});report.sourceChecks++;
    let reason=check.reason;
    if(check.status==='verified_for_final_review'){

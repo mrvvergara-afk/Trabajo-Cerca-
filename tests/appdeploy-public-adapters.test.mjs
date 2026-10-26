@@ -167,3 +167,14 @@ test('the public employer microsite and standard Chiletrabajos URL identify the 
  assert.equal(ctx.publicPublisher(alias).group,'chiletrabajos');
  assert.equal(ctx.publicSourceAdapter(alias.replace('/trabajo/','/otro/')),null);
 });
+
+// Isolated regression fixtures, not evidence of a real publication.
+test('functional requirements do not invalidate the individual source workplace',()=>{
+ for(const description of ['Para trabajar en el área de calidad e inocuidad alimentaria.','Debe desempeñarse en auditorías y relatorías.','Para trabajar en equipo.']){
+  const result=ctx.evaluatePublicJob(url,page({job:{description}}),url,200,now);
+  assert.equal(result.status,'verified');assert.equal(result.work_commune,'Angol');
+ }
+ for(const description of ['Lugar de trabajo: localidad no acreditada.','Para trabajar en Santiago.']){
+  assert.equal(ctx.evaluatePublicJob(url,page({job:{description}}),url,200,now).status,'pending');
+ }
+});

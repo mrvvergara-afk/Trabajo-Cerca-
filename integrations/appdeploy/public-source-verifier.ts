@@ -107,6 +107,7 @@ function descriptionWorksite(value:unknown) {
       // Explicit workplace labels remain authoritative, including unknown places.
       if (/^(?:lugar |ubicaci[oó]n )/i.test(match[0])) return true;
       if (/\b(?:en|ubicad[oa]s?|localidad|comuna|ciudad)\b/i.test(match[1])) return true;
+      if (/^terreno\s*$/i.test(match[1])) return false;
       return !/^(?:equipo|conjunto|colaboraci[oó]n|turnos|jornadas|(?:el |un |una |las |los )?(?:[aá]rea|[aá]mbito|departamento|auditor[ií]as?|relator[ií]as?|capacitaciones?|procesos|gesti[oó]n|control de calidad))\b/i.test(match[1]);
     });
   if (!scopes.length) return {observed:false,commune:null,literal:''};

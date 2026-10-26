@@ -178,3 +178,14 @@ test('functional requirements do not invalidate the individual source workplace'
   assert.equal(ctx.evaluatePublicJob(url,page({job:{description}}),url,200,now).status,'pending');
  }
 });
+
+test('TC-003 real source: working in the field does not invalidate accredited Angol',()=>{
+ const fixture=JSON.parse(readFileSync(new URL('./fixtures/tc003-public-jobposting-2026-10-26.json',import.meta.url),'utf8'));
+ const raw=fixture.htmlExcerpt;
+ const result=ctx.evaluatePublicJob(fixture.source,raw,fixture.source,200,Date.parse('2026-10-26T00:00:00Z'));
+ assert.equal(result.status,'verified',JSON.stringify(result));assert.equal(result.work_commune,'Angol');
+ for(const description of ['Disponibilidad para trabajar en terreno en Santiago.','Lugar de trabajo: Santiago.']){
+  const blocked=ctx.evaluatePublicJob(fixture.source,fixture.htmlExcerpt.replace(JSON.stringify(fixture.job.description),JSON.stringify(description)),fixture.source,200,Date.parse('2026-10-26T00:00:00Z'));
+  assert.equal(blocked.status,'pending');
+ }
+});

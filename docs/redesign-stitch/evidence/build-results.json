@@ -1,0 +1,27 @@
+[
+  {
+    "name": "application node suites",
+    "status": "passed",
+    "exitCode": 0
+  },
+  {
+    "name": "strict TypeScript with existing reference SDK contract",
+    "status": "passed",
+    "exitCode": 0
+  },
+  {
+    "name": "isolated React preview build",
+    "status": "passed",
+    "exitCode": 0
+  },
+  {
+    "name": "native frontend build, platform SDK external",
+    "status": "passed",
+    "exitCode": 0
+  },
+  {
+    "name": "browser checks and actual screenshots",
+    "status": "passed",
+    "exitCode": 0
+  }
+]

@@ -1,0 +1,272 @@
+{
+  "status": "passed",
+  "sdk": "isolated; not production",
+  "rows": [
+    {
+      "width": 1440,
+      "height": 844,
+      "data": "synthetic isolated fixtures",
+      "errors": [],
+      "checks": [
+        "responsive pagination",
+        "no horizontal overflow",
+        "reference column count",
+        "allocated campaign selector and local images",
+        "detail and return",
+        "search empty state and reset",
+        "territory and category filters",
+        "offer and hiring forms open and close; no submit",
+        "privacy dialog",
+        "no operational requests or uncaught errors",
+        "all three allocated creative families captured across isolated session turns"
+      ],
+      "screenshots": [
+        "1440-full.png"
+      ],
+      "cards": [
+        {
+          "x": 214,
+          "y": 830.625,
+          "width": 326.65625,
+          "height": 276
+        },
+        {
+          "x": 556.65625,
+          "y": 830.625,
+          "width": 326.671875,
+          "height": 276
+        },
+        {
+          "x": 899.328125,
+          "y": 830.625,
+          "width": 326.65625,
+          "height": 276
+        },
+        {
+          "x": 214,
+          "y": 1122.625,
+          "width": 326.65625,
+          "height": 276
+        },
+        {
+          "x": 556.65625,
+          "y": 1122.625,
+          "width": 326.671875,
+          "height": 276
+        },
+        {
+          "x": 899.328125,
+          "y": 1122.625,
+          "width": 326.65625,
+          "height": 276
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "data": "synthetic isolated fixtures",
+      "errors": [],
+      "checks": [
+        "responsive pagination",
+        "no horizontal overflow",
+        "reference column count",
+        "allocated campaign selector and local images",
+        "detail and return",
+        "search empty state and reset",
+        "territory and category filters",
+        "offer and hiring forms open and close; no submit",
+        "privacy dialog",
+        "no operational requests or uncaught errors",
+        "all three allocated creative families captured across isolated session turns"
+      ],
+      "screenshots": [
+        "390-full.png"
+      ],
+      "cards": [
+        {
+          "x": 16,
+          "y": 293,
+          "width": 358,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 414,
+          "width": 358,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 535,
+          "width": 358,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 656,
+          "width": 358,
+          "height": 113
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "data": "synthetic isolated fixtures",
+      "errors": [],
+      "checks": [
+        "responsive pagination",
+        "no horizontal overflow",
+        "reference column count",
+        "allocated campaign selector and local images",
+        "detail and return",
+        "search empty state and reset",
+        "territory and category filters",
+        "offer and hiring forms open and close; no submit",
+        "privacy dialog",
+        "no operational requests or uncaught errors"
+      ],
+      "screenshots": [
+        "360-full.png"
+      ],
+      "cards": [
+        {
+          "x": 16,
+          "y": 293,
+          "width": 328,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 414,
+          "width": 328,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 535,
+          "width": 328,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 656,
+          "width": 328,
+          "height": 113
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "data": "synthetic isolated fixtures",
+      "errors": [],
+      "checks": [
+        "responsive pagination",
+        "no horizontal overflow",
+        "reference column count",
+        "allocated campaign selector and local images",
+        "detail and return",
+        "search empty state and reset",
+        "territory and category filters",
+        "offer and hiring forms open and close; no submit",
+        "privacy dialog",
+        "no operational requests or uncaught errors"
+      ],
+      "screenshots": [
+        "430-full.png"
+      ],
+      "cards": [
+        {
+          "x": 16,
+          "y": 293,
+          "width": 398,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 414,
+          "width": 398,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 535,
+          "width": 398,
+          "height": 113
+        },
+        {
+          "x": 16,
+          "y": 656,
+          "width": 398,
+          "height": 113
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "data": "synthetic isolated fixtures",
+      "errors": [],
+      "checks": [
+        "responsive pagination",
+        "no horizontal overflow",
+        "reference column count",
+        "allocated campaign selector and local images",
+        "detail and return",
+        "search empty state and reset",
+        "territory and category filters",
+        "offer and hiring forms open and close; no submit",
+        "privacy dialog",
+        "no operational requests or uncaught errors"
+      ],
+      "screenshots": [
+        "768-full.png"
+      ],
+      "cards": [
+        {
+          "x": 40,
+          "y": 726,
+          "width": 336,
+          "height": 276
+        },
+        {
+          "x": 392,
+          "y": 726,
+          "width": 336,
+          "height": 276
+        },
+        {
+          "x": 40,
+          "y": 1018,
+          "width": 336,
+          "height": 276
+        },
+        {
+          "x": 392,
+          "y": 1018,
+          "width": 336,
+          "height": 276
+        },
+        {
+          "x": 40,
+          "y": 1310,
+          "width": 336,
+          "height": 276
+        },
+        {
+          "x": 392,
+          "y": 1310,
+          "width": 336,
+          "height": 276
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

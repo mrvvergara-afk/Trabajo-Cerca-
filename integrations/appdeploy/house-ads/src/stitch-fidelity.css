@@ -1,0 +1,367 @@
+/* Literal layout measurements from the three approved Stitch code.html files.
+   Sole owner of public home geometry. Green brand mapping follows owner direction.
+   Dialogs, operations, SDK, advertising allocation and PWA are independent. */
+@font-face{font-family:Inter;src:url('/fonts/inter.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Plus Jakarta Sans';src:url('/fonts/plus-jakarta-sans.ttf') format('truetype');font-weight:200 800;font-style:normal;font-display:swap}
+.tcStitchShell{
+  --st-surface:#f7f9f6;--st-low:#eef4eb;--st-high:#e0ecd7;--st-line:#d7dfd4;
+  --st-ink:#103529;--st-muted:#4a584e;--st-green:#267447;--st-lime:#b9ee67;
+  --neo-bg:var(--st-surface);--neo-paper:#fff;--neo-ink:var(--st-ink);--neo-ink-soft:var(--st-muted);
+  --neo-lime:var(--st-lime);--neo-mint:var(--st-high);--neo-cyan:var(--st-green);--neo-coral:#8b543c;--neo-line:var(--st-line);
+  margin:0;padding:64px 0 0;min-height:100dvh;width:100%;max-width:none;
+  background:var(--st-surface);color:var(--st-ink);font:400 14px/22px Inter,Arial,sans-serif;
+}
+.tcStitchShell *,.tcStitchShell *::before,.tcStitchShell *::after{box-sizing:border-box}
+.tcStitchShell button,.tcStitchShell input,.tcStitchShell select{font:inherit}
+.tcStitchShell button{cursor:pointer}
+.tcStitchShell button:disabled{opacity:.5;cursor:default}
+.tcStitchShell button:focus-visible,.tcStitchShell a:focus-visible,.tcStitchShell select:focus-visible,.tcStitchShell input:focus-visible,.tcStitchShell summary:focus-visible{outline:3px solid var(--st-green);outline-offset:3px}
+.tcStitchShell h1,.tcStitchShell h2,.tcStitchShell h3{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-weight:600;color:inherit}
+.tcStitchShell svg{flex-shrink:0;width:20px;height:20px}
+.tcStitchShell section[id]{scroll-margin-top:80px}
+.tcStitchShell .tcMobileText,.tcStitchShell .tcMobilePlace{display:none}
+.tcStitchShell .neoTopbar{position:fixed;inset:0 0 auto;z-index:60;display:block;height:64px;min-height:64px;padding:0;background:#ffffffed;border:0;box-shadow:0 1px 8px #0000000a;backdrop-filter:blur(20px)}
+.tcStitchShell .tcTopbarInner{max-width:1092px;height:64px;margin:auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.tcStitchShell .neoBrand{display:block;flex-shrink:0;border:0;padding:0;background:none;text-align:left;min-width:0}
+.tcStitchShell .tcStitchBrand{display:block;width:178px;line-height:0}
+.tcStitchShell .tcStitchBrandArt{display:block}
+.tcStitchShell .tcStitchBrand img{display:block;width:100%;height:40px;max-height:none;object-fit:contain;object-position:left center}
+.tcStitchShell .tcStitchMobileWordmark{display:none}
+.tcStitchShell .tcTerritoryBadge{border-radius:12px;padding:4px 8px;background:var(--st-low);color:var(--st-green);font-size:11px;line-height:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;max-width:120px}
+.tcStitchShell .neoTopNav{display:flex;align-items:center;justify-content:center;gap:24px;flex:1;min-width:0}
+.tcStitchShell .neoTopNav button{border:0;padding:6px 0;background:none;color:var(--st-muted);font-size:13px;line-height:16px;font-weight:500}
+.tcStitchShell .neoTopNav button[aria-current=page]{font-weight:600;color:var(--st-ink)}
+.tcStitchShell .tcTopPublish{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 16px;background:var(--st-green);color:#fff;border:0;border-radius:8px;font-size:13px;line-height:16px;max-width:190px}
+.tcStitchShell .tcTopPublish svg{width:18px;height:18px}
+.tcStitchShell .tcSiteMenu>summary{width:32px;min-height:32px;height:32px;padding:6px;gap:0;background:var(--st-ink);color:white;border:0;border-radius:12px}
+.tcStitchShell .tcSiteMenu>summary>span{display:none}
+.tcStitchShell .tcSiteMenuPanel{line-height:1.4}
+.tcStitchShell .tcTerritorialStatus{background:var(--st-low);border-bottom:1px solid var(--st-line);font-size:12px;line-height:18px;color:var(--st-muted)}
+.tcStitchShell .tcTerritorialStatus>div{max-width:1092px;margin:auto;padding:4px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.tcStitchShell .tcTerritorialStatus span{display:inline-flex;align-items:center;gap:6px}
+.tcStitchShell .tcTerritorialStatus svg{width:14px;height:14px;color:var(--st-green)}
+.tcStitchShell .neoHero{position:relative;display:block;width:100%;max-width:none;margin:0;padding:64px max(40px,calc((100% - 1012px)/2));border:0;border-radius:0;background:linear-gradient(180deg,var(--st-low),var(--st-surface));overflow:hidden;box-shadow:none;min-height:0}
+.tcStitchShell .neoHero::before,.tcStitchShell .neoHero::after{content:none}
+.tcStitchShell .neoHeroCopy{position:relative;z-index:1;max-width:1012px;margin:auto}
+.tcStitchShell .tcStitchEyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--st-high);color:var(--st-green);padding:4px 12px;border-radius:12px;font-size:13px;line-height:16px;font-weight:500;letter-spacing:.01em;text-transform:none}
+.tcStitchShell .tcStitchEyebrow svg{width:16px;height:16px}
+.tcStitchShell .neoHero h1{max-width:650px;margin:16px 0;font-size:54px;line-height:1.08;letter-spacing:-.03em;font-weight:700}
+.tcStitchShell .neoHero h1 em{color:var(--st-green);font-style:normal;text-decoration:underline;text-decoration-color:var(--st-lime);text-decoration-thickness:4px;text-underline-offset:4px}
+.tcStitchShell .neoHeroLead{max-width:600px;font-size:18px;line-height:28px;letter-spacing:-.01em;color:var(--st-muted);margin:16px 0 0}
+.tcStitchShell .tcStitchHeroRadar{position:absolute;right:48px;top:-96px;width:520px;height:520px;opacity:.07;pointer-events:none;transform:none}
+.tcStitchShell .tcStitchHeroRadar svg{width:100%;height:100%;stroke:var(--st-green);stroke-width:1.5}
+.tcStitchShell .neoSearchDock{display:grid;grid-template-columns:5fr 4fr 3fr;gap:12px;width:100%;max-width:none;height:auto;padding:16px;margin:32px 0 0;background:#fff;border:1px solid var(--st-line);border-radius:16px;box-shadow:0 12px 36px -6px #10352914;align-items:center}
+.tcStitchShell .neoSearchDock>label{display:flex;align-items:center;gap:12px;min-width:0;padding:10px 14px;background:var(--st-low);border:0;border-radius:8px;height:auto;min-height:52px}
+.tcStitchShell .neoSearchDock label>span{display:flex;flex-direction:column;min-width:0;width:100%}
+.tcStitchShell .neoSearchDock small{color:#66736a;font-size:11px;line-height:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.tcStitchShell .neoSearchDock svg{width:22px;height:22px;color:var(--st-green)}
+.tcStitchShell .neoSearchDock input,.tcStitchShell .neoSearchDock select{width:100%;min-width:0;height:22px;padding:0;background:none;border:0;border-radius:0;color:var(--st-ink);font-size:14px;line-height:22px;text-overflow:ellipsis}
+.tcStitchShell .neoSearchDock>button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border:0;border-radius:8px;padding:10px 12px;background:var(--st-ink);color:white;font:600 18px/26px 'Plus Jakarta Sans',sans-serif;box-shadow:0 4px 14px #10352929}
+.tcStitchShell .neoSearchDock>button svg{color:inherit;width:20px;height:20px}
+.tcStitchShell .tcSearchCategories{display:flex;align-items:center;flex-wrap:wrap;gap:8px;grid-column:1/-1;border-top:1px solid var(--st-low);padding:12px 4px 0;color:var(--st-muted);font-size:12px;line-height:18px;min-height:38px}
+.tcStitchShell .tcSearchCategories>span{text-transform:uppercase;font-size:11px;letter-spacing:.04em;color:#66736a}
+.tcStitchShell .tcSearchCategories button{border:0;border-radius:12px;padding:4px 10px;background:var(--st-surface);color:var(--st-ink);font-size:12px;line-height:18px}
+.tcStitchShell .tcStitchRadarSummary{display:none}
+.tcStitchShell .neoDiscover{display:flex;flex-direction:column;width:100%;max-width:1092px;margin:0 auto;padding:32px 40px 0;border:0;background:none;border-radius:0}
+.tcStitchShell .neoDiscoverHead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:0 0 24px}
+.tcStitchShell .neoDiscoverHead h2{display:flex;align-items:center;gap:8px;font-size:20px;line-height:28px;letter-spacing:-.005em;margin:0;color:var(--st-green);overflow-wrap:anywhere}
+.tcStitchShell .neoDiscoverHead h2 svg{width:24px;height:24px}
+.tcStitchShell .neoDiscoverHead p{font-size:14px;line-height:22px;color:var(--st-muted);margin:4px 0 0}
+.tcStitchShell .tcCatalogCount{padding:6px 14px;border-radius:12px;background:var(--st-low);font-size:13px;line-height:16px;color:var(--st-green);flex-shrink:0}
+.tcStitchShell .tcClearFilters{border:1px solid var(--st-line);border-radius:8px;background:white;padding:8px;font-size:12px;color:var(--st-green)}
+.tcStitchShell .neoControlDeck{display:flex;flex-direction:column;gap:8px;margin:0 0 24px;background:none;border:0;padding:0;box-shadow:none;border-radius:0}
+.tcStitchShell .neoFilters{position:relative;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0;background:none;border:0;box-shadow:none}
+.tcStitchShell .neoFilterSearch{display:none}
+.tcStitchShell .tcFiltersToggle{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border:1px solid var(--st-line);background:#fff;color:var(--st-green);border-radius:8px;font-size:13px;line-height:16px}
+.tcStitchShell .tcAdvancedFilters{display:none;width:100%;min-width:0;background:#fff;padding:12px;border:1px solid var(--st-line);border-radius:8px}
+.tcStitchShell .tcAdvancedFilters[data-open=true]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.tcStitchShell .tcAdvancedFilters label{display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:0;padding:8px;background:var(--st-low);border:0;border-radius:8px;font-size:12px;line-height:18px}
+.tcStitchShell .tcAdvancedFilters select{width:100%;max-width:none;border:0;background:none;padding:4px 0;color:var(--st-ink);font-size:14px}
+.tcStitchShell .tcAdvancedFilters>button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px;color:var(--st-green);background:var(--st-low);border:1px solid var(--st-line);border-radius:8px;font-size:12px}
+.tcStitchShell .tcCommuneRail,.tcStitchShell .tcCategoryRail{display:flex;gap:8px;overflow-x:auto;padding:0 0 4px;scrollbar-width:none}
+.tcStitchShell .tcCommuneRail button,.tcStitchShell .tcCategoryRail button{flex-shrink:0;white-space:nowrap;border:1px solid var(--st-line);border-radius:12px;background:#fff;padding:8px 16px;color:var(--st-ink);font-size:13px;line-height:16px;font-weight:500}
+.tcStitchShell .tcCommuneRail button.active,.tcStitchShell .tcCategoryRail button.active{background:var(--st-ink);color:white;border-color:var(--st-ink)}
+.tcStitchShell .tcCategoryRail{display:none}
+.tcStitchShell .neoJobsGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:16px}
+.tcStitchShell .neoJobCard{position:relative;display:flex;min-width:0;min-height:276px;border:1px solid #d7dfd480;border-radius:8px;background:white;color:var(--st-ink);box-shadow:none;overflow:hidden}
+.tcStitchShell .neoJobCard:hover{border-color:var(--st-green);box-shadow:0 8px 24px -4px #1035290f;transform:none}
+.tcStitchShell .neoJobBody{display:flex;flex-direction:column;min-width:0;width:100%;padding:20px}
+.tcStitchShell .neoJobTop{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;min-width:0}
+.tcStitchShell .neoJobPlace{display:inline-flex;align-items:center;gap:4px;max-width:60%;min-width:0;padding:2px 8px;border-radius:12px;background:var(--st-low);color:var(--st-green);font-size:11px;line-height:14px;letter-spacing:.04em;font-weight:600;text-transform:uppercase;overflow-wrap:anywhere}
+.tcStitchShell .neoJobPlace svg{width:12px;height:12px}
+.tcStitchShell .neoJobState{position:static;display:inline-flex;max-width:45%;padding:0;border:0;background:transparent;font-size:11px;line-height:14px;font-weight:500;color:#66736a;white-space:normal;text-align:right}
+.tcStitchShell .neoJobState.pending{color:#85502b}
+.tcStitchShell .neoJobCard h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.005em;margin:8px 0 0;min-height:26px;color:var(--st-ink)}
+.tcStitchShell .neoJobCompany{margin:4px 0 0;font-size:14px;line-height:22px;color:var(--st-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tcStitchShell .neoSalary{margin-top:4px;font-size:13px;line-height:18px;color:var(--st-green)}
+.tcStitchShell .tcCardTags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+.tcStitchShell .tcCardTags span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:3px 8px;background:var(--st-low);color:var(--st-muted);font-size:11px;line-height:14px;border-radius:3px}
+.tcStitchShell .tcOfferActionRow{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid var(--st-low);padding:16px 0 0;margin:24px 0 0;margin-top:auto;min-height:56px}
+.tcStitchShell .neoJobFacts{min-width:0;flex:1;display:block;margin:0;padding:0}
+.tcStitchShell .neoJobFacts>span{min-width:0;display:flex;flex-direction:column;gap:2px}
+.tcStitchShell .neoJobFacts small,.tcStitchShell .neoJobFacts b{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;line-height:14px;font-weight:400;color:#66736a}
+.tcStitchShell .neoJobFoot{display:block;margin:0;padding:0;border:0}
+.tcStitchShell .neoJobFoot button{display:inline-flex;align-items:center;justify-content:center;gap:4px;border:0;border-radius:4px;padding:6px 12px;min-height:32px;background:var(--st-low);color:var(--st-ink);font-size:13px;line-height:16px;font-weight:600;white-space:nowrap}
+.tcStitchShell .neoJobFoot svg{width:16px;height:16px}
+.tcStitchShell .tcPosterThumb{position:absolute;right:20px;bottom:64px;width:32px;height:32px;float:none;margin:0;z-index:1}
+.tcStitchShell .neoOwnActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tcStitchShell .neoOwnActions button{min-height:40px;padding:8px;font-size:12px;border:1px solid var(--st-line);border-radius:4px;background:white;color:var(--st-ink)}
+.tcStitchShell .tcResultsPagination{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding:16px 0;font-size:12px;line-height:18px;color:var(--st-muted)}
+.tcStitchShell .tcResultsPagination button,.tcStitchShell .neoLoadMore button{min-height:40px;padding:8px 12px;border:1px solid var(--st-line);border-radius:8px;background:white;color:var(--st-green);font-size:12px}
+.tcStitchShell .neoLoadMore{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:12px}
+.tcStitchShell .neoEmpty{display:flex;align-items:center;flex-direction:column;gap:12px;border:1px solid var(--st-line);border-radius:8px;background:white;padding:24px;color:var(--st-muted);text-align:center}
+.tcStitchShell .tcStitchAlert{display:flex;align-items:center;gap:12px;width:calc(100% - 80px);max-width:1012px;margin:24px auto 32px;padding:16px;background:var(--st-low);border:1px solid #26744733;border-radius:8px}
+.tcStitchShell .tcStitchAlert>svg{color:var(--st-green);width:24px;height:24px}
+.tcStitchShell .tcStitchAlert>div{flex:1;display:flex;flex-direction:column}
+.tcStitchShell .tcStitchAlert b{font-size:13px;line-height:16px;font-weight:600}
+.tcStitchShell .tcStitchAlert span{font-size:12px;line-height:18px;color:var(--st-muted)}
+.tcStitchShell .tcStitchAlert button{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--st-green);font-size:13px;line-height:16px;font-weight:600}
+.tcStitchShell .tcStitchCommunity{padding:56px 0;background:white;border-block:1px solid var(--st-low)}
+.tcStitchShell .tcStitchCommunityInner{display:grid;grid-template-columns:7fr 5fr;gap:32px;align-items:center;max-width:1092px;margin:auto;padding:0 40px}
+.tcStitchShell .tcCommunityCopy h2{font-size:32px;line-height:40px;letter-spacing:-.02em;margin:20px 0}
+.tcStitchShell .tcCommunityCopy h2>span{display:block;color:var(--st-green)}
+.tcStitchShell .tcCommunityCopy>p{font-size:16px;line-height:26px;letter-spacing:-.01em;color:var(--st-muted);margin:20px 0}
+.tcStitchShell .tcCommunityBenefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:8px;margin:20px 0}
+.tcStitchShell .tcCommunityBenefits>div{display:flex;flex-direction:column;gap:4px;padding:14px;background:var(--st-low);border-radius:8px}
+.tcStitchShell .tcCommunityBenefits svg{color:var(--st-green);width:24px;height:24px;margin-bottom:4px}
+.tcStitchShell .tcCommunityBenefits b{font-size:13px;line-height:16px;font-weight:600}
+.tcStitchShell .tcCommunityBenefits small{font-size:12px;line-height:18px;color:var(--st-muted)}
+.tcStitchShell .tcCommunityOffer{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;background:var(--st-green);color:#fff;padding:12px 24px;min-height:48px;font:600 18px/26px 'Plus Jakarta Sans',sans-serif;box-shadow:0 2px 8px #26744733}
+.tcStitchShell .tcCommunityProfile{min-height:320px;display:flex;flex-direction:column;background:var(--st-low);border:1px solid var(--st-line);border-radius:16px;padding:24px;min-width:0;box-shadow:0 1px 3px #1035290d}
+.tcStitchShell .tcCommunityProfileTop{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--st-line);font-size:11px;line-height:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--st-green)}
+.tcStitchShell .tcCommunityProfile h3{font-size:18px;line-height:26px;letter-spacing:-.005em;margin:20px 0 4px;overflow-wrap:anywhere}
+.tcStitchShell .tcCommunityLocation{display:flex;align-items:center;gap:8px;font-size:12px;line-height:18px;color:var(--st-muted)}
+.tcStitchShell .tcCommunityDescription{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;border-radius:8px;background:white;padding:12px;font-size:12px;line-height:18px;color:var(--st-muted);margin:16px 0}
+.tcStitchShell .tcCommunityProfile button{display:flex;align-items:center;gap:6px;min-height:40px;margin:auto 0 0 auto;border:0;border-radius:8px;background:var(--st-ink);color:white;padding:8px 16px;font-size:13px;line-height:16px}
+.tcStitchShell .tcStitchAdvertising{width:100%;max-width:1092px;margin:0 auto;padding:48px 40px}
+.tcStitchShell .tcStitchAdvertising>header{margin-bottom:16px}
+.tcStitchShell .tcStitchAdvertising>header .tcStitchEyebrow{font-size:11px;line-height:14px;padding:0;background:none;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.tcStitchShell .tcStitchAdvertising h2{font-size:22px;line-height:30px;letter-spacing:-.01em;margin:4px 0 0}
+.tcStitchShell .tcCampaignSelector{display:flex;justify-content:flex-end;gap:4px;margin:-48px 0 24px auto;padding:4px;background:var(--st-low);border-radius:8px;max-width:52%;width:max-content}
+.tcStitchShell .tcCampaignSelector button{padding:6px 14px;min-height:36px;background:none;border:0;border-radius:4px;color:var(--st-muted);font-size:13px;line-height:16px}
+.tcStitchShell .tcCampaignSelector button[aria-pressed=true]{background:white;color:var(--st-ink);font-weight:600;box-shadow:0 1px 3px #1035290d}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd{display:block;position:relative;min-height:390px;border:1px solid var(--st-line);border-radius:16px;isolation:isolate;overflow:hidden;background:var(--st-ink);color:white}
+.tcStitchShell .tcStitchAdvertising .tcCampaignVisual{position:absolute;inset:0;z-index:-1;min-height:0;background:var(--st-ink);order:initial}
+.tcStitchShell .tcStitchAdvertising .tcCampaignVisual .tcAdImage{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.35}
+.tcStitchShell .tcStitchAdvertising .tcCampaignVisual::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#103529ee 0%,#103529a8 48%,#10352914 100%)}
+.tcStitchShell .tcStitchAdvertising .tcCampaignCopy{max-width:672px;padding:40px;gap:16px;align-items:flex-start;justify-content:center;min-height:390px}
+.tcStitchShell .tcStitchAdvertising .tcCampaignEyebrow{font-size:11px;line-height:14px;letter-spacing:.04em;border-radius:12px;background:var(--st-green);color:white;padding:4px 12px}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd h3{font:600 34px/42px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em;max-width:420px;margin:0;color:inherit}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd p{font-size:16px;line-height:26px;letter-spacing:-.01em;max-width:520px;margin:0;color:inherit;opacity:1}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd button{padding:10px 20px;min-height:40px;border-radius:8px;background:var(--st-lime);color:var(--st-ink);font-size:13px;line-height:16px;font-weight:600;margin:8px 0 0}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services]{background:var(--st-low);color:var(--st-ink)}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services] .tcCampaignVisual{left:52%;background:var(--st-low)}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services] .tcCampaignVisual .tcAdImage{opacity:1;object-position:center}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services] .tcCampaignVisual::after{background:linear-gradient(90deg,var(--st-low),#eef4eb00 80%)}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services] .tcCampaignCopy{max-width:60%}
+.tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services] button{background:var(--st-ink);color:white}
+.tcStitchShell .tcStitchAdvertising>.tcHouseAd+.tcHouseAd{margin-top:16px}
+.tcStitchShell .tcFounderNote{display:flex;gap:8px;align-items:center;background:var(--st-low);padding:12px;margin:12px 0 0;border-radius:8px;font-size:12px;line-height:18px;color:var(--st-muted)}
+.tcStitchShell .tcFounderNote>svg{color:var(--st-green)}
+.tcStitchShell .tcFounderNote>span{flex:1}
+.tcStitchShell .tcFounderNote button{display:inline-flex;align-items:center;gap:4px;min-height:36px;border:0;background:none;color:var(--st-green);padding:4px;font-size:12px;line-height:18px;font-weight:600}
+.tcStitchShell .tcStitchCities{background:var(--st-low);padding:40px 0}
+.tcStitchShell .tcStitchCities>div{max-width:1092px;padding:0 40px;margin:auto}
+.tcStitchShell .tcStitchCities .tcStitchEyebrow{padding:0;background:none;color:#66736a;font-size:11px;line-height:14px;text-transform:uppercase;letter-spacing:.04em}
+.tcStitchShell .tcStitchCities h2{font-size:22px;line-height:30px;letter-spacing:-.01em;margin:8px 0 0}
+.tcStitchShell .tcExplore{max-width:none;width:100%;margin:0;padding:0;border:0;background:none}
+.tcStitchShell .tcExploreIntro{margin:0;padding:0}
+.tcStitchShell .tcExploreIntro p{font-size:14px;line-height:22px;color:var(--st-muted);margin:4px 0 16px}
+.tcStitchShell .tcExploreCities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tcStitchShell .tcExploreCities>button{display:flex;align-items:center;gap:12px;text-align:left;min-width:0;padding:16px;background:white;border:1px solid var(--st-line);border-radius:8px;color:var(--st-ink);min-height:88px}
+.tcStitchShell .tcExploreCities>button>span{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.tcStitchShell .tcExploreCities strong{font:600 18px/26px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em}
+.tcStitchShell .tcExploreCities small{font-size:12px;line-height:18px;color:var(--st-muted)}
+.tcStitchShell .tcExploreCities svg{color:var(--st-green)}
+.tcStitchShell .tcExploreNote{display:block;font-size:12px;line-height:18px;color:#66736a;margin-top:12px}
+.tcStitchShell .tcSecondary{max-width:1012px;width:calc(100% - 80px);margin:0 auto;padding:0;border:0;border-bottom:1px solid var(--st-line);background:none;border-radius:0;box-shadow:none}
+.tcStitchShell .tcSecondary>summary{padding:10px 0;font-size:12px;line-height:18px;color:var(--st-muted);cursor:pointer;min-height:40px}
+.tcStitchShell .neoFooter{display:grid;grid-template-columns:1fr auto;gap:12px 32px;max-width:1092px;width:100%;margin:0 auto;padding:40px;background:white;border:0;border-radius:0;color:var(--st-muted);font-size:12px;line-height:18px}
+.tcStitchShell .neoFooter .tcStitchBrand{width:170px}
+.tcStitchShell .neoFooter .tcStitchBrand img{height:36px}
+.tcStitchShell .tcFooterTagline{grid-column:1;margin:0;max-width:360px}
+.tcStitchShell .tcFooterEmail{grid-column:1;font-size:12px;line-height:18px;color:var(--st-muted);overflow-wrap:anywhere}
+.tcStitchShell .tcFooterLegal{grid-row:1/4;grid-column:2;display:flex;align-items:center;gap:16px}
+.tcStitchShell .tcFooterLegal button{border:0;background:none;color:var(--st-muted);padding:8px 0;min-height:40px;font-size:12px;line-height:18px}
+.tcStitchShell .neoMobileNav{display:none}
+@media(min-width:768px) and (max-width:1100px){
+  .tcStitchShell .tcTopbarInner{gap:12px;padding-inline:32px}
+  .tcStitchShell .tcTerritoryBadge{display:none}
+  .tcStitchShell .neoTopNav{gap:16px}
+  .tcStitchShell .tcStitchBrand{width:154px}
+  .tcStitchShell .neoHero{padding-block:40px}
+  .tcStitchShell .neoHero h1{font-size:36px;line-height:44px;max-width:650px}
+  .tcStitchShell .neoJobsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tcStitchShell .tcAdvancedFilters[data-open=true]{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tcStitchShell .tcStitchCommunityInner{grid-template-columns:1fr}
+  .tcStitchShell .tcCampaignSelector{margin:16px 0;max-width:100%}
+}
+@media(max-width:767px){
+  .tcStitchShell{padding:64px 0 calc(88px + env(safe-area-inset-bottom));font-size:14px;line-height:22px}
+  .tcStitchShell .tcDesktopText{display:none}
+  .tcStitchShell .tcMobileText{display:inline}
+  .tcStitchShell .tcTopbarInner{padding:0 16px;gap:8px}
+  .tcStitchShell .neoTopNav,.tcStitchShell .tcTopPublish,.tcStitchShell .tcTerritoryBadge,.tcStitchShell .tcTerritorialStatus,.tcStitchShell .neoHero{display:none}
+  .tcStitchShell .tcStitchBrand{display:flex;align-items:center;gap:8px;width:auto;line-height:1}
+  .tcStitchShell .tcStitchBrandArt{width:24px;flex-shrink:0}
+  .tcStitchShell .tcStitchBrand img{width:24px;height:32px;object-fit:contain}
+  .tcStitchShell .tcStitchMobileWordmark{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .tcStitchShell .tcStitchMobileWordmark b{font:600 18px/20px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em;white-space:nowrap}
+  .tcStitchShell .tcStitchMobileWordmark small{font-size:11px;line-height:14px;color:var(--st-muted)}
+  .tcStitchShell .tcMobilePlace{display:flex;align-items:center;gap:4px;margin-left:auto;min-width:0;max-width:124px;min-height:44px;padding:4px 8px;border-radius:12px;background:var(--st-high);color:var(--st-green)}
+  .tcStitchShell .tcMobilePlace svg{width:16px;height:16px}
+  .tcStitchShell .tcMobilePlace select{width:100%;min-width:0;max-width:100%;border:0;padding:0;font-size:13px;line-height:16px;color:inherit;background:none;text-overflow:ellipsis}
+  .tcStitchShell .tcStitchRadarSummary{display:block;position:relative;width:calc(100% - 32px);margin:16px auto 8px;padding:16px;border:0;border-radius:12px;background:var(--st-ink);color:white;overflow:hidden}
+  .tcStitchShell .tcStitchRadarSummary>div{display:flex;align-items:center;justify-content:space-between;gap:6px;color:var(--st-lime)}
+  .tcStitchShell .tcStitchRadarSummary>div>span{display:inline-flex;align-items:center;gap:4px;font-size:11px;line-height:14px;text-transform:uppercase;font-weight:600;letter-spacing:.02em;min-width:0}
+  .tcStitchShell .tcStitchRadarSummary>div svg{width:14px;height:14px}
+  .tcStitchShell .tcStitchRadarSummary b{flex-shrink:0;background:#ffffff1a;border-radius:12px;padding:2px 8px;font-size:11px;line-height:14px;color:white;font-weight:500}
+  .tcStitchShell .tcStitchRadarSummary h2{font-size:18px;line-height:23px;font-weight:700;letter-spacing:-.005em;margin:6px 0 8px;color:white}
+  .tcStitchShell .tcStitchRadarSummary>label{display:flex;align-items:center;gap:4px;min-width:0;border-radius:12px;background:#ffffff1a;padding:6px 8px;color:#fff;font-size:13px;line-height:16px;min-height:32px}
+  .tcStitchShell .tcStitchRadarSummary>label>svg{width:16px;height:16px;color:var(--st-lime)}
+  .tcStitchShell .tcStitchRadarSummary select{flex:1;min-width:0;max-width:100%;border:0;padding:0;background:none;color:var(--st-lime);font-size:13px;line-height:16px;font-weight:600}
+  .tcStitchShell .tcStitchRadarSummary option{color:var(--st-ink);background:white}
+  .tcStitchShell .tcStitchRadarSummary button{display:inline-flex;align-items:center;gap:4px;min-height:24px;border:0;border-radius:12px;padding:3px 8px;background:var(--st-lime);color:var(--st-ink);font-size:11px;line-height:14px}
+  .tcStitchShell .tcStitchRadarSummary button svg{width:14px;height:14px}
+  .tcStitchShell .neoDiscover{display:flex;padding:8px 16px;width:100%;max-width:none;margin:0}
+  .tcStitchShell .neoControlDeck{order:-1;gap:8px;margin:0 0 12px}
+  .tcStitchShell .neoFilters{display:grid;grid-template-columns:minmax(0,1fr) 40px;gap:0;min-height:48px;padding:0;border-radius:12px;background:var(--st-low)}
+  .tcStitchShell .neoFilterSearch{display:flex;align-items:center;gap:8px;min-width:0;padding:0 0 0 12px;border:0;background:none;border-radius:0;height:48px}
+  .tcStitchShell .neoFilterSearch svg{width:20px;height:20px;color:var(--st-muted)}
+  .tcStitchShell .neoFilterSearch input{padding:0;min-width:0;width:100%;height:44px;border:0;background:none;color:var(--st-ink);font-size:14px;line-height:22px;text-overflow:ellipsis}
+  .tcStitchShell .tcFiltersToggle{display:grid;place-items:center;min-height:36px;height:36px;width:30px;border:0;border-radius:12px;background:var(--st-high);padding:4px}
+  .tcStitchShell .tcFiltersToggle svg{width:18px;height:18px}
+  .tcStitchShell .tcAdvancedFilters{grid-column:1/-1}
+  .tcStitchShell .tcAdvancedFilters[data-open=true]{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:8px}
+  .tcStitchShell .tcAdvancedFilters select{font-size:16px;min-height:32px}
+  .tcStitchShell .tcCommuneRail{display:none}
+  .tcStitchShell .tcCategoryRail{display:flex;gap:4px;margin:0 -16px;padding:2px 16px;max-width:calc(100% + 32px)}
+  .tcStitchShell .tcCategoryRail button{border:0;background:var(--st-high);border-radius:12px;padding:6px 14px;font-size:13px;line-height:16px}
+  .tcStitchShell .neoDiscoverHead{gap:6px;align-items:center;margin:0 0 8px;flex-wrap:wrap}
+  .tcStitchShell .neoDiscoverHead>div{min-width:0;flex:1}
+  .tcStitchShell .neoDiscoverHead h2{font-size:18px;line-height:26px;letter-spacing:-.005em;font-weight:700;margin:0;color:var(--st-ink);gap:6px}
+  .tcStitchShell .neoDiscoverHead h2 svg{width:20px;height:20px;color:var(--st-green)}
+  .tcStitchShell .tcCatalogCount{font-size:11px;line-height:14px;color:var(--st-muted);background:none;border-radius:0;padding:0;white-space:normal;max-width:96px;text-align:right}
+  .tcStitchShell .neoJobsGrid{grid-template-columns:minmax(0,1fr);gap:8px}
+  .tcStitchShell .neoJobCard{min-height:112px;border:0;border-radius:8px;box-shadow:0 1px 3px #1035290d}
+  .tcStitchShell .neoJobBody{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto 1fr;align-content:start;gap:2px;padding:12px;min-width:0}
+  .tcStitchShell .neoJobTop{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;align-items:flex-end;gap:4px;max-width:88px}
+  .tcStitchShell .neoJobPlace{max-width:100%;padding:2px 6px;letter-spacing:0;text-transform:none;font-size:10px;line-height:12px;border-radius:12px;gap:3px}
+  .tcStitchShell .neoJobState{max-width:100%;font-size:10px;line-height:12px;text-align:right}
+  .tcStitchShell .neoJobCard h3{display:block;grid-column:1;grid-row:1;max-width:100%;margin:0;font-size:18px;line-height:23px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em;min-height:0}
+  .tcStitchShell .neoJobCompany{grid-column:1;grid-row:2;min-width:0;margin:0;font-size:14px;line-height:20px}
+  .tcStitchShell .neoSalary{grid-column:1/-1;font-size:12px;line-height:16px;margin:0}
+  .tcStitchShell .tcCardTags{display:none}
+  .tcStitchShell .tcOfferActionRow{grid-column:1/-1;display:flex;align-items:center;gap:8px;min-height:36px;padding:4px 6px;margin:4px 0 0;border:0;border-radius:4px;background:var(--st-low)}
+  .tcStitchShell .neoJobFacts small,.tcStitchShell .neoJobFacts b{font-size:10px;line-height:13px;color:var(--st-muted)}
+  .tcStitchShell .neoJobFoot button{border-radius:12px;background:var(--st-ink);color:white;padding:6px 12px;min-height:30px;font-size:13px;line-height:16px}
+  .tcStitchShell .neoJobFoot svg{display:none}
+  .tcStitchShell .neoJobCard:first-child .neoJobFoot button{background:var(--st-green)}
+  .tcStitchShell .tcPosterThumb{right:16px;bottom:55px;width:24px;height:24px}
+  .tcStitchShell .neoOwnActions{grid-column:1/-1}
+  .tcStitchShell .tcResultsPagination{gap:6px;padding:12px 0 0;font-size:10px;line-height:14px}
+  .tcStitchShell .tcResultsPagination button{width:auto;min-width:0;font-size:11px;line-height:14px;padding:6px;min-height:36px}
+  .tcStitchShell .tcStitchAlert{display:none}
+  .tcStitchShell .tcStitchCommunity{padding:8px 16px;border:0;background:none}
+  .tcStitchShell .tcStitchCommunityInner{display:block;padding:16px;border-radius:8px;background:var(--st-high);box-shadow:0 1px 3px #1035290d}
+  .tcStitchShell .tcCommunityCopy .tcStitchEyebrow{padding:0;background:none;font-size:11px;line-height:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .tcStitchShell .tcCommunityCopy h2{font-size:18px;line-height:23px;font-weight:700;letter-spacing:-.005em;margin:4px 0 8px}
+  .tcStitchShell .tcCommunityCopy h2>span{display:inline;color:inherit}
+  .tcStitchShell .tcCommunityCopy>p{font-size:14px;line-height:22px;margin:8px 0;color:var(--st-muted)}
+  .tcStitchShell .tcCommunityBenefits,.tcStitchShell .tcCommunityProfile{display:none}
+  .tcStitchShell .tcCommunityOffer{display:flex;width:100%;min-height:46px;padding:10px 12px;font-size:18px;line-height:26px;border-radius:12px;margin-top:8px}
+  .tcStitchShell .tcStitchAdvertising{padding:8px 16px;margin:0;max-width:none}
+  .tcStitchShell .tcStitchAdvertising>header{display:none}
+  .tcStitchShell .tcCampaignSelector{justify-content:flex-start;max-width:100%;width:100%;margin:0 0 8px;overflow-x:auto;scrollbar-width:none;padding:0;background:none}
+  .tcStitchShell .tcCampaignSelector button{font-size:11px;line-height:14px;padding:6px 8px;min-height:30px;flex-shrink:0;background:var(--st-low)}
+  .tcStitchShell .tcCampaignSelector button[aria-pressed=true]{background:var(--st-ink);color:white}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd{min-height:220px;border-radius:8px}
+  .tcStitchShell .tcStitchAdvertising .tcCampaignCopy{max-width:100%;min-height:220px;padding:16px;gap:8px}
+  .tcStitchShell .tcStitchAdvertising .tcCampaignEyebrow{font-size:10px;line-height:14px;padding:4px 8px}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd h3{font-size:18px;line-height:26px;letter-spacing:-.005em}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd p{font-size:14px;line-height:22px}
+  .tcStitchShell .tcStitchAdvertising .tcHouseDesktop{display:none}
+  .tcStitchShell .tcStitchAdvertising .tcHouseMobile{display:block}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services] .tcCampaignCopy{max-width:100%}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd[data-creative-family=services] .tcCampaignVisual{left:0;opacity:.15}
+  .tcStitchShell .tcStitchAdvertising>.tcHouseAd+.tcHouseAd{margin-top:8px}
+  .tcStitchShell .tcFounderNote{flex-wrap:wrap;font-size:11px;line-height:16px;padding:8px;margin-top:8px}
+  .tcStitchShell .tcFounderNote button{margin-left:auto;min-height:36px}
+  .tcStitchShell .tcStitchCities{padding:8px 16px 24px;background:none}
+  .tcStitchShell .tcStitchCities>div{padding:0}
+  .tcStitchShell .tcStitchCities .tcStitchEyebrow{display:none}
+  .tcStitchShell .tcStitchCities h2{font-size:18px;line-height:26px;font-weight:700;letter-spacing:-.005em;margin:0 0 8px}
+  .tcStitchShell .tcExploreIntro{display:none}
+  .tcStitchShell .tcExploreCities{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .tcStitchShell .tcExploreCities>button{display:grid;grid-template-columns:minmax(0,1fr) 16px;gap:4px;padding:8px;min-height:78px;border:0;box-shadow:0 1px 3px #1035290d}
+  .tcStitchShell .tcExploreCities>button>svg:first-child{display:none}
+  .tcStitchShell .tcExploreCities strong{font-size:18px;line-height:26px}
+  .tcStitchShell .tcExploreCities small{font-size:11px;line-height:16px;color:var(--st-green)}
+  .tcStitchShell .tcExploreCities>button>svg:last-child{align-self:start;margin-top:4px;width:16px;height:16px}
+  .tcStitchShell .tcExploreNote{font-size:11px;line-height:16px;background:var(--st-high);padding:8px;border-radius:4px;margin-top:8px}
+  .tcStitchShell .tcSecondary{width:calc(100% - 32px);margin:0 auto;padding:0}
+  .tcStitchShell .neoFooter{padding:24px 16px;gap:8px 12px;grid-template-columns:minmax(0,1fr)}
+  .tcStitchShell .neoFooter .tcStitchBrand{width:auto}
+  .tcStitchShell .neoFooter .tcStitchBrand img{height:24px}
+  .tcStitchShell .tcFooterLegal{grid-column:1;grid-row:auto}
+  .tcStitchShell .neoMobileNav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;inset:auto 0 0;z-index:70;height:calc(64px + env(safe-area-inset-bottom));min-height:64px;padding:0 8px env(safe-area-inset-bottom);border:0;background:#ffffffed;backdrop-filter:blur(20px);box-shadow:0 -2px 12px #1035290a}
+  .tcStitchShell .neoMobileNav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:56px;min-height:44px;border:0;padding:4px;background:none;color:var(--st-muted);font-size:11px;line-height:14px}
+  .tcStitchShell .neoMobileNav button:first-child{color:var(--st-green);font-weight:600}
+  .tcStitchShell .neoMobileNav svg{width:22px;height:22px}
+}
+@media(max-width:370px){
+  .tcStitchShell .tcStitchMobileWordmark b{font-size:16px}
+  .tcStitchShell .tcMobilePlace{max-width:106px}
+  .tcStitchShell .tcStitchRadarSummary>div>span{font-size:10px;letter-spacing:0}
+}
+@media(prefers-reduced-motion:reduce){.tcStitchShell *{scroll-behavior:auto}.tcStitchShell .neoJobCard{transition:none}}
+
+.tcStitchShell .tcStitchFooterDetails>summary,.tcStitchShell .tcStitchPromotionDetails>summary{display:none}
+.tcStitchShell .tcMoreCities{margin:8px 0;font-size:12px;color:var(--st-green)}
+.tcStitchShell .tcMoreCities summary{cursor:pointer;min-height:28px;padding:4px 0}
+@media(min-width:768px){
+  .tcStitchShell .neoControlDeck{position:relative}
+}
+@media(max-width:767px){
+  .tcStitchShell .tcStitchFooterDetails{margin:8px 16px}
+  .tcStitchShell .tcStitchFooterDetails>summary,.tcStitchShell .tcStitchPromotionDetails>summary{display:list-item;cursor:pointer;padding:8px 0;font-size:11px;line-height:16px;color:var(--st-muted)}
+  .tcStitchShell .tcStitchRadarSummary{margin-top:12px;padding:12px}
+  .tcStitchShell .tcStitchRadarSummary h2{margin:4px 0 6px}
+  .tcStitchShell .neoFilterSearch,.tcStitchShell .neoFilters{min-height:44px;height:auto}
+  .tcStitchShell .neoFilterSearch{height:44px}
+  .tcStitchShell .tcCategoryRail button{padding-block:4px}
+  .tcStitchShell .neoControlDeck{margin-bottom:8px}
+  .tcStitchShell .tcResultsPagination{flex-wrap:nowrap}
+  .tcStitchShell .tcResultsPagination span{flex:1;min-width:0;text-align:center}
+}
+
+.tcStitchShell .tcDiscoverActions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;min-width:0}
+.tcStitchShell button{scroll-margin-top:80px;scroll-margin-bottom:80px}
+@media(max-width:767px){
+  .tcStitchShell{padding-top:56px}
+  .tcStitchShell .neoTopbar,.tcStitchShell .tcTopbarInner{height:56px;min-height:56px}
+  .tcStitchShell .tcStitchRadarSummary{margin-top:8px;margin-bottom:6px}
+  .tcStitchShell .tcStitchRadarSummary h2{margin-bottom:4px}
+  .tcStitchShell .tcStitchRadarSummary>label{min-height:28px;padding-block:4px}
+  .tcStitchShell .neoDiscover{padding-top:4px}
+  .tcStitchShell .neoFilterSearch,.tcStitchShell .neoFilters{min-height:40px}
+  .tcStitchShell .neoFilterSearch,.tcStitchShell .neoFilterSearch input{height:40px}
+  .tcStitchShell .neoControlDeck{gap:6px}
+  .tcStitchShell .neoDiscoverHead{margin-bottom:6px}
+  .tcStitchShell .tcDiscoverActions{gap:6px}
+}
+/* Measured final mobile comparison: keep the feed heading on one line and
+   use Stitch's in-banner campaign indicators without adding another section. */
+.tcStitchShell .tcExplore{display:block}
+@media(max-width:767px){
+  .tcStitchShell{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+  .tcStitchShell .neoDiscoverHead>.tcDiscoverActions{flex:0 0 auto}
+  .tcStitchShell .tcStitchAdvertising{position:relative}
+  .tcStitchShell .tcCampaignSelector{position:absolute;right:12px;bottom:12px;z-index:2;width:auto;max-width:none;margin:0;padding:0;gap:0;background:none}
+  .tcStitchShell .tcCampaignSelector button{position:relative;display:grid;place-items:center;width:24px;height:24px;min-height:24px;padding:0;font-size:0;line-height:0;background:none;border:0;box-shadow:none}
+  .tcStitchShell .tcCampaignSelector button::after{content:'';display:block;width:6px;height:6px;border-radius:50%;background:#ffffff70}
+  .tcStitchShell .tcCampaignSelector button[aria-pressed=true]{background:none;box-shadow:none}
+  .tcStitchShell .tcCampaignSelector button[aria-pressed=true]::after{background:var(--st-lime)}
+}
+
+.tcStitchShell .tcCampaignViewport{position:relative}

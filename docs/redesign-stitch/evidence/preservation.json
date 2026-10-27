@@ -1,0 +1,37 @@
+{
+  "references": [
+    {
+      "reference": "web/screen.png",
+      "sha256": "bbb5ff574a532653c5b637b5e269948577bdf5476eff0b9f107483eb5665aa0a",
+      "unchanged": true
+    },
+    {
+      "reference": "web/code.html",
+      "sha256": "22019f633fcf83fa06f04101b3a3eacb188215669417cca337bfc8e33399c2d6",
+      "unchanged": true
+    },
+    {
+      "reference": "mobile/screen.png",
+      "sha256": "38368af66d97dfc28023d9edd4da7bdd0e35c84181a84fda2c0795785de4f1e8",
+      "unchanged": true
+    },
+    {
+      "reference": "mobile/code.html",
+      "sha256": "528d27a4c16932febd26a29df2be56696ef68d0aa7fb963e07e30175d18e53e1",
+      "unchanged": true
+    },
+    {
+      "reference": "advertising/screen.png",
+      "sha256": "8260858c2901f18864885742ea4ebe2e1282153fd88367b412620f6fae9cb42f",
+      "unchanged": true
+    },
+    {
+      "reference": "advertising/code.html",
+      "sha256": "2c88b4ce130f5315fd660ba5b293bcdad4a9c859b550ba76e8179750b0bed177",
+      "unchanged": true
+    }
+  ],
+  "protectedSourcesByteIdentical": true,
+  "localBrowser": "blocked: crashpad setsockopt Operation not permitted",
+  "localCompilation": "blocked: dependencies unavailable via terminal network"
+}

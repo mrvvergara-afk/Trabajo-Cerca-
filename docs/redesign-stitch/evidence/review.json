@@ -1,0 +1,15 @@
+{
+  "validatedCommit": "534eff6f83830c4641b424a1c544476cb12a2641",
+  "workflowRun": 40533117722,
+  "workflowConclusion": "success",
+  "artifactId": 12746957390,
+  "review": "Compared original PNG and implemented screenshots at 1440 and 390; corrected widths, heading wrap, density, order, navigation and filter overlap. No numerical pixel-match claim.",
+  "preservedAdaptations": [
+    "owner-requested green palette",
+    "real-source dates/statuses and variable text",
+    "all results accessible through pagination",
+    "existing allocated campaigns and photographs",
+    "extra cities and legal/radar tools preserved behind disclosures"
+  ],
+  "sdk": "isolated synthetic adapter; not the production SDK"
+}

@@ -9,13 +9,6 @@
   white-space:nowrap;
   border:0
 }
-.neoShell .neoTopbar {
-  height:64px;
-  min-height:0;
-  grid-template-columns:auto minmax(0,1fr) auto;
-  gap:20px;
-  flex-wrap:nowrap
-}
 .tcSiteMenu {
   position:relative;
   justify-self:end;
@@ -124,252 +117,6 @@
   min-height:44px
 }
 /* Single public compact layer; operational/authentication views remain independent. */
-.neoShell .neoDiscover {
-  max-width:1220px;
-  padding:12px 20px 20px;
-  margin:auto;
-  scroll-margin-top:82px;
-  outline:none
-}
-.neoShell .neoDiscover:focus-visible {
-  outline:2px solid #7fa553;
-  outline-offset:-2px
-}
-.neoShell .neoDiscoverHead {
-  align-items:center;
-  gap:12px;
-  margin:4px 0 12px
-}
-.neoShell .neoDiscoverHead h2 {
-  font-size:clamp(18px,2vw,23px);
-  line-height:1.2;
-  margin:0
-}
-.tcResultStatus {
-  font-size:13px;
-  color:#486153;
-  margin:6px 0 0
-}
-.tcClearFilters {
-  background:white;
-  border:1px solid #cad8ce;
-  min-height:44px;
-  border-radius:9px;
-  padding:7px 10px;
-  font-size:13px;
-  flex-shrink:0;
-  color:#103b2a
-}
-.neoShell .neoControlDeck {
-  position:static;
-  padding:0;
-  margin-bottom:8px;
-  background:none;
-  border:0;
-  box-shadow:none
-}
-.neoShell .neoTabs {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:4px;
-  padding:4px;
-  border-radius:10px;
-  overflow:visible;
-  max-width:100%
-}
-.neoShell .neoTabs button {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:5px;
-  font-size:14px;
-  line-height:1.25;
-  min-height:44px;
-  padding:8px 6px;
-  white-space:normal;
-  min-width:0;
-  overflow-wrap:normal
-}
-.neoShell .neoTabs svg {
-  width:18px;
-  height:18px;
-  flex-shrink:0
-}
-.tcTabShort {
-  display:none
-}
-.tcTabLong {
-  display:inline
-}
-.tcFiltersToggle {
-  display:none!important
-}
-.tcAdvancedFilters {
-  display:contents
-}
-.neoShell .neoFilters {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:8px
-}
-.neoShell .neoFilters label {
-  min-width:0;
-  min-height:44px;
-  padding:6px 8px;
-  border-radius:9px;
-  flex:1
-}
-.neoShell .neoFilters input,.neoShell .neoFilters select {
-  font-size:14px;
-  min-width:0;
-  max-width:100%;
-  width:100%;
-  min-height:30px
-}
-.neoShell .neoFilters>button {
-  font-size:13px;
-  padding:8px;
-  min-height:44px;
-  border-radius:9px;
-  white-space:normal
-}
-.neoShell .neoJobsGrid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-  align-items:start
-}
-.neoShell .neoJobCard {
-  display:block;
-  border:1px solid #d8e1d9;
-  border-radius:12px;
-  background:#fff;
-  box-shadow:0 3px 12px #09281d05;
-  overflow:hidden;
-  height:auto;
-  min-height:0
-}
-.neoShell .neoJobBody {
-  padding:12px;
-  display:block
-}
-.neoShell .neoJobTop {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:4px;
-  margin-bottom:4px
-}
-.neoShell .neoJobPlace,.neoShell .neoJobState {
-  font-size:12px;
-  line-height:1.35;
-  padding:3px 6px
-}
-.neoShell .neoJobPlace svg {
-  width:15px;
-  height:15px
-}
-.neoShell .neoJobCard h3 {
-  font-size:16px;
-  line-height:1.3;
-  margin:6px 0;
-  min-height:0;
-  letter-spacing:-.015em
-}
-.neoShell .neoJobCompany {
-  font-size:13px;
-  line-height:1.4;
-  margin:5px 0
-}
-.neoShell .neoNewOfferBadge,.tcUnreadBadge {
-  display:inline-flex;
-  margin:2px 5px 2px 0;
-  border-radius:5px;
-  padding:3px 6px;
-  font-size:11px;
-  font-weight:600;
-  line-height:1.3;
-  background:#edf5e5;
-  color:#315225;
-  letter-spacing:0
-}
-.tcUnreadBadge {
-  background:#edf2fc;
-  color:#304b71
-}
-.neoShell .neoSalary {
-  font-size:14px;
-  line-height:1.4;
-  margin:6px 0
-}
-.neoShell .neoJobFacts {
-  display:block;
-  margin:0;
-  padding:0;
-  border:0;
-  min-width:0
-}
-.neoShell .neoJobFacts span {
-  display:flex;
-  gap:4px;
-  align-items:baseline;
-  flex-wrap:wrap;
-  background:none;
-  padding:0
-}
-.neoShell .neoJobFacts small,.neoShell .neoJobFacts b {
-  font-size:11.5px;
-  line-height:1.4;
-  font-weight:400
-}
-.neoShell .neoJobFacts small {
-  color:#566c5f
-}
-.neoShell .neoJobFacts b {
-  margin:0;
-  white-space:normal;
-  overflow:visible;
-  text-overflow:clip;
-  overflow-wrap:anywhere
-}
-.neoShell .neoJobFoot {
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:6px;
-  margin:0;
-  padding:0;
-  border:0
-}
-.neoShell .neoJobFoot>span {
-  font-size:12px;
-  line-height:1.5;
-  min-width:0
-}
-.neoShell .neoJobFoot small {
-  display:block;
-  font-size:12px
-}
-.neoShell .neoJobFoot button {
-  font-size:13px;
-  padding:8px 10px;
-  min-height:44px;
-  border-radius:9px;
-  flex-shrink:0
-}
-.neoShell .neoJobFoot button svg {
-  width:16px;
-  height:16px
-}
-.tcOfferActionRow {
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  align-items:center;
-  gap:8px;
-  margin-top:4px
-}
 .tcPosterThumb {
   float:right;
   margin:12px 12px 4px 8px;
@@ -659,38 +406,6 @@
   }
 }
 @media(max-width:800px) {
-  .neoShell .neoTopbar {
-    position:relative;
-    top:auto;
-    height:50px;
-    min-height:50px;
-    grid-template-columns:minmax(0,1fr) auto;
-    padding:2px 14px;
-    gap:6px;
-    background:#fbfcf8;
-    backdrop-filter:none
-  }
-  .neoShell .neoTopNav {
-    display:none
-  }
-  .neoShell .neoBrand {
-    min-width:0;
-    gap:7px
-  }
-  .neoShell .neoBrandMark {
-    width:30px;
-    height:30px;
-    flex-shrink:0;
-    border-radius:9px
-  }
-  .neoShell .neoTopbar .neoBrand b {
-    font-size:16px;
-    letter-spacing:-.02em;
-    white-space:nowrap
-  }
-  .neoShell .neoTopbar .neoBrand small {
-    display:none
-  }
   .tcSiteMenu>summary {
     padding:4px 9px;
     gap:5px;
@@ -700,172 +415,6 @@
   .tcSiteMenu>summary svg {
     width:18px;
     height:18px
-  }
-  .neoShell .neoDiscover {
-    padding:0 14px 10px;
-    scroll-margin-top:8px
-  }
-  .neoShell .neoDiscoverHead {
-    display:block;
-    margin:2px 0 6px
-  }
-  .neoShell .neoDiscoverHead h2 {
-    font-size:16px;
-    line-height:1.18;
-    letter-spacing:-.018em;
-    overflow-wrap:anywhere
-  }
-  .tcResultStatus {
-    font-size:10.5px;
-    margin-top:2px;
-    line-height:1.2
-  }
-  .tcClearFilters {
-    margin-top:4px
-  }
-  .neoShell .neoTabs {
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:4px;
-    padding:0
-  }
-  .neoShell .neoTabs button {
-    font-size:11.5px;
-    line-height:1.2;
-    min-height:44px;
-    justify-content:center;
-    padding:4px 2px;
-    border-radius:8px;
-    gap:2px;
-    white-space:nowrap;
-    font-weight:600;
-    overflow:visible
-  }
-  .neoShell .neoTabs button b {
-    font-size:9px;
-    padding:1px 3px
-  }
-  .neoShell .neoTabs svg {
-    display:none
-  }
-  .neoShell .neoTabs .tcTabLong {
-    display:none
-  }
-  .neoShell .neoTabs .tcTabShort {
-    display:inline
-  }
-  .neoShell .neoFilters {
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 75px;
-    gap:5px;
-    margin-top:5px
-  }
-  .neoShell .neoFilters .neoFilterSearch {
-    grid-column:1;
-    flex-basis:auto;
-    min-height:44px;
-    padding:3px 8px
-  }
-  .neoShell .neoFilters label {
-    box-sizing:border-box;
-    min-height:44px;
-    padding:3px 7px;
-    min-width:0
-  }
-  .neoShell .neoFilters input {
-    font-size:14px
-  }
-  .neoShell .neoFilters select {
-    font-size:13px
-  }
-  .neoShell .neoFilters .tcFiltersToggle {
-    display:flex!important;
-    grid-column:2;
-    align-items:center;
-    justify-content:center;
-    min-height:44px;
-    padding:6px 8px;
-    background:#eef4eb;
-    border:1px solid #ccd9cc;
-    border-radius:9px;
-    font-size:12px;
-    font-weight:650;
-    color:#143b2a
-  }
-  .neoShell .neoFilters .tcFiltersToggle[aria-expanded=true] {
-    background:#dfeecf
-  }
-  .neoShell .neoFilters .tcAdvancedFilters {
-    display:none;
-    grid-column:1/-1
-  }
-  .neoShell .neoFilters .tcAdvancedFilters[data-open=true] {
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:5px
-  }
-  .neoShell .neoFilters .tcAdvancedFilters>button {
-    grid-column:1/-1;
-    min-height:44px;
-    padding:5px 9px;
-    font-size:12px
-  }
-  .neoShell .neoFilters svg {
-    width:15px;
-    height:15px;
-    flex-shrink:0
-  }
-  .neoShell .neoJobsGrid {
-    grid-template-columns:minmax(0,1fr);
-    gap:7px
-  }
-  .neoShell .neoJobCard {
-    border-radius:11px;
-    box-shadow:0 2px 9px #082b2009
-  }
-  .neoShell .neoJobBody {
-    padding:10px 12px
-  }
-  .neoShell .neoJobCard h3 {
-    font-size:15px;
-    line-height:1.22;
-    letter-spacing:-.014em
-  }
-  .neoShell .neoJobCompany {
-    font-size:12px;
-    line-height:1.3;
-    margin:2px 0
-  }
-  .neoShell .neoNewOfferBadge,.tcUnreadBadge {
-    font-size:10px;
-    padding:2px 5px;
-    margin:1px 3px 1px 0;
-    line-height:1.25
-  }
-  .neoShell .neoJobPlace,.neoShell .neoJobState {
-    font-size:10.5px
-  }
-  .neoShell .neoJobFacts {
-    margin:0
-  }
-  .neoShell .neoJobFacts small,.neoShell .neoJobFacts b {
-    font-size:11px;
-    line-height:1.3
-  }
-  .neoShell .neoJobFoot {
-    gap:5px;
-    margin:0;
-    padding:0;
-    display:flex;
-    align-items:center
-  }
-  .neoShell .neoJobFoot button {
-    font-size:12px;
-    min-height:44px;
-    padding:7px 10px;
-    border-radius:7px
-  }
-  .neoShell .neoJobFoot button svg {
-    display:none
   }
   .neoShell>.tcLocalAdvertising {
     width:calc(100% - 28px);
@@ -943,47 +492,10 @@
   .tcRadarDetails>summary span {
     font-size:18px
   }
-  .neoShell .neoMobileNav {
-    display:grid;
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    height:calc(52px + env(safe-area-inset-bottom));
-    padding:2px 8px calc(2px + env(safe-area-inset-bottom));
-    box-sizing:border-box;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    border-radius:10px 10px 0 0;
-    box-shadow:0 -2px 8px #06231c12;
-    background:rgba(9,44,35,.96);
-    backdrop-filter:blur(10px);
-    z-index:80
-  }
-  .neoShell .neoMobileNav button {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:2px;
-    border:0;
-    background:transparent;
-    color:#ecf4ef;
-    font-size:10px;
-    min-height:44px;
-    line-height:1.1;
-    font-weight:500
-  }
-  .neoShell .neoMobileNav svg {
-    width:18px;
-    height:18px
-  }
-  .neoShell {
-    padding-bottom:calc(64px + env(safe-area-inset-bottom))
-  }
   .neoShell .neoNotice {
     bottom:calc(64px + env(safe-area-inset-bottom))
   }
-  .neoShell button,.neoShell a {
+  .neoShell a {
     scroll-margin-bottom:calc(68px + env(safe-area-inset-bottom))
   }
   .neoShell .neoDrawer {
@@ -1037,20 +549,9 @@
     min-width:0
   }
 }
-.neoShell .neoJobState {
-  text-transform:none;
-  letter-spacing:0
-}
-.neoShell .neoTopbar .neoBrand {
-  min-height:44px
-}
 .neoShell .neoNotice>button {
   min-width:44px;
   min-height:44px
-}
-.tcActivityCenterButton svg {
-  width:20px;
-  height:20px
 }
 /* Shared compact creative layout: no hero photographs. */
 .tcLocalAdvertising .tcAdImage {
@@ -1120,9 +621,6 @@
   min-width:0;
   overflow-wrap:anywhere
 }
-.neoJobFoot time {
-  white-space:nowrap
-}
 /* Fine rings and native accordion affordances. */
 .tcRadarDial .tcRadarGrid {
   position:absolute;
@@ -1177,121 +675,9 @@
   content:'−'
 }
 /* Public footer: one owner, no card-sized legal links or email gaps. */
-.neoShell .neoFooter {
-  display:grid;
-  grid-template-columns:auto minmax(0,1fr) auto;
-  align-items:center;
-  gap:12px;
-  padding:8px 20px;
-  margin:8px auto 0;
-  max-width:1220px;
-  font-size:12px;
-  line-height:1.4
-}
-.neoShell .neoFooter .neoBrand {
-  gap:7px
-}
-.neoShell .neoFooter .neoBrandMark {
-  width:26px;
-  height:26px;
-  border-radius:8px
-}
-.neoShell .neoFooter .neoBrand b {
-  font-size:15px
-}
-.neoShell .neoFooter .neoBrand small {
-  display:none
-}
-.neoShell .neoFooter p {
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:0 10px;
-  font-size:12px;
-  line-height:1.4;
-  margin:0;
-  min-width:0;
-  color:#52665c
-}
-.neoShell .neoFooter p>a {
-  display:inline-flex;
-  align-items:center;
-  min-height:44px;
-  font-size:12px;
-  line-height:1.35;
-  max-width:100%;
-  overflow-wrap:anywhere;
-  color:#254d39;
-  margin:0
-}
-.neoShell .neoFooter>div:last-child {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap
-}
-.neoShell .neoFooter button {
-  font-size:12px;
-  line-height:1.3;
-  min-height:44px;
-  min-width:44px;
-  padding:6px;
-  border:0;
-  background:transparent;
-  color:#385b49
-}
-@media(max-width:600px) {
-  .neoShell .neoFooter {
-    display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
-    gap:2px 8px;
-    padding:8px 14px;
-    margin-top:8px;
-    text-align:left
-  }
-  .neoShell .neoFooter .neoBrand {
-    grid-column:1;
-    grid-row:1
-  }
-  .neoShell .neoFooter .neoBrand b {
-    white-space:nowrap
-  }
-  .neoShell .neoFooter p {
-    display:block;
-    grid-column:1/-1;
-    grid-row:2
-  }
-  .neoShell .neoFooter p>a {
-    display:flex;
-    justify-content:flex-start
-  }
-  .neoShell .neoFooter>div:last-child {
-    grid-column:2;
-    grid-row:1;
-    gap:4px;
-    flex-wrap:nowrap;
-    justify-content:flex-end
-  }
-}
 
 /* Trabajo Cerca mobile utility controls: compact consumer-app proportions. */
-.tcHomeUtilities {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  width: calc(100% - 40px);
-  max-width: 1180px;
-  margin: 0 auto 8px;
-}
-.tcHomeUtilities > button {
-  width: auto;
-  flex: 0 0 auto;
-}
-.neoShell .tcHomeUtilities button{display:flex;align-items:center;justify-content:center;gap:6px;min-width:0;min-height:44px;padding:6px 10px;border:1px solid #d0ded1;border-radius:9px;background:#fff;color:#17422f;font-size:12px;font-weight:650;line-height:1.15;box-shadow:none;cursor:pointer}
-.neoShell .tcHomeUtilities button:first-child{background:#e8f3df}
-.tcHomeUtilities svg{height:16px;width:16px;flex:0 0 16px}
-.neoShell .tcHomeUtilities button:focus-visible,.tcNotifyPanel button:focus-visible,.tcInstallGuide button:focus-visible{outline:2px solid #5b8a23;outline-offset:2px}
+.tcNotifyPanel button:focus-visible,.tcInstallGuide button:focus-visible{outline:2px solid #5b8a23;outline-offset:2px}
 .tcInstallBackdrop,.tcNotifyBackdrop{z-index:1550}
 .tcInstallGuide{position:relative;max-width:430px;width:min(100%,430px);max-height:calc(100dvh - 30px);overflow:auto;background:#fff;border-radius:16px;border:1px solid #d4dfd5;padding:20px;box-shadow:0 16px 40px #061b1433;color:#12382a}
 .tcInstallGuide h2{font-size:20px;margin:0 42px 6px 0;line-height:1.2}
@@ -1349,31 +735,10 @@
 @media(max-width:800px){
  .tcSiteMenuPanel{padding:8px;max-height:calc(100dvh - 120px - env(safe-area-inset-bottom));width:min(290px,calc(100vw - 28px))}
  .tcSiteMenuPanel button{padding:7px 9px;font-size:12px;min-height:44px}
- .neoShell .neoHero{padding-bottom:0}
- .neoShell .tcHomeUtilities button{font-size:11.5px}
- .neoShell .neoTopbar{min-height:50px}
 }
 @media(max-width:359px){
- .neoShell .tcHomeUtilities button{font-size:11px;padding:5px}
  .tcNotifyMore{padding:0 7px}
 }
 
 /* Single official brand resource: identical to installed PWA splash.
    Do not recreate the marque with icon-library glyphs. */
-.neoShell .neoBrandMark:has(.tcOfficialBrandIcon),
-.opsShell .brandmark:has(.tcOfficialBrandIcon),
-.cleanFooter .brandmark:has(.tcOfficialBrandIcon){
-  display:flex;align-items:center;justify-content:center;
-  padding:0;overflow:hidden;background:transparent;
-}
-.neoShell .neoBrandMark .tcOfficialBrandIcon,
-.opsShell .brandmark .tcOfficialBrandIcon,
-.cleanFooter .brandmark .tcOfficialBrandIcon{
-  display:block;position:static;width:100%;height:100%;max-width:100%;
-  aspect-ratio:1;object-fit:contain;border:0;border-radius:inherit;
-  padding:0;background:transparent;box-shadow:none;flex:0 0 auto;
-}
-@media(max-width:800px){
-  .neoShell .neoTopbar .neoBrandMark:has(.tcOfficialBrandIcon){border-radius:9px}
-  .neoShell .neoFooter .neoBrandMark:has(.tcOfficialBrandIcon){border-radius:7px}
-}

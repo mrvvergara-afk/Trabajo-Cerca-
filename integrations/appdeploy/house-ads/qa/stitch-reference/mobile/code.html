@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "tertiary-fixed-dim": "#ffb59c", "surface-container-highest": "#d3e4fe", "secondary-fixed": "#97f2ef", "outline-variant": "#c4c6cc", "on-secondary": "#ffffff", "surface-dim": "#cbdbf5", "error": "#ba1a1a", "inverse-primary": "#bac8dc", "primary-container": "#0f1c2c", "surface-container": "#e5eeff", "surface-bright": "#f8f9ff", "on-error-container": "#93000a", "inverse-on-surface": "#eaf1ff", "secondary-fixed-dim": "#7ad6d3", "secondary-container": "#94efec", "surface-container-lowest": "#ffffff", "primary-fixed-dim": "#bac8dc", "error-container": "#ffdad6", "on-secondary-fixed": "#00201f", "on-error": "#ffffff", "primary-fixed": "#d6e4f9", "outline": "#74777d", "on-background": "#0b1c30", "on-tertiary": "#ffffff", "tertiary-fixed": "#ffdbcf", "inverse-surface": "#213145", "surface-tint": "#525f71", "on-primary-fixed": "#0f1c2c", "tertiary": "#000000", "surface-container-low": "#eff4ff", "on-primary-container": "#778598", "background": "#f8f9ff", "on-tertiary-fixed": "#390c00", "on-secondary-fixed-variant": "#00504e", "on-primary-fixed-variant": "#3a4859", "secondary": "#006a68", "on-surface": "#0b1c30", "on-tertiary-fixed-variant": "#822801", "surface": "#f8f9ff", "surface-variant": "#d3e4fe", "tertiary-container": "#390c00", "on-secondary-container": "#006e6d", "on-primary": "#ffffff", "surface-container-high": "#dce9ff", "on-surface-variant": "#44474c", "on-tertiary-container": "#d3623a", "primary": "#000000" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-xs": "0.25rem", "margin-mobile": "1rem", "gutter": "1.5rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter-mobile": "1rem", "space-xl": "2.5rem", "margin": "2.5rem" }, fontFamily: { "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"], "body-lg": ["Inter"], "body-sm": ["Inter"], "display-lg-mobile": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "label-md": ["Inter"], "display-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["22px", { lineHeight: "30px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }], "body-lg": ["16px", { lineHeight: "26px", letterSpacing: "-0.01em", fontWeight: "400" }], "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0.005em", fontWeight: "400" }], "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" }], "label-md": ["13px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "500" }], "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.03em", fontWeight: "700" }], "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.015em", fontWeight: "600" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-shrink"><img alt="Logo Compacto Trabajo Cerca" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xik0S1VcANU_KTxE6q2YZlzAyBQ975gv35h_NZYJg0yqh2GoR6krNq_JDd1HlALgsOCeoXP-Hnp0BzBP06kEFszSmJXNNm44714caQSm3LRF7StoDrSpO3jpOHfzCujQoBILIxKaFWVcToXuMEKP8_XqZyvvHXewUdU6LeZ79mCPs40tcKg3gpmD_UaOBWI8ahZTSmt28VdqT00EBsaDaUDlJfqIbVIWVO1Ug8O9iuVoA05wfnkpVwluM"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate leading-none">Trabajo Cerca</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Inicio</span></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><button class="min-h-[44px] px-space-sm flex items-center gap-1 rounded-full bg-secondary/10 hover:bg-secondary/20 transition-colors" type="button"><span class="material-symbols-outlined text-[16px] text-secondary">near_me</span><span class="font-label-md text-label-md text-secondary font-medium">Angol y alr.</span><span class="material-symbols-outlined text-[16px] text-secondary">expand_more</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface pb-24"><div class="flex flex-col w-full">
+<!-- Interactive Radar Territorial Banner -->
+<section class="px-gutter-mobile pt-space-md pb-space-sm">
+<div class="relative overflow-hidden rounded-full bg-primary-container p-space-md text-surface-bright shadow-sm">
+<!-- Glow effect backdrop -->
+<div class="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-secondary/20 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-xs">
+<!-- Live status row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary-fixed"></span>
+</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed font-semibold tracking-wide uppercase">
+              Radar laboral activo • En vivo
+            </span>
+</div>
+<div class="flex items-center gap-1 bg-surface/10 backdrop-blur-md px-space-sm py-0.5 rounded-full text-surface-bright">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">radar</span>
+<span class="font-label-sm text-label-sm">48 ofertas</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-surface-bright mt-0.5 font-bold leading-tight">
+          Buscamos ofertas en tu radio inmediato
+        </h2>
+<!-- Radio Selector Bar -->
+<div class="mt-space-xs flex items-center justify-between bg-surface/10 backdrop-blur-sm rounded-full px-space-sm py-1.5">
+<div class="flex items-center gap-1.5 text-surface-bright">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed">adjust</span>
+<span class="font-label-md text-label-md">Radio:</span>
+<span class="font-label-md text-label-md font-semibold text-secondary-fixed">Angol (25 km)</span>
+</div>
+<button class="flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm hover:opacity-90 active:scale-95 transition-all" id="radar-toggle" type="button">
+<span>Ajustar</span>
+<span class="material-symbols-outlined text-[14px]">tune</span>
+</button>
+</div>
+<!-- Slider Range Dropdown (Micro-interaction) -->
+<div class="hidden pt-space-xs flex-col gap-1 transition-all" id="radar-slider-container">
+<div class="flex justify-between font-label-sm text-label-sm text-on-primary-container">
+<span>10 km</span>
+<span class="text-secondary-fixed font-medium">25 km seleccionado</span>
+<span>60 km</span>
+</div>
+<input class="w-full h-1.5 bg-surface/20 rounded-full appearance-none accent-secondary-fixed cursor-pointer" max="60" min="10" type="range" value="25"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Buscador Principal Protagonista -->
+<section class="px-gutter-mobile py-space-sm flex flex-col gap-space-sm">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-12 pl-10 pr-12 rounded-full bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container transition-all" placeholder="Buscar oficio, empleo o faena..." type="search"/>
+<button aria-label="Filtros avanzados" class="absolute right-1.5 h-9 w-9 rounded-full bg-secondary/10 flex items-center justify-center text-secondary hover:bg-secondary/20 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Chips de Filtros Rápidos Horizontales -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-0.5 -mx-gutter-mobile px-gutter-mobile">
+<button class="filter-chip active-filter flex-shrink-0 px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-medium transition-colors">
+        Todos
+      </button>
+<button class="filter-chip flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors">
+        🌾 Agrícola &amp; Faenas
+      </button>
+<button class="filter-chip flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors">
+        🔨 Oficios &amp; Obras
+      </button>
+<button class="filter-chip flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors">
+        🏪 Comercio &amp; Servicios
+      </button>
+</div>
+</section>
+<!-- Feed de Oportunidades Cerca -->
+<section class="px-gutter-mobile py-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">near_me</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Oportunidades Cerca</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Actualizado hace 4 min</span>
+</div>
+<!-- Listado de tarjetas de empleo -->
+<div class="flex flex-col gap-space-sm">
+<!-- Card 1: Operador Maquinaria Agrícola -->
+<article class="relative flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate leading-snug">
+              Operador Maquinaria Agrícola
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">
+              AgroSur SpA • Cosecha de Arándanos
+            </p>
+</div>
+<span class="flex-shrink-0 px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            A 4 km
+          </span>
+</div>
+<div class="flex items-center justify-between pt-space-xs mt-space-xs bg-surface-container-low/60 p-space-sm rounded-lg">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span>
+<span class="font-label-sm text-label-sm">Hoy • Turno Día</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm font-medium text-secondary">Transporte inc.</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-secondary text-on-secondary font-label-md text-label-md font-medium hover:bg-secondary/90 active:scale-95 transition-all shadow-sm" type="button">
+            Ver oferta
+          </button>
+</div>
+</article>
+<!-- Card 2: Técnico Mantenimiento Industrial -->
+<article class="relative flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate leading-snug">
+              Técnico Mantenimiento Industrial
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">
+              Planta Celulosa Collipulli • Turnos rotativos
+            </p>
+</div>
+<span class="flex-shrink-0 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">location_on</span>
+            A 18 km
+          </span>
+</div>
+<div class="flex items-center justify-between pt-space-xs mt-space-xs bg-surface-container-low/60 p-space-sm rounded-lg">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span class="font-label-sm text-label-sm">Ayer</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm font-medium text-on-surface">Indefinido</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-medium hover:bg-primary/90 active:scale-95 transition-all shadow-sm" type="button">
+            Ver oferta
+          </button>
+</div>
+</article>
+<!-- Card 3: Maestro en Construcción & Obras -->
+<article class="relative flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate leading-snug">
+              Maestro en Construcción &amp; Obras
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">
+              Constructora Nahuelbuta • Renaico
+            </p>
+</div>
+<span class="flex-shrink-0 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">location_on</span>
+            A 15 km
+          </span>
+</div>
+<div class="flex items-center justify-between pt-space-xs mt-space-xs bg-surface-container-low/60 p-space-sm rounded-lg">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span class="font-label-sm text-label-sm">Hace 2d</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-variant font-medium">Contrato obra</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-medium hover:bg-primary/90 active:scale-95 transition-all shadow-sm" type="button">
+            Ver oferta
+          </button>
+</div>
+</article>
+<!-- Card 4: Asistente Administrativo Contable -->
+<article class="relative flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate leading-snug">
+              Asistente Administrativo Contable
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">
+              Distribuidora Malleco • Victoria Centro
+            </p>
+</div>
+<span class="flex-shrink-0 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">location_on</span>
+            A 42 km
+          </span>
+</div>
+<div class="flex items-center justify-between pt-space-xs mt-space-xs bg-surface-container-low/60 p-space-sm rounded-lg">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span class="font-label-sm text-label-sm">Hace 3d</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm font-medium text-on-surface">Jornada Completa</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-medium hover:bg-primary/90 active:scale-95 transition-all shadow-sm" type="button">
+            Ver oferta
+          </button>
+</div>
+</article>
+</div>
+</section>
+<!-- Módulo Oficios Directos (Fricción Cero) -->
+<section class="px-gutter-mobile py-space-sm">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-high p-space-md flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary/15 flex items-center justify-center flex-shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[24px]">construction</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Fricción Cero</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">
+            ¿Sabes hacer algo? Que te encuentren
+          </h3>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Sin currículum ni trámites engorrosos. Vecinos de la zona buscan carpinteros, soldadores, modistas y electricistas hoy.
+      </p>
+<button class="w-full py-2.5 px-space-md rounded-full bg-secondary text-on-secondary font-headline-sm text-headline-sm flex items-center justify-center gap-2 hover:bg-secondary/95 active:scale-[0.98] transition-all shadow-md" type="button">
+<span class="material-symbols-outlined text-[20px]">person_pin_circle</span>
+<span>Ofrecer mi trabajo gratis</span>
+</button>
+</div>
+</section>
+<!-- Módulo Publicidad Dinámica Territorial: Beneficio Fundadores -->
+<section class="px-gutter-mobile py-space-sm">
+<div class="relative overflow-hidden rounded-xl bg-primary text-on-primary p-space-md shadow-md flex flex-col gap-space-sm">
+<!-- Decorative aura -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-secondary-fixed/15 blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest/15 backdrop-blur-md text-tertiary-fixed font-label-sm text-label-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+          Beneficio Fundadores • Cupos Territoriales
+        </span>
+<span class="font-label-sm text-label-sm text-on-primary-container font-mono">14/20 cupos</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-primary font-bold">
+          Primeros 20 anunciantes fundadores del territorio
+        </h3>
+<p class="font-body-md text-body-md text-on-primary-container">
+          30 días de visibilidad gratuita (siguientes: 14 días). Destaca tu taller, pyme o servicio ante la comunidad de Malleco y Biobío.
+        </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<button class="px-4 py-2 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-bold hover:brightness-105 active:scale-95 transition-all shadow-sm" type="button">
+          Reclamar beneficio
+        </button>
+<!-- Carousel / Interactive Dots -->
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed transition-all"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest/30"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest/30"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Módulo "Busca también en otras ciudades" -->
+<section class="px-gutter-mobile pt-space-sm pb-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+        Busca también en otras ciudades
+      </h3>
+<span class="material-symbols-outlined text-outline text-[18px]">explore</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Tarjeta Los Ángeles -->
+<a class="flex flex-col gap-1 p-space-sm rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow" href="#">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Los Ángeles</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_forward</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-outline">navigation</span>
+<span>58 km de ti</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium mt-1">112 oportunidades</span>
+</a>
+<!-- Tarjeta Temuco -->
+<a class="flex flex-col gap-1 p-space-sm rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow" href="#">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Temuco</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_forward</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-outline">navigation</span>
+<span>120 km de ti</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium mt-1">240 oportunidades</span>
+</a>
+</div>
+<!-- Cobertura Territorial Info -->
+<div class="flex items-center gap-2 p-space-sm rounded-lg bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-secondary">satellite_alt</span>
+<p class="font-label-sm text-label-sm">
+        Próximamente cobertura ampliada en <strong class="text-on-surface font-semibold">Quilaco</strong> y <strong class="text-on-surface font-semibold">Alto Biobío</strong>.
+      </p>
+</div>
+</section>
+</div>
+<!-- Inline JavaScript for subtle micro-interactions -->
+<script>
+  (function() {
+    const radarBtn = document.getElementById('radar-toggle');
+    const radarContainer = document.getElementById('radar-slider-container');
+    
+    if (radarBtn && radarContainer) {
+      radarBtn.addEventListener('click', () => {
+        radarContainer.classList.toggle('hidden');
+        radarContainer.classList.toggle('flex');
+      });
+    }
+
+    const filterChips = document.querySelectorAll('.filter-chip');
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => {
+          c.classList.remove('bg-primary', 'text-on-primary');
+          c.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        chip.classList.add('bg-primary', 'text-on-primary');
+      });
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(11,28,48,0.04)]" data-active-classes="text-secondary font-semibold"><div class="h-16 px-space-sm flex items-center justify-around"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 transition-colors text-secondary font-semibold" data-path="inicio" href="#"><span class="material-symbols-outlined text-[22px]">roofing</span><span class="font-label-sm text-label-sm">Inicio</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant hover:text-secondary transition-colors" data-path="empleos" href="#"><span class="material-symbols-outlined text-[22px]">work_outline</span><span class="font-label-sm text-label-sm">Empleos</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant hover:text-secondary transition-colors" data-path="servicios" href="#"><span class="material-symbols-outlined text-[22px]">handyman</span><span class="font-label-sm text-label-sm">Servicios</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant hover:text-secondary transition-colors" data-path="publicar" href="#"><span class="material-symbols-outlined text-[22px]">add_circle</span><span class="font-label-sm text-label-sm">Publicar</span></a></div></nav></body></html>

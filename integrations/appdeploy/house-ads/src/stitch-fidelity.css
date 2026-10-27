@@ -321,8 +321,6 @@
 .tcStitchShell .tcMoreCities summary{cursor:pointer;min-height:28px;padding:4px 0}
 @media(min-width:768px){
   .tcStitchShell .neoControlDeck{position:relative}
-  .tcStitchShell .tcFiltersToggle{position:absolute;right:0;top:-62px}
-  .tcStitchShell .tcCatalogCount{margin-right:84px}
 }
 @media(max-width:767px){
   .tcStitchShell .tcStitchFooterDetails{margin:8px 16px}
@@ -335,4 +333,20 @@
   .tcStitchShell .neoControlDeck{margin-bottom:8px}
   .tcStitchShell .tcResultsPagination{flex-wrap:nowrap}
   .tcStitchShell .tcResultsPagination span{flex:1;min-width:0;text-align:center}
+}
+
+.tcStitchShell .tcDiscoverActions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;min-width:0}
+.tcStitchShell button{scroll-margin-top:80px;scroll-margin-bottom:80px}
+@media(max-width:767px){
+  .tcStitchShell{padding-top:56px}
+  .tcStitchShell .neoTopbar,.tcStitchShell .tcTopbarInner{height:56px;min-height:56px}
+  .tcStitchShell .tcStitchRadarSummary{margin-top:8px;margin-bottom:6px}
+  .tcStitchShell .tcStitchRadarSummary h2{margin-bottom:4px}
+  .tcStitchShell .tcStitchRadarSummary>label{min-height:28px;padding-block:4px}
+  .tcStitchShell .neoDiscover{padding-top:4px}
+  .tcStitchShell .neoFilterSearch,.tcStitchShell .neoFilters{min-height:40px}
+  .tcStitchShell .neoFilterSearch,.tcStitchShell .neoFilterSearch input{height:40px}
+  .tcStitchShell .neoControlDeck{gap:6px}
+  .tcStitchShell .neoDiscoverHead{margin-bottom:6px}
+  .tcStitchShell .tcDiscoverActions{gap:6px}
 }

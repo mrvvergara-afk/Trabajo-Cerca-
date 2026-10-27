@@ -66,7 +66,17 @@ try{
       await page.locator('.tcStitchFooterDetails').evaluate(n=>n.open=true);
       await page.locator('.tcFooterLegal').getByRole('button',{name:'Privacidad',exact:true}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');row.checks.push('privacy dialog');
       const calls=await page.evaluate(()=>window.houseCalls||[]);
-      assert(!calls.some(c=>/radar.*(collect|verify)|admin.*(import|restore)/.test(c.path)),'unexpected operational action');assert.deepEqual(errors,[]);row.checks.push('no operational requests or uncaught errors');row.passed=true;
+      assert(!calls.some(c=>/radar.*(collect|verify)|admin.*(import|restore)/.test(c.path)),'unexpected operational action');assert.deepEqual(errors,[]);row.checks.push('no operational requests or uncaught errors');
+      if(width===1440||width===390){
+        await page.evaluate(()=>{sessionStorage.clear();sessionStorage.setItem('tc-house-turn','-1');});
+        await page.reload({waitUntil:'networkidle'});
+        const services=page.locator('.tcStitchAdvertising .tcHouseAd[data-creative-family=services]:visible');
+        await services.waitFor();
+        await services.locator('img').evaluateAll(images=>Promise.all(images.map(image=>image.decode().catch(()=>{}))));
+        await services.screenshot({path:`${out}/${width}-services.png`});
+        assert.deepEqual(errors,[]);row.checks.push('all three allocated creative families captured across isolated session turns');
+      }
+      row.passed=true;
     }catch(error){row.passed=false;row.failure=String(error);await page.screenshot({path:`${out}/${width}-failure.png`,fullPage:true}).catch(()=>{});}
     finally{writeFileSync(`${out}/results.json`,JSON.stringify({status:rows.every(r=>r.passed)?'passed':'failed',sdk:'isolated; not production',rows},null,2));await page.close();}
   }

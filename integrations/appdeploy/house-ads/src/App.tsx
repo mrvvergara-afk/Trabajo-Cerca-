@@ -1428,13 +1428,14 @@ function App() {
         <section className='neoDiscover' id='neo-jobs' tabIndex={-1} aria-labelledby='tc-results-title' aria-busy={loading||loadingMore}>
           <div className='neoDiscoverHead'>
             <div><h2 id='tc-results-title' aria-label={resultsTitle}><Radar aria-hidden='true'/><span className='tcDesktopText'>{section==='opportunities'?'Radar de Empleos Activos':resultsTitle}</span><span className='tcMobileText'>{section==='opportunities'?'Oportunidades Cerca':resultsTitle}</span></h2><p className='tcDesktopText'>Ofertas con fuente, ubicación y vigencia diferenciadas.</p></div>
-            <span className='tcCatalogCount' role='status'>{loading?'Cargando…':`${visible.length} resultados${!feedComplete?' · Parciales':''}`}</span>
+            <div className='tcDiscoverActions'><span className='tcCatalogCount' role='status'>{loading?'Cargando…':`${visible.length} resultados${!feedComplete?' · Parciales':''}`}</span>
             {(q.trim()!==''||place!=='Todas'||area!=='Todas'||onlyNew||onlyUnread||filterMode!=='work')&&<button className='tcClearFilters' onClick={()=>navigateResults('opportunities','Todas')}>Quitar filtros</button>}
+            <span className='tcDesktopText'><button type='button' className='tcFiltersToggle' aria-label='Filtros' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}><SlidersHorizontal aria-hidden='true'/> Filtros</button></span></div>
           </div>
           <div className='neoControlDeck'>
             <div className='neoFilters'>
               <label className='neoFilterSearch'><Search aria-hidden='true'/><input aria-label='Buscar por cargo, oficio o empresa' value={q} onChange={e=>setQ(e.target.value)} placeholder='Buscar oficio, empleo o faena…'/></label>
-              <button type='button' className='tcFiltersToggle' aria-label='Filtros' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}><SlidersHorizontal aria-hidden='true'/><span className='tcDesktopText'>Filtros</span></button>
+              <span className='tcMobileText'><button type='button' className='tcFiltersToggle' aria-label='Filtros' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}><SlidersHorizontal aria-hidden='true'/></button></span>
               <div className='tcAdvancedFilters' id='tc-advanced-filters' data-open={advancedFiltersOpen}>
                 <label><span>Comuna de resultados</span><select aria-label='Comuna de resultados' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select></label>
                 <label><span>Área laboral</span><select aria-label='Área laboral' value={area} onChange={e=>setArea(e.target.value)}>{areas.map(value=><option key={value}>{value}</option>)}</select></label>

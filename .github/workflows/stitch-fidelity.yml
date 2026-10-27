@@ -28,9 +28,14 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install locked build and browser dependencies
+        timeout-minutes: 4
         run: |
-          npm ci --ignore-scripts --no-audit --no-fund --fetch-retries=0
-          npx playwright install --with-deps chromium
+          npm ci --ignore-scripts --no-audit --no-fund --fetch-retries=0 --fetch-timeout=30000
+          if [ -x /usr/bin/google-chrome ]; then
+            echo "CHROME_PATH=/usr/bin/google-chrome" >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps --only-shell chromium
+          fi
           python -m pip install --disable-pip-version-check Pillow==11.3.0
       - name: Compile and capture React using the isolated SDK only
         run: node qa/stitch-run.mjs

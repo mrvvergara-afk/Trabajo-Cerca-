@@ -1380,7 +1380,7 @@ function App() {
             </nav>
             <button type='button' className='tcTopPublish' onClick={()=>setFlow('trabajadores')}><PlusCircle aria-hidden='true'/> Publicar oportunidad</button>
             <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Mi territorio':value}</option>)}</select></label>
-            <SiteMenu onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
+            <SiteMenu accountIcon onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
               onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
               onCities={()=>openSecondary('tc-other-cities')} onNews={()=>openSecondary('actualidad-laboral')}
               onPeople={()=>navigateResults('people')}/>

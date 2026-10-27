@@ -11,7 +11,7 @@ export function StitchCommunity({person, onOffer, onBrowse, onSelect}:{
       <div className='tcCommunityCopy'>
         <span className='tcStitchEyebrow'><Wrench aria-hidden='true'/> <span className='tcDesktopText'>Comunidad de Oficios Locales</span><span className='tcMobileText'>Fricción cero</span></span>
         <h2 id='tc-community-title'>¿Sabes hacer algo? <span>Que te encuentren<span className='tcDesktopText'> en tu comuna.</span></span></h2>
-        <p>Electricidad, costura, jardinería, clases, mecánica o servicios profesionales. Sin currículum y 100% gratuito. Tu talento vale en tu propia comunidad.</p>
+        <p><span className='tcDesktopText'>Electricidad, costura, jardinería, clases, mecánica o servicios profesionales. Sin currículum y 100% gratuito. Tu talento vale en tu propia comunidad.</span><span className='tcMobileText'>Sin currículum ni trámites engorrosos. Ofrece tu oficio o servicio y conecta con vecinos de tu zona.</span></p>
         <div className='tcCommunityBenefits'>
           <div><BadgeCheck aria-hidden='true'/><b>Publicación gratis</b><small>Sin comisiones por contacto ni cobros ocultos.</small></div>
           <div><LockKeyhole aria-hidden='true'/><b>Contacto directo</b><small>Con permisos y datos de contacto protegidos.</small></div>

@@ -10,6 +10,7 @@ try{
   browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{}),args:['--no-sandbox']});
   for(const width of [1440,390,360,430,768]){
     const page=await browser.newPage({viewport:{width,height:844},reducedMotion:'reduce',serviceWorkers:'block'});
+    page.setDefaultTimeout(10000);
     const errors=[];page.on('pageerror',e=>errors.push(e.message));
     await page.route('**/*',async route=>{
       const url=new URL(route.request().url());
@@ -35,7 +36,11 @@ try{
       assert.deepEqual(errors,[]);
       // The comparison page and results label fixtures; hide only the QA watermark for captures.
       await page.locator('[data-qa-notice]').evaluate(n=>n.style.visibility='hidden');
-      await page.screenshot({path:`${out}/${width}-full.png`,fullPage:true});row.screenshots.push(`${width}-full.png`);
+      await page.screenshot({path:`${out}/${width}-viewport.png`});
+      const fullHeight=await page.evaluate(()=>Math.ceil(document.documentElement.scrollHeight));
+      await page.setViewportSize({width,height:Math.max(844,fullHeight)});
+      await page.screenshot({path:`${out}/${width}-full.png`,fullPage:true});
+      await page.setViewportSize({width,height:844});row.screenshots.push(`${width}-full.png`);
       await page.locator('.tcCampaignSelector button').first().waitFor();
       const selectors=page.locator('.tcCampaignSelector button');
       for(let i=0;i<await selectors.count();i++){
@@ -57,7 +62,8 @@ try{
       await page.locator('.tcCommunityOffer').click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');
       if(width<768)await page.locator('.neoMobileNav').getByRole('button',{name:'Publicar',exact:true}).click();
       else await page.locator('.tcTopPublish').click();
-      await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');row.checks.push('offer and hiring forms open and close; no submit');
+      await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});row.checks.push('offer and hiring forms open and close; no submit');
+      await page.locator('.tcStitchFooterDetails').evaluate(n=>n.open=true);
       await page.locator('.tcFooterLegal').getByRole('button',{name:'Privacidad',exact:true}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');row.checks.push('privacy dialog');
       const calls=await page.evaluate(()=>window.houseCalls||[]);
       assert(!calls.some(c=>/radar.*(collect|verify)|admin.*(import|restore)/.test(c.path)),'unexpected operational action');assert.deepEqual(errors,[]);row.checks.push('no operational requests or uncaught errors');row.passed=true;

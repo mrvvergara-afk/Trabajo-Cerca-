@@ -342,9 +342,24 @@ function FormPanel({
     }
   };
 
+  const publicationDialog=useRef<HTMLDivElement>(null);
+  useEffect(()=>{
+    const dialog=publicationDialog.current;if(!dialog)return;
+    const previous=document.activeElement instanceof HTMLElement?document.activeElement:null;
+    const overflow=document.body.style.overflow;document.body.style.overflow='hidden';
+    const controls=()=>[...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled)')].filter(node=>node.getClientRects().length>0);
+    (controls()[0]||dialog).focus();
+    const key=(event:KeyboardEvent)=>{
+      if(event.key==='Escape'){event.preventDefault();onClose();}
+      if(event.key==='Tab'){const nodes=controls(),first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}}
+    };
+    document.addEventListener('keydown',key);
+    return()=>{document.removeEventListener('keydown',key);document.body.style.overflow=overflow;if(previous?.isConnected)previous.focus();};
+  },[onClose,preview]);
+
   if (preview) {
     return (
-      <div className='modal'>
+      <div className='modal' ref={publicationDialog} role='dialog' aria-modal='true' aria-label={preview?'Revisa antes de publicar':heading} tabIndex={-1}>
         <div className='panel previewPanel'>
           <button className='close' onClick={onClose} aria-label='Cerrar'><X /></button>
           <span className='lab'>PUBLICACIÓN REAL · BASE CENTRAL</span>
@@ -379,7 +394,7 @@ function FormPanel({
   }
 
   return (
-    <div className='modal'>
+    <div className='modal' ref={publicationDialog} role='dialog' aria-modal='true' aria-label={preview?'Revisa antes de publicar':heading} tabIndex={-1}>
       <div className='panel smartForm'>
         <button className='close' onClick={onClose} aria-label='Cerrar'><X /></button>
         <span className='lab'>TRABAJO CERCA · PUBLICACIÓN PERSISTENTE</span>
@@ -1344,7 +1359,7 @@ function App() {
     }
   };
 
-  function openSecondary(id:string){const node=document.getElementById(id) as HTMLDetailsElement|null;if(node){if(node instanceof HTMLDetailsElement)node.open=true;node.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
+  function openSecondary(id:string){const node=document.getElementById(id);if(node){if(node instanceof HTMLDetailsElement)node.open=true;let parent=node.parentElement?.closest('details');while(parent){parent.open=true;parent=parent.parentElement?.closest('details');}node.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
   const isVNext = true;
   function openHouseGoal(goal:Goal,attribution:HouseAttribution) {
     setHouseAttribution(attribution);
@@ -1380,7 +1395,7 @@ function App() {
             </nav>
             <button type='button' className='tcTopPublish' onClick={()=>setFlow('trabajadores')}><PlusCircle aria-hidden='true'/> Publicar oportunidad</button>
             <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Mi territorio':value}</option>)}</select></label>
-            <SiteMenu accountIcon onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
+            <SiteMenu accountIcon onRadar={()=>openSecondary('neo-radar')} onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
               onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
               onCities={()=>openSecondary('tc-other-cities')} onNews={()=>openSecondary('actualidad-laboral')}
               onPeople={()=>navigateResults('people')}/>
@@ -1392,7 +1407,7 @@ function App() {
           <div className='neoHeroCopy'>
             <span className='tcStitchEyebrow'><Radar aria-hidden='true'/> Red comunitaria de vinculación de cercanía</span>
             <h1>Encuentra trabajo <em>cerca de ti</em></h1>
-            <p className='neoHeroLead'>Explora oportunidades formales y oficios en tu comuna. Conecta de forma directa, transparente y sin burocracia con empleadores y vecinos de tu territorio.</p>
+            <p className='neoHeroLead'>Explora oportunidades formales y oficios en tu comuna inmediata. Conecta de forma directa, transparente y sin burocracia con empleadores y vecinos de tu territorio.</p>
             <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setResultPage(0);setSection('opportunities');setArea('Todas');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
               <label className='tcRoleField'><Search aria-hidden='true'/><span><small>Cargo, oficio o rubro</small><input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e=>setQ(e.target.value)} placeholder='Ej. Técnico, Cosecha, Soldador, Asistente'/></span></label>
               <label className='tcCommuneField'><MapPin aria-hidden='true'/><span><small>Comuna base</small><select aria-label='Comuna de búsqueda' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select></span></label>
@@ -1478,11 +1493,12 @@ function App() {
         {(advertising.selections.search?.type==='HOUSE_AD'||section==='opportunities'&&advertising.selections.listing?.type==='HOUSE_AD')&&<section className='tcStitchAdvertising' aria-label='Espacio territorial destacado'>
           <header><div><span className='tcStitchEyebrow'>Espacio territorial destacado</span><h2>Comunidad y Desarrollo Regional</h2></div></header>
           <StitchAdvertising campaigns={(['search',...(section==='opportunities'?['listing']:[])] as Slot[]).flatMap(slot=>{const ad=advertising.selections[slot];return ad?.type==='HOUSE_AD'?[{id:slot,label:ad.campaign.goal==='professional'?'Servicios y oficios':ad.campaign.goal==='advertiser'?'Negocios y fundadores':'Empleo y territorio',banner:renderAdvertising(slot)}]:[];})}/>
-          <p className='tcFounderNote'><BadgeCheck aria-hidden='true'/><span>Primeros 20 negocios elegibles: 30 días individuales de visibilidad gratuita. Prueba estándar posterior: 14 días. Sin cobros automáticos.</span><button type='button' onClick={()=>setShowAdvertiser(true)}>Inscribir mi negocio <ArrowRight aria-hidden='true'/></button></p>
+          <details className='tcStitchPromotionDetails' open={window.matchMedia('(min-width:768px)').matches}><summary>Beneficio fundadores y prueba gratuita</summary><p className='tcFounderNote'><BadgeCheck aria-hidden='true'/><span>Primeros 20 negocios elegibles: 30 días individuales de visibilidad gratuita. Prueba estándar posterior: 14 días. Sin cobros automáticos.</span><button type='button' onClick={()=>setShowAdvertiser(true)}>Inscribir mi negocio <ArrowRight aria-hidden='true'/></button></p></details>
         </section>}
         <section className='tcStitchCities' id='tc-other-cities' aria-labelledby='tc-cities-title'><div><span className='tcStitchEyebrow'>Polos regionales extraterritoriales</span><h2 id='tc-cities-title'>Busca también en otras ciudades</h2>
-          <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>
+          <NearbyCities compact stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>
         </div></section>
+        <details className='tcStitchFooterDetails' open={window.matchMedia('(min-width:768px)').matches}><summary>Trabajo Cerca · Información y privacidad</summary>
         <details className='tcSecondary tcStitchRadarDetails'><summary>Explorar el radar territorial</summary><TerritorialRadar stats={feedSummary.communeStats} ready={!loading&&!loadError} failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt} onSelect={town=>navigateResults('opportunities',town)}/></details>
         <details className='tcSecondary' id='actualidad-laboral'><summary>Actualidad laboral y trámites</summary><LaborNewsSection/></details>
 
@@ -1496,7 +1512,7 @@ function App() {
             <button type='button' onClick={() => setLegalView('privacy')}>Privacidad</button>
             <button type='button' onClick={() => setLegalView('terms')}>Términos</button>
           </nav>
-        </footer>
+        </footer></details>
 
         {!flow && !showAdvertiser && !showAlerts && !showActivity && !legalView && !selected && <nav className='neoMobileNav' aria-label='Navegación móvil'>
           <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><House aria-hidden='true'/><span>Inicio</span></button>

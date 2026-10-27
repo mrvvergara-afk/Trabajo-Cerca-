@@ -12,19 +12,20 @@ type Sponsor = {
 };
 type Track = (event:string, properties:Record<string,string|number|boolean|undefined>) => void;
 
-export function NearbyCities({ stats, ready, failed, current, onExplore, onReturn, origin }:{
+export function NearbyCities({ stats, ready, failed, current, onExplore, onReturn, origin, compact=false }:{
   stats:Record<string,{jobs:number}>; ready:boolean; failed:boolean; current:string;
-  onExplore:(city:string)=>void; onReturn:()=>void; origin:string;
+  onExplore:(city:string)=>void; onReturn:()=>void; origin:string; compact?:boolean;
 }) {
   return <section className='tcExplore' aria-labelledby='tc-explore-title'>
     <div className='tcExploreIntro'>
       <h2 id='tc-explore-title' className='tcVisuallyHidden'>Buscar también en</h2>
       <p>Explora otras ciudades si te interesa trasladarte.</p>
     </div>
-    <div className='tcExploreCities'>{EXPLORATION_CITIES.map(city => <button type='button'
+    <div className='tcExploreCities'>{EXPLORATION_CITIES.slice(0,compact?2:undefined).map(city => <button type='button'
       key={city} aria-pressed={current === city} onClick={() => onExplore(city)}>
       <MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed ? 'Recuento no disponible' : !ready ? 'Consultando oportunidades…' : `${stats[city]?.jobs ?? 0} ${(stats[city]?.jobs ?? 0) === 1 ? 'oferta publicada' : 'ofertas publicadas'}`}</small></span><ArrowRight aria-hidden='true'/>
     </button>)}</div>
+    {compact&&EXPLORATION_CITIES.length>2&&<details className='tcMoreCities'><summary>Ver otras ciudades</summary><div className='tcExploreCities'>{EXPLORATION_CITIES.slice(2).map(city=><button type='button' key={city} aria-pressed={current===city} onClick={()=>onExplore(city)}><MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed?'Recuento no disponible':!ready?'Consultando oportunidades…':`${stats[city]?.jobs??0} ofertas publicadas`}</small></span><ArrowRight aria-hidden='true'/></button>)}</div></details>}
     {EXPLORATION_CITIES.some(city => city === current) && <button className='tcReturn' type='button' onClick={onReturn}>Volver a {origin === 'Todas' ? 'mi zona local' : origin}</button>}
     <small className='tcExploreNote'>Conteos publicados. Cero avisos no significa que no haya empleos en la ciudad.</small>
   </section>;

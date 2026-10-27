@@ -1,6 +1,6 @@
 # Corrección de fidelidad a Stitch — 27 de octubre de 2026
 
-Estado: candidata en revisión. No hay aprobación visual ni despliegue.
+Estado: corrección implementada, compilación y navegador aislado aprobados. Comparaciones inspeccionadas y diferencias corregidas en iteraciones. El PR sigue en borrador para revisión del propietario; no hay fusión ni despliegue.
 Base exacta: `e8469394d00b17ef4132f651f925d5dfd3b0c370`, rama `feature/redesign-stitch-2026-10`, PR #7 en borrador.
 
 ## Referencias obligatorias
@@ -15,8 +15,8 @@ Sus `screen.png` y `code.html` se conservan sin modificación en `qa/stitch-refe
 
 ## Cambios concretos
 
-- Cabecera de 64 px; máximo de 1280 px con 40 px de margen interno en web. Navegación original Empleos / Ofrecer mi trabajo / Buscar servicios / Publicidad, botón de publicación y menú existente.
-- Portada web: ondas de radar de 520 px a la derecha, tipografía Plus Jakarta Sans/Inter, título de 48 px, buscador de 12 columnas (5/4/3), rubros procedentes del catálogo y filtros por comuna.
+- Cabecera web de 64 px y móvil de 56 px. Tras comparar capturas, contenedor web de 1092 px con 40 px interiores (1012 px útiles), ajustado a la composición del PNG aprobado normalizado a 1440 px. El HTML nominal de 1280 px se inspeccionó como punto de partida; no se mantuvo su mayor ancho al comprobar la discrepancia visual. Navegación original Empleos / Ofrecer mi trabajo / Buscar servicios / Publicidad, botón de publicación y menú existente.
+- Portada web: ondas de radar de 520 px a la derecha, tipografía Plus Jakarta Sans/Inter, título de 54 px y 650 px de ancho para reproducir el salto de línea observado, buscador de 12 columnas (5/4/3), rubros procedentes del catálogo y filtros por comuna.
 - Portada móvil: cabecera con selector real; radar oscuro antes del buscador; buscador de 48 px y rubros horizontales; encabezado de oportunidades; tarjetas compactas; bloque de oficios; publicidad; otras ciudades y navegación Inicio / Empleos / Servicios / Publicar.
 - Seis tarjetas por página web y cuatro por página móvil, con acceso a todas las restantes mediante la paginación existente. Tres columnas en escritorio, dos en tablet y una en móvil. Se conservan fuentes, estados y fechas, con detalle completo y truncamiento de textos largos.
 - El bloque de oficios de Stitch usa un perfil real aprobado, si está disponible; en su ausencia presenta un estado vacío útil. No se copia el perfil ficticio, sus opiniones ni la supuesta verificación de la maqueta.
@@ -46,7 +46,7 @@ Bloqueos locales:
 - Chromium termina con `crashpad … setsockopt: Operation not permitted` incluso con perfil escribible. No se repiten escalaciones de navegador.
 - El proxy de la terminal no permite recuperar dependencias; la instalación con permiso adicional quedó retenida y fue interrumpida. No se afirma una compilación local nueva ni se reutilizan los resultados de la versión anterior como prueba de esta corrección.
 
-Se prepara una comprobación en GitHub Actions, restringida a esta rama y a repositorio público, con permisos de lectura, límite de 12 minutos, SDK aislado, rutas externas bloqueadas y artefactos de 2 días. No contiene despliegues, credenciales ni operaciones de backend. Su resultado debe consultarse antes de afirmar compilación o capturas aprobadas; preparar el workflow no significa ejecutarlo ni aprobarlo.
+Se ejecutó una comprobación en GitHub Actions, restringida a esta rama y a repositorio público, con permisos de lectura, límite de 12 minutos, SDK aislado, rutas externas bloqueadas y artefactos de 2 días. No contiene despliegues, credenciales ni operaciones de backend. La ejecución final y sus evidencias se detallan abajo; los bloqueos locales no se presentan como pruebas aprobadas.
 
 ## Reproducción en otro entorno
 
@@ -70,8 +70,32 @@ python -m http.server 8000 --bind 127.0.0.1
 
 Abrir `http://127.0.0.1:8000/` para comparar y `/qa/stitch-preview.html` para la app aislada. No publicar este build QA. Los datos sintéticos están rotulados y solo se incluyen mediante la configuración de pruebas.
 
-El guion genera `1440-full.png`, `390-full.png`, comparaciones `*-side-by-side.png`, banners por campaña y `results.json`. Si no existe captura, el comparador lo dice explícitamente y muestra la app ejecutable. Un fallo no se presenta como éxito visual.
+El guion genera `1440-viewport.png` y `390-viewport.png` con 844 px de alto, páginas completas `*-full.png`, comparaciones `*-side-by-side.png`, banners por campaña y `results.json`. Para la página completa se amplía el alto del viewport al contenido, por lo que la navegación fija aparece al pie; se conservan por separado las capturas reales a 844 px. Si no existe captura, el comparador lo dice explícitamente y muestra la app ejecutable. Un fallo no se presenta como éxito visual.
 
-## Revisión pendiente
+## Evidencia final ejecutada
 
-Es obligatorio inspeccionar las comparaciones reales, corregir diferencias visibles y comprobar formularios, imágenes, texto ampliado y dispositivos antes de aprobar la fidelidad. Las pruebas con adaptador aislado no acreditan integración con el SDK real ni persistencia en el laboratorio. El PR debe seguir en borrador; no fusionar ni desplegar sin autorización.
+Código validado: `534eff6f83830c4641b424a1c544476cb12a2641`.
+[GitHub Actions 40533117722](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/40533117722): **success**.
+Los commits posteriores de documentación/evidencia no cambian este frontend.
+
+- TypeScript estricto con contrato SDK de referencia: aprobado.
+- Build de la vista React aislada: aprobado.
+- Build nativo de frontend con SDK externo: aprobado.
+- Pruebas de app en CI: 53 casos aprobados, sin fallos. La suite local de app y las pruebas focalizadas de raíz suman 12 archivos aprobados.
+- Navegador: aprobados 1440, 390, 360, 430 y 768 px; sin desbordamiento horizontal ni errores JavaScript no capturados en los recorridos del guion.
+- Recorridos probados: paginación adaptativa, detalle/retorno, búsqueda sin resultados/restablecimiento, comuna/rubro, selector de campañas e imágenes, apertura/cierre con Escape de oferta y contratación, privacidad y ausencia de solicitudes operativas. Formularios sin envío a producción.
+- Capturas reales a 1440 y 390 px y comparaciones lado a lado generadas e inspeccionadas. También se capturaron las familias publicitarias de empleo, servicios y negocios usando los turnos del asignador existente.
+
+Evidencia permanente en [evidence/](evidence/): `results.json`, `build-results.json`, `review.json`, `preservation.json` y comparaciones [web](evidence/web-comparison.png) / [móvil](evidence/mobile-comparison.png).
+
+### Diferencias encontradas y corregidas
+
+La primera captura mostró contenedor demasiado ancho, título web en una sola línea, tarjetas y bloques auxiliares móviles demasiado altos. Se ajustaron ancho, salto de título, densidad y divulgación de herramientas secundarias. Se sustituyeron las pestañas móviles externas de publicidad por indicadores dentro del banner. La segunda ejecución detectó una superposición entre filtros y «Quitar filtros»; ambos controles se reorganizaron en un contenedor flex y la comprobación volvió a ejecutarse sin fallos. También se añadió semántica de diálogo, foco y cierre con Escape a los formularios existentes, sin cambiar validaciones ni publicación.
+
+Medidas observadas en la ejecución final: tarjetas web de aproximadamente 326.7 × 276 px, tres columnas, inicio x=214; tarjetas móviles de 358 × 113 px a 390 px, primera tarjeta y=293. No se declara identidad matemática de píxeles: el contenido real, la paleta verde solicitada, la paginación y el inventario publicitario son adaptaciones documentadas.
+
+### Límites de la validación
+
+El bloqueo de Chromium local persiste; la evidencia procede del Chrome del runner público de GitHub. Se superó el impedimento para esta revisión mediante el entorno aislado, sin AppDeploy. No se acreditan SDK productivo, persistencia real, instalación/offline, auditoría completa de accesibilidad ni texto ampliado como aprobados. La portada preserva el código de esas funciones, pero esas integraciones requieren comprobación en su entorno real.
+
+El propietario conserva la aprobación final de fidelidad. Mantener el PR en borrador y no fusionar ni desplegar sin autorización expresa. GitHub y el laboratorio siguen pendientes de reconciliación.

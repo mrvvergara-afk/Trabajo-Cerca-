@@ -1,5 +1,7 @@
 # Trabajo Cerca — implementación Stitch (candidata en revisión)
 
+> Este informe documenta la primera versión `e846939…`. La corrección posterior de fidelidad, sus adaptaciones y sus comprobaciones se documentan en [FIDELIDAD.md](FIDELIDAD.md). Los resultados de compilación históricos de abajo no validan automáticamente esa corrección.
+
 ## Base protegida
 
 Rama nueva: `feature/redesign-stitch-2026-10`.

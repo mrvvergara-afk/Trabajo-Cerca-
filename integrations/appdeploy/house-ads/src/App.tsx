@@ -1,4 +1,6 @@
 import {StitchBrand} from './stitch-brand';
+import {StitchCommunity} from './stitch-community';
+import {StitchAdvertising} from './stitch-advertising';
 import {LegalContent} from './legal-content';
 import {PRIMARY_PLACES,COMPLEMENTARY_PLACES} from '../shared/territories';
 import {loadReading,saveReading,markReading} from './reading-history';
@@ -23,12 +25,13 @@ import { NearbyCities, LocalAdvertising, LaborNewsSection } from './territorial-
 import { matchesTerritorialView } from './territorial-exploration';
 import {
   AlertCircle, ArrowRight, BadgeCheck, Bell, Briefcase, Building2, Camera, CheckCircle, Download, Handshake,
-  HeartPulse, MapPin, Megaphone, PlusCircle, Radar, Radio, Search, Share2, ShieldCheck, Sparkles,
+  HeartPulse, House, MapPin, Megaphone, PlusCircle, Radar, Radio, Search, Share2, ShieldCheck, SlidersHorizontal, Sparkles,
   Store, TreePine, Truck, UserRoundSearch, Users, Warehouse, Wrench, X
 } from 'lucide-react';
 import './vnext.css';
 import './compact-layout.css';
 import './premium-presentation.css';
+import './stitch-fidelity.css';
 import { SiteMenu } from './site-menu';
 function analyticsId() {
   try {
@@ -1193,8 +1196,16 @@ function App() {
   }, [items, section, place, filterMode, q, area, onlyNew, onlyUnread, reading, noveltyCutoff]);
 
   useEffect(()=>setResultPage(0),[section,place,filterMode,q,area,onlyNew,onlyUnread]);
-  const shownResults=visible.slice(resultPage*10,resultPage*10+10);
-  const resultPages=Math.max(1,Math.ceil(visible.length/10));
+  // Match the approved 6-card desktop / 4-card mobile composition; keep every result paginated.
+  const [resultsPerPage,setResultsPerPage]=useState(()=>window.matchMedia('(max-width:767px)').matches?4:6);
+  useEffect(()=>{
+    const media=window.matchMedia('(max-width:767px)');
+    const resize=()=>{setResultsPerPage(media.matches?4:6);setResultPage(0);};
+    media.addEventListener('change',resize);
+    return()=>media.removeEventListener('change',resize);
+  },[]);
+  const shownResults=visible.slice(resultPage*resultsPerPage,resultPage*resultsPerPage+resultsPerPage);
+  const resultPages=Math.max(1,Math.ceil(visible.length/resultsPerPage));
   const sourceCounts = useMemo(() => { const counts = new Map<string,number>(); for (const item of items) { if (item.kind !== 'job_offer' || !item.workCommunes.some(commune => places.includes(commune) && commune !== 'Todas')) continue; const source = item.source || 'Fuente no identificada'; counts.set(source,(counts.get(source)||0)+1); } return [...counts.entries()].sort((a,b)=>b[1]-a[1]); },[items]);
   const availableJobs = feedSummary.totalJobOffers;
   const inventoryCounts=publishedInventoryCounts(feedSummary,place);
@@ -1333,7 +1344,7 @@ function App() {
     }
   };
 
-  function openSecondary(id:string){const node=document.getElementById(id) as HTMLDetailsElement|null;if(node){node.open=true;node.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
+  function openSecondary(id:string){const node=document.getElementById(id) as HTMLDetailsElement|null;if(node){if(node instanceof HTMLDetailsElement)node.open=true;node.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
   const isVNext = true;
   function openHouseGoal(goal:Goal,attribution:HouseAttribution) {
     setHouseAttribution(attribution);
@@ -1353,98 +1364,73 @@ function App() {
     return advertising.failed ? <p role='status'>No se pudo consultar la publicidad. La búsqueda de ofertas sigue disponible.</p> : null;
   }
   const neoFeatured = items.filter(item => item.kind === 'job_offer').slice(0, 3);
-  const searchHouseWouldFollowAd=section==='opportunities'&&shownResults.length===3&&Boolean(advertising.selections.listing);
 
   if (isVNext) {
     return (
       <main className='neoShell tcStitchShell'>
         <header className='neoTopbar'>
-          <button className='neoBrand' onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}>
-            <StitchBrand />
-          </button>
-          <nav className='neoTopNav' aria-label='Navegación vNext'>
-            <button onClick={() => navigateResults('opportunities')}>Empleos</button>
-            <button onClick={() => setFlow('ofrezco')}>Ofrecer mi trabajo</button>
-            <button onClick={() => navigateResults('services')}>Servicios</button>
-            <button onClick={() => setShowAdvertiser(true)}>Publicidad</button>
-            <button onClick={() => document.getElementById('neo-radar')?.scrollIntoView({ behavior:'smooth' })}>Radar</button>
-            <button onClick={() => openSecondary('actualidad-laboral')}>Actualidad</button>
-          </nav>
-          <SiteMenu onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
-            onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
-            onCities={()=>openSecondary('tc-other-cities')}
-            onNews={()=>openSecondary('actualidad-laboral')}
-            onPeople={()=>navigateResults('people')}/>
-        </header>
-
-        <section className='neoHero neoHeroReborn' id='neo-home'>
-          <div className='tcStitchHeroRadar' aria-hidden='true'><img src='/brand/radar-territorial.svg' alt='' width='120' height='120'/></div>
-          <div className='neoHeroCopy'>
-            <span className='tcStitchEyebrow'><Radar aria-hidden='true'/> Oportunidades de nuestro territorio</span>
-            <h1>Encuentra trabajo <em>cerca de ti.</em></h1>
-            <p className='neoHeroLead'>Conecta con empleos, oficios y servicios de tu comuna. Fácil, cercano y gratuito.</p>
-
-            <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setResultPage(0);setSection('opportunities');setArea('Todas');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
-              <Search />
-              <input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e => setQ(e.target.value)} onFocus={() => setSection('opportunities')} placeholder='Buscar…' />
-              <label><MapPin /><span className='tcVisuallyHidden'>Comuna de búsqueda</span><select value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
-              <button type='submit'>Buscar <ArrowRight /></button>
-            </form>
-            <nav className='tcQuickActions' aria-label='Qué necesitas hacer'>
-              <button aria-label='Buscar trabajo' onClick={()=>navigateResults('opportunities')}><Search aria-hidden='true'/><span className='tcQuickLong'>Buscar trabajo</span><span className='tcQuickShort'>Empleos</span></button>
-              <button aria-label='Ofrecer mi trabajo' onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span className='tcQuickLong'>Ofrecer mi trabajo</span><span className='tcQuickShort'>Ofrecer</span></button>
-              <button aria-label='Necesito contratar' onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span className='tcQuickLong'>Necesito contratar</span><span className='tcQuickShort'>Contratar</span></button>
-              <button aria-label='Promocionar negocio' onClick={()=>setShowAdvertiser(true)}><ArrowRight aria-hidden='true'/><span className='tcQuickLong'>Promocionar negocio</span><span className='tcQuickShort'>Anunciar</span></button>
+          <div className='tcTopbarInner'>
+            <button className='neoBrand' aria-label='Trabajo Cerca, inicio' onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}><StitchBrand /></button>
+            <span className='tcTerritoryBadge'>Malleco &amp; Biobío</span>
+            <nav className='neoTopNav' aria-label='Navegación principal'>
+              <button aria-current={section==='opportunities'?'page':undefined} onClick={() => navigateResults('opportunities')}>Empleos</button>
+              <button onClick={() => setFlow('ofrezco')}>Ofrecer mi trabajo</button>
+              <button onClick={() => navigateResults('services')}>Buscar servicios</button>
+              <button onClick={() => setShowAdvertiser(true)}>Publicidad</button>
             </nav>
-
+            <button type='button' className='tcTopPublish' onClick={()=>setFlow('trabajadores')}><PlusCircle aria-hidden='true'/> Publicar oportunidad</button>
+            <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Mi territorio':value}</option>)}</select></label>
+            <SiteMenu onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
+              onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
+              onCities={()=>openSecondary('tc-other-cities')} onNews={()=>openSecondary('actualidad-laboral')}
+              onPeople={()=>navigateResults('people')}/>
+          </div>
+        </header>
+        <div className='tcTerritorialStatus'><div><span><Radar aria-hidden='true'/> Radar laboral territorial <span className='tcStatusDetail'> · Oportunidades con fuente y estado visibles</span></span><span><MapPin aria-hidden='true'/> {place==='Todas'?'Malleco y Biobío':place}{feedUpdatedAt?' · Catálogo del '+shortDate(feedUpdatedAt):''}</span></div></div>
+        <section className='neoHero neoHeroReborn' id='neo-home'>
+          <div className='tcStitchHeroRadar' aria-hidden='true'><svg viewBox='0 0 400 400' fill='none'><circle cx='200' cy='200' r='190' strokeDasharray='6 6'/><circle cx='200' cy='200' r='140'/><circle cx='200' cy='200' r='90' strokeDasharray='4 4'/><circle cx='200' cy='200' r='40'/><path d='M200 10V390M10 200H390'/></svg></div>
+          <div className='neoHeroCopy'>
+            <span className='tcStitchEyebrow'><Radar aria-hidden='true'/> Red comunitaria de vinculación de cercanía</span>
+            <h1>Encuentra trabajo <em>cerca de ti</em></h1>
+            <p className='neoHeroLead'>Explora oportunidades formales y oficios en tu comuna. Conecta de forma directa, transparente y sin burocracia con empleadores y vecinos de tu territorio.</p>
+            <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setResultPage(0);setSection('opportunities');setArea('Todas');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
+              <label className='tcRoleField'><Search aria-hidden='true'/><span><small>Cargo, oficio o rubro</small><input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e=>setQ(e.target.value)} placeholder='Ej. Técnico, Cosecha, Soldador, Asistente'/></span></label>
+              <label className='tcCommuneField'><MapPin aria-hidden='true'/><span><small>Comuna base</small><select aria-label='Comuna de búsqueda' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select></span></label>
+              <button type='submit'><Radar aria-hidden='true'/> Buscar trabajo</button>
+              <div className='tcSearchCategories'><span>Explorar por rubro:</span>{areas.filter(value=>value!=='Todas').slice(0,4).map(value=><button key={value} type='button' onClick={()=>{setSection('opportunities');setArea(value);setResultFocus(n=>n+1);}}>{value}</button>)}</div>
+            </form>
           </div>
         </section>
         <section className='tcStitchRadarSummary' aria-label='Resumen del catálogo territorial'>
-          <div><img src='/brand/radar-territorial.svg' width='24' height='24' alt='' aria-hidden='true'/><span>RADAR LABORAL TERRITORIAL</span><b>{scopeCount??'…'} ofertas</b></div>
-          <h1>Oportunidades cerca de ti</h1>
-          <label><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Localidad del radar</span><select aria-label='Localidad del radar' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select></label>
+          <div><span><Radar aria-hidden='true'/> Radar laboral territorial</span><b>{scopeCount??'…'} ofertas</b></div>
+          <h2>Oportunidades en tu territorio</h2>
+          <label><MapPin aria-hidden='true'/><span>Comuna:</span><select aria-label='Localidad del radar' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select><button type='button' onClick={()=>{setAdvancedFiltersOpen(value=>!value);document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}>Ajustar <SlidersHorizontal aria-hidden='true'/></button></label>
         </section>
-        {/* Anunciar, instalar y recibir avisos están disponibles aun cuando el hero móvil se oculta. */}
-        <div className='tcHomeUtilities' role='group' aria-label='Servicios rápidos de Trabajo Cerca'>
-              <button type='button' onClick={()=>setShowAdvertiser(true)} aria-label='Promocionar negocio'><Megaphone aria-hidden='true'/>Anunciar</button>
-              <button type='button' onClick={()=>void installApp()} aria-label={isStandalone?'Aplicación instalada':'Instalar aplicación'}><Download aria-hidden='true'/>{isStandalone?'Instalada':'Instalar app'}</button>
-              <button type='button' onClick={()=>setShowActivity(true)} aria-label='Ver novedades de trabajo sin registrarse'><Bell aria-hidden='true'/>Avisos</button>
-            </div>
         {advertising.selections.search?.type==='COMMERCIAL'&&renderAdvertising('search')}
-        <section className='neoRecentArrivals tcActivityStrip' aria-label='Actividad del catálogo'>
-          <button onClick={()=>navigateResults('opportunities')}><b>{scopeCount??'…'}</b> ofertas disponibles{place!=='Todas'?' · '+place:''}</button>
-          <button onClick={()=>openFresh()}><b>{scopeRecent??'…'}</b> incorporadas en 7 días</button>
-          <button className='tcActivityCenterButton' aria-label='Centro de novedades' title='Centro de novedades' onClick={()=>setShowActivity(true)}><Bell aria-hidden='true'/></button>
-          {!feedComplete&&<small role='status'>Cargando más resultados…</small>}
-        </section>
-
         {feedState==='degraded_last_good'&&<p className='tcResultStatus' role='status'>Mostrando el último catálogo disponible. Actualización pendiente.</p>}
         {notice && !flow && !showAdvertiser && <div className='neoNotice'><CheckCircle /><span>{notice}</span><button onClick={() => setNotice('')}><X /></button></div>}
 
         <section className='neoDiscover' id='neo-jobs' tabIndex={-1} aria-labelledby='tc-results-title' aria-busy={loading||loadingMore}>
           <div className='neoDiscoverHead'>
-            <div><span className='tcStitchEyebrow'>Catálogo territorial</span><h2 id='tc-results-title'>{resultsTitle}</h2><p className='tcResultStatus' role='status'>{shownResults.length} mostrados · {visible.length} resultados{!feedComplete?' cargados · consulta incompleta':''}{loadingMore?' · Cargando más resultados…':''}</p></div>
+            <div><h2 id='tc-results-title' aria-label={resultsTitle}><Radar aria-hidden='true'/><span className='tcDesktopText'>{section==='opportunities'?'Radar de Empleos Activos':resultsTitle}</span><span className='tcMobileText'>{section==='opportunities'?'Oportunidades Cerca':resultsTitle}</span></h2><p className='tcDesktopText'>Ofertas con fuente, ubicación y vigencia diferenciadas.</p></div>
+            <span className='tcCatalogCount' role='status'>{loading?'Cargando…':`${visible.length} resultados${!feedComplete?' · Parciales':''}`}</span>
             {(q.trim()!==''||place!=='Todas'||area!=='Todas'||onlyNew||onlyUnread||filterMode!=='work')&&<button className='tcClearFilters' onClick={()=>navigateResults('opportunities','Todas')}>Quitar filtros</button>}
           </div>
-
           <div className='neoControlDeck'>
-            <div className='neoTabs' role='group' aria-label='Tipos de oportunidades'>
-              <button type='button' aria-label='Empleos' aria-pressed={section==='opportunities'} className={section === 'opportunities' ? 'active' : ''} onClick={() => navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>
-              <button type='button' aria-label='Personas disponibles' aria-pressed={section==='people'} className={'neoPeopleTab ' + (section === 'people' ? 'active' : '')} onClick={() => navigateResults('people')}><UserRoundSearch aria-hidden='true'/><span className='tcTabLong'>Personas disponibles</span><span className='tcTabShort'>Personas</span><b>{feedComplete?items.filter(item=>item.kind==='worker_available'&&!item.review&&matchesTerritorialView(item,place,places)).length:'…'}</b></button>
-              <button type='button' aria-label='Necesitan gente' aria-pressed={section==='needs'} className={section === 'needs' ? 'active' : ''} onClick={() => navigateResults('needs')}><Users aria-hidden='true'/><span className='tcTabLong'>Necesitan gente</span><span className='tcTabShort'>Contratan</span></button>
-              <button type='button' aria-label='Servicios' aria-pressed={section==='services'} className={'neoServiceTab ' + (section === 'services' ? 'active' : '')} onClick={() => navigateResults('services')}><Wrench aria-hidden='true'/><span>Servicios</span></button>
-            </div>
             <div className='neoFilters'>
-              <label className='neoFilterSearch'><Search aria-hidden='true'/><input aria-label='Buscar por cargo, oficio o empresa' value={q} onChange={e => setQ(e.target.value)} placeholder='Cargo u oficio' /></label>
-              <button type='button' className='tcFiltersToggle' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}>Filtros{(area!=='Todas'||onlyNew)?' •':''}</button>
+              <label className='neoFilterSearch'><Search aria-hidden='true'/><input aria-label='Buscar por cargo, oficio o empresa' value={q} onChange={e=>setQ(e.target.value)} placeholder='Buscar oficio, empleo o faena…'/></label>
+              <button type='button' className='tcFiltersToggle' aria-label='Filtros' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}><SlidersHorizontal aria-hidden='true'/><span className='tcDesktopText'>Filtros</span></button>
               <div className='tcAdvancedFilters' id='tc-advanced-filters' data-open={advancedFiltersOpen}>
-                <label><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de resultados</span><select aria-label='Comuna de resultados' value={place} onChange={e => chooseLocalPlace(e.target.value)}>{isTravelView && !places.includes(place) && <option value={place}>{place} · para viajar</option>}{places.map(value => <option key={value}>{value}</option>)}</select></label>
-                <label><Building2 aria-hidden='true'/><span className='tcVisuallyHidden'>Área laboral</span><select aria-label='Área laboral' value={area} onChange={e => setArea(e.target.value)}>{areas.map(value => <option key={value}>{value}</option>)}</select></label>
-                {section==='opportunities'&&<button type='button' className={onlyNew ? 'active' : ''} onClick={() => {setOnlyNew(value => !value);setOnlyUnread(false);}}><Sparkles aria-hidden='true'/> Incorporadas en 7 días</button>}
+                <label><span>Comuna de resultados</span><select aria-label='Comuna de resultados' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select></label>
+                <label><span>Área laboral</span><select aria-label='Área laboral' value={area} onChange={e=>setArea(e.target.value)}>{areas.map(value=><option key={value}>{value}</option>)}</select></label>
+                <label><span>Tipo de publicación</span><select aria-label='Tipo de publicación' value={section} onChange={e=>navigateResults(e.target.value as Section)}><option value='opportunities'>Empleos</option><option value='people'>Personas disponibles</option><option value='needs'>Necesitan gente</option><option value='services'>Servicios</option></select></label>
+                <label><span>Buscar por ubicación</span><select aria-label='Buscar por ubicación' value={filterMode} onChange={e=>setFilterMode(e.target.value as FilterMode)}><option value='work'>Lugar de trabajo</option><option value='recruit'>Aceptan desde aquí</option></select></label>
+                {section==='opportunities'&&<button type='button' aria-pressed={onlyNew} onClick={()=>{setOnlyNew(value=>!value);setOnlyUnread(false);}}><Sparkles aria-hidden='true'/> Incorporadas en 7 días</button>}
               </div>
             </div>
+            <div className='tcCommuneRail' aria-label='Filtrar por comuna'>{places.map(value=><button key={value} type='button' aria-pressed={place===value} className={place===value?'active':''} onClick={()=>chooseLocalPlace(value)}>{value}{feedComplete?` (${value==='Todas'?items.filter(item=>item.kind==='job_offer'&&matchesTerritorialView(item,'Todas',places)).length:feedSummary.communeStats[value]?.jobs??0})`:''}</button>)}</div>
+            <div className='tcCategoryRail' aria-label='Filtrar por rubro'>{areas.map(value=><button key={value} type='button' className={area===value?'active':''} aria-pressed={area===value} onClick={()=>setArea(value)}>{value==='Todas'?'Todos':value}</button>)}</div>
           </div>
-
           {loadError && <div className='neoEmpty'><AlertCircle /><b>{loadError}</b><button onClick={() => void load()}>Reintentar</button></div>}
 
           <div className='neoJobsGrid'>
@@ -1459,13 +1445,14 @@ function App() {
                       <span className={'neoJobState ' + (reviewLabel(item)==='Verificada'?'verified':reviewLabel(item)==='Vigencia por confirmar'?'pending':'direct')}>{reviewLabel(item)}</span>
                     </div>
 
-                    {isFresh(item)&&<span className='neoNewOfferBadge' title='Añadida recientemente a Trabajo Cerca; no indica la fecha original'>Recién incorporada</span>}{reading.known&&!reading.read[item.id]&&<span className='tcUnreadBadge'>No leída</span>}
+
                     <h3>{item.title}</h3>
                     {identifiedEmployer(item)&&<p className='neoJobCompany'>{identifiedEmployer(item)}</p>}
                     {item.salary && <strong className='neoSalary'>{item.salary}</strong>}
+                    <div className='tcCardTags'>{isFresh(item)&&<span title='Añadida recientemente a Trabajo Cerca; no indica la fecha original'>Recién incorporada</span>}{reading.known&&!reading.read[item.id]&&<span>No leída</span>}{[item.area,...item.tags].filter(Boolean).slice(0,2).map((tag,n)=><span key={n}>{tag}</span>)}</div>
                     <div className='tcOfferActionRow'>
                       <div className='neoJobFacts'>
-                        <span><small>Fuente</small><b>{item.source||'Fuente no informada'}</b></span>
+                        <span><small>{item.date || 'Fecha no informada'}</small><b title={item.source}>{item.source||'Fuente no informada'}</b></span>
                       </div>
                       <div className='neoJobFoot'>
                         <button aria-label={'Ver oferta: '+item.title} onClick={() => setSelected(item)}>Ver oferta <ArrowRight /></button>
@@ -1474,28 +1461,34 @@ function App() {
                     {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}
                   </div>
                 </article>
-                {index === 2 && section === 'opportunities' && renderAdvertising('listing')}
+                {index === 2 && section === 'opportunities' && advertising.selections.listing?.type==='COMMERCIAL' && renderAdvertising('listing')}
                 </Fragment>
               );
             })}
           </div>
 
-          {visible.length>10&&<nav className='tcResultsPagination' aria-label='Páginas de resultados'><button disabled={resultPage===0} onClick={()=>{setResultPage(n=>Math.max(0,n-1));setResultFocus(n=>n+1);}}>Página anterior</button><span>Página {resultPage+1} de {resultPages} · {visible.length} resultados{!feedComplete?' cargados':''}</span><button disabled={resultPage+1>=resultPages} onClick={()=>{setResultPage(n=>n+1);setResultFocus(n=>n+1);}}>Siguiente página</button></nav>}
+          {visible.length>resultsPerPage&&<nav className='tcResultsPagination' aria-label='Páginas de resultados'><button disabled={resultPage===0} onClick={()=>{setResultPage(n=>Math.max(0,n-1));setResultFocus(n=>n+1);}}>Página anterior</button><span>Página {resultPage+1} de {resultPages} · {visible.length} resultados{!feedComplete?' cargados':''}</span><button disabled={resultPage+1>=resultPages} onClick={()=>{setResultPage(n=>n+1);setResultFocus(n=>n+1);}}>Siguiente página</button></nav>}
           {!loading && visible.length === 0 && !loadError && section !== 'opportunities' && <div className='neoEmpty'><b>{nextCursor ? 'Hay más publicaciones por cargar antes de confirmar esta categoría.' : section === 'people' ? 'Todavía no hay profesionales registrados en esta categoría. ¡Sé de los primeros en ofrecer tus servicios!' : '¿Necesitas personal o un servicio en tu comuna? Publica tu oportunidad.'}</b><button onClick={()=>nextCursor?void load(nextCursor):setFlow(section==='people'?'ofrezco':section==='services'?'servicio':'trabajadores')}>{nextCursor?'Cargar más publicaciones':section==='people'?'Publicar mis servicios':'Publicar una oportunidad'}</button></div>}
           {!loading && visible.length === 0 && !loadError && section === 'opportunities' && <div className='neoEmpty'><Radar /><b>{nextCursor ? 'Hay más ofertas por cargar para completar esta búsqueda.' : 'No hay ofertas que coincidan con esta vista.'}</b><span>Eso no significa que no existan empleos: solo mostramos avisos cuya fuente, vigencia y ubicación logramos confirmar.</span><button onClick={() => nextCursor ? void load(nextCursor) : (setOnlyNew(false),setQ(''),setArea('Todas'))}>{nextCursor ? 'Cargar más ofertas' : 'Ver todas las ofertas'}</button></div>}
           {nextCursor && !loadError && <div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando…' : 'Cargar más'} <ArrowRight /></button></div>}
         </section>
 
-        {advertising.selections.search?.type!=='COMMERCIAL'&&!searchHouseWouldFollowAd&&renderAdvertising('search')}
-        <TerritorialRadar stats={feedSummary.communeStats} ready={!loading&&!loadError} failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt} onSelect={town=>navigateResults('opportunities',town)}/>
-        <details className='tcSecondary' id='tc-other-cities'><summary>Buscar también en otras ciudades</summary>
+        <div className='tcStitchAlert'><Bell aria-hidden='true'/><div><b>¿No ves tu oficio en la lista de hoy?</b><span>Consulta novedades y configura tus avisos locales gratuitos.</span></div><button type='button' onClick={()=>setShowActivity(true)}>Ver novedades <ArrowRight aria-hidden='true'/></button></div>
+        <StitchCommunity person={items.find(item=>item.kind==='worker_available'&&!item.review&&matchesTerritorialView(item,place,places))} onOffer={()=>setFlow('ofrezco')} onBrowse={()=>navigateResults('people')} onSelect={id=>setSelected(items.find(item=>item.id===id)??null)}/>
+        {(advertising.selections.search?.type==='HOUSE_AD'||section==='opportunities'&&advertising.selections.listing?.type==='HOUSE_AD')&&<section className='tcStitchAdvertising' aria-label='Espacio territorial destacado'>
+          <header><div><span className='tcStitchEyebrow'>Espacio territorial destacado</span><h2>Comunidad y Desarrollo Regional</h2></div></header>
+          <StitchAdvertising campaigns={(['search',...(section==='opportunities'?['listing']:[])] as Slot[]).flatMap(slot=>{const ad=advertising.selections[slot];return ad?.type==='HOUSE_AD'?[{id:slot,label:ad.campaign.goal==='professional'?'Servicios y oficios':ad.campaign.goal==='advertiser'?'Negocios y fundadores':'Empleo y territorio',banner:renderAdvertising(slot)}]:[];})}/>
+          <p className='tcFounderNote'><BadgeCheck aria-hidden='true'/><span>Primeros 20 negocios elegibles: 30 días individuales de visibilidad gratuita. Prueba estándar posterior: 14 días. Sin cobros automáticos.</span><button type='button' onClick={()=>setShowAdvertiser(true)}>Inscribir mi negocio <ArrowRight aria-hidden='true'/></button></p>
+        </section>}
+        <section className='tcStitchCities' id='tc-other-cities' aria-labelledby='tc-cities-title'><div><span className='tcStitchEyebrow'>Polos regionales extraterritoriales</span><h2 id='tc-cities-title'>Busca también en otras ciudades</h2>
           <NearbyCities stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>
-        </details>
+        </div></section>
+        <details className='tcSecondary tcStitchRadarDetails'><summary>Explorar el radar territorial</summary><TerritorialRadar stats={feedSummary.communeStats} ready={!loading&&!loadError} failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt} onSelect={town=>navigateResults('opportunities',town)}/></details>
         <details className='tcSecondary' id='actualidad-laboral'><summary>Actualidad laboral y trámites</summary><LaborNewsSection/></details>
 
         <footer className='neoFooter' aria-label='Información de Trabajo Cerca'>
           <div className='neoBrand tcFooterBrand'>
-            <StitchBrand />
+            <StitchBrand subtitle='Radar territorial' />
           </div>
           <p className='tcFooterTagline'>Conectamos personas, trabajo y servicios locales.</p>
           <a className='tcFooterEmail' href={'mailto:'+LEGAL_RESPONSIBLE.privacyEmail}>{LEGAL_RESPONSIBLE.privacyEmail}</a>
@@ -1506,10 +1499,10 @@ function App() {
         </footer>
 
         {!flow && !showAdvertiser && !showAlerts && !showActivity && !legalView && !selected && <nav className='neoMobileNav' aria-label='Navegación móvil'>
-          <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><Sparkles aria-hidden='true'/><span>Inicio</span></button>
-          <button onClick={()=>navigateResults('opportunities')}><Search aria-hidden='true'/><span>Buscar</span></button>
-          <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Ofrecerme</span></button>
-          <button onClick={()=>setFlow('trabajadores')}><Users aria-hidden='true'/><span>Contratar</span></button>
+          <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><House aria-hidden='true'/><span>Inicio</span></button>
+          <button onClick={()=>navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>
+          <button onClick={()=>navigateResults('services')}><Wrench aria-hidden='true'/><span>Servicios</span></button>
+          <button onClick={()=>setFlow('trabajadores')}><PlusCircle aria-hidden='true'/><span>Publicar</span></button>
         </nav>}
 
         {selected && (
@@ -1569,7 +1562,7 @@ function App() {
 
         {showAdvertiser && <AdvertiserPanel initialCommune={place} attribution={houseAttribution} onClose={() => {setShowAdvertiser(false);setHouseAttribution(null);}} onSent={() => setNotice('Solicitud registrada para revisión. La promoción y su duración se confirmarán al aprobar el anuncio. Tu contacto no fue publicado.')} />}
 
-        {legalView && <div className='modal legalModal' role='dialog' aria-modal='true' aria-labelledby='legal-dialog-title' tabIndex={-1}> 
+        {legalView && <div className='modal legalModal' role='dialog' aria-modal='true' aria-labelledby='legal-dialog-title' tabIndex={-1}>
           <div className='panel legalPanel'>
             <button className='close' onClick={() => setLegalView(null)} aria-label='Cerrar'><X /></button>
             <span className='lab'>TRABAJO CERCA · PILOTO</span>

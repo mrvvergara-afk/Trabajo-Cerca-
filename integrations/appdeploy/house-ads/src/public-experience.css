@@ -1,0 +1,100 @@
+/* Trabajo Cerca · Public experience, phase 1.
+   This layer changes only presentation. No form fields, handlers, SDK or admin rules. */
+.tcStitchShell .modal:not(.neoAlertsModal){
+  background:rgba(9,33,24,.62);
+  backdrop-filter:blur(7px);
+  padding:16px;
+  z-index:120;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSheet{
+  --forest:#174934;--forest-deep:#103529;--terracotta:#267447;
+  --line:#d7dfd4;--ivory:#f7f9f6;
+  background:#fff;color:#103529;border:1px solid #d7dfd4;
+  border-radius:20px;box-shadow:0 24px 70px rgba(9,33,24,.24);
+  max-height:min(92dvh,960px);overscroll-behavior:contain;
+  font-family:Inter,Arial,sans-serif;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel{width:min(620px,100%);padding:clamp(18px,3vw,32px)}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel h2,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailHeader h2{
+  font-family:'Plus Jakarta Sans',Inter,sans-serif;
+  color:#103529;font-size:clamp(22px,2.5vw,30px);line-height:1.2;letter-spacing:-.035em;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel>p,
+.tcStitchShell .modal:not(.neoAlertsModal) .panel label,
+.tcStitchShell .modal:not(.neoAlertsModal) .smartForm legend{
+  font-size:13px;line-height:1.5;color:#4a584e;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .lab{font-size:11px;color:#267447;letter-spacing:.05em}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel form{gap:16px}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel input:not([type=checkbox]):not([type=radio]):not([type=file]),
+.tcStitchShell .modal:not(.neoAlertsModal) .panel select,
+.tcStitchShell .modal:not(.neoAlertsModal) .panel textarea{
+  min-height:44px;padding:11px 13px;border:1px solid #cbd8cd;border-radius:11px;
+  background:#fff;color:#103529;font-size:14px;line-height:1.45;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel textarea{min-height:100px}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel :is(input,textarea,select,button,a):focus-visible,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSheet :is(button,a):focus-visible{
+  outline:3px solid #86bd67;outline-offset:2px;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .primary,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailActions a,
+.tcStitchShell .modal:not(.neoAlertsModal) .photoTipButton{
+  min-height:44px;border-radius:11px;background:#267447!important;color:white!important;
+  font-size:14px!important;font-weight:700;line-height:1.35;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .close{
+  width:40px;height:40px;border-radius:12px;border-color:#d7dfd4;color:#103529;background:#f7f9f6;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .zonePicker button{
+  min-height:36px;padding:7px 11px;border-color:#d7dfd4;border-radius:100px;
+  font-size:12px;color:#315446;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .zonePicker button.selected{
+  background:#e0ecd7;border-color:#267447;color:#103529;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .consentRow{
+  border-color:#d7dfd4;background:#f7f9f6;border-radius:12px;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .consentRow span,
+.tcStitchShell .modal:not(.neoAlertsModal) .privacy,
+.tcStitchShell .modal:not(.neoAlertsModal) .photoTipBox small{font-size:12px;line-height:1.55}
+.tcStitchShell .modal:not(.neoAlertsModal) .privacy,
+.tcStitchShell .modal:not(.neoAlertsModal) .photoTipBox{background:#eef4eb;color:#315446;border-color:#d7dfd4}
+.tcStitchShell .modal:not(.neoAlertsModal) .formError{font-size:12px;line-height:1.5}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSheet{width:min(660px,100%)}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailHeader{background:#f7f9f6;border-color:#d7dfd4}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailStatus,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailArea,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailBlock small,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailFacts small,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSource small{font-size:11px;line-height:1.45}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailHeader p,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailBlock b,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailFacts b,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSource b,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailEvidence b,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailEvidence small,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSection p,
+.tcStitchShell .modal:not(.neoAlertsModal) .detailActions span{
+  font-size:13px;line-height:1.55;color:#4a584e;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSection h3{font-size:16px;color:#103529}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailBlock{background:#eef4eb;color:#267447}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailFacts>div{border-color:#d7dfd4}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailActions a{text-decoration:none}
+@media(max-width:600px){
+  .tcStitchShell .modal:not(.neoAlertsModal){padding:8px;align-items:center}
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel{padding:20px 16px;border-radius:16px}
+  .tcStitchShell .modal:not(.neoAlertsModal) .detailHeader{padding:22px 18px 16px}
+  .tcStitchShell .modal:not(.neoAlertsModal) .detailGrid{padding:14px 18px 0}
+  .tcStitchShell .modal:not(.neoAlertsModal) .detailSection{padding:16px 18px 8px}
+  .tcStitchShell .modal:not(.neoAlertsModal) .detailFacts{padding:8px 18px}
+  .tcStitchShell .modal:not(.neoAlertsModal) .detailActions{padding:0 18px 18px}
+  .tcStitchShell .modal:not(.neoAlertsModal) .previewActions{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .tcStitchShell .modal:not(.neoAlertsModal) *{scroll-behavior:auto}
+}

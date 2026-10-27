@@ -51,6 +51,11 @@ try{
       }
       row.checks.push('allocated campaign selector and local images');
       await page.locator('.neoJobFoot button').first().click();await page.getByRole('dialog').waitFor();
+      const detailStyle=await page.locator('.detailSheet').evaluate(el=>({bg:getComputedStyle(el).backgroundColor,title:getComputedStyle(el.querySelector('h2')).fontSize}));
+      assert.equal(detailStyle.bg,'rgb(255, 255, 255)','public detail must use updated white surface');
+      assert(parseFloat(detailStyle.title)>=22,'public detail title too small');
+      if(width===1440||width===390)await page.getByRole('dialog').screenshot({path:`${out}/${width}-public-detail.png`});
+      row.checks.push('public details green design and readable title');
       await page.getByRole('button',{name:'Cerrar detalle',exact:true}).click();row.checks.push('detail and return');
       const search=width<768?page.locator('.neoFilterSearch input'):page.locator('.tcRoleField input');
       await search.fill('no-match-stitch-test');await page.waitForFunction(()=>!document.querySelector('.neoJobCard'));
@@ -62,7 +67,13 @@ try{
       await page.locator('.tcCommunityOffer').click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');
       if(width<768)await page.locator('.neoMobileNav').getByRole('button',{name:'Publicar',exact:true}).click();
       else await page.locator('.tcTopPublish').click();
-      await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});row.checks.push('offer and hiring forms open and close; no submit');
+      await page.getByRole('dialog').waitFor();
+      const publicForm=await page.locator('.modal .panel').last().evaluate(el=>({heading:parseFloat(getComputedStyle(el.querySelector('h2')).fontSize),bg:getComputedStyle(el).backgroundColor,inputs:[...el.querySelectorAll('input:not([type=checkbox]):not([type=hidden])')].map(e=>Math.round(e.getBoundingClientRect().height))}));
+      assert.equal(publicForm.bg,'rgb(255, 255, 255)','public form must use updated surface');
+      assert(publicForm.heading>=22,'public form heading too small');
+      assert(publicForm.inputs.some(height=>height>=44),'public form fields too small');
+      if(width===1440||width===390)await page.getByRole('dialog').screenshot({path:`${out}/${width}-public-form.png`});
+      await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});row.checks.push('public form visual styles, fields, open and close; no submit');
       await page.locator('.tcStitchFooterDetails').evaluate(n=>n.open=true);
       await page.locator('.tcFooterLegal').getByRole('button',{name:'Privacidad',exact:true}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');row.checks.push('privacy dialog');
       const calls=await page.evaluate(()=>window.houseCalls||[]);

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": {
+    "protected_files_unchanged": true,
+    "only_feature_branch": true,
+    "diff_check": true,
+    "inert_svg_trabajo-cerca-horizontal.svg": true,
+    "inert_svg_trabajo-cerca-compact.svg": true,
+    "inert_svg_radar-territorial.svg": true
+  },
+  "scope": "Source preservation, not browser equivalence"
+}

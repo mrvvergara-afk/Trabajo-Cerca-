@@ -54,7 +54,7 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
   },[key]);
   if(!house)return null;
   const creative=presentHouseCreative(house.campaign.id,house.creative);
-  return <aside ref={node} className='tcHouseAd tcPremiumAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD' data-campaign={house.campaign.id}>
+  return <aside ref={node} className='tcHouseAd tcPremiumAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD' data-campaign={house.campaign.id} data-creative-family={house.campaign.goal==='professional'?'services':house.campaign.goal==='advertiser'?'business':'jobs'}>
     <div className='tcCampaignVisual' aria-hidden='true'><AdImage url={creative.imageUrl}/><span className='tcCreativeFallback'>Trabajo Cerca</span></div>
     <div className='tcCampaignCopy'><small className='tcCampaignEyebrow'>{house.campaign.id==='house-advertisers'?'EJEMPLO INSTITUCIONAL':'TRABAJO CERCA'} · FOTO ILUSTRATIVA</small><h3>{creative.title}</h3><p className='tcHouseDesktop'>{creative.message}</p><p className='tcHouseMobile'>{creative.mobileMessage}</p>
     <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{creative.button}</button></div>

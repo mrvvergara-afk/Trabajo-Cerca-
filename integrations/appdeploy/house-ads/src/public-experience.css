@@ -98,3 +98,47 @@
 @media(prefers-reduced-motion:reduce){
   .tcStitchShell .modal:not(.neoAlertsModal) *{scroll-behavior:auto}
 }
+
+
+/* Phase 2 — publication previews, commercial forms and safe contact actions. */
+.tcStitchShell .modal:not(.neoAlertsModal) .advertiserPanel{width:min(620px,100%)}
+.tcStitchShell .modal:not(.neoAlertsModal) .panel label small{font-size:11px;color:#66736a}
+.tcStitchShell .modal:not(.neoAlertsModal) .createdCard{border-color:#d7dfd4;border-radius:16px}
+.tcStitchShell .modal:not(.neoAlertsModal) .createdVisual{background:#eef4eb;color:#267447;min-height:110px}
+.tcStitchShell .modal:not(.neoAlertsModal) .createdVisual span{font-size:11px;color:#315446}
+.tcStitchShell .modal:not(.neoAlertsModal) .createdBody{padding:18px}
+.tcStitchShell .modal:not(.neoAlertsModal) .createdBody h3{font:650 20px/1.25 'Plus Jakarta Sans',Inter,sans-serif;color:#103529}
+.tcStitchShell .modal:not(.neoAlertsModal) .creator,
+.tcStitchShell .modal:not(.neoAlertsModal) .createdBody>p:not(.creator),
+.tcStitchShell .modal:not(.neoAlertsModal) .previewGeo,
+.tcStitchShell .modal:not(.neoAlertsModal) .previewZones{font-size:12px;line-height:1.5}
+.tcStitchShell .modal:not(.neoAlertsModal) .previewGeo,
+.tcStitchShell .modal:not(.neoAlertsModal) .previewZones{background:#eef4eb;color:#315446}
+.tcStitchShell .modal:not(.neoAlertsModal) .previewGeo svg,
+.tcStitchShell .modal:not(.neoAlertsModal) .previewZones svg{color:#267447}
+.tcStitchShell .modal:not(.neoAlertsModal) .revealContact,
+.tcStitchShell .modal:not(.neoAlertsModal) .shareDetail{
+  display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  min-height:44px;padding:11px 14px;border:1px solid #267447;
+  background:#eef4eb;color:#174934;border-radius:11px;
+  font:700 13px/1.4 Inter,Arial,sans-serif;cursor:pointer;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .revealContact:disabled{opacity:.6}
+.tcStitchShell .modal:not(.neoAlertsModal) .deleteDetail{
+  display:block;width:100%;min-height:44px;padding:10px 12px;
+  border:1px solid #d7dfd4;background:#fff;color:#6a443e;border-radius:11px;
+  font:600 12px/1.5 Inter,Arial,sans-serif;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .contactContext{
+  display:flex;align-items:flex-start;gap:8px;padding:11px 12px;
+  background:#f7f9f6;border-radius:11px;color:#4a584e;
+  font-size:12px;line-height:1.5;
+}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailEvidence{background:#eef4eb;color:#267447}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailStatus{color:#267447}
+.tcStitchShell .modal:not(.neoAlertsModal) .detailSource{border-color:#d7dfd4;color:#267447}
+.tcStitchShell .modal:not(.neoAlertsModal) .legalPanel{width:min(740px,100%)}
+@media(max-width:600px){
+  .tcStitchShell .modal:not(.neoAlertsModal) .createdBody{padding:14px}
+  .tcStitchShell .modal:not(.neoAlertsModal) .detailGrid{grid-template-columns:1fr}
+}

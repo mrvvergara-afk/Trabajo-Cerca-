@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { checkPublicRobots } from './public-robots';
 import { publicPublisher, safePublicUrl } from './public-source-adapters';
-import { freePublicSourceStatus } from './free-public-sources';
+import { freePublicSourceStatus, publicDocumentUrl } from './free-public-sources';
 import { recordCandidate } from './radar-trace';
 import { PRIMARY_PLACES } from '../shared/territories';
 
@@ -12,11 +12,22 @@ const fold=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLower
 const pdfId=(url:string)=>'pdf-'+createHash('sha256').update(url).digest('hex').slice(0,42);
 
 export async function extractPublicPdf(address:string) {
-  const url=safePublicUrl(address), publisher=url?publicPublisher(url):null;
+  const clean=safePublicUrl(address);
+  const url=clean?.startsWith('http:')&&publicPublisher(clean)?safePublicUrl('https:'+clean.slice(5)):clean;
+  const publisher=url?publicPublisher(url):null;
   if (!url || !publisher || !url.startsWith('https:')) throw new Error('publisher_not_allowed');
-  const policy=await checkPublicRobots(url);
-  if (!policy.allowed) throw new Error(policy.error||'robots_disallowed');
-  const response=await fetch(url,{headers:{accept:'application/pdf','user-agent':'TrabajoCercaPublic/1.0'},redirect:'manual',signal:AbortSignal.timeout(12000)});
+  let current=url,response:Response|undefined;
+  for (let hop=0;hop<4;hop++) {
+    const policy=await checkPublicRobots(current);
+    if (!policy.allowed) throw new Error(policy.error||'robots_disallowed');
+    response=await fetch(current,{headers:{accept:'application/pdf','user-agent':'TrabajoCercaPublic/1.0'},redirect:'manual',signal:AbortSignal.timeout(12000)});
+    if (![301,302,303,307,308].includes(response.status)) break;
+    const next=safePublicUrl(response.headers.get('location')||'',current);
+    await response.body?.cancel();
+    if (!next || !next.startsWith('https:') || publicPublisher(next)?.group!==publisher.group) throw new Error('pdf_redirect_identity_unconfirmed');
+    current=next;response=undefined;
+  }
+  if (!response) throw new Error('pdf_redirect_budget_exhausted');
   if (response.status!==200) {await response.body?.cancel();throw new Error('HTTP '+response.status);}
   if (!/application\/pdf|octet-stream/i.test(response.headers.get('content-type')||'')) {await response.body?.cancel();throw new Error('not_pdf');}
   const maxBytes=1500000;
@@ -53,7 +64,7 @@ export async function extractPublicPdf(address:string) {
   const hiring=/concurso p[uú]blico|llamado a concurso|se requiere|oferta laboral|convocatoria laboral|se busca|vacante/i.test(text);
   const closed=/postulaciones cerradas|concurso finalizado|proceso cerrado/i.test(text);
   const reason=closed?'explicit_closure':ocrPages.length?'ocr_required':!complete?'partial_pdf_read':hiring&&jobTitles.length?'pdf_job_evidence_requires_verification':'not_a_confirmed_job_document';
-  return {url,sha256,pageCount,pagesRead,complete,ocrPages,textLength:text.length,textExcerpt:text.slice(0,1200),
+  return {url,originalUrl:address,finalUrl:current,sha256,pageCount,pagesRead,complete,ocrPages,textLength:text.length,textExcerpt:text.slice(0,1200),
     jobTitles,workCommunes,reason,stage:closed?'closed':ocrPages.length||!complete?'recoverable':'needs_review',
     // Location mentions and extracted titles are evidence for review, not verified work sites.
     publicEligible:false};
@@ -61,18 +72,27 @@ export async function extractPublicPdf(address:string) {
 
 export async function shadowPdfBatch() {
   const status=await freePublicSourceStatus();
-  const docs=status.documentWork.items.filter(x=>x.kind==='document'&&/\.pdf(?:[?#]|$)/i.test(x.url)).sort((a,b)=>a.url.localeCompare(b.url));
+  const [workCursor]=await db.get<Row>('radar_shadow_pdf_work_cursor',['current'],{consistent:true});
+  const token=typeof workCursor?.nextToken==='string'?workCursor.nextToken:undefined;
+  const ledger=await db.list<Row>('radar_candidate_trace',{limit:20,...(token?{nextToken:token}:{})});
+  const recovered=ledger.items.filter(x=>typeof x.url==='string'&&publicDocumentUrl(x.url)&&!/\.(?:png|jpe?g|webp)(?:[?#]|$)/i.test(x.url)).map(x=>({
+    url:String(x.url),source:String(x.source),publisher_page:String(x.publisherPage||x.url),kind:'document'}));
+  const docs=[...new Map([...status.documentWork.items,...recovered]
+    .filter(x=>x.kind==='document'&&!/\.(?:png|jpe?g|webp)(?:[?#]|$)/i.test(x.url)).map(x=>[x.url,x])).values()]
+    .sort((a,b)=>a.url.localeCompare(b.url));
   const [cursor]=await db.get<Row>('radar_shadow_pdf_cursor',['current'],{consistent:true});
   const last=String(cursor?.lastUrl||'');
   const after=docs.filter(x=>x.url>last),selected=(after.length?after:docs).slice(0,3);
   const outcomes:Row[]=[];
   for (const source of selected) {
-    const url=safePublicUrl(source.url);if (!url) continue;
+    const clean=safePublicUrl(source.url);
+    const url=clean?.startsWith('http:')&&publicPublisher(clean)?safePublicUrl('https:'+clean.slice(5)):clean;
+    if (!url) continue;
     const id=pdfId(url),[old]=await db.get<Row>('radar_shadow_pdf',[id],{consistent:true});
     if (Date.parse(String(old?.nextAttemptAt||''))>Date.now()) continue;
     let item:Row={id,url,source:source.source,publisherPage:source.publisher_page,
       scannedAt:new Date().toISOString(),attempts:Number(old?.attempts||0)+1,publicEligible:false};
-    try {item={...item,...await extractPublicPdf(url)};}
+    try {item={...item,...await extractPublicPdf(source.url)};}
     catch (e) {item={...item,stage:'blocked',reason:e instanceof Error?e.message.slice(0,160):'pdf_read_failed'};}
     item.nextAttemptAt=new Date(Date.now()+(item.stage==='blocked'?6:24)*3600000).toISOString();
     const [ok]=old?await db.tx.update('radar_shadow_pdf',[{id,record:item}]):await db.tx.add('radar_shadow_pdf',[item]);
@@ -85,5 +105,10 @@ export async function shadowPdfBatch() {
   const checkpoint={lastUrl:selected.at(-1)?.url||'',updatedAt:new Date().toISOString(),cycleComplete:!selected.length||selected.at(-1)?.url===docs.at(-1)?.url};
   const [ok]=cursor?await db.tx.update('radar_shadow_pdf_cursor',[{id:'current',record:checkpoint}]):await db.tx.add('radar_shadow_pdf_cursor',[{id:'current',...checkpoint}]);
   if (!ok) throw new Error('PDF cursor write failed');
+  const workCheckpoint={nextToken:ledger.nextToken||null,updatedAt:new Date().toISOString()};
+  const [workOk]=workCursor
+    ?await db.tx.update('radar_shadow_pdf_work_cursor',[{id:'current',record:workCheckpoint}])
+    :await db.tx.add('radar_shadow_pdf_work_cursor',[{id:'current',...workCheckpoint}]);
+  if (!workOk) throw new Error('PDF recovery cursor write failed');
   return {totalDocuments:docs.length,processed:outcomes.length,outcomes};
 }

@@ -1,5 +1,5 @@
 """Free local OCR evidence. Never authorizes or sends a publication."""
-import concurrent.futures, datetime as dt, importlib.util, json, time, threading, re
+import concurrent.futures, datetime as dt, importlib.util, json, time, threading, re, os, hashlib
 import fitz
 from pathlib import Path
 spec=importlib.util.spec_from_file_location("reader","qa/radar-original-document-reader.py")
@@ -31,21 +31,30 @@ def bounded_extract(body,mime,url):
 reader.extract_text=bounded_extract
 items=json.loads(Path("qa-output/radar/ocr-work.json").read_text())["documentWork"]["items"]
 started=time.monotonic()
-results=[]
+previous=[]
+previous_path=os.environ.get("RADAR_PREVIOUS_OCR")
+if previous_path:
+    previous=json.loads(Path(previous_path).read_text()).get("results",[])
+completed={row["url"]:row for row in previous if row.get("decision")!="pending_time_budget"}
+results=list(completed.values())
+items=[row for row in items if row["url"] not in completed]
+for result in results:
+    print("RADAR_OCR_DOCUMENT "+json.dumps(result,ensure_ascii=False),flush=True)
 def process(item):
-    if time.monotonic()-started>400:
+    if time.monotonic()-started>800:
         return {**item,"decision":"pending_time_budget"}
     meta.value={}
     result=reader.read_one(item)
     result.update(meta.value)
     # The historical reader's classification is evidence for review, never a production approval.
+    result["candidate_id"]="candidate-"+hashlib.sha256(str(item.get("url","")).encode()).hexdigest()[:48]
     result["publication_authorized"]=False
     result["processing_environment"]="GitHub Actions, local Tesseract/PyMuPDF"
     return result
-with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
     for result in pool.map(process,items):
         results.append(result)
         print("RADAR_OCR_DOCUMENT "+json.dumps(result,ensure_ascii=False),flush=True)
-report={"read_only":True,"paid_provider_calls":0,"platform_writes":0,"items_total":len(items),
+report={"read_only":True,"paid_provider_calls":0,"platform_writes":0,"items_total":len(results),"continued_from_previous":bool(previous_path),"new_attempts":len(items),
         "results":results,"processed_at":dt.datetime.now(dt.timezone.utc).isoformat()}
 Path("qa-output/radar/ocr.json").write_text(json.dumps(report,ensure_ascii=False,indent=2))

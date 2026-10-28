@@ -4,6 +4,7 @@ import { currentPublicFeedManifest, registerPublicFeedChange } from './public-fe
 import { publicPublisher, publicSourceAdapter, publicOfferIdentity, safePublicUrl, samePublicJob } from './public-source-adapters';
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
+import { assertDistinctPublicOffer, PublicationReviewRequired } from './publication-preflight';
 import { shadowEvaluate } from './shadow-radar';
 import { rememberCandidates, recordCandidate, recordVerification, recoverCandidatePage } from './radar-trace';
 
@@ -37,6 +38,14 @@ export function publicDocumentUrl(value:string) {
     (!url.searchParams.has('Itemid') || /^[1-9]\d{0,8}$/.test(url.searchParams.get('Itemid') || ''));
 }
 
+function discoveryUrl(value:string,origin:string) {
+  const clean=safePublicUrl(value,origin);
+  if (!clean) return null;
+  const owner=publicPublisher(clean),parent=publicPublisher(origin);
+  return clean.startsWith('http:')&&origin.startsWith('https:')&&owner&&parent&&owner.group===parent.group
+    ?safePublicUrl('https:'+clean.slice(5)):clean;
+}
+
 export function publicPageLinks(raw:string, origin:string) {
   const candidates = new Map<string,string>(), archives = new Set<string>();
   raw=raw.replace(/<(nav|header|footer)\b[^>]*>[\s\S]*?<\/\1>/gi,'');
@@ -50,7 +59,7 @@ export function publicPageLinks(raw:string, origin:string) {
     const entry=value as Record<string,unknown>;
     if (['JobPosting','ListItem'].includes(String(entry['@type']))) {
       const target=typeof entry.url==='string' ? entry.url : typeof entry.item==='string' ? entry.item : null;
-      const url=target ? safePublicUrl(target,origin) : null,adapter=url?publicSourceAdapter(url):null;
+      const url=target ? discoveryUrl(target,origin) : null,adapter=url?publicSourceAdapter(url):null;
       if (url && adapter && publicPublisher(url)?.group===publicPublisher(origin)?.group) candidates.set(url,String(entry.title || entry.name || '').slice(0,200));
     }
     for(const child of Object.values(entry))visit(child,depth+1);
@@ -62,11 +71,11 @@ export function publicPageLinks(raw:string, origin:string) {
   if (/^\s*<\?xml|<rss\b|<feed\b/i.test(raw)) for(const entry of raw.matchAll(/<(?:item|entry)\b[^>]*>([\s\S]*?)<\/(?:item|entry)>/gi)) {
     const title=publicText((entry[1].match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '').replace(/<!\[CDATA\[|\]\]>/g,''));
     const target=entry[1].match(/<link[^>]*>([^<]+)<\/link>/i)?.[1] || entry[1].match(/<link\b[^>]*href=["']([^"']+)/i)?.[1];
-    const url=target?safePublicUrl(target.replace(/&amp;/g,'&'),origin):null;
+    const url=target?discoveryUrl(target.replace(/&amp;/g,'&'),origin):null;
     if(url && publicSourceAdapter(url)?.family==='local' && publicPublisher(url)?.group===publicPublisher(origin)?.group && /oferta|vacante|empleo|concurso|postul/i.test(title+' '+url)) candidates.set(url,title.slice(0,200));
   }
   for (const anchor of raw.matchAll(/<a\b([^>]*)href\s*=\s*["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi)) {
-    const url = safePublicUrl(anchor[2].replace(/&amp;/g,'&'),origin);
+    const url = discoveryUrl(anchor[2].replace(/&amp;/g,'&'),origin);
     if (!url) continue;
     const alt = [...anchor[4].matchAll(/\balt=["']([^"']+)["']/gi)].map(match => match[1]).join(' ');
     const title = publicText(anchor[4]+' '+alt);
@@ -84,16 +93,19 @@ export function publicPageLinks(raw:string, origin:string) {
   if (publicSourceAdapter(origin)?.family==='local') {
     for (const embed of raw.matchAll(/<(?:iframe|embed|object)\b[^>]*>/gi)) {
       for (const attribute of embed[0].matchAll(/\b(?:src|data-emsrc|data-src|data)\s*=\s*["']([^"']+)["']/gi)) {
-        const url=safePublicUrl(attribute[1].replace(/&amp;/g,'&'),origin);
+        const url=discoveryUrl(attribute[1].replace(/&amp;/g,'&'),origin);
         if (url && /\.pdf(?:[?#]|$)/i.test(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group) {
           candidates.set(url,'Documento PDF de la publicación municipal');
         }
       }
     }
   }
-  if (publicSourceAdapter(origin)?.family==='local' && /ofertas? laboral|vacantes?|se (?:busca|necesita|requiere)|postulaciones?/i.test(publicText(raw))) {
-    for (const image of raw.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)) {
-      const url=safePublicUrl(image[1].replace(/&amp;/g,'&'),origin);
+  const articles=[...raw.matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/gi)];
+  const imageScope=articles.length===1?articles[0][1]:articles.length>1?'':raw.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]||'';
+  const imageHiring=/ofertas? laboral|vacantes?|se (?:busca|necesita|requiere)|convocatoria laboral/i.test(publicText(imageScope));
+  if (publicSourceAdapter(origin)?.family==='local' && imageHiring) {
+    for (const image of imageScope.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)) {
+      const url=discoveryUrl(image[1].replace(/&amp;/g,'&'),origin);
       if (url && publicPublisher(url)?.group===publicPublisher(origin)?.group && /\.(?:png|jpe?g|webp)(?:[?#]|$)/i.test(url) &&
           !/logo|banner|icon|slider|cropped|avatar|favicon/i.test(url)) candidates.set(url,'Imagen de la publicación laboral');
     }
@@ -205,6 +217,7 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
 }
 
 export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date.now()) {
+  await assertDistinctPublicOffer(offer);
   const adapter = publicSourceAdapter(offer.url || '');
   if (!adapter || adapter.family==='aggregator') throw new Error('Unconfirmed offer identity');
   const unit=offer.document_unit_key;
@@ -343,7 +356,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         }
       }
       if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });
-      await rememberCandidates(links.candidates.map(item=>({url:item.url,source:source.name,publisherPage:page.url})),now);
+      await rememberCandidates(links.candidates.map(item=>({url:item.url,title:item.title,source:source.name,publisherPage:page.url})),now);
       audit.candidateEvidence=links.candidates.slice(0,40).map(item=>({ url:item.url,title:item.title }));
       audit.retainedCandidateCount=links.candidates.length;
       for (const item of links.candidates) if (!seenPending.has(item.url)) {
@@ -385,7 +398,12 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     }
     await recordVerification(candidate.url,result,page.status,'A',now);
     if (result.status==='verified') {
-      receipts.push(await saveVerifiedPublicOffer(result,now));verified++;
+      try {receipts.push(await saveVerifiedPublicOffer(result,now));verified++;}
+      catch (cause) {
+        if (!(cause instanceof PublicationReviewRequired)) throw cause;
+        result={...result,status:'review_ready',reason:cause.reason};
+        await recordVerification(candidate.url,result,page.status,'A',now);
+      }
       rechecks.set(safePublicUrl(result.url!)!,{ url:safePublicUrl(result.url!)!,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+18*3600000).toISOString() });
     } else if (result.status==='rejected') {
       const closed=await closeKnownOffer(candidate.url,result,page,now);

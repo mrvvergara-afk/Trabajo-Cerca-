@@ -2,6 +2,7 @@ import { db } from '@appdeploy/sdk';
 import { createHash, randomUUID } from 'node:crypto';
 import { publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
 import { recordCandidate } from './radar-trace';
+import { listingFingerprints } from './offer-identity';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -14,7 +15,7 @@ type Summary = {
   totalProvisionalJobOffers:number; communeStats:Record<string, Counts>;
   kindStats:Omit<Counts, 'newJobs24h' | 'newJobs7d'>;
 };
-type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary; projectionRevision?:string };
+type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; semanticKeys?:string[]; first:Order; last:Order; refreshAt:number | null; summary:Summary; projectionRevision?:string };
 type Manifest = Summary & { schema:2; updatedAt:string; pages:PageRef[]; pageCount:number };
 type Build = Manifest & { source:FeedSource | 'complete'; nextToken?:string };
 type Change = { source:FeedSource; sourceId:string; queuedAt:string };
@@ -298,6 +299,7 @@ class Editor {
   private set(ref:PageRef, entries:Entry[]) {
     ref.keys = entries.map(entry => entry.key);
     ref.identities = entries.map(entry => identity(entry.item));
+    ref.semanticKeys = [...new Set(entries.flatMap(entry=>listingFingerprints(entry.item)))];
     if (entries.length) {
       ref.first = order(entries[0]);
       ref.last = order(entries[entries.length - 1]);
@@ -414,13 +416,14 @@ async function publish(record:Manifest, lease:Lease) {
   checkSize(record);
   await assertFeedLease(lease);
   const previous=await single<Control>('public_feed_control');
+  const lastGood=await currentPublicFeedManifest();
   const [manifestId]=await db.add('public_feed_manifests',[record]);
   if (!manifestId) throw new Error('Public feed manifest insertion failed; previous feed retained');
   const [durable]=await db.get<Manifest>('public_feed_manifests',[manifestId],{consistent:true});
   if (!durable || durable.itemCount!==record.itemCount || durable.pages.length!==record.pages.length) throw new Error('Public feed manifest not durable; previous feed retained');
   const {id:_id,...fields}=previous??{};
   const {pages:_pages,...summary}=record;
-  const pointer={...fields,...summary,manifestId,...(previous?.manifestId?{previousManifestId:previous.manifestId}:{})};
+  const pointer={...fields,...summary,manifestId,...(lastGood?{previousManifestId:lastGood.manifestId}:{})};
   const gate=db.tx.update('public_feed_writer',[{id:'writer',if:{owner:lease.owner,expiresAt:lease.expiresAt},record:{expiresAt:lease.expiresAt}}],{patch:true});
   const write=previous
     ? db.tx.update('public_feed_control',[{id:previous.id,if:{manifestId:previous.manifestId},record:pointer}])
@@ -511,8 +514,10 @@ async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
     return source === 'complete' ? publish(manifest(pages, now),lease) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
   }
 
-  const [current] = await db.get<Manifest>('public_feed_manifests', [control.manifestId],{consistent:true});
-  if (!current) throw new Error('Public feed manifest missing; previous feed retained');
+  const snapshot=await currentPublicFeedManifest();
+  if (!snapshot) throw new Error('Public feed snapshot unavailable; changes retained');
+  if (snapshot.degraded) return publish(manifest(snapshot.manifest.pages,now),lease);
+  const current=snapshot.manifest;
   await reconcileFeedEquivalents(projector);
   const legacy = current.pages.find(page => !Array.isArray(page.identities));
   if (legacy) {

@@ -63,6 +63,10 @@ test('feed retains a durable public snapshot and serializes overlapping writers'
  const saved=mem.table('public_feed_manifests').get(current.manifestId);
  mem.table('public_feed_manifests').delete(current.manifestId);
  assert.equal((await core.readPublicFeedPage()).totalItems,2);
+ await core.advancePublicFeed(projector);
+ const restored=[...mem.table('public_feed_control').values()][0];
+ assert(mem.table('public_feed_manifests').has(restored.previousManifestId));
+ assert.equal((await core.readPublicFeedPage()).totalItems,2);
  mem.table('public_feed_manifests').set(current.manifestId,saved);
 });
 test('document unit identities keep distinct roles and normalize URL equivalents',()=>{
@@ -136,4 +140,43 @@ test('PDF reader really extracts text and checkpoints under the chosen physical 
   assert.equal(stored[0][1].publicEligible,false);
   await core.shadowPdfBatch();assert.equal(mem.table('radar_shadow_pdf').size,1);
  } finally {globalThis.fetch=originalFetch;}
+});
+
+test('new shadow observations preserve the previously stored publication identity',async()=>{
+ const input={url,source:'Unit fixture',raw:html(),http:200,baseline:{status:'verified',reason:'unit_fixture_verified',title:'Unit fixture',work_commune:'Angol'},at:now};
+ await core.shadowEvaluate(input);
+ const [id,record]=[...mem.table('radar_shadow_b')][0];
+ mem.table('radar_shadow_b').set(id,{...record,sourceId:'existing-published-id',publication:'queued_for_feed',stage:'stored'});
+ await core.shadowEvaluate(input);
+ assert.equal(mem.table('radar_shadow_b').get(id).sourceId,'existing-published-id');
+ assert.equal(mem.table('radar_shadow_b').get(id).publication,'queued_for_feed');
+ assert.equal(mem.table('radar_shadow_b').get(id).stage,'stored');
+});
+
+test('same employer, title and commune on another URL requires review without merging distinct roles',async()=>{
+ const pointer=[...mem.table('public_feed_control').values()][0];
+ const manifest=mem.table('public_feed_manifests').get(pointer.manifestId);
+ const ref=manifest.pages[0],leaf=mem.table('public_feed_versions').get(ref.id);
+ const old={kind:'job_offer',title:'TENS para Cuidados Pacientes Domiciliarios / Lumaco',company:'Layner',
+  workCommunes:['Lumaco'],url:'https://www.chiletrabajos.cl/trabajo/tens-lumaco-3902931'};
+ leaf.entries.push({key:'radar_jobs:existing-lumaco',source:'radar_jobs',sourceId:'existing-lumaco',item:old});
+ ref.semanticKeys.push(...core.listingFingerprints(old));
+ const offer={status:'verified',reason:'unit_fixture',title:'TENS para Cuidados Pacientes Domiciliarios /Lumaco',company:'LAYNER',
+  work_commune:'Lumaco',url:'https://www.chiletrabajos.cl/trabajo/tens-lumaco-3892923'};
+ await assert.rejects(core.assertDistinctPublicOffer(offer),/possible_republication/);
+ await core.assertDistinctPublicOffer({...offer,title:'TENS turno nocturno en otra unidad'});
+ assert.equal(leaf.entries.filter(x=>x.sourceId==='existing-lumaco').length,1);
+});
+
+test('poster discovery excludes unrelated images in the surrounding municipal page',()=>{
+ const raw='<article><h1>Oferta laboral para operador</h1><img src="/afiche-empleo.png"></article><aside><img src="/permiso-circulacion.png"></aside>';
+ const found=core.publicPageLinks(raw,'https://www.malleco7.cl/oferta-operador/').candidates.map(x=>x.url);
+ assert(found.some(x=>x.endsWith('/afiche-empleo.png')));
+ assert(!found.some(x=>x.endsWith('/permiso-circulacion.png')));
+});
+
+test('an initial partial page is never measured as a complete empty public inventory',async()=>{
+ const inventory=await core.readFeedInventory(async()=>({data:{items:[],totalItems:0,complete:false,degraded:true}}));
+ assert.equal(inventory.complete,false);
+ assert(inventory.error);
 });

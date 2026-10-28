@@ -17,11 +17,11 @@ export function candidateState(result:PublicVerification, http=200):CandidateSta
 
 // Add every discovered identity before bounded operational queues select work.
 // Duplicate chosen IDs preserve prior validation, publication and retry evidence.
-export async function rememberCandidates(items:Array<{url:string;source:string;publisherPage?:string}>, now=Date.now()) {
+export async function rememberCandidates(items:Array<{url:string;source:string;publisherPage?:string;title?:string}>, now=Date.now()) {
   const unique=[...new Map(items.map(item=>[traceId(item.url),item])).entries()];
   for (let i=0;i<unique.length;i+=30) {
     const rows=unique.slice(i,i+30).map(([id,item])=>({id,url:item.url,source:item.source,
-      publisherPage:item.publisherPage || item.url,state:'recoverable',reason:'awaiting_read',
+      publisherPage:item.publisherPage || item.url,discoveredTitle:item.title || null,state:'recoverable',reason:'awaiting_read',
       reading:'pending',validation:'pending',publication:'not_stored',revision:0,
       firstSeenAt:new Date(now).toISOString(),nextAttemptAt:new Date(now).toISOString()}));
     const result=await db.tx.add('radar_candidate_trace',rows);
@@ -44,9 +44,12 @@ export async function recordCandidate(url:string, patch:Row, now=Date.now()) {
 export async function recordVerification(url:string, result:PublicVerification, http:number, engine:'A'|'B', now=Date.now()) {
   const state=candidateState(result,http);
   return recordCandidate(url,{state,reason:result.reason,reading:state==='inaccessible'?'failed':'read',
-    validation:state,engine,title:result.title || null,company:result.company || null,
-    workCommune:result.work_commune || null,sourcePublishedAt:result.source_published_at || null,
-    validThrough:result.valid_through || null,application:result.application || null,
+    validation:state,engine,[engine==='A'?'motorA':'motorB']:{status:result.status,reason:result.reason,checkedAt:new Date(now).toISOString()},
+    ...(result.title?{title:result.title}:{}),...(result.company?{company:result.company}:{}),
+    ...(result.work_commune?{workCommune:result.work_commune}:{}),
+    ...(result.source_published_at?{sourcePublishedAt:result.source_published_at}:{}),
+    ...(result.valid_through?{validThrough:result.valid_through}:{}),
+    ...(result.application?{application:result.application}:{}),
     nextAttemptAt:['recoverable','inaccessible'].includes(state)?new Date(now+6*3600000).toISOString():null},now);
 }
 

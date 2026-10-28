@@ -2,6 +2,7 @@ import { db } from '@appdeploy/sdk';
 import { safePublicUrl } from './public-source-adapters';
 import { fetchPublicPage } from './public-source-http';
 import { evaluateWithEvidence } from './evidence-job';
+import { PublicationReviewRequired } from './publication-preflight';
 import { saveVerifiedPublicOffer } from './free-public-sources';
 import { recordVerification, recordCandidate } from './radar-trace';
 
@@ -24,16 +25,23 @@ export async function publishQualifiedShadowOffers() {
     let patch:Row={lastAttemptAt:new Date().toISOString(),lastReason:result.reason,
       nextAttemptAt:new Date(Date.now()+6*3600000).toISOString()};
     if (result.status==='verified') {
+      try {
       const stored=await saveVerifiedPublicOffer(result);
       patch={...patch,stage:'stored',sourceTable:stored.table,sourceId:stored.id,publication:'queued_for_feed',independentlyVerified:result.verification_method==='motor_b_html_original_source'};
       results.push({url,status:'stored_for_public_feed',sourceTable:stored.table,sourceId:stored.id,method:result.verification_method,feedConfirmed:false});
+      } catch(cause) {
+        if (!(cause instanceof PublicationReviewRequired)) throw cause;
+        patch={...patch,stage:'needs_review',lastReason:cause.reason};
+        await recordVerification(url,{...result,status:'review_ready',reason:cause.reason},source.status,'B');
+        results.push({url,status:'needs_review',reason:cause.reason});
+      }
     } else {
       patch.stage=result.status==='rejected'?'closed':result.status==='review_ready'?'needs_review':'recoverable';
       results.push({url,status:patch.stage,reason:result.reason});
     }
     const [ok]=await db.tx.update('radar_shadow_b',[{id:row.id,record:patch}],{patch:true});
     if (!ok) throw new Error('Shadow publication receipt not saved');
-    await recordCandidate(url,{source:row.source,shadowId:row.id,reason:result.reason});
+    await recordCandidate(url,{source:row.source,shadowId:row.id,reason:patch.lastReason||result.reason});
   }
   const checkpoint={nextToken:page.nextToken||null,cycleComplete:!page.nextToken,updatedAt:new Date().toISOString()};
   const [ok]=savedCursor?await db.tx.update('radar_shadow_publish_cursor',[{id:'current',record:checkpoint}]):await db.tx.add('radar_shadow_publish_cursor',[{id:'current',...checkpoint}]);

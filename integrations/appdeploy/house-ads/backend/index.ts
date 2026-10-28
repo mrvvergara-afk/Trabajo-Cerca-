@@ -2619,7 +2619,7 @@ export const radarLaunchSmokeHandler = async () => {
       const scan=await runFreePublicSources(FREE_PUBLIC_SOURCES,'launchSmoke20261027ABRealV3');
       const scanResult=scan as Record<string,unknown>;
       const shadowRows=await db.list<Record<string,unknown>>('radar_shadow_b',{limit:200});
-      const shadowCount={publishable:0,recoverable:0,blocked:0,closed:0};
+      const shadowCount={publishable:0,recoverable:0,stored:0,needs_review:0,blocked:0,closed:0};
       for(const row of shadowRows.items){const stage=String(row.stage);if(stage in shadowCount)shadowCount[stage as keyof typeof shadowCount]++;}
       const summary={sourcesRead:Number(scanResult.sourcesRead||0),noticesChecked:Number(scanResult.noticesChecked||0),verified:Number(scanResult.verified||0),pending:Number(scanResult.pending||0),deferred:scanResult.deferred===true,shadowTotal:shadowRows.items.length,shadowCount,reviewed:scanResult.reviewed,shadowReviewed:scanResult.shadowReviewed};
       await db.tx.update('radar_launch_smoke',[{id,record:{phase:'scan_complete',before,scan:summary}}]);
@@ -2954,10 +2954,10 @@ const applicationRouter = router({
   'GET /api/ops/document-revalidation': [async () => json(await documentRevalidationStatus())],
   'GET /api/ops/radar-feed': [async () => json(await publicFeedProgress())],
   'GET /api/ops/local-source-evidence': [async ({ query }) => json(await readLocalSourceEvidence(query.cursor))],
-  'GET /api/ops/free-public-sources': [async () => json(await freePublicSourceStatus())],
+  'GET /api/ops/free-public-sources': [async () => json({...await freePublicSourceStatus(),configuredSourceCount:RADAR_SOURCE_INVENTORY.length,automaticSourceCount:FREE_PUBLIC_SOURCES.length,manualSourceCount:RADAR_SOURCE_INVENTORY.filter(x=>x.manualOnly).length})],
   'GET /api/ops/radar-ab-progress': [async () => {
     const [feed,shadow,pdf]=await Promise.all([readPublicFeedSummary(),db.list<Record<string,unknown>>('radar_shadow_b',{limit:200}),db.list<Record<string,unknown>>('radar_shadow_pdf',{limit:200})]);
-    const shadowCount={publishable:0,recoverable:0,blocked:0,closed:0};
+    const shadowCount={publishable:0,recoverable:0,stored:0,needs_review:0,blocked:0,closed:0};
     const pdfCount={recoverable:0,needs_review:0,blocked:0,closed:0};
     for(const row of shadow.items){const k=String(row.stage);if(k in shadowCount)shadowCount[k as keyof typeof shadowCount]++;}
     for(const row of pdf.items){const k=String(row.stage);if(k in pdfCount)pdfCount[k as keyof typeof pdfCount]++;}
@@ -2970,7 +2970,7 @@ const applicationRouter = router({
   }],
   'GET /api/admin/radar-shadow-compare': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({query})=>{
     const rows=await db.list<Record<string,unknown>>('radar_shadow_b',{limit:100,...(query.cursor?{nextToken:query.cursor}:{})});
-    const count={publishable:0,recoverable:0,blocked:0,closed:0};
+    const count={publishable:0,recoverable:0,stored:0,needs_review:0,blocked:0,closed:0};
     for(const item of rows.items){const s=String(item.stage);if(s in count)count[s as keyof typeof count]++;}
     const [status,feedState,feedSummary,pdfRows]=await Promise.all([freePublicSourceStatus(),publicFeedProgress(),readPublicFeedSummary(),db.list<Record<string,unknown>>('radar_shadow_pdf',{limit:100})]);
     const pdfCounts={recoverable:0,needs_review:0,blocked:0,closed:0};
@@ -3094,6 +3094,8 @@ const applicationRouter = router({
     const activeCampaigns = campaigns.filter(item => item.status === 'active' && Date.parse(item.startAt) <= now && now <= Date.parse(item.endAt));
     const payload = {
       updatedAt:new Date().toISOString(),
+      publicCatalog:await readPublicFeedSummary(),
+      measurementScope:{internalTable:'radar_jobs',evaluatedRows:radarJobs.items.length,partial:Boolean(radarJobs.nextToken),candidateRows:candidates.items.length,candidatesPartial:Boolean(candidates.nextToken),auditRows:audits.items.length,auditsPartial:Boolean(audits.nextToken)},
       jobs:{
         active:activeRadar.filter(item => item.kind === 'job_offer').length,
         verified:activeRadar.filter(item => item.kind === 'job_offer' && item.verified && !item.review).length,

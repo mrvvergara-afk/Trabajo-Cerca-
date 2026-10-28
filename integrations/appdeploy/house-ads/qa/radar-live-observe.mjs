@@ -10,6 +10,7 @@ function extract(v,depth=0) {
  if(!v||depth>12)return;
  if(typeof v==='string'){if(/^[\[{]/.test(v.trim())){try{extract(JSON.parse(v),depth+1);}catch{}}return;}
  if(typeof v!=='object')return;
+ if(v.jobs&&v.radar&&v.privacy?.personalDetailsIncluded===false)report.internalSummary={updatedAt:v.updatedAt,jobs:v.jobs,radar:v.radar,scope:'radar_jobs_and_radar_candidates_first_pages_limit_200'};
  if(Array.isArray(v.items))for(const item of v.items)if(item?.id&&item.kind)networkItems.set(item.id,{
    id:item.id,documentUnitKey:item.documentUnitKey,documentUnitVerified:item.documentUnitVerified,
    sourcePublishedAt:item.sourcePublishedAt,sourceValidThrough:item.sourceValidThrough,applicationUrl:item.applicationUrl});
@@ -29,6 +30,10 @@ try {
    await page.screenshot({path:out+'/'+mode+'.png',fullPage:true});
   }catch(e){report.errors.push(mode+': '+e.message);}
  }
+ try {
+  await page.goto(root+'#operacion',{waitUntil:'domcontentloaded',timeout:45000});
+  for(let i=0;i<10&&!report.internalSummary;i++){await page.waitForTimeout(300);await Promise.all(networkReads);}
+ }catch(e){report.errors.push('internal-summary: '+e.message);}
  try {
   await page.goto(root,{waitUntil:'domcontentloaded',timeout:45000});
   await page.locator('[data-offer-id]').first().waitFor({timeout:75000});

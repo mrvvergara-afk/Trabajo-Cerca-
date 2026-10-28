@@ -7,3 +7,7 @@ export { publicPublisher, publicSourceAdapter, publicOfferIdentity, publicFeedId
 export { PRIMARY_PLACES } from '../shared/territories';
 export { advancePublicFeed, readPublicFeedPage, registerPublicFeedChange, currentPublicFeedManifest } from '../backend/public-feed';
 export { rememberCandidates, recordCandidate, candidateState } from '../backend/radar-trace';
+export { shadowEvaluate } from '../backend/shadow-radar';
+export { offerFingerprint, listingFingerprints } from '../backend/offer-identity';
+export { assertDistinctPublicOffer, PublicationReviewRequired } from '../backend/publication-preflight';
+export { readFeedInventory } from '../src/feed-inventory';

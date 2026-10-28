@@ -115,7 +115,7 @@ export function publicPageLinks(raw:string, origin:string) {
   if (publicSourceAdapter(origin)?.family==='portal') {
     return {candidates:[...candidates].filter(([url])=>samePublicJob(origin,url)).map(([url,title])=>({url,title})),archives:[]};
   }
-  return { candidates:[...candidates].map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };
+  return { candidates:[...candidates].map(([url,title]) => ({ url,title })),archives:[...archives] };
 }
 
 export function publicRenderRequired(raw:string) {
@@ -369,7 +369,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       seen = [...new Set([...seen,url])].slice(-64);
       queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&
         !publicDocumentUrl(item.url)).map(item => item.url)])]
-        .filter(item => !seen.includes(item)).slice(0,30);
+        .filter(item => !seen.includes(item));
       audit.candidates = links.candidates.length;
     }
     const restricted=Boolean(page.error && /robots|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;

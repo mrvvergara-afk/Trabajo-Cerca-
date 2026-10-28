@@ -1,3 +1,4 @@
+import {resumeWork} from './radar-work-checkpoint.mjs';
 import { readFileSync,writeFileSync,mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const core=await import('../qa-output/radar/core.mjs');
@@ -41,15 +42,18 @@ if(previous){
  const refreshed=new Set(report.sources.map(x=>x.url));
  report.sources=[...previous.sources.filter(x=>!refreshed.has(x.url)),...report.sources];report.candidates=previous.candidates;report.documents=previous.documents;
  report.continuedFrom=previous.completedAt;
- for(const x of [...previous.candidates,...previous.documents])seen.add(x.url);
- const newlyDiscovered=queue.splice(0).filter(x=>!previous.candidates.some(old=>old.url===x.url)&&!previous.documents.some(old=>old.url===x.url));
- queue.push(...newlyDiscovered);
- for(const x of previous.pending||[])if(!seen.has(x.url)){seen.add(x.url);queue.push(x);}
+ const resumed=resumeWork(previous,queue);
+  queue.length=0;queue.push(...resumed);
+  for(const x of [...previous.candidates,...previous.documents,...queue])seen.add(x.url);
 }
+let inFlight=[];
+function checkpoint(){writeFileSync(out+'/crawl.json',JSON.stringify({...report,checkpointVersion:2,checkpointedAt:new Date().toISOString(),pending:[...report.pending,...queue,...inFlight],fullTraversalComplete:false},null,2));}
+checkpoint();
+process.once('uncaughtException',error=>{checkpoint();console.error(error);process.exit(1);});
 let processed=0;
 while(queue.length&&Date.now()<deadline&&processed<4000) {
- const batch=queue.splice(0,4);processed+=batch.length;
- await parallel(batch,async candidate=>{
+ const batch=queue.splice(0,4);inFlight=batch;processed+=batch.length;
+ const done=await parallel(batch,async candidate=>{
   if(/\.pdf(?:[?#]|$)/i.test(candidate.url)){
    try{report.documents.push({...candidate,...await core.extractPublicPdf(candidate.url)});}
    catch(e){report.documents.push({...candidate,stage:'inaccessible',reason:String(e)});}
@@ -73,6 +77,7 @@ while(queue.length&&Date.now()<deadline&&processed<4000) {
   }
  });
  if(done<batch.length)report.pending.push(...batch.slice(done).map(x=>({...x,reason:'batch_time_budget_pending'})));
+ inFlight=[];if(processed%100<4)checkpoint();
 }
 report.pending.push(...queue.map(x=>({...x,reason:'run_budget_pending'})));
 if(previous) {

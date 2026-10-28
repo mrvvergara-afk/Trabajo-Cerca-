@@ -1,3 +1,4 @@
+import {resumeWork} from './radar-work-checkpoint.mjs';
 // All records in this file are synthetic unit fixtures; they are never crawl/publication evidence.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -179,4 +180,15 @@ test('an initial partial page is never measured as a complete empty public inven
  const inventory=await core.readFeedInventory(async()=>({data:{items:[],totalItems:0,complete:false,degraded:true}}));
  assert.equal(inventory.complete,false);
  assert(inventory.error);
+});
+
+test('resumption retains newly discovered work and old pending URLs without repeating completed identities',()=>{
+ const previous={candidates:[{url:'https://unit.invalid/done'}],documents:[],pending:[{url:'https://unit.invalid/old-pending'}]};
+ const resumed=resumeWork(previous,[{url:'https://unit.invalid/new-source-job'},{url:'https://unit.invalid/done'}]);
+ assert.deepEqual(resumed.map(x=>x.url),['https://unit.invalid/new-source-job','https://unit.invalid/old-pending']);
+});
+
+test('all discovered archive links are retained instead of cutting off pagination at five',()=>{
+ const raw=Array.from({length:8},(_,i)=>'<a href="/page/'+(i+1)+'/">'+(i+1)+'</a>').join('');
+ assert.equal(core.publicPageLinks(raw,'https://www.malleco7.cl/noticias/').archives.length,8);
 });

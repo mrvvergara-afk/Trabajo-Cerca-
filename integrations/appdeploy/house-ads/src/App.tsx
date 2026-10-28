@@ -33,6 +33,8 @@ import './compact-layout.css';
 import './premium-presentation.css';
 import './stitch-fidelity.css';
 import './public-experience.css';
+import './mobile-polish.css';
+import './mobile-structure.css';
 import { SiteMenu } from './site-menu';
 function analyticsId() {
   try {
@@ -217,7 +219,7 @@ function FormPanel({
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState('');
   const [photoSending, setPhotoSending] = useState(false);
-  const photoReadingEnabled = false;
+  const photoReadingEnabled = true;
   const sharedParams = new URLSearchParams(window.location.search);
   const sharedTitle = flow === 'aporte' ? (sharedParams.get('share_title') || '') : '';
   const sharedText = flow === 'aporte' ? (sharedParams.get('share_text') || '') : '';
@@ -281,7 +283,7 @@ function FormPanel({
       const prepared = await appImage.resizeIfNeeded(file, { maxDimension:1600, maxPixels:2000000, quality:0.82, mimeType:'image/jpeg' });
       const response = await api.post('/api/radar/photo-tip', { imageData:prepared.data, mimeType:prepared.mimeType, sourceName, clientToken:analyticsId() });
       track('tc_photo_tip_submitted', { public:Boolean(response.data.public), duplicate:Boolean(response.data.duplicate) });
-      onPublished(response.data.public ? 'job_offer' : 'candidate');
+      onPublished('candidate');
       onClose();
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : 'No pudimos leer la foto. Intenta nuevamente.');
@@ -437,9 +439,9 @@ function FormPanel({
           {flow === 'aporte' && (
             <>
               <div className='photoTipBox'>
-                <div><Camera /><span><b>¿Viste un aviso? Comparte su enlace o texto.</b><small>La lectura de fotos está deshabilitada para evitar servicios externos. Puedes aportar el enlace y texto del aviso.</small></span></div>
+                <div><Camera /><span><b>¿Encontraste un afiche laboral?</b><small>Envía una fotografía o captura de Facebook, Instagram, WhatsApp o un cartel. No pedimos tus datos. Se guarda en una cola privada y solo se publica tras revisión. No envíes contenido sexual, discriminatorio, engañoso ni datos personales ajenos que no sean necesarios para postular.</small></span></div>
                 <label className={'photoTipButton ' + (photoSending ? 'busy' : '')}>
-                  <Camera /> {photoReadingEnabled ? (photoSending ? 'Leyendo aviso…' : 'Sacar foto o elegir imagen') : 'Lectura de fotos deshabilitada'}
+                  <Camera /> {photoSending ? 'Enviando afiche…' : 'Sacar foto o elegir captura'}
                   <input type='file' accept='image/*' disabled={!photoReadingEnabled || photoSending} onChange={e => { const file=e.target.files?.[0]; if (file) void submitPhoto(file, 'Foto / galería'); e.currentTarget.value=''; }} />
                 </label>
               </div>
@@ -1081,9 +1083,28 @@ function App() {
       const params = new URLSearchParams({ limit:'40' });
       if (cursor) params.set('cursor', cursor);
       if (fresh) params.set('fresh', '1');
-      const response = await api.get('/api/listings?' + params.toString());
+      // During a fresh deployment the immutable public-feed manifest may not yet
+      // be available. Retry boundedly, without overwriting verified inventory.
+      let response: Awaited<ReturnType<typeof api.get>>;
+      for (let attempt=0;;attempt++) {
+        try {
+          response=await api.get('/api/listings?' + params.toString());
+          break;
+        } catch (cause) {
+          const status=Number((cause as {response?:{status?:number}})?.response?.status ?? 0);
+          if (status!==503 || attempt>=3) throw cause;
+          await new Promise(resolve=>setTimeout(resolve,750*(attempt+1)));
+          if(generation!==requestGeneration.current)return;
+        }
+      }
       if(generation!==requestGeneration.current)return;
       const incoming = response.data.items as Listing[];
+      if (!append && incoming.length===0 && response.data.feedState==='degraded_last_good') {
+        // Do not erase already loaded verified jobs when the server is rebuilding its manifest.
+        setFeedState('degraded_last_good');
+        setNotice('El inventario se está reconstruyendo. Se conservan las ofertas cargadas anteriormente.');
+        return;
+      }
       setFeedUpdatedAt(typeof response.data.updatedAt==='string'?response.data.updatedAt:null);
       setFeedComplete(!response.data.nextCursor);
       setFeedState((response.data.feedState || (Number(response.data.totalVerifiedJobOffers ?? 0) === 0 ? 'authoritative_empty' : 'fresh')) as 'fresh'|'degraded_last_good'|'authoritative_empty');
@@ -1439,9 +1460,7 @@ function App() {
               <span className='tcMobileText'><button type='button' className='tcFiltersToggle' aria-label='Filtros' aria-expanded={advancedFiltersOpen} aria-controls='tc-advanced-filters' onClick={()=>setAdvancedFiltersOpen(value=>!value)}><SlidersHorizontal aria-hidden='true'/></button></span>
               <div className='tcAdvancedFilters' id='tc-advanced-filters' data-open={advancedFiltersOpen}>
                 <label><span>Comuna de resultados</span><select aria-label='Comuna de resultados' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select></label>
-                <label><span>Área laboral</span><select aria-label='Área laboral' value={area} onChange={e=>setArea(e.target.value)}>{areas.map(value=><option key={value}>{value}</option>)}</select></label>
                 <label><span>Tipo de publicación</span><select aria-label='Tipo de publicación' value={section} onChange={e=>navigateResults(e.target.value as Section)}><option value='opportunities'>Empleos</option><option value='people'>Personas disponibles</option><option value='needs'>Necesitan gente</option><option value='services'>Servicios</option></select></label>
-                <label><span>Buscar por ubicación</span><select aria-label='Buscar por ubicación' value={filterMode} onChange={e=>setFilterMode(e.target.value as FilterMode)}><option value='work'>Lugar de trabajo</option><option value='recruit'>Aceptan desde aquí</option></select></label>
                 {section==='opportunities'&&<button type='button' aria-pressed={onlyNew} onClick={()=>{setOnlyNew(value=>!value);setOnlyUnread(false);}}><Sparkles aria-hidden='true'/> Incorporadas en 7 días</button>}
               </div>
             </div>

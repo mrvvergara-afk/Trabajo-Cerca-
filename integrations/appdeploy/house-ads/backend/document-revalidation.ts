@@ -314,4 +314,3 @@ export async function documentRevalidationStatus() {
     intervalHours:12, documents, feedManifestId:feed?.manifestId || null,
     newOffersDiscovered:0, socialCaptureProven:false };
 }
-

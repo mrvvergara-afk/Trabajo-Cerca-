@@ -1,8 +1,6 @@
 import { COMMERCIAL_DEFAULTS, COMMERCIAL_PLACES, promotionOffer, validateCommercialConfig, businessIdentity, selectCommercial, type CommercialConfig } from '../shared/commercial-policy';
 import { db, storage, json, error, increment, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 import { createHash, randomUUID } from 'node:crypto';
-import {validCreativePath,type AdMedia} from '../shared/ad-images';
-import {inspectCreative} from './image-validation';
 import { HOUSE_DEFAULTS, validateHouseCampaign, type HouseCampaign, type CommercialAd } from '../shared/house-ads';
 const digest = (text: string) => createHash('sha256').update(text).digest('hex');
 const CONFIG = 'growth_house_config';
@@ -34,7 +32,7 @@ export async function commercialInventory() {
     for(let page=0;page<200;page++){
       const batch=await db.list<CommercialAd>('growth_campaigns',{limit:100,...(nextToken?{nextToken}:{})});
       for(const row of batch.items){
-        const ad={id:row.id,businessName:row.businessName,headline:row.headline,detail:row.detail,url:row.url,communes:row.communes,category:row.category,status:row.status,startAt:row.startAt,endAt:row.endAt,priority:row.priority,placements:row.placements,adType:row.adType,image:row.image,logo:row.logo};
+        const ad={id:row.id,businessName:row.businessName,headline:row.headline,detail:row.detail,url:row.url,communes:row.communes,category:row.category,status:row.status,startAt:row.startAt,endAt:row.endAt,priority:row.priority,placements:row.placements,adType:row.adType};
         bytes+=Buffer.byteLength(JSON.stringify(ad));
         if(bytes>8*1024*1024)throw Error('advertising_inventory_byte_budget');
         items.push(ad);
@@ -55,14 +53,11 @@ export async function publicPromotion(){return promotionOffer(await commercialCo
 export async function advertisingCatalog(query:Record<string,string>={}) {
   const [config,commercial,promotion]=await Promise.all([houseConfiguration(),commercialInventory(),publicPromotion()]);
   const campaigns=config.campaigns.filter(c=>c.status==='active');
+  const paths=[...new Set(campaigns.flatMap(c=>c.creatives.map(v=>v.storagePath).filter((p):p is string=>Boolean(p))))];
+  const urls=paths.length?await storage.url(paths):[];
   const place=COMMERCIAL_PLACES.includes(query.place)?query.place:'Todas';
   const parsedTurn=Number(query.turn);const turn=Number.isSafeInteger(parsedTurn)&&parsedTurn>=0?parsedTurn:0;
-  const selected=selectCommercial(commercial,place,turn);
-  const approved=(m:AdMedia|null|undefined)=>m?.approved===true&&validCreativePath(m.storagePath)?m.storagePath:undefined;
-  const paths=[...new Set([...campaigns.flatMap(c=>c.creatives.filter(v=>!v.imageDisabled).map(v=>v.storagePath)),...selected.flatMap(ad=>[approved(ad.image),approved(ad.logo)])].filter((s):s is string=>!!s))];
-  let urls:Array<{path:string;url:string}>=[];try{urls=paths.length?await storage.url(paths):[];}catch{console.warn('advertising_image_urls_unavailable');}
-  const resolved=(path?:string)=>urls.find(u=>u.path===path)?.url;
-  return {complete:true,revision:config.revision,promotion,house:campaigns.map(c=>({...c,creatives:c.creatives.map(v=>({...v,imageUrl:v.imageDisabled?undefined:v.storagePath?resolved(v.storagePath):HOUSE_DEFAULTS.find(d=>d.id===c.id)?.creatives[0]?.imageUrl}))})),commercial:selected.map(ad=>{const {image,logo,...safe}=ad;return {...safe,imageUrl:resolved(approved(image)),logoUrl:resolved(approved(logo))};}),generatedAt:new Date().toISOString()};
+  return {complete:true,revision:config.revision,promotion,house:campaigns.map(c=>({...c,creatives:c.creatives.map(v=>({...v,imageUrl:urls.find(u=>u.path===v.storagePath)?.url}))})),commercial:selectCommercial(commercial,place,turn),generatedAt:new Date().toISOString()};
 }
 export async function commercialAdmin(ctx:RouterContext){
   if(ctx.body){
@@ -83,21 +78,10 @@ export async function commercialAdmin(ctx:RouterContext){
 }
 export async function commercialCampaigns(ctx:RouterContext){
   if(!ctx.body){const page=await db.list('growth_campaigns',{limit:25,...(ctx.query.cursor?{nextToken:ctx.query.cursor}:{})});return privateJson({items:page.items,nextToken:page.nextToken||null});}
-  const input=ctx.body as {id?:string;status?:string;media?:{slot:'image'|'logo';storagePath:string|null;rightsConfirmed?:boolean;contentApproved?:boolean}};
-  if(!input?.id||input.id.length>150||(!input.media&&!['active','paused','rejected'].includes(input.status||'')))return error('Estado inválido.',400);
+  const input=ctx.body as {id?:string;status?:string};
+  if(!input?.id||input.id.length>150||!['active','paused','rejected'].includes(input.status||''))return error('Estado inválido.',400);
   const [current]=await db.get<CommercialAd>('growth_campaigns',[input.id],{consistent:true});
   if(!current)return error('Campaña inexistente.',404);
-  if(input.media){
-    const m=input.media;if(!['image','logo'].includes(m.slot))return error('Ubicación de imagen inválida.',400);
-    if(m.storagePath!==null){
-      if(!validCreativePath(m.storagePath)||m.rightsConfirmed!==true||m.contentApproved!==true)return error('Confirma autorización y revisión de contenido.',400);
-      const [file]=await storage.read([m.storagePath]);if(!file?.content)return error('Imagen no encontrada.',404);
-      try{inspectCreative(file.content,m.storagePath.endsWith('.png')?'image/png':m.storagePath.endsWith('.jpg')?'image/jpeg':'image/webp');}catch{return error('Imagen inválida.',400);}
-    }
-    const record=m.storagePath?{storagePath:m.storagePath,approved:true,reviewedAt:new Date().toISOString()}:null;
-    await db.transact([db.tx.update('growth_campaigns',[{id:input.id,record:{[m.slot]:record,mediaRevision:randomUUID()},if:{status:current.status,mediaRevision:current.mediaRevision}}],{patch:true}),db.tx.add('growth_commercial_audit',[{id:randomUUID(),action:m.storagePath?'image_approved':'image_removed',campaignId:input.id,slot:m.slot,actor:ctx.user?.userId,at:new Date().toISOString()}])]);
-    invalidateCommercialInventory();return privateJson({id:input.id,[m.slot]:record});
-  }
   if(input.status==='active'&&(!Number.isFinite(Date.parse(current.endAt))||Date.parse(current.endAt)<=Date.now()))return error('La campaña venció. No se renueva al activarla.',409);
   await db.transact([
     db.tx.update('growth_campaigns',[{id:input.id,record:{status:input.status},if:{status:current.status}}],{patch:true}),
@@ -127,8 +111,11 @@ export async function saveHouseConfiguration(ctx: RouterContext) {
 export async function uploadHouseCreative(ctx:RouterContext) {
   const input=ctx.body as {content?:string;mime?:string};
   if(!input||typeof input.content!=='string'||input.content.length>280000||!['image/png','image/jpeg','image/webp'].includes(input.mime||''))return error('Usa PNG, JPEG o WebP, hasta 200 KB.',400);
-  try{inspectCreative(input.content,input.mime!);}catch(cause){return error(cause instanceof Error?cause.message:'Imagen inválida.',400);}
+  const bytes=Buffer.from(input.content,'base64');
+  if(bytes.length>200000||bytes.toString('base64')!==input.content)return error('Archivo inválido.',400);
   const mime=input.mime;
+  const valid=mime==='image/png'?bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])):mime==='image/jpeg'?bytes[0]===255&&bytes[1]===216&&bytes[2]===255:bytes.subarray(0,4).toString()==='RIFF'&&bytes.subarray(8,12).toString()==='WEBP';
+  if(!valid)return error('La imagen no coincide con el formato.',400);
   const path='house-creatives/'+digest(input.content)+(mime==='image/png'?'.png':mime==='image/jpeg'?'.jpg':'.webp');
   const [ok]=await storage.write([{path,content:input.content,contentType:mime!}]);
   if(!ok)return error('No se pudo guardar la creatividad.',503);

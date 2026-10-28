@@ -13,4 +13,3 @@ export function isOriginalVerificationSlot(event:ScheduledInvocation | undefined
   const minute = Number(parts.find(part => part.type === 'minute')?.value);
   return minute === 35 && [1,5,7,9,13,17,21].includes(hour);
 }
-

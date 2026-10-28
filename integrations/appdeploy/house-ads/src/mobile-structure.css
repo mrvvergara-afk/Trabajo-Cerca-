@@ -1,0 +1,39 @@
+/* Visual QA mobile: proportional header, dense listings, tidy footer. */
+@media(max-width:767px){
+.tcStitchShell .tcMobilePlace{display:none!important}
+.tcStitchShell .tcTopbarInner{padding-inline:16px!important;gap:10px!important}
+.tcStitchShell .neoBrand{flex:1 1 auto!important;min-width:0!important}
+.tcStitchShell .tcStitchBrandArt{width:27px!important}
+.tcStitchShell .tcStitchBrand img{width:27px!important;height:28px!important}
+.tcStitchShell .tcStitchMobileWordmark b{font-size:17px!important;line-height:20px!important;letter-spacing:-.025em!important}
+.tcStitchShell .tcStitchMobileWordmark small{font-size:10px!important;line-height:13px!important}
+.tcStitchShell .tcSiteMenu{flex:0 0 auto!important}
+.tcStitchShell .tcSiteMenu>summary{width:40px!important;min-width:40px!important;height:40px!important;min-height:40px!important;padding:8px!important}
+.tcStitchShell .neoJobCard{border-radius:12px!important}
+.tcStitchShell .neoJobBody{grid-template-columns:minmax(0,1fr) auto!important;grid-template-rows:auto auto auto!important;gap:3px!important;padding:11px!important}
+.tcStitchShell .neoJobCard h3{font-size:14px!important;line-height:19px!important;font-weight:650!important;display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;white-space:normal!important;overflow:hidden!important;text-overflow:ellipsis!important;overflow-wrap:anywhere!important}
+.tcStitchShell .neoJobCompany{font-size:12px!important;line-height:16px!important}
+.tcStitchShell .neoJobTop{max-width:85px!important;gap:3px!important}
+.tcStitchShell .neoJobPlace,.tcStitchShell .neoJobState{font-size:10px!important;line-height:13px!important}
+.tcStitchShell .tcOfferActionRow{min-height:36px!important;margin-top:5px!important}
+.tcStitchShell .neoJobFacts small,.tcStitchShell .neoJobFacts b{font-size:10px!important;line-height:14px!important}
+.tcStitchShell .neoJobFoot button{min-height:34px!important;padding:7px 9px!important;font-size:12px!important;line-height:17px!important}
+.tcStitchShell .tcStitchFooterDetails{margin:0 12px!important}
+.tcStitchShell .tcStitchFooterDetails>summary{font-size:12px!important;line-height:17px!important;max-width:100%!important;padding:9px 0!important}
+.tcStitchShell .tcSecondary{width:100%!important;max-width:100%!important}
+.tcStitchShell .tcSecondary>summary{font-size:12px!important;line-height:18px!important;padding:10px 4px!important}
+.tcStitchShell .neoFooter{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:6px!important;padding:14px 12px!important;margin-top:8px!important;min-width:0!important;border-radius:12px!important}
+.tcStitchShell .neoFooter .tcStitchBrand{width:auto!important}
+.tcStitchShell .neoFooter .tcStitchBrand img{width:22px!important;height:25px!important}
+.tcStitchShell .neoFooter .tcStitchMobileWordmark b{font-size:14px!important}
+.tcStitchShell .neoFooter .tcStitchMobileWordmark small{font-size:10px!important}
+.tcStitchShell .tcFooterTagline{font-size:12px!important;line-height:18px!important;margin:0!important}
+.tcStitchShell .tcFooterEmail{display:block!important;min-width:0!important;width:100%!important;overflow-wrap:anywhere!important;word-break:break-word!important;font-size:11px!important;line-height:16px!important}
+.tcStitchShell .tcFooterLegal{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:14px!important}
+.tcStitchShell .tcFooterLegal button{font-size:12px!important;min-height:32px!important}
+.tcStitchShell .neoDrawer{width:100vw!important;max-width:100vw!important;max-height:100dvh!important;overflow:auto!important}
+.tcStitchShell .neoDrawerHeader h2{font-size:21px!important;line-height:1.25!important;overflow-wrap:anywhere!important}
+.tcStitchShell .neoDrawerHeader{padding:22px 16px 12px!important}
+.tcStitchShell .neoDrawerClose{width:40px!important;height:40px!important}
+.tcStitchShell .neoDrawer p,.tcStitchShell .neoDrawer span{overflow-wrap:anywhere}
+}

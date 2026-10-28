@@ -145,3 +145,4 @@ export function AdministratorShortcut({ inline = false }: { inline?: boolean }) 
     </div>
   );
 }
+

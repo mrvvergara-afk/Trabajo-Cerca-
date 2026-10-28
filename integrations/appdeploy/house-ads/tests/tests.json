@@ -246,7 +246,7 @@
       "Revisar documentRevalidation en COMPROBACIÓN DE LECTURA: estado, fecha original, última comprobación y próxima revisión. Si falla la lectura debe mostrarse el error sin impedir consultar el feed.",
       "Comprobar que feedReadComplete solo es true al agotar la última página, sin feedReadError, y que visibleItems conserva cargo y fuente para evaluar el inventario",
       "Abrir /?radar-receiver-proof=1#operacion solo para comprobar los límites de acceso. No pulsar Aplicar ofertas revisadas ni consumir entregas; no iniciar fuentes, OCR, motores sociales ni notificaciones. Si requiere administración, registrar esa precondición sin intentar obtenerla.",
-      "Abrir el radar, comprobar 13 localidades y conteos del catálogo. Con movimiento permitido y módulo visible, observar cambio de foco a los tres segundos, sin rastreo en vivo. Seleccionar manualmente una comuna: aplicar resultados y suspender rotación. Con movimiento reducido no debe rotar."
+      "Abrir el radar, comprobar 14 localidades y conteos del catálogo. Con movimiento permitido y módulo visible, observar cambio de foco a los tres segundos, sin rastreo en vivo. Seleccionar manualmente una comuna: aplicar resultados y suspender rotación. Con movimiento reducido no debe rotar."
     ],
     "expected": "Se muestran valores guardados y un estado de feed completo o en construcción. El bloque permite verificar IDs y fechas sin mostrar claves ni respaldos. Un fallo de lectura aparece como error; no se convierte en cero publicaciones confirmado. La revalidación documental muestra su estado guardado y distingue la fecha original de la última comprobación. Esta consulta no revalida ni publica; un fallo se muestra como error y no como comprobación exitosa. El bloque incluye visibleItems, feedPagesRead y feedReadComplete; encontrar los tres IDs esperados no interrumpe la lectura de las páginas restantes. Un error o un límite de lectura no confirma el inventario completo. visibleItems conserva fecha original, plazo y URL de postulación cuando esos campos existen, sin derivarlos de la fecha de revisión. La incorporación devuelve el estado del lote y sus recibos, o un error visible o cooldown. No declara ofertas nuevas por el simple hecho de pulsar y no acepta registros nuevos desde ese formulario. La consulta posterior conserva el inventario."
   },
@@ -261,7 +261,11 @@
       "modo de solo lectura",
       "GET /api/ops/free-public-sources",
       "recolección pública sin proveedores pagos",
-      "separación de guardado y publicación"
+      "separación de guardado y publicación",
+      "14 comunas PILOT incluidas en fuentes gratuitas principales",
+      "Victoria se verifica como mercado primario, no secundario",
+      "OMIL Victoria, llamados Purén y municipio Ercilla como fuentes públicas gratuitas",
+      "Páginas índice no pasan por oferta individual"
     ],
     "description": "Comprueba la lectura de capturas ya guardadas y el alcance limitado de la página consultada.",
     "steps": [
@@ -270,9 +274,12 @@
       "Revisar el bloque de evidencia de fuentes locales",
       "Abrir /?radar-public-proof=1#operacion",
       "Pulsar Leer fuentes públicas y esperar el resultado o un error visible",
-      "Recargar y consultar el registro; no pulsar motores sociales ni notificaciones"
+      "Recargar y consultar el registro; no pulsar motores sociales ni notificaciones",
+      "Inspeccionar código de FREE_TARGET_TOWNS y comprobar 14 destinos primarios, incluidas las cuatro antes omitidas; verificar que Victoria no figura en secondary.",
+      "Asegurar que dominios municipales de Victoria, Purén y Ercilla se aceptan como fuentes públicas; que /category/omil/ y /llamados-a-concurso-2026/ no son ofertas individuales.",
+      "Verificar en el siguiente cron el número de fuentes consultadas y publicaciones realmente verificadas; no confundir la incorporación de fuentes con la captura demostrada."
     ],
-    "expected": "Se muestran conteos de la página consultada y el bloque JSON de evidencia con readOnly true y providerCalls 0, o un error visible si la lectura falla. No se declara cobertura completa del historial. En el panel de fuentes públicas, la lectura queda registrada con providerCalls 0 o muestra un error visible. Si la lectura coincide con otra reciente, conserva la comprobación anterior y señala el aplazamiento. Los resultados guardados no se presentan como publicaciones confirmadas sin un manifiesto visible."
+    "expected": "Se muestran conteos de la página consultada y el bloque JSON de evidencia con readOnly true y providerCalls 0, o un error visible si la lectura falla. No se declara cobertura completa del historial. En el panel de fuentes públicas, la lectura queda registrada con providerCalls 0 o muestra un error visible. Si la lectura coincide con otra reciente, conserva la comprobación anterior y señala el aplazamiento. Los resultados guardados no se presentan como publicaciones confirmadas sin un manifiesto visible. Se mantiene política sin llamadas pagadas; sólo las ofertas individuales válidas pueden publicarse y se preservan los registros anteriores."
   },
   {
     "name": "El aporte de fotos explica su deshabilitación sin ejecutar OCR remoto",
@@ -313,15 +320,34 @@
     "covers": [
       "panel de acceso administrativo",
       "denegación anónima",
-      "comprobación sin exportación ni operaciones manuales"
+      "comprobación sin exportación ni operaciones manuales",
+      "GET /api/admin/document-work protegido por autenticación y allowlist",
+      "Bandeja privada GET/POST /api/admin/radar-review autenticada, aislada del feed",
+      "Verificación sin escritura contra JobPosting, fuente, vigencia máxima 20 días, comuna y duplicados",
+      "El envío admin a radar_jobs queda review:true y verified:false, ID estable y sin publicación automática",
+      "El verificador programado prioriza IDs tcq_ enviados por administración sin recorrer el cursor completo ni aumentar corridas o llamadas al proveedor",
+      "Comprobación de duplicados paginada con cursor reanudable sin confundir radar_candidates con publicaciones",
+      "Reutilización de comprobación completa por cinco minutos calculados desde completedAt, independientemente de la antigüedad de startedAt",
+      "Enviar al verificador retira el permiso visual si el servidor solicita revalidar",
+      "Consultar publicación revisa coincidencia exacta de ID en manifiesto público sin falsear éxito durante reconstrucción",
+      "descarga de referencias documentales sin claves ni datos privados"
     ],
     "description": "Comprueba que verificar acceso sin iniciar sesión no otorga permisos ni muestra datos privados.",
     "steps": [
       "Abrir la página con #operacion sin iniciar sesión",
       "En Acceso administrativo pulsar Verificar acceso",
-      "Comprobar que se solicita iniciar sesión con una cuenta autorizada"
+      "Comprobar que se solicita iniciar sesión con una cuenta autorizada",
+      "Confirmar que el botón Descargar cola documental permanece oculto sin autorización; una petición anónima a /api/admin/document-work debe devolver 401 o 403.",
+      "Con una cuenta administradora ya autorizada, si esa precondición está disponible, descargar el archivo y verificar que contiene documentWork.items, read_only=true, paid_provider_calls=0 y ningún token, documento privado o credencial.",
+      "Verificar que la descarga no inicia motores, no publica ofertas y no cambia los conteos del catálogo.",
+      "Comprobar 401/403 en GET /api/admin/radar-review y POST /api/admin/radar-review/import sin sesión.",
+      "Con cuenta autorizada y datos de prueba aislados, importar dos veces el mismo ID y verificar que no se duplica ni llega a radar_jobs.",
+      "Comprobar Falta evidencia, Descartar y Revisión final: ninguna de estas acciones publica el aviso.",
+      "Si la sesión administradora y candidatos de prueba ya están disponibles, pulsar Comprobar fuente y fecha en móvil, confirmar que aparece Comprobando y luego un resultado dentro de esa misma tarjeta; comprobar que Enviar al verificador aparece solo ante comprobación favorable. No crear ofertas para satisfacer la precondición.",
+      "Al abrir Administración con sesión autorizada la bandeja carga sus avisos sin importación ni clic adicional, muestra conteos privados y permite consultar los enviados.",
+      "En móvil revisar campos UTC, prioridad, creatividad y campañas sin desplazamiento horizontal ni desbordes; datos de campañas se conservan sin guardar cambios."
     ],
-    "expected": "No se concede acceso, no se muestran datos privados y la exportación no se habilita."
+    "expected": "Anónimos y cuentas no autorizadas reciben 401 o 403 sin datos; no aparece el botón de exportación. Solo la cuenta administradora validada puede descargar referencias de fuentes públicas en un JSON de máximo 100 elementos con cobertura parcial explícita, sin tokens, datos personales ni escrituras. La descarga no inicia motores y el inventario publicado permanece intacto."
   },
   {
     "name": "El acceso de administración no aparece a usuarios sin sesión",
@@ -472,7 +498,7 @@
       "Comprobar que el buscador del listado está visible y los selectores de Comuna y Área aparecen al pulsar Filtros; elegir un área, cerrar y reabrir Filtros y comprobar que el valor se conserva.",
       "En móvil de 360, 390 y 430 px comprobar que la portada presenta cuatro iconos de acceso en una sola fila y que el primer resultado empieza antes que en la revisión del 23-10.",
       "Comprobar que el detalle laboral no elimina fechas, fuente, ubicación ni estados, y que Ver oferta abre el panel.",
-      "Desplazarse al radar territorial, expandir las 13 localidades, seleccionar una comuna y comprobar navegación. Revisar controles con zonas táctiles de al menos 44px.",
+      "Desplazarse al radar territorial, expandir las 14 localidades, seleccionar una comuna y comprobar navegación. Revisar controles con zonas táctiles de al menos 44px.",
       "En móvil a 360, 390 y 430 px, comprobar dos controles discretos Instalar app y Activar avisos en portada, sin desplazamiento horizontal.",
       "Pulsar Instalar app: si el navegador ofrece instalación, debe invocarse; si no, mostrar guía clara para Chrome en Android y Safari en iPhone.",
       "Pulsar Activar avisos: seleccionar comuna, iniciar sesión si es necesario y activar con permiso del navegador. Verificar preferencia guardada, prueba de envío con confirmación real, y desactivación.",
@@ -511,5 +537,40 @@
       "Consultar empleos y después Buscar en otras ciudades y Actualidad laboral."
     ],
     "expected": "Las campañas propias se identifican como tales, no como empleos ni ventas. Los anuncios comerciales elegibles conservan su espacio. Los enlaces visibles funcionan."
+  },
+  {
+    "name": "Campaña móvil conserva imagen titular y acción",
+    "viewport": "mobile",
+    "covers": [
+      "HOUSE_AD responsive",
+      "imagen y CTA visibles",
+      "sin desbordamiento",
+      "destino real de campaña"
+    ],
+    "description": "Comprueba la composición del banner con inventario existente sin enviar formularios.",
+    "steps": [
+      "Abrir la portada y recorrer el catálogo hasta una campaña propia elegible; si no hay por frecuencia o campaña comercial, registrar la precondición sin crear datos.",
+      "Comprobar que imagen, titular, mensaje y botón están dentro del anuncio, sin desplazamiento horizontal ni texto oculto.",
+      "Pulsar el botón y cerrar el formulario o vista de destino sin enviar datos."
+    ],
+    "expected": "En móvil la fotografía se integra al banner sin recortar su encuadre; titular, mensaje y botón permanecen legibles y dentro del anuncio. El CTA conserva al menos 44 px de superficie táctil, abre su destino y admite foco visible. Comprobar anchos 360, 390 y 430 px, texto ampliado y movimiento reducido, sin superposición ni desbordamiento. No enviar formularios ni alterar campañas."
+  },
+  {
+    "name": "Accesos de utilidad compactos y alineados en escritorio",
+    "viewport": "desktop",
+    "covers": [
+      "Anunciar Instalar Avisos en una fila",
+      "alineación con contenido",
+      "apertura de formularios sin enviar",
+      "navegación con teclado"
+    ],
+    "description": "Comprueba los tres accesos sin activar notificaciones ni enviar datos.",
+    "steps": [
+      "Abrir la portada en escritorio.",
+      "Comprobar que Anunciar, Instalar app o Instalada y Avisos se muestran en una única fila compacta alineada con el contenido.",
+      "Abrir Anunciar y cerrar el formulario sin enviar; abrir Avisos y cerrar su cuadro; abrir Instalar app y comprobar su guía o estado instalado sin confirmar instalación.",
+      "Recorrer los accesos con teclado y comprobar el foco visible."
+    ],
+    "expected": "Los tres controles conservan sus funciones, tienen superficie táctil de al menos 44 px, no ocupan dos filas ni se extienden a todo el ancho de la ventana; no existen superposiciones ni desbordamiento."
   }
 ]

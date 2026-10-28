@@ -71,4 +71,3 @@ export async function verifyEncryptedBackup(text: string, password: string, visi
   }
   return { tables: tables.size, records: [...tables.values()].reduce((sum, ids) => sum + ids.size, 0), files: paths.size, platformRestoreTested: false };
 }
-

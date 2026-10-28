@@ -8,5 +8,5 @@ export function ownedPublicationPatch(record:{kind:string;origin:string;ownerTok
   const workLocation=typeof input.workLocation==='string'?input.workLocation:record.workLocation;
   const contact=typeof input.contact==='string'&&input.contact.trim()?input.contact.trim():record.contact;
   if(!title||title.length>140||note.length>1200||!contact||contact.length>100||!COMMERCIAL_PLACES.includes(workLocation))throw Error('invalid_fields');
-  return {title,note,workLocation,contact,contactPublicationConsent:true,contactConsentAt:new Date(now).toISOString(),...(input.renew===true?{active:true,status:'Activa',expiresAt:new Date(now+(record.kind==='worker_available'?21:30)*86400000).toISOString()}:{}),editedAt:new Date(now).toISOString()};
+  return {title,note,workLocation,contact,...(input.renew===true?{active:true,status:'Activa',expiresAt:new Date(now+(record.kind==='worker_available'?21:30)*86400000).toISOString()}:{}),editedAt:new Date(now).toISOString()};
 }

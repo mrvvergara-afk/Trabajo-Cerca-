@@ -1,8 +1,7 @@
 /* Literal layout measurements from the three approved Stitch code.html files.
    Sole owner of public home geometry. Green brand mapping follows owner direction.
    Dialogs, operations, SDK, advertising allocation and PWA are independent. */
-@font-face{font-family:Inter;src:url('/fonts/inter.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:'Plus Jakarta Sans';src:url('/fonts/plus-jakarta-sans.ttf') format('truetype');font-weight:200 800;font-style:normal;font-display:swap}
+/* Usar las fuentes del sistema hasta que se adjunten los archivos tipográficos licenciados. */
 .tcStitchShell{
   --st-surface:#f7f9f6;--st-low:#eef4eb;--st-high:#e0ecd7;--st-line:#d7dfd4;
   --st-ink:#103529;--st-muted:#4a584e;--st-green:#267447;--st-lime:#b9ee67;

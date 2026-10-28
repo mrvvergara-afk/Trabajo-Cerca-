@@ -42,4 +42,3 @@ export function knownFirstPublication(item:Record<string,unknown>) {
   const current=String(item.firstPublishedAt || item.createdAt || '');
   return prior && (!Number.isFinite(Date.parse(current)) || Date.parse(prior)<Date.parse(current)) ? prior : current;
 }
-

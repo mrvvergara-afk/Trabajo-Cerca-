@@ -98,4 +98,3 @@ export function backupFailure(cause: unknown): { code: string; message: string; 
   if (known.includes(failure?.message || '')) return { code: failure.message!, message: 'El exportador detectó un límite o una inconsistencia. Conserva la copia parcial; no es un respaldo completo.', resumable: false };
   return { code: code === 'backup_read_incomplete' ? code : 'backup_read_failed', message: 'La lectura no se completó. Puedes reanudar desde la última página confirmada, sin volver a copiar las anteriores.', resumable: true };
 }
-

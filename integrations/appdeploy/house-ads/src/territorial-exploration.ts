@@ -1,5 +1,5 @@
-import {COMPLEMENTARY_PLACES} from '../shared/territories';
-export const EXPLORATION_CITIES = COMPLEMENTARY_PLACES;
+// Ciudades externas al territorio prioritario. Victoria permanece en el radar local.
+export const EXPLORATION_CITIES = ['Los Ángeles', 'Temuco'] as const;
 
 type TerritorialOffer = { id:string; kind:string; workCommunes:string[] };
 

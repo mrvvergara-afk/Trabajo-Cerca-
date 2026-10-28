@@ -46,7 +46,7 @@ const PRODUCER_REFS = new Set(['refs/heads/repair/radar-audit-2026-10-11','refs/
 const AUDIENCE = 'urn:trabajo-cerca:lab:' + REPOSITORY_ID + ':';
 const STATE_TABLE = 'radar_external_pull_state';
 const MAX_AGE = 86400000;
-const PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria'];
+const PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Quilaco','Victoria'];
 
 class BatchRejected extends Error {}
 class GitHubTransportError extends Error {}
@@ -428,4 +428,3 @@ export async function revalidateLocalContactOffers(now=Date.now()) {
   }
   return {checked,closed,inconclusive,hasMore:Boolean(rows.nextToken),paidCalls:0};
 }
-

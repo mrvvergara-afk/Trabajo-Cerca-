@@ -24,4 +24,3 @@ export function RestoreRehearsalProof() {
   }, []);
   return <pre id='restore-local-proof' style={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>{JSON.stringify(result, null, 2)}</pre>;
 }
-

@@ -209,4 +209,3 @@ export function socialVerificationBlock(record:{ socialEvidence?:SocialEvidence 
     postDate:evidence.postDate,deadline:evidence.deadline },evidence.capturedAt,places,now);
   return checked.evidence.missing.length ? 'Falta confirmar: '+checked.evidence.missing.join(', ')+'.' : null;
 }
-

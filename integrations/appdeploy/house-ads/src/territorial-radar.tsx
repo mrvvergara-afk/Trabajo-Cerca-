@@ -3,7 +3,7 @@ import {Radar} from 'lucide-react';
 
 export const RADAR_TOWNS = [
   'Angol', 'Collipulli', 'Ercilla', 'Renaico', 'Mininco', 'Los Sauces',
-  'Purén', 'Traiguén', 'Lumaco', 'Nacimiento', 'Negrete', 'Mulchén', 'Victoria',
+  'Purén', 'Traiguén', 'Lumaco', 'Nacimiento', 'Negrete', 'Mulchén', 'Quilaco', 'Victoria',
 ] as const;
 
 type RadarProps = {
@@ -75,7 +75,7 @@ export function TerritorialRadar({stats, ready, failed, updatedAt, selected, onS
       </div>
       <details className='tcRadarDetails' open={expanded} onToggle={event => setExpanded(event.currentTarget.open)}>
         <summary className='tcRadarExpand'>
-          {expanded ? 'Ocultar las comunas' : 'Ver las 13 comunas'}
+          {expanded ? 'Ocultar las comunas' : `Ver las ${RADAR_TOWNS.length} comunas`}
           <span aria-hidden='true'>{expanded ? '−' : '+'}</span>
         </summary>
         <div className='tcRadarExplorer'>

@@ -1,4 +1,3 @@
-import {uploadCreative} from './creative-upload';
 import {CommercialControls} from './commercial-admin';
 import { useEffect, useState } from 'react';
 import { api } from '@appdeploy/client';
@@ -14,16 +13,13 @@ export function HouseCampaignAdmin() {
   const [busy,setBusy]=useState(false);const [message,setMessage]=useState('');
   const [applications,setApplications]=useState<Application[]>([]);const [trialCursor,setTrialCursor]=useState<string|null>(null);
   const [trial,setTrial]=useState({leadId:'',headline:'',detail:'',url:''});
-  const [usage,setUsage]=useState<Array<{id:string;day:string;event:string;commune:string;count:number;uniqueDevices:number}>>([]);
-  const [usageCursor,setUsageCursor]=useState<string|null>(null),[usageLoaded,setUsageLoaded]=useState(false);
   useEffect(()=>{let alive=true;void api.get('/api/admin/marketing/house').then(r=>{if(alive){setCampaigns(r.data.campaigns);setRevision(r.data.revision);setSelected(r.data.campaigns[0]?.id||'');setStats(r.data.stats);setCursor(r.data.nextToken);}}).catch(()=>{if(alive)setMessage('No se pudo cargar Marketing. Verifica tu sesión y recarga.');});return()=>{alive=false;};},[]);
   const current=campaigns.find(c=>c.id===selected);
   function update(patch:Partial<HouseCampaign>){setCampaigns(all=>all.map(c=>c.id===selected?{...c,...patch}:c));}
   function creative(index:number,patch:Partial<Creative>){if(current)update({creatives:current.creatives.map((c,i)=>i===index?{...c,...patch}:c)});}
   async function save(){setBusy(true);setMessage('');try{const r=await api.put('/api/admin/marketing/house',{revision,campaigns});setRevision(r.data.revision);setCampaigns(r.data.campaigns);setMessage('Campañas guardadas. La configuración se aplicará en las siguientes visitas.');}catch{setMessage('No se guardó. Puede haber cambios de otra sesión o datos inválidos; recarga antes de sobrescribir.');}finally{setBusy(false);}}
-  async function upload(file:File,index:number){setBusy(true);try{const storagePath=await uploadCreative(file);creative(index,{storagePath,imageDisabled:false});setMessage('Imagen optimizada y guardada. Guarda la campaña para aprobar su uso público.');}catch(cause){setMessage(cause instanceof Error?cause.message:'No se pudo guardar la imagen.');}finally{setBusy(false);}}
+  async function upload(file:File,index:number){if(file.size>200000){setMessage('Usa una imagen hasta 200 KB.');return;}setBusy(true);try{const content=await new Promise<string>((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result).split(',')[1]);r.onerror=reject;r.readAsDataURL(file);});const r=await api.post('/api/admin/marketing/creative',{content,mime:file.type});creative(index,{storagePath:r.data.storagePath});setMessage('Imagen guardada. Guarda también la campaña para asociarla.');}catch{setMessage('No se pudo guardar la imagen. Usa PNG, JPEG o WebP válido.');}finally{setBusy(false);}}
   async function moreStats(){setBusy(true);try{const r=await api.get('/api/admin/marketing/house?cursor='+encodeURIComponent(cursor||''));setStats(rows=>[...rows,...r.data.stats]);setCursor(r.data.nextToken);}catch{setMessage('No se completó la lectura de métricas.');}finally{setBusy(false);}}
-  async function loadUsage(more=false){setBusy(true);try{const r=await api.get('/api/admin/marketing/usage'+(more?'?cursor='+encodeURIComponent(usageCursor||''):''));setUsage(old=>more?[...old,...r.data.items]:r.data.items);setUsageCursor(r.data.nextToken);setUsageLoaded(true);}catch{setMessage('No se pudieron consultar las métricas internas de navegación.');}finally{setBusy(false);}}
   async function loadTrials(more=false){setBusy(true);try{const r=await api.get('/api/admin/marketing/trials'+(more?'?cursor='+encodeURIComponent(trialCursor||''):''));setApplications(rows=>more?[...rows,...r.data.items]:r.data.items);setTrialCursor(r.data.nextToken);}catch{setMessage('No se pudieron leer las solicitudes.');}finally{setBusy(false);}}
   async function activate(){setBusy(true);try{const r=await api.post('/api/admin/marketing/trial',trial);setApplications(rows=>rows.map(a=>a.id===trial.leadId?{...a,trialState:'active'}:a));setMessage('Prueba comercial gratuita activada hasta '+new Date(r.data.endAt).toLocaleDateString('es-CL')+'. No se registró una venta.');setTrial({leadId:'',headline:'',detail:'',url:''});}catch{setMessage('No se activó la prueba. Revisa los datos o vuelve a comprobar su estado.');}finally{setBusy(false);}}
   return <section className='tcHouseAdmin' aria-label='Marketing y Monetización'>
@@ -49,19 +45,15 @@ export function HouseCampaignAdmin() {
         <label>Mensaje en computador<textarea maxLength={300} value={v.message} onChange={e=>creative(index,{message:e.target.value})}/></label>
         <label>Mensaje en celular<textarea maxLength={150} value={v.mobileMessage} onChange={e=>creative(index,{mobileMessage:e.target.value})}/></label>
         <label>Texto del botón<input maxLength={60} value={v.button} onChange={e=>creative(index,{button:e.target.value})}/></label>
-        <label>Imagen propia o autorizada; se optimiza hasta 200 KB<input type='file' accept='image/png,image/jpeg,image/webp' onChange={e=>{const file=e.target.files?.[0];if(file)void upload(file,index);e.target.value='';}}/></label>
-        {!v.imageDisabled&&<p>Creatividad guardada. <button type='button' onClick={()=>creative(index,{storagePath:undefined,imageUrl:undefined,imageDisabled:true})}>Quitar de esta campaña</button></p>}
-      {v.imageDisabled&&<button type='button' onClick={()=>creative(index,{imageDisabled:false})}>Restablecer ilustración propia</button>}</details>)}
+        <label>Imagen opcional, hasta 200 KB<input type='file' accept='image/png,image/jpeg,image/webp' onChange={e=>{const file=e.target.files?.[0];if(file)void upload(file,index);e.target.value='';}}/></label>
+        {v.storagePath&&<p>Creatividad guardada. <button type='button' onClick={()=>creative(index,{storagePath:undefined})}>Quitar de esta campaña</button></p>}
+      </details>)}
       <button type='button' disabled={current.creatives.length>=4} onClick={()=>update({creatives:[...current.creatives,{...current.creatives[0],id:crypto.randomUUID().slice(0,8)}]})}>Añadir variante para comparar</button>
     </fieldset>}
     <button disabled={busy||!revision} onClick={()=>void save()}>Guardar campañas propias</button>
-    <h3>Rendimiento de campañas propias</h3><p>Reportes del navegador y efectos confirmados por el servidor. No son impresiones facturables. La comparación de variantes es descriptiva y no acredita significancia estadística. La recepción en PostHog se verifica por separado.</p>
+    <h3>Rendimiento de campañas propias</h3><p>Reportes del navegador y efectos confirmados por el servidor. No son impresiones facturables. Comparación descriptiva de variantes; no acredita significancia estadística. PostHog permanece deshabilitado.</p>
     <div className='tcHouseTable'><table><thead><tr><th>Fecha / campaña / variante</th><th>Impresiones</th><th>Clics / CTR</th><th>Formularios iniciados / guardados</th><th>Perfiles / empleadores</th><th>Anunciantes / pruebas</th></tr></thead><tbody>{stats.map(r=><tr key={r.id}><td>{r.day} · {r.campaignId} · {r.creativeId}</td><td>{r.impression||0}</td><td>{r.click||0} / {r.impression?((r.click||0)/r.impression*100).toFixed(1):'0'}%</td><td>{r.form_started||0} / {r.registration_completed||0}</td><td>{r.profile_published||0} / {r.employer_added||0}</td><td>{r.advertiser_captured||0} / {r.trial_activated||0}</td></tr>)}</tbody></table></div>
     {!stats.length&&<p>Todavía no hay eventos registrados. No se generan métricas de ejemplo.</p>}{cursor&&<button disabled={busy} onClick={()=>void moreStats()}>Cargar más métricas</button>}
-    <h3>Audiencia y navegación</h3><p>Eventos recibidos por el servidor, agrupados por día y comuna. Los identificadores únicos diarios corresponden a navegadores, no a personas certificadas; no se suman entre eventos como visitantes distintos.</p><button disabled={busy} onClick={()=>void loadUsage()}>Consultar métricas internas</button>
-    {usageLoaded&&!usage.length&&<p>Sin datos.</p>}
-    {!!usage.length&&<div className='tcHouseTable'><table><thead><tr><th>Fecha</th><th>Evento</th><th>Comuna</th><th>Eventos</th><th>Identificadores diarios</th></tr></thead><tbody>{usage.map(row=><tr key={row.id}><td>{row.day}</td><td>{row.event}</td><td>{row.commune}</td><td>{row.count}</td><td>{row.uniqueDevices}</td></tr>)}</tbody></table></div>}
-    {usageCursor&&<button disabled={busy} onClick={()=>void loadUsage(true)}>Cargar más métricas de navegación</button>}
     <CommercialControls/><h3>Pruebas comerciales gratuitas</h3><p>Revisa el texto público antes de activar. La duración se obtiene de la promoción central al aprobar cada negocio. Sin renovación ni cobro automático.</p>
     <button disabled={busy} onClick={()=>void loadTrials()}>Consultar solicitudes reales</button>
     {applications.map(a=><p key={a.id}>{a.businessName} · {a.commune} · {a.trialState==='active'?'Activada':<button disabled={busy} onClick={()=>setTrial({leadId:a.id,headline:'',detail:'',url:''})}>Revisar solicitud</button>}</p>)}

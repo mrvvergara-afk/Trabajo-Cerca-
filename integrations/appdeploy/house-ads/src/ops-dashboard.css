@@ -82,4 +82,3 @@
 @media (prefers-reduced-motion: no-preference) {
   .tcAdminActions button { transition: background-color .15s, border-color .15s; }
 }
-

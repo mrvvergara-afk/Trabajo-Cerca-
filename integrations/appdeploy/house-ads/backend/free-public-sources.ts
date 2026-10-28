@@ -1,10 +1,10 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
-import { publicPublisher, publicSourceAdapter, publicFeedIdentity, safePublicUrl } from './public-source-adapters';
+import { publicPublisher, publicSourceAdapter, safePublicUrl } from './public-source-adapters';
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
-import {COMPLEMENTARY_PLACES} from '../shared/territories';
+import { shadowEvaluate } from './shadow-radar';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal'; discoveryPriority?:'secondary' };
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
@@ -12,7 +12,7 @@ type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<
   localPosition?:number; portalPosition?:number;
   portalProviderPosition?:number; providerPositions?:Record<string,number>;
   secondaryPosition?:number; corePortalSelections?:number;
-  renderPending?:PublicCandidate[];
+  renderPending?:PublicCandidate[]; documentPending?:PublicCandidate[];
   pending:PublicCandidate[]; priorityCandidates?:PublicCandidate[]; reviewLane?:number;
   reviewProviderPosition?:number;
   rechecks?:Array<{ url:string; lastAttemptAt?:string; nextCheckAt?:string }>;
@@ -108,7 +108,7 @@ export function publicRenderRequired(raw:string) {
 }
 
 export function publicDocumentWork(current?:ScanState | null) {
-  const items=(current?.pending || []).flatMap(item=>{
+  const items=[...(current?.documentPending || []),...(current?.pending || [])].flatMap(item=>{
     const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);
     if (!url || !publisherPage || !(publicSourceAdapter(url)?.family==='local' || publicDocumentUrl(url) && publicPublisher(url)?.group==='munilumaco.cl') ||
         publicPublisher(url)?.group!==publicPublisher(publisherPage)?.group) return [];
@@ -149,8 +149,9 @@ export function nextPublicSource(sources:FreeSource[], state:Pick<ScanState,'loc
   const primary=allPortals.filter(source=>source.discoveryPriority!=='secondary');
   const secondary=allPortals.filter(source=>source.discoveryPriority==='secondary');
   const portals=primary.length ? primary : allPortals;
-  // Three local roots and two portals per five-root pass, with independent cursors.
-  const useLocal=local.length>0 && (!portals.length || slot%2===0);
+  // Three out of four source roots prioritize municipalities and OMIL.
+  // Independent cursors keep portals discoverable without increasing HTTP budget.
+  const useLocal=local.length>0 && (!portals.length || slot%4!==3);
   const pool=useLocal ? local : portals;
   if (!pool.length) throw new Error('No public discovery pool');
   const field=useLocal ? 'localPosition' : 'portalPosition';
@@ -188,29 +189,23 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     area:'Fuente pública',status:'Verificada',date:new Date(offer.source_published_at).toLocaleDateString('es-CL',{ day:'2-digit',month:'short',year:'numeric',timeZone:'America/Santiago' }),source:offer.source,
     sourceDomain:new URL(offer.url).hostname,sourcePublishedAt:offer.source_published_at,
     ...(offer.source_date_evidence ? { sourceDateEvidence:offer.source_date_evidence } : {}),
-    sourceValidThrough:offer.valid_through || null,validityMethod:offer.validity_method || 'explicit_deadline',
+    sourceValidThrough:offer.valid_through || null,validityMethod:offer.validity_method || (offer.valid_through ? 'explicit_deadline' : 'source_age_45_days'),
     expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
     tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,
     createdAt:new Date(now).toISOString(),discoveredBy:'free-public-sources-v1',
-    secondaryMarket:(COMPLEMENTARY_PLACES as readonly string[]).includes(offer.work_commune),
+    secondaryMarket:['Los Ángeles','Temuco'].includes(offer.work_commune),
     verificationCheckedAt:new Date(now).toISOString(),verifiedAt:new Date(now).toISOString(),
     verificationMethod:offer.verification_method,verificationReason:offer.reason };
 }
 
-async function saveOffer(offer:PublicVerification, now:number) {
+export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date.now()) {
   const adapter = publicSourceAdapter(offer.url || '');
   if (!adapter || adapter.family==='aggregator') throw new Error('Unconfirmed offer identity');
   const identity = hash(adapter.identityUrl), table = 'radar_external_'+identity.slice(0,32);
   const previous = (await db.list<Stored>(table,{ limit:2 })).items;
   if (previous.length>1 || previous[0] && previous[0].externalIdentity!==identity) throw new Error('Public identity conflict; preserve history');
   const old = previous[0], { id:_id,...fields } = old || {};
-  const publishedBefore = await currentPublicFeedManifest();
-  const feedIdentity=publicFeedIdentity(offer.url!);
-  const previouslyPublished=Boolean(publishedBefore?.manifest.pages.some(page=>page.keys.includes(table+':'+old?.id)||feedIdentity&&page.identities?.includes(hash(feedIdentity))));
   const record = { ...fields,...verifiedPublicRecord(offer,now),createdAt:old?.createdAt || new Date(now).toISOString(),
-    sourcePublishedAt:old?.sourcePublishedAt || offer.source_published_at,
-    firstVerifiedAt:old?.firstVerifiedAt || old?.verifiedAt || new Date(now).toISOString(),
-    verifiedAt:old?.verifiedAt || new Date(now).toISOString(),lastVerifiedAt:new Date(now).toISOString(),
     externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString() };
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;
@@ -223,7 +218,7 @@ async function saveOffer(offer:PublicVerification, now:number) {
     id = created;
   }
   await registerPublicFeedChange(table,id);
-  return { table,id,url:offer.url,operation:old?'revalidated':'created',previouslyPublished };
+  return { table,id,url:offer.url };
 }
 
 async function closeKnownOffer(url:string,result:PublicVerification,page:{url:string;status:number;raw:string},now:number) {
@@ -258,6 +253,13 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   if (!lease) return { deferred:true,reason:'public_scan_cooldown',providerCalls:0,nextAllowedAt:new Date((Math.floor(now/900000)+1)*900000).toISOString() };
   const state:ScanState = current ? structuredClone(current) : { position:0,queues:{},seen:{},pending:[] };
   state.renderPending=state.renderPending || [];
+  state.documentPending=state.documentPending || [];
+  // Preserve PDF/image references for a dedicated document reader; they must not
+  // consume the bounded HTML verification queue or block newer job pages.
+  for (const candidate of state.pending.filter(item=>publicDocumentUrl(item.url))) {
+    if (!state.documentPending.some(item=>item.url===candidate.url) && state.documentPending.length<180) state.documentPending.push(candidate);
+  }
+  state.pending=state.pending.filter(item=>!publicDocumentUrl(item.url));
   const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));
   const documentManagedUrls=new Set<string>();
   // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.
@@ -281,7 +283,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   const priorityUrls = new Set(priority.map(item => item.url));
   state.priorityCandidates=[...priority,...(state.priorityCandidates || []).filter(item=>!priorityUrls.has(item.url) && !documentManagedUrls.has(item.url))];
   state.pending=state.pending.filter(item=>!documentManagedUrls.has(item.url));
-  const seenPending = new Set([...state.pending.map(item => item.url),...state.priorityCandidates.map(item=>item.url),...rechecks.keys(),...documentManagedUrls]);
+  const seenPending = new Set([...state.pending.map(item => item.url),...state.documentPending.map(item=>item.url),...state.priorityCandidates.map(item => item.url),...rechecks.keys(),...documentManagedUrls]);
   const audits:Stored[] = [],receipts:Stored[] = [],closures:Stored[]=[];
   const changedSeeds = new Map<string,{ previous:Stored | null; record:Stored }>();
   let reads = 0, roots = 0;
@@ -307,9 +309,6 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     let queue = ((previousSeed?.queue as string[] | undefined) || state.queues[source.key])
       ?.filter(url=>!publicDocumentUrl(url));
     let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];
-    // Return to the current index instead of walking indefinitely into archives.
-    const rootDue=previousSeed?.discoveryPolicy!=='recent-index-v1' || now-Date.parse(String(previousSeed?.rootCheckedAt || ''))>=6*3600000;
-    if(rootDue){queue=[source.url];seen=[];}
     if (!queue?.length) { queue=[source.url];seen=[]; }
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
     const audit:Stored = { source:source.name,territory:source.territory,url,http:page.status,
@@ -328,20 +327,19 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));
       for (const item of links.candidates) if (!seenPending.has(item.url)) {
         if (onboarding && state.priorityCandidates.length<3) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url });
-        else if (state.pending.length<100) state.pending.push({ url:item.url,source:source.name,publisherPage:page.url });
+        else if (publicDocumentUrl(item.url) && state.documentPending.length<180) state.documentPending.push({url:item.url,source:source.name,publisherPage:page.url});
+        else if (state.pending.length<100 && !publicDocumentUrl(item.url)) state.pending.push({ url:item.url,source:source.name,publisherPage:page.url });
         else audit.queueFull=true;
         seenPending.add(item.url);
       }
       seen = [...new Set([...seen,url])].slice(-64);
-      queue = [...new Set([...queue.slice(1),...links.archives.filter(value=>{
-        const pageNumber=value.match(/\/page\/(\d+)|[?&](?:page|paged|pagina)=(\d+)/i);
-        return !pageNumber || Number(pageNumber[1]||pageNumber[2])<=3;
-      })])]
+      queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&
+        !publicDocumentUrl(item.url)).map(item => item.url)])]
         .filter(item => !seen.includes(item)).slice(0,30);
       audit.candidates = links.candidates.length;
     }
     const restricted=Boolean(page.error && /robots|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;
-    const seed = { id:seedId,key:source.key,queue,seen,discoveryPolicy:'recent-index-v1',rootCheckedAt:url===source.url?new Date(now).toISOString():previousSeed?.rootCheckedAt,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
+    const seed = { id:seedId,key:source.key,queue,seen,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
       lastError:audit.error || (page.status>=400?'HTTP '+page.status:null),nextAllowedAt:restricted ? new Date(now+12*3600000).toISOString() : null };
     if (Buffer.byteLength(JSON.stringify(seed))>230*1024) throw new Error('Source history checkpoint byte budget exceeded');
     changedSeeds.set(seedId,{ previous:previousSeed,record:seed });
@@ -349,6 +347,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   }
   let verified = 0;
   const reviewed:Stored[] = [];
+  const shadowReviewed:Stored[] = [];
   while (reads<14 && (state.pending.length || state.priorityCandidates.length) && reviewed.length<6 && Date.now()-started<50000) {
     const priorityQueue=state.priorityCandidates.length>0;
     const selected=priorityQueue ? 0 : pendingCandidateIndex(state.pending,state.reviewLane || 0,state.reviewProviderPosition || 0);
@@ -364,16 +363,22 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       }
     }
     if (result.status==='verified') {
-      receipts.push(await saveOffer(result,now));verified++;
+      receipts.push(await saveVerifiedPublicOffer(result,now));verified++;
       rechecks.set(safePublicUrl(result.url!)!,{ url:safePublicUrl(result.url!)!,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+18*3600000).toISOString() });
     } else if (result.status==='rejected') {
       const closed=await closeKnownOffer(candidate.url,result,page,now);
       if (closed) closures.push(closed);
       if (rechecks.has(candidate.url)) rechecks.set(candidate.url,{url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+24*3600000).toISOString()});
+    } else if (result.status==='pending' && (rechecks.has(candidate.url) || rechecks.size<80)) {
+      // Failure to parse/access an offer is not evidence it should be discarded.
+      // Keep its URL for a later independent HTTP attempt without blocking the discovery cursor.
+      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+6*3600000).toISOString() });
     } else if (rechecks.has(candidate.url)) {
-      // A failed attempt does not update the offer's verification stamp or its original publication date.
-      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+4*3600000).toISOString() });
+      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+24*3600000).toISOString() });
     }
+    try {
+      shadowReviewed.push(await shadowEvaluate({url:candidate.url,source:candidate.source,publisherPage:candidate.publisherPage,raw:page.raw,http:page.status,baseline:result,at:now}));
+    } catch(shadowCause) { console.warn('SHADOW_B_STORAGE_ERROR '+String(shadowCause)); }
     reviewed.push({ url:candidate.url,status:result.status,reason:result.reason });
     if (publicSourceAdapter(candidate.url)?.family==='portal') state.reviewProviderPosition=(state.reviewProviderPosition || 0)+1;
     // The immutable run receipt retains every reviewed result and source failure.
@@ -384,16 +389,12 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     localSourcesRead:audits.filter(item=>item.discoveryGroup==='local').length,
     portalSourcesRead:audits.filter(item=>item.discoveryGroup==='portal').length,
     documentsManagedSeparately:documentManagedUrls.size,
-    requestId,noticesChecked:reviewed.length,verified,stored:receipts.length,published:null,publicationStatus:'awaiting_public_feed_confirmation',providerCalls:0,
-    newStored:receipts.filter(row=>row.operation==='created'&&!row.previouslyPublished).length,
-    revalidations:receipts.filter(row=>row.operation==='revalidated'||row.previouslyPublished).length,
-    rejected:reviewed.filter(row=>row.status==='rejected').length,
-    unresolved:reviewed.filter(row=>row.status==='pending'||row.status==='review_ready').length,
+    noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,
     closuresConfirmed:closures.length,closures,sourcesDeferred:audits.filter(item=>item.error==='source_retry_deferred').length,
     pending:state.pending.length,priorityPending:state.priorityCandidates.length,
-    documentsAwaitingLocalReader:state.pending.filter(item=>publicDocumentUrl(item.url)).length,
+    documentsAwaitingLocalReader:state.documentPending.length,
     reverificationBacklog:due.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,
-    nextSource:state.position,coverageComplete:false,audits:audits.map(({ candidateEvidence,...audit })=>audit),reviewed,receipts };
+    nextSource:state.position,coverageComplete:false,audits:audits.map(({ candidateEvidence,...audit })=>audit),reviewed,shadowReviewed,receipts };
   state.rechecks=[...rechecks.values()];
   state.recheckPolicy='public-source-dates-v2';
   state.summary=summary;state.checkedAt=summary.checkedAt;state.runId=requestId;
@@ -418,9 +419,7 @@ export async function freePublicSourceStatus() {
   const receipts = Array.isArray(current?.summary?.receipts) ? current.summary.receipts as Stored[] : [];
   const visible = snapshot ? receipts.filter(receipt => snapshot.manifest.pages.some(page => page.keys.includes(String(receipt.table)+':'+String(receipt.id)))) : [];
   return { readOnly:true,providerCalls:0,initialized:Boolean(current),summary:current?.summary || null,
-    publishedConfirmed:snapshot ? visible.length : null,
-    newPublishedConfirmed:snapshot ? visible.filter(row=>row.operation==='created'&&row.previouslyPublished===false).length : null,
-    publicationStatus:snapshot ? 'public_feed_checked':'awaiting_public_feed_confirmation',feedManifestId:snapshot?.manifestId || null,
+    publishedConfirmed:snapshot ? visible.length : null,feedManifestId:snapshot?.manifestId || null,
     historicalCoverageComplete:false,pending:current?.pending.length ?? null,checkedAt:current?.checkedAt || null,
     documentWork:publicDocumentWork(current) };
 }

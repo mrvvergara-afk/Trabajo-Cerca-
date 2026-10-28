@@ -112,4 +112,3 @@ export async function auditBackupStorage(text: string, password: string, read: R
     limitations: ['Compara una copia histórica con el almacenamiento SDK actual; no atribuye diferencias a pérdida o vencimiento.', 'Solo clasifica campos de archivo conocidos; referencias opacas o tablas fuera de la copia pueden quedar fuera.', 'Los archivos estáticos y las imágenes externas no pertenecen al listado SDK.']
   };
 }
-

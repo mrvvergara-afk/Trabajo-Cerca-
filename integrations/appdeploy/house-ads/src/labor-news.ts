@@ -46,4 +46,3 @@ export function visibleLaborNews(news:LaborNews[], now=Date.now()) {
       /^https:\/\//.test(item.url) && Boolean(item.source && item.title && item.summary);
   }).sort((a,b) => b.publishedOn.localeCompare(a.publishedOn));
 }
-

@@ -1,0 +1,86 @@
+/* Trabajo Cerca — corrección estructural móvil (QA en equipos reales).
+   Tipografía compacta y coherente, búsqueda clara, filtros plegables,
+   tarjetas y paneles legibles. Sin cambios de API, formularios ni datos. */
+@media (max-width:767px) {
+  .tcStitchShell { overflow-x:clip; font-size:14px; line-height:1.45; }
+  .tcStitchShell .neoTopbar { height:56px; }
+  .tcStitchShell .tcTopbarInner { padding:0 12px; gap:8px; min-width:0; }
+  .tcStitchShell .tcStitchBrand { flex:1 1 auto; min-width:0; gap:5px; }
+  .tcStitchShell .tcStitchBrandArt { width:22px; }
+  .tcStitchShell .tcStitchMobileWordmark b { font-size:clamp(14px,4vw,17px);line-height:1.2;white-space:nowrap; }
+  .tcStitchShell .tcStitchMobileWordmark small {font-size:10px; }
+  .tcStitchShell .tcMobilePlace { flex:0 0 90px; max-width:90px; min-width:0; padding:5px; }
+  .tcStitchShell .tcMobilePlace select { width:100%; font-size:12px; }
+  .tcStitchShell .tcStitchRadarSummary { margin:8px 12px; width:calc(100% - 24px); padding:12px; }
+  .tcStitchShell .tcStitchRadarSummary h2 { font-size:20px;line-height:1.25; margin:5px 0; }
+  .tcStitchShell .tcStitchRadarSummary>div>span {font-size:10px;line-height:1.3;}
+  .tcStitchShell .tcStitchRadarSummary>label {min-width:0;gap:5px;font-size:12px;padding:6px; }
+  .tcStitchShell .tcStitchRadarSummary select {min-width:0; flex:1; max-width:100%; font-size:12px; }
+  .tcStitchShell .tcStitchRadarSummary button {flex-shrink:0;padding:6px 8px;font-size:11px;}
+  .tcStitchShell .neoDiscover {padding:8px 12px 0; min-width:0; overflow:hidden; }
+  .tcStitchShell .neoControlDeck {margin-bottom:10px;min-width:0;}
+  .tcStitchShell .neoFilters,.tcStitchShell .neoFilterSearch {min-width:0;}
+  .tcStitchShell .neoFilterSearch input {font-size:13px; }
+  /* Los rubros están en Filtros / Área laboral: la fila horizontal duplica
+     funcionalidad, genera confusión y empuja el contenido fuera de pantalla. */
+  .tcStitchShell .tcCategoryRail {display:none!important;}
+  .tcStitchShell .tcCommuneRail {display:none!important;}
+  .tcStitchShell .neoDiscoverHead {display:flex;flex-direction:column;align-items:stretch;gap:5px;margin:0 0 10px;}
+  .tcStitchShell .neoDiscoverHead>div {min-width:0;width:100%;}
+  .tcStitchShell .neoDiscoverHead h2 {font-size:18px;line-height:1.3;display:flex;gap:6px;overflow-wrap:normal;word-break:normal;}
+  .tcStitchShell .neoDiscoverHead h2 .tcMobileText {white-space:normal;}
+  .tcStitchShell .neoDiscoverHead h2 svg {width:19px;height:19px;}
+  .tcStitchShell .tcDiscoverActions {display:flex;flex:0 0 auto;justify-content:space-between;align-items:center;gap:8px;width:100%;flex-wrap:wrap;}
+  .tcStitchShell .tcCatalogCount {font-size:12px;max-width:none;text-align:left;white-space:normal;}
+  .tcStitchShell .tcClearFilters {font-size:12px;min-height:34px;padding:5px 8px;}
+  .tcStitchShell .neoJobsGrid {gap:8px;}
+  .tcStitchShell .neoJobCard {min-width:0;min-height:0;}
+  .tcStitchShell .neoJobBody {min-width:0;padding:11px;}
+  .tcStitchShell .neoJobCard h3 {font-size:15px;line-height:20px;min-width:0;}
+  .tcStitchShell .neoJobCompany {font-size:12px;line-height:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .tcStitchShell .neoJobTop {max-width:86px;}
+  .tcStitchShell .neoJobPlace,.tcStitchShell .neoJobState {font-size:10px;line-height:13px;}
+  .tcStitchShell .tcOfferActionRow {min-width:0;padding:4px 6px;min-height:36px;gap:6px;}
+  .tcStitchShell .neoJobFacts small,.tcStitchShell .neoJobFacts b {font-size:10px;line-height:14px;}
+  .tcStitchShell .neoJobFoot button {font-size:12px;padding:7px 9px;min-height:34px;white-space:nowrap;}
+  .tcStitchShell .tcResultsPagination {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;padding:12px 0;align-items:center;}
+  .tcStitchShell .tcResultsPagination span {grid-column:1/-1;grid-row:1;text-align:center;font-size:12px;line-height:17px;max-width:none;}
+  .tcStitchShell .tcResultsPagination button {width:100%;font-size:11px;min-height:38px;padding:7px 4px;}
+  .tcStitchShell .tcAdvancedFilters[data-open=true] {gap:7px;padding:10px;grid-template-columns:minmax(0,1fr);}
+  .tcStitchShell .tcAdvancedFilters label {min-width:0;font-size:12px;line-height:17px;padding:8px;gap:2px;}
+  .tcStitchShell .tcAdvancedFilters select {min-height:34px;max-width:100%;font-size:14px;line-height:19px;}
+  .tcStitchShell .tcAdvancedFilters>button {font-size:12px;min-height:38px;}
+  .tcStitchShell .tcStitchCommunity {padding:8px 12px;}
+  .tcStitchShell .tcStitchCommunityInner {padding:13px;}
+  .tcStitchShell .tcCommunityCopy h2 {font-size:18px;line-height:24px;}
+  .tcStitchShell .tcCommunityCopy>p {font-size:13px;line-height:19px;}
+  .tcStitchShell .tcCommunityOffer {font-size:14px;line-height:19px;min-height:44px;padding:9px;}
+  .tcStitchShell .tcStitchAdvertising {padding:8px 12px;}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd h3 {font-size:18px;line-height:24px;}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd p {font-size:13px;line-height:19px;}
+  .tcStitchShell .tcStitchAdvertising .tcHouseAd button {font-size:13px;line-height:18px;max-width:100%;}
+  .tcStitchShell .tcStitchCities {padding:12px 12px 20px;}
+  .tcStitchShell .tcStitchCities h2 {font-size:19px;line-height:25px;}
+  .tcStitchShell .tcExploreCities {gap:8px;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .tcStitchShell .tcExploreCities>button {min-width:0;min-height:80px;padding:10px;gap:5px;}
+  .tcStitchShell .tcExploreCities strong {font-size:15px;line-height:20px;word-break:normal;}
+  .tcStitchShell .tcExploreCities small {font-size:11px;line-height:15px;}
+  .tcStitchShell .tcExploreNote {font-size:11px;line-height:16px;overflow-wrap:anywhere;}
+  .tcStitchShell .neoFooter {min-width:0;}
+  .tcStitchShell .neoFooter * {overflow-wrap:anywhere;}
+  .tcStitchShell .neoMobileNav button {font-size:11px;min-width:0;}
+  .tcStitchShell .modal:not(.neoAlertsModal) {padding:8px;}
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel {padding:18px 15px;max-height:calc(100dvh - 28px);}
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel h2 {font-size:21px;line-height:1.25;}
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel>p {font-size:13px;line-height:19px;}
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel label {font-size:13px;line-height:18px;}
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel input:not([type=checkbox]):not([type=radio]):not([type=file]),
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel select,
+  .tcStitchShell .modal:not(.neoAlertsModal) .panel textarea {font-size:14px;max-width:100%;min-width:0;}
+  .tcStitchShell .modal:not(.neoAlertsModal) .zonePicker button {font-size:12px;min-height:35px;}
+  .tcStitchShell .modal:not(.neoAlertsModal) .previewActions {grid-template-columns:minmax(0,1fr);}
+}
+@media(max-width:370px){
+  .tcStitchShell .tcStitchMobileWordmark b {font-size:14px;}
+  .tcStitchShell .tcMobilePlace {flex-basis:80px;max-width:80px;}
+}

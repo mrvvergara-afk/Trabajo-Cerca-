@@ -5,7 +5,7 @@ import { publicSourceAdapter } from './public-source-adapters';
 export const SECURITY_POLICY = Object.freeze({
   paidProviders: false,
   remoteAi: false,
-  externalAnalytics: true,
+  externalAnalytics: false,
   manualOperations: false,
 });
 

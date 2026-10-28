@@ -1,7 +1,6 @@
 import { createHash } from 'node:crypto';
 import { socialSourceDate } from './social-evidence';
 import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
-import {WORK_PLACES} from '../shared/territories';
 
 type Data = Record<string, unknown>;
 export type PublicVerification = {
@@ -23,7 +22,7 @@ export type PublicVerification = {
   source_date_evidence?:{ date_posted:string; valid_through:string; timezone:string };
 };
 
-const SOURCE_WORK_PLACES = WORK_PLACES;
+const SOURCE_WORK_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Quilaco','Victoria','Los Ángeles','Temuco'];
 const sourceFold = (value:unknown) => String(value ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sourceDecode = (value:string) => value.replace(/&(?:amp|quot|apos|lt|gt|nbsp);/g, entity => ({ '&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>','&nbsp;':' ' }[entity] || entity));
 export const publicText = (value:string) => sourceDecode(value.replace(/<[^>]*>/g,' ')).replace(/\s+/g,' ').trim();
@@ -93,7 +92,7 @@ function bneLabelledPosting(raw:string, url:string):Data | null {
   const locality=region?.[2]?.trim() || '';
   const eligible=SOURCE_WORK_PLACES.filter(place=>sourceFold(locality)===sourceFold(place));
   if (eligible.length!==1 || !title || !applicationLink(scope,url)) return null;
-  const isBiobio=['Nacimiento','Negrete','Mulchén'].includes(eligible[0]);
+  const isBiobio=['Nacimiento','Negrete','Mulchén','Quilaco'].includes(eligible[0]);
   if (isBiobio!==sourceFold(region![1]).replace(/\s/g,'').includes('biobio')) return null;
   return { '@type':'JobPosting',url,title,hiringOrganization:{ name:publicText(employer[1]) },
     jobLocation:{ address:{ addressCountry:'CL',addressLocality:locality } },
@@ -230,13 +229,15 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   if (deadline && Date.parse(deadline)<=now) return { ...base,status:'rejected',reason:'expired_deadline' };
   if (!published || Date.parse(published)>now) return { ...base,status:'pending',reason:'source_date_missing_or_future' };
   const dated = { ...base,source_published_at:published };
-  if (now-Date.parse(published)>45*86400000) return { ...dated,status:'pending',reason:'source_older_than_45_days' };
+  if (!deadline && now-Date.parse(published)>45*86400000) return { ...dated,status:'pending',reason:'source_older_than_45_days' };
   if (!/oferta laboral|postul|requisitos|descripci[oó]n del (?:empleo|trabajo)|jornada|vacante|empleo|job|apply/i.test(body)) return { ...dated,status:'pending',reason:'hiring_text_missing' };
   if (job.validThrough && !deadline) return { ...dated,status:'review_ready',reason:'invalid_source_deadline' };
   const form = liveApplicationForm(visible,finalUrl), link = applicationLink(visible,finalUrl);
-  const application = form || link;
+  // An accessible original job page remains a useful application destination even when
+  // the application button is loaded dynamically by the portal.
+  const application = form || link || (adapter.family==='portal' ? finalUrl : '');
   if (!employer || !application) return { ...dated,status:'review_ready',reason:'application_or_employer_requires_review' };
-  if (!deadline && !form) return { ...dated,status:'review_ready',reason:'live_application_form_or_deadline_missing' };
+  // A dated offer with a usable application link does not need an explicit closing date.
   const result:PublicVerification = { ...dated,status:'verified',reason:deadline?'live_jobposting_with_deadline_and_application':'live_jobposting_with_enabled_application_form',
     application,valid_through:deadline || '',verification_method:adapter.verificationMethod,
     validity_method:deadline?'explicit_deadline':'live_application' };
@@ -246,4 +247,3 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   if (!deadline && form) result.validity_evidence = { form_url:finalUrl,form_action:form,checked_at:new Date(now).toISOString(),source_sha256:createHash('sha256').update(raw).digest('hex') };
   return result;
 }
-

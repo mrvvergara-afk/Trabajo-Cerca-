@@ -1,0 +1,19 @@
+{
+  "app": "trabajo-cerca-laboratorio-3ojgro",
+  "version": "1793152775717",
+  "gitBase": "62fce50f54aaba4516c822156c2894a798169fc5",
+  "capturedTextFiles": 108,
+  "excluded": [
+    "auth configuration",
+    "three binary PWA icons"
+  ],
+  "scope": "Source snapshot only, not a data backup. Preserve platform authentication and binary resources. No deployment performed.",
+  "openDraftPRs": [
+    1,
+    2,
+    3,
+    6,
+    7
+  ],
+  "repairBranch": "repair/radar-integral-2026-10-28"
+}

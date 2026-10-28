@@ -81,9 +81,11 @@ while(queue.length&&Date.now()<deadline&&processed<4000) {
 }
 report.pending.push(...queue.map(x=>({...x,reason:'run_budget_pending'})));
 if(previous) {
- await parallel(report.candidates.filter(x=>x.A.status==='verified'||x.B.status==='verified'||/source_older_than_45_days/.test(x.A.reason||'')),async row=>{
+ await parallel(report.candidates.filter(x=>x.A.status==='verified'||x.B.status==='verified'||/source_older_than_45_days/.test(x.A.reason||'')||(/robots_policy_unavailable|source_timeout|source_unavailable|HTTP 5/.test(x.A.reason||'')&&!(Date.parse(x.robots?.nextRetryAt||'')>Date.now())&&Date.now()-Date.parse(x.recheckedAt||'1970-01-01')>=120000)),async row=>{
    const page=await core.fetchPublicPage(row.url,row.url);
-   row.previousMeasurement={A:row.A,B:row.B,sha256:row.sha256};
+   row.previousMeasurement={A:row.A,B:row.B,sha256:row.sha256,http:row.http,checkedAt:row.recheckedAt||row.checkedAt};
+   if(row.A.status==='verified'||row.B.status==='verified')row.lastVerifiedEvidence=row.previousMeasurement;
+   row.http=page.status;row.robots=page.robots||null;
    row.A=page.error?{status:'pending',reason:page.error}:core.evaluatePublicJob(row.url,page.raw,page.url,page.status);
    row.B=page.error?row.A:core.evaluateWithEvidence(row.url,page.raw,page.url,page.status);
    row.sha256=page.raw?digest(page.raw):null;row.recheckedAt=new Date().toISOString();

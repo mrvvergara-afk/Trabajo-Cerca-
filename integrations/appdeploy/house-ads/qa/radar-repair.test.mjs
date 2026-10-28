@@ -228,3 +228,36 @@ test('source age requires live application evidence and a fresh check instead of
  assert.equal(core.offerRetentionReason(item,now),'source_revalidation_required');
  assert.equal(core.offerRetentionReason({...item,lastVerifiedAt:new Date(now).toISOString()},now),null);
 });
+
+test('concurrent candidates share one robots read instead of racing policy results',async()=>{
+ const fetch=globalThis.fetch;let calls=0,release;
+ globalThis.fetch=async()=>{calls++;return await new Promise(resolve=>{release=()=>resolve(new Response('User-agent: *\nAllow: /',{headers:{'content-type':'text/plain'}}));});};
+ try {
+  const waiting=Promise.all(Array.from({length:4},()=>core.checkPublicRobots('https://www.radionativa.cl/test',now)));
+  await Promise.resolve();release();const rows=await waiting;
+  assert.equal(calls,1);assert(rows.every(x=>x.allowed));
+ }finally{globalThis.fetch=fetch;}
+});
+test('an unavailable robots policy blocks content but may be checked after a short backoff',async()=>{
+ const fetch=globalThis.fetch;let calls=0;
+ globalThis.fetch=async()=>++calls===1?new Response('',{status:503}):new Response('User-agent: *\nAllow: /',{headers:{'content-type':'text/plain'}});
+ try {
+  const url='https://www.radiomininco.cl/test';
+  assert.equal((await core.checkPublicRobots(url,now)).allowed,false);
+  assert.equal((await core.checkPublicRobots(url,now+30000)).allowed,false);
+  assert.equal(calls,1);
+  assert.equal((await core.checkPublicRobots(url,now+120001)).allowed,true);
+  assert.equal(calls,2);
+ }finally{globalThis.fetch=fetch;}
+});
+test('explicit access denial keeps its long backoff without content access or rapid retries',async()=>{
+ const fetch=globalThis.fetch;let calls=0;
+ globalThis.fetch=async()=>{calls++;return new Response('',{status:403});};
+ try {
+  const url='https://radiobarnachea.cl/test';
+  const first=await core.checkPublicRobots(url,now);
+  assert.equal(first.allowed,false);assert.equal(first.robotsHttp,403);
+  assert.equal((await core.checkPublicRobots(url,now+120001)).allowed,false);
+  assert.equal(calls,1);
+ }finally{globalThis.fetch=fetch;}
+});

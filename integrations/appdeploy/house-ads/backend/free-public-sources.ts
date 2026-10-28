@@ -358,7 +358,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
     const audit:Stored = { source:source.name,territory:source.territory,url,http:page.status,
       discoveryGroup:localDiscoverySource(source)?'local':'portal',
-      error:page.error || null,coverageComplete:false,candidates:0 };
+      error:page.error || null,robots:page.robots||null,coverageComplete:false,candidates:0 };
     if (page.status===200 && !page.error) {
       const links = publicPageLinks(page.raw,page.url);
       if (publicRenderRequired(page.raw)) {
@@ -385,9 +385,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         .filter(item => !seen.includes(item));
       audit.candidates = links.candidates.length;
     }
-    const restricted=Boolean(page.error && /robots|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;
+    const restricted=Boolean(page.error && /robots_disallowed|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;
     const seed = { id:seedId,key:source.key,queue,seen,rootAttemptedAt:url===source.url?new Date(now).toISOString():previousSeed?.rootAttemptedAt||null,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
-      lastError:audit.error || (page.status>=400?'HTTP '+page.status:null),nextAllowedAt:restricted ? new Date(now+12*3600000).toISOString() : null };
+      lastError:audit.error || (page.status>=400?'HTTP '+page.status:null),nextAllowedAt:restricted ? new Date(now+12*3600000).toISOString() : page.robots?.nextRetryAt||null };
     if (Buffer.byteLength(JSON.stringify(seed))>230*1024) throw new Error('Source history checkpoint byte budget exceeded');
     changedSeeds.set(seedId,{ previous:previousSeed,record:seed });
     audits.push(audit);if (!onboarding) state.position=(state.position+1)%sources.length;
@@ -425,7 +425,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     } else if (result.status==='pending' && (rechecks.has(candidate.url) || rechecks.size<80)) {
       // Failure to parse/access an offer is not evidence it should be discarded.
       // Keep its URL for a later independent HTTP attempt without blocking the discovery cursor.
-      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+6*3600000).toISOString() });
+      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:page.robots?.nextRetryAt||new Date(now+6*3600000).toISOString() });
     } else if (rechecks.has(candidate.url)) {
       rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+24*3600000).toISOString() });
     }

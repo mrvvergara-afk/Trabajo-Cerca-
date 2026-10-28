@@ -12,3 +12,4 @@ export { offerFingerprint, listingFingerprints } from '../backend/offer-identity
 export { assertDistinctPublicOffer, PublicationReviewRequired } from '../backend/publication-preflight';
 export { readFeedInventory } from '../src/feed-inventory';
 export {offerRetentionReason,offerRecheckDue,confirmedOfferDeadline} from '../backend/offer-retention';
+export {checkPublicRobots} from '../backend/public-robots';

@@ -19,6 +19,8 @@ export type PublicVerification = {
   verification_method?:string;
   validity_method?:'explicit_deadline' | 'live_application';
   validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
+  document_unit_key?:string;
+  document_unit_verified?:boolean;
   source_date_evidence?:{ date_posted:string; valid_through:string; timezone:string };
 };
 
@@ -29,7 +31,7 @@ export const publicText = (value:string) => sourceDecode(value.replace(/<[^>]*>/
 const sourceObject = (value:unknown):value is Data => Boolean(value && typeof value === 'object' && !Array.isArray(value));
 
 // Chiletrabajos publishes civil timestamps without a zone. Only this adapter interprets them in continental Chile.
-function publicJobDate(value:unknown, source:string, endOfDay=false) {
+export function publicJobDate(value:unknown, source:string, endOfDay=false) {
   const explicit = socialSourceDate(value,endOfDay);
   if (explicit) return explicit;
   if (source!=='Chiletrabajos' || typeof value!=='string') return null;

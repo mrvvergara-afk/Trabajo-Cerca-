@@ -21,7 +21,12 @@ try {
   await page.goto(root,{waitUntil:'domcontentloaded',timeout:45000});
   await page.locator('[data-offer-id]').first().waitFor({timeout:75000});
   for(const town of towns){
-   const select=page.getByLabel('Comuna de cabecera',{exact:true}); await select.selectOption({label:town});
+   let select;
+   for (const candidate of await page.locator('select:visible').all()) {
+     if (await candidate.locator('option').evaluateAll((es,t)=>es.some(e=>e.textContent===t),town)) {select=candidate;break;}
+   }
+   if (!select) throw new Error('No visible territorial selector; DOM not verified');
+   await select.selectOption({label:town});
    await page.waitForTimeout(400); const ids=new Set();
    for(let i=0;i<40;i++){
     for(const id of await page.locator('[data-offer-id]').evaluateAll(es=>es.map(e=>e.getAttribute('data-offer-id'))))ids.add(id);
@@ -34,6 +39,7 @@ try {
  }catch(e){report.errors.push('territorial: '+e.message);}
  const proof=report.proofs['radar-proof']; report.complete=Boolean(proof?.feedReadComplete)&&towns.every(t=>Array.isArray(report.territorial[t]));
  writeFileSync(out+'/baseline.json',JSON.stringify(report,null,2));
+ console.log('RADAR_BASELINE_JSON '+JSON.stringify(report));
  console.log(JSON.stringify({complete:report.complete,visibleItems:proof?.visibleItems?.length,territorial:Object.fromEntries(Object.entries(report.territorial).map(([t,ids])=>[t,ids.length])),errors:report.errors}));
  if(!report.complete)process.exitCode=1;
 }finally{await browser.close();}

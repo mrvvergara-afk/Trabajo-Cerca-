@@ -3050,8 +3050,8 @@ const applicationRouter = router({
       return json({items:visible,totalItems:visible.length,totalJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,
         totalVerifiedJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,
         recentJobOffers24h:0,recentJobOffers7d:0,totalProvisionalJobOffers:0,
-        communeStats:{},kindStats:{jobs:visible.length,people:0,needs:0,services:0},
-        hasMore:false,degraded:true,feedRebuilding:true,feedState:'degraded_last_good'});
+        communeStats:{},kindStats:{jobs:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,people:0,needs:0,services:0},
+        hasMore:false,complete:false,degraded:true,feedRebuilding:true,feedState:'initial_partial'});
     }
     return query.fresh === '1' ? json(feed) : cacheable(feed, 60);
   }],

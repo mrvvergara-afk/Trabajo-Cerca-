@@ -1,10 +1,11 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
-import { publicPublisher, publicSourceAdapter, safePublicUrl } from './public-source-adapters';
+import { publicPublisher, publicSourceAdapter, publicOfferIdentity, safePublicUrl } from './public-source-adapters';
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
 import { shadowEvaluate } from './shadow-radar';
+import { rememberCandidates, recordCandidate, recordVerification } from './radar-trace';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal'; discoveryPriority?:'secondary' };
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
@@ -97,7 +98,7 @@ export function publicPageLinks(raw:string, origin:string) {
           !/logo|banner|icon|slider|cropped|avatar|favicon/i.test(url)) candidates.set(url,'Imagen de la publicación laboral');
     }
   }
-  return { candidates:[...candidates].slice(0,40).map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };
+  return { candidates:[...candidates].map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };
 }
 
 export function publicRenderRequired(raw:string) {
@@ -201,12 +202,17 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
 export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date.now()) {
   const adapter = publicSourceAdapter(offer.url || '');
   if (!adapter || adapter.family==='aggregator') throw new Error('Unconfirmed offer identity');
-  const identity = hash(adapter.identityUrl), table = 'radar_external_'+identity.slice(0,32);
+  const unit=offer.document_unit_key;
+  if (unit && offer.document_unit_verified!==true) throw new Error('Document unit evidence not verified');
+  const canonical=publicOfferIdentity(offer.url!,unit);
+  if (!canonical) throw new Error('Invalid offer unit identity');
+  const identity = hash(canonical), table = 'radar_external_'+identity.slice(0,32);
   const previous = (await db.list<Stored>(table,{ limit:2 })).items;
   if (previous.length>1 || previous[0] && previous[0].externalIdentity!==identity) throw new Error('Public identity conflict; preserve history');
   const old = previous[0], { id:_id,...fields } = old || {};
   const record = { ...fields,...verifiedPublicRecord(offer,now),createdAt:old?.createdAt || new Date(now).toISOString(),
-    externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString() };
+    externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString(),
+    ...(unit?{documentUnitKey:unit,documentUnitVerified:true}:{}) };
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;
   if (id) {
@@ -217,7 +223,10 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
     if (!created) throw new Error('Public offer already exists; reconcile before advancing');
     id = created;
   }
+  // Retain storage identity even if feed registration fails; a later retry re-registers it.
+  await recordCandidate(offer.url!,{publication:'stored',sourceTable:table,sourceId:id,dedupIdentity:identity,state:'verified',reason:offer.reason},now);
   await registerPublicFeedChange(table,id);
+  await recordCandidate(offer.url!,{publication:'queued_for_feed',feedPresent:false},now);
   return { table,id,url:offer.url };
 }
 
@@ -324,7 +333,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         }
       }
       if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });
-      audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));
+      await rememberCandidates(links.candidates.map(item=>({url:item.url,source:source.name,publisherPage:page.url})),now);
+      audit.candidateEvidence=links.candidates.slice(0,40).map(item=>({ url:item.url,title:item.title }));
+      audit.retainedCandidateCount=links.candidates.length;
       for (const item of links.candidates) if (!seenPending.has(item.url)) {
         if (onboarding && state.priorityCandidates.length<3) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url });
         else if (publicDocumentUrl(item.url) && state.documentPending.length<180) state.documentPending.push({url:item.url,source:source.name,publisherPage:page.url});
@@ -362,6 +373,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         result = originalPage.error ? { status:'pending',reason:originalPage.error } : evaluatePublicJob(original,originalPage.raw,originalPage.url,originalPage.status,now);
       }
     }
+    await recordVerification(candidate.url,result,page.status,'A',now);
     if (result.status==='verified') {
       receipts.push(await saveVerifiedPublicOffer(result,now));verified++;
       rechecks.set(safePublicUrl(result.url!)!,{ url:safePublicUrl(result.url!)!,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+18*3600000).toISOString() });

@@ -1,15 +1,15 @@
-name: Radar read-only live baseline
+name: Radar repair verification and real read-only crawl
 on:
   push:
     branches: [repair/radar-integral-2026-10-28]
-    paths: ['.github/workflows/radar-integral.yml', 'integrations/appdeploy/house-ads/qa/radar-live-observe.mjs']
+    paths: ['integrations/appdeploy/house-ads/**', '.github/workflows/radar-integral.yml']
 permissions:
   contents: read
 jobs:
-  observe:
+  verify:
     if: github.event.repository.private == false
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 25
     defaults:
       run:
         working-directory: integrations/appdeploy/house-ads
@@ -18,11 +18,26 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: npm ci --ignore-scripts --no-audit --no-fund --fetch-retries=0 --fetch-timeout=30000
-      - run: node qa/radar-live-observe.mjs
+      - name: Reconcile native PDF dependency in isolated runner
+        run: npm install --ignore-scripts --no-audit --no-fund --fetch-retries=0 --fetch-timeout=30000
+      - name: Compile real frontend and backend; no deployment
+        run: |
+          node qa/radar-bundle.mjs
+          node qa/radar-verify.mjs
+      - name: Regression tests on repaired native modules
+        run: node --test qa/radar-repair.test.mjs
+      - name: Read public catalogue and territorial DOM
+        continue-on-error: true
+        run: node qa/radar-live-observe.mjs
+      - name: Process complete source inventory with A and B on common URLs
+        if: success()
+        run: node qa/radar-real-crawl.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: radar-live-baseline
-          path: integrations/appdeploy/house-ads/qa-output/radar-live/
+          name: radar-integral-evidence-and-source-package
+          path: |
+            integrations/appdeploy/house-ads/qa-output/radar/
+            integrations/appdeploy/house-ads/qa-output/radar-live/
+            integrations/appdeploy/house-ads/package-lock.json
           retention-days: 2

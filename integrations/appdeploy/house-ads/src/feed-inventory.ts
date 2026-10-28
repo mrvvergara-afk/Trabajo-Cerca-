@@ -1,5 +1,5 @@
 type Item = { id:string; [key:string]:unknown };
-type Page = { items:Item[]; nextCursor?:string | null; totalItems?:number; totalJobOffers?:number };
+type Page = { items:Item[]; nextCursor?:string | null; totalItems?:number; totalJobOffers?:number; complete?:boolean; degraded?:boolean };
 type Read = (path:string) => Promise<{ data:Page }>;
 
 // Read every page through the frontend SDK; finding expected IDs is not a stop condition.
@@ -14,6 +14,7 @@ export async function readFeedInventory(read:Read, maxPages=100) {
       const suffix=cursor ? '&cursor='+encodeURIComponent(cursor) : '';
       const { data }=await read('/api/listings?fresh=1'+suffix);
       if (!Array.isArray(data.items)) throw new Error('invalid_items');
+      if (data.complete===false || data.degraded) throw new Error('partial_public_catalog');
       if (pagesRead===0) { totalItems=data.totalItems;totalJobOffers=data.totalJobOffers; }
       pagesRead++;
       for (const item of data.items) {

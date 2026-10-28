@@ -1,0 +1,1835 @@
+{
+  "publishedVersion": "1793152775717",
+  "primaryTowns": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Renaico",
+    "Mininco",
+    "Nacimiento",
+    "Negrete",
+    "Mulchén",
+    "Los Sauces",
+    "Purén",
+    "Traiguén",
+    "Lumaco",
+    "Victoria"
+  ],
+  "sources": [
+    {
+      "key": "indeed-secondary-Los Ángeles",
+      "name": "Indeed · Los Ángeles",
+      "territory": "Los Ángeles",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-secondary-Los Ángeles",
+      "name": "Computrabajo · Los Ángeles",
+      "territory": "Los Ángeles",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://cl.computrabajo.com/trabajo-en-los-angeles",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-secondary-Los Ángeles",
+      "name": "LinkedIn · Los Ángeles",
+      "territory": "Los Ángeles",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20%C3%81ngeles%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-secondary-Los Ángeles",
+      "name": "Laborum · Los Ángeles",
+      "territory": "Los Ángeles",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-secondary-Los Ángeles",
+      "name": "Opción Empleo · Los Ángeles",
+      "territory": "Los Ángeles",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-secondary-Los Ángeles",
+      "name": "ChileTrabajos · Los Ángeles",
+      "territory": "Los Ángeles",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-secondary-Temuco",
+      "name": "Indeed · Temuco",
+      "territory": "Temuco",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-secondary-Temuco",
+      "name": "Computrabajo · Temuco",
+      "territory": "Temuco",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://cl.computrabajo.com/trabajo-en-temuco",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-secondary-Temuco",
+      "name": "LinkedIn · Temuco",
+      "territory": "Temuco",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-secondary-Temuco",
+      "name": "Laborum · Temuco",
+      "territory": "Temuco",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.laborum.cl/empleos-busqueda-temuco.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-secondary-Temuco",
+      "name": "Opción Empleo · Temuco",
+      "territory": "Temuco",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-secondary-Temuco",
+      "name": "ChileTrabajos · Temuco",
+      "territory": "Temuco",
+      "discoveryPriority": "secondary",
+      "discoveryGroup": "portal",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Temuco",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Angol",
+      "name": "Indeed · Angol",
+      "territory": "Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Angol",
+      "name": "Computrabajo · Angol",
+      "territory": "Angol",
+      "url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Angol",
+      "name": "LinkedIn · Angol",
+      "territory": "Angol",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "territory": "Traiguén",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Angol",
+      "name": "Laborum · Angol",
+      "territory": "Angol",
+      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-renaico",
+      "name": "Municipalidad / OMIL Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Angol",
+      "name": "Opción Empleo · Angol",
+      "territory": "Angol",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Angol",
+      "name": "ChileTrabajos · Angol",
+      "territory": "Angol",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-negrete",
+      "name": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Collipulli",
+      "name": "Indeed · Collipulli",
+      "territory": "Collipulli",
+      "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "territory": "Mulchén",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Collipulli",
+      "name": "Computrabajo · Collipulli",
+      "territory": "Collipulli",
+      "url": "https://cl.computrabajo.com/trabajo-en-collipulli",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Collipulli",
+      "name": "LinkedIn · Collipulli",
+      "territory": "Collipulli",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-victoria-news",
+      "name": "Municipalidad / OMIL Victoria · publicaciones",
+      "url": "https://victoriachile.cl/category/omil/",
+      "territory": "Victoria",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Collipulli",
+      "name": "Laborum · Collipulli",
+      "territory": "Collipulli",
+      "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-puren-2026",
+      "name": "Municipalidad / Purén · llamados 2026",
+      "url": "https://munipuren.cl/llamados-a-concurso-2026/",
+      "territory": "Purén",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Collipulli",
+      "name": "Opción Empleo · Collipulli",
+      "territory": "Collipulli",
+      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "omil-ercilla",
+      "name": "Municipalidad / Ercilla · portal",
+      "url": "https://muniercilla.cl/",
+      "territory": "Ercilla",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Collipulli",
+      "name": "ChileTrabajos · Collipulli",
+      "territory": "Collipulli",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Ercilla",
+      "name": "Indeed · Ercilla",
+      "territory": "Ercilla",
+      "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "malleco7-ediciones",
+      "name": "Malleco 7 · ediciones digitales",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "territory": "Malleco",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Ercilla",
+      "name": "Computrabajo · Ercilla",
+      "territory": "Ercilla",
+      "url": "https://cl.computrabajo.com/trabajo-en-ercilla",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "radio-nativa",
+      "name": "Radio Nativa",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Ercilla",
+      "name": "LinkedIn · Ercilla",
+      "territory": "Ercilla",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "cmpc-empleo-csod",
+      "name": "CMPC · portal de empleo",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "territory": "zona forestal",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Ercilla",
+      "name": "Laborum · Ercilla",
+      "territory": "Ercilla",
+      "url": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "arauco-empleo",
+      "name": "Arauco · portal de empleo",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "territory": "zona forestal",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Ercilla",
+      "name": "Opción Empleo · Ercilla",
+      "territory": "Ercilla",
+      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Ercilla",
+      "name": "ChileTrabajos · Ercilla",
+      "territory": "Ercilla",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Ercilla",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Renaico",
+      "name": "Indeed · Renaico",
+      "territory": "Renaico",
+      "url": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Renaico",
+      "name": "Computrabajo · Renaico",
+      "territory": "Renaico",
+      "url": "https://cl.computrabajo.com/trabajo-en-renaico",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Renaico",
+      "name": "LinkedIn · Renaico",
+      "territory": "Renaico",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Renaico",
+      "name": "Laborum · Renaico",
+      "territory": "Renaico",
+      "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Renaico",
+      "name": "Opción Empleo · Renaico",
+      "territory": "Renaico",
+      "url": "https://www.opcionempleo.cl/empleo-en-renaico.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Renaico",
+      "name": "ChileTrabajos · Renaico",
+      "territory": "Renaico",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Mininco",
+      "name": "Indeed · Mininco",
+      "territory": "Mininco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mininco&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Mininco",
+      "name": "Computrabajo · Mininco",
+      "territory": "Mininco",
+      "url": "https://cl.computrabajo.com/trabajo-en-mininco",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Mininco",
+      "name": "LinkedIn · Mininco",
+      "territory": "Mininco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Mininco",
+      "name": "Laborum · Mininco",
+      "territory": "Mininco",
+      "url": "https://www.laborum.cl/empleos-busqueda-mininco.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Mininco",
+      "name": "Opción Empleo · Mininco",
+      "territory": "Mininco",
+      "url": "https://www.opcionempleo.cl/empleo-en-mininco.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Mininco",
+      "name": "ChileTrabajos · Mininco",
+      "territory": "Mininco",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mininco",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Nacimiento",
+      "name": "Indeed · Nacimiento",
+      "territory": "Nacimiento",
+      "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Nacimiento",
+      "name": "Computrabajo · Nacimiento",
+      "territory": "Nacimiento",
+      "url": "https://cl.computrabajo.com/trabajo-en-nacimiento",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Nacimiento",
+      "name": "LinkedIn · Nacimiento",
+      "territory": "Nacimiento",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Nacimiento%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Nacimiento",
+      "name": "Laborum · Nacimiento",
+      "territory": "Nacimiento",
+      "url": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Nacimiento",
+      "name": "Opción Empleo · Nacimiento",
+      "territory": "Nacimiento",
+      "url": "https://www.opcionempleo.cl/empleo-en-nacimiento.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Nacimiento",
+      "name": "ChileTrabajos · Nacimiento",
+      "territory": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Negrete",
+      "name": "Indeed · Negrete",
+      "territory": "Negrete",
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Negrete",
+      "name": "Computrabajo · Negrete",
+      "territory": "Negrete",
+      "url": "https://cl.computrabajo.com/trabajo-en-negrete",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Negrete",
+      "name": "LinkedIn · Negrete",
+      "territory": "Negrete",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Negrete",
+      "name": "Laborum · Negrete",
+      "territory": "Negrete",
+      "url": "https://www.laborum.cl/empleos-busqueda-negrete.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Negrete",
+      "name": "Opción Empleo · Negrete",
+      "territory": "Negrete",
+      "url": "https://www.opcionempleo.cl/empleo-en-negrete.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Negrete",
+      "name": "ChileTrabajos · Negrete",
+      "territory": "Negrete",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Mulchén",
+      "name": "Indeed · Mulchén",
+      "territory": "Mulchén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Mulchén",
+      "name": "Computrabajo · Mulchén",
+      "territory": "Mulchén",
+      "url": "https://cl.computrabajo.com/trabajo-en-mulchen",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Mulchén",
+      "name": "LinkedIn · Mulchén",
+      "territory": "Mulchén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mulch%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Mulchén",
+      "name": "Laborum · Mulchén",
+      "territory": "Mulchén",
+      "url": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Mulchén",
+      "name": "Opción Empleo · Mulchén",
+      "territory": "Mulchén",
+      "url": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Mulchén",
+      "name": "ChileTrabajos · Mulchén",
+      "territory": "Mulchén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Los Sauces",
+      "name": "Indeed · Los Sauces",
+      "territory": "Los Sauces",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Los Sauces",
+      "name": "Computrabajo · Los Sauces",
+      "territory": "Los Sauces",
+      "url": "https://cl.computrabajo.com/trabajo-en-los-sauces",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Los Sauces",
+      "name": "LinkedIn · Los Sauces",
+      "territory": "Los Sauces",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Los Sauces",
+      "name": "Laborum · Los Sauces",
+      "territory": "Los Sauces",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Los Sauces",
+      "name": "Opción Empleo · Los Sauces",
+      "territory": "Los Sauces",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Los Sauces",
+      "name": "ChileTrabajos · Los Sauces",
+      "territory": "Los Sauces",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Purén",
+      "name": "Indeed · Purén",
+      "territory": "Purén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Purén",
+      "name": "Computrabajo · Purén",
+      "territory": "Purén",
+      "url": "https://cl.computrabajo.com/trabajo-en-puren",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Purén",
+      "name": "LinkedIn · Purén",
+      "territory": "Purén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Purén",
+      "name": "Laborum · Purén",
+      "territory": "Purén",
+      "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Purén",
+      "name": "Opción Empleo · Purén",
+      "territory": "Purén",
+      "url": "https://www.opcionempleo.cl/empleo-en-puren.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Purén",
+      "name": "ChileTrabajos · Purén",
+      "territory": "Purén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Traiguén",
+      "name": "Indeed · Traiguén",
+      "territory": "Traiguén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Traiguén",
+      "name": "Computrabajo · Traiguén",
+      "territory": "Traiguén",
+      "url": "https://cl.computrabajo.com/trabajo-en-traiguen",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Traiguén",
+      "name": "LinkedIn · Traiguén",
+      "territory": "Traiguén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Traiguén",
+      "name": "Laborum · Traiguén",
+      "territory": "Traiguén",
+      "url": "https://www.laborum.cl/empleos-busqueda-traiguen.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Traiguén",
+      "name": "Opción Empleo · Traiguén",
+      "territory": "Traiguén",
+      "url": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Traiguén",
+      "name": "ChileTrabajos · Traiguén",
+      "territory": "Traiguén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Traigu%C3%A9n",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Lumaco",
+      "name": "Indeed · Lumaco",
+      "territory": "Lumaco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Lumaco",
+      "name": "Computrabajo · Lumaco",
+      "territory": "Lumaco",
+      "url": "https://cl.computrabajo.com/trabajo-en-lumaco",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Lumaco",
+      "name": "LinkedIn · Lumaco",
+      "territory": "Lumaco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Lumaco",
+      "name": "Laborum · Lumaco",
+      "territory": "Lumaco",
+      "url": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Lumaco",
+      "name": "Opción Empleo · Lumaco",
+      "territory": "Lumaco",
+      "url": "https://www.opcionempleo.cl/empleo-en-lumaco.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Lumaco",
+      "name": "ChileTrabajos · Lumaco",
+      "territory": "Lumaco",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "indeed-Victoria",
+      "name": "Indeed · Victoria",
+      "territory": "Victoria",
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "computrabajo-Victoria",
+      "name": "Computrabajo · Victoria",
+      "territory": "Victoria",
+      "url": "https://cl.computrabajo.com/trabajo-en-victoria",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "linkedin-Victoria",
+      "name": "LinkedIn · Victoria",
+      "territory": "Victoria",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "laborum-Victoria",
+      "name": "Laborum · Victoria",
+      "territory": "Victoria",
+      "url": "https://www.laborum.cl/empleos-busqueda-victoria.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "opcionempleo-Victoria",
+      "name": "Opción Empleo · Victoria",
+      "territory": "Victoria",
+      "url": "https://www.opcionempleo.cl/empleo-en-victoria.html",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "chiletrabajos-Victoria",
+      "name": "ChileTrabajos · Victoria",
+      "territory": "Victoria",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "bne-negrete-pilot-2026-109726",
+      "name": "Bolsa Nacional de Empleo · Negrete",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "territory": "Negrete",
+      "bootstrap": true,
+      "inventory": "published-v99"
+    },
+    {
+      "key": "bne",
+      "name": "Bolsa Nacional de Empleo",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "territorio piloto",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "radio-viaducto",
+      "name": "Radio Viaducto",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "las-noticias-malleco",
+      "name": "Las Noticias de Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "territory": "Malleco",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "ssan-indice",
+      "name": "Servicio de Salud Araucanía Norte",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
+      "territory": "Malleco",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "negrete-feed",
+      "name": "Municipalidad de Negrete · novedades",
+      "url": "https://www.muninegrete.cl/feed/",
+      "territory": "Negrete",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "mulchen-feed",
+      "name": "Municipalidad de Mulchén · novedades",
+      "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "territory": "Mulchén",
+      "discoveryGroup": "local",
+      "inventory": "published-v99"
+    },
+    {
+      "key": "empleos-publicos",
+      "name": "Servicio Civil · Empleos Públicos",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Chile",
+      "discoveryGroup": "portal",
+      "inventory": "published-v99"
+    },
+    {
+      "id": "TC-001",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+      "key": "TC-001",
+      "name": "Inventario original TC-001",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-002",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
+      "key": "TC-002",
+      "name": "Inventario original TC-002",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-003",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",
+      "key": "TC-003",
+      "name": "Inventario original TC-003",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-004",
+      "work_cities": [
+        "Angol",
+        "Victoria",
+        "Traiguén"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+      "key": "TC-004",
+      "name": "Inventario original TC-004",
+      "territory": "Angol, Victoria, Traiguén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-005",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+      "key": "TC-005",
+      "name": "Inventario original TC-005",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-006",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+      "key": "TC-006",
+      "name": "Inventario original TC-006",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-007",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+      "key": "TC-007",
+      "name": "Inventario original TC-007",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-008",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+      "key": "TC-008",
+      "name": "Inventario original TC-008",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-009",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
+      "key": "TC-009",
+      "name": "Inventario original TC-009",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-010",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+      "key": "TC-010",
+      "name": "Inventario original TC-010",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-011",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+      "key": "TC-011",
+      "name": "Inventario original TC-011",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-012",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+      "key": "TC-012",
+      "name": "Inventario original TC-012",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-013",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+      "key": "TC-013",
+      "name": "Inventario original TC-013",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-014",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "key": "TC-014",
+      "name": "Inventario original TC-014",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-015",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
+      "key": "TC-015",
+      "name": "Inventario original TC-015",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-016",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109303504/asistente-de-visual-angol",
+      "key": "TC-016",
+      "name": "Inventario original TC-016",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-017",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109467988/administrador-de-huerto-angol",
+      "key": "TC-017",
+      "name": "Inventario original TC-017",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-018",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109456638/supervisor-de-terreno-angol",
+      "key": "TC-018",
+      "name": "Inventario original TC-018",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-019",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109453960/supervisores-de-cuadrilla-angol",
+      "key": "TC-019",
+      "name": "Inventario original TC-019",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-020",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109456558/supervisores-de-calidad-angol",
+      "key": "TC-020",
+      "name": "Inventario original TC-020",
+      "territory": "Angol",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-021",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109828727/cosechero-frutales-traiguen",
+      "key": "TC-021",
+      "name": "Inventario original TC-021",
+      "territory": "Traiguén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-022",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/107893007/trabajos-de-mantencion-huerto-fruticola-traiguen",
+      "key": "TC-022",
+      "name": "Inventario original TC-022",
+      "territory": "Traiguén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-023",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas/",
+      "key": "TC-023",
+      "name": "Inventario original TC-023",
+      "territory": "Traiguén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-024",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://traiguencity.cl/abren-concursos-publicos-para-proveer-los-cargos-de-director-en-el-liceo-lucila-godoy-alcayaga-y-la-escuela-especial-las-lilas-de-traiguen/",
+      "key": "TC-024",
+      "name": "Inventario original TC-024",
+      "territory": "Traiguén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-025",
+      "work_cities": [
+        "Angol",
+        "Victoria",
+        "Traiguén"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-en-terreno-zona-victoria-angol-traiguen-3915323",
+      "key": "TC-025",
+      "name": "Inventario original TC-025",
+      "territory": "Angol, Victoria, Traiguén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-026",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109901397/cajera-administrativa-victoria",
+      "key": "TC-026",
+      "name": "Inventario original TC-026",
+      "territory": "Victoria",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-027",
+      "work_cities": [
+        "Collipulli"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110102473/visual-merchandising-collipulli",
+      "key": "TC-027",
+      "name": "Inventario original TC-027",
+      "territory": "Collipulli",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-028",
+      "work_cities": [
+        "Collipulli"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110041583/conductor-traslado-de-pacientes-collipulli",
+      "key": "TC-028",
+      "name": "Inventario original TC-028",
+      "territory": "Collipulli",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-029",
+      "work_cities": [
+        "Collipulli"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110226625/jefe-de-tienda-collipulli",
+      "key": "TC-029",
+      "name": "Inventario original TC-029",
+      "territory": "Collipulli",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-030",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-produccion-de-miel-en-la-comuna-de-mulchen-3919935",
+      "key": "TC-030",
+      "name": "Inventario original TC-030",
+      "territory": "Mulchén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-031",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110253332/supervisor-a-tecnico-a-de-obra-proyecto-mulchen",
+      "key": "TC-031",
+      "name": "Inventario original TC-031",
+      "territory": "Mulchén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-032",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110032101/operador-de-grua-horquilla-mulchen",
+      "key": "TC-032",
+      "name": "Inventario original TC-032",
+      "territory": "Mulchén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-033",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110036216/agente-atencion-al-cliente-mulchen-mulchen",
+      "key": "TC-033",
+      "name": "Inventario original TC-033",
+      "territory": "Mulchén",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-034",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109209990/conductor-profesional-negrete",
+      "key": "TC-034",
+      "name": "Inventario original TC-034",
+      "territory": "Negrete",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-035",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109327893/vulcanizador-empresa-de-transporte-forestal-negrete",
+      "key": "TC-035",
+      "name": "Inventario original TC-035",
+      "territory": "Negrete",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-036",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110128066/jefe-de-taller-negrete",
+      "key": "TC-036",
+      "name": "Inventario original TC-036",
+      "territory": "Negrete",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-037",
+      "work_cities": [
+        "Nacimiento"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/110103196/analista-de-sistemas-nacimiento",
+      "key": "TC-037",
+      "name": "Inventario original TC-037",
+      "territory": "Nacimiento",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-038",
+      "work_cities": [
+        "Los Sauces"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109379051/ingeniero-en-electricidad-en-terreno-los-sauces",
+      "key": "TC-038",
+      "name": "Inventario original TC-038",
+      "territory": "Los Sauces",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-039",
+      "work_cities": [
+        "Quilaco"
+      ],
+      "url": "https://www.kitempleo.cl/empleo/109378828/ingeniero-en-telecomunicaciones-en-terreno-quilaco",
+      "key": "TC-039",
+      "name": "Inventario original TC-039",
+      "territory": "Quilaco",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "TC-040",
+      "work_cities": [
+        "Lumaco"
+      ],
+      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-administracion-gastronomica-3919940",
+      "key": "TC-040",
+      "name": "Inventario original TC-040",
+      "territory": "Lumaco",
+      "inventory": "main-seeds"
+    },
+    {
+      "id": "M01",
+      "territory": "Quilaco",
+      "url": "https://municipalidadquilaco.cl/w/?page_id=1468",
+      "type": "municipal",
+      "key": "M01",
+      "name": "Descubrimiento M01",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M02",
+      "territory": "Mulchén",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+      "type": "municipal",
+      "key": "M02",
+      "name": "Descubrimiento M02",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M03",
+      "territory": "Negrete",
+      "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+      "type": "municipal",
+      "key": "M03",
+      "name": "Descubrimiento M03",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M04",
+      "territory": "Victoria",
+      "url": "https://victoriachile.cl/category/omil/",
+      "type": "municipal",
+      "key": "M04",
+      "name": "Descubrimiento M04",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M05",
+      "territory": "Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "type": "municipal",
+      "key": "M05",
+      "name": "Descubrimiento M05",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M06",
+      "territory": "Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "type": "municipal",
+      "key": "M06",
+      "name": "Descubrimiento M06",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M07",
+      "territory": "Lumaco",
+      "url": "https://munilumaco.cl/",
+      "type": "municipal",
+      "key": "M07",
+      "name": "Descubrimiento M07",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M08",
+      "territory": "Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "type": "municipal",
+      "key": "M08",
+      "name": "Descubrimiento M08",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M09",
+      "territory": "Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "type": "municipal",
+      "key": "M09",
+      "name": "Descubrimiento M09",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M10",
+      "territory": "Purén",
+      "url": "https://munipuren.cl/llamados-a-concurso-2026/",
+      "type": "municipal",
+      "key": "M10",
+      "name": "Descubrimiento M10",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M11",
+      "territory": "Ercilla",
+      "url": "https://muniercilla.cl/",
+      "type": "municipal",
+      "key": "M11",
+      "name": "Descubrimiento M11",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M12",
+      "territory": "Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "type": "municipal",
+      "key": "M12",
+      "name": "Descubrimiento M12",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M13",
+      "territory": "Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "type": "municipal",
+      "key": "M13",
+      "name": "Descubrimiento M13",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "M14",
+      "territory": "Mininco",
+      "url": "https://municipalidadcollipulli.cl/",
+      "type": "municipal",
+      "key": "M14",
+      "name": "Descubrimiento M14",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "P01",
+      "territory": "Traiguén",
+      "url": "https://traiguencity.cl/noticias/traiguen/laboral-traiguen/",
+      "type": "press",
+      "key": "P01",
+      "name": "Descubrimiento P01",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "P02",
+      "territory": "Traiguén",
+      "url": "https://traiguencity.cl/noticias/traiguen/general/",
+      "type": "press",
+      "key": "P02",
+      "name": "Descubrimiento P02",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "P03",
+      "territory": "Angol",
+      "url": "https://www.angolnoticiasnew.cl/",
+      "type": "press",
+      "key": "P03",
+      "name": "Descubrimiento P03",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "P04",
+      "territory": "Malleco",
+      "url": "https://www.malleco7.cl/",
+      "type": "press",
+      "key": "P04",
+      "name": "Descubrimiento P04",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "P05",
+      "territory": "Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "type": "press",
+      "key": "P05",
+      "name": "Descubrimiento P05",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "P06",
+      "territory": "Lumaco",
+      "url": "https://www.radionativa.cl/",
+      "type": "radio",
+      "key": "P06",
+      "name": "Descubrimiento P06",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "P07",
+      "territory": "Collipulli",
+      "url": "https://radioviaducto.cl/",
+      "type": "radio",
+      "key": "P07",
+      "name": "Descubrimiento P07",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "D01",
+      "territory": "Región",
+      "url": "https://sence.gob.cl/personas/omil",
+      "type": "directory",
+      "key": "D01",
+      "name": "Descubrimiento D01",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "D02",
+      "territory": "Chile",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "type": "portal",
+      "key": "D02",
+      "name": "Descubrimiento D02",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "D03",
+      "territory": "Chile",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "type": "portal",
+      "key": "D03",
+      "name": "Descubrimiento D03",
+      "inventory": "main-discovery"
+    },
+    {
+      "id": "S01",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/omil.angol.5/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S01",
+      "name": "Referencia social S01",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S02",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.instagram.com/omilangol2026/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S02",
+      "name": "Referencia social S02",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S03",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S03",
+      "name": "Referencia social S03",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S04",
+      "work_cities": [
+        "Collipulli",
+        "Mininco"
+      ],
+      "url": "https://www.facebook.com/MunicipioCollipulli/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S04",
+      "name": "Referencia social S04",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S05",
+      "work_cities": [
+        "Ercilla"
+      ],
+      "url": "https://www.facebook.com/municipio.ercilla/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S05",
+      "name": "Referencia social S05",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S06",
+      "work_cities": [
+        "Renaico"
+      ],
+      "url": "https://www.facebook.com/p/OMIL-Renaico-100068789023921/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S06",
+      "name": "Referencia social S06",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S07",
+      "work_cities": [
+        "Renaico"
+      ],
+      "url": "https://www.facebook.com/municipalidadrenaico/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S07",
+      "name": "Referencia social S07",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S08",
+      "work_cities": [
+        "Los Sauces"
+      ],
+      "url": "https://www.facebook.com/MuniLosSauces/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S08",
+      "name": "Referencia social S08",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S09",
+      "work_cities": [
+        "Purén"
+      ],
+      "url": "https://www.facebook.com/omilpurenaraucania/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S09",
+      "name": "Referencia social S09",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S10",
+      "work_cities": [
+        "Purén"
+      ],
+      "url": "https://www.facebook.com/MunicipalidadDePuren/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S10",
+      "name": "Referencia social S10",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S11",
+      "work_cities": [
+        "Traiguén"
+      ],
+      "url": "https://www.facebook.com/omil.traiguen.5/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S11",
+      "name": "Referencia social S11",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S12",
+      "work_cities": [
+        "Lumaco"
+      ],
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S12",
+      "name": "Referencia social S12",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S13",
+      "work_cities": [
+        "Nacimiento"
+      ],
+      "url": "https://www.facebook.com/p/OMIL-Municipalidad-de-Nacimiento-100072332712701/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S13",
+      "name": "Referencia social S13",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S14",
+      "work_cities": [
+        "Nacimiento"
+      ],
+      "url": "https://www.facebook.com/MunicipalidadDeNacimiento/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S14",
+      "name": "Referencia social S14",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S15",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.facebook.com/NegreteOmil/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S15",
+      "name": "Referencia social S15",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S16",
+      "work_cities": [
+        "Negrete"
+      ],
+      "url": "https://www.facebook.com/MuniNegreteCL/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S16",
+      "name": "Referencia social S16",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S17",
+      "work_cities": [
+        "Mulchén"
+      ],
+      "url": "https://www.facebook.com/munimulchen/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S17",
+      "name": "Referencia social S17",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S18",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.facebook.com/omil.victoria/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S18",
+      "name": "Referencia social S18",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S19",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.instagram.com/omil_victoria/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S19",
+      "name": "Referencia social S19",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S20",
+      "work_cities": [
+        "Victoria"
+      ],
+      "url": "https://www.facebook.com/victoriachile/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S20",
+      "name": "Referencia social S20",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S21",
+      "work_cities": [
+        "Malleco"
+      ],
+      "url": "https://www.facebook.com/RadioNativaCl/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S21",
+      "name": "Referencia social S21",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S22",
+      "work_cities": [
+        "Los Sauces"
+      ],
+      "url": "https://www.facebook.com/Canal8LosSaucesTV/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S22",
+      "name": "Referencia social S22",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S23",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/groups/6118694138210991/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S23",
+      "name": "Referencia social S23",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S24",
+      "work_cities": [
+        "Angol"
+      ],
+      "url": "https://www.facebook.com/groups/empleosenangol.arau/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S24",
+      "name": "Referencia social S24",
+      "inventory": "main-social",
+      "manualOnly": true
+    },
+    {
+      "id": "S25",
+      "work_cities": [
+        "Nacimiento",
+        "Negrete"
+      ],
+      "url": "https://www.facebook.com/p/OMIL-Territorio-Biobio-Centro-100072292644529/",
+      "mode": "manual_or_authorized_api_only",
+      "key": "S25",
+      "name": "Referencia social S25",
+      "inventory": "main-social",
+      "manualOnly": true
+    }
+  ]
+}

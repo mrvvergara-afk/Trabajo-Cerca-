@@ -1,4 +1,5 @@
 import { db } from '@appdeploy/sdk';
+import { PRIMARY_PLACES } from '../shared/territories';
 import { createHash, createPublicKey, verify, type JsonWebKey } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
 import { publicSourceAdapter, safePublicUrl, samePublicJob, publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
@@ -46,7 +47,7 @@ const PRODUCER_REFS = new Set(['refs/heads/repair/radar-audit-2026-10-11','refs/
 const AUDIENCE = 'urn:trabajo-cerca:lab:' + REPOSITORY_ID + ':';
 const STATE_TABLE = 'radar_external_pull_state';
 const MAX_AGE = 86400000;
-const PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Quilaco','Victoria'];
+const PLACES:string[] = [...PRIMARY_PLACES];
 
 class BatchRejected extends Error {}
 class GitHubTransportError extends Error {}

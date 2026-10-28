@@ -1,6 +1,8 @@
 import { db } from '@appdeploy/sdk';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
+import { recordCandidate } from './radar-trace';
+import { listingFingerprints } from './offer-identity';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -13,11 +15,12 @@ type Summary = {
   totalProvisionalJobOffers:number; communeStats:Record<string, Counts>;
   kindStats:Omit<Counts, 'newJobs24h' | 'newJobs7d'>;
 };
-type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; first:Order; last:Order; refreshAt:number | null; summary:Summary; projectionRevision?:string };
+type PageRef = { id:string; keys:string[]; identities?:Array<string | null>; semanticKeys?:string[]; first:Order; last:Order; refreshAt:number | null; summary:Summary; projectionRevision?:string };
 type Manifest = Summary & { schema:2; updatedAt:string; pages:PageRef[]; pageCount:number };
 type Build = Manifest & { source:FeedSource | 'complete'; nextToken?:string };
 type Change = { source:FeedSource; sourceId:string; queuedAt:string };
-type Control = Stored & { manifestId?:string };
+type Control = Stored & { manifestId?:string; previousManifestId?:string };
+type Lease = { owner:string; expiresAt:number };
 type Projector = {
   revision?:string;
   reconcileManifestId?:string;
@@ -69,8 +72,41 @@ function chunks<T>(values:T[], envelope:(items:T[]) => unknown) {
   return result;
 }
 
-async function single<T>(table:string) {
-  return (await db.list<T>(table, { limit:1 })).items[0];
+async function single<T>(table:string):Promise<(T & {id:string})|undefined> {
+  if (table==='public_feed_control') {
+    const [registry]=await db.get<{controlId:string}>('public_feed_pointer_registry',['current'],{consistent:true});
+    if(registry?.controlId){
+      const [record]=await db.get<Stored>(table,[registry.controlId],{consistent:true});
+      if(record)return {...record,id:registry.controlId} as unknown as T & {id:string};
+    }
+    const [fixed]=await db.get<Stored>(table,['current'],{consistent:true});
+    if (fixed) return {...fixed,id:'current'} as unknown as T & {id:string};
+    const rows=await db.list<Stored>(table,{limit:2});
+    if (rows.items.length>1) throw new Error('Conflicting public feed pointers; reconciliation required');
+    const legacy=rows.items[0];
+    if (!legacy) return undefined;
+    const [record]=await db.get<Stored>(table,[legacy.id],{consistent:true});
+    return record ? {...record,id:legacy.id} as unknown as T & {id:string} : undefined;
+  }
+  return (await db.list<T>(table, { limit:1 })).items[0] as (T & {id:string})|undefined;
+}
+
+async function acquireFeedLease():Promise<Lease|null> {
+  const owner=randomUUID(),expiresAt=Date.now()+90000;
+  const [existing]=await db.get<Lease>('public_feed_writer',['writer'],{consistent:true});
+  if (!existing) {
+    const [id]=await db.tx.add('public_feed_writer',[{id:'writer',owner,expiresAt}]);
+    return id?{owner,expiresAt}:null;
+  }
+  if (existing.expiresAt>Date.now()) return null;
+  const [ok]=await db.tx.update('public_feed_writer',[{id:'writer',
+    if:{owner:existing.owner,expiresAt:existing.expiresAt},record:{owner,expiresAt}}],{patch:true});
+  return ok?{owner,expiresAt}:null;
+}
+
+async function assertFeedLease(lease:Lease) {
+  const [current]=await db.get<Lease>('public_feed_writer',['writer'],{consistent:true});
+  if (!current || current.owner!==lease.owner || current.expiresAt<=Date.now()) throw new Error('Public feed writer lease lost; checkpoint retained');
 }
 
 async function replaceSingle(table:string, record:Stored) {
@@ -83,6 +119,18 @@ async function replaceSingle(table:string, record:Stored) {
     const [id] = await db.add(table, [record]);
     if (!id) throw new Error('Public feed pointer/checkpoint insert failed: ' + table);
   }
+}
+
+async function persistBuild(record:Stored,lease:Lease) {
+  checkSize(record);
+  await assertFeedLease(lease);
+  const current=await single<Stored>('public_feed_build_state');
+  const gate=db.tx.update('public_feed_writer',[{id:'writer',
+    if:{owner:lease.owner,expiresAt:lease.expiresAt},record:{expiresAt:lease.expiresAt}}],{patch:true});
+  const write=current
+    ? db.tx.update('public_feed_build_state',[{id:current.id,record}])
+    : db.tx.add('public_feed_build_state',[{id:'current',...record}]);
+  await db.transact([gate,write]);
 }
 
 async function queueChanges(source:string, ids:string[]) {
@@ -107,7 +155,7 @@ async function reconcileFeedEquivalents(projector:Projector) {
   if (!projector.reconcileManifestId || !projector.revision) return;
   const saved=await single<Stored>('public_feed_identity_policy');
   if (saved?.revision===projector.revision && saved?.baselineManifestId===projector.reconcileManifestId) return;
-  const [baseline]=await db.get<Manifest>('public_feed_manifests',[projector.reconcileManifestId]);
+  const [baseline]=await db.get<Manifest>('public_feed_manifests',[projector.reconcileManifestId],{consistent:true});
   if (!baseline || baseline.pages.length>20 || baseline.pages.reduce((count,page)=>count+page.keys.length,0)>800) throw new Error('Identity reconciliation baseline unavailable or oversized');
   const groups=new Map<string,Entry[]>();
   for (const ref of baseline.pages) {
@@ -245,7 +293,7 @@ class Editor {
   private async entries(ref:PageRef) {
     let entries = this.cache.get(ref);
     if (!entries) {
-      const [page] = await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id]);
+      const [page] = await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id],{consistent:true});
       if (!page) throw new Error('Public feed page missing; previous feed retained');
       entries = page.entries.map(entry => ({ ...entry, projectionRevision:entry.projectionRevision ?? ref.projectionRevision }));
       this.cache.set(ref, entries);
@@ -256,6 +304,7 @@ class Editor {
   private set(ref:PageRef, entries:Entry[]) {
     ref.keys = entries.map(entry => entry.key);
     ref.identities = entries.map(entry => identity(entry.item));
+    ref.semanticKeys = [...new Set(entries.flatMap(entry=>listingFingerprints(entry.item)))];
     if (entries.length) {
       ref.first = order(entries[0]);
       ref.last = order(entries[entries.length - 1]);
@@ -346,6 +395,8 @@ class Editor {
       checkSize(record);
       const [id] = await db.add('public_feed_versions', [record]);
       if (!id) throw new Error('Public feed page insertion failed; previous feed retained');
+      const [durable]=await db.get<{entries:Entry[]}>('public_feed_versions',[id],{consistent:true});
+      if (!durable || durable.entries.length!==entries.length) throw new Error('Public feed page not durable; previous feed retained');
       ref.id = id;
       if (this.projector.revision) {
         if (entries.every(entry => entry.projectionRevision === this.projector.revision)) ref.projectionRevision = this.projector.revision;
@@ -366,28 +417,50 @@ function manifest(pages:PageRef[], now:number):Manifest {
   return record;
 }
 
-async function publish(record:Manifest) {
+async function publish(record:Manifest, lease:Lease) {
   checkSize(record);
-  const [manifestId] = await db.add('public_feed_manifests', [record]);
+  await assertFeedLease(lease);
+  const previous=await single<Control>('public_feed_control');
+  const lastGood=await currentPublicFeedManifest();
+  const [manifestId]=await db.add('public_feed_manifests',[record]);
   if (!manifestId) throw new Error('Public feed manifest insertion failed; previous feed retained');
-  const previous = await single<Control>('public_feed_control');
-  const { id:_id, ...fields } = previous ?? {};
-  const { pages:_pages, ...summary } = record;
-  await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId });
-  return { ...summary, manifestId, rebuilding:false };
+  const [durable]=await db.get<Manifest>('public_feed_manifests',[manifestId],{consistent:true});
+  if (!durable || durable.itemCount!==record.itemCount || durable.pages.length!==record.pages.length) throw new Error('Public feed manifest not durable; previous feed retained');
+  const {id:_id,...fields}=previous??{};
+  const {pages:_pages,...summary}=record;
+  const pointer={...fields,...summary,manifestId,...(lastGood?{previousManifestId:lastGood.manifestId}:{})};
+  const gate=db.tx.update('public_feed_writer',[{id:'writer',if:{owner:lease.owner,expiresAt:lease.expiresAt},record:{expiresAt:lease.expiresAt}}],{patch:true});
+  const write=previous
+    ? db.tx.update('public_feed_control',[{id:previous.id,if:{manifestId:previous.manifestId},record:pointer}])
+    : db.tx.add('public_feed_control',[{id:'current',...pointer}]);
+  const controlId=previous?.id||'current';
+  const [registry]=await db.get<{controlId:string}>('public_feed_pointer_registry',['current'],{consistent:true});
+  const registryWrite=!registry
+    ?db.tx.add('public_feed_pointer_registry',[{id:'current',controlId}])
+    :registry.controlId!==controlId
+      ?db.tx.update('public_feed_pointer_registry',[{id:'current',if:{controlId:registry.controlId},record:{controlId}}],{patch:true})
+      :null;
+  await db.transact(registryWrite?[gate,write,registryWrite]:[gate,write]);
+  const current=await single<Control>('public_feed_control');
+  if (current?.manifestId!==manifestId) throw new Error('Public feed pointer not durable; changes remain pending');
+  return {...summary,manifestId,rebuilding:false};
 }
 
 export async function readPublicFeedSummary() {
-  const current = await single<Control>('public_feed_control');
-  return { ...emptySummary(), ...current, rebuilding:!current?.manifestId };
+  const snapshot=await currentPublicFeedManifest();
+  if (!snapshot) return {...emptySummary(),rebuilding:true};
+  const {pages:_pages,...summary}=snapshot.manifest;
+  return {...summary,manifestId:snapshot.manifestId,rebuilding:false,usingLastGood:snapshot.degraded};
 }
 
 export async function currentPublicFeedManifest() {
-  const current = await single<Control>('public_feed_control');
+  const current=await single<Control>('public_feed_control');
   if (!current?.manifestId) return null;
-  const [record] = await db.get<Manifest>('public_feed_manifests', [current.manifestId]);
-  if (!record) throw new Error('Public feed manifest missing');
-  return { manifestId:current.manifestId, manifest:record };
+  for (const manifestId of [current.manifestId,current.previousManifestId].filter((x):x is string=>Boolean(x))) {
+    const [record]=await db.get<Manifest>('public_feed_manifests',[manifestId],{consistent:true});
+    if (record) return {manifestId,manifest:record,degraded:manifestId!==current.manifestId};
+  }
+  throw new Error('Public feed manifest and last good snapshot unavailable');
 }
 
 export async function publicFeedProgress() {
@@ -412,12 +485,22 @@ export async function readStagedPublicFeedPage() {
   if(!leaf)return null;
   const items=leaf.entries.map(entry=>entry.item);
   return {...emptySummary(),...staged,totalItems:items.length,items,
-    hasMore:false,feedRebuilding:true,degraded:true,pages:undefined,
+    hasMore:false,complete:false,feedState:'initial_partial',feedRebuilding:true,degraded:true,pages:undefined,
     nextToken:undefined,pageCount:undefined};
 }
 
-// Single scheduled writer: the existing verify-publish cron. Other handlers only read the summary.
+// All callers share the same fenced lease, including overlapping scheduled handlers.
 export async function advancePublicFeed(projector:Projector) {
+  const lease=await acquireFeedLease();
+  if (!lease) return {...await readPublicFeedSummary(),writerBusy:true};
+  try {
+    return await advancePublicFeedLocked(projector,lease);
+  } finally {
+    // Preserve the fencing record. A previous invocation cannot release a new owner.
+    await db.tx.update('public_feed_writer',[{id:'writer',if:{owner:lease.owner},record:{expiresAt:0}}],{patch:true});
+  }
+}
+async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
   const now = Date.now();
   const control = await single<Control>('public_feed_control');
   if (!control?.manifestId) {
@@ -427,28 +510,32 @@ export async function advancePublicFeed(projector:Projector) {
     if (legacy) {
       const editor = new Editor(build.pages, projector, now);
       await editor.upgrade(legacy);
-      await replaceSingle('public_feed_build_state', { ...build, ...manifest(await editor.persist(), now) });
+      await assertFeedLease(lease);
+      await persistBuild({ ...build, ...manifest(await editor.persist(), now) },lease);
       return { ...await readPublicFeedSummary(), rebuilding:true, buildSource:build.source };
     }
-    if (build.source === 'complete') return publish(manifest(build.pages, now));
+    if (build.source === 'complete') return publish(manifest(build.pages, now),lease);
     const rows = await db.list<Stored>(build.source, { limit:STEP_SIZE, ...(build.nextToken ? { nextToken:build.nextToken } : {}) });
     const editor = new Editor(build.pages, projector, now);
     for (const { id, ...record } of rows.items) await editor.put(build.source, id, record);
     const pages = await editor.persist();
     const source = rows.nextToken ? build.source : build.source === 'radar_jobs' ? 'community_posts' : 'complete';
     const next:Build = { ...manifest(pages, now), source, ...(rows.nextToken ? { nextToken:rows.nextToken } : {}) };
-    await replaceSingle('public_feed_build_state', next as unknown as Stored);
-    return source === 'complete' ? publish(manifest(pages, now)) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
+    await assertFeedLease(lease);
+    await persistBuild(next as unknown as Stored,lease);
+    return source === 'complete' ? publish(manifest(pages, now),lease) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
   }
 
-  const [current] = await db.get<Manifest>('public_feed_manifests', [control.manifestId]);
-  if (!current) throw new Error('Public feed manifest missing; previous feed retained');
+  const snapshot=await currentPublicFeedManifest();
+  if (!snapshot) throw new Error('Public feed snapshot unavailable; changes retained');
+  if (snapshot.degraded) return publish(manifest(snapshot.manifest.pages,now),lease);
+  const current=snapshot.manifest;
   await reconcileFeedEquivalents(projector);
   const legacy = current.pages.find(page => !Array.isArray(page.identities));
   if (legacy) {
     const editor = new Editor(current.pages, projector, now);
     await editor.upgrade(legacy);
-    return publish(manifest(await editor.persist(), now));
+    return publish(manifest(await editor.persist(), now),lease);
   }
   const changes = await db.list<Change>('public_feed_changes', { limit:STEP_SIZE });
   // Reproject whole pages up to forty existing records; the cron cadence is unchanged.
@@ -474,14 +561,23 @@ export async function advancePublicFeed(projector:Projector) {
     wanted.set(key, { source:key.slice(0, colon) as FeedSource, sourceId:key.slice(colon + 1) });
   }
   const editor = new Editor(current.pages, projector, now);
+  const publicationChecks:Array<{url:string;key:string;unit?:string}>=[];
   for (const source of new Set([...wanted.values()].map(item => item.source))) {
     const ids = [...wanted.values()].filter(item => item.source === source).map(item => item.sourceId);
     if (!ids.length) continue;
     const records = await db.get<Stored>(source, ids);
     if (records.length !== ids.length) throw new Error('Source read result count mismatch');
-    for (let i = 0; i < ids.length; i++) await editor.put(source, ids[i], records[i]);
+    for (let i = 0; i < ids.length; i++) {
+      await editor.put(source, ids[i], records[i]);
+      const url=records[i]?.url;
+      if (typeof url==='string' && records[i]?.kind==='job_offer') publicationChecks.push({url,key:source+':'+ids[i],...(typeof records[i]?.documentUnitKey==='string'?{unit:records[i]!.documentUnitKey as string}:{})});
+    }
   }
-  const result = await publish(manifest(await editor.persist(), now));
+  const result = await publish(manifest(await editor.persist(), now),lease);
+  for (const check of publicationChecks) {
+    const present=editor.pages.some(page=>page.keys.includes(check.key));
+    await recordCandidate(check.url,{...(check.unit?{documentUnitKey:check.unit}:{}),publication:present?'published':'not_in_current_feed',feedPresent:present,feedManifestId:result.manifestId});
+  }
   // Acknowledge only after the complete immutable manifest and visible pointer are durable.
   if (changes.items.length) {
     const removed = await db.delete('public_feed_changes', changes.items.map(change => change.id));
@@ -492,6 +588,7 @@ export async function advancePublicFeed(projector:Projector) {
 
 export async function readPublicFeedPage(cursor?:string) {
   let manifestId:string | undefined;
+  let usingLastGood=false;
   let page = 0;
   if (cursor?.startsWith('v2:')) {
     const match = /^v2:([A-Za-z0-9_-]{1,128}):(\d+)$/.exec(cursor);
@@ -501,31 +598,37 @@ export async function readPublicFeedPage(cursor?:string) {
   } else {
     if (cursor && !/^\d+$/.test(cursor)) throw new Error('Feed cursor invalid');
     page = Number(cursor || '0');
-    manifestId = (await single<Control>('public_feed_control'))?.manifestId;
+    const snapshot=await currentPublicFeedManifest();
+    manifestId=snapshot?.manifestId;
+    usingLastGood=snapshot?.degraded===true;
   }
   if (!Number.isSafeInteger(page) || page < 0 || page > 10000) throw new Error('Feed cursor invalid');
   if (!manifestId) return (await single<Stored>('public_feed_page_' + page)) ?? null;
-  const [current] = await db.get<Manifest>('public_feed_manifests', [manifestId]);
+  const [current] = await db.get<Manifest>('public_feed_manifests', [manifestId],{consistent:true});
   if (!current) throw new Error('Public feed manifest missing');
   if (page >= Math.max(1, current.pages.length)) throw new Error('Feed cursor invalid');
   const ref = current.pages[page];
-  const [leaf] = ref ? await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id]) : [null];
+  const [leaf] = ref ? await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id],{consistent:true}) : [null];
   if (ref && !leaf) throw new Error('Public feed page missing');
   const { pages:_pages, schema:_schema, itemCount, ...summary } = current;
   const hasMore = page + 1 < current.pages.length;
   return { ...summary, items:leaf?.entries.map(entry => entry.item) ?? [], totalItems:itemCount,
-    pageSize:PAGE_SIZE, hasMore, nextCursor:hasMore ? 'v2:' + manifestId + ':' + (page + 1) : undefined };
+    manifestId, feedState:usingLastGood?'degraded_last_good':'fresh', complete:true, pageSize:PAGE_SIZE, hasMore, nextCursor:hasMore ? 'v2:' + manifestId + ':' + (page + 1) : undefined };
 }
 
 
 // Lookups must use the current public projection, never private source records.
-export async function readPublicFeedItem(id:string) {
+export async function readPublicFeedEntry(id:string) {
   if(!/^[A-Za-z0-9_-]{1,128}$/.test(id))return null;
   const current=await currentPublicFeedManifest();
   if(!current)return null;
   const ref=current.manifest.pages.find(page=>page.keys.some(key=>key.endsWith(':'+id)));
   if(!ref)return null;
-  const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id]);
+  const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id],{consistent:true});
   if(!leaf)throw Error('Public feed page missing');
-  return leaf.entries.find(entry=>entry.sourceId===id)?.item??null;
+  const entry=leaf.entries.find(entry=>entry.sourceId===id);
+  return entry&&allowedSource(entry.source)&&entry.key===entry.source+':'+entry.sourceId?entry:null;
+}
+export async function readPublicFeedItem(id:string) {
+  return (await readPublicFeedEntry(id))?.item??null;
 }

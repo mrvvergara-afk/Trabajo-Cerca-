@@ -22,6 +22,12 @@ const LOCAL_PUBLISHERS:Record<string,string> = {
   'municipalidadquilaco.cl':'Municipalidad de Quilaco',
   'malleco7.cl':'Malleco 7',
   'radionativa.cl':'Radio Nativa',
+  'traiguencity.cl':'Traiguén City',
+  'angolnoticiasnew.cl':'Angol Noticias New',
+  'sence.gob.cl':'SENCE',
+  'radiomininco.cl':'Radio Mininco',
+  'radiodelsur.cl':'Radio del Sur',
+  'radiobarnachea.cl':'Radio Barnachea',
   'cmpc.com':'CMPC',
   'arauco.com':'Arauco',
   'radioviaducto.cl':'Radio Viaducto',
@@ -40,6 +46,7 @@ export function publicPublisher(value:string):{ name:string; host:string; group:
     'linkedin.com':['LinkedIn','linkedin'], 'cl.linkedin.com':['LinkedIn','linkedin'],
     'es.linkedin.com':['LinkedIn','linkedin'],
     'empleospublicos.cl':['Servicio Civil · Empleos Públicos','empleos_publicos'],
+    'kitempleo.cl':['Kit Empleo','kitempleo'],
     'laborum.cl':['Laborum','laborum'], 'opcionempleo.cl':['Opción Empleo','opcionempleo'],
     'chiletrabajos.cl':['Chiletrabajos','chiletrabajos'], 'portal.chiletrabajos.cl':['Chiletrabajos','chiletrabajos'],
     'bne.gob.cl':['Bolsa Nacional de Empleo','bne'], 'bne.cl':['Bolsa Nacional de Empleo','bne'],
@@ -86,6 +93,8 @@ export function publicSourceAdapter(value:string):PublicAdapter | null {
     name = 'LinkedIn'; identityUrl = 'https://www.linkedin.com/jobs/view/'+match[1];
   } else if (host === 'laborum.cl' && (match = url.pathname.match(/^\/empleos\/[^/]+-(\d{5,})\.html\/?$/))) {
     name = 'Laborum'; identityUrl = 'https://www.laborum.cl/empleos/oferta-'+match[1]+'.html';
+  } else if (host==='kitempleo.cl' && (match=url.pathname.match(/^\/empleo\/(\d{5,})\/[^/]+\/?$/))) {
+    name='Kit Empleo';family='aggregator';identityUrl='https://www.kitempleo.cl/empleo/'+match[1];
   } else if (host === 'opcionempleo.cl' && (match = url.pathname.match(/^\/jobad\/([a-z0-9]{12,})(?:\.html)?\/?$/i))) {
     name = 'Opción Empleo'; family = 'aggregator'; identityUrl = 'https://www.opcionempleo.cl/jobad/'+match[1].toLowerCase();
   } else if (host==='jobs.arauco.com' && (match=url.pathname.match(/^\/(?:Chile\/)?job\/(?:[^/]+\/)?(\d{5,})\/?$/i))) {

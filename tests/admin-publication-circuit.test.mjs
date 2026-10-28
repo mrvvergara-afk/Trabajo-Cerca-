@@ -17,7 +17,9 @@ function harness({filler=0}={}){
  const social=module('backend/social-evidence.ts','socialSourceDate',shared);
  const verifier=module('backend/public-source-verifier.ts','evaluatePublicJob',{...shared,...adapters,...social,WORK_PLACES:['Angol','Victoria','Traiguén','Mulchén','Renaico']});
  const pages=new Map();
- const feed=module('backend/public-feed.ts','advancePublicFeed,readPublicFeedPage,readPublicFeedItem,currentPublicFeedManifest,registerPublicFeedChange',{...shared,...adapters,queueNotificationOffers:async()=>{}});
+ const fingerprint=module('backend/offer-identity.ts','offerFingerprint,listingFingerprints',shared);
+ const trace=module('backend/radar-trace.ts','rememberCandidates,recordCandidate,recordVerification',{...shared,...adapters});
+ const feed=module('backend/public-feed.ts','advancePublicFeed,readPublicFeedPage,readPublicFeedItem,currentPublicFeedManifest,registerPublicFeedChange',{...shared,...adapters,...fingerprint,...trace,queueNotificationOffers:async()=>{}});
  const check=module('backend/radar-review-check.ts','checkOneReview',{...shared,...adapters,...verifier,...feed,fetchPublicPage:async url=>{http.push(url);return pages.get(url)||{url,status:0,raw:'',error:'source_timeout'};}});
  const retention=module('backend/offer-retention.ts','offerRetentionReason,offerRecheckDue',shared);
  const queue=module('backend/radar-review-queue.ts','enqueueAdminReviewedOffer,readAdminReviewPublicationStatus,reviewPublicationReader,ADMIN_VERIFICATION_QUEUE,stageAdminReviewVerification',{...shared,...check,...feed,...retention,...adapters});

@@ -976,7 +976,7 @@ function App() {
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [feedSummary, setFeedSummary] = useState<FeedSummary>({ totalItems:0, totalJobOffers:0, totalVerifiedJobOffers:0, totalProvisionalJobOffers:0, communeStats:{}, kindStats:{ jobs:0, people:0, needs:0, services:0 } });
   const [loadError, setLoadError] = useState('');
-  const [feedState, setFeedState] = useState<'fresh'|'degraded_last_good'|'authoritative_empty'>('fresh');
+  const [feedState, setFeedState] = useState<'fresh'|'degraded_last_good'|'authoritative_empty'|'initial_partial'>('fresh');
   const queryParams = new URLSearchParams(window.location.search);
   const requestedPlace = queryParams.get('place') || '';
   const initialPlace = [...places, ...travelPlaces].includes(requestedPlace) ? requestedPlace : 'Todas';
@@ -1099,15 +1099,18 @@ function App() {
       }
       if(generation!==requestGeneration.current)return;
       const incoming = response.data.items as Listing[];
-      if (!append && incoming.length===0 && response.data.feedState==='degraded_last_good') {
+      const partial=response.data.complete===false || response.data.degraded===true;
+      if (!append && incoming.length===0 && (partial || response.data.feedState==='degraded_last_good')) {
         // Do not erase already loaded verified jobs when the server is rebuilding its manifest.
-        setFeedState('degraded_last_good');
-        setNotice('El inventario se está reconstruyendo. Se conservan las ofertas cargadas anteriormente.');
+        setFeedComplete(false);
+        setFeedState(items.length?'degraded_last_good':'initial_partial');
+        if (!items.length) setLoadError('El catálogo todavía no tiene una copia completa disponible. Reintenta en unos momentos.');
+        setNotice(items.length?'El inventario se está reconstruyendo. Se conservan las ofertas cargadas anteriormente.':'El inventario se está reconstruyendo; la lectura todavía está incompleta.');
         return;
       }
       setFeedUpdatedAt(typeof response.data.updatedAt==='string'?response.data.updatedAt:null);
-      setFeedComplete(!response.data.nextCursor);
-      setFeedState((response.data.feedState || (Number(response.data.totalVerifiedJobOffers ?? 0) === 0 ? 'authoritative_empty' : 'fresh')) as 'fresh'|'degraded_last_good'|'authoritative_empty');
+      setFeedComplete(!response.data.nextCursor && !partial);
+      setFeedState((partial?'initial_partial':response.data.feedState || (Number(response.data.totalVerifiedJobOffers ?? 0) === 0 ? 'authoritative_empty' : 'fresh')) as 'fresh'|'degraded_last_good'|'authoritative_empty'|'initial_partial');
       if (false && !append && !fresh && Number(response.data.totalVerifiedJobOffers ?? 0) === 0) {
         const today = new Date().toISOString().slice(0, 10);
         if (localStorage.getItem('trabajo-cerca-empty-recovery-v3') !== today) {
@@ -1123,13 +1126,14 @@ function App() {
         }
       }
       setItems(current => {
+        if (partial && current.length) return current;
         if (!append) return [...new Map(incoming.map(item=>[item.id,item])).values()];
         const merged = new Map<string, Listing>(current.map(item => [item.id, item]));
         for (const item of incoming) merged.set(item.id, item);
         return [...merged.values()];
       });
       setNextCursor(response.data.nextCursor ?? null);
-      setFeedSummary({
+      setFeedSummary(current => partial && current.totalItems>0 ? current : ({
         totalItems:Number(response.data.totalItems ?? incoming.length),
         recentJobOffers7d:typeof response.data.recentJobOffers7d==='number' ? response.data.recentJobOffers7d : undefined,
         recentJobOffers24h:typeof response.data.recentJobOffers24h==='number' ? response.data.recentJobOffers24h : undefined,
@@ -1138,7 +1142,7 @@ function App() {
         totalProvisionalJobOffers:Number(response.data.totalProvisionalJobOffers ?? incoming.filter(item => item.kind === 'job_offer' && item.review).length),
         communeStats:(response.data.communeStats ?? {}) as Record<string, CommuneStat>,
         kindStats:response.data.kindStats ?? { jobs:0, people:0, needs:0, services:0 },
-      });
+      }));
     } catch {
       if(generation!==requestGeneration.current)return;
       setLoadError('No pudimos cargar el Radar central. Intenta nuevamente.');
@@ -1444,7 +1448,7 @@ function App() {
           <label><MapPin aria-hidden='true'/><span>Comuna:</span><select aria-label='Localidad del radar' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select><button type='button' onClick={()=>{setAdvancedFiltersOpen(value=>!value);document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}>Ajustar <SlidersHorizontal aria-hidden='true'/></button></label>
         </section>
         {advertising.selections.search?.type==='COMMERCIAL'&&renderAdvertising('search')}
-        {feedState==='degraded_last_good'&&<p className='tcResultStatus' role='status'>Mostrando el último catálogo disponible. Actualización pendiente.</p>}
+        {(feedState==='degraded_last_good'||feedState==='initial_partial')&&<p className='tcResultStatus' role='status'>{feedState==='initial_partial'?'El catálogo está incompleto; los conteos aún no son definitivos.':'Mostrando el último catálogo disponible. Actualización pendiente.'}</p>}
         {notice && !flow && !showAdvertiser && <div className='neoNotice'><CheckCircle /><span>{notice}</span><button onClick={() => setNotice('')}><X /></button></div>}
 
         <section className='neoDiscover' id='neo-jobs' tabIndex={-1} aria-labelledby='tc-results-title' aria-busy={loading||loadingMore}>

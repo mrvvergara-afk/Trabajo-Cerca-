@@ -1,10 +1,12 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
-import { publicPublisher, publicSourceAdapter, safePublicUrl } from './public-source-adapters';
+import { publicPublisher, publicSourceAdapter, publicOfferIdentity, safePublicUrl, samePublicJob } from './public-source-adapters';
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
+import { assertDistinctPublicOffer, PublicationReviewRequired } from './publication-preflight';
 import { shadowEvaluate } from './shadow-radar';
+import { rememberCandidates, recordCandidate, recordVerification, recoverCandidatePage } from './radar-trace';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal'; discoveryPriority?:'secondary' };
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
@@ -36,6 +38,14 @@ export function publicDocumentUrl(value:string) {
     (!url.searchParams.has('Itemid') || /^[1-9]\d{0,8}$/.test(url.searchParams.get('Itemid') || ''));
 }
 
+function discoveryUrl(value:string,origin:string) {
+  const clean=safePublicUrl(value,origin);
+  if (!clean) return null;
+  const owner=publicPublisher(clean),parent=publicPublisher(origin);
+  return clean.startsWith('http:')&&origin.startsWith('https:')&&owner&&parent&&owner.group===parent.group
+    ?safePublicUrl('https:'+clean.slice(5)):clean;
+}
+
 export function publicPageLinks(raw:string, origin:string) {
   const candidates = new Map<string,string>(), archives = new Set<string>();
   raw=raw.replace(/<(nav|header|footer)\b[^>]*>[\s\S]*?<\/\1>/gi,'');
@@ -49,7 +59,7 @@ export function publicPageLinks(raw:string, origin:string) {
     const entry=value as Record<string,unknown>;
     if (['JobPosting','ListItem'].includes(String(entry['@type']))) {
       const target=typeof entry.url==='string' ? entry.url : typeof entry.item==='string' ? entry.item : null;
-      const url=target ? safePublicUrl(target,origin) : null,adapter=url?publicSourceAdapter(url):null;
+      const url=target ? discoveryUrl(target,origin) : null,adapter=url?publicSourceAdapter(url):null;
       if (url && adapter && publicPublisher(url)?.group===publicPublisher(origin)?.group) candidates.set(url,String(entry.title || entry.name || '').slice(0,200));
     }
     for(const child of Object.values(entry))visit(child,depth+1);
@@ -61,11 +71,11 @@ export function publicPageLinks(raw:string, origin:string) {
   if (/^\s*<\?xml|<rss\b|<feed\b/i.test(raw)) for(const entry of raw.matchAll(/<(?:item|entry)\b[^>]*>([\s\S]*?)<\/(?:item|entry)>/gi)) {
     const title=publicText((entry[1].match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '').replace(/<!\[CDATA\[|\]\]>/g,''));
     const target=entry[1].match(/<link[^>]*>([^<]+)<\/link>/i)?.[1] || entry[1].match(/<link\b[^>]*href=["']([^"']+)/i)?.[1];
-    const url=target?safePublicUrl(target.replace(/&amp;/g,'&'),origin):null;
+    const url=target?discoveryUrl(target.replace(/&amp;/g,'&'),origin):null;
     if(url && publicSourceAdapter(url)?.family==='local' && publicPublisher(url)?.group===publicPublisher(origin)?.group && /oferta|vacante|empleo|concurso|postul/i.test(title+' '+url)) candidates.set(url,title.slice(0,200));
   }
   for (const anchor of raw.matchAll(/<a\b([^>]*)href\s*=\s*["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi)) {
-    const url = safePublicUrl(anchor[2].replace(/&amp;/g,'&'),origin);
+    const url = discoveryUrl(anchor[2].replace(/&amp;/g,'&'),origin);
     if (!url) continue;
     const alt = [...anchor[4].matchAll(/\balt=["']([^"']+)["']/gi)].map(match => match[1]).join(' ');
     const title = publicText(anchor[4]+' '+alt);
@@ -83,21 +93,29 @@ export function publicPageLinks(raw:string, origin:string) {
   if (publicSourceAdapter(origin)?.family==='local') {
     for (const embed of raw.matchAll(/<(?:iframe|embed|object)\b[^>]*>/gi)) {
       for (const attribute of embed[0].matchAll(/\b(?:src|data-emsrc|data-src|data)\s*=\s*["']([^"']+)["']/gi)) {
-        const url=safePublicUrl(attribute[1].replace(/&amp;/g,'&'),origin);
+        const url=discoveryUrl(attribute[1].replace(/&amp;/g,'&'),origin);
         if (url && /\.pdf(?:[?#]|$)/i.test(url) && publicPublisher(url)?.group===publicPublisher(origin)?.group) {
           candidates.set(url,'Documento PDF de la publicación municipal');
         }
       }
     }
   }
-  if (publicSourceAdapter(origin)?.family==='local' && /ofertas? laboral|vacantes?|se (?:busca|necesita|requiere)|postulaciones?/i.test(publicText(raw))) {
-    for (const image of raw.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)) {
-      const url=safePublicUrl(image[1].replace(/&amp;/g,'&'),origin);
+  const articles=[...raw.matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/gi)];
+  const imageScope=articles.length===1?articles[0][1]:articles.length>1?'':raw.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]||'';
+  const imageHiring=/ofertas? laboral|vacantes?|se (?:busca|necesita|requiere)|convocatoria laboral/i.test(publicText(imageScope));
+  if (publicSourceAdapter(origin)?.family==='local' && imageHiring) {
+    for (const image of imageScope.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)) {
+      const url=discoveryUrl(image[1].replace(/&amp;/g,'&'),origin);
       if (url && publicPublisher(url)?.group===publicPublisher(origin)?.group && /\.(?:png|jpe?g|webp)(?:[?#]|$)/i.test(url) &&
           !/logo|banner|icon|slider|cropped|avatar|favicon/i.test(url)) candidates.set(url,'Imagen de la publicación laboral');
     }
   }
-  return { candidates:[...candidates].slice(0,40).map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };
+  // A portal's individual detail page is not another search index.
+  // Recommendation widgets otherwise expand the crawl into unrelated national jobs.
+  if (publicSourceAdapter(origin)?.family==='portal') {
+    return {candidates:[...candidates].filter(([url])=>samePublicJob(origin,url)).map(([url,title])=>({url,title})),archives:[]};
+  }
+  return { candidates:[...candidates].map(([url,title]) => ({ url,title })),archives:[...archives] };
 }
 
 export function publicRenderRequired(raw:string) {
@@ -193,20 +211,27 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
     tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,
     createdAt:new Date(now).toISOString(),discoveredBy:'free-public-sources-v1',
-    secondaryMarket:['Los Ángeles','Temuco'].includes(offer.work_commune),
+    secondaryMarket:['Los Ángeles','Temuco','Concepción','Chillán'].includes(offer.work_commune),
     verificationCheckedAt:new Date(now).toISOString(),verifiedAt:new Date(now).toISOString(),
     verificationMethod:offer.verification_method,verificationReason:offer.reason };
 }
 
 export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date.now()) {
+  await assertDistinctPublicOffer(offer);
   const adapter = publicSourceAdapter(offer.url || '');
   if (!adapter || adapter.family==='aggregator') throw new Error('Unconfirmed offer identity');
-  const identity = hash(adapter.identityUrl), table = 'radar_external_'+identity.slice(0,32);
+  const unit=offer.document_unit_key;
+  if (unit && offer.document_unit_verified!==true) throw new Error('Document unit evidence not verified');
+  const canonical=publicOfferIdentity(offer.url!,unit);
+  if (!canonical) throw new Error('Invalid offer unit identity');
+  const identity = hash(canonical), table = 'radar_external_'+identity.slice(0,32);
   const previous = (await db.list<Stored>(table,{ limit:2 })).items;
   if (previous.length>1 || previous[0] && previous[0].externalIdentity!==identity) throw new Error('Public identity conflict; preserve history');
   const old = previous[0], { id:_id,...fields } = old || {};
   const record = { ...fields,...verifiedPublicRecord(offer,now),createdAt:old?.createdAt || new Date(now).toISOString(),
-    externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString() };
+    externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString(),
+    firstVerifiedAt:old?.firstVerifiedAt||old?.externalVerifiedAt||new Date(now).toISOString(),
+    ...(unit?{documentUnitKey:unit,documentUnitVerified:true}:{}) };
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;
   if (id) {
@@ -217,8 +242,11 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
     if (!created) throw new Error('Public offer already exists; reconcile before advancing');
     id = created;
   }
+  // Retain storage identity even if feed registration fails; a later retry re-registers it.
+  await recordCandidate(offer.url!,{...(unit?{documentUnitKey:unit}:{}),publication:'stored',sourceTable:table,sourceId:id,dedupIdentity:identity,state:'verified',reason:offer.reason},now);
   await registerPublicFeedChange(table,id);
-  return { table,id,url:offer.url };
+  await recordCandidate(offer.url!,{...(unit?{documentUnitKey:unit}:{}),publication:'queued_for_feed',feedPresent:false},now);
+  return { table,id,url:offer.url,created:!old };
 }
 
 async function closeKnownOffer(url:string,result:PublicVerification,page:{url:string;status:number;raw:string},now:number) {
@@ -241,6 +269,16 @@ async function closeKnownOffer(url:string,result:PublicVerification,page:{url:st
   return {id,table,reason:result.reason};
 }
 
+// Give new, explicitly reviewed source URLs one normal verification attempt.
+// Stored job fields are always extracted again; this never inserts a static offer.
+export async function nextBootstrapSource(sources:FreeSource[]) {
+  for(const source of sources.filter(x=>x.bootstrap).slice(0,3)) {
+    const [seed]=await db.get<Stored>(SEEDS,[hash(source.key)],{consistent:true});
+    if(!seed)return source;
+  }
+  return undefined;
+}
+
 export async function runFreePublicSources(sources:FreeSource[], requestId:string, now=Date.now()) {
   if (!/^[A-Za-z0-9_-]{12,128}$/.test(requestId)) throw new Error('Invalid public scan request ID');
   const receiptId = hash(requestId);
@@ -260,6 +298,11 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     if (!state.documentPending.some(item=>item.url===candidate.url) && state.documentPending.length<180) state.documentPending.push(candidate);
   }
   state.pending=state.pending.filter(item=>!publicDocumentUrl(item.url));
+  for (const recovered of await recoverCandidatePage(now)) {
+    const target=publicDocumentUrl(recovered.url)?state.documentPending:state.pending;
+    const cap=publicDocumentUrl(recovered.url)?180:100;
+    if (target.length<cap && !target.some(x=>x.url===recovered.url)) target.push(recovered);
+  }
   const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));
   const documentManagedUrls=new Set<string>();
   // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.
@@ -288,7 +331,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   const changedSeeds = new Map<string,{ previous:Stored | null; record:Stored }>();
   let reads = 0, roots = 0;
   const started = Date.now();
-  const bootstrapSource=sources.find(source=>source.bootstrap);
+  const bootstrapSource=await nextBootstrapSource(sources);
   const bootstrapState=bootstrapSource ? (await db.get<Stored>(SEEDS,[hash(bootstrapSource.key)],{ consistent:true }))[0] : null;
   const visitedSources=new Set<string>();
   let discoverySlot=0,selectionAttempts=0;
@@ -310,10 +353,12 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       ?.filter(url=>!publicDocumentUrl(url));
     let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];
     if (!queue?.length) { queue=[source.url];seen=[]; }
+    const rootAttempt=Date.parse(String(previousSeed?.rootAttemptedAt||''));
+    if(!Number.isFinite(rootAttempt)||now-rootAttempt>=6*3600000)queue=[source.url,...queue.filter(url=>url!==source.url)];
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
     const audit:Stored = { source:source.name,territory:source.territory,url,http:page.status,
       discoveryGroup:localDiscoverySource(source)?'local':'portal',
-      error:page.error || null,coverageComplete:false,candidates:0 };
+      error:page.error || null,robots:page.robots||null,coverageComplete:false,candidates:0 };
     if (page.status===200 && !page.error) {
       const links = publicPageLinks(page.raw,page.url);
       if (publicRenderRequired(page.raw)) {
@@ -324,7 +369,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         }
       }
       if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });
-      audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));
+      await rememberCandidates(links.candidates.map(item=>({url:item.url,title:item.title,source:source.name,publisherPage:page.url})),now);
+      audit.candidateEvidence=links.candidates.slice(0,40).map(item=>({ url:item.url,title:item.title }));
+      audit.retainedCandidateCount=links.candidates.length;
       for (const item of links.candidates) if (!seenPending.has(item.url)) {
         if (onboarding && state.priorityCandidates.length<3) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url });
         else if (publicDocumentUrl(item.url) && state.documentPending.length<180) state.documentPending.push({url:item.url,source:source.name,publisherPage:page.url});
@@ -335,12 +382,12 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       seen = [...new Set([...seen,url])].slice(-64);
       queue = [...new Set([...queue.slice(1),...links.archives,...links.candidates.filter(item => publicSourceAdapter(item.url)?.family==='local' &&
         !publicDocumentUrl(item.url)).map(item => item.url)])]
-        .filter(item => !seen.includes(item)).slice(0,30);
+        .filter(item => !seen.includes(item));
       audit.candidates = links.candidates.length;
     }
-    const restricted=Boolean(page.error && /robots|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;
-    const seed = { id:seedId,key:source.key,queue,seen,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
-      lastError:audit.error || (page.status>=400?'HTTP '+page.status:null),nextAllowedAt:restricted ? new Date(now+12*3600000).toISOString() : null };
+    const restricted=Boolean(page.error && /robots_disallowed|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;
+    const seed = { id:seedId,key:source.key,queue,seen,rootAttemptedAt:url===source.url?new Date(now).toISOString():previousSeed?.rootAttemptedAt||null,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
+      lastError:audit.error || (page.status>=400?'HTTP '+page.status:null),nextAllowedAt:restricted ? new Date(now+12*3600000).toISOString() : page.robots?.nextRetryAt||null };
     if (Buffer.byteLength(JSON.stringify(seed))>230*1024) throw new Error('Source history checkpoint byte budget exceeded');
     changedSeeds.set(seedId,{ previous:previousSeed,record:seed });
     audits.push(audit);if (!onboarding) state.position=(state.position+1)%sources.length;
@@ -362,8 +409,14 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         result = originalPage.error ? { status:'pending',reason:originalPage.error } : evaluatePublicJob(original,originalPage.raw,originalPage.url,originalPage.status,now);
       }
     }
+    await recordVerification(candidate.url,result,page.status,'A',now);
     if (result.status==='verified') {
-      receipts.push(await saveVerifiedPublicOffer(result,now));verified++;
+      try {receipts.push(await saveVerifiedPublicOffer(result,now));verified++;}
+      catch (cause) {
+        if (!(cause instanceof PublicationReviewRequired)) throw cause;
+        result={...result,status:'review_ready',reason:cause.reason};
+        await recordVerification(candidate.url,result,page.status,'A',now);
+      }
       rechecks.set(safePublicUrl(result.url!)!,{ url:safePublicUrl(result.url!)!,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+18*3600000).toISOString() });
     } else if (result.status==='rejected') {
       const closed=await closeKnownOffer(candidate.url,result,page,now);
@@ -372,7 +425,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     } else if (result.status==='pending' && (rechecks.has(candidate.url) || rechecks.size<80)) {
       // Failure to parse/access an offer is not evidence it should be discarded.
       // Keep its URL for a later independent HTTP attempt without blocking the discovery cursor.
-      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+6*3600000).toISOString() });
+      rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:page.robots?.nextRetryAt||new Date(now+6*3600000).toISOString() });
     } else if (rechecks.has(candidate.url)) {
       rechecks.set(candidate.url,{ url:candidate.url,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+24*3600000).toISOString() });
     }
@@ -389,7 +442,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     localSourcesRead:audits.filter(item=>item.discoveryGroup==='local').length,
     portalSourcesRead:audits.filter(item=>item.discoveryGroup==='portal').length,
     documentsManagedSeparately:documentManagedUrls.size,
-    noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,
+    noticesChecked:reviewed.length,verified,stored:receipts.length,
+    newStored:receipts.filter(x=>x.created===true).length,revalidations:receipts.filter(x=>x.created===false).length,
+    published:null,publicationStatus:'awaiting_public_feed_confirmation',providerCalls:0,
     closuresConfirmed:closures.length,closures,sourcesDeferred:audits.filter(item=>item.error==='source_retry_deferred').length,
     pending:state.pending.length,priorityPending:state.priorityCandidates.length,
     documentsAwaitingLocalReader:state.documentPending.length,

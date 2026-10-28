@@ -1,0 +1,89 @@
+{
+  "codeCommit": "272b85e97af068d92e375487d63431e789c5e22e",
+  "run": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/40690376811",
+  "newRegressionTests": {
+    "passed": 20,
+    "failed": 0
+  },
+  "strictTypeScript": {
+    "backend": "pass, SDK reference contract",
+    "frontend": "pass, SDK reference contract"
+  },
+  "build": {
+    "backend": "pass, @appdeploy/sdk and pdfjs external",
+    "frontend": "pass, @appdeploy/client external",
+    "vite": "pass, platform SDK injection still required"
+  },
+  "existing": [
+    {
+      "name": "node-repository",
+      "files": 51,
+      "status": 1,
+      "signal": null,
+      "summary": [
+        "ℹ tests 412",
+        "ℹ pass 409",
+        "ℹ fail 3"
+      ]
+    },
+    {
+      "name": "node-application",
+      "files": 6,
+      "status": 1,
+      "signal": null,
+      "summary": [
+        "ℹ tests 53",
+        "ℹ pass 51",
+        "ℹ fail 2"
+      ]
+    },
+    {
+      "name": "python-repository",
+      "status": 0,
+      "signal": null,
+      "summary": [
+        "Ran 245 tests in 11.147s",
+        "OK"
+      ]
+    }
+  ],
+  "unmodifiedPublishedBaseline": [
+    {
+      "name": "baseline-node-repository",
+      "status": 1,
+      "summary": [
+        "ℹ tests 412",
+        "ℹ pass 394",
+        "ℹ fail 18"
+      ]
+    },
+    {
+      "name": "baseline-node-application",
+      "status": 1,
+      "summary": [
+        "ℹ tests 53",
+        "ℹ pass 47",
+        "ℹ fail 6"
+      ]
+    },
+    {
+      "name": "baseline-python",
+      "status": 0,
+      "summary": [
+        "Ran 245 tests in 12.696s",
+        "OK"
+      ]
+    }
+  ],
+  "remainingDistinctFailures": [
+    "Rotación de campañas pagadas de igual prioridad: expected 2, got 1.",
+    "Retiro de aprobación/derechos de imagen: expected HTTP 200, got 400.",
+    "Retiro/firma de imagen HOUSE: fallo preexistente de publicidad."
+  ],
+  "notes": [
+    "Tres fallos distintos preexistentes de publicidad. Dos aparecen también en la suite de aplicación; no son cinco errores distintos.",
+    "backend/house-marketing.ts y shared/commercial-policy no se modificaron respecto de AppDeploy v99.",
+    "El estado verde del workflow no significa que todas las pruebas existentes pasaron: se conservó el resultado no cero de esas suites en el informe.",
+    "Las transacciones reales de escritura del SDK y el circuito fuente→nueva publicación→pantalla están pendientes de aplicación autorizada."
+  ]
+}

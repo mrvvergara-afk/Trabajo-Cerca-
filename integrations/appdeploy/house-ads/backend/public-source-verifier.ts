@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { WORK_PLACES } from '../shared/territories';
 import { socialSourceDate } from './social-evidence';
 import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
 
@@ -19,17 +20,19 @@ export type PublicVerification = {
   verification_method?:string;
   validity_method?:'explicit_deadline' | 'live_application';
   validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
+  document_unit_key?:string;
+  document_unit_verified?:boolean;
   source_date_evidence?:{ date_posted:string; valid_through:string; timezone:string };
 };
 
-const SOURCE_WORK_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Quilaco','Victoria','Los Ángeles','Temuco'];
+const SOURCE_WORK_PLACES = [...WORK_PLACES];
 const sourceFold = (value:unknown) => String(value ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sourceDecode = (value:string) => value.replace(/&(?:amp|quot|apos|lt|gt|nbsp);/g, entity => ({ '&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>','&nbsp;':' ' }[entity] || entity));
 export const publicText = (value:string) => sourceDecode(value.replace(/<[^>]*>/g,' ')).replace(/\s+/g,' ').trim();
 const sourceObject = (value:unknown):value is Data => Boolean(value && typeof value === 'object' && !Array.isArray(value));
 
 // Chiletrabajos publishes civil timestamps without a zone. Only this adapter interprets them in continental Chile.
-function publicJobDate(value:unknown, source:string, endOfDay=false) {
+export function publicJobDate(value:unknown, source:string, endOfDay=false) {
   const explicit = socialSourceDate(value,endOfDay);
   if (explicit) return explicit;
   if (source!=='Chiletrabajos' || typeof value!=='string') return null;
@@ -224,15 +227,19 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   const explicitPlace=descriptionWorksite(job.description);
   const base = { title,company:employer,work_commune:place,work_location_verified:true,url:finalUrl,source:adapter.name,
     ...(explicitPlace.observed ? {work_location_evidence:{method:'explicit_worksite_in_own_job_description',literal:explicitPlace.literal}} : {}) };
+  const titlePlaces=SOURCE_WORK_PLACES.filter(t=>new RegExp('\\b'+sourceFold(t)+'\\b').test(sourceFold(title)));
+  if (titlePlaces.length===1 && titlePlaces[0]!==place) return {...base,
+    status:'review_ready',reason:'title_worksite_conflict',work_location_verified:false};
   const published = publicJobDate(job.datePosted,adapter.name);
   const deadline = job.validThrough ? publicJobDate(job.validThrough,adapter.name,true) : null;
   if (deadline && Date.parse(deadline)<=now) return { ...base,status:'rejected',reason:'expired_deadline' };
   if (!published || Date.parse(published)>now) return { ...base,status:'pending',reason:'source_date_missing_or_future' };
   const dated = { ...base,source_published_at:published };
-  if (!deadline && now-Date.parse(published)>45*86400000) return { ...dated,status:'pending',reason:'source_older_than_45_days' };
+
   if (!/oferta laboral|postul|requisitos|descripci[oó]n del (?:empleo|trabajo)|jornada|vacante|empleo|job|apply/i.test(body)) return { ...dated,status:'pending',reason:'hiring_text_missing' };
   if (job.validThrough && !deadline) return { ...dated,status:'review_ready',reason:'invalid_source_deadline' };
   const form = liveApplicationForm(visible,finalUrl), link = applicationLink(visible,finalUrl);
+  if (!deadline&&now-Date.parse(published)>45*86400000&&!form) return {...dated,status:'pending',reason:'source_older_than_45_days_requires_enabled_application'};
   // An accessible original job page remains a useful application destination even when
   // the application button is loaded dynamically by the portal.
   const application = form || link || (adapter.family==='portal' ? finalUrl : '');

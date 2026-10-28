@@ -20,7 +20,10 @@
       "novedades en ventana móvil de siete días",
       "permanencia hasta cierre real",
       "postulación vinculada al cargo correcto",
-      "fechas conservadas en detalle, sin duplicarlas en tarjetas"
+      "fechas conservadas en detalle, sin duplicarlas en tarjetas",
+      "puntero durable y exclusión de escritores concurrentes",
+      "restauración del último manifiesto válido",
+      "preservación de cambios pendientes ante fallo de confirmación"
     ],
     "description": "Comprueba únicamente la lectura pública existente; no publica avisos ni activa motores o proveedores.",
     "qa_faults": [
@@ -165,7 +168,9 @@
       "GET /api/listings",
       "HTTP 503",
       "error visible",
-      "reintento"
+      "reintento",
+      "complete:false no equivale a inventario vacío confirmado",
+      "conservación de ofertas ya cargadas ante una respuesta parcial"
     ],
     "description": "Comprueba un error simulado de lectura y la acción Reintentar sin tocar el inventario.",
     "qa_faults": [
@@ -262,10 +267,14 @@
       "GET /api/ops/free-public-sources",
       "recolección pública sin proveedores pagos",
       "separación de guardado y publicación",
-      "14 comunas PILOT incluidas en fuentes gratuitas principales",
+      "13 localidades prioritarias incluidas en fuentes gratuitas principales",
       "Victoria se verifica como mercado primario, no secundario",
       "OMIL Victoria, llamados Purén y municipio Ercilla como fuentes públicas gratuitas",
-      "Páginas índice no pasan por oferta individual"
+      "Páginas índice no pasan por oferta individual",
+      "inventario consolidado de 225 URL sin eliminar fuentes",
+      "40 referencias sociales conservadas para lectura manual o API autorizada",
+      "HTML visible sin JobPosting solo con evidencia suficiente",
+      "posible republicación pendiente de revisión, sin borrar cargos distintos"
     ],
     "description": "Comprueba la lectura de capturas ya guardadas y el alcance limitado de la página consultada.",
     "steps": [
@@ -330,7 +339,9 @@
       "Reutilización de comprobación completa por cinco minutos calculados desde completedAt, independientemente de la antigüedad de startedAt",
       "Enviar al verificador retira el permiso visual si el servidor solicita revalidar",
       "Consultar publicación revisa coincidencia exacta de ID en manifiesto público sin falsear éxito durante reconstrucción",
-      "descarga de referencias documentales sin claves ni datos privados"
+      "descarga de referencias documentales sin claves ni datos privados",
+      "GET /api/admin/radar-trace protegido por autenticación y allowlist",
+      "trazabilidad paginada sin exponer candidatos al público"
     ],
     "description": "Comprueba que verificar acceso sin iniciar sesión no otorga permisos ni muestra datos privados.",
     "steps": [

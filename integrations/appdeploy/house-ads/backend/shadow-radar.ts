@@ -44,8 +44,9 @@ export async function shadowEvaluate(input:{url:string;source:string;publisherPa
     baselineReason:baseline.reason,observedAt:new Date(at).toISOString(),shadow:true,
     // Only offers with complete original evidence may be considered publishable.
     eligibleForPublicFeed:stage==='publishable' };
-  const [prev]=await db.get<typeof value>('radar_shadow_b',[id],{consistent:true});
-  const [saved]=prev?await db.tx.update('radar_shadow_b',[{id,record:value}]):await db.tx.add('radar_shadow_b',[value]);
+  const [prev]=await db.get<Record<string,unknown>>('radar_shadow_b',[id],{consistent:true});
+  const record={...value,...(prev?.sourceId&&baseline.status==='verified'?{stage:'stored'}:{})};
+  const [saved]=prev?await db.tx.update('radar_shadow_b',[{id,record}],{patch:true}):await db.tx.add('radar_shadow_b',[record]);
   if(!saved)throw Error('Shadow B evidence not saved');
   return {url,stage,title:value.title,place:value.place,dateEvidence:value.dateEvidence,applicationEvidence:value.applicationEvidence,baselineStatus:baseline.status,reason:baseline.reason};
 }

@@ -1,5 +1,7 @@
 import {processAdminReviewBatch,confirmAdminReviewPublications,isAdminVerificationSlot} from './radar-admin-verification';
 import {withSecurityHeaders} from './security-headers';
+import { COMPLEMENTARY_PLACES } from '../shared/territories';
+import { RADAR_SOURCE_INVENTORY } from '../shared/radar-source-inventory';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
 import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, commercialAdmin, commercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
@@ -9,7 +11,7 @@ import { importReview, listReview, decideReview } from './radar-review-inbox';
 import { checkOneReview } from './radar-review-check';
 import { enqueueAdminReviewedOffer, readAdminReviewPublicationStatus } from './radar-review-queue';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
-import { advancePublicFeed, readPublicFeedPage, readStagedPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
+import { advancePublicFeed, readPublicFeedPage, readStagedPublicFeedPage, readPublicFeedItem, readPublicFeedEntry, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
 import { readLocalSourceEvidence } from './local-source-evidence';
 import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';
@@ -252,8 +254,14 @@ function cleanAnalyticsProperties(input: unknown): Record<string, string | numbe
   return cleaned;
 }
 
-async function relayAnalytics(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
-  if (!SECURITY_POLICY.externalAnalytics) return false;
+async function relayAnalytics(event:string,distinctId:string,properties:Record<string,string|number|boolean>) {
+  if(!SECURITY_POLICY.externalAnalytics)return false;
+  const enabled=await secrets.readSecret('POSTHOG_ENABLE_INGESTION').catch(()=>null);
+  if(enabled!=='free-tier-confirmed')return false;
+  return sendPosthogEvent(event,distinctId,properties);
+}
+
+async function sendPosthogEvent(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
   const response = await fetch('https://us.i.posthog.com/i/v0/e/', {
     method:'POST',
     headers:{ 'content-type':'application/json' },
@@ -270,7 +278,7 @@ const SEED_VERSION = '2026-10-06-v17-live-benchmark';
 const SOURCE_VERSION = '2026-10-06-radar-v17-web-discovery';
 const PILOT = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Nacimiento','Negrete','Mulchén','Los Sauces','Purén','Traiguén','Lumaco','Victoria'];
 const TRAVEL_HUBS = ['Los Ángeles','Temuco','Lautaro'] as const;
-const MARKET_PLACES = [...PILOT, ...TRAVEL_HUBS];
+const MARKET_PLACES = [...PILOT, ...COMPLEMENTARY_PLACES];
 const SOURCE_HUBS = ['Los Ángeles','Temuco','Lautaro','Concepción','Chillán'] as const;
 const CORE_CORRIDORS = {
   mallecoWest:['Angol','Renaico','Collipulli','Mininco','Ercilla'],
@@ -376,6 +384,13 @@ const FREE_PUBLIC_SOURCES:FreeSource[] = (() => {
   result.push({ key:'negrete-feed',name:'Municipalidad de Negrete · novedades',url:'https://www.muninegrete.cl/feed/',territory:'Negrete',discoveryGroup:'local' });
   result.push({ key:'mulchen-feed',name:'Municipalidad de Mulchén · novedades',url:'https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral',territory:'Mulchén',discoveryGroup:'local' });
   result.push({ key:'empleos-publicos',name:'Servicio Civil · Empleos Públicos',url:'https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx',territory:'Chile',discoveryGroup:'portal' });
+  const registered=new Set(result.map(source=>source.url));
+  for (const source of RADAR_SOURCE_INVENTORY) {
+    if (source.manualOnly || registered.has(source.url)) continue;
+    result.push({key:source.key,name:source.name,url:source.url,territory:source.territory,...(source.bootstrap?{bootstrap:true}:{}),
+      ...(['Los Ángeles','Temuco','Concepción','Chillán'].includes(source.territory)?{discoveryPriority:'secondary' as const}:{})});
+    registered.add(source.url);
+  }
   return result;
 })();
 
@@ -652,7 +667,7 @@ function publicRecord<T extends ListingRecord & { id: string }>(item: T) {
   const { ownerToken: _ownerToken, contact, evidenceImagePath: _evidenceImagePath, socialEvidence: _socialEvidence, ...safe } = item;
   const projected={...safe} as Record<string,unknown>;
   for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof','adminVerificationEvidence','adminVerificationAttempt']) delete projected[field];
-  return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) };
+  return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) && projected.contactPublicationConsent!==false };
 }
 
 function cacheable(data: unknown, seconds = 45) {
@@ -838,7 +853,10 @@ async function runNotificationSweep() {
 
 function projectFeedListing(value:Record<string, unknown> & { id:string }) {
   const item=value as unknown as ListingRecord & { id:string };
-  if (item.kind!=='job_offer') return isCurrentlyActive(item) ? publicRecord(item) : null;
+  if (item.kind!=='job_offer') {
+    if(!['worker_available','worker_need','service_request'].includes(item.kind)||item.review===true)return null;
+    return isCurrentlyActive(item)?publicRecord(item):null;
+  }
   if (offerRetentionReason(value)) return null;
   if (publicJobExclusion(value)) return null;
   const projectionPlaces = value.secondaryMarket === true && value.discoveredBy === 'free-public-sources-v1' ? MARKET_PLACES : PILOT;
@@ -854,8 +872,11 @@ function feedRefreshAt(item:Record<string, unknown>) {
   const now=Date.now(),deadline=confirmedOfferDeadline(item);
   const candidates:number[]=[];
   if (deadline!==null) candidates.push(deadline+1);
-  const checked=Date.parse(String(item.lastVerifiedAt || item.externalVerifiedAt || item.verifiedAt || ''));
+  const checks=[item.lastVerifiedAt,item.externalVerifiedAt,item.verifiedAt].map(value=>Date.parse(String(value||''))).filter(Number.isFinite);
+  const checked=checks.length?Math.max(...checks):NaN;
   if (Number.isFinite(checked)) candidates.push(checked+86400000+1);
+  const published=Date.parse(String(item.sourcePublishedAt||''));
+  if(deadline===null&&Number.isFinite(published))candidates.push(published+45*86400000+1);
   const first=Date.parse(String(item.firstPublishedAt || item.createdAt || ''));
   if (Number.isFinite(first)) candidates.push(first+86400000+1,first+7*86400000+1);
   const upcoming=candidates.filter(time=>Number.isFinite(time)&&time>now);
@@ -1376,7 +1397,7 @@ async function enrichRadarCandidates(limit=40) {
   const knownSignatures = new Set(radarJobs.items.map(item => candidateSignature(item.title, item.workCommunes)));
   const selected = candidates.items
     .filter(item => item.active && item.kind === 'candidate' && Boolean(item.url))
-    .filter(item => isSpecificJobResult(item.title, item.url) && !knownUrls.has(item.url))
+    .filter(item => typeof item.url==='string' && isSpecificJobResult(item.title, item.url) && !knownUrls.has(item.url))
     .sort((a,b) => (Date.parse(a.enrichmentCheckedAt || '') || 0) - (Date.parse(b.enrichmentCheckedAt || '') || 0))
     .slice(0, limit);
   const checkedAt = new Date().toISOString();
@@ -2538,7 +2559,7 @@ export const notificationSweepHandler = async () => {
   return { statusCode:200 };
 };
 
-export const v14DirectSourcesHandler = async () => { await finishPublicSweep(); return { statusCode:200 }; };
+export const v14DirectSourcesHandler = async () => { await finishPublicSweep(PILOT); return { statusCode:200 }; };
 export const v14TavilyGapsHandler = async () => { await finishTavilySweep(PILOT, true); return { statusCode:200 }; };
 export const v16TerritorialSourceHandler = async () => {
   const cursorRows=await db.list<{position:number}>('motor3_web_cursor',{limit:1});
@@ -2579,7 +2600,7 @@ export const v17HardWebHandler = async () => {
 export const radarShadowPromotionHandler = async () => {
   const before=await readPublicFeedSummary();
   const results=await publishQualifiedShadowOffers();
-  const feedProjector={ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  const feedProjector={ revision:'radar-integral-v8', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
   let after=await advancePublicFeed(feedProjector);
   for(let step=1;step<4&&after.rebuilding;step++)after=await advancePublicFeed(feedProjector);
   console.warn('RADAR_B_PUBLICATION_RESULT '+JSON.stringify({before:Number(before.totalVerifiedJobOffers||0),after:Number(after.totalVerifiedJobOffers||0),examined:results.examined,results:results.results,rebuilding:after.rebuilding}).slice(0,14000));
@@ -2611,7 +2632,7 @@ export const radarLaunchSmokeHandler = async () => {
       const scan=await runFreePublicSources(FREE_PUBLIC_SOURCES,'launchSmoke20261027ABRealV3');
       const scanResult=scan as Record<string,unknown>;
       const shadowRows=await db.list<Record<string,unknown>>('radar_shadow_b',{limit:200});
-      const shadowCount={publishable:0,recoverable:0,blocked:0,closed:0};
+      const shadowCount={publishable:0,recoverable:0,stored:0,needs_review:0,blocked:0,closed:0};
       for(const row of shadowRows.items){const stage=String(row.stage);if(stage in shadowCount)shadowCount[stage as keyof typeof shadowCount]++;}
       const summary={sourcesRead:Number(scanResult.sourcesRead||0),noticesChecked:Number(scanResult.noticesChecked||0),verified:Number(scanResult.verified||0),pending:Number(scanResult.pending||0),deferred:scanResult.deferred===true,shadowTotal:shadowRows.items.length,shadowCount,reviewed:scanResult.reviewed,shadowReviewed:scanResult.shadowReviewed};
       await db.tx.update('radar_launch_smoke',[{id,record:{phase:'scan_complete',before,scan:summary}}]);
@@ -2730,7 +2751,7 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   const result=providerSlot ? await processPendingOffers(8) : undefined;
   const ingestion=await pullRadarBatch(externalOfferRecord);
   const administrative=isAdminVerificationSlot(event) ? await processAdminReviewBatch({scheduledTime:event!.scheduledTime,project:projectFeedListing}) : undefined;
-  const feedProjector={ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  const feedProjector={ revision:'radar-integral-v8', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
   let feed=await advancePublicFeed(feedProjector);
   // Finish up to four bounded startup steps per verification invocation.
   // Do not repeatedly reproject an already available public snapshot.
@@ -2883,7 +2904,7 @@ export const liveTestReportHandler = async () => {
 
 const consumeReviewedExchange=reviewedReceiver({
   ingest:()=>pullRadarBatch(externalOfferRecord),
-  advance:()=>advancePublicFeed({ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt }),
+  advance:()=>advancePublicFeed({ revision:'radar-integral-v8', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt }),
   confirm:confirmRadarPublications,
 });
 
@@ -2946,29 +2967,34 @@ const applicationRouter = router({
   'GET /api/ops/document-revalidation': [async () => json(await documentRevalidationStatus())],
   'GET /api/ops/radar-feed': [async () => json(await publicFeedProgress())],
   'GET /api/ops/local-source-evidence': [async ({ query }) => json(await readLocalSourceEvidence(query.cursor))],
-  'GET /api/ops/free-public-sources': [async () => json(await freePublicSourceStatus())],
+  'GET /api/ops/free-public-sources': [async () => json({...await freePublicSourceStatus(),configuredSourceCount:RADAR_SOURCE_INVENTORY.length,automaticSourceCount:FREE_PUBLIC_SOURCES.length,manualSourceCount:RADAR_SOURCE_INVENTORY.filter(x=>x.manualOnly).length})],
   'GET /api/ops/radar-ab-progress': [async () => {
     const [feed,shadow,pdf]=await Promise.all([readPublicFeedSummary(),db.list<Record<string,unknown>>('radar_shadow_b',{limit:200}),db.list<Record<string,unknown>>('radar_shadow_pdf',{limit:200})]);
-    const shadowCount={publishable:0,recoverable:0,blocked:0,closed:0};
+    const shadowCount={publishable:0,recoverable:0,stored:0,needs_review:0,blocked:0,closed:0};
     const pdfCount={recoverable:0,needs_review:0,blocked:0,closed:0};
     for(const row of shadow.items){const k=String(row.stage);if(k in shadowCount)shadowCount[k as keyof typeof shadowCount]++;}
     for(const row of pdf.items){const k=String(row.stage);if(k in pdfCount)pdfCount[k as keyof typeof pdfCount]++;}
-    return json({updatedAt:new Date().toISOString(),motorA:{visibleVerifiedOffers:Number(feed.totalVerifiedJobOffers||0)},motorB:{htmlReviewed:shadow.items.length,htmlStages:shadowCount,pdfRead:pdf.items.length,pdfStages:pdfCount},additionalPublishedFromB:0,comparisonComplete:false});
+    return json({updatedAt:new Date().toISOString(),motorA:{visibleVerifiedOffers:Number(feed.totalVerifiedJobOffers||0)},motorB:{htmlReviewed:shadow.items.length,htmlStages:shadowCount,pdfRead:pdf.items.length,pdfStages:pdfCount},additionalPublishedFromB:null,comparisonComplete:false,measurementScope:'bounded_page_not_full_inventory',htmlNextCursor:shadow.nextToken||null,pdfNextCursor:pdf.nextToken||null,publicationEvidence:'requires_common_baseline_and_public_feed_reconciliation'});
+  }],
+  'GET /api/admin/radar-trace': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({query}) => {
+    const page=await db.list<Record<string,unknown>>('radar_candidate_trace',{limit:50,...(query.cursor?{nextToken:query.cursor}:{})});
+    return json({schema:'trabajo-cerca.candidate-trace.v1',items:page.items,nextCursor:page.nextToken||null,
+      pageComplete:!page.nextToken,scope:'candidate_ledger_page',observedAt:new Date().toISOString()});
   }],
   'GET /api/admin/radar-shadow-compare': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({query})=>{
     const rows=await db.list<Record<string,unknown>>('radar_shadow_b',{limit:100,...(query.cursor?{nextToken:query.cursor}:{})});
-    const count={publishable:0,recoverable:0,blocked:0,closed:0};
+    const count={publishable:0,recoverable:0,stored:0,needs_review:0,blocked:0,closed:0};
     for(const item of rows.items){const s=String(item.stage);if(s in count)count[s as keyof typeof count]++;}
     const [status,feedState,feedSummary,pdfRows]=await Promise.all([freePublicSourceStatus(),publicFeedProgress(),readPublicFeedSummary(),db.list<Record<string,unknown>>('radar_shadow_pdf',{limit:100})]);
     const pdfCounts={recoverable:0,needs_review:0,blocked:0,closed:0};
     for(const item of pdfRows.items){const state=String(item.stage);if(state in pdfCounts)pdfCounts[state as keyof typeof pdfCounts]++;}
-    const independentlyEligible=rows.items.filter(x=>x.eligibleForPublicFeed===true && x.extractionMethod==='html_verified_evidence').length;
+    const independentlyEligible=rows.items.filter(x=>x.independentlyVerified===true && typeof x.sourceId==='string').length;
     return json({readOnly:true,experiment:'full-source-real-pages',baseline:status.summary,
       result:{publicVerifiedJobOffers:Number(feedSummary.totalVerifiedJobOffers||0),publicFeedItemCount:feedState.visibleItemCount,
         shadowRecords:rows.items.length,shadowHtmlIndependentCandidates:independentlyEligible,
         pdfDocumentsAnalyzed:pdfRows.items.length,pdfCounts,
         // Extra published offers must be confirmed by public feed. Zero until that reconciliation is implemented.
-        confirmedAdditionalPublishedFromMotorB:0,comparisonComplete:false},shadow:{sampled:rows.items.length,stages:count,items:rows.items.map(x=>({url:x.url,title:x.title,place:x.place,source:x.source,baselineReason:x.baselineReason,stage:x.stage,eligibleForPublicFeed:x.eligibleForPublicFeed})),nextCursor:rows.nextToken},publicFeedUntouched:true});
+        confirmedAdditionalPublishedFromMotorB:null,comparisonComplete:false,measurementScope:'bounded_page_not_full_inventory',pdfNextCursor:pdfRows.nextToken||null},shadow:{sampled:rows.items.length,stages:count,items:rows.items.map(x=>({url:x.url,title:x.title,place:x.place,source:x.source,baselineReason:x.baselineReason,stage:x.stage,eligibleForPublicFeed:x.eligibleForPublicFeed})),nextCursor:rows.nextToken},publicFeedUntouched:true});
   }],
   'POST /api/ops/free-public-sources/run': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
@@ -3045,13 +3071,13 @@ const applicationRouter = router({
       // Serve a privacy-filtered, approved-only emergency page instead of HTTP 503.
       // This is a temporary subset, never a fabricated or unreviewed offer.
       const rows=await db.list<ListingRecord>('radar_jobs',{limit:200});
-      const visible=rows.items.map(row=>projectFeedListing(row as Record<string,unknown> & {id:string})).filter(Boolean).slice(0,40);
+      const visible=rows.items.map(row=>projectFeedListing(row as Record<string,unknown> & {id:string})).filter((row):row is NonNullable<typeof row>=>row!==null).slice(0,40);
       console.warn('PUBLIC_FEED_DEGRADED '+JSON.stringify({reason:'manifest_building',visible:visible.length}));
       return json({items:visible,totalItems:visible.length,totalJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,
         totalVerifiedJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,
         recentJobOffers24h:0,recentJobOffers7d:0,totalProvisionalJobOffers:0,
-        communeStats:{},kindStats:{jobs:visible.length,people:0,needs:0,services:0},
-        hasMore:false,degraded:true,feedRebuilding:true,feedState:'degraded_last_good'});
+        communeStats:{},kindStats:{jobs:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,people:0,needs:0,services:0},
+        hasMore:false,complete:false,degraded:true,feedRebuilding:true,feedState:'initial_partial'});
     }
     return query.fresh === '1' ? json(feed) : cacheable(feed, 60);
   }],
@@ -3081,6 +3107,8 @@ const applicationRouter = router({
     const activeCampaigns = campaigns.filter(item => item.status === 'active' && Date.parse(item.startAt) <= now && now <= Date.parse(item.endAt));
     const payload = {
       updatedAt:new Date().toISOString(),
+      publicCatalog:await readPublicFeedSummary(),
+      measurementScope:{internalTable:'radar_jobs',evaluatedRows:radarJobs.items.length,partial:Boolean(radarJobs.nextToken),candidateRows:candidates.items.length,candidatesPartial:Boolean(candidates.nextToken),auditRows:audits.items.length,auditsPartial:Boolean(audits.nextToken)},
       jobs:{
         active:activeRadar.filter(item => item.kind === 'job_offer').length,
         verified:activeRadar.filter(item => item.kind === 'job_offer' && item.verified && !item.review).length,
@@ -3376,13 +3404,13 @@ const applicationRouter = router({
     const clientToken = cleanClientToken(input.clientToken);
     if (!clientToken) return error('Solicitud no válida.', 400);
     if (!allowBurst('contact', clientToken, 30, 600000)) return error('Has consultado muchos contactos en poco tiempo. Intenta nuevamente más tarde.', 429);
-    const [community, radar] = await Promise.all([
-      db.get<ListingRecord>('community_posts', [params.id]),
-      db.get<ListingRecord>('radar_jobs', [params.id]),
-    ]);
-    const record = community[0] ?? radar[0];
-    if (!record || !isCurrentlyActive(record)) return error('Publicación no disponible.', 404);
-    if (!record.contact) return error('Este aviso no tiene un contacto directo publicado.', 404);
+    const entry=await readPublicFeedEntry(params.id);
+    if(!entry||!entry.item.hasContact)return error('Publicación no disponible.',404);
+    const [stored]=await db.get<ListingRecord>(entry.source,[entry.sourceId],{consistent:true});
+    const record=stored?{...stored,id:entry.sourceId}:null;
+    if(!record||!projectFeedListing(record)||('contactPublicationConsent' in record&&record.contactPublicationConsent===false))
+      return error('Publicación no disponible.',404);
+    if(!record.contact)return error('Este aviso no tiene un contacto directo publicado.',404);
     return json({ contact: record.contact, contactLabel: record.contactLabel });
   }],
 

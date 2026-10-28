@@ -1,0 +1,12 @@
+import { spawnSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+const live=JSON.parse(readFileSync('qa-output/radar-live/baseline.json','utf8'));
+const crawl=JSON.parse(readFileSync('qa-output/radar/crawl.json','utf8'));
+const map=new Map();
+for(const x of live.proofs?.['radar-public-proof']?.state?.documentWork?.items||[])if(x.kind==='document')map.set(x.url,x);
+for(const x of crawl.documents||[])map.set(x.url,{url:x.url,kind:'document',source:x.source,publisher_page:x.publisherPage});
+writeFileSync('qa-output/radar/ocr-work.json',JSON.stringify({documentWork:{items:[...map.values()]}}));
+const proc=spawnSync('python',['qa/radar-ocr-batch.py'],{encoding:'utf8',timeout:900000,maxBuffer:4*1024*1024});
+if(proc.stdout)console.log(proc.stdout);
+if(proc.stderr)console.error(proc.stderr);
+if(proc.status!==0)process.exitCode=1;

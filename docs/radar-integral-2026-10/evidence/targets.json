@@ -1,0 +1,200 @@
+[
+  {
+    "url": "https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+    "observedAt": "2026-10-28T12:25:27.807Z",
+    "http": 200,
+    "sourceSha256": "db80c5d5c555e1d5fbc2c7b3be9e6c7ea97c4ef0ddd81c18d9d4d69362c60483",
+    "offer": {
+      "title": "DOCENTE PSICOLOGO",
+      "company": "CORPORACION HD SPA",
+      "work_commune": "Angol",
+      "work_location_verified": true,
+      "url": "https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+      "source": "Chiletrabajos",
+      "source_published_at": "2026-10-18T18:04:54.000Z",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "application": "https://www.chiletrabajos.cl/trabajo/postular/3915967",
+      "valid_through": "2027-01-01T18:04:54.000Z",
+      "verification_method": "Chiletrabajos individual page + matching JobPosting",
+      "validity_method": "explicit_deadline",
+      "source_date_evidence": {
+        "date_posted": "2026-10-18 15:04:54",
+        "valid_through": "2027-01-01T15:04:54",
+        "timezone": "America/Santiago"
+      }
+    },
+    "structuredWorksite": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Angol",
+        "addressRegion": "AR",
+        "addressCountry": "CL",
+        "postalCode": 4650000
+      }
+    },
+    "description": "SE REQUIERE DOCENTE PARA PSICOLOGO PARA CURSO COMPETENCIAS SOCIOEMOCIONALES",
+    "descriptionSha256": "a9b64cb47570f618ddf0e777aa7be5d6cc52b8df94c228e757ca30e08cb9ba17",
+    "application": {
+      "url": "https://www.chiletrabajos.cl/preingreso",
+      "http": 200,
+      "error": null,
+      "requiresLogin": true
+    }
+  },
+  {
+    "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
+    "observedAt": "2026-10-28T12:25:28.267Z",
+    "http": 200,
+    "sourceSha256": "c7bc6db57e6220290ec6b2fc991ccf0bf29a7e80adddfe2d57c1b725ff750a98",
+    "offer": {
+      "title": "TENS para Cuidados Pacientes Domiciliarios /Lumaco",
+      "company": "LAYNER",
+      "work_commune": "Lumaco",
+      "work_location_verified": true,
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
+      "source": "Chiletrabajos",
+      "work_location_evidence": {
+        "method": "explicit_worksite_in_own_job_description",
+        "literal": "para trabajar en la zona de Lumaco"
+      },
+      "source_published_at": "2026-09-02T20:18:19.000Z",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "application": "https://www.chiletrabajos.cl/trabajo/postular/3892923",
+      "valid_through": "2026-11-16T19:18:19.000Z",
+      "verification_method": "Chiletrabajos individual page + matching JobPosting",
+      "validity_method": "explicit_deadline",
+      "source_date_evidence": {
+        "date_posted": "2026-09-02 16:18:19",
+        "valid_through": "2026-11-16T16:18:19",
+        "timezone": "America/Santiago"
+      }
+    },
+    "structuredWorksite": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Angol",
+        "addressRegion": "AR",
+        "addressCountry": "CL",
+        "postalCode": 4650000
+      }
+    },
+    "description": "En LAYNER buscamos Técnicos/as en Enfermería de Nivel Superior (TENS) para atención domiciliaria en Lumaco, Región de La Araucanía. Sistema: 4° turno Principales funciones: -Administración de medicamentos. -Aseo y confort. -Acompañamiento. -Asistencia en actividades de la vida diaria (AVD). -Realización de ejercicios pasivos. -Acompañamiento durante la alimentación. -Apoyo en terapias indicadas por Terapia Ocupacional y Fonoaudiología. Requisitos: -Título de TENS. -Experiencia mínima de 2 años. -Disponibilidad para trabajar en la zona de Lumaco. -Responsabilidad, compromiso y orientación al cuidado del paciente. Postula enviando CV actualizado, comuna de residencia, teléfono y disponibilidad.",
+    "descriptionSha256": "9f35dffcffec615b236ceb90dce5316fe3a35f78f8ced3dc805fa16acce796bd",
+    "application": {
+      "url": "https://www.chiletrabajos.cl/preingreso",
+      "http": 200,
+      "error": null,
+      "requiresLogin": true
+    }
+  },
+  {
+    "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+    "observedAt": "2026-10-28T12:25:28.734Z",
+    "http": 200,
+    "sourceSha256": "903c56dc4b4323892f40e54f970c8c71aa155899af0c5e0d1b7f6faf6e7a2d79",
+    "offer": {
+      "title": "TENS para Cuidados Pacientes Domiciliarios / Lumaco",
+      "company": "Layner",
+      "work_commune": "Lumaco",
+      "work_location_verified": true,
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+      "source": "Chiletrabajos",
+      "work_location_evidence": {
+        "method": "explicit_worksite_in_own_job_description",
+        "literal": "servicio de atención domiciliaria en Lumaco"
+      },
+      "source_published_at": "2026-09-23T18:32:45.000Z",
+      "status": "verified",
+      "reason": "live_jobposting_with_deadline_and_application",
+      "application": "https://www.chiletrabajos.cl/trabajo/postular/3902931",
+      "valid_through": "2026-12-07T18:32:45.000Z",
+      "verification_method": "Chiletrabajos individual page + matching JobPosting",
+      "validity_method": "explicit_deadline",
+      "source_date_evidence": {
+        "date_posted": "2026-09-23 15:32:45",
+        "valid_through": "2026-12-07T15:32:45",
+        "timezone": "America/Santiago"
+      }
+    },
+    "structuredWorksite": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Temuco",
+        "addressRegion": "AR",
+        "addressCountry": "CL",
+        "postalCode": 4780000
+      }
+    },
+    "description": "¡URGENTE – TENS EN LUMACO! En LAYNER buscamos Técnicos/as en Enfermería de Nivel Superior (TENS) para incorporarse a servicio de atención domiciliaria en Lumaco. LUMACO Título de TENS. 2 años de experiencia en atención y cuidado de pacientes. Deseable experiencia en atención domiciliaria. Disponibilidad para incorporarse a la brevedad. Envía tu CV actualizado a: seleccion@layner.cl Asunto: TENS – LUMACO Vacante urgente ¿Conoces a un/a TENS de LUMACO? ¡Comparte esta oportunidad!",
+    "descriptionSha256": "cd36ebedb7a3a6e4427a0cb7c7e658973f58054473ea637c7e5ece460c111d69",
+    "application": {
+      "url": "https://www.chiletrabajos.cl/preingreso",
+      "http": 200,
+      "error": null,
+      "requiresLogin": true
+    }
+  },
+  {
+    "url": "https://www.chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
+    "observedAt": "2026-10-28T12:25:28.918Z",
+    "http": 200,
+    "sourceSha256": "567a84d4fd5f0321e514247fce1155bdce4254a98ae8386af2522d819fd5e629",
+    "offer": {
+      "title": "Verificador/a de Domicilios en Terreno – Renaico",
+      "company": "Rocketpin",
+      "work_commune": "Angol",
+      "work_location_verified": false,
+      "url": "https://www.chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
+      "source": "Chiletrabajos",
+      "status": "review_ready",
+      "reason": "title_worksite_conflict"
+    },
+    "structuredWorksite": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Angol",
+        "addressRegion": "AR",
+        "addressCountry": "CL",
+        "postalCode": 4650000
+      }
+    },
+    "description": "Descripción del puesto En Rocketpin buscamos personas responsables para realizar verificaciones domiciliarias en terreno para importantes instituciones financieras. El trabajo consiste en visitar domicilios asignados, validar información mediante una aplicación móvil y completar el proceso siguiendo nuestros protocolos de calidad. Si disfrutas del trabajo en terreno, administras bien tus tiempos y buscas generar ingresos de forma flexible, esta oportunidad es para ti. Principales funciones: Realizar visitas a domicilios asignados. Verificar información en terreno siguiendo los procedimientos establecidos. Registrar fotografías e información mediante nuestra aplicación. Cumplir los estándares de calidad y los plazos de entrega. Organizar eficientemente las rutas de trabajo. Buscamos personas que tengan: Responsabilidad y compromiso. Buen trato con las personas. Capacidad para trabajar de manera autónoma. Manejo de aplicaciones móviles. Disponibilidad para desplazarse dentro de la comuna y sectores cercanos. Requisitos: Enseñanza media completa. Teléfono Android con acceso a internet (excluyente). Disponibilidad para trabajar en terreno. Contar con locomoción propia (excluyente). Ofrecemos: Trabajo Part Time con horarios flexibles. Pago por verificaciones realizadas. Capacitación inicial. Incorporación a una empresa líder en servicios en terreno en Latinoamérica.",
+    "descriptionSha256": "f8d437ebad6a5cc2b43fe397e70e6e45261d47982796da2b53a9f3a5a7887cdc",
+    "application": null
+  },
+  {
+    "url": "https://www.chiletrabajos.cl/trabajo/psicologo-a-clinico-comuna-de-ercilla-3902679",
+    "observedAt": "2026-10-28T12:25:29.031Z",
+    "http": 200,
+    "sourceSha256": "1084f1d416de04785126c08580b59f5db4cbec96e547934615e31e792c6c7834",
+    "offer": {
+      "title": "Psicólogo/a Clínico - Comuna de Ercilla",
+      "company": "Confidencial",
+      "work_commune": "Angol",
+      "work_location_verified": false,
+      "url": "https://www.chiletrabajos.cl/trabajo/psicologo-a-clinico-comuna-de-ercilla-3902679",
+      "source": "Chiletrabajos",
+      "status": "review_ready",
+      "reason": "title_worksite_conflict"
+    },
+    "structuredWorksite": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Angol",
+        "addressRegion": "AR",
+        "addressCountry": "CL",
+        "postalCode": 4650000
+      }
+    },
+    "description": "Nos encontramos en búsqueda de Psicólogos/as Clínicos/as para incorporarse en modalidad freelance, participando en intervenciones individuales y grupales, así como en acciones de apoyo ante situaciones de crisis o contingencia. Requisitos: - Título profesional de Psicología. - EXCLUYENTE RESIDENCIA EN LA COMUNA DE ERCILLA. - Al menos 1 año de experiencia en intervención psicológica individual y/o grupal. - Experiencia o conocimientos en intervención en crisis, contención emocional, emergencias, estabilización inicial y Primeros Auxilios Psicológicos (PAP). - Se valorará especialmente la experiencia en contextos organizacionales, de terreno o prevención de riesgos psicosociales. - Certificación en Primeros Auxilios Psicológicos (PAP), idealmente. Modalidad: - Trabajo presencial en terreno y actividades online, según requerimiento. - Disponibilidad para desplazamiento y activaciones ante contingencias o situaciones de crisis. - Modalidad freelance, por requerimiento.",
+    "descriptionSha256": "f5c57c03e7e728f7440a739d6f1c37ca7c9f360c996b55e976a5ecf5a277ba94",
+    "application": null
+  }
+]

@@ -33,40 +33,63 @@ export function publicRobotsAllow(raw:string,address:string) {
   return !matches.length || matches[0].allow;
 }
 
+const policyReads=new Map<string,Promise<Policy>>();
+function policyTtl(policy:Policy) {
+  if(!policy.error)return 3600000;
+  return [401,403,429].includes(policy.status)?12*3600000:120000;
+}
+async function loadPolicy(origin:string,publisher:{group:string},now:number):Promise<Policy> {
+  let url=origin+'/robots.txt';
+  const policy:Policy={checkedAt:now,raw:'',url,status:0,error:'robots_policy_unavailable'};
+  try {
+    for(let hop=0;hop<4;hop++) {
+      const response=await fetch(url,{redirect:'manual',signal:AbortSignal.timeout(6500),
+        headers:{'user-agent':PUBLIC_CRAWLER,accept:'text/plain,text/html'}});
+      policy.url=url;policy.status=response.status;
+      if([301,302,303,307,308].includes(response.status)) {
+        const next=safePublicUrl(response.headers.get('location')||'',url);
+        await response.body?.cancel();
+        if(!next||!next.startsWith('https:')||publicPublisher(next)?.group!==publisher.group)break;
+        url=next;continue;
+      }
+      if(response.status===404){await response.body?.cancel();policy.error=undefined;break;}
+      if(response.status!==200){await response.body?.cancel();break;}
+      const reader=response.body?.getReader(),parts:Uint8Array[]=[];let size=0;
+      if(reader)for(;;){
+        const chunk=await reader.read();if(chunk.done)break;
+        size+=chunk.value.byteLength;
+        if(size>50000){await reader.cancel();throw new Error('policy_byte_limit');}
+        parts.push(chunk.value);
+      }
+      else {
+        const body=new Uint8Array(await response.arrayBuffer());
+        if(body.length>50000)throw new Error('policy_byte_limit');
+        parts.push(body);
+      }
+      const data=Buffer.concat(parts),mime=(response.headers.get('content-type')||'').split(';')[0].toLowerCase();
+      policy.sha256=createHash('sha256').update(data).digest('hex');policy.raw=data.toString('utf8');
+      if(mime!=='text/plain'&&!(mime==='text/html'&&/^\s*user-agent\s*:/im.test(policy.raw)))break;
+      policy.error=undefined;break;
+    }
+  }catch{/* Unreadable policy never grants access to content. */}
+  return policy;
+}
 export async function checkPublicRobots(address:string,now=Date.now()) {
   const origin=new URL(address).origin,publisher=publicPublisher(address);
-  if (!publisher) return {allowed:false,error:'publisher_not_allowed'};
+  if(!publisher)return {allowed:false,error:'publisher_not_allowed'};
   let policy=publicPolicies.get(origin);
-  if (!policy || now-policy.checkedAt>3600000) {
-    let url=origin+'/robots.txt';
-    policy={checkedAt:now,raw:'',url,status:0,error:'robots_policy_unavailable'};
-    try {
-      for (let attempt=0;attempt<4;attempt++) {
-        const response=await fetch(url,{redirect:'manual',signal:AbortSignal.timeout(6500),headers:{'user-agent':PUBLIC_CRAWLER,'accept':'text/plain,text/html'}});
-        policy.url=url;policy.status=response.status;
-        if ([301,302,303,307,308].includes(response.status)) {
-          const next=safePublicUrl(response.headers.get('location') || '',url);await response.body?.cancel();
-          if (!next || publicPublisher(next)?.group!==publisher.group) break;
-          url=next;continue;
-        }
-        if (response.status===404) {await response.body?.cancel();policy.error=undefined;break;}
-        if (response.status!==200) {await response.body?.cancel();break;}
-        const reader=response.body?.getReader(),parts:Uint8Array[]=[];let size=0;
-        if (reader) for (;;) {
-          const chunk=await reader.read();if(chunk.done)break;
-          size+=chunk.value.byteLength;if(size>50000){await reader.cancel();throw new Error('policy_byte_limit');}parts.push(chunk.value);
-        }
-        else {const body=new Uint8Array(await response.arrayBuffer());if(body.length>50000)throw new Error('policy_byte_limit');parts.push(body);}
-        const data=Buffer.concat(parts),mime=(response.headers.get('content-type') || '').split(';')[0].toLowerCase();
-        policy.sha256=createHash('sha256').update(data).digest('hex');policy.raw=data.toString('utf8');
-        if (mime!=='text/plain' && !(mime==='text/html' && /^\s*user-agent\s*:/im.test(policy.raw))) break;
-        policy.error=undefined;break;
-      }
-    } catch { /* Unknown policy never grants access. */ }
-    if (publicPolicies.size>=64) publicPolicies.delete(publicPolicies.keys().next().value!);
+  if(!policy||now-policy.checkedAt>=policyTtl(policy)){
+    let reading=policyReads.get(origin);
+    if(!reading){
+      reading=loadPolicy(origin,publisher,now).finally(()=>policyReads.delete(origin));
+      policyReads.set(origin,reading);
+    }
+    policy=await reading;
+    if(publicPolicies.size>=64&&!publicPolicies.has(origin))publicPolicies.delete(publicPolicies.keys().next().value!);
     publicPolicies.set(origin,policy);
   }
-  const allowed=!policy.error && publicRobotsAllow(policy.raw,address);
-  return {allowed,error:policy.error || (allowed?undefined:'robots_disallowed'),robotsUrl:policy.url,robotsHttp:policy.status,robotsSha256:policy.sha256};
+  const allowed=!policy.error&&publicRobotsAllow(policy.raw,address);
+  return {allowed,error:policy.error||(allowed?undefined:'robots_disallowed'),
+    robotsUrl:policy.url,robotsHttp:policy.status,robotsSha256:policy.sha256,
+    checkedAt:new Date(policy.checkedAt).toISOString(),nextRetryAt:new Date(policy.checkedAt+policyTtl(policy)).toISOString()};
 }
-

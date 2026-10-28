@@ -1,0 +1,28 @@
+name: Radar read-only live baseline
+on:
+  push:
+    branches: [repair/radar-integral-2026-10-28]
+    paths: ['.github/workflows/radar-integral.yml', 'integrations/appdeploy/house-ads/qa/radar-live-observe.mjs']
+permissions:
+  contents: read
+jobs:
+  observe:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: integrations/appdeploy/house-ads
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit --no-fund --fetch-retries=0 --fetch-timeout=30000
+      - run: node qa/radar-live-observe.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: radar-live-baseline
+          path: integrations/appdeploy/house-ads/qa-output/radar-live/
+          retention-days: 2

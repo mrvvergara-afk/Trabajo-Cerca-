@@ -1,11 +1,11 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
-import { publicPublisher, publicSourceAdapter, publicOfferIdentity, safePublicUrl } from './public-source-adapters';
+import { publicPublisher, publicSourceAdapter, publicOfferIdentity, safePublicUrl, samePublicJob } from './public-source-adapters';
 import { evaluatePublicJob, publicText, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
 import { shadowEvaluate } from './shadow-radar';
-import { rememberCandidates, recordCandidate, recordVerification } from './radar-trace';
+import { rememberCandidates, recordCandidate, recordVerification, recoverCandidatePage } from './radar-trace';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal'; discoveryPriority?:'secondary' };
 type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
@@ -97,6 +97,11 @@ export function publicPageLinks(raw:string, origin:string) {
       if (url && publicPublisher(url)?.group===publicPublisher(origin)?.group && /\.(?:png|jpe?g|webp)(?:[?#]|$)/i.test(url) &&
           !/logo|banner|icon|slider|cropped|avatar|favicon/i.test(url)) candidates.set(url,'Imagen de la publicación laboral');
     }
+  }
+  // A portal's individual detail page is not another search index.
+  // Recommendation widgets otherwise expand the crawl into unrelated national jobs.
+  if (publicSourceAdapter(origin)?.family==='portal') {
+    return {candidates:[...candidates].filter(([url])=>samePublicJob(origin,url)).map(([url,title])=>({url,title})),archives:[]};
   }
   return { candidates:[...candidates].map(([url,title]) => ({ url,title })),archives:[...archives].slice(0,5) };
 }
@@ -269,6 +274,11 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     if (!state.documentPending.some(item=>item.url===candidate.url) && state.documentPending.length<180) state.documentPending.push(candidate);
   }
   state.pending=state.pending.filter(item=>!publicDocumentUrl(item.url));
+  for (const recovered of await recoverCandidatePage(now)) {
+    const target=publicDocumentUrl(recovered.url)?state.documentPending:state.pending;
+    const cap=publicDocumentUrl(recovered.url)?180:100;
+    if (target.length<cap && !target.some(x=>x.url===recovered.url)) target.push(recovered);
+  }
   const rechecks = new Map((state.rechecks || []).map(item => [item.url,item]));
   const documentManagedUrls=new Set<string>();
   // Accepted signed offers remain in their original tables. Discover their URLs without rewriting the batch or its proof.

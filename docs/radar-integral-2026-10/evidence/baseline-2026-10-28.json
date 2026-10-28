@@ -1,0 +1,2599 @@
+{
+  "observedAt": "2026-10-28T10:18:39.702Z",
+  "readOnly": true,
+  "syntheticRecords": 0,
+  "errors": [],
+  "proofs": {
+    "radar-proof": {
+      "ingestion": {
+        "status": "published",
+        "stored": 1,
+        "published": 1,
+        "checkedAt": "2026-10-26T13:50:37.900Z",
+        "feedManifestId": "38644901-9a20-4ac2-b596-ee8d6f458c29",
+        "dataCommit": "4f56115212ca8463c1e5c1a29868f077a6b498cf",
+        "rejection": null,
+        "runId": "39515321623",
+        "receipts": [
+          {
+            "candidateId": "28d0b11cf6dfcabbe985949a",
+            "sourceId": "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+            "publishedId": "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+            "state": "published",
+            "sourceUrl": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+            "projection": {
+              "kind": "job_offer",
+              "active": true,
+              "verified": true,
+              "review": false,
+              "sourcePublishedAt": "2026-10-13T03:00:00.000Z",
+              "sourceValidThrough": "2027-01-09T03:00:00.000Z",
+              "expiresAt": "2027-01-09T03:00:00.000Z",
+              "workCommunes": [
+                "Collipulli"
+              ],
+              "title": "Ingeniero/a Procesos y Excelencia Sr",
+              "note": "Postulación comprobada en la fuente: https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+              "retentionReason": null
+            }
+          }
+        ]
+      },
+      "feed": {
+        "complete": true,
+        "manifestId": "38644901-9a20-4ac2-b596-ee8d6f458c29",
+        "visibleItemCount": 78,
+        "buildSource": "complete",
+        "stagedPages": 3,
+        "stagedPublicItems": 86,
+        "hasNextSourcePage": false,
+        "updatedAt": "2026-10-28T09:20:36.525Z",
+        "identityReconciliation": {
+          "revision": "published-retention-counts-v7",
+          "baselineManifestId": "a7425daf-c460-4d88-98fc-adfae0b807fd",
+          "queuedReferences": 11,
+          "completedAt": "2026-10-20T23:43:23.151Z"
+        }
+      },
+      "visibleIds": [
+        "free-8362c35d15d67ba14e6f16338bcb3a26678478f6",
+        "free-a631f54409203a208c8a2808df3a0b9e1c8805bf",
+        "free-ccf8f27df30c69c6394c9633c4db268f37808988",
+        "free-9338ac4466e62b485686591f169a4fee940111fb",
+        "free-7fb295de921072a5f060bb8ca603ccd1b473deb4",
+        "tcq_8e10d10d8dedf4b7e3b9c1",
+        "tcq_e2265a52410f086a0dcb71",
+        "tcq_149bb65066307aa45733b5",
+        "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+        "free-b09e1a50f6ecb280c18328e61aaf153b5819ee24",
+        "8641446b-2b83-4477-9fc2-5ce86e811bf7",
+        "free-62d19a0bf91f3ec74f336a247a41a2e6c214c5f3",
+        "free-a87db2c97234221d559ec38a1d280d4aa813c4dc",
+        "free-b6aaf0f7b521bf94f24b4cdcd1398ebbd870c773",
+        "free-da609d9f856b917178935189d0e53890f6987b5e",
+        "612daf87-5014-47ea-8421-c6a96420e873",
+        "361dab2c-87ef-4bce-9bda-ef731822244d",
+        "bdaed372-0383-4771-9c3e-d4a80207d823",
+        "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+        "4ba4e5d1-8556-4b33-8304-329a35184274",
+        "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+        "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+        "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+        "cb724831-6a31-4fbf-9d8c-c067596f9237",
+        "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+        "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+        "cb47b13c-00cf-4d12-9043-c6906da31736",
+        "b92528e5-61b5-4498-88ca-808c2443a044",
+        "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+        "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45",
+        "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+        "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+        "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+        "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+        "688c0421-4ed4-46e5-9592-694a2669fad7",
+        "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+        "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+        "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+        "8b75b282-d838-45bc-9309-d10874aae023",
+        "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+        "2f0f424e-d10b-4d7d-98e2-b8e1b29b9783",
+        "free-d294f2d92f9e56840e53553adef2420f48b30847",
+        "1f723e1a-993c-4033-b1a0-9cd4c5d3cd36",
+        "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+        "c5dd94f6-77f4-44ee-b5f8-0038cf376fb2",
+        "2acda2c7-e657-4656-860e-1645badef65b",
+        "851ba560-b9d9-4a7e-9263-3d32e302bcb3",
+        "80c05369-4a99-4508-9b5b-239ac5bb13c5",
+        "ad82eb1f-2919-4f74-a1b1-e677fe0c22ca",
+        "faf70fdd-81c8-4c29-a966-7b14c547cf43",
+        "fceccb92-1b25-4486-8585-4b55e6cf05f9",
+        "02236bf2-6346-43a2-a30b-734f328e7f95",
+        "02c3f426-3500-42ee-8ac2-f5a2a6733c48",
+        "9a43bd7d-b2d4-4b53-8d49-993dc02db6ea",
+        "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+        "0c9d9edf-98c7-41e8-a864-604fd8069445",
+        "28b9b9be-fbc1-4eeb-bd46-56f859188231",
+        "0b54a8ad-1f4a-47f4-b351-8aa8dfa582f1",
+        "fde7b165-fb34-4961-ae5a-3c3a13fde29d",
+        "aea2a4f5-b0c5-4bfb-9e71-1536fabd6c20",
+        "a4478588-785e-4545-824e-e94de6d8916a",
+        "33ddef7b-e071-480a-86fb-79db4f966de7",
+        "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+        "40b91274-90ed-4742-bfe6-f197949c7914",
+        "ffdc932c-bd30-453d-b5bd-742dead74008",
+        "0b79c530-f4cd-4b5a-90df-a9479324ea7e",
+        "13b09236-bb04-42b1-a010-b7743d25c5d4",
+        "b80928c9-6bb1-46fc-b1d9-eea732003c5c",
+        "d4025ee5-f499-4daf-b8ed-703a76642a92",
+        "a72f1533-4372-4ebf-a630-f5e352f1d430",
+        "bb4acc7e-41ba-400a-bbc8-a58c3c8e4954",
+        "eb54af21-eccd-4e3c-ace2-d06da87235c3",
+        "16e43079-56d9-4ac1-81a4-3993af7fecd4",
+        "2dbb852b-abd3-45c0-83f2-6044155916c4",
+        "13a8bb11-2ea3-4f70-a265-b8e3079a19c9",
+        "dead587c-c845-4e46-8578-bbebcc85068a",
+        "420b5063-4a7f-4db5-bac8-2b4634ebaf13",
+        "696b1b8c-ecaf-40e2-92aa-f6621ab9a282"
+      ],
+      "feedReadError": null,
+      "visibleItems": [
+        {
+          "id": "free-8362c35d15d67ba14e6f16338bcb3a26678478f6",
+          "kind": "job_offer",
+          "title": "TENS TRAIGUEN 42,4 HRS HORARIO DIURNO CON O SIN EXPERIENCIA",
+          "company": "xinerlink",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "31 ago 2026",
+          "createdAt": "2026-10-28T01:25:17.473Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tens-traiguen-42-4-hrs-horario-diurno-con-o-sin-experiencia-3891310",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-08-31T20:03:26.000Z",
+          "sourceValidThrough": "2026-11-14T19:03:26.000Z",
+          "expiresAt": "2026-11-14T19:03:26.000Z",
+          "firstPublishedAt": "2026-10-28T01:25:17.473Z",
+          "externalVerifiedAt": "2026-10-28T01:25:17.473Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-a631f54409203a208c8a2808df3a0b9e1c8805bf",
+          "kind": "job_offer",
+          "title": "Paramédico/a Traiguén",
+          "company": "Xinerlink",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "31 ago 2026",
+          "createdAt": "2026-10-28T01:25:17.473Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/paramedico-a-traiguen-3891189",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-08-31T17:30:11.000Z",
+          "sourceValidThrough": "2026-11-14T16:30:11.000Z",
+          "expiresAt": "2026-11-14T16:30:11.000Z",
+          "firstPublishedAt": "2026-10-28T01:25:17.473Z",
+          "externalVerifiedAt": "2026-10-28T01:25:17.473Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-ccf8f27df30c69c6394c9633c4db268f37808988",
+          "kind": "job_offer",
+          "title": "Paramedico/a - Traiguen",
+          "company": "XinerLink",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "01 sept 2026",
+          "createdAt": "2026-10-28T01:05:17.139Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/paramedico-a-traiguen-3892108",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-01T20:06:56.000Z",
+          "sourceValidThrough": "2026-11-15T19:06:56.000Z",
+          "expiresAt": "2026-11-15T19:06:56.000Z",
+          "firstPublishedAt": "2026-10-28T01:05:17.139Z",
+          "externalVerifiedAt": "2026-10-28T01:05:17.139Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-9338ac4466e62b485686591f169a4fee940111fb",
+          "kind": "job_offer",
+          "title": "VENDEDOR OPTICA KARUN TEMUCO",
+          "company": "KARUN",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "27 oct 2026",
+          "createdAt": "2026-10-27T19:05:29.546Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/vendedor-optica-karun-temuco-3655890",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-27T03:43:29.000Z",
+          "sourceValidThrough": "2027-01-10T03:43:29.000Z",
+          "expiresAt": "2027-01-10T03:43:29.000Z",
+          "firstPublishedAt": "2026-10-27T19:05:29.546Z",
+          "externalVerifiedAt": "2026-10-27T19:05:29.546Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-7fb295de921072a5f060bb8ca603ccd1b473deb4",
+          "kind": "job_offer",
+          "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol",
+          "company": "SMU",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "27 oct 2026",
+          "createdAt": "2026-10-26T03:05:30.085Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-27T09:38:59.000Z",
+          "sourceValidThrough": "2027-01-10T09:38:59.000Z",
+          "expiresAt": "2027-01-10T09:38:59.000Z",
+          "firstPublishedAt": "2026-10-26T03:05:30.085Z",
+          "externalVerifiedAt": "2026-10-28T00:55:16.830Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "tcq_8e10d10d8dedf4b7e3b9c1",
+          "kind": "job_offer",
+          "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
+          "company": "Empresa de alimentos",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "23-10-2026",
+          "createdAt": "2026-10-25T22:06:51.586Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-23T16:14:21.000Z",
+          "sourceValidThrough": "2027-01-06T16:14:21.000Z",
+          "expiresAt": "2027-01-06T16:14:21.000Z",
+          "applicationUrl": "https://www.chiletrabajos.cl/trabajo/postular/3919569",
+          "firstPublishedAt": "2026-10-25T19:05:29.701Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "tcq_e2265a52410f086a0dcb71",
+          "kind": "job_offer",
+          "title": "Se requieren Tens o Enfermeras/os",
+          "company": "Expertise Spa",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "21-10-2026",
+          "createdAt": "2026-10-25T22:04:47.835Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-21T20:28:41.000Z",
+          "sourceValidThrough": "2027-01-04T20:28:41.000Z",
+          "expiresAt": "2027-01-04T20:28:41.000Z",
+          "applicationUrl": "https://www.chiletrabajos.cl/trabajo/postular/3918381",
+          "firstPublishedAt": "2026-10-25T22:04:47.835Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "tcq_149bb65066307aa45733b5",
+          "kind": "job_offer",
+          "title": "VVendedor en Terreno - Angol Victoria Traiguén",
+          "company": "Manpowergroup",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "19-10-2026",
+          "createdAt": "2026-10-25T22:04:28.599Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-19T19:04:05.000Z",
+          "sourceValidThrough": "2027-01-02T19:04:05.000Z",
+          "expiresAt": "2027-01-02T19:04:05.000Z",
+          "applicationUrl": "https://www.chiletrabajos.cl/trabajo/postular/3916595",
+          "firstPublishedAt": "2026-10-20T07:05:28.386Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+          "kind": "job_offer",
+          "title": "Supervisor Técnico de Obra - Mulchén",
+          "company": "Aguas Andinas",
+          "source": "Chiletrabajos",
+          "workLocation": "Mulchén",
+          "workCommunes": [
+            "Mulchén"
+          ],
+          "date": "21 sept 2026",
+          "createdAt": "2026-10-24T19:05:27.966Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-21T15:35:15.000Z",
+          "sourceValidThrough": "2026-12-05T15:35:15.000Z",
+          "expiresAt": "2026-12-05T15:35:15.000Z",
+          "firstPublishedAt": "2026-10-12T19:05:37.742Z",
+          "externalVerifiedAt": "2026-10-26T19:05:29.822Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "free-b09e1a50f6ecb280c18328e61aaf153b5819ee24",
+          "kind": "job_offer",
+          "title": "ITO Residente - EXPERIENCIA OBRAS CONSERVACIÓN CAMINOS (LOS ÁNGELES)",
+          "company": "INGENET LTDA",
+          "source": "Chiletrabajos",
+          "workLocation": "Los Ángeles",
+          "workCommunes": [
+            "Los Ángeles"
+          ],
+          "date": "28 sept 2026",
+          "createdAt": "2026-10-24T15:05:29.295Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/ito-residente-experiencia-obras-conservacion-caminos-los-angeles-3905459",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-28T21:29:07.000Z",
+          "sourceValidThrough": "2026-12-12T21:29:07.000Z",
+          "expiresAt": "2026-12-12T21:29:07.000Z",
+          "firstPublishedAt": "2026-10-03T12:01:36.540Z",
+          "externalVerifiedAt": "2026-10-28T03:05:28.200Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "8641446b-2b83-4477-9fc2-5ce86e811bf7",
+          "kind": "worker_available",
+          "title": "Inquilino",
+          "company": "Marco",
+          "source": "Publicación directa en Trabajo Cerca",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "Publicado hoy",
+          "createdAt": "2026-10-24T14:45:41.177Z",
+          "verified": false,
+          "review": false,
+          "expiresAt": "2026-11-14T14:45:41.177Z",
+          "firstPublishedAt": "2026-10-24T14:45:41.177Z",
+          "active": true
+        },
+        {
+          "id": "free-62d19a0bf91f3ec74f336a247a41a2e6c214c5f3",
+          "kind": "job_offer",
+          "title": "DOCENTE DE MATEMATICAS, REEMPLAZO",
+          "company": "LICEO AGRÍCOLA DE NEGRETE",
+          "source": "Chiletrabajos",
+          "workLocation": "Negrete",
+          "workCommunes": [
+            "Negrete"
+          ],
+          "date": "20 oct 2026",
+          "createdAt": "2026-10-23T11:05:27.438Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/docente-de-matematicas-reemplazo-3755017",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-20T22:19:57.000Z",
+          "sourceValidThrough": "2027-01-03T22:19:57.000Z",
+          "expiresAt": "2027-01-03T22:19:57.000Z",
+          "firstPublishedAt": "2026-10-23T11:05:27.438Z",
+          "externalVerifiedAt": "2026-10-27T19:05:29.546Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-a87db2c97234221d559ec38a1d280d4aa813c4dc",
+          "kind": "job_offer",
+          "title": "Técnico Mecánico Auxiliar – Automotora Autofácil (Los Ángeles)",
+          "company": "AUTOMOTORA AUTOFACIL",
+          "source": "Chiletrabajos",
+          "workLocation": "Los Ángeles",
+          "workCommunes": [
+            "Los Ángeles"
+          ],
+          "date": "19 oct 2026",
+          "createdAt": "2026-10-23T11:05:27.438Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-mecanico-auxiliar-automotora-autofacil-los-angeles-3603299",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-19T14:19:46.000Z",
+          "sourceValidThrough": "2027-01-02T14:19:46.000Z",
+          "expiresAt": "2027-01-02T14:19:46.000Z",
+          "firstPublishedAt": "2026-10-23T11:05:27.438Z",
+          "externalVerifiedAt": "2026-10-27T15:05:31.041Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-b6aaf0f7b521bf94f24b4cdcd1398ebbd870c773",
+          "kind": "job_offer",
+          "title": "Gestor de Ventas LA",
+          "company": "Distribuidora de Alimentos",
+          "source": "Chiletrabajos",
+          "workLocation": "Los Ángeles",
+          "workCommunes": [
+            "Los Ángeles"
+          ],
+          "date": "20 oct 2026",
+          "createdAt": "2026-10-23T07:05:28.044Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/gestor-de-ventas-la-3917111",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-20T14:21:45.000Z",
+          "sourceValidThrough": "2027-01-03T14:21:45.000Z",
+          "expiresAt": "2027-01-03T14:21:45.000Z",
+          "firstPublishedAt": "2026-10-23T07:05:28.044Z",
+          "externalVerifiedAt": "2026-10-27T03:05:29.057Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "free-da609d9f856b917178935189d0e53890f6987b5e",
+          "kind": "job_offer",
+          "title": "PREVENCIONISTA DE RIESGOS",
+          "company": "Constructora González García Ltda",
+          "source": "Chiletrabajos",
+          "workLocation": "Los Ángeles",
+          "workCommunes": [
+            "Los Ángeles"
+          ],
+          "date": "21 oct 2026",
+          "createdAt": "2026-10-23T03:05:27.611Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-3917824",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-21T15:18:19.000Z",
+          "sourceValidThrough": "2027-01-04T15:18:19.000Z",
+          "expiresAt": "2027-01-04T15:18:19.000Z",
+          "firstPublishedAt": "2026-10-23T03:05:27.611Z",
+          "externalVerifiedAt": "2026-10-26T23:05:29.579Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "612daf87-5014-47ea-8421-c6a96420e873",
+          "kind": "job_offer",
+          "title": "Mecánico/a Soldador/a – Nacimiento",
+          "company": "Empresa en Nacimiento",
+          "source": "Chiletrabajos",
+          "workLocation": "Nacimiento",
+          "workCommunes": [
+            "Nacimiento"
+          ],
+          "date": "16-09-2026",
+          "createdAt": "2026-10-21T00:18:16.478Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-nacimiento-3899932",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-16T19:12:35.000Z",
+          "sourceValidThrough": "2026-11-30T19:12:35.000Z",
+          "expiresAt": "2026-11-30T19:12:35.000Z",
+          "firstPublishedAt": "2026-10-21T00:18:16.478Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "361dab2c-87ef-4bce-9bda-ef731822244d",
+          "kind": "job_offer",
+          "title": "Práctica Profesional Contador Auditor - Nacimiento",
+          "company": "Serfonac Ltda",
+          "source": "Chiletrabajos",
+          "workLocation": "Nacimiento",
+          "workCommunes": [
+            "Nacimiento"
+          ],
+          "date": "08-10-2026",
+          "createdAt": "2026-10-20T23:33:36.181Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-08T14:13:19.000Z",
+          "sourceValidThrough": "2026-12-22T14:13:19.000Z",
+          "expiresAt": "2026-12-22T14:13:19.000Z",
+          "firstPublishedAt": "2026-10-20T23:33:36.181Z",
+          "lastVerifiedAt": "2026-10-20T11:36:21.339250+00:00",
+          "externalVerifiedAt": "2026-10-20T11:36:21.339250+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "bdaed372-0383-4771-9c3e-d4a80207d823",
+          "kind": "job_offer",
+          "title": "TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR)",
+          "company": "CONFIDENCIAL",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16-10-2026",
+          "createdAt": "2026-10-20T23:33:36.181Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T16:15:34.000Z",
+          "sourceValidThrough": "2026-12-30T16:15:34.000Z",
+          "expiresAt": "2026-12-30T16:15:34.000Z",
+          "firstPublishedAt": "2026-10-20T23:33:36.181Z",
+          "lastVerifiedAt": "2026-10-20T11:36:09.603753+00:00",
+          "externalVerifiedAt": "2026-10-20T11:36:09.603753+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+          "kind": "job_offer",
+          "title": "Promotor(a) Full Time Martes a Sábado Angol Falabella -TOP",
+          "company": "TOP",
+          "source": "Laborum",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "25-09-2026",
+          "createdAt": "2026-10-20T23:33:36.181Z",
+          "url": "https://www.laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-25T00:00:00.000Z",
+          "sourceValidThrough": "2027-01-23T00:00:00.000Z",
+          "expiresAt": "2027-01-23T00:00:00.000Z",
+          "firstPublishedAt": "2026-10-20T23:33:36.181Z",
+          "lastVerifiedAt": "2026-10-20T11:37:51.159402+00:00",
+          "externalVerifiedAt": "2026-10-20T11:37:51.159402+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "4ba4e5d1-8556-4b33-8304-329a35184274",
+          "kind": "job_offer",
+          "title": "Encargado Calidad para AIF - Angol",
+          "company": "Consultores 2000",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16-10-2026",
+          "createdAt": "2026-10-20T23:32:17.268Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T19:57:22.000Z",
+          "sourceValidThrough": "2026-12-30T19:57:22.000Z",
+          "expiresAt": "2026-12-30T19:57:22.000Z",
+          "firstPublishedAt": "2026-10-20T23:32:17.268Z",
+          "lastVerifiedAt": "2026-10-20T11:36:09.131628+00:00",
+          "externalVerifiedAt": "2026-10-20T11:36:09.131628+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+          "kind": "job_offer",
+          "title": "Jefe de Asesoría - Angol",
+          "company": "Consultores 2000",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16 oct 2026",
+          "createdAt": "2026-10-20T23:32:17.268Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T19:48:05.000Z",
+          "sourceValidThrough": "2026-12-30T19:48:05.000Z",
+          "expiresAt": "2026-12-30T19:48:05.000Z",
+          "firstPublishedAt": "2026-10-20T23:32:17.268Z",
+          "lastVerifiedAt": "2026-10-20T11:36:08.205259+00:00",
+          "externalVerifiedAt": "2026-10-26T23:05:29.579Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+          "kind": "job_offer",
+          "title": "Geomensor - Angol",
+          "company": "Consultores 2000",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16 oct 2026",
+          "createdAt": "2026-10-20T23:32:17.268Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T19:55:16.000Z",
+          "sourceValidThrough": "2026-12-30T19:55:16.000Z",
+          "expiresAt": "2026-12-30T19:55:16.000Z",
+          "firstPublishedAt": "2026-10-20T23:32:17.268Z",
+          "lastVerifiedAt": "2026-10-20T11:36:08.635759+00:00",
+          "externalVerifiedAt": "2026-10-27T03:05:29.057Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+          "kind": "job_offer",
+          "title": "Encargado Ambiental y Participación Ciudadana para AIF - Angol",
+          "company": "Consultores 2000",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16 oct 2026",
+          "createdAt": "2026-10-20T23:30:58.415Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T20:03:39.000Z",
+          "sourceValidThrough": "2026-12-30T20:03:39.000Z",
+          "expiresAt": "2026-12-30T20:03:39.000Z",
+          "firstPublishedAt": "2026-10-20T23:30:58.415Z",
+          "lastVerifiedAt": "2026-10-20T11:36:07.759828+00:00",
+          "externalVerifiedAt": "2026-10-26T19:05:29.822Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "cb724831-6a31-4fbf-9d8c-c067596f9237",
+          "kind": "job_offer",
+          "title": "Prevencionista de Riesgos para AIF - Angol",
+          "company": "Consultores 2000",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16 oct 2026",
+          "createdAt": "2026-10-20T23:30:58.415Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T20:00:32.000Z",
+          "sourceValidThrough": "2026-12-30T20:00:32.000Z",
+          "expiresAt": "2026-12-30T20:00:32.000Z",
+          "firstPublishedAt": "2026-10-20T23:30:58.415Z",
+          "lastVerifiedAt": "2026-10-20T11:36:07.274761+00:00",
+          "externalVerifiedAt": "2026-10-28T09:05:27.455Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+          "kind": "job_offer",
+          "title": "Laboratorista Vial Clase B para AIF - Angol",
+          "company": "Consultores 2000",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16 oct 2026",
+          "createdAt": "2026-10-20T23:30:58.415Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T19:59:20.000Z",
+          "sourceValidThrough": "2026-12-30T19:59:20.000Z",
+          "expiresAt": "2026-12-30T19:59:20.000Z",
+          "firstPublishedAt": "2026-10-20T23:30:58.415Z",
+          "lastVerifiedAt": "2026-10-20T11:36:06.827053+00:00",
+          "externalVerifiedAt": "2026-10-28T09:05:27.455Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+          "kind": "job_offer",
+          "title": "Cajero(a) con experiencia Unimarc Collipulli",
+          "company": "Supermercados Unimarc",
+          "source": "Laborum",
+          "workLocation": "Collipulli",
+          "workCommunes": [
+            "Collipulli"
+          ],
+          "date": "06-10-2026",
+          "createdAt": "2026-10-20T23:30:48.267Z",
+          "url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-06T00:00:00.000Z",
+          "sourceValidThrough": "2027-02-03T00:00:00.000Z",
+          "expiresAt": "2027-02-03T00:00:00.000Z",
+          "firstPublishedAt": "2026-10-20T23:30:48.267Z",
+          "lastVerifiedAt": "2026-10-20T11:21:59.107494+00:00",
+          "externalVerifiedAt": "2026-10-20T11:21:59.107494+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "cb47b13c-00cf-4d12-9043-c6906da31736",
+          "kind": "job_offer",
+          "title": "Técnico en Administración para AIF - Angol",
+          "company": "Consultores 2000",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16 oct 2026",
+          "createdAt": "2026-10-20T23:30:48.267Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T20:05:24.000Z",
+          "sourceValidThrough": "2026-12-30T20:05:24.000Z",
+          "expiresAt": "2026-12-30T20:05:24.000Z",
+          "firstPublishedAt": "2026-10-20T23:30:48.267Z",
+          "lastVerifiedAt": "2026-10-20T11:36:06.332401+00:00",
+          "externalVerifiedAt": "2026-10-28T01:25:17.473Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "b92528e5-61b5-4498-88ca-808c2443a044",
+          "kind": "job_offer",
+          "title": "Asesor/a de Ventas y Servicio en Sucursal - Angol",
+          "company": "Atento Chile S.A",
+          "source": "Laborum",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "02-10-2026",
+          "createdAt": "2026-10-20T23:30:48.267Z",
+          "url": "https://www.laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-02T00:00:00.000Z",
+          "sourceValidThrough": "2027-01-30T00:00:00.000Z",
+          "expiresAt": "2027-01-30T00:00:00.000Z",
+          "firstPublishedAt": "2026-10-20T23:30:48.267Z",
+          "lastVerifiedAt": "2026-10-20T11:21:59.231220+00:00",
+          "externalVerifiedAt": "2026-10-20T11:21:59.231220+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+          "kind": "job_offer",
+          "title": "TENS para Cuidados Pacientes Domiciliarios / Lumaco",
+          "company": "Layner",
+          "source": "Chiletrabajos",
+          "workLocation": "Lumaco",
+          "workCommunes": [
+            "Lumaco"
+          ],
+          "date": "23 sept 2026",
+          "createdAt": "2026-10-20T23:05:29.616Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-23T18:32:45.000Z",
+          "sourceValidThrough": "2026-12-07T18:32:45.000Z",
+          "expiresAt": "2026-12-07T18:32:45.000Z",
+          "firstPublishedAt": "2026-10-03T14:56:19.870Z",
+          "externalVerifiedAt": "2026-10-28T03:05:28.200Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45",
+          "kind": "job_offer",
+          "title": "Profesionales de Salud para Cuidados Pacientes Domiciliarios/ Region Araucania",
+          "company": "Layner",
+          "source": "Chiletrabajos",
+          "workLocation": "Lumaco",
+          "workCommunes": [
+            "Lumaco"
+          ],
+          "date": "13 oct 2026",
+          "createdAt": "2026-10-20T19:05:32.243Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/profesionales-de-salud-para-cuidados-pacientes-domiciliarios-region-araucania-3913134",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-13T15:08:58.000Z",
+          "sourceValidThrough": "2026-12-27T15:08:58.000Z",
+          "expiresAt": "2026-12-27T15:08:58.000Z",
+          "firstPublishedAt": "2026-10-20T19:05:32.243Z",
+          "externalVerifiedAt": "2026-10-20T19:05:32.243Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+          "kind": "job_offer",
+          "title": "Promotora 20 horas - Traiguén",
+          "company": "Confidencial",
+          "source": "Laborum",
+          "workLocation": "Traiguén",
+          "workCommunes": [
+            "Traiguén"
+          ],
+          "date": "29-09-2026",
+          "createdAt": "2026-10-20T11:56:00.689Z",
+          "url": "https://www.laborum.cl/empleos/promotora-20-horas-traiguen-1118460788.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-29T00:00:00.000Z",
+          "sourceValidThrough": "2027-01-27T00:00:00.000Z",
+          "expiresAt": "2027-01-27T00:00:00.000Z",
+          "firstPublishedAt": "2026-10-20T11:56:00.689Z",
+          "lastVerifiedAt": "2026-10-20T11:21:58.883806+00:00",
+          "externalVerifiedAt": "2026-10-20T11:21:58.883806+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+          "kind": "job_offer",
+          "title": "OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS",
+          "company": "Empresa del rubro agrícola de la comuna de Mulchén",
+          "source": "Municipalidad de Mulchén",
+          "workLocation": "Mulchén · un predio ubicado en el sector Campamento",
+          "workCommunes": [
+            "Mulchén"
+          ],
+          "date": "19-10-2026",
+          "createdAt": "2026-10-20T11:56:00.689Z",
+          "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-19T23:37:41Z",
+          "sourceValidThrough": null,
+          "applicationUrl": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+          "applicationMethod": "in_person",
+          "firstPublishedAt": "2026-10-20T11:56:00.689Z",
+          "lastVerifiedAt": "2026-10-27T12:20:37.973Z",
+          "externalVerifiedAt": "2026-10-20T11:49:01Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+          "kind": "job_offer",
+          "title": "Práctica Profesional Ingeniería Civil Industrial - MASSO - Nacimiento",
+          "company": "Serfonac",
+          "source": "Chiletrabajos",
+          "workLocation": "Nacimiento",
+          "workCommunes": [
+            "Nacimiento"
+          ],
+          "date": "16 oct 2026",
+          "createdAt": "2026-10-20T11:56:00.689Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T14:58:10.000Z",
+          "sourceValidThrough": "2026-12-30T14:58:10.000Z",
+          "expiresAt": "2026-12-30T14:58:10.000Z",
+          "firstPublishedAt": "2026-10-20T11:56:00.689Z",
+          "lastVerifiedAt": "2026-10-20T11:20:12.818559+00:00",
+          "externalVerifiedAt": "2026-10-26T19:05:29.822Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+          "kind": "job_offer",
+          "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria (Terreno) - Angol",
+          "company": "SMU 1",
+          "source": "Laborum",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "13-10-2026",
+          "createdAt": "2026-10-20T10:05:34.195Z",
+          "url": "https://www.laborum.cl/empleos/auditora-relatora-de-calidad-e-inocuidad-alimentaria-terreno-angol-smu-1-1118452584.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-13T00:00:00.000Z",
+          "sourceValidThrough": "2027-02-10T00:00:00.000Z",
+          "expiresAt": "2027-02-10T00:00:00.000Z",
+          "firstPublishedAt": "2026-10-20T10:05:34.195Z",
+          "lastVerifiedAt": "2026-10-20T09:37:55.097260+00:00",
+          "externalVerifiedAt": "2026-10-20T09:37:55.097260+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "688c0421-4ed4-46e5-9592-694a2669fad7",
+          "kind": "job_offer",
+          "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
+          "company": "Comercial Fashion´s park s.a.",
+          "source": "Laborum",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "16-10-2026",
+          "createdAt": "2026-10-20T10:05:34.195Z",
+          "url": "https://www.laborum.cl/empleos/cajero-a-asistente-integral--temporada-navidad--angol-comercial-fashions-park-s.a.-1118483484.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-16T00:00:00.000Z",
+          "sourceValidThrough": "2027-02-13T00:00:00.000Z",
+          "expiresAt": "2027-02-13T00:00:00.000Z",
+          "firstPublishedAt": "2026-10-20T10:05:34.195Z",
+          "lastVerifiedAt": "2026-10-20T09:37:55.011953+00:00",
+          "externalVerifiedAt": "2026-10-20T09:37:55.011953+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+          "kind": "job_offer",
+          "title": "Cajero(a) con experiencia Unimarc Angol",
+          "company": "Supermercados Unimarc",
+          "source": "Laborum",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "06-10-2026",
+          "createdAt": "2026-10-20T10:05:34.195Z",
+          "url": "https://www.laborum.cl/empleos/cajeroa-con-experiencia-unimarc-angol-supermercados-unimarc-1118469523.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-06T00:00:00.000Z",
+          "sourceValidThrough": "2027-02-03T00:00:00.000Z",
+          "expiresAt": "2027-02-03T00:00:00.000Z",
+          "firstPublishedAt": "2026-10-20T10:05:34.195Z",
+          "lastVerifiedAt": "2026-10-20T09:37:54.926892+00:00",
+          "externalVerifiedAt": "2026-10-20T09:37:54.926892+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+          "kind": "job_offer",
+          "title": "Ingeniero/a Procesos y Excelencia Sr",
+          "company": "CMPC",
+          "source": "CMPC · portal de empleo",
+          "workLocation": "Collipulli · Planta Pacífico - Mininco.",
+          "workCommunes": [
+            "Collipulli"
+          ],
+          "date": "13-10-2026",
+          "createdAt": "2026-10-19T23:50:35.434Z",
+          "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-13T03:00:00.000Z",
+          "sourceValidThrough": "2027-01-09T03:00:00.000Z",
+          "expiresAt": "2027-01-09T03:00:00.000Z",
+          "firstPublishedAt": "2026-10-19T23:50:35.434Z",
+          "lastVerifiedAt": "2026-10-20T23:30:06.889673+00:00",
+          "externalVerifiedAt": "2026-10-20T23:30:06.889673+00:00",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+          "kind": "job_offer",
+          "title": "QUÍMICO FARMACÉUTICO (A)",
+          "company": "Municipalidad de Traiguén",
+          "source": "Municipalidad de Traiguén",
+          "workLocation": "Traiguén",
+          "workCommunes": [
+            "Traiguén"
+          ],
+          "date": "01-10-2026",
+          "createdAt": "2026-10-18T02:05:32.661Z",
+          "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-01T12:04:54+00:00",
+          "sourceValidThrough": "2026-11-02T17:00:00+00:00",
+          "expiresAt": "2026-11-02T17:00:00+00:00",
+          "applicationUrl": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf#page=11",
+          "applicationMethod": "in_person",
+          "firstPublishedAt": "2026-10-18T02:05:32.661Z",
+          "lastVerifiedAt": "2026-10-28T04:20:37.304Z",
+          "externalVerifiedAt": "2026-10-28T04:20:37.304Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "8b75b282-d838-45bc-9309-d10874aae023",
+          "kind": "job_offer",
+          "title": "Ingeniero(a) en Prevención de Riesgos",
+          "company": "Municipalidad de Traiguén",
+          "source": "Municipalidad de Traiguén",
+          "workLocation": "Traiguén",
+          "workCommunes": [
+            "Traiguén"
+          ],
+          "date": "01-10-2026",
+          "createdAt": "2026-10-18T02:05:32.661Z",
+          "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-01T12:04:54+00:00",
+          "sourceValidThrough": "2026-11-02T17:00:00+00:00",
+          "expiresAt": "2026-11-02T17:00:00+00:00",
+          "applicationUrl": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf#page=24",
+          "applicationMethod": "in_person",
+          "firstPublishedAt": "2026-10-18T02:05:32.661Z",
+          "lastVerifiedAt": "2026-10-28T04:20:37.304Z",
+          "externalVerifiedAt": "2026-10-28T04:20:37.304Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "3c875b30-eec8-4d2a-9410-797e9ad37c07",
+          "kind": "job_offer",
+          "title": "Nutricionista",
+          "company": "Municipalidad de Traiguén",
+          "source": "Municipalidad de Traiguén",
+          "workLocation": "Traiguén",
+          "workCommunes": [
+            "Traiguén"
+          ],
+          "date": "01-10-2026",
+          "createdAt": "2026-10-18T02:05:32.661Z",
+          "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-01T12:04:54+00:00",
+          "sourceValidThrough": "2026-11-02T17:00:00+00:00",
+          "expiresAt": "2026-11-02T17:00:00+00:00",
+          "applicationUrl": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf#page=24",
+          "applicationMethod": "in_person",
+          "firstPublishedAt": "2026-10-18T02:05:32.661Z",
+          "lastVerifiedAt": "2026-10-28T04:20:37.304Z",
+          "externalVerifiedAt": "2026-10-28T04:20:37.304Z",
+          "revalidationDue": false,
+          "active": true
+        },
+        {
+          "id": "2f0f424e-d10b-4d7d-98e2-b8e1b29b9783",
+          "kind": "job_offer",
+          "title": "Coordinador/a Visual Merchandising - Traiguén (1 vacantes)",
+          "company": "ABC S.A.",
+          "source": "Bolsa Nacional de Empleo",
+          "workLocation": "Traiguén",
+          "workCommunes": [
+            "Traiguén"
+          ],
+          "date": "22 sept 2026",
+          "createdAt": "2026-10-13T23:35:36.557Z",
+          "url": "https://www.bne.gob.cl/oferta/2026-112312",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-22T03:00:00.000Z",
+          "sourceValidThrough": "2026-11-18T02:59:59.999Z",
+          "expiresAt": "2026-11-18T02:59:59.999Z",
+          "firstPublishedAt": "2026-10-13T23:35:36.557Z",
+          "lastVerifiedAt": "2026-10-13T23:28:03.993410+00:00",
+          "externalVerifiedAt": "2026-10-28T00:55:16.830Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "free-d294f2d92f9e56840e53553adef2420f48b30847",
+          "kind": "job_offer",
+          "title": "Cajeros/as peaje Negrete (20 vacantes)",
+          "company": "O & C SERVICIOS GENERALES SPA",
+          "source": "Bolsa Nacional de Empleo",
+          "workLocation": "Negrete",
+          "workCommunes": [
+            "Negrete"
+          ],
+          "date": "15 sept 2026",
+          "createdAt": "2026-10-13T19:52:06.176Z",
+          "url": "https://www.bne.gob.cl/oferta/2026-109726",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-15T03:00:00.000Z",
+          "sourceValidThrough": "2026-11-18T02:59:59.999Z",
+          "expiresAt": "2026-11-18T02:59:59.999Z",
+          "firstPublishedAt": "2026-10-13T19:52:06.176Z",
+          "lastVerifiedAt": "2026-10-14T14:54:15.963596+00:00",
+          "externalVerifiedAt": "2026-10-28T01:05:17.139Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "1f723e1a-993c-4033-b1a0-9cd4c5d3cd36",
+          "kind": "job_offer",
+          "title": "Asistente Dental Full Time / Angol",
+          "company": "Importante empresa del rubro de la Salud",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "25-09-2026",
+          "createdAt": "2026-10-12T19:05:30.327Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-25T08:37:38.000Z",
+          "sourceValidThrough": "2026-12-09T08:37:38.000Z",
+          "expiresAt": "2026-12-09T08:37:38.000Z",
+          "firstPublishedAt": "2026-10-12T19:05:30.327Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+          "kind": "job_offer",
+          "title": "Tens/ Enfermera Administrativa Angol",
+          "company": "Inmunomedica",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "08 oct 2026",
+          "createdAt": "2026-10-12T18:05:37.435Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-08T14:58:01.000Z",
+          "sourceValidThrough": "2026-12-22T14:58:01.000Z",
+          "expiresAt": "2026-12-22T14:58:01.000Z",
+          "firstPublishedAt": "2026-10-12T18:05:37.435Z",
+          "lastVerifiedAt": "2026-10-12T14:08:16.775542+00:00",
+          "externalVerifiedAt": "2026-10-27T07:05:29.498Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "c5dd94f6-77f4-44ee-b5f8-0038cf376fb2",
+          "kind": "job_offer",
+          "title": "TELETRABAJO FULL TIME",
+          "company": "MOSAICO CHILE SPA",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "13-10-2026",
+          "createdAt": "2026-10-11T03:05:29.778Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/teletrabajo-full-time-3754448",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-13T13:47:18.000Z",
+          "sourceValidThrough": "2026-12-27T13:47:18.000Z",
+          "expiresAt": "2026-12-27T13:47:18.000Z",
+          "firstPublishedAt": "2026-10-11T03:05:29.778Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "2acda2c7-e657-4656-860e-1645badef65b",
+          "kind": "job_offer",
+          "title": "Inspector de Siniestros para comuna de&#8230;",
+          "company": "ChileTrabajos · Victoria",
+          "source": "ChileTrabajos · Victoria",
+          "workLocation": "Victoria · Temuco",
+          "workCommunes": [
+            "Victoria",
+            "Temuco"
+          ],
+          "date": "10-09-2026",
+          "createdAt": "2026-10-10T15:05:35.616Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/inspector-de-siniestros-para-comuna-de-victoria-3896966",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-10T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-10T15:05:35.616Z",
+          "lastVerifiedAt": "2026-10-10T16:35:35.156Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "851ba560-b9d9-4a7e-9263-3d32e302bcb3",
+          "kind": "job_offer",
+          "title": "FISCALIZADOR TECNICO DE OBRAS (FTO)",
+          "company": "INSPECCIONES ILDYGARDY EIRL",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "05-10-2026",
+          "createdAt": "2026-10-10T03:05:30.174Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3909138",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-05T17:00:59.000Z",
+          "sourceValidThrough": "2026-12-19T17:00:59.000Z",
+          "expiresAt": "2026-12-19T17:00:59.000Z",
+          "firstPublishedAt": "2026-10-10T03:05:30.174Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "80c05369-4a99-4508-9b5b-239ac5bb13c5",
+          "kind": "job_offer",
+          "title": "Conductor",
+          "company": "-",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "28-09-2026",
+          "createdAt": "2026-10-08T15:05:34.766Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/conductor-3904934",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-28T13:51:26.000Z",
+          "sourceValidThrough": "2026-12-12T13:51:26.000Z",
+          "expiresAt": "2026-12-12T13:51:26.000Z",
+          "firstPublishedAt": "2026-10-08T15:05:34.766Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "ad82eb1f-2919-4f74-a1b1-e677fe0c22ca",
+          "kind": "job_offer",
+          "title": "Vendedor en terreno",
+          "company": "Pitch Marketing Ltda",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "19-10-2026",
+          "createdAt": "2026-10-07T05:20:32.109Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/vendedor-en-terreno-3885872",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-19T19:01:50.000Z",
+          "sourceValidThrough": "2027-01-02T19:01:50.000Z",
+          "expiresAt": "2027-01-02T19:01:50.000Z",
+          "firstPublishedAt": "2026-10-07T05:20:32.109Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "faf70fdd-81c8-4c29-a966-7b14c547cf43",
+          "kind": "job_offer",
+          "title": "Técnico Mantenimiento Telecomunicaciones - Temuco",
+          "company": "OLITEL",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "06-10-2026",
+          "createdAt": "2026-10-07T05:20:32.109Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-mantenimiento-telecomunicaciones-temuco-3909895",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-06T16:03:58.000Z",
+          "sourceValidThrough": "2026-12-20T16:03:58.000Z",
+          "expiresAt": "2026-12-20T16:03:58.000Z",
+          "firstPublishedAt": "2026-10-07T05:20:32.109Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "fceccb92-1b25-4486-8585-4b55e6cf05f9",
+          "kind": "job_offer",
+          "title": "Asistente de Recursos Humanos y Adm (Reemplazo Pre y Post Natal)",
+          "company": "SOCIEDAD DE TRANSPORTES LLICO LTDA",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "05-10-2026",
+          "createdAt": "2026-10-07T05:20:30.292Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/asistente-de-recursos-humanos-y-adm-reemplazo-pre-y-post-natal-3901379",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-05T17:50:56.000Z",
+          "sourceValidThrough": "2026-12-19T17:50:56.000Z",
+          "expiresAt": "2026-12-19T17:50:56.000Z",
+          "firstPublishedAt": "2026-10-07T05:20:30.292Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
+          "kind": "job_offer",
+          "title": "Administrativo/a de Tesorería · PT Tienda Angol",
+          "company": "Falabella",
+          "source": "LinkedIn · Falabella",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "30-09-2026",
+          "createdAt": "2026-10-06T10:41:16.915Z",
+          "url": "https://cl.linkedin.com/jobs/view/administrativo-a-de-tesorer%C3%ADa-jornada-pt-tienda-angol-at-falabella-4461259756",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-30T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-06T10:41:16.915Z",
+          "lastVerifiedAt": "2026-10-09T20:35:36.354Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "02c3f426-3500-42ee-8ac2-f5a2a6733c48",
+          "kind": "job_offer",
+          "title": "KINESIOLOGO COMUNA DE VICTORIA",
+          "company": "ChileTrabajos · Victoria",
+          "source": "ChileTrabajos · Victoria",
+          "workLocation": "Victoria · Temuco",
+          "workCommunes": [
+            "Victoria",
+            "Temuco"
+          ],
+          "date": "05-10-2026",
+          "createdAt": "2026-10-06T10:22:29.439Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/kinesiologo-comuna-de-victoria-3907378",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-05T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-06T10:22:29.439Z",
+          "lastVerifiedAt": "2026-10-11T10:35:34.218Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "9a43bd7d-b2d4-4b53-8d49-993dc02db6ea",
+          "kind": "job_offer",
+          "title": "Jefe de Turno",
+          "company": "Talentfinder",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "25-09-2026",
+          "createdAt": "2026-10-06T10:22:29.439Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-turno-3904146",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-25T14:22:50.000Z",
+          "sourceValidThrough": "2026-12-09T14:22:50.000Z",
+          "expiresAt": "2026-12-09T14:22:50.000Z",
+          "firstPublishedAt": "2026-10-06T10:22:29.439Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+          "kind": "job_offer",
+          "title": "Ayudante de panadería",
+          "company": "ChileTrabajos · Victoria",
+          "source": "ChileTrabajos · Victoria",
+          "workLocation": "Victoria",
+          "workCommunes": [
+            "Victoria"
+          ],
+          "date": "30-09-2026",
+          "createdAt": "2026-10-06T10:22:29.439Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/ayudante-de-panaderia-3903963",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-30T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-06T10:22:29.439Z",
+          "lastVerifiedAt": "2026-10-13T08:35:36.467Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "0c9d9edf-98c7-41e8-a864-604fd8069445",
+          "kind": "job_offer",
+          "title": "Profesional de Programas Generales · LAE Angol",
+          "company": "Fundación Tierra de Esperanza",
+          "source": "ChileTrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "25-09-2026",
+          "createdAt": "2026-10-05T09:10:32.315Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-25T12:00:00.000Z",
+          "expiresAt": "2026-12-09T23:59:59-03:00",
+          "firstPublishedAt": "2026-10-05T09:10:32.315Z",
+          "lastVerifiedAt": "2026-10-10T08:35:36.121Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "28b9b9be-fbc1-4eeb-bd46-56f859188231",
+          "kind": "job_offer",
+          "title": "Mecánico Automotriz · rubro forestal",
+          "company": "Empresa en Nacimiento",
+          "source": "ChileTrabajos",
+          "workLocation": "Nacimiento",
+          "workCommunes": [
+            "Nacimiento"
+          ],
+          "date": "16-09-2026",
+          "createdAt": "2026-10-05T09:10:32.313Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/mecanico-automotriz-nacimiento-3899926",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-16T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T14:56:19.870Z",
+          "lastVerifiedAt": "2026-10-10T08:35:36.123Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "0b54a8ad-1f4a-47f4-b351-8aa8dfa582f1",
+          "kind": "job_offer",
+          "title": "Trabajador/a Social · Comuna de Ercilla",
+          "company": "Confidencial",
+          "source": "ChileTrabajos",
+          "workLocation": "Ercilla",
+          "workCommunes": [
+            "Ercilla"
+          ],
+          "date": "23-09-2026",
+          "createdAt": "2026-10-05T09:10:32.311Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/trabajador-a-social-comuna-ercilla-3902639",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-23T12:00:00.000Z",
+          "expiresAt": "2026-12-07T23:59:59-03:00",
+          "firstPublishedAt": "2026-10-05T09:10:32.311Z",
+          "lastVerifiedAt": "2026-10-10T10:35:34.401Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "fde7b165-fb34-4961-ae5a-3c3a13fde29d",
+          "kind": "job_offer",
+          "title": "Ejecutivo Atención al Cliente Sucursal TEMUCO",
+          "company": "Importante AFP",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "02-10-2026",
+          "createdAt": "2026-10-05T05:20:37.158Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-atencion-al-cliente-sucursal-temuco-3908191",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-02T16:40:06.000Z",
+          "sourceValidThrough": "2026-12-16T16:40:06.000Z",
+          "expiresAt": "2026-12-16T16:40:06.000Z",
+          "firstPublishedAt": "2026-10-05T05:20:37.158Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "aea2a4f5-b0c5-4bfb-9e71-1536fabd6c20",
+          "kind": "job_offer",
+          "title": "Técnico en Telecomunicaciones FTTH Los Ángeles",
+          "company": "Reconocida empresa en telecomunicaciones",
+          "source": "Chiletrabajos",
+          "workLocation": "Los Ángeles",
+          "workCommunes": [
+            "Los Ángeles"
+          ],
+          "date": "20-10-2026",
+          "createdAt": "2026-10-05T05:20:37.157Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-ftth-los-angeles-3906937",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-20T19:59:04.000Z",
+          "sourceValidThrough": "2027-01-03T19:59:04.000Z",
+          "expiresAt": "2027-01-03T19:59:04.000Z",
+          "firstPublishedAt": "2026-10-05T05:20:37.157Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "a4478588-785e-4545-824e-e94de6d8916a",
+          "kind": "job_offer",
+          "title": "Laboratorista de Aridos - Santiago -&#8230;",
+          "company": "ChileTrabajos · Ercilla",
+          "source": "ChileTrabajos · Ercilla",
+          "workLocation": "Ercilla",
+          "workCommunes": [
+            "Ercilla"
+          ],
+          "date": "23-09-2026",
+          "createdAt": "2026-10-05T05:20:34.429Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-de-aridos-santiago-idiem-3895266",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-23T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-05T05:20:34.429Z",
+          "lastVerifiedAt": "2026-10-13T08:35:36.473Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "33ddef7b-e071-480a-86fb-79db4f966de7",
+          "kind": "job_offer",
+          "title": "Ingreso Inmediato Apoyo Auxiliar bodega armado Abc Angol",
+          "company": "cl.computrabajo.com",
+          "source": "Computrabajo",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "01-10-2026",
+          "createdAt": "2026-10-03T15:05:21.290Z",
+          "url": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-ingreso-inmediato-apoyo-auxiliar-bodega-armado-abc-angol-proyecto-del-03-octubre-al-30-nov-en-angol-7b9dda2687f57b4f61373e686dcf3405",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-01T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T15:05:21.290Z",
+          "lastVerifiedAt": "2026-10-09T20:35:36.340Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+          "kind": "job_offer",
+          "title": "Supervisor Técnico de Obra - Mulchén - septiembre 2026 | Laborum Chile",
+          "company": "laborum.cl",
+          "source": "Laborum",
+          "workLocation": "Mulchén",
+          "workCommunes": [
+            "Mulchén"
+          ],
+          "date": "21-09-2026",
+          "createdAt": "2026-10-03T14:56:19.870Z",
+          "url": "https://www.laborum.cl/empleos/supervisor-tecnico-de-obra-mulchen-aguas-andinas-s.a-1118449360.html",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-21T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T14:56:19.870Z",
+          "lastVerifiedAt": "2026-10-09T20:35:36.352Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "40b91274-90ed-4742-bfe6-f197949c7914",
+          "kind": "job_offer",
+          "title": "Operario Bodega (Victoria, Araucanía) - Santiago | Chiletrabajos",
+          "company": "chiletrabajos.cl",
+          "source": "ChileTrabajos",
+          "workLocation": "Victoria",
+          "workCommunes": [
+            "Victoria"
+          ],
+          "date": "23-09-2026",
+          "createdAt": "2026-10-03T14:56:19.870Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/operario-bodega-victoria-araucania-3902541",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-23T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T14:56:19.870Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "ffdc932c-bd30-453d-b5bd-742dead74008",
+          "kind": "job_offer",
+          "title": "Trabajador/a Social 40 horas PRM Nacimiento",
+          "company": "Fundación Tierra de Esperanza",
+          "source": "Chiletrabajos",
+          "workLocation": "Los Ángeles",
+          "workCommunes": [
+            "Los Ángeles"
+          ],
+          "date": "08-09-2026",
+          "createdAt": "2026-10-03T14:56:19.870Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/3889603",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-08T13:12:19.000Z",
+          "sourceValidThrough": "2026-11-22T13:12:19.000Z",
+          "expiresAt": "2026-11-22T13:12:19.000Z",
+          "firstPublishedAt": "2026-10-03T14:56:19.870Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "0b79c530-f4cd-4b5a-90df-a9479324ea7e",
+          "kind": "job_offer",
+          "title": "Oferta laboral para recolectores y supervisores",
+          "company": "munilumaco.cl",
+          "source": "munilumaco.cl",
+          "workLocation": "Lumaco",
+          "workCommunes": [
+            "Lumaco"
+          ],
+          "date": "03-10-2026",
+          "createdAt": "2026-10-03T11:21:19.688Z",
+          "url": "https://munilumaco.cl/index.php/sala-de-prensa/89-oferta-laboral-para-recolectores-y-supervisores",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-03T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T11:21:19.688Z",
+          "lastVerifiedAt": "2026-10-10T10:35:34.403Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "13b09236-bb04-42b1-a010-b7743d25c5d4",
+          "kind": "job_offer",
+          "title": "FISCALIZADOR TECNICO DE OBRAS (FTO)",
+          "company": "ChileTrabajos · Angol",
+          "source": "ChileTrabajos · Angol",
+          "workLocation": "Angol · Victoria · Temuco",
+          "workCommunes": [
+            "Angol",
+            "Victoria",
+            "Temuco"
+          ],
+          "date": "21-09-2026",
+          "createdAt": "2026-10-03T11:19:23.401Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3900906",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-21T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:23.401Z",
+          "lastVerifiedAt": "2026-10-09T16:35:37.121Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "b80928c9-6bb1-46fc-b1d9-eea732003c5c",
+          "kind": "job_offer",
+          "title": "AUXILIAR ESTAFETA, Reemplazo, media jornada, programa PRM ANGOL, Reg. La Araucan",
+          "company": "FUNDACION CIUDAD DEL NIÑO",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "07-09-2026",
+          "createdAt": "2026-10-03T11:19:23.401Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/auxiliar-estafeta-reemplazo-media-jornada-programa-prm-angol-reg-la-araucan-3894880",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-07T15:27:59.000Z",
+          "sourceValidThrough": "2026-11-21T15:27:59.000Z",
+          "expiresAt": "2026-11-21T15:27:59.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:23.401Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "d4025ee5-f499-4daf-b8ed-703a76642a92",
+          "kind": "job_offer",
+          "title": "SUPERVISOR CLINICO, jornada 10 HS., CDC LAS ARAUCANIA",
+          "company": "FUNDACION CIUDAD DEL NIÑO",
+          "source": "Chiletrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "11-09-2026",
+          "createdAt": "2026-10-03T11:19:23.401Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/supervisor-clinico-jornada-10-hs-cdc-las-araucania-3897652",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-11T14:54:53.000Z",
+          "sourceValidThrough": "2026-11-25T14:54:53.000Z",
+          "expiresAt": "2026-11-25T14:54:53.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:23.401Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "a72f1533-4372-4ebf-a630-f5e352f1d430",
+          "kind": "job_offer",
+          "title": "LICP-010926 - ITO Residente - Temuco",
+          "company": "SIGPRO",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "30-09-2026",
+          "createdAt": "2026-10-03T11:19:20.505Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/licp-010926-ito-residente-temuco-3901800",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-30T18:40:56.000Z",
+          "sourceValidThrough": "2026-12-14T18:40:56.000Z",
+          "expiresAt": "2026-12-14T18:40:56.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:20.505Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "bb4acc7e-41ba-400a-bbc8-a58c3c8e4954",
+          "kind": "job_offer",
+          "title": "Encargado(a) Desarrollo Organizacional y Gestión de Personas - Temuco",
+          "company": "Sur Talent",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "19-10-2026",
+          "createdAt": "2026-10-03T11:19:20.505Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/jefe-a-de-desarrollo-organizacional-y-gestion-de-personas-temuco-3901433",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-19T16:59:19.000Z",
+          "sourceValidThrough": "2027-01-02T16:59:19.000Z",
+          "expiresAt": "2027-01-02T16:59:19.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:20.505Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "eb54af21-eccd-4e3c-ace2-d06da87235c3",
+          "kind": "job_offer",
+          "title": "Psicólogo (a)",
+          "company": "PROGRAMA AFT PF FREIRE TOLTÉN TEODORO SCHMIDT",
+          "source": "Chiletrabajos",
+          "workLocation": "Temuco",
+          "workCommunes": [
+            "Temuco"
+          ],
+          "date": "02-10-2026",
+          "createdAt": "2026-10-03T11:19:20.505Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/psicologo-a-3908370",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-02T20:00:58.000Z",
+          "sourceValidThrough": "2026-12-16T20:00:58.000Z",
+          "expiresAt": "2026-12-16T20:00:58.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:20.505Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "16e43079-56d9-4ac1-81a4-3993af7fecd4",
+          "kind": "job_offer",
+          "title": "Soldador Planta Productiva",
+          "company": "ChileTrabajos · Los Ángeles",
+          "source": "ChileTrabajos · Los Ángeles",
+          "workLocation": "Nacimiento · Los Ángeles",
+          "workCommunes": [
+            "Nacimiento",
+            "Los Ángeles"
+          ],
+          "date": "22-09-2026",
+          "createdAt": "2026-10-03T11:19:18.801Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/soldador-planta-productiva-3902218",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-22T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:18.801Z",
+          "lastVerifiedAt": "2026-10-09T12:35:35.601Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "2dbb852b-abd3-45c0-83f2-6044155916c4",
+          "kind": "job_offer",
+          "title": "Técnico en Enfermería Nivel Superior -&#8230;",
+          "company": "ChileTrabajos · Los Ángeles",
+          "source": "ChileTrabajos · Los Ángeles",
+          "workLocation": "Mulchén",
+          "workCommunes": [
+            "Mulchén",
+            "Los Ángeles"
+          ],
+          "date": "01-10-2026",
+          "createdAt": "2026-10-03T11:19:18.801Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-enfermeria-nivel-superior-mulchen-3907827",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-10-01T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-03T11:19:18.801Z",
+          "lastVerifiedAt": "2026-10-09T08:35:34.759Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "13a8bb11-2ea3-4f70-a265-b8e3079a19c9",
+          "kind": "job_offer",
+          "title": "Bodeguero/a Plan Navidad Full Time Preunic - Angol - Angol | Chiletrabajos",
+          "company": "chiletrabajos.cl",
+          "source": "ChileTrabajos",
+          "workLocation": "Angol",
+          "workCommunes": [
+            "Angol"
+          ],
+          "date": "30-09-2026",
+          "createdAt": "2026-10-02T17:00:31.317Z",
+          "url": "https://www.chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-full-time-preunic-angol-3906496",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-30T12:00:00.000Z",
+          "firstPublishedAt": "2026-10-02T17:00:31.317Z",
+          "lastVerifiedAt": "2026-10-09T10:35:34.566Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "dead587c-c845-4e46-8578-bbebcc85068a",
+          "kind": "worker_need",
+          "title": "Cosecheros",
+          "company": "El carmen",
+          "source": "Publicación directa en Trabajo Cerca",
+          "workLocation": "Renaico",
+          "workCommunes": [
+            "Renaico"
+          ],
+          "date": "Publicado hoy",
+          "createdAt": "2026-10-01T01:51:15.174Z",
+          "verified": false,
+          "review": false,
+          "expiresAt": "2026-10-31T01:51:15.174Z",
+          "firstPublishedAt": "2026-10-01T01:51:15.174Z",
+          "active": true
+        },
+        {
+          "id": "420b5063-4a7f-4db5-bac8-2b4634ebaf13",
+          "kind": "job_offer",
+          "title": "Jefe de Turno · Centro de Distribución",
+          "company": "Talentfinder",
+          "source": "ChileTrabajos",
+          "workLocation": "Victoria",
+          "workCommunes": [
+            "Victoria"
+          ],
+          "date": "27-09-2026",
+          "createdAt": "2026-09-30T12:00:00-03:00",
+          "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-turno-3904674",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-27T12:00:00.000Z",
+          "expiresAt": "2026-12-11T23:59:59-03:00",
+          "firstPublishedAt": "2026-09-30T15:00:00.000Z",
+          "lastVerifiedAt": "2026-10-12T08:35:34.619Z",
+          "revalidationDue": true,
+          "active": true
+        },
+        {
+          "id": "696b1b8c-ecaf-40e2-92aa-f6621ab9a282",
+          "kind": "job_offer",
+          "title": "Inquilino · Labores agrícolas y cuidado de parcela",
+          "company": "Empleador difundido por OMIL Mulchén",
+          "source": "Municipalidad de Mulchén · OMIL",
+          "workLocation": "Mulchén · sector Malven",
+          "workCommunes": [
+            "Mulchén"
+          ],
+          "date": "26-09-2026",
+          "createdAt": "2026-09-30T12:00:00-03:00",
+          "url": "https://www.munimulchen.cl/oferta-laboral-labores-agricolas-y-cuidado-de-parcela/",
+          "verified": true,
+          "review": false,
+          "sourcePublishedAt": "2026-09-26T12:00:00.000Z",
+          "firstPublishedAt": "2026-09-30T15:00:00.000Z",
+          "lastVerifiedAt": "2026-10-12T00:35:37.303Z",
+          "revalidationDue": true,
+          "active": true
+        }
+      ],
+      "feedReadComplete": true,
+      "feedPagesRead": 5,
+      "documentRevalidation": {
+        "schema": "trabajo-cerca.document-revalidation-status.v1",
+        "readOnly": true,
+        "providerCalls": 0,
+        "intervalHours": 12,
+        "documents": [
+          {
+            "key": "traiguen-salud-2026-10",
+            "sourceUrl": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+            "originalPublishedAt": "2026-10-01T12:04:54+00:00",
+            "approvedJobs": 3,
+            "publishedIds": [
+              "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+              "8b75b282-d838-45bc-9309-d10874aae023",
+              "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+            ],
+            "visibleIds": [
+              "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+              "8b75b282-d838-45bc-9309-d10874aae023",
+              "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+            ],
+            "status": "revalidated",
+            "lastCheckAt": "2026-10-28T04:20:37.304Z",
+            "lastSuccessAt": "2026-10-28T04:20:37.304Z",
+            "nextCheckAt": "2026-10-28T16:20:37.304Z",
+            "reason": null,
+            "registrationPending": false
+          }
+        ],
+        "feedManifestId": "38644901-9a20-4ac2-b596-ee8d6f458c29",
+        "newOffersDiscovered": 0,
+        "socialCaptureProven": false
+      },
+      "documentRevalidationError": null,
+      "checkedAt": "2026-10-28T10:18:45.725Z"
+    },
+    "radar-public-proof": {
+      "state": {
+        "readOnly": true,
+        "providerCalls": 0,
+        "initialized": true,
+        "summary": {
+          "shadowReviewed": [
+            {
+              "reason": "live_jobposting_with_deadline_and_application",
+              "stage": "publishable",
+              "dateEvidence": null,
+              "applicationEvidence": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=&13=&5=&8=Consultores+2000&14=&categoria=&filterSearch=Buscar",
+              "place": "Angol",
+              "title": "Laboratorista Vial Clase B para AIF - Angol",
+              "baselineStatus": "verified",
+              "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741"
+            },
+            {
+              "reason": "live_jobposting_with_deadline_and_application",
+              "stage": "publishable",
+              "dateEvidence": null,
+              "applicationEvidence": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=&13=&5=&8=Consultores+2000&14=&categoria=&filterSearch=Buscar",
+              "place": "Angol",
+              "title": "Prevencionista de Riesgos para AIF - Angol",
+              "baselineStatus": "verified",
+              "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742"
+            },
+            {
+              "reason": "structured_jobposting_missing",
+              "stage": "recoverable",
+              "dateEvidence": null,
+              "applicationEvidence": null,
+              "place": "Mulchén",
+              "title": "Concurso Público - Abogado Centro de las Mujeres Mulchén",
+              "baselineStatus": "pending",
+              "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/"
+            },
+            {
+              "reason": "structured_jobposting_missing",
+              "stage": "recoverable",
+              "dateEvidence": null,
+              "applicationEvidence": null,
+              "place": null,
+              "title": "Técnico/a Mecánico/a Tornero - Cel L3",
+              "baselineStatus": "pending",
+              "url": "https://jobs.arauco.com/Chile/job/Arauco-T%C3%A9cnicoa-Mec%C3%A1nicoa-Tornero-Cel-L3-BI/1443273100/"
+            },
+            {
+              "reason": "worksite_missing_or_multiple",
+              "stage": "recoverable",
+              "dateEvidence": null,
+              "applicationEvidence": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=&13=&5=&8=Sociedad+Jorklift+SpA&14=&categoria=&filterSearch=Buscar",
+              "place": null,
+              "title": "Administrativo/a de Ventas – Repuestos Maquinaria Multimarca",
+              "baselineStatus": "pending",
+              "url": "https://www.chiletrabajos.cl/trabajo/administrativo-a-de-ventas-repuestos-maquinaria-multimarca-3919971"
+            },
+            {
+              "reason": "structured_jobposting_missing",
+              "stage": "recoverable",
+              "dateEvidence": null,
+              "applicationEvidence": null,
+              "place": null,
+              "title": "Operador/a Maquinaria Forestal Procesador- Zona Norte",
+              "baselineStatus": "pending",
+              "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Operadora-Maquinaria-Forestal-Procesador-Zona-Norte-BI-3780000/1402854900/"
+            }
+          ],
+          "pending": 93,
+          "httpReads": 14,
+          "nextSource": 82,
+          "sourcesRead": 8,
+          "providerCalls": 0,
+          "documentsAwaitingLocalReader": 60,
+          "reverificationBacklog": 39,
+          "reviewed": [
+            {
+              "reason": "live_jobposting_with_deadline_and_application",
+              "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+              "status": "verified"
+            },
+            {
+              "reason": "live_jobposting_with_deadline_and_application",
+              "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+              "status": "verified"
+            },
+            {
+              "reason": "structured_jobposting_missing",
+              "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+              "status": "pending"
+            },
+            {
+              "reason": "structured_jobposting_missing",
+              "url": "https://jobs.arauco.com/Chile/job/Arauco-T%C3%A9cnicoa-Mec%C3%A1nicoa-Tornero-Cel-L3-BI/1443273100/",
+              "status": "pending"
+            },
+            {
+              "reason": "worksite_missing_or_multiple",
+              "url": "https://www.chiletrabajos.cl/trabajo/administrativo-a-de-ventas-repuestos-maquinaria-multimarca-3919971",
+              "status": "pending"
+            },
+            {
+              "reason": "structured_jobposting_missing",
+              "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Operadora-Maquinaria-Forestal-Procesador-Zona-Norte-BI-3780000/1402854900/",
+              "status": "pending"
+            }
+          ],
+          "audits": [
+            {
+              "candidates": 0,
+              "coverageComplete": false,
+              "discoveryGroup": "local",
+              "http": 200,
+              "source": "Municipalidad / OMIL Los Sauces",
+              "error": null,
+              "url": "https://www.munilossauces.cl/noticias",
+              "territory": "Los Sauces"
+            },
+            {
+              "candidates": 0,
+              "coverageComplete": false,
+              "discoveryGroup": "local",
+              "http": 200,
+              "source": "Municipalidad / OMIL Traiguén",
+              "error": null,
+              "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+              "territory": "Traiguén"
+            },
+            {
+              "candidates": 29,
+              "coverageComplete": false,
+              "discoveryGroup": "local",
+              "http": 200,
+              "source": "Municipalidad / OMIL Renaico",
+              "error": null,
+              "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+              "territory": "Renaico"
+            },
+            {
+              "candidates": 0,
+              "coverageComplete": false,
+              "discoveryGroup": "portal",
+              "http": 403,
+              "source": "Indeed · Lumaco",
+              "error": null,
+              "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+              "territory": "Lumaco"
+            },
+            {
+              "candidates": 0,
+              "coverageComplete": false,
+              "discoveryGroup": "local",
+              "http": 200,
+              "source": "Municipalidad / OMIL Nacimiento",
+              "error": null,
+              "url": "https://www.nacimiento.cl/noticias",
+              "territory": "Nacimiento"
+            },
+            {
+              "candidates": 1,
+              "coverageComplete": false,
+              "discoveryGroup": "local",
+              "http": 200,
+              "source": "Municipalidad / OMIL Negrete",
+              "error": null,
+              "url": "https://www.muninegrete.cl/",
+              "territory": "Negrete"
+            },
+            {
+              "candidates": 4,
+              "coverageComplete": false,
+              "discoveryGroup": "local",
+              "http": 200,
+              "source": "Municipalidad / OMIL Mulchén",
+              "error": null,
+              "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+              "territory": "Mulchén"
+            },
+            {
+              "candidates": 0,
+              "coverageComplete": false,
+              "discoveryGroup": "portal",
+              "http": 403,
+              "source": "Indeed · Los Ángeles",
+              "error": null,
+              "url": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
+              "territory": "Los Ángeles"
+            }
+          ],
+          "closuresConfirmed": 0,
+          "noticesChecked": 6,
+          "priorityPending": 0,
+          "trackedOffers": 64,
+          "portalSourcesRead": 2,
+          "coverageComplete": false,
+          "verified": 2,
+          "published": 0,
+          "sourcesDeferred": 0,
+          "receipts": [
+            {
+              "table": "radar_external_7d6b601d6927b3f30356f340c78d8dc6",
+              "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+              "id": "1318f06f-b125-429c-bf9f-1cbbc6413dbb"
+            },
+            {
+              "table": "radar_external_68755a767511789f2d4e31c6d919eb1e",
+              "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+              "id": "cb724831-6a31-4fbf-9d8c-c067596f9237"
+            }
+          ],
+          "localSourcesRead": 6,
+          "closures": [],
+          "checkedAt": "2026-10-28T09:05:27.455Z",
+          "documentsManagedSeparately": 0,
+          "stored": 2
+        },
+        "publishedConfirmed": 2,
+        "feedManifestId": "38644901-9a20-4ac2-b596-ee8d6f458c29",
+        "historicalCoverageComplete": false,
+        "pending": 93,
+        "checkedAt": "2026-10-28T09:05:27.455Z",
+        "documentWork": {
+          "schema": "trabajo-cerca.document-work.v1",
+          "read_only": true,
+          "paid_provider_calls": 0,
+          "items": [
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03980020260612135730.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03980020260612135730.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-1959.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-1959.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-Cargo-Auxiliar-grado-16-y-17.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-Cargo-Auxiliar-grado-16-y-17.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979820260612135631.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979820260612135631.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargos-Tecnico-grado-11.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargos-Tecnico-grado-11.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979720260612135542.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979720260612135542.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-2065.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-2065.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/12/Bases-cargo-medicos-1.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/11/BASES-SALVAVIDAS.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-PROG-FAMILIA-2025.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-PROG-FAMILIA-2025.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-ORIENTADOR-LABORAL-2025.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/09/BASES-ORIENTADOR-LABORAL-2025.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/07/Bases-Consurso-Publico-Director-CESFAM-2025-Renaico.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/07/Bases-Consurso-Publico-Director-CESFAM-2025-Renaico.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/doc02014120250508171500.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/doc02014120250508171500.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Tecnico-Grado-10%C2%B0-1.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Tecnico-Grado-10%C2%B0-1.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Auxiliares-1.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/05/Auxiliares-1.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/01/CONCURSO-FAMILIA-MEDIA-JORNADA.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2025/01/CONCURSO-FAMILIA-MEDIA-JORNADA.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/11/Bases-cargo-medicos.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/11/Bases-cargo-medicos.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/10/BASES-PROG.-MUJERES-JEFAS-DE-HOGAR-1.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/10/BASES-PROG.-MUJERES-JEFAS-DE-HOGAR-1.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-FAMILIA-I-Y-II.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-FAMILIA-I-Y-II.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-PRODESAL.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/BASES-CONCURSO-PRODESAL.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/doc00271020240404085846.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2024/04/doc00271020240404085846.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/12/DECRETO-ALCALDICIO-EXENTO-3613.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/12/DECRETO-ALCALDICIO-EXENTO-3613.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05110720231120143211.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05110720231120143211.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05015020231106090029.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/11/doc05015020231106090029.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/09/CONCURSO-INTERNO-DSM.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf",
+              "source": "Municipalidad / OMIL Renaico",
+              "publisher_page": "https://www.municipalidadrenaico.cl/wp-content/uploads/2023/08/Decreto-Bases-Senda.pdf",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.radionativa.cl/wp-content/uploads/2022/07/7F7E480F-46E6-4ECC-9F77-8B43E1091823.png",
+              "source": "Radio Nativa",
+              "publisher_page": "https://www.radionativa.cl/capitan-pastene-postula-a-reconocimiento-mundial-de-turismo-rural/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2026/10/BASES-PUESTOS-DE-VENTAS-TODOS-LOS-SANTOS_000918-1.pdf",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.munimulchen.cl/wp-content/uploads/2026/04/Bases-5to-Concurso-microcuentosbureanos.pdf",
+              "source": "Municipalidad / OMIL Mulchén",
+              "publisher_page": "https://www.munimulchen.cl/5to-concurso-microcuentos-bureanos/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2026/08/DECRETO-APUEBA-BASES-PUESTOS-DE-VENTA-FIESTAS-PATRIAS-2026.pdf",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-10-at-17.08.44-1024x683.jpeg",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2025/02/permiso-de-circulacion-500x700-1.png",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2025/02/30_12_2021_10_42_10_TRAMITES_ONLINE_02.jpg",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2025/08/simulador.png",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/ya-estan-abiertas-las-postulaciones-para-puestos-de-venta-en-fiestas-patrias-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1485.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-martes-13-de-octubre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=23%3Abases-jefatura-grado-8",
+              "source": "Municipalidad / OMIL Lumaco",
+              "publisher_page": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=24%3Abases-profesional-grado-12",
+              "source": "Municipalidad / OMIL Lumaco",
+              "publisher_page": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.munilumaco.cl/index.php/component/phocadownload/category/1-concursos?Itemid=101&download=27%3Adecreto-que-aprueba-llamado-a-concurso-y-bases",
+              "source": "Municipalidad / OMIL Lumaco",
+              "publisher_page": "https://www.munilumaco.cl/index.php/afiches-municipales/811-llamados-a-concurso-publico",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/10/1484.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-jueves-08-de-octubre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2018/03/Concurso_vinculs_2018.pdf",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/concurso-publico-cargo-de-monitor-comunitario-vinculos/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2018/03/Resolucion-y-Bases-Vinculos_C.pdf",
+              "source": "Municipalidad / OMIL Negrete",
+              "publisher_page": "https://www.muninegrete.cl/concurso-publico-cargo-de-monitor-comunitario-vinculos/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.muninegrete.cl/wp-content/uploads/2026/10/FOTO-CON-INFO-SI-5-1024x683.png",
+              "source": "Municipalidad de Negrete · novedades",
+              "publisher_page": "https://www.muninegrete.cl/disponibles-las-postulaciones-para-puestos-de-venta-de-todos-los-santos-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.munimulchen.cl/wp-content/uploads/2024/06/CONCURSO-COSMOVISION-MAPUCHE.pdf",
+              "source": "Municipalidad / OMIL Mulchén",
+              "publisher_page": "https://www.munimulchen.cl/concurso-de-escritura/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1482.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-jueves-01-de-octubre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1481.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-martes-29-de-septiembre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1480.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-martes-22-de-septiembre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://lasnoticiasdemalleco.cl/wp-content/uploads/2026/10/a8fdf4a3-3427-448c-8e21-7dd218ad5421.jpg",
+              "source": "Las Noticias de Malleco",
+              "publisher_page": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+              "kind": "document"
+            },
+            {
+              "url": "https://lasnoticiasdemalleco.cl/wp-content/uploads/2026/10/11616-Portada-scaled.jpg",
+              "source": "Las Noticias de Malleco",
+              "publisher_page": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+              "kind": "document"
+            },
+            {
+              "url": "https://lasnoticiasdemalleco.cl/wp-content/uploads/2026/09/Portada-Suplemento-F-P-scaled.jpg",
+              "source": "Las Noticias de Malleco",
+              "publisher_page": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1479.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-jueves-17-de-septiembre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1477-1.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-jueves-10-de-septiembre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1476.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-martes-08-de-septiembre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1475.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-jueves-03-de-septiembre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://lasnoticiasdemalleco.cl/wp-content/uploads/2026/10/11617-Portada-scaled.jpg",
+              "source": "Las Noticias de Malleco",
+              "publisher_page": "https://lasnoticiasdemalleco.cl/educacion/se-inician-las-postulaciones-2027-para-las-carreras-tecnicas-y-de-continuidad-de-estudios-en-la-unap-sede-victoria/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.malleco7.cl/wp-content/uploads/2026/09/1474.pdf",
+              "source": "Malleco 7 · ediciones digitales",
+              "publisher_page": "https://www.malleco7.cl/edicion-martes-01-de-septiembre-de-2026/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/bases-llamado-a-concurso-para-proveer-el-cargo-de-Abogadoa-44-horas-para-CDM-FIRMADAS.pdf",
+              "source": "Municipalidad / OMIL Mulchén",
+              "publisher_page": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+              "kind": "document"
+            },
+            {
+              "url": "https://www.munimulchen.cl/wp-content/uploads/2026/06/decreto-bases-concurso.pdf",
+              "source": "Municipalidad / OMIL Mulchén",
+              "publisher_page": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+              "kind": "document"
+            }
+          ],
+          "checked_at": "2026-10-28T09:05:27.455Z",
+          "coverage_complete": false
+        }
+      },
+      "result": null,
+      "running": false
+    }
+  },
+  "territorial": {
+    "Angol": [
+      "free-ccf8f27df30c69c6394c9633c4db268f37808988",
+      "free-7fb295de921072a5f060bb8ca603ccd1b473deb4",
+      "tcq_8e10d10d8dedf4b7e3b9c1",
+      "tcq_e2265a52410f086a0dcb71"
+    ],
+    "Collipulli": [
+      "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+      "d73ebbc0-c815-455d-b6ed-015e620cedf6"
+    ],
+    "Ercilla": [
+      "0b54a8ad-1f4a-47f4-b351-8aa8dfa582f1",
+      "a4478588-785e-4545-824e-e94de6d8916a"
+    ],
+    "Renaico": [],
+    "Mininco": [],
+    "Nacimiento": [
+      "612daf87-5014-47ea-8421-c6a96420e873",
+      "361dab2c-87ef-4bce-9bda-ef731822244d",
+      "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+      "28b9b9be-fbc1-4eeb-bd46-56f859188231"
+    ],
+    "Negrete": [
+      "free-62d19a0bf91f3ec74f336a247a41a2e6c214c5f3",
+      "free-d294f2d92f9e56840e53553adef2420f48b30847"
+    ],
+    "Mulchén": [
+      "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+      "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+      "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+      "2dbb852b-abd3-45c0-83f2-6044155916c4"
+    ],
+    "Los Sauces": [],
+    "Purén": [],
+    "Traiguén": [
+      "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+      "de9067f5-59f2-4e0c-ba02-fc9584debe0f",
+      "8b75b282-d838-45bc-9309-d10874aae023",
+      "3c875b30-eec8-4d2a-9410-797e9ad37c07"
+    ],
+    "Lumaco": [
+      "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+      "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45",
+      "0b79c530-f4cd-4b5a-90df-a9479324ea7e"
+    ],
+    "Victoria": [
+      "2acda2c7-e657-4656-860e-1645badef65b",
+      "02c3f426-3500-42ee-8ac2-f5a2a6733c48",
+      "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+      "40b91274-90ed-4742-bfe6-f197949c7914"
+    ]
+  },
+  "complete": true
+}

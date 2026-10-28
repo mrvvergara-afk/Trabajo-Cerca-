@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { WORK_PLACES } from '../shared/territories';
 import { socialSourceDate } from './social-evidence';
 import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
 
@@ -24,7 +25,7 @@ export type PublicVerification = {
   source_date_evidence?:{ date_posted:string; valid_through:string; timezone:string };
 };
 
-const SOURCE_WORK_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Quilaco','Victoria','Los Ángeles','Temuco'];
+const SOURCE_WORK_PLACES = [...WORK_PLACES];
 const sourceFold = (value:unknown) => String(value ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sourceDecode = (value:string) => value.replace(/&(?:amp|quot|apos|lt|gt|nbsp);/g, entity => ({ '&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>','&nbsp;':' ' }[entity] || entity));
 export const publicText = (value:string) => sourceDecode(value.replace(/<[^>]*>/g,' ')).replace(/\s+/g,' ').trim();
@@ -226,6 +227,9 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   const explicitPlace=descriptionWorksite(job.description);
   const base = { title,company:employer,work_commune:place,work_location_verified:true,url:finalUrl,source:adapter.name,
     ...(explicitPlace.observed ? {work_location_evidence:{method:'explicit_worksite_in_own_job_description',literal:explicitPlace.literal}} : {}) };
+  const titlePlaces=SOURCE_WORK_PLACES.filter(t=>new RegExp('\\b'+sourceFold(t)+'\\b').test(sourceFold(title)));
+  if (titlePlaces.length===1 && titlePlaces[0]!==place) return {...base,
+    status:'review_ready',reason:'title_worksite_conflict',work_location_verified:false};
   const published = publicJobDate(job.datePosted,adapter.name);
   const deadline = job.validThrough ? publicJobDate(job.validThrough,adapter.name,true) : null;
   if (deadline && Date.parse(deadline)<=now) return { ...base,status:'rejected',reason:'expired_deadline' };

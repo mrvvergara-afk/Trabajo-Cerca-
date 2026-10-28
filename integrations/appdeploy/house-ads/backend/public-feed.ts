@@ -1,6 +1,7 @@
 import { db } from '@appdeploy/sdk';
 import { createHash, randomUUID } from 'node:crypto';
 import { publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
+import { recordCandidate } from './radar-trace';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -112,6 +113,18 @@ async function replaceSingle(table:string, record:Stored) {
     const [id] = await db.add(table, [record]);
     if (!id) throw new Error('Public feed pointer/checkpoint insert failed: ' + table);
   }
+}
+
+async function persistBuild(record:Stored,lease:Lease) {
+  checkSize(record);
+  await assertFeedLease(lease);
+  const current=await single<Stored>('public_feed_build_state');
+  const gate=db.tx.update('public_feed_writer',[{id:'writer',
+    if:{owner:lease.owner,expiresAt:lease.expiresAt},record:{expiresAt:lease.expiresAt}}],{patch:true});
+  const write=current
+    ? db.tx.update('public_feed_build_state',[{id:current.id,record}])
+    : db.tx.add('public_feed_build_state',[{id:'current',...record}]);
+  await db.transact([gate,write]);
 }
 
 async function queueChanges(source:string, ids:string[]) {
@@ -419,8 +432,10 @@ async function publish(record:Manifest, lease:Lease) {
 }
 
 export async function readPublicFeedSummary() {
-  const current = await single<Control>('public_feed_control');
-  return { ...emptySummary(), ...current, rebuilding:!current?.manifestId };
+  const snapshot=await currentPublicFeedManifest();
+  if (!snapshot) return {...emptySummary(),rebuilding:true};
+  const {pages:_pages,...summary}=snapshot.manifest;
+  return {...summary,manifestId:snapshot.manifestId,rebuilding:false,usingLastGood:snapshot.degraded};
 }
 
 export async function currentPublicFeedManifest() {
@@ -481,7 +496,7 @@ async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
       const editor = new Editor(build.pages, projector, now);
       await editor.upgrade(legacy);
       await assertFeedLease(lease);
-      await replaceSingle('public_feed_build_state', { ...build, ...manifest(await editor.persist(), now) });
+      await persistBuild({ ...build, ...manifest(await editor.persist(), now) },lease);
       return { ...await readPublicFeedSummary(), rebuilding:true, buildSource:build.source };
     }
     if (build.source === 'complete') return publish(manifest(build.pages, now),lease);
@@ -492,7 +507,7 @@ async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
     const source = rows.nextToken ? build.source : build.source === 'radar_jobs' ? 'community_posts' : 'complete';
     const next:Build = { ...manifest(pages, now), source, ...(rows.nextToken ? { nextToken:rows.nextToken } : {}) };
     await assertFeedLease(lease);
-    await replaceSingle('public_feed_build_state', next as unknown as Stored);
+    await persistBuild(next as unknown as Stored,lease);
     return source === 'complete' ? publish(manifest(pages, now),lease) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
   }
 
@@ -529,14 +544,23 @@ async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
     wanted.set(key, { source:key.slice(0, colon) as FeedSource, sourceId:key.slice(colon + 1) });
   }
   const editor = new Editor(current.pages, projector, now);
+  const publicationChecks:Array<{url:string;key:string}>=[];
   for (const source of new Set([...wanted.values()].map(item => item.source))) {
     const ids = [...wanted.values()].filter(item => item.source === source).map(item => item.sourceId);
     if (!ids.length) continue;
     const records = await db.get<Stored>(source, ids);
     if (records.length !== ids.length) throw new Error('Source read result count mismatch');
-    for (let i = 0; i < ids.length; i++) await editor.put(source, ids[i], records[i]);
+    for (let i = 0; i < ids.length; i++) {
+      await editor.put(source, ids[i], records[i]);
+      const url=records[i]?.url;
+      if (typeof url==='string' && records[i]?.kind==='job_offer') publicationChecks.push({url,key:source+':'+ids[i]});
+    }
   }
   const result = await publish(manifest(await editor.persist(), now),lease);
+  for (const check of publicationChecks) {
+    const present=editor.pages.some(page=>page.keys.includes(check.key));
+    await recordCandidate(check.url,{publication:present?'published':'not_in_current_feed',feedPresent:present,feedManifestId:result.manifestId});
+  }
   // Acknowledge only after the complete immutable manifest and visible pointer are durable.
   if (changes.items.length) {
     const removed = await db.delete('public_feed_changes', changes.items.map(change => change.id));

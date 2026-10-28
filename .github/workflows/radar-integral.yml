@@ -5,6 +5,7 @@ on:
     paths: ['integrations/appdeploy/house-ads/**', '.github/workflows/radar-integral.yml']
 permissions:
   contents: read
+  actions: read
 jobs:
   verify:
     if: github.event.repository.private == false
@@ -18,6 +19,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: radar-integral-evidence-and-source-package
+          run-id: 40671046323
+          github-token: ${{ github.token }}
+          path: integrations/appdeploy/house-ads/qa-output/previous
       - name: Reconcile native PDF dependency in isolated runner
         run: npm install --ignore-scripts --no-audit --no-fund --fetch-retries=0 --fetch-timeout=30000
       - name: Compile real frontend and backend; no deployment
@@ -26,12 +36,23 @@ jobs:
           node qa/radar-verify.mjs
       - name: Regression tests on repaired native modules
         run: node --test qa/radar-repair.test.mjs
+      - name: Strict native backend types against the existing SDK reference
+        run: npx tsc -p qa/radar-native-tsconfig.json
       - name: Read public catalogue and territorial DOM
         continue-on-error: true
         run: node qa/radar-live-observe.mjs
       - name: Process complete source inventory with A and B on common URLs
         if: success()
+        env:
+          RADAR_PREVIOUS: qa-output/previous/qa-output/radar/crawl.json
         run: node qa/radar-real-crawl.mjs
+      - name: Install free local OCR tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-spa
+          python -m pip install --disable-pip-version-check PyMuPDF==1.26.7 pytesseract==0.3.13 Pillow==11.3.0
+      - name: Read actual PDF and image queue with local OCR
+        run: node qa/radar-ocr.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -49,3 +49,17 @@ export async function recordVerification(url:string, result:PublicVerification, 
     validThrough:result.valid_through || null,application:result.application || null,
     nextAttemptAt:['recoverable','inaccessible'].includes(state)?new Date(now+6*3600000).toISOString():null},now);
 }
+
+export async function recoverCandidatePage(now=Date.now()) {
+  const [cursor]=await db.get<Row>('radar_candidate_cursor',['recovery'],{consistent:true});
+  const token=typeof cursor?.nextToken==='string'?cursor.nextToken:undefined;
+  const page=await db.list<Row>('radar_candidate_trace',{limit:20,...(token?{nextToken:token}:{})});
+  const items=page.items.filter(x=>['recoverable','inaccessible'].includes(String(x.state)) &&
+    !(Date.parse(String(x.nextAttemptAt||''))>now)).map(x=>({url:String(x.url),
+      source:String(x.source),publisherPage:String(x.publisherPage||x.url)}));
+  const record={nextToken:page.nextToken||null,checkedAt:new Date(now).toISOString()};
+  const [ok]=cursor?await db.tx.update('radar_candidate_cursor',[{id:'recovery',record}]):
+    await db.tx.add('radar_candidate_cursor',[{id:'recovery',...record}]);
+  if (!ok) throw new Error('Candidate recovery checkpoint failed');
+  return items;
+}

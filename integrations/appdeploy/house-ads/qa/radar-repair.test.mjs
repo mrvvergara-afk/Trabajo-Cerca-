@@ -60,11 +60,47 @@ test('feed retains a durable public snapshot and serializes overlapping writers'
  assert.equal((await core.readPublicFeedPage()).totalItems,3);
  assert.equal([...mem.table('public_feed_control').values()][0].previousManifestId,original);
  const current=[...mem.table('public_feed_control').values()][0];
+ const saved=mem.table('public_feed_manifests').get(current.manifestId);
  mem.table('public_feed_manifests').delete(current.manifestId);
  assert.equal((await core.readPublicFeedPage()).totalItems,2);
+ mem.table('public_feed_manifests').set(current.manifestId,saved);
 });
 test('document unit identities keep distinct roles and normalize URL equivalents',()=>{
  const first=core.publicOfferIdentity('https://www.malleco7.cl/bases.pdf','a'.repeat(64));
  const second=core.publicOfferIdentity('https://www.malleco7.cl/bases.pdf','b'.repeat(64));
  assert(first&&second&&first!==second);
+});
+
+test('a stolen writer cannot acknowledge changes or overwrite the public pointer',async()=>{
+ const original=[...mem.table('public_feed_control').values()][0].manifestId;
+ mem.table('radar_jobs').set('job-four',{kind:'job_offer',title:'Unit fixture 4',verified:true,workCommunes:['Angol']});
+ await core.registerPublicFeedChange('radar_jobs','job-four');
+ const transact=mem.db.transact;
+ mem.db.transact=async ops=>{
+   const lease=mem.table('public_feed_writer').get('writer');
+   mem.table('public_feed_writer').set('writer',{...lease,owner:'replacement-writer'});
+   return transact(ops);
+ };
+ try {await assert.rejects(core.advancePublicFeed(projector),/transaction aborted/);}
+ finally {mem.db.transact=transact;}
+ assert.equal([...mem.table('public_feed_control').values()][0].manifestId,original);
+ assert.equal(mem.table('public_feed_changes').size,1);
+ assert.equal(mem.table('public_feed_writer').get('writer').owner,'replacement-writer');
+});
+
+test('a portal title and structured city conflict is review, never verified in the wrong commune',()=>{
+ const u='https://www.chiletrabajos.cl/trabajo/operador-renaico-1234567';
+ const job={'@type':'JobPosting',url:u,title:'Operador en Renaico',description:'Oferta laboral para operador',
+  hiringOrganization:{name:'Empresa de prueba'},datePosted:'2026-10-27',validThrough:'2026-11-10',
+  jobLocation:{'@type':'Place',address:{addressCountry:'CL',addressLocality:'Angol'}}};
+ const raw='<title>Operador en Renaico</title><script type="application/ld+json">'+JSON.stringify(job)+'</script><p>Oferta laboral, requisitos y postulación</p>';
+ assert.equal(core.evaluatePublicJob(u,raw,u,200,now).reason,'title_worksite_conflict');
+});
+
+test('individual portal recommendations do not masquerade as new discovery sources',()=>{
+ const one='https://www.chiletrabajos.cl/trabajo/operador-angol-1234567';
+ const other='https://www.chiletrabajos.cl/trabajo/vendedor-santiago-7654321';
+ const raw='<a href="'+one+'">Postular</a><a href="'+other+'">Oferta recomendada</a>';
+ assert(core.publicPageLinks(raw,one).candidates.every(x=>core.publicFeedIdentity(x.url)===core.publicFeedIdentity(one)));
+ assert(core.publicPageLinks(raw,'https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol').candidates.some(x=>x.url===other));
 });

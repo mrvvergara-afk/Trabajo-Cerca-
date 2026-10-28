@@ -4,13 +4,16 @@ const core=await import('../qa-output/radar/core.mjs');
 const inventory=JSON.parse(readFileSync('qa/radar-source-inventory.json','utf8'));
 const out='qa-output/radar';mkdirSync(out,{recursive:true});
 let baseline={};try{baseline=JSON.parse(readFileSync('qa-output/radar-live/baseline.json','utf8'));}catch{}
+let previous;
+if(process.env.RADAR_PREVIOUS){previous=JSON.parse(readFileSync(process.env.RADAR_PREVIOUS,'utf8'));}
 const existing=new Set((baseline.proofs?.['radar-proof']?.visibleItems||[]).map(x=>core.publicFeedIdentity(x.url||'')).filter(Boolean));
 const seeds=new Map();
 for(const source of inventory.sources){const prior=seeds.get(source.url);if(prior)prior.references.push(source.key);else seeds.set(source.url,{...source,references:[source.key]});}
 for(const doc of baseline.proofs?.['radar-public-proof']?.state?.documentWork?.items||[])if(!seeds.has(doc.url))seeds.set(doc.url,{...doc,name:doc.source,inventory:'live-document-queue',references:['live-document-queue']});
 const report={startedAt:new Date().toISOString(),paidCalls:0,platformWrites:0,syntheticRecords:0,inventoryEntries:inventory.sources.length,
   uniqueSeedUrls:seeds.size,primaryTowns:inventory.primaryTowns,sources:[],candidates:[],documents:[],pending:[],engines:{}};
-const queue=[],seen=new Set(),sourceTasks=[...seeds.values()];
+const priorSources=new Set((previous?.sources||[]).map(x=>x.url));
+const queue=[],seen=new Set(),sourceTasks=[...seeds.values()].filter(x=>!priorSources.has(x.url));
 const add=(url,source,publisherPage)=>{const clean=core.safePublicUrl(url);if(clean&&!seen.has(clean)){seen.add(clean);queue.push({url:clean,source,publisherPage});}};
 const digest=x=>createHash('sha256').update(x).digest('hex');
 const start=Date.now(),deadline=start+11*60000;
@@ -31,8 +34,15 @@ async function inspectSource(source) {
 }
 const rootsRead=await parallel(sourceTasks,inspectSource);
 for(const source of sourceTasks.slice(rootsRead))report.pending.push({...source,reason:'run_time_budget_before_source_read'});
+if(previous){
+ report.sources=previous.sources;report.candidates=previous.candidates;report.documents=previous.documents;
+ report.continuedFrom=previous.completedAt;
+ for(const x of [...previous.candidates,...previous.documents])seen.add(x.url);
+ queue.length=0;
+ for(const x of previous.pending||[])if(!seen.has(x.url)){seen.add(x.url);queue.push(x);}
+}
 let processed=0;
-while(queue.length&&Date.now()<deadline&&processed<800) {
+while(queue.length&&Date.now()<deadline&&processed<4000) {
  const batch=queue.splice(0,4);processed+=batch.length;
  await parallel(batch,async candidate=>{
   if(/\.pdf(?:[?#]|$)/i.test(candidate.url)){
@@ -42,6 +52,9 @@ while(queue.length&&Date.now()<deadline&&processed<800) {
   }
   if(/\.(png|jpe?g|webp)(?:[?#]|$)/i.test(candidate.url)){report.documents.push({...candidate,stage:'recoverable',reason:'image_ocr_requires_local_reader'});return;}
   const page=await core.fetchPublicPage(candidate.url,candidate.url);
+  if(page.error==='document_requires_local_reader' && /pdf/i.test(page.mime)) {
+   try{report.documents.push({...candidate,...await core.extractPublicPdf(candidate.url)});}catch(e){report.documents.push({...candidate,stage:'inaccessible',reason:String(e)});}return;
+  }
   const A=page.error?{status:'pending',reason:page.error}:core.evaluatePublicJob(candidate.url,page.raw,page.url,page.status);
   const B=page.error?A:core.evaluateWithEvidence(candidate.url,page.raw,page.url,page.status);
   const identity=core.publicFeedIdentity(candidate.url);
@@ -56,6 +69,15 @@ while(queue.length&&Date.now()<deadline&&processed<800) {
  });
 }
 report.pending.push(...queue.map(x=>({...x,reason:'run_budget_pending'})));
+if(previous) {
+ await parallel(report.candidates.filter(x=>x.A.status==='verified'||x.B.status==='verified'),async row=>{
+   const page=await core.fetchPublicPage(row.url,row.url);
+   row.previousMeasurement={A:row.A,B:row.B,sha256:row.sha256};
+   row.A=page.error?{status:'pending',reason:page.error}:core.evaluatePublicJob(row.url,page.raw,page.url,page.status);
+   row.B=page.error?row.A:core.evaluateWithEvidence(row.url,page.raw,page.url,page.status);
+   row.sha256=page.raw?digest(page.raw):null;row.recheckedAt=new Date().toISOString();
+ });
+}
 for(const engine of ['A','B']) {
  const values=report.candidates,verified=values.filter(x=>x[engine].status==='verified');
  const unique=new Map(verified.filter(x=>x.identity).map(x=>[x.identity,x]));
@@ -66,7 +88,9 @@ for(const engine of ['A','B']) {
   newPublished:0,newVisibleIn13:0,readingErrors:values.filter(x=>x.http!==200).length,
   documentsProcessed:engine==='B'?report.documents.filter(x=>x.complete).length:0};
 }
-report.completedAt=new Date().toISOString();report.allInventoryEntriesAttempted=rootsRead===sourceTasks.length;
+report.completedAt=new Date().toISOString();
+report.checkpointVersion=1;
+report.measurementNotes=previous?'Earlier candidate receipts retain their original engine version/time; targeted probes validate changed rules separately.':'Common URLs evaluated by both engines at read time.';report.allInventoryEntriesAttempted=rootsRead===sourceTasks.length;
 report.fullTraversalComplete=report.allInventoryEntriesAttempted&&report.pending.length===0;
 writeFileSync(out+'/crawl.json',JSON.stringify(report,null,2));
 console.log('RADAR_CRAWL_SUMMARY '+JSON.stringify({...report,sources:undefined,candidates:undefined,documents:undefined,pending:report.pending.length}));

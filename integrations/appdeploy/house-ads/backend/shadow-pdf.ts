@@ -47,7 +47,7 @@ export async function extractPublicPdf(address:string) {
       text+='\n'+value;pagesRead++;
     }
   } finally {await document.destroy();}
-  const complete=pagesRead===pageCount;
+  const complete=pagesRead===pageCount && ocrPages.length===0;
   const workCommunes=PRIMARY_PLACES.filter(t=>new RegExp('(?:^|[^a-z])'+fold(t)+'(?:$|[^a-z])').test(fold(text)));
   const jobTitles=[...new Set([...text.matchAll(/(?:cargo|puesto|vacante)\s*[:\-]\s*([^.;\n]{6,100})/gi)].map(m=>m[1].trim()))].slice(0,20);
   const hiring=/concurso p[uú]blico|llamado a concurso|se requiere|oferta laboral|convocatoria laboral|se busca|vacante/i.test(text);

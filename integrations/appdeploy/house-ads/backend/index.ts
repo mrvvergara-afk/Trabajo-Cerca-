@@ -2953,7 +2953,12 @@ const applicationRouter = router({
     const pdfCount={recoverable:0,needs_review:0,blocked:0,closed:0};
     for(const row of shadow.items){const k=String(row.stage);if(k in shadowCount)shadowCount[k as keyof typeof shadowCount]++;}
     for(const row of pdf.items){const k=String(row.stage);if(k in pdfCount)pdfCount[k as keyof typeof pdfCount]++;}
-    return json({updatedAt:new Date().toISOString(),motorA:{visibleVerifiedOffers:Number(feed.totalVerifiedJobOffers||0)},motorB:{htmlReviewed:shadow.items.length,htmlStages:shadowCount,pdfRead:pdf.items.length,pdfStages:pdfCount},additionalPublishedFromB:0,comparisonComplete:false});
+    return json({updatedAt:new Date().toISOString(),motorA:{visibleVerifiedOffers:Number(feed.totalVerifiedJobOffers||0)},motorB:{htmlReviewed:shadow.items.length,htmlStages:shadowCount,pdfRead:pdf.items.length,pdfStages:pdfCount},additionalPublishedFromB:null,comparisonComplete:false,measurementScope:'bounded_page_not_full_inventory',htmlNextCursor:shadow.nextToken||null,pdfNextCursor:pdf.nextToken||null,publicationEvidence:'requires_common_baseline_and_public_feed_reconciliation'});
+  }],
+  'GET /api/admin/radar-trace': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({query}) => {
+    const page=await db.list<Record<string,unknown>>('radar_candidate_trace',{limit:50,...(query.cursor?{nextToken:query.cursor}:{})});
+    return json({schema:'trabajo-cerca.candidate-trace.v1',items:page.items,nextCursor:page.nextToken||null,
+      pageComplete:!page.nextToken,scope:'candidate_ledger_page',observedAt:new Date().toISOString()});
   }],
   'GET /api/admin/radar-shadow-compare': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({query})=>{
     const rows=await db.list<Record<string,unknown>>('radar_shadow_b',{limit:100,...(query.cursor?{nextToken:query.cursor}:{})});
@@ -2962,13 +2967,13 @@ const applicationRouter = router({
     const [status,feedState,feedSummary,pdfRows]=await Promise.all([freePublicSourceStatus(),publicFeedProgress(),readPublicFeedSummary(),db.list<Record<string,unknown>>('radar_shadow_pdf',{limit:100})]);
     const pdfCounts={recoverable:0,needs_review:0,blocked:0,closed:0};
     for(const item of pdfRows.items){const state=String(item.stage);if(state in pdfCounts)pdfCounts[state as keyof typeof pdfCounts]++;}
-    const independentlyEligible=rows.items.filter(x=>x.eligibleForPublicFeed===true && x.extractionMethod==='html_verified_evidence').length;
+    const independentlyEligible=rows.items.filter(x=>x.independentlyVerified===true && typeof x.sourceId==='string').length;
     return json({readOnly:true,experiment:'full-source-real-pages',baseline:status.summary,
       result:{publicVerifiedJobOffers:Number(feedSummary.totalVerifiedJobOffers||0),publicFeedItemCount:feedState.visibleItemCount,
         shadowRecords:rows.items.length,shadowHtmlIndependentCandidates:independentlyEligible,
         pdfDocumentsAnalyzed:pdfRows.items.length,pdfCounts,
         // Extra published offers must be confirmed by public feed. Zero until that reconciliation is implemented.
-        confirmedAdditionalPublishedFromMotorB:0,comparisonComplete:false},shadow:{sampled:rows.items.length,stages:count,items:rows.items.map(x=>({url:x.url,title:x.title,place:x.place,source:x.source,baselineReason:x.baselineReason,stage:x.stage,eligibleForPublicFeed:x.eligibleForPublicFeed})),nextCursor:rows.nextToken},publicFeedUntouched:true});
+        confirmedAdditionalPublishedFromMotorB:null,comparisonComplete:false,measurementScope:'bounded_page_not_full_inventory',pdfNextCursor:pdfRows.nextToken||null},shadow:{sampled:rows.items.length,stages:count,items:rows.items.map(x=>({url:x.url,title:x.title,place:x.place,source:x.source,baselineReason:x.baselineReason,stage:x.stage,eligibleForPublicFeed:x.eligibleForPublicFeed})),nextCursor:rows.nextToken},publicFeedUntouched:true});
   }],
   'POST /api/ops/free-public-sources/run': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 

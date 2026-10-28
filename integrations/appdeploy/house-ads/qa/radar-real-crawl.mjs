@@ -12,22 +12,24 @@ for(const source of inventory.sources){const prior=seeds.get(source.url);if(prio
 for(const doc of baseline.proofs?.['radar-public-proof']?.state?.documentWork?.items||[])if(!seeds.has(doc.url))seeds.set(doc.url,{...doc,name:doc.source,inventory:'live-document-queue',references:['live-document-queue']});
 const report={startedAt:new Date().toISOString(),paidCalls:0,platformWrites:0,syntheticRecords:0,inventoryEntries:inventory.sources.length,
   uniqueSeedUrls:seeds.size,primaryTowns:inventory.primaryTowns,sources:[],candidates:[],documents:[],pending:[],engines:{}};
-const priorSources=new Set((previous?.sources||[]).filter(x=>!['publisher_not_yet_approved_in_existing_adapter','document_requires_local_reader'].includes(x.reason)).map(x=>x.url));
+const priorSources=new Set((previous?.sources||[]).filter(x=>!(previous.checkpointVersion<2&&x.state==='accessible')&&!['publisher_not_yet_approved_in_existing_adapter','document_requires_local_reader'].includes(x.reason)).map(x=>x.url));
 const queue=[],seen=new Set(),sourceTasks=[...seeds.values()].filter(x=>!priorSources.has(x.url));
 const add=(url,source,publisherPage)=>{const clean=core.safePublicUrl(url);if(clean&&!seen.has(clean)){seen.add(clean);queue.push({url:clean,source,publisherPage});}};
 const digest=x=>createHash('sha256').update(x).digest('hex');
 const start=Date.now(),deadline=start+11*60000;
 async function parallel(items,fn,n=4){let index=0;await Promise.all(Array.from({length:n},async()=>{while(index<items.length&&Date.now()<deadline){const item=items[index++];try{await fn(item);}catch(e){report.pending.push({...item,reason:String(e)});}}}));return index;}
 async function inspectSource(source) {
- const row={url:source.url,name:source.name||source.id,inventory:source.inventory,references:source.references,territory:source.territory};
+ const row={checkedAt:new Date().toISOString(),url:source.url,name:source.name||source.id,inventory:source.inventory,references:source.references,territory:source.territory};
  if(source.manualOnly){report.sources.push({...row,state:'manual_or_authorized_api_only',reason:'social_access_not_automated'});return;}
  if(!core.publicPublisher(source.url)){report.sources.push({...row,state:'inaccessible',reason:'publisher_not_yet_approved_in_existing_adapter'});return;}
  if(/\.pdf(?:[?#]|$)/i.test(source.url)){add(source.url,row.name,source.publisher_page||source.url);report.sources.push({...row,state:'document_queued'});return;}
  const page=await core.fetchPublicPage(source.url);
- if(page.error==='document_requires_local_reader'&&/pdf/i.test(page.mime)) {add(source.url,row.name,source.publisher_page||source.url);report.sources.push({...row,state:'document_queued',reason:'pdf_requires_reader'});return;}
+ if(page.error==='document_requires_local_reader'&&/pdf|image\//i.test(page.mime)) {add(source.url,row.name,source.publisher_page||source.url);report.sources.push({...row,state:'document_queued',reason:'pdf_requires_reader'});return;}
  report.sources.push({...row,http:page.status,state:page.error||page.status!==200?'inaccessible':'accessible',reason:page.error||null,sha256:page.raw?digest(page.raw):null});
  if(page.status!==200||page.error)return;
  const links=core.publicPageLinks(page.raw,page.url);
+ const receipt=report.sources.find(x=>x.url===source.url);
+ if(receipt){receipt.discoveredCandidateUrls=links.candidates.map(x=>x.url);receipt.discoveredArchiveUrls=links.archives;}
  if(core.publicSourceAdapter(page.url))add(page.url,row.name,page.url);
  for(const item of links.candidates)add(item.url,row.name,page.url);
  // Pagination is queued explicitly, never silently counted as already read.
@@ -40,7 +42,8 @@ if(previous){
  report.sources=[...previous.sources.filter(x=>!refreshed.has(x.url)),...report.sources];report.candidates=previous.candidates;report.documents=previous.documents;
  report.continuedFrom=previous.completedAt;
  for(const x of [...previous.candidates,...previous.documents])seen.add(x.url);
- queue.length=0;
+ const newlyDiscovered=queue.splice(0).filter(x=>!previous.candidates.some(old=>old.url===x.url)&&!previous.documents.some(old=>old.url===x.url));
+ queue.push(...newlyDiscovered);
  for(const x of previous.pending||[])if(!seen.has(x.url)){seen.add(x.url);queue.push(x);}
 }
 let processed=0;
@@ -60,7 +63,7 @@ while(queue.length&&Date.now()<deadline&&processed<4000) {
   const A=page.error?{status:'pending',reason:page.error}:core.evaluatePublicJob(candidate.url,page.raw,page.url,page.status);
   const B=page.error?A:core.evaluateWithEvidence(candidate.url,page.raw,page.url,page.status);
   const identity=core.publicFeedIdentity(candidate.url);
-  report.candidates.push({...candidate,id:'candidate-'+digest(candidate.url).slice(0,48),identity,http:page.status,
+  report.candidates.push({...candidate,checkedAt:new Date().toISOString(),id:'candidate-'+digest(candidate.url).slice(0,48),identity,http:page.status,
    sha256:page.raw?digest(page.raw):null,A,B,alreadyPublic:Boolean(identity&&existing.has(identity)),
    publicFeedPresent:Boolean(identity&&existing.has(identity)),territorialViewConfirmed:false});
   if(page.status===200&&!page.error) {
@@ -69,6 +72,7 @@ while(queue.length&&Date.now()<deadline&&processed<4000) {
    for(const found of links.candidates)add(found.url,candidate.source,page.url);
   }
  });
+ if(done<batch.length)report.pending.push(...batch.slice(done).map(x=>({...x,reason:'batch_time_budget_pending'})));
 }
 report.pending.push(...queue.map(x=>({...x,reason:'run_budget_pending'})));
 if(previous) {
@@ -99,9 +103,15 @@ for(const engine of ['A','B']) {
   documentsProcessed:engine==='B'?report.documents.filter(x=>x.complete&&!(x.ocrPages?.length)&&x.reason!=='ocr_required').length:0};
 }
 report.completedAt=new Date().toISOString();
-report.checkpointVersion=1;
+report.checkpointVersion=2;
 report.measurementNotes=previous?'Earlier candidate receipts retain their original engine version/time; targeted probes validate changed rules separately.':'Common URLs evaluated by both engines at read time.';report.allInventoryEntriesAttempted=rootsRead===sourceTasks.length;
+const accounted=new Set([...report.candidates,...report.documents,...report.sources.filter(x=>x.state==='accessible')].map(x=>x.url));
+const pendingUrls=new Set(report.pending.map(x=>x.url));
+for(const source of report.sources)for(const url of [...(source.discoveredCandidateUrls||[]),...(source.discoveredArchiveUrls||[])]) {
+ if(!accounted.has(url)&&!pendingUrls.has(url)){report.pending.push({url,source:source.name,reason:'discovered_link_not_yet_accounted'});pendingUrls.add(url);}
+}
 report.fullTraversalComplete=report.allInventoryEntriesAttempted&&report.pending.length===0;
+report.blockedSourceCount=report.sources.filter(x=>x.state==='inaccessible'||x.state==='manual_or_authorized_api_only').length;
 writeFileSync(out+'/crawl.json',JSON.stringify(report,null,2));
 console.log('RADAR_CRAWL_SUMMARY '+JSON.stringify({...report,sources:undefined,candidates:undefined,documents:undefined,pending:report.pending.length}));
 for(const row of report.sources)console.log('RADAR_SOURCE '+JSON.stringify(row));

@@ -2,7 +2,7 @@ name: Radar repair verification and real read-only crawl
 on:
   push:
     branches: [repair/radar-integral-2026-10-28]
-    paths: ['integrations/appdeploy/house-ads/**', '.github/workflows/radar-integral.yml']
+    paths: ['integrations/appdeploy/house-ads/**', '!integrations/appdeploy/house-ads/package-lock.json', '.github/workflows/radar-integral.yml']
 permissions:
   contents: read
   actions: read

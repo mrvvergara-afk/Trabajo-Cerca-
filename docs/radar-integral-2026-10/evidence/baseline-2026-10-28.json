@@ -2595,5 +2595,6 @@
       "40b91274-90ed-4742-bfe6-f197949c7914"
     ]
   },
-  "complete": true
+  "complete": false,
+  "territorialVerificationNote": "First UI pass captured only the first local results page. Full SDK inventory was read; territorial pagination is pending a corrected observer. Do not use these DOM counts as inventory totals."
 }

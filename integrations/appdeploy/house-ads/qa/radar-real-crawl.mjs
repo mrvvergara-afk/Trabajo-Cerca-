@@ -12,7 +12,7 @@ for(const source of inventory.sources){const prior=seeds.get(source.url);if(prio
 for(const doc of baseline.proofs?.['radar-public-proof']?.state?.documentWork?.items||[])if(!seeds.has(doc.url))seeds.set(doc.url,{...doc,name:doc.source,inventory:'live-document-queue',references:['live-document-queue']});
 const report={startedAt:new Date().toISOString(),paidCalls:0,platformWrites:0,syntheticRecords:0,inventoryEntries:inventory.sources.length,
   uniqueSeedUrls:seeds.size,primaryTowns:inventory.primaryTowns,sources:[],candidates:[],documents:[],pending:[],engines:{}};
-const priorSources=new Set((previous?.sources||[]).map(x=>x.url));
+const priorSources=new Set((previous?.sources||[]).filter(x=>!['publisher_not_yet_approved_in_existing_adapter','document_requires_local_reader'].includes(x.reason)).map(x=>x.url));
 const queue=[],seen=new Set(),sourceTasks=[...seeds.values()].filter(x=>!priorSources.has(x.url));
 const add=(url,source,publisherPage)=>{const clean=core.safePublicUrl(url);if(clean&&!seen.has(clean)){seen.add(clean);queue.push({url:clean,source,publisherPage});}};
 const digest=x=>createHash('sha256').update(x).digest('hex');
@@ -24,6 +24,7 @@ async function inspectSource(source) {
  if(!core.publicPublisher(source.url)){report.sources.push({...row,state:'inaccessible',reason:'publisher_not_yet_approved_in_existing_adapter'});return;}
  if(/\.pdf(?:[?#]|$)/i.test(source.url)){add(source.url,row.name,source.publisher_page||source.url);report.sources.push({...row,state:'document_queued'});return;}
  const page=await core.fetchPublicPage(source.url);
+ if(page.error==='document_requires_local_reader'&&/pdf/i.test(page.mime)) {add(source.url,row.name,source.publisher_page||source.url);report.sources.push({...row,state:'document_queued',reason:'pdf_requires_reader'});return;}
  report.sources.push({...row,http:page.status,state:page.error||page.status!==200?'inaccessible':'accessible',reason:page.error||null,sha256:page.raw?digest(page.raw):null});
  if(page.status!==200||page.error)return;
  const links=core.publicPageLinks(page.raw,page.url);
@@ -35,7 +36,8 @@ async function inspectSource(source) {
 const rootsRead=await parallel(sourceTasks,inspectSource);
 for(const source of sourceTasks.slice(rootsRead))report.pending.push({...source,reason:'run_time_budget_before_source_read'});
 if(previous){
- report.sources=previous.sources;report.candidates=previous.candidates;report.documents=previous.documents;
+ const refreshed=new Set(report.sources.map(x=>x.url));
+ report.sources=[...previous.sources.filter(x=>!refreshed.has(x.url)),...report.sources];report.candidates=previous.candidates;report.documents=previous.documents;
  report.continuedFrom=previous.completedAt;
  for(const x of [...previous.candidates,...previous.documents])seen.add(x.url);
  queue.length=0;

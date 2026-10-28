@@ -32,7 +32,7 @@ try {
  try {
   await page.goto(root,{waitUntil:'domcontentloaded',timeout:45000});
   await page.locator('[data-offer-id]').first().waitFor({timeout:75000});
-  for(let i=0;i<30;i++){const more=page.getByRole('button',{name:'Cargar más',exact:true});if(!await more.count())break;await more.click();await page.waitForTimeout(500);}
+  await page.waitForFunction(()=>document.querySelector('#neo-jobs')?.getAttribute('aria-busy')==='false'&&!document.querySelector('.neoLoadMore'),null,{timeout:45000});
   for(const town of towns){
    let select;
    for (const candidate of await page.locator('select:visible').all()) {

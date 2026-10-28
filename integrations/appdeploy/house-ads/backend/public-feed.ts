@@ -71,7 +71,7 @@ function chunks<T>(values:T[], envelope:(items:T[]) => unknown) {
   return result;
 }
 
-async function single<T>(table:string) {
+async function single<T>(table:string):Promise<(T & {id:string})|undefined> {
   if (table==='public_feed_control') {
     const [fixed]=await db.get<Stored>(table,['current'],{consistent:true});
     if (fixed) return {...fixed,id:'current'} as unknown as T & {id:string};
@@ -82,7 +82,7 @@ async function single<T>(table:string) {
     const [record]=await db.get<Stored>(table,[legacy.id],{consistent:true});
     return record ? {...record,id:legacy.id} as unknown as T & {id:string} : undefined;
   }
-  return (await db.list<T>(table, { limit:1 })).items[0];
+  return (await db.list<T>(table, { limit:1 })).items[0] as (T & {id:string})|undefined;
 }
 
 async function acquireFeedLease():Promise<Lease|null> {

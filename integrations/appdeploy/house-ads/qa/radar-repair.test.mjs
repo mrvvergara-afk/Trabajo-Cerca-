@@ -104,3 +104,36 @@ test('individual portal recommendations do not masquerade as new discovery sourc
  assert(core.publicPageLinks(raw,one).candidates.every(x=>core.publicFeedIdentity(x.url)===core.publicFeedIdentity(one)));
  assert(core.publicPageLinks(raw,'https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol').candidates.some(x=>x.url===other));
 });
+
+test('PDF reader really extracts text and checkpoints under the chosen physical identity',async()=>{
+ const objects=[
+  '<< /Type /Catalog /Pages 2 0 R >>',
+  '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+  '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 400 300] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>',
+  '',
+  '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'
+ ];
+ const content='BT /F1 12 Tf 10 50 Td (Oferta laboral. Cargo: Operador. Lugar de trabajo: Angol.) Tj ET';
+ objects[3]='<< /Length '+Buffer.byteLength(content)+' >>\nstream\n'+content+'\nendstream';
+ let pdf='%PDF-1.4\n',offsets=[0];
+ for(let i=0;i<objects.length;i++){offsets.push(Buffer.byteLength(pdf));pdf+=(i+1)+' 0 obj\n'+objects[i]+'\nendobj\n';}
+ const xref=Buffer.byteLength(pdf);
+ pdf+='xref\n0 6\n0000000000 65535 f \n'+offsets.slice(1).map(n=>String(n).padStart(10,'0')+' 00000 n \n').join('')+
+  'trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF';
+ const address='https://munipuren.cl/unit-fixture.pdf';
+ mem.table('free_public_source_cursor').set('fixture-cursor',{position:0,queues:{},seen:{},pending:[],documentPending:[
+  {url:address,source:'Synthetic unit fixture',publisherPage:'https://munipuren.cl/convocatoria/'}]});
+ const originalFetch=globalThis.fetch;
+ globalThis.fetch=async url=>String(url).endsWith('/robots.txt')
+  ?new Response('User-agent: *\nAllow: /',{headers:{'content-type':'text/plain'}})
+  :new Response(Buffer.from(pdf),{headers:{'content-type':'application/pdf'}});
+ try {
+  const result=await core.shadowPdfBatch();
+  assert.equal(result.processed,1);
+  const stored=[...mem.table('radar_shadow_pdf')];
+  assert.equal(stored.length,1);assert(stored[0][0].startsWith('pdf-'));
+  assert.equal(stored[0][1].pagesRead,1);assert(stored[0][1].textLength>40);
+  assert.equal(stored[0][1].publicEligible,false);
+  await core.shadowPdfBatch();assert.equal(mem.table('radar_shadow_pdf').size,1);
+ } finally {globalThis.fetch=originalFetch;}
+});

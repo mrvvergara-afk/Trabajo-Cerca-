@@ -1830,6 +1830,1912 @@
       "name": "Referencia social S25",
       "inventory": "main-social",
       "manualOnly": true
+    },
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "family": "municipal",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "family": "municipal",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "family": "municipal",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "family": "municipal",
+      "url": "https://mtraiguen.cl/",
+      "territory": "Traiguén",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-renaico",
+      "name": "Municipalidad / OMIL Renaico",
+      "family": "municipal",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "family": "municipal",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-negrete",
+      "name": "Municipalidad / OMIL Negrete",
+      "family": "municipal",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "family": "municipal",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+      "territory": "Mulchén",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "family": "municipal",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "family": "media",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página pública con título MALLECO 7, leída el 2026-10-12 (Chile).",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "radio-mininco",
+      "name": "Radio Mininco",
+      "family": "media",
+      "url": "https://www.radiomininco.cl/",
+      "territory": "Mininco",
+      "identity_requires_check": true,
+      "identity_note": "Se acredita la existencia territorial de Radio Mininco 107.1 mediante una nota de Corprix del 2026-10-06 y un acta municipal de Collipulli de 2023; sigue pendiente el canal oficial publicador. La URL de prueba no se convierte en canal validado.",
+      "identity_references": [
+        "https://corprix.cl/2026/10/06/fae-victoria-participa-en-radio-mininco-para-promover-el-acogimiento-familiar-en-malleco/",
+        "https://transparencia.municipalidadcollipulli.cl/2023/actas/acta28.pdf"
+      ],
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "radio-nativa",
+      "name": "Radio Nativa",
+      "family": "media",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "radio-sur-collipulli",
+      "name": "Radio del Sur",
+      "family": "media",
+      "url": "https://www.radiodelsur.cl/",
+      "territory": "Collipulli",
+      "identity_requires_check": true,
+      "identity_note": "El sitio devuelve SUREÑA RADIO Y TELEVISIÓN; falta acreditar su vínculo territorial con Collipulli.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "social-angol",
+      "name": "Municipalidad de Angol · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "territory": "Angol",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-lumaco",
+      "name": "Municipalidad de Lumaco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-radio-nativa",
+      "name": "Radio Nativa · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/radionativacl/",
+      "territory": "Lumaco",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "cmpc",
+      "name": "CMPC · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.cmpc.com/",
+      "territory": "zona forestal",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "arauco",
+      "name": "Arauco · sitio corporativo",
+      "family": "employer",
+      "url": "https://www.arauco.com/",
+      "territory": "zona forestal",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "social-traiguen",
+      "name": "Municipalidad de Traiguén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munitraiguen/",
+      "territory": "Traiguén",
+      "discovered_from": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-renaico",
+      "name": "Municipalidad de Renaico · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadrenaico",
+      "territory": "Renaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-negrete",
+      "name": "Municipalidad de Negrete · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MuniNegreteCL",
+      "territory": "Negrete",
+      "discovered_from": "https://www.muninegrete.cl/",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-mulchen",
+      "name": "Municipalidad de Mulchén · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/munimulchen",
+      "territory": "Mulchén",
+      "discovered_from": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-collipulli",
+      "name": "Municipalidad de Collipulli · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/MunicipalidadCollipulli",
+      "territory": "Collipulli",
+      "discovered_from": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-malleco7",
+      "name": "Malleco 7 · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/Malleco7",
+      "territory": "Malleco",
+      "discovered_from": "https://www.malleco7.cl/",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "bne-negrete-pilot-2026-109726",
+      "name": "Bolsa Nacional de Empleo · Negrete",
+      "family": "official",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "territory": "Negrete",
+      "scope": "curated_real_pilot",
+      "identity_evidence": "Página individual BNE leída directamente por el runner el 2026-10-13; título, empresa, lugar y fechas presentes.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "cmpc-empleo-csod",
+      "name": "CMPC · portal de empleo",
+      "family": "employer",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "territory": "zona forestal",
+      "discovered_from": "https://www.cmpc.com/trabaja-con-nosotros/",
+      "scope": "official_employer_portal; individual_offer_access_and_verification_pending",
+      "previous_urls": [
+        "https://cmpc.trabajando.cl/"
+      ],
+      "identity_evidence": "El enlace Ir al portal de https://www.cmpc.com/trabaja-con-nosotros/ dirige literalmente a este portal el 2026-10-19.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "arauco-empleo",
+      "name": "Arauco · portal de empleo",
+      "family": "employer",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "territory": "zona forestal",
+      "discovered_from": "https://jobs.arauco.com/",
+      "scope": "individual_offer_requires_literal_target_worksite",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "radio-viaducto",
+      "name": "Radio Viaducto",
+      "family": "media",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "identity_evidence": "Página pública con título Radio Viaducto Collipulli Noticias; lectura directa el 2026-10-13.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "las-noticias-malleco",
+      "name": "Las Noticias de Malleco",
+      "family": "media",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página propia con título del diario de la Provincia Región de la Araucanía; lectura directa el 2026-10-13.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "social-las-noticias-facebook",
+      "name": "Las Noticias de Malleco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/diariolasnoticias/",
+      "territory": "Malleco",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-las-noticias-instagram",
+      "name": "Las Noticias de Malleco · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/lasnoticiasdia/",
+      "territory": "Malleco",
+      "discovered_from": "https://lasnoticiasdemalleco.cl/",
+      "scope": "public_read_only_probe; no paid target added",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-lumaco-facebook-municipal",
+      "name": "Municipalidad de Lumaco · Facebook",
+      "family": "social",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "territory": "Lumaco",
+      "discovered_from": "https://munilumaco.cl/",
+      "identity_evidence": "El widget Facebook page.php del sitio oficial enlaza literalmente este perfil en su parámetro href, comprobado el 2026-10-13.",
+      "scope": "institutional_municipal_channel; dedicated_OMIL_profile_not_assumed; no paid target added",
+      "access_observation": "La lectura del widget mediante búsqueda pública fue throttled; no acredita acceso a los avisos.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-renaico-instagram-municipal",
+      "name": "Municipalidad de Renaico · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/munirenaico/",
+      "territory": "Renaico",
+      "discovered_from": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "scope": "institutional_municipal_channel; dedicated_OMIL_profile_not_assumed; no paid target added",
+      "identity_evidence": "Enlace literal encontrado por el piloto gratuito de Actions 38479791274 en la página primaria del municipio el 2026-10-13.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "social-mulchen-instagram-municipal",
+      "name": "Municipalidad de Mulchén · Instagram",
+      "family": "social",
+      "url": "https://www.instagram.com/municipalidaddemulchen",
+      "territory": "Mulchén",
+      "discovered_from": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "scope": "institutional_municipal_channel; dedicated_OMIL_profile_not_assumed; no paid target added",
+      "identity_evidence": "Enlace literal encontrado por el piloto gratuito de Actions 38479791274 en la página primaria del municipio el 2026-10-13.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": true
+    },
+    {
+      "key": "bne-traiguen-pilot-2026-112312",
+      "name": "Bolsa Nacional de Empleo · Traiguén",
+      "family": "official",
+      "url": "https://www.bne.gob.cl/oferta/2026-112312",
+      "territory": "Traiguén",
+      "scope": "curated_real_pilot",
+      "identity_evidence": "Página individual revisada el 2026-10-13: ABC S.A., trabajo en Traiguén, publicación 22/09/2026 y cierre 17/11/2026. Requiere relectura directa antes de la ingesta.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "bne-angol-pilot-2026-107065",
+      "name": "Bolsa Nacional de Empleo · Angol",
+      "family": "official",
+      "url": "https://www.bne.gob.cl/oferta/2026-107065",
+      "territory": "Angol",
+      "scope": "curated_real_pilot",
+      "identity_evidence": "Página individual revisada el 2026-10-13: SODIMAC S.A., trabajo en Angol, publicación 09/09/2026 y cierre 14/10/2026. Requiere relectura directa; nunca renovar el plazo por rastreo.",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "malleco7-ediciones",
+      "name": "Malleco 7 · ediciones digitales",
+      "family": "media",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "territory": "Malleco",
+      "scope": "public_document_discovery; individual_ads_require_review",
+      "discovered_from": "https://www.malleco7.cl/",
+      "inventory": "config/local-source-priorities.json",
+      "manualOnly": false
+    },
+    {
+      "key": "indeed-inventory-Angol",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Collipulli",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Ercilla",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Renaico",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=45",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Mininco",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mininco&fromage=45",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Nacimiento",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Negrete",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Mulchén",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=45",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Los Sauces",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Purén",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=45",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Traiguén",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Lumaco",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Victoria",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Los Ángeles",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Temuco",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Concepción",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Concepci%C3%B3n&fromage=45",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "indeed-inventory-Chillán",
+      "name": "Indeed",
+      "home": "https://cl.indeed.com/",
+      "search": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45",
+      "url": "https://cl.indeed.com/jobs?q=&l=Chill%C3%A1n&fromage=45",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Angol",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-angol",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Collipulli",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-collipulli",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Ercilla",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-ercilla",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Renaico",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-renaico",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Mininco",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-mininco",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Nacimiento",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-nacimiento",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Negrete",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-negrete",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Mulchén",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-mulchen",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Los Sauces",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-los-sauces",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Purén",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-puren",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Traiguén",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-traiguen",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Lumaco",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-lumaco",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Victoria",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-victoria",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Los Ángeles",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-los-angeles",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Temuco",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-temuco",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Concepción",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-concepcion",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "computrabajo-inventory-Chillán",
+      "name": "Computrabajo",
+      "home": "https://cl.computrabajo.com/",
+      "search": "https://cl.computrabajo.com/trabajo-en-{slug}",
+      "url": "https://cl.computrabajo.com/trabajo-en-chillan",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Angol",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Collipulli",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Ercilla",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Renaico",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Mininco",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Nacimiento",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Nacimiento%2C%20Chile&f_TPR=r3888000",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Negrete",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Mulchén",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mulch%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Los Sauces",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Purén",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Traiguén",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Lumaco",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Victoria",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Los Ángeles",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20%C3%81ngeles%2C%20Chile&f_TPR=r3888000",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Temuco",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Concepción",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Concepci%C3%B3n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "linkedin-inventory-Chillán",
+      "name": "LinkedIn",
+      "home": "https://www.linkedin.com/jobs/",
+      "search": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Chill%C3%A1n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Angol",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Collipulli",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Ercilla",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Renaico",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Mininco",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-mininco.html",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Nacimiento",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Negrete",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-negrete.html",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Mulchén",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Los Sauces",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Purén",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Traiguén",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-traiguen.html",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Lumaco",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Victoria",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-victoria.html",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Los Ángeles",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Temuco",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-temuco.html",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Concepción",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-concepcion.html",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "laborum-inventory-Chillán",
+      "name": "Laborum",
+      "home": "https://www.laborum.cl/",
+      "search": "https://www.laborum.cl/empleos-busqueda-{slug}.html",
+      "url": "https://www.laborum.cl/empleos-busqueda-chillan.html",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Angol",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Collipulli",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Ercilla",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Renaico",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-renaico.html",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Mininco",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-mininco.html",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Nacimiento",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-nacimiento.html",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Negrete",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-negrete.html",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Mulchén",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Los Sauces",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Purén",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-puren.html",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Traiguén",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Lumaco",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-lumaco.html",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Victoria",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-victoria.html",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Los Ángeles",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Temuco",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Concepción",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-concepcion.html",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "opcionempleo-inventory-Chillán",
+      "name": "Opción Empleo",
+      "home": "https://www.opcionempleo.cl/",
+      "search": "https://www.opcionempleo.cl/empleo-en-{slug}.html",
+      "url": "https://www.opcionempleo.cl/empleo-en-chillan.html",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Angol",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Collipulli",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Ercilla",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Ercilla",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Renaico",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Mininco",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mininco",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Nacimiento",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Negrete",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Mulchén",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Los Sauces",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Purén",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Traiguén",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Traigu%C3%A9n",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Lumaco",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Victoria",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Los Ángeles",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Temuco",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Temuco",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Concepción",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Concepci%C3%B3n",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "chiletrabajos-inventory-Chillán",
+      "name": "ChileTrabajos",
+      "home": "https://www.chiletrabajos.cl/",
+      "search": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Chill%C3%A1n",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Angol",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Collipulli",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Ercilla",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Renaico",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Mininco",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Nacimiento",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Negrete",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Mulchén",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Los Sauces",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Purén",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Traiguén",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Lumaco",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Victoria",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Los Ángeles",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Temuco",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Concepción",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "bne-inventory-Chillán",
+      "name": "Bolsa Nacional de Empleo",
+      "home": "https://www.bne.gob.cl/",
+      "search": "https://www.bne.gob.cl/ofertas",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Angol",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Angol",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Collipulli",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Collipulli",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Ercilla",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Ercilla",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Renaico",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Renaico",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Mininco",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Mininco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Nacimiento",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Nacimiento",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Negrete",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Negrete",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Mulchén",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Mulchén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Los Sauces",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Los Sauces",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Purén",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Purén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Traiguén",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Traiguén",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Lumaco",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Lumaco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Victoria",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Victoria",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Los Ángeles",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Los Ángeles",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Temuco",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Temuco",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Concepción",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Concepción",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "empleos-publicos-inventory-Chillán",
+      "name": "Servicio Civil · Empleos Públicos",
+      "home": "https://www.empleospublicos.cl/",
+      "search": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "individual_verification": "pending_primary_page_access",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Chillán",
+      "inventory": "config/portal-source-priorities.json"
+    },
+    {
+      "key": "renaico-web",
+      "name": "Municipalidad de Renaico",
+      "kind": "web",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "family": "municipal",
+      "territory": "Renaico",
+      "identity_evidence": "Sitio municipal primario revisado en la auditoría.",
+      "page_type": "directory",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "negrete-omil",
+      "name": "OMIL Negrete",
+      "kind": "web",
+      "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
+      "family": "municipal",
+      "territory": "Negrete",
+      "identity_evidence": "Página dedicada a OMIL en el sitio municipal primario.",
+      "page_type": "directory",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "renaico-facebook",
+      "name": "Municipalidad de Renaico · Facebook",
+      "kind": "social",
+      "url": "https://www.facebook.com/municipalidadrenaico",
+      "family": "municipal",
+      "territory": "Renaico",
+      "identity_evidence": "Enlace literal del sitio municipal; no se presupone perfil dedicado OMIL.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": true
+    },
+    {
+      "key": "negrete-facebook",
+      "name": "Municipalidad de Negrete · Facebook",
+      "kind": "social",
+      "url": "https://www.facebook.com/MuniNegreteCL",
+      "family": "municipal",
+      "territory": "Negrete",
+      "identity_evidence": "Enlace literal del sitio municipal; no se presupone perfil dedicado OMIL.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": true
+    },
+    {
+      "key": "radio-barnachea",
+      "name": "Radio Barnachea",
+      "kind": "web",
+      "url": "https://radiobarnachea.cl/",
+      "family": "media",
+      "territory": "Nacimiento / Negrete",
+      "identity_evidence": "La página primaria se identifica como radio de Nacimiento con cobertura de Negrete; acceso por comprobar en el piloto.",
+      "page_type": "directory",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "cmpc-empleo",
+      "name": "CMPC · portal de empleo",
+      "kind": "web",
+      "url": "https://cmpc.trabajando.cl/",
+      "family": "employer",
+      "territory": "regional; lugar real de cada oferta pendiente",
+      "identity_evidence": "Portal enlazado por https://www.cmpc.com/trabaja-con-nosotros/. No se atribuye trabajo en las comunas del piloto por el nombre de la empresa.",
+      "page_type": "directory",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "family": "municipal",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "family": "municipal",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "family": "municipal",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "family": "municipal",
+      "url": "https://mtraiguen.cl/",
+      "territory": "Traiguén",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "La portada municipal enlaza convocatorias de Salud Municipal (01/10/2026) y PRLAC (14/09/2026), comprobadas en HTML original el 17/10/2026. Sus bases y vigencia se verifican por separado.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "family": "municipal",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "family": "municipal",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+      "territory": "Mulchén",
+      "kind": "web",
+      "page_type": "directory",
+      "candidate_limit": 12,
+      "identity_evidence": "Listado laboral dedicado del sitio municipal, con siete enlaces recuperados del HTML original el 17/10/2026; figuraban cerrados y sin fecha original confirmada. No acredita vigencia.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "family": "municipal",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "kind": "web",
+      "page_type": "directory",
+      "identity_evidence": "Sitio municipal del catálogo auditado; el acceso y la existencia de avisos actuales deben comprobarse por separado.",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "family": "media",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página pública con título MALLECO 7, leída el 2026-10-12 (Chile).",
+      "kind": "web",
+      "page_type": "directory",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "radio-viaducto",
+      "name": "Radio Viaducto",
+      "family": "media",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "identity_evidence": "Página pública con título Radio Viaducto Collipulli Noticias; lectura directa el 2026-10-13.",
+      "kind": "web",
+      "page_type": "directory",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "key": "las-noticias-malleco",
+      "name": "Las Noticias de Malleco",
+      "family": "media",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "territory": "Malleco",
+      "identity_evidence": "Página propia con título del diario de la Provincia Región de la Araucanía; lectura directa el 2026-10-13.",
+      "kind": "web",
+      "page_type": "directory",
+      "inventory": "config/radar-v2-pilot.json",
+      "manualOnly": false
+    },
+    {
+      "url": "https://www.instagram.com/omilnacimiento/",
+      "territory": "Nacimiento",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_throttled",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false,
+      "key": "config/user-omil-pages-2026-10-20.json:0",
+      "name": "config/user-omil-pages-2026-10-20.json:0",
+      "inventory": "config/user-omil-pages-2026-10-20.json",
+      "manualOnly": true
+    },
+    {
+      "url": "https://www.instagram.com/omilangol2026/",
+      "territory": "Angol",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_throttled",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false,
+      "key": "config/user-omil-pages-2026-10-20.json:1",
+      "name": "config/user-omil-pages-2026-10-20.json:1",
+      "inventory": "config/user-omil-pages-2026-10-20.json",
+      "manualOnly": true
+    },
+    {
+      "url": "https://www.instagram.com/omil_traiguen/",
+      "territory": "Traiguén",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_throttled",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false,
+      "fallback": "recepcion_hibrida_con_revision_literal",
+      "automatic_capture_enabled": false,
+      "key": "config/user-omil-pages-2026-10-20.json:2",
+      "name": "config/user-omil-pages-2026-10-20.json:2",
+      "inventory": "config/user-omil-pages-2026-10-20.json",
+      "manualOnly": true
+    },
+    {
+      "url": "https://www.instagram.com/munilumaco/",
+      "territory": "Lumaco",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_failed",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false,
+      "key": "config/user-omil-pages-2026-10-20.json:3",
+      "name": "config/user-omil-pages-2026-10-20.json:3",
+      "inventory": "config/user-omil-pages-2026-10-20.json",
+      "manualOnly": true
+    },
+    {
+      "url": "https://www.instagram.com/munidetraiguen/",
+      "territory": "Traiguén",
+      "identified_from": "user_supplied_screenshot",
+      "read_scope": "public_only; caption plus all poster frames and original post date",
+      "access_result": "fetch_failed",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false,
+      "key": "config/user-omil-pages-2026-10-20.json:4",
+      "name": "config/user-omil-pages-2026-10-20.json:4",
+      "inventory": "config/user-omil-pages-2026-10-20.json",
+      "manualOnly": true
+    },
+    {
+      "url": "https://www.instagram.com/omil_victoria/",
+      "territory": "Victoria",
+      "identified_from": "owner_audit_request",
+      "read_scope": "public permalink or authorized poster only",
+      "access_result": "not_automatically_integrated",
+      "posts_read_from_profile": 0,
+      "recent_timeline_coverage_complete": false,
+      "added_to_paid_targets": false,
+      "fallback": "recepcion_hibrida_con_revision_literal",
+      "automatic_capture_enabled": false,
+      "key": "config/user-omil-pages-2026-10-20.json:5",
+      "name": "config/user-omil-pages-2026-10-20.json:5",
+      "inventory": "config/user-omil-pages-2026-10-20.json",
+      "manualOnly": true
     }
   ]
 }

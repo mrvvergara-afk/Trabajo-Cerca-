@@ -199,7 +199,7 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
     tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,
     createdAt:new Date(now).toISOString(),discoveredBy:'free-public-sources-v1',
-    secondaryMarket:['Los Ángeles','Temuco'].includes(offer.work_commune),
+    secondaryMarket:['Los Ángeles','Temuco','Concepción','Chillán'].includes(offer.work_commune),
     verificationCheckedAt:new Date(now).toISOString(),verifiedAt:new Date(now).toISOString(),
     verificationMethod:offer.verification_method,verificationReason:offer.reason };
 }

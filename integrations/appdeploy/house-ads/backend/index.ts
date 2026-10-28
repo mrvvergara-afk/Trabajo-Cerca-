@@ -1,5 +1,6 @@
 import {processAdminReviewBatch,confirmAdminReviewPublications,isAdminVerificationSlot} from './radar-admin-verification';
 import {withSecurityHeaders} from './security-headers';
+import { RADAR_SOURCE_INVENTORY } from '../shared/radar-source-inventory';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
 import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, commercialAdmin, commercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
@@ -376,6 +377,13 @@ const FREE_PUBLIC_SOURCES:FreeSource[] = (() => {
   result.push({ key:'negrete-feed',name:'Municipalidad de Negrete · novedades',url:'https://www.muninegrete.cl/feed/',territory:'Negrete',discoveryGroup:'local' });
   result.push({ key:'mulchen-feed',name:'Municipalidad de Mulchén · novedades',url:'https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral',territory:'Mulchén',discoveryGroup:'local' });
   result.push({ key:'empleos-publicos',name:'Servicio Civil · Empleos Públicos',url:'https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx',territory:'Chile',discoveryGroup:'portal' });
+  const registered=new Set(result.map(source=>source.url));
+  for (const source of RADAR_SOURCE_INVENTORY) {
+    if (source.manualOnly || registered.has(source.url)) continue;
+    result.push({key:source.key,name:source.name,url:source.url,territory:source.territory,
+      ...(['Los Ángeles','Temuco','Concepción','Chillán'].includes(source.territory)?{discoveryPriority:'secondary' as const}:{})});
+    registered.add(source.url);
+  }
   return result;
 })();
 
@@ -1376,7 +1384,7 @@ async function enrichRadarCandidates(limit=40) {
   const knownSignatures = new Set(radarJobs.items.map(item => candidateSignature(item.title, item.workCommunes)));
   const selected = candidates.items
     .filter(item => item.active && item.kind === 'candidate' && Boolean(item.url))
-    .filter(item => isSpecificJobResult(item.title, item.url) && !knownUrls.has(item.url))
+    .filter(item => typeof item.url==='string' && isSpecificJobResult(item.title, item.url) && !knownUrls.has(item.url))
     .sort((a,b) => (Date.parse(a.enrichmentCheckedAt || '') || 0) - (Date.parse(b.enrichmentCheckedAt || '') || 0))
     .slice(0, limit);
   const checkedAt = new Date().toISOString();
@@ -2538,7 +2546,7 @@ export const notificationSweepHandler = async () => {
   return { statusCode:200 };
 };
 
-export const v14DirectSourcesHandler = async () => { await finishPublicSweep(); return { statusCode:200 }; };
+export const v14DirectSourcesHandler = async () => { await finishPublicSweep(PILOT); return { statusCode:200 }; };
 export const v14TavilyGapsHandler = async () => { await finishTavilySweep(PILOT, true); return { statusCode:200 }; };
 export const v16TerritorialSourceHandler = async () => {
   const cursorRows=await db.list<{position:number}>('motor3_web_cursor',{limit:1});
@@ -3050,7 +3058,7 @@ const applicationRouter = router({
       // Serve a privacy-filtered, approved-only emergency page instead of HTTP 503.
       // This is a temporary subset, never a fabricated or unreviewed offer.
       const rows=await db.list<ListingRecord>('radar_jobs',{limit:200});
-      const visible=rows.items.map(row=>projectFeedListing(row as Record<string,unknown> & {id:string})).filter(Boolean).slice(0,40);
+      const visible=rows.items.map(row=>projectFeedListing(row as Record<string,unknown> & {id:string})).filter((row):row is NonNullable<typeof row>=>row!==null).slice(0,40);
       console.warn('PUBLIC_FEED_DEGRADED '+JSON.stringify({reason:'manifest_building',visible:visible.length}));
       return json({items:visible,totalItems:visible.length,totalJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,
         totalVerifiedJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,

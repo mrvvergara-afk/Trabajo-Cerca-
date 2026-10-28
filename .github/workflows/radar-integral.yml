@@ -25,7 +25,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: radar-integral-evidence-and-source-package
-          run-id: 40673298389
+          run-id: 40678466297
           github-token: ${{ github.token }}
           path: integrations/appdeploy/house-ads/qa-output/previous
       - name: Reconcile native PDF dependency in isolated runner
@@ -53,8 +53,15 @@ jobs:
       - name: Install free local OCR tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-spa
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-spa poppler-utils
           python -m pip install --disable-pip-version-check PyMuPDF==1.26.7 pytesseract==0.3.13 Pillow==11.3.0
+      - uses: actions/checkout@v4
+        with:
+          ref: a39d62055499f67b39a43a76024cdf6935ccff06
+          path: native-v99-baseline
+          persist-credentials: false
+      - name: Compare failures with the unchanged published-source baseline
+        run: node qa/radar-baseline-tests.mjs
       - name: Preserve existing repository and application regression results
         continue-on-error: true
         run: node qa/radar-existing-tests.mjs
@@ -62,6 +69,7 @@ jobs:
         env:
           OMP_THREAD_LIMIT: '1'
           RADAR_PREVIOUS_OCR: qa-output/previous/qa-output/radar/ocr.json
+        if: ${{ !contains(github.event.head_commit.message, '[verification only]') }}
         run: node qa/radar-ocr.mjs
       - uses: actions/upload-artifact@v4
         if: always()

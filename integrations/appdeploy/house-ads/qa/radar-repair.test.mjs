@@ -192,3 +192,14 @@ test('all discovered archive links are retained instead of cutting off paginatio
  const raw=Array.from({length:8},(_,i)=>'<a href="/page/'+(i+1)+'/">'+(i+1)+'</a>').join('');
  assert.equal(core.publicPageLinks(raw,'https://www.malleco7.cl/noticias/').archives.length,8);
 });
+
+test('separate verified roles in one document retain separate trace IDs and publication receipts',async()=>{
+ const start=mem.table('radar_candidate_trace').size;
+ const one='a'.repeat(64),two='b'.repeat(64);
+ await core.recordCandidate(url,{documentUnitKey:one,state:'verified',sourceId:'unit-one'});
+ await core.recordCandidate(url,{documentUnitKey:two,state:'verified',sourceId:'unit-two'});
+ assert.notEqual(core.traceId(url,one),core.traceId(url,two));
+ assert.equal(mem.table('radar_candidate_trace').size,start+2);
+ assert.equal(mem.table('radar_candidate_trace').get(core.traceId(url,one)).sourceId,'unit-one');
+ assert.equal(mem.table('radar_candidate_trace').get(core.traceId(url,two)).sourceId,'unit-two');
+});

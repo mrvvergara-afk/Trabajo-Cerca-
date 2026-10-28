@@ -5,7 +5,8 @@ import { offerFingerprint, listingFingerprints } from './offer-identity';
 import type { PublicVerification } from './public-source-verifier';
 
 export class PublicationReviewRequired extends Error {
-  constructor(public reason:string) {super(reason);this.name='PublicationReviewRequired';}
+  reason:string;
+  constructor(reason:string) {super(reason);this.name='PublicationReviewRequired';this.reason=reason;}
 }
 export async function assertDistinctPublicOffer(offer:PublicVerification) {
   const fingerprint=offerFingerprint(offer.title,offer.company,offer.work_commune);

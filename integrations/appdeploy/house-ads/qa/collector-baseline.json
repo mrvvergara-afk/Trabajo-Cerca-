@@ -12,7 +12,7 @@
   "cron": [
     {
       "name": "collect-direct",
-      "cron": "5 0,4,8,12,16,20 * * *",
+      "cron": "5 0,3,6,9,12,15,18,21 * * *",
       "handler": "v16TerritorialDirectBatchHandler",
       "timezone": "America/Santiago"
     },
@@ -46,5 +46,7 @@
       "handler": "socialTerritorialCollectHandler",
       "timezone": "America/Santiago"
     }
-  ]
+  ],
+  "cron_live_version": "1793152775717",
+  "note": "Cron reconciled with published v99 for this repair. Existing handler hashes retain their original live_version and are historical; no cron frequency was changed by the repair."
 }

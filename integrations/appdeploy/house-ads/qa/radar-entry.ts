@@ -6,7 +6,7 @@ export { extractPublicPdf, shadowPdfBatch } from '../backend/shadow-pdf';
 export { publicPublisher, publicSourceAdapter, publicOfferIdentity, publicFeedIdentity, safePublicUrl } from '../backend/public-source-adapters';
 export { PRIMARY_PLACES } from '../shared/territories';
 export { advancePublicFeed, readPublicFeedPage, registerPublicFeedChange, currentPublicFeedManifest } from '../backend/public-feed';
-export { rememberCandidates, recordCandidate, candidateState } from '../backend/radar-trace';
+export { rememberCandidates, recordCandidate, candidateState, traceId } from '../backend/radar-trace';
 export { shadowEvaluate } from '../backend/shadow-radar';
 export { offerFingerprint, listingFingerprints } from '../backend/offer-identity';
 export { assertDistinctPublicOffer, PublicationReviewRequired } from '../backend/publication-preflight';

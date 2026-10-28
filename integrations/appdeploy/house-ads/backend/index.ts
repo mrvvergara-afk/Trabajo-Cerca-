@@ -1,5 +1,6 @@
 import {processAdminReviewBatch,confirmAdminReviewPublications,isAdminVerificationSlot} from './radar-admin-verification';
 import {withSecurityHeaders} from './security-headers';
+import { COMPLEMENTARY_PLACES } from '../shared/territories';
 import { RADAR_SOURCE_INVENTORY } from '../shared/radar-source-inventory';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
@@ -10,7 +11,7 @@ import { importReview, listReview, decideReview } from './radar-review-inbox';
 import { checkOneReview } from './radar-review-check';
 import { enqueueAdminReviewedOffer, readAdminReviewPublicationStatus } from './radar-review-queue';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
-import { advancePublicFeed, readPublicFeedPage, readStagedPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
+import { advancePublicFeed, readPublicFeedPage, readStagedPublicFeedPage, readPublicFeedItem, readPublicFeedEntry, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
 import { readLocalSourceEvidence } from './local-source-evidence';
 import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';
@@ -271,7 +272,7 @@ const SEED_VERSION = '2026-10-06-v17-live-benchmark';
 const SOURCE_VERSION = '2026-10-06-radar-v17-web-discovery';
 const PILOT = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Nacimiento','Negrete','Mulchén','Los Sauces','Purén','Traiguén','Lumaco','Victoria'];
 const TRAVEL_HUBS = ['Los Ángeles','Temuco','Lautaro'] as const;
-const MARKET_PLACES = [...PILOT, ...TRAVEL_HUBS];
+const MARKET_PLACES = [...PILOT, ...COMPLEMENTARY_PLACES];
 const SOURCE_HUBS = ['Los Ángeles','Temuco','Lautaro','Concepción','Chillán'] as const;
 const CORE_CORRIDORS = {
   mallecoWest:['Angol','Renaico','Collipulli','Mininco','Ercilla'],
@@ -660,7 +661,7 @@ function publicRecord<T extends ListingRecord & { id: string }>(item: T) {
   const { ownerToken: _ownerToken, contact, evidenceImagePath: _evidenceImagePath, socialEvidence: _socialEvidence, ...safe } = item;
   const projected={...safe} as Record<string,unknown>;
   for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof','adminVerificationEvidence','adminVerificationAttempt']) delete projected[field];
-  return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) };
+  return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) && projected.contactPublicationConsent!==false };
 }
 
 function cacheable(data: unknown, seconds = 45) {
@@ -846,7 +847,10 @@ async function runNotificationSweep() {
 
 function projectFeedListing(value:Record<string, unknown> & { id:string }) {
   const item=value as unknown as ListingRecord & { id:string };
-  if (item.kind!=='job_offer') return isCurrentlyActive(item) ? publicRecord(item) : null;
+  if (item.kind!=='job_offer') {
+    if(!['worker_available','worker_need','service_request'].includes(item.kind)||item.review===true)return null;
+    return isCurrentlyActive(item)?publicRecord(item):null;
+  }
   if (offerRetentionReason(value)) return null;
   if (publicJobExclusion(value)) return null;
   const projectionPlaces = value.secondaryMarket === true && value.discoveredBy === 'free-public-sources-v1' ? MARKET_PLACES : PILOT;
@@ -862,8 +866,11 @@ function feedRefreshAt(item:Record<string, unknown>) {
   const now=Date.now(),deadline=confirmedOfferDeadline(item);
   const candidates:number[]=[];
   if (deadline!==null) candidates.push(deadline+1);
-  const checked=Date.parse(String(item.lastVerifiedAt || item.externalVerifiedAt || item.verifiedAt || ''));
+  const checks=[item.lastVerifiedAt,item.externalVerifiedAt,item.verifiedAt].map(value=>Date.parse(String(value||''))).filter(Number.isFinite);
+  const checked=checks.length?Math.max(...checks):NaN;
   if (Number.isFinite(checked)) candidates.push(checked+86400000+1);
+  const published=Date.parse(String(item.sourcePublishedAt||''));
+  if(deadline===null&&Number.isFinite(published))candidates.push(published+45*86400000+1);
   const first=Date.parse(String(item.firstPublishedAt || item.createdAt || ''));
   if (Number.isFinite(first)) candidates.push(first+86400000+1,first+7*86400000+1);
   const upcoming=candidates.filter(time=>Number.isFinite(time)&&time>now);
@@ -2587,7 +2594,7 @@ export const v17HardWebHandler = async () => {
 export const radarShadowPromotionHandler = async () => {
   const before=await readPublicFeedSummary();
   const results=await publishQualifiedShadowOffers();
-  const feedProjector={ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  const feedProjector={ revision:'radar-integral-v8', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
   let after=await advancePublicFeed(feedProjector);
   for(let step=1;step<4&&after.rebuilding;step++)after=await advancePublicFeed(feedProjector);
   console.warn('RADAR_B_PUBLICATION_RESULT '+JSON.stringify({before:Number(before.totalVerifiedJobOffers||0),after:Number(after.totalVerifiedJobOffers||0),examined:results.examined,results:results.results,rebuilding:after.rebuilding}).slice(0,14000));
@@ -2738,7 +2745,7 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   const result=providerSlot ? await processPendingOffers(8) : undefined;
   const ingestion=await pullRadarBatch(externalOfferRecord);
   const administrative=isAdminVerificationSlot(event) ? await processAdminReviewBatch({scheduledTime:event!.scheduledTime,project:projectFeedListing}) : undefined;
-  const feedProjector={ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  const feedProjector={ revision:'radar-integral-v8', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
   let feed=await advancePublicFeed(feedProjector);
   // Finish up to four bounded startup steps per verification invocation.
   // Do not repeatedly reproject an already available public snapshot.
@@ -2891,7 +2898,7 @@ export const liveTestReportHandler = async () => {
 
 const consumeReviewedExchange=reviewedReceiver({
   ingest:()=>pullRadarBatch(externalOfferRecord),
-  advance:()=>advancePublicFeed({ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt }),
+  advance:()=>advancePublicFeed({ revision:'radar-integral-v8', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt }),
   confirm:confirmRadarPublications,
 });
 
@@ -3391,13 +3398,13 @@ const applicationRouter = router({
     const clientToken = cleanClientToken(input.clientToken);
     if (!clientToken) return error('Solicitud no válida.', 400);
     if (!allowBurst('contact', clientToken, 30, 600000)) return error('Has consultado muchos contactos en poco tiempo. Intenta nuevamente más tarde.', 429);
-    const [community, radar] = await Promise.all([
-      db.get<ListingRecord>('community_posts', [params.id]),
-      db.get<ListingRecord>('radar_jobs', [params.id]),
-    ]);
-    const record = community[0] ?? radar[0];
-    if (!record || !isCurrentlyActive(record)) return error('Publicación no disponible.', 404);
-    if (!record.contact) return error('Este aviso no tiene un contacto directo publicado.', 404);
+    const entry=await readPublicFeedEntry(params.id);
+    if(!entry||!entry.item.hasContact)return error('Publicación no disponible.',404);
+    const [stored]=await db.get<ListingRecord>(entry.source,[entry.sourceId],{consistent:true});
+    const record=stored?{...stored,id:entry.sourceId}:null;
+    if(!record||!projectFeedListing(record)||('contactPublicationConsent' in record&&record.contactPublicationConsent===false))
+      return error('Publicación no disponible.',404);
+    if(!record.contact)return error('Este aviso no tiene un contacto directo publicado.',404);
     return json({ contact: record.contact, contactLabel: record.contactLabel });
   }],
 

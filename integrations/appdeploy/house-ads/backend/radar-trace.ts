@@ -5,7 +5,10 @@ import type { PublicVerification } from './public-source-verifier';
 
 type Row = Record<string, unknown>;
 export type CandidateState = 'verified' | 'recoverable' | 'review' | 'rejected' | 'inaccessible';
-export const traceId = (url:string) => 'candidate-' + createHash('sha256').update(safePublicUrl(url) || url).digest('hex').slice(0,48);
+export function traceId(url:string,unit?:string) {
+  if(unit&&!/^[a-f0-9]{64}$/.test(unit))throw new Error('Invalid document unit trace identity');
+  return 'candidate-'+createHash('sha256').update((safePublicUrl(url)||url)+(unit?'\0'+unit:'')).digest('hex').slice(0,48);
+}
 
 export function candidateState(result:PublicVerification, http=200):CandidateState {
   if (result.status==='verified') return 'verified';
@@ -17,10 +20,10 @@ export function candidateState(result:PublicVerification, http=200):CandidateSta
 
 // Add every discovered identity before bounded operational queues select work.
 // Duplicate chosen IDs preserve prior validation, publication and retry evidence.
-export async function rememberCandidates(items:Array<{url:string;source:string;publisherPage?:string;title?:string}>, now=Date.now()) {
-  const unique=[...new Map(items.map(item=>[traceId(item.url),item])).entries()];
+export async function rememberCandidates(items:Array<{url:string;source:string;publisherPage?:string;title?:string;documentUnitKey?:string}>, now=Date.now()) {
+  const unique=[...new Map(items.map(item=>[traceId(item.url,item.documentUnitKey),item])).entries()];
   for (let i=0;i<unique.length;i+=30) {
-    const rows=unique.slice(i,i+30).map(([id,item])=>({id,url:item.url,source:item.source,
+    const rows=unique.slice(i,i+30).map(([id,item])=>({id,url:item.url,source:item.source,documentUnitKey:item.documentUnitKey||null,
       publisherPage:item.publisherPage || item.url,discoveredTitle:item.title || null,state:'recoverable',reason:'awaiting_read',
       reading:'pending',validation:'pending',publication:'not_stored',revision:0,
       firstSeenAt:new Date(now).toISOString(),nextAttemptAt:new Date(now).toISOString()}));
@@ -30,8 +33,9 @@ export async function rememberCandidates(items:Array<{url:string;source:string;p
 }
 
 export async function recordCandidate(url:string, patch:Row, now=Date.now()) {
-  const id=traceId(url);
-  await rememberCandidates([{url,source:String(patch.source || 'Fuente original')}],now);
+  const unit=typeof patch.documentUnitKey==='string'?patch.documentUnitKey:undefined;
+  const id=traceId(url,unit);
+  await rememberCandidates([{url,source:String(patch.source || 'Fuente original'),documentUnitKey:unit}],now);
   const [old]=await db.get<Row>('radar_candidate_trace',[id],{consistent:true});
   if (!old) throw new Error('Candidate trace not readable after discovery');
   const revision=Number(old.revision || 0);
@@ -43,7 +47,7 @@ export async function recordCandidate(url:string, patch:Row, now=Date.now()) {
 
 export async function recordVerification(url:string, result:PublicVerification, http:number, engine:'A'|'B', now=Date.now()) {
   const state=candidateState(result,http);
-  return recordCandidate(url,{state,reason:result.reason,reading:state==='inaccessible'?'failed':'read',
+  return recordCandidate(url,{...(result.document_unit_key?{documentUnitKey:result.document_unit_key}:{}),state,reason:result.reason,reading:state==='inaccessible'?'failed':'read',
     validation:state,engine,[engine==='A'?'motorA':'motorB']:{status:result.status,reason:result.reason,checkedAt:new Date(now).toISOString()},
     ...(result.title?{title:result.title}:{}),...(result.company?{company:result.company}:{}),
     ...(result.work_commune?{workCommune:result.work_commune}:{}),

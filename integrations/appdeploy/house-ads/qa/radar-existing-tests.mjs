@@ -14,7 +14,7 @@ for(const run of runs){
  writeFileSync('qa-output/radar/'+run.name+'.log',log);
  const summary=log.split('\n').filter(x=>/# (tests|pass|fail)|ℹ (tests|pass|fail)|Ran \d+ tests|^OK$|FAILED/.test(x));
  report.push({name:run.name,files:run.name.startsWith('node')?run.args.length-1:undefined,status:proc.status,signal:proc.signal,error:proc.error?.message,summary});
- if(proc.status!==0)console.log(log.split('\n').filter(x=>/not ok|✖|Error|Assertion|^FAIL|^ERROR|^  File/.test(x)).slice(0,35).join('\n'));
+ if(proc.status!==0)console.log('RADAR_FAILED_LOG '+run.name+'\n'+log.slice(-160000));
 }
 writeFileSync('qa-output/radar/existing-tests.json',JSON.stringify(report,null,2));
 console.log('RADAR_EXISTING_TESTS '+JSON.stringify(report));

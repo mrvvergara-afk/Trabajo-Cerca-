@@ -549,7 +549,7 @@ async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
     wanted.set(key, { source:key.slice(0, colon) as FeedSource, sourceId:key.slice(colon + 1) });
   }
   const editor = new Editor(current.pages, projector, now);
-  const publicationChecks:Array<{url:string;key:string}>=[];
+  const publicationChecks:Array<{url:string;key:string;unit?:string}>=[];
   for (const source of new Set([...wanted.values()].map(item => item.source))) {
     const ids = [...wanted.values()].filter(item => item.source === source).map(item => item.sourceId);
     if (!ids.length) continue;
@@ -558,13 +558,13 @@ async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
     for (let i = 0; i < ids.length; i++) {
       await editor.put(source, ids[i], records[i]);
       const url=records[i]?.url;
-      if (typeof url==='string' && records[i]?.kind==='job_offer') publicationChecks.push({url,key:source+':'+ids[i]});
+      if (typeof url==='string' && records[i]?.kind==='job_offer') publicationChecks.push({url,key:source+':'+ids[i],...(typeof records[i]?.documentUnitKey==='string'?{unit:records[i]!.documentUnitKey as string}:{})});
     }
   }
   const result = await publish(manifest(await editor.persist(), now),lease);
   for (const check of publicationChecks) {
     const present=editor.pages.some(page=>page.keys.includes(check.key));
-    await recordCandidate(check.url,{publication:present?'published':'not_in_current_feed',feedPresent:present,feedManifestId:result.manifestId});
+    await recordCandidate(check.url,{...(check.unit?{documentUnitKey:check.unit}:{}),publication:present?'published':'not_in_current_feed',feedPresent:present,feedManifestId:result.manifestId});
   }
   // Acknowledge only after the complete immutable manifest and visible pointer are durable.
   if (changes.items.length) {
@@ -576,6 +576,7 @@ async function advancePublicFeedLocked(projector:Projector,lease:Lease) {
 
 export async function readPublicFeedPage(cursor?:string) {
   let manifestId:string | undefined;
+  let usingLastGood=false;
   let page = 0;
   if (cursor?.startsWith('v2:')) {
     const match = /^v2:([A-Za-z0-9_-]{1,128}):(\d+)$/.exec(cursor);
@@ -585,7 +586,9 @@ export async function readPublicFeedPage(cursor?:string) {
   } else {
     if (cursor && !/^\d+$/.test(cursor)) throw new Error('Feed cursor invalid');
     page = Number(cursor || '0');
-    manifestId = (await currentPublicFeedManifest())?.manifestId;
+    const snapshot=await currentPublicFeedManifest();
+    manifestId=snapshot?.manifestId;
+    usingLastGood=snapshot?.degraded===true;
   }
   if (!Number.isSafeInteger(page) || page < 0 || page > 10000) throw new Error('Feed cursor invalid');
   if (!manifestId) return (await single<Stored>('public_feed_page_' + page)) ?? null;
@@ -598,18 +601,22 @@ export async function readPublicFeedPage(cursor?:string) {
   const { pages:_pages, schema:_schema, itemCount, ...summary } = current;
   const hasMore = page + 1 < current.pages.length;
   return { ...summary, items:leaf?.entries.map(entry => entry.item) ?? [], totalItems:itemCount,
-    manifestId, complete:true, pageSize:PAGE_SIZE, hasMore, nextCursor:hasMore ? 'v2:' + manifestId + ':' + (page + 1) : undefined };
+    manifestId, feedState:usingLastGood?'degraded_last_good':'fresh', complete:true, pageSize:PAGE_SIZE, hasMore, nextCursor:hasMore ? 'v2:' + manifestId + ':' + (page + 1) : undefined };
 }
 
 
 // Lookups must use the current public projection, never private source records.
-export async function readPublicFeedItem(id:string) {
+export async function readPublicFeedEntry(id:string) {
   if(!/^[A-Za-z0-9_-]{1,128}$/.test(id))return null;
   const current=await currentPublicFeedManifest();
   if(!current)return null;
   const ref=current.manifest.pages.find(page=>page.keys.some(key=>key.endsWith(':'+id)));
   if(!ref)return null;
-  const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id]);
+  const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id],{consistent:true});
   if(!leaf)throw Error('Public feed page missing');
-  return leaf.entries.find(entry=>entry.sourceId===id)?.item??null;
+  const entry=leaf.entries.find(entry=>entry.sourceId===id);
+  return entry&&allowedSource(entry.source)&&entry.key===entry.source+':'+entry.sourceId?entry:null;
+}
+export async function readPublicFeedItem(id:string) {
+  return (await readPublicFeedEntry(id))?.item??null;
 }

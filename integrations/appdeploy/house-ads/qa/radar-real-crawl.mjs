@@ -81,7 +81,7 @@ while(queue.length&&Date.now()<deadline&&processed<4000) {
 }
 report.pending.push(...queue.map(x=>({...x,reason:'run_budget_pending'})));
 if(previous) {
- await parallel(report.candidates.filter(x=>x.A.status==='verified'||x.B.status==='verified'),async row=>{
+ await parallel(report.candidates.filter(x=>x.A.status==='verified'||x.B.status==='verified'||/source_older_than_45_days/.test(x.A.reason||'')),async row=>{
    const page=await core.fetchPublicPage(row.url,row.url);
    row.previousMeasurement={A:row.A,B:row.B,sha256:row.sha256};
    row.A=page.error?{status:'pending',reason:page.error}:core.evaluatePublicJob(row.url,page.raw,page.url,page.status);

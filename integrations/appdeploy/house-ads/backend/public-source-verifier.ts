@@ -235,10 +235,11 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   if (deadline && Date.parse(deadline)<=now) return { ...base,status:'rejected',reason:'expired_deadline' };
   if (!published || Date.parse(published)>now) return { ...base,status:'pending',reason:'source_date_missing_or_future' };
   const dated = { ...base,source_published_at:published };
-  if (!deadline && now-Date.parse(published)>45*86400000) return { ...dated,status:'pending',reason:'source_older_than_45_days' };
+
   if (!/oferta laboral|postul|requisitos|descripci[oó]n del (?:empleo|trabajo)|jornada|vacante|empleo|job|apply/i.test(body)) return { ...dated,status:'pending',reason:'hiring_text_missing' };
   if (job.validThrough && !deadline) return { ...dated,status:'review_ready',reason:'invalid_source_deadline' };
   const form = liveApplicationForm(visible,finalUrl), link = applicationLink(visible,finalUrl);
+  if (!deadline&&now-Date.parse(published)>45*86400000&&!form) return {...dated,status:'pending',reason:'source_older_than_45_days_requires_enabled_application'};
   // An accessible original job page remains a useful application destination even when
   // the application button is loaded dynamically by the portal.
   const application = form || link || (adapter.family==='portal' ? finalUrl : '');

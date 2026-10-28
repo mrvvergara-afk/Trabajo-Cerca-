@@ -93,7 +93,11 @@ export async function shadowPdfBatch() {
     let item:Row={id,url,source:source.source,publisherPage:source.publisher_page,
       scannedAt:new Date().toISOString(),attempts:Number(old?.attempts||0)+1,publicEligible:false};
     try {item={...item,...await extractPublicPdf(source.url)};}
-    catch (e) {item={...item,stage:'blocked',reason:e instanceof Error?e.message.slice(0,160):'pdf_read_failed'};}
+    catch (e) {
+      const reason=e instanceof Error?e.message.slice(0,160):'pdf_read_failed';
+      const inaccessible=/robots|HTTP (?:401|403|429|5\d\d)|timeout|fetch failed/i.test(reason);
+      item={...item,stage:inaccessible?'blocked':'recoverable',reason};
+    }
     item.nextAttemptAt=new Date(Date.now()+(item.stage==='blocked'?6:24)*3600000).toISOString();
     const [ok]=old?await db.tx.update('radar_shadow_pdf',[{id,record:item}]):await db.tx.add('radar_shadow_pdf',[item]);
     if (!ok) throw new Error('PDF evidence write failed; cursor retained');

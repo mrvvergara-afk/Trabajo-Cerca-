@@ -13,9 +13,9 @@ for(const url of urls) {
  const page=await core.fetchPublicPage(url,url);
  const offer=page.error?{status:'pending',reason:page.error}:core.evaluateWithEvidence(url,page.raw,page.url,page.status);
  const nodes=[];
- const visit=(v,depth=0)=>{if(!v||typeof v!=='object'||depth>12)return;if(v['@type']==='JobPosting')nodes.push(v);for(const x of Object.values(v))if(typeof x==='object')visit(x,depth+1);};
+ const visit=(v,depth=0)=>{if(!v||typeof v!=='object'||depth>12)return;if([].concat(v['@type']||[]).includes('JobPosting'))nodes.push(v);for(const x of Object.values(v))if(typeof x==='object')visit(x,depth+1);};
  for(const script of page.raw.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)){try{visit(JSON.parse(script[1]));}catch{}}
- const job=nodes.find(j=>core.publicFeedIdentity(j.url||'')===core.publicFeedIdentity(url));
+ const job=nodes.find(j=>[j.url,typeof j.mainEntityOfPage==='object'?j.mainEntityOfPage?.['@id']:j.mainEntityOfPage].some(ref=>typeof ref==='string'&&core.publicFeedIdentity(ref)===core.publicFeedIdentity(url)))||(nodes.length===1?nodes[0]:undefined);
  const description=String(job?.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
  const application=offer.application?await core.fetchPublicPage(offer.application):null;
  const record={url,observedAt:new Date().toISOString(),http:page.status,sourceSha256:createHash('sha256').update(page.raw).digest('hex'),

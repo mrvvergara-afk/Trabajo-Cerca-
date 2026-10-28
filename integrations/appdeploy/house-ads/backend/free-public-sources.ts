@@ -230,6 +230,7 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
   const old = previous[0], { id:_id,...fields } = old || {};
   const record = { ...fields,...verifiedPublicRecord(offer,now),createdAt:old?.createdAt || new Date(now).toISOString(),
     externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString(),
+    firstVerifiedAt:old?.firstVerifiedAt||old?.externalVerifiedAt||new Date(now).toISOString(),
     ...(unit?{documentUnitKey:unit,documentUnitVerified:true}:{}) };
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;
@@ -242,10 +243,10 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
     id = created;
   }
   // Retain storage identity even if feed registration fails; a later retry re-registers it.
-  await recordCandidate(offer.url!,{publication:'stored',sourceTable:table,sourceId:id,dedupIdentity:identity,state:'verified',reason:offer.reason},now);
+  await recordCandidate(offer.url!,{...(unit?{documentUnitKey:unit}:{}),publication:'stored',sourceTable:table,sourceId:id,dedupIdentity:identity,state:'verified',reason:offer.reason},now);
   await registerPublicFeedChange(table,id);
-  await recordCandidate(offer.url!,{publication:'queued_for_feed',feedPresent:false},now);
-  return { table,id,url:offer.url };
+  await recordCandidate(offer.url!,{...(unit?{documentUnitKey:unit}:{}),publication:'queued_for_feed',feedPresent:false},now);
+  return { table,id,url:offer.url,created:!old };
 }
 
 async function closeKnownOffer(url:string,result:PublicVerification,page:{url:string;status:number;raw:string},now:number) {
@@ -342,6 +343,8 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       ?.filter(url=>!publicDocumentUrl(url));
     let seen = (previousSeed?.seen as string[] | undefined) || state.seen[source.key] || [];
     if (!queue?.length) { queue=[source.url];seen=[]; }
+    const rootAttempt=Date.parse(String(previousSeed?.rootAttemptedAt||''));
+    if(!Number.isFinite(rootAttempt)||now-rootAttempt>=6*3600000)queue=[source.url,...queue.filter(url=>url!==source.url)];
     const url = queue[0], page = await fetchPublicPage(url);reads++;roots++;
     const audit:Stored = { source:source.name,territory:source.territory,url,http:page.status,
       discoveryGroup:localDiscoverySource(source)?'local':'portal',
@@ -373,7 +376,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       audit.candidates = links.candidates.length;
     }
     const restricted=Boolean(page.error && /robots|challenge|render_required/.test(String(audit.error))) || [401,403,429].includes(page.status) || audit.renderRequired===true;
-    const seed = { id:seedId,key:source.key,queue,seen,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
+    const seed = { id:seedId,key:source.key,queue,seen,rootAttemptedAt:url===source.url?new Date(now).toISOString():previousSeed?.rootAttemptedAt||null,revision:Number(previousSeed?.revision || 0)+1,checkedAt:new Date(now).toISOString(),
       lastError:audit.error || (page.status>=400?'HTTP '+page.status:null),nextAllowedAt:restricted ? new Date(now+12*3600000).toISOString() : null };
     if (Buffer.byteLength(JSON.stringify(seed))>230*1024) throw new Error('Source history checkpoint byte budget exceeded');
     changedSeeds.set(seedId,{ previous:previousSeed,record:seed });
@@ -429,7 +432,9 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     localSourcesRead:audits.filter(item=>item.discoveryGroup==='local').length,
     portalSourcesRead:audits.filter(item=>item.discoveryGroup==='portal').length,
     documentsManagedSeparately:documentManagedUrls.size,
-    noticesChecked:reviewed.length,verified,stored:receipts.length,published:0,providerCalls:0,
+    noticesChecked:reviewed.length,verified,stored:receipts.length,
+    newStored:receipts.filter(x=>x.created===true).length,revalidations:receipts.filter(x=>x.created===false).length,
+    published:null,publicationStatus:'awaiting_public_feed_confirmation',providerCalls:0,
     closuresConfirmed:closures.length,closures,sourcesDeferred:audits.filter(item=>item.error==='source_retry_deferred').length,
     pending:state.pending.length,priorityPending:state.priorityCandidates.length,
     documentsAwaitingLocalReader:state.documentPending.length,

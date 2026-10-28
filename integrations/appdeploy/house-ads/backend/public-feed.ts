@@ -74,6 +74,11 @@ function chunks<T>(values:T[], envelope:(items:T[]) => unknown) {
 
 async function single<T>(table:string):Promise<(T & {id:string})|undefined> {
   if (table==='public_feed_control') {
+    const [registry]=await db.get<{controlId:string}>('public_feed_pointer_registry',['current'],{consistent:true});
+    if(registry?.controlId){
+      const [record]=await db.get<Stored>(table,[registry.controlId],{consistent:true});
+      if(record)return {...record,id:registry.controlId} as unknown as T & {id:string};
+    }
     const [fixed]=await db.get<Stored>(table,['current'],{consistent:true});
     if (fixed) return {...fixed,id:'current'} as unknown as T & {id:string};
     const rows=await db.list<Stored>(table,{limit:2});
@@ -428,7 +433,14 @@ async function publish(record:Manifest, lease:Lease) {
   const write=previous
     ? db.tx.update('public_feed_control',[{id:previous.id,if:{manifestId:previous.manifestId},record:pointer}])
     : db.tx.add('public_feed_control',[{id:'current',...pointer}]);
-  await db.transact([gate,write]);
+  const controlId=previous?.id||'current';
+  const [registry]=await db.get<{controlId:string}>('public_feed_pointer_registry',['current'],{consistent:true});
+  const registryWrite=!registry
+    ?db.tx.add('public_feed_pointer_registry',[{id:'current',controlId}])
+    :registry.controlId!==controlId
+      ?db.tx.update('public_feed_pointer_registry',[{id:'current',if:{controlId:registry.controlId},record:{controlId}}],{patch:true})
+      :null;
+  await db.transact(registryWrite?[gate,write,registryWrite]:[gate,write]);
   const current=await single<Control>('public_feed_control');
   if (current?.manifestId!==manifestId) throw new Error('Public feed pointer not durable; changes remain pending');
   return {...summary,manifestId,rebuilding:false};

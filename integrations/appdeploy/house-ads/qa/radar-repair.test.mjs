@@ -57,9 +57,16 @@ test('feed retains a durable public snapshot and serializes overlapping writers'
  for(let i=0;i<4;i++)await core.advancePublicFeed(projector);
  const before=await core.readPublicFeedPage();assert.equal(before.totalItems,2);assert.equal(before.complete,true);
  const pointer=[...mem.table('public_feed_control').values()][0],original=pointer.manifestId;
+ // Model the single legacy pointer's physical ID, without creating a second control row.
+ mem.table('public_feed_control').delete('current');mem.table('public_feed_control').set('legacy-control',pointer);
+ mem.table('public_feed_pointer_registry').delete('current');
  mem.table('radar_jobs').set('job-three',{kind:'job_offer',title:'Fixture 3',verified:true,workCommunes:['Lumaco'],createdAt:new Date(now).toISOString()});
  await core.registerPublicFeedChange('radar_jobs','job-three');await core.advancePublicFeed(projector);
  assert.equal((await core.readPublicFeedPage()).totalItems,3);
+ assert.equal(mem.table('public_feed_control').size,1);
+ assert.equal(mem.table('public_feed_pointer_registry').get('current').controlId,'legacy-control');
+ const list=mem.db.list;mem.db.list=async(n,o)=>n==='public_feed_control'?{items:[]}:list(n,o);
+ try{assert.equal((await core.readPublicFeedPage()).totalItems,3);}finally{mem.db.list=list;}
  assert.equal([...mem.table('public_feed_control').values()][0].previousManifestId,original);
  const current=[...mem.table('public_feed_control').values()][0];
  const saved=mem.table('public_feed_manifests').get(current.manifestId);

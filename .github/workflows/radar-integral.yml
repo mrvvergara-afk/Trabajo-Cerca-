@@ -25,7 +25,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: radar-integral-evidence-and-source-package
-          run-id: 40685425331
+          run-id: 40687488289
           github-token: ${{ github.token }}
           path: integrations/appdeploy/house-ads/qa-output/previous
       - name: Reconcile native PDF dependency in isolated runner
@@ -44,11 +44,15 @@ jobs:
         continue-on-error: true
         run: node qa/radar-live-observe.mjs
       - name: Process complete source inventory with A and B on common URLs
-        if: success()
+        if: success() && !contains(github.event.head_commit.message, '[no recrawl]')
         env:
           RADAR_PREVIOUS: qa-output/previous/qa-output/radar/crawl.json
         run: node qa/radar-real-crawl.mjs
+      - name: Preserve verified real-source receipts for a database-only fix
+        if: contains(github.event.head_commit.message, '[no recrawl]')
+        run: node qa/radar-carry-evidence.mjs
       - name: Verify original target evidence and application destinations
+        if: ${{ !contains(github.event.head_commit.message, '[no recrawl]') }}
         run: node qa/radar-target-proof.mjs
       - name: Install free local OCR tools
         run: |

@@ -269,6 +269,16 @@ async function closeKnownOffer(url:string,result:PublicVerification,page:{url:st
   return {id,table,reason:result.reason};
 }
 
+// Give new, explicitly reviewed source URLs one normal verification attempt.
+// Stored job fields are always extracted again; this never inserts a static offer.
+export async function nextBootstrapSource(sources:FreeSource[]) {
+  for(const source of sources.filter(x=>x.bootstrap).slice(0,3)) {
+    const [seed]=await db.get<Stored>(SEEDS,[hash(source.key)],{consistent:true});
+    if(!seed)return source;
+  }
+  return undefined;
+}
+
 export async function runFreePublicSources(sources:FreeSource[], requestId:string, now=Date.now()) {
   if (!/^[A-Za-z0-9_-]{12,128}$/.test(requestId)) throw new Error('Invalid public scan request ID');
   const receiptId = hash(requestId);
@@ -321,7 +331,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   const changedSeeds = new Map<string,{ previous:Stored | null; record:Stored }>();
   let reads = 0, roots = 0;
   const started = Date.now();
-  const bootstrapSource=sources.find(source=>source.bootstrap);
+  const bootstrapSource=await nextBootstrapSource(sources);
   const bootstrapState=bootstrapSource ? (await db.get<Stored>(SEEDS,[hash(bootstrapSource.key)],{ consistent:true }))[0] : null;
   const visitedSources=new Set<string>();
   let discoverySlot=0,selectionAttempts=0;

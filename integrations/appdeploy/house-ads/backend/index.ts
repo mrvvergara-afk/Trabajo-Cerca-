@@ -254,8 +254,14 @@ function cleanAnalyticsProperties(input: unknown): Record<string, string | numbe
   return cleaned;
 }
 
-async function relayAnalytics(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
-  if (!SECURITY_POLICY.externalAnalytics) return false;
+async function relayAnalytics(event:string,distinctId:string,properties:Record<string,string|number|boolean>) {
+  if(!SECURITY_POLICY.externalAnalytics)return false;
+  const enabled=await secrets.readSecret('POSTHOG_ENABLE_INGESTION').catch(()=>null);
+  if(enabled!=='free-tier-confirmed')return false;
+  return sendPosthogEvent(event,distinctId,properties);
+}
+
+async function sendPosthogEvent(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
   const response = await fetch('https://us.i.posthog.com/i/v0/e/', {
     method:'POST',
     headers:{ 'content-type':'application/json' },
@@ -381,7 +387,7 @@ const FREE_PUBLIC_SOURCES:FreeSource[] = (() => {
   const registered=new Set(result.map(source=>source.url));
   for (const source of RADAR_SOURCE_INVENTORY) {
     if (source.manualOnly || registered.has(source.url)) continue;
-    result.push({key:source.key,name:source.name,url:source.url,territory:source.territory,
+    result.push({key:source.key,name:source.name,url:source.url,territory:source.territory,...(source.bootstrap?{bootstrap:true}:{}),
       ...(['Los Ángeles','Temuco','Concepción','Chillán'].includes(source.territory)?{discoveryPriority:'secondary' as const}:{})});
     registered.add(source.url);
   }

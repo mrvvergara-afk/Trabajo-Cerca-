@@ -1,3 +1,4 @@
+import {build as viteBuild} from 'vite';
 import { build } from 'esbuild';
 import { readFileSync,mkdirSync,writeFileSync } from 'node:fs';
 mkdirSync('qa-output/radar',{recursive:true});
@@ -8,3 +9,5 @@ const files=sources.map(path=>({filename:path,content:readFileSync(path,'utf8')}
 writeFileSync('qa-output/radar/reviewable-source-package.json',JSON.stringify({appId:'trabajo-cerca-laboratorio-3ojgro',baseVersion:'1793152775717',deployed:false,files},null,2));
 
 console.log('RADAR_LOCK_JSON '+JSON.stringify(JSON.parse(readFileSync('package-lock.json','utf8'))));
+
+await viteBuild({configFile:'vite.config.ts',build:{outDir:'qa-output/radar/vite',emptyOutDir:true,rollupOptions:{external:['@appdeploy/client']}}});

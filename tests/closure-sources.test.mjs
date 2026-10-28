@@ -39,7 +39,14 @@ function harness({ blocked=false,abort=false,fetcher }={}) {
     currentPublicFeedManifest:async()=>null };
   vm.createContext(ctx); vm.runInContext(stripTypeScriptTypes(readFileSync('integrations/appdeploy/house-ads/shared/territories.ts','utf8'),{mode:'strip'}).replace(/^export /gm,''),ctx);
   for (const name of ['social-evidence.ts','public-source-adapters.ts','public-source-verifier.ts','offer-identity.ts','radar-trace.ts','publication-preflight.ts','free-public-sources.ts']) {
-    vm.runInContext(stripTypeScriptTypes(readFileSync(new URL('../integrations/appdeploy/house-ads/backend/'+name,import.meta.url),'utf8'),{ mode:'strip' }).replace(/^import .*;$/gm,'').replace(/^export /gm,''),ctx);
+    const code=stripTypeScriptTypes(readFileSync(new URL('../integrations/appdeploy/house-ads/backend/'+name,import.meta.url),'utf8'),{ mode:'strip' }).replace(/^import .*;$/gm,'').replace(/^export /gm,'');
+    const exports={
+      'offer-identity.ts':'offerFingerprint,listingFingerprints',
+      'radar-trace.ts':'rememberCandidates,recordCandidate,recordVerification,recoverCandidatePage',
+      'publication-preflight.ts':'assertDistinctPublicOffer,PublicationReviewRequired',
+    }[name];
+    if(exports)Object.assign(ctx,vm.runInContext('(function(){'+code+';return {'+exports+'};})()',ctx));
+    else vm.runInContext(code,ctx);
   }
   return { ctx,tables,table,calls,registered,now(next){time=next;},sources:[{ key:'indeed-angol',name:'Indeed',url,territory:'Angol' }] };
 }

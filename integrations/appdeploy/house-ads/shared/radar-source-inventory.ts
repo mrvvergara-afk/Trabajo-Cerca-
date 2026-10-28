@@ -836,6 +836,7 @@ export const RADAR_SOURCE_INVENTORY = [
     key: 'inventory:https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967',
     name: 'Inventario original TC-005',
     url: 'https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967',
+    bootstrap: true,
     territory: 'Angol',
     manualOnly: false,
   },

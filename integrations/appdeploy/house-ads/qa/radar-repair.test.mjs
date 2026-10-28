@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {resumeWork} from './radar-work-checkpoint.mjs';
 // All records in this file are synthetic unit fixtures; they are never crawl/publication evidence.
 import test from 'node:test';
@@ -202,4 +203,28 @@ test('separate verified roles in one document retain separate trace IDs and publ
  assert.equal(mem.table('radar_candidate_trace').size,start+2);
  assert.equal(mem.table('radar_candidate_trace').get(core.traceId(url,one)).sourceId,'unit-one');
  assert.equal(mem.table('radar_candidate_trace').get(core.traceId(url,two)).sourceId,'unit-two');
+});
+
+test('an already processed bootstrap cannot starve a newly reviewed real-source URL',async()=>{
+ const old={key:'unit-old-bootstrap',name:'Unit fixture',url:'https://unit.invalid/old',territory:'Angol',bootstrap:true};
+ const fresh={...old,key:'unit-new-bootstrap',url:'https://unit.invalid/new'};
+ const seedId=key=>createHash('sha256').update(key).digest('hex');
+ mem.table('free_public_seed_state').set(seedId(old.key),{key:old.key});
+ assert.equal((await core.nextBootstrapSource([old,fresh])).key,fresh.key);
+ mem.table('free_public_seed_state').set(seedId(fresh.key),{key:fresh.key});
+ assert.equal(await core.nextBootstrapSource([old,fresh]),undefined);
+});
+
+test('source age requires live application evidence and a fresh check instead of a fabricated closing date',()=>{
+ const u='https://www.chiletrabajos.cl/trabajo/operador-angol-1234567';
+ const job={'@type':'JobPosting',url:u,title:'Operador en Angol',description:'Oferta laboral para operador',
+ hiringOrganization:{name:'Empresa de prueba'},datePosted:'2026-09-01',jobLocation:{address:{addressCountry:'CL',addressLocality:'Angol'}}};
+ const raw='<title>Operador en Angol</title><script type="application/ld+json">'+JSON.stringify(job)+'</script><p>Oferta laboral y requisitos</p>';
+ const form='<form method="post" action="'+u+'"><button type="submit">Postular</button></form>';
+ assert.equal(core.evaluatePublicJob(u,raw+form,u,200,now).status,'verified');
+ assert.equal(core.evaluatePublicJob(u,raw,u,200,now).status,'pending');
+ const item={kind:'job_offer',active:true,verified:true,review:false,sourcePublishedAt:'2026-09-01',expiresAt:'2026-10-16'};
+ assert.equal(core.confirmedOfferDeadline(item),null);
+ assert.equal(core.offerRetentionReason(item,now),'source_revalidation_required');
+ assert.equal(core.offerRetentionReason({...item,lastVerifiedAt:new Date(now).toISOString()},now),null);
 });

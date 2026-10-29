@@ -1,0 +1,141 @@
+{
+  "run_at": "2026-10-29T15:46:56.546315+00:00",
+  "search_from": "2026-09-12",
+  "sources_checked": 22,
+  "sources_ok": 18,
+  "candidates_detected": 13,
+  "discarded_links": 1096,
+  "verified_new": 0,
+  "details_scanned": 13,
+  "social": "Pending authorized connector; no Meta scraping",
+  "logs": [
+    {
+      "source": "OMIL Mulchen",
+      "read": "ok",
+      "candidates": 1,
+      "discarded": 78
+    },
+    {
+      "source": "OMIL Negrete",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 109
+    },
+    {
+      "source": "OMIL Victoria",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 149
+    },
+    {
+      "source": "Collipulli",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 69
+    },
+    {
+      "source": "Renaico",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 70
+    },
+    {
+      "source": "SS Araucania Norte",
+      "read": "ok",
+      "candidates": 9,
+      "discarded": 35
+    },
+    {
+      "source": "Angol",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 59
+    },
+    {
+      "source": "Traiguen",
+      "read": "ok",
+      "candidates": 3,
+      "discarded": 94
+    },
+    {
+      "source": "Puren",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 45
+    },
+    {
+      "source": "Ercilla",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 50
+    },
+    {
+      "source": "Lumaco",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 66
+    },
+    {
+      "source": "Nacimiento",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 0
+    },
+    {
+      "source": "Los Sauces",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 0
+    },
+    {
+      "source": "Chiletrabajos",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 178
+    },
+    {
+      "source": "Trabajando",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 0
+    },
+    {
+      "source": "Empleos Publicos",
+      "read": "error",
+      "detail": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "SENCE",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 75
+    },
+    {
+      "source": "CMPC",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 0
+    },
+    {
+      "source": "Arauco",
+      "read": "ok",
+      "candidates": 0,
+      "discarded": 19
+    },
+    {
+      "source": "Indeed Angol",
+      "read": "error",
+      "detail": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Indeed Collipulli",
+      "read": "error",
+      "detail": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Indeed Victoria",
+      "read": "error",
+      "detail": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

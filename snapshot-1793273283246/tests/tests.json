@@ -1,0 +1,45 @@
+[
+  {
+    "name": "Radar B no muestra avisos cerrados",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "guardia de vigencia",
+      "conservación de feed"
+    ],
+    "description": "Verifica que una publicación cerrada no se presente como oferta publicable.",
+    "steps": [
+      "Abrir la página principal del laboratorio",
+      "Examinar las ofertas visibles y sus estados"
+    ],
+    "expected": "No se presentan como vigentes ofertas expresamente cerradas."
+  },
+  {
+    "name": "Radar B reconoce Quilaco",
+    "viewport": "mobile",
+    "covers": [
+      "cobertura Quilaco",
+      "filtros territoriales"
+    ],
+    "description": "Comprueba que el territorio Quilaco está disponible en el catálogo.",
+    "steps": [
+      "Abrir filtros territoriales",
+      "Buscar Quilaco en las opciones"
+    ],
+    "expected": "Quilaco figura como territorio de cobertura sin duplicaciones."
+  },
+  {
+    "name": "La verificación del motor A sigue disponible",
+    "viewport": "desktop",
+    "covers": [
+      "estabilidad motor A",
+      "feed público"
+    ],
+    "description": "Comprueba que la consulta pública sigue funcionando después del cambio acotado en B.",
+    "steps": [
+      "Abrir el catálogo de empleos",
+      "Cambiar un filtro y regresar al listado"
+    ],
+    "expected": "Las ofertas y sus enlaces siguen consultables, sin fallos visibles."
+  }
+]

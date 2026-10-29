@@ -1,0 +1,75 @@
+{
+  "schema": "trabajo-cerca.audit-source-manifest.v1",
+  "source": "AppDeploy exact stored snapshot",
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "base_version": "1793273283246",
+  "later_version": "1793274203846",
+  "integrity_algorithm": "git-blob-sha1",
+  "note": "Git hashes are SHA-1 of 'blob <size>\\0'+UTF8 source; SHA256 manifest not yet available. Motor B auxiliary is later, not in base snapshot.",
+  "files": [
+    {
+      "path": "snapshot-1793273283246/backend/index.ts",
+      "git_blob_sha1": "8e5bb249ca401054d9bcba2a4498e589c870f082"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/radar-admin-verification.ts",
+      "git_blob_sha1": "0d9cfa2fee96e45327072ed07078a997c3466a19"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/radar-review-check.ts",
+      "git_blob_sha1": "d0e1a841a8cbc3e507d668451d30e077813b4512"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/radar-review-queue.ts",
+      "git_blob_sha1": "867f2c9693e71a5bb04146e1910385e48f87819c"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/radar-review-inbox.ts",
+      "git_blob_sha1": "c2139fd88c366a84abe98eb785025128662779bc"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/public-feed.ts",
+      "git_blob_sha1": "d0719583248588523e8a34b0c7c6463a5aaa48ed"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/motor-b-independent.ts",
+      "git_blob_sha1": "bb92703b1b71f373fba2b7633541096a5ced6d70"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/radar-ingestion.ts",
+      "git_blob_sha1": "c7d9c7cfb62d9dd5c0226701f7fbcc92da0df5fe"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/public-source-verifier.ts",
+      "git_blob_sha1": "4037d0886b9f05dd0f70b305053197de7e1f300d"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/social-evidence.ts",
+      "git_blob_sha1": "67ce581aed7ad67f06847bfe64e7125695f52447"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/social-evidence-store.ts",
+      "git_blob_sha1": "7959b738a9608d1d5cf1cfcbf2e29fa34e9832db"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/verification-schedule.ts",
+      "git_blob_sha1": "fd28924313dab7f6541f1a83f7c5dbd4698dcdf1"
+    },
+    {
+      "path": "snapshot-1793273283246/backend/offer-retention.ts",
+      "git_blob_sha1": "feb21e6b847522ec812b873c7d513651c3b04762"
+    },
+    {
+      "path": "snapshot-1793273283246/cron.json",
+      "git_blob_sha1": "d336c0edbf37f5cec429efe847ad41838c1f57b8"
+    },
+    {
+      "path": "snapshot-1793273283246/tests/tests.json",
+      "git_blob_sha1": "28b75fa2a87dfa16a4b17bfe3e0c330f1ea03004"
+    },
+    {
+      "path": "later-1793274203846/backend/motor-b-auxiliary.ts",
+      "git_blob_sha1": "64c258f308d03bf0662d4501eb8e90c3ce77442b"
+    }
+  ]
+}

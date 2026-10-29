@@ -1,0 +1,57 @@
+name: Rastreo Motor C
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/**"
+      - ".github/workflows/rastreo.yml"
+permissions:
+  contents: write
+  id-token: write
+concurrency:
+  group: motor-c-daily
+  cancel-in-progress: false
+jobs:
+  rastrear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ejecutar rastreo independiente
+        run: python src/crawler.py
+      - name: Descubrir avisos en RSS publico regional sin Meta
+        continue-on-error: true
+        run: python src/rss_discovery.py
+      - name: Revisar Instagram mediante API oficial autorizada
+        continue-on-error: true
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_IG_BUSINESS_ACCOUNT_ID: ${{ secrets.META_IG_BUSINESS_ACCOUNT_ID }}
+        run: python src/instagram_connector.py
+      - name: Procesar afiches y avisos sociales autorizados
+        run: python src/social_intake.py
+      - name: Exportar candidatos C para bandeja privada de Trabajo Cerca
+        run: python src/review_export.py
+      - name: Guardar reporte y candidatos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: motor-c-resultados
+          path: output/
+          retention-days: 14
+      - name: Registrar ultimo reporte
+        if: always()
+        continue-on-error: true
+        run: |
+          git config user.name "motor-c-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add output/
+          if ! git diff --cached --quiet; then
+            git commit -m "Motor C: resultados automaticos"
+            git pull --rebase origin main && git push origin HEAD:main || echo 'Reporte disponible en artefactos; sincronizacion Git pendiente'
+          fi

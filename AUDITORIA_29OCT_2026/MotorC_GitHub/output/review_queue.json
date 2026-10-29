@@ -1,0 +1,147 @@
+{
+  "items": [
+    {
+      "candidate_key": "d852014c3b4e91397bd896",
+      "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Mulchén"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "ec1d526fc593075bcea5c4",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/profesional-de-apoyo-subdepartamento-tesoreria-y-gestion-de-cobros",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "25b5d735728be312d478dd",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/terapeuta-ocupacional",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "04efa41b635ca01c59fc9b",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/jefe-a-de-abastecimiento",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "ead7c13421f9605afcd120",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/encargadoa-de-agendas-del-servicio-de-orientacion-medica-y-estadistica-some",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "24e7ec332cb77752e4e06f",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/profesional-estadistico",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "07ab7a8680fadff8817a7c",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-en-control-centralizado-2",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "6d877dce82681d4bde14ee",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-en-imagenologia-3",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "6d134f3957d98d0dd73ee4",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-en-alimentacion-sala-cuna-hospital-lonquimay",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "29286b3f35eb9ac8cf4e62",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/auxiliar-de-servicios-sala-cuna-2",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Angol"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "35516c1c8ff09da390c386",
+      "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Traiguén"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "5806cd76fab3c682551f3f",
+      "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Traiguén"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    },
+    {
+      "candidate_key": "845afd1a69a6ca51a54313",
+      "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
+      "source_id": "motor-c:candidates",
+      "status": "revision_obligatoria",
+      "reported_territories": [
+        "Traiguén"
+      ],
+      "published_date_evidence": null,
+      "deadline_evidence": null
+    }
+  ]
+}

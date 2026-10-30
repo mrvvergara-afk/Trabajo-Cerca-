@@ -1,9 +1,7 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
-  "snapshotVersion": "1793327520546",
-  "fullRepositoryParent": "1fd35a4581956e52bd3abe1ed967d924f406569d",
-  "parentBranch": "fix/estetica-portada-2026-10-29",
-  "matchingExistingBranch": false,
+  "snapshotVersion": "1793329280879",
+  "initialSnapshot": "1793327520546",
   "capturedTextFiles": 115,
   "excludedUntouched": [
     "appdeploy.auth-login.json",
@@ -11,5 +9,11 @@
     "public/icon-512.png",
     "public/icon-maskable-512.png"
   ],
-  "note": "Fuente vigente fijada por versión; sin despliegue ni copia de datos. La rama de auditoría anterior es parcial y difiere en 11 archivos compartidos."
+  "currentSourceCommitWillBeThisBaseline": true,
+  "parentSourceCommit": "e4b23499c1a5bfcd8e395b111e2b4f1d0a198eab",
+  "concurrentChangesPreserved": [
+    "backend/house-marketing.ts",
+    "tests/tests.json"
+  ],
+  "note": "No existing GitHub branch exactly matched the live app. Native text snapshot captured independently; not a database/auth/binary backup."
 }

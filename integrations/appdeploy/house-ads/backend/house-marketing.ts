@@ -226,6 +226,10 @@ export async function activateFreeTrial(ctx:RouterContext) {
   if(!COMMERCIAL_PLACES.includes(lead.commune))return error('Comuna fuera de cobertura comercial.',400);
   if(!businessIdentity(String(lead.businessName||'')))return error('Identifica el negocio.',400);
   const key=digest(businessIdentity(lead.businessName));
+  // Excepción de laboratorio solo para el negocio de prueba solicitado.
+  // No modifica el calendario de lanzamiento ni activa promociones de otros negocios.
+  const isMinincoPilot = lead.commune === 'Mininco' &&
+    businessIdentity(String(lead.businessName || '')) === 'ferreteriamininco';
   const campaignId='trial-'+digest(input.leadId);
   const reconcile=async()=>{
     const [receipt]=await db.get('growth_trial_entitlements',[key],{consistent:true});
@@ -239,16 +243,32 @@ export async function activateFreeTrial(ctx:RouterContext) {
   const legacy=(await commercialInventory()).some(ad=>(ad.adType==='COMMERCIAL_FREE'||ad.id.startsWith('trial-'))&&businessIdentity(ad.businessName)===businessIdentity(lead.businessName));
   if(legacy)return error('El negocio ya tiene una promoción histórica; requiere revisión, no otra prueba gratuita.',409);
   for(let attempt=0;attempt<3;attempt++){
-    const config=await commercialConfiguration();const offer=promotionOffer(config);
-    if(!offer.days||config.revision==='commercial-defaults-v1')return error('Configura y aprueba explícitamente el lanzamiento antes de activar promociones.',409);
+    const config = await commercialConfiguration();
+    const standardOffer = promotionOffer(config);
+    const pilotMode = isMinincoPilot &&
+      (!standardOffer.days || config.revision === 'commercial-defaults-v1');
+    // El piloto tiene exactamente 30 días y no consume cupos de fundadores.
+    const offer = pilotMode
+      ? {kind:'laboratorio', days:30}
+      : standardOffer;
+    if (!offer.days || (!pilotMode && config.revision === 'commercial-defaults-v1')) {
+      return error('Configura y aprueba explícitamente el lanzamiento antes de activar promociones.',409);
+    }
     const startAt=new Date().toISOString();const endAt=new Date(Date.parse(startAt)+offer.days*86400000).toISOString();
-    const record={id:campaignId,advertiserId:key,promotion:offer.kind,adType:'COMMERCIAL_FREE',businessName:lead.businessName,category:lead.category,communes:[lead.commune],headline:input.headline.trim(),detail:input.detail.trim(),url:input.url||undefined,...(input.imageStoragePath?{image:{storagePath:input.imageStoragePath,approved:true,reviewedAt:startAt}}:{}),startAt,endAt,status:'active',label:'Publicidad local',priority:0,placements:['search'],createdAt:startAt};
+    const record={id:campaignId,advertiserId:key,promotion:offer.kind,adType:'COMMERCIAL_FREE',...(pilotMode?{labPilot:true}:{}),businessName:lead.businessName,category:lead.category,communes:[lead.commune],headline:input.headline.trim(),detail:input.detail.trim(),url:input.url||undefined,...(input.imageStoragePath?{image:{storagePath:input.imageStoragePath,approved:true,reviewedAt:startAt}}:{}),startAt,endAt,status:'active',label:'Publicidad local',priority:0,placements:['search'],createdAt:startAt};
     try{
       await db.transact([
         db.tx.add('growth_trial_entitlements',[{id:key,leadId:input.leadId,campaignId,startAt,endAt,promotion:offer.kind,days:offer.days,createdAt:startAt}]),
         db.tx.add('growth_campaigns',[record]),
         db.tx.update('growth_advertiser_leads',[{id:input.leadId,record:{advertiserId:key,trialCampaignId:campaignId,trialState:'active',status:'approved',reviewedAt:startAt,reviewedBy:ctx.user?.userId,trialStartAt:startAt,trialEndAt:endAt,promotion:offer.kind},if:{trialCampaignId:undefined,status:lead.status}}],{patch:true}),
-        db.tx.update('growth_commercial_config',[{id:'current',record:{foundersUsed:config.foundersUsed+(offer.kind==='founder'?1:0)},if:{revision:config.revision,foundersUsed:config.foundersUsed}}],{patch:true}),
+        // Sin cambio global de configuración ni cupos para la prueba acotada.
+        ...(pilotMode ? [] : [
+          db.tx.update('growth_commercial_config', [{
+            id:'current',
+            record:{foundersUsed:config.foundersUsed+(offer.kind==='founder'?1:0)},
+            if:{revision:config.revision,foundersUsed:config.foundersUsed}
+          }],{patch:true})
+        ]),
         db.tx.add('growth_commercial_audit',[{id:randomUUID(),action:'trial_approved',campaignId,actor:ctx.user?.userId,promotion:offer.kind,at:startAt}]),
       ]);
     }catch(cause){

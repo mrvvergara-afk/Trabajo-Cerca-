@@ -121,16 +121,18 @@
       "contacto WhatsApp con autorización",
       "POST /api/admin/marketing/creative",
       "POST /api/admin/marketing/trial",
-      "publicación comercial con imagen aprobada"
+      "publicación comercial con imagen aprobada",
+      "activación de piloto Ferretería Mininco por administrador sin lanzamiento general"
     ],
-    "description": "El administrador puede crear un borrador con texto e imagen desde una solicitud y comprobar la vista previa sin tener que publicar durante la prueba.",
+    "description": "El administrador puede crear un borrador con texto e imagen desde una solicitud y comprobar la vista previa sin tener que publicar durante la prueba. El único piloto autorizado en esta versión es Ferretería Mininco, en Mininco, por 30 días, sin cambiar el lanzamiento general.",
     "steps": [
       "Ingresar como administrador y abrir la bandeja de solicitudes",
       "En una solicitud pendiente de ejemplo, pulsar Crear campaña automáticamente",
       "Comprobar que aparecen título y descripción adaptados al nombre y rubro; esperar la imagen ilustrativa",
       "Comprobar la vista previa y editar el texto",
-      "Verificar que el WhatsApp está desactivado para uso público hasta confirmar autorización; no aprobar ni activar"
+      "Verificar que el WhatsApp está desactivado para uso público hasta confirmar autorización; no aprobar ni activar",
+      "En el laboratorio, con la sesión administradora, comprobar que se puede aprobar específicamente Ferretería Mininco sin configurar el lanzamiento general; no reutilizar esta excepción para otros negocios."
     ],
-    "expected": "El formulario y la vista previa se completan automáticamente con datos existentes. La imagen es ilustrativa y el contacto privado no se publica por defecto."
+    "expected": "El formulario y la vista previa se completan automáticamente con datos existentes. La imagen es ilustrativa y el contacto privado no se publica por defecto. La excepción de laboratorio no altera el lanzamiento ni consume cupos globales."
   }
 ]

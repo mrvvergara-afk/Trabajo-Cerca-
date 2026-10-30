@@ -54,4 +54,3 @@ export function validateCmpcEvidence(item:Offer, now=Date.now()) {
       /(?:postulaci[oó]n cerrada|job (?:closed|expired)|no longer available)/i.test(text)) throw new Error('CMPC role, date or workplace mismatch');
   return true;
 }
-

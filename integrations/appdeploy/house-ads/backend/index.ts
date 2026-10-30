@@ -1,21 +1,16 @@
-import {importReview,listReview,decideReview} from './radar-review-inbox';
-import {checkOneReview} from './radar-review-check';
-import {enqueueAdminReviewedOffer,readAdminReviewPublicationStatus} from './radar-review-queue';
 import {processAdminReviewBatch,confirmAdminReviewPublications,isAdminVerificationSlot} from './radar-admin-verification';
-import {sendPosthogEvent,ANALYTICS_PROPERTY_KEYS} from './analytics-delivery';
-import {createHash} from 'node:crypto';
-import {recordUsageEvent,readUsageMetrics} from './usage-metrics';
-import {getAlertPreference,saveAlertPreference,disableAlertPreference,runNotificationDispatch} from './notification-dispatch';
-import {PRIMARY_PLACES,COMPLEMENTARY_PLACES,WORK_PLACES} from '../shared/territories';
 import {withSecurityHeaders} from './security-headers';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
-import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, commercialAdmin, commercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
+import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, decideAdvertiserLead, commercialAdmin, readCommercialConfiguration, commercialCampaigns, readCommercialCampaigns, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { adminBackupPage } from './admin-backup';
-import { recheckPriority } from '../shared/offer-public-state';
-import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue, latestOfferCheckAt } from './offer-retention';
-import { advancePublicFeed, readPublicFeedPage, readPublicFeedItem, readPublicFeedEntry, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
+import { importReview, listReview, decideReview } from './radar-review-inbox';
+import {importMotorCGitHubOidc} from './motor-c-github-import';
+import { checkOneReview } from './radar-review-check';
+import { enqueueAdminReviewedOffer, readAdminReviewPublicationStatus } from './radar-review-queue';
+import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
+import { advancePublicFeed, readPublicFeedPage, readStagedPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
 import { isOriginalVerificationSlot } from './verification-schedule';
 import { readLocalSourceEvidence } from './local-source-evidence';
 import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';
@@ -27,6 +22,21 @@ import { knownFirstPublication } from './first-publication';
 import { evaluatePublicJob, type PublicVerification } from './public-source-verifier';
 import { fetchPublicPage } from './public-source-http';
 import { freePublicSourceStatus, runFreePublicSources, verifiedPublicRecord, type FreeSource } from './free-public-sources';
+import {shadowPdfBatch} from './shadow-pdf';
+export {motorBIndependentHandler} from './motor-b-independent';
+import {motorCIndependentHandler as motorCLocalHandler} from './motor-c-independent';
+import {pullMotorCFromGitHub} from './motor-c-github-pull';
+export async function motorCIndependentHandler() {
+  const [pullResult, localResult] = await Promise.allSettled([
+    pullMotorCFromGitHub(), motorCLocalHandler(),
+  ]);
+  console.warn('MOTOR_C_COMBINED ' + JSON.stringify({
+    pull: pullResult.status === 'fulfilled' ? pullResult.value.state : 'pull_failed',
+    localStatus: localResult.status === 'fulfilled' ? localResult.value.statusCode : 'local_failed',
+  }));
+  return {statusCode:200};
+}
+import {publishQualifiedShadowOffers} from './shadow-publish';
 import { pullRadarBatch, confirmRadarPublications, externalRadarStatus, revalidateLocalContactOffers, type VerifiedOffer } from './radar-ingestion';
 import { revalidateReviewedDocuments, documentRevalidationStatus } from './document-revalidation';
 import { reviewedReceiver } from './reviewed-receiver';
@@ -60,8 +70,6 @@ type SeedJob = {
   evidence?: string;
   contact?: string;
   contactLabel?: string;
-  contactPublicationConsent?:boolean;
-  contactConsentAt?:string;
   review?: boolean;
 };
 
@@ -112,8 +120,6 @@ type ListingRecord = {
   createdAt: string;
   contact?: string;
   contactLabel?: string;
-  contactPublicationConsent?:boolean;
-  contactConsentAt?:string;
   ownerToken?: string;
   socialEvidence?: SocialEvidence;
   sourceValidThrough?:string | null;
@@ -209,6 +215,7 @@ type NotificationDispatchState = {
   updatedAt: string;
 };
 
+const POSTHOG_PROJECT_KEY = 'phc_BnfcP6mKc3J2438WPTonKWZnuFfC7RvQ9jFJwTbtPSVz';
 const ANALYTICS_EVENTS = new Set([
   'tc_app_open', 'tc_commune_selected', 'tc_listing_opened', 'tc_contact_revealed',
   'tc_external_offer_click', 'tc_listing_shared', 'tc_sponsor_impression', 'tc_sponsor_click',
@@ -216,7 +223,10 @@ const ANALYTICS_EVENTS = new Set([
   'tc_install_prompt_available', 'tc_install_prompt_accepted', 'tc_install_prompt_dismissed',
   'tc_notifications_enabled', 'tc_notifications_disabled', 'tc_notifications_test',
 ]);
-
+const ANALYTICS_PROPERTY_KEYS = new Set([
+  'surface', 'commune', 'listing_id', 'kind', 'area', 'origin', 'verified', 'review',
+  'sponsor_id', 'category', 'scope', 'presence', 'count', 'keyword_count', 'visible_ms',
+]);
 
 type RateBucket = { windowStart:number; count:number };
 const rateBuckets = new Map<string, RateBucket>();
@@ -258,18 +268,23 @@ function cleanAnalyticsProperties(input: unknown): Record<string, string | numbe
 
 async function relayAnalytics(event: string, distinctId: string, properties: Record<string, string | number | boolean>) {
   if (!SECURITY_POLICY.externalAnalytics) return false;
-  const enabled=await secrets.readSecret('POSTHOG_ENABLE_INGESTION').catch(()=> '');
-  if(enabled!=='free-tier-confirmed')return false;
-  const projectKey=await secrets.readSecret('POSTHOG_PROJECT_KEY');
-  if(!projectKey)return false;
-  return sendPosthogEvent(projectKey,event,distinctId,properties);
+  const response = await fetch('https://us.i.posthog.com/i/v0/e/', {
+    method:'POST',
+    headers:{ 'content-type':'application/json' },
+    body:JSON.stringify({
+      api_key:POSTHOG_PROJECT_KEY,
+      event,
+      properties:{ distinct_id:distinctId, '$process_person_profile':false, ...properties },
+    }),
+  });
+  return response.ok;
 }
 
 const SEED_VERSION = '2026-10-06-v17-live-benchmark';
 const SOURCE_VERSION = '2026-10-06-radar-v17-web-discovery';
-const PILOT:string[] = [...PRIMARY_PLACES];
-const TRAVEL_HUBS = COMPLEMENTARY_PLACES;
-const MARKET_PLACES = WORK_PLACES;
+const PILOT = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Nacimiento','Negrete','Mulchén','Los Sauces','Purén','Traiguén','Lumaco','Victoria'];
+const TRAVEL_HUBS = ['Los Ángeles','Temuco','Lautaro'] as const;
+const MARKET_PLACES = [...PILOT, ...TRAVEL_HUBS];
 const SOURCE_HUBS = ['Los Ángeles','Temuco','Lautaro','Concepción','Chillán'] as const;
 const CORE_CORRIDORS = {
   mallecoWest:['Angol','Renaico','Collipulli','Mininco','Ercilla'],
@@ -333,6 +348,10 @@ const FREE_LOCAL_SOURCES:FreeSource[] = [
   { key:'omil-negrete', name:'Municipalidad / OMIL Negrete', url:'https://www.muninegrete.cl/', territory:'Negrete' },
   { key:'omil-mulchen', name:'Municipalidad / OMIL Mulchén', url:'https://www.munimulchen.cl/?s=oferta+laboral', territory:'Mulchén' },
   { key:'omil-collipulli', name:'Municipalidad / OMIL Collipulli', url:'https://municipalidadcollipulli.cl/concursos-publicos/', territory:'Collipulli' },
+  // Public, reviewed municipal sources: no paid provider or Instagram automation.
+  { key:'omil-victoria-news', name:'Municipalidad / OMIL Victoria · publicaciones', url:'https://victoriachile.cl/category/omil/', territory:'Victoria', discoveryGroup:'local' },
+  { key:'omil-puren-2026', name:'Municipalidad / Purén · llamados 2026', url:'https://munipuren.cl/llamados-a-concurso-2026/', territory:'Purén', discoveryGroup:'local' },
+  { key:'omil-ercilla', name:'Municipalidad / Ercilla · portal', url:'https://muniercilla.cl/', territory:'Ercilla', discoveryGroup:'local' },
   { key:'malleco7', name:'Malleco 7', url:'https://www.malleco7.cl/', territory:'Malleco' },
   { key:'malleco7-ediciones', name:'Malleco 7 · ediciones digitales', url:'https://www.malleco7.cl/ediciones-digitales-malleco7/', territory:'Malleco' },
   { key:'radio-nativa', name:'Radio Nativa', url:'https://www.radionativa.cl/', territory:'Lumaco' },
@@ -347,13 +366,14 @@ const FREE_PORTAL_SEARCHES = [
   { key:'opcionempleo', name:'Opción Empleo', search:'https://www.opcionempleo.cl/empleo-en-{slug}.html' },
   { key:'chiletrabajos', name:'ChileTrabajos', search:'https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}' },
 ];
-const FREE_TARGET_TOWNS = PRIMARY_PLACES;
+// Scan the 13 priority localities, including Victoria, Purén, Ercilla and Mininco. Quilaco is excluded.
+const FREE_TARGET_TOWNS = [...PILOT];
 const FREE_PUBLIC_SOURCES:FreeSource[] = (() => {
   const searches = FREE_TARGET_TOWNS.flatMap(place => FREE_PORTAL_SEARCHES.map(portal => ({
     key:portal.key+'-'+place, name:portal.name+' · '+place, territory:place,
     url:portal.search.replace('{place}',encodeURIComponent(place)).replace('{slug}',place.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,'-')),
   })));
-  const secondary = COMPLEMENTARY_PLACES.flatMap(place => FREE_PORTAL_SEARCHES.map(portal => ({
+  const secondary = ['Los Ángeles','Temuco'].flatMap(place => FREE_PORTAL_SEARCHES.map(portal => ({
     key:portal.key+'-secondary-'+place, name:portal.name+' · '+place, territory:place, discoveryPriority:'secondary' as const, discoveryGroup:'portal' as const,
     url:portal.search.replace('{place}',encodeURIComponent(place)).replace('{slug}',sourceSlug(place)),
   })));
@@ -711,14 +731,128 @@ function notificationPreferenceMatches(item: ListingRecord, pref: NotificationPr
   return pref.keywords.some(keyword => haystack.includes(keyword));
 }
 
-async function getNotificationPreference(userId:string){return getAlertPreference(userId);}
-async function saveNotificationPreference(userId:string,communes:string[],keywords:string[]){return saveAlertPreference(userId,communes,keywords);}
-async function disableNotificationPreference(userId:string){return disableAlertPreference(userId);}
-async function runNotificationSweep(){return runNotificationDispatch();}
+async function getNotificationPreference(userId: string) {
+  const rows = await db.list<NotificationPreference>('notification_preferences', { limit:200 });
+  return rows.items.find(item => item.userId === userId);
+}
+
+async function saveNotificationPreference(userId: string, communes: string[], keywords: string[]) {
+  const now = new Date().toISOString();
+  const existing = await getNotificationPreference(userId);
+  const record: NotificationPreference = { userId, communes, keywords, active:true, createdAt:existing?.createdAt || now, updatedAt:now };
+  if (existing?.id) {
+    const [ok] = await db.update('notification_preferences', [{ id:existing.id, record }]);
+    if (!ok) throw new Error('No se pudieron actualizar tus alertas.');
+  } else {
+    const [id] = await db.add('notification_preferences', [record]);
+    if (!id) throw new Error('No se pudieron guardar tus alertas.');
+  }
+  const state = await db.list<NotificationDispatchState>('notification_dispatch_state', { limit:1 });
+  if (!state.items[0]) await writeSingleRecord('notification_dispatch_state', { lastRunAt:now, updatedAt:now });
+  return record;
+}
+
+async function disableNotificationPreference(userId: string) {
+  const existing = await getNotificationPreference(userId);
+  if (!existing?.id) return;
+  const { id, ...record } = existing;
+  const [ok] = await db.update('notification_preferences', [{ id, record:{ ...record, active:false, updatedAt:new Date().toISOString() } }]);
+  if (!ok) throw new Error('No se pudieron desactivar tus alertas.');
+}
+
+async function runNotificationCatchup(hours=24) {
+  const now = new Date();
+  const [prefsRows, radarRows, communityRows] = await Promise.all([
+    db.list<NotificationPreference>('notification_preferences', { limit:200 }),
+    db.list<ListingRecord>('radar_jobs', { limit:200 }),
+    db.list<ListingRecord>('community_posts', { limit:200 }),
+  ]);
+  const eligible = [...radarRows.items, ...communityRows.items]
+    .filter(item => item.kind === 'job_offer' && item.verified && !item.review && isCurrentlyActive(item))
+    .filter(item => {
+      const publishedTs = parseDiscoveryDate(item.sourcePublishedAt || item.date);
+      return Boolean(publishedTs) && !staleDiscoveryDate(new Date(publishedTs!).toISOString());
+    });
+  let matchedUsers = 0;
+  let sent = 0;
+  let failed = 0;
+  for (const pref of prefsRows.items.filter(item => item.active)) {
+    const matches = eligible.filter(item => notificationPreferenceMatches(item, pref));
+    if (!matches.length) continue;
+    matchedUsers += 1;
+    const first = matches[0];
+    const primaryPlace = pref.communes.find(place => matches.some(item => item.workCommunes.includes(place))) || first.workCommunes[0] || pref.communes[0];
+    const title = matches.length === 1 ? `Nueva oferta en ${primaryPlace}` : `${matches.length} nuevas ofertas en tu zona`;
+    const body = matches.length === 1 ? `${first.title} · ${first.company}` : `${first.title} y ${matches.length - 1} más. Todas verificadas por Trabajo Cerca.`;
+    try {
+      const result = await notifications.send({
+        userIds:[pref.userId],
+        notification:{ title, body, url:`/?place=${encodeURIComponent(primaryPlace)}&new=1` },
+        data:{ kind:'new_verified_jobs_catchup', count:String(matches.length), commune:primaryPlace },
+        ttlSeconds:43200,
+      });
+      sent += result.sent;
+      failed += result.failed;
+    } catch { failed += 1; }
+  }
+  const checkedAt = now.toISOString();
+  await db.add('notification_dispatch_log', [{ checkedAt, offers:eligible.length, matchedUsers, sent, failed, catchup:true }]);
+  return { offers:eligible.length, matchedUsers, sent, failed };
+}
+
+async function runNotificationSweep() {
+  const now = new Date();
+  const nowIso = now.toISOString();
+  const [stateRows, prefsRows, radarRows, communityRows] = await Promise.all([
+    db.list<NotificationDispatchState>('notification_dispatch_state', { limit:1 }),
+    db.list<NotificationPreference>('notification_preferences', { limit:200 }),
+    db.list<ListingRecord>('radar_jobs', { limit:200 }),
+    db.list<ListingRecord>('community_posts', { limit:200 }),
+  ]);
+  const state = stateRows.items[0];
+  if (!state?.lastRunAt) {
+    await writeSingleRecord('notification_dispatch_state', { lastRunAt:nowIso, updatedAt:nowIso });
+    return { initialized:true, offers:0, matchedUsers:0, sent:0, failed:0 };
+  }
+  const since = Date.parse(state.lastRunAt);
+  const eligible = [...radarRows.items, ...communityRows.items]
+    .filter(item => item.kind === 'job_offer' && item.verified && !item.review && isCurrentlyActive(item))
+    .filter(item => {
+      const publishedTs = parseDiscoveryDate(item.sourcePublishedAt || item.date);
+      if (!publishedTs || staleDiscoveryDate(new Date(publishedTs).toISOString())) return false;
+      const becamePublic = Date.parse(item.firstVerifiedAt || item.verifiedAt || item.createdAt);
+      return Number.isFinite(becamePublic) && becamePublic > since && becamePublic <= now.getTime();
+    });
+  let matchedUsers = 0;
+  let sent = 0;
+  let failed = 0;
+  for (const pref of prefsRows.items.filter(item => item.active)) {
+    const matches = eligible.filter(item => notificationPreferenceMatches(item, pref));
+    if (!matches.length) continue;
+    matchedUsers += 1;
+    const first = matches[0];
+    const primaryPlace = pref.communes.find(place => matches.some(item => item.workCommunes.includes(place))) || first.workCommunes[0] || pref.communes[0];
+    const title = matches.length === 1 ? `Nueva oferta en ${primaryPlace}` : `${matches.length} nuevas ofertas en tu zona`;
+    const body = matches.length === 1 ? `${first.title} · ${first.company}` : `${first.title} y ${matches.length - 1} más. Todas verificadas por Trabajo Cerca.`;
+    try {
+      const result = await notifications.send({
+        userIds:[pref.userId],
+        notification:{ title, body, url:`/?place=${encodeURIComponent(primaryPlace)}&new=1` },
+        data:{ kind:'new_verified_jobs', count:String(matches.length), commune:primaryPlace },
+        ttlSeconds:43200,
+      });
+      sent += result.sent;
+      failed += result.failed;
+    } catch { failed += 1; }
+  }
+  await writeSingleRecord('notification_dispatch_state', { lastRunAt:nowIso, updatedAt:nowIso });
+  if (eligible.length || matchedUsers) await db.add('notification_dispatch_log', [{ checkedAt:nowIso, offers:eligible.length, matchedUsers, sent, failed }]);
+  return { initialized:false, offers:eligible.length, matchedUsers, sent, failed };
+}
 
 function projectFeedListing(value:Record<string, unknown> & { id:string }) {
   const item=value as unknown as ListingRecord & { id:string };
-  if (item.kind!=='job_offer') return ['worker_available','worker_need','service_request'].includes(item.kind) && !item.review && isCurrentlyActive(item) ? publicRecord(item) : null;
+  if (item.kind!=='job_offer') return isCurrentlyActive(item) ? publicRecord(item) : null;
   if (offerRetentionReason(value)) return null;
   if (publicJobExclusion(value)) return null;
   const projectionPlaces = value.secondaryMarket === true && value.discoveredBy === 'free-public-sources-v1' ? MARKET_PLACES : PILOT;
@@ -734,7 +868,7 @@ function feedRefreshAt(item:Record<string, unknown>) {
   const now=Date.now(),deadline=confirmedOfferDeadline(item);
   const candidates:number[]=[];
   if (deadline!==null) candidates.push(deadline+1);
-  const checked=latestOfferCheckAt(item);
+  const checked=Date.parse(String(item.lastVerifiedAt || item.externalVerifiedAt || item.verifiedAt || ''));
   if (Number.isFinite(checked)) candidates.push(checked+86400000+1);
   const first=Date.parse(String(item.firstPublishedAt || item.createdAt || ''));
   if (Number.isFinite(first)) candidates.push(first+86400000+1,first+7*86400000+1);
@@ -1256,7 +1390,7 @@ async function enrichRadarCandidates(limit=40) {
   const knownSignatures = new Set(radarJobs.items.map(item => candidateSignature(item.title, item.workCommunes)));
   const selected = candidates.items
     .filter(item => item.active && item.kind === 'candidate' && Boolean(item.url))
-    .filter(item => isSpecificJobResult(item.title, item.url || '') && !knownUrls.has(item.url))
+    .filter(item => isSpecificJobResult(item.title, item.url) && !knownUrls.has(item.url))
     .sort((a,b) => (Date.parse(a.enrichmentCheckedAt || '') || 0) - (Date.parse(b.enrichmentCheckedAt || '') || 0))
     .slice(0, limit);
   const checkedAt = new Date().toISOString();
@@ -1334,9 +1468,30 @@ async function processPendingOffers(limit=40) {
   const rows = await db.list<ListingRecord>('radar_jobs', {
     limit:200, ...(cursor.items[0]?.nextToken ? { nextToken:cursor.items[0].nextToken } : {}),
   });
+  // The normal verification cursor can be many pages away from a newly
+  // administrator-approved offer. Read the small private inbox once and
+  // look up its queued job IDs directly; never reset the normal cursor.
+  // This runs only in the existing scheduled provider slots.
+  const reviews=await db.list<{kind?:string;status?:string;updatedAt?:string}>(
+    'radar_review_inbox',{limit:100}
+  );
+  const adminIds=reviews.items
+    .filter(row=>row.kind==='review_candidate' &&
+      ['queued_for_verification','submitting'].includes(row.status||'') &&
+      /^tc_[a-f0-9]{22}$/.test(row.id))
+    .sort((a,b)=>(Date.parse(b.updatedAt||'')||0)-(Date.parse(a.updatedAt||'')||0))
+    .slice(0,Math.min(12,limit))
+    .map(row=>'tcq_'+row.id.slice(3));
+  const adminJobs=adminIds.length
+    ? (await db.get<ListingRecord>('radar_jobs',adminIds,{consistent:true}))
+      .flatMap((job,i)=>job?[{...job,id:adminIds[i]}]:[])
+    : [];
   const reviewCutoff = Date.now() - 6 * 3600000;
   const liveRecheckCutoff = Date.now() - 24 * 3600000;
-  const pending = rows.items
+  const prioritized=new Set(adminIds);
+  const allJobs=[...new Map([...rows.items,...adminJobs]
+    .map(item=>[item.id,item])).values()];
+  const pending = allJobs
     .filter(item => item.active && item.kind === 'job_offer')
     .filter(item => item.discoveredBy!=='admin-review-inbox-v1' || item.verified===true && item.review===false)
     .filter(item => item.review || item.verified || Boolean(item.verificationMethod))
@@ -1344,12 +1499,21 @@ async function processPendingOffers(limit=40) {
       if (item.verificationVersion !== VERIFICATION_VERSION) return true;
       const checked = Date.parse(item.verificationCheckedAt || '');
       if (item.review) return !checked || checked < reviewCutoff;
-      if (item.verified) return offerRecheckDue(item as unknown as Record<string,unknown>) && (!checked || checked < liveRecheckCutoff);
+      if (item.verified) return !checked || checked < liveRecheckCutoff;
       return false;
     })
     .sort((a,b) => {
-      const frequent=(item:ListingRecord)=>['portal','social'].includes(sourceVerificationTier(verificationHost(item.url,item.sourceDomain)));
-      return recheckPriority(b,Date.now(),frequent(b))-recheckPriority(a,Date.now(),frequent(a)) || (Date.parse(a.verificationCheckedAt || '') || 0)-(Date.parse(b.verificationCheckedAt || '') || 0);
+      const aAdmin=prioritized.has(a.id),bAdmin=prioritized.has(b.id);
+      if(aAdmin!==bAdmin)return aAdmin ? -1 : 1;
+      if (a.review !== b.review) return a.review ? -1 : 1;
+      const aNeverChecked = !a.verificationCheckedAt;
+      const bNeverChecked = !b.verificationCheckedAt;
+      if (aNeverChecked !== bNeverChecked) return aNeverChecked ? -1 : 1;
+      const rank:Record<string,number> = { official:0, portal:1, social:2, other:3, secondary:4 };
+      const aTier = sourceVerificationTier(verificationHost(a.url, a.sourceDomain));
+      const bTier = sourceVerificationTier(verificationHost(b.url, b.sourceDomain));
+      if (rank[aTier] !== rank[bTier]) return rank[aTier] - rank[bTier];
+      return (Date.parse(a.verificationCheckedAt || '') || 0) - (Date.parse(b.verificationCheckedAt || '') || 0);
     })
     .slice(0, limit);
   const updates:Array<{ id:string; record:Record<string,unknown> }> = [];
@@ -1364,7 +1528,12 @@ async function processPendingOffers(limit=40) {
   await saveRadarPageCursor('radar_verification_cursor', cursor.items[0], rows.nextToken);
   const verified = updates.filter(update => update.record.verified === true).length;
   const rejected = updates.filter(update => update.record.active === false).length;
-  return { processed:updates.length, verified, rejected, kept:updates.length - verified - rejected };
+  return {
+    processed:updates.length, verified, rejected,
+    kept:updates.length - verified - rejected,
+    adminQueuedSeen:adminJobs.length,
+    adminProcessed:updates.filter(update=>prioritized.has(update.id)).length,
+  };
 }
 
 async function reactivateOverstrictFalseNegatives() {
@@ -1779,8 +1948,13 @@ function socialFindingRecord(finding:Record<string,unknown>, source:string, terr
 
 export const socialTerritorialCollectHandler=async()=>{
  if (!SECURITY_POLICY.paidProviders || !SECURITY_POLICY.remoteAi) {
-  console.warn('SOCIAL_CAPTURE_SKIPPED '+JSON.stringify({handler:'socialTerritorialCollectHandler',reason:'security_policy_disabled',providerCalls:0}));
-  return {statusCode:200,skipped:true,reason:'security_policy_disabled'};
+  // Free local fallback: existing public-source PDF work and strictly evidenced B offers.
+  // Never call disabled paid/social providers.
+  let pdf:unknown={status:'not_run'},promotion:unknown={status:'not_run'};
+  try{pdf=await shadowPdfBatch();}catch(cause){console.warn('RADAR_B_PDF_FAILED '+String(cause).slice(0,180));}
+  // B antiguo desactivado: nunca promocionar resultados compartidos con A.
+  console.warn('RADAR_B_FREE_CYCLE '+JSON.stringify({pdf,promotion}).slice(0,12000));
+  return {statusCode:200};
  }
 
  const token=await getBrightDataToken(); if(!token)throw new Error('SOCIAL_TARGET collect token_missing');
@@ -1823,8 +1997,7 @@ export const socialTerritorialCollectHandler=async()=>{
  return {statusCode:200};
 };
 
-function tavilyQueries(place: string) {
-  const aliases = TERRITORIAL_ALIASES[place] || [place];
+function tavilyQueries(place: string) {  const aliases = TERRITORIAL_ALIASES[place] || [place];
   return [
     {
       family:'datos-dificiles-territoriales',
@@ -2378,7 +2551,7 @@ export const notificationSweepHandler = async () => {
   return { statusCode:200 };
 };
 
-export const v14DirectSourcesHandler = async () => { await finishPublicSweep(PILOT); return { statusCode:200 }; };
+export const v14DirectSourcesHandler = async () => { await finishPublicSweep(); return { statusCode:200 }; };
 export const v14TavilyGapsHandler = async () => { await finishTavilySweep(PILOT, true); return { statusCode:200 }; };
 export const v16TerritorialSourceHandler = async () => {
   const cursorRows=await db.list<{position:number}>('motor3_web_cursor',{limit:1});
@@ -2412,6 +2585,70 @@ export const v17HardWebHandler = async () => {
   else await db.add('hard_exa_cursor',[{position:next,updatedAt:new Date().toISOString()}]);
   await recordLiveStage('Exa · publicaciones difíciles',before,after,fresh,found);
   console.warn('HARD_EXA '+JSON.stringify({places,found,fresh,next,publicDelta:after.total-before.total}));
+  return {statusCode:200};
+};
+
+
+export const radarShadowPromotionHandler = async () => {
+  const before=await readPublicFeedSummary();
+  const results=await publishQualifiedShadowOffers();
+  const feedProjector={ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  let after=await advancePublicFeed(feedProjector);
+  for(let step=1;step<4&&after.rebuilding;step++)after=await advancePublicFeed(feedProjector);
+  console.warn('RADAR_B_PUBLICATION_RESULT '+JSON.stringify({before:Number(before.totalVerifiedJobOffers||0),after:Number(after.totalVerifiedJobOffers||0),examined:results.examined,results:results.results,rebuilding:after.rebuilding}).slice(0,14000));
+  return {statusCode:200};
+};
+
+export const radarShadowPdfHandler = async () => {
+  const result=await shadowPdfBatch();
+  console.warn('RADAR_B_PDF_CYCLE '+JSON.stringify({processed:result.processed,totalDocuments:result.totalDocuments}));
+  return {statusCode:200};
+};
+
+export const radarReadScanEvidenceHandler = async () => {
+  const status=await freePublicSourceStatus();
+  const summary=(status.summary || {}) as Record<string,unknown>;
+  console.warn('RADAR_EVIDENCE_SOURCES '+JSON.stringify({checkedAt:summary.checkedAt,audits:summary.audits}).slice(0,20000));
+  console.warn('RADAR_EVIDENCE_NOTICES '+JSON.stringify({checkedAt:summary.checkedAt,reviewed:summary.reviewed,receipts:summary.receipts,documentWork:status.documentWork.items.slice(0,12)}).slice(0,20000));
+  return {statusCode:200};
+};
+
+export const radarLaunchSmokeHandler = async () => {
+  const id='launch_20261027_ab_real_v3';
+  const [state]=await db.get<Record<string,unknown>>('radar_launch_smoke',[id],{consistent:true});
+  if(!state) {
+    const [claimed]=await db.tx.add('radar_launch_smoke',[{id,phase:'running_scan',startedAt:new Date().toISOString()}]);
+    if(!claimed)return {statusCode:200};
+    try {
+      const before=await usableOfferSnapshot();
+      const scan=await runFreePublicSources(FREE_PUBLIC_SOURCES,'launchSmoke20261027ABRealV3');
+      const scanResult=scan as Record<string,unknown>;
+      const shadowRows=await db.list<Record<string,unknown>>('radar_shadow_b',{limit:200});
+      const shadowCount={publishable:0,recoverable:0,blocked:0,closed:0};
+      for(const row of shadowRows.items){const stage=String(row.stage);if(stage in shadowCount)shadowCount[stage as keyof typeof shadowCount]++;}
+      const summary={sourcesRead:Number(scanResult.sourcesRead||0),noticesChecked:Number(scanResult.noticesChecked||0),verified:Number(scanResult.verified||0),pending:Number(scanResult.pending||0),deferred:scanResult.deferred===true,shadowTotal:shadowRows.items.length,shadowCount,reviewed:scanResult.reviewed,shadowReviewed:scanResult.shadowReviewed};
+      await db.tx.update('radar_launch_smoke',[{id,record:{phase:'scan_complete',before,scan:summary}}]);
+      console.warn('RADAR_LAUNCH_SCAN '+JSON.stringify({before,scan:summary}));
+    }catch(cause){
+      const message=cause instanceof Error?cause.message:String(cause);
+      await db.tx.update('radar_launch_smoke',[{id,record:{phase:'scan_failed',error:message}}]);
+      console.warn('RADAR_LAUNCH_SCAN_FAILED '+message);
+    }
+  } else if(state.phase==='scan_complete') {
+    const [claimed]=await db.tx.update('radar_launch_smoke',[{id,record:{...state,phase:'running_verification'},if:{phase:'scan_complete'}}]);
+    if(!claimed)return {statusCode:200};
+    try{
+      await v14VerificationHandler();
+      const after=await usableOfferSnapshot();
+      await db.tx.update('radar_launch_smoke',[{id,record:{...state,phase:'done',after,finishedAt:new Date().toISOString()}}]);
+      const feedState=await publicFeedProgress();
+      console.warn('RADAR_LAUNCH_COMPLETE '+JSON.stringify({before:state.before,after,feedState,scan:state.scan}).slice(0,23000));
+    }catch(cause){
+      const message=cause instanceof Error?cause.message:String(cause);
+      await db.tx.update('radar_launch_smoke',[{id,record:{...state,phase:'verification_failed',error:message}}]);
+      console.warn('RADAR_LAUNCH_VERIFICATION_FAILED '+message);
+    }
+  }
   return {statusCode:200};
 };
 
@@ -2503,10 +2740,14 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   }
   const providerSlot=isOriginalVerificationSlot(event);
   const history=providerSlot ? await recoverHistoricVisualFindings() : undefined;
-  const result=providerSlot ? await processPendingOffers(8) : undefined;
+  const result=providerSlot ? await processPendingOffers(12) : undefined;
   const ingestion=await pullRadarBatch(externalOfferRecord);
   const administrative=isAdminVerificationSlot(event) ? await processAdminReviewBatch({scheduledTime:event!.scheduledTime,project:projectFeedListing}) : undefined;
-  const feed=await advancePublicFeed({ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt });
+  const feedProjector={ revision:'published-retention-counts-v7', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  let feed=await advancePublicFeed(feedProjector);
+  // Finish up to four bounded startup steps per verification invocation.
+  // Do not repeatedly reproject an already available public snapshot.
+  for(let step=1;step<4 && feed.rebuilding===true;step++) feed=await advancePublicFeed(feedProjector);
   const receipts=await confirmRadarPublications();
   const adminPublications=isAdminVerificationSlot(event) ? await confirmAdminReviewPublications() : undefined;
   console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({documents,providerSlot,history,result,ingestion,receipts,administrative,adminPublications,publicJobs:feed.totalVerifiedJobOffers,feedRebuilding:feed.rebuilding}));
@@ -2516,7 +2757,7 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
 export const v15VerificationRecoveryHandler = async () => { const result = await processPendingOffers(12); const feed=await rebuildPublicFeed(); console.warn('V15_VERIFY_RECOVERY '+JSON.stringify({result,publicJobs:feed.totalVerifiedJobOffers})); return { statusCode:200 }; };
 
 export const radarEnrichmentWorker = async () => {
-  const result=await enrichRadarCandidates(6);
+  const result=await enrichRadarCandidates(10);
   console.warn('RADAR_ENRICHMENT_WORKER '+JSON.stringify(result));
   return {statusCode:200};
 };
@@ -2567,7 +2808,9 @@ async function usableOfferSnapshot() {
     db.list<ListingRecord>('community_posts', { limit:200 }),
   ]);
   const active = [...jobs.items, ...community.items].filter(item => item.kind === 'job_offer' && isCurrentlyActive(item));
-  return { total:active.length, verified:active.filter(item => item.verified && !item.review).length, provisional:active.filter(item => item.review).length };
+  const publicFeed=await readPublicFeedSummary();
+  return { total:active.length, verified:active.filter(item => item.verified && !item.review).length, provisional:active.filter(item => item.review).length,
+    publicVerified:Number(publicFeed.totalVerifiedJobOffers||0),publicItems:Number(publicFeed.itemCount||0),publicRebuilding:publicFeed.rebuilding===true };
 }
 
 export const liveRadarValidationHandler = async () => {
@@ -2660,22 +2903,35 @@ const consumeReviewedExchange=reviewedReceiver({
 const ADMIN_EMAILS = ['mrvvergara@gmail.com'];
 
 const applicationRouter = router({
+  'GET /api/admin/motors/health': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async () => {
+    const [[b],[c],[githubPull]]=await Promise.all([db.get('motor_b_latest',['current'],{consistent:true}),db.get('motor_c_local_latest',['current'],{consistent:true}),db.get('motor_c_github_pull_latest',['current'],{consistent:true})]);
+    return json({motorA:'verification_and_public_feed',motorB:b||null,motorC:c||null,motorCGithubPull:githubPull||{state:'not_executed'},metricScope:'last_completed_run',verifiedAndPublishedUnconfirmed:true});
+  }],
+  'POST /api/internal/motor-c/import': [importMotorCGitHubOidc],
   'GET /api/growth/advertising': [async ({query}) => json(await advertisingCatalog(query))],
   'POST /api/growth/house-events': [publicQuota('house-events',60,60000,600), houseClientEvent],
   'GET /api/admin/marketing/house': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), houseDashboard],
   'PUT /api/admin/marketing/house': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), saveHouseConfiguration],
   'POST /api/admin/marketing/creative': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), uploadHouseCreative],
   'GET /api/admin/marketing/trials': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), trialApplications],
+  'PUT /api/admin/marketing/trials': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), decideAdvertiserLead],
+  'GET /api/admin/marketing/notifications': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ctx=>{const saved=await notifications.listUserTopics({userId:ctx.user!.userId});return json({enabled:saved.topics.includes('tc-admin-commercial-requests')});}],
+  'POST /api/admin/marketing/notifications': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ctx=>{const enabled=(ctx.body as {enabled?:unknown})?.enabled===true;const userIds=[ctx.user!.userId];if(enabled)await notifications.subscribeTopic({userIds,topic:'tc-admin-commercial-requests'});else await notifications.unsubscribeTopic({userIds,topic:'tc-admin-commercial-requests'});return json({enabled});}],
   'POST /api/admin/marketing/trial': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), activateFreeTrial],
   'POST /api/admin/backup/page': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => adminBackupPage(ctx)],
-  'GET /api/admin/radar-review': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ctx=>{
-    const response=json(await listReview(ctx.query.cursor));response.headers={...response.headers,'Cache-Control':'no-store, private','Vary':'Authorization'};return response;
+  'GET /api/admin/session': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => json({ administrator:true, userId:ctx.user!.userId, backupExportEnabled:true })],
+  'POST /api/admin/radar-review/status': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({body}) => json(await readAdminReviewPublicationStatus(body))],
+  'POST /api/admin/radar-review/submit': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({body}) => json(await enqueueAdminReviewedOffer(body))],
+  'POST /api/admin/radar-review/check': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({body}) => json(await checkOneReview(body))],
+  'GET /api/admin/radar-review': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ctx => {const response=json(await listReview(ctx.query.cursor));response.headers={...response.headers,'Cache-Control':'no-store, private','Vary':'Authorization'};return response; }],
+  'POST /api/admin/radar-review/import': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({body}) => {
+    try{return json(await importReview(body));}
+    catch(cause){if(cause instanceof Error&&/Se requieren|ID y URL/.test(cause.message))return error(cause.message,400);throw cause;}
   }],
-  'POST /api/admin/radar-review/import': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await importReview(body))],
-  'POST /api/admin/radar-review/decision': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await decideReview(body))],
-  'POST /api/admin/radar-review/check': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await checkOneReview(body))],
-  'POST /api/admin/radar-review/submit': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await enqueueAdminReviewedOffer(body))],
-  'POST /api/admin/radar-review/status': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ({body})=>json(await readAdminReviewPublicationStatus(body))],
+  'POST /api/admin/radar-review/decision': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({body}) => {
+    try{return json(await decideReview(body));}
+    catch(cause){if(cause instanceof Error&&/Decisión no válida|Registro no encontrado/.test(cause.message))return error(cause.message,400);throw cause;}
+  }],
   'GET /api/admin/document-work': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => {
     const status = await freePublicSourceStatus();
     const source = status.documentWork;
@@ -2701,8 +2957,6 @@ const applicationRouter = router({
       },
     });
   }],
-
-  'GET /api/admin/session': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async (ctx) => json({ administrator:true, userId:ctx.user!.userId, backupExportEnabled:true })],
   'GET /api/_healthcheck': [async () => json({ message: 'Success' })],
   'GET /api/ops/security-policy': [async () => json({ revision:'security-containment-v2',...SECURITY_POLICY })],
 
@@ -2714,6 +2968,29 @@ const applicationRouter = router({
   'GET /api/ops/radar-feed': [async () => json(await publicFeedProgress())],
   'GET /api/ops/local-source-evidence': [async ({ query }) => json(await readLocalSourceEvidence(query.cursor))],
   'GET /api/ops/free-public-sources': [async () => json(await freePublicSourceStatus())],
+  'GET /api/ops/radar-ab-progress': [async () => {
+    const [feed,shadow,pdf]=await Promise.all([readPublicFeedSummary(),db.list<Record<string,unknown>>('radar_shadow_b',{limit:200}),db.list<Record<string,unknown>>('radar_shadow_pdf',{limit:200})]);
+    const shadowCount={publishable:0,recoverable:0,blocked:0,closed:0};
+    const pdfCount={recoverable:0,needs_review:0,blocked:0,closed:0};
+    for(const row of shadow.items){const k=String(row.stage);if(k in shadowCount)shadowCount[k as keyof typeof shadowCount]++;}
+    for(const row of pdf.items){const k=String(row.stage);if(k in pdfCount)pdfCount[k as keyof typeof pdfCount]++;}
+    return json({updatedAt:new Date().toISOString(),motorA:{visibleVerifiedOffers:Number(feed.totalVerifiedJobOffers||0)},motorB:{htmlReviewed:shadow.items.length,htmlStages:shadowCount,pdfRead:pdf.items.length,pdfStages:pdfCount},additionalPublishedFromB:0,comparisonComplete:false});
+  }],
+  'GET /api/admin/radar-shadow-compare': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({query})=>{
+    const rows=await db.list<Record<string,unknown>>('radar_shadow_b',{limit:100,...(query.cursor?{nextToken:query.cursor}:{})});
+    const count={publishable:0,recoverable:0,blocked:0,closed:0};
+    for(const item of rows.items){const s=String(item.stage);if(s in count)count[s as keyof typeof count]++;}
+    const [status,feedState,feedSummary,pdfRows]=await Promise.all([freePublicSourceStatus(),publicFeedProgress(),readPublicFeedSummary(),db.list<Record<string,unknown>>('radar_shadow_pdf',{limit:100})]);
+    const pdfCounts={recoverable:0,needs_review:0,blocked:0,closed:0};
+    for(const item of pdfRows.items){const state=String(item.stage);if(state in pdfCounts)pdfCounts[state as keyof typeof pdfCounts]++;}
+    const independentlyEligible=rows.items.filter(x=>x.eligibleForPublicFeed===true && x.extractionMethod==='html_verified_evidence').length;
+    return json({readOnly:true,experiment:'full-source-real-pages',baseline:status.summary,
+      result:{publicVerifiedJobOffers:Number(feedSummary.totalVerifiedJobOffers||0),publicFeedItemCount:feedState.visibleItemCount,
+        shadowRecords:rows.items.length,shadowHtmlIndependentCandidates:independentlyEligible,
+        pdfDocumentsAnalyzed:pdfRows.items.length,pdfCounts,
+        // Extra published offers must be confirmed by public feed. Zero until that reconciliation is implemented.
+        confirmedAdditionalPublishedFromMotorB:0,comparisonComplete:false},shadow:{sampled:rows.items.length,stages:count,items:rows.items.map(x=>({url:x.url,title:x.title,place:x.place,source:x.source,baselineReason:x.baselineReason,stage:x.stage,eligibleForPublicFeed:x.eligibleForPublicFeed})),nextCursor:rows.nextToken},publicFeedUntouched:true});
+  }],
   'POST /api/ops/free-public-sources/run': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
   'POST /api/radar/social-run': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
@@ -2726,34 +3003,26 @@ const applicationRouter = router({
 
   'POST /api/radar/social-collect': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
-  'POST /api/analytics': [publicQuota('analytics-minute',30,60000,120),publicQuota('analytics-day',500,86400000,2000),async ({ body }) => {
+  'POST /api/analytics': [async ({ body }) => {
+    if (!SECURITY_POLICY.externalAnalytics) return json({received:false,disabled:true,reason:'security_policy_disabled'},202);
     const input = (body ?? {}) as Record<string, unknown>;
     const event = normalizeText(input.event).slice(0, 80);
     const distinctId = cleanClientToken(input.distinctId);
     if (!ANALYTICS_EVENTS.has(event) || !distinctId) return error('Evento de analítica no válido.', 400);
-    const eventId=normalizeText(input.eventId);
-    if(!/^[A-Za-z0-9_-]{16,80}$/.test(eventId))return json({received:false,reason:'client_update_required'},202);
     if (!allowBurst('analytics', distinctId, 120, 60000)) return error('Demasiados eventos de analítica.', 429);
     const properties = cleanAnalyticsProperties(input.properties);
-    const recorded=await recordUsageEvent(eventId,event,distinctId,properties.commune);
-    if(recorded.duplicate)return json({received:true,duplicate:true,internalRecorded:true,externalAccepted:false,externalQueryableConfirmed:false},202);
     try {
-      const dailyId=createHash('sha256').update(new Date().toISOString().slice(0,10)+'\0'+distinctId).digest('hex');
-      const delivered = await relayAnalytics(event, dailyId, properties);
-      return json({received:true,internalRecorded:true,externalAccepted:delivered,externalQueryableConfirmed:false},202);
+      const delivered = await relayAnalytics(event, distinctId, properties);
+      if (!delivered) return error('Analítica temporalmente no disponible.', 502);
+      return json({ received:true }, 202);
     } catch {
-      console.warn('analytics_external_delivery_failed',{event});
-      return json({received:true,internalRecorded:true,externalDelivered:false},202);
+      return error('Analítica temporalmente no disponible.', 502);
     }
-  }],
-  'GET /api/admin/marketing/usage': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async ctx=>{
-    const page=await readUsageMetrics(ctx.query.cursor);
-    return json({items:page.items,nextToken:page.nextToken||null,source:'first_party_server_receipts',billing:false,externalAnalyticsEnabled:SECURITY_POLICY.externalAnalytics});
   }],
 
   'GET /api/notifications/preferences': [requireAuth(), async (ctx) => {
     const pref = await getNotificationPreference(ctx.user!.userId);
-    return json({ active:Boolean(pref?.active), communes:pref?.communes ?? [], keywords:pref?.keywords ?? [], legacyPending:'legacyPending' in pref && pref.legacyPending===true });
+    return json({ active:Boolean(pref?.active), communes:pref?.communes ?? [], keywords:pref?.keywords ?? [] });
   }],
 
   'POST /api/notifications/preferences': [requireAuth(), async (ctx) => {
@@ -2775,11 +3044,11 @@ const applicationRouter = router({
     if (!pref?.active) return error('Activa tus avisos antes de probarlos.', 400);
     const result = await notifications.send({
       userIds:[ctx.user!.userId],
-      notification:{ title:'Trabajo Cerca · prueba de avisos', body:'Si puedes leer este mensaje en tu dispositivo, la prueba de recepción ha llegado.', url:'/' },
+      notification:{ title:'Trabajo Cerca · avisos activados', body:'Listo. Te avisaremos cuando aparezcan nuevas ofertas verificadas en tus zonas.', url:'/' },
       data:{ kind:'notification_test' },
       ttlSeconds:600,
     });
-    return json({ sent:result.sent, failed:result.failed,providerAccepted:result.sent>0,deviceDeliveryConfirmed:false });
+    return json({ sent:result.sent, failed:result.failed });
   }],
 
   'GET /api/listings': [async ({ query }) => {
@@ -2790,7 +3059,21 @@ const applicationRouter = router({
       if (cause instanceof Error && cause.message === 'Feed cursor invalid') return error('Cursor de paginación no válido.', 400);
       throw cause;
     }
-    if (!feed) return error('El Radar está preparando su inventario. Reintenta en unos minutos.', 503);
+    if (!feed) {
+      const staged=await readStagedPublicFeedPage();
+      if(staged && staged.items.length) return json(staged);
+      // Initial public-manifest construction can span multiple scheduled steps.
+      // Serve a privacy-filtered, approved-only emergency page instead of HTTP 503.
+      // This is a temporary subset, never a fabricated or unreviewed offer.
+      const rows=await db.list<ListingRecord>('radar_jobs',{limit:200});
+      const visible=rows.items.map(row=>projectFeedListing(row as Record<string,unknown> & {id:string})).filter(Boolean).slice(0,40);
+      console.warn('PUBLIC_FEED_DEGRADED '+JSON.stringify({reason:'manifest_building',visible:visible.length}));
+      return json({items:visible,totalItems:visible.length,totalJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,
+        totalVerifiedJobOffers:visible.filter((x:Record<string,unknown>)=>x.kind==='job_offer').length,
+        recentJobOffers24h:0,recentJobOffers7d:0,totalProvisionalJobOffers:0,
+        communeStats:{},kindStats:{jobs:visible.length,people:0,needs:0,services:0},
+        hasMore:false,degraded:true,feedRebuilding:true,feedState:'degraded_last_good'});
+    }
     return query.fresh === '1' ? json(feed) : cacheable(feed, 60);
   }],
 
@@ -2848,9 +3131,9 @@ const applicationRouter = router({
   'POST /api/growth/commercial-events': [publicQuota('commercial-events',60,60000,600), commercialClientEvent],
   'GET /api/admin/marketing/commercial-metrics': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialMetrics],
   'GET /api/growth/promotion': [async () => json(await publicPromotion())],
-  'GET /api/admin/marketing/commercial': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialAdmin],
+  'GET /api/admin/marketing/commercial': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ()=>readCommercialConfiguration()],
   'PUT /api/admin/marketing/commercial': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialAdmin],
-  'GET /api/admin/marketing/campaigns': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialCampaigns],
+  'GET /api/admin/marketing/campaigns': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), readCommercialCampaigns],
   'PUT /api/admin/marketing/campaigns': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), commercialCampaigns],
   'GET /api/growth/sponsor': [async ({query}) => {
     const catalog=await advertisingCatalog(query);
@@ -2889,6 +3172,7 @@ const applicationRouter = router({
     if (!id) return error('No se pudo registrar tu interés.', 500);
     await houseConversion(input.houseAttribution,'advertiser_captured',id);
     await houseConversion(input.houseAttribution,'registration_completed',id);
+    try{await notifications.sendToTopic({topic:'tc-admin-commercial-requests',notification:{title:'Trabajo Cerca · Nueva solicitud de publicidad',body:'Hay una solicitud publicitaria pendiente de revisión.',url:'/#operacion'},ttlSeconds:3600});}catch{console.warn('MARKETING_ADMIN_PUSH_UNAVAILABLE');}
     return json({ received:true, id, trialState:'pending_review', promotion:await publicPromotion() }, 201);
   }],
 
@@ -2989,7 +3273,26 @@ const applicationRouter = router({
     });
   }],
 
-  'POST /api/radar/photo-tip': [async () => error('La lectura automática de fotos está deshabilitada. Comparte el enlace y texto del aviso.',503)],
+  'POST /api/radar/photo-tip': [publicQuota('photo-tip',3,900000,60), async ({body}) => {
+    const input=(body??{}) as Record<string,unknown>;
+    const raw=typeof input.imageData==='string'?input.imageData:'';
+    const mime=input.mimeType==='image/png'?'image/png':input.mimeType==='image/webp'?'image/webp':'image/jpeg';
+    const encoded=raw.replace(/^data:image\/(?:jpeg|png|webp);base64,/, '');
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded) || encoded.length>2800000 || encoded.length<250) return error('Imagen no válida o demasiado grande. Usa una captura JPG, PNG o WEBP.',400);
+    const bytes=Buffer.from(encoded,'base64');
+    if(bytes.byteLength>2100000) return error('Imagen demasiado grande (máximo 2 MB).',413);
+    const jpg=bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
+    const png=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47;
+    const webp=bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WEBP';
+    if (!(mime==='image/jpeg'&&jpg || mime==='image/png'&&png || mime==='image/webp'&&webp)) return error('Formato de imagen no válido.',400);
+    const id=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,14);
+    const path='radar-contributions/pending/'+id+(jpg?'.jpg':png?'.png':'.webp');
+    const [stored]=await storage.write([{path,content:encoded,contentType:mime}]);
+    if (!stored) return error('No pudimos guardar la imagen. Intenta otra vez.',503);
+    const [recordId]=await db.add('radar_photo_contributions',[{path,sourceName:normalizeText(input.sourceName).slice(0,100)||'Aporte comunitario',status:'pending_moderation',createdAt:new Date().toISOString(),mimeType:mime,bytes:bytes.length,provenance:'community_upload',public:false}]);
+    if(!recordId) {await storage.delete([path]);return error('No se pudo registrar el aporte.',503);}
+    return json({received:true,public:false,status:'pending_moderation',reference:recordId},202);
+  }],
 
   'POST /api/listings': [publicQuota('publish',5,900000,40), async ({ body }) => {
     const input = (body ?? {}) as Record<string, unknown>;
@@ -3078,8 +3381,6 @@ const applicationRouter = router({
       active: true,
       createdAt,
       contact: review ? undefined : contact,
-      contactPublicationConsent:!review && consent,
-      contactConsentAt:!review && consent ? createdAt : undefined,
       ownerToken,
     };
 
@@ -3097,11 +3398,13 @@ const applicationRouter = router({
     const clientToken = cleanClientToken(input.clientToken);
     if (!clientToken) return error('Solicitud no válida.', 400);
     if (!allowBurst('contact', clientToken, 30, 600000)) return error('Has consultado muchos contactos en poco tiempo. Intenta nuevamente más tarde.', 429);
-    const entry = await readPublicFeedEntry(params.id);
-    if (!entry || entry.item.hasContact!==true) return error('Publicación no disponible.',404);
-    const [record] = await db.get<ListingRecord>(entry.source,[entry.sourceId],{consistent:true});
-    // Recheck the current record, not just a possibly older materialized page.
-    if (!record || record.contactPublicationConsent===false || !record.contact || !projectFeedListing({...record,id:entry.sourceId})) return error('Publicación no disponible.',404);
+    const [community, radar] = await Promise.all([
+      db.get<ListingRecord>('community_posts', [params.id]),
+      db.get<ListingRecord>('radar_jobs', [params.id]),
+    ]);
+    const record = community[0] ?? radar[0];
+    if (!record || !isCurrentlyActive(record)) return error('Publicación no disponible.', 404);
+    if (!record.contact) return error('Este aviso no tiene un contacto directo publicado.', 404);
     return json({ contact: record.contact, contactLabel: record.contactLabel });
   }],
 

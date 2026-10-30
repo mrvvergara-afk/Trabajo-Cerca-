@@ -29,4 +29,3 @@ export function reviewedReceiver(dependencies:Dependencies, clock=Date.now) {
     return running;
   };
 }
-

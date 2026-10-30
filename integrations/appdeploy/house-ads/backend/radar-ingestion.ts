@@ -428,4 +428,3 @@ export async function revalidateLocalContactOffers(now=Date.now()) {
   }
   return {checked,closed,inconclusive,hasMore:Boolean(rows.nextToken),paidCalls:0};
 }
-

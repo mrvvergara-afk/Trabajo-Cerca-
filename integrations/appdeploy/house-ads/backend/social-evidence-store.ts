@@ -30,4 +30,3 @@ export async function hydrateSocialFindings(findings:Finding[]) {
     return { ...row,...preservedSocialFinding(full),transcriptionAvailable:true,textExcerpt:false };
   });
 }
-

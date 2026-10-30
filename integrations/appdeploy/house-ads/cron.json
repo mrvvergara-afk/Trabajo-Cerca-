@@ -1,7 +1,7 @@
 [
   {
     "name": "collect-direct",
-    "cron": "5 0,4,8,12,16,20 * * *",
+    "cron": "5 */2 * * *",
     "handler": "v16TerritorialDirectBatchHandler",
     "timezone": "America/Santiago"
   },
@@ -13,7 +13,7 @@
   },
   {
     "name": "enrich-candidates",
-    "cron": "25 1,5,9,13,17,21 * * *",
+    "cron": "25 */2 * * *",
     "handler": "radarEnrichmentWorker",
     "timezone": "America/Santiago"
   },
@@ -39,6 +39,18 @@
     "name": "notification-sweep",
     "cron": "56 * * * *",
     "handler": "notificationSweepHandler",
+    "timezone": "America/Santiago"
+  },
+  {
+    "name": "motor-c-independent",
+    "cron": "7,37 * * * *",
+    "handler": "motorCIndependentHandler",
+    "timezone": "America/Santiago"
+  },
+  {
+    "name": "motor-b-independent",
+    "cron": "12,42 * * * *",
+    "handler": "motorBIndependentHandler",
     "timezone": "America/Santiago"
   }
 ]

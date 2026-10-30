@@ -84,4 +84,3 @@ export function validateLocalContactEvidence(item:ContactOffer, now=Date.now()) 
       !new RegExp('\\b'+item.vacancies+' (?:cupos|vacantes)\\b').test(body))) return reject();
   return true;
 }
-

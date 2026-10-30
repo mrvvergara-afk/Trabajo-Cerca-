@@ -132,4 +132,3 @@ export async function rehearseRestore(
     if (!cleanupConfirmed) await store.dispose();
   }
 }
-

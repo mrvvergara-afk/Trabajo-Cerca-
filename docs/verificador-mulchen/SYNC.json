@@ -1,0 +1,15 @@
+{
+  "appId": "trabajo-cerca-laboratorio-3ojgro",
+  "snapshotVersion": "1793327520546",
+  "fullRepositoryParent": "1fd35a4581956e52bd3abe1ed967d924f406569d",
+  "parentBranch": "fix/estetica-portada-2026-10-29",
+  "matchingExistingBranch": false,
+  "capturedTextFiles": 115,
+  "excludedUntouched": [
+    "appdeploy.auth-login.json",
+    "public/icon-192.png",
+    "public/icon-512.png",
+    "public/icon-maskable-512.png"
+  ],
+  "note": "Fuente vigente fijada por versión; sin despliegue ni copia de datos. La rama de auditoría anterior es parcial y difiere en 11 archivos compartidos."
+}

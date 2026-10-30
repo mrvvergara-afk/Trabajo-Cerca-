@@ -12,4 +12,3 @@
 .tcBackupPanel summary { cursor: pointer; padding: 12px 0; font-size: 13px; }
 .tcBackupPanel :focus-visible { outline: 3px solid #66a80f; outline-offset: 3px; }
 @media (max-width: 600px) { .tcBackupFields { grid-template-columns: minmax(0, 1fr); } .tcBackupActions { flex-direction: column; } }
-

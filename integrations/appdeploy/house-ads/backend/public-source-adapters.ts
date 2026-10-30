@@ -16,6 +16,9 @@ const LOCAL_PUBLISHERS:Record<string,string> = {
   'muninegrete.cl':'Municipalidad de Negrete',
   'munimulchen.cl':'Municipalidad de Mulchén',
   'municipalidadcollipulli.cl':'Municipalidad de Collipulli',
+  'victoriachile.cl':'Municipalidad de Victoria',
+  'munipuren.cl':'Municipalidad de Purén',
+  'muniercilla.cl':'Municipalidad de Ercilla',
   'malleco7.cl':'Malleco 7',
   'radionativa.cl':'Radio Nativa',
   'cmpc.com':'CMPC',
@@ -89,7 +92,7 @@ export function publicSourceAdapter(value:string):PublicAdapter | null {
   } else if (host==='cmpc.csod.com' && (match=url.pathname.match(/^\/ux\/ats\/careersite\/4\/home\/requisition\/(\d{1,9})\/?$/)) && url.searchParams.get('c')==='cmpc' && [...url.searchParams.keys()].every(key=>key==='c')) {
     name='CMPC · portal de empleo';identityUrl='https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/'+match[1]+'?c=cmpc';
   } else if (LOCAL_PUBLISHERS[host] && host!=='wof-chile.com' && url.pathname.split('/').filter(Boolean).length &&
-      !/^\/(?:noticias?|concursos-publicos|direccion-de-fomento-productivo|category|categoria|tag|page|wp-json|feed)(?:\/\d+)?\/?$/.test(url.pathname) && !url.search) {
+      !/^\/(?:noticias?|concursos-publicos|concursos-disponibles|llamados-a-concurso-20\d{2}|trabaja-con-nosotros|direccion-de-fomento-productivo|category(?:\/[^/]+)?|categoria(?:\/[^/]+)?|tag(?:\/[^/]+)?|page(?:\/\d+)?|wp-json|feed)(?:\/\d+)?\/?$/.test(url.pathname) && !url.search) {
     name = LOCAL_PUBLISHERS[host]; family = 'local'; identityUrl = 'https://'+host+url.pathname.replace(/\/$/,'');
   }
   return name ? { name, family, identityUrl, verificationMethod:name+(host==='cmpc.csod.com'?' public career page + official requisition response':name==='Bolsa Nacional de Empleo'?' individual page + official labelled offer':' individual page + matching JobPosting') } : null;
@@ -149,4 +152,3 @@ export function publicJobExclusion(item:Record<string,unknown>):string | null {
   }
   return null;
 }
-

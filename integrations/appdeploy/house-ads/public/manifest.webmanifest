@@ -43,13 +43,13 @@
       "purpose": "any"
     },
     {
-      "src": "./icon-512.png",
+      "src": "https://raw.githubusercontent.com/mrvvergara-afk/Trabajo-Cerca-/c445112b9cdb78adfce9d8065e32411c4f412c4b/integrations/appdeploy/house-ads/public/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./icon-maskable-512.png",
+      "src": "https://raw.githubusercontent.com/mrvvergara-afk/Trabajo-Cerca-/c445112b9cdb78adfce9d8065e32411c4f412c4b/integrations/appdeploy/house-ads/public/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

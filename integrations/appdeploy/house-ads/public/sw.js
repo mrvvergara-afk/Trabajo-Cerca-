@@ -1,4 +1,4 @@
-const CACHE='trabajo-cerca-shell-closure-20261025';
+const CACHE='trabajo-cerca-shell-official-logo-20261024';
 const SHARE_CACHE='trabajo-cerca-share-v1';
 const CORE=['./','./manifest.webmanifest','./icon-192.png'];
 self.addEventListener('install',event=>{
@@ -59,5 +59,5 @@ self.addEventListener('fetch',event=>{
       void caches.open(CACHE).then(cache=>cache.put(request,copy));
     }
     return response;
-  }).catch(async()=>await caches.match(request)||new Response('Recurso no disponible sin conexión.',{status:503,headers:{'Content-Type':'text/plain; charset=utf-8'}})));
+  }).catch(()=>caches.match(request)));
 });

@@ -71,4 +71,3 @@ export function RestoreRehearsalPanel({ password, disabled, onBusy }: { password
     </section>
   );
 }
-

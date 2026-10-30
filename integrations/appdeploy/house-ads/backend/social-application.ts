@@ -21,4 +21,3 @@ export async function checkSocialApplication(evidence:SocialEvidence, readPage:(
     return {status:'pending',reason:'El destino de postulación no estuvo disponible en esta lectura pública.'};
   }
 }
-

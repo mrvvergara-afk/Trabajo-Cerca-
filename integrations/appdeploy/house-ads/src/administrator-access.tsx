@@ -55,7 +55,7 @@ export function AdministratorAccess() {
       <button onClick={() => void verify(false)} disabled={busy}>Verificar acceso</button>
       <button onClick={() => void signOut()} disabled={busy}>Cerrar sesión</button>
       </div>
-      {allowed && <><p>Las operaciones manuales del radar continúan deshabilitadas.</p><RadarReviewInbox /><DocumentWorkExport /><BackupPanel /><HouseCampaignAdmin /></>}
+      {allowed && <><p>Las operaciones manuales del radar continúan deshabilitadas.</p><HouseCampaignAdmin /><RadarReviewInbox /><DocumentWorkExport /><BackupPanel /></>}
     </section>
   );
 }
@@ -129,7 +129,7 @@ export function AdministratorShortcut({ inline = false }: { inline?: boolean }) 
     }
   }
 
-  // El menú público no muestra controles de sesión; solo la cuenta validada por /api/admin/session puede ver Administración.
+  // En el menú público solo aparece Administración para una cuenta validada por el backend.
   if (inline && !allowed) return null;
 
   return (
@@ -148,3 +148,4 @@ export function AdministratorShortcut({ inline = false }: { inline?: boolean }) 
     </div>
   );
 }
+

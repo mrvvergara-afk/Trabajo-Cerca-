@@ -15,7 +15,7 @@ export type ReviewCheck={
 type DuplicateScan={fingerprint:string;startedAt:string;cursor?:string|null;processed:number;pages:number;inventoryComplete?:boolean;publicSignature?:string;publicCursor?:number;publicComplete?:boolean;completedAt?:string};
 type Candidate={kind?:string;url?:string;status?:string;territories?:string[];duplicateScan?:DuplicateScan};
 type Existing={kind?:string;url?:string;title?:string;company?:string;workCommunes?:string[];discoveredBy?:string;verified?:boolean;review?:boolean;active?:boolean};
-const TARGETS=new Set(['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Quilaco','Victoria']);
+const TARGETS=new Set(['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']);
 const chileDay=(date:Date)=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Santiago',year:'numeric',month:'2-digit',day:'2-digit'}).format(date);
 const fold=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
 
@@ -46,7 +46,8 @@ export async function checkOneReview(body:unknown,options:{queuedJobId?:string}=
  if((verification.company?.length||0)>2000||(verification.application?.length||0)>2000)return outcome('pending','source_field_budget_exceeded');
  const day=chileDay(new Date(verification.source_published_at)),today=chileDay(new Date(checkedAt));
  const age=Math.round((Date.parse(today+'T12:00:00Z')-Date.parse(day+'T12:00:00Z'))/86400000);
- if(!Number.isFinite(age)||age<0||age>20)return outcome('rejected','outside_20_day_admission_window',{publishedDate:day});
+ if(!Number.isFinite(age)||age<0)return outcome('rejected','invalid_future_publication_date',{publishedDate:day});
+ if(day<'2026-09-12')return outcome('rejected','publication_before_scope_start',{publishedDate:day});
  if(!TARGETS.has(verification.work_commune))return outcome('blocked','workplace_outside_territory');
  if(entry.territories?.length&&!entry.territories.includes(verification.work_commune))return outcome('blocked','workplace_conflicts_with_research');
  const identity=publicFeedIdentity(entry.url);

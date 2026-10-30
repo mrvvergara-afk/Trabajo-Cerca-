@@ -44,7 +44,7 @@ export async function processAdminReviewBatch(options:{scheduledTime:string;proj
   if(!migrationComplete){const legacy=await db.list<Row>('radar_review_inbox',{limit:20,...(migrationCursor?{nextToken:migrationCursor}:{})});for(const row of legacy.items)if(valid(row.id)&&queued(row)&&!terminal.has(row.motorState||''))await stageAdminReviewVerification(row.id);migrationCursor=legacy.nextToken;migrationComplete=!legacy.nextToken;}
   if(!remaining.length){const page=await db.list(ADMIN_VERIFICATION_QUEUE,{limit:20,...(cursor?{nextToken:cursor}:{})});cursor=page.nextToken;remaining=page.items.map(x=>x.id).filter(valid);}
   for(let index=0;index<remaining.length;){
-   if(report.processed>=2||Date.now()-started>35000)break;
+   if(report.processed>=4||Date.now()-started>35000)break;
    const id=remaining[index],[row]=await db.get<Row>('radar_review_inbox',[id],{consistent:true});
    if(!row||!queued(row)||terminal.has(row.motorState||'')){await db.delete(ADMIN_VERIFICATION_QUEUE,[id]);remaining.splice(index,1);continue;}
    if(Date.parse(row.nextCheckAt||'')>Date.now()){remaining.splice(index,1);continue;}

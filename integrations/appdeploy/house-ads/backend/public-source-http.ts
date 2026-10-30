@@ -58,4 +58,3 @@ export async function fetchPublicPage(value:string, expectedJob?:string):Promise
     return { url:current,status:0,raw:'',mime:'',bytes:0,error:signal.aborted?'source_timeout':'source_unavailable' };
   }
 }
-

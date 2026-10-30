@@ -20,7 +20,7 @@ const reasonLabels:Record<string,string>={
   primary_individual_source_required:'Se necesita la publicación individual de la fuente original, no un agregador.',
   workplace_conflicts_with_research:'La comuna del aviso no coincide con la investigación.',
   workplace_outside_territory:'La oferta no corresponde a una de las localidades objetivo.',
-  outside_20_day_admission_window:'La publicación original tiene más de 20 días o una fecha no válida.',
+  invalid_future_publication_date:'La fecha de publicación original es inválida o futura.',
   mark_final_review_first:'Primero debes seleccionar Revisión final.',
   candidate_missing:'El candidato no está disponible en la bandeja.',
   review_missing:'El candidato no existe o se modificó.',

@@ -10,12 +10,14 @@ type Review={id?:string;kind:'review_candidate'|'review_catalog';url:string;sour
   createdAt:string;updatedAt:string;published:false;verified:false;
   motorState?:string;blockReason?:string;lastCheckedAt?:string;nextCheckAt?:string;lastCheck?:{reason?:string}};
 const HOSTS=new Set(['chiletrabajos.cl','kitempleo.cl','traiguencity.cl','malleco7.cl',
-  'municipalidadquilaco.cl','munimulchen.cl','municipalidadcollipulli.cl','municipalidadrenaico.cl',
+  'munimulchen.cl','municipalidadcollipulli.cl','municipalidadrenaico.cl',
   'muninegrete.cl','mtraiguen.cl','munilumaco.cl','munipuren.cl','muniercilla.cl','victoriachile.cl',
   'nacimiento.cl','munilossauces.cl','noticias.angol.cl','radionativa.cl',
-  'radioviaducto.cl','lasnoticiasdemalleco.cl','bne.gob.cl','empleospublicos.cl','sence.gob.cl']);
+  'radioviaducto.cl','lasnoticiasdemalleco.cl','bne.gob.cl','empleospublicos.cl','sence.gob.cl',
+  'angolnoticiasnew.cl','computrabajo.com','cl.computrabajo.com','laborum.cl','cl.indeed.com',
+  'opcionempleo.cl','trabajando.cl','linkedin.com','jobs.arauco.com','cmpc.csod.com','ssan.redsalud.gob.cl']);
 const TOWNS=new Set(['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén',
-  'Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria','Quilaco']);
+  'Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']);
 const short=(value:unknown,max=100)=>typeof value==='string'?value.trim().slice(0,max):'';
 function safeUrl(value:unknown){
   const v=short(value,700);

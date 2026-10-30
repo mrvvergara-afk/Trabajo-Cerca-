@@ -1,5 +1,5 @@
 import type { CommercialAd, Slot } from './house-ads';
-export const COMMERCIAL_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria'];
+export const COMMERCIAL_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Quilaco','Victoria'];
 export type CommercialConfig = {
   revision:string; launchAt:string|null; founderClosesAt:string|null; founderWindowDays:number;
   founderSlots:number; founderDays:number; foundersUsed:number; standardDays:number;
@@ -44,12 +44,7 @@ export function selectCommercial(ads:CommercialAd[],place:string,turn:number,now
   for(const slot of ['search','listing'] as Slot[]) {
     const eligible=ads.filter(a=>a.status==='active'&&Date.parse(a.startAt)<=now&&now<Date.parse(a.endAt)&&a.communes?.some(c=>c==='Todas'||c===place)&&(a.placements??['search','listing']).includes(slot));
     const reserved=eligible.filter(a=>a.adType!=='COMMERCIAL_FREE').sort((a,b)=>(b.adType==='COMMERCIAL_PAID'?1:0)-(a.adType==='COMMERCIAL_PAID'?1:0)||(b.communes.includes(place)&&place!=='Todas'?1:0)-(a.communes.includes(place)&&place!=='Todas'?1:0)||b.priority-a.priority||a.id.localeCompare(b.id));
-    const firstReserved=reserved[0];
-    // Rotate only peers with the same rights; lower tiers never displace a reservation.
-    const peers=firstReserved?reserved.filter(ad=>ad.adType===firstReserved.adType&&ad.priority===firstReserved.priority&&ad.communes.includes(place)===firstReserved.communes.includes(place)):[];
-    const unusedPeers=peers.filter(ad=>!used.has(businessIdentity(ad.businessName)));
-    const reservedPool=unusedPeers.length?unusedPeers:peers;
-    let chosen=reservedPool.length?reservedPool[((turn%reservedPool.length)+reservedPool.length)%reservedPool.length]:undefined;
+    let chosen=reserved[0];
     if(!chosen){
       const pool=eligible.filter(a=>!used.has(businessIdentity(a.businessName))).sort((a,b)=>(b.communes.includes(place)&&place!=='Todas'?1:0)-(a.communes.includes(place)&&place!=='Todas'?1:0)||b.priority-a.priority||a.id.localeCompare(b.id));
       if(pool.length){const first=pool[0];const tier=pool.filter(a=>a.priority===first.priority&&a.communes.includes(place)===first.communes.includes(place));chosen=tier[((turn%tier.length)+tier.length)%tier.length];}

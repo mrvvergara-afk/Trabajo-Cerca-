@@ -1,0 +1,31 @@
+name: Mulchen shared verifier evidence
+on:
+  push:
+    branches: [fix/verificador-compartido-mulchen-2026-10-29]
+    paths: ['integrations/appdeploy/house-ads/backend/**','integrations/appdeploy/house-ads/qa/mulchen*','.github/workflows/verificador-mulchen.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: integrations/appdeploy/house-ads
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Official source evidence
+        run: python qa/mulchen-capture.py
+      - name: Read deployed catalog through SDK
+        run: node qa/mulchen-live-observe.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mulchen-evidence
+          path: integrations/appdeploy/house-ads/qa-output/
+          retention-days: 7

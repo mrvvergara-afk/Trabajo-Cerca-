@@ -1,3 +1,4 @@
+import {verifyPublicJobPage} from './public-source-verification';
 import {processAdminReviewBatch,confirmAdminReviewPublications,isAdminVerificationSlot} from './radar-admin-verification';
 import {withSecurityHeaders} from './security-headers';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
@@ -1215,7 +1216,7 @@ async function verifyPendingOffer(item:ListingRecord & { id:string }) {
   const publicAdapter=record.url ? publicSourceAdapter(record.url) : null;
   if (publicAdapter) {
     const page=await fetchPublicPage(record.url!,record.url!);
-    const checked=page.error ? { status:'pending',reason:page.error } as PublicVerification : evaluatePublicJob(record.url!,page.raw,page.url,page.status);
+    const checked=await verifyPublicJobPage(record.url!,page);
     if (checked.status==='rejected') return reject(checked.reason);
     if (checked.status!=='verified') return inconclusive(checked.reason,'Fuente pública · revalidación pendiente');
     return { id,record:{ ...record,...verifiedPublicRecord(checked) as unknown as ListingRecord,

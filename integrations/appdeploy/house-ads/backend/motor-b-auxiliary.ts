@@ -1,3 +1,5 @@
+import {verifyPublicJobPage} from './public-source-verification';
+import {fetchPublicPage} from './public-source-http';
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { importReview, decideReview } from './radar-review-inbox';
@@ -10,14 +12,26 @@ const completed = new Set(['closed','not_job','duplicate']);
 export async function triageMotorBQueue() {
   const [checkpoint] = await db.get<{cursor?:string}>('motor_b_aux_state',['current'],{consistent:true});
   const page = await db.list<BOffer>('motor_b_offers',{limit:8,...(checkpoint?.cursor?{nextToken:checkpoint.cursor}:{})});
-  let examined=0,ready=0,needsEvidence=0,bridged=0,bridgeRejected=0,submitted=0;
-  for(const candidate of page.items) {
+  let examined=0,ready=0,needsEvidence=0,bridged=0,bridgeRejected=0,submitted=0,refreshed=0;
+  for(let candidate of page.items) {
     if(completed.has(candidate.status||''))continue;
+    // Recover previously detected municipal notices without treating stale missing fields as a final rejection.
+    if(refreshed<1&&candidate.url&&/^https:\/\/(?:www\.)?munimulchen\.cl\/oferta-laboral-[a-z0-9-]+\/?$/.test(candidate.url)){
+      refreshed++;
+      const checked=await verifyPublicJobPage(candidate.url,await fetchPublicPage(candidate.url,candidate.url));
+      candidate={...candidate,title:checked.title||candidate.title,company:checked.company||candidate.company,
+        commune:checked.work_commune||candidate.commune,publishedAt:checked.source_published_at||candidate.publishedAt,
+        application:checked.application||candidate.application,status:checked.status==='verified'?'ready':checked.status==='rejected'?'closed':'review_source_evidence',reason:checked.reason};
+      const [saved]=await db.tx.update('motor_b_offers',[{id:candidate.id,record:candidate}],{patch:true});
+      if(!saved)throw Error('motor_b_evidence_checkpoint_failed');
+      if(candidate.status==='closed')continue;
+    }
     const hasIdentity=Boolean(candidate.url&&candidate.title&&candidate.commune);
     const hasEvidence=Boolean(candidate.company&&candidate.publishedAt&&candidate.application);
-    const classification=hasIdentity&&hasEvidence?'ready_for_primary_verifier':'needs_source_evidence';
+    const eligible=hasIdentity&&hasEvidence&&candidate.status==='ready';
+    const classification=eligible?'ready_for_primary_verifier':'needs_source_evidence';
     const reason=classification==='needs_source_evidence'
-      ?[!candidate.title?'title':null,!candidate.commune?'workplace':null,!candidate.company?'employer':null,!candidate.publishedAt?'original_date':null,!candidate.application?'application':null].filter(Boolean).join(',')
+      ?candidate.status==='review_source_evidence'?candidate.reason||'official_source_evidence_required':[!candidate.title?'title':null,!candidate.commune?'workplace':null,!candidate.company?'employer':null,!candidate.publishedAt?'original_date':null,!candidate.application?'application':null].filter(Boolean).join(',')
       :'eligible_for_primary_verification_not_published';
     const id=candidate.id;
     if(!id)continue;
@@ -27,7 +41,7 @@ export async function triageMotorBQueue() {
     }else if(old.classification!==classification||old.reason!==reason) {
       await db.tx.update('motor_b_aux_queue',[{id,record:{classification,reason,checkedAt:new Date().toISOString()}}],{patch:true});
     }
-    examined++;if(hasIdentity&&hasEvidence)ready++;else needsEvidence++;
+    examined++;if(eligible)ready++;else needsEvidence++;
     if(hasIdentity&&candidate.url&&candidate.title&&candidate.commune){
       const candidate_key=createHash('sha256').update('motor-b|'+candidate.url+'|'+candidate.title).digest('hex').slice(0,22);
       const item={candidate_key,url:candidate.url,source_id:'motor-b-independent',status:'revision_obligatoria',reported_territories:[candidate.commune],published_date_evidence:candidate.publishedAt||null,deadline_evidence:null};

@@ -8,6 +8,22 @@ type Entry={id:string;url:string;sourceId:string;territories:string[];
   publication?:{state:string;published:boolean;lastCheckedAt?:string|null;reason?:string|null;url?:string;existingPublicUrl?:string};};
 type CardNotice={tone:'info'|'success'|'warning';message:string};
 const reasonLabels:Record<string,string>={
+  official_original_date_invalid:'La respuesta de metadatos oficiales no permite leer una fecha original válida.',
+  official_evidence_stale:'La evidencia oficial necesita una lectura reciente antes de aprobar.',
+  official_vacancies_requires_review:'Falta confirmar los cupos del aviso individual; no se deducen del número de su URL.',
+  official_job_title_missing:'Falta identificar un cargo único dentro del aviso oficial.',
+  official_evidence_read_budget_exhausted:'Se alcanzó el límite de lecturas de esta ejecución. La evidencia queda pendiente, sin aprobación.',
+  official_original_date_endpoint_missing:'El índice mantiene la postulación abierta, pero falta un enlace oficial para acreditar la fecha original. No se usará la fecha del rastreo.',
+  official_original_date_unavailable:'No se pudo consultar la fecha original en los metadatos oficiales. Se conserva pendiente; no significa que el aviso esté cerrado.',
+  official_original_date_missing_or_future:'La fecha original oficial falta o es futura. La fecha de modificación no sustituye la publicación.',
+  official_metadata_identity_mismatch:'Los metadatos no corresponden inequívocamente a este aviso. Falta acreditar su fecha original.',
+  official_application_status_unconfirmed:'Falta confirmar el estado de esta oferta en su tarjeta del índice oficial; otras ofertas abiertas no sirven como evidencia.',
+  official_application_closed:'La municipalidad marca esta oferta como Postulación Cerrada.',
+  official_index_unavailable:'El índice oficial no estuvo accesible. No se interpreta como cierre ni se aprueba sin evidencia.',
+  official_workplace_requires_review:'Falta acreditar el lugar efectivo de trabajo dentro del aviso, separado de la dirección de la OMIL.',
+  official_application_instructions_missing:'Faltan instrucciones presenciales verificables para presentar los antecedentes.',
+  official_status_recheck_required:'La comprobación del estado oficial necesita renovarse; no se inventa una fecha de cierre.',
+  structured_jobposting_missing:'No se encontró JobPosting. Se requiere evidencia oficial alternativa del aviso; este formato ausente no prueba que la oferta sea falsa.',
   already_in_public_catalog:'La oferta ya está publicada en el catálogo actual. Se conserva su publicación existente.',
   public_duplicate_catalog_unavailable:'El catálogo no está disponible para terminar la revisión de duplicados.',
   already_in_internal_inventory:'La oferta ya está en el inventario o coincide con otra publicación.',

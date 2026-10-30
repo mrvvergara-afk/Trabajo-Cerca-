@@ -1,0 +1,119 @@
+{
+  "appId": "trabajo-cerca-laboratorio-3ojgro",
+  "codeDeployed": false,
+  "codeCommitTested": "b3ab70de6b57c2850ef3469802d59b529d80fb8a",
+  "liveVersion": "1793329280879",
+  "official": {
+    "observedAt": "2026-10-30T09:45:12.259712+00:00",
+    "readOnly": true,
+    "platformWrites": 0,
+    "sources": {
+      "source": {
+        "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "finalUrl": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "status": 200,
+        "sha256": "efa87face367d4003e0c90772d5461b1c47f9788e9ccacba35246417f4e7de74"
+      },
+      "index": {
+        "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+        "finalUrl": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+        "status": 200,
+        "sha256": "e74c19edaab07d870ee106b84e332d77bbaa417306a8d02a0af56b4e7d8694fe"
+      },
+      "metadata": {
+        "url": "https://www.munimulchen.cl/wp-json/wp/v2/pages/17979",
+        "finalUrl": "https://www.munimulchen.cl/wp-json/wp/v2/pages/17979",
+        "status": 200,
+        "sha256": "a459a41e568aa3a71214b0a1c95a14d246370336e2a8191319ca3729a34ecce3"
+      }
+    },
+    "originalMetadata": {
+      "id": 17979,
+      "type": "page",
+      "status": "publish",
+      "link": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "date_gmt": "2026-10-19T23:37:41",
+      "modified_gmt": "2026-10-19T23:42:51"
+    }
+  },
+  "tests": {
+    "syntheticOperationalOffers": 0,
+    "productionWrites": 0,
+    "engineTests": {
+      "A": {
+        "verified": 1,
+        "published": 0,
+        "originalDate": "2026-10-19T23:37:41.000Z"
+      },
+      "B": {
+        "status": "ready",
+        "reason": "already_in_public_catalog",
+        "newPublications": 0
+      },
+      "C": {
+        "reason": "already_in_public_catalog",
+        "newPublications": 0
+      }
+    },
+    "liveEvidence": true,
+    "passed": 17,
+    "failed": 0,
+    "strictSharedClosure": true,
+    "backendBuild": true,
+    "frontendBuild": true,
+    "run": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/41035682826"
+  },
+  "publication": {
+    "observedAt": "2026-10-30T09:45:26.395Z",
+    "complete": true,
+    "errors": [],
+    "territorialMismatch": [],
+    "existingPublicJobs": [
+      {
+        "id": "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+        "kind": "job_offer",
+        "title": "OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS",
+        "company": "Empresa del rubro agrícola de la comuna de Mulchén",
+        "source": "Municipalidad de Mulchén",
+        "workLocation": "Mulchén · un predio ubicado en el sector Campamento",
+        "workCommunes": [
+          "Mulchén"
+        ],
+        "date": "19-10-2026",
+        "createdAt": "2026-10-20T11:56:00.689Z",
+        "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "verified": true,
+        "review": false,
+        "sourcePublishedAt": "2026-10-19T23:37:41Z",
+        "sourceValidThrough": null,
+        "applicationUrl": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+        "applicationMethod": "in_person",
+        "firstPublishedAt": "2026-10-20T11:56:00.689Z",
+        "lastVerifiedAt": "2026-10-29T12:50:36.714Z",
+        "externalVerifiedAt": "2026-10-20T11:49:01Z",
+        "revalidationDue": false,
+        "active": true
+      }
+    ],
+    "existingTargetIds": [
+      "8d3d1102-ba4a-4d77-adcf-59e158cb5013"
+    ],
+    "mulchenDOMIds": [
+      "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+      "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+      "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+      "2dbb852b-abd3-45c0-83f2-6044155916c4",
+      "696b1b8c-ecaf-40e2-92aa-f6621ab9a282"
+    ],
+    "targetVisibleInMulchen": true,
+    "newOffersPublishedByThisChange": 0,
+    "positionsPerOffer": 100,
+    "uniqueOffers": 1
+  },
+  "scope": {
+    "runtimeDatabase": "isolated in-memory SDK contract model for modified code",
+    "realSDK": "read-only deployed React frontend and complete catalog; Mulchen DOM pagination checked",
+    "motorC": "local AppDeploy collector; external GitHub/OIDC transport unchanged and not executed",
+    "notTested": "deployment of the repair, real production writes and complete historical repository test suites"
+  }
+}

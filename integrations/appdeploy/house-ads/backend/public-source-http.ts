@@ -4,7 +4,7 @@ import { checkPublicRobots } from './public-robots';
 
 export type PublicPage = { url:string; status:number; raw:string; mime:string; bytes:number; error?:string };
 
-export async function fetchPublicPage(value:string, expectedJob?:string):Promise<PublicPage> {
+export async function fetchPublicPage(value:string, expectedJob?:string, format:'page'|'json'='page'):Promise<PublicPage> {
   const clean = safePublicUrl(value), publisher = publicPublisher(value);
   if (!clean || !publisher) return { url:value,status:0,raw:'',mime:'',bytes:0,error:'publisher_not_allowed' };
   if (new URL(clean).protocol !== 'https:') return { url:value,status:0,raw:'',mime:'',bytes:0,error:'https_required' };
@@ -14,7 +14,7 @@ export async function fetchPublicPage(value:string, expectedJob?:string):Promise
     for (let redirect=0;redirect<4;redirect++) {
       const policy=await checkPublicRobots(current);
       if (!policy.allowed) return {url:current,status:0,raw:'',mime:'',bytes:0,error:policy.error};
-      const response = await fetch(current,{ headers:{ 'user-agent':'TrabajoCercaPublic/1.0','accept':'text/html,application/xhtml+xml,application/rss+xml,application/xml' },redirect:'manual',signal });
+      const response = await fetch(current,{ headers:{ 'user-agent':'TrabajoCercaPublic/1.0','accept':format==='json'?'application/json':'text/html,application/xhtml+xml,application/rss+xml,application/xml' },redirect:'manual',signal });
       if ([301,302,303,307,308].includes(response.status)) {
         const next = safePublicUrl(response.headers.get('location') || '',current);
         await response.body?.cancel();
@@ -23,7 +23,7 @@ export async function fetchPublicPage(value:string, expectedJob?:string):Promise
       }
       const mime = (response.headers.get('content-type') || '').split(';')[0].toLowerCase();
       if (response.status!==200) { await response.body?.cancel();return { url:current,status:response.status,raw:'',mime,bytes:0 }; }
-      if (!['text/html','application/xhtml+xml','application/rss+xml','application/xml','text/xml'].includes(mime)) {
+      if (!(format==='json'?['application/json']:['text/html','application/xhtml+xml','application/rss+xml','application/xml','text/xml']).includes(mime)) {
         await response.body?.cancel();return { url:current,status:200,raw:'',mime,bytes:0,error:'document_requires_local_reader' };
       }
       const reader = response.body?.getReader();

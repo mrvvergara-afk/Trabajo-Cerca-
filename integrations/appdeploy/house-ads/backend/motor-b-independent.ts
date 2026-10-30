@@ -1,3 +1,5 @@
+import {verifyPublicJobPage} from './public-source-verification';
+import {municipalEvidenceRequests} from './municipal-offer-verification';
 import {db} from '@appdeploy/sdk';
 import {createHash} from 'node:crypto';
 // Motor B: fuentes, red, cola, validacion y almacenamiento propios. Sin importar codigo de A.
@@ -70,6 +72,17 @@ function analyze(url:string,source:string,html:string,now:number):Candidate{
  const status=closed?'closed':!subject&&!structured?'not_job':loc.length!==1?'review_location':!validDate?'review_date':!apply?'review_application':'ready';
  return {id:hash(url),url,source,title,company,commune:loc.length===1?loc[0]:null,publishedAt:validDate?sourceDate:null,application:apply,status:status==='ready'&&!company?'review_employer':status,observedAt:new Date(now).toISOString(),reason:closed?'explicitly_closed':status};
 }
+
+export async function analyzeMotorBPage(url:string,source:string,body:string,now=Date.now()){
+ const original=analyze(url,source,body,now);
+ if(!municipalEvidenceRequests(url,body))return original;
+ const checked=await verifyPublicJobPage(url,{url,raw:body,status:200,mime:'text/html',bytes:Buffer.byteLength(body)},now);
+ return {...original,title:checked.title||original.title,company:checked.company||original.company,
+  commune:checked.work_commune||original.commune,publishedAt:checked.source_published_at||original.publishedAt,
+  application:checked.application||original.application,status:checked.status==='verified'?'ready':checked.status==='rejected'?'closed':'review_source_evidence',
+  reason:checked.reason};
+}
+
 export async function motorBIndependentHandler(){
  const now=Date.now();
  const [previous]=await db.get<{position:number;queue:Array<{url:string;source:string}>}>('motor_b_state',['cursor'],{consistent:true});
@@ -87,7 +100,7 @@ export async function motorBIndependentHandler(){
     if(document.text.length>25){const item=analyze(job.url,job.source,'<h1>Documento laboral</h1><p>'+document.text.replace(/</g,'&lt;')+'</p>',now);await db.tx.update('motor_b_offers',[{id:item.id,record:{...item,status:'review_document',reason:'document_extracted_verify_original_date_and_workplace'}}]);markReview('document_extracted_needs_offer_check');}
     continue;
    }
-   if(!seeds.some(([,entry])=>entry===job.url)&&!/(?:\/feed\/?|\/(?:rss|sitemap)(?:\.xml)?\/?|\/(?:robots\.txt))$/i.test(new URL(job.url).pathname)){const candidate=analyze(job.url,job.source,body,now);const [old]=await db.get<Candidate>('motor_b_offers',[candidate.id],{consistent:true});if(!old||['status','title','company','commune','publishedAt','application','reason'].some(key=>String((old as unknown as Record<string,unknown>)[key]??'')!==String((candidate as unknown as Record<string,unknown>)[key]??'')))await db.tx.update('motor_b_offers',[{id:candidate.id,record:candidate}]);if(candidate.status==='ready')ready++;else markReview(candidate.status);}
+   if(!seeds.some(([,entry])=>entry===job.url)&&!/(?:\/feed\/?|\/(?:rss|sitemap)(?:\.xml)?\/?|\/(?:robots\.txt))$/i.test(new URL(job.url).pathname)){const candidate=await analyzeMotorBPage(job.url,job.source,body,now);const [old]=await db.get<Candidate>('motor_b_offers',[candidate.id],{consistent:true});if(!old||['status','title','company','commune','publishedAt','application','reason'].some(key=>String((old as unknown as Record<string,unknown>)[key]??'')!==String((candidate as unknown as Record<string,unknown>)[key]??'')))await db.tx.update('motor_b_offers',[{id:candidate.id,record:candidate}]);if(candidate.status==='ready')ready++;else markReview(candidate.status);}
    const host=new URL(job.url).hostname;
    // Discover eligible RSS/Atom entry links and XML sitemap loc entries without using engine A.
    if(/^\s*(?:<\?xml|<rss\b|<feed\b|<urlset\b|<sitemapindex\b)/i.test(body)){

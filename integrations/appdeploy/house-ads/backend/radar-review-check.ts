@@ -3,13 +3,14 @@ import {createHash} from 'node:crypto';
 import {fetchPublicPage} from './public-source-http';
 import {publicSourceAdapter,publicFeedIdentity} from './public-source-adapters';
 
-import {evaluatePublicJob} from './public-source-verifier';
+import {verifyPublicJobPage} from './public-source-verification';
+import type {OfficialOpenEvidence} from './municipal-offer-verification';
 import {currentPublicFeedManifest} from './public-feed';
 export type ReviewCheck={
  status:'blocked'|'pending'|'rejected'|'verified_for_final_review';reason:string;canPublish:false;
  checkedAt:string;title?:string;company?:string;workCommune?:string;publishedDate?:string;
  sourcePublishedAt?:string;application?:string;source?:string;deadline?:string|null;
- verificationMethod?:string;scanned?:number;existingPublicId?:string;
+ verificationMethod?:string;officialOpenEvidence?:OfficialOpenEvidence;vacancies?:number;validityMethod?:string;scanned?:number;existingPublicId?:string;
  evidence?:{originalUrl:string;finalUrl:string;httpStatus:number;sourceSha256:string|null;checkedAt:string;method?:string};
 };
 type DuplicateScan={fingerprint:string;startedAt:string;cursor?:string|null;processed:number;pages:number;inventoryComplete?:boolean;publicSignature?:string;publicCursor?:number;publicComplete?:boolean;completedAt?:string};
@@ -40,7 +41,7 @@ export async function checkOneReview(body:unknown,options:{queuedJobId?:string}=
  const evidence={originalUrl:entry.url,finalUrl:page.url,httpStatus:page.status,sourceSha256:page.raw?createHash('sha256').update(page.raw).digest('hex'):null,checkedAt};
  const outcome=(status:ReviewCheck['status'],reason:string,extra:Partial<ReviewCheck>={})=>save(result(status,reason,{evidence,...extra}));
  if(page.error)return outcome('pending',page.error);
- const verification=evaluatePublicJob(entry.url,page.raw,page.url,page.status);
+ const verification=await verifyPublicJobPage(entry.url,page);
  if(verification.status==='rejected')return outcome('rejected',verification.reason);
  if(verification.status!=='verified'||!verification.source_published_at||!verification.work_commune||!verification.application)return outcome('pending',verification.reason);
  if((verification.company?.length||0)>2000||(verification.application?.length||0)>2000)return outcome('pending','source_field_budget_exceeded');
@@ -90,5 +91,5 @@ export async function checkOneReview(body:unknown,options:{queuedJobId?:string}=
   if(!ok)return outcome('pending','duplicate_scan_concurrent_change');
   if(!done)return outcome('pending','duplicate_check_in_progress',{scanned:processed});
  }
- return outcome('verified_for_final_review',verification.reason,{title:verification.title,company:verification.company,workCommune:verification.work_commune,publishedDate:day,application:verification.application,sourcePublishedAt:verification.source_published_at,source:verification.source,deadline:verification.valid_through||null,verificationMethod:verification.verification_method,evidence:{...evidence,method:verification.verification_method}});
+ return outcome('verified_for_final_review',verification.reason,{title:verification.title,company:verification.company,workCommune:verification.work_commune,publishedDate:day,application:verification.application,sourcePublishedAt:verification.source_published_at,source:verification.source,deadline:verification.valid_through||null,verificationMethod:verification.verification_method,officialOpenEvidence:verification.official_evidence,vacancies:verification.vacancies,validityMethod:verification.validity_method,evidence:{...evidence,method:verification.verification_method}});
 }

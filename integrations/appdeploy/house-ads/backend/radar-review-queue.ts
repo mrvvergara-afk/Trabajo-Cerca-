@@ -1,3 +1,4 @@
+import type {OfficialOpenEvidence} from './municipal-offer-verification';
 import { db, isAppDatabaseError } from '@appdeploy/sdk';
 import { registerPublicFeedChange, currentPublicFeedManifest, readPublicFeedItem } from './public-feed';
 import { checkOneReview } from './radar-review-check';
@@ -7,7 +8,7 @@ import {offerRetentionReason} from './offer-retention';
 type Review={kind?:string;status?:string;url?:string;sourceId?:string};
 type Job={url?:string;kind?:string;review?:boolean;verified?:boolean};
 type Check={status:string;reason?:string;title?:string;company?:string;workCommune?:string;
-  publishedDate?:string;sourcePublishedAt?:string;application?:string;deadline?:string|null;source?:string};
+  publishedDate?:string;sourcePublishedAt?:string;application?:string;deadline?:string|null;source?:string;officialOpenEvidence?:OfficialOpenEvidence;vacancies?:number;validityMethod?:string};
 
 export const ADMIN_VERIFICATION_QUEUE='radar_admin_verification_queue';
 export async function stageAdminReviewVerification(id:string){
@@ -71,7 +72,8 @@ export async function enqueueAdminReviewedOffer(body:unknown){
       date:check.publishedDate,source:check.source||row.sourceId||'Fuente laboral',
       sourceDomain:new URL(row.url).hostname.replace(/^www\./,''),
       sourcePublishedAt:check.sourcePublishedAt,sourceValidThrough:check.deadline||null,
-      url:row.url,applicationUrl:check.application,
+      url:row.url,applicationUrl:check.application,validityMethod:check.validityMethod,
+      ...(check.officialOpenEvidence?{officialOpenEvidence:check.officialOpenEvidence,vacancies:check.vacancies,applicationMethod:'in_person',applicationInstructions:check.officialOpenEvidence.applicationInstructions}:{}),
       note:'Aviso revisado; verificación del sistema pendiente. Postulación: '+check.application,
       tags:[check.title,check.workCommune].join(' ').toLowerCase().split(/\s+/).slice(0,18),
       visual:'field',icon:'work',discoveredBy:'admin-review-inbox-v1',

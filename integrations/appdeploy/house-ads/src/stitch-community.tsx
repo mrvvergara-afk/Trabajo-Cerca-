@@ -11,13 +11,13 @@ export function StitchCommunity({person, onOffer, onBrowse, onSelect}:{
       <div className='tcCommunityCopy'>
         <span className='tcStitchEyebrow'><Wrench aria-hidden='true'/> <span className='tcDesktopText'>Comunidad de Oficios Locales</span><span className='tcMobileText'>Fricción cero</span></span>
         <h2 id='tc-community-title'>¿Sabes hacer algo? <span>Que te encuentren<span className='tcDesktopText'> en tu comuna.</span></span></h2>
-        <p><span className='tcDesktopText'>Electricidad, costura, jardinería, clases, mecánica o servicios profesionales. Sin currículum y 100% gratuito. Tu talento vale en tu propia comunidad.</span><span className='tcMobileText'>Sin currículum ni trámites engorrosos. Ofrece tu oficio o servicio y conecta con vecinos de tu zona.</span></p>
+        <p><span className='tcDesktopText'>Electricidad, costura, jardinería, clases, mecánica y servicios profesionales. Publica gratis tu perfil para que te puedan contratar. Tú acuerdas la remuneración de tu trabajo.</span><span className='tcMobileText'>Publica gratis tu perfil y conecta con personas que necesiten tus servicios. Tú acuerdas cuánto cobrar por tu trabajo.</span></p>
         <div className='tcCommunityBenefits'>
           <div><BadgeCheck aria-hidden='true'/><b>Publicación gratis</b><small>Sin comisiones por contacto ni cobros ocultos.</small></div>
           <div><LockKeyhole aria-hidden='true'/><b>Contacto directo</b><small>Con permisos y datos de contacto protegidos.</small></div>
           <div><Wrench aria-hidden='true'/><b>Todos los oficios</b><small>Desde reparaciones hasta servicios técnicos.</small></div>
         </div>
-        <button type='button' className='tcCommunityOffer' onClick={onOffer}><PlusCircle aria-hidden='true'/> Ofrecer mi trabajo gratis</button>
+        <button type='button' className='tcCommunityOffer' onClick={onOffer}><PlusCircle aria-hidden='true'/> Publicar mi perfil gratis</button><small className='tcCommunityFreeNote'>La publicación es gratuita; tú acuerdas el valor de tu trabajo.</small>
       </div>
       <aside className='tcCommunityProfile' aria-label='Personas y oficios locales'>
         <div className='tcCommunityProfileTop'><span>Personas y oficios</span><UserRoundSearch aria-hidden='true'/></div>

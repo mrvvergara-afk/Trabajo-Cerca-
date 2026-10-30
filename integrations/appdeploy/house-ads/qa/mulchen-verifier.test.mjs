@@ -131,3 +131,37 @@ test('repeated administrative submission cannot bypass duplicate verification',a
  assert.equal(mem.table('radar_jobs').size,1);
 });
 process.on('exit',()=>{writeFileSync('qa-output/mulchen/verification-results.json',JSON.stringify(report,null,2));console.log('MULCHEN_VERIFICATION_RESULTS '+JSON.stringify(report));});
+
+test('B does not submit cached ready fields when fresh official original-date evidence is absent',async()=>{
+ const mem=memory(),originalFetch=globalThis.fetch,m=JSON.parse(metadata);delete m.date_gmt;
+ globalThis.fetch=async u=>String(u)===metadataUrl?new Response(JSON.stringify(m),{headers:{'content-type':'application/json'}}):originalFetch(u);
+ mem.table('motor_b_offers').set('cached-b',{id:'cached-b',url:sourceUrl,title:'OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS',commune:'Mulchén',status:'ready',company:'Empresa del rubro agrícola',publishedAt:'2026-10-19T23:37:41Z',application:sourceUrl});
+ await mod.triageMotorBQueue();
+ assert.equal(mem.table('motor_b_aux_queue').get('cached-b').classification,'needs_source_evidence');
+ assert.equal(mem.table('motor_b_aux_queue').get('cached-b').reason,'official_original_date_missing_or_future');
+ assert.equal(mem.table('radar_jobs').size,1);
+});
+test('C never submits the same notice when the original official date is missing',async()=>{
+ const mem=memory(),originalFetch=globalThis.fetch,m=JSON.parse(metadata);delete m.date_gmt;
+ globalThis.fetch=async u=>String(u)===metadataUrl?new Response(JSON.stringify(m),{headers:{'content-type':'application/json'}}):originalFetch(u);
+ mem.table('motor_c_local_cursor').set('current',{position:11});
+ await mod.motorCIndependentHandler();
+ const review=[...mem.table('radar_review_inbox').values()].find(x=>x.url===sourceUrl);
+ assert.equal(review.lastCheck.reason,'official_original_date_missing_or_future');
+ assert.equal(mem.table('radar_jobs').size,1);
+});
+test('administrative verification preserves official evidence and accepts equivalent Z / .000Z original timestamps',async()=>{
+ const mem=memory(),id='tc_'+'b'.repeat(22),jobId='tcq_'+'b'.repeat(22);
+ mem.table('radar_jobs').delete('existing-mulchen');
+ const job={id:jobId,kind:'job_offer',url:sourceUrl,active:true,review:true,verified:false,discoveredBy:'admin-review-inbox-v1',sourcePublishedAt:JSON.parse(metadata).date_gmt+'Z'};
+ mem.table('radar_jobs').set(jobId,job);
+ mem.table('radar_review_inbox').set(id,{kind:'review_candidate',url:sourceUrl,status:'queued_for_verification',territories:['Mulchén']});
+ mem.table('radar_admin_verification_queue').set(id,{id});
+ mem.table('public_feed_manifests').set('manifest',{schema:2,pages:[]});
+ const result=await mod.processAdminReviewBatch({scheduledTime:new Date().toISOString(),project:j=>j});
+ assert.equal(result.verified,1);
+ const saved=mem.table('radar_jobs').get(jobId);
+ assert.equal(saved.review,false);assert.equal(saved.verified,true);
+ assert.equal(saved.officialOpenEvidence.originalPublishedAt,new Date(JSON.parse(metadata).date_gmt+'Z').toISOString());
+ assert.equal(saved.validityMethod,'official_open_status');assert.equal(saved.vacancies,100);
+});

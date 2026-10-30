@@ -28,9 +28,10 @@ export async function triageMotorBQueue() {
     }
     const hasIdentity=Boolean(candidate.url&&candidate.title&&candidate.commune);
     const hasEvidence=Boolean(candidate.company&&candidate.publishedAt&&candidate.application);
-    const classification=hasIdentity&&hasEvidence?'ready_for_primary_verifier':'needs_source_evidence';
+    const eligible=hasIdentity&&hasEvidence&&candidate.status==='ready';
+    const classification=eligible?'ready_for_primary_verifier':'needs_source_evidence';
     const reason=classification==='needs_source_evidence'
-      ?[!candidate.title?'title':null,!candidate.commune?'workplace':null,!candidate.company?'employer':null,!candidate.publishedAt?'original_date':null,!candidate.application?'application':null].filter(Boolean).join(',')
+      ?candidate.status==='review_source_evidence'?candidate.reason||'official_source_evidence_required':[!candidate.title?'title':null,!candidate.commune?'workplace':null,!candidate.company?'employer':null,!candidate.publishedAt?'original_date':null,!candidate.application?'application':null].filter(Boolean).join(',')
       :'eligible_for_primary_verification_not_published';
     const id=candidate.id;
     if(!id)continue;
@@ -40,7 +41,7 @@ export async function triageMotorBQueue() {
     }else if(old.classification!==classification||old.reason!==reason) {
       await db.tx.update('motor_b_aux_queue',[{id,record:{classification,reason,checkedAt:new Date().toISOString()}}],{patch:true});
     }
-    examined++;if(hasIdentity&&hasEvidence)ready++;else needsEvidence++;
+    examined++;if(eligible)ready++;else needsEvidence++;
     if(hasIdentity&&candidate.url&&candidate.title&&candidate.commune){
       const candidate_key=createHash('sha256').update('motor-b|'+candidate.url+'|'+candidate.title).digest('hex').slice(0,22);
       const item={candidate_key,url:candidate.url,source_id:'motor-b-independent',status:'revision_obligatoria',reported_territories:[candidate.commune],published_date_evidence:candidate.publishedAt||null,deadline_evidence:null};

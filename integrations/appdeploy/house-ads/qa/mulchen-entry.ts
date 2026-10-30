@@ -9,3 +9,5 @@ export {enqueueAdminReviewedOffer} from '../backend/radar-review-queue';
 export {advancePublicFeed,readPublicFeedPage} from '../backend/public-feed';
 export {offerRetentionReason,confirmedOfferDeadline} from '../backend/offer-retention';
 export {publicFeedIdentity} from '../backend/public-source-adapters';
+
+export {processAdminReviewBatch} from '../backend/radar-admin-verification';

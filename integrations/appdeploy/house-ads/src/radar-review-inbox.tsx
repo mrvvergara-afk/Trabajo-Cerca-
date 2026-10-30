@@ -8,6 +8,11 @@ type Entry={id:string;url:string;sourceId:string;territories:string[];
   publication?:{state:string;published:boolean;lastCheckedAt?:string|null;reason?:string|null;url?:string;existingPublicUrl?:string};};
 type CardNotice={tone:'info'|'success'|'warning';message:string};
 const reasonLabels:Record<string,string>={
+  official_original_date_invalid:'La respuesta de metadatos oficiales no permite leer una fecha original válida.',
+  official_evidence_stale:'La evidencia oficial necesita una lectura reciente antes de aprobar.',
+  official_vacancies_requires_review:'Falta confirmar los cupos del aviso individual; no se deducen del número de su URL.',
+  official_job_title_missing:'Falta identificar un cargo único dentro del aviso oficial.',
+  official_evidence_read_budget_exhausted:'Se alcanzó el límite de lecturas de esta ejecución. La evidencia queda pendiente, sin aprobación.',
   official_original_date_endpoint_missing:'El índice mantiene la postulación abierta, pero falta un enlace oficial para acreditar la fecha original. No se usará la fecha del rastreo.',
   official_original_date_unavailable:'No se pudo consultar la fecha original en los metadatos oficiales. Se conserva pendiente; no significa que el aviso esté cerrado.',
   official_original_date_missing_or_future:'La fecha original oficial falta o es futura. La fecha de modificación no sustituye la publicación.',

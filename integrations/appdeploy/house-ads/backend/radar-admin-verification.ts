@@ -62,7 +62,7 @@ export async function processAdminReviewBatch(options:{scheduledTime:string;proj
    const check=await checkOneReview({id},{queuedJobId:jobId});report.sourceChecks++;
    let reason=check.reason;
    if(check.status==='verified_for_final_review'){
-    if(job.sourcePublishedAt&&job.sourcePublishedAt!==check.sourcePublishedAt)reason='original_source_date_changed';
+    if(job.sourcePublishedAt&&Date.parse(job.sourcePublishedAt)!==Date.parse(check.sourcePublishedAt||''))reason='original_source_date_changed';
     else if((job.sourceValidThrough&&Date.parse(job.sourceValidThrough)<=Date.now())||(job.expiresAt&&Date.parse(job.expiresAt)<=Date.now()))reason='expired_deadline';
     else{
      const now=check.checkedAt;

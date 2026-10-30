@@ -23,6 +23,8 @@ jobs:
         run: python qa/mulchen-capture.py
       - name: Build actual verifier and application components
         run: node qa/mulchen-build.mjs
+      - name: Type-check shared verification closure
+        run: npx tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution bundler --types node --skipLibCheck backend/public-source-verification.ts
       - name: Independent motor paths and verification regressions
         run: node --test qa/mulchen-verifier.test.mjs
       - name: Read deployed catalog through SDK

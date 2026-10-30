@@ -365,3 +365,24 @@
 }
 
 .tcStitchShell .tcCampaignViewport{position:relative}
+
+
+/* Correcciones esteticas de portada - observaciones 29-10-2026 */
+/* Las comunas deben ser accesibles sin desplazamiento horizontal en escritorio. */
+@media (min-width:768px) {
+  .tcStitchShell .tcCommuneRail { display:flex; flex-wrap:wrap; overflow:visible; row-gap:8px; }
+  .tcStitchShell .tcCommuneRail button { flex:0 0 auto; max-width:100%; }
+}
+/* Instalacion: enlace visible en portada web y en la cabecera del radar movil. */
+.tcStitchShell .tcHeroInstallRow { display:flex; align-items:center; gap:12px; margin:14px 0 0; flex-wrap:wrap; }
+.tcStitchShell .tcHeroInstallRow button { display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:8px 13px; border:1px solid var(--st-line); border-radius:10px; background:#fff; color:var(--st-green); font-size:13px; font-weight:650; }
+.tcStitchShell .tcHeroInstallRow button svg { width:17px; height:17px; }
+.tcStitchShell .tcHeroInstallRow span { font-size:12px; line-height:18px; color:var(--st-muted); }
+.tcStitchShell .tcInstallShortcut { display:none; }
+.tcStitchShell .tcCommunityFreeNote { display:block; margin:8px 0 0; font-size:12px; line-height:18px; color:var(--st-muted); }
+@media (max-width:767px) {
+  .tcStitchShell .tcHeroInstallRow { display:none; }
+  .tcStitchShell .tcStitchRadarSummary .tcInstallShortcut { display:inline-flex; align-items:center; justify-content:center; gap:6px; min-height:36px; padding:7px 11px; margin:10px 0 0; border:1px solid #ffffff66; border-radius:10px; background:#fff; color:var(--st-ink); font-size:12px; line-height:18px; font-weight:650; }
+  .tcStitchShell .tcStitchRadarSummary .tcInstallShortcut svg { width:16px; height:16px; }
+  .tcStitchShell .tcCommunityFreeNote { font-size:11px; line-height:16px; }
+}

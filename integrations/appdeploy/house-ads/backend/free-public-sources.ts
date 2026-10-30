@@ -1,3 +1,4 @@
+import {verifyPublicJobPage} from './public-source-verification';
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
@@ -190,7 +191,8 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     sourceDomain:new URL(offer.url).hostname,sourcePublishedAt:offer.source_published_at,
     ...(offer.source_date_evidence ? { sourceDateEvidence:offer.source_date_evidence } : {}),
     sourceValidThrough:offer.valid_through || null,validityMethod:offer.validity_method || (offer.valid_through ? 'explicit_deadline' : 'source_age_45_days'),
-    expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
+    ...(offer.official_evidence?{officialOpenEvidence:offer.official_evidence,applicationMethod:'in_person',applicationInstructions:offer.official_evidence.applicationInstructions,vacancies:offer.vacancies}:{}),
+    applicationUrl:offer.application,expiresAt:expiry,url:offer.url,note:(offer.valid_through?'Postulación comprobada en la fuente: ':'Formulario habilitado comprobado; la fuente no informa cierre: ')+offer.application,
     tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,
     createdAt:new Date(now).toISOString(),discoveredBy:'free-public-sources-v1',
     secondaryMarket:['Los Ángeles','Temuco'].includes(offer.work_commune),
@@ -348,18 +350,22 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   let verified = 0;
   const reviewed:Stored[] = [];
   const shadowReviewed:Stored[] = [];
+  const verifyWithinBudget=(url:string,page:Awaited<ReturnType<typeof fetchPublicPage>>)=>verifyPublicJobPage(url,page,now,async(address,expected,format)=>{
+    if(reads>=14)return {url:address,status:0,raw:'',mime:'',bytes:0,error:'official_evidence_read_budget_exhausted'};
+    reads++;return fetchPublicPage(address,expected,format);
+  });
   while (reads<14 && (state.pending.length || state.priorityCandidates.length) && reviewed.length<8 && Date.now()-started<50000) {
     const priorityQueue=state.priorityCandidates.length>0;
     const selected=priorityQueue ? 0 : pendingCandidateIndex(state.pending,state.reviewLane || 0,state.reviewProviderPosition || 0);
     if (selected<0) break;
     const candidate = priorityQueue ? state.priorityCandidates[0] : state.pending[selected];
     const page = await fetchPublicPage(candidate.url,candidate.url);reads++;
-    let result = page.error ? { status:'pending',reason:page.error } as PublicVerification : evaluatePublicJob(candidate.url,page.raw,page.url,page.status,now);
+    let result = await verifyWithinBudget(candidate.url,page);
     if (result.reason==='aggregator_requires_original_source') {
       const originals = publicPageLinks(page.raw,page.url).candidates.filter(item => publicSourceAdapter(item.url)?.family!=='aggregator');
       if (originals.length===1 && reads<14) {
         const original = originals[0].url, originalPage = await fetchPublicPage(original,original);reads++;
-        result = originalPage.error ? { status:'pending',reason:originalPage.error } : evaluatePublicJob(original,originalPage.raw,originalPage.url,originalPage.status,now);
+        result = await verifyWithinBudget(original,originalPage);
       }
     }
     if (result.status==='verified') {

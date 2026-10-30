@@ -1,3 +1,4 @@
+import type { OfficialOpenEvidence } from './municipal-offer-verification';
 import { createHash } from 'node:crypto';
 import { socialSourceDate } from './social-evidence';
 import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
@@ -17,7 +18,10 @@ export type PublicVerification = {
   valid_through?:string;
   application?:string;
   verification_method?:string;
-  validity_method?:'explicit_deadline' | 'live_application';
+  validity_method?:'explicit_deadline' | 'live_application' | 'official_open_status';
+  official_evidence?:OfficialOpenEvidence;
+  application_state?:'open';
+  vacancies?:number;
   validity_evidence?:{ form_url:string; form_action:string; checked_at:string; source_sha256:string };
   source_date_evidence?:{ date_posted:string; valid_through:string; timezone:string };
 };

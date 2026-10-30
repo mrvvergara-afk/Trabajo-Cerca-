@@ -6,6 +6,11 @@ const RETENTION_DAY=86400000;
 export function confirmedOfferDeadline(item:Offer):number | null {
   const explicit=Date.parse(String(item.sourceValidThrough || ''));
   if (Number.isFinite(explicit)) return explicit;
+  const official=item.officialOpenEvidence as Record<string,unknown>|undefined;
+  if(item.validityMethod==='official_open_status'&&official?.schema==='trabajo-cerca.official-open.v1'&&official.status==='open'&&official.sourceUrl===item.url){
+    const checked=Date.parse(String(official.checkedAt||''));
+    if(Number.isFinite(checked))return checked+RETENTION_DAY;
+  }
   const expiry=Date.parse(String(item.expiresAt || ''));
   const published=Date.parse(String(item.sourcePublishedAt || ''));
   if (Number.isFinite(expiry) && (!Number.isFinite(published) || Math.abs(expiry-published-45*RETENTION_DAY)>=1000)) return expiry;
@@ -17,7 +22,7 @@ export function confirmedOfferDeadline(item:Offer):number | null {
 export function offerRetentionReason(item:Offer,now=Date.now()):string | null {
   if (item.active!==true) return item.closureReason ? String(item.closureReason) : 'source_record_inactive';
   const deadline=confirmedOfferDeadline(item);
-  if (deadline!==null && deadline<now) return 'application_window_elapsed';
+  if (deadline!==null && deadline<now) return item.validityMethod==='official_open_status'?'official_status_recheck_required':'application_window_elapsed';
   if (item.kind==='job_offer' && (item.verified!==true || item.review===true)) return 'approval_or_quality_review_required';
   return null;
 }

@@ -21,6 +21,10 @@ jobs:
       - run: npm install --ignore-scripts --no-audit --no-fund
       - name: Official source evidence
         run: python qa/mulchen-capture.py
+      - name: Build actual verifier and application components
+        run: node qa/mulchen-build.mjs
+      - name: Independent motor paths and verification regressions
+        run: node --test qa/mulchen-verifier.test.mjs
       - name: Read deployed catalog through SDK
         run: node qa/mulchen-live-observe.mjs
       - uses: actions/upload-artifact@v4

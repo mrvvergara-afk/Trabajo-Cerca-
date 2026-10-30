@@ -1390,13 +1390,13 @@ function App() {
             <span className='tcTerritoryBadge'>Malleco &amp; Biobío</span>
             <nav className='neoTopNav' aria-label='Navegación principal'>
               <button aria-current={section==='opportunities'?'page':undefined} onClick={() => navigateResults('opportunities')}>Empleos</button>
-              <button onClick={() => setFlow('ofrezco')}>Ofrecer mi trabajo</button>
+              <button onClick={() => setFlow('ofrezco')}>Publicar mi perfil</button>
               <button onClick={() => navigateResults('services')}>Buscar servicios</button>
               <button onClick={() => setShowAdvertiser(true)}>Publicidad</button>
             </nav>
             <button type='button' className='tcTopPublish' onClick={()=>setFlow('trabajadores')}><PlusCircle aria-hidden='true'/> Publicar oportunidad</button>
             <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Mi territorio':value}</option>)}</select></label>
-            <SiteMenu accountIcon onRadar={()=>openSecondary('neo-radar')} onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
+            <SiteMenu onRadar={()=>openSecondary('neo-radar')} onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
               onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
               onCities={()=>openSecondary('tc-other-cities')} onNews={()=>openSecondary('actualidad-laboral')}
               onPeople={()=>navigateResults('people')}/>
@@ -1408,19 +1408,20 @@ function App() {
           <div className='neoHeroCopy'>
             <span className='tcStitchEyebrow'><Radar aria-hidden='true'/> Red comunitaria de vinculación de cercanía</span>
             <h1>Encuentra trabajo <em>cerca de ti</em></h1>
-            <p className='neoHeroLead'>Explora oportunidades formales y oficios en tu comuna inmediata. Conecta de forma directa, transparente y sin burocracia con empleadores y vecinos de tu territorio.</p>
+            <p className='neoHeroLead'>Encuentra oportunidades laborales en tu comuna y localidades cercanas. Conecta con empresas que buscan trabajadores, profesionales y personas que ofrecen sus oficios y servicios en tu zona.</p>
             <form className='neoSearchDock' role='search' aria-label='Buscar trabajo por comuna' onSubmit={event=>{event.preventDefault();setResultPage(0);setSection('opportunities');setArea('Todas');setOnlyNew(false);setOnlyUnread(false);setResultFocus(n=>n+1);}}>
               <label className='tcRoleField'><Search aria-hidden='true'/><span><small>Cargo, oficio o rubro</small><input aria-label='Cargo, oficio o empresa para buscar' value={q} onChange={e=>setQ(e.target.value)} placeholder='Ej. Técnico, Cosecha, Soldador, Asistente'/></span></label>
               <label className='tcCommuneField'><MapPin aria-hidden='true'/><span><small>Comuna base</small><select aria-label='Comuna de búsqueda' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select></span></label>
               <button type='submit'><Radar aria-hidden='true'/> Buscar trabajo</button>
-              <div className='tcSearchCategories'><span>Explorar por rubro:</span>{areas.filter(value=>value!=='Todas').slice(0,4).map(value=><button key={value} type='button' onClick={()=>{setSection('opportunities');setArea(value);setResultFocus(n=>n+1);}}>{value}</button>)}</div>
             </form>
+            {!isStandalone && <div className='tcHeroInstallRow'><button type='button' onClick={()=>void installApp()} aria-label='Instalar Trabajo Cerca en este dispositivo'><Download aria-hidden='true'/> Instalar app</button><span>Acceso rápido desde tu celular, sin costo.</span></div>}
           </div>
         </section>
         <section className='tcStitchRadarSummary' aria-label='Resumen del catálogo territorial'>
           <div><span><Radar aria-hidden='true'/> Radar laboral territorial</span><b>{scopeCount??'…'} ofertas</b></div>
           <h2>Oportunidades en tu territorio</h2>
           <label><MapPin aria-hidden='true'/><span>Comuna:</span><select aria-label='Localidad del radar' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value}>{value}</option>)}</select><button type='button' onClick={()=>{setAdvancedFiltersOpen(value=>!value);document.getElementById('neo-jobs')?.scrollIntoView({behavior:'smooth'});}}>Ajustar <SlidersHorizontal aria-hidden='true'/></button></label>
+          {!isStandalone && <button type='button' className='tcInstallShortcut' onClick={()=>void installApp()} aria-label='Instalar Trabajo Cerca en este dispositivo'><Download aria-hidden='true'/> Instalar app gratis</button>}
         </section>
         {advertising.selections.search?.type==='COMMERCIAL'&&renderAdvertising('search')}
         {feedState==='degraded_last_good'&&<p className='tcResultStatus' role='status'>Mostrando el último catálogo disponible. Actualización pendiente.</p>}

@@ -129,6 +129,9 @@ export function AdministratorShortcut({ inline = false }: { inline?: boolean }) 
     }
   }
 
+  // El menú público no muestra controles de sesión; solo la cuenta validada por /api/admin/session puede ver Administración.
+  if (inline && !allowed) return null;
+
   return (
     <div className={'tcAccountControl' + (inline ? ' tcAccountInline' : '')}>
       {allowed && <button className='tcAdminShortcut' disabled={busy} onClick={() => void openPanel()}>Administración</button>}

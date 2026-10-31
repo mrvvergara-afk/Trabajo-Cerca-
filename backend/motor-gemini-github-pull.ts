@@ -13,7 +13,7 @@ const TERRITORIES = new Set(['Purén','Traiguén','Los Sauces','Angol','Victoria
 export function adaptGeminiCandidate(raw:Candidate) {
   const url = string(raw.url);
   let host = '';
-  try { const parsed=new URL(url); if(parsed.protocol!=='https:')return null; host=parsed.hostname.replace(/^www\\./,'').toLowerCase(); }
+  try { const parsed=new URL(url); if(parsed.protocol!=='https:')return null; host=parsed.hostname.replace(/^www\./,'').toLowerCase(); }
   catch { return null; }
   if(host!=='chiletrabajos.cl')return null;
   if(!url.includes('/trabajo/'))return null;
@@ -22,7 +22,7 @@ export function adaptGeminiCandidate(raw:Candidate) {
   const state=string(raw.estado);
   if(state!=='convocatoria_detectada_pendiente_verificar_vigencia')return null;
   const publication=string(raw.fecha_original);
-  const date=/^20\\d{2}-\\d{2}-\\d{2}$/.test(publication) ? publication : null;
+  const date=/^20\d{2}-\d{2}-\d{2}$/.test(publication) ? publication : null;
   return {
     candidate_key:candidateKey(url),
     url,
@@ -54,7 +54,7 @@ export async function pullGeminiReviewQueue() {
     const data=await response.json() as {content?:unknown;encoding?:unknown;sha?:unknown;size?:unknown};
     if(data.encoding!=='base64'||typeof data.content!=='string'||typeof data.size!=='number'||data.size>200000||typeof data.sha!=='string')
       return save({state:'invalid_file_metadata'});
-    const decoded=Buffer.from(data.content.replace(/\\s/g,''),'base64');
+    const decoded=Buffer.from(data.content.replace(/\s/g,''),'base64');
     if(decoded.length!==data.size)return save({state:'invalid_file_size'});
     const json:unknown=JSON.parse(decoded.toString('utf8'));
     const obj=json&&typeof json==='object'&&!Array.isArray(json)?json as Record<string,unknown>:{};

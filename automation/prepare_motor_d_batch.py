@@ -13,7 +13,7 @@ def locale(s):
  return sorted({v for k,v in LOCAL.items() if " "+k+" " in t})
 def primary_date(s):
  # Admitir fechas originales oficiales de tarjeta en ISO o formato día/mes/año.
- m2=re.search(r"(?<!\\d)(\\d{1,2})/(\\d{1,2})/(2026)(?!\\d)",s)
+ m2=re.search(r"(?<!\d)(\d{1,2})/(\d{1,2})/(2026)(?!\d)",s)
  if m2:
   try:
    d=date(int(m2.group(3)),int(m2.group(2)),int(m2.group(1)))

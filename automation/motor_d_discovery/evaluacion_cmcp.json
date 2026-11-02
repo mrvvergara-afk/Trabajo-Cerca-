@@ -1,5 +1,66 @@
 {
-  "approved": [],
+  "approved": [
+    {
+      "id_fuente": "cmpc_19249",
+      "cargo": "INSTRUMENTISTA AREA",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19192",
+      "cargo": "ANALISTA LABORATORIO I-TURNO",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
+      "fecha_publicacion": "2026-10-21",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_18859",
+      "cargo": "Ingeniero/a Procesos y Excelencia Sr",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+      "fecha_publicacion": "2026-10-13",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_18959",
+      "cargo": "Analista Vibraciones",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18959?c=cmpc",
+      "fecha_publicacion": "2026-10-06",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_18992",
+      "cargo": "Especialista SGI - Planta Laja y Pacifico.",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18992?c=cmpc",
+      "fecha_publicacion": "2026-09-29",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    }
+  ],
   "pending": [
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
@@ -8,8 +69,6 @@
         "Nacimiento"
       ],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "source_publication_date_not_confirmed"
       ]
     },
@@ -20,8 +79,6 @@
         "Nacimiento"
       ],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "source_publication_date_not_confirmed"
       ]
     },
@@ -67,23 +124,10 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
-      "title": "INSTRUMENTISTA AREA",
-      "workplaces": [
-        "Nacimiento"
-      ],
-      "reason": [
-        "detail_unavailable",
-        "insufficient_detail"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "title": "Electricista de área - Planta Santa Fe",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed",
         "source_publication_date_not_confirmed"
       ]
@@ -93,8 +137,6 @@
       "title": "INGENIERO PREVENCIÓN RIESGOS",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed"
       ]
     },
@@ -103,8 +145,6 @@
       "title": "Supervisor Bodega MRI",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed"
       ]
     },
@@ -113,8 +153,6 @@
       "title": "Ingeniero PCO",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed"
       ]
     },
@@ -123,20 +161,7 @@
       "title": "Ingeniero de Estudios Senior",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
-      "title": "ANALISTA LABORATORIO I-TURNO",
-      "workplaces": [
-        "Nacimiento"
-      ],
-      "reason": [
-        "detail_unavailable",
-        "insufficient_detail"
       ]
     },
     {
@@ -167,8 +192,6 @@
         "Nacimiento"
       ],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "source_publication_date_not_confirmed"
       ]
     },
@@ -177,8 +200,6 @@
       "title": "Ingeniero/a de confiabilidad - Planta Maule",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed"
       ]
     },
@@ -193,45 +214,10 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
-      "title": "Ingeniero/a Procesos y Excelencia Sr",
-      "workplaces": [
-        "Collipulli"
-      ],
-      "reason": [
-        "detail_unavailable",
-        "insufficient_detail"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18959?c=cmpc",
-      "title": "Analista Vibraciones",
-      "workplaces": [
-        "Collipulli"
-      ],
-      "reason": [
-        "detail_unavailable",
-        "insufficient_detail"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18992?c=cmpc",
-      "title": "Especialista SGI - Planta Laja y Pacifico.",
-      "workplaces": [
-        "Collipulli"
-      ],
-      "reason": [
-        "detail_unavailable",
-        "insufficient_detail"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
       "title": "Mecánico Lubricador",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed",
         "source_publication_date_not_confirmed"
       ]
@@ -252,8 +238,6 @@
       "title": "Ingeniero Especialista de Diseño de empaque",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
-        "insufficient_detail",
         "workplace_not_single_confirmed",
         "source_publication_date_not_confirmed"
       ]

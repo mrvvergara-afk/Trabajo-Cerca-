@@ -12,6 +12,13 @@ def locale(s):
  t=" "+re.sub("[^a-z0-9]+"," ",normalized(s))+" "
  return sorted({v for k,v in LOCAL.items() if " "+k+" " in t})
 def primary_date(s):
+ # Admitir fechas originales oficiales de tarjeta en ISO o formato día/mes/año.
+ m2=re.search(r"(?<!\\d)(\\d{1,2})/(\\d{1,2})/(2026)(?!\\d)",s)
+ if m2:
+  try:
+   d=date(int(m2.group(3)),int(m2.group(2)),int(m2.group(1)))
+   if date(2026,9,12)<=d<=date.today():return d.isoformat()
+  except ValueError:pass
  m=re.search(r"(?<!\d)(2026-\d{2}-\d{2})(?!\d)",s)
  if m:
   try:

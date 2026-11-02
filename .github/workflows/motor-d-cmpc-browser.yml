@@ -1,5 +1,11 @@
 name: Motor D - CMPC browser discovery
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/motor-d-cmpc-browser.yml'
+      - 'automation/motor_d_cmpc_browser.py'
+      - 'automation/prepare_motor_d_batch.py'
   workflow_dispatch:
   schedule:
     - cron: '25 9 * * *'
@@ -19,7 +25,7 @@ jobs:
           python -m pip install 'playwright>=1.48,<2'
           python -m playwright install --with-deps chromium
       - name: Verify Python
-        run: python -m py_compile automation/motor_d_cmpc_browser.py
+        run: python -m py_compile automation/motor_d_cmpc_browser.py automation/prepare_motor_d_batch.py
       - name: Discover public CMPC requisitions
         run: python automation/motor_d_cmpc_browser.py
       - name: Validate official jobs and prepare approved batch

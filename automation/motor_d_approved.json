@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "chatgpt",
+  "batch_id": "motor-d-muestreo-20261102-3casos",
+  "offers": [
+    {
+      "id_fuente": "cmpc_19249",
+      "cargo": "Instrumentista de área",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual CMPC encontrada en prueba Playwright del 2 nov; contrastar duplicidad con catálogo vivo."
+    },
+    {
+      "id_fuente": "cmpc_19192",
+      "cargo": "Analista Laboratorio I - Turno",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
+      "fecha_publicacion": "2026-10-21",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC recuperada por navegador; requiere confirmación de publicación visible."
+    },
+    {
+      "id_fuente": "chiletrabajos_3921759",
+      "cargo": "Gestor de casos, CDC MCA Angol",
+      "empresa": "Fundación Ciudad del Niño",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/gestor-de-casos-jornada-completa-cdc-mca-angol-region-de-la-araucania-3921759",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_cierre": "2026-11-09",
+      "justificacion": "Ficha Chiletrabajos ID 3921759 con fecha original, comuna y plazo de postulación vigente."
+    }
+  ]
+}

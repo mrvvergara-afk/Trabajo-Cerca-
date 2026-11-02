@@ -11,6 +11,9 @@ on:
     - cron: '25 9 * * *'
 permissions:
   contents: write
+concurrency:
+  group: motor-d-cmpc-public-discovery
+  cancel-in-progress: false
 jobs:
   cmcp_discovery:
     runs-on: ubuntu-latest
@@ -30,6 +33,22 @@ jobs:
         run: python automation/motor_d_cmpc_browser.py
       - name: Validate official jobs and prepare approved batch
         run: python automation/prepare_motor_d_batch.py
+      - name: Check generated import batch before delivery
+        run: |
+          python - <<'PY'
+          import json, pathlib, re
+          p=pathlib.Path("automation/motor_d_approved.json")
+          if not p.exists():
+              print("NO_APPROVED_OFFERS: no batch; this is not successful publication")
+          else:
+              obj=json.loads(p.read_text(encoding="utf-8"))
+              assert obj["schema_version"]==1 and obj["approval"]=="approved_for_publication"
+              assert re.fullmatch(r"motor-[de]-[A-Za-z0-9_-]{8,55}",obj["batch_id"])
+              assert 1<=len(obj["offers"])<=15
+              for x in obj["offers"]:
+                  assert x["url_original"].startswith("https://") and x["fecha_publicacion"]
+              print("APPROVED_BATCH_VALID",len(obj["offers"]))
+          PY
       - name: Persist discoverable evidence in repository
         if: success()
         run: |

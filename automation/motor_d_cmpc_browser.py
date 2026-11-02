@@ -1,10 +1,12 @@
 """Motor D: descubrimiento CMPC mediante navegador público, sin publicar automáticamente."""
 import json, os, re
-from datetime import datetime,timezone
+from datetime import datetime,timezone, date
+from urllib.parse import parse_qs
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright, TimeoutError as BrowserTimeout
 
 OUT="automation/motor_d_discovery"
+LOCAL={"Angol","Collipulli","Ercilla","Lumaco","Los Sauces","Purén","Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento"}
 URL="https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc"
 def run():
  os.makedirs(OUT,exist_ok=True)
@@ -35,6 +37,23 @@ def run():
       card=row.get("card_text","")[:750]
       # No inventar ubicación: se conserva la evidencia textual original del portal.
       report["individual_urls"].append({"url":u,"cargo":row.get("title","")[:160],"evidencia_tarjeta":card})
+    # Consultar fichas individuales solo de enlaces visibles en el portal público.
+    detailed=[]
+    for item in report["individual_urls"][:45]:
+     try:
+      detail=browser.new_page()
+      detail.goto(item["url"],wait_until="domcontentloaded",timeout=18000)
+      detail.wait_for_timeout(1250)
+      body=detail.locator("body").inner_text(timeout=12000)
+      parsed=dict(item)
+      parsed["ficha_excerpt"]=body[:2200]
+      parsed["ficha_accessible"]=bool(len(body)>170)
+      parsed["ficha_checked_at"]=datetime.now(timezone.utc).isoformat()
+      detailed.append(parsed)
+      detail.close()
+     except Exception as exc:
+      detailed.append({**item,"ficha_accessible":False,"detail_error":str(exc)[:140]})
+    report["individual_details"]=detailed
     report["state"]="individual_links_found" if report["individual_urls"] else "no_public_individual_links"
     if any(x in report["body_excerpt"].lower() for x in ["access denied","unauthorized","iniciar sesión","sign in"]):
      report["state"]="access_restricted"

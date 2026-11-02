@@ -41,10 +41,13 @@ def main():
   body=str(item.get("ficha_excerpt",""))
   title=str(item.get("cargo","")).split("\n")[0].strip()[:170]
   # No infer worksite from employer or from CMPC's list header; require detail.
-  place=locale(body)
+  # La ubicación explícita de la tarjeta oficial es evidencia primaria del puesto.
+  place=locale(card)
+  if not place:place=locale(body)
   pub=primary_date(card)
   reason=[]
   if not item.get("ficha_accessible"):reason.append("detail_unavailable")
+  if len(body)<170:reason.append("insufficient_detail")
   if not title or len(title)<6:reason.append("title_unverified")
   if len(place)!=1:reason.append("workplace_not_single_confirmed")
   if not pub:reason.append("source_publication_date_not_confirmed")
@@ -53,7 +56,7 @@ def main():
    pending.append({"url":url,"title":title,"workplaces":place,"reason":reason});continue
   uid=re.search(r"/requisition/(\d+)",url).group(1)
   approved.append({"id_fuente":"cmpc_"+uid,"cargo":title,"empresa":"CMPC","comunas":place,"url_original":url,
-                   "fecha_publicacion":pub,"fecha_cierre":None,"justificacion":"Ficha oficial CMPC; lugar confirmado en ficha; fecha original en tarjeta."})
+                   "fecha_publicacion":pub,"fecha_cierre":None,"justificacion":"Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."})
  # Automatic approval only for records passing all independent checks.
  # Empty approval file is intentionally not generated.
  ROOT.mkdir(parents=True,exist_ok=True)

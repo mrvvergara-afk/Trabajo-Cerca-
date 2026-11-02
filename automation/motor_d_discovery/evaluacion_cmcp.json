@@ -230,6 +230,8 @@
       "title": "Mecánico Lubricador",
       "workplaces": [],
       "reason": [
+        "detail_unavailable",
+        "insufficient_detail",
         "workplace_not_single_confirmed",
         "source_publication_date_not_confirmed"
       ]

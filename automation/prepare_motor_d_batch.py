@@ -12,7 +12,7 @@ def locale(s):
  t=" "+re.sub("[^a-z0-9]+"," ",normalized(s))+" "
  return sorted({v for k,v in LOCAL.items() if " "+k+" " in t})
 def primary_date(s):
- m=re.search(r"(?<!\\d)(2026-\\d{2}-\\d{2})(?!\\d)",s)
+ m=re.search(r"(?<!\d)(2026-\d{2}-\d{2})(?!\d)",s)
  if m:
   try:
    d=date.fromisoformat(m.group(1))
@@ -26,13 +26,13 @@ def main():
  approved=[];pending=[];seen=set()
  for item in data.get("individual_details",[]):
   url=str(item.get("url",""))
-  if not re.fullmatch(r"https://cmpc\\.csod\\.com/ux/ats/careersite/4/home/requisition/[0-9]+\\?c=cmpc",url):
+  if not re.fullmatch(r"https://cmpc\.csod\.com/ux/ats/careersite/4/home/requisition/[0-9]+\?c=cmpc",url):
    pending.append({"url":url,"reason":"unexpected_official_url"});continue
   if url in seen:continue
   seen.add(url)
   card=str(item.get("evidencia_tarjeta",""))
   body=str(item.get("ficha_excerpt",""))
-  title=str(item.get("cargo","")).split("\\n")[0].strip()[:170]
+  title=str(item.get("cargo","")).split("\n")[0].strip()[:170]
   # No infer worksite from employer or from CMPC's list header; require detail.
   place=locale(body)
   pub=primary_date(card)
@@ -44,7 +44,7 @@ def main():
   if any(x in normalized(body)[:1400] for x in ("posting closed","job no longer available","postulaciones cerradas","vacante cerrada")):reason.append("explicit_closure")
   if reason:
    pending.append({"url":url,"title":title,"workplaces":place,"reason":reason});continue
-  uid=re.search(r"/requisition/(\\d+)",url).group(1)
+  uid=re.search(r"/requisition/(\d+)",url).group(1)
   approved.append({"id_fuente":"cmpc_"+uid,"cargo":title,"empresa":"CMPC","comunas":place,"url_original":url,
                    "fecha_publicacion":pub,"fecha_cierre":None,"justificacion":"Ficha oficial CMPC; lugar confirmado en ficha; fecha original en tarjeta."})
  # Automatic approval only for records passing all independent checks.

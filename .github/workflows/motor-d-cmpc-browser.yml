@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '25 9 * * *'
 permissions:
-  contents: read
+  contents: write
 jobs:
   cmcp_discovery:
     runs-on: ubuntu-latest
@@ -22,6 +22,16 @@ jobs:
         run: python -m py_compile automation/motor_d_cmpc_browser.py
       - name: Discover public CMPC requisitions
         run: python automation/motor_d_cmpc_browser.py
+      - name: Persist discoverable evidence in repository
+        if: success()
+        run: |
+          git config user.name "trabajo-cerca-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add automation/motor_d_discovery/cmpc_discovery.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: CMPC public discovery evidence"
+            git push
+          fi
       - name: Upload evidence (not approved for publication)
         if: always()
         uses: actions/upload-artifact@v4

@@ -4,7 +4,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path("automation/motor_d_discovery")
-LOCAL={"angol":"Angol","collipulli":"Collipulli","mininco":"Collipulli","ercilla":"Ercilla","lumaco":"Lumaco","los sauces":"Los Sauces","puren":"Purén","renaico":"Renaico","traiguen":"Traiguén","victoria":"Victoria","mulchen":"Mulchén","negrete":"Negrete","nacimiento":"Nacimiento"}
+LOCAL={"angol":"Angol","collipulli":"Collipulli","mininco":"Collipulli","ercilla":"Ercilla","lumaco":"Lumaco","los sauces":"Los Sauces","puren":"Purén","renaico":"Renaico","traiguen":"Traiguén","victoria":"Victoria","mulchen":"Mulchén","negrete":"Negrete","coihue":"Negrete","coigue":"Negrete","nacimiento":"Nacimiento","capitan pastene":"Lumaco"}
 def normalized(s):
  import unicodedata
  return unicodedata.normalize("NFKD",str(s).lower()).encode("ascii","ignore").decode()
@@ -44,12 +44,20 @@ def main():
   # La ubicación explícita de la tarjeta oficial es evidencia primaria del puesto.
   place=locale(card)
   if not place:place=locale(body)
+  # A single match only confirms a mention, not necessarily the actual workplace.
+  # Flag conflicting place mentions for human/official review before publishing.
+  body_places=locale(body)
+  if body_places and place and any(x not in place for x in body_places):
+   reason_conflicting_places=True
+  else:
+   reason_conflicting_places=False
   pub=primary_date(card)
   reason=[]
   if not item.get("ficha_accessible"):reason.append("detail_unavailable")
   if len(body)<170:reason.append("insufficient_detail")
   if not title or len(title)<6:reason.append("title_unverified")
   if len(place)!=1:reason.append("workplace_not_single_confirmed")
+  if reason_conflicting_places:reason.append("conflicting_territorial_mentions")
   if not pub:reason.append("source_publication_date_not_confirmed")
   if any(x in normalized(body)[:1400] for x in ("posting closed","job no longer available","postulaciones cerradas","vacante cerrada")):reason.append("explicit_closure")
   if reason:

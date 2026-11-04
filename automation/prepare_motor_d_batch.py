@@ -76,5 +76,8 @@ def main():
   payload={"schema_version":1,"approval":"approved_for_publication","producer":"chatgpt",
            "batch_id":"motor-d-cmpc-"+tag,"offers":batch}
   Path("automation/motor_d_approved.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding="utf-8")
+ else:
+  # Fail closed: never leave yesterday's approvals available for reimport.
+  Path("automation/motor_d_approved.json").unlink(missing_ok=True)
  print(json.dumps({"CMPC":len(data.get("individual_details",[])),"approved":len(approved),"pending":len(pending),"batch_created":bool(approved)}))
 if __name__=="__main__":main()

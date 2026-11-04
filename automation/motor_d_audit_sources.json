@@ -152,6 +152,20 @@
       "workplace": "Urrutia 530, Traiguén",
       "status": "pending_original_confirmation",
       "note": "Receptor de CV presencial informado en imagen; no inferir fecha original ni autorización de repost."
+    },
+    {
+      "employer": "TRANSAP",
+      "commune": "Nacimiento",
+      "role": "Maquinista",
+      "source": "TRANSAP S.A — LinkedIn corporativo",
+      "source_url": "https://cl.linkedin.com/company/transap-s.a",
+      "additional_evidence": "Instagram @transap.trenes (captura aportada); convocatoria aparece además en novedades corporativas de LinkedIn",
+      "deadline": "2026-11-08",
+      "application": "reclutamiento.transap@gmail.com, asunto Maquinista",
+      "requirements": "Tarjeta de competencia P-1; sistemas RTF P-1 / AUV / CTC / SSE / SSE+B; experiencia como maquinista o ayudante",
+      "verification_state": "employer_confirmed",
+      "publication_state": "awaiting_specific_original_post_url_and_catalog_duplicate_check",
+      "note": "No confundir con convocatorias ferroviarias históricas de Transap. No usar el perfil genérico como ficha individual ni inventar fecha original."
     }
   ],
   "policy": "No asumir ofertas vigentes; no importar al catálogo. Cada candidata requiere URL individual, comuna efectiva, vigencia y deduplicación.",

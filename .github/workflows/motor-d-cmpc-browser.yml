@@ -6,6 +6,8 @@ on:
       - '.github/workflows/motor-d-cmpc-browser.yml'
       - 'automation/motor_d_cmpc_browser.py'
       - 'automation/prepare_motor_d_batch.py'
+      - 'automation/motor_d_audit_sources.json'
+      - 'automation/motor_d_audit_discovery.py'
   workflow_dispatch:
   schedule:
     - cron: '25 9 * * *'
@@ -25,12 +27,14 @@ jobs:
           python-version: '3.11'
       - name: Install browser
         run: |
-          python -m pip install 'playwright>=1.48,<2'
+          python -m pip install 'playwright>=1.48,<2' 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
           python -m playwright install --with-deps chromium
       - name: Verify Python
-        run: python -m py_compile automation/motor_d_cmpc_browser.py automation/prepare_motor_d_batch.py
+        run: python -m py_compile automation/motor_d_cmpc_browser.py automation/prepare_motor_d_batch.py automation/motor_d_audit_discovery.py
       - name: Discover public CMPC requisitions
         run: python automation/motor_d_cmpc_browser.py
+      - name: Examine audited public sources and preserve pending evidence
+        run: python automation/motor_d_audit_discovery.py
       - name: Validate official jobs and prepare approved batch
         run: python automation/prepare_motor_d_batch.py
       - name: Check generated import batch before delivery
@@ -54,7 +58,7 @@ jobs:
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add automation/motor_d_discovery/cmpc_discovery.json automation/motor_d_discovery/evaluacion_cmcp.json
+          git add automation/motor_d_discovery/cmpc_discovery.json automation/motor_d_discovery/evaluacion_cmcp.json automation/motor_d_discovery/auditoria_fuentes.json
           # No sobrescribir el lote de prueba pendiente con resultados no contrastados.
           # La entrega automatizada futura requiere un lote aprobado contra catálogo vivo.
           if ! git diff --cached --quiet; then

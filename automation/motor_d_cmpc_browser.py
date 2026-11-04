@@ -42,12 +42,24 @@ def run():
     for item in report["individual_urls"][:45]:
      try:
       detail=browser.new_page()
-      detail.goto(item["url"],wait_until="domcontentloaded",timeout=18000)
-      detail.wait_for_timeout(1250)
+      detail.goto(item["url"],wait_until="domcontentloaded",timeout=24000)
+      # Cornerstone renders requisition content asynchronously after DOMContentLoaded.
+      # Do not mistake a navigation-only shell for a job description.
+      try:
+       detail.wait_for_function("""() => {
+         const body=(document.body?.innerText||'').trim();
+         const meaningful=/(requisitos|funciones|responsabilidades|descripción del cargo|requerimientos|experiencia|postular|apply now)/i.test(body);
+         return body.length>450 && meaningful;
+       }""",timeout=10000)
+      except BrowserTimeout:
+       detail.wait_for_timeout(1800)
       body=detail.locator("body").inner_text(timeout=12000)
       parsed=dict(item)
-      parsed["ficha_excerpt"]=body[:2200]
-      parsed["ficha_accessible"]=bool(len(body)>170)
+      parsed["ficha_excerpt"]=body[:4200]
+      meaningful=bool(re.search(r"requisitos|funciones|responsabilidades|descripci[oó]n del cargo|requerimientos|experiencia|postular|apply now",body,re.I))
+      parsed["ficha_accessible"]=bool(len(body)>450 and meaningful)
+      parsed["ficha_content_length"]=len(body)
+      parsed["ficha_contenido_laboral"]=meaningful
       parsed["ficha_checked_at"]=datetime.now(timezone.utc).isoformat()
       detailed.append(parsed)
       detail.close()

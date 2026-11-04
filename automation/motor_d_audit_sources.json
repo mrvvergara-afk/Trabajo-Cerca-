@@ -72,6 +72,24 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
       "category": "ats",
       "note": "usar extractor Playwright separado"
+    },
+    {
+      "name": "Hospital de Angol - concursos oficiales",
+      "url": "https://hospitalangol.cl/concursos/",
+      "category": "institucional",
+      "note": "Fuente oficial prioritaria; separar concursos internos, reemplazos y llamados abiertos; NO tomar solo etiquetas como prueba definitiva de vigencia"
+    },
+    {
+      "name": "Hospital de Angol - bolsa de trabajo",
+      "url": "https://hospitalangol.cl/enlaces/",
+      "category": "institucional",
+      "note": "Identificar enlace específico Bolsa de Trabajo Hospital Angol y monitorear fichas reales"
+    },
+    {
+      "name": "Empleos Públicos - Enfermera Diálisis Hospital Angol",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/avisopizarronficha.aspx?i=125294",
+      "category": "empleo_publico",
+      "note": "Ficha potencialmente histórica; comprobar cierre individual, no confundir con reemplazo UPC/UCI del afiche"
     }
   ],
   "employer_leads": [
@@ -114,7 +132,46 @@
       "employer": "Falabella",
       "commune": "Angol",
       "role": "Apoyo abastecimiento Navidad"
+    },
+    {
+      "employer": "Hospital Dr. Mauricio Heyermann Torres de Angol",
+      "commune": "Angol",
+      "role": "Enfermero/a - bolsa de reemplazos UPC/UCI",
+      "discovered_at": "2026-11-03",
+      "discovery_source": "Instagram historia @empleos_victoria, afiche atribuido a @hospital_angol",
+      "requirements": "Experiencia UPC/UCI; IAAS; RCP",
+      "status": "pending_original_post_and_ongoing_intake",
+      "note": "Bolsa de reemplazos; sin fecha de cierre visible. Buscar fuente oficial y mecanismo de inscripción."
+    },
+    {
+      "employer": "Don Agustín",
+      "commune": "Traiguén",
+      "role": "Reemplazo apoyo en sala",
+      "discovered_at": "2026-11-03",
+      "discovery_source": "Instagram @empleos_victoria, arte @donagustin_oficial",
+      "workplace": "Urrutia 530, Traiguén",
+      "status": "pending_original_confirmation",
+      "note": "Receptor de CV presencial informado en imagen; no inferir fecha original ni autorización de repost."
     }
   ],
-  "policy": "No asumir ofertas vigentes; no importar al catálogo. Cada candidata requiere URL individual, comuna efectiva, vigencia y deduplicación."
+  "policy": "No asumir ofertas vigentes; no importar al catálogo. Cada candidata requiere URL individual, comuna efectiva, vigencia y deduplicación.",
+  "social_discovery_sources": [
+    {
+      "handle": "empleos_victoria",
+      "network": "instagram",
+      "role": "descubrimiento territorial de avisos de Victoria, Traiguén y Malleco",
+      "restriction": "No asumir acceso automático a historias; usar repost como pista y buscar origen"
+    },
+    {
+      "handle": "hospital_angol",
+      "network": "instagram",
+      "role": "fuente institucional de avisos de reemplazos",
+      "official_claim": "afiche atribuido a hospital; confirmar publicación oficial"
+    },
+    {
+      "handle": "donagustin_oficial",
+      "network": "instagram",
+      "role": "empleador de Traiguén; confirmar publicación directa"
+    }
+  ]
 }

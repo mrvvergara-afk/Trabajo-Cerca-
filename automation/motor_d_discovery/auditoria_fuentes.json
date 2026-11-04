@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-11-04T00:29:50.176981+00:00",
+  "fecha": "2026-11-04T00:40:29.092470+00:00",
   "advertencia": "Inventario de evidencia, NO aprobación ni publicación; revisar fuente original",
   "territorio": [
     "Angol",
@@ -26,7 +26,7 @@
       "fuente": "OMIL Mulchén - arándanos",
       "url": "https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/",
       "categoria": "municipal",
-      "consulta": "2026-11-04T00:29:40.874244+00:00",
+      "consulta": "2026-11-04T00:40:22.151258+00:00",
       "estado": "evidencia_html_pendiente_validacion",
       "evidencia": {
         "titulo": "Oferta Laboral",
@@ -44,7 +44,7 @@
       "fuente": "Municipalidad Lumaco concursos",
       "url": "https://www.munilumaco.cl/index.php/sala-de-prensa/98-concursos-publicos-municipalidad-de-lumaco",
       "categoria": "municipal",
-      "consulta": "2026-11-04T00:29:42.332343+00:00",
+      "consulta": "2026-11-04T00:40:23.258714+00:00",
       "estado": "evidencia_html_pendiente_validacion",
       "evidencia": {
         "titulo": "CONCURSOS PÚBLICOS Municipalidad de Lumaco",
@@ -62,7 +62,7 @@
       "fuente": "Municipalidad Lumaco oferta de apoyo laboral",
       "url": "https://munilumaco.cl/index.php/sala-de-prensa/694-lumaco-trabajo-apoyo-laboral",
       "categoria": "municipal",
-      "consulta": "2026-11-04T00:29:44.126241+00:00",
+      "consulta": "2026-11-04T00:40:24.802301+00:00",
       "estado": "evidencia_html_pendiente_validacion",
       "evidencia": {
         "titulo": "MUNICIPALIDAD DE LUMACO REALIZA LLAMADO A CONCURSO PUBLICO PARA PROVEER CARGO DE APOYO LABORAL",
@@ -80,7 +80,7 @@
       "fuente": "Municipalidad Traiguén concursos",
       "url": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
       "categoria": "municipal",
-      "consulta": "2026-11-04T00:29:45.285880+00:00",
+      "consulta": "2026-11-04T00:40:25.900624+00:00",
       "estado": "evidencia_html_pendiente_validacion",
       "evidencia": {
         "titulo": "Bolsa de empleo o concurso",
@@ -104,7 +104,7 @@
       "fuente": "Municipalidad Traiguén 3 cargos",
       "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
       "categoria": "municipal",
-      "consulta": "2026-11-04T00:29:46.778473+00:00",
+      "consulta": "2026-11-04T00:40:27.387150+00:00",
       "estado": "evidencia_html_pendiente_validacion",
       "evidencia": {
         "titulo": "Bases para llamado a Concurso Público de 3 Cargos.",
@@ -125,7 +125,7 @@
       "fuente": "Empleos Públicos - convocatoria individual",
       "url": "https://empleospublicos.cl/pub/convocatorias/avisotrabajoficha.aspx?i=143787",
       "categoria": "empleo_publico",
-      "consulta": "2026-11-04T00:29:49.939455+00:00",
+      "consulta": "2026-11-04T00:40:28.857531+00:00",
       "estado": "error_http",
       "evidencia": {},
       "publicable": false,
@@ -137,7 +137,7 @@
       "fuente": "Logística Hualpén - convocatoria Angol",
       "url": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-conductores-profesionales-bus-residencia-en-angol-y-alrededores-en-angol-70D0C388EE0D8A6261373E686DCF3405",
       "categoria": "agregador",
-      "consulta": "2026-11-04T00:29:50.176939+00:00",
+      "consulta": "2026-11-04T00:40:29.092440+00:00",
       "estado": "solo_indicio_buscar_origen",
       "evidencia": {},
       "publicable": false,
@@ -147,7 +147,7 @@
       "fuente": "Logística Hualpén - empleos",
       "url": "https://cl.computrabajo.com/hualpen/empleos",
       "categoria": "agregador",
-      "consulta": "2026-11-04T00:29:50.176965+00:00",
+      "consulta": "2026-11-04T00:40:29.092460+00:00",
       "estado": "solo_indicio_buscar_origen",
       "evidencia": {},
       "publicable": false,
@@ -157,7 +157,7 @@
       "fuente": "CMPC - Cornerstone",
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
       "categoria": "ats",
-      "consulta": "2026-11-04T00:29:50.176977+00:00",
+      "consulta": "2026-11-04T00:40:29.092467+00:00",
       "estado": "usar_extractor_playwright",
       "evidencia": {},
       "publicable": false,

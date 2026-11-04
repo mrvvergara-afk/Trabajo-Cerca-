@@ -61,9 +61,8 @@ jobs:
           git add automation/motor_d_discovery/cmpc_discovery.json automation/motor_d_discovery/evaluacion_cmcp.json automation/motor_d_discovery/auditoria_fuentes.json
           # Entregar solamente el lote generado de fichas oficiales que pasaron validación.
           # AppDeploy verifica URL/identidad, deduplica con catálogo vivo y publica mediante su pipeline.
-          if [ -f automation/motor_d_approved.json ]; then
-            git add automation/motor_d_approved.json
-          fi
+          # Stage addition, replacement OR removal: no stale approved batch survives.
+          git add -A automation/motor_d_approved.json
           if ! git diff --cached --quiet; then
             git commit -m "data: CMPC public discovery evidence"
             git push

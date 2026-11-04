@@ -46,11 +46,20 @@ def inspect(page):
         for tag in soup.select('time[datetime],meta[property="article:published_time"],meta[name="date"]'):
             d=tag.get("datetime") or tag.get("content")
             if d:dates.append(d[:40])
+        # Conservar enlaces individuales localizados en concursos/bolsas oficiales,
+        # sin confundir etiquetas de navegación con ofertas comprobadas.
+        anchors=[]
+        for a in soup.select('article a[href], main a[href], .entry-content a[href]')[:160]:
+            label=a.get_text(" ",strip=True)
+            href=a.get("href","")
+            if href and label and re.search(r"concurso|postul|enfermer|reemplazo|trabajador|profesional|administrativ|compra",label,re.I):
+                from urllib.parse import urljoin
+                anchors.append({"titulo":label[:160],"url":urljoin(rsp.url,href)})
         text=body.lower()
         closed=bool(re.search(r"postulaci[oó]n cerrada|convocatoria cerrada|plazo vencido",text))
         open_label=bool(re.search(r"postulaci[oó]n abierta|convocatoria abierta",text))
         result["evidencia"]={"titulo":title[:200],"extracto":body[:750],
-                           "fechas_documentales":dates[:5],
+                           "fechas_documentales":dates[:5],"enlaces_individuales":anchors[:50],
                            "etiqueta_cierre":closed,"etiqueta_apertura":open_label}
         result["estado"]="cerrada_documental" if closed else "evidencia_html_pendiente_validacion"
     except requests.RequestException as ex:

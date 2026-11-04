@@ -59,8 +59,11 @@ jobs:
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add automation/motor_d_discovery/cmpc_discovery.json automation/motor_d_discovery/evaluacion_cmcp.json automation/motor_d_discovery/auditoria_fuentes.json
-          # No sobrescribir el lote de prueba pendiente con resultados no contrastados.
-          # La entrega automatizada futura requiere un lote aprobado contra catálogo vivo.
+          # Entregar solamente el lote generado de fichas oficiales que pasaron validación.
+          # AppDeploy verifica URL/identidad, deduplica con catálogo vivo y publica mediante su pipeline.
+          if [ -f automation/motor_d_approved.json ]; then
+            git add automation/motor_d_approved.json
+          fi
           if ! git diff --cached --quiet; then
             git commit -m "data: CMPC public discovery evidence"
             git push

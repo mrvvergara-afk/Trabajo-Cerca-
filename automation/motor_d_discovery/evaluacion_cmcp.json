@@ -131,7 +131,7 @@
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19141?c=cmpc",
-      "title": "Ayudante General - Planta Maule",
+      "title": "AYUDANTE GENERAL",
       "workplaces": [],
       "reason": [
         "detail_unavailable",
@@ -165,27 +165,11 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19133?c=cmpc",
-      "title": "Supervisor Bodega MRI",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19210?c=cmpc",
       "title": "Ingeniero PCO",
       "workplaces": [],
       "reason": [
         "detail_unavailable",
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19142?c=cmpc",
-      "title": "AYUDANTE GENERAL FIBRAS",
-      "workplaces": [],
-      "reason": [
         "workplace_not_single_confirmed"
       ]
     },
@@ -236,6 +220,24 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
       "title": "Ingeniero Especialista de Diseño de empaque",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
+      "title": "Técnico/a de mantenimiento eléctrico y mecánico",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
+      "title": "Conductor/a de autoelevador",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

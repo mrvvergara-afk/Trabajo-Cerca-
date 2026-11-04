@@ -1,0 +1,209 @@
+{
+  "fecha": "2026-11-04T00:29:50.176981+00:00",
+  "advertencia": "Inventario de evidencia, NO aprobación ni publicación; revisar fuente original",
+  "territorio": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Lumaco",
+    "Los Sauces",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria",
+    "Mulchén",
+    "Negrete",
+    "Nacimiento"
+  ],
+  "alias_localidades": {
+    "Mininco": "Collipulli",
+    "Coihue": "Negrete",
+    "Coigüe": "Negrete",
+    "Capitán Pastene": "Lumaco"
+  },
+  "fuentes": [
+    {
+      "fuente": "OMIL Mulchén - arándanos",
+      "url": "https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/",
+      "categoria": "municipal",
+      "consulta": "2026-11-04T00:29:40.874244+00:00",
+      "estado": "evidencia_html_pendiente_validacion",
+      "evidencia": {
+        "titulo": "Oferta Laboral",
+        "extracto": "Busca entre los contenidos de nuestro sitio web. [wpdreams_ajaxsearchpro id=1] Menú de navegación ✕ Cerrar Inicio Municipalidad Municipalidad Municipalidad de Mulchén Toda la información y actividades municipalidades están aquí. Saludos Alcalde Concejo Municipal Misión, Visión Nuestros valores Direcciones Municipales Salud Planificación Comunal Estados Financieros Concejo Municipal Concejo Municipal Concejo Municipal Mulchén Revisa aquí la información relativa al Concejo Municipal de la comuna de Mulchén Concejo Municipal Sesiones Concejo Municipal Actas del Concejo Municipal de Mulchén Trámites Trámites Trámites Municipales Revisa aquí todos los trámites disponibles en la municipalidad. Permisos de Circulación Certificados Dirección de Obr",
+        "fechas_documentales": [],
+        "etiqueta_cierre": false,
+        "etiqueta_apertura": false
+      },
+      "publicable": false,
+      "duplicado_conocido": true,
+      "http_status": 200,
+      "url_final": "https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/"
+    },
+    {
+      "fuente": "Municipalidad Lumaco concursos",
+      "url": "https://www.munilumaco.cl/index.php/sala-de-prensa/98-concursos-publicos-municipalidad-de-lumaco",
+      "categoria": "municipal",
+      "consulta": "2026-11-04T00:29:42.332343+00:00",
+      "estado": "evidencia_html_pendiente_validacion",
+      "evidencia": {
+        "titulo": "CONCURSOS PÚBLICOS Municipalidad de Lumaco",
+        "extracto": "Municipalidad de Lumaco Buscar Buscar ≡ Open menu Inicio Comuna Antecedentes generales Lumaco Capitán Pastene Pichi Pellahuen Municipalidad Alcalde Concejo Organigrama Delegación M. de Capitán Pastene Delegación M. de Pichi Pellahuén Departamentos Municipales Administración Municipal Dirección Secretaría Municipal Dirección Control Interno Deportes Dirección de Obras Administración y Finanzas UDEL SECPLAN Turismo Sala de Prensa Direcciones Webmail Afiches municipales Inicio Comuna Antecedentes generales Lumaco Capitán Pastene Pichi Pellahuen Municipalidad Alcalde Concejo Organigrama Delegación M. de Capitán Pastene Delegación M. de Pichi Pellahuén Departamentos Municipales Administración Municipal Dirección Secretaría Municipal Dirección Co",
+        "fechas_documentales": [],
+        "etiqueta_cierre": false,
+        "etiqueta_apertura": false
+      },
+      "publicable": false,
+      "duplicado_conocido": false,
+      "http_status": 200,
+      "url_final": "https://www.munilumaco.cl/index.php/sala-de-prensa/98-concursos-publicos-municipalidad-de-lumaco"
+    },
+    {
+      "fuente": "Municipalidad Lumaco oferta de apoyo laboral",
+      "url": "https://munilumaco.cl/index.php/sala-de-prensa/694-lumaco-trabajo-apoyo-laboral",
+      "categoria": "municipal",
+      "consulta": "2026-11-04T00:29:44.126241+00:00",
+      "estado": "evidencia_html_pendiente_validacion",
+      "evidencia": {
+        "titulo": "MUNICIPALIDAD DE LUMACO REALIZA LLAMADO A CONCURSO PUBLICO PARA PROVEER CARGO DE APOYO LABORAL",
+        "extracto": "Municipalidad de Lumaco Buscar Buscar ≡ Open menu Inicio Comuna Antecedentes generales Lumaco Capitán Pastene Pichi Pellahuen Municipalidad Alcalde Concejo Organigrama Delegación M. de Capitán Pastene Delegación M. de Pichi Pellahuén Departamentos Municipales Administración Municipal Dirección Secretaría Municipal Dirección Control Interno Deportes Dirección de Obras Administración y Finanzas UDEL SECPLAN Turismo Sala de Prensa Direcciones Webmail Afiches municipales Inicio Comuna Antecedentes generales Lumaco Capitán Pastene Pichi Pellahuen Municipalidad Alcalde Concejo Organigrama Delegación M. de Capitán Pastene Delegación M. de Pichi Pellahuén Departamentos Municipales Administración Municipal Dirección Secretaría Municipal Dirección Co",
+        "fechas_documentales": [],
+        "etiqueta_cierre": false,
+        "etiqueta_apertura": false
+      },
+      "publicable": false,
+      "duplicado_conocido": false,
+      "http_status": 200,
+      "url_final": "https://munilumaco.cl/index.php/sala-de-prensa/694-lumaco-trabajo-apoyo-laboral"
+    },
+    {
+      "fuente": "Municipalidad Traiguén concursos",
+      "url": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "categoria": "municipal",
+      "consulta": "2026-11-04T00:29:45.285880+00:00",
+      "estado": "evidencia_html_pendiente_validacion",
+      "evidencia": {
+        "titulo": "Bolsa de empleo o concurso",
+        "extracto": "Trámites y Servicios Permiso de Circulación Verificación de Documentos Pago de Multas Pagos Servicios Varios Patentes Comerciales Síguenos Contacto Inicio Alcaldía Bienvenida – Saludos Alcalde Concejo Municipal Nuestra Comuna Direcciones y Departamentos Dirección de Secretaría Municipal Dirección de Tránsito Dirección de Secretaría de Planificación Comunal Dirección de Finanzas Dirección de Aseo, Ornato y Medio Ambiente Dirección de Asesoría Jurídica Dirección de Fomento Productivo Dirección Servicios Traspasados Dirección de Recursos Humanos Departamento de Educación Dirección de Control Interno Departamento de Salud Dirección de Desarrollo Comunitario Cementerio Municipal Dirección de Obras Juzgado de Policia Local Dirección de Seguridad ",
+        "fechas_documentales": [
+          "2026-11-02T09:21:37-03:00",
+          "2026-10-13T20:24:28-03:00",
+          "2026-10-01T09:04:54-03:00",
+          "2026-09-14T13:00:11-03:00",
+          "2026-08-24T20:22:57-04:00"
+        ],
+        "etiqueta_cierre": false,
+        "etiqueta_apertura": false
+      },
+      "publicable": false,
+      "duplicado_conocido": false,
+      "http_status": 200,
+      "url_final": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/"
+    },
+    {
+      "fuente": "Municipalidad Traiguén 3 cargos",
+      "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "categoria": "municipal",
+      "consulta": "2026-11-04T00:29:46.778473+00:00",
+      "estado": "evidencia_html_pendiente_validacion",
+      "evidencia": {
+        "titulo": "Bases para llamado a Concurso Público de 3 Cargos.",
+        "extracto": "Trámites y Servicios Permiso de Circulación Verificación de Documentos Pago de Multas Pagos Servicios Varios Patentes Comerciales Síguenos Contacto Inicio Alcaldía Bienvenida – Saludos Alcalde Concejo Municipal Nuestra Comuna Direcciones y Departamentos Dirección de Secretaría Municipal Dirección de Tránsito Dirección de Secretaría de Planificación Comunal Dirección de Finanzas Dirección de Aseo, Ornato y Medio Ambiente Dirección de Asesoría Jurídica Dirección de Fomento Productivo Dirección Servicios Traspasados Dirección de Recursos Humanos Departamento de Educación Dirección de Control Interno Departamento de Salud Dirección de Desarrollo Comunitario Cementerio Municipal Dirección de Obras Juzgado de Policia Local Dirección de Seguridad ",
+        "fechas_documentales": [
+          "2026-10-01T12:04:54+00:00",
+          "2026-10-01T09:04:54-03:00"
+        ],
+        "etiqueta_cierre": false,
+        "etiqueta_apertura": false
+      },
+      "publicable": false,
+      "duplicado_conocido": false,
+      "http_status": 200,
+      "url_final": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/"
+    },
+    {
+      "fuente": "Empleos Públicos - convocatoria individual",
+      "url": "https://empleospublicos.cl/pub/convocatorias/avisotrabajoficha.aspx?i=143787",
+      "categoria": "empleo_publico",
+      "consulta": "2026-11-04T00:29:49.939455+00:00",
+      "estado": "error_http",
+      "evidencia": {},
+      "publicable": false,
+      "duplicado_conocido": false,
+      "http_status": 403,
+      "url_final": "https://empleospublicos.cl/pub/convocatorias/avisotrabajoficha.aspx?i=143787"
+    },
+    {
+      "fuente": "Logística Hualpén - convocatoria Angol",
+      "url": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-conductores-profesionales-bus-residencia-en-angol-y-alrededores-en-angol-70D0C388EE0D8A6261373E686DCF3405",
+      "categoria": "agregador",
+      "consulta": "2026-11-04T00:29:50.176939+00:00",
+      "estado": "solo_indicio_buscar_origen",
+      "evidencia": {},
+      "publicable": false,
+      "duplicado_conocido": false
+    },
+    {
+      "fuente": "Logística Hualpén - empleos",
+      "url": "https://cl.computrabajo.com/hualpen/empleos",
+      "categoria": "agregador",
+      "consulta": "2026-11-04T00:29:50.176965+00:00",
+      "estado": "solo_indicio_buscar_origen",
+      "evidencia": {},
+      "publicable": false,
+      "duplicado_conocido": false
+    },
+    {
+      "fuente": "CMPC - Cornerstone",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "categoria": "ats",
+      "consulta": "2026-11-04T00:29:50.176977+00:00",
+      "estado": "usar_extractor_playwright",
+      "evidencia": {},
+      "publicable": false,
+      "duplicado_conocido": false
+    }
+  ],
+  "empleadores_a_investigar": [
+    {
+      "employer": "TeamWork",
+      "commune": "Mulchén",
+      "role": "Agente de atención al cliente"
+    },
+    {
+      "employer": "Aramark",
+      "commune": "Mulchén",
+      "role": "Auxiliar de casino part time"
+    },
+    {
+      "employer": "Atento Chile",
+      "commune": "Angol",
+      "role": "Asesor comercial"
+    },
+    {
+      "employer": "Logística Hualpén",
+      "commune": "Angol",
+      "role": "Conductores profesionales"
+    },
+    {
+      "employer": "Progestion",
+      "commune": "Angol; Collipulli",
+      "role": "Mercaderista reemplazo"
+    },
+    {
+      "employer": "MVS Group",
+      "commune": "Collipulli",
+      "role": "Cajero(a) de servicios"
+    },
+    {
+      "employer": "JCS Logística",
+      "commune": "Negrete",
+      "role": "Conductor astillas Coihue"
+    },
+    {
+      "employer": "Falabella",
+      "commune": "Angol",
+      "role": "Apoyo abastecimiento Navidad"
+    }
+  ]
+}

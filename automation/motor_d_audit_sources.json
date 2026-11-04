@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "scope": "Auditoría Gemini 2026-11-03: fuentes y pistas, NO vacantes aprobadas",
+  "communes": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Lumaco",
+    "Los Sauces",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria",
+    "Mulchén",
+    "Negrete",
+    "Nacimiento"
+  ],
+  "aliases": {
+    "Mininco": "Collipulli",
+    "Coihue": "Negrete",
+    "Coigüe": "Negrete",
+    "Capitán Pastene": "Lumaco"
+  },
+  "seed_pages": [
+    {
+      "name": "OMIL Mulchén - arándanos",
+      "url": "https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/",
+      "category": "municipal",
+      "note": "DUPLICADA CONFIRMADA por administrador; vigencia solo contextual",
+      "known_duplicate": true
+    },
+    {
+      "name": "Municipalidad Lumaco concursos",
+      "url": "https://www.munilumaco.cl/index.php/sala-de-prensa/98-concursos-publicos-municipalidad-de-lumaco",
+      "category": "municipal"
+    },
+    {
+      "name": "Municipalidad Lumaco oferta de apoyo laboral",
+      "url": "https://munilumaco.cl/index.php/sala-de-prensa/694-lumaco-trabajo-apoyo-laboral",
+      "category": "municipal"
+    },
+    {
+      "name": "Municipalidad Traiguén concursos",
+      "url": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "category": "municipal"
+    },
+    {
+      "name": "Municipalidad Traiguén 3 cargos",
+      "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "category": "municipal"
+    },
+    {
+      "name": "Empleos Públicos - convocatoria individual",
+      "url": "https://empleospublicos.cl/pub/convocatorias/avisotrabajoficha.aspx?i=143787",
+      "category": "empleo_publico",
+      "note": "verificar ubicación y cierre en ficha; no publicar solo por existir"
+    },
+    {
+      "name": "Logística Hualpén - convocatoria Angol",
+      "url": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-conductores-profesionales-bus-residencia-en-angol-y-alrededores-en-angol-70D0C388EE0D8A6261373E686DCF3405",
+      "category": "agregador",
+      "note": "solo pista: si hay restricciones, buscar fuente empleador; no forzar acceso"
+    },
+    {
+      "name": "Logística Hualpén - empleos",
+      "url": "https://cl.computrabajo.com/hualpen/empleos",
+      "category": "agregador",
+      "note": "solo descubrimiento"
+    },
+    {
+      "name": "CMPC - Cornerstone",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "category": "ats",
+      "note": "usar extractor Playwright separado"
+    }
+  ],
+  "employer_leads": [
+    {
+      "employer": "TeamWork",
+      "commune": "Mulchén",
+      "role": "Agente de atención al cliente"
+    },
+    {
+      "employer": "Aramark",
+      "commune": "Mulchén",
+      "role": "Auxiliar de casino part time"
+    },
+    {
+      "employer": "Atento Chile",
+      "commune": "Angol",
+      "role": "Asesor comercial"
+    },
+    {
+      "employer": "Logística Hualpén",
+      "commune": "Angol",
+      "role": "Conductores profesionales"
+    },
+    {
+      "employer": "Progestion",
+      "commune": "Angol; Collipulli",
+      "role": "Mercaderista reemplazo"
+    },
+    {
+      "employer": "MVS Group",
+      "commune": "Collipulli",
+      "role": "Cajero(a) de servicios"
+    },
+    {
+      "employer": "JCS Logística",
+      "commune": "Negrete",
+      "role": "Conductor astillas Coihue"
+    },
+    {
+      "employer": "Falabella",
+      "commune": "Angol",
+      "role": "Apoyo abastecimiento Navidad"
+    }
+  ],
+  "policy": "No asumir ofertas vigentes; no importar al catálogo. Cada candidata requiere URL individual, comuna efectiva, vigencia y deduplicación."
+}

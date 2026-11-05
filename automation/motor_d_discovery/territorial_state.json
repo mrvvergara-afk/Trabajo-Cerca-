@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-05T18:39:38.277917-03:00",
+  "last_run": "2026-11-05T18:47:52.907795-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -337,6 +337,750 @@
       "url": "https://lasnoticiasdemalleco.cl/educacion/equipo-synautis-de-la-araucania-obtiene-tercer-lugar-nacional-en-concurso-de-innovacion-y-emprendimiento-escolar/",
       "source": "Las Noticias de Malleco",
       "commune": "Angol"
+    },
+    "50733a6b87ed97938fac": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "c89dfcec21f65228c222": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "4ccf94719ecaafadedf6": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-angol-3926909",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "f852b8ae8a782bcf9f22": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "309d34ed886ea29f04d1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "3e7843cd840ec7cbe08b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "7fb295de921072a5f060": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "fd6f3d91033632ce9dbc": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "5eb7ed1678e4556f6d7b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/gestor-de-casos-jornada-completa-cdc-mca-angol-region-de-la-araucania-3921759",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "3fba47530376cc60f714": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "ac1791a9fa45a221d1d1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "149bb65066307aa45733": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "d10f952b6de5213fafd7": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-en-terreno-canete-lebu-y-curanilahue-1150000-comision-3916593",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "2e40496713f4ce06c614": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "7d6b601d6927b3f30356": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "68755a767511789f2d4e": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "166d532d1270f21aba60": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "30dc90aecfb3a8d9839c": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "446f33c5825a09d7d605": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "2efff7e419d53af8241d": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "1aa7120c42d63a6a7bd4": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "ca90d5f59e13cc983b0f": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "28e64e0dd09242596b51": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-en-terreno-zona-victoria-angol-traiguen-3915323",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "047ee8fe39ac1365737f": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "953ee9b2538f1dffc90b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3909138",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "7b18af06f184bc325720": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "994fade2a7b53934226c": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-call-center-atencion-a-usuario-tarde-y-noche-part-time-30-hrs-3907734",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "d27f12b9396a2366abad": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-call-center-atencion-a-usuarios-part-time-30-hrs-3907738",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "71a02f100c3a81b67824": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "064f1e0400d3917e15ba": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3906561",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "bb02698f8acd323951c8": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/conductor-3904934",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "27699df730c85dcc03b5": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-explotacion-3891217",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "0dba95c20bbb7960cd7e": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/maestro-electrico-3578328",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "8f4b9939f074cb3dbe0d": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgo-3927000",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "e2b55f557918b8c64552": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ayudante-soldador-1g-mig-3926688",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "4221a33657cd453b12e3": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-aire-acondicionado-con-experiencia-3926785",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "8dd1f103924f4b427593": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/contador-general-y-tesoreria-3926713",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "9f5b9cc51f322c3ac77b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-fotocopiadoras-impresoras-3926978",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "5fe5e08ad4db94e4f388": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/maestro-a-de-cocina-hotel-casa-spark-providencia-3912746",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "a0a43c18292c1eb92935": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-en-mantencion-3926210",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "e99669eb11876dd3a968": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/operario-de-planta-de-graneles-envasados-quimicos-3925922",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "fa91257579a2d41f8cf8": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-terreno-3236666",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "2f41669d125c9ea66178": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ayudante-de-laboratorio-aridos-santiago-idiem-universidad-de-chile-3916801",
+      "source": "Chiletrabajos · Ercilla",
+      "commune": "Ercilla"
+    },
+    "e454bae807b690545d3d": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/profesional-de-proyecto-idiem-universidad-de-chile-3926529",
+      "source": "Chiletrabajos · Ercilla",
+      "commune": "Ercilla"
+    },
+    "23c1ab09020cb5f08955": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/psicologo-a-organizacional-comuna-ercilla-3924928",
+      "source": "Chiletrabajos · Ercilla",
+      "commune": "Ercilla"
+    },
+    "7fcd837372a214d5adc0": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/auxiliar-de-aseo-full-time-3916230",
+      "source": "Chiletrabajos · Ercilla",
+      "commune": "Ercilla"
+    },
+    "fae4cf7d7eddbc0b1c5f": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/guardia-de-seguridad-4x4-noche-sector-pillanlelbun-3870289",
+      "source": "Chiletrabajos · Ercilla",
+      "commune": "Ercilla"
+    },
+    "f91825e3d6553c73b849": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/guardia-de-seguridad-2x5-dia-sabado-y-domingo-sector-pillanlelbun-3870298",
+      "source": "Chiletrabajos · Ercilla",
+      "commune": "Ercilla"
+    },
+    "2c74be00d4589b2875d5": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-administracion-gastronomica-3919940",
+      "source": "Chiletrabajos · Lumaco",
+      "commune": "Lumaco"
+    },
+    "cca9a53f14fc7bd8e8c6": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/profesionales-de-salud-para-cuidados-pacientes-domiciliarios-region-araucania-3913134",
+      "source": "Chiletrabajos · Lumaco",
+      "commune": "Lumaco"
+    },
+    "c4c786d406e19ea9db7e": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+      "source": "Chiletrabajos · Lumaco",
+      "commune": "Lumaco"
+    },
+    "8b07fe51ed5043f8efc3": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
+      "source": "Chiletrabajos · Lumaco",
+      "commune": "Lumaco"
+    },
+    "91eab5a6c28093cda648": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo?2=los sauces",
+      "source": "Chiletrabajos · Los Sauces",
+      "commune": "Los Sauces"
+    },
+    "c9a7209710e4ccc2807b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
+      "source": "Chiletrabajos · Los Sauces",
+      "commune": "Los Sauces"
+    },
+    "ff3ce5f6005c970c81ea": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
+      "source": "Chiletrabajos · Renaico",
+      "commune": "Renaico"
+    },
+    "a62e86705accdbbf6a24": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo?2=traiguén",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "3be2713757012d47b932": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/mercaderista-part-time-traiguen-3926111",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "ba4e217b6597472e3434": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/relator-prevencionista-de-riesgos-temuco-3215730",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "ce8e8fa92a17f890ddce": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/reponedor-part-time-para-traiguen-3924463",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "89b1c8e6654b1eb34042": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/personal-toma-de-inventario-victoria-traiqguen-3925455",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "ccf8f27df30c69c6394c": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/paramedico-a-traiguen-3892108",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "a631f54409203a208c8a": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/paramedico-a-traiguen-3891189",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "8362c35d15d67ba14e6f": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tens-traiguen-42-4-hrs-horario-diurno-con-o-sin-experiencia-3891310",
+      "source": "Chiletrabajos · Traiguén",
+      "commune": "Traiguén"
+    },
+    "37131d81634005654d13": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedora-para-tienda-de-moda-femenina-marca-exclusiva-3555357",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "449dbfbab393a0b28551": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-full-time-victoria-s-secret-buenaventura-3926395",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "3a023aa28d149b395932": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-y-subjefe-de-tienda-victoria-s-secret-copiapo-3925518",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "1fc5fed154c4ab77ad9a": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/subjefe-de-tienda-victoria-s-secret-trebol-3925525",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "1ab943fff1f7fb94adad": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/subjefe-de-tienda-victoria-s-secret-temuco-3925223",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "09c1ab00c14dab3fed62": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-victoria-3925350",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "77ac09fb1d1cde019ccf": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-mall-plaza-egana-3924592",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "ee8d2e2560b808985ff1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-chillan-3919229",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "bb9a32df37d3a639810c": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-bath-body-works-antofagasta-3919216",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "3640515f37edb5dc450b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-mall-plaza-la-serena-3919223",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "57448e7e7d8ea9c5cade": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/panadero-turno-noche-3918825",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "3ad047fa435d40a057e9": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-bath-body-works-sector-oriente-3919179",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "e68e4e66b5ade33b01e3": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-bath-body-works-sector-norte-de-santiago-3919203",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "201b40a57f4201d684b2": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-bath-body-works-mall-plaza-el-trebol-3919232",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "77e124e31849058b3017": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-bath-body-works-en-mall-marina-arauco-3919266",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "9f7023883037db7f6b0f": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-bath-body-works-sector-poniente-santiago-3919195",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "99e718d24e2742d2c8a2": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/apoyo-de-navidad-victoria-s-secret-bath-body-works-sector-sur-de-santiago-3919198",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "221ee28e0c54c693e712": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/especialista-pala-hidraulica-faena-sqm-nueva-victoria-asistencias-tecnicas-komatsu-3908202",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "98d8d46a013dcd5b7f62": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/especialista-emt-faena-sqm-nueva-victoria-asistencias-tecnicas-komatsu-3908494",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "60b3c4cdc408a65a15d1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/analista-control-gestion-industrial-pitrufquen-3906559",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "ca5e3299df337ac73fc2": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-full-time-part-time-victoria-s-secret-parque-arauco-3905068",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "1cdb9ee2ffbe1f0dec12": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-turno-3904674",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "cc28b4b1879b209b5249": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-turno-3904146",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "4a0a8f9b8a3ff61af92d": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/auxiliar-de-bodega-victoria-licencia-d-3903500",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "62d3ba4ca8cf75d9510e": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo?2=mulchén",
+      "source": "Chiletrabajos · Mulchén",
+      "commune": "Mulchén"
+    },
+    "203df5e15ea8c7105baf": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/reponedor-pt-horas-region-del-bio-bio-3924147",
+      "source": "Chiletrabajos · Mulchén",
+      "commune": "Mulchén"
+    },
+    "7d65d64b41320c2ca4a3": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-produccion-de-miel-en-la-comuna-de-mulchen-3919935",
+      "source": "Chiletrabajos · Mulchén",
+      "commune": "Mulchén"
+    },
+    "b09e1a50f6ecb280c183": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ito-residente-experiencia-obras-conservacion-caminos-los-angeles-3905459",
+      "source": "Chiletrabajos · Mulchén",
+      "commune": "Mulchén"
+    },
+    "54e528da7db786668f2b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
+      "source": "Chiletrabajos · Mulchén",
+      "commune": "Mulchén"
+    },
+    "a970317e586c0a813cb5": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/embajador-de-experiencia-temuco-ancud-castro-calbuco-pto-montt-mulchen-3894935",
+      "source": "Chiletrabajos · Mulchén",
+      "commune": "Mulchén"
+    },
+    "62d19a0bf91f3ec74f33": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/docente-de-matematicas-reemplazo-3755017",
+      "source": "Chiletrabajos · Negrete",
+      "commune": "Negrete"
+    },
+    "cdedd4c4b83d3b759367": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/maestros-electricos-m1-antofagasta-3926016",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "a4dc03b4522fa31d5619": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-a-de-ventas-kaufmann-santiago-norte-3927288",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "e4869229363b34aa5ef1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/product-manager-contrato-de-mantenimiento-kaufmann-casa-matriz-3926726",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "c1fe9ce80047696c89c2": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-de-repuesto-meson-kaufmann-santiago-norte-3926946",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "9e173e643c73999fa7f6": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "3d3f9fa91ee8942da92b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "e34bdb3c4df3b2f29a90": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-necesita-ayudante-de-maestro-con-conocimiento-en-electricidad-3925042",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "2cc0164b7dfb45a3bb06": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-de-camionetas-kaufmann-copiapo-3925281",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "d8f52d5399a51b01f2b1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/asistente-de-gestion-kaufmann-cantagallo-3925548",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "ac263b23550cfeb96e1b": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-i-kaufmann-copiapo-3925326",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "f496d150d991f2d8480a": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/product-manager-maquinaria-andesmaq-santiago-norte-3925541",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "74044e311a97db560e8e": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-venta-remoto-mercado-peruano-3925638",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "c89c7c774cec7b639396": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-marketing-andes-motor-casa-matriz-3924234",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "c9382913694ee1279ded": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/mecanico-de-flota-3924692",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "ec836b4f5e4e46cfa0ca": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/bodeguero-antofagasta-3924718",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "ee2f3dc9bbe444914025": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/supervisor-de-aseo-hospitalario-recoleta-3924438",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "0f5f10c1075ef2860818": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "2e1d1d9cfacf82451b64": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "9af7ee1007ba3da28e40": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3923693",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "8d7cffd0e82c7f379aa6": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "c161ee48a3145a544418": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/auxiliares-de-servicio-jornada-diurna-3er-turno-y-4to-turno-3654150",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "3cd0646507f31b851a86": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/pedidor-a-arancelario-junior-importaciones-para-agencia-de-aduanas-santiago-3923306",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "c6f7c4d4db641c2edd19": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/sereno-part-time-fines-de-semana-y-festivos-3923223",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "a1c14d95f9f9a92b3393": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/recepcion-cvs-auxiliares-servicios-generales-hospital-barros-luco-trudeau-3687290",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "4c44523d5e937e15915e": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-ingenieria-o-tecnico-en-mantanimiento-industrial-kaufmann-casa-matriz-3922717",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "63463a2f6e446ee71ef1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/trabajador-social-jornada-completa-programa-aft-pf-san-antonio-valparaiso-3922503",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "d1a6546c589f6e93a831": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnicos-en-enfermeria-jornada-diurna-3er-turno-y-4to-turno-3654143",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "0d20458bef52e35367b1": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ingeniero-de-control-de-gestion-financiero-kaufmann-lampa-3922913",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "2c78d71fc97db727daa8": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/abogado-asuntos-regulatorios-junior-3922006",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "ce0b3b0aa8b5f0be8c1c": {
+      "first_seen": "2026-11-05T18:47:52.907795-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-camiones-andes-motor-calama-3922015",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
     }
   }
 }

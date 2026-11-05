@@ -47,8 +47,12 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca)\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
-CLOSED=re.compile(r"postulaciones cerradas|proceso finalizado|concurso cerrado|"
-                  r"postulaci[oó]n finalizada|convocatoria cerrada",re.I)
+CLOSED=re.compile(r"postulaci[oó]n(?:es)?\\s+cerrad[ao]s?|proceso\\s+finalizado|"
+                  r"concurso\\s+cerrado|postulaci[oó]n\\s+finalizada|convocatoria\\s+cerrada",re.I)
+INTERNAL_ONLY=re.compile(r"\\bconcurso\\s+interno\\b",re.I)
+GENERAL_INDEX=re.compile(r"^(?:concursos?\\s+(?:p[uú]blicos?|internos?)|"
+                         r"llamado\\s+a\\s+concursos?\\s+p[uú]blicos?|"
+                         r"llamado\\s+a\\s+concurso\\s+interno)$",re.I)
 HEADERS={"User-Agent":"TrabajoCercaTerritorial/1.0 (+public sources; no social scraping)",
          "Accept":"text/html,application/xhtml+xml"}
 def fold(s):
@@ -106,6 +110,7 @@ def links_from(soup,base):
             if nearby:
                 listing_state="closed" if nearby.group(1).lower()=="cerrada" else "open"
                 break
+        if CLOSED.search(title):listing_state="closed"
         output.setdefault(url,(title,listing_state))
     return [(url,title,state) for url,(title,state) in output.items()][:35]
 def inspect(seed):
@@ -137,12 +142,18 @@ def inspect(seed):
                     title=heading.get_text(" ",strip=True)[:180] if heading else label
                     body=detail_soup.get_text(" ",strip=True)[:7000]
                     dates=dates_in(detail_soup)
-                    explicit_closed=bool(CLOSED.search(body))
-                    detail.update(title=title,dates=dates,
+                    # Closed labels and internal-only calls are not public job vacancies.
+                    explicit_closed=bool(CLOSED.search(title+" "+label))
+                    public_title=title if len(title)>10 else label
+                    internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
+                    general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))
+                    detail.update(title=public_title,dates=dates,
                                   date_source=dates[0] if dates else None,
                                   evidence="closed" if (explicit_closed or index_status=="closed") else (
-                                      "individual_page_with_job_terms" if TERMS.search(title+" "+body[:1600])
-                                      else "inconclusive_page"),
+                                      "internal_only" if internal_only else (
+                                      "directory_not_offer" if general_index else (
+                                      "individual_page_with_job_terms" if TERMS.search(public_title+" "+body[:1600])
+                                      else "inconclusive_page"))),
                                   excerpt=body[:550])
                     if dates:
                         parsed=datetime.strptime(dates[0],"%Y-%m-%d").date()
@@ -166,7 +177,8 @@ def inspect(seed):
                 dates=dates_in(soup)
                 detail={"id":key(url),"url":url,"label":heading,"title":heading,
                         "date_source":dates[0] if dates else None,"dates":dates,
-                        "http":200,"evidence":"closed" if CLOSED.search(body) else "individual_page_with_job_terms",
+                        "http":200,"evidence":"closed" if CLOSED.search(heading) else (
+                            "internal_only" if INTERNAL_ONLY.search(heading) else "individual_page_with_job_terms"),
                         "work_commune":None,"recruitment_commune":None,
                         "source_scope_commune":town,"source_commune_not_confirmed":True,
                         "excerpt":body[:550]}
@@ -217,6 +229,8 @@ def main():
                        "links_found":sum(x["links_found"] for x in rows if x["commune"]==town),
                        "candidates":sum(len(x["candidates"]) for x in rows if x["commune"]==town)}
                  for town in COMMUNES}
+    excluded={"closed","internal_only","directory_not_offer","inconclusive_page","detail_unavailable"}
+    eligible=[x for x in unique.values() if x.get("evidence")=="individual_page_with_job_terms"]
     report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
             "missing_communes":missing,"sources_total":len(SEEDS),
@@ -226,6 +240,8 @@ def main():
             "sources_accessible":sum(r["status"].startswith("scanned") for r in rows),
             "sources_blocked":sum(r["status"] in ("http_restricted","network_error") for r in rows),
             "job_candidates_total":len(unique),"new_candidate_links":len(discovered),
+            "individually_read_potential_offers":len(eligible),
+            "rejected_or_unusable_evidence":sum(x.get("evidence") in excluded for x in unique.values()),
             "baseline_run":first_run,"confirmed_new_publications":0,
             "published_in_trabajo_cerca":0,
             "warning":"Enlaces candidatos, NO empleos confirmados. Fuente por comuna no prueba lugar de trabajo ni reclutamiento. Nunca incluir índice/listado como oferta.",

@@ -85,10 +85,11 @@ def produce(report,root=READY,today=None):
     today=today or date.today()
     classified=build(report,today)
     root.mkdir(parents=True,exist_ok=True)
-    approved=[x["offer"] for x in classified["EXPRESS"]]
     manifest=root/"index.json"
     saved=json.loads(manifest.read_text(encoding="utf8")) if manifest.exists() else {"schema_version":1,"batches":[]}
     batches=list(saved.get("batches",[]))
+    seen_ids=set(saved.get("seen_offer_ids",[]))
+    approved=[x["offer"] for x in classified["EXPRESS"] if x["offer"]["id_fuente"] not in seen_ids]
     for start in range(0,len(approved),15):
         chunk=approved[start:start+15]
         fingerprint=hashlib.sha256(json.dumps(chunk,sort_keys=True,ensure_ascii=False).encode()).hexdigest()[:18]
@@ -101,9 +102,10 @@ def produce(report,root=READY,today=None):
         target.write_text(json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
         if not any(x.get("batch_id")==batch_id for x in batches):
             batches.append({"batch_id":batch_id,"file":path,"count":len(chunk)})
+        seen_ids.update(offer["id_fuente"] for offer in chunk)
     if len(batches)>256:
         raise RuntimeError("Límite de manifiesto D: no eliminar lotes sin recibo de publicación")
-    manifest.write_text(json.dumps({"schema_version":1,"batches":batches},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+    manifest.write_text(json.dumps({"schema_version":1,"batches":batches,"seen_offer_ids":sorted(seen_ids)},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     summary={state:len(items) for state,items in classified.items()}
     summary["published_confirmed"]=0  # Solo AppDeploy puede certificar este contador.
     return summary

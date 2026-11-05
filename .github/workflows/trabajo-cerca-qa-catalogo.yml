@@ -1,0 +1,34 @@
+name: Trabajo Cerca - QA catalogo publico
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/trabajo-cerca-qa-catalogo.yml'
+permissions:
+  contents: read
+jobs:
+  qa_public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Leer API publica sin cambios de datos
+        run: |
+          python - <<'PY'
+          import json,urllib.request
+          base='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro'
+          for route in ('/api/listings','/api/ops/radar-feed','/api/ops/free-public-sources'):
+              try:
+                  request=urllib.request.Request(base+route,headers={'Accept':'application/json','User-Agent':'TrabajoCercaPublicQA/1.0'})
+                  with urllib.request.urlopen(request,timeout=15) as resp:
+                      result=json.loads(resp.read(350000).decode('utf-8'))
+                      if not isinstance(result,dict):raise ValueError('Unexpected API result')
+                      print('PUBLIC_QA',json.dumps({
+                          'route':route,'status':resp.status,
+                          'item_count':len(result.get('items',[])) if isinstance(result.get('items'),list) else None,
+                          'total_verified':result.get('totalVerifiedJobOffers'),
+                          'reason':result.get('reason'),'feed_rebuilding':result.get('rebuilding'),
+                          'keys':list(result)[:15]},ensure_ascii=False))
+              except Exception as exc:
+                  print('PUBLIC_QA_ERROR',route,type(exc).__name__,str(exc)[:160])
+          PY

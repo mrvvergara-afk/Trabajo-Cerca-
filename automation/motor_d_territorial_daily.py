@@ -161,7 +161,7 @@ def main():
     if len(known)>8000:
         known=dict(sorted(known.items(),key=lambda x:x[1].get("first_seen",""),reverse=True)[:8000])
     state_file.write_text(json.dumps({"schema_version":1,"last_run":NOW.isoformat(),
-                                     "seen":known},ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+                                     "seen":known},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
             "missing_communes":missing,"sources_total":len(SEEDS),

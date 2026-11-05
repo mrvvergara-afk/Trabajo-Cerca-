@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261105-c56df7f84da816626b",
+  "offers": [
+    {
+      "id_fuente": "d_restore_aba6c908a9d7b1936b",
+      "cargo": "M1 Moldajero Obra Gruesa - Hospital de Nacimiento (Contrato a Trato)",
+      "empresa": "Constructora ALJO",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/m1-moldajero-obra-gruesa-hospital-de-nacimiento-contrato-a-trato-3887988",
+      "fecha_publicacion": "2026-09-02",
+      "fecha_cierre": "2026-11-16",
+      "justificacion": "Restauración puntual de oferta previamente visible; fuente Chiletrabajos confirma obra Hospital de Nacimiento y cierre 16-11-2026."
+    }
+  ]
+}

@@ -36,6 +36,21 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertTrue(engine.CLOSED.search("Postulaciones Cerradas"))
         self.assertFalse(engine.CLOSED.search("Postulación Abierta"))
 
+    def test_commune_requires_explicit_job_location(self):
+        self.assertIsNone(engine.explicit_work_commune("Municipalidad de Mulchén publica una convocatoria"))
+        self.assertEqual(engine.explicit_work_commune("Lugar de trabajo: Mininco, región de La Araucanía."), "Collipulli")
+        self.assertEqual(engine.explicit_work_commune("Comuna de trabajo: Coihue."), "Negrete")
+        self.assertEqual(engine.explicit_work_commune("Ubicación laboral: Angol."), "Angol")
+
+    def test_employer_requires_evidence(self):
+        self.assertIsNone(engine.explicit_employer("La OMIL informa vacantes sin nombre del empleador"))
+        self.assertEqual(engine.explicit_employer("Empresa: Maderera del Sur. Cargo: operador"), "Maderera del Sur")
+
+    def test_application_evidence_required(self):
+        self.assertTrue(engine.explicit_application("Postulaciones abiertas hasta el lunes"))
+        self.assertTrue(engine.explicit_application("Enviar CV al contacto oficial"))
+        self.assertFalse(engine.explicit_application("Programa municipal de empleabilidad"))
+
     def test_closed_variants_with_whitespace(self):
         for phrase in ("Postulación   Cerrada", "Postulaciones Cerradas", "Proceso finalizado", "Convocatoria cerrada"):
             with self.subTest(phrase=phrase):

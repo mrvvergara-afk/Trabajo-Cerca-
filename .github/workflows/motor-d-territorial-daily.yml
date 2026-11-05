@@ -9,7 +9,7 @@ on:
   schedule:
     - cron: '15 9,21 * * *'
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: trabajo-cerca-motor-d-territorial
   cancel-in-progress: false
@@ -49,6 +49,16 @@ jobs:
               print("MOTOR_D_FAILURE: all sources inaccessible")
               sys.exit(1)
           PY
+      - name: Persist candidate deduplication state for next automatic run
+        if: success()
+        run: |
+          git config user.name "trabajo-cerca-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add automation/motor_d_discovery/territorial_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
+            git push
+          fi
       - name: Preserve complete territorial audit
         if: always()
         uses: actions/upload-artifact@v4

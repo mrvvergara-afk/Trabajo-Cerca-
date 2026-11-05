@@ -54,7 +54,7 @@ def inspect(source):
         if re.search(r"log in|inicia sesi[oó]n|login_required|checkpoint_required",text,re.I):
             result["status"]="login_wall";return result
         if "instagram.com" in host:
-            links=set(re.findall(r'https?://(?:www\\.)?instagram\\.com/(?:p|reel)/[A-Za-z0-9_-]+',text))
+            links=set(re.findall(r'https?://(?:www\.)?instagram\.com/(?:p|reel)/[A-Za-z0-9_-]+',text))
             links.update("https://www.instagram.com"+p for p in re.findall(r'/(?:p|reel)/[A-Za-z0-9_-]+/?',text))
         else:
             links=set("https://www.facebook.com"+p for p in re.findall(r'/(?:posts|permalink)/[A-Za-z0-9._/-]+',text))

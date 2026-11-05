@@ -47,12 +47,12 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca)\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
-CLOSED=re.compile(r"postulaci[oó]n(?:es)?\\s+cerrad[ao]s?|proceso\\s+finalizado|"
-                  r"concurso\\s+cerrado|postulaci[oó]n\\s+finalizada|convocatoria\\s+cerrada",re.I)
-INTERNAL_ONLY=re.compile(r"\\bconcurso\\s+interno\\b",re.I)
-GENERAL_INDEX=re.compile(r"^(?:concursos?\\s+(?:p[uú]blicos?|internos?)|"
-                         r"llamado\\s+a\\s+concursos?\\s+p[uú]blicos?|"
-                         r"llamado\\s+a\\s+concurso\\s+interno)$",re.I)
+CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"
+                  r"concurso\s+cerrado|postulaci[oó]n\s+finalizada|convocatoria\s+cerrada",re.I)
+INTERNAL_ONLY=re.compile(r"\bconcurso\s+interno\b",re.I)
+GENERAL_INDEX=re.compile(r"^(?:concursos?\s+(?:p[uú]blicos?|internos?)|"
+                         r"llamado\s+a\s+concursos?\s+p[uú]blicos?|"
+                         r"llamado\s+a\s+concurso\s+interno)$",re.I)
 HEADERS={"User-Agent":"TrabajoCercaTerritorial/1.0 (+public sources; no social scraping)",
          "Accept":"text/html,application/xhtml+xml"}
 def fold(s):
@@ -106,13 +106,39 @@ def links_from(soup,base):
             if parent is None:break
             context=parent.get_text(" ",strip=True)
             if len(context)>460:break
-            nearby=re.search(r"postulaci[oó]n\\s+(abierta|cerrada)",context,re.I)
+            nearby=re.search(r"postulaci[oó]n\s+(abierta|cerrada)",context,re.I)
             if nearby:
                 listing_state="closed" if nearby.group(1).lower()=="cerrada" else "open"
                 break
         if CLOSED.search(title):listing_state="closed"
         output.setdefault(url,(title,listing_state))
     return [(url,title,state) for url,(title,state) in output.items()][:35]
+# Solo el texto explicito de la oferta puede establecer empresa y lugar de trabajo.
+# La comuna de la fuente municipal NO equivale a la comuna del puesto.
+def explicit_work_commune(body):
+    value=fold(body)
+    aliases={"mininco":"Collipulli","coihue":"Negrete","coigue":"Negrete"}
+    places={fold(place):place for place in COMMUNES}
+    places.update(aliases)
+    for field in re.finditer(
+        r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
+        value):
+        text=field.group(1)
+        for name,commune in places.items():
+            if re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",text):
+                return commune
+    return None
+
+def explicit_employer(body):
+    found=re.search(r"(?:empresa|empleador|raz[oó]n social)\s*:\s*([^.;]{3,90})",body,re.I)
+    if not found:return None
+    value=found.group(1).strip(" -:")
+    value=re.split(r"\s+(?:cargo|vacantes|ubicaci[oó]n|comuna|requisitos|postulaci[oó]n)\s*:",value,1,flags=re.I)[0].strip()
+    return value if 2<=len(value)<=90 else None
+
+def explicit_application(body):
+    return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
+
 def inspect(seed):
     town,source,url=seed
     out={"commune":town,"source":source,"url":url,"status":"not_started",
@@ -142,12 +168,17 @@ def inspect(seed):
                     title=heading.get_text(" ",strip=True)[:180] if heading else label
                     body=detail_soup.get_text(" ",strip=True)[:7000]
                     dates=dates_in(detail_soup)
+                    job_commune=explicit_work_commune(body)
+                    employer=explicit_employer(body)
+                    application_evidence=explicit_application(body)
                     # Closed labels and internal-only calls are not public job vacancies.
                     explicit_closed=bool(CLOSED.search(title+" "+label))
                     public_title=title if len(title)>10 else label
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
                     general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))
                     detail.update(title=public_title,dates=dates,
+                                  work_commune=job_commune,source_commune_not_confirmed=job_commune is None,
+                                  employer=employer,application_evidence=application_evidence,
                                   date_source=dates[0] if dates else None,
                                   evidence="closed" if (explicit_closed or index_status=="closed") else (
                                       "internal_only" if internal_only else (
@@ -155,6 +186,11 @@ def inspect(seed):
                                       "individual_page_with_job_terms" if TERMS.search(public_title+" "+body[:1600])
                                       else "inconclusive_page"))),
                                   excerpt=body[:550])
+                    detail["express_ready"]=bool(
+                        detail["evidence"]=="individual_page_with_job_terms"
+                        and job_commune and employer and application_evidence and dates
+                        and (NOW.date()-timedelta(days=1))<=datetime.strptime(dates[0],"%Y-%m-%d").date()<=NOW.date()
+                    ) if dates and re.fullmatch(r"20\d{2}-\d{2}-\d{2}",dates[0]) else False
                     if dates:
                         parsed=datetime.strptime(dates[0],"%Y-%m-%d").date()
                         detail["date_recent_2d"]=(NOW.date()-timedelta(days=1))<=parsed<=NOW.date()
@@ -241,6 +277,7 @@ def main():
             "sources_blocked":sum(r["status"] in ("http_restricted","network_error") for r in rows),
             "job_candidates_total":len(unique),"new_candidate_links":len(discovered),
             "individually_read_potential_offers":len(eligible),
+            "express_ready_candidates":sum(x.get("express_ready") is True for x in unique.values()),
             "rejected_or_unusable_evidence":sum(x.get("evidence") in excluded for x in unique.values()),
             "baseline_run":first_run,"confirmed_new_publications":0,
             "published_in_trabajo_cerca":0,

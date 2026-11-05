@@ -1,0 +1,35 @@
+name: Motor D - Social public access audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'automation/motor_d_social_access_probe.py'
+      - '.github/workflows/motor-d-social-access.yml'
+  schedule:
+    - cron: '40 11,23 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: motor-d-social-public-access
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate audit syntax
+        run: python -m py_compile automation/motor_d_social_access_probe.py
+      - name: Check only publicly accessible social profiles
+        run: python automation/motor_d_social_access_probe.py
+      - name: Preserve diagnostics as workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-access-audit
+          path: automation/motor_d_discovery/social_access_status.json
+          if-no-files-found: warn

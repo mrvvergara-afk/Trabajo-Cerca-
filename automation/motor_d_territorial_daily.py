@@ -144,17 +144,36 @@ def main():
     unique={}
     for item in candidates:
         unique.setdefault(item["id"],item)
+    # Diff persistente: contabiliza solo identidades nuevas respecto al inventario de GitHub.
+    state_file=ROOT/"territorial_state.json"
+    try:
+        state=json.loads(state_file.read_text(encoding="utf-8")) if state_file.exists() else {}
+    except (ValueError,OSError):
+        state={}
+    known=state.get("seen",{})
+    if not isinstance(known,dict):known={}
+    first_run=not state_file.exists()
+    discovered=[x for x in unique.values() if x["id"] not in known]
+    for item in unique.values():
+        known.setdefault(item["id"],{"first_seen":NOW.isoformat(),"url":item["url"],
+                                     "source":item["source"],"commune":item["commune"]})
+    # Keep a capped inventory; do not silently recategorize prior source identities.
+    if len(known)>8000:
+        known=dict(sorted(known.items(),key=lambda x:x[1].get("first_seen",""),reverse=True)[:8000])
+    state_file.write_text(json.dumps({"schema_version":1,"last_run":NOW.isoformat(),
+                                     "seen":known},ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
     report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
             "missing_communes":missing,"sources_total":len(SEEDS),
             "sources_accessible":sum(r["status"].startswith("scanned") for r in rows),
             "sources_blocked":sum(r["status"] in ("http_restricted","network_error") for r in rows),
-            "job_candidates_total":len(unique),"confirmed_new_publications":0,
+            "job_candidates_total":len(unique),"new_candidate_links":len(discovered),
+            "baseline_run":first_run,"confirmed_new_publications":0,
             "published_in_trabajo_cerca":0,
             "warning":"Candidatos, no publicaciones verificadas. Fecha de origen y lugar efectivo no se infieren de la fuente municipal.",
-            "sources":rows,"candidates":list(unique.values())}
+            "sources":rows,"candidates":list(unique.values()),"new_candidates":discovered}
     (ROOT/"territorial_daily.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    summary={k:report[k] for k in ("sources_total","sources_accessible","sources_blocked","job_candidates_total",
+    summary={k:report[k] for k in ("sources_total","sources_accessible","sources_blocked","job_candidates_total","new_candidate_links",
                                    "confirmed_new_publications","published_in_trabajo_cerca","missing_communes")}
     print("MOTOR_D_TERRITORIAL "+json.dumps(summary,ensure_ascii=False),flush=True)
     if missing:raise SystemExit("COVERAGE_FAILURE: comuna no inspeccionada")

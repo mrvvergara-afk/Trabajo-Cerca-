@@ -47,12 +47,12 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca)\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
-CLOSED=re.compile(r"postulaci[oó]n(?:es)?\\s+cerrad[ao]s?|proceso\\s+finalizado|"
-                  r"concurso\\s+cerrado|postulaci[oó]n\\s+finalizada|convocatoria\\s+cerrada",re.I)
-INTERNAL_ONLY=re.compile(r"\\bconcurso\\s+interno\\b",re.I)
-GENERAL_INDEX=re.compile(r"^(?:concursos?\\s+(?:p[uú]blicos?|internos?)|"
-                         r"llamado\\s+a\\s+concursos?\\s+p[uú]blicos?|"
-                         r"llamado\\s+a\\s+concurso\\s+interno)$",re.I)
+CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"
+                  r"concurso\s+cerrado|postulaci[oó]n\s+finalizada|convocatoria\s+cerrada",re.I)
+INTERNAL_ONLY=re.compile(r"\bconcurso\s+interno\b",re.I)
+GENERAL_INDEX=re.compile(r"^(?:concursos?\s+(?:p[uú]blicos?|internos?)|"
+                         r"llamado\s+a\s+concursos?\s+p[uú]blicos?|"
+                         r"llamado\s+a\s+concurso\s+interno)$",re.I)
 HEADERS={"User-Agent":"TrabajoCercaTerritorial/1.0 (+public sources; no social scraping)",
          "Accept":"text/html,application/xhtml+xml"}
 def fold(s):
@@ -106,7 +106,7 @@ def links_from(soup,base):
             if parent is None:break
             context=parent.get_text(" ",strip=True)
             if len(context)>460:break
-            nearby=re.search(r"postulaci[oó]n\\s+(abierta|cerrada)",context,re.I)
+            nearby=re.search(r"postulaci[oó]n\s+(abierta|cerrada)",context,re.I)
             if nearby:
                 listing_state="closed" if nearby.group(1).lower()=="cerrada" else "open"
                 break

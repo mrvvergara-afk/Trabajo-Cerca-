@@ -12,23 +12,34 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Leer API publica sin cambios de datos
+      - name: Confirmar la publicacion real y ausencia de duplicados
         run: |
           python - <<'PY'
           import json,urllib.request
-          base='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro'
-          for route in ('/api/listings','/api/ops/radar-feed','/api/ops/free-public-sources'):
-              try:
-                  request=urllib.request.Request(base+route,headers={'Accept':'application/json','User-Agent':'TrabajoCercaPublicQA/1.0'})
-                  with urllib.request.urlopen(request,timeout=15) as resp:
-                      result=json.loads(resp.read(350000).decode('utf-8'))
-                      if not isinstance(result,dict):raise ValueError('Unexpected API result')
-                      print('PUBLIC_QA',json.dumps({
-                          'route':route,'status':resp.status,
-                          'item_count':len(result.get('items',[])) if isinstance(result.get('items'),list) else None,
-                          'total_verified':result.get('totalVerifiedJobOffers'),
-                          'reason':result.get('reason'),'feed_rebuilding':result.get('rebuilding'),
-                          'keys':list(result)[:15]},ensure_ascii=False))
-              except Exception as exc:
-                  print('PUBLIC_QA_ERROR',route,type(exc).__name__,str(exc)[:160])
+          from urllib.parse import urlencode
+          root='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro'
+          target='https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105'
+          def get(path):
+              req=urllib.request.Request(root+path,headers={'Accept':'application/json','User-Agent':'TrabajoCercaPublicQA/1.0'})
+              with urllib.request.urlopen(req,timeout=15) as resp:
+                  assert resp.status==200,resp.status
+                  return json.loads(resp.read(500000))
+          cursor=None
+          items=[]
+          count=None
+          for n in range(100):
+              q=urlencode({'fresh':'1',**({'cursor':cursor} if cursor else {})})
+              result=get('/api/listings?'+q)
+              count=result.get('totalVerifiedJobOffers')
+              items.extend(result.get('items') or [])
+              cursor=result.get('nextCursor')
+              if not cursor:break
+          else:raise RuntimeError('Feed pagination did not terminate')
+          matches=[x for x in items if x.get('url')==target]
+          print('PUBLIC_QA',json.dumps({'feed_verified':count,'items_read':len(items),'target_url':target,'target_matches':len(matches),'target_title':matches[0].get('title') if matches else None},ensure_ascii=False))
+          assert len(matches)==1,'The real D test offer must appear exactly once'
+          assert count>=159,'The visible public catalog did not advance to 159'
+          for path in ('/api/ops/radar-feed','/api/ops/free-public-sources'):
+              response=get(path)
+              print('PUBLIC_QA_OPS',json.dumps({'path':path,'keys':list(response)[:12]},ensure_ascii=False))
           PY

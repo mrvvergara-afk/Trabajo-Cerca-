@@ -1,6 +1,12 @@
 name: Motor D - Barrido territorial 12 comunas
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/motor_d_territorial_daily.py'
+      - 'automation/test_motor_d_territorial.py'
+      - '.github/workflows/motor-d-territorial-daily.yml'
   push:
     branches: [main]
     paths:
@@ -30,9 +36,10 @@ jobs:
       - name: Run territorial integrity tests
         run: python -m unittest discover -s automation -p 'test_motor_d_territorial.py' -v
       - name: Scan all 12 communes and identify source problems
+        if: github.event_name != 'pull_request'
         run: python automation/motor_d_territorial_daily.py
       - name: Enforce honest source coverage accounting
-        if: always()
+        if: github.event_name != 'pull_request'
         run: |
           python - <<'PY'
           import json,pathlib,sys
@@ -53,7 +60,7 @@ jobs:
               sys.exit(1)
           PY
       - name: Persist deduplication state and per-source report for next run
-        if: success()
+        if: success() && github.ref == 'refs/heads/main'
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -63,7 +70,7 @@ jobs:
             git push
           fi
       - name: Preserve complete territorial audit
-        if: always()
+        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
           name: motor-d-territorial-audit

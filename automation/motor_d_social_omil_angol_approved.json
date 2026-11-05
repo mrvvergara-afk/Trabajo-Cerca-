@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "chatgpt",
+  "batch_id": "motor-d-omil-angol-20261104-v1",
+  "offers": [
+    {
+      "id_fuente": "omilangol2026_albanil_20261104",
+      "cargo": "Albañil",
+      "empresa": "Gestión de Proyectos",
+      "comunas": [
+        "Angol"
+      ],
+      "recruitment_communes": [
+        "Angol"
+      ],
+      "work_location": "Lugar de trabajo no informado; postulación en Angol",
+      "territorial_recruitment_verified": true,
+      "url_original": "https://www.instagram.com/omilangol2026/",
+      "social_source_account": "omilangol2026",
+      "social_evidence_type": "user_supplied_official_omil_post_and_poster_screenshots",
+      "fecha_publicacion": "2026-11-04",
+      "fecha_publicacion_metodo": "fecha_inferida_por_indicador_relativo_15h_21h_capturas_2026-11-05",
+      "fecha_cierre": null,
+      "internal_visibility_days": 10,
+      "justificacion": "OMIL Angol publica convocatoria abierta y afiche con cargo, requisitos y postulación presencial. Experiencia comprobable como albañil. Presentarse con CV en Andrés Bello N°146, primer piso, lunes a viernes de 08:30 a 14:00. No se indica plazo final ni comuna de ejecución."
+    },
+    {
+      "id_fuente": "omilangol2026_capataz_20261104",
+      "cargo": "Capataz o supervisor",
+      "empresa": "Gestión de Proyectos",
+      "comunas": [
+        "Angol"
+      ],
+      "recruitment_communes": [
+        "Angol"
+      ],
+      "work_location": "Lugar de trabajo no informado; postulación en Angol",
+      "territorial_recruitment_verified": true,
+      "url_original": "https://www.instagram.com/omilangol2026/",
+      "social_source_account": "omilangol2026",
+      "social_evidence_type": "user_supplied_official_omil_post_and_poster_screenshots",
+      "fecha_publicacion": "2026-11-04",
+      "fecha_publicacion_metodo": "fecha_inferida_por_indicador_relativo_15h_21h_capturas_2026-11-05",
+      "fecha_cierre": null,
+      "internal_visibility_days": 10,
+      "justificacion": "OMIL Angol publica convocatoria abierta y afiche con cargo, requisitos y postulación presencial. Título técnico en construcción; experiencia en obras como capataz o supervisor. Presentarse con CV en Andrés Bello N°146, primer piso, lunes a viernes de 08:30 a 14:00. No se indica plazo final ni comuna de ejecución."
+    },
+    {
+      "id_fuente": "omilangol2026_chofer_a5_20261104",
+      "cargo": "Chofer A5 - rampla",
+      "empresa": "Transportes",
+      "comunas": [
+        "Angol"
+      ],
+      "recruitment_communes": [
+        "Angol"
+      ],
+      "work_location": "Lugar de trabajo no informado; postulación en Angol",
+      "territorial_recruitment_verified": true,
+      "url_original": "https://www.instagram.com/omilangol2026/",
+      "social_source_account": "omilangol2026",
+      "social_evidence_type": "user_supplied_official_omil_post_and_poster_screenshots",
+      "fecha_publicacion": "2026-11-04",
+      "fecha_publicacion_metodo": "fecha_inferida_por_indicador_relativo_15h_21h_capturas_2026-11-05",
+      "fecha_cierre": null,
+      "internal_visibility_days": 10,
+      "justificacion": "OMIL Angol publica convocatoria abierta y afiche con cargo, requisitos y postulación presencial. Licencia A5 vigente; experiencia en camiones rampla. Presentarse con CV en Andrés Bello N°146, primer piso, lunes a viernes de 08:30 a 14:00. No se indica plazo final ni comuna de ejecución."
+    },
+    {
+      "id_fuente": "omilangol2026_chofer_a4_20261104",
+      "cargo": "Chofer A4 - camión 15T",
+      "empresa": "Transportes",
+      "comunas": [
+        "Angol"
+      ],
+      "recruitment_communes": [
+        "Angol"
+      ],
+      "work_location": "Lugar de trabajo no informado; postulación en Angol",
+      "territorial_recruitment_verified": true,
+      "url_original": "https://www.instagram.com/omilangol2026/",
+      "social_source_account": "omilangol2026",
+      "social_evidence_type": "user_supplied_official_omil_post_and_poster_screenshots",
+      "fecha_publicacion": "2026-11-04",
+      "fecha_publicacion_metodo": "fecha_inferida_por_indicador_relativo_15h_21h_capturas_2026-11-05",
+      "fecha_cierre": null,
+      "internal_visibility_days": 10,
+      "justificacion": "OMIL Angol publica convocatoria abierta y afiche con cargo, requisitos y postulación presencial. Licencia A4 vigente; experiencia en camiones. Presentarse con CV en Andrés Bello N°146, primer piso, lunes a viernes de 08:30 a 14:00. No se indica plazo final ni comuna de ejecución."
+    }
+  ]
+}

@@ -63,8 +63,6 @@ async def inspect(browser, source):
             result["status"]="http_access_restricted";return result
         await page.wait_for_timeout(1000)
         body=(await page.locator("body").inner_text(timeout=6000))[:12000]
-        if GATE.search(body[:1800]):
-            result["status"]="login_required";return result
         hrefs=await page.locator("a[href]").evaluate_all("(nodes)=>nodes.map(n=>n.getAttribute('href')).filter(Boolean).slice(0,300)")
         postlinks=[]
         for href in hrefs:
@@ -76,7 +74,7 @@ async def inspect(browser, source):
                 if normalized not in postlinks:postlinks.append(normalized)
         result["posts_found"]=len(postlinks)
         if not postlinks:
-            result["status"]="profile_loaded_no_public_posts"
+            result["status"]="login_required_or_no_public_posts" if GATE.search(body[:1800]) else "profile_loaded_no_public_posts"
             return result
         # Respetar robots también para cada publicación. No extraer contenido de rutas restringidas.
         for url in postlinks[:3]:

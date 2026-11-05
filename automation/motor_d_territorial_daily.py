@@ -41,6 +41,13 @@ SEEDS=[
 ("Angol","Radio Viaducto","https://radioviaducto.cl/"),
 ("Angol","Las Noticias de Malleco","https://lasnoticiasdemalleco.cl/"),
 ]
+# Consultas regionales de Chiletrabajos: una por cada comuna, además de OMIL y empleadores.
+# No se considera comuna laboral demostrada solo porque la búsqueda sea municipal.
+from urllib.parse import quote
+SEEDS.extend((town,"Chiletrabajos · "+town,
+    "https://www.chiletrabajos.cl/encuentra-un-empleo/?2="+quote(town.lower()))
+    for town in COMMUNES)
+
 TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|vacante(?:s)?|"
     r"postulaci[oó]n|convocatoria|concurso(?:s)?|contrata(?:ci[oó]n)?|operador(?:a)?|"
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
@@ -88,6 +95,11 @@ def dates_in(soup):
         value=(elem.get("datetime") or elem.get("content") or "")[:30]
         m=re.search(r"20\d{2}-\d\d-\d\d",value)
         if m:found.append(m.group(0))
+    # Chiletrabajos individual pages label the original date explicitly.
+    # Never infer a publication date from a date in a job description.
+    text=soup.get_text(" ",strip=True)[:3000]
+    match=re.search(r"\\bFecha\\s*[:|]?\\s*(20\\d{2}-\\d{2}-\\d{2})\\b",text,re.I)
+    if match:found.append(match.group(1))
     return list(dict.fromkeys(found))
 def links_from(soup,base):
     origin=urlsplit(base).hostname

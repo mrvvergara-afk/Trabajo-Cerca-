@@ -252,8 +252,19 @@
       "note": "Reclutamiento local acreditado en afiche y pie de publicación. No atribuir lugar de faena a Angol; no inventar cierre ni URL exacta. Evitar que el límite de edad de fuente archive sin comprobar."
     }
   ],
-  "policy": "No asumir ofertas vigentes; no importar al catálogo. Cada candidata requiere URL individual, comuna efectiva, vigencia y deduplicación.",
+  "policy": "Fuente OMIL/social oficial + afiche legible + cargo + postulación + reclutamiento territorial acreditado es evidencia suficiente para publicar tras deduplicación por cargo/empresa/convocatoria. No exigir segunda ficha individual ni fecha de cierre del empleador. Mantener fecha original cuando esté disponible y etiquetar como estimada si proviene de tiempo relativo. Controlar visibilidad interna a los diez días, distinta del cierre real. Captura automatizada de Instagram/Facebook: reportar 'disabled', 'restricted', 'accessible' con evidencia y no presentar un cron omitido como rastreo exitoso. No activar servicios de pago ni eludir restricciones de Meta. No incluir Quilaco.",
   "social_discovery_sources": [
+    {
+      "handle": "omilangol2026",
+      "network": "instagram",
+      "role": "OMIL Angol: captación prioritaria de afiches y carruseles de empleos con postulación presencial",
+      "territory": "Angol",
+      "source_status": "source_confirmed_by_user_evidence_2026-11-05",
+      "access_status": "automatic_capture_disabled_by_AppDeploy_SECURITY_POLICY",
+      "fallback": "Evidencia capturada en publicación OMIL por usuario o fuente autorizada; una publicación puede contener múltiples cargos; no exigir URL individual por cada lámina",
+      "verification": "Afiche + cuenta institucional + cargo + requisitos + vía presencial; reclutamiento Angol aun con faena externa",
+      "internal_visibility_days": 10
+    },
     {
       "handle": "empleos_victoria",
       "network": "instagram",

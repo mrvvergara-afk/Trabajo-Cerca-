@@ -121,23 +121,23 @@ def explicit_work_commune(body):
     places={fold(place):place for place in COMMUNES}
     places.update(aliases)
     for field in re.finditer(
-        r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\\s*[:\\-]\\s*([^.;]{3,100})",
+        r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
         value):
         text=field.group(1)
         for name,commune in places.items():
-            if re.search(r"(?<!\\w)"+re.escape(name)+r"(?!\\w)",text):
+            if re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",text):
                 return commune
     return None
 
 def explicit_employer(body):
-    found=re.search(r"(?:empresa|empleador|raz[oó]n social)\\s*:\\s*([^.;]{3,90})",body,re.I)
+    found=re.search(r"(?:empresa|empleador|raz[oó]n social)\s*:\s*([^.;]{3,90})",body,re.I)
     if not found:return None
     value=found.group(1).strip(" -:")
-    value=re.split(r"\\s+(?:cargo|vacantes|ubicaci[oó]n|comuna|requisitos|postulaci[oó]n)\\s*:",value,1,flags=re.I)[0].strip()
+    value=re.split(r"\s+(?:cargo|vacantes|ubicaci[oó]n|comuna|requisitos|postulaci[oó]n)\s*:",value,1,flags=re.I)[0].strip()
     return value if 2<=len(value)<=90 else None
 
 def explicit_application(body):
-    return bool(re.search(r"(?:postulaciones?\\s+abiertas?|c[oó]mo\\s+postular|postula\\s+(?:en|aqu[ií])|enviar\\s+(?:curr[ií]culum|cv)|env[ií]a\\s+tu\\s+cv|recepci[oó]n\\s+de\\s+antecedentes)",body,re.I))
+    return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
 
 def inspect(seed):
     town,source,url=seed
@@ -190,7 +190,7 @@ def inspect(seed):
                         detail["evidence"]=="individual_page_with_job_terms"
                         and job_commune and employer and application_evidence and dates
                         and (NOW.date()-timedelta(days=1))<=datetime.strptime(dates[0],"%Y-%m-%d").date()<=NOW.date()
-                    ) if dates and re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}",dates[0]) else False
+                    ) if dates and re.fullmatch(r"20\d{2}-\d{2}-\d{2}",dates[0]) else False
                     if dates:
                         parsed=datetime.strptime(dates[0],"%Y-%m-%d").date()
                         detail["date_recent_2d"]=(NOW.date()-timedelta(days=1))<=parsed<=NOW.date()

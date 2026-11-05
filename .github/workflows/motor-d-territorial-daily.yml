@@ -49,12 +49,12 @@ jobs:
               print("MOTOR_D_FAILURE: all sources inaccessible")
               sys.exit(1)
           PY
-      - name: Persist candidate deduplication state for next automatic run
+      - name: Persist deduplication state and per-source report for next run
         if: success()
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add automation/motor_d_discovery/territorial_state.json
+          git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/territorial_daily.json
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
             git push

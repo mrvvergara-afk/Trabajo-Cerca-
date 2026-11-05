@@ -56,6 +56,7 @@ def safe_link(raw,base,origin):
         if u.hostname.lower()!=origin:return None
         if re.search(r"\.(?:jpg|png|gif|svg|css|js|zip|pdf)$",u.path,re.I):return None
         if not u.path or u.path in ("/","/index.php"):return None
+        if (u.hostname,u.path.rstrip("/"),u.query)==(urlsplit(base).hostname,urlsplit(base).path.rstrip("/"),urlsplit(base).query):return None
         return u.geturl().split("#",1)[0]
     except ValueError:return None
 def request_page(url):
@@ -105,7 +106,8 @@ def inspect(seed):
         for detail_url,label in links[:5]:
             detail={"id":key(detail_url),"url":detail_url,"label":label,
                     "evidence":"link_candidate_only","date_source":None,
-                    "work_commune":town,"source_commune_not_confirmed":True}
+                    "work_commune":None,"recruitment_commune":None,
+                    "source_scope_commune":town,"source_commune_not_confirmed":True}
             try:
                 code,detail_soup,detail_reason=request_page(detail_url)
                 detail["http"]=code
@@ -162,15 +164,23 @@ def main():
         known=dict(sorted(known.items(),key=lambda x:x[1].get("first_seen",""),reverse=True)[:8000])
     state_file.write_text(json.dumps({"schema_version":1,"last_run":NOW.isoformat(),
                                      "seen":known},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    per_commune={town:{"sources_attempted":sum(x["commune"]==town for x in rows),
+                       "sources_accessible":sum(x["commune"]==town and x["status"].startswith("scanned") for x in rows),
+                       "links_found":sum(x["links_found"] for x in rows if x["commune"]==town),
+                       "candidates":sum(len(x["candidates"]) for x in rows if x["commune"]==town)}
+                 for town in COMMUNES}
     report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
             "missing_communes":missing,"sources_total":len(SEEDS),
+            "commune_status":per_commune,
+            "communes_with_accessible_source":sum(v["sources_accessible"]>0 for v in per_commune.values()),
+            "communes_without_accessible_source":[k for k,v in per_commune.items() if not v["sources_accessible"]],
             "sources_accessible":sum(r["status"].startswith("scanned") for r in rows),
             "sources_blocked":sum(r["status"] in ("http_restricted","network_error") for r in rows),
             "job_candidates_total":len(unique),"new_candidate_links":len(discovered),
             "baseline_run":first_run,"confirmed_new_publications":0,
             "published_in_trabajo_cerca":0,
-            "warning":"Candidatos, no publicaciones verificadas. Fecha de origen y lugar efectivo no se infieren de la fuente municipal.",
+            "warning":"Enlaces candidatos, NO empleos confirmados. Fuente por comuna no prueba lugar de trabajo ni reclutamiento. Nunca incluir índice/listado como oferta.",
             "sources":rows,"candidates":list(unique.values()),"new_candidates":discovered}
     (ROOT/"territorial_daily.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     summary={k:report[k] for k in ("sources_total","sources_accessible","sources_blocked","job_candidates_total","new_candidate_links",

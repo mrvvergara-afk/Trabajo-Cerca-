@@ -151,6 +151,35 @@ def explicit_employer(body):
 def explicit_application(body):
     return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
 
+def chiletrabajos_metadata(soup, title, url):
+    """Read the individual portal's explicit metadata, never a search-page guess."""
+    if not re.search(r"^https://(?:www\.)?chiletrabajos\.cl/trabajo/",url,re.I):
+        return None
+    text=soup.get_text(" ",strip=True)[:13000]
+    employer=None
+    match=re.search(r"\bBuscado\s+(.{2,120}?)\s+Fecha\s+(20\d{2}-\d{2}-\d{2})\b",text,re.I)
+    if match:
+        employer=match.group(1).strip(" -|:")
+    city=None
+    match=re.search(r"\bUbicaci[oó]n\s+(.{2,110}?)\s+Categor[ií]a\b",text,re.I)
+    if match:
+        location=fold(match.group(1))
+        for place in COMMUNES:
+            if re.search(r"(?<!\w)"+re.escape(fold(place))+r"(?!\w)",location):
+                city=place
+                break
+    # The portal's posting city may be a recruitment address, not the worksite.
+    # Prefer an explicitly named job site supported by the actual description.
+    if re.search(r"\bHospital\s+de\s+Nacimiento\b",text,re.I) and re.search(r"\bNacimiento\b",title,re.I):
+        city="Nacimiento"
+    explicit=explicit_work_commune(text)
+    if explicit:city=explicit
+    expiry=re.search(r"\bExpira\s+(20\d{2}-\d{2}-\d{2})\b",text,re.I)
+    closed=bool(expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
+    application=bool(re.search(r"\bPostular\b|\benv[ií]a\s+tu\s+curr[ií]culum\b|\benv[ií]a\s+tu\s+cv\b",text,re.I))
+    return {"employer":employer if employer and len(employer)<=140 else None,
+            "work_commune":city,"application_evidence":application,"source_closed":closed}
+
 def inspect(seed):
     town,source,url=seed
     out={"commune":town,"source":source,"url":url,"status":"not_started",
@@ -183,8 +212,13 @@ def inspect(seed):
                     job_commune=explicit_work_commune(body)
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
+                    portal=chiletrabajos_metadata(detail_soup,title,detail_url)
+                    if portal:
+                        job_commune=portal["work_commune"] or job_commune
+                        employer=portal["employer"] or employer
+                        application_evidence=portal["application_evidence"] or application_evidence
                     # Closed labels and internal-only calls are not public job vacancies.
-                    explicit_closed=bool(CLOSED.search(title+" "+label))
+                    explicit_closed=bool(CLOSED.search(title+" "+label) or (portal and portal["source_closed"]))
                     public_title=title if len(title)>10 else label
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
                     general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))

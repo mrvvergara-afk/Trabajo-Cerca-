@@ -51,6 +51,34 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertTrue(engine.explicit_application("Enviar CV al contacto oficial"))
         self.assertFalse(engine.explicit_application("Programa municipal de empleabilidad"))
 
+    def test_chiletrabajos_individual_metadata(self):
+        html="""<html><h1>Técnico Telecomunicaciones - Angol</h1>
+          <div>ID 3926909 Buscado DOMINION SPA Fecha 2026-11-05
+          Expira 2027-01-19 Ubicación Angol Categoría Informática Postular</div></html>"""
+        result=engine.chiletrabajos_metadata(BeautifulSoup(html,"html.parser"),
+            "Técnico Telecomunicaciones - Angol",
+            "https://www.chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-angol-3926909")
+        self.assertEqual(result["employer"],"DOMINION SPA")
+        self.assertEqual(result["work_commune"],"Angol")
+        self.assertTrue(result["application_evidence"])
+        self.assertFalse(result["source_closed"])
+
+    def test_chiletrabajos_worksite_overrides_recruitment_city(self):
+        html="""<h1>Se buscan enfierradores Nacimiento</h1>
+          <div>Buscado Constructora ALJO Fecha 2026-11-04 Expira 2027-01-18
+          Ubicación Angol Categoría Otros</div>
+          <article>Obra en ejecución en el Hospital de Nacimiento. Postular.</article>"""
+        result=engine.chiletrabajos_metadata(BeautifulSoup(html,"html.parser"),
+            "Se buscan enfierradores Nacimiento",
+            "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105")
+        self.assertEqual(result["work_commune"],"Nacimiento")
+        self.assertEqual(result["employer"],"Constructora ALJO")
+
+    def test_chiletrabajos_index_never_is_a_verified_job(self):
+        result=engine.chiletrabajos_metadata(BeautifulSoup("<h1>Trabajos</h1>","html.parser"),
+            "Trabajos","https://www.chiletrabajos.cl/encuentra-un-empleo/?2=angol")
+        self.assertIsNone(result)
+
     def test_closed_variants_with_whitespace(self):
         for phrase in ("Postulación   Cerrada", "Postulaciones Cerradas", "Proceso finalizado", "Convocatoria cerrada"):
             with self.subTest(phrase=phrase):

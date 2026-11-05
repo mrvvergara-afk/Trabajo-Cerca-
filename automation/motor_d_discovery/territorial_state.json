@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "last_run": "2026-11-05T09:36:33.060720-03:00",
+  "seen": {
+    "507b22d2078fc8c77c6e": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://hospitalangol.cl/concursos/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "800a3896318cfe09fdea": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://hospitalangol.cl/estado/postulacion/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "5781108f1a78e6c56ab3": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://hospitalangol.cl/concursos/concurso-interno-trabajadora-social-desempeno-en-servicio-de-urgencias/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "3ae48548a839351d6036": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://hospitalangol.cl/concursos/concurso-interno-oficial-administrativoa-unidad-de-remuneraciones/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "09f0a1df7cdb8cf5a51a": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://hospitalangol.cl/concursos/concurso-interno-profesional-de-apoyo-departamento-de-gestion-de-las-personas/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "1001a20d726963441703": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    "bc8284ca74096ac003a2": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    "f97c99a5736cd0857521": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    "f196ccf68aa3483e0e60": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    "0b1f185b01fe928eb77a": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    "e6b08cbe298b17e4ebed": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "cf351e48f76bf92fe453": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "f0cde2c0036a32bfc92c": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-secretaria-administrativa-contable/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "19cf6fc04436fad71292": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-jefe-de-terreno/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "b71890811a0a734816bd": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-enbalaje-de-frutas/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "5f92b942b2c03b2d6265": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnologoa-medico-de-laboratorio-clinico/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "fda66a2a9a68f031c125": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-en-enfermeria-servicio-de-urgencia/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "cb5dff8affc919476b2b": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/matrona-matron/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "02e25765bf0f2bf73914": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-de-farmacia-unidad-de-bodega/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "11cad5f82c30fe6fea4b": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-tics/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "6493f4e5b8349d01eb49": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Niederweningen-Bi-de-Chile-Operadora-Motoniveladora-Caminos-Zona-Norte-BI/1427524300/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "518068c65c46d9ba6138": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-T%C3%A9cnico-Mec%C3%A1nico-V%C3%A1lvulas-Cel-L3-BI/1427947300/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "8489a32e3159ac5cbe22": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-Auxiliar-de-Calidad-Terciados-Arauco-BI-4360000/1447848600/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "a4285bef29c4179dc149": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Niederweningen-Bi-de-Chile-Conductor-Cami%C3%B3n-Transporte-Rollizos-Zona-Norte-%28Chill%C3%A1n%29-BI/1436672200/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "4ac353316512b3121d04": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/San-Jose-de-la-Mariquina-Operadora-Mantenedora-mec%C3%A1nicoa-Complejo-Maderas-Valdivia-LR-5150000/1382592100/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "dcfcbb779ca79cf10d8b": {
+      "first_seen": "2026-11-05T09:36:33.060720-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/",
+      "source": "OMIL Mulchén temporada",
+      "commune": "Mulchén"
+    }
+  }
+}\n

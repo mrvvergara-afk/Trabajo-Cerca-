@@ -31,6 +31,21 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
         self.assertEqual(items,[])
 
+    def test_closed_wording_is_recognized(self):
+        self.assertTrue(engine.CLOSED.search("Postulación Cerrada"))
+        self.assertTrue(engine.CLOSED.search("Postulaciones Cerradas"))
+        self.assertFalse(engine.CLOSED.search("Postulación Abierta"))
+
+    def test_internal_jobs_are_not_open_public_offers(self):
+        self.assertTrue(engine.INTERNAL_ONLY.search("Concurso Interno profesional"))
+        self.assertTrue(engine.GENERAL_INDEX.fullmatch("Concursos Públicos"))
+        self.assertTrue(engine.GENERAL_INDEX.fullmatch("Concursos Internos"))
+
+    def test_closed_link_label_overrides_stale_page(self):
+        html='<a href="/oferta-laboral-camion/">Oferta Laboral Postulación Cerrada Conductor Camión</a>'
+        items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
+        self.assertEqual(items[0][2],"closed")
+
     def test_advertisement_no_job_url(self):
         html='<a href="/noticias/municipio-anuncia-obras/">Alcalde informa de actividades comunitarias</a>'
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")

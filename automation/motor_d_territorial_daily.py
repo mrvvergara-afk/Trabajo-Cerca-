@@ -1,0 +1,161 @@
+"""Motor D territorial: inspección diaria reproducible de fuentes públicas para 12 comunas.
+Produce inventario de candidatos con evidencia, NUNCA publica HTML genérico como vacante.
+No solicita credenciales, evita redes con acceso restringido y registra fallas por fuente.
+"""
+import json, re, hashlib, unicodedata
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+from pathlib import Path
+from urllib.parse import urljoin, urlsplit
+import requests
+from bs4 import BeautifulSoup
+
+TZ=ZoneInfo("America/Santiago")
+NOW=datetime.now(TZ)
+ROOT=Path("automation/motor_d_discovery")
+COMMUNES=["Angol","Collipulli","Ercilla","Lumaco","Los Sauces","Purén",
+          "Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento"]
+# Fuentes municipales y de intermediación: una fuente base por comuna, más fuentes adicionales.
+SEEDS=[
+("Angol","Municipalidad Angol","https://noticias.angol.cl/"),
+("Angol","Hospital Angol concursos","https://hospitalangol.cl/concursos/"),
+("Collipulli","Municipio Collipulli","https://municipalidadcollipulli.cl/"),
+("Ercilla","Municipio Ercilla","https://muniercilla.cl/"),
+("Lumaco","Municipio Lumaco","https://munilumaco.cl/"),
+("Los Sauces","Municipio Los Sauces","https://munilossauces.cl/"),
+("Purén","Municipio Purén","https://munipuren.cl/"),
+("Renaico","Municipio Renaico","https://municipalidadrenaico.cl/concursos-publicos/"),
+("Traiguén","Municipio Traiguén","https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/"),
+("Victoria","Municipio Victoria OMIL","https://victoriachile.cl/departamentos-y-direcciones/udel/omil/"),
+("Mulchén","Municipio Mulchén empleos","https://www.munimulchen.cl/pagina-central-ofertas-laborales/"),
+("Negrete","Municipio Negrete OMIL","https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/"),
+("Nacimiento","Municipio Nacimiento","https://nacimiento.cl/"),
+("Angol","Salud Araucanía Norte","https://ssan.redsalud.gob.cl/trabaje-con-nosotros/"),
+("Collipulli","Arauco empleo","https://jobs.arauco.com/Chile/search/"),
+("Nacimiento","CMPC empleo","https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc"),
+("Mulchén","OMIL Mulchén temporada","https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/"),
+]
+TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|vacante(?:s)?|"
+    r"postulaci[oó]n|convocatoria|concurso(?:s)?|contrata(?:ci[oó]n)?|operador(?:a)?|"
+    r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
+    r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca)\b",re.I)
+NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
+                    r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
+CLOSED=re.compile(r"postulaciones cerradas|proceso finalizado|concurso cerrado|"
+                  r"postulaci[oó]n finalizada|convocatoria cerrada",re.I)
+HEADERS={"User-Agent":"TrabajoCercaTerritorial/1.0 (+public sources; no social scraping)",
+         "Accept":"text/html,application/xhtml+xml"}
+def fold(s):
+    return "".join(c for c in unicodedata.normalize("NFD",str(s)) if unicodedata.category(c)!="Mn").lower()
+def key(s):
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()[:20]
+def safe_link(raw,base,origin):
+    try:
+        u=urlsplit(urljoin(base,raw))
+        if u.scheme!="https" or not u.hostname or u.username or u.password or u.port:return None
+        if u.hostname.lower()!=origin:return None
+        if re.search(r"\.(?:jpg|png|gif|svg|css|js|zip|pdf)$",u.path,re.I):return None
+        if not u.path or u.path in ("/","/index.php"):return None
+        return u.geturl().split("#",1)[0]
+    except ValueError:return None
+def request_page(url):
+    resp=requests.get(url,headers=HEADERS,timeout=(5,9),allow_redirects=True,
+                      stream=True)
+    try:
+        if resp.status_code!=200:return resp.status_code,None,None
+        if not ("html" in resp.headers.get("Content-Type","").lower()):return 200,None,"non_html"
+        size=0;parts=[]
+        for chunk in resp.iter_content(32768):
+            size+=len(chunk)
+            if size>450000:return 200,None,"too_large"
+            parts.append(chunk)
+        return 200,BeautifulSoup(b"".join(parts),"html.parser"),None
+    finally:resp.close()
+def dates_in(soup):
+    found=[]
+    for elem in soup.select("time[datetime], meta[property='article:published_time'], meta[name='date'], meta[property='og:published_time']")[:8]:
+        value=(elem.get("datetime") or elem.get("content") or "")[:30]
+        m=re.search(r"20\d{2}-\d\d-\d\d",value)
+        if m:found.append(m.group(0))
+    return list(dict.fromkeys(found))
+def links_from(soup,base):
+    origin=urlsplit(base).hostname
+    output={}
+    for tag in soup.select("a[href]")[:500]:
+        url=safe_link(tag.get("href",""),base,origin)
+        if not url:continue
+        title=" ".join(tag.stripped_strings)[:180]
+        if len(title)<6 or NOT_LINK.fullmatch(title) or not TERMS.search(title+" "+urlsplit(url).path.replace("-"," ")):continue
+        output.setdefault(url,title)
+    return list(output.items())[:35]
+def inspect(seed):
+    town,source,url=seed
+    out={"commune":town,"source":source,"url":url,"status":"not_started",
+         "checked_at":NOW.isoformat(),"http":None,"links_found":0,
+         "details_opened":0,"candidates":[],"errors":[]}
+    try:
+        status,soup,reason=request_page(url)
+        out["http"]=status
+        if status!=200 or soup is None:
+            out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
+            return out
+        links=links_from(soup,url)
+        out["links_found"]=len(links)
+        # La portada o un enlace genérico no acreditan por sí solos una vacante.
+        for detail_url,label in links[:5]:
+            detail={"id":key(detail_url),"url":detail_url,"label":label,
+                    "evidence":"link_candidate_only","date_source":None,
+                    "work_commune":town,"source_commune_not_confirmed":True}
+            try:
+                code,detail_soup,detail_reason=request_page(detail_url)
+                detail["http"]=code
+                if code==200 and detail_soup is not None:
+                    out["details_opened"]+=1
+                    heading=detail_soup.select_one("h1")
+                    title=heading.get_text(" ",strip=True)[:180] if heading else label
+                    body=detail_soup.get_text(" ",strip=True)[:7000]
+                    dates=dates_in(detail_soup)
+                    explicit_closed=bool(CLOSED.search(body))
+                    detail.update(title=title,dates=dates,
+                                  date_source=dates[0] if dates else None,
+                                  evidence="closed" if explicit_closed else (
+                                      "individual_page_with_job_terms" if TERMS.search(title+" "+body[:1600])
+                                      else "inconclusive_page"),
+                                  excerpt=body[:550])
+                    if dates:
+                        parsed=datetime.strptime(dates[0],"%Y-%m-%d").date()
+                        detail["date_recent_2d"]=(NOW.date()-timedelta(days=1))<=parsed<=NOW.date()
+                else:detail["evidence"]="detail_unavailable"
+            except Exception as exc:
+                detail["error"]=type(exc).__name__;detail["evidence"]="detail_unavailable"
+            out["candidates"].append(detail)
+        out["status"]="scanned_with_candidates" if out["candidates"] else "scanned_no_candidates"
+    except requests.exceptions.RequestException as exc:
+        out["status"]="network_error";out["errors"].append(type(exc).__name__)
+    except Exception as exc:
+        out["status"]="processing_error";out["errors"].append(type(exc).__name__)
+    return out
+def main():
+    ROOT.mkdir(parents=True,exist_ok=True)
+    rows=[inspect(seed) for seed in SEEDS]
+    scanned={r["commune"] for r in rows}
+    missing=sorted(set(COMMUNES)-scanned)
+    candidates=[dict(x,source=y["source"],commune=y["commune"]) for y in rows for x in y["candidates"]]
+    unique={}
+    for item in candidates:
+        unique.setdefault(item["id"],item)
+    report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",
+            "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
+            "missing_communes":missing,"sources_total":len(SEEDS),
+            "sources_accessible":sum(r["status"].startswith("scanned") for r in rows),
+            "sources_blocked":sum(r["status"] in ("http_restricted","network_error") for r in rows),
+            "job_candidates_total":len(unique),"confirmed_new_publications":0,
+            "published_in_trabajo_cerca":0,
+            "warning":"Candidatos, no publicaciones verificadas. Fecha de origen y lugar efectivo no se infieren de la fuente municipal.",
+            "sources":rows,"candidates":list(unique.values())}
+    (ROOT/"territorial_daily.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    summary={k:report[k] for k in ("sources_total","sources_accessible","sources_blocked","job_candidates_total",
+                                   "confirmed_new_publications","published_in_trabajo_cerca","missing_communes")}
+    print("MOTOR_D_TERRITORIAL "+json.dumps(summary,ensure_ascii=False),flush=True)
+    if missing:raise SystemExit("COVERAGE_FAILURE: comuna no inspeccionada")
+if __name__=="__main__":main()

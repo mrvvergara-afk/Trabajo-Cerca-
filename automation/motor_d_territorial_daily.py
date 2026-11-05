@@ -35,6 +35,11 @@ SEEDS=[
 ("Collipulli","Arauco empleo","https://jobs.arauco.com/Chile/search/"),
 ("Nacimiento","CMPC empleo","https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc"),
 ("Mulchén","OMIL Mulchén temporada","https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/"),
+("Mulchén","OMIL Mulchén arándanos 100 cupos","https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/"),
+("Victoria","Municipio Victoria OMIL publicaciones","https://victoriachile.cl/category/omil/"),
+("Angol","Hospital Angol estado postulaciones","https://hospitalangol.cl/estado/postulacion/"),
+("Angol","Radio Viaducto","https://radioviaducto.cl/"),
+("Angol","Las Noticias de Malleco","https://lasnoticiasdemalleco.cl/"),
 ]
 TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|vacante(?:s)?|"
     r"postulaci[oó]n|convocatoria|concurso(?:s)?|contrata(?:ci[oó]n)?|operador(?:a)?|"
@@ -149,6 +154,29 @@ def inspect(seed):
             return detail
         with ThreadPoolExecutor(max_workers=6) as pool:
             out["candidates"]=list(pool.map(inspect_detail,links))
+        # Los comunicados de empleo individuales usados como semilla también son
+        # candidatos propios; no depender de que tengan enlaces internos.
+        source_path=urlsplit(url).path.rstrip("/").lower()
+        if "/oferta-laboral-" in source_path or "/convocatoria-laboral-" in source_path:
+            headline=soup.select_one("h1")
+            heading=headline.get_text(" ",strip=True)[:180] if headline else ""
+            body=soup.get_text(" ",strip=True)[:7000]
+            if (TERMS.search(heading) or "oferta-laboral-" in source_path) and re.search(
+                    r"requisitos|postulaci[oó]n|curr[ií]culum|omil|se requiere",body,re.I):
+                dates=dates_in(soup)
+                detail={"id":key(url),"url":url,"label":heading,"title":heading,
+                        "date_source":dates[0] if dates else None,"dates":dates,
+                        "http":200,"evidence":"closed" if CLOSED.search(body) else "individual_page_with_job_terms",
+                        "work_commune":None,"recruitment_commune":None,
+                        "source_scope_commune":town,"source_commune_not_confirmed":True,
+                        "excerpt":body[:550]}
+                if dates:
+                    try:
+                        date=datetime.strptime(dates[0],"%Y-%m-%d").date()
+                        detail["date_recent_2d"]=(NOW.date()-timedelta(days=1))<=date<=NOW.date()
+                    except ValueError:pass
+                if not any(x["id"]==detail["id"] for x in out["candidates"]):
+                    out["candidates"].append(detail)
         out["details_opened"]=sum(x.get("http")==200 and x.get("evidence") not in
                                    ("detail_unavailable","link_candidate_only") for x in out["candidates"])
         out["status"]="scanned_with_candidates" if out["candidates"] else "scanned_no_candidates"

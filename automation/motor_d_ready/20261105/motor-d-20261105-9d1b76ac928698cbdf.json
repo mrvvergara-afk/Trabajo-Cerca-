@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261105-9d1b76ac928698cbdf",
+  "offers": [
+    {
+      "id_fuente": "d_5c980138c7556d6f7de9",
+      "cargo": "Psicólogo (a) 22 horas",
+      "empresa": "Trayectos Angol",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    },
+    {
+      "id_fuente": "d_561f393870110fb67e2a",
+      "cargo": "Técnico Telecomunicaciones - Angol",
+      "empresa": "DOMINION SPA",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-angol-3926909",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    },
+    {
+      "id_fuente": "d_000ee049f91cba301df5",
+      "cargo": "Técnico Telecomunicaciones Sin Experiencia - Angol",
+      "empresa": "DOMINION SPA",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    },
+    {
+      "id_fuente": "d_c86ec67e426e27e24149",
+      "cargo": "Asistente de Aseo PT 20 HR (Angol)",
+      "empresa": "Fashion's Park",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    },
+    {
+      "id_fuente": "d_ddad4ab0c134985d4f9c",
+      "cargo": "Bodeguero/a Plan Navidad Preunic Angol",
+      "empresa": "Preunic",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963",
+      "fecha_publicacion": "2026-11-04",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    },
+    {
+      "id_fuente": "d_a6c5ab75b47d129e5ebb",
+      "cargo": "Se buscan enfierradores Nacimiento",
+      "empresa": "Constructora aljo",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
+      "fecha_publicacion": "2026-11-04",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    }
+  ]
+}

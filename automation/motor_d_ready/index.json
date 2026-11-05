@@ -1,5 +1,13 @@
 {
   "schema_version": 1,
-  "batches": [],
-  "seen_offer_ids": []
+  "batches": [
+    {
+      "batch_id": "motor-d-20261105-587316aa026504f6c4",
+      "file": "20261105/motor-d-20261105-587316aa026504f6c4.json",
+      "count": 1
+    }
+  ],
+  "seen_offer_ids": [
+    "d_9e173e643c73999fa7f6"
+  ]
 }

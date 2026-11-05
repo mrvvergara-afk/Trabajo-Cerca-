@@ -1,9 +1,14 @@
 {
   "fuente": "CMPC Cornerstone",
-  "checked_at": "2026-11-04T17:24:16.727735+00:00",
+  "checked_at": "2026-11-05T10:56:45.032077+00:00",
   "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "state": "individual_links_found",
   "individual_urls": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
+      "cargo": "Electrico Dia",
+      "evidencia_tarjeta": "Electrico Dia\n\nPuente Alto, REGION METROPOLITANA, Chile\n\n04/11/2026"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19303?c=cmpc",
       "cargo": "Pool Talento Feria Laboral UAI",
@@ -38,11 +43,6 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19141?c=cmpc",
       "cargo": "AYUDANTE GENERAL",
       "evidencia_tarjeta": "AYUDANTE GENERAL\n\nYerbas Buenas, REGION DEL MAULE, Chile\n\n30/10/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19241?c=cmpc",
-      "cargo": "Coordinador/a Transporte",
-      "evidencia_tarjeta": "Coordinador/a Transporte\n\nLos Angeles, Bio Bio, Chile\n\n28/10/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
@@ -105,11 +105,6 @@
       "evidencia_tarjeta": "Especialista SGI - Planta Laja y Pacifico.\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n29/09/2026"
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
-      "cargo": "Mecánico Lubricador",
-      "evidencia_tarjeta": "Mecánico Lubricador\n\nLaja, REGION DEL BIOBIO, Chile\n\n21/08/2026"
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
       "cargo": "Analista de Contabilidad",
       "evidencia_tarjeta": ""
@@ -128,13 +123,28 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
       "cargo": "Conductor/a de autoelevador",
       "evidencia_tarjeta": ""
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
+      "cargo": "Coordinador de Soporte Técnico SAP",
+      "evidencia_tarjeta": ""
     }
   ],
   "errors": [],
   "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "title": "Vacantes actuales - cmpc",
-  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (21)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (8)\nJalisco (3)\nRegion Del Maule (3)\nRegion Metropolitana (3)\nRegión De La Araucanía (3)\nBio Bio (2)\nBuenos Aires (2)\nNuevo León (1)\nPuebla (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (8)\nCollipulli (3)\nSantiago (3)\nTlajomulco (3)\nYerbas Buenas (3)\nZarate (2)\nCoquimbo (1)\nLaja (1)\nLos Angeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nFecha colocada\nDentro de 3 días (3)\nDentro de 7 días (7)\nDentro de 15 días (14)\nDentro de 30 días (19)\nCualquier momento (36)\nUnidad de Negocio\nCMPC Celulosa (12)\nCMPC BioPackaging (6)\nSoftys (15)\nEmpresas CMPC (3)\nVacantes actuales\n\nPool Talento Feria Laboral UAI\n\nSantiago, REGION METROPOLITANA, Chile\n\n03/11/2026\n\nEjecutivo servicio al cliente\n\nSantiago, REGION METROPOLITANA, Chile\n\n03/11/2026\n\nAdministrador Zonal\n\nCoquimbo, Chile\n\n02/11/2026\n\nMecánico/a de Área - Nacimiento, Planta Santa Fe\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n30/10/2026\n\nMecánico/a Turno - Nacimiento, planta Santa Fe\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n30/10/2",
+  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (20)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (7)\nRegion Metropolitana (4)\nJalisco (3)\nRegion Del Maule (3)\nRegión De La Araucanía (3)\nBuenos Aires (2)\nBio Bio (1)\nNuevo León (1)\nPuebla (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (8)\nCollipulli (3)\nSantiago (3)\nTlajomulco (3)\nYerbas Buenas (3)\nZarate (2)\nCoquimbo (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nPuente Alto (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nFecha colocada\nDentro de 3 días (3)\nDentro de 7 días (8)\nDentro de 15 días (12)\nDentro de 30 días (18)\nCualquier momento (35)\nUnidad de Negocio\nCMPC Celulosa (11)\nCMPC BioPackaging (7)\nSoftys (15)\nEmpresas CMPC (2)\nVacantes actuales\n\nElectrico Dia\n\nPuente Alto, REGION METROPOLITANA, Chile\n\n04/11/2026\n\nPool Talento Feria Laboral UAI\n\nSantiago, REGION METROPOLITANA, Chile\n\n03/11/2026\n\nEjecutivo servicio al cliente\n\nSantiago, REGION METROPOLITANA, Chile\n\n03/11/2026\n\nAdministrador Zonal\n\nCoquimbo, Chile\n\n02/11/2026\n\nMecánico/a de Área - Nacimiento, Planta Santa Fe\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n30/10/2026\n\nMecánico/a Turno - Nacimiento, pl",
   "individual_details": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
+      "cargo": "Electrico Dia",
+      "evidencia_tarjeta": "Electrico Dia\n\nPuente Alto, REGION METROPOLITANA, Chile\n\n04/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nElectrico Dia\nPuente Alto, REGION METROPOLITANA, Chile\n|\nreq19261\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nDiagnosticar, evaluar y reparar sistemas eléctricos y de control automático en el proceso de fabricación, asegurando la continuidad operacional, seguridad e inocuidad del proceso, y contribuyendo a la planificación de mantenimientos según los lineamientos de la Subgerencia de Operaciones.\n\n\n\n\nInspeccionar y evaluar equipos mediante mantenimientos preventivos y predictivos para detectar desviaciones de eficiencia.\nInstalar repuestos e insumos según el desgaste de las piezas y notificar la necesidad de reposición en bodega.\nRegistrar la información técnica de las intervenciones en el sistema y reportar el estado de las máquinas a la supervisión.\nReparar fallas eléctricas imprevistas y ajustar sistemas de control automático durante la jornada.\nIdentificar riesgos de seguridad e inocuidad alimentaria durante las actividades de mantenimiento.\nColaborar con el personal de turno en la resolución de fallas de alta complejidad técnica.\n\nCompetencias Académicas\n- Técnico o Ingeniero en Automatización, Electricidad, Electrónica o Instrumentación.\n\n Experiencia\n- 3 a 5 años en mantenimiento industrial y automatización.\n\nCompetencias Técnicas\n- PLC Siemens, Allen Bradley, Schneider u Omron, Mitsubishi, Proface.\n- TIA Portal, Studio 5000, HMI y SCADA.\n- Redes Profinet, Profibus, Modbus y Ethernet/IP.\n- Instrumentación industrial y variadores de frecuencia.\n- Interpretación de planos eléctricos y de control.\n\nCompetencias Conductuales\n- Trabajo en equipo.\n- Orientación al logro.\n- Mejora continua.\n- Apertura al cambio.\n\nContrato: Indefinido\nUbicación: Puente Alto\nHorario: Lunes a Jueves 08:00 a 17:30\nViernes 08:00 a 14:30.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2855,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-05T10:56:55.061789+00:00"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19303?c=cmpc",
       "cargo": "Pool Talento Feria Laboral UAI",
@@ -143,7 +153,7 @@
       "ficha_accessible": false,
       "ficha_content_length": 2008,
       "ficha_contenido_laboral": false,
-      "ficha_checked_at": "2026-11-04T17:24:36.659479+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:07.323124+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19167?c=cmpc",
@@ -153,7 +163,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2647,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:24:38.391652+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:09.310293+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
@@ -163,7 +173,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2306,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:24:40.091149+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:11.654079+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
@@ -173,7 +183,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3000,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:24:41.715057+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:14.103896+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
@@ -183,7 +193,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2883,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:24:43.702732+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:16.134231+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
@@ -193,7 +203,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3974,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:24:45.183902+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:18.058302+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19141?c=cmpc",
@@ -203,17 +213,7 @@
       "ficha_accessible": false,
       "ficha_content_length": 2463,
       "ficha_contenido_laboral": false,
-      "ficha_checked_at": "2026-11-04T17:24:57.362758+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19241?c=cmpc",
-      "cargo": "Coordinador/a Transporte",
-      "evidencia_tarjeta": "Coordinador/a Transporte\n\nLos Angeles, Bio Bio, Chile\n\n28/10/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nCoordinador/a Transporte\nLos Angeles, Bio Bio, Chile\n|\nreq19241\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nGarantizar el abastecimiento continuo, eficiente y seguro de materias primas e insumos químicos y operacionales hacia las plantas industriales, optimizando los costos de distribución, liderando la relación estratégica con las empresas de transporte, y asegurando el estricto cumplimiento de las normativas de seguridad, medioambiente y legislación vial vigente.\n\nAsegurar el cumplimiento y ejecución de las principales responsabilidades del rol, planificando y coordinando los programas de abastecimiento, asegurando transporte SUSPEL con riguroso cumplimiento de normas, gestionando, controlando y evaluando desempeño de proveedores de transporte, monitoreando el presupuesto logístico hacia una gestión eficiente del proceso, resolviendo contingencias que aseguren continuidad operacional industrial y utilizando la tecnología e innovación para controlar y gestionar cada uno de los componentes de la cadena logística del alcance.\n\n\n\n\nLiderar la transición implementando proyectos de analítica de datos aplicada a la cadena de suministro, hacia un desafío de excelencia world class, con una logística que optimice rutas, fortalezca la rigurosa seguridad del transporte, reduzca costos integrales y al mismo tiempo promueva procesos verdes que permitan reducir la huella de carbono y emisiones.\nGanar una visibilidad estratégica al conectar directamente la cadena de suministro externa con la continuidad operacional de complejos industriales de gran envergadura.\n\nFormación: Ingeniero Civil Industrial, Ingeniero Comercial, Ingeniero en Logística, Ingeniero en Transporte o profesional de carrera afín.\n\nConocimiento específico: Conocimiento del funcionamiento logístico para procesos continuos (celulosa, papel, minería a química tradicional), manejando transporte de carga pesada a granel y/o sustancias peligrosas. Normativa legal para transporte de carga.\n\nExperiencia: Mínimo 2 a 4 años en gestión de operaciones logísticas, transporte o cadena de suministro. Deseable experiencia en procesos industriales continuos.\n\nConducir: Licencia clase B (excluyente)\n\nComputación: SAP MM; Herramientas tecnología TMS, plataformas GPS/telemetría; Office (Excel, Power BI); Deseable experiencia en análisis de datos y uso de herramientas de IA.\n\nIdioma: Deseable nivel intermedio de inglés.\n\n\n\n\nContrato: Indefinido\nUbicación: Edificio Corporativo Los Angeles\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 3573,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:24:58.945721+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:30.311038+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
@@ -223,7 +223,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3867,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:00.406611+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:32.141610+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
@@ -233,7 +233,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3790,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:02.077956+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:34.178126+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
@@ -243,7 +243,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2752,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:03.886536+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:36.069013+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19210?c=cmpc",
@@ -253,7 +253,7 @@
       "ficha_accessible": false,
       "ficha_content_length": 3071,
       "ficha_contenido_laboral": false,
-      "ficha_checked_at": "2026-11-04T17:25:16.074712+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:48.223892+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
@@ -263,7 +263,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4072,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:17.675903+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:50.439111+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18931?c=cmpc",
@@ -273,7 +273,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3985,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:19.319962+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:52.683489+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
@@ -283,7 +283,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3872,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:21.019841+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:54.896337+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19100?c=cmpc",
@@ -293,7 +293,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3507,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:22.700549+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:56.930040+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
@@ -303,7 +303,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2485,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:24.207773+00:00"
+      "ficha_checked_at": "2026-11-05T10:57:58.640207+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
@@ -313,7 +313,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5754,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:25.843797+00:00"
+      "ficha_checked_at": "2026-11-05T10:58:00.447439+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18959?c=cmpc",
@@ -323,7 +323,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3692,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:27.418794+00:00"
+      "ficha_checked_at": "2026-11-05T10:58:02.587495+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18992?c=cmpc",
@@ -333,17 +333,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3094,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:29.049747+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
-      "cargo": "Mecánico Lubricador",
-      "evidencia_tarjeta": "Mecánico Lubricador\n\nLaja, REGION DEL BIOBIO, Chile\n\n21/08/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nMecánico Lubricador\nLaja, REGION DEL BIOBIO, Chile\n|\nreq18723\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nEjecutar y controlar las actividades de inspección, lubricación y mecánica de los equipos de Planta Laja, mediante la aplicación de rutas programadas, monitoreo del estado de los activos, detección de anomalías y registro oportuno de hallazgos, contribuyendo a la confiabilidad operacional, disponibilidad de los equipos, seguridad de las personas y protección del medio ambiente.\n\n En este rol tendrás la oportunidad de       \n\nEjecución de rutas programadas: rutas de inspección, lubricación y mecánica definidas en SAP y Lube It, inspeccionando periódicamente los equipos de toda la Planta Laja.\nCumplimiento de frecuencias: verificar que se respeten las frecuencias establecidas de inspección y lubricación, con revisión diaria de equipos críticos, en seguimiento y con exigencias ambientales.\nInspección visual de equipos: verificar y reportar nivel y estado del aceite, condiciones del activo, retenes y sellos, visores de nivel, venteos, fugas de aceite/grasa, limpieza de los sistemas de lubricación y riesgos para operación, seguridad y medio ambiente.\nActividades de lubricación/mecánica: ejecutarlas según los procedimientos y estándares establecidos.\nControl de fugas y condición de equipos: detectar y reportar fugas de aceites y grasas, identificar anomalías en los sistemas de lubricación e informar condiciones subestándar, manteniendo control permanente sobre las condiciones operacionales.\nSistemas automáticos de lubricación: inspeccionarlos verificando niveles y el correcto funcionamiento de bombas, dosificadores y líneas de distribución, detectando fallas u obstrucciones e informando oportunamente las desviaciones.\nGestión de información y registros: registrar las actividades en SAP y Lube It, generar notificaciones y evidencias, completar los check list tras cambios o intervenciones relevantes y etiquetar los equipos según los estándares.\nGestión de hallazgos: detectar condiciones anormales, generar avisos de mantenimiento en SAP, registrar observaciones técnicas claras y precisas y hacer seguimiento de los hallazgos cuando se requiera.\n\n Lo que necesitas para desempeñar este rol \n\nFormación: Título Técnico Nivel Medio/Superior Mecánico, Eléctrico, en Mantenimiento Industrial, en Mantenimiento Eléctrico o Ingeniería Mecánica.\n\nDeseable:\n\nEspecialización en Lubricación Industrial.\nCursos de mantenimiento predictivo y lubricación.\nArme y desarme de equipos industriales.\n\nExperiencia:\n\nMínimo 5 años de experiencia comprobable en plantas de celulosa.\nMínimo 2 años de experiencia como Mecánico, Inspector o Técnico de Lubricación Industrial.\n\nConocimiento Específicos:\n\nSAP PM.\nMicrosoft Office Intermedio.\n\n Condiciones del cargo                                   \n\nContrato: Indefinido\nUbicación: Planta Laja, Región del Biobío.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 4026,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:30.863036+00:00"
+      "ficha_checked_at": "2026-11-05T10:58:04.691213+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
@@ -353,7 +343,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2781,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:32.357681+00:00"
+      "ficha_checked_at": "2026-11-05T10:58:06.511763+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
@@ -363,7 +353,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2259,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:33.997266+00:00"
+      "ficha_checked_at": "2026-11-05T10:58:08.290476+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
@@ -373,7 +363,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2815,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:35.594862+00:00"
+      "ficha_checked_at": "2026-11-05T10:58:09.932176+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
@@ -383,7 +373,17 @@
       "ficha_accessible": true,
       "ficha_content_length": 1943,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-04T17:25:37.099959+00:00"
+      "ficha_checked_at": "2026-11-05T10:58:11.678767+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
+      "cargo": "Coordinador de Soporte Técnico SAP",
+      "evidencia_tarjeta": "",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nCoordinador de Soporte Técnico SAP\nMONTERREY 1, NUEVO LEÓN, México\n|\nreq3245\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a Coordinador de Soporte Técnico SAP para nuestra Departamento de Sistemas.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nProveer soporte técnico de primer nivel/contacto en incidencias y requerimientos relacionados con la operación del ERP SAP, gestionando actividades para resolver de manera oportuna y efectiva.\n\n\nFunciones específicas:\n\nProveer soporte de primer nivel en la atención de requerimientos e incidencias relacionados con el ERP SAP.\nParticipar en proyectos relacionados con procesos, aplicaciones y transacciones basados en el ERP SAP.\nProporcionar servicio de consultoría a usuarios de la compañía de manera directa o en colaboración con el equipo de consultores de Corporativo, incluyendo tareas como procesos de prueba, documentación, capacitación, parametrización.\n\nRequisitos:\n\nLicenciatura o Ingeniería en Sistemas, Computación o TI. \nInglés intermedio / avanzado.\nExperiencia de al menos 3 años en atención a usuarios en requerimientos relacionados con el ambiente SAP. \n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra fibra.\n\n#LI-DNI\n\n \n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2036,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-05T10:58:13.874299+00:00"
     }
   ]
 }

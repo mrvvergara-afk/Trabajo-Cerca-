@@ -75,6 +75,14 @@
   ],
   "pending": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
+      "title": "Electrico Dia",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19303?c=cmpc",
       "title": "Pool Talento Feria Laboral UAI",
       "workplaces": [],
@@ -139,14 +147,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19241?c=cmpc",
-      "title": "Coordinador/a Transporte",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "title": "Electricista de área - Planta Santa Fe",
       "workplaces": [
@@ -200,15 +200,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
-      "title": "Mecánico Lubricador",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
       "title": "Analista de Contabilidad",
       "workplaces": [],
@@ -238,6 +229,15 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
       "title": "Conductor/a de autoelevador",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
+      "title": "Coordinador de Soporte Técnico SAP",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

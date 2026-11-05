@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261105-587316aa026504f6c4",
+  "offers": [
+    {
+      "id_fuente": "d_9e173e643c73999fa7f6",
+      "cargo": "Se buscan enfierradores Nacimiento",
+      "empresa": "Constructora ALJO",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
+      "fecha_publicacion": "2026-11-04",
+      "fecha_cierre": "2027-01-18",
+      "justificacion": "Oferta real del 4 de noviembre 2026, Chiletrabajos 3926105; obra Hospital de Nacimiento. Prueba controlada de importación D."
+    }
+  ]
+}

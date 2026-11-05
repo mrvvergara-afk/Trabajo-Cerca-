@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-05T09:45:46.449984-03:00",
+  "last_run": "2026-11-05T09:48:09.298787-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -169,6 +169,114 @@
       "url": "https://www.munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027/",
       "source": "Municipio Mulchén empleos",
       "commune": "Mulchén"
+    },
+    "fe43ca3313f437904fc9": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://hospitalangol.cl/concursos/concurso-interno-profesional-de-apoyo-departamento-de-finanzas/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "eac6591512e76d70c4a5": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://hospitalangol.cl/concursos/concurso-interno-asignacion-de-responsabilidad-ley-18-834/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "b72899d673b4c27f2a26": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://hospitalangol.cl/concursos/llamado-a-concursos-publicos/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "68259bfc835a2169d5bd": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://hospitalangol.cl/concursos/llamado-a-concurso-interno-2/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "6a204ea5cb0026b39878": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://hospitalangol.cl/concursos/llamado-concursos-publicos/",
+      "source": "Hospital Angol concursos",
+      "commune": "Angol"
+    },
+    "7803b100daea91516ff5": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "source": "Municipio Collipulli",
+      "commune": "Collipulli"
+    },
+    "bed10920a9524c330ae2": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://municipalidadcollipulli.cl/concursos-internos/",
+      "source": "Municipio Collipulli",
+      "commune": "Collipulli"
+    },
+    "1c4e31979dc846badd6c": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-manipulador-de-alimentos-chef-maestro-de-cocina-08-cupos/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "eeb31e7e6f87ee82395a": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-conductor-camion-tolva-proyecto-rucalhue/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "193e0647ef602175ad0b": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-operador-cargador-frontal-proyecto-rucalhue/",
+      "source": "Municipio Mulchén empleos",
+      "commune": "Mulchén"
+    },
+    "bcb7029468f8e99903da": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/profesional-de-apoyo-subdepartamento-tesoreria-y-gestion-de-cobros/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "b2862bfffab9d620f853": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/terapeuta-ocupacional/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "54c37db21245775ae2fc": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/jefe-a-de-abastecimiento/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "60ac78db0cea5837f5ce": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/encargadoa-de-agendas-del-servicio-de-orientacion-medica-y-estadistica-some/",
+      "source": "Salud Araucanía Norte",
+      "commune": "Angol"
+    },
+    "12d069b234cecedef419": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Operador-Experto-Secado-Terciados-Nueva-Aldea/1444086000/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "15f4fd25ef238c97b93e": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/San-Jose-de-la-Mariquina-Operadora-Maquinaria-Forestal-de-Shovel-Feller-Zona-Valdivia-LR-5150000/1434153600/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "6809e9fef74401aa8032": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-T%C3%A9cnicoa-Mec%C3%A1nicoa-Tornero-Cel-L3-BI/1443273100/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "10d92b94cb74e47a79d9": {
+      "first_seen": "2026-11-05T09:48:09.298787-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Operadora-Maquinaria-Forestal-Procesador-Zona-Norte-BI-3780000/1402854900/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
     }
   }
 }

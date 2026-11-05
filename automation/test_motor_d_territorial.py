@@ -36,6 +36,16 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertTrue(engine.CLOSED.search("Postulaciones Cerradas"))
         self.assertFalse(engine.CLOSED.search("Postulación Abierta"))
 
+    def test_closed_variants_with_whitespace(self):
+        for phrase in ("Postulación   Cerrada", "Postulaciones Cerradas", "Proceso finalizado", "Convocatoria cerrada"):
+            with self.subTest(phrase=phrase):
+                self.assertTrue(engine.CLOSED.search(phrase))
+        self.assertFalse(engine.CLOSED.search("Postulación abierta"))
+
+    def test_internal_call_with_spaces(self):
+        self.assertTrue(engine.INTERNAL_ONLY.search("Concurso    interno"))
+        self.assertTrue(engine.GENERAL_INDEX.fullmatch("Llamado a concurso público"))
+
     def test_internal_jobs_are_not_open_public_offers(self):
         self.assertTrue(engine.INTERNAL_ONLY.search("Concurso Interno profesional"))
         self.assertTrue(engine.GENERAL_INDEX.fullmatch("Concursos Públicos"))

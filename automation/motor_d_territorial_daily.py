@@ -98,7 +98,7 @@ def dates_in(soup):
     # Chiletrabajos individual pages label the original date explicitly.
     # Never infer a publication date from a date in a job description.
     text=soup.get_text(" ",strip=True)[:3000]
-    match=re.search(r"\\bFecha\\s*[:|]?\\s*(20\\d{2}-\\d{2}-\\d{2})\\b",text,re.I)
+    match=re.search(r"\bFecha\s*[:|]?\s*(20\d{2}-\d{2}-\d{2})\b",text,re.I)
     if match:found.append(match.group(1))
     return list(dict.fromkeys(found))
 def links_from(soup,base):

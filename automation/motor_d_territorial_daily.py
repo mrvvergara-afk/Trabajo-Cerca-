@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 import requests
+from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 
 TZ=ZoneInfo("America/Santiago")
@@ -68,7 +69,7 @@ def request_page(url):
         size=0;parts=[]
         for chunk in resp.iter_content(32768):
             size+=len(chunk)
-            if size>450000:return 200,None,"too_large"
+            if size>1200000:return 200,None,"too_large"
             parts.append(chunk)
         return 200,BeautifulSoup(b"".join(parts),"html.parser"),None
     finally:resp.close()
@@ -87,8 +88,21 @@ def links_from(soup,base):
         if not url:continue
         title=" ".join(tag.stripped_strings)[:180]
         if len(title)<6 or NOT_LINK.fullmatch(title) or not TERMS.search(title+" "+urlsplit(url).path.replace("-"," ")):continue
-        output.setdefault(url,title)
-    return list(output.items())[:35]
+        # El índice municipal puede decir CERRADA aunque la ficha individual antigua diga ABIERTA.
+        # Solo usar contenedores pequeños del enlace; nunca un div que reúna toda la página.
+        listing_state="not_indicated"
+        parent=tag
+        for _ in range(3):
+            parent=getattr(parent,"parent",None)
+            if parent is None:break
+            context=parent.get_text(" ",strip=True)
+            if len(context)>460:break
+            nearby=re.search(r"postulaci[oó]n\\s+(abierta|cerrada)",context,re.I)
+            if nearby:
+                listing_state="closed" if nearby.group(1).lower()=="cerrada" else "open"
+                break
+        output.setdefault(url,(title,listing_state))
+    return [(url,title,state) for url,(title,state) in output.items()][:35]
 def inspect(seed):
     town,source,url=seed
     out={"commune":town,"source":source,"url":url,"status":"not_started",
@@ -102,17 +116,18 @@ def inspect(seed):
             return out
         links=links_from(soup,url)
         out["links_found"]=len(links)
-        # La portada o un enlace genérico no acreditan por sí solos una vacante.
-        for detail_url,label in links[:5]:
+        # Procesar todos los enlaces descubiertos (hasta 35) con paralelismo acotado,
+        # sin quedar en un muestreo fijo de cinco.
+        def inspect_detail(entry):
+            detail_url,label,index_status=entry
             detail={"id":key(detail_url),"url":detail_url,"label":label,
-                    "evidence":"link_candidate_only","date_source":None,
-                    "work_commune":None,"recruitment_commune":None,
+                    "index_status":index_status,"evidence":"link_candidate_only",
+                    "date_source":None,"work_commune":None,"recruitment_commune":None,
                     "source_scope_commune":town,"source_commune_not_confirmed":True}
             try:
                 code,detail_soup,detail_reason=request_page(detail_url)
                 detail["http"]=code
                 if code==200 and detail_soup is not None:
-                    out["details_opened"]+=1
                     heading=detail_soup.select_one("h1")
                     title=heading.get_text(" ",strip=True)[:180] if heading else label
                     body=detail_soup.get_text(" ",strip=True)[:7000]
@@ -120,7 +135,7 @@ def inspect(seed):
                     explicit_closed=bool(CLOSED.search(body))
                     detail.update(title=title,dates=dates,
                                   date_source=dates[0] if dates else None,
-                                  evidence="closed" if explicit_closed else (
+                                  evidence="closed" if (explicit_closed or index_status=="closed") else (
                                       "individual_page_with_job_terms" if TERMS.search(title+" "+body[:1600])
                                       else "inconclusive_page"),
                                   excerpt=body[:550])
@@ -129,8 +144,13 @@ def inspect(seed):
                         detail["date_recent_2d"]=(NOW.date()-timedelta(days=1))<=parsed<=NOW.date()
                 else:detail["evidence"]="detail_unavailable"
             except Exception as exc:
-                detail["error"]=type(exc).__name__;detail["evidence"]="detail_unavailable"
-            out["candidates"].append(detail)
+                detail["error"]=type(exc).__name__
+                detail["evidence"]="detail_unavailable"
+            return detail
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            out["candidates"]=list(pool.map(inspect_detail,links))
+        out["details_opened"]=sum(x.get("http")==200 and x.get("evidence") not in
+                                   ("detail_unavailable","link_candidate_only") for x in out["candidates"])
         out["status"]="scanned_with_candidates" if out["candidates"] else "scanned_no_candidates"
     except requests.exceptions.RequestException as exc:
         out["status"]="network_error";out["errors"].append(type(exc).__name__)

@@ -14,9 +14,12 @@ on:
     paths:
       - 'automation/motor_d_territorial_daily.py'
       - 'automation/test_motor_d_territorial.py'
+      - 'automation/motor_d_express.py'
+      - 'automation/test_motor_d_express.py'
       - '.github/workflows/motor-d-territorial-daily.yml'
   schedule:
-    - cron: '15 9,21 * * *'
+    # 06:15 and 07:15 Chile (DST) are separate chances: GitHub schedule may be delayed.
+    - cron: '15 9,10,21 * * *'
 permissions:
   contents: write
 concurrency:

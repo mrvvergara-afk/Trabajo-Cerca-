@@ -84,7 +84,7 @@ def safe_link(raw,base,origin):
         if u.scheme!="https" or not u.hostname or u.username or u.password or u.port:return None
         if u.hostname.lower()!=origin:return None
         if re.search(r"\.(?:jpg|png|gif|svg|css|js|zip|pdf)$",u.path,re.I):return None
-        if not u.path or u.path in ("/","/index.php"):return None
+        if not u.path or u.path in ("/","/index.php") or re.search(r"/(?:alertas-de-empleo|login|registro|faq|preguntas-frecuentes)/?$",u.path,re.I):return None
         if (u.hostname,u.path.rstrip("/"),u.query)==(urlsplit(base).hostname,urlsplit(base).path.rstrip("/"),urlsplit(base).query):return None
         return u.geturl().split("#",1)[0]
     except ValueError:return None
@@ -192,6 +192,24 @@ def chiletrabajos_metadata(soup, title, url):
     return {"employer":employer if employer and len(employer)<=140 else None,
             "work_commune":city,"application_evidence":application,"source_closed":closed}
 
+def hiringroom_metadata(soup, title, url):
+    """Primary employer ATS evidence only. Relative time is not an original calendar date."""
+    if not re.fullmatch(r"https://fashionspark\\.hiringroom\\.com/jobs/get_vacancy/[a-f0-9]{24}(?:\\?.*)?",url,re.I):
+        return None
+    text=soup.get_text(" ",strip=True)[:6000]
+    m=re.search(r"(?<!\\w)(Angol|Victoria|Collipulli|Ercilla|Lumaco|Los Sauces|Purén|Renaico|Traiguén|Mulchén|Negrete|Nacimiento)\\s*,\\s*Araucan[ií]a\\s*,\\s*Chile",text,re.I)
+    if not m:
+        m=re.search(r"(?<!\\w)(Mulchén|Negrete|Nacimiento)\\s*,\\s*Biob[ií]o\\s*,\\s*Chile",text,re.I)
+    site=next((x for x in COMMUNES if fold(x)==fold(m.group(1))),None) if m else None
+    heading=soup.find(["h1","h2"])
+    name=heading.get_text(" ",strip=True)[:180] if heading else re.split(
+        r"\\b(?:Angol|Victoria|Collipulli|Ercilla|Lumaco|Los Sauces|Pur[eé]n|Renaico|Traigu[eé]n|Mulch[eé]n|Negrete|Nacimiento),\\s*(?:Araucan[ií]a|Biob[ií]o)",title,1,flags=re.I)[0][:180].strip()
+    if not re.search(r"Descripci[oó]n del puesto|Requisitos|Postularse",text,re.I):
+        return None
+    return {"title":name,"employer":"Fashion's Park","work_commune":site,
+            "application_evidence":bool(re.search(r"\\bPostularse\\b",text,re.I)),
+            "date_source_method":"relative_only_not_verified"}
+
 def inspect(seed):
     town,source,url=seed
     out={"commune":town,"source":source,"url":url,"status":"not_started",
@@ -229,6 +247,12 @@ def inspect(seed):
                         job_commune=portal["work_commune"] or job_commune
                         employer=portal["employer"] or employer
                         application_evidence=portal["application_evidence"] or application_evidence
+                    primary_ats=hiringroom_metadata(detail_soup,title,detail_url)
+                    if primary_ats:
+                        title=primary_ats["title"]
+                        job_commune=primary_ats["work_commune"] or job_commune
+                        employer=primary_ats["employer"] or employer
+                        application_evidence=primary_ats["application_evidence"] or application_evidence
                     # Closed labels and internal-only calls are not public job vacancies.
                     explicit_closed=bool(CLOSED.search(title+" "+label) or (portal and portal["source_closed"]))
                     public_title=title if len(title)>10 else label

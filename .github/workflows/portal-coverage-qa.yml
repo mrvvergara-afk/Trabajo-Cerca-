@@ -1,0 +1,28 @@
+name: Portal coverage safety tests (no deploy)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/portal_coverage_registry.py'
+      - 'automation/portal_public_probe.py'
+      - 'automation/test_portal_coverage_registry.py'
+      - 'automation/test_portal_public_probe.py'
+      - '.github/workflows/portal-coverage-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portal_tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install read-only parser dependency
+        run: python -m pip install 'beautifulsoup4>=4.12,<5'
+      - name: Compile portal modules
+        run: python -m py_compile automation/portal_coverage_registry.py automation/portal_public_probe.py
+      - name: Run offline unit tests (no external HTTP; no publishing)
+        run: python -m unittest discover -s automation -p 'test_portal_*.py' -v

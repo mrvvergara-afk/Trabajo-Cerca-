@@ -111,6 +111,16 @@ def scan_one(portal,commune,*,fetch=fetch_public_html,authorize=robots_allowed,r
  if html is None:
   record["status"]="html_unreadable"
   return record
+ # A 200 HTTP response can still be an application-level 404 or login wall.
+ # Do not mislabel these as an empty, successfully scanned job index.
+ page=BeautifulSoup(html,"html.parser")
+ visible=page.get_text(" ",strip=True)[:3500]
+ if re.search(r"(?:No encontramos la p[aá]gina que buscas|Error[- ]404|P[aá]gina no encontrada|Page not found)",visible,re.I):
+  record["status"]="soft_404_or_invalid_search_path"
+  return record
+ if re.search(r"(?:verify you are human|access denied|unusual traffic|checkpoint_required)",visible,re.I):
+  record["status"]="access_challenge"
+  return record
  links=extract_individual_links(portal,html,url)
  record["candidate_links"]=links
  record["unverified_links"]=len(links)

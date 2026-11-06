@@ -28,3 +28,34 @@ jobs:
         run: python -m py_compile automation/portal_coverage_registry.py automation/portal_public_probe.py automation/portal_individual_evidence.py
       - name: Run offline unit tests (no external HTTP; no publishing)
         run: python -m unittest discover -s automation -p 'test_portal_*.py' -v
+
+  portal_angol_readonly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install parser only
+        run: python -m pip install 'beautifulsoup4>=4.12,<5'
+      - name: Check real public access for Angol without publishing
+        run: |
+          python automation/portal_public_probe.py --commune Angol --output /tmp/portal-angol-readonly.json > /dev/null
+          python - <<'PY'
+          import json
+          report=json.load(open('/tmp/portal-angol-readonly.json'))
+          print('PORTAL_ANGOL_ACCESS_AUDIT',json.dumps({
+            portal: {'status': next((x['status'] for x in report['sources'] if x['portal']==portal), 'not_checked'),
+                     'links': sum(x['unverified_links'] for x in report['sources'] if x['portal']==portal)}
+            for portal in ('computrabajo','laborum','opcionempleo','trabajando','chiletrabajos','indeed','linkedin')
+          },ensure_ascii=False))
+          print('NO_CATALOG_PUBLICATIONS_FROM_THIS_AUDIT')
+          PY
+      - name: Preserve access diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-angol-readonly-diagnostic
+          path: /tmp/portal-angol-readonly.json
+          if-no-files-found: ignore

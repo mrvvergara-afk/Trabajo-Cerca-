@@ -75,10 +75,26 @@ jobs:
           git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_ready/
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
-            git push
+            # A simultaneous source edit is not a failed scan. Rebase and retry
+            # instead of losing the report to a non-fast-forward push.
+            for attempt in 1 2 3; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort || true
+                echo "MOTOR_D_PERSIST_CONFLICT: preserve the audit artifact for reconciliation"
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                echo "MOTOR_D_PERSIST_OK attempt=$attempt"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "MOTOR_D_PERSIST_FAILED: all safe retries exhausted"
+            exit 1
           fi
       - name: Preserve complete territorial audit
-        if: github.event_name != 'pull_request'
+        if: always() && github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
           name: motor-d-territorial-audit

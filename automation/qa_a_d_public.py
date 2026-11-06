@@ -49,7 +49,7 @@ def main():
         "missing_D":missing},ensure_ascii=False))
     assert len(items)>=100,"Public catalog unexpectedly small"
     assert not missing,"Previously confirmed Motor D offers disappeared"
-    print("QA_A_D_PUBLIC_SUCCESS: public catalog stable and known D offers visible; A scanning active")
+    print("QA_A_D_PUBLIC_SUCCESS: catalog post-deploy accessible; D known offers visible; A initialized")
 if __name__=="__main__":
     try:main()
     except Exception as exc:

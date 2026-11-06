@@ -41,6 +41,12 @@ def main():
     else:
         raise AssertionError("Feed pagination incomplete")
     urls={str(item.get("url","")).rstrip("/") for item in items}
+    a_url="https://www.chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963"
+    a_match=[item for item in items if str(item.get("url","")).rstrip("/")==a_url]
+    print("A_KNOWN_VERIFIED",json.dumps({"url":a_url,"public_visible":bool(a_match),
+        "match": [{k:row.get(k) for k in ("title","company","source","verified","review","active")} for row in a_match[:2]]},
+        ensure_ascii=False))
+    assert a_match,"Motor A verified known Preunic offer but it is not visible"
     missing=sorted(KNOWN_D-urls)
     print("PUBLIC_FEED",json.dumps({"items":len(items),"known_D_found":len(KNOWN_D)-len(missing),
         "missing_D":missing},ensure_ascii=False))

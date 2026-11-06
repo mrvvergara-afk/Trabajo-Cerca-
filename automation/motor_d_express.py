@@ -6,6 +6,7 @@ import hashlib
 import ipaddress
 import json
 import re
+import unicodedata
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -60,7 +61,7 @@ def classify(item, today=None):
         return "SEGUNDA_PASADA","fecha_original_no_acreditada",None
     # A source page indexed under Collipulli does not make work in Valdivia
     # or Constitucion territorial. An explicitly confirmed worksite overrides the title.
-    normalized_title=" ".join(re.sub(r"[^a-z0-9]+"," ",title.lower()).split())
+    normalized_title=" ".join(re.sub(r"[^a-z0-9]+"," ", "".join(ch for ch in unicodedata.normalize("NFD",title.lower()) if unicodedata.category(ch)!="Mn")).split())
     if work not in COMMUNES and re.search(r"\bzona (?:valdivia|constitucion|coyhaique|santiago)\b",normalized_title):
         return "DESCARTADO","zona_de_trabajo_fuera_del_territorio",None
     if (work not in COMMUNES or item.get("source_commune_not_confirmed") is not False or

@@ -2,6 +2,7 @@
 No offers are inserted and no admin endpoints are called.
 """
 import json
+from datetime import datetime,timezone
 import sys
 import urllib.parse
 import urllib.request
@@ -34,6 +35,15 @@ def main():
     print("MOTOR_B_C_LIVE",json.dumps(bc,ensure_ascii=False))
     assert bc.get("historicalQueuesReopened") is False,"Legacy B/C queues were reopened"
     assert isinstance(bc.get("decisions"),dict),"B/C diagnostics missing"
+    now=datetime.now(timezone.utc)
+    def age_minutes(stamp):
+        return (now-datetime.fromisoformat(stamp.replace("Z","+00:00"))).total_seconds()/60
+    print("MOTOR_HEALTH",json.dumps({
+      "a_age_minutes":round(age_minutes(status["checkedAt"]),1) if status.get("checkedAt") else None,
+      "bc_age_minutes":round(age_minutes(bc["lastRunAt"]),1) if bc.get("lastRunAt") else None
+    }))
+    assert status.get("checkedAt") and age_minutes(status["checkedAt"])<100,"A scan stopped or stale"
+    assert bc.get("lastRunAt") and age_minutes(bc["lastRunAt"])<45,"B/C pipeline stopped or stale"
     from collections import Counter
     import re
     docs=(status.get("documentWork") or {}).get("items") or []
@@ -65,6 +75,11 @@ def main():
     else:
         raise AssertionError("Feed pagination incomplete")
     urls={str(item.get("url","")).rstrip("/") for item in items}
+    from collections import Counter
+    counts=Counter(str(row.get("url","")).rstrip("/") for row in items if row.get("url"))
+    duplicate_urls={url:num for url,num in counts.items() if num>1}
+    print("PUBLIC_DUPLICATES",json.dumps({"exact_duplicate_urls":len(duplicate_urls),
+        "sample":list(duplicate_urls.items())[:8]},ensure_ascii=False))
     a_url="https://www.chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963"
     a_match=[item for item in items if str(item.get("url","")).rstrip("/")==a_url]
     print("A_KNOWN_VERIFIED",json.dumps({"url":a_url,"public_visible":bool(a_match),

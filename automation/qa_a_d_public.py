@@ -24,6 +24,12 @@ def main():
         "pending":status.get("pending"),"checkedAt":status.get("checkedAt"),
         "verifiedLastRun":(status.get("summary") or {}).get("verified")
     },ensure_ascii=False))
+    print("A_PENDING_DETAIL",json.dumps({
+        "html_pending":status.get("pending"),
+        "documents":len(((status.get("documentWork") or {}).get("items") or [])),
+        "rechecks":(status.get("summary") or {}).get("reverificationBacklog"),
+        "checked_at":status.get("checkedAt")
+    },ensure_ascii=False))
     assert status.get("initialized") is True,"A not initialized"
     cursor=None
     items=[]

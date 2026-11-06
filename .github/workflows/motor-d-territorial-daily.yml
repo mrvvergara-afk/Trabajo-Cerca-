@@ -41,6 +41,7 @@ jobs:
         run: python -m py_compile automation/motor_d_territorial_daily.py automation/motor_d_express.py
       - name: Run territorial integrity tests
         run: python -m unittest discover -s automation -p 'test_motor_d_*.py' -v
+      # Operational test after enabling bounded B/C; D remains an independent scout.
       - name: Scan all 12 communes and identify source problems
         if: github.event_name != 'pull_request'
         run: python automation/motor_d_territorial_daily.py

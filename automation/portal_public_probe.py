@@ -15,6 +15,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
 from portal_coverage_registry import PORTALS, COMMUNES, coverage_report, blocked_without_authorization
+from portal_individual_evidence import read_individual_evidence
 
 AGENT="TrabajoCercaPortalAudit/1.0"
 MAX_BYTES=650_000
@@ -79,6 +80,8 @@ def fetch_public_html(url, timeout=14):
  try:
   with urllib.request.urlopen(request,timeout=timeout) as response:
    status=response.status
+   if urllib.parse.urlsplit(response.geturl()).hostname != urllib.parse.urlsplit(url).hostname:
+    return 0,None
    content_type=response.headers.get("Content-Type","").lower()
    if status!=200:return status,None
    if "html" not in content_type:return status,None
@@ -88,11 +91,11 @@ def fetch_public_html(url, timeout=14):
  except urllib.error.HTTPError as e:return e.code,None
  except Exception:return 0,None
 
-def scan_one(portal,commune,*,fetch=fetch_public_html,authorize=robots_allowed):
+def scan_one(portal,commune,*,fetch=fetch_public_html,authorize=robots_allowed,read_details=False):
  url=PORTALS[portal](commune)
  record={"portal":portal,"commune":commune,"url":url,
   "status":"not_yet_checked","http":None,"unverified_links":0,
-  "individual_offers_read":0,"candidate_links":[]}
+  "individual_offers_read":0,"candidate_links":[],"detail_evidence":[],"ready_for_catalog_crosscheck":0}
  granted,reason=authorize(url)
  if not granted:
   record["status"]=reason
@@ -112,25 +115,43 @@ def scan_one(portal,commune,*,fetch=fetch_public_html,authorize=robots_allowed):
  record["candidate_links"]=links
  record["unverified_links"]=len(links)
  record["status"]="index_links_found" if links else "index_accessible_no_job_links"
+ if read_details:
+  for candidate in links:
+   individual=candidate["url"]
+   permitted,block=authorize(individual)
+   if not permitted:
+    record["detail_evidence"].append({"url":individual,"status":block})
+    continue
+   response_code,document=fetch(individual)
+   if response_code!=200 or document is None:
+    record["detail_evidence"].append({"url":individual,"status":"restricted_or_unreadable","http":response_code})
+    continue
+   result=read_individual_evidence(portal,individual,document)
+   record["individual_offers_read"]+=1
+   record["ready_for_catalog_crosscheck"]+=int(result["status"]=="ready_for_catalog_crosscheck")
+   record["detail_evidence"].append(result)
  return record
 
-def collect(portals,communes,*,fetch=fetch_public_html,authorize=robots_allowed):
+def collect(portals,communes,*,fetch=fetch_public_html,authorize=robots_allowed,read_details=False):
  # One query per portal and locality, no paginated bursts or login challenges.
  results=[]
  for portal in portals:
   for commune in communes:
-   results.append(scan_one(portal,commune,fetch=fetch,authorize=authorize))
+   results.append(scan_one(portal,commune,fetch=fetch,authorize=authorize,read_details=read_details))
  return results
 
 def main():
  parser=argparse.ArgumentParser()
  parser.add_argument("--portal",choices=list(PORTALS)+["all"],default="all")
  parser.add_argument("--commune",choices=list(COMMUNES)+["all"],default="all")
+ parser.add_argument("--read-details",action="store_true",help="Explicit opt-in; only with one named portal and commune")
  parser.add_argument("--output",default="")  # No default write into tracked production state.
  args=parser.parse_args()
+ if args.read_details and (args.portal=="all" or args.commune=="all"):
+  parser.error("--read-details requires one --portal and one --commune to prevent unbounded reads")
  portals=list(PORTALS) if args.portal=="all" else [args.portal]
  communes=list(COMMUNES) if args.commune=="all" else [args.commune]
- rows=collect(portals,communes)
+ rows=collect(portals,communes,read_details=args.read_details)
  rows.extend(x for x in blocked_without_authorization() if x["commune"] in communes and args.portal=="all")
  report=coverage_report(rows)
  report["probe_method"]="public_html_robots_checked_single_request_no_auth_bypass"

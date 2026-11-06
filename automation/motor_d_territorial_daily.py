@@ -40,6 +40,11 @@ SEEDS=[
 ("Angol","Hospital Angol estado postulaciones","https://hospitalangol.cl/estado/postulacion/"),
 ("Angol","Radio Viaducto","https://radioviaducto.cl/"),
 ("Angol","Las Noticias de Malleco","https://lasnoticiasdemalleco.cl/"),
+# Recuperación crítica de anuncios vistos en Indeed desde la fuente del empleador.
+# Solo se consideran fichas individuales; ninguna lista es una oferta aprobada.
+("Angol","Fashion's Park · portal oficial de contratación","https://fashionspark.hiringroom.com/jobs"),
+("Angol","Falabella · empleos oficiales","https://muevete.falabella.com/"),
+("Angol","Unimarc · empleos oficiales","https://unimarc.trabajando.cl/"),
 ]
 # Consultas regionales de Chiletrabajos: una por cada comuna, además de OMIL y empleadores.
 # No se considera comuna laboral demostrada solo porque la búsqueda sea municipal.
@@ -47,11 +52,18 @@ from urllib.parse import quote
 SEEDS.extend((town,"Chiletrabajos · "+town,
     "https://www.chiletrabajos.cl/encuentra-un-empleo/?2="+quote(town.lower()))
     for town in COMMUNES)
+# Indeed is a critical source. Check one page per commune and report access
+# truthfully; HTTP 403 is coverage failure, never zero open jobs.
+INDEED_SEEDS=[(town,"Indeed · "+town,
+    "https://cl.indeed.com/jobs?q=&l="+quote(town)+"&fromage=2")
+    for town in COMMUNES]
 
 TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|vacante(?:s)?|"
     r"postulaci[oó]n|convocatoria|concurso(?:s)?|contrata(?:ci[oó]n)?|operador(?:a)?|"
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
-    r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca)\b",re.I)
+    r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca|"
+    r"asistente|cajer[ao]s?|vendedor(?:a)?|bodega|tesorer[ií]a|click and collect|"
+    r"jefe(?:a)? de ventas|reponedor(?:a)?)\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
 CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"
@@ -282,6 +294,21 @@ def inspect(seed):
 def main():
     ROOT.mkdir(parents=True,exist_ok=True)
     rows=[inspect(seed) for seed in SEEDS]
+    # Critical Indeed coverage is measured independently and concurrently,
+    # without proxies, access-control bypass or false success accounting.
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        indeed_rows=list(pool.map(inspect,INDEED_SEEDS))
+    rows.extend(indeed_rows)
+    indeed_coverage={
+        "sources_attempted":len(indeed_rows),
+        "sources_accessible":sum(x["status"].startswith("scanned") for x in indeed_rows),
+        "sources_blocked":sum(x["status"] in ("http_restricted","network_error") for x in indeed_rows),
+        "per_commune":{x["commune"]:{"http":x["http"],"status":x["status"],
+            "candidates":len(x["candidates"])} for x in indeed_rows},
+        "remediation":"employer_ats_first_no_indeed_bypass",
+        "complete":all(x["status"].startswith("scanned") for x in indeed_rows),
+    }
+    print("MOTOR_D_INDEED_CRITICAL "+json.dumps(indeed_coverage,ensure_ascii=False),flush=True)
     scanned={r["commune"] for r in rows}
     missing=sorted(set(COMMUNES)-scanned)
     candidates=[dict(x,source=y["source"],commune=y["commune"]) for y in rows for x in y["candidates"]]
@@ -315,7 +342,7 @@ def main():
     eligible=[x for x in unique.values() if x.get("evidence")=="individual_page_with_job_terms"]
     report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
-            "missing_communes":missing,"sources_total":len(SEEDS),
+            "missing_communes":missing,"sources_total":len(rows),"indeed_critical":indeed_coverage,
             "commune_status":per_commune,
             "communes_with_accessible_source":sum(v["sources_accessible"]>0 for v in per_commune.values()),
             "communes_without_accessible_source":[k for k,v in per_commune.items() if not v["sources_accessible"]],

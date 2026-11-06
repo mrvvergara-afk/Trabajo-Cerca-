@@ -1,4 +1,4 @@
-"""Read-only production smoke test for Trabajo Cerca A/D.
+"""Read-only production smoke test for Trabajo Cerca A/D (preflight).
 No offers are inserted and no admin endpoints are called.
 """
 import json

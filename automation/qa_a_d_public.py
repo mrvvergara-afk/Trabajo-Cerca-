@@ -30,6 +30,10 @@ def main():
         "rechecks":(status.get("summary") or {}).get("reverificationBacklog"),
         "checked_at":status.get("checkedAt")
     },ensure_ascii=False))
+    bc=fetch("/api/ops/fast-bc")
+    print("MOTOR_B_C_LIVE",json.dumps(bc,ensure_ascii=False))
+    assert bc.get("historicalQueuesReopened") is False,"Legacy B/C queues were reopened"
+    assert isinstance(bc.get("decisions"),dict),"B/C diagnostics missing"
     assert status.get("initialized") is True,"A not initialized"
     cursor=None
     items=[]

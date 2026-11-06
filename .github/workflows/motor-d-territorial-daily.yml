@@ -18,8 +18,9 @@ on:
       - 'automation/test_motor_d_express.py'
       - '.github/workflows/motor-d-territorial-daily.yml'
   schedule:
-    # 06:15 and 07:15 Chile (DST) are separate chances: GitHub schedule may be delayed.
-    - cron: '15 9,10,21 * * *'
+    # Four daily scans at 06:15, 10:15, 14:15, 18:15 in Chile during daylight saving time.
+    # GitHub Actions uses UTC; local times move back one hour in Chilean winter.
+    - cron: '15 9,13,17,21 * * *'
 permissions:
   contents: write
 concurrency:

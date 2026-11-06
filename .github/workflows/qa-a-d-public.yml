@@ -1,0 +1,23 @@
+name: Trabajo Cerca | QA real A y D sin publicaciones
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'automation/qa_a_d_public.py'
+      - '.github/workflows/qa-a-d-public.yml'
+  schedule:
+    - cron: '35 9 * * *'
+permissions:
+  contents: read
+jobs:
+  qa_publica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Consultar A y catálogo público y verificar fichas D
+        run: python automation/qa_a_d_public.py

@@ -194,20 +194,20 @@ def chiletrabajos_metadata(soup, title, url):
 
 def hiringroom_metadata(soup, title, url):
     """Primary employer ATS evidence only. Relative time is not an original calendar date."""
-    if not re.fullmatch(r"https://fashionspark\\.hiringroom\\.com/jobs/get_vacancy/[a-f0-9]{24}(?:\\?.*)?",url,re.I):
+    if not re.fullmatch(r"https://fashionspark\.hiringroom\.com/jobs/get_vacancy/[a-f0-9]{24}(?:\?.*)?",url,re.I):
         return None
     text=soup.get_text(" ",strip=True)[:6000]
-    m=re.search(r"(?<!\\w)(Angol|Victoria|Collipulli|Ercilla|Lumaco|Los Sauces|Purén|Renaico|Traiguén|Mulchén|Negrete|Nacimiento)\\s*,\\s*Araucan[ií]a\\s*,\\s*Chile",text,re.I)
+    m=re.search(r"(?<!\w)(Angol|Victoria|Collipulli|Ercilla|Lumaco|Los Sauces|Purén|Renaico|Traiguén|Mulchén|Negrete|Nacimiento)\s*,\s*Araucan[ií]a\s*,\s*Chile",text,re.I)
     if not m:
-        m=re.search(r"(?<!\\w)(Mulchén|Negrete|Nacimiento)\\s*,\\s*Biob[ií]o\\s*,\\s*Chile",text,re.I)
+        m=re.search(r"(?<!\w)(Mulchén|Negrete|Nacimiento)\s*,\s*Biob[ií]o\s*,\s*Chile",text,re.I)
     site=next((x for x in COMMUNES if fold(x)==fold(m.group(1))),None) if m else None
     heading=soup.find(["h1","h2"])
     name=heading.get_text(" ",strip=True)[:180] if heading else re.split(
-        r"\\b(?:Angol|Victoria|Collipulli|Ercilla|Lumaco|Los Sauces|Pur[eé]n|Renaico|Traigu[eé]n|Mulch[eé]n|Negrete|Nacimiento),\\s*(?:Araucan[ií]a|Biob[ií]o)",title,1,flags=re.I)[0][:180].strip()
+        r"\b(?:Angol|Victoria|Collipulli|Ercilla|Lumaco|Los Sauces|Pur[eé]n|Renaico|Traigu[eé]n|Mulch[eé]n|Negrete|Nacimiento),\s*(?:Araucan[ií]a|Biob[ií]o)",title,1,flags=re.I)[0][:180].strip()
     if not re.search(r"Descripci[oó]n del puesto|Requisitos|Postularse",text,re.I):
         return None
     return {"title":name,"employer":"Fashion's Park","work_commune":site,
-            "application_evidence":bool(re.search(r"\\bPostularse\\b",text,re.I)),
+            "application_evidence":bool(re.search(r"\bPostularse\b",text,re.I)),
             "date_source_method":"relative_only_not_verified"}
 
 def inspect(seed):

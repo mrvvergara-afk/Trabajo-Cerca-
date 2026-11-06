@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-05T18:54:48.776440-03:00",
+  "last_run": "2026-11-05T22:31:27.791307-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1081,6 +1081,36 @@
       "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-camiones-andes-motor-calama-3922015",
       "source": "Chiletrabajos · Nacimiento",
       "commune": "Nacimiento"
+    },
+    "28f12ea0d396dcbcb029": {
+      "first_seen": "2026-11-05T22:31:27.791307-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "efc2f04aa26f5d5a7ea0": {
+      "first_seen": "2026-11-05T22:31:27.791307-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-tienda-portal-temuco-3927264",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "f5ffdc6f94d1c6aec07c": {
+      "first_seen": "2026-11-05T22:31:27.791307-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/digitador-demandas-masivas-y-asistente-judicial-2026-3654793",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "9961ccf0fdbbb0056689": {
+      "first_seen": "2026-11-05T22:31:27.791307-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jefe-de-finanzas-3927361",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "ae10dcebd8d61cf44d9d": {
+      "first_seen": "2026-11-05T22:31:27.791307-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vigilante-privado-banco-bci-mallplaza-calama-3927217",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
     }
   }
 }

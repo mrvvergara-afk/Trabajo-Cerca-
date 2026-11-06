@@ -5,10 +5,12 @@ on:
     paths:
       - 'automation/portal_coverage_registry.py'
       - 'automation/portal_public_probe.py'
-      - 'automation/portal_individual_evidence.py'
+      - 'automation/portal_individual_evidence.py automation/portal_catalog_crosscheck.py'
       - 'automation/test_portal_coverage_registry.py'
       - 'automation/test_portal_public_probe.py'
       - 'automation/test_portal_individual_evidence.py'
+      - 'automation/portal_catalog_crosscheck.py'
+      - 'automation/test_portal_catalog_crosscheck.py'
       - '.github/workflows/portal-coverage-qa.yml'
   workflow_dispatch:
 permissions:

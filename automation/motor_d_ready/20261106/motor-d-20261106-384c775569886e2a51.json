@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261106-384c775569886e2a51",
+  "offers": [
+    {
+      "id_fuente": "d_2e5d13719312865d3636",
+      "cargo": "Mecánico/a Soldador/a de Maquinaria – Nacimiento",
+      "empresa": "Serfonac",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    },
+    {
+      "id_fuente": "d_728743fa1bc6044fab11",
+      "cargo": "Mecánico/a Automotriz – Nacimiento",
+      "empresa": "Serfonac",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    }
+  ]
+}

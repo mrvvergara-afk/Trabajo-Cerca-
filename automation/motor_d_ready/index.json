@@ -15,12 +15,19 @@
       "batch_id": "motor-d-20261105-c56df7f84da816626b",
       "file": "20261105/motor-d-20261105-c56df7f84da816626b.json",
       "count": 1
+    },
+    {
+      "batch_id": "motor-d-20261106-384c775569886e2a51",
+      "file": "20261106/motor-d-20261106-384c775569886e2a51.json",
+      "count": 2
     }
   ],
   "seen_offer_ids": [
     "d_000ee049f91cba301df5",
+    "d_2e5d13719312865d3636",
     "d_561f393870110fb67e2a",
     "d_5c980138c7556d6f7de9",
+    "d_728743fa1bc6044fab11",
     "d_9e173e643c73999fa7f6",
     "d_a6c5ab75b47d129e5ebb",
     "d_c86ec67e426e27e24149",

@@ -34,6 +34,15 @@ def main():
     print("MOTOR_B_C_LIVE",json.dumps(bc,ensure_ascii=False))
     assert bc.get("historicalQueuesReopened") is False,"Legacy B/C queues were reopened"
     assert isinstance(bc.get("decisions"),dict),"B/C diagnostics missing"
+    from collections import Counter
+    import re
+    docs=(status.get("documentWork") or {}).get("items") or []
+    print("A_DOCUMENT_SOURCE_BREAKDOWN",json.dumps({
+        "total":len(docs),
+        "types":dict(Counter(str(item.get("url","")).split("?")[0].rsplit(".",1)[-1].lower() for item in docs)),
+        "older_upload_year_month":dict(Counter(m.group(1) for item in docs if (m:=re.search(r"/(20\\d{2}/(?:0[1-9]|1[0-2]))/",str(item.get("url","")))))),
+        "kinds":dict(Counter(str(item.get("kind")) for item in docs))
+    },ensure_ascii=False))
     assert status.get("initialized") is True,"A not initialized"
     cursor=None
     items=[]

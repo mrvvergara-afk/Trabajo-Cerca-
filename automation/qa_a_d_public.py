@@ -47,6 +47,7 @@ def main():
       {"url":row.get("url"),"source":row.get("source")}
       for row in docs if not re.search(r"\\.pdf(?:\\?|$)",str(row.get("url","")),re.I)
     ][:12],ensure_ascii=False))
+    print("A_DOCUMENT_ACTIVE_9",json.dumps([{"url":row.get("url"),"source":row.get("source")} for row in docs][:15],ensure_ascii=False))
     assert status.get("initialized") is True,"A not initialized"
     cursor=None
     items=[]

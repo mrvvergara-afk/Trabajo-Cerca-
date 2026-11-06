@@ -43,6 +43,10 @@ def main():
         "older_upload_year_month":dict(Counter(m.group(1) for item in docs if (m:=re.search(r"/(20\\d{2}/(?:0[1-9]|1[0-2]))/",str(item.get("url","")))))),
         "kinds":dict(Counter(str(item.get("kind")) for item in docs))
     },ensure_ascii=False))
+    print("A_NONPDF_SAMPLE",json.dumps([
+      {"url":row.get("url"),"source":row.get("source")}
+      for row in docs if not re.search(r"\\.pdf(?:\\?|$)",str(row.get("url","")),re.I)
+    ][:12],ensure_ascii=False))
     assert status.get("initialized") is True,"A not initialized"
     cursor=None
     items=[]

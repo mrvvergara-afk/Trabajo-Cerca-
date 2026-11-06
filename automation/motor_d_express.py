@@ -47,17 +47,25 @@ def classify(item, today=None):
     company = str(item.get("employer") or "").strip()
     title = str(item.get("title") or "").strip()
     published = item.get("date_source")
+    # A dated old or future posting is never a candidate for today's daily queue.
+    # "DESCARTADO" is daily-scope only; it does not declare the source job closed.
+    if isinstance(published,str) and re.fullmatch(r"20\d{2}-\d{2}-\d{2}",published):
+        try:
+            day = date.fromisoformat(published)
+        except ValueError:
+            return "SEGUNDA_PASADA","fecha_original_invalida",None
+        if not today-timedelta(days=1) <= day <= today:
+            return "DESCARTADO","fuera_ventana_diaria_no_implica_cierre",None
+    else:
+        return "SEGUNDA_PASADA","fecha_original_no_acreditada",None
+    # A source page indexed under Collipulli does not make work in Valdivia
+    # or Constitucion territorial. An explicitly confirmed worksite overrides the title.
+    normalized_title=" ".join(re.sub(r"[^a-z0-9]+"," ",title.lower()).split())
+    if work not in COMMUNES and re.search(r"\bzona (?:valdivia|constitucion|coyhaique|santiago)\b",normalized_title):
+        return "DESCARTADO","zona_de_trabajo_fuera_del_territorio",None
     if (work not in COMMUNES or item.get("source_commune_not_confirmed") is not False or
         len(company)<2 or len(title)<5 or item.get("application_evidence") is not True):
         return "SEGUNDA_PASADA","falta_empresa_comuna_o_postulacion_explicita",None
-    try:
-        if not isinstance(published,str) or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}",published):
-            raise ValueError()
-        day = date.fromisoformat(published)
-    except ValueError:
-        return "SEGUNDA_PASADA","fecha_original_no_acreditada",None
-    if not today-timedelta(days=1) <= day <= today:
-        return "DESCARTADO","fuera_ventana_diaria_no_implica_cierre",None
     source_id = hashlib.sha256(url.encode()).hexdigest()[:20]
     offer = {
         "id_fuente":"d_"+source_id, "cargo":title[:180], "empresa":company[:140],

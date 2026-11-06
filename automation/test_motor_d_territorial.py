@@ -99,6 +99,30 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
         self.assertEqual(items[0][2],"closed")
 
+    def test_indeed_critical_all_12_communes(self):
+        self.assertEqual(len(engine.INDEED_SEEDS),12)
+        self.assertEqual({x[0] for x in engine.INDEED_SEEDS},set(engine.COMMUNES))
+        self.assertTrue(all("cl.indeed.com/jobs" in x[2] for x in engine.INDEED_SEEDS))
+        self.assertTrue(any("fashionspark.hiringroom.com/jobs" in x[2] for x in engine.SEEDS))
+
+    def test_fashionspark_ats_metadata_does_not_invent_source_date(self):
+        html="""<h1>Asistente de Aseo PT 20 HR (Angol)</h1>
+        <section>Angol, Araucanía, Chile. Hace 2 horas.
+        Descripción del puesto. Requisitos. Postularse</section>"""
+        meta=engine.hiringroom_metadata(BeautifulSoup(html,"html.parser"),
+          "Asistente de Aseo PT 20 HR (Angol)",
+          "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aec988122ecc8f6459cb62a")
+        self.assertEqual(meta["employer"],"Fashion's Park")
+        self.assertEqual(meta["work_commune"],"Angol")
+        self.assertTrue(meta["application_evidence"])
+        self.assertNotIn("date_source",meta)
+
+    def test_unimarc_alert_is_not_a_job(self):
+        items=engine.links_from(BeautifulSoup(
+          '<a href="/alertas-de-empleo">Gestionar tus alertas</a>',"html.parser"),
+          "https://unimarc.trabajando.cl/")
+        self.assertEqual(items,[])
+
     def test_advertisement_no_job_url(self):
         html='<a href="/noticias/municipio-anuncia-obras/">Alcalde informa de actividades comunitarias</a>'
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")

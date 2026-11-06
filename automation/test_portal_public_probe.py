@@ -36,6 +36,13 @@ class PortalReadOnlyProbeTests(unittest.TestCase):
   self.assertEqual(row["status"],"index_links_found")
   self.assertEqual(row["unverified_links"],1)
   self.assertEqual(row["individual_offers_read"],0)
+ def test_soft_404_and_access_challenge_are_not_empty_jobs(self):
+  for text,expected in (("No encontramos la página que buscas","soft_404_or_invalid_search_path"),
+                        ("verify you are human","access_challenge")):
+   row=scan_one("laborum","Angol",fetch=lambda url:(200,"<html><body>"+text+"</body></html>"),
+                authorize=lambda _: (True,"robots_permitted"))
+   self.assertEqual(row["status"],expected)
+   self.assertEqual(row["unverified_links"],0)
  def test_no_territory_leaks(self):
   self.assertNotIn("Quilaco",COMMUNES)
   self.assertEqual(len(COMMUNES),12)

@@ -5,7 +5,7 @@ on:
     paths:
       - 'automation/portal_coverage_registry.py'
       - 'automation/portal_public_probe.py'
-      - 'automation/portal_individual_evidence.py automation/portal_catalog_crosscheck.py'
+      - 'automation/portal_individual_evidence.py'
       - 'automation/test_portal_coverage_registry.py'
       - 'automation/test_portal_public_probe.py'
       - 'automation/test_portal_individual_evidence.py'
@@ -27,7 +27,7 @@ jobs:
       - name: Install read-only parser dependency
         run: python -m pip install 'beautifulsoup4>=4.12,<5'
       - name: Compile portal modules
-        run: python -m py_compile automation/portal_coverage_registry.py automation/portal_public_probe.py automation/portal_individual_evidence.py
+        run: python -m py_compile automation/portal_coverage_registry.py automation/portal_public_probe.py automation/portal_individual_evidence.py automation/portal_catalog_crosscheck.py
       - name: Run offline unit tests (no external HTTP; no publishing)
         run: python -m unittest discover -s automation -p 'test_portal_*.py' -v
 

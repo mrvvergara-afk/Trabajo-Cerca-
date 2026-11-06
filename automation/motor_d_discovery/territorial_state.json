@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-06T07:13:56.222563-03:00",
+  "last_run": "2026-11-06T08:26:08.423429-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1122,6 +1122,30 @@
       "first_seen": "2026-11-06T07:08:19.730651-03:00",
       "url": "https://jobs.arauco.com/Chile/job/Constituci%C3%B3n-Brigadista-Operadora-Motosierrista-Zona-Constituci%C3%B3n-ML-3560000/1342838600/",
       "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "1056b9c0f6c013a7463b": {
+      "first_seen": "2026-11-06T08:26:08.423429-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/administrador-de-estacion-de-servicio-3909263",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "5ac967ba7c00e895bf2e": {
+      "first_seen": "2026-11-06T08:26:08.423429-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/soldador-armador-tig-con-experiencia-3592528",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "e547ba7a0d82333e6693": {
+      "first_seen": "2026-11-06T08:26:08.423429-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/administradora-local-3913441",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "872c3bbb94fe0089085f": {
+      "first_seen": "2026-11-06T08:26:08.423429-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-3854258",
+      "source": "Chiletrabajos · Collipulli",
       "commune": "Collipulli"
     }
   }

@@ -48,6 +48,17 @@ class MotorDExpressTests(unittest.TestCase):
         self.assertEqual(engine.classify(record(date_source="2026-11-04"),TODAY)[0],"DESCARTADO")
         self.assertEqual(engine.classify(record(date_source="2026-11-07"),TODAY)[0],"DESCARTADO")
 
+    def test_old_posting_with_missing_fields_does_not_clog_second_pass(self):
+        self.assertEqual(engine.classify(record(date_source="2026-11-01",employer=None,
+            work_commune=None,source_commune_not_confirmed=True),TODAY)[0],"DESCARTADO")
+
+    def test_new_links_for_out_of_territory_arauco_not_queued(self):
+        for title in ("Operador/a Excavadora - Caminos - Zona Valdivia",
+                      "Brigadista Operador/a Motosierrista - Zona Constitución"):
+            with self.subTest(title=title):
+                item=record(title=title,work_commune=None,source_commune_not_confirmed=True)
+                self.assertEqual(engine.classify(item,TODAY)[0],"DESCARTADO")
+
     def test_aliases_are_allowed_as_normalized_communes(self):
         self.assertEqual(engine.classify(record(work_commune="Collipulli"),TODAY)[0],"EXPRESS")
         self.assertEqual(engine.classify(record(work_commune="Negrete"),TODAY)[0],"EXPRESS")

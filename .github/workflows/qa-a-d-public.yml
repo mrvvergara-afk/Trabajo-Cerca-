@@ -1,6 +1,11 @@
 name: Trabajo Cerca | QA real A y D sin publicaciones
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/qa_a_d_public.py'
+      - '.github/workflows/qa-a-d-public.yml'
   push:
     branches: [main]
     paths:

@@ -35,6 +35,7 @@ def main():
     print("MOTOR_B_C_LIVE",json.dumps(bc,ensure_ascii=False))
     assert bc.get("historicalQueuesReopened") is False,"Legacy B/C queues were reopened"
     assert isinstance(bc.get("decisions"),dict),"B/C diagnostics missing"
+    print("MOTOR_C_HTML",json.dumps(bc.get("htmlLastBatch"),ensure_ascii=False))
     now=datetime.now(timezone.utc)
     def age_minutes(stamp):
         return (now-datetime.fromisoformat(stamp.replace("Z","+00:00"))).total_seconds()/60

@@ -75,19 +75,42 @@
   ],
   "pending": [
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
-      "title": "Electrico Dia",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19313?c=cmpc",
+      "title": "Subgerente Adminstración de Ventas Pulp",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19303?c=cmpc",
-      "title": "Pool Talento Feria Laboral UAI",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
+      "title": "Asistente Ventas (Plazo Fijo) - Temuco",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19180?c=cmpc",
+      "title": "Supervisor Logistico",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19218?c=cmpc",
+      "title": "Auxiliar Procesos - EDIPAC Quilicura",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
+      "title": "Electrico Dia",
+      "workplaces": [],
+      "reason": [
         "workplace_not_single_confirmed"
       ]
     },
@@ -211,33 +234,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
       "title": "Ingeniero Especialista de Diseño de empaque",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
-      "title": "Técnico/a de mantenimiento eléctrico y mecánico",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
-      "title": "Conductor/a de autoelevador",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
-      "title": "Coordinador de Soporte Técnico SAP",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-06T14:20:37.889005-03:00",
+  "last_run": "2026-11-06T16:56:52.886944-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1333,6 +1333,60 @@
       "url": "https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nueva-imperial-lumaco-3923619",
       "source": "Chiletrabajos · Lumaco",
       "commune": "Lumaco"
+    },
+    "42289e15c2e36b8727f0": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6adb66cb23c6be87219d0a14",
+      "source": "Fashion's Park · portal oficial de contratación",
+      "commune": "Angol"
+    },
+    "1843a3809a023ee68321": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "18ed07692047f472ce49": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/cocineros-con-experiencia-3511632",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "ae203d1af2c878d4e71d": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/mecanico-de-equipo-movil-3727416",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "feadea04d03445aaf71c": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ingeniero-electrico-con-conocimiento-en-ups-tecnico-en-aire-acondicionado-3927601",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "bc10e0f0920d4a0bbe66": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/chofer-conductor-3927649",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "d37f852b28af2e85fb80": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/pizzero-a-3927602",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "9e23c40726a41f6156b6": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/asistente-de-recursos-humanos-3927953",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "df7c076d667f14c09482": {
+      "first_seen": "2026-11-06T16:56:52.886944-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-camiones-andes-motor-antofagasta-calama-3927959",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
     }
   }
 }

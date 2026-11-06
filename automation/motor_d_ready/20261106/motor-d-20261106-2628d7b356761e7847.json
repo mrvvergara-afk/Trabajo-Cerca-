@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261106-2628d7b356761e7847",
+  "offers": [
+    {
+      "id_fuente": "d_06be2b623b31c335001a",
+      "cargo": "Cajero/a Bancario/a ANGOL",
+      "empresa": "SERVICIOS HELPBANK S.A",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "fecha_publicacion": "2026-11-06",
+      "fecha_cierre": null,
+      "justificacion": "Motor D: ficha individual y fecha; empresa, lugar de trabajo y postulación explícitos en la fuente."
+    }
+  ]
+}

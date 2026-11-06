@@ -1,5 +1,5 @@
 """Read-only production smoke test for Trabajo Cerca A/D.
-No offers are inserted and no admin endpoints are called.
+No offers are inserted and no admin endpoints are called; A Preunic regression is asserted.
 """
 import json
 import sys

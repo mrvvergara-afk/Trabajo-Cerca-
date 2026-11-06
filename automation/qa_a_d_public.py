@@ -79,6 +79,13 @@ def main():
     from collections import Counter
     counts=Counter(str(row.get("url","")).rstrip("/") for row in items if row.get("url"))
     duplicate_urls={url:num for url,num in counts.items() if num>1}
+    angol=[item for item in items if any("angol" in str(item.get(k,"")).lower() for k in ("workLocation","workCommunes","commune","title"))]
+    markers=["asistente de aseo pt 20 hr","administrativo/a de tesorería","click and collect","apoyo piso navidad"]
+    evidence={needle:[{"title":row.get("title"),"url":row.get("url")} for row in angol if needle in str(row.get("title","")).lower()][:3] for needle in markers}
+    print("INDEED_ANGOL_PUBLIC_CROSSCHECK",json.dumps({
+      "public_angol_count":len(angol),"job_titles_mentioned_by_indeed":evidence,
+      "matched_indications":sum(bool(x) for x in evidence.values())
+    },ensure_ascii=False))
     print("PUBLIC_DUPLICATES",json.dumps({"exact_duplicate_urls":len(duplicate_urls),
         "sample":list(duplicate_urls.items())[:8]},ensure_ascii=False))
     a_url="https://www.chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963"

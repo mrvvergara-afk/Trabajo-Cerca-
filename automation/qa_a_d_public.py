@@ -41,6 +41,9 @@ def main():
     else:
         raise AssertionError("Feed pagination incomplete")
     urls={str(item.get("url","")).rstrip("/") for item in items}
+    from collections import Counter
+    by_source=Counter(str(row.get("source") or "sin_fuente") for row in items)
+    print("PUBLIC_SOURCE_TOP",json.dumps(by_source.most_common(12),ensure_ascii=False))
     missing=sorted(KNOWN_D-urls)
     print("PUBLIC_FEED",json.dumps({"items":len(items),"known_D_found":len(KNOWN_D)-len(missing),
         "missing_D":missing},ensure_ascii=False))

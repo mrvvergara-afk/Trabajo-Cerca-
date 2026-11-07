@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-06T16:56:52.886944-03:00",
+  "last_run": "2026-11-06T21:54:23.967156-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1387,6 +1387,30 @@
       "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-ventas-camiones-andes-motor-antofagasta-calama-3927959",
       "source": "Chiletrabajos · Nacimiento",
       "commune": "Nacimiento"
+    },
+    "4220b72fcbf7ee464e52": {
+      "first_seen": "2026-11-06T21:54:23.967156-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/buscamos-creador-a-de-contenido-3828240",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "cd11cb1da1852a0c1e4e": {
+      "first_seen": "2026-11-06T21:54:23.967156-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-garzon-3928057",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "d6d5b6626656e45cbec2": {
+      "first_seen": "2026-11-06T21:54:23.967156-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/chofer-con-licencia-profesional-a4-camion-de-12000-kg-3762961",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "439fe3aa18cd3d55c06f": {
+      "first_seen": "2026-11-06T21:54:23.967156-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
+      "source": "Chiletrabajos · Mulchén",
+      "commune": "Mulchén"
     }
   }
 }

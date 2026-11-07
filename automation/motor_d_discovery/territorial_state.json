@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-06T21:54:23.967156-03:00",
+  "last_run": "2026-11-07T12:38:40.067554-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1411,6 +1411,48 @@
       "url": "https://www.chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
       "source": "Chiletrabajos · Mulchén",
       "commune": "Mulchén"
+    },
+    "62be50a7f0aaa00233e5": {
+      "first_seen": "2026-11-07T12:38:40.067554-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/auxiliares-de-aseo-l-s-3928133",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "7471403df3d53302db0c": {
+      "first_seen": "2026-11-07T12:38:40.067554-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-de-ventas-y-administracion-providencia-3927427",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "c12964c2315eff97cbd5": {
+      "first_seen": "2026-11-07T12:38:40.067554-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-ayudante-tecnico-con-o-sin-experiencia-3928145",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "2493fb59057bc65b62ad": {
+      "first_seen": "2026-11-07T12:38:40.067554-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/choferes-con-o-sin-camiones-3928143",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "10b3454bb4cdbc5d176a": {
+      "first_seen": "2026-11-07T12:38:40.067554-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/persona-experta-en-google-ads-3928101",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "da8c1c6d10c0166c46c8": {
+      "first_seen": "2026-11-07T12:38:40.067554-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/electrico-industrial-senior-3928150",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "547cf38a084c086cde96": {
+      "first_seen": "2026-11-07T12:38:40.067554-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tiempo-completo-oakberry-acai-operador-san-carlos-de-apoquindo-3927912",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
     }
   }
 }

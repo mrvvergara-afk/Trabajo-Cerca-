@@ -2,7 +2,7 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "chatgpt",
-  "batch_id": "motor-d-cmpc-0ba3293a390796aa",
+  "batch_id": "motor-d-cmpc-139f8ee9379302ed",
   "offers": [
     {
       "id_fuente": "cmpc_19249",
@@ -17,30 +17,6 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
-      "id_fuente": "cmpc_19192",
-      "cargo": "ANALISTA LABORATORIO I-TURNO",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
-      "fecha_publicacion": "2026-10-21",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18931",
-      "cargo": "ANALISTA LABORATORIO I ADM",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18931?c=cmpc",
-      "fecha_publicacion": "2026-10-21",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_18859",
       "cargo": "Ingeniero/a Procesos y Excelencia Sr",
       "empresa": "CMPC",
@@ -49,30 +25,6 @@
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
       "fecha_publicacion": "2026-10-13",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18959",
-      "cargo": "Analista Vibraciones",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18959?c=cmpc",
-      "fecha_publicacion": "2026-10-06",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18992",
-      "cargo": "Especialista SGI - Planta Laja y Pacifico.",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18992?c=cmpc",
-      "fecha_publicacion": "2026-09-29",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     }

@@ -13,30 +13,6 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
-      "id_fuente": "cmpc_19192",
-      "cargo": "ANALISTA LABORATORIO I-TURNO",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
-      "fecha_publicacion": "2026-10-21",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18931",
-      "cargo": "ANALISTA LABORATORIO I ADM",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18931?c=cmpc",
-      "fecha_publicacion": "2026-10-21",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_18859",
       "cargo": "Ingeniero/a Procesos y Excelencia Sr",
       "empresa": "CMPC",
@@ -47,36 +23,20 @@
       "fecha_publicacion": "2026-10-13",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18959",
-      "cargo": "Analista Vibraciones",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18959?c=cmpc",
-      "fecha_publicacion": "2026-10-06",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18992",
-      "cargo": "Especialista SGI - Planta Laja y Pacifico.",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18992?c=cmpc",
-      "fecha_publicacion": "2026-09-29",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     }
   ],
   "pending": [
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19313?c=cmpc",
       "title": "Subgerente Adminstración de Ventas Pulp",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19246?c=cmpc",
+      "title": "Ayudante Bodega (Plazo Fijo) - Temuco",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -123,14 +83,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
-      "title": "Administrador Zonal",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
       "title": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
       "workplaces": [
@@ -161,15 +113,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19141?c=cmpc",
-      "title": "AYUDANTE GENERAL",
-      "workplaces": [],
-      "reason": [
-        "detail_unavailable",
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "title": "Electricista de área - Planta Santa Fe",
       "workplaces": [
@@ -188,38 +131,20 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19210?c=cmpc",
-      "title": "Ingeniero PCO",
-      "workplaces": [],
-      "reason": [
-        "detail_unavailable",
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
-      "title": "Líder de Procesos y Calidad - Nacimiento",
-      "workplaces": [
-        "Nacimiento"
-      ],
-      "reason": [
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19100?c=cmpc",
-      "title": "Ingeniero/a de confiabilidad - Planta Maule",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
       "title": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
+      "title": "Mecánico Lubricador",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
       ]
     },
     {
@@ -234,6 +159,69 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
       "title": "Ingeniero Especialista de Diseño de empaque",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
+      "title": "Técnico/a de mantenimiento eléctrico y mecánico",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
+      "title": "Conductor/a de autoelevador",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
+      "title": "Coordinador de Soporte Técnico SAP",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
+      "title": "Analista de Comercio Exterior",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1168?c=cmpc",
+      "title": "AYUDANTE GENERAL",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1167?c=cmpc",
+      "title": "EJECUTOR/A MECANICO",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/502?c=cmpc",
+      "title": "Ayudante Embolsado Sanitario",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

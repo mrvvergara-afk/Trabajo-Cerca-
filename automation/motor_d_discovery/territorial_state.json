@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-08T12:57:07.964049-03:00",
+  "last_run": "2026-11-08T17:41:11.327522-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1573,6 +1573,24 @@
       "url": "https://www.chiletrabajos.cl/trabajo/administradora-general-grupo-rb-santiago-rm-3928201",
       "source": "Chiletrabajos · Collipulli",
       "commune": "Collipulli"
+    },
+    "b0af2f310be996a353aa": {
+      "first_seen": "2026-11-08T17:41:11.327522-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ayudantes-de-cocina-con-experiencia-3907935",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "b2695ceb7c312095726e": {
+      "first_seen": "2026-11-08T17:41:11.327522-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/operador-cargador-frontal-3807033",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "e7f9c5c6ffc82cd6938d": {
+      "first_seen": "2026-11-08T17:41:11.327522-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vidriero-base-recoleta-3928261",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-07T17:52:45.355528-03:00",
+  "last_run": "2026-11-07T21:33:09.694048-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1483,6 +1483,42 @@
       "url": "https://www.chiletrabajos.cl/trabajo/vendedora-full-time-de-pasteleria-en-penalolen-3925726",
       "source": "Chiletrabajos · Collipulli",
       "commune": "Collipulli"
+    },
+    "3db6141d5a65ab8f7850": {
+      "first_seen": "2026-11-07T21:33:09.694048-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/m-hotel-buscamos-jefe-a-de-turno-y-caja-3928182",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "efdc693780b1bb11b9bf": {
+      "first_seen": "2026-11-07T21:33:09.694048-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/anfitriona-anfitrion-proxima-apertura-en-antofagasta-pub-restaurante-o-3928183",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "94373b11857460782d31": {
+      "first_seen": "2026-11-07T21:33:09.694048-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/jardinero-o-mantenedor-de-areas-verdes-3928188",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "4b64699f9a9ef4b76d4d": {
+      "first_seen": "2026-11-07T21:33:09.694048-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-de-operaciones-y-mantenimiento-de-planta-3928189",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "1bf0d216d8ff187384a1": {
+      "first_seen": "2026-11-07T21:33:09.694048-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/operario-camara-y-reponedor-la-serena-3928197",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
+    },
+    "c7bafb26e0ab1f225b7c": {
+      "first_seen": "2026-11-07T21:33:09.694048-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-sala-de-ventas-la-serena-3928196",
+      "source": "Chiletrabajos · Nacimiento",
+      "commune": "Nacimiento"
     }
   }
 }

@@ -1,8 +1,8 @@
-"""Offline regression tests: Motor D express classification and queue dedup."""
+"""Offline regression tests: daily and controlled recovery flows for Motor D."""
 import json
 import tempfile
 import unittest
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 import motor_d_express as engine
 
@@ -25,41 +25,55 @@ def record(i=1, **patch):
     return item
 
 class MotorDExpressTests(unittest.TestCase):
-    def test_confirmed_individual_enters_express(self):
-        state,why,offer=engine.classify(record(),TODAY)
-        self.assertEqual(state,"EXPRESS")
-        self.assertEqual(offer["comunas"],["Mulchén"])
+    def test_confirmed_today_or_yesterday_enters_daily_express(self):
+        for published in ("2026-11-06","2026-11-05"):
+            with self.subTest(published=published):
+                state,_,offer=engine.classify(record(date_source=published),TODAY)
+                self.assertEqual(state,"EXPRESS")
+                self.assertEqual(offer["tipo_lote"],"radar_diario")
+                self.assertEqual(offer["fecha_descubrimiento"],TODAY.isoformat())
+
+    def test_older_open_offer_enters_separate_recovery(self):
+        state,reason,offer=engine.classify(record(date_source="2026-10-29"),TODAY)
+        self.assertEqual(state,"RECUPERACION")
+        self.assertEqual(reason,"oferta_antigua_vigente_no_descartar")
+        self.assertEqual(offer["fecha_publicacion"],"2026-10-29")
+        self.assertEqual(offer["fecha_descubrimiento"],"2026-11-06")
+        self.assertEqual(offer["tipo_lote"],"recuperacion_vigente")
+
+    def test_missing_original_date_is_second_pass_not_silently_discarded(self):
+        state,reason,offer=engine.classify(record(date_source=None),TODAY)
+        self.assertEqual(state,"SEGUNDA_PASADA")
+        self.assertIn("fecha_original_no_acreditada",reason)
+        self.assertIsNone(offer)
 
     def test_unconfirmed_city_cannot_be_inferred_from_omil(self):
         state,_,offer=engine.classify(record(work_commune=None,source_commune_not_confirmed=True),TODAY)
         self.assertEqual(state,"SEGUNDA_PASADA")
         self.assertIsNone(offer)
 
-    def test_missing_employer_or_application_requires_second_pass(self):
-        for patch in ({"employer":None},{"application_evidence":False}):
-            self.assertEqual(engine.classify(record(**patch),TODAY)[0],"SEGUNDA_PASADA")
+    def test_missing_employer_or_application_requires_second_pass_for_old_and_new(self):
+        for published in ("2026-11-06","2026-10-29"):
+            for patch in ({"employer":None},{"application_evidence":False}):
+                with self.subTest(published=published,patch=patch):
+                    self.assertEqual(engine.classify(record(date_source=published,**patch),TODAY)[0],"SEGUNDA_PASADA")
 
-    def test_closed_or_internal_is_discarded(self):
+    def test_closed_or_internal_is_discarded_even_if_old(self):
         for patch in ({"index_status":"closed"},{"evidence":"internal_only"},{"evidence":"directory_not_offer"}):
-            self.assertEqual(engine.classify(record(**patch),TODAY)[0],"DESCARTADO")
+            with self.subTest(patch=patch):
+                self.assertEqual(engine.classify(record(date_source="2026-10-01",**patch),TODAY)[0],"DESCARTADO")
 
-    def test_date_window_is_exactly_today_and_yesterday(self):
-        self.assertEqual(engine.classify(record(date_source="2026-11-05"),TODAY)[0],"EXPRESS")
-        self.assertEqual(engine.classify(record(date_source="2026-11-04"),TODAY)[0],"DESCARTADO")
-        self.assertEqual(engine.classify(record(date_source="2026-11-07"),TODAY)[0],"DESCARTADO")
+    def test_future_posting_date_requires_second_pass(self):
+        self.assertEqual(engine.classify(record(date_source="2026-11-07"),TODAY)[0],"SEGUNDA_PASADA")
 
-    def test_old_posting_with_missing_fields_does_not_clog_second_pass(self):
-        self.assertEqual(engine.classify(record(date_source="2026-11-01",employer=None,
-            work_commune=None,source_commune_not_confirmed=True),TODAY)[0],"DESCARTADO")
-
-    def test_new_links_for_out_of_territory_arauco_not_queued(self):
+    def test_out_of_territory_arauco_not_queued(self):
         for title in ("Operador/a Excavadora - Caminos - Zona Valdivia",
                       "Brigadista Operador/a Motosierrista - Zona Constitución"):
             with self.subTest(title=title):
                 item=record(title=title,work_commune=None,source_commune_not_confirmed=True)
                 self.assertEqual(engine.classify(item,TODAY)[0],"DESCARTADO")
 
-    def test_aliases_are_allowed_as_normalized_communes(self):
+    def test_aliases_are_allowed_and_quilaco_is_not(self):
         self.assertEqual(engine.classify(record(work_commune="Collipulli"),TODAY)[0],"EXPRESS")
         self.assertEqual(engine.classify(record(work_commune="Negrete"),TODAY)[0],"EXPRESS")
         self.assertEqual(engine.classify(record(work_commune="Quilaco"),TODAY)[0],"SEGUNDA_PASADA")
@@ -69,23 +83,39 @@ class MotorDExpressTests(unittest.TestCase):
         self.assertIsNone(engine.canonical_url("https://127.0.0.1/job"))
         self.assertIsNone(engine.canonical_url("https://localhost/job"))
 
-    def test_same_offer_deduplicated_before_batch(self):
+    def test_same_offer_deduplicated_by_source_url(self):
         classified=engine.build({"candidates":[record(1),record(1)]},TODAY)
         self.assertEqual(len(classified["EXPRESS"]),1)
         self.assertEqual(len(classified["DUPLICADO"]),1)
 
-    def test_sixteen_offers_split_in_two_persistent_batches(self):
+    def test_same_job_deduplicated_by_title_company_and_territory_across_urls(self):
+        first=record(1,title="Operario agrícola",date_source="2026-11-06")
+        second=record(2,title="Operario agrícola",date_source="2026-10-30")
+        classified=engine.build({"candidates":[first,second]},TODAY)
+        self.assertEqual(len(classified["EXPRESS"]),1)
+        self.assertEqual(len(classified["RECUPERACION"]),0)
+        self.assertEqual(len(classified["DUPLICADO"]),1)
+
+    def test_daily_and_recovery_are_written_to_separate_batches(self):
         with tempfile.TemporaryDirectory() as tmp:
-            report={"candidates":[record(i) for i in range(1,17)]}
-            result=engine.produce(report,Path(tmp),TODAY)
-            self.assertEqual(result["EXPRESS"],16)
+            candidates=[record(i) for i in range(1,17)]
+            candidates += [record(100,date_source="2026-10-29"),
+                           record(101,date_source="2026-10-20")]
+            result=engine.produce({"candidates":candidates},Path(tmp),TODAY)
             index=json.loads((Path(tmp)/"index.json").read_text(encoding="utf8"))
-            self.assertEqual(len(index["batches"]),2)
-            self.assertEqual([x["count"] for x in index["batches"]],[15,1])
-            self.assertEqual(len(index["seen_offer_ids"]),16)
-            engine.produce(report,Path(tmp),TODAY)
+            self.assertEqual(result["EXPRESS"],16)
+            self.assertEqual(result["RECUPERACION"],2)
+            self.assertEqual(result["daily_batch_offers"],16)
+            self.assertEqual(result["recovery_batch_offers"],2)
+            self.assertEqual([x["count"] for x in index["batches"]],[15,1,2])
+            self.assertEqual([x["batch_type"] for x in index["batches"]],["daily","daily","recovery"])
+            recovery=json.loads((Path(tmp)/index["batches"][2]["file"]).read_text(encoding="utf8"))
+            self.assertEqual(recovery["batch_type"],"recovery")
+            self.assertEqual(recovery["offers"][0]["tipo_lote"],"recuperacion_vigente")
+            self.assertEqual(len(index["seen_offer_ids"]),18)
+            engine.produce({"candidates":candidates},Path(tmp),TODAY)
             index2=json.loads((Path(tmp)/"index.json").read_text(encoding="utf8"))
-            self.assertEqual(len(index2["batches"]),2)
+            self.assertEqual(len(index2["batches"]),3)
             self.assertEqual(result["published_confirmed"],0)
 
 if __name__=="__main__":

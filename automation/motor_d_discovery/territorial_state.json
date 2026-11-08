@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-07T21:33:09.694048-03:00",
+  "last_run": "2026-11-08T12:57:07.964049-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1519,6 +1519,60 @@
       "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-sala-de-ventas-la-serena-3928196",
       "source": "Chiletrabajos · Nacimiento",
       "commune": "Nacimiento"
+    },
+    "ffc81b67088eed1ea88f": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/tecnico-instalador-antofagasta-3912778",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "dc87999335518f00310b": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/medico-salud-mental-3925138",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "2650de37c1a1771da544": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-multifuncional-lives-y-atencion-en-tienda-3918494",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "8d48621ad22496c7b22b": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/cuidadora-hogar-de-ancianos-la-florioda-3928223",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "6aa30f401911d8d783fd": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/cuidadora-fines-de-semana-hogar-de-ancianos-la-florioda-3909487",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "08750da0abd3f50e0dbd": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/profesional-para-egis-arquitecto-c-civil-o-similar-3409930",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "48080ef41818baabe94e": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/buscamos-asesor-comercial-mod-teletrabajo-3784721",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "ae67f2425f455b34a197": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/maestro-construccion-albanil-ceramista-3927207",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "1341cb177de0af6181d6": {
+      "first_seen": "2026-11-08T12:57:07.964049-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/administradora-general-grupo-rb-santiago-rm-3928201",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
     }
   }
 }

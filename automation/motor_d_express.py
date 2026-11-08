@@ -7,7 +7,7 @@ import ipaddress
 import json
 import re
 import unicodedata
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -54,7 +54,7 @@ def classify(item, today=None):
     company = str(item.get("employer") or "").strip()
     title = str(item.get("title") or "").strip()
     published = item.get("date_source")
-    if not isinstance(published,str) or not re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}",published):
+    if not isinstance(published,str) or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}",published):
         return "SEGUNDA_PASADA","fecha_original_no_acreditada; verificar fecha y vigencia",None
     try:
         day = date.fromisoformat(published)
@@ -64,7 +64,7 @@ def classify(item, today=None):
         return "SEGUNDA_PASADA","fecha_original_futura; revisar dato fuente",None
 
     normalized_title=normalize(title)
-    if work not in COMMUNES and re.search(r"\\bzona (?:valdivia|constitucion|coyhaique|santiago)\\b",normalized_title):
+    if work not in COMMUNES and re.search(r"\bzona (?:valdivia|constitucion|coyhaique|santiago)\b",normalized_title):
         return "DESCARTADO","zona_de_trabajo_fuera_del_territorio",None
     if (work not in COMMUNES or item.get("source_commune_not_confirmed") is not False or
         len(company)<2 or len(title)<5 or item.get("application_evidence") is not True):
@@ -90,7 +90,7 @@ def classify(item, today=None):
         )
     }
     if batch_type=="daily":
-        return "EXPRESS","evidencia_individual_completa_hoY_ayer",offer
+        return "EXPRESS","evidencia_individual_completa_hoy_ayer",offer
     return "RECUPERACION","oferta_antigua_vigente_no_descartar",offer
 
 def build(report,today=None):
@@ -139,7 +139,7 @@ def produce(report,root=READY,today=None):
                    "batch_type":batch_type,"offers":chunk}
             target=root/path
             target.parent.mkdir(parents=True,exist_ok=True)
-            target.write_text(json.dumps(batch,ensure_ascii=False,indent=2)+"\\n",encoding="utf8")
+            target.write_text(json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
             if not any(x.get("batch_id")==batch_id for x in batches):
                 batches.append({"batch_id":batch_id,"file":path,"count":len(chunk),
                                 "batch_type":batch_type})
@@ -148,7 +148,7 @@ def produce(report,root=READY,today=None):
     if len(batches)>256:
         raise RuntimeError("Límite de manifiesto D: no eliminar lotes sin recibo de publicación")
     manifest.write_text(json.dumps({"schema_version":1,"batches":batches,
-        "seen_offer_ids":sorted(seen_ids)},ensure_ascii=False,indent=2)+"\\n",encoding="utf8")
+        "seen_offer_ids":sorted(seen_ids)},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     summary={state:len(items) for state,items in classified.items()}
     summary["daily_batch_offers"]=batch_counts["daily"]
     summary["recovery_batch_offers"]=batch_counts["recovery"]
@@ -160,9 +160,9 @@ def main():
     if not source.exists():
         raise SystemExit("No existe inventario territorial D; no crear lotes de publicación")
     report=json.loads(source.read_text(encoding="utf8"))
-    from zoneinfo import ZoneInfo
-    local_day=__import__("datetime").datetime.now(ZoneInfo("America/Santiago")).date()
+    local_day=datetime.now(ZoneInfo("America/Santiago")).date()
     print("MOTOR_D_EXPRESS "+json.dumps(produce(report,today=local_day),ensure_ascii=False))
 
 if __name__=="__main__":
+    from zoneinfo import ZoneInfo
     main()

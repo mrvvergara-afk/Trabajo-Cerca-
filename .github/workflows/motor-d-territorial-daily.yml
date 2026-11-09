@@ -72,10 +72,11 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import tempfile
           from datetime import datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
-          from motor_d_express import build, validate_inventory_freshness
+          from motor_d_express import build, produce, validate_inventory_freshness
           from motor_d_catalog_probe import read_full_feed, check_ready_offers
           source=Path("automation/motor_d_discovery/territorial_daily.json")
           report=json.loads(source.read_text(encoding="utf-8"))
@@ -97,6 +98,32 @@ jobs:
                   "batch_type":offer["tipo_lote"],
                   "catalog_url_status":existing.get(offer["id_fuente"],"catalog_unavailable")
               })
+          # Real jobs not found in the complete public feed may create an
+          # isolated, temporary import batch. This exercises the real producer,
+          # then deletes the batch; the live repository/app are not modified.
+          source_by_url={row.get("url"):row for row in report["candidates"]
+                         if isinstance(row,dict)}
+          to_dry_run=[source_by_url[x["url_original"]] for x in evidence
+                      if x["catalog_url_status"]=="not_found_in_complete_feed"
+                      and x["url_original"] in source_by_url]
+          with tempfile.TemporaryDirectory(prefix="motor_d_pr_dry_run_") as tmp:
+              batch_summary=produce({"candidates":to_dry_run},Path(tmp),today)
+              manifest=json.loads((Path(tmp)/"index.json").read_text(encoding="utf-8"))
+              parsed_batches=[json.loads((Path(tmp)/row["file"]).read_text(encoding="utf-8"))
+                              for row in manifest["batches"]]
+              actual_ids={offer["id_fuente"] for batch in parsed_batches
+                          for offer in batch["offers"]}
+              expected_ids={entry["id_fuente"] for entry in evidence
+                            if entry["catalog_url_status"]=="not_found_in_complete_feed"}
+              if actual_ids!=expected_ids:
+                  raise SystemExit("PR_DRY_RUN_FAILURE: real-source batch identities differ")
+              print("PR_REAL_SOURCE_BATCH_DRY_RUN",json.dumps({
+                  "daily_ready":batch_summary["daily_batch_offers"],
+                  "recovery_ready":batch_summary["recovery_batch_offers"],
+                  "batch_count":len(manifest["batches"]),
+                  "id_fuente":sorted(actual_ids),
+                  "app_writes":0
+              },ensure_ascii=False))
           summary={
               "schema":"trabajo-cerca.motor-d-pr-preview.v1",
               "scan_date":report["date"],
@@ -113,6 +140,7 @@ jobs:
               "feed_error":error,
               "publications_created":0,
               "catalog_identity_and_exact_semantic_checked":complete,
+              "dry_run_batch_offers":batch_summary["daily_batch_offers"]+batch_summary["recovery_batch_offers"],
               "ready_candidates":evidence
           }
           target=Path("automation/motor_d_discovery/territorial_pr_preview.json")

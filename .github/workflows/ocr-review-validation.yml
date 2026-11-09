@@ -2,7 +2,7 @@ name: OCR review and importer contract
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main]
+    branches: [main, fix/motor-d-ocr-bridge-20261108]
   push:
     branches: [fix/motor-d-ocr-bridge-20261108]
 permissions:

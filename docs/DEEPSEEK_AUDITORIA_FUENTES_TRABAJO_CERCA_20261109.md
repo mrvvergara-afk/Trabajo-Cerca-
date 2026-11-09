@@ -4,6 +4,12 @@
 **Proyecto:** Trabajo Cerca, catálogo gratuito de empleos locales en Chile  
 **Modalidad solicitada:** revisión técnica independiente, priorizando fuentes públicas, acceso autorizado y costo cero. **No desplegar ni publicar.**
 
+## 0. Documento obligatorio de cobertura y fuentes
+
+**Antes de investigar o proponer cambios, lee completo el [ANEXO DE INVENTARIO DE FUENTES Y MATRIZ DE LAS 12 COMUNAS](./DEEPSEEK_ANEXO_INVENTARIO_FUENTES_20261109.md).** Forma parte integral de este encargo y detalla **39 enlaces semilla**, **23 páginas de descubrimiento**, **26 referencias sociales**, **32 fuentes directas del Motor D**, **12 índices territoriales de Chiletrabajos**, **12 consultas Indeed**, **7 fuentes de auditoría social**, **12 pistas históricas adicionales**, **15 pistas de empleadores** y otras referencias sociales (con solapamientos). Incluye enlaces exactos, comunas y distinción entre fuente configurada y fuente efectivamente legible.
+
+**No confundir estos registros con 39+23+26+... fuentes únicas o vacantes verificadas.** Cruza los inventarios en el repositorio antes de afirmar que una fuente está cubierta. Las URLs de fichas históricas no son motores de descubrimiento continuo. La exhaustividad del anexo se refiere a estos inventarios del repositorio con corte al 09-11-2026; DeepSeek debe investigar además las **fuentes objetivo no conectadas** y reportar qué falta.
+
 ## 1. Objetivo medible
 
 Proponer y, si se dispone de acceso técnico al repositorio, demostrar soluciones que **incrementen los avisos nuevos, verificables y efectivamente publicados**, respetando las restricciones de las fuentes. No interesa una lista de enlaces sin procesar: cada oferta debe demostrar **cargo, empresa, lugar de ejecución, vigencia, enlace de postulación y fuente original**, pasar deduplicación y aparecer una única vez en el catálogo.
@@ -15,7 +21,7 @@ Proponer y, si se dispone de acceso técnico al repositorio, demostrar solucione
 - Motor A y Motor D rastrean; B/C deben procesar material documental y colas. Hay URL, contenido y fecha histórica desde septiembre 2026. Los avisos antiguos se incluyen si aún siguen abiertos.
 - El GitHub Actions `Motor D - Barrido territorial 12 comunas` ha rastreado fuentes reales y generado lotes; el importador de laboratorio está en `https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/`. Una oferta **en lote no significa publicada**: se requiere recibo + ID exacto en feed público completo.
 - `automation/motor_d_territorial_daily.py`: consulta las 12 comunas y fuentes ATS/portales. `automation/motor_d_express.py`: convierte fichas individuales verificadas en lotes. `automation/motor_d_catalog_probe.py`: cotejo contra feed completo y normalización de ID de Chiletrabajos. `automation/omil_evidence_gate.py`: ingreso *solo de lectura* de evidencia de afiches con deduplicación, sin autoaprobar.
-- `automation/trabajo_cerca/fuentes_diarias.json`: inventario territorial de 39 URL semilla, 23 sitios web y referencias sociales. La existencia de una URL de Facebook/Instagram en el inventario **no equivale a haber leído sus publicaciones**.
+- `automation/trabajo_cerca/fuentes_diarias.json`: inventario territorial de **39 URL semilla, 23 sitios de descubrimiento y 26 referencias sociales**. El Motor D añade **32 fuentes directas más 12 rutas Chiletrabajos y 12 consultas Indeed**, parcialmente solapadas. El anexo vinculado en sección 0 enumera cada URL, además de las pistas históricas, fuentes sociales y la matriz comuna/fuente. La existencia de una URL de Facebook/Instagram en el inventario **no equivale a haber leído sus publicaciones**.
 - `automation/motor_d_social_access_probe.py` y `automation/motor_d_social_browser.py` probaron acceso HTTP + Playwright público, con respeto a robots.txt. El 9 de noviembre el acceso directo a Facebook/Instagram estaba restringido (`robots_disallowed`); **no se obtuvieron imágenes ni texto de historias**. No inferir “cero empleos” a partir de una fuente inaccesible.
 - Indeed devuelve HTTP 403 en el ejecutor; otros portales pueden bloquear según sesión o robots. Chiletrabajos a veces devuelve resultados nacionales cuando se requiere una comuna: usar rutas geográficas con H1/título territorial validado, y verificar el lugar de trabajo en el aviso, no la ubicación de la empresa reclutadora.
 - El 9 de noviembre un usuario aportó 3 capturas de historias de `@omilnacimiento`. Eran ofertas de Serfonac ya publicadas originalmente en Chiletrabajos el 5/11: conductor `3923758`, mecánico automotriz `3923364` y mecánico soldador `3923358`. El feed público completo confirmó los tres activos, **sin duplicados por ID original**, en 214 registros. La OMIL anunciaba **jornada presencial el 12/11**; no confundir con fecha original ni cierre de portal.
@@ -53,7 +59,7 @@ Auditar que `radar -> fichas -> verificación flexible -> OCR/revisión firmada 
 
 ## 4. Entregables exigidos a DeepSeek
 
-1. **Matriz de fuentes** para las 12 comunas, con fuente, método de acceso, condición legal/técnica, evidencia de prueba, costo, periodicidad y status: usable / condicionado / bloqueado.
+1. **Matriz de fuentes** para las 12 comunas, partiendo de **TODAS las entradas del anexo obligatorio (sección 0)** y deduplicando solapamientos, con fuente, método de acceso, condición legal/técnica, evidencia de prueba, costo, periodicidad y status: usable / condicionado / bloqueado. Informar por separado fuentes objetivo aún no conectadas.
 2. **Tres alternativas viables** ordenadas por impacto × esfuerzo × dependencia de terceros: una sin cooperación de Meta; una con cooperación de OMIL; una con autorización formal de Meta. Cuantificar costos, no inventar probabilidades.
 3. **POC mínimo reproducible** (Python o TypeScript), sin claves en texto, con fixture real, pruebas unitarias y fallos explícitos para `robots_disallowed`, HTML vacío, feed incompleto y catálogo no accesible. No publicar ni acceder a datos privados.
 4. Análisis de cambios exactos al repositorio (archivo, función, razón, regresión, impacto esperado) y de integración con Motor A/D/B/C.

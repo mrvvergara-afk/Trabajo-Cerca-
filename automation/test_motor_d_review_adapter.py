@@ -34,7 +34,7 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertFalse(saved["items"][0]["publication_eligible"])
             self.assertEqual(saved["items"][0]["date_source"],"2026-10-15")
             self.assertEqual(saved["items"][0]["date_discovered"],"2026-11-08")
-            self.assertIn("[teléfono]",saved["items"][0]["text_excerpt"])
+            self.assertIsNone(saved["items"][0]["text_excerpt"])
 
     def test_same_canonical_url_updates_instead_of_duplicating(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -98,3 +98,34 @@ class MotorDReviewAdapterTests(unittest.TestCase):
 
 if __name__=="__main__":
     unittest.main()
+
+class EvidencePersistenceTests(unittest.TestCase):
+    def test_changed_document_requires_revalidation_and_removes_excerpt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/'source.json', Path(tmp)/'queue.json'
+            row = {'url':'https://example.cl/afiche.pdf','document_sha256':'a'*64}
+            source.write_text(json.dumps([row]))
+            adapter.adapt(source, target, date(2026,11,8))
+            queue = json.loads(target.read_text())
+            queue['items'][0].update(review_status='approved', review_signature='signed',
+                publication_eligible=True, review_notes='Verified',
+                vigencia_verified_at='2026-11-08T10:00:00Z', revalidate_after='2026-11-10T10:00:00Z')
+            target.write_text(json.dumps(queue))
+            adapter.adapt(source, target, date(2026,11,9))
+            same = json.loads(target.read_text())['items'][0]
+            self.assertEqual(same['review_signature'], 'signed')
+            self.assertEqual(same['review_notes'], 'Verified')
+            row.update(document_sha256='b'*64, text_excerpt='Juan 912345678 persona@example.cl 12.345.678-5')
+            source.write_text(json.dumps([row]))
+            adapter.adapt(source, target, date(2026,11,9))
+            changed = json.loads(target.read_text())['items'][0]
+            self.assertEqual(changed['review_status'], 'pending')
+            self.assertFalse(changed['publication_eligible'])
+            self.assertIsNone(changed['review_signature'])
+            self.assertNotIn('912345678', target.read_text())
+            self.assertNotIn('persona@example.cl', target.read_text())
+
+    def test_redacts_personal_contact_data(self):
+        value = adapter.sanitize_excerpt('912345678 45 234567 persona@example.cl 12.345.678-5')
+        for private in ('912345678', '234567', 'persona@example.cl', '12.345.678-5'):
+            self.assertNotIn(private, value)

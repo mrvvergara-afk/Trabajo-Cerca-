@@ -8,7 +8,7 @@ import ipaddress
 import json
 import re
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, parse_qsl, urlencode
 
 def canonical(raw: str) -> str:
     try:
@@ -23,16 +23,14 @@ def canonical(raw: str) -> str:
                 return ""
         except ValueError:
             pass
-        return "https://" + host + (u.path.rstrip("/") or "/") + (("?" + u.query) if u.query else "")
+        query = urlencode(sorted((k,v) for k,v in parse_qsl(u.query) if not k.lower().startswith("utm_") and k.lower() not in {"fbclid", "gclid"}))
+        return "https://" + host + (u.path.rstrip("/") or "/") + (("?" + query) if query else "")
     except (ValueError, TypeError):
         return ""
 
 def sanitize_excerpt(value):
-    if not isinstance(value, str):
-        return None
-    # Chilean landlines and mobile numbers, including spaces, hyphens and +56.
-    pattern = r"(?<!\d)(?:\+?56[\s-]?)?(?:[2-9][\s-]?\d[\s-]?\d{3}[\s-]?\d{3}|9[\s-]?\d{4}[\s-]?\d{4})(?!\d)"
-    return re.sub(pattern, "[teléfono]", value)
+    from ocr_review_security import redact
+    return redact(value)
 
 def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) -> dict:
     today = today or dt.date.today()
@@ -72,7 +70,8 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             "reader_status": row.get("reader_status") or row.get("status") or "revision_obligatoria",
             "review_reason": row.get("reader_status") or row.get("status") or "evidencia_documental_requiere_revision",
             "extractor": row.get("extractor"),
-            "text_excerpt": sanitize_excerpt(row.get("text_excerpt")),
+            "text_excerpt": None,  # Raw OCR stays outside versioned/public artifacts.
+            "document_sha256": row.get("document_sha256"),
             "original_classification": row.get("original_classification"),
             "date_source": row.get("published_date_evidence"),
             "date_discovered": discovered,
@@ -88,7 +87,8 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             existing = by_url[url]
             first_seen = existing.get("first_discovered") or existing.get("date_discovered") or discovered
             protected_keys = {
-                "review_status", "review_reason", "approved_by", "approved_at",
+                "review_status", "review_reason", "review_notes", "review_signature",
+                "document_sha256", "vigencia_verified_at", "revalidate_after", "application_url", "approved_by", "approved_at",
                 "date_source", "publication_date_confirmed",
                 "rejected_by", "rejected_at", "evidence_sha256",
                 "work_location_verified", "employer_verified",
@@ -98,10 +98,22 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             }
             protected = {k: v for k, v in existing.items() if k in protected_keys}
             old_deadline = existing.get("deadline")
+            changed = bool(existing.get("document_sha256") and
+                           candidate.get("document_sha256") != existing.get("document_sha256"))
+            changed = changed or any(candidate.get(k) and existing.get(k) and candidate[k] != existing[k]
+                                     for k in ("date_source", "deadline", "extractor"))
             existing.update(candidate)
             existing.update(protected)
             if not existing.get("deadline") and old_deadline:
                 existing["deadline"] = old_deadline
+            if changed:
+                existing.update(review_status="rejected" if protected.get("review_status") == "rejected" else "pending", publication_eligible=False,
+                                work_location_verified=False, employer_verified=False,
+                                application_route_verified=False, publication_date_confirmed=False,
+                                review_signature=None, document_sha256=candidate.get("document_sha256"),
+                                review_reason="evidencia_modificada_revalidacion_obligatoria")
+            if existing.get("deadline") and existing["deadline"] < today.isoformat():
+                existing.update(publication_eligible=False, review_signature=None)
             existing["first_discovered"] = first_seen
             existing["last_seen"] = today.isoformat()
             updated += 1
@@ -111,6 +123,15 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             items.append(candidate)
             by_url[url] = candidate
             added += 1
+    for item in items:
+        item["text_excerpt"] = None
+        try:
+            from ocr_review_security import timestamp
+            expired = item.get("revalidate_after") and timestamp(item["revalidate_after"]).date() <= today
+        except (ValueError, TypeError):
+            expired = True
+        if expired or (item.get("deadline") and item["deadline"] < today.isoformat()):
+            item.update(publication_eligible=False, review_signature=None)
     if len(items) > 5000:
         raise RuntimeError("Cola supera 5000 registros; requiere archivo histórico explícito")
     payload = {

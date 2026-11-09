@@ -102,7 +102,7 @@ def strip_result(row: dict) -> dict:
             ('url', 'source', 'kind', 'decision', 'extractor', 'preview', 'signals',
              'possible_communes', 'deadline', 'publication_date_evidence',
              'source_date_evidence', 'publication_date_confirmed',
-             'original_classification', 'http', 'error', 'failure_reason')
+             'sha256', 'original_classification', 'http', 'error', 'failure_reason')
             if key in row}
 
 
@@ -116,7 +116,7 @@ def main(argv=None):
     if not 1 <= args.max_items <= 35:
         parser.error('max-items permitido: 1 a 35')
     config = json.loads(Path(args.config).read_text(encoding='utf8'))
-    if len(config.get('territories', [])) != 14 or len(config.get('seed_urls', [])) != 40 or len(config.get('social_reference', [])) != 25:
+    if set(config.get('territories', [])) != {'Angol', 'Collipulli', 'Ercilla', 'Lumaco', 'Los Sauces', 'Purén', 'Renaico', 'Traiguén', 'Victoria', 'Mulchén', 'Negrete', 'Nacimiento'}:
         raise ValueError('Inventario territorial incompleto')
     batch = batch_for_time() if args.batch == 'auto' else int(args.batch)
     sources = [(record, 'semilla') for record in config['seed_urls']]
@@ -157,7 +157,8 @@ def main(argv=None):
             'deadline_evidence': item.get('deadline'),
             'extractor': item.get('extractor'),
             'possible_communes': item.get('possible_communes') or [],
-            'text_excerpt': item.get('preview'),
+            'text_excerpt': None,
+            'document_sha256': item.get('sha256'),
             'original_classification': item.get('original_classification'),
             'publication_date_confirmed': item.get('publication_date_confirmed') is True,
             'date_discovered': today.isoformat(),
@@ -243,7 +244,7 @@ def main(argv=None):
     (folder/'fuentes_auditadas.json').write_text(json.dumps(status, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
     (folder/'candidatos_revision.json').write_text(json.dumps(list(candidates.values()), ensure_ascii=False, indent=2)+'\n', encoding='utf8')
     note = (f"## Trabajo Cerca · radar diario · lote {batch}\n\n"
-            f"- Localidades: **{len(config['territories'])}**; fuentes web: **{len(config['discovery'])}**; referencias de avisos: **40**.\n"
+            f"- Localidades: **{len(config['territories'])}**; fuentes web: **{len(config['discovery'])}**; referencias de avisos: **{len(config['seed_urls'])}**.\n"
             f"- Fuentes de este lote: **{len(selected)}**; catálogo público: **{feed_count}** registros, lectura completa: **{feed_complete}**.\n"
             f"- Candidatos nuevos o pendientes de comprobar: **{len(candidates)}** (NO publicados).\n"
             f"- Estado por fuente: **{dict(counts)}**.\n"

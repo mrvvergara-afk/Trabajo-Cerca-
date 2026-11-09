@@ -12,14 +12,14 @@ class DailyRadarTests(unittest.TestCase):
     def setUpClass(cls):
         cls.config = json.loads(Path(__file__).with_name('fuentes_diarias.json').read_text(encoding='utf8'))
 
-    def test_census_of_14_with_quilaco_and_mininco(self):
-        self.assertEqual(len(self.config['territories']),14)
-        self.assertIn('Quilaco',self.config['territories'])
-        self.assertIn('Mininco',self.config['territories'])
-        self.assertEqual(len(self.config['seed_urls']),40)
+    def test_census_of_12_administrative_communes(self):
+        self.assertEqual(len(self.config['territories']),12)
+        self.assertNotIn('Quilaco',self.config['territories'])
+        self.assertNotIn('Mininco',self.config['territories'])
+        self.assertEqual(len(self.config['seed_urls']),39)
         self.assertEqual(len(self.config['social_reference']),25)
-        self.assertEqual(len(self.config['discovery']),24)
-        self.assertEqual(len({r['id'] for r in self.config['seed_urls']}),40)
+        self.assertEqual(len(self.config['discovery']),23)
+        self.assertEqual(len({r['id'] for r in self.config['seed_urls']}),39)
 
     def test_urls_canonical_keep_wordpress_identity_but_drop_tracking(self):
         self.assertEqual(radar_diario.canonical('https://www.traiguencity.cl/a/?utm_source=a'),

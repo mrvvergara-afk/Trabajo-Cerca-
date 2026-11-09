@@ -9,12 +9,12 @@ import re
 import unicodedata
 from datetime import date, datetime
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, parse_qsl, urlencode
 
 ROOT = Path("automation/motor_d_discovery")
 READY = Path("automation/motor_d_ready")
 COMMUNES = {"Angol","Collipulli","Ercilla","Lumaco","Los Sauces","Purén",
-            "Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento","Quilaco"}
+            "Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento"}
 
 def canonical_url(raw):
     try:
@@ -29,7 +29,8 @@ def canonical_url(raw):
                 return None
         except ValueError:
             pass
-        return "https://"+host+parsed.path.rstrip("/") + ("?"+parsed.query if parsed.query else "")
+        query = urlencode(sorted((k,v) for k,v in parse_qsl(parsed.query) if not k.lower().startswith("utm_") and k.lower() not in {"fbclid", "gclid"}))
+        return "https://"+host+(parsed.path.rstrip("/") or "/") + ("?"+query if query else "")
     except (ValueError,TypeError):
         return None
 
@@ -50,7 +51,13 @@ def classify(item, today=None):
     if item.get("evidence") != "individual_page_with_job_terms" or item.get("http") != 200:
         return "TERCERA_PASADA","no_hay_ficha_individual_legible",None
 
-    work = item.get("work_commune")
+    if item.get("deadline"):
+        try:
+            if date.fromisoformat(item["deadline"]) < today:
+                return "DESCARTADO", "plazo_vencido", None
+        except (ValueError, TypeError):
+            return "SEGUNDA_PASADA", "plazo_invalido", None
+    work = {"Mininco": "Collipulli", "Coihue": "Negrete"}.get(item.get("work_commune"), item.get("work_commune"))
     company = str(item.get("employer") or "").strip()
     title = str(item.get("title") or "").strip()
     published = item.get("date_source")
@@ -64,6 +71,9 @@ def classify(item, today=None):
         return "SEGUNDA_PASADA","fecha_original_futura; revisar dato fuente",None
 
     normalized_title=normalize(title)
+    explicit = re.search(r"\bcomuna (?:de )?(los angeles|los sauces|angol|lumaco|traiguen|renaico|nacimiento|negrete|mulchen|collipulli|victoria|puren|ercilla|temuco)\b", normalized_title)
+    if explicit and explicit.group(1) != normalize(work):
+        return "SEGUNDA_PASADA", "comuna_contradice_cargo", None
     if work not in COMMUNES and re.search(r"\bzona (?:valdivia|constitucion|coyhaique|santiago)\b",normalized_title):
         return "DESCARTADO","zona_de_trabajo_fuera_del_territorio",None
     if (work not in COMMUNES or item.get("source_commune_not_confirmed") is not False or
@@ -82,7 +92,8 @@ def classify(item, today=None):
         "fecha_publicacion":published,
         "fecha_descubrimiento":today.isoformat(),
         "tipo_lote":"radar_diario" if batch_type=="daily" else "recuperacion_vigente",
-        "fecha_cierre":None,
+        "fecha_cierre":item.get("deadline"),
+        **{k:item[k] for k in ("review_id", "promotion_id", "ocr_revalidate_after") if item.get(k)},
         "justificacion":(
             "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. "
             + ("Publicación de hoy o ayer." if batch_type=="daily" else
@@ -123,10 +134,30 @@ def produce(report,root=READY,today=None):
     saved=json.loads(manifest.read_text(encoding="utf8")) if manifest.exists() else {"schema_version":1,"batches":[]}
     batches=list(saved.get("batches",[]))
     seen_ids=set(saved.get("seen_offer_ids",[]))
+    def identities(offer):
+        keys = {"url:" + str(canonical_url(offer.get("url_original"))),
+                "job:" + json.dumps([normalize(offer.get("cargo")), normalize(offer.get("empresa")),
+                                    sorted(normalize(x) for x in offer.get("comunas", []))])}
+        keys.update(k + ":" + str(offer[k]) for k in ("review_id", "promotion_id") if offer.get(k))
+        return keys
+    seen_keys = set(saved.get("seen_identity_keys", []))
+    # Migrate old manifests from their actual batches, including HTML offers.
+    for entry in batches:
+        relative = entry.get("file", "")
+        if not re.fullmatch(r"\d{8}/motor-d-\d{8}-[a-f0-9]{18}\.json", relative):
+            raise ValueError("Referencia de lote inválida")
+        previous = json.loads((root / relative).read_text(encoding="utf8"))
+        for offer in previous["offers"]:
+            seen_keys.update(identities(offer))
     batch_counts={"daily":0,"recovery":0}
     for batch_type,state in (("daily","EXPRESS"),("recovery","RECUPERACION")):
-        approved=[x["offer"] for x in classified[state]
-                  if x["offer"]["id_fuente"] not in seen_ids]
+        approved=[]
+        for entry in classified[state]:
+            offer = entry["offer"]
+            keys = identities(offer)
+            if offer["id_fuente"] not in seen_ids and not keys & seen_keys:
+                approved.append(offer)
+                seen_keys.update(keys)
         for start in range(0,len(approved),15):
             chunk=approved[start:start+15]
             fingerprint=hashlib.sha256(json.dumps(
@@ -148,7 +179,7 @@ def produce(report,root=READY,today=None):
     if len(batches)>256:
         raise RuntimeError("Límite de manifiesto D: no eliminar lotes sin recibo de publicación")
     manifest.write_text(json.dumps({"schema_version":1,"batches":batches,
-        "seen_offer_ids":sorted(seen_ids)},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+        "seen_offer_ids":sorted(seen_ids), "seen_identity_keys":sorted(seen_keys)},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     summary={state:len(items) for state,items in classified.items()}
     summary["daily_batch_offers"]=batch_counts["daily"]
     summary["recovery_batch_offers"]=batch_counts["recovery"]

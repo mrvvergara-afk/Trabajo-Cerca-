@@ -31,9 +31,9 @@ municipalidadcollipulli.cl victoriachile.cl munipuren.cl muniercilla.cl
 malleco7.cl radionativa.cl radioviaducto.cl lasnoticiasdemalleco.cl
 ssan.redsalud.gob.cl traiguencity.cl chiletrabajos.cl kitempleo.cl municipalidadquilaco.cl angolnoticiasnew.cl sence.gob.cl bne.gob.cl empleospublicos.cl mallleco7.cl muncollipulli.cl
 """.split())
-WORK_TOWNS = ("Angol", "Collipulli", "Ercilla", "Renaico", "Mininco",
+WORK_TOWNS = ("Angol", "Collipulli", "Ercilla", "Renaico", "Mininco", "Coihue",
               "Los Sauces", "Purén", "Traiguén", "Lumaco", "Nacimiento",
-              "Negrete", "Mulchén", "Victoria", "Quilaco")
+              "Negrete", "Mulchén", "Victoria")
 MONTHS = dict(zip(("enero febrero marzo abril mayo junio julio agosto septiembre "
                    "octubre noviembre diciembre").split(), range(1, 13)))
 OPENER = build_opener(type("NoRedirect", (HTTPRedirectHandler,), {"redirect_request": lambda *args: None})())
@@ -236,7 +236,7 @@ def parse_deadline(text: str) -> dt.date | None:
 def parse_source_date(text: str) -> dt.date | None:
     """Detecta fecha de encabezado inequívoca, no menciones históricas genéricas."""
     first = re.sub(r"\s+", " ", text[:1800])
-    cities = r"(?:Lumaco|Angol|Victoria|Renaico|Traigu[eé]n|Negrete|Nacimiento|Pur[eé]n|Mulch[eé]n|Collipulli|Ercilla|Quilaco)"
+    cities = r"(?:Lumaco|Angol|Victoria|Renaico|Traigu[eé]n|Negrete|Nacimiento|Pur[eé]n|Mulch[eé]n|Collipulli|Ercilla)"
     weekdays = r"(?:(?:lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)\s+)?"
     marker = rf"{cities}\s*,\s*(?:a\s+)?{weekdays}"
     marker += r"(\d{1,2})\s+de\s+([a-záéíóú]+)\s+(?:de(?:l)?\s+)?(20\d{2})"
@@ -270,6 +270,7 @@ def classify(text: str, today: dt.date | None = None) -> dict:
         r"(?:postul|antecedentes|curr[ií]culum|enviar\s+(?:su\s+)?cv|"
         r"proceso\s+de\s+reclutamiento)", folded, re.I))
     places = [x for x in WORK_TOWNS if re.search(r"\b" + re.escape(x) + r"\b", text, re.I)]
+    places = list(dict.fromkeys({"Mininco": "Collipulli", "Coihue": "Negrete"}.get(x, x) for x in places))
     expires = parse_deadline(text)
     source_date = parse_source_date(text)
     if not text:
@@ -292,7 +293,7 @@ def classify(text: str, today: dt.date | None = None) -> dict:
             "deadline": expires.isoformat() if expires else None,
             "source_date_evidence": source_date.isoformat() if source_date else None,
             "publication_date_confirmed": False,
-            "preview": excerpt}
+            "preview": None}
 
 
 class ArticleDateParser(HTMLParser):

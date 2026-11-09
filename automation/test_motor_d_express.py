@@ -73,10 +73,10 @@ class MotorDExpressTests(unittest.TestCase):
                 item=record(title=title,work_commune=None,source_commune_not_confirmed=True)
                 self.assertEqual(engine.classify(item,TODAY)[0],"DESCARTADO")
 
-    def test_aliases_and_quilaco_are_allowed(self):
+    def test_aliases_allowed_and_quilaco_excluded(self):
         self.assertEqual(engine.classify(record(work_commune="Collipulli"),TODAY)[0],"EXPRESS")
         self.assertEqual(engine.classify(record(work_commune="Negrete"),TODAY)[0],"EXPRESS")
-        self.assertEqual(engine.classify(record(work_commune="Quilaco"),TODAY)[0],"EXPRESS")
+        self.assertEqual(engine.classify(record(work_commune="Quilaco"),TODAY)[0],"SEGUNDA_PASADA")
 
     def test_reject_unsafe_url(self):
         self.assertIsNone(engine.canonical_url("http://example.org/oferta"))

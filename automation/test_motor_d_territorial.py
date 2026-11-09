@@ -4,10 +4,10 @@ from bs4 import BeautifulSoup
 import motor_d_territorial_daily as engine
 
 class TerritorialSafetyTests(unittest.TestCase):
-    def test_thirteen_communes_include_quilaco_and_every_commune_has_a_seed(self):
-        self.assertEqual(len(engine.COMMUNES),13)
-        self.assertEqual(len(set(engine.COMMUNES)),13)
-        self.assertIn("Quilaco",engine.COMMUNES)
+    def test_twelve_communes_exclude_quilaco_and_every_commune_has_a_seed(self):
+        self.assertEqual(len(engine.COMMUNES),12)
+        self.assertEqual(len(set(engine.COMMUNES)),12)
+        self.assertNotIn("Quilaco",engine.COMMUNES)
         self.assertEqual(set(town for town,_,_ in engine.SEEDS),set(engine.COMMUNES))
 
     def test_mininco_keeps_collipulli_administrative_mapping(self):
@@ -111,7 +111,7 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertEqual(items[0][2],"closed")
 
     def test_indeed_critical_all_13_communes(self):
-        self.assertEqual(len(engine.INDEED_SEEDS),13)
+        self.assertEqual(len(engine.INDEED_SEEDS),12)
         self.assertEqual({x[0] for x in engine.INDEED_SEEDS},set(engine.COMMUNES))
         self.assertTrue(all("cl.indeed.com/jobs" in x[2] for x in engine.INDEED_SEEDS))
         self.assertTrue(any("fashionspark.hiringroom.com/jobs" in x[2] for x in engine.SEEDS))

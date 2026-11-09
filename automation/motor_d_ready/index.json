@@ -30,18 +30,6 @@
       "batch_id": "motor-d-20261107-3927989abcdef12345",
       "file": "20261107/motor-d-20261107-3927989abcdef12345.json",
       "count": 2
-    },
-    {
-      "batch_id": "motor-d-20261108-bccafbb13b7baa5270",
-      "file": "20261108/motor-d-20261108-bccafbb13b7baa5270.json",
-      "count": 15,
-      "batch_type": "recovery"
-    },
-    {
-      "batch_id": "motor-d-20261108-50a5c80afe2d3bf4fd",
-      "file": "20261108/motor-d-20261108-50a5c80afe2d3bf4fd.json",
-      "count": 9,
-      "batch_type": "recovery"
     }
   ],
   "seen_offer_ids": [
@@ -80,5 +68,21 @@
     "d_f8fc291475dd5bb70c9e",
     "d_fa8500cb8828effe2ca6",
     "d_restore_aba6c908a9d7b1936b"
+  ],
+  "quarantined_batches": [
+    {
+      "batch_id": "motor-d-20261108-bccafbb13b7baa5270",
+      "file": "20261108/motor-d-20261108-bccafbb13b7baa5270.json",
+      "count": 15,
+      "batch_type": "recovery",
+      "reason": "Requiere nueva validación: comuna contradictoria o evidencia de vigencia insuficiente; no importar"
+    },
+    {
+      "batch_id": "motor-d-20261108-50a5c80afe2d3bf4fd",
+      "file": "20261108/motor-d-20261108-50a5c80afe2d3bf4fd.json",
+      "count": 9,
+      "batch_type": "recovery",
+      "reason": "Requiere nueva validación: comuna contradictoria o evidencia de vigencia insuficiente; no importar"
+    }
   ]
 }

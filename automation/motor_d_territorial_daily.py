@@ -378,7 +378,10 @@ def inspect(seed):
             and parsed_seed.path.startswith("/trabajo/")):
             heading=soup.select_one("h1")
             title=heading.get_text(" ",strip=True)[:180] if heading else ""
-            links=[(url,title,"not_indicated")] if TERMS.search(title) else []
+            # A direct /trabajo/ URL is already an individual job-detail
+            # route. Roles like 'DOCENTE PSICOLOGO' need not contain generic
+            # recruitment keywords in their H1. Evidence checks still apply.
+            links=[(url,title,"not_indicated")] if len(title)>=5 else []
         out["links_found"]=len(links)
         # Procesar todos los enlaces descubiertos (hasta 35) con paralelismo acotado,
         # sin quedar en un muestreo fijo de cinco.

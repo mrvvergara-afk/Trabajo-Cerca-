@@ -196,6 +196,26 @@ def explicit_work_commune(body):
                 return commune
     return None
 
+def focused_job_text(soup):
+    """Prefer the actual vacancy content over long municipal headers and menus."""
+    for selector in ("article", ".entry-content", ".post-content", ".td-post-content", "main"):
+        for section in soup.select(selector)[:4]:
+            content=section.get_text(" ",strip=True)
+            if len(content)>=80:
+                return content[:7000]
+    return soup.get_text(" ",strip=True)[:7000]
+
+def informative_job_title(soup, label):
+    """Use the publisher's full article title if H1 only says 'Oferta Laboral'."""
+    heading=soup.select_one("h1")
+    title=heading.get_text(" ",strip=True)[:180] if heading else label
+    if fold(title).strip() in {"oferta laboral","convocatoria","llamado a concurso"} or len(title)<10:
+        page_title=soup.title.get_text(" ",strip=True) if soup.title else ""
+        actual=page_title.split("|",1)[0].strip()[:180]
+        if len(actual)>=12 and TERMS.search(actual):
+            return actual
+    return title or label
+
 def explicit_employer(body):
     found=re.search(r"(?:empresa|empleador|raz[oó]n social)\s*:\s*([^.;]{3,90})",body,re.I)
     if not found:return None
@@ -328,9 +348,8 @@ def inspect(seed):
                 code,detail_soup,detail_reason=request_page(detail_url)
                 detail["http"]=code
                 if code==200 and detail_soup is not None:
-                    heading=detail_soup.select_one("h1")
-                    title=heading.get_text(" ",strip=True)[:180] if heading else label
-                    body=detail_soup.get_text(" ",strip=True)[:7000]
+                    title=informative_job_title(detail_soup,label)
+                    body=focused_job_text(detail_soup)
                     dates=dates_in(detail_soup)
                     job_commune=explicit_work_commune(body)
                     employer=explicit_employer(body)
@@ -346,6 +365,8 @@ def inspect(seed):
                         job_commune=primary_ats["work_commune"] or job_commune
                         employer=primary_ats["employer"] or employer
                         application_evidence=primary_ats["application_evidence"] or application_evidence
+                    if urlsplit(detail_url).hostname in ("jobs.arauco.com","www.jobs.arauco.com"):
+                        employer="ARAUCO"  # Verified first-party ATS; never infer work commune.
                     # Closed labels and internal-only calls are not public job vacancies.
                     deadline=explicit_deadline_date(body)
                     explicit_closed=bool(CLOSED.search(title+" "+label+" "+body) or (deadline and deadline<NOW.date()) or (portal and portal["source_closed"]))
@@ -383,9 +404,8 @@ def inspect(seed):
         # candidatos propios; no depender de que tengan enlaces internos.
         source_path=urlsplit(url).path.rstrip("/").lower()
         if "/oferta-laboral-" in source_path or "/convocatoria-laboral-" in source_path:
-            headline=soup.select_one("h1")
-            heading=headline.get_text(" ",strip=True)[:180] if headline else ""
-            body=soup.get_text(" ",strip=True)[:7000]
+            heading=informative_job_title(soup,"")
+            body=focused_job_text(soup)
             if (TERMS.search(heading) or "oferta-laboral-" in source_path) and re.search(
                     r"requisitos|postulaci[oó]n|curr[ií]culum|omil|se requiere",body,re.I):
                 dates=dates_in(soup)

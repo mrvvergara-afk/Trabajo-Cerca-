@@ -10,14 +10,15 @@ import motor_d_social_access_probe as probe
 
 
 class NacimientoSocialCoverageTests(unittest.TestCase):
-    def test_both_official_nacimiento_social_sources_are_checked_first(self):
-        self.assertEqual([s["name"] for s in SOURCES[:2]],
-                         ["OMIL Nacimiento Facebook",
+    def test_all_three_nacimiento_social_sources_are_checked_first(self):
+        self.assertEqual([s["name"] for s in SOURCES[:3]],
+                         ["OMIL Nacimiento Instagram",
+                          "OMIL Nacimiento Facebook",
                           "Municipalidad Nacimiento Facebook"])
         self.assertTrue(all(s["commune"] == "Nacimiento"
-                            and s["priority"] == "critical" for s in SOURCES[:2]))
-        self.assertTrue(all(s["url"].startswith("https://www.facebook.com/")
-                            for s in SOURCES[:2]))
+                            and s["priority"] == "critical" for s in SOURCES[:3]))
+        self.assertEqual(SOURCES[0]["url"],
+                         "https://www.instagram.com/omilnacimiento/")
         self.assertTrue(all(x["commune"] != "Quilaco" for x in SOURCES))
 
     def test_all_sources_are_public_profile_urls_without_credentials(self):
@@ -32,7 +33,7 @@ class NacimientoSocialCoverageTests(unittest.TestCase):
             self.assertIn(item["priority"],("normal","critical"))
 
     def test_probe_does_not_claim_zero_vacancies_when_robots_disallows_access(self):
-        source=SOURCES[0]
+        source=SOURCES[1]
         with patch.object(probe,"read",return_value=(200,"text/plain",b"User-agent: *\\nDisallow: /\\n")) as network, \
              patch.object(probe.urllib.robotparser.RobotFileParser,"can_fetch",return_value=False):
             result=probe.inspect(source)

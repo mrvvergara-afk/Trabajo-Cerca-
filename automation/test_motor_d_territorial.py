@@ -102,6 +102,29 @@ class TerritorialSafetyTests(unittest.TestCase):
             self.assertEqual(get.call_count, 1)
             self.assertFalse(get.call_args.kwargs["allow_redirects"])
 
+    def test_chiletrabajos_city_index_can_confirm_location_from_page_title(self):
+        from unittest.mock import patch
+        index = BeautifulSoup(
+            "<html><head><title>Trabajos en Angol | Chiletrabajos</title></head>"
+            "<body><main>No hay avisos aquí</main></body></html>", "html.parser")
+        with patch.object(engine, "request_page", return_value=(200, index, None)):
+            result = engine.inspect(("Angol", "Chiletrabajos · Angol",
+                "https://www.chiletrabajos.cl/ciudad/angol.html"))
+        self.assertEqual(result["status"], "scanned_no_candidates")
+        self.assertNotIn("chiletrabajos_territory_heading_missing", result["errors"])
+
+    def test_chiletrabajos_only_dereferences_individual_job_urls(self):
+        url = "https://www.chiletrabajos.cl/ciudad/angol.html"
+        html = BeautifulSoup(
+            "<h1>Trabajos en Angol</h1>"
+            "<a href='/encuentra-un-empleo?2=angol'>Trabajos en Angol</a>"
+            "<a href='/ciudad/victoria.html'>Empleos Victoria</a>"
+            "<a href='/trabajo/tecnico-telecom-3990000'>Técnico Telecomunicaciones Angol</a>",
+            "html.parser")
+        links = engine.links_from(html, url)
+        self.assertEqual(len(links), 1)
+        self.assertTrue(links[0][0].endswith("/trabajo/tecnico-telecom-3990000"))
+
     def test_chiletrabajos_generic_national_results_are_not_city_offers(self):
         from unittest.mock import patch
         generic = BeautifulSoup(

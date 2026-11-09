@@ -277,7 +277,8 @@ def classify(text: str, today: dt.date | None = None) -> dict:
     elif expires and expires < today:
         state = "plazo_vencido_no_publicar"
     elif source_date and source_date < today - dt.timedelta(days=20):
-        state = "documento_antiguo_no_publicar"
+        # La antigüedad no demuestra cierre: conservar para verificación de vigencia.
+        state = "documento_antiguo_revision_vigencia"
     elif (len(cues) >= 2 or (individual_roles and application)) and not source_date:
         state = "candidato_fecha_pendiente"
     elif len(cues) >= 2 or (individual_roles and application):
@@ -350,7 +351,7 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
                 if original > current:
                     status = "fecha_original_futura_no_publicar"
                 elif original < current - dt.timedelta(days=20):
-                    status = "documento_antiguo_no_publicar"
+                    status = "documento_antiguo_revision_vigencia"
                 elif previous == "plazo_vencido_no_publicar":
                     status = previous
                 elif previous in ("candidato_fecha_pendiente", "candidato_para_revision"):

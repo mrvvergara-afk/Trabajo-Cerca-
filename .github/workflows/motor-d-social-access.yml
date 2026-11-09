@@ -1,9 +1,13 @@
 name: Motor D - Social public access audit
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
     paths:
+      - 'automation/motor_d_social_sources.py'
+      - 'automation/test_motor_d_social_sources.py'
       - 'automation/motor_d_social_access_probe.py'
       - 'automation/motor_d_social_browser.py'
       - '.github/workflows/motor-d-social-access.yml'
@@ -27,9 +31,10 @@ jobs:
         run: |
           python -m pip install 'playwright>=1.48,<2'
           python -m playwright install --with-deps chromium
-      - name: Validate scripts
+      - name: Validate public social sources, safety and provenance
         run: |
-          python -m py_compile automation/motor_d_social_access_probe.py automation/motor_d_social_browser.py
+          python -m py_compile automation/motor_d_social_sources.py automation/motor_d_social_access_probe.py automation/motor_d_social_browser.py
+          python -m unittest discover -s automation -p 'test_motor_d_social_sources.py' -v
       - name: Probe public HTTP with robots restrictions
         run: python automation/motor_d_social_access_probe.py
       - name: Probe public social pages in real browser

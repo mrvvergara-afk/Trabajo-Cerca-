@@ -13,12 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, urljoin
 from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeout
 
-SOURCES = [
-    {"name":"OMIL Angol Instagram","url":"https://www.instagram.com/omilangol2026/","priority":"critical"},
-    {"name":"Radio Nativa Instagram","url":"https://www.instagram.com/radionativacl/","priority":"normal"},
-    {"name":"Municipalidad Angol Facebook","url":"https://www.facebook.com/municipalidad.angol/","priority":"critical"},
-    {"name":"Radio Nativa Facebook","url":"https://www.facebook.com/RadioNativaCl/","priority":"normal"},
-]
+from motor_d_social_sources import SOURCES
 USER_AGENT = "TrabajoCercaPublicAudit/1.0"
 POST_PATH = re.compile(r"^/(?:p|reel)/[A-Za-z0-9_-]+/?$|^/(?:posts|permalink)/[A-Za-z0-9._/-]+$")
 JOB_HINT = re.compile(r"\b(?:empleo|laboral|vacante|postulaci[oó]n|se busca|se requiere|se necesita|contrataci[oó]n|operador|chofer|albañil|mec[aá]nic|el[eé]ctric|capataz|supervisor)\b",re.I)
@@ -45,7 +40,7 @@ def robots_permission(url):
         return False,"robots_error_"+type(ex).__name__
 
 async def inspect(browser, source):
-    result={"name":source["name"],"url":source["url"],"priority":source["priority"],
+    result={"name":source["name"],"commune":source.get("commune"),"url":source["url"],"priority":source["priority"],
             "checked_at":datetime.now(timezone.utc).isoformat(),"status":"untested",
             "http_status":None,"posts_found":0,"posts_opened":0,"images_seen":0,
             "poster_images_read":0,"jobs_extracted":0,"posts":[],"errors":[]}
@@ -140,7 +135,10 @@ async def main():
              "post_pages_read":sum(x["posts_opened"] for x in output["results"]),
              "posters_ocr_read":0,
              "offers_identified_from_text":sum(x["jobs_extracted"] for x in output["results"]),
-             "offers_published":0}
+             "offers_published":0,
+             "critical_sources_unread":[x["name"] for x in output["results"]
+                  if x["priority"]=="critical" and x["status"]!="public_posts_read"],
+             "unread_sources_are_not_zero_vacancies":True}
     print("SOCIAL_BROWSER_SUMMARY "+json.dumps(summary),flush=True)
 
 if __name__=="__main__":

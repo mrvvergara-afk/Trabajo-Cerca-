@@ -17,7 +17,10 @@ class DailyRadarTests(unittest.TestCase):
         self.assertNotIn('Quilaco',self.config['territories'])
         self.assertNotIn('Mininco',self.config['territories'])
         self.assertEqual(len(self.config['seed_urls']),39)
-        self.assertEqual(len(self.config['social_reference']),25)
+        self.assertGreaterEqual(len(self.config['social_reference']),26)
+        self.assertEqual(len({x['id'] for x in self.config['social_reference']}),len(self.config['social_reference']))
+        self.assertIn('https://www.instagram.com/omilnacimiento/',
+                      {x['url'] for x in self.config['social_reference']})
         self.assertEqual(len(self.config['discovery']),23)
         self.assertEqual(len({r['id'] for r in self.config['seed_urls']}),39)
 

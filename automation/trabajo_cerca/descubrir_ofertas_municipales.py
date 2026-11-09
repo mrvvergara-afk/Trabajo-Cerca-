@@ -24,7 +24,8 @@ SIGNAL = re.compile(r"(?:oferta[s]?(?:-| )laboral(?:es)?|oportunidad(?:es)?(?:-|
                     r"(?:empleo|trabajo)(?:-| )(?:para|en)(?:-| ))", re.I)
 IGNORE = re.compile(r"(?:/category/|/categoria/|/tag/|/author/|/page/\d+/?|"
                     r"/wp-json/|/feed/?|/api/|/login|/wp-admin/)", re.I)
-OLD_DATE = re.compile(r"/(?:201\d|202[0-5])(?:/|$)")
+# Old dated URLs may still contain open vacancies; verify expiry in the reader.
+# Do not silently discard them based on URL age alone.
 
 
 class AnchorReader(HTMLParser):
@@ -68,7 +69,7 @@ def candidate_links(index_url: str, html: str, limit=5):
         parsed = urlsplit(url)
         if parsed.hostname.removeprefix("www.") != origin:
             continue
-        if IGNORE.search(parsed.path) or OLD_DATE.search(parsed.path):
+        if IGNORE.search(parsed.path):
             continue
         if parsed.path.rstrip("/") in ("", urlsplit(index_url).path.rstrip("/")):
             continue
@@ -97,8 +98,6 @@ def attached_public_pdfs(article_url: str, html: str, limit=1) -> list[dict]:
         if parts.hostname.removeprefix("www.") != host:
             continue
         if not re.search(r"\.pdf$", parts.path, re.I):
-            continue
-        if OLD_DATE.search(parts.path):
             continue
         if resolved not in [x["url"] for x in candidates]:
             candidates.append({"url": resolved, "kind": "document", "anchor": label[:120]})

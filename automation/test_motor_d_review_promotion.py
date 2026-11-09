@@ -121,6 +121,13 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertEqual(maximum_for_url("https://munimulchen.cl/afiche.pdf"), 16 * 1024 * 1024)
         self.assertEqual(maximum_for_url("https://munimulchen.cl/oferta"), 6000000)
 
+    def test_importer_snapshot_explains_empty_queue(self):
+        importer = (Path(__file__).resolve().parent.parent / "appdeploy_staging" /
+                    "motor-d-auto-import.ts").read_text(encoding="utf8")
+        self.assertIn("quarantinedCount++", importer)
+        self.assertIn("previouslyProcessedCount++", importer)
+        self.assertIn("indexedBatches:batches.length", importer)
+
     def test_importer_snapshot_does_not_claim_new_import_on_receipt_conflict(self):
         importer = (Path(__file__).resolve().parent.parent / "appdeploy_staging" /
                     "motor-d-auto-import.ts").read_text(encoding="utf8")

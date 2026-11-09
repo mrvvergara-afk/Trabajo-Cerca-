@@ -49,8 +49,12 @@ SEEDS=[
 # Consultas regionales de Chiletrabajos: una por cada comuna, además de OMIL y empleadores.
 # No se considera comuna laboral demostrada solo porque la búsqueda sea municipal.
 from urllib.parse import quote
+# The official Angol city index has a verified territorial heading. Generic
+# results must never masquerade as an Angol (or other commune) job search.
+# Keep the platform's query endpoint for the other towns but verify its H1.
 SEEDS.extend((town,"Chiletrabajos · "+town,
-    "https://www.chiletrabajos.cl/encuentra-un-empleo/?2="+quote(town.lower()))
+    ("https://www.chiletrabajos.cl/ciudad/angol.html" if town=="Angol" else
+     "https://www.chiletrabajos.cl/encuentra-un-empleo?2="+quote(town.lower())))
     for town in COMMUNES)
 # Indeed is a critical source. Check one page per commune and report access
 # truthfully; HTTP 403 is coverage failure, never zero open jobs.
@@ -294,6 +298,15 @@ def inspect(seed):
         if status!=200 or soup is None:
             out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
             return out
+        if source.startswith("Chiletrabajos · "):
+            heading=soup.select_one("h1")
+            heading_folded=fold(heading.get_text(" ",strip=True)) if heading else ""
+            # GitHub runners sometimes get the national default search page
+            # even with ?2=<town>; never treat that as a city-filtered feed.
+            if not re.search(r"(?<!\\w)"+re.escape(fold(town))+r"(?!\\w)",heading_folded):
+                out["status"]="search_filter_not_confirmed"
+                out["errors"].append("chiletrabajos_territory_heading_missing")
+                return out
         links=links_from(soup,url)
         out["links_found"]=len(links)
         # Procesar todos los enlaces descubiertos (hasta 35) con paralelismo acotado,
@@ -407,7 +420,7 @@ def main():
     indeed_coverage={
         "sources_attempted":len(indeed_rows),
         "sources_accessible":sum(x["status"].startswith("scanned") for x in indeed_rows),
-        "sources_blocked":sum(x["status"] in ("http_restricted","network_error","redirect_not_authorized","source_url_not_authorized") for x in indeed_rows),
+        "sources_blocked":sum(x["status"] in ("http_restricted","network_error","redirect_not_authorized","source_url_not_authorized","search_filter_not_confirmed") for x in indeed_rows),
         "per_commune":{x["commune"]:{"http":x["http"],"status":x["status"],
             "candidates":len(x["candidates"])} for x in indeed_rows},
         "remediation":"employer_ats_first_no_indeed_bypass",

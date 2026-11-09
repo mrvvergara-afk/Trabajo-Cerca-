@@ -119,6 +119,7 @@ class TerritorialSafetyTests(unittest.TestCase):
     def test_application_evidence_required(self):
         self.assertTrue(engine.explicit_application("Postulaciones abiertas hasta el lunes"))
         self.assertTrue(engine.explicit_application("Enviar CV al contacto oficial"))
+        self.assertTrue(engine.explicit_application("Postular en el sitio oficial"))
         self.assertFalse(engine.explicit_application("Programa municipal de empleabilidad"))
 
     def test_chiletrabajos_individual_metadata(self):

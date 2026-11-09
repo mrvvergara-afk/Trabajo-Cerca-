@@ -58,6 +58,8 @@ jobs:
         run: python -m unittest discover -s automation/trabajo_cerca -p 'test_*.py' -v
 
       - name: Rastrear un tercio de las fuentes · sin escritura ni proveedores pagos
+        id: radar_scan
+        continue-on-error: true
         env:
           PYTHONPATH: automation/trabajo_cerca
         run: |
@@ -68,7 +70,7 @@ jobs:
         run: python automation/adaptar_radar_a_motor_d_review.py --input resultados/candidatos_revision.json
 
       - name: Promover únicamente revisiones firmadas y vigentes
-        if: success() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: success() && steps.radar_scan.outcome == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
           MOTOR_D_REVIEW_SIGNING_KEY: ${{ secrets.MOTOR_D_REVIEW_SIGNING_KEY }}
         run: |
@@ -102,6 +104,14 @@ jobs:
             echo "MOTOR_D_REVIEW_PERSIST_FAILED: safe retries exhausted"
             exit 1
           fi
+
+      # Keep review queue durable even if the catalog feed failed, but do not
+      # mark the run green or promote any candidate without catalog verification.
+      - name: Marcar falla de catálogo después de conservar candidatos
+        if: steps.radar_scan.outcome == 'failure'
+        run: |
+          echo 'RADAR_DEGRADED: no se confirmó lectura íntegra del catálogo; revisión guardada sin publicar.' >> "$GITHUB_STEP_SUMMARY"
+          exit 1
 
       # Keep a recoverable snapshot even when the main-branch push conflicts.
       # Artifacts are not a substitute for durable repository persistence.

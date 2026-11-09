@@ -100,8 +100,11 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             }
             protected = {k: v for k, v in existing.items() if k in protected_keys}
             old_deadline = existing.get("deadline")
+            # Missing hash in a later crawl is not evidence that a document changed.
+            # A different non-empty hash is; the signed approval must then be revoked.
             changed = bool(existing.get("document_sha256") and
-                           candidate.get("document_sha256") != existing.get("document_sha256"))
+                           candidate.get("document_sha256") and
+                           candidate["document_sha256"] != existing["document_sha256"])
             changed = changed or any(candidate.get(k) and existing.get(k) and candidate[k] != existing[k]
                                      for k in ("date_source", "deadline", "extractor"))
             existing.update(candidate)

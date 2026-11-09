@@ -45,6 +45,11 @@ SEEDS=[
 ("Nacimiento","Chiletrabajos · Serfonac mecánico automotriz","https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364"),
 ("Nacimiento","Chiletrabajos · Serfonac conductor","https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758"),
 ("Angol","Chiletrabajos · Operario alimentos Angol","https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569"),
+# Geographic cross-postings: recruiter's office is outside the 12 communes,
+# but the body explicitly states the real workplace. Always re-read the URL.
+("Traiguén","Chiletrabajos · Reponedor Traiguén","https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463"),
+("Mulchén","Chiletrabajos · Reponedor Mulchén","https://www.chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989"),
+("Purén","Chiletrabajos · Prevencionista obras Malleco","https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497"),
 ("Angol","Radio Viaducto","https://radioviaducto.cl/"),
 ("Angol","Las Noticias de Malleco","https://lasnoticiasdemalleco.cl/"),
 # Recuperación crítica de anuncios vistos en Indeed desde la fuente del empleador.
@@ -77,7 +82,7 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca|"
     r"asistente|cajer[ao]s?|vendedor(?:a)?|bodega|tesorer[ií]a|click and collect|"
-    r"jefe(?:a)? de ventas|reponedor(?:a)?)\b",re.I)
+    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista)\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
 CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"
@@ -201,7 +206,7 @@ def explicit_work_commune(body):
     cues=(
         r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
         r"(?:con base en|base de operaciones en|trabajo con base en|realizar labores en taller y terreno,? con base en)\s+([^.;]{3,90})",
-        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en)\s+([^.;]{3,90})"
+        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en|supermercados? en|tiendas? en)\s+([^.;]{3,90})"
     )
     for cue in cues:
         for field in re.finditer(cue,value,re.I):
@@ -348,6 +353,8 @@ def inspect(seed):
             territory=fold(town)
             if not re.search(r"\btrabajos?\s+en\s+"+re.escape(territory)+r"\b",label):
                 out["status"]="search_filter_not_confirmed"
+                out["index_heading"]=heading_text[:120]
+                out["index_page_title"]=title_text[:120]
                 out["errors"].append("chiletrabajos_territory_heading_missing")
                 return out
         links=links_from(soup,url)

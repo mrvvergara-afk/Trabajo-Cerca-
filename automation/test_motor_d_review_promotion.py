@@ -121,6 +121,14 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertEqual(maximum_for_url("https://munimulchen.cl/afiche.pdf"), 16 * 1024 * 1024)
         self.assertEqual(maximum_for_url("https://munimulchen.cl/oferta"), 6000000)
 
+    def test_importer_snapshot_rejects_receipts_with_mismatched_offer_ids(self):
+        importer = (Path(__file__).resolve().parent.parent / "appdeploy_staging" /
+                    "motor-d-auto-import.ts").read_text(encoding="utf8")
+        self.assertIn("receipt_offer_mismatch", importer)
+        self.assertIn("expectedIds.size!==offers.length", importer)
+        self.assertIn("actualIds.size!==results.length", importer)
+        self.assertIn("!expectedIds.has(id)", importer)
+
     def test_application_url_must_be_public_https_even_when_signed(self):
         for url in ("http://example.cl/apply", "https://127.0.0.1/apply",
                     "https://localhost/apply"):

@@ -222,12 +222,32 @@ def produce(report,root=READY,today=None):
     summary["published_confirmed"]=0  # Solo AppDeploy puede certificar este contador.
     return summary
 
+def validate_inventory_freshness(report, today):
+    """Only a fresh territorial scan may create new ready-to-publish batches."""
+    if not isinstance(report, dict):
+        raise ValueError("Inventario territorial inválido")
+    raw = report.get("date")
+    if not isinstance(raw, str):
+        raise ValueError("Inventario sin fecha de rastreo verificable")
+    try:
+        scanned = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        if scanned.tzinfo is None:
+            raise ValueError("Fecha de rastreo sin zona horaria")
+        from zoneinfo import ZoneInfo
+        scan_day = scanned.astimezone(ZoneInfo("America/Santiago")).date()
+    except (ValueError, TypeError, OverflowError) as exc:
+        raise ValueError("Fecha de rastreo inválida") from exc
+    if not 0 <= (today - scan_day).days <= 1:
+        raise ValueError("Inventario territorial vencido o fechado en el futuro")
+    return scan_day
+
 def main():
     source=ROOT/"territorial_daily.json"
     if not source.exists():
         raise SystemExit("No existe inventario territorial D; no crear lotes de publicación")
     report=json.loads(source.read_text(encoding="utf8"))
     local_day=datetime.now(ZoneInfo("America/Santiago")).date()
+    validate_inventory_freshness(report, local_day)
     print("MOTOR_D_EXPRESS "+json.dumps(produce(report,today=local_day),ensure_ascii=False))
 
 if __name__=="__main__":

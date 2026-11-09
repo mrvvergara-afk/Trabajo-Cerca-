@@ -72,6 +72,35 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertTrue(engine.explicit_deadline_expired("Postula hasta el 31 de octubre del 2026", today))
         self.assertFalse(engine.explicit_deadline_expired("Postula hasta el 2026-12-31", today))
 
+    def test_individual_job_keeps_verified_explicit_deadline(self):
+        from datetime import date, timedelta
+        from unittest.mock import patch
+        published = engine.NOW.date().isoformat()
+        closing = (engine.NOW.date() + timedelta(days=14)).isoformat()
+        index = BeautifulSoup(
+            '<main><a href="/oferta-laboral-operadores">Oferta laboral operadores</a></main>',
+            "html.parser")
+        detail = BeautifulSoup(
+            f'<meta property="article:published_time" content="{published}">'
+            f'<article><h1>Oferta laboral operadores</h1>'
+            f'<p>Empresa: Maderera del Sur. Lugar de trabajo: Mulchén. '
+            f'Cierre de postulaciones: {closing}. Postular en el sitio oficial.</p>'
+            f'</article>', "html.parser")
+        base = "https://www.munimulchen.cl/empleos/"
+        def page(url):
+            return (200, index if url == base else detail, None)
+        with patch.object(engine, "request_page", side_effect=page):
+            report = engine.inspect(("Mulchén", "OMIL test", base))
+        self.assertEqual(len(report["candidates"]), 1)
+        job = report["candidates"][0]
+        self.assertEqual(job["deadline"], closing)
+        self.assertEqual(job["date_source"], published)
+        self.assertEqual(job["employer"], "Maderera del Sur")
+        self.assertEqual(job["work_commune"], "Mulchén")
+        self.assertTrue(job["application_evidence"])
+        self.assertEqual(engine.explicit_deadline_date(
+            f"Cierre de postulaciones: {closing}"), date.fromisoformat(closing))
+
     def test_closed_wording_is_recognized(self):
         self.assertTrue(engine.CLOSED.search("Postulación Cerrada"))
         self.assertTrue(engine.CLOSED.search("Postulaciones Cerradas"))

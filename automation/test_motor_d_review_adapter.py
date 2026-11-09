@@ -137,6 +137,27 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertEqual(saved["document_sha256"], "a" * 64)
             self.assertEqual(saved["review_signature"], "signed")
 
+    def test_changed_deadline_without_new_hash_preserves_last_fingerprint(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            row = {"url": "https://example.cl/afiche.pdf",
+                   "document_sha256": "a" * 64, "deadline_evidence": "2026-12-01"}
+            source.write_text(json.dumps([row]), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 8))
+            queue = json.loads(target.read_text(encoding="utf-8"))
+            queue["items"][0].update(review_status="approved", review_signature="signed",
+                                     publication_eligible=True)
+            target.write_text(json.dumps(queue), encoding="utf-8")
+            row.pop("document_sha256")
+            row["deadline_evidence"] = "2026-12-02"
+            source.write_text(json.dumps([row]), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 9))
+            saved = json.loads(target.read_text(encoding="utf-8"))["items"][0]
+            self.assertEqual(saved["review_status"], "pending")
+            self.assertFalse(saved["publication_eligible"])
+            self.assertIsNone(saved["review_signature"])
+            self.assertEqual(saved["document_sha256"], "a" * 64)
+
     def test_redacts_chilean_landline(self):
         self.assertEqual(adapter.sanitize_excerpt("Llamar al 45 234567"),
                          "Llamar al [teléfono]")

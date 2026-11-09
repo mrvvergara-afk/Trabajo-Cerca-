@@ -161,7 +161,7 @@ def explicit_employer(body):
     return value if 2<=len(value)<=90 else None
 
 def explicit_application(body):
-    return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
+    return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula(?:r)?\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
 
 def chiletrabajos_metadata(soup, title, url):
     """Read the individual portal's explicit metadata, never a search-page guess."""

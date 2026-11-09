@@ -103,6 +103,11 @@ export async function motorDAutoImportHandler(){
       const parsed=JSON.parse(String(output.body||'{}')) as {results?:Result[]};
       const results=[...(parsed.results||[]),...expired];
       if(results.length!==data.offers.length)return recordStatus('partial_batch',{batchId,got:results.length,expected:data.offers.length});
+      const expectedIds=new Set(offers.map(x=>String(x.id_fuente||'')));
+      const actualIds=new Set(results.map(x=>String(x.id||'')));
+      if(expectedIds.has('')||expectedIds.size!==offers.length||actualIds.size!==results.length||
+         actualIds.size!==expectedIds.size||[...actualIds].some(id=>!expectedIds.has(id)))
+        return recordStatus('receipt_offer_mismatch',{batchId});
       const allowed=new Set(['direct_record_queued_for_public_projection','already_published','already_imported_id','expired','review_expired']);
       if(results.some(x=>!allowed.has(x.status)))return recordStatus('invalid_results',{batchId});
       const accepted=results.filter(x=>!['expired','review_expired'].includes(x.status)).length;

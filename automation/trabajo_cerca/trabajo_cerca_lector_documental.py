@@ -29,7 +29,7 @@ noticias.angol.cl munilumaco.cl munilossauces.cl mtraiguen.cl
 municipalidadrenaico.cl nacimiento.cl muninegrete.cl munimulchen.cl
 municipalidadcollipulli.cl victoriachile.cl munipuren.cl muniercilla.cl
 malleco7.cl radionativa.cl radioviaducto.cl lasnoticiasdemalleco.cl
-ssan.redsalud.gob.cl traiguencity.cl chiletrabajos.cl kitempleo.cl municipalidadquilaco.cl angolnoticiasnew.cl sence.gob.cl bne.gob.cl empleospublicos.cl mallleco7.cl muncollipulli.cl
+ssan.redsalud.gob.cl traiguencity.cl chiletrabajos.cl kitempleo.cl angolnoticiasnew.cl sence.gob.cl bne.gob.cl empleospublicos.cl mallleco7.cl muncollipulli.cl
 """.split())
 WORK_TOWNS = ("Angol", "Collipulli", "Ercilla", "Renaico", "Mininco", "Coihue",
               "Los Sauces", "Purén", "Traiguén", "Lumaco", "Nacimiento",

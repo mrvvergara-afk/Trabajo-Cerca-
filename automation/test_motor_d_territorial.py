@@ -262,7 +262,7 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertIn("classified=build(report,today)",audit)
         self.assertIn("recovery_ready",audit)
         self.assertIn("feed_complete",audit)
-        self.assertIn("catalog_semantic_dedup_not_yet_verified",audit)
+        self.assertIn("catalog_identity_and_exact_semantic_checked",audit)
         self.assertIn("publications_created",audit)
         self.assertIn("territorial_pr_preview.json",audit)
         self.assertNotIn("produce(report",audit)

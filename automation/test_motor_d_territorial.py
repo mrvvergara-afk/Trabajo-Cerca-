@@ -59,6 +59,29 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
         self.assertEqual(items,[])
 
+    def test_territorial_receipt_redacts_candidate_contacts(self):
+        from unittest.mock import patch
+        from ocr_review_security import redact
+        source="https://www.munimulchen.cl/empleos"
+        index=BeautifulSoup(
+            "<a href='/oferta-laboral-operario'>Oferta laboral operario</a>",
+            "html.parser")
+        detail=BeautifulSoup(
+            "<article><h1>Oferta laboral operario</h1>"
+            "<p>Empresa: Maderas Ejemplo. Lugar de trabajo: Mulchén. "
+            "Postular en el portal. Contacto: persona@example.cl "
+            "Teléfono: +56 9 1234 5678. Se necesita operario responsable "
+            "con experiencia en máquinas y mantenimiento industrial.</p>"
+            "</article>","html.parser")
+        with patch.object(engine,"request_page",side_effect=[(200,index,None),(200,detail,None)]):
+            result=engine.inspect(("Mulchén","Municipio Mulchén",source))
+        self.assertEqual(len(result["candidates"]),1)
+        excerpt=result["candidates"][0]["excerpt"]
+        self.assertNotIn("persona@example.cl",excerpt)
+        self.assertNotIn("1234 5678",excerpt)
+        self.assertIn("[correo]",excerpt)
+        self.assertIn("[teléfono]",excerpt)
+
     def test_individual_portal_seeds_recover_real_employer_date_and_worksite(self):
         from datetime import date
         from unittest.mock import patch

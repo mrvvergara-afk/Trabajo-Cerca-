@@ -85,6 +85,16 @@ class MotorDExpressTests(unittest.TestCase):
         self.assertEqual(state,"SEGUNDA_PASADA")
         self.assertIsNone(offer)
 
+    def test_placeholder_employer_never_enters_ready_batches(self):
+        for employer in ("..", "---", "N/A", "s/n", "sin nombre", "no informado"):
+            with self.subTest(employer=employer):
+                state,reason,offer=engine.classify(record(employer=employer),TODAY)
+                self.assertEqual(state,"SEGUNDA_PASADA")
+                self.assertEqual(reason,"empleador_no_identificado")
+                self.assertIsNone(offer)
+        self.assertEqual(engine.classify(record(employer="Empresa de alimentos"),TODAY)[0],
+                         "EXPRESS")
+
     def test_missing_employer_or_application_requires_second_pass_for_old_and_new(self):
         for published in ("2026-11-06","2026-10-29"):
             for patch in ({"employer":None},{"application_evidence":False}):

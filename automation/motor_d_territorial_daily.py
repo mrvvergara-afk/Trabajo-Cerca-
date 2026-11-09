@@ -52,15 +52,18 @@ SEEDS=[
 ("Angol","Falabella · empleos oficiales","https://muevete.falabella.com/"),
 ("Angol","Unimarc · empleos oficiales","https://unimarc.trabajando.cl/"),
 ]
-# Consultas regionales de Chiletrabajos: una por cada comuna, además de OMIL y empleadores.
-# No se considera comuna laboral demostrada solo porque la búsqueda sea municipal.
+# Chiletrabajos: /ciudad/<slug>.html is the site's geographic route.
+# Query parameter ?2= was a keyword search that produced national jobs and
+# silently diluted coverage. Unknown/404 city routes are recorded as failures,
+# not replaced with unrelated employment results.
 from urllib.parse import quote
-# The official Angol city index has a verified territorial heading. Generic
-# results must never masquerade as an Angol (or other commune) job search.
-# Keep the platform's query endpoint for the other towns but verify its H1.
+def chiletrabajos_city_slug(town):
+    folded=unicodedata.normalize("NFD",town.lower())
+    slug="".join(c for c in folded if unicodedata.category(c)!="Mn")
+    return re.sub(r"[^a-z0-9]+","-",slug).strip("-")
+
 SEEDS.extend((town,"Chiletrabajos · "+town,
-    ("https://www.chiletrabajos.cl/ciudad/angol.html" if town=="Angol" else
-     "https://www.chiletrabajos.cl/encuentra-un-empleo?2="+quote(town.lower())))
+    "https://www.chiletrabajos.cl/ciudad/"+chiletrabajos_city_slug(town)+".html")
     for town in COMMUNES)
 # Indeed is a critical source. Check one page per commune and report access
 # truthfully; HTTP 403 is coverage failure, never zero open jobs.
@@ -342,7 +345,7 @@ def inspect(seed):
             # evidence of an empty town and must never be treated as scoped.
             label=fold(" ".join((heading_text,title_text)))
             territory=fold(town)
-            if not re.search(r"\btrabajos?\s+(?:en|de)\s+"+re.escape(territory)+r"\b",label):
+            if not re.search(r"\btrabajos?\s+en\s+"+re.escape(territory)+r"\b",label):
                 out["status"]="search_filter_not_confirmed"
                 out["errors"].append("chiletrabajos_territory_heading_missing")
                 return out

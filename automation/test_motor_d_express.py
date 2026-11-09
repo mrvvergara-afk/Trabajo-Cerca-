@@ -2,6 +2,7 @@
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import date
 from pathlib import Path
 import motor_d_express as engine
@@ -95,6 +96,24 @@ class MotorDExpressTests(unittest.TestCase):
         self.assertEqual(len(classified["EXPRESS"]),1)
         self.assertEqual(len(classified["RECUPERACION"]),0)
         self.assertEqual(len(classified["DUPLICADO"]),1)
+
+    def test_atomic_manifest_write_failure_keeps_previous_valid_json(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "index.json"
+            engine.atomic_json_write(target, {"schema_version": 1, "batches": []})
+            before = target.read_bytes()
+            with patch.object(engine.os, "replace", side_effect=OSError("simulated interruption")):
+                with self.assertRaises(OSError):
+                    engine.atomic_json_write(target, {"schema_version": 1, "batches": [1]})
+            self.assertEqual(target.read_bytes(), before)
+            self.assertEqual(list(Path(tmp).glob(".motor_d_*.tmp")), [])
+
+    def test_atomic_batch_write_is_valid_json_and_leaves_no_temp_files(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "20261106" / "motor-d-test.json"
+            engine.atomic_json_write(target, {"offers": [{"cargo": "Operario"}]})
+            self.assertEqual(json.loads(target.read_text(encoding="utf8"))["offers"][0]["cargo"], "Operario")
+            self.assertEqual(list(target.parent.glob(".motor_d_*.tmp")), [])
 
     def test_daily_and_recovery_are_written_to_separate_batches(self):
         with tempfile.TemporaryDirectory() as tmp:

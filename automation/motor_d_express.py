@@ -3,6 +3,7 @@ No declara publicación: AppDeploy debe deduplicar contra catálogo y confirmar 
 El histórico A/B/C/Gemini y sus colas no se leen ni se reabren aquí.
 """
 import hashlib
+from collections import Counter
 import ipaddress
 import json
 import os
@@ -207,7 +208,7 @@ def produce(report,root=READY,today=None):
     summary={state:len(items) for state,items in classified.items()}
     # Preserve actionable reasons for why discovery did not become a publishable offer.
     summary["review_reasons"] = {
-        state: dict(sorted(__import__("collections").Counter(
+        state: dict(sorted(Counter(
             entry["reason"] for entry in classified[state]
         ).items()))
         for state in ("SEGUNDA_PASADA", "TERCERA_PASADA", "DESCARTADO", "DUPLICADO")

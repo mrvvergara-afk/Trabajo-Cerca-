@@ -173,6 +173,22 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertEqual(item["work_commune"],"Collipulli")
         self.assertTrue(item["application_evidence"])
 
+    def test_real_pr_preview_tracks_recovery_without_writing_application(self):
+        from pathlib import Path
+        path=Path(__file__).resolve().parents[1]/".github"/"workflows"/"motor-d-territorial-daily.yml"
+        workflow=path.read_text(encoding="utf-8")
+        audit=workflow.split("  territorial_audit_pr:",1)[1].split("\n  territorial_scan:",1)[0]
+        self.assertIn("validate_inventory_freshness(report,today)",audit)
+        self.assertIn("classified=build(report,today)",audit)
+        self.assertIn("recovery_ready",audit)
+        self.assertIn("feed_complete",audit)
+        self.assertIn("catalog_semantic_dedup_not_yet_verified",audit)
+        self.assertIn("publications_created",audit)
+        self.assertIn("territorial_pr_preview.json",audit)
+        self.assertNotIn("produce(report",audit)
+        self.assertNotIn("commit:true",audit)
+        self.assertNotIn("git push",audit)
+
     def test_real_source_pr_audit_is_read_only_and_cannot_publish(self):
         from pathlib import Path
         path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "motor-d-territorial-daily.yml"

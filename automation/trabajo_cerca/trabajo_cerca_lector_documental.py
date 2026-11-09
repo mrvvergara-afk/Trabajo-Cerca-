@@ -365,7 +365,7 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
             # Not even a strong signal can authorize a partial PDF.
             result = {**result, "original_classification": result["decision"],
                       "decision": "documento_parcial_revision_obligatoria"}
-        return {**base, **result, "extractor": extraction,
+        return {**base, **result, "extractor": extraction, "http": 200,
                 "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest(),
                 "read_at": dt.datetime.now(dt.timezone.utc).isoformat()}
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:

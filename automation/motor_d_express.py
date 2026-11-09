@@ -115,7 +115,10 @@ def build(report,today=None):
     seen_source_ids=set()
     seen_urls=set()
     seen_job_keys=set()
-    for item in report.get("candidates",[]):
+    candidates = report.get("candidates", [])
+    if not isinstance(candidates, list):
+        raise ValueError("El inventario debe contener una lista de candidatos")
+    for item in candidates:
         state,reason,offer=classify(item,today)
         if offer:
             canonical=canonical_url(offer["url_original"])
@@ -128,7 +131,8 @@ def build(report,today=None):
                 seen_source_ids.add(source_id)
                 seen_urls.add(canonical)
                 seen_job_keys.add(job_key)
-        output[state].append({"url":item.get("url"),"reason":reason,"offer":offer})
+        output[state].append({"url":item.get("url") if isinstance(item, dict) else None,
+                              "reason":reason,"offer":offer})
     return output
 
 def atomic_json_write(path, payload):

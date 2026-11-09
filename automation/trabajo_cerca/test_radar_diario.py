@@ -54,6 +54,19 @@ class DailyRadarTests(unittest.TestCase):
                     self.assertTrue(all(not r['approved'] and not r['published'] for r in pending))
                     self.assertTrue(all(not r['original_employer_date_verified'] for r in pending))
 
+    def test_full_sweep_visits_every_seed_and_web_source(self):
+        import tempfile
+        with patch.object(radar_diario, 'read_feed', return_value=(set(), True, 0, None)), \\
+             patch.object(radar_diario, 'read_one', return_value={'url': '', 'decision': 'sin_evidencia_suficiente'}) as reader, \\
+             patch.object(radar_diario, 'discover', return_value={'status': 'index_read', 'checked': []}) as discovery:
+            with tempfile.TemporaryDirectory() as tmp:
+                self.assertEqual(radar_diario.main(['--batch', 'all', '--output', tmp]), 0)
+                report = json.loads((Path(tmp) / 'resumen.json').read_text())
+                self.assertEqual(report['source_records_checked'], 62)
+                self.assertEqual(reader.call_count, 39)
+                self.assertEqual(discovery.call_count, 23)
+                self.assertEqual(report['published_by_this_job'], 0)
+
     def test_feed_failure_never_claims_job_missing(self):
         with patch.object(radar_diario, 'read_feed', return_value=(set(),False,0,'feed_http_503')), \
              patch.object(radar_diario,'read_one',return_value={

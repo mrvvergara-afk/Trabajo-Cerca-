@@ -211,9 +211,16 @@ def explicit_work_commune(body):
     for cue in cues:
         for field in re.finditer(cue,value,re.I):
             clause=field.group(1)
+            # The first named workplace in the source wins. Dictionary
+            # ordering used to select Los Sauces before Purén in a
+            # "Purén, Los Sauces y Traiguén" listing.
+            matches=[]
             for name,commune in places.items():
-                if re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",clause):
-                    return commune
+                match=re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",clause)
+                if match:
+                    matches.append((match.start(),-len(name),commune))
+            if matches:
+                return min(matches)[2]
     return None
 
 def focused_job_text(soup):

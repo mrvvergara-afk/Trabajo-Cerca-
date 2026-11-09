@@ -59,6 +59,62 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
         self.assertEqual(items,[])
 
+    def test_individual_portal_seeds_recover_real_employer_date_and_worksite(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url = ("https://www.chiletrabajos.cl/trabajo/"
+               "mecanico-a-automotriz-nacimiento-3923364")
+        html = BeautifulSoup(
+            "<html><h1>Mecánico/a Automotriz – Nacimiento</h1>"
+            "<div>Buscado Serfonac Fecha 2026-11-05 21:09:46 "
+            "Expira 2027-01-19 Ubicación Los Ángeles Categoría Otros "
+            "Postular</div>"
+            "<article><p>Empresa del rubro forestal busca incorporar un "
+            "Mecánico/a Automotriz para realizar labores de mantención y "
+            "reparación de vehículos de la flota, con base en Nacimiento, "
+            "Región del Biobío. Para postular, ingrese a la plataforma. "
+            "Requisitos: experiencia en mecánica y mantención.</p></article>"
+            "</html>", "html.parser")
+        with patch.object(engine, "request_page", return_value=(200, html, None)) as page:
+            report = engine.inspect(("Nacimiento",
+                                    "Chiletrabajos · Serfonac mecánico automotriz", url))
+        self.assertEqual(page.call_count, 1)
+        self.assertEqual(report["status"], "scanned_with_candidates")
+        self.assertEqual(len(report["candidates"]), 1)
+        item = report["candidates"][0]
+        self.assertEqual(item["employer"], "Serfonac")
+        self.assertEqual(item["work_commune"], "Nacimiento")
+        self.assertEqual(item["date_source"], "2026-11-05")
+        self.assertEqual(item["deadline"], "2027-01-19")
+        self.assertTrue(item["application_evidence"])
+        self.assertFalse(item["source_commune_not_confirmed"])
+        state, reason, offer = classify_ready(item, date(2026,11,9))
+        self.assertEqual(state, "RECUPERACION")
+        self.assertEqual(offer["comunas"], ["Nacimiento"])
+        self.assertEqual(offer["fecha_cierre"], "2027-01-19")
+        self.assertEqual(offer["fecha_publicacion"], "2026-11-05")
+
+    def test_portal_recruitment_city_or_residence_does_not_prove_job_worksite(self):
+        from unittest.mock import patch
+        url="https://www.chiletrabajos.cl/trabajo/mecanico-nacimiento-3925555"
+        html=BeautifulSoup(
+            "<html><h1>Mecánico</h1><div>Buscado Serfonac Fecha 2026-11-05 "
+            "Expira 2027-01-19 Ubicación Los Ángeles Categoría Otros Postular</div>"
+            "<article><p>Buscamos mecánico. Ideal residencia en Nacimiento. "
+            "Requisitos de mantención industrial.</p></article></html>",
+            "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,html,None)):
+            row=engine.inspect(("Nacimiento","Chiletrabajos · muestra",url))["candidates"][0]
+        self.assertIsNone(row["work_commune"])
+        self.assertTrue(row["source_commune_not_confirmed"])
+
+    def test_direct_portal_recovery_seeds_have_known_individual_urls(self):
+        names = [row for row in engine.SEEDS if row[1].startswith("Chiletrabajos · Serfonac")]
+        self.assertEqual(len(names),3)
+        self.assertTrue(all(town=="Nacimiento" and "/trabajo/" in url
+                            for town,_,url in names))
+
     def test_municipal_article_content_survives_long_navigation_and_uses_full_title(self):
         from datetime import timedelta
         from unittest.mock import patch

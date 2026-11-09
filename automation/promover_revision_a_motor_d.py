@@ -7,6 +7,7 @@ import hashlib
 import re
 from ocr_review_security import verify, timestamp, redact
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 try:
     from motor_d_express import classify, produce
@@ -16,9 +17,9 @@ except ModuleNotFoundError:
 REQUIRED = ("approved_by", "approved_at", "document_sha256", "review_notes", "vigencia_verified_at", "revalidate_after", "application_url", "title",
             "employer", "work_commune", "date_source")
 
-def eligible(item, today=None, key=None, document_loader=None):
+def eligible(item, today=None, key=None, document_loader=None, now=None):
     today = today or dt.date.today()
-    now = (dt.datetime.now(dt.timezone.utc) if today == dt.datetime.now(dt.timezone.utc).date()
+    now = now or (dt.datetime.now(dt.timezone.utc) if today == dt.datetime.now(dt.timezone.utc).date()
            else dt.datetime.combine(today, dt.time.max, dt.timezone.utc))
     if any(redact(item.get(k)) != item.get(k) for k in ("title", "employer")):
         return False
@@ -61,7 +62,7 @@ def eligible(item, today=None, key=None, document_loader=None):
         return False
     return True
 
-def prepare(queue, today=None, key=None, document_loader=None):
+def prepare(queue, today=None, key=None, document_loader=None, now=None):
     today = today or dt.date.today()
     if queue.get("schema") != "trabajo-cerca.motor-d-review.v1":
         raise ValueError("Esquema de revisión desconocido")
@@ -70,7 +71,7 @@ def prepare(queue, today=None, key=None, document_loader=None):
     for item in queue.get("items", []):
         if not isinstance(item, dict):
             continue
-        if not eligible(item, today, key, document_loader):
+        if not eligible(item, today, key, document_loader, now):
             decisions.append({"review_id": item.get("review_id"),
                               "state": "not_eligible"})
             continue
@@ -80,6 +81,7 @@ def prepare(queue, today=None, key=None, document_loader=None):
                    "http", "source_commune_not_confirmed", "deadline", "review_id",
                    "document_sha256", "application_url")}
         record["ocr_revalidate_after"] = item["revalidate_after"]
+        record["ocr_document_sha256"] = item["document_sha256"]
         record["promotion_id"] = "ocr_" + hashlib.sha256((item["review_id"] + item["document_sha256"]).encode()).hexdigest()[:24]
         state, reason, _ = classify(record, today)
         decisions.append({"review_id": item.get("review_id"),
@@ -102,11 +104,13 @@ def main():
         if not allowed(url) or not robots_ok(url):
             raise ValueError("Documento no permitido")
         return fetch_bytes(url)[0]
-    report, decisions = prepare(queue, document_loader=load)
+    local_day = dt.datetime.now(ZoneInfo("America/Santiago")).date()
+    report, decisions = prepare(queue, today=local_day, document_loader=load,
+                                now=dt.datetime.now(dt.timezone.utc))
     result = {"candidates_eligible": len(report["candidates"]),
               "decisions": decisions, "batches_generated": False}
     if args.produce_batches:
-        result["motor_d"] = produce(report, root=Path(args.ready_dir))
+        result["motor_d"] = produce(report, root=Path(args.ready_dir), today=local_day)
         result["batches_generated"] = True
     path = Path(args.output)
     path.parent.mkdir(parents=True, exist_ok=True)

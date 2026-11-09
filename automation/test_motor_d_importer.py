@@ -55,6 +55,7 @@ import {motorDAutoImportHandler,confirmMotorDPublications} from './bridge.ts';
 // All time-dependent tests are fixed to the evidence day.
 Date.now=()=>Date.parse('2026-11-08T15:00:00Z');
 globalThis.fetch=async(url)=>{
+ if(url==='https://munimulchen.cl/omil/oferta')return new Response('complete synthetic evidence');
  assert.ok(url.startsWith('https://api.github.com/'));
  const path=new URL(url).pathname.split('/contents/')[1].replace('automation/motor_d_ready/','');
  const bytes=fs.readFileSync(new URL('./ready/'+path,import.meta.url));
@@ -72,6 +73,13 @@ show([...tables.get('radar_jobs').values()]);
 assert.equal((await confirmMotorDPublications()).publishedBatches,1);
 assert.equal(JSON.parse((await motorDAutoImportHandler()).body).state,'no_unprocessed_batches');
 assert.equal(tables.get('radar_jobs').size,1);
+// Changed bytes block import before any database write.
+tables.get('motor_d_import_receipts').clear();
+const originalFetch=globalThis.fetch;
+globalThis.fetch=async(url)=>url==='https://munimulchen.cl/omil/oferta' ? new Response('changed evidence') : originalFetch(url);
+assert.equal(JSON.parse((await motorDAutoImportHandler()).body).state,'ocr_document_changed_or_unavailable');
+assert.equal(tables.get('radar_jobs').size,1);
+globalThis.fetch=originalFetch;
 // Expired authorization must not create another job or claim publication.
 const manifest=JSON.parse(fs.readFileSync(new URL('./ready/index.json',import.meta.url),'utf8'));
 const entry=manifest.batches[0];

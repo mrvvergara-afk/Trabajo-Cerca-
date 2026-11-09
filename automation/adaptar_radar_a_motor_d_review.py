@@ -47,7 +47,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
     if not isinstance(saved, dict) or not isinstance(saved.get("items"), list):
         raise ValueError("Cola de revisión existente con formato inválido")
     items = saved["items"]
-    by_url = {x.get("canonical_url"): x for x in items if isinstance(x, dict)}
+    by_url = {canonical(x.get("canonical_url") or x.get("url")): x for x in items if isinstance(x, dict)}
     added = updated = rejected = 0
     for row in rows:
         if not isinstance(row, dict):

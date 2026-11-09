@@ -23,7 +23,7 @@ def approved():
         "vigencia_verified_at": "2026-11-08T09:00:00Z",
         "revalidate_after": "2026-11-10T09:00:00Z",
         "application_url": "https://example.cl/apply", "extractor": "pdf_text",
-        "url": "https://example.cl/omil/oferta",
+        "url": "https://munimulchen.cl/omil/oferta",
         "title": "Operador de maquinaria", "employer": "Empresa Ejemplo",
         "work_commune": "Mulchén", "date_source": "2026-11-07",
         "application_evidence": True,

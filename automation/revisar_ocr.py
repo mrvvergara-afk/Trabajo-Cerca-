@@ -29,7 +29,7 @@ def review(item, decision, reviewer, notes, fields, document, key, now=None):
     if not reviewer.strip() or not notes.strip():
         raise ValueError('Revisor y notas obligatorios')
     result['review_signature'] = signature(result, key)
-    if decision == 'approve' and not eligible(result, now.date(), key, lambda _: document):
+    if decision == 'approve' and not eligible(result, now.astimezone(__import__("zoneinfo").ZoneInfo("America/Santiago")).date(), key, lambda _: document, now):
         raise ValueError('Evidencia, fecha, vigencia o campos de postulación insuficientes')
     return result
 

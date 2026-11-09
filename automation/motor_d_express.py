@@ -93,7 +93,7 @@ def classify(item, today=None):
         "fecha_descubrimiento":today.isoformat(),
         "tipo_lote":"radar_diario" if batch_type=="daily" else "recuperacion_vigente",
         "fecha_cierre":item.get("deadline"),
-        **{k:item[k] for k in ("review_id", "promotion_id", "ocr_revalidate_after") if item.get(k)},
+        **{k:item[k] for k in ("review_id", "promotion_id", "ocr_revalidate_after", "ocr_document_sha256") if item.get(k)},
         "justificacion":(
             "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. "
             + ("Publicación de hoy o ayer." if batch_type=="daily" else

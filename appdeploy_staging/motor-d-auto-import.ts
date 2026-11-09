@@ -1,13 +1,39 @@
 import { db, secrets } from '@appdeploy/sdk';
+import { createHash } from 'node:crypto';
 import { Buffer } from 'node:buffer';
 import { directChatGPTImport } from './chatgpt-direct-import';
 import { readPublicFeedPage } from './public-feed';
-import { publicFeedIdentity } from './public-source-adapters';
+import { publicFeedIdentity, publicPublisher, safePublicUrl } from './public-source-adapters';
 
 // This file is a source review snapshot for the AppDeploy deployment.
 // The production module lives at backend/motor-d-auto-import.ts.
 const REPO = 'mrvvergara-afk/Trabajo-Cerca-';
 const INDEX = 'automation/motor_d_ready/index.json';
+// Safety hold: keep the original evidence; release only through a newly reviewed batch.
+const QUARANTINED_BATCHES = new Set([
+  'motor-d-20261108-bccafbb13b7baa5270',
+  'motor-d-20261108-50a5c80afe2d3bf4fd',
+]);
+
+async function documentMatches(offer:Record<string,unknown>):Promise<boolean> {
+  const url=String(offer.url_original||'');
+  if(!url.startsWith('https://')||!safePublicUrl(url)||!publicPublisher(url)||
+     !/^[a-f0-9]{64}$/.test(String(offer.ocr_document_sha256||'')))return false;
+  try{
+    const response=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(12000)});
+    if(!response.ok||!response.body)return false;
+    const reader=response.body.getReader(),hash=createHash('sha256');
+    let size=0;
+    while(true){
+      const {done,value}=await reader.read();
+      if(done)break;
+      size+=value.byteLength;
+      if(size>16*1024*1024){await reader.cancel();return false;}
+      hash.update(value);
+    }
+    return size>0&&hash.digest('hex')===offer.ocr_document_sha256;
+  }catch{return false;}
+}
 type Result = { id:string; status:string; internalId?:string; existingId?:string };
 type Receipt = { id:string; batchId?:string; status?:string; results?:Result[]; accepted?:number; published?:number; known?:number; checkedAt?:string };
 
@@ -48,6 +74,7 @@ export async function motorDAutoImportHandler(){
       if(!/^motor-d-\d{8}-[a-f0-9]{18}$/.test(batchId)||
          !/^\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json$/.test(relative)||
          !relative.endsWith('/'+batchId+'.json'))return recordStatus('invalid_batch_reference',{batchId});
+      if(QUARANTINED_BATCHES.has(batchId))continue;
       const [old]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
       if(old?.results?.length)continue;
       const file=await load('automation/motor_d_ready/'+relative,token);
@@ -66,6 +93,8 @@ export async function motorDAutoImportHandler(){
           return recordStatus('invalid_ocr_authorization',{batchId});
         if(ocr && Date.parse(String(offer.ocr_revalidate_after))<=Date.now())
           expired.push({id:String(offer.id_fuente),status:'review_expired'});
+        else if(ocr && !await documentMatches(offer))
+          return recordStatus('ocr_document_changed_or_unavailable',{batchId});
         else current.push(offer);
       }
       const output=current.length ? await directChatGPTImport({offers:current,commit:true}) :

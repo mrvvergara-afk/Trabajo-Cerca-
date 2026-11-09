@@ -42,6 +42,18 @@ def normalize(value):
     raw = "".join(ch for ch in raw if unicodedata.category(ch) != "Mn")
     return " ".join(re.sub(r"[^a-z0-9]+", " ", raw).split())
 
+def job_source_identity(raw):
+    """Stable publisher job ID, independent of Chiletrabajos URL slug changes."""
+    canonical = canonical_url(raw)
+    if not canonical:
+        return None
+    parsed = urlsplit(canonical)
+    if parsed.hostname != "chiletrabajos.cl":
+        return None
+    match = re.fullmatch(r"/trabajo/(?:[^/]*-)?([0-9]{5,12})", parsed.path)
+    return "chiletrabajos:" + match.group(1) if match else None
+
+
 def classify(item, today=None):
     today = today or date.today()
     if not isinstance(item,dict):
@@ -168,6 +180,9 @@ def produce(report,root=READY,today=None):
         keys = {"url:" + str(canonical_url(offer.get("url_original"))),
                 "job:" + json.dumps([normalize(offer.get("cargo")), normalize(offer.get("empresa")),
                                     sorted(normalize(x) for x in offer.get("comunas", []))])}
+        stable_source = job_source_identity(offer.get("url_original"))
+        if stable_source:
+            keys.add("source:" + stable_source)
         keys.update(k + ":" + str(offer[k]) for k in ("review_id", "promotion_id") if offer.get(k))
         return keys
     seen_keys = set(saved.get("seen_identity_keys", []))

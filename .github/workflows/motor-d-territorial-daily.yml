@@ -72,6 +72,8 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import re
+          from urllib.parse import urlsplit
           from datetime import datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
@@ -88,9 +90,19 @@ jobs:
               catalog,complete,rows,error=read_feed(max_pages=30)
           except Exception as exc:
               catalog,complete,rows,error=set(),False,0,type(exc).__name__
+          def source_identity(raw):
+              normalized=canonical(raw)
+              parsed=urlsplit(normalized)
+              if (parsed.hostname or "").removeprefix("www.")=="chiletrabajos.cl":
+                  match=re.search(r"(?:^|-)([0-9]{5,12})$",parsed.path.rstrip("/").split("/")[-1])
+                  if match:
+                      return "chiletrabajos:"+match.group(1)
+              return normalized
+          catalog_identities={source_identity(url) for url in catalog} if complete else set()
           evidence=[]
           for offer in ready:
               source_url=canonical(offer["url_original"])
+              seen_catalog=complete and source_identity(source_url) in catalog_identities
               evidence.append({
                   "id_fuente":offer["id_fuente"],
                   "cargo":offer["cargo"],"empresa":offer["empresa"],
@@ -98,8 +110,8 @@ jobs:
                   "fecha_publicacion":offer["fecha_publicacion"],
                   "fecha_cierre":offer.get("fecha_cierre"),
                   "batch_type":offer["tipo_lote"],
-                  "catalog_url_status":("already_in_public_catalog" if source_url in catalog
-                      else "not_found_by_url_only" if complete else "catalog_unavailable")
+                  "catalog_url_status":("already_in_public_catalog" if seen_catalog
+                      else "not_found_by_url_or_job_id_only" if complete else "catalog_unavailable")
               })
           summary={
               "schema":"trabajo-cerca.motor-d-pr-preview.v1",

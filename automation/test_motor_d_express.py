@@ -26,6 +26,26 @@ def record(i=1, **patch):
     return item
 
 class MotorDExpressTests(unittest.TestCase):
+    def test_bad_candidate_does_not_abort_valid_offer_and_reports_reason(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = engine.produce({"candidates": [None, record(1)]}, Path(tmp), TODAY)
+            self.assertEqual(result["DESCARTADO"], 1)
+            self.assertEqual(result["daily_batch_offers"], 1)
+            self.assertEqual(result["review_reasons"]["DESCARTADO"]["registro_invalido"], 1)
+
+    def test_non_list_inventory_is_rejected_before_writing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaisesRegex(ValueError, "lista de candidatos"):
+                engine.produce({"candidates": {"bad": True}}, Path(tmp), TODAY)
+            self.assertFalse((Path(tmp) / "index.json").exists())
+
+    def test_missing_original_date_explained_in_summary(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = engine.produce({"candidates": [record(date_source=None)]}, Path(tmp), TODAY)
+            self.assertEqual(result["daily_batch_offers"], 0)
+            self.assertEqual(result["review_reasons"]["SEGUNDA_PASADA"]
+                             ["fecha_original_no_acreditada; verificar fecha y vigencia"], 1)
+
     def test_confirmed_today_or_yesterday_enters_daily_express(self):
         for published in ("2026-11-06","2026-11-05"):
             with self.subTest(published=published):

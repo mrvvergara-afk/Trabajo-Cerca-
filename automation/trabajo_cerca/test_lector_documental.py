@@ -63,7 +63,7 @@ class LectorDocumentalTests(unittest.TestCase):
                 "La comuna llama a concurso. Se puede postular.")
         out = classify(text, dt.date(2026, 10, 25))
         self.assertEqual(out["source_date_evidence"], "2026-07-13")
-        self.assertEqual(out["decision"], "documento_antiguo_no_publicar")
+        self.assertEqual(out["decision"], "documento_antiguo_revision_vigencia")
 
     def test_unclear_document_date_does_not_count_as_verified(self):
         out=classify("Oferta laboral. Se necesita personal. Postular en Victoria.",

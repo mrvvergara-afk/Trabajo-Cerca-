@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-08T18:08:04.637660-03:00",
+  "last_run": "2026-11-08T21:51:57.012351-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1591,6 +1591,30 @@
       "url": "https://www.chiletrabajos.cl/trabajo/vidriero-base-recoleta-3928261",
       "source": "Chiletrabajos · Nacimiento",
       "commune": "Nacimiento"
+    },
+    "c31df6e8366b666fb614": {
+      "first_seen": "2026-11-08T21:51:57.012351-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/administrador-de-obra-construccion-3928254",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "343122cae7b6158148e6": {
+      "first_seen": "2026-11-08T21:51:57.012351-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/profesoras-de-ingles-nivel-6-basico-trabajo-part-time-en-maipu-3928262",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "1b616d8cf2f2413723b8": {
+      "first_seen": "2026-11-08T21:51:57.012351-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-empresa-de-transporte-quilicura-3927950",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
+    },
+    "13688b2dae5ba0834209": {
+      "first_seen": "2026-11-08T21:51:57.012351-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/empres-lactea-en-frutillar-busca-bodeguero-con-experiencia-3928286",
+      "source": "Chiletrabajos · Collipulli",
+      "commune": "Collipulli"
     }
   }
 }

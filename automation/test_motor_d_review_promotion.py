@@ -121,6 +121,12 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertEqual(maximum_for_url("https://munimulchen.cl/afiche.pdf"), 16 * 1024 * 1024)
         self.assertEqual(maximum_for_url("https://munimulchen.cl/oferta"), 6000000)
 
+    def test_importer_snapshot_does_not_claim_new_import_on_receipt_conflict(self):
+        importer = (Path(__file__).resolve().parent.parent / "appdeploy_staging" /
+                    "motor-d-auto-import.ts").read_text(encoding="utf8")
+        self.assertIn("receipt_already_exists", importer)
+        self.assertIn("existingStatus:existing.status", importer)
+
     def test_importer_snapshot_rejects_receipts_with_mismatched_offer_ids(self):
         importer = (Path(__file__).resolve().parent.parent / "appdeploy_staging" /
                     "motor-d-auto-import.ts").read_text(encoding="utf8")

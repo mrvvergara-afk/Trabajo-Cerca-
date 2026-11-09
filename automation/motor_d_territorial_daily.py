@@ -227,7 +227,7 @@ def explicit_deadline_expired(body, today=None):
         try:
             deadline = (datetime.strptime(match.group(1), "%Y-%m-%d").date()
                         if index == 0 else
-                        datetime(int(match.group(4)), int(match.group(3)), int(match.group(2))).date())
+                        datetime(int(match.group(3)), int(match.group(2)), int(match.group(1))).date())
             return deadline < today
         except ValueError:
             continue

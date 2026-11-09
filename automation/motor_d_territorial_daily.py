@@ -310,7 +310,7 @@ def inspect(seed):
             # evidence of an empty town and must never be treated as scoped.
             label=fold(" ".join((heading_text,title_text)))
             territory=fold(town)
-            if not re.search(r"\\btrabajos?\\s+(?:en|de)\\s+"+re.escape(territory)+r"\\b",label):
+            if not re.search(r"\btrabajos?\s+(?:en|de)\s+"+re.escape(territory)+r"\b",label):
                 out["status"]="search_filter_not_confirmed"
                 out["errors"].append("chiletrabajos_territory_heading_missing")
                 return out

@@ -46,6 +46,18 @@ class MotorDExpressTests(unittest.TestCase):
             self.assertEqual(result["review_reasons"]["SEGUNDA_PASADA"]
                              ["fecha_original_no_acreditada; verificar fecha y vigencia"], 1)
 
+    def test_only_fresh_territorial_inventory_can_produce_batches(self):
+        self.assertEqual(engine.validate_inventory_freshness(
+            {"date": "2026-11-06T06:00:00-03:00"}, TODAY), TODAY)
+        self.assertEqual(engine.validate_inventory_freshness(
+            {"date": "2026-11-05T22:00:00-03:00"}, TODAY), date(2026, 11, 5))
+        for timestamp in ("2026-11-04T20:00:00-03:00",
+                          "2026-11-07T10:00:00-03:00",
+                          "2026-11-06T10:00:00", "bad-date", None):
+            with self.subTest(timestamp=timestamp):
+                with self.assertRaises(ValueError):
+                    engine.validate_inventory_freshness({"date": timestamp}, TODAY)
+
     def test_confirmed_today_or_yesterday_enters_daily_express(self):
         for published in ("2026-11-06","2026-11-05"):
             with self.subTest(published=published):

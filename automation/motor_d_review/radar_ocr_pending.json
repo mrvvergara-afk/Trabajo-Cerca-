@@ -1,0 +1,41 @@
+{
+  "schema": "trabajo-cerca.motor-d-review.v1",
+  "updated_at": "2026-11-09T19:54:18.970924+00:00",
+  "items_total": 1,
+  "pending_total": 1,
+  "publication_enabled": false,
+  "items": [
+    {
+      "review_id": "ocr_ed6842964cd5ee09de2183cd",
+      "canonical_url": "https://traiguencity.cl/abren-concursos-publicos-para-proveer-los-cargos-de-director-en-el-liceo-lucila-godoy-alcayaga-y-la-escuela-especial-las-lilas-de-traiguen",
+      "url": "https://traiguencity.cl/abren-concursos-publicos-para-proveer-los-cargos-de-director-en-el-liceo-lucila-godoy-alcayaga-y-la-escuela-especial-las-lilas-de-traiguen",
+      "source": "TC-024",
+      "origin": "semilla_2026_10_25",
+      "reported_territories": [
+        "Traiguén"
+      ],
+      "possible_communes": [
+        "Traiguén",
+        "Victoria"
+      ],
+      "reader_status": "documento_antiguo_revision_vigencia",
+      "review_reason": "documento_antiguo_revision_vigencia",
+      "extractor": "article_body_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "34a46573b76dae0d5ba248a3f7d624de000183222abba150364d79b1ceb53fd6",
+      "original_classification": null,
+      "date_source": "2026-10-17",
+      "date_discovered": "2026-11-09",
+      "deadline": "2026-11-27",
+      "publication_date_confirmed": true,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-09",
+      "last_seen": "2026-11-09"
+    }
+  ]
+}

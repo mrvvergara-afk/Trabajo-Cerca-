@@ -191,7 +191,7 @@ def main(argv=None):
             else:
                 # Every source receives an audit receipt, including a healthy
                 # index which contains zero usable vacancies.
-                data = discover({'url': url, 'source': source_id}, max_links=2)
+                data = discover({'url': url, 'source': source_id}, max_links=5)
                 state = str(data.get('status') or 'sin_estado')
                 counts['fuente_'+state] += 1
                 status.append({
@@ -200,7 +200,7 @@ def main(argv=None):
                     'links_found': int(data.get('links_found') or 0),
                     'individual_pages_checked': len(data.get('checked', []))
                 })
-                for record in data.get('checked', [])[:4]:
+                for record in data.get('checked', []):
                     accept(record, source_id, 'fuente_web_publica', places)
         except Exception as exc:
             status.append({'source_id': source_id, 'url': canonical(url),
@@ -236,7 +236,7 @@ def main(argv=None):
         'writes_to_app': 0,
         'counts_by_status': dict(counts),
         'observations_by_reported_territory': dict(local_counts),
-        'limits': 'Máximo 2 vínculos individuales por índice; sin lectura de redes privadas',
+        'limits': 'Máximo 5 vínculos individuales por índice; sin lectura de redes privadas',
     }
     folder = Path(args.output)
     folder.mkdir(parents=True, exist_ok=True)

@@ -14,7 +14,7 @@ from urllib.parse import urlsplit
 ROOT = Path("automation/motor_d_discovery")
 READY = Path("automation/motor_d_ready")
 COMMUNES = {"Angol","Collipulli","Ercilla","Lumaco","Los Sauces","Purén",
-            "Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento"}
+            "Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento","Quilaco"}
 
 def canonical_url(raw):
     try:

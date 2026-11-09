@@ -1,0 +1,57 @@
+{
+  "schema": "trabajo-cerca.omil-evidence.v1",
+  "observed_at_chile": "2026-11-09",
+  "source_kind": "user_supplied_instagram_story_screenshots",
+  "source_profile": "https://www.instagram.com/omilnacimiento/",
+  "source_perma_posts_known": false,
+  "work_commune_claim": "Nacimiento",
+  "recruitment_office": {
+    "name": "OMIL Nacimiento",
+    "address": "Av. La Cruz 567 interior, Nacimiento",
+    "application_date": "2026-11-12",
+    "application_hours": "08:30-14:00",
+    "date_is_confirmed_closing_deadline": false
+  },
+  "warning": "These ads were cross-posted Nov 9 but Chiletrabajos original publication date is Nov 5. Treat as possible existing jobs, never 3 new jobs without feed deduplication. QR codes decoded directly from user-provided images but form availability not HTTP-verified. Screenshots remain user chat attachments, not stored in Git.",
+  "offers": [
+    {
+      "title": "Conductor de Transporte de Carga y Personal",
+      "employer_from_portal": "Serfonac Ltda",
+      "employer_named_on_poster": false,
+      "origin_url": "https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
+      "original_published_date": "2026-11-05",
+      "portal_expiration_date": "2027-01-19",
+      "qr_application_url": "https://forms.gle/21y5vNEeBhfGkiBZ8",
+      "poster_salary_clp": 770000,
+      "poster_requirements": "Licencias A2 y A4 vigentes y certificación CORMA vigente",
+      "screenshot_sha256": "2058fab2cd200bde9b226da6852e7fcb187dff3165da3507f003e997e68ad9cf",
+      "source_worksite_evidence": "Poster from local OMIL, title of individual portal job includes Nacimiento; work execution not independently stated in poster beyond OMIL referral."
+    },
+    {
+      "title": "Mecánico/a Automotriz",
+      "employer_from_portal": "Serfonac",
+      "employer_named_on_poster": false,
+      "origin_url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
+      "original_published_date": "2026-11-05",
+      "portal_expiration_date": "2027-01-19",
+      "qr_application_url": "https://forms.gle/w4t414rHY8uqWXPb8",
+      "poster_salary_clp": 850000,
+      "poster_requirements": "Formación técnica en mecánica automotriz, experiencia y licencia B",
+      "screenshot_sha256": "ceaa5903792d281e7d00475ababb59e2223d67ac2ac6ec60e78d1c1a98d82683",
+      "source_worksite_evidence": "Both poster and portal describe work in Nacimiento."
+    },
+    {
+      "title": "Mecánico/a Soldador/a de Maquinaria",
+      "employer_from_portal": "Serfonac",
+      "employer_named_on_poster": false,
+      "origin_url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
+      "original_published_date": "2026-11-05",
+      "portal_expiration_date": "2027-01-19",
+      "qr_application_url": "https://forms.gle/7WEpyxwob93bsmb38",
+      "poster_salary_clp": 850000,
+      "poster_requirements": "Formación en mecánica/soldadura, experiencia en maquinaria pesada; licencia B",
+      "screenshot_sha256": "67e3fa4ca57ba61367bb2be64d0bffde4cb228aa96d2275269f5bce9e86e7a6b",
+      "source_worksite_evidence": "Both poster and portal describe work in Nacimiento."
+    }
+  ]
+}

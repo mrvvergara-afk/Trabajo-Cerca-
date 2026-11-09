@@ -12,6 +12,8 @@ on:
     branches: [main]
     paths:
       - automation/trabajo_cerca/**
+      - automation/adaptar_radar_a_motor_d_review.py
+      - automation/motor_d_review/**
       - .github/workflows/trabajo-cerca-radar-diario.yml
   schedule:
     - cron: '17 6 * * *'

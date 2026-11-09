@@ -121,6 +121,13 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertEqual(maximum_for_url("https://munimulchen.cl/afiche.pdf"), 16 * 1024 * 1024)
         self.assertEqual(maximum_for_url("https://munimulchen.cl/oferta"), 6000000)
 
+    def test_publication_confirmation_requires_exact_job_identity(self):
+        importer = (Path(__file__).resolve().parent.parent / "appdeploy_staging" /
+                    "motor-d-auto-import.ts").read_text(encoding="utf8")
+        self.assertIn("if(visibleIds.has(id))visible++", importer)
+        self.assertNotIn("visibleUrls.has(normalized)", importer)
+        self.assertNotIn("publicFeedIdentity(source.url)", importer)
+
     def test_importer_snapshot_explains_empty_queue(self):
         importer = (Path(__file__).resolve().parent.parent / "appdeploy_staging" /
                     "motor-d-auto-import.ts").read_text(encoding="utf8")

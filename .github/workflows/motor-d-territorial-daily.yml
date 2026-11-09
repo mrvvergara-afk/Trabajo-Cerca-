@@ -66,6 +66,67 @@ jobs:
           if report["sources_accessible"]==0:
               raise SystemExit("PR_TERRITORIAL_AUDIT_FAILURE: no accessible source")
           PY
+      - name: Clasificar candidatos reales y contrastar URLs con catálogo · sin publicar
+        env:
+          PYTHONPATH: automation:automation/trabajo_cerca
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          from motor_d_express import build, validate_inventory_freshness
+          from radar_diario import read_feed, canonical
+          source=Path("automation/motor_d_discovery/territorial_daily.json")
+          report=json.loads(source.read_text(encoding="utf-8"))
+          today=datetime.now(ZoneInfo("America/Santiago")).date()
+          validate_inventory_freshness(report,today)
+          classified=build(report,today)
+          ready=[entry["offer"] for state in ("EXPRESS","RECUPERACION")
+                 for entry in classified[state] if entry["offer"]]
+          try:
+              catalog,complete,rows,error=read_feed(max_pages=30)
+          except Exception as exc:
+              catalog,complete,rows,error=set(),False,0,type(exc).__name__
+          evidence=[]
+          for offer in ready:
+              source_url=canonical(offer["url_original"])
+              evidence.append({
+                  "id_fuente":offer["id_fuente"],
+                  "cargo":offer["cargo"],"empresa":offer["empresa"],
+                  "comunas":offer["comunas"],"url_original":offer["url_original"],
+                  "fecha_publicacion":offer["fecha_publicacion"],
+                  "fecha_cierre":offer.get("fecha_cierre"),
+                  "batch_type":offer["tipo_lote"],
+                  "catalog_url_status":("already_in_public_catalog" if source_url in catalog
+                      else "not_found_by_url_only" if complete else "catalog_unavailable")
+              })
+          summary={
+              "schema":"trabajo-cerca.motor-d-pr-preview.v1",
+              "scan_date":report["date"],
+              "source_scan_count":report["sources_total"],
+              "possible_links_not_verified":report["job_candidates_total"],
+              "daily_ready":len(classified["EXPRESS"]),
+              "recovery_ready":len(classified["RECUPERACION"]),
+              "second_pass":len(classified["SEGUNDA_PASADA"]),
+              "third_pass":len(classified["TERCERA_PASADA"]),
+              "excluded":len(classified["DESCARTADO"]),
+              "duplicate_candidates":len(classified["DUPLICADO"]),
+              "feed_complete":complete,
+              "feed_rows":rows,
+              "feed_error":error,
+              "publications_created":0,
+              "catalog_semantic_dedup_not_yet_verified":True,
+              "ready_candidates":evidence
+          }
+          target=Path("automation/motor_d_discovery/territorial_pr_preview.json")
+          target.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print("PR_MOTOR_D_READY_PREVIEW",json.dumps({
+              k:v for k,v in summary.items() if k!="ready_candidates"
+          },ensure_ascii=False))
+          for entry in evidence:
+              print("PR_MOTOR_D_CANDIDATE",json.dumps(entry,ensure_ascii=False))
+          PY
       - name: Recover full audit even if sources fail
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,6 +135,7 @@ jobs:
           path: |
             automation/motor_d_discovery/territorial_daily.json
             automation/motor_d_discovery/territorial_state.json
+            automation/motor_d_discovery/territorial_pr_preview.json
           if-no-files-found: warn
 
   territorial_scan:

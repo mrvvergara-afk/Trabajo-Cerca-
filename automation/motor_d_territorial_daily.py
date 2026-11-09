@@ -275,7 +275,13 @@ def chiletrabajos_metadata(soup, title, url):
     if re.search(r"\bHospital\s+de\s+Nacimiento\b",text,re.I) and re.search(r"\bNacimiento\b",title,re.I):
         city="Nacimiento"
     explicit=explicit_work_commune(text)
-    if explicit:city=explicit
+    if explicit:
+        city=explicit
+    elif city and not re.search(r"(?<!\w)"+re.escape(fold(city))+r"(?!\w)",fold(title)):
+        # Portal 'Ubicación' may be the recruiting office, not the
+        # workplace. Title agreement is minimum corroboration when
+        # the job description omits the execution site.
+        city=None
     expiry=re.search(r"\bExpira\s+(20\d{2}-\d{2}-\d{2})\b",text,re.I)
     closed=bool(expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
     application=bool(re.search(r"\bPostular\b|\benv[ií]a\s+tu\s+curr[ií]culum\b|\benv[ií]a\s+tu\s+cv\b",text,re.I))

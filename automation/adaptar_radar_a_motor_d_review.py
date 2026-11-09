@@ -6,6 +6,7 @@ import datetime as dt
 import hashlib
 import ipaddress
 import json
+import re
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -25,6 +26,11 @@ def canonical(raw: str) -> str:
         return "https://" + host + (u.path.rstrip("/") or "/") + (("?" + u.query) if u.query else "")
     except (ValueError, TypeError):
         return ""
+
+def sanitize_excerpt(value):
+    if not isinstance(value, str):
+        return None
+    return re.sub(r"(?<![\\d])(?:\\+?56[\\s-]?)?(?:[2-9][\\s-]?\\d{7}|9[\\s-]?\\d{8})(?!\\d)", "[teléfono]", value)
 
 def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) -> dict:
     today = today or dt.date.today()
@@ -64,7 +70,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             "reader_status": row.get("reader_status") or row.get("status") or "revision_obligatoria",
             "review_reason": row.get("reader_status") or row.get("status") or "evidencia_documental_requiere_revision",
             "extractor": row.get("extractor"),
-            "text_excerpt": row.get("text_excerpt"),
+            "text_excerpt": sanitize_excerpt(row.get("text_excerpt")),
             "original_classification": row.get("original_classification"),
             "date_source": row.get("published_date_evidence"),
             "date_discovered": discovered,
@@ -79,11 +85,22 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
         if url in by_url:
             existing = by_url[url]
             first_seen = existing.get("first_discovered") or existing.get("date_discovered") or discovered
-            was_approved = existing.get("review_status") == "approved"
+            protected_keys = {
+                "review_status", "review_reason", "approved_by", "approved_at",
+                "rejected_by", "rejected_at", "evidence_sha256",
+                "work_location_verified", "employer_verified",
+                "application_route_verified", "publication_eligible",
+                "title", "employer", "work_commune", "application_evidence",
+                "evidence", "http", "source_commune_not_confirmed"
+            }
+            protected = {k: v for k, v in existing.items() if k in protected_keys}
+            old_deadline = existing.get("deadline")
             existing.update(candidate)
+            existing.update(protected)
+            if not existing.get("deadline") and old_deadline:
+                existing["deadline"] = old_deadline
             existing["first_discovered"] = first_seen
             existing["last_seen"] = today.isoformat()
-            existing["review_status"] = "approved" if was_approved else "pending"
             updated += 1
         else:
             candidate["first_discovered"] = discovered

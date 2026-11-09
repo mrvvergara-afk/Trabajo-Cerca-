@@ -205,6 +205,13 @@ def produce(report,root=READY,today=None):
         "seen_offer_ids":sorted(seen_ids), "seen_identity_keys":sorted(seen_keys),
         "quarantined_batches":saved.get("quarantined_batches", [])})
     summary={state:len(items) for state,items in classified.items()}
+    # Preserve actionable reasons for why discovery did not become a publishable offer.
+    summary["review_reasons"] = {
+        state: dict(sorted(__import__("collections").Counter(
+            entry["reason"] for entry in classified[state]
+        ).items()))
+        for state in ("SEGUNDA_PASADA", "TERCERA_PASADA", "DESCARTADO", "DUPLICADO")
+    }
     summary["daily_batch_offers"]=batch_counts["daily"]
     summary["recovery_batch_offers"]=batch_counts["recovery"]
     summary["published_confirmed"]=0  # Solo AppDeploy puede certificar este contador.

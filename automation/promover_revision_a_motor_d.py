@@ -100,11 +100,11 @@ def main():
     parser.add_argument("--ready-dir", default="automation/motor_d_ready")
     args = parser.parse_args()
     queue = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    from trabajo_cerca.trabajo_cerca_lector_documental import fetch_bytes, allowed, robots_ok
+    from trabajo_cerca.trabajo_cerca_lector_documental import fetch_bytes, allowed, robots_ok, maximum_for_url
     def load(url):
         if not allowed(url) or not robots_ok(url):
             raise ValueError("Documento no permitido")
-        return fetch_bytes(url)[0]
+        return fetch_bytes(url, maximum_for_url(url))[0]
     local_day = dt.datetime.now(ZoneInfo("America/Santiago")).date()
     report, decisions = prepare(queue, today=local_day, document_loader=load,
                                 now=dt.datetime.now(dt.timezone.utc))

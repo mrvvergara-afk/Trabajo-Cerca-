@@ -54,7 +54,7 @@ class AnchorReader(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "a" and self.current is not None:
             href, parts = self.current
-            self.links.append((href, re.sub(r"\\s+", " ", " ".join(parts)).strip()))
+            self.links.append((href, re.sub(r"\s+", " ", " ".join(parts)).strip()))
             self.current = None
         if tag in self.IGNORED and self.ignored:
             self.ignored -= 1

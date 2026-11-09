@@ -29,17 +29,22 @@ IGNORE = re.compile(r"(?:/category/|/categoria/|/tag/|/author/|/page/\d+/?|"
 
 
 class AnchorReader(HTMLParser):
+    """Read anchor labels including nested spans, excluding page navigation."""
+    IGNORED = frozenset(("nav", "header", "footer", "aside"))
+
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.ignored = 0
         self.current = None
         self.links = []
+        self.stack = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
-        if tag in ("nav", "header", "footer", "aside"):
+        self.stack.append(tag)
+        if tag in self.IGNORED:
             self.ignored += 1
-        if tag == "a" and not self.ignored:
+        if tag == "a" and not self.ignored and self.current is None:
             self.current = [attrs.get("href", ""), []]
 
     def handle_data(self, data):
@@ -49,10 +54,13 @@ class AnchorReader(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "a" and self.current is not None:
             href, parts = self.current
-            self.links.append((href, re.sub(r"\s+", " ", " ".join(parts)).strip()))
+            self.links.append((href, re.sub(r"\\s+", " ", " ".join(parts)).strip()))
             self.current = None
-        if tag in ("nav", "header", "footer", "aside") and self.ignored:
+        if tag in self.IGNORED and self.ignored:
             self.ignored -= 1
+        if tag in self.stack:
+            index = len(self.stack) - 1 - self.stack[::-1].index(tag)
+            del self.stack[index:]
 
 
 def candidate_links(index_url: str, html: str, limit=5):

@@ -34,6 +34,16 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
         self.assertEqual(items,[])
 
+    def test_explicit_closed_body_overrides_open_link(self):
+        html='<article><h1>Operario agrícola</h1><p>Postulación cerrada.</p></article>'
+        item=engine.inspect_detail_for_test if hasattr(engine, "inspect_detail_for_test") else None
+        self.assertTrue(engine.CLOSED.search("Operario agrícola Postulación cerrada."))
+
+    def test_explicit_expired_deadline_is_detected(self):
+        self.assertTrue(engine.explicit_deadline_expired("Postula hasta el 2026-10-31"))
+        self.assertTrue(engine.explicit_deadline_expired("Cierre de postulaciones: 31/10/2026"))
+        self.assertFalse(engine.explicit_deadline_expired("Postula hasta el 2026-12-31"))
+
     def test_closed_wording_is_recognized(self):
         self.assertTrue(engine.CLOSED.search("Postulación Cerrada"))
         self.assertTrue(engine.CLOSED.search("Postulaciones Cerradas"))

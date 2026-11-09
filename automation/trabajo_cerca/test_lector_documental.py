@@ -104,6 +104,11 @@ class LectorDocumentalTests(unittest.TestCase):
             self.assertEqual(text, "Oferta laboral Victoria")
             self.assertEqual(mode, "imagen_ocr_local")
 
+    def test_quilaco_is_recognized_as_a_target_work_territory(self):
+        out = classify("Oferta laboral. Se necesita operador en Quilaco. Postular.", dt.date(2026, 11, 8))
+        self.assertIn("Quilaco", out["possible_communes"])
+        self.assertEqual(out["decision"], "candidato_fecha_pendiente")
+
     def test_html_scripts_excluded(self):
         self.assertEqual(clean_text("<p>Oferta laboral</p><script>ignoreMe()</script>"),
                          "Oferta laboral")

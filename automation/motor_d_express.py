@@ -5,6 +5,8 @@ El histórico A/B/C/Gemini y sus colas no se leen ni se reabren aquí.
 import hashlib
 import ipaddress
 import json
+import os
+import tempfile
 import re
 import unicodedata
 from datetime import date, datetime
@@ -126,6 +128,22 @@ def build(report,today=None):
         output[state].append({"url":item.get("url"),"reason":reason,"offer":offer})
     return output
 
+def atomic_json_write(path, payload):
+    """Never leave a truncated ready batch or manifest after an interrupted run."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
+                                         prefix=".motor_d_", suffix=".tmp", delete=False) as handle:
+            temporary = Path(handle.name)
+            handle.write(json.dumps(payload, ensure_ascii=False, indent=2) + "\\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
 def produce(report,root=READY,today=None):
     today=today or date.today()
     classified=build(report,today)
@@ -170,7 +188,7 @@ def produce(report,root=READY,today=None):
                    "batch_type":batch_type,"offers":chunk}
             target=root/path
             target.parent.mkdir(parents=True,exist_ok=True)
-            target.write_text(json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+            atomic_json_write(target, batch)
             if not any(x.get("batch_id")==batch_id for x in batches):
                 batches.append({"batch_id":batch_id,"file":path,"count":len(chunk),
                                 "batch_type":batch_type})
@@ -178,9 +196,9 @@ def produce(report,root=READY,today=None):
             batch_counts[batch_type]+=len(chunk)
     if len(batches)>256:
         raise RuntimeError("Límite de manifiesto D: no eliminar lotes sin recibo de publicación")
-    manifest.write_text(json.dumps({"schema_version":1,"batches":batches,
+    atomic_json_write(manifest, {"schema_version":1,"batches":batches,
         "seen_offer_ids":sorted(seen_ids), "seen_identity_keys":sorted(seen_keys),
-        "quarantined_batches":saved.get("quarantined_batches", [])},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+        "quarantined_batches":saved.get("quarantined_batches", [])})
     summary={state:len(items) for state,items in classified.items()}
     summary["daily_batch_offers"]=batch_counts["daily"]
     summary["recovery_batch_offers"]=batch_counts["recovery"]

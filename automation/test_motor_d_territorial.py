@@ -227,6 +227,33 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertEqual(result["status"], "scanned_no_candidates")
         self.assertNotIn("chiletrabajos_territory_heading_missing", result["errors"])
 
+    def test_all_chiletrabajos_communes_use_city_not_national_keyword_queries(self):
+        rows=[(town,source,url) for town,source,url in engine.SEEDS
+              if source == "Chiletrabajos · " + town]
+        self.assertEqual(len(rows),12)
+        self.assertEqual({town for town,_,_ in rows},set(engine.COMMUNES))
+        for town,_,url in rows:
+            self.assertIn("/ciudad/",url)
+            self.assertNotIn("?2=",url)
+            self.assertNotIn("/encuentra-un-empleo",url)
+        self.assertIn(("Nacimiento","Chiletrabajos · Nacimiento",
+                       "https://www.chiletrabajos.cl/ciudad/nacimiento.html"),rows)
+        self.assertIn(("Mulchén","Chiletrabajos · Mulchén",
+                       "https://www.chiletrabajos.cl/ciudad/mulchen.html"),rows)
+
+    def test_national_keyword_page_does_not_count_as_geographic_coverage(self):
+        from unittest.mock import patch
+        url="https://www.chiletrabajos.cl/ciudad/collipulli.html"
+        page=BeautifulSoup(
+            "<html><h1>Trabajos de Collipulli</h1>"
+            "<a href='/trabajo/mecanico-999'>Mecánico de maquinaria</a></html>",
+            "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,page,None)) as reader:
+            result=engine.inspect(("Collipulli","Chiletrabajos · Collipulli",url))
+        self.assertEqual(result["status"],"search_filter_not_confirmed")
+        self.assertEqual(result["candidates"],[])
+        self.assertEqual(reader.call_count,1)
+
     def test_chiletrabajos_only_dereferences_individual_job_urls(self):
         url = "https://www.chiletrabajos.cl/ciudad/angol.html"
         html = BeautifulSoup(

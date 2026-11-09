@@ -1,4 +1,4 @@
-name: Motor D - Barrido territorial 12 comunas
+name: Motor D - Barrido territorial 13 comunas
 on:
   workflow_dispatch:
   pull_request:
@@ -58,7 +58,7 @@ jobs:
               print("MOTOR_D_FAILURE: no source report produced")
               sys.exit(1)
           r=json.loads(p.read_text())
-          assert len(r["communes_expected"])==12 and not r["missing_communes"]
+          assert len(r["communes_expected"])==13 and not r["missing_communes"]
           print("MOTOR_D_COVERAGE",json.dumps({
               "sources_checked":r["sources_total"],
               "sources_accessible":r["sources_accessible"],

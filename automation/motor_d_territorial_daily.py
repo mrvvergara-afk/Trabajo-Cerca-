@@ -38,6 +38,12 @@ SEEDS=[
 ("Mulchén","OMIL Mulchén arándanos 100 cupos","https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/"),
 ("Victoria","Municipio Victoria OMIL publicaciones","https://victoriachile.cl/category/omil/"),
 ("Angol","Hospital Angol estado postulaciones","https://hospitalangol.cl/estado/postulacion/"),
+# Recover independently confirmed individual vacancies from the original portal.
+# These are seed URLs to re-check, not automatic approvals or permanent fixtures.
+("Nacimiento","Chiletrabajos · Serfonac mecánico soldador","https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358"),
+("Nacimiento","Chiletrabajos · Serfonac mecánico automotriz","https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364"),
+("Nacimiento","Chiletrabajos · Serfonac conductor","https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758"),
+("Angol","Chiletrabajos · Operario alimentos Angol","https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569"),
 ("Angol","Radio Viaducto","https://radioviaducto.cl/"),
 ("Angol","Las Noticias de Malleco","https://lasnoticiasdemalleco.cl/"),
 # Recuperación crítica de anuncios vistos en Indeed desde la fuente del empleador.
@@ -183,17 +189,22 @@ def links_from(soup,base):
 # Solo el texto explicito de la oferta puede establecer empresa y lugar de trabajo.
 # La comuna de la fuente municipal NO equivale a la comuna del puesto.
 def explicit_work_commune(body):
+    """Worksite cues only, never a recruiter address, residence or source commune."""
     value=fold(body)
     aliases={"mininco":"Collipulli","coihue":"Negrete","coigue":"Negrete"}
     places={fold(place):place for place in COMMUNES}
     places.update(aliases)
-    for field in re.finditer(
-        r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
-        value):
-        text=field.group(1)
-        for name,commune in places.items():
-            if re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",text):
-                return commune
+    cues=(
+        r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\\s*[:\\-]\\s*([^.;]{3,100})",
+        r"(?:con base en|base de operaciones en|trabajo con base en|realizar labores en taller y terreno,? con base en)\\s+([^.;]{3,90})",
+        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en)\\s+([^.;]{3,90})"
+    )
+    for cue in cues:
+        for field in re.finditer(cue,value,re.I):
+            clause=field.group(1)
+            for name,commune in places.items():
+                if re.search(r"(?<!\\w)"+re.escape(name)+r"(?!\\w)",clause):
+                    return commune
     return None
 
 def focused_job_text(soup):
@@ -253,7 +264,8 @@ def chiletrabajos_metadata(soup, title, url):
     closed=bool(expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
     application=bool(re.search(r"\bPostular\b|\benv[ií]a\s+tu\s+curr[ií]culum\b|\benv[ií]a\s+tu\s+cv\b",text,re.I))
     return {"employer":employer if employer and len(employer)<=140 else None,
-            "work_commune":city,"application_evidence":application,"source_closed":closed}
+            "work_commune":city,"application_evidence":application,"source_closed":closed,
+            "deadline":expiry.group(1) if expiry else None}
 
 def hiringroom_metadata(soup, title, url):
     """Primary employer ATS evidence only. Relative time is not an original calendar date."""
@@ -335,6 +347,14 @@ def inspect(seed):
                 out["errors"].append("chiletrabajos_territory_heading_missing")
                 return out
         links=links_from(soup,url)
+        parsed_seed=urlsplit(url)
+        # First-party individual job pages can be audited directly; never
+        # reinterpret them as category/index pages with zero discovered links.
+        if (parsed_seed.hostname in ("www.chiletrabajos.cl","chiletrabajos.cl")
+            and parsed_seed.path.startswith("/trabajo/")):
+            heading=soup.select_one("h1")
+            title=heading.get_text(" ",strip=True)[:180] if heading else ""
+            links=[(url,title,"not_indicated")] if TERMS.search(title) else []
         out["links_found"]=len(links)
         # Procesar todos los enlaces descubiertos (hasta 35) con paralelismo acotado,
         # sin quedar en un muestreo fijo de cinco.
@@ -345,7 +365,7 @@ def inspect(seed):
                     "date_source":None,"work_commune":None,"recruitment_commune":None,
                     "source_scope_commune":town,"source_commune_not_confirmed":True}
             try:
-                code,detail_soup,detail_reason=request_page(detail_url)
+                code,detail_soup,detail_reason=(200,soup,None) if detail_url==url else request_page(detail_url)
                 detail["http"]=code
                 if code==200 and detail_soup is not None:
                     title=informative_job_title(detail_soup,label)
@@ -359,6 +379,10 @@ def inspect(seed):
                         job_commune=portal["work_commune"] or job_commune
                         employer=portal["employer"] or employer
                         application_evidence=portal["application_evidence"] or application_evidence
+                        if portal.get("deadline"):
+                            parsed_deadline=portal["deadline"]
+                        else:
+                            parsed_deadline=None
                     primary_ats=hiringroom_metadata(detail_soup,title,detail_url)
                     if primary_ats:
                         title=primary_ats["title"]
@@ -369,6 +393,9 @@ def inspect(seed):
                         employer="ARAUCO"  # Verified first-party ATS; never infer work commune.
                     # Closed labels and internal-only calls are not public job vacancies.
                     deadline=explicit_deadline_date(body)
+                    if portal and portal.get("deadline"):
+                        portal_expiry=datetime.strptime(portal["deadline"],"%Y-%m-%d").date()
+                        deadline=deadline or portal_expiry
                     explicit_closed=bool(CLOSED.search(title+" "+label+" "+body) or (deadline and deadline<NOW.date()) or (portal and portal["source_closed"]))
                     public_title=title if len(title)>10 else label
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))

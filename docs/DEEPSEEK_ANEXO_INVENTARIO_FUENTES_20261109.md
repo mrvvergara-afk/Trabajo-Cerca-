@@ -3,7 +3,7 @@
 **Corte:** 9 de noviembre de 2026. **Origen:** configuración realmente presente en el repositorio `mrvvergara-afk/Trabajo-Cerca-`.  
 **Uso:** anexo obligatorio al [encargo principal](./DEEPSEEK_AUDITORIA_FUENTES_TRABAJO_CERCA_20261109.md). No ejecutar publicaciones ni despliegues a partir de esta lista.
 
-> **Alcance y limitación:** este anexo enumera todos los registros de los inventarios actuales relacionados con rastreo y las fuentes programáticas del Motor D; no demuestra que todos sean accesibles ni pretende ser un catálogo exhaustivo de cada página de empleo existente en Internet. Una URL de aviso no es una fuente de rastreo continuo. La presencia en el código no equivale a extracción de anuncios.
+> **Alcance y limitación:** este anexo enumera las **fuentes configuradas** en todos los inventarios actuales relacionados con rastreo y las fuentes programáticas del Motor D; no demuestra que todos sean accesibles ni pretende ser un catálogo exhaustivo de cada página de empleo existente en Internet. Una URL de aviso no es una fuente de rastreo continuo. La presencia en el código no equivale a extracción de anuncios.
 
 ## A. Territorio obligatorio y normalización
 

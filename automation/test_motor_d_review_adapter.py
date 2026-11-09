@@ -92,6 +92,20 @@ class MotorDReviewAdapterTests(unittest.TestCase):
                 self.assertEqual(result["deadline"], "2026-12-01")
                 self.assertEqual(result["publication_eligible"], status == "approved")
 
+    def test_atomic_queue_write_keeps_valid_json_after_repeated_scans(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            source.write_text(json.dumps([{"url": "https://example.cl/omil"}]), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 8))
+            first = json.loads(target.read_text(encoding="utf-8"))
+            first["items"][0]["review_status"] = "rejected"
+            target.write_text(json.dumps(first), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 9))
+            second = json.loads(target.read_text(encoding="utf-8"))
+            self.assertEqual(second["items_total"], 1)
+            self.assertEqual(second["items"][0]["review_status"], "rejected")
+            self.assertEqual(list(Path(tmp).glob(".motor_d_review_*.tmp")), [])
+
     def test_redacts_chilean_landline(self):
         self.assertEqual(adapter.sanitize_excerpt("Llamar al 45 234567"),
                          "Llamar al [teléfono]")

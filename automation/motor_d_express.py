@@ -179,7 +179,8 @@ def produce(report,root=READY,today=None):
     if len(batches)>256:
         raise RuntimeError("Límite de manifiesto D: no eliminar lotes sin recibo de publicación")
     manifest.write_text(json.dumps({"schema_version":1,"batches":batches,
-        "seen_offer_ids":sorted(seen_ids), "seen_identity_keys":sorted(seen_keys)},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+        "seen_offer_ids":sorted(seen_ids), "seen_identity_keys":sorted(seen_keys),
+        "quarantined_batches":saved.get("quarantined_batches", [])},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     summary={state:len(items) for state,items in classified.items()}
     summary["daily_batch_offers"]=batch_counts["daily"]
     summary["recovery_batch_offers"]=batch_counts["recovery"]

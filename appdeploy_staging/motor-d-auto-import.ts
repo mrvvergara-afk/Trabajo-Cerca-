@@ -156,8 +156,9 @@ export async function confirmMotorDPublications(){
       const normalized=source?.url?publicFeedIdentity(source.url):null;
       if(visibleIds.has(id)||(normalized&&visibleUrls.has(normalized)))visible++;
     }
-    const fullyVisible=visible>=Number(batch.accepted||0);
-    await db.tx.update('motor_d_import_receipts',[{id:batch.id,record:{...batch,status:fullyVisible?'published':'awaiting_public_feed',published:visible,checkedAt:new Date().toISOString()}}]);
+    const expected=(batch.results||[]).filter(x=>!['expired','review_expired'].includes(x.status)).length;
+    const fullyVisible=expected>0&&visible>=expected;
+    await db.tx.update('motor_d_import_receipts',[{id:batch.id,record:{...batch,status:!expected?'processed_without_publication':fullyVisible?'published':'awaiting_public_feed',published:visible,checkedAt:new Date().toISOString()}}]);
     if(fullyVisible)publishedBatches++;else waiting++;
   }
   return {checked:Math.min(12,pending.length),publishedBatches,waiting};

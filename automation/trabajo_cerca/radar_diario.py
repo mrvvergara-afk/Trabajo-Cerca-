@@ -73,9 +73,14 @@ def read_feed(max_pages=12):
             time.sleep(2)
         if not isinstance(obj, dict) or not isinstance(obj.get('items'), list):
             return set(), False, len(records), 'feed_invalid'
+        if obj.get('feedRebuilding') is True or obj.get('degraded') is True:
+            return set(), False, len(records), 'feed_rebuilding'
         records += [row for row in obj['items'] if isinstance(row, dict)]
         nxt = obj.get('nextCursor')
         if not nxt:
+            total = obj.get('totalJobOffers')
+            if isinstance(total, int) and len(records) < total:
+                return set(), False, len(records), 'feed_incomplete'
             keys = set()
             for row in records:
                 for field in ('url', 'sourceUrl', 'originalPosterUrl', 'applyUrl', 'applicationUrl'):
@@ -84,6 +89,8 @@ def read_feed(max_pages=12):
                         if normalized:
                             keys.add(normalized)
             return keys, True, len(records), None
+        if not isinstance(nxt, str) or len(nxt) > 1500:
+            return set(), False, len(records), 'feed_cursor_invalid'
         if nxt in visited:
             return set(), False, len(records), 'feed_cursor_loop'
         visited.add(nxt)

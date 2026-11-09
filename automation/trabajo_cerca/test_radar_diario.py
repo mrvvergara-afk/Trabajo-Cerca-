@@ -91,6 +91,63 @@ class DailyRadarTests(unittest.TestCase):
         self.assertLess(workflow.index("Marcar falla de catálogo"),
                         workflow.index("Descargar reportes y candidatos"))
 
+    def test_partial_public_catalog_cannot_prove_offer_absent(self):
+        class Response:
+            headers = type('Headers', (), {'get_content_type': lambda self: 'application/json'})()
+            def __init__(self, payload):
+                self.payload = payload
+            def __enter__(self):
+                return self
+            def __exit__(self, *_):
+                pass
+            def read(self, *_):
+                return json.dumps(self.payload).encode('utf8')
+        with patch.object(radar_diario, 'urlopen', return_value=Response({
+                'items': [{'id':'public-1','url':'https://example.cl/oferta'}],
+                'nextCursor':None,'totalJobOffers':213})):
+            keys,complete,count,reason=radar_diario.read_feed()
+        self.assertFalse(complete)
+        self.assertEqual(keys,set())
+        self.assertEqual(count,1)
+        self.assertEqual(reason,'feed_incomplete')
+
+    def test_degraded_catalog_and_invalid_cursor_never_mark_feed_complete(self):
+        class Response:
+            headers = type('Headers', (), {'get_content_type': lambda self: 'application/json'})()
+            def __init__(self, payload):
+                self.payload=payload
+            def __enter__(self):
+                return self
+            def __exit__(self,*_):
+                pass
+            def read(self,*_):
+                return json.dumps(self.payload).encode('utf8')
+        for payload,reason in [
+            ({'items':[],'feedRebuilding':True},'feed_rebuilding'),
+            ({'items':[],'degraded':True},'feed_rebuilding'),
+            ({'items':[],'nextCursor':{'invalid':'token'}},'feed_cursor_invalid')]:
+            with self.subTest(payload=payload):
+                with patch.object(radar_diario,'urlopen',return_value=Response(payload)):
+                    keys,complete,count,issue=radar_diario.read_feed()
+                self.assertFalse(complete)
+                self.assertEqual(keys,set())
+                self.assertEqual(issue,reason)
+
+    def test_full_public_catalog_still_returns_canonical_url_keys(self):
+        class Response:
+            headers = type('Headers', (), {'get_content_type': lambda self: 'application/json'})()
+            def __enter__(self): return self
+            def __exit__(self,*_): pass
+            def read(self,*_):
+                return json.dumps({'items':[{'url':'https://www.chiletrabajos.cl/trabajo/3999111'}],
+                                   'totalJobOffers':1}).encode('utf8')
+        with patch.object(radar_diario,'urlopen',return_value=Response()):
+            keys,complete,count,reason=radar_diario.read_feed()
+        self.assertTrue(complete)
+        self.assertEqual(count,1)
+        self.assertIn('https://chiletrabajos.cl/trabajo/3999111',keys)
+        self.assertIsNone(reason)
+
     def test_feed_failure_never_claims_job_missing(self):
         with patch.object(radar_diario, 'read_feed', return_value=(set(),False,0,'feed_http_503')), \
              patch.object(radar_diario,'read_one',return_value={

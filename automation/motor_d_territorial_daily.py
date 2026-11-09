@@ -1,4 +1,4 @@
-"""Motor D territorial: inspección diaria reproducible de fuentes públicas para 12 comunas.
+"""Motor D territorial: inspección diaria reproducible de fuentes públicas para 13 comunas.
 Produce inventario de candidatos con evidencia, NUNCA publica HTML genérico como vacante.
 No solicita credenciales, evita redes con acceso restringido y registra fallas por fuente.
 """
@@ -15,7 +15,7 @@ TZ=ZoneInfo("America/Santiago")
 NOW=datetime.now(TZ)
 ROOT=Path("automation/motor_d_discovery")
 COMMUNES=["Angol","Collipulli","Ercilla","Lumaco","Los Sauces","Purén",
-          "Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento"]
+          "Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento","Quilaco"]
 # Fuentes municipales y de intermediación: una fuente base por comuna, más fuentes adicionales.
 SEEDS=[
 ("Angol","Municipalidad Angol","https://noticias.angol.cl/"),
@@ -31,6 +31,7 @@ SEEDS=[
 ("Mulchén","Municipio Mulchén empleos","https://www.munimulchen.cl/pagina-central-ofertas-laborales/"),
 ("Negrete","Municipio Negrete OMIL","https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/"),
 ("Nacimiento","Municipio Nacimiento","https://nacimiento.cl/"),
+("Quilaco","Municipalidad Quilaco","https://municipalidadquilaco.cl/w/?page_id=1468"),
 ("Angol","Salud Araucanía Norte","https://ssan.redsalud.gob.cl/trabaje-con-nosotros/"),
 ("Collipulli","Arauco empleo","https://jobs.arauco.com/Chile/search/"),
 ("Nacimiento","CMPC empleo","https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc"),

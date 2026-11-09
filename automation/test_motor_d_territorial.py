@@ -59,6 +59,22 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
         self.assertEqual(items,[])
 
+    def test_real_source_pr_audit_is_read_only_and_cannot_publish(self):
+        from pathlib import Path
+        path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "motor-d-territorial-daily.yml"
+        workflow = path.read_text(encoding="utf-8")
+        self.assertIn("fix/motor-d-ocr-bridge-20261108", workflow)
+        self.assertIn("territorial_audit_pr:", workflow)
+        audit = workflow.split("  territorial_audit_pr:", 1)[1].split("\n  territorial_scan:", 1)[0]
+        production = workflow.split("\n  territorial_scan:", 1)[1]
+        self.assertIn("contents: read", audit)
+        self.assertIn("python automation/motor_d_territorial_daily.py", audit)
+        self.assertIn("upload-artifact@v4", audit)
+        self.assertNotIn("python automation/motor_d_express.py", audit)
+        self.assertNotIn("git push", audit)
+        self.assertIn("if: github.event_name != 'pull_request'", production)
+        self.assertIn("python automation/motor_d_express.py", production)
+
     def test_unsafe_source_urls_and_redirects_never_receive_http_reads(self):
         from unittest.mock import patch
         for unsafe in ("http://munimulchen.cl/empleos",

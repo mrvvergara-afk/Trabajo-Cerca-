@@ -11,9 +11,9 @@ from zoneinfo import ZoneInfo
 from requests.exceptions import RequestException
 
 try:
-    from motor_d_express import classify, produce
+    from motor_d_express import classify, produce, canonical_url
 except ModuleNotFoundError:
-    from automation.motor_d_express import classify, produce
+    from automation.motor_d_express import classify, produce, canonical_url
 
 REQUIRED = ("approved_by", "approved_at", "document_sha256", "review_notes", "vigencia_verified_at", "revalidate_after", "application_url", "title",
             "employer", "work_commune", "date_source")
@@ -42,7 +42,6 @@ def eligible(item, today=None, key=None, document_loader=None, now=None):
         return False
     if item.get("extractor") not in {"pdf_text", "pdf_ocr_local", "imagen_ocr_local", "html_text", "article_body_text"} or item.get("publication_date_confirmed") is not True:
         return False
-    from motor_d_express import canonical_url
     if not canonical_url(item.get("application_url")):
         return False
     if item.get("review_status") != "approved":

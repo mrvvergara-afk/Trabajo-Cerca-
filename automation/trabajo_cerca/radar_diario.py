@@ -23,7 +23,8 @@ FEED = 'https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/lis
 UA = 'TrabajoCercaDailyRadar/1.0 (public, read-only)'
 LOCAL_TIMEZONE = ZoneInfo('America/Santiago')
 REVIEW_STATES = frozenset({'candidato_para_revision', 'candidato_fecha_pendiente',
-                           'documento_parcial_revision_obligatoria'})
+                           'documento_parcial_revision_obligatoria',
+                           'documento_antiguo_revision_vigencia'})
 EXCLUSION_STATES = frozenset({'plazo_vencido_no_publicar',
                               'documento_antiguo_no_publicar', 'fecha_original_futura_no_publicar'})
 
@@ -98,8 +99,9 @@ def batch_for_time(now=None):
 def strip_result(row: dict) -> dict:
     """Public report: never publish unvalidated OCR preview, email, phone or PII."""
     return {key: row.get(key) for key in
-            ('url', 'source', 'kind', 'decision', 'extractor',
-             'deadline', 'publication_date_evidence', 'source_date_evidence',
+            ('url', 'source', 'kind', 'decision', 'extractor', 'preview', 'signals',
+             'possible_communes', 'deadline', 'publication_date_evidence',
+             'source_date_evidence', 'publication_date_confirmed',
              'original_classification', 'http', 'error', 'failure_reason')
             if key in row}
 
@@ -151,8 +153,14 @@ def main(argv=None):
             'url': url, 'source_id': source_id, 'origin': origin,
             'reported_territories': list(territories),
             'status': state, 'reader_status': decision,
-            'published_date_evidence': item.get('publication_date_evidence'),
+            'published_date_evidence': item.get('publication_date_evidence') or item.get('source_date_evidence'),
             'deadline_evidence': item.get('deadline'),
+            'extractor': item.get('extractor'),
+            'possible_communes': item.get('possible_communes') or [],
+            'text_excerpt': item.get('preview'),
+            'original_classification': item.get('original_classification'),
+            'publication_date_confirmed': item.get('publication_date_confirmed') is True,
+            'date_discovered': today.isoformat(),
             'work_location_verified': False,
             'original_employer_date_verified': False,
             'approved': False,

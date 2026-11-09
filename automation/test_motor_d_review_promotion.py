@@ -106,6 +106,15 @@ class SecurityRegressionTests(unittest.TestCase):
             with self.subTest(patch=patch):
                 self.assertEqual(self.report([self.signed(**patch)])['candidates'], [])
 
+    def test_transient_document_connection_failure_skips_offer_without_crashing_batch(self):
+        def disconnected(_url):
+            raise ConnectionError("simulated temporary document outage")
+        report, decisions = promotion.prepare(
+            {'schema': 'trabajo-cerca.motor-d-review.v1', 'items': [approved()]},
+            TODAY, KEY, disconnected)
+        self.assertEqual(report['candidates'], [])
+        self.assertEqual(decisions[0]['state'], 'not_eligible')
+
     def test_changed_document_and_unavailable_evidence_block(self):
         self.assertEqual(self.report([approved()], b'changed')['candidates'], [])
         result, _ = promotion.prepare({'schema': 'trabajo-cerca.motor-d-review.v1',

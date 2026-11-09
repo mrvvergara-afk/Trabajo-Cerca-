@@ -94,10 +94,12 @@ def check_ready_offers(offers, public_rows, feed_complete):
         if row.get("kind") not in (None, "job_offer"):
             continue
         sites = set()
-        for key in ("workCommunes", "recruitmentCommunes"):
-            values = row.get(key)
-            if isinstance(values, list):
-                sites.update(normalize(x) for x in values if isinstance(x, str))
+        # Only execution locations can prove a semantic duplicate.
+        # "recruitmentCommunes" is an OMIL/recruiter location, not where the
+        # person will work (e.g. recruiter in Los Ángeles, job in Nacimiento).
+        values = row.get("workCommunes")
+        if isinstance(values, list):
+            sites.update(normalize(x) for x in values if isinstance(x, str))
         jobs.append((normalize(row.get("title")),
                      normalize(row.get("company")), sites))
     outcomes = {}

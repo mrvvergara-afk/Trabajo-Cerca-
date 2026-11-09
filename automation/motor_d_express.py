@@ -59,7 +59,9 @@ def classify(item, today=None):
                 return "DESCARTADO", "plazo_vencido", None
         except (ValueError, TypeError):
             return "SEGUNDA_PASADA", "plazo_invalido", None
-    work = {"Mininco": "Collipulli", "Coihue": "Negrete"}.get(item.get("work_commune"), item.get("work_commune"))
+    work = {"mininco": "Collipulli", "coihue": "Negrete", "coigue": "Negrete",
+            "collipulli": "Collipulli", "negrete": "Negrete"}.get(
+                normalize(item.get("work_commune")), item.get("work_commune"))
     company = str(item.get("employer") or "").strip()
     title = str(item.get("title") or "").strip()
     published = item.get("date_source")

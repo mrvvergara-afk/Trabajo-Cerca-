@@ -10,6 +10,36 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertNotIn("Quilaco",engine.COMMUNES)
         self.assertEqual(set(town for town,_,_ in engine.SEEDS),set(engine.COMMUNES))
 
+    def test_parallel_source_sweep_keeps_all_12_communes_and_honest_indeed_failures(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+
+        def artificial_scan(seed):
+            town, source, url = seed
+            blocked = source.startswith("Indeed")
+            return {"commune": town, "source": source, "url": url,
+                    "status": "http_restricted" if blocked else "scanned_no_candidates",
+                    "checked_at": engine.NOW.isoformat(), "http": 403 if blocked else 200,
+                    "links_found": 0, "details_opened": 0, "candidates": [],
+                    "errors": []}
+
+        with tempfile.TemporaryDirectory() as tmp, \
+             patch.object(engine, "ROOT", Path(tmp)), \
+             patch.object(engine, "inspect", side_effect=artificial_scan) as inspected:
+            engine.main()
+            report = json.loads((Path(tmp) / "territorial_daily.json").read_text())
+            self.assertEqual(inspected.call_count, len(engine.SEEDS) + len(engine.INDEED_SEEDS))
+            self.assertEqual(report["sources_total"], len(engine.SEEDS) + 12)
+            self.assertEqual(set(report["communes_visited"]), set(engine.COMMUNES))
+            self.assertEqual(report["missing_communes"], [])
+            self.assertEqual(report["indeed_critical"]["sources_blocked"], 12)
+            self.assertFalse(report["indeed_critical"]["complete"])
+            self.assertEqual(report["confirmed_new_publications"], 0)
+            self.assertEqual(report["published_in_trabajo_cerca"], 0)
+            self.assertEqual(report["express_ready_candidates"], 0)
+
     def test_mininco_keeps_collipulli_administrative_mapping(self):
         self.assertEqual(engine.explicit_work_commune("Lugar de trabajo: Mininco."), "Collipulli")
 
@@ -110,7 +140,7 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
         self.assertEqual(items[0][2],"closed")
 
-    def test_indeed_critical_all_13_communes(self):
+    def test_indeed_critical_all_12_communes(self):
         self.assertEqual(len(engine.INDEED_SEEDS),12)
         self.assertEqual({x[0] for x in engine.INDEED_SEEDS},set(engine.COMMUNES))
         self.assertTrue(all("cl.indeed.com/jobs" in x[2] for x in engine.INDEED_SEEDS))

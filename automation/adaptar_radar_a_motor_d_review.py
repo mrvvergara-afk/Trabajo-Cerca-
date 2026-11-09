@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import ipaddress
 import json
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -16,6 +17,11 @@ def canonical(raw: str) -> str:
         host = u.hostname.lower().removeprefix("www.")
         if host == "localhost" or host.endswith((".local", ".internal")):
             return ""
+        try:
+            if not ipaddress.ip_address(host).is_global:
+                return ""
+        except ValueError:
+            pass
         return "https://" + host + (u.path.rstrip("/") or "/") + (("?" + u.query) if u.query else "")
     except (ValueError, TypeError):
         return ""

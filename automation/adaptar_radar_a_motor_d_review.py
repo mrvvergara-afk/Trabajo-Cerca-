@@ -112,10 +112,13 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             if not existing.get("deadline") and old_deadline:
                 existing["deadline"] = old_deadline
             if changed:
+                # Keep the last known hash when the recrawl has no new document bytes.
+                # A missing hash must never erase the previous audit fingerprint.
+                replacement_hash = candidate.get("document_sha256") or protected.get("document_sha256")
                 existing.update(review_status="rejected" if protected.get("review_status") == "rejected" else "pending", publication_eligible=False,
                                 work_location_verified=False, employer_verified=False,
                                 application_route_verified=False, publication_date_confirmed=False,
-                                review_signature=None, document_sha256=candidate.get("document_sha256"),
+                                review_signature=None, document_sha256=replacement_hash,
                                 review_reason="evidencia_modificada_revalidacion_obligatoria")
             if existing.get("deadline") and existing["deadline"] < today.isoformat():
                 existing.update(publication_eligible=False, review_signature=None)

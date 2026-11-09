@@ -10,6 +10,7 @@ from urllib.parse import urljoin, urlsplit
 import requests
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
+from ocr_review_security import redact
 
 TZ=ZoneInfo("America/Santiago")
 NOW=datetime.now(TZ)
@@ -409,7 +410,7 @@ def inspect(seed):
                                       "directory_not_offer" if general_index else (
                                       "individual_page_with_job_terms" if TERMS.search(public_title+" "+body[:1600])
                                       else "inconclusive_page"))),
-                                  excerpt=body[:550])
+                                  excerpt=redact(body[:550]))
                     detail["express_ready"]=bool(
                         detail["evidence"]=="individual_page_with_job_terms"
                         and job_commune and employer and application_evidence and dates
@@ -442,7 +443,7 @@ def inspect(seed):
                             "internal_only" if INTERNAL_ONLY.search(heading) else "individual_page_with_job_terms"),
                         "work_commune":None,"recruitment_commune":None,
                         "source_scope_commune":town,"source_commune_not_confirmed":True,
-                        "excerpt":body[:550]}
+                        "excerpt":redact(body[:550])}
                 if dates:
                     try:
                         date=datetime.strptime(dates[0],"%Y-%m-%d").date()

@@ -82,7 +82,7 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca|"
     r"asistente|cajer[ao]s?|vendedor(?:a)?|bodega|tesorer[ií]a|click and collect|"
-    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista)\b",re.I)
+    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista|docente|psic[oó]log[oa])\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
 CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"

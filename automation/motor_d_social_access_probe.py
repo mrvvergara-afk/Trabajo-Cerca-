@@ -10,12 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 
-SOURCES = [
-    {"name": "OMIL Angol Instagram", "url": "https://www.instagram.com/omilangol2026/", "priority": "critical"},
-    {"name": "Radio Nativa Instagram", "url": "https://www.instagram.com/radionativacl/", "priority": "normal"},
-    {"name": "Municipalidad Angol Facebook", "url": "https://www.facebook.com/municipalidad.angol/", "priority": "critical"},
-    {"name": "Radio Nativa Facebook", "url": "https://www.facebook.com/RadioNativaCl/", "priority": "normal"},
-]
+from motor_d_social_sources import SOURCES
 AGENT = "TrabajoCercaPublicAudit/1.0"
 MAX_BYTES = 250000
 def read(url, *, max_bytes=MAX_BYTES):
@@ -25,7 +20,7 @@ def read(url, *, max_bytes=MAX_BYTES):
 
 def inspect(source):
     now=datetime.now(timezone.utc).isoformat()
-    result={"source":source["name"], "url":source["url"], "checked_at":now,
+    result={"source":source["name"], "commune":source.get("commune"), "priority":source["priority"], "url":source["url"], "checked_at":now,
             "status":"not_tested", "http_status":None, "poster_images_read":0,
             "jobs_extracted":0, "posts_discovered":0, "limitations":[]}
     host=urlsplit(source["url"]).hostname
@@ -78,6 +73,9 @@ def main():
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(output,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps({"statuses":{x["source"]:x["status"] for x in output["results"]},
-                      "images_read":0,"job_offers_extracted":0},ensure_ascii=False))
+                      "images_read":0,"job_offers_extracted":0,
+                      "critical_sources_unread": [x["source"] for x in output["results"]
+                                                   if x["priority"]=="critical" and x["status"]!="public_post_links_found"],
+                      "unread_sources_are_not_zero_vacancies":True},ensure_ascii=False))
 if __name__=="__main__":
     main()

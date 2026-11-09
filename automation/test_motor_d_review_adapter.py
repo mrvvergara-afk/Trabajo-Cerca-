@@ -237,3 +237,63 @@ class EvidencePersistenceTests(unittest.TestCase):
         value = adapter.sanitize_excerpt('912345678 45 234567 persona@example.cl 12.345.678-5')
         for private in ('912345678', '234567', 'persona@example.cl', '12.345.678-5'):
             self.assertNotIn(private, value)
+
+class FullReviewToReadyContractTests(unittest.TestCase):
+    def test_radar_candidate_only_reaches_ready_after_signed_review(self):
+        """Radar -> evidence queue -> verified review -> Motor D batch; no fake publication."""
+        import datetime as dt
+        import hashlib
+        from revisar_ocr import review
+        from promover_revision_a_motor_d import prepare
+        from motor_d_express import produce
+        key = "integration-test-review-key-" * 3
+        document = b"Fixture individual job evidence, deterministic and complete"
+        today = date(2026, 11, 9)
+        now = dt.datetime(2026, 11, 9, 15, tzinfo=dt.timezone.utc)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source, target = root / "radar.json", root / "review.json"
+            source.write_text(json.dumps([{
+                "url": "https://www.munimulchen.cl/omil/operador",
+                "source_id": "OMIL-MUL",
+                "reader_status": "candidato_para_revision",
+                "published_date_evidence": "2026-11-08",
+                "deadline_evidence": "2026-11-30",
+                "document_sha256": hashlib.sha256(document).hexdigest(),
+                "extractor": "html_text", "http": 200,
+                "publication_date_confirmed": True,
+                "possible_communes": ["Mulchén"]
+            }]), encoding="utf-8")
+            adapter.adapt(source, target, today)
+            queue = json.loads(target.read_text())
+            pending = queue["items"][0]
+            first, _ = prepare(queue, today, key, lambda _: document, now)
+            self.assertEqual(first["candidates"], [])
+            fields = {
+                "title": "Operador de maquinaria", "employer": "Empresa Ejemplo",
+                "work_commune": "Mulchén",
+                "application_url": "https://www.munimulchen.cl/postular",
+                "application_evidence": True,
+                "evidence": "individual_page_with_job_terms",
+                "source_commune_not_confirmed": False,
+                "work_location_verified": True, "employer_verified": True,
+                "application_route_verified": True,
+                "publication_date_confirmed": True,
+                "vigencia_verified_at": "2026-11-09T14:00:00Z",
+                "revalidate_after": "2026-11-10T14:00:00Z"
+            }
+            verified = review(pending, "approve", "fixture-reviewer",
+                              "Evidencia comprobada en fixture", fields, document, key, now)
+            report, decisions = prepare({"schema": queue["schema"], "items": [verified]},
+                                        today, key, lambda _: document, now)
+            self.assertEqual(decisions[0]["state"], "EXPRESS")
+            self.assertEqual(len(report["candidates"]), 1)
+            ready = root / "ready"
+            summary = produce(report, ready, today)
+            self.assertEqual(summary["daily_batch_offers"], 1)
+            self.assertEqual(summary["published_confirmed"], 0)
+            index = json.loads((ready / "index.json").read_text())
+            self.assertEqual(len(index["batches"]), 1)
+            batch = json.loads((ready / index["batches"][0]["file"]).read_text())
+            self.assertEqual(batch["offers"][0]["fecha_publicacion"], "2026-11-08")
+            self.assertEqual(batch["offers"][0]["comunas"], ["Mulchén"])

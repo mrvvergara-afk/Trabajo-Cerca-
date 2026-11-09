@@ -88,19 +88,56 @@ def safe_link(raw,base,origin):
         if (u.hostname,u.path.rstrip("/"),u.query)==(urlsplit(base).hostname,urlsplit(base).path.rstrip("/"),urlsplit(base).query):return None
         return u.geturl().split("#",1)[0]
     except ValueError:return None
-def request_page(url):
-    resp=requests.get(url,headers=HEADERS,timeout=(5,9),allow_redirects=True,
-                      stream=True)
+def authorized_public_url(url, origin=None):
+    """HTTPS only: reject private targets and off-publisher redirects."""
+    import ipaddress
     try:
-        if resp.status_code!=200:return resp.status_code,None,None
-        if not ("html" in resp.headers.get("Content-Type","").lower()):return 200,None,"non_html"
-        size=0;parts=[]
-        for chunk in resp.iter_content(32768):
-            size+=len(chunk)
-            if size>1200000:return 200,None,"too_large"
-            parts.append(chunk)
-        return 200,BeautifulSoup(b"".join(parts),"html.parser"),None
-    finally:resp.close()
+        value=urlsplit(url)
+        host=(value.hostname or "").lower().removeprefix("www.")
+        if (value.scheme!="https" or not host or value.username or value.password
+            or value.port is not None or host=="localhost"
+            or host.endswith((".local",".internal"))):
+            return False
+        try:
+            if not ipaddress.ip_address(host).is_global:
+                return False
+        except ValueError:
+            pass
+        return origin is None or host==origin
+    except (TypeError,ValueError):
+        return False
+
+def request_page(url):
+    # Do not let a public municipal post redirect the crawler to a different
+    # domain or a private address. Explicit redirects can be followed only
+    # inside the exact same publisher (www aliases allowed).
+    if not authorized_public_url(url):
+        return 0,None,"source_url_not_authorized"
+    origin=urlsplit(url).hostname.lower().removeprefix("www.")
+    for redirect in range(4):
+        resp=requests.get(url,headers=HEADERS,timeout=(5,9),allow_redirects=False,
+                          stream=True)
+        try:
+            if resp.status_code in (301,302,303,307,308):
+                location=resp.headers.get("Location")
+                target=urljoin(url,location) if location else ""
+                if redirect==3 or not authorized_public_url(target,origin):
+                    return resp.status_code,None,"redirect_not_authorized"
+                url=target
+                continue
+            if resp.status_code!=200:
+                return resp.status_code,None,None
+            if not ("html" in resp.headers.get("Content-Type","").lower()):
+                return 200,None,"non_html"
+            size=0;parts=[]
+            for chunk in resp.iter_content(32768):
+                size+=len(chunk)
+                if size>1200000:return 200,None,"too_large"
+                parts.append(chunk)
+            return 200,BeautifulSoup(b"".join(parts),"html.parser"),None
+        finally:
+            resp.close()
+    return 0,None,"redirect_not_authorized"
 def dates_in(soup):
     found=[]
     for elem in soup.select("time[datetime], meta[property='article:published_time'], meta[name='date'], meta[property='og:published_time']")[:8]:
@@ -370,7 +407,7 @@ def main():
     indeed_coverage={
         "sources_attempted":len(indeed_rows),
         "sources_accessible":sum(x["status"].startswith("scanned") for x in indeed_rows),
-        "sources_blocked":sum(x["status"] in ("http_restricted","network_error") for x in indeed_rows),
+        "sources_blocked":sum(x["status"] in ("http_restricted","network_error","redirect_not_authorized","source_url_not_authorized") for x in indeed_rows),
         "per_commune":{x["commune"]:{"http":x["http"],"status":x["status"],
             "candidates":len(x["candidates"])} for x in indeed_rows},
         "remediation":"employer_ats_first_no_indeed_bypass",

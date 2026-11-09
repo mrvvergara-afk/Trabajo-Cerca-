@@ -102,8 +102,8 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
         self.assertEqual(items[0][2],"closed")
 
-    def test_indeed_critical_all_12_communes(self):
-        self.assertEqual(len(engine.INDEED_SEEDS),12)
+    def test_indeed_critical_all_13_communes(self):
+        self.assertEqual(len(engine.INDEED_SEEDS),13)
         self.assertEqual({x[0] for x in engine.INDEED_SEEDS},set(engine.COMMUNES))
         self.assertTrue(all("cl.indeed.com/jobs" in x[2] for x in engine.INDEED_SEEDS))
         self.assertTrue(any("fashionspark.hiringroom.com/jobs" in x[2] for x in engine.SEEDS))

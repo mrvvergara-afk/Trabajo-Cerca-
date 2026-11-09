@@ -119,12 +119,17 @@ export async function motorDAutoImportHandler(){
 export async function confirmMotorDPublications(){
   let cursor:string|undefined;
   const pending:Receipt[]=[];
-  for(let page=0;page<4;page++){
+  const receiptCursors=new Set<string>();
+  let receiptsComplete=false;
+  for(let page=0;page<100;page++){
     const batch=await db.list<Receipt>('motor_d_import_receipts',{limit:100,...(cursor?{nextToken:cursor}:{})});
     pending.push(...batch.items.filter(x=>x.status==='awaiting_public_feed' && x.results?.length));
-    if(!batch.nextToken)break;
+    if(!batch.nextToken){receiptsComplete=true;break;}
+    if(receiptCursors.has(batch.nextToken))break;
+    receiptCursors.add(batch.nextToken);
     cursor=batch.nextToken;
   }
+  if(!receiptsComplete)return {checked:0,publishedBatches:0,waiting:pending.length,status:'receipts_incomplete'};
   if(!pending.length)return {checked:0,publishedBatches:0,waiting:0};
   const visibleIds=new Set<string>(),visibleUrls=new Set<string>();
   let feedCursor:string|undefined,complete=false;

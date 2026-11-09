@@ -59,6 +59,64 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
         self.assertEqual(items,[])
 
+    def test_municipal_article_content_survives_long_navigation_and_uses_full_title(self):
+        from datetime import timedelta
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        day = engine.NOW.date()
+        closing = (day + timedelta(days=28)).isoformat()
+        source = "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+        index = BeautifulSoup(
+            "<a href='/oferta-laboral-operarios-arandanos/'>Oferta laboral Operarios Agrarios</a>",
+            "html.parser")
+        detail_html = (
+            "<html><head><title>Oferta Laboral: Operarios Agrarios – Cosecha de Arándanos "
+            "| Municipalidad Mulchén</title>"
+            f"<meta property='article:published_time' content='{day.isoformat()}'></head>"
+            "<body><nav>" + ("Noticias Municipalidad " * 600) + "</nav>"
+            "<article><h1>Oferta Laboral</h1><p>Empresa: Agrícola Ejemplo. "
+            "Lugar de trabajo: Mulchén. Se necesita operarios agrícolas. "
+            f"Postular en página oficial. Cierre de postulaciones: {closing}."
+            " Requisitos del cargo: experiencia en cosecha y disponibilidad "
+            "para trabajo de temporada en la comuna.</p></article></body></html>"
+        )
+        detail = BeautifulSoup(detail_html, "html.parser")
+        with patch.object(engine, "request_page",
+                          side_effect=[(200,index,None),(200,detail,None)]):
+            result = engine.inspect(("Mulchén","Municipio Mulchén empleos",source))
+        self.assertEqual(len(result["candidates"]),1)
+        item = result["candidates"][0]
+        self.assertIn("Operarios Agrarios",item["title"])
+        self.assertEqual(item["employer"],"Agrícola Ejemplo")
+        self.assertEqual(item["work_commune"],"Mulchén")
+        self.assertEqual(item["deadline"],closing)
+        state,reason,offer=classify_ready(item,day)
+        self.assertEqual(state,"EXPRESS")
+        self.assertIsNotNone(offer)
+
+    def test_arauco_official_ats_company_is_not_inferred_from_page_boilerplate(self):
+        from unittest.mock import patch
+        day=engine.NOW.date()
+        base="https://jobs.arauco.com/Chile/search/"
+        index=BeautifulSoup(
+            "<a href='/Chile/job/collipulli/operador-mantenedor'>"
+            "Operador mantenedor forestal</a>","html.parser")
+        detail=BeautifulSoup(
+            f"<meta property='article:published_time' content='{day.isoformat()}'>"
+            "<article><h1>Operador mantenedor forestal</h1>"
+            "<p>Para nuestras operaciones, Lugar de trabajo: Mininco. "
+            "Postular en portal oficial de empleo. Buscamos operador mantenedor "
+            "con experiencia en procesos productivos y mantenimiento.</p></article>",
+            "html.parser")
+        with patch.object(engine,"request_page",
+                          side_effect=[(200,index,None),(200,detail,None)]):
+            result=engine.inspect(("Collipulli","Arauco empleo",base))
+        self.assertEqual(len(result["candidates"]),1)
+        item=result["candidates"][0]
+        self.assertEqual(item["employer"],"ARAUCO")
+        self.assertEqual(item["work_commune"],"Collipulli")
+        self.assertTrue(item["application_evidence"])
+
     def test_real_source_pr_audit_is_read_only_and_cannot_publish(self):
         from pathlib import Path
         path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "motor-d-territorial-daily.yml"

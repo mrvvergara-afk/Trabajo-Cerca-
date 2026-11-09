@@ -97,7 +97,7 @@ def batch_for_time(now=None):
 
 
 def strip_result(row: dict) -> dict:
-    """Public report: never publish unvalidated OCR preview, email, phone or PII."""
+    """Review export: keep OCR evidence private to review and mask direct contact data."""
     return {key: row.get(key) for key in
             ('url', 'source', 'kind', 'decision', 'extractor', 'preview', 'signals',
              'possible_communes', 'deadline', 'publication_date_evidence',

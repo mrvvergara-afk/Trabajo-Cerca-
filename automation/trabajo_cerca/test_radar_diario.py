@@ -67,6 +67,18 @@ class DailyRadarTests(unittest.TestCase):
                 self.assertEqual(discovery.call_count, 23)
                 self.assertEqual(report['published_by_this_job'], 0)
 
+    def test_workflow_persists_queue_on_feed_outage_without_promotion(self):
+        workflow = (Path(__file__).resolve().parents[2] / ".github" / "workflows" /
+                    "trabajo-cerca-radar-diario.yml").read_text(encoding="utf-8")
+        self.assertIn("id: radar_scan", workflow)
+        self.assertIn("continue-on-error: true", workflow)
+        self.assertIn("steps.radar_scan.outcome == 'success'", workflow)
+        self.assertIn("steps.radar_scan.outcome == 'failure'", workflow)
+        self.assertLess(workflow.index("Persistir cola y lotes"),
+                        workflow.index("Marcar falla de catálogo"))
+        self.assertLess(workflow.index("Marcar falla de catálogo"),
+                        workflow.index("Descargar reportes y candidatos"))
+
     def test_feed_failure_never_claims_job_missing(self):
         with patch.object(radar_diario, 'read_feed', return_value=(set(),False,0,'feed_http_503')), \
              patch.object(radar_diario,'read_one',return_value={

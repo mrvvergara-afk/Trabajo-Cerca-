@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main, fix/motor-d-ocr-bridge-20261108]
   push:
-    branches: [fix/motor-d-ocr-bridge-20261108]
+    branches: [fix/motor-d-ocr-bridge-20261108, fix/motor-d-review-persistence-20261109]
 permissions:
   contents: read
 jobs:

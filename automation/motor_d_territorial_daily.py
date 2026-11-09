@@ -214,20 +214,29 @@ def hiringroom_metadata(soup, title, url):
 def explicit_deadline_expired(body, today=None):
     """Only explicit closing/deadline evidence can mark a vacancy as expired."""
     today = today or NOW.date()
+    cue = r"(?:expira|vence|hasta(?:\s+el)?|cierre(?:\s+de\s+postulaciones?)?|plazo(?:\s+de\s+postulaciones?)?)"
     patterns = (
-        r"(?:expira|vence|hasta(?:\s+el)?|cierre(?:\s+de\s+postulaciones?)?|plazo(?:\s+de\s+postulaciones?)?)"
-        r"\s*[:\-]?\s*(20\d{2}-\d{2}-\d{2})",
-        r"(?:expira|vence|hasta(?:\s+el)?|cierre(?:\s+de\s+postulaciones?)?|plazo(?:\s+de\s+postulaciones?)?)"
-        r"\s*[:\-]?\s*(\d{1,2})[/-](\d{1,2})[/-](20\d{2})"
+        cue + r"\s*[:\-]?\s*(20\d{2}-\d{2}-\d{2})",
+        cue + r"\s*[:\-]?\s*(\d{1,2})[/-](\d{1,2})[/-](20\d{2})",
+        cue + r"\s*[:\-]?\s*(\d{1,2})\s+de\s+([a-záéíóú]+)\s+(?:de(?:l)?\s+)?(20\d{2})"
     )
+    months = {"enero":1,"febrero":2,"marzo":3,"abril":4,"mayo":5,"junio":6,
+              "julio":7,"agosto":8,"septiembre":9,"setiembre":9,"octubre":10,
+              "noviembre":11,"diciembre":12}
     for index, pattern in enumerate(patterns):
         match = re.search(pattern, body, re.I)
         if not match:
             continue
         try:
-            deadline = (datetime.strptime(match.group(1), "%Y-%m-%d").date()
-                        if index == 0 else
-                        datetime(int(match.group(3)), int(match.group(2)), int(match.group(1))).date())
+            if index == 0:
+                deadline = datetime.strptime(match.group(1), "%Y-%m-%d").date()
+            elif index == 1:
+                deadline = datetime(int(match.group(3)), int(match.group(2)), int(match.group(1))).date()
+            else:
+                month = months.get(match.group(2).casefold())
+                if not month:
+                    continue
+                deadline = datetime(int(match.group(3)), month, int(match.group(1))).date()
             return deadline < today
         except ValueError:
             continue

@@ -37,6 +37,16 @@ class CatalogProbeTests(unittest.TestCase):
             check_ready_offers([offer()], rows, True)["d_12345678"],
             "already_published_semantic")
 
+    def test_recruitment_commune_cannot_create_false_semantic_duplicate(self):
+        # An OMIL's location is not evidence of actual job worksite.
+        published=[{"kind":"job_offer","url":"https://example.cl/different",
+                    "title":"Reponedor part time para Traiguen",
+                    "company":"Cultiva","workCommunes":["Nacimiento"],
+                    "recruitmentCommunes":["Traiguén"]}]
+        self.assertEqual(
+            check_ready_offers([offer()],published,True)["d_12345678"],
+            "not_found_in_complete_feed")
+
     def test_same_title_elsewhere_is_not_a_local_duplicate(self):
         rows=[{"kind":"job_offer","url":"https://example.cl/different",
                "title":"Reponedor part time para Traiguen","company":"Cultiva",

@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { Buffer } from 'node:buffer';
 import { directChatGPTImport } from './chatgpt-direct-import';
 import { readPublicFeedPage } from './public-feed';
-import { publicFeedIdentity, publicPublisher, safePublicUrl } from './public-source-adapters';
+import { publicPublisher, safePublicUrl } from './public-source-adapters';
 
 // This file is a source review snapshot for the AppDeploy deployment.
 // The production module lives at backend/motor-d-auto-import.ts.
@@ -142,7 +142,7 @@ export async function confirmMotorDPublications(){
   }
   if(!receiptsComplete)return {checked:0,publishedBatches:0,waiting:pending.length,status:'receipts_incomplete'};
   if(!pending.length)return {checked:0,publishedBatches:0,waiting:0};
-  const visibleIds=new Set<string>(),visibleUrls=new Set<string>();
+  const visibleIds=new Set<string>();
   let feedCursor:string|undefined,complete=false;
   const cursors=new Set<string>();
   let feedCount=0;
@@ -154,8 +154,6 @@ export async function confirmMotorDPublications(){
     feedCount+=page.items.length;
     for(const row of page.items as Array<Record<string,unknown>>){
       if(typeof row.id==='string')visibleIds.add(row.id);
-      const canonical=typeof row.url==='string'?publicFeedIdentity(row.url):null;
-      if(canonical)visibleUrls.add(canonical);
     }
     if(!page.nextCursor){complete=feedCount>=Number(('totalJobOffers' in page && page.totalJobOffers)||0);break;}
     if(cursors.has(page.nextCursor))break;
@@ -169,9 +167,8 @@ export async function confirmMotorDPublications(){
     for(const item of batch.results||[]){
       if(item.status==='expired'||item.status==='review_expired')continue;
       const id=item.internalId||item.existingId||('chatgpt_'+item.id);
-      const [source]=await db.get<{url?:string}>('radar_jobs',[id]);
-      const normalized=source?.url?publicFeedIdentity(source.url):null;
-      if(visibleIds.has(id)||(normalized&&visibleUrls.has(normalized)))visible++;
+      // A shared employer careers URL cannot prove that this particular vacancy is public.
+      if(visibleIds.has(id))visible++;
     }
     const expected=(batch.results||[]).filter(x=>!['expired','review_expired'].includes(x.status)).length;
     const fullyVisible=expected>0&&visible>=expected;

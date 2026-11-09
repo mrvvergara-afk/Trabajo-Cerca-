@@ -2,7 +2,7 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "chatgpt",
-  "batch_id": "motor-d-cmpc-139f8ee9379302ed",
+  "batch_id": "motor-d-cmpc-e4cfa1914b7a6721",
   "offers": [
     {
       "id_fuente": "cmpc_19249",
@@ -13,6 +13,18 @@
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
       "fecha_publicacion": "2026-10-28",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19192",
+      "cargo": "ANALISTA LABORATORIO I-TURNO",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
+      "fecha_publicacion": "2026-10-21",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },

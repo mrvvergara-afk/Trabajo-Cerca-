@@ -13,6 +13,18 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
+      "id_fuente": "cmpc_19192",
+      "cargo": "ANALISTA LABORATORIO I-TURNO",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
+      "fecha_publicacion": "2026-10-21",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
       "id_fuente": "cmpc_18859",
       "cargo": "Ingeniero/a Procesos y Excelencia Sr",
       "empresa": "CMPC",
@@ -213,15 +225,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1167?c=cmpc",
       "title": "EJECUTOR/A MECANICO",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/502?c=cmpc",
-      "title": "Ayudante Embolsado Sanitario",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

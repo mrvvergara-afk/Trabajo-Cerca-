@@ -312,7 +312,8 @@ def inspect(seed):
                 detail["error"]=type(exc).__name__
                 detail["evidence"]="detail_unavailable"
             return detail
-        with ThreadPoolExecutor(max_workers=6) as pool:
+        # Bound same-host detail requests while concurrent commune seeds run.
+        with ThreadPoolExecutor(max_workers=5) as pool:
             out["candidates"]=list(pool.map(inspect_detail,links))
         # Los comunicados de empleo individuales usados como semilla también son
         # candidatos propios; no depender de que tengan enlaces internos.
@@ -348,7 +349,11 @@ def inspect(seed):
     return out
 def main():
     ROOT.mkdir(parents=True,exist_ok=True)
-    rows=[inspect(seed) for seed in SEEDS]
+    # Scan independent source domains concurrently instead of spending the
+    # 17-minute Actions budget waiting on dozens of sequential HTTP timeouts.
+    # map() keeps seed order for deterministic territory receipts.
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        rows=list(pool.map(inspect,SEEDS))
     # Critical Indeed coverage is measured independently and concurrently,
     # without proxies, access-control bypass or false success accounting.
     with ThreadPoolExecutor(max_workers=6) as pool:

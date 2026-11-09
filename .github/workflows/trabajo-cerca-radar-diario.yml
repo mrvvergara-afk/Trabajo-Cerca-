@@ -27,7 +27,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: trabajo-cerca-radar-gratis
+  group: trabajo-cerca-motor-d-ready-writers
   cancel-in-progress: false
 
 jobs:

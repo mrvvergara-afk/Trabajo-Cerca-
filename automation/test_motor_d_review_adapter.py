@@ -67,5 +67,34 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertEqual(result["rejected_invalid_url"],3)
             self.assertEqual(result["added"],0)
 
+    def test_repeated_radar_does_not_erase_review_decisions(self):
+        for status in ("approved", "rejected"):
+            with self.subTest(status=status), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                source, target = root / "input.json", root / "queue.json"
+                source.write_text(json.dumps([{"url": "https://example.cl/omil",
+                    "deadline_evidence": "2026-12-01"}]), encoding="utf-8")
+                adapter.adapt(source, target, date(2026, 11, 8))
+                saved = json.loads(target.read_text(encoding="utf-8"))
+                item = saved["items"][0]
+                item.update({"review_status": status, "review_reason": "decision_humana",
+                    "work_location_verified": True, "employer_verified": True,
+                    "application_route_verified": True,
+                    "publication_eligible": status == "approved"})
+                target.write_text(json.dumps(saved), encoding="utf-8")
+                source.write_text(json.dumps([{"url": "https://example.cl/omil"}]),
+                                  encoding="utf-8")
+                adapter.adapt(source, target, date(2026, 11, 9))
+                result = json.loads(target.read_text(encoding="utf-8"))["items"][0]
+                self.assertEqual(result["review_status"], status)
+                self.assertEqual(result["review_reason"], "decision_humana")
+                self.assertTrue(result["work_location_verified"])
+                self.assertEqual(result["deadline"], "2026-12-01")
+                self.assertEqual(result["publication_eligible"], status == "approved")
+
+    def test_redacts_chilean_landline(self):
+        self.assertEqual(adapter.sanitize_excerpt("Llamar al 45 234567"),
+                         "Llamar al [teléfono]")
+
 if __name__=="__main__":
     unittest.main()

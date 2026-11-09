@@ -33,7 +33,8 @@ class NacimientoSocialCoverageTests(unittest.TestCase):
 
     def test_probe_does_not_claim_zero_vacancies_when_robots_disallows_access(self):
         source=SOURCES[0]
-        with patch.object(probe,"read",return_value=(200,"text/plain",b"User-agent: *\\nDisallow: /\\n")) as network:
+        with patch.object(probe,"read",return_value=(200,"text/plain",b"User-agent: *\\nDisallow: /\\n")) as network, \
+             patch.object(probe.urllib.robotparser.RobotFileParser,"can_fetch",return_value=False):
             result=probe.inspect(source)
         self.assertEqual(result["source"],"OMIL Nacimiento Facebook")
         self.assertEqual(result["commune"],"Nacimiento")

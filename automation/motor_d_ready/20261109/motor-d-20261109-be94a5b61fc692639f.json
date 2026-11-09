@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261109-be94a5b61fc692639f",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_8e10d10d8dedf4b7e3b9",
+      "cargo": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
+      "empresa": "Empresa de alimentos",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+      "fecha_publicacion": "2026-10-23",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-06",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_ad791baa0556cf59d931",
+      "cargo": "Reponedor PART TIME PARA TRAIGUEN",
+      "empresa": "Cultiva",
+      "comunas": [
+        "Traiguén"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-19",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_bef43ecfd4d8417f1770",
+      "cargo": "PREVENCIONISTA DE RIESGOS – MALLECO",
+      "empresa": "Constructora",
+      "comunas": [
+        "Purén"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
+      "fecha_publicacion": "2026-11-02",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-16",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_5813016bef2debcf1ea2",
+      "cargo": "Se buscan Enfierradores – Obra Hospital de Nacimiento",
+      "empresa": "Constructora aljo",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",
+      "fecha_publicacion": "2026-11-03",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-17",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_8cd3f39aa6e6f4dfd760",
+      "cargo": "Subgerente de tienda Papa Johns - Angol",
+      "empresa": "Papa Johns Angol",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-13",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_2795b5d75320388ba141",
+      "cargo": "GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía",
+      "empresa": "FUNDACION CIUDAD DEL NIÑO",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/gestor-de-casos-jornada-completa-cdc-mca-angol-region-de-la-araucania-3921759",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-11",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_688f28c809dc3463f046",
+      "cargo": "VVendedor en Terreno - Angol Victoria Traiguén",
+      "empresa": "Manpowergroup",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+      "fecha_publicacion": "2026-10-19",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-02",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_f8fc291475dd5bb70c9e",
+      "cargo": "Geomensor - Angol",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_7f24f1a31c25f4813b5c",
+      "cargo": "Encargado Calidad para AIF - Angol",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_f8c638c4c0a09a8a9879",
+      "cargo": "Laboratorista Vial Clase B para AIF - Angol",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_a3a2f2298d5984b06475",
+      "cargo": "Prevencionista de Riesgos para AIF - Angol",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_173964b29fca14e45f5d",
+      "cargo": "TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR)",
+      "empresa": "CONFIDENCIAL",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_f7ac616ee38e5e08c8c1",
+      "cargo": "Encargado Ambiental y Participación Ciudadana para AIF - Angol",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_4bdcac8ef560f0fe716d",
+      "cargo": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
+      "empresa": "Fashion's Park",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_5ca6fdce4da0aaa7911b",
+      "cargo": "Técnico en Administración para AIF - Angol",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    }
+  ]
+}

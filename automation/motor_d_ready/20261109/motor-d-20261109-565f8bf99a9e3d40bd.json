@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261109-565f8bf99a9e3d40bd",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_fa8500cb8828effe2ca6",
+      "cargo": "Jefe de Asesoría - Angol",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+      "fecha_publicacion": "2026-10-16",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_930e3ffa3ba2344bd643",
+      "cargo": "Tens/ Enfermera Administrativa Angol",
+      "empresa": "Inmunomedica",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
+      "fecha_publicacion": "2026-10-08",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-22",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_f0ce646c3cd3ba45b19c",
+      "cargo": "Asistente Dental Full Time / Angol",
+      "empresa": "Importante empresa del rubro",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
+      "fecha_publicacion": "2026-09-25",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-09",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    },
+    {
+      "id_fuente": "d_01d76b0d3eabfed48d2f",
+      "cargo": "Profesional de Programas Generales / LAE Angol Reemplazo",
+      "empresa": "Fundación Tierra de Esperanza",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
+      "fecha_publicacion": "2026-09-25",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-09",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    }
+  ]
+}

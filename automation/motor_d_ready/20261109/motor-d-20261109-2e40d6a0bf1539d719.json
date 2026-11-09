@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261109-2e40d6a0bf1539d719",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_46607b264d4d83a176c3",
+      "cargo": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol",
+      "empresa": "SMU",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",
+      "fecha_publicacion": "2026-11-08",
+      "fecha_descubrimiento": "2026-11-09",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-01-22",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

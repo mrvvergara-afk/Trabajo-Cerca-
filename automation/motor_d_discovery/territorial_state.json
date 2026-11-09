@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-09T16:47:06.064169-03:00",
+  "last_run": "2026-11-09T16:57:04.249970-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1621,6 +1621,36 @@
       "url": "https://jobs.arauco.com/Chile/job/San-Jose-de-la-Mariquina-Operadora-Mantenedora-Complejo-Maderas-Valdivia-LR-5150000/1448887900/",
       "source": "Arauco empleo",
       "commune": "Collipulli"
+    },
+    "8db61703eb0bf8f51e4b": {
+      "first_seen": "2026-11-09T16:57:04.249970-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Concepci%C3%B3n-Docente-Concepci%C3%B3n-BI-4090070/1444317700/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "e2647870396b3d1692ac": {
+      "first_seen": "2026-11-09T16:57:04.249970-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
+      "source": "Chiletrabajos · Reponedor Traiguén",
+      "commune": "Traiguén"
+    },
+    "eaf2271536a9f1233ad6": {
+      "first_seen": "2026-11-09T16:57:04.249970-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "9d06c5c228b243995679": {
+      "first_seen": "2026-11-09T16:57:04.249970-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "2b8eb8d4c9fa0dfb673d": {
+      "first_seen": "2026-11-09T16:57:04.249970-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/conductor-3784704",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
     }
   }
 }

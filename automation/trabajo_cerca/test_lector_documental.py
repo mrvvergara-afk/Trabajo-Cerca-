@@ -63,7 +63,7 @@ class LectorDocumentalTests(unittest.TestCase):
                 "La comuna llama a concurso. Se puede postular.")
         out = classify(text, dt.date(2026, 10, 25))
         self.assertEqual(out["source_date_evidence"], "2026-07-13")
-        self.assertEqual(out["decision"], "documento_antiguo_no_publicar")
+        self.assertEqual(out["decision"], "documento_antiguo_revision_vigencia")
 
     def test_unclear_document_date_does_not_count_as_verified(self):
         out=classify("Oferta laboral. Se necesita personal. Postular en Victoria.",
@@ -103,6 +103,25 @@ class LectorDocumentalTests(unittest.TestCase):
             text, mode = extract_text(b"image_fixture", "image/png", "https://victoriachile.cl/afiche.png")
             self.assertEqual(text, "Oferta laboral Victoria")
             self.assertEqual(mode, "imagen_ocr_local")
+
+    def test_quilaco_is_recognized_as_a_target_work_territory(self):
+        out = classify("Oferta laboral. Se necesita operador en Quilaco. Postular.", dt.date(2026, 11, 8))
+        self.assertNotIn("Quilaco", out["possible_communes"])
+        self.assertEqual(out["decision"], "candidato_fecha_pendiente")
+
+    def test_successful_document_records_http_status_for_review_contract(self):
+        from trabajo_cerca_lector_documental import read_one
+        body = (b'<article><h1>Oferta laboral</h1><p>Se necesita operador para '
+                b'Victoria. Postular enviando curriculum.</p></article>')
+        with patch("trabajo_cerca_lector_documental.robots_ok", return_value=True), \
+             patch("trabajo_cerca_lector_documental.fetch_bytes",
+                   return_value=(body, "text/html")):
+            result = read_one({"url": "https://victoriachile.cl/oferta",
+                               "source": "OMIL-VIC", "kind": "local_page"},
+                              dt.date(2026, 11, 9))
+        self.assertEqual(result["http"], 200)
+        self.assertEqual(result["sha256"], __import__("hashlib").sha256(body).hexdigest())
+        self.assertNotEqual(result["decision"], "lectura_fallida")
 
     def test_html_scripts_excluded(self):
         self.assertEqual(clean_text("<p>Oferta laboral</p><script>ignoreMe()</script>"),

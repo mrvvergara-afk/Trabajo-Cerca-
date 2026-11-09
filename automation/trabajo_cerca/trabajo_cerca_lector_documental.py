@@ -29,9 +29,9 @@ noticias.angol.cl munilumaco.cl munilossauces.cl mtraiguen.cl
 municipalidadrenaico.cl nacimiento.cl muninegrete.cl munimulchen.cl
 municipalidadcollipulli.cl victoriachile.cl munipuren.cl muniercilla.cl
 malleco7.cl radionativa.cl radioviaducto.cl lasnoticiasdemalleco.cl
-ssan.redsalud.gob.cl traiguencity.cl chiletrabajos.cl kitempleo.cl municipalidadquilaco.cl angolnoticiasnew.cl sence.gob.cl bne.gob.cl empleospublicos.cl mallleco7.cl muncollipulli.cl
+ssan.redsalud.gob.cl traiguencity.cl chiletrabajos.cl kitempleo.cl angolnoticiasnew.cl sence.gob.cl bne.gob.cl empleospublicos.cl mallleco7.cl muncollipulli.cl
 """.split())
-WORK_TOWNS = ("Angol", "Collipulli", "Ercilla", "Renaico", "Mininco",
+WORK_TOWNS = ("Angol", "Collipulli", "Ercilla", "Renaico", "Mininco", "Coihue",
               "Los Sauces", "Purén", "Traiguén", "Lumaco", "Nacimiento",
               "Negrete", "Mulchén", "Victoria")
 MONTHS = dict(zip(("enero febrero marzo abril mayo junio julio agosto septiembre "
@@ -202,7 +202,7 @@ def extract_text(body: bytes, mime: str, url: str) -> tuple[str, str]:
                     pix = doc[i].get_pixmap(matrix=fitz.Matrix(1.6, 1.6), alpha=False)
                     snippets.append(ocr_bytes(pix.tobytes("png")))
                 combined = re.sub(r"\s+", " ", text + " " + " ".join(snippets)).strip()
-                mode = ("pdf_preview_partial" if partial else
+                mode = ("pdf_preview_partial" if partial or total > min(limit, 3) else
                         "pdf_ocr_local" if any(snippets) else "image_pdf_needs_ocr")
                 return combined, mode
         except Exception:
@@ -270,6 +270,7 @@ def classify(text: str, today: dt.date | None = None) -> dict:
         r"(?:postul|antecedentes|curr[ií]culum|enviar\s+(?:su\s+)?cv|"
         r"proceso\s+de\s+reclutamiento)", folded, re.I))
     places = [x for x in WORK_TOWNS if re.search(r"\b" + re.escape(x) + r"\b", text, re.I)]
+    places = list(dict.fromkeys({"Mininco": "Collipulli", "Coihue": "Negrete"}.get(x, x) for x in places))
     expires = parse_deadline(text)
     source_date = parse_source_date(text)
     if not text:
@@ -277,7 +278,8 @@ def classify(text: str, today: dt.date | None = None) -> dict:
     elif expires and expires < today:
         state = "plazo_vencido_no_publicar"
     elif source_date and source_date < today - dt.timedelta(days=20):
-        state = "documento_antiguo_no_publicar"
+        # La antigüedad no demuestra cierre: conservar para verificación de vigencia.
+        state = "documento_antiguo_revision_vigencia"
     elif (len(cues) >= 2 or (individual_roles and application)) and not source_date:
         state = "candidato_fecha_pendiente"
     elif len(cues) >= 2 or (individual_roles and application):
@@ -291,7 +293,7 @@ def classify(text: str, today: dt.date | None = None) -> dict:
             "deadline": expires.isoformat() if expires else None,
             "source_date_evidence": source_date.isoformat() if source_date else None,
             "publication_date_confirmed": False,
-            "preview": excerpt}
+            "preview": None}
 
 
 class ArticleDateParser(HTMLParser):
@@ -350,7 +352,7 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
                 if original > current:
                     status = "fecha_original_futura_no_publicar"
                 elif original < current - dt.timedelta(days=20):
-                    status = "documento_antiguo_no_publicar"
+                    status = "documento_antiguo_revision_vigencia"
                 elif previous == "plazo_vencido_no_publicar":
                     status = previous
                 elif previous in ("candidato_fecha_pendiente", "candidato_para_revision"):
@@ -363,7 +365,7 @@ def read_one(entry: dict, today: dt.date | None = None) -> dict:
             # Not even a strong signal can authorize a partial PDF.
             result = {**result, "original_classification": result["decision"],
                       "decision": "documento_parcial_revision_obligatoria"}
-        return {**base, **result, "extractor": extraction,
+        return {**base, **result, "extractor": extraction, "http": 200,
                 "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest(),
                 "read_at": dt.datetime.now(dt.timezone.utc).isoformat()}
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:

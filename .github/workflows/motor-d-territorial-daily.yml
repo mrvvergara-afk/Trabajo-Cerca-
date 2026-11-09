@@ -2,12 +2,14 @@ name: Motor D - Barrido territorial 12 comunas
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main]
+    branches: [main, fix/motor-d-ocr-bridge-20261108]
     paths:
       - 'automation/motor_d_territorial_daily.py'
       - 'automation/test_motor_d_territorial.py'
       - 'automation/motor_d_express.py'
       - 'automation/test_motor_d_express.py'
+      - 'automation/adaptar_radar_a_motor_d_review.py'
+      - 'automation/test_motor_d_review_adapter.py'
       - '.github/workflows/motor-d-territorial-daily.yml'
   push:
     branches: [main]
@@ -16,6 +18,8 @@ on:
       - 'automation/test_motor_d_territorial.py'
       - 'automation/motor_d_express.py'
       - 'automation/test_motor_d_express.py'
+      - 'automation/adaptar_radar_a_motor_d_review.py'
+      - 'automation/test_motor_d_review_adapter.py'
       - '.github/workflows/motor-d-territorial-daily.yml'
   schedule:
     # Four daily scans at 06:15, 10:15, 14:15, 18:15 in Chile during daylight saving time.
@@ -23,11 +27,146 @@ on:
     - cron: '15 9,13,17,21 * * *'
 permissions:
   contents: write
-concurrency:
-  group: trabajo-cerca-motor-d-territorial
-  cancel-in-progress: false
 jobs:
+  # Integration PR only: real web coverage test, read-only GitHub token.
+  # Never create publication batches, push files or contact the AppDeploy importer.
+  territorial_audit_pr:
+    if: github.event_name == 'pull_request' && github.base_ref == 'fix/motor-d-ocr-bridge-20261108'
+    concurrency:
+      group: motor-d-pr-audit-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install zero-cost territorial readers
+        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
+      - name: Audit real public sources in all 12 communes without publishing
+        run: python automation/motor_d_territorial_daily.py
+      - name: Verify real-world source coverage honestly
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path("automation/motor_d_discovery/territorial_daily.json").read_text())
+          assert len(report["communes_expected"])==12 and not report["missing_communes"]
+          print("PR_TERRITORIAL_AUDIT",json.dumps({
+              "sources_checked":report["sources_total"],
+              "sources_accessible":report["sources_accessible"],
+              "sources_blocked":report["sources_blocked"],
+              "candidate_links_not_approved_jobs":report["job_candidates_total"],
+              "ready_candidates_not_published":report["express_ready_candidates"],
+              "actual_published":0,
+          },ensure_ascii=False))
+          if report["sources_accessible"]==0:
+              raise SystemExit("PR_TERRITORIAL_AUDIT_FAILURE: no accessible source")
+          PY
+      - name: Clasificar candidatos reales y contrastar URLs con catálogo · sin publicar
+        env:
+          PYTHONPATH: automation:automation/trabajo_cerca
+        run: |
+          python - <<'PY'
+          import json
+          import tempfile
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          from motor_d_express import build, produce, validate_inventory_freshness
+          from motor_d_catalog_probe import read_full_feed, check_ready_offers
+          source=Path("automation/motor_d_discovery/territorial_daily.json")
+          report=json.loads(source.read_text(encoding="utf-8"))
+          today=datetime.now(ZoneInfo("America/Santiago")).date()
+          validate_inventory_freshness(report,today)
+          classified=build(report,today)
+          ready=[entry["offer"] for state in ("EXPRESS","RECUPERACION")
+                 for entry in classified[state] if entry["offer"]]
+          catalog,complete,error=read_full_feed(max_pages=30)
+          existing=check_ready_offers(ready,catalog,complete)
+          evidence=[]
+          for offer in ready:
+              evidence.append({
+                  "id_fuente":offer["id_fuente"],
+                  "cargo":offer["cargo"],"empresa":offer["empresa"],
+                  "comunas":offer["comunas"],"url_original":offer["url_original"],
+                  "fecha_publicacion":offer["fecha_publicacion"],
+                  "fecha_cierre":offer.get("fecha_cierre"),
+                  "batch_type":offer["tipo_lote"],
+                  "catalog_url_status":existing.get(offer["id_fuente"],"catalog_unavailable")
+              })
+          # Real jobs not found in the complete public feed may create an
+          # isolated, temporary import batch. This exercises the real producer,
+          # then deletes the batch; the live repository/app are not modified.
+          source_by_url={row.get("url"):row for row in report["candidates"]
+                         if isinstance(row,dict)}
+          to_dry_run=[source_by_url[x["url_original"]] for x in evidence
+                      if x["catalog_url_status"]=="not_found_in_complete_feed"
+                      and x["url_original"] in source_by_url]
+          with tempfile.TemporaryDirectory(prefix="motor_d_pr_dry_run_") as tmp:
+              batch_summary=produce({"candidates":to_dry_run},Path(tmp),today)
+              manifest=json.loads((Path(tmp)/"index.json").read_text(encoding="utf-8"))
+              parsed_batches=[json.loads((Path(tmp)/row["file"]).read_text(encoding="utf-8"))
+                              for row in manifest["batches"]]
+              actual_ids={offer["id_fuente"] for batch in parsed_batches
+                          for offer in batch["offers"]}
+              expected_ids={entry["id_fuente"] for entry in evidence
+                            if entry["catalog_url_status"]=="not_found_in_complete_feed"}
+              if actual_ids!=expected_ids:
+                  raise SystemExit("PR_DRY_RUN_FAILURE: real-source batch identities differ")
+              print("PR_REAL_SOURCE_BATCH_DRY_RUN",json.dumps({
+                  "daily_ready":batch_summary["daily_batch_offers"],
+                  "recovery_ready":batch_summary["recovery_batch_offers"],
+                  "batch_count":len(manifest["batches"]),
+                  "id_fuente":sorted(actual_ids),
+                  "app_writes":0
+              },ensure_ascii=False))
+          summary={
+              "schema":"trabajo-cerca.motor-d-pr-preview.v1",
+              "scan_date":report["date"],
+              "source_scan_count":report["sources_total"],
+              "possible_links_not_verified":report["job_candidates_total"],
+              "daily_ready":len(classified["EXPRESS"]),
+              "recovery_ready":len(classified["RECUPERACION"]),
+              "second_pass":len(classified["SEGUNDA_PASADA"]),
+              "third_pass":len(classified["TERCERA_PASADA"]),
+              "excluded":len(classified["DESCARTADO"]),
+              "duplicate_candidates":len(classified["DUPLICADO"]),
+              "feed_complete":complete,
+              "feed_rows":len(catalog),
+              "feed_error":error,
+              "publications_created":0,
+              "catalog_identity_and_exact_semantic_checked":complete,
+              "dry_run_batch_offers":batch_summary["daily_batch_offers"]+batch_summary["recovery_batch_offers"],
+              "ready_candidates":evidence
+          }
+          target=Path("automation/motor_d_discovery/territorial_pr_preview.json")
+          target.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print("PR_MOTOR_D_READY_PREVIEW",json.dumps({
+              k:v for k,v in summary.items() if k!="ready_candidates"
+          },ensure_ascii=False))
+          for entry in evidence:
+              print("PR_MOTOR_D_CANDIDATE",json.dumps(entry,ensure_ascii=False))
+          PY
+      - name: Recover full audit even if sources fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: motor-d-pr-real-source-audit
+          path: |
+            automation/motor_d_discovery/territorial_daily.json
+            automation/motor_d_discovery/territorial_state.json
+            automation/motor_d_discovery/territorial_pr_preview.json
+          if-no-files-found: warn
+
   territorial_scan:
+    if: github.event_name != 'pull_request'
+    concurrency:
+      group: trabajo-cerca-motor-d-ready-writers
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     timeout-minutes: 17
     steps:
@@ -35,6 +174,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - name: Install zero-cost HTML parser
         run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
       - name: Check Python script compiles
@@ -96,7 +238,7 @@ jobs:
             exit 1
           fi
       - name: Preserve complete territorial audit
-        if: always() && github.event_name != 'pull_request'
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: motor-d-territorial-audit

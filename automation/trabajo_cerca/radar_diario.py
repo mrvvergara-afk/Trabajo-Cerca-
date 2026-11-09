@@ -23,7 +23,8 @@ FEED = 'https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/lis
 UA = 'TrabajoCercaDailyRadar/1.0 (public, read-only)'
 LOCAL_TIMEZONE = ZoneInfo('America/Santiago')
 REVIEW_STATES = frozenset({'candidato_para_revision', 'candidato_fecha_pendiente',
-                           'documento_parcial_revision_obligatoria'})
+                           'documento_parcial_revision_obligatoria',
+                           'documento_antiguo_revision_vigencia'})
 EXCLUSION_STATES = frozenset({'plazo_vencido_no_publicar',
                               'documento_antiguo_no_publicar', 'fecha_original_futura_no_publicar'})
 
@@ -96,31 +97,34 @@ def batch_for_time(now=None):
 
 
 def strip_result(row: dict) -> dict:
-    """Public report: never publish unvalidated OCR preview, email, phone or PII."""
+    """Review export: keep OCR evidence private to review and mask direct contact data."""
     return {key: row.get(key) for key in
-            ('url', 'source', 'kind', 'decision', 'extractor',
-             'deadline', 'publication_date_evidence', 'source_date_evidence',
-             'original_classification', 'http', 'error', 'failure_reason')
+            ('url', 'source', 'kind', 'decision', 'extractor', 'preview', 'signals',
+             'possible_communes', 'deadline', 'publication_date_evidence',
+             'source_date_evidence', 'publication_date_confirmed',
+             'sha256', 'original_classification', 'http', 'error', 'failure_reason')
             if key in row}
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', default=str(Path(__file__).with_name('fuentes_diarias.json')))
-    parser.add_argument('--batch', default='auto', choices=('auto', '0', '1', '2'))
+    parser.add_argument('--batch', default='auto', choices=('auto', 'all', '0', '1', '2'))
     parser.add_argument('--output', default='salidas_radar')
     parser.add_argument('--max-items', type=int, default=30)
     args = parser.parse_args(argv)
     if not 1 <= args.max_items <= 35:
         parser.error('max-items permitido: 1 a 35')
     config = json.loads(Path(args.config).read_text(encoding='utf8'))
-    if len(config.get('territories', [])) != 14 or len(config.get('seed_urls', [])) != 40 or len(config.get('social_reference', [])) != 25:
+    if set(config.get('territories', [])) != {'Angol', 'Collipulli', 'Ercilla', 'Lumaco', 'Los Sauces', 'Purén', 'Renaico', 'Traiguén', 'Victoria', 'Mulchén', 'Negrete', 'Nacimiento'}:
         raise ValueError('Inventario territorial incompleto')
-    batch = batch_for_time() if args.batch == 'auto' else int(args.batch)
+    batch = batch_for_time() if args.batch == 'auto' else (None if args.batch == 'all' else int(args.batch))
     sources = [(record, 'semilla') for record in config['seed_urls']]
     sources += [(record, 'fuente_web') for record in config['discovery']]
     selected = [(record, mode) for index, (record, mode) in enumerate(sources)
-                if index % 3 == batch][:args.max_items]
+                if batch is None or index % 3 == batch]
+    if batch is not None:
+        selected = selected[:args.max_items]
     feed_links, feed_complete, feed_count, feed_error = read_feed()
     status = []
     candidates = {}
@@ -151,8 +155,16 @@ def main(argv=None):
             'url': url, 'source_id': source_id, 'origin': origin,
             'reported_territories': list(territories),
             'status': state, 'reader_status': decision,
-            'published_date_evidence': item.get('publication_date_evidence'),
+            'published_date_evidence': item.get('publication_date_evidence') or item.get('source_date_evidence'),
             'deadline_evidence': item.get('deadline'),
+            'extractor': item.get('extractor'),
+            'http': item.get('http'),
+            'possible_communes': item.get('possible_communes') or [],
+            'text_excerpt': None,
+            'document_sha256': item.get('sha256'),
+            'original_classification': item.get('original_classification'),
+            'publication_date_confirmed': item.get('publication_date_confirmed') is True,
+            'date_discovered': today.isoformat(),
             'work_location_verified': False,
             'original_employer_date_verified': False,
             'approved': False,
@@ -182,7 +194,7 @@ def main(argv=None):
             else:
                 # Every source receives an audit receipt, including a healthy
                 # index which contains zero usable vacancies.
-                data = discover({'url': url, 'source': source_id}, max_links=2)
+                data = discover({'url': url, 'source': source_id}, max_links=5)
                 state = str(data.get('status') or 'sin_estado')
                 counts['fuente_'+state] += 1
                 status.append({
@@ -191,7 +203,7 @@ def main(argv=None):
                     'links_found': int(data.get('links_found') or 0),
                     'individual_pages_checked': len(data.get('checked', []))
                 })
-                for record in data.get('checked', [])[:4]:
+                for record in data.get('checked', []):
                     accept(record, source_id, 'fuente_web_publica', places)
         except Exception as exc:
             status.append({'source_id': source_id, 'url': canonical(url),
@@ -227,7 +239,7 @@ def main(argv=None):
         'writes_to_app': 0,
         'counts_by_status': dict(counts),
         'observations_by_reported_territory': dict(local_counts),
-        'limits': 'Máximo 2 vínculos individuales por índice; sin lectura de redes privadas',
+        'limits': 'Máximo 5 vínculos individuales por índice; sin lectura de redes privadas',
     }
     folder = Path(args.output)
     folder.mkdir(parents=True, exist_ok=True)
@@ -235,7 +247,7 @@ def main(argv=None):
     (folder/'fuentes_auditadas.json').write_text(json.dumps(status, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
     (folder/'candidatos_revision.json').write_text(json.dumps(list(candidates.values()), ensure_ascii=False, indent=2)+'\n', encoding='utf8')
     note = (f"## Trabajo Cerca · radar diario · lote {batch}\n\n"
-            f"- Localidades: **{len(config['territories'])}**; fuentes web: **{len(config['discovery'])}**; referencias de avisos: **40**.\n"
+            f"- Localidades: **{len(config['territories'])}**; fuentes web: **{len(config['discovery'])}**; referencias de avisos: **{len(config['seed_urls'])}**.\n"
             f"- Fuentes de este lote: **{len(selected)}**; catálogo público: **{feed_count}** registros, lectura completa: **{feed_complete}**.\n"
             f"- Candidatos nuevos o pendientes de comprobar: **{len(candidates)}** (NO publicados).\n"
             f"- Estado por fuente: **{dict(counts)}**.\n"

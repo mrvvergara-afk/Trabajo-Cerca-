@@ -5,7 +5,6 @@
     "Collipulli",
     "Ercilla",
     "Renaico",
-    "Mininco",
     "Los Sauces",
     "Purén",
     "Traiguén",
@@ -13,8 +12,7 @@
     "Nacimiento",
     "Negrete",
     "Mulchén",
-    "Victoria",
-    "Quilaco"
+    "Victoria"
   ],
   "seed_cutoff": "2026-10-25",
   "seed_urls": [
@@ -289,13 +287,6 @@
       "url": "https://www.kitempleo.cl/empleo/109379051/ingeniero-en-electricidad-en-terreno-los-sauces"
     },
     {
-      "id": "TC-039",
-      "work_cities": [
-        "Quilaco"
-      ],
-      "url": "https://www.kitempleo.cl/empleo/109378828/ingeniero-en-telecomunicaciones-en-terreno-quilaco"
-    },
-    {
       "id": "TC-040",
       "work_cities": [
         "Lumaco"
@@ -304,12 +295,6 @@
     }
   ],
   "discovery": [
-    {
-      "id": "M01",
-      "territory": "Quilaco",
-      "url": "https://municipalidadquilaco.cl/w/?page_id=1468",
-      "type": "municipal"
-    },
     {
       "id": "M02",
       "territory": "Mulchén",
@@ -384,7 +369,7 @@
     },
     {
       "id": "M14",
-      "territory": "Mininco",
+      "territory": "Collipulli",
       "url": "https://municipalidadcollipulli.cl/",
       "type": "municipal"
     },
@@ -477,8 +462,7 @@
     {
       "id": "S04",
       "work_cities": [
-        "Collipulli",
-        "Mininco"
+        "Collipulli"
       ],
       "url": "https://www.facebook.com/MunicipioCollipulli/",
       "mode": "manual_or_authorized_api_only"

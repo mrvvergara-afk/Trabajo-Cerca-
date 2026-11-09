@@ -1,14 +1,40 @@
 import { db, secrets } from '@appdeploy/sdk';
+import { createHash } from 'node:crypto';
 import { Buffer } from 'node:buffer';
 import { directChatGPTImport } from './chatgpt-direct-import';
 import { readPublicFeedPage } from './public-feed';
-import { publicFeedIdentity } from './public-source-adapters';
+import { publicPublisher, safePublicUrl } from './public-source-adapters';
 
 // This file is a source review snapshot for the AppDeploy deployment.
 // The production module lives at backend/motor-d-auto-import.ts.
 const REPO = 'mrvvergara-afk/Trabajo-Cerca-';
 const INDEX = 'automation/motor_d_ready/index.json';
-type Result = { id:string; status:string; internalId?:string };
+// Safety hold: keep the original evidence; release only through a newly reviewed batch.
+const QUARANTINED_BATCHES = new Set([
+  'motor-d-20261108-bccafbb13b7baa5270',
+  'motor-d-20261108-50a5c80afe2d3bf4fd',
+]);
+
+async function documentMatches(offer:Record<string,unknown>):Promise<boolean> {
+  const url=String(offer.url_original||'');
+  if(!url.startsWith('https://')||!safePublicUrl(url)||!publicPublisher(url)||
+     !/^[a-f0-9]{64}$/.test(String(offer.ocr_document_sha256||'')))return false;
+  try{
+    const response=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(12000)});
+    if(!response.ok||!response.body)return false;
+    const reader=response.body.getReader(),hash=createHash('sha256');
+    let size=0;
+    while(true){
+      const {done,value}=await reader.read();
+      if(done)break;
+      size+=value.byteLength;
+      if(size>16*1024*1024){await reader.cancel();return false;}
+      hash.update(value);
+    }
+    return size>0&&hash.digest('hex')===offer.ocr_document_sha256;
+  }catch{return false;}
+}
+type Result = { id:string; status:string; internalId?:string; existingId?:string };
 type Receipt = { id:string; batchId?:string; status?:string; results?:Result[]; accepted?:number; published?:number; known?:number; checkedAt?:string };
 
 async function load(path:string, token:string) {
@@ -43,58 +69,95 @@ export async function motorDAutoImportHandler(){
     if(!source)return recordStatus('awaiting_first_express_batch');
     const batches=source.data.batches;
     if(source.data.schema_version!==1||!Array.isArray(batches)||batches.length>256)return recordStatus('invalid_index');
+    let quarantinedCount=0;
+    let previouslyProcessedCount=0;
     for(const entry of batches as Array<Record<string,unknown>>){
       const batchId=String(entry.batch_id||''),relative=String(entry.file||'');
       if(!/^motor-d-\d{8}-[a-f0-9]{18}$/.test(batchId)||
          !/^\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json$/.test(relative)||
          !relative.endsWith('/'+batchId+'.json'))return recordStatus('invalid_batch_reference',{batchId});
+      if(QUARANTINED_BATCHES.has(batchId)){quarantinedCount++;continue;}
       const [old]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
-      if(old?.results?.length)continue;
+      if(old?.results?.length){previouslyProcessedCount++;continue;}
       const file=await load('automation/motor_d_ready/'+relative,token);
       if(!file)return recordStatus('batch_missing',{batchId});
       const data=file.data;
       if(data.schema_version!==1||data.approval!=='approved_for_publication'||
          data.producer!=='motor_d_territorial'||data.batch_id!==batchId||
          !Array.isArray(data.offers)||data.offers.length<1||data.offers.length>15)return recordStatus('unapproved_batch',{batchId});
-      const output=await directChatGPTImport({offers:data.offers,commit:true});
+      const offers=data.offers as Array<Record<string,unknown>>;
+      const expired:Result[]=[];
+      const current:Record<string,unknown>[]=[];
+      for(const offer of offers){
+        const ocr=Boolean(offer.review_id||offer.promotion_id||offer.ocr_revalidate_after);
+        if(ocr && (typeof offer.review_id!=='string'||typeof offer.promotion_id!=='string'||
+            typeof offer.ocr_revalidate_after!=='string'||!Number.isFinite(Date.parse(offer.ocr_revalidate_after))))
+          return recordStatus('invalid_ocr_authorization',{batchId});
+        if(ocr && Date.parse(String(offer.ocr_revalidate_after))<=Date.now())
+          expired.push({id:String(offer.id_fuente),status:'review_expired'});
+        else if(ocr && !await documentMatches(offer))
+          return recordStatus('ocr_document_changed_or_unavailable',{batchId});
+        else current.push(offer);
+      }
+      const output=current.length ? await directChatGPTImport({offers:current,commit:true}) :
+        {statusCode:200,body:'{"results":[]}'};
       if(output.statusCode!==200)return recordStatus('import_error',{batchId,http:output.statusCode});
       const parsed=JSON.parse(String(output.body||'{}')) as {results?:Result[]};
-      const results=parsed.results||[];
+      const results=[...(parsed.results||[]),...expired];
       if(results.length!==data.offers.length)return recordStatus('partial_batch',{batchId,got:results.length,expected:data.offers.length});
-      const allowed=new Set(['direct_record_queued_for_public_projection','already_published','already_imported_id','expired']);
+      const expectedIds=new Set(offers.map(x=>String(x.id_fuente||'')));
+      const actualIds=new Set(results.map(x=>String(x.id||'')));
+      if(expectedIds.has('')||expectedIds.size!==offers.length||actualIds.size!==results.length||
+         actualIds.size!==expectedIds.size||[...actualIds].some(id=>!expectedIds.has(id)))
+        return recordStatus('receipt_offer_mismatch',{batchId});
+      const allowed=new Set(['direct_record_queued_for_public_projection','already_published','already_imported_id','expired','review_expired']);
       if(results.some(x=>!allowed.has(x.status)))return recordStatus('invalid_results',{batchId});
-      const accepted=results.filter(x=>x.status==='direct_record_queued_for_public_projection'||x.status==='already_imported_id').length;
+      const accepted=results.filter(x=>!['expired','review_expired'].includes(x.status)).length;
       const known=results.length-accepted;
-      const receipt={id:batchId,batchId,sha:file.sha,at:new Date().toISOString(),accepted,known,results,status:'awaiting_public_feed',published:0};
+      const receipt={id:batchId,batchId,sha:file.sha,at:new Date().toISOString(),accepted,known,results,status:accepted?'awaiting_public_feed':'processed_without_publication',published:0};
       const [saved]=await db.tx.add('motor_d_import_receipts',[receipt]);
-      if(!saved){const [existing]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});if(!existing?.results?.length)throw Error('receipt_commit_failed');}
+      if(!saved){
+        const [existing]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
+        if(!existing?.results?.length)throw Error('receipt_commit_failed');
+        return recordStatus('receipt_already_exists',{batchId,existingStatus:existing.status||'unknown'});
+      }
       return recordStatus('imported_waiting_for_feed',{batchId,accepted,known});
     }
-    return recordStatus('no_unprocessed_batches');
+    return recordStatus('no_unprocessed_batches',{indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount});
   }catch(e){return recordStatus('bridge_error',{error:String(e).slice(0,180)});}
 }
 
 export async function confirmMotorDPublications(){
   let cursor:string|undefined;
   const pending:Receipt[]=[];
-  for(let page=0;page<4;page++){
+  const receiptCursors=new Set<string>();
+  let receiptsComplete=false;
+  for(let page=0;page<100;page++){
     const batch=await db.list<Receipt>('motor_d_import_receipts',{limit:100,...(cursor?{nextToken:cursor}:{})});
     pending.push(...batch.items.filter(x=>x.status==='awaiting_public_feed' && x.results?.length));
-    if(!batch.nextToken)break;
+    if(!batch.nextToken){receiptsComplete=true;break;}
+    if(receiptCursors.has(batch.nextToken))break;
+    receiptCursors.add(batch.nextToken);
     cursor=batch.nextToken;
   }
+  if(!receiptsComplete)return {checked:0,publishedBatches:0,waiting:pending.length,status:'receipts_incomplete'};
   if(!pending.length)return {checked:0,publishedBatches:0,waiting:0};
-  const visibleIds=new Set<string>(),visibleUrls=new Set<string>();
+  const visibleIds=new Set<string>();
   let feedCursor:string|undefined,complete=false;
+  const cursors=new Set<string>();
+  let feedCount=0;
   for(let pageNo=0;pageNo<100;pageNo++){
     const page=await readPublicFeedPage(feedCursor);
-    if(!page || ('degraded' in page && page.degraded===true))break;
+    if(!page || ('degraded' in page && page.degraded===true) ||
+       ('feedRebuilding' in page && page.feedRebuilding===true))break;
+    if(!Array.isArray(page.items))break;
+    feedCount+=page.items.length;
     for(const row of page.items as Array<Record<string,unknown>>){
       if(typeof row.id==='string')visibleIds.add(row.id);
-      const canonical=typeof row.url==='string'?publicFeedIdentity(row.url):null;
-      if(canonical)visibleUrls.add(canonical);
     }
-    if(!page.nextCursor){complete=true;break;}
+    if(!page.nextCursor){complete=feedCount>=Number(('totalJobOffers' in page && page.totalJobOffers)||0);break;}
+    if(cursors.has(page.nextCursor))break;
+    cursors.add(page.nextCursor);
     feedCursor=page.nextCursor;
   }
   if(!complete)return {checked:0,publishedBatches:0,waiting:pending.length,status:'feed_unavailable'};
@@ -102,14 +165,14 @@ export async function confirmMotorDPublications(){
   for(const batch of pending.slice(0,12)){
     let visible=0;
     for(const item of batch.results||[]){
-      if(item.status==='already_published'||item.status==='expired')continue;
-      const id=item.internalId||('chatgpt_'+item.id);
-      const [source]=await db.get<{url?:string}>('radar_jobs',[id]);
-      const normalized=source?.url?publicFeedIdentity(source.url):null;
-      if(visibleIds.has(id)||(normalized&&visibleUrls.has(normalized)))visible++;
+      if(item.status==='expired'||item.status==='review_expired')continue;
+      const id=item.internalId||item.existingId||('chatgpt_'+item.id);
+      // A shared employer careers URL cannot prove that this particular vacancy is public.
+      if(visibleIds.has(id))visible++;
     }
-    const fullyVisible=visible>=Number(batch.accepted||0);
-    await db.tx.update('motor_d_import_receipts',[{id:batch.id,record:{...batch,status:fullyVisible?'published':'awaiting_public_feed',published:visible,checkedAt:new Date().toISOString()}}]);
+    const expected=(batch.results||[]).filter(x=>!['expired','review_expired'].includes(x.status)).length;
+    const fullyVisible=expected>0&&visible>=expected;
+    await db.tx.update('motor_d_import_receipts',[{id:batch.id,record:{...batch,status:!expected?'processed_without_publication':fullyVisible?'published':'awaiting_public_feed',published:visible,checkedAt:new Date().toISOString()}}]);
     if(fullyVisible)publishedBatches++;else waiting++;
   }
   return {checked:Math.min(12,pending.length),publishedBatches,waiting};

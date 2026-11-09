@@ -10,6 +10,7 @@ from urllib.parse import urljoin, urlsplit
 import requests
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
+from ocr_review_security import redact
 
 TZ=ZoneInfo("America/Santiago")
 NOW=datetime.now(TZ)
@@ -38,6 +39,17 @@ SEEDS=[
 ("Mulchén","OMIL Mulchén arándanos 100 cupos","https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/"),
 ("Victoria","Municipio Victoria OMIL publicaciones","https://victoriachile.cl/category/omil/"),
 ("Angol","Hospital Angol estado postulaciones","https://hospitalangol.cl/estado/postulacion/"),
+# Recover independently confirmed individual vacancies from the original portal.
+# These are seed URLs to re-check, not automatic approvals or permanent fixtures.
+("Nacimiento","Chiletrabajos · Serfonac mecánico soldador","https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358"),
+("Nacimiento","Chiletrabajos · Serfonac mecánico automotriz","https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364"),
+("Nacimiento","Chiletrabajos · Serfonac conductor","https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758"),
+("Angol","Chiletrabajos · Operario alimentos Angol","https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569"),
+# Geographic cross-postings: recruiter's office is outside the 12 communes,
+# but the body explicitly states the real workplace. Always re-read the URL.
+("Traiguén","Chiletrabajos · Reponedor Traiguén","https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463"),
+("Mulchén","Chiletrabajos · Reponedor Mulchén","https://www.chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989"),
+("Purén","Chiletrabajos · Prevencionista obras Malleco","https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497"),
 ("Angol","Radio Viaducto","https://radioviaducto.cl/"),
 ("Angol","Las Noticias de Malleco","https://lasnoticiasdemalleco.cl/"),
 # Recuperación crítica de anuncios vistos en Indeed desde la fuente del empleador.
@@ -46,11 +58,18 @@ SEEDS=[
 ("Angol","Falabella · empleos oficiales","https://muevete.falabella.com/"),
 ("Angol","Unimarc · empleos oficiales","https://unimarc.trabajando.cl/"),
 ]
-# Consultas regionales de Chiletrabajos: una por cada comuna, además de OMIL y empleadores.
-# No se considera comuna laboral demostrada solo porque la búsqueda sea municipal.
+# Chiletrabajos: /ciudad/<slug>.html is the site's geographic route.
+# Query parameter ?2= was a keyword search that produced national jobs and
+# silently diluted coverage. Unknown/404 city routes are recorded as failures,
+# not replaced with unrelated employment results.
 from urllib.parse import quote
+def chiletrabajos_city_slug(town):
+    folded=unicodedata.normalize("NFD",town.lower())
+    slug="".join(c for c in folded if unicodedata.category(c)!="Mn")
+    return re.sub(r"[^a-z0-9]+","-",slug).strip("-")
+
 SEEDS.extend((town,"Chiletrabajos · "+town,
-    "https://www.chiletrabajos.cl/encuentra-un-empleo/?2="+quote(town.lower()))
+    "https://www.chiletrabajos.cl/ciudad/"+chiletrabajos_city_slug(town)+".html")
     for town in COMMUNES)
 # Indeed is a critical source. Check one page per commune and report access
 # truthfully; HTTP 403 is coverage failure, never zero open jobs.
@@ -63,7 +82,7 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca|"
     r"asistente|cajer[ao]s?|vendedor(?:a)?|bodega|tesorer[ií]a|click and collect|"
-    r"jefe(?:a)? de ventas|reponedor(?:a)?)\b",re.I)
+    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista|docente|psic[oó]log[oa])\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
 CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"
@@ -84,23 +103,62 @@ def safe_link(raw,base,origin):
         if u.scheme!="https" or not u.hostname or u.username or u.password or u.port:return None
         if u.hostname.lower()!=origin:return None
         if re.search(r"\.(?:jpg|png|gif|svg|css|js|zip|pdf)$",u.path,re.I):return None
+        if origin in ("www.chiletrabajos.cl","chiletrabajos.cl") and not u.path.startswith("/trabajo/"):
+            return None
         if not u.path or u.path in ("/","/index.php") or re.search(r"/(?:alertas-de-empleo|login|registro|faq|preguntas-frecuentes)/?$",u.path,re.I):return None
         if (u.hostname,u.path.rstrip("/"),u.query)==(urlsplit(base).hostname,urlsplit(base).path.rstrip("/"),urlsplit(base).query):return None
         return u.geturl().split("#",1)[0]
     except ValueError:return None
-def request_page(url):
-    resp=requests.get(url,headers=HEADERS,timeout=(5,9),allow_redirects=True,
-                      stream=True)
+def authorized_public_url(url, origin=None):
+    """HTTPS only: reject private targets and off-publisher redirects."""
+    import ipaddress
     try:
-        if resp.status_code!=200:return resp.status_code,None,None
-        if not ("html" in resp.headers.get("Content-Type","").lower()):return 200,None,"non_html"
-        size=0;parts=[]
-        for chunk in resp.iter_content(32768):
-            size+=len(chunk)
-            if size>1200000:return 200,None,"too_large"
-            parts.append(chunk)
-        return 200,BeautifulSoup(b"".join(parts),"html.parser"),None
-    finally:resp.close()
+        value=urlsplit(url)
+        host=(value.hostname or "").lower().removeprefix("www.")
+        if (value.scheme!="https" or not host or value.username or value.password
+            or value.port is not None or host=="localhost"
+            or host.endswith((".local",".internal"))):
+            return False
+        try:
+            if not ipaddress.ip_address(host).is_global:
+                return False
+        except ValueError:
+            pass
+        return origin is None or host==origin
+    except (TypeError,ValueError):
+        return False
+
+def request_page(url):
+    # Do not let a public municipal post redirect the crawler to a different
+    # domain or a private address. Explicit redirects can be followed only
+    # inside the exact same publisher (www aliases allowed).
+    if not authorized_public_url(url):
+        return 0,None,"source_url_not_authorized"
+    origin=urlsplit(url).hostname.lower().removeprefix("www.")
+    for redirect in range(4):
+        resp=requests.get(url,headers=HEADERS,timeout=(5,9),allow_redirects=False,
+                          stream=True)
+        try:
+            if resp.status_code in (301,302,303,307,308):
+                location=resp.headers.get("Location")
+                target=urljoin(url,location) if location else ""
+                if redirect==3 or not authorized_public_url(target,origin):
+                    return resp.status_code,None,"redirect_not_authorized"
+                url=target
+                continue
+            if resp.status_code!=200:
+                return resp.status_code,None,None
+            if not ("html" in resp.headers.get("Content-Type","").lower()):
+                return 200,None,"non_html"
+            size=0;parts=[]
+            for chunk in resp.iter_content(32768):
+                size+=len(chunk)
+                if size>1200000:return 200,None,"too_large"
+                parts.append(chunk)
+            return 200,BeautifulSoup(b"".join(parts),"html.parser"),None
+        finally:
+            resp.close()
+    return 0,None,"redirect_not_authorized"
 def dates_in(soup):
     found=[]
     for elem in soup.select("time[datetime], meta[property='article:published_time'], meta[name='date'], meta[property='og:published_time']")[:8]:
@@ -140,18 +198,50 @@ def links_from(soup,base):
 # Solo el texto explicito de la oferta puede establecer empresa y lugar de trabajo.
 # La comuna de la fuente municipal NO equivale a la comuna del puesto.
 def explicit_work_commune(body):
+    """Worksite cues only, never a recruiter address, residence or source commune."""
     value=fold(body)
     aliases={"mininco":"Collipulli","coihue":"Negrete","coigue":"Negrete"}
     places={fold(place):place for place in COMMUNES}
     places.update(aliases)
-    for field in re.finditer(
+    cues=(
         r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
-        value):
-        text=field.group(1)
-        for name,commune in places.items():
-            if re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",text):
-                return commune
+        r"(?:con base en|base de operaciones en|trabajo con base en|realizar labores en taller y terreno,? con base en)\s+([^.;]{3,90})",
+        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en|supermercados? en|tiendas? en)\s+([^.;]{3,90})"
+    )
+    for cue in cues:
+        for field in re.finditer(cue,value,re.I):
+            clause=field.group(1)
+            # The first named workplace in the source wins. Dictionary
+            # ordering used to select Los Sauces before Purén in a
+            # "Purén, Los Sauces y Traiguén" listing.
+            matches=[]
+            for name,commune in places.items():
+                match=re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",clause)
+                if match:
+                    matches.append((match.start(),-len(name),commune))
+            if matches:
+                return min(matches)[2]
     return None
+
+def focused_job_text(soup):
+    """Prefer the actual vacancy content over long municipal headers and menus."""
+    for selector in ("article", ".entry-content", ".post-content", ".td-post-content", "main"):
+        for section in soup.select(selector)[:4]:
+            content=section.get_text(" ",strip=True)
+            if len(content)>=80:
+                return content[:7000]
+    return soup.get_text(" ",strip=True)[:7000]
+
+def informative_job_title(soup, label):
+    """Use the publisher's full article title if H1 only says 'Oferta Laboral'."""
+    heading=soup.select_one("h1")
+    title=heading.get_text(" ",strip=True)[:180] if heading else label
+    if fold(title).strip() in {"oferta laboral","convocatoria","llamado a concurso"} or len(title)<10:
+        page_title=soup.title.get_text(" ",strip=True) if soup.title else ""
+        actual=page_title.split("|",1)[0].strip()[:180]
+        if len(actual)>=12 and TERMS.search(actual):
+            return actual
+    return title or label
 
 def explicit_employer(body):
     found=re.search(r"(?:empresa|empleador|raz[oó]n social)\s*:\s*([^.;]{3,90})",body,re.I)
@@ -161,7 +251,7 @@ def explicit_employer(body):
     return value if 2<=len(value)<=90 else None
 
 def explicit_application(body):
-    return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
+    return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula(?:r)?\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
 
 def chiletrabajos_metadata(soup, title, url):
     """Read the individual portal's explicit metadata, never a search-page guess."""
@@ -185,12 +275,19 @@ def chiletrabajos_metadata(soup, title, url):
     if re.search(r"\bHospital\s+de\s+Nacimiento\b",text,re.I) and re.search(r"\bNacimiento\b",title,re.I):
         city="Nacimiento"
     explicit=explicit_work_commune(text)
-    if explicit:city=explicit
+    if explicit:
+        city=explicit
+    elif city and not re.search(r"(?<!\w)"+re.escape(fold(city))+r"(?!\w)",fold(title)):
+        # Portal 'Ubicación' may be the recruiting office, not the
+        # workplace. Title agreement is minimum corroboration when
+        # the job description omits the execution site.
+        city=None
     expiry=re.search(r"\bExpira\s+(20\d{2}-\d{2}-\d{2})\b",text,re.I)
     closed=bool(expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
     application=bool(re.search(r"\bPostular\b|\benv[ií]a\s+tu\s+curr[ií]culum\b|\benv[ií]a\s+tu\s+cv\b",text,re.I))
     return {"employer":employer if employer and len(employer)<=140 else None,
-            "work_commune":city,"application_evidence":application,"source_closed":closed}
+            "work_commune":city,"application_evidence":application,"source_closed":closed,
+            "deadline":expiry.group(1) if expiry else None}
 
 def hiringroom_metadata(soup, title, url):
     """Primary employer ATS evidence only. Relative time is not an original calendar date."""
@@ -210,6 +307,42 @@ def hiringroom_metadata(soup, title, url):
             "application_evidence":bool(re.search(r"\bPostularse\b",text,re.I)),
             "date_source_method":"relative_only_not_verified"}
 
+def explicit_deadline_date(body):
+    """Parse a stated deadline; never use the crawler date as the closing date."""
+    cue = r"(?:expira|vence|hasta(?:\s+el)?|cierre(?:\s+de\s+postulaciones?)?|plazo(?:\s+de\s+postulaciones?)?)"
+    patterns = (
+        cue + r"\s*[:\-]?\s*(20\d{2}-\d{2}-\d{2})",
+        cue + r"\s*[:\-]?\s*(\d{1,2})[/-](\d{1,2})[/-](20\d{2})",
+        cue + r"\s*[:\-]?\s*(\d{1,2})\s+de\s+([a-záéíóú]+)\s+(?:de(?:l)?\s+)?(20\d{2})"
+    )
+    months = {"enero":1,"febrero":2,"marzo":3,"abril":4,"mayo":5,"junio":6,
+              "julio":7,"agosto":8,"septiembre":9,"setiembre":9,"octubre":10,
+              "noviembre":11,"diciembre":12}
+    for index, pattern in enumerate(patterns):
+        match = re.search(pattern, body, re.I)
+        if not match:
+            continue
+        try:
+            if index == 0:
+                deadline = datetime.strptime(match.group(1), "%Y-%m-%d").date()
+            elif index == 1:
+                deadline = datetime(int(match.group(3)), int(match.group(2)), int(match.group(1))).date()
+            else:
+                month = months.get(match.group(2).casefold())
+                if not month:
+                    continue
+                deadline = datetime(int(match.group(3)), month, int(match.group(1))).date()
+            return deadline
+        except ValueError:
+            continue
+    return None
+
+
+def explicit_deadline_expired(body, today=None):
+    """Only explicit closing/deadline evidence can mark a vacancy as expired."""
+    deadline=explicit_deadline_date(body)
+    return deadline is not None and deadline < (today or NOW.date())
+
 def inspect(seed):
     town,source,url=seed
     out={"commune":town,"source":source,"url":url,"status":"not_started",
@@ -221,7 +354,34 @@ def inspect(seed):
         if status!=200 or soup is None:
             out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
             return out
+        if source.startswith("Chiletrabajos · ") and not urlsplit(url).path.startswith("/trabajo/"):
+            heading=soup.select_one("h1")
+            page_title=soup.title
+            heading_text=heading.get_text(" ",strip=True) if heading else ""
+            title_text=page_title.get_text(" ",strip=True) if page_title else ""
+            # The official city index may put its location in <title> only.
+            # A query result with no verified territorial heading is not
+            # evidence of an empty town and must never be treated as scoped.
+            label=fold(" ".join((heading_text,title_text)))
+            territory=fold(town)
+            if not re.search(r"\btrabajos?\s+en\s+"+re.escape(territory)+r"\b",label):
+                out["status"]="search_filter_not_confirmed"
+                out["index_heading"]=heading_text[:120]
+                out["index_page_title"]=title_text[:120]
+                out["errors"].append("chiletrabajos_territory_heading_missing")
+                return out
         links=links_from(soup,url)
+        parsed_seed=urlsplit(url)
+        # First-party individual job pages can be audited directly; never
+        # reinterpret them as category/index pages with zero discovered links.
+        if (parsed_seed.hostname in ("www.chiletrabajos.cl","chiletrabajos.cl")
+            and parsed_seed.path.startswith("/trabajo/")):
+            heading=soup.select_one("h1")
+            title=heading.get_text(" ",strip=True)[:180] if heading else ""
+            # A direct /trabajo/ URL is already an individual job-detail
+            # route. Roles like 'DOCENTE PSICOLOGO' need not contain generic
+            # recruitment keywords in their H1. Evidence checks still apply.
+            links=[(url,title,"not_indicated")] if len(title)>=5 else []
         out["links_found"]=len(links)
         # Procesar todos los enlaces descubiertos (hasta 35) con paralelismo acotado,
         # sin quedar en un muestreo fijo de cinco.
@@ -232,12 +392,11 @@ def inspect(seed):
                     "date_source":None,"work_commune":None,"recruitment_commune":None,
                     "source_scope_commune":town,"source_commune_not_confirmed":True}
             try:
-                code,detail_soup,detail_reason=request_page(detail_url)
+                code,detail_soup,detail_reason=(200,soup,None) if detail_url==url else request_page(detail_url)
                 detail["http"]=code
                 if code==200 and detail_soup is not None:
-                    heading=detail_soup.select_one("h1")
-                    title=heading.get_text(" ",strip=True)[:180] if heading else label
-                    body=detail_soup.get_text(" ",strip=True)[:7000]
+                    title=informative_job_title(detail_soup,label)
+                    body=focused_job_text(detail_soup)
                     dates=dates_in(detail_soup)
                     job_commune=explicit_work_commune(body)
                     employer=explicit_employer(body)
@@ -253,8 +412,14 @@ def inspect(seed):
                         job_commune=primary_ats["work_commune"] or job_commune
                         employer=primary_ats["employer"] or employer
                         application_evidence=primary_ats["application_evidence"] or application_evidence
+                    if urlsplit(detail_url).hostname in ("jobs.arauco.com","www.jobs.arauco.com"):
+                        employer="ARAUCO"  # Verified first-party ATS; never infer work commune.
                     # Closed labels and internal-only calls are not public job vacancies.
-                    explicit_closed=bool(CLOSED.search(title+" "+label) or (portal and portal["source_closed"]))
+                    deadline=explicit_deadline_date(body)
+                    if portal and portal.get("deadline"):
+                        portal_expiry=datetime.strptime(portal["deadline"],"%Y-%m-%d").date()
+                        deadline=deadline or portal_expiry
+                    explicit_closed=bool(CLOSED.search(title+" "+label+" "+body) or (deadline and deadline<NOW.date()) or (portal and portal["source_closed"]))
                     public_title=title if len(title)>10 else label
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
                     general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))
@@ -262,12 +427,13 @@ def inspect(seed):
                                   work_commune=job_commune,source_commune_not_confirmed=job_commune is None,
                                   employer=employer,application_evidence=application_evidence,
                                   date_source=dates[0] if dates else None,
+                                  deadline=deadline.isoformat() if deadline else None,
                                   evidence="closed" if (explicit_closed or index_status=="closed") else (
                                       "internal_only" if internal_only else (
                                       "directory_not_offer" if general_index else (
                                       "individual_page_with_job_terms" if TERMS.search(public_title+" "+body[:1600])
                                       else "inconclusive_page"))),
-                                  excerpt=body[:550])
+                                  excerpt=redact(body[:550]))
                     detail["express_ready"]=bool(
                         detail["evidence"]=="individual_page_with_job_terms"
                         and job_commune and employer and application_evidence and dates
@@ -281,25 +447,26 @@ def inspect(seed):
                 detail["error"]=type(exc).__name__
                 detail["evidence"]="detail_unavailable"
             return detail
-        with ThreadPoolExecutor(max_workers=6) as pool:
+        # Bound same-host detail requests while concurrent commune seeds run.
+        with ThreadPoolExecutor(max_workers=5) as pool:
             out["candidates"]=list(pool.map(inspect_detail,links))
         # Los comunicados de empleo individuales usados como semilla también son
         # candidatos propios; no depender de que tengan enlaces internos.
         source_path=urlsplit(url).path.rstrip("/").lower()
         if "/oferta-laboral-" in source_path or "/convocatoria-laboral-" in source_path:
-            headline=soup.select_one("h1")
-            heading=headline.get_text(" ",strip=True)[:180] if headline else ""
-            body=soup.get_text(" ",strip=True)[:7000]
+            heading=informative_job_title(soup,"")
+            body=focused_job_text(soup)
             if (TERMS.search(heading) or "oferta-laboral-" in source_path) and re.search(
                     r"requisitos|postulaci[oó]n|curr[ií]culum|omil|se requiere",body,re.I):
                 dates=dates_in(soup)
                 detail={"id":key(url),"url":url,"label":heading,"title":heading,
                         "date_source":dates[0] if dates else None,"dates":dates,
-                        "http":200,"evidence":"closed" if CLOSED.search(heading) else (
+                        "deadline":explicit_deadline_date(body).isoformat() if explicit_deadline_date(body) else None,
+                        "http":200,"evidence":"closed" if (CLOSED.search(heading+" "+body) or explicit_deadline_expired(body)) else (
                             "internal_only" if INTERNAL_ONLY.search(heading) else "individual_page_with_job_terms"),
                         "work_commune":None,"recruitment_commune":None,
                         "source_scope_commune":town,"source_commune_not_confirmed":True,
-                        "excerpt":body[:550]}
+                        "excerpt":redact(body[:550])}
                 if dates:
                     try:
                         date=datetime.strptime(dates[0],"%Y-%m-%d").date()
@@ -317,7 +484,11 @@ def inspect(seed):
     return out
 def main():
     ROOT.mkdir(parents=True,exist_ok=True)
-    rows=[inspect(seed) for seed in SEEDS]
+    # Scan independent source domains concurrently instead of spending the
+    # 17-minute Actions budget waiting on dozens of sequential HTTP timeouts.
+    # map() keeps seed order for deterministic territory receipts.
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        rows=list(pool.map(inspect,SEEDS))
     # Critical Indeed coverage is measured independently and concurrently,
     # without proxies, access-control bypass or false success accounting.
     with ThreadPoolExecutor(max_workers=6) as pool:
@@ -326,7 +497,7 @@ def main():
     indeed_coverage={
         "sources_attempted":len(indeed_rows),
         "sources_accessible":sum(x["status"].startswith("scanned") for x in indeed_rows),
-        "sources_blocked":sum(x["status"] in ("http_restricted","network_error") for x in indeed_rows),
+        "sources_blocked":sum(x["status"] in ("http_restricted","network_error","redirect_not_authorized","source_url_not_authorized","search_filter_not_confirmed") for x in indeed_rows),
         "per_commune":{x["commune"]:{"http":x["http"],"status":x["status"],
             "candidates":len(x["candidates"])} for x in indeed_rows},
         "remediation":"employer_ats_first_no_indeed_bypass",

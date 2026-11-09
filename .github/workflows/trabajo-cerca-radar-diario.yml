@@ -5,11 +5,15 @@ on:
     branches: [main]
     paths:
       - automation/trabajo_cerca/**
+      - automation/adaptar_radar_a_motor_d_review.py
+      - automation/motor_d_review/**
       - .github/workflows/trabajo-cerca-radar-diario.yml
   push:
     branches: [main]
     paths:
       - automation/trabajo_cerca/**
+      - automation/adaptar_radar_a_motor_d_review.py
+      - automation/motor_d_review/**
       - .github/workflows/trabajo-cerca-radar-diario.yml
   schedule:
     - cron: '17 6 * * *'
@@ -20,10 +24,10 @@ on:
       timezone: 'America/Santiago'
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: trabajo-cerca-radar-gratis
+  group: trabajo-cerca-motor-d-ready-writers
   cancel-in-progress: false
 
 jobs:
@@ -35,7 +39,7 @@ jobs:
       - name: Obtener repositorio sin credenciales persistentes
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          persist-credentials: true
 
       - name: Python 3.12
         uses: actions/setup-python@v5
@@ -54,11 +58,63 @@ jobs:
         run: python -m unittest discover -s automation/trabajo_cerca -p 'test_*.py' -v
 
       - name: Rastrear un tercio de las fuentes · sin escritura ni proveedores pagos
+        id: radar_scan
+        continue-on-error: true
         env:
           PYTHONPATH: automation/trabajo_cerca
         run: |
           python automation/trabajo_cerca/radar_diario.py --batch auto --output resultados
           
+      - name: Integrar candidatos documentales a cola de revisión Motor D
+        if: success()
+        run: python automation/adaptar_radar_a_motor_d_review.py --input resultados/candidatos_revision.json
+
+      - name: Promover únicamente revisiones firmadas y vigentes
+        if: success() && steps.radar_scan.outcome == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          MOTOR_D_REVIEW_SIGNING_KEY: ${{ secrets.MOTOR_D_REVIEW_SIGNING_KEY }}
+        run: |
+          if [ -z "$MOTOR_D_REVIEW_SIGNING_KEY" ]; then
+            echo 'OCR_PROMOTION_BLOCKED: falta clave privada del productor; cero lotes OCR.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          python automation/promover_revision_a_motor_d.py --produce-batches
+
+      - name: Persistir cola y lotes documentalmente verificados
+        if: success() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          git config user.name "trabajo-cerca-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add automation/motor_d_review/ automation/motor_d_ready/
+          if ! git diff --cached --quiet; then
+            git commit -m "data(motor-d): update OCR review queue [skip ci]"
+            for attempt in 1 2 3; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort || true
+                echo "MOTOR_D_REVIEW_PERSIST_CONFLICT: preserve the workflow artifact"
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                echo "MOTOR_D_REVIEW_PERSIST_OK attempt=$attempt"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "MOTOR_D_REVIEW_PERSIST_FAILED: safe retries exhausted"
+            exit 1
+          fi
+
+      # Keep review queue durable even if the catalog feed failed, but do not
+      # mark the run green or promote any candidate without catalog verification.
+      - name: Marcar falla de catálogo después de conservar candidatos
+        if: steps.radar_scan.outcome == 'failure'
+        run: |
+          echo 'RADAR_DEGRADED: no se confirmó lectura íntegra del catálogo; revisión guardada sin publicar.' >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+      # Keep a recoverable snapshot even when the main-branch push conflicts.
+      # Artifacts are not a substitute for durable repository persistence.
       - name: Resumen comprobable
         if: always()
         run: |
@@ -70,6 +126,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: trabajo-cerca-radar-diario
-          path: resultados/
+          path: |
+            resultados/
+            automation/motor_d_review/radar_ocr_pending.json
+            automation/motor_d_ready/index.json
           if-no-files-found: warn
-          retention-days: 3
+          retention-days: 14

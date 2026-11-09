@@ -1,14 +1,47 @@
-"""Regresiones Motor D: evitar falsos positivos, respetar cierres, conservar 12 comunas."""
+"""Regresiones Motor D: evitar falsos positivos, respetar cierres y conservar territorios."""
 import unittest
 from bs4 import BeautifulSoup
 import motor_d_territorial_daily as engine
 
 class TerritorialSafetyTests(unittest.TestCase):
-    def test_exactly_twelve_communes_and_no_quilaco(self):
+    def test_twelve_communes_exclude_quilaco_and_every_commune_has_a_seed(self):
         self.assertEqual(len(engine.COMMUNES),12)
         self.assertEqual(len(set(engine.COMMUNES)),12)
         self.assertNotIn("Quilaco",engine.COMMUNES)
         self.assertEqual(set(town for town,_,_ in engine.SEEDS),set(engine.COMMUNES))
+
+    def test_parallel_source_sweep_keeps_all_12_communes_and_honest_indeed_failures(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+
+        def artificial_scan(seed):
+            town, source, url = seed
+            blocked = source.startswith("Indeed")
+            return {"commune": town, "source": source, "url": url,
+                    "status": "http_restricted" if blocked else "scanned_no_candidates",
+                    "checked_at": engine.NOW.isoformat(), "http": 403 if blocked else 200,
+                    "links_found": 0, "details_opened": 0, "candidates": [],
+                    "errors": []}
+
+        with tempfile.TemporaryDirectory() as tmp, \
+             patch.object(engine, "ROOT", Path(tmp)), \
+             patch.object(engine, "inspect", side_effect=artificial_scan) as inspected:
+            engine.main()
+            report = json.loads((Path(tmp) / "territorial_daily.json").read_text())
+            self.assertEqual(inspected.call_count, len(engine.SEEDS) + len(engine.INDEED_SEEDS))
+            self.assertEqual(report["sources_total"], len(engine.SEEDS) + 12)
+            self.assertEqual(set(report["communes_visited"]), set(engine.COMMUNES))
+            self.assertEqual(report["missing_communes"], [])
+            self.assertEqual(report["indeed_critical"]["sources_blocked"], 12)
+            self.assertFalse(report["indeed_critical"]["complete"])
+            self.assertEqual(report["confirmed_new_publications"], 0)
+            self.assertEqual(report["published_in_trabajo_cerca"], 0)
+            self.assertEqual(report["express_ready_candidates"], 0)
+
+    def test_mininco_keeps_collipulli_administrative_mapping(self):
+        self.assertEqual(engine.explicit_work_commune("Lugar de trabajo: Mininco."), "Collipulli")
 
     def test_index_closed_overrides_stale_detail(self):
         html='<div class="vacante">Postulación Cerrada <a href="/oferta-laboral-convocatoria-conaf/">CONVOCATORIA CONAF</a></div>'
@@ -26,10 +59,452 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
         self.assertEqual(items,[])
 
+    def test_territorial_receipt_redacts_candidate_contacts(self):
+        from unittest.mock import patch
+        from ocr_review_security import redact
+        source="https://www.munimulchen.cl/empleos"
+        index=BeautifulSoup(
+            "<a href='/oferta-laboral-operario'>Oferta laboral operario</a>",
+            "html.parser")
+        detail=BeautifulSoup(
+            "<article><h1>Oferta laboral operario</h1>"
+            "<p>Empresa: Maderas Ejemplo. Lugar de trabajo: Mulchén. "
+            "Postular en el portal. Contacto: persona@example.cl "
+            "Teléfono: +56 9 1234 5678. Se necesita operario responsable "
+            "con experiencia en máquinas y mantenimiento industrial.</p>"
+            "</article>","html.parser")
+        with patch.object(engine,"request_page",side_effect=[(200,index,None),(200,detail,None)]):
+            result=engine.inspect(("Mulchén","Municipio Mulchén",source))
+        self.assertEqual(len(result["candidates"]),1)
+        excerpt=result["candidates"][0]["excerpt"]
+        self.assertNotIn("persona@example.cl",excerpt)
+        self.assertNotIn("1234 5678",excerpt)
+        self.assertIn("[correo]",excerpt)
+        self.assertIn("[teléfono]",excerpt)
+
+    def test_reponedor_cross_posted_from_concepcion_uses_muelchen_worksite(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url=("https://www.chiletrabajos.cl/trabajo/"
+             "reponedor-part-time-mulchen-3927989")
+        html=BeautifulSoup(
+            "<html><h1>REPONEDOR PART TIME MULCHEN</h1>"
+            "<div>Buscado Cultiva Fecha 2026-11-06 16:59:10 "
+            "Expira 2027-01-20 Ubicación Concepción Categoría Ventas "
+            "Postular</div>"
+            "<article>Buscamos Mercaderistas part time, para realizar "
+            "reposición de 30 minutos una vez por semana, tenemos "
+            "disponible supermercado en MULCHEN, se paga $5.000. "
+            "Enviar curriculum e indicar que localidad postula."
+            "</article></html>", "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,html,None)):
+            row=engine.inspect(("Mulchén","Chiletrabajos · Reponedor Mulchén",url))["candidates"][0]
+        self.assertEqual(row["work_commune"],"Mulchén")
+        self.assertEqual(row["employer"],"Cultiva")
+        self.assertEqual(row["date_source"],"2026-11-06")
+        self.assertEqual(row["deadline"],"2027-01-20")
+        self.assertTrue(row["application_evidence"])
+        self.assertEqual(classify_ready(row,date(2026,11,9))[0],"RECUPERACION")
+
+    def test_malleco_municipal_construction_job_uses_explicit_worksite(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url=("https://www.chiletrabajos.cl/trabajo/"
+             "prevencionista-de-riesgos-malleco-3924497")
+        html=BeautifulSoup(
+            "<html><h1>PREVENCIONISTA DE RIESGOS – MALLECO</h1>"
+            "<div>Buscado Constructora Fecha 2026-11-02 13:29:45 "
+            "Expira 2027-01-16 Ubicación Angol Categoría Técnicos Postular</div>"
+            "<article>Empresa constructora requiere prevencionista de riesgos "
+            "para sus obras ubicadas en Purén, Los Sauces y Traiguén. "
+            "POSTULACIÓN: Enviar CV indicando disponibilidad. "
+            "Se requieren inspecciones y capacitaciones.</article>"
+            "</html>", "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,html,None)):
+            row=engine.inspect(("Purén","Chiletrabajos · Prevencionista obras Malleco",url))["candidates"][0]
+        self.assertEqual(row["work_commune"],"Purén")
+        self.assertEqual(row["employer"],"Constructora")
+        self.assertEqual(classify_ready(row,date(2026,11,9))[0],"RECUPERACION")
+
+    def test_cross_posting_direct_seeds_cover_three_communes(self):
+        expected={
+            "Traiguén": "part-time-para-traiguen-en-la-araucania-3924463",
+            "Mulchén": "reponedor-part-time-mulchen-3927989",
+            "Purén": "prevencionista-de-riesgos-malleco-3924497"
+        }
+        for town, slug in expected.items():
+            rows=[url for commune, source, url in engine.SEEDS
+                  if commune==town and url.endswith(slug)]
+            self.assertEqual(len(rows),1)
+
+    def test_individual_portal_seeds_recover_real_employer_date_and_worksite(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url = ("https://www.chiletrabajos.cl/trabajo/"
+               "mecanico-a-automotriz-nacimiento-3923364")
+        html = BeautifulSoup(
+            "<html><h1>Mecánico/a Automotriz – Nacimiento</h1>"
+            "<div>Buscado Serfonac Fecha 2026-11-05 21:09:46 "
+            "Expira 2027-01-19 Ubicación Los Ángeles Categoría Otros "
+            "Postular</div>"
+            "<article><p>Empresa del rubro forestal busca incorporar un "
+            "Mecánico/a Automotriz para realizar labores de mantención y "
+            "reparación de vehículos de la flota, con base en Nacimiento, "
+            "Región del Biobío. Para postular, ingrese a la plataforma. "
+            "Requisitos: experiencia en mecánica y mantención.</p></article>"
+            "</html>", "html.parser")
+        with patch.object(engine, "request_page", return_value=(200, html, None)) as page:
+            report = engine.inspect(("Nacimiento",
+                                    "Chiletrabajos · Serfonac mecánico automotriz", url))
+        self.assertEqual(page.call_count, 1)
+        self.assertEqual(report["status"], "scanned_with_candidates")
+        self.assertEqual(len(report["candidates"]), 1)
+        item = report["candidates"][0]
+        self.assertEqual(item["employer"], "Serfonac")
+        self.assertEqual(item["work_commune"], "Nacimiento")
+        self.assertEqual(item["date_source"], "2026-11-05")
+        self.assertEqual(item["deadline"], "2027-01-19")
+        self.assertTrue(item["application_evidence"])
+        self.assertFalse(item["source_commune_not_confirmed"])
+        state, reason, offer = classify_ready(item, date(2026,11,9))
+        self.assertEqual(state, "RECUPERACION")
+        self.assertEqual(offer["comunas"], ["Nacimiento"])
+        self.assertEqual(offer["fecha_cierre"], "2027-01-19")
+        self.assertEqual(offer["fecha_publicacion"], "2026-11-05")
+
+    def test_chiletrabajos_recruiter_city_without_title_or_worksite_remains_pending(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url="https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967"
+        page=BeautifulSoup(
+            "<html><h1>DOCENTE PSICOLOGO</h1>"
+            "<div>Buscado CORPORACION HD SPA Fecha 2026-10-18 "
+            "Expira 2027-01-01 Ubicación Angol Categoría Educación "
+            "Postular</div>"
+            "<article>Se requiere docente psicólogo para impartir curso "
+            "de competencias socioemocionales. Interesados postular "
+            "en sitio del portal.</article></html>", "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,page,None)):
+            job=engine.inspect(("Angol","Chiletrabajos · Docente test",url))["candidates"][0]
+        self.assertIsNone(job["work_commune"])
+        self.assertTrue(job["source_commune_not_confirmed"])
+        self.assertEqual(classify_ready(job,date(2026,11,9))[0],"SEGUNDA_PASADA")
+
+    def test_portal_recruitment_city_or_residence_does_not_prove_job_worksite(self):
+        from unittest.mock import patch
+        url="https://www.chiletrabajos.cl/trabajo/mecanico-nacimiento-3925555"
+        html=BeautifulSoup(
+            "<html><h1>Mecánico</h1><div>Buscado Serfonac Fecha 2026-11-05 "
+            "Expira 2027-01-19 Ubicación Los Ángeles Categoría Otros Postular</div>"
+            "<article><p>Buscamos mecánico. Ideal residencia en Nacimiento. "
+            "Requisitos de mantención industrial.</p></article></html>",
+            "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,html,None)):
+            row=engine.inspect(("Nacimiento","Chiletrabajos · muestra",url))["candidates"][0]
+        self.assertIsNone(row["work_commune"])
+        self.assertTrue(row["source_commune_not_confirmed"])
+
+    def test_direct_portal_recovery_seeds_have_known_individual_urls(self):
+        names = [row for row in engine.SEEDS if row[1].startswith("Chiletrabajos · Serfonac")]
+        self.assertEqual(len(names),3)
+        self.assertTrue(all(town=="Nacimiento" and "/trabajo/" in url
+                            for town,_,url in names))
+
+    def test_municipal_article_content_survives_long_navigation_and_uses_full_title(self):
+        from datetime import timedelta
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        day = engine.NOW.date()
+        closing = (day + timedelta(days=28)).isoformat()
+        source = "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+        index = BeautifulSoup(
+            "<a href='/oferta-laboral-operarios-arandanos/'>Oferta laboral Operarios Agrarios</a>",
+            "html.parser")
+        detail_html = (
+            "<html><head><title>Oferta Laboral: Operarios Agrarios – Cosecha de Arándanos "
+            "| Municipalidad Mulchén</title>"
+            f"<meta property='article:published_time' content='{day.isoformat()}'></head>"
+            "<body><nav>" + ("Noticias Municipalidad " * 600) + "</nav>"
+            "<article><h1>Oferta Laboral</h1><p>Empresa: Agrícola Ejemplo. "
+            "Lugar de trabajo: Mulchén. Se necesita operarios agrícolas. "
+            f"Postular en página oficial. Cierre de postulaciones: {closing}."
+            " Requisitos del cargo: experiencia en cosecha y disponibilidad "
+            "para trabajo de temporada en la comuna.</p></article></body></html>"
+        )
+        detail = BeautifulSoup(detail_html, "html.parser")
+        with patch.object(engine, "request_page",
+                          side_effect=[(200,index,None),(200,detail,None)]):
+            result = engine.inspect(("Mulchén","Municipio Mulchén empleos",source))
+        self.assertEqual(len(result["candidates"]),1)
+        item = result["candidates"][0]
+        self.assertIn("Operarios Agrarios",item["title"])
+        self.assertEqual(item["employer"],"Agrícola Ejemplo")
+        self.assertEqual(item["work_commune"],"Mulchén")
+        self.assertEqual(item["deadline"],closing)
+        state,reason,offer=classify_ready(item,day)
+        self.assertEqual(state,"EXPRESS")
+        self.assertIsNotNone(offer)
+
+    def test_arauco_official_ats_company_is_not_inferred_from_page_boilerplate(self):
+        from unittest.mock import patch
+        day=engine.NOW.date()
+        base="https://jobs.arauco.com/Chile/search/"
+        index=BeautifulSoup(
+            "<a href='/Chile/job/collipulli/operador-mantenedor'>"
+            "Operador mantenedor forestal</a>","html.parser")
+        detail=BeautifulSoup(
+            f"<meta property='article:published_time' content='{day.isoformat()}'>"
+            "<article><h1>Operador mantenedor forestal</h1>"
+            "<p>Para nuestras operaciones, Lugar de trabajo: Mininco. "
+            "Postular en portal oficial de empleo. Buscamos operador mantenedor "
+            "con experiencia en procesos productivos y mantenimiento.</p></article>",
+            "html.parser")
+        with patch.object(engine,"request_page",
+                          side_effect=[(200,index,None),(200,detail,None)]):
+            result=engine.inspect(("Collipulli","Arauco empleo",base))
+        self.assertEqual(len(result["candidates"]),1)
+        item=result["candidates"][0]
+        self.assertEqual(item["employer"],"ARAUCO")
+        self.assertEqual(item["work_commune"],"Collipulli")
+        self.assertTrue(item["application_evidence"])
+
+    def test_real_pr_preview_tracks_recovery_without_writing_application(self):
+        from pathlib import Path
+        path=Path(__file__).resolve().parents[1]/".github"/"workflows"/"motor-d-territorial-daily.yml"
+        workflow=path.read_text(encoding="utf-8")
+        audit=workflow.split("  territorial_audit_pr:",1)[1].split("\n  territorial_scan:",1)[0]
+        self.assertIn("validate_inventory_freshness(report,today)",audit)
+        self.assertIn("classified=build(report,today)",audit)
+        self.assertIn("recovery_ready",audit)
+        self.assertIn("feed_complete",audit)
+        self.assertIn("catalog_identity_and_exact_semantic_checked",audit)
+        self.assertIn("publications_created",audit)
+        self.assertIn("territorial_pr_preview.json",audit)
+        self.assertIn("TemporaryDirectory(prefix=",audit)
+        self.assertIn("PR_REAL_SOURCE_BATCH_DRY_RUN",audit)
+        self.assertIn("actual_ids!=expected_ids",audit)
+        self.assertIn('"app_writes":0',audit)
+        self.assertNotIn("produce(report",audit)
+        self.assertNotIn("commit:true",audit)
+        self.assertNotIn("git push",audit)
+
+    def test_real_source_pr_audit_is_read_only_and_cannot_publish(self):
+        from pathlib import Path
+        path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "motor-d-territorial-daily.yml"
+        workflow = path.read_text(encoding="utf-8")
+        self.assertIn("fix/motor-d-ocr-bridge-20261108", workflow)
+        self.assertIn("territorial_audit_pr:", workflow)
+        audit = workflow.split("  territorial_audit_pr:", 1)[1].split("\n  territorial_scan:", 1)[0]
+        production = workflow.split("\n  territorial_scan:", 1)[1]
+        self.assertIn("contents: read", audit)
+        self.assertIn("python automation/motor_d_territorial_daily.py", audit)
+        self.assertIn("upload-artifact@v4", audit)
+        self.assertNotIn("python automation/motor_d_express.py", audit)
+        self.assertNotIn("git push", audit)
+        self.assertIn("if: github.event_name != 'pull_request'", production)
+        self.assertIn("python automation/motor_d_express.py", production)
+
+    def test_unsafe_source_urls_and_redirects_never_receive_http_reads(self):
+        from unittest.mock import patch
+        for unsafe in ("http://munimulchen.cl/empleos",
+                       "https://127.0.0.1/private",
+                       "https://169.254.169.254/latest/meta-data",
+                       "https://localhost/offer",
+                       "https://internal.local/post"):
+            with self.subTest(url=unsafe), patch.object(engine.requests, "get") as get:
+                status, soup, reason = engine.request_page(unsafe)
+                self.assertEqual((status, soup, reason),
+                                 (0, None, "source_url_not_authorized"))
+                get.assert_not_called()
+
+    def test_redirect_outside_publisher_is_blocked_before_following(self):
+        from unittest.mock import patch
+        class Response:
+            status_code = 302
+            headers = {"Location": "https://evil.example/offer"}
+            def close(self): pass
+        with patch.object(engine.requests, "get", return_value=Response()) as get:
+            status, soup, reason = engine.request_page("https://www.munimulchen.cl/empleos")
+            self.assertEqual(status, 302)
+            self.assertIsNone(soup)
+            self.assertEqual(reason, "redirect_not_authorized")
+            self.assertEqual(get.call_count, 1)
+            self.assertFalse(get.call_args.kwargs["allow_redirects"])
+
+    def test_chiletrabajos_city_index_can_confirm_location_from_page_title(self):
+        from unittest.mock import patch
+        index = BeautifulSoup(
+            "<html><head><title>Trabajos en Angol | Chiletrabajos</title></head>"
+            "<body><main>No hay avisos aquí</main></body></html>", "html.parser")
+        with patch.object(engine, "request_page", return_value=(200, index, None)):
+            result = engine.inspect(("Angol", "Chiletrabajos · Angol",
+                "https://www.chiletrabajos.cl/ciudad/angol.html"))
+        self.assertEqual(result["status"], "scanned_no_candidates")
+        self.assertNotIn("chiletrabajos_territory_heading_missing", result["errors"])
+
+    def test_all_chiletrabajos_communes_use_city_not_national_keyword_queries(self):
+        rows=[(town,source,url) for town,source,url in engine.SEEDS
+              if source == "Chiletrabajos · " + town]
+        self.assertEqual(len(rows),12)
+        self.assertEqual({town for town,_,_ in rows},set(engine.COMMUNES))
+        for town,_,url in rows:
+            self.assertIn("/ciudad/",url)
+            self.assertNotIn("?2=",url)
+            self.assertNotIn("/encuentra-un-empleo",url)
+        self.assertIn(("Nacimiento","Chiletrabajos · Nacimiento",
+                       "https://www.chiletrabajos.cl/ciudad/nacimiento.html"),rows)
+        self.assertIn(("Mulchén","Chiletrabajos · Mulchén",
+                       "https://www.chiletrabajos.cl/ciudad/mulchen.html"),rows)
+
+    def test_national_keyword_page_does_not_count_as_geographic_coverage(self):
+        from unittest.mock import patch
+        url="https://www.chiletrabajos.cl/ciudad/collipulli.html"
+        page=BeautifulSoup(
+            "<html><h1>Trabajos de Collipulli</h1>"
+            "<a href='/trabajo/mecanico-999'>Mecánico de maquinaria</a></html>",
+            "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,page,None)) as reader:
+            result=engine.inspect(("Collipulli","Chiletrabajos · Collipulli",url))
+        self.assertEqual(result["status"],"search_filter_not_confirmed")
+        self.assertEqual(result["candidates"],[])
+        self.assertEqual(reader.call_count,1)
+
+    def test_chiletrabajos_only_dereferences_individual_job_urls(self):
+        url = "https://www.chiletrabajos.cl/ciudad/angol.html"
+        html = BeautifulSoup(
+            "<h1>Trabajos en Angol</h1>"
+            "<a href='/encuentra-un-empleo?2=angol'>Trabajos en Angol</a>"
+            "<a href='/ciudad/victoria.html'>Empleos Victoria</a>"
+            "<a href='/trabajo/tecnico-telecom-3990000'>Técnico Telecomunicaciones Angol</a>",
+            "html.parser")
+        links = engine.links_from(html, url)
+        self.assertEqual(len(links), 1)
+        self.assertTrue(links[0][0].endswith("/trabajo/tecnico-telecom-3990000"))
+
+    def test_chiletrabajos_generic_national_results_are_not_city_offers(self):
+        from unittest.mock import patch
+        generic = BeautifulSoup(
+            "<html><h1>Trabajos recientes en Chile</h1>"
+            "<a href='/trabajo/operador-123'>Operador de planta</a></html>", "html.parser")
+        with patch.object(engine, "request_page", return_value=(200, generic, None)) as page:
+            result = engine.inspect(("Angol", "Chiletrabajos · Angol",
+                "https://www.chiletrabajos.cl/ciudad/angol.html"))
+            self.assertEqual(result["status"], "search_filter_not_confirmed")
+            self.assertEqual(result["candidates"], [])
+            self.assertEqual(page.call_count, 1)
+
+    def test_real_city_index_to_individual_verified_offer_stays_publishable(self):
+        from datetime import timedelta
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        day = engine.NOW.date()
+        deadline = day + timedelta(days=30)
+        index = BeautifulSoup(
+            "<h1>Trabajos en Angol, Región Araucanía</h1>"
+            "<a href='/trabajo/tecnico-telecom-3990000'>"
+            "Técnico Telecomunicaciones - Angol</a>", "html.parser")
+        detail = BeautifulSoup(
+            f"<h1>Técnico Telecomunicaciones - Angol</h1>"
+            f"<div>ID 3990000 Buscado DOMINION SPA Fecha {day.isoformat()} "
+            f"Expira {deadline.isoformat()} Ubicación Angol CL Categoría "
+            f"Informática / Telecomunicaciones Postular</div>", "html.parser")
+        url = "https://www.chiletrabajos.cl/ciudad/angol.html"
+        with patch.object(engine, "request_page",
+                          side_effect=[(200, index, None), (200, detail, None)]):
+            report = engine.inspect(("Angol", "Chiletrabajos · Angol", url))
+        self.assertEqual(report["status"], "scanned_with_candidates")
+        self.assertEqual(len(report["candidates"]), 1)
+        item = report["candidates"][0]
+        self.assertEqual(item["work_commune"], "Angol")
+        self.assertEqual(item["employer"], "DOMINION SPA")
+        self.assertEqual(item["date_source"], day.isoformat())
+        self.assertEqual(item["deadline"], deadline.isoformat())
+        self.assertTrue(item["application_evidence"])
+        state, reason, offer = classify_ready(item, day)
+        self.assertEqual(state, "EXPRESS")
+        self.assertEqual(offer["comunas"], ["Angol"])
+        self.assertEqual(offer["fecha_cierre"], deadline.isoformat())
+
+    def test_critical_chiletrabajos_city_index_is_explicit(self):
+        matches = [(town,url) for town, source, url in engine.SEEDS
+                   if source == "Chiletrabajos · Angol"]
+        self.assertEqual(matches,
+                         [("Angol", "https://www.chiletrabajos.cl/ciudad/angol.html")])
+
+    def test_safe_same_publisher_redirect_remains_readable(self):
+        from unittest.mock import patch
+        class Response:
+            def __init__(self, code, headers, body=b""):
+                self.status_code, self.headers, self.body = code, headers, body
+            def iter_content(self, _):
+                yield self.body
+            def close(self): pass
+        redirect = Response(301, {"Location": "https://munimulchen.cl/ofertas"})
+        html = Response(200, {"Content-Type": "text/html"},
+                        b"<main><a href='/oferta-laboral-1'>Oferta laboral</a></main>")
+        with patch.object(engine.requests, "get", side_effect=[redirect, html]) as get:
+            status, soup, reason = engine.request_page("https://www.munimulchen.cl/empleos")
+            self.assertEqual(status, 200)
+            self.assertIsNone(reason)
+            self.assertEqual(soup.find("a").get_text(), "Oferta laboral")
+            self.assertEqual(get.call_count, 2)
+            self.assertEqual(get.call_args_list[1].args[0],
+                             "https://munimulchen.cl/ofertas")
+
+    def test_daily_writers_share_concurrency_group_and_preserve_artifacts(self):
+        from pathlib import Path
+        workflow_dir = Path(__file__).resolve().parents[1] / ".github" / "workflows"
+        for name in ("motor-d-territorial-daily.yml", "trabajo-cerca-radar-diario.yml"):
+            workflow = (workflow_dir / name).read_text(encoding="utf-8")
+            self.assertIn("group: trabajo-cerca-motor-d-ready-writers", workflow)
+            self.assertIn("cancel-in-progress: false", workflow)
+            self.assertIn("upload-artifact@v4", workflow)
+
     def test_external_host_is_not_followed(self):
         html='<a href="https://example.org/trabajo-operadores">Trabajo Operadores</a>'
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
         self.assertEqual(items,[])
+
+    def test_explicit_expired_deadline_is_detected(self):
+        from datetime import date
+        today = date(2026, 11, 8)
+        self.assertTrue(engine.explicit_deadline_expired("Postula hasta el 2026-10-31", today))
+        self.assertTrue(engine.explicit_deadline_expired("Cierre de postulaciones: 31/10/2026", today))
+        self.assertTrue(engine.explicit_deadline_expired("Postula hasta el 31 de octubre del 2026", today))
+        self.assertFalse(engine.explicit_deadline_expired("Postula hasta el 2026-12-31", today))
+
+    def test_individual_job_keeps_verified_explicit_deadline(self):
+        from datetime import date, timedelta
+        from unittest.mock import patch
+        published = engine.NOW.date().isoformat()
+        closing = (engine.NOW.date() + timedelta(days=14)).isoformat()
+        index = BeautifulSoup(
+            '<main><a href="/oferta-laboral-operadores">Oferta laboral operadores</a></main>',
+            "html.parser")
+        detail = BeautifulSoup(
+            f'<meta property="article:published_time" content="{published}">'
+            f'<article><h1>Oferta laboral operadores</h1>'
+            f'<p>Empresa: Maderera del Sur. Lugar de trabajo: Mulchén. '
+            f'Cierre de postulaciones: {closing}. Postular en el sitio oficial.</p>'
+            f'</article>', "html.parser")
+        base = "https://www.munimulchen.cl/empleos/"
+        def page(url):
+            return (200, index if url == base else detail, None)
+        with patch.object(engine, "request_page", side_effect=page):
+            report = engine.inspect(("Mulchén", "OMIL test", base))
+        self.assertEqual(len(report["candidates"]), 1)
+        job = report["candidates"][0]
+        self.assertEqual(job["deadline"], closing)
+        self.assertEqual(job["date_source"], published)
+        self.assertEqual(job["employer"], "Maderera del Sur")
+        self.assertEqual(job["work_commune"], "Mulchén")
+        self.assertTrue(job["application_evidence"])
+        self.assertEqual(engine.explicit_deadline_date(
+            f"Cierre de postulaciones: {closing}"), date.fromisoformat(closing))
 
     def test_closed_wording_is_recognized(self):
         self.assertTrue(engine.CLOSED.search("Postulación Cerrada"))
@@ -49,6 +524,7 @@ class TerritorialSafetyTests(unittest.TestCase):
     def test_application_evidence_required(self):
         self.assertTrue(engine.explicit_application("Postulaciones abiertas hasta el lunes"))
         self.assertTrue(engine.explicit_application("Enviar CV al contacto oficial"))
+        self.assertTrue(engine.explicit_application("Postular en el sitio oficial"))
         self.assertFalse(engine.explicit_application("Programa municipal de empleabilidad"))
 
     def test_chiletrabajos_individual_metadata(self):

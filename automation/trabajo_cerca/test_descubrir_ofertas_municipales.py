@@ -26,9 +26,9 @@ class DescubrimientoTests(unittest.TestCase):
         urls=candidate_links("https://www.traiguencity.cl/noticias/traiguen/general/", html, limit=5)
         self.assertEqual(len(urls),3)
 
-    def test_old_year_never_eligible(self):
+    def test_old_year_link_is_retained_for_vigencia_check(self):
         html="<main><a href='/2025/10/oferta-laboral/'>Oferta laboral</a></main>"
-        self.assertEqual(candidate_links(URL,html),[])
+        self.assertEqual(len(candidate_links(URL,html)),1)
 
     def test_ignores_news_without_recruitment(self):
         html="<main><a href='/noticia/capacitacion-agricola/'>Taller gratuito</a></main>"
@@ -41,6 +41,20 @@ class DescubrimientoTests(unittest.TestCase):
         items = attached_public_pdfs("https://victoriachile.cl/convocatoria-laboral/", html)
         self.assertEqual(len(items), 1)
         self.assertTrue(items[0]["url"].endswith("bases-de-llamado.pdf"))
+
+    def test_old_dated_pdf_is_not_rejected_before_deadline_review(self):
+        html = "<main><a href='/2025/09/convocatoria.pdf'>Bases del concurso</a></main>"
+        items = attached_public_pdfs("https://victoriachile.cl/convocatoria/", html)
+        self.assertEqual(len(items), 1)
+
+    def test_nested_link_label_is_read_without_navigation_false_positives(self):
+        html = """<nav><a href='/oferta-laboral-falsa/'>Oferta</a></nav>
+          <main><a href='/convocatoria-2026/'><span>Convocatoria</span>
+          <strong>laboral</strong></a></main>"""
+        result = candidate_links(URL, html)
+        self.assertEqual(len(result), 1)
+        self.assertIn("convocatoria-2026", result[0]["url"])
+        self.assertIn("laboral", result[0]["anchor"])
 
     def test_finite_limit(self):
         html="<main>"+''.join(

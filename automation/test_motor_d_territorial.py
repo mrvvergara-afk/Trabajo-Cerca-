@@ -1,13 +1,13 @@
-"""Regresiones Motor D: evitar falsos positivos, respetar cierres, conservar 12 comunas."""
+"""Regresiones Motor D: evitar falsos positivos, respetar cierres y conservar territorios."""
 import unittest
 from bs4 import BeautifulSoup
 import motor_d_territorial_daily as engine
 
 class TerritorialSafetyTests(unittest.TestCase):
-    def test_exactly_twelve_communes_and_no_quilaco(self):
-        self.assertEqual(len(engine.COMMUNES),12)
-        self.assertEqual(len(set(engine.COMMUNES)),12)
-        self.assertNotIn("Quilaco",engine.COMMUNES)
+    def test_thirteen_communes_include_quilaco_and_every_commune_has_a_seed(self):
+        self.assertEqual(len(engine.COMMUNES),13)
+        self.assertEqual(len(set(engine.COMMUNES)),13)
+        self.assertIn("Quilaco",engine.COMMUNES)
         self.assertEqual(set(town for town,_,_ in engine.SEEDS),set(engine.COMMUNES))
 
     def test_index_closed_overrides_stale_detail(self):

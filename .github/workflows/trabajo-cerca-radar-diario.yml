@@ -103,6 +103,8 @@ jobs:
             exit 1
           fi
 
+      # Keep a recoverable snapshot even when the main-branch push conflicts.
+      # Artifacts are not a substitute for durable repository persistence.
       - name: Resumen comprobable
         if: always()
         run: |
@@ -114,6 +116,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: trabajo-cerca-radar-diario
-          path: resultados/
+          path: |
+            resultados/
+            automation/motor_d_review/radar_ocr_pending.json
+            automation/motor_d_ready/index.json
           if-no-files-found: warn
-          retention-days: 3
+          retention-days: 14

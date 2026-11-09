@@ -10,6 +10,9 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertIn("Quilaco",engine.COMMUNES)
         self.assertEqual(set(town for town,_,_ in engine.SEEDS),set(engine.COMMUNES))
 
+    def test_mininco_keeps_collipulli_administrative_mapping(self):
+        self.assertEqual(engine.explicit_work_commune("Lugar de trabajo: Mininco."), "Collipulli")
+
     def test_index_closed_overrides_stale_detail(self):
         html='<div class="vacante">Postulación Cerrada <a href="/oferta-laboral-convocatoria-conaf/">CONVOCATORIA CONAF</a></div>'
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")

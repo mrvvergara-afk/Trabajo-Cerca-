@@ -27,7 +27,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: trabajo-cerca-motor-d-ready-writers
+  group: trabajo-cerca-radar-gratis
   cancel-in-progress: false
 
 jobs:
@@ -65,6 +65,18 @@ jobs:
         run: |
           python automation/trabajo_cerca/radar_diario.py --batch auto --output resultados
           
+      # The event SHA can lag behind main after another workflow pushes a
+      # signed review. Refresh the durable queue before merging fresh evidence.
+      # Never overwrite it with an empty queue or rely on a stale checkout.
+      - name: Recuperar cola OCR vigente de main
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          git fetch origin main
+          if git cat-file -e origin/main:automation/motor_d_review/radar_ocr_pending.json 2>/dev/null; then
+            mkdir -p automation/motor_d_review
+            git show origin/main:automation/motor_d_review/radar_ocr_pending.json > automation/motor_d_review/radar_ocr_pending.json
+          fi
+
       - name: Integrar candidatos documentales a cola de revisión Motor D
         if: success()
         run: python automation/adaptar_radar_a_motor_d_review.py --input resultados/candidatos_revision.json

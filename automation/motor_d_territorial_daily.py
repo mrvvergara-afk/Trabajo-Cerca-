@@ -211,13 +211,14 @@ def hiringroom_metadata(soup, title, url):
             "application_evidence":bool(re.search(r"\bPostularse\b",text,re.I)),
             "date_source_method":"relative_only_not_verified"}
 
-def explicit_deadline_expired(body):
+def explicit_deadline_expired(body, today=None):
     """Only explicit closing/deadline evidence can mark a vacancy as expired."""
+    today = today or NOW.date()
     patterns = (
-        r"(?:expira|vence|hasta(?:\\s+el)?|cierre(?:\\s+de\\s+postulaciones?)?|plazo(?:\\s+de\\s+postulaciones?)?)"
-        r"\\s*[:\\-]?\\s*(20\\d{2}-\\d{2}-\\d{2})",
-        r"(?:expira|vence|hasta(?:\\s+el)?|cierre(?:\\s+de\\s+postulaciones?)?|plazo(?:\\s+de\\s+postulaciones?)?)"
-        r"\\s*[:\\-]?\\s*(\\d{1,2})[/-](\\d{1,2})[/-](20\\d{2})"
+        r"(?:expira|vence|hasta(?:\s+el)?|cierre(?:\s+de\s+postulaciones?)?|plazo(?:\s+de\s+postulaciones?)?)"
+        r"\s*[:\-]?\s*(20\d{2}-\d{2}-\d{2})",
+        r"(?:expira|vence|hasta(?:\s+el)?|cierre(?:\s+de\s+postulaciones?)?|plazo(?:\s+de\s+postulaciones?)?)"
+        r"\s*[:\-]?\s*(\d{1,2})[/-](\d{1,2})[/-](20\d{2})"
     )
     for index, pattern in enumerate(patterns):
         match = re.search(pattern, body, re.I)
@@ -227,7 +228,7 @@ def explicit_deadline_expired(body):
             deadline = (datetime.strptime(match.group(1), "%Y-%m-%d").date()
                         if index == 0 else
                         datetime(int(match.group(4)), int(match.group(3)), int(match.group(2))).date())
-            return deadline < NOW.date()
+            return deadline < today
         except ValueError:
             continue
     return False

@@ -114,7 +114,11 @@ export async function motorDAutoImportHandler(){
       const known=results.length-accepted;
       const receipt={id:batchId,batchId,sha:file.sha,at:new Date().toISOString(),accepted,known,results,status:accepted?'awaiting_public_feed':'processed_without_publication',published:0};
       const [saved]=await db.tx.add('motor_d_import_receipts',[receipt]);
-      if(!saved){const [existing]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});if(!existing?.results?.length)throw Error('receipt_commit_failed');}
+      if(!saved){
+        const [existing]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
+        if(!existing?.results?.length)throw Error('receipt_commit_failed');
+        return recordStatus('receipt_already_exists',{batchId,existingStatus:existing.status||'unknown'});
+      }
       return recordStatus('imported_waiting_for_feed',{batchId,accepted,known});
     }
     return recordStatus('no_unprocessed_batches');

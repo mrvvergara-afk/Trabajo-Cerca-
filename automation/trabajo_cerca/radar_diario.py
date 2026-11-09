@@ -210,7 +210,7 @@ def main(argv=None):
                            'status': 'error_lector', 'error_type': type(exc).__name__})
             counts['error_lector'] += 1
 
-    # Las 25 cuentas sociales están inventariadas, pero nunca se confunden
+    # Las fuentes sociales del inventario no se confunden con avisos leídos
     # con una visita exitosa: su lectura necesita un canal público autorizado.
     for source in config['social_reference']:
         status.append({
@@ -251,7 +251,7 @@ def main(argv=None):
             f"- Fuentes de este lote: **{len(selected)}**; catálogo público: **{feed_count}** registros, lectura completa: **{feed_complete}**.\n"
             f"- Candidatos nuevos o pendientes de comprobar: **{len(candidates)}** (NO publicados).\n"
             f"- Estado por fuente: **{dict(counts)}**.\n"
-            f"- Facebook/Instagram: **25 fuentes registradas**, sin extracción no autorizada.\n"
+            f"- Facebook/Instagram: **{len(config['social_reference'])} fuentes registradas**, sin extracción no autorizada.\n"
             f"- Costo de proveedores externos: **$0**. Escrituras: **0**.\n")
     (folder/'resumen.md').write_text(note, encoding='utf8')
     print(note)

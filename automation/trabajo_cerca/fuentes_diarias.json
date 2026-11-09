@@ -532,6 +532,16 @@
       "mode": "manual_or_authorized_api_only"
     },
     {
+      "id": "S26",
+      "work_cities": [
+        "Nacimiento"
+      ],
+      "url": "https://www.instagram.com/omilnacimiento/",
+      "mode": "manual_or_authorized_api_only",
+      "source_evidence": "user_supplied_instagram_stories_2026-11-09",
+      "priority": "critical"
+    },
+    {
       "id": "S13",
       "work_cities": [
         "Nacimiento"

@@ -1,0 +1,40 @@
+name: Trabajo Cerca | QA OMIL Nacimiento 3 avisos
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/qa_omil_nacimiento_posters.py'
+      - 'automation/test_qa_omil_nacimiento_posters.py'
+      - 'automation/motor_d_discovery/omil_nacimiento_20261109_evidence.json'
+      - '.github/workflows/qa-omil-nacimiento.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'automation/qa_omil_nacimiento_posters.py'
+      - 'automation/motor_d_discovery/omil_nacimiento_20261109_evidence.json'
+      - '.github/workflows/qa-omil-nacimiento.yml'
+  schedule:
+    - cron: '35 12,22 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: qa-omil-nacimiento-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  no_write_catalog_audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar contrato de duplicados y evidencia
+        env:
+          PYTHONPATH: automation
+        run: python -m unittest discover -s automation -p 'test_qa_omil_nacimiento_posters.py' -v
+      - name: Contrastar tres ofertas OMIL con catalogo publico completo
+        env:
+          PYTHONPATH: automation
+        run: python automation/qa_omil_nacimiento_posters.py

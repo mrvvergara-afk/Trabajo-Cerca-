@@ -39,6 +39,7 @@ class TerritorialSafetyTests(unittest.TestCase):
         today = date(2026, 11, 8)
         self.assertTrue(engine.explicit_deadline_expired("Postula hasta el 2026-10-31", today))
         self.assertTrue(engine.explicit_deadline_expired("Cierre de postulaciones: 31/10/2026", today))
+        self.assertTrue(engine.explicit_deadline_expired("Postula hasta el 31 de octubre del 2026", today))
         self.assertFalse(engine.explicit_deadline_expired("Postula hasta el 2026-12-31", today))
 
     def test_closed_wording_is_recognized(self):

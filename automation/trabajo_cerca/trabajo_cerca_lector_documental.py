@@ -202,7 +202,7 @@ def extract_text(body: bytes, mime: str, url: str) -> tuple[str, str]:
                     pix = doc[i].get_pixmap(matrix=fitz.Matrix(1.6, 1.6), alpha=False)
                     snippets.append(ocr_bytes(pix.tobytes("png")))
                 combined = re.sub(r"\s+", " ", text + " " + " ".join(snippets)).strip()
-                mode = ("pdf_preview_partial" if partial else
+                mode = ("pdf_preview_partial" if partial or total > min(limit, 3) else
                         "pdf_ocr_local" if any(snippets) else "image_pdf_needs_ocr")
                 return combined, mode
         except Exception:

@@ -38,7 +38,7 @@ def eligible(item, today=None, key=None, document_loader=None):
             return False
     except (ValueError, TypeError, KeyError, OSError):
         return False
-    if item.get("extractor") in (None, "pdf_preview_partial") or item.get("publication_date_confirmed") is not True:
+    if item.get("extractor") not in {"pdf_text", "pdf_ocr_local", "imagen_ocr_local", "html_text", "article_body_text"} or item.get("publication_date_confirmed") is not True:
         return False
     from motor_d_express import canonical_url
     if not canonical_url(item.get("application_url")):

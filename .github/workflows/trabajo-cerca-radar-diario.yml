@@ -67,12 +67,23 @@ jobs:
         if: success()
         run: python automation/adaptar_radar_a_motor_d_review.py --input resultados/candidatos_revision.json
 
-      - name: Persistir cola de revisión sin publicar ofertas
+      - name: Promover únicamente revisiones firmadas y vigentes
+        if: success() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          MOTOR_D_REVIEW_SIGNING_KEY: ${{ secrets.MOTOR_D_REVIEW_SIGNING_KEY }}
+        run: |
+          if [ -z "$MOTOR_D_REVIEW_SIGNING_KEY" ]; then
+            echo 'OCR_PROMOTION_BLOCKED: falta clave privada del productor; cero lotes OCR.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          python automation/promover_revision_a_motor_d.py --produce-batches
+
+      - name: Persistir cola y lotes documentalmente verificados
         if: success() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add automation/motor_d_review/radar_ocr_pending.json
+          git add automation/motor_d_review/ automation/motor_d_ready/
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-d): update OCR review queue [skip ci]"
             for attempt in 1 2 3; do

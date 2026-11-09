@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from ocr_review_security import signature, redact
 from promover_revision_a_motor_d import eligible
-from trabajo_cerca.trabajo_cerca_lector_documental import allowed, robots_ok, fetch_bytes
+from trabajo_cerca.trabajo_cerca_lector_documental import allowed, robots_ok, fetch_bytes, extract_text, maximum_for_url
 
 
 def review(item, decision, reviewer, notes, fields, document, key, now=None):
@@ -23,7 +23,8 @@ def review(item, decision, reviewer, notes, fields, document, key, now=None):
         result.update(fields)
     result.update(review_status='approved' if decision == 'approve' else 'rejected',
                   approved_by=reviewer, approved_at=now.isoformat(),
-                  review_notes=redact(notes), document_sha256=hashlib.sha256(document).hexdigest(),
+                  review_notes=redact(notes), document_sha256=(hashlib.sha256(document).hexdigest()
+                      if decision == "approve" else item.get("document_sha256")),
                   publication_eligible=decision == 'approve')
     if not reviewer.strip() or not notes.strip():
         raise ValueError('Revisor y notas obligatorios')
@@ -48,10 +49,16 @@ def main():
     if len(matches) != 1:
         raise ValueError('Identificador de revisión ambiguo o inexistente')
     item = matches[0]
-    if not allowed(item['url']) or not robots_ok(item['url']):
-        raise ValueError('Documento no permitido')
-    document, _ = fetch_bytes(item['url'])
     fields = json.loads(args.fields.read_text()) if args.fields else {}
+    document = b''
+    if args.decision == 'approve':
+        if not allowed(item['url']) or not robots_ok(item['url']):
+            raise ValueError('Documento no permitido')
+        document, mime = fetch_bytes(item['url'], maximum_for_url(item['url']))
+        text, extractor = extract_text(document, mime, item['url'])
+        if len(text.strip()) < 140 or extractor not in {'pdf_text','pdf_ocr_local','imagen_ocr_local','html_text'}:
+            raise ValueError('Documento incompleto o ilegible: no autorizar')
+        fields['extractor'] = extractor
     result = review(item, args.decision, args.reviewer, args.notes, fields, document,
                     os.getenv('MOTOR_D_REVIEW_SIGNING_KEY'))
     item.clear()

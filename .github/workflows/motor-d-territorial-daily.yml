@@ -2,7 +2,7 @@ name: Motor D - Barrido territorial 12 comunas
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main]
+    branches: [main, fix/motor-d-ocr-bridge-20261108]
     paths:
       - 'automation/motor_d_territorial_daily.py'
       - 'automation/test_motor_d_territorial.py'
@@ -50,13 +50,15 @@ jobs:
         run: python -m unittest discover -s automation -p 'test_motor_d_*.py' -v
       # Operational test after enabling bounded B/C; D remains an independent scout.
       - name: Scan all 12 communes and identify source problems
-        if: github.event_name != 'pull_request'
+        # PR #19 is a safe real-source audit: collect data, but do not create
+        # importable batches, push to main or touch the live application.
+        if: github.event_name != 'pull_request' || github.base_ref == 'fix/motor-d-ocr-bridge-20261108'
         run: python automation/motor_d_territorial_daily.py
       - name: Classify express offers and write bounded publication batches
         if: github.event_name != 'pull_request'
         run: python automation/motor_d_express.py
       - name: Enforce honest source coverage accounting
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' || github.base_ref == 'fix/motor-d-ocr-bridge-20261108'
         run: |
           python - <<'PY'
           import json,pathlib,sys
@@ -103,7 +105,7 @@ jobs:
             exit 1
           fi
       - name: Preserve complete territorial audit
-        if: always() && github.event_name != 'pull_request'
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: motor-d-territorial-audit

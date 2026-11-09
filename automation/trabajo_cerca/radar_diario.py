@@ -158,6 +158,7 @@ def main(argv=None):
             'published_date_evidence': item.get('publication_date_evidence') or item.get('source_date_evidence'),
             'deadline_evidence': item.get('deadline'),
             'extractor': item.get('extractor'),
+            'http': item.get('http'),
             'possible_communes': item.get('possible_communes') or [],
             'text_excerpt': None,
             'document_sha256': item.get('sha256'),

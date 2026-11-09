@@ -211,6 +211,27 @@ def hiringroom_metadata(soup, title, url):
             "application_evidence":bool(re.search(r"\bPostularse\b",text,re.I)),
             "date_source_method":"relative_only_not_verified"}
 
+def explicit_deadline_expired(body):
+    """Only explicit closing/deadline evidence can mark a vacancy as expired."""
+    patterns = (
+        r"(?:expira|vence|hasta(?:\\s+el)?|cierre(?:\\s+de\\s+postulaciones?)?|plazo(?:\\s+de\\s+postulaciones?)?)"
+        r"\\s*[:\\-]?\\s*(20\\d{2}-\\d{2}-\\d{2})",
+        r"(?:expira|vence|hasta(?:\\s+el)?|cierre(?:\\s+de\\s+postulaciones?)?|plazo(?:\\s+de\\s+postulaciones?)?)"
+        r"\\s*[:\\-]?\\s*(\\d{1,2})[/-](\\d{1,2})[/-](20\\d{2})"
+    )
+    for index, pattern in enumerate(patterns):
+        match = re.search(pattern, body, re.I)
+        if not match:
+            continue
+        try:
+            deadline = (datetime.strptime(match.group(1), "%Y-%m-%d").date()
+                        if index == 0 else
+                        datetime(int(match.group(4)), int(match.group(3)), int(match.group(2))).date())
+            return deadline < NOW.date()
+        except ValueError:
+            continue
+    return False
+
 def inspect(seed):
     town,source,url=seed
     out={"commune":town,"source":source,"url":url,"status":"not_started",
@@ -255,7 +276,7 @@ def inspect(seed):
                         employer=primary_ats["employer"] or employer
                         application_evidence=primary_ats["application_evidence"] or application_evidence
                     # Closed labels and internal-only calls are not public job vacancies.
-                    explicit_closed=bool(CLOSED.search(title+" "+label) or (portal and portal["source_closed"]))
+                    explicit_closed=bool(CLOSED.search(title+" "+label+" "+body) or explicit_deadline_expired(body) or (portal and portal["source_closed"]))
                     public_title=title if len(title)>10 else label
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
                     general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))
@@ -296,7 +317,7 @@ def inspect(seed):
                 dates=dates_in(soup)
                 detail={"id":key(url),"url":url,"label":heading,"title":heading,
                         "date_source":dates[0] if dates else None,"dates":dates,
-                        "http":200,"evidence":"closed" if CLOSED.search(heading) else (
+                        "http":200,"evidence":"closed" if (CLOSED.search(heading+" "+body) or explicit_deadline_expired(body)) else (
                             "internal_only" if INTERNAL_ONLY.search(heading) else "individual_page_with_job_terms"),
                         "work_commune":None,"recruitment_commune":None,
                         "source_scope_commune":town,"source_commune_not_confirmed":True,

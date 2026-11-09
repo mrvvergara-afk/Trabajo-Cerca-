@@ -47,6 +47,15 @@ class DescubrimientoTests(unittest.TestCase):
         items = attached_public_pdfs("https://victoriachile.cl/convocatoria/", html)
         self.assertEqual(len(items), 1)
 
+    def test_nested_link_label_is_read_without_navigation_false_positives(self):
+        html = """<nav><a href='/oferta-laboral-falsa/'>Oferta</a></nav>
+          <main><a href='/convocatoria-2026/'><span>Convocatoria</span>
+          <strong>laboral</strong></a></main>"""
+        result = candidate_links(URL, html)
+        self.assertEqual(len(result), 1)
+        self.assertIn("convocatoria-2026", result[0]["url"])
+        self.assertIn("laboral", result[0]["anchor"])
+
     def test_finite_limit(self):
         html="<main>"+''.join(
           f"<a href='/empleo-{i}/'>Oferta laboral {i}</a>" for i in range(30))+"</main>"

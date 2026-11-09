@@ -95,7 +95,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
         "publication_enabled": False,
         "items": items
     }
-    review_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    review_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + chr(10), encoding="utf-8")
     return {"input_candidates": len(rows), "added": added, "updated": updated,
             "rejected_invalid_url": rejected, "pending_total": payload["pending_total"],
             "publication_enabled": False, "output": str(review_path)}

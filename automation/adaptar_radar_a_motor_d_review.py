@@ -7,6 +7,8 @@ import hashlib
 import ipaddress
 import json
 import re
+import os
+import tempfile
 from pathlib import Path
 from urllib.parse import urlsplit, parse_qsl, urlencode
 
@@ -142,7 +144,21 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
         "publication_enabled": False,
         "items": items
     }
-    review_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + chr(10), encoding="utf-8")
+    # Write atomically: interrupted jobs must not truncate the previous queue.
+    serialized = json.dumps(payload, ensure_ascii=False, indent=2) + chr(10)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8",
+                                         dir=review_path.parent, prefix=".motor_d_review_",
+                                         suffix=".tmp", delete=False) as handle:
+            temporary = Path(handle.name)
+            handle.write(serialized)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, review_path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
     return {"input_candidates": len(rows), "added": added, "updated": updated,
             "rejected_invalid_url": rejected, "pending_total": payload["pending_total"],
             "publication_enabled": False, "output": str(review_path)}

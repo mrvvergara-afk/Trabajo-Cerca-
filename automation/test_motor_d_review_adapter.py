@@ -119,6 +119,24 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertEqual(target.read_bytes(), before)
             self.assertEqual(list(Path(tmp).glob(".motor_d_review_*.tmp")), [])
 
+    def test_missing_recrawl_hash_does_not_revoke_signed_review(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            row = {"url": "https://example.cl/afiche.pdf", "document_sha256": "a" * 64}
+            source.write_text(json.dumps([row]), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 8))
+            queue = json.loads(target.read_text(encoding="utf-8"))
+            queue["items"][0].update(review_status="approved", review_signature="signed",
+                                     publication_eligible=True)
+            target.write_text(json.dumps(queue), encoding="utf-8")
+            row.pop("document_sha256")
+            source.write_text(json.dumps([row]), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 9))
+            saved = json.loads(target.read_text(encoding="utf-8"))["items"][0]
+            self.assertEqual(saved["review_status"], "approved")
+            self.assertEqual(saved["document_sha256"], "a" * 64)
+            self.assertEqual(saved["review_signature"], "signed")
+
     def test_redacts_chilean_landline(self):
         self.assertEqual(adapter.sanitize_excerpt("Llamar al 45 234567"),
                          "Llamar al [teléfono]")

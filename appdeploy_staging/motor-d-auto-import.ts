@@ -69,14 +69,16 @@ export async function motorDAutoImportHandler(){
     if(!source)return recordStatus('awaiting_first_express_batch');
     const batches=source.data.batches;
     if(source.data.schema_version!==1||!Array.isArray(batches)||batches.length>256)return recordStatus('invalid_index');
+    let quarantinedCount=0;
+    let previouslyProcessedCount=0;
     for(const entry of batches as Array<Record<string,unknown>>){
       const batchId=String(entry.batch_id||''),relative=String(entry.file||'');
       if(!/^motor-d-\d{8}-[a-f0-9]{18}$/.test(batchId)||
          !/^\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json$/.test(relative)||
          !relative.endsWith('/'+batchId+'.json'))return recordStatus('invalid_batch_reference',{batchId});
-      if(QUARANTINED_BATCHES.has(batchId))continue;
+      if(QUARANTINED_BATCHES.has(batchId)){quarantinedCount++;continue;}
       const [old]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
-      if(old?.results?.length)continue;
+      if(old?.results?.length){previouslyProcessedCount++;continue;}
       const file=await load('automation/motor_d_ready/'+relative,token);
       if(!file)return recordStatus('batch_missing',{batchId});
       const data=file.data;
@@ -121,7 +123,7 @@ export async function motorDAutoImportHandler(){
       }
       return recordStatus('imported_waiting_for_feed',{batchId,accepted,known});
     }
-    return recordStatus('no_unprocessed_batches');
+    return recordStatus('no_unprocessed_batches',{indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount});
   }catch(e){return recordStatus('bridge_error',{error:String(e).slice(0,180)});}
 }
 

@@ -8,6 +8,7 @@ import re
 from ocr_review_security import verify, timestamp, redact
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from requests.exceptions import RequestException
 
 try:
     from motor_d_express import classify, produce
@@ -37,7 +38,7 @@ def eligible(item, today=None, key=None, document_loader=None, now=None):
             return False
         if document_loader is None or hashlib.sha256(document_loader(item["url"])).hexdigest() != item["document_sha256"]:
             return False
-    except (ValueError, TypeError, KeyError, OSError, TimeoutError, ConnectionError):
+    except (ValueError, TypeError, KeyError, OSError, TimeoutError, ConnectionError, RequestException):
         return False
     if item.get("extractor") not in {"pdf_text", "pdf_ocr_local", "imagen_ocr_local", "html_text", "article_body_text"} or item.get("publication_date_confirmed") is not True:
         return False

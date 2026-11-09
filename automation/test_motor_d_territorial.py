@@ -82,6 +82,63 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertIn("[correo]",excerpt)
         self.assertIn("[teléfono]",excerpt)
 
+    def test_reponedor_cross_posted_from_concepcion_uses_muelchen_worksite(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url=("https://www.chiletrabajos.cl/trabajo/"
+             "reponedor-part-time-mulchen-3927989")
+        html=BeautifulSoup(
+            "<html><h1>REPONEDOR PART TIME MULCHEN</h1>"
+            "<div>Buscado Cultiva Fecha 2026-11-06 16:59:10 "
+            "Expira 2027-01-20 Ubicación Concepción Categoría Ventas "
+            "Postular</div>"
+            "<article>Buscamos Mercaderistas part time, para realizar "
+            "reposición de 30 minutos una vez por semana, tenemos "
+            "disponible supermercado en MULCHEN, se paga $5.000. "
+            "Enviar curriculum e indicar que localidad postula."
+            "</article></html>", "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,html,None)):
+            row=engine.inspect(("Mulchén","Chiletrabajos · Reponedor Mulchén",url))["candidates"][0]
+        self.assertEqual(row["work_commune"],"Mulchén")
+        self.assertEqual(row["employer"],"Cultiva")
+        self.assertEqual(row["date_source"],"2026-11-06")
+        self.assertEqual(row["deadline"],"2027-01-20")
+        self.assertTrue(row["application_evidence"])
+        self.assertEqual(classify_ready(row,date(2026,11,9))[0],"RECUPERACION")
+
+    def test_malleco_municipal_construction_job_uses_explicit_worksite(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url=("https://www.chiletrabajos.cl/trabajo/"
+             "prevencionista-de-riesgos-malleco-3924497")
+        html=BeautifulSoup(
+            "<html><h1>PREVENCIONISTA DE RIESGOS – MALLECO</h1>"
+            "<div>Buscado Constructora Fecha 2026-11-02 13:29:45 "
+            "Expira 2027-01-16 Ubicación Angol Categoría Técnicos Postular</div>"
+            "<article>Empresa constructora requiere prevencionista de riesgos "
+            "para sus obras ubicadas en Purén, Los Sauces y Traiguén. "
+            "POSTULACIÓN: Enviar CV indicando disponibilidad. "
+            "Se requieren inspecciones y capacitaciones.</article>"
+            "</html>", "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,html,None)):
+            row=engine.inspect(("Purén","Chiletrabajos · Prevencionista obras Malleco",url))["candidates"][0]
+        self.assertEqual(row["work_commune"],"Purén")
+        self.assertEqual(row["employer"],"Constructora")
+        self.assertEqual(classify_ready(row,date(2026,11,9))[0],"RECUPERACION")
+
+    def test_cross_posting_direct_seeds_cover_three_communes(self):
+        expected={
+            "Traiguén": "part-time-para-traiguen-en-la-araucania-3924463",
+            "Mulchén": "reponedor-part-time-mulchen-3927989",
+            "Purén": "prevencionista-de-riesgos-malleco-3924497"
+        }
+        for town, slug in expected.items():
+            rows=[url for commune, source, url in engine.SEEDS
+                  if commune==town and url.endswith(slug)]
+            self.assertEqual(len(rows),1)
+
     def test_individual_portal_seeds_recover_real_employer_date_and_worksite(self):
         from datetime import date
         from unittest.mock import patch

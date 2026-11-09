@@ -33,7 +33,7 @@ ssan.redsalud.gob.cl traiguencity.cl chiletrabajos.cl kitempleo.cl municipalidad
 """.split())
 WORK_TOWNS = ("Angol", "Collipulli", "Ercilla", "Renaico", "Mininco",
               "Los Sauces", "Purén", "Traiguén", "Lumaco", "Nacimiento",
-              "Negrete", "Mulchén", "Victoria")
+              "Negrete", "Mulchén", "Victoria", "Quilaco")
 MONTHS = dict(zip(("enero febrero marzo abril mayo junio julio agosto septiembre "
                    "octubre noviembre diciembre").split(), range(1, 13)))
 OPENER = build_opener(type("NoRedirect", (HTTPRedirectHandler,), {"redirect_request": lambda *args: None})())
@@ -236,7 +236,7 @@ def parse_deadline(text: str) -> dt.date | None:
 def parse_source_date(text: str) -> dt.date | None:
     """Detecta fecha de encabezado inequívoca, no menciones históricas genéricas."""
     first = re.sub(r"\s+", " ", text[:1800])
-    cities = r"(?:Lumaco|Angol|Victoria|Renaico|Traigu[eé]n|Negrete|Nacimiento|Pur[eé]n|Mulch[eé]n|Collipulli|Ercilla)"
+    cities = r"(?:Lumaco|Angol|Victoria|Renaico|Traigu[eé]n|Negrete|Nacimiento|Pur[eé]n|Mulch[eé]n|Collipulli|Ercilla|Quilaco)"
     weekdays = r"(?:(?:lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)\s+)?"
     marker = rf"{cities}\s*,\s*(?:a\s+)?{weekdays}"
     marker += r"(\d{1,2})\s+de\s+([a-záéíóú]+)\s+(?:de(?:l)?\s+)?(20\d{2})"

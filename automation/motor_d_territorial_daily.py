@@ -303,7 +303,7 @@ def inspect(seed):
             heading_folded=fold(heading.get_text(" ",strip=True)) if heading else ""
             # GitHub runners sometimes get the national default search page
             # even with ?2=<town>; never treat that as a city-filtered feed.
-            if not re.search(r"(?<!\\w)"+re.escape(fold(town))+r"(?!\\w)",heading_folded):
+            if not re.search(r"(?<!\w)"+re.escape(fold(town))+r"(?!\w)",heading_folded):
                 out["status"]="search_filter_not_confirmed"
                 out["errors"].append("chiletrabajos_territory_heading_missing")
                 return out

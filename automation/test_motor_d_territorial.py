@@ -59,6 +59,62 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
         self.assertEqual(items,[])
 
+    def test_unsafe_source_urls_and_redirects_never_receive_http_reads(self):
+        from unittest.mock import patch
+        for unsafe in ("http://munimulchen.cl/empleos",
+                       "https://127.0.0.1/private",
+                       "https://169.254.169.254/latest/meta-data",
+                       "https://localhost/offer",
+                       "https://internal.local/post"):
+            with self.subTest(url=unsafe), patch.object(engine.requests, "get") as get:
+                status, soup, reason = engine.request_page(unsafe)
+                self.assertEqual((status, soup, reason),
+                                 (0, None, "source_url_not_authorized"))
+                get.assert_not_called()
+
+    def test_redirect_outside_publisher_is_blocked_before_following(self):
+        from unittest.mock import patch
+        class Response:
+            status_code = 302
+            headers = {"Location": "https://evil.example/offer"}
+            def close(self): pass
+        with patch.object(engine.requests, "get", return_value=Response()) as get:
+            status, soup, reason = engine.request_page("https://www.munimulchen.cl/empleos")
+            self.assertEqual(status, 302)
+            self.assertIsNone(soup)
+            self.assertEqual(reason, "redirect_not_authorized")
+            self.assertEqual(get.call_count, 1)
+            self.assertFalse(get.call_args.kwargs["allow_redirects"])
+
+    def test_safe_same_publisher_redirect_remains_readable(self):
+        from unittest.mock import patch
+        class Response:
+            def __init__(self, code, headers, body=b""):
+                self.status_code, self.headers, self.body = code, headers, body
+            def iter_content(self, _):
+                yield self.body
+            def close(self): pass
+        redirect = Response(301, {"Location": "https://munimulchen.cl/ofertas"})
+        html = Response(200, {"Content-Type": "text/html"},
+                        b"<main><a href='/oferta-laboral-1'>Oferta laboral</a></main>")
+        with patch.object(engine.requests, "get", side_effect=[redirect, html]) as get:
+            status, soup, reason = engine.request_page("https://www.munimulchen.cl/empleos")
+            self.assertEqual(status, 200)
+            self.assertIsNone(reason)
+            self.assertEqual(soup.find("a").get_text(), "Oferta laboral")
+            self.assertEqual(get.call_count, 2)
+            self.assertEqual(get.call_args_list[1].args[0],
+                             "https://munimulchen.cl/ofertas")
+
+    def test_daily_writers_share_concurrency_group_and_preserve_artifacts(self):
+        from pathlib import Path
+        workflow_dir = Path(__file__).resolve().parents[1] / ".github" / "workflows"
+        for name in ("motor-d-territorial-daily.yml", "trabajo-cerca-radar-diario.yml"):
+            workflow = (workflow_dir / name).read_text(encoding="utf-8")
+            self.assertIn("group: trabajo-cerca-motor-d-ready-writers", workflow)
+            self.assertIn("cancel-in-progress: false", workflow)
+            self.assertIn("upload-artifact@v4", workflow)
+
     def test_external_host_is_not_followed(self):
         html='<a href="https://example.org/trabajo-operadores">Trabajo Operadores</a>'
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")

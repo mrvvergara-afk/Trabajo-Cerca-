@@ -134,6 +134,7 @@ export async function confirmMotorDPublications(){
     const page=await readPublicFeedPage(feedCursor);
     if(!page || ('degraded' in page && page.degraded===true) ||
        ('feedRebuilding' in page && page.feedRebuilding===true))break;
+    if(!Array.isArray(page.items))break;
     feedCount+=page.items.length;
     for(const row of page.items as Array<Record<string,unknown>>){
       if(typeof row.id==='string')visibleIds.add(row.id);

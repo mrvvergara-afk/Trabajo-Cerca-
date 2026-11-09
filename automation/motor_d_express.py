@@ -136,7 +136,7 @@ def atomic_json_write(path, payload):
         with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
                                          prefix=".motor_d_", suffix=".tmp", delete=False) as handle:
             temporary = Path(handle.name)
-            handle.write(json.dumps(payload, ensure_ascii=False, indent=2) + "\\n")
+            handle.write(json.dumps(payload, ensure_ascii=False, indent=2) + chr(10))
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temporary, path)

@@ -187,9 +187,12 @@ def produce(report,root=READY,today=None):
                    "producer":"motor_d_territorial","batch_id":batch_id,
                    "batch_type":batch_type,"offers":chunk}
             target=root/path
+            is_new_batch = not any(x.get("batch_id")==batch_id for x in batches)
+            if is_new_batch and len(batches) >= 256:
+                raise RuntimeError("Límite de manifiesto D: no crear lotes huérfanos sin recibo")
             target.parent.mkdir(parents=True,exist_ok=True)
             atomic_json_write(target, batch)
-            if not any(x.get("batch_id")==batch_id for x in batches):
+            if is_new_batch:
                 batches.append({"batch_id":batch_id,"file":path,"count":len(chunk),
                                 "batch_type":batch_type})
             seen_ids.update(offer["id_fuente"] for offer in chunk)

@@ -27,14 +27,14 @@ on:
     - cron: '15 9,13,17,21 * * *'
 permissions:
   contents: write
-concurrency:
-  group: trabajo-cerca-motor-d-ready-writers
-  cancel-in-progress: false
 jobs:
   # Integration PR only: real web coverage test, read-only GitHub token.
   # Never create publication batches, push files or contact the AppDeploy importer.
   territorial_audit_pr:
     if: github.event_name == 'pull_request' && github.base_ref == 'fix/motor-d-ocr-bridge-20261108'
+    concurrency:
+      group: motor-d-pr-audit-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     timeout-minutes: 17
     permissions:
@@ -78,6 +78,9 @@ jobs:
 
   territorial_scan:
     if: github.event_name != 'pull_request'
+    concurrency:
+      group: trabajo-cerca-motor-d-ready-writers
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     timeout-minutes: 17
     steps:

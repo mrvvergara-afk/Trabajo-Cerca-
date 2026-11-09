@@ -79,6 +79,15 @@ class MotorDExpressTests(unittest.TestCase):
         self.assertEqual(engine.classify(record(work_commune="Negrete"),TODAY)[0],"EXPRESS")
         self.assertEqual(engine.classify(record(work_commune="Quilaco"),TODAY)[0],"SEGUNDA_PASADA")
 
+    def test_locality_aliases_with_accents_and_case(self):
+        for locality, expected in (("Mininco", "Collipulli"), ("MININCO", "Collipulli"),
+                                   ("Coihue", "Negrete"), ("Coigüe", "Negrete"),
+                                   ("COIGÜE", "Negrete")):
+            with self.subTest(locality=locality):
+                state, _, offer = engine.classify(record(work_commune=locality), TODAY)
+                self.assertEqual(state, "EXPRESS")
+                self.assertEqual(offer["comunas"], [expected])
+
     def test_reject_unsafe_url(self):
         self.assertIsNone(engine.canonical_url("http://example.org/oferta"))
         self.assertIsNone(engine.canonical_url("https://127.0.0.1/job"))

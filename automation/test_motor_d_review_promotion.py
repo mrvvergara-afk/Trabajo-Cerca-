@@ -115,6 +115,12 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertEqual(report['candidates'], [])
         self.assertEqual(decisions[0]['state'], 'not_eligible')
 
+    def test_pdf_verification_uses_document_reader_size_limit(self):
+        from unittest.mock import patch
+        from trabajo_cerca.trabajo_cerca_lector_documental import maximum_for_url
+        self.assertEqual(maximum_for_url("https://munimulchen.cl/afiche.pdf"), 16 * 1024 * 1024)
+        self.assertEqual(maximum_for_url("https://munimulchen.cl/oferta"), 6000000)
+
     def test_changed_document_and_unavailable_evidence_block(self):
         self.assertEqual(self.report([approved()], b'changed')['candidates'], [])
         result, _ = promotion.prepare({'schema': 'trabajo-cerca.motor-d-review.v1',

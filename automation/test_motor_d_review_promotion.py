@@ -121,6 +121,12 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertEqual(maximum_for_url("https://munimulchen.cl/afiche.pdf"), 16 * 1024 * 1024)
         self.assertEqual(maximum_for_url("https://munimulchen.cl/oferta"), 6000000)
 
+    def test_application_url_must_be_public_https_even_when_signed(self):
+        for url in ("http://example.cl/apply", "https://127.0.0.1/apply",
+                    "https://localhost/apply"):
+            with self.subTest(url=url):
+                self.assertEqual(self.report([self.signed(application_url=url)])['candidates'], [])
+
     def test_changed_document_and_unavailable_evidence_block(self):
         self.assertEqual(self.report([approved()], b'changed')['candidates'], [])
         result, _ = promotion.prepare({'schema': 'trabajo-cerca.motor-d-review.v1',

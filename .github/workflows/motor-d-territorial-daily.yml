@@ -72,13 +72,11 @@ jobs:
         run: |
           python - <<'PY'
           import json
-          import re
-          from urllib.parse import urlsplit
           from datetime import datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
           from motor_d_express import build, validate_inventory_freshness
-          from radar_diario import read_feed, canonical
+          from motor_d_catalog_probe import read_full_feed, check_ready_offers
           source=Path("automation/motor_d_discovery/territorial_daily.json")
           report=json.loads(source.read_text(encoding="utf-8"))
           today=datetime.now(ZoneInfo("America/Santiago")).date()
@@ -86,23 +84,10 @@ jobs:
           classified=build(report,today)
           ready=[entry["offer"] for state in ("EXPRESS","RECUPERACION")
                  for entry in classified[state] if entry["offer"]]
-          try:
-              catalog,complete,rows,error=read_feed(max_pages=30)
-          except Exception as exc:
-              catalog,complete,rows,error=set(),False,0,type(exc).__name__
-          def source_identity(raw):
-              normalized=canonical(raw)
-              parsed=urlsplit(normalized)
-              if (parsed.hostname or "").removeprefix("www.")=="chiletrabajos.cl":
-                  match=re.search(r"(?:^|-)([0-9]{5,12})$",parsed.path.rstrip("/").split("/")[-1])
-                  if match:
-                      return "chiletrabajos:"+match.group(1)
-              return normalized
-          catalog_identities={source_identity(url) for url in catalog} if complete else set()
+          catalog,complete,error=read_full_feed(max_pages=30)
+          existing=check_ready_offers(ready,catalog,complete)
           evidence=[]
           for offer in ready:
-              source_url=canonical(offer["url_original"])
-              seen_catalog=complete and source_identity(source_url) in catalog_identities
               evidence.append({
                   "id_fuente":offer["id_fuente"],
                   "cargo":offer["cargo"],"empresa":offer["empresa"],
@@ -110,8 +95,7 @@ jobs:
                   "fecha_publicacion":offer["fecha_publicacion"],
                   "fecha_cierre":offer.get("fecha_cierre"),
                   "batch_type":offer["tipo_lote"],
-                  "catalog_url_status":("already_in_public_catalog" if seen_catalog
-                      else "not_found_by_url_or_job_id_only" if complete else "catalog_unavailable")
+                  "catalog_url_status":existing.get(offer["id_fuente"],"catalog_unavailable")
               })
           summary={
               "schema":"trabajo-cerca.motor-d-pr-preview.v1",
@@ -125,10 +109,10 @@ jobs:
               "excluded":len(classified["DESCARTADO"]),
               "duplicate_candidates":len(classified["DUPLICADO"]),
               "feed_complete":complete,
-              "feed_rows":rows,
+              "feed_rows":len(catalog),
               "feed_error":error,
               "publications_created":0,
-              "catalog_semantic_dedup_not_yet_verified":True,
+              "catalog_identity_and_exact_semantic_checked":complete,
               "ready_candidates":evidence
           }
           target=Path("automation/motor_d_discovery/territorial_pr_preview.json")

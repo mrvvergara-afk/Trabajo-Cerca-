@@ -56,8 +56,8 @@ class DailyRadarTests(unittest.TestCase):
 
     def test_full_sweep_visits_every_seed_and_web_source(self):
         import tempfile
-        with patch.object(radar_diario, 'read_feed', return_value=(set(), True, 0, None)), \\
-             patch.object(radar_diario, 'read_one', return_value={'url': '', 'decision': 'sin_evidencia_suficiente'}) as reader, \\
+        with patch.object(radar_diario, 'read_feed', return_value=(set(), True, 0, None)), \
+             patch.object(radar_diario, 'read_one', return_value={'url': '', 'decision': 'sin_evidencia_suficiente'}) as reader, \
              patch.object(radar_diario, 'discover', return_value={'status': 'index_read', 'checked': []}) as discovery:
             with tempfile.TemporaryDirectory() as tmp:
                 self.assertEqual(radar_diario.main(['--batch', 'all', '--output', tmp]), 0)

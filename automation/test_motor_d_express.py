@@ -41,6 +41,31 @@ class MotorDExpressTests(unittest.TestCase):
                 self.assertTrue((path.parent/entries[batch_id]["file"]).exists())
         self.assertIn("d_ad791baa0556cf59d931",manifest["seen_offer_ids"])
 
+    def test_same_chiletrabajos_job_id_slug_change_never_generates_second_batch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            first=record(url="https://www.chiletrabajos.cl/trabajo/operador-agricola-mulchen-3999901",
+                         title="Operador Agrícola – Turno A")
+            second=record(url="https://www.chiletrabajos.cl/trabajo/3999901",
+                          title="Operador Agrícola – Turno A corregido")
+            initial=engine.produce({"candidates":[first]},root,TODAY)
+            self.assertEqual(initial["daily_batch_offers"],1)
+            later=engine.produce({"candidates":[second]},root,TODAY)
+            self.assertEqual(later["daily_batch_offers"],0)
+            manifest=json.loads((root/"index.json").read_text(encoding="utf8"))
+            self.assertEqual(len(manifest["batches"]),1)
+            self.assertIn("source:chiletrabajos:3999901",manifest["seen_identity_keys"])
+
+    def test_chiletrabajos_numeric_job_identity_from_first_party_url(self):
+        self.assertEqual(engine.job_source_identity(
+            "https://www.chiletrabajos.cl/trabajo/empleo-nacimiento-3923358"),
+            "chiletrabajos:3923358")
+        self.assertEqual(engine.job_source_identity(
+            "https://www.chiletrabajos.cl/trabajo/3923358"),
+            "chiletrabajos:3923358")
+        self.assertIsNone(engine.job_source_identity("https://nacimiento.cl/omil/aviso"))
+        self.assertIsNone(engine.job_source_identity("http://127.0.0.1/private"))
+
     def test_bad_candidate_does_not_abort_valid_offer_and_reports_reason(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = engine.produce({"candidates": [None, record(1)]}, Path(tmp), TODAY)

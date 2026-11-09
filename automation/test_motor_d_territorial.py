@@ -102,6 +102,56 @@ class TerritorialSafetyTests(unittest.TestCase):
             self.assertEqual(get.call_count, 1)
             self.assertFalse(get.call_args.kwargs["allow_redirects"])
 
+    def test_chiletrabajos_generic_national_results_are_not_city_offers(self):
+        from unittest.mock import patch
+        generic = BeautifulSoup(
+            "<html><h1>Trabajos recientes en Chile</h1>"
+            "<a href='/trabajo/operador-123'>Operador de planta</a></html>", "html.parser")
+        with patch.object(engine, "request_page", return_value=(200, generic, None)) as page:
+            result = engine.inspect(("Angol", "Chiletrabajos · Angol",
+                "https://www.chiletrabajos.cl/ciudad/angol.html"))
+            self.assertEqual(result["status"], "search_filter_not_confirmed")
+            self.assertEqual(result["candidates"], [])
+            self.assertEqual(page.call_count, 1)
+
+    def test_real_city_index_to_individual_verified_offer_stays_publishable(self):
+        from datetime import timedelta
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        day = engine.NOW.date()
+        deadline = day + timedelta(days=30)
+        index = BeautifulSoup(
+            "<h1>Trabajos en Angol, Región Araucanía</h1>"
+            "<a href='/trabajo/tecnico-telecom-3990000'>"
+            "Técnico Telecomunicaciones - Angol</a>", "html.parser")
+        detail = BeautifulSoup(
+            f"<h1>Técnico Telecomunicaciones - Angol</h1>"
+            f"<div>ID 3990000 Buscado DOMINION SPA Fecha {day.isoformat()} "
+            f"Expira {deadline.isoformat()} Ubicación Angol CL Categoría "
+            f"Informática / Telecomunicaciones Postular</div>", "html.parser")
+        url = "https://www.chiletrabajos.cl/ciudad/angol.html"
+        with patch.object(engine, "request_page",
+                          side_effect=[(200, index, None), (200, detail, None)]):
+            report = engine.inspect(("Angol", "Chiletrabajos · Angol", url))
+        self.assertEqual(report["status"], "scanned_with_candidates")
+        self.assertEqual(len(report["candidates"]), 1)
+        item = report["candidates"][0]
+        self.assertEqual(item["work_commune"], "Angol")
+        self.assertEqual(item["employer"], "DOMINION SPA")
+        self.assertEqual(item["date_source"], day.isoformat())
+        self.assertEqual(item["deadline"], deadline.isoformat())
+        self.assertTrue(item["application_evidence"])
+        state, reason, offer = classify_ready(item, day)
+        self.assertEqual(state, "EXPRESS")
+        self.assertEqual(offer["comunas"], ["Angol"])
+        self.assertEqual(offer["fecha_cierre"], deadline.isoformat())
+
+    def test_critical_chiletrabajos_city_index_is_explicit(self):
+        matches = [(town,url) for town, source, url in engine.SEEDS
+                   if source == "Chiletrabajos · Angol"]
+        self.assertEqual(matches,
+                         [("Angol", "https://www.chiletrabajos.cl/ciudad/angol.html")])
+
     def test_safe_same_publisher_redirect_remains_readable(self):
         from unittest.mock import patch
         class Response:

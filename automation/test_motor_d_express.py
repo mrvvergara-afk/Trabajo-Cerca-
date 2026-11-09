@@ -115,6 +115,22 @@ class MotorDExpressTests(unittest.TestCase):
             self.assertEqual(json.loads(target.read_text(encoding="utf8"))["offers"][0]["cargo"], "Operario")
             self.assertEqual(list(target.parent.glob(".motor_d_*.tmp")), [])
 
+    def test_full_manifest_does_not_write_unindexed_batch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entries = [{"batch_id": f"motor-d-20261101-{i:018x}",
+                        "file": f"20261101/motor-d-20261101-{i:018x}.json", "count": 0}
+                       for i in range(256)]
+            (root / "20261101").mkdir()
+            for entry in entries:
+                (root / entry["file"]).write_text(json.dumps({"offers": []}), encoding="utf8")
+            engine.atomic_json_write(root / "index.json",
+                                     {"schema_version": 1, "batches": entries, "seen_offer_ids": []})
+            with self.assertRaisesRegex(RuntimeError, "Límite de manifiesto"):
+                engine.produce({"candidates": [record()]}, root, TODAY)
+            self.assertFalse((root / "20261106").exists())
+            self.assertEqual(len(json.loads((root / "index.json").read_text())["batches"]), 256)
+
     def test_daily_and_recovery_are_written_to_separate_batches(self):
         with tempfile.TemporaryDirectory() as tmp:
             candidates=[record(i) for i in range(1,17)]

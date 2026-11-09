@@ -195,15 +195,15 @@ def explicit_work_commune(body):
     places={fold(place):place for place in COMMUNES}
     places.update(aliases)
     cues=(
-        r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\\s*[:\\-]\\s*([^.;]{3,100})",
-        r"(?:con base en|base de operaciones en|trabajo con base en|realizar labores en taller y terreno,? con base en)\\s+([^.;]{3,90})",
-        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en)\\s+([^.;]{3,90})"
+        r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
+        r"(?:con base en|base de operaciones en|trabajo con base en|realizar labores en taller y terreno,? con base en)\s+([^.;]{3,90})",
+        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en)\s+([^.;]{3,90})"
     )
     for cue in cues:
         for field in re.finditer(cue,value,re.I):
             clause=field.group(1)
             for name,commune in places.items():
-                if re.search(r"(?<!\\w)"+re.escape(name)+r"(?!\\w)",clause):
+                if re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",clause):
                     return commune
     return None
 
@@ -332,7 +332,7 @@ def inspect(seed):
         if status!=200 or soup is None:
             out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
             return out
-        if source.startswith("Chiletrabajos · "):
+        if source.startswith("Chiletrabajos · ") and not urlsplit(url).path.startswith("/trabajo/"):
             heading=soup.select_one("h1")
             page_title=soup.title
             heading_text=heading.get_text(" ",strip=True) if heading else ""
@@ -379,10 +379,6 @@ def inspect(seed):
                         job_commune=portal["work_commune"] or job_commune
                         employer=portal["employer"] or employer
                         application_evidence=portal["application_evidence"] or application_evidence
-                        if portal.get("deadline"):
-                            parsed_deadline=portal["deadline"]
-                        else:
-                            parsed_deadline=None
                     primary_ats=hiringroom_metadata(detail_soup,title,detail_url)
                     if primary_ats:
                         title=primary_ats["title"]

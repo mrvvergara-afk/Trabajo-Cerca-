@@ -30,7 +30,9 @@ def canonical(raw: str) -> str:
 def sanitize_excerpt(value):
     if not isinstance(value, str):
         return None
-    return re.sub(r"(?<![\\d])(?:\\+?56[\\s-]?)?(?:[2-9][\\s-]?\\d{7}|9[\\s-]?\\d{8})(?!\\d)", "[teléfono]", value)
+    # Chilean landlines and mobile numbers, including spaces, hyphens and +56.
+    pattern = r"(?<!\d)(?:\+?56[\s-]?)?(?:[2-9][\s-]?\d[\s-]?\d{3}[\s-]?\d{3}|9[\s-]?\d{4}[\s-]?\d{4})(?!\d)"
+    return re.sub(pattern, "[teléfono]", value)
 
 def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) -> dict:
     today = today or dt.date.today()
@@ -87,6 +89,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             first_seen = existing.get("first_discovered") or existing.get("date_discovered") or discovered
             protected_keys = {
                 "review_status", "review_reason", "approved_by", "approved_at",
+                "date_source", "publication_date_confirmed",
                 "rejected_by", "rejected_at", "evidence_sha256",
                 "work_location_verified", "employer_verified",
                 "application_route_verified", "publication_eligible",

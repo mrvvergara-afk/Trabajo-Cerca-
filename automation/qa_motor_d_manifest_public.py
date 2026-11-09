@@ -154,16 +154,12 @@ def reconcile(batches, public_rows, feed_complete, feed_error=None):
         results.append({**entry, "status":how, "public_ids":distinct_ids,
                         "multiple_public_ids":len(distinct_ids)>1})
     statuses = Counter(x["status"] for x in results)
-    public_source_duplicates = sorted(
-        {"origin_identity":k, "public_ids":sorted({str(r.get("id")) for r in v if r.get("id")}),
-         "count":len({r.get("id") for r in v if r.get("id")})}
-        for k,v in public_by_source.items()
-        if len({r.get("id") for r in v if r.get("id")})>1
-    ) if False else [
-        {"origin_identity":k,
-         "public_ids":sorted({str(r.get("id")) for r in v if r.get("id")}),
-         "count":len({r.get("id") for r in v if r.get("id")})}
-        for k,v in sorted(public_by_source.items()) if len({r.get("id") for r in v if r.get("id")})>1
+    public_source_duplicates = [
+        {"origin_identity":key,
+         "public_ids":sorted({str(row.get("id")) for row in rows if row.get("id")}),
+         "count":len({row.get("id") for row in rows if row.get("id")})}
+        for key,rows in sorted(public_by_source.items())
+        if len({row.get("id") for row in rows if row.get("id")}) > 1
     ]
     return {
         "schema":"trabajo-cerca.motor-d-manifest-reconciliation.v1",

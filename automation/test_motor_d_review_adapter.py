@@ -37,6 +37,48 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertEqual(saved["items"][0]["date_discovered"],"2026-11-08")
             self.assertIsNone(saved["items"][0]["text_excerpt"])
 
+    def test_real_radar_evidence_maps_into_review_without_auto_approval(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            source.write_text(json.dumps([{
+                "url": "https://municipalidadcollipulli.cl/omil/oferta",
+                "source_id": "OMIL-COL",
+                "reported_territories": ["Collipulli"],
+                "reader_status": "candidato_para_revision",
+                "published_date_evidence": "2026-11-09",
+                "deadline_evidence": "2026-12-01",
+                "document_sha256": "a" * 64,
+                "publication_date_confirmed": True,
+                "http": 200, "extractor": "article_body_text"
+            }]), encoding="utf-8")
+            result = adapter.adapt(source, target, date(2026, 11, 9))
+            item = json.loads(target.read_text())["items"][0]
+            self.assertEqual(result["added"], 1)
+            self.assertEqual(item["document_sha256"], "a" * 64)
+            self.assertEqual(item["date_source"], "2026-11-09")
+            self.assertEqual(item["deadline"], "2026-12-01")
+            self.assertEqual(item["http"], 200)
+            self.assertEqual(item["review_status"], "pending")
+            self.assertFalse(item["publication_eligible"])
+
+    def test_legacy_documental_evidence_fields_are_not_lost(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            source.write_text(json.dumps([{
+                "url": "https://municipalidadcollipulli.cl/omil/afiche.pdf",
+                "source_date_evidence": "2026-11-07",
+                "deadline": "2026-12-01",
+                "sha256": "b" * 64,
+                "publication_date_confirmed": False
+            }]), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 9))
+            item = json.loads(target.read_text())["items"][0]
+            self.assertEqual(item["date_source"], "2026-11-07")
+            self.assertEqual(item["deadline"], "2026-12-01")
+            self.assertEqual(item["document_sha256"], "b" * 64)
+            self.assertFalse(item["publication_date_confirmed"])
+            self.assertFalse(item["publication_eligible"])
+
     def test_same_canonical_url_updates_instead_of_duplicating(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)

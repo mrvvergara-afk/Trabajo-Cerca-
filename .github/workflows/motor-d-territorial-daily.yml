@@ -8,6 +8,8 @@ on:
       - 'automation/test_motor_d_territorial.py'
       - 'automation/motor_d_express.py'
       - 'automation/test_motor_d_express.py'
+      - 'automation/adaptar_radar_a_motor_d_review.py'
+      - 'automation/test_motor_d_review_adapter.py'
       - '.github/workflows/motor-d-territorial-daily.yml'
   push:
     branches: [main]
@@ -16,6 +18,8 @@ on:
       - 'automation/test_motor_d_territorial.py'
       - 'automation/motor_d_express.py'
       - 'automation/test_motor_d_express.py'
+      - 'automation/adaptar_radar_a_motor_d_review.py'
+      - 'automation/test_motor_d_review_adapter.py'
       - '.github/workflows/motor-d-territorial-daily.yml'
   schedule:
     # Four daily scans at 06:15, 10:15, 14:15, 18:15 in Chile during daylight saving time.
@@ -42,7 +46,7 @@ jobs:
       - name: Run territorial integrity tests
         run: python -m unittest discover -s automation -p 'test_motor_d_*.py' -v
       # Operational test after enabling bounded B/C; D remains an independent scout.
-      - name: Scan all 12 communes and identify source problems
+      - name: Scan all 13 communes and identify source problems
         if: github.event_name != 'pull_request'
         run: python automation/motor_d_territorial_daily.py
       - name: Classify express offers and write bounded publication batches
@@ -76,7 +80,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_ready/
           if ! git diff --cached --quiet; then
-            git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
+            git commit -m "data(motor-d): update 13-commune daily discovery state [skip ci]"
             # A simultaneous source edit is not a failed scan. Rebase and retry
             # instead of losing the report to a non-fast-forward push.
             for attempt in 1 2 3; do

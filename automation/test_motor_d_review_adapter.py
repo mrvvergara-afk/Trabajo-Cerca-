@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import date
 from pathlib import Path
 
@@ -104,6 +105,18 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             second = json.loads(target.read_text(encoding="utf-8"))
             self.assertEqual(second["items_total"], 1)
             self.assertEqual(second["items"][0]["review_status"], "rejected")
+            self.assertEqual(list(Path(tmp).glob(".motor_d_review_*.tmp")), [])
+
+    def test_failed_atomic_replace_preserves_previous_queue(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            source.write_text(json.dumps([{"url": "https://example.cl/omil"}]), encoding="utf-8")
+            adapter.adapt(source, target, date(2026, 11, 8))
+            before = target.read_bytes()
+            with patch.object(adapter.os, "replace", side_effect=OSError("simulated interruption")):
+                with self.assertRaises(OSError):
+                    adapter.adapt(source, target, date(2026, 11, 9))
+            self.assertEqual(target.read_bytes(), before)
             self.assertEqual(list(Path(tmp).glob(".motor_d_review_*.tmp")), [])
 
     def test_redacts_chilean_landline(self):

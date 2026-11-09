@@ -109,7 +109,7 @@ def strip_result(row: dict) -> dict:
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', default=str(Path(__file__).with_name('fuentes_diarias.json')))
-    parser.add_argument('--batch', default='auto', choices=('auto', '0', '1', '2'))
+    parser.add_argument('--batch', default='auto', choices=('auto', 'all', '0', '1', '2'))
     parser.add_argument('--output', default='salidas_radar')
     parser.add_argument('--max-items', type=int, default=30)
     args = parser.parse_args(argv)
@@ -118,11 +118,13 @@ def main(argv=None):
     config = json.loads(Path(args.config).read_text(encoding='utf8'))
     if set(config.get('territories', [])) != {'Angol', 'Collipulli', 'Ercilla', 'Lumaco', 'Los Sauces', 'Purén', 'Renaico', 'Traiguén', 'Victoria', 'Mulchén', 'Negrete', 'Nacimiento'}:
         raise ValueError('Inventario territorial incompleto')
-    batch = batch_for_time() if args.batch == 'auto' else int(args.batch)
+    batch = batch_for_time() if args.batch == 'auto' else (None if args.batch == 'all' else int(args.batch))
     sources = [(record, 'semilla') for record in config['seed_urls']]
     sources += [(record, 'fuente_web') for record in config['discovery']]
     selected = [(record, mode) for index, (record, mode) in enumerate(sources)
-                if index % 3 == batch][:args.max_items]
+                if batch is None or index % 3 == batch]
+    if batch is not None:
+        selected = selected[:args.max_items]
     feed_links, feed_complete, feed_count, feed_error = read_feed()
     status = []
     candidates = {}

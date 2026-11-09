@@ -175,6 +175,25 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertEqual(offer["fecha_cierre"], "2027-01-19")
         self.assertEqual(offer["fecha_publicacion"], "2026-11-05")
 
+    def test_chiletrabajos_recruiter_city_without_title_or_worksite_remains_pending(self):
+        from datetime import date
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        url="https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967"
+        page=BeautifulSoup(
+            "<html><h1>DOCENTE PSICOLOGO</h1>"
+            "<div>Buscado CORPORACION HD SPA Fecha 2026-10-18 "
+            "Expira 2027-01-01 Ubicación Angol Categoría Educación "
+            "Postular</div>"
+            "<article>Se requiere docente psicólogo para impartir curso "
+            "de competencias socioemocionales. Interesados postular "
+            "en sitio del portal.</article></html>", "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,page,None)):
+            job=engine.inspect(("Angol","Chiletrabajos · Docente test",url))["candidates"][0]
+        self.assertIsNone(job["work_commune"])
+        self.assertTrue(job["source_commune_not_confirmed"])
+        self.assertEqual(classify_ready(job,date(2026,11,9))[0],"SEGUNDA_PASADA")
+
     def test_portal_recruitment_city_or_residence_does_not_prove_job_worksite(self):
         from unittest.mock import patch
         url="https://www.chiletrabajos.cl/trabajo/mecanico-nacimiento-3925555"

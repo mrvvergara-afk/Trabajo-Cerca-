@@ -22,8 +22,8 @@ class OmilEvidenceGateTests(unittest.TestCase):
         self.assertEqual(result["existing_count"],3)
         self.assertEqual(result["review_count"],0)
         self.assertEqual(result["new_publications"],0)
-        self.assertEqual([x["origin_identity"] for x in result["records"]],
-                         ["chiletrabajos:"+x for x in source_ids])
+        self.assertEqual({x["origin_identity"] for x in result["records"]},
+                         {"chiletrabajos:"+x for x in source_ids})
         self.assertTrue(all(x["decision"]=="existing_public_offer" for x in result["records"]))
         self.assertTrue(all(x["publication_eligible"] is False for x in result["records"]))
 

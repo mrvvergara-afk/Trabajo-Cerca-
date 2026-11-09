@@ -26,6 +26,21 @@ def record(i=1, **patch):
     return item
 
 class MotorDExpressTests(unittest.TestCase):
+    def test_quarantined_historical_batches_stay_in_manifest_after_merge(self):
+        path=Path(__file__).resolve().parent/"motor_d_ready"/"index.json"
+        manifest=json.loads(path.read_text(encoding="utf-8"))
+        preserved={
+            "motor-d-20261108-bccafbb13b7baa5270":15,
+            "motor-d-20261108-50a5c80afe2d3bf4fd":9
+        }
+        entries={row["batch_id"]:row for row in manifest["batches"]}
+        for batch_id, expected_count in preserved.items():
+            with self.subTest(batch_id=batch_id):
+                self.assertIn(batch_id, entries)
+                self.assertEqual(entries[batch_id]["count"],expected_count)
+                self.assertTrue((path.parent/entries[batch_id]["file"]).exists())
+        self.assertIn("d_ad791baa0556cf59d931",manifest["seen_offer_ids"])
+
     def test_bad_candidate_does_not_abort_valid_offer_and_reports_reason(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = engine.produce({"candidates": [None, record(1)]}, Path(tmp), TODAY)

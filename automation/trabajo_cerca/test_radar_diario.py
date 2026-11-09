@@ -67,6 +67,15 @@ class DailyRadarTests(unittest.TestCase):
                 self.assertEqual(discovery.call_count, 23)
                 self.assertEqual(report['published_by_this_job'], 0)
 
+    def test_radar_refreshes_durable_ocr_queue_before_merging_new_evidence(self):
+        workflow = (Path(__file__).resolve().parents[2] / ".github" / "workflows" /
+                    "trabajo-cerca-radar-diario.yml").read_text(encoding="utf-8")
+        self.assertIn("Recuperar cola OCR vigente de main", workflow)
+        self.assertLess(workflow.index("Recuperar cola OCR vigente de main"),
+                        workflow.index("Integrar candidatos documentales a cola"))
+        self.assertIn("git show origin/main:automation/motor_d_review/radar_ocr_pending.json", workflow)
+        self.assertIn("group: trabajo-cerca-radar-gratis", workflow)
+
     def test_workflow_persists_queue_on_feed_outage_without_promotion(self):
         workflow = (Path(__file__).resolve().parents[2] / ".github" / "workflows" /
                     "trabajo-cerca-radar-diario.yml").read_text(encoding="utf-8")

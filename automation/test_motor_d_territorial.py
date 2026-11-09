@@ -455,14 +455,19 @@ class TerritorialSafetyTests(unittest.TestCase):
             self.assertEqual(get.call_args_list[1].args[0],
                              "https://munimulchen.cl/ofertas")
 
-    def test_daily_writers_share_concurrency_group_and_preserve_artifacts(self):
+    def test_radar_and_motor_d_have_distinct_non_cancelling_queues(self):
         from pathlib import Path
         workflow_dir = Path(__file__).resolve().parents[1] / ".github" / "workflows"
-        for name in ("motor-d-territorial-daily.yml", "trabajo-cerca-radar-diario.yml"):
+        expected = {
+            "motor-d-territorial-daily.yml": "group: trabajo-cerca-motor-d-territorial",
+            "trabajo-cerca-radar-diario.yml": "group: trabajo-cerca-radar-gratis"
+        }
+        for name, group in expected.items():
             workflow = (workflow_dir / name).read_text(encoding="utf-8")
-            self.assertIn("group: trabajo-cerca-motor-d-ready-writers", workflow)
+            self.assertIn(group, workflow)
             self.assertIn("cancel-in-progress: false", workflow)
             self.assertIn("upload-artifact@v4", workflow)
+            self.assertNotIn("group: trabajo-cerca-motor-d-ready-writers", workflow)
 
     def test_external_host_is_not_followed(self):
         html='<a href="https://example.org/trabajo-operadores">Trabajo Operadores</a>'

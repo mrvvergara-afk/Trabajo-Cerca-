@@ -165,7 +165,7 @@ jobs:
   territorial_scan:
     if: github.event_name != 'pull_request'
     concurrency:
-      group: trabajo-cerca-motor-d-ready-writers
+      group: trabajo-cerca-motor-d-territorial
       cancel-in-progress: false
     runs-on: ubuntu-latest
     timeout-minutes: 17

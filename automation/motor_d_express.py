@@ -65,6 +65,11 @@ def classify(item, today=None):
                 normalize(item.get("work_commune")), item.get("work_commune"))
     company = str(item.get("employer") or "").strip()
     title = str(item.get("title") or "").strip()
+    # A 2-character punctuation marker such as '..' is not a real employer.
+    # Do not turn portal placeholders into verified company names.
+    employer_key = normalize(company)
+    if not employer_key or employer_key in {"n a", "s n", "sin nombre", "no informado", "desconocido"}:
+        return "SEGUNDA_PASADA", "empleador_no_identificado", None
     published = item.get("date_source")
     if not isinstance(published,str) or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}",published):
         return "SEGUNDA_PASADA","fecha_original_no_acreditada; verificar fecha y vigencia",None

@@ -88,6 +88,8 @@ def safe_link(raw,base,origin):
         if u.scheme!="https" or not u.hostname or u.username or u.password or u.port:return None
         if u.hostname.lower()!=origin:return None
         if re.search(r"\.(?:jpg|png|gif|svg|css|js|zip|pdf)$",u.path,re.I):return None
+        if origin in ("www.chiletrabajos.cl","chiletrabajos.cl") and not u.path.startswith("/trabajo/"):
+            return None
         if not u.path or u.path in ("/","/index.php") or re.search(r"/(?:alertas-de-empleo|login|registro|faq|preguntas-frecuentes)/?$",u.path,re.I):return None
         if (u.hostname,u.path.rstrip("/"),u.query)==(urlsplit(base).hostname,urlsplit(base).path.rstrip("/"),urlsplit(base).query):return None
         return u.geturl().split("#",1)[0]
@@ -300,10 +302,15 @@ def inspect(seed):
             return out
         if source.startswith("Chiletrabajos · "):
             heading=soup.select_one("h1")
-            heading_folded=fold(heading.get_text(" ",strip=True)) if heading else ""
-            # GitHub runners sometimes get the national default search page
-            # even with ?2=<town>; never treat that as a city-filtered feed.
-            if not re.search(r"(?<!\w)"+re.escape(fold(town))+r"(?!\w)",heading_folded):
+            page_title=soup.title
+            heading_text=heading.get_text(" ",strip=True) if heading else ""
+            title_text=page_title.get_text(" ",strip=True) if page_title else ""
+            # The official city index may put its location in <title> only.
+            # A query result with no verified territorial heading is not
+            # evidence of an empty town and must never be treated as scoped.
+            label=fold(" ".join((heading_text,title_text)))
+            territory=fold(town)
+            if not re.search(r"\\btrabajos?\\s+(?:en|de)\\s+"+re.escape(territory)+r"\\b",label):
                 out["status"]="search_filter_not_confirmed"
                 out["errors"].append("chiletrabajos_territory_heading_missing")
                 return out

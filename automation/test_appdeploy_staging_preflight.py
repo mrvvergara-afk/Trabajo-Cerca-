@@ -31,6 +31,21 @@ class BackendPreflight(unittest.TestCase):
         serve = self.feed.index("return { ...summary, items:", position)
         self.assertLess(check, serve)
 
+    def test_feed_queue_health_is_read_only_and_bounded(self):
+        progress = self.feed.split("export async function publicFeedProgress()", 1)[1].split("export async function readStagedPublicFeedPage()", 1)[0]
+        self.assertIn("db.list<Change>('public_feed_changes',{limit:STEP_SIZE})", progress)
+        self.assertIn("pendingFeedChangesAtLeast", progress)
+        self.assertIn("oldestQueuedAt", progress)
+        self.assertNotIn("db.delete(", progress)
+        self.assertNotIn("db.add(", progress)
+        self.assertNotIn("db.update(", progress)
+
+    def test_feed_change_acknowledgement_after_publish(self):
+        incremental = self.feed.split("const changes = await db.list<Change>('public_feed_changes'", 1)[1]
+        self.assertLess(incremental.index("const result = await publish("),
+                        incremental.index("db.delete('public_feed_changes'"))
+        self.assertIn("regressionBlocked", incremental)
+
     def test_feed_recovers_last_good_for_summary_and_lookup(self):
         summary = self.feed.split("export async function readPublicFeedSummary()", 1)[1].split("export async function currentPublicFeedManifest()", 1)[0]
         lookup = self.feed.split("export async function currentPublicFeedManifest()", 1)[1].split("export async function publicFeedProgress()", 1)[0]

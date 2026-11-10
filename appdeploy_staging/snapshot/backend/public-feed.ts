@@ -414,6 +414,8 @@ async function publish(record:Manifest) {
       entry.item.verified===true&&entry.item.review!==true&&!newKeys.has(entry.key)&&
       !(identity(entry.item) && newVerifiedIdentities.has(identity(entry.item)!)));
     const unexpected:string[]=[];
+    // Read-only, bounded diagnostics. Never log raw private source records.
+    const missingSourceDiagnostics:Record<string,unknown>[]=[];
     for(const lost of missing){
       const [source]=await db.get<Stored>(lost.source,[lost.sourceId]);
       const deadline=Date.parse(String(source?.sourceValidThrough||''));
@@ -421,13 +423,28 @@ async function publish(record:Manifest) {
       const communityUntil=Date.parse(String(source?.expiresAt||''));
       const communityExpired=lost.source==='community_posts'&&Number.isFinite(communityUntil)&&communityUntil<Date.now();
       const closed=Boolean(source?.closureReason&&/confirmed|explicit|administrative|owner_request/.test(String(source.closureReason)));
-      if(!expired&&!communityExpired&&!closed)unexpected.push(lost.key);
+      if(!expired&&!communityExpired&&!closed){
+        unexpected.push(lost.key);
+        if(missingSourceDiagnostics.length<10)missingSourceDiagnostics.push({
+          key:lost.key,
+          sourceExists:Boolean(source),
+          sourceApproved:source?.verified===true && source?.review!==true,
+          sourceActive:source?.active===true,
+          workCommunesArray:Array.isArray(source?.workCommunes),
+          workCommunesCount:Array.isArray(source?.workCommunes)?source.workCommunes.length:0,
+          sourceDatePresent:Boolean(source?.sourcePublishedAt||source?.date||source?.firstPublishedAt),
+          sourceUrlPresent:Boolean(source?.url),
+          deadlineExpired:expired,
+          closureConfirmed:closed
+        });
+      }
     }
     if(unexpected.length){
       console.warn('PUBLIC_FEED_REGRESSION_BLOCKED '+JSON.stringify({
         before:oldCount,after:record.totalVerifiedJobOffers,
         missing:missing.length,unexplained:unexpected.length,
         ids:unexpected.slice(0,20),
+        missingSourceDiagnostics,
         diagnostics:missing.filter(entry=>unexpected.includes(entry.key)).slice(0,10).map(entry=>({
           key:entry.key,source:entry.source,sourceId:entry.sourceId,
           title:String(entry.item.title||'').slice(0,120),

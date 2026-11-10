@@ -224,6 +224,15 @@ class _PdfLinks(HTMLParser):
             self.anchor=None
 
 
+def is_broad_municipal_index(url: str) -> bool:
+    """Category overview PDFs are not evidence of job-specific attachments.
+
+    Read articles separately. A category sidebar often contains maps,
+    revaluations and unrelated archives which would otherwise flood OCR.
+    """
+    return bool(re.search(r"^/category/[^/]+/?$",urlsplit(url).path,re.I))
+
+
 def documents_from_page(article_url: str, markup: str | bytes, limit=3) -> list[dict]:
     """Same-publisher PDF links, including iframe/embed/object/data-emsrc."""
     if isinstance(markup, bytes):
@@ -317,8 +326,9 @@ def discover_municipal(index_url: str, limit=12, fetcher=None, include_html=Fals
                 # private WordPress API. Extract article leads and separate
                 # any linked/embedded PDF evidence (never auto-publish).
                 pages=parse_html_posts(raw,endpoint,limit=limit)
-                result["documents_for_review"]=merge_page_links(
-                    result["documents_for_review"],documents_from_page(endpoint,raw,limit=8),limit=12)
+                if not is_broad_municipal_index(endpoint):
+                    result["documents_for_review"]=merge_page_links(
+                        result["documents_for_review"],documents_from_page(endpoint,raw,limit=8),limit=12)
             else:
                 raise ValueError("unexpected_mime")
             found=merge_page_links(found,pages,limit=limit)

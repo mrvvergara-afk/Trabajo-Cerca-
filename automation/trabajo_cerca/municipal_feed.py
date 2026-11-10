@@ -55,6 +55,23 @@ NOT_JOBS = re.compile(
     r"proyecto(?:s)?\s+de\s+emprendimiento)\b", re.I)
 
 
+# WordPress sidebars and sticky menus are often copied into the HTML
+# of an individual job article. Their unrelated planning PDFs are never
+# employment evidence, even when attached to a job article's full markup.
+# Conservative filename exclusions; do not reject generic decree names,
+# which may actually contain bases for a job call.
+NON_JOB_PDF_NAME = re.compile(
+    r"(?:^|[-_])(?:plano(?:s)?|rol[-_]?reaval[uú]o|reaval[uú]o|"
+    r"informe[-_]?eae|diario[-_]?oficial[-_]?inicio|"
+    r"escalaf[oó]n)(?:[-_.]|$)",re.I
+)
+
+
+def clearly_non_job_pdf(url: str) -> bool:
+    name=urlsplit(url).path.rsplit("/",1)[-1]
+    return bool(NON_JOB_PDF_NAME.search(name))
+
+
 def _host(url: str) -> str:
     try:
         part = urlsplit(url)
@@ -245,7 +262,7 @@ def documents_from_page(article_url: str, markup: str | bytes, limit=3) -> list[
         # data-emsrc may hold a viewer URL ending in ?file=... or encoded
         # payload. Only direct same-host PDFs are safe to enqueue.
         url=municipal_url(raw,article_url,pdf_only=True)
-        if not url or url in seen:
+        if not url or url in seen or clearly_non_job_pdf(url):
             continue
         seen.add(url)
         results.append({"url":url,"kind":"document","anchor":label[:120],

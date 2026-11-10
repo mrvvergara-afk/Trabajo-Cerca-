@@ -1,0 +1,48 @@
+name: Trabajo Cerca | Cierre segunda pasada Motor D
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/qa_motor_d_second_pass.py'
+      - 'automation/test_qa_motor_d_second_pass.py'
+      - '.github/workflows/qa-motor-d-second-pass.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'automation/qa_motor_d_second_pass.py'
+      - 'automation/test_qa_motor_d_second_pass.py'
+      - '.github/workflows/qa-motor-d-second-pass.yml'
+  schedule:
+    # After 06:15 and 18:15 Chile territorial crawls; GitHub cron is UTC.
+    - cron: '55 9,21 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: motor-d-second-pass-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  reconcile_second_pass:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pruebas de segunda pasada, duplicados, fechas y territorio
+        env:
+          PYTHONPATH: automation
+        run: python -m unittest discover -s automation -p 'test_qa_motor_d_second_pass.py' -v
+      - name: Resolver candidatos existentes y enviar solo residuales a revisión
+        env:
+          PYTHONPATH: automation
+        run: python automation/qa_motor_d_second_pass.py --output resultados/motor_d_second_pass.json
+      - name: Preservar recibo incluso ante catálogo incompleto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: motor-d-second-pass-decisions
+          path: resultados/motor_d_second_pass.json
+          if-no-files-found: warn
+          retention-days: 21

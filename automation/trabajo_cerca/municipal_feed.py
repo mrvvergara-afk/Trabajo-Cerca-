@@ -31,9 +31,9 @@ SITES = {
         "/wp-json/wp/v2/posts?per_page=20", "/feed/")),
     "munipuren.cl": ("Purén", (
         "/wp-json/wp/v2/posts?per_page=20", "/feed/")),
-    # Traiguén's WordPress API requires credentials; its category HTML is
-    # a separate, already-configured municipal input for Motor D.
-    "mtraiguen.cl": ("Traiguén", ()),
+    # Traiguén's WordPress API requires credentials; only the public
+    # listing HTML is consumed, with PDF applications sent to review.
+    "mtraiguen.cl": ("Traiguén", ("/category/bolsa-de-empleo-o-concurso/",)),
 }
 # Signal needs to indicate a job/selection process. Bare "concurso", "beca",
 # a municipality name or "pro empleo" is insufficient.
@@ -145,6 +145,56 @@ def parse_rss(body: bytes, base: str, limit=20) -> list[dict]:
         if len(output)>=limit:
             break
     return output
+
+
+class _ArticleLinks(HTMLParser):
+    """Public article links, excluding menu and unrelated navigation."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.current=None
+        self.links=[]
+        self.ignored=0
+
+    def handle_starttag(self,tag,attrs):
+        if tag in ("nav","header","footer"):
+            self.ignored+=1
+        if tag=="a" and not self.ignored and self.current is None:
+            self.current=[dict(attrs).get("href",""),[]]
+
+    def handle_data(self,text):
+        if self.current is not None and not self.ignored:
+            self.current[1].append(text)
+
+    def handle_endtag(self,tag):
+        if tag=="a" and self.current is not None:
+            self.links.append((self.current[0]," ".join(self.current[1])))
+            self.current=None
+        if tag in ("nav","header","footer"):
+            self.ignored=max(0,self.ignored-1)
+
+
+def parse_html_posts(body: bytes, base: str, limit=20) -> list[dict]:
+    parser=_ArticleLinks()
+    parser.feed(body[:650_000].decode("utf-8","replace"))
+    result=[]
+    seen=set()
+    for href,label in parser.links:
+        url=municipal_url(href,base)
+        if not url or url in seen:
+            continue
+        title=clean_title(label)
+        # Public municipal posts may have title in URL slug, but a weak
+        # generic label alone is not sufficient to create a job lead.
+        signal=title+" "+urlsplit(url).path.replace("-"," ").replace("_"," ")
+        if not has_job_signal(signal):
+            continue
+        seen.add(url)
+        result.append({"url":url,"anchor":title or "Publicación municipal",
+                       "kind":"local_page","origin":"municipal_html",
+                       "review_required":True,"feed_date_unverified":None})
+        if len(result)>=limit:
+            break
+    return result
 
 
 class _PdfLinks(HTMLParser):
@@ -263,8 +313,10 @@ def discover_municipal(index_url: str, limit=12, fetcher=None, include_html=Fals
                     raise ValueError("rss_mime_invalid")
                 pages=parse_rss(raw,index_url,limit)
             elif mime in ("text/html","application/xhtml+xml"):
-                # HTML source may link to PDF documents, not publish jobs.
-                pages=[]
+                # The Traiguén category is accessible HTML, unlike its
+                # private WordPress API. Extract article leads and separate
+                # any linked/embedded PDF evidence (never auto-publish).
+                pages=parse_html_posts(raw,endpoint,limit=limit)
                 result["documents_for_review"]=merge_page_links(
                     result["documents_for_review"],documents_from_page(endpoint,raw,limit=8),limit=12)
             else:

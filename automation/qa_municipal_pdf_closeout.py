@@ -20,6 +20,24 @@ from trabajo_cerca.municipal_feed import is_broad_municipal_index
 from trabajo_cerca.trabajo_cerca_lector_documental import read_one
 
 DEFAULT_INPUT = Path(__file__).resolve().parent / "motor_d_discovery" / "territorial_daily.json"
+AUDIT_INPUT = Path(__file__).resolve().parent / "motor_d_discovery" / "municipal_external_audit_20261109.json"
+
+
+def external_audit_registry(path=AUDIT_INPUT):
+    """User-provided documentary audit; SHA and publisher must match bytes."""
+    doc=json.loads(Path(path).read_text(encoding="utf-8"))
+    if doc.get("schema")!="trabajo-cerca.municipal-external-audit-evidence.v1":
+        raise ValueError("invalid_municipal_external_evidence")
+    result={}
+    for row in doc.get("items",[]):
+        if not isinstance(row,dict) or not isinstance(row.get("sha256"),str):
+            raise ValueError("external_evidence_invalid_item")
+        key=_url_key(row.get("url"))
+        if key in result:
+            raise ValueError("external_evidence_duplicate_url")
+        result[key]=row
+    return result
+
 BLOCKED = {"origen_no_autorizado", "robots_no_confirmado", "lectura_fallida",
            "requiere_render_js"}
 NEEDS_OCR = {"sin_texto_o_requiere_ocr"}
@@ -60,7 +78,8 @@ def _catalog_index(rows):
     return by_identity
 
 
-def classify_document(entry, read, parent_case=None, published=None, today=None):
+def classify_document(entry, read, parent_case=None, published=None, today=None,
+                      external_evidence=None):
     """Only explicit PDF content can prove a closing date."""
     today=today or dt.date.today()
     status=read.get("decision") if isinstance(read,dict) else "lectura_fallida"
@@ -69,8 +88,24 @@ def classify_document(entry, read, parent_case=None, published=None, today=None)
     parent_status=parent_case.get("status") if parent_case else None
     parent_owner=parent_case.get("owner") if parent_case else None
 
+    audit_deadline=None
+    audit_matched=False
+    # External audit may provide a deadline the bounded PDF preview cannot
+    # read. Tie it to the exact publisher PDF bytes and original article.
+    if isinstance(external_evidence,dict) and isinstance(read,dict):
+        sha_matches=(read.get("sha256")==external_evidence.get("sha256")
+                     and len(str(read.get("sha256") or ""))==64)
+        url_matches=_url_key(entry.get("url"))==_url_key(external_evidence.get("url"))
+        parent_matches=_url_key(entry.get("publisher_page"))==_url_key(
+            external_evidence.get("publisher_page"))
+        if sha_matches and url_matches and parent_matches:
+            audit_deadline=_date(external_evidence.get("reported_application_closed_date"))
+            audit_matched=bool(audit_deadline and audit_deadline < today)
     if deadline and deadline < today:
         decision="expired_deadline_verified_in_document"
+        owner=None
+    elif audit_matched:
+        decision="expired_reported_by_hash_matched_external_audit"
         owner=None
     elif status in BLOCKED:
         decision="reader_blocked_or_unavailable"
@@ -111,6 +146,11 @@ def classify_document(entry, read, parent_case=None, published=None, today=None)
         "document_sha256":content_sha if isinstance(content_sha,str) and len(content_sha)==64 else None,
         "reader_http":read.get("http") if isinstance(read,dict) else None,
         "evidence_deadline":deadline.isoformat() if deadline else None,
+        "external_reported_deadline":audit_deadline.isoformat() if audit_matched else None,
+        "external_report_and_document_sha_match":audit_matched,
+        "deadline_evidence_basis":("document_text" if deadline else
+                                   "user_supplied_external_report_same_pdf_sha"
+                                   if audit_matched else None),
         "evidence_source_date_unconfirmed":read.get("source_date_evidence") if isinstance(read,dict) else None,
         "linked_existing_review_id":parent_case.get("evidence_id") if parent_case else None,
         "linked_existing_review_owner":parent_owner,
@@ -121,13 +161,16 @@ def classify_document(entry, read, parent_case=None, published=None, today=None)
     }
 
 
-def closeout(report, second_pass, public_rows, feed_complete, reader=read_one, today=None):
+def closeout(report, second_pass, public_rows, feed_complete, reader=read_one, today=None,
+             external_evidence=None):
     """Reconcile all PDF references without inventing source or publication dates."""
     if not isinstance(report,dict) or not isinstance(report.get("documents_for_review"),list):
         raise ValueError("territorial_document_report_invalid")
     if not isinstance(second_pass,dict) or not isinstance(second_pass.get("records"),list):
         raise ValueError("second_pass_receipt_invalid")
     today=today or dt.date.today()
+    external_evidence=(external_audit_registry() if external_evidence is None
+                       else external_evidence)
     parents={_url_key(row["url"]):row for row in second_pass["records"]
              if row.get("owner") in ("B","C")}
     # Read the complete catalog before any PDF can be treated as unrepresented.
@@ -170,7 +213,9 @@ def closeout(report, second_pass, public_rows, feed_complete, reader=read_one, t
         parent_case=parents.get(_url_key(parent))
         parent_stable=source_identity(parent) if isinstance(parent,str) else None
         public_ids=published.get(parent_stable,set()) if parent_stable else set()
-        outcome=classify_document(item,read,parent_case,public_ids,today)
+        outcome=classify_document(
+            item,read,parent_case,public_ids,today,
+            external_evidence=external_evidence.get(_url_key(item["url"])))
         reviewed.append(outcome)
         if parent_case:
             parent_evidence[_url_key(parent)].append(outcome)
@@ -193,6 +238,9 @@ def closeout(report, second_pass, public_rows, feed_complete, reader=read_one, t
         "second_pass_review_owners":dict(sorted(owners.items())),
         "existing_reviews_with_pdf_evidence":sum(row["linked_pdf_evidence_count"]>0
                                                for row in all_cases),
+        "expired_pdf_calls_supported_by_external_sha_audit":sum(
+            row["status"]=="expired_reported_by_hash_matched_external_audit"
+            for row in reviewed),
         "new_pdf_cases_to_B":len(new_queue),
         "new_publications":0,
         "quarantine_modified":False,
@@ -231,7 +279,8 @@ def main(argv=None):
             "documents_skipped_before_read","public_feed_complete",
             "public_feed_rows","second_pass_review_count",
             "second_pass_review_owners","existing_reviews_with_pdf_evidence",
-            "new_pdf_cases_to_B","status_counts","new_publications")
+            "new_pdf_cases_to_B","expired_pdf_calls_supported_by_external_sha_audit",
+            "status_counts","new_publications")
     },ensure_ascii=False),flush=True)
     return 0 if complete else 2
 

@@ -70,7 +70,7 @@ def main():
         with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=path.parent,
                                          prefix='.ocr_review_', suffix='.tmp', delete=False) as handle:
             temporary = Path(handle.name)
-            handle.write(json.dumps(queue, ensure_ascii=False, indent=2) + '\\n')
+            handle.write(json.dumps(queue, ensure_ascii=False, indent=2) + '\n')
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temporary, path)

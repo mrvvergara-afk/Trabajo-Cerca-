@@ -515,7 +515,14 @@ export async function publicFeedProgress() {
   const current = await single<Control>('public_feed_control');
   const build = await single<Build>('public_feed_build_state');
   const identityPolicy=await single<Stored>('public_feed_identity_policy');
-  return { complete:Boolean(current?.manifestId), manifestId:current?.manifestId ?? null,
+  // Read-only queue health: lets QA distinguish duplicate/already-visible offers
+  // from unpublished changes without running the protected writer manually.
+  const pending=await db.list<Change>('public_feed_changes',{limit:STEP_SIZE});
+  const queuedAt=pending.items.map(item=>Date.parse(item.queuedAt || '')).filter(Number.isFinite);
+  const oldestQueuedAt=queuedAt.length ? new Date(Math.min(...queuedAt)).toISOString() : null;
+  return { pendingFeedChanges:pending.items.length, pendingFeedChangesAtLeast:pending.items.length===STEP_SIZE,
+    oldestQueuedAt, queueSampleLimit:STEP_SIZE,
+    complete:Boolean(current?.manifestId), manifestId:current?.manifestId ?? null,
     visibleItemCount:Number(current?.itemCount || 0), buildSource:build?.source ?? null,
     stagedPages:build?.pages?.length ?? 0, stagedPublicItems:build?.itemCount ?? 0,
     hasNextSourcePage:Boolean(build?.nextToken), updatedAt:current?.updatedAt ?? null,

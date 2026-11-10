@@ -23,3 +23,9 @@ test('reader retries previous manifest if primary manifest missing',()=>{
  assert.match(s,/PUBLIC_FEED_RECOVERED_LAST_GOOD/);
  assert.match(s,/if \(!current && !cursor\?\.startsWith\('v2:'\)\)/);
 });
+
+test('missing primary leaf can recover from previous immutable leaf',()=>{
+ assert.match(s,/reason:'primary_page_missing'/);
+ assert.match(s,/if \(ref && !leaf && !cursor\?\.startsWith\('v2:'\)\)/);
+ assert.match(s,/if \(backup && backupRef && backupLeaf\)/);
+});

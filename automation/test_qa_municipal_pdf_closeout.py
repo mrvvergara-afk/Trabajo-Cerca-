@@ -38,6 +38,16 @@ def read_status(status="candidato_para_revision", sha="a"*64, deadline=None,
 
 
 class MunicipalDocumentCloseoutTests(unittest.TestCase):
+    def test_municipal_source_changes_trigger_territorial_ci(self):
+        workflow=(Path(__file__).resolve().parents[1]/
+                  ".github"/"workflows"/"motor-d-territorial-daily.yml").read_text(encoding="utf8")
+        for path in ("automation/trabajo_cerca/municipal_feed.py",
+                     "automation/trabajo_cerca/descubrir_ofertas_municipales.py",
+                     "automation/trabajo_cerca/trabajo_cerca_lector_documental.py"):
+            with self.subTest(path=path):
+                # Both PR and main push paths must watch the adapter.
+                self.assertEqual(workflow.count("'"+path+"'"),2)
+
     def test_real_report_has_broad_index_archive_noise(self):
         source=json.loads((Path(__file__).resolve().parent/
                           "motor_d_discovery"/"territorial_daily.json").read_text(encoding="utf8"))

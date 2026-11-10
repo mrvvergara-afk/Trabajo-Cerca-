@@ -200,6 +200,22 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertIsNone(saved["review_signature"])
             self.assertEqual(saved["document_sha256"], "a" * 64)
 
+    def test_malformed_deadline_revokes_approval_without_losing_queue(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            source.write_text(json.dumps([{"url": "https://example.cl/oferta",
+                                          "deadline_evidence": {"invalid": "date"}}]))
+            adapter.adapt(source, target, date(2026, 11, 10))
+            queue = json.loads(target.read_text())
+            queue["items"][0].update(review_status="approved",
+                                      review_signature="signed", publication_eligible=True)
+            target.write_text(json.dumps(queue))
+            adapter.adapt(source, target, date(2026, 11, 10))
+            item = json.loads(target.read_text())["items"][0]
+            self.assertFalse(item["publication_eligible"])
+            self.assertIsNone(item["review_signature"])
+            self.assertEqual(item["review_status"], "approved")
+
     def test_redacts_chilean_landline(self):
         self.assertEqual(adapter.sanitize_excerpt("Llamar al 45 234567"),
                          "Llamar al [teléfono]")

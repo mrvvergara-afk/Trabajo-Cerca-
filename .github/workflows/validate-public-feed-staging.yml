@@ -16,5 +16,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run staging integrity checks
+      - name: Install TypeScript compiler\n        run: npm install --no-save --ignore-scripts --package-lock=false typescript@5.7.3\n      - name: Validate recovered TypeScript syntax\n        run: node scripts/check-appdeploy-typescript.mjs\n      - name: Run staging integrity checks
         run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs

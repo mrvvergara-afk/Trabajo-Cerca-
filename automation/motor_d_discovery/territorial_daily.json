@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "date": "2026-11-09T22:50:31.507776-03:00",
+  "date": "2026-11-09T23:46:35.120969-03:00",
   "scope": "today_and_yesterday",
   "communes_expected": [
     "Angol",
@@ -179,6 +179,274 @@
   "communes_without_accessible_source": [],
   "sources_accessible": 36,
   "sources_blocked": 13,
+  "municipal_feed_sources_accessible": 12,
+  "municipal_document_review_count": 22,
+  "documents_for_review": [
+    {
+      "url": "https://munipuren.cl/wp-content/uploads/2026/02/Decreto-exento-N°-144.pdf",
+      "kind": "document",
+      "anchor": "Descargar Bases",
+      "publisher_page": "https://munipuren.cl/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Purén",
+      "commune": "Purén"
+    },
+    {
+      "url": "https://munipuren.cl/wp-content/uploads/2026/04/BASES-LLAMADO-A-CONCURSO-ORIENTADOR-LABORAL-OMIL.pdf",
+      "kind": "document",
+      "anchor": "Descargar bases",
+      "publisher_page": "https://munipuren.cl/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Purén",
+      "commune": "Purén"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR BASES DEL CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR BASES DEL CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR BASES DEL CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03980020260612135730.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-1959.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-Cargo-Auxiliar-grado-16-y-17.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR BASES DEL CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979820260612135631.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargos-Tecnico-grado-11.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR BASES DEL CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979720260612135542.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-2065.pdf",
+      "kind": "document",
+      "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2",
+      "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Renaico",
+      "commune": "Renaico"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Plano-Traiguen.pdf",
+      "kind": "document",
+      "anchor": " Mapa",
+      "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/ROL_REAVALUO_AGRICOLA_2020.pdf",
+      "kind": "document",
+      "anchor": " Bienes Raíces Agrícolas 2020",
+      "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/ROL_REAVALUOS_NO_AGRICOLA_2020.pdf",
+      "kind": "document",
+      "anchor": " Bienes Raíces No Agrícolas 2020",
+      "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Informe_EAE_Traiguen.pdf",
+      "kind": "document",
+      "anchor": " Informe EAE Traiguén",
+      "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Diario_Oficial-Inicio.pdf",
+      "kind": "document",
+      "anchor": " Diario Oficial",
+      "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2023/12/DAEX-3401-APRUEBA-ESCALAFON-DE-MERITO-2024.pdf",
+      "kind": "document",
+      "anchor": " Escalafón de Mérito año 2024",
+      "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+      "kind": "document",
+      "anchor": "documento_embebido",
+      "publisher_page": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+      "kind": "document",
+      "anchor": "documento_embebido",
+      "publisher_page": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2026/08/DECRETO-PRLAC.pdf",
+      "kind": "document",
+      "anchor": "documento_embebido",
+      "publisher_page": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    },
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2026/08/BASES-PRLAC.pdf",
+      "kind": "document",
+      "anchor": "documento_embebido",
+      "publisher_page": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+      "review_required": true,
+      "date_source": null,
+      "deadline": null,
+      "reader_status": "requires_document_reader_and_signed_review",
+      "source": "Municipio Traiguén",
+      "commune": "Traiguén"
+    }
+  ],
   "job_candidates_total": 106,
   "new_candidate_links": 0,
   "individually_read_potential_offers": 82,
@@ -194,19 +462,20 @@
       "source": "Municipalidad Angol",
       "url": "https://noticias.angol.cl/",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Hospital Angol concursos",
       "url": "https://hospitalangol.cl/concursos/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 10,
       "details_opened": 10,
@@ -422,17 +691,18 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Collipulli",
       "source": "Municipio Collipulli",
       "url": "https://municipalidadcollipulli.cl/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 2,
-      "details_opened": 2,
+      "details_opened": 1,
       "candidates": [
         {
           "id": "7803b100daea91516ff5",
@@ -460,91 +730,241 @@
           "url": "https://municipalidadcollipulli.cl/concursos-internos/",
           "label": "Concursos Internos",
           "index_status": "not_indicated",
-          "evidence": "directory_not_offer",
+          "evidence": "detail_unavailable",
           "date_source": null,
           "work_commune": null,
           "recruitment_commune": null,
           "source_scope_commune": "Collipulli",
           "source_commune_not_confirmed": true,
-          "http": 200,
-          "explicit_worksite_commune": null,
-          "title": "Concursos Internos",
-          "dates": [],
-          "employer": null,
-          "application_evidence": false,
-          "deadline": null,
-          "excerpt": "Concursos Internos - I. Municipalidad de Collipulli 09 November 2026 - 17.13 C Visión, Misión y Valores Pladeco [teléfono] Lunes a Viernes: 09:00 a 14:00 Inicio Alcaldía Concejo Municipal Direcciones Unidad de Desarrollo Económico Local Dirección Municipal de Salud Dirección Municipal de Educación Dirección Secretaría Municipal Dirección Jurídica Dirección de Seguridad Pública Secplac Departamento de Tránsito y Transporte Público Dirección de Administración Municipal Dirección de Administración y Finanzas Dirección de Control Interno Direcc",
-          "express_ready": false
+          "error": "ConnectTimeout"
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Ercilla",
       "source": "Municipio Ercilla",
       "url": "https://muniercilla.cl/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Lumaco",
       "source": "Municipio Lumaco",
       "url": "https://munilumaco.cl/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Los Sauces",
       "source": "Municipio Los Sauces",
       "url": "https://munilossauces.cl/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Purén",
       "source": "Municipio Purén",
       "url": "https://munipuren.cl/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": [
+        {
+          "url": "https://munipuren.cl/wp-content/uploads/2026/02/Decreto-exento-N°-144.pdf",
+          "kind": "document",
+          "anchor": "Descargar Bases",
+          "publisher_page": "https://munipuren.cl/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://munipuren.cl/wp-content/uploads/2026/04/BASES-LLAMADO-A-CONCURSO-ORIENTADOR-LABORAL-OMIL.pdf",
+          "kind": "document",
+          "anchor": "Descargar bases",
+          "publisher_page": "https://munipuren.cl/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        }
+      ],
+      "municipal_feed_status": "no_job_items",
+      "municipal_feed_checked": [
+        {
+          "url": "https://munipuren.cl/wp-json/wp/v2/posts?per_page=20",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://munipuren.cl/feed/",
+          "status": "usable",
+          "candidate_pages": 0
+        }
+      ],
+      "municipal_feed_links": 0,
+      "municipal_feed_sources_blocked": 0
     },
     {
       "commune": "Renaico",
       "source": "Municipio Renaico",
       "url": "https://municipalidadrenaico.cl/concursos-publicos/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": [
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/TECNICO-EXTENSIONISTA.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR BASES DEL CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/JEFE-TECNICO.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR BASES DEL CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargo-Administrativo-grado-16.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR BASES DEL CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03980020260612135730.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-1959.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-Cargo-Auxiliar-grado-16-y-17.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR BASES DEL CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979820260612135631.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/Bases-cargos-Tecnico-grado-11.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR BASES DEL CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/06/doc03979720260612135542.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://www.municipalidadrenaico.cl/wp-content/uploads/2026/07/decreto-2065.pdf",
+          "kind": "document",
+          "anchor": "DESCARGAR MODIFICACION DE BASES DE CONCURSO N°2",
+          "publisher_page": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        }
+      ],
+      "municipal_feed_status": "no_job_items",
+      "municipal_feed_checked": [
+        {
+          "url": "https://municipalidadrenaico.cl/wp-json/wp/v2/posts?per_page=20",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://municipalidadrenaico.cl/feed/",
+          "status": "failed",
+          "error_type": "ParseError"
+        }
+      ],
+      "municipal_feed_links": 0,
+      "municipal_feed_sources_blocked": 0
     },
     {
       "commune": "Traiguén",
       "source": "Municipio Traiguén",
       "url": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 3,
       "details_opened": 3,
@@ -622,14 +1042,126 @@
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": [
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Plano-Traiguen.pdf",
+          "kind": "document",
+          "anchor": " Mapa",
+          "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/ROL_REAVALUO_AGRICOLA_2020.pdf",
+          "kind": "document",
+          "anchor": " Bienes Raíces Agrícolas 2020",
+          "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/ROL_REAVALUOS_NO_AGRICOLA_2020.pdf",
+          "kind": "document",
+          "anchor": " Bienes Raíces No Agrícolas 2020",
+          "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Informe_EAE_Traiguen.pdf",
+          "kind": "document",
+          "anchor": " Informe EAE Traiguén",
+          "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/07/Diario_Oficial-Inicio.pdf",
+          "kind": "document",
+          "anchor": " Diario Oficial",
+          "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2023/12/DAEX-3401-APRUEBA-ESCALAFON-DE-MERITO-2024.pdf",
+          "kind": "document",
+          "anchor": " Escalafón de Mérito año 2024",
+          "publisher_page": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+          "kind": "document",
+          "anchor": "documento_embebido",
+          "publisher_page": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+          "kind": "document",
+          "anchor": "documento_embebido",
+          "publisher_page": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2026/08/DECRETO-PRLAC.pdf",
+          "kind": "document",
+          "anchor": "documento_embebido",
+          "publisher_page": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        },
+        {
+          "url": "https://mtraiguen.cl/wp-content/uploads/2026/08/BASES-PRLAC.pdf",
+          "kind": "document",
+          "anchor": "documento_embebido",
+          "publisher_page": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen/",
+          "review_required": true,
+          "date_source": null,
+          "deadline": null,
+          "reader_status": "requires_document_reader_and_signed_review"
+        }
+      ],
+      "municipal_feed_status": "ok",
+      "municipal_feed_checked": [
+        {
+          "url": "https://mtraiguen.cl/category/bolsa-de-empleo-o-concurso/",
+          "status": "usable",
+          "candidate_pages": 3
+        }
+      ],
+      "municipal_feed_links": 3,
+      "municipal_feed_sources_blocked": 0
     },
     {
       "commune": "Victoria",
       "source": "Municipio Victoria OMIL",
       "url": "https://victoriachile.cl/departamentos-y-direcciones/udel/omil/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 2,
       "details_opened": 2,
@@ -677,14 +1209,40 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": [],
+      "municipal_feed_status": "no_job_items",
+      "municipal_feed_checked": [
+        {
+          "url": "https://victoriachile.cl/category/omil/feed/",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://victoriachile.cl/category/concursos-publicos/feed/",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://victoriachile.cl/wp-json/wp/v2/posts?per_page=20",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://victoriachile.cl/feed/",
+          "status": "usable",
+          "candidate_pages": 0
+        }
+      ],
+      "municipal_feed_links": 0,
+      "municipal_feed_sources_blocked": 0
     },
     {
       "commune": "Mulchén",
       "source": "Municipio Mulchén empleos",
       "url": "https://www.munimulchen.cl/pagina-central-ofertas-laborales/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 8,
       "details_opened": 8,
@@ -858,38 +1416,56 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Negrete",
       "source": "Municipio Negrete OMIL",
       "url": "https://www.muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": [],
+      "municipal_feed_status": "blocked",
+      "municipal_feed_checked": [
+        {
+          "url": "https://muninegrete.cl/wp-json/wp/v2/posts?per_page=20",
+          "status": "blocked",
+          "error_type": "PermissionError"
+        },
+        {
+          "url": "https://muninegrete.cl/feed/",
+          "status": "blocked",
+          "error_type": "PermissionError"
+        }
+      ],
+      "municipal_feed_links": 0,
+      "municipal_feed_sources_blocked": 2
     },
     {
       "commune": "Nacimiento",
       "source": "Municipio Nacimiento",
       "url": "https://nacimiento.cl/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Salud Araucanía Norte",
       "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 9,
       "details_opened": 9,
@@ -1084,14 +1660,15 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Collipulli",
       "source": "Arauco empleo",
       "url": "https://jobs.arauco.com/Chile/search/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 11,
       "details_opened": 11,
@@ -1328,26 +1905,28 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Nacimiento",
       "source": "CMPC empleo",
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Mulchén",
       "source": "OMIL Mulchén temporada",
       "url": "https://www.munimulchen.cl/oferta-laboral-personal-temporada-agricola-packing-y-cosecha-de-arandanos/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 1,
@@ -1369,14 +1948,15 @@
           "excerpt": "Oferta Laboral: Personal Temporada Agrícola (Packing y Cosecha de Arándanos) | Busca entre los contenidos de nuestro sitio web. [wpdreams_ajaxsearchpro id=1] Menú de navegación ✕ Cerrar Inicio Municipalidad Municipalidad Municipalidad de Mulchén Toda la información y actividades municipalidades están aquí. Saludos Alcalde Concejo Municipal Misión, Visión Nuestros valores Direcciones Municipales Salud Planificación Comunal Estados Financieros Concejo Municipal Concejo Municipal Concejo Municipal Mulchén Revisa aquí la información relativa al Con"
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Mulchén",
       "source": "OMIL Mulchén arándanos 100 cupos",
       "url": "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 1,
@@ -1398,14 +1978,15 @@
           "excerpt": "OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS Empresa del rubro agrícola de la comuna de Mulchén iniciará el reclutamiento de personal para realizar labores de cosecha de arándanos en un predio ubicado en el sector Campamento. Vacantes disponibles: 100 cupos Funciones: Identificar y cosechar únicamente los arándanos que presenten un color azul uniforme y el grado de madurez requerido por la empresa o el mercado de destino. Dejar en la planta los frutos verdes o dañados, siguiendo las instrucciones y los estándares establecidos por la empresa. Requ"
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Victoria",
       "source": "Municipio Victoria OMIL publicaciones",
       "url": "https://victoriachile.cl/category/omil/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 4,
       "details_opened": 4,
@@ -1495,14 +2076,40 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": [],
+      "municipal_feed_status": "no_job_items",
+      "municipal_feed_checked": [
+        {
+          "url": "https://victoriachile.cl/category/omil/feed/",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://victoriachile.cl/category/concursos-publicos/feed/",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://victoriachile.cl/wp-json/wp/v2/posts?per_page=20",
+          "status": "usable",
+          "candidate_pages": 0
+        },
+        {
+          "url": "https://victoriachile.cl/feed/",
+          "status": "usable",
+          "candidate_pages": 0
+        }
+      ],
+      "municipal_feed_links": 0,
+      "municipal_feed_sources_blocked": 0
     },
     {
       "commune": "Angol",
       "source": "Hospital Angol estado postulaciones",
       "url": "https://hospitalangol.cl/estado/postulacion/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 9,
       "details_opened": 9,
@@ -1697,14 +2304,15 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Nacimiento",
       "source": "Chiletrabajos · Serfonac mecánico soldador",
       "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1729,19 +2337,20 @@
           "employer": "Serfonac",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Soldador/a de Maquinaria – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Soldador/a de Maquinaria – Nacimiento ID 3923358 Buscado Serfonac Fecha [teléfono] 22:09:24 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 550 veces Interesados: 12 PUBLICIDAD Mecánico/a Soldador/a de Maquinaria – Nacimiento Serfonac , Los Ángeles 05 de Noviem",
+          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Soldador/a de Maquinaria – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Soldador/a de Maquinaria – Nacimiento ID 3923358 Buscado Serfonac Fecha [teléfono] 22:09:24 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 555 veces Interesados: 12 PUBLICIDAD Mecánico/a Soldador/a de Maquinaria – Nacimiento Serfonac , Los Ángeles 05 de Noviem",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Nacimiento",
       "source": "Chiletrabajos · Serfonac mecánico automotriz",
       "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1766,19 +2375,20 @@
           "employer": "Serfonac",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Automotriz – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Automotriz – Nacimiento ID 3923364 Buscado Serfonac Fecha [teléfono] 21:09:46 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 464 veces Interesados: 8 PUBLICIDAD Mecánico/a Automotriz – Nacimiento Serfonac , Los Ángeles 05 de Noviembre de 2026",
+          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Automotriz – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Automotriz – Nacimiento ID 3923364 Buscado Serfonac Fecha [teléfono] 21:09:46 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 469 veces Interesados: 8 PUBLICIDAD Mecánico/a Automotriz – Nacimiento Serfonac , Los Ángeles 05 de Noviembre de 2026",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Nacimiento",
       "source": "Chiletrabajos · Serfonac conductor",
       "url": "https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1803,19 +2413,20 @@
           "employer": "Serfonac Ltda",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Operarios Conductor de Transporte de Carga y Personal - Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor de Transporte de Carga y Personal - Nacimiento ID 3923758 Buscado Serfonac Ltda Fecha [teléfono] 18:13:09 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Operarios Duración Inicialmente, temporada estacional Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 783 veces Interesados: 15 PUBLICIDAD Conductor de Transporte de Carg",
+          "excerpt": "PUBLICIDAD Home Operarios Conductor de Transporte de Carga y Personal - Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor de Transporte de Carga y Personal - Nacimiento ID 3923758 Buscado Serfonac Ltda Fecha [teléfono] 18:13:09 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Operarios Duración Inicialmente, temporada estacional Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 788 veces Interesados: 15 PUBLICIDAD Conductor de Transporte de Carg",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Chiletrabajos · Operario alimentos Angol",
       "url": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1840,19 +2451,20 @@
           "employer": "Empresa de alimentos",
           "application_evidence": true,
           "deadline": "2027-01-06",
-          "excerpt": "PUBLICIDAD Home Operarios SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ID 3919569 Buscado Empresa de alimentos Fecha [teléfono] 13:14:21 Expira [teléfono] (en 58 días) Ubicación Angol CL Categoría Operarios Tipo Full-time Email Inicia sesión para ver mail Postular Guardar Compartir El anuncio ha sido visto: 1007 veces Interesados: 19 PUBLICIDAD SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ED Empresa de alimentos , Angol 23 de Octubre d",
+          "excerpt": "PUBLICIDAD Home Operarios SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ID 3919569 Buscado Empresa de alimentos Fecha [teléfono] 13:14:21 Expira [teléfono] (en 58 días) Ubicación Angol CL Categoría Operarios Tipo Full-time Email Inicia sesión para ver mail Postular Guardar Compartir El anuncio ha sido visto: 1013 veces Interesados: 19 PUBLICIDAD SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ED Empresa de alimentos , Angol 23 de Octubre d",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Traiguén",
       "source": "Chiletrabajos · Reponedor Traiguén",
       "url": "https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1877,19 +2489,20 @@
           "employer": "Cultiva",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 338 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
+          "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 345 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Mulchén",
       "source": "Chiletrabajos · Reponedor Mulchén",
       "url": "https://www.chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1914,19 +2527,20 @@
           "employer": "Cultiva",
           "application_evidence": true,
           "deadline": "2027-01-20",
-          "excerpt": "PUBLICIDAD Home Ventas / Comercial REPONEDOR PART TIME MULCHEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas REPONEDOR PART TIME MULCHEN ID 3927989 Buscado Cultiva Fecha [teléfono] 16:59:10 Expira [teléfono] (en 72 días) Ubicación Concepción CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 189 veces Interesados: 4 PUBLICIDAD REPONEDOR PART TIME MULCHEN C Cultiva , Concepción 06 de Noviembre de 2026",
+          "excerpt": "PUBLICIDAD Home Ventas / Comercial REPONEDOR PART TIME MULCHEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas REPONEDOR PART TIME MULCHEN ID 3927989 Buscado Cultiva Fecha [teléfono] 16:59:10 Expira [teléfono] (en 72 días) Ubicación Concepción CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 196 veces Interesados: 4 PUBLICIDAD REPONEDOR PART TIME MULCHEN C Cultiva , Concepción 06 de Noviembre de 2026",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Purén",
       "source": "Chiletrabajos · Prevencionista obras Malleco",
       "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1951,19 +2565,20 @@
           "employer": "Constructora",
           "application_evidence": true,
           "deadline": "2027-01-16",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 625 veces Interesados: 18 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 646 veces Interesados: 19 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Radio Viaducto",
       "url": "https://radioviaducto.cl/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 1,
       "details_opened": 1,
@@ -1990,14 +2605,15 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Las Noticias de Malleco",
       "url": "https://lasnoticiasdemalleco.cl/",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 2,
       "details_opened": 2,
@@ -2051,14 +2667,15 @@
           "date_recent_2d": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Fashion's Park · portal oficial de contratación",
       "url": "https://fashionspark.hiringroom.com/jobs",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 14,
       "details_opened": 14,
@@ -2358,38 +2975,41 @@
           "express_ready": false
         }
       ],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Falabella · empleos oficiales",
       "url": "https://muevete.falabella.com/",
       "status": "http_error",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 404,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Unimarc · empleos oficiales",
       "url": "https://unimarc.trabajando.cl/",
       "status": "scanned_no_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Angol",
       "source": "Chiletrabajos · Angol",
       "url": "https://www.chiletrabajos.cl/ciudad/angol.html",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 30,
       "details_opened": 30,
@@ -2414,7 +3034,7 @@
           "employer": "Constructora",
           "application_evidence": true,
           "deadline": "2027-01-16",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 626 veces Interesados: 18 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 647 veces Interesados: 19 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2438,7 +3058,7 @@
           "employer": "SMU",
           "application_evidence": true,
           "deadline": "2027-01-22",
-          "excerpt": "PUBLICIDAD Home Otros Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol ID 3916578 Buscado SMU Fecha [teléfono] 06:20:39 Expira [teléfono] (en 74 días) Ubicación Angol CL Categoría Otros Salario 1 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 934 veces Interesados: 15 PUBLICIDAD Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol S ",
+          "excerpt": "PUBLICIDAD Home Otros Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol ID 3916578 Buscado SMU Fecha [teléfono] 06:20:39 Expira [teléfono] (en 74 días) Ubicación Angol CL Categoría Otros Salario 1 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 940 veces Interesados: 15 PUBLICIDAD Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol S ",
           "express_ready": true,
           "date_recent_2d": true
         },
@@ -2462,7 +3082,7 @@
           "employer": "SERVICIOS HELPBANK S.A",
           "application_evidence": true,
           "deadline": "2027-01-20",
-          "excerpt": "PUBLICIDAD Home Otros Cajero/a Bancario/a ANGOL Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Bancario/a ANGOL ID 3732391 Buscado SERVICIOS HELPBANK S.A Fecha [teléfono] 14:20:34 Expira [teléfono] (en 72 días) Ubicación Angol CL Categoría Otros Salario $3.358.- liquido por hora trabajada Duración Plazo fijo Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 3718 veces Interesados: 50 PUBLICIDAD Cajero/a Bancario/a ANGOL SH SERVICIOS HELPBANK S.A , Angol 06 de Noviembre de 2026 Descrip",
+          "excerpt": "PUBLICIDAD Home Otros Cajero/a Bancario/a ANGOL Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Bancario/a ANGOL ID 3732391 Buscado SERVICIOS HELPBANK S.A Fecha [teléfono] 14:20:34 Expira [teléfono] (en 72 días) Ubicación Angol CL Categoría Otros Salario $3.358.- liquido por hora trabajada Duración Plazo fijo Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 3723 veces Interesados: 50 PUBLICIDAD Cajero/a Bancario/a ANGOL SH SERVICIOS HELPBANK S.A , Angol 06 de Noviembre de 2026 Descrip",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2486,7 +3106,7 @@
           "employer": "DOMINION SPA",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones - Angol ID 3926909 Buscado DOMINION SPA Fecha [teléfono] 11:52:52 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 205 veces Interesados: 2 PUBLICIDAD Técnico Telecomunicaciones - Angol DS DOMINION SP",
+          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones - Angol ID 3926909 Buscado DOMINION SPA Fecha [teléfono] 11:52:52 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 213 veces Interesados: 2 PUBLICIDAD Técnico Telecomunicaciones - Angol DS DOMINION SP",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2510,7 +3130,7 @@
           "employer": "Trayectos Angol",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo (a) 22 horas Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo (a) 22 horas ID 3926911 Buscado Trayectos Angol Fecha [teléfono] 11:53:20 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Indefinido Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 256 veces Interesados: 3 PUBLICIDAD Psicólogo (a) 22 horas TA Trayectos Angol , Angol 05 de Noviembre ",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo (a) 22 horas Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo (a) 22 horas ID 3926911 Buscado Trayectos Angol Fecha [teléfono] 11:53:20 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Indefinido Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 261 veces Interesados: 3 PUBLICIDAD Psicólogo (a) 22 horas TA Trayectos Angol , Angol 05 de Noviembre ",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2534,7 +3154,7 @@
           "employer": "Fashion's Park",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Otros Asistente de Aseo PT 20 HR (Angol) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente de Aseo PT 20 HR (Angol) ID 3926914 Buscado Fashion's Park Fecha [teléfono] 11:54:02 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Otros Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 190 veces Interesados: 2 PUBLICIDAD Asistente de Aseo PT 20 HR (Angol) FP Fashion's Park , Angol 05 de Noviembre de 2026 Descripción ofer",
+          "excerpt": "PUBLICIDAD Home Otros Asistente de Aseo PT 20 HR (Angol) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente de Aseo PT 20 HR (Angol) ID 3926914 Buscado Fashion's Park Fecha [teléfono] 11:54:02 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Otros Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 196 veces Interesados: 2 PUBLICIDAD Asistente de Aseo PT 20 HR (Angol) FP Fashion's Park , Angol 05 de Noviembre de 2026 Descripción ofer",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2558,7 +3178,7 @@
           "employer": "DOMINION SPA",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones Sin Experiencia - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones Sin Experiencia - Angol ID 3926918 Buscado DOMINION SPA Fecha [teléfono] 11:54:53 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 218 veces Interesados: 6 PUBLICIDAD Técnico Telecomun",
+          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones Sin Experiencia - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones Sin Experiencia - Angol ID 3926918 Buscado DOMINION SPA Fecha [teléfono] 11:54:53 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 227 veces Interesados: 6 PUBLICIDAD Técnico Telecomun",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2582,7 +3202,7 @@
           "employer": "Constructora aljo",
           "application_evidence": true,
           "deadline": "2027-01-18",
-          "excerpt": "PUBLICIDAD Home Otros Se buscan enfierradores Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan enfierradores Nacimiento ID 3926105 Buscado Constructora aljo Fecha [teléfono] 12:34:58 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Otros Salario al mercado Duración por proyecto Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 156 veces Interesados: 1 PUBLICIDAD Se buscan enfierradores Nacimiento CA Constructora aljo ,",
+          "excerpt": "PUBLICIDAD Home Otros Se buscan enfierradores Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan enfierradores Nacimiento ID 3926105 Buscado Constructora aljo Fecha [teléfono] 12:34:58 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Otros Salario al mercado Duración por proyecto Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 164 veces Interesados: 1 PUBLICIDAD Se buscan enfierradores Nacimiento CA Constructora aljo ,",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2606,7 +3226,7 @@
           "employer": "Preunic",
           "application_evidence": true,
           "deadline": "2027-01-18",
-          "excerpt": "PUBLICIDAD Home Operarios Bodeguero/a Plan Navidad Preunic Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Bodeguero/a Plan Navidad Preunic Angol ID 3925963 Buscado Preunic Fecha [teléfono] 10:51:20 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Operarios Salario 600000 Duración 30 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 314 veces Interesados: 16 PUBLICIDAD Bodeguero/a Plan Navidad Preunic Angol P Preunic , Angol 04 de Noviembre de 2026 Descripción ofe",
+          "excerpt": "PUBLICIDAD Home Operarios Bodeguero/a Plan Navidad Preunic Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Bodeguero/a Plan Navidad Preunic Angol ID 3925963 Buscado Preunic Fecha [teléfono] 10:51:20 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Operarios Salario 600000 Duración 30 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 320 veces Interesados: 16 PUBLICIDAD Bodeguero/a Plan Navidad Preunic Angol P Preunic , Angol 04 de Noviembre de 2026 Descripción ofe",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2630,7 +3250,7 @@
           "employer": "Constructora aljo",
           "application_evidence": true,
           "deadline": "2027-01-17",
-          "excerpt": "PUBLICIDAD Home Otros Se buscan Enfierradores – Obra Hospital de Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan Enfierradores – Obra Hospital de Nacimiento ID 3887984 Buscado Constructora aljo Fecha [teléfono] 18:31:55 Expira [teléfono] (en 69 días) Ubicación Angol CL Categoría Otros Salario al mercado Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 972 veces Interesados: 12 PUBLICIDAD Se buscan Enfierradores – Obra Hospital de Nacimiento CA Constructora al",
+          "excerpt": "PUBLICIDAD Home Otros Se buscan Enfierradores – Obra Hospital de Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan Enfierradores – Obra Hospital de Nacimiento ID 3887984 Buscado Constructora aljo Fecha [teléfono] 18:31:55 Expira [teléfono] (en 69 días) Ubicación Angol CL Categoría Otros Salario al mercado Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 980 veces Interesados: 12 PUBLICIDAD Se buscan Enfierradores – Obra Hospital de Nacimiento CA Constructora al",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2654,7 +3274,7 @@
           "employer": "Empresa Confidencial",
           "application_evidence": true,
           "deadline": "2027-01-16",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo/a Organizacional - Comuna Ercilla Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo/a Organizacional - Comuna Ercilla ID 3924928 Buscado Empresa Confidencial Fecha [teléfono] 20:55:46 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Freelance Tipo Part-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 261 veces Interesados: 3 PUBLICIDAD Psicólogo/a Organiza",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo/a Organizacional - Comuna Ercilla Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo/a Organizacional - Comuna Ercilla ID 3924928 Buscado Empresa Confidencial Fecha [teléfono] 20:55:46 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Freelance Tipo Part-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 270 veces Interesados: 3 PUBLICIDAD Psicólogo/a Organiza",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2678,7 +3298,7 @@
           "employer": "Papa Johns Angol",
           "application_evidence": true,
           "deadline": "2027-01-13",
-          "excerpt": "PUBLICIDAD Home Hotelería Turismo y Gastronomía Subgerente de tienda Papa Johns - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Subgerente de tienda Papa Johns - Angol ID 3923618 Buscado Papa Johns Angol Fecha [teléfono] 17:50:07 Expira [teléfono] (en 65 días) Ubicación Angol CL Categoría Hotelería Turismo y Gastronomía Salario - Duración Plazo fijo y luego indefinido Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 442 veces Interesados: 12 PUBLICIDAD Subgerente de tiend",
+          "excerpt": "PUBLICIDAD Home Hotelería Turismo y Gastronomía Subgerente de tienda Papa Johns - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Subgerente de tienda Papa Johns - Angol ID 3923618 Buscado Papa Johns Angol Fecha [teléfono] 17:50:07 Expira [teléfono] (en 65 días) Ubicación Angol CL Categoría Hotelería Turismo y Gastronomía Salario - Duración Plazo fijo y luego indefinido Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 447 veces Interesados: 12 PUBLICIDAD Subgerente de tiend",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2702,7 +3322,7 @@
           "employer": "FUNDACION CIUDAD DEL NIÑO",
           "application_evidence": true,
           "deadline": "2027-01-11",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía ID 3921759 Buscado FUNDACION CIUDAD DEL NIÑO Fecha [teléfono] 09:50:43 Expira [teléfono] (en 63 días) Ubicación Angol CL Categoría Profesionales y Técnicos Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1000 veces Interesados: 33 PUBLICIDAD GESTOR",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía ID 3921759 Buscado FUNDACION CIUDAD DEL NIÑO Fecha [teléfono] 09:50:43 Expira [teléfono] (en 63 días) Ubicación Angol CL Categoría Profesionales y Técnicos Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1006 veces Interesados: 33 PUBLICIDAD GESTOR",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2726,7 +3346,7 @@
           "employer": "Empresa de alimentos",
           "application_evidence": true,
           "deadline": "2027-01-06",
-          "excerpt": "PUBLICIDAD Home Operarios SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ID 3919569 Buscado Empresa de alimentos Fecha [teléfono] 13:14:21 Expira [teléfono] (en 58 días) Ubicación Angol CL Categoría Operarios Tipo Full-time Email Inicia sesión para ver mail Postular Guardar Compartir El anuncio ha sido visto: 1008 veces Interesados: 19 PUBLICIDAD SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ED Empresa de alimentos , Angol 23 de Octubre d",
+          "excerpt": "PUBLICIDAD Home Operarios SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ID 3919569 Buscado Empresa de alimentos Fecha [teléfono] 13:14:21 Expira [teléfono] (en 58 días) Ubicación Angol CL Categoría Operarios Tipo Full-time Email Inicia sesión para ver mail Postular Guardar Compartir El anuncio ha sido visto: 1014 veces Interesados: 19 PUBLICIDAD SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ED Empresa de alimentos , Angol 23 de Octubre d",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2750,7 +3370,7 @@
           "employer": "Manpowergroup",
           "application_evidence": true,
           "deadline": "2027-01-02",
-          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones VVendedor en Terreno - Angol Victoria Traiguén Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas VVendedor en Terreno - Angol Victoria Traiguén ID 3916595 Buscado Manpowergroup Fecha [teléfono] 16:04:05 Expira [teléfono] (en 54 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 559 veces Interesados: 5 PUBLICIDAD VVendedor en Terreno - A",
+          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones VVendedor en Terreno - Angol Victoria Traiguén Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas VVendedor en Terreno - Angol Victoria Traiguén ID 3916595 Buscado Manpowergroup Fecha [teléfono] 16:04:05 Expira [teléfono] (en 54 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 571 veces Interesados: 5 PUBLICIDAD VVendedor en Terreno - A",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2774,7 +3394,7 @@
           "employer": "CORPORACION HD SPA",
           "application_evidence": true,
           "deadline": "2027-01-01",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos DOCENTE PSICOLOGO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE PSICOLOGO ID 3915967 Buscado CORPORACION HD SPA Fecha [teléfono] 15:04:54 Expira [teléfono] (en 53 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1112 veces Interesados: 54 PUBLICIDAD DOCENTE PSICOLOGO CH CORPORACION HD SPA , Angol 18 de Octubre de 2026 Descripción oferta de trabajo hac",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos DOCENTE PSICOLOGO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE PSICOLOGO ID 3915967 Buscado CORPORACION HD SPA Fecha [teléfono] 15:04:54 Expira [teléfono] (en 53 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1116 veces Interesados: 54 PUBLICIDAD DOCENTE PSICOLOGO CH CORPORACION HD SPA , Angol 18 de Octubre de 2026 Descripción oferta de trabajo hac",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2798,7 +3418,7 @@
           "employer": "CONFIDENCIAL",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) ID 3915481 Buscado CONFIDENCIAL Fecha [teléfono] 13:15:34 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Duración PLAZO FIJJO Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 731 veces Interesados: 4 PUBLICIDAD TECN",
+          "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) ID 3915481 Buscado CONFIDENCIAL Fecha [teléfono] 13:15:34 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Duración PLAZO FIJJO Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 735 veces Interesados: 4 PUBLICIDAD TECN",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2822,7 +3442,7 @@
           "employer": "Consultores 2000",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Ambiental y Participación Ciudadana para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Ambiental y Participación Ciudadana para AIF - Angol ID 3915746 Buscado Consultores 2000 Fecha [teléfono] 17:03:39 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1178 veces Interesados: 26 PUBLICIDAD Encargado Ambient",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Ambiental y Participación Ciudadana para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Ambiental y Participación Ciudadana para AIF - Angol ID 3915746 Buscado Consultores 2000 Fecha [teléfono] 17:03:39 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1182 veces Interesados: 26 PUBLICIDAD Encargado Ambient",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2846,7 +3466,7 @@
           "employer": "Consultores 2000",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Jefe de Asesoría - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Jefe de Asesoría - Angol ID 3915725 Buscado Consultores 2000 Fecha [teléfono] 16:48:05 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 8 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 768 veces Interesados: 9 PUBLICIDAD Jefe de Asesoría - Angol C Consultores 2000 , Angol 16 de Octub",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Jefe de Asesoría - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Jefe de Asesoría - Angol ID 3915725 Buscado Consultores 2000 Fecha [teléfono] 16:48:05 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 8 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 772 veces Interesados: 9 PUBLICIDAD Jefe de Asesoría - Angol C Consultores 2000 , Angol 16 de Octub",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2870,7 +3490,7 @@
           "employer": "Fashion's Park",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Ventas / Comercial Cajero/a Asistente Integral – Temporada Navidad – Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Asistente Integral – Temporada Navidad – Angol ID 3915270 Buscado Fashion's Park Fecha [teléfono] 10:12:11 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Ventas / Comercial Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 930 veces Interesados: 48 PUBLICIDAD Cajero/a Asistente Integral – Temporada Navidad – Angol FP Fashion's Park , An",
+          "excerpt": "PUBLICIDAD Home Ventas / Comercial Cajero/a Asistente Integral – Temporada Navidad – Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Asistente Integral – Temporada Navidad – Angol ID 3915270 Buscado Fashion's Park Fecha [teléfono] 10:12:11 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Ventas / Comercial Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 935 veces Interesados: 48 PUBLICIDAD Cajero/a Asistente Integral – Temporada Navidad – Angol FP Fashion's Park , An",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2894,7 +3514,7 @@
           "employer": "Consultores 2000",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Técnico en Administración para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico en Administración para AIF - Angol ID 3915752 Buscado Consultores 2000 Fecha [teléfono] 17:05:24 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 899 veces Interesados: 11 PUBLICIDAD Técnico en Administración para AIF - Angol C Consultores 2",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Técnico en Administración para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico en Administración para AIF - Angol ID 3915752 Buscado Consultores 2000 Fecha [teléfono] 17:05:24 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 903 veces Interesados: 11 PUBLICIDAD Técnico en Administración para AIF - Angol C Consultores 2",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2918,7 +3538,7 @@
           "employer": "Consultores 2000",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Geomensor - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Geomensor - Angol ID 3915735 Buscado Consultores 2000 Fecha [teléfono] 16:55:16 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 710 veces Interesados: 10 PUBLICIDAD Geomensor - Angol C Consultores 2000 , Angol 16 de Octubre de 2026 Descripción oferta de trabajo hace 24 dia",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Geomensor - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Geomensor - Angol ID 3915735 Buscado Consultores 2000 Fecha [teléfono] 16:55:16 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 714 veces Interesados: 10 PUBLICIDAD Geomensor - Angol C Consultores 2000 , Angol 16 de Octubre de 2026 Descripción oferta de trabajo hace 24 dia",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2942,7 +3562,7 @@
           "employer": "Consultores 2000",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Calidad para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Calidad para AIF - Angol ID 3915738 Buscado Consultores 2000 Fecha [teléfono] 16:57:22 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 753 veces Interesados: 16 PUBLICIDAD Encargado Calidad para AIF - Angol C Consultores 2000 , Angol 16 de Octubr",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Calidad para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Calidad para AIF - Angol ID 3915738 Buscado Consultores 2000 Fecha [teléfono] 16:57:22 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 757 veces Interesados: 16 PUBLICIDAD Encargado Calidad para AIF - Angol C Consultores 2000 , Angol 16 de Octubr",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2966,7 +3586,7 @@
           "employer": "Consultores 2000",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Laboratorista Vial Clase B para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Laboratorista Vial Clase B para AIF - Angol ID 3915741 Buscado Consultores 2000 Fecha [teléfono] 16:59:20 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 668 veces Interesados: 5 PUBLICIDAD Laboratorista Vial Clase ",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Laboratorista Vial Clase B para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Laboratorista Vial Clase B para AIF - Angol ID 3915741 Buscado Consultores 2000 Fecha [teléfono] 16:59:20 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 672 veces Interesados: 5 PUBLICIDAD Laboratorista Vial Clase ",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -2990,7 +3610,7 @@
           "employer": "Consultores 2000",
           "application_evidence": true,
           "deadline": "2026-12-30",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Prevencionista de Riesgos para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Prevencionista de Riesgos para AIF - Angol ID 3915742 Buscado Consultores 2000 Fecha [teléfono] 17:00:32 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 678 veces Interesados: 8 PUBLICIDAD Prevencionista de Riesgos p",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Prevencionista de Riesgos para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Prevencionista de Riesgos para AIF - Angol ID 3915742 Buscado Consultores 2000 Fecha [teléfono] 17:00:32 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 682 veces Interesados: 8 PUBLICIDAD Prevencionista de Riesgos p",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3014,7 +3634,7 @@
           "employer": "Inmunomedica",
           "application_evidence": true,
           "deadline": "2026-12-22",
-          "excerpt": "PUBLICIDAD Home Medicina / Salud Tens/ Enfermera Administrativa Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Tens/ Enfermera Administrativa Angol ID 3911374 Buscado Inmunomedica Fecha [teléfono] 11:58:01 Expira [teléfono] (en 43 días) Ubicación Angol CL Categoría Medicina / Salud Duración Plazo fijo Tipo Part-time & Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1251 veces Interesados: 39 PUBLICIDAD Tens/ Enfermera Administrativa Angol I Inmunomedica , Angol 08 de Octubre d",
+          "excerpt": "PUBLICIDAD Home Medicina / Salud Tens/ Enfermera Administrativa Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Tens/ Enfermera Administrativa Angol ID 3911374 Buscado Inmunomedica Fecha [teléfono] 11:58:01 Expira [teléfono] (en 43 días) Ubicación Angol CL Categoría Medicina / Salud Duración Plazo fijo Tipo Part-time & Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1255 veces Interesados: 39 PUBLICIDAD Tens/ Enfermera Administrativa Angol I Inmunomedica , Angol 08 de Octubre d",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3038,7 +3658,7 @@
           "employer": null,
           "application_evidence": true,
           "deadline": "2026-12-12",
-          "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3904934 Buscado - Fecha [teléfono] 10:51:26 Expira [teléfono] (en 33 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1348 veces Interesados: 37 PUBLICIDAD Conductor - , Angol 28 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos un conductor para r",
+          "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3904934 Buscado - Fecha [teléfono] 10:51:26 Expira [teléfono] (en 33 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1352 veces Interesados: 37 PUBLICIDAD Conductor - , Angol 28 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos un conductor para r",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3062,7 +3682,7 @@
           "employer": "Fundación Tierra de Esperanza",
           "application_evidence": true,
           "deadline": "2026-12-09",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Profesional de Programas Generales / LAE Angol Reemplazo Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Profesional de Programas Generales / LAE Angol Reemplazo ID 3904472 Buscado Fundación Tierra de Esperanza Fecha [teléfono] 16:52:58 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Profesionales y Técnicos Salario 1.498.266 Duración plazo fijo reemplazo. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1730 veces Interesados:",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Profesional de Programas Generales / LAE Angol Reemplazo Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Profesional de Programas Generales / LAE Angol Reemplazo ID 3904472 Buscado Fundación Tierra de Esperanza Fecha [teléfono] 16:52:58 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Profesionales y Técnicos Salario 1.498.266 Duración plazo fijo reemplazo. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1735 veces Interesados:",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3086,7 +3706,7 @@
           "employer": "Importante empresa del rubro",
           "application_evidence": true,
           "deadline": "2026-12-09",
-          "excerpt": "PUBLICIDAD Home Medicina / Salud Asistente Dental Full Time / Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente Dental Full Time / Angol ID 3844114 Buscado Importante empresa del rubro Fecha [teléfono] 05:37:38 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Medicina / Salud Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1569 veces Interesados: 19 PUBLICIDAD Asistente Dental Full Time / Angol IE Importante empresa del rubro de la Salud , Angol 25 de Se",
+          "excerpt": "PUBLICIDAD Home Medicina / Salud Asistente Dental Full Time / Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente Dental Full Time / Angol ID 3844114 Buscado Importante empresa del rubro Fecha [teléfono] 05:37:38 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Medicina / Salud Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1573 veces Interesados: 19 PUBLICIDAD Asistente Dental Full Time / Angol IE Importante empresa del rubro de la Salud , Angol 25 de Se",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3110,12 +3730,13 @@
           "employer": "..",
           "application_evidence": true,
           "deadline": "2026-12-08",
-          "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3784704 Buscado .. Fecha [teléfono] 09:20:12 Expira [teléfono] (en 29 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2799 veces Interesados: 88 PUBLICIDAD Conductor .. , Angol 24 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos Conductores respo",
+          "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3784704 Buscado .. Fecha [teléfono] 09:20:12 Expira [teléfono] (en 29 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2805 veces Interesados: 88 PUBLICIDAD Conductor .. , Angol 24 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos Conductores respo",
           "express_ready": false,
           "date_recent_2d": false
         }
       ],
       "errors": [],
+      "documents_for_review": [],
       "index_scope_confirmed": true
     },
     {
@@ -3123,7 +3744,7 @@
       "source": "Chiletrabajos · Collipulli",
       "url": "https://www.chiletrabajos.cl/ciudad/collipulli.html",
       "status": "fallback_no_verified_target_offers",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 11,
       "details_opened": 0,
@@ -3131,6 +3752,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3146,7 +3768,7 @@
       "source": "Chiletrabajos · Ercilla",
       "url": "https://www.chiletrabajos.cl/ciudad/ercilla.html",
       "status": "fallback_no_verified_target_offers",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 6,
       "details_opened": 0,
@@ -3154,6 +3776,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3169,7 +3792,7 @@
       "source": "Chiletrabajos · Lumaco",
       "url": "https://www.chiletrabajos.cl/ciudad/lumaco.html",
       "status": "fallback_no_verified_target_offers",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 5,
       "details_opened": 0,
@@ -3177,6 +3800,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3192,7 +3816,7 @@
       "source": "Chiletrabajos · Los Sauces",
       "url": "https://www.chiletrabajos.cl/ciudad/los-sauces.html",
       "status": "fallback_no_verified_target_offers",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 11,
       "details_opened": 0,
@@ -3200,6 +3824,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3215,7 +3840,7 @@
       "source": "Chiletrabajos · Purén",
       "url": "https://www.chiletrabajos.cl/ciudad/puren.html",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 11,
       "details_opened": 1,
@@ -3240,7 +3865,7 @@
           "employer": "Constructora",
           "application_evidence": true,
           "deadline": "2027-01-16",
-          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 628 veces Interesados: 18 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
+          "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 648 veces Interesados: 19 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
           "express_ready": false,
           "date_recent_2d": false
         }
@@ -3248,6 +3873,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3263,7 +3889,7 @@
       "source": "Chiletrabajos · Renaico",
       "url": "https://www.chiletrabajos.cl/ciudad/renaico.html",
       "status": "fallback_no_verified_target_offers",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 11,
       "details_opened": 0,
@@ -3271,6 +3897,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3286,7 +3913,7 @@
       "source": "Chiletrabajos · Traiguén",
       "url": "https://www.chiletrabajos.cl/ciudad/traiguen.html",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 11,
       "details_opened": 1,
@@ -3311,7 +3938,7 @@
           "employer": "Cultiva",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 339 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
+          "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 346 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
           "express_ready": false,
           "date_recent_2d": false
         }
@@ -3319,6 +3946,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3334,7 +3962,7 @@
       "source": "Chiletrabajos · Victoria",
       "url": "https://www.chiletrabajos.cl/ciudad/victoria.html",
       "status": "fallback_no_verified_target_offers",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 30,
       "details_opened": 0,
@@ -3342,6 +3970,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3357,7 +3986,7 @@
       "source": "Chiletrabajos · Mulchén",
       "url": "https://www.chiletrabajos.cl/ciudad/mulchen.html",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 5,
       "details_opened": 1,
@@ -3382,7 +4011,7 @@
           "employer": "Cultiva",
           "application_evidence": true,
           "deadline": "2027-01-20",
-          "excerpt": "PUBLICIDAD Home Ventas / Comercial REPONEDOR PART TIME MULCHEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas REPONEDOR PART TIME MULCHEN ID 3927989 Buscado Cultiva Fecha [teléfono] 16:59:10 Expira [teléfono] (en 72 días) Ubicación Concepción CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 190 veces Interesados: 4 PUBLICIDAD REPONEDOR PART TIME MULCHEN C Cultiva , Concepción 06 de Noviembre de 2026",
+          "excerpt": "PUBLICIDAD Home Ventas / Comercial REPONEDOR PART TIME MULCHEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas REPONEDOR PART TIME MULCHEN ID 3927989 Buscado Cultiva Fecha [teléfono] 16:59:10 Expira [teléfono] (en 72 días) Ubicación Concepción CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 197 veces Interesados: 4 PUBLICIDAD REPONEDOR PART TIME MULCHEN C Cultiva , Concepción 06 de Noviembre de 2026",
           "express_ready": false,
           "date_recent_2d": false
         }
@@ -3390,6 +4019,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3405,7 +4035,7 @@
       "source": "Chiletrabajos · Negrete",
       "url": "https://www.chiletrabajos.cl/ciudad/negrete.html",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 11,
       "details_opened": 1,
@@ -3430,7 +4060,7 @@
           "employer": "LICEO AGRÍCOLA DE NEGRETE",
           "application_evidence": true,
           "deadline": "2027-01-03",
-          "excerpt": "PUBLICIDAD Home Educación y Psicopedagogía DOCENTE DE MATEMATICAS, REEMPLAZO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE DE MATEMATICAS, REEMPLAZO ID 3755017 Buscado LICEO AGRÍCOLA DE NEGRETE Fecha [teléfono] 19:19:57 Expira [teléfono] (en 55 días) Ubicación Los Ángeles CL Categoría Educación y Psicopedagogía Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2326 veces Interesados: 29 PUBLICIDAD DOCENTE DE MATEMATICAS, REEMPLAZO LICEO AGRÍCOLA DE NE",
+          "excerpt": "PUBLICIDAD Home Educación y Psicopedagogía DOCENTE DE MATEMATICAS, REEMPLAZO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE DE MATEMATICAS, REEMPLAZO ID 3755017 Buscado LICEO AGRÍCOLA DE NEGRETE Fecha [teléfono] 19:19:57 Expira [teléfono] (en 55 días) Ubicación Los Ángeles CL Categoría Educación y Psicopedagogía Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2331 veces Interesados: 29 PUBLICIDAD DOCENTE DE MATEMATICAS, REEMPLAZO LICEO AGRÍCOLA DE NE",
           "express_ready": false,
           "date_recent_2d": false
         }
@@ -3438,6 +4068,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3453,7 +4084,7 @@
       "source": "Chiletrabajos · Nacimiento",
       "url": "https://www.chiletrabajos.cl/ciudad/nacimiento.html",
       "status": "scanned_with_candidates",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 200,
       "links_found": 30,
       "details_opened": 4,
@@ -3478,7 +4109,7 @@
           "employer": "Serfonac",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Soldador/a de Maquinaria – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Soldador/a de Maquinaria – Nacimiento ID 3923358 Buscado Serfonac Fecha [teléfono] 22:09:24 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 551 veces Interesados: 12 PUBLICIDAD Mecánico/a Soldador/a de Maquinaria – Nacimiento Serfonac , Los Ángeles 05 de Noviem",
+          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Soldador/a de Maquinaria – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Soldador/a de Maquinaria – Nacimiento ID 3923358 Buscado Serfonac Fecha [teléfono] 22:09:24 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 556 veces Interesados: 12 PUBLICIDAD Mecánico/a Soldador/a de Maquinaria – Nacimiento Serfonac , Los Ángeles 05 de Noviem",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3502,7 +4133,7 @@
           "employer": "Serfonac",
           "application_evidence": true,
           "deadline": "2027-01-19",
-          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Automotriz – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Automotriz – Nacimiento ID 3923364 Buscado Serfonac Fecha [teléfono] 21:09:46 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 465 veces Interesados: 8 PUBLICIDAD Mecánico/a Automotriz – Nacimiento Serfonac , Los Ángeles 05 de Noviembre de 2026",
+          "excerpt": "PUBLICIDAD Home Otros Mecánico/a Automotriz – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Automotriz – Nacimiento ID 3923364 Buscado Serfonac Fecha [teléfono] 21:09:46 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 470 veces Interesados: 8 PUBLICIDAD Mecánico/a Automotriz – Nacimiento Serfonac , Los Ángeles 05 de Noviembre de 2026",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3526,7 +4157,7 @@
           "employer": "Constructora aljo",
           "application_evidence": true,
           "deadline": "2027-01-18",
-          "excerpt": "PUBLICIDAD Home Otros Se buscan enfierradores Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan enfierradores Nacimiento ID 3926105 Buscado Constructora aljo Fecha [teléfono] 12:34:58 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Otros Salario al mercado Duración por proyecto Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 157 veces Interesados: 1 PUBLICIDAD Se buscan enfierradores Nacimiento CA Constructora aljo ,",
+          "excerpt": "PUBLICIDAD Home Otros Se buscan enfierradores Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan enfierradores Nacimiento ID 3926105 Buscado Constructora aljo Fecha [teléfono] 12:34:58 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Otros Salario al mercado Duración por proyecto Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 165 veces Interesados: 1 PUBLICIDAD Se buscan enfierradores Nacimiento CA Constructora aljo ,",
           "express_ready": false,
           "date_recent_2d": false
         },
@@ -3550,7 +4181,7 @@
           "employer": "Constructora aljo",
           "application_evidence": true,
           "deadline": "2027-01-17",
-          "excerpt": "PUBLICIDAD Home Otros Se buscan Enfierradores – Obra Hospital de Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan Enfierradores – Obra Hospital de Nacimiento ID 3887984 Buscado Constructora aljo Fecha [teléfono] 18:31:55 Expira [teléfono] (en 69 días) Ubicación Angol CL Categoría Otros Salario al mercado Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 973 veces Interesados: 12 PUBLICIDAD Se buscan Enfierradores – Obra Hospital de Nacimiento CA Constructora al",
+          "excerpt": "PUBLICIDAD Home Otros Se buscan Enfierradores – Obra Hospital de Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan Enfierradores – Obra Hospital de Nacimiento ID 3887984 Buscado Constructora aljo Fecha [teléfono] 18:31:55 Expira [teléfono] (en 69 días) Ubicación Angol CL Categoría Otros Salario al mercado Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 981 veces Interesados: 12 PUBLICIDAD Se buscan Enfierradores – Obra Hospital de Nacimiento CA Constructora al",
           "express_ready": false,
           "date_recent_2d": false
         }
@@ -3558,6 +4189,7 @@
       "errors": [
         "chiletrabajos_territory_heading_missing"
       ],
+      "documents_for_review": [],
       "index_scope_confirmed": false,
       "index_heading": "Trabajos",
       "index_page_title": "Trabajos en   - Página 1 | Chiletrabajos",
@@ -3573,144 +4205,156 @@
       "source": "Indeed · Angol",
       "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Collipulli",
       "source": "Indeed · Collipulli",
       "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Ercilla",
       "source": "Indeed · Ercilla",
       "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Lumaco",
       "source": "Indeed · Lumaco",
       "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Los Sauces",
       "source": "Indeed · Los Sauces",
       "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Purén",
       "source": "Indeed · Purén",
       "url": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Renaico",
       "source": "Indeed · Renaico",
       "url": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Traiguén",
       "source": "Indeed · Traiguén",
       "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Victoria",
       "source": "Indeed · Victoria",
       "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Mulchén",
       "source": "Indeed · Mulchén",
       "url": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Negrete",
       "source": "Indeed · Negrete",
       "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     },
     {
       "commune": "Nacimiento",
       "source": "Indeed · Nacimiento",
       "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=2",
       "status": "http_restricted",
-      "checked_at": "2026-11-09T22:50:31.507776-03:00",
+      "checked_at": "2026-11-09T23:46:35.120969-03:00",
       "http": 403,
       "links_found": 0,
       "details_opened": 0,
       "candidates": [],
-      "errors": []
+      "errors": [],
+      "documents_for_review": []
     }
   ],
   "candidates": [
@@ -3972,21 +4616,13 @@
       "url": "https://municipalidadcollipulli.cl/concursos-internos/",
       "label": "Concursos Internos",
       "index_status": "not_indicated",
-      "evidence": "directory_not_offer",
+      "evidence": "detail_unavailable",
       "date_source": null,
       "work_commune": null,
       "recruitment_commune": null,
       "source_scope_commune": "Collipulli",
       "source_commune_not_confirmed": true,
-      "http": 200,
-      "explicit_worksite_commune": null,
-      "title": "Concursos Internos",
-      "dates": [],
-      "employer": null,
-      "application_evidence": false,
-      "deadline": null,
-      "excerpt": "Concursos Internos - I. Municipalidad de Collipulli 09 November 2026 - 17.13 C Visión, Misión y Valores Pladeco [teléfono] Lunes a Viernes: 09:00 a 14:00 Inicio Alcaldía Concejo Municipal Direcciones Unidad de Desarrollo Económico Local Dirección Municipal de Salud Dirección Municipal de Educación Dirección Secretaría Municipal Dirección Jurídica Dirección de Seguridad Pública Secplac Departamento de Tránsito y Transporte Público Dirección de Administración Municipal Dirección de Administración y Finanzas Dirección de Control Interno Direcc",
-      "express_ready": false,
+      "error": "ConnectTimeout",
       "source": "Municipio Collipulli",
       "commune": "Collipulli"
     },
@@ -4934,7 +5570,7 @@
       "employer": "Serfonac",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Otros Mecánico/a Soldador/a de Maquinaria – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Soldador/a de Maquinaria – Nacimiento ID 3923358 Buscado Serfonac Fecha [teléfono] 22:09:24 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 550 veces Interesados: 12 PUBLICIDAD Mecánico/a Soldador/a de Maquinaria – Nacimiento Serfonac , Los Ángeles 05 de Noviem",
+      "excerpt": "PUBLICIDAD Home Otros Mecánico/a Soldador/a de Maquinaria – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Soldador/a de Maquinaria – Nacimiento ID 3923358 Buscado Serfonac Fecha [teléfono] 22:09:24 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 555 veces Interesados: 12 PUBLICIDAD Mecánico/a Soldador/a de Maquinaria – Nacimiento Serfonac , Los Ángeles 05 de Noviem",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Serfonac mecánico soldador",
@@ -4960,7 +5596,7 @@
       "employer": "Serfonac",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Otros Mecánico/a Automotriz – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Automotriz – Nacimiento ID 3923364 Buscado Serfonac Fecha [teléfono] 21:09:46 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 464 veces Interesados: 8 PUBLICIDAD Mecánico/a Automotriz – Nacimiento Serfonac , Los Ángeles 05 de Noviembre de 2026",
+      "excerpt": "PUBLICIDAD Home Otros Mecánico/a Automotriz – Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Mecánico/a Automotriz – Nacimiento ID 3923364 Buscado Serfonac Fecha [teléfono] 21:09:46 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Otros Duración Plazo Fijo Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 469 veces Interesados: 8 PUBLICIDAD Mecánico/a Automotriz – Nacimiento Serfonac , Los Ángeles 05 de Noviembre de 2026",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Serfonac mecánico automotriz",
@@ -4986,7 +5622,7 @@
       "employer": "Serfonac Ltda",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Operarios Conductor de Transporte de Carga y Personal - Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor de Transporte de Carga y Personal - Nacimiento ID 3923758 Buscado Serfonac Ltda Fecha [teléfono] 18:13:09 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Operarios Duración Inicialmente, temporada estacional Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 783 veces Interesados: 15 PUBLICIDAD Conductor de Transporte de Carg",
+      "excerpt": "PUBLICIDAD Home Operarios Conductor de Transporte de Carga y Personal - Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor de Transporte de Carga y Personal - Nacimiento ID 3923758 Buscado Serfonac Ltda Fecha [teléfono] 18:13:09 Expira [teléfono] (en 71 días) Ubicación Los Ángeles CL Categoría Operarios Duración Inicialmente, temporada estacional Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 788 veces Interesados: 15 PUBLICIDAD Conductor de Transporte de Carg",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Serfonac conductor",
@@ -5012,7 +5648,7 @@
       "employer": "Empresa de alimentos",
       "application_evidence": true,
       "deadline": "2027-01-06",
-      "excerpt": "PUBLICIDAD Home Operarios SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ID 3919569 Buscado Empresa de alimentos Fecha [teléfono] 13:14:21 Expira [teléfono] (en 58 días) Ubicación Angol CL Categoría Operarios Tipo Full-time Email Inicia sesión para ver mail Postular Guardar Compartir El anuncio ha sido visto: 1007 veces Interesados: 19 PUBLICIDAD SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ED Empresa de alimentos , Angol 23 de Octubre d",
+      "excerpt": "PUBLICIDAD Home Operarios SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ID 3919569 Buscado Empresa de alimentos Fecha [teléfono] 13:14:21 Expira [teléfono] (en 58 días) Ubicación Angol CL Categoría Operarios Tipo Full-time Email Inicia sesión para ver mail Postular Guardar Compartir El anuncio ha sido visto: 1013 veces Interesados: 19 PUBLICIDAD SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL) ED Empresa de alimentos , Angol 23 de Octubre d",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Operario alimentos Angol",
@@ -5038,7 +5674,7 @@
       "employer": "Cultiva",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 338 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
+      "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 345 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Reponedor Traiguén",
@@ -5064,7 +5700,7 @@
       "employer": "Cultiva",
       "application_evidence": true,
       "deadline": "2027-01-20",
-      "excerpt": "PUBLICIDAD Home Ventas / Comercial REPONEDOR PART TIME MULCHEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas REPONEDOR PART TIME MULCHEN ID 3927989 Buscado Cultiva Fecha [teléfono] 16:59:10 Expira [teléfono] (en 72 días) Ubicación Concepción CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 189 veces Interesados: 4 PUBLICIDAD REPONEDOR PART TIME MULCHEN C Cultiva , Concepción 06 de Noviembre de 2026",
+      "excerpt": "PUBLICIDAD Home Ventas / Comercial REPONEDOR PART TIME MULCHEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas REPONEDOR PART TIME MULCHEN ID 3927989 Buscado Cultiva Fecha [teléfono] 16:59:10 Expira [teléfono] (en 72 días) Ubicación Concepción CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 196 veces Interesados: 4 PUBLICIDAD REPONEDOR PART TIME MULCHEN C Cultiva , Concepción 06 de Noviembre de 2026",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Reponedor Mulchén",
@@ -5090,7 +5726,7 @@
       "employer": "Constructora",
       "application_evidence": true,
       "deadline": "2027-01-16",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 625 veces Interesados: 18 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos PREVENCIONISTA DE RIESGOS – MALLECO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Oferta destacada PREVENCIONISTA DE RIESGOS – MALLECO ID 3924497 Buscado Constructora Fecha [teléfono] 13:29:45 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 646 veces Interesados: 19 PUBLICIDAD PREVENCIONISTA DE RIESGOS – MALLECO C Constructora , Ango",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Prevencionista obras Malleco",
@@ -5513,7 +6149,7 @@
       "employer": "SMU",
       "application_evidence": true,
       "deadline": "2027-01-22",
-      "excerpt": "PUBLICIDAD Home Otros Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol ID 3916578 Buscado SMU Fecha [teléfono] 06:20:39 Expira [teléfono] (en 74 días) Ubicación Angol CL Categoría Otros Salario 1 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 934 veces Interesados: 15 PUBLICIDAD Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol S ",
+      "excerpt": "PUBLICIDAD Home Otros Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol ID 3916578 Buscado SMU Fecha [teléfono] 06:20:39 Expira [teléfono] (en 74 días) Ubicación Angol CL Categoría Otros Salario 1 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 940 veces Interesados: 15 PUBLICIDAD Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol S ",
       "express_ready": true,
       "date_recent_2d": true,
       "source": "Chiletrabajos · Angol",
@@ -5539,7 +6175,7 @@
       "employer": "SERVICIOS HELPBANK S.A",
       "application_evidence": true,
       "deadline": "2027-01-20",
-      "excerpt": "PUBLICIDAD Home Otros Cajero/a Bancario/a ANGOL Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Bancario/a ANGOL ID 3732391 Buscado SERVICIOS HELPBANK S.A Fecha [teléfono] 14:20:34 Expira [teléfono] (en 72 días) Ubicación Angol CL Categoría Otros Salario $3.358.- liquido por hora trabajada Duración Plazo fijo Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 3718 veces Interesados: 50 PUBLICIDAD Cajero/a Bancario/a ANGOL SH SERVICIOS HELPBANK S.A , Angol 06 de Noviembre de 2026 Descrip",
+      "excerpt": "PUBLICIDAD Home Otros Cajero/a Bancario/a ANGOL Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Bancario/a ANGOL ID 3732391 Buscado SERVICIOS HELPBANK S.A Fecha [teléfono] 14:20:34 Expira [teléfono] (en 72 días) Ubicación Angol CL Categoría Otros Salario $3.358.- liquido por hora trabajada Duración Plazo fijo Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 3723 veces Interesados: 50 PUBLICIDAD Cajero/a Bancario/a ANGOL SH SERVICIOS HELPBANK S.A , Angol 06 de Noviembre de 2026 Descrip",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5565,7 +6201,7 @@
       "employer": "DOMINION SPA",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones - Angol ID 3926909 Buscado DOMINION SPA Fecha [teléfono] 11:52:52 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 205 veces Interesados: 2 PUBLICIDAD Técnico Telecomunicaciones - Angol DS DOMINION SP",
+      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones - Angol ID 3926909 Buscado DOMINION SPA Fecha [teléfono] 11:52:52 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 213 veces Interesados: 2 PUBLICIDAD Técnico Telecomunicaciones - Angol DS DOMINION SP",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5591,7 +6227,7 @@
       "employer": "Trayectos Angol",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo (a) 22 horas Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo (a) 22 horas ID 3926911 Buscado Trayectos Angol Fecha [teléfono] 11:53:20 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Indefinido Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 256 veces Interesados: 3 PUBLICIDAD Psicólogo (a) 22 horas TA Trayectos Angol , Angol 05 de Noviembre ",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo (a) 22 horas Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo (a) 22 horas ID 3926911 Buscado Trayectos Angol Fecha [teléfono] 11:53:20 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Indefinido Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 261 veces Interesados: 3 PUBLICIDAD Psicólogo (a) 22 horas TA Trayectos Angol , Angol 05 de Noviembre ",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5617,7 +6253,7 @@
       "employer": "Fashion's Park",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Otros Asistente de Aseo PT 20 HR (Angol) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente de Aseo PT 20 HR (Angol) ID 3926914 Buscado Fashion's Park Fecha [teléfono] 11:54:02 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Otros Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 190 veces Interesados: 2 PUBLICIDAD Asistente de Aseo PT 20 HR (Angol) FP Fashion's Park , Angol 05 de Noviembre de 2026 Descripción ofer",
+      "excerpt": "PUBLICIDAD Home Otros Asistente de Aseo PT 20 HR (Angol) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente de Aseo PT 20 HR (Angol) ID 3926914 Buscado Fashion's Park Fecha [teléfono] 11:54:02 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Otros Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 196 veces Interesados: 2 PUBLICIDAD Asistente de Aseo PT 20 HR (Angol) FP Fashion's Park , Angol 05 de Noviembre de 2026 Descripción ofer",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5643,7 +6279,7 @@
       "employer": "DOMINION SPA",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones Sin Experiencia - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones Sin Experiencia - Angol ID 3926918 Buscado DOMINION SPA Fecha [teléfono] 11:54:53 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 218 veces Interesados: 6 PUBLICIDAD Técnico Telecomun",
+      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones Técnico Telecomunicaciones Sin Experiencia - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico Telecomunicaciones Sin Experiencia - Angol ID 3926918 Buscado DOMINION SPA Fecha [teléfono] 11:54:53 Expira [teléfono] (en 71 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 227 veces Interesados: 6 PUBLICIDAD Técnico Telecomun",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5669,7 +6305,7 @@
       "employer": "Constructora aljo",
       "application_evidence": true,
       "deadline": "2027-01-18",
-      "excerpt": "PUBLICIDAD Home Otros Se buscan enfierradores Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan enfierradores Nacimiento ID 3926105 Buscado Constructora aljo Fecha [teléfono] 12:34:58 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Otros Salario al mercado Duración por proyecto Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 156 veces Interesados: 1 PUBLICIDAD Se buscan enfierradores Nacimiento CA Constructora aljo ,",
+      "excerpt": "PUBLICIDAD Home Otros Se buscan enfierradores Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan enfierradores Nacimiento ID 3926105 Buscado Constructora aljo Fecha [teléfono] 12:34:58 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Otros Salario al mercado Duración por proyecto Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 164 veces Interesados: 1 PUBLICIDAD Se buscan enfierradores Nacimiento CA Constructora aljo ,",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5695,7 +6331,7 @@
       "employer": "Preunic",
       "application_evidence": true,
       "deadline": "2027-01-18",
-      "excerpt": "PUBLICIDAD Home Operarios Bodeguero/a Plan Navidad Preunic Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Bodeguero/a Plan Navidad Preunic Angol ID 3925963 Buscado Preunic Fecha [teléfono] 10:51:20 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Operarios Salario 600000 Duración 30 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 314 veces Interesados: 16 PUBLICIDAD Bodeguero/a Plan Navidad Preunic Angol P Preunic , Angol 04 de Noviembre de 2026 Descripción ofe",
+      "excerpt": "PUBLICIDAD Home Operarios Bodeguero/a Plan Navidad Preunic Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Bodeguero/a Plan Navidad Preunic Angol ID 3925963 Buscado Preunic Fecha [teléfono] 10:51:20 Expira [teléfono] (en 70 días) Ubicación Angol CL Categoría Operarios Salario 600000 Duración 30 Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 320 veces Interesados: 16 PUBLICIDAD Bodeguero/a Plan Navidad Preunic Angol P Preunic , Angol 04 de Noviembre de 2026 Descripción ofe",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5721,7 +6357,7 @@
       "employer": "Constructora aljo",
       "application_evidence": true,
       "deadline": "2027-01-17",
-      "excerpt": "PUBLICIDAD Home Otros Se buscan Enfierradores – Obra Hospital de Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan Enfierradores – Obra Hospital de Nacimiento ID 3887984 Buscado Constructora aljo Fecha [teléfono] 18:31:55 Expira [teléfono] (en 69 días) Ubicación Angol CL Categoría Otros Salario al mercado Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 972 veces Interesados: 12 PUBLICIDAD Se buscan Enfierradores – Obra Hospital de Nacimiento CA Constructora al",
+      "excerpt": "PUBLICIDAD Home Otros Se buscan Enfierradores – Obra Hospital de Nacimiento Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Se buscan Enfierradores – Obra Hospital de Nacimiento ID 3887984 Buscado Constructora aljo Fecha [teléfono] 18:31:55 Expira [teléfono] (en 69 días) Ubicación Angol CL Categoría Otros Salario al mercado Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 980 veces Interesados: 12 PUBLICIDAD Se buscan Enfierradores – Obra Hospital de Nacimiento CA Constructora al",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5747,7 +6383,7 @@
       "employer": "Empresa Confidencial",
       "application_evidence": true,
       "deadline": "2027-01-16",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo/a Organizacional - Comuna Ercilla Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo/a Organizacional - Comuna Ercilla ID 3924928 Buscado Empresa Confidencial Fecha [teléfono] 20:55:46 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Freelance Tipo Part-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 261 veces Interesados: 3 PUBLICIDAD Psicólogo/a Organiza",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Psicólogo/a Organizacional - Comuna Ercilla Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Psicólogo/a Organizacional - Comuna Ercilla ID 3924928 Buscado Empresa Confidencial Fecha [teléfono] 20:55:46 Expira [teléfono] (en 68 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración Freelance Tipo Part-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 270 veces Interesados: 3 PUBLICIDAD Psicólogo/a Organiza",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5773,7 +6409,7 @@
       "employer": "Papa Johns Angol",
       "application_evidence": true,
       "deadline": "2027-01-13",
-      "excerpt": "PUBLICIDAD Home Hotelería Turismo y Gastronomía Subgerente de tienda Papa Johns - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Subgerente de tienda Papa Johns - Angol ID 3923618 Buscado Papa Johns Angol Fecha [teléfono] 17:50:07 Expira [teléfono] (en 65 días) Ubicación Angol CL Categoría Hotelería Turismo y Gastronomía Salario - Duración Plazo fijo y luego indefinido Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 442 veces Interesados: 12 PUBLICIDAD Subgerente de tiend",
+      "excerpt": "PUBLICIDAD Home Hotelería Turismo y Gastronomía Subgerente de tienda Papa Johns - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Subgerente de tienda Papa Johns - Angol ID 3923618 Buscado Papa Johns Angol Fecha [teléfono] 17:50:07 Expira [teléfono] (en 65 días) Ubicación Angol CL Categoría Hotelería Turismo y Gastronomía Salario - Duración Plazo fijo y luego indefinido Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 447 veces Interesados: 12 PUBLICIDAD Subgerente de tiend",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5799,7 +6435,7 @@
       "employer": "FUNDACION CIUDAD DEL NIÑO",
       "application_evidence": true,
       "deadline": "2027-01-11",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía ID 3921759 Buscado FUNDACION CIUDAD DEL NIÑO Fecha [teléfono] 09:50:43 Expira [teléfono] (en 63 días) Ubicación Angol CL Categoría Profesionales y Técnicos Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1000 veces Interesados: 33 PUBLICIDAD GESTOR",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía ID 3921759 Buscado FUNDACION CIUDAD DEL NIÑO Fecha [teléfono] 09:50:43 Expira [teléfono] (en 63 días) Ubicación Angol CL Categoría Profesionales y Técnicos Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1006 veces Interesados: 33 PUBLICIDAD GESTOR",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5825,7 +6461,7 @@
       "employer": "Manpowergroup",
       "application_evidence": true,
       "deadline": "2027-01-02",
-      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones VVendedor en Terreno - Angol Victoria Traiguén Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas VVendedor en Terreno - Angol Victoria Traiguén ID 3916595 Buscado Manpowergroup Fecha [teléfono] 16:04:05 Expira [teléfono] (en 54 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 559 veces Interesados: 5 PUBLICIDAD VVendedor en Terreno - A",
+      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones VVendedor en Terreno - Angol Victoria Traiguén Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas VVendedor en Terreno - Angol Victoria Traiguén ID 3916595 Buscado Manpowergroup Fecha [teléfono] 16:04:05 Expira [teléfono] (en 54 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 571 veces Interesados: 5 PUBLICIDAD VVendedor en Terreno - A",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5851,7 +6487,7 @@
       "employer": "CORPORACION HD SPA",
       "application_evidence": true,
       "deadline": "2027-01-01",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos DOCENTE PSICOLOGO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE PSICOLOGO ID 3915967 Buscado CORPORACION HD SPA Fecha [teléfono] 15:04:54 Expira [teléfono] (en 53 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1112 veces Interesados: 54 PUBLICIDAD DOCENTE PSICOLOGO CH CORPORACION HD SPA , Angol 18 de Octubre de 2026 Descripción oferta de trabajo hac",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos DOCENTE PSICOLOGO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE PSICOLOGO ID 3915967 Buscado CORPORACION HD SPA Fecha [teléfono] 15:04:54 Expira [teléfono] (en 53 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1116 veces Interesados: 54 PUBLICIDAD DOCENTE PSICOLOGO CH CORPORACION HD SPA , Angol 18 de Octubre de 2026 Descripción oferta de trabajo hac",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5877,7 +6513,7 @@
       "employer": "CONFIDENCIAL",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) ID 3915481 Buscado CONFIDENCIAL Fecha [teléfono] 13:15:34 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Duración PLAZO FIJJO Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 731 veces Interesados: 4 PUBLICIDAD TECN",
+      "excerpt": "PUBLICIDAD Home Informática / Telecomunicaciones TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR) ID 3915481 Buscado CONFIDENCIAL Fecha [teléfono] 13:15:34 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Informática / Telecomunicaciones Duración PLAZO FIJJO Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 735 veces Interesados: 4 PUBLICIDAD TECN",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5903,7 +6539,7 @@
       "employer": "Consultores 2000",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Ambiental y Participación Ciudadana para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Ambiental y Participación Ciudadana para AIF - Angol ID 3915746 Buscado Consultores 2000 Fecha [teléfono] 17:03:39 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1178 veces Interesados: 26 PUBLICIDAD Encargado Ambient",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Ambiental y Participación Ciudadana para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Ambiental y Participación Ciudadana para AIF - Angol ID 3915746 Buscado Consultores 2000 Fecha [teléfono] 17:03:39 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1182 veces Interesados: 26 PUBLICIDAD Encargado Ambient",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5929,7 +6565,7 @@
       "employer": "Consultores 2000",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Jefe de Asesoría - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Jefe de Asesoría - Angol ID 3915725 Buscado Consultores 2000 Fecha [teléfono] 16:48:05 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 8 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 768 veces Interesados: 9 PUBLICIDAD Jefe de Asesoría - Angol C Consultores 2000 , Angol 16 de Octub",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Jefe de Asesoría - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Jefe de Asesoría - Angol ID 3915725 Buscado Consultores 2000 Fecha [teléfono] 16:48:05 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 8 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 772 veces Interesados: 9 PUBLICIDAD Jefe de Asesoría - Angol C Consultores 2000 , Angol 16 de Octub",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5955,7 +6591,7 @@
       "employer": "Fashion's Park",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Ventas / Comercial Cajero/a Asistente Integral – Temporada Navidad – Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Asistente Integral – Temporada Navidad – Angol ID 3915270 Buscado Fashion's Park Fecha [teléfono] 10:12:11 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Ventas / Comercial Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 930 veces Interesados: 48 PUBLICIDAD Cajero/a Asistente Integral – Temporada Navidad – Angol FP Fashion's Park , An",
+      "excerpt": "PUBLICIDAD Home Ventas / Comercial Cajero/a Asistente Integral – Temporada Navidad – Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Cajero/a Asistente Integral – Temporada Navidad – Angol ID 3915270 Buscado Fashion's Park Fecha [teléfono] 10:12:11 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Ventas / Comercial Tipo Full-time Postular Guardar Compartir El anuncio ha sido visto: 935 veces Interesados: 48 PUBLICIDAD Cajero/a Asistente Integral – Temporada Navidad – Angol FP Fashion's Park , An",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -5981,7 +6617,7 @@
       "employer": "Consultores 2000",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Técnico en Administración para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico en Administración para AIF - Angol ID 3915752 Buscado Consultores 2000 Fecha [teléfono] 17:05:24 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 899 veces Interesados: 11 PUBLICIDAD Técnico en Administración para AIF - Angol C Consultores 2",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Técnico en Administración para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Técnico en Administración para AIF - Angol ID 3915752 Buscado Consultores 2000 Fecha [teléfono] 17:05:24 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 903 veces Interesados: 11 PUBLICIDAD Técnico en Administración para AIF - Angol C Consultores 2",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6007,7 +6643,7 @@
       "employer": "Consultores 2000",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Geomensor - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Geomensor - Angol ID 3915735 Buscado Consultores 2000 Fecha [teléfono] 16:55:16 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 710 veces Interesados: 10 PUBLICIDAD Geomensor - Angol C Consultores 2000 , Angol 16 de Octubre de 2026 Descripción oferta de trabajo hace 24 dia",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Geomensor - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Geomensor - Angol ID 3915735 Buscado Consultores 2000 Fecha [teléfono] 16:55:16 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 714 veces Interesados: 10 PUBLICIDAD Geomensor - Angol C Consultores 2000 , Angol 16 de Octubre de 2026 Descripción oferta de trabajo hace 24 dia",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6033,7 +6669,7 @@
       "employer": "Consultores 2000",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Calidad para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Calidad para AIF - Angol ID 3915738 Buscado Consultores 2000 Fecha [teléfono] 16:57:22 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 753 veces Interesados: 16 PUBLICIDAD Encargado Calidad para AIF - Angol C Consultores 2000 , Angol 16 de Octubr",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Encargado Calidad para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Encargado Calidad para AIF - Angol ID 3915738 Buscado Consultores 2000 Fecha [teléfono] 16:57:22 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 757 veces Interesados: 16 PUBLICIDAD Encargado Calidad para AIF - Angol C Consultores 2000 , Angol 16 de Octubr",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6059,7 +6695,7 @@
       "employer": "Consultores 2000",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Laboratorista Vial Clase B para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Laboratorista Vial Clase B para AIF - Angol ID 3915741 Buscado Consultores 2000 Fecha [teléfono] 16:59:20 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 668 veces Interesados: 5 PUBLICIDAD Laboratorista Vial Clase ",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Laboratorista Vial Clase B para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Laboratorista Vial Clase B para AIF - Angol ID 3915741 Buscado Consultores 2000 Fecha [teléfono] 16:59:20 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 672 veces Interesados: 5 PUBLICIDAD Laboratorista Vial Clase ",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6085,7 +6721,7 @@
       "employer": "Consultores 2000",
       "application_evidence": true,
       "deadline": "2026-12-30",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Prevencionista de Riesgos para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Prevencionista de Riesgos para AIF - Angol ID 3915742 Buscado Consultores 2000 Fecha [teléfono] 17:00:32 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 678 veces Interesados: 8 PUBLICIDAD Prevencionista de Riesgos p",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Prevencionista de Riesgos para AIF - Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Prevencionista de Riesgos para AIF - Angol ID 3915742 Buscado Consultores 2000 Fecha [teléfono] 17:00:32 Expira [teléfono] (en 51 días) Ubicación Angol CL Categoría Profesionales y Técnicos Duración 9 meses. Tipo Full-time Ley inclusión Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 682 veces Interesados: 8 PUBLICIDAD Prevencionista de Riesgos p",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6111,7 +6747,7 @@
       "employer": "Inmunomedica",
       "application_evidence": true,
       "deadline": "2026-12-22",
-      "excerpt": "PUBLICIDAD Home Medicina / Salud Tens/ Enfermera Administrativa Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Tens/ Enfermera Administrativa Angol ID 3911374 Buscado Inmunomedica Fecha [teléfono] 11:58:01 Expira [teléfono] (en 43 días) Ubicación Angol CL Categoría Medicina / Salud Duración Plazo fijo Tipo Part-time & Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1251 veces Interesados: 39 PUBLICIDAD Tens/ Enfermera Administrativa Angol I Inmunomedica , Angol 08 de Octubre d",
+      "excerpt": "PUBLICIDAD Home Medicina / Salud Tens/ Enfermera Administrativa Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Tens/ Enfermera Administrativa Angol ID 3911374 Buscado Inmunomedica Fecha [teléfono] 11:58:01 Expira [teléfono] (en 43 días) Ubicación Angol CL Categoría Medicina / Salud Duración Plazo fijo Tipo Part-time & Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1255 veces Interesados: 39 PUBLICIDAD Tens/ Enfermera Administrativa Angol I Inmunomedica , Angol 08 de Octubre d",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6137,7 +6773,7 @@
       "employer": null,
       "application_evidence": true,
       "deadline": "2026-12-12",
-      "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3904934 Buscado - Fecha [teléfono] 10:51:26 Expira [teléfono] (en 33 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1348 veces Interesados: 37 PUBLICIDAD Conductor - , Angol 28 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos un conductor para r",
+      "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3904934 Buscado - Fecha [teléfono] 10:51:26 Expira [teléfono] (en 33 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1352 veces Interesados: 37 PUBLICIDAD Conductor - , Angol 28 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos un conductor para r",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6163,7 +6799,7 @@
       "employer": "Fundación Tierra de Esperanza",
       "application_evidence": true,
       "deadline": "2026-12-09",
-      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Profesional de Programas Generales / LAE Angol Reemplazo Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Profesional de Programas Generales / LAE Angol Reemplazo ID 3904472 Buscado Fundación Tierra de Esperanza Fecha [teléfono] 16:52:58 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Profesionales y Técnicos Salario 1.498.266 Duración plazo fijo reemplazo. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1730 veces Interesados:",
+      "excerpt": "PUBLICIDAD Home Profesionales y Técnicos Profesional de Programas Generales / LAE Angol Reemplazo Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Profesional de Programas Generales / LAE Angol Reemplazo ID 3904472 Buscado Fundación Tierra de Esperanza Fecha [teléfono] 16:52:58 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Profesionales y Técnicos Salario 1.498.266 Duración plazo fijo reemplazo. Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1735 veces Interesados:",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6189,7 +6825,7 @@
       "employer": "Importante empresa del rubro",
       "application_evidence": true,
       "deadline": "2026-12-09",
-      "excerpt": "PUBLICIDAD Home Medicina / Salud Asistente Dental Full Time / Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente Dental Full Time / Angol ID 3844114 Buscado Importante empresa del rubro Fecha [teléfono] 05:37:38 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Medicina / Salud Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1569 veces Interesados: 19 PUBLICIDAD Asistente Dental Full Time / Angol IE Importante empresa del rubro de la Salud , Angol 25 de Se",
+      "excerpt": "PUBLICIDAD Home Medicina / Salud Asistente Dental Full Time / Angol Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Asistente Dental Full Time / Angol ID 3844114 Buscado Importante empresa del rubro Fecha [teléfono] 05:37:38 Expira [teléfono] (en 30 días) Ubicación Angol CL Categoría Medicina / Salud Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 1573 veces Interesados: 19 PUBLICIDAD Asistente Dental Full Time / Angol IE Importante empresa del rubro de la Salud , Angol 25 de Se",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6215,7 +6851,7 @@
       "employer": "..",
       "application_evidence": true,
       "deadline": "2026-12-08",
-      "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3784704 Buscado .. Fecha [teléfono] 09:20:12 Expira [teléfono] (en 29 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2799 veces Interesados: 88 PUBLICIDAD Conductor .. , Angol 24 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos Conductores respo",
+      "excerpt": "PUBLICIDAD Home Logística / Distribución Conductor Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Conductor ID 3784704 Buscado .. Fecha [teléfono] 09:20:12 Expira [teléfono] (en 29 días) Ubicación Angol CL Categoría Logística / Distribución Duración primero plazo fijo Tipo Full-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2805 veces Interesados: 88 PUBLICIDAD Conductor .. , Angol 24 de Septiembre de 2026 Descripción oferta de trabajo más de 30 dias Full-time Buscamos Conductores respo",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Angol",
@@ -6241,7 +6877,7 @@
       "employer": "Cultiva",
       "application_evidence": true,
       "deadline": "2027-01-19",
-      "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 339 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
+      "excerpt": "PUBLICIDAD Home Ventas / Comercial Reponedor PART TIME PARA TRAIGUEN Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas Reponedor PART TIME PARA TRAIGUEN ID 3924463 Buscado Cultiva Fecha [teléfono] 23:36:00 Expira [teléfono] (en 71 días) Ubicación Temuco CL Categoría Ventas / Comercial Salario 5000 Duración Proyecto Tipo Part-time Postular Sé de los primeros en postular! Guardar Compartir El anuncio ha sido visto: 346 veces Interesados: 2 PUBLICIDAD Reponedor PART TIME PARA TRAIGUEN C Cultiva , Temuco 05 de Noviemb",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Traiguén",
@@ -6267,7 +6903,7 @@
       "employer": "LICEO AGRÍCOLA DE NEGRETE",
       "application_evidence": true,
       "deadline": "2027-01-03",
-      "excerpt": "PUBLICIDAD Home Educación y Psicopedagogía DOCENTE DE MATEMATICAS, REEMPLAZO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE DE MATEMATICAS, REEMPLAZO ID 3755017 Buscado LICEO AGRÍCOLA DE NEGRETE Fecha [teléfono] 19:19:57 Expira [teléfono] (en 55 días) Ubicación Los Ángeles CL Categoría Educación y Psicopedagogía Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2326 veces Interesados: 29 PUBLICIDAD DOCENTE DE MATEMATICAS, REEMPLAZO LICEO AGRÍCOLA DE NE",
+      "excerpt": "PUBLICIDAD Home Educación y Psicopedagogía DOCENTE DE MATEMATICAS, REEMPLAZO Volver Buscar Ofertas PUBLICIDAD Detalle oferta Ofertas relacionadas Más ofertas DOCENTE DE MATEMATICAS, REEMPLAZO ID 3755017 Buscado LICEO AGRÍCOLA DE NEGRETE Fecha [teléfono] 19:19:57 Expira [teléfono] (en 55 días) Ubicación Los Ángeles CL Categoría Educación y Psicopedagogía Duración PLAZO FIJO Tipo Part-time Ley inclusión Postular Guardar Compartir El anuncio ha sido visto: 2331 veces Interesados: 29 PUBLICIDAD DOCENTE DE MATEMATICAS, REEMPLAZO LICEO AGRÍCOLA DE NE",
       "express_ready": false,
       "date_recent_2d": false,
       "source": "Chiletrabajos · Negrete",

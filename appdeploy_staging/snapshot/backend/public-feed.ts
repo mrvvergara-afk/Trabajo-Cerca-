@@ -619,8 +619,23 @@ export async function readPublicFeedPage(cursor?:string) {
   }
   if (!current) throw new Error('Public feed manifest missing');
   if (page >= Math.max(1, current.pages.length)) throw new Error('Feed cursor invalid');
-  const ref = current.pages[page];
-  const [leaf] = ref ? await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id]) : [null];
+  let ref = current.pages[page];
+  let [leaf] = ref ? await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id]) : [null];
+  if (ref && !leaf && !cursor?.startsWith('v2:')) {
+    const backupId=(await single<Control>('public_feed_last_good'))?.manifestId;
+    if (backupId && backupId!==manifestId) {
+      const [backup]=await db.get<Manifest>('public_feed_manifests',[backupId]);
+      const backupRef=backup?.pages[page];
+      const [backupLeaf]=backupRef ? await db.get<{entries:Entry[]}>('public_feed_versions',[backupRef.id]) : [null];
+      if (backup && backupRef && backupLeaf) {
+        console.warn('PUBLIC_FEED_RECOVERED_LAST_GOOD '+JSON.stringify({reason:'primary_page_missing'}));
+        manifestId=backupId;
+        current=backup;
+        ref=backupRef;
+        leaf=backupLeaf;
+      }
+    }
+  }
   if (ref && !leaf) throw new Error('Public feed page missing');
   const { pages:_pages, schema:_schema, itemCount, ...summary } = current;
   const hasMore = page + 1 < current.pages.length;

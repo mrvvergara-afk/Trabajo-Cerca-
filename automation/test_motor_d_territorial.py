@@ -367,11 +367,14 @@ class TerritorialSafetyTests(unittest.TestCase):
             "<html><h1>Trabajos de Collipulli</h1>"
             "<a href='/trabajo/mecanico-999'>Mecánico de maquinaria</a></html>",
             "html.parser")
-        with patch.object(engine,"request_page",return_value=(200,page,None)) as reader:
+        with patch.object(engine,"request_page",side_effect=[
+                (200,page,None),(403,None,None)]) as reader:
             result=engine.inspect(("Collipulli","Chiletrabajos · Collipulli",url))
         self.assertEqual(result["status"],"search_filter_not_confirmed")
         self.assertEqual(result["candidates"],[])
-        self.assertEqual(reader.call_count,1)
+        self.assertEqual(result["fallback_http"],403)
+        self.assertFalse(result["fallback_query_is_territorially_scoped"])
+        self.assertEqual(reader.call_count,2)
 
     def test_chiletrabajos_only_dereferences_individual_job_urls(self):
         url = "https://www.chiletrabajos.cl/ciudad/angol.html"
@@ -390,12 +393,118 @@ class TerritorialSafetyTests(unittest.TestCase):
         generic = BeautifulSoup(
             "<html><h1>Trabajos recientes en Chile</h1>"
             "<a href='/trabajo/operador-123'>Operador de planta</a></html>", "html.parser")
-        with patch.object(engine, "request_page", return_value=(200, generic, None)) as page:
+        with patch.object(engine, "request_page", side_effect=[
+                (200,generic,None),(404,None,None)]) as page:
             result = engine.inspect(("Angol", "Chiletrabajos · Angol",
                 "https://www.chiletrabajos.cl/ciudad/angol.html"))
             self.assertEqual(result["status"], "search_filter_not_confirmed")
             self.assertEqual(result["candidates"], [])
-            self.assertEqual(page.call_count, 1)
+            self.assertFalse(result["index_scope_confirmed"])
+            self.assertEqual(page.call_count, 2)
+
+    def test_fallback_never_treats_national_search_as_a_verified_city_index(self):
+        from unittest.mock import patch
+        from datetime import timedelta
+        from motor_d_express import classify as classify_ready
+        day=engine.NOW.date().isoformat()
+        expiry=(engine.NOW.date()+timedelta(days=30)).isoformat()
+        index=BeautifulSoup("<h1>Trabajos en -</h1>","html.parser")
+        fallback=BeautifulSoup(
+            "<h1>Resultados de búsqueda Chile</h1>"
+            "<a href='/trabajo/operario-victoria-3999901'>Operario Victoria</a>"
+            "<a href='/trabajo/operario-santiago-3999902'>Operario Santiago</a>",
+            "html.parser")
+        local=BeautifulSoup(
+            f"<h1>Operario Victoria</h1>"
+            f"<div>Buscado Empresa Real Fecha {day} Expira {expiry} "
+            "Ubicación Victoria Categoría Operarios Postular</div>"
+            "<article><p>Buscamos operarios. Lugar de trabajo: Victoria. "
+            "Postular mediante la ficha oficial del portal.</p></article>",
+            "html.parser")
+        national=BeautifulSoup(
+            f"<h1>Operario Santiago</h1>"
+            f"<div>Buscado Empresa Nacional Fecha {day} Expira {expiry} "
+            "Ubicación Santiago Categoría Operarios Postular</div>"
+            "<article><p>Lugar de trabajo: Santiago. Postular.</p></article>",
+            "html.parser")
+        calls=[]
+        def fetch(url):
+            calls.append(url)
+            if url.endswith("ciudad/victoria.html"):return 200,index,None
+            if "?2=Victoria" in url:return 200,fallback,None
+            if url.endswith("3999901"):return 200,local,None
+            if url.endswith("3999902"):return 200,national,None
+            raise AssertionError("unexpected URL "+url)
+        with patch.object(engine,"request_page",side_effect=fetch):
+            result=engine.inspect(("Victoria","Chiletrabajos · Victoria",
+                "https://www.chiletrabajos.cl/ciudad/victoria.html"))
+        self.assertEqual(result["status"],"scanned_with_candidates")
+        self.assertEqual(result["fallback_details_seen"],2)
+        self.assertEqual(result["fallback_rejected_nonlocal_or_unknown"],1)
+        self.assertEqual(len(result["candidates"]),1)
+        self.assertEqual(result["candidates"][0]["work_commune"],"Victoria")
+        self.assertEqual(result["candidates"][0]["explicit_worksite_commune"],"Victoria")
+        self.assertFalse(result["candidates"][0]["source_commune_not_confirmed"])
+        self.assertFalse(result["index_scope_confirmed"])
+        self.assertEqual(classify_ready(result["candidates"][0],engine.NOW.date())[0],"EXPRESS")
+        self.assertTrue(any("?2=Victoria" in url for url in calls))
+
+    def test_national_fallback_rejects_person_name_victoria_while_job_is_in_santiago(self):
+        from unittest.mock import patch
+        index=BeautifulSoup("<title>Trabajos en -</title>","html.parser")
+        fallback=BeautifulSoup(
+            "<h1>Trabajos recientes</h1>"
+            "<a href='/trabajo/operador-victoria-herrera-3999801'>"
+            "Operador para Victoria Herrera</a>", "html.parser")
+        job=BeautifulSoup(
+            "<h1>Operador para Victoria Herrera</h1>"
+            "<div>Buscado Victoria Herrera Fecha 2026-11-09 "
+            "Expira 2027-01-20 Ubicación Santiago Categoría Operarios Postular</div>"
+            "<article><p>Lugar de trabajo: Santiago. Requiere operador.</p></article>",
+            "html.parser")
+        with patch.object(engine,"request_page",side_effect=[
+                (200,index,None),(200,fallback,None),(200,job,None)]):
+            result=engine.inspect(("Victoria","Chiletrabajos · Victoria",
+                "https://www.chiletrabajos.cl/ciudad/victoria.html"))
+        self.assertEqual(result["status"],"fallback_no_verified_target_offers")
+        self.assertEqual(result["candidates"],[])
+        self.assertEqual(result["fallback_rejected_nonlocal_or_unknown"],1)
+        self.assertEqual(result["details_opened"],0)
+
+    def test_national_fallback_title_and_recruiter_city_without_worksite_remains_review_only(self):
+        from unittest.mock import patch
+        from motor_d_express import classify as classify_ready
+        index=BeautifulSoup("<h1>Trabajos en -</h1>","html.parser")
+        fallback=BeautifulSoup(
+            "<a href='/trabajo/mecanico-victoria-3999701'>Mecánico Victoria</a>",
+            "html.parser")
+        job=BeautifulSoup(
+            "<h1>Mecánico Victoria</h1>"
+            "<div>Buscado Empresa Real Fecha 2026-11-09 Expira 2027-01-19 "
+            "Ubicación Victoria Categoría Técnicos Postular</div>"
+            "<article><p>Se requiere mecánico con experiencia para flota. "
+            "Interesados postular en portal. Ideal disponibilidad para viajar.</p></article>",
+            "html.parser")
+        with patch.object(engine,"request_page",side_effect=[
+                (200,index,None),(200,fallback,None),(200,job,None)]):
+            result=engine.inspect(("Victoria","Chiletrabajos · Victoria",
+                "https://www.chiletrabajos.cl/ciudad/victoria.html"))
+        self.assertEqual(len(result["candidates"]),1)
+        offer=result["candidates"][0]
+        self.assertEqual(offer["work_commune"],"Victoria")
+        self.assertIsNone(offer["explicit_worksite_commune"])
+        self.assertTrue(offer["source_commune_not_confirmed"])
+        self.assertFalse(offer["express_ready"])
+        self.assertEqual(result["fallback_pending_worksite_confirmation"],1)
+        self.assertEqual(classify_ready(offer,engine.NOW.date())[0],"SEGUNDA_PASADA")
+
+    def test_fallback_url_is_only_for_authorized_twelve_communes(self):
+        self.assertEqual(engine.chiletrabajos_fallback_url("Los Sauces"),
+                         "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces")
+        self.assertEqual(engine.chiletrabajos_fallback_url("Purén"),
+                         "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n")
+        with self.assertRaises(ValueError):
+            engine.chiletrabajos_fallback_url("Quilaco")
 
     def test_real_city_index_to_individual_verified_offer_stays_publishable(self):
         from datetime import timedelta

@@ -200,6 +200,20 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertIsNone(saved["review_signature"])
             self.assertEqual(saved["document_sha256"], "a" * 64)
 
+    def test_review_writer_atomic_failure_preserves_previous_queue(self):
+        from revisar_ocr import write_queue_atomic
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp)/"review.json"
+            target.write_text('{"items":[{"review_status":"approved"}]}')
+            before = target.read_bytes()
+            with patch("revisar_ocr.os.replace", side_effect=OSError("interrupted")):
+                with self.assertRaises(OSError):
+                    write_queue_atomic(target, {"items": []})
+            self.assertEqual(target.read_bytes(), before)
+            self.assertEqual(list(Path(tmp).glob(".ocr_review_*.tmp")), [])
+            write_queue_atomic(target, {"items": []})
+            self.assertEqual(json.loads(target.read_text()), {"items": []})
+
     def test_canonical_recrawl_keeps_signed_url(self):
         with tempfile.TemporaryDirectory() as tmp:
             source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"

@@ -308,11 +308,16 @@ class Editor {
         const existing = await this.entries(page);
         const duplicate = existing.find(entry => identity(entry.item) === incomingIdentity);
         if (!duplicate) throw new Error('Feed identity metadata mismatch');
+        const approved = (value:Stored) => value.kind==='job_offer' &&
+          value.verified===true && value.review!==true && value.active===true;
+        // Never replace an approved duplicate with a pending/unverified copy,
+        // even if the pending copy carries a newer verification timestamp.
+        const preserveApproved = approved(duplicate.item) && !approved(item);
         const checked = (value:Stored) => {
           const stamp = Date.parse(String(value.externalVerifiedAt || value.verificationCheckedAt || value.verifiedAt || ''));
           return Number.isFinite(stamp) && stamp <= this.now ? stamp : 0;
         };
-        if (checked(duplicate.item) > checked(item)) {
+        if (preserveApproved || (approved(duplicate.item)===approved(item) && checked(duplicate.item) > checked(item))) {
           if (firstTimes.length) {duplicate.item={...duplicate.item,firstPublishedAt:new Date(Math.min(...firstTimes)).toISOString()};this.set(page,existing);}
           return;
         }

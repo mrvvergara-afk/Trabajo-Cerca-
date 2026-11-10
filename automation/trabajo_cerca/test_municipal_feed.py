@@ -6,6 +6,7 @@ from unittest.mock import patch
 from municipal_feed import (
     SITES, clean_title, discover_municipal, documents_from_page,
     has_job_signal, merge_page_links, municipal_url, parse_rss, parse_wp_posts,
+    clearly_non_job_pdf,
 )
 
 VICTORIA="https://victoriachile.cl/category/omil/"
@@ -134,6 +135,27 @@ class MunicipalFeedTests(unittest.TestCase):
                                if "/wp-json/" in url else (b"<rss><channel/></rss>","application/rss+xml"))
         self.assertEqual(got["status"],"ok")
         self.assertEqual(got["links_found"],1)
+
+    def test_all_six_observed_traiguen_archive_names_excluded_and_hiring_pdfs_kept(self):
+        archive=[
+            "Plano-Traiguen.pdf",
+            "ROL_REAVALUO_AGRICOLA_2020.pdf",
+            "ROL_REAVALUOS_NO_AGRICOLA_2020.pdf",
+            "Informe_EAE_Traiguen.pdf",
+            "Diario_Oficial-Inicio.pdf",
+            "DAEX-3401-APRUEBA-ESCALAFON-DE-MERITO-2024.pdf",
+        ]
+        for name in archive:
+            with self.subTest(archive=name):
+                self.assertTrue(clearly_non_job_pdf(
+                    "https://mtraiguen.cl/wp-content/uploads/2023/07/"+name))
+        for name in ("DAEX-BASES-Y-CALENDARIO.pdf",
+                     "decreto-y-bases-2do-llamado.pdf",
+                     "DECRETO-PRLAC.pdf","BASES-PRLAC.pdf",
+                     "decreto-1959.pdf","Bases-cargo-Administrativo-grado-16.pdf"):
+            with self.subTest(hiring_pdf=name):
+                self.assertFalse(clearly_non_job_pdf(
+                    "https://mtraiguen.cl/wp-content/uploads/2026/10/"+name))
 
     def test_individual_job_article_footer_pdf_plans_are_filtered(self):
         # Traiguén's real job article inherited generic homepage downloads.

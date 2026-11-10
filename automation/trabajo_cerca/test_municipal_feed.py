@@ -135,11 +135,23 @@ class MunicipalFeedTests(unittest.TestCase):
         self.assertEqual(got["status"],"ok")
         self.assertEqual(got["links_found"],1)
 
-    def test_traiquen_html_not_invented_as_wp_or_rss(self):
-        got=discover_municipal(TRAIGUEN,fetcher=lambda url: (_ for _ in ()).throw(
-            AssertionError("API should not run")))
-        self.assertEqual(got["status"],"not_checked")
-        self.assertEqual(got["pages"],[])
+    def test_traiguen_public_html_category_yields_pages_not_fake_vacancies(self):
+        html=(b"<html><main>"
+              b"<a href='/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/'>"
+              b"Bases para llamado a Concurso Publico de 3 Cargos</a>"
+              b"<a href='/noticia/taller-de-pro-empleo/'>Taller de Pro Empleo</a>"
+              b"</main></html>")
+        called=[]
+        def fetch(url):
+            called.append(url)
+            return html,"text/html"
+        got=discover_municipal(TRAIGUEN,fetcher=fetch)
+        self.assertEqual(got["status"],"ok")
+        self.assertEqual(got["links_found"],1)
+        self.assertEqual(len(got["pages"]),1)
+        self.assertEqual(got["pages"][0]["origin"],"municipal_html")
+        self.assertTrue(all("/wp-json/" not in x for x in called))
+        self.assertEqual(got["pages"][0]["feed_date_unverified"],None)
 
     def test_html_embedded_pdf_does_not_become_offer(self):
         url="https://municipalidadrenaico.cl/concursos-publicos/"

@@ -1,0 +1,49 @@
+name: Trabajo Cerca | QA Chiletrabajos 12 comunas
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/motor_d_territorial_daily.py'
+      - 'automation/test_motor_d_territorial.py'
+      - 'automation/qa_chiletrabajos_12comunas.py'
+      - '.github/workflows/qa-chiletrabajos-12comunas.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'automation/motor_d_territorial_daily.py'
+      - 'automation/test_motor_d_territorial.py'
+      - 'automation/qa_chiletrabajos_12comunas.py'
+      - '.github/workflows/qa-chiletrabajos-12comunas.yml'
+permissions:
+  contents: read
+concurrency:
+  group: qa-chiletrabajos-12comunas-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify_national_fallback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install supported public HTML parser
+        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
+      - name: Unit tests of territorial scope, origin and anti-duplicate behavior
+        env:
+          PYTHONPATH: automation
+        run: python -m unittest discover -s automation -p 'test_motor_d_territorial.py' -v
+      - name: Real read-only inspection of all 12 Chiletrabajos sources and full catalog
+        env:
+          PYTHONPATH: automation
+        run: python automation/qa_chiletrabajos_12comunas.py
+      - name: Preserve real per-commune proof even if blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chiletrabajos-12comunas-public-qa
+          path: resultados/qa_chiletrabajos_12comunas.json
+          if-no-files-found: warn
+          retention-days: 21

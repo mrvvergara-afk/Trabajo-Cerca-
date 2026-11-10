@@ -61,7 +61,7 @@ NOT_JOBS = re.compile(
 # Conservative filename exclusions; do not reject generic decree names,
 # which may actually contain bases for a job call.
 NON_JOB_PDF_NAME = re.compile(
-    r"(?:^|[-_])(?:plano(?:s)?|rol[-_]?reaval[uú]o|reaval[uú]o|"
+    r"(?:^|[-_])(?:plano(?:s)?|rol[-_]?reaval[uú]o(?:s)?|reaval[uú]o(?:s)?|"
     r"informe[-_]?eae|diario[-_]?oficial[-_]?inicio|"
     r"escalaf[oó]n)(?:[-_.]|$)",re.I
 )

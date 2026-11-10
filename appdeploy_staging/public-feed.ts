@@ -653,6 +653,11 @@ export async function readPublicFeedPage(cursor?:string) {
     }
   }
   if (ref && !leaf) throw new Error('Public feed page missing');
+  if (ref && leaf) {
+    if (!Array.isArray(leaf.entries) || leaf.entries.length > PAGE_SIZE) throw new Error('Public feed page corrupt');
+    if (!Array.isArray(ref.keys) || leaf.entries.length !== ref.keys.length) throw new Error('Public feed page count mismatch');
+    if (leaf.entries.some((entry, index) => !entry || entry.key !== ref.keys[index])) throw new Error('Public feed page identity mismatch');
+  }
   const { pages:_pages, schema:_schema, itemCount, ...summary } = current;
   const hasMore = page + 1 < current.pages.length;
   return { ...summary, items:leaf?.entries.map(entry => entry.item) ?? [], totalItems:itemCount,

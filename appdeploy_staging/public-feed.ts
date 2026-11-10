@@ -527,11 +527,15 @@ export async function publicFeedProgress() {
 // Never expose private source rows or administrative candidates.
 export async function readStagedPublicFeedPage() {
   const staged=await single<Build>('public_feed_build_state');
-  const first=staged?.pages?.[0];
-  if(!first)return null;
-  const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[first.id]);
-  if(!leaf)return null;
-  const items=leaf.entries.map(entry=>entry.item);
+  if(!staged?.pages?.length)return null;
+  // A valid staged page may be empty after filtering; find the first nonempty public page.
+  let items:Stored[]=[];
+  for(const ref of staged.pages){
+    const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id]);
+    if(!leaf || !Array.isArray(leaf.entries))continue;
+    if(leaf.entries.length){items=leaf.entries.map(entry=>entry.item);break;}
+  }
+  if(!items.length)return null;
   // A staged build is incomplete: never present first-page counts as final totals.
   // Expose only the approved public projection already persisted in the leaf.
   const { pages:_pages, nextToken:_nextToken, source:_source, ...partial }=staged;

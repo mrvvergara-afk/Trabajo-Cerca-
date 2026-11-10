@@ -498,9 +498,14 @@ export async function readStagedPublicFeedPage() {
   const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[first.id]);
   if(!leaf)return null;
   const items=leaf.entries.map(entry=>entry.item);
-  return {...emptySummary(),...staged,totalItems:items.length,items,
-    hasMore:false,feedRebuilding:true,degraded:true,pages:undefined,
-    nextToken:undefined,pageCount:undefined};
+  // A staged build is incomplete: never present first-page counts as final totals.
+  // Expose only the approved public projection already persisted in the leaf.
+  const { pages:_pages, nextToken:_nextToken, source:_source, ...partial }=staged;
+  return {...emptySummary(),...partial,items,
+    totalItems:staged.itemCount,hasMore:staged.pages.length>1,
+    nextCursor:undefined,stagedPages:staged.pages.length,
+    feedRebuilding:true,degraded:true,feedState:'building_partial',
+    totalsProvisional:true};
 }
 
 // Single scheduled writer: the existing verify-publish cron. Other handlers only read the summary.

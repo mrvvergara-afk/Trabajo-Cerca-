@@ -1,0 +1,24 @@
+{
+  "schema": "trabajo-cerca.municipal-external-audit-evidence.v1",
+  "created_at": "2026-11-09",
+  "provenance": "DeepSeek Harness report supplied by user on 2026-11-09; source PDF bytes independently SHA256 matched by GitHub Actions 2026-11-09; deadline itself was reported after independent audit of all 33 pages, not automatically extracted in current runner",
+  "items": [
+    {
+      "url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+      "publisher_page": "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+      "sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
+      "reported_original_published_date": "2026-10-01",
+      "reported_application_closed_date": "2026-11-02",
+      "reported_roles": [
+        "Químico Farmacéutico(a) A 44 h",
+        "Ingeniero(a) Prevención de Riesgos B 44 h",
+        "Nutricionista B 44 h"
+      ],
+      "employer": "Municipalidad de Traiguén — Departamento de Salud Municipal",
+      "commune": "Traiguén",
+      "evidence_method": "external_report_plus_exact_document_sha",
+      "scope": "do_not_publish_expired_recruitment_call",
+      "caveat": "Current bounded PDF reader cannot independently recover the complete 33-page timetable; external deadline claim is attributed, not asserted as first-party OCR."
+    }
+  ]
+}

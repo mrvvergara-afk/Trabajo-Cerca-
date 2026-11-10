@@ -223,9 +223,23 @@ def closeout(report, second_pass, public_rows, feed_complete, reader=read_one, t
             new_queue.append(outcome)
     owners=Counter(row.get("owner") for row in second_pass["records"]
                    if row.get("owner") in ("B","C"))
-    all_cases=[{**row,"linked_pdf_evidence_count":len(parent_evidence.get(_url_key(row["url"]),[])),
-                 "linked_pdf_evidence_urls":[r["url"] for r in parent_evidence.get(_url_key(row["url"]),[])]}
-               for row in second_pass["records"] if row.get("owner") in ("B","C")]
+    all_cases=[]
+    for row in second_pass["records"]:
+        if row.get("owner") not in ("B","C"):
+            continue
+        linked=parent_evidence.get(_url_key(row["url"]),[])
+        audit_expired=sum(x["status"]=="expired_reported_by_hash_matched_external_audit"
+                          for x in linked)
+        all_cases.append({**row,
+            "linked_pdf_evidence_count":len(linked),
+            "linked_pdf_evidence_urls":[x["url"] for x in linked],
+            "linked_pdf_external_expiry_evidence_count":audit_expired,
+            "documentary_review_recommendation":(
+                "close_reported_expired_call_with_hash_matched_audit_evidence"
+                if audit_expired and audit_expired==len(linked)
+                else "continue_evidence_review"),
+            "original_B_C_queue_modified":False,
+        })
     result={
         "schema":"trabajo-cerca.municipal-pdf-closeout.v1",
         "report_day":str(report.get("date",""))[:10],
@@ -241,6 +255,9 @@ def closeout(report, second_pass, public_rows, feed_complete, reader=read_one, t
         "expired_pdf_calls_supported_by_external_sha_audit":sum(
             row["status"]=="expired_reported_by_hash_matched_external_audit"
             for row in reviewed),
+        "existing_B_C_cases_with_audited_expiry_evidence":sum(
+            row["linked_pdf_external_expiry_evidence_count"]>0
+            for row in all_cases),
         "new_pdf_cases_to_B":len(new_queue),
         "new_publications":0,
         "quarantine_modified":False,
@@ -280,6 +297,7 @@ def main(argv=None):
             "public_feed_rows","second_pass_review_count",
             "second_pass_review_owners","existing_reviews_with_pdf_evidence",
             "new_pdf_cases_to_B","expired_pdf_calls_supported_by_external_sha_audit",
+            "existing_B_C_cases_with_audited_expiry_evidence",
             "status_counts","new_publications")
     },ensure_ascii=False),flush=True)
     return 0 if complete else 2

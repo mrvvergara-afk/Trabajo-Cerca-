@@ -135,6 +135,17 @@ class MunicipalFeedTests(unittest.TestCase):
         self.assertEqual(got["status"],"ok")
         self.assertEqual(got["links_found"],1)
 
+    def test_category_sidebar_pdf_archives_not_queued_as_job_documents(self):
+        html=(b"<main><a href='/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/'>"
+              b"Bases para llamado a Concurso Publico de 3 Cargos</a>"
+              b"<a href='/wp-content/uploads/2023/07/Plano-Traiguen.pdf'>Plano Urbano</a>"
+              b"<iframe src='/wp-content/uploads/2023/07/ROL_REAVALUO_AGRICOLA_2020.pdf'></iframe>"
+              b"</main>")
+        result=discover_municipal(TRAIGUEN,fetcher=lambda url:(html,"text/html"))
+        self.assertEqual(result["links_found"],1)
+        self.assertEqual(result["documents_for_review"],[])
+        self.assertTrue(all(doc["kind"]=="local_page" for doc in result["pages"]))
+
     def test_traiguen_public_html_category_yields_pages_not_fake_vacancies(self):
         html=(b"<html><main>"
               b"<a href='/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/'>"

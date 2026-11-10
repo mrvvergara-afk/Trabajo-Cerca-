@@ -12,6 +12,7 @@ import hashlib
 import json
 from collections import Counter
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from motor_d_catalog_probe import URL_FIELDS, read_full_feed, source_identity
 from qa_motor_d_second_pass import reconcile as reconcile_second_pass
@@ -214,7 +215,7 @@ def main(argv=None):
     parser.add_argument("--output",default="resultados/municipal_pdf_closeout.json")
     args=parser.parse_args(argv)
     report=json.loads(Path(args.input).read_text(encoding="utf-8"))
-    today=dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))).date()
+    today=dt.datetime.now(ZoneInfo("America/Santiago")).date()
     public,complete,error=read_full_feed(max_pages=80)
     second=reconcile_second_pass(report,public,complete,error)
     result=closeout(report,second,public,complete,today=today)

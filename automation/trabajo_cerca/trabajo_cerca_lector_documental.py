@@ -58,7 +58,8 @@ def maximum_for_url(url: str) -> int:
 
 def fetch_bytes(url: str, maximum: int = 6000000) -> tuple[bytes, str]:
     # No redirects. Network-level proxy must also deny private IP targets.
-    req = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/pdf,text/html,text/plain"})
+    req = Request(url, headers={"User-Agent": USER_AGENT,
+                                "Accept": "application/pdf,text/html,application/json,application/rss+xml,application/xml,text/xml,text/plain"})
     with OPENER.open(req, timeout=12) as resp:
         if resp.status != 200:
             raise ValueError("http_" + str(resp.status))

@@ -11,6 +11,9 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 from ocr_review_security import redact
+from trabajo_cerca.municipal_feed import (
+    SITES as MUNICIPAL_FEED_SITES, discover_municipal, documents_from_page,
+)
 
 TZ=ZoneInfo("America/Santiago")
 NOW=datetime.now(TZ)
@@ -355,13 +358,29 @@ def inspect(seed):
     town,source,url=seed
     out={"commune":town,"source":source,"url":url,"status":"not_started",
          "checked_at":NOW.isoformat(),"http":None,"links_found":0,
-         "details_opened":0,"candidates":[],"errors":[]}
+         "details_opened":0,"candidates":[],"errors":[],
+         "documents_for_review":[]}
     try:
+        municipal=None
+        is_municipal_index=(source.startswith(("Municipio ","Municipalidad "))
+            and urlsplit(url).hostname.lower().removeprefix("www.") in MUNICIPAL_FEED_SITES)
+        if is_municipal_index:
+            municipal=discover_municipal(url,limit=12)
+            out["municipal_feed_status"]=municipal["status"]
+            out["municipal_feed_checked"]=municipal["checked"]
+            out["municipal_feed_links"]=municipal["links_found"]
+            out["municipal_feed_sources_blocked"]=municipal["sources_blocked"]
         status,soup,reason=request_page(url)
         out["http"]=status
         if status!=200 or soup is None:
-            out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
-            return out
+            if not municipal or not municipal["pages"]:
+                out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
+                return out
+            # A blocked municipal homepage does not block an independently
+            # authorized feed. Continue with its candidates, not an empty
+            # fictitious HTML source.
+            out["index_status"]="blocked_but_authorized_feed_accessible"
+            soup=BeautifulSoup("","html.parser")
         national_fallback=False
         links_base=url
         if source.startswith("Chiletrabajos · ") and not urlsplit(url).path.startswith("/trabajo/"):
@@ -392,6 +411,13 @@ def inspect(seed):
                 soup=fallback_soup
                 national_fallback=True
         links=links_from(soup,links_base)
+        if municipal:
+            known={row[0] for row in links}
+            for row in municipal["pages"]:
+                if row["url"] not in known and len(links)<35:
+                    links.append((row["url"],row["anchor"],"not_indicated"))
+                    known.add(row["url"])
+            out["documents_for_review"]=documents_from_page(url,str(soup),limit=10)
         parsed_seed=urlsplit(url)
         # First-party individual job pages can be audited directly; never
         # reinterpret them as category/index pages with zero discovered links.
@@ -418,6 +444,9 @@ def inspect(seed):
                 if code==200 and detail_soup is not None:
                     title=informative_job_title(detail_soup,label)
                     body=focused_job_text(detail_soup)
+                    if municipal:
+                        detail["linked_documents_for_review"]=documents_from_page(
+                            detail_url,str(detail_soup),limit=2)
                     dates=dates_in(detail_soup)
                     job_commune=explicit_work_commune(body)
                     detail["explicit_worksite_commune"]=job_commune
@@ -472,6 +501,17 @@ def inspect(seed):
         # Bound same-host detail requests while concurrent commune seeds run.
         with ThreadPoolExecutor(max_workers=5) as pool:
             out["candidates"]=list(pool.map(inspect_detail,links))
+        if municipal:
+            docs=out["documents_for_review"]
+            seen_docs={doc["url"] for doc in docs}
+            for item in out["candidates"]:
+                for doc in item.pop("linked_documents_for_review",[]):
+                    if doc["url"] not in seen_docs and len(docs)<16:
+                        seen_docs.add(doc["url"])
+                        docs.append(doc)
+            # PDF evidence is DOCUMENT REVIEW ONLY. Never add a PDF
+            # to candidates accepted by Motor D's publication classifier.
+            out["documents_for_review"]=docs
         if national_fallback:
             verified=[]
             out["fallback_details_seen"]=len(out["candidates"])
@@ -552,6 +592,14 @@ def main():
     scanned={r["commune"] for r in rows}
     missing=sorted(set(COMMUNES)-scanned)
     candidates=[dict(x,source=y["source"],commune=y["commune"]) for y in rows for x in y["candidates"]]
+    documents_for_review=[]
+    seen_documents=set()
+    for row in rows:
+        for document in row.get("documents_for_review",[]):
+            if document["url"] not in seen_documents:
+                seen_documents.add(document["url"])
+                documents_for_review.append(dict(document,
+                    source=row["source"],commune=row["commune"]))
     unique={}
     for item in candidates:
         unique.setdefault(item["id"],item)
@@ -588,6 +636,11 @@ def main():
             "communes_without_accessible_source":[k for k,v in per_commune.items() if not v["sources_accessible"]],
             "sources_accessible":sum(r["status"].startswith("scanned") for r in rows),
             "sources_blocked":sum(r["status"] in ("http_restricted","network_error") for r in rows),
+            "municipal_feed_sources_accessible":sum(
+                sum(ch.get("status")=="usable" for ch in r.get("municipal_feed_checked",[]))
+                for r in rows),
+            "municipal_document_review_count":len(documents_for_review),
+            "documents_for_review":documents_for_review,
             "job_candidates_total":len(unique),"new_candidate_links":len(discovered),
             "individually_read_potential_offers":len(eligible),
             "express_ready_candidates":sum(x.get("express_ready") is True for x in unique.values()),

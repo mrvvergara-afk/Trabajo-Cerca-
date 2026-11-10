@@ -110,6 +110,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             }
             protected = {k: v for k, v in existing.items() if k in protected_keys}
             old_deadline = existing.get("deadline")
+            old_signed_url = existing.get("url")
             # Missing hash in a later crawl is not evidence that a document changed.
             # A different non-empty hash is; the signed approval must then be revoked.
             changed = bool(existing.get("document_sha256") and
@@ -119,6 +120,10 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
                                      for k in ("date_source", "deadline", "extractor"))
             existing.update(candidate)
             existing.update(protected)
+            # URL spelling changes (www/trailing slash/tracking) do not alter
+            # the canonical document. Keep the signed URL for unchanged evidence.
+            if not changed and protected.get("review_signature") and old_signed_url:
+                existing["url"] = old_signed_url
             if not existing.get("deadline") and old_deadline:
                 existing["deadline"] = old_deadline
             if changed:

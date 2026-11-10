@@ -269,12 +269,13 @@ class Editor {
     const wasPublished=this.pages.find(page=>page.keys.includes(key));
     const projected=record ? this.projector.project({...record,id:sourceId}) : null;
     if(wasPublished && !projected && record?.kind==='job_offer' && record.verified===true &&
-       record.review!==true && record.active===true){
+       record.review!==true){
       const previous=(await this.entries(wasPublished)).find(item=>item.key===key);
       const deadline=Date.parse(String(record.sourceValidThrough||''));
       const closure=String(record.closureReason||'');
-      // Preserve the last approved public version while the current verified,
-      // active source is temporarily unprojectable. Metadata edits must not
+      // Preserve a previously approved listing when its source becomes inactive
+      // without a confirmed closure; this is a state discrepancy, not proof of closure.
+      // Never restore the source's active flag automatically. Metadata edits must not
       // silently erase an approved offer; confirmed closure still wins.
       const keep=previous?.item.verified===true && previous.item.review!==true &&
         (!Number.isFinite(deadline)||deadline>=this.now) &&

@@ -14,3 +14,10 @@ test('regression block and durable queue protections remain', () => {
   assert.match(source, /regressionBlocked:true/);
   assert.match(source, /!\('regressionBlocked' in result && result\.regressionBlocked\)/);
 });
+
+test('diagnoses actual source projection without relaxing regression guard',()=>{
+ assert.match(source,/sourceProjectsToFeed:Boolean\(source && projector\.project\(\{\.\.\.source,id:lost\.sourceId\}\)\)/);
+ assert.match(source,/proposedEquivalentPresent:Boolean/);
+ assert.match(source,/async function publish\(record:Manifest, projector:Projector\)/);
+ assert.match(source,/return \{\.\.\.\(await readPublicFeedSummary\(\)\),rebuilding:false,regressionBlocked:true\}/);
+});

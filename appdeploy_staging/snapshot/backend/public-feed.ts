@@ -460,6 +460,9 @@ async function publish(record:Manifest) {
   const previous = await single<Control>('public_feed_control');
   const { id:_id, ...fields } = previous ?? {};
   const { pages:_pages, ...summary } = record;
+  // Keep a durable, independently readable pointer to the last complete manifest.
+  // A backup failure must prevent publishing a pointer that cannot be recovered.
+  await replaceSingle('public_feed_last_good', { manifestId, ...summary });
   await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId });
   return { ...summary, manifestId, rebuilding:false };
 }
@@ -595,6 +598,7 @@ export async function readPublicFeedPage(cursor?:string) {
     if (cursor && !/^\d+$/.test(cursor)) throw new Error('Feed cursor invalid');
     page = Number(cursor || '0');
     manifestId = (await single<Control>('public_feed_control'))?.manifestId;
+    if (!manifestId) manifestId = (await single<Control>('public_feed_last_good'))?.manifestId;
   }
   if (!Number.isSafeInteger(page) || page < 0 || page > 10000) throw new Error('Feed cursor invalid');
   if (!manifestId) return (await single<Stored>('public_feed_page_' + page)) ?? null;

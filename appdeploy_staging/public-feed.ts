@@ -487,15 +487,28 @@ async function publish(record:Manifest, projector:Projector) {
 
 export async function readPublicFeedSummary() {
   const current = await single<Control>('public_feed_control');
+  const fallback = current?.manifestId ? null : await single<Control>('public_feed_last_good');
+  const manifestId = current?.manifestId || fallback?.manifestId;
+  if (manifestId) {
+    const [manifest] = await db.get<Manifest>('public_feed_manifests', [manifestId]);
+    if (manifest) {
+      const { pages:_pages, schema:_schema, ...summary } = manifest;
+      return { ...emptySummary(), ...summary, manifestId, rebuilding:!current?.manifestId };
+    }
+  }
   return { ...emptySummary(), ...current, rebuilding:!current?.manifestId };
 }
 
 export async function currentPublicFeedManifest() {
   const current = await single<Control>('public_feed_control');
-  if (!current?.manifestId) return null;
-  const [record] = await db.get<Manifest>('public_feed_manifests', [current.manifestId]);
-  if (!record) throw new Error('Public feed manifest missing');
-  return { manifestId:current.manifestId, manifest:record };
+  const lastGood = await single<Control>('public_feed_last_good');
+  const ids = [...new Set([current?.manifestId, lastGood?.manifestId].filter((id):id is string => typeof id==='string' && Boolean(id)))];
+  for (const manifestId of ids) {
+    const [record] = await db.get<Manifest>('public_feed_manifests', [manifestId]);
+    if (record && Array.isArray(record.pages)) return { manifestId, manifest:record };
+  }
+  if (ids.length) throw new Error('Public feed manifest missing');
+  return null;
 }
 
 export async function publicFeedProgress() {
@@ -635,6 +648,7 @@ export async function readPublicFeedPage(cursor?:string) {
   if (!current) throw new Error('Public feed manifest missing');
   if (!Array.isArray(current.pages) || !Number.isSafeInteger(current.itemCount) || current.itemCount < 0) throw new Error('Public feed manifest corrupt');
   if (page >= Math.max(1, current.pages.length)) throw new Error('Feed cursor invalid');
+  if (current.pages.length===0 && current.itemCount!==0) throw new Error('Public feed manifest count mismatch');
   let ref = current.pages[page];
   let [leaf] = ref ? await db.get<{ entries:Entry[] }>('public_feed_versions', [ref.id]) : [null];
   if (ref && !leaf && !cursor?.startsWith('v2:')) {
@@ -674,6 +688,6 @@ export async function readPublicFeedItem(id:string) {
   if(!ref)return null;
   const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[ref.id]);
   if(!leaf)throw Error('Public feed page missing');
-  if (!Array.isArray(leaf.entries) || leaf.entries.length !== ref.keys.length) throw Error('Public feed page corrupt');
+  if (!Array.isArray(leaf.entries) || !Array.isArray(ref.keys) || leaf.entries.length !== ref.keys.length) throw Error('Public feed page corrupt');
   return leaf.entries.find(entry=>entry.sourceId===id && ref.keys.includes(entry.key))?.item??null;
 }

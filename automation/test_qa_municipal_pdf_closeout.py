@@ -42,12 +42,13 @@ class MunicipalDocumentCloseoutTests(unittest.TestCase):
         source=json.loads((Path(__file__).resolve().parent/
                           "motor_d_discovery"/"territorial_daily.json").read_text(encoding="utf8"))
         docs=source["documents_for_review"]
-        self.assertGreaterEqual(len(docs),16)
-        overview=[d for d in docs if is_broad_municipal_index(d.get("publisher_page") or "")]
-        # The previous report has six unrelated Traiguén category PDFs. The
-        # next scan has zero. Both are acceptable while scripts stay idempotent.
-        self.assertLessEqual(len(overview),6)
+        # The report changes after every permitted municipal scan. Never
+        # hardcode yesterday's count: 22 -> 15 -> 14 is expected cleanup.
+        self.assertLessEqual(len(docs),25)
+        self.assertEqual(len({d["url"] for d in docs}),len(docs))
         self.assertTrue(all(d["url"].lower().endswith(".pdf") for d in docs))
+        self.assertTrue(all(not is_broad_municipal_index(d.get("publisher_page") or "")
+                            for d in docs))
 
     def test_old_category_footers_are_skipped_without_http_or_ocr(self):
         def forbidden(*_args,**_kwargs):

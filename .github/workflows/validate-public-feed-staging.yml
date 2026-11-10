@@ -23,4 +23,4 @@ jobs:
       - name: Validate recovered TypeScript syntax
         run: node scripts/check-appdeploy-typescript.mjs
       - name: Run staging integrity checks
-        run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs scripts/test-no-false-zero-feed.mjs scripts/test-feed-patch-context.mjs
+        run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs scripts/test-no-false-zero-feed.mjs scripts/test-feed-patch-context.mjs scripts/test-feed-route-behavior.mjs

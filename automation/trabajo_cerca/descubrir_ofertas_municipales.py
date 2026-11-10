@@ -12,7 +12,10 @@ from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
 from trabajo_cerca_lector_documental import allowed, fetch_bytes, robots_ok, read_one
-from municipal_feed import discover_municipal, documents_from_page, merge_page_links
+from municipal_feed import (
+    discover_municipal, documents_from_page, merge_page_links,
+    is_broad_municipal_index,
+)
 
 # Se descubren URLs, no se publican avisos. Una página índice jamás cuenta como vacante.
 SIGNAL = re.compile(r"(?:oferta[s]?(?:-| )laboral(?:es)?|oportunidad(?:es)?(?:-| )laboral(?:es)?|"
@@ -150,7 +153,8 @@ def discover(index: dict, max_links: int = 5) -> dict:
     # PDFs linked or embedded directly on the index must pass the same
     # reader/OCR gate as PDFs discovered in an individual article.
     documents=merge_page_links(
-        documents_from_page(url,html,limit=2) if html else [],
+        documents_from_page(url,html,limit=2)
+        if html and not is_broad_municipal_index(url) else [],
         feed.get("documents_for_review",[]),limit=3)
     row["links_found"]=len(links)+len(documents)
     if row["status"]!="index_read" and feed["sources_accessible"]:

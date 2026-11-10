@@ -1,0 +1,59 @@
+name: Trabajo Cerca | Conciliacion PDF municipales y B C
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/qa_municipal_pdf_closeout.py'
+      - 'automation/test_qa_municipal_pdf_closeout.py'
+      - 'automation/trabajo_cerca/municipal_feed.py'
+      - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
+      - 'automation/motor_d_territorial_daily.py'
+      - '.github/workflows/qa-municipal-pdf-closeout.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'automation/qa_municipal_pdf_closeout.py'
+      - 'automation/test_qa_municipal_pdf_closeout.py'
+      - 'automation/trabajo_cerca/municipal_feed.py'
+      - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
+      - 'automation/motor_d_territorial_daily.py'
+      - '.github/workflows/qa-municipal-pdf-closeout.yml'
+permissions:
+  contents: read
+concurrency:
+  group: qa-municipal-pdf-closeout-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  reconcile_documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install local PDF reader and supported dependencies
+        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5' 'pymupdf>=1.24,<2' 'Pillow>=10,<13' 'pytesseract>=0.3.10,<1'
+      - name: Offline regression for PDF triage, B/C parent linkage and no publication
+        env:
+          PYTHONPATH: automation:automation/trabajo_cerca
+        run: |
+          python -m unittest discover -s automation -p 'test_qa_municipal_pdf_closeout.py' -v
+          python -m unittest discover -s automation/trabajo_cerca -p 'test_municipal_feed.py' -v
+          python -m unittest discover -s automation/trabajo_cerca -p 'test_descubrir_ofertas_municipales.py' -v
+          python -m unittest discover -s automation -p 'test_motor_d_territorial.py' -v
+      - name: Real read-only PDF reconciliation and catalog check
+        env:
+          PYTHONPATH: automation:automation/trabajo_cerca
+        run: python automation/qa_municipal_pdf_closeout.py --output resultados/municipal_pdf_closeout.json
+      - name: Preserve JSON receipt and bounded B-only review queue
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: municipal-pdf-closeout-evidence
+          path: |
+            resultados/municipal_pdf_closeout.json
+            resultados/municipal_pdf_review_only.json
+          if-no-files-found: warn
+          retention-days: 21

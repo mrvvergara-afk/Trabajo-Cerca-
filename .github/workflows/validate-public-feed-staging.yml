@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'appdeploy_staging/snapshot/**'
+      - 'appdeploy_staging/patches/**'
       - 'scripts/test-public-feed-*.mjs'
       - '.github/workflows/validate-public-feed-staging.yml'
   workflow_dispatch:
@@ -21,4 +22,4 @@ jobs:
       - name: Validate recovered TypeScript syntax
         run: node scripts/check-appdeploy-typescript.mjs
       - name: Run staging integrity checks
-        run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs
+        run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs scripts/test-no-false-zero-feed.mjs

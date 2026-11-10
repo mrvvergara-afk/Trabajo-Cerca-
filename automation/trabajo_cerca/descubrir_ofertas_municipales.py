@@ -149,7 +149,9 @@ def discover(index: dict, max_links: int = 5) -> dict:
     links=merge_page_links(index_links,feed["pages"],limit=max_links)
     # PDFs linked or embedded directly on the index must pass the same
     # reader/OCR gate as PDFs discovered in an individual article.
-    documents=documents_from_page(url,html,limit=2) if html else []
+    documents=merge_page_links(
+        documents_from_page(url,html,limit=2) if html else [],
+        feed.get("documents_for_review",[]),limit=3)
     row["links_found"]=len(links)+len(documents)
     if row["status"]!="index_read" and feed["sources_accessible"]:
         row["status"]="feed_only_index_unavailable"

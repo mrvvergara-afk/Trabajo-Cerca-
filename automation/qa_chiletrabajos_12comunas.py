@@ -41,6 +41,10 @@ def run():
     catalog,complete,error=read_full_feed(max_pages=80)
     matched=check_ready_offers(candidates,catalog,complete)
     public_counts=dict(sorted(Counter(matched.values()).items()))
+    # The same genuine job may be rediscovered via two distinct city searches.
+    # Dict-based catalog matching counts each source ID once; preserve that
+    # denominator explicitly rather than calling every record a unique job.
+    unique_ready_ids={x["id_fuente"] for x in candidates}
     compact=[]
     for row in rows:
         compact.append({
@@ -74,7 +78,9 @@ def run():
         "cities_which_attempted_fallback":sum(bool(r.get("fallback_url")) for r in rows),
         "cities_with_accessible_fallback":sum(r.get("fallback_http")==200 for r in rows),
         "candidate_links_not_published":sum(len(r["candidates"]) for r in rows),
-        "complete_ready_candidates":len(candidates),
+        "complete_ready_candidate_records":len(candidates),
+        "unique_ready_candidate_ids":len(unique_ready_ids),
+        "cross_city_repeated_ready_records":len(candidates)-len(unique_ready_ids),
         "catalog_complete":bool(complete),
         "catalog_error":error,
         "catalog_rows":len(catalog) if complete else None,
@@ -90,7 +96,8 @@ def run():
         k:result[k] for k in (
             "city_index_attempts","cities_with_confirmed_index",
             "cities_which_attempted_fallback","cities_with_accessible_fallback",
-            "candidate_links_not_published","complete_ready_candidates",
+            "candidate_links_not_published","complete_ready_candidate_records",
+            "unique_ready_candidate_ids","cross_city_repeated_ready_records",
             "catalog_complete","catalog_rows","public_catalog_classifications",
             "new_publications")
     },ensure_ascii=False),flush=True)

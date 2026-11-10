@@ -5,7 +5,7 @@ const s=readFileSync(new URL('../appdeploy_staging/snapshot/backend/public-feed.
 test('summary reads immutable manifest rather than stale control counters',()=>{
  const summary=s.slice(s.indexOf('export async function readPublicFeedSummary()'),s.indexOf('export async function currentPublicFeedManifest()'));
  assert.match(summary,/readablePublicManifest\(\)/);
- assert.match(summary,/\.\.\.readable\.manifest/);
+ assert.match(summary,/\.\.\.summary,manifestId:readable\.manifestId/);
  assert.doesNotMatch(summary,/\.\.\.current/);
 });
 test('invalid primary manifest is skipped and last-good pointer attempted',()=>{

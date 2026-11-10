@@ -38,3 +38,10 @@ test('approved precedence decision behaves correctly for competing records',()=>
  assert.equal(approved(incoming)&&!approved(old),false,'pending copy must not win');
  assert.equal(approved({...old,active:false}),false,'inactive is not approved');
 });
+
+test('unexplained inactive source retains previously approved feed entry',()=>{
+ assert.match(source,/if\(wasPublished && !projected && record\?\.kind==='job_offer' && record\.verified===true &&\s*record\.review!==true\)/);
+ assert.match(source,/const keep=previous\?\.item\.verified===true && previous\.item\.review!==true/);
+ assert.match(source,/!\/confirmed\|explicit\|administrative\|owner_request\/\.test\(closure\)/);
+ assert.doesNotMatch(source,/record\.review!==true && record\.active===true\)/);
+});

@@ -435,7 +435,7 @@ async function publish(record:Manifest) {
           sourceDatePresent:Boolean(source?.sourcePublishedAt||source?.date||source?.firstPublishedAt),
           sourceUrlPresent:Boolean(source?.url),
           // Distinguish projection rejection from an ingestion/queue omission.
-          projectionEligible:Boolean(source && (await Promise.resolve(source.verified===true && source.review!==true && source.active===true))),
+          projectionEligible:Boolean(source && source.verified===true && source.review!==true && source.active===true),
           sourceHasOriginalDate:Boolean(source?.sourcePublishedAt||source?.date),
           sourceHasFirstPublishedDate:Boolean(source?.firstPublishedAt),
           sourceHasTerritorialScope:Array.isArray(source?.workCommunes) && source.workCommunes.length>0,

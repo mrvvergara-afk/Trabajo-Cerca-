@@ -101,6 +101,13 @@ class SecondPassTests(unittest.TestCase):
         self.assertEqual(row["status"],"territorial_conflict_review")
         self.assertEqual(row["owner"],"C")
 
+    def test_feed_outage_does_not_enqueue_c_and_require_publication(self):
+        one=candidate("https://www.chiletrabajos.cl/trabajo/operario-3999112")
+        snap=reconcile(report(one),[],False,"feed_unavailable")
+        self.assertEqual(snap["review_owner_counts"],{})
+        self.assertEqual(snap["status_counts"],{"catalog_unavailable":1})
+        self.assertFalse(snap["records"][0]["publication_eligible"])
+
     def test_missing_feed_status_is_never_assumed_absent(self):
         job=candidate("https://www.chiletrabajos.cl/trabajo/operario-3999111")
         snap=reconcile(report(job),[],False,"feed_incomplete")

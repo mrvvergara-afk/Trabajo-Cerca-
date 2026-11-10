@@ -200,6 +200,53 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertIsNone(saved["review_signature"])
             self.assertEqual(saved["document_sha256"], "a" * 64)
 
+    def test_review_writer_atomic_failure_preserves_previous_queue(self):
+        from revisar_ocr import write_queue_atomic
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp)/"review.json"
+            target.write_text('{"items":[{"review_status":"approved"}]}')
+            before = target.read_bytes()
+            with patch("revisar_ocr.os.replace", side_effect=OSError("interrupted")):
+                with self.assertRaises(OSError):
+                    write_queue_atomic(target, {"items": []})
+            self.assertEqual(target.read_bytes(), before)
+            self.assertEqual(list(Path(tmp).glob(".ocr_review_*.tmp")), [])
+            write_queue_atomic(target, {"items": []})
+            self.assertEqual(json.loads(target.read_text()), {"items": []})
+
+    def test_canonical_recrawl_keeps_signed_url(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            original = "https://www.example.cl/oferta/?utm_source=radar"
+            source.write_text(json.dumps([{"url": original}]))
+            adapter.adapt(source, target, date(2026, 11, 9))
+            queue = json.loads(target.read_text())
+            queue["items"][0].update(review_status="approved",
+                                      review_signature="signed", publication_eligible=True)
+            target.write_text(json.dumps(queue))
+            source.write_text(json.dumps([{"url": "https://example.cl/oferta"}]))
+            adapter.adapt(source, target, date(2026, 11, 10))
+            item = json.loads(target.read_text())["items"][0]
+            self.assertEqual(item["url"], original)
+            self.assertEqual(item["review_signature"], "signed")
+            self.assertEqual(item["review_status"], "approved")
+
+    def test_malformed_deadline_revokes_approval_without_losing_queue(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            source.write_text(json.dumps([{"url": "https://example.cl/oferta",
+                                          "deadline_evidence": {"invalid": "date"}}]))
+            adapter.adapt(source, target, date(2026, 11, 10))
+            queue = json.loads(target.read_text())
+            queue["items"][0].update(review_status="approved",
+                                      review_signature="signed", publication_eligible=True)
+            target.write_text(json.dumps(queue))
+            adapter.adapt(source, target, date(2026, 11, 10))
+            item = json.loads(target.read_text())["items"][0]
+            self.assertFalse(item["publication_eligible"])
+            self.assertIsNone(item["review_signature"])
+            self.assertEqual(item["review_status"], "approved")
+
     def test_redacts_chilean_landline(self):
         self.assertEqual(adapter.sanitize_excerpt("Llamar al 45 234567"),
                          "Llamar al [teléfono]")

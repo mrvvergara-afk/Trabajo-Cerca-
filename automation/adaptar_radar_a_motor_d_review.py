@@ -30,6 +30,15 @@ def canonical(raw: str) -> str:
     except (ValueError, TypeError):
         return ""
 
+def deadline_expired(value, today):
+    """Fail closed on malformed deadlines without crashing the durable queue."""
+    if not value:
+        return False
+    try:
+        return dt.date.fromisoformat(value) < today
+    except (TypeError, ValueError):
+        return True
+
 def sanitize_excerpt(value):
     from ocr_review_security import redact
     return redact(value)
@@ -101,6 +110,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             }
             protected = {k: v for k, v in existing.items() if k in protected_keys}
             old_deadline = existing.get("deadline")
+            old_signed_url = existing.get("url")
             # Missing hash in a later crawl is not evidence that a document changed.
             # A different non-empty hash is; the signed approval must then be revoked.
             changed = bool(existing.get("document_sha256") and
@@ -110,6 +120,10 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
                                      for k in ("date_source", "deadline", "extractor"))
             existing.update(candidate)
             existing.update(protected)
+            # URL spelling changes (www/trailing slash/tracking) do not alter
+            # the canonical document. Keep the signed URL for unchanged evidence.
+            if not changed and protected.get("review_signature") and old_signed_url:
+                existing["url"] = old_signed_url
             if not existing.get("deadline") and old_deadline:
                 existing["deadline"] = old_deadline
             if changed:
@@ -121,7 +135,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
                                 application_route_verified=False, publication_date_confirmed=False,
                                 review_signature=None, document_sha256=replacement_hash,
                                 review_reason="evidencia_modificada_revalidacion_obligatoria")
-            if existing.get("deadline") and existing["deadline"] < today.isoformat():
+            if deadline_expired(existing.get("deadline"), today):
                 existing.update(publication_eligible=False, review_signature=None)
             existing["first_discovered"] = first_seen
             existing["last_seen"] = today.isoformat()
@@ -139,7 +153,7 @@ def adapt(source_path: Path, review_path: Path, today: dt.date | None = None) ->
             expired = item.get("revalidate_after") and timestamp(item["revalidate_after"]).date() <= today
         except (ValueError, TypeError):
             expired = True
-        if expired or (item.get("deadline") and item["deadline"] < today.isoformat()):
+        if expired or deadline_expired(item.get("deadline"), today):
             item.update(publication_eligible=False, review_signature=None)
     if len(items) > 5000:
         raise RuntimeError("Cola supera 5000 registros; requiere archivo histórico explícito")

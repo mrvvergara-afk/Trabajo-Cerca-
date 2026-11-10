@@ -5,6 +5,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import tempfile
 from pathlib import Path
 from ocr_review_security import signature, redact
 from promover_revision_a_motor_d import eligible
@@ -32,6 +33,22 @@ def review(item, decision, reviewer, notes, fields, document, key, now=None):
     if decision == 'approve' and not eligible(result, now.astimezone(__import__("zoneinfo").ZoneInfo("America/Santiago")).date(), key, lambda _: document, now):
         raise ValueError('Evidencia, fecha, vigencia o campos de postulación insuficientes')
     return result
+
+
+def write_queue_atomic(path, queue):
+        # Atomic replacement protects existing signed reviews on interruption.
+        temporary = None
+        try:
+            with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=path.parent,
+                                             prefix='.ocr_review_', suffix='.tmp', delete=False) as handle:
+                temporary = Path(handle.name)
+                handle.write(json.dumps(queue, ensure_ascii=False, indent=2) + '\n')
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temporary, path)
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
 
 
 def main():
@@ -63,7 +80,7 @@ def main():
                     os.getenv('MOTOR_D_REVIEW_SIGNING_KEY'))
     item.clear()
     item.update(result)
-    path.write_text(json.dumps(queue, ensure_ascii=False, indent=2) + '\n')
+    write_queue_atomic(path, queue)
 
 if __name__ == '__main__':
     main()

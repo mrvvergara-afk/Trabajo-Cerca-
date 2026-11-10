@@ -1,8 +1,8 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-10T02:47:49.602169+00:00",
-  "items_total": 1,
-  "pending_total": 1,
+  "updated_at": "2026-11-10T03:07:42.433334+00:00",
+  "items_total": 5,
+  "pending_total": 5,
   "publication_enabled": false,
   "items": [
     {
@@ -37,6 +37,131 @@
       "first_discovered": "2026-11-09",
       "last_seen": "2026-11-10",
       "review_signature": null
+    },
+    {
+      "review_id": "ocr_a311074e1e969fe27ecc6cca",
+      "canonical_url": "https://munimulchen.cl/oferta-laboral-secretaria-administrativa-contable",
+      "url": "https://munimulchen.cl/oferta-laboral-secretaria-administrativa-contable",
+      "source": "M02",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Mulchén"
+      ],
+      "possible_communes": [
+        "Mulchén"
+      ],
+      "reader_status": "candidato_fecha_pendiente",
+      "review_reason": "candidato_fecha_pendiente",
+      "extractor": "html_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "c6445281bfd43d3fd2bb7de5121923e5cf6266abd9c11f5e7b31861626a3d264",
+      "original_classification": null,
+      "date_source": null,
+      "date_discovered": "2026-11-10",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "review_id": "ocr_ef6727c7fda5d3729f4bf6db",
+      "canonical_url": "https://munimulchen.cl/oferta-laboral-jefe-de-terreno",
+      "url": "https://munimulchen.cl/oferta-laboral-jefe-de-terreno",
+      "source": "M02",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Mulchén"
+      ],
+      "possible_communes": [
+        "Angol",
+        "Mulchén"
+      ],
+      "reader_status": "candidato_fecha_pendiente",
+      "review_reason": "candidato_fecha_pendiente",
+      "extractor": "html_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "0f309c7dfcd3bc4f9b7df44d2f3c17124a58b390fbff0048c0e9f3d2cc0b5404",
+      "original_classification": null,
+      "date_source": null,
+      "date_discovered": "2026-11-10",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "review_id": "ocr_97e8413102668b765208abc5",
+      "canonical_url": "https://munimulchen.cl/oferta-laboral-enbalaje-de-frutas",
+      "url": "https://munimulchen.cl/oferta-laboral-enbalaje-de-frutas",
+      "source": "M02",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Mulchén"
+      ],
+      "possible_communes": [
+        "Mulchén"
+      ],
+      "reader_status": "candidato_fecha_pendiente",
+      "review_reason": "candidato_fecha_pendiente",
+      "extractor": "html_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "16f360ef505a8e3492b9849ed490eae04ae568e2bba1919c2fcc582758a8efc9",
+      "original_classification": null,
+      "date_source": null,
+      "date_discovered": "2026-11-10",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "review_id": "ocr_63b7b2c009703a36eb62fcc8",
+      "canonical_url": "https://munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027",
+      "url": "https://munimulchen.cl/oferta-laboral-convocatoria-conaf-temporada-2026-2027",
+      "source": "M02",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Mulchén"
+      ],
+      "possible_communes": [
+        "Mulchén"
+      ],
+      "reader_status": "candidato_fecha_pendiente",
+      "review_reason": "candidato_fecha_pendiente",
+      "extractor": "html_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "26b7865aedf1782cf879f121b84a27733eb6300dcc47a0dba8501410f8eec5c1",
+      "original_classification": null,
+      "date_source": null,
+      "date_discovered": "2026-11-10",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-10"
     }
   ]
 }

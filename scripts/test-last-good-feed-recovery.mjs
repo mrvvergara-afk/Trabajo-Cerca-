@@ -3,7 +3,7 @@ import {test} from 'node:test';
 import {strict as assert} from 'node:assert';
 const s=readFileSync(new URL('../appdeploy_staging/snapshot/backend/public-feed.ts',import.meta.url),'utf8');
 test('backup is persisted before switching live manifest pointer',()=>{
- const backup=s.indexOf("await replaceSingle('public_feed_last_good', { manifestId:backupId, ...summary })");
+ const backup=s.indexOf("await replaceSingle('public_feed_last_good', { manifestId:backupId, updatedAt:new Date().toISOString() })");
  const live=s.indexOf("await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId })");
  assert.ok(backup>0 && live>backup);
 });
@@ -28,4 +28,9 @@ test('missing primary leaf can recover from previous immutable leaf',()=>{
  assert.match(s,/reason:'primary_page_missing'/);
  assert.match(s,/if \(ref && !leaf && !cursor\?\.startsWith\('v2:'\)\)/);
  assert.match(s,/if \(backup && backupRef && backupLeaf\)/);
+});
+
+test('checkpoint cannot mislabel previous manifest with new totals',()=>{
+ assert.doesNotMatch(s,/replaceSingle\('public_feed_last_good', \{ manifestId:backupId, \.\.\.summary \}\)/);
+ assert.match(s,/replaceSingle\('public_feed_last_good', \{ manifestId:backupId, updatedAt:/);
 });

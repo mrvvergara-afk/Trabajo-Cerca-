@@ -561,7 +561,34 @@ export async function advancePublicFeed(projector:Projector) {
       await replaceSingle('public_feed_build_state', { ...build, ...manifest(await editor.persist(), now) });
       return { ...await readPublicFeedSummary(), rebuilding:true, buildSource:build.source };
     }
-    if (build.source === 'complete') return publish(manifest(build.pages, now), projector);
+    if (build.source === 'complete') {
+      // External offers are stored in radar_external_* and only referenced by the
+      // change queue. Include them in the FIRST manifest, not just later updates.
+      const pending=await db.list<Change>('public_feed_changes',{limit:STEP_SIZE});
+      if(pending.items.length){
+        const editor=new Editor(build.pages,projector,now);
+        const wanted=new Map<string,{source:string;sourceId:string}>();
+        for(const change of pending.items){
+          if(!allowedSource(change.source)||!change.sourceId)throw new Error('Invalid public feed change');
+          wanted.set(change.source+':'+change.sourceId,change);
+        }
+        for(const source of new Set([...wanted.values()].map(item=>item.source))){
+          const ids=[...wanted.values()].filter(item=>item.source===source).map(item=>item.sourceId);
+          const records=await db.get<Stored>(source,ids);
+          if(records.length!==ids.length)throw new Error('Source read result count mismatch');
+          for(let i=0;i<ids.length;i++)await editor.put(source,ids[i],records[i]);
+        }
+        const pages=await editor.persist();
+        await replaceSingle('public_feed_build_state',{...manifest(pages,now),source:'complete'});
+        const result=await publish(manifest(pages,now),projector);
+        if(!('regressionBlocked' in result && result.regressionBlocked)){
+          const removed=await db.delete('public_feed_changes',pending.items.map(change=>change.id));
+          if(removed.length!==pending.items.length||removed.some(ok=>!ok))throw new Error('Public feed change acknowledgement failed');
+        }
+        return result;
+      }
+      return publish(manifest(build.pages, now), projector);
+    }
     const rows = await db.list<Stored>(build.source, { limit:STEP_SIZE, ...(build.nextToken ? { nextToken:build.nextToken } : {}) });
     const editor = new Editor(build.pages, projector, now);
     for (const { id, ...record } of rows.items) await editor.put(build.source, id, record);

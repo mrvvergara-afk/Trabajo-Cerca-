@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-10T00:33:34.680040-03:00",
+  "last_run": "2026-11-10T11:37:53.551566-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1651,6 +1651,24 @@
       "url": "https://www.chiletrabajos.cl/trabajo/conductor-3784704",
       "source": "Chiletrabajos · Angol",
       "commune": "Angol"
+    },
+    "7cb92346a5bd8bfbd1de": {
+      "first_seen": "2026-11-10T11:37:53.551566-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Maquinaria-Forestal-Skidder-CIMA-64-Zona-Valdivia-LR-5110467/1391342300/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "4264e1abae8aa3c34f99": {
+      "first_seen": "2026-11-10T11:37:53.551566-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Maquinaria-Forestal-Clasificado-CIMA-64-Zona-Valdivia-LR-5110467/1391342000/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
+    },
+    "1611189bc9c6aab65f3f": {
+      "first_seen": "2026-11-10T11:37:53.551566-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Maquinaria-Forestal-Procesadora-CIMA-64-Zona-Valdivia-BI-5110467/1391341600/",
+      "source": "Arauco empleo",
+      "commune": "Collipulli"
     }
   }
 }

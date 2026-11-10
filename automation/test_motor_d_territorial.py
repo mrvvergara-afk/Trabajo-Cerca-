@@ -40,6 +40,80 @@ class TerritorialSafetyTests(unittest.TestCase):
             self.assertEqual(report["published_in_trabajo_cerca"], 0)
             self.assertEqual(report["express_ready_candidates"], 0)
 
+    def test_municipal_wordpress_feed_recovers_job_when_html_index_blocked(self):
+        from unittest.mock import patch
+        idx="https://muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/"
+        link="https://muninegrete.cl/convocatoria-laboral-operario-noviembre/"
+        wp={"status":"ok","pages":[{"url":link,"anchor":"Oferta laboral operario",
+                                   "kind":"local_page"}],
+            "links_found":1,"checked":[{"status":"usable","url":"https://muninegrete.cl/feed/"}],
+            "sources_blocked":0}
+        page=BeautifulSoup(
+            "<html><h1>Oferta laboral Operario Negrete</h1><article>"
+            "<p>Empresa: Maderas Terreno SpA. Lugar de trabajo: Negrete. "
+            "Se necesita operario y enviar CV para postulación. "
+            "Trabajo en planta industrial en Negrete durante noviembre.</p>"
+            "</article></html>","html.parser")
+        def get(url):
+            if url==idx:return 403,None,None
+            if url==link:return 200,page,None
+            raise AssertionError("URL inesperada "+url)
+        with patch.object(engine,"discover_municipal",return_value=wp), \
+             patch.object(engine,"request_page",side_effect=get):
+            result=engine.inspect(("Negrete","Municipio Negrete OMIL",idx))
+        self.assertEqual(result["status"],"scanned_with_candidates")
+        self.assertEqual(result["http"],403)
+        self.assertEqual(result["index_status"],"blocked_but_authorized_feed_accessible")
+        self.assertEqual(result["municipal_feed_status"],"ok")
+        self.assertEqual(len(result["candidates"]),1)
+        self.assertEqual(result["candidates"][0]["work_commune"],"Negrete")
+        self.assertEqual(result["candidates"][0]["date_source"],None)
+        self.assertFalse(result["candidates"][0]["express_ready"])
+
+    def test_municipal_embedded_pdf_requires_review_and_cannot_publish(self):
+        from unittest.mock import patch
+        idx="https://municipalidadrenaico.cl/concursos-publicos/"
+        article="https://municipalidadrenaico.cl/concurso-publico-salud/"
+        index=BeautifulSoup(
+            "<html><a href='/concurso-publico-salud/'>"
+            "Llamado a concurso público para cargo salud</a></html>",
+            "html.parser")
+        detail=BeautifulSoup(
+            "<html><h1>Concurso público para proveer cargo salud</h1>"
+            "<article><p>Municipalidad invita a postular al concurso.</p>"
+            "<iframe src='/wp-content/uploads/2026/10/BASES-Y-CALENDARIO.pdf'></iframe>"
+            "</article></html>","html.parser")
+        feed={"status":"ok","pages":[{"url":article,"anchor":"Llamado a concurso público",
+                                      "kind":"local_page"}],
+              "checked":[{"status":"usable","url":"https://municipalidadrenaico.cl/feed/"}],
+              "links_found":1,"sources_blocked":0}
+        def get(url):
+            return (200,index,None) if url==idx else (200,detail,None)
+        with patch.object(engine,"discover_municipal",return_value=feed), \
+             patch.object(engine,"request_page",side_effect=get) as reader:
+            result=engine.inspect(("Renaico","Municipio Renaico",idx))
+        self.assertEqual(len(result["candidates"]),1)
+        self.assertEqual(result["links_found"],1)
+        self.assertEqual(len(result["documents_for_review"]),1)
+        self.assertTrue(result["documents_for_review"][0]["review_required"])
+        self.assertTrue(result["documents_for_review"][0]["url"].endswith("BASES-Y-CALENDARIO.pdf"))
+        self.assertFalse(result["candidates"][0]["express_ready"])
+        self.assertEqual(reader.call_count,2)
+
+    def test_municipal_feed_blocked_is_not_zero_vacancies(self):
+        from unittest.mock import patch
+        idx="https://muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/"
+        feed={"status":"blocked","pages":[],"checked":[{"status":"blocked"}],
+              "links_found":0,"sources_blocked":2}
+        with patch.object(engine,"discover_municipal",return_value=feed), \
+             patch.object(engine,"request_page",return_value=(403,None,None)):
+            result=engine.inspect(("Negrete","Municipio Negrete OMIL",idx))
+        self.assertEqual(result["status"],"http_restricted")
+        self.assertEqual(result["municipal_feed_status"],"blocked")
+        self.assertEqual(result["documents_for_review"],[])
+        self.assertEqual(result["candidates"],[])
+        self.assertNotIn("jobs_verified",result)
+
     def test_mininco_keeps_collipulli_administrative_mapping(self):
         self.assertEqual(engine.explicit_work_commune("Lugar de trabajo: Mininco."), "Collipulli")
 

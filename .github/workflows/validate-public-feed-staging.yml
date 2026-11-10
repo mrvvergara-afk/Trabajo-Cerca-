@@ -8,6 +8,7 @@ on:
       - 'scripts/test-public-feed-*.mjs'
       - 'scripts/test-feed-*.mjs'
       - 'scripts/test-last-good-feed-recovery.mjs'
+      - 'scripts/test-feed-last-good-summary.mjs'
       - 'scripts/test-no-false-zero-feed.mjs'
       - 'scripts/check-appdeploy-typescript.mjs'
       - '.github/workflows/validate-public-feed-staging.yml'
@@ -27,4 +28,4 @@ jobs:
       - name: Validate recovered TypeScript syntax
         run: node scripts/check-appdeploy-typescript.mjs
       - name: Run staging integrity checks
-        run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs scripts/test-no-false-zero-feed.mjs scripts/test-feed-patch-context.mjs scripts/test-feed-route-behavior.mjs scripts/test-last-good-feed-recovery.mjs
+        run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs scripts/test-no-false-zero-feed.mjs scripts/test-feed-patch-context.mjs scripts/test-feed-route-behavior.mjs scripts/test-last-good-feed-recovery.mjs scripts/test-feed-last-good-summary.mjs

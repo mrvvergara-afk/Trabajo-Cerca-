@@ -5,6 +5,9 @@ on:
     branches: [main, fix/motor-d-ocr-bridge-20261108]
     paths:
       - 'automation/motor_d_territorial_daily.py'
+      - 'automation/trabajo_cerca/municipal_feed.py'
+      - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
+      - 'automation/trabajo_cerca/trabajo_cerca_lector_documental.py'
       - 'automation/test_motor_d_territorial.py'
       - 'automation/motor_d_express.py'
       - 'automation/test_motor_d_express.py'
@@ -15,6 +18,9 @@ on:
     branches: [main]
     paths:
       - 'automation/motor_d_territorial_daily.py'
+      - 'automation/trabajo_cerca/municipal_feed.py'
+      - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
+      - 'automation/trabajo_cerca/trabajo_cerca_lector_documental.py'
       - 'automation/test_motor_d_territorial.py'
       - 'automation/motor_d_express.py'
       - 'automation/test_motor_d_express.py'

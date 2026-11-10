@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 from ocr_review_security import redact
 from trabajo_cerca.municipal_feed import (
     SITES as MUNICIPAL_FEED_SITES, discover_municipal, documents_from_page,
+    is_broad_municipal_index,
 )
 
 TZ=ZoneInfo("America/Santiago")
@@ -417,7 +418,9 @@ def inspect(seed):
                 if row["url"] not in known and len(links)<35:
                     links.append((row["url"],row["anchor"],"not_indicated"))
                     known.add(row["url"])
-            out["documents_for_review"]=documents_from_page(url,str(soup),limit=10)
+            out["documents_for_review"]=(
+                [] if is_broad_municipal_index(url)
+                else documents_from_page(url,str(soup),limit=10))
         parsed_seed=urlsplit(url)
         # First-party individual job pages can be audited directly; never
         # reinterpret them as category/index pages with zero discovered links.

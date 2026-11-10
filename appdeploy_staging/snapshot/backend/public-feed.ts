@@ -502,8 +502,9 @@ export async function readStagedPublicFeedPage() {
   // Expose only the approved public projection already persisted in the leaf.
   const { pages:_pages, nextToken:_nextToken, source:_source, ...partial }=staged;
   return {...emptySummary(),...partial,items,
-    totalItems:staged.itemCount,hasMore:staged.pages.length>1,
-    nextCursor:undefined,stagedPages:staged.pages.length,
+    totalItems:staged.itemCount,hasMore:false,
+    additionalStagedPagesPending:staged.pages.length>1,
+    stagedPages:staged.pages.length,
     feedRebuilding:true,degraded:true,feedState:'building_partial',
     totalsProvisional:true};
 }

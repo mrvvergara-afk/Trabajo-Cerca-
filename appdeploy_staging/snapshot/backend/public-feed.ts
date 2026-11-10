@@ -465,7 +465,9 @@ async function publish(record:Manifest) {
   // Retain the previous immutable manifest as an independent recovery target.
   // On the very first publication there is no prior manifest to retain.
   const backupId=previous?.manifestId || manifestId;
-  await replaceSingle('public_feed_last_good', { manifestId:backupId, ...summary });
+  // Never pair a prior manifest identifier with counts from a newer manifest.
+  // Readers recover the authoritative totals directly from the immutable manifest.
+  await replaceSingle('public_feed_last_good', { manifestId:backupId, updatedAt:new Date().toISOString() });
   await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId });
   return { ...summary, manifestId, rebuilding:false };
 }

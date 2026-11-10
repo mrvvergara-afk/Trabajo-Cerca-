@@ -43,6 +43,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: motor-d-second-pass-decisions
-          path: resultados/motor_d_second_pass.json
+          path: resultados/motor_d_second_pass*.json
           if-no-files-found: warn
           retention-days: 21

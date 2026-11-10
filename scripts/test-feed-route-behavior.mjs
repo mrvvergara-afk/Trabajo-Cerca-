@@ -25,6 +25,7 @@ const declaration=updated.slice(begin,end).trim().replace(/,\s*$/,'');
 function routeWith({feed=null,staged=null,throwError=null}={}){
  const calls={warns:[]};
  const scope={
+   Error, // Share the same Error constructor across VM boundary, as in the actual runtime.
    readPublicFeedPage:async()=>{if(throwError)throw throwError;return feed;},
    readStagedPublicFeedPage:async()=>staged,
    json:x=>({status:200,body:x}),

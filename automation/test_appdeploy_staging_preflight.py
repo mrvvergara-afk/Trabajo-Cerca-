@@ -1,0 +1,42 @@
+"""Preflight del código AppDeploy preparado: no toca producción."""
+from pathlib import Path
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1] / "appdeploy_staging"
+
+
+class BackendPreflight(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.bc = (ROOT / "fast-bc-html.ts").read_text(encoding="utf-8")
+        cls.feed = (ROOT / "public-feed.ts").read_text(encoding="utf-8")
+
+    def test_bc_does_not_count_storage_as_publication(self):
+        self.assertIn("decision='stored_pending_public_feed';published=false", self.bc)
+        self.assertNotIn("decision='verified_for_public_feed';published=true", self.bc)
+
+    def test_bc_index_and_dedup(self):
+        self.assertIn("genericSourceIndex(url)", self.bc)
+        self.assertIn("seenUrls.has(url)", self.bc)
+        self.assertIn("deferredIndex", self.bc)
+
+    def test_bc_failed_write_is_not_already_seen(self):
+        self.assertIn("FAST_B_C_DECISION_WRITE_FAILED", self.bc)
+        self.assertIn("storageFailures++", self.bc)
+        self.assertNotIn("if(!stored){already++;}", self.bc)
+
+    def test_feed_checks_leaf_before_serving(self):
+        position = self.feed.index("export async function readPublicFeedPage")
+        check = self.feed.index("Public feed page identity mismatch", position)
+        serve = self.feed.index("return { ...summary, items:", position)
+        self.assertLess(check, serve)
+
+    def test_feed_recovers_last_good_for_summary_and_lookup(self):
+        summary = self.feed.split("export async function readPublicFeedSummary()", 1)[1].split("export async function currentPublicFeedManifest()", 1)[0]
+        lookup = self.feed.split("export async function currentPublicFeedManifest()", 1)[1].split("export async function publicFeedProgress()", 1)[0]
+        self.assertIn("public_feed_last_good", summary)
+        self.assertIn("public_feed_last_good", lookup)
+
+
+if __name__ == "__main__":
+    unittest.main()

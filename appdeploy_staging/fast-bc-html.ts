@@ -12,7 +12,7 @@ const key=(url:string)=>createHash('sha256').update('fast-bc-html:'+url).digest(
 const targetPlaces=new Set(['angol','collipulli','mininco','ercilla','lumaco','los-sauces','puren','renaico','traiguen','victoria','mulchen','negrete','coihue','coigue','nacimiento']);
 const nonTargetCities=new Set(['valdivia','chillan','constitucion','santiago','concepcion','temuco','osorno','talca','puerto-montt','san-jose-de-la-mariquina']);
 const indexPaths=/\/(?:search|trabaje-con-nosotros|empleos|ofertas-laborales|bolsa-de-empleo)\/?$/i;
-function genericSourceIndex(url:string){try{return indexPaths.test(new URL(url).pathname);}catch{return false;}}
+function genericSourceIndex(url:string){try{const u=new URL(url);return indexPaths.test(u.pathname) && !u.searchParams.has('id') && !u.searchParams.has('jobId') && !u.searchParams.has('oferta');}catch{return false;}}
 // Only the location prefix on Arauco's individual-job URLs is used as a triage hint.
 // A non-target prefix is NOT a rejection: the job may describe a different worksite.
 function locationHint(url:string){
@@ -30,11 +30,18 @@ export async function runFastBCHtml(){
  const source=await freePublicSourceStatus();
  const reviewed=Array.isArray(source.summary?.reviewed)?source.summary.reviewed as Array<{url?:string;status?:string;reason?:string}>:[];
  // Only the latest Motor A first-pass findings are eligible; never import historical queues.
- const todo=reviewed.filter(row=>row.status==='pending' && typeof row.url==='string' && !publicDocumentUrl(row.url));
+ const seenUrls=new Set<string>();
+ const todo=reviewed.filter(row=>{
+  if(row.status!=='pending' || typeof row.url!=='string' || publicDocumentUrl(row.url))return false;
+  const url=safePublicUrl(row.url);
+  if(!url || seenUrls.has(url))return false;
+  seenUrls.add(url);
+  return true;
+ });
  // Prioritize territorial candidates; keep outside hints auditable but avoid spending
  // the limited three network checks on obvious out-of-area Arauco URL prefixes.
  todo.sort((a,b)=>Number(locationHint(a.url||'')==='outside_hint')-Number(locationHint(b.url||'')==='outside_hint'));
- let checked=0,verified=0,archived=0,blocked=0,already=0,legacyRecovered=0,deferredOutside=0,deferredIndex=0,storedForFeed=0;
+ let checked=0,verified=0,archived=0,blocked=0,already=0,legacyRecovered=0,deferredOutside=0,deferredIndex=0,storedForFeed=0,storageFailures=0;
  const outcomes:Array<{url:string;decision:string;reason:string}>=[];
  // Walk the entire bounded first-pass result so early already-seen rows cannot starve later ones.
  for(const row of todo){
@@ -62,8 +69,8 @@ export async function runFastBCHtml(){
     evaluatePublicJob(url,page.raw,page.url,page.status,Date.now());
   let decision='pending_evidence',reason=String(result.reason || 'unresolved').slice(0,120),published=false;
   if(result.status==='verified'){
-   try{await saveVerifiedPublicOffer(result,Date.now());decision='verified_for_public_feed';published=true;verified++;storedForFeed++;}
-   catch(error){decision='blocked_verification_storage';reason=String(error).slice(0,110);blocked++;}
+   try{await saveVerifiedPublicOffer(result,Date.now());decision='stored_pending_public_feed';published=false;verified++;storedForFeed++;}
+   catch(error){decision='blocked_verification_storage';reason=String(error).slice(0,110);blocked++;storageFailures++;}
   }else if(page.error || [0,401,403,429,500,502,503].includes(page.status)){
    decision='blocked_source';blocked++;
   }else if(result.status==='rejected' && ['source_removed','closed_notice','expired_deadline'].includes(result.reason)){
@@ -71,10 +78,10 @@ export async function runFastBCHtml(){
   }
   const record={id,url,firstReason:prior?.firstReason || row.reason || '',checkedAt:new Date().toISOString(),decision,reason,published,attempts:(prior?.attempts||0)+1};
   const [stored]=prior ? await db.tx.update(TABLE,[{id,record}]) : await db.tx.add(TABLE,[record]);
-  if(!stored){already++;} // Deterministic ID prevents duplicates across retries.
+  if(!stored){storageFailures++;console.warn('FAST_B_C_DECISION_WRITE_FAILED '+JSON.stringify({url,decision}));} // Never count failed writes as successful deduplication.
   outcomes.push({url,decision,reason});
  }
- const summary={checkedAt:new Date().toISOString(),aCheckedAt:source.checkedAt,found:todo.length,checked,verified,archived,blocked,already,legacyRecovered,deferredOutside,deferredIndex,storedForFeed,outcomes};
+ const summary={checkedAt:new Date().toISOString(),aCheckedAt:source.checkedAt,found:todo.length,checked,verified,archived,blocked,already,legacyRecovered,deferredOutside,deferredIndex,storedForFeed,storageFailures,outcomes};
  const [old]=await db.get<{id:string}>(STATUS,['current'],{consistent:true});
  if(old)await db.tx.update(STATUS,[{id:'current',record:{id:'current',...summary}}]);
  else await db.tx.add(STATUS,[{id:'current',...summary}]);

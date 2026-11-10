@@ -19,3 +19,15 @@
 ## Decisión
 
 **Cierre de CI: sí. Cierre de incidente en producción: NO.** PR #35 permanece sin fusionar ni desplegar hasta autorización y validación integrada.
+
+
+## Revisión adicional de staging (10 nov., 19:08–19:xx Chile)
+
+- PR #35 continúa sin fusionar y **sin despliegue por esta revisión**.
+- En `appdeploy_staging/snapshot/backend/public-feed.ts`, el resumen público ahora intenta el manifiesto actual y luego el último bueno, comprueba forma básica de páginas y conteos, y deriva los totales del manifiesto inmutable en lugar del puntero potencialmente obsoleto.
+- La lectura paginada también trata un manifiesto principal estructuralmente inválido como candidato a recuperación, sin cambiar cursores históricos explícitos.
+- Se incorporó `scripts/test-feed-last-good-summary.mjs` al workflow de staging. Siete comprobaciones de presencia/estructura efectuadas durante esta revisión dieron resultado correcto; **no equivalen a integración con base de datos real ni a CI verde del commit nuevo**.
+- Última ejecución de CI de staging consultada y confirmada como exitosa: [42887333538](https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/42887333538), anterior a los cambios de esta revisión. Revisar la ejecución que se dispare para el nuevo commit.
+- AppDeploy consultado en esta revisión: despliegue `ready`, publicador `verify-publish` con última ejecución `success`, `publicJobs:232`, `feedRebuilding:false`. Esto no prueba por sí mismo la disponibilidad de todas las páginas ni que la oferta de Control de Plagas esté presente.
+- La barrera `PUBLIC_FEED_REGRESSION_BLOCKED` sigue intacta. No se atribuye sin datos una causa definitiva a la antigua regresión 228→227.
+- **Pendiente antes de cerrar producción:** CI del commit nuevo; validación integrada de lectura/paginación y último manifiesto; diagnóstico real del ID de Control de Plagas; comprobar identidades de ofertas aprobadas en catálogo público y que no exista pérdida silenciosa.

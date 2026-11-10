@@ -1,0 +1,63 @@
+name: Trabajo Cerca | QA feeds municipales y revisión PDF
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/qa_municipal_feeds.py'
+      - 'automation/trabajo_cerca/municipal_feed.py'
+      - 'automation/trabajo_cerca/test_municipal_feed.py'
+      - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
+      - 'automation/trabajo_cerca/test_descubrir_ofertas_municipales.py'
+      - 'automation/trabajo_cerca/trabajo_cerca_lector_documental.py'
+      - 'automation/motor_d_territorial_daily.py'
+      - 'automation/test_motor_d_territorial.py'
+      - '.github/workflows/qa-municipal-feeds.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'automation/qa_municipal_feeds.py'
+      - 'automation/trabajo_cerca/municipal_feed.py'
+      - 'automation/trabajo_cerca/test_municipal_feed.py'
+      - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
+      - 'automation/trabajo_cerca/test_descubrir_ofertas_municipales.py'
+      - 'automation/trabajo_cerca/trabajo_cerca_lector_documental.py'
+      - 'automation/motor_d_territorial_daily.py'
+      - 'automation/test_motor_d_territorial.py'
+      - '.github/workflows/qa-municipal-feeds.yml'
+permissions:
+  contents: read
+concurrency:
+  group: qa-municipal-feeds-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  qa_municipal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install zero-cost public reader prerequisites
+        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
+      - name: Validate municipal module and reader contract
+        env:
+          PYTHONPATH: automation:automation/trabajo_cerca
+        run: |
+          python -m unittest discover -s automation/trabajo_cerca -p 'test_municipal_feed.py' -v
+          python -m unittest discover -s automation/trabajo_cerca -p 'test_descubrir_ofertas_municipales.py' -v
+          python -m unittest discover -s automation/trabajo_cerca -p 'test_lector_documental.py' -v
+          python -m unittest discover -s automation -p 'test_motor_d_territorial.py' -v
+      - name: Read only five municipal access sources; NO JOB APPROVALS
+        env:
+          PYTHONPATH: automation:automation/trabajo_cerca
+        run: python automation/qa_municipal_feeds.py
+      - name: Save real sources and PDF queue observations even on blockers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: municipal-5-source-access-evidence
+          path: resultados/qa_municipal_feeds.json
+          if-no-files-found: warn
+          retention-days: 21

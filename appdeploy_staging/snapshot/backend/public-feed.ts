@@ -462,7 +462,10 @@ async function publish(record:Manifest) {
   const { pages:_pages, ...summary } = record;
   // Keep a durable, independently readable pointer to the last complete manifest.
   // A backup failure must prevent publishing a pointer that cannot be recovered.
-  await replaceSingle('public_feed_last_good', { manifestId, ...summary });
+  // Retain the previous immutable manifest as an independent recovery target.
+  // On the very first publication there is no prior manifest to retain.
+  const backupId=previous?.manifestId || manifestId;
+  await replaceSingle('public_feed_last_good', { manifestId:backupId, ...summary });
   await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId });
   return { ...summary, manifestId, rebuilding:false };
 }
@@ -602,7 +605,18 @@ export async function readPublicFeedPage(cursor?:string) {
   }
   if (!Number.isSafeInteger(page) || page < 0 || page > 10000) throw new Error('Feed cursor invalid');
   if (!manifestId) return (await single<Stored>('public_feed_page_' + page)) ?? null;
-  const [current] = await db.get<Manifest>('public_feed_manifests', [manifestId]);
+  let [current] = await db.get<Manifest>('public_feed_manifests', [manifestId]);
+  if (!current && !cursor?.startsWith('v2:')) {
+    const backupId=(await single<Control>('public_feed_last_good'))?.manifestId;
+    if (backupId && backupId!==manifestId) {
+      const [backup]=await db.get<Manifest>('public_feed_manifests',[backupId]);
+      if (backup) {
+        console.warn('PUBLIC_FEED_RECOVERED_LAST_GOOD '+JSON.stringify({reason:'primary_manifest_missing'}));
+        manifestId=backupId;
+        current=backup;
+      }
+    }
+  }
   if (!current) throw new Error('Public feed manifest missing');
   if (page >= Math.max(1, current.pages.length)) throw new Error('Feed cursor invalid');
   const ref = current.pages[page];

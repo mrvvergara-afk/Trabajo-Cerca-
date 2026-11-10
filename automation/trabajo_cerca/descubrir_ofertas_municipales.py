@@ -12,6 +12,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
 from trabajo_cerca_lector_documental import allowed, fetch_bytes, robots_ok, read_one
+from municipal_feed import discover_municipal, documents_from_page, merge_page_links
 
 # Se descubren URLs, no se publican avisos. Una página índice jamás cuenta como vacante.
 SIGNAL = re.compile(r"(?:oferta[s]?(?:-| )laboral(?:es)?|oportunidad(?:es)?(?:-| )laboral(?:es)?|"
@@ -118,41 +119,70 @@ def discover(index: dict, max_links: int = 5) -> dict:
     url = str(index.get("url") or "")
     row = {"index_url": url, "source": str(index.get("source") or "")[:120],
            "links_found": 0, "checked": [], "status": "pending"}
-    if not allowed(url) or not robots_ok(url):
-        row["status"] = "index_not_authorized_or_robots_unknown"
+    if not allowed(url):
+        row["status"]="index_not_authorized_or_robots_unknown"
         return row
-    try:
-        body, mime = fetch_bytes(url, 650000)
-        if mime not in ("text/html", "application/xhtml+xml"):
-            row["status"] = "index_not_html"
-            return row
-        html = body.decode("utf-8", "replace")
-        links = candidate_links(url, html, max_links)
-        row.update(status="index_read", links_found=len(links),
-                   index_sha256=hashlib.sha256(body).hexdigest())
-        for item in links:
-            item["source"] = row["source"]
-            item["publisher_page"] = url
-            checked = read_one(item)
-            # En la página índice hay textos generales; solo el detalle se evalúa.
-            row["checked"].append(checked)
-            if item["kind"] == "local_page":
-                try:
-                    # Un único PDF por artículo para evitar procesar anexos masivos.
-                    article_bytes, article_mime = fetch_bytes(item["url"], 650000)
-                    if article_mime in ("text/html", "application/xhtml+xml"):
-                        for pdf in attached_public_pdfs(item["url"], article_bytes.decode("utf-8", "replace")):
-                            pdf["source"] = row["source"]
-                            pdf["publisher_page"] = item["url"]
-                            row["checked"].append(read_one(pdf))
-                except Exception:
-                    checked["attachment_scan"] = "not_available"
-            time.sleep(0.25)
-    except Exception as error:
-        row["status"] = "index_fetch_failed"
-        row["error_type"] = type(error).__name__
+    # The allowlisted municipal feed is a separate source, not an excuse to
+    # ignore an HTML 403 or bypass robots. Its records remain review-only.
+    feed=discover_municipal(url,limit=max_links)
+    if feed["status"]!="not_configured":
+        row["feed_status"]=feed["status"]
+        row["feed_checked"]=feed["checked"]
+        row["feed_sources_blocked"]=feed["sources_blocked"]
+    index_links=[]
+    html=""
+    if robots_ok(url):
+        try:
+            body,mime=fetch_bytes(url,650000)
+            if mime in ("text/html","application/xhtml+xml"):
+                html=body.decode("utf-8","replace")
+                index_links=candidate_links(url,html,max_links)
+                row["index_sha256"]=hashlib.sha256(body).hexdigest()
+                row["status"]="index_read"
+            else:
+                row["status"]="index_not_html"
+        except Exception as error:
+            row["status"]="index_fetch_failed"
+            row["error_type"]=type(error).__name__
+    else:
+        row["status"]="index_not_authorized_or_robots_unknown"
+    links=merge_page_links(index_links,feed["pages"],limit=max_links)
+    # PDFs linked or embedded directly on the index must pass the same
+    # reader/OCR gate as PDFs discovered in an individual article.
+    documents=documents_from_page(url,html,limit=2) if html else []
+    row["links_found"]=len(links)+len(documents)
+    if row["status"]!="index_read" and feed["sources_accessible"]:
+        row["status"]="feed_only_index_unavailable"
+    if row["status"]!="index_read" and not links and not documents:
+        return row
+    seen_urls=set()
+    for item in links+documents:
+        if item["url"] in seen_urls:
+            continue
+        seen_urls.add(item["url"])
+        item["source"]=row["source"]
+        item["publisher_page"]=item.get("publisher_page") or url
+        # read_one is read-only; documentary evidence never auto-approves.
+        checked=read_one(item)
+        row["checked"].append(checked)
+        if item["kind"]=="local_page":
+            try:
+                article_bytes,article_mime=fetch_bytes(item["url"],650000)
+                if article_mime in ("text/html","application/xhtml+xml"):
+                    attached=merge_page_links(
+                        attached_public_pdfs(item["url"],article_bytes.decode("utf-8","replace"),limit=2),
+                        documents_from_page(item["url"],article_bytes,limit=2),limit=2)
+                    for doc in attached:
+                        if doc["url"] in seen_urls:
+                            continue
+                        seen_urls.add(doc["url"])
+                        doc["source"]=row["source"]
+                        doc["publisher_page"]=item["url"]
+                        row["checked"].append(read_one(doc))
+            except Exception:
+                checked["attachment_scan"]="not_available"
+        time.sleep(0.25)
     return row
-
 
 def main():
     parser = argparse.ArgumentParser()

@@ -6,6 +6,10 @@ on:
       - 'appdeploy_staging/patches/**'
       - 'appdeploy_staging/fixtures/**'
       - 'scripts/test-public-feed-*.mjs'
+      - 'scripts/test-feed-*.mjs'
+      - 'scripts/test-last-good-feed-recovery.mjs'
+      - 'scripts/test-no-false-zero-feed.mjs'
+      - 'scripts/check-appdeploy-typescript.mjs'
       - '.github/workflows/validate-public-feed-staging.yml'
   workflow_dispatch:
 jobs:

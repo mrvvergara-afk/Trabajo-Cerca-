@@ -486,17 +486,33 @@ async function publish(record:Manifest, projector:Projector) {
   return { ...summary, manifestId, rebuilding:false };
 }
 
+// Recover only immutable, validated public manifests; never project private rows here.
+async function readablePublicManifest() {
+  const current=await single<Control>('public_feed_control');
+  const lastGood=await single<Control>('public_feed_last_good');
+  for(const manifestId of [current?.manifestId,lastGood?.manifestId]){
+    if(!manifestId)continue;
+    const [record]=await db.get<Manifest>('public_feed_manifests',[manifestId]);
+    if(!record || !Array.isArray(record.pages) ||
+       !Number.isSafeInteger(record.itemCount) || record.itemCount<0 ||
+       record.pages.some(ref=>!ref || typeof ref.id!=='string' || !Array.isArray(ref.keys)))continue;
+    if(record.pages.length===0 && record.itemCount!==0)continue;
+    if(manifestId!==current?.manifestId)console.warn('PUBLIC_FEED_RECOVERED_LAST_GOOD '+JSON.stringify({reason:'primary_manifest_invalid'}));
+    return {manifestId,manifest:record,rebuilding:manifestId!==current?.manifestId};
+  }
+  return null;
+}
+
 export async function readPublicFeedSummary() {
-  const current = await single<Control>('public_feed_control');
-  return { ...emptySummary(), ...current, rebuilding:!current?.manifestId };
+  const readable=await readablePublicManifest();
+  if(!readable)return {...emptySummary(),rebuilding:true};
+  const {pages:_pages,schema:_schema,...summary}=readable.manifest;
+  return {...emptySummary(),...summary,manifestId:readable.manifestId,rebuilding:readable.rebuilding};
 }
 
 export async function currentPublicFeedManifest() {
-  const current = await single<Control>('public_feed_control');
-  if (!current?.manifestId) return null;
-  const [record] = await db.get<Manifest>('public_feed_manifests', [current.manifestId]);
-  if (!record) throw new Error('Public feed manifest missing');
-  return { manifestId:current.manifestId, manifest:record };
+  const readable=await readablePublicManifest();
+  return readable ? {manifestId:readable.manifestId,manifest:readable.manifest} : null;
 }
 
 export async function publicFeedProgress() {
@@ -622,12 +638,16 @@ export async function readPublicFeedPage(cursor?:string) {
   if (!Number.isSafeInteger(page) || page < 0 || page > 10000) throw new Error('Feed cursor invalid');
   if (!manifestId) return (await single<Stored>('public_feed_page_' + page)) ?? null;
   let [current] = await db.get<Manifest>('public_feed_manifests', [manifestId]);
+  if(current && (!Array.isArray(current.pages) ||
+    !Number.isSafeInteger(current.itemCount) || current.itemCount<0 ||
+    (current.pages.length===0 && current.itemCount!==0)))current=undefined;
   if (!current && !cursor?.startsWith('v2:')) {
     const backupId=(await single<Control>('public_feed_last_good'))?.manifestId;
     if (backupId && backupId!==manifestId) {
       const [backup]=await db.get<Manifest>('public_feed_manifests',[backupId]);
-      if (backup) {
-        console.warn('PUBLIC_FEED_RECOVERED_LAST_GOOD '+JSON.stringify({reason:'primary_manifest_missing'}));
+      if (backup && Array.isArray(backup.pages) && Number.isSafeInteger(backup.itemCount) &&
+          backup.itemCount>=0 && (backup.pages.length>0 || backup.itemCount===0)) {
+        console.warn('PUBLIC_FEED_RECOVERED_LAST_GOOD '+JSON.stringify({reason:'primary_manifest_missing_or_invalid'}));
         manifestId=backupId;
         current=backup;
       }

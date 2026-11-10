@@ -71,6 +71,43 @@ class MunicipalDocumentCloseoutTests(unittest.TestCase):
         self.assertEqual(result["existing_reviews_with_pdf_evidence"],1)
         self.assertFalse(result["review_receipts"][0]["publication_eligible"])
 
+    def test_traiguen_external_report_deadline_matches_independently_downloaded_pdf_hash(self):
+        # Reported source is external DeepSeek Harness audit, not extracted
+        # from the bounded six-page preview. The current reader fetched the
+        # exact 13.9 MB document and reproduced its SHA256.
+        verified_sha="a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f"
+        def reader(*_args,**_kwargs):
+            return {**read_status("documento_parcial_revision_obligatoria",
+                                  sha=verified_sha,extractor="pdf_preview_partial"),
+                    "original_classification":"sin_texto_o_requiere_ocr"}
+        got=closeout(report(doc(PDF)),receipt(B_C_CASE),[],True,
+                     reader=reader,today=TODAY)
+        row=got["review_receipts"][0]
+        self.assertEqual(row["status"],
+                         "expired_reported_by_hash_matched_external_audit")
+        self.assertEqual(row["external_reported_deadline"],"2026-11-02")
+        self.assertIsNone(row["evidence_deadline"])
+        self.assertTrue(row["external_report_and_document_sha_match"])
+        self.assertEqual(got["existing_B_C_cases_with_audited_expiry_evidence"],1)
+        self.assertEqual(got["joined_existing_review_cases"][0]["documentary_review_recommendation"],
+                         "close_reported_expired_call_with_hash_matched_audit_evidence")
+        self.assertTrue(got["joined_existing_review_cases"][0]["original_B_C_queue_modified"] is False)
+        self.assertFalse(row["publication_eligible"])
+
+    def test_wrong_sha_or_mismatched_publisher_never_claims_external_deadline(self):
+        actual="a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f"
+        for entry,sha in ((doc(PDF),"a"*64),
+                          (doc(PDF,"https://mtraiguen.cl/municipalidad/other-call/"),actual)):
+            with self.subTest(url=entry["publisher_page"],sha=sha):
+                got=closeout(report(entry),receipt(B_C_CASE),[],True,
+                             reader=lambda *_args,**_kwargs:read_status(
+                                 "documento_parcial_revision_obligatoria",
+                                 sha=sha,extractor="pdf_preview_partial"),
+                             today=TODAY)
+                self.assertNotEqual(got["review_receipts"][0]["status"],
+                                    "expired_reported_by_hash_matched_external_audit")
+                self.assertIsNone(got["review_receipts"][0]["external_reported_deadline"])
+
     def test_traiguen_33_page_preview_stays_in_existing_B_review_not_new_case(self):
         def reader(*_args,**_kwargs):
             return {**read_status("documento_parcial_revision_obligatoria",

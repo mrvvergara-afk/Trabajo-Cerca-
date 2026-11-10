@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-10T11:37:53.551566-03:00",
+  "last_run": "2026-11-10T14:00:28.590497-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1669,6 +1669,12 @@
       "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Maquinaria-Forestal-Procesadora-CIMA-64-Zona-Valdivia-BI-5110467/1391341600/",
       "source": "Arauco empleo",
       "commune": "Collipulli"
+    },
+    "5f7bf83484c1c2b4dd8e": {
+      "first_seen": "2026-11-10T14:00:28.590497-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/manipulador-de-alimentos-cocinero-3782675",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
     }
   }
 }

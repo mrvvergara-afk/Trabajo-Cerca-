@@ -200,6 +200,23 @@ class MotorDReviewAdapterTests(unittest.TestCase):
             self.assertIsNone(saved["review_signature"])
             self.assertEqual(saved["document_sha256"], "a" * 64)
 
+    def test_canonical_recrawl_keeps_signed_url(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"
+            original = "https://www.example.cl/oferta/?utm_source=radar"
+            source.write_text(json.dumps([{"url": original}]))
+            adapter.adapt(source, target, date(2026, 11, 9))
+            queue = json.loads(target.read_text())
+            queue["items"][0].update(review_status="approved",
+                                      review_signature="signed", publication_eligible=True)
+            target.write_text(json.dumps(queue))
+            source.write_text(json.dumps([{"url": "https://example.cl/oferta"}]))
+            adapter.adapt(source, target, date(2026, 11, 10))
+            item = json.loads(target.read_text())["items"][0]
+            self.assertEqual(item["url"], original)
+            self.assertEqual(item["review_signature"], "signed")
+            self.assertEqual(item["review_status"], "approved")
+
     def test_malformed_deadline_revokes_approval_without_losing_queue(self):
         with tempfile.TemporaryDirectory() as tmp:
             source, target = Path(tmp)/"source.json", Path(tmp)/"queue.json"

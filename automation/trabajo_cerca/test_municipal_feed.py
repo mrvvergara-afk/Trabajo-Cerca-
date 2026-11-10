@@ -135,6 +135,21 @@ class MunicipalFeedTests(unittest.TestCase):
         self.assertEqual(got["status"],"ok")
         self.assertEqual(got["links_found"],1)
 
+    def test_individual_job_article_footer_pdf_plans_are_filtered(self):
+        # Traiguén's real job article inherited generic homepage downloads.
+        html="""<article>
+          <iframe src="/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf"></iframe>
+          <a href="/wp-content/uploads/2023/07/Plano-Traiguen.pdf">Plano</a>
+          <a href="/wp-content/uploads/2023/07/ROL_REAVALUO_AGRICOLA_2020.pdf">Rol agrícola</a>
+          <a href="/wp-content/uploads/2023/07/Informe_EAE_Traiguen.pdf">Informe EAE</a>
+          <a href="/wp-content/uploads/2023/12/DAEX-3401-APRUEBA-ESCALAFON-DE-MERITO-2024.pdf">Escalafón</a>
+        </article>"""
+        result=documents_from_page(
+            "https://mtraiguen.cl/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/",
+            html,limit=8)
+        self.assertEqual(len(result),1)
+        self.assertTrue(result[0]["url"].endswith("DAEX-BASES-Y-CALENDARIO.pdf"))
+
     def test_category_sidebar_pdf_archives_not_queued_as_job_documents(self):
         html=(b"<main><a href='/municipalidad/bases-para-llamado-a-concurso-publico-de-3-cargos/'>"
               b"Bases para llamado a Concurso Publico de 3 Cargos</a>"

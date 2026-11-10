@@ -58,15 +58,23 @@ SEEDS=[
 ("Angol","Falabella · empleos oficiales","https://muevete.falabella.com/"),
 ("Angol","Unimarc · empleos oficiales","https://unimarc.trabajando.cl/"),
 ]
-# Chiletrabajos: /ciudad/<slug>.html is the site's geographic route.
-# Query parameter ?2= was a keyword search that produced national jobs and
-# silently diluted coverage. Unknown/404 city routes are recorded as failures,
-# not replaced with unrelated employment results.
+# Chiletrabajos: /ciudad/<slug>.html is the preferred geographic route.
+# Many city indices render without a geographic heading. A ?2= keyword
+# fallback may then discover individual job URLs, but its result page is NOT
+# geographically scoped. Only a confirmed individual worksite can enter an
+# auto-publishable lot; a title+portal city alone stays review-only.
 from urllib.parse import quote
 def chiletrabajos_city_slug(town):
     folded=unicodedata.normalize("NFD",town.lower())
     slug="".join(c for c in folded if unicodedata.category(c)!="Mn")
     return re.sub(r"[^a-z0-9]+","-",slug).strip("-")
+
+def chiletrabajos_fallback_url(town):
+    """Unscoped keyword search: discovery only, not evidence of job location."""
+    if town not in COMMUNES:
+        raise ValueError("Comuna no autorizada para búsqueda")
+    return "https://www.chiletrabajos.cl/encuentra-un-empleo/?2="+quote(town)
+
 
 SEEDS.extend((town,"Chiletrabajos · "+town,
     "https://www.chiletrabajos.cl/ciudad/"+chiletrabajos_city_slug(town)+".html")
@@ -354,23 +362,36 @@ def inspect(seed):
         if status!=200 or soup is None:
             out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
             return out
+        national_fallback=False
+        links_base=url
         if source.startswith("Chiletrabajos · ") and not urlsplit(url).path.startswith("/trabajo/"):
             heading=soup.select_one("h1")
             page_title=soup.title
             heading_text=heading.get_text(" ",strip=True) if heading else ""
             title_text=page_title.get_text(" ",strip=True) if page_title else ""
-            # The official city index may put its location in <title> only.
-            # A query result with no verified territorial heading is not
-            # evidence of an empty town and must never be treated as scoped.
+            # A query result without verified territorial heading is NOT
+            # evidence of zero jobs in that town.
             label=fold(" ".join((heading_text,title_text)))
             territory=fold(town)
-            if not re.search(r"\btrabajos?\s+en\s+"+re.escape(territory)+r"\b",label):
-                out["status"]="search_filter_not_confirmed"
+            out["index_scope_confirmed"]=bool(
+                re.search(r"\btrabajos?\s+en\s+"+re.escape(territory)+r"\b",label))
+            if not out["index_scope_confirmed"]:
                 out["index_heading"]=heading_text[:120]
                 out["index_page_title"]=title_text[:120]
                 out["errors"].append("chiletrabajos_territory_heading_missing")
-                return out
-        links=links_from(soup,url)
+                links_base=chiletrabajos_fallback_url(town)
+                out["fallback_url"]=links_base
+                out["fallback_query_is_territorially_scoped"]=False
+                fallback_status,fallback_soup,fallback_reason=request_page(links_base)
+                out["fallback_http"]=fallback_status
+                if fallback_status!=200 or fallback_soup is None:
+                    out["status"]="search_filter_not_confirmed"
+                    out["fallback_error"]=fallback_reason or (
+                        "fallback_http_"+str(fallback_status))
+                    return out
+                soup=fallback_soup
+                national_fallback=True
+        links=links_from(soup,links_base)
         parsed_seed=urlsplit(url)
         # First-party individual job pages can be audited directly; never
         # reinterpret them as category/index pages with zero discovered links.
@@ -399,6 +420,7 @@ def inspect(seed):
                     body=focused_job_text(detail_soup)
                     dates=dates_in(detail_soup)
                     job_commune=explicit_work_commune(body)
+                    detail["explicit_worksite_commune"]=job_commune
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
                     portal=chiletrabajos_metadata(detail_soup,title,detail_url)
@@ -450,6 +472,27 @@ def inspect(seed):
         # Bound same-host detail requests while concurrent commune seeds run.
         with ThreadPoolExecutor(max_workers=5) as pool:
             out["candidates"]=list(pool.map(inspect_detail,links))
+        if national_fallback:
+            verified=[]
+            out["fallback_details_seen"]=len(out["candidates"])
+            out["fallback_rejected_nonlocal_or_unknown"]=0
+            out["fallback_pending_worksite_confirmation"]=0
+            for item in out["candidates"]:
+                # Never infer local employment from a national search, from
+                # the recruiting city, or from a person named after the town.
+                if item.get("work_commune")!=town:
+                    out["fallback_rejected_nonlocal_or_unknown"]+=1
+                    continue
+                # Only explicit worksite wording from the individual vacancy
+                # is enough for automatic classification. Agreement between
+                # portal city and title is a lead, not proof of execution.
+                if item.get("http")==200 and item.get("evidence")=="individual_page_with_job_terms":
+                    if item.get("explicit_worksite_commune") != town:
+                        item["source_commune_not_confirmed"]=True
+                        item["express_ready"]=False
+                        out["fallback_pending_worksite_confirmation"]+=1
+                verified.append(item)
+            out["candidates"]=verified
         # Los comunicados de empleo individuales usados como semilla también son
         # candidatos propios; no depender de que tengan enlaces internos.
         source_path=urlsplit(url).path.rstrip("/").lower()
@@ -476,7 +519,9 @@ def inspect(seed):
                     out["candidates"].append(detail)
         out["details_opened"]=sum(x.get("http")==200 and x.get("evidence") not in
                                    ("detail_unavailable","link_candidate_only") for x in out["candidates"])
-        out["status"]="scanned_with_candidates" if out["candidates"] else "scanned_no_candidates"
+        out["status"]=("scanned_with_candidates" if out["candidates"] else
+                       ("fallback_no_verified_target_offers" if national_fallback
+                        else "scanned_no_candidates"))
     except requests.exceptions.RequestException as exc:
         out["status"]="network_error";out["errors"].append(type(exc).__name__)
     except Exception as exc:

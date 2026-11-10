@@ -384,7 +384,7 @@ function manifest(pages:PageRef[], now:number):Manifest {
   return record;
 }
 
-async function publish(record:Manifest) {
+async function publish(record:Manifest, projector:Projector) {
   checkSize(record);
   // Prevent silent loss of previously approved jobs when a feed page is
   // reprojected. A confirmed source deadline or owner closure is allowed.
@@ -439,6 +439,9 @@ async function publish(record:Manifest) {
           sourceHasOriginalDate:Boolean(source?.sourcePublishedAt||source?.date),
           sourceHasFirstPublishedDate:Boolean(source?.firstPublishedAt),
           sourceHasTerritorialScope:Array.isArray(source?.workCommunes) && source.workCommunes.length>0,
+          sourceProjectsToFeed:Boolean(source && projector.project({...source,id:lost.sourceId})),
+          originalIdentityPresent:Boolean(identity(lost.item)),
+          proposedEquivalentPresent:Boolean(identity(lost.item) && newVerifiedIdentities.has(identity(lost.item)!)),
           deadlineExpired:expired,
           closureConfirmed:closed
         });
@@ -536,7 +539,7 @@ export async function advancePublicFeed(projector:Projector) {
       await replaceSingle('public_feed_build_state', { ...build, ...manifest(await editor.persist(), now) });
       return { ...await readPublicFeedSummary(), rebuilding:true, buildSource:build.source };
     }
-    if (build.source === 'complete') return publish(manifest(build.pages, now));
+    if (build.source === 'complete') return publish(manifest(build.pages, now), projector);
     const rows = await db.list<Stored>(build.source, { limit:STEP_SIZE, ...(build.nextToken ? { nextToken:build.nextToken } : {}) });
     const editor = new Editor(build.pages, projector, now);
     for (const { id, ...record } of rows.items) await editor.put(build.source, id, record);
@@ -544,7 +547,7 @@ export async function advancePublicFeed(projector:Projector) {
     const source = rows.nextToken ? build.source : build.source === 'radar_jobs' ? 'community_posts' : 'complete';
     const next:Build = { ...manifest(pages, now), source, ...(rows.nextToken ? { nextToken:rows.nextToken } : {}) };
     await replaceSingle('public_feed_build_state', next as unknown as Stored);
-    return source === 'complete' ? publish(manifest(pages, now)) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
+    return source === 'complete' ? publish(manifest(pages, now), projector) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
   }
 
   const [current] = await db.get<Manifest>('public_feed_manifests', [control.manifestId]);
@@ -554,7 +557,7 @@ export async function advancePublicFeed(projector:Projector) {
   if (legacy) {
     const editor = new Editor(current.pages, projector, now);
     await editor.upgrade(legacy);
-    return publish(manifest(await editor.persist(), now));
+    return publish(manifest(await editor.persist(), now), projector);
   }
   const changes = await db.list<Change>('public_feed_changes', { limit:STEP_SIZE });
   // Reproject whole pages up to forty existing records; the cron cadence is unchanged.
@@ -587,7 +590,7 @@ export async function advancePublicFeed(projector:Projector) {
     if (records.length !== ids.length) throw new Error('Source read result count mismatch');
     for (let i = 0; i < ids.length; i++) await editor.put(source, ids[i], records[i]);
   }
-  const result = await publish(manifest(await editor.persist(), now));
+  const result = await publish(manifest(await editor.persist(), now), projector);
   // Acknowledge only after the complete immutable manifest and visible pointer are durable.
   if (changes.items.length && !('regressionBlocked' in result && result.regressionBlocked)) {
     const removed = await db.delete('public_feed_changes', changes.items.map(change => change.id));

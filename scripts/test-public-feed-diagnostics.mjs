@@ -21,3 +21,9 @@ test('diagnoses actual source projection without relaxing regression guard',()=>
  assert.match(source,/async function publish\(record:Manifest, projector:Projector\)/);
  assert.match(source,/return \{\.\.\.\(await readPublicFeedSummary\(\)\),rebuilding:false,regressionBlocked:true\}/);
 });
+
+test('approved duplicate cannot be displaced by unverified newer candidate',()=>{
+ assert.match(source,/const preserveApproved = approved\(duplicate\.item\) && !approved\(item\)/);
+ assert.match(source,/if \(preserveApproved \|\| \(approved\(duplicate\.item\)===approved\(item\) && checked\(duplicate\.item\) > checked\(item\)\)\)/);
+ assert.match(source,/if \(firstTimes\.length\) \{duplicate\.item=/);
+});

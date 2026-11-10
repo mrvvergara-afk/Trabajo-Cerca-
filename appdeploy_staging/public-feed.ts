@@ -596,7 +596,7 @@ export async function advancePublicFeed(projector:Projector) {
     const source = rows.nextToken ? build.source : build.source === 'radar_jobs' ? 'community_posts' : 'complete';
     const next:Build = { ...manifest(pages, now), source, ...(rows.nextToken ? { nextToken:rows.nextToken } : {}) };
     await replaceSingle('public_feed_build_state', next as unknown as Stored);
-    return source === 'complete' ? publish(manifest(pages, now), projector) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
+    return source === 'complete' ? advancePublicFeed(projector) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
   }
 
   const [current] = await db.get<Manifest>('public_feed_manifests', [control.manifestId]);

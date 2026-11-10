@@ -5,6 +5,9 @@ on:
     paths:
       - 'automation/qa_feed_bc_consolidado.py'
       - 'automation/test_qa_feed_bc_consolidado.py'
+      - 'automation/test_appdeploy_staging_preflight.py'
+      - 'appdeploy_staging/fast-bc-html.ts'
+      - 'appdeploy_staging/public-feed.ts'
       - '.github/workflows/qa-feed-bc-consolidado.yml'
   workflow_dispatch:
 
@@ -21,4 +24,6 @@ jobs:
         with:
           python-version: '3.11'
       - name: Probar escenarios sin acceso a producción
-        run: python -m unittest discover -s automation -p 'test_qa_feed_bc_consolidado.py' -v
+        run: |
+          python -m unittest discover -s automation -p 'test_qa_feed_bc_consolidado.py' -v
+          python -m unittest discover -s automation -p 'test_appdeploy_staging_preflight.py' -v

@@ -105,8 +105,10 @@ def reconcile(report, public_rows, feed_complete, feed_error=None):
         possible_ids = sorted(x for x in similar if x and x != "None")
         owner = None
         if not feed_complete:
+            # A transient feed outage must not flood B/C with 51
+            # duplicates or masquerade as a missing public record.
             state = "catalog_unavailable"
-            owner = "C"
+            owner = None
         elif len(public_ids) > 1:
             state = "public_source_duplicate_needs_resolution"
             owner = "C"
@@ -185,6 +187,22 @@ def main(argv=None):
     dest=Path(args.output)
     dest.parent.mkdir(parents=True,exist_ok=True)
     dest.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+    # B and C consume only the currently actionable remainder. Recreate files
+    # atomically on each run, never append stale historical queues.
+    for motor in ("B","C"):
+        selected=[item for item in result["records"] if item["owner"]==motor]
+        queue={
+            "schema":"trabajo-cerca.motor-d-evidence-queue.v1",
+            "owner":motor,
+            "report_day":result["report_day"],
+            "catalog_complete":result["public_feed_complete"],
+            "review_only":True,
+            "approved_for_publication":False,
+            "count":len(selected),
+            "items":selected,
+        }
+        queue_path=dest.with_name(dest.stem+"_motor_"+motor.lower()+dest.suffix)
+        queue_path.write_text(json.dumps(queue,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     print("MOTOR_D_SECOND_PASS "+json.dumps({
         key:result[key] for key in ("report_day","source_candidates","second_pass_count",
         "public_feed_complete","public_feed_rows","status_counts",

@@ -58,7 +58,7 @@ jobs:
       group: motor-d-pr-audit-${{ github.event.pull_request.number }}
       cancel-in-progress: true
     runs-on: ubuntu-latest
-    timeout-minutes: 17
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
@@ -203,7 +203,7 @@ jobs:
       group: trabajo-cerca-motor-d-territorial
       cancel-in-progress: false
     runs-on: ubuntu-latest
-    timeout-minutes: 17
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

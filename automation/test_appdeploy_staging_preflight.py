@@ -11,6 +11,18 @@ class BackendPreflight(unittest.TestCase):
         cls.bc = (ROOT / "fast-bc-html.ts").read_text(encoding="utf-8")
         cls.feed = (ROOT / "public-feed.ts").read_text(encoding="utf-8")
 
+    def test_motor_d_index_is_fresh(self):
+        """Fail CI when the D producer has not delivered a daily batch."""
+        import json
+        from datetime import date, timedelta
+        index = json.loads((ROOT.parent / "automation" / "motor_d_ready" / "index.json").read_text(encoding="utf-8"))
+        daily = [str(entry.get("batch_id", ""))[8:16] for entry in index.get("batches", [])
+                 if entry.get("batch_type") == "daily"]
+        self.assertTrue(daily, "Motor D: no hay lotes diarios en el indice")
+        latest = max(date.fromisoformat(day[:4] + "-" + day[4:6] + "-" + day[6:8]) for day in daily)
+        self.assertGreaterEqual(latest, date.today() - timedelta(days=1),
+                                f"Motor D sin lote diario reciente; ultimo {latest}. Revisar productor y escritura del indice.")
+
     def test_bc_does_not_count_storage_as_publication(self):
         self.assertIn("decision='stored_pending_public_feed';published=false", self.bc)
         self.assertNotIn("decision='verified_for_public_feed';published=true", self.bc)

@@ -98,6 +98,7 @@ def plan(base,indeed,config=None,audit=None,social_refs=None,portals=None):
                                      "status":"requires_search_index_onboarding"})
             x["known_links"]+=1
     return {"public":list(public.values()),"social":list(social.values()),
+            "employer_prospects":portals.get("employer_prospects",[]),
             "added":added,"historical_job_links":len(config.get("seed_urls",[])),
             "unregistered_publishers":sorted(leads.values(),key=lambda x:-x["known_links"])}
 
@@ -150,7 +151,11 @@ def assess(plan,rows,stats):
         worked=state.startswith(("scanned","fallback_"))
         # An HTML response from a national jobs homepage is not proof that
         # all twelve locality searches were covered.
-        label=("needs_territorial_filter" if worked and src["kind"]=="portal_unfiltered_requires_geofilter"
+        # Cornerstone needs the existing Playwright reader. A generic HTTP
+        # response with zero vacancies cannot certify CMPC career coverage.
+        browser_needed=("cmpc.csod.com" in src["url"] and state=="scanned_no_candidates")
+        label=("requires_specialized_reader" if browser_needed else
+               "needs_territorial_filter" if worked and src["kind"]=="portal_unfiltered_requires_geofilter"
                else "accessible" if worked else
                "blocked_or_failed" if observed else "unvisited")
         records.append({**src,"status":label,"reader_status":state or None,
@@ -166,6 +171,7 @@ def assess(plan,rows,stats):
                    "accessible":sum(x["status"]=="accessible" for x in group),
                    "blocked":sum(x["status"]=="blocked_or_failed" for x in group),
                    "needs_geofilter":sum(x["status"]=="needs_territorial_filter" for x in group),
+                   "needs_specialized_reader":sum(x["status"]=="requires_specialized_reader" for x in group),
                    "social_unread":sum(x["status"]=="requires_authorized_reader" for x in group),
                    "unvisited":sum(x["status"]=="unvisited" for x in group)}
     unvisited=[x for x in records if x["status"]=="unvisited"]
@@ -179,6 +185,7 @@ def assess(plan,rows,stats):
             "all_registered_sources_accessible":not pending,
             "historical_job_links_separate":plan["historical_job_links"],
             "new_publisher_leads_for_onboarding":plan["unregistered_publishers"],
+            "industrial_employer_leads_to_verify":plan.get("employer_prospects",[]),
             "per_commune":per,
             "pending":[{k:x[k] for k in ("id","name","url","communes","status")} for x in pending],
             "ranked_first":[{k:x[k] for k in ("name","url","communes","rank_score")} for x in records[:15]],

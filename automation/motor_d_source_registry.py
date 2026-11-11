@@ -120,14 +120,24 @@ def learn(stats,rows,at):
         if not key:continue
         old=dict(result.get(key,{}))
         candidates=row.get("candidates") or []
+        # A source only earns points for NEW observed job identities. Re-reading
+        # the same ad four times a day must not inflate its ranking.
+        seen=list(old.get("seen_candidate_ids") or [])[-60:]
+        known=set(seen);fresh=[]
+        for candidate in candidates:
+            if not isinstance(candidate,dict):continue
+            identity=str(candidate.get("id") or performance_key(candidate.get("url","")))
+            if not identity or identity in known:continue
+            known.add(identity);seen.append(identity);fresh.append(candidate)
         success=str(row.get("status","")).startswith(("scanned","fallback_"))
         old.update({"at":at,"status":row.get("status"),
                     "attempts":int(old.get("attempts",0))+1,
                     "blocked":int(old.get("blocked",0))+int(not success),
+                    "seen_candidate_ids":seen[-60:],
                     "individual":int(old.get("individual",0))+
-                       sum(x.get("evidence")=="individual_page_with_job_terms" for x in candidates),
+                       sum(x.get("evidence")=="individual_page_with_job_terms" for x in fresh),
                     "ready":int(old.get("ready",0))+
-                       sum(x.get("express_ready") is True for x in candidates)})
+                       sum(x.get("express_ready") is True for x in fresh)})
         result[key]=old
     return result
 

@@ -16,7 +16,7 @@ CARD="INSTRUMENTISTA AREA\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n28/10/2026"
 
 def fixture():
     approved={"schema_version":1,"approval":"approved_for_publication",
-              "producer":"chatgpt","batch_id":"motor-d-cmpc-1234567890abcdef",
+              "producer":"motor_d_cmpc_browser","batch_id":"motor-d-cmpc-1234567890abcdef",
               "offers":[{"id_fuente":"cmpc_19249","cargo":TITLE,"empresa":"CMPC",
                          "comunas":["Nacimiento"],"url_original":URL,
                          "fecha_publicacion":"2026-10-28","fecha_cierre":None}]}

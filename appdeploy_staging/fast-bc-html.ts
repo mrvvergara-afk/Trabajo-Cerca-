@@ -82,6 +82,11 @@ export async function runFastBCHtml(){
   outcomes.push({url,decision,reason});
  }
  const summary={checkedAt:new Date().toISOString(),aCheckedAt:source.checkedAt,found:todo.length,checked,verified,archived,blocked,already,legacyRecovered,deferredOutside,deferredIndex,storedForFeed,storageFailures,outcomes};
+ // Avoid a status write on idle five-minute cron cycles; keep last meaningful result.
+ if(checked===0 && storageFailures===0){
+  console.warn('FAST_B_C_HTML_IDLE '+JSON.stringify({found:todo.length,already,deferredOutside,deferredIndex}));
+  return summary;
+ }
  const [old]=await db.get<{id:string}>(STATUS,['current'],{consistent:true});
  if(old)await db.tx.update(STATUS,[{id:'current',record:{id:'current',...summary}}]);
  else await db.tx.add(STATUS,[{id:'current',...summary}]);

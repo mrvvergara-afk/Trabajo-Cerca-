@@ -1,6 +1,7 @@
 """Validate and stage a reviewed Motor D batch for the AppDeploy GitHub bridge."""
 import argparse,hashlib,json,re,copy
 from urllib.parse import urlsplit
+from ipaddress import ip_address
 from datetime import date,datetime,timezone
 from pathlib import Path
 COMMUNES={"Angol","Collipulli","Ercilla","Lumaco","Los Sauces","Purén","Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento"}
@@ -19,17 +20,26 @@ def prepare(payload,index,day=None):
             if not isinstance(offer.get(field),str) or not offer[field].strip(): raise ValueError("missing_"+field)
         parsed=urlsplit(offer["url_original"])
         if parsed.scheme!="https" or not parsed.hostname or parsed.username or parsed.password or any(c.isspace() for c in offer["url_original"]): raise ValueError("invalid_url")
-        if parsed.hostname in ("localhost","127.0.0.1","::1") or parsed.hostname.endswith((".localhost",".local",".internal")): raise ValueError("unsafe_url")
+        host=parsed.hostname
+        if host in ("localhost",) or host.endswith((".localhost",".local",".internal")): raise ValueError("unsafe_url")
+        try:
+            if not ip_address(host).is_global: raise ValueError("unsafe_url")
+        except ValueError as exc:
+            if str(exc)=="unsafe_url": raise
         places=offer.get("comunas")
         if not isinstance(places,list) or not places: raise ValueError("missing_territory")
         normalized=list(dict.fromkeys(ALIASES.get(p,p) for p in places))
         if any(p not in COMMUNES for p in normalized): raise ValueError("outside_territory")
         offer["comunas"]=normalized
         for field in ("fecha_publicacion","fecha_descubrimiento"):
-            try:
-                parsed_date=date.fromisoformat(offer[field])
-                if parsed_date>datetime.now(timezone.utc).date(): raise ValueError("future_date")
+            try: parsed_date=date.fromisoformat(offer[field])
             except (ValueError,TypeError): raise ValueError("invalid_"+field)
+            if parsed_date>datetime.now(timezone.utc).date(): raise ValueError("future_"+field)
+        if date.fromisoformat(offer["fecha_descubrimiento"])<date.fromisoformat(offer["fecha_publicacion"]): raise ValueError("discovery_before_publication")
+        if offer.get("fecha_cierre"):
+            try: closing=date.fromisoformat(offer["fecha_cierre"])
+            except (ValueError,TypeError): raise ValueError("invalid_fecha_cierre")
+            if closing<datetime.now(timezone.utc).date(): raise ValueError("expired_offer")
     if index.get("schema_version")!=1: raise ValueError("invalid_index")
     day=day or datetime.now(timezone.utc).strftime("%Y%m%d")
     if not re.fullmatch(r"20[0-9]{6}",day): raise ValueError("invalid_batch_day")

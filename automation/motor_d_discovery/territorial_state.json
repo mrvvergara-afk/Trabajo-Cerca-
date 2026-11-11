@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-11T14:48:58.429106-03:00",
+  "last_run": "2026-11-11T18:45:10.052759-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -1686,6 +1686,558 @@
       "first_seen": "2026-11-10T19:22:02.762628-03:00",
       "url": "https://lasnoticiasdemalleco.cl/policial/arrestaron-a-conductor-de-taxi-colectivo-que-evadio-control-policial-en-angol/",
       "source": "Las Noticias de Malleco",
+      "commune": "Angol"
+    },
+    "84c0f7db2dec86a56a12": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "bba7e4a26f07b0a702e9": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/mecanico-a-automotriz-nacimiento-3923364",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "f8934ee3719653aad8e7": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "5a2b5c27e784656b2950": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/conductor-de-transporte-de-carga-y-personal-nueva-imperial-lumaco-3923619",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "20c288dd9a570ae9df9c": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/asesor-sst-los-angeles-talca-3916340",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "79d2ada3cf62e33f2281": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "f2a0213e28a7fd597b3a": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "c3affb451627f6ed71f0": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/practica-gestion-personas-nacimiento-3899780",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": "Angol"
+    },
+    "23bf4087bbcd87fdb180": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2024/03/Anexos-concurso-Educ-DIf-2024-Joel-Collio-Morales.docx",
+      "source": "Inventario M05",
+      "commune": "Collipulli"
+    },
+    "462a539d0daefab3bc47": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2023/05/Anexos-Concurso-Directora-Estacion-Infantil-2.docx",
+      "source": "Inventario M05",
+      "commune": "Collipulli"
+    },
+    "6edff2879fd3f8ece352": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2023/03/Anexos-Concurso-Directora-Estacion-Infantil.docx",
+      "source": "Inventario M05",
+      "commune": "Collipulli"
+    },
+    "3060cbd70ff35bd3cb4b": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://municipalidadcollipulli.cl/wp-content/uploads/2022/08/ANEXO-1-FICHA-DE-POSTULACION.docx",
+      "source": "Inventario M05",
+      "commune": "Collipulli"
+    },
+    "ae559ce3e9390f435e55": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://cmpc.trabajando.cl/noticias/1773147090375-las-claves-para-optimizar-tu-curriculum-y-destacar",
+      "source": "CMPC · Trabajando",
+      "commune": "Angol"
+    },
+    "913480b99f182ac98a6b": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://cmpc.trabajando.cl/noticias/1773147072225-la-importancia-de-la-creatividad-e-innovacion",
+      "source": "CMPC · Trabajando",
+      "commune": "Angol"
+    },
+    "8d0f8782c03cf4e42cee": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://cmpc.trabajando.cl/noticias/1773147035930-como-superar-una-laguna-laboral",
+      "source": "CMPC · Trabajando",
+      "commune": "Angol"
+    },
+    "f16f6ace597c8168a6e0": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/2-version-concursos-arreglos-navidenos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "2fb14cf809a3ca5cbb6d": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/3-version-concursos-arreglos-navidenos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "015dc7ee3219d387fc12": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/3er-concurso-microcuentos-bureanos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "dc7e2ea20733f6d930b5": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/4to-concurso-microcuentos-bureanos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "77b7234ef82671da3c4b": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/5to-concurso-microcuentos-bureanos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "0dc001f2d997bbd9ca14": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/bases-concurso-alza-la-voz/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "87acb68e192daeda42c8": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/bases-concurso-de-cueca-adulto-mayor/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "b49b08099ae01d29fe58": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/bases-feria-navidena-2025/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "e51abbe7f40cde94f4d8": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-de-escritura/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "2f392528be8388f231f8": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-de-vitrinas-y-locales-comerciales-2025/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "56efeb04a9b65cc5b02a": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-de-locales-comerciales-2026/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "3a4ba56cf856efc78506": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-de-vitrinas-y-locales-comerciales-2023/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "a404da4c50beb8959664": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-de-vitrinas-y-locales-comerciales-2024/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "6a2967761d0670ec2f28": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-microcuentos-bureanos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "d88cd06a51426d556e5c": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-microcuentos-bureanos/bases-concurso-microcuentos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "c0c811b45db1867a8daa": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-centromujermulchen/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "bed6ab5b0e3927e67789": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-centro-de-las-mujeres-mulchen/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "c2c949019c0c78ce9fb8": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-publico-abogado-para-dispositivo-centro-de-las-mujeres-mulchen/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "1a161f6b8dd4791dc97d": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-equipo-previene/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "24da067040139e90b48d": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-publico-psicologo-omil/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "0f56ae6cef8fb5df30bd": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concurso-publico-01-cargo-grado-8o-planta-directivos-director-de-obras-municipales/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "1c868a460687cea7b76c": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/concursonaturaleza-bajo-el-lente/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "5e5406a765920fd68d63": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/convocatoria-abierta/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "638d952741f5671c3628": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/convocatoria-creacion-cooperativas/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "21950e268c5dd530d511": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/convocatoria-fortalecimiento-cooperativas/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "0842eb4a11ac27db3b0a": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-apoyo-familiar-integral/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "3c44705c713edbaab85b": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-interno/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "61e269b08ca7ecc41ea8": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-para-proveer-cargo-de-director-de-control/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "1b80ea0bc6ff6e3a5b62": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-3/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "d168d7b843f094b116f7": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "e6bc5b8e9697d48cc01c": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-02-junio/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "3381db2f94649eaf4305": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-directivo-grado-6-e-m-r-direccion-de-control-interno/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "246c76c67ec8e365e4ee": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-concurso-publico-profesional-terapeuta-ocupacional/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "a65bff89188c31e4d984": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-02-operadores-de-cargador-frontal/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "1b38453cbfc6d1799823": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-03-operadores-de-secado-y-caldera/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": "Mulchén"
+    },
+    "14d850481dc5ef0be99d": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://serfocol.trabajando.cl/noticias/1773249009003-las-claves-para-optimizar-tu-curriculum-y-destacar",
+      "source": "SERFOCOL · portal de empleo",
+      "commune": "Angol"
+    },
+    "b99dbb33871dd6b2b69a": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://serfocol.trabajando.cl/noticias/1773248991746-la-importancia-de-la-creatividad-e-innovacion",
+      "source": "SERFOCOL · portal de empleo",
+      "commune": "Angol"
+    },
+    "eae7861ad892ea515200": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://serfocol.trabajando.cl/noticias/1773248957178-como-superar-una-laguna-laboral",
+      "source": "SERFOCOL · portal de empleo",
+      "commune": "Angol"
+    },
+    "e06422b17fc77ab6c44c": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.trabajando.cl/canales-profesionales/trabajando-pro",
+      "source": "Portal Trabajando · Ercilla",
+      "commune": "Ercilla"
+    },
+    "96ace9d40033cfde25c8": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.trabajando.cl/canales-profesionales/trabajando-starter",
+      "source": "Portal Trabajando · Ercilla",
+      "commune": "Ercilla"
+    },
+    "d84ad9f2e578609bf5b0": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://traiguencity.cl/oportunidad-laboral-red-de-farmacias-vitasur-abre-proceso-de-seleccion-para-el-cargo-de-auxiliar-de-farmacia/",
+      "source": "Inventario P01",
+      "commune": "Traiguén"
+    },
+    "4a7e399b29f944252299": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://traiguencity.cl/omil-traiguen-abre-convocatoria-para-el-cargo-de-coordinador-de-visual-merchandising/",
+      "source": "Inventario P01",
+      "commune": "Traiguén"
+    },
+    "a84bfac0c79cda4df2de": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido/",
+      "source": "Inventario P01",
+      "commune": "Traiguén"
+    },
+    "c5ae89bb7761860fe93a": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://traiguencity.cl/omil-traiguen-abre-convocatoria-para-constructor-civil-postulaciones-hasta-el-18-de-junio/",
+      "source": "Inventario P01",
+      "commune": "Traiguén"
+    },
+    "4654dcf40cb5981072bd": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://traiguencity.cl/forestal-camelio-abre-30-nuevas-vacantes-en-traiguen/",
+      "source": "Inventario P01",
+      "commune": "Traiguén"
+    },
+    "9f7ed95063aa99da9f81": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/acceso/",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "0cca9b8fbacbd377e919": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/registrarme/",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "0b45d7b975491318207b": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/empresas/",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "3b6c69a7cd11f1f057d4": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/1000000-ejecutivo-ventas-de-seguros-call-center-teletrabajo-teletrabajo-lunes-a-viernes-telemarketing-remoto-3076029.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "4639978d8e22bbf3b338": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-de-atencion-al-cliente-ingles-y-portugues-3076028.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "70506e110441ec809e7b": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/call-center-rubro-bancario-695000-3076027.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "a8df2a9f468c46ce253e": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/buscamos-ejecutivos-as-de-ventas-de-seguros-trabajo-desde-casa-lunes-a-viernes-3076026.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "2882dbdce81092b09ced": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-de-seguridad-con-os10-easy-valparaiso-4x4-dia-600000-region-de-valparaiso-3076025.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "2e1ec11d2051d85a440d": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/sub-jefe-locker-san-antonio-3076024.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "f9cae15b50e9026ba028": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-os10-al-dia-vencido-con-prorroga-o-spd-bodegas-tiendas-automotoras-y-sup-contratacion-inmediata-3076023.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "c87a9f3a3376047a5a94": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/auxiliar-de-aseo-4x3-escondida-3076022.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "4f6646d228e117dc214f": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/guardias-os10-al-dia-supermercados-y-universidad-para-talca-curico-constitucion-y-rancagua-rentas-desde-570000-3076021.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "847da86df6daec9b7c58": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/ingeniero-a-de-gestion-operacional-y-seguridad-minera-copiapo-oficinas-en-rm-3076020.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "d9bed7b43037b066c84a": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/administrativo-de-rrhh-7x7-3076019.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "39b11a82637f3aec1ea7": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/lider-terreno-ito-7x7-escondida-3076018.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "cc2b313167dde0cf7dc6": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-mecanico-7x7-escondida-3076017.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "e7c27e6f491da51e2a44": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-a-electrico-7x7-escondida-3076016.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "dc69b6ae0f6fbd212107": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-a-obras-civiles-7x7-escondida-3076015.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "f999943ad15bb5873a60": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-a-instrumentacion-7x7-escondida-3076014.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "f6826266bc655bab8231": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-soporte-tecnico-huechuraba-3076013.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "7df93fbfe48028f0c348": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/tecnico-en-cableado-estructurado-redes-y-cctv-proyecto-antofagasta-3076012.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "271a271d310aa5a47179": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-para-lider-talagante-4x4-fijo-de-dia-os10-al-dia-renta-600000-os10-al-dia-3076011.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "56d63a04fda9e83e752a": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/operador-tienda-caja-con-o-sin-experiencia-curico-3076010.html",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "f172bf8ba185c471c93f": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/acceso-empresas/",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "16d497082e34dfec9843": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/mi-cuenta/",
+      "source": "Inventario D04",
+      "commune": "Angol"
+    },
+    "aeac7f17ab9b31bbe534": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.angolnoticiasnew.cl/regional/turismo-rural-emprendedoras-de-malleco-y-cautin-potencian-sus-emprendimientos-con-apoyo-de-indap-de-cara-a-la-temporada-estival-dos-experiencias-de-los-sauces-y-pucon-muestran-como-la-vid/",
+      "source": "Inventario P03",
+      "commune": "Angol"
+    },
+    "0a76bc3b0738f399efea": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.angolnoticiasnew.cl/regional/escuela-de-gendarmeria-amplia-plazo-de-postulacion-hasta-el-9-de-noviembre/",
+      "source": "Inventario P03",
+      "commune": "Angol"
+    },
+    "0158019cfc6353242483": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://www.angolnoticiasnew.cl/regional/a-horas-del-cierre-del-plazo-de-postulacion-al-fuas-2027-hacen-llamado-a-no-dejar-el-tramite-para-ultima-hora/",
+      "source": "Inventario P03",
+      "commune": "Angol"
+    },
+    "bde23e30985c80b892a2": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://sence.gob.cl/personas/bono-al-trabajo-de-la-mujer",
+      "source": "Inventario D01",
+      "commune": "Angol"
+    },
+    "20fffd2ccc0e9ce59e8f": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://sence.gob.cl/personas/subsidio-al-empleo-joven",
+      "source": "Inventario D01",
+      "commune": "Angol"
+    },
+    "cdca6a500a4d7f0ed797": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://sence.gob.cl/personas/buscaempleo",
+      "source": "Inventario D01",
+      "commune": "Angol"
+    },
+    "eca211bc3dc241f7d9b9": {
+      "first_seen": "2026-11-11T18:45:10.052759-03:00",
+      "url": "https://sence.gob.cl/personas/node/1779",
+      "source": "Inventario D01",
       "commune": "Angol"
     }
   }

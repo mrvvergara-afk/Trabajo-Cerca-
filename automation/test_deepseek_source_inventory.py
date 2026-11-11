@@ -37,13 +37,28 @@ class DeepseekSourcesDocumentationTests(unittest.TestCase):
         # Runtime seeds are generated from code and cover extra portals.
         from motor_d_territorial_daily import SEEDS,INDEED_SEEDS,COMMUNES
         from motor_d_social_sources import SOURCES
-        self.assertEqual(len(SEEDS),44)  # 32 direct + 12 Chiletrabajos cities
+        # The 09-11 historical appendix documents the first 44 legacy seeds.
+        # The live roster now adds verified discovery pages and 12-commune A
+        # portal families; NEVER cap it at the old snapshot length.
+        self.assertGreater(len(SEEDS),44)
+        self.assertGreaterEqual(len(SEEDS)+len(INDEED_SEEDS),170)
         self.assertEqual(len(INDEED_SEEDS),12)
         self.assertEqual(len(COMMUNES),12)
-        for name,group in (("SEEDS",SEEDS),("INDEED_SEEDS",INDEED_SEEDS)):
+        for name,group in (("SEEDS · corte 09-11",SEEDS[:44]),("INDEED_SEEDS",INDEED_SEEDS)):
             for city,source,url in group:
                 with self.subTest(group=name,source=source,commune=city):
                     self.assertIn(url,self.inventory)
+        # New source onboarding belongs in the live registry, not the old
+        # appendix. The contract protects new entries from being forgotten.
+        from motor_d_source_registry import plan,load_data,HERE
+        live=plan(SEEDS,INDEED_SEEDS,social_refs=SOURCES)
+        expected={row["url"] for row in self.cfg["discovery"]}
+        actual={row["url"] for row in live["public"]}
+        self.assertTrue(expected.issubset(actual))
+        self.assertEqual(len(live["public"]),len({row["id"] for row in live["public"]}))
+        contract=(ROOT/"automation"/"CONTRATO_COBERTURA_100_FUENTES.md").read_text(encoding="utf-8")
+        for portal in ("Mipleo","Kitempleo","CMPC","ARAUCO","Brayben","SERFONAC"):
+            self.assertIn(portal,contract)
         for social in SOURCES:
             with self.subTest(source=social["name"]):
                 self.assertIn(social["url"],self.inventory)

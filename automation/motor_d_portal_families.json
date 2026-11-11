@@ -1,0 +1,127 @@
+{
+  "schema": "trabajo-cerca.motor-d-portal-families.v1",
+  "provenance": "AppDeploy backend/index.ts FREE_PORTAL_SEARCHES and FREE_LOCAL_SOURCES, reviewed 2026-11-11",
+  "rule": "Generate one targeted index per official commune; never use generic portal home pages to claim local job coverage.",
+  "providers": [
+    {
+      "name": "Indeed · ampliado",
+      "pattern": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45"
+    },
+    {
+      "name": "Computrabajo",
+      "pattern": "https://cl.computrabajo.com/empleos-en-{region}-en-{slug}"
+    },
+    {
+      "name": "LinkedIn",
+      "pattern": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000"
+    },
+    {
+      "name": "Laborum",
+      "pattern": "https://www.laborum.cl/empleos-busqueda-{slug}.html"
+    },
+    {
+      "name": "Opción Empleo",
+      "pattern": "https://www.opcionempleo.cl/empleo-en-{slug}.html"
+    },
+    {
+      "name": "Chiletrabajos · palabra clave",
+      "pattern": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}"
+    },
+    {
+      "name": "Trabajando",
+      "pattern": "https://www.trabajando.cl/trabajo-empleo/{slug}"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "Fashion's Park · contratación",
+      "territory": "Angol",
+      "url": "https://fashionspark.hiringroom.com/jobs"
+    },
+    {
+      "name": "CMPC · Trabajando",
+      "territory": "Chile",
+      "url": "https://cmpc.trabajando.cl/"
+    },
+    {
+      "name": "Malleco 7 · ediciones",
+      "territory": "Malleco",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/"
+    },
+    {
+      "name": "Mulchén · empleos búsqueda",
+      "territory": "Mulchén",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral"
+    },
+    {
+      "name": "Negrete · municipio",
+      "territory": "Negrete",
+      "url": "https://www.muninegrete.cl/"
+    },
+    {
+      "name": "CMPC · Cornerstone ATS oficial",
+      "territory": "Chile",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "tag": "browser_required",
+      "note": "Existe lector Playwright propio; el HTML genérico de la portada devuelve 0 candidatos, NO ausencia de empleo. El lector CMPC está en otro workflow."
+    },
+    {
+      "name": "ARAUCO · carreras oficiales",
+      "territory": "Chile",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "tag": "official_ats",
+      "note": "Motor D generó 11 candidatos el 11/11, aún sin ingreso automático confirmado."
+    },
+    {
+      "name": "SERFONAC · ofertas del empleador",
+      "territory": "Chile",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/ofertas",
+      "tag": "regional_employer",
+      "note": "Portal empresarial verificable: 8 ofertas al 11/11; algunos puestos ejecutados en Nacimiento y Lumaco aunque indexados como Los Ángeles/Temuco."
+    },
+    {
+      "name": "Brayben · ofertas de empresa de servicios transitorios",
+      "territory": "Chile",
+      "url": "https://portal.chiletrabajos.cl/empresa/brayben/ofertas",
+      "tag": "regional_employer",
+      "note": "Empleador con trabajo en CMPC y la industria. Página empresarial hoy muestra 0 vacantes; mantener monitoreo, no inventar empleo."
+    },
+    {
+      "name": "SERFOCOL · portal de empleo",
+      "territory": "Chile",
+      "url": "https://serfocol.trabajando.cl/",
+      "tag": "regional_employer",
+      "note": "Portal empresarial identificado; verificar extracción de ofertas y clasificación por faena real."
+    },
+    {
+      "name": "SAFCO · Trabaje con nosotros Collipulli",
+      "territory": "Collipulli",
+      "url": "https://safcoltda.cl/",
+      "tag": "forestry_careers_page",
+      "note": "Página de empresa forestal de Collipulli contiene sección Trabaje con Nosotros; falta evidencia de fecha individual para publicar."
+    }
+  ],
+  "employer_prospects": [
+    {
+      "name": "SERMASIL · servicios industriales",
+      "url": "https://sermasil.cl/",
+      "territory": "Nacimiento",
+      "status": "public_employer_website_no_verified_jobs_index",
+      "note": "Trabaja en Los Ángeles, Nacimiento y Mulchén. Existe sitio institucional, pero no se verificó página individual de ofertas; no contar como fuente laboral cubierta."
+    },
+    {
+      "name": "MCN · metalmecánica",
+      "url": "https://portal.chiletrabajos.cl/empresa/mcn/ofertas",
+      "territory": "Chile",
+      "status": "employer_portal_index_needs_http_verification",
+      "note": "Perfil de empresa en Chiletrabajos detectado en directorio; comprobar que la ruta de ofertas publica anuncios válidos antes de marcarla operativa."
+    },
+    {
+      "name": "San Cristóbal · servicios forestales",
+      "territory": "Chile",
+      "status": "specific_recruitment_portal_not_confirmed",
+      "note": "Encontrar sitio de empleos de la contratista correcta antes de añadir un portal y atribuirle vacantes."
+    }
+  ],
+  "source_scope_rule": "La sede del reclutador (Los Ángeles/Temuco) nunca es por sí sola la comuna de ejecución. Validar descripción y faena (Collipulli/Mininco, Nacimiento, Mulchén y otras doce)."
+}

@@ -432,6 +432,20 @@
       "territory": "Chile",
       "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
       "type": "portal"
+    },
+    {
+      "id": "D04",
+      "territory": "Chile",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/",
+      "type": "portal_unfiltered_requires_geofilter",
+      "note": "Portada pública verificada 11-11-2026; adaptar búsqueda por comuna para obtener cobertura territorial real"
+    },
+    {
+      "id": "D05",
+      "territory": "Chile",
+      "url": "https://www.kitempleo.cl/",
+      "type": "portal_unfiltered_requires_geofilter",
+      "note": "Portal público verificado 11-11-2026; búsqueda territorial requiere adaptación; no asumir 100% de avisos por leer la portada"
     }
   ],
   "social_reference": [

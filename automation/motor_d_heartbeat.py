@@ -36,6 +36,10 @@ def project(report, raw_sha256):
         raise ValueError("inconsistent_source_counts")
     if not isinstance(raw_sha256, str) or len(raw_sha256) != 64:
         raise ValueError("invalid_source_hash")
+    inventory=report.get("source_inventory")
+    if inventory is not None:
+        if not isinstance(inventory,dict) or inventory.get("not_attempted")!=0 or not inventory.get("all_automatic_sources_attempted"):
+            raise ValueError("registered_sources_not_fully_attempted")
     return {
         "schema_version": 1,
         "producer": "motor_d_territorial",
@@ -46,6 +50,9 @@ def project(report, raw_sha256):
         "source_report_sha256": raw_sha256,
         "published_in_trabajo_cerca": 0,
         "publication_confirmed": False,
+        "source_inventory_registered": inventory["registered_total"] if inventory else None,
+        "source_inventory_pending": inventory["unresolved_total"] if inventory else None,
+        "full_usable_coverage": bool(inventory and inventory["all_registered_sources_accessible"]),
     }
 
 

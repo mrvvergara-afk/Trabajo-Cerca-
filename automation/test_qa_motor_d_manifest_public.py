@@ -17,16 +17,16 @@ def batch(batch_id, records, quarantined=False):
 class MotorDPublicationReconciliationTests(unittest.TestCase):
     def test_real_main_manifest_preserves_quarantine_and_recognizes_historical_overlap(self):
         batches=load_batches(READY)
-        self.assertEqual(len(batches),11)
+        self.assertEqual(len(batches),12)
         snap=reconcile(batches,[],False,"catalog_unavailable")
-        self.assertEqual(snap["manifest_offer_records"],57)
-        self.assertEqual(snap["active_offer_records"],33)
+        self.assertEqual(snap["manifest_offer_records"],58)
+        self.assertEqual(snap["active_offer_records"],34)
         self.assertEqual(snap["quarantined_offer_records"],24)
         self.assertEqual(snap["quarantined_batches"],2)
         self.assertEqual(len(snap["active_source_overlaps"]),2)
         self.assertEqual(snap["unexpected_active_source_overlaps"],[])
         self.assertEqual(len(snap["held_sources_also_in_active_batches"]),17)
-        self.assertEqual(snap["active_status_counts"],{"catalog_unavailable":33})
+        self.assertEqual(snap["active_status_counts"],{"catalog_unavailable":34})
         self.assertEqual(snap["created_publications_by_this_check"],0)
 
     def test_distinguishes_public_visibility_from_source_job_with_different_internal_id(self):

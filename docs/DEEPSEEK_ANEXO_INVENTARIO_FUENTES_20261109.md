@@ -337,3 +337,14 @@ Los medios regionales `Malleco`, `Región` y `Chile` pueden aportar a varias com
 8. Entregar lista de **fuentes faltantes identificadas** con prioridad, requisitos de permiso/costo y propuesta mínima de integración. No afirmar “inventario total del mercado” con estas listas.
 
 **Documentos de respaldo:** [encargo principal](./DEEPSEEK_AUDITORIA_FUENTES_TRABAJO_CERCA_20261109.md) · `automation/trabajo_cerca/fuentes_diarias.json` · `automation/motor_d_territorial_daily.py` · `automation/motor_d_social_sources.py` · `automation/motor_d_audit_sources.json`.
+
+## O. Actualización controlada al 11 de noviembre de 2026 — inventario ampliable
+
+La tabla de la sección B es una **fotografía del 9 de noviembre**, no el límite de ejecución del Motor D. El inventario operativo posterior es `automation/motor_d_source_registry.py` más `automation/motor_d_portal_families.json`, que conecta nuevas fuentes sin eliminar las anteriores ni contar un simple intento HTTP como lectura útil.
+
+**Nuevas páginas de descubrimiento del radar (D04 y D05):**
+
+- D04 — Mipleo: https://www.mipleo.cl/ofertas-de-trabajo/ . Portal nacional pendiente de verificar filtros por las 12 comunas; leer su portada NO demuestra rastreo territorial completo.
+- D05 — Kitempleo: https://www.kitempleo.cl/ . Portal nacional pendiente de verificar filtros por las 12 comunas; una ficha histórica NO prueba un índice activo.
+
+**Corte actualizado:** `fuentes_diarias.json` registra 25 páginas permanentes de descubrimiento, 26 referencias sociales y 39 enlaces a ofertas individuales históricas. El contrato operativo único conserva además las siete familias de búsquedas por comuna y las fuentes empresariales CMPC, ARAUCO, SERFONAC, Brayben, SERFOCOL y SAFCO. Para cada fuente deben distinguirse las categorías `consultada`, `accesible`, `bloqueada`, `pendiente de conector`, `ofertas verificadas` y `publicaciones confirmadas`.

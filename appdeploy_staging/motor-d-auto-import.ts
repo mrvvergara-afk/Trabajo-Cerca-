@@ -123,7 +123,18 @@ export async function motorDAutoImportHandler(){
       }
       return recordStatus('imported_waiting_for_feed',{batchId,accepted,known});
     }
-    return recordStatus('no_unprocessed_batches',{indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount});
+    // A quiet index is not evidence that the territorial search actually ran.
+    // Flag the missing producer heartbeat separately from an empty verified result.
+    const batchDates=(batches as Array<Record<string,unknown>>)
+      .map(x=>String(x.batch_id||'').match(/^motor-d-(\\d{8})-/)?.[1]||'')
+      .filter(Boolean).sort();
+    const latestBatchDate=batchDates.at(-1)||null;
+    const today=new Date().toISOString().slice(0,10).replace(/-/g,'');
+    const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10).replace(/-/g,'');
+    const producerHeartbeatMissing=!latestBatchDate||latestBatchDate<yesterday;
+    return recordStatus(producerHeartbeatMissing?'producer_heartbeat_missing':'no_unprocessed_batches',
+      {indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount,
+       latestBatchDate,producerHeartbeatMissing,referenceDate:today});
   }catch(e){return recordStatus('bridge_error',{error:String(e).slice(0,180)});}
 }
 

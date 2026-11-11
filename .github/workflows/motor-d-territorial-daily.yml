@@ -5,6 +5,8 @@ on:
     branches: [main, fix/motor-d-ocr-bridge-20261108]
     paths:
       - 'automation/motor_d_territorial_daily.py'
+      - 'automation/motor_d_heartbeat.py'
+      - 'automation/test_motor_d_heartbeat.py'
       - 'automation/trabajo_cerca/municipal_feed.py'
       - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
       - 'automation/trabajo_cerca/trabajo_cerca_lector_documental.py'
@@ -18,6 +20,8 @@ on:
     branches: [main]
     paths:
       - 'automation/motor_d_territorial_daily.py'
+      - 'automation/motor_d_heartbeat.py'
+      - 'automation/test_motor_d_heartbeat.py'
       - 'automation/trabajo_cerca/municipal_feed.py'
       - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
       - 'automation/trabajo_cerca/trabajo_cerca_lector_documental.py'
@@ -37,7 +41,7 @@ jobs:
   # Integration PR only: real web coverage test, read-only GitHub token.
   # Never create publication batches, push files or contact the AppDeploy importer.
   territorial_audit_pr:
-    if: github.event_name == 'pull_request' && github.base_ref == 'fix/motor-d-ocr-bridge-20261108'
+    if: github.event_name == 'pull_request'
     concurrency:
       group: motor-d-pr-audit-${{ github.event.pull_request.number }}
       cancel-in-progress: true
@@ -84,6 +88,7 @@ jobs:
           from zoneinfo import ZoneInfo
           from motor_d_express import build, produce, validate_inventory_freshness
           from motor_d_catalog_probe import read_full_feed, check_ready_offers
+          from time import sleep
           source=Path("automation/motor_d_discovery/territorial_daily.json")
           report=json.loads(source.read_text(encoding="utf-8"))
           today=datetime.now(ZoneInfo("America/Santiago")).date()
@@ -91,7 +96,19 @@ jobs:
           classified=build(report,today)
           ready=[entry["offer"] for state in ("EXPRESS","RECUPERACION")
                  for entry in classified[state] if entry["offer"]]
-          catalog,complete,error=read_full_feed(max_pages=30)
+          # Do not allow intermittent API failures to pass as an empty batch.
+          # Bounded retries use GET only. A partial catalog is never evidence
+          # that an offer does not already exist.
+          catalog=[];complete=False;error="not_checked"
+          for attempt in range(3):
+              catalog,complete,error=read_full_feed(max_pages=30)
+              if complete:break
+              print("PR_CATALOG_READ_RETRY",json.dumps({
+                  "attempt":attempt+1,"reason":error,"app_writes":0
+              },ensure_ascii=False))
+              if attempt<2:sleep(3*(attempt+1))
+          if not complete:
+              raise SystemExit("PR_CATALOG_GATE_FAILED: full public feed unavailable; refuse to classify any offer as new")
           existing=check_ready_offers(ready,catalog,complete)
           evidence=[]
           for offer in ready:
@@ -217,12 +234,15 @@ jobs:
               print("MOTOR_D_FAILURE: all sources inaccessible")
               sys.exit(1)
           PY
+      - name: Build auditable producer heartbeat
+        if: success() && github.ref == 'refs/heads/main'
+        run: python automation/motor_d_heartbeat.py automation/motor_d_discovery/territorial_daily.json automation/motor_d_discovery/producer_heartbeat.json
       - name: Persist deduplication state and per-source report for next run
         if: success() && github.ref == 'refs/heads/main'
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_ready/
+          git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_discovery/producer_heartbeat.json automation/motor_d_ready/
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
             # A simultaneous source edit is not a failed scan. Rebase and retry

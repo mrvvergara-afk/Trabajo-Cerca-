@@ -71,7 +71,32 @@ assert.equal((await confirmMotorDPublications()).status,'feed_unavailable');
 degrade(false);
 show([...tables.get('radar_jobs').values()]);
 assert.equal((await confirmMotorDPublications()).publishedBatches,1);
-assert.equal(JSON.parse((await motorDAutoImportHandler()).body).state,'no_unprocessed_batches');
+const noHeartbeat=JSON.parse((await motorDAutoImportHandler()).body);
+assert.equal(noHeartbeat.state,'no_unprocessed_batches_producer_unverified');
+assert.equal(noHeartbeat.producerExecutionUnverified,true);
+assert.equal(tables.get('radar_jobs').size,1);
+// Isolated real-parser contract: a verified recent producer heartbeat
+// proves the scan executed, not that any new offer was published.
+fs.mkdirSync(new URL('./ready/automation/motor_d_discovery/',import.meta.url),{recursive:true});
+fs.writeFileSync(new URL('./ready/automation/motor_d_discovery/producer_heartbeat.json',import.meta.url),JSON.stringify({
+ schema_version:1,producer:'motor_d_territorial',
+ scan_completed_at:'2026-11-08T13:00:00Z',
+ communes_expected:['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento'],
+ missing_communes:[],
+ sources_total:12,sources_accessible:12,source_report_sha256:'a'.repeat(64)
+}));
+const withHeartbeat=JSON.parse((await motorDAutoImportHandler()).body);
+assert.equal(withHeartbeat.state,'no_unprocessed_batches_producer_confirmed');
+assert.equal(withHeartbeat.producerExecutionUnverified,false);
+assert.equal(tables.get('radar_jobs').size,1);
+// A heartbeat older than the four-daily-run tolerance cannot assert a current scan.
+const heartbeatPath=new URL('./ready/automation/motor_d_discovery/producer_heartbeat.json',import.meta.url);
+const recent=JSON.parse(fs.readFileSync(heartbeatPath,'utf8'));
+fs.writeFileSync(heartbeatPath,JSON.stringify({...recent,scan_completed_at:'2026-11-07T04:00:00Z'}));
+const stale=JSON.parse((await motorDAutoImportHandler()).body);
+assert.equal(stale.producerExecutionUnverified,true);
+assert.equal(stale.state,'no_unprocessed_batches_producer_unverified');
+fs.writeFileSync(heartbeatPath,JSON.stringify(recent));
 assert.equal(tables.get('radar_jobs').size,1);
 // Changed bytes block import before any database write.
 tables.get('motor_d_import_receipts').clear();

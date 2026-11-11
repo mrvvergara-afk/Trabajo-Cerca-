@@ -10,6 +10,8 @@ Vigente para las 12 comunas: Angol, Collipulli/Mininco, Ercilla, Lumaco, Los Sau
 - automation/motor_d_audit_sources.json: pistas y páginas adicionales de auditorías anteriores.
 - automation/motor_d_social_sources.py: perfiles oficiales adicionales de redes sociales.
 - automation/motor_d_source_registry.py: consolida fuentes, normaliza URL, elimina duplicados y mantiene las comunas cubiertas por cada fuente.
+- automation/motor_d_portal_families.json: copia controlada de las siete familias de búsqueda pública del Motor A (Indeed, Computrabajo, LinkedIn, Laborum, Opción Empleo, Chiletrabajos y Trabajando), con una consulta por cada una de las 12 comunas; incluye cinco índices locales/empresariales ausentes.
+- Mipleo y Kitempleo se añadieron al inventario de descubrimiento como portales de alcance nacional. **La lectura de su portada no acredita cobertura territorial completa**: deben comprobarse sus filtros por comuna y la extracción de fichas individuales.
 - El inventario es ampliable añadiendo nuevos índices de empleos/ATS/OMIL a discovery, nuevas cuentas a social_reference y otras fuentes de auditorías. En el informe se conservan también dominios presentes solo en ofertas históricas para priorizar su incorporación.
 
 ## Orden diario, sin excepción

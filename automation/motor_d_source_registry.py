@@ -3,9 +3,9 @@
 Los avisos históricos individuales son referencias, no portales nuevos.
 Las redes sociales sin API autorizada NO se consideran revisadas.
 """
-import hashlib,json
+import hashlib,json,re,unicodedata
 from pathlib import Path
-from urllib.parse import urlsplit,urlunsplit
+from urllib.parse import urlsplit,urlunsplit,quote
 
 HERE=Path(__file__).resolve().parent
 COMMUNES=("Angol","Collipulli","Ercilla","Lumaco","Los Sauces","Purén","Renaico","Traiguén","Victoria","Mulchén","Negrete","Nacimiento")
@@ -36,8 +36,10 @@ def load_data(path,required=False):
     if not isinstance(data,dict):raise ValueError("invalid_source_inventory")
     return data
 
-def plan(base,indeed,config=None,audit=None,social_refs=None):
+def plan(base,indeed,config=None,audit=None,social_refs=None,portals=None):
+    use_real_inventory=config is None
     config=config if config is not None else load_data(HERE/"trabajo_cerca/fuentes_diarias.json",True)
+    portals=portals if portals is not None else (load_data(HERE/"motor_d_portal_families.json",True) if use_real_inventory else {})
     audit=audit if audit is not None else load_data(HERE/"motor_d_audit_sources.json")
     if set(config.get("territories",[]))!=set(COMMUNES):raise ValueError("inventory_not_12_communes")
     public={};social={};added=[]
@@ -60,8 +62,26 @@ def plan(base,indeed,config=None,audit=None,social_refs=None):
                  str(row.get("type","public")),"daily")
     for row in audit.get("seed_pages",[]):
         if canon(row.get("url","")):
-            register(public,row["url"],["Angol"],"Auditoría "+str(row.get("name","")),
+            # Audit reference publisher name/URL may mention a local town.
+            # Never assign an unscoped national portal to Angol by default.
+            label=unicodedata.normalize("NFD",str(row.get("name",""))+" "+row["url"]).lower()
+            label="".join(c for c in label if unicodedata.category(c)!="Mn")
+            places=[town for town in COMMUNES if re.search(r"(?<!\\w)"+re.escape("".join(c for c in unicodedata.normalize("NFD",town.lower()) if unicodedata.category(c)!="Mn"))+r"(?!\\w)",label)]
+            target=places or (list(MALLECO) if "malleco" in label else list(COMMUNES))
+            register(public,row["url"],target,"Auditoría "+str(row.get("name","")),
                      str(row.get("category","audit")),"audit")
+    # A's 7 configured job portal families are explicitly mirrored into D.
+    # Each locality gets its own geographic search, including blocked providers.
+    for family in portals.get("providers",[]):
+        template=str(family["pattern"])
+        for town in COMMUNES:
+            plain="".join(c for c in unicodedata.normalize("NFD",town.lower()) if unicodedata.category(c)!="Mn")
+            slug=re.sub(r"[^a-z0-9]+","-",plain).strip("-")
+            region="biobio" if town in ("Mulchén","Negrete","Nacimiento") else "araucania"
+            url=template.format(place=quote(town),slug=slug,region=region)
+            register(public,url,[town],"Portal "+str(family["name"])+" · "+town,"portal","a_portal")
+    for entry in portals.get("indexes",[]):
+        register(public,entry["url"],scope(entry),str(entry["name"]),"institutional","a_index")
     for row in config.get("social_reference",[]):
         register(social,row["url"],scope(row),str(row.get("id","Social")),"social","daily_social")
     for row in social_refs or []:

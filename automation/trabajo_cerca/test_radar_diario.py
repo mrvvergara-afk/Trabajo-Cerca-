@@ -21,7 +21,8 @@ class DailyRadarTests(unittest.TestCase):
         self.assertEqual(len({x['id'] for x in self.config['social_reference']}),len(self.config['social_reference']))
         self.assertIn('https://www.instagram.com/omilnacimiento/',
                       {x['url'] for x in self.config['social_reference']})
-        self.assertEqual(len(self.config['discovery']),23)
+        self.assertGreaterEqual(len(self.config['discovery']),23)
+        self.assertEqual(len({x['id'] for x in self.config['discovery']}),len(self.config['discovery']))
         self.assertEqual(len({r['id'] for r in self.config['seed_urls']}),39)
 
     def test_urls_canonical_keep_wordpress_identity_but_drop_tracking(self):
@@ -65,9 +66,9 @@ class DailyRadarTests(unittest.TestCase):
             with tempfile.TemporaryDirectory() as tmp:
                 self.assertEqual(radar_diario.main(['--batch', 'all', '--output', tmp]), 0)
                 report = json.loads((Path(tmp) / 'resumen.json').read_text())
-                self.assertEqual(report['source_records_checked'], 62)
-                self.assertEqual(reader.call_count, 39)
-                self.assertEqual(discovery.call_count, 23)
+                self.assertEqual(report['source_records_checked'],len(self.config['seed_urls'])+len(self.config['discovery']))
+                self.assertEqual(reader.call_count,len(self.config['seed_urls']))
+                self.assertEqual(discovery.call_count,len(self.config['discovery']))
                 self.assertEqual(report['published_by_this_job'], 0)
 
     def test_radar_refreshes_durable_ocr_queue_before_merging_new_evidence(self):

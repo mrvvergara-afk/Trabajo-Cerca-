@@ -29,8 +29,8 @@ class BackendPreflight(unittest.TestCase):
 
     def test_motor_d_reports_missing_producer_heartbeat(self):
         bridge = (ROOT / "motor-d-auto-import.ts").read_text(encoding="utf-8")
-        self.assertIn("producer_heartbeat_missing", bridge)
-        self.assertIn("producerHeartbeatMissing", bridge)
+        self.assertIn("no_recent_batches_unverified_producer", bridge)
+        self.assertIn("producerExecutionUnverified", bridge)
         self.assertIn("latestBatchDate", bridge)
         self.assertIn(r"/^motor-d-(\d{8})-/", bridge)
 

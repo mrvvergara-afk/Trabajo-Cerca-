@@ -57,6 +57,15 @@ class HandoffTests(unittest.TestCase):
     def test_no_new_identity_keys_written(self):
         _,_,index=prepare(fixture(),{"schema_version":1,"batches":[]},day="20261111")
         self.assertNotIn("seen_identity_keys",index)
+    def test_private_ip_url_rejected(self):
+        x=fixture();x["offers"][0]["url_original"]="https://192.168.1.2/job"
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_expired_closure_rejected(self):
+        x=fixture();x["offers"][0]["fecha_cierre"]="2026-11-01"
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_discovery_before_publication_rejected(self):
+        x=fixture();x["offers"][0]["fecha_descubrimiento"]="2026-11-01"
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
     def test_input_not_mutated(self):
         x=fixture();prepare(x,{"schema_version":1,"batches":[]},day="20261111")
         self.assertEqual(x["offers"][0]["comunas"],["Mininco"])

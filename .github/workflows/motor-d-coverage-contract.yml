@@ -6,6 +6,10 @@ on:
       - 'automation/test_motor_d_coverage.py'
       - 'automation/stage_motor_d_handoff.py'
       - 'automation/test_motor_d_handoff.py'
+      - 'automation/motor_d_heartbeat.py'
+      - 'automation/test_motor_d_heartbeat.py'
+      - 'appdeploy_staging/motor-d-auto-import.ts'
+      - 'automation/test_appdeploy_staging_preflight.py'
       - '.github/workflows/motor-d-coverage-contract.yml'
   workflow_dispatch:
 jobs:
@@ -20,3 +24,5 @@ jobs:
         run: |
           python -m unittest discover -s automation -p test_motor_d_coverage.py -v
           python -m unittest discover -s automation -p test_motor_d_handoff.py -v
+          python -m unittest discover -s automation -p test_motor_d_heartbeat.py -v
+          python -m unittest discover -s automation -p test_appdeploy_staging_preflight.py -v

@@ -9,6 +9,8 @@ import { publicPublisher, safePublicUrl } from './public-source-adapters';
 // The production module lives at backend/motor-d-auto-import.ts.
 const REPO = 'mrvvergara-afk/Trabajo-Cerca-';
 const INDEX = 'automation/motor_d_ready/index.json';
+const PRODUCER_HEARTBEAT = 'automation/motor_d_discovery/producer_heartbeat.json';
+const EXPECTED_TERRITORIES = ['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento'];
 // Safety hold: keep the original evidence; release only through a newly reviewed batch.
 const QUARANTINED_BATCHES = new Set([
   'motor-d-20261108-bccafbb13b7baa5270',
@@ -38,7 +40,7 @@ type Result = { id:string; status:string; internalId?:string; existingId?:string
 type Receipt = { id:string; batchId?:string; status?:string; results?:Result[]; accepted?:number; published?:number; known?:number; checkedAt?:string };
 
 async function load(path:string, token:string) {
-  if (!/^automation\/motor_d_ready\/(?:index\.json|\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json)$/.test(path)) throw Error('invalid_d_path');
+  if (!(path===PRODUCER_HEARTBEAT || /^automation\/motor_d_ready\/(?:index\.json|\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json)$/.test(path))) throw Error('invalid_d_path');
   const response=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path+'?ref=main',{
     headers:{ authorization:'Bearer '+token,accept:'application/vnd.github+json',
       'x-github-api-version':'2022-11-28','user-agent':'TrabajoCerca-D-Publisher' },
@@ -132,9 +134,37 @@ export async function motorDAutoImportHandler(){
     const today=new Date().toISOString().slice(0,10).replace(/-/g,'');
     const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10).replace(/-/g,'');
     const lastBatchStale=!latestBatchDate||latestBatchDate<yesterday;
-    return recordStatus(lastBatchStale?'no_recent_batches_unverified_producer':'no_unprocessed_batches',
-      {indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount,
-       latestBatchDate,lastBatchStale,producerExecutionUnverified:true,referenceDate:today});
+    // No new batch is not evidence that a territorial search ran successfully.
+    let heartbeat:Record<string,unknown>|null=null;
+    try { heartbeat=(await load(PRODUCER_HEARTBEAT,token))?.data||null; }
+    catch(cause) { console.warn('MOTOR_D_PRODUCER_HEARTBEAT_UNAVAILABLE '+String(cause).slice(0,160)); }
+    const communes=Array.isArray(heartbeat?.communes_expected)?heartbeat!.communes_expected:[];
+    const missing=Array.isArray(heartbeat?.missing_communes)?heartbeat!.missing_communes:null;
+    const uniqueCommunes=new Set(communes);
+    const ageMs=Date.now()-Date.parse(String(heartbeat?.scan_completed_at||''));
+    const producerConfirmed=Boolean(
+      heartbeat?.schema_version===1 && heartbeat?.producer==='motor_d_territorial' &&
+      communes.length===12 && uniqueCommunes.size===12 &&
+      EXPECTED_TERRITORIES.every(name=>uniqueCommunes.has(name)) &&
+      missing!==null && missing.length===0 &&
+      typeof heartbeat?.sources_total==='number' && heartbeat.sources_total>0 &&
+      typeof heartbeat?.sources_accessible==='number' && heartbeat.sources_accessible>0 &&
+      heartbeat.sources_accessible<=heartbeat.sources_total &&
+      typeof heartbeat?.source_report_sha256==='string' &&
+      /^[a-f0-9]{64}$/.test(heartbeat.source_report_sha256) &&
+      Number.isFinite(ageMs) && ageMs>=-300000 && ageMs<=26*3600000
+    );
+    const state=producerConfirmed?'no_unprocessed_batches_producer_confirmed':
+      lastBatchStale?'no_recent_batches_unverified_producer':'no_unprocessed_batches_producer_unverified';
+    return recordStatus(state,{
+      indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount,
+      latestBatchDate,lastBatchStale,producerExecutionUnverified:!producerConfirmed,
+      producerLastScanAt:typeof heartbeat?.scan_completed_at==='string'?heartbeat.scan_completed_at:null,
+      producerSourcesChecked:typeof heartbeat?.sources_total==='number'?heartbeat.sources_total:null,
+      producerSourcesAccessible:typeof heartbeat?.sources_accessible==='number'?heartbeat.sources_accessible:null,
+      producerReadyCandidates:typeof heartbeat?.express_ready_candidates==='number'?heartbeat.express_ready_candidates:null,
+      referenceDate:today
+    });
   }catch(e){return recordStatus('bridge_error',{error:String(e).slice(0,180)});}
 }
 

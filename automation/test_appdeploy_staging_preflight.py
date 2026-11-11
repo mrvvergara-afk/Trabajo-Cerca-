@@ -32,6 +32,11 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("no_recent_batches_unverified_producer", bridge)
         self.assertIn("producerExecutionUnverified", bridge)
         self.assertIn("latestBatchDate", bridge)
+        self.assertIn("producer_heartbeat.json", bridge)
+        self.assertIn("no_unprocessed_batches_producer_confirmed", bridge)
+        self.assertIn("no_unprocessed_batches_producer_unverified", bridge)
+        self.assertIn("MOTOR_D_PRODUCER_HEARTBEAT_UNAVAILABLE", bridge)
+        self.assertIn("EXPECTED_TERRITORIES.every", bridge)
         self.assertIn(r"/^motor-d-(\d{8})-/", bridge)
 
     def test_bc_pipeline_idle_does_not_migrate_or_write_checkpoint(self):

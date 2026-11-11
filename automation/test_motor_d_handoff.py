@@ -46,9 +46,9 @@ class HandoffTests(unittest.TestCase):
     def test_future_publication_rejected(self):
         x=fixture();x["offers"][0]["fecha_publicacion"]="2099-01-01"
         with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
-    def test_duplicate_identity_in_batch_rejected(self):
+    def test_same_role_different_source_id_allowed(self):
         x=fixture();second=dict(x["offers"][0]);second["id_fuente"]="d_"+"b"*20;x["offers"].append(second)
-        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+        self.assertEqual(len(prepare(x,{"schema_version":1,"batches":[]},day="20261111")[1]["offers"]),2)
     def test_input_not_mutated(self):
         x=fixture();prepare(x,{"schema_version":1,"batches":[]},day="20261111")
         self.assertEqual(x["offers"][0]["comunas"],["Mininco"])

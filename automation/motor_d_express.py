@@ -287,6 +287,28 @@ def validate_inventory_freshness(report, today):
         raise ValueError("Inventario territorial vencido o fechado en el futuro")
     return scan_day
 
+def record_publication_gate(report,local_day,state,eligible=0,
+                            checked=0,duplicates=0,staged=0,error=None):
+    """Persist a truthful per-scan publication decision, even on feed failure."""
+    receipt={
+        "schema_version":1,
+        "scan_date":report.get("date"),
+        "checked_at":datetime.now(ZoneInfo("America/Santiago")).isoformat(),
+        "run_local_date":local_day.isoformat(),
+        "state":state,
+        "eligible_before_catalog":eligible,
+        "public_catalog_records_checked":checked,
+        "already_published_skipped":duplicates,
+        "ready_batch_offers_staged":staged,
+        "feed_error":error,
+        "feed_complete":state in ("completed","no_ready_candidates"),
+    }
+    atomic_json_write(ROOT/"publication_gate.json",receipt)
+    print("MOTOR_D_PUBLICATION_GATE "+json.dumps(receipt,ensure_ascii=False),
+          flush=True)
+    return receipt
+
+
 def main():
     source=ROOT/"territorial_daily.json"
     if not source.exists():
@@ -300,8 +322,9 @@ def main():
     offers=[entry["offer"] for name in ("EXPRESS","RECUPERACION")
             for entry in classified[name] if entry["offer"]]
     if not offers:
-        print("MOTOR_D_EXPRESS "+json.dumps(produce(report,today=local_day),
-              ensure_ascii=False))
+        summary=produce(report,today=local_day)
+        record_publication_gate(report,local_day,"no_ready_candidates")
+        print("MOTOR_D_EXPRESS "+json.dumps(summary,ensure_ascii=False))
         return
     rows=[];complete=False;error="not_checked"
     for attempt in range(3):
@@ -314,14 +337,16 @@ def main():
     if not complete:
         # Preserve the completed source scan; no unknown duplicate can be staged
         # from an unavailable or partially paginated public feed.
-        print("MOTOR_D_CATALOG_GATE "+json.dumps({
-            "status":"blocked_catalog_incomplete","reason":error,
-            "eligible_candidates":len(offers),"new_batches":0,
-            "published":0},ensure_ascii=False))
+        record_publication_gate(report,local_day,
+            "blocked_catalog_incomplete",eligible=len(offers),error=error)
         return
     statuses=check_ready_offers(offers,rows,True)
     summary=produce(report,today=local_day,publication_statuses=statuses)
     summary["public_feed_records_checked"]=len(rows)
+    record_publication_gate(report,local_day,"completed",
+        eligible=len(offers),checked=len(rows),
+        duplicates=summary["public_catalog_duplicates_skipped"],
+        staged=summary["daily_batch_offers"]+summary["recovery_batch_offers"])
     print("MOTOR_D_EXPRESS "+json.dumps(summary,ensure_ascii=False))
 
 if __name__=="__main__":

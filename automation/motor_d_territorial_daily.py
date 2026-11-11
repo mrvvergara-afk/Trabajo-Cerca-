@@ -641,11 +641,25 @@ def main():
         known=dict(sorted(known.items(),key=lambda x:x[1].get("first_seen",""),reverse=True)[:8000])
     state_file.write_text(json.dumps({"schema_version":1,"last_run":NOW.isoformat(),
                                      "seen":known},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    per_commune={town:{"sources_attempted":sum(x["commune"]==town for x in rows),
-                       "sources_accessible":sum(x["commune"]==town and x["status"].startswith("scanned") for x in rows),
-                       "links_found":sum(x["links_found"] for x in rows if x["commune"]==town),
-                       "candidates":sum(len(x["candidates"]) for x in rows if x["commune"]==town)}
-                 for town in COMMUNES}
+    # National/regional sites cover several communes with one request.
+    # Report every registered commune association, not just the anchor
+    # assigned to the HTTP worker, or coverage looks artificially small.
+    per_commune={
+        town:{
+            "sources_registered":source_coverage["per_commune"][town]["registered"],
+            "sources_attempted":source_coverage["per_commune"][town]["registered"]-
+                                source_coverage["per_commune"][town]["unvisited"]-
+                                source_coverage["per_commune"][town]["social_unread"],
+            "sources_accessible":source_coverage["per_commune"][town]["accessible"],
+            "sources_blocked":source_coverage["per_commune"][town]["blocked"],
+            "sources_unvisited":source_coverage["per_commune"][town]["unvisited"],
+            "social_sources_unread":source_coverage["per_commune"][town]["social_unread"],
+            "needs_geofilter":source_coverage["per_commune"][town]["needs_geofilter"],
+            "needs_specialized_reader":source_coverage["per_commune"][town]["needs_specialized_reader"],
+            "links_found":sum(x["links_found"] for x in rows if x["commune"]==town),
+            "candidates":sum(len(x["candidates"]) for x in rows if x["commune"]==town),
+        } for town in COMMUNES
+    }
     excluded={"closed","internal_only","directory_not_offer","inconclusive_page","detail_unavailable"}
     eligible=[x for x in unique.values() if x.get("evidence")=="individual_page_with_job_terms"]
     report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",

@@ -7,7 +7,7 @@ import json
 import tempfile
 import unittest
 from contextlib import redirect_stdout
-from datetime import date
+from datetime import date,datetime
 from pathlib import Path
 from unittest.mock import patch
 
@@ -15,6 +15,14 @@ import motor_d_express as producer
 from motor_d_source_registry import learn,score
 
 TODAY=date(2026,11,11)
+
+class FixedClock(datetime):
+    @classmethod
+    def now(cls,tz=None):
+        from zoneinfo import ZoneInfo
+        fixed=datetime(2026,11,11,19,40,tzinfo=ZoneInfo("America/Santiago"))
+        return fixed.astimezone(tz) if tz else fixed
+
 URL="https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/practica-contador-auditor-nacimiento-3911316"
 
 def candidate(num=1,**kwargs):
@@ -109,10 +117,7 @@ class CatalogGateTests(unittest.TestCase):
             with patch.object(producer,"ROOT",root),patch.object(producer,"READY",root/"ready"),\
                  patch("motor_d_catalog_probe.read_full_feed",return_value=([],False,"feed_incomplete")),\
                  patch("time.sleep",return_value=None),\
-                 patch.object(producer,"datetime") as dt:
-                dt.now.return_value.date.return_value=TODAY
-                import zoneinfo
-                producer.ZoneInfo=zoneinfo.ZoneInfo
+                 patch.object(producer,"datetime",FixedClock):
                 with redirect_stdout(io.StringIO()) as out:producer.main()
             self.assertIn("blocked_catalog_incomplete",out.getvalue())
             self.assertFalse((root/"ready"/"index.json").exists())
@@ -129,10 +134,7 @@ class CatalogGateTests(unittest.TestCase):
             (root/"territorial_daily.json").write_text(json.dumps(report),encoding="utf-8")
             with patch.object(producer,"ROOT",root),patch.object(producer,"READY",root/"ready"),\
                  patch("motor_d_catalog_probe.read_full_feed",return_value=(feed,True,None)),\
-                 patch.object(producer,"datetime") as dt:
-                dt.now.return_value.date.return_value=TODAY
-                import zoneinfo
-                producer.ZoneInfo=zoneinfo.ZoneInfo
+                 patch.object(producer,"datetime",FixedClock):
                 with redirect_stdout(io.StringIO()):producer.main()
             index=json.loads((root/"ready"/"index.json").read_text(encoding="utf-8"))
             self.assertEqual(len(index["batches"]),1)

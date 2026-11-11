@@ -11,6 +11,7 @@ import tempfile
 import re
 import unicodedata
 from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from urllib.parse import urlsplit, parse_qsl, urlencode
 
@@ -173,12 +174,13 @@ def atomic_json_write(path, payload):
         if temporary is not None:
             temporary.unlink(missing_ok=True)
 
-def produce(report,root=READY,today=None,publication_statuses=None):
+def produce(report,root=None,today=None,publication_statuses=None):
     """Stage only eligible unseen offers.
 
     production main passes COMPLETE-FEED statuses; calling produce directly in
     unit tests / PR dry-runs cannot publish and maintains legacy pure staging.
     """
+    root=Path(root) if root is not None else READY
     if publication_statuses is not None and not isinstance(publication_statuses,dict):
         raise ValueError("catalog_statuses_invalid")
     today=today or date.today()

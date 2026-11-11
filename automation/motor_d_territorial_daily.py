@@ -89,6 +89,13 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
     "https://cl.indeed.com/jobs?q=&l="+quote(town)+"&fromage=2")
     for town in COMMUNES]
 
+# Integrate all registered permanent source indexes and social references.
+# Individual historical vacancies are NOT permanent search sources.
+from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
+from motor_d_social_sources import SOURCES as SOCIAL_REFERENCE_SOURCES
+SOURCE_PLAN=source_plan(SEEDS,INDEED_SEEDS,social_refs=SOCIAL_REFERENCE_SOURCES)
+SEEDS.extend(SOURCE_PLAN["added"])
+
 TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|vacante(?:s)?|"
     r"postulaci[oó]n|convocatoria|concurso(?:s)?|contrata(?:ci[oó]n)?|operador(?:a)?|"
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
@@ -572,16 +579,26 @@ def inspect(seed):
     return out
 def main():
     ROOT.mkdir(parents=True,exist_ok=True)
-    # Scan independent source domains concurrently instead of spending the
-    # 17-minute Actions budget waiting on dozens of sequential HTTP timeouts.
-    # map() keeps seed order for deterministic territory receipts.
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        rows=list(pool.map(inspect,SEEDS))
-    # Critical Indeed coverage is measured independently and concurrently,
-    # without proxies, access-control bypass or false success accounting.
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        indeed_rows=list(pool.map(inspect,INDEED_SEEDS))
-    rows.extend(indeed_rows)
+    # Every source registered in both catalogs is attempted on every cycle.
+    # History changes priority, NEVER the size of the complete scan.
+    performance_file=ROOT/"source_performance.json"
+    try:
+        previous=json.loads(performance_file.read_text(encoding="utf-8")) if performance_file.exists() else {}
+        if not isinstance(previous,dict):previous={}
+    except (ValueError,OSError):previous={}
+    ordered=ranked_sources(SOURCE_PLAN,previous)
+    seeds=[(x["anchor"],x["name"],x["url"]) for x in ordered]
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        rows=list(pool.map(inspect,seeds))
+    source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)
+    performance_file.write_text(json.dumps(
+        learn_source_performance(previous,rows,NOW.isoformat()),
+        ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    indeed_rows=[r for r in rows if r["source"].startswith("Indeed · ")]
+    print("MOTOR_D_SOURCE_INVENTORY "+json.dumps({
+        k:source_coverage[k] for k in ("registered_total","automatic_registered",
+        "social_registered","automatic_attempted","not_attempted","unresolved_total",
+        "all_registered_sources_accessible")},ensure_ascii=False),flush=True)
     indeed_coverage={
         "sources_attempted":len(indeed_rows),
         "sources_accessible":sum(x["status"].startswith("scanned") for x in indeed_rows),
@@ -634,6 +651,7 @@ def main():
     report={"schema_version":2,"date":NOW.isoformat(),"scope":"today_and_yesterday",
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
             "missing_communes":missing,"sources_total":len(rows),"indeed_critical":indeed_coverage,
+            "source_inventory":source_coverage,
             "commune_status":per_commune,
             "communes_with_accessible_source":sum(v["sources_accessible"]>0 for v in per_commune.values()),
             "communes_without_accessible_source":[k for k,v in per_commune.items() if not v["sources_accessible"]],

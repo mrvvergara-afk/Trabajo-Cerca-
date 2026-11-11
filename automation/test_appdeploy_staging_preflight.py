@@ -23,7 +23,7 @@ class BackendPreflight(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)), "Duplicated Motor D batch IDs")
         for entry in batches:
             batch_id = entry["batch_id"]
-            self.assertRegex(batch_id, r"^motor-d-\\d{8}-[a-f0-9]{18}$")
+            self.assertRegex(batch_id, r"^motor-d-\d{8}-[a-f0-9]{18}$")
             self.assertEqual(entry["file"], batch_id[8:16] + "/" + batch_id + ".json")
             date.fromisoformat(batch_id[8:12] + "-" + batch_id[12:14] + "-" + batch_id[14:16])
 

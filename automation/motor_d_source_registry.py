@@ -66,7 +66,7 @@ def plan(base,indeed,config=None,audit=None,social_refs=None,portals=None):
             # Never assign an unscoped national portal to Angol by default.
             label=unicodedata.normalize("NFD",str(row.get("name",""))+" "+row["url"]).lower()
             label="".join(c for c in label if unicodedata.category(c)!="Mn")
-            places=[town for town in COMMUNES if re.search(r"(?<!\\w)"+re.escape("".join(c for c in unicodedata.normalize("NFD",town.lower()) if unicodedata.category(c)!="Mn"))+r"(?!\\w)",label)]
+            places=[town for town in COMMUNES if re.search(r"(?<!\w)"+re.escape("".join(c for c in unicodedata.normalize("NFD",town.lower()) if unicodedata.category(c)!="Mn"))+r"(?!\w)",label)]
             target=places or (list(MALLECO) if "malleco" in label else list(COMMUNES))
             register(public,row["url"],target,"Auditoría "+str(row.get("name","")),
                      str(row.get("category","audit")),"audit")

@@ -391,7 +391,7 @@ def inspect(seed):
             soup=BeautifulSoup("","html.parser")
         national_fallback=False
         links_base=url
-        if source.startswith("Chiletrabajos · ") and not urlsplit(url).path.startswith("/trabajo/"):
+        if source.startswith(("Chiletrabajos · ","Portal Chiletrabajos · ")) and not urlsplit(url).path.startswith("/trabajo/"):
             heading=soup.select_one("h1")
             page_title=soup.title
             heading_text=heading.get_text(" ",strip=True) if heading else ""
@@ -594,13 +594,15 @@ def main():
     performance_file.write_text(json.dumps(
         learn_source_performance(previous,rows,NOW.isoformat()),
         ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    indeed_rows=[r for r in rows if r["source"].startswith("Indeed · ")]
+    indeed_rows=[r for r in rows if r["source"].startswith(("Indeed · ","Portal Indeed · "))]
     print("MOTOR_D_SOURCE_INVENTORY "+json.dumps({
         k:source_coverage[k] for k in ("registered_total","automatic_registered",
         "social_registered","automatic_attempted","not_attempted","unresolved_total",
         "all_registered_sources_accessible")},ensure_ascii=False),flush=True)
     indeed_coverage={
         "sources_attempted":len(indeed_rows),
+        "base_searches":sum(x["source"].startswith("Indeed · ") for x in indeed_rows),
+        "extended_searches":sum(x["source"].startswith("Portal Indeed · ") for x in indeed_rows),
         "sources_accessible":sum(x["status"].startswith("scanned") for x in indeed_rows),
         "sources_blocked":sum(x["status"] in ("http_restricted","network_error","redirect_not_authorized","source_url_not_authorized","search_filter_not_confirmed") for x in indeed_rows),
         "per_commune":{x["commune"]:{"http":x["http"],"status":x["status"],

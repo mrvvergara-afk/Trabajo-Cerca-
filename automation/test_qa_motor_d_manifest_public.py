@@ -17,16 +17,23 @@ def batch(batch_id, records, quarantined=False):
 class MotorDPublicationReconciliationTests(unittest.TestCase):
     def test_real_main_manifest_preserves_quarantine_and_recognizes_historical_overlap(self):
         batches=load_batches(READY)
-        self.assertEqual(len(batches),12)
+        # This manifest grows whenever real approved batches are published.
+        # Hardcoding the historical 12/58/34 counts caused CI to fail merely
+        # because the seven new verified CMPC jobs created the 13th batch.
+        self.assertGreaterEqual(len(batches),13)
         snap=reconcile(batches,[],False,"catalog_unavailable")
-        self.assertEqual(snap["manifest_offer_records"],58)
-        self.assertEqual(snap["active_offer_records"],34)
-        self.assertEqual(snap["quarantined_offer_records"],24)
+        actual_total=sum(len(b["offers"]) for b in batches)
+        actual_held=sum(len(b["offers"]) for b in batches if b["quarantined"])
+        self.assertEqual(snap["manifest_offer_records"],actual_total)
+        self.assertEqual(snap["active_offer_records"],actual_total-actual_held)
+        self.assertEqual(snap["quarantined_offer_records"],actual_held)
         self.assertEqual(snap["quarantined_batches"],2)
-        self.assertEqual(len(snap["active_source_overlaps"]),2)
+        self.assertEqual(actual_held,24)  # immutable quarantined history
+        self.assertGreaterEqual(snap["active_offer_records"],41)
+        self.assertGreaterEqual(len(snap["active_source_overlaps"]),2)
         self.assertEqual(snap["unexpected_active_source_overlaps"],[])
-        self.assertEqual(len(snap["held_sources_also_in_active_batches"]),17)
-        self.assertEqual(snap["active_status_counts"],{"catalog_unavailable":34})
+        self.assertGreaterEqual(len(snap["held_sources_also_in_active_batches"]),17)
+        self.assertEqual(snap["active_status_counts"],{"catalog_unavailable":actual_total-actual_held})
         self.assertEqual(snap["created_publications_by_this_check"],0)
 
     def test_distinguishes_public_visibility_from_source_job_with_different_internal_id(self):

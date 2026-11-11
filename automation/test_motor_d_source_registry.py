@@ -58,12 +58,16 @@ class FullInventoryTests(unittest.TestCase):
         self.assertFalse(r["all_registered_sources_accessible"])
     def test_only_real_individual_evidence_drives_future_ranking(self):
         row=self.fake(self.registry["public"][0])
-        row["candidates"]=[{"evidence":"directory_not_offer"},
-                           {"evidence":"individual_page_with_job_terms","express_ready":True}]
+        row["candidates"]=[{"id":"generic-page","evidence":"directory_not_offer"},
+                           {"id":"real-job-1","evidence":"individual_page_with_job_terms","express_ready":True}]
         x=learn({},[row],"2026-11-11T18:00:00-03:00")
         record=x[self.registry["public"][0]["id"]]
         self.assertEqual(record["ready"],1)
         self.assertEqual(record["individual"],1)
+        # The exact same vacancy re-read later must not increase yield.
+        again=learn(x,[row],"2026-11-11T22:00:00-03:00")
+        self.assertEqual(again[self.registry["public"][0]["id"]]["ready"],1)
+        self.assertEqual(again[self.registry["public"][0]["id"]]["individual"],1)
     def test_actual_source_inventory_exceeds_old_hardcoded_56(self):
         from motor_d_social_sources import SOURCES
         import motor_d_territorial_daily as d

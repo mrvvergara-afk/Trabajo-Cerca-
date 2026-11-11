@@ -14,6 +14,17 @@ def audit(manifest):
     names=[r.get("commune") for r in rows if isinstance(r,dict)]
     if sorted(names)!=sorted(COMMUNES): errors.append("territory_not_exactly_12")
     planned=visited=blocked=unvisited=0
+    inventory=manifest.get("source_inventory")
+    inventory_verified=isinstance(inventory,dict) and isinstance(inventory.get("sources"),list) and bool(inventory["sources"])
+    inventory_keys=set()
+    if inventory_verified:
+        for entry in inventory["sources"]:
+            if not isinstance(entry,dict) or entry.get("commune") not in COMMUNES or not entry.get("url") or not entry.get("category"):
+                errors.append("invalid_inventory_source");continue
+            key=(entry["commune"],entry["url"],entry["category"])
+            if key in inventory_keys: errors.append("duplicate_inventory_source")
+            inventory_keys.add(key)
+    reported_keys=set()
     for row in rows:
         if not isinstance(row,dict): errors.append("invalid_commune_row");continue
         name=row.get("commune","?")
@@ -27,6 +38,10 @@ def audit(manifest):
             status=item.get("status")
             if status not in counts: errors.append(f"{name}:invalid_status");continue
             if not item.get("url") or not item.get("category"): errors.append(f"{name}:missing_source_identity")
+            else:
+                key=(name,item["url"],item["category"])
+                if key in reported_keys: errors.append(f"{name}:duplicate_source")
+                reported_keys.add(key)
             if status=="visited" and (not item.get("checked_at") or not item.get("result")):
                 errors.append(f"{name}:visited_without_evidence")
             counts[status]+=1
@@ -34,9 +49,10 @@ def audit(manifest):
             if row.get(key)!=counts[status]: errors.append(f"{name}:{key}_mismatch")
         if row.get("planned_sources")!=len(sources): errors.append(f"{name}:planned_sources_mismatch")
         planned+=len(sources);visited+=counts["visited"];blocked+=counts["blocked"];unvisited+=counts["unvisited"]
+    if inventory_verified and inventory_keys!=reported_keys: errors.append("inventory_not_reconciled")
     try: date.fromisoformat(manifest["run_date"])
     except (KeyError,ValueError,TypeError): errors.append("invalid_run_date")
-    return {"ok":not errors,"errors":errors,"planned":planned,"visited":visited,"blocked":blocked,"unvisited":unvisited,"coverage_percent":round(100*visited/planned,2) if planned else 0,"exhaustive":not errors and planned>0 and blocked==0 and unvisited==0}
+    return {"ok":not errors,"errors":errors,"planned":planned,"visited":visited,"blocked":blocked,"unvisited":unvisited,"coverage_percent":round(100*visited/planned,2) if planned else 0,"inventory_verified":inventory_verified,"exhaustive":not errors and inventory_verified and planned>0 and blocked==0 and unvisited==0}
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser()

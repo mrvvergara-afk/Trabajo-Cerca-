@@ -5,6 +5,7 @@ on:
     paths:
       - 'automation/qa_feed_bc_consolidado.py'
       - 'automation/qa_public_catalog_integral.py'
+      - 'automation/qa_candidate_crosscheck_20261111.py'
       - 'automation/test_qa_public_catalog_integral.py'
       - 'automation/test_qa_feed_bc_consolidado.py'
       - 'automation/test_appdeploy_staging_preflight.py'
@@ -45,3 +46,7 @@ jobs:
         run: python automation/qa_public_catalog_integral.py
       - name: Actual motor A and B/C diagnostics (GET only)
         run: python automation/qa_feed_bc_consolidado.py
+      - name: Contrastar seis ofertas reales independientes contra todo el catálogo (GET solamente)
+        env:
+          PYTHONPATH: automation
+        run: python automation/qa_candidate_crosscheck_20261111.py

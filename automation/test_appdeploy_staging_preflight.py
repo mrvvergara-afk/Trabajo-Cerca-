@@ -11,6 +11,15 @@ class BackendPreflight(unittest.TestCase):
         cls.bc = (ROOT / "fast-bc-html.ts").read_text(encoding="utf-8")
         cls.feed = (ROOT / "public-feed.ts").read_text(encoding="utf-8")
 
+    def test_pwa_manifest_icons_are_same_origin(self):
+        import json
+        manifest = json.loads((ROOT / "manifest.webmanifest").read_text(encoding="utf-8"))
+        icons = manifest["icons"]
+        self.assertEqual(len(icons), 3)
+        self.assertEqual([i["src"] for i in icons],
+                         ["./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"])
+        self.assertTrue(all(i["src"].startswith("./") for i in icons))
+
     def test_motor_d_index_contract(self):
         """Validate D index format without making unrelated CI time-dependent."""
         import json

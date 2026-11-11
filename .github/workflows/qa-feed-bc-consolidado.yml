@@ -8,6 +8,7 @@ on:
       - 'automation/test_qa_public_catalog_integral.py'
       - 'automation/test_qa_feed_bc_consolidado.py'
       - 'automation/test_appdeploy_staging_preflight.py'
+      - 'appdeploy_staging/manifest.webmanifest'
       - 'appdeploy_staging/fast-bc-html.ts'
       - 'appdeploy_staging/public-feed.ts'
       - '.github/workflows/qa-feed-bc-consolidado.yml'

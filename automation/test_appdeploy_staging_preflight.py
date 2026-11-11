@@ -27,6 +27,15 @@ class BackendPreflight(unittest.TestCase):
             self.assertEqual(entry["file"], batch_id[8:16] + "/" + batch_id + ".json")
             date.fromisoformat(batch_id[8:12] + "-" + batch_id[12:14] + "-" + batch_id[14:16])
 
+    def test_bc_pipeline_idle_does_not_migrate_or_write_checkpoint(self):
+        pipeline = (ROOT / "fast-bc-pipeline.ts").read_text(encoding="utf-8")
+        idle = pipeline.index("if(result.processed===0 && html.checked===0 && html.storageFailures===0)")
+        migration = pipeline.index("db.list<Progress>('fast_bc_state_v1'")
+        write = pipeline.index("db.tx.update(STATE")
+        self.assertLess(idle, migration)
+        self.assertLess(idle, write)
+        self.assertIn("MOTOR_B_C_FAST_IDLE", pipeline)
+
     def test_bc_idle_cycle_skips_redundant_status_write(self):
         html = (ROOT / "fast-bc-html.ts").read_text(encoding="utf-8")
         idle = html.index("if(checked===0 && storageFailures===0)")

@@ -126,7 +126,7 @@ export async function motorDAutoImportHandler(){
     // A quiet index is not evidence that the territorial search actually ran.
     // Flag the missing producer heartbeat separately from an empty verified result.
     const batchDates=(batches as Array<Record<string,unknown>>)
-      .map(x=>String(x.batch_id||'').match(/^motor-d-(\\d{8})-/)?.[1]||'')
+      .map(x=>String(x.batch_id||'').match(/^motor-d-(\d{8})-/)?.[1]||'')
       .filter(Boolean).sort();
     const latestBatchDate=batchDates.at(-1)||null;
     const today=new Date().toISOString().slice(0,10).replace(/-/g,'');

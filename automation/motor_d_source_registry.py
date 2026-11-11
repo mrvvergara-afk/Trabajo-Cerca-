@@ -154,7 +154,11 @@ def assess(plan,rows,stats):
         # Cornerstone needs the existing Playwright reader. A generic HTTP
         # response with zero vacancies cannot certify CMPC career coverage.
         browser_needed=("cmpc.csod.com" in src["url"] and state=="scanned_no_candidates")
-        label=("requires_specialized_reader" if browser_needed else
+        # SAFCO displays real open-looking job cards inline with no dated,
+        # unique individual URL. A generic scanner showing zero links did NOT
+        # confirm that these advertised roles were examined and deduplicated.
+        structured_needed=("safcoltda.cl" in src["url"] and state=="scanned_no_candidates")
+        label=("requires_specialized_reader" if (browser_needed or structured_needed) else
                "needs_territorial_filter" if worked and src["kind"]=="portal_unfiltered_requires_geofilter"
                else "accessible" if worked else
                "blocked_or_failed" if observed else "unvisited")

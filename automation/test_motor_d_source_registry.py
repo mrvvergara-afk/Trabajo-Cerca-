@@ -70,7 +70,20 @@ class FullInventoryTests(unittest.TestCase):
         full=plan(d.SEEDS,d.INDEED_SEEDS,social_refs=SOURCES)
         self.assertGreaterEqual(len(full["social"]),26)
         self.assertGreaterEqual(full["historical_job_links"],39)
-        self.assertGreater(len(full["public"]),56)
+        self.assertGreater(len(full["public"]),140)
+        # Seven AppDeploy A portal families must be executed for all 12 towns,
+        # even when HTTP 403 prevents reading a provider.
+        from motor_d_source_registry import load_data,HERE
+        portals=load_data(HERE/"motor_d_portal_families.json",True)
+        self.assertEqual(len(portals["providers"]),7)
+        for family in portals["providers"]:
+            relevant=[x for x in full["public"] if "a_portal" in x["origins"]
+                      and x["name"].startswith("Portal "+family["name"]+" · ")]
+            self.assertEqual(len(relevant),12,family["name"])
+        from motor_d_source_registry import load_data
+        daily=load_data(HERE/"trabajo_cerca/fuentes_diarias.json",True)
+        self.assertTrue(any("mipleo.cl" in x["url"] for x in daily["discovery"]))
+        self.assertTrue(any("kitempleo.cl" in x["url"] for x in daily["discovery"]))
         self.assertEqual(set(COMMUNES),{p for row in full["public"] for p in row["communes"]})
 
 if __name__=="__main__":unittest.main()

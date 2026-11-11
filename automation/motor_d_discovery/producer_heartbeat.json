@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "producer": "motor_d_territorial",
+  "scan_completed_at": "2026-11-11T14:48:58.429106-03:00",
+  "communes_expected": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Lumaco",
+    "Los Sauces",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria",
+    "Mulchén",
+    "Negrete",
+    "Nacimiento"
+  ],
+  "missing_communes": [],
+  "sources_total": 56,
+  "sources_accessible": 36,
+  "sources_blocked": 13,
+  "job_candidates_total": 106,
+  "express_ready_candidates": 0,
+  "source_report_sha256": "40b5ae9436e5df224070c7c3b08593148890da8d8f60799e39090f4405868905",
+  "published_in_trabajo_cerca": 0,
+  "publication_confirmed": false
+}

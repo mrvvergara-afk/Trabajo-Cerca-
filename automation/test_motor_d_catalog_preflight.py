@@ -121,6 +121,11 @@ class CatalogGateTests(unittest.TestCase):
                 with redirect_stdout(io.StringIO()) as out:producer.main()
             self.assertIn("blocked_catalog_incomplete",out.getvalue())
             self.assertFalse((root/"ready"/"index.json").exists())
+            gate=json.loads((root/"publication_gate.json").read_text(encoding="utf-8"))
+            self.assertEqual(gate["state"],"blocked_catalog_incomplete")
+            self.assertFalse(gate["feed_complete"])
+            self.assertEqual(gate["ready_batch_offers_staged"],0)
+            self.assertEqual(gate["eligible_before_catalog"],1)
 
     def test_main_complete_feed_stages_only_missing_candidate(self):
         # Production's complete catalog contains the first SERFONAC vacancy,
@@ -141,6 +146,12 @@ class CatalogGateTests(unittest.TestCase):
             payload=json.loads((root/"ready"/index["batches"][0]["file"]).read_text(encoding="utf-8"))
             self.assertEqual(len(payload["offers"]),1)
             self.assertEqual(payload["offers"][0]["url_original"],b["url"])
+            gate=json.loads((root/"publication_gate.json").read_text(encoding="utf-8"))
+            self.assertEqual(gate["state"],"completed")
+            self.assertTrue(gate["feed_complete"])
+            self.assertEqual(gate["eligible_before_catalog"],2)
+            self.assertEqual(gate["already_published_skipped"],1)
+            self.assertEqual(gate["ready_batch_offers_staged"],1)
 
 if __name__=="__main__":
     unittest.main()

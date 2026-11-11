@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261111-9d4afde5d2aa8e880a",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_af9a119e45d5f84851a7",
+      "cargo": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_descubrimiento": "2026-11-11",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    },
+    {
+      "id_fuente": "d_3b694de3e09ff760e50b",
+      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_descubrimiento": "2026-11-11",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    },
+    {
+      "id_fuente": "d_cc0fbbdbedccef4fe20d",
+      "cargo": "Instrumentista de área - Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_descubrimiento": "2026-11-11",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    },
+    {
+      "id_fuente": "d_d5b4f7c3b41de14eac84",
+      "cargo": "INSTRUMENTISTA AREA",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_descubrimiento": "2026-11-11",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    },
+    {
+      "id_fuente": "d_31acc134be48b1637d66",
+      "cargo": "Electricista de área - Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_descubrimiento": "2026-11-11",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    },
+    {
+      "id_fuente": "d_b479eb4033d3626606d4",
+      "cargo": "ANALISTA LABORATORIO I-TURNO",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
+      "fecha_publicacion": "2026-10-21",
+      "fecha_descubrimiento": "2026-11-11",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    },
+    {
+      "id_fuente": "d_8377eba647f422386562",
+      "cargo": "Ingeniero/a Procesos y Excelencia Sr",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+      "fecha_publicacion": "2026-10-13",
+      "fecha_descubrimiento": "2026-11-11",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    }
+  ]
+}

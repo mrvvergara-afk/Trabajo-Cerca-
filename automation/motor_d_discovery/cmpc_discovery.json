@@ -1,23 +1,43 @@
 {
   "fuente": "CMPC Cornerstone",
-  "checked_at": "2026-11-09T19:55:21.224563+00:00",
+  "checked_at": "2026-11-11T21:45:25.371211+00:00",
   "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "state": "individual_links_found",
   "individual_urls": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19351?c=cmpc",
+      "cargo": "Feria Laboral INACAP Los Ángeles",
+      "evidencia_tarjeta": "Feria Laboral INACAP Los Ángeles\n\nChile\n\n11/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19350?c=cmpc",
+      "cargo": "Pool Talento Feria Laboral USACH",
+      "evidencia_tarjeta": "Pool Talento Feria Laboral USACH\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19349?c=cmpc",
+      "cargo": "Pool Talento Feria Laboral UNAB",
+      "evidencia_tarjeta": "Pool Talento Feria Laboral UNAB\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19329?c=cmpc",
+      "cargo": "JEFE DE REPORTABILIDAD",
+      "evidencia_tarjeta": "JEFE DE REPORTABILIDAD\n\nSantiago, Metropolitana, Chile\n\n10/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19319?c=cmpc",
+      "cargo": "Ingeniero Compras Sr.",
+      "evidencia_tarjeta": "Ingeniero Compras Sr.\n\nLos Angeles, Bio Bio, Chile\n\n10/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19177?c=cmpc",
+      "cargo": "Líder Transformación Contabilidad e Impuestos",
+      "evidencia_tarjeta": "Líder Transformación Contabilidad e Impuestos\n\nSantiago, Región Metropolitana, Chile\n\n10/11/2026"
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19313?c=cmpc",
       "cargo": "Subgerente Adminstración de Ventas Pulp",
       "evidencia_tarjeta": "Subgerente Adminstración de Ventas Pulp\n\nSantiago, REGION METROPOLITANA, Chile\n\n06/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19246?c=cmpc",
-      "cargo": "Ayudante Bodega (Plazo Fijo) - Temuco",
-      "evidencia_tarjeta": "Ayudante Bodega (Plazo Fijo) - Temuco\n\nTemuco, La Araucanía, Chile\n\n06/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
-      "cargo": "Asistente Ventas (Plazo Fijo) - Temuco",
-      "evidencia_tarjeta": "Asistente Ventas (Plazo Fijo) - Temuco\n\nTemuco, La Araucanía, Chile\n\n06/11/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19180?c=cmpc",
@@ -35,24 +55,19 @@
       "evidencia_tarjeta": "Electrico Dia\n\nPuente Alto, REGION METROPOLITANA, Chile\n\n04/11/2026"
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19167?c=cmpc",
-      "cargo": "Ejecutivo servicio al cliente",
-      "evidencia_tarjeta": "Ejecutivo servicio al cliente\n\nSantiago, REGION METROPOLITANA, Chile\n\n03/11/2026"
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
       "cargo": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
-      "evidencia_tarjeta": "Mecánico/a de Área - Nacimiento, Planta Santa Fe"
+      "evidencia_tarjeta": "Mecánico/a de Área - Nacimiento, Planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n30/10/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
       "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
-      "evidencia_tarjeta": "Mecánico/a Turno - Nacimiento, planta Santa Fe"
+      "evidencia_tarjeta": "Mecánico/a Turno - Nacimiento, planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n30/10/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
       "cargo": "Instrumentista de área - Santa Fe",
-      "evidencia_tarjeta": "Instrumentista de área - Santa Fe"
+      "evidencia_tarjeta": "Instrumentista de área - Santa Fe\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n30/10/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
@@ -62,12 +77,7 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "cargo": "Electricista de área - Planta Santa Fe",
-      "evidencia_tarjeta": "Electricista de área - Planta Santa Fe"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
-      "cargo": "INGENIERO PREVENCIÓN RIESGOS",
-      "evidencia_tarjeta": "INGENIERO PREVENCIÓN RIESGOS\n\nTil Til, REGIÓN METROPOLITANA, Chile\n\n28/10/2026"
+      "evidencia_tarjeta": "Electricista de área - Planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n28/10/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
@@ -85,56 +95,106 @@
       "evidencia_tarjeta": "Ingeniero/a Procesos y Excelencia Sr\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n13/10/2026"
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
-      "cargo": "Mecánico Lubricador",
-      "evidencia_tarjeta": "Mecánico Lubricador\n\nLaja, REGION DEL BIOBIO, Chile\n\n21/08/2026"
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
       "cargo": "Analista de Contabilidad",
-      "evidencia_tarjeta": ""
+      "evidencia_tarjeta": "Analista de Contabilidad\n\nMalvinas Argentinas, Argentina\n\n25/09/2025"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
       "cargo": "Ingeniero Especialista de Diseño de empaque",
-      "evidencia_tarjeta": ""
+      "evidencia_tarjeta": "Ingeniero Especialista de Diseño de empaque\n\nSAN ANDRES CHOLULA, PUEBLA, PUEBLA, México\n\n10/09/2024"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
       "cargo": "Técnico/a de mantenimiento eléctrico y mecánico",
-      "evidencia_tarjeta": ""
+      "evidencia_tarjeta": "Técnico/a de mantenimiento eléctrico y mecánico\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
       "cargo": "Conductor/a de autoelevador",
-      "evidencia_tarjeta": ""
+      "evidencia_tarjeta": "Conductor/a de autoelevador\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
       "cargo": "Coordinador de Soporte Técnico SAP",
-      "evidencia_tarjeta": ""
+      "evidencia_tarjeta": "Coordinador de Soporte Técnico SAP\n\nMONTERREY 1, NUEVO LEÓN, México\n\n24/11/2021"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
       "cargo": "Analista de Comercio Exterior",
-      "evidencia_tarjeta": ""
+      "evidencia_tarjeta": "Analista de Comercio Exterior\n\nPerú\n\n19/02/2021"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1168?c=cmpc",
       "cargo": "AYUDANTE GENERAL",
-      "evidencia_tarjeta": ""
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1167?c=cmpc",
-      "cargo": "EJECUTOR/A MECANICO",
-      "evidencia_tarjeta": ""
+      "evidencia_tarjeta": "AYUDANTE GENERAL\n\nTLAJOMULCO, JALISCO, México\n\n07/01/2021"
     }
   ],
   "errors": [],
   "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "title": "Vacantes actuales - cmpc",
-  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (17)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Metropolitana (5)\nRegion Del Biobio (4)\nBio Bio (3)\nJalisco (3)\nBuenos Aires (2)\nLa Araucanía (2)\nNuevo León (1)\nPuebla (1)\nRegión De La Araucanía (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (6)\nSantiago (3)\nTlajomulco (3)\nTemuco (2)\nZarate (2)\nCollipulli (1)\nLaja (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nOsorno (1)\nPuente Alto (1)\nQuilicura (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nFecha colocada\nDentro de 7 días (7)\nDentro de 15 días (13)\nDentro de 30 días (16)\nCualquier momento (32)\nUnidad de Negocio\nCMPC Celulosa (9)\nCMPC BioPackaging (7)\nSoftys (15)\nEmpresas CMPC (1)\nVacantes actuales\n\nSubgerente Adminstración de Ventas Pulp\n\nSantiago, REGION METROPOLITANA, Chile\n\n06/11/2026\n\nAyudante Bodega (Plazo Fijo) - Temuco\n\nTemuco, La Araucanía, Chile\n\n06/11/2026\n\nAsistente Ventas (Plazo Fijo) - Temuco\n\nTemuco, La Araucanía, Chile\n\n06/11/2026\n\nSupervisor Logistico\n\nOsorno, Chile\n\n06/11/2026\n\nAuxiliar Procesos - EDIPAC Quilicura\n\nQuilicura, REGION METROPOLITANA, Chile\n\n05/11/2026\n\nElectrico Dia\n\nPuente Alto, REGION ME",
+  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (18)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Metropolitana (6)\nBio Bio (4)\nJalisco (3)\nRegion Del Biobio (3)\nBuenos Aires (2)\nMetropolitana (1)\nNuevo León (1)\nPuebla (1)\nRegión De La Araucanía (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (6)\nSantiago (6)\nTlajomulco (3)\nZarate (2)\nCollipulli (1)\nLos Angeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nOsorno (1)\nPuente Alto (1)\nQuilicura (1)\nSan Andres Cholula, Puebla (1)\nFecha colocada\nDentro de 1 día (1)\nDentro de 3 días (6)\nDentro de 7 días (9)\nDentro de 15 días (15)\nDentro de 30 días (18)\nCualquier momento (33)\nUnidad de Negocio\nCMPC Celulosa (9)\nCMPC BioPackaging (3)\nSoftys (15)\nEmpresas CMPC (6)\nVacantes actuales\n\nFeria Laboral INACAP Los Ángeles\n\nChile\n\n11/11/2026\n\nPool Talento Feria Laboral USACH\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/11/2026\n\nPool Talento Feria Laboral UNAB\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/11/2026\n\nJEFE DE REPORTABILIDAD\n\nSantiago, Metropolitana, Chile\n\n10/11/2026\n\nIngeniero Compras Sr.\n\nLos Angeles, Bio Bio, Chile\n\n10/11/2026\n\nLíder Transformación Contabilidad e Impuestos\n\nSa",
   "individual_details": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19351?c=cmpc",
+      "cargo": "Feria Laboral INACAP Los Ángeles",
+      "evidencia_tarjeta": "Feria Laboral INACAP Los Ángeles\n\nChile\n\n11/11/2026",
+      "ficha_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nFeria Laboral INACAP Los Ángeles\nChile\n|\nreq19351\nSolicitar ahora\nCompartir\n Guardar trabajo\nPublicado el: 11/11/2026\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n \n\n POOL DE TALENTO                                          \n\nEn CMPC, creemos que cada persona tiene el potencial de transformar la industria. Si nos visitaste en la feria laboral y te conectaste con nuestra visión de futuro, te invitamos a dar el siguiente paso. Somos una empresa global que se atreve a innovar, y estamos buscando talentos que, como tú, quieran dejar su huella. Queremos conocer tu pasión y tus ideas, y descubrir cómo juntos podemos seguir creando soluciones sostenibles que impacten al mundo.\n\n¡No dejes que tu oportunidad se escape! El futuro lo construimos juntos!\n\n \n\n \n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": false,
+      "ficha_content_length": 1978,
+      "ficha_contenido_laboral": false,
+      "ficha_checked_at": "2026-11-11T21:45:46.468191+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19350?c=cmpc",
+      "cargo": "Pool Talento Feria Laboral USACH",
+      "evidencia_tarjeta": "Pool Talento Feria Laboral USACH\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/11/2026",
+      "ficha_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nPool Talento Feria Laboral USACH\nSantiago, REGION METROPOLITANA, Chile\n|\nreq19350\nSolicitar ahora\nCompartir\n Guardar trabajo\nPublicado el: 10/11/2026\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n \n\n POOL DE TALENTO                                          \n\nEn CMPC, creemos que cada persona tiene el potencial de transformar la industria. Si nos visitaste en la feria laboral y te conectaste con nuestra visión de futuro, te invitamos a dar el siguiente paso. Somos una empresa global que se atreve a innovar, y estamos buscando talentos que, como tú, quieran dejar su huella. Queremos conocer tu pasión y tus ideas, y descubrir cómo juntos podemos seguir creando soluciones sostenibles que impacten al mundo.\n\n¡No dejes que tu oportunidad se escape! El futuro lo construimos juntos!\n\n \n\n \n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": false,
+      "ficha_content_length": 2010,
+      "ficha_contenido_laboral": false,
+      "ficha_checked_at": "2026-11-11T21:45:58.899340+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19349?c=cmpc",
+      "cargo": "Pool Talento Feria Laboral UNAB",
+      "evidencia_tarjeta": "Pool Talento Feria Laboral UNAB\n\nSantiago, REGION METROPOLITANA, Chile\n\n10/11/2026",
+      "ficha_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nPool Talento Feria Laboral UNAB\nSantiago, REGION METROPOLITANA, Chile\n|\nreq19349\nSolicitar ahora\nCompartir\n Guardar trabajo\nPublicado el: 10/11/2026\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n \n\n POOL DE TALENTO                                          \n\nEn CMPC, creemos que cada persona tiene el potencial de transformar la industria. Si nos visitaste en la feria laboral y te conectaste con nuestra visión de futuro, te invitamos a dar el siguiente paso. Somos una empresa global que se atreve a innovar, y estamos buscando talentos que, como tú, quieran dejar su huella. Queremos conocer tu pasión y tus ideas, y descubrir cómo juntos podemos seguir creando soluciones sostenibles que impacten al mundo.\n\n¡No dejes que tu oportunidad se escape! El futuro lo construimos juntos!\n\n \n\n \n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": false,
+      "ficha_content_length": 2009,
+      "ficha_contenido_laboral": false,
+      "ficha_checked_at": "2026-11-11T21:46:11.076286+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19329?c=cmpc",
+      "cargo": "JEFE DE REPORTABILIDAD",
+      "evidencia_tarjeta": "JEFE DE REPORTABILIDAD\n\nSantiago, Metropolitana, Chile\n\n10/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nJEFE DE REPORTABILIDAD\nSantiago, Metropolitana, Chile\n|\nreq19329\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAsegurar la calidad, disponibilidad y trazabilidad de la información de Medio Ambiente y Seguridad y Salud Ocupacional, gestionando estándares de datos, indicadores y reportabilidad para apoyar el monitoreo de riesgos, la efectividad de controles críticos y la toma de decisiones en los distintos negocios de CMPC. Asimismo, definir requerimientos funcionales y coordinar con las áreas de Tecnología el desarrollo de soluciones que contribuyan a una gestión eficiente y a la mejora continua.\n\n• Definir y gestionar el modelo corporativo de información de Medio Ambiente y Seguridad y Salud Ocupacional (SST), asegurando datos íntegros, confiables, trazables y oportunos para la gestión y toma de decisiones.\n•Levantar y traducir necesidades de información del negocio en requerimientos funcionales, colaborando con las áreas de Tecnología en el diseño e implementación de soluciones que apoyen la gestión de riesgos, controles e indicadores.\n• Gestionar la reportabilidad corporativa de Medio Ambiente y SST, asegurando la correcta consolidación, validación y emisión de indicadores, reportes y cuadros de mando para distintos niveles de la organización.\n• Desarrollar análisis, visualizaciones e indicadores que permitan identificar tendencias, brechas, riesgos y oportunidades de mejora, facilitando la toma de decisiones basada en datos.\n• Monitorear la calidad y consistencia de la información, coordinando acciones con los distintos negocios para fortalecer los procesos de control, aseguramiento y mejora continua.\n• Generar información y evidencia confiable para auditorías, procesos de aseguramiento y seguimiento del desempeño en Medio Ambiente y SST.\n\nFormación: Título universitario de carreras de Ingeniería en Prevención de Riesgos, Ambiental, Civil Industrial, Control de Gestión o carrera afín\n\nConocimiento específico: \n\n• Conocimiento de procesos, riesgos, controles críticos e indicadores de desempeño de Medio Ambiente y Seguridad y Salud Ocupacional (MA y SST).\n• Gobierno, modelamiento, calidad, trazabilidad y gestión de datos de MA y SST.\n• Diseño y homologación de indicadores, tableros de control, reportes ejecutivos y procesos de reportabilidad.\n• Analítica de datos aplicada a riesgos críticos, incidentes, controles y desempeño.\n• Levantamiento de requerimientos funcionales, definición de reglas de negocio y validación funcional de soluciones de información desarrolladas por Tecnología.\n• Conocimiento de procesos de auditoría, aseguramiento y control interno de la información.\n• Preferencia con especialización en gestión MA y SST, analítica de datos o inteligencia de negocios.\n\nExperiencia: Experiencia en gestión de Medio Ambiente y Seguridad y Salud Ocupacional, gobierno y calidad de datos, diseño de indicadores, reportabilidad ejecutiva y analítica, con capacidad para levantar necesidades funcionales, coordinar con Tecnología y validar soluciones de información en organizaciones industriales y de alcance multinacional.\n\nContrato: Indefinido\nUbicación: Agustinas, 1343\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para",
+      "ficha_accessible": true,
+      "ficha_content_length": 4231,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-11T21:46:13.313762+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19319?c=cmpc",
+      "cargo": "Ingeniero Compras Sr.",
+      "evidencia_tarjeta": "Ingeniero Compras Sr.\n\nLos Angeles, Bio Bio, Chile\n\n10/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nIngeniero Compras Sr.\nLos Angeles, Bio Bio, Chile\n|\nreq19319\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nLiderar y ejecutar procesos de abastecimiento estratégico de mediana y alta complejidad para las categorías asignadas, integrando requerimientos técnicos, operacionales, comerciales, contractuales, logísticos, financieros y de riesgo, con el propósito de asegurar continuidad de suministro, competitividad del costo total, cumplimiento de políticas y captura sostenible de valor para CMPC.\n\n\n\n\nPlanificar y ejecutar proyectos de strategic sourcing/licitaciones de mediano y gran tamaño: levantamiento de demanda, definición de estrategia, RFI/RFQ/RFP (sistema Ariba), análisis TCO, negociación y recomendación de adjudicación.\nEmitir de órdenes de compras, contratos marco e programas de remesas garantizando la continuidad de abastecimiento y el correcto cumplimiento del ciclo P2P.\nTrabajar con clientes internos y áreas de soporte para comprender, desafiar y ejecutar requerimientos, especificaciones, cronogramas, criterios de evaluación e contratos.\nAnalizar índices de precios, estructura de costos (cost breakdown), mercados de proveedores nacionales e internacionales, oportunidades de trade off y seguimiento de los polinomios de precios.\nConvertir los hallazgos en recomendaciones y garantizar captura de valor.\nGestionar el desempeño y la relación con proveedores, impulsar mejora continua y resolver desviaciones escaladas de servicio, calidad, costo, seguridad o cumplimiento.\n\n \n\nFormación: \n\nIngeniería Civil, Industrial, Química, Minería, Mecánica, Eléctrica, Administración o carrera afín. Deseable magister en Supply Chain, Compras o Finanzas.\n\n \n\nConocimiento específico:\n\nStrategic sourcing; RFI/RFQ/RFP; TCO y should-cost; análisis de gasto y mercado; matrices técnico-económicas; evaluación de riesgos; contratos de suministro y servicios; gestión de proveedores; ahorros y cost avoidance.\n\n \n\nIdiomas:\n\nPortugués o inglés deseable.\n\nExperiencia (excluyente):\n\n5 años o más en Compras, Suministros, Strategic Sourcing, Contratos u Operaciones industriales.\nAl menos 1 año de experiencia demostrable en procesos de negociación de mediana/alta complejidad para suministro de especialidades química.\n\n \n\nComputación (excluyente):\n\nOffice avanzado.\nSAP intermedio\nHerramientas de BI/e-sourcing.\n\n \n\n\n\n\nContrato: Plazo Indefinido.\nUbicación: Corporativo Los Ángeles. Con disponibilidad de viajes dentro y fuera de Chile.\n\n \n\n \n\n #LI-ONSITE #LI-JR1\n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 3577,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-11T21:46:16.161534+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19177?c=cmpc",
+      "cargo": "Líder Transformación Contabilidad e Impuestos",
+      "evidencia_tarjeta": "Líder Transformación Contabilidad e Impuestos\n\nSantiago, Región Metropolitana, Chile\n\n10/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nLíder Transformación Contabilidad e Impuestos\nSantiago, Región Metropolitana, Chile\n|\nreq19177\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nLiderar, diseñar e implementar la estrategia de transformación digital, optimización de procesos y modernización de los sistemas contables y tributarios a nivel corporativo. Garantizar la automatización de la operación, la eficiencia de los flujos contables y fiscales, el cumplimiento normativo (IFRS/NIIF y regulaciones locales) y la adopción de nuevas tecnologías para posicionar al área contable e impositiva como un socio estratégico del negocio.\n\n \n\nDiagnosticar, rediseñar y estandarizar los procesos contables y tributarios, identificando oportunidades de optimización, digitalización y automatización.\nLiderar proyectos de transformación tecnológica, implementación y optimización de ERP, herramientas de automatización y soluciones de inteligencia de negocios.\nDiseñar, desarrollar y mantener flujos de datos, repositorios de información y soluciones de reportería para mejorar la disponibilidad, trazabilidad y calidad de los datos.\nDesarrollar y mantener reportes de gestión, indicadores de desempeño y dashboards en Power BI para el seguimiento de los procesos contables y tributarios.\nImpulsar el uso de herramientas de automatización, RPA e inteligencia artificial para optimizar los flujos de trabajo y fortalecer los controles operacionales.\nCoordinar y alinear a equipos multidisciplinarios, áreas usuarias, proveedores tecnológicos y consultores, asegurando la ejecución de los proyectos y la adopción de las soluciones implementadas.\nGestionar iniciativas de mejora continua y gestión del cambio, promoviendo la estandarización de procesos y nuevas formas de trabajo.\nCoordinar y supervisar las operaciones del BPO, promoviendo la eficiencia, el control y el cumplimiento de los procesos del área.\n\n \n\nFormación:\n\nProfesional universitario titulado de Contador Auditor, Contador Público, Ingeniería Comercial, Ingeniería Civil Industrial o carrera afín.\nDeseable contar con especialización o certificación en transformación digital, gestión de proyectos, finanzas o impuestos.\n\n \n\nExperiencia:\n\nMínimo 3 años de experiencia en proyectos de transformación digital, optimización y mejora de procesos, implementación u optimización de ERP o automatización de procesos contables y tributarios.\nExperiencia comprobable en gestión de proyectos tecnológicos y mejora de procesos.\nDeseable experiencia coordinando equipos multidisciplinarios, proveedores y áreas usuarias, así como liderando iniciativas de transformación y gestión del cambio.\n\n \n\nConocimientos específicos:\n\nExcluyentes:\n\nConocimientos en optimización, rediseño, automatización y control de procesos, con foco en la mejora continua.\nConocimientos en gestión de proyectos tecnológicos y transformación digital.\nManejo de herramientas de reportería, Business Intelligence (BI), elaboración de reportes de gestión y paneles de control.\nConocimientos en gobernanza, análisis y gestión de datos, incluyendo flujos de datos y consulta de bases de datos.\nConocimientos en automatización de procesos mediante herramientas tecnológicas.\nConocimientos en gestión del cambio y adopción de nuevas tecnologías.\n\nDeseables:\n\nConocimientos de procesos contables y tributarios corporativos.\nConocimientos de normativa contable IFRS/NIIF y normativa tributaria vigente.\n\n\n\nComputación:\n\nMicrosoft Office nivel avanzado (excluyente)\nSAP S/4HANA (excluyente)\nPower BI y herramientas de reportería y visualización de datos (excluyente)\nManejo de herramientas de automatización de procesos y flujos de trabajo, como Power Automate, Alteryx, RPA u otras equivalentes (excluyente)\nManejo de herramientas de inteligencia art",
+      "ficha_accessible": true,
+      "ficha_content_length": 5288,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-11T21:46:18.973101+00:00"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19313?c=cmpc",
       "cargo": "Subgerente Adminstración de Ventas Pulp",
@@ -143,27 +203,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3808,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:32.212070+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19246?c=cmpc",
-      "cargo": "Ayudante Bodega (Plazo Fijo) - Temuco",
-      "evidencia_tarjeta": "Ayudante Bodega (Plazo Fijo) - Temuco\n\nTemuco, La Araucanía, Chile\n\n06/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nAyudante Bodega (Plazo Fijo) - Temuco\nTemuco, La Araucanía, Chile\n|\nreq19246\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nAlmacenar y ejecutar procedimientos para el control de mercancías en bodega y transportes, para el correcto despacho de pedidos a clientes, asegurando cumplir con todas las normas de seguridad previamente establecidas por Edipac\n\n\n\n\n En este rol tendrás la oportunidad de       \n\nDesconsolidar camiones.\nSeparación de pedidos para carga de camiones y entrega a clientes retirando en sucursal.\nAlmacenar productos en Bodega\nCarga de móviles.\nAseo y mantenimiento de las áreas de trabajo.\nMover y trasladar productos dentro de la bodega.\nRevisar e informar sobre los faltantes y daños encontrados en bodega.\n\n \n\n Lo que necesitas para desempeñar este rol \n\nFormación: \n\nEnseñanza media.\n\n\n\nConocimiento específico:\n\nCurso de operador grúa o mordaza (deseable)\n\n \n\nExperiencia:\n\nAl menos 1 año de experiencia en roles similares.\n\n \n\nConducir (deseable): \n\nLicencia clase D, vigente\n\n \n\n\n\n\n Condiciones del cargo                                   \n\nContrato: Plazo Fijo (3 meses)\nUbicación: Edipac, Sucursal Temuco.\n\n \n\n #LI-DNI\n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2314,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:33.982061+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
-      "cargo": "Asistente Ventas (Plazo Fijo) - Temuco",
-      "evidencia_tarjeta": "Asistente Ventas (Plazo Fijo) - Temuco\n\nTemuco, La Araucanía, Chile\n\n06/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nAsistente Ventas (Plazo Fijo) - Temuco\nTemuco, La Araucanía, Chile\n|\nreq19245\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nAtender y coordinar las labores comerciales, administrativas y operacionales de las carteras de clientes de la sucursal, con el propósito de cumplir con los objetivos comerciales establecidos por la empresa, desarrollando la cartera de clientes actuales y potenciales.\n\n \n\n En este rol tendrás la oportunidad de       \n\nAnalizar y/o proponer potenciales negocios para la cartera de clientes.\nAnalizar y supervisar la participación en líneas de negocios y clientes actuales.\nGestionar las necesidades de líneas y condiciones de crédito de los clientes de las distintas carteras.\nMantener cobranza oportuna de las facturas de los clientes asignados a su cartera.\nVerificar que la operación logística se realicé de acuerdo a los parámetros ofrecidos a los clientes.\nAtención telefónica y presencial de clientes.\nRevisión de documentación administrativa.\n\n \n\n Lo que necesitas para desempeñar este rol \n\nFormación: \n\nTécnico/a en Administración, ventas o experiencia a fin.\n\n \n\nExperiencia:\n\n0 a 3 años de experiencia en ventas de productos tangibles.\n\n \n\nComputación (excluyente):\n\nExcel nivel medio.\nConocimientos de SAP a nivel de usuario.\n\n \n\n Condiciones del cargo                                   \n\nContrato: Plazo Fijo (3 meses)\nUbicación: Edipac, Sucursal Temuco.\nModalidad: De lunes a viernes, 100% Presencial.\n\n \n\n #LI-DNI\n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2620,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:35.660961+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:21.308956+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19180?c=cmpc",
@@ -173,7 +213,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3141,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:37.382975+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:23.852070+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19218?c=cmpc",
@@ -183,7 +223,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 1723,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:38.927240+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:26.252200+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
@@ -193,47 +233,37 @@
       "ficha_accessible": true,
       "ficha_content_length": 2855,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:40.551074+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19167?c=cmpc",
-      "cargo": "Ejecutivo servicio al cliente",
-      "evidencia_tarjeta": "Ejecutivo servicio al cliente\n\nSantiago, REGION METROPOLITANA, Chile\n\n03/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nEjecutivo servicio al cliente\nSantiago, REGION METROPOLITANA, Chile\n|\nreq19167\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nMisión del cargo \n\nGestionar y Apoyar en el mantenimiento de información y en la generación de reportes de la cartera de clientes, para la toma de decisiones, tácticas, estratégicas y comerciales alineadas al objetivo de la organización y satisfacción del Cliente.\n\nFunciones específicas:\nIngreso y Gestión de los pedidos de los clientes \nControl de stock\nDefinir en conjunto con el cliente métricas y estándares para establecer los niveles de satisfacción, stocks adecuados y distintas necesidades.\n\nEn este rol tendrás la oportunidad de\n\nSeguimiento integral de pedidos.\nConfirmación y control cruzado de pedidos, gestión de entregas según necesidades y disponibilidad de stock.\nConfirmaciones de entregas en tiempo y condiciones adecuadas según lo acordado.\nTrabajo en conjunto con el área comercial y Planificación  acordando estrategias y volúmenes de venta\n\nLo que necesitas para desempeñar este rol \n\nLicenciado en Administración, Ingeniero Industrial, Lic. Comercialización o carrera afín.\nExperiencia: 2 años en cargos similares, en Cías.de Consumo Masivo.\nManejo avanzado de herramientas informáticas (excel)\nDeseable conocimientos de SAP\nCompetencias personales: Organizado, Analítico, Sentido de Urgencia, Buenas Relaciones interpersonales, Pro activo, trabajo en equipo y trabajo bajo presión \n\nCondiciones del cargo                                   \n\nContrato: Fijo\nUbicación Santiago, Puentes Alto\n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2647,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:42.276991+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:28.937536+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
       "cargo": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
-      "evidencia_tarjeta": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
+      "evidencia_tarjeta": "Mecánico/a de Área - Nacimiento, Planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n30/10/2026",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nMecánico/a de Área - Nacimiento, Planta Santa Fe\nNacimiento, Bio Bio, Chile\n|\nreq19252\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAportar al logro de las metas de Planta Santa Fe y contribuir a la sostenibilidad del negocio, realizando funciones y prestando apoyo técnico a las áreas y turno, ejecutando mantención preventiva y correctiva a equipos mecánicos en general, resguardando el cumplimiento de nuestras políticas de Seguridad y Salud Ocupacional, Medio Ambiente, Calidad, Energía, SGIIE, además de los compromisos asumidos con las Comunidades locales.. \n\n1  Ejecutar actividades de mantenimiento preventivo y correctivo a los equipos mecánicos en su área de responsabilidad. \n2  Realizar rutas de inspección y detectar deficiencias, mejoras de mantenibilidad y levantarlas mediante los sistemas de gestión y en sus DdD. (programas semanales)\n3  Analizar y corregir fallas mecánicas. \n4  Realizar comisionamiento e inspección técnica de actividades de mantenimiento realizados por personal externo. \n5  Realizar revisión en terreno y comisionamiento de proyectos o equipos nuevos en el área \n6  Proponer ideas para la optimización de los procesos, desempeño medio ambiental y seguridad, que aporten a la mejora continua. \n7  En su quehacer diario hacer uso de las herramientas BEST y participar activamente en las actividades BEST. \n8  Garantizar el cumplimiento de la política de Calidad, Medio Ambiente, Seguridad, Salud en el Trabajo, Gestión de la Energía de la empresa y Sistema de Gestión Integridad Instalaciones Eléctricas (SGIIE).  \n\nFormación: Técnico Nivel Superior con mención en mecánica, ejecución mecánica o equivalente.\nExperiencia: Al menos 3 años de experiencia en cargos similares en la Industria de Celulosa o Papel. \nComputación: Manejo de Microsoft y SAP usuario (No excluyente)\n\nContrato: Indefinido\nUbicación: CMPC Pulp Planta Santa Fe; Nacimiento\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 2990,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:43.959873+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:31.857424+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
       "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
-      "evidencia_tarjeta": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "evidencia_tarjeta": "Mecánico/a Turno - Nacimiento, planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n30/10/2026",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nMecánico/a Turno - Nacimiento, planta Santa Fe\nNacimiento, Bio Bio, Chile\n|\nreq19251\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nRealizar un mantenimiento eficiente a los equipos rotativos y estáticos de la Planta, asegurando una continuidad operativa, disminución de los MTTR, resguardando el cumplimiento de nuestras políticas de Seguridad y Salud Ocupacional, Medio Ambiente, Calidad, Gestión de la Energía de la empresa y Sistema de Gestión Integridad Instalaciones Eléctricas (SGIIE), Cadena de Custodia Certfor y FSC, además de los compromisos asumidos con las Comunidades locales.\n\nAnalizar e identificar causas de fallas equipos o instalaciones como bombas, reductores, acoplamientos, cañerías, estanques y ejecutar la solución.\nEjecutar el proceso de mantenimiento correctivo y preventivo equipos o instalaciones planta según alcance del trabajo\nParticipar o ejecutar de la confección y actualización de estándares o procedimientos.\nProactividad y trabajo en equipo frente a contingencia de otras especialidades.\nRealizar rutas de equipos mecánicos identificados que requieran seguimiento constante.\nParticipar o ejecutar de análisis de falla, diálogos de desempeño.\nAtender emergencias de la planta que comprometen su normal funcionamiento.\nAsegurar la calidad trabajos ejecutados mediante protocolos y uso correcto de herramientas\n\nFormación: Técnico Nivel Superior con mención en mecánica o equivalente. \nExperiencia: mínimo 1 año en mantenimiento de equipos industriales. \nConducir: licencia de conducir clase B vigente (excluyente)\nComputación: SAP PM (deseable)\n\nContrato: Indefinido\nDISPONIBILIDAD PARA TRABAJAR EN TURNOS ROTATIVOS DE MAÑANA, TARDE Y NOCHE DE LUNES A DOMINGO (FERÍADOS Y FESTIVOS INCLUSIVE)\nUbicación: Nacimiento, planta santa fe.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 2873,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:45.558861+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:34.034445+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
       "cargo": "Instrumentista de área - Santa Fe",
-      "evidencia_tarjeta": "Instrumentista de área - Santa Fe",
+      "evidencia_tarjeta": "Instrumentista de área - Santa Fe\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n30/10/2026",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nInstrumentista de área - Santa Fe\nNacimiento, REGION DEL BIOBIO, Chile\n|\nreq19222\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAportar al logro de las metas de Planta Santa Fe y contribuir a la sostenibilidad del negocio, realizando funciones y prestando apoyo técnico a las áreas y turno, ejecutando mantención preventiva y correctiva a equipos eléctricos en general, resguardando el cumplimiento de nuestras políticas de Seguridad y Salud Ocupacional, Medio Ambiente, Calidad, Energía, Cadena de Custodia Certfor y FSC, SGIIE, además de los compromisos asumidos con las Comunidades locales\n\n\n\n\nEjecutar actividades de mantenimiento preventivo y correctivo a válvulas de control.\nRealizar rutas de inspección y detectar deficiencias, mejoras de mantenibilidad y levantarlas mediante los sistemas de gestión y en sus DdD.\nRealizar mantención y calibración a transmisores y medidores en general, y mantener sus respectivos registros\nAnalizar y corregir fallas eléctricas.\nRealizar comisionamiento e inspección técnica de actividades de mantenimiento realizadas por personal externo.\nRealizar revisión en terreno y comisionamiento de proyectos o equipos nuevos en el área\nProponer ideas para la optimización de los procesos, desempeño medio ambiental y seguridad, que aporten a la mejora continua.\nEn su quehacer diario hacer uso de las herramientas BEST y participar activamente en las actividades BEST.\nGarantizar el cumplimiento de la política de Calidad, Medio Ambiente, Seguridad, Salud en el Trabajo, Gestión de la Energía de la empresa y Sistema de Gestión Integridad Instalaciones Eléctricas (SGIIE).  \n\nFormación:\n\nTítulo profesional de Ingeniería en Ejecución o título Técnico Nivel Superior Electrónico, Instrumentación y Control o equivalente. \n\nExperiencia:\n\nAl menos 3 años de experiencia en cargos similares en plantas industriales de procesos continuos (excluyente).\n\nCompetencias Técnicas:\n\n \n\nExperiencia en Mantención de transmisores y medidores (excluyente) \nExperiencia en Mantención y ajuste de válvulas de control (excluyente) \nExperiencia en realización y ejecución de proyectos de instrumentación. \nConocimiento teórico y práctico de calibración de equipos.\nExperiencia en maniobras de equipos de media y alta tensión. \nConocimientos del Idioma Inglés Técnico.\nConocimiento de Seguridad industrial. \nInterpretación de planos y diagramas P&ID (excluyente) \nConocimiento en neumática \nManejo de instrumentos: Tester, medición de aislación, osciloscopio, termómetros, registradores análogos, digitales, etc. (excluyente) \nCapacidad para detección, análisis y solución de problemas potenciales y consumados (excluyente) \nDeterminar estado eléctrico y mecánico de motores de acuerdo a parámetros preestablecidos. \nInterpretación de planos y circuitos eléctricos (excluyente). \n\nContrato: Indefinido.\nUbicación: Planta Celulosa Santa Fe, Nacimiento\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 3974,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:47.161623+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:36.342662+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
@@ -243,27 +273,17 @@
       "ficha_accessible": true,
       "ficha_content_length": 3867,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:48.783529+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:39.337823+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "cargo": "Electricista de área - Planta Santa Fe",
-      "evidencia_tarjeta": "Electricista de área - Planta Santa Fe",
+      "evidencia_tarjeta": "Electricista de área - Planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n28/10/2026",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nElectricista de área - Planta Santa Fe\nNacimiento, Bio Bio, Chile\n|\nreq19239\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAportar al logro de las metas de Planta Santa Fe y contribuir a la sostenibilidad del negocio, realizando funciones y prestando apoyo técnico a las áreas y turno, ejecutando mantención preventiva y correctiva a equipos eléctricos en general, resguardando el cumplimiento de nuestras políticas de Seguridad y Salud Ocupacional, Medio Ambiente, Calidad, Energía, Cadena de Custodia Certfor y FSC, además de los compromisos asumidos con las Comunidades locales.\n\n\nEjecutar actividades de mantenimiento preventivo y correctivo a los equipos eléctricos en su área de responsabilidad.\nRealizar rutas de inspección y detectar deficiencias, mejoras de mantenibilidad y levantarlas mediante los sistemas de gestión y en sus DdD.\nAnalizar y corregir fallas eléctricas.\nRealizar comisionamiento e inspección técnica de actividades de mantenimiento realizadas por personal externo.\nRealizar revisión en terreno y comisionamiento de proyectos o equipos nuevos en el área.\nProponer ideas para la optimización de los procesos, desempeño medio ambiental y seguridad, que aporten a la mejora continua.\nEn su quehacer diario hace uso de las herramientas BEST y participa activamente en las actividades BEST.\nGarantizar el cumplimiento de la política de Calidad, Medio Ambiente, Seguridad, Salud en el Trabajo, Gestión de la Energía de la empresa y Sistema de Gestión Integridad Instalaciones Eléctricas (SGIIE).\n\nFormación:\n\nTitulado de carrera Profesional Impartida por Universidad o Instituto Profesional, reconocido por el  Ministerio de Educación u homologada en caso de ser extranjero.  Carrera Deseada: Ingeniero Ejecución o Técnico de Nivel Superior Eléctrico., Electrocontrol o Automatización.\n\nExperiencia:\n\nAl menos 3 años de experiencia, en cargos similares en plantas industriales o forestales (excluyente).\n\nConocimientos específicos:\n\nExperiencia en Mantención de motores y accionamientos eléctricos. \nExperiencia en comisionamiento y protocolos eléctricos.  \nConocimientos del Idioma Inglés Técnico básico. \nConocimientos de computación a nivel usuario. \nConocimientos básicos de PLC (excluyente). \nConocimiento en electrónica de potencia y accionamientos eléctricos (excluyente). \nConocimiento de Seguridad industrial (excluyente). \n Interpretación de planos eléctricos (excluyente). \nManejo de instrumentos: Tester, medición de aislación, osciloscopio, termómetros, registradores análogos,  digitales, etc. (excluyente) \nDetección, análisis y solución de problemas potenciales y consumados.\nManejo de SAP PM Básico.\n\n\n\nUbicación: Nacimiento, Planta Santa Fe. \n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 3790,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:50.394391+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
-      "cargo": "INGENIERO PREVENCIÓN RIESGOS",
-      "evidencia_tarjeta": "INGENIERO PREVENCIÓN RIESGOS\n\nTil Til, REGIÓN METROPOLITANA, Chile\n\n28/10/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nINGENIERO PREVENCIÓN RIESGOS\nTil Til, REGIÓN METROPOLITANA, Chile\n|\nreq19163\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nSupervisar los programas de prevención de riesgos de las distintas áreas de la planta, fortaleciendo la seguridad operacional y promoviendo una cultura preventiva en la organización. \n\n\n\n\nRealizar la supervisión de las acciones y condiciones de peligro en planta.\n\nRealizar asesorías a la organización mediante información técnica en prevención de riesgos. \n\nRealizar el control del cumplimiento de procesos y prácticas de trabajo seguras. \n\nEjecutar instrumentos y herramientas de gestión del riesgo operacional, como procedimientos, matrices, análisis causales y otros. \n\nIdentificar e informar situaciones que afecten el sistema de gestión integrado, inocuidad alimentaria o normas certificadas vigentes. \n\nFormación: Ingeniero en Prevención de Riesgos o carrera afín \n\nConocimiento específico:\n\nConocimiento en Gestión de Seguridad y Salud en el Trabajo \nConocimiento en Gestión del Cambio Conductual \nConocimiento Básicos de Mecánica \nConocimiento en Producción en Línea de Proceso \nConocimiento Microsoft Office Nivel Intermedio \nPolítica Integrada \nEficiencia energética \nUsos significativos \nInterpretación ISO 50001 2018 \nAhorro de energía en iluminación y acondicionamiento de aire \nEficiencia energética en procesos térmicos \nIdentificación de Peligros en sus funciones \n\nExperiencia: 3 años de Experiencia en Industrias\n\nConducir: Licencia conducir B.\n\nComputación: Microsoft Office Avanzado\n\n\n\n\nContrato:Indefinido\nUbicación:Cerro Blanco 100, Til Til.\nHorario: Lunes - Jueves 07:30-17:00 Viernes 07:30-14:00 \n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2752,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:51.958879+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:41.634802+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
@@ -273,7 +293,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4072,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:53.679825+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:43.923921+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
@@ -283,7 +303,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2485,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:55.281624+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:46.187158+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
@@ -293,97 +313,77 @@
       "ficha_accessible": true,
       "ficha_content_length": 5754,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:56.899493+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
-      "cargo": "Mecánico Lubricador",
-      "evidencia_tarjeta": "Mecánico Lubricador\n\nLaja, REGION DEL BIOBIO, Chile\n\n21/08/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nMecánico Lubricador\nLaja, REGION DEL BIOBIO, Chile\n|\nreq18723\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nEjecutar y controlar las actividades de inspección, lubricación y mecánica de los equipos de Planta Laja, mediante la aplicación de rutas programadas, monitoreo del estado de los activos, detección de anomalías y registro oportuno de hallazgos, contribuyendo a la confiabilidad operacional, disponibilidad de los equipos, seguridad de las personas y protección del medio ambiente.\n\n En este rol tendrás la oportunidad de       \n\nEjecución de rutas programadas: rutas de inspección, lubricación y mecánica definidas en SAP y Lube It, inspeccionando periódicamente los equipos de toda la Planta Laja.\nCumplimiento de frecuencias: verificar que se respeten las frecuencias establecidas de inspección y lubricación, con revisión diaria de equipos críticos, en seguimiento y con exigencias ambientales.\nInspección visual de equipos: verificar y reportar nivel y estado del aceite, condiciones del activo, retenes y sellos, visores de nivel, venteos, fugas de aceite/grasa, limpieza de los sistemas de lubricación y riesgos para operación, seguridad y medio ambiente.\nActividades de lubricación/mecánica: ejecutarlas según los procedimientos y estándares establecidos.\nControl de fugas y condición de equipos: detectar y reportar fugas de aceites y grasas, identificar anomalías en los sistemas de lubricación e informar condiciones subestándar, manteniendo control permanente sobre las condiciones operacionales.\nSistemas automáticos de lubricación: inspeccionarlos verificando niveles y el correcto funcionamiento de bombas, dosificadores y líneas de distribución, detectando fallas u obstrucciones e informando oportunamente las desviaciones.\nGestión de información y registros: registrar las actividades en SAP y Lube It, generar notificaciones y evidencias, completar los check list tras cambios o intervenciones relevantes y etiquetar los equipos según los estándares.\nGestión de hallazgos: detectar condiciones anormales, generar avisos de mantenimiento en SAP, registrar observaciones técnicas claras y precisas y hacer seguimiento de los hallazgos cuando se requiera.\n\n Lo que necesitas para desempeñar este rol \n\nFormación: Título Técnico Nivel Medio/Superior Mecánico, Eléctrico, en Mantenimiento Industrial, en Mantenimiento Eléctrico o Ingeniería Mecánica.\n\nDeseable:\n\nEspecialización en Lubricación Industrial.\nCursos de mantenimiento predictivo y lubricación.\nArme y desarme de equipos industriales.\n\nExperiencia:\n\nMínimo 5 años de experiencia comprobable en plantas de celulosa.\nMínimo 2 años de experiencia como Mecánico, Inspector o Técnico de Lubricación Industrial.\n\nConocimiento Específicos:\n\nSAP PM.\nMicrosoft Office Intermedio.\n\n Condiciones del cargo                                   \n\nContrato: Indefinido\nUbicación: Planta Laja, Región del Biobío.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 4026,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:58.435847+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:48.488174+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
       "cargo": "Analista de Contabilidad",
-      "evidencia_tarjeta": "",
+      "evidencia_tarjeta": "Analista de Contabilidad\n\nMalvinas Argentinas, Argentina\n\n25/09/2025",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nAnalista de Contabilidad\nMalvinas Argentinas, Argentina\n|\nreq16530\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Softys Professional. \n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys, y que puedan ser parte de nuestra experiencia Softys.\n\nHoy nos encontramos en la búsqueda de nuestro/a próximo/a Analista de Contabilidad para nuestra ARG-Argentina.\n\nMisión del cargo:\n\nGestionar de manera integral sus rubros contables asignados principalmente Bienes de Cambio, asegurando la exactitud y la integridad de los registros, de los estados contables e informes internos y externos, con el fin de proveer la información para la correcta toma de decisiones.\n\n\nFunciones específicas:\n\nRegistraciones contables.\nAnálisis y conciliación de cuentas patrimoniales con frecuencia mensual.\nExistencias: Análisis y control de inventarios anual, conciliación de saldos, seguimiento de valuación, poyo en la gestión de diferencias y ajustes de stock.\nSeguimiento de Stocks - Provisión de obsolescencia.\nIdentificar desvíos a través del análisis de cuentas, y su gestión con las distintas áreas de la compañía, para su corrección.\nGeneración y seguimiento de provisiones contables.\nParticipar en los cierres contables mensuales y proyectos de mejora de procesos, asegurando la exactitud y oportunidad de los registros.\nApoyo en la preparación de reportes financieros, tanto predefinidos como por requerimientos especiales.\nParticipación en iniciativas para optimizar procedimientos contables.\nColaboración y armando de documentación para auditores internos y externos.\nInteracción con otras áreas para asegurar la integridad de la información financiera. (Cuentas por pagar, Tesorería, Cuentas por Cobrar, Impuestos, Control de Gestión, etc)\n\n\n\nRequisitos:\n\nEstudiante avanzado o Graduado/as de Carreras de Ciencias Económicas.\n2 ó 3 años de experiencia previa en roles similares\nManejo avanzado de Excel (Excluyente).\nManejo de SAP (deseable).\nDisponibilidad para trabajar presencial en Tortuguitas.\n\n\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra experiencia. \n\n#LI-DNI\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 2781,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:55:59.869584+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:50.731775+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
       "cargo": "Ingeniero Especialista de Diseño de empaque",
-      "evidencia_tarjeta": "",
+      "evidencia_tarjeta": "Ingeniero Especialista de Diseño de empaque\n\nSAN ANDRES CHOLULA, PUEBLA, PUEBLA, México\n\n10/09/2024",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nIngeniero Especialista de Diseño de empaque\nSAN ANDRES CHOLULA, PUEBLA, PUEBLA, México\n|\nreq13847\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Softys Professional. \n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys, y que puedan ser parte de nuestra experiencia Softys.\n\nHoy nos encontramos en la búsqueda de nuestro/a próximo/a  Ingeniero Especialista de Diseño de empaque para nuestra Softys.\n\nMisión del cargo:\n\nLa posición tiene como objetivo el liderazgo y la coordinación de la operación de validar, registrar y resguardar los diseños de empaque primario y secundario a través de la metodología Stage & Gate para la región México y CAC\n\n\nFunciones específicas:\n\n-Obtención de prototipos en laboratorio y en líneas productivas de producto y de empaque\n-Analizar los prototipos en laboratorio con una visión de investigación \n-Mantenimiento de las especificaciones de empaque primario y secundario\n-Administrar los recursos humanos y administrativos involucrados en los proyectos de diseño y desarrollo de empaque primario y secundario\n-Administrar las prioridades en los análisis y proveeduría de información técnica\n-Realización de los planos mecánicos de empaque primario y secundario\n-Analizar los proyectos con visión estratégica en el impacto de la cadena de suministro\n\nRequisitos:\n\n-Conocimientos en MS Office. Excel Avanzado. Minitab\n-SAP (deseable)\n-Conocimiento técnico en productos higiénicos desechables\n-TOPS\n-Software de dibujo técnico (AUTOCAD)\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra experiencia. \n\n#LI-DNI\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 2259,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:56:01.334181+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:53.007359+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
       "cargo": "Técnico/a de mantenimiento eléctrico y mecánico",
-      "evidencia_tarjeta": "",
+      "evidencia_tarjeta": "Técnico/a de mantenimiento eléctrico y mecánico\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nTécnico/a de mantenimiento eléctrico y mecánico\nZarate, BUENOS AIRES, Argentina\n|\nreq3524\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a Técnico/a de mantenimiento eléctrico y mecánico para nuestra DIRECCION OPERACIONES.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nIntervenir en forma autónoma en todas las acciones correctivas, preventivas y predictivas de la disciplina mecánica o eléctrica de todos los equipos e instalaciones correspondientes al área.\n\n\nFunciones específicas:\n\nActuar indistintamente en guardias autónomas a demanda de los sectores operativos y procurando asegurar la continuidad operativa, la operación óptima y el buen cuidado de los equipos productivos; en talleres centrales, en reparaciones programadas ó montajes,  y en paradas de máquina ó planta. \nCumplir con intervenciones de la disciplina mecánica o eléctrica en forma autónoma a demanda ó planificadas de los sectores de producción y mantenimiento.  \nCumplir rutinas de inspección preventiva ó predictiva que sean programadas ó indicadas por la supervisión.\nParticipar activamente de pruebas de los equipos.\nRegistrar anomalías, completa partes y libros de guardia, realiza preinformes y participa de los análisis de falla de componentes y conjuntos a los efectos de aumentar la disponibilidad y el buen cuidado.\nCargar pedidos de trabajo,  releva datos de los componentes intervenidos ó intervenciones en el sistema de gestión de mantenimiento vigente.\nIntervenir en reparaciones ó instalaciones planificadas y en tareas de mantenimiento proactivo (mejoras).\nConocer y cumplir las normas vigentes de Seguridad y Medio Ambiente de la Empresa.\n\nRequisitos:\n\nTécnico/a Mecánico/Electricista/Electromecánico/Afines\nAcreditar experiencia de al menos dos años en tareas de Mantenimiento en empresas de procesos productivos\nDisponibilidad para trabajar de manera temporal\nResidir en zonas aledañas (Zárate/Campana).\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra fibra.\n\n#LI-DNI\n\n\n\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 2815,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:56:02.912464+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:55.907895+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
       "cargo": "Conductor/a de autoelevador",
-      "evidencia_tarjeta": "",
+      "evidencia_tarjeta": "Conductor/a de autoelevador\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nConductor/a de autoelevador\nZarate, BUENOS AIRES, Argentina\n|\nreq3523\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a Conductor/a de autoelevador para nuestra DIRECCION SERVICIO AL CLIENTE.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nTrasladar cargas con autoelevador o pala, en las diferentes modalidades de la operación (descarga de camiones, transferencias de movimientos internos).\n\n\nFunciones específicas:\n\nChequeo visual del equipo, y llenado de planilla correspondiente al check list.\nDescarga de camiones y almacenaje en racks y/o estibas.\nTrasladar semielaborado a bodegas correspondientes.\nTrasladar semielaborados para abastecer a la línea de producción.\nReubicación de pallets en zonas asignadas.\nCumplir las normas internas, políticas de seguridad, y prevención de riesgos de la compañía.\n\nRequisitos:\n\nSecundario completo.\nExperiencia de 2 años en roles similares.\nDisponibilidad para trabajar en turnos rotativos.\nDisponibilidad para trabajar de manera temporal.\nResidir en zonas aledañas (Zárate/Campana).\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra fibra.\n\n#LI-DNI\n\n\n\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 1943,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:56:04.448790+00:00"
+      "ficha_checked_at": "2026-11-11T21:46:57.884583+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
       "cargo": "Coordinador de Soporte Técnico SAP",
-      "evidencia_tarjeta": "",
+      "evidencia_tarjeta": "Coordinador de Soporte Técnico SAP\n\nMONTERREY 1, NUEVO LEÓN, México\n\n24/11/2021",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nCoordinador de Soporte Técnico SAP\nMONTERREY 1, NUEVO LEÓN, México\n|\nreq3245\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a Coordinador de Soporte Técnico SAP para nuestra Departamento de Sistemas.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nProveer soporte técnico de primer nivel/contacto en incidencias y requerimientos relacionados con la operación del ERP SAP, gestionando actividades para resolver de manera oportuna y efectiva.\n\n\nFunciones específicas:\n\nProveer soporte de primer nivel en la atención de requerimientos e incidencias relacionados con el ERP SAP.\nParticipar en proyectos relacionados con procesos, aplicaciones y transacciones basados en el ERP SAP.\nProporcionar servicio de consultoría a usuarios de la compañía de manera directa o en colaboración con el equipo de consultores de Corporativo, incluyendo tareas como procesos de prueba, documentación, capacitación, parametrización.\n\nRequisitos:\n\nLicenciatura o Ingeniería en Sistemas, Computación o TI. \nInglés intermedio / avanzado.\nExperiencia de al menos 3 años en atención a usuarios en requerimientos relacionados con el ambiente SAP. \n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra fibra.\n\n#LI-DNI\n\n \n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 2036,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:56:05.889098+00:00"
+      "ficha_checked_at": "2026-11-11T21:47:00.927187+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
       "cargo": "Analista de Comercio Exterior",
-      "evidencia_tarjeta": "",
+      "evidencia_tarjeta": "Analista de Comercio Exterior\n\nPerú\n\n19/02/2021",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nAnalista de Comercio Exterior\nPerú\n|\nreq1450\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a Analista de Comercio Exterior para nuestra Gerencia de Supply Chain\n\nSoftys es una empresa CMPC\n\nObjetivo: Supervisar el envío de las importaciones, coordinando con los proveedores internacionales, operadores logísticos y almacenes; y planificar el envío de las exportaciones en coordinación con el Área de Planeamiento, controlando el despacho de documentos al Área de Contabilidad; para la entrega de materiales, cumplimiento de la meta del mes y la contabilización de archivos.\n\nFunciones:\n\nBrindar seguimiento de las importaciones, a fin de mantener con stock de materiales como PT, repuestos e insumos a la planta para su funcionamiento.\nBrindar seguimiento de las exportaciones, para cumplir con los pedidos de los clientes extranjeros.\nCoordinar el envío de liquidaciones y facturación al área Contable.\nCoordinar la recuperación del Drawback.\nRealizar reportes para la gerencia de Supply Chain indicando las estadísticas de las importaciones y exportaciones.\n\nRequisitos:\n\nExperiencia de 3 años como Analista de Compras.\nInglés nivel intermedio.\nBachiller de las carreras de Administración de Negocios Internacionales, Administración, Ingeniería Industrial.\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte.\n\nPostula y sé parte de nuestra fibra.\n\n#LI-DNI\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 2174,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:56:07.481352+00:00"
+      "ficha_checked_at": "2026-11-11T21:47:02.802039+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1168?c=cmpc",
       "cargo": "AYUDANTE GENERAL",
-      "evidencia_tarjeta": "",
+      "evidencia_tarjeta": "AYUDANTE GENERAL\n\nTLAJOMULCO, JALISCO, México\n\n07/01/2021",
       "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nAYUDANTE GENERAL\nTLAJOMULCO, JALISCO, México\n|\nreq1168\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a AYUDANTE GENERAL para nuestra Gerencia de Operaciones.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nEs ayudar o realizar trabajos como revisar y empacar y checar que el producto vaya en buen estado y con el código correcto y mantener tu área limpia y en orden a lo cual que también puedes operar máquinas de producción depende mucho en el área que te asignen .\n\n\nFunciones específicas:\n\nAPOYO A OPERADORES\n\nRequisitos:\n\nSEXO INDISTINTO\nMAYOR DE 18 AÑOS\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte.\n\nPostula y sé parte de nuestra fibra.\n\n#LI-DNI\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
       "ficha_accessible": true,
       "ficha_content_length": 1474,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:56:09.171542+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1167?c=cmpc",
-      "cargo": "EJECUTOR/A MECANICO",
-      "evidencia_tarjeta": "",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nEJECUTOR/A MECANICO\nTLAJOMULCO, JALISCO, México\n|\nreq1167\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a EJECUTOR/A MECANICO para nuestra Gerencia de Operaciones.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nMANTENER LAS LÍNEAS EN PERFECTO FUNCIONAMIENTO\n\n\nFunciones específicas:\n\n \n\nConocimientos en análisis de fallas de equipos rotativos y estáticos.\nNociones básicas en planes de mantenimiento de equipos: sellos mecánicos, rodamientos y cojinetes.\nSólidos conocimientos en alineación de equipos rotativos.\nConocimientos generales en la interpretación de vibraciones de equipos rotativos.\n\nRequisitos:\n\nConocimiento y experiencia en mantenimiento mecánico de equipos industriales.\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte.\n\nPostula y sé parte de nuestra fibra.\n\n#LI-DNI\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 1604,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-09T19:56:10.674633+00:00"
+      "ficha_checked_at": "2026-11-11T21:47:05.311170+00:00"
     }
   ]
 }

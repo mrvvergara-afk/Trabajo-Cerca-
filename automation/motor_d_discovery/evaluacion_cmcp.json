@@ -1,6 +1,42 @@
 {
   "approved": [
     {
+      "id_fuente": "cmpc_19252",
+      "cargo": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19251",
+      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19222",
+      "cargo": "Instrumentista de área - Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
       "id_fuente": "cmpc_19249",
       "cargo": "INSTRUMENTISTA AREA",
       "empresa": "CMPC",
@@ -8,6 +44,18 @@
         "Nacimiento"
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19239",
+      "cargo": "Electricista de área - Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "fecha_publicacion": "2026-10-28",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
@@ -39,24 +87,59 @@
   ],
   "pending": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19351?c=cmpc",
+      "title": "Feria Laboral INACAP Los Ángeles",
+      "workplaces": [],
+      "reason": [
+        "detail_unavailable",
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19350?c=cmpc",
+      "title": "Pool Talento Feria Laboral USACH",
+      "workplaces": [],
+      "reason": [
+        "detail_unavailable",
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19349?c=cmpc",
+      "title": "Pool Talento Feria Laboral UNAB",
+      "workplaces": [],
+      "reason": [
+        "detail_unavailable",
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19329?c=cmpc",
+      "title": "JEFE DE REPORTABILIDAD",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19319?c=cmpc",
+      "title": "Ingeniero Compras Sr.",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19177?c=cmpc",
+      "title": "Líder Transformación Contabilidad e Impuestos",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19313?c=cmpc",
       "title": "Subgerente Adminstración de Ventas Pulp",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19246?c=cmpc",
-      "title": "Ayudante Bodega (Plazo Fijo) - Temuco",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
-      "title": "Asistente Ventas (Plazo Fijo) - Temuco",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -87,76 +170,11 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19167?c=cmpc",
-      "title": "Ejecutivo servicio al cliente",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
-      "title": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
-      "workplaces": [
-        "Nacimiento"
-      ],
-      "reason": [
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
-      "title": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
-      "workplaces": [
-        "Nacimiento"
-      ],
-      "reason": [
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
-      "title": "Instrumentista de área - Santa Fe",
-      "workplaces": [
-        "Nacimiento"
-      ],
-      "reason": [
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
-      "title": "Electricista de área - Planta Santa Fe",
-      "workplaces": [
-        "Nacimiento"
-      ],
-      "reason": [
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
-      "title": "INGENIERO PREVENCIÓN RIESGOS",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
       "title": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18723?c=cmpc",
-      "title": "Mecánico Lubricador",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
       ]
     },
     {
@@ -216,15 +234,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1168?c=cmpc",
       "title": "AYUDANTE GENERAL",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1167?c=cmpc",
-      "title": "EJECUTOR/A MECANICO",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

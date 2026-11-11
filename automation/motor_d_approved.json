@@ -1,9 +1,45 @@
 {
   "schema_version": 1,
   "approval": "approved_for_publication",
-  "producer": "chatgpt",
-  "batch_id": "motor-d-cmpc-e4cfa1914b7a6721",
+  "producer": "motor_d_cmpc_browser",
+  "batch_id": "motor-d-cmpc-a8314d3f474abc03",
   "offers": [
+    {
+      "id_fuente": "cmpc_19252",
+      "cargo": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19251",
+      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19222",
+      "cargo": "Instrumentista de área - Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
     {
       "id_fuente": "cmpc_19249",
       "cargo": "INSTRUMENTISTA AREA",
@@ -12,6 +48,18 @@
         "Nacimiento"
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19239",
+      "cargo": "Electricista de área - Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "fecha_publicacion": "2026-10-28",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."

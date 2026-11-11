@@ -66,6 +66,12 @@
       "file": "20261111/motor-d-20261111-53b485c2b77b7f7fae.json",
       "count": 1,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261111-9d4afde5d2aa8e880a",
+      "file": "20261111/motor-d-20261111-9d4afde5d2aa8e880a.json",
+      "count": 7,
+      "batch_type": "recovery"
     }
   ],
   "seen_offer_ids": [
@@ -78,6 +84,8 @@
     "d_2795b5d75320388ba141",
     "d_2a72a06b0d8dbb7895e1",
     "d_2e5d13719312865d3636",
+    "d_31acc134be48b1637d66",
+    "d_3b694de3e09ff760e50b",
     "d_46607b264d4d83a176c3",
     "d_4bdcac8ef560f0fe716d",
     "d_561f393870110fb67e2a",
@@ -89,6 +97,7 @@
     "d_728743fa1bc6044fab11",
     "d_7f24f1a31c25f4813b5c",
     "d_8058b3072cf8cc198cc8",
+    "d_8377eba647f422386562",
     "d_8cd3f39aa6e6f4dfd760",
     "d_8dfb2507759d6af5a6ba",
     "d_8e10d10d8dedf4b7e3b9",
@@ -97,9 +106,13 @@
     "d_a3a2f2298d5984b06475",
     "d_a6c5ab75b47d129e5ebb",
     "d_ad791baa0556cf59d931",
+    "d_af9a119e45d5f84851a7",
+    "d_b479eb4033d3626606d4",
     "d_bef43ecfd4d8417f1770",
     "d_c86ec67e426e27e24149",
+    "d_cc0fbbdbedccef4fe20d",
     "d_d45494ef6c6c2102a759",
+    "d_d5b4f7c3b41de14eac84",
     "d_ddad4ab0c134985d4f9c",
     "d_e0f58afad664f8f2609d",
     "d_f0ce646c3cd3ba45b19c",

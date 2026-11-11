@@ -1,0 +1,18 @@
+name: Motor D coverage contract
+on:
+  pull_request:
+    paths:
+      - 'automation/audit_motor_d_coverage.py'
+      - 'automation/test_motor_d_coverage.py'
+      - '.github/workflows/motor-d-coverage-contract.yml'
+  workflow_dispatch:
+jobs:
+  audit-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test territorial coverage evidence
+        run: python -m unittest discover -s automation -p test_motor_d_coverage.py -v

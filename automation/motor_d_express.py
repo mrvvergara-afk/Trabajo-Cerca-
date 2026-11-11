@@ -301,7 +301,7 @@ def record_publication_gate(report,local_day,state,eligible=0,
         "already_published_skipped":duplicates,
         "ready_batch_offers_staged":staged,
         "feed_error":error,
-        "feed_complete":state in ("completed","no_ready_candidates"),
+        "feed_complete":state=="completed",
     }
     atomic_json_write(ROOT/"publication_gate.json",receipt)
     print("MOTOR_D_PUBLICATION_GATE "+json.dumps(receipt,ensure_ascii=False),

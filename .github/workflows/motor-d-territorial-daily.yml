@@ -6,6 +6,7 @@ on:
     paths:
       - 'automation/motor_d_territorial_daily.py'
       - 'automation/motor_d_source_registry.py'
+      - 'automation/motor_d_portal_families.json'
       - 'automation/test_motor_d_source_registry.py'
       - 'automation/trabajo_cerca/fuentes_diarias.json'
       - 'automation/motor_d_audit_sources.json'
@@ -26,6 +27,7 @@ on:
     paths:
       - 'automation/motor_d_territorial_daily.py'
       - 'automation/motor_d_source_registry.py'
+      - 'automation/motor_d_portal_families.json'
       - 'automation/test_motor_d_source_registry.py'
       - 'automation/trabajo_cerca/fuentes_diarias.json'
       - 'automation/motor_d_audit_sources.json'

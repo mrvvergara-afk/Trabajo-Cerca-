@@ -46,6 +46,17 @@ class BackendPreflight(unittest.TestCase):
                         incremental.index("db.delete('public_feed_changes'"))
         self.assertIn("regressionBlocked", incremental)
 
+    def test_feed_preserves_approved_offer_without_confirmed_closure(self):
+        self.assertIn("PUBLIC_FEED_LAST_GOOD_PRESERVED", self.feed)
+        self.assertIn("previous?.item.verified===true", self.feed)
+        self.assertIn("!/confirmed|explicit|administrative|owner_request/.test(closure)", self.feed)
+
+    def test_feed_blocks_unexplained_disappearance(self):
+        publication = self.feed.split("async function publish(record:Manifest, projector:Projector)", 1)[1].split("export async function readPublicFeedSummary()", 1)[0]
+        self.assertIn("PUBLIC_FEED_REGRESSION_BLOCKED", publication)
+        self.assertIn("regressionBlocked:true", publication)
+        self.assertLess(publication.index("if(unexpected.length)"), publication.index("db.add('public_feed_manifests'"))
+
     def test_feed_recovers_last_good_for_summary_and_lookup(self):
         summary = self.feed.split("export async function readPublicFeedSummary()", 1)[1].split("export async function currentPublicFeedManifest()", 1)[0]
         lookup = self.feed.split("export async function currentPublicFeedManifest()", 1)[1].split("export async function publicFeedProgress()", 1)[0]

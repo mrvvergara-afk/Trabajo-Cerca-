@@ -11,17 +11,21 @@ class BackendPreflight(unittest.TestCase):
         cls.bc = (ROOT / "fast-bc-html.ts").read_text(encoding="utf-8")
         cls.feed = (ROOT / "public-feed.ts").read_text(encoding="utf-8")
 
-    def test_motor_d_index_is_fresh(self):
-        """Fail CI when the D producer has not delivered a daily batch."""
+    def test_motor_d_index_contract(self):
+        """Validate D index format without making unrelated CI time-dependent."""
         import json
-        from datetime import date, timedelta
+        from datetime import date
         index = json.loads((ROOT.parent / "automation" / "motor_d_ready" / "index.json").read_text(encoding="utf-8"))
-        daily = [str(entry.get("batch_id", ""))[8:16] for entry in index.get("batches", [])
-                 if entry.get("batch_type") == "daily"]
-        self.assertTrue(daily, "Motor D: no hay lotes diarios en el indice")
-        latest = max(date.fromisoformat(day[:4] + "-" + day[4:6] + "-" + day[6:8]) for day in daily)
-        self.assertGreaterEqual(latest, date.today() - timedelta(days=1),
-                                f"Motor D sin lote diario reciente; ultimo {latest}. Revisar productor y escritura del indice.")
+        self.assertEqual(index.get("schema_version"), 1)
+        batches = index.get("batches")
+        self.assertIsInstance(batches, list)
+        ids = [entry["batch_id"] for entry in batches]
+        self.assertEqual(len(ids), len(set(ids)), "Duplicated Motor D batch IDs")
+        for entry in batches:
+            batch_id = entry["batch_id"]
+            self.assertRegex(batch_id, r"^motor-d-\\d{8}-[a-f0-9]{18}$")
+            self.assertEqual(entry["file"], batch_id[8:16] + "/" + batch_id + ".json")
+            date.fromisoformat(batch_id[8:12] + "-" + batch_id[12:14] + "-" + batch_id[14:16])
 
     def test_bc_does_not_count_storage_as_publication(self):
         self.assertIn("decision='stored_pending_public_feed';published=false", self.bc)

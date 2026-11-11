@@ -226,7 +226,8 @@ def explicit_work_commune(body):
     cues=(
         r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
         r"(?:con base en|base de operaciones en|trabajo con base en|realizar labores en taller y terreno,? con base en)\s+([^.;]{3,90})",
-        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en|supermercados? en|tiendas? en)\s+([^.;]{3,90})"
+        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en|supermercados? en|tiendas? en)\s+([^.;]{3,90})",
+        r"(?:disponibilidad para realizar (?:practica|trabajo|labores) presencial(?:es)? en|disponibilidad para desempenarse en|practica presencial en)\s+([^.;]{3,90})"
     )
     for cue in cues:
         for field in re.finditer(cue,value,re.I):

@@ -49,6 +49,14 @@ class HandoffTests(unittest.TestCase):
     def test_same_role_different_source_id_allowed(self):
         x=fixture();second=dict(x["offers"][0]);second["id_fuente"]="d_"+"b"*20;x["offers"].append(second)
         self.assertEqual(len(prepare(x,{"schema_version":1,"batches":[]},day="20261111")[1]["offers"]),2)
+    def test_localhost_url_rejected(self):
+        x=fixture();x["offers"][0]["url_original"]="https://localhost/job"
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_invalid_batch_day_rejected(self):
+        with self.assertRaises(ValueError): prepare(fixture(),{"schema_version":1,"batches":[]},day="../../etc")
+    def test_no_new_identity_keys_written(self):
+        _,_,index=prepare(fixture(),{"schema_version":1,"batches":[]},day="20261111")
+        self.assertNotIn("seen_identity_keys",index)
     def test_input_not_mutated(self):
         x=fixture();prepare(x,{"schema_version":1,"batches":[]},day="20261111")
         self.assertEqual(x["offers"][0]["comunas"],["Mininco"])

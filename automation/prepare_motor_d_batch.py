@@ -73,7 +73,7 @@ def main():
   # Shared bridge accepts <=15. A deterministic batch avoids reimports.
   batch=approved[:15]
   tag=hashlib.sha256(json.dumps(batch,sort_keys=True).encode()).hexdigest()[:16]
-  payload={"schema_version":1,"approval":"approved_for_publication","producer":"chatgpt",
+  payload={"schema_version":1,"approval":"approved_for_publication","producer":"motor_d_cmpc_browser",
            "batch_id":"motor-d-cmpc-"+tag,"offers":batch}
   Path("automation/motor_d_approved.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding="utf-8")
  else:

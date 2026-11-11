@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261111-53b485c2b77b7f7fae",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_d45494ef6c6c2102a759",
+      "cargo": "Ayudante de Cancha/Teclero (Vacaciones) Mulchén",
+      "empresa": "SERFOCOL S.A.",
+      "comunas": [
+        "Mulchén"
+      ],
+      "url_original": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/ayudante-de-cancha-teclero-vacaciones-mulchen-3074287.html",
+      "fecha_publicacion": "2026-11-09",
+      "fecha_descubrimiento": "2026-11-11",
+      "justificacion": "Aviso individual vigente en Mipleo verificado por rastreo ChatGPT independiente el 11-11-2026; 1 vacante en Planta Mulchén, jornada 42 horas, período noviembre 2026-marzo 2027. Fecha original 09-11-2026. Prueba controlada de transporte/publicación mediante puente Motor D; descubrimiento externo, no atribuible al rastreo automático de D."
+    }
+  ]
+}

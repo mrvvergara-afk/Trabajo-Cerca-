@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'automation/qa_feed_bc_consolidado.py'
+      - 'automation/qa_public_catalog_integral.py'
+      - 'automation/test_qa_public_catalog_integral.py'
       - 'automation/test_qa_feed_bc_consolidado.py'
       - 'automation/test_appdeploy_staging_preflight.py'
       - 'appdeploy_staging/fast-bc-html.ts'
@@ -27,3 +29,18 @@ jobs:
         run: |
           python -m unittest discover -s automation -p 'test_qa_feed_bc_consolidado.py' -v
           python -m unittest discover -s automation -p 'test_appdeploy_staging_preflight.py' -v
+          python -m unittest discover -s automation -p 'test_qa_public_catalog_integral.py' -v
+
+  real-public-readonly:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Complete public catalog pagination audit (GET only)
+        run: python automation/qa_public_catalog_integral.py
+      - name: Actual motor A and B/C diagnostics (GET only)
+        run: python automation/qa_feed_bc_consolidado.py

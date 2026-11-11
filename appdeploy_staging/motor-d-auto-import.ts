@@ -152,7 +152,7 @@ export async function motorDAutoImportHandler(){
       heartbeat.sources_accessible<=heartbeat.sources_total &&
       typeof heartbeat?.source_report_sha256==='string' &&
       /^[a-f0-9]{64}$/.test(heartbeat.source_report_sha256) &&
-      Number.isFinite(ageMs) && ageMs>=-300000 && ageMs<=26*3600000
+      Number.isFinite(ageMs) && ageMs>=-300000 && ageMs<=8*3600000
     );
     const state=producerConfirmed?'no_unprocessed_batches_producer_confirmed':
       lastBatchStale?'no_recent_batches_unverified_producer':'no_unprocessed_batches_producer_unverified';

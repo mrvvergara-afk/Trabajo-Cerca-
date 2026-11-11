@@ -89,7 +89,14 @@ const withHeartbeat=JSON.parse((await motorDAutoImportHandler()).body);
 assert.equal(withHeartbeat.state,'no_unprocessed_batches_producer_confirmed');
 assert.equal(withHeartbeat.producerExecutionUnverified,false);
 assert.equal(tables.get('radar_jobs').size,1);
-
+// A heartbeat older than the four-daily-run tolerance cannot assert a current scan.
+const heartbeatPath=new URL('./ready/automation/motor_d_discovery/producer_heartbeat.json',import.meta.url);
+const recent=JSON.parse(fs.readFileSync(heartbeatPath,'utf8'));
+fs.writeFileSync(heartbeatPath,JSON.stringify({...recent,scan_completed_at:'2026-11-07T04:00:00Z'}));
+const stale=JSON.parse((await motorDAutoImportHandler()).body);
+assert.equal(stale.producerExecutionUnverified,true);
+assert.equal(stale.state,'no_unprocessed_batches_producer_unverified');
+fs.writeFileSync(heartbeatPath,JSON.stringify(recent));
 assert.equal(tables.get('radar_jobs').size,1);
 // Changed bytes block import before any database write.
 tables.get('motor_d_import_receipts').clear();

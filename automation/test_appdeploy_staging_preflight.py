@@ -17,8 +17,10 @@ class BackendPreflight(unittest.TestCase):
         icons = manifest["icons"]
         self.assertEqual(len(icons), 3)
         self.assertEqual([i["src"] for i in icons],
-                         ["./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"])
+                         ["./icon-192.png", "./icon-512.svg", "./icon-maskable-512.svg"])
         self.assertTrue(all(i["src"].startswith("./") for i in icons))
+        self.assertTrue((ROOT / "icon-512.svg").is_file())
+        self.assertTrue((ROOT / "icon-maskable-512.svg").is_file())
 
     def test_motor_d_index_contract(self):
         """Validate D index format without making unrelated CI time-dependent."""

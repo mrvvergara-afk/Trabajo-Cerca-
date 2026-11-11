@@ -88,6 +88,7 @@ jobs:
           from zoneinfo import ZoneInfo
           from motor_d_express import build, produce, validate_inventory_freshness
           from motor_d_catalog_probe import read_full_feed, check_ready_offers
+          from time import sleep
           source=Path("automation/motor_d_discovery/territorial_daily.json")
           report=json.loads(source.read_text(encoding="utf-8"))
           today=datetime.now(ZoneInfo("America/Santiago")).date()
@@ -95,7 +96,19 @@ jobs:
           classified=build(report,today)
           ready=[entry["offer"] for state in ("EXPRESS","RECUPERACION")
                  for entry in classified[state] if entry["offer"]]
-          catalog,complete,error=read_full_feed(max_pages=30)
+          # Do not allow intermittent API failures to pass as an empty batch.
+          # Bounded retries use GET only. A partial catalog is never evidence
+          # that an offer does not already exist.
+          catalog=[];complete=False;error="not_checked"
+          for attempt in range(3):
+              catalog,complete,error=read_full_feed(max_pages=30)
+              if complete:break
+              print("PR_CATALOG_READ_RETRY",json.dumps({
+                  "attempt":attempt+1,"reason":error,"app_writes":0
+              },ensure_ascii=False))
+              if attempt<2:sleep(3*(attempt+1))
+          if not complete:
+              raise SystemExit("PR_CATALOG_GATE_FAILED: full public feed unavailable; refuse to classify any offer as new")
           existing=check_ready_offers(ready,catalog,complete)
           evidence=[]
           for offer in ready:

@@ -75,6 +75,13 @@ class CatalogProbeTests(unittest.TestCase):
         self.assertEqual(seen,[None,"page2"])
         self.assertIsNone(error)
 
+    def test_real_pr_requires_complete_catalog_even_if_no_new_offers(self):
+        from pathlib import Path
+        workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/motor-d-territorial-daily.yml").read_text(encoding="utf-8")
+        self.assertIn("PR_CATALOG_GATE_FAILED", workflow)
+        self.assertIn("for attempt in range(3)", workflow)
+        self.assertLess(workflow.index("if not complete:"), workflow.index("existing=check_ready_offers(ready,catalog,complete)"))
+
     def test_partial_or_degraded_feed_fails_closed(self):
         cases=[
             lambda cursor: {"items":[{"id":"1"}],"totalJobOffers":2},

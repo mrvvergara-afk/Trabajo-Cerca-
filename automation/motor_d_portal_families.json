@@ -1,0 +1,62 @@
+{
+  "schema": "trabajo-cerca.motor-d-portal-families.v1",
+  "provenance": "AppDeploy backend/index.ts FREE_PORTAL_SEARCHES and FREE_LOCAL_SOURCES, reviewed 2026-11-11",
+  "rule": "Generate one targeted index per official commune; never use generic portal home pages to claim local job coverage.",
+  "providers": [
+    {
+      "name": "Indeed · ampliado",
+      "pattern": "https://cl.indeed.com/jobs?q=&l={place}&fromage=45"
+    },
+    {
+      "name": "Computrabajo",
+      "pattern": "https://cl.computrabajo.com/empleos-en-{region}-en-{slug}"
+    },
+    {
+      "name": "LinkedIn",
+      "pattern": "https://www.linkedin.com/jobs/search/?keywords=&location={place}%2C%20Chile&f_TPR=r3888000"
+    },
+    {
+      "name": "Laborum",
+      "pattern": "https://www.laborum.cl/empleos-busqueda-{slug}.html"
+    },
+    {
+      "name": "Opción Empleo",
+      "pattern": "https://www.opcionempleo.cl/empleo-en-{slug}.html"
+    },
+    {
+      "name": "Chiletrabajos · palabra clave",
+      "pattern": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}"
+    },
+    {
+      "name": "Trabajando",
+      "pattern": "https://www.trabajando.cl/trabajo-empleo/{slug}"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "Fashion's Park · contratación",
+      "territory": "Angol",
+      "url": "https://fashionspark.hiringroom.com/jobs"
+    },
+    {
+      "name": "CMPC · Trabajando",
+      "territory": "Collipulli",
+      "url": "https://cmpc.trabajando.cl/"
+    },
+    {
+      "name": "Malleco 7 · ediciones",
+      "territory": "Malleco",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/"
+    },
+    {
+      "name": "Mulchén · empleos búsqueda",
+      "territory": "Mulchén",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral"
+    },
+    {
+      "name": "Negrete · municipio",
+      "territory": "Negrete",
+      "url": "https://www.muninegrete.cl/"
+    }
+  ]
+}

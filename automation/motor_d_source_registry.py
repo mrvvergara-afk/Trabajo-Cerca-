@@ -192,7 +192,8 @@ def assess(plan,rows,stats):
             "industrial_employer_leads_to_verify":plan.get("employer_prospects",[]),
             "per_commune":per,
             "pending":[{k:x[k] for k in ("id","name","url","communes","status")} for x in pending],
-            "ranked_first":[{k:x[k] for k in ("name","url","communes","rank_score")} for x in records[:15]],
+            "ranked_first":[{k:x[k] for k in ("name","url","communes","rank_score")}
+                            for x in records if "rank_score" in x][:15],
             "ranking_all":[{k:x[k] for k in ("id","name","url","communes","rank_score","status")}
                            for x in records if x.get("rank_score") is not None],
             "source_identities":[x["id"] for x in records]}

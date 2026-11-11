@@ -42,7 +42,7 @@ def build(approved, evidence, index, now=None):
     now=now.astimezone(timezone.utc)
     if approved is None:
         return None
-    if not isinstance(approved,dict) or approved.get("schema_version")!=1 or approved.get("approval")!="approved_for_publication" or approved.get("producer")!="chatgpt" or not re.fullmatch(r"motor-d-cmpc-[a-f0-9]{16}",str(approved.get("batch_id",""))):
+    if not isinstance(approved,dict) or approved.get("schema_version")!=1 or approved.get("approval")!="approved_for_publication" or approved.get("producer") not in ("motor_d_cmpc_browser","chatgpt") or not re.fullmatch(r"motor-d-cmpc-[a-f0-9]{16}",str(approved.get("batch_id",""))):
         raise ValueError("invalid_original_cmpc_approval")
     if not isinstance(evidence,dict) or evidence.get("fuente")!="CMPC Cornerstone" or evidence.get("state")!="individual_links_found":
         raise ValueError("official_browser_evidence_unavailable")

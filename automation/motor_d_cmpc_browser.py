@@ -1,4 +1,4 @@
-"""Motor D: descubrimiento CMPC mediante navegador público, sin publicar automáticamente."""
+"""Motor D: lectura oficial CMPC por navegador; aprobación y publicación son pasos separados."""
 import json, os, re
 from datetime import datetime,timezone, date
 from urllib.parse import parse_qs
@@ -24,12 +24,19 @@ def run():
     report["body_excerpt"]=page.locator("body").inner_text(timeout=12000)[:1500]
     links=page.locator('a[href*="/requisition/"]').evaluate_all("""(xs)=>xs.map(a=>{
       let parent=a;
-      let evidence='';
-      for(let i=0;i<4 && parent;i++,parent=parent.parentElement){
+      let evidence='', fallback='';
+      const title=(a.innerText||a.textContent||'').trim();
+      // A job title like "Mecánico - Nacimiento" is not a full posting
+      // card. The former reader stopped there, losing the original date.
+      for(let i=0;i<7 && parent;i++,parent=parent.parentElement){
         const t=(parent.innerText||'').trim();
-        if(t.length>30 && t.length<800 && /(?:Chile|2026|Nacimiento|Collipulli|Santa Fe)/i.test(t)){evidence=t;break;}
+        if(t.length<20 || t.length>1200 || !t.includes(title))continue;
+        if(!fallback && /(?:Chile|Nacimiento|Collipulli|Santa Fe)/i.test(t))fallback=t;
+        if(/(?:\\b20\\d{2}[-/]\\d{1,2}[-/]\\d{1,2}\\b|\\b\\d{1,2}\\/\\d{1,2}\\/20\\d{2}\\b)/.test(t)){
+          evidence=t;break;
+        }
       }
-      return {url:a.href,title:(a.innerText||a.textContent||'').trim(),card_text:evidence};
+      return {url:a.href,title,card_text:evidence||fallback};
     })""")
     for row in links[:100]:
      u=row.get("url","")

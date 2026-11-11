@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-10T21:21:31.761241+00:00",
+  "updated_at": "2026-11-11T01:56:04.006487+00:00",
   "items_total": 15,
   "pending_total": 15,
   "publication_enabled": false,
@@ -23,7 +23,7 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "e25abc1a942abd831461767f41ae40f8b7b958c3aaa5eeb17ed700b108b791a4",
+      "document_sha256": "eeb3b85e3009c8fe77f8f1e4bb892e62430949ff6782f7960e8724e5072097c1",
       "original_classification": null,
       "date_source": "2026-10-17",
       "date_discovered": "2026-11-10",
@@ -35,7 +35,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-09",
-      "last_seen": "2026-11-10",
+      "last_seen": "2026-11-11",
       "review_signature": null
     },
     {

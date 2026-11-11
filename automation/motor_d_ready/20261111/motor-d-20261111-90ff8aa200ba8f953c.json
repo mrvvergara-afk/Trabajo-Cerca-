@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261111-90ff8aa200ba8f953c",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_f2a0213e28a7fd597b3a",
+      "cargo": "Práctica Profesional Contador Auditor - Nacimiento",
+      "empresa": "Serfonac Ltda",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+      "fecha_publicacion": "2026-10-08",
+      "fecha_descubrimiento": "2026-11-11",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2026-12-22",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    }
+  ]
+}

@@ -32,6 +32,16 @@ class TerritorialSafetyTests(unittest.TestCase):
             report = json.loads((Path(tmp) / "territorial_daily.json").read_text())
             self.assertEqual(inspected.call_count, len(engine.SEEDS) + len(engine.INDEED_SEEDS))
             self.assertEqual(report["sources_total"], len(engine.SEEDS) + 12)
+            self.assertTrue(report["source_inventory"]["all_automatic_sources_attempted"])
+            self.assertEqual(report["source_inventory"]["not_attempted"],0)
+            for town in engine.COMMUNES:
+                by_source=report["source_inventory"]["per_commune"][town]
+                shown=report["commune_status"][town]
+                self.assertEqual(shown["sources_registered"],by_source["registered"])
+                self.assertEqual(shown["sources_attempted"],
+                                 by_source["registered"]-by_source["unvisited"]-by_source["social_unread"])
+                self.assertEqual(shown["sources_accessible"],by_source["accessible"])
+                self.assertGreater(shown["sources_registered"],0)
             self.assertEqual(set(report["communes_visited"]), set(engine.COMMUNES))
             self.assertEqual(report["missing_communes"], [])
             self.assertEqual(report["indeed_critical"]["sources_blocked"], 12)

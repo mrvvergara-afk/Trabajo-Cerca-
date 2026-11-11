@@ -22,4 +22,25 @@ class HandoffTests(unittest.TestCase):
     def test_empty_fails(self):
         x=fixture();x["offers"]=[]
         with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_sixteen_offers_rejected(self):
+        x=fixture()
+        x["offers"]=[{**x["offers"][0],"id_fuente":"d_"+format(i,"020x")} for i in range(16)]
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_bad_date_rejected(self):
+        x=fixture();x["offers"][0]["fecha_publicacion"]="2026-11-99"
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_duplicate_within_batch_rejected(self):
+        x=fixture();x["offers"].append(dict(x["offers"][0]))
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_invalid_producer_rejected(self):
+        x=fixture();x["producer"]="unknown"
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_missing_source_url_rejected(self):
+        x=fixture();x["offers"][0]["url_original"]="not-a-link"
+        with self.assertRaises(ValueError): prepare(x,{"schema_version":1,"batches":[]},day="20261111")
+    def test_repeat_payload_has_same_id(self):
+        x=fixture();y=fixture();index={"schema_version":1,"batches":[]}
+        first=prepare(x,index,day="20261111")[1]["batch_id"]
+        second=prepare(y,index,day="20261111")[1]["batch_id"]
+        self.assertEqual(first,second)
 if __name__=="__main__": unittest.main()

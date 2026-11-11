@@ -281,7 +281,7 @@ jobs:
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/source_performance.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_discovery/producer_heartbeat.json automation/motor_d_ready/
+          git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/source_performance.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_discovery/producer_heartbeat.json automation/motor_d_discovery/publication_gate.json automation/motor_d_ready/
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
             # A simultaneous source edit is not a failed scan. Rebase and retry
@@ -307,5 +307,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: motor-d-territorial-audit
-          path: automation/motor_d_discovery/territorial_daily.json
+          path: |
+            automation/motor_d_discovery/territorial_daily.json
+            automation/motor_d_discovery/publication_gate.json
           if-no-files-found: warn

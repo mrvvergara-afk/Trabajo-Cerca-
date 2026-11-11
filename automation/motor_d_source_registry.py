@@ -147,7 +147,11 @@ def assess(plan,rows,stats):
     for src in ranked(plan,stats):
         observed=by.get(src["id"])
         state=str(observed.get("status","")) if observed else ""
-        label=("accessible" if state.startswith(("scanned","fallback_")) else
+        worked=state.startswith(("scanned","fallback_"))
+        # An HTML response from a national jobs homepage is not proof that
+        # all twelve locality searches were covered.
+        label=("needs_territorial_filter" if worked and src["kind"]=="portal_unfiltered_requires_geofilter"
+               else "accessible" if worked else
                "blocked_or_failed" if observed else "unvisited")
         records.append({**src,"status":label,"reader_status":state or None,
                         "checked_at":observed.get("checked_at") if observed else None,
@@ -161,6 +165,7 @@ def assess(plan,rows,stats):
         per[town]={"registered":len(group),
                    "accessible":sum(x["status"]=="accessible" for x in group),
                    "blocked":sum(x["status"]=="blocked_or_failed" for x in group),
+                   "needs_geofilter":sum(x["status"]=="needs_territorial_filter" for x in group),
                    "social_unread":sum(x["status"]=="requires_authorized_reader" for x in group),
                    "unvisited":sum(x["status"]=="unvisited" for x in group)}
     unvisited=[x for x in records if x["status"]=="unvisited"]

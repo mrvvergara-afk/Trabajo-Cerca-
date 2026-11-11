@@ -4,6 +4,8 @@ on:
     paths:
       - 'automation/audit_motor_d_coverage.py'
       - 'automation/test_motor_d_coverage.py'
+      - 'automation/stage_motor_d_handoff.py'
+      - 'automation/test_motor_d_handoff.py'
       - '.github/workflows/motor-d-coverage-contract.yml'
   workflow_dispatch:
 jobs:
@@ -15,4 +17,6 @@ jobs:
         with:
           python-version: '3.11'
       - name: Test territorial coverage evidence
-        run: python -m unittest discover -s automation -p test_motor_d_coverage.py -v
+        run: |
+          python -m unittest discover -s automation -p test_motor_d_coverage.py -v
+          python -m unittest discover -s automation -p test_motor_d_handoff.py -v

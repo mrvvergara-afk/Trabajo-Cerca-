@@ -32,7 +32,7 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("producer_heartbeat_missing", bridge)
         self.assertIn("producerHeartbeatMissing", bridge)
         self.assertIn("latestBatchDate", bridge)
-        self.assertIn(r"/^motor-d-(\\d{8})-/", bridge)
+        self.assertIn(r"/^motor-d-(\d{8})-/", bridge)
 
     def test_bc_pipeline_idle_does_not_migrate_or_write_checkpoint(self):
         pipeline = (ROOT / "fast-bc-pipeline.ts").read_text(encoding="utf-8")

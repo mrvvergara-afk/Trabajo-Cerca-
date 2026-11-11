@@ -1,0 +1,50 @@
+name: Motor D - reviewed batch handoff
+on:
+  workflow_dispatch:
+    inputs:
+      reviewed_payload:
+        description: 'JSON de ofertas ya verificadas y aprobadas; no enviar resultados sin revisar'
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: motor-d-ready-index
+  cancel-in-progress: false
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Write reviewed input
+        env:
+          REVIEWED_PAYLOAD: ${{ inputs.reviewed_payload }}
+        run: |
+          python - <<'PY'
+          import os,json
+          data=json.loads(os.environ["REVIEWED_PAYLOAD"])
+          with open("/tmp/motor_d_reviewed.json","w",encoding="utf-8") as f:
+              json.dump(data,f,ensure_ascii=False)
+          PY
+      - name: Validate and prepare import batch
+        run: python automation/stage_motor_d_handoff.py /tmp/motor_d_reviewed.json
+      - name: Commit batch and index together
+        run: |
+          git config user.name "motor-d-handoff[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add automation/motor_d_ready/index.json automation/motor_d_ready/20*/
+          git diff --cached --quiet && { echo "No batch changes"; exit 1; }
+          git commit -m "motor-d: deliver reviewed batch and index"
+          git push origin HEAD:main
+      - name: Confirm committed delivery
+        run: |
+          git fetch origin main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"
+          echo "Motor D batch and index confirmed on main"

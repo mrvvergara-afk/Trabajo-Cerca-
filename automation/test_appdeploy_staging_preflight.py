@@ -27,6 +27,13 @@ class BackendPreflight(unittest.TestCase):
             self.assertEqual(entry["file"], batch_id[8:16] + "/" + batch_id + ".json")
             date.fromisoformat(batch_id[8:12] + "-" + batch_id[12:14] + "-" + batch_id[14:16])
 
+    def test_bc_idle_cycle_skips_redundant_status_write(self):
+        html = (ROOT / "fast-bc-html.ts").read_text(encoding="utf-8")
+        idle = html.index("if(checked===0 && storageFailures===0)")
+        status_write = html.index("db.tx.update(STATUS")
+        self.assertLess(idle, status_write)
+        self.assertIn("FAST_B_C_HTML_IDLE", html)
+
     def test_bc_does_not_count_storage_as_publication(self):
         self.assertIn("decision='stored_pending_public_feed';published=false", self.bc)
         self.assertNotIn("decision='verified_for_public_feed';published=true", self.bc)

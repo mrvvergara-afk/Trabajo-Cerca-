@@ -81,6 +81,24 @@ class FullInventoryTests(unittest.TestCase):
         self.assertEqual(report["per_commune"]["Mulchén"]["needs_geofilter"],1)
         source["kind"]=original
 
+    def test_industrial_employers_are_included_from_verified_employer_pages(self):
+        from motor_d_social_sources import SOURCES
+        import motor_d_territorial_daily as d
+        full=plan(d.SEEDS,d.INDEED_SEEDS,social_refs=SOURCES)
+        expected={
+          "cmpc.csod.com": ("Collipulli","Nacimiento"),
+          "jobs.arauco.com": ("Collipulli","Nacimiento"),
+          "portal.chiletrabajos.cl/empresa/serfonac/ofertas": ("Nacimiento","Lumaco"),
+          "portal.chiletrabajos.cl/empresa/brayben/ofertas": ("Collipulli","Nacimiento"),
+          "serfocol.trabajando.cl": ("Mulchén","Nacimiento"),
+          "safcoltda.cl": ("Collipulli",),
+        }
+        for address,territory in expected.items():
+            rows=[x for x in full["public"] if address in x["url"]]
+            self.assertTrue(rows,"Missing "+address)
+            self.assertTrue(any(all(t in row["communes"] for t in territory)
+                                for row in rows),"Territory mismatch for "+address)
+
     def test_actual_source_inventory_exceeds_old_hardcoded_56(self):
         from motor_d_social_sources import SOURCES
         import motor_d_territorial_daily as d

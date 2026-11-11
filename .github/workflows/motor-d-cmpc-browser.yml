@@ -6,6 +6,9 @@ on:
       - '.github/workflows/motor-d-cmpc-browser.yml'
       - 'automation/motor_d_cmpc_browser.py'
       - 'automation/prepare_motor_d_batch.py'
+      - 'automation/stage_cmpc_approved_batch.py'
+      - 'automation/test_motor_d_cmpc_stage.py'
+      - 'automation/stage_motor_d_handoff.py'
       - 'automation/motor_d_audit_sources.json'
       - 'automation/motor_d_audit_discovery.py'
   workflow_dispatch:
@@ -30,7 +33,9 @@ jobs:
           python -m pip install 'playwright>=1.48,<2' 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
           python -m playwright install --with-deps chromium
       - name: Verify Python
-        run: python -m py_compile automation/motor_d_cmpc_browser.py automation/prepare_motor_d_batch.py automation/motor_d_audit_discovery.py
+        run: python -m py_compile automation/motor_d_cmpc_browser.py automation/prepare_motor_d_batch.py automation/motor_d_audit_discovery.py automation/stage_cmpc_approved_batch.py
+      - name: Test guarded CMPC -> AppDeploy bridge
+        run: python -m unittest discover -s automation -p 'test_motor_d_cmpc_stage.py' -v
       - name: Discover public CMPC requisitions
         run: python automation/motor_d_cmpc_browser.py
       - name: Examine audited public sources and preserve pending evidence
@@ -53,7 +58,10 @@ jobs:
                   assert x["url_original"].startswith("https://") and x["fecha_publicacion"]
               print("APPROVED_BATCH_VALID",len(obj["offers"]))
           PY
-      - name: Persist discoverable evidence in repository
+      - name: Stage fresh approved CMPC requisitions into real AppDeploy-ready queue
+        if: success() && github.ref == 'refs/heads/main'
+        run: python automation/stage_cmpc_approved_batch.py
+      - name: Persist discoverable evidence and AppDeploy-ready batches in one commit
         if: success()
         run: |
           git config user.name "trabajo-cerca-bot"
@@ -62,15 +70,35 @@ jobs:
           # Entregar solamente el lote generado de fichas oficiales que pasaron validación.
           # AppDeploy verifica URL/identidad, deduplica con catálogo vivo y publica mediante su pipeline.
           # Stage addition, replacement OR removal: no stale approved batch survives.
-          git add -A automation/motor_d_approved.json
+          git add -A automation/motor_d_approved.json automation/motor_d_ready/
           if ! git diff --cached --quiet; then
-            git commit -m "data: CMPC public discovery evidence"
-            git push
+            git commit -m "data(cmpc): evidence and approved import bridge [skip ci]"
+            # The territorial scanner may update the same index concurrently.
+            # A failed rebase is NOT successful publication: preserve artifacts
+            # and exit nonzero; next scheduled scan retries fresh evidence.
+            for attempt in 1 2 3; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort || true
+                echo "CMPC_STAGING_CONFLICT: index changed; rerun live evidence"
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                echo "CMPC_BRIDGE_STAGED_OK attempt=$attempt"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "CMPC_STAGING_FAILED: safe retries exhausted"
+            exit 1
           fi
       - name: Upload evidence (not approved for publication)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: motor-d-cmpc-evidence
-          path: automation/motor_d_discovery/
+          path: |
+            automation/motor_d_discovery/
+            automation/motor_d_approved.json
+            automation/motor_d_ready/
           if-no-files-found: warn

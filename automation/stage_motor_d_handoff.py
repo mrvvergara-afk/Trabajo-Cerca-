@@ -26,7 +26,7 @@ def prepare(payload,index,day=None):
         if any(p not in COMMUNES for p in normalized): raise ValueError("outside_territory")
         offer["comunas"]=normalized
         identity="|".join((offer["cargo"].strip().casefold(),offer["empresa"].strip().casefold(),",".join(sorted(normalized))))
-        if identity in identity_seen or identity in identity_batch: raise ValueError("duplicate_identity")
+        # Repeated cargo/empresa/comuna can be a legitimate new vacancy; only source IDs are hard duplicates.
         identity_batch.add(identity)
         for field in ("fecha_publicacion","fecha_descubrimiento"):
             try:

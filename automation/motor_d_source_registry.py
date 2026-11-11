@@ -116,6 +116,11 @@ def ranked(plan,stats):
 
 def learn(stats,rows,at):
     result=dict(stats)
+    # Classification is the actual acceptance rule used by the publisher.
+    # Raw HTML links with "job" keywords do not count as verified yield.
+    from motor_d_express import classify
+    from datetime import datetime
+    when=datetime.fromisoformat(at.replace("Z","+00:00")).date()
     for row in rows:
         key=performance_key(row.get("url",""))
         if not key:continue
@@ -138,7 +143,10 @@ def learn(stats,rows,at):
                     "individual":int(old.get("individual",0))+
                        sum(x.get("evidence")=="individual_page_with_job_terms" for x in fresh),
                     "ready":int(old.get("ready",0))+
-                       sum(x.get("express_ready") is True for x in fresh)})
+                       sum(x.get("express_ready") is True or
+                           (x.get("express_ready") is None and
+                            classify(x,when)[0] in ("EXPRESS","RECUPERACION"))
+                           for x in fresh)})
         result[key]=old
     return result
 

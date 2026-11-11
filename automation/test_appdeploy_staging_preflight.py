@@ -27,6 +27,13 @@ class BackendPreflight(unittest.TestCase):
             self.assertEqual(entry["file"], batch_id[8:16] + "/" + batch_id + ".json")
             date.fromisoformat(batch_id[8:12] + "-" + batch_id[12:14] + "-" + batch_id[14:16])
 
+    def test_motor_d_reports_missing_producer_heartbeat(self):
+        bridge = (ROOT / "motor-d-auto-import.ts").read_text(encoding="utf-8")
+        self.assertIn("producer_heartbeat_missing", bridge)
+        self.assertIn("producerHeartbeatMissing", bridge)
+        self.assertIn("latestBatchDate", bridge)
+        self.assertIn(r"/^motor-d-(\\d{8})-/", bridge)
+
     def test_bc_pipeline_idle_does_not_migrate_or_write_checkpoint(self):
         pipeline = (ROOT / "fast-bc-pipeline.ts").read_text(encoding="utf-8")
         idle = pipeline.index("if(result.processed===0 && html.checked===0 && html.storageFailures===0)")

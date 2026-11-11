@@ -131,10 +131,10 @@ export async function motorDAutoImportHandler(){
     const latestBatchDate=batchDates.at(-1)||null;
     const today=new Date().toISOString().slice(0,10).replace(/-/g,'');
     const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10).replace(/-/g,'');
-    const producerHeartbeatMissing=!latestBatchDate||latestBatchDate<yesterday;
-    return recordStatus(producerHeartbeatMissing?'producer_heartbeat_missing':'no_unprocessed_batches',
+    const lastBatchStale=!latestBatchDate||latestBatchDate<yesterday;
+    return recordStatus(lastBatchStale?'no_recent_batches_unverified_producer':'no_unprocessed_batches',
       {indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount,
-       latestBatchDate,producerHeartbeatMissing,referenceDate:today});
+       latestBatchDate,lastBatchStale,producerExecutionUnverified:true,referenceDate:today});
   }catch(e){return recordStatus('bridge_error',{error:String(e).slice(0,180)});}
 }
 

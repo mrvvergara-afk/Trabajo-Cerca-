@@ -68,6 +68,19 @@ class FullInventoryTests(unittest.TestCase):
         again=learn(x,[row],"2026-11-11T22:00:00-03:00")
         self.assertEqual(again[self.registry["public"][0]["id"]]["ready"],1)
         self.assertEqual(again[self.registry["public"][0]["id"]]["individual"],1)
+    def test_national_homepage_does_not_certify_local_coverage(self):
+        x=self.registry
+        source=next(s for s in x["public"] if "mipleo.cl" in s["url"])
+        original=source["kind"]
+        source["kind"]="portal_unfiltered_requires_geofilter"
+        results=[self.fake(s) for s in x["public"]]
+        report=assess(x,results,{})
+        self.assertTrue(report["all_automatic_sources_attempted"])
+        self.assertFalse(report["all_registered_sources_accessible"])
+        self.assertTrue(any(r["status"]=="needs_territorial_filter" for r in report["pending"]))
+        self.assertEqual(report["per_commune"]["Mulchén"]["needs_geofilter"],1)
+        source["kind"]=original
+
     def test_actual_source_inventory_exceeds_old_hardcoded_56(self):
         from motor_d_social_sources import SOURCES
         import motor_d_territorial_daily as d

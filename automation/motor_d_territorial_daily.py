@@ -91,6 +91,7 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 
 # Integrate all registered permanent source indexes and social references.
 # Individual historical vacancies are NOT permanent search sources.
+from motor_d_employer_portal import read_employer_vacancy
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
 from motor_d_social_sources import SOURCES as SOCIAL_REFERENCE_SOURCES
 SOURCE_PLAN=source_plan(SEEDS,INDEED_SEEDS,social_refs=SOCIAL_REFERENCE_SOURCES)
@@ -225,7 +226,8 @@ def explicit_work_commune(body):
     cues=(
         r"(?:lugar de trabajo|comuna de trabajo|lugar de desempeno|ubicacion laboral|sede de trabajo)\s*[:\-]\s*([^.;]{3,100})",
         r"(?:con base en|base de operaciones en|trabajo con base en|realizar labores en taller y terreno,? con base en)\s+([^.;]{3,90})",
-        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en|supermercados? en|tiendas? en)\s+([^.;]{3,90})"
+        r"(?:obras? ubicadas? en|planta ubicada en|fabrica de [^.;]{3,50} ubicada en|supermercados? en|tiendas? en)\s+([^.;]{3,90})",
+        r"(?:disponibilidad para realizar (?:practica|trabajo|labores) presencial(?:es)? en|disponibilidad para desempenarse en|practica presencial en)\s+([^.;]{3,90})"
     )
     for cue in cues:
         for field in re.finditer(cue,value,re.I):
@@ -467,6 +469,21 @@ def inspect(seed):
                         job_commune=portal["work_commune"] or job_commune
                         employer=portal["employer"] or employer
                         application_evidence=portal["application_evidence"] or application_evidence
+                    # Company-specific Chiletrabajos pages expose an original
+                    # absolute date beside the employer, not under "Fecha".
+                    # Their recruitment city is never the execution commune.
+                    company_page=read_employer_vacancy(
+                        detail_soup,detail_url,label,explicit_work_commune,as_of=NOW.date())
+                    if company_page:
+                        if company_page["title"]:
+                            title=company_page["title"]
+                        employer=company_page["employer"] or employer
+                        job_commune=company_page["work_commune"] or job_commune
+                        application_evidence=company_page["application_evidence"] or application_evidence
+                        # When this is a company-specific page, an unrelated
+                        # date in the body/meta is not posting-date evidence.
+                        dates=([company_page["date_source"]]
+                               if company_page["date_source"] else [])
                     primary_ats=hiringroom_metadata(detail_soup,title,detail_url)
                     if primary_ats:
                         title=primary_ats["title"]
@@ -477,14 +494,17 @@ def inspect(seed):
                         employer="ARAUCO"  # Verified first-party ATS; never infer work commune.
                     # Closed labels and internal-only calls are not public job vacancies.
                     deadline=explicit_deadline_date(body)
+                    if company_page and company_page.get("deadline"):
+                        deadline=datetime.strptime(company_page["deadline"],"%Y-%m-%d").date()
                     if portal and portal.get("deadline"):
                         portal_expiry=datetime.strptime(portal["deadline"],"%Y-%m-%d").date()
                         deadline=deadline or portal_expiry
-                    explicit_closed=bool(CLOSED.search(title+" "+label+" "+body) or (deadline and deadline<NOW.date()) or (portal and portal["source_closed"]))
+                    explicit_closed=bool(CLOSED.search(title+" "+label+" "+body) or (deadline and deadline<NOW.date()) or (portal and portal["source_closed"]) or (company_page and company_page["source_closed"]))
                     public_title=title if len(title)>10 else label
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
                     general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))
                     detail.update(title=public_title,dates=dates,
+                                  source_date_method=(company_page or {}).get("date_source_method"),
                                   work_commune=job_commune,source_commune_not_confirmed=job_commune is None,
                                   employer=employer,application_evidence=application_evidence,
                                   date_source=dates[0] if dates else None,
@@ -613,7 +633,10 @@ def main():
     print("MOTOR_D_INDEED_CRITICAL "+json.dumps(indeed_coverage,ensure_ascii=False),flush=True)
     scanned={r["commune"] for r in rows}
     missing=sorted(set(COMMUNES)-scanned)
-    candidates=[dict(x,source=y["source"],commune=y["commune"]) for y in rows for x in y["candidates"]]
+    # One employer portal can serve all 12 towns. Its worker anchor is NOT
+    # proof of the job's execution city (e.g. SERFONAC sources anchored Angol).
+    candidates=[dict(x,source=y["source"],commune=x.get("work_commune"),
+                     crawler_commune=y["commune"]) for y in rows for x in y["candidates"]]
     documents_for_review=[]
     seen_documents=set()
     for row in rows:
@@ -659,7 +682,10 @@ def main():
             "needs_geofilter":source_coverage["per_commune"][town]["needs_geofilter"],
             "needs_specialized_reader":source_coverage["per_commune"][town]["needs_specialized_reader"],
             "links_found":sum(x["links_found"] for x in rows if x["commune"]==town),
-            "candidates":sum(len(x["candidates"]) for x in rows if x["commune"]==town),
+            "candidates":sum(y.get("work_commune")==town
+                               for x in rows for y in x["candidates"]),
+            "candidate_worksites_unconfirmed":sum(y.get("work_commune") is None
+                               for x in rows if x["commune"]==town for y in x["candidates"]),
         } for town in COMMUNES
     }
     excluded={"closed","internal_only","directory_not_offer","inconclusive_page","detail_unavailable"}

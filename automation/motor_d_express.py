@@ -48,9 +48,14 @@ def job_source_identity(raw):
     if not canonical:
         return None
     parsed = urlsplit(canonical)
-    if parsed.hostname != "chiletrabajos.cl":
-        return None
-    match = re.fullmatch(r"/trabajo/(?:[^/]*-)?([0-9]{5,12})", parsed.path)
+    if parsed.hostname == "chiletrabajos.cl":
+        match = re.fullmatch(r"/trabajo/(?:[^/]*-)?([0-9]{5,12})",parsed.path)
+    elif parsed.hostname == "portal.chiletrabajos.cl":
+        # Employer subportals and the standard public listing share a
+        # numbered Chiletrabajos job ID. Do not publish the same job twice.
+        match = re.fullmatch(r"/empresa/[a-z0-9-]+/trabajo/(?:[^/]*-)?([0-9]{5,12})",parsed.path,re.I)
+    else:
+        match = None
     return "chiletrabajos:" + match.group(1) if match else None
 
 

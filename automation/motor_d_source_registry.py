@@ -184,7 +184,20 @@ def assess(plan,rows,stats):
         # all twelve locality searches were covered.
         # Cornerstone needs the existing Playwright reader. A generic HTTP
         # response with zero vacancies cannot certify CMPC career coverage.
-        browser_needed=("cmpc.csod.com" in src["url"] and state=="scanned_no_candidates")
+        # Branded employer career portals can return HTTP 200 with only
+        # recruitment advice or JS placeholders. No individual vacancy link
+        # must mean 'specialized reader needed', NOT 'employer fully covered'.
+        employer_requires_real_jobs=any(host in src["url"] for host in (
+            "cmpc.csod.com","cmpc.trabajando.cl","serfocol.trabajando.cl"))
+        actual_individual=sum(
+            item.get("evidence")=="individual_page_with_job_terms" and
+            item.get("http")==200 and
+            not any(segment in str(item.get("url","")) for segment in (
+                "/noticias/","/blog/","/articulos/"))
+            for item in (observed.get("candidates") or []) if isinstance(item,dict)
+        ) if observed else 0
+        browser_needed=(employer_requires_real_jobs and worked and
+                        actual_individual==0)
         # SAFCO displays real open-looking job cards inline with no dated,
         # unique individual URL. A generic scanner showing zero links did NOT
         # confirm that these advertised roles were examined and deduplicated.

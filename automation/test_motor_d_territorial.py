@@ -17,7 +17,7 @@ class TerritorialSafetyTests(unittest.TestCase):
         from unittest.mock import patch
 
         def artificial_scan(seed):
-            town, source, url = seed
+            town, source, url = seed[:3]
             blocked = source.startswith("Indeed")
             return {"commune": town, "source": source, "url": url,
                     "status": "http_restricted" if blocked else "scanned_no_candidates",

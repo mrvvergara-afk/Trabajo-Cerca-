@@ -39,3 +39,23 @@ Los agregadores regionales `https://www.trabajopublico.cl/araucania` y `https://
 - Una fuente nueva se mantiene en el manifiesto con origen y localidades; el barrido prueba su acceso sin afirmar que todos sus avisos fueron leídos si hay paginación o material no estructurado.
 - Oferta encontrada → comprobar vigencia, fecha y comuna de ejecución → contrastar catálogo público → publicación efectiva, sin usar el registro como sustituto de la prueba.
 - **No desplegar AppDeploy sin autorización.** Ninguna escritura en app pública durante pruebas de PR.
+
+## Mejora adicional incorporada al mismo ciclo
+
+Se detectó otro defecto operativo: los índices con más de 35 ofertas
+seleccionaban siempre las **primeras 35** en el orden HTML, por lo que
+las vacantes posteriores podían quedar ignoradas en cada ejecución.
+Ahora el lector conserva el límite de 35 fichas por fuente y pasada
+(para no saturar los cron), pero **rota de forma determinista** usando
+el historial persistente de intentos por fuente. Un índice con 44
+ofertas distintas alcanzará las 44 en dos pasadas si el orden del
+portal permanece estable. La URL individual y la deduplicación siguen
+controladas por las validaciones anteriores.
+
+**Límite transparente:** esto no sustituye una lectura completa en
+una sola pasada ni la paginación del portal; los índices largos
+continúan clasificados `index_pagination_required` hasta desarrollar
+un lector paginado/estructurado. El reporte agrega
+`index_rotation_offset`, `index_candidates_selected` y
+`index_candidates_detected` como evidencia. Nunca confundir
+intentos de lectura con ofertas publicadas.

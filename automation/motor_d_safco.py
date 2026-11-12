@@ -35,31 +35,35 @@ def extract_open_safco_cards(soup,source_url):
     if not allowed_source(source_url):
         raise ValueError("unsupported_safco_source")
     tokens=[x.strip() for x in soup.stripped_strings if x and x.strip()]
-    anchors=[i for i,t in enumerate(tokens)
-             if fold(t)=="trabaje con nosotros" and
-             any(fold(s)=="disponible" for s in tokens[i+1:i+20])]
-    if not anchors:
+    # SAFCO repeats "Trabaje con Nosotros" in the mobile navigation,
+    # actual hiring section and footer. Previously we selected the last
+    # heading and silently missed all four available cards.
+    section_titles=[i for i,x in enumerate(tokens) if fold(x)=="trabaje con nosotros"]
+    if not section_titles:
         return []
-    tokens=tokens[anchors[-1]+1:]
+    available=[i for i,x in enumerate(tokens) if fold(x)=="disponible"]
     results=[];seen=set()
-    for pos,token in enumerate(tokens[:240]):
-        normalized=fold(token)
-        if normalized in ("vacante disponible","postular a este cargo"):
-            break
-        if normalized!="disponible" or pos+3>=len(tokens):
+    for pos in available:
+        if pos+4>=len(tokens):
             continue
+        # A real open role card has the sequence:
+        # Disponible / [role heading] / [worksite] / [description] /
+        # Ver detalles. Do not mistake other page "Disponible" labels for jobs.
         title=tokens[pos+1].strip()
         city=tokens[pos+2].strip()
-        if (fold(city)!="collipulli" or len(title)<5
+        detail_tokens=tokens[pos+3:pos+13]
+        detail_end=next((i for i,x in enumerate(detail_tokens)
+                         if fold(x)=="ver detalles"),None)
+        if (detail_end is None or detail_end<1 or
+                fold(city)!="collipulli" or len(title)<5
                 or re.search(r"https?://|[@<>]",title)):
             continue
-        desc=[]
-        for entry in tokens[pos+3:pos+15]:
-            if fold(entry) in ("ver detalles","disponible","vacante disponible",
-                               "postular a este cargo"):
-                break
-            desc.append(entry.strip())
+        desc=[x.strip() for x in detail_tokens[:detail_end] if x.strip()]
         if not desc:
+            continue
+        # Require nearby hiring-section context. A footer navigation heading
+        # after a card should not be taken as its owning section.
+        if not any(i<pos and pos-i<130 for i in section_titles):
             continue
         signature=fold(title)+"|collipulli"
         if signature in seen:

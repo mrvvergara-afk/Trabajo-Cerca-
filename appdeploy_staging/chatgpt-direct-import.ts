@@ -25,7 +25,7 @@ function parse(value:unknown):Candidate[]|null {
       x.comunas instanceof Array && x.comunas.length===1 && x.comunas[0]==='Mulchén' &&
       x.empresa==='Empresa agrícola no identificada (OMIL Mulchén)' &&
       typeof x.fecha_descubrimiento==='string' &&
-      /^20\\d{2}-\\d{2}-\\d{2}$/.test(x.fecha_descubrimiento) &&
+      /^20\d{2}-\d{2}-\d{2}$/.test(x.fecha_descubrimiento) &&
       Number.isFinite(Date.parse(x.fecha_descubrimiento)) &&
       Date.parse(x.fecha_descubrimiento)<=Date.now());
     if(!/^[A-Za-z0-9_-]{4,64}$/.test(id)||title.length<5||title.length>180||company.length<2||company.length>140||
@@ -62,7 +62,7 @@ async function officialMunicipalIndexStatus(row:Candidate):Promise<'open'|'close
     // Evaluate the closest status marker before THIS link, not the first
     // 'open' banner elsewhere on the municipal index.
     const before=html.slice(Math.max(0,position-1100),position)
-      .replace(/<[^>]+>/g,' ').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+      .replace(/<[^>]+>/g,' ').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const open=before.lastIndexOf('postulacion abierta');
     const closed=before.lastIndexOf('postulacion cerrada');
     return open>=0 && open>closed ? 'open' : closed>=0 && closed>open ? 'closed' : 'unknown';

@@ -125,6 +125,35 @@ class RecoveryAndRankingTests(unittest.TestCase):
         self.assertEqual(set(conaf[0]["communes"]),set(COMMUNES))
         self.assertIn("daily",conaf[0]["origins"])
 
+    def test_partial_index_never_counts_as_complete_source_coverage(self):
+        from bs4 import BeautifulSoup
+        from unittest.mock import patch
+        import motor_d_territorial_daily as d
+        from motor_d_source_registry import assess
+        url="https://empleos.ejemplo.cl/convocatorias"
+        body="<html><h1>Ofertas laborales</h1>"+ "".join(
+            '<a href="/vacante/'+str(i)+'">Oferta laboral operario '+str(i)+'</a>'
+            for i in range(44))+"</html>"
+        catalog=BeautifulSoup(body,"html.parser")
+        detail=BeautifulSoup("<h1>Oferta laboral operario</h1><p>Requisitos de trabajo</p>","html.parser")
+        with patch.object(d,"request_page",side_effect=lambda u:
+                          (200,catalog,None) if u==url else (200,detail,None)):
+            report=d.inspect(("Angol","Ofertas empleo",url))
+        self.assertEqual(report["index_candidates_detected"],44)
+        self.assertEqual(report["links_found"],35)
+        self.assertTrue(report["index_incomplete"])
+        self.assertEqual(report["status"],"scanned_partial_index")
+        source={"id":performance_key(url),"url":url,"name":"Ofertas empleo",
+                "communes":list(COMMUNES),"anchor":"Angol","kind":"portal"}
+        inventory={"public":[source],"social":[],"historical_job_links":0,
+                   "unregistered_publishers":[]}
+        cover=assess(inventory,[report],{})
+        self.assertEqual(cover["unresolved_total"],1)
+        self.assertEqual(cover["pending"][0]["status"],"index_pagination_required")
+        pending=build_recovery_queue(cover,WHEN)
+        self.assertEqual(pending["group_counts"],{"partial_index":1})
+        self.assertTrue(all(pending["per_commune"][t]["pending"]==1 for t in COMMUNES))
+
     def test_real_12_commune_inventory_recovery_queue_has_no_loss(self):
         scan_report=json.loads(REPORT.read_text(encoding="utf-8"))
         inventory=scan_report["source_inventory"]

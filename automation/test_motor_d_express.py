@@ -244,5 +244,43 @@ class MotorDExpressTests(unittest.TestCase):
             self.assertEqual(len(index2["batches"]),3)
             self.assertEqual(result["published_confirmed"],0)
 
+
+    def test_official_open_municipal_undated_has_no_fabricated_source_date(self):
+        row=record(url="https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+                   date_source=None, index_status="open",
+                   title="Operarios Agrícolas – Cosecha de Arándanos",
+                   employer="Empresa agrícola no identificada (OMIL Mulchén)",
+                   official_index_open_verified=True,
+                   source_date_method="original_not_reported_official_index_open",
+                   application_method="in_person_omil",
+                   official_open_index_url="https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
+        state,reason,offer=engine.classify(row,TODAY)
+        self.assertEqual(state,"RECUPERACION")
+        self.assertIsNone(offer["fecha_publicacion"])
+        self.assertEqual(offer["fecha_descubrimiento"],TODAY.isoformat())
+        self.assertIsNone(offer["fecha_cierre"])
+        self.assertEqual(offer["internal_visibility_days"],14)
+        self.assertIn("fecha original",reason if reason.startswith("fecha") else offer["justificacion"].lower())
+
+    def test_open_index_alone_never_approves_an_unconfirmed_job(self):
+        row=record(url="https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+                   date_source=None, index_status="open",
+                   title="Operarios Agrícolas – Cosecha de Arándanos",
+                   employer="Empresa agrícola no identificada (OMIL Mulchén)",
+                   official_index_open_verified=True,
+                   source_date_method="original_not_reported_official_index_open",
+                   application_method="in_person_omil",
+                   official_open_index_url="https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
+        for change in ({"official_index_open_verified":False},
+                       {"application_method":None},
+                       {"source_commune_not_confirmed":True},
+                       {"official_open_index_url":"https://other.example.cl/ofertas"},
+                       {"application_evidence":False}):
+            with self.subTest(change=change):
+                state,_,offer=engine.classify(dict(row,**change),TODAY)
+                self.assertEqual(state,"SEGUNDA_PASADA")
+                self.assertIsNone(offer)
+        self.assertEqual(engine.classify(dict(row,index_status="closed"),TODAY)[0],"DESCARTADO")
+
 if __name__=="__main__":
     unittest.main()

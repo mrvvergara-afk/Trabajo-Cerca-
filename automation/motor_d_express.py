@@ -228,6 +228,39 @@ def produce(report,root=None,today=None,publication_statuses=None):
         return keys
     seen_keys = set(saved.get("seen_identity_keys", []))
     historical_batch_by_identity = {}
+    quarantined_batches={str(row.get("batch_id")) for row in
+                         saved.get("quarantined_batches",[])
+                         if isinstance(row,dict) and isinstance(row.get("batch_id"),str)}
+    # Releasing a quarantined candidate requires FRESH original-source evidence.
+    # Historical existence in a staging batch is NEVER sufficient.
+    def safe_quarantined_recovery(offer, prior_batch_ids):
+        if (publication_statuses is None or not prior_batch_ids or
+                not set(prior_batch_ids).issubset(quarantined_batches)):
+            return False
+        try:
+            validate_inventory_freshness(report,today)
+            deadline=date.fromisoformat(str(offer.get("fecha_cierre") or ""))
+        except (ValueError,TypeError):
+            return False
+        if deadline<today or len(offer.get("comunas",[]))!=1:
+            return False
+        site=offer["comunas"][0]
+        for fresh in report.get("candidates",[]):
+            if not isinstance(fresh,dict) or fresh.get("url")!=offer.get("url_original"):
+                continue
+            if (fresh.get("http")==200 and
+                fresh.get("evidence")=="individual_page_with_job_terms" and
+                fresh.get("index_status")!="closed" and
+                fresh.get("source_commune_not_confirmed") is False and
+                fresh.get("explicit_worksite_commune")==site and
+                fresh.get("work_commune")==site and
+                fresh.get("application_evidence") is True and
+                fresh.get("date_source")==offer.get("fecha_publicacion") and
+                fresh.get("deadline")==offer.get("fecha_cierre") and
+                normalize(fresh.get("employer"))==normalize(offer.get("empresa")) and
+                str(fresh.get("source","")).startswith("Portal Chiletrabajos · ")):
+                return True
+        return False
     # Migrate old manifests from their actual batches, including HTML offers.
     for entry in batches:
         relative = entry.get("file", "")
@@ -242,6 +275,7 @@ def produce(report,root=None,today=None,publication_statuses=None):
     batch_counts={"daily":0,"recovery":0}
     already_in_public_catalog=0
     historical_missing=[]
+    released_from_quarantine=[]
     for batch_type,state in (("daily","EXPRESS"),("recovery","RECUPERACION")):
         approved=[]
         for entry in classified[state]:
@@ -259,22 +293,35 @@ def produce(report,root=None,today=None,publication_statuses=None):
             # A historical staging attempt is NOT evidence of actual public
             # visibility. Preserve batch identities and flag unreconciled
             # vacancies for receipt inspection instead of silently discarding.
-            if (publication_statuses is not None and
-                    public_status == "not_found_in_complete_feed" and
-                    (offer["id_fuente"] in seen_ids or bool(keys & seen_keys))):
-                historical_missing.append({
-                    "id_fuente":offer["id_fuente"],
-                    "cargo":offer["cargo"],
-                    "empresa":offer["empresa"],
-                    "comunas":offer["comunas"],
-                    "url_original":offer["url_original"],
-                    "prior_batch_ids":sorted({
-                        batch for k in keys
-                        for batch in historical_batch_by_identity.get(k,())
-                    }),
-                    "next_action":"review_appdeploy_receipt_before_safe_recovery",
-                })
-            if offer["id_fuente"] not in seen_ids and not keys & seen_keys:
+            was_staged=offer["id_fuente"] in seen_ids or bool(keys & seen_keys)
+            prior_batch_ids=sorted({
+                batch for k in keys
+                for batch in historical_batch_by_identity.get(k,())
+            })
+            release=bool(was_staged and
+                publication_statuses is not None and
+                public_status=="not_found_in_complete_feed" and
+                safe_quarantined_recovery(offer,prior_batch_ids))
+            if was_staged and publication_statuses is not None and (
+                    public_status=="not_found_in_complete_feed"):
+                if release:
+                    released_from_quarantine.append({
+                        "id_fuente":offer["id_fuente"],
+                        "original_quarantined_batches":prior_batch_ids,
+                        "url_original":offer["url_original"],
+                        "evidence":"fresh_original_http200_worksite_date_deadline_application",
+                    })
+                else:
+                    historical_missing.append({
+                        "id_fuente":offer["id_fuente"],
+                        "cargo":offer["cargo"],
+                        "empresa":offer["empresa"],
+                        "comunas":offer["comunas"],
+                        "url_original":offer["url_original"],
+                        "prior_batch_ids":prior_batch_ids,
+                        "next_action":"review_appdeploy_receipt_before_safe_recovery",
+                    })
+            if release or (offer["id_fuente"] not in seen_ids and not keys & seen_keys):
                 approved.append(offer)
                 seen_keys.update(keys)
         for start in range(0,len(approved),15):
@@ -309,10 +356,13 @@ def produce(report,root=None,today=None,publication_statuses=None):
             "scan_date":today.isoformat(),
             "state":"needs_receipt_review" if historical_missing else "clear",
             "historical_missing_from_catalog":len(historical_missing),
+            "released_from_quarantine":len(released_from_quarantine),
+            "released_items":released_from_quarantine,
             "items":historical_missing,
         })
     summary={state:len(items) for state,items in classified.items()}
     summary["historical_missing_from_catalog"]=len(historical_missing)
+    summary["released_from_quarantine"]=len(released_from_quarantine)
     # Preserve actionable reasons for why discovery did not become a publishable offer.
     summary["review_reasons"] = {
         state: dict(sorted(Counter(

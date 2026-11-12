@@ -1,9 +1,15 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-12",
+  "checked_at": "2026-11-12T21:57:05.939066+00:00",
+  "feed_complete": true,
+  "feed_rows": 273,
   "state": "clear",
   "historical_missing_from_catalog": 0,
   "released_from_quarantine": 0,
   "released_items": [],
-  "items": []
+  "items": [],
+  "resolved_published_items": [],
+  "confirmation_file": "publication_confirmation.json",
+  "semantic_only_requires_receipt": []
 }

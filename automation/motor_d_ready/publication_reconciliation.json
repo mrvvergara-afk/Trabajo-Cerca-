@@ -1,36 +1,9 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-12",
-  "checked_at": "2026-11-12T15:34:51.524799+00:00",
-  "feed_complete": true,
-  "feed_rows": 272,
   "state": "clear",
   "historical_missing_from_catalog": 0,
   "released_from_quarantine": 0,
   "released_items": [],
-  "items": [],
-  "resolved_published_items": [
-    {
-      "id_fuente": "d_e0f58afad664f8f2609d",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",
-      "status": "confirmed_visible_in_live_feed_by_source",
-      "checked_at": "2026-11-12T15:34:51.524799+00:00",
-      "prior_batch_ids": [
-        "motor-d-20261108-50a5c80afe2d3bf4fd",
-        "motor-d-20261112-e320b72de7d2b23bc7"
-      ]
-    },
-    {
-      "id_fuente": "d_56d079ed0f37b488c6d6",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
-      "status": "confirmed_visible_in_live_feed_by_source",
-      "checked_at": "2026-11-12T15:34:51.524799+00:00",
-      "prior_batch_ids": [
-        "motor-d-20261108-50a5c80afe2d3bf4fd",
-        "motor-d-20261112-e320b72de7d2b23bc7"
-      ]
-    }
-  ],
-  "confirmation_file": "publication_confirmation.json",
-  "semantic_only_requires_receipt": []
+  "items": []
 }

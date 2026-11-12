@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-12T10:59:41.491962-03:00",
+  "last_run": "2026-11-12T12:52:27.790902-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -3786,6 +3786,156 @@
       "first_seen": "2026-11-12T10:59:41.491962-03:00",
       "url": "https://www.munimulchen.cl/participa-en-el-concurso-de-vitrinas-y-locales-comerciales/",
       "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "7e5aff5063efc49bdb1f": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.munimulchen.cl/cargos-red-local/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "6eba524cf22d76de50b0": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.munimulchen.cl/recepcion-de-antecedentes-2/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "e005690db55aa3fab301": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.munimulchen.cl/resultados-3er-concurso-microcuentos-bureanos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "eea0d21b9eb0990bfe02": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.munimulchen.cl/resultados-postulacion-feria-navidena-2025/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "28be8d8cd6cc1d3d45b8": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.munimulchen.cl/curso-de-capacitacion-guardia-de-seguridad-os-10-presencial/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "af51de5fe7c0267e5351": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/gerente-de-tienda-papajohns-copiapo-3076322.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9a4b60e4058903c23e08": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/agente-atencion-al-cliente-rancagua-ruta-movil-3076321.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8fe6ef1a8ba0eccc3300": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-senior-de-procesos-3076320.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d47ca2bf8f7f553e966f": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/auxiliar-de-bodega-despacho-y-atencion-meson-sucursal-los-angeles-3076319.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8abef7dff0b8b73653fb": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/auxiliar-de-aseo-centro-medico-de-puerto-montt-3076318.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "16ce84111001e4af4d86": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/recepcionista-especializada-en-ventas-recepcionista-comercial-3076317.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "09e810580fb1809a80a2": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-a-de-facilities-y-servicios-santiago-3076316.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8acba10b45db42dd4f57": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-5x2-dia-hym-mall-plaza-tobalaba-3076315.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0c7e6a9e3185480e51b8": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-comercial-afp-seguros-salud-vitacura-3076314.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5a5e60a0ba14ad20379a": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/ejecutivo-comercial-venta-pos-en-terreno-full-time-copiapo-region-de-atacama-enfoque-oportunidad-y-crecimiento-despega-tu-carrera-comercial-ejecutivo-ventas-pymes-marca-lider-3076313.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "69bd3e5e898a348ade7a": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/urgente-guardias-de-seguridad-nike-easton-mall-605000-hrs-extras-3076312.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a3f95cd8c67d50804a32": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/teams-operacionales-tarragona-outlet-la-fabrica-3076311.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b36dd7ba9aa1456547dc": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-5x2-tommy-cd-quilicura-3076310.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a75bf084e0fc31a85a59": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/full-stack-experiencia-en-inteligencia-artificial-ia-3076309.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "37e285095007b838a1e7": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/abogado-a-de-contratos-y-asuntos-legales-las-condes-3076308.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9be053b33b418bbbdb8d": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-5x2-dia-hym-mall-arauco-maipu-3076307.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9caf723c8272f0391866": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/auxiliar-de-aseo-centro-medico-de-osorno-3076306.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f4ea425332106e3f7de7": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-a-de-aseo-y-mantencion-menor-quilicura-3076305.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e6bce5b46626b26d4afd": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reposicion-y-armado-de-stand-macul-560000-lunes-a-viernes-3076304.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "52b68d4544155fd8d591": {
+      "first_seen": "2026-11-12T12:52:27.790902-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reposicion-y-armado-de-stand-providencia-560000-lunes-a-viernes-3076303.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

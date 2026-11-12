@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "scan_date": "2026-11-12",
+  "state": "needs_receipt_review",
+  "historical_missing_from_catalog": 2,
+  "items": [
+    {
+      "id_fuente": "d_e0f58afad664f8f2609d",
+      "cargo": "Ejecutivo/a de Atención al Usuario Jornada Nocturna,  Call Center 42hrs",
+      "empresa": "Empresa de tecnología e",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",
+      "prior_batch_ids": [
+        "motor-d-20261108-50a5c80afe2d3bf4fd"
+      ],
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+    },
+    {
+      "id_fuente": "d_56d079ed0f37b488c6d6",
+      "cargo": "Ejecutivo/a Atención a Usuarios, 42hrs, Call Center  Presencial",
+      "empresa": "Empresa de tecnología e",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
+      "prior_batch_ids": [
+        "motor-d-20261108-50a5c80afe2d3bf4fd"
+      ],
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+    }
+  ]
+}

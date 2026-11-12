@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-11T22:12:08.931802-03:00",
+  "last_run": "2026-11-12T10:38:34.198308-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -2922,6 +2922,492 @@
       "first_seen": "2026-11-11T22:12:08.931802-03:00",
       "url": "https://www.conaf.cl/wp-content/uploads/2024/09/Conaf-Informa_resultados_728.doc",
       "source": "Inventario D06",
+      "commune": null
+    },
+    "363be544060541f6f56b": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/operador-de-bodega-3832000",
+      "source": "Chiletrabajos · Angol",
+      "commune": null
+    },
+    "9572a87335d8ba8fc03a": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/cajeros-as-multifuncionales-full-time-y-part-time-huentelauquen-3076232.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a6d5360cff88d797b92f": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/vendedor-comisionista-ventas-en-terreno-puerta-a-puerta-3076231.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7337bca618597db0d9e4": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingreso-inmediato-guardia-de-seguridad-con-experiencia-640000-4x4-dia-easy-la-dehesa-lo-barnechea-3076230.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "73cf851aa57b5340b584": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-industrial-1x6-290000-huechuraba-3076229.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bb43c55c583399e357aa": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-industrial-1x6-290000-huechuraba-3076228.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f065500405f55719de88": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/captadores-moviles-lunes-a-sabado-700000-liquidos-providencia-3076227.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dc79cd423afa5ba99615": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/promovendedor-a-linea-blanca-full-time-42-horas-temuco-3076226.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c091da1ed29b27ce4dc5": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/vendedor-en-terreno-talca-3076225.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d31dc192e51373b35289": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/vendedor-en-terreno-temuco-3076224.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "eef8d52167251ac95e34": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/vendedor-comisionista-con-experiencia-en-ventas-en-terreno-3076223.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7f4ce43475e68f4b26c7": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-planificacion-5x2-providencia-3076222.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5608155fde14204f8bfa": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/vendedor-a-terreno-forestal-3076221.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ffe8288c5299ce373a7e": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/vendedor-a-terreno-mineria-3076220.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "29243ed2af0f33b9325b": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-comercial-inmobiliario-3076219.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c365aa65bc8d0b4e2711": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/prevencionista-de-riesgo-sector-gas-licuado-sustancias-peligrosas-osorno-3076218.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8e9d836d8700898e16e4": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-operaciones-4x4-providencia-3076217.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "09de865a2cc0710789ef": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/asistente-de-administracion-y-recursos-humanos-iquique-3076216.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "264c3c80f2a76c042bf4": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/guardia-de-seguridad-supermercado-en-san-felipe-550000-4x4-turnos-extras-os10-vigente-3076215.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c189cc31ca4ce2e3fb25": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/guardia-de-seguridad-sodimac-en-san-felipe-600000-4x4-turnos-extras-os10-vigente-3076214.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "02e6a004076207762ab2": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/coordinadora-or-zonal-conductora-or-en-osorno-3076213.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0a5ec070d32b2d172c72": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/llamado-a-recepcion-de-antecedentes-profesional-programa-mujeres-jefas-de-hogar/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "c1e892ccccb61575749a": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-alarife/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "a54a9114d197fbe74a37": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-asistente-contable/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "14c34fc9a940f5bdcdd4": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-asistente-de-perecible-part-time-y-cajero/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "e8f133fb9032341e59b6": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-asistentes-de-control-de-calidad/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "35357f96d8dc75487610": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-ayudantes-de-maestro-y-maestros-carpinteros/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "c4ef1a222e45b1cda291": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-comercio/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "2be3cee72e98cb7ef7d3": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-conductor-de-camion-aljibe/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "b2481f990ddcabf328d5": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-conductor-profesional-licencia-a4/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "8e5848fe1a56f7f01267": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-conductores-profesionales-con-corma/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "f1e6e2d2fd81007df414": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-conductores-profesionales-licencia-a-4/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "6909de89f101b944feeb": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-construccion/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "20459071c151728013ae": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-constructor-civil-o-ingeniero-civil/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "3fca98b2de2ac2eca9ba": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-cuidador-de-campo/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "8ffb1d1abea425a4da06": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-electrico-de-planta/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "cbb3382b1121fd32b63d": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-electricos-2/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "0f758a77aa31346d25c4": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-electricos-en-mantencion/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "84e657c247ace04c5da4": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-electricos-en-mantencion-2/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "59362d600445e3964aaf": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-empresa-agricola-varias-vacantes/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "6af18567f66f9e5ff10d": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-empresa-agroindustrial/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "c899e977f20225b74f18": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-encargado-de-huerto-de-cerezos/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "57c3b2a91fdab547c967": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-encargado-de-perecibles/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "8cb988a544514efb65f2": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-encargado-de-turno-seccion-packing/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "ecfccbce5c868eb40343": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-guardia-de-seguridad-con-curso-os-10/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "c62a5e1ade22786fc5c1": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "125323e88c6ba578f540": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad-con-os-10/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "7ae3fb9e9918cfaf2c14": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-guardia-de-seguridad-con-curso-os-10-2/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "d874a04ba83160cf2939": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad-con-curso-os-10-vigente/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "14192941861c1fbdaebb": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-guardias-de-seguridad-con-curso-vigente/",
+      "source": "Mulchén · empleos búsqueda",
+      "commune": null
+    },
+    "2467e09358eb95ac9b9f": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6af37e519c954d65c6acb865",
+      "source": "Fashion's Park · portal oficial de contratación",
+      "commune": null
+    },
+    "431aedb14fe588a7f9af": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6af1b7a859dfb4f7ddce4f83",
+      "source": "Fashion's Park · portal oficial de contratación",
+      "commune": null
+    },
+    "e263555425072cc59518": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aedbee9b85285efe07d255b",
+      "source": "Fashion's Park · portal oficial de contratación",
+      "commune": null
+    },
+    "537cd5477d9b9e105c95": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aeb73c06119b0b5a4b2b3ac",
+      "source": "Fashion's Park · portal oficial de contratación",
+      "commune": null
+    },
+    "a9f3f6ebb53d339bcf00": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Constituci%C3%B3n-Brigadista-de-Incendios-Forestales-Zona-Constituci%C3%B3n-ML-3560000/1408219100/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "98449eb9fb6cdf487f7a": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Supervisor-Producci%C3%B3n-Aserradero-CFI-Vi%C3%B1ales/1438387200/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "0a2f50209d727772fa22": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Brigadista-de-Incendios-Forestales-Zona-Chill%C3%A1n-BI-3780000/1390365600/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "5df2912e33b28d6d1aab": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-Ingenieroa-Control-Producci%C3%B3n-Terciados-Arauco-BI-4360000/1448599600/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "88c43ecc6fa63e2adcb5": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-Supervisora-Producci%C3%B3n-Preparaci%C3%B3n-Complejo-Maderas-Horcones-BI-4360000/1447829800/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "d33c1a1b4f482562100d": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-Ingenieroa-de-Procesos-Terciados-Arauco-BI-4360000/1447843700/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "2cc98020f79af8ea0469": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Supervisora-Maestranza-Taller-Central-BI-3780000/1436288400/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "cf156dfa55845026783b": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Valdivia-Brigadista-Incendios-Forestales-Unidad-terrestre-Zona-Valdivia-LR-5110467/1402912700/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "79e37b1057bc848ec350": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://victoriachile.cl/departamentos-y-direcciones/administracion-y-finanzas/inventario/",
+      "source": "Municipio Victoria OMIL publicaciones",
+      "commune": null
+    },
+    "8edd3db5bb6cefd7dc50": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://sence.gob.cl/sence/cierre-administrativo-2022-2025",
+      "source": "Inventario D01",
+      "commune": null
+    },
+    "6e5f91ad1a876bdc7775": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://lasnoticiasdemalleco.cl/informacion-general/director-regional-del-ips-aborda-beneficios-previsionales-y-llama-a-informarse-por-canales-oficiales/",
+      "source": "Las Noticias de Malleco",
+      "commune": null
+    },
+    "34368660d757a127efc2": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/07/727-conaf-informa-resultado-1-1.docx",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "732fd08549e89575cc11": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/08/Resultado-concurso-726.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "b359eb5410feb3c43293": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/05/725-conaf-informa-resultado-3.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "ef9a40a04dcb59e0d1f2": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/09/Conaf-Informa_resultados_724.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "aeef46902121ee398987": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_720.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "c5cc2456cd336812d0cf": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/05/711-conaf-informa-resultado-3.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "f15be37b5c08f5a2c389": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/08/710-conaf-informa-resultado-1-1.docx",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "8d5ca967cfb4379222ff": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/05/707-conaf-informa-resultado.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "859a4755f9c0c48f9961": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/07/705-conaf-informa-resultado.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "92b768e515c151489a13": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/07/628-conaf-informa-resultado-1.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "133c9a33cbd112bff3db": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/manejo-de-ecosistemas/bosque-nativo/fondo-de-conservacion-y-manejo-sustentable-del-bosque-nativo/pago-por-asesoria-profesional/",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "4037030d73a689c2667a": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/manejo-de-ecosistemas/bosque-nativo/asistencia-profesional/",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "7abd7148705a70b727e0": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/manejo-de-ecosistemas/bosque-nativo/asistencia-profesional/programa-nacional-de-extension-forestal-de-conaf/",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "539b03724d7525cf3b35": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.conaf.cl/manejo-de-ecosistemas/bosque-nativo/asistencia-profesional/acuerdos-de-produccion-limpia-apl/",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "6373f15b5a00b87d0477": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.malleco7.cl/senador-francisco-huenchumilla-cuestiona-la-designacion-de-ignacio-malig-como-nuevo-director-nacional-de-la-conadi/",
+      "source": "Inventario P04",
+      "commune": null
+    },
+    "bfefe2c24d6c6d3e2a7b": {
+      "first_seen": "2026-11-12T10:38:34.198308-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
+      "source": "Chiletrabajos · Director CC LAE Angol · contraste",
       "commune": null
     }
   }

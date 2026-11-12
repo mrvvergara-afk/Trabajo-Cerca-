@@ -244,5 +244,57 @@ class MotorDExpressTests(unittest.TestCase):
             self.assertEqual(len(index2["batches"]),3)
             self.assertEqual(result["published_confirmed"],0)
 
+
+    def test_historical_offer_missing_from_complete_feed_requires_receipt_review(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            statuses = {source_id: "not_found_in_complete_feed"}
+            first = engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            self.assertEqual(first["daily_batch_offers"], 1)
+            second = engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            self.assertEqual(second["daily_batch_offers"], 0)
+            self.assertEqual(second["historical_missing_from_catalog"], 1)
+            evidence = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(evidence["state"], "needs_receipt_review")
+            self.assertEqual(evidence["items"][0]["id_fuente"], source_id)
+            self.assertEqual(len(evidence["items"][0]["prior_batch_ids"]), 1)
+            self.assertEqual(len(json.loads((root / "index.json").read_text())["batches"]), 1)
+
+    def test_historical_reconciliation_clears_when_public_or_offer_closes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            statuses = {source_id: "not_found_in_complete_feed"}
+            engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            visible = engine.produce({"candidates": [row]}, root, TODAY,
+                                     {source_id: "already_published_source_identity"})
+            self.assertEqual(visible["historical_missing_from_catalog"], 0)
+            report = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(report["state"], "clear")
+            self.assertEqual(report["items"], [])
+            closed = engine.produce({"candidates": [record(index_status="closed")]},
+                                    root, TODAY, statuses)
+            self.assertEqual(closed["historical_missing_from_catalog"], 0)
+
+    def test_stale_seen_id_without_batch_is_reported_not_silently_dropped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            engine.atomic_json_write(root / "index.json", {
+                "schema_version": 1, "batches": [],
+                "seen_offer_ids": [source_id],
+            })
+            result = engine.produce({"candidates": [row]}, root, TODAY,
+                                    {source_id: "not_found_in_complete_feed"})
+            self.assertEqual(result["daily_batch_offers"], 0)
+            self.assertEqual(result["historical_missing_from_catalog"], 1)
+            report = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(report["items"][0]["prior_batch_ids"], [])
+
 if __name__=="__main__":
     unittest.main()

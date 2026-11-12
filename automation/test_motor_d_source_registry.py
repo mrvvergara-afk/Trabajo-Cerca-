@@ -58,8 +58,15 @@ class FullInventoryTests(unittest.TestCase):
         self.assertFalse(r["all_registered_sources_accessible"])
     def test_only_real_individual_evidence_drives_future_ranking(self):
         row=self.fake(self.registry["public"][0])
-        row["candidates"]=[{"id":"generic-page","evidence":"directory_not_offer"},
-                           {"id":"real-job-1","evidence":"individual_page_with_job_terms","express_ready":True}]
+        row["candidates"]=[
+            {"id":"generic-page","evidence":"directory_not_offer"},
+            {"id":"real-job-1","url":"https://www.chiletrabajos.cl/trabajo/real-3874201",
+             "evidence":"individual_page_with_job_terms","http":200,
+             "index_status":"open","employer":"Empresa de prueba",
+             "title":"Mantenedor Industrial Nacimiento","work_commune":"Nacimiento",
+             "source_commune_not_confirmed":False,"application_evidence":True,
+             "date_source":"2026-11-05","express_ready":False}
+        ]
         x=learn({},[row],"2026-11-11T18:00:00-03:00")
         record=x[self.registry["public"][0]["id"]]
         self.assertEqual(record["ready"],1)

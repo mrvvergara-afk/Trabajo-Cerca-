@@ -758,6 +758,22 @@ def main():
            for x in ordered]
     with ThreadPoolExecutor(max_workers=8) as pool:
         rows=list(pool.map(inspect,seeds))
+    # Operational evidence for the employer ATS that formerly looked empty.
+    # A HTTP 200 is not coverage unless official API pagination is complete.
+    for cm in rows:
+        if source_is_official_cmpc(cm.get("url")):
+            print("MOTOR_D_CMPC_API "+json.dumps({
+                "source":cm["source"],
+                "http":cm.get("http"),
+                "reader":cm.get("source_reader"),
+                "status":cm.get("status"),
+                "pages":cm.get("official_api_pages"),
+                "jobs_scanned":cm.get("official_api_job_records_examined"),
+                "eligible_local_jobs":cm.get("official_api_candidates"),
+                "index_complete":cm.get("official_api_index_complete"),
+                "error":cm.get("official_api_error"),
+                "rejected_reasons":cm.get("official_api_reason_counts")
+            },ensure_ascii=False),flush=True)
     source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)
     updated_performance=learn_source_performance(previous,rows,NOW.isoformat())
     performance_file.write_text(json.dumps(

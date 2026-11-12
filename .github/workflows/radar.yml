@@ -37,7 +37,7 @@ jobs:
         env:
           PYTHONPATH: scripts:automation
         run: |
-          python -m py_compile scripts/radar.py scripts/backfill.py scripts/chiletrabajos_direct.py scripts/verify_candidates.py scripts/motor_a_handoff.py automation/motor_a_handoff.py
+          python -m py_compile scripts/radar.py scripts/backfill.py scripts/chiletrabajos_direct.py scripts/verify_candidates.py scripts/motor_a_handoff.py scripts/motor_a_coverage.py automation/motor_a_handoff.py
           python -m unittest discover -s scripts -p 'test_motor_a_*.py' -v
   scan:
     if: github.event_name != 'pull_request'
@@ -57,13 +57,15 @@ jobs:
       - run: python scripts/verify_candidates.py
         env:
           VERIFY_LIMIT: '60'
+      - name: Guardar cobertura por comuna y fuente de Motor A
+        run: python scripts/motor_a_coverage.py
       - name: Transferir fichas A con ubicación acreditada a revisión de Motor D
         run: python scripts/motor_a_handoff.py
       - name: Persistir el checkpoint y las fichas A para el barrido D
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add automation/motor_a_review/pending.json automation/motor_a_review/state.json
+          git add automation/motor_a_review/pending.json automation/motor_a_review/state.json automation/motor_a_review/source_coverage.json
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-a): preserve D source-review handoff [skip ci]"
             for attempt in 1 2 3; do

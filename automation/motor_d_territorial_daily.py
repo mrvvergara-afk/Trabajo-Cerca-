@@ -540,16 +540,26 @@ def inspect(seed):
                     # multiple article/content blocks. The focused first block
                     # may omit the in-person OMIL instructions further down.
                     # Check the SAME fetched original page, never another URL.
-                    if not official_open and index_status=="open" and source=="Municipio Mulchén empleos":
-                        municipal_full_body=detail_soup.get_text(" ",strip=True)[:16000]
-                        official_open=municipal_open_official_evidence(
-                            town,source,url,detail_url,index_status,municipal_full_body)
+                    municipal_full_body=""
+                    if index_status=="open" and source=="Municipio Mulchén empleos":
+                        # The municipal WordPress theme has very long menus.
+                        # An arbitrary 7k/16k text prefix cuts off the actual
+                        # in-person application instructions AFTER the role.
+                        all_page_text=detail_soup.get_text(" ",strip=True)
+                        start=re.search(
+                            r"empresa del rubro agr[ií]cola de la comuna de Mulch[eé]n",
+                            all_page_text,re.I)
+                        if start:
+                            municipal_full_body=all_page_text[start.start():start.start()+22000]
+                        if not official_open and municipal_full_body:
+                            official_open=municipal_open_official_evidence(
+                                town,source,url,detail_url,index_status,municipal_full_body)
                     job_commune=explicit_work_commune(body)
                     detail["explicit_worksite_commune"]=job_commune
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
                     if index_status=="open" and source=="Municipio Mulchén empleos":
-                        normalized_body=fold(detail_soup.get_text(" ",strip=True)[:16000])
+                        normalized_body=fold(municipal_full_body or body)
                         detail["municipal_open_evidence_checks"]={
                             "agriculture": "empresa del rubro agricola de la comuna de mulchen" in normalized_body,
                             "worksite": "predio ubicado en el sector campamento" in normalized_body,

@@ -326,8 +326,14 @@ def produce(report,root=None,today=None,publication_statuses=None):
                 seen_keys.update(keys)
         for start in range(0,len(approved),15):
             chunk=approved[start:start+15]
+            # A revalidation of a quarantined item is a NEW publication
+            # authorization, never a rewrite of its original frozen batch.
+            fingerprint_input={"batch_type":batch_type,"offers":chunk}
+            released_ids={x["id_fuente"] for x in released_from_quarantine}
+            if any(x["id_fuente"] in released_ids for x in chunk):
+                fingerprint_input["quarantine_recovery_protocol"]="verified_v2"
             fingerprint=hashlib.sha256(json.dumps(
-                {"batch_type":batch_type,"offers":chunk},sort_keys=True,ensure_ascii=False
+                fingerprint_input,sort_keys=True,ensure_ascii=False
             ).encode()).hexdigest()[:18]
             batch_id=f"motor-d-{today:%Y%m%d}-{fingerprint}"
             path=f"{today:%Y%m%d}/{batch_id}.json"
@@ -339,10 +345,15 @@ def produce(report,root=None,today=None,publication_statuses=None):
             if is_new_batch and len(batches) >= 256:
                 raise RuntimeError("Límite de manifiesto D: no crear lotes huérfanos sin recibo")
             target.parent.mkdir(parents=True,exist_ok=True)
-            atomic_json_write(target, batch)
             if is_new_batch:
+                atomic_json_write(target, batch)
                 batches.append({"batch_id":batch_id,"file":path,"count":len(chunk),
                                 "batch_type":batch_type})
+            else:
+                # Never overwrite a prior signed/quarantined historical file,
+                # even if a future fingerprint collision is detected.
+                if not target.exists() or json.loads(target.read_text(encoding="utf8"))!=batch:
+                    raise RuntimeError("Existing publication batch differs; refusing overwrite")
             seen_ids.update(offer["id_fuente"] for offer in chunk)
             batch_counts[batch_type]+=len(chunk)
     if len(batches)>256:

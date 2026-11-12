@@ -474,6 +474,12 @@ def inspect(seed):
                 "section_tokens":len(section_indices),
                 "available_tokens":sum(x=="disponible" for x in normalized),
                 "around_last_section":safco_tokens[position:position+18],
+                "section_offsets":section_indices[:8],
+                "available_offsets":[i for i,x in enumerate(normalized) if x=="disponible"][:8],
+                "around_available":[
+                    safco_tokens[max(0,i-2):i+9] for i,x in enumerate(normalized)
+                    if x=="disponible"
+                ][:5],
                 "title":soup.title.get_text(" ",strip=True)[:100] if soup.title else None,
             }
             # SAFCO publishes per-role OPEN cards on its official homepage

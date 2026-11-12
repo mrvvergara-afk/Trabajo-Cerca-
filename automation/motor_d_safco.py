@@ -61,9 +61,11 @@ def extract_open_safco_cards(soup,source_url):
         desc=[x.strip() for x in detail_tokens[:detail_end] if x.strip()]
         if not desc:
             continue
-        # Require nearby hiring-section context. A footer navigation heading
-        # after a card should not be taken as its owning section.
-        if not any(i<pos and pos-i<130 for i in section_titles):
+        # Require hiring-section context before the card, but never impose
+        # an arbitrary token-distance limit: SAFCO's real page has 175+ tokens
+        # between its navigation heading and the four available job cards.
+        # Footer heading appears after the cards and is excluded here.
+        if not any(i<pos for i in section_titles):
             continue
         signature=fold(title)+"|collipulli"
         if signature in seen:

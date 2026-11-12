@@ -827,8 +827,7 @@ class TerritorialSafetyTests(unittest.TestCase):
                     "<div>Postulación "+index_state+" <a href='"+offer_url+
                     "'>OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS (100 CUPOS)</a></div>",
                     "html.parser")
-                with patch.object(engine,"discover_municipal",return_value=feed), \\
-                     patch.object(engine,"request_page",side_effect=[
+                with patch.object(engine,"discover_municipal",return_value=feed), patch.object(engine,"request_page",side_effect=[
                          (200,index,None),(200,BeautifulSoup(article,"html.parser"),None)]):
                     result = engine.inspect(("Mulchén","Municipio Mulchén empleos",index_url))
                 self.assertEqual(len(result["candidates"]),1)

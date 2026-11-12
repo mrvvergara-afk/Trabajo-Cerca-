@@ -52,6 +52,25 @@ class TerritorialSafetyTests(unittest.TestCase):
             self.assertEqual(report["published_in_trabajo_cerca"], 0)
             self.assertEqual(report["express_ready_candidates"], 0)
 
+    def test_motor_a_first_party_url_without_h1_is_still_inspected(self):
+        from unittest.mock import patch
+        url="https://www.chiletrabajos.cl/trabajo/operario-planta-angol-3999901"
+        page=BeautifulSoup(
+            "<html><head><title>Operario de Planta - Angol | Chiletrabajos</title>"
+            "</head><body><article><p>Empresa: Maderas SpA. Lugar de trabajo:"
+            " Angol. Requisitos y postulación: enviar CV. Se necesita"
+            " operario de producción con experiencia.</p></article></body></html>",
+            "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,page,None)):
+            result=engine.inspect(("Angol","Motor A · ficha original a verificar",url))
+        self.assertEqual(result["http"],200)
+        self.assertEqual(result["links_found"],1)
+        self.assertEqual(len(result["candidates"]),1)
+        candidate=result["candidates"][0]
+        self.assertEqual(candidate["http"],200)
+        self.assertEqual(candidate["work_commune"],"Angol")
+        self.assertEqual(candidate["evidence"],"individual_page_with_job_terms")
+
     def test_municipal_wordpress_feed_recovers_job_when_html_index_blocked(self):
         from unittest.mock import patch
         idx="https://muninegrete.cl/oficina-municipal-de-intermediacion-laboral-omil/"

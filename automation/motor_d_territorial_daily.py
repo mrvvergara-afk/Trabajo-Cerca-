@@ -787,6 +787,17 @@ def main():
                 "error":cm.get("official_api_error"),
                 "rejected_reasons":cm.get("official_api_reason_counts")
             },ensure_ascii=False),flush=True)
+    for sf in rows:
+        if official_safco_home(sf.get("url")):
+            print("MOTOR_D_SAFCO_CARDS "+json.dumps({
+                "source":sf.get("source"),
+                "http":sf.get("http"),
+                "reader":sf.get("source_reader"),
+                "open_cards_for_review":sf.get("embedded_open_cards"),
+                "status":sf.get("status"),
+                "titles":[x.get("title") for x in sf.get("candidates",[])][:8],
+                "date_and_application_unverified":True
+            },ensure_ascii=False),flush=True)
     source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)
     updated_performance=learn_source_performance(previous,rows,NOW.isoformat())
     performance_file.write_text(json.dumps(

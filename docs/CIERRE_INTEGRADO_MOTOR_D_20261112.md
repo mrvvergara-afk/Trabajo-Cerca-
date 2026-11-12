@@ -33,9 +33,9 @@
 ## ÚNICA liberación autorizada (no ejecutada)
 
 1. Revisar que el AppDeploy actualmente desplegado sea el mismo snapshot que se usó para preparar `appdeploy_staging/`. Si hay cambios concurrentes, rebasar archivo por archivo antes de editar.
-2. Fusionar PR #45 a `main` **solo con autorización**: activaría workflows con cron y publicación de lotes.
-3. Desplegar en una sola operación AppDeploy los archivos de backend probados `chatgpt-direct-import.ts`, `municipal-index-status.ts` (nuevo), `offer-retention.ts`, `public-feed.ts`, `index.ts` con fuentes del PR #45 mapeados a `backend/`; no desplegar copias de `main` anteriores.
-4. Ejecutar QA de humo + revisión del feed y confirmar recibos: publicación visible, cero duplicados, sin reducción inexplicada de catálogo; revisar cierre/verificación temporal de OMIL.
-5. Si falla, revertir AppDeploy al despliegue anterior, no reimportar lotes sin recibos ni borrar manifestos históricos.
+2. Desplegar **primero** en una sola operación AppDeploy los archivos de backend probados `chatgpt-direct-import.ts`, `municipal-index-status.ts` (nuevo), `offer-retention.ts`, `public-feed.ts`, `index.ts` con fuentes del PR #45 mapeados a `backend/`. Así el importador entiende los lotes municipales sin fecha antes de que el productor pueda enviarlos. No desplegar copias anteriores.
+3. Verificar inmediatamente que el backend, el cron y el feed siguen operativos, sin caída de tarjetas ni regresión del catálogo. En caso de error, **revertir AppDeploy y no fusionar PR #45**.
+4. Con el backend ya validado y autorización explícita, fusionar PR #45 a `main`, lo que activa las próximas pasadas automáticas de Motor D. Monitorizar el primer lote y sus recibos.
+5. Ejecutar QA final fuente→lote→recibo→catálogo, comprobar publicaciones reales, cero duplicados y estado del aviso de Mulchén. Si falla, detener la promoción/publicación, conservar evidencias y coordinar reversión sin reimportar lotes ni borrar manifestos.
 
 **Regla:** no informar “producción lista” hasta cumplir todos los controles, y no afirmar 100% de cobertura mientras fuentes bloqueadas o sociales permanezcan sin lectura efectiva.

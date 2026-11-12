@@ -93,6 +93,7 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 # Individual historical vacancies are NOT permanent search sources.
 from motor_d_employer_portal import read_employer_vacancy
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
+from motor_d_source_recovery import build_recovery_queue
 from motor_d_social_sources import SOURCES as SOCIAL_REFERENCE_SOURCES
 SOURCE_PLAN=source_plan(SEEDS,INDEED_SEEDS,social_refs=SOCIAL_REFERENCE_SOURCES)
 SEEDS.extend(SOURCE_PLAN["added"])
@@ -611,9 +612,19 @@ def main():
     with ThreadPoolExecutor(max_workers=8) as pool:
         rows=list(pool.map(inspect,seeds))
     source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)
+    updated_performance=learn_source_performance(previous,rows,NOW.isoformat())
     performance_file.write_text(json.dumps(
-        learn_source_performance(previous,rows,NOW.isoformat()),
-        ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        updated_performance,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    recovery_plan=build_recovery_queue(
+        source_coverage,NOW.isoformat(),updated_performance)
+    (ROOT/"source_recovery_queue.json").write_text(
+        json.dumps(recovery_plan,ensure_ascii=False,indent=2)+"\n",
+        encoding="utf-8")
+    print("MOTOR_D_SOURCE_RECOVERY "+json.dumps({
+        "pending":recovery_plan["total_pending"],
+        "groups":recovery_plan["group_counts"],
+        "all_sources_preserved":recovery_plan["all_sources_preserved"]
+    },ensure_ascii=False),flush=True)
     indeed_rows=[r for r in rows if r["source"].startswith(("Indeed · ","Portal Indeed · "))]
     print("MOTOR_D_SOURCE_INVENTORY "+json.dumps({
         k:source_coverage[k] for k in ("registered_total","automatic_registered",

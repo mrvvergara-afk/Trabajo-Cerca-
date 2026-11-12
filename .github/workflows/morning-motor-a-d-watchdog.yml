@@ -1,0 +1,113 @@
+name: Trabajo Cerca | Guardia matinal motores A y D
+on:
+  workflow_dispatch:
+  # Santiago de Chile 2026-11-13 está en UTC-3: primera pasada 07:45,
+  # comprobación de respaldo 09:15. Github schedule puede retrasarse.
+  schedule:
+    - cron: '45 10 * * *'
+    - cron: '15 12 * * *'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/morning_motor_watchdog.py'
+      - 'automation/test_morning_motor_watchdog.py'
+      - 'scripts/motor_a_coverage.py'
+      - 'scripts/test_motor_a_coverage.py'
+      - '.github/workflows/morning-motor-a-d-watchdog.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    name: Guardia A D — ejecución real vs. cobertura útil
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verificar que el guardia no declare falsos éxitos
+        env:
+          PYTHONPATH: automation:scripts
+        run: |
+          python -m py_compile automation/morning_motor_watchdog.py scripts/motor_a_coverage.py
+          python -m unittest discover -s automation -p 'test_morning_motor_watchdog.py' -v
+          python -m unittest discover -s scripts -p 'test_motor_a_coverage.py' -v
+      - name: Leer último estado persistido de main, no el checkout antiguo
+        if: github.event_name != 'pull_request'
+        run: |
+          git fetch origin main
+          for path in             automation/motor_a_review/state.json             automation/motor_a_review/source_coverage.json             automation/motor_d_discovery/producer_heartbeat.json             automation/motor_d_ready/publication_confirmation.json
+          do
+            mkdir -p "$(dirname "$path")"
+            if git cat-file -e "origin/main:$path" 2>/dev/null; then
+              git show "origin/main:$path" > "$path"
+            else
+              rm -f "$path"
+            fi
+          done
+      - name: Medir paso matinal A y D, con fuentes bloqueadas separadas
+        if: github.event_name != 'pull_request'
+        run: python automation/morning_motor_watchdog.py --output output/morning_guard.json
+      - name: Activar recuperación si un motor no pasó, y advertir degradación
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          d=json.load(open('output/morning_guard.json'))
+          print("# Guardia matinal Trabajo Cerca — "+d["local_day"])
+          print("\n**Estado:** "+d["status"])
+          print("\n| Indicador | Resultado |")
+          print("|---|---|")
+          print(f"| Motor D comunas | {d['d']['communes_expected']} de 12; faltantes: {d['d']['missing_communes']} |")
+          print(f"| D fuentes intentadas | {d['d']['sources_attempted']} |")
+          print(f"| D fuentes legibles | {d['d']['sources_readable']} |")
+          print(f"| D bloqueadas / sin cobertura acreditada | {d['d']['sources_blocked']} / {d['d']['source_coverage_pending']} |")
+          print(f"| Motor A OMIL intentadas | {d['a']['municipalities_attempted']} de 12 |")
+          print(f"| A OMIL legibles | {d['a']['municipalities_readable']} de 12 |")
+          print(f"| A fichas revisadas / listas para D | {d['a']['details_checked']} / {d['a']['review_ready']} |")
+          print(f"| Publicación ya confirmada por feed | {d['public']['confirmed_offers']}; pendientes: {d['public']['unconfirmed_offers']} |")
+          print("\n**Fallos que requieren acción:** "+", ".join(d["execution_failures"]))
+          print("\n**Fuentes todavía no cubiertas:** "+", ".join(d["known_coverage_gaps"]))
+          print("\nUn HTTP 200 o un workflow verde NO equivale a cobertura laboral completa.")
+          PY
+          if jq -e '.status=="DEGRADED"' output/morning_guard.json >/dev/null; then
+            echo "::warning title=Trabajo Cerca cobertura parcial::Los motores corrieron, pero hay fuentes bloqueadas o no verificables. Revisar resumen de la ejecución."
+          fi
+
+          launch_if_missing() {
+            local motor="$1" file="$2" active
+            active=$(gh api "repos/$GH_REPO/actions/workflows/$file/runs?per_page=12" \
+              --jq '[.workflow_runs[] | select(.status=="in_progress" or .status=="queued" or .status=="waiting")] | length')
+            if [ "$active" -gt 0 ]; then
+              echo "::warning title=Motor $motor atrasado::Ya existe ejecución pendiente o activa; no crear duplicados."
+            else
+              gh api --method POST "repos/$GH_REPO/actions/workflows/$file/dispatches" -f ref=main
+              echo "::warning title=Recuperación motor $motor::Disparado nuevo rastreo por ausencia o cobertura territorial incompleta."
+            fi
+          }
+          if jq -e '.execution_failures[] | select(startswith("A_"))' output/morning_guard.json >/dev/null; then
+            launch_if_missing "A" "radar.yml"
+          fi
+          if jq -e '.execution_failures[] | select(startswith("D_"))' output/morning_guard.json >/dev/null; then
+            launch_if_missing "D" "motor-d-territorial-daily.yml"
+          fi
+          if jq -e '.status=="FAILED"' output/morning_guard.json >/dev/null; then
+            echo "::error title=Fallo matinal A/D::No se acreditó la ejecución o cobertura mínima; se solicitó recuperación cuando fue posible."
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always() && github.event_name != 'pull_request'
+        with:
+          name: a-d-morning-source-evidence
+          path: output/morning_guard.json
+          if-no-files-found: ignore
+          retention-days: 7

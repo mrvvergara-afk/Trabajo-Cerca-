@@ -97,8 +97,10 @@ def main():
         checks=json.loads(CHECKS.read_text(encoding="utf-8"))
         if checks.get("schema_version")!=1:raise ValueError("invalid_motor_a_checkpoints")
         CHECK_STATE.write_text(json.dumps(checks,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print("MOTOR_A_HANDOFF "+json.dumps({"pending":data["items_total"],
-                                       "publication_eligible":0,**data["metrics"]},ensure_ascii=False))
+    export={"pending":data["items_total"],"publication_eligible":0,**data["metrics"]}
+    Path("output/motor_a_handoff.json").write_text(
+        json.dumps(export,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    print("MOTOR_A_HANDOFF "+json.dumps(export,ensure_ascii=False))
 
 
 if __name__=="__main__":

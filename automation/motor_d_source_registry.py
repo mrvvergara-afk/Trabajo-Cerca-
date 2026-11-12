@@ -128,25 +128,40 @@ def learn(stats,rows,at):
         candidates=row.get("candidates") or []
         # A source only earns points for NEW observed job identities. Re-reading
         # the same ad four times a day must not inflate its ranking.
-        seen=list(old.get("seen_candidate_ids") or [])[-60:]
-        known=set(seen);fresh=[]
+        seen=list(old.get("seen_candidate_ids") or [])[-300:]
+        known=set(seen)
+        # Track eligible source identities INDEPENDENTLY from historical raw
+        # links. Earlier scans had counted links but mistakenly gave zero
+        # yield to recoverable (non-EXPRESS) real jobs; this field migrates
+        # that historical state safely on the first corrected pass.
+        eligible=list(old.get("seen_eligible_candidate_ids") or [])[-1200:]
+        eligible_known=set(eligible)
+        new_individual=0
+        new_eligible=0
+        from motor_d_express import job_source_identity
         for candidate in candidates:
             if not isinstance(candidate,dict):continue
-            identity=str(candidate.get("id") or performance_key(candidate.get("url","")))
-            if not identity or identity in known:continue
-            known.add(identity);seen.append(identity);fresh.append(candidate)
+            identifier=(job_source_identity(candidate.get("url")) or
+                        str(candidate.get("id") or performance_key(candidate.get("url",""))))
+            if not identifier:continue
+            if identifier not in known:
+                known.add(identifier);seen.append(identifier)
+                new_individual+=int(candidate.get("evidence")=="individual_page_with_job_terms")
+            # "express_ready" means FAST publication today/yesterday, not
+            # whether an older still-open vacancy qualifies for recovery.
+            # It is often False even for perfectly verified SERFONAC jobs.
+            if identifier not in eligible_known and classify(candidate,when)[0] in ("EXPRESS","RECUPERACION"):
+                eligible_known.add(identifier);eligible.append(identifier)
+                new_eligible+=1
         success=str(row.get("status","")).startswith(("scanned","fallback_"))
         old.update({"at":at,"status":row.get("status"),
                     "attempts":int(old.get("attempts",0))+1,
                     "blocked":int(old.get("blocked",0))+int(not success),
-                    "seen_candidate_ids":seen[-60:],
-                    "individual":int(old.get("individual",0))+
-                       sum(x.get("evidence")=="individual_page_with_job_terms" for x in fresh),
-                    "ready":int(old.get("ready",0))+
-                       sum(x.get("express_ready") is True or
-                           (x.get("express_ready") is None and
-                            classify(x,when)[0] in ("EXPRESS","RECUPERACION"))
-                           for x in fresh)})
+                    "seen_candidate_ids":seen[-300:],
+                    "seen_eligible_candidate_ids":eligible[-1200:],
+                    "new_verified_this_scan":new_eligible,
+                    "individual":int(old.get("individual",0))+new_individual,
+                    "ready":int(old.get("ready",0))+new_eligible})
         result[key]=old
     return result
 

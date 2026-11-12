@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-12T14:34:10.740040-03:00",
+  "last_run": "2026-11-12T15:22:44.864471-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -4332,6 +4332,72 @@
       "first_seen": "2026-11-12T14:34:10.740040-03:00",
       "url": "https://lasnoticiasdemalleco.cl/policial/arrestaron-a-conductor-de-colectivo-denunciado-por-exhibicionismo-en-angol/",
       "source": "Las Noticias de Malleco",
+      "commune": null
+    },
+    "a0b28775cea2f47c86f0": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asesor-de-ventas-menaje-y-electrodomesticos-full-time-rom-santiago-3076429.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "752c13a4471ccc2eaeab": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-local-liquimax-ula-3076428.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d8c4baf2f8a95e783210": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-arica-y-parinacota/subjefe-de-tienda-arica-3076427.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e8e5789301238d183076": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/telesales-account-manager-santiago-3076426.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d30b9461c3644616ba67": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-comercial-antofagasta-zona-norte-3076425.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a191e558b40ec6fa498b": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/qa-pack-automation-aemobileadaptativechromium-05558364-3076424.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "01943445f7f2a7c156db": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-a-de-ventas-b2b-3076423.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5926bb2191ede4996d5b": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/auxiliar-de-aseo-temuco-part-time-3076422.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ea6e219a193f2e0e14a9": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/encargado-a-de-operaciones-y-procesos-rancagua-3076421.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7250d790c3874c3d267f": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/qa-fl-engineer-aechromium-04815011-3076420.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e9fb9f01a73859993e5a": {
+      "first_seen": "2026-11-12T15:22:44.864471-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-T%C3%A9cnicoa-Mec%C3%A1nicoa-PGP-Cel-L3-BI/1450288400/",
+      "source": "Arauco empleo",
       "commune": null
     }
   }

@@ -282,7 +282,7 @@ class MotorDExpressTests(unittest.TestCase):
                 self.assertIsNone(offer)
         self.assertEqual(engine.classify(dict(row,index_status="closed"),TODAY)[0],"DESCARTADO")
 
-        def test_historical_offer_missing_from_complete_feed_requires_receipt_review(self):
+    def test_historical_offer_missing_from_complete_feed_requires_receipt_review(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             row = record()

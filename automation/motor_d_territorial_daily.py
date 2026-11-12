@@ -96,6 +96,7 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 # Integrate all registered permanent source indexes and social references.
 # Individual historical vacancies are NOT permanent search sources.
 from motor_d_employer_portal import read_employer_vacancy
+from motor_d_cmpc_api import source_is_official_cmpc,read_cmpc_requisitions
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
 from motor_d_source_recovery import build_recovery_queue
 from motor_a_handoff import read as read_motor_a_review
@@ -432,6 +433,25 @@ def inspect(seed):
          "details_opened":0,"candidates":[],"errors":[],
          "documents_for_review":[]}
     try:
+        if source_is_official_cmpc(url):
+            # The Cornerstone career homepage is Javascript-only. Query its
+            # public, official job-search endpoint (already in AppDeploy).
+            # Do NOT treat a generic HTTP 200 index with zero links as proof
+            # that CMPC has no vacancies within our twelve communes.
+            result=read_cmpc_requisitions(today=NOW.date())
+            out.update({k:v for k,v in result.items() if k!="candidates"})
+            out["candidates"]=result["candidates"]
+            for candidate in out["candidates"]:
+                candidate["id"]=key(candidate["url"])
+                candidate["date_recent_2d"]=(
+                    candidate["date_source"] >= (NOW.date()-timedelta(days=1)).isoformat())
+                candidate["express_ready"]=candidate["date_recent_2d"]
+            out["source_reader"]="official_cmpc_cornerstone_json"
+            out["links_found"]=len(out["candidates"])
+            out["details_opened"]=len(out["candidates"])
+            if result.get("official_api_error"):
+                out["errors"].append(result["official_api_error"])
+            return out
         municipal=None
         is_municipal_index=(source.startswith(("Municipio ","Municipalidad "))
             and urlsplit(url).hostname.lower().removeprefix("www.") in MUNICIPAL_FEED_SITES)

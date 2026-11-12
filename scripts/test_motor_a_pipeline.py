@@ -18,6 +18,23 @@ ORIGINAL="https://www.chiletrabajos.cl/trabajo/tecnico-operador-mantenedor-39212
 
 
 class MotorAPipelineTests(unittest.TestCase):
+    def test_local_radar_has_twelve_official_sources_not_seven(self):
+        import ast
+        source=(Path(__file__).resolve().parent/"radar.py").read_text(encoding="utf8")
+        tree=ast.parse(source)
+        values={}
+        for node in tree.body:
+            if isinstance(node,ast.Assign) and len(node.targets)==1 and isinstance(node.targets[0],ast.Name) and node.targets[0].id in ("COMMUNES","SOURCES"):
+                values[node.targets[0].id]=ast.literal_eval(node.value)
+        self.assertEqual(len(values["COMMUNES"]),12)
+        self.assertNotIn("Mininco",values["COMMUNES"])
+        municipal=[row for row in values["SOURCES"] if row[0].startswith("Municipio ")]
+        self.assertEqual(len(municipal),12)
+        self.assertEqual({x[2] for x in municipal},set(values["COMMUNES"]))
+        self.assertTrue(any("cmpc.trabajando.cl" in row[1] for row in values["SOURCES"]))
+        self.assertTrue(any("jobs.arauco.com" in row[1] for row in values["SOURCES"]))
+        self.assertTrue(all(len(row)==3 for row in values["SOURCES"]))
+
     def test_all_twelve_communes_and_sublocalities_no_thirteenth(self):
         self.assertEqual(len(PLACES),12)
         self.assertNotIn("Mininco",PLACES)

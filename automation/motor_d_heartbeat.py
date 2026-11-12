@@ -40,6 +40,14 @@ def project(report, raw_sha256):
     if inventory is not None:
         if not isinstance(inventory,dict) or inventory.get("not_attempted")!=0 or not inventory.get("all_automatic_sources_attempted"):
             raise ValueError("registered_sources_not_fully_attempted")
+    handoff=report.get("motor_a_review_handoff") or {}
+    if not isinstance(handoff,dict):
+        raise ValueError("invalid_motor_a_handoff_report")
+    a_fetched=handoff.get("fetched",0)
+    a_http_200=handoff.get("http_200",0)
+    if (type(a_fetched) is not int or type(a_http_200) is not int or
+            a_fetched<0 or a_http_200<0 or a_http_200>a_fetched):
+        raise ValueError("invalid_motor_a_handoff_http_counts")
     return {
         "schema_version": 1,
         "producer": "motor_d_territorial",
@@ -53,6 +61,9 @@ def project(report, raw_sha256):
         "source_inventory_registered": inventory["registered_total"] if inventory else None,
         "source_inventory_pending": inventory["unresolved_total"] if inventory else None,
         "full_usable_coverage": bool(inventory and inventory["all_registered_sources_accessible"]),
+        "motor_a_handoff_fetched":a_fetched,
+        "motor_a_handoff_http_200":a_http_200,
+        "motor_a_handoff_failed":bool(a_fetched and not a_http_200),
     }
 
 

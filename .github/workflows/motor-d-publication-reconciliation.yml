@@ -1,0 +1,100 @@
+name: Trabajo Cerca | Conciliación GitHub AppDeploy
+on:
+  workflow_dispatch:
+  schedule:
+    # AppDeploy confirma publicaciones por su cron; GitHub reconsulta el feed
+    # después, sin activar importaciones ni depender de recibos privados.
+    - cron: '27,57 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'automation/motor_d_ready/index.json'
+      - 'automation/motor_d_publication_reconciler.py'
+      - 'automation/motor_d_catalog_probe.py'
+      - 'automation/test_motor_d_publication_reconciler.py'
+      - '.github/workflows/motor-d-publication-reconciliation.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/motor_d_publication_reconciler.py'
+      - 'automation/motor_d_catalog_probe.py'
+      - 'automation/test_motor_d_publication_reconciler.py'
+      - '.github/workflows/motor-d-publication-reconciliation.yml'
+
+concurrency:
+  group: github-appdeploy-reconciliation-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'main' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  contract_and_live_probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate reconciliation and all safety regressions
+        env:
+          PYTHONPATH: automation
+        run: |
+          python -m py_compile automation/motor_d_publication_reconciler.py
+          python -m unittest discover -s automation -p 'test_motor_d_publication_reconciler.py' -v
+      - name: Validate the complete REAL AppDeploy public feed, no writes
+        env:
+          PYTHONPATH: automation
+        run: python automation/motor_d_publication_reconciler.py --dry-run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-feed-reconciliation-preview
+          path: output/publication_reconciliation_live_preview.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+  confirm_live_publication:
+    needs: contract_and_live_probe
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Update GitHub snapshots from COMPLETE public feed
+        env:
+          PYTHONPATH: automation
+        run: python automation/motor_d_publication_reconciler.py
+      - name: Store source-of-truth state only after successful live check
+        run: |
+          git config user.name "trabajo-cerca-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add automation/motor_d_ready/publication_reconciliation.json automation/motor_d_ready/publication_confirmation.json
+          if git diff --cached --quiet; then
+            echo "MOTOR_D_RECONCILIATION_UNCHANGED"
+            exit 0
+          fi
+          git commit -m "data(motor-d): confirm visible public offers against AppDeploy [skip ci]"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "MOTOR_D_RECONCILIATION_CONFLICT preserve previous verified state"
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "MOTOR_D_RECONCILIATION_PERSISTED attempt=$attempt"
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "MOTOR_D_RECONCILIATION_PERSIST_FAILED"
+          exit 1

@@ -60,6 +60,62 @@ class SecondPassTests(unittest.TestCase):
         self.assertEqual(outcome["records"][0]["owner"],"C")
         self.assertFalse(outcome["records"][0]["publication_eligible"])
 
+    def test_safco_four_roles_preserve_four_review_ids_despite_shared_url(self):
+        names = ["Operario", "Operador Maquinaria Forestal",
+                 "Brigadista de Incendios", "Técnico Silvícola"]
+        cards = []
+        for i, name in enumerate(names):
+            cards.append({
+                "id": ("%020x" % (i+1)),
+                "url": "https://safcoltda.cl/",
+                "title": name, "employer": "SAFCO Limitada",
+                "work_commune": "Collipulli",
+                "source_evidence_method": "official_employer_embedded_available_card",
+                "status_open_marker": "Disponible",
+                "http": 200, "index_status": "open",
+                "date_source": None, "application_evidence": False,
+                "needs_individual_date_application_validation": True,
+                "excerpt": name + " tareas forestales",
+            })
+        healthy = reconcile(report(*cards), [], True)
+        self.assertEqual(healthy["embedded_card_review_count"], 4)
+        self.assertEqual(len({x["evidence_id"] for x in healthy["embedded_card_reviews"]}), 4)
+        self.assertEqual({x["title"] for x in healthy["embedded_card_reviews"]}, set(names))
+        self.assertEqual(healthy["review_owner_counts"].get("C"), 4)
+        self.assertEqual(healthy["second_pass_count"], 0)
+        self.assertTrue(all(x["publication_eligible"] is False for x in healthy["embedded_card_reviews"]))
+        self.assertTrue(all(x["original_publication_date"] is None for x in healthy["embedded_card_reviews"]))
+        offline = reconcile(report(*cards), [], False, "outage")
+        self.assertEqual(offline["embedded_card_review_count"], 4)
+        self.assertTrue(all(x["status"] == "catalog_unavailable" and x["owner"] is None
+                            for x in offline["embedded_card_reviews"]))
+        self.assertEqual(offline["review_owner_counts"], {})
+
+    def test_safco_generic_homepage_cannot_forge_a_role_card(self):
+        item = candidate("https://safcoltda.cl/", "Operario", "SAFCO Limitada",
+                         "Collipulli", None, "SAFCO", False)
+        result = reconcile(report(item), [], True)
+        self.assertEqual(result["embedded_card_review_count"], 0)
+        self.assertFalse(result["records"][0]["publication_eligible"])
+
+    def test_safco_semantic_overlap_requires_review_not_publication(self):
+        card = {"id": "f" * 20, "url": "https://safcoltda.cl/",
+                "title": "Técnico Silvícola", "employer": "SAFCO Limitada",
+                "work_commune": "Collipulli", "http": 200, "index_status": "open",
+                "source_evidence_method": "official_employer_embedded_available_card",
+                "status_open_marker": "Disponible",
+                "date_source": None, "application_evidence": False,
+                "needs_individual_date_application_validation": True}
+        published = [{"id": "existing-123", "kind": "job_offer", "active": True,
+                      "url": "https://other.example/job/123",
+                      "title": "Técnico Silvícola", "company": "SAFCO Limitada",
+                      "workCommunes": ["Collipulli"]}]
+        row = reconcile(report(card), published, True)["embedded_card_reviews"][0]
+        self.assertEqual(row["status"], "possible_semantic_duplicate_needs_review")
+        self.assertEqual(row["public_ids_possible_semantic"], ["existing-123"])
+        self.assertEqual(row["public_ids_exact_origin"], [])
+        self.assertFalse(row["publication_eligible"])
+
     def test_portal_job_found_in_public_feed_closes_without_duplicate_import(self):
         job=candidate("https://www.chiletrabajos.cl/trabajo/conductor-nacimiento-3923758",
                       "Conductor de Transporte - Nacimiento","Serfonac Ltda",

@@ -26,14 +26,39 @@ class SecondPassTests(unittest.TestCase):
     def test_actual_report_all_second_pass_records_are_accounted_for(self):
         root=Path(__file__).resolve().parent
         source=json.loads((root/"motor_d_discovery"/"territorial_daily.json").read_text(encoding="utf8"))
-        expected=len(build(source,date.fromisoformat(source["date"][:10]))["SEGUNDA_PASADA"])
+        raw=build(source,date.fromisoformat(source["date"][:10]))["SEGUNDA_PASADA"]
+        expected=len({entry["url"] for entry in raw})
         output=reconcile(source,[],False,"outage")
+        self.assertEqual(output["second_pass_raw_count"],len(raw))
+        self.assertEqual(output["collapsed_duplicate_second_pass_records"],len(raw)-expected)
         self.assertEqual(output["second_pass_count"],expected)
         self.assertEqual(sum(output["status_counts"].values()),expected)
         self.assertEqual(len({x["url"] for x in output["records"]}),expected)
         self.assertEqual(output["status_counts"],{"catalog_unavailable":expected})
         self.assertEqual(output["published_by_this_check"],0)
         self.assertFalse(output["quarantine_touched"])
+
+    def test_duplicate_cross_listed_url_has_one_review_receipt(self):
+        url="https://example.cl/oferta/operario-nacimiento"
+        job=candidate(url,"Operario","Empresa","Nacimiento",None,apply=True)
+        outcome=reconcile(report(job,dict(job)),[],False,"outage")
+        self.assertEqual(outcome["second_pass_raw_count"],2)
+        self.assertEqual(outcome["second_pass_count"],1)
+        self.assertEqual(outcome["collapsed_duplicate_second_pass_records"],1)
+        self.assertEqual(outcome["records"][0]["source_observations"],2)
+        self.assertEqual(outcome["status_counts"],{"catalog_unavailable":1})
+        self.assertFalse(outcome["records"][0]["publication_eligible"])
+
+    def test_conflicting_worksite_evidence_is_never_silently_merged(self):
+        url="https://example.cl/oferta/operario"
+        first=candidate(url,"Operario","Empresa","Angol",None,apply=True)
+        second=candidate(url,"Operario","Empresa","Nacimiento",None,apply=True)
+        outcome=reconcile(report(first,second),[],True)
+        self.assertEqual(outcome["second_pass_count"],1)
+        self.assertEqual(outcome["records"][0]["status"],"source_evidence_conflict_review")
+        self.assertTrue(outcome["records"][0]["conflicting_source_evidence"])
+        self.assertEqual(outcome["records"][0]["owner"],"C")
+        self.assertFalse(outcome["records"][0]["publication_eligible"])
 
     def test_portal_job_found_in_public_feed_closes_without_duplicate_import(self):
         job=candidate("https://www.chiletrabajos.cl/trabajo/conductor-nacimiento-3923758",

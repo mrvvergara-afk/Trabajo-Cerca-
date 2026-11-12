@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from motor_d_catalog_probe import URL_FIELDS, read_full_feed, source_identity
-from motor_d_express import build, normalize
+from motor_d_express import build, classify, normalize
 
 ROOT = Path(__file__).resolve().parent
 REPORT = ROOT / "motor_d_discovery" / "territorial_daily.json"
@@ -85,15 +85,35 @@ def reconcile(report, public_rows, feed_complete, feed_error=None):
     day = date.fromisoformat(observed)
     grouped = build(report, day)
     pending = grouped["SEGUNDA_PASADA"]
-    sources = {item.get("url"): item for item in report["candidates"] if isinstance(item, dict)}
-    if len(sources) != len(report["candidates"]):
-        raise ValueError("motor_d_candidate_url_not_unique")
+    # The same original URL can appear in several commune searches or source
+    # indexes. Preserve every observation, but create ONE review receipt per URL.
+    observations = {}
+    for row in report["candidates"]:
+        if isinstance(row, dict) and isinstance(row.get("url"), str):
+            observations.setdefault(row["url"], []).append(row)
     by_identity, by_semantic = _index_catalog(public_rows) if feed_complete else ({}, {})
     receipts = []
+    handled = set()
     for entry in pending:
-        item = sources.get(entry["url"])
+        url = entry["url"]
+        if not isinstance(url, str) or not url:
+            raise ValueError("motor_d_candidate_missing_from_report")
+        if url in handled:
+            continue
+        handled.add(url)
+        variants = observations.get(url, [])
+        # Keep the matching second-pass observation as the source for the
+        # recorded classification reason. Never upgrade review to publication.
+        item = next((row for row in variants
+                     if classify(row, day)[:2] == ("SEGUNDA_PASADA", entry["reason"])), None)
         if item is None:
             raise ValueError("motor_d_candidate_missing_from_report")
+        significant = lambda row: (
+            normalize(row.get("title")), normalize(row.get("employer")),
+            normalize(row.get("work_commune")), str(row.get("date_source") or ""),
+            row.get("application_evidence") is True,
+        )
+        conflict = len({significant(row) for row in variants}) > 1
         ident = source_identity(entry["url"])
         direct = by_identity.get(ident, {}) if ident else {}
         title, employer = str(item.get("title") or ""), str(item.get("employer") or "")
@@ -114,6 +134,9 @@ def reconcile(report, public_rows, feed_complete, feed_error=None):
             owner = "C"
         elif public_ids:
             state = "already_public_confirmed"
+        elif conflict:
+            state = "source_evidence_conflict_review"
+            owner = "C"
         elif possible_ids:
             state = "possible_semantic_duplicate_needs_review"
             owner = "C"
@@ -150,6 +173,8 @@ def reconcile(report, public_rows, feed_complete, feed_error=None):
             "discovery_report_date":observed,
             "deadline":item.get("deadline"),
             "reason_previous":entry["reason"],
+            "source_observations":len(variants),
+            "conflicting_source_evidence":conflict,
             "missing_evidence":issues,
             "status":state,
             "owner":owner,
@@ -163,7 +188,9 @@ def reconcile(report, public_rows, feed_complete, feed_error=None):
         "schema":"trabajo-cerca.motor-d-second-pass.v1",
         "report_day":observed,
         "source_candidates":len(report["candidates"]),
-        "second_pass_count":len(pending),
+        "second_pass_raw_count":len(pending),
+        "collapsed_duplicate_second_pass_records":len(pending)-len(receipts),
+        "second_pass_count":len(receipts),
         "third_pass_outside_this_cycle":len(grouped["TERCERA_PASADA"]),
         "public_feed_complete":bool(feed_complete),
         "public_feed_rows":len(public_rows) if feed_complete else None,

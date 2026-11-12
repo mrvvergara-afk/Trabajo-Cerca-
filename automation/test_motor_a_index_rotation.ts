@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { rotateIndex } from '../appdeploy_staging/index-rotation';
+const offers=Array.from({length:105},(_,i)=>i);
+const passes=[0,1,2].map(n=>rotateIndex(offers,40,n));
+assert.deepEqual(passes.map(p=>p.items.length),[40,40,40]);
+assert.deepEqual(passes.map(p=>p.offset),[0,40,80]);
+assert.ok(passes.every(p=>p.total===105 && p.partial));
+assert.equal(new Set(passes.flatMap(p=>p.items)).size,105);
+const archives=Array.from({length:17},(_,i)=>"page-"+i);
+assert.equal(new Set([0,1,2,3].flatMap(n=>rotateIndex(archives,5,n).items)).size,17);
+assert.deepEqual(rotateIndex([1,2],40,10).items,[1,2]);
+assert.deepEqual(rotateIndex([],40,0).items,[]);
+assert.throws(()=>rotateIndex(offers,0,0),/invalid_index_limit/);
+assert.throws(()=>rotateIndex(offers,40,-1),/invalid_index_attempt/);
+console.log('Motor A: long index and archive rotation safety passed');

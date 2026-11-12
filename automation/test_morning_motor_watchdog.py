@@ -29,6 +29,22 @@ def healthy_payload():
 
 
 class MorningMotorWatchdogTests(unittest.TestCase):
+    def test_all_motor_a_handoff_urls_failed_is_critical(self):
+        d,a,c,p=healthy_payload()
+        d["motor_a_handoff_fetched"]=22
+        d["motor_a_handoff_http_200"]=0
+        state=assess(d,a,c,p,MORNING)
+        self.assertEqual(state["status"],"FAILED")
+        self.assertIn("D_A_HANDOFF_ALL_JOB_READS_FAILED",state["execution_failures"])
+
+    def test_partially_readable_motor_a_handoff_is_degraded_not_healthy(self):
+        d,a,c,p=healthy_payload()
+        d["motor_a_handoff_fetched"]=22
+        d["motor_a_handoff_http_200"]=9
+        state=assess(d,a,c,p,MORNING)
+        self.assertEqual(state["status"],"DEGRADED")
+        self.assertIn("D_A_HANDOFF_PARTIAL_JOB_READS",state["known_coverage_gaps"])
+
     def test_both_motors_complete_but_blocked_sources_are_degraded_not_healthy(self):
         values=healthy_payload()
         report=assess(*values,MORNING)

@@ -510,11 +510,14 @@ def inspect(seed):
             # This seed is a single known job, not a catalog. Related-job
             # links on its HTML page do not make the seed itself truncated.
             out["index_incomplete"]=False
-            heading=soup.select_one("h1")
+            heading=soup.select_one("h1") or soup.select_one("h2")
             title=heading.get_text(" ",strip=True)[:180] if heading else ""
-            # A direct /trabajo/ URL is already an individual job-detail
-            # route. Roles like 'DOCENTE PSICOLOGO' need not contain generic
-            # recruitment keywords in their H1. Evidence checks still apply.
+            if len(title)<5 or fold(title).strip() in ("trabajo","oferta laboral"):
+                document_title=soup.title.get_text(" ",strip=True) if soup.title else ""
+                title=document_title.split("|",1)[0].strip()[:180]
+            # The official portal may render job details without an H1. A
+            # first-party individual URL and coherent page title justify
+            # attempting a detail read, NOT bypassing evidence verification.
             links=[(url,title,"not_indicated")] if len(title)>=5 else []
         out["links_found"]=len(links)
         # Procesar todos los enlaces descubiertos (hasta 35) con paralelismo acotado,

@@ -123,6 +123,12 @@ GENERAL_INDEX=re.compile(r"^(?:concursos?\s+(?:p[uú]blicos?|internos?)|"
                          r"llamado\s+a\s+concurso\s+interno)$",re.I)
 HEADERS={"User-Agent":"TrabajoCercaTerritorial/1.0 (+public sources; no social scraping)",
          "Accept":"text/html,application/xhtml+xml"}
+# Match Motor A's already-tested public job-detail reader for Chiletrabajos.
+# Do not change the request policy for Indeed, social media, or third parties.
+CHILETRABAJOS_HEADERS={
+    **HEADERS,
+    "User-Agent":"Mozilla/5.0 (compatible; TrabajoCerca/1.0)"
+}
 def fold(s):
     return "".join(c for c in unicodedata.normalize("NFD",str(s)) if unicodedata.category(c)!="Mn").lower()
 def key(s):
@@ -170,7 +176,9 @@ def request_page(url):
         return 0,None,"source_url_not_authorized"
     origin=urlsplit(url).hostname.lower().removeprefix("www.")
     for redirect in range(4):
-        resp=requests.get(url,headers=HEADERS,timeout=(5,9),allow_redirects=False,
+        host=urlsplit(url).hostname.lower().removeprefix("www.")
+        headers=(CHILETRABAJOS_HEADERS if host=="chiletrabajos.cl" else HEADERS)
+        resp=requests.get(url,headers=headers,timeout=(5,9),allow_redirects=False,
                           stream=True)
         try:
             if resp.status_code in (301,302,303,307,308):
@@ -768,13 +776,25 @@ def main():
     a_handoff=read_motor_a_review(now=NOW)
     a_rows=[]
     if a_handoff["probes"]:
-        with ThreadPoolExecutor(max_workers=5) as pool:
+        # Do not burst 22 simultaneous requests against the same first-party
+        # Chiletrabajos host. A's review queue is a bounded, lower-priority pass.
+        with ThreadPoolExecutor(max_workers=2) as pool:
             a_rows=list(pool.map(inspect,a_handoff["probes"]))
     a_handoff_report={k:v for k,v in a_handoff.items() if k!="probes"}
+    from collections import Counter
+    a_http_status=Counter(str(x.get("http") or 0) for x in a_rows)
+    a_outcomes=Counter(str(x.get("status") or "unknown") for x in a_rows)
     a_handoff_report.update({
         "fetched":len(a_rows),
         "http_200":sum(r.get("http")==200 for r in a_rows),
         "individual_candidates":sum(len(r["candidates"]) for r in a_rows),
+        "http_status_counts":dict(a_http_status),
+        "inspection_outcomes":dict(a_outcomes),
+        "failed_source_examples":[
+            {"url":x["url"],"http":x.get("http"),"status":x.get("status"),
+             "errors":x.get("errors",[])[:2]}
+            for x in a_rows if x.get("http")!=200][:5],
+        "handoff_read_failed":bool(a_rows and not any(x.get("http")==200 for x in a_rows)),
         "verified_or_published":0,
     })
     print("MOTOR_A_TO_D_HANDOFF "+json.dumps(a_handoff_report,ensure_ascii=False),flush=True)

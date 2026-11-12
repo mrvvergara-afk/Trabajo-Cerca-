@@ -62,6 +62,17 @@ def assess(d, a, coverage, public, current):
         failures.append("D_NO_USEFUL_READS")
     if d_heartbeat.get("full_usable_coverage") is not True:
         degraded.append("D_FULL_USABLE_COVERAGE_NOT_ACREDITED")
+    # The roster can be scanned successfully while NONE of A's transferred
+    # individual URLs can be fetched. Treat this as a real regression rather
+    # than a zero-new-jobs success.
+    a_to_d_fetched=d_heartbeat.get("motor_a_handoff_fetched",0)
+    a_to_d_200=d_heartbeat.get("motor_a_handoff_http_200",0)
+    if isinstance(a_to_d_fetched,int) and a_to_d_fetched>0:
+        if not isinstance(a_to_d_200,int) or a_to_d_200==0:
+            failures.append("D_A_HANDOFF_ALL_JOB_READS_FAILED")
+        elif a_to_d_200<a_to_d_fetched:
+            degraded.append("D_A_HANDOFF_PARTIAL_JOB_READS")
+            notes.append(f"D_A_HANDOFF_READ:{a_to_d_200}/{a_to_d_fetched}")
     pending = d_heartbeat.get("source_inventory_pending")
     if isinstance(pending,int) and pending>0:
         notes.append(f"D_UNRESOLVED_SOURCES:{pending}")
@@ -117,7 +128,9 @@ def assess(d, a, coverage, public, current):
             "missing_communes":d_heartbeat.get("missing_communes"),"sources_attempted":d_total,
             "sources_registered":d_registered,"sources_readable":d_heartbeat.get("sources_accessible"),
             "sources_blocked":blocked,"source_coverage_pending":pending,
-            "candidates":d_heartbeat.get("job_candidates_total")},
+            "candidates":d_heartbeat.get("job_candidates_total"),
+            "a_handoff_fetched":a_to_d_fetched,
+            "a_handoff_readable":a_to_d_200},
         "public":{"reconciliation_fresh":after_morning_start(p.get("checked_at"),current),
                   "feed_complete":p.get("feed_complete"),
                   "confirmed_offers":p.get("source_confirmed"),

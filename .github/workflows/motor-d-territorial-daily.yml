@@ -6,6 +6,8 @@ on:
     paths:
       - 'automation/motor_d_territorial_daily.py'
       - 'automation/motor_d_employer_portal.py'
+      - 'automation/motor_d_cmpc_api.py'
+      - 'automation/test_motor_d_cmpc_api.py'
       - 'automation/test_motor_d_employer_portal.py'
       - 'automation/motor_d_source_registry.py'
       - 'automation/motor_d_source_recovery.py'
@@ -33,6 +35,8 @@ on:
     paths:
       - 'automation/motor_d_territorial_daily.py'
       - 'automation/motor_d_employer_portal.py'
+      - 'automation/motor_d_cmpc_api.py'
+      - 'automation/test_motor_d_cmpc_api.py'
       - 'automation/test_motor_d_employer_portal.py'
       - 'automation/motor_d_source_registry.py'
       - 'automation/motor_d_source_recovery.py'
@@ -82,8 +86,9 @@ jobs:
         run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
       - name: Check SERFONAC employer page source-date and worksite safety
         run: |
-          python -m py_compile automation/motor_d_employer_portal.py automation/motor_d_territorial_daily.py
+          python -m py_compile automation/motor_d_employer_portal.py automation/motor_d_cmpc_api.py automation/motor_d_territorial_daily.py
           PYTHONPATH=automation python -m unittest discover -s automation -p 'test_motor_d_employer_portal.py' -v
+          PYTHONPATH=automation:automation/trabajo_cerca python -m unittest discover -s automation -p 'test_motor_d_cmpc_api.py' -v
       - name: Prepublish complete-feed safety and source-ranking tests
         env:
           PYTHONPATH: automation:automation/trabajo_cerca
@@ -268,7 +273,7 @@ jobs:
             echo "MOTOR_A_HANDOFF_NOT_YET_PERSISTED"
           fi
       - name: Check Python script compiles
-        run: python -m py_compile automation/motor_d_territorial_daily.py automation/motor_d_source_registry.py automation/motor_d_express.py automation/motor_d_employer_portal.py automation/motor_d_catalog_probe.py automation/motor_d_source_recovery.py
+        run: python -m py_compile automation/motor_d_territorial_daily.py automation/motor_d_source_registry.py automation/motor_d_express.py automation/motor_d_employer_portal.py automation/motor_d_cmpc_api.py automation/motor_d_catalog_probe.py automation/motor_d_source_recovery.py
       - name: Run territorial integrity tests
         run: python -m unittest discover -s automation -p 'test_motor_d_*.py' -v
       # Operational test after enabling bounded B/C; D remains an independent scout.

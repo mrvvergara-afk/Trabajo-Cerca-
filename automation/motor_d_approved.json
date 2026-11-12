@@ -2,7 +2,7 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "motor_d_cmpc_browser",
-  "batch_id": "motor-d-cmpc-a8314d3f474abc03",
+  "batch_id": "motor-d-cmpc-4ece9180a4858576",
   "offers": [
     {
       "id_fuente": "cmpc_19252",
@@ -41,18 +41,6 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
-      "id_fuente": "cmpc_19249",
-      "cargo": "INSTRUMENTISTA AREA",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
-      "fecha_publicacion": "2026-10-28",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_19239",
       "cargo": "Electricista de área - Planta Santa Fe",
       "empresa": "CMPC",
@@ -61,18 +49,6 @@
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "fecha_publicacion": "2026-10-28",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_19192",
-      "cargo": "ANALISTA LABORATORIO I-TURNO",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
-      "fecha_publicacion": "2026-10-21",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },

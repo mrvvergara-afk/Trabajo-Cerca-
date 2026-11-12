@@ -37,18 +37,6 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
-      "id_fuente": "cmpc_19249",
-      "cargo": "INSTRUMENTISTA AREA",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
-      "fecha_publicacion": "2026-10-28",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_19239",
       "cargo": "Electricista de área - Planta Santa Fe",
       "empresa": "CMPC",
@@ -57,18 +45,6 @@
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "fecha_publicacion": "2026-10-28",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_19192",
-      "cargo": "ANALISTA LABORATORIO I-TURNO",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
-      "fecha_publicacion": "2026-10-21",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
@@ -87,11 +63,26 @@
   ],
   "pending": [
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19351?c=cmpc",
-      "title": "Feria Laboral INACAP Los Ángeles",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
+      "title": "Maestro de Mantención Eléctrica - Planta Bucalemu",
       "workplaces": [],
       "reason": [
-        "detail_unavailable",
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19296?c=cmpc",
+      "title": "Maestro Soldador de Mantención- Bucalemu",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
+      "title": "Operador Montacarga Turno - Planta Puente Alto",
+      "workplaces": [],
+      "reason": [
         "workplace_not_single_confirmed"
       ]
     },
@@ -170,8 +161,24 @@
       ]
     },
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19100?c=cmpc",
+      "title": "Ingeniero/a de confiabilidad - Planta Maule",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
       "title": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19011?c=cmpc",
+      "title": "PLANIFICADOR/A MANTENIMIENTO - Puente Alto",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -216,24 +223,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
       "title": "Coordinador de Soporte Técnico SAP",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
-      "title": "Analista de Comercio Exterior",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1168?c=cmpc",
-      "title": "AYUDANTE GENERAL",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

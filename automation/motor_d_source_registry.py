@@ -182,8 +182,8 @@ def assess(plan,rows,stats):
         worked=state.startswith(("scanned","fallback_"))
         # An HTML response from a national jobs homepage is not proof that
         # all twelve locality searches were covered.
-        # Cornerstone needs the existing Playwright reader. A generic HTTP
-        # response with zero vacancies cannot certify CMPC career coverage.
+        # CMPC is covered only when its structured Cornerstone API completes;
+        # the generic HTML homepage still cannot certify job coverage.
         # Branded employer career portals can return HTTP 200 with only
         # recruitment advice or JS placeholders. No individual vacancy link
         # must mean 'specialized reader needed', NOT 'employer fully covered'.
@@ -196,12 +196,23 @@ def assess(plan,rows,stats):
                 "/noticias/","/blog/","/articulos/"))
             for item in (observed.get("candidates") or []) if isinstance(item,dict)
         ) if observed else 0
+        authoritative_complete=bool(
+            observed and observed.get("source_reader")=="official_cmpc_cornerstone_json"
+            and observed.get("official_api_index_complete") is True
+            and state in ("scanned_with_candidates","scanned_no_candidates"))
         browser_needed=(employer_requires_real_jobs and worked and
-                        actual_individual==0)
+                        actual_individual==0 and not authoritative_complete)
         # SAFCO displays real open-looking job cards inline with no dated,
         # unique individual URL. A generic scanner showing zero links did NOT
         # confirm that these advertised roles were examined and deduplicated.
-        structured_needed=("safcoltda.cl" in src["url"] and state=="scanned_no_candidates")
+        structured_needed=(
+            "safcoltda.cl" in src["url"] and state.startswith("scanned") and
+            not any(
+                x.get("source_evidence_method")=="official_employer_individual_job"
+                and x.get("date_source") and x.get("application_evidence") is True
+                for x in (observed.get("candidates") or []) if isinstance(x,dict)
+            )
+        )
         label=("index_pagination_required" if state=="scanned_partial_index" else
                "requires_specialized_reader" if (browser_needed or structured_needed) else
                "needs_territorial_filter" if worked and src["kind"]=="portal_unfiltered_requires_geofilter"

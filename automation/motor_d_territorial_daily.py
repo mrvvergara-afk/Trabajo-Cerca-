@@ -96,6 +96,8 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 # Integrate all registered permanent source indexes and social references.
 # Individual historical vacancies are NOT permanent search sources.
 from motor_d_employer_portal import read_employer_vacancy
+from motor_d_cmpc_api import source_is_official_cmpc,read_cmpc_requisitions
+from motor_d_safco import allowed_source as official_safco_home, extract_open_safco_cards
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
 from motor_d_source_recovery import build_recovery_queue
 from motor_a_handoff import read as read_motor_a_review
@@ -432,6 +434,25 @@ def inspect(seed):
          "details_opened":0,"candidates":[],"errors":[],
          "documents_for_review":[]}
     try:
+        if source_is_official_cmpc(url):
+            # The Cornerstone career homepage is Javascript-only. Query its
+            # public, official job-search endpoint (already in AppDeploy).
+            # Do NOT treat a generic HTTP 200 index with zero links as proof
+            # that CMPC has no vacancies within our twelve communes.
+            result=read_cmpc_requisitions(today=NOW.date())
+            out.update({k:v for k,v in result.items() if k!="candidates"})
+            out["candidates"]=result["candidates"]
+            for candidate in out["candidates"]:
+                candidate["id"]=key(candidate["url"])
+                candidate["date_recent_2d"]=(
+                    candidate["date_source"] >= (NOW.date()-timedelta(days=1)).isoformat())
+                candidate["express_ready"]=candidate["date_recent_2d"]
+            out["source_reader"]="official_cmpc_cornerstone_json"
+            out["links_found"]=len(out["candidates"])
+            out["details_opened"]=len(out["candidates"])
+            if result.get("official_api_error"):
+                out["errors"].append(result["official_api_error"])
+            return out
         municipal=None
         is_municipal_index=(source.startswith(("Municipio ","Municipalidad "))
             and urlsplit(url).hostname.lower().removeprefix("www.") in MUNICIPAL_FEED_SITES)
@@ -443,6 +464,35 @@ def inspect(seed):
             out["municipal_feed_sources_blocked"]=municipal["sources_blocked"]
         status,soup,reason=request_page(url)
         out["http"]=status
+        if status==200 and soup is not None and official_safco_home(url):
+            safco_tokens=[x.strip() for x in soup.stripped_strings if x and x.strip()]
+            normalized=[fold(x) for x in safco_tokens]
+            section_indices=[i for i,x in enumerate(normalized) if x=="trabaje con nosotros"]
+            position=section_indices[-1] if section_indices else 0
+            out["safco_dom_diagnostics"]={
+                "tokens":len(safco_tokens),
+                "section_tokens":len(section_indices),
+                "available_tokens":sum(x=="disponible" for x in normalized),
+                "around_last_section":safco_tokens[position:position+18],
+                "section_offsets":section_indices[:8],
+                "available_offsets":[i for i,x in enumerate(normalized) if x=="disponible"][:8],
+                "around_available":[
+                    safco_tokens[max(0,i-2):i+9] for i,x in enumerate(normalized)
+                    if x=="disponible"
+                ][:5],
+                "title":soup.title.get_text(" ",strip=True)[:100] if soup.title else None,
+            }
+            # SAFCO publishes per-role OPEN cards on its official homepage
+            # without dates or stable vacancy URLs. Capture all for B/C review,
+            # but never synthesize publication dates or auto-approve them.
+            cards=extract_open_safco_cards(soup,url)
+            out["source_reader"]="safco_embedded_cards_review_only"
+            out["embedded_open_cards"]=len(cards)
+            out["candidates"]=cards
+            out["links_found"]=len(cards)
+            out["details_opened"]=len(cards)
+            out["status"]="scanned_with_candidates" if cards else "scanned_no_candidates"
+            return out
         if status!=200 or soup is None:
             if not municipal or not municipal["pages"]:
                 out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")
@@ -738,6 +788,34 @@ def main():
            for x in ordered]
     with ThreadPoolExecutor(max_workers=8) as pool:
         rows=list(pool.map(inspect,seeds))
+    # Operational evidence for the employer ATS that formerly looked empty.
+    # A HTTP 200 is not coverage unless official API pagination is complete.
+    for cm in rows:
+        if source_is_official_cmpc(cm.get("url")):
+            print("MOTOR_D_CMPC_API "+json.dumps({
+                "source":cm["source"],
+                "http":cm.get("http"),
+                "reader":cm.get("source_reader"),
+                "status":cm.get("status"),
+                "pages":cm.get("official_api_pages"),
+                "jobs_scanned":cm.get("official_api_job_records_examined"),
+                "eligible_local_jobs":cm.get("official_api_candidates"),
+                "index_complete":cm.get("official_api_index_complete"),
+                "error":cm.get("official_api_error"),
+                "rejected_reasons":cm.get("official_api_reason_counts")
+            },ensure_ascii=False),flush=True)
+    for sf in rows:
+        if official_safco_home(sf.get("url")):
+            print("MOTOR_D_SAFCO_CARDS "+json.dumps({
+                "source":sf.get("source"),
+                "http":sf.get("http"),
+                "reader":sf.get("source_reader"),
+                "open_cards_for_review":sf.get("embedded_open_cards"),
+                "status":sf.get("status"),
+                "titles":[x.get("title") for x in sf.get("candidates",[])][:8],
+                "date_and_application_unverified":True,
+                "dom_diagnostics":sf.get("safco_dom_diagnostics")
+            },ensure_ascii=False),flush=True)
     source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)
     updated_performance=learn_source_performance(previous,rows,NOW.isoformat())
     performance_file.write_text(json.dumps(

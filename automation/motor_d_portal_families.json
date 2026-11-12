@@ -62,8 +62,8 @@
       "name": "CMPC · Cornerstone ATS oficial",
       "territory": "Chile",
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
-      "tag": "browser_required",
-      "note": "Existe lector Playwright propio; el HTML genérico de la portada devuelve 0 candidatos, NO ausencia de empleo. El lector CMPC está en otro workflow."
+      "tag": "official_json_api_reader",
+      "note": "Motor D consulta el API público original de Cornerstone (us.api.csod.com/rec-job-search/external/jobs, careerSiteId 4), igual al lector existente de AppDeploy. Solo genera candidatos si la requisición oficial acredita ID, cargo, comuna de ejecución, fecha original y vigencia; después verifica duplicados contra el catálogo. La portada HTML no se considera inventario de puestos."
     },
     {
       "name": "ARAUCO · carreras oficiales",

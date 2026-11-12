@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-12T10:38:34.198308-03:00",
+  "source_scan_date": "2026-11-12T10:58:12.814645-03:00",
   "registered_total": 202,
   "total_pending": 81,
   "group_counts": {
@@ -27,7 +27,7 @@
       "high_priority": 6
     },
     "Lumaco": {
-      "pending": 16,
+      "pending": 15,
       "high_priority": 6
     },
     "Los Sauces": {
@@ -43,7 +43,7 @@
       "high_priority": 6
     },
     "Traiguén": {
-      "pending": 15,
+      "pending": 16,
       "high_priority": 6
     },
     "Victoria": {
@@ -243,6 +243,20 @@
       "recovered": false
     },
     {
+      "id": "0f4e53d2dc697db34210",
+      "name": "Portal LinkedIn · Traiguén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Traiguén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
       "id": "26e7f4c16c97f94e0cb9",
       "name": "Auditoría Empleos Públicos - Enfermera Diálisis Hospital Angol",
       "url": "https://www.empleospublicos.cl/pub/convocatorias/avisopizarronficha.aspx?i=125294",
@@ -326,20 +340,6 @@
       "url": "https://muevete.falabella.com/",
       "communes": [
         "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "ac864a211d99933b8ef1",
-      "name": "Portal LinkedIn · Lumaco",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Lumaco"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

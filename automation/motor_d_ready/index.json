@@ -78,6 +78,12 @@
       "file": "20261111/motor-d-20261111-90ff8aa200ba8f953c.json",
       "count": 1,
       "batch_type": "recovery"
+    },
+    {
+      "batch_id": "motor-d-20261112-e320b72de7d2b23bc7",
+      "file": "20261112/motor-d-20261112-e320b72de7d2b23bc7.json",
+      "count": 2,
+      "batch_type": "recovery"
     }
   ],
   "seen_offer_ids": [

@@ -448,6 +448,9 @@ def inspect(seed):
         # reinterpret them as category/index pages with zero discovered links.
         if (parsed_seed.hostname in ("www.chiletrabajos.cl","chiletrabajos.cl")
             and parsed_seed.path.startswith("/trabajo/")):
+            # This seed is a single known job, not a catalog. Related-job
+            # links on its HTML page do not make the seed itself truncated.
+            out["index_incomplete"]=False
             heading=soup.select_one("h1")
             title=heading.get_text(" ",strip=True)[:180] if heading else ""
             # A direct /trabajo/ URL is already an individual job-detail

@@ -349,3 +349,13 @@ La tabla de la sección B es una **fotografía del 9 de noviembre**, no el lími
 - D06 — CONAF Concursos Laborales (fuente oficial): https://www.conaf.cl/quienes-somos/concursos-laborales/ . Concurso 845 Monumento Natural Contulmo (Purén) y 846 Parque Nacional Nahuelbuta (Angol) aparecen con plazo al 23-11-2026. No dar por publicada la oferta sin leer bases individuales y enlace oficial de postulación.
 
 **Corte actualizado al 11-11-2026 (tras D06):** `fuentes_diarias.json` registra 26 páginas permanentes de descubrimiento, 26 referencias sociales y 39 enlaces a ofertas individuales históricos. La cifra de 23 corresponde al corte histórico del 09-11, no a un límite del motor. El contrato operativo único conserva además las siete familias de búsquedas por comuna y las fuentes empresariales CMPC, ARAUCO, SERFONAC, Brayben, SERFOCOL y SAFCO. Para cada fuente deben distinguirse las categorías `consultada`, `accesible`, `bloqueada`, `pendiente de conector`, `ofertas verificadas` y `publicaciones confirmadas`.
+
+
+## Actualización del registro vivo — 12 de noviembre de 2026 (fuera del corte histórico)
+
+Las siguientes **fichas individuales de contraste**, descubiertas después del corte original, quedan registradas como enlaces de control del rastreo. Son referencias que requieren relectura de vigencia; **no** acreditan publicación en Trabajo Cerca ni constituyen nuevas familias de fuente.
+
+- **Angol — Fundación Tierra de Esperanza, Director/a CC LAE:** https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443
+- **Victoria y Traiguén — Cultivasp, personal para toma de inventario:** https://www.chiletrabajos.cl/trabajo/personal-toma-de-inventario-victoria-traiqguen-3925455
+
+Estos controles permiten detectar ofertas cuyo lugar de ejecución se encuentra en las 12 comunas, aun cuando el portal las indexe bajo otra ciudad. La prueba de ejecución debe contrastar cada ficha original y su estado, no sólo el catálogo del portal.

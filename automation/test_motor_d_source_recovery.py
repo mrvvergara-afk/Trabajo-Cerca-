@@ -136,9 +136,23 @@ class RecoveryAndRankingTests(unittest.TestCase):
             for i in range(44))+"</html>"
         catalog=BeautifulSoup(body,"html.parser")
         detail=BeautifulSoup("<h1>Oferta laboral operario</h1><p>Requisitos de trabajo</p>","html.parser")
-        with patch.object(d,"request_page",side_effect=lambda u:
-                          (200,catalog,None) if u==url else (200,detail,None)):
-            report=d.inspect(("Angol","Ofertas empleo",url))
+        opened=[]
+        def fetch(u):
+            if u!=url:opened.append(u)
+            return (200,catalog,None) if u==url else (200,detail,None)
+        with patch.object(d,"request_page",side_effect=fetch):
+            report=d.inspect(("Angol","Ofertas empleo",url,0))
+            first=set(opened)
+            opened.clear()
+            second=d.inspect(("Angol","Ofertas empleo",url,1))
+            next_links=set(opened)
+        # Two consecutive complete attempts MUST NOT rescan the first
+        # 35 links forever and ignore the nine entries at the end.
+        self.assertEqual(len(first),35)
+        self.assertEqual(len(next_links),35)
+        self.assertEqual(len(first|next_links),44)
+        self.assertEqual(report["index_rotation_offset"],0)
+        self.assertEqual(second["index_rotation_offset"],35)
         self.assertEqual(report["index_candidates_detected"],44)
         self.assertEqual(report["links_found"],35)
         self.assertTrue(report["index_incomplete"])

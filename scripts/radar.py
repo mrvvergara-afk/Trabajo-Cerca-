@@ -90,7 +90,7 @@ for commune in COMMUNES:
    for item in root.findall('./channel/item')[:40]:
     title=(item.findtext('title') or '').strip()
     link=(item.findtext('link') or '').strip()
-    if link and HIRING.search(title) and not EXCLUDE.search(title) and re.search(r'\\b'+re.escape(search_term)+r'\\b',title,re.I):
+    if link and HIRING.search(title) and not EXCLUDE.search(title) and re.search(r'\b'+re.escape(search_term)+r'\b',title,re.I):
      add('Google News RSS',link,commune,title)
      found+=1
    diagnostics.append({'source':'Google News RSS '+search_term,

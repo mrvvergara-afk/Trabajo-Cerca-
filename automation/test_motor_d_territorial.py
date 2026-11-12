@@ -27,7 +27,9 @@ class TerritorialSafetyTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmp, \
              patch.object(engine, "ROOT", Path(tmp)), \
-             patch.object(engine, "inspect", side_effect=artificial_scan) as inspected:
+             patch.object(engine, "inspect", side_effect=artificial_scan) as inspected, \
+             patch.object(engine, "read_motor_a_review",
+                 return_value={"status":"no_queue_test","total":0,"probes":[]}):
             engine.main()
             report = json.loads((Path(tmp) / "territorial_daily.json").read_text())
             self.assertEqual(inspected.call_count, len(engine.SEEDS) + len(engine.INDEED_SEEDS))

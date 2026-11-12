@@ -6,7 +6,7 @@ import {ownedPublicationPatch} from '../shared/owned-publication';
 import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, decideAdvertiserLead, commercialAdmin, readCommercialConfiguration, commercialCampaigns, readCommercialCampaigns, requestCommercialExpansion, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { adminBackupPage } from './admin-backup';
-import { directChatGPTImport } from './chatgpt-direct-import';
+import { directChatGPTImport, revalidateOfficialMunicipalOpenOffers } from './chatgpt-direct-import';
 import { motorDAutoImportHandler, confirmMotorDPublications } from './motor-d-auto-import';
 export { motorDAutoImportHandler };
 import { importReview, listReview, decideReview } from './radar-review-inbox';
@@ -2966,6 +2966,11 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   if(event?.type==='cron' && event.name==='verify-publish'){
     try { await motorDAutoImportHandler(); }
     catch(cause){console.warn('MOTOR_D_BRIDGE_HOOK_ERROR '+String(cause).slice(0,150));}
+    // Verified municipal open notices renew daily. A confirmed CLOSED index
+    // removes them; a blocked source does not masquerade as closure.
+    try { console.warn('MOTOR_D_MUNICIPAL_RECHECK '+JSON.stringify(
+      await revalidateOfficialMunicipalOpenOffers())); }
+    catch(cause){console.warn('MOTOR_D_MUNICIPAL_RECHECK_ERROR '+String(cause).slice(0,170));}
   }
   const administrative=isAdminVerificationSlot(event) ? await processAdminReviewBatch({scheduledTime:event!.scheduledTime,project:projectFeedListing}) : undefined;
   const feedProjector={ revision:'published-retention-counts-v8-location', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };

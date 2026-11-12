@@ -98,6 +98,7 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 from motor_d_employer_portal import read_employer_vacancy
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
 from motor_d_source_recovery import build_recovery_queue
+from motor_a_handoff import read as read_motor_a_review
 from motor_d_social_sources import SOURCES as SOCIAL_REFERENCE_SOURCES
 SOURCE_PLAN=source_plan(SEEDS,INDEED_SEEDS,social_refs=SOCIAL_REFERENCE_SOURCES)
 SEEDS.extend(SOURCE_PLAN["added"])
@@ -759,10 +760,25 @@ def main():
     print("MOTOR_D_INDEED_CRITICAL "+json.dumps(indeed_coverage,ensure_ascii=False),flush=True)
     scanned={r["commune"] for r in rows}
     missing=sorted(set(COMMUNES)-scanned)
+    # Do NOT count transient A leads as permanently registered sources. They
+    # are independent ORIGINAL URL probes; D must re-fetch them individually.
+    a_handoff=read_motor_a_review(now=NOW)
+    a_rows=[]
+    if a_handoff["probes"]:
+        with ThreadPoolExecutor(max_workers=5) as pool:
+            a_rows=list(pool.map(inspect,a_handoff["probes"]))
+    a_handoff_report={k:v for k,v in a_handoff.items() if k!="probes"}
+    a_handoff_report.update({
+        "fetched":len(a_rows),
+        "http_200":sum(r.get("http")==200 for r in a_rows),
+        "individual_candidates":sum(len(r["candidates"]) for r in a_rows),
+        "verified_or_published":0,
+    })
+    print("MOTOR_A_TO_D_HANDOFF "+json.dumps(a_handoff_report,ensure_ascii=False),flush=True)
     # One employer portal can serve all 12 towns. Its worker anchor is NOT
     # proof of the job's execution city (e.g. SERFONAC sources anchored Angol).
     candidates=[dict(x,source=y["source"],commune=x.get("work_commune"),
-                     crawler_commune=y["commune"]) for y in rows for x in y["candidates"]]
+                     crawler_commune=y["commune"]) for y in rows+a_rows for x in y["candidates"]]
     documents_for_review=[]
     seen_documents=set()
     for row in rows:
@@ -820,6 +836,7 @@ def main():
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
             "missing_communes":missing,"sources_total":len(rows),"indeed_critical":indeed_coverage,
             "source_inventory":source_coverage,
+            "motor_a_review_handoff":a_handoff_report,
             "commune_status":per_commune,
             "communes_with_accessible_source":sum(v["sources_accessible"]>0 for v in per_commune.values()),
             "communes_without_accessible_source":[k for k,v in per_commune.items() if not v["sources_accessible"]],

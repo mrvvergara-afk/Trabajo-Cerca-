@@ -89,14 +89,31 @@ def classify(item, today=None):
     if not employer_key or employer_key in {"n a", "s n", "sin nombre", "no informado", "desconocido"}:
         return "SEGUNDA_PASADA", "empleador_no_identificado", None
     published = item.get("date_source")
-    if not isinstance(published,str) or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}",published):
+    # Scoped flexibility: a verifiably open, first-party municipal index
+    # is evidence of an ongoing application window, NOT of the original date.
+    # No municipality-only inference is allowed without individual job detail.
+    municipality_open_undated = bool(
+        not published and item.get("official_index_open_verified") is True
+        and item.get("index_status") == "open"
+        and item.get("source_date_method") == "original_not_reported_official_index_open"
+        and item.get("application_method") == "in_person_omil"
+        and urlsplit(url).hostname in {"munimulchen.cl", "www.munimulchen.cl"}
+        and item.get("official_open_index_url") == (
+            "https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
+        and normalize(item.get("work_commune")) == "mulchen"
+    )
+    day = None
+    if published:
+        if not isinstance(published,str) or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}",published):
+            return "SEGUNDA_PASADA","fecha_original_invalida",None
+        try:
+            day = date.fromisoformat(published)
+        except ValueError:
+            return "SEGUNDA_PASADA","fecha_original_invalida",None
+        if day > today:
+            return "SEGUNDA_PASADA","fecha_original_futura; revisar dato fuente",None
+    elif not municipality_open_undated:
         return "SEGUNDA_PASADA","fecha_original_no_acreditada; verificar fecha y vigencia",None
-    try:
-        day = date.fromisoformat(published)
-    except ValueError:
-        return "SEGUNDA_PASADA","fecha_original_invalida",None
-    if day > today:
-        return "SEGUNDA_PASADA","fecha_original_futura; revisar dato fuente",None
 
     normalized_title=normalize(title)
     explicit = re.search(r"\bcomuna (?:de )?(los angeles|los sauces|angol|lumaco|traiguen|renaico|nacimiento|negrete|mulchen|collipulli|victoria|puren|ercilla|temuco)\b", normalized_title)
@@ -108,8 +125,8 @@ def classify(item, today=None):
         len(company)<2 or len(title)<5 or item.get("application_evidence") is not True):
         return "SEGUNDA_PASADA","falta_empresa_comuna_o_postulacion_explicita",None
 
-    age_days=(today-day).days
-    batch_type="daily" if age_days <= 1 else "recovery"
+    age_days=(today-day).days if day else None
+    batch_type="daily" if age_days is not None and age_days <= 1 else "recovery"
     source_id = hashlib.sha256(url.encode()).hexdigest()[:20]
     offer = {
         "id_fuente":"d_"+source_id,
@@ -117,15 +134,25 @@ def classify(item, today=None):
         "empresa":company[:140],
         "comunas":[work],
         "url_original":str(item["url"]),
-        "fecha_publicacion":published,
+        "fecha_publicacion":published if day else None,
         "fecha_descubrimiento":today.isoformat(),
+        **({
+            "fecha_publicacion_metodo":"original_no_informada_municipal_abierta",
+            "internal_visibility_days":14,
+            "municipal_open_index_url":item["official_open_index_url"],
+            "application_method":"in_person_omil",
+        } if municipality_open_undated else {}),
         "tipo_lote":"radar_diario" if batch_type=="daily" else "recuperacion_vigente",
         "fecha_cierre":item.get("deadline"),
         **{k:item[k] for k in ("review_id", "promotion_id", "ocr_revalidate_after", "ocr_document_sha256") if item.get(k)},
         "justificacion":(
-            "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. "
-            + ("Publicación de hoy o ayer." if batch_type=="daily" else
-               "Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación.")
+            ("Motor D: ficha municipal individual, índice oficial abierto, comuna de ejecución "
+             "y postulación presencial acreditados; empleador no revelado por OMIL. "
+             "Fecha original no informada; vigencia interna 14 días sujeta a nueva verificación."
+             if municipality_open_undated else
+             "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. "
+             + ("Publicación de hoy o ayer." if batch_type=="daily" else
+                "Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."))
         )
     }
     if batch_type=="daily":

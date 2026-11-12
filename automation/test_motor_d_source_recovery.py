@@ -114,6 +114,17 @@ class RecoveryAndRankingTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"unexpected_unresolved_source_status"):
             recovery_category({"status":"accessible"})
 
+    def test_official_conaf_career_index_is_permanently_registered_for_all_12_towns(self):
+        import motor_d_territorial_daily as d
+        from motor_d_source_registry import plan
+        from motor_d_social_sources import SOURCES
+        all_sources=plan(d.SEEDS,d.INDEED_SEEDS,social_refs=SOURCES)
+        conaf=[x for x in all_sources["public"] if
+               x["url"]=="https://www.conaf.cl/quienes-somos/concursos-laborales/"]
+        self.assertEqual(len(conaf),1)
+        self.assertEqual(set(conaf[0]["communes"]),set(COMMUNES))
+        self.assertIn("daily",conaf[0]["origins"])
+
     def test_real_12_commune_inventory_recovery_queue_has_no_loss(self):
         scan_report=json.loads(REPORT.read_text(encoding="utf-8"))
         inventory=scan_report["source_inventory"]

@@ -8,6 +8,8 @@ on:
       - 'automation/motor_d_employer_portal.py'
       - 'automation/test_motor_d_employer_portal.py'
       - 'automation/motor_d_source_registry.py'
+      - 'automation/motor_d_source_recovery.py'
+      - 'automation/test_motor_d_source_recovery.py'
       - 'automation/motor_d_portal_families.json'
       - 'automation/test_motor_d_source_registry.py'
       - 'automation/trabajo_cerca/fuentes_diarias.json'
@@ -33,6 +35,8 @@ on:
       - 'automation/motor_d_employer_portal.py'
       - 'automation/test_motor_d_employer_portal.py'
       - 'automation/motor_d_source_registry.py'
+      - 'automation/motor_d_source_recovery.py'
+      - 'automation/test_motor_d_source_recovery.py'
       - 'automation/motor_d_portal_families.json'
       - 'automation/test_motor_d_source_registry.py'
       - 'automation/trabajo_cerca/fuentes_diarias.json'
@@ -85,6 +89,9 @@ jobs:
           PYTHONPATH: automation:automation/trabajo_cerca
         run: |
           python -m unittest discover -s automation -p 'test_motor_d_catalog_preflight.py' -v
+      - name: Test source ranking and complete recovery queue
+        run: |
+          PYTHONPATH=automation python -m unittest discover -s automation -p 'test_motor_d_source_recovery.py' -v
       - name: Audit real public sources in all 12 communes without publishing
         run: python automation/motor_d_territorial_daily.py
       - name: Verify real-world source coverage honestly
@@ -232,7 +239,7 @@ jobs:
       - name: Install zero-cost HTML parser
         run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
       - name: Check Python script compiles
-        run: python -m py_compile automation/motor_d_territorial_daily.py automation/motor_d_source_registry.py automation/motor_d_express.py automation/motor_d_employer_portal.py automation/motor_d_catalog_probe.py
+        run: python -m py_compile automation/motor_d_territorial_daily.py automation/motor_d_source_registry.py automation/motor_d_express.py automation/motor_d_employer_portal.py automation/motor_d_catalog_probe.py automation/motor_d_source_recovery.py
       - name: Run territorial integrity tests
         run: python -m unittest discover -s automation -p 'test_motor_d_*.py' -v
       # Operational test after enabling bounded B/C; D remains an independent scout.
@@ -281,7 +288,7 @@ jobs:
         run: |
           git config user.name "trabajo-cerca-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/source_performance.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_discovery/producer_heartbeat.json automation/motor_d_discovery/publication_gate.json automation/motor_d_ready/
+          git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/source_performance.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_discovery/producer_heartbeat.json automation/motor_d_discovery/publication_gate.json automation/motor_d_discovery/source_recovery_queue.json automation/motor_d_ready/
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
             # A simultaneous source edit is not a failed scan. Rebase and retry
@@ -310,4 +317,5 @@ jobs:
           path: |
             automation/motor_d_discovery/territorial_daily.json
             automation/motor_d_discovery/publication_gate.json
+            automation/motor_d_discovery/source_recovery_queue.json
           if-no-files-found: warn

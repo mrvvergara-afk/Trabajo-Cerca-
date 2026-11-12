@@ -367,7 +367,10 @@ def explicit_deadline_expired(body, today=None):
     return deadline is not None and deadline < (today or NOW.date())
 
 def inspect(seed):
-    town,source,url=seed
+    town,source,url=seed[:3]
+    # Optional persisted source-attempt ordinal: rotate among excess jobs
+    # so the first 35 DOM links do not permanently starve other vacancies.
+    previous_attempts=max(0,int(seed[3])) if len(seed)>3 else 0
     out={"commune":town,"source":source,"url":url,"status":"not_started",
          "checked_at":NOW.isoformat(),"http":None,"links_found":0,
          "details_opened":0,"candidates":[],"errors":[],
@@ -428,10 +431,18 @@ def inspect(seed):
         # so a pagination/structured adapter is a mandatory next action.
         index_all=links_from(soup,links_base,limit=None)
         index_raw_anchors=len(soup.select("a[href]"))
-        links=index_all[:35]
-        out["index_candidates_detected"]=len(index_all)
+        detail_budget=35
+        index_count=len(index_all)
+        rotation_offset=((previous_attempts*detail_budget)%index_count
+                         if index_count>detail_budget else 0)
+        links=(index_all[rotation_offset:rotation_offset+detail_budget]
+               if index_count<=detail_budget else
+               (index_all+index_all)[rotation_offset:rotation_offset+detail_budget])
+        out["index_rotation_offset"]=rotation_offset
+        out["index_candidates_selected"]=len(links)
+        out["index_candidates_detected"]=index_count
         out["index_anchor_count"]=index_raw_anchors
-        out["index_incomplete"]=len(index_all)>35 or index_raw_anchors>500
+        out["index_incomplete"]=index_count>detail_budget or index_raw_anchors>500
         if out["index_incomplete"]:
             out["errors"].append("source_index_partially_read_recovery_required")
         if municipal:
@@ -624,7 +635,9 @@ def main():
         if not isinstance(previous,dict):previous={}
     except (ValueError,OSError):previous={}
     ordered=ranked_sources(SOURCE_PLAN,previous)
-    seeds=[(x["anchor"],x["name"],x["url"]) for x in ordered]
+    seeds=[(x["anchor"],x["name"],x["url"],
+            int(previous.get(x["id"],{}).get("attempts",0)))
+           for x in ordered]
     with ThreadPoolExecutor(max_workers=8) as pool:
         rows=list(pool.map(inspect,seeds))
     source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)

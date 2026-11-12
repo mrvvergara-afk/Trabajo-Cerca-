@@ -276,6 +276,38 @@ def explicit_employer(body):
 def explicit_application(body):
     return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula(?:r)?\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
 
+def municipal_open_official_evidence(town, source, index_url, detail_url, index_status, body):
+    """Bounded municipality-only validation. Never infer a worksite from its index URL."""
+    if index_status != "open" or not source.startswith("Municipio "):
+        return None
+    if urlsplit(index_url).hostname not in ("www.munimulchen.cl", "munimulchen.cl"):
+        return None
+    if urlsplit(detail_url).hostname not in ("www.munimulchen.cl", "munimulchen.cl"):
+        return None
+    if not urlsplit(detail_url).path.startswith("/oferta-laboral-"):
+        return None
+    # Publisher specifically describes the local agricultural workplace,
+    # not merely a municipal OMIL address or place where CVs are delivered.
+    agricultural_site = re.search(
+        r"empresa del rubro agr[ií]cola de la comuna de Mulch[eé]n"
+        r".{0,160}reclutamiento.{0,160}labores? de cosecha de ar[aá]ndanos"
+        r".{0,120}predio ubicado en el sector Campamento",
+        body, re.I | re.S)
+    in_person = re.search(
+        r"interesados deben presentar la documentaci[oó]n en la oficina OMIL"
+        r".{0,140}An[ií]bal Pinto", body, re.I | re.S)
+    if town != "Mulchén" or not agricultural_site or not in_person:
+        return None
+    return {
+        "work_commune": "Mulchén",
+        "employer": "Empresa agrícola no identificada (OMIL Mulchén)",
+        "application_evidence": True,
+        "official_index_open_verified": True,
+        "official_open_index_url": index_url,
+        "date_source_method": "original_not_reported_official_index_open",
+        "application_method": "in_person_omil",
+    }
+
 def chiletrabajos_metadata(soup, title, url):
     """Read the individual portal's explicit metadata, never a search-page guess."""
     if not re.search(r"^https://(?:www\.)?chiletrabajos\.cl/trabajo/",url,re.I):
@@ -487,10 +519,16 @@ def inspect(seed):
                         detail["linked_documents_for_review"]=documents_from_page(
                             detail_url,str(detail_soup),limit=2)
                     dates=dates_in(detail_soup)
+                    official_open=municipal_open_official_evidence(
+                        town,source,url,detail_url,index_status,body)
                     job_commune=explicit_work_commune(body)
                     detail["explicit_worksite_commune"]=job_commune
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
+                    if official_open:
+                        job_commune=official_open["work_commune"]
+                        employer=employer or official_open["employer"]
+                        application_evidence=True
                     portal=chiletrabajos_metadata(detail_soup,title,detail_url)
                     if portal:
                         job_commune=portal["work_commune"] or job_commune
@@ -531,7 +569,11 @@ def inspect(seed):
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
                     general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))
                     detail.update(title=public_title,dates=dates,
-                                  source_date_method=(company_page or {}).get("date_source_method"),
+                                  source_date_method=(company_page or {}).get("date_source_method") or (
+                                      official_open or {}).get("date_source_method"),
+                                  official_index_open_verified=bool(official_open),
+                                  official_open_index_url=(official_open or {}).get("official_open_index_url"),
+                                  application_method=(official_open or {}).get("application_method"),
                                   work_commune=job_commune,source_commune_not_confirmed=job_commune is None,
                                   employer=employer,application_evidence=application_evidence,
                                   date_source=dates[0] if dates else None,

@@ -182,8 +182,8 @@ def assess(plan,rows,stats):
         worked=state.startswith(("scanned","fallback_"))
         # An HTML response from a national jobs homepage is not proof that
         # all twelve locality searches were covered.
-        # Cornerstone needs the existing Playwright reader. A generic HTTP
-        # response with zero vacancies cannot certify CMPC career coverage.
+        # CMPC is covered only when its structured Cornerstone API completes;
+        # the generic HTML homepage still cannot certify job coverage.
         # Branded employer career portals can return HTTP 200 with only
         # recruitment advice or JS placeholders. No individual vacancy link
         # must mean 'specialized reader needed', NOT 'employer fully covered'.

@@ -273,12 +273,16 @@ class Editor {
       const previous=(await this.entries(wasPublished)).find(item=>item.key===key);
       const deadline=Date.parse(String(record.sourceValidThrough||''));
       const closure=String(record.closureReason||'');
+      const municipalEvidenceUntil=Date.parse(String(record.municipalOpenEvidenceValidUntil||''));
+      const municipalEvidenceExpired=record.validityMethod==='municipal_open_status' &&
+        (!Number.isFinite(municipalEvidenceUntil)||municipalEvidenceUntil<this.now);
       // Preserve a previously approved listing when its source becomes inactive
       // without a confirmed closure; this is a state discrepancy, not proof of closure.
       // Never restore the source's active flag automatically.
       const keep=previous?.item.verified===true && previous.item.review!==true &&
         (!Number.isFinite(deadline)||deadline>=this.now) &&
-        !/confirmed|explicit|administrative|owner_request/.test(closure);
+        !/confirmed|explicit|administrative|owner_request/.test(closure) &&
+        !municipalEvidenceExpired;
       if(keep){
         console.warn('PUBLIC_FEED_LAST_GOOD_PRESERVED '+JSON.stringify({source,sourceId}));
         return;
@@ -428,7 +432,10 @@ async function publish(record:Manifest, projector:Projector) {
       const communityUntil=Date.parse(String(source?.expiresAt||''));
       const communityExpired=lost.source==='community_posts'&&Number.isFinite(communityUntil)&&communityUntil<Date.now();
       const closed=Boolean(source?.closureReason&&/confirmed|explicit|administrative|owner_request/.test(String(source.closureReason)));
-      if(!expired&&!communityExpired&&!closed){
+      const municipalEvidenceUntil=Date.parse(String(source?.municipalOpenEvidenceValidUntil||''));
+      const municipalEvidenceExpired=source?.validityMethod==='municipal_open_status' &&
+        (!Number.isFinite(municipalEvidenceUntil)||municipalEvidenceUntil<Date.now());
+      if(!expired&&!communityExpired&&!closed&&!municipalEvidenceExpired){
         unexpected.push(lost.key);
         if(missingSourceDiagnostics.length<10)missingSourceDiagnostics.push({
           key:lost.key,

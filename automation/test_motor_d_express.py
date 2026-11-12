@@ -244,5 +244,108 @@ class MotorDExpressTests(unittest.TestCase):
             self.assertEqual(len(index2["batches"]),3)
             self.assertEqual(result["published_confirmed"],0)
 
+
+    def test_official_open_municipal_undated_has_no_fabricated_source_date(self):
+        row=record(url="https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+                   date_source=None, index_status="open",
+                   title="Operarios Agrícolas – Cosecha de Arándanos",
+                   employer="Empresa agrícola no identificada (OMIL Mulchén)",
+                   official_index_open_verified=True,
+                   source_date_method="original_not_reported_official_index_open",
+                   application_method="in_person_omil",
+                   official_open_index_url="https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
+        state,reason,offer=engine.classify(row,TODAY)
+        self.assertEqual(state,"RECUPERACION")
+        self.assertIsNone(offer["fecha_publicacion"])
+        self.assertEqual(offer["fecha_descubrimiento"],TODAY.isoformat())
+        self.assertIsNone(offer["fecha_cierre"])
+        self.assertEqual(offer["internal_visibility_days"],14)
+        self.assertIn("fecha original",reason if reason.startswith("fecha") else offer["justificacion"].lower())
+
+    def test_open_index_alone_never_approves_an_unconfirmed_job(self):
+        row=record(url="https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/",
+                   date_source=None, index_status="open",
+                   title="Operarios Agrícolas – Cosecha de Arándanos",
+                   employer="Empresa agrícola no identificada (OMIL Mulchén)",
+                   official_index_open_verified=True,
+                   source_date_method="original_not_reported_official_index_open",
+                   application_method="in_person_omil",
+                   official_open_index_url="https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
+        for change in ({"official_index_open_verified":False},
+                       {"application_method":None},
+                       {"source_commune_not_confirmed":True},
+                       {"official_open_index_url":"https://other.example.cl/ofertas"},
+                       {"application_evidence":False}):
+            with self.subTest(change=change):
+                state,_,offer=engine.classify(dict(row,**change),TODAY)
+                self.assertEqual(state,"SEGUNDA_PASADA")
+                self.assertIsNone(offer)
+        self.assertEqual(engine.classify(dict(row,index_status="closed"),TODAY)[0],"DESCARTADO")
+
+    def test_historical_offer_missing_from_complete_feed_requires_receipt_review(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            statuses = {source_id: "not_found_in_complete_feed"}
+            first = engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            self.assertEqual(first["daily_batch_offers"], 1)
+            second = engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            self.assertEqual(second["daily_batch_offers"], 0)
+            self.assertEqual(second["historical_missing_from_catalog"], 1)
+            evidence = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(evidence["state"], "needs_receipt_review")
+            self.assertEqual(evidence["items"][0]["id_fuente"], source_id)
+            self.assertEqual(len(evidence["items"][0]["prior_batch_ids"]), 1)
+            self.assertEqual(len(json.loads((root / "index.json").read_text())["batches"]), 1)
+
+    def test_historical_reconciliation_clears_when_public_or_offer_closes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            statuses = {source_id: "not_found_in_complete_feed"}
+            engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            visible = engine.produce({"candidates": [row]}, root, TODAY,
+                                     {source_id: "already_published_source_identity"})
+            self.assertEqual(visible["historical_missing_from_catalog"], 0)
+            report = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(report["state"], "clear")
+            self.assertEqual(report["items"], [])
+            closed = engine.produce({"candidates": [record(index_status="closed")]},
+                                    root, TODAY, statuses)
+            self.assertEqual(closed["historical_missing_from_catalog"], 0)
+
+    def test_stale_seen_id_without_batch_is_reported_not_silently_dropped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            engine.atomic_json_write(root / "index.json", {
+                "schema_version": 1, "batches": [],
+                "seen_offer_ids": [source_id],
+            })
+            result = engine.produce({"candidates": [row]}, root, TODAY,
+                                    {source_id: "not_found_in_complete_feed"})
+            self.assertEqual(result["daily_batch_offers"], 0)
+            self.assertEqual(result["historical_missing_from_catalog"], 1)
+            report = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(report["items"][0]["prior_batch_ids"], [])
+
+
+    def test_complete_feed_with_historical_gap_is_not_reported_clean(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with patch.object(engine, "ROOT", root):
+                receipt = engine.record_publication_gate(
+                    {"date": "2026-11-06T09:00:00-03:00"}, TODAY,
+                    "completed", eligible=2, checked=100, duplicates=1,
+                    staged=0, historical_missing=1)
+                self.assertEqual(receipt["state"],
+                    "historical_publication_reconciliation_required")
+                self.assertTrue(receipt["feed_complete"])
+                self.assertEqual(receipt["historical_missing_from_catalog"], 1)
+
 if __name__=="__main__":
     unittest.main()

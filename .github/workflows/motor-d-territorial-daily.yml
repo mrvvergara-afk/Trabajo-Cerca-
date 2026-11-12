@@ -92,6 +92,23 @@ jobs:
       - name: Test source ranking and complete recovery queue
         run: |
           PYTHONPATH=automation python -m unittest discover -s automation -p 'test_motor_d_source_recovery.py' -v
+      - name: Regression OMIL open/closed, undated publication and staged AppDeploy
+        env:
+          PYTHONPATH: automation:automation/trabajo_cerca
+        run: |
+          python -m unittest discover -s automation -p 'test_motor_d_territorial.py' -v
+          python -m unittest discover -s automation -p 'test_motor_d_express.py' -v
+          python -m unittest discover -s automation -p 'test_appdeploy_staging_preflight.py' -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile staged AppDeploy TypeScript syntax and execute exact OMIL status tests
+        run: |
+          npx --yes esbuild@0.25.12 appdeploy_staging/*.ts --outdir=/tmp/tc-stage-syntax --platform=node --format=esm
+          npx --yes esbuild@0.25.12 automation/test_municipal_index_status.ts --bundle --platform=node --format=cjs --outfile=/tmp/tc-municipal-test.cjs
+          node /tmp/tc-municipal-test.cjs
+          npx --yes esbuild@0.25.12 automation/test_motor_a_index_rotation.ts --bundle --platform=node --format=cjs --outfile=/tmp/tc-motor-a-index-test.cjs
+          node /tmp/tc-motor-a-index-test.cjs
       - name: Audit real public sources in all 12 communes without publishing
         run: python automation/motor_d_territorial_daily.py
       - name: Verify real-world source coverage honestly

@@ -128,4 +128,22 @@ class FullInventoryTests(unittest.TestCase):
         self.assertTrue(any("kitempleo.cl" in x["url"] for x in daily["discovery"]))
         self.assertEqual(set(COMMUNES),{p for row in full["public"] for p in row["communes"]})
 
+
+    def test_employer_branded_portal_no_jobs_is_specialized_unresolved(self):
+        registry=plan(
+            [("Nacimiento","CMPC Trabajando","https://cmpc.trabajando.cl/"),
+             ("Mulchén","SERFOCOL Trabajando","https://serfocol.trabajando.cl/"),
+             ("Collipulli","CMPC Cornerstone","https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc")],
+            [],
+            config={"territories":list(COMMUNES),"seed_urls":[],
+                    "discovery":[],"social_reference":[]},
+            audit={"seed_pages":[]},social_refs=[],portals={})
+        reports=[self.fake(p) for p in registry["public"]]
+        report=assess(registry,reports,{})
+        self.assertEqual(report["unresolved_total"],3)
+        self.assertEqual(report["per_commune"]["Nacimiento"]["needs_specialized_reader"],1)
+        self.assertEqual(report["per_commune"]["Collipulli"]["needs_specialized_reader"],1)
+        self.assertTrue(all(row["status"]=="requires_specialized_reader"
+                            for row in report["pending"]))
+
 if __name__=="__main__":unittest.main()

@@ -49,6 +49,10 @@ SEEDS=[
 ("Nacimiento","Chiletrabajos · Serfonac mecánico automotriz","https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364"),
 ("Nacimiento","Chiletrabajos · Serfonac conductor","https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758"),
 ("Angol","Chiletrabajos · Operario alimentos Angol","https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569"),
+# Independent discovery control cases. All must be rechecked on each run;
+# historical links are NOT proof that a vacancy remains open.
+("Angol","Chiletrabajos · Director CC LAE Angol · contraste","https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443"),
+("Victoria","Chiletrabajos · Inventario Victoria Traiguén · contraste","https://www.chiletrabajos.cl/trabajo/personal-toma-de-inventario-victoria-traiqguen-3925455"),
 # Geographic cross-postings: recruiter's office is outside the 12 communes,
 # but the body explicitly states the real workplace. Always re-read the URL.
 ("Traiguén","Chiletrabajos · Reponedor Traiguén","https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463"),
@@ -94,6 +98,7 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 from motor_d_employer_portal import read_employer_vacancy
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
 from motor_d_source_recovery import build_recovery_queue
+from motor_a_handoff import read as read_motor_a_review
 from motor_d_social_sources import SOURCES as SOCIAL_REFERENCE_SOURCES
 SOURCE_PLAN=source_plan(SEEDS,INDEED_SEEDS,social_refs=SOCIAL_REFERENCE_SOURCES)
 SEEDS.extend(SOURCE_PLAN["added"])
@@ -103,7 +108,11 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca|"
     r"asistente|cajer[ao]s?|vendedor(?:a)?|bodega|tesorer[ií]a|click and collect|"
-    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista|docente|psic[oó]log[oa])\b",re.I)
+    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista|docente|psic[oó]log[oa]|"
+    r"director(?:a)?|supervisor(?:a)?|encargad[ao]|instrumentista|guardia|"
+    r"mantenedor(?:a)?|inventario|inventarista|analista|inspector(?:a)?|"
+    r"brigadista|motosierrista|teclero|cargador\s+frontal|"
+    r"administrativ[ao]|profesional|jefatura|ingenier[ao]|operari[ao])\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
 CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"
@@ -125,6 +134,10 @@ def safe_link(raw,base,origin):
         if u.hostname.lower()!=origin:return None
         if re.search(r"\.(?:jpg|png|gif|svg|css|js|zip|pdf)$",u.path,re.I):return None
         if origin in ("www.chiletrabajos.cl","chiletrabajos.cl") and not u.path.startswith("/trabajo/"):
+            return None
+        # The employer-branded Trabajando indexes show CV advice/news pages
+        # alongside actual vacancies; those are never job details.
+        if origin.endswith(".trabajando.cl") and u.path.startswith(("/noticias/","/blog/","/articulos/")):
             return None
         if not u.path or u.path in ("/","/index.php") or re.search(r"/(?:alertas-de-empleo|login|registro|faq|preguntas-frecuentes)/?$",u.path,re.I):return None
         if (u.hostname,u.path.rstrip("/"),u.query)==(urlsplit(base).hostname,urlsplit(base).path.rstrip("/"),urlsplit(base).query):return None
@@ -195,7 +208,9 @@ def dates_in(soup):
 def links_from(soup,base,limit=35):
     origin=urlsplit(base).hostname
     output={}
-    for tag in soup.select("a[href]")[:500]:
+    # Include deep links in large indices; rotation then visits them across
+    # scheduled runs. The old first-500 cutoff starved later jobs forever.
+    for tag in soup.select("a[href]")[:3000]:
         url=safe_link(tag.get("href",""),base,origin)
         if not url:continue
         title=" ".join(tag.stripped_strings)[:180]
@@ -275,6 +290,39 @@ def explicit_employer(body):
 
 def explicit_application(body):
     return bool(re.search(r"(?:postulaciones?\s+abiertas?|c[oó]mo\s+postular|postula(?:r)?\s+(?:en|aqu[ií])|enviar\s+(?:curr[ií]culum|cv)|env[ií]a\s+tu\s+cv|recepci[oó]n\s+de\s+antecedentes)",body,re.I))
+
+def municipal_open_official_evidence(town, source, index_url, detail_url, index_status, body):
+    """Bounded municipality-only validation. Never infer a worksite from its index URL."""
+    if index_status != "open" or not source.startswith("Municipio "):
+        return None
+    if urlsplit(index_url).hostname not in ("www.munimulchen.cl", "munimulchen.cl"):
+        return None
+    if urlsplit(detail_url).hostname not in ("www.munimulchen.cl", "munimulchen.cl"):
+        return None
+    if not urlsplit(detail_url).path.startswith("/oferta-laboral-"):
+        return None
+    # Publisher specifically describes the local agricultural workplace,
+    # not merely a municipal OMIL address or place where CVs are delivered.
+    # The publisher uses a visual article layout and may split sentences
+    # across blocks. Require every independent, *job-specific* evidence
+    # marker rather than one brittle regex spanning multiple paragraphs.
+    text=fold(body)
+    agricultural_site=all(marker in text for marker in (
+        "empresa del rubro agricola de la comuna de mulchen",
+        "cosecha de arandanos","predio ubicado en el sector campamento"))
+    in_person=all(marker in text for marker in (
+        "interesados","presentar","documentacion","oficina omil","anibal pinto"))
+    if town != "Mulchén" or not agricultural_site or not in_person:
+        return None
+    return {
+        "work_commune": "Mulchén",
+        "employer": "Empresa agrícola no identificada (OMIL Mulchén)",
+        "application_evidence": True,
+        "official_index_open_verified": True,
+        "official_open_index_url": index_url,
+        "date_source_method": "original_not_reported_official_index_open",
+        "application_method": "in_person_omil",
+    }
 
 def chiletrabajos_metadata(soup, title, url):
     """Read the individual portal's explicit metadata, never a search-page guess."""
@@ -487,10 +535,45 @@ def inspect(seed):
                         detail["linked_documents_for_review"]=documents_from_page(
                             detail_url,str(detail_soup),limit=2)
                     dates=dates_in(detail_soup)
+                    official_open=municipal_open_official_evidence(
+                        town,source,url,detail_url,index_status,body)
+                    # Many WordPress themes split the actual vacancy into
+                    # multiple article/content blocks. The focused first block
+                    # may omit the in-person OMIL instructions further down.
+                    # Check the SAME fetched original page, never another URL.
+                    municipal_full_body=""
+                    if index_status=="open" and source=="Municipio Mulchén empleos":
+                        # The municipal WordPress theme has very long menus.
+                        # An arbitrary 7k/16k text prefix cuts off the actual
+                        # in-person application instructions AFTER the role.
+                        all_page_text=detail_soup.get_text(" ",strip=True)
+                        start=re.search(
+                            r"empresa del rubro agr[ií]cola de la comuna de Mulch[eé]n",
+                            all_page_text,re.I)
+                        if start:
+                            municipal_full_body=all_page_text[start.start():start.start()+22000]
+                        if not official_open and municipal_full_body:
+                            official_open=municipal_open_official_evidence(
+                                town,source,url,detail_url,index_status,municipal_full_body)
                     job_commune=explicit_work_commune(body)
                     detail["explicit_worksite_commune"]=job_commune
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
+                    if index_status=="open" and source=="Municipio Mulchén empleos":
+                        normalized_body=fold(municipal_full_body or body)
+                        detail["municipal_open_evidence_checks"]={
+                            "agriculture": "empresa del rubro agricola de la comuna de mulchen" in normalized_body,
+                            "worksite": "predio ubicado en el sector campamento" in normalized_body,
+                            "crop": "cosecha de arandanos" in normalized_body,
+                            "instructions": "interesados" in normalized_body and "presentar" in normalized_body,
+                            "omil": "oficina omil" in normalized_body,
+                            "street": "anibal pinto" in normalized_body,
+                            "document": "documentacion" in normalized_body,
+                        }
+                    if official_open:
+                        job_commune=official_open["work_commune"]
+                        employer=employer or official_open["employer"]
+                        application_evidence=True
                     portal=chiletrabajos_metadata(detail_soup,title,detail_url)
                     if portal:
                         job_commune=portal["work_commune"] or job_commune
@@ -531,7 +614,11 @@ def inspect(seed):
                     internal_only=bool(INTERNAL_ONLY.search(public_title+" "+label))
                     general_index=bool(GENERAL_INDEX.fullmatch(public_title.strip()))
                     detail.update(title=public_title,dates=dates,
-                                  source_date_method=(company_page or {}).get("date_source_method"),
+                                  source_date_method=(company_page or {}).get("date_source_method") or (
+                                      official_open or {}).get("date_source_method"),
+                                  official_index_open_verified=bool(official_open),
+                                  official_open_index_url=(official_open or {}).get("official_open_index_url"),
+                                  application_method=(official_open or {}).get("application_method"),
                                   work_commune=job_commune,source_commune_not_confirmed=job_commune is None,
                                   employer=employer,application_evidence=application_evidence,
                                   date_source=dates[0] if dates else None,
@@ -673,10 +760,25 @@ def main():
     print("MOTOR_D_INDEED_CRITICAL "+json.dumps(indeed_coverage,ensure_ascii=False),flush=True)
     scanned={r["commune"] for r in rows}
     missing=sorted(set(COMMUNES)-scanned)
+    # Do NOT count transient A leads as permanently registered sources. They
+    # are independent ORIGINAL URL probes; D must re-fetch them individually.
+    a_handoff=read_motor_a_review(now=NOW)
+    a_rows=[]
+    if a_handoff["probes"]:
+        with ThreadPoolExecutor(max_workers=5) as pool:
+            a_rows=list(pool.map(inspect,a_handoff["probes"]))
+    a_handoff_report={k:v for k,v in a_handoff.items() if k!="probes"}
+    a_handoff_report.update({
+        "fetched":len(a_rows),
+        "http_200":sum(r.get("http")==200 for r in a_rows),
+        "individual_candidates":sum(len(r["candidates"]) for r in a_rows),
+        "verified_or_published":0,
+    })
+    print("MOTOR_A_TO_D_HANDOFF "+json.dumps(a_handoff_report,ensure_ascii=False),flush=True)
     # One employer portal can serve all 12 towns. Its worker anchor is NOT
     # proof of the job's execution city (e.g. SERFONAC sources anchored Angol).
     candidates=[dict(x,source=y["source"],commune=x.get("work_commune"),
-                     crawler_commune=y["commune"]) for y in rows for x in y["candidates"]]
+                     crawler_commune=y["commune"]) for y in rows+a_rows for x in y["candidates"]]
     documents_for_review=[]
     seen_documents=set()
     for row in rows:
@@ -734,6 +836,7 @@ def main():
             "communes_expected":COMMUNES,"communes_visited":sorted(scanned),
             "missing_communes":missing,"sources_total":len(rows),"indeed_critical":indeed_coverage,
             "source_inventory":source_coverage,
+            "motor_a_review_handoff":a_handoff_report,
             "commune_status":per_commune,
             "communes_with_accessible_source":sum(v["sources_accessible"]>0 for v in per_commune.values()),
             "communes_without_accessible_source":[k for k,v in per_commune.items() if not v["sources_accessible"]],

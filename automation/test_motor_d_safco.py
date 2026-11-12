@@ -56,8 +56,9 @@ class SafcoPublicCardsTests(unittest.TestCase):
         )
         markup=(
             "<nav><a>Trabaje con Nosotros</a></nav>"+
-            "<section>"+''.join("<div>Servicios y experiencia</div>" for _ in range(90))+
-            "<h2>Trabaje con Nosotros</h2><p>Buscamos personas comprometidas</p>"+
+            "<section><h2>Trabaje con Nosotros</h2>"+
+            ''.join("<div>Servicios y experiencia</div>" for _ in range(175))+
+            "<p>Buscamos personas comprometidas</p>"+
             cards+"</section>"+
             "<div>Vacante disponible</div><button>Postular a este cargo</button>"+
             "<footer><a>Trabaje con Nosotros</a>"+''.join(

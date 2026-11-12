@@ -11,6 +11,7 @@ import tempfile
 import re
 import unicodedata
 from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from urllib.parse import urlsplit, parse_qsl, urlencode
 
@@ -173,7 +174,15 @@ def atomic_json_write(path, payload):
         if temporary is not None:
             temporary.unlink(missing_ok=True)
 
-def produce(report,root=READY,today=None):
+def produce(report,root=None,today=None,publication_statuses=None):
+    """Stage only eligible unseen offers.
+
+    production main passes COMPLETE-FEED statuses; calling produce directly in
+    unit tests / PR dry-runs cannot publish and maintains legacy pure staging.
+    """
+    root=Path(root) if root is not None else READY
+    if publication_statuses is not None and not isinstance(publication_statuses,dict):
+        raise ValueError("catalog_statuses_invalid")
     today=today or date.today()
     classified=build(report,today)
     root.mkdir(parents=True,exist_ok=True)
@@ -200,10 +209,20 @@ def produce(report,root=READY,today=None):
         for offer in previous["offers"]:
             seen_keys.update(identities(offer))
     batch_counts={"daily":0,"recovery":0}
+    already_in_public_catalog=0
     for batch_type,state in (("daily","EXPRESS"),("recovery","RECUPERACION")):
         approved=[]
         for entry in classified[state]:
             offer = entry["offer"]
+            if publication_statuses is not None:
+                public_status=publication_statuses.get(offer["id_fuente"])
+                if public_status in ("already_published_source_identity",
+                                     "already_published_semantic"):
+                    already_in_public_catalog+=1
+                    continue
+                if public_status!="not_found_in_complete_feed":
+                    # Fail closed. Unknown statuses never become new batches.
+                    raise ValueError("unverified_public_catalog_status")
             keys = identities(offer)
             if offer["id_fuente"] not in seen_ids and not keys & seen_keys:
                 approved.append(offer)
@@ -242,6 +261,8 @@ def produce(report,root=READY,today=None):
         ).items()))
         for state in ("SEGUNDA_PASADA", "TERCERA_PASADA", "DESCARTADO", "DUPLICADO")
     }
+    summary["public_catalog_duplicates_skipped"]=already_in_public_catalog
+    summary["complete_public_catalog_checked"]=publication_statuses is not None
     summary["daily_batch_offers"]=batch_counts["daily"]
     summary["recovery_batch_offers"]=batch_counts["recovery"]
     summary["published_confirmed"]=0  # Solo AppDeploy puede certificar este contador.
@@ -266,6 +287,28 @@ def validate_inventory_freshness(report, today):
         raise ValueError("Inventario territorial vencido o fechado en el futuro")
     return scan_day
 
+def record_publication_gate(report,local_day,state,eligible=0,
+                            checked=0,duplicates=0,staged=0,error=None):
+    """Persist a truthful per-scan publication decision, even on feed failure."""
+    receipt={
+        "schema_version":1,
+        "scan_date":report.get("date"),
+        "checked_at":datetime.now(ZoneInfo("America/Santiago")).isoformat(),
+        "run_local_date":local_day.isoformat(),
+        "state":state,
+        "eligible_before_catalog":eligible,
+        "public_catalog_records_checked":checked,
+        "already_published_skipped":duplicates,
+        "ready_batch_offers_staged":staged,
+        "feed_error":error,
+        "feed_complete":state=="completed",
+    }
+    atomic_json_write(ROOT/"publication_gate.json",receipt)
+    print("MOTOR_D_PUBLICATION_GATE "+json.dumps(receipt,ensure_ascii=False),
+          flush=True)
+    return receipt
+
+
 def main():
     source=ROOT/"territorial_daily.json"
     if not source.exists():
@@ -273,7 +316,38 @@ def main():
     report=json.loads(source.read_text(encoding="utf8"))
     local_day=datetime.now(ZoneInfo("America/Santiago")).date()
     validate_inventory_freshness(report, local_day)
-    print("MOTOR_D_EXPRESS "+json.dumps(produce(report,today=local_day),ensure_ascii=False))
+    from motor_d_catalog_probe import read_full_feed,check_ready_offers
+    from time import sleep
+    classified=build(report,local_day)
+    offers=[entry["offer"] for name in ("EXPRESS","RECUPERACION")
+            for entry in classified[name] if entry["offer"]]
+    if not offers:
+        summary=produce(report,today=local_day)
+        record_publication_gate(report,local_day,"no_ready_candidates")
+        print("MOTOR_D_EXPRESS "+json.dumps(summary,ensure_ascii=False))
+        return
+    rows=[];complete=False;error="not_checked"
+    for attempt in range(3):
+        rows,complete,error=read_full_feed(max_pages=30)
+        if complete:break
+        print("MOTOR_D_CATALOG_GATE_RETRY "+json.dumps({
+            "attempt":attempt+1,"reason":error,"published":0
+        },ensure_ascii=False),flush=True)
+        if attempt<2:sleep(2*(attempt+1))
+    if not complete:
+        # Preserve the completed source scan; no unknown duplicate can be staged
+        # from an unavailable or partially paginated public feed.
+        record_publication_gate(report,local_day,
+            "blocked_catalog_incomplete",eligible=len(offers),error=error)
+        return
+    statuses=check_ready_offers(offers,rows,True)
+    summary=produce(report,today=local_day,publication_statuses=statuses)
+    summary["public_feed_records_checked"]=len(rows)
+    record_publication_gate(report,local_day,"completed",
+        eligible=len(offers),checked=len(rows),
+        duplicates=summary["public_catalog_duplicates_skipped"],
+        staged=summary["daily_batch_offers"]+summary["recovery_batch_offers"])
+    print("MOTOR_D_EXPRESS "+json.dumps(summary,ensure_ascii=False))
 
 if __name__=="__main__":
     from zoneinfo import ZoneInfo

@@ -119,5 +119,31 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("public_feed_last_good", lookup)
 
 
+
+    def test_omil_flexible_import_is_limited_to_official_open_source(self):
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        self.assertIn("original_no_informada_municipal_abierta",importer)
+        self.assertIn("oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos",importer)
+        self.assertIn("municipal_open_index_url",importer)
+        self.assertIn("officialMunicipalIndexStatus",importer)
+        self.assertIn("review_expired",importer)
+        self.assertIn("sourceOriginalDateUnreported:true",importer)
+        self.assertIn("sourcePublishedAt:x.fecha_publicacion",importer)
+        self.assertIn("Fecha original no informada",importer)
+        self.assertIn("municipalOpenEvidenceValidUntil",importer)
+
+    def test_omil_open_lease_has_refresh_and_confirmed_close(self):
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        retention=(ROOT/"offer-retention.ts").read_text(encoding="utf-8")
+        index=(ROOT/"index.ts").read_text(encoding="utf-8")
+        self.assertIn("revalidateOfficialMunicipalOpenOffers",importer)
+        self.assertIn("confirmed_official_index_closed",importer)
+        self.assertIn("revalidateOfficialMunicipalOpenOffers",index)
+        self.assertIn("municipalOpenEvidenceValidUntil",index)
+        self.assertIn("municipal_open_status_needs_fresh_evidence",retention)
+        self.assertIn("municipalEvidenceExpired",self.feed)
+        self.assertIn("!municipalEvidenceExpired",self.feed)
+
+
 if __name__ == "__main__":
     unittest.main()

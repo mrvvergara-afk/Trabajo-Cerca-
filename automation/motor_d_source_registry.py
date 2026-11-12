@@ -141,11 +141,19 @@ def learn(stats,rows,at):
         from motor_d_express import job_source_identity
         for candidate in candidates:
             if not isinstance(candidate,dict):continue
+            card_id=str(candidate.get("id") or "")
             identifier=(job_source_identity(candidate.get("url")) or
-                        str(candidate.get("id") or performance_key(candidate.get("url",""))))
+                        card_id or performance_key(candidate.get("url","")))
             if not identifier:continue
+            # Preserve old scan accounting, whose raw ids predate the
+            # source-key canonicalization used by this new ranking.
+            previously_counted=(identifier in known or
+                                (card_id and card_id in known))
             if identifier not in known:
                 known.add(identifier);seen.append(identifier)
+            if card_id and card_id not in known:
+                known.add(card_id);seen.append(card_id)
+            if not previously_counted:
                 new_individual+=int(candidate.get("evidence")=="individual_page_with_job_terms")
             # "express_ready" means FAST publication today/yesterday, not
             # whether an older still-open vacancy qualifies for recovery.

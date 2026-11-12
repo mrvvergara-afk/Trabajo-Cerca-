@@ -282,6 +282,74 @@ class MotorDExpressTests(unittest.TestCase):
                 self.assertIsNone(offer)
         self.assertEqual(engine.classify(dict(row,index_status="closed"),TODAY)[0],"DESCARTADO")
 
+    def test_revalidate_quarantined_active_job_stages_one_safe_recovery(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            today=date(2026,11,6)
+            original=record(
+                url="https://www.chiletrabajos.cl/trabajo/operario-mulchen-3999901",
+                title="Operario planta Mulchén",
+                date_source="2026-10-01",deadline="2026-12-15",
+                source="Portal Chiletrabajos · palabra clave · Mulchén",
+                explicit_worksite_commune="Mulchén")
+            report={"date":"2026-11-06T09:00:00-03:00","candidates":[original]}
+            offer=engine.classify(original,today)[2]
+            statuses={offer["id_fuente"]:"not_found_in_complete_feed"}
+            first=engine.produce(report,root,today)
+            self.assertEqual(first["recovery_batch_offers"],1)
+            manifest=json.loads((root/"index.json").read_text())
+            old=manifest["batches"][0]
+            manifest["quarantined_batches"]=[{**old,"reason":"needs_reverification"}]
+            engine.atomic_json_write(root/"index.json",manifest)
+            recovered=engine.produce(report,root,today,statuses)
+            self.assertEqual(recovered["recovery_batch_offers"],1)
+            self.assertEqual(recovered["released_from_quarantine"],1)
+            self.assertEqual(recovered["historical_missing_from_catalog"],0)
+            checkpoint=json.loads((root/"publication_reconciliation.json").read_text())
+            self.assertEqual(checkpoint["released_items"][0]["original_quarantined_batches"],
+                             [old["batch_id"]])
+            saved=json.loads((root/"index.json").read_text())
+            self.assertEqual(len(saved["batches"]),2)
+            self.assertEqual(saved["quarantined_batches"],[{**old,"reason":"needs_reverification"}])
+            second=engine.produce(report,root,today,statuses)
+            self.assertEqual(second["recovery_batch_offers"],0)
+            self.assertEqual(len(json.loads((root/"index.json").read_text())["batches"]),2)
+            self.assertEqual(second["historical_missing_from_catalog"],1)
+
+    def test_quarantined_recovery_requires_each_individual_evidence_field(self):
+        today=date(2026,11,6)
+        original=record(
+            url="https://www.chiletrabajos.cl/trabajo/operario-mulchen-3999901",
+            title="Operario planta Mulchén",
+            date_source="2026-10-01",deadline="2026-12-15",
+            source="Portal Chiletrabajos · palabra clave · Mulchén",
+            explicit_worksite_commune="Mulchén")
+        for patch in (
+            {"http":403},{"application_evidence":False},
+            {"deadline":None},{"deadline":"2026-10-02"},
+            {"explicit_worksite_commune":"Angol"},
+            {"source_commune_not_confirmed":True},
+            {"source":"Agregador no oficial"},
+        ):
+            with self.subTest(patch=patch),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp)
+                report={"date":"2026-11-06T09:00:00-03:00","candidates":[original]}
+                first=engine.produce(report,root,today)
+                self.assertEqual(first["recovery_batch_offers"],1)
+                manifest=json.loads((root/"index.json").read_text())
+                old=manifest["batches"][0]
+                manifest["quarantined_batches"]=[{**old,"reason":"needs_reverification"}]
+                engine.atomic_json_write(root/"index.json",manifest)
+                updated={**original,**patch}
+                # Keep publication candidate eligible for a real revalidation
+                # failure, unless this particular field directly causes exclusion.
+                report["candidates"]=[updated]
+                status=engine.classify(original,today)[2]["id_fuente"]
+                result=engine.produce(report,root,today,
+                    {status:"not_found_in_complete_feed"})
+                self.assertEqual(result["released_from_quarantine"],0)
+                self.assertEqual(result["recovery_batch_offers"],0)
+
     def test_historical_offer_missing_from_complete_feed_requires_receipt_review(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

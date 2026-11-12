@@ -139,6 +139,14 @@ export async function directChatGPTImport(body:unknown){
   const candidates=parse(data?.offers);
   if(!candidates)return error('Lote inválido: se requieren fichas individuales, fechas, comunas y enlaces aprobados.',400);
   const commit=data?.commit===true;
+  // Fail BEFORE any writes if the primary municipal index cannot be checked.
+  // An HTTP outage must never become a terminal 'review_expired' receipt.
+  const municipalProofs=new Map<string,'open'|'closed'>();
+  for (const candidate of candidates) if(candidate.municipal_open_index_url) {
+    const proof=await officialMunicipalIndexStatus(candidate);
+    if(proof==='unknown')return error('Índice municipal no verificable; reintentar el lote sin escribir.',503);
+    municipalProofs.set(candidate.id_fuente,proof);
+  }
   const live=await inventory();
   const results=[];
   const now=new Date().toISOString();
@@ -153,7 +161,7 @@ export async function directChatGPTImport(body:unknown){
         (title===norm(x.cargo)&&company===norm(x.empresa)&&loc.some(c=>x.comunas.includes(c)));
     });
     if(duplicate){results.push({id:x.id_fuente,status:'already_published',existingId:duplicate.id});continue;}
-    if(municipal && await officialMunicipalIndexStatus(x) !== 'open'){
+    if(municipal && municipalProofs.get(x.id_fuente)!=='open'){
       results.push({id:x.id_fuente,status:'review_expired'});continue;
     }
     if(x.fecha_cierre&&Date.parse(x.fecha_cierre+'T23:59:59-03:00')<Date.now()){

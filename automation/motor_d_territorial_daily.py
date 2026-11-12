@@ -540,7 +540,7 @@ def inspect(seed):
                     detail["explicit_worksite_commune"]=job_commune
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
-                    if municipal and index_status=="open" and source=="Municipio Mulchén empleos":
+                    if index_status=="open" and source=="Municipio Mulchén empleos":
                         normalized_body=fold(body)
                         detail["municipal_open_evidence_checks"]={
                             "agriculture": "empresa del rubro agricola de la comuna de mulchen" in normalized_body,

@@ -802,5 +802,70 @@ class TerritorialSafetyTests(unittest.TestCase):
         items=engine.links_from(BeautifulSoup(html,"html.parser"),"https://www.munimulchen.cl/empleos/")
         self.assertEqual(items,[])
 
+
+    def test_real_mulchen_omil_open_undated_uses_first_party_index(self):
+        from unittest.mock import patch
+        from motor_d_express import classify
+        index_url = "https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+        offer_url = "https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/"
+        article = (
+            "<html><title>Oferta Laboral: Operarios Agrícolas – Cosecha de Arándanos"
+            " | Municipalidad Mulchén</title>"
+            "<article><h1>OFERTA LABORAL</h1>"
+            "<p>OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS</p>"
+            "<p>Empresa del rubro agrícola de la comuna de Mulchén iniciará el reclutamiento "
+            "de personal para realizar labores de cosecha de arándanos en un predio "
+            "ubicado en el sector Campamento.</p><p>100 cupos. Requisitos: ser mayor "
+            "de 18 años. Interesados deben presentar la documentación en la Oficina OMIL, "
+            "ubicada en calle Aníbal Pinto N°495. Atención lunes a viernes.</p></article></html>"
+        )
+        feed = {"status":"ok","pages":[],"checked":[],"links_found":0,
+                "sources_blocked":0}
+        for index_state, expected in (("Abierta","RECUPERACION"),("Cerrada","DESCARTADO")):
+            with self.subTest(index_state=index_state):
+                index = BeautifulSoup(
+                    "<div>Postulación "+index_state+" <a href='"+offer_url+
+                    "'>OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS (100 CUPOS)</a></div>",
+                    "html.parser")
+                with patch.object(engine,"discover_municipal",return_value=feed), \\
+                     patch.object(engine,"request_page",side_effect=[
+                         (200,index,None),(200,BeautifulSoup(article,"html.parser"),None)]):
+                    result = engine.inspect(("Mulchén","Municipio Mulchén empleos",index_url))
+                self.assertEqual(len(result["candidates"]),1)
+                row=result["candidates"][0]
+                state,reason,offer=classify(row,engine.NOW.date())
+                self.assertEqual(state,expected)
+                if index_state=="Abierta":
+                    self.assertEqual(row["work_commune"],"Mulchén")
+                    self.assertTrue(row["application_evidence"])
+                    self.assertTrue(row["official_index_open_verified"])
+                    self.assertEqual(row["index_status"],"open")
+                    self.assertIsNone(row["date_source"])
+                    self.assertEqual(offer["fecha_publicacion"],None)
+                    self.assertEqual(offer["internal_visibility_days"],14)
+                    self.assertEqual(offer["fecha_publicacion_metodo"],
+                                     "original_no_informada_municipal_abierta")
+                else:
+                    self.assertIsNone(offer)
+
+    def test_municipal_open_cannot_approve_ambiguous_or_unrelated_worksite(self):
+        body = ("Empresa del rubro agrícola de la comuna de Mulchén iniciará el "
+                "reclutamiento para realizar labores de cosecha de arándanos en "
+                "un predio ubicado en el sector Campamento. "
+                "Interesados deben presentar la documentación en la Oficina OMIL, "
+                "Aníbal Pinto 495.")
+        index_url="https://www.munimulchen.cl/pagina-central-ofertas-laborales/"
+        job_url="https://www.munimulchen.cl/oferta-laboral-agricola/"
+        self.assertIsNotNone(engine.municipal_open_official_evidence(
+            "Mulchén","Municipio Mulchén empleos",index_url,job_url,"open",body))
+        self.assertIsNone(engine.municipal_open_official_evidence(
+            "Mulchén","Municipio Mulchén empleos",index_url,job_url,"closed",body))
+        self.assertIsNone(engine.municipal_open_official_evidence(
+            "Mulchén","Municipio Mulchén empleos",index_url,
+            "https://other.example.cl/oferta-laboral-agricola/","open",body))
+        self.assertIsNone(engine.municipal_open_official_evidence(
+            "Mulchén","Municipio Mulchén empleos",index_url,job_url,
+            "open","Municipalidad de Mulchén invita a registrar CV en OMIL."))
+
 if __name__=="__main__":
     unittest.main()

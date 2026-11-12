@@ -17,6 +17,21 @@ def fixture():
 
 
 class TestHeartbeat(unittest.TestCase):
+    def test_motor_a_handoff_http_failure_is_in_heartbeat(self):
+        value = fixture()
+        value["motor_a_review_handoff"]={"fetched":22,"http_200":0}
+        record=project(value,"b"*64)
+        self.assertEqual(record["motor_a_handoff_fetched"],22)
+        self.assertEqual(record["motor_a_handoff_http_200"],0)
+        self.assertTrue(record["motor_a_handoff_failed"])
+
+    def test_motor_a_handoff_success_and_invalid_counts(self):
+        value = fixture()
+        value["motor_a_review_handoff"]={"fetched":22,"http_200":9}
+        self.assertFalse(project(value,"b"*64)["motor_a_handoff_failed"])
+        value["motor_a_review_handoff"]["http_200"]=23
+        with self.assertRaises(ValueError):project(value,"b"*64)
+
     def test_evidenced_scan_is_not_publication(self):
         record = project(fixture(), "a" * 64)
         self.assertEqual(record["sources_accessible"], 36)

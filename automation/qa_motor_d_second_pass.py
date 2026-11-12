@@ -308,6 +308,7 @@ def main(argv=None):
         queue_path.write_text(json.dumps(queue,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     print("MOTOR_D_SECOND_PASS "+json.dumps({
         key:result[key] for key in ("report_day","source_candidates","second_pass_count",
+        "embedded_card_review_count","embedded_card_status_counts",
         "public_feed_complete","public_feed_rows","status_counts",
         "review_owner_counts","published_by_this_check")
     },ensure_ascii=False))

@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-11T22:02:25.829960+00:00",
+  "updated_at": "2026-11-12T01:12:41.980678+00:00",
   "items_total": 15,
   "pending_total": 15,
   "publication_enabled": false,
@@ -15,15 +15,14 @@
         "Traiguén"
       ],
       "possible_communes": [
-        "Traiguén",
-        "Victoria"
+        "Traiguén"
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
       "review_reason": "evidencia_modificada_revalidacion_obligatoria",
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "3e91143b6b90f98013137fb26d326336885695c154e939b1430da8c43b65a286",
+      "document_sha256": "5377f5ef86c419c02328282f803524a31fde815f4f5662bd2f3664ad980b176f",
       "original_classification": null,
       "date_source": "2026-10-17",
       "date_discovered": "2026-11-11",
@@ -35,7 +34,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-09",
-      "last_seen": "2026-11-11",
+      "last_seen": "2026-11-12",
       "review_signature": null
     },
     {

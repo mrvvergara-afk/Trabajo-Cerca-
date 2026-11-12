@@ -282,5 +282,70 @@ class MotorDExpressTests(unittest.TestCase):
                 self.assertIsNone(offer)
         self.assertEqual(engine.classify(dict(row,index_status="closed"),TODAY)[0],"DESCARTADO")
 
+        def test_historical_offer_missing_from_complete_feed_requires_receipt_review(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            statuses = {source_id: "not_found_in_complete_feed"}
+            first = engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            self.assertEqual(first["daily_batch_offers"], 1)
+            second = engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            self.assertEqual(second["daily_batch_offers"], 0)
+            self.assertEqual(second["historical_missing_from_catalog"], 1)
+            evidence = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(evidence["state"], "needs_receipt_review")
+            self.assertEqual(evidence["items"][0]["id_fuente"], source_id)
+            self.assertEqual(len(evidence["items"][0]["prior_batch_ids"]), 1)
+            self.assertEqual(len(json.loads((root / "index.json").read_text())["batches"]), 1)
+
+    def test_historical_reconciliation_clears_when_public_or_offer_closes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            statuses = {source_id: "not_found_in_complete_feed"}
+            engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            engine.produce({"candidates": [row]}, root, TODAY, statuses)
+            visible = engine.produce({"candidates": [row]}, root, TODAY,
+                                     {source_id: "already_published_source_identity"})
+            self.assertEqual(visible["historical_missing_from_catalog"], 0)
+            report = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(report["state"], "clear")
+            self.assertEqual(report["items"], [])
+            closed = engine.produce({"candidates": [record(index_status="closed")]},
+                                    root, TODAY, statuses)
+            self.assertEqual(closed["historical_missing_from_catalog"], 0)
+
+    def test_stale_seen_id_without_batch_is_reported_not_silently_dropped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = record()
+            source_id = engine.classify(row, TODAY)[2]["id_fuente"]
+            engine.atomic_json_write(root / "index.json", {
+                "schema_version": 1, "batches": [],
+                "seen_offer_ids": [source_id],
+            })
+            result = engine.produce({"candidates": [row]}, root, TODAY,
+                                    {source_id: "not_found_in_complete_feed"})
+            self.assertEqual(result["daily_batch_offers"], 0)
+            self.assertEqual(result["historical_missing_from_catalog"], 1)
+            report = json.loads((root / "publication_reconciliation.json").read_text())
+            self.assertEqual(report["items"][0]["prior_batch_ids"], [])
+
+
+    def test_complete_feed_with_historical_gap_is_not_reported_clean(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with patch.object(engine, "ROOT", root):
+                receipt = engine.record_publication_gate(
+                    {"date": "2026-11-06T09:00:00-03:00"}, TODAY,
+                    "completed", eligible=2, checked=100, duplicates=1,
+                    staged=0, historical_missing=1)
+                self.assertEqual(receipt["state"],
+                    "historical_publication_reconciliation_required")
+                self.assertTrue(receipt["feed_complete"])
+                self.assertEqual(receipt["historical_missing_from_catalog"], 1)
+
 if __name__=="__main__":
     unittest.main()

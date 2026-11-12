@@ -18,8 +18,7 @@ function parse(value:unknown):Candidate[]|null {
     // The publisher did not specify the original date. No fabricated date
     // or artificial employer deadline; allow only the exact official OMIL proof.
     const municipalOpen=(date===null &&
-      (new URL(url.startsWith('https://')?url:'https://invalid.example.cl')).hostname==='www.munimulchen.cl' &&
-      new URL(url).pathname==='/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/' &&
+      url==='https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/' &&
       x.municipal_open_index_url==='https://www.munimulchen.cl/pagina-central-ofertas-laborales/' &&
       x.fecha_publicacion_metodo==='original_no_informada_municipal_abierta' &&
       x.application_method==='in_person_omil' && x.internal_visibility_days===14 &&
@@ -51,23 +50,72 @@ function parse(value:unknown):Candidate[]|null {
   if(new Set(result.map(x=>x.id_fuente)).size!==result.length)return null;
   return result;
 }
-async function officialMunicipalIndexStillOpen(row:Candidate) {
-  if (!row.municipal_open_index_url) return false;
+async function officialMunicipalIndexStatus(row:Candidate):Promise<'open'|'closed'|'unknown'> {
+  if (!row.municipal_open_index_url) return 'unknown';
   try {
     const response=await fetch(row.municipal_open_index_url,{redirect:'error',signal:AbortSignal.timeout(10000)});
-    if (!response.ok)return false;
+    if (!response.ok)return 'unknown';
     const html=(await response.text()).slice(0,400000);
     const needle='/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/';
     const position=html.indexOf(needle);
-    if(position<0)return false;
+    if(position<0)return 'unknown';
     // Evaluate the closest status marker before THIS link, not the first
     // 'open' banner elsewhere on the municipal index.
     const before=html.slice(Math.max(0,position-1100),position)
       .replace(/<[^>]+>/g,' ').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
     const open=before.lastIndexOf('postulacion abierta');
     const closed=before.lastIndexOf('postulacion cerrada');
-    return open>=0 && open>closed;
-  } catch { return false; }
+    return open>=0 && open>closed ? 'open' : closed>=0 && closed>open ? 'closed' : 'unknown';
+  } catch { return 'unknown'; }
+}
+
+
+/**
+ * Daily safety check for undated first-party OMIL offers.
+ * An outage is NOT evidence of closure. A confirmed closed marker removes the
+ * listing; an open marker renews its 14-day verification lease. Neither action
+ * rewrites the actual publication date or invents an employer deadline.
+ */
+export async function revalidateOfficialMunicipalOpenOffers() {
+  const now=Date.now(),timestamp=new Date(now).toISOString();
+  const [last]=await db.get<Record<string,unknown>>('municipal_open_recheck_state',['daily']);
+  const previous=Date.parse(String(last?.checkedAt||''));
+  if(Number.isFinite(previous)&&now-previous<20*3600000)
+    return {status:'not_due',renewed:0,closed:0,unknown:0};
+  let nextToken:string|undefined,finished=false,seen=0,renewed=0,closed=0,unknown=0;
+  for(let pageNo=0;pageNo<30;pageNo++){
+    const page=await db.list<Record<string,unknown>>('radar_jobs',{limit:100,...(nextToken?{nextToken}:{})});
+    seen+=page.items.length;
+    for(const item of page.items){
+      if(item.validityMethod!=='municipal_open_status'||item.active!==true||
+         item.municipalOpenIndexUrl!=='https://www.munimulchen.cl/pagina-central-ofertas-laborales/')continue;
+      const state=await officialMunicipalIndexStatus({
+        municipal_open_index_url:String(item.municipalOpenIndexUrl)
+      } as Candidate);
+      if(state==='unknown'){unknown++;continue;}
+      const updated=state==='open' ? {...item,lastVerifiedAt:timestamp,verificationCheckedAt:timestamp,
+        municipalOpenEvidenceValidUntil:new Date(now+14*86400000).toISOString(),
+        verificationReason:'Índice municipal revalidado como Postulación Abierta.'}
+        : {...item,active:false,closureReason:'confirmed_official_index_closed',
+           verificationCheckedAt:timestamp,verificationReason:'Índice oficial indica Postulación Cerrada.'};
+      const [ok]=await db.tx.update('radar_jobs',[{id:String(item.id),record:updated}]);
+      if(!ok)throw Error('municipal_recheck_update_failed');
+      await registerPublicFeedChange('radar_jobs',String(item.id));
+      if(state==='open')renewed++;else closed++;
+    }
+    if(!page.nextToken){finished=true;break;}
+    nextToken=page.nextToken;
+  }
+  if(!finished)throw Error('municipal_recheck_incomplete');
+  const mark={id:'daily',checkedAt:timestamp,seen,renewed,closed,unknown};
+  if(last){
+    const [ok]=await db.tx.update('municipal_open_recheck_state',[{id:'daily',record:mark}]);
+    if(!ok)throw Error('municipal_recheck_checkpoint_update_failed');
+  } else {
+    const [created]=await db.tx.add('municipal_open_recheck_state',[mark]);
+    if(!created)throw Error('municipal_recheck_checkpoint_create_failed');
+  }
+  return {status:'completed',seen,renewed,closed,unknown};
 }
 
 async function inventory(){
@@ -105,7 +153,7 @@ export async function directChatGPTImport(body:unknown){
         (title===norm(x.cargo)&&company===norm(x.empresa)&&loc.some(c=>x.comunas.includes(c)));
     });
     if(duplicate){results.push({id:x.id_fuente,status:'already_published',existingId:duplicate.id});continue;}
-    if(municipal && !(await officialMunicipalIndexStillOpen(x))){
+    if(municipal && await officialMunicipalIndexStatus(x) !== 'open'){
       results.push({id:x.id_fuente,status:'review_expired'});continue;
     }
     if(x.fecha_cierre&&Date.parse(x.fecha_cierre+'T23:59:59-03:00')<Date.now()){

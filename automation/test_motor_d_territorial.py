@@ -27,7 +27,9 @@ class TerritorialSafetyTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmp, \
              patch.object(engine, "ROOT", Path(tmp)), \
-             patch.object(engine, "inspect", side_effect=artificial_scan) as inspected:
+             patch.object(engine, "inspect", side_effect=artificial_scan) as inspected, \
+             patch.object(engine, "read_motor_a_review",
+                 return_value={"status":"no_queue_test","total":0,"probes":[]}):
             engine.main()
             report = json.loads((Path(tmp) / "territorial_daily.json").read_text())
             self.assertEqual(inspected.call_count, len(engine.SEEDS) + len(engine.INDEED_SEEDS))
@@ -49,6 +51,25 @@ class TerritorialSafetyTests(unittest.TestCase):
             self.assertEqual(report["confirmed_new_publications"], 0)
             self.assertEqual(report["published_in_trabajo_cerca"], 0)
             self.assertEqual(report["express_ready_candidates"], 0)
+
+    def test_motor_a_first_party_url_without_h1_is_still_inspected(self):
+        from unittest.mock import patch
+        url="https://www.chiletrabajos.cl/trabajo/operario-planta-angol-3999901"
+        page=BeautifulSoup(
+            "<html><head><title>Operario de Planta - Angol | Chiletrabajos</title>"
+            "</head><body><article><p>Empresa: Maderas SpA. Lugar de trabajo:"
+            " Angol. Requisitos y postulación: enviar CV. Se necesita"
+            " operario de producción con experiencia.</p></article></body></html>",
+            "html.parser")
+        with patch.object(engine,"request_page",return_value=(200,page,None)):
+            result=engine.inspect(("Angol","Motor A · ficha original a verificar",url))
+        self.assertEqual(result["http"],200)
+        self.assertEqual(result["links_found"],1)
+        self.assertEqual(len(result["candidates"]),1)
+        candidate=result["candidates"][0]
+        self.assertEqual(candidate["http"],200)
+        self.assertEqual(candidate["work_commune"],"Angol")
+        self.assertEqual(candidate["evidence"],"individual_page_with_job_terms")
 
     def test_municipal_wordpress_feed_recovers_job_when_html_index_blocked(self):
         from unittest.mock import patch

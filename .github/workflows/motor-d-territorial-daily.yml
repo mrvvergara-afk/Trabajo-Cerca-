@@ -255,6 +255,18 @@ jobs:
           node-version: '24'
       - name: Install zero-cost HTML parser
         run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
+      # A might persist a newer signed review checkpoint while D is queued.
+      # Read only the A queue file from main; keep this job's tested code SHA.
+      - name: Load most recent persisted Motor A review leads
+        run: |
+          git fetch origin main
+          if git cat-file -e origin/main:automation/motor_a_review/pending.json 2>/dev/null; then
+            mkdir -p automation/motor_a_review
+            git show origin/main:automation/motor_a_review/pending.json > automation/motor_a_review/pending.json
+            python automation/motor_a_handoff.py
+          else
+            echo "MOTOR_A_HANDOFF_NOT_YET_PERSISTED"
+          fi
       - name: Check Python script compiles
         run: python -m py_compile automation/motor_d_territorial_daily.py automation/motor_d_source_registry.py automation/motor_d_express.py automation/motor_d_employer_portal.py automation/motor_d_catalog_probe.py automation/motor_d_source_recovery.py
       - name: Run territorial integrity tests

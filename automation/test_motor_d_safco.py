@@ -43,6 +43,40 @@ class SafcoPublicCardsTests(unittest.TestCase):
         self.assertEqual(len(rows),4)
         self.assertTrue(all(x["title"]!="Servicios Forestales" for x in rows))
 
+    def test_real_safco_three_repeated_hiring_headings_never_pick_footer(self):
+        """Regression for GitHub Actions DOM: 239 tokens, 3 headings, 4 open roles.
+
+        The last heading is in the footer, AFTER the last role card.
+        """
+        cards="".join(
+            "<article><span>Disponible</span><h4>"+title+
+            "</h4><span>Collipulli</span><p>Faena forestal comprobable</p>"
+            "<button>Ver detalles</button></article>"
+            for title in TITLES
+        )
+        markup=(
+            "<nav><a>Trabaje con Nosotros</a></nav>"+
+            "<section>"+''.join("<div>Servicios y experiencia</div>" for _ in range(90))+
+            "<h2>Trabaje con Nosotros</h2><p>Buscamos personas comprometidas</p>"+
+            cards+"</section>"+
+            "<div>Vacante disponible</div><button>Postular a este cargo</button>"+
+            "<footer><a>Trabaje con Nosotros</a>"+''.join(
+                "<span>Contacto de empresa</span>" for _ in range(75))+"</footer>"
+        )
+        soup=BeautifulSoup(markup,"html.parser")
+        self.assertEqual(sum(x.strip()=="Disponible" for x in soup.stripped_strings),4)
+        self.assertEqual(sum(x.strip()=="Trabaje con Nosotros" for x in soup.stripped_strings),3)
+        got=extract_open_safco_cards(soup,BASE)
+        self.assertEqual(len(got),4)
+        self.assertEqual({x["title"] for x in got},set(TITLES))
+
+    def test_generic_availability_not_formatted_as_job_is_ignored(self):
+        soup=BeautifulSoup(
+            "<h2>Trabaje con Nosotros</h2><p>Disponible</p>"
+            "<p>Estamos disponibles para consultas</p><p>Collipulli</p>"
+            "<button>Contacto</button>","html.parser")
+        self.assertEqual(extract_open_safco_cards(soup,BASE),[])
+
     def test_closed_card_or_offsite_card_not_detected(self):
         soup=BeautifulSoup(
             "<h2>Trabaje con Nosotros</h2><p>Cerrado</p>"

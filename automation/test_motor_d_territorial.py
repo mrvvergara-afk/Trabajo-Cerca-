@@ -10,6 +10,30 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertNotIn("Quilaco",engine.COMMUNES)
         self.assertEqual(set(town for town,_,_ in engine.SEEDS),set(engine.COMMUNES))
 
+    def test_chiletrabajos_get_uses_motor_a_compatible_http_headers_only_on_its_host(self):
+        from unittest.mock import patch
+        from bs4 import BeautifulSoup
+        from requests import Response
+        class FakeResponse:
+            status_code=200
+            headers={"Content-Type":"text/html; charset=utf-8"}
+            def iter_content(self,_size):
+                yield b"<html><title>Oferta laboral</title></html>"
+            def close(self):pass
+        with patch.object(engine.requests,"get",return_value=FakeResponse()) as client:
+            status,soup,error=engine.request_page(
+                "https://www.chiletrabajos.cl/trabajo/operario-angol-3930001")
+            self.assertEqual(status,200)
+            self.assertIsInstance(soup,BeautifulSoup)
+            self.assertIsNone(error)
+            args=client.call_args.kwargs
+            self.assertIn("Mozilla/5.0",args["headers"]["User-Agent"])
+            self.assertFalse(args["allow_redirects"])
+            self.assertTrue(args["stream"])
+        with patch.object(engine.requests,"get",return_value=FakeResponse()) as client:
+            engine.request_page("https://www.munimulchen.cl/pagina-central-ofertas-laborales/")
+            self.assertIn("TrabajoCercaTerritorial",client.call_args.kwargs["headers"]["User-Agent"])
+
     def test_parallel_source_sweep_keeps_all_12_communes_and_honest_indeed_failures(self):
         import json
         import tempfile

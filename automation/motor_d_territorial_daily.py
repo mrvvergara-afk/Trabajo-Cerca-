@@ -465,6 +465,17 @@ def inspect(seed):
         status,soup,reason=request_page(url)
         out["http"]=status
         if status==200 and soup is not None and official_safco_home(url):
+            safco_tokens=[x.strip() for x in soup.stripped_strings if x and x.strip()]
+            normalized=[fold(x) for x in safco_tokens]
+            section_indices=[i for i,x in enumerate(normalized) if x=="trabaje con nosotros"]
+            position=section_indices[-1] if section_indices else 0
+            out["safco_dom_diagnostics"]={
+                "tokens":len(safco_tokens),
+                "section_tokens":len(section_indices),
+                "available_tokens":sum(x=="disponible" for x in normalized),
+                "around_last_section":safco_tokens[position:position+18],
+                "title":soup.title.get_text(" ",strip=True)[:100] if soup.title else None,
+            }
             # SAFCO publishes per-role OPEN cards on its official homepage
             # without dates or stable vacancy URLs. Capture all for B/C review,
             # but never synthesize publication dates or auto-approve them.
@@ -796,7 +807,8 @@ def main():
                 "open_cards_for_review":sf.get("embedded_open_cards"),
                 "status":sf.get("status"),
                 "titles":[x.get("title") for x in sf.get("candidates",[])][:8],
-                "date_and_application_unverified":True
+                "date_and_application_unverified":True,
+                "dom_diagnostics":sf.get("safco_dom_diagnostics")
             },ensure_ascii=False),flush=True)
     source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)
     updated_performance=learn_source_performance(previous,rows,NOW.isoformat())

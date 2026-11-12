@@ -20,6 +20,9 @@ def recovery_category(source):
     if status=="needs_territorial_filter":
         return ("regional_query",2,
                 "Validate individual search filters for all applicable communes, then verify original jobs.")
+    if status=="index_pagination_required":
+        return ("partial_index",2,
+                "Implement complete index pagination or a structured official feed. Never report the first 35 entries as a full source catalog.")
     if status=="blocked_or_failed":
         host=(urlsplit(str(source.get("url") or "")).hostname or "").lower()
         if host in ("cl.indeed.com","cl.computrabajo.com"):

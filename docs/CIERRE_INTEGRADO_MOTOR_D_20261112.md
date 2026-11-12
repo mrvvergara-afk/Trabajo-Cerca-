@@ -1,4 +1,4 @@
-# Trabajo Cerca — cierre integrado Motor D / autorización de liberación
+# Trabajo Cerca — cierre integrado Motores A y D / autorización de liberación
 
 **Fecha:** 12-11-2026. **PR único:** #45. **Estado:** preparado en rama, sin fusionar ni desplegar.
 
@@ -19,6 +19,25 @@
 
 **Brechas externas:** inventario de 80 fuentes sin cobertura útil acreditada: 38 portales restringidos, 27 sociales sin API/lectura autorizada, 7 públicas fallidas, 4 lectores especializados, 2 índices parciales, 2 filtros territoriales. Esta corrección NO equivale a 100% de cobertura y la ausencia de ofertas no implica que no existan.
 
+## Motor A — diagnóstico y correcciones integradas en este mismo PR
+
+El 12-11-2026 a las 09:51 (Chile), la ejecución programada del flujo GitHub **Radar local** obtuvo 120 enlaces Chiletrabajos, verificó 60, clasificó 8 para revisión (todos de la consulta Angol) y confirmó **cero publicaciones**. El rastreador HTML municipal revisó solo 7 raíces antiguas; el backfill de Google News examinó 581 resultados sin recuperar ofertas nuevas. Aunque el job salió verde, su resultado no equivalía a publicación. El flujo A interno de AppDeploy es **separado**: en un ciclo reciente registró 1 ficha verificada y guardada, pero 0 publicadas en ese mismo ciclo; el feed mostraba 267 ofertas totales, **sin atribuir ese total a A**.
+
+**Correcciones en código A GitHub:**
+- `scripts/radar.py`: ahora declara una fuente municipal de cada una de las **12 comunas**, más portales empresariales (ARAUCO, CMPC, SERFONAC, SERFOCOL, Brayben); cobertura HTML parcial **no** se presenta como exhaustiva. Mininco/Coihue/Coigüe son búsquedas de Collipulli/Negrete.
+- `scripts/chiletrabajos_direct.py`: 12 comunas y sus sublocalidades; conserva **todas** las consultas donde se encontró una URL. Una ciudad de búsqueda no se convierte automáticamente en comuna de ejecución.
+- `scripts/verify_candidates.py`: revisión equitativa, con cursor durable de comprobaciones anteriores para evitar seleccionar siempre los mismos 60 candidatos; confirma la comuna en `JobPosting.jobLocation` o un campo rotulado explícito, aunque la vacante esté indexada en otra ciudad. Mantiene estado de revisión sin publicar.
+- `scripts/motor_a_handoff.py` y `automation/motor_a_handoff.py`: cola durable de hasta 500 fichas recién verificadas (máximo 45 días) y revisión independiente de **la URL original** por Motor D. El productor A no tiene permiso de transformar estas fichas en aprobaciones de publicación.
+- `.github/workflows/radar.yml`: checkpoint A guardado en `main` con commit bot, conserva evidencia en artefacto, evita escribir en PR, y tiene pruebas propias para 12 comunas, trazabilidad y transferencia al D.
+- `automation/motor_d_territorial_daily.py`: incorpora hasta 40 fichas recientes de A por pasada **fuera del inventario permanente de fuentes**, las vuelve a leer, y entrega el resultado al clasificador normal de D. Ningún atajo a la publicación.
+
+**Correcciones del Motor A dentro de AppDeploy, preparadas en staging:**
+- `appdeploy_staging/free-public-sources.ts` y `appdeploy_staging/index-rotation.ts`: rotación de índices con más de 40 ofertas y de paginaciones profundas; no confundir la primera página de un portal con cobertura completa. La confirmación visible de A se etiqueta expresamente como **solo el último ciclo**, no el acumulado histórico.
+- `automation/test_motor_a_index_rotation.ts`: 105 ofertas y 17 páginas de índice cubiertas en pasadas sucesivas sin perder las últimas.
+- El módulo productivo **no cambia** hasta desplegar. Ninguno de estos tests garantiza lectura efectiva de portales que devuelven 403, desafían robots, requieren APIs sociales o necesitan navegadores.
+
+**Objetivo operativo compartido A+D:** toda oferta de A con evidencia suficiente va a revisión D; toda oferta aprobada por D entra al mismo mecanismo de lotes→recibos→feed. Los estados de referencia se mantienen separados: detectada, revisada, lista, guardada, publicada y duplicada. No se cuentan 120 enlaces de búsqueda como 120 puestos verificables.
+
 ## Puerta de aceptación antes de producción
 
 - [x] PR #45 integrado en una única rama y PR #43/#44 cerrados como supersedidos, SIN fusionar.
@@ -33,9 +52,9 @@
 ## ÚNICA liberación autorizada (no ejecutada)
 
 1. Revisar que el AppDeploy actualmente desplegado sea el mismo snapshot que se usó para preparar `appdeploy_staging/`. Si hay cambios concurrentes, rebasar archivo por archivo antes de editar.
-2. Desplegar **primero** en una sola operación AppDeploy los archivos de backend probados `chatgpt-direct-import.ts`, `municipal-index-status.ts` (nuevo), `offer-retention.ts`, `public-feed.ts`, `index.ts` con fuentes del PR #45 mapeados a `backend/`. Así el importador entiende los lotes municipales sin fecha antes de que el productor pueda enviarlos. No desplegar copias anteriores.
+2. Desplegar **primero** en una sola operación AppDeploy los archivos de backend probados `chatgpt-direct-import.ts`, `municipal-index-status.ts` (nuevo), `offer-retention.ts`, `public-feed.ts`, `index.ts`, `free-public-sources.ts` y `index-rotation.ts` con fuentes del PR #45 mapeados a `backend/`. Así el importador entiende los lotes municipales sin fecha antes de que el productor pueda enviarlos. No desplegar copias anteriores.
 3. Verificar inmediatamente que el backend, el cron y el feed siguen operativos, sin caída de tarjetas ni regresión del catálogo. En caso de error, **revertir AppDeploy y no fusionar PR #45**.
-4. Con el backend ya validado y autorización explícita, fusionar PR #45 a `main`, lo que activa las próximas pasadas automáticas de Motor D. Monitorizar el primer lote y sus recibos.
+4. Con el backend ya validado y autorización explícita, fusionar PR #45 a `main`, activando las próximas pasadas automáticas **de Motor A y Motor D**, con la cola A conservada y traspaso D. Monitorizar los primeros lotes y sus recibos.
 5. Ejecutar QA final fuente→lote→recibo→catálogo, comprobar publicaciones reales, cero duplicados y estado del aviso de Mulchén. Si falla, detener la promoción/publicación, conservar evidencias y coordinar reversión sin reimportar lotes ni borrar manifestos.
 
 **Regla:** no informar “producción lista” hasta cumplir todos los controles, y no afirmar 100% de cobertura mientras fuentes bloqueadas o sociales permanezcan sin lectura efectiva.

@@ -536,12 +536,20 @@ def inspect(seed):
                     dates=dates_in(detail_soup)
                     official_open=municipal_open_official_evidence(
                         town,source,url,detail_url,index_status,body)
+                    # Many WordPress themes split the actual vacancy into
+                    # multiple article/content blocks. The focused first block
+                    # may omit the in-person OMIL instructions further down.
+                    # Check the SAME fetched original page, never another URL.
+                    if not official_open and index_status=="open" and source=="Municipio Mulchén empleos":
+                        municipal_full_body=detail_soup.get_text(" ",strip=True)[:16000]
+                        official_open=municipal_open_official_evidence(
+                            town,source,url,detail_url,index_status,municipal_full_body)
                     job_commune=explicit_work_commune(body)
                     detail["explicit_worksite_commune"]=job_commune
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
                     if index_status=="open" and source=="Municipio Mulchén empleos":
-                        normalized_body=fold(body)
+                        normalized_body=fold(detail_soup.get_text(" ",strip=True)[:16000])
                         detail["municipal_open_evidence_checks"]={
                             "agriculture": "empresa del rubro agricola de la comuna de mulchen" in normalized_body,
                             "worksite": "predio ubicado en el sector campamento" in normalized_body,

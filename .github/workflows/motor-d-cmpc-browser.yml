@@ -13,7 +13,11 @@ on:
       - 'automation/motor_d_audit_discovery.py'
   workflow_dispatch:
   schedule:
-    - cron: '25 9 * * *'
+    # Browser fallback is the proven official public reader when the GitHub
+    # Cornerstone JSON request returns HTTP 401. Scan shortly after D:
+    # 06:35, 10:35, 14:35 and 18:35 Chile summer time (UTC-3).
+    # This uses the existing guarded batch/dedup pipeline, no AppDeploy deploy.
+    - cron: '35 9,13,17,21 * * *'
 permissions:
   contents: write
 concurrency:

@@ -227,6 +227,7 @@ def produce(report,root=None,today=None,publication_statuses=None):
         keys.update(k + ":" + str(offer[k]) for k in ("review_id", "promotion_id") if offer.get(k))
         return keys
     seen_keys = set(saved.get("seen_identity_keys", []))
+    historical_batch_by_identity = {}
     # Migrate old manifests from their actual batches, including HTML offers.
     for entry in batches:
         relative = entry.get("file", "")
@@ -234,9 +235,13 @@ def produce(report,root=None,today=None,publication_statuses=None):
             raise ValueError("Referencia de lote inválida")
         previous = json.loads((root / relative).read_text(encoding="utf8"))
         for offer in previous["offers"]:
-            seen_keys.update(identities(offer))
+            historical_keys = identities(offer)
+            seen_keys.update(historical_keys)
+            for identity_key in historical_keys:
+                historical_batch_by_identity.setdefault(identity_key,set()).add(entry["batch_id"])
     batch_counts={"daily":0,"recovery":0}
     already_in_public_catalog=0
+    historical_missing=[]
     for batch_type,state in (("daily","EXPRESS"),("recovery","RECUPERACION")):
         approved=[]
         for entry in classified[state]:
@@ -251,6 +256,24 @@ def produce(report,root=None,today=None,publication_statuses=None):
                     # Fail closed. Unknown statuses never become new batches.
                     raise ValueError("unverified_public_catalog_status")
             keys = identities(offer)
+            # A historical staging attempt is NOT evidence of actual public
+            # visibility. Preserve batch identities and flag unreconciled
+            # vacancies for receipt inspection instead of silently discarding.
+            if (publication_statuses is not None and
+                    public_status == "not_found_in_complete_feed" and
+                    (offer["id_fuente"] in seen_ids or bool(keys & seen_keys))):
+                historical_missing.append({
+                    "id_fuente":offer["id_fuente"],
+                    "cargo":offer["cargo"],
+                    "empresa":offer["empresa"],
+                    "comunas":offer["comunas"],
+                    "url_original":offer["url_original"],
+                    "prior_batch_ids":sorted({
+                        batch for k in keys
+                        for batch in historical_batch_by_identity.get(k,())
+                    }),
+                    "next_action":"review_appdeploy_receipt_before_safe_recovery",
+                })
             if offer["id_fuente"] not in seen_ids and not keys & seen_keys:
                 approved.append(offer)
                 seen_keys.update(keys)
@@ -280,7 +303,16 @@ def produce(report,root=None,today=None,publication_statuses=None):
     atomic_json_write(manifest, {"schema_version":1,"batches":batches,
         "seen_offer_ids":sorted(seen_ids), "seen_identity_keys":sorted(seen_keys),
         "quarantined_batches":saved.get("quarantined_batches", [])})
+    if publication_statuses is not None:
+        atomic_json_write(root/"publication_reconciliation.json",{
+            "schema_version":1,
+            "scan_date":today.isoformat(),
+            "state":"needs_receipt_review" if historical_missing else "clear",
+            "historical_missing_from_catalog":len(historical_missing),
+            "items":historical_missing,
+        })
     summary={state:len(items) for state,items in classified.items()}
+    summary["historical_missing_from_catalog"]=len(historical_missing)
     # Preserve actionable reasons for why discovery did not become a publishable offer.
     summary["review_reasons"] = {
         state: dict(sorted(Counter(
@@ -315,18 +347,20 @@ def validate_inventory_freshness(report, today):
     return scan_day
 
 def record_publication_gate(report,local_day,state,eligible=0,
-                            checked=0,duplicates=0,staged=0,error=None):
+                            checked=0,duplicates=0,staged=0,error=None,
+                            historical_missing=0):
     """Persist a truthful per-scan publication decision, even on feed failure."""
     receipt={
         "schema_version":1,
         "scan_date":report.get("date"),
         "checked_at":datetime.now(ZoneInfo("America/Santiago")).isoformat(),
         "run_local_date":local_day.isoformat(),
-        "state":state,
+        "state":"historical_publication_reconciliation_required" if historical_missing and state=="completed" else state,
         "eligible_before_catalog":eligible,
         "public_catalog_records_checked":checked,
         "already_published_skipped":duplicates,
         "ready_batch_offers_staged":staged,
+        "historical_missing_from_catalog":historical_missing,
         "feed_error":error,
         "feed_complete":state=="completed",
     }
@@ -373,7 +407,8 @@ def main():
     record_publication_gate(report,local_day,"completed",
         eligible=len(offers),checked=len(rows),
         duplicates=summary["public_catalog_duplicates_skipped"],
-        staged=summary["daily_batch_offers"]+summary["recovery_batch_offers"])
+        staged=summary["daily_batch_offers"]+summary["recovery_batch_offers"],
+        historical_missing=summary["historical_missing_from_catalog"])
     print("MOTOR_D_EXPRESS "+json.dumps(summary,ensure_ascii=False))
 
 if __name__=="__main__":

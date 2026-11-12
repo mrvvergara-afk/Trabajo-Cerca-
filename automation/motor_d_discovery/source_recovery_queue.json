@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-12T12:52:27.790902-03:00",
+  "source_scan_date": "2026-11-12T13:01:43.621490-03:00",
   "registered_total": 202,
-  "total_pending": 114,
+  "total_pending": 94,
   "group_counts": {
-    "failed_public_source": 41,
+    "failed_public_source": 21,
     "partial_index": 2,
     "regional_query": 2,
     "restricted_job_portal": 38,
@@ -15,51 +15,51 @@
   "no_blocked_or_unread_source_claimed_recovered": true,
   "per_commune": {
     "Angol": {
-      "pending": 29,
+      "pending": 27,
       "high_priority": 6
     },
     "Collipulli": {
-      "pending": 18,
+      "pending": 17,
       "high_priority": 7
     },
     "Ercilla": {
-      "pending": 17,
+      "pending": 16,
       "high_priority": 6
     },
     "Lumaco": {
-      "pending": 17,
+      "pending": 16,
       "high_priority": 6
     },
     "Los Sauces": {
-      "pending": 18,
+      "pending": 17,
       "high_priority": 6
     },
     "Purén": {
-      "pending": 19,
+      "pending": 17,
       "high_priority": 6
     },
     "Renaico": {
-      "pending": 18,
+      "pending": 17,
       "high_priority": 6
     },
     "Traiguén": {
-      "pending": 18,
+      "pending": 16,
       "high_priority": 6
     },
     "Victoria": {
-      "pending": 21,
+      "pending": 19,
       "high_priority": 6
     },
     "Mulchén": {
-      "pending": 18,
+      "pending": 16,
       "high_priority": 7
     },
     "Negrete": {
-      "pending": 18,
+      "pending": 17,
       "high_priority": 6
     },
     "Nacimiento": {
-      "pending": 22,
+      "pending": 18,
       "high_priority": 6
     }
   },
@@ -243,254 +243,44 @@
       "recovered": false
     },
     {
-      "id": "9eb06f834f2e4adb79ad",
-      "name": "Chiletrabajos · Angol",
-      "url": "https://www.chiletrabajos.cl/ciudad/angol.html",
+      "id": "00a5c7f9f6e6458a4663",
+      "name": "Portal Opción Empleo · Ercilla",
+      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "communes": [
+        "Ercilla"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "0ccdc04534e34659b53f",
+      "name": "Portal Opción Empleo · Los Sauces",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "communes": [
+        "Los Sauces"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "23d0575e2faa0b8c43bb",
+      "name": "Portal Opción Empleo · Angol",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
       "communes": [
         "Angol"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
       "priority_tier": 3,
-      "previously_verified_job_count": 24,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "3a3eb7eb64acee2642cf",
-      "name": "Portal Chiletrabajos · palabra clave · Nacimiento",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
-      "communes": [
-        "Nacimiento"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 2,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "41e0a5dff9a5b638abcf",
-      "name": "Portal Chiletrabajos · palabra clave · Angol",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
-      "communes": [
-        "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 2,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "de374c8bc3709ebbe9fd",
-      "name": "Chiletrabajos · Nacimiento",
-      "url": "https://www.chiletrabajos.cl/ciudad/nacimiento.html",
-      "communes": [
-        "Nacimiento"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 2,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "0cd1ca16048f3045f1a8",
-      "name": "Chiletrabajos · Traiguén",
-      "url": "https://www.chiletrabajos.cl/ciudad/traiguen.html",
-      "communes": [
-        "Traiguén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "2e5d13719312865d3636",
-      "name": "Chiletrabajos · Serfonac mecánico soldador",
-      "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
-      "communes": [
-        "Nacimiento"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "5971ff87f0f8b7a6facc",
-      "name": "Portal Chiletrabajos · palabra clave · Mulchén",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
-      "communes": [
-        "Mulchén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "60e9908e28a47ea37567",
-      "name": "Portal Chiletrabajos · palabra clave · Purén",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
-      "communes": [
-        "Purén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "68f16982ca1ee26fc2aa",
-      "name": "Portal Chiletrabajos · palabra clave · Negrete",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
-      "communes": [
-        "Negrete"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "728743fa1bc6044fab11",
-      "name": "Chiletrabajos · Serfonac mecánico automotriz",
-      "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
-      "communes": [
-        "Nacimiento"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "8e10d10d8dedf4b7e3b9",
-      "name": "Chiletrabajos · Operario alimentos Angol",
-      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
-      "communes": [
-        "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "9cc3b07e02db270defe5",
-      "name": "Chiletrabajos · Purén",
-      "url": "https://www.chiletrabajos.cl/ciudad/puren.html",
-      "communes": [
-        "Purén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "ad791baa0556cf59d931",
-      "name": "Chiletrabajos · Reponedor Traiguén",
-      "url": "https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
-      "communes": [
-        "Traiguén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "b6caef3934b1a72e45f4",
-      "name": "Portal Chiletrabajos · palabra clave · Traiguén",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Traigu%C3%A9n",
-      "communes": [
-        "Traiguén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "bb529b9dc298f44c9a1e",
-      "name": "Chiletrabajos · Negrete",
-      "url": "https://www.chiletrabajos.cl/ciudad/negrete.html",
-      "communes": [
-        "Negrete"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "bef43ecfd4d8417f1770",
-      "name": "Chiletrabajos · Prevencionista obras Malleco",
-      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
-      "communes": [
-        "Purén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "cef819523cbc1a437bdc",
-      "name": "Chiletrabajos · Mulchén",
-      "url": "https://www.chiletrabajos.cl/ciudad/mulchen.html",
-      "communes": [
-        "Mulchén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "eedd8d86097d3012ce0b",
-      "name": "Chiletrabajos · Reponedor Mulchén",
-      "url": "https://www.chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
-      "communes": [
-        "Mulchén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 1,
+      "previously_verified_job_count": 0,
       "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
       "recovered": false
     },
@@ -534,11 +324,11 @@
       "recovered": false
     },
     {
-      "id": "326af39aa59118f206f9",
-      "name": "Chiletrabajos · Lumaco",
-      "url": "https://www.chiletrabajos.cl/ciudad/lumaco.html",
+      "id": "2cbbe7ca7223df025954",
+      "name": "Portal Opción Empleo · Victoria",
+      "url": "https://www.opcionempleo.cl/empleo-en-victoria.html",
       "communes": [
-        "Lumaco"
+        "Victoria"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -562,11 +352,11 @@
       "recovered": false
     },
     {
-      "id": "383130ce370384b94123",
-      "name": "Chiletrabajos · Inventario Victoria Traiguén · contraste",
-      "url": "https://www.chiletrabajos.cl/trabajo/personal-toma-de-inventario-victoria-traiqguen-3925455",
+      "id": "41ee43e2357d46fe9d44",
+      "name": "Portal LinkedIn · Angol",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
       "communes": [
-        "Victoria"
+        "Angol"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -576,11 +366,11 @@
       "recovered": false
     },
     {
-      "id": "3a02d3421c0d16a30001",
-      "name": "Chiletrabajos · Victoria",
-      "url": "https://www.chiletrabajos.cl/ciudad/victoria.html",
+      "id": "54398eb96578576d4e71",
+      "name": "Portal Opción Empleo · Negrete",
+      "url": "https://www.opcionempleo.cl/empleo-en-negrete.html",
       "communes": [
-        "Victoria"
+        "Negrete"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -590,81 +380,25 @@
       "recovered": false
     },
     {
-      "id": "3a5a7427c4a116524e8c",
-      "name": "Portal Chiletrabajos · palabra clave · Lumaco",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+      "id": "5db36981a4a1e8b04fe0",
+      "name": "Portal Opción Empleo · Mulchén",
+      "url": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+      "communes": [
+        "Mulchén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "78903755478202667606",
+      "name": "Portal Opción Empleo · Lumaco",
+      "url": "https://www.opcionempleo.cl/empleo-en-lumaco.html",
       "communes": [
         "Lumaco"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "4d9a3e1095177c5bcc87",
-      "name": "Portal Chiletrabajos · palabra clave · Renaico",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
-      "communes": [
-        "Renaico"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "4dd1552844736b17749b",
-      "name": "Portal Chiletrabajos · palabra clave · Los Sauces",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces",
-      "communes": [
-        "Los Sauces"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "627185e3d62e02c3c284",
-      "name": "Chiletrabajos · Renaico",
-      "url": "https://www.chiletrabajos.cl/ciudad/renaico.html",
-      "communes": [
-        "Renaico"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "6dd07a2f9ea43f7d8cb6",
-      "name": "Portal Chiletrabajos · palabra clave · Collipulli",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
-      "communes": [
-        "Collipulli"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "75efe0264a6c167781ee",
-      "name": "Portal Chiletrabajos · palabra clave · Ercilla",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Ercilla",
-      "communes": [
-        "Ercilla"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -699,11 +433,25 @@
       "recovered": false
     },
     {
-      "id": "8e2d5c31225502c51b10",
-      "name": "Chiletrabajos · Los Sauces",
-      "url": "https://www.chiletrabajos.cl/ciudad/los-sauces.html",
+      "id": "822684b14691c862dc3c",
+      "name": "Portal Opción Empleo · Renaico",
+      "url": "https://www.opcionempleo.cl/empleo-en-renaico.html",
       "communes": [
-        "Los Sauces"
+        "Renaico"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "a129d685b363c7a0330a",
+      "name": "Portal Opción Empleo · Traiguén",
+      "url": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+      "communes": [
+        "Traiguén"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -727,11 +475,11 @@
       "recovered": false
     },
     {
-      "id": "bbea1f2b18a9ea228d7a",
-      "name": "Chiletrabajos · Collipulli",
-      "url": "https://www.chiletrabajos.cl/ciudad/collipulli.html",
+      "id": "af025b403ad9c22727cc",
+      "name": "Portal Opción Empleo · Nacimiento",
+      "url": "https://www.opcionempleo.cl/empleo-en-nacimiento.html",
       "communes": [
-        "Collipulli"
+        "Nacimiento"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -780,6 +528,20 @@
       "recovered": false
     },
     {
+      "id": "c3432bfa8cab9e20b714",
+      "name": "Portal Opción Empleo · Purén",
+      "url": "https://www.opcionempleo.cl/empleo-en-puren.html",
+      "communes": [
+        "Purén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
       "id": "d0dff4fb4776a3a53f1e",
       "name": "Portal LinkedIn · Victoria",
       "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
@@ -794,53 +556,11 @@
       "recovered": false
     },
     {
-      "id": "dfbe33e06f26311a43f0",
-      "name": "Portal Chiletrabajos · palabra clave · Victoria",
-      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+      "id": "db426597e7d84996a388",
+      "name": "Portal Opción Empleo · Collipulli",
+      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
       "communes": [
-        "Victoria"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "f23105f4f1dfcf4ae43d",
-      "name": "Chiletrabajos · Ercilla",
-      "url": "https://www.chiletrabajos.cl/ciudad/ercilla.html",
-      "communes": [
-        "Ercilla"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "f915fab77a162d120d84",
-      "name": "Chiletrabajos · Director CC LAE Angol · contraste",
-      "url": "https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
-      "communes": [
-        "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "fcefed72ec34486ee425",
-      "name": "Chiletrabajos · Serfonac conductor",
-      "url": "https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
-      "communes": [
-        "Nacimiento"
+        "Collipulli"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

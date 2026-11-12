@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "producer": "motor_d_territorial",
-  "scan_completed_at": "2026-11-12T12:52:27.790902-03:00",
+  "scan_completed_at": "2026-11-12T13:01:43.621490-03:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -18,14 +18,17 @@
   ],
   "missing_communes": [],
   "sources_total": 175,
-  "sources_accessible": 96,
-  "sources_blocked": 77,
-  "job_candidates_total": 205,
-  "express_ready_candidates": 0,
-  "source_report_sha256": "763c78f0d6c59b2ec5526f64ab458435813fdf960dc00f50000cb0554d0626a5",
+  "sources_accessible": 104,
+  "sources_blocked": 57,
+  "job_candidates_total": 246,
+  "express_ready_candidates": 1,
+  "source_report_sha256": "1c52254b36f24c75451758a0ad75b6a6ac016c6a5741a38ddeeffaa32c008ba8",
   "published_in_trabajo_cerca": 0,
   "publication_confirmed": false,
   "source_inventory_registered": 202,
-  "source_inventory_pending": 114,
-  "full_usable_coverage": false
+  "source_inventory_pending": 94,
+  "full_usable_coverage": false,
+  "motor_a_handoff_fetched": 22,
+  "motor_a_handoff_http_200": 22,
+  "motor_a_handoff_failed": false
 }

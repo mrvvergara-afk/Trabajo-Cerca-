@@ -866,5 +866,31 @@ class TerritorialSafetyTests(unittest.TestCase):
             "Mulchén","Municipio Mulchén empleos",index_url,job_url,
             "open","Municipalidad de Mulchén invita a registrar CV en OMIL."))
 
+
+    def test_long_index_does_not_starve_jobs_after_500_anchors(self):
+        unrelated="".join("<a href='/enlace-%d'>Biblioteca y cultura</a>" % n
+                          for n in range(550))
+        html=unrelated+"<a href='/vacante-director-cc-lae-angol/'>Director/a CC LAE Angol</a>"
+        urls=engine.links_from(BeautifulSoup(html,"html.parser"),
+                               "https://municipio.example.cl/ofertas/",limit=None)
+        self.assertTrue(any("director-cc-lae" in row[0] for row in urls))
+
+    def test_employer_blogs_not_individual_job_offers(self):
+        html=("<a href='/noticias/1773249009003-las-claves-para-optimizar-tu-curriculum-y-destacar'>"
+              "Consejos para el empleo y trabajo</a>"
+              "<a href='/ofertas/operador-mantenedor-industrial'>Operador mantenedor</a>")
+        urls=engine.links_from(BeautifulSoup(html,"html.parser"),
+                               "https://serfocol.trabajando.cl/",limit=None)
+        self.assertEqual(len(urls),1)
+        self.assertIn("operador-mantenedor",urls[0][0])
+
+    def test_industry_positions_are_candidate_links_not_auto_approvals(self):
+        html="<a href='/Chile/job/test/'>Instrumentista de Área</a>"
+        urls=engine.links_from(BeautifulSoup(html,"html.parser"),
+                               "https://jobs.arauco.com/Chile/search/",limit=None)
+        self.assertEqual(len(urls),1)
+        self.assertEqual(urls[0][2],"not_indicated")
+
+
 if __name__=="__main__":
     unittest.main()

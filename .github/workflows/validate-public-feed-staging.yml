@@ -1,0 +1,31 @@
+name: Validate public feed staging snapshot
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging/snapshot/**'
+      - 'appdeploy_staging/patches/**'
+      - 'appdeploy_staging/fixtures/**'
+      - 'scripts/test-public-feed-*.mjs'
+      - 'scripts/test-feed-*.mjs'
+      - 'scripts/test-last-good-feed-recovery.mjs'
+      - 'scripts/test-feed-last-good-summary.mjs'
+      - 'scripts/test-no-false-zero-feed.mjs'
+      - 'scripts/check-appdeploy-typescript.mjs'
+      - '.github/workflows/validate-public-feed-staging.yml'
+  workflow_dispatch:
+jobs:
+  static-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install TypeScript compiler
+        run: npm install --no-save --ignore-scripts --package-lock=false typescript@5.7.3
+      - name: Validate recovered TypeScript syntax
+        run: node scripts/check-appdeploy-typescript.mjs
+      - name: Run staging integrity checks
+        run: node --test scripts/test-public-feed-snapshot.mjs scripts/test-public-feed-diagnostics.mjs scripts/test-no-false-zero-feed.mjs scripts/test-feed-patch-context.mjs scripts/test-feed-route-behavior.mjs scripts/test-last-good-feed-recovery.mjs scripts/test-feed-last-good-summary.mjs

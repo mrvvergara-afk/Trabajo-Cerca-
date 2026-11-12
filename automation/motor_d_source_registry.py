@@ -196,8 +196,12 @@ def assess(plan,rows,stats):
                 "/noticias/","/blog/","/articulos/"))
             for item in (observed.get("candidates") or []) if isinstance(item,dict)
         ) if observed else 0
+        authoritative_complete=bool(
+            observed and observed.get("source_reader")=="official_cmpc_cornerstone_json"
+            and observed.get("official_api_index_complete") is True
+            and state in ("scanned_with_candidates","scanned_no_candidates"))
         browser_needed=(employer_requires_real_jobs and worked and
-                        actual_individual==0)
+                        actual_individual==0 and not authoritative_complete)
         # SAFCO displays real open-looking job cards inline with no dated,
         # unique individual URL. A generic scanner showing zero links did NOT
         # confirm that these advertised roles were examined and deduplicated.

@@ -302,14 +302,15 @@ def municipal_open_official_evidence(town, source, index_url, detail_url, index_
         return None
     # Publisher specifically describes the local agricultural workplace,
     # not merely a municipal OMIL address or place where CVs are delivered.
-    agricultural_site = re.search(
-        r"empresa del rubro agr[ií]cola de la comuna de Mulch[eé]n"
-        r".{0,160}reclutamiento.{0,160}labores? de cosecha de ar[aá]ndanos"
-        r".{0,120}predio ubicado en el sector Campamento",
-        body, re.I | re.S)
-    in_person = re.search(
-        r"interesados deben presentar la documentaci[oó]n en la oficina OMIL"
-        r".{0,140}An[ií]bal Pinto", body, re.I | re.S)
+    # The publisher uses a visual article layout and may split sentences
+    # across blocks. Require every independent, *job-specific* evidence
+    # marker rather than one brittle regex spanning multiple paragraphs.
+    text=fold(body)
+    agricultural_site=all(marker in text for marker in (
+        "empresa del rubro agricola de la comuna de mulchen",
+        "cosecha de arandanos","predio ubicado en el sector campamento"))
+    in_person=all(marker in text for marker in (
+        "interesados","presentar","documentacion","oficina omil","anibal pinto"))
     if town != "Mulchén" or not agricultural_site or not in_person:
         return None
     return {
@@ -539,6 +540,17 @@ def inspect(seed):
                     detail["explicit_worksite_commune"]=job_commune
                     employer=explicit_employer(body)
                     application_evidence=explicit_application(body)
+                    if municipal and index_status=="open" and source=="Municipio Mulchén empleos":
+                        normalized_body=fold(body)
+                        detail["municipal_open_evidence_checks"]={
+                            "agriculture": "empresa del rubro agricola de la comuna de mulchen" in normalized_body,
+                            "worksite": "predio ubicado en el sector campamento" in normalized_body,
+                            "crop": "cosecha de arandanos" in normalized_body,
+                            "instructions": "interesados" in normalized_body and "presentar" in normalized_body,
+                            "omil": "oficina omil" in normalized_body,
+                            "street": "anibal pinto" in normalized_body,
+                            "document": "documentacion" in normalized_body,
+                        }
                     if official_open:
                         job_commune=official_open["work_commune"]
                         employer=employer or official_open["employer"]

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-12T15:52:06.171177+00:00",
+  "local_discovery_at": "2026-11-12T15:51:53.119040+00:00",
+  "communes_expected": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Los Sauces",
+    "Lumaco",
+    "Mulchén",
+    "Nacimiento",
+    "Negrete",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria"
+  ],
+  "municipalities_attempted": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Los Sauces",
+    "Lumaco",
+    "Mulchén",
+    "Nacimiento",
+    "Negrete",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria"
+  ],
+  "municipalities_missing": [],
+  "municipalities_readable": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Los Sauces",
+    "Lumaco",
+    "Mulchén",
+    "Nacimiento",
+    "Negrete",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria"
+  ],
+  "municipalities_unreadable": [],
+  "local_sources_expected": 17,
+  "local_sources_attempted": 17,
+  "local_candidates": 90,
+  "chiletrabajos_queries_attempted": 15,
+  "chiletrabajos_candidates": 126,
+  "job_details_checked": 60,
+  "ready_for_d_review": 12,
+  "publication_confirmed": false,
+  "coverage_complete": false,
+  "source_failures": [
+    {
+      "source": "Municipio Angol",
+      "commune": "Angol",
+      "pages_scanned": 1,
+      "status": "partial",
+      "errors": 1
+    },
+    {
+      "source": "Municipio Collipulli",
+      "commune": "Collipulli",
+      "pages_scanned": 11,
+      "status": "partial",
+      "errors": 1
+    },
+    {
+      "source": "SERFONAC ofertas",
+      "commune": "regional",
+      "pages_scanned": 29,
+      "status": "partial",
+      "errors": 1
+    },
+    {
+      "source": "Brayben ofertas",
+      "commune": "regional",
+      "pages_scanned": 2,
+      "status": "partial",
+      "errors": 1
+    }
+  ],
+  "note": "Index attempts and candidate counts do not prove full source access or publication."
+}

@@ -97,6 +97,7 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 # Individual historical vacancies are NOT permanent search sources.
 from motor_d_employer_portal import read_employer_vacancy
 from motor_d_cmpc_api import source_is_official_cmpc,read_cmpc_requisitions
+from motor_d_safco import allowed_source as official_safco_home, extract_open_safco_cards
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
 from motor_d_source_recovery import build_recovery_queue
 from motor_a_handoff import read as read_motor_a_review
@@ -463,6 +464,18 @@ def inspect(seed):
             out["municipal_feed_sources_blocked"]=municipal["sources_blocked"]
         status,soup,reason=request_page(url)
         out["http"]=status
+        if status==200 and soup is not None and official_safco_home(url):
+            # SAFCO publishes per-role OPEN cards on its official homepage
+            # without dates or stable vacancy URLs. Capture all for B/C review,
+            # but never synthesize publication dates or auto-approve them.
+            cards=extract_open_safco_cards(soup,url)
+            out["source_reader"]="safco_embedded_cards_review_only"
+            out["embedded_open_cards"]=len(cards)
+            out["candidates"]=cards
+            out["links_found"]=len(cards)
+            out["details_opened"]=len(cards)
+            out["status"]="scanned_with_candidates" if cards else "scanned_no_candidates"
+            return out
         if status!=200 or soup is None:
             if not municipal or not municipal["pages"]:
                 out["status"]="http_restricted" if status in (401,403,406,429) else (reason or "http_error")

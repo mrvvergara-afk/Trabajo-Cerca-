@@ -43,6 +43,7 @@ jobs:
     if: github.event_name != 'pull_request'
     permissions:
       contents: write
+      actions: write
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -80,6 +81,24 @@ jobs:
             done
             echo "MOTOR_A_HANDOFF_PERSIST_FAILED"
             exit 1
+          fi
+      - name: Avisar a Motor D solo cuando A incorpora fichas nuevas
+        if: success() && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          added=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('output/motor_a_handoff.json').read_text(encoding='utf-8'))
+          print(int(data.get('added',0)))
+          PY
+          )
+          if [ "$added" -gt 0 ]; then
+            gh api --method POST "repos/${{ github.repository }}/actions/workflows/motor-d-territorial-daily.yml/dispatches" -f ref=main
+            echo "MOTOR_A_TO_D_DISPATCH_OK newly_staged=$added" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "MOTOR_A_TO_D_DISPATCH_IDLE no_new_leads" >> "$GITHUB_STEP_SUMMARY"
           fi
       - run: python scripts/apify_probe.py
         env:

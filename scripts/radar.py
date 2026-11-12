@@ -3,6 +3,7 @@ import json, re, urllib.request, urllib.parse, xml.etree.ElementTree as ET
 from pathlib import Path
 from datetime import datetime, timezone
 from html import unescape
+from radar_patterns import ARCHIVE, DOCUMENT, OLD_YEAR
 
 COMMUNES = ['Angol','Collipulli','Ercilla','Renaico','Los Sauces','Purén',
             'Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria']
@@ -43,13 +44,12 @@ def fetch(url):
 def add(source,url,commune='pending_review',title=''):
  if not url.startswith('https://') and not url.startswith('http://'): return
  key=url.split('#')[0]
- if re.search(r'/20(?:0\\d|1\\d|2[0-4])/',key): return
+ if OLD_YEAR.search(key): return
  if key in seen: return
  seen.add(key)
  candidates.append({'source':source,'url':key,'title':title,'commune':commune,'status':'candidate_unverified'})
 
 # Backfill: traverse public archive/category/pagination links (bounded per source).
-ARCHIVE = re.compile(r'page/\\d+|[?&](?:paged|page)=\\d+|/category/|/categoria/|/tag/|/ofertas?|/empleo|/trabajo|/omil|/convocatoria|/concursos?',re.I)
 for name,url,territory in SOURCES:
  queue=[(url,0)]; visited=set(); found=0; errors=[]
  origin=urllib.parse.urlparse(url).netloc.lower().removeprefix('www.')
@@ -66,10 +66,10 @@ for name,url,territory in SOURCES:
     host=parsed.netloc.lower().removeprefix('www.')
     if host!=origin: continue
     clean=link.split('#')[0]
-    if re.search(r'/20(?:0\\d|1\\d|2[0-4])/',clean): continue
+    if OLD_YEAR.search(clean): continue
     if KEYWORDS.search(clean):
      before=len(candidates);add(name,clean);found+=len(candidates)-before
-    if depth<3 and not re.search(r'\\.(?:pdf|jpe?g|png|docx?|xlsx?)(?:\\?|$)',clean,re.I) and ARCHIVE.search(clean) and clean not in visited and not any(x[0]==clean for x in queue) and len(queue)<100:
+    if depth<3 and not DOCUMENT.search(clean) and ARCHIVE.search(clean) and clean not in visited and not any(x[0]==clean for x in queue) and len(queue)<100:
      queue.append((clean,depth+1))
    if KEYWORDS.search(current): add(name,current)
   except Exception as exc:

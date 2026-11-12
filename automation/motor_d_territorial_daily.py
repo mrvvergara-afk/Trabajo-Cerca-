@@ -192,7 +192,7 @@ def dates_in(soup):
     match=re.search(r"\bFecha\s*[:|]?\s*(20\d{2}-\d{2}-\d{2})\b",text,re.I)
     if match:found.append(match.group(1))
     return list(dict.fromkeys(found))
-def links_from(soup,base):
+def links_from(soup,base,limit=35):
     origin=urlsplit(base).hostname
     output={}
     for tag in soup.select("a[href]")[:500]:
@@ -215,7 +215,8 @@ def links_from(soup,base):
                 break
         if CLOSED.search(title):listing_state="closed"
         output.setdefault(url,(title,listing_state))
-    return [(url,title,state) for url,(title,state) in output.items()][:35]
+    found=[(url,title,state) for url,(title,state) in output.items()]
+    return found[:limit] if limit is not None else found
 # Solo el texto explicito de la oferta puede establecer empresa y lugar de trabajo.
 # La comuna de la fuente municipal NO equivale a la comuna del puesto.
 def explicit_work_commune(body):
@@ -421,7 +422,18 @@ def inspect(seed):
                     return out
                 soup=fallback_soup
                 national_fallback=True
-        links=links_from(soup,links_base)
+        # A successful HTTP 200 does not imply complete scanning of an index
+        # when it exposes more than the current 35-detail budget or >500 links.
+        # Keep scanning 35 safely, but mark the source as NOT fully covered,
+        # so a pagination/structured adapter is a mandatory next action.
+        index_all=links_from(soup,links_base,limit=None)
+        index_raw_anchors=len(soup.select("a[href]"))
+        links=index_all[:35]
+        out["index_candidates_detected"]=len(index_all)
+        out["index_anchor_count"]=index_raw_anchors
+        out["index_incomplete"]=len(index_all)>35 or index_raw_anchors>500
+        if out["index_incomplete"]:
+            out["errors"].append("source_index_partially_read_recovery_required")
         if municipal:
             known={row[0] for row in links}
             for row in municipal["pages"]:
@@ -590,9 +602,10 @@ def inspect(seed):
                     out["candidates"].append(detail)
         out["details_opened"]=sum(x.get("http")==200 and x.get("evidence") not in
                                    ("detail_unavailable","link_candidate_only") for x in out["candidates"])
-        out["status"]=("scanned_with_candidates" if out["candidates"] else
-                       ("fallback_no_verified_target_offers" if national_fallback
-                        else "scanned_no_candidates"))
+        out["status"]=("scanned_partial_index" if out.get("index_incomplete") else
+                       ("scanned_with_candidates" if out["candidates"] else
+                        ("fallback_no_verified_target_offers" if national_fallback
+                         else "scanned_no_candidates")))
     except requests.exceptions.RequestException as exc:
         out["status"]="network_error";out["errors"].append(type(exc).__name__)
     except Exception as exc:

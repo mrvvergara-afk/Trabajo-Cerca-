@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "producer": "motor_d_territorial",
-  "scan_completed_at": "2026-11-11T21:18:18.109917-03:00",
+  "scan_completed_at": "2026-11-11T22:12:08.931802-03:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -17,15 +17,15 @@
     "Nacimiento"
   ],
   "missing_communes": [],
-  "sources_total": 172,
-  "sources_accessible": 114,
-  "sources_blocked": 43,
-  "job_candidates_total": 201,
+  "sources_total": 173,
+  "sources_accessible": 113,
+  "sources_blocked": 45,
+  "job_candidates_total": 236,
   "express_ready_candidates": 0,
-  "source_report_sha256": "b60f03faeae1302b995bea39f9c71672ccbc97616ccdf169f83aac6015007325",
+  "source_report_sha256": "b0671949147477c0b64da17f098a25cfd8335ab6a82fbe9f4136237812670b4a",
   "published_in_trabajo_cerca": 0,
   "publication_confirmed": false,
-  "source_inventory_registered": 199,
-  "source_inventory_pending": 76,
+  "source_inventory_registered": 200,
+  "source_inventory_pending": 80,
   "full_usable_coverage": false
 }

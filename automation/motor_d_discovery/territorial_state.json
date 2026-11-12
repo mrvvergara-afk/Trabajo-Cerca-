@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-11T21:18:18.109917-03:00",
+  "last_run": "2026-11-11T22:12:08.931802-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -2604,6 +2604,324 @@
       "first_seen": "2026-11-11T21:18:18.109917-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-en-prevencion-de-riesgos-antofagasta-3076086.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "c2127b164c755ebbcc7c": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/coordinador-a-relaciones-comunitarias-empresa-rubro-construccion-3076123.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1b95cd95fb23a9f6594e": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-casino-para-lavado-de-ollas-514000-independencia-6x1-metro-hospitales-3076122.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c692139cf8621c963a5d": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/asistente-atencion-al-cliente-diego-de-almagro-3076121.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0a76742426b0a36df9c3": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/contador-a-importante-empresa-del-rubro-de-concesiones-e-infraestructura-vial-3076120.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0646615e8872297118c3": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-integral-apoquindo-3076119.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b06145cd5e1da5d7450f": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-de-prevencion-de-perdidas-contador-experiencia-en-empresas-de-consumo-masivo-3076118.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a2797480ef92a10159df": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/especialista-fatiga-y-somnolencia-7x7-calama-3076117.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "725db5da0dfd3e7a3fbc": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-farmacias-nunoa-3076116.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "14bebf5535e9f8d2500c": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/medico-cirujano-30-hrs-semanales-valparaiso-3076115.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0fe2beb96d1aea3e795e": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/medico-cirujano-42-45-hrs-semanales-maipu-3076114.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "db2c65f274d773ed8755": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tens-admision-urgencias-volante-santiago-3076113.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f15ced5fe178dde94369": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-cuidador-3076112.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bc2f179e781d7dc6e0fc": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-dietetica-2x2-noche-providencia-3076111.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ab8b606acf206c7e1b8c": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnicos-en-enfermeria-nivel-superior-tens-quimioterapia-temporada-de-verano-centro-del-cancer-3076110.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fcb3984463353bbb1f5a": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/enfermeros-as-quimioterapia-temporada-de-verano-centro-del-cancer-3076109.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3601c9cf297b87b274e4": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/analista-de-cuentas-recinto-penitenciario-antogagasta-3076108.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c7cc1540ed609a31e9e1": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asesor-inmobiliario-independiente-trabajo-desde-casa-3076107.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f58ab3ae19497d2e0110": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-comercial-saas-b2b-30-por-cinto-de-comision-sin-tope-3076106.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a8e71d5721af4ed03443": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/centro-documental/guia-de-postulacion-2024/",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "fca53eb166cefc44f250": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/quienes-somos/programa-de-empleos/",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "ffcc7ff97f952aaa03f2": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2026/11/ACLARACION-CONCURSO-N°-854.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "9d8537870edd30d99ea3": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2026/08/Conaf_Informa_819.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "d430e1ac77481d80474b": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2026/03/Resultado-794.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "825cdd25f57fd1726e7c": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2026/03/Resultado-777.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "023d32b2c93d336fa0a8": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_773.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "a34e0f803639476cab57": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_770.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "12f518fc7523ea5467af": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_767.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "d310675cd94dd985870b": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_763.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "e6c6fcadbdf034abe749": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_761.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "997c2b227344e0eb163b": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_760.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "efeb48a26de414894efc": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_756.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "c5a2c09b823c766e72a6": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_755.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "a82483daafb91075258d": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Conaf-Informa_resultados_750.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "6fc197c9ce209aa14601": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Conaf-Informa_resultados_749.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "03c9d4c3d980cd979bc5": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/01/Conaf-Informa_resultados_748.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "4bae46e13abdfbc0361a": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/12/Conaf-Informa_resultados_745.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "5d3925a09e3389a85fab": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/12/Conaf-Informa_resultados_744.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "3a85e9d753edae908ebb": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_742.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "84715d7c71984d637184": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/12/Conaf-Informa_resultados_741.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "c1688b657e40a3591d41": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Conaf-Informa_resultados_740.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "73edc672c70a0acc9c30": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2025/03/Resultado_739.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "55467fce0c1bac448620": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/06/Aclaracion-concurso-738.docx",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "4f950bddcf8cbe667dc3": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/08/738-conaf-informa-resultado-3.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "b0ba9c6b60d87832ad57": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/08/737-conaf-informa-resultado-3.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "30c511dfc80ccb9110f0": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/09/Conaf-Informa_resultados_735.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "255e0c20c72c17509625": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/10/conaf-informa-resultado-734-1.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "039bba8b119f33fef93b": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/10/Conaf-Informa_resultados_733.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "6b394603ba058ff2f04a": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/08/conaf-informa-concurso-732.docx",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "a1eb8d31d74d687976dd": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/11/Conaf-Informa_resultados_731.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "20e66ea589acbebfdba1": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/12/Conaf-Informa_resultados_730.doc",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "f00400fd38774f4cc9d9": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/04/Aclaracion-Concurso-N°728.docx",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "9d8ae0159d05dfb488c9": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/04/AVISO-CONCURSO-728.docx",
+      "source": "Inventario D06",
+      "commune": null
+    },
+    "d690c7fc1245bdaac2cc": {
+      "first_seen": "2026-11-11T22:12:08.931802-03:00",
+      "url": "https://www.conaf.cl/wp-content/uploads/2024/09/Conaf-Informa_resultados_728.doc",
+      "source": "Inventario D06",
       "commune": null
     }
   }

@@ -1,0 +1,1285 @@
+{
+  "schema_version": 1,
+  "source_scan_date": "2026-11-11T22:12:08.931802-03:00",
+  "registered_total": 200,
+  "total_pending": 80,
+  "group_counts": {
+    "failed_public_source": 10,
+    "partial_index": 2,
+    "regional_query": 1,
+    "restricted_job_portal": 38,
+    "social_reference": 27,
+    "specialized_reader": 2
+  },
+  "all_sources_preserved": true,
+  "no_blocked_or_unread_source_claimed_recovered": true,
+  "per_commune": {
+    "Angol": {
+      "pending": 23,
+      "high_priority": 3
+    },
+    "Collipulli": {
+      "pending": 14,
+      "high_priority": 4
+    },
+    "Ercilla": {
+      "pending": 13,
+      "high_priority": 3
+    },
+    "Lumaco": {
+      "pending": 13,
+      "high_priority": 3
+    },
+    "Los Sauces": {
+      "pending": 14,
+      "high_priority": 3
+    },
+    "Purén": {
+      "pending": 14,
+      "high_priority": 3
+    },
+    "Renaico": {
+      "pending": 14,
+      "high_priority": 3
+    },
+    "Traiguén": {
+      "pending": 13,
+      "high_priority": 3
+    },
+    "Victoria": {
+      "pending": 16,
+      "high_priority": 3
+    },
+    "Mulchén": {
+      "pending": 13,
+      "high_priority": 4
+    },
+    "Negrete": {
+      "pending": 15,
+      "high_priority": 3
+    },
+    "Nacimiento": {
+      "pending": 15,
+      "high_priority": 3
+    }
+  },
+  "tasks": [
+    {
+      "id": "4330eac222635c780d2a",
+      "name": "CMPC empleo",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "communes": [
+        "Nacimiento",
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete"
+      ],
+      "status": "requires_specialized_reader",
+      "recovery_group": "specialized_reader",
+      "priority_tier": 1,
+      "previously_verified_job_count": 0,
+      "next_action": "Reconcile verified employer/ATS browser or structured feed; never assume empty HTML means zero jobs.",
+      "recovered": false
+    },
+    {
+      "id": "a466489ec227da98b77c",
+      "name": "SAFCO · Trabaje con nosotros Collipulli",
+      "url": "https://safcoltda.cl/",
+      "communes": [
+        "Collipulli"
+      ],
+      "status": "requires_specialized_reader",
+      "recovery_group": "specialized_reader",
+      "priority_tier": 1,
+      "previously_verified_job_count": 0,
+      "next_action": "Reconcile verified employer/ATS browser or structured feed; never assume empty HTML means zero jobs.",
+      "recovered": false
+    },
+    {
+      "id": "28327d44089be10ba34b",
+      "name": "Inventario D04",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "status": "needs_territorial_filter",
+      "recovery_group": "regional_query",
+      "priority_tier": 2,
+      "previously_verified_job_count": 0,
+      "next_action": "Validate individual search filters for all applicable communes, then verify original jobs.",
+      "recovered": false
+    },
+    {
+      "id": "3fabd600daebba97ee77",
+      "name": "Inventario D06",
+      "url": "https://www.conaf.cl/quienes-somos/concursos-laborales/",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "status": "index_pagination_required",
+      "recovery_group": "partial_index",
+      "priority_tier": 2,
+      "previously_verified_job_count": 0,
+      "next_action": "Implement complete index pagination or a structured official feed. Never report the first 35 entries as a full source catalog.",
+      "recovered": false
+    },
+    {
+      "id": "6a1f646aeeab2be90424",
+      "name": "Mulchén · empleos búsqueda",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "communes": [
+        "Mulchén"
+      ],
+      "status": "index_pagination_required",
+      "recovery_group": "partial_index",
+      "priority_tier": 2,
+      "previously_verified_job_count": 0,
+      "next_action": "Implement complete index pagination or a structured official feed. Never report the first 35 entries as a full source catalog.",
+      "recovered": false
+    },
+    {
+      "id": "104cb21f3b8a03626048",
+      "name": "Inventario D05",
+      "url": "https://www.kitempleo.cl/",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "26e7f4c16c97f94e0cb9",
+      "name": "Auditoría Empleos Públicos - Enfermera Diálisis Hospital Angol",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/avisopizarronficha.aspx?i=125294",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "2b03169ba1a8ac3691e8",
+      "name": "Inventario D02",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "33d40f93bf9432db64cd",
+      "name": "Inventario M08",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "8116faf5be99996dde3b",
+      "name": "Auditoría Empleos Públicos - convocatoria individual",
+      "url": "https://empleospublicos.cl/pub/convocatorias/avisotrabajoficha.aspx?i=143787",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "a44b7e6bb56349159931",
+      "name": "Falabella · empleos oficiales",
+      "url": "https://muevete.falabella.com/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "a7900ab8f50a32be5239",
+      "name": "Portal LinkedIn · Negrete",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Negrete"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "c02028ca2aad1c18b389",
+      "name": "Municipalidad Angol",
+      "url": "https://noticias.angol.cl/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "c05b2d111aa2c3f8c36f",
+      "name": "Inventario D03",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "d0dff4fb4776a3a53f1e",
+      "name": "Portal LinkedIn · Victoria",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Victoria"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "01f5350f441449243077",
+      "name": "Portal Computrabajo · Purén",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-puren",
+      "communes": [
+        "Purén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "05dbd3607c711f4fe4e7",
+      "name": "Portal Indeed · ampliado · Renaico",
+      "url": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=45",
+      "communes": [
+        "Renaico"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "0fbef24a3cc0ec102516",
+      "name": "Portal Computrabajo · Nacimiento",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+      "communes": [
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "1430d94eac78ad7b000c",
+      "name": "Portal Computrabajo · Traiguén",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-traiguen",
+      "communes": [
+        "Traiguén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "1b71005b2557bbd8ee6b",
+      "name": "Indeed · Nacimiento",
+      "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=2",
+      "communes": [
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "28c71964159b8244044d",
+      "name": "Portal Computrabajo · Victoria",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-victoria",
+      "communes": [
+        "Victoria"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "28ea0a5d13c7382bc94c",
+      "name": "Portal Indeed · ampliado · Victoria",
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "communes": [
+        "Victoria"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "2a24f767d030043e3156",
+      "name": "Portal Indeed · ampliado · Lumaco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+      "communes": [
+        "Lumaco"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "2aec70c69b6e1b874215",
+      "name": "Indeed · Victoria",
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=2",
+      "communes": [
+        "Victoria"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "2dfd8bef9b01c2f661cb",
+      "name": "Indeed · Traiguén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=2",
+      "communes": [
+        "Traiguén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "375379167ee7acd0c24d",
+      "name": "Portal Computrabajo · Collipulli",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-collipulli",
+      "communes": [
+        "Collipulli"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "3b5e0214179f4ae19c10",
+      "name": "Portal Computrabajo · Lumaco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+      "communes": [
+        "Lumaco"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "3e4bb7fa09a77a39b9c1",
+      "name": "Auditoría Logística Hualpén - empleos",
+      "url": "https://cl.computrabajo.com/hualpen/empleos",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "4ec25f624ef74fcbd31f",
+      "name": "Portal Computrabajo · Ercilla",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-ercilla",
+      "communes": [
+        "Ercilla"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "56da5248c45bbbf4e03e",
+      "name": "Portal Computrabajo · Renaico",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-renaico",
+      "communes": [
+        "Renaico"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "6766cdb95330253539e2",
+      "name": "Indeed · Renaico",
+      "url": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=2",
+      "communes": [
+        "Renaico"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "7c35eb7862b140c0a72c",
+      "name": "Indeed · Mulchén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=2",
+      "communes": [
+        "Mulchén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "7f4d310769ba768fc42b",
+      "name": "Portal Indeed · ampliado · Nacimiento",
+      "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+      "communes": [
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "89a55a8d5c2ed3809f7e",
+      "name": "Portal Indeed · ampliado · Negrete",
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "communes": [
+        "Negrete"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "91215d24d327420145d0",
+      "name": "Indeed · Los Sauces",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=2",
+      "communes": [
+        "Los Sauces"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "95f01d37f09e114060d5",
+      "name": "Portal Computrabajo · Mulchén",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-mulchen",
+      "communes": [
+        "Mulchén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "9b131d4354a4da4df94a",
+      "name": "Portal Indeed · ampliado · Mulchén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=45",
+      "communes": [
+        "Mulchén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "9c4369f7f4149e984b7a",
+      "name": "Portal Indeed · ampliado · Collipulli",
+      "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "communes": [
+        "Collipulli"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "9fd97237a00aa52d0469",
+      "name": "Portal Indeed · ampliado · Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "ab5034bdfb49cc59003b",
+      "name": "Indeed · Lumaco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=2",
+      "communes": [
+        "Lumaco"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "af66edf3a4ba2dac9dfe",
+      "name": "Indeed · Ercilla",
+      "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=2",
+      "communes": [
+        "Ercilla"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "b66879b74ce0cb911414",
+      "name": "Portal Indeed · ampliado · Traiguén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+      "communes": [
+        "Traiguén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "beefd46917752c7ffae0",
+      "name": "Portal Indeed · ampliado · Ercilla",
+      "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+      "communes": [
+        "Ercilla"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "c3e0446cea95778d5ae2",
+      "name": "Indeed · Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=2",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "c89b769001d2f9ee82f0",
+      "name": "Portal Indeed · ampliado · Los Sauces",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+      "communes": [
+        "Los Sauces"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "c9d18e59303e73558651",
+      "name": "Portal Indeed · ampliado · Purén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=45",
+      "communes": [
+        "Purén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "d46d82c93ef68a1f2cd9",
+      "name": "Portal Computrabajo · Los Sauces",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-los-sauces",
+      "communes": [
+        "Los Sauces"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "e502e3002a0875c1fb63",
+      "name": "Indeed · Collipulli",
+      "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=2",
+      "communes": [
+        "Collipulli"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "eb45d0c6f6c5a151cf4e",
+      "name": "Indeed · Negrete",
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=2",
+      "communes": [
+        "Negrete"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "f7e028d24a09c2eea07c",
+      "name": "Auditoría Logística Hualpén - convocatoria Angol",
+      "url": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-conductores-profesionales-bus-residencia-en-angol-y-alrededores-en-angol-70D0C388EE0D8A6261373E686DCF3405",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "f932e3cd5d99eab9f5fa",
+      "name": "Portal Computrabajo · Negrete",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-negrete",
+      "communes": [
+        "Negrete"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "fba1fadb20dfebd6a0eb",
+      "name": "Portal Computrabajo · Angol",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-angol",
+      "communes": [
+        "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "fcf5be35f83c6938d301",
+      "name": "Indeed · Purén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=2",
+      "communes": [
+        "Purén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "restricted_job_portal",
+      "priority_tier": 4,
+      "previously_verified_job_count": 0,
+      "next_action": "Keep the blocked query visible; use public employer ATS and permitted local job-board indexes as additional sources. No access-control bypass.",
+      "recovered": false
+    },
+    {
+      "id": "07f15f3a38d35891c408",
+      "name": "S23",
+      "url": "https://www.facebook.com/groups/6118694138210991/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "09528a2606bb79c2755f",
+      "name": "S05",
+      "url": "https://www.facebook.com/municipio.ercilla/",
+      "communes": [
+        "Ercilla"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "0a9ca8c512b183485d8b",
+      "name": "S10",
+      "url": "https://www.facebook.com/MunicipalidadDePuren/",
+      "communes": [
+        "Purén"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "13009376be54eebbc240",
+      "name": "S18",
+      "url": "https://www.facebook.com/omil.victoria/",
+      "communes": [
+        "Victoria"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "4a24e40701c75b73b22d",
+      "name": "S04",
+      "url": "https://www.facebook.com/MunicipioCollipulli/",
+      "communes": [
+        "Collipulli"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "4fa62262cd6379dcd67c",
+      "name": "S22",
+      "url": "https://www.facebook.com/Canal8LosSaucesTV/",
+      "communes": [
+        "Los Sauces"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "51fc7752e4a5a8e8b138",
+      "name": "S02",
+      "url": "https://www.instagram.com/omilangol2026/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "52fc289297d104e7c6bb",
+      "name": "S26",
+      "url": "https://www.instagram.com/omilnacimiento/",
+      "communes": [
+        "Nacimiento"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "539b5cf1f4ccf8808dec",
+      "name": "S01",
+      "url": "https://www.facebook.com/omil.angol.5/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "5428ea1cec82d9cbe3e6",
+      "name": "S24",
+      "url": "https://www.facebook.com/groups/empleosenangol.arau/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "57c8767d25638461343a",
+      "name": "S20",
+      "url": "https://www.facebook.com/victoriachile/",
+      "communes": [
+        "Victoria"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "649c10e5e8d1f768f6ae",
+      "name": "S17",
+      "url": "https://www.facebook.com/munimulchen/",
+      "communes": [
+        "Mulchén"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "65c2c047a4aa8f5fc15f",
+      "name": "S19",
+      "url": "https://www.instagram.com/omil_victoria/",
+      "communes": [
+        "Victoria"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "827eeb0cc31fa936ae59",
+      "name": "S11",
+      "url": "https://www.facebook.com/omil.traiguen.5/",
+      "communes": [
+        "Traiguén"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "893924d6cc1396db66c0",
+      "name": "Radio Nativa Instagram",
+      "url": "https://www.instagram.com/radionativacl/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "9305db0e380dadb38afe",
+      "name": "S16",
+      "url": "https://www.facebook.com/MuniNegreteCL/",
+      "communes": [
+        "Negrete"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "95ea90d52589b850070e",
+      "name": "S14",
+      "url": "https://www.facebook.com/MunicipalidadDeNacimiento/",
+      "communes": [
+        "Nacimiento"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "9b2148917c632a1107b3",
+      "name": "S07",
+      "url": "https://www.facebook.com/municipalidadrenaico/",
+      "communes": [
+        "Renaico"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "a1d8757b26a1d55b9ea8",
+      "name": "S03",
+      "url": "https://www.facebook.com/municipalidad.angol/",
+      "communes": [
+        "Angol"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "a65152d15567f3de45ba",
+      "name": "S06",
+      "url": "https://www.facebook.com/p/OMIL-Renaico-100068789023921/",
+      "communes": [
+        "Renaico"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "ae1b90689c3d43769c92",
+      "name": "S25",
+      "url": "https://www.facebook.com/p/OMIL-Territorio-Biobio-Centro-100072292644529/",
+      "communes": [
+        "Nacimiento",
+        "Negrete"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "b1e965a4300fd05dd894",
+      "name": "S12",
+      "url": "https://www.facebook.com/municipalidadlumaco/",
+      "communes": [
+        "Lumaco"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "b67706668d42e52d2dc8",
+      "name": "S08",
+      "url": "https://www.facebook.com/MuniLosSauces/",
+      "communes": [
+        "Los Sauces"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "beb4b700cc8da4be1579",
+      "name": "S09",
+      "url": "https://www.facebook.com/omilpurenaraucania/",
+      "communes": [
+        "Purén"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "c5c787bf0f7455fd7851",
+      "name": "S21",
+      "url": "https://www.facebook.com/RadioNativaCl/",
+      "communes": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "e1ef1d32302b81342c03",
+      "name": "S13",
+      "url": "https://www.facebook.com/p/OMIL-Municipalidad-de-Nacimiento-100072332712701/",
+      "communes": [
+        "Nacimiento"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    },
+    {
+      "id": "e28f5bf6a8a8750a8979",
+      "name": "S15",
+      "url": "https://www.facebook.com/NegreteOmil/",
+      "communes": [
+        "Negrete"
+      ],
+      "status": "requires_authorized_reader",
+      "recovery_group": "social_reference",
+      "priority_tier": 5,
+      "previously_verified_job_count": 0,
+      "next_action": "Find official municipality/OMIL site or authorized social API/feed; keep this account unresolved until evidence is readable.",
+      "recovered": false
+    }
+  ]
+}

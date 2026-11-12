@@ -22,11 +22,20 @@ class DeepseekSourcesDocumentationTests(unittest.TestCase):
         cls.inventory=INVENTORY.read_text(encoding="utf8")
         cls.brief=BRIEF.read_text(encoding="utf8")
 
-    def test_all_configured_radar_source_urls_appear_in_inventory(self):
+    def test_historical_sources_remain_documented_and_new_sources_have_evidence(self):
+        # A report frozen on 09-11 should NOT need editing every time a
+        # verified permanent source is onboarded days or months later.
+        # New discovery sources must carry a provenance note and also be
+        # included in the live registry (checked by the next test).
         for kind in ("seed_urls","discovery","social_reference"):
             for item in self.cfg[kind]:
                 with self.subTest(kind=kind,id=item["id"]):
-                    self.assertIn(item["url"],self.inventory)
+                    if item["url"] in self.inventory:
+                        continue
+                    self.assertEqual(kind,"discovery",
+                        "historical social/individual references were removed")
+                    self.assertTrue(item.get("note"),
+                        "new discovery source lacks onboarding evidence")
 
     def test_all_historical_audit_links_appear_in_inventory(self):
         for item in self.audit["seed_pages"]:

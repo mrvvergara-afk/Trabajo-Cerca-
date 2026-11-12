@@ -189,7 +189,8 @@ def assess(plan,rows,stats):
         # unique individual URL. A generic scanner showing zero links did NOT
         # confirm that these advertised roles were examined and deduplicated.
         structured_needed=("safcoltda.cl" in src["url"] and state=="scanned_no_candidates")
-        label=("requires_specialized_reader" if (browser_needed or structured_needed) else
+        label=("index_pagination_required" if state=="scanned_partial_index" else
+               "requires_specialized_reader" if (browser_needed or structured_needed) else
                "needs_territorial_filter" if worked and src["kind"]=="portal_unfiltered_requires_geofilter"
                else "accessible" if worked else
                "blocked_or_failed" if observed else "unvisited")
@@ -206,6 +207,7 @@ def assess(plan,rows,stats):
                    "accessible":sum(x["status"]=="accessible" for x in group),
                    "blocked":sum(x["status"]=="blocked_or_failed" for x in group),
                    "needs_geofilter":sum(x["status"]=="needs_territorial_filter" for x in group),
+                   "needs_index_pagination":sum(x["status"]=="index_pagination_required" for x in group),
                    "needs_specialized_reader":sum(x["status"]=="requires_specialized_reader" for x in group),
                    "social_unread":sum(x["status"]=="requires_authorized_reader" for x in group),
                    "unvisited":sum(x["status"]=="unvisited" for x in group)}

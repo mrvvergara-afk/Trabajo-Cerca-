@@ -50,25 +50,35 @@ function parse(value:unknown):Candidate[]|null {
   if(new Set(result.map(x=>x.id_fuente)).size!==result.length)return null;
   return result;
 }
+export function municipalOfferStatusFromHtml(html:string,detailUrl:string,indexUrl:string):'open'|'closed'|'unknown' {
+  // A municipal index can mix open and closed cards. Read the label on
+  // THE SAME anchor, not the preceding unrelated card or page header.
+  const target=new URL(detailUrl,indexUrl);
+  const links=/<a\b[^>]*\bhref\s*=\s*(["'])(.*?)\1[^>]*>([\s\S]*?)<\/a\s*>/gi;
+  let match:RegExpExecArray|null;
+  while((match=links.exec(html))!==null){
+    let resolved:URL;
+    try{resolved=new URL(match[2].replace(/&amp;/gi,'&'),indexUrl);}catch{continue;}
+    if(resolved.origin!==target.origin||resolved.pathname.replace(/\/$/,'')!==target.pathname.replace(/\/$/,''))continue;
+    const label=match[3].replace(/<[^>]*>/g,' ').replace(/&nbsp;|&#160;/gi,' ')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').toLowerCase();
+    const open=/postulacion(?:es)? abierta(?:s)?/.test(label);
+    const closed=/postulacion(?:es)? cerrada(?:s)?/.test(label);
+    if(open!==closed)return open?'open':'closed';
+  }
+  return 'unknown';
+}
 async function officialMunicipalIndexStatus(row:Candidate):Promise<'open'|'closed'|'unknown'> {
   if (!row.municipal_open_index_url) return 'unknown';
   try {
     const response=await fetch(row.municipal_open_index_url,{redirect:'error',signal:AbortSignal.timeout(10000)});
     if (!response.ok)return 'unknown';
     const html=(await response.text()).slice(0,400000);
-    const needle='/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/';
-    const position=html.indexOf(needle);
-    if(position<0)return 'unknown';
-    // Evaluate the closest status marker before THIS link, not the first
-    // 'open' banner elsewhere on the municipal index.
-    const before=html.slice(Math.max(0,position-1100),position)
-      .replace(/<[^>]+>/g,' ').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-    const open=before.lastIndexOf('postulacion abierta');
-    const closed=before.lastIndexOf('postulacion cerrada');
-    return open>=0 && open>closed ? 'open' : closed>=0 && closed>open ? 'closed' : 'unknown';
+    return municipalOfferStatusFromHtml(
+      html,'https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/',
+      row.municipal_open_index_url);
   } catch { return 'unknown'; }
 }
-
 
 /**
  * Daily safety check for undated first-party OMIL offers.

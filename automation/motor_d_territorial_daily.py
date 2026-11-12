@@ -49,6 +49,10 @@ SEEDS=[
 ("Nacimiento","Chiletrabajos · Serfonac mecánico automotriz","https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364"),
 ("Nacimiento","Chiletrabajos · Serfonac conductor","https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758"),
 ("Angol","Chiletrabajos · Operario alimentos Angol","https://www.chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569"),
+# Independent discovery control cases. All must be rechecked on each run;
+# historical links are NOT proof that a vacancy remains open.
+("Angol","Chiletrabajos · Director CC LAE Angol · contraste","https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443"),
+("Victoria","Chiletrabajos · Inventario Victoria Traiguén · contraste","https://www.chiletrabajos.cl/trabajo/personal-toma-de-inventario-victoria-traiqguen-3925455"),
 # Geographic cross-postings: recruiter's office is outside the 12 communes,
 # but the body explicitly states the real workplace. Always re-read the URL.
 ("Traiguén","Chiletrabajos · Reponedor Traiguén","https://www.chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463"),
@@ -103,7 +107,11 @@ TERMS=re.compile(r"\b(?:oferta(?:s)? laboral(?:es)?|empleo(?:s)?|trabajo(?:s)?|v
     r"t[eé]cnico(?:a)?|auxiliar|conductor(?:a)?|chofer|mec[aá]nico(?:a)?|"
     r"enfermer(?:a|o)|albañil|capataz|temporada|reclutamiento|se necesita|se busca|"
     r"asistente|cajer[ao]s?|vendedor(?:a)?|bodega|tesorer[ií]a|click and collect|"
-    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista|docente|psic[oó]log[oa])\b",re.I)
+    r"jefe(?:a)? de ventas|reponedor(?:a)?|prevencionista|mercaderista|docente|psic[oó]log[oa]|"
+    r"director(?:a)?|supervisor(?:a)?|encargad[ao]|instrumentista|guardia|"
+    r"mantenedor(?:a)?|inventario|inventarista|analista|inspector(?:a)?|"
+    r"brigadista|motosierrista|teclero|cargador\s+frontal|"
+    r"administrativ[ao]|profesional|jefatura|ingenier[ao]|operari[ao])\b",re.I)
 NOT_LINK=re.compile(r"^(?:inicio|ver m[aá]s|leer m[aá]s|conoce m[aá]s|contacto|menu|"
                     r"concursos|omil|empleos|ofertas laborales|trabaja con nosotros)$",re.I)
 CLOSED=re.compile(r"postulaci[oó]n(?:es)?\s+cerrad[ao]s?|proceso\s+finalizado|"
@@ -125,6 +133,10 @@ def safe_link(raw,base,origin):
         if u.hostname.lower()!=origin:return None
         if re.search(r"\.(?:jpg|png|gif|svg|css|js|zip|pdf)$",u.path,re.I):return None
         if origin in ("www.chiletrabajos.cl","chiletrabajos.cl") and not u.path.startswith("/trabajo/"):
+            return None
+        # The employer-branded Trabajando indexes show CV advice/news pages
+        # alongside actual vacancies; those are never job details.
+        if origin.endswith(".trabajando.cl") and u.path.startswith(("/noticias/","/blog/","/articulos/")):
             return None
         if not u.path or u.path in ("/","/index.php") or re.search(r"/(?:alertas-de-empleo|login|registro|faq|preguntas-frecuentes)/?$",u.path,re.I):return None
         if (u.hostname,u.path.rstrip("/"),u.query)==(urlsplit(base).hostname,urlsplit(base).path.rstrip("/"),urlsplit(base).query):return None
@@ -195,7 +207,9 @@ def dates_in(soup):
 def links_from(soup,base,limit=35):
     origin=urlsplit(base).hostname
     output={}
-    for tag in soup.select("a[href]")[:500]:
+    # Include deep links in large indices; rotation then visits them across
+    # scheduled runs. The old first-500 cutoff starved later jobs forever.
+    for tag in soup.select("a[href]")[:3000]:
         url=safe_link(tag.get("href",""),base,origin)
         if not url:continue
         title=" ".join(tag.stripped_strings)[:180]

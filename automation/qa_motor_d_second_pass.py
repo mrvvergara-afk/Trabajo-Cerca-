@@ -78,6 +78,75 @@ def _issues(item):
     return issues
 
 
+
+def _safco_card_reviews(report, public_rows, feed_complete):
+    """Preserve individual SAFCO role cards without treating their shared URL
+    as four distinct fully verified job postings.
+    """
+    groups = {}
+    for row in report["candidates"]:
+        if not isinstance(row, dict):
+            continue
+        if (row.get("source_evidence_method") != "official_employer_embedded_available_card"
+                or row.get("url") != "https://safcoltda.cl/"
+                or row.get("employer") != "SAFCO Limitada"
+                or row.get("work_commune") != "Collipulli"
+                or row.get("status_open_marker") != "Disponible"
+                or row.get("index_status") != "open" or row.get("http") != 200
+                or row.get("date_source") is not None
+                or row.get("application_evidence") is not False
+                or row.get("needs_individual_date_application_validation") is not True):
+            continue
+        identifier = row.get("id")
+        title = row.get("title")
+        if not isinstance(identifier, str) or not re.fullmatch(r"[0-9a-f]{20}", identifier):
+            continue
+        if not isinstance(title, str) or not (5 <= len(title.strip()) <= 180):
+            continue
+        groups.setdefault(identifier, []).append(row)
+    _, semantic = _index_catalog(public_rows) if feed_complete else ({}, {})
+    records = []
+    for identifier, variants in sorted(groups.items()):
+        first = variants[0]
+        title = first["title"].strip()
+        conflict = len({(normalize(row["title"]), normalize(row.get("excerpt")))
+                        for row in variants}) > 1
+        similar = semantic.get(
+            (normalize(title), normalize("SAFCO Limitada"), normalize("Collipulli")), {}
+        ) if feed_complete else {}
+        possible = sorted(x for x in similar if x and x != "None")
+        if not feed_complete:
+            status, owner = "catalog_unavailable", None
+        elif conflict:
+            status, owner = "source_card_conflicting_observations_review", "C"
+        elif possible:
+            status, owner = "possible_semantic_duplicate_needs_review", "C"
+        else:
+            status, owner = "official_embedded_card_missing_individual_proof", "C"
+        records.append({
+            "evidence_id": identifier, "source_card_id": identifier,
+            "source": first.get("source") or "SAFCO Limitada",
+            "url": "https://safcoltda.cl/", "origin_identity": None,
+            "title": title, "company": "SAFCO Limitada",
+            "work_commune": "Collipulli",
+            "original_publication_date": None,
+            "discovery_report_date": str(report.get("date") or "")[:10],
+            "deadline": None, "source_observations": len(variants),
+            "conflicting_source_evidence": conflict,
+            "reason_previous": "official_employer_embedded_open_card_without_individual_job_url",
+            "missing_evidence": [
+                "original_publication_date_unknown",
+                "role_specific_application_route_not_verified",
+                "individual_job_url_unavailable",
+            ],
+            "status": status, "owner": owner,
+            # A common employer homepage is not an exact job identity.
+            "public_ids_exact_origin": [],
+            "public_ids_possible_semantic": possible,
+            "publication_eligible": False,
+        })
+    return records
+
 def reconcile(report, public_rows, feed_complete, feed_error=None):
     if not isinstance(report, dict) or not isinstance(report.get("candidates"), list):
         raise ValueError("motor_d_source_report_invalid")
@@ -182,8 +251,11 @@ def reconcile(report, public_rows, feed_complete, feed_error=None):
             "public_ids_possible_semantic":possible_ids,
             "publication_eligible":False,
         })
+    embedded_cards = _safco_card_reviews(report, public_rows, feed_complete)
     distribution = dict(sorted(Counter(item["status"] for item in receipts).items()))
-    owner_counts = dict(sorted(Counter(item["owner"] for item in receipts if item["owner"]).items()))
+    card_counts = dict(sorted(Counter(item["status"] for item in embedded_cards).items()))
+    owner_counts = dict(sorted(Counter(item["owner"] for item in
+                                      receipts + embedded_cards if item["owner"]).items()))
     return {
         "schema":"trabajo-cerca.motor-d-second-pass.v1",
         "report_day":observed,
@@ -197,6 +269,9 @@ def reconcile(report, public_rows, feed_complete, feed_error=None):
         "public_feed_error":feed_error,
         "status_counts":distribution,
         "review_owner_counts":owner_counts,
+        "embedded_card_review_count":len(embedded_cards),
+        "embedded_card_status_counts":card_counts,
+        "embedded_card_reviews":embedded_cards,
         "published_by_this_check":0,
         "quarantine_touched":False,
         "records":receipts,
@@ -217,7 +292,8 @@ def main(argv=None):
     # B and C consume only the currently actionable remainder. Recreate files
     # atomically on each run, never append stale historical queues.
     for motor in ("B","C"):
-        selected=[item for item in result["records"] if item["owner"]==motor]
+        selected=[item for item in result["records"] + result["embedded_card_reviews"]
+                  if item["owner"]==motor]
         queue={
             "schema":"trabajo-cerca.motor-d-evidence-queue.v1",
             "owner":motor,
@@ -232,6 +308,7 @@ def main(argv=None):
         queue_path.write_text(json.dumps(queue,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     print("MOTOR_D_SECOND_PASS "+json.dumps({
         key:result[key] for key in ("report_day","source_candidates","second_pass_count",
+        "embedded_card_review_count","embedded_card_status_counts",
         "public_feed_complete","public_feed_rows","status_counts",
         "review_owner_counts","published_by_this_check")
     },ensure_ascii=False))

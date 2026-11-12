@@ -446,6 +446,13 @@
       "url": "https://www.kitempleo.cl/",
       "type": "portal_unfiltered_requires_geofilter",
       "note": "Portal público verificado 11-11-2026; búsqueda territorial requiere adaptación; no asumir 100% de avisos por leer la portada"
+    },
+    {
+      "id": "D06",
+      "territory": "Chile",
+      "url": "https://www.conaf.cl/quienes-somos/concursos-laborales/",
+      "type": "institutional",
+      "note": "Canal oficial de concursos CONAF, comprobado 11-11-2026 con convocatorias 845 (Purén) y 846 (Angol). Leer fechas y bases de cada proceso; el sitio oficial prevalece frente a agregadores. No confundir sede de publicación con faena territorial."
     }
   ],
   "social_reference": [

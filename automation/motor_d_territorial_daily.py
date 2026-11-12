@@ -93,6 +93,7 @@ INDEED_SEEDS=[(town,"Indeed · "+town,
 # Individual historical vacancies are NOT permanent search sources.
 from motor_d_employer_portal import read_employer_vacancy
 from motor_d_source_registry import plan as source_plan, ranked as ranked_sources, assess as assess_source_coverage, learn as learn_source_performance
+from motor_d_source_recovery import build_recovery_queue
 from motor_d_social_sources import SOURCES as SOCIAL_REFERENCE_SOURCES
 SOURCE_PLAN=source_plan(SEEDS,INDEED_SEEDS,social_refs=SOCIAL_REFERENCE_SOURCES)
 SEEDS.extend(SOURCE_PLAN["added"])
@@ -191,7 +192,7 @@ def dates_in(soup):
     match=re.search(r"\bFecha\s*[:|]?\s*(20\d{2}-\d{2}-\d{2})\b",text,re.I)
     if match:found.append(match.group(1))
     return list(dict.fromkeys(found))
-def links_from(soup,base):
+def links_from(soup,base,limit=35):
     origin=urlsplit(base).hostname
     output={}
     for tag in soup.select("a[href]")[:500]:
@@ -214,7 +215,8 @@ def links_from(soup,base):
                 break
         if CLOSED.search(title):listing_state="closed"
         output.setdefault(url,(title,listing_state))
-    return [(url,title,state) for url,(title,state) in output.items()][:35]
+    found=[(url,title,state) for url,(title,state) in output.items()]
+    return found[:limit] if limit is not None else found
 # Solo el texto explicito de la oferta puede establecer empresa y lugar de trabajo.
 # La comuna de la fuente municipal NO equivale a la comuna del puesto.
 def explicit_work_commune(body):
@@ -365,7 +367,10 @@ def explicit_deadline_expired(body, today=None):
     return deadline is not None and deadline < (today or NOW.date())
 
 def inspect(seed):
-    town,source,url=seed
+    town,source,url=seed[:3]
+    # Optional persisted source-attempt ordinal: rotate among excess jobs
+    # so the first 35 DOM links do not permanently starve other vacancies.
+    previous_attempts=max(0,int(seed[3])) if len(seed)>3 else 0
     out={"commune":town,"source":source,"url":url,"status":"not_started",
          "checked_at":NOW.isoformat(),"http":None,"links_found":0,
          "details_opened":0,"candidates":[],"errors":[],
@@ -420,7 +425,26 @@ def inspect(seed):
                     return out
                 soup=fallback_soup
                 national_fallback=True
-        links=links_from(soup,links_base)
+        # A successful HTTP 200 does not imply complete scanning of an index
+        # when it exposes more than the current 35-detail budget or >500 links.
+        # Keep scanning 35 safely, but mark the source as NOT fully covered,
+        # so a pagination/structured adapter is a mandatory next action.
+        index_all=links_from(soup,links_base,limit=None)
+        index_raw_anchors=len(soup.select("a[href]"))
+        detail_budget=35
+        index_count=len(index_all)
+        rotation_offset=((previous_attempts*detail_budget)%index_count
+                         if index_count>detail_budget else 0)
+        links=(index_all[rotation_offset:rotation_offset+detail_budget]
+               if index_count<=detail_budget else
+               (index_all+index_all)[rotation_offset:rotation_offset+detail_budget])
+        out["index_rotation_offset"]=rotation_offset
+        out["index_candidates_selected"]=len(links)
+        out["index_candidates_detected"]=index_count
+        out["index_anchor_count"]=index_raw_anchors
+        out["index_incomplete"]=index_count>detail_budget or index_raw_anchors>500
+        if out["index_incomplete"]:
+            out["errors"].append("source_index_partially_read_recovery_required")
         if municipal:
             known={row[0] for row in links}
             for row in municipal["pages"]:
@@ -435,6 +459,9 @@ def inspect(seed):
         # reinterpret them as category/index pages with zero discovered links.
         if (parsed_seed.hostname in ("www.chiletrabajos.cl","chiletrabajos.cl")
             and parsed_seed.path.startswith("/trabajo/")):
+            # This seed is a single known job, not a catalog. Related-job
+            # links on its HTML page do not make the seed itself truncated.
+            out["index_incomplete"]=False
             heading=soup.select_one("h1")
             title=heading.get_text(" ",strip=True)[:180] if heading else ""
             # A direct /trabajo/ URL is already an individual job-detail
@@ -589,9 +616,10 @@ def inspect(seed):
                     out["candidates"].append(detail)
         out["details_opened"]=sum(x.get("http")==200 and x.get("evidence") not in
                                    ("detail_unavailable","link_candidate_only") for x in out["candidates"])
-        out["status"]=("scanned_with_candidates" if out["candidates"] else
-                       ("fallback_no_verified_target_offers" if national_fallback
-                        else "scanned_no_candidates"))
+        out["status"]=("scanned_partial_index" if out.get("index_incomplete") else
+                       ("scanned_with_candidates" if out["candidates"] else
+                        ("fallback_no_verified_target_offers" if national_fallback
+                         else "scanned_no_candidates")))
     except requests.exceptions.RequestException as exc:
         out["status"]="network_error";out["errors"].append(type(exc).__name__)
     except Exception as exc:
@@ -607,13 +635,25 @@ def main():
         if not isinstance(previous,dict):previous={}
     except (ValueError,OSError):previous={}
     ordered=ranked_sources(SOURCE_PLAN,previous)
-    seeds=[(x["anchor"],x["name"],x["url"]) for x in ordered]
+    seeds=[(x["anchor"],x["name"],x["url"],
+            int(previous.get(x["id"],{}).get("attempts",0)))
+           for x in ordered]
     with ThreadPoolExecutor(max_workers=8) as pool:
         rows=list(pool.map(inspect,seeds))
     source_coverage=assess_source_coverage(SOURCE_PLAN,rows,previous)
+    updated_performance=learn_source_performance(previous,rows,NOW.isoformat())
     performance_file.write_text(json.dumps(
-        learn_source_performance(previous,rows,NOW.isoformat()),
-        ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        updated_performance,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    recovery_plan=build_recovery_queue(
+        source_coverage,NOW.isoformat(),updated_performance)
+    (ROOT/"source_recovery_queue.json").write_text(
+        json.dumps(recovery_plan,ensure_ascii=False,indent=2)+"\n",
+        encoding="utf-8")
+    print("MOTOR_D_SOURCE_RECOVERY "+json.dumps({
+        "pending":recovery_plan["total_pending"],
+        "groups":recovery_plan["group_counts"],
+        "all_sources_preserved":recovery_plan["all_sources_preserved"]
+    },ensure_ascii=False),flush=True)
     indeed_rows=[r for r in rows if r["source"].startswith(("Indeed · ","Portal Indeed · "))]
     print("MOTOR_D_SOURCE_INVENTORY "+json.dumps({
         k:source_coverage[k] for k in ("registered_total","automatic_registered",

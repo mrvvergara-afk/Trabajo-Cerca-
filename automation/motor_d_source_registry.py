@@ -128,25 +128,48 @@ def learn(stats,rows,at):
         candidates=row.get("candidates") or []
         # A source only earns points for NEW observed job identities. Re-reading
         # the same ad four times a day must not inflate its ranking.
-        seen=list(old.get("seen_candidate_ids") or [])[-60:]
-        known=set(seen);fresh=[]
+        seen=list(old.get("seen_candidate_ids") or [])[-300:]
+        known=set(seen)
+        # Track eligible source identities INDEPENDENTLY from historical raw
+        # links. Earlier scans had counted links but mistakenly gave zero
+        # yield to recoverable (non-EXPRESS) real jobs; this field migrates
+        # that historical state safely on the first corrected pass.
+        eligible=list(old.get("seen_eligible_candidate_ids") or [])[-1200:]
+        eligible_known=set(eligible)
+        new_individual=0
+        new_eligible=0
+        from motor_d_express import job_source_identity
         for candidate in candidates:
             if not isinstance(candidate,dict):continue
-            identity=str(candidate.get("id") or performance_key(candidate.get("url","")))
-            if not identity or identity in known:continue
-            known.add(identity);seen.append(identity);fresh.append(candidate)
+            card_id=str(candidate.get("id") or "")
+            identifier=(job_source_identity(candidate.get("url")) or
+                        card_id or performance_key(candidate.get("url","")))
+            if not identifier:continue
+            # Preserve old scan accounting, whose raw ids predate the
+            # source-key canonicalization used by this new ranking.
+            previously_counted=(identifier in known or
+                                (card_id and card_id in known))
+            if identifier not in known:
+                known.add(identifier);seen.append(identifier)
+            if card_id and card_id not in known:
+                known.add(card_id);seen.append(card_id)
+            if not previously_counted:
+                new_individual+=int(candidate.get("evidence")=="individual_page_with_job_terms")
+            # "express_ready" means FAST publication today/yesterday, not
+            # whether an older still-open vacancy qualifies for recovery.
+            # It is often False even for perfectly verified SERFONAC jobs.
+            if identifier not in eligible_known and classify(candidate,when)[0] in ("EXPRESS","RECUPERACION"):
+                eligible_known.add(identifier);eligible.append(identifier)
+                new_eligible+=1
         success=str(row.get("status","")).startswith(("scanned","fallback_"))
         old.update({"at":at,"status":row.get("status"),
                     "attempts":int(old.get("attempts",0))+1,
                     "blocked":int(old.get("blocked",0))+int(not success),
-                    "seen_candidate_ids":seen[-60:],
-                    "individual":int(old.get("individual",0))+
-                       sum(x.get("evidence")=="individual_page_with_job_terms" for x in fresh),
-                    "ready":int(old.get("ready",0))+
-                       sum(x.get("express_ready") is True or
-                           (x.get("express_ready") is None and
-                            classify(x,when)[0] in ("EXPRESS","RECUPERACION"))
-                           for x in fresh)})
+                    "seen_candidate_ids":seen[-300:],
+                    "seen_eligible_candidate_ids":eligible[-1200:],
+                    "new_verified_this_scan":new_eligible,
+                    "individual":int(old.get("individual",0))+new_individual,
+                    "ready":int(old.get("ready",0))+new_eligible})
         result[key]=old
     return result
 
@@ -166,7 +189,8 @@ def assess(plan,rows,stats):
         # unique individual URL. A generic scanner showing zero links did NOT
         # confirm that these advertised roles were examined and deduplicated.
         structured_needed=("safcoltda.cl" in src["url"] and state=="scanned_no_candidates")
-        label=("requires_specialized_reader" if (browser_needed or structured_needed) else
+        label=("index_pagination_required" if state=="scanned_partial_index" else
+               "requires_specialized_reader" if (browser_needed or structured_needed) else
                "needs_territorial_filter" if worked and src["kind"]=="portal_unfiltered_requires_geofilter"
                else "accessible" if worked else
                "blocked_or_failed" if observed else "unvisited")
@@ -183,6 +207,7 @@ def assess(plan,rows,stats):
                    "accessible":sum(x["status"]=="accessible" for x in group),
                    "blocked":sum(x["status"]=="blocked_or_failed" for x in group),
                    "needs_geofilter":sum(x["status"]=="needs_territorial_filter" for x in group),
+                   "needs_index_pagination":sum(x["status"]=="index_pagination_required" for x in group),
                    "needs_specialized_reader":sum(x["status"]=="requires_specialized_reader" for x in group),
                    "social_unread":sum(x["status"]=="requires_authorized_reader" for x in group),
                    "unvisited":sum(x["status"]=="unvisited" for x in group)}

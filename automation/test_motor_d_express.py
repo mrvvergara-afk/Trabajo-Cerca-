@@ -296,5 +296,19 @@ class MotorDExpressTests(unittest.TestCase):
             report = json.loads((root / "publication_reconciliation.json").read_text())
             self.assertEqual(report["items"][0]["prior_batch_ids"], [])
 
+
+    def test_complete_feed_with_historical_gap_is_not_reported_clean(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with patch.object(engine, "ROOT", root):
+                receipt = engine.record_publication_gate(
+                    {"date": "2026-11-06T09:00:00-03:00"}, TODAY,
+                    "completed", eligible=2, checked=100, duplicates=1,
+                    staged=0, historical_missing=1)
+                self.assertEqual(receipt["state"],
+                    "historical_publication_reconciliation_required")
+                self.assertTrue(receipt["feed_complete"])
+                self.assertEqual(receipt["historical_missing_from_catalog"], 1)
+
 if __name__=="__main__":
     unittest.main()

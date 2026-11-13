@@ -1,0 +1,31 @@
+.neoRecentArrivals {
+  max-width: 1180px;
+  margin: 20px auto 32px;
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #082a21;
+  background: linear-gradient(115deg, #b6ff50, #ecffd6);
+  border: 2px solid #9ce835;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px #123c2212;
+}
+.neoRecentIcon { display: grid; place-items: center; min-width: 48px; height: 48px; border-radius: 50%; background: #082a21; color: #b6ff50; }
+.neoRecentArrivals > div { flex: 1; }
+.neoRecentArrivals strong { font-size: 20px; line-height: 1.3; }
+.neoRecentArrivals p { margin: 6px 0; font-size: 13px; line-height: 1.5; }
+.neoRecentArrivals small { font-size: 12px; }
+.neoRecentArrivals button { display: flex; align-items: center; gap: 9px; border: 0; border-radius: 12px; padding: 13px 16px; background: #082a21; color: white; font-weight: 700; cursor: pointer; }
+.neoRecentArrivals button svg { width: 17px; }
+.neoRecentArrivals button:focus-visible { outline: 3px solid #ff6654; outline-offset: 4px; }
+.neoNewOfferBadge { display: inline-flex; align-items: center; gap: 5px; width: fit-content; padding: 5px 8px; border-radius: 8px; background: #b6ff50; color: #082a21; font-size: 10px; font-weight: 800; }
+.neoNewOfferBadge svg { width: 13px; height: 13px; }
+.neoLoadMore { flex-direction: column; gap: 10px; }
+.neoLoadMore > small { font-size: 12px; color: #52695e; }
+@media (max-width: 700px) {
+  .neoRecentArrivals { margin: 16px 14px 24px; padding: 17px; gap: 12px; flex-wrap: wrap; }
+  .neoRecentArrivals strong { font-size: 17px; }
+  .neoRecentArrivals > div { min-width: 190px; }
+  .neoRecentArrivals button { width: 100%; justify-content: space-between; }
+}

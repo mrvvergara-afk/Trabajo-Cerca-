@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/blob/main/automation/chatgpt_extraction_schema.json",
+  "title": "Trabajo Cerca ChatGPT - oferta individual estricta",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id_fuente",
+    "cargo",
+    "empresa",
+    "comunas",
+    "ubicacion_trabajo",
+    "modalidad",
+    "salario",
+    "url_original",
+    "enlace_postulacion",
+    "fecha_publicacion",
+    "fecha_descubrimiento"
+  ],
+  "properties": {
+    "id_fuente": {
+      "type": "string",
+      "pattern": "^cg_[a-f0-9]{20}$"
+    },
+    "cargo": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 180
+    },
+    "empresa": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 140
+    },
+    "comunas": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "Angol",
+          "Collipulli",
+          "Ercilla",
+          "Lumaco",
+          "Los Sauces",
+          "Purén",
+          "Renaico",
+          "Traiguén",
+          "Victoria",
+          "Mulchén",
+          "Negrete",
+          "Nacimiento",
+          "Mininco",
+          "Coihue",
+          "Coigüe",
+          "Capitán Pastene"
+        ]
+      }
+    },
+    "ubicacion_trabajo": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 240,
+      "description": "Ubicación de ejecución real que nombra todas las comunas declaradas; reclutamiento local no basta."
+    },
+    "modalidad": {
+      "type": "string",
+      "enum": [
+        "presencial",
+        "hibrida",
+        "remota",
+        "no_informada"
+      ]
+    },
+    "salario": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "url_original": {
+      "type": "string",
+      "pattern": "^https://",
+      "maxLength": 700
+    },
+    "enlace_postulacion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^https://",
+      "maxLength": 700
+    },
+    "fecha_publicacion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "Fecha original conocida; null es válido en extracción con evidencia fresca, jamás rellenar con fecha de descubrimiento"
+    },
+    "fecha_descubrimiento": {
+      "type": "string",
+      "format": "date"
+    },
+    "fecha_cierre": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "justificacion": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "hash_url_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "Debe coincidir con SHA-256 sobre URL canónica, se recalcula antes de publicar."
+    },
+    "url_canonica": {
+      "type": "string",
+      "pattern": "^https://",
+      "maxLength": 700
+    },
+    "vigencia_fuente": {
+      "type": "string",
+      "enum": [
+        "postulacion_abierta_verificada"
+      ]
+    },
+    "fecha_verificacion": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fecha_publicacion": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "fecha_publicacion"
+        ]
+      },
+      "then": {
+        "required": [
+          "vigencia_fuente",
+          "fecha_verificacion"
+        ]
+      }
+    }
+  ]
+}

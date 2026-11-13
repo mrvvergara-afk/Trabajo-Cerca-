@@ -1,0 +1,25 @@
+{
+  "record_type": "chatgpt_candidate_pending_catalog_comparison",
+  "producer": "chatgpt_territorial",
+  "discovery_date": "2026-11-13",
+  "source": "Chiletrabajos",
+  "source_job_id": "3930443",
+  "title": "Director/a CC LAE Angol",
+  "employer": "Fundación Tierra de Esperanza",
+  "work_communes": [
+    "Angol"
+  ],
+  "portal_display_city": "Temuco",
+  "publication_date": "2026-11-11",
+  "portal_reported_expiry": "2027-01-25",
+  "source_url": "https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
+  "verification": {
+    "primary_source_page_opened": true,
+    "individual_employer_title_territory_identified": true,
+    "public_catalog_complete_read": false,
+    "publication_authorized": false,
+    "public_catalog_visible": false
+  },
+  "publication_status": "BLOCKED_PENDING_FULL_CATALOG_DEDUP",
+  "note": "El anuncio muestra Temuco como ubicación del portal, pero el texto de ejecución identifica Angol. No declarar nuevo ni publicar sin contraste con catálogo completo."
+}

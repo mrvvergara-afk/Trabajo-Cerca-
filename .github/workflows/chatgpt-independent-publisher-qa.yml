@@ -1,0 +1,139 @@
+name: ChatGPT independent publication staging QA
+on:
+  push:
+    branches:
+      - fix/chatgpt-autonomo-origen-diseno-20261113
+    paths:
+      - 'automation/stage_chatgpt_handoff.py'
+      - 'automation/test_stage_chatgpt_handoff.py'
+      - 'automation/chatgpt_extraction_contract.py'
+      - 'automation/chatgpt_extraction_schema.json'
+      - 'automation/test_chatgpt_extraction_contract.py'
+      - 'automation/reconcile_chatgpt_46_live.py'
+      - 'automation/chatgpt_20261113_46_urls.txt'
+      - 'automation/chatgpt_20261113_missing_metadata.json'
+      - 'automation/chatgpt_ready/**'
+      - 'appdeploy_staging/chatgpt-*.ts'
+      - 'appdeploy_staging/motor-d-auto-import.ts'
+      - '.github/workflows/chatgpt-independent-publisher-qa.yml'
+  pull_request:
+    paths:
+      - 'automation/stage_chatgpt_handoff.py'
+      - 'automation/test_stage_chatgpt_handoff.py'
+      - 'automation/chatgpt_extraction_contract.py'
+      - 'automation/chatgpt_extraction_schema.json'
+      - 'automation/test_chatgpt_extraction_contract.py'
+      - 'automation/reconcile_chatgpt_46_live.py'
+      - 'automation/chatgpt_20261113_46_urls.txt'
+      - 'automation/chatgpt_20261113_missing_metadata.json'
+      - 'automation/chatgpt_ready/**'
+      - 'appdeploy_staging/chatgpt-*.ts'
+      - 'appdeploy_staging/motor-d-auto-import.ts'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install live-feed probe dependencies
+        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
+      - name: Strict ChatGPT batch contract tests
+        run: python -m unittest automation.test_stage_chatgpt_handoff automation.test_chatgpt_extraction_contract -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify actual approved ChatGPT batch and index are atomic and exact
+        env:
+          PYTHONPATH: .
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from automation.chatgpt_extraction_contract import validate_batch
+          from automation.stage_chatgpt_handoff import prepare
+          root=Path('automation/chatgpt_ready')
+          idx=json.loads((root/'index.json').read_text())
+          seen_ids=set()
+          seen_hashes=set()
+          if not idx.get('batches'): raise SystemExit('NO_APPROVED_CHATGPT_BATCHES')
+          for entry in idx['batches']:
+              batch=json.loads((root/entry['file']).read_text())
+              if batch['producer']!='chatgpt_territorial' or batch['approval']!='approved_for_publication':
+                  raise SystemExit('UNAPPROVED_BATCH')
+              offers=validate_batch(batch['offers'],seen_hashes)
+              assert len(offers)==entry['count'] and batch['batch_id']==entry['batch_id']
+              assert not seen_ids.intersection(x['id_fuente'] for x in offers)
+              seen_ids.update(x['id_fuente'] for x in offers)
+              seen_hashes.update(x['hash_url_sha256'] for x in offers)
+              d=entry['batch_id'].split('-')[1]
+              regenerated=prepare(batch,{"schema_version":1,"producer":"chatgpt_territorial",
+                                         "batches":[],"seen_offer_ids":[],"seen_url_hashes":[]},day=d)
+              assert regenerated[1]['batch_id']==batch['batch_id']
+              print('CHATGPT_BATCH_VERIFIED',batch['batch_id'],'offers',len(offers))
+          assert seen_ids==set(idx['seen_offer_ids'])
+          assert seen_hashes==set(idx['seen_url_hashes'])
+          print('CHATGPT_INDEX_RECONCILED',len(seen_ids),'offers, unique URL hashes',len(seen_hashes))
+          PY
+      - name: Parse all modified TypeScript modules without modifying app
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/chatgpt-url-identity.ts --format=esm --platform=node --packages=external --outfile=/tmp/chatgpt-url-identity.mjs
+          node --input-type=module -e "import {canonicalSourceHash,canonicalSourceUrl} from '/tmp/chatgpt-url-identity.mjs'; if(canonicalSourceUrl('https://www.empresa.example/jobs/123?utm_source=search&a=2&b=1#post')!=='https://empresa.example/jobs/123?a=2&b=1')process.exit(1); if(canonicalSourceHash('https://www.empresa.example/jobs/123?utm_source=search&a=2&b=1#post')!=='b1836ee57c862f29b24c13cf30e7cd4da99c9d5a2aa421a02ab11b7e56b4c8ca')process.exit(2);"
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/chatgpt-auto-import.ts --format=esm --platform=node --packages=external --outfile=/tmp/chatgpt-auto-import.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/chatgpt-direct-import.ts --format=esm --platform=node --packages=external --outfile=/tmp/chatgpt-direct-import.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/motor-d-auto-import.ts --format=esm --platform=node --packages=external --outfile=/tmp/motor-d-auto-import.js
+      - name: Verify channel isolation and provenance
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          root=Path('.')
+          index=json.loads((root/'automation/chatgpt_ready/index.json').read_text())
+          assert 'seen_url_hashes' in index
+          schema=json.loads((root/'automation/chatgpt_extraction_schema.json').read_text())
+          assert schema['additionalProperties'] is False
+          assert len(schema['properties']['comunas']['items']['enum']) >= 12
+          patch=json.loads((root/'docs/APPDEPLOY_CHATGPT_V99_DEPLOYMENT_PATCH_20261113.json').read_text())
+          assert any(f['filename']=='backend/chatgpt-url-identity.ts' for f in patch['files'])
+          assert index['producer']=='chatgpt_territorial'
+          bridge=(root/'appdeploy_staging/chatgpt-auto-import.ts').read_text()
+          importer=(root/'appdeploy_staging/chatgpt-direct-import.ts').read_text()
+          motor=(root/'appdeploy_staging/motor-d-auto-import.ts').read_text()
+          assert "const ROOT='automation/chatgpt_ready/'" in bridge
+          assert "db.get<Receipt>('chatgpt_import_receipts'" in bridge
+          assert "chatgpt_territorial" in bridge
+          assert "producer:'motor_d_territorial'" in motor
+          assert "sourceProducer:producer" in importer
+          assert "canonicalSourceHash(x.url_original)" in importer
+          assert "urlHashSha256:urlHash" in importer
+          assert "'motor-d-territorial'" in importer
+          assert "'chatgpt-direct'" in importer
+          print('Channel isolation + provenance checks PASS')
+          PY
+
+      - name: Verify independent source provenance and 46 live catalog URLs
+        env:
+          PYTHONPATH: automation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from chatgpt_extraction_contract import url_hash
+          sources=Path('automation/chatgpt_20261113_46_urls.txt').read_text().splitlines()
+          assert len(sources)==46 and len({url_hash(url) for url in sources})==46
+          print('CHATGPT_46_INPUT_VALID',len(sources))
+          PY
+      - name: Attempt LIVE catalog reconciliation (read only, fail closed if unavailable)
+        continue-on-error: true
+        env:
+          PYTHONPATH: automation
+        run: python automation/reconcile_chatgpt_46_live.py
+      - name: Keep 46-offer live catalog evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-46-live-qa
+          path: output/chatgpt_46_live_reconciliation.json
+          if-no-files-found: warn

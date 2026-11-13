@@ -141,7 +141,8 @@ class CmpcOfficialReaderTests(unittest.TestCase):
         with patch.object(engine,"read_cmpc_requisitions",
                           return_value=api.read_cmpc_requisitions(
                               TODAY,post=lambda *_a,**_kw:Response([row()]))) as read, \
-             patch.object(engine,"request_page",side_effect=AssertionError("no generic HTML")):
+             patch.object(engine,"request_page",side_effect=AssertionError("no generic HTML")), \
+             patch.object(engine,"NOW",engine.datetime(2026,11,12,12,0,tzinfo=engine.TZ)):
             result=engine.inspect(("Nacimiento","CMPC empleo",OFFICIAL_URL))
         self.assertEqual(read.call_count,1)
         self.assertEqual(result["source_reader"],"official_cmpc_cornerstone_json")

@@ -1,5 +1,5 @@
 import { municipalOfferStatusFromHtml } from './municipal-index-status';
-import { db, json, error } from '@appdeploy/sdk';
+import { db, json, error, isAppDatabaseError } from '@appdeploy/sdk';
 import { readPublicFeedPage, registerPublicFeedChange } from './public-feed';
 import { safePublicUrl, publicJobExclusion, publicFeedIdentity } from './public-source-adapters';
 
@@ -185,17 +185,27 @@ export async function directChatGPTImport(body:unknown){
       verificationReason:municipal?'Índice municipal indica Postulación Abierta; ficha individual acredita la postulación presencial; fecha original no informada. Revalidación obligatoria en 14 días.':
         social?'Afiche y publicación OMIL Angol aportados y revisados; reclutamiento presencial acreditado; fecha original estimada.':
         'Control documental humano/IA y comparación previa con catálogo vivo.'};
-    const [saved]=await db.transact([
+    let savedRows:Array<string|null>;
+    try {
+      [savedRows]=await db.transact([
         db.tx.add('radar_jobs',[rec]),
         db.tx.add('public_feed_changes',[{source:'radar_jobs',sourceId:id,queuedAt:new Date().toISOString()}]),
       ]);
-    if(!saved[0]){
-      // The row already exists (or the transaction committed and the response
-      // was lost). Ensure the projection outbox has an entry, then report idempotently.
-      await registerPublicFeedChange('radar_jobs',id);
-      results.push({id:x.id_fuente,status:'already_imported_id'});
-      continue;
+    }catch(cause){
+      // The transaction either committed both source and outbox, or neither.
+      // A known duplicate needs an identity check, never a blind replay.
+      if(isAppDatabaseError(cause) && cause.code==='AppDatabaseDuplicateId'){
+        const [existing]=await db.get<{url?:string;kind?:string;title?:string;company?:string}>(
+          'radar_jobs',[id],{consistent:true});
+        if(existing?.kind==='job_offer' && existing.url===rec.url
+            && existing.title===rec.title && existing.company===rec.company){
+          results.push({id:x.id_fuente,status:'already_imported_id'});
+          continue;
+        }
+      }
+      throw cause;
     }
+    if(!savedRows[0])throw new Error('direct_job_transaction_outcome_unconfirmed');
     live.push(rec);
     results.push({id:x.id_fuente,status:'direct_record_queued_for_public_projection',internalId:id});
   }

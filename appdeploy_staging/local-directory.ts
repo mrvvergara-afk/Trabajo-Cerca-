@@ -81,24 +81,25 @@ export async function createLocalDirectory(body: unknown) {
     return error('Autoriza la publicación y al menos una vía de contacto.', 400);
   const images = Array.isArray(input.photos) ? input.photos : [];
   if (images.length > 3) return error('Se admiten hasta tres fotografías.', 400);
-  const buffers: Buffer[] = [];
+  const encodedImages: string[] = [];
   for (const original of images) {
     if (typeof original !== 'string' || original.length > 310000 || !/^[A-Za-z0-9+/]+=*$/.test(original))
       return error('La fotografía tiene un formato o tamaño inválido.', 400);
-    const bytes = Buffer.from(original, 'base64');
+    let bytes: string;
+    try { bytes = atob(original); }
+    catch { return error('El archivo de imagen no se pudo decodificar.', 400); }
     if (bytes.length < 300 || bytes.length > 225000 ||
-        bytes[0] !== 0xff || bytes[1] !== 0xd8 || bytes[2] !== 0xff ||
-        bytes.includes(Buffer.from('Exif\u0000\u0000')) ||
-        bytes.includes(Buffer.from('http://ns.adobe.com/xap/')))
+        bytes.charCodeAt(0) !== 0xff || bytes.charCodeAt(1) !== 0xd8 || bytes.charCodeAt(2) !== 0xff ||
+        bytes.includes('Exif\u0000\u0000') || bytes.includes('http://ns.adobe.com/xap/'))
       return error('Solo se aceptan JPEG optimizados sin EXIF.', 400);
-    buffers.push(bytes);
+    encodedImages.push(original);
   }
   const id = 'local_' + randomUUID();
   const ownerToken = randomBytes(24).toString('hex');
-  const paths = buffers.map((_, index) => 'local-directory/' + id + '/' + index + '.jpg');
+  const paths = encodedImages.map((_, index) => 'local-directory/' + id + '/' + index + '.jpg');
   if (paths.length) {
     const result = await storage.write(paths.map((path, index) => ({
-      path, content: buffers[index].toString('base64'), contentType: 'image/jpeg',
+      path, content: encodedImages[index], contentType: 'image/jpeg',
     })));
     if (result.length !== paths.length || result.some(ok => !ok))
       return error('No se pudieron guardar las imágenes.', 503);

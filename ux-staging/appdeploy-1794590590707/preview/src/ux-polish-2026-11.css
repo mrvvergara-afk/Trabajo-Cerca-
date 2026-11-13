@@ -51,3 +51,16 @@
 @media(prefers-reduced-motion:reduce){
  .tcStitchShell .tcMobilePublishAction,.tcStitchShell .tcPublishDialog {animation:none!important;transition:none!important;}
 }
+
+/* La opción de consentimiento es global; nunca puede tapar navegación o el CTA. */
+@media(max-width:767px){
+ .tcStitchShell .tcAnalyticsChoice{
+   position:fixed!important;left:10px!important;right:10px!important;
+   bottom:calc(122px + env(safe-area-inset-bottom))!important;
+   width:auto!important;max-width:420px!important;
+   padding:10px!important;gap:8px!important;
+   z-index:80!important;
+ }
+ .tcStitchShell .tcAnalyticsChoice span{flex:1 1 100%!important;font-size:12px;line-height:17px;}
+ .tcStitchShell .tcAnalyticsChoice button{min-height:44px;padding:8px 10px;font-size:12px;flex:1 1 110px;}
+}

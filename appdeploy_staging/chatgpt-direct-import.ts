@@ -134,6 +134,9 @@ export async function directChatGPTImport(body:unknown){
   const candidates=parse(data?.offers);
   if(!candidates)return error('Lote inválido: se requieren fichas individuales, fechas, comunas y enlaces aprobados.',400);
   const commit=data?.commit===true;
+  if (data?.producer!==undefined && !['chatgpt_territorial','motor_d_territorial'].includes(String(data.producer)))
+    return error('Productor de publicación no reconocido.',400);
+  const producer=data?.producer==='motor_d_territorial'?'motor_d_territorial':'chatgpt_territorial';
   // Fail BEFORE any writes if the primary municipal index cannot be checked.
   // An HTTP outage must never become a terminal 'review_expired' receipt.
   const municipalProofs=new Map<string,'open'|'closed'>();
@@ -162,9 +165,9 @@ export async function directChatGPTImport(body:unknown){
     if(x.fecha_cierre&&Date.parse(x.fecha_cierre+'T23:59:59-03:00')<Date.now()){
       results.push({id:x.id_fuente,status:'expired'});continue;
     }
-    const id='chatgpt_'+x.id_fuente;
+    const id=(producer==='motor_d_territorial'?'motor_d_':'chatgpt_')+x.id_fuente;
     if(!commit){results.push({id:x.id_fuente,status:'ready_for_direct_import'});continue;}
-    const rec={id,kind:'job_offer',origin:'radar',title:x.cargo,company:x.empresa,
+    const rec={id,kind:'job_offer',origin:'radar',sourceProducer:producer,title:x.cargo,company:x.empresa,
       workLocation:social?(x.work_location||'Lugar de trabajo no informado'):x.comunas.join(' / '),workCommunes:social?[]:x.comunas,recruitmentCommunes:social?x.recruitment_communes||['Angol']:[],recruitmentZones:social?['Postulación presencial OMIL Angol']:[],
       ...(social?{territorialRecruitmentVerified:true,sourceDateEvidence:x.fecha_publicacion_metodo,sourceEvidenceType:x.social_evidence_type,sourceAccount:x.social_source_account,sourceOriginalDateEstimated:true}:{ }),
       area:social?'Reclutamiento OMIL':municipal?'Oferta laboral OMIL':'Radar externo',status:'Verificada',
@@ -180,11 +183,11 @@ export async function directChatGPTImport(body:unknown){
       note:x.justificacion||'Oferta comprobada en fuente individual mediante revisión ChatGPT.',
       tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,createdAt:now,
       firstPublishedAt:municipal?now:social?now:x.fecha_publicacion,
-      discoveredBy:municipal?'motor-d-official-omil':social?'motor-d-social-omil':'chatgpt-direct',verifiedAt:now,lastVerifiedAt:now,
-      verificationMethod:municipal?'omil_official_open_index':social?'omil_social_poster_evidence':'chatgpt_primary_source_manual',
+      discoveredBy:producer==='motor_d_territorial'?(municipal?'motor-d-official-omil':social?'motor-d-social-omil':'motor-d-territorial'):'chatgpt-direct',verifiedAt:now,lastVerifiedAt:now,
+      verificationMethod:municipal?'omil_official_open_index':social?'omil_social_poster_evidence':producer==='motor_d_territorial'?'motor_d_primary_source':'chatgpt_primary_source_manual',
       verificationReason:municipal?'Índice municipal indica Postulación Abierta; ficha individual acredita la postulación presencial; fecha original no informada. Revalidación obligatoria en 14 días.':
         social?'Afiche y publicación OMIL Angol aportados y revisados; reclutamiento presencial acreditado; fecha original estimada.':
-        'Control documental humano/IA y comparación previa con catálogo vivo.'};
+        (producer==='motor_d_territorial'?'Control Motor D y comparación previa con catálogo vivo.':'Control ChatGPT y comparación previa con catálogo vivo.')};
     let savedRows:Array<string|null>;
     try {
       [savedRows]=await db.transact([

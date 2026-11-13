@@ -48,6 +48,14 @@ try{
       await page.keyboard.press('Escape');
       await dialog.waitFor({state:'hidden'});
     });
+    await check(width+'px: consent banner does not overlap bottom navigation',async()=>{
+      const consent=page.locator('.tcAnalyticsChoice');
+      if(await consent.isVisible()){
+        const [a,b]=await Promise.all([consent.boundingBox(),nav.boundingBox()]);
+        assert(a&&b,'Consent or navigation bounds unavailable');
+        assert(a.y+a.height<=b.y-4,JSON.stringify({consent:a,nav:b}));
+      }
+    });
     await check(width+'px: business directory navigation',async()=>{
       await nav.getByRole('button',{name:'Comercio'}).click();
       const directory=page.locator('#local-directory');

@@ -1,0 +1,32 @@
+name: ChatGPT public catalog postdeploy verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'automation/check_chatgpt_approved_public.py'
+      - '.github/workflows/chatgpt-public-smoke.yml'
+  schedule:
+    - cron: '40 17 * * *'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read entire public catalog and reconcile approved ChatGPT batch IDs
+        env:
+          PYTHONPATH: automation
+        run: python automation/check_chatgpt_approved_public.py
+      - name: Preserve the exact reconciled individual jobs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-public-proof
+          path: output/chatgpt_public_smoke.json
+          if-no-files-found: warn

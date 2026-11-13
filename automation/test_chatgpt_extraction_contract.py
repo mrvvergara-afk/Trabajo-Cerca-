@@ -47,6 +47,17 @@ class StrictExtractionTest(unittest.TestCase):
     def test_reject_credentials_and_private_ip(self):
         for x in ("https://name:pass@example.com/a","https://127.0.0.1/a","http://jobs.example.com/job"):
             with self.subTest(x=x), self.assertRaises(ValueError):canonical_source_url(x)
+    def test_unknown_original_date_with_recent_evidence(self):
+        row=validate_offer(offer(fecha_publicacion=None,vigencia_fuente="postulacion_abierta_verificada",
+                                 fecha_verificacion="2026-11-13"),today=TODAY)
+        self.assertIsNone(row["fecha_publicacion"])
+    def test_undated_without_open_evidence_rejected(self):
+        with self.assertRaisesRegex(ValueError,"undated_needs_open_application_evidence"):
+            validate_offer(offer(fecha_publicacion=None),today=TODAY)
+    def test_stale_undated_evidence_rejected(self):
+        with self.assertRaisesRegex(ValueError,"stale_or_future_undated_evidence"):
+            validate_offer(offer(fecha_publicacion=None,vigencia_fuente="postulacion_abierta_verificada",
+                                 fecha_verificacion="2026-11-09"),today=TODAY)
     def test_future_or_expired(self):
         with self.assertRaisesRegex(ValueError,"expired_offer"):
             validate_offer(offer(fecha_cierre="2026-11-12"),today=TODAY)

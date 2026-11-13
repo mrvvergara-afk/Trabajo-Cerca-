@@ -1,0 +1,70 @@
+name: QA UX public live — read only
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/ux-polish-2026-11
+    paths:
+      - '.github/workflows/ux-polish-live-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qa-ux-public-live
+  cancel-in-progress: true
+
+jobs:
+  public-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    env:
+      UX_QA_URL: https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify public feed rebuilt, minimum baseline inventory and status
+        shell: bash
+        run: |
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          const endpoint=process.env.UX_QA_URL+'/api/listings?limit=40&fresh=1';
+          let result;
+          for(let attempt=1;attempt<=5;attempt++){
+            const response=await fetch(endpoint,{headers:{Accept:'application/json'}});
+            const parsed=await response.json().catch(()=>({}));
+            const view={
+              http:response.status,feedState:parsed.feedState,
+              rebuilt:parsed.feedRebuilding!==true,
+              totalVerified:parsed.totalVerifiedJobOffers,
+              totalItems:parsed.totalItems,
+              pageSize:parsed.items?.length,
+              nextCursor:Boolean(parsed.nextCursor),
+              degraded:parsed.degraded,
+              itemsArray:Array.isArray(parsed.items),
+              hasIds:parsed.items?.every(x=>typeof x.id==='string'&&x.id.length>2),
+            };
+            console.log('Public catalog attempt '+attempt+': '+JSON.stringify(view));
+            if(response.ok && view.rebuilt && !['degraded_emergency_subset','degraded_last_good'].includes(view.feedState) && Number(view.totalVerified)>=1 && view.pageSize>0 && view.hasIds){
+              result=view;break;
+            }
+            await new Promise(resolve=>setTimeout(resolve,5000));
+          }
+          assert(result,'Public feed has not recovered; do not claim full catalog success.');
+          console.log('PASS live catalog reachable with real offer IDs. Post-deploy reference from cron: 279 public jobs.');
+          JS
+      - name: Install dependency graph
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Check live public UI at six viewport sizes (no write actions)
+        run: node qa/e2e.mjs
+      - name: Confirm baseline app URL remains available
+        run: |
+          curl -fsSL -o /dev/null -w 'HTML response: HTTP %{http_code}\n' "$UX_QA_URL/"
+          echo 'Test does not submit forms, change campaigns, or modify listings.'

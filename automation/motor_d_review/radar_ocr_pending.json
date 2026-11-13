@@ -1,8 +1,8 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-12T21:53:46.468192+00:00",
-  "items_total": 16,
-  "pending_total": 16,
+  "updated_at": "2026-11-13T01:16:20.619670+00:00",
+  "items_total": 17,
+  "pending_total": 17,
   "publication_enabled": false,
   "items": [
     {
@@ -38,26 +38,26 @@
       "review_signature": null
     },
     {
-      "review_id": "ocr_a311074e1e969fe27ecc6cca",
-      "canonical_url": "https://munimulchen.cl/oferta-laboral-secretaria-administrativa-contable",
-      "url": "https://munimulchen.cl/oferta-laboral-secretaria-administrativa-contable",
-      "source": "M02",
+      "review_id": "ocr_16401fc268d8982220221a43",
+      "canonical_url": "https://traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido",
+      "url": "https://traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido",
+      "source": "P01",
       "origin": "fuente_web_publica",
       "reported_territories": [
-        "Mulchén"
+        "Traiguén"
       ],
       "possible_communes": [
-        "Mulchén"
+        "Traiguén"
       ],
-      "reader_status": "candidato_fecha_pendiente",
-      "review_reason": "candidato_fecha_pendiente",
-      "extractor": "html_text",
+      "reader_status": "documento_antiguo_revision_vigencia",
+      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
+      "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "c6445281bfd43d3fd2bb7de5121923e5cf6266abd9c11f5e7b31861626a3d264",
+      "document_sha256": "8dc03623c3f1a6ec54fb8bf2c6d81426317c7d845abadfbc0104a76a3d51376f",
       "original_classification": null,
-      "date_source": null,
-      "date_discovered": "2026-11-10",
+      "date_source": "2026-10-18",
+      "date_discovered": "2026-11-12",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -66,30 +66,30 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-10"
+      "last_seen": "2026-11-12",
+      "review_signature": null
     },
     {
-      "review_id": "ocr_ef6727c7fda5d3729f4bf6db",
-      "canonical_url": "https://munimulchen.cl/oferta-laboral-jefe-de-terreno",
-      "url": "https://munimulchen.cl/oferta-laboral-jefe-de-terreno",
-      "source": "M02",
+      "review_id": "ocr_4a8fbb5905dfb9ac0ef988a6",
+      "canonical_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
+      "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
+      "source": "M09",
       "origin": "fuente_web_publica",
       "reported_territories": [
-        "Mulchén"
+        "Traiguén"
       ],
       "possible_communes": [
-        "Angol",
-        "Mulchén"
+        "Traiguén"
       ],
-      "reader_status": "candidato_fecha_pendiente",
-      "review_reason": "candidato_fecha_pendiente",
+      "reader_status": "documento_antiguo_revision_vigencia",
+      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "0f309c7dfcd3bc4f9b7df44d2f3c17124a58b390fbff0048c0e9f3d2cc0b5404",
+      "document_sha256": "0a0315ec528b9874f5cb4b9fc5115abe9e91fcccf81f6dbfa5ef612287795e1c",
       "original_classification": null,
-      "date_source": null,
-      "date_discovered": "2026-11-10",
+      "date_source": "2026-09-14",
+      "date_discovered": "2026-11-12",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -98,38 +98,8 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-10"
-    },
-    {
-      "review_id": "ocr_97e8413102668b765208abc5",
-      "canonical_url": "https://munimulchen.cl/oferta-laboral-enbalaje-de-frutas",
-      "url": "https://munimulchen.cl/oferta-laboral-enbalaje-de-frutas",
-      "source": "M02",
-      "origin": "fuente_web_publica",
-      "reported_territories": [
-        "Mulchén"
-      ],
-      "possible_communes": [
-        "Mulchén"
-      ],
-      "reader_status": "candidato_fecha_pendiente",
-      "review_reason": "candidato_fecha_pendiente",
-      "extractor": "html_text",
-      "http": 200,
-      "text_excerpt": null,
-      "document_sha256": "16f360ef505a8e3492b9849ed490eae04ae568e2bba1919c2fcc582758a8efc9",
-      "original_classification": null,
-      "date_source": null,
-      "date_discovered": "2026-11-10",
-      "deadline": null,
-      "publication_date_confirmed": false,
-      "work_location_verified": false,
-      "employer_verified": false,
-      "application_route_verified": false,
-      "publication_eligible": false,
-      "review_status": "pending",
-      "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-10"
+      "last_seen": "2026-11-12",
+      "review_signature": null
     },
     {
       "review_id": "ocr_63b7b2c009703a36eb62fcc8",
@@ -163,25 +133,181 @@
       "last_seen": "2026-11-10"
     },
     {
-      "review_id": "ocr_e3445cf853645563e6af9647",
-      "canonical_url": "https://traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas",
-      "url": "https://traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas",
-      "source": "TC-023",
-      "origin": "semilla_2026_10_25",
+      "review_id": "ocr_6528de9189a05f2492bff5b1",
+      "canonical_url": "https://traiguencity.cl/conaf-abre-postulaciones-para-trabajar-en-prevencion-y-combate-de-incendios-forestales",
+      "url": "https://traiguencity.cl/conaf-abre-postulaciones-para-trabajar-en-prevencion-y-combate-de-incendios-forestales",
+      "source": "P01",
+      "origin": "fuente_web_publica",
       "reported_territories": [
         "Traiguén"
       ],
       "possible_communes": [
         "Traiguén"
       ],
-      "reader_status": "candidato_para_revision",
+      "reader_status": "documento_antiguo_revision_vigencia",
       "review_reason": "evidencia_modificada_revalidacion_obligatoria",
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "7291c41b2966235f962eb35710ec42f5a0d8f953bcfe4a8335c7a21f4996c637",
+      "document_sha256": "216f1cc0f9f2f8d9aa13cebf45859e4475f73a2238c0e40630902fff27293116",
       "original_classification": null,
-      "date_source": "2026-10-23",
+      "date_source": "2026-08-20",
+      "date_discovered": "2026-11-12",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-12",
+      "review_signature": null
+    },
+    {
+      "review_id": "ocr_7580f6791d3570cb9477f525",
+      "canonical_url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+      "url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
+      "source": "M09",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Traiguén"
+      ],
+      "possible_communes": [
+        "Traiguén"
+      ],
+      "reader_status": "documento_parcial_revision_obligatoria",
+      "review_reason": "documento_parcial_revision_obligatoria",
+      "extractor": "pdf_preview_partial",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
+      "original_classification": "candidato_fecha_pendiente",
+      "date_source": null,
+      "date_discovered": "2026-11-12",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-12"
+    },
+    {
+      "review_id": "ocr_76cd72bb547dc17ab5549e27",
+      "canonical_url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+      "url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
+      "source": "M09",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Traiguén"
+      ],
+      "possible_communes": [
+        "Traiguén"
+      ],
+      "reader_status": "documento_parcial_revision_obligatoria",
+      "review_reason": "documento_parcial_revision_obligatoria",
+      "extractor": "pdf_preview_partial",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
+      "original_classification": "sin_evidencia_suficiente",
+      "date_source": null,
+      "date_discovered": "2026-11-12",
+      "deadline": "2027-07-31",
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-12"
+    },
+    {
+      "review_id": "ocr_97e8413102668b765208abc5",
+      "canonical_url": "https://munimulchen.cl/oferta-laboral-enbalaje-de-frutas",
+      "url": "https://munimulchen.cl/oferta-laboral-enbalaje-de-frutas",
+      "source": "M02",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Mulchén"
+      ],
+      "possible_communes": [
+        "Mulchén"
+      ],
+      "reader_status": "candidato_fecha_pendiente",
+      "review_reason": "candidato_fecha_pendiente",
+      "extractor": "html_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "16f360ef505a8e3492b9849ed490eae04ae568e2bba1919c2fcc582758a8efc9",
+      "original_classification": null,
+      "date_source": null,
+      "date_discovered": "2026-11-10",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "review_id": "ocr_a311074e1e969fe27ecc6cca",
+      "canonical_url": "https://munimulchen.cl/oferta-laboral-secretaria-administrativa-contable",
+      "url": "https://munimulchen.cl/oferta-laboral-secretaria-administrativa-contable",
+      "source": "M02",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Mulchén"
+      ],
+      "possible_communes": [
+        "Mulchén"
+      ],
+      "reader_status": "candidato_fecha_pendiente",
+      "review_reason": "candidato_fecha_pendiente",
+      "extractor": "html_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "c6445281bfd43d3fd2bb7de5121923e5cf6266abd9c11f5e7b31861626a3d264",
+      "original_classification": null,
+      "date_source": null,
+      "date_discovered": "2026-11-10",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-10",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "review_id": "ocr_b76db0127c5c0997c4d2c091",
+      "canonical_url": "https://traiguencity.cl/omil-traiguen-abre-convocatoria-para-constructor-civil-postulaciones-hasta-el-18-de-junio",
+      "url": "https://traiguencity.cl/omil-traiguen-abre-convocatoria-para-constructor-civil-postulaciones-hasta-el-18-de-junio",
+      "source": "P01",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Traiguén"
+      ],
+      "possible_communes": [
+        "Traiguén"
+      ],
+      "reader_status": "documento_antiguo_revision_vigencia",
+      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
+      "extractor": "article_body_text",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "958637869bbb02d2d5bae1e8e655d61c7509eaf76a7b1816743183ce19d84e5b",
+      "original_classification": null,
+      "date_source": "2026-06-16",
       "date_discovered": "2026-11-12",
       "deadline": null,
       "publication_date_confirmed": false,
@@ -227,119 +353,25 @@
       "review_signature": null
     },
     {
-      "review_id": "ocr_7580f6791d3570cb9477f525",
-      "canonical_url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
-      "url": "https://mtraiguen.cl/wp-content/uploads/2026/10/DAEX-BASES-Y-CALENDARIO.pdf",
-      "source": "M09",
-      "origin": "fuente_web_publica",
+      "review_id": "ocr_e3445cf853645563e6af9647",
+      "canonical_url": "https://traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas",
+      "url": "https://traiguencity.cl/oferta-laboral-colegio-bicentenario-louis-pasteur-de-traiguen-requiere-docentes-para-diversas-areas",
+      "source": "TC-023",
+      "origin": "semilla_2026_10_25",
       "reported_territories": [
         "Traiguén"
       ],
       "possible_communes": [
         "Traiguén"
       ],
-      "reader_status": "documento_parcial_revision_obligatoria",
-      "review_reason": "documento_parcial_revision_obligatoria",
-      "extractor": "pdf_preview_partial",
-      "http": 200,
-      "text_excerpt": null,
-      "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
-      "original_classification": "candidato_fecha_pendiente",
-      "date_source": null,
-      "date_discovered": "2026-11-12",
-      "deadline": null,
-      "publication_date_confirmed": false,
-      "work_location_verified": false,
-      "employer_verified": false,
-      "application_route_verified": false,
-      "publication_eligible": false,
-      "review_status": "pending",
-      "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-12"
-    },
-    {
-      "review_id": "ocr_4a8fbb5905dfb9ac0ef988a6",
-      "canonical_url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
-      "url": "https://mtraiguen.cl/municipalidad/bases-de-segundo-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
-      "source": "M09",
-      "origin": "fuente_web_publica",
-      "reported_territories": [
-        "Traiguén"
-      ],
-      "possible_communes": [
-        "Traiguén"
-      ],
-      "reader_status": "documento_antiguo_revision_vigencia",
+      "reader_status": "candidato_para_revision",
       "review_reason": "evidencia_modificada_revalidacion_obligatoria",
-      "extractor": "html_text",
+      "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "0a0315ec528b9874f5cb4b9fc5115abe9e91fcccf81f6dbfa5ef612287795e1c",
+      "document_sha256": "7291c41b2966235f962eb35710ec42f5a0d8f953bcfe4a8335c7a21f4996c637",
       "original_classification": null,
-      "date_source": "2026-09-14",
-      "date_discovered": "2026-11-12",
-      "deadline": null,
-      "publication_date_confirmed": false,
-      "work_location_verified": false,
-      "employer_verified": false,
-      "application_route_verified": false,
-      "publication_eligible": false,
-      "review_status": "pending",
-      "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-12",
-      "review_signature": null
-    },
-    {
-      "review_id": "ocr_76cd72bb547dc17ab5549e27",
-      "canonical_url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
-      "url": "https://mtraiguen.cl/wp-content/uploads/2026/09/decreto-y-bases-2do-llamado.pdf",
-      "source": "M09",
-      "origin": "fuente_web_publica",
-      "reported_territories": [
-        "Traiguén"
-      ],
-      "possible_communes": [
-        "Traiguén"
-      ],
-      "reader_status": "documento_parcial_revision_obligatoria",
-      "review_reason": "documento_parcial_revision_obligatoria",
-      "extractor": "pdf_preview_partial",
-      "http": 200,
-      "text_excerpt": null,
-      "document_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
-      "original_classification": "sin_evidencia_suficiente",
-      "date_source": null,
-      "date_discovered": "2026-11-12",
-      "deadline": "2027-07-31",
-      "publication_date_confirmed": false,
-      "work_location_verified": false,
-      "employer_verified": false,
-      "application_route_verified": false,
-      "publication_eligible": false,
-      "review_status": "pending",
-      "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-12"
-    },
-    {
-      "review_id": "ocr_f539194e3c58073baf7b18b1",
-      "canonical_url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
-      "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
-      "source": "M09",
-      "origin": "fuente_web_publica",
-      "reported_territories": [
-        "Traiguén"
-      ],
-      "possible_communes": [
-        "Traiguén"
-      ],
-      "reader_status": "documento_antiguo_revision_vigencia",
-      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
-      "extractor": "html_text",
-      "http": 200,
-      "text_excerpt": null,
-      "document_sha256": "bfdd7e983b6aa5104739f0741fcaa1b3e6d691bea8159c5f2cdc0967eb2ecb73",
-      "original_classification": null,
-      "date_source": "2026-08-24",
+      "date_source": "2026-10-23",
       "date_discovered": "2026-11-12",
       "deadline": null,
       "publication_date_confirmed": false,
@@ -384,26 +416,27 @@
       "last_seen": "2026-11-12"
     },
     {
-      "review_id": "ocr_16401fc268d8982220221a43",
-      "canonical_url": "https://traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido",
-      "url": "https://traiguencity.cl/departamento-de-salud-de-traiguen-abre-concurso-publico-para-incorporar-tres-nuevos-profesionales-en-calidad-de-indefinido",
-      "source": "P01",
+      "review_id": "ocr_ef6727c7fda5d3729f4bf6db",
+      "canonical_url": "https://munimulchen.cl/oferta-laboral-jefe-de-terreno",
+      "url": "https://munimulchen.cl/oferta-laboral-jefe-de-terreno",
+      "source": "M02",
       "origin": "fuente_web_publica",
       "reported_territories": [
-        "Traiguén"
+        "Mulchén"
       ],
       "possible_communes": [
-        "Traiguén"
+        "Angol",
+        "Mulchén"
       ],
-      "reader_status": "documento_antiguo_revision_vigencia",
-      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
-      "extractor": "article_body_text",
+      "reader_status": "candidato_fecha_pendiente",
+      "review_reason": "candidato_fecha_pendiente",
+      "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "8dc03623c3f1a6ec54fb8bf2c6d81426317c7d845abadfbc0104a76a3d51376f",
+      "document_sha256": "0f309c7dfcd3bc4f9b7df44d2f3c17124a58b390fbff0048c0e9f3d2cc0b5404",
       "original_classification": null,
-      "date_source": "2026-10-18",
-      "date_discovered": "2026-11-12",
+      "date_source": null,
+      "date_discovered": "2026-11-10",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -412,14 +445,13 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-12",
-      "review_signature": null
+      "last_seen": "2026-11-10"
     },
     {
-      "review_id": "ocr_6528de9189a05f2492bff5b1",
-      "canonical_url": "https://traiguencity.cl/conaf-abre-postulaciones-para-trabajar-en-prevencion-y-combate-de-incendios-forestales",
-      "url": "https://traiguencity.cl/conaf-abre-postulaciones-para-trabajar-en-prevencion-y-combate-de-incendios-forestales",
-      "source": "P01",
+      "review_id": "ocr_f539194e3c58073baf7b18b1",
+      "canonical_url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
+      "url": "https://mtraiguen.cl/municipalidad/bases-llamado-a-concurso-publico-programa-red-local-de-apoyos-y-cuidados-prlac-traiguen",
+      "source": "M09",
       "origin": "fuente_web_publica",
       "reported_territories": [
         "Traiguén"
@@ -429,44 +461,12 @@
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
       "review_reason": "evidencia_modificada_revalidacion_obligatoria",
-      "extractor": "article_body_text",
+      "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "216f1cc0f9f2f8d9aa13cebf45859e4475f73a2238c0e40630902fff27293116",
+      "document_sha256": "bfdd7e983b6aa5104739f0741fcaa1b3e6d691bea8159c5f2cdc0967eb2ecb73",
       "original_classification": null,
-      "date_source": "2026-08-20",
-      "date_discovered": "2026-11-12",
-      "deadline": null,
-      "publication_date_confirmed": false,
-      "work_location_verified": false,
-      "employer_verified": false,
-      "application_route_verified": false,
-      "publication_eligible": false,
-      "review_status": "pending",
-      "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-12",
-      "review_signature": null
-    },
-    {
-      "review_id": "ocr_b76db0127c5c0997c4d2c091",
-      "canonical_url": "https://traiguencity.cl/omil-traiguen-abre-convocatoria-para-constructor-civil-postulaciones-hasta-el-18-de-junio",
-      "url": "https://traiguencity.cl/omil-traiguen-abre-convocatoria-para-constructor-civil-postulaciones-hasta-el-18-de-junio",
-      "source": "P01",
-      "origin": "fuente_web_publica",
-      "reported_territories": [
-        "Traiguén"
-      ],
-      "possible_communes": [
-        "Traiguén"
-      ],
-      "reader_status": "documento_antiguo_revision_vigencia",
-      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
-      "extractor": "article_body_text",
-      "http": 200,
-      "text_excerpt": null,
-      "document_sha256": "958637869bbb02d2d5bae1e8e655d61c7509eaf76a7b1816743183ce19d84e5b",
-      "original_classification": null,
-      "date_source": "2026-06-16",
+      "date_source": "2026-08-24",
       "date_discovered": "2026-11-12",
       "deadline": null,
       "publication_date_confirmed": false,
@@ -510,6 +510,31 @@
       "first_discovered": "2026-11-12",
       "last_seen": "2026-11-12",
       "review_signature": null
+    },
+    {
+      "review_id": "pdf_71caa4a3c64d11542676",
+      "canonical_url": "https://munipuren.cl/wp-content/uploads/2026/04/BASES-LLAMADO-A-CONCURSO-ORIENTADOR-LABORAL-OMIL.pdf",
+      "url": "https://munipuren.cl/wp-content/uploads/2026/04/BASES-LLAMADO-A-CONCURSO-ORIENTADOR-LABORAL-OMIL.pdf",
+      "source": "Municipio Purén",
+      "origin": "qa_municipal_pdf_closeout",
+      "reported_territories": [
+        "Purén"
+      ],
+      "reader_status": "document_ocr_or_full_review_required",
+      "review_reason": "municipal_pdf_requires_human_evidence_review",
+      "document_sha256": null,
+      "date_source": null,
+      "date_discovered": "2026-11-13",
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "review_signature": null,
+      "first_discovered": "2026-11-13",
+      "last_seen": "2026-11-13"
     }
-  ]
+  ],
+  "added_this_run": 1
 }

@@ -67,10 +67,6 @@
           "to": "      let existingHash='';\n      try{existingHash=String(y.urlHashSha256||canonicalSourceHash(String(y.url||'')))}catch{}\n      return (urlHash!==''&&existingHash===urlHash)||\n        (urlKey!==''&&keyUrl(String(y.url||''))===urlKey)||"
         },
         {
-          "from": "    const id=(producer==='motor_d_territorial'?'motor_d_':'chatgpt_')+x.id_fuente;",
-          "to": "    // Preserve Motor D's historic identifier prefix to avoid migrating existing receipt keys.\n    const id='chatgpt_'+x.id_fuente;"
-        },
-        {
           "from": "workLocation:social?(x.work_location||'Lugar de trabajo no informado'):x.comunas.join(' / '),",
           "to": "workLocation:social?(x.work_location||'Lugar de trabajo no informado'):(x.ubicacion_trabajo||x.comunas.join(' / ')),"
         },

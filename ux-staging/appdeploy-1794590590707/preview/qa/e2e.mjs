@@ -39,7 +39,7 @@ try{
       assert.deepEqual(await nav.locator('button span').allTextContents(),['Empleos','Oficios','Servicios','Comercio']);
     });
     await check(width+'px: publish chooser keyboard',async()=>{
-      const publish=page.getByRole('button',{name:'Publicar',exact:true});
+      const publish=page.getByRole('button',{name:'Publicar gratis en Trabajo Cerca',exact:true});
       assert(await publish.isVisible());
       await publish.click();
       const dialog=page.getByRole('dialog',{name:'¿Qué quieres publicar?'});

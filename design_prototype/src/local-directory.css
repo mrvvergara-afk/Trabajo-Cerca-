@@ -1,0 +1,50 @@
+.tcPurposeGateway,.tcLocalDirectory{max-width:1140px;margin:14px auto 24px;padding:20px;border-radius:20px;border:1px solid #d6e5da;background:#fff;color:#173c2c}
+.tcPurposeGateway h2,.tcLocalDirectory h2{font-size:clamp(20px,3vw,28px);line-height:1.2;margin:0 0 8px;letter-spacing:-.03em}
+.tcPurposeGateway>p,.tcLocalDirectory p{font-size:13px;line-height:1.5;color:#4f685d}
+.tcPurposeGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.tcPurposeGrid>button{display:flex;flex-direction:column;gap:8px;align-items:flex-start;min-height:126px;text-align:left;padding:16px;border-radius:14px;border:1px solid #d9e4da;background:#f7faf7;color:#204736}
+.tcPurposeGrid>button:hover,.tcPurposeGrid>button:focus-visible{border-color:#4d8a68;box-shadow:0 0 0 2px #93c7a47a}
+.tcPurposeGrid svg{width:22px;height:22px;color:#396d51}
+.tcPurposeGrid strong{font-size:15px}
+.tcPurposeGrid span{font-size:12px;line-height:1.45;color:#506e5d}
+.tcHirePanel{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 0;padding:14px;border-radius:12px;background:#edf5ed}
+.tcHirePanel button,.tcDirectorySummary button,.tcDirectoryForm>button,.tcDirectoryCardActions button,.tcDirectoryAdmin button{min-height:42px;border:0;border-radius:9px;background:#20563b;color:#fff;padding:8px 14px;font-size:13px;font-weight:700}
+.tcDirectoryTop{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.tcDirectoryTop small{letter-spacing:.08em;color:#467558;font-weight:700;font-size:10px}
+.tcDirectoryTop>button,.tcDirectoryForm>button[type=button]{background:#eff4ef;color:#19432e;padding:9px 12px;border:1px solid #c9dbcd;border-radius:9px}
+.tcDirectoryTabs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.tcDirectoryTabs button{min-height:44px;border-radius:10px;border:1px solid #d3e2d7;padding:9px 12px;background:#fff;color:#375849;font-weight:700}
+.tcDirectoryTabs button.active{background:#20563b;color:white}
+.tcDirectorySummary{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px;flex-wrap:wrap}
+.tcDirectoryNotice{background:#edf5ec;border:1px solid #cde1d0;padding:11px 13px;border-radius:10px;font-size:13px}
+.tcDirectoryGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.tcDirectoryCard,.tcDirectoryEmpty{border:1px solid #d9e4db;border-radius:14px;padding:14px;background:#fafcf9;min-width:0}
+.tcDirectoryCard h3{margin:8px 0;font-size:17px}
+.tcDirectoryCard small,.tcDirectoryCoverage,.tcDirectoryRating{font-size:12px;color:#536f60;display:block;margin-top:8px}
+.tcDirectoryCard p{overflow-wrap:anywhere;white-space:pre-wrap}
+.tcDirectoryPhotos{display:flex;gap:5px;overflow:auto;border-radius:10px}
+.tcDirectoryPhotos img{width:100%;max-width:210px;height:140px;object-fit:cover;flex:none;border-radius:8px;background:#edf4ed}
+.tcDirectoryCardActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.tcDirectoryCardActions button{font-size:12px;padding:7px 11px;min-height:38px}
+.tcDirectoryCardActions button:nth-child(n+2){background:#e9f0e8;color:#234e37}
+.tcDirectoryContact a{font-size:12px;display:block;padding:4px 0;overflow-wrap:anywhere}
+.tcDirectoryRemove{margin-top:8px;border:1px solid #e5cfc7;background:white;color:#8b4234;border-radius:8px;padding:8px}
+.tcDirectoryForm{display:grid;gap:13px;max-width:740px;margin:15px auto;padding:18px;background:#f8fbf8;border:1px solid #d6e4d9;border-radius:14px}
+.tcDirectoryForm>label,.tcDirectoryContactFields label{display:grid;gap:6px;font-size:13px;font-weight:650}
+.tcDirectoryForm input:not([type=checkbox]),.tcDirectoryForm select,.tcDirectoryForm textarea{width:100%;border:1px solid #bbd0bf;border-radius:9px;padding:10px;background:white;font-size:14px}
+.tcDirectoryForm textarea{min-height:96px;resize:vertical}
+.tcDirectoryContactFields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tcDirectoryChecks{display:grid;gap:5px}
+.tcDirectoryChecks label,.tcDirectoryConsent{display:flex!important;flex-direction:row;align-items:start;gap:8px;line-height:1.5}
+.tcDirectoryConsent input{margin-top:3px;flex:none}
+.tcDirectoryAdmin{margin-top:18px;padding:15px;background:#fff9ec;border:1px solid #e4dac2;border-radius:14px}
+.tcDirectoryAdmin>div{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;font-size:12px;overflow-wrap:anywhere}
+.tcDirectoryAdmin button{min-height:34px}
+.tcDirectorySecondaryAction{border:0;background:transparent;color:#235f40;font-size:13px;font-weight:700;text-decoration:underline;margin-top:12px;padding:7px}
+.tcLocalOnlyNote{font-size:11px;color:#536b5b;line-height:1.5;margin:10px 0}
+.tcAnalyticsChoice{position:fixed;z-index:90;bottom:12px;left:12px;right:12px;margin:auto;max-width:730px;padding:14px;display:flex;flex-wrap:wrap;align-items:center;gap:9px;border:1px solid #c7d9ca;border-radius:14px;background:#fff;box-shadow:0 12px 40px #0d281e30;color:#254937;font-size:13px}
+.tcAnalyticsChoice span{flex:1 1 280px}
+.tcAnalyticsChoice button{border:1px solid #c2d5c4;border-radius:9px;padding:9px 12px;background:#f4f8f3;color:#174632;font-weight:700}
+.tcAnalyticsChoice button:last-child{background:#20563b;color:white}
+@media(max-width:850px){.tcPurposeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.tcDirectoryGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.tcPurposeGateway,.tcLocalDirectory{margin:10px 12px;padding:15px}.tcPurposeGrid,.tcDirectoryGrid,.tcDirectoryContactFields{grid-template-columns:1fr}.tcPurposeGrid>button{min-height:94px}.tcDirectoryTop{align-items:start}.tcDirectoryCard{padding:12px}.tcDirectoryPhotos img{height:130px}.tcAnalyticsChoice{bottom:5px;left:5px;right:5px}}

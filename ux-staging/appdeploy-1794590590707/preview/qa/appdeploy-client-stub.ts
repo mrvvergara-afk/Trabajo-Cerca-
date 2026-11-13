@@ -22,6 +22,10 @@ export const auth={
   signOut:()=>Promise.resolve(),
 };
 export const notifications={
+  configure:(_options?:unknown)=>Promise.resolve({ok:true}),
+  onMessage:(_callback:(payload:unknown)=>void)=>()=>undefined,
+  getEnvironment:()=>Promise.resolve({platform:'desktop',browser:'chrome',mode:'browser_tab',permission:'denied',isSupported:false,canRequestPermission:false}),
+  getEnableGuidance:()=>Promise.resolve({kind:'unsupported',title:'QA',message:'Deshabilitado en simulación',steps:[]}),
   getPermission:()=>Promise.resolve('denied'),
   requestPermission:()=>Promise.resolve('denied'),
   subscribe:()=>Promise.resolve(null),

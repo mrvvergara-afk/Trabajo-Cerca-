@@ -40,6 +40,38 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify actual approved ChatGPT batch and index are atomic and exact
+        env:
+          PYTHONPATH: .
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from automation.chatgpt_extraction_contract import validate_batch
+          from automation.stage_chatgpt_handoff import prepare
+          root=Path('automation/chatgpt_ready')
+          idx=json.loads((root/'index.json').read_text())
+          seen_ids=set()
+          seen_hashes=set()
+          if not idx.get('batches'): raise SystemExit('NO_APPROVED_CHATGPT_BATCHES')
+          for entry in idx['batches']:
+              batch=json.loads((root/entry['file']).read_text())
+              if batch['producer']!='chatgpt_territorial' or batch['approval']!='approved_for_publication':
+                  raise SystemExit('UNAPPROVED_BATCH')
+              offers=validate_batch(batch['offers'],seen_hashes)
+              assert len(offers)==entry['count'] and batch['batch_id']==entry['batch_id']
+              assert not seen_ids.intersection(x['id_fuente'] for x in offers)
+              seen_ids.update(x['id_fuente'] for x in offers)
+              seen_hashes.update(x['hash_url_sha256'] for x in offers)
+              d=entry['batch_id'].split('-')[1]
+              regenerated=prepare(batch,{"schema_version":1,"producer":"chatgpt_territorial",
+                                         "batches":[],"seen_offer_ids":[],"seen_url_hashes":[]},day=d)
+              assert regenerated[1]['batch_id']==batch['batch_id']
+              print('CHATGPT_BATCH_VERIFIED',batch['batch_id'],'offers',len(offers))
+          assert seen_ids==set(idx['seen_offer_ids'])
+          assert seen_hashes==set(idx['seen_url_hashes'])
+          print('CHATGPT_INDEX_RECONCILED',len(seen_ids),'offers, unique URL hashes',len(seen_hashes))
+          PY
       - name: Parse all modified TypeScript modules without modifying app
         run: |
           npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/chatgpt-url-identity.ts --format=esm --platform=node --packages=external --outfile=/tmp/chatgpt-url-identity.mjs

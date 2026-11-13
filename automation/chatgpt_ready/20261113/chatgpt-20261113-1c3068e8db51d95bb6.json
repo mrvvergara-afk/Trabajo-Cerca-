@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "chatgpt_territorial",
+  "batch_id": "chatgpt-20261113-1c3068e8db51d95bb6",
+  "offers": [
+    {
+      "id_fuente": "cg_4e0234a5bfdd3b610f25",
+      "cargo": "Conductor de Transporte de Carga y Personal - Nueva Imperial/Lumaco",
+      "empresa": "Serfonac Ltda",
+      "comunas": [
+        "Lumaco"
+      ],
+      "ubicacion_trabajo": "Operaciones de transporte forestal Nueva Imperial/Lumaco",
+      "modalidad": "presencial",
+      "salario": null,
+      "url_original": "https://www.chiletrabajos.cl/trabajo/3923619",
+      "enlace_postulacion": "https://www.chiletrabajos.cl/trabajo/3923619",
+      "fecha_publicacion": "2026-11-05",
+      "fecha_descubrimiento": "2026-11-13",
+      "fecha_cierre": "2027-01-19",
+      "justificacion": "Ficha oficial en Chiletrabajos individual con postulaciones, faena Nueva Imperial/Lumaco y vencimiento 19-01-2027.",
+      "url_canonica": "https://chiletrabajos.cl/trabajo/3923619",
+      "hash_url_sha256": "4e0234a5bfdd3b610f25b03025b740c8f16cf68b329627ab86f5ebec5d65987f"
+    },
+    {
+      "id_fuente": "cg_d8bc12a30ccf38753378",
+      "cargo": "Supervisor/a de Tienda / Victoria",
+      "empresa": "Tiendas de Conveniencia Upa! & Upita y Estaciones de Servicio Shell",
+      "comunas": [
+        "Victoria"
+      ],
+      "ubicacion_trabajo": "Tienda Upa! en la comuna de Victoria",
+      "modalidad": "presencial",
+      "salario": "A convenir",
+      "url_original": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/supervisor-a-de-tienda-victoria-3068102.html",
+      "enlace_postulacion": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/supervisor-a-de-tienda-victoria-3068102.html",
+      "fecha_publicacion": "2026-11-02",
+      "fecha_descubrimiento": "2026-11-13",
+      "fecha_cierre": null,
+      "justificacion": "Índice Mipleo 02-11-2026; corroborado por ficha individual pública en Indeed con postulación abierta 13-11-2026.",
+      "url_canonica": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/supervisor-a-de-tienda-victoria-3068102.html",
+      "hash_url_sha256": "d8bc12a30ccf38753378c2e632d65c8bd776bbca8e1863023ff523d41f86626b"
+    }
+  ]
+}

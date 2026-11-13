@@ -109,7 +109,7 @@ export async function confirmChatGPTPublications(){
     const seen=new Set<string>();
     for(let n=0;n<100;n++){
       const page=await readPublicFeedPage(cursor);
-      if(!page||page.feedRebuilding===true||page.degraded===true)return {status:'feed_unavailable',checked:0,published:0};
+      if(!page||('feedRebuilding' in page && page.feedRebuilding===true)||('degraded' in page && page.degraded===true))return {status:'feed_unavailable',checked:0,published:0};
       total+=page.items.length;
       for(const item of page.items)ids.add(String(item.id));
       if(!page.nextCursor){complete=total>=Number(page.totalJobOffers||0);break;}

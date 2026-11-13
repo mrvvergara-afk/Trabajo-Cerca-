@@ -4,6 +4,7 @@ import { freePublicSourceStatus, publicDocumentUrl, saveVerifiedPublicOffer } fr
 import { safePublicUrl, publicSourceAdapter } from './public-source-adapters';
 import { fetchPublicPage } from './public-source-http';
 import { evaluatePublicJob } from './public-source-verifier';
+import { bcCheckLimit } from './recheck-policy';
 
 type JobResult={id:string;url:string;checkedAt:string;firstReason:string;decision:string;reason:string;published:boolean;attempts?:number};
 const TABLE='fast_bc_html_decisions_v1';
@@ -31,7 +32,9 @@ export async function runFastBCHtml(){
  const reviewed=Array.isArray(source.summary?.reviewed)?source.summary.reviewed as Array<{url?:string;status?:string;reason?:string}>:[];
  // Only the latest Motor A first-pass findings are eligible; never import historical queues.
  const seenUrls=new Set<string>();
- const todo=reviewed.filter(row=>{
+ const recheckRows=Array.isArray(source.recheckWork)?source.recheckWork as Array<{url?:string}>:[];
+ const reviewedWithRechecks=[...reviewed,...recheckRows.map(row=>({...row,status:'pending',reason:'revalidation_due'}))];
+ const todo=reviewedWithRechecks.filter(row=>{
   if(row.status!=='pending' || typeof row.url!=='string' || publicDocumentUrl(row.url))return false;
   const url=safePublicUrl(row.url);
   if(!url || seenUrls.has(url))return false;
@@ -44,8 +47,9 @@ export async function runFastBCHtml(){
  let checked=0,verified=0,archived=0,blocked=0,already=0,legacyRecovered=0,deferredOutside=0,deferredIndex=0,storedForFeed=0,storageFailures=0;
  const outcomes:Array<{url:string;decision:string;reason:string}>=[];
  // Walk the entire bounded first-pass result so early already-seen rows cannot starve later ones.
+ const checkLimit=bcCheckLimit(todo.length,12);
  for(const row of todo){
-  if(checked>=3)break;
+  if(checked>=checkLimit)break;
   const url=safePublicUrl(row.url || '');
   if(!url || !publicSourceAdapter(url))continue;
   if(genericSourceIndex(url)){deferredIndex++;continue;}

@@ -24,6 +24,8 @@ class DesignPatchTests(unittest.TestCase):
             self.assertIn(value, gateway)
         self.assertEqual(gateway.count("<button"), 3)  # The unchanged employment card is fourth.
         mobile = self.diffs[3]["to"]
+        self.assertIn("navigateResults('people')", self.diffs[0]["to"])
+        self.assertIn("navigateResults('people')", mobile)
         self.assertEqual(mobile.count("<button"), 4)
         for value in ("Empleos", "Perfiles", "Servicios", "Anunciar"):
             self.assertIn(value, mobile)

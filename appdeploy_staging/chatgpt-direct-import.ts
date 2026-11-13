@@ -91,9 +91,11 @@ export async function revalidateOfficialMunicipalOpenOffers() {
         verificationReason:'Índice municipal revalidado como Postulación Abierta.'}
         : {...item,active:false,closureReason:'confirmed_official_index_closed',
            verificationCheckedAt:timestamp,verificationReason:'Índice oficial indica Postulación Cerrada.'};
-      const [ok]=await db.tx.update('radar_jobs',[{id:String(item.id),record:updated}]);
-      if(!ok)throw Error('municipal_recheck_update_failed');
-      await registerPublicFeedChange('radar_jobs',String(item.id));
+      const [updatedRows]=await db.transact([
+          db.tx.update('radar_jobs',[{id:String(item.id),record:updated}]),
+          db.tx.add('public_feed_changes',[{source:'radar_jobs',sourceId:String(item.id),queuedAt:timestamp}]),
+        ]);
+      if(!updatedRows[0])throw Error('municipal_recheck_update_failed');
       if(state==='open')renewed++;else closed++;
     }
     if(!page.nextToken){finished=true;break;}
@@ -183,9 +185,17 @@ export async function directChatGPTImport(body:unknown){
       verificationReason:municipal?'Índice municipal indica Postulación Abierta; ficha individual acredita la postulación presencial; fecha original no informada. Revalidación obligatoria en 14 días.':
         social?'Afiche y publicación OMIL Angol aportados y revisados; reclutamiento presencial acreditado; fecha original estimada.':
         'Control documental humano/IA y comparación previa con catálogo vivo.'};
-    const [saved]=await db.tx.add('radar_jobs',[rec]);
-    if(!saved){results.push({id:x.id_fuente,status:'already_imported_id'});continue;}
-    await registerPublicFeedChange('radar_jobs',id);
+    const [saved]=await db.transact([
+        db.tx.add('radar_jobs',[rec]),
+        db.tx.add('public_feed_changes',[{source:'radar_jobs',sourceId:id,queuedAt:new Date().toISOString()}]),
+      ]);
+    if(!saved[0]){
+      // The row already exists (or the transaction committed and the response
+      // was lost). Ensure the projection outbox has an entry, then report idempotently.
+      await registerPublicFeedChange('radar_jobs',id);
+      results.push({id:x.id_fuente,status:'already_imported_id'});
+      continue;
+    }
     live.push(rec);
     results.push({id:x.id_fuente,status:'direct_record_queued_for_public_projection',internalId:id});
   }

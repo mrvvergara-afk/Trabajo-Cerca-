@@ -39,6 +39,22 @@
   ],
   "pending": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
+      "title": "PLANIFICADOR/A MANTENIMIENTO - Puente Alto",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19348?c=cmpc",
+      "title": "PLANIFICADOR ELECTROCONTROL",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19369?c=cmpc",
       "title": "Coordinador/a Matricería Y Clisses - Osorno",
       "workplaces": [],
@@ -83,15 +99,6 @@
       "title": "Operador Montacarga Turno - Planta Puente Alto",
       "workplaces": [],
       "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19350?c=cmpc",
-      "title": "Pool Talento Feria Laboral USACH",
-      "workplaces": [],
-      "reason": [
-        "detail_unavailable",
         "workplace_not_single_confirmed"
       ]
     },
@@ -144,6 +151,14 @@
       ]
     },
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
+      "title": "INGENIERO PREVENCIÓN RIESGOS",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19100?c=cmpc",
       "title": "Ingeniero/a de confiabilidad - Planta Maule",
       "workplaces": [],
@@ -154,14 +169,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
       "title": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19011?c=cmpc",
-      "title": "PLANIFICADOR/A MANTENIMIENTO - Puente Alto",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -206,15 +213,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
       "title": "Coordinador de Soporte Técnico SAP",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
-      "title": "Analista de Comercio Exterior",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

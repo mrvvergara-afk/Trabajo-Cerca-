@@ -1,0 +1,17 @@
+import {publicReviewLabel,lastConfirmedAt} from '../shared/offer-public-state';
+export {lastConfirmedAt};
+export type PublicCard={company?:string;source?:string;review?:boolean;verified?:boolean;revalidationDue?:boolean;originalPosterUrl?:string;sourceImageUrl?:string};
+export const reviewLabel=publicReviewLabel;
+export function identifiedEmployer(item:PublicCard) {
+ const company=item.company?.trim();if(!company)return null;
+ const normalized=company.toLocaleLowerCase('es-CL').replace(/[^a-záéíóúñ0-9]/g,'');
+ return ['chiletrabajos','chiletrabajo','laborum','indeed','computrabajo','linkedin','opcionempleo','bolsanacionaldeempleo','bne','sinfuentenoidentificada','empresa'].includes(normalized)?null:company;
+}
+export function originalPoster(item:PublicCard,base:string) {
+ const candidate=item.originalPosterUrl||item.sourceImageUrl;if(!candidate)return null;
+ try{const u=new URL(candidate,base);if(u.protocol!=='https:'||u.username||u.password)return null;
+ const allowed=[new URL(base).hostname,'mtraiguen.cl','www.munimulchen.cl','munilumaco.cl'];
+ return allowed.includes(u.hostname)||u.hostname.endsWith('.amazonaws.com')||u.hostname.endsWith('.appdeploy.ai')?u.href:null;
+ }catch{return null;}
+}
+export function shortDate(value?:string) {if(value&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&Number.isFinite(Date.parse(value)))return value.split('-').reverse().join('-');const time=Date.parse(value||'');return Number.isFinite(time)?new Date(time).toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'America/Santiago'}):null;}

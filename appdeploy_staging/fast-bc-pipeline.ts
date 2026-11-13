@@ -1,6 +1,7 @@
 import { db } from '@appdeploy/sdk';
 import { shadowPdfBatch } from './shadow-pdf';
 import { runFastBCHtml } from './fast-bc-html';
+import { pruneResolved } from './recheck-policy';
 
 /**
  * Dedicated fast B/C third-pass processor. Reads ONLY live Motor A documentWork.
@@ -51,11 +52,12 @@ export async function runFastBCPipeline(){
   }
   // A single bounded checkpoint allows A to acknowledge completed documents.
   // No old A/B/C tables are reopened or deleted.
-  const urls=Object.keys(resolved);
-  if(urls.length>180)for(const url of urls.slice(0,urls.length-180))delete resolved[url];
-  const record={id:'current',resolved,lastRunAt:now,
+  // Keep unresolved cases until they receive a terminal decision. Dropping
+  // them merely because the map is large makes them reappear as new work.
+  const pruned=pruneResolved(resolved,1000);
+  const record={id:'current',resolved:pruned,lastRunAt:now,
     lastBatch:{scanned:result.processed,remainingPdf:Math.max(0,result.totalDocuments-result.processed),
-      decisions:counted,completedTotal:Object.keys(resolved).length,html:{found:html.found,checked:html.checked,verified:html.verified,archived:html.archived,blocked:html.blocked}}};
+      decisions:counted,completedTotal:Object.keys(pruned).length,html:{found:html.found,checked:html.checked,verified:html.verified,archived:html.archived,blocked:html.blocked}}};
   if(existing){const [ok]=await db.tx.update(STATE,[{id:'current',record}]);if(!ok)throw Error('fast_bc_checkpoint_update_failed');}
   else{const [id]=await db.tx.add(STATE,[record]);if(!id)throw Error('fast_bc_checkpoint_create_failed');}
   console.warn('MOTOR_B_C_FAST '+JSON.stringify(record.lastBatch));

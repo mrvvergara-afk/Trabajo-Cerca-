@@ -1,0 +1,57 @@
+/* Espacio privado separado del catálogo público. */
+.opsShell .tcAdminAccess { max-width: 1370px; margin: 0 auto 20px; padding: 18px; }
+.tcAdminWorkspace { display: grid; grid-template-columns: 228px minmax(0,1fr); gap: 24px; align-items: start; margin-top: 22px; }
+.tcAdminSidebar { min-height: 570px; padding: 19px 12px; background: #103b2b; color: #f4fff6; border-radius: 16px; }
+.tcAdminSidebarBrand { display: flex; flex-direction: column; gap: 4px; padding: 6px 12px 20px; border-bottom: 1px solid #ffffff26; margin-bottom: 12px; }
+.tcAdminSidebarBrand strong { font-size: 16px; }
+.tcAdminSidebarBrand small { font-size: 11px; color: #c8dace; }
+.tcAdminSidebar nav { display: grid; gap: 5px; }
+.opsShell .tcAdminSidebar button { min-height: 45px; width: 100%; padding: 12px 13px; border: 0; background: transparent; color: #d5eadb; border-radius: 9px; text-align: left; font: inherit; font-size: 12px; font-weight: 650; cursor: pointer; }
+.opsShell .tcAdminSidebar button.active { color: #103a2a; background: #dff2de; }
+.opsShell .tcAdminSidebar button:focus-visible, .opsShell .tcAdminTiles button:focus-visible, .tcCampaignRow button:focus-visible { outline: 3px solid #88bf48; outline-offset: 2px; }
+.tcAdminWorkspaceMain { min-width: 0; padding: 4px 4px 20px 0; }
+.tcAdminEyebrow { font-size: 10px; font-weight: 750; letter-spacing: .13em; color: #5a7768; }
+.tcAdminLanding h3 { font-size: 26px; color: #0f382a; margin: 8px 0; }
+.tcAdminLanding h4 { font-size: 17px; margin: 30px 0 16px; }
+.opsShell .tcAdminLanding > p { margin: 0 0 22px; }
+.tcAdminStatGrid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.tcAdminStatGrid article { display: grid; align-content: start; gap: 10px; padding: 18px; border-radius: 15px; background: #f6faf7; border: 1px solid #dce7df; }
+.tcAdminStatGrid small { font-size: 11px; color: #50725e; }
+.tcAdminStatGrid strong { font-size: 29px; color: #0b462c; }
+.tcAdminStatGrid span { font-size: 11px; line-height: 1.4; color: #61766c; }
+.tcAdminTiles { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.opsShell .tcAdminTiles button { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 22px; min-height: 110px; background: #fff; border: 1px solid #dce6de; border-radius: 14px; text-align: left; color: #153c2c; cursor: pointer; }
+.tcAdminTiles strong { font-size: 15px; }
+.tcAdminTiles span { color: #5a7062; font-size: 12px; line-height: 1.5; }
+.tcAdminLatest { padding-top: 22px; font-size: 12px !important; }
+.opsShell .tcAdminWorkspaceMain .tcHouseAdmin { margin-top: 0; }
+.opsShell .tcAdminWorkspaceMain h2 { font-size: 22px; }
+.opsShell .tcAdminShortcut { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.tcCampaignRow { margin: 12px 0; padding: 15px; border: 1px solid #dce6df; border-radius: 12px; }
+.tcCampaignRow p { font-size: 12px; }
+.tcAdminInfo { background: #f4f9f5; border: 1px solid #dce8de; border-radius: 14px; padding: 20px; }
+.opsTechnicalDetails { max-width: 1092px; margin: 16px auto 40px; padding: 12px 0; border-top: 1px solid #dce6df; }
+.opsTechnicalDetails > summary { padding: 15px 20px; font-weight: 700; cursor: pointer; }
+.opsTechnicalDetails[open] { background: #f6f7f5; border-radius: 15px; }
+/* Visibilidad de campañas sin mezclar solicitudes y configuración. */
+.tcAdminCampaignManagement > h2 { margin: 4px 0 6px; }
+.tcAdminCampaignManagement > p { color: #607469; font-size: 13px; }
+.tcCommercialOverview { margin: 20px 0; }
+.tcCommercialOverviewHeader { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; align-items: center; }
+.tcCommercialOverviewHeader h3 { margin: 0; font-size: 17px; }
+.tcCommercialOverviewHeader button, .tcCommercialOverviewCard button { padding: 9px 12px; border: 1px solid #bfd2c3; border-radius: 9px; background: #fff; color: #19452e; cursor: pointer; font: inherit; font-size: 12px; font-weight: 650; }
+.tcCommercialOverviewList { display: grid; gap: 12px; margin: 16px 0 0; }
+.tcCommercialOverviewCard { padding: 18px; border: 1px solid #dce6de; border-radius: 14px; background: #fbfdfb; }
+.tcCommercialOverviewCard header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.tcCommercialOverviewCard header strong { font-size: 16px; color: #143d2c; }
+.tcCommercialOverviewCard header span { font-size: 11px; padding: 6px 9px; border-radius: 15px; background: #ebf3eb; color: #275a35; }
+.tcCommercialOverviewCard dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.tcCommercialOverviewCard dt { font-size: 10px; color: #688071; }
+.tcCommercialOverviewCard dd { margin: 3px 0; font-size: 13px; color: #183c2e; }
+.tcCommercialOverviewCard p { overflow-wrap: anywhere; font-size: 12px; }
+.tcAdminAdvanced { margin: 18px 0; padding: 16px; border: 1px solid #dce6de; border-radius: 13px; }
+.tcAdminAdvanced > summary { cursor: pointer; font-size: 14px; font-weight: 700; }
+.tcAdminAdvanced[open] > .tcHouseAdmin { margin-top: 20px; }
+@media(max-width:560px) { .tcCommercialOverviewCard dl { grid-template-columns: minmax(0,1fr); } }
+@media(max-width:1080px) { .tcAdminStatGrid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:720px) { .opsShell .tcAdminAccess { margin: 0 12px 16px; padding: 12px; } .tcAdminWorkspace { grid-template-columns: minmax(0,1fr); gap: 14px; } .tcAdminSidebar { min-height: 0; padding: 10px; } .tcAdminSidebarBrand { padding-bottom: 10px; } .tcAdminSidebar nav { grid-template-columns: repeat(2,minmax(0,1fr)); } .opsShell .tcAdminSidebar button { min-height: 44px; padding: 9px; font-size: 11px; } .tcAdminWorkspaceMain { padding: 0; } .tcAdminStatGrid { gap: 8px; } .tcAdminStatGrid article { padding: 12px; } .tcAdminStatGrid strong { font-size: 24px; } .tcAdminTiles { grid-template-columns: minmax(0,1fr); } .opsTechnicalDetails { margin-inline: 12px; } }

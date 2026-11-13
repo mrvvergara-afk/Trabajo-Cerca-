@@ -1,0 +1,117 @@
+/* Presencia editorial discreta para formularios y autopromoción en espacios sin anunciante. */
+.tcFormEditorialAd {
+  display:grid;
+  grid-template-columns:82px minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  box-sizing:border-box;
+  min-width:0;
+  margin:10px 0 18px;
+  padding:12px 13px;
+  border:1px solid #dbe7d8;
+  border-radius:13px;
+  background:linear-gradient(125deg,#f5f9ee,#f1f7ef 68%,#eaf5e6);
+  color:#214635;
+}
+.tcFormEditorialArt {
+  position:relative;
+  display:grid;
+  place-items:center;
+  height:67px;
+  border-right:1px solid #c8decd;
+  color:#387b4d;
+}
+.tcFormEditorialArt svg:first-child {width:40px;height:40px;stroke-width:1.7;}
+.tcFormEditorialArt svg:last-child {position:absolute;bottom:3px;right:4px;width:17px;height:17px;color:#88b38d;}
+.tcFormEditorialCopy {min-width:0;line-height:1.35;}
+.tcFormEditorialCopy small {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:4px;
+  margin-bottom:5px;
+  font-size:10px;
+  color:#397c53;
+  font-weight:750;
+  letter-spacing:.025em;
+}
+.tcFormEditorialCopy small svg {width:12px;height:12px;}
+.tcFormEditorialCopy p {font-size:12px!important;line-height:1.45;margin:0!important;color:#415d4a;}
+.tcFormEditorialCopy strong {font-size:13px;color:#204734;}
+.tcFormEditorialLink {
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  justify-content:center;
+  flex-shrink:0;
+  min-height:39px;
+  padding:7px 10px;
+  font-size:11px;
+  font-weight:750;
+  color:#25643d;
+  text-decoration:none;
+  white-space:normal;
+  border:1px solid #a4cbb0;
+  border-radius:10px;
+  background:#ffffffa8;
+}
+.tcFormEditorialLink svg {width:13px;height:13px;flex-shrink:0;}
+.tcFormEditorialLink:focus-visible,.tcInlineHousePromo button:focus-visible {
+  outline:3px solid #66a676;outline-offset:2px;
+}
+.tcInlineHousePromo {
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  width:min(1200px,calc(100% - 36px));
+  margin:15px auto;
+  padding:14px 18px;
+  box-sizing:border-box;
+  border:1px solid #d7e7db;
+  border-radius:15px;
+  background:#f3f8f2;
+  color:#224632;
+}
+.neoJobsGrid>.tcInlineHousePromo,.tcInlineHousePromo[data-placement='listing'] {
+  grid-column:1 / -1;
+  width:100%;
+  margin:12px 0;
+}
+.tcInlineHouseIcon {
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  border-radius:13px;background:#e2efdf;color:#377c4c;
+}
+.tcInlineHouseIcon svg {width:19px;height:19px;}
+.tcInlineHouseCopy {min-width:0;}
+.tcInlineHouseCopy small {
+  display:block;font-size:9px;letter-spacing:.055em;
+  font-weight:750;color:#478253;margin-bottom:4px;
+}
+.tcInlineHouseCopy strong {display:block;font-size:14px;color:#19452f;}
+.tcInlineHouseCopy p {margin:4px 0 0!important;font-size:12px;line-height:1.35;color:#587361;}
+.tcInlineHousePromo button {
+  display:inline-flex;align-items:center;gap:7px;
+  justify-content:center;
+  border:1px solid #abcab1;border-radius:9px;
+  min-height:40px;padding:9px 12px;
+  background:white;color:#245c37;font-size:11px;
+  font-weight:750;cursor:pointer;
+}
+.tcInlineHousePromo button svg {width:13px;height:13px;}
+@media(max-width:780px) {
+  .tcFormEditorialAd {grid-template-columns:45px minmax(0,1fr);gap:9px;padding:10px;}
+  .tcFormEditorialArt {height:52px;}
+  .tcFormEditorialArt svg:first-child {width:31px;height:31px;}
+  .tcFormEditorialLink {grid-column:2;justify-self:start;min-height:34px;padding:6px 10px;}
+  .tcInlineHousePromo {grid-template-columns:36px minmax(0,1fr);gap:10px;padding:12px;}
+  .tcInlineHouseIcon {height:36px;width:36px;}
+  .tcInlineHousePromo button {grid-column:2;justify-self:start;}
+}
+@media(max-width:420px) {
+  .tcFormEditorialCopy small {font-size:9px;}
+  .tcFormEditorialCopy p {font-size:11px!important;}
+  .tcFormEditorialCopy strong {font-size:12px;}
+  .tcInlineHouseCopy p {font-size:11px;}
+}

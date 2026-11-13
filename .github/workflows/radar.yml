@@ -20,6 +20,9 @@ on:
     - cron: '17 * * * *'
 permissions:
   contents: read
+concurrency:
+  group: trabajo-cerca-radar-main
+  cancel-in-progress: false
 jobs:
   motor_a_contract:
     name: QA Motor A descubrimiento + traspaso a D

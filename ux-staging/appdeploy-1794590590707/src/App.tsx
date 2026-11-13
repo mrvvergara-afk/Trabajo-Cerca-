@@ -55,8 +55,11 @@ function track(event:string, properties:Record<string, string | number | boolean
   void api.post('/api/analytics', { eventId:crypto.randomUUID(), event, distinctId:analyticsId(), properties, consent:true }).catch(() => undefined);
 }
 function publicDate(item:Listing) {
-  if (item.origin === 'direct' || item.date === 'Publicado hoy') return shortDate(item.firstPublishedAt || item.createdAt) || 'Fecha no informada';
-  return shortDate(item.sourcePublishedAt || '') || item.date || 'Fecha no informada';
+  if (item.origin === 'direct') return shortDate(item.firstPublishedAt || item.createdAt) || 'Fecha no informada';
+  const original = shortDate(item.sourcePublishedAt || '');
+  if (original) return original;
+  // «Publicado hoy» puede representar incorporación al radar: nunca usar descubrimiento como fecha original.
+  return item.date && item.date !== 'Publicado hoy' ? item.date : 'Fecha original no informada';
 }
 
 type Flow = 'ofrezco' | 'trabajadores' | 'servicio' | 'aporte';
@@ -1009,15 +1012,27 @@ function App() {
   const publishDialogRef = useRef<HTMLElement>(null);
   useEffect(() => {
     if (!showPublishChoices) return;
-    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const onEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setShowPublishChoices(false);
+    const dialog=publishDialogRef.current;
+    if (!dialog) return;
+    const previousFocus=document.activeElement instanceof HTMLElement?document.activeElement:null;
+    const previousOverflow=document.body.style.overflow;
+    const focusables=()=>[...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],input,select,textarea')]
+      .filter(el=>el.getClientRects().length>0);
+    document.body.style.overflow='hidden';
+    (focusables()[0]||dialog).focus();
+    const onKey=(event:KeyboardEvent)=>{
+      if(event.key==='Escape'){event.preventDefault();setShowPublishChoices(false);return;}
+      if(event.key!=='Tab')return;
+      const nodes=focusables(),first=nodes[0],last=nodes[nodes.length-1];
+      if(!nodes.length){event.preventDefault();dialog.focus();}
+      else if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
     };
-    window.addEventListener('keydown', onEscape);
-    publishDialogRef.current?.focus();
-    return () => {
-      window.removeEventListener('keydown', onEscape);
-      previousFocus?.focus();
+    document.addEventListener('keydown',onKey);
+    return()=>{
+      document.removeEventListener('keydown',onKey);
+      document.body.style.overflow=previousOverflow;
+      if(previousFocus?.isConnected)previousFocus.focus();
     };
   }, [showPublishChoices]);
   const [analyticsChoice, setAnalyticsChoice] = useState<string | null>(() => localStorage.getItem('tc_analytics_consent'));

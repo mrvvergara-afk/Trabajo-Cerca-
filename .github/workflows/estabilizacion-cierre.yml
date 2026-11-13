@@ -49,6 +49,7 @@ jobs:
             appdeploy_staging/fast-bc-html.ts \
             appdeploy_staging/fast-bc-pipeline.ts \
             appdeploy_staging/free-public-sources.ts \
+            appdeploy_staging/public-source-verifier.ts \
             appdeploy_staging/chatgpt-direct-import.ts \
             appdeploy_staging/motor-d-auto-import.ts \
             appdeploy_staging/public-feed.ts
@@ -75,5 +76,14 @@ jobs:
           assert 'recheckOffset=' in sources['appdeploy_staging/free-public-sources.ts']
           assert 'db.transact([' in sources['appdeploy_staging/chatgpt-direct-import.ts']
           assert 'db.transact([' in sources['appdeploy_staging/free-public-sources.ts']
+          import re
+          verifier = Path('appdeploy_staging/public-source-verifier.ts').read_text()
+          index = Path('appdeploy_staging/index.ts').read_text()
+          policy = re.search(r'const SOURCE_WORK_PLACES = \[([^;]+)\];', verifier)
+          assert policy is not None, 'Worksite policy missing'
+          assert not any(city in policy.group(1) for city in ("'Temuco'", "'Los Ángeles'")), 'Outside commune can become verified'
+          assert 'const projectionPlaces = PILOT;' in index, 'Public feed allows secondary jobs outside pilot'
+          assert 'public_offer_worksite_outside_12_communes' in sources['appdeploy_staging/free-public-sources.ts']
           print('STABILIZATION_DB_RETRY_SAFETY_PASS')
+          print('STABILIZATION_12_COMMUNE_SCOPE_PASS')
           PY

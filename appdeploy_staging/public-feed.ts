@@ -1,7 +1,6 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
 import { publicOfferIdentity, publicFeedIdentity } from './public-source-adapters';
-import { withDbRetry } from './db-resilience';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
@@ -71,17 +70,17 @@ function chunks<T>(values:T[], envelope:(items:T[]) => unknown) {
 }
 
 async function single<T>(table:string) {
-  return (await withDbRetry(() => db.list<T>(table, { limit:1 }),{label:'public_feed_single:'+table})).items[0];
+  return (await db.list<T>(table, { limit:1 })).items[0];
 }
 
 async function replaceSingle(table:string, record:Stored) {
   checkSize(record);
   const current = await single<Stored>(table);
   if (current) {
-    const [ok] = await withDbRetry(() => db.update(table, [{ id:current.id, record }]),{label:'public_feed_pointer_update:'+table});
+    const [ok] = await db.update(table, [{ id:current.id, record }]);
     if (!ok) throw new Error('Public feed pointer/checkpoint write failed: ' + table);
   } else {
-    const [id] = await db.add(table, [record]); // auto-ID insert: do not blind-retry
+    const [id] = await db.add(table, [record]);
     if (!id) throw new Error('Public feed pointer/checkpoint insert failed: ' + table);
   }
 }
@@ -90,7 +89,7 @@ async function queueChanges(source:string, ids:string[]) {
   if (!allowedSource(source) || !ids.length) return;
   const records = ids.map(sourceId => ({ source, sourceId, queuedAt:new Date().toISOString() }));
   for (const batch of chunks(records, records => ({ table:'public_feed_changes', records }))) {
-    const saved = await db.add('public_feed_changes', batch); // auto-ID outbox: never blindly retry
+    const saved = await db.add('public_feed_changes', batch);
     if (saved.length !== batch.length || saved.some(id => !id)) {
       throw new Error('Source saved but public feed change registration failed; reconciliation required');
     }
@@ -135,7 +134,6 @@ export async function trackedFeedAdd(table:string, records:Stored[]) {
   const ids:Array<string | null> = [];
   for (const batch of chunks(records, records => ({ table, records }))) {
     batch.forEach(checkSize);
-    // A committed insert may have an unknown response: never blindly repeat it.
     const saved = await db.add(table, batch);
     if (saved.length !== batch.length) throw new Error('Source insertion result count mismatch');
     ids.push(...saved);
@@ -148,7 +146,7 @@ export async function trackedFeedUpdate(table:string, updates:Array<{ id:string;
   const results:boolean[] = [];
   for (const batch of chunks(updates, items => ({ table, items }))) {
     batch.forEach(item => checkSize(item.record));
-    const saved = await withDbRetry(() => db.update(table, batch),{label:'tracked_feed_update:'+table});
+    const saved = await db.update(table, batch);
     if (saved.length !== batch.length) throw new Error('Source update result count mismatch');
     results.push(...saved);
     await queueChanges(table, batch.filter((_, i) => saved[i]).map(item => item.id));
@@ -159,7 +157,7 @@ export async function trackedFeedUpdate(table:string, updates:Array<{ id:string;
 export async function trackedFeedDelete(table:string, ids:string[]) {
   const results:boolean[] = [];
   for (const batch of chunks(ids, ids => ({ table, ids }))) {
-    const saved = await db.delete(table, batch); // unknown-response delete: reconcile, don't blind-retry
+    const saved = await db.delete(table, batch);
     if (saved.length !== batch.length) throw new Error('Source deletion result count mismatch');
     results.push(...saved);
     await queueChanges(table, batch.filter((_, i) => saved[i]));
@@ -477,7 +475,7 @@ async function publish(record:Manifest, projector:Projector) {
       return {...(await readPublicFeedSummary()),rebuilding:false,regressionBlocked:true};
     }
   }
-  const [manifestId] = await db.add('public_feed_manifests', [record]); // auto-ID: do not blind-retry
+  const [manifestId] = await db.add('public_feed_manifests', [record]);
   if (!manifestId) throw new Error('Public feed manifest insertion failed; previous feed retained');
   const previous = await single<Control>('public_feed_control');
   const { id:_id, ...fields } = previous ?? {};

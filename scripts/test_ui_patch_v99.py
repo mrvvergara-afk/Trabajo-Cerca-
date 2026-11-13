@@ -19,7 +19,8 @@ class DesignPatchTests(unittest.TestCase):
 
     def test_replacements_preserve_four_real_destinations(self):
         gateway = self.diffs[1]["to"]
-        for value in ("Buscar empleo", "Publicar mi perfil gratis", "Servicios y negocios", "Publicidad comercial"):
+        # La tarjeta Buscar empleo ya existe en v99 y no necesita reemplazo.
+        for value in ("Publicar mi perfil gratis", "Servicios y negocios", "Publicidad comercial"):
             self.assertIn(value, gateway)
         self.assertEqual(gateway.count("<button"), 3)  # The unchanged employment card is fourth.
         mobile = self.diffs[3]["to"]

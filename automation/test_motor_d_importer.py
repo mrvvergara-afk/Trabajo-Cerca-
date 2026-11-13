@@ -22,6 +22,11 @@ class ImporterContractTests(unittest.TestCase):
             # admission and publication logic run unchanged in Node's TS runtime.
             direct = (fixture/'chatgpt-direct-import.ts').read_text().replace("'@appdeploy/sdk'", "'./sdk.ts'").replace("'./public-feed'", "'./feed.ts'").replace("'./public-source-adapters'", "'./adapters.ts'")
             bridge = (ROOT/'appdeploy_staging/motor-d-auto-import.ts').read_text().replace("'@appdeploy/sdk'", "'./sdk.ts'").replace("'./public-feed'", "'./feed.ts'").replace("'./public-source-adapters'", "'./adapters.ts'").replace("'./chatgpt-direct-import'", "'./direct.ts'")
+            # The bridge now imports the bounded DB retry helper. The real
+            # AppDeploy bundler resolves extensionless imports, whereas Node's
+            # ESM test fixture requires the explicit .ts extension.
+            bridge = bridge.replace("'./db-resilience'", "'./db-resilience.ts'")
+            shutil.copyfile(ROOT/'appdeploy_staging/db-resilience.ts', root/'db-resilience.ts')
             (root/'direct.ts').write_text(direct)
             (root/'bridge.ts').write_text(bridge)
             shutil.copyfile(fixture/'public-source-adapters.ts', root/'adapters.ts')

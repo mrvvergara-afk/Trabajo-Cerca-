@@ -39,8 +39,7 @@ import './mobile-structure.css';
 import './ux-polish-2026-11.css';
 import './commercial-card.css';
 import { SiteMenu } from './site-menu';
-import { LocalDirectory } from './local-directory';
-import './local-directory.css';
+const LocalDirectory = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectory })));
 function analyticsId() {
   try {
     const existing = sessionStorage.getItem('tc_technical_session');
@@ -1525,7 +1524,7 @@ function App() {
           <button type='button' className='tcDirectorySecondaryAction' onClick={() => openLocalDirectory('service')}>¿Ofreces servicios particulares? Publica gratis tus trabajos</button>
           {showHiringChoices && <div className='tcHirePanel' role='group' aria-label='Opciones para contratar'><strong>¿Cómo deseas contratar?</strong><button onClick={() => setFlow('trabajadores')}>Publicar necesidad de trabajadores</button><button onClick={() => navigateResults('people')}>Ver personas disponibles</button></div>}
         </section>
-        {directoryMode && <LocalDirectory place={place} initialKind={directoryMode} onClose={() => setDirectoryMode(null)}/>}
+        {directoryMode && <Suspense fallback={<div id='local-directory' className='tcLocalDirectory' role='status' aria-live='polite'>Cargando directorio local…</div>}><LocalDirectory place={place} initialKind={directoryMode} onClose={() => setDirectoryMode(null)}/></Suspense>}
         <section className='tcStitchRadarSummary' aria-label='Resumen del catálogo territorial'>
           <div><span><Radar aria-hidden='true'/> Radar laboral territorial · 12 comunas</span><b>{scopeCount??'…'} ofertas</b></div>
           <h2>Oportunidades en tu territorio</h2>

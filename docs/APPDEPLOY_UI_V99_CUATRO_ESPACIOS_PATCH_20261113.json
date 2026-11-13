@@ -8,7 +8,7 @@
       "diffs": [
         {
           "from": "              <button onClick={() => setFlow('ofrezco')}>Ofrezco mi trabajo</button>\n              <button onClick={() => { setShowHiringChoices(true); document.getElementById('tc-purpose-title')?.scrollIntoView({behavior:'smooth'}); }}>Necesito contratar</button>\n              <button onClick={() => openLocalDirectory('business')}>Negocios locales</button>",
-          "to": "              <button onClick={() => setFlow('ofrezco')}>Perfiles de trabajadores</button>\n              <button onClick={() => openLocalDirectory('business')}>Servicios y negocios</button>\n              <button onClick={() => setShowAdvertiser(true)}>Publicidad comercial</button>"
+          "to": "              <button onClick={() => navigateResults('people')}>Perfiles de trabajadores</button>\n              <button onClick={() => openLocalDirectory('business')}>Servicios y negocios</button>\n              <button onClick={() => setShowAdvertiser(true)}>Publicidad comercial</button>"
         },
         {
           "from": "            <button type='button' onClick={() => setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><strong>Ofrecer mi trabajo</strong><span>Publica gratis tu oficio o disponibilidad, sin currículum.</span></button>\n            <button type='button' onClick={() => setShowHiringChoices(value => !value)}><Users aria-hidden='true'/><strong>Necesito contratar</strong><span>Busca personas o publica una necesidad de trabajadores.</span></button>\n            <button type='button' onClick={() => openLocalDirectory('business')}><Store aria-hidden='true'/><strong>Negocios y servicios</strong><span>Emprendimientos, fotografías y contacto directo.</span></button>",
@@ -20,7 +20,7 @@
         },
         {
           "from": "          <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><House aria-hidden='true'/><span>Inicio</span></button>\n          <button onClick={()=>navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>\n          <button onClick={()=>openLocalDirectory('service')}><Wrench aria-hidden='true'/><span>Servicios</span></button>\n          <button onClick={()=>{setShowHiringChoices(true);document.getElementById('tc-purpose-title')?.scrollIntoView({behavior:'smooth'});}}><PlusCircle aria-hidden='true'/><span>Contratar</span></button>",
-          "to": "          <button onClick={()=>navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>\n          <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Perfiles</span></button>\n          <button onClick={()=>openLocalDirectory('business')}><Store aria-hidden='true'/><span>Servicios</span></button>\n          <button onClick={()=>setShowAdvertiser(true)}><Megaphone aria-hidden='true'/><span>Anunciar</span></button>"
+          "to": "          <button onClick={()=>navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>\n          <button onClick={()=>navigateResults('people')}><UserRoundSearch aria-hidden='true'/><span>Perfiles</span></button>\n          <button onClick={()=>openLocalDirectory('business')}><Store aria-hidden='true'/><span>Servicios</span></button>\n          <button onClick={()=>setShowAdvertiser(true)}><Megaphone aria-hidden='true'/><span>Anunciar</span></button>"
         }
       ]
     }

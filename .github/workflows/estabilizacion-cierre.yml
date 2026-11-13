@@ -1,0 +1,79 @@
+name: Trabajo Cerca | Contrato integral estabilizacion
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging/**'
+      - 'automation/ingest_municipal_pdf_queue.py'
+      - 'automation/test_ingest_municipal_pdf_queue.py'
+      - 'automation/schedule_watchdog.py'
+      - 'automation/test_schedule_watchdog.py'
+      - '.github/workflows/motor-schedule-watchdog.yml'
+      - '.github/workflows/qa-municipal-pdf-closeout.yml'
+      - '.github/workflows/radar.yml'
+      - '.github/workflows/estabilizacion-cierre.yml'
+      - 'scripts/ts_syntax_check.mjs'
+  push:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging/**'
+      - 'automation/ingest_municipal_pdf_queue.py'
+      - 'automation/test_ingest_municipal_pdf_queue.py'
+      - 'automation/schedule_watchdog.py'
+      - 'automation/test_schedule_watchdog.py'
+      - '.github/workflows/estabilizacion-cierre.yml'
+jobs:
+  check_stabilization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retry and recheck policy unit tests
+        run: |
+          node --experimental-strip-types appdeploy_staging/test_db_resilience.ts
+          node --experimental-strip-types appdeploy_staging/test_recheck_policy.ts
+      - name: TypeScript syntax validation without SDK or production access
+        run: |
+          node --experimental-vm-modules scripts/ts_syntax_check.mjs \
+            appdeploy_staging/db-resilience.ts \
+            appdeploy_staging/recheck-policy.ts \
+            appdeploy_staging/fast-bc-html.ts \
+            appdeploy_staging/fast-bc-pipeline.ts \
+            appdeploy_staging/free-public-sources.ts \
+            appdeploy_staging/chatgpt-direct-import.ts \
+            appdeploy_staging/motor-d-auto-import.ts \
+            appdeploy_staging/public-feed.ts
+      - name: Python unit tests for PDF queue and scheduled recovery
+        env:
+          PYTHONPATH: automation
+        run: |
+          python -m unittest discover -s automation -p 'test_ingest_municipal_pdf_queue.py' -v
+          python -m unittest discover -s automation -p 'test_schedule_watchdog.py' -v
+      - name: Protect uncertain DB outcomes from blind duplicate inserts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = [
+              'appdeploy_staging/public-feed.ts',
+              'appdeploy_staging/chatgpt-direct-import.ts',
+              'appdeploy_staging/free-public-sources.ts',
+          ]
+          sources = {f: Path(f).read_text() for f in files}
+          for name, content in sources.items():
+              assert 'withDbRetry(() => db.add(' not in content, name
+              assert 'withDbRetry(() => db.transact(' not in content, name
+              assert 'withDbRetry(() => registerPublicFeedChange(' not in content, name
+          assert 'recheckOffset=' in sources['appdeploy_staging/free-public-sources.ts']
+          assert 'db.transact([' in sources['appdeploy_staging/chatgpt-direct-import.ts']
+          assert 'db.transact([' in sources['appdeploy_staging/free-public-sources.ts']
+          print('STABILIZATION_DB_RETRY_SAFETY_PASS')
+          PY

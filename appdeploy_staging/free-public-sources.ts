@@ -1,4 +1,5 @@
 import { db } from '@appdeploy/sdk';
+import { recheckSlots } from './recheck-policy';
 import { createHash } from 'node:crypto';
 import { currentPublicFeedManifest, registerPublicFeedChange } from './public-feed';
 import { publicPublisher, publicSourceAdapter, safePublicUrl } from './public-source-adapters';
@@ -242,14 +243,19 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;
   if (id) {
-    const [ok] = await db.update(table,[{ id,record }]);
-    if (!ok) throw new Error('Public offer update failed');
+    const [updatedRows]=await db.transact([
+      db.tx.update(table,[{ id,record }]),
+      db.tx.add('public_feed_changes',[{source:table,sourceId:id,queuedAt:new Date(now).toISOString()}]),
+    ]);
+    if(!updatedRows[0])throw new Error('Public offer update failed');
   } else {
-    const [created] = await db.tx.add(table,[{ ...record,id:'free-'+identity.slice(0,40) }]);
-    if (!created) throw new Error('Public offer already exists; reconcile before advancing');
-    id = created;
+    id='free-'+identity.slice(0,40);
+    const [createdRows]=await db.transact([
+      db.tx.add(table,[{ ...record,id }]),
+      db.tx.add('public_feed_changes',[{source:table,sourceId:id,queuedAt:new Date(now).toISOString()}]),
+    ]);
+    if(!createdRows[0])throw new Error('Public offer already exists; reconcile before advancing');
   }
-  await registerPublicFeedChange(table,id);
   return { table,id,url:offer.url };
 }
 
@@ -268,7 +274,6 @@ async function closeKnownOffer(url:string,result:PublicVerification,page:{url:st
       closureEvidence:{sourceUrl:page.url,http:page.status,decodedHtmlSha256:hash(page.raw),checkedAt:new Date(now).toISOString(),reason:result.reason}}}]);
     if (!ok) throw new Error('Confirmed closure checkpoint failed');
   }
-  // Registration also runs on retry after a partial registration failure.
   await registerPublicFeedChange(table,id);
   return {id,table,reason:result.reason};
 }
@@ -348,7 +353,8 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     rechecks.delete(item.url);cResolvedRechecks++;
   }
   const dueAfterC=due.filter(item=>rechecks.has(item.url));
-  const priority = dueAfterC.slice(0,2).map(item => ({ url:item.url,source:'Reverificación pública' }));
+  const recheckCapacity=recheckSlots(dueAfterC.length,10);
+  const priority = dueAfterC.slice(0,recheckCapacity).map(item => ({ url:item.url,source:'Reverificación pública' }));
   const priorityUrls = new Set(priority.map(item => item.url));
   state.priorityCandidates=[...priority,...(state.priorityCandidates || []).filter(item=>!priorityUrls.has(item.url) && !documentManagedUrls.has(item.url))];
   state.pending=state.pending.filter(item=>!documentManagedUrls.has(item.url));
@@ -439,7 +445,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     // Reserve at least six of the eight review positions for new leads
     // when available. Revisits must not starve fresh municipal/portal jobs.
     let priorityQueue=state.priorityCandidates.length>0 &&
-      (priorityProcessed<2 || state.pending.length===0);
+      (priorityProcessed<Math.max(2,recheckCapacity) || state.pending.length===0);
     let selected=priorityQueue ? 0 : pendingCandidateIndex(state.pending,state.reviewLane || 0,state.reviewProviderPosition || 0);
     if(selected<0 && state.priorityCandidates.length>0){priorityQueue=true;selected=0;}
     if (selected<0) break;
@@ -483,7 +489,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     closuresConfirmed:closures.length,closures,sourcesDeferred:audits.filter(item=>item.error==='source_retry_deferred').length,
     pending:state.pending.length,priorityPending:state.priorityCandidates.length,
     documentsAwaitingLocalReader:state.documentPending.length,
-    reverificationBacklog:dueAfterC.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,cResolvedRechecks,
+    reverificationBacklog:dueAfterC.filter(item => !reviewed.some(result => result.url===item.url)).length,trackedOffers:rechecks.size,cResolvedRechecks,recheckCapacity,
     nextSource:state.position,coverageComplete:false,audits:audits.map(({ candidateEvidence,...audit })=>audit),reviewed,shadowReviewed,receipts };
   state.rechecks=[...rechecks.values()];
   state.recheckPolicy='public-source-dates-v2';
@@ -512,7 +518,17 @@ export async function freePublicSourceStatus() {
   const snapshot = current ? await currentPublicFeedManifest() : null;
   const receipts = Array.isArray(current?.summary?.receipts) ? current.summary.receipts as Stored[] : [];
   const visible = snapshot ? receipts.filter(receipt => snapshot.manifest.pages.some(page => page.keys.includes(String(receipt.table)+':'+String(receipt.id)))) : [];
-  return { readOnly:true,providerCalls:0,initialized:Boolean(current),summary:current?.summary || null,
+  const dueRechecks=(current?.rechecks || [])
+    .filter(item => !Number.isFinite(Date.parse(String(item.nextCheckAt||''))) || Date.parse(String(item.nextCheckAt||''))<=Date.now())
+    .sort((a,b)=>(Date.parse(String(a.nextCheckAt||a.lastAttemptAt||''))||0)-(Date.parse(String(b.nextCheckAt||b.lastAttemptAt||''))||0));
+  // Rotate the recheck batch every fifteen minutes. The first-24 slice
+  // permanently starved all later URLs when the first group remained pending.
+  const recheckOffset=dueRechecks.length
+    ? (Math.floor(Date.now()/(15*60*1000))*12)%dueRechecks.length : 0;
+  const recheckWork=[...dueRechecks.slice(recheckOffset),...dueRechecks.slice(0,recheckOffset)]
+    .slice(0,24)
+    .map(item=>({url:String(item.url||''),source:'Reverificación pública',nextCheckAt:item.nextCheckAt||null}));
+  return { readOnly:true,providerCalls:0,initialized:Boolean(current),summary:current?.summary || null,recheckWork,
     // Confirmation only concerns receipts from the MOST RECENT A scan.
     // This is NOT the historical publication count; avoid false zero claims.
     publishedConfirmed:snapshot ? visible.length : null,

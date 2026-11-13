@@ -1,10 +1,15 @@
 name: Trabajo Cerca | Conciliacion PDF municipales y B C
 on:
   workflow_dispatch:
+  schedule:
+    # After all four Motor D sweeps; no publishing or auto-approval.
+    - cron: '45 9,13,17,21 * * *'
   pull_request:
     branches: [main]
     paths:
       - 'automation/qa_municipal_pdf_closeout.py'
+      - 'automation/ingest_municipal_pdf_queue.py'
+      - 'automation/test_ingest_municipal_pdf_queue.py'
       - 'automation/test_qa_municipal_pdf_closeout.py'
       - 'automation/trabajo_cerca/municipal_feed.py'
       - 'automation/trabajo_cerca/descubrir_ofertas_municipales.py'
@@ -20,7 +25,7 @@ on:
       - 'automation/motor_d_territorial_daily.py'
       - '.github/workflows/qa-municipal-pdf-closeout.yml'
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: qa-municipal-pdf-closeout-${{ github.ref }}
   cancel-in-progress: false
@@ -40,6 +45,7 @@ jobs:
           PYTHONPATH: automation:automation/trabajo_cerca
         run: |
           python -m unittest discover -s automation -p 'test_qa_municipal_pdf_closeout.py' -v
+          python -m unittest discover -s automation -p 'test_ingest_municipal_pdf_queue.py' -v
           python -m unittest discover -s automation/trabajo_cerca -p 'test_municipal_feed.py' -v
           python -m unittest discover -s automation/trabajo_cerca -p 'test_descubrir_ofertas_municipales.py' -v
           python -m unittest discover -s automation -p 'test_motor_d_territorial.py' -v
@@ -47,6 +53,39 @@ jobs:
         env:
           PYTHONPATH: automation:automation/trabajo_cerca
         run: python automation/qa_municipal_pdf_closeout.py --output resultados/municipal_pdf_closeout.json
+      - name: Persist B/C PDF review evidence without reopening or overwriting signatures
+        if: success() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          git config user.name "trabajo-cerca-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Refresh the latest reviewer decisions before merging any findings.
+          git fetch origin main
+          git show origin/main:automation/motor_d_review/radar_ocr_pending.json \
+            > automation/motor_d_review/radar_ocr_pending.json
+          python automation/ingest_municipal_pdf_queue.py \
+            --input resultados/municipal_pdf_review_only.json \
+            --queue automation/motor_d_review/radar_ocr_pending.json
+          git add automation/motor_d_review/radar_ocr_pending.json
+          if git diff --cached --quiet; then
+            echo "MUNICIPAL_PDF_REVIEW_QUEUE_UNCHANGED"
+            exit 0
+          fi
+          git commit -m "data(review): ingest public municipal PDF cases [skip ci]"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "::error::Reviewer queue changed concurrently: no overwrite performed."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "MUNICIPAL_PDF_REVIEW_PERSISTED attempt=$attempt"
+              exit 0
+            fi
+            sleep 3
+          done
+          exit 1
       - name: Preserve JSON receipt and bounded B-only review queue
         if: always()
         uses: actions/upload-artifact@v4

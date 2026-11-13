@@ -1,4 +1,5 @@
 import { db, secrets } from '@appdeploy/sdk';
+import { withDbRetry, safeDbWrite } from './db-resilience';
 import { createHash } from 'node:crypto';
 import { Buffer } from 'node:buffer';
 import { directChatGPTImport } from './chatgpt-direct-import';
@@ -57,9 +58,15 @@ async function load(path:string, token:string) {
 
 async function recordStatus(state:string,more:Record<string,unknown>={}) {
   const row={at:new Date().toISOString(),state,...more};
-  await db.tx.update('motor_d_bridge_status',[{id:'current',record:row}]);
+  const persisted=await safeDbWrite(
+    () => db.tx.update('motor_d_bridge_status',[{id:'current',record:row}]),
+    {label:'motor_d_bridge_status',attempts:4});
+  if(!persisted.ok)console.warn('MOTOR_D_BRIDGE_STATUS_UNPERSISTED '+JSON.stringify(row).slice(0,7800));
   console.warn('MOTOR_D_BRIDGE '+JSON.stringify(row).slice(0,8000));
-  return {statusCode:200,body:JSON.stringify(row)};
+  // A failed status persistence must be visible to the scheduler.
+  return {statusCode:persisted.ok?200:503,
+    headers:persisted.ok?undefined:{'Retry-After':'60'},
+    body:JSON.stringify({...row,persisted:persisted.ok})};
 }
 
 export async function motorDAutoImportHandler(){
@@ -165,7 +172,15 @@ export async function motorDAutoImportHandler(){
       producerReadyCandidates:typeof heartbeat?.express_ready_candidates==='number'?heartbeat.express_ready_candidates:null,
       referenceDate:today
     });
-  }catch(e){return recordStatus('bridge_error',{error:String(e).slice(0,180)});}
+  }catch(e){
+    const row={at:new Date().toISOString(),state:'bridge_error',error:String(e).slice(0,180),retryable:true};
+    const persisted=await safeDbWrite(
+      () => db.tx.update('motor_d_bridge_status',[{id:'current',record:row}]),
+      {label:'motor_d_bridge_error_status',attempts:2});
+    console.warn('MOTOR_D_BRIDGE_ERROR '+JSON.stringify({...row,persisted:persisted.ok}));
+    return {statusCode:503,headers:{'Retry-After':'60'},
+      body:JSON.stringify({...row,persisted:persisted.ok})};
+  }
 }
 
 export async function confirmMotorDPublications(){
@@ -213,7 +228,9 @@ export async function confirmMotorDPublications(){
     }
     const expected=(batch.results||[]).filter(x=>!['expired','review_expired'].includes(x.status)).length;
     const fullyVisible=expected>0&&visible>=expected;
-    await db.tx.update('motor_d_import_receipts',[{id:batch.id,record:{...batch,status:!expected?'processed_without_publication':fullyVisible?'published':'awaiting_public_feed',published:visible,checkedAt:new Date().toISOString()}}]);
+    await withDbRetry(
+      () => db.tx.update('motor_d_import_receipts',[{id:batch.id,record:{...batch,status:!expected?'processed_without_publication':fullyVisible?'published':'awaiting_public_feed',published:visible,checkedAt:new Date().toISOString()}}]),
+      {label:'motor_d_confirm_receipt:'+batch.id,attempts:4});
     if(fullyVisible)publishedBatches++;else waiting++;
   }
   return {checked:Math.min(12,pending.length),publishedBatches,waiting};

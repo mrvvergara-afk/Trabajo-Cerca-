@@ -112,7 +112,7 @@ export async function motorDAutoImportHandler(){
           return recordStatus('ocr_document_changed_or_unavailable',{batchId});
         else current.push(offer);
       }
-      const output=current.length ? await directChatGPTImport({offers:current,commit:true}) :
+      const output=current.length ? await directChatGPTImport({offers:current,commit:true,producer:'motor_d_territorial'}) :
         {statusCode:200,body:'{"results":[]}'};
       if(output.statusCode!==200)return recordStatus('import_error',{batchId,http:output.statusCode});
       const parsed=JSON.parse(String(output.body||'{}')) as {results?:Result[]};

@@ -1,0 +1,38 @@
+name: QA UX full frontend Vite — no deploy
+on:
+  push:
+    branches:
+      - feature/ux-polish-2026-11
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/**'
+      - '.github/workflows/ux-polish-full-vite-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qa-ux-full-frontend
+  cancel-in-progress: true
+
+jobs:
+  frontend-bundle-no-sdk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install frontend dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build full React/Vite import graph with isolated SDK mock
+        run: npm run build -- --config vite.qa.config.ts
+      - name: Verify lazy chunk, assets and output
+        run: |
+          test -f dist-qa/index.html
+          find dist-qa/assets -type f | sort | head -35
+          echo 'This does not test AppDeploy SDK or real backend.'

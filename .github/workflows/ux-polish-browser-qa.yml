@@ -1,0 +1,51 @@
+name: QA UX Chromium responsive — no deploy
+on:
+  push:
+    branches: [feature/ux-polish-2026-11]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/**'
+      - '.github/workflows/ux-polish-browser-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qa-ux-chromium
+  cancel-in-progress: true
+
+jobs:
+  chromium-mock-backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install frontend dependency graph
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Start isolated QA frontend (no real backend)
+        run: |
+          nohup npm run dev -- --config vite.qa.config.ts --host 127.0.0.1 --port 4173 --strictPort > /tmp/trabajo-cerca-ux-qa-vite.log 2>&1 &
+          for i in $(seq 1 40); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:4173/; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/trabajo-cerca-ux-qa-vite.log
+          exit 1
+      - name: Check six responsive sizes, navigation, modal and errors
+        run: node qa/e2e.mjs
+      - name: Upload only synthetic QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trabajo-cerca-ux-synthetic-screenshots
+          path: ux-staging/appdeploy-1794590590707/preview/qa/captures/*.png
+          if-no-files-found: ignore
+          retention-days: 5

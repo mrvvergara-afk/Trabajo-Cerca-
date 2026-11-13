@@ -29,6 +29,14 @@ jobs:
           python-version: '3.12'
       - name: Strict ChatGPT batch contract tests
         run: python -m unittest automation.test_stage_chatgpt_handoff -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse all modified TypeScript modules without modifying app
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/chatgpt-auto-import.ts --format=esm --platform=node --packages=external --outfile=/tmp/chatgpt-auto-import.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/chatgpt-direct-import.ts --format=esm --platform=node --packages=external --outfile=/tmp/chatgpt-direct-import.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/motor-d-auto-import.ts --format=esm --platform=node --packages=external --outfile=/tmp/motor-d-auto-import.js
       - name: Verify channel isolation and provenance
         run: |
           python - <<'PY'

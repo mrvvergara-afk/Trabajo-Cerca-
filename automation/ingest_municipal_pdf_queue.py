@@ -64,7 +64,8 @@ def merge(existing: dict, rows: list[dict], today: str | None = None) -> dict:
         if not isinstance(row, dict):
             raise ValueError("invalid_review_queue_row")
         item = _item(row, today)
-        previous_key = item["review_id"] if item["review_id"] in by_id else by_url.get(url := item["url"])
+        url = item["url"]
+        previous_key = item["review_id"] if item["review_id"] in by_id else by_url.get(url)
         previous = by_id.get(previous_key) if previous_key else None
         if previous and previous.get("review_status") in ("approved", "rejected"):
             continue

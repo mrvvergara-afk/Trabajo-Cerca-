@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-13T12:17:55.797969-03:00",
+  "last_run": "2026-11-13T14:11:16.177678-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -4668,6 +4668,144 @@
       "first_seen": "2026-11-13T12:17:55.797969-03:00",
       "url": "https://lasnoticiasdemalleco.cl/policial/jefatura-de-la-defensa-nacional-fortalece-su-despliegue-y-labores-de-seguridad-en-la-macrozona-sur/",
       "source": "Las Noticias de Malleco",
+      "commune": null
+    },
+    "2ee12fa1a047c31a5c2e": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "182b673d4b766474b53d": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-ciberseguridad-aws-fortinet-ztna-remoto-3077005.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4e75a6d5f4cae3bfb2c4": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-multiproposito-soldadura-y-gasfiteria-san-bernardo-800000-3077004.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f8e86adf7cc578bfd386": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-multiproposito-especialidad-en-calderas-950000-licencia-clase-b-santiago-centro-3077003.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ecf8f40b057c1773b121": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/electromecanico-automotriz-lunes-a-viernes-3077002.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e92a4d21a0c22d03289b": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-a-central-de-monitoreo-y-cctv-estacion-central-3077001.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1a86d871cee9845ebdf8": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-retail-part-time-turno-manana-penalolen-part-time-3077000.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "99d8b1004e665747afbb": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/guardia-de-seguridad-reemplazo-chillan-3076999.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "26bf5ea6719b80fae9fe": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-part-time-turno-tarde-maipu-solo-domingos-maip-3076998.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cf48cd4a81056e745ab7": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/mucama-eventos-17-de-noviembre-la-serena-3076997.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b9bdff9857fc8c092ba1": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-embajada-eeuu-3076996.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cd0aa310bfa56834e2bc": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-4x4-dia-puma-mall-buenaventura-3076995.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "187c08977a9c987f0d0a": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/guardia-tactico-con-valer-militar-al-dia-antofagasta-3076994.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "66d03459450bf494d19a": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/romanero-y-portero-con-os10-turnos-4x4-d-n-3076993.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ba04efdd474e40e7fd69": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/planner-ingeniero-a-civil-industrial-huechuraba-3076992.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bb7367e68c37544d74d3": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-desarrollador-control-m-media-jornada-3076991.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e401c5d818721f3b9174": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-multiproposito-650000-santiago-centro-santiago-centro-3076990.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "36f72afa2cd5a734eca6": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/asistente-tecnico-planificacion-3076989.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9c539c9cc1c438ace5a0": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-multiproposito-electrico-santiago-centro-900000-6x1-rotativo-3076988.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "936180ae3294c745b60a": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/subgerente-de-turno-local-comida-rapida-wendys-antofagasta-3076987.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e18a6490459cca30e050": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/subgerente-de-turno-local-comida-rapida-wendys-region-metropolitana-3076986.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0fa68f180f0c93d67f42": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Maquinaria-Forestal-Gr%C3%BAa-CIMA-Zona-Valdivia-LR-5110467/1450530200/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "5d64c72b8250e56207fc": {
+      "first_seen": "2026-11-13T14:11:16.177678-03:00",
+      "url": "https://www.radionativa.cl/fiscalia-confirma-un-detenido-por-crimen-de-mecanico-en-tirua/",
+      "source": "Inventario P06",
       "commune": null
     }
   }

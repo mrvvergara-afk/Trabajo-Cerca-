@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261113-f1f5321e2fa710cca9",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_719dc82e84eb93a138d9",
+      "cargo": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
+      "empresa": "Fondo Esperanza",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
+      "fecha_publicacion": "2026-11-13",
+      "fecha_descubrimiento": "2026-11-13",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-01-27",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

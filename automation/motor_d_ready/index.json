@@ -90,6 +90,12 @@
       "file": "20261113/motor-d-20261113-7eead2a588e2f46bf4.json",
       "count": 1,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261113-f1f5321e2fa710cca9",
+      "file": "20261113/motor-d-20261113-f1f5321e2fa710cca9.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -113,6 +119,7 @@
     "d_5c980138c7556d6f7de9",
     "d_5ca6fdce4da0aaa7911b",
     "d_688f28c809dc3463f046",
+    "d_719dc82e84eb93a138d9",
     "d_728743fa1bc6044fab11",
     "d_7f24f1a31c25f4813b5c",
     "d_8058b3072cf8cc198cc8",
@@ -144,6 +151,7 @@
   ],
   "seen_identity_keys": [
     "job:[\"analista laboratorio i turno\", \"cmpc\", [\"nacimiento\"]]",
+    "job:[\"asesor a de socias rural en angol malleco trabajador a tecnico social\", \"fondo esperanza\", [\"angol\"]]",
     "job:[\"asistente de aseo pt 20 hr angol\", \"fashion s park\", [\"angol\"]]",
     "job:[\"asistente dental full time angol\", \"importante empresa del rubro\", [\"angol\"]]",
     "job:[\"auditor a relator a de calidad e inocuidad alimentaria angol\", \"smu\", [\"angol\"]]",
@@ -232,6 +240,8 @@
     "source:chiletrabajos:3926914",
     "source:chiletrabajos:3926918",
     "source:chiletrabajos:3927989",
+    "source:chiletrabajos:3931920",
+    "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
     "url:https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
     "url:https://chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
     "url:https://chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",

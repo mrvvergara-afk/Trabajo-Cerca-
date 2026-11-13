@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "chatgpt_territorial",
+  "batch_id": "chatgpt-20261113-029256317af938be8b",
+  "offers": [
+    {
+      "id_fuente": "cg_8dfb2507759d6af5a6ba",
+      "cargo": "Psicólogo/a Organizacional - Comuna Ercilla",
+      "empresa": "Empresa Confidencial",
+      "comunas": [
+        "Ercilla"
+      ],
+      "ubicacion_trabajo": "Comuna de Ercilla (residencia exigida; talleres presenciales y online)",
+      "modalidad": "hibrida",
+      "salario": null,
+      "url_original": "https://www.chiletrabajos.cl/trabajo/psicologo-a-organizacional-comuna-ercilla-3924928",
+      "enlace_postulacion": "https://www.chiletrabajos.cl/trabajo/psicologo-a-organizacional-comuna-ercilla-3924928",
+      "fecha_publicacion": "2026-11-02",
+      "fecha_descubrimiento": "2026-11-13",
+      "fecha_cierre": "2027-01-16",
+      "justificacion": "Ficha Chiletrabajos activa al 13-11-2026, postular disponible; faena/residencia Ercilla.",
+      "url_canonica": "https://chiletrabajos.cl/trabajo/psicologo-a-organizacional-comuna-ercilla-3924928",
+      "hash_url_sha256": "8dfb2507759d6af5a6ba0da1b099ce3c64a6844b2dca3185a21142c383d2e9d3"
+    },
+    {
+      "id_fuente": "cg_60408f9a973f64dedcf9",
+      "cargo": "DOCENTE PSICOLOGO",
+      "empresa": "CORPORACION HD SPA",
+      "comunas": [
+        "Angol"
+      ],
+      "ubicacion_trabajo": "Angol",
+      "modalidad": "no_informada",
+      "salario": null,
+      "url_original": "https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+      "enlace_postulacion": "https://www.chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+      "fecha_publicacion": "2026-10-18",
+      "fecha_descubrimiento": "2026-11-13",
+      "fecha_cierre": "2027-01-01",
+      "justificacion": "Ficha Chiletrabajos activa al 13-11-2026, postulación y fecha de cierre comprobadas.",
+      "url_canonica": "https://chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+      "hash_url_sha256": "60408f9a973f64dedcf9c00452d936065d0ff4af97bba5fd2370592550e76492"
+    },
+    {
+      "id_fuente": "cg_94705dc3f15d6a32e63f",
+      "cargo": "Asistente Administrativa de Caja/Victoria",
+      "empresa": "Talentfinder",
+      "comunas": [
+        "Victoria"
+      ],
+      "ubicacion_trabajo": "Victoria, cruce Traiguén (Ruta 5 Sur)",
+      "modalidad": "presencial",
+      "salario": "$560.000 (campo salario portal); descripción menciona $650.000 líquidos aprox.",
+      "url_original": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/asistente-administrativa-de-caja-victoria-3070013.html",
+      "enlace_postulacion": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/asistente-administrativa-de-caja-victoria-3070013.html",
+      "fecha_publicacion": "2026-11-03",
+      "fecha_descubrimiento": "2026-11-13",
+      "fecha_cierre": null,
+      "justificacion": "Mipleo activo desde 03-11-2026 con enlace de postulación; salario del portal difiere de descripción; conservar ambos.",
+      "url_canonica": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/asistente-administrativa-de-caja-victoria-3070013.html",
+      "hash_url_sha256": "94705dc3f15d6a32e63f01f408f9ef257c1d19db0971042a224fbadd250c7c9a"
+    },
+    {
+      "id_fuente": "cg_31f02250de5f4c72a053",
+      "cargo": "Cajeros(as) Multifuncionales Full Time / Victoria",
+      "empresa": "Tiendas Upa!",
+      "comunas": [
+        "Victoria"
+      ],
+      "ubicacion_trabajo": "Victoria",
+      "modalidad": "presencial",
+      "salario": "A convenir",
+      "url_original": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/cajeros-as-multifuncionales-full-time-victoria-3068072.html",
+      "enlace_postulacion": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/cajeros-as-multifuncionales-full-time-victoria-3068072.html",
+      "fecha_publicacion": "2026-11-02",
+      "fecha_descubrimiento": "2026-11-13",
+      "fecha_cierre": null,
+      "justificacion": "Mipleo activo desde 02-11-2026, anuncio muestra 'Postula con nosotros'.",
+      "url_canonica": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/cajeros-as-multifuncionales-full-time-victoria-3068072.html",
+      "hash_url_sha256": "31f02250de5f4c72a053f7c376fe5a990dd9ae77136072fb34f1ae7f257d953c"
+    },
+    {
+      "id_fuente": "cg_cf56d288bde056a1d0fe",
+      "cargo": "Jefe Asesoría Aeródromo Victoria",
+      "empresa": "Ingenieros Consultores Asociados S.A.",
+      "comunas": [
+        "Victoria"
+      ],
+      "ubicacion_trabajo": "Aeródromo Victoria",
+      "modalidad": "no_informada",
+      "salario": "A convenir",
+      "url_original": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/jefe-asesoria-aerodromo-victoria-3065931.html",
+      "enlace_postulacion": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/jefe-asesoria-aerodromo-victoria-3065931.html",
+      "fecha_publicacion": "2026-10-29",
+      "fecha_descubrimiento": "2026-11-13",
+      "fecha_cierre": null,
+      "justificacion": "Mipleo activo desde 29-10-2026 y con opción de postulación.",
+      "url_canonica": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/jefe-asesoria-aerodromo-victoria-3065931.html",
+      "hash_url_sha256": "cf56d288bde056a1d0fede3553005a5e7d4f5acfbbb875455ac2e1233731167b"
+    }
+  ]
+}

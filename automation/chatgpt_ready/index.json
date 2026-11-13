@@ -1,7 +1,25 @@
 {
   "schema_version": 1,
   "producer": "chatgpt_territorial",
-  "batches": [],
-  "seen_offer_ids": [],
-  "seen_url_hashes": []
+  "batches": [
+    {
+      "batch_id": "chatgpt-20261113-029256317af938be8b",
+      "file": "20261113/chatgpt-20261113-029256317af938be8b.json",
+      "count": 5
+    }
+  ],
+  "seen_offer_ids": [
+    "cg_31f02250de5f4c72a053",
+    "cg_60408f9a973f64dedcf9",
+    "cg_8dfb2507759d6af5a6ba",
+    "cg_94705dc3f15d6a32e63f",
+    "cg_cf56d288bde056a1d0fe"
+  ],
+  "seen_url_hashes": [
+    "31f02250de5f4c72a053f7c376fe5a990dd9ae77136072fb34f1ae7f257d953c",
+    "60408f9a973f64dedcf9c00452d936065d0ff4af97bba5fd2370592550e76492",
+    "8dfb2507759d6af5a6ba0da1b099ce3c64a6844b2dca3185a21142c383d2e9d3",
+    "94705dc3f15d6a32e63f01f408f9ef257c1d19db0971042a224fbadd250c7c9a",
+    "cf56d288bde056a1d0fede3553005a5e7d4f5acfbbb875455ac2e1233731167b"
+  ]
 }

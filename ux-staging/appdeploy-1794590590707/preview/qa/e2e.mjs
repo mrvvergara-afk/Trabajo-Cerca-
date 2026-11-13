@@ -27,6 +27,14 @@ try{
     throw new Error('Frontend not mounted. root='+root.slice(0,400)+'; errors='+errors.slice(0,10).join(' | ')+'; '+String(error));
    }
    await check(width+'px: frontend mounts',async()=>assert.equal(await page.locator('.tcStitchShell').count(),1));
+   if(process.env.UX_QA_LIVE==='1' && width===390){
+     await check('live public feed: actual job cards and IDs render',async()=>{
+       await page.waitForFunction(()=>document.querySelectorAll('[data-offer-id]').length>0,null,{timeout:25000});
+       const ids=await page.locator('[data-offer-id]').evaluateAll(nodes=>nodes.map(node=>node.getAttribute('data-offer-id')));
+       assert(ids.length>0 && ids.every(id=>typeof id==='string'&&id.length>2));
+       console.log('LIVE_CATALOG visible_cards='+ids.length+' (IDs withheld)');
+     });
+   }
    await check(width+'px: no horizontal overflow',async()=>{
      const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:window.innerWidth}));
      assert(sizes.scroll<=sizes.width+2,JSON.stringify(sizes));

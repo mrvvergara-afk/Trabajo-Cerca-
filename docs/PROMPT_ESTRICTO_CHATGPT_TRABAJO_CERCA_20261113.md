@@ -19,7 +19,7 @@ El resultado intermedio DEBE ser JSON, no texto libre. Debe validar con automati
 - salario: texto original o null, nunca inventar.
 - url_original: URL HTTPS específica de la oferta.
 - enlace_postulacion: enlace real HTTPS o null (si se postula presencialmente).
-- fecha_publicacion: fecha original ISO comprobada, no fecha de descubrimiento.
+- fecha_publicacion: fecha original ISO comprobada o null. Si es null, exigir vigencia_fuente=postulacion_abierta_verificada y fecha_verificacion de máximo 48 horas; NUNCA inventar fecha original.
 - fecha_descubrimiento: fecha ISO del rastreo.
 - fecha_cierre: ISO si existe; en otro caso null.
 - justificacion: evidencia corta y procedencia, sin afirmar vigencia si solo hay índice histórico.
@@ -34,7 +34,7 @@ E. Solo después de aprobación verificable se arma lote con approval=approved_f
 F. Escribir lote e índice en un commit atómico, importar por puente ChatGPT separado de Motor D; comprobar receipts y visibilidad pública real. Un archivo generado NO demuestra publicación.
 
 ## Excepciones
-Una ficha OMIL abierta sin fecha original debe ir por ruta especial existente de prueba municipal/documental, no falsificar una fecha para satisfacer el contrato. Para varias ofertas en un mismo afiche/perfil social se requieren identidades específicas comprobables; si todas comparten URL genérica sin ficha única, NO usar una URL fabricada o copiar el mismo URL hash para varias vacantes. Registrar el caso para revisión documental diferenciada.
+La extracción admite fecha_publicacion=null con evidencia vigente; el módulo de publicación actual aún NO autoriza automáticamente fechas nulas fuera de su excepción OMIL. Mantenerlas pendientes de ruta compatible, sin inventar fecha para satisfacer el importador. Una ficha OMIL abierta sin fecha original debe ir por ruta especial existente de prueba municipal/documental. Para varias ofertas en un mismo afiche/perfil social se requieren identidades específicas comprobables; si todas comparten URL genérica sin ficha única, NO usar una URL fabricada o copiar el mismo URL hash para varias vacantes. Registrar el caso para revisión documental diferenciada.
 
 ## Resumen operativo
 Reportar: fuentes del inventario, visitadas por comuna y estado, verificadas, descartadas, bloqueadas, nuevas tras dedup, publicadas visibles. Etiquetar "sin confirmar" cuando no existe evidencia de publicación real.

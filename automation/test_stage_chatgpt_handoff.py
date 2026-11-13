@@ -6,11 +6,13 @@ from automation.stage_chatgpt_handoff import prepare
 def payload():
     return {"schema_version": 1, "approval": "approved_for_publication", "producer": "chatgpt_territorial",
             "offers": [{"id_fuente": "cg_" + "a" * 20, "cargo": "Operador industrial", "empresa": "Empresa Ejemplo",
-                        "comunas": ["Mininco", "Coihue"], "url_original": "https://empresa.example/jobs/123",
+                        "comunas": ["Mininco", "Coihue"], "ubicacion_trabajo": "Plantas Mininco y Coihue",
+                        "modalidad": "presencial", "salario": None, "enlace_postulacion": "https://empresa.example/apply/123",
+                        "url_original": "https://empresa.example/jobs/123",
                         "fecha_publicacion": "2026-11-10", "fecha_descubrimiento": "2026-11-13"}]}
 
 def index():
-    return {"schema_version": 1, "producer": "chatgpt_territorial", "batches": [], "seen_offer_ids": []}
+    return {"schema_version": 1, "producer": "chatgpt_territorial", "batches": [], "seen_offer_ids": [], "seen_url_hashes": []}
 
 class TestChatGPTHandoff(unittest.TestCase):
     def test_new_batch_distinct_identity(self):
@@ -20,6 +22,8 @@ class TestChatGPTHandoff(unittest.TestCase):
         self.assertEqual(batch["offers"][0]["comunas"], ["Collipulli", "Negrete"])
         self.assertEqual(len(state["batches"]), 1)
         self.assertEqual(len(state["seen_offer_ids"]), 1)
+        self.assertEqual(len(state["seen_url_hashes"]), 1)
+        self.assertRegex(batch["offers"][0]["hash_url_sha256"], r"^[a-f0-9]{64}$")
 
     def test_motor_d_cannot_impersonate_chatgpt(self):
         p = payload()
@@ -43,7 +47,7 @@ class TestChatGPTHandoff(unittest.TestCase):
     def test_no_fabricated_dates(self):
         p = payload()
         p["offers"][0].pop("fecha_publicacion")
-        with self.assertRaisesRegex(ValueError, "missing_fecha_publicacion"):
+        with self.assertRaisesRegex(ValueError, "invalid_strict_offer_keys"):
             prepare(p, index(), day="20261113")
 
     def test_missing_approval_rejected(self):

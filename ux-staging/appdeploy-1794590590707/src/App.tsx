@@ -1303,7 +1303,7 @@ function App() {
     exploredCursors.current.add(nextCursor);void load(nextCursor);
   },[nextCursor,loading,loadingMore,loadError]);
   useEffect(()=>{if(!resultFocus)return;const target=document.getElementById('neo-jobs');target?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});target?.focus({preventScroll:true});},[resultFocus]);
-  const navigateResults=(next:Section='opportunities',town=place,recent=false,unread=false)=>{setResultPage(0);setSection(next);setPlace(town);setFilterMode('work');setQ('');setArea('Todas');setOnlyNew(recent);setOnlyUnread(unread);setResultFocus(n=>n+1);};
+  const navigateResults=(next:Section='opportunities',town=place,recent=false,unread=false)=>{setDirectoryMode(null);setResultPage(0);setSection(next);setPlace(town);setFilterMode('work');setQ('');setArea('Todas');setOnlyNew(recent);setOnlyUnread(unread);setResultFocus(n=>n+1);};
   const territoryTotals=useMemo(()=>territorialScopeTotals(items),[items]);
   const scopedJobs=items.filter(item=>item.kind==='job_offer'&&matchesTerritorialView(item,place,places));
   const scopedRecent=scopedJobs.filter(isFresh);

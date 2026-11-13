@@ -1,8 +1,8 @@
 {
   "0e6e60449c91453344aa": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -11,9 +11,9 @@
     "new_verified_this_scan": 0
   },
   "12c6492363d98c60befd": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "84c0f7db2dec86a56a12",
@@ -44,9 +44,9 @@
     "new_verified_this_scan": 0
   },
   "1b576fbc459bbda31b91": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "23bf4087bbcd87fdb180",
@@ -61,9 +61,9 @@
     "new_verified_this_scan": 0
   },
   "27fed46e9b32f3c4cb19": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -72,10 +72,10 @@
     "new_verified_this_scan": 0
   },
   "33d40f93bf9432db64cd": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -83,9 +83,9 @@
     "new_verified_this_scan": 0
   },
   "385cb9eb9fab3364da2b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -94,9 +94,9 @@
     "new_verified_this_scan": 0
   },
   "3f7bbca9fa6e8a9d0aea": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "ae559ce3e9390f435e55",
@@ -109,9 +109,9 @@
     "new_verified_this_scan": 0
   },
   "4b89b1f6f2118cfc8d72": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -120,9 +120,9 @@
     "new_verified_this_scan": 0
   },
   "5dc53070ec5f8b7a9826": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -131,9 +131,9 @@
     "new_verified_this_scan": 0
   },
   "681f8bb436ebf943a015": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -142,9 +142,9 @@
     "new_verified_this_scan": 0
   },
   "6a1f646aeeab2be90424": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_partial_index",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "f16f6ace597c8168a6e0",
@@ -296,9 +296,9 @@
     "new_verified_this_scan": 0
   },
   "6f71bc1d1b3efd77d466": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -307,9 +307,9 @@
     "new_verified_this_scan": 0
   },
   "a466489ec227da98b77c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "847ae9d668878bed1bf2",
@@ -323,9 +323,9 @@
     "new_verified_this_scan": 0
   },
   "a5a2c2615ce8cc9d7e0f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "14d850481dc5ef0be99d",
@@ -338,9 +338,9 @@
     "new_verified_this_scan": 0
   },
   "c3c12649099b265a786e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -349,9 +349,9 @@
     "new_verified_this_scan": 0
   },
   "cfac632ed26fb3f387da": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -360,9 +360,9 @@
     "new_verified_this_scan": 0
   },
   "d18367384f6cdf1d1def": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "f196ccf68aa3483e0e60"
@@ -373,9 +373,9 @@
     "new_verified_this_scan": 0
   },
   "00a5c7f9f6e6458a4663": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -384,10 +384,10 @@
     "new_verified_this_scan": 0
   },
   "01f5350f441449243077": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -395,9 +395,9 @@
     "new_verified_this_scan": 0
   },
   "0385920d1f37dc9bb72f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -409,9 +409,9 @@
     "new_verified_this_scan": 0
   },
   "0498caaf3c5b9515a3f0": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "d84ad9f2e578609bf5b0",
@@ -426,10 +426,10 @@
     "new_verified_this_scan": 0
   },
   "05dbd3607c711f4fe4e7": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -437,9 +437,9 @@
     "new_verified_this_scan": 0
   },
   "09cd2807a0a7ce2fdca1": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -451,9 +451,9 @@
     "new_verified_this_scan": 0
   },
   "0ccdc04534e34659b53f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -462,9 +462,9 @@
     "new_verified_this_scan": 0
   },
   "0cd1ca16048f3045f1a8": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "ce8e8fa92a17f890ddce",
@@ -478,9 +478,9 @@
     "new_verified_this_scan": 0
   },
   "0cdc7471834cdbd4ddf5": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -489,9 +489,9 @@
     "new_verified_this_scan": 0
   },
   "0f4e53d2dc697db34210": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -500,10 +500,10 @@
     "new_verified_this_scan": 0
   },
   "0fbef24a3cc0ec102516": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -511,9 +511,9 @@
     "new_verified_this_scan": 0
   },
   "104cb21f3b8a03626048": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 5,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -522,9 +522,9 @@
     "new_verified_this_scan": 0
   },
   "11eb2852413642b2bdbf": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -533,10 +533,10 @@
     "new_verified_this_scan": 0
   },
   "1430d94eac78ad7b000c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -544,9 +544,9 @@
     "new_verified_this_scan": 0
   },
   "169bfe2a48756cccda19": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -555,9 +555,9 @@
     "new_verified_this_scan": 0
   },
   "178f8b8a9c2565ee9c9a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -566,9 +566,9 @@
     "new_verified_this_scan": 0
   },
   "18e59f401f833786ae3a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -577,10 +577,10 @@
     "new_verified_this_scan": 0
   },
   "1b71005b2557bbd8ee6b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -588,9 +588,9 @@
     "new_verified_this_scan": 0
   },
   "23d0575e2faa0b8c43bb": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -599,10 +599,10 @@
     "new_verified_this_scan": 0
   },
   "26e7f4c16c97f94e0cb9": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -610,9 +610,9 @@
     "new_verified_this_scan": 0
   },
   "28327d44089be10ba34b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "f6845464a720874dfa77",
@@ -824,18 +824,38 @@
       "33150637de2af86044dd",
       "7e1540dde0a0b0304daf",
       "400a6009457fb64b6b70",
-      "36218fe0ca24e49e81f7"
+      "36218fe0ca24e49e81f7",
+      "d5d93b5fc7ba0b4030f6",
+      "f7a6d146b7275a5c16b6",
+      "4562235e7eef04e2a906",
+      "dac6537900824cb2c9a2",
+      "c443efcab99eb428c1e3",
+      "5c09ba69d2f020092429",
+      "1c8d0613ca68f7615b1a",
+      "046f087ea8aec071fdc9",
+      "cb3f54bf05e14151e04b",
+      "73a62f6c5de40fc8e21b",
+      "753d02c84b9fe8876816",
+      "c84c0855adf689e73a75",
+      "0c5b97c514611569650c",
+      "e9213c6351ed01b5e3e1",
+      "de7116127f3ca31dc0f1",
+      "01f334d2a4e9f5e98d64",
+      "e88a6be0572fbd98a01a",
+      "9d0858665fc3c1e7f0e8",
+      "89bfd05bcfeb91913548",
+      "25347b7f94af0a42e4de"
     ],
-    "individual": 153,
+    "individual": 171,
     "ready": 0,
     "seen_eligible_candidate_ids": [],
     "new_verified_this_scan": 0
   },
   "28c71964159b8244044d": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -843,10 +863,10 @@
     "new_verified_this_scan": 0
   },
   "28ea0a5d13c7382bc94c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -854,10 +874,10 @@
     "new_verified_this_scan": 0
   },
   "2a24f767d030043e3156": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -865,10 +885,10 @@
     "new_verified_this_scan": 0
   },
   "2aec70c69b6e1b874215": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -876,10 +896,10 @@
     "new_verified_this_scan": 0
   },
   "2b03169ba1a8ac3691e8": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_error",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -887,9 +907,9 @@
     "new_verified_this_scan": 0
   },
   "2c349ab327d03b2c8a2e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -898,9 +918,9 @@
     "new_verified_this_scan": 0
   },
   "2cbbe7ca7223df025954": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -909,9 +929,9 @@
     "new_verified_this_scan": 0
   },
   "2d2cdd6d550b935a76e3": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -920,9 +940,9 @@
     "new_verified_this_scan": 0
   },
   "2d58b7c0a4b425f727fc": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -931,9 +951,9 @@
     "new_verified_this_scan": 0
   },
   "2d5d4c42877c5ccbd055": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "cf351e48f76bf92fe453",
@@ -953,9 +973,9 @@
     "new_verified_this_scan": 0
   },
   "2d62de66c62bb79d6e4c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -964,10 +984,10 @@
     "new_verified_this_scan": 0
   },
   "2dfd8bef9b01c2f661cb": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -975,9 +995,9 @@
     "new_verified_this_scan": 0
   },
   "2e5d13719312865d3636": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "0f5f10c1075ef2860818",
@@ -991,9 +1011,9 @@
     "new_verified_this_scan": 0
   },
   "326af39aa59118f206f9": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1002,9 +1022,9 @@
     "new_verified_this_scan": 0
   },
   "361f692c40d13907f684": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1013,10 +1033,10 @@
     "new_verified_this_scan": 0
   },
   "375379167ee7acd0c24d": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1024,9 +1044,9 @@
     "new_verified_this_scan": 0
   },
   "38b119e164952b461158": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -1038,9 +1058,9 @@
     "new_verified_this_scan": 0
   },
   "3a02d3421c0d16a30001": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1049,9 +1069,9 @@
     "new_verified_this_scan": 0
   },
   "3a3eb7eb64acee2642cf": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "0f5f10c1075ef2860818",
@@ -1072,9 +1092,9 @@
     "new_verified_this_scan": 0
   },
   "3a5a7427c4a116524e8c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1083,10 +1103,10 @@
     "new_verified_this_scan": 0
   },
   "3b5e0214179f4ae19c10": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1094,10 +1114,10 @@
     "new_verified_this_scan": 0
   },
   "3e4bb7fa09a77a39b9c1": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1105,9 +1125,9 @@
     "new_verified_this_scan": 0
   },
   "41e0a5dff9a5b638abcf": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "7fb295de921072a5f060",
@@ -1151,9 +1171,11 @@
       "chiletrabajos:3915270",
       "chiletrabajos:3907745",
       "chiletrabajos:3907748",
-      "chiletrabajos:3904934"
+      "chiletrabajos:3904934",
+      "chiletrabajos:3389480",
+      "b7ea6a01cc881c69760a"
     ],
-    "individual": 21,
+    "individual": 22,
     "ready": 2,
     "seen_eligible_candidate_ids": [
       "chiletrabajos:3907745",
@@ -1162,9 +1184,9 @@
     "new_verified_this_scan": 0
   },
   "41ee43e2357d46fe9d44": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1173,10 +1195,10 @@
     "new_verified_this_scan": 0
   },
   "4330eac222635c780d2a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 4,
+    "attempts": 15,
+    "blocked": 5,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1184,9 +1206,9 @@
     "new_verified_this_scan": 0
   },
   "49d044dc0dcd8bced4ea": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "f97c99a5736cd0857521",
@@ -1199,9 +1221,9 @@
     "new_verified_this_scan": 0
   },
   "4cf0f73e71c2a0f40fc4": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "aeac7f17ab9b31bbe534",
@@ -1214,9 +1236,9 @@
     "new_verified_this_scan": 0
   },
   "4d9a3e1095177c5bcc87": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1225,9 +1247,9 @@
     "new_verified_this_scan": 0
   },
   "4dd1552844736b17749b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1236,10 +1258,10 @@
     "new_verified_this_scan": 0
   },
   "4ec25f624ef74fcbd31f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1247,9 +1269,9 @@
     "new_verified_this_scan": 0
   },
   "5066930b67f5b9754e5b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1258,9 +1280,9 @@
     "new_verified_this_scan": 0
   },
   "50d1c3bc02db21fd8d4c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1269,9 +1291,9 @@
     "new_verified_this_scan": 0
   },
   "54398eb96578576d4e71": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1280,10 +1302,10 @@
     "new_verified_this_scan": 0
   },
   "56da5248c45bbbf4e03e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1291,9 +1313,9 @@
     "new_verified_this_scan": 0
   },
   "57486d0f6b5ff6d11e2f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "800a3896318cfe09fdea",
@@ -1313,9 +1335,9 @@
     "new_verified_this_scan": 0
   },
   "592e1cad29013cf26f6a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "48dd2a6856a143f07c3c"
@@ -1326,9 +1348,9 @@
     "new_verified_this_scan": 0
   },
   "5971ff87f0f8b7a6facc": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "439fe3aa18cd3d55c06f",
@@ -1342,9 +1364,9 @@
     "new_verified_this_scan": 0
   },
   "5a9d7a7233312a0b57eb": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1353,9 +1375,9 @@
     "new_verified_this_scan": 0
   },
   "5bc54af1a733786aeb73": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1364,9 +1386,9 @@
     "new_verified_this_scan": 0
   },
   "5db36981a4a1e8b04fe0": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1375,9 +1397,9 @@
     "new_verified_this_scan": 0
   },
   "607021e362a78da89873": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1386,9 +1408,9 @@
     "new_verified_this_scan": 0
   },
   "60e9908e28a47ea37567": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "c9a7209710e4ccc2807b",
@@ -1402,9 +1424,9 @@
     "new_verified_this_scan": 0
   },
   "627185e3d62e02c3c284": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1413,9 +1435,9 @@
     "new_verified_this_scan": 0
   },
   "661cab163fadeae1fb08": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -1427,9 +1449,9 @@
     "new_verified_this_scan": 0
   },
   "66b4a02d72b2a190779b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -1441,10 +1463,10 @@
     "new_verified_this_scan": 0
   },
   "6766cdb95330253539e2": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1452,9 +1474,9 @@
     "new_verified_this_scan": 0
   },
   "68f16982ca1ee26fc2aa": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "62d19a0bf91f3ec74f33",
@@ -1468,9 +1490,9 @@
     "new_verified_this_scan": 0
   },
   "6dabc9c775cb2dba670c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1479,9 +1501,9 @@
     "new_verified_this_scan": 0
   },
   "6dd07a2f9ea43f7d8cb6": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1490,9 +1512,9 @@
     "new_verified_this_scan": 0
   },
   "728743fa1bc6044fab11": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "2e1d1d9cfacf82451b64",
@@ -1506,9 +1528,9 @@
     "new_verified_this_scan": 0
   },
   "72ba1768ba0e8e28c55f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "dcfcbb779ca79cf10d8b"
@@ -1519,9 +1541,9 @@
     "new_verified_this_scan": 0
   },
   "75efe0264a6c167781ee": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1530,9 +1552,9 @@
     "new_verified_this_scan": 0
   },
   "7876d3f708badceaa2f2": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1541,9 +1563,9 @@
     "new_verified_this_scan": 0
   },
   "78903755478202667606": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1552,9 +1574,9 @@
     "new_verified_this_scan": 0
   },
   "790f1e381e46e12ce81f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1563,9 +1585,9 @@
     "new_verified_this_scan": 0
   },
   "79c4e793ff21a83ca42d": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1574,10 +1596,10 @@
     "new_verified_this_scan": 0
   },
   "7c35eb7862b140c0a72c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1585,9 +1607,9 @@
     "new_verified_this_scan": 0
   },
   "7c3ced6f9152142d321c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1596,10 +1618,10 @@
     "new_verified_this_scan": 0
   },
   "7f4d310769ba768fc42b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1607,9 +1629,9 @@
     "new_verified_this_scan": 0
   },
   "804147d121803488cbfa": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "cf351e48f76bf92fe453"
@@ -1620,10 +1642,10 @@
     "new_verified_this_scan": 0
   },
   "8116faf5be99996dde3b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1631,9 +1653,9 @@
     "new_verified_this_scan": 0
   },
   "822684b14691c862dc3c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1642,9 +1664,9 @@
     "new_verified_this_scan": 0
   },
   "8580d62d6989b7b337db": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "6373f15b5a00b87d0477"
@@ -1655,10 +1677,10 @@
     "new_verified_this_scan": 0
   },
   "89a55a8d5c2ed3809f7e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1666,9 +1688,9 @@
     "new_verified_this_scan": 0
   },
   "8dd5b76aab354d921fa6": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1677,9 +1699,9 @@
     "new_verified_this_scan": 0
   },
   "8e10d10d8dedf4b7e3b9": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "3fba47530376cc60f714",
@@ -1693,9 +1715,9 @@
     "new_verified_this_scan": 0
   },
   "8e2d5c31225502c51b10": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1704,9 +1726,9 @@
     "new_verified_this_scan": 0
   },
   "90ed7065a3d5398edd54": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "5781108f1a78e6c56ab3",
@@ -1725,10 +1747,10 @@
     "new_verified_this_scan": 0
   },
   "91215d24d327420145d0": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1736,10 +1758,10 @@
     "new_verified_this_scan": 0
   },
   "95f01d37f09e114060d5": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1747,9 +1769,9 @@
     "new_verified_this_scan": 0
   },
   "969b55f5567c29d5114e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "5f92b942b2c03b2d6265",
@@ -1768,9 +1790,9 @@
     "new_verified_this_scan": 0
   },
   "98540d51b21fff2e130f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1779,9 +1801,9 @@
     "new_verified_this_scan": 0
   },
   "98d0b9304a09e4439fcd": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -1793,9 +1815,9 @@
     "new_verified_this_scan": 0
   },
   "9a7d35f6ba6d07048790": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1804,10 +1826,10 @@
     "new_verified_this_scan": 0
   },
   "9b131d4354a4da4df94a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1815,10 +1837,10 @@
     "new_verified_this_scan": 0
   },
   "9c4369f7f4149e984b7a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1826,9 +1848,9 @@
     "new_verified_this_scan": 0
   },
   "9cc3b07e02db270defe5": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "c9a7209710e4ccc2807b",
@@ -1842,9 +1864,9 @@
     "new_verified_this_scan": 0
   },
   "9eb06f834f2e4adb79ad": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "c9a7209710e4ccc2807b",
@@ -1910,10 +1932,12 @@
       "chiletrabajos:3832000",
       "363be544060541f6f56b",
       "chiletrabajos:3821463",
-      "611504760a1598b66f2e"
+      "611504760a1598b66f2e",
+      "chiletrabajos:3389480",
+      "b7ea6a01cc881c69760a"
     ],
-    "individual": 32,
-    "ready": 24,
+    "individual": 33,
+    "ready": 25,
     "seen_eligible_candidate_ids": [
       "chiletrabajos:3924497",
       "chiletrabajos:3916578",
@@ -1938,15 +1962,16 @@
       "chiletrabajos:3915741",
       "chiletrabajos:3915742",
       "chiletrabajos:3904472",
-      "chiletrabajos:3844114"
+      "chiletrabajos:3844114",
+      "chiletrabajos:3389480"
     ],
-    "new_verified_this_scan": 0
+    "new_verified_this_scan": 1
   },
   "9fd97237a00aa52d0469": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -1954,9 +1979,9 @@
     "new_verified_this_scan": 0
   },
   "a129d685b363c7a0330a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1965,9 +1990,9 @@
     "new_verified_this_scan": 0
   },
   "a44b7e6bb56349159931": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 13,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1976,9 +2001,9 @@
     "new_verified_this_scan": 0
   },
   "a7900ab8f50a32be5239": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -1987,9 +2012,9 @@
     "new_verified_this_scan": 0
   },
   "a7db00c46e1c8bc479c9": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -2001,9 +2026,9 @@
     "new_verified_this_scan": 0
   },
   "a87550200bb6f3ad394d": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2012,10 +2037,10 @@
     "new_verified_this_scan": 0
   },
   "ab5034bdfb49cc59003b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2023,9 +2048,9 @@
     "new_verified_this_scan": 0
   },
   "ac864a211d99933b8ef1": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 2,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2034,9 +2059,9 @@
     "new_verified_this_scan": 0
   },
   "ad791baa0556cf59d931": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "e2647870396b3d1692ac",
@@ -2050,9 +2075,9 @@
     "new_verified_this_scan": 0
   },
   "af025b403ad9c22727cc": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2061,10 +2086,10 @@
     "new_verified_this_scan": 0
   },
   "af66edf3a4ba2dac9dfe": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2072,9 +2097,9 @@
     "new_verified_this_scan": 0
   },
   "b09aead05c26f45987db": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -2086,10 +2111,10 @@
     "new_verified_this_scan": 0
   },
   "b66879b74ce0cb911414": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2097,9 +2122,9 @@
     "new_verified_this_scan": 0
   },
   "b66fcc53a9a46d116825": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2108,9 +2133,9 @@
     "new_verified_this_scan": 0
   },
   "b6caef3934b1a72e45f4": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "ce8e8fa92a17f890ddce",
@@ -2124,9 +2149,9 @@
     "new_verified_this_scan": 0
   },
   "b6fdcc3d375d283f4f7b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2135,9 +2160,9 @@
     "new_verified_this_scan": 0
   },
   "bb529b9dc298f44c9a1e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "62d19a0bf91f3ec74f33",
@@ -2151,9 +2176,9 @@
     "new_verified_this_scan": 0
   },
   "bbea1f2b18a9ea228d7a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2162,10 +2187,10 @@
     "new_verified_this_scan": 0
   },
   "beefd46917752c7ffae0": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2173,9 +2198,9 @@
     "new_verified_this_scan": 0
   },
   "bef43ecfd4d8417f1770": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "c9a7209710e4ccc2807b",
@@ -2189,10 +2214,10 @@
     "new_verified_this_scan": 0
   },
   "c02028ca2aad1c18b389": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2200,10 +2225,10 @@
     "new_verified_this_scan": 0
   },
   "c05b2d111aa2c3f8c36f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2211,9 +2236,9 @@
     "new_verified_this_scan": 0
   },
   "c3432bfa8cab9e20b714": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2222,10 +2247,10 @@
     "new_verified_this_scan": 0
   },
   "c3e0446cea95778d5ae2": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2233,9 +2258,9 @@
     "new_verified_this_scan": 0
   },
   "c6077c98ea8752ba7f0b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -2247,10 +2272,10 @@
     "new_verified_this_scan": 0
   },
   "c89b769001d2f9ee82f0": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2258,10 +2283,10 @@
     "new_verified_this_scan": 0
   },
   "c9d18e59303e73558651": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2269,9 +2294,9 @@
     "new_verified_this_scan": 0
   },
   "cc430cb5fd7ee56bd76b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2280,9 +2305,9 @@
     "new_verified_this_scan": 0
   },
   "cef819523cbc1a437bdc": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "439fe3aa18cd3d55c06f",
@@ -2296,9 +2321,9 @@
     "new_verified_this_scan": 0
   },
   "d0dff4fb4776a3a53f1e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 3,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2307,10 +2332,10 @@
     "new_verified_this_scan": 0
   },
   "d46d82c93ef68a1f2cd9": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2318,9 +2343,9 @@
     "new_verified_this_scan": 0
   },
   "d5aa735194bbe50e4778": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -2332,9 +2357,9 @@
     "new_verified_this_scan": 0
   },
   "d6c4796675a80157891f": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "d3e46a0b9db20fa470c3",
@@ -2349,9 +2374,9 @@
     "new_verified_this_scan": 0
   },
   "db158a1af86d29925cbd": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -2363,9 +2388,9 @@
     "new_verified_this_scan": 0
   },
   "db426597e7d84996a388": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2374,9 +2399,9 @@
     "new_verified_this_scan": 0
   },
   "dbe6090c408686f56434": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "d3e46a0b9db20fa470c3",
@@ -2389,9 +2414,9 @@
     "new_verified_this_scan": 0
   },
   "dca878e82d4f38a16ca8": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "7803b100daea91516ff5",
@@ -2403,9 +2428,9 @@
     "new_verified_this_scan": 0
   },
   "de374c8bc3709ebbe9fd": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "0f5f10c1075ef2860818",
@@ -2426,9 +2451,9 @@
     "new_verified_this_scan": 0
   },
   "dfbe33e06f26311a43f0": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2437,9 +2462,9 @@
     "new_verified_this_scan": 0
   },
   "e07b3a1162041c168bac": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2448,9 +2473,9 @@
     "new_verified_this_scan": 0
   },
   "e1ac49d0990a460d16fc": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "bde23e30985c80b892a2",
@@ -2465,9 +2490,9 @@
     "new_verified_this_scan": 0
   },
   "e1af377a9587e71b2740": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "9c6d3d132a3915b3db86",
@@ -2495,9 +2520,9 @@
     "new_verified_this_scan": 0
   },
   "e37faa7ae2b9e54ab26c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "e06422b17fc77ab6c44c",
@@ -2509,10 +2534,10 @@
     "new_verified_this_scan": 0
   },
   "e502e3002a0875c1fb63": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2520,9 +2545,9 @@
     "new_verified_this_scan": 0
   },
   "e5fb4ef87ce4699daafc": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "1611189bc9c6aab65f3f",
@@ -2544,17 +2569,20 @@
       "d33c1a1b4f482562100d",
       "2cc98020f79af8ea0469",
       "cf156dfa55845026783b",
-      "e9fb9f01a73859993e5a"
+      "e9fb9f01a73859993e5a",
+      "677c4d8179731fee2d88",
+      "7360e17c88ae7b598123",
+      "a2a06e80544ccd922093"
     ],
-    "individual": 20,
+    "individual": 23,
     "ready": 0,
     "seen_eligible_candidate_ids": [],
     "new_verified_this_scan": 0
   },
   "e9278af95ace458b395b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2563,10 +2591,10 @@
     "new_verified_this_scan": 0
   },
   "eb45d0c6f6c5a151cf4e": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2574,9 +2602,9 @@
     "new_verified_this_scan": 0
   },
   "eedd8d86097d3012ce0b": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "439fe3aa18cd3d55c06f",
@@ -2590,9 +2618,9 @@
     "new_verified_this_scan": 0
   },
   "f23105f4f1dfcf4ae43d": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "fallback_no_verified_target_offers",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2601,9 +2629,9 @@
     "new_verified_this_scan": 0
   },
   "f68df055314320136640": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_no_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [],
     "individual": 0,
@@ -2612,10 +2640,10 @@
     "new_verified_this_scan": 0
   },
   "f7e028d24a09c2eea07c": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2623,10 +2651,10 @@
     "new_verified_this_scan": 0
   },
   "f932e3cd5d99eab9f5fa": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2634,27 +2662,28 @@
     "new_verified_this_scan": 0
   },
   "f9ee7667017b8ca2ac0a": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 0,
     "seen_candidate_ids": [
       "8d3f28c7befaa8221abd",
       "992f90e12f4b69aa0df2",
       "953619926187796825a2",
       "6e5f91ad1a876bdc7775",
-      "774c216cd70bb78b3994"
+      "774c216cd70bb78b3994",
+      "c7c0b8e4ae4ccbf94257"
     ],
-    "individual": 5,
+    "individual": 6,
     "ready": 0,
     "seen_eligible_candidate_ids": [],
     "new_verified_this_scan": 0
   },
   "fba1fadb20dfebd6a0eb": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2662,9 +2691,9 @@
     "new_verified_this_scan": 0
   },
   "fcefed72ec34486ee425": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 14,
+    "attempts": 15,
     "blocked": 1,
     "seen_candidate_ids": [
       "8d7cffd0e82c7f379aa6",
@@ -2676,10 +2705,10 @@
     "new_verified_this_scan": 0
   },
   "fcf5be35f83c6938d301": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "http_restricted",
-    "attempts": 14,
-    "blocked": 14,
+    "attempts": 15,
+    "blocked": 15,
     "seen_candidate_ids": [],
     "individual": 0,
     "ready": 0,
@@ -2687,9 +2716,9 @@
     "new_verified_this_scan": 0
   },
   "3fabd600daebba97ee77": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_partial_index",
-    "attempts": 10,
+    "attempts": 11,
     "blocked": 0,
     "seen_candidate_ids": [
       "a8e71d5721af4ed03443",
@@ -2748,9 +2777,9 @@
     "ready": 0
   },
   "383130ce370384b94123": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 9,
+    "attempts": 10,
     "blocked": 1,
     "seen_candidate_ids": [
       "chiletrabajos:3925455",
@@ -2762,9 +2791,9 @@
     "ready": 0
   },
   "f915fab77a162d120d84": {
-    "at": "2026-11-12T22:48:38.824222-03:00",
+    "at": "2026-11-13T12:17:55.797969-03:00",
     "status": "scanned_with_candidates",
-    "attempts": 9,
+    "attempts": 10,
     "blocked": 1,
     "seen_candidate_ids": [
       "chiletrabajos:3930443",

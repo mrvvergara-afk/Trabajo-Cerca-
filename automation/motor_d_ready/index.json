@@ -84,6 +84,12 @@
       "file": "20261112/motor-d-20261112-e320b72de7d2b23bc7.json",
       "count": 2,
       "batch_type": "recovery"
+    },
+    {
+      "batch_id": "motor-d-20261113-7eead2a588e2f46bf4",
+      "file": "20261113/motor-d-20261113-7eead2a588e2f46bf4.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -94,6 +100,7 @@
     "d_173964b29fca14e45f5d",
     "d_266d755ef6aa88feb9a3",
     "d_2795b5d75320388ba141",
+    "d_286a02fa884ea7ea2859",
     "d_2a72a06b0d8dbb7895e1",
     "d_2e5d13719312865d3636",
     "d_31acc134be48b1637d66",
@@ -144,6 +151,7 @@
     "job:[\"bodeguero a plan navidad preunic angol\", \"preunic\", [\"angol\"]]",
     "job:[\"cajero a asistente integral temporada navidad angol\", \"fashion s park\", [\"angol\"]]",
     "job:[\"cajero a bancario a angol\", \"servicios helpbank s a\", [\"angol\"]]",
+    "job:[\"conductor profesional con vehiculo sedan diesel angol\", \"jobconsulting\", [\"angol\"]]",
     "job:[\"docente de matematicas reemplazo\", \"liceo agricola de negrete\", [\"negrete\"]]",
     "job:[\"ejecutivo a atencion a usuarios 42hrs call center presencial\", \"empresa de tecnologia e\", [\"angol\"]]",
     "job:[\"ejecutivo a de atencion al usuario jornada nocturna call center 42hrs\", \"empresa de tecnologia e\", [\"angol\"]]",
@@ -184,6 +192,7 @@
     "job:[\"tens para cuidados pacientes domiciliarios lumaco\", \"layner\", [\"angol\"]]",
     "job:[\"verificador a de domicilios en terreno renaico\", \"rocketpin\", [\"angol\"]]",
     "job:[\"vvendedor en terreno angol victoria traiguen\", \"manpowergroup\", [\"angol\"]]",
+    "source:chiletrabajos:3389480",
     "source:chiletrabajos:3732391",
     "source:chiletrabajos:3755017",
     "source:chiletrabajos:3844114",
@@ -229,6 +238,7 @@
     "url:https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963",
     "url:https://chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
     "url:https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+    "url:https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
     "url:https://chiletrabajos.cl/trabajo/docente-de-matematicas-reemplazo-3755017",
     "url:https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
     "url:https://chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",

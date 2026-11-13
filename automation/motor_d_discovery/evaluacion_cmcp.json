@@ -1,30 +1,6 @@
 {
   "approved": [
     {
-      "id_fuente": "cmpc_19252",
-      "cargo": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
-      "fecha_publicacion": "2026-10-30",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_19251",
-      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
-      "fecha_publicacion": "2026-10-30",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_19222",
       "cargo": "Instrumentista de área - Santa Fe",
       "empresa": "CMPC",
@@ -63,6 +39,30 @@
   ],
   "pending": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19369?c=cmpc",
+      "title": "Coordinador/a Matricería Y Clisses - Osorno",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19334?c=cmpc",
+      "title": "Reparador/a Matrices Y Clisses - Osorno",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19330?c=cmpc",
+      "title": "Auxiliar General de Fabrica - Chimolsa, Puente Alto",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
       "title": "Maestro de Mantención Eléctrica - Planta Bucalemu",
       "workplaces": [],
@@ -96,15 +96,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19349?c=cmpc",
-      "title": "Pool Talento Feria Laboral UNAB",
-      "workplaces": [],
-      "reason": [
-        "detail_unavailable",
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19329?c=cmpc",
       "title": "JEFE DE REPORTABILIDAD",
       "workplaces": [],
@@ -123,14 +114,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19177?c=cmpc",
       "title": "Líder Transformación Contabilidad e Impuestos",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19313?c=cmpc",
-      "title": "Subgerente Adminstración de Ventas Pulp",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -223,6 +206,15 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
       "title": "Coordinador de Soporte Técnico SAP",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
+      "title": "Analista de Comercio Exterior",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

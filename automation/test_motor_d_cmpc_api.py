@@ -1,5 +1,5 @@
 """CMPC official Cornerstone JSON adapter: real requisitions, strict safety."""
-from datetime import date
+from datetime import date, datetime
 import json
 import unittest
 from unittest.mock import patch
@@ -138,7 +138,8 @@ class CmpcOfficialReaderTests(unittest.TestCase):
         self.assertEqual(result["official_api_candidates"],0)
 
     def test_engine_uses_api_for_cmpc_instead_of_generic_html(self):
-        with patch.object(engine,"read_cmpc_requisitions",
+        with patch.object(engine,"NOW", datetime.fromisoformat("2026-11-12T12:00:00-03:00")), \
+             patch.object(engine,"read_cmpc_requisitions",
                           return_value=api.read_cmpc_requisitions(
                               TODAY,post=lambda *_a,**_kw:Response([row()]))) as read, \
              patch.object(engine,"request_page",side_effect=AssertionError("no generic HTML")):

@@ -1,0 +1,42 @@
+name: QA UX staging — no deploy
+on:
+  push:
+    branches:
+      - feature/ux-polish-2026-11
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/**'
+      - '.github/workflows/ux-polish-staging-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ux-polish-staging-qa
+  cancel-in-progress: true
+
+jobs:
+  ux-isolated-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test compiler only
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/ux-typescript"
+          cd "$RUNNER_TEMP/ux-typescript"
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund --save-dev typescript@5.7.3
+          echo "$RUNNER_TEMP/ux-typescript/node_modules/.bin" >> "$GITHUB_PATH"
+          echo "NODE_PATH=$RUNNER_TEMP/ux-typescript/node_modules" >> "$GITHUB_ENV"
+      - name: Run territorial, commercial and TSX structural checks
+        run: bash ux-staging/appdeploy-1794590590707/qa/run-all.sh
+      - name: Reconfirm no deployment or production code paths
+        run: |
+          test -f ux-staging/appdeploy-1794590590707/src/App.tsx
+          test ! -f src/App.tsx
+          test ! -f package.json

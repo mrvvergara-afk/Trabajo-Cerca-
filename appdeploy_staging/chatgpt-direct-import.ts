@@ -1,13 +1,25 @@
 import { municipalOfferStatusFromHtml } from './municipal-index-status';
+import {canonicalSourceUrl,canonicalSourceHash} from './chatgpt-url-identity';
 import { db, json, error, isAppDatabaseError } from '@appdeploy/sdk';
 import { readPublicFeedPage, registerPublicFeedChange } from './public-feed';
 import { safePublicUrl, publicJobExclusion, publicFeedIdentity } from './public-source-adapters';
 
-type Candidate={id_fuente:string;cargo:string;empresa:string;comunas:string[];url_original:string;fecha_publicacion:string|null;fecha_descubrimiento?:string;municipal_open_index_url?:string;application_method?:string;fecha_cierre?:string|null;justificacion?:string;recruitment_communes?:string[];work_location?:string;territorial_recruitment_verified?:boolean;social_source_account?:string;social_evidence_type?:string;fecha_publicacion_metodo?:string;internal_visibility_days?:number};
+type Candidate={id_fuente:string;cargo:string;empresa:string;comunas:string[];url_original:string;fecha_publicacion:string|null;fecha_descubrimiento?:string;municipal_open_index_url?:string;application_method?:string;fecha_cierre?:string|null;justificacion?:string;recruitment_communes?:string[];work_location?:string;territorial_recruitment_verified?:boolean;social_source_account?:string;social_evidence_type?:string;fecha_publicacion_metodo?:string;internal_visibility_days?:number;ubicacion_trabajo?:string;modalidad?:string;salario?:string|null;enlace_postulacion?:string|null;url_canonica?:string;hash_url_sha256?:string};
 const LOCAL=new Set(['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento']);
 const norm=(s:string)=>s.toLowerCase().normalize('NFD').replace(/[^a-z0-9 ]/g,' ').replace(/ +/g,' ').trim();
 const keyUrl=(s:string)=>{const known=publicFeedIdentity(s);if(known)return known;const clean=safePublicUrl(s);if(!clean)return '';const url=new URL(clean);return url.hostname.replace(/^www\./,'')+url.pathname.replace(/\/$/,'')+url.search;};
-function parse(value:unknown):Candidate[]|null {
+const STRICT_FIELDS=new Set(['id_fuente','cargo','empresa','comunas','ubicacion_trabajo',
+  'modalidad','salario','url_original','enlace_postulacion','fecha_publicacion','fecha_descubrimiento',
+  'fecha_cierre','justificacion','url_canonica','hash_url_sha256']);
+const REQUIRED_STRICT=['id_fuente','cargo','empresa','comunas','ubicacion_trabajo',
+  'modalidad','salario','url_original','enlace_postulacion','fecha_publicacion','fecha_descubrimiento'];
+const GEO_ALIASES:Record<string,string[]>={Collipulli:['mininco'],Negrete:['coihue','coigue'],Lumaco:['capitan pastene']};
+const normalizePlace=(str:string)=>str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/ +/g,' ').trim();
+function territoryFromLocation(name:string,work:string){
+  const names=[name,...(GEO_ALIASES[name]||[])].map(normalizePlace);
+  return names.some(tag=>(' '+work+' ').includes(' '+tag+' '));
+}
+function parse(value:unknown,strict=false):Candidate[]|null {
   if(!Array.isArray(value)||value.length<1||value.length>15)return null;
   const result:Candidate[]=[];
   for(const input of value){
@@ -42,7 +54,27 @@ function parse(value:unknown):Candidate[]|null {
       Number(x.internal_visibility_days)>=1&&Number(x.internal_visibility_days)<=15&&
       typeof x.fecha_publicacion_metodo==='string'&&x.fecha_publicacion_metodo.startsWith('fecha_inferida_');
     if(!omilSocial && (!safePublicUrl(url) || publicJobExclusion({kind:'job_offer',url,title,workCommunes:communes})))return null;
-    result.push({id_fuente:id,cargo:title,empresa:company,comunas:[...new Set(communes as string[])],url_original:url,fecha_publicacion:date,fecha_cierre:deadline,justificacion:String(x.justificacion??'').slice(0,500),...(municipalOpen?{
+    if(strict){
+      if(Object.keys(x).some(k=>!STRICT_FIELDS.has(k))||REQUIRED_STRICT.some(k=>!(k in x))||
+        !/^cg_[a-f0-9]{20}$/.test(id)||typeof x.ubicacion_trabajo!=='string'||
+        x.ubicacion_trabajo.trim().length<3||x.ubicacion_trabajo.length>240||
+        !Array.isArray(communes)||!(communes as string[]).every(c=>territoryFromLocation(c,normalizePlace(String(x.ubicacion_trabajo))))||
+        !['presencial','hibrida','remota','no_informada'].includes(String(x.modalidad))||
+        !(x.salario===null||(typeof x.salario==='string'&&x.salario.length>=1&&x.salario.length<=100))||
+        !(x.enlace_postulacion===null||(typeof x.enlace_postulacion==='string'&&Boolean(safePublicUrl(x.enlace_postulacion))))||
+        typeof x.fecha_descubrimiento!=='string'||!/^20\d{2}-\d{2}-\d{2}$/.test(x.fecha_descubrimiento)||
+        Number.isNaN(Date.parse(x.fecha_descubrimiento))||
+        Date.parse(x.fecha_descubrimiento+'T00:00:00-03:00')>Date.now()||
+        date!==null&&x.fecha_descubrimiento<date)return null;
+      try{
+        if(x.url_canonica!==canonicalSourceUrl(url)||x.hash_url_sha256!==canonicalSourceHash(url))return null;
+      }catch{return null;}
+    }
+    result.push({id_fuente:id,cargo:title,empresa:company,comunas:[...new Set(communes as string[])],url_original:url,fecha_publicacion:date,fecha_cierre:deadline,justificacion:String(x.justificacion??'').slice(0,500),
+      ...(strict?{ubicacion_trabajo:String(x.ubicacion_trabajo),modalidad:String(x.modalidad),
+        salario:x.salario as string|null,enlace_postulacion:x.enlace_postulacion as string|null,
+        url_canonica:String(x.url_canonica),hash_url_sha256:String(x.hash_url_sha256),
+        fecha_descubrimiento:String(x.fecha_descubrimiento)}:{}),...(municipalOpen?{
       municipal_open_index_url:String(x.municipal_open_index_url),application_method:'in_person_omil',
       fecha_descubrimiento:String(x.fecha_descubrimiento),fecha_publicacion_metodo:String(x.fecha_publicacion_metodo),
       internal_visibility_days:14
@@ -131,7 +163,8 @@ async function inventory(){
 }
 export async function directChatGPTImport(body:unknown){
   const data=body as Record<string,unknown>|null;
-  const candidates=parse(data?.offers);
+  const strict=data?.producer==='chatgpt_territorial';
+  const candidates=parse(data?.offers,strict);
   if(!candidates)return error('Lote inválido: se requieren fichas individuales, fechas, comunas y enlaces aprobados.',400);
   const commit=data?.commit===true;
   if (data?.producer!==undefined && !['chatgpt_territorial','motor_d_territorial'].includes(String(data.producer)))
@@ -152,10 +185,15 @@ export async function directChatGPTImport(body:unknown){
     const social=x.social_source_account==='omilangol2026';
     const municipal=Boolean(x.municipal_open_index_url && x.fecha_publicacion===null);
     const urlKey=social?'':keyUrl(x.url_original);
+    const urlHash=social?'':canonicalSourceHash(x.url_original);
+    const canonicalUrl=social?'':canonicalSourceUrl(x.url_original);
     const duplicate=live.find(y=>{
       const title=norm(String(y.title||'')),company=norm(String(y.company||''));
       const loc=[...(Array.isArray(y.workCommunes)?y.workCommunes as string[]:[]),...(Array.isArray(y.recruitmentCommunes)?y.recruitmentCommunes as string[]:[])];
-      return (urlKey!==''&&keyUrl(String(y.url||''))===urlKey)||
+      let existingHash='';
+      try{existingHash=String(y.urlHashSha256||canonicalSourceHash(String(y.url||'')))}catch{}
+      return (urlHash!==''&&existingHash===urlHash)||
+        (urlKey!==''&&keyUrl(String(y.url||''))===urlKey)||
         (title===norm(x.cargo)&&company===norm(x.empresa)&&loc.some(c=>x.comunas.includes(c)));
     });
     if(duplicate){results.push({id:x.id_fuente,status:'already_published',existingId:duplicate.id});continue;}
@@ -165,10 +203,11 @@ export async function directChatGPTImport(body:unknown){
     if(x.fecha_cierre&&Date.parse(x.fecha_cierre+'T23:59:59-03:00')<Date.now()){
       results.push({id:x.id_fuente,status:'expired'});continue;
     }
-    const id=(producer==='motor_d_territorial'?'motor_d_':'chatgpt_')+x.id_fuente;
+    // Preserve Motor D's historic identifier prefix to avoid migrating existing receipt keys.
+    const id='chatgpt_'+x.id_fuente;
     if(!commit){results.push({id:x.id_fuente,status:'ready_for_direct_import'});continue;}
     const rec={id,kind:'job_offer',origin:'radar',sourceProducer:producer,title:x.cargo,company:x.empresa,
-      workLocation:social?(x.work_location||'Lugar de trabajo no informado'):x.comunas.join(' / '),workCommunes:social?[]:x.comunas,recruitmentCommunes:social?x.recruitment_communes||['Angol']:[],recruitmentZones:social?['Postulación presencial OMIL Angol']:[],
+      workLocation:social?(x.work_location||'Lugar de trabajo no informado'):(x.ubicacion_trabajo||x.comunas.join(' / ')),workCommunes:social?[]:x.comunas,recruitmentCommunes:social?x.recruitment_communes||['Angol']:[],recruitmentZones:social?['Postulación presencial OMIL Angol']:[],
       ...(social?{territorialRecruitmentVerified:true,sourceDateEvidence:x.fecha_publicacion_metodo,sourceEvidenceType:x.social_evidence_type,sourceAccount:x.social_source_account,sourceOriginalDateEstimated:true}:{ }),
       area:social?'Reclutamiento OMIL':municipal?'Oferta laboral OMIL':'Radar externo',status:'Verificada',
       date:municipal?'Fecha original no informada':social?'Fecha aproximada: '+x.fecha_publicacion:x.fecha_publicacion,
@@ -176,6 +215,9 @@ export async function directChatGPTImport(body:unknown){
       sourceDomain:new URL(x.url_original).hostname,sourcePublishedAt:x.fecha_publicacion,
       sourceValidThrough:x.fecha_cierre,expiresAt:x.fecha_cierre||undefined,
       validityMethod:municipal?'municipal_open_status':x.fecha_cierre?'explicit_deadline':'open_posting',url:x.url_original,
+      ...(!social?{urlHashSha256:urlHash,canonicalSourceUrl:canonicalUrl}:{}),
+      ...(strict?{jobModality:x.modalidad,salaryText:x.salario,applicationUrl:x.enlace_postulacion,
+        sourceDiscoveredAt:x.fecha_descubrimiento}:{}),
       ...(municipal?{municipalOpenIndexUrl:x.municipal_open_index_url,
         municipalOpenEvidenceValidUntil:new Date(Date.now()+14*86400000).toISOString(),
         sourceOriginalDateUnreported:true,sourceDateUnconfirmed:true,

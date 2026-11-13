@@ -1,0 +1,110 @@
+{
+  "app": [
+    {
+      "from": "import { SiteMenu } from './site-menu';",
+      "to": "import { SiteMenu } from './site-menu';\nimport { LocalDirectory } from './local-directory';\nimport './local-directory.css';"
+    },
+    {
+      "from": "function analyticsId() {\n  try {\n    const existing = localStorage.getItem('tc_analytics_id');\n    if (existing) return existing;\n    const next = globalThis.crypto?.randomUUID?.() ?? `tc_${Date.now()}_${Math.random().toString(36).slice(2)}`;\n    localStorage.setItem('tc_analytics_id', next);\n    return next;\n  } catch {\n    return `tc_session_${Date.now()}_${Math.random().toString(36).slice(2)}`;\n  }\n}\n\nfunction track(event:string, properties:Record<string, string | number | boolean | undefined> = {}) {\n  void api.post('/api/analytics', { eventId:crypto.randomUUID(), event, distinctId:analyticsId(), properties }).catch(() => undefined);\n}",
+      "to": "function analyticsId() {\n  try {\n    const existing = sessionStorage.getItem('tc_technical_session');\n    if (existing) return existing;\n    const next = crypto.randomUUID();\n    sessionStorage.setItem('tc_technical_session', next);\n    return next;\n  } catch { return 'tc_session_' + crypto.randomUUID(); }\n}\nfunction track(event:string, properties:Record<string, string | number | boolean | undefined> = {}) {\n  if (localStorage.getItem('tc_analytics_consent') !== 'yes') return;\n  void api.post('/api/analytics', { eventId:crypto.randomUUID(), event, distinctId:analyticsId(), properties, consent:true }).catch(() => undefined);\n}\nfunction publicDate(item:Listing) {\n  if (item.origin === 'direct' || item.date === 'Publicado hoy') return shortDate(item.firstPublishedAt || item.createdAt) || 'Fecha no informada';\n  return shortDate(item.sourcePublishedAt || '') || item.date || 'Fecha no informada';\n}"
+    },
+    {
+      "from": "const initialPlace = [...places, ...travelPlaces].includes(requestedPlace) ? requestedPlace : 'Todas';",
+      "to": "const initialPlace = [...places, ...travelPlaces].includes(requestedPlace) ? requestedPlace : 'Angol';"
+    },
+    {
+      "from": "  const [section, setSection] = useState<Section>('opportunities');",
+      "to": "  const [section, setSection] = useState<Section>('opportunities');\n  const [directoryMode, setDirectoryMode] = useState<'service' | 'business' | null>(null);\n  const [showHiringChoices, setShowHiringChoices] = useState(false);\n  const [analyticsChoice, setAnalyticsChoice] = useState<string | null>(() => localStorage.getItem('tc_analytics_consent'));"
+    },
+    {
+      "from": "const [homePlace, setHomePlace] = useState(places.includes(initialPlace) && !travelPlaces.includes(initialPlace) ? initialPlace : 'Todas');",
+      "to": "const [homePlace, setHomePlace] = useState(places.includes(initialPlace) && !travelPlaces.includes(initialPlace) ? initialPlace : 'Angol');"
+    },
+    {
+      "from": "  const goRadar = (next:Section='opportunities') => navigateResults(next);",
+      "to": "  const goRadar = (next:Section='opportunities') => navigateResults(next);\n  const openLocalDirectory = (kind:'service'|'business') => {\n    setDirectoryMode(kind);\n    window.setTimeout(() => document.getElementById('local-directory')?.scrollIntoView({behavior:'smooth'}), 40);\n  };\n  const chooseAnalytics = (choice:'yes'|'no') => {\n    localStorage.setItem('tc_analytics_consent', choice);\n    if (choice === 'no') localStorage.removeItem('tc_analytics_id');\n    setAnalyticsChoice(choice);\n  };"
+    },
+    {
+      "from": "              <button aria-current={section==='opportunities'?'page':undefined} onClick={() => navigateResults('opportunities')}>Empleos</button>\n              <button onClick={() => setFlow('ofrezco')}>Publicar mi perfil</button>\n              <button onClick={() => navigateResults('services')}>Buscar servicios</button>\n              <button onClick={() => setShowAdvertiser(true)}>Publicidad</button>",
+      "to": "              <button aria-current={section==='opportunities'?'page':undefined} onClick={() => navigateResults('opportunities')}>Buscar empleo</button>\n              <button onClick={() => setFlow('ofrezco')}>Ofrezco mi trabajo</button>\n              <button onClick={() => { setShowHiringChoices(true); document.getElementById('tc-purpose-title')?.scrollIntoView({behavior:'smooth'}); }}>Necesito contratar</button>\n              <button onClick={() => openLocalDirectory('business')}>Negocios locales</button>"
+    },
+    {
+      "from": "<button type='button' className='tcTopPublish' onClick={()=>setFlow('trabajadores')}><PlusCircle aria-hidden='true'/> Publicar oportunidad</button>",
+      "to": "<button type='button' className='tcTopPublish' onClick={()=>{setShowHiringChoices(true);document.getElementById('tc-purpose-title')?.scrollIntoView({behavior:'smooth'});}}><PlusCircle aria-hidden='true'/> Necesito contratar</button>"
+    },
+    {
+      "from": "      <main className='neoShell tcStitchShell'>",
+      "to": "      <main className='neoShell tcStitchShell'>\n        {analyticsChoice === null && <aside className='tcAnalyticsChoice' role='region' aria-label='Preferencias de medición'><span>La medición de navegación es opcional. Puedes usar Trabajo Cerca sin aceptarla.</span><button type='button' onClick={() => chooseAnalytics('no')}>No aceptar</button><button type='button' onClick={() => chooseAnalytics('yes')}>Aceptar medición</button></aside>}"
+    },
+    {
+      "from": "        <section className='tcStitchRadarSummary' aria-label='Resumen del catálogo territorial'>",
+      "to": "        <section className='tcPurposeGateway' aria-labelledby='tc-purpose-title'>\n          <h2 id='tc-purpose-title'>¿Qué necesitas hacer hoy?</h2>\n          <p>Empleos, trabajadores, oficios y negocios de nuestra comunidad. Elige una opción:</p>\n          <div className='tcPurposeGrid'>\n            <button type='button' onClick={() => navigateResults('opportunities')}><Briefcase aria-hidden='true'/><strong>Buscar empleo</strong><span>Ofertas locales identificadas por comuna y fuente.</span></button>\n            <button type='button' onClick={() => setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><strong>Ofrecer mi trabajo</strong><span>Publica gratis tu oficio o disponibilidad, sin currículum.</span></button>\n            <button type='button' onClick={() => setShowHiringChoices(value => !value)}><Users aria-hidden='true'/><strong>Necesito contratar</strong><span>Busca personas o publica una necesidad de trabajadores.</span></button>\n            <button type='button' onClick={() => openLocalDirectory('business')}><Store aria-hidden='true'/><strong>Negocios y servicios</strong><span>Emprendimientos, fotografías y contacto directo.</span></button>\n          </div>\n          <button type='button' className='tcDirectorySecondaryAction' onClick={() => openLocalDirectory('service')}>¿Ofreces servicios particulares? Publica gratis tus trabajos</button>\n          {showHiringChoices && <div className='tcHirePanel' role='group' aria-label='Opciones para contratar'><strong>¿Cómo deseas contratar?</strong><button onClick={() => setFlow('trabajadores')}>Publicar necesidad de trabajadores</button><button onClick={() => navigateResults('people')}>Ver personas disponibles</button></div>}\n        </section>\n        {directoryMode && <LocalDirectory place={place} initialKind={directoryMode} onClose={() => setDirectoryMode(null)}/>}\n        <section className='tcStitchRadarSummary' aria-label='Resumen del catálogo territorial'>"
+    },
+    {
+      "from": "          <button className=\"tcTerritorySplit\" type=\"button\" onClick={()=>openSecondary('tc-other-cities')} aria-label=\"Ver oportunidades en Temuco y Los Ángeles\">\n            <span>Temuco y Los Ángeles</span>\n            <span>{feedComplete?territoryTotals.reach:'…'} ofertas <ArrowRight aria-hidden=\"true\"/></span>\n          </button>",
+      "to": "          <p className='tcLocalOnlyNote'>Priorizamos las 12 comunas de Trabajo Cerca. Mininco pertenece a Collipulli, Coihue a Negrete y Capitán Pastene a Lumaco.</p>"
+    },
+    {
+      "from": "<span><small>{item.date || 'Fecha no informada'}</small><b title={item.source}>{item.source||'Fuente no informada'}</b></span>",
+      "to": "<span><small>{publicDate(item)}</small><b title={item.source}>{item.source||'Fuente no informada'}</b></span>"
+    },
+    {
+      "from": "<b>{shortDate(selected.sourcePublishedAt)||selected.date||'No informada'}</b></span></div>{selected.firstPublishedAt&&<div><Radio/><span><small>INCORPORADA EN TRABAJO CERCA</small><b>{shortDate(selected.firstPublishedAt)}</b></span></div>}",
+      "to": "<b>{publicDate(selected)}</b></span></div>"
+    },
+    {
+      "from": "<div><Radio /><span><small>Publicado / vigencia</small><b>{item.date}{item.until ? ' · hasta ' + item.until : ''}</b></span></div>",
+      "to": "<div><Radio /><span><small>Publicado / vigencia</small><b>{publicDate(item)}{item.until ? ' · hasta ' + item.until : ''}</b></span></div>"
+    },
+    {
+      "from": "<div><small>Publicado</small><b>{selected.date}</b></div>",
+      "to": "<div><small>Publicado</small><b>{publicDate(selected)}</b></div>"
+    },
+    {
+      "from": "            <button type='button' onClick={() => setLegalView('terms')}>Términos</button>",
+      "to": "            <button type='button' onClick={() => setLegalView('terms')}>Términos</button>\n            <button type='button' onClick={() => { localStorage.removeItem('tc_analytics_consent'); setAnalyticsChoice(null); }}>Preferencias de medición</button>"
+    },
+    {
+      "from": "          <button onClick={()=>navigateResults('services')}><Wrench aria-hidden='true'/><span>Servicios</span></button>",
+      "to": "          <button onClick={()=>openLocalDirectory('service')}><Wrench aria-hidden='true'/><span>Servicios</span></button>"
+    },
+    {
+      "from": "          <button onClick={()=>setFlow('trabajadores')}><PlusCircle aria-hidden='true'/><span>Publicar</span></button>",
+      "to": "          <button onClick={()=>{setShowHiringChoices(true);document.getElementById('tc-purpose-title')?.scrollIntoView({behavior:'smooth'});}}><PlusCircle aria-hidden='true'/><span>Contratar</span></button>"
+    },
+    {
+      "from": "              <label>Nombre o nombre abreviado (opcional)\n                <input value={data.name} onChange={e => set('name', e.target.value)} placeholder='Ej. Juan M.' />\n              </label>\n",
+      "to": ""
+    }
+  ],
+  "backend": [
+    {
+      "from": "import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';",
+      "to": "import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';\nimport { listLocalDirectory, createLocalDirectory, localDirectoryContact, localDirectoryRemove, submitLocalReview, reportLocalDirectory, adminLocalQueue, adminLocalDecision, adminApproveLocalReview, adminResolveLocalReport } from './local-directory';"
+    },
+    {
+      "from": "  'POST /api/analytics': [async ({ body }) => {",
+      "to": "  'GET /api/local-directory': [async ({ query }) => listLocalDirectory(query)],\n  'POST /api/local-directory': [publicQuota('local-directory',3,900000,30), async ({ body }) => createLocalDirectory(body)],\n  'POST /api/local-directory/:id/contact': [publicQuota('contact',30,600000,300), async ({ params }) => localDirectoryContact(params.id)],\n  'POST /api/local-directory/:id/reviews': [publicQuota('local-review',4,3600000,25), async ({ params, body }) => submitLocalReview(params.id,body)],\n  'POST /api/local-directory/:id/report': [publicQuota('local-report',4,3600000,25), async ({ params, body }) => reportLocalDirectory(params.id,body)],\n  'POST /api/local-directory/:id/delete': [publicQuota('local-remove',4,600000,25), async ({ params, body }) => localDirectoryRemove(params.id,body)],\n  'GET /api/admin/local-directory': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => adminLocalQueue()],\n  'POST /api/admin/local-directory/:id/approve': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminLocalDecision(params.id,'approved')],\n  'POST /api/admin/local-directory/:id/hide': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminLocalDecision(params.id,'hidden')],\n  'POST /api/admin/local-directory/reviews/:id/approve': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminApproveLocalReview(params.id)],\n  'POST /api/admin/local-directory/reports/:id/resolve': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminResolveLocalReport(params.id)],\n\n  'POST /api/analytics': [async ({ body }) => {\n    if ((body as Record<string, unknown> | null)?.consent !== true) return json({received:false,disabled:true,reason:'consent_required'},202);"
+    },
+    {
+      "from": "      date: 'Publicado hoy',\n      expiresAt,",
+      "to": "      date: new Intl.DateTimeFormat('es-CL',{timeZone:'America/Santiago',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(createdAt)),\n      firstPublishedAt: createdAt,\n      expiresAt:"
+    }
+  ],
+  "legal": [
+    {
+      "from": " const contact=<p>{owner.fullName}. {owner.address}, {owner.commune}, {owner.country}. Contacto: <a href={'mailto:'+owner.privacyEmail}>{owner.privacyEmail}</a>.</p>;",
+      "to": " const contact=owner.ownerConfirmed && owner.fullName && owner.commune && owner.country\n  ? <p>Responsable: {owner.fullName}. {owner.commune}, {owner.country}. Contacto: <a href={'mailto:'+owner.privacyEmail}>{owner.privacyEmail}</a>.</p>\n  : <p><strong>Identificación jurídica pendiente de confirmar. Este es un entorno de laboratorio, no un lanzamiento institucional autorizado.</strong> Contacto provisional: <a href={'mailto:'+owner.privacyEmail}>{owner.privacyEmail}</a>.</p>;"
+    },
+    {
+      "from": "  <h3>Medición y proveedores</h3><p>Utilizamos métricas de navegación y campañas para mejorar el servicio, separadas de los ingresos comerciales. Los eventos permitidos no contienen tu teléfono, correo, nombre, descripción ni claves de gestión. AppDeploy presta alojamiento, autenticación, datos y notificaciones; PostHog recibe eventos seudonimizados cuando la integración está habilitada. Las imágenes pueden cargarse desde sus proveedores públicos identificados.</p>",
+      "to": "  <h3>Medición y proveedores</h3><p>La analítica de navegación es opcional y exige consentimiento previo. Rechazarla no impide consultar empleos ni servicios. AppDeploy presta alojamiento, autenticación, datos y notificaciones. Los contactos se muestran solo cuando el anunciante lo autoriza. Las fotografías de servicios se optimizan y pasan controles de metadatos.</p>"
+    }
+  ],
+  "advertising": [
+    {
+      "from": "  void api.post('/api/growth/house-events',{...a,event,eventId:crypto.randomUUID()}).catch(()=>undefined);",
+      "to": "  if (localStorage.getItem('tc_analytics_consent') !== 'yes') return;\n  void api.post('/api/growth/house-events',{...a,event,eventId:crypto.randomUUID()}).catch(()=>undefined);"
+    }
+  ]
+}

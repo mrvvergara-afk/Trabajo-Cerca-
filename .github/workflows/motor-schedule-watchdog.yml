@@ -1,0 +1,68 @@
+name: Trabajo Cerca | Guardia de agenda Motor D
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/schedule_watchdog.py'
+      - 'automation/test_schedule_watchdog.py'
+      - '.github/workflows/motor-schedule-watchdog.yml'
+  schedule:
+    # Cada dos horas; no reemplaza el barrido, solo detecta una agenda perdida.
+    - cron: '0 */2 * * *'
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: trabajo-cerca-schedule-watchdog
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ejecutar pruebas del guardia sin acceder a producción
+        run: python -m unittest discover -s automation -p 'test_schedule_watchdog.py' -v
+      - name: Leer el último heartbeat persistido
+        if: github.event_name != 'pull_request'
+        run: |
+          git fetch origin main
+          mkdir -p automation/motor_d_discovery
+          git show origin/main:automation/motor_d_discovery/producer_heartbeat.json \
+            > automation/motor_d_discovery/producer_heartbeat.json
+      - name: Evaluar antigüedad y comunas
+        if: github.event_name != 'pull_request'
+        run: python automation/schedule_watchdog.py \
+          --heartbeat automation/motor_d_discovery/producer_heartbeat.json \
+          --output output/schedule_watchdog.json
+      - name: Disparar D solo si el heartbeat está vencido
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if jq -e '.status=="STALE"' output/schedule_watchdog.json >/dev/null; then
+            # Never add another territorial scan while one is queued or active.
+            active="$(gh api "repos/$GH_REPO/actions/workflows/motor-d-territorial-daily.yml/runs?per_page=15" \
+              --jq '[.workflow_runs[] | select(.status=="queued" or .status=="in_progress")] | length')"
+            if [ "$active" -gt 0 ]; then
+              echo "MOTOR_D_WATCHDOG_ALREADY_RUNNING count=$active"
+              exit 0
+            fi
+            gh api --method POST "repos/$GH_REPO/actions/workflows/motor-d-territorial-daily.yml/dispatches" -f ref=main
+            echo "::warning title=Motor D atrasado::Heartbeat vencido; se disparó un barrido de recuperación."
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: schedule-watchdog
+          path: output/schedule_watchdog.json
+          retention-days: 7

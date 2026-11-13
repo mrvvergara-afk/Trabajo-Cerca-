@@ -1,0 +1,51 @@
+name: ChatGPT independent publication staging QA
+on:
+  push:
+    branches:
+      - fix/chatgpt-autonomo-origen-diseno-20261113
+    paths:
+      - 'automation/stage_chatgpt_handoff.py'
+      - 'automation/test_stage_chatgpt_handoff.py'
+      - 'automation/chatgpt_ready/**'
+      - 'appdeploy_staging/chatgpt-*.ts'
+      - 'appdeploy_staging/motor-d-auto-import.ts'
+      - '.github/workflows/chatgpt-independent-publisher-qa.yml'
+  pull_request:
+    paths:
+      - 'automation/stage_chatgpt_handoff.py'
+      - 'automation/test_stage_chatgpt_handoff.py'
+      - 'automation/chatgpt_ready/**'
+      - 'appdeploy_staging/chatgpt-*.ts'
+      - 'appdeploy_staging/motor-d-auto-import.ts'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict ChatGPT batch contract tests
+        run: python -m unittest automation.test_stage_chatgpt_handoff -v
+      - name: Verify channel isolation and provenance
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          root=Path('.')
+          index=json.loads((root/'automation/chatgpt_ready/index.json').read_text())
+          assert index['producer']=='chatgpt_territorial'
+          bridge=(root/'appdeploy_staging/chatgpt-auto-import.ts').read_text()
+          importer=(root/'appdeploy_staging/chatgpt-direct-import.ts').read_text()
+          motor=(root/'appdeploy_staging/motor-d-auto-import.ts').read_text()
+          assert "const ROOT='automation/chatgpt_ready/'" in bridge
+          assert "db.get<Receipt>('chatgpt_import_receipts'" in bridge
+          assert "chatgpt_territorial" in bridge
+          assert "producer:'motor_d_territorial'" in motor
+          assert "sourceProducer:producer" in importer
+          assert "'motor-d-territorial'" in importer
+          assert "'chatgpt-direct'" in importer
+          print('Channel isolation + provenance checks PASS')
+          PY

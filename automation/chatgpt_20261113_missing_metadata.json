@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "description": "27 source URLs not found by identity in complete feed on 2026-11-13; semantic reconciliation is still pending",
+  "rows": [
+    {
+      "position": 3,
+      "cargo": "Operador de bodega",
+      "empresa": "Empleador no informado",
+      "comunas": [
+        "Angol"
+      ]
+    },
+    {
+      "position": 10,
+      "cargo": "Psicólogo(a) organizacional",
+      "empresa": "Empresa confidencial",
+      "comunas": [
+        "Ercilla"
+      ]
+    },
+    {
+      "position": 14,
+      "cargo": "Docente psicólogo(a)",
+      "empresa": "Corporación HD SpA",
+      "comunas": [
+        "Angol"
+      ]
+    },
+    {
+      "position": 22,
+      "cargo": "Asistente administrativa de caja",
+      "empresa": "Talentfinder",
+      "comunas": [
+        "Victoria"
+      ]
+    },
+    {
+      "position": 23,
+      "cargo": "Supervisor(a) de tienda",
+      "empresa": "Tiendas Upa!",
+      "comunas": [
+        "Victoria"
+      ]
+    },
+    {
+      "position": 24,
+      "cargo": "Cajeros(as) multifuncionales tienda",
+      "empresa": "Tiendas Upa!",
+      "comunas": [
+        "Victoria"
+      ]
+    },
+    {
+      "position": 25,
+      "cargo": "Jefe asesoría aeródromo Victoria",
+      "empresa": "Ingenieros Consultores Asociados S.A.",
+      "comunas": [
+        "Victoria"
+      ]
+    },
+    {
+      "position": 26,
+      "cargo": "Auxiliar de servicios Programa Verano - JI Miguel Zerené",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 27,
+      "cargo": "Auxiliar de servicios Programa Verano - JI Tutifruti",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Angol"
+      ]
+    },
+    {
+      "position": 28,
+      "cargo": "Educador(a) de párvulos Programa Verano - JI Miguel Zerené",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 29,
+      "cargo": "Educador(a) de párvulos Programa Verano - JI Tutifruti",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Angol"
+      ]
+    },
+    {
+      "position": 30,
+      "cargo": "Asistente de párvulos Programa Verano - JI Miguel Zerené",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 31,
+      "cargo": "Asistente de párvulos Programa Verano - JI Tutifruti",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Angol"
+      ]
+    },
+    {
+      "position": 32,
+      "cargo": "Asistente de párvulos - bolsa de reemplazos JI Primeros Pasos",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Ercilla"
+      ]
+    },
+    {
+      "position": 33,
+      "cargo": "Educador(a) de párvulos - reemplazos",
+      "empresa": "Fundación Integra",
+      "comunas": [
+        "Traiguén"
+      ]
+    },
+    {
+      "position": 34,
+      "cargo": "Ingeniero(a) Procesos y Excelencia Sr",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 35,
+      "cargo": "Analista laboratorio I - turno",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ]
+    },
+    {
+      "position": 36,
+      "cargo": "Analista laboratorio I - turno",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 37,
+      "cargo": "Instrumentista de área",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ]
+    },
+    {
+      "position": 38,
+      "cargo": "Mecánico(a) turno - Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ]
+    },
+    {
+      "position": 39,
+      "cargo": "Conductor(a) traslado de pacientes",
+      "empresa": "DaVita Chile",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 40,
+      "cargo": "Analista vibraciones",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 41,
+      "cargo": "Especialista SGI - Plantas Laja y Pacífico",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 42,
+      "cargo": "Líder de Procesos y Calidad - Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ]
+    },
+    {
+      "position": 43,
+      "cargo": "Analista laboratorio III - jornada administrativa",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 44,
+      "cargo": "Analista laboratorio II - jornada administrativa",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ]
+    },
+    {
+      "position": 45,
+      "cargo": "Conductor(a) de transporte de carga y personal - Nueva Imperial/Lumaco",
+      "empresa": "Serfonac Ltda",
+      "comunas": [
+        "Lumaco"
+      ]
+    }
+  ]
+}

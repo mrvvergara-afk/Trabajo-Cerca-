@@ -96,8 +96,12 @@
       "maxLength": 700
     },
     "fecha_publicacion": {
-      "type": "string",
-      "format": "date"
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "Fecha original conocida; null es válido en extracción con evidencia fresca, jamás rellenar con fecha de descubrimiento"
     },
     "fecha_descubrimiento": {
       "type": "string",
@@ -123,6 +127,36 @@
       "type": "string",
       "pattern": "^https://",
       "maxLength": 700
+    },
+    "vigencia_fuente": {
+      "type": "string",
+      "enum": [
+        "postulacion_abierta_verificada"
+      ]
+    },
+    "fecha_verificacion": {
+      "type": "string",
+      "format": "date"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fecha_publicacion": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "fecha_publicacion"
+        ]
+      },
+      "then": {
+        "required": [
+          "vigencia_fuente",
+          "fecha_verificacion"
+        ]
+      }
+    }
+  ]
 }

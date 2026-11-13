@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "producer": "motor_d_territorial",
+  "run_date": "2026-11-13",
+  "period": [
+    "2026-11-12",
+    "2026-11-13"
+  ],
+  "status": "PARTIAL",
+  "zero_verified_candidates": true,
+  "meaning": "No hay candidatos aprobados para importación; una ficha recuperable requiere deduplicación autenticada frente al catálogo",
+  "registered_sources_previous_snapshot": 200,
+  "source_inventory_date": "2026-11-11",
+  "source_visits_confirmed_in_run": 2,
+  "source_visits_note": "Dos páginas de Chiletrabajos; no equivalen a dos fuentes independientes del inventario",
+  "coverage_complete": false,
+  "per_commune": [
+    {
+      "comuna": "Angol",
+      "fuentes_planificadas_snapshot_11nov": 47,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 2,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 45,
+      "cobertura_efectiva_estimativa": 0.0425531914893617,
+      "resultado": "1 ficha individual anterior (11-nov), pendiente deduplicación en catálogo; no incluida en lote",
+      "evidencia": [
+        "https://www.chiletrabajos.cl/encuentra-un-empleo?2=director&action=search&within=25",
+        "https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443"
+      ],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Collipulli",
+      "fuentes_planificadas_snapshot_11nov": 32,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 32,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Ercilla",
+      "fuentes_planificadas_snapshot_11nov": 29,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 29,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Lumaco",
+      "fuentes_planificadas_snapshot_11nov": 32,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 32,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Los Sauces",
+      "fuentes_planificadas_snapshot_11nov": 31,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 31,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Purén",
+      "fuentes_planificadas_snapshot_11nov": 32,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 32,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Renaico",
+      "fuentes_planificadas_snapshot_11nov": 30,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 30,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Traiguén",
+      "fuentes_planificadas_snapshot_11nov": 34,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 34,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Victoria",
+      "fuentes_planificadas_snapshot_11nov": 32,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 32,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Mulchén",
+      "fuentes_planificadas_snapshot_11nov": 29,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 29,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Negrete",
+      "fuentes_planificadas_snapshot_11nov": 28,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 28,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    },
+    {
+      "comuna": "Nacimiento",
+      "fuentes_planificadas_snapshot_11nov": 32,
+      "fuentes_abiertas_con_evidencia_en_esta_corrida": 0,
+      "fuentes_bloqueadas_esta_corrida": 0,
+      "fuentes_no_visitadas_en_esta_corrida": 32,
+      "cobertura_efectiva_estimativa": 0,
+      "resultado": "Sin ofertas verificadas; fuentes sin visita acreditada",
+      "evidencia": [],
+      "fecha_consulta": "2026-11-13",
+      "estado": "PARCIAL"
+    }
+  ],
+  "candidates": [
+    {
+      "title": "Director/a CC LAE Angol",
+      "employer": "Fundación Tierra de Esperanza",
+      "work_commune": "Angol",
+      "source_location": "Temuco",
+      "source_url": "https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
+      "source_date": "2026-11-11",
+      "discovered_at": "2026-11-13",
+      "source_id": "chiletrabajos:3930443",
+      "classification": "PENDIENTE_EVIDENCIA",
+      "reason": "Ficha individual accesible, postulación indicada y fecha original conocida, pero falta deduplicación contra catálogo vivo; oferta anterior al periodo diario"
+    }
+  ],
+  "verified_new_unique": 0,
+  "already_in_catalog_confirmed": 0,
+  "publicable_approved": 0,
+  "pending_evidence": 1,
+  "import_confirmed": 0,
+  "visible_confirmed": 0,
+  "actionable_errors": [
+    "No se acredita recorrido de 200 fuentes: no declarar exhaustividad.",
+    "Falta lectura autenticada del catálogo vivo para deduplicar la ficha 3930443.",
+    "Reanudar por inventario en Angol y después Collipulli, Ercilla, Lumaco, Los Sauces, Purén, Renaico, Traiguén, Victoria, Mulchén, Negrete, Nacimiento; registrar URL y resultado por fuente.",
+    "Resolver acceso a portales bloqueados con ATS y feeds oficiales, sin reiteraciones de redes cerradas."
+  ],
+  "resume_at": "Inventario fuente a fuente desde Angol; consultar catálogo antes de aprobar la ficha Chiletrabajos 3930443."
+}

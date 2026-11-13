@@ -79,7 +79,9 @@ def merge(existing: dict, rows: list[dict], today: str | None = None) -> dict:
         by_url[url] = item["review_id"]
     items = sorted(by_id.values(), key=lambda item: (str(item.get("first_discovered") or ""), str(item.get("review_id") or "")))
     return {
-        "schema": "trabajo-cerca.review-queue.v1",
+        **existing,
+        # Keep the existing trusted-review schema and unrelated metadata.
+        "schema": existing.get("schema") or "trabajo-cerca.motor-d-review.v1",
         "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "items_total": len(items),
         "pending_total": sum(item.get("review_status") == "pending" for item in items),

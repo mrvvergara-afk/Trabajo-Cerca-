@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-13T14:11:16.177678-03:00",
+  "last_run": "2026-11-13T14:51:33.516233-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -4806,6 +4806,126 @@
       "first_seen": "2026-11-13T14:11:16.177678-03:00",
       "url": "https://www.radionativa.cl/fiscalia-confirma-un-detenido-por-crimen-de-mecanico-en-tirua/",
       "source": "Inventario P06",
+      "commune": null
+    },
+    "045c983197fd3c80e8d2": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-magallanes-y-antartica-chilena/cajero-a-retail-punta-arenas-3077032.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "279231da23f94d5d095e": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-recursos-humanos-la-florida-3077031.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "11d649519b77058b1ecf": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/full-stack-semi-senior-nodejs-typescript-react-ia-hibrido-3077030.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a793434ab6352931c1c7": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/lider-tecnico-de-desarrollo-movil-y-web-presencial-3077029.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ff837d977fa9a8d12f46": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-mecanico-859000-liquidos-3077028.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "09a5263795fb425c15a9": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-en-climatizacion-hvac-kentha-servicios-spa-3077027.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f7d05dd791309eeb2d89": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/inside-sales-support-ingles-avanzado-3077026.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a2bf742d1161e695df65": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/ejecutivo-de-ventas-para-area-de-construccion-zona-centro-sur-del-pais-3077025.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "80c595ff3b363e0acf35": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedora-partime-tienda-de-belleza-alto-las-condes-reemplazo-3077024.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c914cfa555a19231017d": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apoyo-extraordinario-navidad-zona-oriente-12-diciembre-a-23-de-diciembre-region-metropolitana-3077023.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "70b836cfd6caa3fe91ec": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-cobranzas-pudahuel-3077022.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8ad5129eb3519993ce7b": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-full-time-tienda-portal-la-reina-3077021.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "17c8129b7b8c11274a71": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativos-terreno-area-de-salud-para-talagante-jornada-diurna-3077020.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "69ceff3ae82adbb29f16": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativos-terreno-area-de-salud-santiago-ruta-las-condes-providencia-y-penalolen-jornada-diurna-3077019.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4dd0c1fd8f4af6ff5685": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/ingeniero-a-electrico-a-de-proyectos-de-distribucion-talca-3077018.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "13388fcd08137cbb1f40": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/ingeniero-a-proyectista-dibujo-cad-electrico-talca-3077017.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d7031a9a07658ceb73ae": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/nutricionista-supervisora-de-servicios-de-alimentacion-lunes-a-viernes-1171448-las-condes-3077016.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9730bc8b53aeac2cc739": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/guardia-de-seguridad-part-time-280000-liquidos-sabado-y-domingo-en-san-pablo-3077015.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "114a4948e06e05fc39d0": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/multitecnico-mantenimiento-las-condes-3077014.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c6ef105f3b4a146e49ef": {
+      "first_seen": "2026-11-13T14:51:33.516233-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/electrico-sec-multitecnico-distintas-comunas-de-rm-3077013.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

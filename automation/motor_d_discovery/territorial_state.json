@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-12T15:22:44.864471-03:00",
+  "last_run": "2026-11-12T22:48:38.824222-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -4398,6 +4398,126 @@
       "first_seen": "2026-11-12T15:22:44.864471-03:00",
       "url": "https://jobs.arauco.com/Chile/job/Arauco-T%C3%A9cnicoa-Mec%C3%A1nicoa-PGP-Cel-L3-BI/1450288400/",
       "source": "Arauco empleo",
+      "commune": null
+    },
+    "9fd41f7e0ed0d3e0f2e8": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/vigilante-privado-banco-bci-caldera-copiapo-3076628.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "467e88fde84423ff1d93": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/vigilante-privado-bci-mallplaza-calama-sucursal-bancaria-3076627.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0f573b2bb205a7fd0b9c": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/ejecutivo-de-servicios-coquimbo-3076626.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d7315f2bd06c0e4934af": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/administrador-a-de-contrato-trainee-casino-de-alimentacion-quellon-3076625.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bfa033248ba6f6b32ae0": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-de-grupo-seguridad-renca-4x4-rotativo-650000-liquidos-3076624.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "78c610b37baf713432bf": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-mantenimiento-general-700000-liquidos-alimentacion-en-casino-3076623.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f1abbf641480730da41f": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-cctv-4x4-rotativo-650000-liquidos-santiago-con-os10-vigente-3076622.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bd6610682ee575de22fa": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/mecanico-senior-de-camiones-3076621.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5a6dafe6bd2c18477424": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/chofer-a5-fuller-3076620.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b0cebb11b431462dc4cb": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/lider-de-equipo-en-terreno-3076619.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d6a3a112ec26216ea0b6": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-a-de-estudios-y-propuestas-3076618.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "255ab2fc86899ebc61f1": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-campana-navidad-part-time-falabella-plaza-egana-3076617.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bf4e23b3660266c21713": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-rios/encargado-de-bodega-lanco-3076616.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2d821a0d666c919236af": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-rios/chofer-de-servicios-generales-3076615.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3eda5d3eb7385c47230f": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/mlp-comprador-a-rubro-minero-3076614.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b9d0ef720dda2b0709be": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-civil-en-construccion-o-ingeniero-constructor-3076613.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "33150637de2af86044dd": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/maestro-a-electrico-turno-7x7-dia-3076612.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7e1540dde0a0b0304daf": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maestro-de-muebles-y-cocinas-700000-aproximadamente-lunes-a-viernes-lampa-3076611.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "400a6009457fb64b6b70": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-de-postventa-inmobiliaria-3076610.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "36218fe0ca24e49e81f7": {
+      "first_seen": "2026-11-12T22:48:38.824222-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativo-de-rrhh-senior-conocimiento-legislacion-laboral-3076609.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

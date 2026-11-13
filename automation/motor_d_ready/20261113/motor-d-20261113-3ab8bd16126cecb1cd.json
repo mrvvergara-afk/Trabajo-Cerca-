@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261113-3ab8bd16126cecb1cd",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_5241af5f68d396e67450",
+      "cargo": "Vendedor Terreno - ANGOL",
+      "empresa": "Distribuidora consumo masivo",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "fecha_publicacion": "2026-11-13",
+      "fecha_descubrimiento": "2026-11-13",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-01-27",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

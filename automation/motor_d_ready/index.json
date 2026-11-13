@@ -96,6 +96,12 @@
       "file": "20261113/motor-d-20261113-f1f5321e2fa710cca9.json",
       "count": 1,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261113-3ab8bd16126cecb1cd",
+      "file": "20261113/motor-d-20261113-3ab8bd16126cecb1cd.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -113,6 +119,7 @@
     "d_3b694de3e09ff760e50b",
     "d_46607b264d4d83a176c3",
     "d_4bdcac8ef560f0fe716d",
+    "d_5241af5f68d396e67450",
     "d_561f393870110fb67e2a",
     "d_56d079ed0f37b488c6d6",
     "d_5813016bef2debcf1ea2",
@@ -198,6 +205,7 @@
     "job:[\"tecnico telecomunicaciones sin experiencia angol\", \"dominion spa\", [\"angol\"]]",
     "job:[\"tens enfermera administrativa angol\", \"inmunomedica\", [\"angol\"]]",
     "job:[\"tens para cuidados pacientes domiciliarios lumaco\", \"layner\", [\"angol\"]]",
+    "job:[\"vendedor terreno angol\", \"distribuidora consumo masivo\", [\"angol\"]]",
     "job:[\"verificador a de domicilios en terreno renaico\", \"rocketpin\", [\"angol\"]]",
     "job:[\"vvendedor en terreno angol victoria traiguen\", \"manpowergroup\", [\"angol\"]]",
     "source:chiletrabajos:3389480",
@@ -241,6 +249,7 @@
     "source:chiletrabajos:3926918",
     "source:chiletrabajos:3927989",
     "source:chiletrabajos:3931920",
+    "source:chiletrabajos:3932099",
     "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
     "url:https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
     "url:https://chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
@@ -279,6 +288,7 @@
     "url:https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
     "url:https://chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
     "url:https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
+    "url:https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
     "url:https://chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
     "url:https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",

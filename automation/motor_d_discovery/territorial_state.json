@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-13T14:51:33.516233-03:00",
+  "last_run": "2026-11-13T19:36:25.477171-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -4926,6 +4926,138 @@
       "first_seen": "2026-11-13T14:51:33.516233-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/electrico-sec-multitecnico-distintas-comunas-de-rm-3077013.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "d850aaa7c83bdfcd8f83": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "181047cc89413e6b4ead": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-tienda-cajero-reponedor-full-time-buin-3077148.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1a5727d4b6891a3a8c59": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-tienda-cajero-reponedor-full-time-42-horas-con-colacion-para-buin-3077147.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "92bae542b5ee54e924e3": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-tienda-cajero-reponedor-part-time-30-horas-buin-3077146.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "40bbbc6b93fd9557cfc4": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cajero-reponedor-full-time-42-horas-con-colacion-para-buin-3077145.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "944aa9773dc63a8a2289": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cajero-reponedor-full-time-42-horas-con-colacion-para-buin-3077144.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a6f2360793443570c1d7": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-tienda-cajero-reponedor-part-time-30-horas-con-colacion-para-buin-3077143.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2c40cf80b5de70bbaa28": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cajero-a-reponedor-part-time-30-horas-con-colacion-para-buin-3077142.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6256387f33772ec3f4ab": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/supervisora-or-mantenimiento-electrico-quinta-region-3077141.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f7b282676d68d62c13f5": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/supervisora-or-electrica-o-san-antonio-3077140.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "03f8fb94a3d7e7aacb81": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/soporte-informatico-nivel-1-3077139.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8213fd2a66f657f4c3c2": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-tecnologia-part-time-temporada-navidena-costanera-center-3077138.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ab4069c03f36e69bfaa3": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-tecnologia-part-time-temporada-navidena-plaza-norte-3077137.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1e8998256fcfca7103da": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/reponedor-local-liquimax-osorno-3077136.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "acb69dd9e44d8319ded2": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-tecnologia-part-time-temporada-navidena-huechuraba-3077135.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1a9882e738bea2153784": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-cobranza-reemplazo-licencia-medica-clinica-de-salud-mental-catolica-3077134.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f563650640ab33474bbf": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/promotor-a-campana-navidad-part-time-antofagasta-3077133.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d1fab0d7b0cf50a6ec1a": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/entrevista-masiva-call-center-mes-de-diciembre-3077132.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b2d3b5e101f9796c8f96": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-talento-y-desarrollo-ia-y-automatizacion-3077131.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "33575fd0cf89c665b83e": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-camaras-de-seguridad-cctv-penalolen-3077130.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c8c1d0d2cb6d98a2184b": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/lider-de-equipo-comercial-en-terreno-copiapo-prestigiosa-empresa-de-telecomunicaciones-3077129.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d57aa4ccaba16607ffad": {
+      "first_seen": "2026-11-13T19:36:25.477171-03:00",
+      "url": "https://www.munimulchen.cl/oferta-laboral-personal-para-temporada-de-embalaje-de-arandanos/",
+      "source": "Municipio Mulchén empleos",
       "commune": null
     }
   }

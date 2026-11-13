@@ -10,6 +10,14 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertNotIn("Quilaco",engine.COMMUNES)
         self.assertEqual(set(town for town,_,_ in engine.SEEDS),set(engine.COMMUNES))
 
+    def test_coihue_worksite_from_employer_body_not_recruitment_city(self):
+        body = ("En JCS Logística y Transporte buscamos conductores para "
+                "las operaciones de nuestra base Coihue, comuna de Negrete. "
+                "Residencia deseable en Renaico, Angol o Collipulli.")
+        self.assertEqual(engine.explicit_work_commune(body), "Negrete")
+        self.assertEqual(engine.explicit_work_commune(
+            "Ubicación base Coihue, sector Coihue, Negrete. Turnos rotativos."), "Negrete")
+
     def test_chiletrabajos_get_uses_motor_a_compatible_http_headers_only_on_its_host(self):
         from unittest.mock import patch
         from bs4 import BeautifulSoup

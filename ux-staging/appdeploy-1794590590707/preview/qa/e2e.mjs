@@ -77,6 +77,39 @@ try{
       assert.equal(await nav.locator('button').count(),4);
     });
    }
+   if(width===390){
+     await check('390px: exactly 12 official communes, no Quilaco',async()=>{
+       const select=page.locator('.tcMobilePlace select');
+       const options=await select.locator('option').allTextContents();
+       assert.equal(options.length,13,JSON.stringify(options));
+       assert(!options.some(v=>/Quilaco|Alto Biobío/.test(v)));
+     });
+     await check('390px: PWA manifest loads',async()=>{
+       const response=await page.request.get(URL+'/manifest.webmanifest');
+       assert.equal(response.status(),200);
+       const manifest=await response.json();
+       assert.equal(manifest.name,'Trabajo Cerca');
+       assert.equal(manifest.display,'standalone');
+     });
+     const routes=[
+       {button:'Ofrezco mi trabajo',label:'¿Qué trabajo u oficio ofreces?'},
+       {button:'Necesito un servicio',label:'¿Qué servicio necesitas?'},
+       {button:'Necesito trabajadores',label:'¿Qué trabajador necesitas?'},
+       {button:'Compartir una oferta laboral',label:'Texto del aviso'},
+     ];
+     for(const route of routes){
+       await check('390px: publication form '+route.button,async()=>{
+         await page.getByRole('button',{name:'Publicar gratis en Trabajo Cerca'}).click();
+         const chooser=page.getByRole('dialog',{name:'¿Qué quieres publicar?'});
+         await chooser.getByRole('button',{name:new RegExp(route.button)}).click();
+         const form=page.locator('.smartForm');
+         await form.waitFor({state:'visible',timeout:7000});
+         assert((await form.textContent()).includes(route.label),route.label);
+         await page.keyboard.press('Escape');
+         await form.waitFor({state:'detached'});
+       });
+     }
+   }
    await check(width+'px: no uncaught app exceptions',async()=>assert.equal(errors.length,0,errors.join(' | ')));
    await page.screenshot({path:path.join(ROOT,'ux-'+width+'.png'),fullPage:true,animations:'disabled'});
   }catch(error){

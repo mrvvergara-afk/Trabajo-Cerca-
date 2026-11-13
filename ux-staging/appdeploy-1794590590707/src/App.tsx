@@ -1260,9 +1260,11 @@ function App() {
     });
 
     return base.filter(item => {
-      const communeMatch = place === 'Todas'
-        ? matchesTerritorialView(item, place, places)
-        : (filterMode === 'work' ? (item.workCommunes.some(city=>officialWorkCommune(city)===place)||(!item.workCommunes.length&&item.recruitmentCommunes.some(city=>officialWorkCommune(city)===place))) : item.recruitmentCommunes.some(city=>officialWorkCommune(city)===place));
+      // Las ofertas laborales se filtran SIEMPRE por comuna de ejecución.
+      // El filtro de reclutamiento permanece solo para perfiles/solicitudes comunitarias.
+      const communeMatch = place!=='Todas' && filterMode==='recruit' && section!=='opportunities'
+        ? item.recruitmentCommunes.some(city=>officialWorkCommune(city)===place)
+        : matchesTerritorialView(item, place, places);
       const areaMatch = area === 'Todas' || item.area === area;
       const freshnessMatch = !onlyNew || isFresh(item);
       const readMatch = !onlyUnread || (reading.known && !reading.read[item.id]);
@@ -1282,7 +1284,7 @@ function App() {
   },[]);
   const shownResults=visible.slice(resultPage*resultsPerPage,resultPage*resultsPerPage+resultsPerPage);
   const resultPages=Math.max(1,Math.ceil(visible.length/resultsPerPage));
-  const sourceCounts = useMemo(() => { const counts = new Map<string,number>(); for (const item of items) { if (item.kind !== 'job_offer' || !item.workCommunes.some(commune => places.includes(officialWorkCommune(commune)) && officialWorkCommune(commune) !== 'Todas')) continue; const source = item.source || 'Fuente no identificada'; counts.set(source,(counts.get(source)||0)+1); } return [...counts.entries()].sort((a,b)=>b[1]-a[1]); },[items]);
+  const sourceCounts = useMemo(() => { const counts = new Map<string,number>(); for (const item of items) { if (item.kind !== 'job_offer' || !matchesTerritorialView(item,'Todas',places)) continue; const source = item.source || 'Fuente no identificada'; counts.set(source,(counts.get(source)||0)+1); } return [...counts.entries()].sort((a,b)=>b[1]-a[1]); },[items]);
   const availableJobs = feedSummary.totalJobOffers;
   const inventoryCounts=publishedInventoryCounts(feedSummary,place);
   const recentJobs=inventoryCounts.recent7d;
@@ -1293,7 +1295,7 @@ function App() {
   const selectedStat = place === 'Todas' ? emptyCommuneStat : (feedSummary.communeStats[place] ?? emptyCommuneStat);
   const normalizedRadarStats=useMemo(()=>{
     if(!feedComplete)return feedSummary.communeStats;
-    const collipulliCount=items.filter(item=>item.kind==='job_offer'&&item.workCommunes.some(city=>officialWorkCommune(city)==='Collipulli')).length;
+    const collipulliCount=items.filter(item=>item.kind==='job_offer'&&matchesTerritorialView(item,'Collipulli',places)).length;
     return {...feedSummary.communeStats,Collipulli:{...(feedSummary.communeStats.Collipulli??emptyCommuneStat),jobs:collipulliCount}};
   },[feedSummary.communeStats,feedComplete,items]);
   const isTravelView = travelPlaces.includes(place);

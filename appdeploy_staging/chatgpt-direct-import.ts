@@ -203,7 +203,6 @@ export async function directChatGPTImport(body:unknown){
     if(x.fecha_cierre&&Date.parse(x.fecha_cierre+'T23:59:59-03:00')<Date.now()){
       results.push({id:x.id_fuente,status:'expired'});continue;
     }
-    // Preserve Motor D's historic identifier prefix to avoid migrating existing receipt keys.
     const id='chatgpt_'+x.id_fuente;
     if(!commit){results.push({id:x.id_fuente,status:'ready_for_direct_import'});continue;}
     const rec={id,kind:'job_offer',origin:'radar',sourceProducer:producer,title:x.cargo,company:x.empresa,

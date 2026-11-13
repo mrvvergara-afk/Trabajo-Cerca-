@@ -1,0 +1,35 @@
+{
+  "app_id": "trabajo-cerca-laboratorio-3ojgro",
+  "base_version": "1794540131218",
+  "scope": "design_isolated_staging_only",
+  "files": [
+    {
+      "filename": "src/App.tsx",
+      "diffs": [
+        {
+          "from": "              <button onClick={() => setFlow('ofrezco')}>Ofrezco mi trabajo</button>\n              <button onClick={() => { setShowHiringChoices(true); document.getElementById('tc-purpose-title')?.scrollIntoView({behavior:'smooth'}); }}>Necesito contratar</button>\n              <button onClick={() => openLocalDirectory('business')}>Negocios locales</button>",
+          "to": "              <button onClick={() => setFlow('ofrezco')}>Perfiles de trabajadores</button>\n              <button onClick={() => openLocalDirectory('business')}>Servicios y negocios</button>\n              <button onClick={() => setShowAdvertiser(true)}>Publicidad comercial</button>"
+        },
+        {
+          "from": "            <button type='button' onClick={() => setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><strong>Ofrecer mi trabajo</strong><span>Publica gratis tu oficio o disponibilidad, sin currículum.</span></button>\n            <button type='button' onClick={() => setShowHiringChoices(value => !value)}><Users aria-hidden='true'/><strong>Necesito contratar</strong><span>Busca personas o publica una necesidad de trabajadores.</span></button>\n            <button type='button' onClick={() => openLocalDirectory('business')}><Store aria-hidden='true'/><strong>Negocios y servicios</strong><span>Emprendimientos, fotografías y contacto directo.</span></button>",
+          "to": "            <button type='button' onClick={() => setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><strong>Publicar mi perfil gratis</strong><span>Oficios y profesionales, contacto directo y sin currículum obligatorio.</span></button>\n            <button type='button' onClick={() => openLocalDirectory('business')}><Store aria-hidden='true'/><strong>Servicios y negocios</strong><span>Directorio local, fotografías y evaluaciones solo de servicios.</span></button>\n            <button type='button' onClick={() => setShowAdvertiser(true)}><Megaphone aria-hidden='true'/><strong>Publicidad comercial</strong><span>Anuncios locales discretos con espacios definidos.</span></button>"
+        },
+        {
+          "from": "          <button type='button' className='tcDirectorySecondaryAction' onClick={() => openLocalDirectory('service')}>¿Ofreces servicios particulares? Publica gratis tus trabajos</button>",
+          "to": "          <button type='button' className='tcDirectorySecondaryAction' onClick={() => openLocalDirectory('service')}>¿Ofreces servicios particulares? Publica gratis tus trabajos</button>\n          <button type='button' className='tcDirectorySecondaryAction' onClick={() => setShowHiringChoices(value => !value)}>¿Necesitas trabajadores? Publica una necesidad de contratación</button>"
+        },
+        {
+          "from": "          <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><House aria-hidden='true'/><span>Inicio</span></button>\n          <button onClick={()=>navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>\n          <button onClick={()=>openLocalDirectory('service')}><Wrench aria-hidden='true'/><span>Servicios</span></button>\n          <button onClick={()=>{setShowHiringChoices(true);document.getElementById('tc-purpose-title')?.scrollIntoView({behavior:'smooth'});}}><PlusCircle aria-hidden='true'/><span>Contratar</span></button>",
+          "to": "          <button onClick={()=>navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>\n          <button onClick={()=>setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><span>Perfiles</span></button>\n          <button onClick={()=>openLocalDirectory('business')}><Store aria-hidden='true'/><span>Servicios</span></button>\n          <button onClick={()=>setShowAdvertiser(true)}><Megaphone aria-hidden='true'/><span>Anunciar</span></button>"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "unique_matches_in_v99": true,
+    "number_of_diffs": 4,
+    "verified_icon_import": "Megaphone",
+    "requires_rendered_browser_tests": true,
+    "production_unchanged": true
+  }
+}

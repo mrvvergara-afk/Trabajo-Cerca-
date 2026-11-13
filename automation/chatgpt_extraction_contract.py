@@ -16,7 +16,7 @@ TRACKERS = {"fbclid", "gclid", "msclkid", "igshid", "mc_cid", "mc_eid"}
 REQUIRED = {"id_fuente", "cargo", "empresa", "comunas", "ubicacion_trabajo",
             "modalidad", "salario", "url_original", "enlace_postulacion",
             "fecha_publicacion", "fecha_descubrimiento"}
-OPTIONAL = {"fecha_cierre", "justificacion", "hash_url_sha256", "url_canonica"}
+OPTIONAL = {"fecha_cierre", "justificacion", "hash_url_sha256", "url_canonica", "vigencia_fuente", "fecha_verificacion"}
 ALL_KEYS = REQUIRED | OPTIONAL
 MODALITIES = {"presencial", "hibrida", "remota", "no_informada"}
 
@@ -109,12 +109,18 @@ def validate_offer(raw: dict, *, today: date | None = None) -> dict:
         raise ValueError("canonical_url_mismatch")
     offer["url_canonica"] = canonical
     offer["hash_url_sha256"] = digest
-    publish = _date(offer["fecha_publicacion"], "fecha_publicacion")
+    publish = None if offer["fecha_publicacion"] is None else _date(offer["fecha_publicacion"], "fecha_publicacion")
     discover = _date(offer["fecha_descubrimiento"], "fecha_descubrimiento")
     today = today or date.today()
-    if publish > today or discover > today:
+    if publish is None:
+        if offer.get("vigencia_fuente") != "postulacion_abierta_verificada":
+            raise ValueError("undated_needs_open_application_evidence")
+        verified = _date(offer.get("fecha_verificacion"), "fecha_verificacion")
+        if verified > today or (today - verified).days > 2:
+            raise ValueError("stale_or_future_undated_evidence")
+    if (publish is not None and publish > today) or discover > today:
         raise ValueError("future_date")
-    if discover < publish:
+    if publish is not None and discover < publish:
         raise ValueError("discovery_before_publication")
     if offer.get("fecha_cierre"):
         if _date(offer["fecha_cierre"], "fecha_cierre") < today:

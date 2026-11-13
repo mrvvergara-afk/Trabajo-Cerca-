@@ -51,7 +51,7 @@ try{
     await check(width+'px: business directory navigation',async()=>{
       await nav.getByRole('button',{name:'Comercio'}).click();
       const directory=page.locator('#local-directory');
-      await directory.waitFor({state:'visible'});
+      await directory.locator('.tcDirectoryTop').waitFor({state:'visible',timeout:7000});
       assert((await directory.textContent()).includes('Negocios'));
       await nav.getByRole('button',{name:'Empleos'}).click();
       await directory.waitFor({state:'detached'});
@@ -59,7 +59,7 @@ try{
     await check(width+'px: service directory navigation',async()=>{
       await nav.getByRole('button',{name:'Servicios'}).click();
       const directory=page.locator('#local-directory');
-      await directory.waitFor({state:'visible'});
+      await directory.locator('.tcDirectoryTop').waitFor({state:'visible',timeout:7000});
       assert((await directory.textContent()).includes('Oficios'));
     });
    }else{

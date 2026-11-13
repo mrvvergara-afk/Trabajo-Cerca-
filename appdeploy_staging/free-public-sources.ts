@@ -215,6 +215,10 @@ export function nextPublicSource(sources:FreeSource[], state:Pick<ScanState,'loc
 
 export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):Stored {
   if (offer.status!=='verified' || !offer.url || !offer.title || !offer.company || !offer.work_commune || !offer.source_published_at) throw new Error('Incomplete public verification');
+  // Defense in depth: even a bad verifier result cannot enter public storage outside the 12 communes.
+  if (!['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria'].includes(offer.work_commune)) {
+    throw new Error('public_offer_worksite_outside_12_communes');
+  }
   const expiry = offer.valid_through || undefined;
   return { kind:'job_offer',origin:'radar',title:offer.title,company:offer.company,
     workLocation:offer.work_commune,workCommunes:[offer.work_commune],recruitmentZones:[],recruitmentCommunes:[],

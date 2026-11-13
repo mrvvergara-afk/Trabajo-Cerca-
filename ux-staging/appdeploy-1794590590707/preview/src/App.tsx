@@ -40,6 +40,7 @@ import './ux-polish-2026-11.css';
 import './commercial-card.css';
 import { SiteMenu } from './site-menu';
 const LocalDirectory = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectory })));
+import './local-directory.css';
 function analyticsId() {
   try {
     const existing = sessionStorage.getItem('tc_technical_session');

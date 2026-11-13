@@ -37,7 +37,8 @@ jobs:
           let result;
           for(let attempt=1;attempt<=5;attempt++){
             const response=await fetch(endpoint,{headers:{Accept:'application/json'}});
-            const parsed=await response.json().catch(()=>({}));
+            const raw=await response.text();
+            let parsed={};try{parsed=JSON.parse(raw);}catch{}
             const view={
               http:response.status,feedState:parsed.feedState,
               rebuilt:parsed.feedRebuilding!==true,
@@ -49,7 +50,7 @@ jobs:
               itemsArray:Array.isArray(parsed.items),
               hasIds:parsed.items?.every(x=>typeof x.id==='string'&&x.id.length>2),
             };
-            console.log('Public catalog attempt '+attempt+': '+JSON.stringify(view));
+            console.log('Public catalog attempt '+attempt+': '+JSON.stringify({...view,contentType:response.headers.get('content-type'),rootKeys:Object.keys(parsed).slice(0,15),nonJSONSample:response.headers.get('content-type')?.includes('text/html')?raw.slice(0,150):undefined}));
             if(response.ok && view.rebuilt && !['degraded_emergency_subset','degraded_last_good'].includes(view.feedState) && Number(view.totalVerified)>=1 && view.pageSize>0 && view.hasIds){
               result=view;break;
             }

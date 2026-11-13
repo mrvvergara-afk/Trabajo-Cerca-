@@ -1,0 +1,53 @@
+/* Trabajo Cerca: UX mobile first — overlay aislado basado en snapshot 1794590590707.
+   No modifica backend, motores ni campaña/ubicación publicitaria. */
+/* Tipografía y hero de escritorio más compacto sin ocultar contenido. */
+@media (min-width:768px) {
+  .tcStitchShell .neoHero { padding-block:24px; }
+  .tcStitchShell .neoHero h1 { font-size:clamp(30px,3vw,36px);line-height:1.14;max-width:660px;margin:8px 0; }
+  .tcStitchShell .neoHeroLead { font-size:14px;line-height:21px;max-width:650px;margin:5px 0 0; }
+  .tcStitchShell .tcStitchHeroRadar { width:240px;height:240px;top:-26px;right:max(18px,calc((100vw - 1160px)/2));opacity:.06; }
+  .tcStitchShell .neoSearchDock { margin-top:13px;padding:10px;gap:8px; }
+  .tcStitchShell .neoSearchDock>label,.tcStitchShell .neoSearchDock>button { min-height:44px; }
+  .tcStitchShell .neoSearchDock>button { font-size:14px;line-height:20px; }
+  .tcStitchShell .neoDiscover { padding-top:18px; }
+}
+/* En móvil, portada centrada en empleo: cuatro destinos abajo, comuna arriba.
+   Mantener cada slot de publicidad, incluido su fallback institucional. */
+@media (max-width:767px) {
+  .tcStitchShell .tcTopbarInner { padding-inline:8px!important;gap:5px!important; }
+  .tcStitchShell .tcMobilePlace { display:flex!important;flex:0 1 97px!important;max-width:97px!important;min-width:68px!important;padding:4px 5px!important;margin-left:auto!important; }
+  .tcStitchShell .tcMobilePlace select {font-size:11px!important;}
+  .tcStitchShell .tcSiteMenu>summary {min-width:44px!important;width:44px!important;height:44px!important;min-height:44px!important;}
+  .tcStitchShell .tcPurposeGateway,.tcStitchShell .tcStitchRadarSummary {display:none!important;}
+  .tcStitchShell .neoDiscover {padding:4px 12px 0!important;}
+  .tcStitchShell .neoDiscoverHead {margin:2px 0 8px!important;}
+  .tcStitchShell .tcInlineHousePromo[data-placement='search'] {grid-template-columns:minmax(0,1fr) auto;gap:8px;width:calc(100% - 24px);margin:6px auto;padding:8px 10px;min-height:58px;}
+  .tcStitchShell .tcInlineHousePromo[data-placement='search'] .tcInlineHouseIcon,
+  .tcStitchShell .tcInlineHousePromo[data-placement='search'] .tcInlineHouseCopy small,
+  .tcStitchShell .tcInlineHousePromo[data-placement='search'] .tcInlineHouseCopy p {display:none;}
+  .tcStitchShell .tcInlineHousePromo[data-placement='search'] .tcInlineHouseCopy strong {font-size:12px;line-height:16px;}
+  .tcStitchShell .tcInlineHousePromo[data-placement='search'] button {grid-column:2;min-height:44px;padding:6px 9px;font-size:11px;}
+  .tcStitchShell .neoMobileNav {grid-template-columns:repeat(4,minmax(0,1fr));height:calc(60px + env(safe-area-inset-bottom));min-height:60px;}
+  .tcStitchShell .neoMobileNav button {min-width:0;min-height:44px;font-size:11px;gap:3px;}
+  .tcStitchShell .neoMobileNav button[aria-current='page'] {color:#1b4332;font-weight:700;}
+  .tcStitchShell .neoMobileNav button:first-child:not([aria-current='page']) {color:var(--st-muted);font-weight:500;}
+  .tcStitchShell .tcMobilePublishAction {position:fixed;right:12px;bottom:calc(66px + env(safe-area-inset-bottom));z-index:69;display:inline-flex;align-items:center;gap:5px;min-height:44px;padding:8px 12px;background:#1b4332;color:white;border:1px solid #cad8ce;border-radius:24px;font-size:12px;font-weight:700;box-shadow:0 2px 12px #10352929;}
+  .tcStitchShell .tcMobilePublishAction svg {width:16px;height:16px;}
+  .tcStitchShell .neoJobCard h3 {font-size:14px!important;line-height:19px!important;-webkit-line-clamp:2!important;}
+}
+@media(min-width:768px) {.tcStitchShell .tcMobilePublishAction {display:none;}}
+.tcStitchShell .tcPublishBackdrop {position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:16px;background:#071c15b8;}
+.tcStitchShell .tcPublishDialog {width:min(100%,480px);max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #cad8ce;border-radius:16px;background:#fff;color:#16211c;padding:16px;box-shadow:0 18px 48px #071c1560;}
+.tcStitchShell .tcPublishDialogHeader {display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.tcStitchShell .tcPublishDialogHeader h2 {margin:0;font-size:20px;line-height:26px;}
+.tcStitchShell .tcPublishDialogHeader>button {width:44px;height:44px;border:0;background:#edf4ef;border-radius:10px;display:grid;place-items:center;}
+.tcStitchShell .tcPublishDialog>p {margin:8px 0 12px;font-size:13px;line-height:19px;color:#475850;}
+.tcStitchShell .tcPublishDialog>button {display:flex;align-items:center;gap:12px;text-align:left;width:100%;min-height:64px;margin-top:7px;padding:10px;border:1px solid #d5e0da;border-radius:12px;background:#f9fbfa;color:#16211c;}
+.tcStitchShell .tcPublishDialog>button>svg {width:20px;height:20px;color:#2d6a4f;}
+.tcStitchShell .tcPublishDialog>button>span {min-width:0;display:flex;flex-direction:column;gap:4px;}
+.tcStitchShell .tcPublishDialog strong {font-size:14px;line-height:19px;}
+.tcStitchShell .tcPublishDialog small {font-size:12px;line-height:17px;color:#475850;}
+.tcStitchShell .tcPublishDialog:focus-visible {outline:3px solid #2d6a4f;outline-offset:3px;}
+@media(prefers-reduced-motion:reduce){
+ .tcStitchShell .tcMobilePublishAction,.tcStitchShell .tcPublishDialog {animation:none!important;transition:none!important;}
+}

@@ -876,7 +876,8 @@ function projectFeedListing(value:Record<string, unknown> & { id:string }) {
   // An internal social review horizon is not evidence that applications closed.
   // Keep verified notices visible until an explicit source deadline or confirmed closure.
   if (publicJobExclusion(value)) return null;
-  const projectionPlaces = value.secondaryMarket === true && value.discoveredBy === 'free-public-sources-v1' ? MARKET_PLACES : PILOT;
+  // Trabajo Cerca covers exactly 12 communes; never expose neighboring hubs from automatic review.
+  const projectionPlaces = PILOT;
   const locationScope=[...(item.workCommunes||[]),...(value.territorialRecruitmentVerified===true?item.recruitmentCommunes||[]:[])];
   if (!locationScope.some(commune=>projectionPlaces.some(target=>normalizeText(target).toLocaleLowerCase('es-CL')===normalizeText(commune).toLocaleLowerCase('es-CL')))) return null;
   const evidence=[item.title,item.company,item.note,item.url,item.sourceDomain].filter(Boolean).join(' ');

@@ -1,0 +1,15 @@
+const assert = require('node:assert/strict');
+const {officialWorkCommune,matchesTerritorialView,territorialScopeTotals,workLocations}=require('./dist/src/territorial-exploration.js');
+let count=0;const check=(name,fn)=>{fn();count++;console.log('PASS '+name)};
+const job=(id,workCommunes,recruitmentCommunes=[],workLocation='')=>({id,kind:'job_offer',workCommunes,recruitmentCommunes,workLocation});
+check('Mininco -> Collipulli',()=>assert.equal(officialWorkCommune('Villa Mininco'),'Collipulli'));
+check('Coihue/Coigüe -> Negrete',()=>{assert.equal(officialWorkCommune('Coihue'),'Negrete');assert.equal(officialWorkCommune('Coigüe'),'Negrete')});
+check('Capitán Pastene -> Lumaco',()=>assert.equal(officialWorkCommune('Capitán Pastene'),'Lumaco'));
+check('Temuco worksite / Angol recruitment excluded from local',()=>assert.equal(matchesTerritorialView(job('1',['Temuco'],['Angol']),'Todas',[]),false));
+check('Temuco worksite appears in Temuco view',()=>assert.equal(matchesTerritorialView(job('1',['Temuco'],['Angol']),'Temuco',[]),true));
+check('workLocation fallback recovers valid offer',()=>assert.equal(matchesTerritorialView(job('2',[],['Temuco'],'Nacimiento'),'Todas',[]),true));
+check('recruitment-only record cannot masquerade as local',()=>assert.equal(matchesTerritorialView(job('3',[],['Angol']),'Todas',[]),false));
+check('Mininco worksite counted as Collipulli',()=>assert.equal(matchesTerritorialView(job('4',['Mininco']),'Collipulli',[]),true));
+check('distinct totals prevent overlap double counting',()=>assert.deepEqual(territorialScopeTotals([job('5',['Nacimiento','Los Ángeles']),job('6',['Temuco']),job('7',['Coihue'])]),{primary:2,reach:2,overlap:1,reachOnly:1,totalDistinct:3}));
+check('workLocations never fall back to recruitment',()=>assert.deepEqual(workLocations(job('8',[],['Collipulli'],'')),[]));
+console.log(count+' territorial tests passed');

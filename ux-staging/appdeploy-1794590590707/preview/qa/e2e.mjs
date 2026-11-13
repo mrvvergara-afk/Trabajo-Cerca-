@@ -15,10 +15,17 @@ try{
   const context=await browser.newContext({viewport:{width,height:860},serviceWorkers:'block',reducedMotion:'reduce'});
   const page=await context.newPage();
   const errors=[];
-  page.on('pageerror',error=>errors.push(error.message));
+  page.setDefaultTimeout(7000);
+  page.on('pageerror',error=>errors.push('JS '+error.message));
+  page.on('console',message=>{if(message.type()==='error')errors.push('CONSOLE '+message.text());});
+  page.on('response',response=>{if(response.status()>=400)errors.push('HTTP '+response.status()+' '+response.url());});
   try{
-   await page.goto(URL,{waitUntil:'domcontentloaded',timeout:30000});
-   await page.locator('.tcStitchShell').waitFor({state:'visible',timeout:20000});
+   await page.goto(URL,{waitUntil:'domcontentloaded',timeout:15000});
+   try{await page.locator('.tcStitchShell').waitFor({state:'visible',timeout:7000});}
+   catch(error){
+    const root=await page.locator('#root').innerText({timeout:2000}).catch(()=>'<root unavailable>');
+    throw new Error('Frontend not mounted. root='+root.slice(0,400)+'; errors='+errors.slice(0,10).join(' | ')+'; '+String(error));
+   }
    await check(width+'px: frontend mounts',async()=>assert.equal(await page.locator('.tcStitchShell').count(),1));
    await check(width+'px: no horizontal overflow',async()=>{
      const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:window.innerWidth}));

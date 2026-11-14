@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-14",
-  "checked_at": "2026-11-14T16:11:09.487720+00:00",
+  "checked_at": "2026-11-14T20:48:46.499164+00:00",
   "feed_complete": true,
-  "feed_rows": 284,
+  "feed_rows": 280,
   "state": "clear",
   "historical_missing_from_catalog": 0,
   "released_from_quarantine": 0,

@@ -1,0 +1,50 @@
+name: QA Fotos, Opiniones y Autocampañas — no deploy
+on:
+  push:
+    branches: [fix/ubicaciones-y-pie-compacto-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/**'
+      - '.github/workflows/ux-marketplace-review-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: qa-marketplace-review
+  cancel-in-progress: true
+jobs:
+  gallery-review-campaign:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Parse code and validate auth/campaign contracts
+        run: node qa/test-marketplace-ux.cjs
+      - name: Build React with fake SDK, no backend writes
+        run: npm run build -- --config vite.qa.config.ts
+      - run: npx playwright install --with-deps chromium
+      - name: Start isolated QA front
+        run: |
+          nohup npm run dev -- --config vite.qa.config.ts --host 127.0.0.1 --port 4173 --strictPort >/tmp/ux-marketplace.log 2>&1 &
+          for i in $(seq 1 40);do
+            if curl -fsS -o /dev/null http://127.0.0.1:4173/;then exit 0;fi
+            sleep 1
+          done
+          cat /tmp/ux-marketplace.log
+          exit 1
+      - name: Test gallery, review stars and promotion CTAs
+        run: node qa/e2e-marketplace.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-gallery-stars-campaign
+          path: ux-staging/appdeploy-1794590590707/preview/qa/captures-marketplace/*.png
+          retention-days: 7
+          if-no-files-found: ignore

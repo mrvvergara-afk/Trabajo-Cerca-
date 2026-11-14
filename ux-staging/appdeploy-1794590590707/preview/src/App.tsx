@@ -43,6 +43,8 @@ import { SiteMenu } from './site-menu';
 const LocalDirectory = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectory })));
 const LocalDirectoryModeration = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectoryModeration })));
 import './local-directory.css';
+import './ux-territorial-cleanup.css';
+import {compactWorkplaceLabel} from './workplace-label';
 function analyticsId() {
   try {
     const existing = sessionStorage.getItem('tc_technical_session');
@@ -1571,7 +1573,7 @@ function App() {
                   {originalPoster(item,window.location.href)&&<button className='tcPosterThumb' onClick={()=>setSelected(item)} aria-label={'Ver afiche de '+item.title}><img src={originalPoster(item,window.location.href)!} alt={'Afiche original de '+item.title} loading='lazy' referrerPolicy='no-referrer'/></button>}
                   <div className='neoJobBody'>
                     <div className='neoJobTop'>
-                      {item.workLocation?.trim()&&<span className='neoJobPlace'><MapPin /> {item.workLocation}</span>}
+                      {item.workLocation?.trim()&&<span className='neoJobPlace' title={item.workLocation}><MapPin aria-hidden='true'/><span className='tcWorkplaceLabel'>{compactWorkplaceLabel(item.workLocation,item.workCommunes)}</span></span>}
                       <span className={'neoJobState ' + (reviewLabel(item)==='Verificada'?'verified':reviewLabel(item)==='Vigencia por confirmar'?'pending':'direct')}>{reviewLabel(item)}</span>
                     </div>
 
@@ -1629,22 +1631,27 @@ function App() {
         <section className='tcStitchCities' id='tc-other-cities' aria-labelledby='tc-cities-title'><div><span className='tcStitchEyebrow'>Polos regionales extraterritoriales</span><h2 id='tc-cities-title'>Busca también en otras ciudades</h2>
           <NearbyCities compact stats={feedSummary.communeStats} ready={!loading} failed={Boolean(loadError)} current={place} onExplore={openTravel} onReturn={()=>chooseLocalPlace(homePlace)} origin={homePlace}/>
         </div></section>
-        <details className='tcStitchFooterDetails' open={window.matchMedia('(min-width:768px)').matches}><summary>Trabajo Cerca · Información y privacidad</summary>
-        <details className='tcSecondary tcStitchRadarDetails'><summary>Explorar el radar territorial</summary><TerritorialRadar stats={normalizedRadarStats} ready={!loading&&!loadError} failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt} onSelect={town=>navigateResults('opportunities',town)}/></details>
-        <details className='tcSecondary' id='actualidad-laboral'><summary>Actualidad laboral y trámites</summary><LaborNewsSection/></details>
-
-        <footer className='neoFooter' aria-label='Información de Trabajo Cerca'>
-          <div className='neoBrand tcFooterBrand'>
-            <StitchBrand subtitle='Radar territorial' />
-          </div>
-          <p className='tcFooterTagline'>Conectamos personas, trabajo y servicios locales.</p>
-          <a className='tcFooterEmail' href={'mailto:'+LEGAL_RESPONSIBLE.privacyEmail}>{LEGAL_RESPONSIBLE.privacyEmail}</a>
-          <nav className='tcFooterLegal' aria-label='Información legal'>
-            <button type='button' onClick={() => setLegalView('privacy')}>Privacidad</button>
-            <button type='button' onClick={() => setLegalView('terms')}>Términos</button>
-            <button type='button' onClick={() => { localStorage.removeItem('tc_analytics_consent'); setAnalyticsChoice(null); }}>Preferencias de medición</button>
-          </nav>
-        </footer></details>
+        <section className='tcRadarCompactRegion' aria-label='Radar territorial'>
+          <TerritorialRadar stats={normalizedRadarStats} ready={!loading&&!loadError}
+            failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt}
+            onSelect={town=>navigateResults('opportunities',town)}/>
+        </section>
+        {!isStandalone && <details className='tcSecondary tcWebsiteNewsOnly' id='actualidad-laboral'>
+          <summary>Actualidad laboral y trámites</summary><LaborNewsSection/>
+        </details>}
+        <details className='tcStitchFooterDetails' open={window.matchMedia('(min-width:768px)').matches}>
+          <summary>Información y privacidad</summary>
+          <footer className='neoFooter tcCompactFooter' aria-label='Información de Trabajo Cerca'>
+            <div className='neoBrand tcFooterBrand'><StitchBrand subtitle='Radar territorial'/></div>
+            <p className='tcFooterTagline'>Conectamos personas con oportunidades locales.</p>
+            <a className='tcFooterEmail' href={'mailto:'+LEGAL_RESPONSIBLE.privacyEmail}>{LEGAL_RESPONSIBLE.privacyEmail}</a>
+            <nav className='tcFooterLegal' aria-label='Información legal'>
+              <button type='button' onClick={() => setLegalView('privacy')}>Privacidad</button>
+              <button type='button' onClick={() => setLegalView('terms')}>Términos</button>
+              <button type='button' onClick={() => { localStorage.removeItem('tc_analytics_consent'); setAnalyticsChoice(null); }}>Preferencias de medición</button>
+            </nav>
+          </footer>
+        </details>
 
         {!flow && !showAdvertiser && !showAlerts && !showActivity && !legalView && !selected && <>
           <nav className='neoMobileNav' aria-label='Navegación móvil de cuatro espacios'>

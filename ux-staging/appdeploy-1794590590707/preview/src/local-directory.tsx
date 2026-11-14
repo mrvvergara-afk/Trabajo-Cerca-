@@ -62,6 +62,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
   const [kind, setKind] = useState<DirectoryKind>(initialKind);
   const [formKind,setFormKind] = useState<Kind>(initialKind==='business'?'business':'service');
   const [listings, setListings] = useState<Listing[]>([]);
+  const [searchText,setSearchText] = useState('');
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -130,6 +131,8 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       });
     return () => { mounted = false; };
   }, [kind, place]);
+  const visibleListings = listings.filter(entry => [entry.title,entry.category,entry.description]
+    .some(value=>value.toLocaleLowerCase('es-CL').includes(searchText.trim().toLocaleLowerCase('es-CL'))));
   const refresh = async () => {
     const response = await api.get('/api/local-directory?kind=' + kind + '&place=' + encodeURIComponent(place));
     setListings(Array.isArray(response.data.items) ? response.data.items : []);
@@ -292,6 +295,10 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         {showForm ? 'Cerrar formulario' : 'Publicar servicio o negocio'}
       </button>
     </div>
+    <label className='tcDirectorySearch'>Buscar un servicio o negocio
+      <input type='search' value={searchText} onChange={event=>setSearchText(event.target.value)}
+        placeholder='Ej.: soldadura, tortas, gasfitería' aria-label='Buscar en el directorio'/>
+    </label>
     {notice && <p role='status' className='tcDirectoryNotice'>{notice}</p>}
     {ownedLookupError && <p role='alert' className='tcDirectoryNotice'>No se pudo consultar una de tus publicaciones. No la vuelvas a enviar; actualiza el estado o solicita revisión.</p>}
     {ownedReceipts.length>0 && <details className='tcDirectoryOwned' open={ownedReceipts.some(entry=>entry.status==='pending')}>
@@ -363,8 +370,8 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         {busy ? 'Enviando…' : 'Enviar para revisión'}
       </button>
     </form>}
-    {listings.length > 0 ? <div className='tcDirectoryGrid'>
-      {listings.map(entry => <article key={entry.id} className='tcDirectoryCard'>
+    {visibleListings.length > 0 ? <div className='tcDirectoryGrid'>
+      {visibleListings.map(entry => <article key={entry.id} className='tcDirectoryCard'>
         {entry.photos.length > 0 && <div className='tcDirectoryPhotos'>
           {entry.photos.map((src, index) => <img key={src} src={src}
             alt={'Trabajo o producto de ' + entry.title + ', foto ' + (index + 1)}
@@ -427,7 +434,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         </form>}
       </article>)}
     </div> : <div className='tcDirectoryEmpty'>
-      <strong>Aún no hay fichas aprobadas en esta comuna.</strong>
+      <strong>{searchText ? 'No hay resultados para esta búsqueda.' : 'Aún no hay fichas aprobadas en esta comuna.'}</strong>
       <p>Las solicitudes enviadas aparecen en «Mis publicaciones enviadas» hasta que se aprueben.</p>
     </div>}
     {admin && <details className='tcDirectoryAdmin' aria-label='Moderación del directorio'>

@@ -7,9 +7,9 @@ const root=path.resolve(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const helper=read('src/workplace-label.ts');
 const compiled=ts.transpileModule(helper,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}});
-const exports={};
-vm.runInNewContext(compiled.outputText,{exports,console},{filename:'workplace-label.cjs'});
-const {compactWorkplaceLabel:short}=exports;
+const moduleExports={};
+vm.runInNewContext(compiled.outputText,{exports:moduleExports,console},{filename:'workplace-label.cjs'});
+const {compactWorkplaceLabel:short}=moduleExports;
 let passed=0;
 const check=(name,fn)=>{fn();passed++;console.log('PASS '+name)};
 const cases=[

@@ -5,6 +5,7 @@ import type { Goal, Selection, Slot } from '../shared/house-ads';
 import { useAdvertising, sendHouseEvent, type HouseAttribution } from './house-advertising';
 import { safeSponsorUrl } from './territorial-exploration';
 import { presentHouseCreative } from './house-creative-presentation';
+import { AdImage } from './ad-image';
 import './advertising-surfaces.css';
 
 /** Se muestra como campaña propia cuando no existe una reserva comercial válida. */
@@ -38,7 +39,7 @@ export function InlineHousePromotion({
 
   return <aside className='tcInlineHousePromo' data-placement={slot} data-goal={goal}
     data-house-kind={isPhotoOffer?'showcase':'community'} aria-label='Autopromoción de Trabajo Cerca'>
-    <span className='tcInlineHouseIcon'><Megaphone aria-hidden='true'/></span>
+    <span className='tcInlineHouseIcon'>{creative?.imageUrl && <AdImage url={creative.imageUrl}/>}<Megaphone aria-hidden='true'/></span>
     <div className='tcInlineHouseCopy'>
       <small>{label}{place==='Todas'?'':' · '+place}</small>
       <strong>{title}</strong>

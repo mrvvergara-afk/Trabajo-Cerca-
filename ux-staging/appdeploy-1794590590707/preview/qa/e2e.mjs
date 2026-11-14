@@ -14,6 +14,10 @@ try{
  for(const width of widths){
   const context=await browser.newContext({viewport:{width,height:860},serviceWorkers:'block',reducedMotion:'reduce'});
   const page=await context.newPage();
+  if (width===390 && process.env.UX_QA_LIVE!=='1') {
+    await page.addInitScript(() => localStorage.setItem(
+      'tc_directory_owner_local_12345678-1234-1234-1234-123456789abc','qa-owner-token'));
+  }
   const errors=[];
   page.setDefaultTimeout(7000);
   page.on('pageerror',error=>errors.push('JS '+error.message));
@@ -72,11 +76,30 @@ try{
       await nav.getByRole('button',{name:'Empleos'}).click();
       await directory.waitFor({state:'detached'});
     });
+    await check(width+'px: mobile header has no overlapping controls',async()=>{
+      const brand=await page.locator('.neoBrand').first().boundingBox();
+      const commune=await page.locator('.tcMobilePlace').boundingBox();
+      assert(brand&&commune && brand.x+brand.width<=commune.x+2,JSON.stringify({brand,commune}));
+    });
+    await check(width+'px: floating publish action stays compact',async()=>{
+      const rect=await page.getByRole('button',{name:'Publicar gratis en Trabajo Cerca'}).boundingBox();
+      assert(rect && rect.width<=46 && rect.height<=46,JSON.stringify(rect));
+    });
     await check(width+'px: service directory navigation',async()=>{
       await nav.getByRole('button',{name:'Servicios'}).click();
       const directory=page.locator('#local-directory');
       await directory.locator('.tcDirectoryTop').waitFor({state:'visible',timeout:7000});
       assert((await directory.textContent()).includes('Oficios'));
+      const h=await directory.locator('h2').first().evaluate(el=>getComputedStyle(el).fontSize);
+      if(width<=767) assert(parseFloat(h)<=18,'Directory heading too large: '+h);
+      assert(!await page.locator('.neoDiscover').isVisible(),'Jobs catalog should be hidden inside directory route');
+      const dim=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
+      assert(dim.scroll<=dim.width+2,JSON.stringify(dim));
+      if(width===390 && process.env.UX_QA_LIVE!=='1'){
+        await directory.locator('.tcDirectoryOwned').waitFor({state:'visible',timeout:5000});
+        const own=await directory.locator('.tcDirectoryOwned').textContent();
+        assert(own.includes('Pastelería de prueba')&&own.includes('Pendiente de aprobación')&&own.includes('3 foto(s)'),own);
+      }
     });
    }else{
     await check(width+'px: desktop four destinations',async()=>{

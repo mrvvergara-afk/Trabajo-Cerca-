@@ -35,7 +35,7 @@ try{
    await dir.locator('.tcDirectoryTop').waitFor({state:'visible',timeout:9000});
    await check(width+'px marketing CTA actually opens photo-enabled services form',async()=>{
     const form=dir.locator('form.tcDirectoryForm').filter({has:dir.getByRole('heading',{name:'Publicar en el directorio'})});
-    assert(await form.isVisible());
+    await form.waitFor({state:'visible',timeout:6500});
     assert.equal(await form.locator('input[type=file]').count(),1);
    });
    await dir.getByRole('button',{name:'Cerrar formulario'}).click();

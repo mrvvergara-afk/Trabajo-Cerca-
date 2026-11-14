@@ -1,9 +1,11 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { api, auth } from '@appdeploy/client';
 import './local-directory.css';
 
 type Kind = 'service' | 'business';
 type DirectoryKind = Kind | 'all';
+type PhotoViewer = { photos: string[]; index: number; title: string } | null;
+type Reviewer = { email: string } | null;
 type Listing = {
   id: string; kind: Kind; title: string; category: string; description: string;
   commune: string; coverage: string[]; photos: string[]; reviewCount: number;
@@ -78,7 +80,8 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
   const [consent, setConsent] = useState(false);
   const [contacts, setContacts] = useState<Record<string, {phone: string | null; email: string | null}>>({});
   const [reviewId, setReviewId] = useState<string | null>(null);
-  const [reviewEmail, setReviewEmail] = useState('');
+  const [reviewer, setReviewer] = useState<Reviewer>(null);
+  const [loginBusy, setLoginBusy] = useState(false);
   const [rating, setRating] = useState(0);
   const [hired, setHired] = useState(false);
   const [reportId, setReportId] = useState<string | null>(null);
@@ -87,6 +90,64 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
   const [ownedReceipts, setOwnedReceipts] = useState<OwnerReceipt[]>([]);
   const [submissionError, setSubmissionError] = useState('');
   const [ownedLookupError,setOwnedLookupError] = useState(false);
+  const [photoViewer,setPhotoViewer] = useState<PhotoViewer>(null);
+  const photoOrigin = useRef<HTMLButtonElement|null>(null);
+  const gestureStart = useRef<number|null>(null);
+
+  function openPhotos(photos:string[],index:number,title:string,button:HTMLButtonElement){
+    photoOrigin.current=button;
+    setPhotoViewer({photos,index,title});
+  }
+  function movePhoto(offset:number){
+    setPhotoViewer(current=>current?{...current,index:(current.index+offset+current.photos.length)%current.photos.length}:null);
+  }
+  useEffect(()=>{
+    if(!photoViewer)return;
+    const was=document.body.style.overflow;
+    document.body.style.overflow='hidden';
+    const onKey=(event:KeyboardEvent)=>{
+      if(event.key==='Escape')setPhotoViewer(null);
+      if(event.key==='ArrowLeft')movePhoto(-1);
+      if(event.key==='ArrowRight')movePhoto(1);
+    };
+    window.addEventListener('keydown',onKey);
+    return()=>{
+      document.body.style.overflow=was;
+      window.removeEventListener('keydown',onKey);
+      photoOrigin.current?.focus({preventScroll:true});
+    };
+  },[Boolean(photoViewer)]);
+  useEffect(()=>{
+    let active=true;
+    void auth.getUser().then(user=>{
+      if(active)setReviewer(user?.email?{email:user.email}:null);
+    }).catch(()=>{if(active)setReviewer(null);});
+    return()=>{active=false;};
+  },[]);
+  useEffect(()=>{
+    if(!reviewer?.email || !listings.length)return;
+    try{
+      const saved=sessionStorage.getItem('tc_review_intent');
+      const intent=saved?JSON.parse(saved) as {id:string;rating?:number}:null;
+      if(!intent?.id)return;
+      const match=listings.some(entry=>entry.id===intent.id&&entry.kind==='service');
+      if(!match)return;
+      setReviewId(intent.id);
+      setRating(intent.rating&&intent.rating>=1&&intent.rating<=5?intent.rating:0);
+      sessionStorage.removeItem('tc_review_intent');
+    }catch{try{sessionStorage.removeItem('tc_review_intent');}catch{/* no storage */}}
+  },[reviewer?.email,listings]);
+  async function loginToReview(){
+    if(!reviewId)return;
+    try{
+      sessionStorage.setItem('tc_review_intent',JSON.stringify({id:reviewId,rating}));
+      setLoginBusy(true);
+      await auth.signInWithRedirect({scope:'openid email offline_access'});
+    }catch{
+      setNotice('No se pudo iniciar la verificación del correo. Puedes reintentar.');
+      setLoginBusy(false);
+    }
+  }
 
   // Each owner receipt is read with an unguessable token already saved on the
   // same device. No public listing or contact details are exposed here.
@@ -189,11 +250,9 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     if (!reviewId) return;
     setBusy(true);
     try {
-      await api.post('/api/local-directory/' + reviewId + '/reviews', {
-        email: reviewEmail, rating, hired,
-      });
+      if(!reviewer?.email)throw new Error('Debes confirmar tu correo antes de evaluar.');
+      await api.post('/api/local-directory/' + reviewId + '/reviews', {rating,hired});
       setNotice('Evaluación recibida para moderación. No se considera contratación verificada.');
-      setReviewEmail('');
       setHired(false);
       setRating(0);
       setReviewId(null);
@@ -282,8 +341,11 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         {entry.category && <strong className='tcOwnedPreviewCategory'>{entry.category}</strong>}
         {entry.description && <p>{entry.description}</p>}
         {entry.previewPhotos?.length ? <div className='tcDirectoryPhotos tcDirectoryOwnerPhotos'>
-          {entry.previewPhotos.map((url,index)=><img src={url} key={url}
-            alt={'Fotografía '+(index+1)+' de '+entry.title} loading='lazy'/>)}
+          {entry.previewPhotos.map((url,index)=><button type='button' key={url} className='tcDirectoryPhotoButton'
+            aria-label={'Ampliar fotografía '+(index+1)+' de '+entry.title}
+            onClick={event=>openPhotos(entry.previewPhotos||[],index,entry.title,event.currentTarget)}>
+              <img src={url} alt={'Fotografía '+(index+1)+' de '+entry.title} loading='lazy'/>
+            </button>)}
         </div> : null}
         {entry.status==='pending' && <small className='tcOwnedVisibilityNotice'>Esta vista previa solo aparece en tu dispositivo. El público podrá verla cuando se apruebe.</small>}
       </article>)}
@@ -342,18 +404,20 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     {visibleListings.length > 0 ? <div className='tcDirectoryGrid'>
       {visibleListings.map(entry => <article key={entry.id} className='tcDirectoryCard'>
         {entry.photos.length > 0 && <div className='tcDirectoryPhotos'>
-          {entry.photos.map((src, index) => <img key={src} src={src}
-            alt={'Trabajo o producto de ' + entry.title + ', foto ' + (index + 1)}
-            loading='lazy' width={320} height={220}/>)}
+          {entry.photos.map((src,index)=><button type='button' key={src} className='tcDirectoryPhotoButton'
+            aria-label={'Ampliar fotografía '+(index+1)+' de '+entry.title}
+            onClick={event=>openPhotos(entry.photos,index,entry.title,event.currentTarget)}>
+              <img src={src} alt={'Trabajo o producto de '+entry.title+', foto '+(index+1)}
+                loading='lazy' width={320} height={220}/>
+            </button>)}
         </div>}
         <small><span className='tcDirectoryKindBadge'>{entry.kind==='service'?'Servicio':'Negocio'}</span> · {entry.category} · {entry.commune}</small>
         <h3>{entry.title}</h3>
         <p>{entry.description}</p>
         <span className='tcDirectoryCoverage'>Atiende en: {entry.coverage.join(', ')}</span>
         {entry.kind === 'service' && <span className='tcDirectoryRating'>
-          {entry.rating === null ? 'Sin opiniones publicadas suficientes'
-            : (entry.rating >= 4.2?'👍 Buenas opiniones':entry.rating >= 2.5?'😐 Opiniones variadas':'👎 Opiniones negativas')
-              + ' · ' + entry.reviewCount + ' opiniones revisadas'}
+          <span className='tcDirectoryRatingStars' aria-hidden='true'>{entry.rating===null?'☆☆☆☆☆':'★★★★★'}</span>
+          <span>{entry.rating===null?'Sin calificaciones aún':entry.rating.toFixed(1)+' / 5 · '+entry.reviewCount+' opiniones revisadas'}</span>
         </span>}
         {contacts[entry.id] && <div className='tcDirectoryContact'>
           {contacts[entry.id].phone && <a href={'tel:' + contacts[entry.id].phone}>{contacts[entry.id].phone}</a>}
@@ -362,7 +426,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         <div className='tcDirectoryCardActions'>
           {entry.contactAvailable && <button onClick={() => void reveal(entry.id)}>Ver contacto</button>}
           {entry.kind === 'service' && !localStorage.getItem('tc_directory_owner_' + entry.id) && <button onClick={() => { setReviewId(entry.id); setRating(0); setHired(false); setReportId(null); }}>
-            Opinar sobre el servicio
+            ★ Calificar servicio
           </button>}
           {!localStorage.getItem('tc_directory_owner_' + entry.id) && <button onClick={() => { setReportId(entry.id); setReviewId(null); }}>Reportar problema</button>}
         </div>
@@ -370,26 +434,27 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
           <summary>Gestionar mi ficha</summary>
           <button className='tcDirectoryRemove' onClick={() => void removeOwn(entry.id)}>Retirar mi ficha</button>
         </details>}
-        {reviewId===entry.id && <form className='tcDirectoryForm tcDirectoryReviewForm' onSubmit={event => void review(event)}>
-          <h4>¿Cómo te fue con este servicio?</h4>
-          <p>Solo pueden opinar quienes contrataron el trabajo. No puedes evaluar tu propio servicio.</p>
-          <fieldset className='tcDirectoryReviewChoices'>
-            <legend>Elige una opción</legend>
-            {[{value:5,label:'👍 Bueno'},{value:3,label:'😐 Regular'},{value:1,label:'👎 Malo'}].map(choice=>
-              <button key={choice.value} type='button' aria-pressed={rating===choice.value}
-                onClick={()=>setRating(choice.value)}>{choice.label}</button>)}
-          </fieldset>
-          <label>Tu correo electrónico
-            <input type='email' required value={reviewEmail}
-              onChange={e=>setReviewEmail(e.target.value)} placeholder='Para evitar opiniones repetidas'/>
-          </label>
-          <label className='tcDirectoryConsent'><input type='checkbox' checked={hired} required
-            onChange={e => setHired(e.target.checked)}/> Confirmo que contraté este servicio.</label>
-          <div className='tcDirectoryReviewActions'>
-            <button disabled={busy || rating===0 || !hired}>Enviar opinión</button>
-            <button type='button' onClick={() => setReviewId(null)}>Cancelar</button>
+        {reviewId===entry.id && <form className='tcDirectoryForm tcDirectoryReviewForm' onSubmit={event=>void review(event)}>
+          <h4>¿Cómo calificarías este servicio?</h4>
+          <div className='tcDirectoryStars' role='radiogroup' aria-label='Elige de 1 a 5 estrellas'>
+            {[1,2,3,4,5].map(value=><button key={value} type='button' role='radio'
+              aria-checked={rating===value} aria-label={value+' '+(value===1?'estrella':'estrellas')}
+              className={rating>=value?'selected':''} onClick={()=>setRating(value)}>★</button>)}
           </div>
-          <small>Las opiniones se revisan antes de mostrarse. No verificamos contrataciones.</small>
+          <p>Elige las estrellas que reflejen tu experiencia. Tu opinión se revisará antes de aparecer.</p>
+          {reviewer?.email
+            ? <p className='tcDirectoryVerifiedEmail'>Correo confirmado: <strong>{reviewer.email}</strong></p>
+            : <button type='button' className='tcDirectoryEmailLogin' disabled={loginBusy}
+                onClick={()=>void loginToReview()}>
+                {loginBusy?'Abriendo acceso…':'Confirmar mi correo para opinar'}
+              </button>}
+          <label className='tcDirectoryConsent'><input type='checkbox' checked={hired} required
+            onChange={e=>setHired(e.target.checked)}/> Confirmo que contraté este servicio.</label>
+          <div className='tcDirectoryReviewActions'>
+            <button disabled={busy||rating===0||!hired||!reviewer?.email}>Enviar calificación</button>
+            <button type='button' onClick={()=>setReviewId(null)}>Cancelar</button>
+          </div>
+          <small>No verificamos la contratación. No puedes evaluar tu propia ficha.</small>
         </form>}
         {reportId===entry.id && <form className='tcDirectoryForm tcDirectoryReviewForm' onSubmit={event => void report(event)}>
           <h4>Informar un problema con esta ficha</h4>
@@ -405,6 +470,30 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     </div> : <div className='tcDirectoryEmpty'>
       <strong>{searchText ? 'No hay resultados para esta búsqueda.' : 'Aún no hay fichas aprobadas en esta comuna.'}</strong>
       <p>Las solicitudes enviadas aparecen en «Mis publicaciones enviadas» hasta que se aprueben.</p>
+    </div>}
+    {photoViewer && <div className='tcPhotoLightbox' role='presentation'
+      onMouseDown={event=>{if(event.target===event.currentTarget)setPhotoViewer(null);}}>
+      <section role='dialog' aria-modal='true' aria-label={'Fotografías de '+photoViewer.title}
+        className='tcPhotoDialog'
+        onTouchStart={event=>{gestureStart.current=event.touches[0]?.clientX??null;}}
+        onTouchEnd={event=>{
+          const x=gestureStart.current;gestureStart.current=null;
+          if(x===null)return;
+          const moved=(event.changedTouches[0]?.clientX??x)-x;
+          if(Math.abs(moved)>45)movePhoto(moved<0?1:-1);
+        }}>
+        <header><strong>{photoViewer.title}</strong><button type='button' aria-label='Cerrar fotografía'
+          onClick={()=>setPhotoViewer(null)}>×</button></header>
+        <div className='tcPhotoDialogImage'><img src={photoViewer.photos[photoViewer.index]}
+          alt={'Fotografía ampliada '+(photoViewer.index+1)+' de '+photoViewer.title}/></div>
+        <footer>
+          {photoViewer.photos.length>1 && <button type='button' aria-label='Fotografía anterior'
+            onClick={()=>movePhoto(-1)}>‹</button>}
+          <span>{photoViewer.index+1} / {photoViewer.photos.length}</span>
+          {photoViewer.photos.length>1 && <button type='button' aria-label='Fotografía siguiente'
+            onClick={()=>movePhoto(1)}>›</button>}
+        </footer>
+      </section>
     </div>}
   </section>;
 }

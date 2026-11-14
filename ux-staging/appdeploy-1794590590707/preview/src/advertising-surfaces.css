@@ -181,3 +181,20 @@
 @media(prefers-reduced-motion:reduce){
  .tcStitchShell .tcInlineHousePromo button{transition:none;}
 }
+
+
+/* Reuse authorized house-campaign photography as a small, relevant visual. */
+.tcStitchShell .tcInlineHousePromo:has(.tcInlineHouseIcon .tcAdImage){grid-template-columns:70px minmax(0,1fr) auto;}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcAdImage){
+ width:68px;height:68px;overflow:hidden;border-radius:11px;
+ box-shadow:0 0 0 2px #c5f0a6;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{
+ display:block;width:100%;height:100%;object-fit:cover;object-position:center;
+ border-radius:10px;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcAdImage) svg{display:none;}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo:has(.tcInlineHouseIcon .tcAdImage){grid-template-columns:60px minmax(0,1fr);}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcAdImage){width:58px;height:58px;}
+}

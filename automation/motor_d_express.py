@@ -175,10 +175,16 @@ def build(report,today=None):
             job_key=(normalize(offer["cargo"]),normalize(offer["empresa"]),
                      tuple(sorted(normalize(x) for x in offer["comunas"])))
             source_id=offer["id_fuente"]
-            if source_id in seen_source_ids or canonical in seen_urls or job_key in seen_job_keys:
-                state,reason,offer="DUPLICADO","coincide_id_fuente_url_o_cargo_empresa_territorio",None
+            # One official poster can advertise several genuinely distinct jobs.
+            # Deduplicate by job identity; never suppress a second role solely
+            # because its application/document URL is shared with the first.
+            if job_key in seen_job_keys:
+                state,reason,offer="DUPLICADO","coincide_cargo_empresa_territorio",None
             else:
-                seen_source_ids.add(source_id)
+                if source_id in seen_source_ids:
+                    suffix = hashlib.sha256(json.dumps(job_key,ensure_ascii=False).encode()).hexdigest()[:12]
+                    offer["id_fuente"] = source_id + "_" + suffix
+                seen_source_ids.add(offer["id_fuente"])
                 seen_urls.add(canonical)
                 seen_job_keys.add(job_key)
         output[state].append({"url":item.get("url") if isinstance(item, dict) else None,

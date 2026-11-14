@@ -85,3 +85,97 @@
  .tcStitchShell .neoJobPlace{font-size:10px!important;line-height:13px!important;}
  .tcStitchShell .tcWorkplaceLabel{font-size:10px!important;line-height:13px!important;}
 }
+
+
+/* Hotfix radar: three balanced columns, no truncated municipality names. */
+.tcStitchShell .tcRadarCompactRegion .tcRadarTowns{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:7px!important;min-width:0!important;width:100%!important;max-width:100%!important;
+ box-sizing:border-box!important;
+}
+.tcStitchShell .tcRadarCompactRegion .tcRadarTowns button{
+ display:flex!important;flex-direction:column!important;justify-content:center!important;
+ min-width:0!important;max-width:100%!important;width:100%!important;
+ box-sizing:border-box!important;padding:8px 5px!important;
+ border-radius:10px!important;min-height:52px!important;text-align:left!important;
+ font-size:clamp(11px,2.95vw,13px)!important;line-height:1.22!important;
+ gap:3px!important;overflow:visible!important;
+}
+.tcStitchShell .tcRadarCompactRegion .tcRadarTowns button span{
+ display:block!important;min-width:0!important;max-width:100%!important;
+ font-size:inherit!important;line-height:1.18!important;
+ white-space:nowrap!important;word-break:normal!important;hyphens:none!important;
+ letter-spacing:-.03em!important;text-overflow:clip!important;overflow:visible!important;
+}
+.tcStitchShell .tcRadarCompactRegion .tcRadarTowns button small{
+ display:block!important;font-size:10px!important;line-height:13px!important;
+ white-space:nowrap!important;color:#526c56!important;
+}
+/* A compact institutional footer retains the official brand and legal controls. */
+.tcStitchShell .tcStitchFooterDetails[open]{
+ border:1px solid #d6e3d8!important;border-radius:12px!important;
+ background:#f5f9f4!important;box-sizing:border-box!important;
+}
+.tcStitchShell .neoFooter.tcCompactFooter{
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+ gap:6px!important;max-width:100%!important;min-width:0!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterBrand{
+ display:flex!important;grid-column:1!important;grid-row:auto!important;
+ width:100%!important;min-width:0!important;align-items:center!important;
+ padding:3px 0 7px!important;box-sizing:border-box!important;
+ border-bottom:1px solid #d6e5d7!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterBrand .tcStitchBrand{
+ display:flex!important;align-items:center!important;min-width:0!important;
+ gap:9px!important;width:auto!important;max-width:100%!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterBrand .tcStitchBrandArt{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:38px!important;height:38px!important;flex:0 0 38px!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterBrand .tcStitchBrandArt img{
+ width:38px!important;height:38px!important;max-width:38px!important;
+ object-fit:contain!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterBrand .tcStitchMobileWordmark{
+ display:flex!important;flex-direction:column!important;gap:1px!important;
+ min-width:0!important;max-width:100%!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterBrand .tcStitchMobileWordmark b{
+ font-size:14px!important;line-height:17px!important;font-weight:800!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterBrand .tcStitchMobileWordmark small{
+ font-size:9px!important;line-height:12px!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterTagline{
+ grid-column:1!important;grid-row:auto!important;
+ margin:3px 0!important;max-width:100%!important;
+ font-size:11px!important;line-height:16px!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterEmail{
+ grid-column:1!important;grid-row:auto!important;
+ display:block!important;font-size:11px!important;line-height:17px!important;
+ max-width:100%!important;overflow-wrap:anywhere!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterLegal{
+ grid-column:1!important;grid-row:auto!important;
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+ justify-content:flex-start!important;gap:5px 15px!important;margin-top:3px!important;
+}
+.tcStitchShell .tcCompactFooter .tcFooterLegal button{
+ min-width:0!important;max-width:100%!important;padding:5px 0!important;
+ border:0!important;background:transparent!important;white-space:normal!important;
+ font-size:11px!important;line-height:15px!important;
+}
+@media(max-width:767px){
+ .tcStitchShell .tcStitchFooterDetails[open]{padding:0 11px 10px!important;}
+ .tcStitchShell .tcCompactFooter .tcFooterBrand{display:flex!important;}
+ .tcStitchShell .tcRadarCompactRegion .tcRadarTowns{gap:5px!important;}
+ .tcStitchShell .tcRadarCompactRegion .tcRadarTowns button{min-height:49px!important;padding:7px 4px!important;}
+}
+@media(max-width:350px){
+ .tcStitchShell .tcRadarCompactRegion .tcRadarTowns{gap:4px!important;}
+ .tcStitchShell .tcRadarCompactRegion .tcRadarTowns button span{font-size:10.5px!important;}
+ .tcStitchShell .tcRadarCompactRegion .tcRadarTowns button small{font-size:9px!important;}
+}

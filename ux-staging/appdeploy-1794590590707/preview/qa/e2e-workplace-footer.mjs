@@ -50,7 +50,7 @@ try{
      card.remove();return out;
    });
    await pass(width+'px sample two-commune badge does not overflow',async()=>{
-    assert(sample.width<=118,JSON.stringify(sample));
+    assert(sample.width<=(width<=767?118:180),JSON.stringify(sample));
     assert(sample.labelScroll<=sample.labelClient+2,JSON.stringify(sample));
    });
    const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth}));

@@ -88,7 +88,7 @@ export function useAdvertising(place:string,category:string,page='home',requeste
   function impression(id:string){seen.current[id]=(seen.current[id]??0)+1;try{sessionStorage.setItem('tc-house-seen',JSON.stringify(seen.current));}catch{/* Keep in memory. */}}
   return {selections,impression,loading:!catalog&&!failed,failed,rotation,paused,toggleRotation:()=>setPaused(v=>!v)};
 }
-export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Selection;place:string;onGoal:(goal:Goal,attribution:HouseAttribution)=>void;onImpression:(id:string)=>void}) {
+export function HouseBanner({selection,place,onGoal,onImpression,paused=false,onToggleRotation}:{selection:Selection;place:string;onGoal:(goal:Goal,attribution:HouseAttribution)=>void;onImpression:(id:string)=>void;paused?:boolean;onToggleRotation?:()=>void}) {
   const node=useRef<HTMLElement>(null);const counted=useRef(new Set<string>());
   const house=selection?.type==='HOUSE_AD'?selection:null;
   const key=house?house.campaign.id+':'+house.creative.id:'';
@@ -110,6 +110,10 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
     <div className='tcCampaignVisual' aria-hidden='true'><AdImage url={creative.imageUrl}/><span className='tcCreativeFallback'>Trabajo Cerca</span></div>
     <div className='tcCampaignCopy'><small className='tcCampaignEyebrow'>{house.campaign.goal==='professional'?'SERVICIOS Y OFICIOS':house.campaign.goal==='advertiser'?'NEGOCIOS Y FUNDADORES':'EMPLEO Y TERRITORIO'} · FOTO ILUSTRATIVA</small><h3>{creative.title}</h3><p className='tcHouseDesktop'>{creative.message}</p><p className='tcHouseMobile'>{creative.mobileMessage}</p>
     <span className='tcHouseBenefits'>✓ Presencia local · ✓ Contacto directo</span>
+    {onToggleRotation&&<button className='tcHouseRotateButton' type='button'
+      aria-label={paused?'Reanudar campañas':'Pausar campañas'} onClick={onToggleRotation}>
+      {paused?'▶ Ver campañas':'Ⅱ Pausar carrusel'}
+    </button>}
     <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{creative.button}</button></div>
   </aside>;
 }

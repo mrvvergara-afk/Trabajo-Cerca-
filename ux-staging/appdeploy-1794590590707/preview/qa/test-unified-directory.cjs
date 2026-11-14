@@ -55,4 +55,29 @@ check('Twelve approved municipalities, Quilaco excluded',()=>{
  assert(directory.includes("'Angol'"));
  assert(directory.includes("'Nacimiento'"));
 });
+check('Header starts at all 12 municipalities and labels filter Todas',()=>{
+ assert(app.includes("requestedPlace : 'Todas'"));
+ assert(app.includes("{value==='Todas'?'Todas':value}"));
+});
+check('Publish is a bottom navigation destination, no floating plus',()=>{
+ assert(app.includes("<span>Publicar</span>"));
+ assert(!app.includes("className='tcMobilePublishAction'"));
+});
+check('Public directory contains no administration block or admin fetch',()=>{
+ const publicComponent=directory.slice(directory.indexOf('export function LocalDirectory('),directory.indexOf('export function LocalDirectoryModeration()'));
+ assert(!publicComponent.includes("tcDirectoryAdmin"));
+ assert(!publicComponent.includes("api.get('/api/admin/local-directory')"));
+ assert(app.includes('<LocalDirectoryModeration />'));
+});
+check('Moderation resides in existing operations panel and requires admin endpoint',()=>{
+ const opsComponent=directory.slice(directory.indexOf('export function LocalDirectoryModeration()'));
+ assert(opsComponent.includes("api.get('/api/admin/local-directory')"));
+ assert(opsComponent.includes('auth.getUser()'));
+ assert(opsComponent.includes('Solo administración'));
+});
+check('All-communes browse does not silently assign Angol on new posts',()=>{
+ assert(directory.includes("PLACES.includes(place) ? place : ''"));
+ assert(directory.includes("<option value='' disabled>Selecciona tu comuna</option>"));
+ assert(directory.includes('<select required value={commune}'));
+});
 console.log(passed+' unified-directory contracts passed');

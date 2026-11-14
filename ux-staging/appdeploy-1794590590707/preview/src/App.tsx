@@ -1486,15 +1486,15 @@ function App() {
   function renderAdvertising(slot:Exclude<Slot,'form'>) {
     const selection=advertising.selections[slot];
     if(selection?.type==='HOUSE_AD') {
-      if(slot==='featured') return <HouseBanner selection={selection} place={place} onGoal={openHouseGoal} onImpression={advertising.impression}/>;
-      return <InlineHousePromotion selection={selection} place={place} slot={slot} onGoal={openHouseGoal}/>;
+      if(slot==='featured') return <HouseBanner selection={selection} place={place} onGoal={openHouseGoal} onImpression={advertising.impression} paused={advertising.paused} onToggleRotation={advertising.toggleRotation}/>;
+      return <InlineHousePromotion selection={selection} place={place} slot={slot} onGoal={openHouseGoal} paused={advertising.paused} onToggleRotation={advertising.toggleRotation}/>;
     }
     if(selection?.type==='COMMERCIAL') {
       const ad=selection.campaign;
       const sponsor:Sponsor={...ad,label:'Publicidad local',scope:ad.communes.includes('Todas')?'regional':'exact'};
       return <LocalAdvertising sponsor={sponsor} place={place} loading={false} onAdvertise={()=>setShowAdvertiser(true)} track={track} placement={slot}/>;
     }
-    return <InlineHousePromotion selection={null} place={place} slot={slot} onGoal={openHouseGoal}/>;
+    return <InlineHousePromotion selection={null} place={place} slot={slot} onGoal={openHouseGoal} paused={advertising.paused} onToggleRotation={advertising.toggleRotation}/>;
   }
   const neoFeatured = items.filter(item => item.kind === 'job_offer').slice(0, 3);
 

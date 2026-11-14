@@ -1373,6 +1373,18 @@ function App() {
     setDirectoryMode(kind);
     window.setTimeout(() => document.getElementById('local-directory')?.scrollIntoView({behavior:'auto',block:'start'}), 40);
   };
+  // Resume the selected rating after returning from passwordless email sign-in.
+  // Browsing/publishing never requires a session.
+  useEffect(()=>{
+    let active=true;
+    try{
+      if(!sessionStorage.getItem('tc_review_intent'))return;
+    }catch{return;}
+    void auth.getUser().then(user=>{
+      if(active&&user?.email)openLocalDirectory('all');
+    }).catch(()=>undefined);
+    return()=>{active=false;};
+  },[]);
   const chooseAnalytics = (choice:'yes'|'no') => {
     localStorage.setItem('tc_analytics_consent', choice);
     if (choice === 'no') localStorage.removeItem('tc_analytics_id');
@@ -1463,7 +1475,10 @@ function App() {
   const isVNext = true;
   function openHouseGoal(goal:Goal,attribution:HouseAttribution) {
     setHouseAttribution(attribution);
-    if(goal==='professional') {setFlow('ofrezco');}
+    if(goal==='professional') {
+      if(attribution.campaignId==='house-inclusion')openLocalDirectory('all',true);
+      else setFlow('ofrezco');
+    }
     else if(goal==='advertiser') {setShowAdvertiser(true);}
     else if(goal==='employer') {setFlow('trabajadores');}
     else {completeHouseGoal('explore');navigateResults('opportunities');}

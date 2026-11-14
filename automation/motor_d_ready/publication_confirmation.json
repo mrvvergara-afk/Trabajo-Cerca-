@@ -2,22 +2,22 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-13T22:44:11.169297+00:00",
+  "checked_at": "2026-11-14T02:45:10.879213+00:00",
   "feed_complete": true,
-  "feed_rows": 282,
+  "feed_rows": 284,
   "indexed_batches": 18,
   "quarantined_batches": 2,
   "distinct_nonquarantined_offers": 47,
-  "source_confirmed": 46,
+  "source_confirmed": 47,
   "semantic_only": 0,
-  "not_found": 1,
+  "not_found": 0,
   "latest_batch": {
     "batch_id": "motor-d-20261113-3ab8bd16126cecb1cd",
     "historically_quarantined": false,
     "offer_count": 1,
-    "source_confirmed": 0,
+    "source_confirmed": 1,
     "semantic_only": 0,
-    "not_found": 1
+    "not_found": 0
   },
   "batches": [
     {
@@ -160,19 +160,12 @@
       "batch_id": "motor-d-20261113-3ab8bd16126cecb1cd",
       "historically_quarantined": false,
       "offer_count": 1,
-      "source_confirmed": 0,
+      "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 1
+      "not_found": 0
     }
   ],
-  "unresolved_active_batches": [
-    {
-      "id_fuente": "d_5241af5f68d396e67450",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
-      "batch_id": "motor-d-20261113-3ab8bd16126cecb1cd",
-      "status": "not_found_in_complete_feed"
-    }
-  ],
+  "unresolved_active_batches": [],
   "previously_flagged_resolved": 0,
   "previously_flagged_still_pending": 0,
   "prior_pending_resolution": []

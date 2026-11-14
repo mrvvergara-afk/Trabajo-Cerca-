@@ -21,9 +21,9 @@ try{
    await house.waitFor({state:'visible',timeout:10000});
    await test(width+'px own ad has a loaded illustration',async()=>{
      const photo=house.locator('.tcHouseFallbackThumb');
-     await photo.waitFor({state:'visible'});
+     await photo.waitFor({state:'attached'});
      await photo.evaluate(img=>img.decode().catch(()=>undefined));
-     assert((await photo.evaluate(img=>img.naturalWidth))>0);
+     assert((await photo.evaluate(img=>img.naturalWidth))>0,'Official local illustration failed loading');
      const r=await house.boundingBox();assert(r&&r.width<=width+2,'Promo exceeds viewport');
    });
    const radar=page.locator('.tcRadarCompactRegion .tcTerritorialRadar');

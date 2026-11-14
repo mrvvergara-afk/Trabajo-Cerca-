@@ -281,7 +281,7 @@ export function LocalDirectory({ place, initialKind, onClose }: {
     {ownedReceipts.length>0 && <details className='tcDirectoryOwned' open={ownedReceipts.some(entry=>entry.status==='pending')}>
       <summary>Mis publicaciones enviadas · {ownedReceipts.length}</summary>
       {ownedReceipts.map(entry=><div className='tcDirectoryOwnedRow' key={entry.id}>
-        <span><strong>{entry.title}</strong> · {entry.commune} · {entry.photosCount} foto(s)<br/>
+        <span><strong>{entry.title}</strong> · {entry.kind==='business'?'Comercio':'Servicios'} · {entry.commune} · {entry.photosCount} foto(s)<br/>
           {entry.status==='pending'?'Pendiente de aprobación':entry.status==='approved'?'Publicada':'Retirada o rechazada'}
         </span>
       </div>)}

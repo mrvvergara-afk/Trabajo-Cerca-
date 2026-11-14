@@ -59,7 +59,20 @@ try{
      await listing.getByRole('button',{name:/Ampliar fotografía 1 de Tortas/}).click();
      const zoom=page.getByRole('dialog',{name:/Fotografías de Tortas/});await zoom.waitFor({state:'visible'});
      await check(width+'px real Tortas photo enlarges and closes',async()=>{
-       assert(await zoom.locator('img').isVisible());
+       const img=zoom.locator('img');
+       try {await img.waitFor({state:'visible',timeout:7000});}
+       catch {
+         const diagnostic=await img.evaluate(el=>({
+           complete:el.complete,naturalWidth:el.naturalWidth,naturalHeight:el.naturalHeight,
+           display:getComputedStyle(el).display,visibility:getComputedStyle(el).visibility,
+           rect:{width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height},
+           host:(()=>{try{return new URL(el.currentSrc||el.src).hostname}catch{return 'invalid'}})(),
+         })).catch(e=>({error:String(e)}));
+         console.log('PHOTO_VIEWER_DIAGNOSTIC '+JSON.stringify(diagnostic));
+         await page.screenshot({path:path.join(capture,'photo-viewer-failed-'+width+'.png'),fullPage:true}).catch(()=>undefined);
+         throw new Error('Real photo did not become visible');
+       }
+       assert(await img.isVisible());
        await zoom.getByRole('button',{name:'Cerrar fotografía'}).click();
        await zoom.waitFor({state:'detached'});
      });

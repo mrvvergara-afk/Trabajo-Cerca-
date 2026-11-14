@@ -19,6 +19,8 @@ try{
   try{
    await page.goto(URL,{waitUntil:'domcontentloaded',timeout:20000});
    await page.locator('.tcStitchShell').waitFor({state:'visible',timeout:15000});
+   const consent=page.getByRole('button',{name:'No aceptar'});
+   if(await consent.isVisible().catch(()=>false))await consent.click();
    await check(width+'px: app mounts',async()=>assert.equal(await page.locator('.tcStitchShell').count(),1));
    const mobile=width<=767;
    if(mobile){
@@ -70,6 +72,7 @@ try{
     assert.equal(await review.getByRole('button',{name:/Bueno/}).getAttribute('aria-pressed'),'true');
     assert(!await review.getByRole('button',{name:'Enviar opinión'}).isEnabled());
    });
+   if(width===390)await page.screenshot({path:path.join(captures,'rating-390.png'),fullPage:true,animations:'disabled'});
    await entry.locator('.tcDirectoryReviewForm').getByRole('button',{name:'Cancelar'}).click();
    if(width===390){
     await check('390px: owner sees pending pastry with private photo',async()=>{

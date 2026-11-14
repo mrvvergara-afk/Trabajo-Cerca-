@@ -84,7 +84,6 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
   const [reportId, setReportId] = useState<string | null>(null);
   const [reportEmail, setReportEmail] = useState('');
   const [reportReason, setReportReason] = useState('Información incorrecta');
-  const [admin, setAdmin] = useState<AdminQueue | null>(null);
   const [ownedReceipts, setOwnedReceipts] = useState<OwnerReceipt[]>([]);
   const [submissionError, setSubmissionError] = useState('');
   const [ownedLookupError,setOwnedLookupError] = useState(false);
@@ -137,24 +136,6 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     const response = await api.get('/api/local-directory?kind=' + kind + '&place=' + encodeURIComponent(place));
     setListings(Array.isArray(response.data.items) ? response.data.items : []);
   };
-  const refreshAdmin = async () => {
-    try {
-      const response = await api.get('/api/admin/local-directory');
-      setAdmin(response.data as AdminQueue);
-    } catch {
-      setAdmin(null);
-    }
-  };
-  // The admin endpoint requires authentication; avoid an unnecessary 401 request
-  // for every anonymous visitor opening the public directory.
-  useEffect(() => {
-    let active = true;
-    void auth.getUser()
-      .then(user => { if (active && user) void refreshAdmin(); })
-      .catch(() => undefined);
-    return () => { active = false; };
-  }, []);
-
   async function publish(event: FormEvent) {
     event.preventDefault();
     setBusy(true);
@@ -187,7 +168,6 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       },...previous.filter(entry=>entry.id!==response.data.id)]);
       setKind('all');
       void refreshOwnedReceipts();
-      if (admin) void refreshAdmin();
     } catch (cause) {
       const message=cause instanceof Error ? cause.message : 'No se pudo enviar la ficha.';
       setNotice(message);
@@ -236,18 +216,6 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       setReportEmail('');
     } catch (cause) {
       setNotice(cause instanceof Error ? cause.message : 'No se pudo registrar la denuncia.');
-    } finally {
-      setBusy(false);
-    }
-  }
-  async function adminAction(path: string) {
-    setBusy(true);
-    try {
-      await api.post(path, {});
-      await Promise.all([refresh(), refreshAdmin()]);
-      setNotice('Revisión administrativa registrada.');
-    } catch {
-      setNotice('No pudo completarse la acción administrativa.');
     } finally {
       setBusy(false);
     }
@@ -437,31 +405,67 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       <strong>{searchText ? 'No hay resultados para esta búsqueda.' : 'Aún no hay fichas aprobadas en esta comuna.'}</strong>
       <p>Las solicitudes enviadas aparecen en «Mis publicaciones enviadas» hasta que se aprueben.</p>
     </div>}
-    {admin && <details className='tcDirectoryAdmin' aria-label='Moderación del directorio'>
-      <summary>Revisión administrativa · Solo personal autorizado</summary>
-      <p>Fichas: {admin.entries.length}, evaluaciones: {admin.reviews.length},
-        denuncias: {admin.reports.length}.</p>
-      {admin.entries.map(entry => <div key={entry.id}>
-        <span>{entry.title} · {entry.commune} · {entry.phone} · {entry.email}</span>
-        <button disabled={busy} onClick={() => void adminAction('/api/admin/local-directory/' + entry.id + '/approve')}>
-          Aprobar
-        </button>
-        <button disabled={busy} onClick={() => void adminAction('/api/admin/local-directory/' + entry.id + '/hide')}>
-          Rechazar
-        </button>
-      </div>)}
-      {admin.reviews.map(item => <div key={item.id}>
-        <span>{item.entryId} · {item.rating} estrellas · contratación no verificada</span>
-        <button disabled={busy} onClick={() => void adminAction('/api/admin/local-directory/reviews/' + item.id + '/approve')}>
-          Aprobar evaluación
-        </button>
-      </div>)}
-      {admin.reports.map(item => <div key={item.id}>
-        <span>Denuncia: {item.reason} · {item.entryId}</span>
-        <button disabled={busy} onClick={() => void adminAction('/api/admin/local-directory/reports/' + item.id + '/resolve')}>
-          Marcar revisada
-        </button>
-      </div>)}
-    </details>}
+  </section>;
+}
+
+/** Moderation is available exclusively in the existing operations panel.
+ * This module does not query any admin endpoint on normal public directory visits.
+ * Backend still independently enforces requireAuth + administrator allowlist.
+ */
+export function LocalDirectoryModeration() {
+  const [queue,setQueue] = useState<AdminQueue | null>(null);
+  const [busy,setBusy] = useState(false);
+  const [notice,setNotice] = useState('');
+  const refresh = async () => {
+    try {
+      const response = await api.get('/api/admin/local-directory');
+      setQueue(response.data as AdminQueue);
+      return true;
+    } catch {
+      setQueue(null);
+      return false;
+    }
+  };
+  useEffect(() => {
+    let active=true;
+    void auth.getUser().then(user => {
+      if (active && user) void refresh();
+    }).catch(() => undefined);
+    return () => { active=false; };
+  },[]);
+  async function decide(path:string) {
+    setBusy(true);setNotice('');
+    try {
+      await api.post(path,{});
+      await refresh();
+      setNotice('Decisión registrada.');
+    } catch {
+      setNotice('No se pudo completar la decisión.');
+    } finally { setBusy(false); }
+  }
+  if (!queue) return null;
+  return <section className='opsCard tcDirectoryAdmin' aria-label='Moderación de servicios y negocios'>
+    <h2>Servicios y negocios · Revisión</h2>
+    <p>Solo administración. Las fichas pendientes aún no aparecen en el catálogo público.</p>
+    <button type='button' onClick={()=>void refresh()} disabled={busy}>Actualizar bandeja</button>
+    {notice && <p role='status'>{notice}</p>}
+    <p>Fichas pendientes: <strong>{queue.entries.length}</strong>;
+      opiniones: <strong>{queue.reviews.length}</strong>;
+      denuncias: <strong>{queue.reports.length}</strong>.</p>
+    {queue.entries.map(entry=><div className='tcDirectoryAdminRow' key={entry.id}>
+      <span><strong>{entry.title}</strong> · {entry.kind==='service'?'Servicio':'Negocio'} · {entry.commune}
+        <small>{entry.category} · {entry.email} · {entry.phone}</small>
+      </span>
+      <button type='button' disabled={busy} onClick={()=>void decide('/api/admin/local-directory/'+entry.id+'/approve')}>Aprobar</button>
+      <button type='button' disabled={busy} onClick={()=>void decide('/api/admin/local-directory/'+entry.id+'/hide')}>Rechazar</button>
+    </div>)}
+    {queue.reviews.map(item=><div className='tcDirectoryAdminRow' key={item.id}>
+      <span>Opinión sobre {item.entryId} · {item.rating} puntos · contratación no verificada</span>
+      <button disabled={busy} onClick={()=>void decide('/api/admin/local-directory/reviews/'+item.id+'/approve')}>Aprobar opinión</button>
+    </div>)}
+    {queue.reports.map(item=><div className='tcDirectoryAdminRow' key={item.id}>
+      <span>Reporte: {item.reason} · {item.entryId}</span>
+      <button disabled={busy} onClick={()=>void decide('/api/admin/local-directory/reports/'+item.id+'/resolve')}>Marcar revisado</button>
+    </div>)}
   </section>;
 }

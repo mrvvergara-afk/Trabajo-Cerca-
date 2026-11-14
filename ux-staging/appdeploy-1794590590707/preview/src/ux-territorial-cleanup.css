@@ -1,0 +1,87 @@
+/* Trabajo Cerca · compact presentation only. No catalog, filters, or backend changes. */
+.tcStitchShell .tcWorkplaceLabel{
+  display:block;min-width:0;max-width:100%;text-align:left;
+  white-space:normal;word-break:normal;overflow-wrap:normal;
+  line-height:1.25;
+}
+.tcStitchShell .neoJobPlace svg{flex:0 0 12px;}
+.tcStitchShell .tcRadarCompactRegion{max-width:1012px;width:calc(100% - 32px);margin:14px auto 4px;}
+.tcStitchShell .tcRadarCompactRegion>.tcTerritorialRadar{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+.tcStitchShell .tcRadarCompactRegion .tcRadarHeading{min-width:0;align-items:center;}
+.tcStitchShell .tcRadarCompactRegion .tcRadarHeading>div{min-width:0;}
+.tcStitchShell .tcRadarCompactRegion .tcRadarHeading h2{overflow-wrap:normal;}
+.tcStitchShell .tcRadarCompactRegion .tcRadarDetails>summary{min-width:0;max-width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:normal;}
+.tcStitchShell .tcStitchFooterDetails{max-width:1012px;}
+.tcStitchShell .tcCompactFooter{box-sizing:border-box;}
+.tcStitchShell .tcCompactFooter .tcFooterLegal{flex-wrap:wrap;min-width:0;}
+@media(max-width:767px){
+  /* The visible tag contains only a locality, never an employer/operations description. */
+  .tcStitchShell .neoJobTop{width:114px!important;max-width:114px!important;min-width:0!important;align-items:flex-end!important;gap:5px!important;}
+  .tcStitchShell .neoJobPlace{
+    display:flex!important;align-items:flex-start!important;
+    width:auto!important;max-width:100%!important;min-width:0!important;
+    box-sizing:border-box!important;padding:4px 6px!important;
+    gap:4px!important;white-space:normal!important;word-break:normal!important;
+    font-size:11px!important;line-height:14px!important;letter-spacing:0!important;
+    border-radius:10px!important;overflow:hidden!important;
+  }
+  .tcStitchShell .tcWorkplaceLabel{
+    display:-webkit-box!important;-webkit-box-orient:vertical!important;
+    -webkit-line-clamp:2!important;overflow:hidden!important;
+    font-size:11px!important;line-height:14px!important;
+  }
+  .tcStitchShell .tcRadarCompactRegion{width:calc(100% - 24px)!important;margin:10px auto 5px!important;}
+  .tcStitchShell .tcRadarCompactRegion>.tcTerritorialRadar{
+    padding:9px 11px!important;margin:0!important;min-height:0!important;
+    border-radius:12px!important;
+  }
+  .tcStitchShell .tcRadarCompactRegion .tcRadarHeading{
+    display:flex!important;justify-content:space-between!important;align-items:center!important;gap:6px!important;min-height:0!important;
+  }
+  .tcStitchShell .tcRadarCompactRegion .tcRadarHeading h2{
+    font-size:13px!important;line-height:17px!important;margin:0!important;
+    font-weight:700!important;
+  }
+  .tcStitchShell .tcRadarCompactRegion .tcRadarHeading p{display:none!important;}
+  .tcStitchShell .tcRadarCompactRegion .tcRadarHeading>svg{height:17px!important;width:17px!important;flex:0 0 auto!important;}
+  .tcStitchShell .tcRadarCompactRegion .tcRadarDetails>summary{
+    display:flex!important;align-items:center!important;justify-content:space-between!important;
+    gap:8px!important;margin:5px 0 0!important;padding:6px 2px!important;
+    font-size:11px!important;line-height:16px!important;min-height:30px!important;
+  }
+  .tcStitchShell .tcRadarCompactRegion .tcRadarDetails>summary span{flex:0 0 auto!important;}
+  .tcStitchShell .tcRadarCompactRegion .tcRadarExplorer{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important;}
+  /* Editorial news is a website/desktop extra, not a mobile catalog feature. */
+  .tcStitchShell .tcWebsiteNewsOnly{display:none!important;}
+  /* Privacy, terms and contact stay accessible without a full duplicate brand card. */
+  .tcStitchShell .tcStitchFooterDetails{
+    width:calc(100% - 24px)!important;max-width:100%!important;
+    margin:4px auto 12px!important;padding:0 6px!important;
+    border-top:1px solid #d8e4dc!important;
+  }
+  .tcStitchShell .tcStitchFooterDetails>summary{
+    display:list-item!important;min-height:34px!important;padding:9px 2px!important;
+    font-size:11px!important;line-height:15px!important;color:#526c5a!important;
+  }
+  .tcStitchShell .neoFooter.tcCompactFooter{
+    width:100%!important;max-width:100%!important;
+    margin:0!important;padding:8px 2px 11px!important;gap:6px!important;
+    border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;
+  }
+  .tcStitchShell .tcCompactFooter .tcFooterBrand{display:none!important;}
+  .tcStitchShell .tcCompactFooter .tcFooterTagline{
+    max-width:100%!important;font-size:11px!important;line-height:15px!important;
+  }
+  .tcStitchShell .tcCompactFooter .tcFooterEmail{
+    font-size:11px!important;line-height:15px!important;overflow-wrap:anywhere!important;
+  }
+  .tcStitchShell .tcCompactFooter .tcFooterLegal{gap:6px 12px!important;}
+  .tcStitchShell .tcCompactFooter .tcFooterLegal button{
+    font-size:11px!important;line-height:15px!important;padding:3px 0!important;min-height:30px!important;
+  }
+}
+@media(max-width:360px){
+ .tcStitchShell .neoJobTop{width:104px!important;max-width:104px!important;}
+ .tcStitchShell .neoJobPlace{font-size:10px!important;line-height:13px!important;}
+ .tcStitchShell .tcWorkplaceLabel{font-size:10px!important;line-height:13px!important;}
+}

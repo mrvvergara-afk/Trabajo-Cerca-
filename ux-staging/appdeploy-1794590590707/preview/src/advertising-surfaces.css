@@ -115,3 +115,69 @@
   .tcFormEditorialCopy strong {font-size:12px;}
   .tcInlineHouseCopy p {font-size:11px;}
 }
+
+
+/* Benefit-led house promotion: confident contrast, short real CTA, not a pop-up. */
+.tcStitchShell .tcInlineHousePromo{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:linear-gradient(116deg,#0d3929 0%,#185139 60%,#206747 100%);
+ border:1px solid #1b6040;color:#fff;
+ box-shadow:0 7px 20px rgba(10,48,32,.11);
+ padding:15px 16px;border-radius:15px;
+ grid-template-columns:46px minmax(0,1fr) auto;
+ gap:12px;
+}
+.tcStitchShell .tcInlineHousePromo::before{
+ content:'';position:absolute;right:-30px;top:-60px;width:180px;height:180px;
+ border:1px solid rgba(207,246,172,.16);border-radius:50%;z-index:-1;pointer-events:none;
+}
+.tcStitchShell .tcInlineHousePromo::after{
+ content:'';position:absolute;right:5px;top:-15px;width:110px;height:110px;
+ border:1px solid rgba(207,246,172,.12);border-radius:50%;z-index:-1;pointer-events:none;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon{
+ background:#e7f9ca;color:#205a3c;border-radius:12px;
+ width:42px;height:42px;box-shadow:inset 0 0 0 1px #ffffff80;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{
+ color:#c6f3a2;font-size:10px;line-height:14px;letter-spacing:.035em;
+ margin-bottom:5px;font-weight:800;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{
+ display:block;max-width:34ch;color:white;font-size:17px;
+ font-weight:830;line-height:1.18;letter-spacing:-.02em;overflow-wrap:normal;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{
+ color:#e0f2e5;margin:5px 0!important;font-size:12px;line-height:1.4;max-width:49ch;
+}
+.tcStitchShell .tcInlineHousePromo .tcPromoBenefit{
+ display:inline-block;color:#dbf0cf;font-size:10px;line-height:15px;font-weight:700;
+}
+.tcStitchShell .tcInlineHousePromo button{
+ display:inline-flex;justify-content:center;align-items:center;gap:7px;
+ min-height:42px;border:0;border-radius:10px;
+ background:#dbf49d;color:#17462d;font-size:12px;font-weight:850;
+ padding:10px 13px;box-shadow:0 3px 0 #0a291950;
+}
+.tcStitchShell .tcInlineHousePromo button:hover{background:#ebffc5;}
+.tcStitchShell .tcInlineHousePromo button:focus-visible{outline:3px solid #eefbcf;outline-offset:2px;}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo{
+  grid-template-columns:38px minmax(0,1fr);gap:9px 11px;
+  padding:13px 14px;align-items:start;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon{width:37px;height:37px;}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:16px;line-height:19px;}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{font-size:11px;line-height:15px;}
+ .tcStitchShell .tcInlineHousePromo button{
+  grid-column:2;justify-self:start;max-width:100%;min-height:38px;
+  padding:8px 11px;font-size:11px;
+ }
+}
+@media(max-width:360px){
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:15px;line-height:18px;}
+ .tcStitchShell .tcInlineHousePromo{padding:10px 11px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .tcStitchShell .tcInlineHousePromo button{transition:none;}
+}

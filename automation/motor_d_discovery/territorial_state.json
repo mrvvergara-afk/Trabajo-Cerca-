@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-14T12:47:28.967389-03:00",
+  "last_run": "2026-11-14T18:27:45.161853-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -5310,6 +5310,132 @@
       "first_seen": "2026-11-14T12:47:28.967389-03:00",
       "url": "https://www.radionativa.cl/gobierno-se-querella-contra-responsables-de-ataque-en-ercilla-que-mantiene-en-riesgo-vital-a-chofer/",
       "source": "Inventario P06",
+      "commune": null
+    },
+    "2ffd8160b9a48ccea66e": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-tradis-falabella-turno-de-noche-20-00-a-06-00-am-san-bernardo-625000-5-x-2-3077353.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "798a853a3d1ebaee86db": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-turno-rotativo-605000-pudahuel-3077352.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "df9fe81f1fbc5ea119e7": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-bodega-part-time-antofagasta-380000-3077351.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9fea042eb884443d4f91": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-turno-rotativo-pudahuel-colacion-bus-de-acercamiento-3077350.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ab0f74e059ae834a3963": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-turno-rotativo-pudahuel-colacion-bus-de-acercamiento-3077349.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "20f37138954ac3eb29ed": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/encargado-a-de-bodega-iquique-3077348.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2cfa7df347a95b099839": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/especialista-en-logistica-iquique-3077347.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7559d5509070e7812fef": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/logistica-iquique-3077346.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "20bc08320678a2206d7a": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/especialista-en-logistica-iquique-3077345.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f46a29b6f9779747b575": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/encargado-a-de-bodega-3077344.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bedc580dee59d8825fbd": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/tecnico-en-mantenimiento-mecanico-san-fernando-3077343.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3f16ba0770279266cdbf": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/tecnico-en-mantenimiento-mecanico-san-fernando-3077342.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "10e5871089ba299cc809": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-mercado-libre-quilicura-con-o-sin-experiencia-turno-06-00-am-a-14-00-pm-3077341.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2a4cbf214352322ded5a": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reemplazo-inspector-de-inventario-turno-diurno-614610-black-friday-pudahuel-3077340.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "901ec3d057157c869200": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reemplazo-inspector-de-inventario-turno-diurno-614610-black-friday-pudahuel-3077339.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6332367df44b1f9d7394": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-turno-rotativo-605000-cerrillos-3077338.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "36921e25e92c94b7a25f": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-cocina-renca-3077337.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "29fd7b7f1e3d874329a9": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-seguros-santiago-centro-3077336.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f31cba743bb31a3f4d4c": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivos-de-televentas-call-center-productos-bancarios-refinanciamiento-42-horas-semanales-presencial-providencia-3077335.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a6726a9cdde68b1b6c4c": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/dermoconsejero-a-farmacia-lo-barnechea-full-time-3077334.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0ca03343d79c2fc561f8": {
+      "first_seen": "2026-11-14T18:27:45.161853-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6af8a3b9057301e35772fab1",
+      "source": "Fashion's Park · portal oficial de contratación",
       "commune": null
     }
   }

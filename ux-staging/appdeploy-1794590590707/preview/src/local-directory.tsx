@@ -212,6 +212,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       setNotice('Evaluación recibida para moderación. No se considera contratación verificada.');
       setReviewEmail('');
       setHired(false);
+      setRating(0);
       setReviewId(null);
     } catch (cause) {
       setNotice(cause instanceof Error ? cause.message : 'No se pudo registrar la evaluación.');
@@ -295,11 +296,22 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     {ownedLookupError && <p role='alert' className='tcDirectoryNotice'>No se pudo consultar una de tus publicaciones. No la vuelvas a enviar; actualiza el estado o solicita revisión.</p>}
     {ownedReceipts.length>0 && <details className='tcDirectoryOwned' open={ownedReceipts.some(entry=>entry.status==='pending')}>
       <summary>Mis publicaciones enviadas · {ownedReceipts.length}</summary>
-      {ownedReceipts.map(entry=><div className='tcDirectoryOwnedRow' key={entry.id}>
-        <span><strong>{entry.title}</strong> · {entry.kind==='business'?'Comercio':'Servicios'} · {entry.commune} · {entry.photosCount} foto(s)<br/>
-          {entry.status==='pending'?'Pendiente de aprobación':entry.status==='approved'?'Publicada':'Retirada o rechazada'}
-        </span>
-      </div>)}
+      {ownedReceipts.map(entry=><article className='tcDirectoryOwnedPreview' key={entry.id}>
+        <div className='tcOwnedPreviewHeader'>
+          <strong>{entry.title}</strong>
+          <span className={'tcOwnerStatus tcOwnerStatus-'+entry.status}>
+            {entry.status==='pending'?'Pendiente de aprobación':entry.status==='approved'?'Aprobada y publicada':'Retirada o rechazada'}
+          </span>
+        </div>
+        <small>{entry.kind==='business'?'Negocio':'Servicio'} · {entry.commune} · {entry.photosCount} foto(s)</small>
+        {entry.category && <strong className='tcOwnedPreviewCategory'>{entry.category}</strong>}
+        {entry.description && <p>{entry.description}</p>}
+        {entry.previewPhotos?.length ? <div className='tcDirectoryPhotos tcDirectoryOwnerPhotos'>
+          {entry.previewPhotos.map((url,index)=><img src={url} key={url}
+            alt={'Fotografía '+(index+1)+' de '+entry.title} loading='lazy'/>)}
+        </div> : null}
+        {entry.status==='pending' && <small className='tcOwnedVisibilityNotice'>Esta vista previa solo aparece en tu dispositivo. El público podrá verla cuando se apruebe.</small>}
+      </article>)}
       <button type='button' onClick={()=>void refreshOwnedReceipts()}>Actualizar estados</button>
     </details>}
     {showForm && <form className='tcDirectoryForm' onSubmit={event => void publish(event)}>
@@ -358,13 +370,14 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
             alt={'Trabajo o producto de ' + entry.title + ', foto ' + (index + 1)}
             loading='lazy' width={320} height={220}/>)}
         </div>}
-        <small>{entry.category} · {entry.commune}</small>
+        <small><span className='tcDirectoryKindBadge'>{entry.kind==='service'?'Servicio':'Negocio'}</span> · {entry.category} · {entry.commune}</small>
         <h3>{entry.title}</h3>
         <p>{entry.description}</p>
         <span className='tcDirectoryCoverage'>Atiende en: {entry.coverage.join(', ')}</span>
         {entry.kind === 'service' && <span className='tcDirectoryRating'>
-          {entry.rating === null ? 'Aún sin calificación pública suficiente'
-            : '★ ' + entry.rating.toFixed(1) + ' · ' + entry.reviewCount + ' opiniones moderadas'}
+          {entry.rating === null ? 'Sin opiniones publicadas suficientes'
+            : (entry.rating >= 4.2?'👍 Buenas opiniones':entry.rating >= 2.5?'😐 Opiniones variadas':'👎 Opiniones negativas')
+              + ' · ' + entry.reviewCount + ' opiniones revisadas'}
         </span>}
         {contacts[entry.id] && <div className='tcDirectoryContact'>
           {contacts[entry.id].phone && <a href={'tel:' + contacts[entry.id].phone}>{contacts[entry.id].phone}</a>}
@@ -372,43 +385,51 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         </div>}
         <div className='tcDirectoryCardActions'>
           {entry.contactAvailable && <button onClick={() => void reveal(entry.id)}>Ver contacto</button>}
-          {entry.kind === 'service' && <button onClick={() => { setReviewId(entry.id); setReportId(null); }}>
-            Evaluar servicio
+          {entry.kind === 'service' && !localStorage.getItem('tc_directory_owner_' + entry.id) && <button onClick={() => { setReviewId(entry.id); setRating(0); setHired(false); setReportId(null); }}>
+            Opinar sobre el servicio
           </button>}
-          <button onClick={() => { setReportId(entry.id); setReviewId(null); }}>Denunciar</button>
+          {!localStorage.getItem('tc_directory_owner_' + entry.id) && <button onClick={() => { setReportId(entry.id); setReviewId(null); }}>Reportar problema</button>}
         </div>
-        {localStorage.getItem('tc_directory_owner_' + entry.id) && <button className='tcDirectoryRemove'
-          onClick={() => void removeOwn(entry.id)}>Retirar mi ficha</button>}
+        {localStorage.getItem('tc_directory_owner_' + entry.id) && <details className='tcDirectoryOwnerActions'>
+          <summary>Gestionar mi ficha</summary>
+          <button className='tcDirectoryRemove' onClick={() => void removeOwn(entry.id)}>Retirar mi ficha</button>
+        </details>}
+        {reviewId===entry.id && <form className='tcDirectoryForm tcDirectoryReviewForm' onSubmit={event => void review(event)}>
+          <h4>¿Cómo te fue con este servicio?</h4>
+          <p>Solo pueden opinar quienes contrataron el trabajo. No puedes evaluar tu propio servicio.</p>
+          <fieldset className='tcDirectoryReviewChoices'>
+            <legend>Elige una opción</legend>
+            {[{value:5,label:'👍 Bueno'},{value:3,label:'😐 Regular'},{value:1,label:'👎 Malo'}].map(choice=>
+              <button key={choice.value} type='button' aria-pressed={rating===choice.value}
+                onClick={()=>setRating(choice.value)}>{choice.label}</button>)}
+          </fieldset>
+          <label>Tu correo electrónico
+            <input type='email' required value={reviewEmail}
+              onChange={e=>setReviewEmail(e.target.value)} placeholder='Para evitar opiniones repetidas'/>
+          </label>
+          <label className='tcDirectoryConsent'><input type='checkbox' checked={hired} required
+            onChange={e => setHired(e.target.checked)}/> Confirmo que contraté este servicio.</label>
+          <div className='tcDirectoryReviewActions'>
+            <button disabled={busy || rating===0 || !hired}>Enviar opinión</button>
+            <button type='button' onClick={() => setReviewId(null)}>Cancelar</button>
+          </div>
+          <small>Las opiniones se revisan antes de mostrarse. No verificamos contrataciones.</small>
+        </form>}
+        {reportId===entry.id && <form className='tcDirectoryForm tcDirectoryReviewForm' onSubmit={event => void report(event)}>
+          <h4>Informar un problema con esta ficha</h4>
+          <label>Correo electrónico<input type='email' required value={reportEmail}
+            onChange={e => setReportEmail(e.target.value)}/></label>
+          <label>¿Qué ocurrió?<select value={reportReason} onChange={e => setReportReason(e.target.value)}>
+            {['Información incorrecta','Posible estafa','Imágenes no autorizadas','Otro'].map(value=><option key={value}>{value}</option>)}
+          </select></label>
+          <div className='tcDirectoryReviewActions'><button disabled={busy}>Enviar reporte</button>
+            <button type='button' onClick={() => setReportId(null)}>Cancelar</button></div>
+        </form>}
       </article>)}
     </div> : <div className='tcDirectoryEmpty'>
       <strong>Aún no hay fichas aprobadas en esta comuna.</strong>
       <p>Las solicitudes enviadas aparecen en «Mis publicaciones enviadas» hasta que se aprueben.</p>
     </div>}
-    {reviewId && <form className='tcDirectoryForm' onSubmit={event => void review(event)}>
-      <h3>Evaluar un servicio contratado</h3>
-      <p>Las evaluaciones son solo para servicios particulares. La contratación no se considera verificada.</p>
-      <label>Correo electrónico<input type='email' required value={reviewEmail}
-        onChange={e => setReviewEmail(e.target.value)} /></label>
-      <label>Estrellas<select value={rating} onChange={e => setRating(Number(e.target.value))}>
-        {[5, 4, 3, 2, 1].map(value => <option key={value} value={value}>
-          {value} estrella{value === 1 ? '' : 's'}</option>)}
-      </select></label>
-      <label className='tcDirectoryConsent'><input type='checkbox' checked={hired} required
-        onChange={e => setHired(e.target.checked)}/> Declaro que contraté este servicio.</label>
-      <button disabled={busy}>Enviar evaluación para moderación</button>
-      <button type='button' onClick={() => setReviewId(null)}>Cancelar</button>
-    </form>}
-    {reportId && <form className='tcDirectoryForm' onSubmit={event => void report(event)}>
-      <h3>Denunciar publicación</h3>
-      <label>Correo electrónico<input type='email' required value={reportEmail}
-        onChange={e => setReportEmail(e.target.value)}/></label>
-      <label>Motivo<select value={reportReason} onChange={e => setReportReason(e.target.value)}>
-        {['Información incorrecta', 'Posible estafa', 'Imágenes no autorizadas', 'Otro']
-          .map(value => <option key={value}>{value}</option>)}
-      </select></label>
-      <button disabled={busy}>Enviar denuncia</button>
-      <button type='button' onClick={() => setReportId(null)}>Cancelar</button>
-    </form>}
     {admin && <details className='tcDirectoryAdmin' aria-label='Moderación del directorio'>
       <summary>Revisión administrativa · Solo personal autorizado</summary>
       <p>Fichas: {admin.entries.length}, evaluaciones: {admin.reviews.length},

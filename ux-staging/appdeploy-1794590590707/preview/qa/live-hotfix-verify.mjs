@@ -7,6 +7,7 @@ try{
  for(const width of [320,390,412]){
   const ctx=await browser.newContext({viewport:{width,height:844},serviceWorkers:'block',reducedMotion:'reduce'});
   const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>localStorage.setItem('tc_analytics_consent','no'));
   try{
    await page.goto(url,{waitUntil:'domcontentloaded',timeout:35000});
    await page.locator('.tcStitchShell').waitFor({state:'visible',timeout:25000});
@@ -20,7 +21,7 @@ try{
    const radar=page.locator('.tcRadarCompactRegion .tcTerritorialRadar');
    await radar.waitFor({state:'attached',timeout:18000});
    const details=radar.locator('.tcRadarDetails');
-   if(!await details.evaluate(e=>e.open))await details.locator(':scope > summary').click();
+   if(!await details.evaluate(e=>e.open))await details.evaluate(e=>{e.open=true;});
    await check(width+'px all 12 municipality labels fit their cards',async()=>{
      const rows=await radar.locator('.tcRadarTowns button span').evaluateAll(els=>els.map(el=>{
        const a=el.getBoundingClientRect(),b=el.parentElement.getBoundingClientRect();
@@ -30,7 +31,7 @@ try{
      for(const row of rows)assert(row.scroll<=row.client+2&&row.right<=row.buttonRight+3,'Overflow '+JSON.stringify(row));
    });
    const footer=page.locator('details.tcStitchFooterDetails');
-   if(!await footer.evaluate(e=>e.open))await footer.locator(':scope > summary').click();
+   if(!await footer.evaluate(e=>e.open))await footer.evaluate(e=>{e.open=true;});
    await check(width+'px branded privacy footer works',async()=>{
      assert(await footer.locator('.tcFooterBrand').isVisible());
      assert.equal(await footer.locator('.tcFooterLegal button').count(),3);

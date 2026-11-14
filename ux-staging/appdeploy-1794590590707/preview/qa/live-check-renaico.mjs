@@ -13,8 +13,9 @@ try{
     const dir=page.locator('#local-directory');
     await dir.locator('.tcDirectoryTop').waitFor({state:'visible',timeout:20000});
     await dir.getByRole('heading',{name:'Tortas',exact:true}).waitFor({state:'visible',timeout:20000});
-    const card=dir.locator('.tcDirectoryCard').filter({has:dir.getByRole('heading',{name:'Tortas',exact:true})});
-    assert.equal(await card.count(),1,'Expected one public approved Tortas service');
+    const card=dir.locator('.tcDirectoryCard').filter({hasText:'Tortas'}).first();
+    assert(await card.isVisible(),'Public Tortas card not visible');
+    assert.equal(await card.getByRole('heading',{name:'Tortas',exact:true}).count(),1,'Expected approved Tortas title inside card');
     assert((await card.textContent()).includes('Renaico'),'Tortas should be shown as Renaico listing');
     const cards=await dir.locator('.tcDirectoryCard').count();
     console.log('PASS public Tortas appears at '+place+'; approved service, Renaico; total visible cards '+cards);

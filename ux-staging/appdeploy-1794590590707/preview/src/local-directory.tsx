@@ -425,7 +425,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         </div>}
         <div className='tcDirectoryCardActions'>
           {entry.contactAvailable && <button onClick={() => void reveal(entry.id)}>Ver contacto</button>}
-          {entry.kind === 'service' && !localStorage.getItem('tc_directory_owner_' + entry.id) && <button onClick={() => { setReviewId(entry.id); setRating(0); setHired(false); setReportId(null); }}>
+          {entry.kind === 'service' && !localStorage.getItem('tc_directory_owner_' + entry.id) && <button className='tcRateAction' onClick={() => { setReviewId(entry.id); setRating(0); setHired(false); setReportId(null); }}>
             ★ Calificar servicio
           </button>}
           {!localStorage.getItem('tc_directory_owner_' + entry.id) && <button onClick={() => { setReportId(entry.id); setReviewId(null); }}>Reportar problema</button>}

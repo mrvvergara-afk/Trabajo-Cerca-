@@ -3502,7 +3502,7 @@ const applicationRouter = router({
   'GET /api/local-directory': [async ({ query }) => listLocalDirectory(query)],
   'POST /api/local-directory': [publicQuota('local-directory',3,900000,30), async ({ body }) => createLocalDirectory(body)],
   'POST /api/local-directory/:id/contact': [publicQuota('contact',30,600000,300), async ({ params }) => localDirectoryContact(params.id)],
-  'POST /api/local-directory/:id/reviews': [publicQuota('local-review',4,3600000,25), async ({ params, body }) => submitLocalReview(params.id,body)],
+  'POST /api/local-directory/:id/reviews': [publicQuota('local-review',4,3600000,25), requireAuth(), async ({ params, body, user }) => submitLocalReview(params.id,body,user?.email||'')],
   'POST /api/local-directory/:id/report': [publicQuota('local-report',4,3600000,25), async ({ params, body }) => reportLocalDirectory(params.id,body)],
   'POST /api/local-directory/:id/delete': [publicQuota('local-remove',4,600000,25), async ({ params, body }) => localDirectoryRemove(params.id,body)],
   'POST /api/local-directory/:id/status': [publicQuota('local-receipt',15,60000,120), async ({ params, body }) => localDirectoryStatus(params.id,body)],
@@ -3599,6 +3599,23 @@ const applicationRouter = router({
     return query.fresh === '1' ? json(feed) : cacheable(feed, 60);
   }],
 
+  // Read-only, paginated public identities for independent ChatGPT reconciliation.
+  'GET /api/listings/identities': [async ({query}) => {
+    let page;
+    try { page=await readPublicFeedPage(query.cursor); }
+    catch(cause) {
+      if(cause instanceof Error && cause.message==='Feed cursor invalid')return error('Cursor de paginación no válido.',400);
+      return error('El catálogo completo no está disponible para conciliación.',503);
+    }
+    if(!page || ('degraded' in page && page.degraded===true) ||
+       ('feedRebuilding' in page && page.feedRebuilding===true))
+      return error('El catálogo está en reconstrucción; reintentar sin importar.',503);
+    return json({items:(page.items as Record<string,unknown>[]).filter(x=>x.kind==='job_offer').map(x=>({
+      id:x.id,title:x.title,company:x.company,url:x.url,
+      workCommunes:x.workCommunes,urlHashSha256:x.urlHashSha256
+    })),nextCursor:page.nextCursor??null,hasMore:Boolean(page.nextCursor),
+      totalItems:page.totalItems,complete:!page.nextCursor,provisional:false});
+  }],
   'GET /api/listings/:id': [async ({params})=>{const item=await readPublicFeedItem(params.id);return item?json({item}):error('Esta publicación ya no está disponible en el feed público.',404);}],
 
   'GET /api/ops/summary': [async () => {

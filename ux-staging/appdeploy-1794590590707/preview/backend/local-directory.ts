@@ -169,15 +169,16 @@ export async function localDirectoryRemove(id: string, body: unknown) {
   if (entry.photos.length) await storage.delete(entry.photos);
   return json({ removed: true });
 }
-export async function submitLocalReview(id: string, body: unknown) {
+export async function submitLocalReview(id: string, body: unknown, verifiedEmail: string) {
   const entry = await getEntry(id);
   const input = (body ?? {}) as Record<string, unknown>;
-  const email = text(input.email, 120).toLowerCase();
+  // Email comes only from requireAuth() on the server; ignore email in request.
+  const email = text(verifiedEmail, 120).toLowerCase();
   const rating = Number(input.rating);
   if (!entry || entry.status !== 'approved' || entry.kind !== 'service')
     return error('Servicio no disponible.', 404);
   if (!emailValid(email) || !Number.isInteger(rating) || rating < 1 || rating > 5 || input.hired !== true)
-    return error('Se requiere un correo, la puntuación y declaración de contratación.', 400);
+    return error('Confirma tu correo, selecciona las estrellas y declara haber contratado el servicio.', 400);
   const digest = sha(email);
   if (digest === entry.ownerEmailHash) return error('No puedes evaluar tu propio servicio.', 400);
   const reviewId = 'review_' + sha(id + ':' + digest);

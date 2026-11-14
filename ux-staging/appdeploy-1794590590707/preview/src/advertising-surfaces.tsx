@@ -14,11 +14,15 @@ export function InlineHousePromotion({
   place,
   slot,
   onGoal,
+  paused=false,
+  onToggleRotation,
 }: {
   selection: Selection;
   place: string;
   slot: Slot;
   onGoal: (goal: Goal, attribution: HouseAttribution) => void;
+  paused?:boolean;
+  onToggleRotation?:()=>void;
 }) {
   const house=selection?.type==='HOUSE_AD'?selection:null;
   const goal=house?.campaign.goal??'explore';
@@ -45,6 +49,9 @@ export function InlineHousePromotion({
       <strong>{title}</strong>
       <p>{copy}</p>
       {isPhotoOffer && <span className='tcPromoBenefit'>📸 Fotos de tus trabajos · Contacto directo</span>}
+      {house && onToggleRotation && <button className='tcHouseRotateButton' type='button'
+        aria-label={paused?'Reanudar campañas':'Pausar campañas'} onClick={onToggleRotation}>
+          {paused?'▶ Ver campañas':'Ⅱ Pausar carrusel'}</button>}
     </div>
     <button type='button' onClick={click}>{cta} <ArrowRight aria-hidden='true'/></button>
   </aside>;
@@ -55,6 +62,8 @@ export function FormEditorialPromotion({place}:{place:string}) {
   const advertising=useAdvertising(place,'Todas','forms',['form']);
   const selected=advertising.selections.form;
   const commercial=selected?.type==='COMMERCIAL'?selected.campaign:null;
+  const house=selected?.type==='HOUSE_AD'?selected:null;
+  const creative=house?presentHouseCreative(house.campaign.id,house.creative):null;
   const url=safeSponsorUrl(commercial?.url);
   const node=useRef<HTMLElement>(null);
   const seen=useRef(new Set<string>());
@@ -92,13 +101,14 @@ export function FormEditorialPromotion({place}:{place:string}) {
     data-ad-type={commercial?'COMMERCIAL':'HOUSE_AD'}
     aria-label={commercial?'Publicidad local de '+commercial.businessName:'Autopromoción de Trabajo Cerca'}>
     <div className='tcFormEditorialArt' aria-hidden='true'>
+      {!commercial && creative?.imageUrl && <AdImage url={creative.imageUrl}/>}
       <Store />
       <TreePine />
     </div>
     <div className='tcFormEditorialCopy'>
       <small><MapPin aria-hidden='true'/> {commercial?'PUBLICIDAD LOCAL':'PROMOCIÓN PROPIA'} · {place}</small>
-      <p><strong>{commercial?.businessName||'Trabajo Cerca'}</strong>{' '}
-        {commercial?.headline||'Conectamos personas, empleo y servicios de tu zona.'}</p>
+      <p><strong>{commercial?.businessName||creative?.title||'Tu comuna, tus oportunidades.'}</strong>{' '}
+        {commercial?.headline||creative?.mobileMessage||'Muestra tu experiencia y encuentra personas cerca.'}</p>
     </div>
     {commercial && url ?
       <a className='tcFormEditorialLink' href={url} target='_blank'
@@ -107,7 +117,7 @@ export function FormEditorialPromotion({place}:{place:string}) {
       </a>
     : !commercial ?
       <a className='tcFormEditorialLink' href={window.location.pathname} target='_blank'
-        rel='noopener noreferrer'>Conocer plataforma <ArrowRight aria-hidden='true'/></a>
+        rel='noopener noreferrer'>Explorar Trabajo Cerca <ArrowRight aria-hidden='true'/></a>
     : null}
   </aside>;
 }

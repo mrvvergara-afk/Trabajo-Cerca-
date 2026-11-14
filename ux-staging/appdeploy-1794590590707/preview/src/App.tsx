@@ -41,6 +41,7 @@ import './commercial-card.css';
 import './ux-compact-2026-11.css';
 import { SiteMenu } from './site-menu';
 const LocalDirectory = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectory })));
+const LocalDirectoryModeration = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectoryModeration })));
 import './local-directory.css';
 function analyticsId() {
   try {
@@ -851,6 +852,7 @@ export function OperationsPanel() {
         campaigns:summary.growth.activeCampaigns,
         lastSweep:summary.radar.lastSweep,
       }:undefined}/>
+      <Suspense fallback={null}><LocalDirectoryModeration /></Suspense>
       <details className='opsTechnicalDetails' id='ops-diagnostico' open={securityMode||proofMode||localMode||publicMode||receiverMode}>
         <summary>Diagnóstico técnico y estado de los motores</summary>
       {new URLSearchParams(window.location.search).get('restore-proof') === '1' && <Suspense fallback={<p role='status'>Preparando comprobación de respaldo…</p>}><RestoreRehearsalProof /></Suspense>}
@@ -1004,7 +1006,7 @@ function App() {
   const [feedState, setFeedState] = useState<'fresh'|'degraded_last_good'|'authoritative_empty'>('fresh');
   const queryParams = new URLSearchParams(window.location.search);
   const requestedPlace = queryParams.get('place') || '';
-  const initialPlace = [...places, ...travelPlaces].includes(requestedPlace) ? requestedPlace : 'Angol';
+  const initialPlace = [...places, ...travelPlaces].includes(requestedPlace) ? requestedPlace : 'Todas';
   const [flow, setFlow] = useState<Flow | null>(() => queryParams.get('share_target') === '1' ? 'aporte' : null);
   const [section, setSection] = useState<Section>('opportunities');
   const [directoryMode, setDirectoryMode] = useState<'all' | 'service' | 'business' | null>(null);
@@ -1493,7 +1495,7 @@ function App() {
               <button aria-current={directoryMode?'page':undefined} onClick={() => openLocalDirectory('all')}>Servicios y negocios</button>
             </nav>
             <button type='button' className='tcTopPublish' onClick={()=>setShowPublishChoices(true)}><PlusCircle aria-hidden='true'/> Publicar gratis</button>
-            <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Mi territorio':value}</option>)}</select></label>
+            <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Todas':value}</option>)}</select></label>
             <SiteMenu onRadar={()=>openSecondary('neo-radar')} onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
               onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
               onCities={()=>openSecondary('tc-other-cities')} onNews={()=>openSecondary('actualidad-laboral')}

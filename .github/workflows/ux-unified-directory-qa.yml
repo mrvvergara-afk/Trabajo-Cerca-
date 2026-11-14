@@ -1,0 +1,52 @@
+name: QA Directorio Unificado y Opiniones — no deploy
+on:
+  push:
+    branches: [fix/directorio-unificado-calificaciones-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/**'
+      - '.github/workflows/ux-unified-directory-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: qa-directorio-unificado
+  cancel-in-progress: true
+jobs:
+  unified-directory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated frontend dependencies
+        run: npm install --no-audit --no-fund
+      - name: Check source syntax, privacy and catalog rules
+        run: node qa/test-unified-directory.cjs
+      - name: Build full Vite frontend with SDK stub (never deployed)
+        run: npm run build -- --config vite.qa.config.ts
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Start mock backend frontend
+        run: |
+          nohup npm run dev -- --config vite.qa.config.ts --host 127.0.0.1 --port 4173 --strictPort >/tmp/unified-directory.log 2>&1 &
+          for i in $(seq 1 40); do
+            if curl -sf -o /dev/null http://127.0.0.1:4173/; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/unified-directory.log
+          exit 1
+      - name: Verify six layouts, local search, ratings and receipts
+        run: node qa/e2e-unified.mjs
+      - name: Store synthetic screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-directorio-unificado
+          path: ux-staging/appdeploy-1794590590707/preview/qa/unified-captures/*.png
+          retention-days: 7
+          if-no-files-found: ignore

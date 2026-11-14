@@ -4,6 +4,7 @@ import { ArrowRight, MapPin, Megaphone, Store, TreePine } from 'lucide-react';
 import type { Goal, Selection, Slot } from '../shared/house-ads';
 import { useAdvertising, sendHouseEvent, type HouseAttribution } from './house-advertising';
 import { safeSponsorUrl } from './territorial-exploration';
+import { presentHouseCreative } from './house-creative-presentation';
 import './advertising-surfaces.css';
 
 /** Se muestra como campaña propia cuando no existe una reserva comercial válida. */
@@ -20,9 +21,14 @@ export function InlineHousePromotion({
 }) {
   const house=selection?.type==='HOUSE_AD'?selection:null;
   const goal=house?.campaign.goal??'explore';
-  const title=house?.creative.title||'Oportunidades cerca de ti';
-  const copy=house?.creative.message||'Conoce empleos, oficios y servicios de tu zona.';
-  const cta=house?.creative.button||'Explorar oportunidades';
+  const creative=house?presentHouseCreative(house.campaign.id,house.creative):null;
+  const title=creative?.title||'Lo que necesitas puede estar cerca.';
+  const copy=creative?.mobileMessage||'Encuentra empleos, personas y servicios de tu territorio.';
+  const cta=creative?.button||'Explorar oportunidades';
+  const isPhotoOffer=house?.campaign.id==='house-inclusion';
+  const label=isPhotoOffer?'PUBLICAR ES GRATIS':goal==='professional'?'TU TRABAJO VALE'
+    :goal==='advertiser'?'DA A CONOCER TU NEGOCIO'
+    :goal==='employer'?'PERSONAS CERCA DE TI':'TRABAJO CERCA · 12 COMUNAS';
 
   function click() {
     const attribution={campaignId:house?.campaign.id??'house-explore',creativeId:house?.creative.id??'a'};
@@ -30,12 +36,14 @@ export function InlineHousePromotion({
     onGoal(goal,attribution);
   }
 
-  return <aside className='tcInlineHousePromo' data-placement={slot} aria-label='Autopromoción de Trabajo Cerca'>
+  return <aside className='tcInlineHousePromo' data-placement={slot} data-goal={goal}
+    data-house-kind={isPhotoOffer?'showcase':'community'} aria-label='Autopromoción de Trabajo Cerca'>
     <span className='tcInlineHouseIcon'><Megaphone aria-hidden='true'/></span>
     <div className='tcInlineHouseCopy'>
-      <small>PROMOCIÓN PROPIA · TRABAJO CERCA {place==='Todas'?'':'· '+place}</small>
+      <small>{label}{place==='Todas'?'':' · '+place}</small>
       <strong>{title}</strong>
       <p>{copy}</p>
+      {isPhotoOffer && <span className='tcPromoBenefit'>📸 Fotos de tus trabajos · Contacto directo</span>}
     </div>
     <button type='button' onClick={click}>{cta} <ArrowRight aria-hidden='true'/></button>
   </aside>;

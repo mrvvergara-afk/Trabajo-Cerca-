@@ -128,3 +128,47 @@
  .tcStitchShell .tcStitchMobileWordmark b{font-size:12px!important;}
  .tcStitchShell .tcDirectoryTabs button{font-size:10px!important;}
 }
+
+
+/* Directorio único, sin duplicación Servicios/Comercio. */
+.tcStitchShell .tcDirectoryTabs button[aria-pressed='true']{background:#20563b;color:white;}
+.tcStitchShell .tcDirectoryKindChoice{border:0;padding:0;margin:0;display:grid;gap:7px;min-width:0;}
+.tcStitchShell .tcDirectoryKindChoice legend,.tcStitchShell .tcDirectoryReviewChoices legend{font-size:12px;font-weight:750;color:#204736;margin-bottom:7px;}
+.tcStitchShell .tcDirectoryKindChoice label{display:flex;align-items:center;gap:8px;font-weight:600;font-size:12px;border:1px solid #d7e3d9;border-radius:9px;padding:8px;background:white;min-height:42px;}
+.tcStitchShell .tcDirectoryKindChoice input{accent-color:#20563b;flex:0 0 auto;}
+.tcStitchShell .tcDirectoryKindBadge{font-weight:700;color:#1d6743;}
+.tcStitchShell .tcDirectoryOwnedPreview{border:1px solid #d5e5d6;border-radius:12px;background:#fff;margin:8px 0;padding:11px;min-width:0;overflow-wrap:anywhere;}
+.tcStitchShell .tcOwnedPreviewHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:7px;flex-wrap:wrap;}
+.tcStitchShell .tcOwnedPreviewHeader strong{font-size:13px;line-height:17px;}
+.tcStitchShell .tcOwnerStatus{display:inline-flex;align-items:center;min-height:26px;border-radius:15px;padding:4px 9px;font-weight:700;font-size:11px;background:#e7f2e8;color:#24573a;}
+.tcStitchShell .tcOwnerStatus-pending{background:#fff1d7;color:#704917;}
+.tcStitchShell .tcOwnerStatus-hidden{background:#f5e8e7;color:#8a463c;}
+.tcStitchShell .tcDirectoryOwnedPreview small,.tcStitchShell .tcOwnedVisibilityNotice{display:block;font-size:11px;line-height:16px;color:#536d5f;margin:5px 0;}
+.tcStitchShell .tcOwnedPreviewCategory{display:block;font-size:12px;color:#20563b;margin-top:4px;}
+.tcStitchShell .tcDirectoryOwnedPreview p{font-size:12px;line-height:17px;max-width:65ch;margin:6px 0;}
+.tcStitchShell .tcDirectoryOwnerPhotos{margin:7px 0;overflow-x:auto;}
+.tcStitchShell .tcDirectoryOwnerPhotos img{width:120px;height:94px;object-fit:cover;border-radius:8px;}
+.tcStitchShell .tcDirectoryReviewChoices{border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;min-width:0;}
+.tcStitchShell .tcDirectoryReviewChoices legend{grid-column:1/-1;}
+.tcStitchShell .tcDirectoryReviewChoices button{min-height:42px;min-width:0;background:white;color:#214b35;border:1px solid #cbdfd0;border-radius:10px;font-size:12px;font-weight:650;padding:5px 4px;}
+.tcStitchShell .tcDirectoryReviewChoices button[aria-pressed='true']{background:#20563b;color:#fff;border-color:#20563b;}
+.tcStitchShell .tcDirectoryReviewForm{margin:8px 0;padding:10px;max-width:100%;gap:9px;}
+.tcStitchShell .tcDirectoryReviewForm h4{font-size:15px;line-height:20px;margin:0;}
+.tcStitchShell .tcDirectoryReviewForm p,.tcStitchShell .tcDirectoryReviewForm small{font-size:11px;line-height:16px;margin:0;}
+.tcStitchShell .tcDirectoryReviewActions{display:flex;gap:7px;flex-wrap:wrap;}
+.tcStitchShell .tcDirectoryReviewActions button{min-height:38px;border:0;border-radius:9px;padding:8px 12px;font-size:12px;font-weight:700;background:#20563b;color:white;}
+.tcStitchShell .tcDirectoryReviewActions button:nth-child(2){background:#e8f0e9;color:#1a4b34;}
+.tcStitchShell .tcDirectoryReviewActions button:disabled{opacity:.5;cursor:not-allowed;}
+.tcStitchShell .tcDirectoryOwnerActions{margin-top:6px;}
+.tcStitchShell .tcDirectoryOwnerActions summary{font-size:11px;cursor:pointer;color:#235940;}
+@media(max-width:767px){
+ .tcStitchShell .tcMobilePublishAction{display:none!important;}
+ .tcStitchShell .neoMobileNav button[aria-label='Publicar gratis en Trabajo Cerca']{color:#245d40!important;font-weight:750!important;}
+ .tcStitchShell .neoMobileNav button[aria-label='Publicar gratis en Trabajo Cerca'] svg{color:#235b3a!important;}
+ .tcStitchShell .tcDirectoryTabs{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important;}
+ .tcStitchShell .tcDirectoryTabs button{min-height:36px!important;padding:5px 3px!important;font-size:11px!important;}
+ .tcStitchShell .tcDirectoryReviewForm{padding:8px!important;}
+ .tcStitchShell .tcDirectoryReviewChoices button{font-size:11px!important;padding:7px 1px!important;}
+ .tcStitchShell .tcDirectoryOwnerPhotos img{width:105px!important;height:82px!important;}
+ .tcStitchShell .tcDirectoryGrid{gap:8px!important;}
+}

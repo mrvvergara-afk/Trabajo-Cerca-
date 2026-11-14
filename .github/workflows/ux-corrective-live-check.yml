@@ -1,0 +1,42 @@
+name: QA UX Corrective Deployment — public read-only
+on:
+  push:
+    branches:
+      - fix/mobile-densidad-directorio-20261113
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/qa/live-smoke-after-fix.mjs'
+      - '.github/workflows/ux-corrective-live-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ux-corrective-public-smoke
+  cancel-in-progress: true
+jobs:
+  public-read-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Validate deployed UI, real jobs and service forms without creating data
+        run: node qa/live-smoke-after-fix.mjs
+      - name: Run full 6-viewport navigation suite on real deployed app (no submissions)
+        env:
+          UX_QA_URL: https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai
+          UX_QA_LIVE: '1'
+        run: node qa/e2e.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ux-corrective-real-public-screenshots
+          path: ux-staging/appdeploy-1794590590707/preview/qa/captures/*.png
+          retention-days: 5
+          if-no-files-found: ignore

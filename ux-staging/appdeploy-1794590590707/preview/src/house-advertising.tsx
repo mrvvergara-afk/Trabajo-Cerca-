@@ -49,6 +49,17 @@ export function useAdvertising(place:string,category:string,page='home',requeste
       if(delayedRefresh!==undefined)window.clearTimeout(delayedRefresh);
     };
   },[]);
+  // A quiet in-place carousel: rotate only house inventory, never displace paid slots.
+  // The visitor may pause; reduced-motion and hidden tabs do not autoplay.
+  const [rotation,setRotation]=useState(0);
+  const [paused,setPaused]=useState(false);
+  useEffect(()=>{
+    const timer=window.setInterval(()=>{
+      if(paused||document.visibilityState!=='visible'||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      setRotation(value=>(value+1)%120);
+    },18000);
+    return()=>window.clearInterval(timer);
+  },[paused]);
   const [completed,setCompleted]=useState(completedHouseGoals);
   const [turn]=useState(()=>{
     const previous=readSession<number>('tc-house-turn',0);const next=Number.isSafeInteger(previous)?previous+1:1;
@@ -73,9 +84,9 @@ export function useAdvertising(place:string,category:string,page='home',requeste
     return()=>window.clearTimeout(timeout);
   },[catalog,now]);
   const slotsKey=requestedSlots.join('|');
-  const selections=useMemo(()=>allocateAdvertising({house:catalog?.house??[],commercial:catalog?.commercial??[],complete:catalog?.complete===true,place,category,page,now,turn,seen:seen.current,completed,slots:slotsKey.split('|') as Slot[]}),[catalog,place,category,page,now,turn,completed,slotsKey]);
+  const selections=useMemo(()=>allocateAdvertising({house:catalog?.house??[],commercial:catalog?.commercial??[],complete:catalog?.complete===true,place,category,page,now,turn:turn+rotation,seen:seen.current,completed,slots:slotsKey.split('|') as Slot[]}),[catalog,place,category,page,now,turn,rotation,completed,slotsKey]);
   function impression(id:string){seen.current[id]=(seen.current[id]??0)+1;try{sessionStorage.setItem('tc-house-seen',JSON.stringify(seen.current));}catch{/* Keep in memory. */}}
-  return {selections,impression,loading:!catalog&&!failed,failed};
+  return {selections,impression,loading:!catalog&&!failed,failed,rotation,paused,toggleRotation:()=>setPaused(v=>!v)};
 }
 export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Selection;place:string;onGoal:(goal:Goal,attribution:HouseAttribution)=>void;onImpression:(id:string)=>void}) {
   const node=useRef<HTMLElement>(null);const counted=useRef(new Set<string>());
@@ -98,6 +109,7 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
   return <aside ref={node} className='tcHouseAd tcPremiumAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD' data-campaign={house.campaign.id} data-creative-family={house.campaign.goal==='professional'?'services':house.campaign.goal==='advertiser'?'business':'jobs'}>
     <div className='tcCampaignVisual' aria-hidden='true'><AdImage url={creative.imageUrl}/><span className='tcCreativeFallback'>Trabajo Cerca</span></div>
     <div className='tcCampaignCopy'><small className='tcCampaignEyebrow'>{house.campaign.goal==='professional'?'SERVICIOS Y OFICIOS':house.campaign.goal==='advertiser'?'NEGOCIOS Y FUNDADORES':'EMPLEO Y TERRITORIO'} · FOTO ILUSTRATIVA</small><h3>{creative.title}</h3><p className='tcHouseDesktop'>{creative.message}</p><p className='tcHouseMobile'>{creative.mobileMessage}</p>
+    <span className='tcHouseBenefits'>✓ Presencia local · ✓ Contacto directo</span>
     <button type='button' onClick={()=>{const a={campaignId:house.campaign.id,creativeId:house.creative.id};sendHouseEvent(a,'click');onGoal(house.campaign.goal,a);}}>{creative.button}</button></div>
   </aside>;
 }

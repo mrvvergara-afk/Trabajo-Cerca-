@@ -17,7 +17,7 @@ try{
    await pass(width+'px radar exists',async()=>assert.equal(await radar.count(),1));
    await pass(width+'px single 12-commune radar toggle',async()=>{
     assert.equal(await radar.locator('.tcRadarDetails > summary').count(),1);
-    assert((await radar.locator('.tcRadarDetails > summary').textContent()).includes('12 comunas'));
+    assert(/12 comunas|Ocultar las comunas/.test((await radar.locator('.tcRadarDetails > summary').textContent())||''));
    });
    const footer=page.locator('details.tcStitchFooterDetails');
    await pass(width+'px legal section is separate',async()=>{

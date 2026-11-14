@@ -39,18 +39,18 @@ export function compactWorkplaceLabel(
   const locals=found.filter(label=>label!=='Imperial');
   const external=found.filter(label=>label==='Imperial');
   const result=[...locals,...external];
-  if(result.length===0){
-    for(const town of workCommunes){
-      const normalized=clean(town);
-      const alias=ALIASES.find(entry=>clean(entry.label)===normalized||entry.detect===normalized);
-      if(alias)add(alias.label);
-      else {
-        const matched=KNOWN_PLACES.find(entry=>clean(entry)===normalized);
-        if(matched)add(matched);
-      }
+  if(result.length){
+    return result.length>2 ? result.length+' localidades' : result.join(' / ');
+  }
+  // A vetted canonical commune is safer than guessing from employer prose.
+  for(const town of workCommunes){
+    const normalized=clean(town);
+    const alias=ALIASES.find(entry=>clean(entry.label)===normalized||entry.detect===normalized);
+    if(alias)add(alias.label);
+    else {
+      const matched=KNOWN_PLACES.find(entry=>clean(entry)===normalized);
+      if(matched)add(matched);
     }
-  }else{
-    for(const label of result)add(label);
   }
   if(found.length===0)return 'Lugar por confirmar';
   if(found.length>2)return found.length+' localidades';

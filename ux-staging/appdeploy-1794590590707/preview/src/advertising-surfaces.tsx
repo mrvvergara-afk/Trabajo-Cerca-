@@ -14,15 +14,11 @@ export function InlineHousePromotion({
   place,
   slot,
   onGoal,
-  paused=false,
-  onToggleRotation,
 }: {
   selection: Selection;
   place: string;
   slot: Slot;
   onGoal: (goal: Goal, attribution: HouseAttribution) => void;
-  paused?:boolean;
-  onToggleRotation?:()=>void;
 }) {
   const house=selection?.type==='HOUSE_AD'?selection:null;
   const goal=house?.campaign.goal??'explore';
@@ -49,9 +45,6 @@ export function InlineHousePromotion({
       <strong>{title}</strong>
       <p>{copy}</p>
       {isPhotoOffer && <span className='tcPromoBenefit'>📸 Fotos de tus trabajos · Contacto directo</span>}
-      {house && onToggleRotation && <button className='tcHouseRotateButton' type='button'
-        aria-label={paused?'Reanudar campañas':'Pausar campañas'} onClick={onToggleRotation}>
-          {paused?'▶ Ver campañas':'Ⅱ Pausar carrusel'}</button>}
     </div>
     <button type='button' onClick={click}>{cta} <ArrowRight aria-hidden='true'/></button>
   </aside>;

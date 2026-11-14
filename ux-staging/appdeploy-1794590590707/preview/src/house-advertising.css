@@ -255,3 +255,85 @@
  .tcStitchShell .tcHouseAd.tcPremiumAd h3{font-size:15px!important;line-height:17px!important;}
  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{padding:9px!important;}
 }
+
+
+/* Hotfix 14-11: institutional carousel is automatic and photography stays visible. */
+.tcStitchShell .tcHouseAd.tcPremiumAd{
+  display:grid!important;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)!important;
+  grid-template-areas:"copy art"!important;align-items:stretch!important;
+  min-height:172px!important;max-width:100%!important;overflow:hidden!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+  grid-area:copy!important;display:flex!important;flex-direction:column!important;
+  justify-content:center!important;align-items:flex-start!important;
+  max-width:100%!important;min-width:0!important;padding:13px 15px!important;
+  gap:6px!important;box-sizing:border-box!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual{
+  grid-area:art!important;order:initial!important;
+  position:relative!important;min-width:0!important;min-height:172px!important;
+  background:#bed6af!important;isolation:isolate!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual .tcCampaignFallbackArt{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  display:block!important;object-fit:cover!important;z-index:0!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual>.tcAdImage{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;z-index:1!important;display:block!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage{
+  position:absolute!important;right:7px!important;bottom:8px!important;
+  display:flex!important;gap:5px!important;z-index:2!important;
+  max-width:calc(100% - 12px)!important;pointer-events:none!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage img{
+  display:block!important;width:48px!important;height:45px!important;
+  max-width:44%!important;object-fit:cover!important;
+  border:2px solid #fff!important;border-radius:9px!important;
+  box-shadow:0 3px 9px #123d2a55!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy h3{
+  font-size:clamp(16px,2.2vw,25px)!important;line-height:1.18!important;
+  max-width:100%!important;overflow-wrap:break-word!important;margin:0!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy button{
+  font-size:11px!important;line-height:1.25!important;min-width:0!important;
+  max-width:100%!important;padding:9px 11px!important;
+  box-sizing:border-box!important;white-space:normal!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseBenefits{
+  display:block!important;font-size:9px!important;line-height:14px!important;
+  max-width:100%!important;overflow-wrap:normal!important;
+}
+@media(max-width:720px){
+  .tcStitchShell .tcHouseAd.tcPremiumAd{
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;
+    min-height:170px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+    padding:11px 11px!important;gap:5px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy h3{
+    font-size:16px!important;line-height:19px!important;letter-spacing:-.02em!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual{min-height:170px!important;}
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy button{
+    font-size:10px!important;line-height:13px!important;padding:8px 9px!important;
+    min-height:36px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage img{
+    width:38px!important;height:38px!important;border-radius:7px!important;
+  }
+}
+@media(max-width:360px){
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy h3{
+    font-size:15px!important;line-height:18px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+    padding:9px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage img{
+    width:32px!important;height:33px!important;
+  }
+}

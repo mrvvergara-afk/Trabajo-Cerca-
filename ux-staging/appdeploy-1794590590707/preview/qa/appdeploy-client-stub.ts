@@ -1,4 +1,5 @@
 // QA-only mock: no platform SDK, no database and no outbound API calls.
+import { HOUSE_DEFAULTS } from '../shared/house-ads';
 // Deliberately isolated from all production sources and config.
 const emptySummary = {
   items: [], nextCursor:null, updatedAt:'2026-11-13T00:00:00Z',
@@ -7,16 +8,23 @@ const emptySummary = {
   kindStats:{jobs:0,people:0,needs:0,services:0},communeStats:{},feedState:'authoritative_empty',
 };
 const reply=(data:unknown={})=>Promise.resolve({data});
+const mockPhoto=(text:string,color:string)=>'data:image/svg+xml,'+encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="220">'+
+  '<rect width="300" height="220" fill="'+color+'"/>'+
+  '<text x="25" y="115" font-family="sans-serif" font-size="30" fill="white">'+text+'</text></svg>');
 const approvedDirectory=[
   {id:'local_aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa',kind:'service',title:'Soldaduras de ejemplo',
     category:'Soldadura',description:'Rejas, reparaciones y trabajos metálicos de ejemplo.',
-    commune:'Angol',coverage:['Angol'],photos:[],rating:4.6,reviewCount:5,contactAvailable:false},
+    commune:'Angol',coverage:['Angol'],photos:[mockPhoto('Soldadura 1','#246c48'),mockPhoto('Soldadura 2','#55824d')],rating:4.6,reviewCount:5,contactAvailable:false},
   {id:'local_bbbbbbbb-bbbb-4bbb-bbbb-bbbbbbbbbbbb',kind:'business',title:'Pastelería de ejemplo',
     category:'Pastelería',description:'Tortas y productos de pastelería de ejemplo.',
-    commune:'Angol',coverage:['Angol'],photos:[],rating:null,reviewCount:0,contactAvailable:false},
+    commune:'Angol',coverage:['Angol'],photos:[mockPhoto('Pasteleria','#a96b63')],rating:null,reviewCount:0,contactAvailable:false},
 ];
 export const api={
   get: (url:string)=>reply(url.startsWith('/api/listings?') ? emptySummary
+    : url.startsWith('/api/growth/advertising?') ? {
+        house:HOUSE_DEFAULTS.filter(x=>x.id==='house-inclusion'),commercial:[],complete:true,
+      }
     : url.startsWith('/api/local-directory?') ? {
       items: approvedDirectory.filter(item=>{
         const kind=new URL(url,'https://qa.invalid').searchParams.get('kind');
@@ -34,7 +42,9 @@ export const api={
 };
 export const auth={
   isSignedIn:()=>false,
-  getUser:()=>Promise.resolve(null),
+  getUser:()=>Promise.resolve((typeof localStorage!=='undefined'&&localStorage.getItem('tc_qa_verified_review')==='yes')
+    ? {userId:'qa-reviewer',email:'qa-reviewer@example.invalid',scope:'openid email'}
+    : null),
   signIn:()=>Promise.reject(new Error('QA SDK mock: sign-in disabled')),
   signInWithRedirect:()=>Promise.reject(new Error('QA SDK mock: sign-in disabled')),
   signOut:()=>Promise.resolve(),

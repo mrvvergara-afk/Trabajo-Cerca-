@@ -1,0 +1,31 @@
+name: QA PR62 final deployment — live read-only
+on:
+  push:
+    branches: [fix/directorio-unificado-calificaciones-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/qa/live-pr62-after-deploy.mjs'
+      - '.github/workflows/ux-pr62-live-after-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ux-pr62-public-release-check
+  cancel-in-progress: true
+jobs:
+  public-browse:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Validate deployed PR62 UI, real Tortas and form without writing
+        run: node qa/live-pr62-after-deploy.mjs

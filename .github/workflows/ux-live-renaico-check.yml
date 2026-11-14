@@ -1,0 +1,26 @@
+name: QA read-only Tortas Renaico — no deploy
+on:
+  push:
+    branches: [fix/directorio-unificado-calificaciones-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/qa/live-check-renaico.mjs'
+      - '.github/workflows/ux-live-renaico-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-approved-service:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Check approved Renaico Tortas in live public directory
+        run: node qa/live-check-renaico.mjs

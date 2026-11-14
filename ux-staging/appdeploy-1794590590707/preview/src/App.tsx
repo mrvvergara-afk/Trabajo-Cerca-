@@ -1007,7 +1007,8 @@ function App() {
   const initialPlace = [...places, ...travelPlaces].includes(requestedPlace) ? requestedPlace : 'Angol';
   const [flow, setFlow] = useState<Flow | null>(() => queryParams.get('share_target') === '1' ? 'aporte' : null);
   const [section, setSection] = useState<Section>('opportunities');
-  const [directoryMode, setDirectoryMode] = useState<'service' | 'business' | null>(null);
+  const [directoryMode, setDirectoryMode] = useState<'all' | 'service' | 'business' | null>(null);
+  const [directoryOpenForm,setDirectoryOpenForm] = useState(false);
   const [showHiringChoices, setShowHiringChoices] = useState(false);
   const [showPublishChoices, setShowPublishChoices] = useState(false);
   const publishDialogRef = useRef<HTMLElement>(null);
@@ -1363,9 +1364,10 @@ function App() {
   };
 
   const goRadar = (next:Section='opportunities') => navigateResults(next);
-  const openLocalDirectory = (kind:'service'|'business') => {
+  const openLocalDirectory = (kind:'all'|'service'|'business'='all', withForm=false) => {
+    setDirectoryOpenForm(withForm);
     setDirectoryMode(kind);
-    window.setTimeout(() => document.getElementById('local-directory')?.scrollIntoView({behavior:'smooth'}), 40);
+    window.setTimeout(() => document.getElementById('local-directory')?.scrollIntoView({behavior:'auto',block:'start'}), 40);
   };
   const chooseAnalytics = (choice:'yes'|'no') => {
     localStorage.setItem('tc_analytics_consent', choice);
@@ -1487,9 +1489,8 @@ function App() {
             <span className='tcTerritoryBadge'>Malleco &amp; Biobío</span>
             <nav className='neoTopNav' aria-label='Navegación principal'>
               <button aria-current={section==='opportunities'&&!directoryMode?'page':undefined} onClick={() => navigateResults('opportunities')}>Empleos</button>
-              <button aria-current={section==='people'&&!directoryMode?'page':undefined} onClick={() => navigateResults('people')}>Oficios y personas</button>
-              <button aria-current={directoryMode==='service'?'page':undefined} onClick={() => openLocalDirectory('service')}>Servicios</button>
-              <button aria-current={directoryMode==='business'?'page':undefined} onClick={() => openLocalDirectory('business')}>Comercio local</button>
+              <button aria-current={section==='people'&&!directoryMode?'page':undefined} onClick={() => navigateResults('people')}>Personas disponibles</button>
+              <button aria-current={directoryMode?'page':undefined} onClick={() => openLocalDirectory('all')}>Servicios y negocios</button>
             </nav>
             <button type='button' className='tcTopPublish' onClick={()=>setShowPublishChoices(true)}><PlusCircle aria-hidden='true'/> Publicar gratis</button>
             <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Mi territorio':value}</option>)}</select></label>
@@ -1520,13 +1521,13 @@ function App() {
           <div className='tcPurposeGrid'>
             <button type='button' onClick={() => navigateResults('opportunities')}><Briefcase aria-hidden='true'/><strong>Buscar empleo</strong><span>Ofertas locales identificadas por comuna y fuente.</span></button>
             <button type='button' onClick={() => setFlow('ofrezco')}><UserRoundSearch aria-hidden='true'/><strong>Ofrecer mi trabajo</strong><span>Publica gratis tu oficio o disponibilidad, sin currículum.</span></button>
-            <button type='button' onClick={() => openLocalDirectory('service')}><Wrench aria-hidden='true'/><strong>Servicios</strong><span>Encuentra oficios y solicita ayuda en tu comuna.</span></button>
-            <button type='button' onClick={() => openLocalDirectory('business')}><Store aria-hidden='true'/><strong>Comercio local</strong><span>Negocios y emprendimientos cercanos.</span></button>
+            <button type='button' onClick={() => openLocalDirectory('all')}><Wrench aria-hidden='true'/><strong>Servicios y negocios</strong><span>Contrata servicios o conoce negocios de tu comuna.</span></button>
+            <button type='button' onClick={() => openLocalDirectory('all',true)}><Store aria-hidden='true'/><strong>Publicar mi servicio o negocio</strong><span>Soldadura, pastelería, reparaciones y otros.</span></button>
           </div>
-          <button type='button' className='tcDirectorySecondaryAction' onClick={() => openLocalDirectory('service')}>¿Ofreces servicios particulares? Publica gratis tus trabajos</button>
+          <button type='button' className='tcDirectorySecondaryAction' onClick={() => openLocalDirectory('all',true)}>¿Ofreces soldadura, pastelería u otro servicio? Publícalo en el directorio</button>
           {showHiringChoices && <div className='tcHirePanel' role='group' aria-label='Opciones para contratar'><strong>¿Cómo deseas contratar?</strong><button onClick={() => setFlow('trabajadores')}>Publicar necesidad de trabajadores</button><button onClick={() => navigateResults('people')}>Ver personas disponibles</button></div>}
         </section>
-        {directoryMode && <Suspense fallback={<div id='local-directory' className='tcLocalDirectory' role='status' aria-live='polite'>Cargando directorio local…</div>}><LocalDirectory place={place} initialKind={directoryMode} onClose={() => setDirectoryMode(null)}/></Suspense>}
+        {directoryMode && <Suspense fallback={<div id='local-directory' className='tcLocalDirectory' role='status' aria-live='polite'>Cargando directorio local…</div>}><LocalDirectory place={place} initialKind={directoryMode} startWithForm={directoryOpenForm} onClose={() => {setDirectoryMode(null);setDirectoryOpenForm(false);}}/></Suspense>}
         <section className='tcStitchRadarSummary' aria-label='Resumen del catálogo territorial'>
           <div><span><Radar aria-hidden='true'/> Radar laboral territorial · 12 comunas</span><b>{scopeCount??'…'} ofertas</b></div>
           <h2>Oportunidades en tu territorio</h2>
@@ -1644,19 +1645,19 @@ function App() {
         </footer></details>
 
         {!flow && !showAdvertiser && !showAlerts && !showActivity && !legalView && !selected && <>
-          <button type='button' className='tcMobilePublishAction' onClick={()=>setShowPublishChoices(true)} aria-label='Publicar gratis en Trabajo Cerca'><PlusCircle aria-hidden='true'/> Publicar</button>
           <nav className='neoMobileNav' aria-label='Navegación móvil de cuatro espacios'>
             <button type='button' aria-current={section==='opportunities'&&!directoryMode?'page':undefined} onClick={()=>navigateResults('opportunities')}><Briefcase aria-hidden='true'/><span>Empleos</span></button>
-            <button type='button' aria-current={section==='people'&&!directoryMode?'page':undefined} onClick={()=>navigateResults('people')}><UserRoundSearch aria-hidden='true'/><span>Oficios</span></button>
-            <button type='button' aria-current={directoryMode==='service'?'page':undefined} onClick={()=>openLocalDirectory('service')}><Wrench aria-hidden='true'/><span>Servicios</span></button>
-            <button type='button' aria-current={directoryMode==='business'?'page':undefined} onClick={()=>openLocalDirectory('business')}><Store aria-hidden='true'/><span>Comercio</span></button>
+            <button type='button' aria-current={section==='people'&&!directoryMode?'page':undefined} onClick={()=>navigateResults('people')}><UserRoundSearch aria-hidden='true'/><span>Personas</span></button>
+            <button type='button' aria-current={directoryMode?'page':undefined} onClick={()=>openLocalDirectory('all')}><Store aria-hidden='true'/><span>Directorio</span></button>
+            <button type='button' onClick={()=>setShowPublishChoices(true)} aria-label='Publicar gratis en Trabajo Cerca'><PlusCircle aria-hidden='true'/><span>Publicar</span></button>
           </nav>
         </>}
         {showPublishChoices && <div className='tcPublishBackdrop' role='presentation' onMouseDown={event=>{if(event.target===event.currentTarget)setShowPublishChoices(false);}}>
           <section className='tcPublishDialog' role='dialog' aria-modal='true' aria-labelledby='tc-publish-title' ref={publishDialogRef} tabIndex={-1}>
             <div className='tcPublishDialogHeader'><h2 id='tc-publish-title'>¿Qué quieres publicar?</h2><button type='button' onClick={()=>setShowPublishChoices(false)} aria-label='Cerrar opciones de publicación'><X aria-hidden='true'/></button></div>
-            <p>Elige el tipo correcto. Cada publicación usa su formulario existente.</p>
-            <button type='button' onClick={()=>{setShowPublishChoices(false);setFlow('ofrezco');}}><UserRoundSearch aria-hidden='true'/><span><strong>Ofrezco mi trabajo</strong><small>Perfil de oficio o profesión, gratis y sin currículum.</small></span></button>
+            <p>¿Quieres mostrar lo que haces o estás buscando empleo? Elige una opción:</p>
+            <button type='button' onClick={()=>{setShowPublishChoices(false);openLocalDirectory('all',true);}}><Wrench aria-hidden='true'/><span><strong>Ofrezco servicios o productos</strong><small>Soldadura, pastelería, reparaciones y negocios. Con fotos.</small></span></button>
+            <button type='button' onClick={()=>{setShowPublishChoices(false);setFlow('ofrezco');}}><UserRoundSearch aria-hidden='true'/><span><strong>Busco trabajo</strong><small>Perfil personal para que empresas te contacten; sin currículum.</small></span></button>
             <button type='button' onClick={()=>{setShowPublishChoices(false);setFlow('servicio');}}><Wrench aria-hidden='true'/><span><strong>Necesito un servicio</strong><small>Solicita ayuda puntual de alguien de tu comuna.</small></span></button>
             <button type='button' onClick={()=>{setShowPublishChoices(false);setFlow('trabajadores');}}><Users aria-hidden='true'/><span><strong>Necesito trabajadores</strong><small>Publica tu necesidad de personal; no se presenta como vacante formal verificada.</small></span></button>
             <button type='button' onClick={()=>{setShowPublishChoices(false);setFlow('aporte');}}><Briefcase aria-hidden='true'/><span><strong>Compartir una oferta laboral</strong><small>Envía el aviso al Radar para revisión antes de publicarlo.</small></span></button>

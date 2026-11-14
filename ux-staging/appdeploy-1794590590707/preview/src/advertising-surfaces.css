@@ -244,3 +244,31 @@
  .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt{height:52px!important;width:52px!important;}
  .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy p{font-size:10px!important;line-height:14px!important;}
 }
+
+
+/* Hotfix: safe local image fallback, visually consistent on all institutional slots. */
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon{
+ position:relative;isolation:isolate;overflow:hidden!important;flex-shrink:0!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcHouseFallbackThumb{
+ position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;
+ border-radius:inherit;z-index:0;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{
+ position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;z-index:1;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb)>svg{
+ display:none!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+ width:60px!important;height:60px!important;
+}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+   width:50px!important;height:50px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo:has(.tcHouseFallbackThumb){
+   grid-template-columns:50px minmax(0,1fr)!important;
+   align-items:start!important;
+ }
+}

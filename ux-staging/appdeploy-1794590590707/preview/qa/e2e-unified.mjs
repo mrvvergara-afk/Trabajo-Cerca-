@@ -22,6 +22,14 @@ try{
    const consent=page.getByRole('button',{name:'No aceptar'});
    if(await consent.isVisible().catch(()=>false))await consent.click();
    await check(width+'px: app mounts',async()=>assert.equal(await page.locator('.tcStitchShell').count(),1));
+   await check(width+'px: default territorial selection includes all municipalities',async()=>{
+    const selector=page.locator('.tcMobilePlace select');
+    assert.equal(await selector.inputValue(),'Todas');
+    assert.equal(await selector.locator('option:checked').textContent(),'Todas');
+   });
+   await check(width+'px: no public moderation panel',async()=>{
+    assert.equal(await page.locator('.tcDirectoryAdmin').count(),0);
+   });
    const mobile=width<=767;
    if(mobile){
     const nav=page.getByRole('navigation',{name:'Navegación móvil de cuatro espacios'});
@@ -38,6 +46,10 @@ try{
    }
    const dir=page.locator('#local-directory');
    await dir.locator('.tcDirectoryTop').waitFor({state:'visible',timeout:10000});
+   await check(width+'px: public directory never includes admin moderation',async()=>{
+    assert.equal(await dir.locator('.tcDirectoryAdmin').count(),0);
+    assert((await dir.locator('.tcDirectorySummary').textContent()).includes('Las 12 comunas'));
+   });
    await check(width+'px: unified directory and two synthetic approved listings',async()=>{
     assert((await dir.getByRole('heading',{name:'Directorio local'}).count())===1);
     assert.equal(await dir.locator('.tcDirectoryCard').count(),2);
@@ -97,6 +109,8 @@ try{
      await form.getByRole('radio',{name:/Negocio.*pastelería/}).check();
      assert(await form.getByRole('radio',{name:/Negocio.*pastelería/}).isChecked());
      assert.equal(await form.locator('input[type=file]').count(),1);
+     assert.equal(await form.locator('select[required]').count(),1);
+     assert.equal(await form.locator('select[required]').inputValue(),'');
      const rows=await form.locator('.tcDirectoryKindChoice label').evaluateAll(labels=>labels.map(label=>{
        const rect=label.getBoundingClientRect();
        const input=label.querySelector('input').getBoundingClientRect();

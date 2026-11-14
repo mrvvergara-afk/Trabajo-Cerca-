@@ -8,6 +8,11 @@ type Listing = {
   commune: string; coverage: string[]; photos: string[]; reviewCount: number;
   rating: number | null; contactAvailable: boolean;
 };
+type OwnerReceipt = {
+  id:string; title:string; commune:string; kind:Kind;
+  status:'pending'|'approved'|'hidden'; photosCount:number;
+};
+
 type AdminQueue = {
   entries: Array<Listing & { status: string; email: string; phone: string }>;
   reviews: Array<{ id: string; entryId: string; rating: number }>;
@@ -76,6 +81,33 @@ export function LocalDirectory({ place, initialKind, onClose }: {
   const [reportEmail, setReportEmail] = useState('');
   const [reportReason, setReportReason] = useState('Información incorrecta');
   const [admin, setAdmin] = useState<AdminQueue | null>(null);
+  const [ownedReceipts, setOwnedReceipts] = useState<OwnerReceipt[]>([]);
+  const [submissionError, setSubmissionError] = useState('');
+
+  // Each owner receipt is read with an unguessable token already saved on the
+  // same device. No public listing or contact details are exposed here.
+  const refreshOwnedReceipts = async () => {
+    const owned: Array<{id:string;token:string}> = [];
+    try {
+      for (let i=0;i<localStorage.length && owned.length<40;i++) {
+        const key=localStorage.key(i);
+        if (key?.startsWith('tc_directory_owner_local_')) {
+          const token=localStorage.getItem(key);
+          const id=key.slice('tc_directory_owner_'.length);
+          if (token && /^local_[a-f0-9-]{36}$/.test(id))
+            owned.push({id,token});
+        }
+      }
+    } catch { return; }
+    const records = await Promise.all(owned.map(async ({id,token}) => {
+      try {
+        const result=await api.post('/api/local-directory/'+id+'/status',{ownerToken:token});
+        return result.data as OwnerReceipt;
+      } catch { return null; }
+    }));
+    setOwnedReceipts(records.filter((entry):entry is OwnerReceipt=>Boolean(entry)));
+  };
+  useEffect(() => { void refreshOwnedReceipts(); }, []);
 
   useEffect(() => { setKind(initialKind); }, [initialKind]);
   useEffect(() => {
@@ -114,6 +146,7 @@ export function LocalDirectory({ place, initialKind, onClose }: {
     event.preventDefault();
     setBusy(true);
     setNotice('');
+    setSubmissionError('');
     try {
       const gallery = await Promise.all(photos.slice(0, 3).map(prepareImage));
       const response = await api.post('/api/local-directory', {
@@ -134,10 +167,16 @@ export function LocalDirectory({ place, initialKind, onClose }: {
       setPhotos([]);
       setConsent(false);
       setShowForm(false);
-      setNotice('Tu ficha quedó en revisión. No se mostrará hasta la aprobación.');
-      void refreshAdmin();
+      setNotice('Ficha recibida: pendiente de aprobación. Revisa el estado en «Mis publicaciones enviadas».');
+      setOwnedReceipts(previous => [{
+        id:response.data.id, title, commune, kind, status:'pending', photosCount:gallery.length,
+      },...previous.filter(entry=>entry.id!==response.data.id)]);
+      void refreshOwnedReceipts();
+      if (admin) void refreshAdmin();
     } catch (cause) {
-      setNotice(cause instanceof Error ? cause.message : 'No se pudo enviar la ficha.');
+      const message=cause instanceof Error ? cause.message : 'No se pudo enviar la ficha.';
+      setNotice(message);
+      setSubmissionError(message);
     } finally {
       setBusy(false);
     }
@@ -217,19 +256,19 @@ export function LocalDirectory({ place, initialKind, onClose }: {
     <div className='tcDirectoryTop'>
       <div>
         <small>LA VITRINA DE NUESTRA COMUNIDAD</small>
-        <h2>Oficios, servicios y negocios cerca de ti</h2>
-        <p>Encuentra y contacta a quienes trabajan o emprenden en tu comuna.</p>
+        <h2>Servicios y negocios cerca de ti</h2>
+        <p>Oficios, productos y emprendimientos locales.</p>
       </div>
-      <button type='button' onClick={onClose}>Cerrar ×</button>
+      <button type='button' aria-label='Cerrar directorio' title='Cerrar directorio' onClick={onClose}>×</button>
     </div>
     <div className='tcDirectoryTabs' role='group' aria-label='Categorías del directorio'>
       <button type='button' className={kind === 'service' ? 'active' : ''}
         aria-pressed={kind === 'service'} onClick={() => setKind('service')}>
-        Oficios y servicios
+        Servicios
       </button>
       <button type='button' className={kind === 'business' ? 'active' : ''}
         aria-pressed={kind === 'business'} onClick={() => setKind('business')}>
-        Negocios y emprendimientos
+        Negocios
       </button>
     </div>
     <div className='tcDirectorySummary'>
@@ -239,6 +278,15 @@ export function LocalDirectory({ place, initialKind, onClose }: {
       </button>
     </div>
     {notice && <p role='status' className='tcDirectoryNotice'>{notice}</p>}
+    {ownedReceipts.length>0 && <details className='tcDirectoryOwned' open={ownedReceipts.some(entry=>entry.status==='pending')}>
+      <summary>Mis publicaciones enviadas · {ownedReceipts.length}</summary>
+      {ownedReceipts.map(entry=><div className='tcDirectoryOwnedRow' key={entry.id}>
+        <span><strong>{entry.title}</strong> · {entry.commune} · {entry.photosCount} foto(s)<br/>
+          {entry.status==='pending'?'Pendiente de aprobación':entry.status==='approved'?'Publicada':'Retirada o rechazada'}
+        </span>
+      </div>)}
+      <button type='button' onClick={()=>void refreshOwnedReceipts()}>Actualizar estados</button>
+    </details>}
     {showForm && <form className='tcDirectoryForm' onSubmit={event => void publish(event)}>
       <h3>{kind === 'service' ? 'Publica tu oficio o servicio' : 'Presenta tu negocio local'}</h3>
       <p>Solo pedimos teléfono y correo como datos de contacto. No solicitamos CV, RUT ni domicilio.</p>
@@ -274,11 +322,11 @@ export function LocalDirectory({ place, initialKind, onClose }: {
         <input type='file' multiple accept='image/*'
           onChange={e => setPhotos(Array.from(e.target.files ?? []).slice(0, 3))}/>
       </label>
-      <small>Las imágenes se convierten a JPEG optimizado, sin los metadatos de la fotografía original.
-        Publica solo imágenes que tengas derecho a utilizar.</small>
+      <small role='status'>{photos.length ? photos.length+' foto(s) seleccionada(s). ' : ''}Las imágenes se optimizan sin metadatos. Usa solo fotografías propias o autorizadas.</small>
       <label className='tcDirectoryConsent'><input type='checkbox' required checked={consent}
           onChange={e => setConsent(e.target.checked)}/>
         Autorizo tratar mi contacto y el contenido voluntario de esta publicación conforme a la política de privacidad.</label>
+      {submissionError && <p role='alert' className='tcDirectoryNotice'>{submissionError}</p>}
       <button type='submit' disabled={busy || (!showPhone && !showEmail)}>
         {busy ? 'Enviando…' : 'Enviar para revisión'}
       </button>
@@ -313,8 +361,8 @@ export function LocalDirectory({ place, initialKind, onClose }: {
           onClick={() => void removeOwn(entry.id)}>Retirar mi ficha</button>}
       </article>)}
     </div> : <div className='tcDirectoryEmpty'>
-      <strong>Aún no hay fichas aprobadas para esta selección.</strong>
-      <p>Puedes registrar tu servicio o negocio gratis. No presentamos publicaciones de ejemplo como si fueran reales.</p>
+      <strong>Aún no hay fichas aprobadas en esta comuna.</strong>
+      <p>Las solicitudes enviadas aparecen en «Mis publicaciones enviadas» hasta que se aprueben.</p>
     </div>}
     {reviewId && <form className='tcDirectoryForm' onSubmit={event => void review(event)}>
       <h3>Evaluar un servicio contratado</h3>
@@ -341,8 +389,8 @@ export function LocalDirectory({ place, initialKind, onClose }: {
       <button disabled={busy}>Enviar denuncia</button>
       <button type='button' onClick={() => setReportId(null)}>Cancelar</button>
     </form>}
-    {admin && <section className='tcDirectoryAdmin' aria-label='Moderación del directorio'>
-      <h3>Moderación · Solo administración</h3>
+    {admin && <details className='tcDirectoryAdmin' aria-label='Moderación del directorio'>
+      <summary>Revisión administrativa · Solo personal autorizado</summary>
       <p>Fichas: {admin.entries.length}, evaluaciones: {admin.reviews.length},
         denuncias: {admin.reports.length}.</p>
       {admin.entries.map(entry => <div key={entry.id}>
@@ -366,6 +414,6 @@ export function LocalDirectory({ place, initialKind, onClose }: {
           Marcar revisada
         </button>
       </div>)}
-    </section>}
+    </details>}
   </section>;
 }

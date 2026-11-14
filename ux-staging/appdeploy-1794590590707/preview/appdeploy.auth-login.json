@@ -1,0 +1,19 @@
+{
+  "methods": [
+    "email",
+    "google",
+    "apple",
+    "x"
+  ],
+  "headline": "Confirma tu correo en Trabajo Cerca",
+  "subtitle": "Para calificar servicios o acceder a administración. Buscar, contactar y publicar no requiere iniciar sesión.",
+  "style": {
+    "mode": "light",
+    "accentColor": "#14543a",
+    "backgroundColor": "#f8faf5",
+    "panelColor": "#ffffff",
+    "textColor": "#092c20",
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "borderRadius": 16
+  }
+}

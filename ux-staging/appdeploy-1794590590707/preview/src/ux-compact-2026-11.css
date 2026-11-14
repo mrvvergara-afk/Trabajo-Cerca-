@@ -172,3 +172,24 @@
  .tcStitchShell .tcDirectoryOwnerPhotos img{width:105px!important;height:82px!important;}
  .tcStitchShell .tcDirectoryGrid{gap:8px!important;}
 }
+
+
+/* Corrige inputs radio alcanzados por el selector genérico de inputs del formulario. */
+.tcStitchShell .tcDirectoryForm .tcDirectoryKindChoice label{
+ display:flex!important;flex-direction:row!important;align-items:center!important;
+ width:100%!important;min-width:0!important;max-width:100%!important;
+ box-sizing:border-box!important;gap:9px!important;overflow:hidden!important;
+}
+.tcStitchShell .tcDirectoryForm .tcDirectoryKindChoice input[type='radio']{
+ appearance:auto!important;flex:0 0 18px!important;
+ display:inline-block!important;width:18px!important;min-width:18px!important;
+ max-width:18px!important;height:18px!important;min-height:18px!important;
+ max-height:18px!important;box-sizing:border-box!important;margin:0!important;
+ padding:0!important;box-shadow:none!important;accent-color:#20563b;
+}
+.tcStitchShell .tcDirectoryForm .tcDirectoryKindChoice label span{
+ display:block!important;flex:1 1 auto!important;min-width:0!important;
+ max-width:100%!important;white-space:normal!important;
+ overflow-wrap:anywhere!important;word-break:normal!important;
+ text-align:left!important;font-size:12px!important;line-height:16px!important;
+}

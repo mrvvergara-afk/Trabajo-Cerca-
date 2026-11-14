@@ -3,6 +3,7 @@ import { api, auth } from '@appdeploy/client';
 import './local-directory.css';
 
 type Kind = 'service' | 'business';
+type DirectoryKind = Kind | 'all';
 type Listing = {
   id: string; kind: Kind; title: string; category: string; description: string;
   commune: string; coverage: string[]; photos: string[]; reviewCount: number;
@@ -11,6 +12,7 @@ type Listing = {
 type OwnerReceipt = {
   id:string; title:string; commune:string; kind:Kind;
   status:'pending'|'approved'|'hidden'; photosCount:number;
+  category?:string; description?:string; previewPhotos?:string[];
 };
 
 type AdminQueue = {
@@ -54,10 +56,11 @@ function prepareImage(file: File): Promise<string> {
     image.src = url;
   });
 }
-export function LocalDirectory({ place, initialKind, onClose }: {
-  place: string; initialKind: Kind; onClose: () => void;
+export function LocalDirectory({ place, initialKind, startWithForm=false, onClose }: {
+  place: string; initialKind: DirectoryKind; startWithForm?:boolean; onClose: () => void;
 }) {
-  const [kind, setKind] = useState<Kind>(initialKind);
+  const [kind, setKind] = useState<DirectoryKind>(initialKind);
+  const [formKind,setFormKind] = useState<Kind>(initialKind==='business'?'business':'service');
   const [listings, setListings] = useState<Listing[]>([]);
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
@@ -75,7 +78,7 @@ export function LocalDirectory({ place, initialKind, onClose }: {
   const [contacts, setContacts] = useState<Record<string, {phone: string | null; email: string | null}>>({});
   const [reviewId, setReviewId] = useState<string | null>(null);
   const [reviewEmail, setReviewEmail] = useState('');
-  const [rating, setRating] = useState(5);
+  const [rating, setRating] = useState(0);
   const [hired, setHired] = useState(false);
   const [reportId, setReportId] = useState<string | null>(null);
   const [reportEmail, setReportEmail] = useState('');
@@ -83,6 +86,7 @@ export function LocalDirectory({ place, initialKind, onClose }: {
   const [admin, setAdmin] = useState<AdminQueue | null>(null);
   const [ownedReceipts, setOwnedReceipts] = useState<OwnerReceipt[]>([]);
   const [submissionError, setSubmissionError] = useState('');
+  const [ownedLookupError,setOwnedLookupError] = useState(false);
 
   // Each owner receipt is read with an unguessable token already saved on the
   // same device. No public listing or contact details are exposed here.
@@ -99,17 +103,23 @@ export function LocalDirectory({ place, initialKind, onClose }: {
         }
       }
     } catch { return; }
+    setOwnedLookupError(false);
     const records = await Promise.all(owned.map(async ({id,token}) => {
       try {
         const result=await api.post('/api/local-directory/'+id+'/status',{ownerToken:token});
         return result.data as OwnerReceipt;
       } catch { return null; }
     }));
+    setOwnedLookupError(records.some(value=>!value));
     setOwnedReceipts(records.filter((entry):entry is OwnerReceipt=>Boolean(entry)));
   };
   useEffect(() => { void refreshOwnedReceipts(); }, []);
 
-  useEffect(() => { setKind(initialKind); }, [initialKind]);
+  useEffect(() => {
+    setKind(initialKind);
+    if (initialKind!=='all') setFormKind(initialKind);
+  }, [initialKind]);
+  useEffect(() => { if(startWithForm) setShowForm(true); },[startWithForm]);
   useEffect(() => {
     let mounted = true;
     void api.get('/api/local-directory?kind=' + kind + '&place=' + encodeURIComponent(place))
@@ -150,7 +160,7 @@ export function LocalDirectory({ place, initialKind, onClose }: {
     try {
       const gallery = await Promise.all(photos.slice(0, 3).map(prepareImage));
       const response = await api.post('/api/local-directory', {
-        kind, title, category, description, commune, phone, email,
+        kind:formKind, title, category, description, commune, phone, email,
         photos: gallery, showPhone, showEmail, consent,
       });
       if (!response.data.pendingModeration) throw new Error('No se confirmó la publicación.');
@@ -169,8 +179,10 @@ export function LocalDirectory({ place, initialKind, onClose }: {
       setShowForm(false);
       setNotice('Ficha recibida: pendiente de aprobación. Revisa el estado en «Mis publicaciones enviadas».');
       setOwnedReceipts(previous => [{
-        id:response.data.id, title, commune, kind, status:'pending', photosCount:gallery.length,
+        id:response.data.id, title, commune, kind:formKind, status:'pending', photosCount:gallery.length,
+        category, description,
       },...previous.filter(entry=>entry.id!==response.data.id)]);
+      setKind('all');
       void refreshOwnedReceipts();
       if (admin) void refreshAdmin();
     } catch (cause) {
@@ -256,12 +268,14 @@ export function LocalDirectory({ place, initialKind, onClose }: {
     <div className='tcDirectoryTop'>
       <div>
         <small>LA VITRINA DE NUESTRA COMUNIDAD</small>
-        <h2>Servicios y negocios cerca de ti</h2>
-        <p>Oficios, productos y emprendimientos locales.</p>
+        <h2>Directorio local</h2>
+        <p>Encuentra soldadores, pastelería, servicios y negocios de tu comuna.</p>
       </div>
       <button type='button' aria-label='Cerrar directorio' title='Cerrar directorio' onClick={onClose}>×</button>
     </div>
-    <div className='tcDirectoryTabs' role='group' aria-label='Categorías del directorio'>
+    <div className='tcDirectoryTabs' role='group' aria-label='Filtrar el directorio'>
+      <button type='button' className={kind==='all'?'active':''}
+        aria-pressed={kind==='all'} onClick={()=>setKind('all')}>Todos</button>
       <button type='button' className={kind === 'service' ? 'active' : ''}
         aria-pressed={kind === 'service'} onClick={() => setKind('service')}>
         Servicios
@@ -273,11 +287,12 @@ export function LocalDirectory({ place, initialKind, onClose }: {
     </div>
     <div className='tcDirectorySummary'>
       <span>Comuna: <strong>{place === 'Todas' ? 'Las 12 comunas' : place}</strong></span>
-      <button onClick={() => setShowForm(previous => !previous)}>
-        {showForm ? 'Cancelar' : kind === 'service' ? 'Ofrecer un servicio gratis' : 'Registrar mi negocio gratis'}
+      <button onClick={() => {if(kind!=='all')setFormKind(kind);setShowForm(previous => !previous);}}>
+        {showForm ? 'Cerrar formulario' : 'Publicar servicio o negocio'}
       </button>
     </div>
     {notice && <p role='status' className='tcDirectoryNotice'>{notice}</p>}
+    {ownedLookupError && <p role='alert' className='tcDirectoryNotice'>No se pudo consultar una de tus publicaciones. No la vuelvas a enviar; actualiza el estado o solicita revisión.</p>}
     {ownedReceipts.length>0 && <details className='tcDirectoryOwned' open={ownedReceipts.some(entry=>entry.status==='pending')}>
       <summary>Mis publicaciones enviadas · {ownedReceipts.length}</summary>
       {ownedReceipts.map(entry=><div className='tcDirectoryOwnedRow' key={entry.id}>
@@ -288,9 +303,14 @@ export function LocalDirectory({ place, initialKind, onClose }: {
       <button type='button' onClick={()=>void refreshOwnedReceipts()}>Actualizar estados</button>
     </details>}
     {showForm && <form className='tcDirectoryForm' onSubmit={event => void publish(event)}>
-      <h3>{kind === 'service' ? 'Publica tu oficio o servicio' : 'Presenta tu negocio local'}</h3>
+      <h3>Publicar en el directorio</h3>
+      <fieldset className='tcDirectoryKindChoice'>
+        <legend>¿Qué quieres publicar?</legend>
+        <label><input type='radio' name='local-kind' value='service' checked={formKind==='service'} onChange={()=>setFormKind('service')}/> Un servicio (soldadura, reparaciones…)</label>
+        <label><input type='radio' name='local-kind' value='business' checked={formKind==='business'} onChange={()=>setFormKind('business')}/> Un negocio (pastelería, tienda…)</label>
+      </fieldset>
       <p>Solo pedimos teléfono y correo como datos de contacto. No solicitamos CV, RUT ni domicilio.</p>
-      <label>{kind === 'service' ? 'Servicio que ofreces' : 'Nombre del negocio'}
+      <label>{formKind === 'service' ? 'Servicio que ofreces' : 'Nombre del negocio'}
         <input required minLength={3} maxLength={90} value={title} onChange={e => setTitle(e.target.value)} />
       </label>
       <label>Oficio o rubro

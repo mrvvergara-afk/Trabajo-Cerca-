@@ -1,0 +1,130 @@
+/* Trabajo Cerca · paquete móvil compacto · 13-11-2026
+   Solo presentación. Sin cambios de vigencia, territorios, campañas ni backend.
+   Se importa al FINAL de src/App.tsx después de commercial-card.css. */
+
+.tcStitchShell[data-directory-open='true'] > :is(
+  .neoHero,.tcPurposeGateway,.tcStitchRadarSummary,.neoDiscover,
+  .tcStitchAlert,.tcStitchCommunity,.tcStitchAdvertising,
+  .tcStitchCities,.tcStitchFooterDetails,.tcLocalAdvertising,.tcInlineHousePromo
+){display:none!important;}
+.tcStitchShell[data-directory-open='true'] > .tcLocalDirectory{
+  scroll-margin-top:64px;
+}
+.tcStitchShell .tcOwnedActions{display:block;margin:5px 0 0;padding:0;}
+.tcStitchShell .tcOwnedActions>summary{list-style:none;cursor:pointer;color:#246044;font-size:12px;line-height:20px;text-align:right;padding:5px 0;}
+.tcStitchShell .tcOwnedActions>summary::-webkit-details-marker{display:none;}
+.tcStitchShell .tcOwnedActions>div{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+.tcStitchShell .tcOwnedActions button{min-height:32px!important;min-width:0;font-size:11px!important;padding:5px 8px!important;}
+
+@media(max-width:767px){
+ .tcStitchShell{padding-top:52px!important;padding-bottom:calc(66px + env(safe-area-inset-bottom))!important;}
+ .tcStitchShell .neoTopbar,.tcStitchShell .tcTopbarInner{height:52px!important;min-height:52px!important;}
+ .tcStitchShell .tcTopbarInner{gap:5px!important;padding-inline:8px!important;min-width:0;}
+ .tcStitchShell .neoBrand{display:flex!important;align-items:center;flex:1 1 96px!important;min-width:0!important;max-width:none!important;overflow:hidden!important;}
+ .tcStitchShell .tcStitchBrand{min-width:0!important;max-width:100%!important;gap:5px!important;}
+ .tcStitchShell .tcStitchBrandArt,.tcStitchShell .tcStitchBrand img{flex:0 0 21px!important;width:21px!important;height:23px!important;}
+ .tcStitchShell .tcStitchMobileWordmark{flex:1 1 auto;min-width:0!important;max-width:100%!important;overflow:hidden!important;}
+ .tcStitchShell .tcStitchMobileWordmark b{display:block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px!important;line-height:17px!important;letter-spacing:-.04em!important;}
+ .tcStitchShell .tcStitchMobileWordmark small{display:none!important;}
+ .tcStitchShell .tcTerritoryBadge{display:none!important;}
+ .tcStitchShell .tcMobilePlace{flex:0 0 88px!important;width:88px!important;min-width:0!important;max-width:88px!important;min-height:36px!important;padding:3px 5px!important;gap:3px!important;border-radius:10px!important;}
+ .tcStitchShell .tcMobilePlace select{min-width:0!important;max-width:100%!important;font-size:11px!important;}
+ .tcStitchShell .tcMobilePlace svg{width:14px!important;height:14px!important;flex:none;}
+ .tcStitchShell .tcSiteMenu>summary{width:39px!important;height:39px!important;min-width:39px!important;min-height:39px!important;padding:8px!important;border-radius:10px!important;}
+ .tcStitchShell .tcMobilePublishAction{
+   display:grid!important;place-items:center!important;
+   right:10px!important;bottom:calc(69px + env(safe-area-inset-bottom))!important;
+   width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+   padding:0!important;gap:0!important;font-size:0!important;line-height:0!important;
+   border-radius:50%!important;box-shadow:0 2px 9px #10352926!important;z-index:69!important;
+ }
+ .tcStitchShell .tcMobilePublishAction svg{width:21px!important;height:21px!important;}
+ .tcStitchShell .neoMobileNav{height:calc(60px + env(safe-area-inset-bottom))!important;}
+ .tcStitchShell .neoMobileNav button{font-size:10px!important;line-height:13px!important;gap:2px!important;padding:3px 1px!important;}
+ .tcStitchShell .neoMobileNav button svg{width:19px!important;height:19px!important;}
+ .tcStitchShell .neoDiscoverHead h2{font-size:17px!important;line-height:21px!important;}
+ .tcStitchShell .neoDiscover{padding:6px 10px 0!important;}
+ .tcStitchShell .tcDiscoverActions{gap:5px!important;}
+ .tcStitchShell .tcCatalogCount,.tcStitchShell .tcClearFilters{font-size:11px!important;}
+ .tcStitchShell .neoJobsGrid{gap:6px!important;}
+ .tcStitchShell .neoJobCard .neoJobBody{padding:9px!important;}
+ .tcStitchShell .neoJobCard h3{font-size:13px!important;line-height:18px!important;}
+ .tcStitchShell .tcDirectoryTop{display:grid!important;grid-template-columns:minmax(0,1fr) 36px!important;gap:8px!important;}
+ .tcStitchShell .tcLocalDirectory{margin:8px 10px 12px!important;padding:11px!important;border-radius:14px!important;max-width:none!important;min-width:0!important;}
+ .tcStitchShell .tcDirectoryTop small{font-size:9px!important;line-height:12px!important;letter-spacing:.035em!important;}
+ .tcStitchShell .tcLocalDirectory h2{font-size:17px!important;line-height:20px!important;letter-spacing:-.02em!important;margin:3px 0 5px!important;}
+ .tcStitchShell .tcDirectoryTop p{font-size:11px!important;line-height:16px!important;margin:0!important;}
+ .tcStitchShell .tcDirectoryTop>button{width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0!important;font-size:20px!important;line-height:1!important;display:grid!important;place-items:center!important;white-space:nowrap!important;}
+ .tcStitchShell .tcDirectoryTabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;margin:9px 0!important;}
+ .tcStitchShell .tcDirectoryTabs button{min-width:0!important;min-height:38px!important;font-size:11px!important;line-height:14px!important;padding:6px 6px!important;white-space:normal!important;}
+ .tcStitchShell .tcDirectorySummary{gap:6px!important;font-size:11px!important;line-height:16px!important;align-items:center!important;}
+ .tcStitchShell .tcDirectorySummary>span{font-size:11px!important;white-space:nowrap!important;}
+ .tcStitchShell .tcDirectorySummary>button{font-size:11px!important;line-height:15px!important;min-height:36px!important;padding:6px 9px!important;max-width:100%!important;}
+ .tcStitchShell .tcDirectoryEmpty{padding:10px!important;margin-top:10px!important;border-radius:11px!important;}
+ .tcStitchShell .tcDirectoryEmpty strong{display:block;font-size:12px!important;line-height:17px!important;}
+ .tcStitchShell .tcDirectoryEmpty p{font-size:11px!important;line-height:16px!important;margin:4px 0 0!important;}
+ .tcStitchShell .tcDirectoryNotice{padding:9px 10px!important;margin:8px 0!important;font-size:11px!important;line-height:16px!important;}
+ .tcStitchShell .tcDirectoryForm{max-width:100%!important;min-width:0!important;margin:8px 0!important;padding:10px!important;gap:8px!important;}
+ .tcStitchShell .tcDirectoryForm h3{font-size:15px!important;line-height:20px!important;margin:0!important;}
+ .tcStitchShell .tcDirectoryForm>p,.tcStitchShell .tcDirectoryForm>small{font-size:11px!important;line-height:16px!important;margin:0!important;}
+ .tcStitchShell .tcDirectoryForm label{font-size:11px!important;line-height:16px!important;min-width:0!important;}
+ .tcStitchShell .tcDirectoryForm input:not([type=checkbox]),.tcStitchShell .tcDirectoryForm select,.tcStitchShell .tcDirectoryForm textarea{min-width:0!important;max-width:100%!important;width:100%!important;box-sizing:border-box!important;font-size:13px!important;padding:8px!important;min-height:38px!important;}
+ .tcStitchShell .tcDirectoryForm textarea{min-height:68px!important;}
+ .tcStitchShell .tcDirectoryContactFields{grid-template-columns:minmax(0,1fr)!important;gap:8px!important;}
+ .tcStitchShell .tcDirectoryForm>button{font-size:12px!important;min-height:40px!important;padding:8px 10px!important;}
+ .tcStitchShell .tcDirectoryCard{padding:10px!important;margin:0!important;}
+ .tcStitchShell .tcDirectoryCard h3{font-size:14px!important;line-height:19px!important;}
+ .tcStitchShell .tcDirectoryCard p{font-size:12px!important;line-height:17px!important;margin:4px 0!important;}
+ .tcStitchShell .tcDirectoryPhotos img{height:100px!important;max-width:155px!important;}
+ .tcStitchShell .tcDirectoryAdmin{margin-top:8px!important;padding:9px!important;}
+ .tcStitchShell .tcDirectoryAdmin>summary{cursor:pointer;font-size:11px!important;line-height:16px!important;}
+ .tcStitchShell .tcDirectoryAdmin:not([open])>div,.tcStitchShell .tcDirectoryAdmin:not([open])>p,.tcStitchShell .tcDirectoryAdmin:not([open])>h3{display:none!important;}
+ .tcStitchShell .tcDirectoryOwned{margin:8px 0!important;padding:9px!important;min-width:0!important;border-radius:10px!important;background:#edf6ef;border:1px solid #cfe4d2;}
+ .tcStitchShell .tcDirectoryOwned>summary{font-size:12px!important;cursor:pointer;font-weight:700!important;}
+ .tcStitchShell .tcDirectoryOwnedRow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid #d8e5db;font-size:11px!important;}
+ .tcStitchShell .tcDirectoryOwnedRow:last-child{border:0;}
+ .tcStitchShell .tcDirectoryOwnedRow span{min-width:0;overflow-wrap:anywhere;}
+ .tcStitchShell .tcDirectoryOwnedRow button{font-size:11px!important;min-height:32px!important;padding:5px 8px!important;border-radius:8px;}
+ /* publicidad real sigue visible, pero en franja delgada y sin repetir textos */
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard[data-placement='search'],
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard[data-placement='listing']{
+   padding:8px 10px!important;margin:6px auto 8px!important;
+   width:calc(100% - 20px)!important;border-radius:12px!important;box-shadow:none!important;
+ }
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard[data-placement='listing']{width:100%!important;margin:6px 0!important;}
+ .tcStitchShell .tcCommercialCard .tcAdLabel{padding:0 0 5px!important;gap:6px!important;font-size:9px!important;}
+ .tcStitchShell .tcCommercialCard .tcAdLabel small{padding:2px 6px!important;font-size:9px!important;}
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcAdContent.tcPremiumCommercial,
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcAdContent.tcPremiumCommercial[data-has-image=true]{
+   grid-template-columns:64px minmax(0,1fr)!important;gap:8px!important;
+   align-items:center!important;
+ }
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcPremiumCommercial .tcCommercialVisual,
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcPremiumCommercial .tcCommercialVisual:has(>.tcAdImage){
+   width:64px!important;height:64px!important;min-height:64px!important;max-height:64px!important;
+   grid-column:1!important;grid-row:1!important;border-radius:9px!important;
+ }
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcCommercialVisual .tcAdImage{
+   padding:3px!important;object-fit:contain!important;
+ }
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcCommercialCopy{grid-column:2!important;gap:2px!important;}
+ .tcStitchShell .tcCommercialCard .tcCommercialKicker{font-size:8px!important;line-height:11px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;}
+ .tcStitchShell .tcCommercialCard .tcCommercialName{font-size:13px!important;line-height:16px!important;font-weight:750!important;}
+ .tcStitchShell .tcCommercialCard .tcCommercialHeadline{display:-webkit-box!important;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden!important;font-size:10px!important;line-height:14px!important;}
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcPremiumCommercial .tcCommercialDescription,
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcCommercialInfo{display:none!important;}
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcCommercialAction{
+   grid-column:1/-1!important;grid-row:auto!important;justify-content:flex-end!important;
+   width:100%!important;margin-top:2px!important;
+ }
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcCommercialAction>a{
+   width:auto!important;min-width:120px!important;min-height:34px!important;
+   max-width:100%!important;font-size:11px!important;line-height:16px!important;
+   padding:6px 9px!important;border-radius:8px!important;box-shadow:none!important;
+ }
+}
+@media(max-width:360px){
+ .tcStitchShell .tcMobilePlace{flex-basis:82px!important;max-width:82px!important;width:82px!important;}
+ .tcStitchShell .tcStitchMobileWordmark b{font-size:12px!important;}
+ .tcStitchShell .tcDirectoryTabs button{font-size:10px!important;}
+}

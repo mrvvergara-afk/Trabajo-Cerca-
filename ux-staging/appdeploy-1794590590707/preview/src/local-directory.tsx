@@ -325,8 +325,8 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       <h3>Publicar en el directorio</h3>
       <fieldset className='tcDirectoryKindChoice'>
         <legend>¿Qué quieres publicar?</legend>
-        <label><input type='radio' name='local-kind' value='service' checked={formKind==='service'} onChange={()=>setFormKind('service')}/> Un servicio (soldadura, reparaciones…)</label>
-        <label><input type='radio' name='local-kind' value='business' checked={formKind==='business'} onChange={()=>setFormKind('business')}/> Un negocio (pastelería, tienda…)</label>
+        <label><input type='radio' name='local-kind' value='service' checked={formKind==='service'} onChange={()=>setFormKind('service')}/><span>Servicio (soldadura, reparaciones)</span></label>
+        <label><input type='radio' name='local-kind' value='business' checked={formKind==='business'} onChange={()=>setFormKind('business')}/><span>Negocio (pastelería, tienda)</span></label>
       </fieldset>
       <p>Solo pedimos teléfono y correo como datos de contacto. No solicitamos CV, RUT ni domicilio.</p>
       <label>{formKind === 'service' ? 'Servicio que ofreces' : 'Nombre del negocio'}

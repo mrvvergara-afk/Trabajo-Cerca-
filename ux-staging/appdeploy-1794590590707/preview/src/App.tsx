@@ -1582,10 +1582,10 @@ function App() {
                         <span><small>{publicDate(item)}</small><b title={item.source}>{item.source||'Fuente no informada'}</b></span>
                       </div>
                       <div className='neoJobFoot'>
-                        <button aria-label={'Ver oferta: '+item.title} onClick={() => setSelected(item)}>Ver oferta <ArrowRight /></button>
+                        <button aria-label={(item.kind==='job_offer'?'Ver oferta: ':'Ver detalle: ')+item.title} onClick={() => setSelected(item)}>{item.kind==='job_offer'?'Ver oferta':'Ver detalle'} <ArrowRight /></button>
                       </div>
                     </div>
-                    {own && <div className='neoOwnActions'><button onClick={() => void closeOwn(item)}>Cerrar</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div>}
+                    {own && <details className='neoOwnActions tcOwnedActions'><summary>Gestionar mi publicación</summary><div><button onClick={() => void closeOwn(item)}>Cerrar publicación</button><button onClick={() => void deleteOwn(item)}>Eliminar mis datos</button></div></details>}
                   </div>
                 </article>
                 {index === 2 && renderAdvertising('listing')}

@@ -198,3 +198,49 @@
  .tcStitchShell .tcInlineHousePromo:has(.tcInlineHouseIcon .tcAdImage){grid-template-columns:60px minmax(0,1fr);}
  .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcAdImage){width:58px;height:58px;}
 }
+
+
+/* Consistent self-promotion across feed/search and embedded forms; commercial ads untouched. */
+.tcStitchShell .tcInlineHousePromo .tcHouseRotateButton{
+  display:inline-flex!important;min-height:28px!important;width:auto!important;max-width:100%;
+  padding:4px 7px!important;margin-top:5px!important;align-self:flex-start;
+  background:#ffffff19!important;color:#e3f2da!important;border:1px solid #ffffff59!important;
+  box-shadow:none!important;border-radius:7px!important;
+  font-size:10px!important;line-height:15px!important;font-weight:600!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcHouseRotateButton:focus-visible{
+  outline:3px solid #eaf9c4;outline-offset:2px;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD']{
+  background:linear-gradient(118deg,#113b2a,#225942)!important;
+  color:#fff!important;border:1px solid #36704e!important;
+  box-shadow:0 5px 14px #0b3c2220;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt{
+  border-color:#e0f9af50;color:#d8f3a1;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt .tcAdImage{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:9px;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt:has(.tcAdImage) svg{
+  display:none;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy strong{
+  color:#f1ffde;font-size:13px!important;line-height:17px!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy p{
+  color:#e3f0e1!important;font-size:11px!important;line-height:16px!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy small{
+  color:#c9f3a8!important;font-size:9px!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialLink{
+  background:#e5f4b4;color:#20492f;border:0;font-weight:800;
+}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo .tcHouseRotateButton{font-size:9px!important;margin-top:4px!important;}
+ .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD']{padding:9px!important;gap:7px!important;}
+ .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt{height:52px!important;width:52px!important;}
+ .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy p{font-size:10px!important;line-height:14px!important;}
+}

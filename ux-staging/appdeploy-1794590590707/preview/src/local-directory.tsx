@@ -69,7 +69,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
-  const [commune, setCommune] = useState(PLACES.includes(place) ? place : 'Angol');
+  const [commune, setCommune] = useState(PLACES.includes(place) ? place : '');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [showPhone, setShowPhone] = useState(true);
@@ -306,8 +306,9 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       <label>Descripción del producto o trabajo
         <textarea required minLength={15} maxLength={750} value={description} onChange={e => setDescription(e.target.value)} />
       </label>
-      <label>Comuna base
-        <select value={commune} onChange={e => setCommune(e.target.value)}>
+      <label>Comuna donde ofreces el servicio o negocio
+        <select required value={commune} onChange={e => setCommune(e.target.value)}>
+          <option value='' disabled>Selecciona tu comuna</option>
           {PLACES.map(value => <option key={value}>{value}</option>)}
         </select>
       </label>

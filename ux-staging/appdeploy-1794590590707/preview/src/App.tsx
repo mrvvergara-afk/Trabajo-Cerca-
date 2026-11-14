@@ -38,6 +38,7 @@ import './mobile-polish.css';
 import './mobile-structure.css';
 import './ux-polish-2026-11.css';
 import './commercial-card.css';
+import './ux-compact-2026-11.css';
 import { SiteMenu } from './site-menu';
 const LocalDirectory = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectory })));
 import './local-directory.css';
@@ -1478,7 +1479,7 @@ function App() {
 
   if (isVNext) {
     return (
-      <main className='neoShell tcStitchShell'>
+      <main className='neoShell tcStitchShell' data-directory-open={directoryMode ? 'true' : 'false'}>
         {analyticsChoice === null && <aside className='tcAnalyticsChoice' role='region' aria-label='Preferencias de medición'><span>La medición de navegación es opcional. Puedes usar Trabajo Cerca sin aceptarla.</span><button type='button' onClick={() => chooseAnalytics('no')}>No aceptar</button><button type='button' onClick={() => chooseAnalytics('yes')}>Aceptar medición</button></aside>}
         <header className='neoTopbar'>
           <div className='tcTopbarInner'>

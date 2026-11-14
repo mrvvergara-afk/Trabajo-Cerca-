@@ -42,7 +42,7 @@ async function getEntry(id: string) {
 export async function listLocalDirectory(query: Record<string, string>) {
   const place = query.place === 'Todas' ? null : localCommune(query.place || 'Angol');
   if (!place && query.place !== 'Todas') return error('La comuna no pertenece al territorio.', 400);
-  const kind = query.kind === 'business' ? 'business' : 'service';
+  const kind: Kind | null = query.kind === 'all' ? null : query.kind === 'business' ? 'business' : 'service';
   // The public index may span several DB pages. Filter across bounded pages,
   // rather than treating only the first 120 records as the entire directory.
   const matching: Entry[] = [];
@@ -52,7 +52,7 @@ export async function listLocalDirectory(query: Record<string, string>) {
       limit: 200, ...(nextToken ? { nextToken } : {}),
     });
     matching.push(...result.items.filter(item =>
-      item.status === 'approved' && item.kind === kind &&
+      item.status === 'approved' && (!kind || item.kind === kind) &&
       (!place || item.commune === place || (item.coverage || []).includes(place))));
     nextToken = result.nextToken;
     if (!nextToken || matching.length >= 48) break;
@@ -145,9 +145,15 @@ export async function localDirectoryStatus(id: string, body: unknown) {
   const token = text((body as Record<string, unknown> | null)?.ownerToken, 80);
   if (!entry || !token || sha(token) !== entry.ownerHash)
     return error('Comprobante no disponible.', 404);
+  // Owner-only preview for pending/approved listings. Signed links are never
+  // returned from the public directory until moderation approves the entry.
+  const signed = entry.photos.length
+    ? await storage.url(entry.photos.slice(0,3)).catch(() => []) : [];
   return json({
     id: entry.id, status: entry.status, title: entry.title,
+    category: entry.category, description: entry.description,
     commune: entry.commune, kind: entry.kind, photosCount: entry.photos.length,
+    previewPhotos: signed.map(image=>image.url).filter(Boolean),
     createdAt: entry.createdAt,
   });
 }

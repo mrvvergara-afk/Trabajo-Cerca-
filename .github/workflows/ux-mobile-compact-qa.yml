@@ -1,0 +1,54 @@
+name: QA Mobile Compact + Directory Receipts — no deploy
+on:
+  push:
+    branches:
+      - fix/mobile-densidad-directorio-20261113
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/**'
+      - '.github/workflows/ux-mobile-compact-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: ux-mobile-compact-qa
+  cancel-in-progress: true
+
+jobs:
+  responsive-and-directory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install frontend dependencies
+        run: npm install --no-audit --no-fund
+      - name: Parse TSX, backend and directory permission contracts
+        run: node qa/ux-compact-contract.cjs
+      - name: Bundle complete frontend with isolated SDK mock
+        run: npm run build -- --config vite.qa.config.ts
+      - name: Install Chromium for six viewport sizes
+        run: npx playwright install --with-deps chromium
+      - name: Start isolated frontend
+        run: |
+          nohup npm run dev -- --config vite.qa.config.ts --host 127.0.0.1 --port 4173 --strictPort > /tmp/ux-compact-vite.log 2>&1 &
+          for i in $(seq 1 40);do
+            if curl -fsS -o /dev/null http://127.0.0.1:4173/; then exit 0;fi
+            sleep 1
+          done
+          cat /tmp/ux-compact-vite.log
+          exit 1
+      - name: Real Chromium navigation, visual dimensions, private receipt
+        run: node qa/e2e.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux-compact-synthetic-screenshots
+          path: ux-staging/appdeploy-1794590590707/preview/qa/captures/*.png
+          retention-days: 7
+          if-no-files-found: ignore

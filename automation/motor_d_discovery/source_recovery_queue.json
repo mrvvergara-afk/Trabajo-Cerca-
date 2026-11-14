@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-13T20:39:53.147660-03:00",
+  "source_scan_date": "2026-11-14T12:47:28.967389-03:00",
   "registered_total": 202,
-  "total_pending": 79,
+  "total_pending": 80,
   "group_counts": {
-    "failed_public_source": 7,
+    "failed_public_source": 8,
     "partial_index": 2,
     "regional_query": 2,
     "restricted_job_portal": 38,
@@ -31,7 +31,7 @@
       "high_priority": 5
     },
     "Los Sauces": {
-      "pending": 16,
+      "pending": 17,
       "high_priority": 5
     },
     "Purén": {
@@ -287,6 +287,20 @@
         "Victoria",
         "Mulchén",
         "Negrete"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "5bc54af1a733786aeb73",
+      "name": "Portal LinkedIn · Los Sauces",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Los Sauces"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

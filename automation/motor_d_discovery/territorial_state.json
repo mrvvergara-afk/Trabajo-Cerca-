@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-13T20:39:53.147660-03:00",
+  "last_run": "2026-11-14T12:47:28.967389-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -5178,6 +5178,138 @@
       "first_seen": "2026-11-13T20:39:53.147660-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/bodeguero-full-time-42-horas-san-bernardo-3077151.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "5dd8c6b070f8cce6091f": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-profesional-remunerada-rrhh-3077310.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b06d36db36d64e4cc8e5": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-profesional-recursos-humanos-remuneraciones-contratos-3077309.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "087f5d2293f8e8c736f9": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/urgente-buscamos-reponedores-turno-dia-ingreso-inmediato-colina-y-lampa-3077308.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "450166a8ebd8887c4b03": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/talcahuano-promotor-a-de-ventas-part-time-computacion-5x2-lunes-a-dom-apoyo-navidad-1-mes-24-de-nov-al-24-de-diciembre-3077307.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c30dabecc7087e4b4b7e": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/guardia-de-seguridad-del-14-al-17-nov-con-os10-vigente-turnos-44000-liquidos-copiapo-copiapo-3077306.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fb5ebf8451f83a39a092": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/santiago-promotor-a-de-ventas-part-time-computacion-5x2-lunes-a-dom-apoyo-navidad-1-mes-24-de-nov-al-24-de-diciembre-3077305.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0635bdf14f95295933f8": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/vina-del-mar-promotor-a-de-ventas-part-time-computacion-5x2-lunes-a-dom-apoyo-navidad-1-mes-24-de-nov-al-24-de-diciembre-3077304.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1b831b6a6d737e366e41": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/implementador-de-exhibiciones-maitencillo-puchuncavi-600000-lunes-a-viernes-proyecto-3077303.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "36a3deeb1809542b9960": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/operador-tienda-cajero-a-de-supermercado-fines-de-semana-en-limache-v-region-turnos-rotativos-am-y-pm-3077302.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c5478ff6df0d054e0278": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-tienda-de-supermercado-en-recoleta-turnos-continuos-horario-rotativos-am-pm-3077301.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a519bcdbc21d0c586f90": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivos-as-de-televentas-call-center-productos-bancarios-refinanciamiento-42-horas-semanales-presencial-providencia-3077300.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "18681962a4df58f514fd": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivos-de-cobranza-y-renegociacion-call-center-rubro-retail-presencial-providencia-3077299.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1866f37a0aab65674e73": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-sala-para-supermercado-maipu-horario-rotativo-am-y-pm-turnos-continuos-3077298.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f6b21bdaffb9efd00eeb": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-de-tecnologia-part-time-20-horas-campana-navidad-desde-12-de-noviembre-plaza-norte-3077297.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "545541c999603d82bb60": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/buscamos-bodegueros-para-minera-en-la-serena-modalidad-servicios-transitorios-la-serena-3077296.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "65fde7ac210b64c5ff02": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-campana-navidad-part-time-plaza-norte-3077295.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f770aa5f3d97a9bbe6c2": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/tecnico-telecomunicaciones-con-o-sin-experiencia-concepcion-3077294.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "114c11a986a774909224": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-en-mantenimiento-flow-pack-3077293.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b3a2e9ff61ad4962e117": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/campanas-de-seguros-cross-altos-indices-de-ventas-3077292.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4fbe59c30f4624cf220d": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/asesores-de-seguros-con-experiencia-remoto-desde-todas-las-regiones-de-chile-3077291.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d2869e65ab8746a7ee7a": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://lasnoticiasdemalleco.cl/sucesos/director-de-las-noticias-gino-bustamante-barria-recibe-el-premio-espiritu-anp-a-la-trayectoria/",
+      "source": "Las Noticias de Malleco",
+      "commune": null
+    },
+    "bb3f1041a5199f69922c": {
+      "first_seen": "2026-11-14T12:47:28.967389-03:00",
+      "url": "https://www.radionativa.cl/gobierno-se-querella-contra-responsables-de-ataque-en-ercilla-que-mantiene-en-riesgo-vital-a-chofer/",
+      "source": "Inventario P06",
       "commune": null
     }
   }

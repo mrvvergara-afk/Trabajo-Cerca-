@@ -48,6 +48,16 @@ const previousDefaults:Record<string,Pick<Creative,'title'|'message'|'mobileMess
   'house-inclusion':{title:'Lo que sabes hacer vale.',message:'Oficios y profesiones: ofrece tus servicios gratis.',mobileMessage:'Ofrece tus servicios gratis.',button:'Ofrecer mis servicios'},
   'house-local-business':{title:'Servicios para empresas.',message:'Alojamiento, alimentación y transporte cerca de quienes trabajan.',mobileMessage:'Alojamiento, alimentación y transporte.',button:'Promocionar mi negocio'},
 };
+// Institutional illustrations ship with the application and are safe fallbacks.
+// They do not impersonate actual businesses or replace administrator uploads.
+const institutionalArt:Record<string,string>={
+ 'house-professionals':'/house-creatives/professionals.svg',
+ 'house-advertisers':'/house-creatives/advertisers.svg',
+ 'house-employers':'/house-creatives/employers.svg',
+ 'house-explore':'/house-creatives/explore.svg',
+ 'house-inclusion':'/house-creatives/inclusion.svg',
+ 'house-local-business':'/house-creatives/local-business.svg',
+};
 // Upgrade untouched defaults only. Administrator edits and image withdrawals win.
 export function presentHouseCreative(campaignId:string,creative:Creative):Creative {
  const defaults=HOUSE_DEFAULTS.find(c=>c.id===campaignId)?.creatives.find(c=>c.id===creative.id);
@@ -56,5 +66,5 @@ export function presentHouseCreative(campaignId:string,creative:Creative):Creati
  const untouched=[previous,recent,unchanged].some(old=>old&&(['title','message','mobileMessage','button'] as const).every(key=>creative[key]===old[key]));
  const text=untouched&&defaults?{...creative,title:defaults.title,message:defaults.message,mobileMessage:defaults.mobileMessage,button:defaults.button}:creative;
  const priorDefault=creative.imageUrl==='/house-creatives/'+campaignId.replace('house-','')+'.svg';
- return {...text,...(!creative.imageDisabled&&!creative.storagePath&&(!creative.imageUrl||priorDefault)&&defaults?.imageUrl?{imageUrl:defaults.imageUrl}:{}),...(creative.imageDisabled?{imageUrl:undefined}:{})};
+ return {...text,...(!creative.imageDisabled&&!creative.storagePath&&(!creative.imageUrl||priorDefault)&&(defaults?.imageUrl||institutionalArt[campaignId])?{imageUrl:defaults?.imageUrl||institutionalArt[campaignId]}:{}),...(creative.imageDisabled?{imageUrl:undefined}:{})};
 }

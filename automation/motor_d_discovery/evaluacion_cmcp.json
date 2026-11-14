@@ -127,14 +127,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19180?c=cmpc",
-      "title": "Supervisor Logistico",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19218?c=cmpc",
       "title": "Auxiliar Procesos - EDIPAC Quilicura",
       "workplaces": [],
@@ -213,6 +205,15 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
       "title": "Coordinador de Soporte Técnico SAP",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
+      "title": "Analista de Comercio Exterior",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

@@ -1,0 +1,26 @@
+name: QA Hotfix public release — read only
+on:
+  push:
+    branches: [fix/ux-carousel-visual-radar-footer-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/qa/live-hotfix-verify.mjs'
+      - '.github/workflows/ux-hotfix-public-verify.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-website:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Check production job results, municipalities and privacy without writes
+        run: node qa/live-hotfix-verify.mjs

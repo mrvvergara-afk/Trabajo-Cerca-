@@ -90,10 +90,21 @@ try{
      await chooser.getByRole('button',{name:/Ofrezco servicios o productos/}).click();
      const form=page.locator('#local-directory .tcDirectoryForm').filter({has:page.getByRole('heading',{name:'Publicar en el directorio'})});
      await form.waitFor({state:'visible',timeout:10000});
-     assert(await form.getByRole('radio',{name:/Un servicio/}).isChecked());
-     await form.getByRole('radio',{name:/Un negocio/}).check();
-     assert(await form.getByRole('radio',{name:/Un negocio/}).isChecked());
+     assert(await form.getByRole('radio',{name:/Servicio.*soldadura/}).isChecked());
+     await form.getByRole('radio',{name:/Negocio.*pastelería/}).check();
+     assert(await form.getByRole('radio',{name:/Negocio.*pastelería/}).isChecked());
      assert.equal(await form.locator('input[type=file]').count(),1);
+     const rows=await form.locator('.tcDirectoryKindChoice label').evaluateAll(labels=>labels.map(label=>{
+       const rect=label.getBoundingClientRect();
+       const input=label.querySelector('input').getBoundingClientRect();
+       const text=label.querySelector('span').getBoundingClientRect();
+       return {box:{left:rect.left,right:rect.right},input:{left:input.left,right:input.right,width:input.width},text:{left:text.left,right:text.right,width:text.width}};
+     }));
+     assert.equal(rows.length,2);
+     for(const row of rows){
+       assert(row.input.width<=22 && row.input.left>=row.box.left-2 && row.input.right<=row.box.right+2,'Oversized radio '+JSON.stringify(row));
+       assert(row.text.left>=row.box.left-2 && row.text.right<=row.box.right+2,'Label escapes option '+JSON.stringify(row));
+     }
     });
    }
    await check(width+'px: no overflow or uncaught errors',async()=>{

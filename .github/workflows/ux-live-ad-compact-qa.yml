@@ -1,0 +1,36 @@
+name: QA Live Advertisement CSS Comparison — read only
+on:
+  push:
+    branches: [fix/mobile-densidad-directorio-20261113]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/qa/compare-live-ad.mjs'
+      - 'ux-staging/appdeploy-1794590590707/preview/src/ux-compact-2026-11.css'
+      - '.github/workflows/ux-live-ad-compact-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ux-live-ad-compact-qa
+  cancel-in-progress: true
+jobs:
+  actual-commercial-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: node qa/compare-live-ad.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: commercial-ad-before-after-injected-css
+          path: ux-staging/appdeploy-1794590590707/preview/qa/captures-live-ad/*.png
+          retention-days: 5
+          if-no-files-found: ignore

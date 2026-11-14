@@ -10,7 +10,10 @@ const reply=(data:unknown={})=>Promise.resolve({data});
 export const api={
   get: (url:string)=>reply(url.startsWith('/api/listings?') ? emptySummary
     : url.startsWith('/api/local-directory?') ? {items:[]} : {}),
-  post: (_url:string,_body?:unknown)=>reply({}),
+  post: (url:string,_body?:unknown)=>reply(url.startsWith('/api/local-directory/local_') && url.endsWith('/status') ? {
+    id:'local_12345678-1234-1234-1234-123456789abc',
+    title:'Pastelería de prueba',commune:'Angol',kind:'business',status:'pending',photosCount:3,
+  } : {}),
   put: (_url:string,_body?:unknown)=>reply({}),
   delete: (_url:string,_body?:unknown)=>reply({}),
 };

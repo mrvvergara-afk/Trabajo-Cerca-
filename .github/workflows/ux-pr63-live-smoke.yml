@@ -1,0 +1,36 @@
+name: QA PR63 public post-deploy — read only
+on:
+  push:
+    branches: [fix/ubicaciones-y-pie-compacto-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/qa/live-pr63-final.mjs'
+      - '.github/workflows/ux-pr63-live-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ux-pr63-public-postdeploy
+  cancel-in-progress: true
+jobs:
+  site-public:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Check live deployments on 4 screens, photos, reviews and ads
+        run: node qa/live-pr63-final.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ux-pr63-live-screenshots
+          path: ux-staging/appdeploy-1794590590707/preview/qa/captures-live-pr63/*.png
+          retention-days: 5
+          if-no-files-found: ignore

@@ -1635,12 +1635,20 @@ function App() {
           {advertising.selections.featured?.type!=='COMMERCIAL'&&
             <details className='tcStitchPromotionDetails' open={window.matchMedia('(min-width:768px)').matches}>
               <summary>Beneficio fundadores y prueba gratuita</summary>
-              <p className='tcFounderNote'><BadgeCheck aria-hidden='true'/><span>
-                Primeros 20 negocios elegibles: 30 días individuales de visibilidad gratuita.
-                Prueba estándar posterior: 14 días. Sin cobros automáticos.
-              </span><button type='button' onClick={()=>setShowAdvertiser(true)}>
-                Inscribir mi negocio <ArrowRight aria-hidden='true'/>
-              </button></p>
+              <div className='tcFounderCard'>
+                <div className='tcFounderImage' aria-hidden='true'>
+                  <img src='/house-creatives/advertisers.svg' alt='' loading='lazy'/>
+                </div>
+                <div className='tcFounderMessage'>
+                  <small>BENEFICIO FUNDADORES</small>
+                  <h3>30 días gratis para dar a conocer tu negocio</h3>
+                  <p>Para los primeros <strong>20 negocios elegibles</strong>. Después, prueba estándar de 14 días.</p>
+                  <span>✓ Sin cobros automáticos · Sujeto a aprobación</span>
+                </div>
+                <button type='button' className='tcFounderCta' onClick={()=>setShowAdvertiser(true)}>
+                  Inscribir mi negocio <ArrowRight aria-hidden='true'/>
+                </button>
+              </div>
             </details>}
         </section>
         <section className='tcStitchCities' id='tc-other-cities' aria-labelledby='tc-cities-title'><div><span className='tcStitchEyebrow'>Polos regionales extraterritoriales</span><h2 id='tc-cities-title'>Busca también en otras ciudades</h2>

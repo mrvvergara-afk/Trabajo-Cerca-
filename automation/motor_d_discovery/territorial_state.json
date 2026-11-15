@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-15T13:19:31.301801-03:00",
+  "last_run": "2026-11-15T18:46:06.429727-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -5562,6 +5562,126 @@
       "first_seen": "2026-11-15T13:19:31.301801-03:00",
       "url": "https://jobs.arauco.com/Chile/job/Valdivia-Operadora-Rodillo-Compactador-Caminos-Zona-Valdivia-LR-5110467/1408056000/",
       "source": "Arauco empleo",
+      "commune": null
+    },
+    "f72f8df0b80f3def6227": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/tecnico-en-mantencion-mecanica-planta-mejillones-antofagasta-3077424.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3518a424cca6b0c1395d": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/tecnico-en-mantencion-mecanica-planta-mejillones-antofagasta-3077423.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1d03d9022e69326992f9": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/tecnico-en-mantencion-mecanica-planta-mejillones-antofagasta-3077422.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d4f5ab8166313fe91c2a": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-bodega-san-bernardo-sector-congelados-3077421.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9bb4ef20394b76be7424": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-apilador-crown-san-bernardo-frigorifico-3077420.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "33ac5706efcce2ee40f2": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/operador-perecedero-reponedor-supermercado-rancagua-horario-rotativo-am-y-pm-turnos-continuos-3077419.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b2986fdf6b701124af3a": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-picking-packing-quilicura-3077418.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9b90a4550d99acdcb6db": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/implementador-de-exhibiciones-nunoa-560000-lunes-a-viernes-proyecto-3077417.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ce8330c36de79edceaa3": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/reponedor-nocturno-para-supermercado-rengo-horario-rotativo-am-y-pm-turnos-continuos-3077416.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a02341d055d337cf28c9": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/grua-horquilla-730000-liquido-gruero-maquinista-operador-de-lunes-a-viernes-3077415.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9f1957b2f3857177c790": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/reponedor-nocturno-fin-de-semana-para-supermercado-quillota-horario-rotativo-am-y-pm-fin-de-semana-3077414.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "30a64192ba97d21683bd": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-maquinista-apilador-con-expertis-para-san-bernardo-san-bernardo-3077413.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b22493a7578a1ae72e9e": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-nocturno-para-supermercado-penalolen-horario-rotativo-am-y-pm-turnos-continuos-3077412.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9875afceb71547355463": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-bodega-turno-noche-temporada-black-friday-622000-cerrillos-3077411.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9372d22148d26fde926e": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/urgente-carrero-ingreso-inmediato-colina-sin-experiencia-3077410.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c03605d09fc7f7a2b13a": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-turno-madrugada-san-bernardo-con-bus-colacion-y-bono-asistencia-pudahuel-3077409.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "47e5254ad59925af8c68": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-produccion-salida-de-horno-turno-noche-fijo-3077408.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e4b351f28e5941ff762a": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-produccion-metalicos-paletizado-turno-noche-3077407.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "13a95e7a9f5198304705": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-produccion-metalicos-horno-tapas-turno-noche-3077406.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d23ac06d5fe9a52ccc59": {
+      "first_seen": "2026-11-15T18:46:06.429727-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-grua-horquilla-komatsu-turno-noche-3077405.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

@@ -82,6 +82,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
   const [reviewId, setReviewId] = useState<string | null>(null);
   const [reviewError,setReviewError] = useState('');
   const reviewOrigin=useRef<HTMLButtonElement|null>(null);
+  const reviewDialogRef=useRef<HTMLElement|null>(null);
   const [reviewer, setReviewer] = useState<Reviewer>(null);
   const [loginBusy, setLoginBusy] = useState(false);
   const [rating, setRating] = useState(0);
@@ -143,6 +144,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     if(!reviewId)return;
     const previous=document.body.style.overflow;
     document.body.style.overflow='hidden';
+    reviewDialogRef.current?.focus({preventScroll:true});
     const onKey=(event:KeyboardEvent)=>{if(event.key==='Escape')setReviewId(null);};
     window.addEventListener('keydown',onKey);
     return()=>{
@@ -469,7 +471,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     </div>}
     {reviewId && <div className='tcReviewBackdrop' role='presentation'
       onMouseDown={event=>{if(event.target===event.currentTarget)setReviewId(null);}}>
-      <section className='tcReviewDialog' role='dialog' aria-modal='true' aria-labelledby='tc-review-title'
+      <section ref={reviewDialogRef} className='tcReviewDialog' role='dialog' aria-modal='true' aria-labelledby='tc-review-title'
         tabIndex={-1}>
         <header className='tcReviewHeader'>
           <div>

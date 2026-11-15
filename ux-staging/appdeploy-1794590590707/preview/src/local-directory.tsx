@@ -80,6 +80,8 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
   const [consent, setConsent] = useState(false);
   const [contacts, setContacts] = useState<Record<string, {phone: string | null; email: string | null}>>({});
   const [reviewId, setReviewId] = useState<string | null>(null);
+  const [reviewError,setReviewError] = useState('');
+  const reviewOrigin=useRef<HTMLButtonElement|null>(null);
   const [reviewer, setReviewer] = useState<Reviewer>(null);
   const [loginBusy, setLoginBusy] = useState(false);
   const [rating, setRating] = useState(0);
@@ -137,6 +139,18 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       sessionStorage.removeItem('tc_review_intent');
     }catch{try{sessionStorage.removeItem('tc_review_intent');}catch{/* no storage */}}
   },[reviewer?.email,listings]);
+  useEffect(()=>{
+    if(!reviewId)return;
+    const previous=document.body.style.overflow;
+    document.body.style.overflow='hidden';
+    const onKey=(event:KeyboardEvent)=>{if(event.key==='Escape')setReviewId(null);};
+    window.addEventListener('keydown',onKey);
+    return()=>{
+      document.body.style.overflow=previous;
+      window.removeEventListener('keydown',onKey);
+      reviewOrigin.current?.focus({preventScroll:true});
+    };
+  },[Boolean(reviewId)]);
   async function loginToReview(){
     if(!reviewId)return;
     try{
@@ -144,7 +158,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
       setLoginBusy(true);
       await auth.signInWithRedirect({scope:'openid email offline_access'});
     }catch{
-      setNotice('No se pudo iniciar la verificación del correo. Puedes reintentar.');
+      setReviewError('No se pudo abrir el acceso por correo. Inténtalo nuevamente.');
       setLoginBusy(false);
     }
   }
@@ -249,15 +263,16 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     event.preventDefault();
     if (!reviewId) return;
     setBusy(true);
+    setReviewError('');
     try {
-      if(!reviewer?.email)throw new Error('Debes confirmar tu correo antes de evaluar.');
+      if(!reviewer?.email)throw new Error('Confirma tu correo para continuar.');
       await api.post('/api/local-directory/' + reviewId + '/reviews', {rating,hired});
-      setNotice('Evaluación recibida para moderación. No se considera contratación verificada.');
+      setNotice('Calificación recibida. Aparecerá cuando pase la revisión.');
       setHired(false);
       setRating(0);
       setReviewId(null);
     } catch (cause) {
-      setNotice(cause instanceof Error ? cause.message : 'No se pudo registrar la evaluación.');
+      setReviewError(cause instanceof Error ? cause.message : 'No se pudo registrar la calificación.');
     } finally {
       setBusy(false);
     }
@@ -416,7 +431,7 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         <p>{entry.description}</p>
         <span className='tcDirectoryCoverage'>Atiende en: {entry.coverage.join(', ')}</span>
         {entry.kind === 'service' && <span className='tcDirectoryRating'>
-          <span className='tcDirectoryRatingStars' aria-hidden='true'>{entry.rating===null?'☆☆☆☆☆':'★★★★★'}</span>
+          <span className='tcDirectoryRatingStars' aria-hidden='true'>{entry.rating===null?'☆☆☆☆☆':'★'.repeat(Math.max(0,Math.min(5,Math.round(entry.rating))))+'☆'.repeat(5-Math.max(0,Math.min(5,Math.round(entry.rating))))}</span>
           <span>{entry.rating===null?'Sin calificaciones aún':entry.rating.toFixed(1)+' / 5 · '+entry.reviewCount+' opiniones revisadas'}</span>
         </span>}
         {contacts[entry.id] && <div className='tcDirectoryContact'>
@@ -425,37 +440,18 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
         </div>}
         <div className='tcDirectoryCardActions'>
           {entry.contactAvailable && <button onClick={() => void reveal(entry.id)}>Ver contacto</button>}
-          {entry.kind === 'service' && !localStorage.getItem('tc_directory_owner_' + entry.id) && <button className='tcRateAction' onClick={() => { setReviewId(entry.id); setRating(0); setHired(false); setReportId(null); }}>
-            ★ Calificar servicio
+          {entry.kind === 'service' && !localStorage.getItem('tc_directory_owner_' + entry.id) && <button className='tcRateAction'
+            onClick={event => {reviewOrigin.current=event.currentTarget;setReviewError('');setReviewId(entry.id);setRating(0);setHired(false);setReportId(null);}}>
+            ★ Calificar este servicio
           </button>}
+          {entry.kind==='service' && localStorage.getItem('tc_directory_owner_' + entry.id) &&
+            <span className='tcDirectoryOwnRatingNote'>Esta ficha es tuya: solo pueden calificar quienes hayan contratado el servicio.</span>}
           {!localStorage.getItem('tc_directory_owner_' + entry.id) && <button onClick={() => { setReportId(entry.id); setReviewId(null); }}>Reportar problema</button>}
         </div>
         {localStorage.getItem('tc_directory_owner_' + entry.id) && <details className='tcDirectoryOwnerActions'>
           <summary>Gestionar mi ficha</summary>
           <button className='tcDirectoryRemove' onClick={() => void removeOwn(entry.id)}>Retirar mi ficha</button>
         </details>}
-        {reviewId===entry.id && <form className='tcDirectoryForm tcDirectoryReviewForm' onSubmit={event=>void review(event)}>
-          <h4>¿Cómo calificarías este servicio?</h4>
-          <div className='tcDirectoryStars' role='radiogroup' aria-label='Elige de 1 a 5 estrellas'>
-            {[1,2,3,4,5].map(value=><button key={value} type='button' role='radio'
-              aria-checked={rating===value} aria-label={value+' '+(value===1?'estrella':'estrellas')}
-              className={rating>=value?'selected':''} onClick={()=>setRating(value)}>★</button>)}
-          </div>
-          <p>Elige las estrellas que reflejen tu experiencia. Tu opinión se revisará antes de aparecer.</p>
-          {reviewer?.email
-            ? <p className='tcDirectoryVerifiedEmail'>Correo confirmado: <strong>{reviewer.email}</strong></p>
-            : <button type='button' className='tcDirectoryEmailLogin' disabled={loginBusy}
-                onClick={()=>void loginToReview()}>
-                {loginBusy?'Abriendo acceso…':'Confirmar mi correo para opinar'}
-              </button>}
-          <label className='tcDirectoryConsent'><input type='checkbox' checked={hired} required
-            onChange={e=>setHired(e.target.checked)}/> Confirmo que contraté este servicio.</label>
-          <div className='tcDirectoryReviewActions'>
-            <button disabled={busy||rating===0||!hired||!reviewer?.email}>Enviar calificación</button>
-            <button type='button' onClick={()=>setReviewId(null)}>Cancelar</button>
-          </div>
-          <small>No verificamos la contratación. No puedes evaluar tu propia ficha.</small>
-        </form>}
         {reportId===entry.id && <form className='tcDirectoryForm tcDirectoryReviewForm' onSubmit={event => void report(event)}>
           <h4>Informar un problema con esta ficha</h4>
           <label>Correo electrónico<input type='email' required value={reportEmail}
@@ -470,6 +466,49 @@ export function LocalDirectory({ place, initialKind, startWithForm=false, onClos
     </div> : <div className='tcDirectoryEmpty'>
       <strong>{searchText ? 'No hay resultados para esta búsqueda.' : 'Aún no hay fichas aprobadas en esta comuna.'}</strong>
       <p>Las solicitudes enviadas aparecen en «Mis publicaciones enviadas» hasta que se aprueben.</p>
+    </div>}
+    {reviewId && <div className='tcReviewBackdrop' role='presentation'
+      onMouseDown={event=>{if(event.target===event.currentTarget)setReviewId(null);}}>
+      <section className='tcReviewDialog' role='dialog' aria-modal='true' aria-labelledby='tc-review-title'
+        tabIndex={-1}>
+        <header className='tcReviewHeader'>
+          <div>
+            <small>OPINIÓN DE QUIEN CONTRATÓ</small>
+            <h3 id='tc-review-title'>Calificar servicio</h3>
+            <p>{listings.find(entry=>entry.id===reviewId)?.title||'Servicio local'}</p>
+          </div>
+          <button type='button' className='tcReviewClose' aria-label='Cerrar calificación'
+            onClick={()=>setReviewId(null)}>×</button>
+        </header>
+        <form className='tcReviewBody' onSubmit={event=>void review(event)}>
+          <strong>¿Qué tal fue el servicio?</strong>
+          <div className='tcDirectoryStars' role='radiogroup' aria-label='Calificación de 1 a 5 estrellas'>
+            {[1,2,3,4,5].map(value=><button key={value} type='button' role='radio'
+              aria-checked={rating===value} aria-label={value+' '+(value===1?'estrella':'estrellas')}
+              className={rating>=value?'selected':''} onClick={()=>setRating(value)}>★</button>)}
+          </div>
+          <p className='tcReviewScore' role='status'>{rating===0?'Toca las estrellas para elegir tu nota':rating+' de 5 estrellas'}</p>
+          <label className='tcReviewHired'><input type='checkbox' required checked={hired}
+            onChange={e=>setHired(e.target.checked)}/>
+            <span>Confirmo que contraté este servicio.</span>
+          </label>
+          {reviewer?.email
+            ? <p className='tcDirectoryVerifiedEmail'>Correo confirmado: <strong>{reviewer.email}</strong></p>
+            : <div className='tcReviewIdentity'>
+                <p>Para evitar valoraciones falsas, confirma tu correo mediante el acceso seguro. No necesitas iniciar sesión para navegar o contactar.</p>
+                <button type='button' className='tcDirectoryEmailLogin' disabled={loginBusy}
+                  onClick={()=>void loginToReview()}>{loginBusy?'Abriendo acceso…':'Continuar con mi correo'}</button>
+              </div>}
+          {reviewError && <p role='alert' className='tcReviewError'>{reviewError}</p>}
+          <div className='tcDirectoryReviewActions'>
+            <button type='submit' disabled={busy||rating===0||!hired||!reviewer?.email}>
+              {busy?'Enviando…':'Enviar calificación'}
+            </button>
+            <button type='button' onClick={()=>setReviewId(null)}>Cancelar</button>
+          </div>
+          <small>Tu opinión se revisa antes de publicarse. Confirmar el correo no verifica la contratación. No se permite evaluar tu propia ficha.</small>
+        </form>
+      </section>
     </div>}
     {photoViewer && <div className='tcPhotoLightbox' role='presentation'
       onMouseDown={event=>{if(event.target===event.currentTarget)setPhotoViewer(null);}}>

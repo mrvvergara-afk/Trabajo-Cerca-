@@ -1,0 +1,49 @@
+name: QA modal de reseñas, campaña fundadores y anuncios — no deploy
+on:
+  push:
+    branches: [fix/valoraciones-fundadores-campanas-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/**'
+      - '.github/workflows/ux-ratings-founders-ads-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ux-ratings-founders-ads
+  cancel-in-progress: true
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - name: Inspect source and security invariants
+        run: node qa/test-founder-ratings.cjs
+      - name: Compile production React with mocked backend
+        run: npm run build -- --config vite.qa.config.ts
+      - run: npx playwright install --with-deps chromium
+      - name: Start browser QA
+        run: |
+          nohup npm run dev -- --config vite.qa.config.ts --host 127.0.0.1 --port 4173 --strictPort >/tmp/ratings-founders-qa.log 2>&1 &
+          for i in $(seq 1 40); do
+            if curl -fsS -o /dev/null http://127.0.0.1:4173/; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/ratings-founders-qa.log
+          exit 1
+      - name: Test screenshots and interactions on six screens
+        run: node qa/e2e-founder-ratings.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-ratings-founders-visuals
+          path: ux-staging/appdeploy-1794590590707/preview/qa/captures-founders/*.png
+          retention-days: 5
+          if-no-files-found: ignore

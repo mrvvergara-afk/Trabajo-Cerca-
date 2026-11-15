@@ -1,0 +1,26 @@
+name: QA público posdespliegue fundadores y calificaciones
+on:
+  push:
+    branches: [fix/valoraciones-fundadores-campanas-20261114]
+    paths:
+      - 'ux-staging/appdeploy-1794590590707/preview/qa/live-founders-ratings.mjs'
+      - '.github/workflows/ux-live-founder-ratings.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    defaults:
+      run:
+        working-directory: ux-staging/appdeploy-1794590590707/preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Check real catalogue, founders card and rating modal; no writes
+        run: node qa/live-founders-ratings.mjs

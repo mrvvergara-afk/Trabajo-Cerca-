@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-15T11:08:39.946755+00:00",
-  "local_discovery_at": "2026-11-15T11:08:29.879121+00:00",
+  "checked_at": "2026-11-15T17:48:58.229794+00:00",
+  "local_discovery_at": "2026-11-15T17:48:52.118293+00:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -48,17 +48,24 @@
   "municipalities_unreadable": [],
   "local_sources_expected": 17,
   "local_sources_attempted": 17,
-  "local_candidates": 88,
+  "local_candidates": 86,
   "chiletrabajos_queries_attempted": 15,
-  "chiletrabajos_candidates": 124,
+  "chiletrabajos_candidates": 123,
   "job_details_checked": 60,
-  "ready_for_d_review": 15,
+  "ready_for_d_review": 10,
   "publication_confirmed": false,
   "coverage_complete": false,
   "source_failures": [
     {
       "source": "Municipio Angol",
       "commune": "Angol",
+      "pages_scanned": 1,
+      "status": "partial",
+      "errors": 1
+    },
+    {
+      "source": "Municipio Purén",
+      "commune": "Purén",
       "pages_scanned": 1,
       "status": "partial",
       "errors": 1

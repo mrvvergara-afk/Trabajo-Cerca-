@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-14T23:08:58.171907+00:00",
-  "local_discovery_at": "2026-11-14T23:08:48.699375+00:00",
+  "checked_at": "2026-11-15T02:46:10.754516+00:00",
+  "local_discovery_at": "2026-11-15T02:46:04.710658+00:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -48,11 +48,11 @@
   "municipalities_unreadable": [],
   "local_sources_expected": 17,
   "local_sources_attempted": 17,
-  "local_candidates": 88,
+  "local_candidates": 85,
   "chiletrabajos_queries_attempted": 15,
   "chiletrabajos_candidates": 124,
   "job_details_checked": 60,
-  "ready_for_d_review": 11,
+  "ready_for_d_review": 14,
   "publication_confirmed": false,
   "coverage_complete": false,
   "source_failures": [

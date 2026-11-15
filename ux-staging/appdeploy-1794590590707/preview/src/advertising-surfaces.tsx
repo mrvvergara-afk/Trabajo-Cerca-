@@ -98,6 +98,7 @@ export function FormEditorialPromotion({place}:{place:string}) {
     data-ad-type={commercial?'COMMERCIAL':'HOUSE_AD'}
     aria-label={commercial?'Publicidad local de '+commercial.businessName:'Autopromoción de Trabajo Cerca'}>
     <div className='tcFormEditorialArt' aria-hidden='true'>
+      {!commercial && <img className='tcFormHouseFallback' src={'/house-creatives/'+(house?.campaign.id.replace(/^house-/,'')||'explore')+'.svg'} alt='' loading='lazy'/>}
       {!commercial && creative?.imageUrl && <AdImage url={creative.imageUrl}/>}
       <Store />
       <TreePine />

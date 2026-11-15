@@ -272,3 +272,96 @@
    align-items:start!important;
  }
 }
+
+
+/* Institutional cards 2026: image-led layout in every self-ad slot, paid creatives unaffected. */
+.tcStitchShell .tcInlineHousePromo{
+ display:grid!important;grid-template-columns:minmax(0,1.06fr) minmax(110px,.94fr)!important;
+ grid-template-rows:auto auto!important;grid-template-areas:"copy photo" "cta photo"!important;
+ gap:8px 11px!important;min-width:0!important;max-width:100%!important;
+ min-height:155px!important;padding:13px!important;box-sizing:border-box!important;
+ align-items:stretch!important;overflow:hidden!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy{
+ grid-area:copy!important;display:flex!important;flex-direction:column!important;
+ align-items:flex-start!important;min-width:0!important;max-width:100%!important;
+ gap:4px!important;justify-content:center!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{
+ display:block!important;font-size:9px!important;line-height:12px!important;
+ max-width:100%!important;white-space:normal!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{
+ display:-webkit-box!important;-webkit-box-orient:vertical!important;
+ -webkit-line-clamp:3!important;overflow:hidden!important;
+ font-size:clamp(15px,1.5vw,19px)!important;line-height:1.2!important;
+ max-width:100%!important;overflow-wrap:normal!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{
+ display:-webkit-box!important;-webkit-box-orient:vertical!important;
+ -webkit-line-clamp:2!important;overflow:hidden!important;
+ font-size:11px!important;line-height:15px!important;margin:2px 0!important;
+ max-width:100%!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcPromoBenefit{
+ display:block!important;font-size:9px!important;line-height:13px!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon,
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+ grid-area:photo!important;position:relative!important;isolation:isolate!important;
+ width:100%!important;height:100%!important;min-height:130px!important;
+ display:block!important;border-radius:12px!important;overflow:hidden!important;
+ box-sizing:border-box!important;background:#d3e5d0!important;box-shadow:0 0 0 2px #eef8e850!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcHouseFallbackThumb,
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ display:block!important;object-fit:cover!important;border-radius:12px!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcHouseFallbackThumb{z-index:0!important;}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{z-index:1!important;}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb)>svg{display:none!important;}
+.tcStitchShell .tcInlineHousePromo>button{
+ grid-area:cta!important;justify-self:start!important;align-self:end!important;
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ min-width:0!important;max-width:100%!important;min-height:37px!important;
+ padding:8px 10px!important;white-space:normal!important;text-align:left!important;
+ font-size:11px!important;line-height:14px!important;font-weight:800!important;
+ border-radius:9px!important;
+}
+.tcStitchShell .tcInlineHousePromo>button svg{width:15px!important;height:15px!important;flex:0 0 15px!important;}
+/* Embedded form's house campaign also gets a persistent local illustration. */
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt{
+ display:block!important;position:relative!important;isolation:isolate!important;
+ min-width:52px!important;max-width:64px!important;
+ border-radius:10px!important;overflow:hidden!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt .tcFormHouseFallback{
+ position:absolute!important;inset:0!important;display:block!important;width:100%!important;
+ height:100%!important;object-fit:cover!important;z-index:0!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt .tcAdImage{z-index:1!important;}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt:has(.tcFormHouseFallback)>svg{
+ display:none!important;
+}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo{
+   grid-template-columns:minmax(0,1.13fr) minmax(110px,.87fr)!important;
+   grid-template-areas:"copy photo" "cta photo"!important;
+   gap:7px 10px!important;padding:11px!important;min-height:150px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{
+   font-size:15px!important;line-height:18px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{font-size:10px!important;line-height:14px!important;}
+ .tcStitchShell .tcInlineHousePromo>button{grid-column:auto!important;grid-row:auto!important;font-size:10px!important;line-height:13px!important;}
+}
+@media(max-width:360px){
+ .tcStitchShell .tcInlineHousePromo{
+   grid-template-columns:minmax(0,1.15fr) minmax(92px,.85fr)!important;
+   padding:9px!important;gap:6px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:13px!important;line-height:16px!important;}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{font-size:8px!important;line-height:11px!important;}
+ .tcStitchShell .tcInlineHousePromo>button{font-size:10px!important;padding:7px 8px!important;line-height:12px!important;}
+}

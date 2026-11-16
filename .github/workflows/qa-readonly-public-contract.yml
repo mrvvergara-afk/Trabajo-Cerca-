@@ -1,0 +1,25 @@
+name: Trabajo Cerca | QA público solo lectura
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'automation/qa_public_contract.py'
+      - '.github/workflows/qa-readonly-public-contract.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trabajo-cerca-readonly-public-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check real public API, safe catalog, unauthorized access and HTML security
+        run: python3 automation/qa_public_contract.py

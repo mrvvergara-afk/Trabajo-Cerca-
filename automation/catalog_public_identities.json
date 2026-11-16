@@ -2,14 +2,14 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-16T12:26:11+00:00",
+  "generated_at": "2026-11-16T22:28:00+00:00",
   "complete": true,
-  "totalItemsReported": 279,
-  "jobIdentityCount": 275,
-  "visibleIn12CommunesCount": 92,
+  "totalItemsReported": 280,
+  "jobIdentityCount": 276,
+  "visibleIn12CommunesCount": 93,
   "outside12CommuneScopeCount": 183,
   "pagesChecked": 11,
-  "fingerprint": "86e8922a709cbaff842761301549c58cacd007a1cc70ae9004242ed049cb4f31",
+  "fingerprint": "418db6feb948e8649360cc06cef8004bfcb6c2accd1bb457c2ea48f5c79d2e40",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -939,6 +939,17 @@
       "urlHashSha256": "33102f5b405e7fdd43583c5ee856f55b332bbf2612918a0e7cc6eb72ac6a78f0"
     },
     {
+      "id": "chatgpt_d_40aa70282f34e44e2afb",
+      "title": "Inspector/a Ambiental",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
+      "urlHashSha256": "06bb671d60951a3bada23b1edea00cd02ac58e96bf0bc2406e197b57ab1a83a7"
+    },
+    {
       "id": "chatgpt_d_4bdcac8ef560f0fe716d",
       "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
       "company": "Fashion's Park",
@@ -1014,6 +1025,17 @@
       "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
       "urlHashSha256": "e528e4b2242e8c0cd02f6089a152b76c13ecd40991c206424f204433c480c77a"
+    },
+    {
+      "id": "chatgpt_d_b82587f333519896e835",
+      "title": "Experto/a en Prevención de Riesgos – Rubro Celulosa (Collipulli)",
+      "company": "GRAFTON",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/experto-a-en-prevencion-de-riesgos-rubro-celulosa-collipulli-3933145",
+      "urlHashSha256": "b82587f333519896e835a1b4fbac447b7f727b2ce8ac259e20ff1aaf29bc5f67"
     },
     {
       "id": "chatgpt_d_c86ec67e426e27e24149",
@@ -2148,17 +2170,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-evaluacion-agronomica-3929286",
       "urlHashSha256": "e8e39cde62a6d26cb97b9ef681345768ad0fac1559a2245c7999b133e50e945b"
-    },
-    {
-      "id": "free-8b07fe51ed5043f8efc30f85fbbf0333b5f4f1a3",
-      "title": "TENS para Cuidados Pacientes Domiciliarios /Lumaco",
-      "company": "LAYNER",
-      "workCommunes": [
-        "Lumaco"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
-      "urlHashSha256": "2a72a06b0d8dbb7895e18d98e6b3c9f19d3f9044b6655fb55d9f8c2c1c3a5f67"
     },
     {
       "id": "free-8b6be0aec896fff15bff91c4751362a2c4b48aa6",

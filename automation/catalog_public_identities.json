@@ -1,0 +1,2768 @@
+{
+  "schema_version": 1,
+  "producer": "trabajo_cerca_public_feed",
+  "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
+  "generated_at": "2026-11-16T12:22:20+00:00",
+  "complete": true,
+  "totalItemsReported": 279,
+  "jobIdentityCount": 275,
+  "pagesChecked": 11,
+  "fingerprint": "e6240f251952469a2280dcf92077fef551728ce6cc9522aee8c8f710b523ef8d",
+  "items": [
+    {
+      "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
+      "title": "Administrativo/a de Tesorería · PT Tienda Angol",
+      "company": "Falabella",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://cl.linkedin.com/jobs/view/administrativo-a-de-tesorer%C3%ADa-jornada-pt-tienda-angol-at-falabella-4461259756",
+      "urlHashSha256": "f0269d03e0fb173b8a9a24a7f803a8bfec7902605edf680ea3e695d0b45b2b57"
+    },
+    {
+      "id": "0334d4c8-28ee-4aaa-a266-0610b1988e06",
+      "title": "Práctica Profesional Ingeniería Civil Industrial - MASSO - Nacimiento",
+      "company": "Serfonac",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
+      "urlHashSha256": "053a7f9decb729c76382b14a83e7d1a2c5f1a37dc174ad9fa062a73bf3fb15dd"
+    },
+    {
+      "id": "0483e7f7-009e-4b47-bbe3-e5ae0205d0db",
+      "title": "VENDEDOR-PROMOTOR RETAIL /PART TIME/ LOS ANGELES",
+      "company": "FESTINA GROUP CHILE",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-promotor-retail-part-time-los-angeles-3910101",
+      "urlHashSha256": "78546828589c6a0115024c27662dbe4b014e7a1b195fefec5733313cafd063e9"
+    },
+    {
+      "id": "0b79c530-f4cd-4b5a-90df-a9479324ea7e",
+      "title": "Oferta laboral para recolectores y supervisores",
+      "company": "munilumaco.cl",
+      "workCommunes": [
+        "Lumaco"
+      ],
+      "url": "https://munilumaco.cl/index.php/sala-de-prensa/89-oferta-laboral-para-recolectores-y-supervisores",
+      "urlHashSha256": "69de8f9ec9f480a7f95930bb5811b2e008c1e8909c699b766fb62ca974881889"
+    },
+    {
+      "id": "0bc3065c-f772-4394-9355-f8b4f3e63a5a",
+      "title": "FISCALIZADOR TECNICO DE OBRAS (FTO)",
+      "company": "INSPECCIONES ILDYGARDY EIRL",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/3900906",
+      "urlHashSha256": "3c9dd47593c77b27f3e49b0af27a7a9f89d56fe0290c660d3a067968aec262ca"
+    },
+    {
+      "id": "0c2cdd6d-9201-4119-90f2-0de8927c1e8f",
+      "title": "CHOFER PROFESIONAL – LICENCIA A5",
+      "company": "DMS SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/chofer-profesional-licencia-a5-3891149",
+      "urlHashSha256": "103fed077cf8d55b593bee40f3ea61a54c8c5f1cd31996158288852c8d644a6f"
+    },
+    {
+      "id": "0c6a6740-0ea0-4913-8950-6f84bc2df8c2",
+      "title": "PedidosYa - Repartidores Los Ángeles",
+      "company": "PedidosYa Chile",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/pedidosya-repartidores-los-angeles-3136652",
+      "urlHashSha256": "08f0ebce17c70df72d07345fe67db2a49605a22251c6cd24f62ff6ac1e7ad908"
+    },
+    {
+      "id": "0c9d9edf-98c7-41e8-a864-604fd8069445",
+      "title": "Profesional de Programas Generales / LAE Angol Reemplazo",
+      "company": "Fundación Tierra de Esperanza",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
+      "urlHashSha256": "01d76b0d3eabfed48d2f64883d905ae4df13bf0505116fdc104bf3f32a708875"
+    },
+    {
+      "id": "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
+      "title": "Supervisor Técnico de Obra - Mulchén - septiembre 2026 | Laborum Chile",
+      "company": "laborum.cl",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "url": "https://laborum.cl/empleos/supervisor-tecnico-de-obra-mulchen-aguas-andinas-s.a-1118449360.html",
+      "urlHashSha256": "172d9081d5d7dddffa8151ea1347740dc520690ff8a5ebea4b52dd92446b9daf"
+    },
+    {
+      "id": "115bd0ce-cd60-4551-94c7-d02cd28fcd42",
+      "title": "Geomensor - Angol",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/geomensor-angol-3915735",
+      "urlHashSha256": "f8fc291475dd5bb70c9e9bec22c400dce562a7262e3f64e0af2e5d09be8ba596"
+    },
+    {
+      "id": "1318f06f-b125-429c-bf9f-1cbbc6413dbb",
+      "title": "Laboratorista Vial Clase B para AIF - Angol",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+      "urlHashSha256": "f8c638c4c0a09a8a987984799d0cb13765b79df21d7664f45ed294e39657501f"
+    },
+    {
+      "id": "13f73a9d-65e3-45bc-8158-ba9097ff91ff",
+      "title": "Técnico en Telecomunicaciones Temuco",
+      "company": "emetel",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-temuco-3882863",
+      "urlHashSha256": "f42031d6137b988055c7e25182c90664847a7233961d429ffaa054cb5f8e4155"
+    },
+    {
+      "id": "16e43079-56d9-4ac1-81a4-3993af7fecd4",
+      "title": "Soldador Planta Productiva",
+      "company": "Los Angeles Empresa",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/soldador-planta-productiva-3902218",
+      "urlHashSha256": "3c3139f46dc81ea2c319b3de21cd5d387754b20c2452d4aa21548686d8d13ae3"
+    },
+    {
+      "id": "1841aeca-8bed-4c13-8a3d-5a83fd23d008",
+      "title": "SE BUSCA PERSONAL PARA TRABAJAR EN MINIMARKET",
+      "company": "EXPRESS MARKET",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-personal-para-trabajar-en-minimarket-3906402",
+      "urlHashSha256": "a0c62e6daa7b6a04d25287091fe36f63e227f3958d273394b1755bccff5efded"
+    },
+    {
+      "id": "1c23fbb3-3317-4e97-86bd-8db6827af3c4",
+      "title": "Promotor(a) Full Time Martes a Sábado Angol Falabella -TOP",
+      "company": "TOP",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html",
+      "urlHashSha256": "c8af3a136933055c503dce27e86dbe05bf4f053e02cec0fd57363a7640d4c865"
+    },
+    {
+      "id": "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
+      "title": "Tens/ Enfermera Administrativa Angol",
+      "company": "Inmunomedica",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
+      "urlHashSha256": "930e3ffa3ba2344bd64328c6fab1e4c239d3cad6d853d3109694500fcaad7992"
+    },
+    {
+      "id": "2d589ccb-0ff5-468a-b3a0-bb93ab70b640",
+      "title": "Peoneta Recaudador Lautaro",
+      "company": "Privada",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/peoneta-recaudador-lautaro-3891368",
+      "urlHashSha256": "28f899c924c3946557742015abfa4904a6b49a0bcaad0917474ca907269c831a"
+    },
+    {
+      "id": "33ddef7b-e071-480a-86fb-79db4f966de7",
+      "title": "Ingreso Inmediato Apoyo Auxiliar bodega armado Abc Angol",
+      "company": "cl.computrabajo.com",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-ingreso-inmediato-apoyo-auxiliar-bodega-armado-abc-angol-proyecto-del-03-octubre-al-30-nov-en-angol-7b9dda2687f57b4f61373e686dcf3405",
+      "urlHashSha256": "00ca245a41d266df28cdf5dff72e51b7ebe1c521786e570783a475a8cd8a1eb0"
+    },
+    {
+      "id": "361dab2c-87ef-4bce-9bda-ef731822244d",
+      "title": "Práctica Profesional Contador Auditor - Nacimiento",
+      "company": "Serfonac Ltda",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
+      "urlHashSha256": "6943596713218b3d055d685a169f4822154ee1d4e296aeeb6951fb1181666343"
+    },
+    {
+      "id": "39117ed8-a900-4003-9006-a08379ba55f6",
+      "title": "Eléctrico Industrial",
+      "company": "Empresa Productiva",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/electrico-industrial-3875909",
+      "urlHashSha256": "43708c288c52f8c0e20647a496ffb0ee0f491eb5d13ecadc2b2cd8ff95269a79"
+    },
+    {
+      "id": "3f1eea8d-434b-4591-b004-a170e111a819",
+      "title": "SECRETARIA/O CONTABLE - DCE LOS ÁNGELES",
+      "company": "FUNDACION PRODERE",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/secretaria-o-contable-dce-los-angeles-3907541",
+      "urlHashSha256": "ff6f29b3ac5a2f1c2eca4704d3566c501c3089954b71227c1c34039f972bf3d3"
+    },
+    {
+      "id": "40b91274-90ed-4742-bfe6-f197949c7914",
+      "title": "Operario Bodega (Victoria, Araucanía) - Santiago | Chiletrabajos",
+      "company": "chiletrabajos.cl",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operario-bodega-victoria-araucania-3902541",
+      "urlHashSha256": "3a0bffaabdcb82b40020386ccaa30ec92908e0ca39f238212981f20c4f31c8e2"
+    },
+    {
+      "id": "41397f15-f43a-4baa-84f4-d1603e9425f8",
+      "title": "SUPERVISOR DE FLOTA",
+      "company": "TRANSPORTES LLICO",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-de-flota-3654306",
+      "urlHashSha256": "5ee370606175bfc7a5923cd7df8abacb7f21d8e3e47944a916afc055549e94c9"
+    },
+    {
+      "id": "4723432e-3a65-450b-9631-2b76f305aff1",
+      "title": "Ayudante Chofer Granel - CD Temuco",
+      "company": "GASCO S.A",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ayudante-chofer-granel-cd-temuco-3909010",
+      "urlHashSha256": "b1b8fbf74c9f346b3ac4c9f726ac067e82c43160bec3cc6f60ed508a2928c654"
+    },
+    {
+      "id": "4b9b5f12-4398-4b97-99ed-e9adc7350cab",
+      "title": "SUPERVISOR CLIMATIZACIÓN TEMUCO",
+      "company": "CLIMA BIOBIO SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-climatizacion-temuco-3392715",
+      "urlHashSha256": "e629609e62698809188bff8f6c68def2fa735007cf4df4a1bbcf75770b019ac4"
+    },
+    {
+      "id": "4ba4e5d1-8556-4b33-8304-329a35184274",
+      "title": "Encargado Calidad para AIF - Angol",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
+      "urlHashSha256": "7f24f1a31c25f4813b5c39e008a2408ef8ea816a52347eca8b950685fa8dc1fd"
+    },
+    {
+      "id": "4ca43ed8-bd98-4418-8713-784faa064a5b",
+      "title": "Operador para Sucursal | Ángol - julio 2026 | Laborum Chile",
+      "company": "laborum.cl",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://laborum.cl/empleos/operador-para-sucursal-|-angol-1118369173.html",
+      "urlHashSha256": "7eb75d07be5ac90de3b00e566a7dd520ca7900b44232748bceb245df0e42d159"
+    },
+    {
+      "id": "4ed2d4d0-4683-442e-ab29-d5c46f1bcac3",
+      "title": "Practica Gestión Personas Nacimiento",
+      "company": "Serfonac",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-gestion-personas-nacimiento-3899780",
+      "urlHashSha256": "59f89cfcb0067637f4c9f26568b22557297630a75b410789b3ea75bca3731edc"
+    },
+    {
+      "id": "5261274a-80e4-436b-b228-500120c49827",
+      "title": "Asistente de Recursos Humanos y Adm (Reemplazo Pre y Post Natal)",
+      "company": "SOCIEDAD DE TRANSPORTES LLICO LTDA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-de-recursos-humanos-y-adm-reemplazo-pre-y-post-natal-3901379",
+      "urlHashSha256": "e13dfc7db7e6472e9b2554fc0f78f969a543cbc04913e8fc47075c726e6fcab2"
+    },
+    {
+      "id": "53fbd109-745b-44eb-90a8-d2346bed3522",
+      "title": "Operador/a de apilador eléctrico - CD Lautaro",
+      "company": "Max Service",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-a-de-apilador-electrico-cd-lautaro-3905597",
+      "urlHashSha256": "63a50a664507c9cc5d377465f2636284f2c355246ec58a76efebd7e9f4f0328e"
+    },
+    {
+      "id": "571a8eed-a8b3-41af-b300-aa9a3dbc0d19",
+      "title": "Administrativo/a de RRHH",
+      "company": "Vigias Security SpA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/administrativo-a-de-rrhh-3908391",
+      "urlHashSha256": "b0ccec70c5f5b858e038b01beb77004a6a0081ac280f8f522ddd4146d8a00bfb"
+    },
+    {
+      "id": "607909b5-0d18-4480-a4f1-4292dc073dd6",
+      "title": "Operador planta de Riles - Los Angeles (reemplazo vacaciones)",
+      "company": "Aguas Andinas S.A",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-planta-de-riles-los-angeles-reemplazo-vacaciones-3909246",
+      "urlHashSha256": "8ef3c6570f86e955345128f8e73c3b82e51cfacaa6d9fe65d2e69bf42034d0d2"
+    },
+    {
+      "id": "688c0421-4ed4-46e5-9592-694a2669fad7",
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
+      "company": "Comercial Fashion´s park s.a.",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://laborum.cl/empleos/cajero-a-asistente-integral--temporada-navidad--angol-comercial-fashions-park-s.a.-1118483484.html",
+      "urlHashSha256": "2182e8b206e16f7a76d31148c0a364942c176dc0e2d56ceb29d8e9b605941a5f"
+    },
+    {
+      "id": "696b1b8c-ecaf-40e2-92aa-f6621ab9a282",
+      "title": "Inquilino · Labores agrícolas y cuidado de parcela",
+      "company": "Empleador difundido por OMIL Mulchén",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "url": "https://munimulchen.cl/oferta-laboral-labores-agricolas-y-cuidado-de-parcela",
+      "urlHashSha256": "b41bcbc30c4c6e0b8004894ec02a4093fa7c33bf0b505da3d9e5f64a27b63341"
+    },
+    {
+      "id": "6abf9e94-dade-4490-ba22-9b8c925a9e4e",
+      "title": "Trabajador/a Social 40 horas PRM Nacimiento",
+      "company": "Fundación Tierra de Esperanza",
+      "workCommunes": [
+        "Los Ángeles",
+        "Nacimiento"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/3889603",
+      "urlHashSha256": "5b3b815795409aac08fa0d232f499aee3af9e8092f1da52141ca7fec41dc4924"
+    },
+    {
+      "id": "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",
+      "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria (Terreno) - Angol",
+      "company": "SMU 1",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://laborum.cl/empleos/auditora-relatora-de-calidad-e-inocuidad-alimentaria-terreno-angol-smu-1-1118452584.html",
+      "urlHashSha256": "5840f1e82bcad048c3e0913c2836a4edb75d393d08e9dca6a8c408ddf161147e"
+    },
+    {
+      "id": "70ce88ad-0033-4f3f-ba97-35284d168496",
+      "title": "Asistente Dental Full Time / Angol",
+      "company": "Importante empresa del rubro de la Salud",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
+      "urlHashSha256": "f0ce646c3cd3ba45b19c4857acad3a568be9ecc16b36d6e14fe2dee73d6d8697"
+    },
+    {
+      "id": "76ef5f47-a989-4cc9-9f9a-c15e79f5bbed",
+      "title": "Encargado(a) de Administración y Finanzas - Temuco",
+      "company": "Sur Talent",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/3906872",
+      "urlHashSha256": "97439b00a177c3a4f2ff052af37b25ebd454dd330062e520f4962236feee5adf"
+    },
+    {
+      "id": "770b0ed0-f969-4f86-880e-6edad7f0df49",
+      "title": "TRABAJADOR SOCIAL y PSICOLOGO - PRM CUNCO y TEMUCO /ARAUCANIA",
+      "company": "Fundación Talitakum",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/trabajador-social-y-psicologo-prm-cunco-y-temuco-araucania-3889333",
+      "urlHashSha256": "282dc2cec1c16ae0ee72c4f3eefa8fc12d8c94a857d9a0f570264ad18907884a"
+    },
+    {
+      "id": "7b562eed-a606-49ea-ba30-c5336796f079",
+      "title": "VENDEDOR OPTICA KARUN TEMUCO",
+      "company": "KARUN",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-optica-karun-temuco-3655890",
+      "urlHashSha256": "9edf33b25c83addd0f40f6417db62d9c326b947f03be58455eea8923e6d8eb2f"
+    },
+    {
+      "id": "7b8347d4-99eb-4768-8be3-2ddcd1ce8c7e",
+      "title": "VENDEDOR MESÓN REPUESTOS AUTOMOTRICES",
+      "company": "ZUÑIGA REPUESTOS",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-meson-repuestos-automotrices-3350680",
+      "urlHashSha256": "3c190da94f42cd18386703cc133641216e06b55600d40d024b8157da2237358a"
+    },
+    {
+      "id": "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
+      "title": "Promotora 20 horas - Traiguén",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Traiguén"
+      ],
+      "url": "https://laborum.cl/empleos/promotora-20-horas-traiguen-1118460788.html",
+      "urlHashSha256": "44a9f9592ec6319c6fae359e3fd87677671a143eaad300130e68012db211032e"
+    },
+    {
+      "id": "8d3d1102-ba4a-4d77-adcf-59e158cb5013",
+      "title": "OPERARIOS AGRÍCOLAS – COSECHA DE ARÁNDANOS",
+      "company": "Empresa del rubro agrícola de la comuna de Mulchén",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "url": "https://munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos",
+      "urlHashSha256": "804147d121803488cbfaef0d6d7ab934c2439fa9a3dfd88f0f66aafe105ed528"
+    },
+    {
+      "id": "8ead6e42-44c8-419d-a2c5-5725e59d1627",
+      "title": "Jefe de Geomensura (EFE)",
+      "company": "Creaxxion Ingenieros Consultores S.A.",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-geomensura-efe-3764121",
+      "urlHashSha256": "a99602e3a43b388206b25b476e5dacc9d07a198f73ed065a2ad85b40b1a6a787"
+    },
+    {
+      "id": "983ce383-900b-4d74-b202-06236d349641",
+      "title": "Representante de Ventas Los Ángeles",
+      "company": "Artemisa Direct",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/representante-de-ventas-los-angeles-3682741",
+      "urlHashSha256": "41bb7b86c88c1853e0303c5fd82da23278b6e7f72ee6c96a2642df0a5338444e"
+    },
+    {
+      "id": "9a43bd7d-b2d4-4b53-8d49-993dc02db6ea",
+      "title": "Jefe de Turno",
+      "company": "Talentfinder",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-turno-3904146",
+      "urlHashSha256": "8146fc05c53ee5e5937fe44ed89e1958b2a4a3725e10ca760509733ebab7fc1d"
+    },
+    {
+      "id": "9ccdbbfd-f028-405a-98c3-ffb431096f59",
+      "title": "ASISTENTE DENTAL",
+      "company": "Clinica",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-dental-3909469",
+      "urlHashSha256": "8716392acea7f0143741ce2ad43959c358b23d57bf6810c14bf8950845f6ff5c"
+    },
+    {
+      "id": "9e30fb6a-c41e-4b8a-814c-440f0da08ca1",
+      "title": "Encargado Ambiental y Participación Ciudadana para AIF - Angol",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
+      "urlHashSha256": "f7ac616ee38e5e08c8c11cce055740d99339032dc07e1cf5d6081c05c15df72c"
+    },
+    {
+      "id": "a3ac3db2-78d6-40ed-998e-0f27897a5bf4",
+      "title": "Ayudante de panadería",
+      "company": "ChileTrabajos · Victoria",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ayudante-de-panaderia-3903963",
+      "urlHashSha256": "2110ceee596b1b0af6df7aeeff443e8ba370e10c60aa41ecd86db1778f7cdac9"
+    },
+    {
+      "id": "a4478588-785e-4545-824e-e94de6d8916a",
+      "title": "Laboratorista de Aridos - Santiago -&#8230;",
+      "company": "ChileTrabajos · Ercilla",
+      "workCommunes": [
+        "Ercilla"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/laboratorista-de-aridos-santiago-idiem-3895266",
+      "urlHashSha256": "cdfa74622002ca0116f0879c7e109ec19e1b722cb699545d22d220613882c8e5"
+    },
+    {
+      "id": "a5c60fff-7986-4aa9-929f-e265c58b9313",
+      "title": "SUPERVISOR DE SEGURIDAD",
+      "company": "Empresa de seguridad",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-de-seguridad-3907984",
+      "urlHashSha256": "7a9e3782b66efc769de2a8941ea2dae008eeceb1753a250775668d53b86da1a2"
+    },
+    {
+      "id": "a622a4cb-91b4-4810-adc0-e5e19b1e2f6e",
+      "title": "TECNICO ESPECIALISTA EN CAMARAS DE SEGURIDAD IP",
+      "company": "SAFE CITY",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-especialista-en-camaras-de-seguridad-ip-3907995",
+      "urlHashSha256": "90716c14c63869aae1499247123bb6a1de0cd96c0072b07d89109ec3adda94d9"
+    },
+    {
+      "id": "a72f1533-4372-4ebf-a630-f5e352f1d430",
+      "title": "LICP-010926 - ITO Residente - Temuco",
+      "company": "SIGPRO",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/licp-010926-ito-residente-temuco-3901800",
+      "urlHashSha256": "f6fbfde91ea67a24b124ce8cb64ade2550c2dc800883a9157c64d06ffd613bd1"
+    },
+    {
+      "id": "adee2128-1fb0-45ae-ab28-8bb8cf87313e",
+      "title": "Cajero(a) con experiencia Unimarc Angol",
+      "company": "Supermercados Unimarc",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://laborum.cl/empleos/cajeroa-con-experiencia-unimarc-angol-supermercados-unimarc-1118469523.html",
+      "urlHashSha256": "11e223286f447243100b53ce2566d26bd1d0466db855c7b1e12015308493f553"
+    },
+    {
+      "id": "af6e1169-8ad8-4e56-9d46-bf5f52316a8c",
+      "title": "Jefe de Asesoría - Angol",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
+      "urlHashSha256": "fa8500cb8828effe2ca61b66bcac93f82a893992a602ec3b0e388e656c2636b3"
+    },
+    {
+      "id": "b1c296df-56d4-48a8-9638-186ae3166e45",
+      "title": "Ayudante de Operador Freire / Temuco",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ayudante-de-operador-freire-temuco-3908285",
+      "urlHashSha256": "a1bcac069c5ae513e03f3936ddda45258313daebe7d46c6af9e0a532576afc63"
+    },
+    {
+      "id": "b80928c9-6bb1-46fc-b1d9-eea732003c5c",
+      "title": "AUXILIAR ESTAFETA, Reemplazo, media jornada, programa PRM ANGOL, Reg. La Araucan",
+      "company": "FUNDACION CIUDAD DEL NIÑO",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/auxiliar-estafeta-reemplazo-media-jornada-programa-prm-angol-reg-la-araucan-3894880",
+      "urlHashSha256": "1f8ccc9428964a89aa68964d79ae6a54beee3f0d778e0e9c77ebd7d2311d9afc"
+    },
+    {
+      "id": "b92528e5-61b5-4498-88ca-808c2443a044",
+      "title": "Asesor/a de Ventas y Servicio en Sucursal - Angol",
+      "company": "Atento Chile S.A",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
+      "urlHashSha256": "c817b27661fee23db336d7d9a44fb2347de42b260a80de53b5518a534f469c97"
+    },
+    {
+      "id": "bb4acc7e-41ba-400a-bbc8-a58c3c8e4954",
+      "title": "Encargado(a) Desarrollo Organizacional y Gestión de Personas - Temuco",
+      "company": "Sur Talent",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-a-de-desarrollo-organizacional-y-gestion-de-personas-temuco-3901433",
+      "urlHashSha256": "d697d8486c507bd727674143809e974b955d17509cd916cfee80cd3e3c1c026b"
+    },
+    {
+      "id": "bdaed372-0383-4771-9c3e-d4a80207d823",
+      "title": "TECNICO EN TELECOMUNICACIONES ANGOL (MOVISTAR)",
+      "company": "CONFIDENCIAL",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
+      "urlHashSha256": "173964b29fca14e45f5d3cf351e17b0662708eb90c4ceb1527bf83566e5660b7"
+    },
+    {
+      "id": "c1f68577-755b-430c-bf47-ba66df0cc6da",
+      "title": "Se busca Contador/a – Angol y alrededores",
+      "company": "CHILENERGIA",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-contador-a-angol-y-alrededores-3893595",
+      "urlHashSha256": "21441f0d0469ee7576dc9d5f2f186bb0daa524d8377ead26d61c50ccb502e7af"
+    },
+    {
+      "id": "c510a4de-9dcf-4530-bb86-f859eb1b73a5",
+      "title": "DIRECTOR/A PRM- TEMUCO",
+      "company": "Fundación Talita Kum",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/director-a-prm-temuco-3902007",
+      "urlHashSha256": "c80f6053d52146f74578a5b7e6b36b46c5b4a37c26d63d90d200547609b672b9"
+    },
+    {
+      "id": "c803a9c9-c0a1-4ac8-ae1e-1daa0a006095",
+      "title": "Cajero(a) con experiencia Unimarc Collipulli",
+      "company": "Supermercados Unimarc",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "url": "https://laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
+      "urlHashSha256": "dee519bc83f567657536106051ab7be5e065d066265dbce7af3f0031d4b62aa6"
+    },
+    {
+      "id": "c9442059-2507-4a21-81e5-e06d9303c04b",
+      "title": "BUSCAMOS TÉCNICO INTEGRAL EN TERRENO",
+      "company": "Tecno Parischewsky",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/buscamos-tecnico-integral-en-terreno-3909904",
+      "urlHashSha256": "ab60a2217b77101367d3b4ada9f33277041aa0b77e1565dde8cd42850a5d650b"
+    },
+    {
+      "id": "c9a31c5f-adb7-4b2a-9211-a311a1dfbebd",
+      "title": "Operador de Harvester (Cabezal Waratah 616C) - Licencia Clase D - Concepción | Chiletrabajos",
+      "company": "chiletrabajos.cl",
+      "workCommunes": [
+        "Mininco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-de-harvester-cabezal-waratah-616c-licencia-clase-d-3860557",
+      "urlHashSha256": "f713eec18113e9f4db08083c2eaf9d0bf7bee22970695ca21db949f2b1b51771"
+    },
+    {
+      "id": "cb47b13c-00cf-4d12-9043-c6906da31736",
+      "title": "Técnico en Administración para AIF - Angol",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
+      "urlHashSha256": "5ca6fdce4da0aaa7911b0c2aa63c00976f1f116fa7cd7948befc21ee3687213d"
+    },
+    {
+      "id": "cb724831-6a31-4fbf-9d8c-c067596f9237",
+      "title": "Prevencionista de Riesgos para AIF - Angol",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "urlHashSha256": "a3a2f2298d5984b06475d84cdaa2f1cd9c91bfeaa24f67dfe95ece554c876041"
+    },
+    {
+      "id": "chatgpt_3903500",
+      "title": "Auxiliar bodega licencia D",
+      "company": "Talentfinder / Infruta",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/auxiliar-de-bodega-victoria-licencia-d-3903500",
+      "urlHashSha256": "3fc22382a04b28397ea9b898079c2743e03f5ac1c15a476ddd09cdea0bcf7ec9"
+    },
+    {
+      "id": "chatgpt_3915323",
+      "title": "Vendedor terreno tecnología",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Angol",
+        "Traiguén",
+        "Victoria"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/3915323",
+      "urlHashSha256": "7b9c2dcc998f4b32ad65628ea79062e1d0abef83865fccab6b9d73da2c0365c5"
+    },
+    {
+      "id": "chatgpt_3923758",
+      "title": "Conductor transporte carga y personal",
+      "company": "Serfonac",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
+      "urlHashSha256": "fcefed72ec34486ee42598905b22a28aec0b3118b2c2e80f3f97ea20f7333db9"
+    },
+    {
+      "id": "chatgpt_cg_31f02250de5f4c72a053",
+      "title": "Cajeros(as) Multifuncionales Full Time / Victoria",
+      "company": "Tiendas Upa!",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/cajeros-as-multifuncionales-full-time-victoria-3068072.html",
+      "urlHashSha256": "31f02250de5f4c72a053f7c376fe5a990dd9ae77136072fb34f1ae7f257d953c"
+    },
+    {
+      "id": "chatgpt_cg_4e0234a5bfdd3b610f25",
+      "title": "Conductor de Transporte de Carga y Personal - Nueva Imperial/Lumaco",
+      "company": "Serfonac Ltda",
+      "workCommunes": [
+        "Lumaco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/3923619",
+      "urlHashSha256": "4e0234a5bfdd3b610f25b03025b740c8f16cf68b329627ab86f5ebec5d65987f"
+    },
+    {
+      "id": "chatgpt_cg_60408f9a973f64dedcf9",
+      "title": "DOCENTE PSICOLOGO",
+      "company": "CORPORACION HD SPA",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/docente-psicologo-3915967",
+      "urlHashSha256": "60408f9a973f64dedcf9c00452d936065d0ff4af97bba5fd2370592550e76492"
+    },
+    {
+      "id": "chatgpt_cg_8dfb2507759d6af5a6ba",
+      "title": "Psicólogo/a Organizacional - Comuna Ercilla",
+      "company": "Empresa Confidencial",
+      "workCommunes": [
+        "Ercilla"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/psicologo-a-organizacional-comuna-ercilla-3924928",
+      "urlHashSha256": "8dfb2507759d6af5a6ba0da1b099ce3c64a6844b2dca3185a21142c383d2e9d3"
+    },
+    {
+      "id": "chatgpt_cg_94705dc3f15d6a32e63f",
+      "title": "Asistente Administrativa de Caja/Victoria",
+      "company": "Talentfinder",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/asistente-administrativa-de-caja-victoria-3070013.html",
+      "urlHashSha256": "94705dc3f15d6a32e63f01f408f9ef257c1d19db0971042a224fbadd250c7c9a"
+    },
+    {
+      "id": "chatgpt_cg_b1991b80dde5d8efe1c9",
+      "title": "Vendedor Terreno - Victoria",
+      "company": "Distribuidora consumo masivo",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-victoria-3932097",
+      "urlHashSha256": "b1991b80dde5d8efe1c9032afc95f2a99b585803321d6760fa0f595d2440e172"
+    },
+    {
+      "id": "chatgpt_cg_cf56d288bde056a1d0fe",
+      "title": "Jefe Asesoría Aeródromo Victoria",
+      "company": "Ingenieros Consultores Asociados S.A.",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/jefe-asesoria-aerodromo-victoria-3065931.html",
+      "urlHashSha256": "cf56d288bde056a1d0fede3553005a5e7d4f5acfbbb875455ac2e1233731167b"
+    },
+    {
+      "id": "chatgpt_cg_d8bc12a30ccf38753378",
+      "title": "Supervisor/a de Tienda / Victoria",
+      "company": "Tiendas de Conveniencia Upa! & Upita y Estaciones de Servicio Shell",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/supervisor-a-de-tienda-victoria-3068102.html",
+      "urlHashSha256": "d8bc12a30ccf38753378c2e632d65c8bd776bbca8e1863023ff523d41f86626b"
+    },
+    {
+      "id": "chatgpt_chiletrabajos_3927989",
+      "title": "REPONEDOR PART TIME MULCHEN",
+      "company": "Cultiva",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
+      "urlHashSha256": "eedd8d86097d3012ce0b619f080a8a8aec504a6f7cc22fc52c9d9d48fa192d09"
+    },
+    {
+      "id": "chatgpt_d_2795b5d75320388ba141",
+      "title": "GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía",
+      "company": "FUNDACION CIUDAD DEL NIÑO",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/gestor-de-casos-jornada-completa-cdc-mca-angol-region-de-la-araucania-3921759",
+      "urlHashSha256": "2795b5d75320388ba141c19a0fa3e292a01cee48cb27c27dce878c9711ad5e81"
+    },
+    {
+      "id": "chatgpt_d_286a02fa884ea7ea2859",
+      "title": "CONDUCTOR PROFESIONAL CON VEHÍCULO SEDAN/DIESEL - ANGOL",
+      "company": "Jobconsulting",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
+      "urlHashSha256": "286a02fa884ea7ea2859e783b25aa95cc20996ea2f21e4c59b97acf55bfd6c5a"
+    },
+    {
+      "id": "chatgpt_d_2e5d13719312865d3636",
+      "title": "Mecánico/a Soldador/a de Maquinaria – Nacimiento",
+      "company": "Serfonac",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
+      "urlHashSha256": "2e5d13719312865d3636cee6e7715d9c1eddd2bb502452e07e00d7818d430875"
+    },
+    {
+      "id": "chatgpt_d_31acc134be48b1637d66",
+      "title": "Electricista de área - Planta Santa Fe",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
+      "urlHashSha256": "7b49a7fcbeb65d1fdd1b4c864d1fe0d5654d6fd314ffe614b3da4643f29e5b71"
+    },
+    {
+      "id": "chatgpt_d_3b694de3e09ff760e50b",
+      "title": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
+      "urlHashSha256": "33102f5b405e7fdd43583c5ee856f55b332bbf2612918a0e7cc6eb72ac6a78f0"
+    },
+    {
+      "id": "chatgpt_d_4bdcac8ef560f0fe716d",
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
+      "company": "Fashion's Park",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
+      "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
+    },
+    {
+      "id": "chatgpt_d_5241af5f68d396e67450",
+      "title": "Vendedor Terreno - ANGOL",
+      "company": "Distribuidora consumo masivo",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
+    },
+    {
+      "id": "chatgpt_d_56d079ed0f37b488c6d6",
+      "title": "Ejecutivo/a Atención a Usuarios, 42hrs, Call Center  Presencial",
+      "company": "Empresa de tecnología e",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
+      "urlHashSha256": "56d079ed0f37b488c6d6a3d44d0419ac5d8b96848244efa95fadf9dc54104acb"
+    },
+    {
+      "id": "chatgpt_d_719dc82e84eb93a138d9",
+      "title": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
+      "company": "Fondo Esperanza",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
+      "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
+    },
+    {
+      "id": "chatgpt_d_ad791baa0556cf59d931",
+      "title": "Reponedor PART TIME PARA TRAIGUEN",
+      "company": "Cultiva",
+      "workCommunes": [
+        "Traiguén"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
+      "urlHashSha256": "ad791baa0556cf59d9313337c89a27a4bff4791d6f467a7dfae5080066b23bcb"
+    },
+    {
+      "id": "chatgpt_d_af9a119e45d5f84851a7",
+      "title": "Mecánico/a de Área - Nacimiento, Planta Santa Fe",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
+      "urlHashSha256": "96350f5be3079cea841a5491143fb26c6356e1fcfb409d9437f39302d2139ef2"
+    },
+    {
+      "id": "chatgpt_d_b479eb4033d3626606d4",
+      "title": "ANALISTA LABORATORIO I-TURNO",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
+      "urlHashSha256": "e528e4b2242e8c0cd02f6089a152b76c13ecd40991c206424f204433c480c77a"
+    },
+    {
+      "id": "chatgpt_d_c86ec67e426e27e24149",
+      "title": "Asistente de Aseo PT 20 HR (Angol)",
+      "company": "Fashion's Park",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
+      "urlHashSha256": "c86ec67e426e27e241495fc15752049361c35f706a5bbf855f80a28a3f09bef4"
+    },
+    {
+      "id": "chatgpt_d_cc0fbbdbedccef4fe20d",
+      "title": "Instrumentista de área - Santa Fe",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
+      "urlHashSha256": "11b791a16011a396820a7bacd137de0d4f824629ad6b3d4a64ec84569785c017"
+    },
+    {
+      "id": "chatgpt_d_d45494ef6c6c2102a759",
+      "title": "Ayudante de Cancha/Teclero (Vacaciones) Mulchén",
+      "company": "SERFOCOL S.A.",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/ayudante-de-cancha-teclero-vacaciones-mulchen-3074287.html",
+      "urlHashSha256": "48b2b32c4cc89fbe5d53cb955901cc4c43747a268b7c1a786ce2cad079c75d40"
+    },
+    {
+      "id": "chatgpt_d_d5b4f7c3b41de14eac84",
+      "title": "INSTRUMENTISTA AREA",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
+      "urlHashSha256": "0228c36affcb1a1dc883bfabfd613dc91b1c7fda131e25398c651bf025e4f9fa"
+    },
+    {
+      "id": "chatgpt_d_e0f58afad664f8f2609d",
+      "title": "Ejecutivo/a de Atención al Usuario Jornada Nocturna,  Call Center 42hrs",
+      "company": "Empresa de tecnología e",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",
+      "urlHashSha256": "e0f58afad664f8f2609d5094f3e14b972dc0d98e6493920bd4cd3bddaeab644c"
+    },
+    {
+      "id": "d119233d-199d-47c1-a189-b546bd1f5f14",
+      "title": "Mulchen - Promotora 20 hrs - mayo 2026 | Laborum Chile",
+      "company": "laborum.cl",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "url": "https://laborum.cl/empleos/mulchen-promotora-20-hrs-intime-1118304771.html",
+      "urlHashSha256": "3bea920297c6f2acc273afd3b41021baafb5ee6622cc2a217094baccae18ece5"
+    },
+    {
+      "id": "d2aa1cfb-84a2-4b34-9226-05c0ab98ace0",
+      "title": "Prevencionista de Riesgos (Reemplazo Pre y Postnatal) - Los Ángeles",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-reemplazo-pre-y-postnatal-los-angeles-3905150",
+      "urlHashSha256": "fc33b4e991c7117494707c7c28e9f2c9d2e4991a82225157ad3dd28c12f871d2"
+    },
+    {
+      "id": "d4025ee5-f499-4daf-b8ed-703a76642a92",
+      "title": "SUPERVISOR CLINICO, jornada 10 HS., CDC LAS ARAUCANIA",
+      "company": "FUNDACION CIUDAD DEL NIÑO",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-clinico-jornada-10-hs-cdc-las-araucania-3897652",
+      "urlHashSha256": "6118c8c52a8d32081ded4d7dec2f49ade769541f8769aea5cf66256bb2f1c5e6"
+    },
+    {
+      "id": "d73ebbc0-c815-455d-b6ed-015e620cedf6",
+      "title": "Ingeniero/a Procesos y Excelencia Sr",
+      "company": "CMPC",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+      "urlHashSha256": "28d0b11cf6dfcabbe985949a450fcdade0b9433d5c19f91c604221f79ecd7cf9"
+    },
+    {
+      "id": "db41cd36-6437-432d-bd52-2fbf873591cc",
+      "title": "Encargado/a de Sala Nacimiento, Formato SuperBodega aCuenta - junio 2026 | Laborum Chile",
+      "company": "laborum.cl",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://laborum.cl/empleos/encargado-a-de-sala-nacimiento-formato-superbodega-acuenta-walmart-chile-s.a.-1118349826.html",
+      "urlHashSha256": "2acdf06d4afac6c3801ce572e71e3e65d1a3458f132fead789d3c6fd5789adaf"
+    },
+    {
+      "id": "dbfdfcf9-de97-4d03-a92e-7c596c23c5fa",
+      "title": "Practicante en logística - Lautaro",
+      "company": "Maxservice",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practicante-en-logistica-lautaro-3905388",
+      "urlHashSha256": "bc08cbef2efee87f1b5144c57c1aa8bb6befeff2bd5fcdd67cd183abf4e45bdf"
+    },
+    {
+      "id": "de2a9153-6f5c-41e0-abda-5831fec49024",
+      "title": "REEMPLAZO SECRETARIA/O CONTABLE AFT-PF ERCILLA - Temuco | Chiletrabajos",
+      "company": "chiletrabajos.cl",
+      "workCommunes": [
+        "Ercilla",
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/reemplazo-secretaria-o-contable-aft-pf-ercilla-3849478",
+      "urlHashSha256": "cafadb8a86d09015704899fe1b3bfa7e244809699b634891936c93c1d9934c70"
+    },
+    {
+      "id": "eb54af21-eccd-4e3c-ace2-d06da87235c3",
+      "title": "Psicólogo (a)",
+      "company": "PROGRAMA AFT PF FREIRE TOLTÉN TEODORO SCHMIDT",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/psicologo-a-3908370",
+      "urlHashSha256": "fc77132b6ef52d5cce29404d3d6e42ac9a6c7087306013735bbdb5eb07668e54"
+    },
+    {
+      "id": "f33b614f-626c-4c26-8d83-d9d982d21979",
+      "title": "AYUDANTE MECANICO AUTOMOTRIZ",
+      "company": "TRANSPORTES TRANS-CAVALIERI",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ayudante-mecanico-automotriz-3909253",
+      "urlHashSha256": "1b5f9a9eb0bce00392c71f8633a47c1fe64f44ceb7afa469d6b0bb95bd8185ab"
+    },
+    {
+      "id": "faf70fdd-81c8-4c29-a966-7b14c547cf43",
+      "title": "Técnico Mantenimiento Telecomunicaciones - Temuco",
+      "company": "OLITEL",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-mantenimiento-telecomunicaciones-temuco-3909895",
+      "urlHashSha256": "3c248a2e8b55dc54d67cb646483ba89abd717483028e941d9314d48251b33194"
+    },
+    {
+      "id": "fdc5843e-4995-4b6e-b119-f80c20e9a0cb",
+      "title": "TELETRABAJO FULL TIME",
+      "company": "MOSAICO CHILE SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/teletrabajo-full-time-3754448",
+      "urlHashSha256": "3bd8e454be7ae94fea863ad161d94a3282f046b715a2e7b399e831d72003c546"
+    },
+    {
+      "id": "fde7b165-fb34-4961-ae5a-3c3a13fde29d",
+      "title": "Ejecutivo Atención al Cliente Sucursal TEMUCO",
+      "company": "Importante AFP",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-atencion-al-cliente-sucursal-temuco-3908191",
+      "urlHashSha256": "544d0ab135d098e8e3979191b2d94f54ba454a897d6e500710754e799febc495"
+    },
+    {
+      "id": "free-01131e7f1a9a418dbbd6517068c1b53d87b5fcac",
+      "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Los Ángeles",
+      "company": "SMU",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-los-angeles-3916548",
+      "urlHashSha256": "b5da9b6a28cd9489ce7e7482d13e267212ceeba7323598ee12497c44c4550633"
+    },
+    {
+      "id": "free-02a9addd5afe7fe8f551da19491da66e9bfff2e4",
+      "title": "Jefa de Tienda - Temuco",
+      "company": "INTIME",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefa-de-tienda-temuco-3924704",
+      "urlHashSha256": "4e07ba860d4066938bffc027d7cebe3c0e8bb194c16947d7dd8ea124368acafe"
+    },
+    {
+      "id": "free-03192adde390e52fa8e258940ddca644355a9e30",
+      "title": "Supervisor(A) de Ventas (Los Ángeles)",
+      "company": "Coca-Cola Embonor",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-a-de-ventas-los-angeles-3923489",
+      "urlHashSha256": "a605df6421276c0744a59f17bb21875e604361e5fe1d7f09049276e58b4300b5"
+    },
+    {
+      "id": "free-04989dfe39410fce4f53d87b2738221797eae6a4",
+      "title": "Lavador de Vehículos - Temuco",
+      "company": "People Match",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/lavador-de-vehiculos-temuco-3917274",
+      "urlHashSha256": "05a2b2b8604acbe1cef14c55b7ebafea9f652706dd79fdc8567946577ff9ff44"
+    },
+    {
+      "id": "free-059323c7fd8df82b08b138be6e58bee1e9a21fc6",
+      "title": "Encargado/a de Administración y Finanzas",
+      "company": "Tecno Parischewsky",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-administracion-y-finanzas-3918602",
+      "urlHashSha256": "7f57dcca2f41567462cca39ec57298f246d2d687d877762b479dd1aea498ecff"
+    },
+    {
+      "id": "free-0a17aa02c66cc989622aa6654ebb9bf0fbcbd0a0",
+      "title": "Medico/a especialista en dermatología Temuco",
+      "company": "Clinesthetic",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/medico-a-especialista-en-dermatologia-temuco-3923983",
+      "urlHashSha256": "3c37077fb42bf8dc64472eb89014a4f9e29b72083b6aa5590f7e2d3318ab8105"
+    },
+    {
+      "id": "free-0b1af70ce880f37381131b01a3f267e2781e9f40",
+      "title": "Asistente Clínico Laparoscopía Temuco",
+      "company": "First Consulting",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-clinico-laparoscopia-temuco-3888355",
+      "urlHashSha256": "5a665ab9dbeaf954f0c8eb7d4e04af2a1d7ee967085fce6b0d0e78fafbc2ca60"
+    },
+    {
+      "id": "free-0bb1609eccde49e87fb5f0bfa68dd061b72ab089",
+      "title": "Operador de Procesos Industriales y Químicos Freire",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-de-procesos-industriales-y-quimicos-freire-3930114",
+      "urlHashSha256": "50357b25d2ea74fd81ddf6a06744f5861638ef73df45d4f6e8ede64c0b46f2c1"
+    },
+    {
+      "id": "free-0e04eb3bd57991d9c616eec3ab5bde90d5eda964",
+      "title": "Vendedora - Part-Time - Temuco",
+      "company": "LORENZO DI PONTTI",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedora-part-time-temuco-3930548",
+      "urlHashSha256": "b5b1ebab30947cdaa04247f281ce5474ebea298e7cbd6ad54068f720f96d4014"
+    },
+    {
+      "id": "free-0f2015ac693e686510b4ae9ced6f7e6376052694",
+      "title": "Auxiliar Multifuncional de Local Gastronómico",
+      "company": "Empresa de Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/auxiliar-multifuncional-de-local-gastronomico-3930623",
+      "urlHashSha256": "0695cf30a46b6c296c1c69e41270854ae5dcce589b861dd2b6829e0631d34b8d"
+    },
+    {
+      "id": "free-118da0dc534468acd1eef89dea1c5ac9927f8b2c",
+      "title": "Jefe(a) de Sucursal - Los Ángeles",
+      "company": "Sur Talent",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-a-de-sucursal-los-angeles-3899799",
+      "urlHashSha256": "8dded086ae3908da6de9f31b0e0bf3a71287e6d499ca4b17d8e4eed5a65e1db9"
+    },
+    {
+      "id": "free-149bb65066307aa45733b5f251ca3055f042eeeb",
+      "title": "VVendedor en Terreno - Angol Victoria Traiguén",
+      "company": "Manpowergroup",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+      "urlHashSha256": "688f28c809dc3463f046fab29977d6012c4887f1455555d8c72f105714262867"
+    },
+    {
+      "id": "free-14e1df80032c1d933c364ea8439ec7f9c24b73eb",
+      "title": "ENCUESTADOR EN TERRENO TEMUCO",
+      "company": "Metaservicios Spa",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encuestador-en-terreno-temuco-3907224",
+      "urlHashSha256": "1506d87b354b79cccc444a6c98ba0f7bf550decfce1c3ba3ebc61c584c591d25"
+    },
+    {
+      "id": "free-1843a3809a023ee683216d2cc05ddf709bb33344",
+      "title": "Cajero/a Bancario/a ANGOL",
+      "company": "SERVICIOS HELPBANK S.A",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "urlHashSha256": "06be2b623b31c335001a29edf6c88d326a9aeccb3f04bb824244b1599ecd3367"
+    },
+    {
+      "id": "free-18d099565ad2837cd726fc0fc65bb9cf366cc2eb",
+      "title": "Lavador-Movilizador de Vehículos - Temuco",
+      "company": "People Match",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/lavador-movilizador-de-vehiculos-temuco-3917265",
+      "urlHashSha256": "25c9c52900be7a84f50fe731ba4834cdc1e95ff6d581f146e6bf844da6817a49"
+    },
+    {
+      "id": "free-1ab943fff1f7fb94adad6b13f0dd343d8dfb34e8",
+      "title": "Subjefe de Tienda Victoria´s Secret, Temuco",
+      "company": "Grupo Axo",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/subjefe-de-tienda-victoria-s-secret-temuco-3925223",
+      "urlHashSha256": "90dbf0c31a042819b0e03e29a22e7db59674f8661189f6f7492a5be339d93322"
+    },
+    {
+      "id": "free-1cdb9ee2ffbe1f0dec12ba4947eb89df5c82a0b4",
+      "title": "Jefe de Turno",
+      "company": "Talentfinder",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-turno-3904674",
+      "urlHashSha256": "0d197fa56f0771e1e55eaff5e328c0cb08c82e51ce4dd85c70250518b63a1bbc"
+    },
+    {
+      "id": "free-1d5df8c34e6fe75a051ee1f061e1a8ca446a3cb9",
+      "title": "ASISTENTE ADMINISTRATIVO(A) - PARTIME TEMUCO",
+      "company": "BSM Asesorías Empresariales Limitada",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-administrativo-a-partime-temuco-3919723",
+      "urlHashSha256": "501da542c8cea83117e3411f2fa1ecb76538c78488e254a01b45486162933599"
+    },
+    {
+      "id": "free-1e1f852485e203d193c60d7433a8f09cf0a2b409",
+      "title": "Vendedor Canal Tradicional - Temuco",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-canal-tradicional-temuco-3799267",
+      "urlHashSha256": "aad38aca5ef645435ed6aa2553945811e4c6a3275e0477657ea84154bd7610a3"
+    },
+    {
+      "id": "free-1e61dadfa7f9f54a381828f2f5f88b1c50a4f11a",
+      "title": "Analista de Calidad de Temporada Los Ángeles",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/analista-de-calidad-de-temporada-los-angeles-3921732",
+      "urlHashSha256": "bebead5ff8374d4fe81f15cbefefffdbbf9f9363a516717c30b433d666820924"
+    },
+    {
+      "id": "free-1f1048ca8068782b975256f95fee74e17c388b63",
+      "title": "Práctica Profesional – Auditoría",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-auditoria-3929288",
+      "urlHashSha256": "8fe7b83ac18be4fd2a21cff79e0c878842daaa413dde1e5188d7bd660c702af1"
+    },
+    {
+      "id": "free-20cbfdabf258c9afb793b5997344491617911072",
+      "title": "Práctica Profesional - Planificación y Logística",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-planificacion-y-logistica-3928367",
+      "urlHashSha256": "ea0c5cbe6940780a8e37ff775f0885af2ed828b98e9d828d135a0e9e225b6b50"
+    },
+    {
+      "id": "free-21673562698a3a0c4f3e7947d22e6e4cf7b0b7a0",
+      "title": "Buscamos Encargado/a de TI, Proyectos y Odoo",
+      "company": "Tecno Parischewsky",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/buscamos-encargado-a-de-ti-proyectos-y-odoo-3918631",
+      "urlHashSha256": "644984ed663d6aeb5ed124ce62a12c660ebd26f4bb7900b89b3520cb324a7fd8"
+    },
+    {
+      "id": "free-21866ae127364f5d6c49169023015de009456f5c",
+      "title": "DOCENTE ED. PARVULARIA",
+      "company": "IMPORTANTE EMPRESA DE CAPACITACIÓN",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/docente-ed-parvularia-3920635",
+      "urlHashSha256": "15d9d1884ac8200294f2e0bb59a4362c8deedc0c30527312abb1966594cc744b"
+    },
+    {
+      "id": "free-24733501af72fd876888075647fc8e48f5dc0531",
+      "title": "Ortodoncista",
+      "company": "Clínica dental en victoria",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ortodoncista-3929011",
+      "urlHashSha256": "f36ac8f4fffee910321498d1ca6287d24c69f64502da73b3be8a8af70be9df81"
+    },
+    {
+      "id": "free-2729f9071b77807f924989d2dfd60e0d28712739",
+      "title": "VENDEDOR FULL 42 HORAS TIENDA BLACK TEMUCO",
+      "company": "BUBBA CHILE SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-full-42-horas-tienda-black-temuco-3929168",
+      "urlHashSha256": "c6ac1e16ddae283ead12133f5728cded3356a945fb3690afb6c71fa84ccc409d"
+    },
+    {
+      "id": "free-2ab829531399dcad15901450a0b68f786ca996a6",
+      "title": "VENDEDOR PT 20 BLACK TEMUCO (SAB Y DOM)",
+      "company": "BUBBA CHILE SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-pt-20-black-temuco-sab-y-dom-3929170",
+      "urlHashSha256": "54148f25599b73ef97406b6c532083f0addc25837dc0e05de5ea0ea2cfc48064"
+    },
+    {
+      "id": "free-2c74be00d4589b2875d58e0b01d55d8f3596f8b5",
+      "title": "Relator para curso de Administración Gastronómica",
+      "company": "Prestación de Servicios de Capacitación Limitada",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/relator-para-curso-de-administracion-gastronomica-3919940",
+      "urlHashSha256": "e3fbf4c96f04831fafdb012ce6fe1c494a868eb8296c1409340520ade9c00512"
+    },
+    {
+      "id": "free-2e1d1d9cfacf82451b64f76b3d1ce15ccde89eb8",
+      "title": "Mecánico/a Automotriz – Nacimiento",
+      "company": "Serfonac",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
+      "urlHashSha256": "728743fa1bc6044fab11bee888fd1f8764785ba2965ddb7311f9d5d5e3060729"
+    },
+    {
+      "id": "free-2fcd588aae3ba3abc69163cb1d98623ced600cfc",
+      "title": "Práctica Profesional - Tesorería",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-tesoreria-3928348",
+      "urlHashSha256": "3c785e0a6015b654b4754d6533f04f8b3468e34b97b08fb59cd6f8efcc30c946"
+    },
+    {
+      "id": "free-327ec5a62ab6a602a4a86044a63a08e9b92b15ae",
+      "title": "SUPERVISOR DE MONTAJE GALPON",
+      "company": "CONSTRUCTORA GONZALEZ GARCIA",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-de-montaje-galpon-3923511",
+      "urlHashSha256": "d1de7155b3cb0474272e71c5eb079d3ffbbc2c35f51e090d41413f381b1b5944"
+    },
+    {
+      "id": "free-32c91f4f9ce2845d5ea5b85ad42f118af44b4951",
+      "title": "Técnico en Telecomunicaciones ftth Los Ángeles",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-ftth-los-angeles-3913083",
+      "urlHashSha256": "f384ffb68282ed11c78c72544773283af6d53d3182d9a0dbab751213a85f15f0"
+    },
+    {
+      "id": "free-34a2da233ade0d3208a47e923a0058778c5ff96f",
+      "title": "Practica Laboral, Técnico trabajo social",
+      "company": "Innova Vida SpA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-laboral-tecnico-trabajo-social-3923059",
+      "urlHashSha256": "6a41abe0be836ab76297f5128a053238e54234c310ccc9010aa87c7693e65909"
+    },
+    {
+      "id": "free-36dabf6d0767e19367b244878bd86e8cf82f38c5",
+      "title": "Bodeguero/a Plan Navidad Full Time Preunic - Angol",
+      "company": "Preunic",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-full-time-preunic-angol-3906496",
+      "urlHashSha256": "69651c765c80a8521ef68abb90dc8e6c37bf3445531fa8c16c74a67ad17cb94d"
+    },
+    {
+      "id": "free-3be2713757012d47b932d34a3ce787fae4a896ee",
+      "title": "MERCADERISTA PART TIME /TRAIGUEN",
+      "company": "CULTIVASP",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/mercaderista-part-time-traiguen-3926111",
+      "urlHashSha256": "516926d4f7502adfe04a9499494d50df0b7bd97e0afd2d6d56f32df5b64209b9"
+    },
+    {
+      "id": "free-3d3f9fa91ee8942da92bb88f07a7eaed8fef3043",
+      "title": "Se buscan Enfierradores – Obra Hospital de Nacimiento",
+      "company": "Constructora aljo",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",
+      "urlHashSha256": "5813016bef2debcf1ea2421697427dbf282df73bcfeb9e53bb61c863626fd688"
+    },
+    {
+      "id": "free-3e7843cd840ec7cbe08b8922035353907fd1622c",
+      "title": "Bodeguero/a Plan Navidad Preunic Angol",
+      "company": "Preunic",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963",
+      "urlHashSha256": "ddad4ab0c134985d4f9c80bb0590c015df61885c539e8b211dbd0f5314f6f4db"
+    },
+    {
+      "id": "free-3fba47530376cc60f714e881756b58f00a7636cd",
+      "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
+      "company": "Empresa de alimentos",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+      "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
+    },
+    {
+      "id": "free-3ff47957892f9c91c43887029ef188fad6b55713",
+      "title": "Vendedor@s con experiencia Terreno Telecomunicaciones, Pos Pago, Intangibles",
+      "company": "Empresa Venta Terreno",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-s-con-experiencia-terreno-telecomunicaciones-pos-pago-intangibles-3921308",
+      "urlHashSha256": "b4277e6af50ea116a4453b6b976d422124509af45b82d4a7b804f5f2f613dafd"
+    },
+    {
+      "id": "free-40350e4551cc1bcb23ac7da326ae56f76b9c2330",
+      "title": "ITO Civil/Bodega y/o Logística",
+      "company": "CGESTA",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ito-civil-bodega-y-o-logistica-3927903",
+      "urlHashSha256": "ccd4e9398872c0d9ba33b060ef4a9134affcc5a732ffc3b91dd034cb2c0a012d"
+    },
+    {
+      "id": "free-40aa0ea3d7133b2bf2dd3e94390954b997828cc0",
+      "title": "Topógrafo/a de Obra",
+      "company": "Empresa de Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/topografo-a-de-obra-3927895",
+      "urlHashSha256": "486046cdbedd9d4ca3aff4b37ab55aabaeaba468e89019d8b2a5f252e865961b"
+    },
+    {
+      "id": "free-4181a021061ccc502963290b3ddb8d8309458a44",
+      "title": "VENDEDOR TECNOLOGO KARUN TEMUCO",
+      "company": "KARUN CHILE SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-tecnologo-karun-temuco-3905989",
+      "urlHashSha256": "605e2ca7cc106a2e2915e412298fe356ae10369c0f8ff6b1c4aff92c913b9a4c"
+    },
+    {
+      "id": "free-43975c95f409f8eaa2425e4d09f4d92f2d51d090",
+      "title": "Apoyo de Navidad Punto de Venta beauty.plus - Ripley Temuco",
+      "company": "beauty.plus",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/apoyo-de-navidad-punto-de-venta-beautyplus-ripley-temuco-3927136",
+      "urlHashSha256": "f94346b9028efa5f558cad30a85c26b3d89a0a317988148a778dc372b5b5f8cc"
+    },
+    {
+      "id": "free-449c501fef2c49e6a590fb38495fc6a73700dac1",
+      "title": "Psicólogo de reemplazo 21 dias",
+      "company": "FAE llequen 2 Los Ángeles",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/psicologo-de-reemplazo-21-dias-3920182",
+      "urlHashSha256": "c684408fa60fb2e91e79786d17e6bc0f093613642392f33da7152b5667d8ee49"
+    },
+    {
+      "id": "free-45a71858426103fe00552fa28c2817a4205e9f22",
+      "title": "Medico General ( Los Angeles)",
+      "company": "Centro Medico del Trabajador",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/medico-general-los-angeles-3927668",
+      "urlHashSha256": "e9e14cfd52979b6c68cb3b7ae1c0d0ccf0db9c6c8b6fb7ad6cfb98f9006d3867"
+    },
+    {
+      "id": "free-46b8f7a545301ebe0ea6cd9b4ff836a158c809b8",
+      "title": "Coordinador Central de Despacho Temuco",
+      "company": "PeopleGo",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/coordinador-central-de-despacho-temuco-3921048",
+      "urlHashSha256": "0634225be8cfe239461b76ae31d15e79d8cb618c8a2924bb1f52c217ce86c945"
+    },
+    {
+      "id": "free-47a8b408c17364f6f59053104cf8deb95a0b7797",
+      "title": "Técnico Telecomunicaciones - Los Ángeles",
+      "company": "DOMINION SPA",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-los-angeles-3926874",
+      "urlHashSha256": "7bb3aed2ccaae00712e36badc2b003c5419d663d23360542f3bb3cbfcd71c40f"
+    },
+    {
+      "id": "free-47b7869f8e20d7028983ee3191737534e0dfc783",
+      "title": "Operador de Planta Los Angeles",
+      "company": "confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-de-planta-coihue-3921386",
+      "urlHashSha256": "601ea03d62c7f176a4b8ffaff9cbb4850c1a8d3b9af85bd9ad3ca8a428246c2d"
+    },
+    {
+      "id": "free-47f931148c792fd20fce38b831179faeb3968296",
+      "title": "Técnico Telecomunicaciones - Temuco",
+      "company": "DOMINION SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-temuco-3926881",
+      "urlHashSha256": "ea719ef21fda561617b320ea969342ea54415f3f38faeeb172a45083ab863141"
+    },
+    {
+      "id": "free-48296936cbc5c9b9f8d5d2c21cbd0c78028857ce",
+      "title": "Operador de Producción",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-de-produccion-3914756",
+      "urlHashSha256": "e31caf6da07a16c32a52e57d04db1f8626b1916257c190de75e2d8e1fd9d6971"
+    },
+    {
+      "id": "free-4ccf94719ecaafadedf67d2080eeba966168a840",
+      "title": "Técnico Telecomunicaciones - Angol",
+      "company": "DOMINION SPA",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-angol-3926909",
+      "urlHashSha256": "561f393870110fb67e2a81d40bb42b6a97ce47881c7d66aec87d7a3464a4848b"
+    },
+    {
+      "id": "free-4ce3e39af3dfe15996b0a91c160c8d2dc9f61516",
+      "title": "Cajero/a Bancario/a TEMUCO",
+      "company": "SERVICIOS HELPBANK S.A",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-temuco-3738008",
+      "urlHashSha256": "8ecdb2f07ce6c0942679c24fd76af7919ac1081a3b135ea1446a38d016dbc312"
+    },
+    {
+      "id": "free-4db422e5e4d5a3f4a9e556a53d0319235e6ba31b",
+      "title": "Vendedora Part Time - Apertura Raindoor Temuco",
+      "company": "Raindoor",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedora-part-time-apertura-raindoor-temuco-3930167",
+      "urlHashSha256": "4965523342589638a2a8065c7b90638a3555719f57374d734627784ac4d318e7"
+    },
+    {
+      "id": "free-4e760612815c1dc9ee587e7b8e55cbc90506f446",
+      "title": "SUBJEFE DE TIENDA PORTAL TEMUCO",
+      "company": "EMPRESA DE RETAIL - MARCA INTERNACIONAL / VESTUARIO",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/subjefe-de-tienda-portal-temuco-3927277",
+      "urlHashSha256": "89c643406ae0e633b31c609e15a4210ceebd8e3130b570a7b997cbbd64869153"
+    },
+    {
+      "id": "free-4fe545c67ca5d15c3882aae5113ce376e7e174f7",
+      "title": "VENDEDORA PART TIME - Easton Temuco",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedora-part-time-easton-temuco-3929739",
+      "urlHashSha256": "84b799edebdb0290d6402c3f620b09c7ad8e7eb16194a3d73d3c654ed18e7b3f"
+    },
+    {
+      "id": "free-537992c8372d0b477f72c67255af3c7bea9f1700",
+      "title": "Ejecutivo Atención Público Sucursal Temuco",
+      "company": "Isapre Banmedica",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-atencion-publico-sucursal-temuco-3928272",
+      "urlHashSha256": "a076cf5993fd714ea4f39f417025ea4bd4b458315911d23c4571811994b4da9e"
+    },
+    {
+      "id": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+      "title": "Supervisor Técnico de Obra - Mulchén",
+      "company": "Aguas Andinas",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
+      "urlHashSha256": "970437a2ef96421bbc171863c478a3172ae91ac7aefc5cd70080355d4fcb35a4"
+    },
+    {
+      "id": "free-5656d92711f693c876be6cdbdac3e750a380c782",
+      "title": "Bodeguero/a Plan Navidad Preunic Temuco",
+      "company": "Preunic",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-temuco-3928804",
+      "urlHashSha256": "a9d14104d73d8fbec52114bd30759a1feebc936aafd1c44e76225b565a7210a1"
+    },
+    {
+      "id": "free-57d40649fd8c5326cc4a66c29810776ed2c97e0c",
+      "title": "TEM vendedor(a) chocolatería",
+      "company": "Empresa del rubro chocolateria",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tem-vendedor-a-chocolateria-3929181",
+      "urlHashSha256": "ca0ae5c67c40059120cc97d3cfcff517db62294855a0ddde3d4f46c23ea97f2f"
+    },
+    {
+      "id": "free-589441136ce7e47f314798250dbee5583189fbff",
+      "title": "¡Seguimos Creciendo! Buscamos Talento Comercial en Los Angeles y Chillán",
+      "company": "Consolidada Empresa Regional",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/seguimos-creciendo-buscamos-talento-comercial-en-los-angeles-y-chillan-3862955",
+      "urlHashSha256": "255fc66c9c52e8a8e99b5aee4ac685c42cefd2831cf34b52351a3e30f3273e02"
+    },
+    {
+      "id": "free-5b0ec5cd509c0b635746599a131a06e3fafb009a",
+      "title": "Ejecutivo/a Comercial de Terreno – Energía Solar para Pyme/Empresas – Temuco",
+      "company": "SolarSur",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-comercial-de-terreno-energia-solar-para-pyme-empresas-temuco-3927770",
+      "urlHashSha256": "193465153bd6bfbda52e6dd9e37a79a0d86fabee03dde89ea50d33ed34a64831"
+    },
+    {
+      "id": "free-5c501a82c77722bc79c13b4475dcf1655406c664",
+      "title": "Atención Sala de Ventas",
+      "company": "Molinera Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/atencion-sala-de-ventas-3928681",
+      "urlHashSha256": "cd26d3013a08df3616e080b4da346b1ca112f3ca11b62171c448ed00c90143af"
+    },
+    {
+      "id": "free-60b3c4cdc408a65a15d1dd47edb84c87e46d6f87",
+      "title": "Analista Control Gestión Industrial (Pitrufquén)",
+      "company": "Quillayes Surlat",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/analista-control-gestion-industrial-pitrufquen-3906559",
+      "urlHashSha256": "46f265acacc3c8a38173ad10e460bb120d4e3eac3a3de9bcd17288ae7f11bbe6"
+    },
+    {
+      "id": "free-6129a1780959a30639118cec8010d9f8a60ec48c",
+      "title": "Trabajador(a) Social Temuco con experiencia en entidades Patrocinante",
+      "company": "ENTIDAD PATROCINANTE",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/trabajador-a-social-temuco-con-experiencia-en-entidades-patrocinante-3920148",
+      "urlHashSha256": "1e8b871c0822bf9058379f87489dfaae00e78f4bd1ee8158e918509c750be0c4"
+    },
+    {
+      "id": "free-62994c379d6e0fcd20e79f564fff4737b7590707",
+      "title": "VENDEDOR (A) TEMUCO",
+      "company": "VENTAS DE ACCESORIO DE TELEFONIA MOVIL",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-a-temuco-3872530",
+      "urlHashSha256": "6ad7b485676d89ba770c580c45530d5ce7d07e302e6aecd1991d87feca01d699"
+    },
+    {
+      "id": "free-62d19a0bf91f3ec74f336a247a41a2e6c214c5f3",
+      "title": "DOCENTE DE MATEMATICAS, REEMPLAZO",
+      "company": "LICEO AGRÍCOLA DE NEGRETE",
+      "workCommunes": [
+        "Negrete"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/docente-de-matematicas-reemplazo-3755017",
+      "urlHashSha256": "8058b3072cf8cc198cc8d5018e748d1b76c2090d5bc34fba1fea393c0f23ec0b"
+    },
+    {
+      "id": "free-647191f53b5acac398995bfa658242dbadda98fa",
+      "title": "Promotor/a Full Time Martes a Sábado Portal Temuco Paris - TOP",
+      "company": "TOP",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/promotor-a-full-time-martes-a-sabado-portal-temuco-paris-top-3928351",
+      "urlHashSha256": "8cbf41a5c9078ece22ec2c21824aff2b62d11ace55ad25eacd33a66439add6df"
+    },
+    {
+      "id": "free-665cc0de1652d9b7d944064930c025d6a3e38dff",
+      "title": "Práctica Profesional / Técnica – Prevención de Riesgos Cohigue",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-tecnica-prevencion-de-riesgos-cohigue-3929311",
+      "urlHashSha256": "7616a16b4580c23f37813e7b37da0356b7a5fd5a6ba0b3ab536583cb5c822df7"
+    },
+    {
+      "id": "free-67cea1bc5690aa00b96f4fed15774a4e18296b67",
+      "title": "Apoyo de Temporada / MacOnline Los Angeles",
+      "company": "MacOnline",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/apoyo-de-temporada-maconline-los-angeles-3924065",
+      "urlHashSha256": "fc6fce461b315a8ecf8e01ac0877171e864f602bb19ac8e9fdb03b19b9a45ace"
+    },
+    {
+      "id": "free-6dbc0516755d0b8d9088692610f1efcdae019f8e",
+      "title": "Bodeguero con licencia clase D y B",
+      "company": "Bomcort",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/bodeguero-con-licencia-clase-d-y-b-3922540",
+      "urlHashSha256": "e6d6f3a13efc1651c21e9101a425832dffc4aa8ecb63812a3994030298c0798b"
+    },
+    {
+      "id": "free-6e5a9ad6b01ddd211466efd28e26d148fa0689aa",
+      "title": "Psicólogo/a Organizacional - Los Angeles",
+      "company": "Empresa Confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/psicologo-a-organizacional-los-angeles-3924939",
+      "urlHashSha256": "633b49949b7e645328e9a8fe419ea29fc8cff4be89c04b1f7d6d4333d3561060"
+    },
+    {
+      "id": "free-70014f645faf914a73095c66e37a5bbdb02106d9",
+      "title": "Implantologa",
+      "company": "Dental",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/implantologa-3925998",
+      "urlHashSha256": "19e85151dda3980efa2831ce7cbe92019f14bb89d9c78f4bbd4ce5f6913a6afb"
+    },
+    {
+      "id": "free-705c032bc9933921ef443b674f70caeca424a5e7",
+      "title": "Jornal Temuco",
+      "company": "Ingeniería y construcción eléctrica Sinec",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jornal-temuco-3928983",
+      "urlHashSha256": "ad19a19188dd0ae2d95e0a43fe82abd6557d12d2fdaaa7bae76d293402977e4d"
+    },
+    {
+      "id": "free-7169ed5398f396c8542b2ebf47ea20c63cf0e3d8",
+      "title": "ENFERMERO/A , SUBDIRECTOR /A DE GESTION DEL CUIDADO 40 HORAS SEMANALES",
+      "company": "Hogar Elisa Luna de Mora",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/enfermero-a-subdirector-a-de-gestion-del-cuidado-40-horas-semanales-3604246",
+      "urlHashSha256": "cdb26915d709cc430b902c5837c635f605bcdf1d236fa80ba96fb29d3c096ddb"
+    },
+    {
+      "id": "free-718a9f3ccd07efb180ea001c30428d1c690a4778",
+      "title": "Práctica Profesional / Técnica – Prevención de Riesgos Freire",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-tecnica-prevencion-de-riesgos-freire-3929300",
+      "urlHashSha256": "da022823b4f344cd139195c0e6ce9342a995f563a67b564b00e524c0a13fcc81"
+    },
+    {
+      "id": "free-7506849abaadfefe8c9a098f11197c011608202a",
+      "title": "ADMINISTRATIVO DE COMPRAS",
+      "company": "76301682-k",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/administrativo-de-compras-3927193",
+      "urlHashSha256": "d7e9fcd0a620e831e35cd0f3c2dbb8ce8d2080ec6d8e64e0ff6edc6a5d197a6e"
+    },
+    {
+      "id": "free-77ef39ec8bc7406b6a96a5a8f32b75036e2ee1c9",
+      "title": "PROMOTORES(AS) PT CAMPAÑA NAVIDAD BICICLETAS - TEMUCO CENTRO",
+      "company": "BACKUP EST",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/promotores-as-pt-campana-navidad-bicicletas-temuco-centro-3927973",
+      "urlHashSha256": "ff91ace8fa1436f2f4f45fcf49044cd234b2b5a13d5fd26b795e6db69ac2f5d1"
+    },
+    {
+      "id": "free-785a3730db5fa95e7e0725857969d6bde132fd04",
+      "title": "Operador de Grua Horquilla - Temuco",
+      "company": "Samex",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-de-grua-horquilla-temuco-3927130",
+      "urlHashSha256": "71ede1e9e98142407b97786cdedc9656dbed51b18a268e80db5ac8ff34cb90cc"
+    },
+    {
+      "id": "free-7d73f9e27f8a2f927c00390c596abb3956496f43",
+      "title": "Administrativo/a de Operaciones (Inclusivo / Ley 21.015)",
+      "company": "Empresa de Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/administrativo-a-de-operaciones-inclusivo-ley-21015-3929537",
+      "urlHashSha256": "d5ca7675e4a6e50d96e7a5d515018d8d133e3d009deb1c708641d52b509e9a27"
+    },
+    {
+      "id": "free-7d9002fc82ee5430a18e72cc311a116fae5bf04d",
+      "title": "Eléctrico de Temporada Los Ángeles",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/electrico-de-temporada-los-angeles-3921721",
+      "urlHashSha256": "3d57216587de3ae0ad32f71402297e5f61427a1b9de8f04d42719d1171793578"
+    },
+    {
+      "id": "free-7fb295de921072a5f060bb8ca603ccd1b473deb4",
+      "title": "Auditor(a) - Relator(a) de Calidad e Inocuidad Alimentaria - Angol",
+      "company": "SMU",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",
+      "urlHashSha256": "46607b264d4d83a176c340afd3211484ac27b1957bf7f57c04e52b3afe7d3a98"
+    },
+    {
+      "id": "free-84c3c18aea14211804157a07a1c64ed936a16c66",
+      "title": "Jefe de Calidad - Talca",
+      "company": "Galilea.SA",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-calidad-talca-3925895",
+      "urlHashSha256": "b37984e2b8bf9710a3e6c67844e163ad009a6169aa2e8fca5a8c4fe5ec1274ee"
+    },
+    {
+      "id": "free-84f61c17a812f5a39554dab866c96a3855b2f902",
+      "title": "Encargado(a) de Medio Ambiente y relaciones con el Territorio",
+      "company": "Importante empresa agroindustrial - región del Bio bio",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-medio-ambiente-y-relaciones-con-el-territorio-3921809",
+      "urlHashSha256": "a68e4f016c3799ea9fe4089796d489add7f199241d344d68c5dca6f7300dac81"
+    },
+    {
+      "id": "free-878ae593fd95de6b3867a0a8eecd01a6d6db0001",
+      "title": "Técnico Mecánico Automotriz",
+      "company": "Empresa de Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-mecanico-automotriz-3930190",
+      "urlHashSha256": "844dab9c3f10b64845bd093062eaf54a4e390401bb0f01a0a2006e7c5d80f3ff"
+    },
+    {
+      "id": "free-89b1c8e6654b1eb3404249ba5ac24a709966c03d",
+      "title": "Personal toma de Inventario/Victoria-Traiqguén",
+      "company": "Cultivasp",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/personal-toma-de-inventario-victoria-traiqguen-3925455",
+      "urlHashSha256": "383130ce370384b94123deeffea4fe27c161b7f85a53a95a9a102cbbf7c181a3"
+    },
+    {
+      "id": "free-8a7aa42575726f7a65b46ee6febcfa07b3c4a05a",
+      "title": "Práctica Profesional – Evaluación Agronómica",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-evaluacion-agronomica-3929286",
+      "urlHashSha256": "e8e39cde62a6d26cb97b9ef681345768ad0fac1559a2245c7999b133e50e945b"
+    },
+    {
+      "id": "free-8b07fe51ed5043f8efc30f85fbbf0333b5f4f1a3",
+      "title": "TENS para Cuidados Pacientes Domiciliarios /Lumaco",
+      "company": "LAYNER",
+      "workCommunes": [
+        "Lumaco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
+      "urlHashSha256": "2a72a06b0d8dbb7895e18d98e6b3c9f19d3f9044b6655fb55d9f8c2c1c3a5f67"
+    },
+    {
+      "id": "free-8b6be0aec896fff15bff91c4751362a2c4b48aa6",
+      "title": "Se busca Encargado de Cocina/Planchero",
+      "company": "Slideburger",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-encargado-de-cocina-planchero-3929481",
+      "urlHashSha256": "c4923c1083d87b2f7468e44a59a84835dd09e94d70d5f2384c6a2d5bc2d2b466"
+    },
+    {
+      "id": "free-8bef165fe64b4f7599cde2ccc6d240ec7d975f2d",
+      "title": "Ejecutivo/a Comercial B2B – Sur Service",
+      "company": "Comercial sur service",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-comercial-b2b-sur-service-3928974",
+      "urlHashSha256": "9382b470caba721d619e47165dcde36926fcb1ee760f6793cb84d5f7353483e4"
+    },
+    {
+      "id": "free-9336270e82ca8490f76485b909927958c6cdc7eb",
+      "title": "Encargado/a de Marketing y Apoyo Administrativo - Maquinaria de Taller Mecánico",
+      "company": "Importadora JAK",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-marketing-y-apoyo-administrativo-maquinaria-de-taller-mecanico-3625881",
+      "urlHashSha256": "0a0a9d575287b0090bb3261579896e5c60e9ca0ae3539af828b857ad552a759d"
+    },
+    {
+      "id": "free-953ee9b2538f1dffc90bee2b78886034af50c080",
+      "title": "FISCALIZADOR TECNICO DE OBRAS (FTO)",
+      "company": "INSPECCIONES ILDYGARDY EIRL",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3909138",
+      "urlHashSha256": "6d891fce1d2731b622beba4be0ebed46700e1ab7b480108695aa72e91066cac2"
+    },
+    {
+      "id": "free-955188c09abcc9f1dd4e5fd2eba0ed3d8c9a5b82",
+      "title": "19.862 ITO en OOCC - Proyecto Planta de alimentos - Los Ángeles",
+      "company": "DRS Ingeniería",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/19862-ito-en-oocc-proyecto-planta-de-alimentos-los-angeles-3924788",
+      "urlHashSha256": "005b607ace799f3f522beec0668b18139bacb26b0ee7c18e0cf35078a69457d9"
+    },
+    {
+      "id": "free-9658352e191f007f5960d79adc4aa40310fcbc01",
+      "title": "Alumno en práctica área comercial - Los Ángeles",
+      "company": "Autofin",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/alumno-en-practica-area-comercial-los-angeles-3924242",
+      "urlHashSha256": "e0746be90d8e1d85edc946f68159db0341ecb80f3fe9cdfe8072f80f5682c966"
+    },
+    {
+      "id": "free-96d50cdd61c7289569730fcf764194d78f1d04b7",
+      "title": "Analista de Recursos Humanos",
+      "company": "Constructora",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/analista-de-recursos-humanos-3924424",
+      "urlHashSha256": "8d1b1eed509b409f7b76bd4dd9bd25d7d30dcdb428214e83e3b4468e4333d078"
+    },
+    {
+      "id": "free-9991b10c9353ab1e6bd9819d5a7cc4ed1c66dc2d",
+      "title": "Tecnico en Control de plagas",
+      "company": "COMERCIAL SUR SERVICE",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-en-control-de-plagas-3923829",
+      "urlHashSha256": "78bfba553b25161a25c9aa75def27d3c511e1acc28482b2eeab1dc3bb1b12054"
+    },
+    {
+      "id": "free-9af7ee1007ba3da28e4085e68d72075edac038bf",
+      "title": "Operario con credencial de aplicador de plaguicidas SAG",
+      "company": "Lagniel",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3923693",
+      "urlHashSha256": "cd7b9803a1fb05e4a316a778cf0afea07645d42846228e8262da50f7191ae6b9"
+    },
+    {
+      "id": "free-9e173e643c73999fa7f6e52332a957d0834d0b45",
+      "title": "Se buscan enfierradores Nacimiento",
+      "company": "Constructora aljo",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
+      "urlHashSha256": "a6c5ab75b47d129e5ebb407a06705cc38ca8615c2ab01581b42d6cf6e8321ec1"
+    },
+    {
+      "id": "free-a13a87dc83802f0a66ad06e96c16e381025c55ed",
+      "title": "Práctica Profesional Ingeniero Mecánico Automotriz Los Angeles",
+      "company": "Coseche",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-ingeniero-mecanico-automotriz-los-angeles-3929325",
+      "urlHashSha256": "a459340eb4b7da3ad65b2e1bae5f081fe906b31e5baf4a989611f3e78f4019f4"
+    },
+    {
+      "id": "free-a1705e0053be745e86ae82f6605349832b7f9ea1",
+      "title": "SE BUSCA ENCARGADO DE MANTENCIÓN – TEMUCO",
+      "company": "ASA TEMUCO",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-encargado-de-mantencion-temuco-3930298",
+      "urlHashSha256": "13316d252d43acb97969d6744b528f10beebceb48bdb761d45c250047bf79efe"
+    },
+    {
+      "id": "free-a3cb938e782fc442b87fe82a538c49a89dbd9a58",
+      "title": "Personal para toma de Inventario/Los Ángeles",
+      "company": "Cultivasp",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/personal-para-toma-de-inventario-los-angeles-3925494",
+      "urlHashSha256": "4c024c5848ada1f4eeb2f9abf7e2c6f79b65574acd0520d6c0fb9db2bd9bdb13"
+    },
+    {
+      "id": "free-a6b00aa0bb9578fa3f5beaaf06508df9f7dd5d25",
+      "title": "ENCUESTADOR EN TERRENO LOS ANGELES",
+      "company": "Metaservicios Spa",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encuestador-en-terreno-los-angeles-3907221",
+      "urlHashSha256": "94e397c219176396f8fb7a02d1bba162a83e6a2fb60b78d11d00e19600f6649f"
+    },
+    {
+      "id": "free-a7fe394f1290134a4687aa56800b3f225aecdf0e",
+      "title": "DOCENTES",
+      "company": "CONSULTORA RRHH",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/docentes-3926184",
+      "urlHashSha256": "21adee6b1b056c5a51fc59aa2dd81673a4386cf47fc82951c4d8e207d35055d6"
+    },
+    {
+      "id": "free-a87db2c97234221d559ec38a1d280d4aa813c4dc",
+      "title": "Técnico Mecánico Auxiliar – Automotora Autofácil (Los Ángeles)",
+      "company": "AUTOMOTORA AUTOFACIL",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-mecanico-auxiliar-automotora-autofacil-los-angeles-3603299",
+      "urlHashSha256": "ac81214f4993cf1d80e01c68f6b1f9a775fca537e9572f26018ac38db2c7666d"
+    },
+    {
+      "id": "free-a91ecc7c9dbb20ea0768b192bffbfcdf10a59c20",
+      "title": "ITO Prevención Los Ángeles",
+      "company": "CGESTA",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ito-prevencion-de-riesgos-biobio-3888356",
+      "urlHashSha256": "31ca3e776637e6053e7c08e856531c8630d20afd1e2f87f8c629938663306a27"
+    },
+    {
+      "id": "free-a94adf9cda581c1b7d4c877d63cff00661435e2e",
+      "title": "Administrativo(a) Contable de Temporada Los Ángeles",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/administrativo-a-contable-de-temporada-los-angeles-3921696",
+      "urlHashSha256": "2ef9a8203a2955f82fefe41abd482d5ce22cc4f13a906885909e2c130a98da91"
+    },
+    {
+      "id": "free-a970317e586c0a813cb54304a7a4aa214fff81de",
+      "title": "EMBAJADOR DE EXPERIENCIA TEMUCO - ANCUD - CASTRO - CALBUCO - PTO MONTT - MULCHEN",
+      "company": "CONSULTORA CAPACITACION",
+      "workCommunes": [
+        "Mulchén",
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/embajador-de-experiencia-temuco-ancud-castro-calbuco-pto-montt-mulchen-3894935",
+      "urlHashSha256": "6725b64ddb36538409ecdf05bf8bc73543b1015ad79a62fddb0811d2860d193f"
+    },
+    {
+      "id": "free-ad019f6231cc3397526557f362a5a27c70a6a700",
+      "title": "AUXILIAR DE COCINA",
+      "company": "ROLLING FEST",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/auxiliar-de-cocina-3920361",
+      "urlHashSha256": "de417f1d5ff82b36f1199aa67580ba2ae71abc60cf6213a2fef7ea255cffe61c"
+    },
+    {
+      "id": "free-ad1b07f60dad3a4c355096131e53af9fa2db4bb4",
+      "title": "Vendedora - Full-Time - Temuco",
+      "company": "LORENZO DI PONTTI",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedora-full-time-temuco-3930547",
+      "urlHashSha256": "60f6d3c18b4881012b18b2ba7fbf66ed18fa485025401d4d661dc5f2642603a9"
+    },
+    {
+      "id": "free-b09e1a50f6ecb280c18328e61aaf153b5819ee24",
+      "title": "ITO Residente - EXPERIENCIA OBRAS CONSERVACIÓN CAMINOS (LOS ÁNGELES)",
+      "company": "INGENET LTDA",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ito-residente-experiencia-obras-conservacion-caminos-los-angeles-3905459",
+      "urlHashSha256": "5ba17866f0d970e3241b156ff7e6cf381f2e87ade67c47baec40a5c83a46efc4"
+    },
+    {
+      "id": "free-b2695ceb7c312095726e8636d0323bae10638b80",
+      "title": "Operador Cargador Frontal",
+      "company": "Empresa Ciudad Los Angeles",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-cargador-frontal-3807033",
+      "urlHashSha256": "8d1a1f93ef6e9468ca77a0673fafe64760e43111a2d104558e18f29e0dbdf255"
+    },
+    {
+      "id": "free-b458dca78c4a41a1f6896fc3d4b7acb94a24f12c",
+      "title": "Práctica Profesional Ingeniero Mecánico Automotriz Temuco",
+      "company": "Coseche",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-ingeniero-mecanico-automotriz-temuco-3929314",
+      "urlHashSha256": "dc12651580a23daa5c6b8233f6d26543701832c8b27b0a1ad791c7711b90b729"
+    },
+    {
+      "id": "free-b469b5a1cd7dae9a20570685e4ce99db27885c6e",
+      "title": "PSICOLOGO - PRM CUNCO y TEMUCO /ARAUCANIA",
+      "company": "Fundación Talitakum",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/psicologo-prm-cunco-y-temuco-araucania-3921896",
+      "urlHashSha256": "211451e936ad17fda1119f88be62652103bd5643ad6646fdb6c6f0700e00c4e1"
+    },
+    {
+      "id": "free-b54fd61fee7ab0650eb3977cb34d96dc54f3df22",
+      "title": "Técnico Faena - Kaufmann Los Ángeles",
+      "company": "GRUPO KAUFMANN",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-faena-kaufmann-los-angeles-3929892",
+      "urlHashSha256": "af61a694ca376cb612c04f9220a9f632ede458ebb66f7fd058baae5efdb2ee23"
+    },
+    {
+      "id": "free-b6aaf0f7b521bf94f24b4cdcd1398ebbd870c773",
+      "title": "Gestor de Ventas LA",
+      "company": "Distribuidora de Alimentos",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/gestor-de-ventas-la-3917111",
+      "urlHashSha256": "5c468418b0b0770ab1e23d42969129ef858cf97b3375d325b2fc539d97f29580"
+    },
+    {
+      "id": "free-b8dda59a2a2ebf718b149c9d0abcc5075ce00b26",
+      "title": "Vendedor en terreno",
+      "company": "Pitch Marketing Ltda",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-en-terreno-3885872",
+      "urlHashSha256": "8ea0009317492f58f132a4f0b5c944154b14a75b31d8c68e332d63bc963f38f0"
+    },
+    {
+      "id": "free-ba4e217b6597472e3434e8c5b5991233ce8fe78a",
+      "title": "RELATOR PREVENCIONISTA DE RIESGOS TEMUCO",
+      "company": "Otecnya",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/relator-prevencionista-de-riesgos-temuco-3215730",
+      "urlHashSha256": "835a696362f4715cdc96a07c6babd480551861b0c3a79715c79af47a456a112f"
+    },
+    {
+      "id": "free-bb02698f8acd323951c80f85ba73a050ec1dcb61",
+      "title": "Conductor",
+      "company": "-",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/conductor-3904934",
+      "urlHashSha256": "78bd794104f05a2c3065bc68d33c0c874321c22b0117ea4d95ad7c6295e9f045"
+    },
+    {
+      "id": "free-bb108224d8bacdc89fa74514d3801f4217baa590",
+      "title": "19.876 ITO Sanitario - Proyecto Planta de Alimento - Los Angeles",
+      "company": "DRS Ingeniería",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/19876-ito-sanitario-proyecto-planta-de-alimento-los-angeles-3924543",
+      "urlHashSha256": "2d7264cc6b4f74943b2afa4b45c18b8da50b099e324b24357fa83af6f03246a7"
+    },
+    {
+      "id": "free-bcdddd10bb1a715b0ba340f105788537233a4f20",
+      "title": "Operario de Tienda 20 hrs - Temuco",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operario-de-tienda-20-hrs-temuco-3920908",
+      "urlHashSha256": "051df30f30eaf65708f1c18b0d3b6fe4834103b565bd536ed98b7840e29c1246"
+    },
+    {
+      "id": "free-bd3a0cfbd15d71d740a9acbdbb36dbfcc17544e2",
+      "title": "Técnico/a de Operaciones Ambientales – Los Ángeles",
+      "company": "Confidencial",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-a-de-operaciones-ambientales-los-angeles-3929404",
+      "urlHashSha256": "3502a3609efda149d571e600683775fd06fed8e20b48307a34f339948553df4c"
+    },
+    {
+      "id": "free-bfefe2c24d6c6d3e2a7b892143258bd36345719c",
+      "title": "Director/a CC LAE Angol",
+      "company": "Fundación Tierra de Esperanza",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
+      "urlHashSha256": "f915fab77a162d120d847d6ae48894dd8f489aa55c51f6e95bc36b0a326e8d4a"
+    },
+    {
+      "id": "free-c1cddf29afb4502ea892156a37adb6548f0d5adc",
+      "title": "Práctica Profesional - Cobertura Financieras",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-cobertura-financieras-3928360",
+      "urlHashSha256": "987c0aa5f2cfc1bbb6d10a1b367da9f611f0ebd132f7ac3cf38c53837d53cb29"
+    },
+    {
+      "id": "free-c1e54bfaa89e6283c3390d2f7f3a7dc6d8bd0eac",
+      "title": "Asistente dental",
+      "company": "Dental",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-dental-3927431",
+      "urlHashSha256": "f867f724f776be7232d4b41b91659682e191580f90bcc90c94b99c6e17c18735"
+    },
+    {
+      "id": "free-c2476341a0e17d8761359eeacb3e7eb0db4fb57b",
+      "title": "Médico cirujano - Los Angeles",
+      "company": "Xinerlink",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/medico-cirujano-los-angeles-3679862",
+      "urlHashSha256": "3f6f4c4f6639ee729c4c3b55f61feb837d4cfcbbb40314d68121f0d14f58b02f"
+    },
+    {
+      "id": "free-c306716518ec16020b6ad869e4cab862bf3dae68",
+      "title": "Práctica de Contabilidad - Temuco",
+      "company": "Colchones Rosen SAIC",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-de-contabilidad-temuco-3921986",
+      "urlHashSha256": "fe0fb69189a9ada170465682720113a7ebf75f29069c2a2ce585254033471634"
+    },
+    {
+      "id": "free-c330fa3c2abba46a0a29a01943490ed08640cdba",
+      "title": "Cajero Bancario",
+      "company": "Empresa de Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/cajero-bancario-3921990",
+      "urlHashSha256": "974001793a5d2304cc71fda6de1e9b75cf5bdd8e6a6b5de3254c23b9c54bfcfd"
+    },
+    {
+      "id": "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
+      "title": "TENS para Cuidados Pacientes Domiciliarios / Lumaco",
+      "company": "Layner",
+      "workCommunes": [
+        "Lumaco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+      "urlHashSha256": "d56df5112a06bb23e2a29618bcace5922d2fcbcbf982d6815c4e03b62a1d551c"
+    },
+    {
+      "id": "free-c6cf2427c078f3c343257b30d0172c666b8e762e",
+      "title": "Ejecutivo de Ventas de Seguros de Salud – Los Ángeles",
+      "company": "Talents",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-de-ventas-de-seguros-de-salud-los-angeles-3930344",
+      "urlHashSha256": "0521cdf3ff89cb15c31a424a911c22eb932cec7c8a1bccbc7238bdba879d6cff"
+    },
+    {
+      "id": "free-c747817c8fae0a752267bb2567e3c95dca01f17b",
+      "title": "Práctica Obrera Implementación Temuco",
+      "company": "Fundación Trabün",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-obrera-implementacion-temuco-3921067",
+      "urlHashSha256": "21d861609776b8cf9e583d608bf4241d8d95b38d6404115f2bfaed02bee359f0"
+    },
+    {
+      "id": "free-c89dfcec21f65228c222ce3b80ccf6dcf672ab43",
+      "title": "Psicólogo (a) 22 horas",
+      "company": "Trayectos Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
+      "urlHashSha256": "5c980138c7556d6f7de937563a80ccf1a5b6585f74c36b9b12a8f401b888a826"
+    },
+    {
+      "id": "free-c9a7209710e4ccc2807b3b51e8909ad00bcbb490",
+      "title": "PREVENCIONISTA DE RIESGOS – MALLECO",
+      "company": "Constructora",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
+      "urlHashSha256": "bef43ecfd4d8417f1770e7caa761d4c2f34a69613fde842f953a77ae69568c86"
+    },
+    {
+      "id": "free-cca9a53f14fc7bd8e8c603a17c9ff6e695e94a45",
+      "title": "Profesionales de Salud para Cuidados Pacientes Domiciliarios/ Region Araucania",
+      "company": "Layner",
+      "workCommunes": [
+        "Lumaco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/profesionales-de-salud-para-cuidados-pacientes-domiciliarios-region-araucania-3913134",
+      "urlHashSha256": "1c91d8a97130b19d9460c0c3d6564623821dced4458161614105ff252585dab4"
+    },
+    {
+      "id": "free-cddc3dd57e5516c044f690eab58bceff0c2624cf",
+      "title": "Práctica Profesional – Calidad y Microbiología",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-calidad-y-microbiologia-3929345",
+      "urlHashSha256": "c7e2239343ef6bb6129e2a8d436406bb50a23f8fccd5ed7524d2ff19485a13b7"
+    },
+    {
+      "id": "free-d31ce2a2ed22025a9be370b954ab8de150deb128",
+      "title": "TECNÓLOGO/A MÉDICO ÓPTICA KARUN TEMUCO",
+      "company": "Karun Chile SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnologo-a-medico-optica-karun-temuco-3925239",
+      "urlHashSha256": "782b8f30340b7cdabe814a010ee5454a64210aa95f5e322d372c2caeaaa02e28"
+    },
+    {
+      "id": "free-d374d994f62739ad51a785d9df82762fd2b41791",
+      "title": "Técnico Terreno en Telecomunicaciones - Los Angeles.",
+      "company": "Icetel",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-terreno-en-telecomunicaciones-los-angeles-3916315",
+      "urlHashSha256": "0cdf7579b0c806e38ee2c165888d3bd9cebc3bbc9ea5f3d0b4ed3de77d26d9b9"
+    },
+    {
+      "id": "free-d3e9f4f260f329201d665dabef882aefacf36244",
+      "title": "Jefe de Línea - Temuco",
+      "company": "Empresa Distribuidora e Importadora",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-linea-temuco-3921374",
+      "urlHashSha256": "c07f04b8296633890e25a83b7f589640bd13ac834db0eed6a5173b903fc22cf8"
+    },
+    {
+      "id": "free-d49177a1af8c397662e94c04e9d4df03e5e8a533",
+      "title": "Promotor/Vendedor Part Time TEMUCO",
+      "company": "FESTINA GROUP CHILE",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/promotor-vendedor-part-time-temuco-3922749",
+      "urlHashSha256": "ec98c3c15f0a64ec2f1bc25da582ad608a4eb8172e7d495db66fdadd1b7e94ad"
+    },
+    {
+      "id": "free-d52bbb32e6d0aa3542933bd141cb0354107d9ee5",
+      "title": "Trabajador/a social FAE Cautín media jornada",
+      "company": "Trabajador/a social FAE Llequen Cautín 20 Hrs",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/trabajador-a-social-fae-cautin-media-jornada-3922996",
+      "urlHashSha256": "98194596ff0c6c3d3cf2308dbe851d15b3f1d3ea8b705dfcb099ec446f44f6a4"
+    },
+    {
+      "id": "free-d944864a2813a0335a76e245fa502fec10f0c92a",
+      "title": "VENDEDOR PT 30 HORAS TIENDA BLACK TEMUCO",
+      "company": "BUBBA CHILE SPA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-pt-30-horas-tienda-black-temuco-3929169",
+      "urlHashSha256": "207e41d31b07243daae0b239785fe0bc01b8333b8eff9bf0f8d93ee77bf13213"
+    },
+    {
+      "id": "free-da609d9f856b917178935189d0e53890f6987b5e",
+      "title": "PREVENCIONISTA DE RIESGOS",
+      "company": "Constructora González García Ltda",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-3917824",
+      "urlHashSha256": "07b4b1affdc21b9f69da3f86a22f08438bb4d7aff412764ef1259562a765e9e9"
+    },
+    {
+      "id": "free-da8c1c6d10c0166c46c809ba0b0672c227e4bbc7",
+      "title": "Eléctrico Industrial Senior",
+      "company": "Planta Productiva Los Angeles",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/electrico-industrial-senior-3928150",
+      "urlHashSha256": "de92c2e02ea4ce529df5386e6332f215dba9320cd1df0197d64782efae96002b"
+    },
+    {
+      "id": "free-dcd744418adbd50496d5e625bc7e09376eaf9a8c",
+      "title": "Subgerente de Operaciones Comerciales",
+      "company": "Caminos",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-operaciones-comerciales-3930041",
+      "urlHashSha256": "4db835c8c8ef413adea609e65c9b522b995020f8284f987cbb761768d74e4bae"
+    },
+    {
+      "id": "free-dd3c364509429623973c94f26787ecc5385803b9",
+      "title": "Implantologa",
+      "company": "Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/implantologa-3922425",
+      "urlHashSha256": "e07e6552b60aa3ed43177c0f90cd8cb9019a954e06a5674e340805038264ead3"
+    },
+    {
+      "id": "free-e3f4608b1c7d8460922044654f0453ea49850204",
+      "title": "VENDEDOR (A) PART TIME MALL PORTAL TEMUCO",
+      "company": "MERJET",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-a-part-time-mall-portal-temuco-3930097",
+      "urlHashSha256": "fb15c240afe4faee80bd0c4ec95471de6acb6582e2dd7fbca5be82bbe7983fde"
+    },
+    {
+      "id": "free-e596543f197b4559296d8fff9d2a54b983016e8b",
+      "title": "PREVENCIONISTA",
+      "company": "ingenieria ycostruccion muñoz y salazar  limitada",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-3922072",
+      "urlHashSha256": "2ef8da3c78f023d52adaf3bd7590ab58a43e8d8bc1fa21ff9f28f8102b8465d8"
+    },
+    {
+      "id": "free-e9524f289efe9728b438b3f9f2dddfeb9a24f53b",
+      "title": "Inspector de medidores /ayudante eléctrico y chofer Los Ángeles",
+      "company": "MLA SERVICIOS",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/inspector-de-medidores-ayudante-electrico-y-chofer-los-angeles-3883920",
+      "urlHashSha256": "1d4b977d46465812f3302085f42d4aff183e05be17f1fd671f22129629e4c243"
+    },
+    {
+      "id": "free-eb30ff1fb450579bd40bab05a61c13cc8f6fc893",
+      "title": "Vendedor tienda de suplementos TEMUCO",
+      "company": "ST CONSULTORA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-tienda-de-suplementos-temuco-3915555",
+      "urlHashSha256": "cd968231588bfba3f86747db066f4a1f434a5d25eb915ca5eb841c73ebf3c0f6"
+    },
+    {
+      "id": "free-ecf768ee4897849c9187c9039e9094c5800ef24b",
+      "title": "Técnico/a de Soporte TI en Terreno La Araucanía (Temuco)",
+      "company": "CF INGENIEROS",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-a-de-soporte-ti-en-terreno-la-araucania-temuco-3928385",
+      "urlHashSha256": "3841bf561ecda14f196190a90b42d603449761db31a92a512a3fa92fb28ac9e1"
+    },
+    {
+      "id": "free-ee820b422f2aa3014b9afff18e5dfd601b53aee2",
+      "title": "Técnico Telecomunicaciones Sin Experiencia - Los Ángeles",
+      "company": "DOMINION SPA",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-los-angeles-3926877",
+      "urlHashSha256": "0477d24692782930a9621e087428419602c8197edecb6f7892c801b7651f545b"
+    },
+    {
+      "id": "free-efc2f04aa26f5d5a7ea0e52c54b1ce5dff21146e",
+      "title": "JEFE DE TIENDA PORTAL TEMUCO",
+      "company": "EMPRESA DE RETAIL - MARCA INTERNACIONAL / VESTUARIO",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-tienda-portal-temuco-3927264",
+      "urlHashSha256": "36827e812c7525574cc27bccd88b90e01ce78dbcb33917e2b4842cab8851b0f7"
+    },
+    {
+      "id": "free-f10ae1d1dfdd665e6d7f1089d9ab9749fcdb5e18",
+      "title": "Técnico en Enfermería Nivel Superior - TEMUCO",
+      "company": "Home Assistance",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-en-enfermeria-nivel-superior-temuco-3928170",
+      "urlHashSha256": "9c6ab303db524d59a07af1758bfa44fd996592df22f4af4c4358f41b39a6c6cf"
+    },
+    {
+      "id": "free-f4a9367901c1c67c257b9abc39b5791be0c9e45f",
+      "title": "Jefe de Turno",
+      "company": "Planta Productiva",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/jefe-de-turno-3916332",
+      "urlHashSha256": "9fbab0f5376da68e8929c8428159346d22a798d19b0448a23da9d485a2bc9cd5"
+    },
+    {
+      "id": "free-f4ca8408c84d12c902c044855fca0f5f1be24622",
+      "title": "ENCARGADO/A DE RECURSOS HUMANOS",
+      "company": "GRUPO ASA",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-recursos-humanos-3925883",
+      "urlHashSha256": "35e20ff7e2c9edfe99b531c57f1cea005afdb5281325ce25e4f62be941c40615"
+    },
+    {
+      "id": "free-f5c8572c925bdfde37c54473ee50373f9ac1e89b",
+      "title": "Ejecutivo de Ventas Insumos Agrícolas (Temuco)",
+      "company": "Importante empresa del rubro agroindustrial",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-de-ventas-insumos-agricolas-temuco-3815495",
+      "urlHashSha256": "89dc64fe1983b0c4963d668e4855eb8a156261312faf1b944ad70df3fde1cb57"
+    },
+    {
+      "id": "free-f5e06add0262e66cf1864797c3910f4ba02171d2",
+      "title": "Técnico en Telecomunicaciones FTTH Los Ángeles",
+      "company": "Reconocida empresa en telecomunicaciones",
+      "workCommunes": [
+        "Los Ángeles"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-ftth-los-angeles-3906937",
+      "urlHashSha256": "b2d46d8d414cfd19eae0ab4a12206d3fad95fb5836ce58d41f57044323a745ac"
+    },
+    {
+      "id": "free-f60df320b9afe10b44d76ccb89e206e88de52711",
+      "title": "¡INICIA CONDUCTORES ESTÁ BUSCANDO INSTRUCTORES CLASE B PARA TEMPORADA ALTA DE VE",
+      "company": "INICIA CONDUCTORES",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/inicia-conductores-esta-buscando-instructores-clase-b-para-temporada-alta-de-ve-3930638",
+      "urlHashSha256": "a6964546437919b88631bf707c98a0222b2140d4608aa36626ea572d0e643a8a"
+    },
+    {
+      "id": "free-f6ec9810299e737d35f10f89ed0d5af694ac9cd9",
+      "title": "Ejecutivo de Ventas - Construcción - Temuco",
+      "company": "SCHGroup: Hunting &amp; Solutions",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/ejecutivo-de-ventas-construccion-temuco-3918606",
+      "urlHashSha256": "d0bd9f5064d650594134f26c29e792770d8e9c907137d1c4ab87f4871bd598ae"
+    },
+    {
+      "id": "free-f74b088114038c661334d06f1cec48e66df64224",
+      "title": "Asistente de Bodega",
+      "company": "Molinera Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-de-bodega-3928688",
+      "urlHashSha256": "c608665d95efdc7f352375205edc905c82915eb3db64660f4e8699ded50bf32e"
+    },
+    {
+      "id": "free-f852b8ae8a782bcf9f2225998ee470f367c5b26e",
+      "title": "Técnico Telecomunicaciones Sin Experiencia - Angol",
+      "company": "DOMINION SPA",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
+      "urlHashSha256": "000ee049f91cba301df59c0711311eb3f531a20aa4a340e7e770da6770b04ba9"
+    },
+    {
+      "id": "free-f96f4616e1fe159deb092d5ccbf04cd0ffd35e2e",
+      "title": "Práctica Profesional – Contador",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/practica-profesional-contador-3929338",
+      "urlHashSha256": "3faaf7692028fa4b6c6dbb9c8187679edc10cbf6bf73290104f2d4efa21ec964"
+    },
+    {
+      "id": "free-fcb8f7d250282e646018f5fdef51552e1edcb942",
+      "title": "Operador/a de Monitoreo Junior (Inclusivo / Ley 21.015)",
+      "company": "Empresa de Temuco",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/operador-a-de-monitoreo-junior-inclusivo-ley-21015-3929570",
+      "urlHashSha256": "a0efcafabfadbbdad3f8b9aaa94d1f9f86c57974d0fbf5b0a22810c3edf53812"
+    },
+    {
+      "id": "free-fd4be2d984eeb293eae095a9c3819eb8b9a3df02",
+      "title": "Teams Operacionales Tarragona - TEMUCO (Temporada Diciembre)",
+      "company": "Tarragona",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/teams-operacionales-tarragona-temuco-temporada-diciembre-3929431",
+      "urlHashSha256": "7e45132d6145e0227fa87dfa70e645d18c6e481ae7199f7283250f278bd94a65"
+    },
+    {
+      "id": "free-fd6f3d91033632ce9dbcc52634dcf4933c21a219",
+      "title": "Subgerente de tienda Papa Johns - Angol",
+      "company": "Papa Johns Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
+      "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
+    },
+    {
+      "id": "free-fdbde00be5d732241bbfb312a513a0b218c13509",
+      "title": "Asistente de Marketing",
+      "company": "Enjoy",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/asistente-de-marketing-3923593",
+      "urlHashSha256": "a15262614b60cef684f3630f71738450f2ab33b9c63114c6e76ccd7c780322b9"
+    },
+    {
+      "id": "free-fe0f7b5ef05052b6e7cfbe631535551e6df262cd",
+      "title": "Mercaderista Temuco",
+      "company": "Empresas Agrotop",
+      "workCommunes": [
+        "Temuco"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/mercaderista-temuco-3926574",
+      "urlHashSha256": "d1e4baee4379f228b815b7fe391fae66f15f94386880346bf9c1463892c36b4f"
+    },
+    {
+      "id": "free-ff3ce5f6005c970c81eaf7b58e37f92518bb3b3b",
+      "title": "Verificador/a de Domicilios en Terreno – Renaico",
+      "company": "Rocketpin",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
+      "urlHashSha256": "074cdef4c2f1125ff8f049f653f6f8ad54eb1c6cef1e3a2e8d9836d2eb482c34"
+    },
+    {
+      "id": "tcq_e2265a52410f086a0dcb71",
+      "title": "Se requieren Tens o Enfermeras/os",
+      "company": "Expertise Spa",
+      "workCommunes": [
+        "Angol"
+      ],
+      "url": "https://chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
+      "urlHashSha256": "e2265a52410f086a0dcb71a8684cc66e82a97a9d849af2fc45370c09ad971024"
+    }
+  ]
+}

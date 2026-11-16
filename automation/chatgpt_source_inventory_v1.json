@@ -30,7 +30,7 @@
     "Coihue": "Negrete",
     "Coigüe": "Negrete"
   },
-  "count": 134,
+  "count": 143,
   "sources": [
     {
       "key": "indeed-Angol",
@@ -1313,6 +1313,576 @@
       "territory": "Chile",
       "kind": "extra",
       "scan_wave": 1
+    },
+    {
+      "key": "registry-portal-empleo-biobio",
+      "name": "Portal Empleo Biobío",
+      "url": "https://portalempleobiobio.cl/",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "Los Ángeles",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 2
+    },
+    {
+      "key": "registry-cvtrabajos-los-angeles",
+      "name": "CV Trabajos · Los Ángeles",
+      "url": "https://cvtrabajos.github.io/trabajo-en-los-angeles/",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "Los Ángeles",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 3
+    },
+    {
+      "key": "registry-omil-los-angeles-ofertas",
+      "name": "OMIL Los Ángeles · Ofertas",
+      "url": "https://sites.google.com/losangeles.cl/omil-losangeles/ofertas-laborales",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "Los Ángeles",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 4
+    },
+    {
+      "key": "registry-los-angeles-trabaja",
+      "name": "Municipalidad de Los Ángeles · Trabaja con Nosotros",
+      "url": "https://www.losangeles.cl/trabaja-con-nosotros/",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "Los Ángeles",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 5
+    },
+    {
+      "key": "registry-omil-temuco-portal",
+      "name": "OMIL Temuco · Portal de Empleo",
+      "url": "https://temuco.omil.cl/",
+      "territory": "Temuco",
+      "canonicalCommune": "Temuco",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 0
+    },
+    {
+      "key": "registry-omil-concepcion",
+      "name": "OMIL Concepción",
+      "url": "https://concepcion.cl/informacion-e-inscripciones-en-linea-omil/",
+      "territory": "Concepción",
+      "canonicalCommune": "Concepción",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 1
+    },
+    {
+      "key": "registry-omil-chillan-ofertas",
+      "name": "OMIL Chillán · Ofertas laborales",
+      "url": "https://www.municipalidadchillan.cl/sitio/menu/tramites/ofertas-laborales.php",
+      "territory": "Chillán",
+      "canonicalCommune": "Chillán",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 2
+    },
+    {
+      "key": "registry-collipulli-web",
+      "name": "Municipalidad de Collipulli",
+      "url": "https://municipalidadcollipulli.cl/",
+      "territory": "Collipulli / Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 3
+    },
+    {
+      "key": "registry-radio-surena-collipulli",
+      "name": "Radio Sureña · Collipulli",
+      "url": "https://www.radiodelsur.cl/",
+      "territory": "Collipulli / Mininco / Ercilla",
+      "canonicalCommune": "Collipulli",
+      "kind": "public_registry_extension",
+      "provider": "source_defs",
+      "scan_wave": 4
+    }
+  ],
+  "version_note": "Cobertura complementada con SOURCE_DEFS del catálogo de fuentes en backend/index.ts. Fuentes de descubrimiento sin URL pública requieren búsqueda externa verificable; no clasificarlas como consultadas cuando solo estén registradas.",
+  "discovery_targets": [
+    {
+      "key": "motor-tavily",
+      "name": "Tavily · barrido de brechas",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "motor-territorial-controlled",
+      "name": "Radar Web Territorial",
+      "mode": "discovery",
+      "status": "automatic",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "los-angeles-bridge",
+      "name": "Los Ángeles · ciudad fuente",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "temuco-bridge",
+      "name": "Temuco · ciudad fuente",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "concepcion-bridge",
+      "name": "Concepción · ciudad fuente",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "chillan-bridge",
+      "name": "Chillán · ciudad fuente",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "bne",
+      "name": "Bolsa Nacional de Empleo",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "chiletrabajos",
+      "name": "ChileTrabajos",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "aggregators",
+      "name": "Indeed · Jooble · Jobsora · KitEmpleo",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "laborum",
+      "name": "Laborum",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "trabajando",
+      "name": "Trabajando.com",
+      "mode": "discovery",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "local-job-pages",
+      "name": "Páginas locales de datos laborales",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "computrabajo",
+      "name": "Computrabajo",
+      "mode": "discovery",
+      "status": "limited",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "social-public",
+      "name": "Facebook · Instagram · TikTok públicos",
+      "mode": "community",
+      "status": "limited",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "linkedin",
+      "name": "LinkedIn",
+      "mode": "discovery",
+      "status": "limited",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "mi-mininco",
+      "name": "Mi Mininco",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Mininco",
+        "Collipulli"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "radio-mininco",
+      "name": "Radio Mininco",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Mininco",
+        "Collipulli"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "teleangol",
+      "name": "Teleangol Radio",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Renaico",
+        "Collipulli",
+        "Los Sauces",
+        "Purén",
+        "Lumaco",
+        "Traiguén"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "radio-montecarlo-angol",
+      "name": "Radio Montecarlo Sur · Angol",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Angol"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "millaray-collipulli",
+      "name": "Radio Millaray · Collipulli",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Collipulli",
+        "Mininco"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "radio-ercilla",
+      "name": "Radio Ercilla 106.7 FM",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Ercilla"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "renaico-fm",
+      "name": "Renaico FM",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Renaico"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "radio-victoria",
+      "name": "Radio Victoria",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Victoria"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "radio-colonos-victoria",
+      "name": "Radio Los Colonos · Victoria",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Victoria"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "millaray-puren-sauces",
+      "name": "Millaray Radio · Purén / Los Sauces",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Purén",
+        "Los Sauces"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "cordialisima-sauces",
+      "name": "Radio Cordialísima · Los Sauces",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Los Sauces",
+        "Purén"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "alfarero-nacimiento",
+      "name": "El Alfarero Radio · Nacimiento",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "dinastia-mulchen",
+      "name": "Radio Dinastía · Mulchén",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Mulchén"
+      ],
+      "access": "public_search_or_external_evidence_required"
+    },
+    {
+      "key": "community",
+      "name": "Radio local · páginas comunitarias · WhatsApp · carteles · otra IA",
+      "mode": "community",
+      "status": "active",
+      "territories": [
+        "Angol",
+        "Collipulli",
+        "Ercilla",
+        "Lumaco",
+        "Los Sauces",
+        "Purén",
+        "Renaico",
+        "Traiguén",
+        "Victoria",
+        "Mulchén",
+        "Negrete",
+        "Nacimiento"
+      ],
+      "access": "public_search_or_external_evidence_required"
     }
   ]
 }

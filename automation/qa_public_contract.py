@@ -102,6 +102,17 @@ def main():
         record("public_directory_private_fields_redacted",False,error=type(exc).__name__)
 
     try:
+        # Only read existing house/commercial inventory; never create campaigns.
+        status,headers,body=request(API+"/api/growth/advertising?place=Collipulli&page=home&turn=0")
+        obj=json.loads(body)
+        valid=status==200 and obj.get("complete") is True and isinstance(obj.get("house"),list) and isinstance(obj.get("commercial"),list)
+        record("public_campaign_inventory_complete",valid,status=status,
+               own_campaigns=len(obj.get("house",[])),
+               commercial_candidates=len(obj.get("commercial",[])))
+    except Exception as exc:
+        record("public_campaign_inventory_complete",False,error=type(exc).__name__)
+
+    try:
         # Read-only access-control check: do not attempt any admin mutation.
         try:
             status,headers,body=request(API+"/api/admin/session")

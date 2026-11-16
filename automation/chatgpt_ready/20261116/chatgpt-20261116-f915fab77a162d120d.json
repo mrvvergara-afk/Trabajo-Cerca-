@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "chatgpt_territorial",
+  "batch_id": "chatgpt-20261116-f915fab77a162d120d",
+  "offers": [
+    {
+      "id_fuente": "cg_f915fab77a162d120d84",
+      "cargo": "Director/a CC LAE Angol",
+      "empresa": "Fundación Tierra de Esperanza",
+      "comunas": [
+        "Angol"
+      ],
+      "ubicacion_trabajo": "Programa CC LAE en la ciudad de Angol",
+      "modalidad": "no_informada",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
+      "enlace_postulacion": "https://www.chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
+      "fecha_publicacion": "2026-11-11",
+      "fecha_cierre": "2027-01-25",
+      "justificacion": "Chiletrabajos ficha 3930443 consultada 16-11-2026: menciona expresamente ejecución en Angol, aunque cabecera indica Temuco; fecha original y vencimiento del portal.",
+      "url_canonica": "https://chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
+      "hash_url_sha256": "f915fab77a162d120d847d6ae48894dd8f489aa55c51f6e95bc36b0a326e8d4a",
+      "fecha_descubrimiento": "2026-11-16",
+      "salario": null
+    },
+    {
+      "id_fuente": "cg_b1991b80dde5d8efe1c9",
+      "cargo": "Vendedor Terreno - Victoria",
+      "empresa": "Distribuidora consumo masivo",
+      "comunas": [
+        "Victoria"
+      ],
+      "ubicacion_trabajo": "Victoria y alrededores",
+      "modalidad": "presencial",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-victoria-3932097",
+      "enlace_postulacion": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-victoria-3932097",
+      "fecha_publicacion": "2026-11-13",
+      "fecha_cierre": "2027-01-27",
+      "justificacion": "Chiletrabajos ficha 3932097 consultada 16-11-2026: trabajo en Victoria y alrededores aunque cabecera indica Temuco; exige terreno, licencia B y vehículo propio.",
+      "url_canonica": "https://chiletrabajos.cl/trabajo/vendedor-terreno-victoria-3932097",
+      "hash_url_sha256": "b1991b80dde5d8efe1c9032afc95f2a99b585803321d6760fa0f595d2440e172",
+      "fecha_descubrimiento": "2026-11-16",
+      "salario": null
+    },
+    {
+      "id_fuente": "cg_f36ac8f4fffee9103214",
+      "cargo": "Ortodoncista - Victoria",
+      "empresa": "Clínica dental en Victoria",
+      "comunas": [
+        "Victoria"
+      ],
+      "ubicacion_trabajo": "Clínica dental en la ciudad de Victoria",
+      "modalidad": "presencial",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/ortodoncista-3929011",
+      "enlace_postulacion": "https://www.chiletrabajos.cl/trabajo/ortodoncista-3929011",
+      "fecha_publicacion": "2026-11-09",
+      "fecha_cierre": "2027-01-23",
+      "justificacion": "Chiletrabajos ficha 3929011 consultada 16-11-2026: ortodoncista para clínica ubicada en Victoria, cabecera Temuco; fecha original y expiración visibles.",
+      "url_canonica": "https://chiletrabajos.cl/trabajo/ortodoncista-3929011",
+      "hash_url_sha256": "f36ac8f4fffee910321498d1ca6287d24c69f64502da73b3be8a8af70be9df81",
+      "fecha_descubrimiento": "2026-11-16",
+      "salario": null
+    }
+  ]
+}

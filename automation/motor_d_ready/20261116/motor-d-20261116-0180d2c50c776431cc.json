@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261116-0180d2c50c776431cc",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_b82587f333519896e835",
+      "cargo": "Experto/a en Prevención de Riesgos – Rubro Celulosa (Collipulli)",
+      "empresa": "GRAFTON",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/experto-a-en-prevencion-de-riesgos-rubro-celulosa-collipulli-3933145",
+      "fecha_publicacion": "2026-11-16",
+      "fecha_descubrimiento": "2026-11-16",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-01-30",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

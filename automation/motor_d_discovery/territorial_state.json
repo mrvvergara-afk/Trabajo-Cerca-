@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-16T16:34:06.262092-03:00",
+  "last_run": "2026-11-16T19:16:15.384025-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -5833,6 +5833,150 @@
       "url": "https://www.munilumaco.cl/index.php/sala-de-prensa/830-municipalidad-de-lumaco-prepara-la-temporada-estival-y-realizo-cogrid-comunal-preparatorio-del-riesgo-de-incendios-forestales",
       "source": "Auditoría Municipalidad Lumaco concursos",
       "commune": null
+    },
+    "1e3203df435dac577253": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-a-multifuncional-part-time-comida-rapida-30-horas-china-wok-patronato-3078160.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d7127eade4c5b317d0a9": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-rutero-zona-sur-rm-3078159.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6976d948425722fa8367": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/auxiliar-sanitarios-y-residuos-copiapo-turno-5x2-3078158.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3ab0fa60e00da053afa3": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/encargado-de-estrategia-comercial-y-experiencia-huechuraba-3078157.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "945f0b4970b23701d6da": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-junior-de-ciberseguridad-modalidad-hibrida-3078156.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a5dec2fb8057bc321bd5": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-cocina-pronto-copec-pajaritos-part-time-3078155.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "24780d1f36c696cad522": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/prevencionista-de-riesgos-sns-faena-minera-los-pelambres-chacay-3078154.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2bc7ed5ef9d7c3baa628": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-de-ejecucion-de-proyectos-en-terreno-3078153.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9041988706e67c38e65a": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vulnerability-engineer-ingeniero-de-vulnerabilidades-3078152.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d44cdd4a76cc8ec5d770": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-de-control-de-calidad-proyecto-minero-chuquicamata-mineria-e-industria-3078151.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bf8b959d502d02870cf8": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnicos-electrico-nivel-superior-titulado-clase-b-sec-3078150.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d20361ac825c91419757": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-full-time-linea-blanca-tv-la-dehesa-3078149.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "76bd5c76f80eb5f36a94": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-full-time-linea-blanca-tv-maipu-3078148.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "56fbe1fa5fb53ed94f6f": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-rutero-zona-norte-rm-3078147.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3412123bc06158287a07": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-rutero-zona-oriente-rm-3078146.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0bbf8eb84adbf3947939": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/chofer-auxiliar-570000-liquido-copiapo-7x7-no-mineria-trabajo-en-ciudad-3078145.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5acf2e0aac0918181919": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/guardias-con-os10-supermercado-s10-brasil-linares-renta-650000-liquidos-pauta-6x1-turnos-extras-con-pago-semanal-ingreso-inmediato-3078144.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "73966159be864263f9db": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-full-time-linea-blanca-tv-huechuraba-3078143.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cab912bf6f95572e2bfa": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-full-time-42-horas-rea-fiambreria-pedro-aguirre-cerda-3078142.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "207166b8288ac3fcadd7": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-full-time-42-horas-rea-fiambreria-pedro-aguirre-cerda-3078141.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "36dde1e497706a51d151": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://traiguencity.cl/estudiantes-de-la-araucania-podran-participar-en-la-39a-version-del-concurso-regional-de-dibujo-y-cuento-escolar/",
+      "source": "Inventario P01",
+      "commune": null
+    },
+    "db1fc1380d0923fd4e11": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://munilumaco.cl/~munilumaco/index.php/sala-de-prensa/830-municipalidad-de-lumaco-prepara-la-temporada-estival-y-realizo-cogrid-comunal-preparatorio-del-riesgo-de-incendios-forestales",
+      "source": "Auditoría Municipalidad Lumaco oferta de apoyo laboral",
+      "commune": null
+    },
+    "c3a651d5ada153b2e8f3": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.munilumaco.cl/~munilumaco/index.php/sala-de-prensa/830-municipalidad-de-lumaco-prepara-la-temporada-estival-y-realizo-cogrid-comunal-preparatorio-del-riesgo-de-incendios-forestales",
+      "source": "Auditoría Municipalidad Lumaco concursos",
+      "commune": null
+    },
+    "d0b1aa4937e8cd782902": {
+      "first_seen": "2026-11-16T19:16:15.384025-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/experto-a-en-prevencion-de-riesgos-rubro-celulosa-collipulli-3933145",
+      "source": "Portal Chiletrabajos · palabra clave · Collipulli",
+      "commune": "Collipulli"
     }
   }
 }

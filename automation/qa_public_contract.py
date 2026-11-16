@@ -78,6 +78,30 @@ def main():
                detail=str(exc)[:90])
 
     try:
+        status,headers,body=request(API+"/api/listings?fresh=1")
+        data=json.loads(body)
+        items=data.get("items",[])
+        forbidden={"ownerToken","ownerHash","ownerEmailHash","ownerEmail","adminNotes","evidenceImagePath"}
+        leaked=sorted({key for item in items if isinstance(item,dict) for key in item if key in forbidden})
+        record("public_catalog_owner_credential_redaction",
+               status==200 and isinstance(items,list) and not leaked,
+               status=status,items_checked=len(items),forbidden_fields=leaked)
+    except Exception as exc:
+        record("public_catalog_owner_credential_redaction",False,error=type(exc).__name__)
+
+    try:
+        status,headers,body=request(API+"/api/local-directory?place=Angol&kind=all")
+        data=json.loads(body)
+        items=data.get("items",[])
+        forbidden={"email","phone","ownerHash","ownerEmailHash","ownerToken","reviewEmailHash"}
+        leaked=sorted({key for item in items if isinstance(item,dict) for key in item if key in forbidden})
+        record("public_directory_private_fields_redacted",
+               status==200 and isinstance(items,list) and not leaked,
+               status=status,items_checked=len(items),forbidden_fields=leaked)
+    except Exception as exc:
+        record("public_directory_private_fields_redacted",False,error=type(exc).__name__)
+
+    try:
         # Read-only access-control check: do not attempt any admin mutation.
         try:
             status,headers,body=request(API+"/api/admin/session")

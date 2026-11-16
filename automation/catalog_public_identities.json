@@ -2,12 +2,14 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-16T12:22:20+00:00",
+  "generated_at": "2026-11-16T12:26:11+00:00",
   "complete": true,
   "totalItemsReported": 279,
   "jobIdentityCount": 275,
+  "visibleIn12CommunesCount": 92,
+  "outside12CommuneScopeCount": 183,
   "pagesChecked": 11,
-  "fingerprint": "e6240f251952469a2280dcf92077fef551728ce6cc9522aee8c8f710b523ef8d",
+  "fingerprint": "86e8922a709cbaff842761301549c58cacd007a1cc70ae9004242ed049cb4f31",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -16,6 +18,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cl.linkedin.com/jobs/view/administrativo-a-de-tesorer%C3%ADa-jornada-pt-tienda-angol-at-falabella-4461259756",
       "urlHashSha256": "f0269d03e0fb173b8a9a24a7f803a8bfec7902605edf680ea3e695d0b45b2b57"
     },
@@ -26,6 +29,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-ingenieria-civil-industrial-masso-nacimiento-3915394",
       "urlHashSha256": "053a7f9decb729c76382b14a83e7d1a2c5f1a37dc174ad9fa062a73bf3fb15dd"
     },
@@ -36,6 +40,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-promotor-retail-part-time-los-angeles-3910101",
       "urlHashSha256": "78546828589c6a0115024c27662dbe4b014e7a1b195fefec5733313cafd063e9"
     },
@@ -46,6 +51,7 @@
       "workCommunes": [
         "Lumaco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://munilumaco.cl/index.php/sala-de-prensa/89-oferta-laboral-para-recolectores-y-supervisores",
       "urlHashSha256": "69de8f9ec9f480a7f95930bb5811b2e008c1e8909c699b766fb62ca974881889"
     },
@@ -56,6 +62,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/3900906",
       "urlHashSha256": "3c9dd47593c77b27f3e49b0af27a7a9f89d56fe0290c660d3a067968aec262ca"
     },
@@ -66,6 +73,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/chofer-profesional-licencia-a5-3891149",
       "urlHashSha256": "103fed077cf8d55b593bee40f3ea61a54c8c5f1cd31996158288852c8d644a6f"
     },
@@ -76,6 +84,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/pedidosya-repartidores-los-angeles-3136652",
       "urlHashSha256": "08f0ebce17c70df72d07345fe67db2a49605a22251c6cd24f62ff6ac1e7ad908"
     },
@@ -86,6 +95,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
       "urlHashSha256": "01d76b0d3eabfed48d2f64883d905ae4df13bf0505116fdc104bf3f32a708875"
     },
@@ -96,6 +106,7 @@
       "workCommunes": [
         "Mulchén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/supervisor-tecnico-de-obra-mulchen-aguas-andinas-s.a-1118449360.html",
       "urlHashSha256": "172d9081d5d7dddffa8151ea1347740dc520690ff8a5ebea4b52dd92446b9daf"
     },
@@ -106,6 +117,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/geomensor-angol-3915735",
       "urlHashSha256": "f8fc291475dd5bb70c9e9bec22c400dce562a7262e3f64e0af2e5d09be8ba596"
     },
@@ -116,6 +128,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
       "urlHashSha256": "f8c638c4c0a09a8a987984799d0cb13765b79df21d7664f45ed294e39657501f"
     },
@@ -126,6 +139,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-temuco-3882863",
       "urlHashSha256": "f42031d6137b988055c7e25182c90664847a7233961d429ffaa054cb5f8e4155"
     },
@@ -136,6 +150,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/soldador-planta-productiva-3902218",
       "urlHashSha256": "3c3139f46dc81ea2c319b3de21cd5d387754b20c2452d4aa21548686d8d13ae3"
     },
@@ -146,6 +161,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/se-busca-personal-para-trabajar-en-minimarket-3906402",
       "urlHashSha256": "a0c62e6daa7b6a04d25287091fe36f63e227f3958d273394b1755bccff5efded"
     },
@@ -156,6 +172,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html",
       "urlHashSha256": "c8af3a136933055c503dce27e86dbe05bf4f053e02cec0fd57363a7640d4c865"
     },
@@ -166,6 +183,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
       "urlHashSha256": "930e3ffa3ba2344bd64328c6fab1e4c239d3cad6d853d3109694500fcaad7992"
     },
@@ -176,6 +194,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/peoneta-recaudador-lautaro-3891368",
       "urlHashSha256": "28f899c924c3946557742015abfa4904a6b49a0bcaad0917474ca907269c831a"
     },
@@ -186,6 +205,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-ingreso-inmediato-apoyo-auxiliar-bodega-armado-abc-angol-proyecto-del-03-octubre-al-30-nov-en-angol-7b9dda2687f57b4f61373e686dcf3405",
       "urlHashSha256": "00ca245a41d266df28cdf5dff72e51b7ebe1c521786e570783a475a8cd8a1eb0"
     },
@@ -196,6 +216,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-contador-auditor-nacimiento-3911316",
       "urlHashSha256": "6943596713218b3d055d685a169f4822154ee1d4e296aeeb6951fb1181666343"
     },
@@ -206,6 +227,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/electrico-industrial-3875909",
       "urlHashSha256": "43708c288c52f8c0e20647a496ffb0ee0f491eb5d13ecadc2b2cd8ff95269a79"
     },
@@ -216,6 +238,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/secretaria-o-contable-dce-los-angeles-3907541",
       "urlHashSha256": "ff6f29b3ac5a2f1c2eca4704d3566c501c3089954b71227c1c34039f972bf3d3"
     },
@@ -226,6 +249,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/operario-bodega-victoria-araucania-3902541",
       "urlHashSha256": "3a0bffaabdcb82b40020386ccaa30ec92908e0ca39f238212981f20c4f31c8e2"
     },
@@ -236,6 +260,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/supervisor-de-flota-3654306",
       "urlHashSha256": "5ee370606175bfc7a5923cd7df8abacb7f21d8e3e47944a916afc055549e94c9"
     },
@@ -246,6 +271,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ayudante-chofer-granel-cd-temuco-3909010",
       "urlHashSha256": "b1b8fbf74c9f346b3ac4c9f726ac067e82c43160bec3cc6f60ed508a2928c654"
     },
@@ -256,6 +282,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/supervisor-climatizacion-temuco-3392715",
       "urlHashSha256": "e629609e62698809188bff8f6c68def2fa735007cf4df4a1bbcf75770b019ac4"
     },
@@ -266,6 +293,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/encargado-calidad-para-aif-angol-3915738",
       "urlHashSha256": "7f24f1a31c25f4813b5c39e008a2408ef8ea816a52347eca8b950685fa8dc1fd"
     },
@@ -276,6 +304,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/operador-para-sucursal-|-angol-1118369173.html",
       "urlHashSha256": "7eb75d07be5ac90de3b00e566a7dd520ca7900b44232748bceb245df0e42d159"
     },
@@ -286,6 +315,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-gestion-personas-nacimiento-3899780",
       "urlHashSha256": "59f89cfcb0067637f4c9f26568b22557297630a75b410789b3ea75bca3731edc"
     },
@@ -296,6 +326,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/asistente-de-recursos-humanos-y-adm-reemplazo-pre-y-post-natal-3901379",
       "urlHashSha256": "e13dfc7db7e6472e9b2554fc0f78f969a543cbc04913e8fc47075c726e6fcab2"
     },
@@ -306,6 +337,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-a-de-apilador-electrico-cd-lautaro-3905597",
       "urlHashSha256": "63a50a664507c9cc5d377465f2636284f2c355246ec58a76efebd7e9f4f0328e"
     },
@@ -316,6 +348,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/administrativo-a-de-rrhh-3908391",
       "urlHashSha256": "b0ccec70c5f5b858e038b01beb77004a6a0081ac280f8f522ddd4146d8a00bfb"
     },
@@ -326,6 +359,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-planta-de-riles-los-angeles-reemplazo-vacaciones-3909246",
       "urlHashSha256": "8ef3c6570f86e955345128f8e73c3b82e51cfacaa6d9fe65d2e69bf42034d0d2"
     },
@@ -336,6 +370,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/cajero-a-asistente-integral--temporada-navidad--angol-comercial-fashions-park-s.a.-1118483484.html",
       "urlHashSha256": "2182e8b206e16f7a76d31148c0a364942c176dc0e2d56ceb29d8e9b605941a5f"
     },
@@ -346,6 +381,7 @@
       "workCommunes": [
         "Mulchén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://munimulchen.cl/oferta-laboral-labores-agricolas-y-cuidado-de-parcela",
       "urlHashSha256": "b41bcbc30c4c6e0b8004894ec02a4093fa7c33bf0b505da3d9e5f64a27b63341"
     },
@@ -357,6 +393,7 @@
         "Los Ángeles",
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/3889603",
       "urlHashSha256": "5b3b815795409aac08fa0d232f499aee3af9e8092f1da52141ca7fec41dc4924"
     },
@@ -367,6 +404,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/auditora-relatora-de-calidad-e-inocuidad-alimentaria-terreno-angol-smu-1-1118452584.html",
       "urlHashSha256": "5840f1e82bcad048c3e0913c2836a4edb75d393d08e9dca6a8c408ddf161147e"
     },
@@ -377,6 +415,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
       "urlHashSha256": "f0ce646c3cd3ba45b19c4857acad3a568be9ecc16b36d6e14fe2dee73d6d8697"
     },
@@ -387,6 +426,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/3906872",
       "urlHashSha256": "97439b00a177c3a4f2ff052af37b25ebd454dd330062e520f4962236feee5adf"
     },
@@ -397,6 +437,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/trabajador-social-y-psicologo-prm-cunco-y-temuco-araucania-3889333",
       "urlHashSha256": "282dc2cec1c16ae0ee72c4f3eefa8fc12d8c94a857d9a0f570264ad18907884a"
     },
@@ -407,6 +448,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-optica-karun-temuco-3655890",
       "urlHashSha256": "9edf33b25c83addd0f40f6417db62d9c326b947f03be58455eea8923e6d8eb2f"
     },
@@ -417,6 +459,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-meson-repuestos-automotrices-3350680",
       "urlHashSha256": "3c190da94f42cd18386703cc133641216e06b55600d40d024b8157da2237358a"
     },
@@ -427,6 +470,7 @@
       "workCommunes": [
         "Traiguén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/promotora-20-horas-traiguen-1118460788.html",
       "urlHashSha256": "44a9f9592ec6319c6fae359e3fd87677671a143eaad300130e68012db211032e"
     },
@@ -437,6 +481,7 @@
       "workCommunes": [
         "Mulchén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos",
       "urlHashSha256": "804147d121803488cbfaef0d6d7ab934c2439fa9a3dfd88f0f66aafe105ed528"
     },
@@ -447,6 +492,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-geomensura-efe-3764121",
       "urlHashSha256": "a99602e3a43b388206b25b476e5dacc9d07a198f73ed065a2ad85b40b1a6a787"
     },
@@ -457,6 +503,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/representante-de-ventas-los-angeles-3682741",
       "urlHashSha256": "41bb7b86c88c1853e0303c5fd82da23278b6e7f72ee6c96a2642df0a5338444e"
     },
@@ -467,6 +514,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-turno-3904146",
       "urlHashSha256": "8146fc05c53ee5e5937fe44ed89e1958b2a4a3725e10ca760509733ebab7fc1d"
     },
@@ -477,6 +525,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/asistente-dental-3909469",
       "urlHashSha256": "8716392acea7f0143741ce2ad43959c358b23d57bf6810c14bf8950845f6ff5c"
     },
@@ -487,6 +536,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/encargado-ambiental-y-participacion-ciudadana-para-aif-angol-3915746",
       "urlHashSha256": "f7ac616ee38e5e08c8c11cce055740d99339032dc07e1cf5d6081c05c15df72c"
     },
@@ -497,6 +547,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ayudante-de-panaderia-3903963",
       "urlHashSha256": "2110ceee596b1b0af6df7aeeff443e8ba370e10c60aa41ecd86db1778f7cdac9"
     },
@@ -507,6 +558,7 @@
       "workCommunes": [
         "Ercilla"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/laboratorista-de-aridos-santiago-idiem-3895266",
       "urlHashSha256": "cdfa74622002ca0116f0879c7e109ec19e1b722cb699545d22d220613882c8e5"
     },
@@ -517,6 +569,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/supervisor-de-seguridad-3907984",
       "urlHashSha256": "7a9e3782b66efc769de2a8941ea2dae008eeceb1753a250775668d53b86da1a2"
     },
@@ -527,6 +580,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-especialista-en-camaras-de-seguridad-ip-3907995",
       "urlHashSha256": "90716c14c63869aae1499247123bb6a1de0cd96c0072b07d89109ec3adda94d9"
     },
@@ -537,6 +591,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/licp-010926-ito-residente-temuco-3901800",
       "urlHashSha256": "f6fbfde91ea67a24b124ce8cb64ade2550c2dc800883a9157c64d06ffd613bd1"
     },
@@ -547,6 +602,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/cajeroa-con-experiencia-unimarc-angol-supermercados-unimarc-1118469523.html",
       "urlHashSha256": "11e223286f447243100b53ce2566d26bd1d0466db855c7b1e12015308493f553"
     },
@@ -557,6 +613,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
       "urlHashSha256": "fa8500cb8828effe2ca61b66bcac93f82a893992a602ec3b0e388e656c2636b3"
     },
@@ -567,6 +624,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ayudante-de-operador-freire-temuco-3908285",
       "urlHashSha256": "a1bcac069c5ae513e03f3936ddda45258313daebe7d46c6af9e0a532576afc63"
     },
@@ -577,6 +635,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/auxiliar-estafeta-reemplazo-media-jornada-programa-prm-angol-reg-la-araucan-3894880",
       "urlHashSha256": "1f8ccc9428964a89aa68964d79ae6a54beee3f0d778e0e9c77ebd7d2311d9afc"
     },
@@ -587,6 +646,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/asesor-a-de-ventas-y-servicio-en-sucursal-angol-atento-chile-s.a-1118466023.html",
       "urlHashSha256": "c817b27661fee23db336d7d9a44fb2347de42b260a80de53b5518a534f469c97"
     },
@@ -597,6 +657,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-a-de-desarrollo-organizacional-y-gestion-de-personas-temuco-3901433",
       "urlHashSha256": "d697d8486c507bd727674143809e974b955d17509cd916cfee80cd3e3c1c026b"
     },
@@ -607,6 +668,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-angol-movistar-3915481",
       "urlHashSha256": "173964b29fca14e45f5d3cf351e17b0662708eb90c4ceb1527bf83566e5660b7"
     },
@@ -617,6 +679,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-busca-contador-a-angol-y-alrededores-3893595",
       "urlHashSha256": "21441f0d0469ee7576dc9d5f2f186bb0daa524d8377ead26d61c50ccb502e7af"
     },
@@ -627,6 +690,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/director-a-prm-temuco-3902007",
       "urlHashSha256": "c80f6053d52146f74578a5b7e6b36b46c5b4a37c26d63d90d200547609b672b9"
     },
@@ -637,6 +701,7 @@
       "workCommunes": [
         "Collipulli"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/cajeroa-con-experiencia-unimarc-collipulli-supermercados-unimarc-1118190131.html",
       "urlHashSha256": "dee519bc83f567657536106051ab7be5e065d066265dbce7af3f0031d4b62aa6"
     },
@@ -647,6 +712,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/buscamos-tecnico-integral-en-terreno-3909904",
       "urlHashSha256": "ab60a2217b77101367d3b4ada9f33277041aa0b77e1565dde8cd42850a5d650b"
     },
@@ -657,6 +723,7 @@
       "workCommunes": [
         "Mininco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-harvester-cabezal-waratah-616c-licencia-clase-d-3860557",
       "urlHashSha256": "f713eec18113e9f4db08083c2eaf9d0bf7bee22970695ca21db949f2b1b51771"
     },
@@ -667,6 +734,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-en-administracion-para-aif-angol-3915752",
       "urlHashSha256": "5ca6fdce4da0aaa7911b0c2aa63c00976f1f116fa7cd7948befc21ee3687213d"
     },
@@ -677,6 +745,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
       "urlHashSha256": "a3a2f2298d5984b06475d84cdaa2f1cd9c91bfeaa24f67dfe95ece554c876041"
     },
@@ -687,6 +756,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/auxiliar-de-bodega-victoria-licencia-d-3903500",
       "urlHashSha256": "3fc22382a04b28397ea9b898079c2743e03f5ac1c15a476ddd09cdea0bcf7ec9"
     },
@@ -699,6 +769,7 @@
         "Traiguén",
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/3915323",
       "urlHashSha256": "7b9c2dcc998f4b32ad65628ea79062e1d0abef83865fccab6b9d73da2c0365c5"
     },
@@ -709,6 +780,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
       "urlHashSha256": "fcefed72ec34486ee42598905b22a28aec0b3118b2c2e80f3f97ea20f7333db9"
     },
@@ -719,6 +791,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/cajeros-as-multifuncionales-full-time-victoria-3068072.html",
       "urlHashSha256": "31f02250de5f4c72a053f7c376fe5a990dd9ae77136072fb34f1ae7f257d953c"
     },
@@ -729,6 +802,7 @@
       "workCommunes": [
         "Lumaco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/3923619",
       "urlHashSha256": "4e0234a5bfdd3b610f25b03025b740c8f16cf68b329627ab86f5ebec5d65987f"
     },
@@ -739,6 +813,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/docente-psicologo-3915967",
       "urlHashSha256": "60408f9a973f64dedcf9c00452d936065d0ff4af97bba5fd2370592550e76492"
     },
@@ -749,6 +824,7 @@
       "workCommunes": [
         "Ercilla"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/psicologo-a-organizacional-comuna-ercilla-3924928",
       "urlHashSha256": "8dfb2507759d6af5a6ba0da1b099ce3c64a6844b2dca3185a21142c383d2e9d3"
     },
@@ -759,6 +835,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/asistente-administrativa-de-caja-victoria-3070013.html",
       "urlHashSha256": "94705dc3f15d6a32e63f01f408f9ef257c1d19db0971042a224fbadd250c7c9a"
     },
@@ -769,6 +846,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-victoria-3932097",
       "urlHashSha256": "b1991b80dde5d8efe1c9032afc95f2a99b585803321d6760fa0f595d2440e172"
     },
@@ -779,6 +857,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/jefe-asesoria-aerodromo-victoria-3065931.html",
       "urlHashSha256": "cf56d288bde056a1d0fede3553005a5e7d4f5acfbbb875455ac2e1233731167b"
     },
@@ -789,6 +868,7 @@
       "workCommunes": [
         "Victoria"
       ],
+      "visibleIn12Communes": true,
       "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/supervisor-a-de-tienda-victoria-3068102.html",
       "urlHashSha256": "d8bc12a30ccf38753378c2e632d65c8bd776bbca8e1863023ff523d41f86626b"
     },
@@ -799,6 +879,7 @@
       "workCommunes": [
         "Mulchén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
       "urlHashSha256": "eedd8d86097d3012ce0b619f080a8a8aec504a6f7cc22fc52c9d9d48fa192d09"
     },
@@ -809,6 +890,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/gestor-de-casos-jornada-completa-cdc-mca-angol-region-de-la-araucania-3921759",
       "urlHashSha256": "2795b5d75320388ba141c19a0fa3e292a01cee48cb27c27dce878c9711ad5e81"
     },
@@ -819,6 +901,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
       "urlHashSha256": "286a02fa884ea7ea2859e783b25aa95cc20996ea2f21e4c59b97acf55bfd6c5a"
     },
@@ -829,6 +912,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
       "urlHashSha256": "2e5d13719312865d3636cee6e7715d9c1eddd2bb502452e07e00d7818d430875"
     },
@@ -839,6 +923,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "urlHashSha256": "7b49a7fcbeb65d1fdd1b4c864d1fe0d5654d6fd314ffe614b3da4643f29e5b71"
     },
@@ -849,6 +934,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
       "urlHashSha256": "33102f5b405e7fdd43583c5ee856f55b332bbf2612918a0e7cc6eb72ac6a78f0"
     },
@@ -859,6 +945,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
       "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
     },
@@ -869,6 +956,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
       "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
     },
@@ -879,6 +967,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
       "urlHashSha256": "56d079ed0f37b488c6d6a3d44d0419ac5d8b96848244efa95fadf9dc54104acb"
     },
@@ -889,6 +978,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
       "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
     },
@@ -899,6 +989,7 @@
       "workCommunes": [
         "Traiguén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
       "urlHashSha256": "ad791baa0556cf59d9313337c89a27a4bff4791d6f467a7dfae5080066b23bcb"
     },
@@ -909,6 +1000,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
       "urlHashSha256": "96350f5be3079cea841a5491143fb26c6356e1fcfb409d9437f39302d2139ef2"
     },
@@ -919,6 +1011,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
       "urlHashSha256": "e528e4b2242e8c0cd02f6089a152b76c13ecd40991c206424f204433c480c77a"
     },
@@ -929,6 +1022,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
       "urlHashSha256": "c86ec67e426e27e241495fc15752049361c35f706a5bbf855f80a28a3f09bef4"
     },
@@ -939,6 +1033,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
       "urlHashSha256": "11b791a16011a396820a7bacd137de0d4f824629ad6b3d4a64ec84569785c017"
     },
@@ -949,6 +1044,7 @@
       "workCommunes": [
         "Mulchén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/ayudante-de-cancha-teclero-vacaciones-mulchen-3074287.html",
       "urlHashSha256": "48b2b32c4cc89fbe5d53cb955901cc4c43747a268b7c1a786ce2cad079c75d40"
     },
@@ -959,6 +1055,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19249?c=cmpc",
       "urlHashSha256": "0228c36affcb1a1dc883bfabfd613dc91b1c7fda131e25398c651bf025e4f9fa"
     },
@@ -969,6 +1066,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",
       "urlHashSha256": "e0f58afad664f8f2609d5094f3e14b972dc0d98e6493920bd4cd3bddaeab644c"
     },
@@ -979,6 +1077,7 @@
       "workCommunes": [
         "Mulchén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/mulchen-promotora-20-hrs-intime-1118304771.html",
       "urlHashSha256": "3bea920297c6f2acc273afd3b41021baafb5ee6622cc2a217094baccae18ece5"
     },
@@ -989,6 +1088,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-reemplazo-pre-y-postnatal-los-angeles-3905150",
       "urlHashSha256": "fc33b4e991c7117494707c7c28e9f2c9d2e4991a82225157ad3dd28c12f871d2"
     },
@@ -999,6 +1099,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/supervisor-clinico-jornada-10-hs-cdc-las-araucania-3897652",
       "urlHashSha256": "6118c8c52a8d32081ded4d7dec2f49ade769541f8769aea5cf66256bb2f1c5e6"
     },
@@ -1009,6 +1110,7 @@
       "workCommunes": [
         "Collipulli"
       ],
+      "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
       "urlHashSha256": "28d0b11cf6dfcabbe985949a450fcdade0b9433d5c19f91c604221f79ecd7cf9"
     },
@@ -1019,6 +1121,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/encargado-a-de-sala-nacimiento-formato-superbodega-acuenta-walmart-chile-s.a.-1118349826.html",
       "urlHashSha256": "2acdf06d4afac6c3801ce572e71e3e65d1a3458f132fead789d3c6fd5789adaf"
     },
@@ -1029,6 +1132,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practicante-en-logistica-lautaro-3905388",
       "urlHashSha256": "bc08cbef2efee87f1b5144c57c1aa8bb6befeff2bd5fcdd67cd183abf4e45bdf"
     },
@@ -1040,6 +1144,7 @@
         "Ercilla",
         "Temuco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/reemplazo-secretaria-o-contable-aft-pf-ercilla-3849478",
       "urlHashSha256": "cafadb8a86d09015704899fe1b3bfa7e244809699b634891936c93c1d9934c70"
     },
@@ -1050,6 +1155,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/psicologo-a-3908370",
       "urlHashSha256": "fc77132b6ef52d5cce29404d3d6e42ac9a6c7087306013735bbdb5eb07668e54"
     },
@@ -1060,6 +1166,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ayudante-mecanico-automotriz-3909253",
       "urlHashSha256": "1b5f9a9eb0bce00392c71f8633a47c1fe64f44ceb7afa469d6b0bb95bd8185ab"
     },
@@ -1070,6 +1177,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-mantenimiento-telecomunicaciones-temuco-3909895",
       "urlHashSha256": "3c248a2e8b55dc54d67cb646483ba89abd717483028e941d9314d48251b33194"
     },
@@ -1080,6 +1188,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/teletrabajo-full-time-3754448",
       "urlHashSha256": "3bd8e454be7ae94fea863ad161d94a3282f046b715a2e7b399e831d72003c546"
     },
@@ -1090,6 +1199,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-atencion-al-cliente-sucursal-temuco-3908191",
       "urlHashSha256": "544d0ab135d098e8e3979191b2d94f54ba454a897d6e500710754e799febc495"
     },
@@ -1100,6 +1210,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-los-angeles-3916548",
       "urlHashSha256": "b5da9b6a28cd9489ce7e7482d13e267212ceeba7323598ee12497c44c4550633"
     },
@@ -1110,6 +1221,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefa-de-tienda-temuco-3924704",
       "urlHashSha256": "4e07ba860d4066938bffc027d7cebe3c0e8bb194c16947d7dd8ea124368acafe"
     },
@@ -1120,6 +1232,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/supervisor-a-de-ventas-los-angeles-3923489",
       "urlHashSha256": "a605df6421276c0744a59f17bb21875e604361e5fe1d7f09049276e58b4300b5"
     },
@@ -1130,6 +1243,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/lavador-de-vehiculos-temuco-3917274",
       "urlHashSha256": "05a2b2b8604acbe1cef14c55b7ebafea9f652706dd79fdc8567946577ff9ff44"
     },
@@ -1140,6 +1254,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-administracion-y-finanzas-3918602",
       "urlHashSha256": "7f57dcca2f41567462cca39ec57298f246d2d687d877762b479dd1aea498ecff"
     },
@@ -1150,6 +1265,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/medico-a-especialista-en-dermatologia-temuco-3923983",
       "urlHashSha256": "3c37077fb42bf8dc64472eb89014a4f9e29b72083b6aa5590f7e2d3318ab8105"
     },
@@ -1160,6 +1276,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/asistente-clinico-laparoscopia-temuco-3888355",
       "urlHashSha256": "5a665ab9dbeaf954f0c8eb7d4e04af2a1d7ee967085fce6b0d0e78fafbc2ca60"
     },
@@ -1170,6 +1287,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-procesos-industriales-y-quimicos-freire-3930114",
       "urlHashSha256": "50357b25d2ea74fd81ddf6a06744f5861638ef73df45d4f6e8ede64c0b46f2c1"
     },
@@ -1180,6 +1298,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedora-part-time-temuco-3930548",
       "urlHashSha256": "b5b1ebab30947cdaa04247f281ce5474ebea298e7cbd6ad54068f720f96d4014"
     },
@@ -1190,6 +1309,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/auxiliar-multifuncional-de-local-gastronomico-3930623",
       "urlHashSha256": "0695cf30a46b6c296c1c69e41270854ae5dcce589b861dd2b6829e0631d34b8d"
     },
@@ -1200,6 +1320,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-a-de-sucursal-los-angeles-3899799",
       "urlHashSha256": "8dded086ae3908da6de9f31b0e0bf3a71287e6d499ca4b17d8e4eed5a65e1db9"
     },
@@ -1210,6 +1331,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
       "urlHashSha256": "688f28c809dc3463f046fab29977d6012c4887f1455555d8c72f105714262867"
     },
@@ -1220,6 +1342,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/encuestador-en-terreno-temuco-3907224",
       "urlHashSha256": "1506d87b354b79cccc444a6c98ba0f7bf550decfce1c3ba3ebc61c584c591d25"
     },
@@ -1230,6 +1353,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
       "urlHashSha256": "06be2b623b31c335001a29edf6c88d326a9aeccb3f04bb824244b1599ecd3367"
     },
@@ -1240,6 +1364,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/lavador-movilizador-de-vehiculos-temuco-3917265",
       "urlHashSha256": "25c9c52900be7a84f50fe731ba4834cdc1e95ff6d581f146e6bf844da6817a49"
     },
@@ -1250,6 +1375,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/subjefe-de-tienda-victoria-s-secret-temuco-3925223",
       "urlHashSha256": "90dbf0c31a042819b0e03e29a22e7db59674f8661189f6f7492a5be339d93322"
     },
@@ -1260,6 +1386,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-turno-3904674",
       "urlHashSha256": "0d197fa56f0771e1e55eaff5e328c0cb08c82e51ce4dd85c70250518b63a1bbc"
     },
@@ -1270,6 +1397,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/asistente-administrativo-a-partime-temuco-3919723",
       "urlHashSha256": "501da542c8cea83117e3411f2fa1ecb76538c78488e254a01b45486162933599"
     },
@@ -1280,6 +1408,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-canal-tradicional-temuco-3799267",
       "urlHashSha256": "aad38aca5ef645435ed6aa2553945811e4c6a3275e0477657ea84154bd7610a3"
     },
@@ -1290,6 +1419,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/analista-de-calidad-de-temporada-los-angeles-3921732",
       "urlHashSha256": "bebead5ff8374d4fe81f15cbefefffdbbf9f9363a516717c30b433d666820924"
     },
@@ -1300,6 +1430,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-auditoria-3929288",
       "urlHashSha256": "8fe7b83ac18be4fd2a21cff79e0c878842daaa413dde1e5188d7bd660c702af1"
     },
@@ -1310,6 +1441,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-planificacion-y-logistica-3928367",
       "urlHashSha256": "ea0c5cbe6940780a8e37ff775f0885af2ed828b98e9d828d135a0e9e225b6b50"
     },
@@ -1320,6 +1452,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/buscamos-encargado-a-de-ti-proyectos-y-odoo-3918631",
       "urlHashSha256": "644984ed663d6aeb5ed124ce62a12c660ebd26f4bb7900b89b3520cb324a7fd8"
     },
@@ -1330,6 +1463,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/docente-ed-parvularia-3920635",
       "urlHashSha256": "15d9d1884ac8200294f2e0bb59a4362c8deedc0c30527312abb1966594cc744b"
     },
@@ -1340,6 +1474,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ortodoncista-3929011",
       "urlHashSha256": "f36ac8f4fffee910321498d1ca6287d24c69f64502da73b3be8a8af70be9df81"
     },
@@ -1350,6 +1485,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-full-42-horas-tienda-black-temuco-3929168",
       "urlHashSha256": "c6ac1e16ddae283ead12133f5728cded3356a945fb3690afb6c71fa84ccc409d"
     },
@@ -1360,6 +1496,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-pt-20-black-temuco-sab-y-dom-3929170",
       "urlHashSha256": "54148f25599b73ef97406b6c532083f0addc25837dc0e05de5ea0ea2cfc48064"
     },
@@ -1370,6 +1507,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/relator-para-curso-de-administracion-gastronomica-3919940",
       "urlHashSha256": "e3fbf4c96f04831fafdb012ce6fe1c494a868eb8296c1409340520ade9c00512"
     },
@@ -1380,6 +1518,7 @@
       "workCommunes": [
         "Nacimiento"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
       "urlHashSha256": "728743fa1bc6044fab11bee888fd1f8764785ba2965ddb7311f9d5d5e3060729"
     },
@@ -1390,6 +1529,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-tesoreria-3928348",
       "urlHashSha256": "3c785e0a6015b654b4754d6533f04f8b3468e34b97b08fb59cd6f8efcc30c946"
     },
@@ -1400,6 +1540,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/supervisor-de-montaje-galpon-3923511",
       "urlHashSha256": "d1de7155b3cb0474272e71c5eb079d3ffbbc2c35f51e090d41413f381b1b5944"
     },
@@ -1410,6 +1551,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-ftth-los-angeles-3913083",
       "urlHashSha256": "f384ffb68282ed11c78c72544773283af6d53d3182d9a0dbab751213a85f15f0"
     },
@@ -1420,6 +1562,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-laboral-tecnico-trabajo-social-3923059",
       "urlHashSha256": "6a41abe0be836ab76297f5128a053238e54234c310ccc9010aa87c7693e65909"
     },
@@ -1430,6 +1573,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-full-time-preunic-angol-3906496",
       "urlHashSha256": "69651c765c80a8521ef68abb90dc8e6c37bf3445531fa8c16c74a67ad17cb94d"
     },
@@ -1440,6 +1584,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/mercaderista-part-time-traiguen-3926111",
       "urlHashSha256": "516926d4f7502adfe04a9499494d50df0b7bd97e0afd2d6d56f32df5b64209b9"
     },
@@ -1450,6 +1595,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",
       "urlHashSha256": "5813016bef2debcf1ea2421697427dbf282df73bcfeb9e53bb61c863626fd688"
     },
@@ -1460,6 +1606,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963",
       "urlHashSha256": "ddad4ab0c134985d4f9c80bb0590c015df61885c539e8b211dbd0f5314f6f4db"
     },
@@ -1470,6 +1617,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
       "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
     },
@@ -1480,6 +1628,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-s-con-experiencia-terreno-telecomunicaciones-pos-pago-intangibles-3921308",
       "urlHashSha256": "b4277e6af50ea116a4453b6b976d422124509af45b82d4a7b804f5f2f613dafd"
     },
@@ -1490,6 +1639,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ito-civil-bodega-y-o-logistica-3927903",
       "urlHashSha256": "ccd4e9398872c0d9ba33b060ef4a9134affcc5a732ffc3b91dd034cb2c0a012d"
     },
@@ -1500,6 +1650,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/topografo-a-de-obra-3927895",
       "urlHashSha256": "486046cdbedd9d4ca3aff4b37ab55aabaeaba468e89019d8b2a5f252e865961b"
     },
@@ -1510,6 +1661,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-tecnologo-karun-temuco-3905989",
       "urlHashSha256": "605e2ca7cc106a2e2915e412298fe356ae10369c0f8ff6b1c4aff92c913b9a4c"
     },
@@ -1520,6 +1672,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/apoyo-de-navidad-punto-de-venta-beautyplus-ripley-temuco-3927136",
       "urlHashSha256": "f94346b9028efa5f558cad30a85c26b3d89a0a317988148a778dc372b5b5f8cc"
     },
@@ -1530,6 +1683,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/psicologo-de-reemplazo-21-dias-3920182",
       "urlHashSha256": "c684408fa60fb2e91e79786d17e6bc0f093613642392f33da7152b5667d8ee49"
     },
@@ -1540,6 +1694,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/medico-general-los-angeles-3927668",
       "urlHashSha256": "e9e14cfd52979b6c68cb3b7ae1c0d0ccf0db9c6c8b6fb7ad6cfb98f9006d3867"
     },
@@ -1550,6 +1705,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/coordinador-central-de-despacho-temuco-3921048",
       "urlHashSha256": "0634225be8cfe239461b76ae31d15e79d8cb618c8a2924bb1f52c217ce86c945"
     },
@@ -1560,6 +1716,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-los-angeles-3926874",
       "urlHashSha256": "7bb3aed2ccaae00712e36badc2b003c5419d663d23360542f3bb3cbfcd71c40f"
     },
@@ -1570,6 +1727,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-planta-coihue-3921386",
       "urlHashSha256": "601ea03d62c7f176a4b8ffaff9cbb4850c1a8d3b9af85bd9ad3ca8a428246c2d"
     },
@@ -1580,6 +1738,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-temuco-3926881",
       "urlHashSha256": "ea719ef21fda561617b320ea969342ea54415f3f38faeeb172a45083ab863141"
     },
@@ -1590,6 +1749,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-produccion-3914756",
       "urlHashSha256": "e31caf6da07a16c32a52e57d04db1f8626b1916257c190de75e2d8e1fd9d6971"
     },
@@ -1600,6 +1760,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-angol-3926909",
       "urlHashSha256": "561f393870110fb67e2a81d40bb42b6a97ce47881c7d66aec87d7a3464a4848b"
     },
@@ -1610,6 +1771,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-temuco-3738008",
       "urlHashSha256": "8ecdb2f07ce6c0942679c24fd76af7919ac1081a3b135ea1446a38d016dbc312"
     },
@@ -1620,6 +1782,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedora-part-time-apertura-raindoor-temuco-3930167",
       "urlHashSha256": "4965523342589638a2a8065c7b90638a3555719f57374d734627784ac4d318e7"
     },
@@ -1630,6 +1793,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/subjefe-de-tienda-portal-temuco-3927277",
       "urlHashSha256": "89c643406ae0e633b31c609e15a4210ceebd8e3130b570a7b997cbbd64869153"
     },
@@ -1640,6 +1804,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedora-part-time-easton-temuco-3929739",
       "urlHashSha256": "84b799edebdb0290d6402c3f620b09c7ad8e7eb16194a3d73d3c654ed18e7b3f"
     },
@@ -1650,6 +1815,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-atencion-publico-sucursal-temuco-3928272",
       "urlHashSha256": "a076cf5993fd714ea4f39f417025ea4bd4b458315911d23c4571811994b4da9e"
     },
@@ -1660,6 +1826,7 @@
       "workCommunes": [
         "Mulchén"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
       "urlHashSha256": "970437a2ef96421bbc171863c478a3172ae91ac7aefc5cd70080355d4fcb35a4"
     },
@@ -1670,6 +1837,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-temuco-3928804",
       "urlHashSha256": "a9d14104d73d8fbec52114bd30759a1feebc936aafd1c44e76225b565a7210a1"
     },
@@ -1680,6 +1848,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tem-vendedor-a-chocolateria-3929181",
       "urlHashSha256": "ca0ae5c67c40059120cc97d3cfcff517db62294855a0ddde3d4f46c23ea97f2f"
     },
@@ -1690,6 +1859,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/seguimos-creciendo-buscamos-talento-comercial-en-los-angeles-y-chillan-3862955",
       "urlHashSha256": "255fc66c9c52e8a8e99b5aee4ac685c42cefd2831cf34b52351a3e30f3273e02"
     },
@@ -1700,6 +1870,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-comercial-de-terreno-energia-solar-para-pyme-empresas-temuco-3927770",
       "urlHashSha256": "193465153bd6bfbda52e6dd9e37a79a0d86fabee03dde89ea50d33ed34a64831"
     },
@@ -1710,6 +1881,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/atencion-sala-de-ventas-3928681",
       "urlHashSha256": "cd26d3013a08df3616e080b4da346b1ca112f3ca11b62171c448ed00c90143af"
     },
@@ -1720,6 +1892,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/analista-control-gestion-industrial-pitrufquen-3906559",
       "urlHashSha256": "46f265acacc3c8a38173ad10e460bb120d4e3eac3a3de9bcd17288ae7f11bbe6"
     },
@@ -1730,6 +1903,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/trabajador-a-social-temuco-con-experiencia-en-entidades-patrocinante-3920148",
       "urlHashSha256": "1e8b871c0822bf9058379f87489dfaae00e78f4bd1ee8158e918509c750be0c4"
     },
@@ -1740,6 +1914,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-a-temuco-3872530",
       "urlHashSha256": "6ad7b485676d89ba770c580c45530d5ce7d07e302e6aecd1991d87feca01d699"
     },
@@ -1750,6 +1925,7 @@
       "workCommunes": [
         "Negrete"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/docente-de-matematicas-reemplazo-3755017",
       "urlHashSha256": "8058b3072cf8cc198cc8d5018e748d1b76c2090d5bc34fba1fea393c0f23ec0b"
     },
@@ -1760,6 +1936,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/promotor-a-full-time-martes-a-sabado-portal-temuco-paris-top-3928351",
       "urlHashSha256": "8cbf41a5c9078ece22ec2c21824aff2b62d11ace55ad25eacd33a66439add6df"
     },
@@ -1770,6 +1947,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-tecnica-prevencion-de-riesgos-cohigue-3929311",
       "urlHashSha256": "7616a16b4580c23f37813e7b37da0356b7a5fd5a6ba0b3ab536583cb5c822df7"
     },
@@ -1780,6 +1958,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/apoyo-de-temporada-maconline-los-angeles-3924065",
       "urlHashSha256": "fc6fce461b315a8ecf8e01ac0877171e864f602bb19ac8e9fdb03b19b9a45ace"
     },
@@ -1790,6 +1969,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/bodeguero-con-licencia-clase-d-y-b-3922540",
       "urlHashSha256": "e6d6f3a13efc1651c21e9101a425832dffc4aa8ecb63812a3994030298c0798b"
     },
@@ -1800,6 +1980,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/psicologo-a-organizacional-los-angeles-3924939",
       "urlHashSha256": "633b49949b7e645328e9a8fe419ea29fc8cff4be89c04b1f7d6d4333d3561060"
     },
@@ -1810,6 +1991,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/implantologa-3925998",
       "urlHashSha256": "19e85151dda3980efa2831ce7cbe92019f14bb89d9c78f4bbd4ce5f6913a6afb"
     },
@@ -1820,6 +2002,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jornal-temuco-3928983",
       "urlHashSha256": "ad19a19188dd0ae2d95e0a43fe82abd6557d12d2fdaaa7bae76d293402977e4d"
     },
@@ -1830,6 +2013,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/enfermero-a-subdirector-a-de-gestion-del-cuidado-40-horas-semanales-3604246",
       "urlHashSha256": "cdb26915d709cc430b902c5837c635f605bcdf1d236fa80ba96fb29d3c096ddb"
     },
@@ -1840,6 +2024,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-tecnica-prevencion-de-riesgos-freire-3929300",
       "urlHashSha256": "da022823b4f344cd139195c0e6ce9342a995f563a67b564b00e524c0a13fcc81"
     },
@@ -1850,6 +2035,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/administrativo-de-compras-3927193",
       "urlHashSha256": "d7e9fcd0a620e831e35cd0f3c2dbb8ce8d2080ec6d8e64e0ff6edc6a5d197a6e"
     },
@@ -1860,6 +2046,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/promotores-as-pt-campana-navidad-bicicletas-temuco-centro-3927973",
       "urlHashSha256": "ff91ace8fa1436f2f4f45fcf49044cd234b2b5a13d5fd26b795e6db69ac2f5d1"
     },
@@ -1870,6 +2057,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-grua-horquilla-temuco-3927130",
       "urlHashSha256": "71ede1e9e98142407b97786cdedc9656dbed51b18a268e80db5ac8ff34cb90cc"
     },
@@ -1880,6 +2068,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/administrativo-a-de-operaciones-inclusivo-ley-21015-3929537",
       "urlHashSha256": "d5ca7675e4a6e50d96e7a5d515018d8d133e3d009deb1c708641d52b509e9a27"
     },
@@ -1890,6 +2079,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/electrico-de-temporada-los-angeles-3921721",
       "urlHashSha256": "3d57216587de3ae0ad32f71402297e5f61427a1b9de8f04d42719d1171793578"
     },
@@ -1900,6 +2090,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/auditor-a-relator-a-de-calidad-e-inocuidad-alimentaria-angol-3916578",
       "urlHashSha256": "46607b264d4d83a176c340afd3211484ac27b1957bf7f57c04e52b3afe7d3a98"
     },
@@ -1910,6 +2101,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-calidad-talca-3925895",
       "urlHashSha256": "b37984e2b8bf9710a3e6c67844e163ad009a6169aa2e8fca5a8c4fe5ec1274ee"
     },
@@ -1920,6 +2112,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-medio-ambiente-y-relaciones-con-el-territorio-3921809",
       "urlHashSha256": "a68e4f016c3799ea9fe4089796d489add7f199241d344d68c5dca6f7300dac81"
     },
@@ -1930,6 +2123,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-mecanico-automotriz-3930190",
       "urlHashSha256": "844dab9c3f10b64845bd093062eaf54a4e390401bb0f01a0a2006e7c5d80f3ff"
     },
@@ -1940,6 +2134,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/personal-toma-de-inventario-victoria-traiqguen-3925455",
       "urlHashSha256": "383130ce370384b94123deeffea4fe27c161b7f85a53a95a9a102cbbf7c181a3"
     },
@@ -1950,6 +2145,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-evaluacion-agronomica-3929286",
       "urlHashSha256": "e8e39cde62a6d26cb97b9ef681345768ad0fac1559a2245c7999b133e50e945b"
     },
@@ -1960,6 +2156,7 @@
       "workCommunes": [
         "Lumaco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
       "urlHashSha256": "2a72a06b0d8dbb7895e18d98e6b3c9f19d3f9044b6655fb55d9f8c2c1c3a5f67"
     },
@@ -1970,6 +2167,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/se-busca-encargado-de-cocina-planchero-3929481",
       "urlHashSha256": "c4923c1083d87b2f7468e44a59a84835dd09e94d70d5f2384c6a2d5bc2d2b466"
     },
@@ -1980,6 +2178,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-comercial-b2b-sur-service-3928974",
       "urlHashSha256": "9382b470caba721d619e47165dcde36926fcb1ee760f6793cb84d5f7353483e4"
     },
@@ -1990,6 +2189,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-marketing-y-apoyo-administrativo-maquinaria-de-taller-mecanico-3625881",
       "urlHashSha256": "0a0a9d575287b0090bb3261579896e5c60e9ca0ae3539af828b857ad552a759d"
     },
@@ -2000,6 +2200,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/fiscalizador-tecnico-de-obras-fto-3909138",
       "urlHashSha256": "6d891fce1d2731b622beba4be0ebed46700e1ab7b480108695aa72e91066cac2"
     },
@@ -2010,6 +2211,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/19862-ito-en-oocc-proyecto-planta-de-alimentos-los-angeles-3924788",
       "urlHashSha256": "005b607ace799f3f522beec0668b18139bacb26b0ee7c18e0cf35078a69457d9"
     },
@@ -2020,6 +2222,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/alumno-en-practica-area-comercial-los-angeles-3924242",
       "urlHashSha256": "e0746be90d8e1d85edc946f68159db0341ecb80f3fe9cdfe8072f80f5682c966"
     },
@@ -2030,6 +2233,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/analista-de-recursos-humanos-3924424",
       "urlHashSha256": "8d1b1eed509b409f7b76bd4dd9bd25d7d30dcdb428214e83e3b4468e4333d078"
     },
@@ -2040,6 +2244,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-en-control-de-plagas-3923829",
       "urlHashSha256": "78bfba553b25161a25c9aa75def27d3c511e1acc28482b2eeab1dc3bb1b12054"
     },
@@ -2050,6 +2255,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operario-con-credencial-de-aplicador-de-plaguicidas-sag-3923693",
       "urlHashSha256": "cd7b9803a1fb05e4a316a778cf0afea07645d42846228e8262da50f7191ae6b9"
     },
@@ -2060,6 +2266,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
       "urlHashSha256": "a6c5ab75b47d129e5ebb407a06705cc38ca8615c2ab01581b42d6cf6e8321ec1"
     },
@@ -2070,6 +2277,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-ingeniero-mecanico-automotriz-los-angeles-3929325",
       "urlHashSha256": "a459340eb4b7da3ad65b2e1bae5f081fe906b31e5baf4a989611f3e78f4019f4"
     },
@@ -2080,6 +2288,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/se-busca-encargado-de-mantencion-temuco-3930298",
       "urlHashSha256": "13316d252d43acb97969d6744b528f10beebceb48bdb761d45c250047bf79efe"
     },
@@ -2090,6 +2299,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/personal-para-toma-de-inventario-los-angeles-3925494",
       "urlHashSha256": "4c024c5848ada1f4eeb2f9abf7e2c6f79b65574acd0520d6c0fb9db2bd9bdb13"
     },
@@ -2100,6 +2310,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/encuestador-en-terreno-los-angeles-3907221",
       "urlHashSha256": "94e397c219176396f8fb7a02d1bba162a83e6a2fb60b78d11d00e19600f6649f"
     },
@@ -2110,6 +2321,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/docentes-3926184",
       "urlHashSha256": "21adee6b1b056c5a51fc59aa2dd81673a4386cf47fc82951c4d8e207d35055d6"
     },
@@ -2120,6 +2332,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-mecanico-auxiliar-automotora-autofacil-los-angeles-3603299",
       "urlHashSha256": "ac81214f4993cf1d80e01c68f6b1f9a775fca537e9572f26018ac38db2c7666d"
     },
@@ -2130,6 +2343,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ito-prevencion-de-riesgos-biobio-3888356",
       "urlHashSha256": "31ca3e776637e6053e7c08e856531c8630d20afd1e2f87f8c629938663306a27"
     },
@@ -2140,6 +2354,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/administrativo-a-contable-de-temporada-los-angeles-3921696",
       "urlHashSha256": "2ef9a8203a2955f82fefe41abd482d5ce22cc4f13a906885909e2c130a98da91"
     },
@@ -2151,6 +2366,7 @@
         "Mulchén",
         "Temuco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/embajador-de-experiencia-temuco-ancud-castro-calbuco-pto-montt-mulchen-3894935",
       "urlHashSha256": "6725b64ddb36538409ecdf05bf8bc73543b1015ad79a62fddb0811d2860d193f"
     },
@@ -2161,6 +2377,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/auxiliar-de-cocina-3920361",
       "urlHashSha256": "de417f1d5ff82b36f1199aa67580ba2ae71abc60cf6213a2fef7ea255cffe61c"
     },
@@ -2171,6 +2388,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedora-full-time-temuco-3930547",
       "urlHashSha256": "60f6d3c18b4881012b18b2ba7fbf66ed18fa485025401d4d661dc5f2642603a9"
     },
@@ -2181,6 +2399,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ito-residente-experiencia-obras-conservacion-caminos-los-angeles-3905459",
       "urlHashSha256": "5ba17866f0d970e3241b156ff7e6cf381f2e87ade67c47baec40a5c83a46efc4"
     },
@@ -2191,6 +2410,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-cargador-frontal-3807033",
       "urlHashSha256": "8d1a1f93ef6e9468ca77a0673fafe64760e43111a2d104558e18f29e0dbdf255"
     },
@@ -2201,6 +2421,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-ingeniero-mecanico-automotriz-temuco-3929314",
       "urlHashSha256": "dc12651580a23daa5c6b8233f6d26543701832c8b27b0a1ad791c7711b90b729"
     },
@@ -2211,6 +2432,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/psicologo-prm-cunco-y-temuco-araucania-3921896",
       "urlHashSha256": "211451e936ad17fda1119f88be62652103bd5643ad6646fdb6c6f0700e00c4e1"
     },
@@ -2221,6 +2443,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-faena-kaufmann-los-angeles-3929892",
       "urlHashSha256": "af61a694ca376cb612c04f9220a9f632ede458ebb66f7fd058baae5efdb2ee23"
     },
@@ -2231,6 +2454,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/gestor-de-ventas-la-3917111",
       "urlHashSha256": "5c468418b0b0770ab1e23d42969129ef858cf97b3375d325b2fc539d97f29580"
     },
@@ -2241,6 +2465,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-en-terreno-3885872",
       "urlHashSha256": "8ea0009317492f58f132a4f0b5c944154b14a75b31d8c68e332d63bc963f38f0"
     },
@@ -2251,6 +2476,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/relator-prevencionista-de-riesgos-temuco-3215730",
       "urlHashSha256": "835a696362f4715cdc96a07c6babd480551861b0c3a79715c79af47a456a112f"
     },
@@ -2261,6 +2487,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/conductor-3904934",
       "urlHashSha256": "78bd794104f05a2c3065bc68d33c0c874321c22b0117ea4d95ad7c6295e9f045"
     },
@@ -2271,6 +2498,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/19876-ito-sanitario-proyecto-planta-de-alimento-los-angeles-3924543",
       "urlHashSha256": "2d7264cc6b4f74943b2afa4b45c18b8da50b099e324b24357fa83af6f03246a7"
     },
@@ -2281,6 +2509,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operario-de-tienda-20-hrs-temuco-3920908",
       "urlHashSha256": "051df30f30eaf65708f1c18b0d3b6fe4834103b565bd536ed98b7840e29c1246"
     },
@@ -2291,6 +2520,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-a-de-operaciones-ambientales-los-angeles-3929404",
       "urlHashSha256": "3502a3609efda149d571e600683775fd06fed8e20b48307a34f339948553df4c"
     },
@@ -2301,6 +2531,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
       "urlHashSha256": "f915fab77a162d120d847d6ae48894dd8f489aa55c51f6e95bc36b0a326e8d4a"
     },
@@ -2311,6 +2542,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-cobertura-financieras-3928360",
       "urlHashSha256": "987c0aa5f2cfc1bbb6d10a1b367da9f611f0ebd132f7ac3cf38c53837d53cb29"
     },
@@ -2321,6 +2553,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/asistente-dental-3927431",
       "urlHashSha256": "f867f724f776be7232d4b41b91659682e191580f90bcc90c94b99c6e17c18735"
     },
@@ -2331,6 +2564,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/medico-cirujano-los-angeles-3679862",
       "urlHashSha256": "3f6f4c4f6639ee729c4c3b55f61feb837d4cfcbbb40314d68121f0d14f58b02f"
     },
@@ -2341,6 +2575,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-de-contabilidad-temuco-3921986",
       "urlHashSha256": "fe0fb69189a9ada170465682720113a7ebf75f29069c2a2ce585254033471634"
     },
@@ -2351,6 +2586,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/cajero-bancario-3921990",
       "urlHashSha256": "974001793a5d2304cc71fda6de1e9b75cf5bdd8e6a6b5de3254c23b9c54bfcfd"
     },
@@ -2361,6 +2597,7 @@
       "workCommunes": [
         "Lumaco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
       "urlHashSha256": "d56df5112a06bb23e2a29618bcace5922d2fcbcbf982d6815c4e03b62a1d551c"
     },
@@ -2371,6 +2608,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-de-ventas-de-seguros-de-salud-los-angeles-3930344",
       "urlHashSha256": "0521cdf3ff89cb15c31a424a911c22eb932cec7c8a1bccbc7238bdba879d6cff"
     },
@@ -2381,6 +2619,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-obrera-implementacion-temuco-3921067",
       "urlHashSha256": "21d861609776b8cf9e583d608bf4241d8d95b38d6404115f2bfaed02bee359f0"
     },
@@ -2391,6 +2630,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
       "urlHashSha256": "5c980138c7556d6f7de937563a80ccf1a5b6585f74c36b9b12a8f401b888a826"
     },
@@ -2401,6 +2641,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
       "urlHashSha256": "bef43ecfd4d8417f1770e7caa761d4c2f34a69613fde842f953a77ae69568c86"
     },
@@ -2411,6 +2652,7 @@
       "workCommunes": [
         "Lumaco"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/profesionales-de-salud-para-cuidados-pacientes-domiciliarios-region-araucania-3913134",
       "urlHashSha256": "1c91d8a97130b19d9460c0c3d6564623821dced4458161614105ff252585dab4"
     },
@@ -2421,6 +2663,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-calidad-y-microbiologia-3929345",
       "urlHashSha256": "c7e2239343ef6bb6129e2a8d436406bb50a23f8fccd5ed7524d2ff19485a13b7"
     },
@@ -2431,6 +2674,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnologo-a-medico-optica-karun-temuco-3925239",
       "urlHashSha256": "782b8f30340b7cdabe814a010ee5454a64210aa95f5e322d372c2caeaaa02e28"
     },
@@ -2441,6 +2685,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-terreno-en-telecomunicaciones-los-angeles-3916315",
       "urlHashSha256": "0cdf7579b0c806e38ee2c165888d3bd9cebc3bbc9ea5f3d0b4ed3de77d26d9b9"
     },
@@ -2451,6 +2696,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-linea-temuco-3921374",
       "urlHashSha256": "c07f04b8296633890e25a83b7f589640bd13ac834db0eed6a5173b903fc22cf8"
     },
@@ -2461,6 +2707,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/promotor-vendedor-part-time-temuco-3922749",
       "urlHashSha256": "ec98c3c15f0a64ec2f1bc25da582ad608a4eb8172e7d495db66fdadd1b7e94ad"
     },
@@ -2471,6 +2718,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/trabajador-a-social-fae-cautin-media-jornada-3922996",
       "urlHashSha256": "98194596ff0c6c3d3cf2308dbe851d15b3f1d3ea8b705dfcb099ec446f44f6a4"
     },
@@ -2481,6 +2729,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-pt-30-horas-tienda-black-temuco-3929169",
       "urlHashSha256": "207e41d31b07243daae0b239785fe0bc01b8333b8eff9bf0f8d93ee77bf13213"
     },
@@ -2491,6 +2740,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-3917824",
       "urlHashSha256": "07b4b1affdc21b9f69da3f86a22f08438bb4d7aff412764ef1259562a765e9e9"
     },
@@ -2501,6 +2751,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/electrico-industrial-senior-3928150",
       "urlHashSha256": "de92c2e02ea4ce529df5386e6332f215dba9320cd1df0197d64782efae96002b"
     },
@@ -2511,6 +2762,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/subgerente-de-operaciones-comerciales-3930041",
       "urlHashSha256": "4db835c8c8ef413adea609e65c9b522b995020f8284f987cbb761768d74e4bae"
     },
@@ -2521,6 +2773,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/implantologa-3922425",
       "urlHashSha256": "e07e6552b60aa3ed43177c0f90cd8cb9019a954e06a5674e340805038264ead3"
     },
@@ -2531,6 +2784,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-a-part-time-mall-portal-temuco-3930097",
       "urlHashSha256": "fb15c240afe4faee80bd0c4ec95471de6acb6582e2dd7fbca5be82bbe7983fde"
     },
@@ -2541,6 +2795,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-3922072",
       "urlHashSha256": "2ef8da3c78f023d52adaf3bd7590ab58a43e8d8bc1fa21ff9f28f8102b8465d8"
     },
@@ -2551,6 +2806,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/inspector-de-medidores-ayudante-electrico-y-chofer-los-angeles-3883920",
       "urlHashSha256": "1d4b977d46465812f3302085f42d4aff183e05be17f1fd671f22129629e4c243"
     },
@@ -2561,6 +2817,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-tienda-de-suplementos-temuco-3915555",
       "urlHashSha256": "cd968231588bfba3f86747db066f4a1f434a5d25eb915ca5eb841c73ebf3c0f6"
     },
@@ -2571,6 +2828,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-a-de-soporte-ti-en-terreno-la-araucania-temuco-3928385",
       "urlHashSha256": "3841bf561ecda14f196190a90b42d603449761db31a92a512a3fa92fb28ac9e1"
     },
@@ -2581,6 +2839,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-los-angeles-3926877",
       "urlHashSha256": "0477d24692782930a9621e087428419602c8197edecb6f7892c801b7651f545b"
     },
@@ -2591,6 +2850,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-tienda-portal-temuco-3927264",
       "urlHashSha256": "36827e812c7525574cc27bccd88b90e01ce78dbcb33917e2b4842cab8851b0f7"
     },
@@ -2601,6 +2861,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-en-enfermeria-nivel-superior-temuco-3928170",
       "urlHashSha256": "9c6ab303db524d59a07af1758bfa44fd996592df22f4af4c4358f41b39a6c6cf"
     },
@@ -2611,6 +2872,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-de-turno-3916332",
       "urlHashSha256": "9fbab0f5376da68e8929c8428159346d22a798d19b0448a23da9d485a2bc9cd5"
     },
@@ -2621,6 +2883,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-recursos-humanos-3925883",
       "urlHashSha256": "35e20ff7e2c9edfe99b531c57f1cea005afdb5281325ce25e4f62be941c40615"
     },
@@ -2631,6 +2894,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-de-ventas-insumos-agricolas-temuco-3815495",
       "urlHashSha256": "89dc64fe1983b0c4963d668e4855eb8a156261312faf1b944ad70df3fde1cb57"
     },
@@ -2641,6 +2905,7 @@
       "workCommunes": [
         "Los Ángeles"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-en-telecomunicaciones-ftth-los-angeles-3906937",
       "urlHashSha256": "b2d46d8d414cfd19eae0ab4a12206d3fad95fb5836ce58d41f57044323a745ac"
     },
@@ -2651,6 +2916,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/inicia-conductores-esta-buscando-instructores-clase-b-para-temporada-alta-de-ve-3930638",
       "urlHashSha256": "a6964546437919b88631bf707c98a0222b2140d4608aa36626ea572d0e643a8a"
     },
@@ -2661,6 +2927,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-de-ventas-construccion-temuco-3918606",
       "urlHashSha256": "d0bd9f5064d650594134f26c29e792770d8e9c907137d1c4ab87f4871bd598ae"
     },
@@ -2671,6 +2938,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/asistente-de-bodega-3928688",
       "urlHashSha256": "c608665d95efdc7f352375205edc905c82915eb3db64660f4e8699ded50bf32e"
     },
@@ -2681,6 +2949,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
       "urlHashSha256": "000ee049f91cba301df59c0711311eb3f531a20aa4a340e7e770da6770b04ba9"
     },
@@ -2691,6 +2960,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-contador-3929338",
       "urlHashSha256": "3faaf7692028fa4b6c6dbb9c8187679edc10cbf6bf73290104f2d4efa21ec964"
     },
@@ -2701,6 +2971,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-a-de-monitoreo-junior-inclusivo-ley-21015-3929570",
       "urlHashSha256": "a0efcafabfadbbdad3f8b9aaa94d1f9f86c57974d0fbf5b0a22810c3edf53812"
     },
@@ -2711,6 +2982,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/teams-operacionales-tarragona-temuco-temporada-diciembre-3929431",
       "urlHashSha256": "7e45132d6145e0227fa87dfa70e645d18c6e481ae7199f7283250f278bd94a65"
     },
@@ -2721,6 +2993,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
       "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
     },
@@ -2731,6 +3004,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/asistente-de-marketing-3923593",
       "urlHashSha256": "a15262614b60cef684f3630f71738450f2ab33b9c63114c6e76ccd7c780322b9"
     },
@@ -2741,6 +3015,7 @@
       "workCommunes": [
         "Temuco"
       ],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/mercaderista-temuco-3926574",
       "urlHashSha256": "d1e4baee4379f228b815b7fe391fae66f15f94386880346bf9c1463892c36b4f"
     },
@@ -2751,6 +3026,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
       "urlHashSha256": "074cdef4c2f1125ff8f049f653f6f8ad54eb1c6cef1e3a2e8d9836d2eb482c34"
     },
@@ -2761,6 +3037,7 @@
       "workCommunes": [
         "Angol"
       ],
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
       "urlHashSha256": "e2265a52410f086a0dcb71a8684cc66e82a97a9d849af2fc45370c09ad971024"
     }

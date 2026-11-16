@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-15T18:46:06.429727-03:00",
+  "last_run": "2026-11-16T16:34:06.262092-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -5682,6 +5682,156 @@
       "first_seen": "2026-11-15T18:46:06.429727-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-grua-horquilla-komatsu-turno-noche-3077405.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "634d13065c0aedf2721f": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/instructor-grupal-sede-el-milagro-3078011.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e4de51ad98629753c2ad": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/quimico-farmaceutico-la-dehesa-3078010.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "03690e3b45c944a1485b": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/jefe-a-zonal-concepcion-3078009.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "14b1d4fe38ca008485f9": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/jefe-de-ventas-concon-3078008.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "da173ec8a5ad11320af0": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardaparques-con-os10-en-la-florida-790000-liquidos-4x4-fijo-de-dia-3078007.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "19abb2cd77ecf2486273": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/key-account-manager-las-condes-3078006.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6e1f4e9d1acd84698abd": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-clinico-5x2-lunes-a-viernes-lo-barnechea-con-experiencia-3078005.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a84fb3122629a407a9e0": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operadores-de-llenado-de-gases-antofagasta-licencia-d-3078004.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a52cd8e075dfa02d53df": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operadores-de-llenado-de-gases-puerto-montt-licencia-d-3078003.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d39abc25fbcd24f1786d": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operadores-de-llenado-de-gases-puerto-montt-licencia-d-3078002.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e1ce6b789e3ff286d4ab": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operadores-de-llenado-de-gases-puerto-montt-licencia-d-3078001.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9969138eae3bccdda311": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operadores-de-llenado-de-gases-antofagasta-licencia-d-3078000.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4a4d92ef1e29017ec1ef": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/si-no-tienes-planes-para-estas-vacaciones-esta-pega-corta-de-enero-es-ideal-para-ti-ejecutivo-telefonico-ciudad-empresarial-3077999.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ffb811e8b541f4dc1c70": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-rrhh-3077998.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "741fef72f5b4555ed02b": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-a-en-recursos-humanos-paine-3077997.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1d0267bc5aac2fa1549a": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/reemplazo-de-encargado-a-administrativo-residencia-de-madre-adolescentes-3077996.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d158b82ba596d39e26cd": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-gestion-rrhh-consultora-providencia-3077995.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ebd5fa7b7b38c527143f": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-a-en-educacion-de-parvulos-quilicura-3077994.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9ba204188c719df4f731": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/ejecutivo-a-comercial-en-terreno-de-repuestos-automotrices-3077993.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7f58df389e39b1637416": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-desarrollador-3077992.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f8ea16b8f95af16f640d": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/brayben/trabajo/administrativo-apoyo-3933071",
+      "source": "Brayben · ofertas de empresa de servicios transitorios",
+      "commune": null
+    },
+    "27505c2c680d756a968d": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.muninegrete.cl/feria-navidena-negrete-2026-bases-y-formulario-de-postulacion/",
+      "source": "Negrete · municipio",
+      "commune": null
+    },
+    "fbbd3ddba1b42902d1e8": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.angolnoticiasnew.cl/regional/municipalidad-de-lumaco-prepara-la-temporada-estival-y-realizo-cogrid-comunal-preparatorio-del-riesgo-de-incendios-forestales/",
+      "source": "Inventario P03",
+      "commune": null
+    },
+    "66281ad8ea649f899ef5": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://munilumaco.cl/index.php/sala-de-prensa/830-municipalidad-de-lumaco-prepara-la-temporada-estival-y-realizo-cogrid-comunal-preparatorio-del-riesgo-de-incendios-forestales",
+      "source": "Auditoría Municipalidad Lumaco oferta de apoyo laboral",
+      "commune": null
+    },
+    "5e0e29a98f7645c5536f": {
+      "first_seen": "2026-11-16T16:34:06.262092-03:00",
+      "url": "https://www.munilumaco.cl/index.php/sala-de-prensa/830-municipalidad-de-lumaco-prepara-la-temporada-estival-y-realizo-cogrid-comunal-preparatorio-del-riesgo-de-incendios-forestales",
+      "source": "Auditoría Municipalidad Lumaco concursos",
       "commune": null
     }
   }

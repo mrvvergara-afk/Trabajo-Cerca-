@@ -32,7 +32,8 @@ jobs:
 
       - name: Publish validated public identity mirror
         run: |
-          if git diff --quiet -- automation/catalog_public_identities.json && test -f automation/catalog_public_identities.json; then
+          git add automation/catalog_public_identities.json
+          if git diff --cached --quiet -- automation/catalog_public_identities.json; then
             echo 'Catalog identical to previous snapshot'
             exit 0
           fi

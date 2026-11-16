@@ -18,7 +18,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-SOURCE = "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/api/listings/identities"
+SOURCE = "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities"
 TARGET = pathlib.Path("automation/catalog_public_identities.json")
 MAX_PAGES = 100
 MAX_IDENTITIES = 20000

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-16T11:36:47.108216+00:00",
-  "local_discovery_at": "2026-11-16T11:36:42.554366+00:00",
+  "checked_at": "2026-11-16T22:15:53.001990+00:00",
+  "local_discovery_at": "2026-11-16T22:15:41.146056+00:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -50,9 +50,9 @@
   "local_sources_attempted": 17,
   "local_candidates": 87,
   "chiletrabajos_queries_attempted": 15,
-  "chiletrabajos_candidates": 123,
+  "chiletrabajos_candidates": 124,
   "job_details_checked": 60,
-  "ready_for_d_review": 14,
+  "ready_for_d_review": 10,
   "publication_confirmed": false,
   "coverage_complete": false,
   "source_failures": [
@@ -73,7 +73,7 @@
     {
       "source": "Brayben ofertas",
       "commune": "regional",
-      "pages_scanned": 2,
+      "pages_scanned": 7,
       "status": "partial",
       "errors": 1
     }

@@ -19,14 +19,14 @@
     "Negrete",
     "Nacimiento"
   ],
-  "run_wave": 1,
-  "run_at": "2026-11-16T16:18:35Z",
+  "run_wave": 2,
+  "run_at": "2026-11-16T20:16:56Z",
   "coverage_complete": false,
   "wave_complete_as_attempts": true,
-  "wave_accessible": 2,
+  "wave_accessible": 3,
   "wave_attempted": 24,
   "wave_blocked": 6,
-  "wave_failed": 16,
+  "wave_failed": 15,
   "wave_not_attempted": 0,
   "discovery_attempted": 5,
   "discovery": [
@@ -69,6 +69,46 @@
       "checked_at": "2026-11-16T16:18:35Z",
       "offers_found": 0,
       "reason": "Public web search by name and territory attempted; no independently verifiable new qualifying original job page found. This does not prove exhaustive coverage of inaccessible private/social posts."
+    },
+    {
+      "source_id": "los-angeles-bridge",
+      "name": "Los Ángeles · ciudad fuente",
+      "status": "checked_found",
+      "checked_at": "2026-11-16T20:16:56Z",
+      "offers_found": 1,
+      "reason": "Public indexed search attempted; indexed results observed but original source and catalog reconciliation pending. No verified new publication."
+    },
+    {
+      "source_id": "aggregators",
+      "name": "Indeed · Jooble · Jobsora · KitEmpleo",
+      "status": "checked_found",
+      "checked_at": "2026-11-16T20:16:56Z",
+      "offers_found": 2,
+      "reason": "Public indexed search attempted; indexed results observed but original source and catalog reconciliation pending. No verified new publication."
+    },
+    {
+      "source_id": "linkedin",
+      "name": "LinkedIn",
+      "status": "checked_found",
+      "checked_at": "2026-11-16T20:16:56Z",
+      "offers_found": 2,
+      "reason": "Public indexed search attempted; indexed results observed but original source and catalog reconciliation pending. No verified new publication."
+    },
+    {
+      "source_id": "radio-ercilla",
+      "name": "Radio Ercilla 106.7 FM",
+      "status": "checked_empty",
+      "checked_at": "2026-11-16T20:16:56Z",
+      "offers_found": 0,
+      "reason": "Public indexed search attempted; indexed results observed but original source and catalog reconciliation pending. No verified new publication."
+    },
+    {
+      "source_id": "alfarero-nacimiento",
+      "name": "El Alfarero Radio · Nacimiento",
+      "status": "checked_empty",
+      "checked_at": "2026-11-16T20:16:56Z",
+      "offers_found": 0,
+      "reason": "Public indexed search attempted; indexed results observed but original source and catalog reconciliation pending. No verified new publication."
     }
   ],
   "sources": [
@@ -335,6 +375,270 @@
       "status": "failed",
       "offers_found": 0,
       "reason": "Source timed out."
+    },
+    {
+      "source_id": "linkedin-Angol",
+      "name": "LinkedIn · Angol",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "territory": "Angol",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "blocked",
+      "offers_found": 0,
+      "reason": "Access challenge / browser restriction; page contents not readable."
+    },
+    {
+      "source_id": "computrabajo-Collipulli",
+      "name": "Computrabajo · Collipulli",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-collipulli",
+      "territory": "Collipulli",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "blocked",
+      "offers_found": 0,
+      "reason": "Access challenge / browser restriction; page contents not readable."
+    },
+    {
+      "source_id": "indeed-Ercilla",
+      "name": "Indeed · Ercilla",
+      "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+      "territory": "Ercilla",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "trabajando-Ercilla",
+      "name": "Trabajando · Ercilla",
+      "url": "https://www.trabajando.cl/trabajo-empleo/ercilla",
+      "territory": "Ercilla",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "chiletrabajos-Renaico",
+      "name": "ChileTrabajos · Renaico",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
+      "territory": "Renaico",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "opcionempleo-Mininco",
+      "name": "Opción Empleo · Mininco",
+      "url": "https://www.opcionempleo.cl/empleo-en-mininco.html",
+      "territory": "Mininco",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "laborum-Nacimiento",
+      "name": "Laborum · Nacimiento",
+      "url": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
+      "territory": "Nacimiento",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "linkedin-Negrete",
+      "name": "LinkedIn · Negrete",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+      "territory": "Negrete",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "blocked",
+      "offers_found": 0,
+      "reason": "Access challenge / browser restriction; page contents not readable."
+    },
+    {
+      "source_id": "computrabajo-Mulchén",
+      "name": "Computrabajo · Mulchén",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-mulchen",
+      "territory": "Mulchén",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "blocked",
+      "offers_found": 0,
+      "reason": "Access challenge / browser restriction; page contents not readable."
+    },
+    {
+      "source_id": "indeed-Los Sauces",
+      "name": "Indeed · Los Sauces",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+      "territory": "Los Sauces",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "trabajando-Los Sauces",
+      "name": "Trabajando · Los Sauces",
+      "url": "https://www.trabajando.cl/trabajo-empleo/los-sauces",
+      "territory": "Los Sauces",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "chiletrabajos-Purén",
+      "name": "ChileTrabajos · Purén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
+      "territory": "Purén",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "opcionempleo-Traiguén",
+      "name": "Opción Empleo · Traiguén",
+      "url": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+      "territory": "Traiguén",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "laborum-Lumaco",
+      "name": "Laborum · Lumaco",
+      "url": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
+      "territory": "Lumaco",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "linkedin-Victoria",
+      "name": "LinkedIn · Victoria",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "territory": "Victoria",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "blocked",
+      "offers_found": 0,
+      "reason": "Access challenge / browser restriction; page contents not readable."
+    },
+    {
+      "source_id": "computrabajo-secondary-Los Ángeles",
+      "name": "Computrabajo · Los Ángeles",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-los-angeles",
+      "territory": "Los Ángeles",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "blocked",
+      "offers_found": 0,
+      "reason": "Access challenge / browser restriction; page contents not readable."
+    },
+    {
+      "source_id": "indeed-secondary-Temuco",
+      "name": "Indeed · Temuco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
+      "territory": "Temuco",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "trabajando-secondary-Temuco",
+      "name": "Trabajando · Temuco",
+      "url": "https://www.trabajando.cl/trabajo-empleo/temuco",
+      "territory": "Temuco",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Configured URL inaccessible through reader; no source content verified."
+    },
+    {
+      "source_id": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Page returns loading placeholder only; no verifiable job content."
+    },
+    {
+      "source_id": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "checked_empty",
+      "offers_found": 0,
+      "reason": "Public contests page readable; latest listed deadline 2026-09-07, all listed competitions closed."
+    },
+    {
+      "source_id": "radio-nativa",
+      "name": "Radio Nativa",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Source URL inaccessible through available reader."
+    },
+    {
+      "source_id": "radio-viaducto",
+      "name": "Radio Viaducto",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "checked_empty",
+      "offers_found": 0,
+      "reason": "Public homepage readable; no employment offer among visible recent headlines."
+    },
+    {
+      "source_id": "registry-portal-empleo-biobio",
+      "name": "Portal Empleo Biobío",
+      "url": "https://portalempleobiobio.cl/",
+      "territory": "Los Ángeles",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "failed",
+      "offers_found": 0,
+      "reason": "Source URL inaccessible through available reader."
+    },
+    {
+      "source_id": "registry-omil-chillan-ofertas",
+      "name": "OMIL Chillán · Ofertas laborales",
+      "url": "https://www.municipalidadchillan.cl/sitio/menu/tramites/ofertas-laborales.php",
+      "territory": "Chillán",
+      "scan_wave": 2,
+      "checked_at": "2026-11-16T20:16:56Z",
+      "status": "checked_empty",
+      "offers_found": 0,
+      "reason": "Municipal page readable and explicitly reports no current offers; bridge city not target."
     }
   ],
   "verified_new_candidates": 0,
@@ -343,6 +647,39 @@
   "notes": [
     "This file records attempts, not successful reading of blocked pages.",
     "Catalog mirror validated 275 identities, 92 local, 11 pages, generated 2026-11-16T12:26:11Z.",
-    "No candidate with complete original job evidence was eligible for import."
-  ]
+    "No candidate with complete original job evidence was eligible for import.",
+    "Wave 2: 24/24 URLs attempted; only 3 readable, 6 blocked, 15 failed. Five discovery targets searched; 3 potential jobs require ATS verification and catalog reconciliation. No publication attempted."
+  ],
+  "pending_candidates": [
+    {
+      "title": "Auxiliar de Servicios, Vacaciones en Mi Jardín 2027, JI Miguel Zerené",
+      "company": "Fundación Integra",
+      "commune": "Collipulli",
+      "url": "https://www.kitempleo.cl/empleo/114221744/auxiliar-de-servicio-programa-vacaciones-en-mi-jardin-2027-ji-miguel-zerene-comuna-de-collipulli-region-de-la-araucania",
+      "published_on": "2026-11-15",
+      "closing_on": "2026-11-23",
+      "status": "catalog_unavailable_original_ats_unverified"
+    },
+    {
+      "title": "Asistente de párvulos, Vacaciones en Mi Jardín, JI Miguel Zerené",
+      "company": "Fundación Integra",
+      "commune": "Collipulli",
+      "url": "https://www.kitempleo.cl/empleo/113866174/asistente-de-parvulos-programa-vacaciones-en-mi-jardin-ji-miguel-zerene-comuna-de-collipulli-region-de-la-araucania",
+      "closing_on": "2026-11-23",
+      "status": "catalog_unavailable_original_ats_unverified"
+    },
+    {
+      "title": "Conductor profesional",
+      "company": "Grupo JCS",
+      "commune": "Negrete",
+      "url": "https://cl.indeed.com/q-transportes-l-los-%C3%81ngeles%2C-biob%C3%ADo-empleos.html",
+      "status": "catalog_unavailable_individual_job_url_unverified"
+    }
+  ],
+  "catalog_status": {
+    "status": "catalog_unavailable",
+    "mirror_generated_at": "2026-11-16T12:26:11Z",
+    "mirror_job_identity_count": 275,
+    "reason": "Mirror older than 120 minutes; direct API inaccessible to available reader. No safe deduplication possible."
+  }
 }

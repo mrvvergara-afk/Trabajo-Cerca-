@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import pathlib
+import unicodedata
 import tempfile
 import urllib.error
 import urllib.parse
@@ -22,6 +23,24 @@ SOURCE = "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/l
 TARGET = pathlib.Path("automation/catalog_public_identities.json")
 MAX_PAGES = 100
 MAX_IDENTITIES = 20000
+
+TARGET_COMMUNES = {
+    'angol', 'collipulli', 'ercilla', 'lumaco', 'los sauces', 'puren',
+    'renaico', 'traiguen', 'victoria', 'mulchen', 'negrete', 'nacimiento',
+}
+TERRITORIAL_ALIASES = {
+    'mininco': 'collipulli',
+    'villa mininco': 'collipulli',
+    'coihue': 'negrete',
+    'coigue': 'negrete',
+    'capitan pastene': 'lumaco',
+}
+
+
+def normalized_commune(value: str) -> str:
+    plain = unicodedata.normalize('NFD', value.lower().strip())
+    plain = ''.join(x for x in plain if unicodedata.category(x) != 'Mn')
+    return TERRITORIAL_ALIASES.get(plain, plain)
 
 
 def canonical_url(raw: str) -> str:
@@ -123,6 +142,8 @@ def main() -> None:
                 "title": title.strip()[:180],
                 "company": company.strip()[:140],
                 "workCommunes": sorted(set(work)),
+                # Exactly the territory shown in the default 12-commune frontend filter.
+                "visibleIn12Communes": any(normalized_commune(c) in TARGET_COMMUNES for c in work),
                 "url": canonical,
                 "urlHashSha256": digest,
             }
@@ -163,6 +184,8 @@ def main() -> None:
         "complete": True,
         "totalItemsReported": expected_total,
         "jobIdentityCount": len(rows),
+        "visibleIn12CommunesCount": sum(bool(x['visibleIn12Communes']) for x in rows),
+        "outside12CommuneScopeCount": sum(not x['visibleIn12Communes'] for x in rows),
         "pagesChecked": pages,
         "fingerprint": hashlib.sha256(json.dumps(rows, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest(),
         "items": rows,

@@ -1,0 +1,43 @@
+name: Sync Trabajo Cerca public catalog identities
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+  push:
+    paths:
+      - '.github/workflows/sync-public-catalog.yml'
+      - 'automation/sync_catalog_identities.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trabajo-cerca-catalog-identities-mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+
+      - name: Read complete public catalog and validate identities
+        run: python3 automation/sync_catalog_identities.py
+
+      - name: Publish validated public identity mirror
+        run: |
+          if git diff --quiet -- automation/catalog_public_identities.json && test -f automation/catalog_public_identities.json; then
+            echo 'Catalog identical to previous snapshot'
+            exit 0
+          fi
+          git config user.name 'Trabajo Cerca Catalog Bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add automation/catalog_public_identities.json
+          git commit -m 'chore(catalog): refresh audited public job identities [skip ci]'
+          git push origin HEAD:main

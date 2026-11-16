@@ -1,0 +1,1318 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-16",
+  "source_of_truth": {
+    "app_id": "trabajo-cerca-laboratorio-3ojgro",
+    "file": "backend/index.ts",
+    "definitions": [
+      "FREE_PUBLIC_SOURCES",
+      "FREE_LOCAL_SOURCES",
+      "FREE_PORTAL_SEARCHES"
+    ],
+    "note": "Inventario reconstruido del código de la app: 13 términos territoriales, Mininco normalizado a Collipulli, 2 ciudades puente, fuentes locales y extras. Las URLs son fuentes a intentar, no garantía de acceso ni de publicación."
+  },
+  "target_communes": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Lumaco",
+    "Los Sauces",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria",
+    "Mulchén",
+    "Negrete",
+    "Nacimiento"
+  ],
+  "aliases": {
+    "Mininco": "Collipulli",
+    "Coihue": "Negrete",
+    "Coigüe": "Negrete"
+  },
+  "count": 134,
+  "sources": [
+    {
+      "key": "indeed-Angol",
+      "name": "Indeed · Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "territory": "Angol",
+      "canonicalCommune": "Angol",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 0
+    },
+    {
+      "key": "computrabajo-Angol",
+      "name": "Computrabajo · Angol",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-angol",
+      "territory": "Angol",
+      "canonicalCommune": "Angol",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 1
+    },
+    {
+      "key": "linkedin-Angol",
+      "name": "LinkedIn · Angol",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "territory": "Angol",
+      "canonicalCommune": "Angol",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 2
+    },
+    {
+      "key": "laborum-Angol",
+      "name": "Laborum · Angol",
+      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "territory": "Angol",
+      "canonicalCommune": "Angol",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 3
+    },
+    {
+      "key": "opcionempleo-Angol",
+      "name": "Opción Empleo · Angol",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "territory": "Angol",
+      "canonicalCommune": "Angol",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 4
+    },
+    {
+      "key": "chiletrabajos-Angol",
+      "name": "ChileTrabajos · Angol",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+      "territory": "Angol",
+      "canonicalCommune": "Angol",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 5
+    },
+    {
+      "key": "trabajando-Angol",
+      "name": "Trabajando · Angol",
+      "url": "https://www.trabajando.cl/trabajo-empleo/angol",
+      "territory": "Angol",
+      "canonicalCommune": "Angol",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 0
+    },
+    {
+      "key": "indeed-Collipulli",
+      "name": "Indeed · Collipulli",
+      "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "territory": "Collipulli",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 1
+    },
+    {
+      "key": "computrabajo-Collipulli",
+      "name": "Computrabajo · Collipulli",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-collipulli",
+      "territory": "Collipulli",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 2
+    },
+    {
+      "key": "linkedin-Collipulli",
+      "name": "LinkedIn · Collipulli",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "territory": "Collipulli",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 3
+    },
+    {
+      "key": "laborum-Collipulli",
+      "name": "Laborum · Collipulli",
+      "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "territory": "Collipulli",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 4
+    },
+    {
+      "key": "opcionempleo-Collipulli",
+      "name": "Opción Empleo · Collipulli",
+      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "territory": "Collipulli",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 5
+    },
+    {
+      "key": "chiletrabajos-Collipulli",
+      "name": "ChileTrabajos · Collipulli",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+      "territory": "Collipulli",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 0
+    },
+    {
+      "key": "trabajando-Collipulli",
+      "name": "Trabajando · Collipulli",
+      "url": "https://www.trabajando.cl/trabajo-empleo/collipulli",
+      "territory": "Collipulli",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 1
+    },
+    {
+      "key": "indeed-Ercilla",
+      "name": "Indeed · Ercilla",
+      "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+      "territory": "Ercilla",
+      "canonicalCommune": "Ercilla",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 2
+    },
+    {
+      "key": "computrabajo-Ercilla",
+      "name": "Computrabajo · Ercilla",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-ercilla",
+      "territory": "Ercilla",
+      "canonicalCommune": "Ercilla",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 3
+    },
+    {
+      "key": "linkedin-Ercilla",
+      "name": "LinkedIn · Ercilla",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
+      "territory": "Ercilla",
+      "canonicalCommune": "Ercilla",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 4
+    },
+    {
+      "key": "laborum-Ercilla",
+      "name": "Laborum · Ercilla",
+      "url": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
+      "territory": "Ercilla",
+      "canonicalCommune": "Ercilla",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 5
+    },
+    {
+      "key": "opcionempleo-Ercilla",
+      "name": "Opción Empleo · Ercilla",
+      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "territory": "Ercilla",
+      "canonicalCommune": "Ercilla",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 0
+    },
+    {
+      "key": "chiletrabajos-Ercilla",
+      "name": "ChileTrabajos · Ercilla",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Ercilla",
+      "territory": "Ercilla",
+      "canonicalCommune": "Ercilla",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 1
+    },
+    {
+      "key": "trabajando-Ercilla",
+      "name": "Trabajando · Ercilla",
+      "url": "https://www.trabajando.cl/trabajo-empleo/ercilla",
+      "territory": "Ercilla",
+      "canonicalCommune": "Ercilla",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 2
+    },
+    {
+      "key": "indeed-Renaico",
+      "name": "Indeed · Renaico",
+      "url": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=45",
+      "territory": "Renaico",
+      "canonicalCommune": "Renaico",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 3
+    },
+    {
+      "key": "computrabajo-Renaico",
+      "name": "Computrabajo · Renaico",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-renaico",
+      "territory": "Renaico",
+      "canonicalCommune": "Renaico",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 4
+    },
+    {
+      "key": "linkedin-Renaico",
+      "name": "LinkedIn · Renaico",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "territory": "Renaico",
+      "canonicalCommune": "Renaico",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 5
+    },
+    {
+      "key": "laborum-Renaico",
+      "name": "Laborum · Renaico",
+      "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+      "territory": "Renaico",
+      "canonicalCommune": "Renaico",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 0
+    },
+    {
+      "key": "opcionempleo-Renaico",
+      "name": "Opción Empleo · Renaico",
+      "url": "https://www.opcionempleo.cl/empleo-en-renaico.html",
+      "territory": "Renaico",
+      "canonicalCommune": "Renaico",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 1
+    },
+    {
+      "key": "chiletrabajos-Renaico",
+      "name": "ChileTrabajos · Renaico",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
+      "territory": "Renaico",
+      "canonicalCommune": "Renaico",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 2
+    },
+    {
+      "key": "trabajando-Renaico",
+      "name": "Trabajando · Renaico",
+      "url": "https://www.trabajando.cl/trabajo-empleo/renaico",
+      "territory": "Renaico",
+      "canonicalCommune": "Renaico",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 3
+    },
+    {
+      "key": "indeed-Mininco",
+      "name": "Indeed · Mininco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mininco&fromage=45",
+      "territory": "Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 4
+    },
+    {
+      "key": "computrabajo-Mininco",
+      "name": "Computrabajo · Mininco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-mininco",
+      "territory": "Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 5
+    },
+    {
+      "key": "linkedin-Mininco",
+      "name": "LinkedIn · Mininco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 0
+    },
+    {
+      "key": "laborum-Mininco",
+      "name": "Laborum · Mininco",
+      "url": "https://www.laborum.cl/empleos-busqueda-mininco.html",
+      "territory": "Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 1
+    },
+    {
+      "key": "opcionempleo-Mininco",
+      "name": "Opción Empleo · Mininco",
+      "url": "https://www.opcionempleo.cl/empleo-en-mininco.html",
+      "territory": "Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 2
+    },
+    {
+      "key": "chiletrabajos-Mininco",
+      "name": "ChileTrabajos · Mininco",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mininco",
+      "territory": "Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 3
+    },
+    {
+      "key": "trabajando-Mininco",
+      "name": "Trabajando · Mininco",
+      "url": "https://www.trabajando.cl/trabajo-empleo/mininco",
+      "territory": "Mininco",
+      "canonicalCommune": "Collipulli",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 4
+    },
+    {
+      "key": "indeed-Nacimiento",
+      "name": "Indeed · Nacimiento",
+      "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+      "territory": "Nacimiento",
+      "canonicalCommune": "Nacimiento",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 5
+    },
+    {
+      "key": "computrabajo-Nacimiento",
+      "name": "Computrabajo · Nacimiento",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+      "territory": "Nacimiento",
+      "canonicalCommune": "Nacimiento",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 0
+    },
+    {
+      "key": "linkedin-Nacimiento",
+      "name": "LinkedIn · Nacimiento",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Nacimiento%2C%20Chile&f_TPR=r3888000",
+      "territory": "Nacimiento",
+      "canonicalCommune": "Nacimiento",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 1
+    },
+    {
+      "key": "laborum-Nacimiento",
+      "name": "Laborum · Nacimiento",
+      "url": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
+      "territory": "Nacimiento",
+      "canonicalCommune": "Nacimiento",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 2
+    },
+    {
+      "key": "opcionempleo-Nacimiento",
+      "name": "Opción Empleo · Nacimiento",
+      "url": "https://www.opcionempleo.cl/empleo-en-nacimiento.html",
+      "territory": "Nacimiento",
+      "canonicalCommune": "Nacimiento",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 3
+    },
+    {
+      "key": "chiletrabajos-Nacimiento",
+      "name": "ChileTrabajos · Nacimiento",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
+      "territory": "Nacimiento",
+      "canonicalCommune": "Nacimiento",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 4
+    },
+    {
+      "key": "trabajando-Nacimiento",
+      "name": "Trabajando · Nacimiento",
+      "url": "https://www.trabajando.cl/trabajo-empleo/nacimiento",
+      "territory": "Nacimiento",
+      "canonicalCommune": "Nacimiento",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 5
+    },
+    {
+      "key": "indeed-Negrete",
+      "name": "Indeed · Negrete",
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "territory": "Negrete",
+      "canonicalCommune": "Negrete",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 0
+    },
+    {
+      "key": "computrabajo-Negrete",
+      "name": "Computrabajo · Negrete",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-negrete",
+      "territory": "Negrete",
+      "canonicalCommune": "Negrete",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 1
+    },
+    {
+      "key": "linkedin-Negrete",
+      "name": "LinkedIn · Negrete",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+      "territory": "Negrete",
+      "canonicalCommune": "Negrete",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 2
+    },
+    {
+      "key": "laborum-Negrete",
+      "name": "Laborum · Negrete",
+      "url": "https://www.laborum.cl/empleos-busqueda-negrete.html",
+      "territory": "Negrete",
+      "canonicalCommune": "Negrete",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 3
+    },
+    {
+      "key": "opcionempleo-Negrete",
+      "name": "Opción Empleo · Negrete",
+      "url": "https://www.opcionempleo.cl/empleo-en-negrete.html",
+      "territory": "Negrete",
+      "canonicalCommune": "Negrete",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 4
+    },
+    {
+      "key": "chiletrabajos-Negrete",
+      "name": "ChileTrabajos · Negrete",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
+      "territory": "Negrete",
+      "canonicalCommune": "Negrete",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 5
+    },
+    {
+      "key": "trabajando-Negrete",
+      "name": "Trabajando · Negrete",
+      "url": "https://www.trabajando.cl/trabajo-empleo/negrete",
+      "territory": "Negrete",
+      "canonicalCommune": "Negrete",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 0
+    },
+    {
+      "key": "indeed-Mulchén",
+      "name": "Indeed · Mulchén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=45",
+      "territory": "Mulchén",
+      "canonicalCommune": "Mulchén",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 1
+    },
+    {
+      "key": "computrabajo-Mulchén",
+      "name": "Computrabajo · Mulchén",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-mulchen",
+      "territory": "Mulchén",
+      "canonicalCommune": "Mulchén",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 2
+    },
+    {
+      "key": "linkedin-Mulchén",
+      "name": "LinkedIn · Mulchén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mulch%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Mulchén",
+      "canonicalCommune": "Mulchén",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 3
+    },
+    {
+      "key": "laborum-Mulchén",
+      "name": "Laborum · Mulchén",
+      "url": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
+      "territory": "Mulchén",
+      "canonicalCommune": "Mulchén",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 4
+    },
+    {
+      "key": "opcionempleo-Mulchén",
+      "name": "Opción Empleo · Mulchén",
+      "url": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+      "territory": "Mulchén",
+      "canonicalCommune": "Mulchén",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 5
+    },
+    {
+      "key": "chiletrabajos-Mulchén",
+      "name": "ChileTrabajos · Mulchén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+      "territory": "Mulchén",
+      "canonicalCommune": "Mulchén",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 0
+    },
+    {
+      "key": "trabajando-Mulchén",
+      "name": "Trabajando · Mulchén",
+      "url": "https://www.trabajando.cl/trabajo-empleo/mulchen",
+      "territory": "Mulchén",
+      "canonicalCommune": "Mulchén",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 1
+    },
+    {
+      "key": "indeed-Los Sauces",
+      "name": "Indeed · Los Sauces",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+      "territory": "Los Sauces",
+      "canonicalCommune": "Los Sauces",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 2
+    },
+    {
+      "key": "computrabajo-Los Sauces",
+      "name": "Computrabajo · Los Sauces",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-los-sauces",
+      "territory": "Los Sauces",
+      "canonicalCommune": "Los Sauces",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 3
+    },
+    {
+      "key": "linkedin-Los Sauces",
+      "name": "LinkedIn · Los Sauces",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+      "territory": "Los Sauces",
+      "canonicalCommune": "Los Sauces",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 4
+    },
+    {
+      "key": "laborum-Los Sauces",
+      "name": "Laborum · Los Sauces",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
+      "territory": "Los Sauces",
+      "canonicalCommune": "Los Sauces",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 5
+    },
+    {
+      "key": "opcionempleo-Los Sauces",
+      "name": "Opción Empleo · Los Sauces",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "territory": "Los Sauces",
+      "canonicalCommune": "Los Sauces",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 0
+    },
+    {
+      "key": "chiletrabajos-Los Sauces",
+      "name": "ChileTrabajos · Los Sauces",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces",
+      "territory": "Los Sauces",
+      "canonicalCommune": "Los Sauces",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 1
+    },
+    {
+      "key": "trabajando-Los Sauces",
+      "name": "Trabajando · Los Sauces",
+      "url": "https://www.trabajando.cl/trabajo-empleo/los-sauces",
+      "territory": "Los Sauces",
+      "canonicalCommune": "Los Sauces",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 2
+    },
+    {
+      "key": "indeed-Purén",
+      "name": "Indeed · Purén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=45",
+      "territory": "Purén",
+      "canonicalCommune": "Purén",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 3
+    },
+    {
+      "key": "computrabajo-Purén",
+      "name": "Computrabajo · Purén",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-puren",
+      "territory": "Purén",
+      "canonicalCommune": "Purén",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 4
+    },
+    {
+      "key": "linkedin-Purén",
+      "name": "LinkedIn · Purén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Purén",
+      "canonicalCommune": "Purén",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 5
+    },
+    {
+      "key": "laborum-Purén",
+      "name": "Laborum · Purén",
+      "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+      "territory": "Purén",
+      "canonicalCommune": "Purén",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 0
+    },
+    {
+      "key": "opcionempleo-Purén",
+      "name": "Opción Empleo · Purén",
+      "url": "https://www.opcionempleo.cl/empleo-en-puren.html",
+      "territory": "Purén",
+      "canonicalCommune": "Purén",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 1
+    },
+    {
+      "key": "chiletrabajos-Purén",
+      "name": "ChileTrabajos · Purén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
+      "territory": "Purén",
+      "canonicalCommune": "Purén",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 2
+    },
+    {
+      "key": "trabajando-Purén",
+      "name": "Trabajando · Purén",
+      "url": "https://www.trabajando.cl/trabajo-empleo/puren",
+      "territory": "Purén",
+      "canonicalCommune": "Purén",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 3
+    },
+    {
+      "key": "indeed-Traiguén",
+      "name": "Indeed · Traiguén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+      "territory": "Traiguén",
+      "canonicalCommune": "Traiguén",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 4
+    },
+    {
+      "key": "computrabajo-Traiguén",
+      "name": "Computrabajo · Traiguén",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-traiguen",
+      "territory": "Traiguén",
+      "canonicalCommune": "Traiguén",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 5
+    },
+    {
+      "key": "linkedin-Traiguén",
+      "name": "LinkedIn · Traiguén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Traiguén",
+      "canonicalCommune": "Traiguén",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 0
+    },
+    {
+      "key": "laborum-Traiguén",
+      "name": "Laborum · Traiguén",
+      "url": "https://www.laborum.cl/empleos-busqueda-traiguen.html",
+      "territory": "Traiguén",
+      "canonicalCommune": "Traiguén",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 1
+    },
+    {
+      "key": "opcionempleo-Traiguén",
+      "name": "Opción Empleo · Traiguén",
+      "url": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+      "territory": "Traiguén",
+      "canonicalCommune": "Traiguén",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 2
+    },
+    {
+      "key": "chiletrabajos-Traiguén",
+      "name": "ChileTrabajos · Traiguén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Traigu%C3%A9n",
+      "territory": "Traiguén",
+      "canonicalCommune": "Traiguén",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 3
+    },
+    {
+      "key": "trabajando-Traiguén",
+      "name": "Trabajando · Traiguén",
+      "url": "https://www.trabajando.cl/trabajo-empleo/traiguen",
+      "territory": "Traiguén",
+      "canonicalCommune": "Traiguén",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 4
+    },
+    {
+      "key": "indeed-Lumaco",
+      "name": "Indeed · Lumaco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+      "territory": "Lumaco",
+      "canonicalCommune": "Lumaco",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 5
+    },
+    {
+      "key": "computrabajo-Lumaco",
+      "name": "Computrabajo · Lumaco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+      "territory": "Lumaco",
+      "canonicalCommune": "Lumaco",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 0
+    },
+    {
+      "key": "linkedin-Lumaco",
+      "name": "LinkedIn · Lumaco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Lumaco",
+      "canonicalCommune": "Lumaco",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 1
+    },
+    {
+      "key": "laborum-Lumaco",
+      "name": "Laborum · Lumaco",
+      "url": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
+      "territory": "Lumaco",
+      "canonicalCommune": "Lumaco",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 2
+    },
+    {
+      "key": "opcionempleo-Lumaco",
+      "name": "Opción Empleo · Lumaco",
+      "url": "https://www.opcionempleo.cl/empleo-en-lumaco.html",
+      "territory": "Lumaco",
+      "canonicalCommune": "Lumaco",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 3
+    },
+    {
+      "key": "chiletrabajos-Lumaco",
+      "name": "ChileTrabajos · Lumaco",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+      "territory": "Lumaco",
+      "canonicalCommune": "Lumaco",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 4
+    },
+    {
+      "key": "trabajando-Lumaco",
+      "name": "Trabajando · Lumaco",
+      "url": "https://www.trabajando.cl/trabajo-empleo/lumaco",
+      "territory": "Lumaco",
+      "canonicalCommune": "Lumaco",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 5
+    },
+    {
+      "key": "indeed-Victoria",
+      "name": "Indeed · Victoria",
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "territory": "Victoria",
+      "canonicalCommune": "Victoria",
+      "kind": "comuna_objetivo",
+      "provider": "indeed",
+      "scan_wave": 0
+    },
+    {
+      "key": "computrabajo-Victoria",
+      "name": "Computrabajo · Victoria",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-victoria",
+      "territory": "Victoria",
+      "canonicalCommune": "Victoria",
+      "kind": "comuna_objetivo",
+      "provider": "computrabajo",
+      "scan_wave": 1
+    },
+    {
+      "key": "linkedin-Victoria",
+      "name": "LinkedIn · Victoria",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "territory": "Victoria",
+      "canonicalCommune": "Victoria",
+      "kind": "comuna_objetivo",
+      "provider": "linkedin",
+      "scan_wave": 2
+    },
+    {
+      "key": "laborum-Victoria",
+      "name": "Laborum · Victoria",
+      "url": "https://www.laborum.cl/empleos-busqueda-victoria.html",
+      "territory": "Victoria",
+      "canonicalCommune": "Victoria",
+      "kind": "comuna_objetivo",
+      "provider": "laborum",
+      "scan_wave": 3
+    },
+    {
+      "key": "opcionempleo-Victoria",
+      "name": "Opción Empleo · Victoria",
+      "url": "https://www.opcionempleo.cl/empleo-en-victoria.html",
+      "territory": "Victoria",
+      "canonicalCommune": "Victoria",
+      "kind": "comuna_objetivo",
+      "provider": "opcionempleo",
+      "scan_wave": 4
+    },
+    {
+      "key": "chiletrabajos-Victoria",
+      "name": "ChileTrabajos · Victoria",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+      "territory": "Victoria",
+      "canonicalCommune": "Victoria",
+      "kind": "comuna_objetivo",
+      "provider": "chiletrabajos",
+      "scan_wave": 5
+    },
+    {
+      "key": "trabajando-Victoria",
+      "name": "Trabajando · Victoria",
+      "url": "https://www.trabajando.cl/trabajo-empleo/victoria",
+      "territory": "Victoria",
+      "canonicalCommune": "Victoria",
+      "kind": "comuna_objetivo",
+      "provider": "trabajando",
+      "scan_wave": 0
+    },
+    {
+      "key": "indeed-secondary-Los Ángeles",
+      "name": "Indeed · Los Ángeles",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "indeed",
+      "scan_wave": 1
+    },
+    {
+      "key": "computrabajo-secondary-Los Ángeles",
+      "name": "Computrabajo · Los Ángeles",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-los-angeles",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "computrabajo",
+      "scan_wave": 2
+    },
+    {
+      "key": "linkedin-secondary-Los Ángeles",
+      "name": "LinkedIn · Los Ángeles",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20%C3%81ngeles%2C%20Chile&f_TPR=r3888000",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "linkedin",
+      "scan_wave": 3
+    },
+    {
+      "key": "laborum-secondary-Los Ángeles",
+      "name": "Laborum · Los Ángeles",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "laborum",
+      "scan_wave": 4
+    },
+    {
+      "key": "opcionempleo-secondary-Los Ángeles",
+      "name": "Opción Empleo · Los Ángeles",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "opcionempleo",
+      "scan_wave": 5
+    },
+    {
+      "key": "chiletrabajos-secondary-Los Ángeles",
+      "name": "ChileTrabajos · Los Ángeles",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "chiletrabajos",
+      "scan_wave": 0
+    },
+    {
+      "key": "trabajando-secondary-Los Ángeles",
+      "name": "Trabajando · Los Ángeles",
+      "url": "https://www.trabajando.cl/trabajo-empleo/los-angeles",
+      "territory": "Los Ángeles",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "trabajando",
+      "scan_wave": 1
+    },
+    {
+      "key": "indeed-secondary-Temuco",
+      "name": "Indeed · Temuco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
+      "territory": "Temuco",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "indeed",
+      "scan_wave": 2
+    },
+    {
+      "key": "computrabajo-secondary-Temuco",
+      "name": "Computrabajo · Temuco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-temuco",
+      "territory": "Temuco",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "computrabajo",
+      "scan_wave": 3
+    },
+    {
+      "key": "linkedin-secondary-Temuco",
+      "name": "LinkedIn · Temuco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Temuco",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "linkedin",
+      "scan_wave": 4
+    },
+    {
+      "key": "laborum-secondary-Temuco",
+      "name": "Laborum · Temuco",
+      "url": "https://www.laborum.cl/empleos-busqueda-temuco.html",
+      "territory": "Temuco",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "laborum",
+      "scan_wave": 5
+    },
+    {
+      "key": "opcionempleo-secondary-Temuco",
+      "name": "Opción Empleo · Temuco",
+      "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+      "territory": "Temuco",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "opcionempleo",
+      "scan_wave": 0
+    },
+    {
+      "key": "chiletrabajos-secondary-Temuco",
+      "name": "ChileTrabajos · Temuco",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Temuco",
+      "territory": "Temuco",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "chiletrabajos",
+      "scan_wave": 1
+    },
+    {
+      "key": "trabajando-secondary-Temuco",
+      "name": "Trabajando · Temuco",
+      "url": "https://www.trabajando.cl/trabajo-empleo/temuco",
+      "territory": "Temuco",
+      "canonicalCommune": "solo_ubicacion_en_12_comunas",
+      "kind": "ciudad_puente",
+      "provider": "trabajando",
+      "scan_wave": 2
+    },
+    {
+      "key": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "kind": "local_institutional",
+      "scan_wave": 3
+    },
+    {
+      "key": "hospital-angol-concursos",
+      "name": "Hospital de Angol · concursos oficiales",
+      "url": "https://hospitalangol.cl/concursos/",
+      "territory": "Angol",
+      "kind": "local_institutional",
+      "scan_wave": 4
+    },
+    {
+      "key": "hospital-angol-enlaces",
+      "name": "Hospital de Angol · bolsa de trabajo",
+      "url": "https://hospitalangol.cl/enlaces/",
+      "territory": "Angol",
+      "kind": "local_institutional",
+      "scan_wave": 5
+    },
+    {
+      "key": "fashions-park-empleo-angol",
+      "name": "Fashion's Park · contratación oficial",
+      "url": "https://fashionspark.hiringroom.com/jobs",
+      "territory": "Angol y Victoria",
+      "kind": "local_institutional",
+      "scan_wave": 0
+    },
+    {
+      "key": "omil-lumaco",
+      "name": "Municipalidad / OMIL Lumaco",
+      "url": "https://www.munilumaco.cl/",
+      "territory": "Lumaco",
+      "kind": "local_institutional",
+      "scan_wave": 1
+    },
+    {
+      "key": "omil-los-sauces",
+      "name": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "kind": "local_institutional",
+      "scan_wave": 2
+    },
+    {
+      "key": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "territory": "Traiguén",
+      "kind": "local_institutional",
+      "scan_wave": 3
+    },
+    {
+      "key": "omil-renaico",
+      "name": "Municipalidad / OMIL Renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico",
+      "kind": "local_institutional",
+      "scan_wave": 4
+    },
+    {
+      "key": "omil-nacimiento",
+      "name": "Municipalidad / OMIL Nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "kind": "local_institutional",
+      "scan_wave": 5
+    },
+    {
+      "key": "omil-negrete",
+      "name": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete",
+      "kind": "local_institutional",
+      "scan_wave": 0
+    },
+    {
+      "key": "omil-mulchen",
+      "name": "Municipalidad / OMIL Mulchén",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "territory": "Mulchén",
+      "kind": "local_institutional",
+      "scan_wave": 1
+    },
+    {
+      "key": "omil-collipulli",
+      "name": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "kind": "local_institutional",
+      "scan_wave": 2
+    },
+    {
+      "key": "omil-victoria-news",
+      "name": "Municipalidad / OMIL Victoria · publicaciones",
+      "url": "https://victoriachile.cl/category/omil/",
+      "territory": "Victoria",
+      "kind": "local_institutional",
+      "scan_wave": 3
+    },
+    {
+      "key": "omil-puren-2026",
+      "name": "Municipalidad / Purén · llamados 2026",
+      "url": "https://munipuren.cl/llamados-a-concurso-2026/",
+      "territory": "Purén",
+      "kind": "local_institutional",
+      "scan_wave": 4
+    },
+    {
+      "key": "omil-ercilla",
+      "name": "Municipalidad / Ercilla · portal",
+      "url": "https://muniercilla.cl/",
+      "territory": "Ercilla",
+      "kind": "local_institutional",
+      "scan_wave": 5
+    },
+    {
+      "key": "malleco7",
+      "name": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "kind": "local_institutional",
+      "scan_wave": 0
+    },
+    {
+      "key": "malleco7-ediciones",
+      "name": "Malleco 7 · ediciones digitales",
+      "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "territory": "Malleco",
+      "kind": "local_institutional",
+      "scan_wave": 1
+    },
+    {
+      "key": "radio-nativa",
+      "name": "Radio Nativa",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "kind": "local_institutional",
+      "scan_wave": 2
+    },
+    {
+      "key": "cmpc-empleo-csod",
+      "name": "CMPC · portal de empleo",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "territory": "zona forestal",
+      "kind": "local_institutional",
+      "scan_wave": 3
+    },
+    {
+      "key": "cmpc-empleo-trabajando",
+      "name": "CMPC · portal oficial Trabajando",
+      "url": "https://cmpc.trabajando.cl/",
+      "territory": "Collipulli, Mininco, Nacimiento y zona forestal",
+      "kind": "local_institutional",
+      "scan_wave": 4
+    },
+    {
+      "key": "arauco-empleo",
+      "name": "Arauco · portal de empleo",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "territory": "zona forestal",
+      "kind": "local_institutional",
+      "scan_wave": 5
+    },
+    {
+      "key": "bne-negrete-pilot-2026-109726",
+      "name": "Bolsa Nacional de Empleo · Negrete",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "territory": "Negrete",
+      "kind": "extra",
+      "scan_wave": 0
+    },
+    {
+      "key": "bne",
+      "name": "Bolsa Nacional de Empleo",
+      "url": "https://www.bne.gob.cl/ofertas",
+      "territory": "territorio piloto",
+      "kind": "extra",
+      "scan_wave": 1
+    },
+    {
+      "key": "radio-viaducto",
+      "name": "Radio Viaducto",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "kind": "extra",
+      "scan_wave": 2
+    },
+    {
+      "key": "las-noticias-malleco",
+      "name": "Las Noticias de Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "territory": "Malleco",
+      "kind": "extra",
+      "scan_wave": 3
+    },
+    {
+      "key": "ssan-indice",
+      "name": "Servicio de Salud Araucanía Norte",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
+      "territory": "Malleco",
+      "kind": "extra",
+      "scan_wave": 4
+    },
+    {
+      "key": "negrete-feed",
+      "name": "Municipalidad de Negrete · novedades",
+      "url": "https://www.muninegrete.cl/feed/",
+      "territory": "Negrete",
+      "kind": "extra",
+      "scan_wave": 5
+    },
+    {
+      "key": "mulchen-feed",
+      "name": "Municipalidad de Mulchén · novedades",
+      "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "territory": "Mulchén",
+      "kind": "extra",
+      "scan_wave": 0
+    },
+    {
+      "key": "empleos-publicos",
+      "name": "Servicio Civil · Empleos Públicos",
+      "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "territory": "Chile",
+      "kind": "extra",
+      "scan_wave": 1
+    }
+  ]
+}

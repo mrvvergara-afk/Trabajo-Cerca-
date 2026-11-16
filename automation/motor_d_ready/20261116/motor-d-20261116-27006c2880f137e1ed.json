@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261116-27006c2880f137e1ed",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_40aa70282f34e44e2afb",
+      "cargo": "Inspector/a Ambiental",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
+      "fecha_publicacion": "2026-11-16",
+      "fecha_descubrimiento": "2026-11-16",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    }
+  ]
+}

@@ -1,6 +1,18 @@
 {
   "approved": [
     {
+      "id_fuente": "cmpc_19384",
+      "cargo": "Inspector/a Ambiental",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
+      "fecha_publicacion": "2026-11-16",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
       "id_fuente": "cmpc_19222",
       "cargo": "Instrumentista de área - Santa Fe",
       "empresa": "CMPC",
@@ -38,6 +50,22 @@
     }
   ],
   "pending": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
+      "title": "Práctica Administración RRHH - Los Ángeles",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19342?c=cmpc",
+      "title": "DATA & INFORMATION GOVERNANCE SPECIALIST",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19328?c=cmpc",
       "title": "Subgerente Técnico SSO",
@@ -79,14 +107,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19330?c=cmpc",
-      "title": "Auxiliar General de Fabrica - Chimolsa, Puente Alto",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
       "title": "Maestro de Mantención Eléctrica - Planta Bucalemu",
       "workplaces": [],
@@ -105,22 +125,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
       "title": "Operador Montacarga Turno - Planta Puente Alto",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19329?c=cmpc",
-      "title": "JEFE DE REPORTABILIDAD",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19319?c=cmpc",
-      "title": "Ingeniero Compras Sr.",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"

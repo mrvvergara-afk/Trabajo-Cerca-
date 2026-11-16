@@ -2,8 +2,20 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "motor_d_cmpc_browser",
-  "batch_id": "motor-d-cmpc-bbf040705dbddec4",
+  "batch_id": "motor-d-cmpc-02d6dca2d1f943ae",
   "offers": [
+    {
+      "id_fuente": "cmpc_19384",
+      "cargo": "Inspector/a Ambiental",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
+      "fecha_publicacion": "2026-11-16",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
     {
       "id_fuente": "cmpc_19222",
       "cargo": "Instrumentista de área - Santa Fe",

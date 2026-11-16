@@ -11,6 +11,11 @@
       "batch_id": "chatgpt-20261113-1c3068e8db51d95bb6",
       "file": "20261113/chatgpt-20261113-1c3068e8db51d95bb6.json",
       "count": 2
+    },
+    {
+      "batch_id": "chatgpt-20261116-f915fab77a162d120d",
+      "file": "20261116/chatgpt-20261116-f915fab77a162d120d.json",
+      "count": 3
     }
   ],
   "seen_offer_ids": [
@@ -20,7 +25,10 @@
     "cg_8dfb2507759d6af5a6ba",
     "cg_94705dc3f15d6a32e63f",
     "cg_cf56d288bde056a1d0fe",
-    "cg_d8bc12a30ccf38753378"
+    "cg_d8bc12a30ccf38753378",
+    "cg_f915fab77a162d120d84",
+    "cg_b1991b80dde5d8efe1c9",
+    "cg_f36ac8f4fffee9103214"
   ],
   "seen_url_hashes": [
     "31f02250de5f4c72a053f7c376fe5a990dd9ae77136072fb34f1ae7f257d953c",
@@ -29,6 +37,9 @@
     "8dfb2507759d6af5a6ba0da1b099ce3c64a6844b2dca3185a21142c383d2e9d3",
     "94705dc3f15d6a32e63f01f408f9ef257c1d19db0971042a224fbadd250c7c9a",
     "cf56d288bde056a1d0fede3553005a5e7d4f5acfbbb875455ac2e1233731167b",
-    "d8bc12a30ccf38753378c2e632d65c8bd776bbca8e1863023ff523d41f86626b"
+    "d8bc12a30ccf38753378c2e632d65c8bd776bbca8e1863023ff523d41f86626b",
+    "f915fab77a162d120d847d6ae48894dd8f489aa55c51f6e95bc36b0a326e8d4a",
+    "b1991b80dde5d8efe1c9032afc95f2a99b585803321d6760fa0f595d2440e172",
+    "f36ac8f4fffee910321498d1ca6287d24c69f64502da73b3be8a8af70be9df81"
   ]
 }

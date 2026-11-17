@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-17T14:35:55.754482+00:00",
-  "local_discovery_at": "2026-11-17T14:35:43.250639+00:00",
+  "checked_at": "2026-11-17T19:26:52.150998+00:00",
+  "local_discovery_at": "2026-11-17T19:26:42.854199+00:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -48,11 +48,11 @@
   "municipalities_unreadable": [],
   "local_sources_expected": 17,
   "local_sources_attempted": 17,
-  "local_candidates": 44,
+  "local_candidates": 93,
   "chiletrabajos_queries_attempted": 15,
-  "chiletrabajos_candidates": 0,
-  "job_details_checked": 0,
-  "ready_for_d_review": 0,
+  "chiletrabajos_candidates": 123,
+  "job_details_checked": 60,
+  "ready_for_d_review": 12,
   "publication_confirmed": false,
   "coverage_complete": false,
   "source_failures": [
@@ -64,9 +64,16 @@
       "errors": 1
     },
     {
+      "source": "Municipio Victoria OMIL",
+      "commune": "Victoria",
+      "pages_scanned": 35,
+      "status": "partial",
+      "errors": 1
+    },
+    {
       "source": "SERFONAC ofertas",
       "commune": "regional",
-      "pages_scanned": 1,
+      "pages_scanned": 33,
       "status": "partial",
       "errors": 1
     },

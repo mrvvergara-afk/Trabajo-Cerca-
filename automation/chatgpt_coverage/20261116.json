@@ -1002,5 +1002,5 @@
       "status": "catalog_unavailable_individual_job_url_unverified"
     }
   ],
-  "catalog_status": "catalog_unavailable: mirror generated_at 2026-11-16T22:28:00Z older than 120 minutes at 2026-11-17T00:22Z? 114 minutes; requires strict time verification; direct API inaccessible"
+  "catalog_status": "mirror_valid_at_run: generated_at 2026-11-16T22:28:00Z, age 114m01s at 2026-11-17T00:22:01Z; 276 identities, complete=true, schema_version=1, producer=trabajo_cerca_public_feed. No eligible verified new candidates to reconcile."
 }

@@ -44,7 +44,7 @@ def do_browser(browser, label, width, height):
     start=time.monotonic()
     response=page.goto(WEB,wait_until="domcontentloaded",timeout=60000)
     try:
-        page.locator(".tcPurposeGateway").wait_for(state="visible",timeout=60000)
+        page.locator("main.neoShell").wait_for(state="visible",timeout=45000)
         gateway=True
     except PlaywrightTimeoutError:
         gateway=False
@@ -80,26 +80,27 @@ def do_browser(browser, label, width, height):
     if label=="mobile":
         # Inspect editorial own promotion. Absence is an explicit not-verified condition,
         # not a false successful gallery test: a paid campaign may own the featured slot.
-        gallery=page.locator(".tcHouseAd.tcPremiumAd .tcHouseGalleryControls")
+        gallery=page.locator(".tcInlineHousePromo .tcInlineGalleryControls")
         try:
             gallery.first.wait_for(state="visible",timeout=14000)
             gallery.scroll_into_view_if_needed()
-            button=gallery.locator("button[aria-label^='Imagen 2']").first
+            image=gallery.locator("xpath=..").locator("img.tcHouseFallbackThumb").first
+            original=image.get_attribute("src")
+            button=gallery.get_by_role("button",name="Ver imagen 2 de 3").first
             button.click(timeout=5000)
             selected=button.get_attribute("aria-pressed")
-            art=page.locator(".tcHouseAd.tcPremiumAd .tcHouseGalleryLabel").first.inner_text()
-            record("mobile_manual_house_gallery",selected=="true" and "2/3" in art,
-                selected=selected,visible_caption=art)
+            image_now=image.get_attribute("src")
+            record("mobile_manual_house_gallery",selected=="true" and original!=image_now,
+                selected=selected,original=original,current=image_now)
             page.screenshot(path=str(OUTPUT/"mobile_gallery.png"),full_page=False)
         except PlaywrightTimeoutError:
             record("mobile_manual_house_gallery",False,
-              reason="featured HOUSE_AD not displayed or gallery is hidden in this inventory")
+              reason="visible own-promotion gallery not found in initial mobile inventory")
         except Exception as err:
             record("mobile_manual_house_gallery",False,error=str(err)[:180])
 
         try:
-            gateway_button=page.locator(".tcPurposeGrid button").filter(
-                has_text=re.compile("Servicios y negocios",re.IGNORECASE)).first
+            gateway_button=page.get_by_role("button",name="Directorio",exact=True).first
             gateway_button.click(timeout=9000)
             directory=page.locator("#local-directory")
             directory.wait_for(state="visible",timeout=30000)

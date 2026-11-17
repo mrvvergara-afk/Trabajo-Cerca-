@@ -40,9 +40,30 @@ def main():
                page_items=len(items) if isinstance(items,list) else None,
                reported_public_jobs=listing.get("totalVerifiedJobOffers"),
                degraded=listing.get("degraded",False),
-               feed_state=listing.get("feedState"))
+               feed_state=listing.get("feedState"),
+               next_cursor=listing.get("nextCursor"),
+               total=listing.get("totalItems"),
+               page_size=listing.get("pageSize"),
+               feed_rebuilding=listing.get("feedRebuilding",False))
     except Exception as exc:
         record("full_authoritative_catalog_page",False,error=type(exc).__name__)
+
+    try:
+        cursor=listing.get("nextCursor") if isinstance(listing,dict) else None
+        if cursor and isinstance(cursor,str):
+            status,headers,body=request(API+"/api/listings?cursor="+urllib.parse.quote(cursor,safe=""))
+            page=json.loads(body)
+            record("second_public_catalog_page",
+                   status==200 and isinstance(page.get("items"),list) and
+                   not page.get("degraded") and not page.get("feedRebuilding"),
+                   status=status,items=len(page.get("items",[])),
+                   next_cursor=page.get("nextCursor"),
+                   total=page.get("totalItems"))
+        else:
+            record("second_public_catalog_page",not bool(listing.get("degraded")),
+                   reason="first page has no continuation cursor")
+    except Exception as exc:
+        record("second_public_catalog_page",False,error=type(exc).__name__)
 
     try:
         cursor=None;seen_cursors=set();seen_ids=set();pages=0;count=0;total=None

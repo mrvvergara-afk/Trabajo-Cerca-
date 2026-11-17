@@ -78,6 +78,13 @@ def do_browser(browser, label, width, height):
     record(label+"_javascript_uncaught",len(exceptions)==0,exceptions=exceptions[:8])
 
     if label=="mobile":
+        try:
+            page.wait_for_function(
+                "() => /[0-9]+ resultados del catálogo/.test(document.body.innerText)",timeout=35000)
+            record("mobile_complete_catalog_counter",True)
+        except PlaywrightTimeoutError:
+            record("mobile_complete_catalog_counter",False,
+                excerpt=page.locator("main").inner_text()[-250:])
         # Inspect editorial own promotion. Absence is an explicit not-verified condition,
         # not a false successful gallery test: a paid campaign may own the featured slot.
         gallery=page.locator(".tcInlineHousePromo .tcInlineGalleryControls")
@@ -111,6 +118,17 @@ def do_browser(browser, label, width, height):
             shops=directory.get_by_role("button",name="Negocios",exact=True)
             shops.click(timeout=9000)
             record("mobile_business_directory_tab",shops.get_attribute("aria-pressed")=="true")
+            try:
+                directory.get_by_text("Cargando directorio local…").wait_for(
+                    state="hidden",timeout=35000)
+                text=directory.inner_text()
+                record("mobile_directory_fetch_settled",
+                  "No se pudo consultar el directorio" not in text and
+                  "Cargando directorio local" not in text,
+                  text_tail=text[-280:])
+            except PlaywrightTimeoutError:
+                record("mobile_directory_fetch_settled",False,
+                   reason="directory remained loading beyond 35 seconds")
             page.screenshot(path=str(OUTPUT/"mobile_directory.png"),full_page=False)
             after=page.evaluate("""() => ({
               viewport:innerWidth,doc:document.documentElement.scrollWidth

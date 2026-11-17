@@ -242,6 +242,19 @@ def links_from(soup,base,limit=35):
         output.setdefault(url,(title,listing_state))
     found=[(url,title,state) for url,(title,state) in output.items()]
     return found[:limit] if limit is not None else found
+def genuine_worksite_commune_mention(clause, commune, match):
+    """Reject names that are not the commune of Victoria in Malleco."""
+    if commune != "Victoria":
+        return True
+    before = clause[:match.start()]
+    after = clause[match.end():]
+    # \"Nueva Victoria\" is a mining site in northern Chile.
+    # \"Victoria's Secret\" is a retail brand, not a worksite.
+    return not (
+        re.search(r"\bnueva\s+$", before) or
+        re.match(r"\s*['’´]?s\s+secret\b", after, re.I)
+    )
+
 # Solo el texto explicito de la oferta puede establecer empresa y lugar de trabajo.
 # La comuna de la fuente municipal NO equivale a la comuna del puesto.
 def explicit_work_commune(body):
@@ -265,7 +278,7 @@ def explicit_work_commune(body):
             matches=[]
             for name,commune in places.items():
                 match=re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",clause)
-                if match:
+                if match and genuine_worksite_commune_mention(clause, commune, match):
                     matches.append((match.start(),-len(name),commune))
             if matches:
                 return min(matches)[2]
@@ -348,7 +361,8 @@ def chiletrabajos_metadata(soup, title, url):
     if match:
         location=fold(match.group(1))
         for place in COMMUNES:
-            if re.search(r"(?<!\w)"+re.escape(fold(place))+r"(?!\w)",location):
+            location_match=re.search(r"(?<!\w)"+re.escape(fold(place))+r"(?!\w)",location)
+            if location_match and genuine_worksite_commune_mention(location, place, location_match):
                 city=place
                 break
     # The portal's posting city may be a recruitment address, not the worksite.

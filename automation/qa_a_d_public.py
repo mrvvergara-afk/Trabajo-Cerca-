@@ -3,6 +3,7 @@ No offers are inserted and no admin endpoints are called.
 """
 import json
 from datetime import datetime,timezone
+from zoneinfo import ZoneInfo
 import sys
 import urllib.parse
 import urllib.request
@@ -12,6 +13,12 @@ KNOWN_D={
  "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
  "https://www.chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
  "https://www.chiletrabajos.cl/trabajo/m1-moldajero-obra-gruesa-hospital-de-nacimiento-contrato-a-trato-3887988"
+}
+# Explicit source expiry date, not an invented rolling age filter.
+# On the expiry day status can change at any hour; flag for manual review,
+# but do not assert that the posting must remain public permanently.
+D_SOURCE_EXPIRIES={
+ "https://www.chiletrabajos.cl/trabajo/m1-moldajero-obra-gruesa-hospital-de-nacimiento-contrato-a-trato-3887988":"2026-11-16"
 }
 def fetch(path):
     with urllib.request.urlopen(urllib.request.Request(BASE+path,headers={
@@ -96,11 +103,21 @@ def main():
         "match": [{k:row.get(k) for k in ("title","company","source","verified","review","active")} for row in a_match[:2]]},
         ensure_ascii=False))
     assert a_match,"Motor A verified known Preunic offer but it is not visible"
-    missing=sorted(KNOWN_D-urls)
-    print("PUBLIC_FEED",json.dumps({"items":len(items),"known_D_found":len(KNOWN_D)-len(missing),
-        "missing_D":missing},ensure_ascii=False))
+    today_local=datetime.now(ZoneInfo("America/Santiago")).date()
+    due_or_expired={
+        url for url,date in D_SOURCE_EXPIRIES.items()
+        if datetime.fromisoformat(date).date()<=today_local
+    }
+    required=KNOWN_D-due_or_expired
+    missing=sorted(required-urls)
+    print("PUBLIC_FEED",json.dumps({"items":len(items),
+        "known_D_found":len(KNOWN_D & urls),
+        "missing_still_expected_D":missing,
+        "expired_or_due_today_not_required":sorted(due_or_expired),
+        "note":"Expired-on-date adverts need source-status audit; never force-retain indefinitely"},
+        ensure_ascii=False))
     assert len(items)>=100,"Public catalog unexpectedly small"
-    assert not missing,"Previously confirmed Motor D offers disappeared"
+    assert not missing,"Previously confirmed still-expected Motor D offers disappeared"
     print("QA_A_D_PUBLIC_SUCCESS: public catalog stable and known D offers visible; A scanning active")
 if __name__=="__main__":
     try:main()

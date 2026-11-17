@@ -82,6 +82,27 @@ def do_browser(browser, label, width, height):
             page.wait_for_function(
                 "() => /[0-9]+ resultados del catálogo/.test(document.body.innerText)",timeout=35000)
             record("mobile_complete_catalog_counter",True)
+            try:
+                page.wait_for_function(
+                  "() => /[0-9]+ resultados del catálogo/.test(document.querySelector('.tcCatalogCount')?.innerText||'')",
+                  timeout=30000)
+                page.wait_for_timeout(700)
+                cached=page.evaluate("""() => {
+                    const raw=localStorage.getItem('tc_public_verified_radar_v1');
+                    if(!raw)return null;
+                    const c=JSON.parse(raw);
+                    const first=c.items?.[0]||{};
+                    return {count:c.items?.length||0,
+                      noPrivateFields:c.items.every(row=>
+                         !('contact' in row)&&!('phone' in row)&&!('email' in row)&&
+                         !('ownerToken' in row)&&row.origin==='radar'&&row.kind==='job_offer'),
+                      keys:Object.keys(first).slice(0,16)}
+                }""")
+                record("mobile_public_job_cache_sanitized",
+                       cached is not None and cached["count"]>0 and cached["noPrivateFields"],
+                       cache=cached)
+            except Exception as e:
+                record("mobile_public_job_cache_sanitized",False,error=str(e)[:260])
         except PlaywrightTimeoutError:
             record("mobile_complete_catalog_counter",False,
                 excerpt=page.locator("main").inner_text()[-250:])
@@ -104,6 +125,34 @@ def do_browser(browser, label, width, height):
             record("mobile_six_images_accessible",
                 six.get_attribute("aria-pressed")=="true",
                 displayed=image.get_attribute("src"))
+            # Visual number is hidden; the active control is a small CSS dot.
+            style=page.evaluate("""() => {
+              const c=document.querySelector('.tcInlineGalleryControls');
+              const b=c?.querySelector('button');
+              if(!b)return null;
+              return {font:getComputedStyle(b).fontSize,
+                dot:getComputedStyle(b,'::after').width,
+                image:document.querySelector('.tcInlineHousePromo img.tcHouseFallbackThumb')?.getAttribute('src'),
+                title:document.querySelector('.tcInlineHousePromo .tcInlineHouseCopy strong')?.innerText};
+            }""")
+            record("mobile_six_dots_without_numbers",
+                style is not None and style["font"]=="0px" and
+                float(style["dot"].replace("px",""))<=16,
+                style=style)
+            # Every non-initial art frame must match its own messaging.
+            story_expectations={
+              "explore.svg":"Lo que buscas puede estar cerca.",
+              "professionals.svg":"Haz visible tu experiencia.",
+              "inclusion.svg":"Muestra lo que sabes hacer.",
+              "local-business.svg":"Que elijan tu negocio local.",
+              "advertisers.svg":"Tu anuncio puede contar más.",
+              "employers.svg":"¿Necesitas contratar?"
+            }
+            current=style["image"].split("/")[-1]
+            expected=story_expectations.get(current)
+            record("mobile_story_matches_artwork",
+                bool(expected) and expected==style["title"],
+                artwork=current,expected=expected,actual=style["title"])
             page.screenshot(path=str(OUTPUT/"mobile_gallery.png"),full_page=False)
         except PlaywrightTimeoutError:
             record("mobile_manual_house_gallery",False,

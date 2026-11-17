@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-17T19:26:52.150998+00:00",
-  "local_discovery_at": "2026-11-17T19:26:42.854199+00:00",
+  "checked_at": "2026-11-17T22:58:20.521853+00:00",
+  "local_discovery_at": "2026-11-17T22:58:15.045559+00:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -48,7 +48,7 @@
   "municipalities_unreadable": [],
   "local_sources_expected": 17,
   "local_sources_attempted": 17,
-  "local_candidates": 93,
+  "local_candidates": 94,
   "chiletrabajos_queries_attempted": 15,
   "chiletrabajos_candidates": 123,
   "job_details_checked": 60,
@@ -60,13 +60,6 @@
       "source": "Municipio Angol",
       "commune": "Angol",
       "pages_scanned": 1,
-      "status": "partial",
-      "errors": 1
-    },
-    {
-      "source": "Municipio Victoria OMIL",
-      "commune": "Victoria",
-      "pages_scanned": 35,
       "status": "partial",
       "errors": 1
     },

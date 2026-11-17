@@ -2,14 +2,14 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-17T17:10:44+00:00",
+  "generated_at": "2026-11-17T22:36:18+00:00",
   "complete": true,
-  "totalItemsReported": 280,
-  "jobIdentityCount": 276,
-  "visibleIn12CommunesCount": 93,
+  "totalItemsReported": 281,
+  "jobIdentityCount": 277,
+  "visibleIn12CommunesCount": 94,
   "outside12CommuneScopeCount": 183,
   "pagesChecked": 11,
-  "fingerprint": "418db6feb948e8649360cc06cef8004bfcb6c2accd1bb457c2ea48f5c79d2e40",
+  "fingerprint": "26ea046b0679f6d024eee7232ee63bfd28edb28f63dfab4a1f0f2e63b672b2c4",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -673,17 +673,6 @@
       "urlHashSha256": "173964b29fca14e45f5d3cf351e17b0662708eb90c4ceb1527bf83566e5660b7"
     },
     {
-      "id": "c1f68577-755b-430c-bf47-ba66df0cc6da",
-      "title": "Se busca Contador/a – Angol y alrededores",
-      "company": "CHILENERGIA",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/se-busca-contador-a-angol-y-alrededores-3893595",
-      "urlHashSha256": "21441f0d0469ee7576dc9d5f2f186bb0daa524d8377ead26d61c50ccb502e7af"
-    },
-    {
       "id": "c510a4de-9dcf-4530-bb86-f859eb1b73a5",
       "title": "DIRECTOR/A PRM- TEMUCO",
       "company": "Fundación Talita Kum",
@@ -950,6 +939,17 @@
       "urlHashSha256": "06bb671d60951a3bada23b1edea00cd02ac58e96bf0bc2406e197b57ab1a83a7"
     },
     {
+      "id": "chatgpt_d_465c77761224e30a83cb",
+      "title": "Prevencionista de Riesgos en Faena  Antofagasta  100% terreno, jornada 5x2",
+      "company": "Empleo Seguro",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-en-faena-antofagasta-100-terreno-jornada-5x2-3933560",
+      "urlHashSha256": "465c77761224e30a83cbac85c5919ded8a47b7fa0ac265c1d6029496f60cf585"
+    },
+    {
       "id": "chatgpt_d_4bdcac8ef560f0fe716d",
       "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
       "company": "Fashion's Park",
@@ -992,6 +992,28 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
       "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
+    },
+    {
+      "id": "chatgpt_d_72a6ff236aed32072a0c",
+      "title": "Líder de Procesos y Calidad - Nacimiento",
+      "company": "CMPC",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
+      "urlHashSha256": "4acf5dc1e5d01dccfedcd6f6b6b64ec2aa4231ebe00b4e006600e3217092f995"
+    },
+    {
+      "id": "chatgpt_d_897ecd5eaa571cd80e36",
+      "title": "Cuidador/a residencia de niños y niñas, Angol",
+      "company": "Aldeas Infantiles SOS",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/cuidador-a-residencia-de-ninos-y-ninas-angol-3677434",
+      "urlHashSha256": "897ecd5eaa571cd80e36932cf1ccb2d03ad0bf1c32d30cf485ed42eeccaf71b1"
     },
     {
       "id": "chatgpt_d_ad791baa0556cf59d931",
@@ -3029,17 +3051,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/mercaderista-temuco-3926574",
       "urlHashSha256": "d1e4baee4379f228b815b7fe391fae66f15f94386880346bf9c1463892c36b4f"
-    },
-    {
-      "id": "free-ff3ce5f6005c970c81eaf7b58e37f92518bb3b3b",
-      "title": "Verificador/a de Domicilios en Terreno – Renaico",
-      "company": "Rocketpin",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
-      "urlHashSha256": "074cdef4c2f1125ff8f049f653f6f8ad54eb1c6cef1e3a2e8d9836d2eb482c34"
     },
     {
       "id": "tcq_e2265a52410f086a0dcb71",

@@ -49,11 +49,22 @@ def do_browser(browser, label, width, height):
     except PlaywrightTimeoutError:
         gateway=False
     elapsed=round((time.monotonic()-start)*1000)
+    diagnostics=page.evaluate("""() => ({
+      ready:document.readyState,
+      rootCharacters:document.querySelector('#root')?.innerText?.length||0,
+      rootExcerpt:document.querySelector('#root')?.innerText?.slice(0,350)||'',
+      mainCount:document.querySelectorAll('main').length,
+      gatewayCount:document.querySelectorAll('.tcPurposeGateway').length,
+      viewport:innerWidth,
+      bodyExcerpt:document.body?.innerText?.slice(0,500)||'',
+      overlay:!!document.querySelector('[data-appdeploy-overlay]')
+    })""")
     record(label+"_first_navigation",gateway and response.status==200,
       http=response.status if response else None,visible_gateway=gateway,
-      elapsed_ms=elapsed)
+      elapsed_ms=elapsed,diagnostics=diagnostics,page_errors=exceptions[:6])
     if not gateway:
-        (OUTPUT/(label+"_body_excerpt.txt")).write_text(page.content()[:3500])
+        page.screenshot(path=str(OUTPUT/(label+"_failure.png")),full_page=False)
+        (OUTPUT/(label+"_body_excerpt.txt")).write_text(page.content()[-6000:])
         context.close();return
 
     page.screenshot(path=str(OUTPUT/(label+"_home.png")),full_page=False)

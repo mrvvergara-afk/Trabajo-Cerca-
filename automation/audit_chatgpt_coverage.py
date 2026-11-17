@@ -5,6 +5,7 @@ import datetime as dt
 import json
 import pathlib
 import sys
+from zoneinfo import ZoneInfo
 
 STATES = {"checked_found", "checked_empty", "blocked", "failed", "unsupported", "not_attempted"}
 READ = {"checked_found", "checked_empty"}
@@ -70,11 +71,16 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--inventory", default="automation/chatgpt_source_inventory_v1.json")
     p.add_argument("--coverage", required=True)
+    p.add_argument("--chile-date", default=dt.datetime.now(ZoneInfo("America/Santiago")).date().isoformat())
     p.add_argument("--output", default="")
     args = p.parse_args()
     inventory = json.loads(pathlib.Path(args.inventory).read_text(encoding="utf-8"))
     coverage = json.loads(pathlib.Path(args.coverage).read_text(encoding="utf-8"))
     report = audit(inventory, coverage)
+    report["audit_chile_date"] = args.chile_date
+    report["coverage_date"] = coverage.get("date")
+    report["coverage_date_matches_chile"] = coverage.get("date") == args.chile_date
+    report["latest_record_at"] = max((str(r.get("checked_at", "")) for r in coverage.get("sources", [])), default="")
     output = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     if args.output:
         pathlib.Path(args.output).write_text(output, encoding="utf-8")

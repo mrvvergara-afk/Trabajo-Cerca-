@@ -153,10 +153,10 @@ def do_browser(browser, label, width, height):
         account.wait_for(state="visible",timeout=15000)
         login=account.get_by_role("button",name="Iniciar sesión")
         login.wait_for(state="visible",timeout=16000)
-        try:
-            login.wait_for(state="enabled",timeout=15000)
-        except PlaywrightTimeoutError:
-            pass
+        page.wait_for_function("""() => {
+          const login=document.querySelector('.tcSiteMenuPanel .tcAccountMenu button');
+          return Boolean(login)&&!login.disabled;
+        }""",timeout=15000)
         entry=account.get_by_role("link",name="Acceso administrativo")
         entry.wait_for(state="visible",timeout=9000)
         record(label+"_admin_account_entry_visible", login.is_visible() and entry.is_visible(),

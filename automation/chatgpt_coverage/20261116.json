@@ -974,7 +974,8 @@
     "Catalog mirror validated 275 identities, 92 local, 11 pages, generated 2026-11-16T12:26:11Z.",
     "No candidate with complete original job evidence was eligible for import.",
     "Wave 2: 24/24 URLs attempted; only 3 readable, 6 blocked, 15 failed. Five discovery targets searched; 3 potential jobs require ATS verification and catalog reconciliation. No publication attempted.",
-    "Wave 3: 24 endpoints attempted, 3 readable, 8 blocked, 1 unsupported, 12 failed. Five indexed discovery searches attempted. No publication."
+    "Wave 3: 24 endpoints attempted, 3 readable, 8 blocked, 1 unsupported, 12 failed. Five indexed discovery searches attempted. No publication.",
+    "Catalog reconciliation flagged count discrepancy: totalItemsReported 280 vs jobIdentityCount/items.length 276; treat as unverified completeness until pagination semantics clarified."
   ],
   "pending_candidates": [
     {
@@ -1002,5 +1003,5 @@
       "status": "catalog_unavailable_individual_job_url_unverified"
     }
   ],
-  "catalog_status": "mirror_valid_at_run: generated_at 2026-11-16T22:28:00Z, age 114m01s at 2026-11-17T00:22:01Z; 276 identities, complete=true, schema_version=1, producer=trabajo_cerca_public_feed. No eligible verified new candidates to reconcile."
+  "catalog_status": "catalog_unavailable: mirror within 120m and 276 items but totalItemsReported=280 differs from jobIdentityCount=276; completeness cannot be established. Direct AppDeploy API inaccessible to web reader. No new candidates published."
 }

@@ -105,6 +105,7 @@ def do_browser(browser, label, width, height):
                 record("mobile_public_job_cache_sanitized",False,error=str(e)[:260])
         except PlaywrightTimeoutError:
             record("mobile_complete_catalog_counter",False,
+                catalog_label=page.locator(".tcCatalogCount").first.inner_text() if page.locator(".tcCatalogCount").count() else "missing",
                 excerpt=page.locator("main").inner_text()[-250:])
         # Inspect editorial own promotion. Absence is an explicit not-verified condition,
         # not a false successful gallery test: a paid campaign may own the featured slot.

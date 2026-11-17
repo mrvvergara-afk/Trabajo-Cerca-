@@ -53,6 +53,7 @@ def audit(inventory, coverage):
     discovered = {r.get("source_id"): r for r in coverage.get("discovery", [])}
     target_missing = [t["key"] for t in targets if t["key"] not in discovered]
     target_pending = [t["key"] for t in targets if discovered.get(t["key"], {}).get("status") in (None, "not_attempted")]
+    invalid_discovery = [key for key, row in discovered.items() if key not in {t["key"] for t in targets} or row.get("status") not in STATES]
     report = {
         "inventory_endpoints": len(sources), "discovery_targets": len(targets),
         "recorded_sources": len(observed), "effective_reads": sum(counts[x] for x in READ),
@@ -60,8 +61,10 @@ def audit(inventory, coverage):
         "status_counts": counts, "waves": by_wave,
         "discovery_missing": target_missing, "discovery_pending": target_pending,
         "invalid_source_records": invalid,
-        "daily_attempt_coverage_complete": len(observed) == len(sources) and not invalid and not target_missing and not target_pending,
-        "daily_effective_coverage_complete": len(observed) == len(sources) and all(r["status"] in READ for r in observed.values()) and not target_missing and not target_pending,
+        "invalid_discovery_records": invalid_discovery,
+        "retry_candidates": [{"source_id": s["key"], "scan_wave": s["scan_wave"], "url": s.get("url"), "last_status": observed[s["key"]]["status"], "reason": observed[s["key"]].get("reason", ""), "recovery_strategy": "indexed_search_or_official_source" if observed[s["key"]]["status"] in ("blocked", "unsupported") else "bounded_retry_then_alternative"} for s in sources if s["key"] in observed and observed[s["key"]]["status"] in ("blocked", "failed", "unsupported")],
+        "daily_attempt_coverage_complete": len(observed) == len(sources) and counts["not_attempted"] == 0 and not invalid and not invalid_discovery and not target_missing and not target_pending,
+        "daily_effective_coverage_complete": len(observed) == len(sources) and all(r["status"] in READ for r in observed.values()) and not invalid_discovery and not target_missing and not target_pending,
         "publication_confirmed": coverage.get("publication_confirmed", 0),
         "note": "No percentage threshold blocks verified offers. Blocked/failed/unsupported are attempts, not successful reads.",
     }
@@ -85,7 +88,7 @@ def main():
     if args.output:
         pathlib.Path(args.output).write_text(output, encoding="utf-8")
     print(output)
-    if report["invalid_source_records"]:
+    if report["invalid_source_records"] or report["invalid_discovery_records"]:
         sys.exit(2)
 
 if __name__ == "__main__":

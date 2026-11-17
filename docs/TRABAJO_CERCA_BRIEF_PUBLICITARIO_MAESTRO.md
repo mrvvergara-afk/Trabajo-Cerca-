@@ -22,7 +22,7 @@ No inferir ubicación GPS del visitante: el filtro de comuna indica interés ter
 | Capacidad | Estado actual del laboratorio |
 |---|---|
 | Publicidad propia de respaldo si el espacio no está reservado | Sí, administrada por el inventario |
-| Campañas propias con selección manual de tres ilustraciones | Sí, en **autopublicidad visible bajo el buscador móvil** y en el destacado cuando esté disponible; imágenes locales existentes |
+| Campañas propias de tres ilustraciones | Sí: avance suave cada **5,5 segundos** solo mientras estén visibles y se permita movimiento, deslizamiento táctil y selección manual; se pausa al interactuar. **Solo autopublicidad** |
 | Imagen comercial individual | Sí: JPG, PNG o WebP, **máximo 200.000 bytes** |
 | Carrusel comercial con varias imágenes | **No implementado** |
 | Video comercial | **No implementado** |
@@ -101,7 +101,7 @@ Los informes del administrador muestran solo los registros cargados, con capacid
 
 - Campaña muestra el nombre del anunciante y rotulación comercial adecuada.
 - Comuna y sublocalidad se muestran correctamente; no aparece fuera de cobertura.
-- Una imagen aprobada, optimizada y legible en móvil, sin vídeo ni movimientos automáticos.
+- Una imagen aprobada, optimizada y legible en móvil, sin vídeo; solo la autopublicidad tiene avance automático condicionado a visibilidad y accesibilidad, nunca reproducción invasiva.
 - El CTA lleva a un destino seguro y autorizado, y no se duplica.
 - La imagen sigue funcionando con ancho de pantalla de 360px y preferencia de movimiento reducido.
 - El administrador puede editar y comprobar persistencia; no se borra al volver a entrar.

@@ -64,7 +64,7 @@ def audit(inventory, coverage):
         "invalid_discovery_records": invalid_discovery,
         "retry_candidates": [{"source_id": s["key"], "scan_wave": s["scan_wave"], "url": s.get("url"), "last_status": observed[s["key"]]["status"], "reason": observed[s["key"]].get("reason", ""), "recovery_strategy": "indexed_search_or_official_source" if observed[s["key"]]["status"] in ("blocked", "unsupported") else "bounded_retry_then_alternative"} for s in sources if s["key"] in observed and observed[s["key"]]["status"] in ("blocked", "failed", "unsupported")],
         "daily_attempt_coverage_complete": len(observed) == len(sources) and counts["not_attempted"] == 0 and not invalid and not invalid_discovery and not target_missing and not target_pending,
-        "daily_effective_coverage_complete": len(observed) == len(sources) and all(r["status"] in READ for r in observed.values()) and all(discovered[t["key"]]["status"] in READ for t in targets) and not invalid and not invalid_discovery and not target_missing and not target_pending,
+        "daily_effective_coverage_complete": len(observed) == len(sources) and not invalid and not invalid_discovery and not target_missing and not target_pending and all(r["status"] in READ for r in observed.values()) and all(discovered[t["key"]]["status"] in READ for t in targets),
         "publication_confirmed": coverage.get("publication_confirmed", 0),
         "note": "No percentage threshold blocks verified offers. Blocked/failed/unsupported are attempts, not successful reads.",
     }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-17T04:37:13.858964+00:00",
-  "local_discovery_at": "2026-11-17T04:37:02.356571+00:00",
+  "checked_at": "2026-11-17T14:35:55.754482+00:00",
+  "local_discovery_at": "2026-11-17T14:35:43.250639+00:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -48,11 +48,11 @@
   "municipalities_unreadable": [],
   "local_sources_expected": 17,
   "local_sources_attempted": 17,
-  "local_candidates": 93,
+  "local_candidates": 44,
   "chiletrabajos_queries_attempted": 15,
-  "chiletrabajos_candidates": 124,
-  "job_details_checked": 60,
-  "ready_for_d_review": 10,
+  "chiletrabajos_candidates": 0,
+  "job_details_checked": 0,
+  "ready_for_d_review": 0,
   "publication_confirmed": false,
   "coverage_complete": false,
   "source_failures": [
@@ -66,14 +66,14 @@
     {
       "source": "SERFONAC ofertas",
       "commune": "regional",
-      "pages_scanned": 29,
+      "pages_scanned": 1,
       "status": "partial",
       "errors": 1
     },
     {
       "source": "Brayben ofertas",
       "commune": "regional",
-      "pages_scanned": 7,
+      "pages_scanned": 2,
       "status": "partial",
       "errors": 1
     }

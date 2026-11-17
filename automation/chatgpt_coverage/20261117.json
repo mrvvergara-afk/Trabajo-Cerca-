@@ -1343,7 +1343,7 @@
   "batches_created": 0,
   "publication_confirmed": 0,
   "catalog_status": "catalog_unavailable_stale_mirror_api_unreadable",
-  "pending_candidates": 2,
+  "pending_candidates": 0,
   "notes": [
     "Inventory 143 endpoints, 29 discovery targets and 12 communes validated.",
     "No app modifications or deployments.",
@@ -1351,6 +1351,7 @@
     "This wave uses discovery target index modulo six as partition rule.",
     "Onda 5: 23 endpoints intentados; 2 páginas legibles sin vacantes territoriales confirmadas, 3 bloqueadas, 1 RSS unsupported, 1 página dinámica sin contenido laboral, 16 errores de acceso. Búsqueda auxiliar encontró oferta Liceo Agrícola Negrete expirada 15-11-2026; excluida. Objetivos discovery wave5 no abordados individualmente; no declarar cobertura completa.",
     "Onda 0 (09:00 Chile): 24 endpoints attempted, 3 pages readable, 4 blocked, 17 failed. Five discovery targets searched. Public catalog mirror generated 2026-11-17T04:44:38Z, stale >120 min; real API inaccessible; no import. Territorial incident: Constructora ALJO enfierradores Hospital Nacimiento catalog ID free-9e173e643c73999fa7f6e52332a957d0834d0b45 is tagged Angol despite job executed in Nacimiento; do not duplicate. Fashion's Park Angol already cataloged. Victoria listing has conflicting Temuco location.",
-    "Onda 2: 24 URL intentadas; 4 páginas legibles sin fichas nuevas; 3 con barrera antibot; 17 fallidas/no legibles. Espejo 17:10 UTC supera 120 min al corte 19:58 UTC; API directa inaccesible; no se publicaron candidatos. Dos fichas originales Nacimiento (enfierradores y mecánico soldador) detectadas en búsquedas auxiliares, pendientes de conciliación."
+    "Onda 2: 24 URL intentadas; 4 páginas legibles sin fichas nuevas; 3 con barrera antibot; 17 fallidas/no legibles. Espejo 17:10 UTC supera 120 min al corte 19:58 UTC; API directa inaccesible; no se publicaron candidatos. Dos fichas originales Nacimiento (enfierradores y mecánico soldador) detectadas en búsquedas auxiliares, pendientes de conciliación.",
+    "Conciliación retrospectiva NO habilitante: ambas fichas detectadas ya figuran en espejo vencido. Enfierradores Nacimiento ID free-9e173e643c73999fa7f6e52332a957d0834d0b45 URL https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105 está atribuido a Angol aunque la obra es Hospital de Nacimiento: incidente territorial, NO duplicar. Mecánico soldador ID chatgpt_d_2e5d13719312865d3636 ya figura Nacimiento. Estado vigente requiere espejo actualizado."
   ]
 }

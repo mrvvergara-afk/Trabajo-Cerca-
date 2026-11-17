@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-17T18:40:18.303177+00:00",
+  "updated_at": "2026-11-17T18:45:45.785410+00:00",
   "items_total": 18,
   "pending_total": 18,
   "publication_enabled": false,
@@ -553,28 +553,30 @@
       "reported_territories": [
         "Renaico"
       ],
-      "possible_communes": [
-        "Renaico",
-        "Nacimiento"
-      ],
       "reader_status": "documento_parcial_revision_obligatoria",
       "review_reason": "documento_parcial_revision_obligatoria",
-      "extractor": "pdf_preview_partial",
-      "http": 200,
-      "text_excerpt": null,
       "document_sha256": "5494c1a01f41f0af7d58fd6c34358a6c6419fbadc2735f3d0fbb188b2834590e",
-      "original_classification": "sin_evidencia_suficiente",
       "date_source": "2026-11-12",
       "date_discovered": "2026-11-17",
-      "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
       "employer_verified": false,
       "application_route_verified": false,
       "publication_eligible": false,
       "review_status": "pending",
+      "review_signature": null,
       "first_discovered": "2026-11-17",
-      "last_seen": "2026-11-17"
+      "last_seen": "2026-11-17",
+      "possible_communes": [
+        "Renaico",
+        "Nacimiento"
+      ],
+      "extractor": "pdf_preview_partial",
+      "http": 200,
+      "text_excerpt": null,
+      "original_classification": "sin_evidencia_suficiente",
+      "deadline": null
     }
-  ]
+  ],
+  "added_this_run": 0
 }

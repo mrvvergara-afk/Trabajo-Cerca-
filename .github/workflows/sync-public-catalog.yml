@@ -19,26 +19,43 @@ concurrency:
 jobs:
   mirror:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 12
     steps:
       - name: Checkout main repository
         uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: true
           fetch-depth: 1
 
-      - name: Read complete public catalog and validate identities
-        run: python3 automation/sync_catalog_identities.py
-
-      - name: Publish validated public identity mirror
+      - name: Synchronize catalog with bounded recovery for concurrent pushes
+        shell: bash
         run: |
-          git add automation/catalog_public_identities.json
-          if git diff --cached --quiet -- automation/catalog_public_identities.json; then
-            echo 'Catalog identical to previous snapshot'
-            exit 0
-          fi
+          set -euo pipefail
           git config user.name 'Trabajo Cerca Catalog Bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add automation/catalog_public_identities.json
-          git commit -m 'chore(catalog): refresh audited public job identities [skip ci]'
-          git push origin HEAD:main
+          for attempt in 1 2 3; do
+            echo "CATALOG_SYNC_ATTEMPT=${attempt}/3"
+            # Other motors can update main between checkout and push.
+            # Start each attempt from the newest main and regenerate from the API.
+            git fetch origin main
+            git checkout -B catalog-sync-work origin/main
+            if ! python3 automation/sync_catalog_identities.py; then
+              echo "::error::CATALOG_SOURCE_UNAVAILABLE; previous validated mirror preserved"
+              exit 1
+            fi
+            git add automation/catalog_public_identities.json
+            if git diff --cached --quiet -- automation/catalog_public_identities.json; then
+              echo "CATALOG_SYNC_NO_CHANGE"
+              exit 0
+            fi
+            git commit -m 'chore(catalog): refresh audited public job identities [skip ci]'
+            if git push origin HEAD:main; then
+              echo "CATALOG_SYNC_PUBLISHED"
+              exit 0
+            fi
+            echo "::warning::CATALOG_PUSH_RACE attempt=${attempt}; regenerating from latest main"
+            sleep $((attempt * 3))
+          done
+          echo "::error::CATALOG_PUSH_RETRIES_EXHAUSTED; mirror may be stale"
+          exit 1

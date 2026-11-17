@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-17T15:32:30.126895-03:00",
+  "last_run": "2026-11-17T16:27:35.066692-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -6366,6 +6366,132 @@
       "first_seen": "2026-11-17T15:32:30.126895-03:00",
       "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/trabajador-silvicola-nacimiento-establecimiento-3933810",
       "source": "SERFONAC · ofertas del empleador",
+      "commune": null
+    },
+    "766b0123f4316acc5202": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/cuidador-a-residencia-de-ninos-y-ninas-angol-3677434",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "42781008f8f8aac5437c": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-farmacias-sector-oriente-lo-barnechea-la-dehesa-3078627.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6acb739a88586fbc291e": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/buscamos-estudiantes-en-practica-para-el-area-comercial-en-providencia-3078626.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "97a342164ef78aa00382": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/supervisora-talcahuano-3078625.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1291d659c38821a4dcef": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-cctv-cerrillos-715000-3078624.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bdb415e6ca633246a845": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/operador-cctv-copiapo-715000-3078623.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5c79ea642e3cf9dce435": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/auxiliar-de-banos-portables-rancagua-7x7-3078622.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a5102854bbdfe3cb6cf7": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/personal-de-limpieza-part-time-turno-manana-puente-altosolo-domingos-puente-alto-3078621.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "da7e05d59855e8aca07d": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/analista-de-recursos-humanos-antofagasta-3078620.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ed39fc86ad4316a99e55": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/psicologo-a-freelance-area-atraccion-y-seleccion-por-proyecto-providencia-3078619.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a61e696abb67f97c07f0": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefa-e-de-tienda-las-condes-3078618.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f0ad467cf8d9d05ef357": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/capacitacion-opcion-laboral-bancaria-vicuna-3078617.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e637244df52d52405dee": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-a-software-3078616.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "732af4c5aa2ea4da037c": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/prevencionista-de-riesgos-part-time-semanal-osorno-3078615.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a30dce52e09cbbb9c0b7": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/personal-de-limpieza-part-time-turno-tarde-maipu-solo-domingos-maip-3078614.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cd2979c68c68104141a4": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/personal-de-limpieza-part-time-turno-manana-maipu-solo-domingos-maip-3078613.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "12155892520b907fb6f2": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/personal-de-limpieza-part-time-turno-manana-la-florida-solo-domingos-la-florida-3078612.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "824156b26cb3e71007cb": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-polifuncional-para-cafeteria-lunes-a-sabado-505000-providencia-metro-parque-bustamante-3078611.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0b529024be6aa32853f8": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-casino-6x1-clinica-en-estacion-central-550000-metro-ecuador-3078610.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e530a33741dda15de8c6": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/jefe-a-de-tienda-chocolateria-premium-antofagasta-3078609.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0ebd845edf8b93513887": {
+      "first_seen": "2026-11-17T16:27:35.066692-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/control-de-acceso-para-supermercado-en-vitacura-fin-de-semana-horario-rotativo-am-pm-3078608.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

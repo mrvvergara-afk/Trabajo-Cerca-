@@ -126,6 +126,12 @@
       "file": "20261117/motor-d-20261117-53436b1aa9c4ef8977.json",
       "count": 1,
       "batch_type": "recovery"
+    },
+    {
+      "batch_id": "motor-d-20261117-7b0f83c38bf2d64686",
+      "file": "20261117/motor-d-20261117-7b0f83c38bf2d64686.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -158,6 +164,7 @@
     "d_7f24f1a31c25f4813b5c",
     "d_8058b3072cf8cc198cc8",
     "d_8377eba647f422386562",
+    "d_897ecd5eaa571cd80e36",
     "d_8cd3f39aa6e6f4dfd760",
     "d_8dfb2507759d6af5a6ba",
     "d_8e10d10d8dedf4b7e3b9",
@@ -195,6 +202,7 @@
     "job:[\"cajero a asistente integral temporada navidad angol\", \"fashion s park\", [\"angol\"]]",
     "job:[\"cajero a bancario a angol\", \"servicios helpbank s a\", [\"angol\"]]",
     "job:[\"conductor profesional con vehiculo sedan diesel angol\", \"jobconsulting\", [\"angol\"]]",
+    "job:[\"cuidador a residencia de ninos y ninas angol\", \"aldeas infantiles sos\", [\"angol\"]]",
     "job:[\"docente de matematicas reemplazo\", \"liceo agricola de negrete\", [\"negrete\"]]",
     "job:[\"ejecutivo a atencion a usuarios 42hrs call center presencial\", \"empresa de tecnologia e\", [\"angol\"]]",
     "job:[\"ejecutivo a de atencion al usuario jornada nocturna call center 42hrs\", \"empresa de tecnologia e\", [\"angol\"]]",
@@ -210,6 +218,7 @@
     "job:[\"instrumentista de area santa fe\", \"cmpc\", [\"nacimiento\"]]",
     "job:[\"jefe de asesoria angol\", \"consultores 2000\", [\"angol\"]]",
     "job:[\"laboratorista vial clase b para aif angol\", \"consultores 2000\", [\"angol\"]]",
+    "job:[\"lider de procesos y calidad nacimiento\", \"cmpc\", [\"nacimiento\"]]",
     "job:[\"m1 moldajero obra gruesa hospital de nacimiento contrato a trato\", \"constructora aljo\", [\"nacimiento\"]]",
     "job:[\"mecanico a automotriz nacimiento\", \"serfonac\", [\"nacimiento\"]]",
     "job:[\"mecanico a de area nacimiento planta santa fe\", \"cmpc\", [\"nacimiento\"]]",
@@ -240,6 +249,7 @@
     "job:[\"verificador a de domicilios en terreno renaico\", \"rocketpin\", [\"angol\"]]",
     "job:[\"vvendedor en terreno angol victoria traiguen\", \"manpowergroup\", [\"angol\"]]",
     "source:chiletrabajos:3389480",
+    "source:chiletrabajos:3677434",
     "source:chiletrabajos:3732391",
     "source:chiletrabajos:3755017",
     "source:chiletrabajos:3844114",
@@ -291,6 +301,7 @@
     "url:https://chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
     "url:https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
     "url:https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
+    "url:https://chiletrabajos.cl/trabajo/cuidador-a-residencia-de-ninos-y-ninas-angol-3677434",
     "url:https://chiletrabajos.cl/trabajo/docente-de-matematicas-reemplazo-3755017",
     "url:https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
     "url:https://chiletrabajos.cl/trabajo/ejecutivo-a-de-atencion-al-usuario-jornada-nocturna-call-center-42hrs-3907745",
@@ -327,6 +338,7 @@
     "url:https://chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
     "url:https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+    "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",

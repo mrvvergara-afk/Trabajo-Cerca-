@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261117-7b0f83c38bf2d64686",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_897ecd5eaa571cd80e36",
+      "cargo": "Cuidador/a residencia de niños y niñas, Angol",
+      "empresa": "Aldeas Infantiles SOS",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/cuidador-a-residencia-de-ninos-y-ninas-angol-3677434",
+      "fecha_publicacion": "2026-11-17",
+      "fecha_descubrimiento": "2026-11-17",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-01-31",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

@@ -93,12 +93,17 @@ def do_browser(browser, label, width, height):
             gallery.scroll_into_view_if_needed()
             image=gallery.locator("xpath=..").locator("img.tcHouseFallbackThumb").first
             original=image.get_attribute("src")
-            button=gallery.get_by_role("button",name="Ver imagen 2 de 3").first
+            button=gallery.get_by_role("button",name="Ver imagen 2 de 6").first
             button.click(timeout=5000)
             selected=button.get_attribute("aria-pressed")
             image_now=image.get_attribute("src")
             record("mobile_manual_house_gallery",selected=="true" and original!=image_now,
                 selected=selected,original=original,current=image_now)
+            six=gallery.get_by_role("button",name="Ver imagen 6 de 6").first
+            six.click(timeout=5000)
+            record("mobile_six_images_accessible",
+                six.get_attribute("aria-pressed")=="true",
+                displayed=image.get_attribute("src"))
             page.screenshot(path=str(OUTPUT/"mobile_gallery.png"),full_page=False)
         except PlaywrightTimeoutError:
             record("mobile_manual_house_gallery",False,
@@ -160,7 +165,7 @@ def carousel_motion_check(browser, label, reduced, expect_motion):
         record(label+"_automatic_rotation",(first!=second)==expect_motion,
                original=first,after=second,reduced_motion=reduced)
         # The visible indicator must accept the manual action even with reduced motion.
-        two=gallery.get_by_role("button",name="Ver imagen 2 de 3").first
+        two=gallery.get_by_role("button",name="Ver imagen 2 de 6").first
         two.click()
         after_touch=image.get_attribute("src")
         page.wait_for_timeout(5950)

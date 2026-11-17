@@ -1,8 +1,8 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-17T04:29:19.098323+00:00",
-  "items_total": 17,
-  "pending_total": 17,
+  "updated_at": "2026-11-17T18:40:18.303177+00:00",
+  "items_total": 18,
+  "pending_total": 18,
   "publication_enabled": false,
   "items": [
     {
@@ -47,6 +47,7 @@
         "Traiguén"
       ],
       "possible_communes": [
+        "Renaico",
         "Traiguén"
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
@@ -54,10 +55,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "8224f192fac3b4a63ae3c1b23252c66498309179eed854a35a57740654d9bb89",
+      "document_sha256": "44773766b34ebbf2100ddb36c896b23c65fa20a33ff1803b90029cbfa7abbadc",
       "original_classification": null,
       "date_source": "2026-10-18",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -66,7 +67,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -86,10 +87,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "f0e121a6ae2225d3d177e61f856c24b9760a11022db164d109d385af3e17c607",
+      "document_sha256": "c7ec2348b03a4e8ad4321a9db1a7940d8ac5c39c6ca1a5c65d320ea80ca0050b",
       "original_classification": null,
       "date_source": "2026-09-14",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -98,7 +99,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -142,6 +143,7 @@
         "Traiguén"
       ],
       "possible_communes": [
+        "Renaico",
         "Traiguén"
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
@@ -149,10 +151,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "2da42bc3a5574f0455b28edeb23c8fa0e1b08935b3da4fb61a65b2b41716b4ce",
+      "document_sha256": "11b75c604d7ef3c8f4281f0aa73a23e6ff5b801cc52c5b7f204998d78ead31d9",
       "original_classification": null,
       "date_source": "2026-08-20",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -161,7 +163,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -184,7 +186,7 @@
       "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
       "original_classification": "candidato_fecha_pendiente",
       "date_source": null,
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -193,7 +195,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15"
+      "last_seen": "2026-11-17"
     },
     {
       "review_id": "ocr_76cd72bb547dc17ab5549e27",
@@ -215,7 +217,7 @@
       "document_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
       "original_classification": "sin_evidencia_suficiente",
       "date_source": null,
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": "2027-07-31",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -224,7 +226,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15"
+      "last_seen": "2026-11-17"
     },
     {
       "review_id": "ocr_97e8413102668b765208abc5",
@@ -300,6 +302,7 @@
         "Traiguén"
       ],
       "possible_communes": [
+        "Renaico",
         "Traiguén"
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
@@ -307,10 +310,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "d1fb0c2b3cf2183fca75c2e874d211d25e57b0f9262134b4e4f011d9031df40e",
+      "document_sha256": "fb658f3ab248d5a752fa8eefa6acba8e38db6b1070bc9576e71c9b642df09ff6",
       "original_classification": null,
       "date_source": "2026-06-16",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -319,7 +322,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -339,10 +342,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "57fe2ad018e94a57390ca687c5d0bcbcdb2387ce00a37079ec614416512d7385",
+      "document_sha256": "daab05ec937357ff0557102549e868d9a9b663dbe9ce164bcdcae169292f4ce1",
       "original_classification": null,
       "date_source": "2026-10-01",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -351,7 +354,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -364,6 +367,7 @@
         "Traiguén"
       ],
       "possible_communes": [
+        "Renaico",
         "Traiguén"
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
@@ -371,10 +375,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "0fd83910381b966aa8dd05e9c755a4756c7f0485ff70cb160a0f2ca7b5e55407",
+      "document_sha256": "6d1f904dbe9692d3476ed010ffe52528dc4248b5ca016dcca03625ce27a75cb2",
       "original_classification": null,
       "date_source": "2026-10-23",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -383,7 +387,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -406,7 +410,7 @@
       "document_sha256": "0e89aac045e8bbfdcc21adc5efa287d98f03f41df0db9fbf0e315034d7f4ad1a",
       "original_classification": "candidato_fecha_pendiente",
       "date_source": null,
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": "2027-07-31",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -415,7 +419,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15"
+      "last_seen": "2026-11-17"
     },
     {
       "review_id": "ocr_ef6727c7fda5d3729f4bf6db",
@@ -467,10 +471,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "0cde2f2b765229b9a8a8a04d42e10b24eebbfd3e4e43301e3c50eb6a539a1c89",
+      "document_sha256": "a67eb1654cb18b123168d9f5502ef0c5025bd5818edcb8e7e232ff480ba02c5f",
       "original_classification": null,
       "date_source": "2026-08-24",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -479,7 +483,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -492,6 +496,7 @@
         "Traiguén"
       ],
       "possible_communes": [
+        "Renaico",
         "Traiguén"
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
@@ -499,10 +504,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "86492fa5faebd952de73291ead6800be37832249b4bbc6dca130c321f76287b1",
+      "document_sha256": "f12441094d7f9137653056421d303238a5486e83a9d4dc4aba28c041b9a6d720",
       "original_classification": null,
       "date_source": "2026-10-22",
-      "date_discovered": "2026-11-15",
+      "date_discovered": "2026-11-17",
       "deadline": "2026-10-26",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -511,7 +516,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-12",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-17",
       "review_signature": null
     },
     {
@@ -538,6 +543,38 @@
       "first_discovered": "2026-11-13",
       "last_seen": "2026-11-17",
       "text_excerpt": null
+    },
+    {
+      "review_id": "ocr_c7d521f0c88ecb48d3e7f335",
+      "canonical_url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "source": "M06",
+      "origin": "fuente_web_publica",
+      "reported_territories": [
+        "Renaico"
+      ],
+      "possible_communes": [
+        "Renaico",
+        "Nacimiento"
+      ],
+      "reader_status": "documento_parcial_revision_obligatoria",
+      "review_reason": "documento_parcial_revision_obligatoria",
+      "extractor": "pdf_preview_partial",
+      "http": 200,
+      "text_excerpt": null,
+      "document_sha256": "5494c1a01f41f0af7d58fd6c34358a6c6419fbadc2735f3d0fbb188b2834590e",
+      "original_classification": "sin_evidencia_suficiente",
+      "date_source": "2026-11-12",
+      "date_discovered": "2026-11-17",
+      "deadline": null,
+      "publication_date_confirmed": false,
+      "work_location_verified": false,
+      "employer_verified": false,
+      "application_route_verified": false,
+      "publication_eligible": false,
+      "review_status": "pending",
+      "first_discovered": "2026-11-17",
+      "last_seen": "2026-11-17"
     }
   ]
 }

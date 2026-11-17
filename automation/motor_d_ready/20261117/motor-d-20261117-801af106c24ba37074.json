@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261117-801af106c24ba37074",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_465c77761224e30a83cb",
+      "cargo": "Prevencionista de Riesgos en Faena  Antofagasta  100% terreno, jornada 5x2",
+      "empresa": "Empleo Seguro",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-en-faena-antofagasta-100-terreno-jornada-5x2-3933560",
+      "fecha_publicacion": "2026-11-17",
+      "fecha_descubrimiento": "2026-11-17",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-01-31",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-17T04:11:22.677679+00:00",
+  "updated_at": "2026-11-17T04:29:19.098323+00:00",
   "items_total": 17,
   "pending_total": 17,
   "publication_enabled": false,
@@ -239,14 +239,14 @@
         "Mulchén"
       ],
       "reader_status": "candidato_fecha_pendiente",
-      "review_reason": "candidato_fecha_pendiente",
+      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "16f360ef505a8e3492b9849ed490eae04ae568e2bba1919c2fcc582758a8efc9",
+      "document_sha256": "cd40131a87fc68f35c743279baa64d32d417c7a348234ce11fb2dc672517333a",
       "original_classification": null,
       "date_source": null,
-      "date_discovered": "2026-11-10",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -255,7 +255,8 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-10"
+      "last_seen": "2026-11-17",
+      "review_signature": null
     },
     {
       "review_id": "ocr_a311074e1e969fe27ecc6cca",
@@ -270,14 +271,14 @@
         "Mulchén"
       ],
       "reader_status": "candidato_fecha_pendiente",
-      "review_reason": "candidato_fecha_pendiente",
+      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "c6445281bfd43d3fd2bb7de5121923e5cf6266abd9c11f5e7b31861626a3d264",
+      "document_sha256": "90adf786791a0ddb19498065c1c6254e3da68d61f0429cdf9f6750964546ee84",
       "original_classification": null,
       "date_source": null,
-      "date_discovered": "2026-11-10",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -286,7 +287,8 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-10"
+      "last_seen": "2026-11-17",
+      "review_signature": null
     },
     {
       "review_id": "ocr_b76db0127c5c0997c4d2c091",
@@ -429,14 +431,14 @@
         "Mulchén"
       ],
       "reader_status": "candidato_fecha_pendiente",
-      "review_reason": "candidato_fecha_pendiente",
+      "review_reason": "evidencia_modificada_revalidacion_obligatoria",
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "0f309c7dfcd3bc4f9b7df44d2f3c17124a58b390fbff0048c0e9f3d2cc0b5404",
+      "document_sha256": "f039f5e8bef27a0f820908d4c79cdd2be7b0738a12028ec33d670e4ae8d254de",
       "original_classification": null,
       "date_source": null,
-      "date_discovered": "2026-11-10",
+      "date_discovered": "2026-11-17",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -445,7 +447,8 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-10"
+      "last_seen": "2026-11-17",
+      "review_signature": null
     },
     {
       "review_id": "ocr_f539194e3c58073baf7b18b1",
@@ -536,6 +539,5 @@
       "last_seen": "2026-11-17",
       "text_excerpt": null
     }
-  ],
-  "added_this_run": 0
+  ]
 }

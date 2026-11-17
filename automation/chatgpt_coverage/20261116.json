@@ -19,14 +19,14 @@
     "Negrete",
     "Nacimiento"
   ],
-  "run_wave": 2,
-  "run_at": "2026-11-16T20:16:56Z",
+  "run_wave": 3,
+  "run_at": "2026-11-17T00:22:01Z",
   "coverage_complete": false,
   "wave_complete_as_attempts": true,
   "wave_accessible": 3,
   "wave_attempted": 24,
-  "wave_blocked": 6,
-  "wave_failed": 15,
+  "wave_blocked": 8,
+  "wave_failed": 12,
   "wave_not_attempted": 0,
   "discovery_attempted": 5,
   "discovery": [
@@ -49,14 +49,6 @@
     {
       "source_id": "social-public",
       "name": "Facebook · Instagram · TikTok públicos",
-      "status": "checked_empty",
-      "checked_at": "2026-11-16T16:18:35Z",
-      "offers_found": 0,
-      "reason": "Public web search by name and territory attempted; no independently verifiable new qualifying original job page found. This does not prove exhaustive coverage of inaccessible private/social posts."
-    },
-    {
-      "source_id": "millaray-collipulli",
-      "name": "Radio Millaray · Collipulli",
       "status": "checked_empty",
       "checked_at": "2026-11-16T16:18:35Z",
       "offers_found": 0,
@@ -109,6 +101,51 @@
       "checked_at": "2026-11-16T20:16:56Z",
       "offers_found": 0,
       "reason": "Public indexed search attempted; indexed results observed but original source and catalog reconciliation pending. No verified new publication."
+    },
+    {
+      "source_id": "mi-mininco",
+      "name": "Mi Mininco",
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_indexed_search",
+      "offers_found": [],
+      "reason": "Name and territory queried in public index; no current verifiable individual vacancy attributable to this outlet. Private social content not accessed."
+    },
+    {
+      "source_id": "radio-mininco",
+      "name": "Radio Mininco",
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_indexed_search",
+      "offers_found": [],
+      "reason": "Name and territory queried in public index; no current verifiable individual vacancy attributable to this outlet. Private social content not accessed."
+    },
+    {
+      "source_id": "teleangol",
+      "name": "Teleangol Radio",
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_indexed_search",
+      "offers_found": [],
+      "reason": "Name and territory queried in public index; no current verifiable individual vacancy attributable to this outlet. Private social content not accessed."
+    },
+    {
+      "source_id": "radio-montecarlo-angol",
+      "name": "Radio Montecarlo Sur · Angol",
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_indexed_search",
+      "offers_found": [],
+      "reason": "Name and territory queried in public index; no current verifiable individual vacancy attributable to this outlet. Private social content not accessed."
+    },
+    {
+      "source_id": "millaray-collipulli",
+      "name": "Radio Millaray · Collipulli",
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_indexed_search",
+      "offers_found": [],
+      "reason": "Name and territory queried in public index; no current verifiable individual vacancy attributable to this outlet. Private social content not accessed."
     }
   ],
   "sources": [
@@ -639,6 +676,294 @@
       "status": "checked_empty",
       "offers_found": 0,
       "reason": "Municipal page readable and explicitly reports no current offers; bridge city not target."
+    },
+    {
+      "source_id": "laborum-Angol",
+      "name": "Laborum · Angol",
+      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
+      "territory": "Angol",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "linkedin-Collipulli",
+      "name": "LinkedIn · Collipulli",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+      "territory": "Collipulli",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "computrabajo-Ercilla",
+      "name": "Computrabajo · Ercilla",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-ercilla",
+      "territory": "Ercilla",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "indeed-Renaico",
+      "name": "Indeed · Renaico",
+      "url": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=45",
+      "territory": "Renaico",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "trabajando-Renaico",
+      "name": "Trabajando · Renaico",
+      "url": "https://www.trabajando.cl/trabajo-empleo/renaico",
+      "territory": "Renaico",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "chiletrabajos-Mininco",
+      "name": "ChileTrabajos · Mininco",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mininco",
+      "territory": "Mininco",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "opcionempleo-Nacimiento",
+      "name": "Opción Empleo · Nacimiento",
+      "url": "https://www.opcionempleo.cl/empleo-en-nacimiento.html",
+      "territory": "Nacimiento",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "laborum-Negrete",
+      "name": "Laborum · Negrete",
+      "url": "https://www.laborum.cl/empleos-busqueda-negrete.html",
+      "territory": "Negrete",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "linkedin-Mulchén",
+      "name": "LinkedIn · Mulchén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mulch%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Mulchén",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "computrabajo-Los Sauces",
+      "name": "Computrabajo · Los Sauces",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-los-sauces",
+      "territory": "Los Sauces",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "indeed-Purén",
+      "name": "Indeed · Purén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=45",
+      "territory": "Purén",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "trabajando-Purén",
+      "name": "Trabajando · Purén",
+      "url": "https://www.trabajando.cl/trabajo-empleo/puren",
+      "territory": "Purén",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "chiletrabajos-Traiguén",
+      "name": "ChileTrabajos · Traiguén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Traigu%C3%A9n",
+      "territory": "Traiguén",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "opcionempleo-Lumaco",
+      "name": "Opción Empleo · Lumaco",
+      "url": "https://www.opcionempleo.cl/empleo-en-lumaco.html",
+      "territory": "Lumaco",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "laborum-Victoria",
+      "name": "Laborum · Victoria",
+      "url": "https://www.laborum.cl/empleos-busqueda-victoria.html",
+      "territory": "Victoria",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "linkedin-secondary-Los Ángeles",
+      "name": "LinkedIn · Los Ángeles",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20%C3%81ngeles%2C%20Chile&f_TPR=r3888000",
+      "territory": "Los Ángeles",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "computrabajo-secondary-Temuco",
+      "name": "Computrabajo · Temuco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-temuco",
+      "territory": "Temuco",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "omil-angol",
+      "name": "Municipalidad / OMIL Angol",
+      "url": "https://noticias.angol.cl/index.php/noticias",
+      "territory": "Angol",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "omil-traiguen",
+      "name": "Municipalidad / OMIL Traiguén",
+      "url": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+      "territory": "Traiguén",
+      "scan_wave": 3,
+      "status": "blocked",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Access denied, anti-bot or HTTP 403"
+    },
+    {
+      "source_id": "omil-victoria-news",
+      "name": "Municipalidad / OMIL Victoria · publicaciones",
+      "url": "https://victoriachile.cl/category/omil/",
+      "territory": "Victoria",
+      "scan_wave": 3,
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Public page inspected; no independently verified active individual vacancy in visible content"
+    },
+    {
+      "source_id": "cmpc-empleo-csod",
+      "name": "CMPC · portal de empleo",
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+      "territory": "zona forestal",
+      "scan_wave": 3,
+      "status": "unsupported",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "JavaScript ATS page returned no readable job listings"
+    },
+    {
+      "source_id": "las-noticias-malleco",
+      "name": "Las Noticias de Malleco",
+      "url": "https://lasnoticiasdemalleco.cl/",
+      "territory": "Malleco",
+      "scan_wave": 3,
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Public page inspected; no independently verified active individual vacancy in visible content"
+    },
+    {
+      "source_id": "registry-cvtrabajos-los-angeles",
+      "name": "CV Trabajos · Los Ángeles",
+      "url": "https://cvtrabajos.github.io/trabajo-en-los-angeles/",
+      "territory": "Los Ángeles",
+      "scan_wave": 3,
+      "status": "failed",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "URL inaccessible to public reader; no successful content read"
+    },
+    {
+      "source_id": "registry-collipulli-web",
+      "name": "Municipalidad de Collipulli",
+      "url": "https://municipalidadcollipulli.cl/",
+      "territory": "Collipulli / Mininco",
+      "scan_wave": 3,
+      "status": "checked_empty",
+      "timestamp": "2026-11-17T00:22:01Z",
+      "origin": "public_web_direct",
+      "offers_found": [],
+      "reason": "Public page inspected; no independently verified active individual vacancy in visible content"
     }
   ],
   "verified_new_candidates": 0,
@@ -648,7 +973,8 @@
     "This file records attempts, not successful reading of blocked pages.",
     "Catalog mirror validated 275 identities, 92 local, 11 pages, generated 2026-11-16T12:26:11Z.",
     "No candidate with complete original job evidence was eligible for import.",
-    "Wave 2: 24/24 URLs attempted; only 3 readable, 6 blocked, 15 failed. Five discovery targets searched; 3 potential jobs require ATS verification and catalog reconciliation. No publication attempted."
+    "Wave 2: 24/24 URLs attempted; only 3 readable, 6 blocked, 15 failed. Five discovery targets searched; 3 potential jobs require ATS verification and catalog reconciliation. No publication attempted.",
+    "Wave 3: 24 endpoints attempted, 3 readable, 8 blocked, 1 unsupported, 12 failed. Five indexed discovery searches attempted. No publication."
   ],
   "pending_candidates": [
     {
@@ -676,10 +1002,5 @@
       "status": "catalog_unavailable_individual_job_url_unverified"
     }
   ],
-  "catalog_status": {
-    "status": "catalog_unavailable",
-    "mirror_generated_at": "2026-11-16T12:26:11Z",
-    "mirror_job_identity_count": 275,
-    "reason": "Mirror older than 120 minutes; direct API inaccessible to available reader. No safe deduplication possible."
-  }
+  "catalog_status": "catalog_unavailable: mirror generated_at 2026-11-16T22:28:00Z older than 120 minutes at 2026-11-17T00:22Z? 114 minutes; requires strict time verification; direct API inaccessible"
 }

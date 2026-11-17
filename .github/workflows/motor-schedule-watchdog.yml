@@ -40,9 +40,10 @@ jobs:
             > automation/motor_d_discovery/producer_heartbeat.json
       - name: Evaluar antigüedad y comunas
         if: github.event_name != 'pull_request'
-        run: python automation/schedule_watchdog.py \
-          --heartbeat automation/motor_d_discovery/producer_heartbeat.json \
-          --output output/schedule_watchdog.json
+        run: |
+          python automation/schedule_watchdog.py \
+            --heartbeat automation/motor_d_discovery/producer_heartbeat.json \
+            --output output/schedule_watchdog.json
       - name: Disparar D solo si el heartbeat está vencido
         if: github.event_name != 'pull_request'
         env:

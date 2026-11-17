@@ -14,6 +14,7 @@ import os
 import pathlib
 import unicodedata
 import tempfile
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -63,6 +64,11 @@ def canonical_url(raw: str) -> str:
 
 
 def get_json(cursor: str | None):
+    """Fetch a page with bounded retries for transient network/server failures.
+
+    Permanent HTTP errors (401/403/404) fail immediately and are never
+    misreported as a successfully consulted catalog.
+    """
     url = SOURCE + ("?cursor=" + urllib.parse.quote(cursor, safe="") if cursor else "")
     request = urllib.request.Request(
         url,
@@ -72,19 +78,31 @@ def get_json(cursor: str | None):
             "Cache-Control": "no-cache",
         },
     )
-    with urllib.request.urlopen(request, timeout=35) as response:
-        if response.status != 200:
-            raise RuntimeError("http_" + str(response.status))
-        media_type = response.headers.get("Content-Type", "")
-        if "json" not in media_type:
-            raise RuntimeError("non_json_response")
-        raw = response.read(1500000)
-        if len(raw) >= 1500000:
-            raise RuntimeError("response_too_large")
-    parsed = json.loads(raw)
-    if not isinstance(parsed, dict):
-        raise RuntimeError("not_an_object")
-    return parsed
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=35) as response:
+                if response.status != 200:
+                    raise RuntimeError("http_" + str(response.status))
+                media_type = response.headers.get("Content-Type", "")
+                if "json" not in media_type:
+                    raise RuntimeError("non_json_response")
+                raw = response.read(1500000)
+                if len(raw) >= 1500000:
+                    raise RuntimeError("response_too_large")
+            parsed = json.loads(raw)
+            if not isinstance(parsed, dict):
+                raise RuntimeError("not_an_object")
+            return parsed
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (408, 429, 500, 502, 503, 504) or attempt == 2:
+                raise RuntimeError(f"catalog_http_{exc.code}") from exc
+            print(f"CATALOG_SYNC_RETRY http={exc.code} attempt={attempt + 1}/3", flush=True)
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+            if attempt == 2:
+                raise RuntimeError(f"catalog_network_failure: {type(exc).__name__}") from exc
+            print(f"CATALOG_SYNC_RETRY network={type(exc).__name__} attempt={attempt + 1}/3", flush=True)
+        time.sleep(2 ** attempt)
+    raise RuntimeError("catalog_retry_exhausted")
 
 
 def main() -> None:

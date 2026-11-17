@@ -22,7 +22,7 @@ No inferir ubicación GPS del visitante: el filtro de comuna indica interés ter
 | Capacidad | Estado actual del laboratorio |
 |---|---|
 | Publicidad propia de respaldo si el espacio no está reservado | Sí, administrada por el inventario |
-| Campañas propias con selección manual de tres ilustraciones | Sí, **solo en autopromoción destacada**, con imágenes existentes |
+| Campañas propias con selección manual de tres ilustraciones | Sí, en **autopublicidad visible bajo el buscador móvil** y en el destacado cuando esté disponible; imágenes locales existentes |
 | Imagen comercial individual | Sí: JPG, PNG o WebP, **máximo 200.000 bytes** |
 | Carrusel comercial con varias imágenes | **No implementado** |
 | Video comercial | **No implementado** |

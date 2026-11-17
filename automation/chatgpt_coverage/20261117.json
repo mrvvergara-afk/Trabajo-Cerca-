@@ -18,16 +18,16 @@
     "Negrete",
     "Nacimiento"
   ],
-  "run_wave": 5,
-  "run_at": "2026-11-17T08:27:09Z",
+  "run_wave": 0,
+  "run_at": "2026-11-17T12:01:43Z",
   "coverage_complete": false,
   "wave_complete_as_attempts": true,
-  "wave_accessible": 2,
-  "wave_attempted": 23,
-  "wave_blocked": 3,
+  "wave_accessible": 3,
+  "wave_attempted": 24,
+  "wave_blocked": 4,
   "wave_failed": 17,
   "wave_not_attempted": 0,
-  "discovery_attempted": 0,
+  "discovery_attempted": 5,
   "discovery": [
     {
       "source_id": "concepcion-bridge",
@@ -105,6 +105,51 @@
       "timestamp": "2026-11-17T08:27:09Z",
       "origin": "inventory_discovery_targets",
       "reason": "No se acreditó consulta individual del objetivo en este ciclo"
+    },
+    {
+      "source_id": "motor-tavily",
+      "name": "Tavily · barrido de brechas",
+      "status": "checked_empty",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_search",
+      "offers_found": 0,
+      "reason": "Public search performed; candidate results cross-checked separately; no newly publishable offer established from this discovery target."
+    },
+    {
+      "source_id": "bne",
+      "name": "Bolsa Nacional de Empleo",
+      "status": "checked_empty",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_search",
+      "offers_found": 0,
+      "reason": "Public search performed; candidate results cross-checked separately; no newly publishable offer established from this discovery target."
+    },
+    {
+      "source_id": "computrabajo",
+      "name": "Computrabajo",
+      "status": "checked_empty",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_search",
+      "offers_found": 0,
+      "reason": "Public search performed; candidate results cross-checked separately; no newly publishable offer established from this discovery target."
+    },
+    {
+      "source_id": "radio-montecarlo-angol",
+      "name": "Radio Montecarlo Sur · Angol",
+      "status": "checked_empty",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_search",
+      "offers_found": 0,
+      "reason": "Public search performed; candidate results cross-checked separately; no newly publishable offer established from this discovery target."
+    },
+    {
+      "source_id": "millaray-puren-sauces",
+      "name": "Millaray Radio · Purén / Los Sauces",
+      "status": "checked_empty",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_search",
+      "offers_found": 0,
+      "reason": "Public search performed; candidate results cross-checked separately; no newly publishable offer established from this discovery target."
     }
   ],
   "sources": [
@@ -671,19 +716,300 @@
       "origin": "public_web_open",
       "offers_found": [],
       "reason": "Portal Los Ángeles legible, avisos localizados fuera de las 12 comunas"
+    },
+    {
+      "source_id": "indeed-Angol",
+      "name": "Indeed · Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "scan_wave": 0,
+      "territory": "Angol",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "trabajando-Angol",
+      "name": "Trabajando · Angol",
+      "url": "https://www.trabajando.cl/trabajo-empleo/angol",
+      "scan_wave": 0,
+      "territory": "Angol",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "chiletrabajos-Collipulli",
+      "name": "ChileTrabajos · Collipulli",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+      "scan_wave": 0,
+      "territory": "Collipulli",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "opcionempleo-Ercilla",
+      "name": "Opción Empleo · Ercilla",
+      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "scan_wave": 0,
+      "territory": "Ercilla",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "laborum-Renaico",
+      "name": "Laborum · Renaico",
+      "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+      "scan_wave": 0,
+      "territory": "Renaico",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "linkedin-Mininco",
+      "name": "LinkedIn · Mininco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+      "scan_wave": 0,
+      "territory": "Mininco",
+      "status": "blocked",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader access restricted or anti-bot challenge; no job content read."
+    },
+    {
+      "source_id": "computrabajo-Nacimiento",
+      "name": "Computrabajo · Nacimiento",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+      "scan_wave": 0,
+      "territory": "Nacimiento",
+      "status": "blocked",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader access restricted or anti-bot challenge; no job content read."
+    },
+    {
+      "source_id": "indeed-Negrete",
+      "name": "Indeed · Negrete",
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "scan_wave": 0,
+      "territory": "Negrete",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "trabajando-Negrete",
+      "name": "Trabajando · Negrete",
+      "url": "https://www.trabajando.cl/trabajo-empleo/negrete",
+      "scan_wave": 0,
+      "territory": "Negrete",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "chiletrabajos-Mulchén",
+      "name": "ChileTrabajos · Mulchén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+      "scan_wave": 0,
+      "territory": "Mulchén",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "opcionempleo-Los Sauces",
+      "name": "Opción Empleo · Los Sauces",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "scan_wave": 0,
+      "territory": "Los Sauces",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "laborum-Purén",
+      "name": "Laborum · Purén",
+      "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+      "scan_wave": 0,
+      "territory": "Purén",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "linkedin-Traiguén",
+      "name": "LinkedIn · Traiguén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "scan_wave": 0,
+      "territory": "Traiguén",
+      "status": "blocked",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader access restricted or anti-bot challenge; no job content read."
+    },
+    {
+      "source_id": "computrabajo-Lumaco",
+      "name": "Computrabajo · Lumaco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+      "scan_wave": 0,
+      "territory": "Lumaco",
+      "status": "blocked",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader access restricted or anti-bot challenge; no job content read."
+    },
+    {
+      "source_id": "indeed-Victoria",
+      "name": "Indeed · Victoria",
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "scan_wave": 0,
+      "territory": "Victoria",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "trabajando-Victoria",
+      "name": "Trabajando · Victoria",
+      "url": "https://www.trabajando.cl/trabajo-empleo/victoria",
+      "scan_wave": 0,
+      "territory": "Victoria",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "chiletrabajos-secondary-Los Ángeles",
+      "name": "ChileTrabajos · Los Ángeles",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+      "scan_wave": 0,
+      "territory": "Los Ángeles",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "opcionempleo-secondary-Temuco",
+      "name": "Opción Empleo · Temuco",
+      "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+      "scan_wave": 0,
+      "territory": "Temuco",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "fashions-park-empleo-angol",
+      "name": "Fashion's Park · contratación oficial",
+      "url": "https://fashionspark.hiringroom.com/jobs",
+      "scan_wave": 0,
+      "territory": "Angol y Victoria",
+      "status": "checked_found",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 2,
+      "reason": "ATS employer listing read; 2 individual job pages checked; one already in catalog and one has conflicting work location."
+    },
+    {
+      "source_id": "omil-negrete",
+      "name": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/",
+      "scan_wave": 0,
+      "territory": "Negrete",
+      "status": "checked_empty",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page readable; no individually verified open job from this page."
+    },
+    {
+      "source_id": "malleco7",
+      "name": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "scan_wave": 0,
+      "territory": "Malleco",
+      "status": "checked_empty",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page readable; no individually verified open job from this page."
+    },
+    {
+      "source_id": "bne-negrete-pilot-2026-109726",
+      "name": "Bolsa Nacional de Empleo · Negrete",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "scan_wave": 0,
+      "territory": "Negrete",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "mulchen-feed",
+      "name": "Municipalidad de Mulchén · novedades",
+      "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "scan_wave": 0,
+      "territory": "Mulchén",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
+    },
+    {
+      "source_id": "registry-omil-temuco-portal",
+      "name": "OMIL Temuco · Portal de Empleo",
+      "url": "https://temuco.omil.cl/",
+      "scan_wave": 0,
+      "territory": "Temuco",
+      "status": "failed",
+      "checked_at": "2026-11-17T12:01:43Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Direct public URL inaccessible with available reader; source not successfully consulted."
     }
   ],
-  "verified_new_candidates": [],
-  "batches_created": [],
-  "publication_confirmed": [],
-  "catalog_status": {
-    "status": "catalog_unavailable",
-    "generated_at": "2026-11-17T04:44:38+00:00",
-    "age_minutes": 223,
-    "identity_count": 276,
-    "validated_fields": true,
-    "pages_checked": 11
-  },
+  "verified_new_candidates": 0,
+  "batches_created": 0,
+  "publication_confirmed": 0,
+  "catalog_status": "catalog_unavailable",
   "pending_candidates": [
     {
       "title": "Operador rodillo",
@@ -691,6 +1017,12 @@
       "commune": "Nacimiento",
       "original_url": "https://www.chiletrabajos.cl/trabajo/3899634",
       "reason": "Public indexed page shows work between Santa Juana and Nacimiento, but current original listing status and catalog identity cannot be confirmed."
+    },
+    {
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Victoria",
+      "company": "Fashion's Park",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aea08221564eb41f9a6b54c",
+      "reason": "Listing header Victoria but description specifies Temuco; work location conflict; not publishable without confirmation."
     }
   ],
   "notes": [
@@ -698,6 +1030,7 @@
     "No app modifications or deployments.",
     "Sources with inaccessible URLs remain pending; attempted does not mean read.",
     "This wave uses discovery target index modulo six as partition rule.",
-    "Onda 5: 23 endpoints intentados; 2 páginas legibles sin vacantes territoriales confirmadas, 3 bloqueadas, 1 RSS unsupported, 1 página dinámica sin contenido laboral, 16 errores de acceso. Búsqueda auxiliar encontró oferta Liceo Agrícola Negrete expirada 15-11-2026; excluida. Objetivos discovery wave5 no abordados individualmente; no declarar cobertura completa."
+    "Onda 5: 23 endpoints intentados; 2 páginas legibles sin vacantes territoriales confirmadas, 3 bloqueadas, 1 RSS unsupported, 1 página dinámica sin contenido laboral, 16 errores de acceso. Búsqueda auxiliar encontró oferta Liceo Agrícola Negrete expirada 15-11-2026; excluida. Objetivos discovery wave5 no abordados individualmente; no declarar cobertura completa.",
+    "Onda 0 (09:00 Chile): 24 endpoints attempted, 3 pages readable, 4 blocked, 17 failed. Five discovery targets searched. Public catalog mirror generated 2026-11-17T04:44:38Z, stale >120 min; real API inaccessible; no import. Territorial incident: Constructora ALJO enfierradores Hospital Nacimiento catalog ID free-9e173e643c73999fa7f6e52332a957d0834d0b45 is tagged Angol despite job executed in Nacimiento; do not duplicate. Fashion's Park Angol already cataloged. Victoria listing has conflicting Temuco location."
   ]
 }

@@ -139,12 +139,64 @@ def do_browser(browser, label, width, height):
             record("mobile_directory_interaction",False,error=str(exc)[:270])
     context.close()
 
+def carousel_motion_check(browser, label, reduced, expect_motion):
+    """Isolated read-only browser, no account/metric writes, one promo only."""
+    context=browser.new_context(viewport={"width":360,"height":780},
+      device_scale_factor=2,locale="es-CL",is_mobile=True,has_touch=True,
+      reduced_motion=reduced,service_workers="block")
+    context.add_init_script("localStorage.setItem('tc_analytics_consent','no');")
+    context.route("**/*",suppress_metric_writes)
+    page=context.new_page()
+    try:
+        page.goto(WEB,wait_until="domcontentloaded",timeout=60000)
+        gallery=page.locator(".tcInlineHousePromo .tcInlineGalleryControls").first
+        gallery.wait_for(state="visible",timeout=30000)
+        gallery.scroll_into_view_if_needed()
+        image=page.locator(".tcInlineHousePromo img.tcHouseFallbackThumb").first
+        first=image.get_attribute("src")
+        # Slow auto-advance is 5500ms. Allow a little time for browser scheduling.
+        page.wait_for_timeout(6750)
+        second=image.get_attribute("src")
+        record(label+"_automatic_rotation",(first!=second)==expect_motion,
+               original=first,after=second,reduced_motion=reduced)
+        # The visible indicator must accept the manual action even with reduced motion.
+        two=gallery.get_by_role("button",name="Ver imagen 2 de 3").first
+        two.click()
+        after_touch=image.get_attribute("src")
+        page.wait_for_timeout(5950)
+        record(label+"_manual_pauses_auto",image.get_attribute("src")==after_touch,
+               selected=after_touch)
+        if label=="mobile_motion_allowed":
+            before=image.get_attribute("src")
+            state=page.evaluate("""() => {
+              const root=document.querySelector('.tcInlineHousePromo');
+              const image=root.querySelector('img.tcHouseFallbackThumb');
+              const a=new Touch({identifier:1,target:root,clientX:230,clientY:250});
+              const b=new Touch({identifier:1,target:root,clientX:125,clientY:251});
+              root.dispatchEvent(new TouchEvent('touchstart',{
+                bubbles:true,cancelable:true,touches:[a],targetTouches:[a],changedTouches:[a]}));
+              root.dispatchEvent(new TouchEvent('touchend',{
+                bubbles:true,cancelable:true,touches:[],targetTouches:[],changedTouches:[b]}));
+              return {before:image.getAttribute('src')};
+            }""")
+            page.wait_for_timeout(200)
+            after=image.get_attribute("src")
+            record("mobile_swipe_to_next_image",after!=before,
+                before=before,after=after,gesture_start=state.get("before"))
+        page.screenshot(path=str(OUTPUT/(label+"_carousel.png")),full_page=False)
+    except Exception as exc:
+        record(label+"_carousel_test",False,error=str(exc)[:280])
+    finally:
+        context.close()
+
 def main():
     with sync_playwright() as playwright:
         browser=playwright.chromium.launch(headless=True,args=["--no-sandbox"])
         try:
             do_browser(browser,"mobile",360,780)
             do_browser(browser,"desktop",1280,800)
+            carousel_motion_check(browser,"mobile_motion_allowed","no-preference",True)
+            carousel_motion_check(browser,"mobile_reduced_motion","reduce",False)
         finally:
             browser.close()
     report={"total":len(checks),"passed":sum(v["pass"] for v in checks),

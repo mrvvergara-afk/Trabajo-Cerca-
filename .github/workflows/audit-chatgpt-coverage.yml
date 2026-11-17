@@ -1,0 +1,29 @@
+name: Audit ChatGPT territorial coverage (read only)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 1,5,9,13,17,21 * * *'
+      timezone: 'America/Santiago'
+permissions:
+  contents: read
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit latest coverage against current inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          latest="$(find automation/chatgpt_coverage -maxdepth 1 -name '20??????.json' | sort | tail -1)"
+          test -n "$latest"
+          python3 automation/audit_chatgpt_coverage.py --coverage "$latest" --output /tmp/chatgpt-coverage-audit.json
+          python3 - <<'PY'
+          import json
+          r=json.load(open('/tmp/chatgpt-coverage-audit.json'))
+          with open(__import__('os').environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('## ChatGPT coverage audit\n\n')
+              f.write('Sources: {}/{}; effective reads: {}; attempted: {}.\n\n'.format(r['recorded_sources'],r['inventory_endpoints'],r['effective_reads'],r['attempted']))
+              f.write('Daily attempt coverage complete: **{}**; effective complete: **{}**.\n'.format(r['daily_attempt_coverage_complete'],r['daily_effective_coverage_complete']))
+          PY

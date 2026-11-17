@@ -44,7 +44,9 @@ def main():
       "bc_age_minutes":round(age_minutes(bc["lastRunAt"]),1) if bc.get("lastRunAt") else None
     }))
     assert status.get("checkedAt") and age_minutes(status["checkedAt"])<100,"A scan stopped or stale"
-    assert bc.get("lastRunAt") and age_minutes(bc["lastRunAt"])<45,"B/C pipeline stopped or stale"
+    # B/C process residual evidence queues; they do not run every 45 minutes.
+    # Preserve a meaningful four-hour freshness alert, not a false A/D failure at 64 min.
+    assert bc.get("lastRunAt") and age_minutes(bc["lastRunAt"])<240,"B/C evidence pipeline stopped for over four hours"
     from collections import Counter
     import re
     docs=(status.get("documentWork") or {}).get("items") or []

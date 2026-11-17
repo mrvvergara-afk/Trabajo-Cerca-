@@ -37,6 +37,18 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
+      "id_fuente": "cmpc_19129",
+      "cargo": "Líder de Procesos y Calidad - Nacimiento",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
+      "fecha_publicacion": "2026-10-20",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
       "id_fuente": "cmpc_18859",
       "cargo": "Ingeniero/a Procesos y Excelencia Sr",
       "empresa": "CMPC",
@@ -61,6 +73,14 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19342?c=cmpc",
       "title": "DATA & INFORMATION GOVERNANCE SPECIALIST",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
+      "title": "Administrador Zonal",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -125,14 +145,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
       "title": "Operador Montacarga Turno - Planta Puente Alto",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19218?c=cmpc",
-      "title": "Auxiliar Procesos - EDIPAC Quilicura",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -209,15 +221,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
       "title": "Coordinador de Soporte Técnico SAP",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/1450?c=cmpc",
-      "title": "Analista de Comercio Exterior",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

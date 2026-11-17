@@ -1,0 +1,24 @@
+name: Trabajo Cerca | Cobertura pública de publicidad (lectura)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'automation/qa_public_ad_coverage.py'
+      - '.github/workflows/qa-public-ad-coverage.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tc-readonly-public-ad-coverage
+  cancel-in-progress: false
+
+jobs:
+  public-ad-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check 12 communes + Todas + Mininco without writing events
+        run: python3 automation/qa_public_ad_coverage.py

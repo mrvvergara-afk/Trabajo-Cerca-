@@ -39,6 +39,25 @@ class AuditTests(unittest.TestCase):
         self.assertEqual(report["discovery_missing"], ["d"])
         self.assertFalse(report["daily_attempt_coverage_complete"])
 
+    def test_not_attempted_does_not_count_as_complete(self):
+        report = module.audit(inventory(), {
+            "sources": [
+                {"source_id": "a", "scan_wave": 0, "status": "not_attempted"},
+                {"source_id": "b", "scan_wave": 1, "status": "checked_empty"},
+            ],
+            "discovery": [{"source_id": "d", "status": "checked_empty"}],
+        })
+        self.assertEqual(report["attempted"], 1)
+        self.assertFalse(report["daily_attempt_coverage_complete"])
+
+    def test_failure_is_recovery_candidate(self):
+        report = module.audit(inventory(), {
+            "sources": [{"source_id": "a", "scan_wave": 0, "status": "failed", "reason": "timeout"}],
+            "discovery": [],
+        })
+        self.assertEqual(report["retry_candidates"][0]["source_id"], "a")
+        self.assertEqual(report["retry_candidates"][0]["recovery_strategy"], "bounded_retry_then_alternative")
+
     def test_invalid_wave_detected(self):
         report = module.audit(inventory(), {
             "sources": [{"source_id": "a", "scan_wave": 5, "status": "checked_found"}],

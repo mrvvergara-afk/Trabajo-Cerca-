@@ -45,6 +45,16 @@ class AuditTests(unittest.TestCase):
         self.assertTrue(report["daily_attempt_coverage_complete"])
         self.assertFalse(report["daily_effective_coverage_complete"])
 
+    def test_missing_discovery_with_all_sources_is_safe(self):
+        report = module.audit(inventory(), {
+            "sources": [
+                {"source_id": "a", "scan_wave": 0, "status": "checked_found"},
+                {"source_id": "b", "scan_wave": 1, "status": "checked_empty"},
+            ],
+            "discovery": [],
+        })
+        self.assertFalse(report["daily_effective_coverage_complete"])
+
     def test_missing_discovery_is_not_complete(self):
         report = module.audit(inventory(), {"sources": [], "discovery": []})
         self.assertEqual(report["discovery_missing"], ["d"])

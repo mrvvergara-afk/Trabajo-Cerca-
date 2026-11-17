@@ -142,6 +142,38 @@ def do_browser(browser, label, width, height):
                    after["doc"]<=after["viewport"]+5,**after)
         except Exception as exc:
             record("mobile_directory_interaction",False,error=str(exc)[:270])
+    # Account entry must be visible in BOTH desktop web and installed-style mobile UX.
+    # Anonymous browser only: do NOT authenticate or submit credentials.
+    try:
+        site_menu=page.locator(".tcSiteMenu")
+        site_menu.locator("summary").click(timeout=8000)
+        panel=site_menu.locator(".tcSiteMenuPanel")
+        panel.wait_for(state="visible",timeout=5000)
+        account=panel.get_by_role("region",name="Mi cuenta")
+        account.wait_for(state="visible",timeout=15000)
+        login=account.get_by_role("button",name="Iniciar sesión")
+        login.wait_for(state="visible",timeout=16000)
+        try:
+            login.wait_for(state="enabled",timeout=15000)
+        except PlaywrightTimeoutError:
+            pass
+        entry=account.get_by_role("link",name="Acceso administrativo")
+        entry.wait_for(state="visible",timeout=9000)
+        record(label+"_admin_account_entry_visible", login.is_visible() and entry.is_visible(),
+            login_enabled=login.is_enabled(),admin_link=entry.get_attribute("href"))
+        no_new_tab=entry.get_attribute("target") in (None,"","_self")
+        record(label+"_admin_link_same_tab",no_new_tab)
+        entry.click(timeout=9000)
+        page.wait_for_url("**?panel=administracion",timeout=15000)
+        restricted=page.get_by_role("heading",name="Acceso administrativo")
+        restricted.wait_for(state="visible",timeout=15000)
+        record(label+"_admin_route_restricted",
+            restricted.is_visible() and
+            page.get_by_text("Acceso restringido",exact=True).is_visible() and
+            page.get_by_role("button",name="Ingresar como administrador").is_visible())
+        page.screenshot(path=str(OUTPUT/(label+"_admin_login.png")),full_page=False)
+    except Exception as exc:
+        record(label+"_admin_menu_workflow",False,error=str(exc)[:280])
     context.close()
 
 def carousel_motion_check(browser, label, reduced, expect_motion):

@@ -2,8 +2,7 @@ name: Audit ChatGPT territorial coverage (read only)
 on:
   workflow_dispatch:
   schedule:
-    - cron: '20 1,5,9,13,17,21 * * *'
-      timezone: 'America/Santiago'
+    - cron: '35 0,4,8,12,16,20 * * *'
 permissions:
   contents: read
 jobs:
@@ -16,8 +15,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          latest="$(find automation/chatgpt_coverage -maxdepth 1 -name '20??????.json' | sort | tail -1)"
-          test -n "$latest"
+          chile_date="$(TZ=America/Santiago date +%Y%m%d)"
+          latest="automation/chatgpt_coverage/${chile_date}.json"
+          if [ ! -f "$latest" ]; then
+            echo "::warning::Coverage not yet available for Chile date ${chile_date}; no successful coverage claim"
+            exit 0
+          fi
           python3 automation/audit_chatgpt_coverage.py --coverage "$latest" --output /tmp/chatgpt-coverage-audit.json
           python3 - <<'PY'
           import json

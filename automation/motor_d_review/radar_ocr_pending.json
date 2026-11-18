@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-18T18:14:59.556007+00:00",
+  "updated_at": "2026-11-18T18:24:20.541826+00:00",
   "items_total": 18,
   "pending_total": 18,
   "publication_enabled": false,
@@ -578,5 +578,6 @@
       "original_classification": "sin_evidencia_suficiente",
       "deadline": null
     }
-  ]
+  ],
+  "added_this_run": 0
 }

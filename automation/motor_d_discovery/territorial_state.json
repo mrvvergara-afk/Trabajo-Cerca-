@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-17T23:53:09.468803-03:00",
+  "last_run": "2026-11-18T00:27:40.000551-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -6731,6 +6731,36 @@
     "a9c9d5c1a6e124405cca": {
       "first_seen": "2026-11-17T23:53:09.468803-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-tarde-sin-experiencia-san-bernardo-570000-y-bus-100-cupos-3078939.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a0e2a1e0e8c9cad1e1f5": {
+      "first_seen": "2026-11-18T00:27:40.000551-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-polifuncional-full-time-5x2-tienda-deportiva-las-condes-3078963.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e800778e5357da519fb1": {
+      "first_seen": "2026-11-18T00:27:40.000551-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/buscamos-ayudantes-polifuncionales-full-time-5x2-tienda-deportiva-las-condes-3078962.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "22e83d83a06597e30aba": {
+      "first_seen": "2026-11-18T00:27:40.000551-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-tienda-caja-para-supermercado-en-quilicura-ingreso-inmediato-3078961.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "75be5f33b3c90c9b1572": {
+      "first_seen": "2026-11-18T00:27:40.000551-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apilador-trilateral-tradis-turno-noche-5x2-san-bernardo-890000-20-00-a-06-00-3078960.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cea59df3a79de265535d": {
+      "first_seen": "2026-11-18T00:27:40.000551-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maestra-o-obras-civiles-y-electricidad-cerrillos-3078959.html",
       "source": "Inventario D04",
       "commune": null
     }

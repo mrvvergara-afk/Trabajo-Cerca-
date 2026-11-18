@@ -4,6 +4,26 @@ from bs4 import BeautifulSoup
 import motor_d_territorial_daily as engine
 
 class TerritorialSafetyTests(unittest.TestCase):
+    def test_dedup_keeps_confirmed_individual_page_over_national_fallback(self):
+        poor={"http":200,"evidence":"link_candidate_only",
+              "source_commune_not_confirmed":True}
+        good={"http":200,"evidence":"individual_page_with_job_terms",
+              "source_commune_not_confirmed":False,
+              "explicit_worksite_commune":"Nacimiento",
+              "application_evidence":True,"date_source":"2026-11-17"}
+        self.assertGreater(engine.candidate_evidence_rank(good),
+                           engine.candidate_evidence_rank(poor))
+
+    def test_chiletrabajos_deactivated_banner_is_closed(self):
+        page=BeautifulSoup("""<h1>Operario Nacimiento</h1>
+            <p>Buscado Empresa Industrial Fecha 2026-11-17
+            Ubicación Nacimiento Categoría Producción</p>
+            <p>Este anuncio ha expirado o ha sido desactivado por el empleador</p>
+            ""","html.parser")
+        found=engine.chiletrabajos_metadata(page,"Operario Nacimiento",
+            "https://www.chiletrabajos.cl/trabajo/operario-nacimiento-3999998")
+        self.assertTrue(found["source_closed"])
+
     def test_twelve_communes_exclude_quilaco_and_every_commune_has_a_seed(self):
         self.assertEqual(len(engine.COMMUNES),12)
         self.assertEqual(len(set(engine.COMMUNES)),12)
@@ -168,6 +188,32 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertEqual(result["documents_for_review"],[])
         self.assertEqual(result["candidates"],[])
         self.assertNotIn("jobs_verified",result)
+
+    def test_nueva_victoria_mining_site_is_not_victoria_malleco(self):
+        self.assertIsNone(engine.explicit_work_commune(
+            "Con base en Antofagasta y traslados a Salar de Atacama y Nueva Victoria."))
+        self.assertIsNone(engine.explicit_work_commune(
+            "Lugar de trabajo: Nueva Victoria, faena minera en el norte."))
+        self.assertEqual(engine.explicit_work_commune(
+            "Lugar de trabajo: Victoria, Región de La Araucanía."), "Victoria")
+
+    def test_victorias_secret_is_not_a_worksite_commune(self):
+        self.assertIsNone(engine.explicit_work_commune(
+            "Lugar de trabajo: tienda Victoria's Secret en Santiago."))
+
+    def test_chiletrabajos_metadata_rejects_mining_homonym_but_keeps_expiry(self):
+        page = BeautifulSoup(
+            "<html><h1>Prevencionista de Riesgos en Faena Antofagasta</h1>"
+            "<div>Buscado Empleo Seguro Fecha 2026-11-17 "
+            "Ubicación Antofagasta Categoría Otros Expira 2027-01-31</div>"
+            "<p>Con base en Antofagasta y traslados a Salar de Atacama "
+            "y Nueva Victoria. Postular en el portal.</p></html>", "html.parser")
+        meta = engine.chiletrabajos_metadata(page,
+            "Prevencionista de Riesgos en Faena Antofagasta",
+            "https://www.chiletrabajos.cl/trabajo/prevencionista-antofagasta-3933560")
+        self.assertIsNone(meta["work_commune"])
+        self.assertEqual(meta["deadline"], "2027-01-31")
+        self.assertFalse(meta["source_closed"])
 
     def test_mininco_keeps_collipulli_administrative_mapping(self):
         self.assertEqual(engine.explicit_work_commune("Lugar de trabajo: Mininco."), "Collipulli")

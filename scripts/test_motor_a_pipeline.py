@@ -131,6 +131,68 @@ class MotorAPipelineTests(unittest.TestCase):
             self.assertEqual(result["total"],0)
             self.assertEqual(result["invalid"],1)
 
+    def test_expired_chiletrabajos_banner_cannot_advance(self):
+        raw='<p>Requisitos empleo. Este anuncio ha expirado o ha sido desactivado por el empleador.</p>'
+        found=check({"url":ORIGINAL},lambda url:(url,200,raw))
+        self.assertEqual(found["status"],"rejected")
+        self.assertEqual(found["reason"],"closed_notice")
+
+    def test_expired_valid_through_cannot_advance(self):
+        raw='<p>Requisitos empleo</p><script type="application/ld+json">'+json.dumps({
+            "@type":"JobPosting","jobLocation":{"address":{"addressLocality":"Angol"}},
+            "validThrough":"2025-05-01"})+'</script>'
+        found=check({"url":ORIGINAL},lambda url:(url,200,raw))
+        self.assertEqual(found["status"],"rejected")
+        self.assertEqual(found["reason"],"expired_source_deadline")
+
+    def test_nueva_victoria_is_not_commune_victoria(self):
+        raw='<title>Nueva Victoria Antofagasta</title><p>Requisitos empleo</p>'+(
+            '<script type="application/ld+json">'+json.dumps({
+                "@type":"JobPosting","jobLocation":{"address":{"addressLocality":"Nueva Victoria"}}})+
+            '</script>')
+        found=check({"url":ORIGINAL},lambda url:(url,200,raw))
+        self.assertNotEqual(found["status"],"review_ready")
+
+    def test_original_worksite_overrides_recruiting_city_in_jsonld(self):
+        raw='<title>Enfierradores hospital</title><p>Requisitos empleo. Obra en ejecucion en el Hospital de Nacimiento.</p>'+(
+            '<script type="application/ld+json">'+json.dumps({
+                "@type":"JobPosting","jobLocation":{"address":{"addressLocality":"Angol"}}})+
+            '</script>')
+        found=check({"url":ORIGINAL},lambda url:(url,200,raw))
+        self.assertEqual(found["status"],"review_ready")
+        self.assertEqual(found["work_commune"],"Nacimiento")
+        self.assertEqual(found["reason"],"explicit_worksite_in_original_description")
+
+    def test_motor_a_queue_prunes_published_and_expired_but_retains_mismatch(self):
+        now=dt.datetime(2026,11,17,22,30,tzinfo=dt.timezone.utc)
+        def lead(number,place,deadline=None):
+            return {"candidate_url":f"https://www.chiletrabajos.cl/trabajo/oferta-{number}",
+                    "status":"review_ready","work_commune":place,
+                    "deadline_hint":deadline}
+        stage={"results":[lead(3921234,"Collipulli"),
+                          lead(3923333,"Nacimiento"),
+                          lead(3924444,"Traiguén","2026-11-16")]}
+        mirror={"complete":True,"generated_at":now.isoformat(),
+                "items":[{"url":"https://chiletrabajos.cl/trabajo/cargo-3921234",
+                          "workCommunes":["Collipulli"]},
+                         {"url":"https://chiletrabajos.cl/trabajo/cargo-3923333",
+                          "workCommunes":["Angol"]}]}
+        out=merge(None,stage,now,catalog=mirror)
+        self.assertEqual(out["items_total"],1)
+        self.assertEqual(out["metrics"]["published_reconciled"],1)
+        self.assertEqual(out["metrics"]["expired"],1)
+        self.assertEqual(out["metrics"]["territory_mismatch"],1)
+        self.assertTrue(out["items"][0]["catalog_territory_mismatch"])
+
+    def test_stale_catalog_does_not_silently_drop_pending_leads(self):
+        now=dt.datetime(2026,11,17,tzinfo=dt.timezone.utc)
+        mirror={"complete":True,"generated_at":"2026-11-01T00:00:00+00:00",
+                "items":[{"url":"https://chiletrabajos.cl/trabajo/oferta-3921234",
+                          "workCommunes":["Collipulli"]}]}
+        stage={"results":[{"candidate_url":ORIGINAL,"status":"review_ready",
+                           "work_commune":"Collipulli"}]}
+        self.assertEqual(merge(None,stage,now,catalog=mirror)["items_total"],1)
+
 
 if __name__=="__main__":
     unittest.main()

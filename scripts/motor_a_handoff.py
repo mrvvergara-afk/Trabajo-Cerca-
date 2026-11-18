@@ -32,7 +32,52 @@ def canonical(raw):
         return None
 
 
-def merge(existing,stage,today=None):
+def public_job_id(url):
+    """Stable Chiletrabajos numeric identity across URL slugs and aliases."""
+    try:
+        parsed=urlsplit(str(url))
+        if (parsed.scheme!="https" or parsed.hostname not in
+                ("www.chiletrabajos.cl","chiletrabajos.cl")):
+            return None
+        match=re.fullmatch(r"/trabajo/(?:[^/?]+-)?(\d{5,12})/?",parsed.path)
+        return match.group(1) if match else None
+    except (TypeError,ValueError):
+        return None
+
+
+def catalog_jobs(snapshot,now):
+    """Never prune without a recent, complete public-identity snapshot."""
+    if (not isinstance(snapshot,dict) or snapshot.get("complete") is not True or
+            not isinstance(snapshot.get("items"),list)):
+        return {}
+    try:
+        checked=dt.datetime.fromisoformat(snapshot["generated_at"].replace("Z","+00:00"))
+        if (checked.tzinfo is None or checked>now+dt.timedelta(minutes=10) or
+                now-checked>dt.timedelta(hours=48)):
+            return {}
+    except (KeyError,ValueError,TypeError,AttributeError):
+        return {}
+    jobs={}
+    for row in snapshot["items"]:
+        if not isinstance(row,dict):
+            continue
+        source=public_job_id(row.get("url"))
+        places=row.get("workCommunes")
+        if source and isinstance(places,list) and places:
+            jobs.setdefault(source,set()).update(x for x in places if isinstance(x,str))
+    return jobs
+
+
+def expired_hint(value,now):
+    if not isinstance(value,str) or not re.match(r'^20\d{2}-\d{2}-\d{2}',value):
+        return False
+    try:
+        return dt.date.fromisoformat(value[:10])<now.date()
+    except ValueError:
+        return False
+
+
+def merge(existing,stage,today=None,catalog=None):
     now=today or dt.datetime.now(dt.timezone.utc)
     cutoff=now-dt.timedelta(days=45)
     items={}
@@ -49,13 +94,14 @@ def merge(existing,stage,today=None):
                 items[url]=x
     if not isinstance(stage,dict) or not isinstance(stage.get("results"),list):
         raise ValueError("invalid_motor_a_stage")
-    count={"added":0,"updated":0,"closed":0,"invalid":0}
+    count={"added":0,"updated":0,"closed":0,"invalid":0,
+           "expired":0,"published_reconciled":0,"territory_mismatch":0}
     for row in stage["results"]:
         if not isinstance(row,dict):count["invalid"]+=1;continue
         url=canonical(row.get("candidate_url"))
         if not url:count["invalid"]+=1;continue
         status=row.get("status")
-        if status=="rejected" and row.get("reason")=="closed_notice":
+        if status=="rejected" and row.get("reason") in ("closed_notice","expired_source_deadline"):
             if url in items:del items[url];count["closed"]+=1
             continue
         if status!="review_ready":continue
@@ -78,6 +124,23 @@ def merge(existing,stage,today=None):
             "work_commune_finally_verified":False,
             "review_reason":str(row.get("reason") or "structured_worksite")[:80],
         }
+    # Reconcile with complete public identities without deleting legitimate
+    # mismatches (a published wrong-city listing still requires correction).
+    published=catalog_jobs(catalog,now) if catalog is not None else {}
+    for url,item in list(items.items()):
+        if expired_hint(item.get("deadline_hint"),now):
+            del items[url]
+            count["expired"]+=1
+            continue
+        public_sites=published.get(public_job_id(url),set())
+        if public_sites:
+            if item["work_commune"] in public_sites:
+                del items[url]
+                count["published_reconciled"]+=1
+            else:
+                item["catalog_territory_mismatch"]=True
+                item["catalog_work_communes"]=sorted(public_sites)
+                count["territory_mismatch"]+=1
     # Retain most recently *individually checked* leads, never 45-day-old
     # search results without fresh proof.
     rows=sorted(items.values(),key=lambda x:x["last_checked_at"],reverse=True)[:500]
@@ -90,7 +153,12 @@ def main():
     if not INPUT.exists():raise FileNotFoundError("Motor A stage not created")
     stage=json.loads(INPUT.read_text(encoding="utf-8"))
     old=json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else None
-    data=merge(old,stage)
+    snapshot_path=Path("automation/catalog_public_identities.json")
+    try:
+        catalog=json.loads(snapshot_path.read_text(encoding="utf-8")) if snapshot_path.exists() else None
+    except (ValueError,OSError):
+        catalog=None
+    data=merge(old,stage,catalog=catalog)
     STATE.parent.mkdir(parents=True,exist_ok=True)
     STATE.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     if CHECKS.exists():

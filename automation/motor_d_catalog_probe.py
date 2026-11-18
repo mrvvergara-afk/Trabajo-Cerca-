@@ -117,3 +117,43 @@ def check_ready_offers(offers, public_rows, feed_complete):
                       else "not_found_in_complete_feed")
         outcomes[key] = status
     return outcomes
+
+
+def find_territory_mismatches(offers, public_rows):
+    """Read-only check: source identity is not proof of correct worksite."""
+    indexed={}
+    for row in public_rows:
+        if not isinstance(row,dict) or row.get("kind") not in (None,"job_offer"):
+            continue
+        locations=row.get("workCommunes")
+        if not isinstance(locations,list):
+            continue
+        for field in URL_FIELDS:
+            raw=row.get(field)
+            if not isinstance(raw,str):
+                continue
+            identifier=source_identity(raw)
+            if identifier:
+                indexed.setdefault(identifier,[]).append(row)
+    problems=[]
+    seen=set()
+    for offer in offers:
+        if not isinstance(offer,dict):
+            continue
+        identifier=source_identity(offer.get("url_original"))
+        if not identifier or identifier in seen:
+            continue
+        seen.add(identifier)
+        expected={normalize(x) for x in offer.get("comunas",[]) if isinstance(x,str)}
+        for row in indexed.get(identifier,[]):
+            actual={normalize(x) for x in row.get("workCommunes",[]) if isinstance(x,str)}
+            if expected and expected!=actual:
+                problems.append({
+                    "id_fuente":offer.get("id_fuente"),
+                    "url_original":offer.get("url_original"),
+                    "catalog_id":row.get("id"),
+                    "expected_work_communes":list(offer.get("comunas",[])),
+                    "catalog_work_communes":row.get("workCommunes",[]),
+                    "status":"catalog_territory_mismatch",
+                })
+    return problems

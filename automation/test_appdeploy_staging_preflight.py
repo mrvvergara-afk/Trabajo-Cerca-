@@ -81,7 +81,7 @@ class BackendPreflight(unittest.TestCase):
         self.assertNotIn("if(!stored){already++;}", self.bc)
 
     def test_feed_checks_leaf_before_serving(self):
-        position = self.feed.index("export async function readPublicFeedPage")
+        position = self.feed.index("async function readPublicFeedPageUncached")
         check = self.feed.index("Public feed page identity mismatch", position)
         serve = self.feed.index("return { ...summary, items:", position)
         self.assertLess(check, serve)
@@ -105,6 +105,50 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("PUBLIC_FEED_LAST_GOOD_PRESERVED", self.feed)
         self.assertIn("previous?.item.verified===true", self.feed)
         self.assertIn("!/confirmed|explicit|administrative|owner_request/.test(closure)", self.feed)
+
+    def test_chatgpt_bridge_is_hooked_into_publication_cron(self):
+        index=(ROOT/"index.ts").read_text(encoding="utf-8")
+        self.assertIn("await chatgptAutoImportHandler();",index)
+        self.assertIn("await confirmChatGPTPublications();",index)
+        cron=index.split("export const v14VerificationHandler",1)[1].split("export const v15VerificationRecoveryHandler",1)[0]
+        self.assertLess(cron.index("await chatgptAutoImportHandler();"),cron.index("advancePublicFeed(feedProjector)"))
+        self.assertGreater(cron.index("await confirmChatGPTPublications();"),cron.index("advancePublicFeed(feedProjector)"))
+
+    def test_worksite_one_time_repair_uses_correct_source_tables_and_audit(self):
+        script=(ROOT/"territory-repair.ts").read_text(encoding="utf-8")
+        index=(ROOT/"index.ts").read_text(encoding="utf-8")
+        source=(ROOT/"free-public-sources.ts").read_text(encoding="utf-8")
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        self.assertIn("const table='radar_external_'+hash.slice(0,32)",script)
+        self.assertIn("if:{externalVerifiedAt:existing.externalVerifiedAt}",script)
+        self.assertIn("territory_repair_audit",script)
+        self.assertIn("WORKSITE_SAFE_REPAIR",script)
+        self.assertIn("await repairApprovedTerritoriesOnce();",index)
+        self.assertIn("'audited_original_worksite'",source)
+        self.assertIn("const table='radar_external_'+externalHash.slice(0,32)",importer)
+        self.assertIn("sourceTable:table",importer)
+
+    def test_chatgpt_importer_confirms_corrected_location_and_official_open_lease(self):
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        bridge=(ROOT/"chatgpt-auto-import.ts").read_text(encoding="utf-8")
+        retention=(ROOT/"offer-retention.ts").read_text(encoding="utf-8")
+        for item in ("strictUndatedOpen","openOfficialEvidenceValidUntil",
+                     "territory_reconciled","expectedWorkCommunes"):
+            self.assertIn(item,importer)
+        self.assertIn("territory_reconciled",bridge)
+        self.assertIn("expectedWorkCommunes",bridge)
+        self.assertIn("verified_open_official_source_needs_fresh_evidence",retention)
+
+    def test_feed_preserves_original_worksite_against_newer_portal_city(self):
+        self.assertIn("preserveVerifiedTerritory", self.feed)
+        self.assertIn("workLocationEvidence", self.feed)
+        self.assertIn("priorSites.length>0", self.feed)
+
+    def test_staged_verifier_rejects_expiry_and_false_victoria(self):
+        verifier=(ROOT/"public-source-verifier.ts").read_text(encoding="utf-8")
+        self.assertIn("genuineWorksitePlaceMention",verifier)
+        self.assertIn("nueva",verifier)
+        self.assertIn("este anuncio ha expirado",verifier)
 
     def test_feed_blocks_unexplained_disappearance(self):
         publication = self.feed.split("async function publish(record:Manifest, projector:Projector)", 1)[1].split("export async function readPublicFeedSummary()", 1)[0]

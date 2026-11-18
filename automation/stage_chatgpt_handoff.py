@@ -9,11 +9,12 @@ from datetime import date, datetime, timezone
 from ipaddress import ip_address
 from pathlib import Path
 from urllib.parse import urlsplit
-from automation.chatgpt_extraction_contract import validate_batch
+from automation.chatgpt_extraction_contract import validate_batch, source_identity
 
 COMMUNES = {"Angol", "Collipulli", "Ercilla", "Lumaco", "Los Sauces", "Purén", "Renaico",
             "Traiguén", "Victoria", "Mulchén", "Negrete", "Nacimiento"}
-ALIASES = {"Mininco": "Collipulli", "Coihue": "Negrete", "Coigüe": "Negrete"}
+ALIASES = {"Mininco": "Collipulli", "Coihue": "Negrete", "Coigüe": "Negrete",
+           "Cohigue": "Negrete", "Capitán Pastene": "Lumaco"}
 
 def prepare(payload: dict, index: dict, day: str | None = None):
     if payload.get("schema_version") != 1 or payload.get("approval") != "approved_for_publication" or payload.get("producer") != "chatgpt_territorial":
@@ -23,7 +24,8 @@ def prepare(payload: dict, index: dict, day: str | None = None):
     offers = payload.get("offers")
     if not isinstance(offers, list) or not 1 <= len(offers) <= 15:
         raise ValueError("invalid_batch_size")
-    offers = validate_batch(copy.deepcopy(offers), set(index.get("seen_url_hashes", [])))
+    offers = validate_batch(copy.deepcopy(offers), set(index.get("seen_url_hashes", [])),
+                            prior_source_identities=set(index.get("seen_source_identities", [])))
     prior = set(index.get("seen_offer_ids", []))
     unique = set()
     for offer in offers:
@@ -33,7 +35,7 @@ def prepare(payload: dict, index: dict, day: str | None = None):
         if not isinstance(key, str) or not re.fullmatch(r"cg_[a-f0-9]{20}", key) or key in prior or key in unique:
             raise ValueError("duplicate_or_invalid_chatgpt_id")
         unique.add(key)
-        for field in ("cargo", "empresa", "url_original", "fecha_publicacion", "fecha_descubrimiento"):
+        for field in ("cargo", "empresa", "url_original", "fecha_descubrimiento"):
             if not isinstance(offer.get(field), str) or not offer[field].strip():
                 raise ValueError("missing_" + field)
         if len(offer["cargo"]) < 5 or len(offer["empresa"]) < 2:
@@ -57,14 +59,17 @@ def prepare(payload: dict, index: dict, day: str | None = None):
         offer["comunas"] = list(dict.fromkeys(ALIASES.get(p, p) for p in places))
         if any(p not in COMMUNES for p in offer["comunas"]):
             raise ValueError("outside_territory")
-        for field in ("fecha_publicacion", "fecha_descubrimiento"):
+        if offer.get("fecha_publicacion") is None:
+            if offer.get("vigencia_fuente") != "postulacion_abierta_verificada" or not offer.get("fecha_verificacion"):
+                raise ValueError("undated_requires_fresh_verified_open_source")
+        for field in (("fecha_publicacion", "fecha_descubrimiento") if offer.get("fecha_publicacion") else ("fecha_descubrimiento",)):
             try:
                 parsed_date = date.fromisoformat(offer[field])
             except (ValueError, TypeError):
                 raise ValueError("invalid_" + field)
             if parsed_date > datetime.now(timezone.utc).date():
                 raise ValueError("future_" + field)
-        if date.fromisoformat(offer["fecha_descubrimiento"]) < date.fromisoformat(offer["fecha_publicacion"]):
+        if offer["fecha_publicacion"] is not None and date.fromisoformat(offer["fecha_descubrimiento"]) < date.fromisoformat(offer["fecha_publicacion"]):
             raise ValueError("discovery_before_publication")
         if offer.get("fecha_cierre"):
             try:
@@ -86,7 +91,8 @@ def prepare(payload: dict, index: dict, day: str | None = None):
     updated = {**index, "batches": [*index["batches"],
                 {"batch_id": batch_id, "file": relative, "count": len(offers)}],
                "seen_offer_ids": sorted(prior | unique),
-               "seen_url_hashes": sorted(set(index.get("seen_url_hashes", [])) | {x["hash_url_sha256"] for x in offers})}
+               "seen_url_hashes": sorted(set(index.get("seen_url_hashes", [])) | {x["hash_url_sha256"] for x in offers}),
+               "seen_source_identities": sorted(set(index.get("seen_source_identities", [])) | {source_identity(x["url_original"]) for x in offers})}
     return relative, batch, updated
 
 def main():

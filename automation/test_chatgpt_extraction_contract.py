@@ -63,6 +63,24 @@ class StrictExtractionTest(unittest.TestCase):
             validate_offer(offer(fecha_cierre="2026-11-12"),today=TODAY)
         with self.assertRaisesRegex(ValueError,"future_date"):
             validate_offer(offer(fecha_publicacion="2026-11-14"),today=TODAY)
+    def test_stable_chiletrabajos_identity_blocks_slug_duplicate(self):
+        first=offer(url_original="https://chiletrabajos.cl/trabajo/puesto-3923619")
+        second=offer(id_fuente="cg_"+"b"*20,
+                     url_original="https://www.chiletrabajos.cl/trabajo/3923619")
+        with self.assertRaisesRegex(ValueError,"duplicate_original_source_identity"):
+            validate_batch([first,second],today=TODAY)
+
+    def test_false_victoria_in_northern_mine_or_retail_brand(self):
+        for location in ("Faena Nueva Victoria Tarapacá","Tienda Victoria's Secret"):
+            with self.subTest(location=location),self.assertRaisesRegex(ValueError,"territory_not_evidenced"):
+                validate_offer(offer(comunas=["Victoria"],
+                                     ubicacion_trabajo=location),today=TODAY)
+
+    def test_cohigue_alias_normalizes_to_negrete(self):
+        row=validate_offer(offer(comunas=["Cohigue"],ubicacion_trabajo="Faena Cohigue"),
+                           today=TODAY)
+        self.assertEqual(row["comunas"],["Negrete"])
+
     def test_unknown_modality_rejected(self):
         with self.assertRaisesRegex(ValueError,"invalid_modalidad"):
             validate_offer(offer(modalidad="quizas"),today=TODAY)

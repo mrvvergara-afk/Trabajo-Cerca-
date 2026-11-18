@@ -242,7 +242,18 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
   const previous = (await db.list<Stored>(table,{ limit:2 })).items;
   if (previous.length>1 || previous[0] && previous[0].externalIdentity!==identity) throw new Error('Public identity conflict; preserve history');
   const old = previous[0], { id:_id,...fields } = old || {};
-  const record = { ...fields,...verifiedPublicRecord(offer,now),createdAt:old?.createdAt || new Date(now).toISOString(),
+  const verifiedInput=verifiedPublicRecord(offer,now);
+  const priorProof=old?.workLocationEvidence as {method?:string;literal?:string}|undefined;
+  const preserveOriginalWorksite=old?.externalIdentity===identity &&
+    old?.active===true && old?.verified===true &&
+    ['approved_chatgpt_original_worksite','audited_original_worksite'].includes(String(priorProof?.method||'')) &&
+    Array.isArray(old?.workCommunes) && old.workCommunes.length>0;
+  const record = { ...fields,...verifiedInput,
+    ...(preserveOriginalWorksite?{
+      workCommunes:old!.workCommunes,workLocation:old!.workLocation,
+      workLocationEvidence:old!.workLocationEvidence,secondaryMarket:false,
+    }:{}),
+    createdAt:old?.createdAt || new Date(now).toISOString(),
     externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString() };
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;

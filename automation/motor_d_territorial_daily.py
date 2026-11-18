@@ -242,6 +242,19 @@ def links_from(soup,base,limit=35):
         output.setdefault(url,(title,listing_state))
     found=[(url,title,state) for url,(title,state) in output.items()]
     return found[:limit] if limit is not None else found
+def genuine_worksite_commune_mention(clause, commune, match):
+    """Reject names that are not the commune of Victoria in Malleco."""
+    if commune != "Victoria":
+        return True
+    before = clause[:match.start()]
+    after = clause[match.end():]
+    # \"Nueva Victoria\" is a mining site in northern Chile.
+    # \"Victoria's Secret\" is a retail brand, not a worksite.
+    return not (
+        re.search(r"\bnueva\s+$", before) or
+        re.match(r"\s*['’´]?s\s+secret\b", after, re.I)
+    )
+
 # Solo el texto explicito de la oferta puede establecer empresa y lugar de trabajo.
 # La comuna de la fuente municipal NO equivale a la comuna del puesto.
 def explicit_work_commune(body):
@@ -265,7 +278,7 @@ def explicit_work_commune(body):
             matches=[]
             for name,commune in places.items():
                 match=re.search(r"(?<!\w)"+re.escape(name)+r"(?!\w)",clause)
-                if match:
+                if match and genuine_worksite_commune_mention(clause, commune, match):
                     matches.append((match.start(),-len(name),commune))
             if matches:
                 return min(matches)[2]
@@ -348,7 +361,8 @@ def chiletrabajos_metadata(soup, title, url):
     if match:
         location=fold(match.group(1))
         for place in COMMUNES:
-            if re.search(r"(?<!\w)"+re.escape(fold(place))+r"(?!\w)",location):
+            location_match=re.search(r"(?<!\w)"+re.escape(fold(place))+r"(?!\w)",location)
+            if location_match and genuine_worksite_commune_mention(location, place, location_match):
                 city=place
                 break
     # The portal's posting city may be a recruitment address, not the worksite.
@@ -364,7 +378,8 @@ def chiletrabajos_metadata(soup, title, url):
         # the job description omits the execution site.
         city=None
     expiry=re.search(r"\bExpira\s+(20\d{2}-\d{2}-\d{2})\b",text,re.I)
-    closed=bool(expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
+    closed=bool((expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
+                or re.search(r"Este anuncio ha expirado o ha sido desactivado por el empleador",text,re.I))
     application=bool(re.search(r"\bPostular\b|\benv[ií]a\s+tu\s+curr[ií]culum\b|\benv[ií]a\s+tu\s+cv\b",text,re.I))
     return {"employer":employer if employer and len(employer)<=140 else None,
             "work_commune":city,"application_evidence":application,"source_closed":closed,
@@ -773,6 +788,19 @@ def inspect(seed):
     except Exception as exc:
         out["status"]="processing_error";out["errors"].append(type(exc).__name__)
     return out
+def candidate_evidence_rank(item):
+    """Prefer a later fully confirmed original page over an earlier fallback."""
+    return (
+        item.get("http")==200,
+        item.get("evidence")=="individual_page_with_job_terms",
+        item.get("source_commune_not_confirmed") is False,
+        bool(item.get("explicit_worksite_commune")),
+        bool(item.get("application_evidence") is True),
+        bool(item.get("date_source")),
+        bool(item.get("deadline")),
+    )
+
+
 def main():
     ROOT.mkdir(parents=True,exist_ok=True)
     # Every source registered in both catalogs is attempted on every cycle.
@@ -890,7 +918,9 @@ def main():
                     source=row["source"],commune=row["commune"]))
     unique={}
     for item in candidates:
-        unique.setdefault(item["id"],item)
+        previous=unique.get(item["id"])
+        if previous is None or candidate_evidence_rank(item)>candidate_evidence_rank(previous):
+            unique[item["id"]]=item
     # Diff persistente: contabiliza solo identidades nuevas respecto al inventario de GitHub.
     state_file=ROOT/"territorial_state.json"
     try:

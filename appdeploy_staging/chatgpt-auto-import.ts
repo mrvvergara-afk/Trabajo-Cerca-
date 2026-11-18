@@ -7,7 +7,7 @@ import {readPublicFeedPage} from './public-feed';
 const REPO='mrvvergara-afk/Trabajo-Cerca-';
 const ROOT='automation/chatgpt_ready/';
 const INDEX=ROOT+'index.json';
-type Result={id:string;status:string;internalId?:string;existingId?:string};
+type Result={id:string;status:string;internalId?:string;existingId?:string;expectedWorkCommunes?:string[]};
 type Receipt={id:string;batchId:string;status:string;results:Result[];newCount:number;published:number;at:string;checkedAt?:string};
 
 async function load(path:string,token:string){
@@ -70,9 +70,9 @@ export async function chatgptAutoImportHandler(){
          new Set(results.map(x=>x.id)).size!==offers.length||results.some(x=>!expected.has(x.id)))
         return result('chatgpt_receipt_mismatch',{batchId});
       const allowed=new Set(['direct_record_queued_for_public_projection','already_published',
-        'already_imported_id','expired','review_expired']);
+        'already_imported_id','expired','review_expired','territory_reconciled']);
       if(results.some(x=>!allowed.has(x.status)))return result('chatgpt_unexpected_import_result',{batchId});
-      const newCount=results.filter(x=>x.status==='direct_record_queued_for_public_projection').length;
+      const newCount=results.filter(x=>x.status==='direct_record_queued_for_public_projection'||x.status==='territory_reconciled').length;
       const receipt:Receipt={id:batchId,batchId,status:newCount?'awaiting_public_feed':'processed_without_new_publications',
         results,newCount,published:0,at:new Date().toISOString()};
       try{
@@ -84,7 +84,25 @@ export async function chatgptAutoImportHandler(){
       }
       return result('chatgpt_imported_waiting_for_feed',{batchId,newCount,duplicates:results.length-newCount});
     }
-    return result('no_unprocessed_chatgpt_batches',{indexedBatches:idx.batches.length,processed});
+    const latestBatch = (idx.batches as Array<Record<string,unknown>>)
+      .map(entry => String(entry.batch_id || ''))
+      .sort()
+      .at(-1) || '';
+    const latestBatchDate = /^chatgpt-\d{8}-[a-f0-9]{18}$/.test(latestBatch)
+      ? latestBatch.slice(8,12) + '-' + latestBatch.slice(12,14) + '-' + latestBatch.slice(14,16)
+      : null;
+    const lastBatchAgeHours = latestBatchDate
+      ? Math.max(0, Math.floor((Date.now() - Date.parse(latestBatchDate + 'T23:59:59-03:00')) / 3600000))
+      : null;
+    const producerStale = lastBatchAgeHours === null || lastBatchAgeHours >= 24;
+    return result(producerStale ? 'producer_stale_no_new_batches' : 'no_unprocessed_chatgpt_batches', {
+      indexedBatches:idx.batches.length,
+      processed,
+      latestBatchDate,
+      lastBatchAgeHours,
+      producerStale,
+      actionRequired:producerStale ? 'check_scheduled_chatgpt_producer' : null,
+    });
   }catch(cause){
     return result('chatgpt_bridge_error',{error:String(cause).slice(0,180)});
   }
@@ -105,6 +123,7 @@ export async function confirmChatGPTPublications(){
     if(!receiptsComplete)return {status:'receipts_incomplete',checked:0,published:0};
     if(!pending.length)return {status:'idle',checked:0,published:0};
     const ids=new Set<string>();
+    const workById=new Map<string,string[]>();
     let cursor:string|undefined,complete=false,total=0;
     const seen=new Set<string>();
     for(let n=0;n<100;n++){
@@ -112,7 +131,10 @@ export async function confirmChatGPTPublications(){
       if(!page||('feedRebuilding' in page && page.feedRebuilding===true)||('degraded' in page && page.degraded===true))return {status:'feed_unavailable',checked:0,published:0};
       if(!Array.isArray(page.items))return {status:'feed_invalid_items',checked:0,published:0};
       total+=page.items.length;
-      for(const item of page.items)ids.add(String(item.id));
+      for(const item of page.items){
+        const id=String(item.id);ids.add(id);
+        workById.set(id,Array.isArray(item.workCommunes)?item.workCommunes as string[]:[]);
+      }
       if(!page.nextCursor){complete=total>=Number(page.totalJobOffers||0);break;}
       if(seen.has(page.nextCursor))break;
       seen.add(page.nextCursor);cursor=page.nextCursor;
@@ -120,8 +142,14 @@ export async function confirmChatGPTPublications(){
     if(!complete)return {status:'feed_incomplete',checked:0,published:0};
     let published=0;
     for(const receipt of pending.slice(0,12)){
-      const newer=receipt.results.filter(x=>x.status==='direct_record_queued_for_public_projection');
-      const count=newer.filter(x=>ids.has(x.internalId||('chatgpt_'+x.id))).length;
+      const newer=receipt.results.filter(x=>x.status==='direct_record_queued_for_public_projection'||x.status==='territory_reconciled');
+      const count=newer.filter(x=>{
+        const key=x.internalId||('chatgpt_'+x.id);
+        if(!ids.has(key))return false;
+        if(!x.expectedWorkCommunes?.length)return true;
+        const sites=workById.get(key)||[];
+        return x.expectedWorkCommunes.every(site=>sites.includes(site));
+      }).length;
       await db.tx.update('chatgpt_import_receipts',[{id:receipt.id,record:{
         ...receipt,published:count,status:count===newer.length?'published':'awaiting_public_feed',
         checkedAt:new Date().toISOString()

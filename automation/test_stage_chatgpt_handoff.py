@@ -44,6 +44,28 @@ class TestChatGPTHandoff(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "outside_territory"):
             prepare(p, index(), day="20261113")
 
+    def test_recent_open_official_source_without_publication_date_is_staged(self):
+        from datetime import datetime,timezone
+        day=datetime.now(timezone.utc).date().isoformat()
+        p=payload()
+        p["offers"][0]["fecha_publicacion"]=None
+        p["offers"][0]["fecha_descubrimiento"]=day
+        p["offers"][0]["vigencia_fuente"]="postulacion_abierta_verificada"
+        p["offers"][0]["fecha_verificacion"]=day
+        _,batch,state=prepare(p,index(),day=day.replace("-",""))
+        self.assertIsNone(batch["offers"][0]["fecha_publicacion"])
+        self.assertEqual(batch["offers"][0]["vigencia_fuente"],"postulacion_abierta_verificada")
+        self.assertEqual(len(state["seen_source_identities"]),1)
+
+    def test_previous_source_identity_blocks_new_slug(self):
+        from automation.chatgpt_extraction_contract import source_identity
+        p=payload()
+        p["offers"][0]["url_original"]="https://chiletrabajos.cl/trabajo/puesto-3923619"
+        old=index()
+        old["seen_source_identities"]=[source_identity("https://www.chiletrabajos.cl/trabajo/3923619")]
+        with self.assertRaisesRegex(ValueError,"duplicate_original_source_identity"):
+            prepare(p,old,day="20261113")
+
     def test_no_fabricated_dates(self):
         p = payload()
         p["offers"][0].pop("fecha_publicacion")

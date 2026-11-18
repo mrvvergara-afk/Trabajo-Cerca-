@@ -3,11 +3,15 @@ import {updateCommercialCampaignDetails} from './commercial-editor';
 import {withSecurityHeaders} from './security-headers';
 import {COMMERCIAL_PLACES} from '../shared/commercial-policy';
 import {ownedPublicationPatch} from '../shared/owned-publication';
+import { ownerTokenDigest, mayManagePublication } from './owner-authorization';
 import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, decideAdvertiserLead, commercialAdmin, readCommercialConfiguration, commercialCampaigns, readCommercialCampaigns, requestCommercialExpansion, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
+import { listLocalDirectory, createLocalDirectory, localDirectoryContact, localDirectoryRemove, localDirectoryStatus, submitLocalReview, reportLocalDirectory, adminLocalQueue, adminLocalDecision, adminApproveLocalReview, adminResolveLocalReport, publicLocalDirectoryEntry, myLocalDirectoryEntries, removeLocalDirectoryByEmail } from './local-directory';
 import { adminBackupPage } from './admin-backup';
 import { directChatGPTImport, revalidateOfficialMunicipalOpenOffers } from './chatgpt-direct-import';
 import { motorDAutoImportHandler, confirmMotorDPublications } from './motor-d-auto-import';
+import {chatgptAutoImportHandler, confirmChatGPTPublications} from './chatgpt-auto-import';
+import { repairApprovedTerritoriesOnce } from './territory-repair';
 export { motorDAutoImportHandler };
 import { importReview, listReview, decideReview } from './radar-review-inbox';
 import {importMotorCGitHubOidc} from './motor-c-github-import';
@@ -15,6 +19,7 @@ import { checkOneReview } from './radar-review-check';
 import { enqueueAdminReviewedOffer, readAdminReviewPublicationStatus } from './radar-review-queue';
 import { confirmedOfferDeadline, offerRetentionReason, offerRecheckDue } from './offer-retention';
 import { advancePublicFeed, readPublicFeedPage, readStagedPublicFeedPage, readPublicFeedItem, readPublicFeedSummary, publicFeedProgress, registerPublicFeedChange, trackedFeedAdd, trackedFeedUpdate, trackedFeedDelete } from './public-feed';
+import { readCachedPublicPage } from './public-feed-http-cache';
 import { isOriginalVerificationSlot } from './verification-schedule';
 import { readLocalSourceEvidence } from './local-source-evidence';
 import { captionSocialFinding, socialPosterFinding, originalSocialDate, prepareSocialEvidence, socialSourceDate, socialVerificationBlock, sameSocialPost, type SocialEvidence } from './social-evidence';
@@ -133,6 +138,7 @@ type ListingRecord = {
   contact?: string;
   contactLabel?: string;
   ownerToken?: string;
+  ownerHash?: string;
   socialEvidence?: SocialEvidence;
   sourceValidThrough?:string | null;
   validityMethod?:string;
@@ -682,7 +688,7 @@ function isCurrentlyActive(item: ListingRecord) {
 }
 
 function publicRecord<T extends ListingRecord & { id: string }>(item: T) {
-  const { ownerToken: _ownerToken, contact, evidenceImagePath: _evidenceImagePath, socialEvidence: _socialEvidence, ...safe } = item;
+  const { ownerToken: _ownerToken, ownerHash: _ownerHash, contact, evidenceImagePath: _evidenceImagePath, socialEvidence: _socialEvidence, ...safe } = item;
   const projected={...safe} as Record<string,unknown>;
   for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof','adminVerificationEvidence','adminVerificationAttempt']) delete projected[field];
   return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) };
@@ -916,6 +922,10 @@ function feedRefreshAt(item:Record<string, unknown>) {
   if (item.validityMethod==='municipal_open_status') {
     const evidenceUntil=Date.parse(String(item.municipalOpenEvidenceValidUntil||''));
     if (Number.isFinite(evidenceUntil)) candidates.push(evidenceUntil+1);
+  }
+  if(item.validityMethod==='verified_open_official_source'){
+    const evidenceUntil=Date.parse(String(item.openOfficialEvidenceValidUntil||''));
+    if(Number.isFinite(evidenceUntil))candidates.push(evidenceUntil+1);
   }
   // Legacy internalVisibilityUntil is a review reminder, never a visibility deadline.
   const checked=Date.parse(String(item.lastVerifiedAt || item.externalVerifiedAt || item.verifiedAt || ''));
@@ -2967,6 +2977,10 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   if(event?.type==='cron' && event.name==='verify-publish'){
     try { await motorDAutoImportHandler(); }
     catch(cause){console.warn('MOTOR_D_BRIDGE_HOOK_ERROR '+String(cause).slice(0,150));}
+    try { await chatgptAutoImportHandler(); }
+    catch(cause){console.warn('CHATGPT_BRIDGE_HOOK_ERROR '+String(cause).slice(0,150));}
+    try { await repairApprovedTerritoriesOnce(); }
+    catch(cause){console.warn('WORKSITE_SAFE_REPAIR_ERROR '+String(cause).slice(0,180));}
     // Verified municipal open notices renew daily. A confirmed CLOSED index
     // removes them; a blocked source does not masquerade as closure.
     try { console.warn('MOTOR_D_MUNICIPAL_RECHECK '+JSON.stringify(
@@ -2985,6 +2999,8 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   const receipts={status:'legacy_receipts_frozen',published:0};
   const motorDConfirm=await confirmMotorDPublications();
   console.warn('MOTOR_D_PUBLICATION_CONFIRM '+JSON.stringify(motorDConfirm));
+  const chatgptConfirm=await confirmChatGPTPublications();
+  console.warn('CHATGPT_PUBLICATION_CONFIRM '+JSON.stringify(chatgptConfirm));
   const adminPublications=isAdminVerificationSlot(event) ? await confirmAdminReviewPublications() : undefined;
   console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({documents,providerSlot,history,result,ingestion,receipts,administrative,adminPublications,publicJobs:feed.totalVerifiedJobOffers,feedRebuilding:feed.rebuilding}));
   if (documentError) throw documentError;
@@ -3493,7 +3509,24 @@ const applicationRouter = router({
 
   'POST /api/radar/social-collect': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => error('Operación manual deshabilitada durante la reparación de seguridad.',403)],
 
+  'GET /api/local-directory': [async ({ query }) => listLocalDirectory(query)],
+  'GET /api/local-directory/mine': [requireAuth(),async ({user})=>myLocalDirectoryEntries(user?.email||'')],
+  'GET /api/local-directory/:id': [async ({params})=>publicLocalDirectoryEntry(params.id)],
+  'POST /api/local-directory/:id/remove-by-email': [requireAuth(),async ({params,user})=>removeLocalDirectoryByEmail(params.id,user?.email||'')],
+  'POST /api/local-directory': [publicQuota('local-directory',3,900000,30), async ({ body }) => createLocalDirectory(body)],
+  'POST /api/local-directory/:id/contact': [publicQuota('contact',30,600000,300), async ({ params }) => localDirectoryContact(params.id)],
+  'POST /api/local-directory/:id/reviews': [publicQuota('local-review',4,3600000,25), requireAuth(), async ({ params, body, user }) => submitLocalReview(params.id,body,user?.email||'')],
+  'POST /api/local-directory/:id/report': [publicQuota('local-report',4,3600000,25), async ({ params, body }) => reportLocalDirectory(params.id,body)],
+  'POST /api/local-directory/:id/delete': [publicQuota('local-remove',4,600000,25), async ({ params, body }) => localDirectoryRemove(params.id,body)],
+  'POST /api/local-directory/:id/status': [publicQuota('local-receipt',15,60000,120), async ({ params, body }) => localDirectoryStatus(params.id,body)],
+  'GET /api/admin/local-directory': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => adminLocalQueue()],
+  'POST /api/admin/local-directory/:id/approve': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminLocalDecision(params.id,'approved')],
+  'POST /api/admin/local-directory/:id/hide': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminLocalDecision(params.id,'hidden')],
+  'POST /api/admin/local-directory/reviews/:id/approve': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminApproveLocalReview(params.id)],
+  'POST /api/admin/local-directory/reports/:id/resolve': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async ({ params }) => adminResolveLocalReport(params.id)],
+
   'POST /api/analytics': [async ({ body }) => {
+    if ((body as Record<string, unknown> | null)?.consent !== true) return json({received:false,disabled:true,reason:'consent_required'},202);
     if (!SECURITY_POLICY.externalAnalytics) return json({received:false,disabled:true,reason:'security_policy_disabled'},202);
     const input = (body ?? {}) as Record<string, unknown>;
     const event = normalizeText(input.event).slice(0, 80);
@@ -3544,7 +3577,7 @@ const applicationRouter = router({
   'GET /api/listings': [async ({ query }) => {
     let feed;
     try {
-      feed = await readPublicFeedPage(query.cursor);
+      feed = await readCachedPublicPage(query.cursor, query.fresh === '1');
     } catch (cause) {
       if (cause instanceof Error && cause.message === 'Feed cursor invalid') return error('Cursor de paginación no válido.', 400);
       throw cause;
@@ -3576,9 +3609,28 @@ const applicationRouter = router({
         communeStats:{},kindStats:{jobs:visible.length,people:0,needs:0,services:0},
         hasMore:false,degraded:true,feedRebuilding:true,feedState:'degraded_emergency_subset',totalsProvisional:true});
     }
+    // Never CDN-cache a partial or emergency-stale result as authoritative.
+    if ('degraded' in feed && feed.degraded === true) return json(feed);
     return query.fresh === '1' ? json(feed) : cacheable(feed, 60);
   }],
 
+  // Read-only, paginated public identities for independent ChatGPT reconciliation.
+  'GET /api/listings/identities': [async ({query}) => {
+    let page;
+    try { page=await readPublicFeedPage(query.cursor); }
+    catch(cause) {
+      if(cause instanceof Error && cause.message==='Feed cursor invalid')return error('Cursor de paginación no válido.',400);
+      return error('El catálogo completo no está disponible para conciliación.',503);
+    }
+    if(!page || ('degraded' in page && page.degraded===true) ||
+       ('feedRebuilding' in page && page.feedRebuilding===true))
+      return error('El catálogo está en reconstrucción; reintentar sin importar.',503);
+    return json({items:(page.items as Record<string,unknown>[]).filter(x=>x.kind==='job_offer').map(x=>({
+      id:x.id,title:x.title,company:x.company,url:x.url,
+      workCommunes:x.workCommunes,urlHashSha256:x.urlHashSha256
+    })),nextCursor:page.nextCursor??null,hasMore:Boolean(page.nextCursor),
+      totalItems:page.totalItems,complete:!page.nextCursor,provisional:false});
+  }],
   'GET /api/listings/:id': [async ({params})=>{const item=await readPublicFeedItem(params.id);return item?json({item}):error('Esta publicación ya no está disponible en el feed público.',404);}],
 
   'GET /api/ops/summary': [async () => {
@@ -3661,6 +3713,10 @@ const applicationRouter = router({
     const presence = normalizeText(input.presence).slice(0, 80);
     const contact = normalizeText(input.contact).slice(0, 120);
     const note = normalizeText(input.note).slice(0, 600);
+    const allowed=['search','listing','featured','form'];
+    const slots=Array.isArray(input.placementsRequested)?input.placementsRequested.filter((v):v is string=>typeof v==='string'&&allowed.includes(v)):['search'];
+    if(!slots.length||slots.length>4)return error('Selecciona un espacio.',400);
+    const headline=normalizeText(input.headlineRequested).slice(0,130);
     const consent = input.consent === true;
     if (!businessName || !commune || !category || !contact) return error('Completa negocio, comuna, rubro y contacto.', 400);
     if (!COMMERCIAL_PLACES.includes(commune)) return error('Selecciona una comuna de Trabajo Cerca.', 400);
@@ -3675,7 +3731,7 @@ const applicationRouter = router({
       if(leadTokens.has(leadCursor)||page===199)return error('No se completó la comprobación comercial. Reintenta más tarde.',503);leadTokens.add(leadCursor);
     }
     if (duplicate) return json({ received:true, duplicate:true }, 202);
-    const record: AdvertiserLead = { businessName, commune, category, presence, contact, note, source:'self_service', status:'new', createdAt:new Date().toISOString() };
+    const record: AdvertiserLead = { businessName, commune, category, presence, contact, note:('[Espacios: '+slots.join(', ')+'] '+(headline?'[Texto: '+headline+'] ':'')+note).slice(0,600), source:'self_service', status:'new', createdAt:new Date().toISOString() };
     const [id] = await db.add('growth_advertiser_leads', [{...record, advertisingConsent:true, consentAcceptedAt:new Date().toISOString(), trialState:'pending_review', houseAttribution:input.houseAttribution && typeof input.houseAttribution === 'object' ? {campaignId:String((input.houseAttribution as Record<string,unknown>).campaignId||'').slice(0,60),creativeId:String((input.houseAttribution as Record<string,unknown>).creativeId||'').slice(0,60)} : null}]);
     if (!id) return error('No se pudo registrar tu interés.', 500);
     await houseConversion(input.houseAttribution,'advertiser_captured',id);
@@ -3874,7 +3930,8 @@ const applicationRouter = router({
       recruitmentCommunes: extractCommunes((zones.length ? zones : [workLocation]).join(' ')),
       area: defaultArea,
       status: review ? 'En revisión' : 'Activa',
-      date: 'Publicado hoy',
+      date: new Intl.DateTimeFormat('es-CL',{timeZone:'America/Santiago',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(createdAt)),
+      firstPublishedAt: createdAt,
       expiresAt,
       apply: 'Sencilla',
       source: review ? `${sourceName} · aporte al Radar` : 'Publicación directa en Trabajo Cerca',
@@ -3889,7 +3946,7 @@ const applicationRouter = router({
       active: true,
       createdAt,
       contact: review ? undefined : contact,
-      ownerToken,
+      ownerHash: ownerTokenDigest(ownerToken),
     };
 
     const [id] = await trackedFeedAdd('community_posts', [record]);
@@ -3922,7 +3979,7 @@ const applicationRouter = router({
     if (!supplied) return error('Falta autorización para cerrar la publicación.', 403);
     const [record] = await db.get<ListingRecord>('community_posts', [params.id]);
     if (!record) return error('Publicación no encontrada.', 404);
-    if (record.ownerToken !== supplied) return error('No puedes cerrar esta publicación desde este dispositivo.', 403);
+    if (!mayManagePublication(record,supplied)) return error('No puedes cerrar esta publicación desde este dispositivo.', 403);
     const [ok] = await trackedFeedUpdate('community_posts', [{
       id: params.id,
       record: { ...record, active: false, status: 'Finalizada' },
@@ -3937,7 +3994,11 @@ const applicationRouter = router({
     const [record]=await db.get<ListingRecord>('community_posts',[params.id],{consistent:true});
     if(!record)return error('Publicación no encontrada.',404);
     let patch:ReturnType<typeof ownedPublicationPatch>;
-    try{patch=ownedPublicationPatch(record,input);}catch{return error('No se autorizaron los cambios o faltan datos válidos.',403);}
+    // Shared publication editor keeps its existing contract; the plaintext owner credential lives only in this request.
+    try{
+      if(!mayManagePublication(record,input.ownerToken))throw Error('owner_denied');
+      patch=ownedPublicationPatch({...record,ownerToken:input.ownerToken as string},input);
+    }catch{return error('No se autorizaron los cambios o faltan datos válidos.',403);}
     if(!moderate([patch.title,patch.note,patch.contact].join(' ')))return error('Los cambios requieren revisión.',400);
     const [ok]=await trackedFeedUpdate('community_posts',[{id:params.id,record:{...record,...patch,workCommunes:extractCommunes(patch.workLocation)}}]);
     if(!ok)return error('No se pudo guardar la publicación.',500);
@@ -3950,7 +4011,7 @@ const applicationRouter = router({
     if (!supplied) return error('Falta autorización para eliminar la publicación.', 403);
     const [record] = await db.get<ListingRecord>('community_posts', [params.id]);
     if (!record) return error('Publicación no encontrada.', 404);
-    if (record.ownerToken !== supplied) return error('No puedes eliminar esta publicación desde este dispositivo.', 403);
+    if (!mayManagePublication(record,supplied)) return error('No puedes eliminar esta publicación desde este dispositivo.', 403);
     const [ok] = await trackedFeedDelete('community_posts', [params.id]);
     if (!ok) return error('No se pudo eliminar la publicación.', 500);
     await rebuildPublicFeed();

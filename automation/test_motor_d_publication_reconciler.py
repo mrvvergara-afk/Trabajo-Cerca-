@@ -118,6 +118,24 @@ class PublicReconciliationTests(unittest.TestCase):
         self.assertEqual(snapshot["state"],"clear")
         self.assertEqual(snapshot["historical_missing_from_catalog"],0)
 
+    def test_source_url_present_but_wrong_commune_is_not_clean(self):
+        wrong={**feed(self.first),"workCommunes":["Nacimiento"]}
+        confirmation,updated=self.compute([wrong,feed(self.second)],history={"items":[]})
+        self.assertEqual(confirmation["source_confirmed"],2)
+        self.assertEqual(confirmation["territory_mismatches_count"],1)
+        self.assertEqual(confirmation["territory_mismatches"][0]["catalog_work_communes"],["Nacimiento"])
+        self.assertEqual(confirmation["not_found"],0)
+        self.assertEqual(updated["state"],"needs_territory_repair")
+
+    def test_expired_batch_missing_not_counted_as_active_import_failure(self):
+        old={**self.first,"fecha_cierre":"2026-11-11"}
+        self.batches[NEW]=[old]
+        result,updated=self.compute([],history={"items":[]})
+        self.assertEqual(result["not_found"],0)
+        self.assertEqual(result["expired_not_expected"],1)
+        self.assertEqual(result["unresolved_active_batches"],[])
+        self.assertEqual(updated["state"],"clear")
+
 
 if __name__=="__main__":
     unittest.main()

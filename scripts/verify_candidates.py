@@ -20,7 +20,7 @@ OUT=Path('output')
 HIRING=re.compile(r'oferta laboral|postula|postulaci[oó]n|requisitos|descripci[oó]n del empleo|'
                   r'descripci[oó]n del trabajo|jornada|vacante|empleo',re.I)
 CLOSED=re.compile(r'oferta (?:expirada|finalizada|cerrada)|postulaci[oó]n(?:es)? '
-                  r'(?:cerrada|finalizada)|esta oferta ya no',re.I)
+                  r'(?:cerrada|finalizada)|esta oferta ya no|este anuncio ha expirado|desactivado por el empleador',re.I)
 ALIASES={'mininco':'Collipulli','coihue':'Negrete','coigue':'Negrete'}
 
 
@@ -31,7 +31,16 @@ def normalized(s):
 
 def communes(text):
     flat=normalized(text)
-    hits=[town for town in PLACES if re.search(r'\b'+re.escape(normalized(town))+r'\b',flat)]
+    hits=[]
+    for town in PLACES:
+        for match in re.finditer(r'\b'+re.escape(normalized(town))+r'\b',flat):
+            if town=="Victoria":
+                before=flat[:match.start()]
+                after=flat[match.end():].lstrip()
+                if re.search(r'\bnueva\s+\Z',before) or re.match(r"['’]?s\s+secret\b",after):
+                    continue
+            hits.append(town)
+            break
     for loc,town in ALIASES.items():
         if re.search(r'\b'+loc+r'\b',flat) and town not in hits:
             hits.append(town)
@@ -101,7 +110,41 @@ def check(item,reader=None):
     if not HIRING.search(body):
         return {'status':'pending','reason':'hiring_text_missing'}
     jobs=jsonld_jobs(raw)
+    today=dt.datetime.now(dt.timezone.utc).date()
+    for job in jobs:
+        deadline=job.get('deadline')
+        if isinstance(deadline,str) and re.match(r'^20\d{2}-\d{2}-\d{2}',deadline):
+            try:
+                if dt.date.fromisoformat(deadline[:10])<today:
+                    return {'status':'rejected','reason':'expired_source_deadline'}
+            except ValueError:
+                pass
     locations=list(dict.fromkeys(t for j in jobs for t in j['locations']))
+    # An individual worksite can contradict the portal's recruiting-office city.
+    # Motor D must re-read the original page before any publication.
+    flat=normalized(body)
+    cues=(
+        r'(?:lugar de trabajo|comuna de trabajo|ubicacion laboral|comuna de ejecucion|condiciones\s+lugar)\s*[:\-]\s*([^.;]{3,100})',
+        r'(?:obras? en ejecucion en|obras? ubicadas? en|a desarrollarse en|en la ciudad de|en la comuna de|para la localidad de|planta ubicada en)\s+([^.;]{3,100})',
+    )
+    works=[]
+    for cue in cues:
+        for match in re.finditer(cue,flat,re.I):
+            preceding=flat[max(0,match.start()-36):match.start()].split()
+            if any(word in preceding[-3:] for word in ("residencia","domicilio","rrhh","entrevista")):
+                continue
+            works.extend(communes(match.group(1)))
+    work=list(dict.fromkeys(works))
+    if len(work)==1:
+        return {'status':'review_ready','reason':'explicit_worksite_in_original_description',
+                'title':doc.title[:180], 'work_commune':work[0],
+                'locations_seen':locations,'url':final,
+                'date_source_hint':next((j.get('date_source') for j in jobs if j.get('date_source')),None),
+                'deadline_hint':next((j.get('deadline') for j in jobs if j.get('deadline')),None),
+                'note':'Original worksite overrides recruiting city; Motor D must confirm independently.'}
+    if len(work)>1:
+        return {'status':'pending','reason':'multiple_explicit_worksites',
+                'locations_seen':work,'title':doc.title[:180]}
     if len(locations)==1:
         job=next((j for j in jobs if locations[0] in j['locations']),{})
         return {'status':'review_ready','reason':'jobposting_structured_location',

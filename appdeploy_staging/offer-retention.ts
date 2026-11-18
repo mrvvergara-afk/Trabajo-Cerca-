@@ -24,6 +24,13 @@ export function offerRetentionReason(item:Offer,now=Date.now()):string | null {
     if (!Number.isFinite(proofUntil) || now>proofUntil)
       return 'municipal_open_status_needs_fresh_evidence';
   }
+  // A fresh, independently verified OPEN application without original date
+  // receives a renewable visibility lease. It is not an employer deadline.
+  if(item.kind==='job_offer' && item.validityMethod==='verified_open_official_source'){
+    const proofUntil=Date.parse(String(item.openOfficialEvidenceValidUntil||''));
+    if(!Number.isFinite(proofUntil) || now>proofUntil)
+      return 'verified_open_official_source_needs_fresh_evidence';
+  }
   // Publication age is never proof of closure. Keep undated jobs visible
   // until an explicit employer deadline or a confirmed closure is recorded.
   if (item.kind==='job_offer' && (item.verified!==true || item.review===true)) return 'approval_or_quality_review_required';

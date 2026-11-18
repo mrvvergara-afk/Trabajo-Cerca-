@@ -246,7 +246,7 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
   const priorProof=old?.workLocationEvidence as {method?:string;literal?:string}|undefined;
   const preserveOriginalWorksite=old?.externalIdentity===identity &&
     old?.active===true && old?.verified===true &&
-    priorProof?.method==='approved_chatgpt_original_worksite' &&
+    ['approved_chatgpt_original_worksite','audited_original_worksite'].includes(String(priorProof?.method||'')) &&
     Array.isArray(old?.workCommunes) && old.workCommunes.length>0;
   const record = { ...fields,...verifiedInput,
     ...(preserveOriginalWorksite?{

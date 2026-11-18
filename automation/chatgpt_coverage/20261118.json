@@ -860,6 +860,222 @@
       "origin": "https://concepcion.cl/informacion-e-inscripciones-en-linea-omil/",
       "offers_found": 0,
       "reason": "Página pública leída; no se confirmó una oferta individual vigente de comuna objetivo"
+    },
+    {
+      "source_id": "linkedin-Angol",
+      "scan_wave": 2,
+      "status": "blocked",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso restringido o verificación antibot/JS requerida; no se eludió."
+    },
+    {
+      "source_id": "computrabajo-Collipulli",
+      "scan_wave": 2,
+      "status": "blocked",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-collipulli",
+      "offers_found": 0,
+      "reason": "Acceso restringido o verificación antibot/JS requerida; no se eludió."
+    },
+    {
+      "source_id": "indeed-Ercilla",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "trabajando-Ercilla",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/ercilla",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "chiletrabajos-Renaico",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "opcionempleo-Mininco",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-mininco.html",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "laborum-Nacimiento",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "linkedin-Negrete",
+      "scan_wave": 2,
+      "status": "blocked",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso restringido o verificación antibot/JS requerida; no se eludió."
+    },
+    {
+      "source_id": "computrabajo-Mulchén",
+      "scan_wave": 2,
+      "status": "blocked",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-mulchen",
+      "offers_found": 0,
+      "reason": "Acceso restringido o verificación antibot/JS requerida; no se eludió."
+    },
+    {
+      "source_id": "indeed-Los Sauces",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "trabajando-Los Sauces",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/los-sauces",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "chiletrabajos-Purén",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "opcionempleo-Traiguén",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "laborum-Lumaco",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "linkedin-Victoria",
+      "scan_wave": 2,
+      "status": "blocked",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso restringido o verificación antibot/JS requerida; no se eludió."
+    },
+    {
+      "source_id": "computrabajo-secondary-Los Ángeles",
+      "scan_wave": 2,
+      "status": "blocked",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-los-angeles",
+      "offers_found": 0,
+      "reason": "Acceso restringido o verificación antibot/JS requerida; no se eludió."
+    },
+    {
+      "source_id": "indeed-secondary-Temuco",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "trabajando-secondary-Temuco",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/temuco",
+      "offers_found": 0,
+      "reason": "URL no accesible al lector web; búsqueda indexada alternativa no acredita lectura directa de este endpoint."
+    },
+    {
+      "source_id": "omil-los-sauces",
+      "scan_wave": 2,
+      "status": "unsupported",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.munilossauces.cl/noticias",
+      "offers_found": 0,
+      "reason": "Página devolvió solo marcador Loading; no se pudo extraer contenido."
+    },
+    {
+      "source_id": "omil-collipulli",
+      "scan_wave": 2,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "offers_found": 0,
+      "reason": "Página de concursos legible; últimos llamados cerraron antes de noviembre 2026."
+    },
+    {
+      "source_id": "radio-nativa",
+      "scan_wave": 2,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.radionativa.cl/",
+      "offers_found": 0,
+      "reason": "Portada pública legible; no contiene oferta individual verificable."
+    },
+    {
+      "source_id": "radio-viaducto",
+      "scan_wave": 2,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://radioviaducto.cl/",
+      "offers_found": 0,
+      "reason": "Portada pública legible; noticias locales sin oferta laboral verificable."
+    },
+    {
+      "source_id": "registry-portal-empleo-biobio",
+      "scan_wave": 2,
+      "status": "unsupported",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://portalempleobiobio.cl/",
+      "offers_found": 0,
+      "reason": "HTML vacío en lector; no es lectura efectiva."
+    },
+    {
+      "source_id": "registry-omil-chillan-ofertas",
+      "scan_wave": 2,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "https://www.municipalidadchillan.cl/sitio/menu/tramites/ofertas-laborales.php",
+      "offers_found": 0,
+      "reason": "Página municipal legible; declara que no tiene ofertas; Chillán solo ciudad puente."
     }
   ],
   "discovery": [
@@ -997,6 +1213,51 @@
       "origin": "public_indexed_search",
       "offers_found": 0,
       "reason": "Búsqueda indexada pública exploratoria; no se acreditó cobertura integral del objetivo ni ficha nueva apta para publicar"
+    },
+    {
+      "source_id": "teleangol",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Se realizó búsqueda pública indexada por nombre/territorio; no se acreditó lectura integral ni oferta individual atribuible a este objetivo."
+    },
+    {
+      "source_id": "radio-montecarlo-angol",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Se realizó búsqueda pública indexada por nombre/territorio; no se acreditó lectura integral ni oferta individual atribuible a este objetivo."
+    },
+    {
+      "source_id": "millaray-collipulli",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Se realizó búsqueda pública indexada por nombre/territorio; no se acreditó lectura integral ni oferta individual atribuible a este objetivo."
+    },
+    {
+      "source_id": "radio-ercilla",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Se realizó búsqueda pública indexada por nombre/territorio; no se acreditó lectura integral ni oferta individual atribuible a este objetivo."
+    },
+    {
+      "source_id": "renaico-fm",
+      "scan_wave": 2,
+      "status": "failed",
+      "checked_at": "2026-11-18T19:37:10Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Se realizó búsqueda pública indexada por nombre/territorio; no se acreditó lectura integral ni oferta individual atribuible a este objetivo."
     }
   ],
   "publication_confirmed": 0,
@@ -1015,8 +1276,8 @@
       "commune": "Renaico",
       "source_url": "https://municipalidadrenaico.cl/concursos-publicos/",
       "batch_id": "chatgpt-20261118-9c58b885edd5c23c79",
-      "status": "backend_published_awaiting_fresh_public_identity_mirror",
-      "reason": "AppDeploy publicó 1 lote de 12 vacantes consolidadas; espejo GitHub aún 277 identidades, anterior a confirmación; no reenviar."
+      "status": "visible_in_public_identity_mirror",
+      "reason": "Identidad chatgpt_cg_c7d521f0c88ecb48d3e7 presente en espejo 279, visibleIn12Communes=true. NO reenviar."
     },
     {
       "title": "Ingeniero/a Procesos y Excelencia Sr",
@@ -1025,8 +1286,8 @@
       "location": "Planta Pacífico - Mininco",
       "url": "https://cl.linkedin.com/jobs/view/ingeniero-a-procesos-y-excelencia-sr-at-cmpc-4479050120",
       "discovered_at": "2026-11-18T15:42:40Z",
-      "reason": "Oferta individual visible en fuente pública, falta confirmar ATS oficial y conciliación fresca antes de lote",
-      "catalog_status": "catalog_unavailable"
+      "reason": "Conciliado con espejo vigente: ID d73ebbc0-c815-455d-b6ed-015e620cedf6; CMPC Collipulli/Mininco. NO reenviar.",
+      "catalog_status": "already_visible"
     },
     {
       "title": "Inspector/a Ambiental",
@@ -1037,16 +1298,26 @@
       "discovered_at": "2026-11-18T15:42:40Z",
       "reason": "Oferta individual reciente corroborada en perfil público CMPC; falta enlace ATS oficial y conciliación fresca",
       "catalog_status": "catalog_unavailable"
+    },
+    {
+      "title": "AYUDANTE REPROCESO",
+      "company": "CMPC",
+      "work_commune": "Nacimiento",
+      "location": "CMPC Maderas Planta Nacimiento",
+      "url": "https://cl.linkedin.com/jobs/view/ayudante-reproceso-at-cmpc-4473535815",
+      "discovered_at": "2026-11-18T19:37:10Z",
+      "reason": "Ficha pública individual legible; confirmar vigencia y ATS oficial, verificar identidad semántica y contrato antes de generar lote.",
+      "catalog_status": "pending_semantic_reconciliation"
     }
   ],
   "summary": {
-    "planned": 71,
-    "attempted": 71,
-    "effective_reads": 12,
-    "blocked": 10,
-    "failed": 44,
-    "unsupported": 5,
-    "discovery_attempted": 14,
+    "planned": 119,
+    "attempted": 119,
+    "effective_reads": 19,
+    "blocked": 22,
+    "failed": 71,
+    "unsupported": 7,
+    "discovery_attempted": 22,
     "confirmed_new_publications": 0,
     "backend_confirmed_new_publications": 1,
     "public_identity_verified_new_publications": 0,
@@ -1059,24 +1330,34 @@
       "discovery_attempted": 5,
       "publication_confirmed_new": 0
     },
-    "daily_recorded_sources": 95,
-    "daily_recorded_discovery": 17
+    "daily_recorded_sources": 119,
+    "daily_recorded_discovery": 22,
+    "wave2": {
+      "planned": 24,
+      "attempted": 24,
+      "effective_reads": 4,
+      "blocked": 6,
+      "failed": 12,
+      "unsupported": 2,
+      "discovery_attempted": 5,
+      "publication_confirmed_new": 0
+    }
   },
   "catalog_status": {
     "status": "fresh_mirror_valid",
-    "mirror_generated_at": "2026-11-18T13:22:02+00:00",
-    "jobIdentityCount": 277,
+    "mirror_generated_at": "2026-11-18T18:03:42+00:00",
+    "jobIdentityCount": 279,
     "complete": true,
     "reason": "Espejo validado en onda 0; API directa no disponible desde lector. Lote Renaico ya en índice pero no visible en espejo; no se reenvía.",
     "appdeploy_public_jobs_at_1220_utc": 278,
     "mirror_job_identities": 277,
-    "publication_reconciliation": "AppDeploy CHATGPT_PUBLICATION_CONFIRM checked=1 published=1 a las 11:35 UTC; falta comprobar identidad en espejo posterior a esa hora.",
-    "last_checked_at": "2026-11-18T15:42:40Z",
-    "mirror_job_identity_count": 278,
+    "publication_reconciliation": "Renaico visible y CMPC Procesos y Excelencia ya existente; no reenviar. Nuevos candidatos requieren validación semántica y/o ATS.",
+    "last_checked_at": "2026-11-18T19:37:10Z",
+    "mirror_job_identity_count": 279,
     "mirror_complete": true,
-    "mirror_stale": true,
+    "mirror_stale": false,
     "api_fallback": "blocked",
-    "publication_blocked": "catalog_unavailable",
+    "publication_blocked": null,
     "pending_new_candidates": 2,
     "renaico_visible_confirmed": true
   }

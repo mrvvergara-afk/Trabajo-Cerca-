@@ -918,6 +918,10 @@ function feedRefreshAt(item:Record<string, unknown>) {
     const evidenceUntil=Date.parse(String(item.municipalOpenEvidenceValidUntil||''));
     if (Number.isFinite(evidenceUntil)) candidates.push(evidenceUntil+1);
   }
+  if(item.validityMethod==='verified_open_official_source'){
+    const evidenceUntil=Date.parse(String(item.openOfficialEvidenceValidUntil||''));
+    if(Number.isFinite(evidenceUntil))candidates.push(evidenceUntil+1);
+  }
   // Legacy internalVisibilityUntil is a review reminder, never a visibility deadline.
   const checked=Date.parse(String(item.lastVerifiedAt || item.externalVerifiedAt || item.verifiedAt || ''));
   if (Number.isFinite(checked)) candidates.push(checked+86400000+1);

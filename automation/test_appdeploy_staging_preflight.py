@@ -81,7 +81,7 @@ class BackendPreflight(unittest.TestCase):
         self.assertNotIn("if(!stored){already++;}", self.bc)
 
     def test_feed_checks_leaf_before_serving(self):
-        position = self.feed.index("export async function readPublicFeedPage")
+        position = self.feed.index("async function readPublicFeedPageUncached")
         check = self.feed.index("Public feed page identity mismatch", position)
         serve = self.feed.index("return { ...summary, items:", position)
         self.assertLess(check, serve)

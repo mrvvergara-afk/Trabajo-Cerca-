@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-18",
+  "producer": "chatgpt_territorial",
+  "inventory_sha": "ba0b70bb97d7a14d8b97afdfb5540b2fb00a79b7",
+  "inventory_count": 143,
+  "discovery_target_count": 29,
+  "sources": [
+    {
+      "source_id": "opcionempleo-Angol",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "laborum-Collipulli",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "linkedin-Ercilla",
+      "scan_wave": 4,
+      "status": "unsupported",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso LinkedIn deshabilitado o JavaScript anti-bot"
+    },
+    {
+      "source_id": "computrabajo-Renaico",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-renaico",
+      "offers_found": 0,
+      "reason": "Acceso protegido o HTTP 429"
+    },
+    {
+      "source_id": "indeed-Mininco",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Mininco&fromage=45",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "trabajando-Mininco",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/mininco",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "chiletrabajos-Nacimiento",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "opcionempleo-Negrete",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-negrete.html",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "laborum-Mulchén",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "linkedin-Los Sauces",
+      "scan_wave": 4,
+      "status": "unsupported",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso LinkedIn deshabilitado o JavaScript anti-bot"
+    },
+    {
+      "source_id": "computrabajo-Purén",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-puren",
+      "offers_found": 0,
+      "reason": "Acceso protegido o HTTP 429"
+    },
+    {
+      "source_id": "indeed-Traiguén",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "trabajando-Traiguén",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/traiguen",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "chiletrabajos-Lumaco",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "opcionempleo-Victoria",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-victoria.html",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "laborum-secondary-Los Ángeles",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
+      "offers_found": 0,
+      "reason": "URL inaccesible mediante lector público"
+    },
+    {
+      "source_id": "linkedin-secondary-Temuco",
+      "scan_wave": 4,
+      "status": "unsupported",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso LinkedIn deshabilitado o JavaScript anti-bot"
+    },
+    {
+      "source_id": "hospital-angol-concursos",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://hospitalangol.cl/concursos/",
+      "offers_found": 0,
+      "reason": "Concursos internos antiguos; sin postulación pública vigente acreditada"
+    },
+    {
+      "source_id": "omil-renaico",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "offers_found": 4,
+      "reason": "Cuatro cargos municipales, doce vacantes; pendiente deduplicación por URL individual y confirmación de importación"
+    },
+    {
+      "source_id": "omil-puren-2026",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://munipuren.cl/llamados-a-concurso-2026/",
+      "offers_found": 0,
+      "reason": "Sin llamado noviembre verificable"
+    },
+    {
+      "source_id": "cmpc-empleo-trabajando",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://cmpc.trabajando.cl/",
+      "offers_found": 0,
+      "reason": "ATS accesible sin fichas extraíbles"
+    },
+    {
+      "source_id": "ssan-indice",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
+      "offers_found": 0,
+      "reason": "Cargos visibles fuera de comunas o en evaluación; no publicables"
+    },
+    {
+      "source_id": "registry-omil-los-angeles-ofertas",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://sites.google.com/losangeles.cl/omil-losangeles/ofertas-laborales",
+      "offers_found": 0,
+      "reason": "Página puente sin fichas individuales"
+    },
+    {
+      "source_id": "registry-radio-surena-collipulli",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "https://www.radiodelsur.cl/",
+      "offers_found": 0,
+      "reason": "Acceso protegido o HTTP 429"
+    }
+  ],
+  "discovery": [
+    {
+      "source_id": "concepcion-bridge",
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda indexada realizada sin evidencia suficiente de una vacante individual nueva atribuible a este objetivo"
+    },
+    {
+      "source_id": "trabajando",
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda indexada realizada sin evidencia suficiente de una vacante individual nueva atribuible a este objetivo"
+    },
+    {
+      "source_id": "radio-mininco",
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda indexada realizada sin evidencia suficiente de una vacante individual nueva atribuible a este objetivo"
+    },
+    {
+      "source_id": "radio-victoria",
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda indexada realizada sin evidencia suficiente de una vacante individual nueva atribuible a este objetivo"
+    },
+    {
+      "source_id": "community",
+      "status": "failed",
+      "checked_at": "2026-11-18T03:43:35Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda indexada realizada sin evidencia suficiente de una vacante individual nueva atribuible a este objetivo"
+    }
+  ],
+  "publication_confirmed": 0,
+  "candidates_pending": [
+    {
+      "source_id": "omil-renaico",
+      "company": "Municipalidad de Renaico",
+      "commune": "Renaico",
+      "source_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "bases_url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "published_date": "2026-11-17",
+      "roles": [
+        {
+          "title": "Salvavidas",
+          "vacancies": 6
+        },
+        {
+          "title": "Técnico en Enfermería",
+          "vacancies": 2
+        },
+        {
+          "title": "Personal de aseo",
+          "vacancies": 2
+        },
+        {
+          "title": "Apoyo de seguridad",
+          "vacancies": 2
+        }
+      ],
+      "reason": "Fuente oficial vigente al 24 noviembre; cuatro cargos comparten URL y bases. Requiere identidad diferenciada compatible con importador, conciliación y confirmación pública antes de publicar."
+    }
+  ],
+  "summary": {
+    "planned": 24,
+    "attempted": 24,
+    "effective_reads": 6,
+    "blocked": 3,
+    "failed": 12,
+    "unsupported": 3,
+    "discovery_attempted": 5,
+    "confirmed_new_publications": 0
+  }
+}

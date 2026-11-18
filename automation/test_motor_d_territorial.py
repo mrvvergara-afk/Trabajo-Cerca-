@@ -4,6 +4,26 @@ from bs4 import BeautifulSoup
 import motor_d_territorial_daily as engine
 
 class TerritorialSafetyTests(unittest.TestCase):
+    def test_dedup_keeps_confirmed_individual_page_over_national_fallback(self):
+        poor={"http":200,"evidence":"link_candidate_only",
+              "source_commune_not_confirmed":True}
+        good={"http":200,"evidence":"individual_page_with_job_terms",
+              "source_commune_not_confirmed":False,
+              "explicit_worksite_commune":"Nacimiento",
+              "application_evidence":True,"date_source":"2026-11-17"}
+        self.assertGreater(engine.candidate_evidence_rank(good),
+                           engine.candidate_evidence_rank(poor))
+
+    def test_chiletrabajos_deactivated_banner_is_closed(self):
+        page=BeautifulSoup("""<h1>Operario Nacimiento</h1>
+            <p>Buscado Empresa Industrial Fecha 2026-11-17
+            Ubicación Nacimiento Categoría Producción</p>
+            <p>Este anuncio ha expirado o ha sido desactivado por el empleador</p>
+            ""","html.parser")
+        found=engine.chiletrabajos_metadata(page,"Operario Nacimiento",
+            "https://www.chiletrabajos.cl/trabajo/operario-nacimiento-3999998")
+        self.assertTrue(found["source_closed"])
+
     def test_twelve_communes_exclude_quilaco_and_every_commune_has_a_seed(self):
         self.assertEqual(len(engine.COMMUNES),12)
         self.assertEqual(len(set(engine.COMMUNES)),12)

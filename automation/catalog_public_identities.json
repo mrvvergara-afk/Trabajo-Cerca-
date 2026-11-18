@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-18T18:03:42+00:00",
+  "generated_at": "2026-11-18T19:38:09+00:00",
   "complete": true,
-  "totalItemsReported": 283,
-  "jobIdentityCount": 279,
+  "totalItemsReported": 284,
+  "jobIdentityCount": 280,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 101,
+  "visibleIn12CommunesCount": 102,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "edbf051b00c41cc6f5b443bb1a75b40bb71e677081fb0030ed9ebdefaad6d7ae",
+  "fingerprint": "f1490c7b011eeb89857a956d4b95c78ee62bef38eee813c0ebc6b68c29f0427f",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1071,6 +1071,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/experto-a-en-prevencion-de-riesgos-rubro-celulosa-collipulli-3933145",
       "urlHashSha256": "b82587f333519896e835a1b4fbac447b7f727b2ce8ac259e20ff1aaf29bc5f67"
+    },
+    {
+      "id": "chatgpt_d_c3271f36e2e4551bc026",
+      "title": "Conductor/a Clínico Urgencias Angol",
+      "company": "Xinerlink",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "urlHashSha256": "c3271f36e2e4551bc026f152edd4d3c239a5ac07ab33bff1daff945bd0283d88"
     },
     {
       "id": "chatgpt_d_c86ec67e426e27e24149",

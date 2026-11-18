@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-17T21:30:52.242304-03:00",
+  "last_run": "2026-11-17T23:53:09.468803-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -6611,6 +6611,126 @@
     "3d19aa3a82914632a4da": {
       "first_seen": "2026-11-17T21:30:52.242304-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-especialista-ups-3078784.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bd6b37efd6a21c50726e": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-de-ventas-preferente-outbound-manquehue-3078958.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "de72af3cf635f2acf083": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-comercial-de-terreno-ventas-b2b-movilizacion-propia-3078957.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3a4ce0bb4c44a8475147": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/1-conductor-camion-silo-a5-puerto-montt-puerto-montt-3078956.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c55f559a8091f4876202": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/conductores-licencia-a5-camion-silo-antofagasta-5x2-3078955.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "554c79869a09eda0d820": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-bodega-y-reposicion-en-vitacura-sal-3078954.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a29e7757ce3bfef888b9": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-bodega-y-reposicion-en-las-condes-sal-reemplazo-lm-3078953.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "251997d559efe56ebbc5": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-rios/operario-logistico-est-valdivia-3078952.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dc23b3b46eb8c43ab762": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-a-de-cocina-3078951.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8d5e02880be70404fd08": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-farmacia-part-time-30-horas-para-las-condes-3078950.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ee974648388e3ce3036f": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-farmacia-part-time-30-horas-para-las-condes-3078949.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "372bd01122b38eb1971f": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-farmacia-part-time-30-horas-para-la-reina-3078948.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c46d429f232c572b165b": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-arica-y-parinacota/medico-especialista-medicina-estetica-conocimiento-experiencia-en-endolaser-3078947.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "749963bf60d39426a09f": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-arica-y-parinacota/practica-gastronomia-arica-3078946.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bb5cf76fcee964269967": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-produccion-pvc-paine-paine-3078945.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "935ea8e3088a54f18944": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-produccion-industria-plasticos-720000-bono-bus-y-colacion-lampa-valle-grande-3078944.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b0ca11507741b050d563": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-taller-textil-3078943.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4eefdf954a741d9d523b": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/auxiliar-de-bodega-armado-de-palets-san-fernando-3078942.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e22bb5c9e3b930f29d69": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/bodega-y-administrativo-para-servicios-generales-oficna-en-las-condes-3078941.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c5ad1754acd01ce1da37": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/prevencionista-de-riesgos-part-time-rubro-industrial-3-veces-a-la-semana-3078940.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a9c9d5c1a6e124405cca": {
+      "first_seen": "2026-11-17T23:53:09.468803-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-tarde-sin-experiencia-san-bernardo-570000-y-bus-100-cupos-3078939.html",
       "source": "Inventario D04",
       "commune": null
     }

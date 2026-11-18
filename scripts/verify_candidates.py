@@ -35,9 +35,9 @@ def communes(text):
     for town in PLACES:
         for match in re.finditer(r'\b'+re.escape(normalized(town))+r'\b',flat):
             if town=="Victoria":
-                before=flat[:match.start()].split()
+                before=flat[:match.start()]
                 after=flat[match.end():].lstrip()
-                if (before and before[-1]=="nueva") or re.match(r"['’]?s\s+secret\b",after):
+                if re.search(r'\bnueva\s+\Z',before) or re.match(r"['’]?s\s+secret\b",after):
                     continue
             hits.append(town)
             break

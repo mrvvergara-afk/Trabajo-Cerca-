@@ -317,11 +317,24 @@ class Editor {
         // Never replace an approved duplicate with a pending/unverified copy,
         // even if the pending copy carries a newer verification timestamp.
         const preserveApproved = approved(duplicate.item) && !approved(item);
+        // A later portal-city recheck must not replace a verified original
+        // worksite merely because the portal recheck has a newer timestamp.
+        const priorSites=duplicate.item.workCommunes;
+        const nextSites=item.workCommunes;
+        const priorEvidence=duplicate.item.workLocationEvidence;
+        const nextEvidence=item.workLocationEvidence;
+        const preserveVerifiedTerritory =
+          approved(duplicate.item) && approved(item) &&
+          Array.isArray(priorSites) && Array.isArray(nextSites) &&
+          priorSites.length>0 && nextSites.length>0 &&
+          JSON.stringify([...priorSites].sort())!==JSON.stringify([...nextSites].sort()) &&
+          Boolean(priorEvidence) && !nextEvidence;
         const checked = (value:Stored) => {
           const stamp = Date.parse(String(value.externalVerifiedAt || value.verificationCheckedAt || value.verifiedAt || ''));
           return Number.isFinite(stamp) && stamp <= this.now ? stamp : 0;
         };
-        if (preserveApproved || (approved(duplicate.item)===approved(item) && checked(duplicate.item) > checked(item))) {
+        if (preserveApproved || preserveVerifiedTerritory ||
+            (approved(duplicate.item)===approved(item) && checked(duplicate.item) > checked(item))) {
           if (firstTimes.length) {duplicate.item={...duplicate.item,firstPublishedAt:new Date(Math.min(...firstTimes)).toISOString()};this.set(page,existing);}
           return;
         }

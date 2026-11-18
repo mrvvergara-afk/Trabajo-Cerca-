@@ -114,6 +114,20 @@ class BackendPreflight(unittest.TestCase):
         self.assertLess(cron.index("await chatgptAutoImportHandler();"),cron.index("advancePublicFeed(feedProjector)"))
         self.assertGreater(cron.index("await confirmChatGPTPublications();"),cron.index("advancePublicFeed(feedProjector)"))
 
+    def test_worksite_one_time_repair_uses_correct_source_tables_and_audit(self):
+        script=(ROOT/"territory-repair.ts").read_text(encoding="utf-8")
+        index=(ROOT/"index.ts").read_text(encoding="utf-8")
+        source=(ROOT/"free-public-sources.ts").read_text(encoding="utf-8")
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        self.assertIn("const table='radar_external_'+hash.slice(0,32)",script)
+        self.assertIn("if:{externalVerifiedAt:existing.externalVerifiedAt}",script)
+        self.assertIn("territory_repair_audit",script)
+        self.assertIn("WORKSITE_SAFE_REPAIR",script)
+        self.assertIn("await repairApprovedTerritoriesOnce();",index)
+        self.assertIn("'audited_original_worksite'",source)
+        self.assertIn("const table='radar_external_'+externalHash.slice(0,32)",importer)
+        self.assertIn("sourceTable:table",importer)
+
     def test_chatgpt_importer_confirms_corrected_location_and_official_open_lease(self):
         importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
         bridge=(ROOT/"chatgpt-auto-import.ts").read_text(encoding="utf-8")

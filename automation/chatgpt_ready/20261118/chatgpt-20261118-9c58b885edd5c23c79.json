@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "chatgpt_territorial",
+  "batch_id": "chatgpt-20261118-9c58b885edd5c23c79",
+  "offers": [
+    {
+      "id_fuente": "cg_c7d521f0c88ecb48d3e7",
+      "cargo": "Concurso Municipal Renaico: 6 salvavidas, 2 TENS, 2 aseo y 2 seguridad (12 vacantes)",
+      "empresa": "Municipalidad de Renaico",
+      "comunas": [
+        "Renaico"
+      ],
+      "ubicacion_trabajo": "Balneario Municipal de Renaico, comuna de Renaico",
+      "modalidad": "presencial",
+      "salario": null,
+      "url_original": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "enlace_postulacion": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "fecha_publicacion": null,
+      "fecha_descubrimiento": "2026-11-18",
+      "fecha_cierre": "2026-11-24",
+      "justificacion": "Concurso público municipal decreto 3139 del 12-11-2026: seis salvavidas, dos técnicos de enfermería, dos auxiliares de aseo y dos apoyos de seguridad (12 vacantes). Recepción de antecedentes presencial en Oficina de Partes, Comercio 287, Renaico, del 17 al 24-11-2026 hasta las 14:00. Bases PDF oficial verificadas el 18-11-2026. Se publica un anuncio consolidado porque los cuatro cargos comparten un solo documento de origen.",
+      "url_canonica": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "hash_url_sha256": "c7d521f0c88ecb48d3e7f335311992256e45e2d2772c0557d2d12c596bb00921",
+      "vigencia_fuente": "postulacion_abierta_verificada",
+      "fecha_verificacion": "2026-11-18"
+    }
+  ]
+}

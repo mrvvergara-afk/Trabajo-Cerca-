@@ -7,6 +7,7 @@ import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseC
 import { db, router, json, error, secrets, storage, ai, notifications, requireAuth, requireAdminEmailAllowlist } from '@appdeploy/sdk';
 import { adminBackupPage } from './admin-backup';
 import { directChatGPTImport, revalidateOfficialMunicipalOpenOffers } from './chatgpt-direct-import';
+import { chatgptAutoImportHandler, confirmChatGPTPublications } from './chatgpt-auto-import';
 import { motorDAutoImportHandler, confirmMotorDPublications } from './motor-d-auto-import';
 export { motorDAutoImportHandler };
 import { importReview, listReview, decideReview } from './radar-review-inbox';
@@ -2967,6 +2968,8 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   if(event?.type==='cron' && event.name==='verify-publish'){
     try { await motorDAutoImportHandler(); }
     catch(cause){console.warn('MOTOR_D_BRIDGE_HOOK_ERROR '+String(cause).slice(0,150));}
+    try { await chatgptAutoImportHandler(); }
+    catch(cause){console.warn('CHATGPT_BRIDGE_HOOK_ERROR '+String(cause).slice(0,150));}
     // Verified municipal open notices renew daily. A confirmed CLOSED index
     // removes them; a blocked source does not masquerade as closure.
     try { console.warn('MOTOR_D_MUNICIPAL_RECHECK '+JSON.stringify(
@@ -2985,6 +2988,8 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   const receipts={status:'legacy_receipts_frozen',published:0};
   const motorDConfirm=await confirmMotorDPublications();
   console.warn('MOTOR_D_PUBLICATION_CONFIRM '+JSON.stringify(motorDConfirm));
+  const chatgptConfirm=await confirmChatGPTPublications();
+  console.warn('CHATGPT_PUBLICATION_CONFIRM '+JSON.stringify(chatgptConfirm));
   const adminPublications=isAdminVerificationSlot(event) ? await confirmAdminReviewPublications() : undefined;
   console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({documents,providerSlot,history,result,ingestion,receipts,administrative,adminPublications,publicJobs:feed.totalVerifiedJobOffers,feedRebuilding:feed.rebuilding}));
   if (documentError) throw documentError;

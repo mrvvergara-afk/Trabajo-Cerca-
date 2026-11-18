@@ -1,5 +1,10 @@
 name: Audit ChatGPT territorial coverage (read only)
 on:
+  pull_request:
+    paths:
+      - 'automation/audit_chatgpt_coverage.py'
+      - 'automation/test_audit_chatgpt_coverage.py'
+      - '.github/workflows/audit-chatgpt-coverage.yml'
   workflow_dispatch:
   schedule:
     - cron: '35 0,4,8,12,16,20 * * *'

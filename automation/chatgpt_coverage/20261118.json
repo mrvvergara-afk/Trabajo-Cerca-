@@ -765,6 +765,15 @@
       "source_url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aea08221564eb41f9a6b54c",
       "title": "Cajero/a Asistente Integral – Temporada Navidad – Victoria",
       "reason": "Aviso oficial indica Victoria en encabezado, pero Temuco en sección requisitos/ubicación. Verificación territorial pendiente; no publicar a ciegas."
+    },
+    {
+      "source_id": "omil-renaico",
+      "company": "Municipalidad de Renaico",
+      "commune": "Renaico",
+      "source_url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "batch_id": "chatgpt-20261118-9c58b885edd5c23c79",
+      "status": "backend_published_awaiting_fresh_public_identity_mirror",
+      "reason": "AppDeploy publicó 1 lote de 12 vacantes consolidadas; espejo GitHub aún 277 identidades, anterior a confirmación; no reenviar."
     }
   ],
   "summary": {
@@ -775,13 +784,18 @@
     "failed": 44,
     "unsupported": 5,
     "discovery_attempted": 14,
-    "confirmed_new_publications": 0
+    "confirmed_new_publications": 0,
+    "backend_confirmed_new_publications": 1,
+    "public_identity_verified_new_publications": 0
   },
   "catalog_status": {
     "status": "fresh_mirror_valid",
     "mirror_generated_at": "2026-11-18T11:16:54+00:00",
     "jobIdentityCount": 277,
     "complete": true,
-    "reason": "Espejo validado en onda 0; API directa no disponible desde lector. Lote Renaico ya en índice pero no visible en espejo; no se reenvía."
+    "reason": "Espejo validado en onda 0; API directa no disponible desde lector. Lote Renaico ya en índice pero no visible en espejo; no se reenvía.",
+    "appdeploy_public_jobs_at_1220_utc": 278,
+    "mirror_job_identities": 277,
+    "publication_reconciliation": "AppDeploy CHATGPT_PUBLICATION_CONFIRM checked=1 published=1 a las 11:35 UTC; falta comprobar identidad en espejo posterior a esa hora."
   }
 }

@@ -11,7 +11,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 COMMUNES = ("Angol", "Collipulli", "Ercilla", "Lumaco", "Los Sauces", "Purén",
             "Renaico", "Traiguén", "Victoria", "Mulchén", "Negrete", "Nacimiento")
 ALIASES = {"mininco": "Collipulli", "coihue": "Negrete", "coigue": "Negrete",
-           "capitan pastene": "Lumaco"}
+           "capitan pastene": "Lumaco", "cohigue": "Negrete"}
 TRACKERS = {"fbclid", "gclid", "msclkid", "igshid", "mc_cid", "mc_eid"}
 REQUIRED = {"id_fuente", "cargo", "empresa", "comunas", "ubicacion_trabajo",
             "modalidad", "salario", "url_original", "enlace_postulacion",
@@ -60,6 +60,30 @@ def canonical_source_url(raw: str) -> str:
                  if not k.lower().startswith("utm_") and k.lower() not in TRACKERS))
     return urlunsplit(("https", host, path, urlencode(qs), ""))
 
+def source_identity(raw: str) -> str:
+    """A Chiletrabajos numeric ID is stable across URL slugs and host aliases."""
+    url=canonical_source_url(raw)
+    parsed=urlsplit(url)
+    if parsed.hostname=="chiletrabajos.cl":
+        match=re.fullmatch(r"/trabajo/(?:[^/]*-)?(\d{5,12})",parsed.path)
+        if match:
+            return "ct:"+match.group(1)
+    return url
+
+
+def genuine_worksite_mention(source_location: str, name: str) -> bool:
+    for match in re.finditer(r"(?<!\w)"+re.escape(fold(name))+r"(?!\w)",source_location):
+        before=source_location[:match.start()]
+        after=source_location[match.end():]
+        if fold(name)=="victoria" and (
+            re.search(r"\bnueva\s+$",before) or
+            re.match(r"\s*['’]?s\s+secret\b",after)
+        ):
+            continue
+        return True
+    return False
+
+
 def url_hash(raw: str) -> str:
     return hashlib.sha256(canonical_source_url(raw).encode("utf-8")).hexdigest()
 
@@ -89,8 +113,8 @@ def validate_offer(raw: dict, *, today: date | None = None) -> dict:
     communes = list(dict.fromkeys(normalized_commune(c) for c in offer["comunas"]))
     # A location must actually name every declared commune or a known sublocality.
     source_location = fold(offer["ubicacion_trabajo"])
-    location_communes = {normalized_commune(name) for name in (*COMMUNES, "Mininco", "Coihue", "Coigüe", "Capitán Pastene")
-                         if re.search(r"(?<!\w)" + re.escape(fold(name)) + r"(?!\w)", source_location)}
+    location_communes = {normalized_commune(name) for name in (*COMMUNES, "Mininco", "Coihue", "Coigüe", "Cohigue", "Capitán Pastene")
+                         if genuine_worksite_mention(source_location, name)}
     if not set(communes).issubset(location_communes):
         raise ValueError("territory_not_evidenced_in_work_location")
     offer["comunas"] = communes
@@ -131,13 +155,18 @@ def validate_offer(raw: dict, *, today: date | None = None) -> dict:
         raise ValueError("invalid_justificacion")
     return offer
 
-def validate_batch(offers: list, prior_hashes: set[str] | None = None, *, today: date | None = None) -> list[dict]:
+def validate_batch(offers: list, prior_hashes: set[str] | None = None, *,
+                   today: date | None = None,
+                   prior_source_identities: set[str] | None = None) -> list[dict]:
     if not isinstance(offers, list) or not 1 <= len(offers) <= 15:
         raise ValueError("invalid_batch_size")
     result = [validate_offer(raw, today=today) for raw in offers]
     hashes = [x["hash_url_sha256"] for x in result]
     if len(hashes) != len(set(hashes)) or set(hashes).intersection(prior_hashes or set()):
         raise ValueError("duplicate_canonical_url_hash")
+    origins=[source_identity(x["url_original"]) for x in result]
+    if len(origins)!=len(set(origins)) or set(origins).intersection(prior_source_identities or set()):
+        raise ValueError("duplicate_original_source_identity")
     ids = [x["id_fuente"] for x in result]
     if len(ids) != len(set(ids)):
         raise ValueError("duplicate_chatgpt_id")

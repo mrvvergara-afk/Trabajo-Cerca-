@@ -84,7 +84,25 @@ export async function chatgptAutoImportHandler(){
       }
       return result('chatgpt_imported_waiting_for_feed',{batchId,newCount,duplicates:results.length-newCount});
     }
-    return result('no_unprocessed_chatgpt_batches',{indexedBatches:idx.batches.length,processed});
+    const latestBatch = (idx.batches as Array<Record<string,unknown>>)
+      .map(entry => String(entry.batch_id || ''))
+      .sort()
+      .at(-1) || '';
+    const latestBatchDate = /^chatgpt-\d{8}-[a-f0-9]{18}$/.test(latestBatch)
+      ? latestBatch.slice(8,12) + '-' + latestBatch.slice(12,14) + '-' + latestBatch.slice(14,16)
+      : null;
+    const lastBatchAgeHours = latestBatchDate
+      ? Math.max(0, Math.floor((Date.now() - Date.parse(latestBatchDate + 'T23:59:59-03:00')) / 3600000))
+      : null;
+    const producerStale = lastBatchAgeHours === null || lastBatchAgeHours >= 24;
+    return result(producerStale ? 'producer_stale_no_new_batches' : 'no_unprocessed_chatgpt_batches', {
+      indexedBatches:idx.batches.length,
+      processed,
+      latestBatchDate,
+      lastBatchAgeHours,
+      producerStale,
+      actionRequired:producerStale ? 'check_scheduled_chatgpt_producer' : null,
+    });
   }catch(cause){
     return result('chatgpt_bridge_error',{error:String(cause).slice(0,180)});
   }

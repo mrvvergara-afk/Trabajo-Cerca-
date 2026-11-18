@@ -33,11 +33,51 @@ def canonical(raw):
 
 
 def public_job_id(url):
-    """Chiletrabajos numeric identity survives slug changes and www aliases."""
-    clean=canonical(url)
-    if not clean:
+    """Stable Chiletrabajos numeric identity across URL slugs and aliases."""
+    try:
+        parsed=urlsplit(str(url))
+        if (parsed.scheme!="https" or parsed.hostname not in
+                ("www.chiletrabajos.cl","chiletrabajos.cl")):
+            return None
+        match=re.fullmatch(r"/trabajo/(?:[^/?]+-)?(\d{5,12})/?",parsed.path)
+        return match.group(1) if match else None
+    except (TypeError,ValueError):
         return None
-    match=re.search(r'-(\d{5,12})
+
+
+def catalog_jobs(snapshot,now):
+    """Never prune without a recent, complete public-identity snapshot."""
+    if (not isinstance(snapshot,dict) or snapshot.get("complete") is not True or
+            not isinstance(snapshot.get("items"),list)):
+        return {}
+    try:
+        checked=dt.datetime.fromisoformat(snapshot["generated_at"].replace("Z","+00:00"))
+        if (checked.tzinfo is None or checked>now+dt.timedelta(minutes=10) or
+                now-checked>dt.timedelta(hours=48)):
+            return {}
+    except (KeyError,ValueError,TypeError,AttributeError):
+        return {}
+    jobs={}
+    for row in snapshot["items"]:
+        if not isinstance(row,dict):
+            continue
+        source=public_job_id(row.get("url"))
+        places=row.get("workCommunes")
+        if source and isinstance(places,list) and places:
+            jobs.setdefault(source,set()).update(x for x in places if isinstance(x,str))
+    return jobs
+
+
+def expired_hint(value,now):
+    if not isinstance(value,str) or not re.match(r'^20\d{2}-\d{2}-\d{2}',value):
+        return False
+    try:
+        return dt.date.fromisoformat(value[:10])<now.date()
+    except ValueError:
+        return False
+
+
+def merge(existing,stage,today=None,catalog=None):
     now=today or dt.datetime.now(dt.timezone.utc)
     cutoff=now-dt.timedelta(days=45)
     items={}

@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-18T13:22:02+00:00",
+  "generated_at": "2026-11-18T15:43:44+00:00",
   "complete": true,
-  "totalItemsReported": 282,
-  "jobIdentityCount": 278,
+  "totalItemsReported": 283,
+  "jobIdentityCount": 279,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 99,
-  "outside12CommuneScopeCount": 179,
+  "visibleIn12CommunesCount": 101,
+  "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "e86870fac518a0879bd39e805dd07fa4f842b805e19807958eb605a31b9995d4",
+  "fingerprint": "edbf051b00c41cc6f5b443bb1a75b40bb71e677081fb0030ed9ebdefaad6d7ae",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1562,9 +1562,9 @@
       "title": "Relator para curso de Administración Gastronómica",
       "company": "Prestación de Servicios de Capacitación Limitada",
       "workCommunes": [
-        "Temuco"
+        "Lumaco"
       ],
-      "visibleIn12Communes": false,
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/relator-para-curso-de-administracion-gastronomica-3919940",
       "urlHashSha256": "e3fbf4c96f04831fafdb012ce6fe1c494a868eb8296c1409340520ade9c00512"
     },
@@ -2117,6 +2117,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-grua-horquilla-temuco-3927130",
       "urlHashSha256": "71ede1e9e98142407b97786cdedc9656dbed51b18a268e80db5ac8ff34cb90cc"
+    },
+    {
+      "id": "free-7d65d64b41320c2ca4a3b5f8f2eb73a49316f8ca",
+      "title": "Relator para curso de Producción de Miel en la comuna de Mulchén",
+      "company": "Prestación de Servicios de Capacitación Limitada",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/relator-para-curso-de-produccion-de-miel-en-la-comuna-de-mulchen-3919935",
+      "urlHashSha256": "c35447ee4e93ab932100be9c56897e6b054ef631cfc0e7d4d765ec0f3080b956"
     },
     {
       "id": "free-7d73f9e27f8a2f927c00390c596abb3956496f43",

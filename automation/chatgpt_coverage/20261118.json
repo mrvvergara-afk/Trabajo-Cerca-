@@ -221,6 +221,213 @@
       "origin": "https://www.radiodelsur.cl/",
       "offers_found": 0,
       "reason": "Acceso protegido o HTTP 429"
+    },
+    {
+      "source_id": "chiletrabajos-Angol",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "opcionempleo-Collipulli",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "laborum-Ercilla",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "linkedin-Renaico",
+      "scan_wave": 5,
+      "status": "blocked",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso restringido / desafío anti-bot"
+    },
+    {
+      "source_id": "computrabajo-Mininco",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-mininco",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "indeed-Nacimiento",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "trabajando-Nacimiento",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/nacimiento",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "chiletrabajos-Negrete",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "opcionempleo-Mulchén",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "laborum-Los Sauces",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "linkedin-Purén",
+      "scan_wave": 5,
+      "status": "blocked",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso restringido / desafío anti-bot"
+    },
+    {
+      "source_id": "computrabajo-Traiguén",
+      "scan_wave": 5,
+      "status": "blocked",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-traiguen",
+      "offers_found": 0,
+      "reason": "Acceso restringido / desafío anti-bot"
+    },
+    {
+      "source_id": "indeed-Lumaco",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "trabajando-Lumaco",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/lumaco",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "chiletrabajos-Victoria",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "opcionempleo-secondary-Los Ángeles",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "laborum-secondary-Temuco",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-temuco.html",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "hospital-angol-enlaces",
+      "scan_wave": 5,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://hospitalangol.cl/enlaces/",
+      "offers_found": 0,
+      "reason": "Página consultada; ninguna vacante individual verificable dentro de las 12 comunas"
+    },
+    {
+      "source_id": "omil-nacimiento",
+      "scan_wave": 5,
+      "status": "unsupported",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.nacimiento.cl/noticias",
+      "offers_found": 0,
+      "reason": "Página dinámica sin fichas legibles o RSS no admitido por lector"
+    },
+    {
+      "source_id": "omil-ercilla",
+      "scan_wave": 5,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://muniercilla.cl/",
+      "offers_found": 0,
+      "reason": "Página consultada; ninguna vacante individual verificable dentro de las 12 comunas"
+    },
+    {
+      "source_id": "arauco-empleo",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://jobs.arauco.com/Chile/search/",
+      "offers_found": 0,
+      "reason": "URL directa no accesible mediante lector web; requiere recuperación pública alternativa"
+    },
+    {
+      "source_id": "negrete-feed",
+      "scan_wave": 5,
+      "status": "unsupported",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.muninegrete.cl/feed/",
+      "offers_found": 0,
+      "reason": "Página dinámica sin fichas legibles o RSS no admitido por lector"
+    },
+    {
+      "source_id": "registry-los-angeles-trabaja",
+      "scan_wave": 5,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "https://www.losangeles.cl/trabaja-con-nosotros/",
+      "offers_found": 0,
+      "reason": "Página consultada; ninguna vacante individual verificable dentro de las 12 comunas"
     }
   ],
   "discovery": [
@@ -258,6 +465,34 @@
       "checked_at": "2026-11-18T03:43:35Z",
       "origin": "public_indexed_search",
       "reason": "Búsqueda indexada realizada sin evidencia suficiente de una vacante individual nueva atribuible a este objetivo"
+    },
+    {
+      "source_id": "chillan-bridge",
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda pública indexada efectuada; sin ficha individual vigente, verificable y atribuible a las 12 comunas"
+    },
+    {
+      "source_id": "local-job-pages",
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda pública indexada efectuada; sin ficha individual vigente, verificable y atribuible a las 12 comunas"
+    },
+    {
+      "source_id": "teleangol",
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda pública indexada efectuada; sin ficha individual vigente, verificable y atribuible a las 12 comunas"
+    },
+    {
+      "source_id": "radio-colonos-victoria",
+      "status": "failed",
+      "checked_at": "2026-11-18T08:15:00Z",
+      "origin": "public_indexed_search",
+      "reason": "Búsqueda pública indexada efectuada; sin ficha individual vigente, verificable y atribuible a las 12 comunas"
     }
   ],
   "publication_confirmed": 0,
@@ -291,13 +526,18 @@
     }
   ],
   "summary": {
-    "planned": 24,
-    "attempted": 24,
-    "effective_reads": 6,
-    "blocked": 3,
-    "failed": 12,
-    "unsupported": 3,
-    "discovery_attempted": 5,
+    "planned": 47,
+    "attempted": 47,
+    "effective_reads": 9,
+    "blocked": 6,
+    "failed": 27,
+    "unsupported": 5,
+    "discovery_attempted": 9,
     "confirmed_new_publications": 0
+  },
+  "catalog_status": {
+    "status": "catalog_unavailable",
+    "mirror_generated_at": "2026-11-18T04:08:28+00:00",
+    "reason": "Espejo con antigüedad superior a 120 minutos a las 05:15 Chile; API directa inaccesible desde lector web. No se generaron lotes."
   }
 }

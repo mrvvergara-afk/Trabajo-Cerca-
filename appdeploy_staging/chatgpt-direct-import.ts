@@ -8,6 +8,14 @@ type Candidate={id_fuente:string;cargo:string;empresa:string;comunas:string[];ur
 const LOCAL=new Set(['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento']);
 const norm=(s:string)=>s.toLowerCase().normalize('NFD').replace(/[^a-z0-9 ]/g,' ').replace(/ +/g,' ').trim();
 const keyUrl=(s:string)=>{const known=publicFeedIdentity(s);if(known)return known;const clean=safePublicUrl(s);if(!clean)return '';const url=new URL(clean);return url.hostname.replace(/^www\./,'')+url.pathname.replace(/\/$/,'')+url.search;};
+const stableJobIdentity=(s:string)=>{
+  try{
+    const url=new URL(s);
+    if(!['www.chiletrabajos.cl','chiletrabajos.cl'].includes(url.hostname.toLowerCase()))return '';
+    const m=url.pathname.match(/^\/trabajo\/(?:[^/]*-)?(\d{5,12})\/?$/);
+    return m?'ct:'+m[1]:'';
+  }catch{return '';}
+};
 const STRICT_FIELDS=new Set(['id_fuente','cargo','empresa','comunas','ubicacion_trabajo',
   'modalidad','salario','url_original','enlace_postulacion','fecha_publicacion','fecha_descubrimiento',
   'fecha_cierre','justificacion','url_canonica','hash_url_sha256','vigencia_fuente','fecha_verificacion']);
@@ -204,16 +212,49 @@ export async function directChatGPTImport(body:unknown){
     const urlKey=social?'':keyUrl(x.url_original);
     const urlHash=social?'':canonicalSourceHash(x.url_original);
     const canonicalUrl=social?'':canonicalSourceUrl(x.url_original);
+    const stableId=social?'':stableJobIdentity(x.url_original);
     const duplicate=live.find(y=>{
       const title=norm(String(y.title||'')),company=norm(String(y.company||''));
       const loc=[...(Array.isArray(y.workCommunes)?y.workCommunes as string[]:[]),...(Array.isArray(y.recruitmentCommunes)?y.recruitmentCommunes as string[]:[])];
       let existingHash='';
       try{existingHash=String(y.urlHashSha256||canonicalSourceHash(String(y.url||'')))}catch{}
-      return (urlHash!==''&&existingHash===urlHash)||
+      return (stableId!=='' && stableId===stableJobIdentity(String(y.url||'')))||
+        (urlHash!==''&&existingHash===urlHash)||
         (urlKey!==''&&keyUrl(String(y.url||''))===urlKey)||
         (title===norm(x.cargo)&&company===norm(x.empresa)&&loc.some(c=>x.comunas.includes(c)));
     });
-    if(duplicate){results.push({id:x.id_fuente,status:'already_published',existingId:duplicate.id});continue;}
+    if(duplicate){
+      // Repair ONLY an existing verified autonomous-source record that belongs
+      // to the SAME original Chiletrabajos job ID. Never create a second card.
+      const duplicateId=String(duplicate.id||'');
+      const publicSites=Array.isArray(duplicate.workCommunes)?duplicate.workCommunes as string[]:[];
+      const mismatch=publicSites.length!==x.comunas.length ||
+        x.comunas.some(place=>!publicSites.includes(place));
+      const exactSource=stableId && stableId===stableJobIdentity(String(duplicate.url||''));
+      if(commit && strict && mismatch && exactSource && duplicateId.startsWith('free-')){
+        const [old]=await db.get<Record<string,unknown>>('radar_jobs',[duplicateId],{consistent:true});
+        if(old && old.kind==='job_offer' && old.verified===true &&
+           old.active===true && stableJobIdentity(String(old.url||''))===stableId){
+          const updated={...old,workCommunes:x.comunas,
+            workLocation:x.ubicacion_trabajo,
+            workLocationEvidence:{method:'approved_chatgpt_original_worksite',
+              literal:x.ubicacion_trabajo},
+            territoryCorrectionAt:now,
+            territoryCorrectionSource:x.id_fuente};
+          const [updatedRows]=await db.transact([
+            db.tx.update('radar_jobs',[{id:duplicateId,record:updated}]),
+            db.tx.add('public_feed_changes',[{source:'radar_jobs',sourceId:duplicateId,queuedAt:now}])
+          ]);
+          if(!updatedRows[0])throw Error('chatgpt_territory_reconciliation_failed');
+          Object.assign(duplicate,updated);
+          results.push({id:x.id_fuente,status:'territory_reconciled',
+            existingId:duplicateId,internalId:duplicateId,expectedWorkCommunes:x.comunas});
+          continue;
+        }
+      }
+      results.push({id:x.id_fuente,status:'already_published',existingId:duplicate.id});
+      continue;
+    }
     if(municipal && municipalProofs.get(x.id_fuente)!=='open'){
       results.push({id:x.id_fuente,status:'review_expired'});continue;
     }

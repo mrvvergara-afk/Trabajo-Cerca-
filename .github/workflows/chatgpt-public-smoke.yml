@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'automation/check_chatgpt_approved_public.py'
+      - 'automation/chatgpt_ready/**'
       - '.github/workflows/chatgpt-public-smoke.yml'
   schedule:
     - cron: '40 17 * * *'

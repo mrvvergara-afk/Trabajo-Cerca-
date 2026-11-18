@@ -13,7 +13,8 @@ from automation.chatgpt_extraction_contract import validate_batch
 
 COMMUNES = {"Angol", "Collipulli", "Ercilla", "Lumaco", "Los Sauces", "Purén", "Renaico",
             "Traiguén", "Victoria", "Mulchén", "Negrete", "Nacimiento"}
-ALIASES = {"Mininco": "Collipulli", "Coihue": "Negrete", "Coigüe": "Negrete"}
+ALIASES = {"Mininco": "Collipulli", "Coihue": "Negrete", "Coigüe": "Negrete",
+           "Cohigue": "Negrete", "Capitán Pastene": "Lumaco"}
 
 def prepare(payload: dict, index: dict, day: str | None = None):
     if payload.get("schema_version") != 1 or payload.get("approval") != "approved_for_publication" or payload.get("producer") != "chatgpt_territorial":
@@ -33,7 +34,7 @@ def prepare(payload: dict, index: dict, day: str | None = None):
         if not isinstance(key, str) or not re.fullmatch(r"cg_[a-f0-9]{20}", key) or key in prior or key in unique:
             raise ValueError("duplicate_or_invalid_chatgpt_id")
         unique.add(key)
-        for field in ("cargo", "empresa", "url_original", "fecha_publicacion", "fecha_descubrimiento"):
+        for field in ("cargo", "empresa", "url_original", "fecha_descubrimiento"):
             if not isinstance(offer.get(field), str) or not offer[field].strip():
                 raise ValueError("missing_" + field)
         if len(offer["cargo"]) < 5 or len(offer["empresa"]) < 2:
@@ -57,14 +58,17 @@ def prepare(payload: dict, index: dict, day: str | None = None):
         offer["comunas"] = list(dict.fromkeys(ALIASES.get(p, p) for p in places))
         if any(p not in COMMUNES for p in offer["comunas"]):
             raise ValueError("outside_territory")
-        for field in ("fecha_publicacion", "fecha_descubrimiento"):
+        if offer.get("fecha_publicacion") is None:
+            if offer.get("vigencia_fuente") != "postulacion_abierta_verificada" or not offer.get("fecha_verificacion"):
+                raise ValueError("undated_requires_fresh_verified_open_source")
+        for field in (("fecha_publicacion", "fecha_descubrimiento") if offer.get("fecha_publicacion") else ("fecha_descubrimiento",)):
             try:
                 parsed_date = date.fromisoformat(offer[field])
             except (ValueError, TypeError):
                 raise ValueError("invalid_" + field)
             if parsed_date > datetime.now(timezone.utc).date():
                 raise ValueError("future_" + field)
-        if date.fromisoformat(offer["fecha_descubrimiento"]) < date.fromisoformat(offer["fecha_publicacion"]):
+        if offer["fecha_publicacion"] is not None and date.fromisoformat(offer["fecha_descubrimiento"]) < date.fromisoformat(offer["fecha_publicacion"]):
             raise ValueError("discovery_before_publication")
         if offer.get("fecha_cierre"):
             try:

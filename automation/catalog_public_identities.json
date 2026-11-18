@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-18T12:25:11+00:00",
+  "generated_at": "2026-11-18T13:22:02+00:00",
   "complete": true,
   "totalItemsReported": 282,
   "jobIdentityCount": 278,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 98,
-  "outside12CommuneScopeCount": 180,
+  "visibleIn12CommunesCount": 99,
+  "outside12CommuneScopeCount": 179,
   "pagesChecked": 11,
-  "fingerprint": "17e6a2c17b748b5828d1353fc5fe852b73b81a96e26210e10fa47558d53cffcc",
+  "fingerprint": "e86870fac518a0879bd39e805dd07fa4f842b805e19807958eb605a31b9995d4",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1639,9 +1639,9 @@
       "title": "MERCADERISTA PART TIME /TRAIGUEN",
       "company": "CULTIVASP",
       "workCommunes": [
-        "Temuco"
+        "Traiguén"
       ],
-      "visibleIn12Communes": false,
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/mercaderista-part-time-traiguen-3926111",
       "urlHashSha256": "516926d4f7502adfe04a9499494d50df0b7bd97e0afd2d6d56f32df5b64209b9"
     },

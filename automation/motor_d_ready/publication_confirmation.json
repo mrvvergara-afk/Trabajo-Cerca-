@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-18T03:25:37.584971+00:00",
+  "checked_at": "2026-11-18T07:48:23.073490+00:00",
   "feed_complete": true,
   "feed_rows": 281,
   "indexed_batches": 23,
@@ -12,38 +12,14 @@
   "semantic_only": 0,
   "not_found": 0,
   "expired_not_expected": 1,
-  "territory_mismatches_count": 3,
+  "territory_mismatches_count": 1,
   "territory_mismatches": [
-    {
-      "id_fuente": "d_9e173e643c73999fa7f6",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
-      "catalog_id": "free-9e173e643c73999fa7f6e52332a957d0834d0b45",
-      "expected_work_communes": [
-        "Nacimiento"
-      ],
-      "catalog_work_communes": [
-        "Angol"
-      ],
-      "status": "catalog_territory_mismatch"
-    },
     {
       "id_fuente": "d_bef43ecfd4d8417f1770",
       "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
       "catalog_id": "free-c9a7209710e4ccc2807b3b51e8909ad00bcbb490",
       "expected_work_communes": [
         "Purén"
-      ],
-      "catalog_work_communes": [
-        "Angol"
-      ],
-      "status": "catalog_territory_mismatch"
-    },
-    {
-      "id_fuente": "d_5813016bef2debcf1ea2",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",
-      "catalog_id": "free-3d3f9fa91ee8942da92bb88f07a7eaed8fef3043",
-      "expected_work_communes": [
-        "Nacimiento"
       ],
       "catalog_work_communes": [
         "Angol"

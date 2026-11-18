@@ -265,6 +265,8 @@ export async function directChatGPTImport(body:unknown){
     if(!commit){results.push({id:x.id_fuente,status:'ready_for_direct_import'});continue;}
     const rec={id,kind:'job_offer',origin:'radar',sourceProducer:producer,title:x.cargo,company:x.empresa,
       workLocation:social?(x.work_location||'Lugar de trabajo no informado'):(x.ubicacion_trabajo||x.comunas.join(' / ')),workCommunes:social?[]:x.comunas,recruitmentCommunes:social?x.recruitment_communes||['Angol']:[],recruitmentZones:social?['Postulación presencial OMIL Angol']:[],
+      ...(!social?{workLocationEvidence:{method:strict?'approved_chatgpt_original_worksite':'approved_motor_d_original_worksite',
+        literal:x.ubicacion_trabajo||x.comunas.join(' / ')}}:{}),
       ...(social?{territorialRecruitmentVerified:true,sourceDateEvidence:x.fecha_publicacion_metodo,sourceEvidenceType:x.social_evidence_type,sourceAccount:x.social_source_account,sourceOriginalDateEstimated:true}:{ }),
       area:social?'Reclutamiento OMIL':municipal?'Oferta laboral OMIL':'Radar externo',status:'Verificada',
       date:(municipal||officialUndated)?'Fecha original no informada':social?'Fecha aproximada: '+x.fecha_publicacion:x.fecha_publicacion,

@@ -106,6 +106,17 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("previous?.item.verified===true", self.feed)
         self.assertIn("!/confirmed|explicit|administrative|owner_request/.test(closure)", self.feed)
 
+    def test_feed_preserves_original_worksite_against_newer_portal_city(self):
+        self.assertIn("preserveVerifiedTerritory", self.feed)
+        self.assertIn("workLocationEvidence", self.feed)
+        self.assertIn("priorSites.length>0", self.feed)
+
+    def test_staged_verifier_rejects_expiry_and_false_victoria(self):
+        verifier=(ROOT/"public-source-verifier.ts").read_text(encoding="utf-8")
+        self.assertIn("genuineWorksitePlaceMention",verifier)
+        self.assertIn("nueva",verifier)
+        self.assertIn("este anuncio ha expirado",verifier)
+
     def test_feed_blocks_unexplained_disappearance(self):
         publication = self.feed.split("async function publish(record:Manifest, projector:Projector)", 1)[1].split("export async function readPublicFeedSummary()", 1)[0]
         self.assertIn("PUBLIC_FEED_REGRESSION_BLOCKED", publication)

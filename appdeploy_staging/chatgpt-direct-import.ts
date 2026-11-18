@@ -231,25 +231,44 @@ export async function directChatGPTImport(body:unknown){
       const mismatch=publicSites.length!==x.comunas.length ||
         x.comunas.some(place=>!publicSites.includes(place));
       const exactSource=stableId && stableId===stableJobIdentity(String(duplicate.url||''));
-      if(commit && strict && mismatch && exactSource && duplicateId.startsWith('free-')){
-        const [old]=await db.get<Record<string,unknown>>('radar_jobs',[duplicateId],{consistent:true});
-        if(old && old.kind==='job_offer' && old.verified===true &&
-           old.active===true && stableJobIdentity(String(old.url||''))===stableId){
-          const updated={...old,workCommunes:x.comunas,
-            workLocation:x.ubicacion_trabajo,
-            workLocationEvidence:{method:'approved_chatgpt_original_worksite',
-              literal:x.ubicacion_trabajo},
-            territoryCorrectionAt:now,
-            territoryCorrectionSource:x.id_fuente};
-          const [updatedRows]=await db.transact([
-            db.tx.update('radar_jobs',[{id:duplicateId,record:updated}]),
-            db.tx.add('public_feed_changes',[{source:'radar_jobs',sourceId:duplicateId,queuedAt:now}])
-          ]);
-          if(!updatedRows[0])throw Error('chatgpt_territory_reconciliation_failed');
-          Object.assign(duplicate,updated);
-          results.push({id:x.id_fuente,status:'territory_reconciled',
-            existingId:duplicateId,internalId:duplicateId,expectedWorkCommunes:x.comunas});
-          continue;
+      if(commit && strict && mismatch && exactSource && /^free-[a-f0-9]{40}$/.test(duplicateId)){
+        // Free-public-sources stores each job in its own radar_external_<32hex>
+        // table, NOT radar_jobs. The immutable public id encodes that table.
+        const externalHash=duplicateId.slice(5);
+        const table='radar_external_'+externalHash.slice(0,32);
+        const [old]=await db.get<Record<string,unknown>>(table,[duplicateId],{consistent:true});
+        const sourceValid=old?.externalIdentity && String(old.externalIdentity).startsWith(externalHash) &&
+          old.kind==='job_offer' && old.verified===true && old.active===true &&
+          stableJobIdentity(String(old.url||''))===stableId;
+        if(sourceValid){
+          const oldSites=Array.isArray(old.workCommunes)?old.workCommunes as string[]:[];
+          const validOldSites=oldSites.length===publicSites.length &&
+            oldSites.every(c=>publicSites.includes(c));
+          const validDeadline=!old.sourceValidThrough ||
+            Date.parse(String(old.sourceValidThrough)+'T23:59:59-03:00')>=Date.now();
+          if(validOldSites && validDeadline){
+            const {id:_currentId,...rest}=old;
+            const updated={...rest,workCommunes:x.comunas,
+              workLocation:x.ubicacion_trabajo,
+              workLocationEvidence:{method:'approved_chatgpt_original_worksite',
+                literal:x.ubicacion_trabajo,originalUrl:x.url_original},
+              secondaryMarket:false,
+              territoryCorrectionAt:now,
+              territoryCorrectionSource:x.id_fuente};
+            const [updatedRows]=await db.transact([
+              db.tx.update(table,[{id:duplicateId,record:updated}]),
+              db.tx.add('public_feed_changes',[{source:table,sourceId:duplicateId,queuedAt:now}]),
+              db.tx.add('territory_repair_audit',[{
+                id:'repair_'+x.id_fuente,sourceId:duplicateId,sourceTable:table,
+                oldWorkCommunes:oldSites,newWorkCommunes:x.comunas,
+                sourceUrl:x.url_original,checkedAt:now,reason:'approved_same_source_territory_mismatch'}])
+            ]);
+            if(!updatedRows[0])throw Error('chatgpt_territory_reconciliation_failed');
+            Object.assign(duplicate,{...updated,id:duplicateId});
+            results.push({id:x.id_fuente,status:'territory_reconciled',
+              existingId:duplicateId,internalId:duplicateId,expectedWorkCommunes:x.comunas});
+            continue;
+          }
         }
       }
       results.push({id:x.id_fuente,status:'already_published',existingId:duplicate.id});

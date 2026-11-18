@@ -34,7 +34,13 @@ def communes(text):
     hits=[]
     for town in PLACES:
         for match in re.finditer(r'\b'+re.escape(normalized(town))+r'\b',flat):
-            if town=="Victoria" and (re.search(r'\bnueva\s+
+            if town=="Victoria":
+                before=flat[:match.start()].split()
+                after=flat[match.end():].lstrip()
+                if (before and before[-1]=="nueva") or re.match(r"['’]?s\s+secret\b",after):
+                    continue
+            hits.append(town)
+            break
     for loc,town in ALIASES.items():
         if re.search(r'\b'+loc+r'\b',flat) and town not in hits:
             hits.append(town)

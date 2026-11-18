@@ -330,6 +330,13 @@ jobs:
           git add automation/motor_d_discovery/territorial_state.json automation/motor_d_discovery/source_performance.json automation/motor_d_discovery/territorial_daily.json automation/motor_d_discovery/producer_heartbeat.json automation/motor_d_discovery/publication_gate.json automation/motor_d_discovery/source_recovery_queue.json automation/motor_d_ready/
           if ! git diff --cached --quiet; then
             git commit -m "data(motor-d): update 12-commune daily discovery state [skip ci]"
+            # The source scan writes additional temporary/unstaged workspace files.
+            # Rebase requires a clean working tree. Stash those ephemeral files
+            # AFTER committing the whitelisted audit artifacts, so the generated
+            # report remains in the commit and the artifact upload.
+            if [ -n "$(git status --porcelain)" ]; then
+              git stash push --include-untracked -m "motor-d-transient-uncommitted-output"
+            fi
             # A simultaneous source edit is not a failed scan. Rebase and retry
             # instead of losing the report to a non-fast-forward push.
             for attempt in 1 2 3; do

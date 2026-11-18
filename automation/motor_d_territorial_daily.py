@@ -787,6 +787,19 @@ def inspect(seed):
     except Exception as exc:
         out["status"]="processing_error";out["errors"].append(type(exc).__name__)
     return out
+def candidate_evidence_rank(item):
+    """Prefer a later fully confirmed original page over an earlier fallback."""
+    return (
+        item.get("http")==200,
+        item.get("evidence")=="individual_page_with_job_terms",
+        item.get("source_commune_not_confirmed") is False,
+        bool(item.get("explicit_worksite_commune")),
+        bool(item.get("application_evidence") is True),
+        bool(item.get("date_source")),
+        bool(item.get("deadline")),
+    )
+
+
 def main():
     ROOT.mkdir(parents=True,exist_ok=True)
     # Every source registered in both catalogs is attempted on every cycle.
@@ -904,7 +917,9 @@ def main():
                     source=row["source"],commune=row["commune"]))
     unique={}
     for item in candidates:
-        unique.setdefault(item["id"],item)
+        previous=unique.get(item["id"])
+        if previous is None or candidate_evidence_rank(item)>candidate_evidence_rank(previous):
+            unique[item["id"]]=item
     # Diff persistente: contabiliza solo identidades nuevas respecto al inventario de GitHub.
     state_file=ROOT/"territorial_state.json"
     try:

@@ -644,6 +644,222 @@
       "origin": "https://temuco.omil.cl/",
       "offers_found": 0,
       "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "computrabajo-Angol",
+      "scan_wave": 1,
+      "status": "blocked",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-angol",
+      "offers_found": 0,
+      "reason": "Página anti-bot requiere JavaScript"
+    },
+    {
+      "source_id": "indeed-Collipulli",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "trabajando-Collipulli",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/collipulli",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "chiletrabajos-Ercilla",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Ercilla",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "opcionempleo-Renaico",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-renaico.html",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "laborum-Mininco",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-mininco.html",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "linkedin-Nacimiento",
+      "scan_wave": 1,
+      "status": "blocked",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Nacimiento%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso directo bloqueado/restringido para lector público"
+    },
+    {
+      "source_id": "computrabajo-Negrete",
+      "scan_wave": 1,
+      "status": "blocked",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-negrete",
+      "offers_found": 0,
+      "reason": "Página anti-bot requiere JavaScript"
+    },
+    {
+      "source_id": "indeed-Mulchén",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=45",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "trabajando-Mulchén",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/mulchen",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "chiletrabajos-Los Sauces",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "opcionempleo-Purén",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-puren.html",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "laborum-Traiguén",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-traiguen.html",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "linkedin-Lumaco",
+      "scan_wave": 1,
+      "status": "blocked",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso directo bloqueado/restringido para lector público"
+    },
+    {
+      "source_id": "computrabajo-Victoria",
+      "scan_wave": 1,
+      "status": "blocked",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-victoria",
+      "offers_found": 0,
+      "reason": "Página anti-bot requiere JavaScript"
+    },
+    {
+      "source_id": "indeed-secondary-Los Ángeles",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "trabajando-secondary-Los Ángeles",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/los-angeles",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "chiletrabajos-secondary-Temuco",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Temuco",
+      "offers_found": 0,
+      "reason": "Lector público no pudo recuperar el endpoint; se intentó búsqueda indexada alternativa sin poder atribuir lectura directa"
+    },
+    {
+      "source_id": "omil-lumaco",
+      "scan_wave": 1,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.munilumaco.cl/",
+      "offers_found": 0,
+      "reason": "Página pública leída; no se confirmó una oferta individual vigente de comuna objetivo"
+    },
+    {
+      "source_id": "omil-mulchen",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.munimulchen.cl/?s=oferta+laboral",
+      "offers_found": 0,
+      "reason": "URL de búsqueda municipal inaccesible"
+    },
+    {
+      "source_id": "malleco7-ediciones",
+      "scan_wave": 1,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+      "offers_found": 0,
+      "reason": "Página pública leída; no se confirmó una oferta individual vigente de comuna objetivo"
+    },
+    {
+      "source_id": "bne",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.bne.gob.cl/ofertas",
+      "offers_found": 0,
+      "reason": "Endpoint /ofertas devuelve 404 al lector"
+    },
+    {
+      "source_id": "empleos-publicos",
+      "scan_wave": 1,
+      "status": "blocked",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+      "offers_found": 0,
+      "reason": "Acceso directo bloqueado/restringido para lector público"
+    },
+    {
+      "source_id": "registry-omil-concepcion",
+      "scan_wave": 1,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "https://concepcion.cl/informacion-e-inscripciones-en-linea-omil/",
+      "offers_found": 0,
+      "reason": "Página pública leída; no se confirmó una oferta individual vigente de comuna objetivo"
     }
   ],
   "discovery": [
@@ -754,6 +970,33 @@
       "origin": "public_indexed_search",
       "offers_found": 0,
       "reason": "Búsqueda indexada sin evidencia individual utilizable; herramienta externa no invocada"
+    },
+    {
+      "source_id": "chiletrabajos",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Búsqueda indexada pública exploratoria; no se acreditó cobertura integral del objetivo ni ficha nueva apta para publicar"
+    },
+    {
+      "source_id": "aggregators",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Búsqueda indexada pública exploratoria; no se acreditó cobertura integral del objetivo ni ficha nueva apta para publicar"
+    },
+    {
+      "source_id": "laborum",
+      "scan_wave": 1,
+      "status": "failed",
+      "checked_at": "2026-11-18T15:42:40Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Búsqueda indexada pública exploratoria; no se acreditó cobertura integral del objetivo ni ficha nueva apta para publicar"
     }
   ],
   "publication_confirmed": 0,
@@ -774,6 +1017,26 @@
       "batch_id": "chatgpt-20261118-9c58b885edd5c23c79",
       "status": "backend_published_awaiting_fresh_public_identity_mirror",
       "reason": "AppDeploy publicó 1 lote de 12 vacantes consolidadas; espejo GitHub aún 277 identidades, anterior a confirmación; no reenviar."
+    },
+    {
+      "title": "Ingeniero/a Procesos y Excelencia Sr",
+      "company": "CMPC",
+      "work_commune": "Collipulli",
+      "location": "Planta Pacífico - Mininco",
+      "url": "https://cl.linkedin.com/jobs/view/ingeniero-a-procesos-y-excelencia-sr-at-cmpc-4479050120",
+      "discovered_at": "2026-11-18T15:42:40Z",
+      "reason": "Oferta individual visible en fuente pública, falta confirmar ATS oficial y conciliación fresca antes de lote",
+      "catalog_status": "catalog_unavailable"
+    },
+    {
+      "title": "Inspector/a Ambiental",
+      "company": "CMPC",
+      "work_commune": "Nacimiento",
+      "location": "Planta Santa Fe",
+      "url": "https://www.kitempleo.cl/empleo/114557087/inspector-a-ambiental-nacimiento",
+      "discovered_at": "2026-11-18T15:42:40Z",
+      "reason": "Oferta individual reciente corroborada en perfil público CMPC; falta enlace ATS oficial y conciliación fresca",
+      "catalog_status": "catalog_unavailable"
     }
   ],
   "summary": {
@@ -786,16 +1049,35 @@
     "discovery_attempted": 14,
     "confirmed_new_publications": 0,
     "backend_confirmed_new_publications": 1,
-    "public_identity_verified_new_publications": 0
+    "public_identity_verified_new_publications": 0,
+    "wave1": {
+      "planned": 24,
+      "attempted": 24,
+      "effective_reads": 3,
+      "blocked": 6,
+      "failed": 15,
+      "discovery_attempted": 5,
+      "publication_confirmed_new": 0
+    },
+    "daily_recorded_sources": 95,
+    "daily_recorded_discovery": 17
   },
   "catalog_status": {
     "status": "fresh_mirror_valid",
-    "mirror_generated_at": "2026-11-18T11:16:54+00:00",
+    "mirror_generated_at": "2026-11-18T13:22:02+00:00",
     "jobIdentityCount": 277,
     "complete": true,
     "reason": "Espejo validado en onda 0; API directa no disponible desde lector. Lote Renaico ya en índice pero no visible en espejo; no se reenvía.",
     "appdeploy_public_jobs_at_1220_utc": 278,
     "mirror_job_identities": 277,
-    "publication_reconciliation": "AppDeploy CHATGPT_PUBLICATION_CONFIRM checked=1 published=1 a las 11:35 UTC; falta comprobar identidad en espejo posterior a esa hora."
+    "publication_reconciliation": "AppDeploy CHATGPT_PUBLICATION_CONFIRM checked=1 published=1 a las 11:35 UTC; falta comprobar identidad en espejo posterior a esa hora.",
+    "last_checked_at": "2026-11-18T15:42:40Z",
+    "mirror_job_identity_count": 278,
+    "mirror_complete": true,
+    "mirror_stale": true,
+    "api_fallback": "blocked",
+    "publication_blocked": "catalog_unavailable",
+    "pending_new_candidates": 2,
+    "renaico_visible_confirmed": true
   }
 }

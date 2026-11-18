@@ -63,6 +63,14 @@
   ],
   "pending": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
+      "title": "TECHNICAL LEAD SR",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
       "title": "Práctica Administración RRHH - Los Ángeles",
       "workplaces": [],
@@ -212,15 +220,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
       "title": "Conductor/a de autoelevador",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3245?c=cmpc",
-      "title": "Coordinador de Soporte Técnico SAP",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

@@ -14,7 +14,7 @@ import re
 import sys
 from time import sleep
 
-from motor_d_catalog_probe import check_ready_offers, read_full_feed
+from motor_d_catalog_probe import check_ready_offers, read_full_feed, find_territory_mismatches
 
 ROOT = Path(__file__).resolve().parent / "motor_d_ready"
 BATCH_PATH = re.compile(r"^\d{8}/motor-d-\d{8}-[0-9a-f]{18}\.json$")
@@ -48,6 +48,15 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
     if not isinstance(history, dict) or not isinstance(history.get("items", []), list):
         raise ValueError("invalid_history")
     stamp = checked_at or datetime.now(timezone.utc).isoformat()
+    observed_date = datetime.fromisoformat(stamp.replace("Z","+00:00")).date()
+    def expired(item):
+        value=item.get("fecha_cierre")
+        if not isinstance(value,str):
+            return False
+        try:
+            return datetime.strptime(value[:10],"%Y-%m-%d").date()<observed_date
+        except ValueError:
+            return False
     quarantined = {x.get("batch_id") for x in index.get("quarantined_batches", [])
                    if isinstance(x, dict)}
     offers = {}
@@ -63,7 +72,7 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
         batch_offers = load_offers(b)
         entry = {"batch_id": b_id, "historically_quarantined": b_id in quarantined,
                  "offer_count": len(batch_offers), "source_confirmed": 0,
-                 "semantic_only": 0, "not_found": 0}
+                 "semantic_only": 0, "not_found": 0, "expired_not_expected": 0}
         for item in batch_offers:
             if not isinstance(item, dict) or not all(item.get(k) for k in
                 ("id_fuente", "url_original", "cargo", "empresa", "comunas")):
@@ -78,16 +87,24 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
         batch_entries.append(entry)
     candidate_list = list(offers.values())
     statuses = check_ready_offers(candidate_list, rows, True)
+    mismatches=find_territory_mismatches(candidate_list,rows)
+    expired_missing={
+        item["id_fuente"] for item in candidate_list
+        if expired(item) and statuses.get(item["id_fuente"])=="not_found_in_complete_feed"
+    }
     for item in candidate_list:
         status = statuses.get(item["id_fuente"], "catalog_status_unavailable")
         batch = next(x for x in reversed(batch_entries) if x["batch_id"] == item["_batch_id"])
-        key = "source_confirmed" if status in ACTIVE else (
-            "semantic_only" if status in SEMANTIC else "not_found")
+        key = "expired_not_expected" if item["id_fuente"] in expired_missing else (
+            "source_confirmed" if status in ACTIVE else (
+            "semantic_only" if status in SEMANTIC else "not_found"))
         batch[key] += 1
     legacy_pending, resolved, legacy_semantic_only = [], [], []
     if original_missing:
         pending_status = check_ready_offers(list(original_missing.values()), rows, True)
         for identifier, old in original_missing.items():
+            if expired(old) and pending_status.get(identifier) not in ACTIVE:
+                continue
             status = pending_status.get(identifier)
             record = dict(old)
             if status in ACTIVE:
@@ -108,6 +125,7 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
         {"id_fuente": x["id_fuente"], "url_original": x["url_original"],
          "batch_id": x["_batch_id"], "status": statuses.get(x["id_fuente"])}
         for x in candidate_list if statuses.get(x["id_fuente"]) not in ACTIVE
+        and x["id_fuente"] not in expired_missing
     ]
     confirmation = {
         "schema_version": 1, "source": "complete_appdeploy_public_feed",
@@ -117,7 +135,10 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
         "distinct_nonquarantined_offers": len(candidate_list),
         "source_confirmed": counters["already_published_source_identity"],
         "semantic_only": counters["already_published_semantic"],
-        "not_found": counters["not_found_in_complete_feed"],
+        "not_found": counters["not_found_in_complete_feed"]-len(expired_missing),
+        "expired_not_expected":len(expired_missing),
+        "territory_mismatches_count":len(mismatches),
+        "territory_mismatches":mismatches,
         "latest_batch": batch_entries[-1] if batch_entries else None,
         "batches": batch_entries,
         "unresolved_active_batches": unresolved,
@@ -130,7 +151,9 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
         "scan_date": history.get("scan_date"),
         "checked_at": stamp, "feed_complete": True,
         "feed_rows": len(rows),
-        "state": "clear" if not legacy_pending else "needs_receipt_review",
+        "state": "needs_receipt_review" if legacy_pending else (
+            "needs_territory_repair" if mismatches else "clear"),
+        "territory_mismatches_count":len(mismatches),
         "historical_missing_from_catalog": len(legacy_pending),
         "released_from_quarantine": history.get("released_from_quarantine", 0),
         "released_items": history.get("released_items", []),
@@ -171,6 +194,8 @@ def main():
               "source_confirmed": latest["source_confirmed"],
               "semantic_only": latest["semantic_only"],
               "not_found": latest["not_found"],
+              "expired_not_expected":latest["expired_not_expected"],
+              "territory_mismatches_count":latest["territory_mismatches_count"],
               "prior_missing_resolved": latest["previously_flagged_resolved"],
               "prior_missing_remaining": latest["previously_flagged_still_pending"],
               "latest_batch": latest["latest_batch"],

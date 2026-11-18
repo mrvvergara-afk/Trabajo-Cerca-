@@ -106,6 +106,24 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("previous?.item.verified===true", self.feed)
         self.assertIn("!/confirmed|explicit|administrative|owner_request/.test(closure)", self.feed)
 
+    def test_chatgpt_bridge_is_hooked_into_publication_cron(self):
+        index=(ROOT/"index.ts").read_text(encoding="utf-8")
+        self.assertIn("await chatgptAutoImportHandler();",index)
+        self.assertIn("await confirmChatGPTPublications();",index)
+        self.assertLess(index.index("await chatgptAutoImportHandler();"),index.index("advancePublicFeed(feedProjector)"))
+        self.assertGreater(index.index("await confirmChatGPTPublications();"),index.index("advancePublicFeed(feedProjector)"))
+
+    def test_chatgpt_importer_confirms_corrected_location_and_official_open_lease(self):
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        bridge=(ROOT/"chatgpt-auto-import.ts").read_text(encoding="utf-8")
+        retention=(ROOT/"offer-retention.ts").read_text(encoding="utf-8")
+        for item in ("strictUndatedOpen","openOfficialEvidenceValidUntil",
+                     "territory_reconciled","expectedWorkCommunes"):
+            self.assertIn(item,importer)
+        self.assertIn("territory_reconciled",bridge)
+        self.assertIn("expectedWorkCommunes",bridge)
+        self.assertIn("verified_open_official_source_needs_fresh_evidence",retention)
+
     def test_feed_preserves_original_worksite_against_newer_portal_city(self):
         self.assertIn("preserveVerifiedTerritory", self.feed)
         self.assertIn("workLocationEvidence", self.feed)

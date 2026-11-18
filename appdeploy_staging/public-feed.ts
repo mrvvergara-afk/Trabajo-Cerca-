@@ -276,13 +276,16 @@ class Editor {
       const municipalEvidenceUntil=Date.parse(String(record.municipalOpenEvidenceValidUntil||''));
       const municipalEvidenceExpired=record.validityMethod==='municipal_open_status' &&
         (!Number.isFinite(municipalEvidenceUntil)||municipalEvidenceUntil<this.now);
+      const officialOpenEvidenceUntil=Date.parse(String(record.openOfficialEvidenceValidUntil||''));
+      const officialOpenEvidenceExpired=record.validityMethod==='verified_open_official_source' &&
+        (!Number.isFinite(officialOpenEvidenceUntil)||officialOpenEvidenceUntil<this.now);
       // Preserve a previously approved listing when its source becomes inactive
       // without a confirmed closure; this is a state discrepancy, not proof of closure.
       // Never restore the source's active flag automatically.
       const keep=previous?.item.verified===true && previous.item.review!==true &&
         (!Number.isFinite(deadline)||deadline>=this.now) &&
         !/confirmed|explicit|administrative|owner_request/.test(closure) &&
-        !municipalEvidenceExpired;
+        !municipalEvidenceExpired && !officialOpenEvidenceExpired;
       if(keep){
         console.warn('PUBLIC_FEED_LAST_GOOD_PRESERVED '+JSON.stringify({source,sourceId}));
         return;

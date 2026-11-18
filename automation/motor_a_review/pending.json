@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-18T14:12:17.556316+00:00",
-  "items_total": 7,
+  "updated_at": "2026-11-18T22:05:15.479703+00:00",
+  "items_total": 6,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
+      "last_checked_at": "2026-11-18T22:05:15.479703+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -33,7 +33,7 @@
       "date_source_hint": "2026-11-11 14:36:11",
       "deadline_hint": "2027-01-25T14:36:11",
       "first_discovered_at": "2026-11-12T15:52:12.590137+00:00",
-      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
+      "last_checked_at": "2026-11-18T22:05:15.479703+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -41,40 +41,20 @@
       "review_reason": "explicit_worksite_in_original_description"
     },
     {
-      "id": "a_7d65d64b41320c2ca4a3",
-      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-produccion-de-miel-en-la-comuna-de-mulchen-3919935",
+      "id": "a_dfa1f8d173984ff01036",
+      "url": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
       "source": "Motor A Chiletrabajos",
-      "work_commune": "Mulchén",
-      "title_hint": "Relator para curso de Producción de Miel en la comuna de Mulchén - Los Ángeles | Chiletrabajos",
-      "date_source_hint": "2026-10-24 13:55:54",
-      "deadline_hint": "2027-01-07T13:55:54",
-      "first_discovered_at": "2026-11-18T03:27:27.674452+00:00",
-      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
+      "work_commune": "Purén",
+      "title_hint": "Analista de Vibraciones - Mininco, Planta Plywood - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-18 17:27:54",
+      "deadline_hint": "2027-02-01T17:27:54",
+      "first_discovered_at": "2026-11-18T22:05:15.479703+00:00",
+      "last_checked_at": "2026-11-18T22:05:15.479703+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_2c74be00d4589b2875d5",
-      "url": "https://www.chiletrabajos.cl/trabajo/relator-para-curso-de-administracion-gastronomica-3919940",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Lumaco",
-      "title_hint": "Relator para curso de Administración Gastronómica - Temuco | Chiletrabajos",
-      "date_source_hint": "2026-10-29 23:57:54",
-      "deadline_hint": "2027-01-12T23:57:54",
-      "first_discovered_at": "2026-11-18T03:27:27.674452+00:00",
-      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Temuco"
-      ]
     },
     {
       "id": "a_1843a3809a023ee68321",
@@ -138,12 +118,12 @@
     }
   ],
   "metrics": {
-    "added": 9,
-    "updated": 5,
+    "added": 8,
+    "updated": 4,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
     "published_reconciled": 9,
-    "territory_mismatch": 5
+    "territory_mismatch": 4
   }
 }

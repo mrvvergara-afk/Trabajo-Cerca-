@@ -258,7 +258,8 @@ def produce(report,root=None,today=None,publication_statuses=None):
                 fresh.get("date_source")==offer.get("fecha_publicacion") and
                 fresh.get("deadline")==offer.get("fecha_cierre") and
                 normalize(fresh.get("employer"))==normalize(offer.get("empresa")) and
-                str(fresh.get("source","")).startswith("Portal Chiletrabajos · ")):
+                str(fresh.get("source","")).startswith((
+                    "Portal Chiletrabajos · ", "Chiletrabajos · ", "Motor A · ")))
                 return True
         return False
     # Migrate old manifests from their actual batches, including HTML offers.

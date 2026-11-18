@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-17T16:27:35.066692-03:00",
+  "last_run": "2026-11-17T21:30:52.242304-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -6491,6 +6491,126 @@
     "0ebd845edf8b93513887": {
       "first_seen": "2026-11-17T16:27:35.066692-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/control-de-acceso-para-supermercado-en-vitacura-fin-de-semana-horario-rotativo-am-pm-3078608.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "28247971b95e9623618c": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/secretaria-o-administrativa-o-recepcion-reemplazo-temporal-3078803.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cbfa080c1b20b3949d1c": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/coordinador-de-abastecimiento-3078802.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4c85890ed3bab982505d": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/analista-contable-de-remuneraciones-region-de-coquimbo-1700000-5x2-3078801.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "18d3bd01d2e9de78cada": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/administrativo-jr-3078800.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "58da79a0f681eb649458": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/analista-contable-de-remuneraciones-region-de-coquimbo-1700000-5x2-3078799.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5d3826e34a842d3cf546": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/administrador-de-contrato-servicio-de-alimentacion-colectiva-3078798.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a0e28eb8e826062b72d7": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-a-integral-full-time-las-hualtatas-vitacura-turno-rotativo-3078797.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7637a523a4933a67b888": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/devops-aws-3078796.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ddd220e4856750d7e189": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-electrico-con-certificacion-sec-vigente-3078795.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "25fedc6f8e457f7622b7": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-marketing-marketing-digital-3078794.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f1d6c98ce02da9e2f265": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/mcdonald-s-balneario-sur-antofagasta-busca-crew-part-time-turnos-rotativos-cupos-limitados-3078793.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5654cf56772ce1aacf89": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-aseo-industrial-3078792.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6ed80ca78303beeb77ed": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-comercial-senior-tecnologia-y-canal-mayorista-rm-3078791.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e9fcfd4b197370c9d5cf": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asesor-de-ventas-menaje-y-electrodomesticos-full-time-rom-maipu-3078790.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8378e2ed5b37a8d40af3": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asesor-de-ventas-menaje-y-electrodomesticos-full-time-rom-cerrillos-3078789.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "691819dbbbe59935610c": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/asesor-de-ventas-menaje-y-electrodomesticos-full-time-rom-talca-3078788.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ea069237a611d57354f5": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/operador-parking-asistente-de-estacionamiento-mall-plaza-maule-3078787.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7a08cfd9f7a32e19b57c": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/torre-de-control-taller-automotriz-3078786.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4aa4d2ca30feb0b4763d": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnicos-especialistas-ups-3078785.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3d19aa3a82914632a4da": {
+      "first_seen": "2026-11-17T21:30:52.242304-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-especialista-ups-3078784.html",
       "source": "Inventario D04",
       "commune": null
     }

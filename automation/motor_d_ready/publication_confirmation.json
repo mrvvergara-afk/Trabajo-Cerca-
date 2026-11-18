@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-18T00:25:33.529621+00:00",
+  "checked_at": "2026-11-18T03:25:37.584971+00:00",
   "feed_complete": true,
   "feed_rows": 281,
   "indexed_batches": 23,
@@ -10,14 +10,55 @@
   "distinct_nonquarantined_offers": 52,
   "source_confirmed": 51,
   "semantic_only": 0,
-  "not_found": 1,
+  "not_found": 0,
+  "expired_not_expected": 1,
+  "territory_mismatches_count": 3,
+  "territory_mismatches": [
+    {
+      "id_fuente": "d_9e173e643c73999fa7f6",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
+      "catalog_id": "free-9e173e643c73999fa7f6e52332a957d0834d0b45",
+      "expected_work_communes": [
+        "Nacimiento"
+      ],
+      "catalog_work_communes": [
+        "Angol"
+      ],
+      "status": "catalog_territory_mismatch"
+    },
+    {
+      "id_fuente": "d_bef43ecfd4d8417f1770",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
+      "catalog_id": "free-c9a7209710e4ccc2807b3b51e8909ad00bcbb490",
+      "expected_work_communes": [
+        "Purén"
+      ],
+      "catalog_work_communes": [
+        "Angol"
+      ],
+      "status": "catalog_territory_mismatch"
+    },
+    {
+      "id_fuente": "d_5813016bef2debcf1ea2",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",
+      "catalog_id": "free-3d3f9fa91ee8942da92bb88f07a7eaed8fef3043",
+      "expected_work_communes": [
+        "Nacimiento"
+      ],
+      "catalog_work_communes": [
+        "Angol"
+      ],
+      "status": "catalog_territory_mismatch"
+    }
+  ],
   "latest_batch": {
     "batch_id": "motor-d-20261117-7b0f83c38bf2d64686",
     "historically_quarantined": false,
     "offer_count": 1,
     "source_confirmed": 1,
     "semantic_only": 0,
-    "not_found": 0
+    "not_found": 0,
+    "expired_not_expected": 0
   },
   "batches": [
     {
@@ -26,7 +67,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261105-9d1b76ac928698cbdf",
@@ -34,7 +76,8 @@
       "offer_count": 6,
       "source_confirmed": 6,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261105-c56df7f84da816626b",
@@ -42,7 +85,8 @@
       "offer_count": 1,
       "source_confirmed": 0,
       "semantic_only": 0,
-      "not_found": 1
+      "not_found": 0,
+      "expired_not_expected": 1
     },
     {
       "batch_id": "motor-d-20261106-384c775569886e2a51",
@@ -50,7 +94,8 @@
       "offer_count": 2,
       "source_confirmed": 2,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261106-2628d7b356761e7847",
@@ -58,7 +103,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261107-3927989abcdef12345",
@@ -66,7 +112,8 @@
       "offer_count": 2,
       "source_confirmed": 2,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261108-bccafbb13b7baa5270",
@@ -74,7 +121,8 @@
       "offer_count": 15,
       "source_confirmed": 0,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261108-50a5c80afe2d3bf4fd",
@@ -82,7 +130,8 @@
       "offer_count": 9,
       "source_confirmed": 0,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261109-2e40d6a0bf1539d719",
@@ -90,7 +139,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261109-be94a5b61fc692639f",
@@ -98,7 +148,8 @@
       "offer_count": 15,
       "source_confirmed": 15,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261109-565f8bf99a9e3d40bd",
@@ -106,7 +157,8 @@
       "offer_count": 4,
       "source_confirmed": 4,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261111-53b485c2b77b7f7fae",
@@ -114,7 +166,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261111-9d4afde5d2aa8e880a",
@@ -122,7 +175,8 @@
       "offer_count": 7,
       "source_confirmed": 7,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261111-90ff8aa200ba8f953c",
@@ -130,7 +184,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261112-e320b72de7d2b23bc7",
@@ -138,7 +193,8 @@
       "offer_count": 2,
       "source_confirmed": 2,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261113-7eead2a588e2f46bf4",
@@ -146,7 +202,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261113-f1f5321e2fa710cca9",
@@ -154,7 +211,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261113-3ab8bd16126cecb1cd",
@@ -162,7 +220,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261116-27006c2880f137e1ed",
@@ -170,7 +229,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261116-0180d2c50c776431cc",
@@ -178,7 +238,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261117-801af106c24ba37074",
@@ -186,7 +247,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261117-53436b1aa9c4ef8977",
@@ -194,7 +256,8 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261117-7b0f83c38bf2d64686",
@@ -202,17 +265,11 @@
       "offer_count": 1,
       "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0
+      "not_found": 0,
+      "expired_not_expected": 0
     }
   ],
-  "unresolved_active_batches": [
-    {
-      "id_fuente": "d_restore_aba6c908a9d7b1936b",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/m1-moldajero-obra-gruesa-hospital-de-nacimiento-contrato-a-trato-3887988",
-      "batch_id": "motor-d-20261105-c56df7f84da816626b",
-      "status": "not_found_in_complete_feed"
-    }
-  ],
+  "unresolved_active_batches": [],
   "previously_flagged_resolved": 0,
   "previously_flagged_still_pending": 0,
   "prior_pending_resolution": []

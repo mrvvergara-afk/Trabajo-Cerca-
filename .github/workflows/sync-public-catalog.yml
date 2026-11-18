@@ -8,6 +8,13 @@ on:
     paths:
       - '.github/workflows/sync-public-catalog.yml'
       - 'automation/sync_catalog_identities.py'
+      # Refresh the live identity mirror when the independent ChatGPT producer
+      # records a wave; this does not trigger for the mirror's own [skip ci] commit.
+      - 'automation/chatgpt_coverage/**'
+  workflow_run:
+    workflows: ['Motor D - Barrido territorial 12 comunas']
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: write
@@ -18,6 +25,9 @@ concurrency:
 
 jobs:
   mirror:
+    # An independent D sweep can retry the mirror even when GitHub delays
+    # ordinary scheduled workflows. Never mirror after a failed D run.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:

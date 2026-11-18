@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-18T21:32:49+00:00",
+  "generated_at": "2026-11-18T23:54:18+00:00",
   "complete": true,
-  "totalItemsReported": 284,
-  "jobIdentityCount": 280,
+  "totalItemsReported": 286,
+  "jobIdentityCount": 282,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 102,
+  "visibleIn12CommunesCount": 104,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "f1490c7b011eeb89857a956d4b95c78ee62bef38eee813c0ebc6b68c29f0427f",
+  "fingerprint": "992d5bb0a82e830966a13da0d8456efdf8a1ba83aa6ea9598197f68fadd0dfb2",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -886,6 +886,17 @@
       "urlHashSha256": "eedd8d86097d3012ce0b619f080a8a8aec504a6f7cc22fc52c9d9d48fa192d09"
     },
     {
+      "id": "chatgpt_d_1a99f7fd5b8b9d116634",
+      "title": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "company": "CMPC",
+      "workCommunes": [
+        "Purén"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
+      "urlHashSha256": "1a99f7fd5b8b9d116634648df81bdf192467d4fddb125a1675d9464a9387939d"
+    },
+    {
       "id": "chatgpt_d_2795b5d75320388ba141",
       "title": "GESTOR DE CASOS, jornada completa, CDC MCA Angol, región de La Araucanía",
       "company": "FUNDACION CIUDAD DEL NIÑO",
@@ -1093,6 +1104,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
       "urlHashSha256": "c86ec67e426e27e241495fc15752049361c35f706a5bbf855f80a28a3f09bef4"
+    },
+    {
+      "id": "chatgpt_d_cace0a119d050a60beba",
+      "title": "Inspector Comercial Victoria Ercilla",
+      "company": "Peoplego",
+      "workCommunes": [
+        "Victoria"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/inspector-comercial-victoria-ercilla-3934905",
+      "urlHashSha256": "cace0a119d050a60beba3bc78e24c6892330200ca261df8308627ccd68e8bbbd"
     },
     {
       "id": "chatgpt_d_cc0fbbdbedccef4fe20d",

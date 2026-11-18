@@ -110,8 +110,9 @@ class BackendPreflight(unittest.TestCase):
         index=(ROOT/"index.ts").read_text(encoding="utf-8")
         self.assertIn("await chatgptAutoImportHandler();",index)
         self.assertIn("await confirmChatGPTPublications();",index)
-        self.assertLess(index.index("await chatgptAutoImportHandler();"),index.index("advancePublicFeed(feedProjector)"))
-        self.assertGreater(index.index("await confirmChatGPTPublications();"),index.index("advancePublicFeed(feedProjector)"))
+        cron=index.split("export const v14VerificationHandler",1)[1].split("export const v15VerificationRecoveryHandler",1)[0]
+        self.assertLess(cron.index("await chatgptAutoImportHandler();"),cron.index("advancePublicFeed(feedProjector)"))
+        self.assertGreater(cron.index("await confirmChatGPTPublications();"),cron.index("advancePublicFeed(feedProjector)"))
 
     def test_chatgpt_importer_confirms_corrected_location_and_official_open_lease(self):
         importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-18T00:27:40.000551-03:00",
+  "last_run": "2026-11-18T01:31:30.725057-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -6761,6 +6761,78 @@
     "cea59df3a79de265535d": {
       "first_seen": "2026-11-18T00:27:40.000551-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maestra-o-obras-civiles-y-electricidad-cerrillos-3078959.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cfa40b39a91b19c11169": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/jefe-a-de-local-42-hrs-semanales-mall-paseo-machali-3078975.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "051c350ce509dbcb22ec": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/capacitacion-gratuita-a-vendedores-ejecutivos-de-ventas-con-licencia-b-copiapo-capacitacion-sence-3078974.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "80976722ee1815570ca3": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/capacitacion-gratuita-a-vendedores-ejecutivos-de-ventas-con-licencia-b-todas-las-comunas-en-santiago-capacitacion-sence-3078973.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a8798eeb7b0ee3087e57": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/auxiliar-mayordomo-hombre-servicios-generales-mantencion-plaza-gastronomica-l-a-v-750000-liquidos-concepcion-3078972.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7e747560cfb5d3cb3ead": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/8673-ingeniero-electrico-construccion-planta-industrial-3078971.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "33245368f56d25012fdc": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/arquitecto-a-especificador-quilicura-3078970.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "97c14f8326f25f57644a": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-flota-y-herramientas-3078969.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3921c08701c0ef1fc2af": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maestro-mueblista-carpintero-de-muebles-y-cocinas-lampa-hasta-850000-liquidos-3078968.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "da641f9e9b8bbdad7a1a": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maestro-mueblista-lampa-hasta-850000-liquidos-3078967.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c3db0afc25617f492ce2": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maestro-armador-de-muebles-y-cocinas-lampa-hasta-850000-3078966.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "62a35e1db6d429bf0f7f": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/tecnico-frigorista-coronel-3078965.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5febe5e15e74634d7f95": {
+      "first_seen": "2026-11-18T01:31:30.725057-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-tecnico-industrial-santiago-3078964.html",
       "source": "Inventario D04",
       "commune": null
     }

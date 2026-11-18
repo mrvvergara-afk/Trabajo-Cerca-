@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-18T11:16:54+00:00",
+  "generated_at": "2026-11-18T12:24:57+00:00",
   "complete": true,
-  "totalItemsReported": 281,
-  "jobIdentityCount": 277,
+  "totalItemsReported": 282,
+  "jobIdentityCount": 278,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 97,
+  "visibleIn12CommunesCount": 98,
   "outside12CommuneScopeCount": 180,
   "pagesChecked": 11,
-  "fingerprint": "febeedfe0738f6a297f9b8ba8178c9f2069cead17ee9da4c2274df8e9db847f5",
+  "fingerprint": "17e6a2c17b748b5828d1353fc5fe852b73b81a96e26210e10fa47558d53cffcc",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -840,6 +840,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-victoria-3932097",
       "urlHashSha256": "b1991b80dde5d8efe1c9032afc95f2a99b585803321d6760fa0f595d2440e172"
+    },
+    {
+      "id": "chatgpt_cg_c7d521f0c88ecb48d3e7",
+      "title": "Concurso Municipal Renaico: 6 salvavidas, 2 TENS, 2 aseo y 2 seguridad (12 vacantes)",
+      "company": "Municipalidad de Renaico",
+      "workCommunes": [
+        "Renaico"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "urlHashSha256": "c7d521f0c88ecb48d3e7f335311992256e45e2d2772c0557d2d12c596bb00921"
     },
     {
       "id": "chatgpt_cg_cf56d288bde056a1d0fe",

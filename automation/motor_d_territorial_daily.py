@@ -378,7 +378,8 @@ def chiletrabajos_metadata(soup, title, url):
         # the job description omits the execution site.
         city=None
     expiry=re.search(r"\bExpira\s+(20\d{2}-\d{2}-\d{2})\b",text,re.I)
-    closed=bool(expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
+    closed=bool((expiry and datetime.strptime(expiry.group(1),"%Y-%m-%d").date()<NOW.date())
+                or re.search(r"Este anuncio ha expirado o ha sido desactivado por el empleador",text,re.I))
     application=bool(re.search(r"\bPostular\b|\benv[ií]a\s+tu\s+curr[ií]culum\b|\benv[ií]a\s+tu\s+cv\b",text,re.I))
     return {"employer":employer if employer and len(employer)<=140 else None,
             "work_commune":city,"application_evidence":application,"source_closed":closed,

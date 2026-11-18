@@ -4,20 +4,25 @@ import { db, json, error, isAppDatabaseError } from '@appdeploy/sdk';
 import { readPublicFeedPage, registerPublicFeedChange } from './public-feed';
 import { safePublicUrl, publicJobExclusion, publicFeedIdentity } from './public-source-adapters';
 
-type Candidate={id_fuente:string;cargo:string;empresa:string;comunas:string[];url_original:string;fecha_publicacion:string|null;fecha_descubrimiento?:string;municipal_open_index_url?:string;application_method?:string;fecha_cierre?:string|null;justificacion?:string;recruitment_communes?:string[];work_location?:string;territorial_recruitment_verified?:boolean;social_source_account?:string;social_evidence_type?:string;fecha_publicacion_metodo?:string;internal_visibility_days?:number;ubicacion_trabajo?:string;modalidad?:string;salario?:string|null;enlace_postulacion?:string|null;url_canonica?:string;hash_url_sha256?:string};
+type Candidate={id_fuente:string;cargo:string;empresa:string;comunas:string[];url_original:string;fecha_publicacion:string|null;fecha_descubrimiento?:string;municipal_open_index_url?:string;application_method?:string;fecha_cierre?:string|null;vigencia_fuente?:string;fecha_verificacion?:string;justificacion?:string;recruitment_communes?:string[];work_location?:string;territorial_recruitment_verified?:boolean;social_source_account?:string;social_evidence_type?:string;fecha_publicacion_metodo?:string;internal_visibility_days?:number;ubicacion_trabajo?:string;modalidad?:string;salario?:string|null;enlace_postulacion?:string|null;url_canonica?:string;hash_url_sha256?:string};
 const LOCAL=new Set(['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento']);
 const norm=(s:string)=>s.toLowerCase().normalize('NFD').replace(/[^a-z0-9 ]/g,' ').replace(/ +/g,' ').trim();
 const keyUrl=(s:string)=>{const known=publicFeedIdentity(s);if(known)return known;const clean=safePublicUrl(s);if(!clean)return '';const url=new URL(clean);return url.hostname.replace(/^www\./,'')+url.pathname.replace(/\/$/,'')+url.search;};
 const STRICT_FIELDS=new Set(['id_fuente','cargo','empresa','comunas','ubicacion_trabajo',
   'modalidad','salario','url_original','enlace_postulacion','fecha_publicacion','fecha_descubrimiento',
-  'fecha_cierre','justificacion','url_canonica','hash_url_sha256']);
+  'fecha_cierre','justificacion','url_canonica','hash_url_sha256','vigencia_fuente','fecha_verificacion']);
 const REQUIRED_STRICT=['id_fuente','cargo','empresa','comunas','ubicacion_trabajo',
   'modalidad','salario','url_original','enlace_postulacion','fecha_publicacion','fecha_descubrimiento'];
-const GEO_ALIASES:Record<string,string[]>={Collipulli:['mininco'],Negrete:['coihue','coigue'],Lumaco:['capitan pastene']};
+const GEO_ALIASES:Record<string,string[]>={Collipulli:['mininco'],Negrete:['coihue','coigue','cohigue'],Lumaco:['capitan pastene']};
 const normalizePlace=(str:string)=>str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/ +/g,' ').trim();
 function territoryFromLocation(name:string,work:string){
   const names=[name,...(GEO_ALIASES[name]||[])].map(normalizePlace);
-  return names.some(tag=>(' '+work+' ').includes(' '+tag+' '));
+  return names.some(tag => {
+    if(!(' '+work+' ').includes(' '+tag+' ')) return false;
+    if(tag==='victoria' && (/\bnueva\s+victoria\b/.test(work) ||
+       /\bvictoria\s+s\s+secret\b/.test(work))) return false;
+    return true;
+  });
 }
 function parse(value:unknown,strict=false):Candidate[]|null {
   if(!Array.isArray(value)||value.length<1||value.length>15)return null;
@@ -30,6 +35,15 @@ function parse(value:unknown,strict=false):Candidate[]|null {
     const date=x.fecha_publicacion==null?null:String(x.fecha_publicacion),deadline=x.fecha_cierre==null?null:String(x.fecha_cierre);
     // The publisher did not specify the original date. No fabricated date
     // or artificial employer deadline; allow only the exact official OMIL proof.
+    const verifiedDay=String(x.fecha_verificacion||'');
+    const evidenceAt=/^20\d{2}-\d{2}-\d{2}$/.test(verifiedDay)
+      ? Date.parse(verifiedDay+'T00:00:00-03:00'):NaN;
+    const strictUndatedOpen=Boolean(strict && date===null &&
+      x.vigencia_fuente==='postulacion_abierta_verificada' &&
+      Number.isFinite(evidenceAt) && evidenceAt<=Date.now() &&
+      Date.now()-evidenceAt<=3*86400000 &&
+      typeof x.enlace_postulacion==='string' &&
+      Boolean(safePublicUrl(x.enlace_postulacion)));
     const municipalOpen=(date===null &&
       url==='https://www.munimulchen.cl/oferta-laboral-02-operarios-agrarios-cosecha-de-arandanos/' &&
       x.municipal_open_index_url==='https://www.munimulchen.cl/pagina-central-ofertas-laborales/' &&
@@ -43,7 +57,7 @@ function parse(value:unknown,strict=false):Candidate[]|null {
       Date.parse(x.fecha_descubrimiento)<=Date.now());
     if(!/^[A-Za-z0-9_-]{4,64}$/.test(id)||title.length<5||title.length>180||company.length<2||company.length>140||
       !Array.isArray(communes)||!communes.length||communes.length>12||!communes.every(y=>typeof y==='string'&&LOCAL.has(y))||
-      (!municipalOpen && (date===null || !/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date) || Number.isNaN(Date.parse(date)) || Date.parse(date+'T00:00:00-03:00')>Date.now()))||
+      (!municipalOpen && !strictUndatedOpen && (date===null || !/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date) || Number.isNaN(Date.parse(date)) || Date.parse(date+'T00:00:00-03:00')>Date.now()))||
       (deadline!==null&&(!/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(deadline)||Number.isNaN(Date.parse(deadline))))||
       !url.startsWith('https://')||url.length>700)return null;
     let host='';try{host=new URL(url).hostname.toLowerCase()}catch{return null;}
@@ -74,7 +88,9 @@ function parse(value:unknown,strict=false):Candidate[]|null {
       ...(strict?{ubicacion_trabajo:String(x.ubicacion_trabajo),modalidad:String(x.modalidad),
         salario:x.salario as string|null,enlace_postulacion:x.enlace_postulacion as string|null,
         url_canonica:String(x.url_canonica),hash_url_sha256:String(x.hash_url_sha256),
-        fecha_descubrimiento:String(x.fecha_descubrimiento)}:{}),...(municipalOpen?{
+        fecha_descubrimiento:String(x.fecha_descubrimiento)}:{}),
+      ...(strictUndatedOpen?{vigencia_fuente:'postulacion_abierta_verificada',
+        fecha_verificacion:verifiedDay}:{}),...(municipalOpen?{
       municipal_open_index_url:String(x.municipal_open_index_url),application_method:'in_person_omil',
       fecha_descubrimiento:String(x.fecha_descubrimiento),fecha_publicacion_metodo:String(x.fecha_publicacion_metodo),
       internal_visibility_days:14
@@ -184,6 +200,7 @@ export async function directChatGPTImport(body:unknown){
   for(const x of candidates){
     const social=x.social_source_account==='omilangol2026';
     const municipal=Boolean(x.municipal_open_index_url && x.fecha_publicacion===null);
+    const officialUndated=x.fecha_publicacion===null && x.vigencia_fuente==='postulacion_abierta_verificada';
     const urlKey=social?'':keyUrl(x.url_original);
     const urlHash=social?'':canonicalSourceHash(x.url_original);
     const canonicalUrl=social?'':canonicalSourceUrl(x.url_original);
@@ -209,12 +226,15 @@ export async function directChatGPTImport(body:unknown){
       workLocation:social?(x.work_location||'Lugar de trabajo no informado'):(x.ubicacion_trabajo||x.comunas.join(' / ')),workCommunes:social?[]:x.comunas,recruitmentCommunes:social?x.recruitment_communes||['Angol']:[],recruitmentZones:social?['Postulación presencial OMIL Angol']:[],
       ...(social?{territorialRecruitmentVerified:true,sourceDateEvidence:x.fecha_publicacion_metodo,sourceEvidenceType:x.social_evidence_type,sourceAccount:x.social_source_account,sourceOriginalDateEstimated:true}:{ }),
       area:social?'Reclutamiento OMIL':municipal?'Oferta laboral OMIL':'Radar externo',status:'Verificada',
-      date:municipal?'Fecha original no informada':social?'Fecha aproximada: '+x.fecha_publicacion:x.fecha_publicacion,
+      date:(municipal||officialUndated)?'Fecha original no informada':social?'Fecha aproximada: '+x.fecha_publicacion:x.fecha_publicacion,
       source:social?'OMIL Angol · Instagram':municipal?'Municipalidad de Mulchén · OMIL':'Fuente externa · '+new URL(x.url_original).hostname,
       sourceDomain:new URL(x.url_original).hostname,sourcePublishedAt:x.fecha_publicacion,
       sourceValidThrough:x.fecha_cierre,expiresAt:x.fecha_cierre||undefined,
-      validityMethod:municipal?'municipal_open_status':x.fecha_cierre?'explicit_deadline':'open_posting',url:x.url_original,
+      validityMethod:municipal?'municipal_open_status':officialUndated?'verified_open_official_source':x.fecha_cierre?'explicit_deadline':'open_posting',url:x.url_original,
       ...(!social?{urlHashSha256:urlHash,canonicalSourceUrl:canonicalUrl}:{}),
+      ...(officialUndated?{openOfficialEvidenceValidUntil:new Date(Date.now()+14*86400000).toISOString(),
+        sourceOriginalDateUnreported:true,sourceDateUnconfirmed:true,
+        sourceDateEvidence:'verified_open_official_source',openOfficialEvidenceCheckedAt:x.fecha_verificacion}:{}),
       ...(strict?{jobModality:x.modalidad,salaryText:x.salario,applicationUrl:x.enlace_postulacion,
         sourceDiscoveredAt:x.fecha_descubrimiento}:{}),
       ...(municipal?{municipalOpenIndexUrl:x.municipal_open_index_url,
@@ -223,7 +243,7 @@ export async function directChatGPTImport(body:unknown){
         sourceDateEvidence:'official_municipal_index_open',applicationMethod:'in_person_omil'}:{}),
       note:x.justificacion||'Oferta comprobada en fuente individual mediante revisión ChatGPT.',
       tags:[],visual:'field',icon:'work',review:false,verified:true,active:true,createdAt:now,
-      firstPublishedAt:municipal?now:social?now:x.fecha_publicacion,
+      firstPublishedAt:(municipal||officialUndated)?now:social?now:x.fecha_publicacion,
       discoveredBy:producer==='motor_d_territorial'?(municipal?'motor-d-official-omil':social?'motor-d-social-omil':'motor-d-territorial'):'chatgpt-direct',verifiedAt:now,lastVerifiedAt:now,
       verificationMethod:municipal?'omil_official_open_index':social?'omil_social_poster_evidence':producer==='motor_d_territorial'?'motor_d_primary_source':'chatgpt_primary_source_manual',
       verificationReason:municipal?'Índice municipal indica Postulación Abierta; ficha individual acredita la postulación presencial; fecha original no informada. Revalidación obligatoria en 14 días.':

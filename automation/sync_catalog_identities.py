@@ -34,6 +34,7 @@ TERRITORIAL_ALIASES = {
     'villa mininco': 'collipulli',
     'coihue': 'negrete',
     'coigue': 'negrete',
+    'cohigue': 'negrete',
     'capitan pastene': 'lumaco',
 }
 
@@ -202,6 +203,8 @@ def main() -> None:
         "complete": True,
         "totalItemsReported": expected_total,
         "jobIdentityCount": len(rows),
+        "nonJobItemsExcluded": expected_total - len(rows),
+        "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
         "visibleIn12CommunesCount": sum(bool(x['visibleIn12Communes']) for x in rows),
         "outside12CommuneScopeCount": sum(not x['visibleIn12Communes'] for x in rows),
         "pagesChecked": pages,

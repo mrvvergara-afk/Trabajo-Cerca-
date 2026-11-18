@@ -1296,8 +1296,8 @@
       "location": "Planta Santa Fe",
       "url": "https://www.kitempleo.cl/empleo/114557087/inspector-a-ambiental-nacimiento",
       "discovered_at": "2026-11-18T15:42:40Z",
-      "reason": "Oferta individual reciente corroborada en perfil público CMPC; falta enlace ATS oficial y conciliación fresca",
-      "catalog_status": "catalog_unavailable"
+      "reason": "Conciliación semántica con espejo válido: CMPC Inspector/a Ambiental Nacimiento ya publicada como chatgpt_d_40aa70282f34e44e2afb; ATS requisition 19384. NO reenviar.",
+      "catalog_status": "already_visible"
     },
     {
       "title": "AYUDANTE REPROCESO",
@@ -1351,7 +1351,7 @@
     "reason": "Espejo validado en onda 0; API directa no disponible desde lector. Lote Renaico ya en índice pero no visible en espejo; no se reenvía.",
     "appdeploy_public_jobs_at_1220_utc": 278,
     "mirror_job_identities": 277,
-    "publication_reconciliation": "Renaico visible y CMPC Procesos y Excelencia ya existente; no reenviar. Nuevos candidatos requieren validación semántica y/o ATS.",
+    "publication_reconciliation": "Renaico visible; CMPC Procesos y Excelencia e Inspector/a Ambiental ya existentes en espejo (279 identidades). No reenviar. Ayudante Reproceso pendiente verificación semántica/ATS.",
     "last_checked_at": "2026-11-18T19:37:10Z",
     "mirror_job_identity_count": 279,
     "mirror_complete": true,

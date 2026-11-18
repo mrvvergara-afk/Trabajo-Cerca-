@@ -130,8 +130,21 @@ def check(item,reader=None):
     works=[]
     for cue in cues:
         for match in re.finditer(cue,flat,re.I):
-            # Do not interpret a residence requirement or HR contact as a worksite.
-            if re.search(r'\b(?:residencia|domicilio|rrhh|entrevista)\s+(?:en|de)\s*
+            preceding=flat[max(0,match.start()-36):match.start()].split()
+            if any(word in preceding[-3:] for word in ("residencia","domicilio","rrhh","entrevista")):
+                continue
+            works.extend(communes(match.group(1)))
+    work=list(dict.fromkeys(works))
+    if len(work)==1:
+        return {'status':'review_ready','reason':'explicit_worksite_in_original_description',
+                'title':doc.title[:180], 'work_commune':work[0],
+                'locations_seen':locations,'url':final,
+                'date_source_hint':next((j.get('date_source') for j in jobs if j.get('date_source')),None),
+                'deadline_hint':next((j.get('deadline') for j in jobs if j.get('deadline')),None),
+                'note':'Original worksite overrides recruiting city; Motor D must confirm independently.'}
+    if len(work)>1:
+        return {'status':'pending','reason':'multiple_explicit_worksites',
+                'locations_seen':work,'title':doc.title[:180]}
     if len(locations)==1:
         job=next((j for j in jobs if locations[0] in j['locations']),{})
         return {'status':'review_ready','reason':'jobposting_structured_location',

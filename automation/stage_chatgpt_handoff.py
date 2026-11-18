@@ -9,7 +9,7 @@ from datetime import date, datetime, timezone
 from ipaddress import ip_address
 from pathlib import Path
 from urllib.parse import urlsplit
-from automation.chatgpt_extraction_contract import validate_batch
+from automation.chatgpt_extraction_contract import validate_batch, source_identity
 
 COMMUNES = {"Angol", "Collipulli", "Ercilla", "Lumaco", "Los Sauces", "Purén", "Renaico",
             "Traiguén", "Victoria", "Mulchén", "Negrete", "Nacimiento"}
@@ -24,7 +24,8 @@ def prepare(payload: dict, index: dict, day: str | None = None):
     offers = payload.get("offers")
     if not isinstance(offers, list) or not 1 <= len(offers) <= 15:
         raise ValueError("invalid_batch_size")
-    offers = validate_batch(copy.deepcopy(offers), set(index.get("seen_url_hashes", [])))
+    offers = validate_batch(copy.deepcopy(offers), set(index.get("seen_url_hashes", [])),
+                            prior_source_identities=set(index.get("seen_source_identities", [])))
     prior = set(index.get("seen_offer_ids", []))
     unique = set()
     for offer in offers:
@@ -90,7 +91,8 @@ def prepare(payload: dict, index: dict, day: str | None = None):
     updated = {**index, "batches": [*index["batches"],
                 {"batch_id": batch_id, "file": relative, "count": len(offers)}],
                "seen_offer_ids": sorted(prior | unique),
-               "seen_url_hashes": sorted(set(index.get("seen_url_hashes", [])) | {x["hash_url_sha256"] for x in offers})}
+               "seen_url_hashes": sorted(set(index.get("seen_url_hashes", [])) | {x["hash_url_sha256"] for x in offers}),
+               "seen_source_identities": sorted(set(index.get("seen_source_identities", [])) | {source_identity(x["url_original"]) for x in offers})}
     return relative, batch, updated
 
 def main():

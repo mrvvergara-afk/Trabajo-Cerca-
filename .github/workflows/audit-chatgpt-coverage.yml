@@ -1,8 +1,15 @@
 name: Audit ChatGPT territorial coverage (read only)
 on:
+  pull_request:
+    paths:
+      - 'automation/audit_chatgpt_coverage.py'
+      - 'automation/test_audit_chatgpt_coverage.py'
+      - '.github/workflows/audit-chatgpt-coverage.yml'
   workflow_dispatch:
   schedule:
     - cron: '35 0,4,8,12,16,20 * * *'
+    # 21:35 en invierno, 22:35 en verano: después de la onda 3 a las 21:00 Chile.
+    - cron: '35 1 * * *'
 permissions:
   contents: read
 jobs:
@@ -14,6 +21,8 @@ jobs:
       - name: Run audit regression tests
         run: python3 -m unittest automation/test_audit_chatgpt_coverage.py
       - name: Audit latest coverage against current inventory
+        env:
+          SCHEDULED_CRON: ${{ github.event.schedule }}
         shell: bash
         run: |
           set -euo pipefail
@@ -21,6 +30,10 @@ jobs:
           latest="automation/chatgpt_coverage/${chile_date}.json"
           if [ ! -f "$latest" ]; then
             echo "::warning::Coverage not yet available for Chile date ${chile_date}; no successful coverage claim"
+            if [ "$SCHEDULED_CRON" = '35 1 * * *' ]; then
+              echo "::error::COVERAGE_MISSING_END_OF_DAY ${chile_date}"
+              exit 3
+            fi
             exit 0
           fi
           python3 automation/audit_chatgpt_coverage.py --coverage "$latest" --output /tmp/chatgpt-coverage-audit.json
@@ -31,4 +44,9 @@ jobs:
               f.write('## ChatGPT coverage audit\n\n')
               f.write('Sources: {}/{}; effective reads: {}; attempted: {}.\n\n'.format(r['recorded_sources'],r['inventory_endpoints'],r['effective_reads'],r['attempted']))
               f.write('Daily attempt coverage complete: **{}**; effective complete: **{}**.\n'.format(r['daily_attempt_coverage_complete'],r['daily_effective_coverage_complete']))
+              f.write('Discovery unique: **{}/{}**; duplicate/retry rows: **{}**; missing source IDs: **{}**.\n'.format(r['discovery_recorded_unique'],r['discovery_targets'],r['discovery_retry_rows'],r['inventory_endpoints']-r['recorded_sources']))
           PY
+          if [ "$SCHEDULED_CRON" = '35 1 * * *' ]; then
+            echo 'Checking strict end-of-day source and discovery attempt coverage'
+            python3 automation/audit_chatgpt_coverage.py --coverage "$latest" --require-complete-attempts --output /tmp/chatgpt-coverage-audit-strict.json > /dev/null
+          fi

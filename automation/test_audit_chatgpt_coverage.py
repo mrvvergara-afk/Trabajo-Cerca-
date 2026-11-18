@@ -79,6 +79,38 @@ class AuditTests(unittest.TestCase):
         self.assertEqual(report["retry_candidates"][0]["source_id"], "a")
         self.assertEqual(report["retry_candidates"][0]["recovery_strategy"], "bounded_retry_then_alternative")
 
+    def test_duplicate_discovery_retries_are_one_target(self):
+        report = module.audit(inventory(), {
+            "sources": [
+                {"source_id": "a", "scan_wave": 0, "status": "checked_empty"},
+                {"source_id": "b", "scan_wave": 1, "status": "checked_empty"},
+            ],
+            "discovery": [
+                {"source_id": "d", "status": "failed", "checked_at": "2026-11-18T11:00:00Z"},
+                {"source_id": "d", "status": "checked_found", "checked_at": "2026-11-18T12:00:00Z"},
+            ],
+        })
+        self.assertEqual(report["discovery_records_total"], 2)
+        self.assertEqual(report["discovery_recorded_unique"], 1)
+        self.assertEqual(report["discovery_retry_rows"], 1)
+        self.assertTrue(report["daily_attempt_coverage_complete"])
+        self.assertTrue(report["daily_effective_coverage_complete"])
+
+    def test_missing_target_stays_missing_even_with_two_other_rows(self):
+        report = module.audit(inventory(), {
+            "sources": [
+                {"source_id": "a", "scan_wave": 0, "status": "checked_empty"},
+                {"source_id": "b", "scan_wave": 1, "status": "checked_empty"},
+            ],
+            "discovery": [
+                {"source_id": "a", "status": "checked_empty"},
+                {"source_id": "a", "status": "checked_empty"},
+            ],
+        })
+        self.assertEqual(report["discovery_recorded_unique"], 0)
+        self.assertEqual(report["discovery_missing"], ["d"])
+        self.assertFalse(report["daily_attempt_coverage_complete"])
+
     def test_invalid_wave_detected(self):
         report = module.audit(inventory(), {
             "sources": [{"source_id": "a", "scan_wave": 5, "status": "checked_found"}],

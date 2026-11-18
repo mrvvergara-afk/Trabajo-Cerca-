@@ -50,7 +50,14 @@ def audit(inventory, coverage):
             "unsupported": counts_wave["unsupported"],
             "missing": [s["key"] for s in planned if s["key"] not in observed],
         }
-    discovered = {r.get("source_id"): r for r in coverage.get("discovery", [])}
+    discovery_rows = coverage.get("discovery", [])
+    discovered = {}
+    for row in discovery_rows:
+        key = row.get("source_id")
+        # A discovery target can be revisited in another wave; use the latest
+        # evidence instead of treating repeated rows as additional coverage.
+        if key not in discovered or str(row.get("checked_at", "")) >= str(discovered[key].get("checked_at", "")):
+            discovered[key] = row
     target_missing = [t["key"] for t in targets if t["key"] not in discovered]
     target_pending = [t["key"] for t in targets if discovered.get(t["key"], {}).get("status") in (None, "not_attempted")]
     invalid_discovery = [key for key, row in discovered.items() if key not in {t["key"] for t in targets} or row.get("status") not in STATES]
@@ -60,6 +67,9 @@ def audit(inventory, coverage):
         "attempted": sum(counts[x] for x in STATES if x != "not_attempted"),
         "status_counts": counts, "waves": by_wave,
         "discovery_missing": target_missing, "discovery_pending": target_pending,
+        "discovery_records_total": len(discovery_rows),
+        "discovery_recorded_unique": sum(key in discovered for key in (t["key"] for t in targets)),
+        "discovery_retry_rows": len(discovery_rows)-len(discovered),
         "invalid_source_records": invalid,
         "invalid_discovery_records": invalid_discovery,
         "retry_candidates": [{"source_id": s["key"], "scan_wave": s["scan_wave"], "url": s.get("url"), "last_status": observed[s["key"]]["status"], "reason": observed[s["key"]].get("reason", ""), "recovery_strategy": "indexed_search_or_official_source" if observed[s["key"]]["status"] in ("blocked", "unsupported") else "bounded_retry_then_alternative"} for s in sources if s["key"] in observed and observed[s["key"]]["status"] in ("blocked", "failed", "unsupported")],
@@ -76,6 +86,8 @@ def main():
     p.add_argument("--coverage", required=True)
     p.add_argument("--chile-date", default=dt.datetime.now(ZoneInfo("America/Santiago")).date().isoformat())
     p.add_argument("--output", default="")
+    p.add_argument("--require-complete-attempts", action="store_true",
+                   help="At the end-of-day gate, fail unless every inventory endpoint and discovery target has an attempted result.")
     args = p.parse_args()
     inventory = json.loads(pathlib.Path(args.inventory).read_text(encoding="utf-8"))
     coverage = json.loads(pathlib.Path(args.coverage).read_text(encoding="utf-8"))
@@ -90,6 +102,11 @@ def main():
     print(output)
     if report["invalid_source_records"] or report["invalid_discovery_records"]:
         sys.exit(2)
+    if args.require_complete_attempts and (
+        not report["daily_attempt_coverage_complete"] or not report["coverage_date_matches_chile"]
+    ):
+        print("COVERAGE_INCOMPLETE_END_OF_DAY: source/discovery attempts missing", file=sys.stderr)
+        sys.exit(3)
 
 if __name__ == "__main__":
     main()

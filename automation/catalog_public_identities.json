@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-18T03:25:18+00:00",
+  "generated_at": "2026-11-18T04:08:28+00:00",
   "complete": true,
   "totalItemsReported": 281,
   "jobIdentityCount": 277,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 94,
-  "outside12CommuneScopeCount": 183,
+  "visibleIn12CommunesCount": 97,
+  "outside12CommuneScopeCount": 180,
   "pagesChecked": 11,
-  "fingerprint": "26ea046b0679f6d024eee7232ee63bfd28edb28f63dfab4a1f0f2e63b672b2c4",
+  "fingerprint": "febeedfe0738f6a297f9b8ba8178c9f2069cead17ee9da4c2274df8e9db847f5",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1518,9 +1518,9 @@
       "title": "Ortodoncista",
       "company": "Clínica dental en victoria",
       "workCommunes": [
-        "Temuco"
+        "Victoria"
       ],
-      "visibleIn12Communes": false,
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ortodoncista-3929011",
       "urlHashSha256": "f36ac8f4fffee910321498d1ca6287d24c69f64502da73b3be8a8af70be9df81"
     },
@@ -1639,7 +1639,7 @@
       "title": "Se buscan Enfierradores – Obra Hospital de Nacimiento",
       "company": "Constructora aljo",
       "workCommunes": [
-        "Angol"
+        "Nacimiento"
       ],
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",
@@ -1991,9 +1991,9 @@
       "title": "Práctica Profesional / Técnica – Prevención de Riesgos Cohigue",
       "company": "Empresas Agrotop",
       "workCommunes": [
-        "Los Ángeles"
+        "Negrete"
       ],
-      "visibleIn12Communes": false,
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/practica-profesional-tecnica-prevencion-de-riesgos-cohigue-3929311",
       "urlHashSha256": "7616a16b4580c23f37813e7b37da0356b7a5fd5a6ba0b3ab536583cb5c822df7"
     },
@@ -2299,7 +2299,7 @@
       "title": "Se buscan enfierradores Nacimiento",
       "company": "Constructora aljo",
       "workCommunes": [
-        "Angol"
+        "Nacimiento"
       ],
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
@@ -2564,9 +2564,9 @@
       "title": "Director/a CC LAE Angol",
       "company": "Fundación Tierra de Esperanza",
       "workCommunes": [
-        "Temuco"
+        "Angol"
       ],
-      "visibleIn12Communes": false,
+      "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/director-a-cc-lae-angol-3930443",
       "urlHashSha256": "f915fab77a162d120d847d6ae48894dd8f489aa55c51f6e95bc36b0a326e8d4a"
     },

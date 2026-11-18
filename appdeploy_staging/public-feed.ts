@@ -415,6 +415,7 @@ async function publish(record:Manifest, projector:Projector) {
   // reprojected. A confirmed source deadline or owner closure is allowed.
   const oldControl=await single<Control>('public_feed_control');
   const oldCount=Number(oldControl?.totalVerifiedJobOffers||0);
+  const confirmedRemovals:Array<{key:string;reason:string}>=[];
   if(oldControl?.manifestId){
     const [baseline]=await db.get<Manifest>('public_feed_manifests',[oldControl.manifestId]);
     if(!baseline)throw new Error('Public feed regression: prior manifest missing');
@@ -473,6 +474,10 @@ async function publish(record:Manifest, projector:Projector) {
           deadlineExpired:expired,
           closureConfirmed:closed
         });
+      } else if (confirmedRemovals.length < 50) {
+        confirmedRemovals.push({key:lost.key,
+          reason:expired?'explicit_deadline':communityExpired?'community_expiry':
+            closed?'confirmed_closure':'municipal_open_evidence_expired'});
       }
     }
     if(unexpected.length){
@@ -505,6 +510,9 @@ async function publish(record:Manifest, projector:Projector) {
   // Readers recover the authoritative totals directly from the immutable manifest.
   await replaceSingle('public_feed_last_good', { manifestId:backupId, updatedAt:new Date().toISOString() });
   await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId });
+  if(confirmedRemovals.length)console.warn('PUBLIC_FEED_CONFIRMED_REMOVALS '+JSON.stringify({
+    before:oldCount,after:record.totalVerifiedJobOffers,
+    items:confirmedRemovals,at:new Date().toISOString()}));
   return { ...summary, manifestId, rebuilding:false };
 }
 
@@ -678,7 +686,21 @@ export async function advancePublicFeed(projector:Projector) {
   return result;
 }
 
-export async function readPublicFeedPage(cursor?:string) {
+// Collapse simultaneous reads of the same immutable public page within one
+// runtime. No cross-request data is persisted or cached after completion.
+const pageReadInFlight = new Map<string, Promise<Awaited<ReturnType<typeof readPublicFeedPageUncached>>>>();
+export function readPublicFeedPage(cursor?:string) {
+  const key = cursor ?? '__first__';
+  const existing = pageReadInFlight.get(key);
+  if (existing) return existing;
+  const pending = readPublicFeedPageUncached(cursor).finally(() => {
+    if (pageReadInFlight.get(key) === pending) pageReadInFlight.delete(key);
+  });
+  pageReadInFlight.set(key,pending);
+  return pending;
+}
+
+async function readPublicFeedPageUncached(cursor?:string) {
   let manifestId:string | undefined;
   let page = 0;
   if (cursor?.startsWith('v2:')) {

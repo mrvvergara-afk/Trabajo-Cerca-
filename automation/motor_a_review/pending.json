@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-18T04:31:14.992084+00:00",
+  "updated_at": "2026-11-18T14:12:17.556316+00:00",
   "items_total": 7,
   "automatically_published": 0,
   "items": [
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -33,32 +33,12 @@
       "date_source_hint": "2026-11-11 14:36:11",
       "deadline_hint": "2027-01-25T14:36:11",
       "first_discovered_at": "2026-11-12T15:52:12.590137+00:00",
-      "last_checked_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_3be2713757012d47b932",
-      "url": "https://www.chiletrabajos.cl/trabajo/mercaderista-part-time-traiguen-3926111",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "MERCADERISTA PART TIME /TRAIGUEN - Temuco | Chiletrabajos",
-      "date_source_hint": "2026-11-04 12:39:50",
-      "deadline_hint": "2027-01-18T12:39:50",
-      "first_discovered_at": "2026-11-18T03:27:27.674452+00:00",
-      "last_checked_at": "2026-11-18T04:31:14.992084+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Temuco"
-      ]
     },
     {
       "id": "a_7d65d64b41320c2ca4a3",
@@ -69,7 +49,7 @@
       "date_source_hint": "2026-10-24 13:55:54",
       "deadline_hint": "2027-01-07T13:55:54",
       "first_discovered_at": "2026-11-18T03:27:27.674452+00:00",
-      "last_checked_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -85,7 +65,7 @@
       "date_source_hint": "2026-10-29 23:57:54",
       "deadline_hint": "2027-01-12T23:57:54",
       "first_discovered_at": "2026-11-18T03:27:27.674452+00:00",
-      "last_checked_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -94,6 +74,26 @@
       "catalog_territory_mismatch": true,
       "catalog_work_communes": [
         "Temuco"
+      ]
+    },
+    {
+      "id": "a_1843a3809a023ee68321",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Traiguén",
+      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-06 14:20:34",
+      "deadline_hint": "2027-01-20T14:20:34",
+      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
+      "last_checked_at": "2026-11-18T14:12:17.556316+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
       ]
     },
     {
@@ -138,7 +138,7 @@
     }
   ],
   "metrics": {
-    "added": 11,
+    "added": 9,
     "updated": 5,
     "closed": 0,
     "invalid": 0,

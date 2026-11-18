@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-17T22:58:57.490254+00:00",
+  "updated_at": "2026-11-18T03:08:45.223361+00:00",
   "items_total": 18,
   "pending_total": 18,
   "publication_enabled": false,
@@ -542,7 +542,7 @@
       "review_status": "pending",
       "review_signature": null,
       "first_discovered": "2026-11-13",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "text_excerpt": null
     },
     {
@@ -567,7 +567,7 @@
       "review_status": "pending",
       "review_signature": null,
       "first_discovered": "2026-11-17",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "possible_communes": [
         "Renaico",
         "Nacimiento"
@@ -578,5 +578,6 @@
       "original_classification": "sin_evidencia_suficiente",
       "deadline": null
     }
-  ]
+  ],
+  "added_this_run": 0
 }

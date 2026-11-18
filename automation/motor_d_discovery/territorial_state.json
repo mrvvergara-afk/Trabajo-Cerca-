@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-18T06:43:24.289336-03:00",
+  "last_run": "2026-11-18T11:12:31.378542-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -6846,6 +6846,126 @@
       "first_seen": "2026-11-18T06:43:24.289336-03:00",
       "url": "https://www.radionativa.cl/huele-a-sicariato-papa-de-enfermera-apunalada-entrega-nuevos-detalles-del-ataque/",
       "source": "Inventario P06",
+      "commune": null
+    },
+    "4d3e9cce7a1d1afe918f": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-a-de-operaciones-rrhh-experiencia-en-sector-publico-3079110.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f844d097d823016a0488": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/profesor-a-staff-fitness-sede-santa-rosa-3079109.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e80b436d4f7b20e531e3": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/vendedor-en-terreno-para-la-serena-altas-comisiones-e-incentivos-3079108.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "363166eea0c66cefd15b": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/vendedor-a-rubro-hormigon-vii-region-3079107.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2e6ed095a2db22f75cd7": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-ventas-sede-polo-apoquindo-3079106.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bc8f0d2b642d3eb40cdb": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/vendedor-a-en-ruta-6ta-region-3079105.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "be6ba911ae5654fd5fea": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-ventas-tecnicas-terminaciones-para-arquitectura-y-construccion-3079104.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fd98570baa30a185c46e": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-especialista-mecanico-centinela-7x7-3079103.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "293a58422e0fc5619875": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-en-electricidad-las-condes-proyecto-950000-liquido-mensual-aprox-3079102.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "96bc0593e42896ea8c50": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-monitoreo-camaras-cctv-3079101.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "345e7a82878b2ea500cc": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-senior-de-control-de-ro-3079100.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5db384056f0f2f5e26b8": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/mcdonald-x27-s-iquique-sur-av-la-tirana-busca-crew-part-time-25-horas-turnos-rotativos-cupos-limitados-3079099.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "959758564b8cadb67a96": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/captador-para-marca-de-telefono-full-time-antofagasta-3079098.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b08211c712e2f7be3f00": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-de-ventas-corporativas-3079097.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fee38c4f4a7e5d798b3d": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/jefe-a-de-tienda-de-linea-blanca-electro-hogar-talca-3079096.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "57c9dbdf584f4a7ca411": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ventas-via-tiktok-1135000-sin-tope-de-comisiones-3079095.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f48a947d38d170140ad3": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/subjefe-de-tienda-open-kennedy-3079094.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e8cf5900b12489691dcc": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/ejecutivo-a-comercial-vii-region-rubro-hormigon-3079093.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "15b57a3b45467ed6d5bc": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-estacionamiento-full-part-time-apoyo-navidad-mall-casa-costanera-3079092.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1fda67928ec71b0d1268": {
+      "first_seen": "2026-11-18T11:12:31.378542-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/lider-tecnico-jornada-hibrida-3079091.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

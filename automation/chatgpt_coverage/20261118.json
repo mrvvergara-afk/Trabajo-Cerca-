@@ -428,6 +428,222 @@
       "origin": "https://www.losangeles.cl/trabaja-con-nosotros/",
       "offers_found": 0,
       "reason": "Página consultada; ninguna vacante individual verificable dentro de las 12 comunas"
+    },
+    {
+      "source_id": "indeed-Angol",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "trabajando-Angol",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/angol",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "chiletrabajos-Collipulli",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "opcionempleo-Ercilla",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "laborum-Renaico",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "linkedin-Mininco",
+      "scan_wave": 0,
+      "status": "blocked",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso directo deshabilitado; no se eludió"
+    },
+    {
+      "source_id": "computrabajo-Nacimiento",
+      "scan_wave": 0,
+      "status": "blocked",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+      "offers_found": 0,
+      "reason": "Protección anti-bot JS; sin lectura de ofertas"
+    },
+    {
+      "source_id": "indeed-Negrete",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "trabajando-Negrete",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/negrete",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "chiletrabajos-Mulchén",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "opcionempleo-Los Sauces",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "laborum-Purén",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.laborum.cl/empleos-busqueda-puren.html",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "linkedin-Traiguén",
+      "scan_wave": 0,
+      "status": "blocked",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "offers_found": 0,
+      "reason": "Acceso directo deshabilitado; no se eludió"
+    },
+    {
+      "source_id": "computrabajo-Lumaco",
+      "scan_wave": 0,
+      "status": "blocked",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+      "offers_found": 0,
+      "reason": "Protección anti-bot JS; sin lectura de ofertas"
+    },
+    {
+      "source_id": "indeed-Victoria",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "trabajando-Victoria",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.trabajando.cl/trabajo-empleo/victoria",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "chiletrabajos-secondary-Los Ángeles",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "opcionempleo-secondary-Temuco",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "fashions-park-empleo-angol",
+      "scan_wave": 0,
+      "status": "checked_found",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://fashionspark.hiringroom.com/jobs",
+      "offers_found": 1,
+      "reason": "ATS oficial legible: Angol existente y aviso Victoria con ubicación contradictoria Temuco en requisitos; revisión territorial pendiente"
+    },
+    {
+      "source_id": "omil-negrete",
+      "scan_wave": 0,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.muninegrete.cl/",
+      "offers_found": 0,
+      "reason": "Página pública legible; sin nueva ficha laboral elegible confirmada"
+    },
+    {
+      "source_id": "malleco7",
+      "scan_wave": 0,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.malleco7.cl/",
+      "offers_found": 0,
+      "reason": "Página pública legible; sin nueva ficha laboral elegible confirmada"
+    },
+    {
+      "source_id": "bne-negrete-pilot-2026-109726",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.bne.gob.cl/oferta/2026-109726",
+      "offers_found": 0,
+      "reason": "URL específica devuelve 404; búsqueda indexada no recuperó la ficha"
+    },
+    {
+      "source_id": "mulchen-feed",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
+    },
+    {
+      "source_id": "registry-omil-temuco-portal",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "https://temuco.omil.cl/",
+      "offers_found": 0,
+      "reason": "El lector web no pudo recuperar la URL; búsquedas alternativas no confirmaron ficha individual"
     }
   ],
   "discovery": [
@@ -493,51 +709,79 @@
       "checked_at": "2026-11-18T08:15:00Z",
       "origin": "public_indexed_search",
       "reason": "Búsqueda pública indexada efectuada; sin ficha individual vigente, verificable y atribuible a las 12 comunas"
+    },
+    {
+      "source_id": "motor-tavily",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Búsqueda indexada sin evidencia individual utilizable; herramienta externa no invocada"
+    },
+    {
+      "source_id": "bne",
+      "scan_wave": 0,
+      "status": "checked_empty",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Búsqueda pública realizada; no se verificó nueva ficha local"
+    },
+    {
+      "source_id": "computrabajo",
+      "scan_wave": 0,
+      "status": "blocked",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Página pública con verificación JS"
+    },
+    {
+      "source_id": "radio-montecarlo-angol",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Búsqueda indexada sin evidencia individual utilizable; herramienta externa no invocada"
+    },
+    {
+      "source_id": "millaray-puren-sauces",
+      "scan_wave": 0,
+      "status": "failed",
+      "checked_at": "2026-11-18T12:23:37Z",
+      "origin": "public_indexed_search",
+      "offers_found": 0,
+      "reason": "Búsqueda indexada sin evidencia individual utilizable; herramienta externa no invocada"
     }
   ],
   "publication_confirmed": 0,
   "candidates_pending": [
     {
-      "source_id": "omil-renaico",
-      "company": "Municipalidad de Renaico",
-      "commune": "Renaico",
-      "source_url": "https://municipalidadrenaico.cl/concursos-publicos/",
-      "bases_url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
-      "published_date": "2026-11-17",
-      "roles": [
-        {
-          "title": "Salvavidas",
-          "vacancies": 6
-        },
-        {
-          "title": "Técnico en Enfermería",
-          "vacancies": 2
-        },
-        {
-          "title": "Personal de aseo",
-          "vacancies": 2
-        },
-        {
-          "title": "Apoyo de seguridad",
-          "vacancies": 2
-        }
-      ],
-      "reason": "Fuente oficial vigente al 24 noviembre; cuatro cargos comparten URL y bases. Requiere identidad diferenciada compatible con importador, conciliación y confirmación pública antes de publicar."
+      "source_id": "fashions-park-empleo-angol",
+      "company": "Fashion's Park",
+      "commune": "Victoria",
+      "source_url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aea08221564eb41f9a6b54c",
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Victoria",
+      "reason": "Aviso oficial indica Victoria en encabezado, pero Temuco en sección requisitos/ubicación. Verificación territorial pendiente; no publicar a ciegas."
     }
   ],
   "summary": {
-    "planned": 47,
-    "attempted": 47,
-    "effective_reads": 9,
-    "blocked": 6,
-    "failed": 27,
+    "planned": 71,
+    "attempted": 71,
+    "effective_reads": 12,
+    "blocked": 10,
+    "failed": 44,
     "unsupported": 5,
-    "discovery_attempted": 9,
+    "discovery_attempted": 14,
     "confirmed_new_publications": 0
   },
   "catalog_status": {
-    "status": "catalog_unavailable",
-    "mirror_generated_at": "2026-11-18T04:08:28+00:00",
-    "reason": "Espejo con antigüedad superior a 120 minutos a las 05:15 Chile; API directa inaccesible desde lector web. No se generaron lotes."
+    "status": "fresh_mirror_valid",
+    "mirror_generated_at": "2026-11-18T11:16:54+00:00",
+    "jobIdentityCount": 277,
+    "complete": true,
+    "reason": "Espejo validado en onda 0; API directa no disponible desde lector. Lote Renaico ya en índice pero no visible en espejo; no se reenvía."
   }
 }

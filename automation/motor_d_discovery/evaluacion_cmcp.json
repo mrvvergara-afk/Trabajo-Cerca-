@@ -13,6 +13,18 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
+      "id_fuente": "cmpc_19251",
+      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
+      "fecha_publicacion": "2026-10-30",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
       "id_fuente": "cmpc_19222",
       "cargo": "Instrumentista de área - Santa Fe",
       "empresa": "CMPC",
@@ -62,6 +74,23 @@
     }
   ],
   "pending": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19440?c=cmpc",
+      "title": "Feria Laboral Los Ángeles",
+      "workplaces": [],
+      "reason": [
+        "detail_unavailable",
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
+      "title": "Ejecutivo Comercial",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
       "title": "TECHNICAL LEAD SR",
@@ -193,33 +222,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
       "title": "Analista de Contabilidad",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
-      "title": "Ingeniero Especialista de Diseño de empaque",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
-      "title": "Técnico/a de mantenimiento eléctrico y mecánico",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
-      "title": "Conductor/a de autoelevador",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed",

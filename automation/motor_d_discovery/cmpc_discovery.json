@@ -1,9 +1,19 @@
 {
   "fuente": "CMPC Cornerstone",
-  "checked_at": "2026-11-18T03:07:18.604848+00:00",
+  "checked_at": "2026-11-18T18:22:49.308801+00:00",
   "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "state": "individual_links_found",
   "individual_urls": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19440?c=cmpc",
+      "cargo": "Feria Laboral Los Ángeles",
+      "evidencia_tarjeta": "Feria Laboral Los Ángeles\n\nChile\n\n18/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
+      "cargo": "Ejecutivo Comercial",
+      "evidencia_tarjeta": "Ejecutivo Comercial\n\nChile\n\n18/11/2026"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
       "cargo": "TECHNICAL LEAD SR",
@@ -75,6 +85,11 @@
       "evidencia_tarjeta": "Electrico Dia\n\nPuente Alto, REGION METROPOLITANA, Chile\n\n04/11/2026"
     },
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
+      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "evidencia_tarjeta": "Mecánico/a Turno - Nacimiento, planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n30/10/2026"
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
       "cargo": "Instrumentista de área - Santa Fe",
       "evidencia_tarjeta": "Instrumentista de área - Santa Fe\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n30/10/2026"
@@ -113,28 +128,33 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
       "cargo": "Analista de Contabilidad",
       "evidencia_tarjeta": "Analista de Contabilidad\n\nMalvinas Argentinas, Argentina\n\n25/09/2025"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
-      "cargo": "Ingeniero Especialista de Diseño de empaque",
-      "evidencia_tarjeta": "Ingeniero Especialista de Diseño de empaque\n\nSAN ANDRES CHOLULA, PUEBLA, PUEBLA, México\n\n10/09/2024"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
-      "cargo": "Técnico/a de mantenimiento eléctrico y mecánico",
-      "evidencia_tarjeta": "Técnico/a de mantenimiento eléctrico y mecánico\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
-      "cargo": "Conductor/a de autoelevador",
-      "evidencia_tarjeta": "Conductor/a de autoelevador\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022"
     }
   ],
   "errors": [],
   "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "title": "Vacantes actuales - cmpc",
-  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (21)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (5)\nMetropolitana (4)\nJalisco (3)\nRegion Metropolitana (3)\nBio Bio (2)\nBuenos Aires (2)\nNuevo León (1)\nPuebla (1)\nRegion Del Maule (1)\nRegión De La Araucanía (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (4)\nSantiago (4)\nPuente Alto (3)\nTlajomulco (3)\nLos Angeles (2)\nOsorno (2)\nZarate (2)\nCollipulli (1)\nCoquimbo (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nYerbas Buenas (1)\nFecha colocada\nDentro de 3 días (5)\nDentro de 7 días (13)\nDentro de 15 días (14)\nDentro de 30 días (19)\nCualquier momento (36)\nUnidad de Negocio\nCMPC Celulosa (8)\nCMPC BioPackaging (9)\nSoftys (15)\nEmpresas CMPC (4)\nVacantes actuales\n\nTECHNICAL LEAD SR\n\nSantiago, REGION METROPOLITANA, Chile\n\n17/11/2026\n\nPráctica Administración RRHH - Los Ángeles\n\nLos Ángeles, REGION DEL BIOBIO, Chile\n\n16/11/2026\n\nInspector/a Ambiental\n\nNacimiento, Bio Bio, Chile\n\n16/11/2026\n\nDATA & INFORMATION GOVERNANCE SPECIALIST\n\nSantiago, Metropolitana, Chile\n\n16/11/2026\n\nAdministrador Zonal\n\nCoquimbo, Chile\n\n16/1",
+  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (24)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (5)\nMetropolitana (4)\nBio Bio (3)\nJalisco (3)\nRegion Metropolitana (3)\nBuenos Aires (2)\nNuevo León (1)\nPuebla (1)\nRegion Del Maule (1)\nRegión De La Araucanía (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (5)\nSantiago (4)\nPuente Alto (3)\nTlajomulco (3)\nLos Angeles (2)\nOsorno (2)\nZarate (2)\nCollipulli (1)\nCoquimbo (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nYerbas Buenas (1)\nFecha colocada\nDentro de 1 día (2)\nDentro de 3 días (7)\nDentro de 7 días (15)\nDentro de 15 días (16)\nDentro de 30 días (22)\nCualquier momento (39)\nUnidad de Negocio\nCMPC Celulosa (9)\nCMPC BioPackaging (10)\nSoftys (15)\nEmpresas CMPC (5)\nVacantes actuales\n\nFeria Laboral Los Ángeles\n\nChile\n\n18/11/2026\n\nEjecutivo Comercial\n\nChile\n\n18/11/2026\n\nTECHNICAL LEAD SR\n\nSantiago, REGION METROPOLITANA, Chile\n\n17/11/2026\n\nPráctica Administración RRHH - Los Ángeles\n\nLos Ángeles, REGION DEL BIOBIO, Chile\n\n16/11/2026\n\nInspector/a Ambiental\n\nNacimiento, Bio Bio, Chile\n\n16/11/2026\n\nDATA & INFORMATION GO",
   "individual_details": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19440?c=cmpc",
+      "cargo": "Feria Laboral Los Ángeles",
+      "evidencia_tarjeta": "Feria Laboral Los Ángeles\n\nChile\n\n18/11/2026",
+      "ficha_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nFeria Laboral Los Ángeles\nChile\n|\nreq19440\nSolicitar ahora\nCompartir\n Guardar trabajo\nPublicado el: 18/11/2026\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n \n\n POOL DE TALENTO                                          \n\nEn CMPC, creemos que cada persona tiene el potencial de transformar la industria. Si nos visitaste en la feria laboral y te conectaste con nuestra visión de futuro, te invitamos a dar el siguiente paso. Somos una empresa global que se atreve a innovar, y estamos buscando talentos que, como tú, quieran dejar su huella. Queremos conocer tu pasión y tus ideas, y descubrir cómo juntos podemos seguir creando soluciones sostenibles que impacten al mundo.\n\n¡No dejes que tu oportunidad se escape! El futuro lo construimos juntos!\n\n \n\n \n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": false,
+      "ficha_content_length": 1971,
+      "ficha_contenido_laboral": false,
+      "ficha_checked_at": "2026-11-18T18:23:09.854692+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
+      "cargo": "Ejecutivo Comercial",
+      "evidencia_tarjeta": "Ejecutivo Comercial\n\nChile\n\n18/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nEjecutivo Comercial\nChile\n|\nreq19387\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nBuscamos un/a Ejecutivo/a Comercial que contribuya al crecimiento del negocio mediante la gestión y desarrollo de una cartera de proveedores, identificando nuevas oportunidades de mercado y fortaleciendo relaciones comerciales de largo plazo, asegurando la disponibilidad de materia prima para la operación. \n\n En este rol tendrás la oportunidad de       \n\nGestionar y desarrollar la cartera de proveedores asignada.\nRealizar visitas periódicas a proveedores para fortalecer relaciones comerciales y detectar nuevas oportunidades de negocio. \nIdentificar y captar nuevos proveedores para ampliar la red de abastecimiento. \nCoordinar solicitudes de compra y retiro de materiales. \nGestionar el seguimiento de pagos y requerimientos asociados a los proveedores. \nCrear y mantener actualizados proveedores en SAP y Microsoft 365. \nAdministrar documentación comercial, contratos, certificados y registros asociados. \nConsolidar y analizar indicadores comerciales y KPIs mensuales. \nCoordinar con áreas operacionales, comerciales y administrativas para asegurar la continuidad del negocio. \nContribuir al crecimiento de la captación de fibra y al abastecimiento de insumos estratégicos para la operación. \n\n Lo que necesitas para desempeñar este rol \n\nTítulo profesional de Ingeniería Comercial, Administración de Empresas o carrera afín. \nAl menos 2 años de experiencia en gestión de cartera comercial, proveedores o clientes. \nLicencia Clase B vigente.\nMovilización propia.\nManejo de SAP nivel usuario.\nManejo de Microsoft Office. \n\n Condiciones del cargo                                   \n\nContrato: Indefinido\nUbicación: Puente Alto\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2884,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-18T18:23:11.334359+00:00"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
       "cargo": "TECHNICAL LEAD SR",
@@ -143,7 +163,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3485,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:28.127588+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:12.822434+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
@@ -153,7 +173,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2162,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:29.496276+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:14.222235+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
@@ -163,17 +183,17 @@
       "ficha_accessible": true,
       "ficha_content_length": 4035,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:31.280807+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:15.637575+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19342?c=cmpc",
       "cargo": "DATA & INFORMATION GOVERNANCE SPECIALIST",
       "evidencia_tarjeta": "DATA & INFORMATION GOVERNANCE SPECIALIST\n\nSantiago, Metropolitana, Chile\n\n16/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nDATA & INFORMATION GOVERNANCE SPECIALIST\nSantiago, Metropolitana, Chile\n|\nreq19342\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nLiderar la correcta implementación de los estándares y herramientas de Gobierno de Datos a nivel corporativo, participando activamente en la gestión de consentimiento de datos, calidad de información, catalogación de activos de datos y acompañamiento de iniciativas que impulsan una cultura Data Driven en CMPC.\n\n En este rol tendrás la oportunidad de       \n\n• Liderar proyectos e iniciativas de Gobierno de Datos, asegurando el cumplimiento de alcance, plazos, presupuesto y gestión de stakeholders.\n• Diseñar e implementar el modelo corporativo de Gobierno de Datos, incluyendo políticas, estándares, roles, comités y mecanismos de gestión.\n• Gestionar la calidad, trazabilidad, catalogación y observabilidad de los datos, promoviendo la disponibilidad de información confiable y reutilizable para el negocio.\n• Velar por el cumplimiento de los estándares de seguridad, privacidad y uso responsable de los datos, en coordinación con las áreas correspondientes.\n• Impulsar la adopción del Gobierno de Datos mediante iniciativas de gestión del cambio, capacitación y desarrollo de capacidades de Data Literacy.\n• Coordinar equipos multidisciplinarios, proveedores y áreas de negocio para asegurar la implementación y sostenibilidad de las prácticas de Gobierno de Datos.\n\n Lo que necesitas para desempeñar este rol \n\nFormación: Título profesional en Ingeniería Informática, Ingeniería Civil Industrial, Estadística, Administración o carrera afín. Deseable especialización o diplomado en Gobierno de Datos, Data Management o especialización en Datos. \n\nConocimiento específico: \n\n• Experiencia en implementación de frameworks de gobierno de datos (DAMA-DMBOK o equivalente). (Excluyente)\n• Manejo de equipos técnicos multidisciplinarios y coordinación con stakeholders de negocio.\n\nExperiencia: Mínimo 3 años en roles similares de Data Governance\n\nConocimiento Técnico\n\n• Herramientas de gestión de proyectos: Jira, Confluence, Microsoft Planner\n• Herramientas de Data Catalog / Metadata Management (Unity Catalog, Collibra, Alation, Atlan, Informatica Axon, Purview, DataHub o similares).\n• Plataformas cloud de datos: Google Cloud Platform, AWS, Azure, Databricks\n• Manejo de SQL para consulta y validación de datos en distintas plataformas.\n• Conocimiento de marcos de gestión de datos: DAMA-DMBOK, DCAM o ISO 8000.\n• Nociones de seguridad y privacidad de datos: control de accesos, clasificación de sensibilidad, regulaciones aplicables.\n• Experiencia con herramientas de Data Quality (Great Expectations, Monte Carlo, Soda, etc.). (Deseable)\n\n Condiciones del cargo                                   \n\nContrato: Indefinido\nUbicación: Santiago\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nDATA & INFORMATION GOVERNANCE SPECIALIST\nSantiago, Metropolitana, Chile\n|\nreq19342\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nLiderar la correcta implementación de los estándares y herramientas de Gobierno de Datos a nivel corporativo, participando activamente en la gestión de consentimiento de datos, calidad de información, catalogación de activos de datos y acompañamiento de iniciativas que impulsan una cultura Data Driven en CMPC.\n\n En este rol tendrás la oportunidad de       \n\n• Liderar proyectos e iniciativas de Gobierno de Datos, asegurando el cumplimiento de alcance, plazos, presupuesto y gestión de stakeholders.\n• Diseñar e implementar el modelo corporativo de Gobierno de Datos, incluyendo políticas, estándares, roles, comités y mecanismos de gestión.\n• Gestionar la calidad, trazabilidad, catalogación y observabilidad de los datos, promoviendo la disponibilidad de información confiable y reutilizable para el negocio.\n• Velar por el cumplimiento de los estándares de seguridad, privacidad y uso responsable de los datos, en coordinación con las áreas correspondientes.\n• Impulsar la adopción del Gobierno de Datos mediante iniciativas de gestión del cambio, capacitación y desarrollo de capacidades de Data Literacy.\n• Coordinar equipos multidisciplinarios, proveedores y áreas de negocio para asegurar la implementación y sostenibilidad de las prácticas de Gobierno de Datos.\n\n Lo que necesitas para desempeñar este rol \n\nFormación: Título profesional en Ingeniería Informática, Ingeniería Civil Industrial, Ingeniería en Información y Control de Gestión, Estadística, Administración, Ciencias de Datos o carrera afín. Deseable especialización, diplomado o certificación en Gobierno de Datos, Data Management, Data Governance, Data Quality o disciplinas relacionadas.\n\nConocimiento específico: \n\n• Experiencia en implementación y operación de frameworks de Gobierno de Datos (DAMA-DMBOK, DCAM o equivalente)\n• Experiencia en modelos de Data Ownership y Data Stewardship, trabajando con Data Owners, Data Stewards y equipos técnicos\n• Experiencia en iniciativas de catalogación de datos, gestión de metadatos, calidad de datos, clasificación de información o definición de políticas y estándares de datos.\n• Coordinación de equipos multidisciplinarios y gestión de stakeholders de negocio y tecnología.\n\nExperiencia: Mínimo 3 años de experiencia en roles de Data Governance, Data Management, Data Quality, Metadata Management o similares.\n\n• Herramientas de gestión y colaboración: Jira, Confluence, Microsoft Planner o similares.\n• Herramientas de Data Catalog / Metadata Management (Microsoft Purview, Unity Catalog, Collibra, Alation, Atlan, Informatica Axon, DataHub o similares).\n• Plataformas cloud de datos: Google Cloud Platform, Microsoft Azure, AWS, Databricks o similares.\n• Manejo de SQL para consulta, análisis y validación de datos en distintas plataformas.\n• Conocimiento de marcos de gestión y gobierno de datos: DAMA-DMBOK, DCAM, ISO 8000 o equivalentes.\n• Conocimiento de Data Quality, incluyendo definición de reglas, dimensiones de calidad, métricas, controles, monitoreo y gestión de incidencias.\n• Nociones de seguridad y privacidad de datos: control de accesos, clasificación y sensibilidad de la información, trazabilidad y regulaciones aplicables.\n• Conocimiento de Information Governance y ciclo de vida de la información, incluyendo clasificación, retención, protección, acceso y disposición de información. (Deseable)\n• Experiencia con herramientas de Data Quality (Great Expectations, Monte Carlo, Soda, etc.). (Deseable)\n• Conocimiento de Python, APIs o herramientas de automatización aplicadas a procesos ",
       "ficha_accessible": true,
-      "ficha_content_length": 3945,
+      "ficha_content_length": 4982,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:32.974509+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:16.953221+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
@@ -183,7 +203,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2306,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:34.631374+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:18.511662+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19328?c=cmpc",
@@ -193,7 +213,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3130,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:36.683763+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:20.008389+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
@@ -203,7 +223,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3396,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:38.140841+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:21.375995+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19348?c=cmpc",
@@ -213,7 +233,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2427,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:39.509798+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:22.791506+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19369?c=cmpc",
@@ -223,7 +243,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2280,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:41.170518+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:23.954847+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19334?c=cmpc",
@@ -233,7 +253,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2362,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:42.915387+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:25.425621+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
@@ -243,7 +263,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3272,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:44.455044+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:26.694972+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19296?c=cmpc",
@@ -253,7 +273,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3991,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:46.184708+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:27.974764+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
@@ -263,7 +283,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2605,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:47.627631+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:29.357897+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
@@ -273,7 +293,17 @@
       "ficha_accessible": true,
       "ficha_content_length": 2855,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:49.023727+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:30.652999+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
+      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
+      "evidencia_tarjeta": "Mecánico/a Turno - Nacimiento, planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n30/10/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nMecánico/a Turno - Nacimiento, planta Santa Fe\nNacimiento, Bio Bio, Chile\n|\nreq19251\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nRealizar un mantenimiento eficiente a los equipos rotativos y estáticos de la Planta, asegurando una continuidad operativa, disminución de los MTTR, resguardando el cumplimiento de nuestras políticas de Seguridad y Salud Ocupacional, Medio Ambiente, Calidad, Gestión de la Energía de la empresa y Sistema de Gestión Integridad Instalaciones Eléctricas (SGIIE), Cadena de Custodia Certfor y FSC, además de los compromisos asumidos con las Comunidades locales.\n\nAnalizar e identificar causas de fallas equipos o instalaciones como bombas, reductores, acoplamientos, cañerías, estanques y ejecutar la solución.\nEjecutar el proceso de mantenimiento correctivo y preventivo equipos o instalaciones planta según alcance del trabajo\nParticipar o ejecutar de la confección y actualización de estándares o procedimientos.\nProactividad y trabajo en equipo frente a contingencia de otras especialidades.\nRealizar rutas de equipos mecánicos identificados que requieran seguimiento constante.\nParticipar o ejecutar de análisis de falla, diálogos de desempeño.\nAtender emergencias de la planta que comprometen su normal funcionamiento.\nAsegurar la calidad trabajos ejecutados mediante protocolos y uso correcto de herramientas\n\nFormación: Técnico Nivel Superior con mención en mecánica o equivalente. \nExperiencia: mínimo 1 año en mantenimiento de equipos industriales. \nConducir: licencia de conducir clase B vigente (excluyente)\nComputación: SAP PM (deseable)\n\nContrato: Indefinido\nDISPONIBILIDAD PARA TRABAJAR EN TURNOS ROTATIVOS DE MAÑANA, TARDE Y NOCHE DE LUNES A DOMINGO (FERÍADOS Y FESTIVOS INCLUSIVE)\nUbicación: Nacimiento, planta santa fe.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2873,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-18T18:23:32.041059+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
@@ -283,7 +313,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3974,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:50.691956+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:33.371680+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
@@ -293,7 +323,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3790,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:52.107472+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:34.821822+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
@@ -303,7 +333,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2752,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:53.843115+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:36.257426+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
@@ -313,7 +343,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3872,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:55.887522+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:37.645350+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19100?c=cmpc",
@@ -323,7 +353,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3507,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:57.257713+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:39.002703+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
@@ -333,7 +363,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2485,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:07:58.655943+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:40.365409+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
@@ -343,7 +373,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5754,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:08:00.267239+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:42.074439+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
@@ -353,37 +383,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2781,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:08:01.655635+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/13847?c=cmpc",
-      "cargo": "Ingeniero Especialista de Diseño de empaque",
-      "evidencia_tarjeta": "Ingeniero Especialista de Diseño de empaque\n\nSAN ANDRES CHOLULA, PUEBLA, PUEBLA, México\n\n10/09/2024",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nIngeniero Especialista de Diseño de empaque\nSAN ANDRES CHOLULA, PUEBLA, PUEBLA, México\n|\nreq13847\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Softys Professional. \n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys, y que puedan ser parte de nuestra experiencia Softys.\n\nHoy nos encontramos en la búsqueda de nuestro/a próximo/a  Ingeniero Especialista de Diseño de empaque para nuestra Softys.\n\nMisión del cargo:\n\nLa posición tiene como objetivo el liderazgo y la coordinación de la operación de validar, registrar y resguardar los diseños de empaque primario y secundario a través de la metodología Stage & Gate para la región México y CAC\n\n\nFunciones específicas:\n\n-Obtención de prototipos en laboratorio y en líneas productivas de producto y de empaque\n-Analizar los prototipos en laboratorio con una visión de investigación \n-Mantenimiento de las especificaciones de empaque primario y secundario\n-Administrar los recursos humanos y administrativos involucrados en los proyectos de diseño y desarrollo de empaque primario y secundario\n-Administrar las prioridades en los análisis y proveeduría de información técnica\n-Realización de los planos mecánicos de empaque primario y secundario\n-Analizar los proyectos con visión estratégica en el impacto de la cadena de suministro\n\nRequisitos:\n\n-Conocimientos en MS Office. Excel Avanzado. Minitab\n-SAP (deseable)\n-Conocimiento técnico en productos higiénicos desechables\n-TOPS\n-Software de dibujo técnico (AUTOCAD)\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra experiencia. \n\n#LI-DNI\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2259,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:08:03.047711+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3524?c=cmpc",
-      "cargo": "Técnico/a de mantenimiento eléctrico y mecánico",
-      "evidencia_tarjeta": "Técnico/a de mantenimiento eléctrico y mecánico\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nTécnico/a de mantenimiento eléctrico y mecánico\nZarate, BUENOS AIRES, Argentina\n|\nreq3524\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a Técnico/a de mantenimiento eléctrico y mecánico para nuestra DIRECCION OPERACIONES.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nIntervenir en forma autónoma en todas las acciones correctivas, preventivas y predictivas de la disciplina mecánica o eléctrica de todos los equipos e instalaciones correspondientes al área.\n\n\nFunciones específicas:\n\nActuar indistintamente en guardias autónomas a demanda de los sectores operativos y procurando asegurar la continuidad operativa, la operación óptima y el buen cuidado de los equipos productivos; en talleres centrales, en reparaciones programadas ó montajes,  y en paradas de máquina ó planta. \nCumplir con intervenciones de la disciplina mecánica o eléctrica en forma autónoma a demanda ó planificadas de los sectores de producción y mantenimiento.  \nCumplir rutinas de inspección preventiva ó predictiva que sean programadas ó indicadas por la supervisión.\nParticipar activamente de pruebas de los equipos.\nRegistrar anomalías, completa partes y libros de guardia, realiza preinformes y participa de los análisis de falla de componentes y conjuntos a los efectos de aumentar la disponibilidad y el buen cuidado.\nCargar pedidos de trabajo,  releva datos de los componentes intervenidos ó intervenciones en el sistema de gestión de mantenimiento vigente.\nIntervenir en reparaciones ó instalaciones planificadas y en tareas de mantenimiento proactivo (mejoras).\nConocer y cumplir las normas vigentes de Seguridad y Medio Ambiente de la Empresa.\n\nRequisitos:\n\nTécnico/a Mecánico/Electricista/Electromecánico/Afines\nAcreditar experiencia de al menos dos años en tareas de Mantenimiento en empresas de procesos productivos\nDisponibilidad para trabajar de manera temporal\nResidir en zonas aledañas (Zárate/Campana).\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra fibra.\n\n#LI-DNI\n\n\n\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2815,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:08:04.743629+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/3523?c=cmpc",
-      "cargo": "Conductor/a de autoelevador",
-      "evidencia_tarjeta": "Conductor/a de autoelevador\n\nZarate, BUENOS AIRES, Argentina\n\n13/01/2022",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nConductor/a de autoelevador\nZarate, BUENOS AIRES, Argentina\n|\nreq3523\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nEn Softys nos apasiona la innovación y trabajamos diariamente en desarrollar marcas que entreguen el mejor cuidado que las personas necesitan en su día a día en cada etapa de sus vidas. Con presencia en 8 países de Latinoamérica, nuestras líneas de negocios son Tissue, Personal Care y Away From Home.\n\nBuscamos inspirar a todos nuestros colaboradores a vivir el propósito Softys y también nos encontramos en la búsqueda de nuestro/a próximo/a Conductor/a de autoelevador para nuestra DIRECCION SERVICIO AL CLIENTE.\n\nSoftys es una empresa CMPC\n\nMisión del cargo:\n\nTrasladar cargas con autoelevador o pala, en las diferentes modalidades de la operación (descarga de camiones, transferencias de movimientos internos).\n\n\nFunciones específicas:\n\nChequeo visual del equipo, y llenado de planilla correspondiente al check list.\nDescarga de camiones y almacenaje en racks y/o estibas.\nTrasladar semielaborado a bodegas correspondientes.\nTrasladar semielaborados para abastecer a la línea de producción.\nReubicación de pallets en zonas asignadas.\nCumplir las normas internas, políticas de seguridad, y prevención de riesgos de la compañía.\n\nRequisitos:\n\nSecundario completo.\nExperiencia de 2 años en roles similares.\nDisponibilidad para trabajar en turnos rotativos.\nDisponibilidad para trabajar de manera temporal.\nResidir en zonas aledañas (Zárate/Campana).\n\nEn Softys fomentamos la inclusión laboral, indícanos si posees algún tipo de discapacidad para estar preparados para poder recibirte. Postula y sé parte de nuestra fibra.\n\n#LI-DNI\n\n\n\n\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 1943,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T03:08:06.169438+00:00"
+      "ficha_checked_at": "2026-11-18T18:23:43.536117+00:00"
     }
   ]
 }

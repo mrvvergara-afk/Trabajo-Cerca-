@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-18T03:43:06.672355+00:00",
+  "updated_at": "2026-11-18T18:14:59.556007+00:00",
   "items_total": 18,
   "pending_total": 18,
   "publication_enabled": false,
@@ -56,10 +56,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "44773766b34ebbf2100ddb36c896b23c65fa20a33ff1803b90029cbfa7abbadc",
+      "document_sha256": "13f12f0cfbf703824f76469c4a14f210acd05762c75ee43a250a49ba76876d9a",
       "original_classification": null,
       "date_source": "2026-10-18",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -68,7 +68,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {
@@ -88,10 +88,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "c7ec2348b03a4e8ad4321a9db1a7940d8ac5c39c6ca1a5c65d320ea80ca0050b",
+      "document_sha256": "ca6926d09664e8be4f9b2cdb8db3bff2e4b6888dea59a875a56edd9acccf89ac",
       "original_classification": null,
       "date_source": "2026-09-14",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -100,7 +100,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {
@@ -152,10 +152,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "11b75c604d7ef3c8f4281f0aa73a23e6ff5b801cc52c5b7f204998d78ead31d9",
+      "document_sha256": "33e69203ad5b3fa08af49417e3739034511a446059669f4695fc04761fa92365",
       "original_classification": null,
       "date_source": "2026-08-20",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -164,7 +164,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {
@@ -187,7 +187,7 @@
       "document_sha256": "a1a889d657913e233cb2ba50aa44e6bd55b42dc1e669078f0bee00693d19318f",
       "original_classification": "candidato_fecha_pendiente",
       "date_source": null,
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -196,7 +196,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17"
+      "last_seen": "2026-11-18"
     },
     {
       "review_id": "ocr_76cd72bb547dc17ab5549e27",
@@ -218,7 +218,7 @@
       "document_sha256": "d316f49c88e5488f2c14f38114e77514bb5800d4e886715933bf4eb56bba72f2",
       "original_classification": "sin_evidencia_suficiente",
       "date_source": null,
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": "2027-07-31",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -227,7 +227,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17"
+      "last_seen": "2026-11-18"
     },
     {
       "review_id": "ocr_97e8413102668b765208abc5",
@@ -311,10 +311,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "fb658f3ab248d5a752fa8eefa6acba8e38db6b1070bc9576e71c9b642df09ff6",
+      "document_sha256": "e84a8beab162a54f3c8e3f1a7adefcb1e631c8bfee522f91aa597627419fdcab",
       "original_classification": null,
       "date_source": "2026-06-16",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -323,7 +323,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {
@@ -343,10 +343,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "daab05ec937357ff0557102549e868d9a9b663dbe9ce164bcdcae169292f4ce1",
+      "document_sha256": "ec462c7ed0c67a5d7d77752bf405d0842275014dee4f4ef5c2f25eef2dec77cc",
       "original_classification": null,
       "date_source": "2026-10-01",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -355,7 +355,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {
@@ -376,10 +376,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "6d1f904dbe9692d3476ed010ffe52528dc4248b5ca016dcca03625ce27a75cb2",
+      "document_sha256": "205181b8e7709eed6ba947a36c8d97b7893b1a471653cbb58dd13b3912ef065c",
       "original_classification": null,
       "date_source": "2026-10-23",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -388,7 +388,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {
@@ -411,7 +411,7 @@
       "document_sha256": "0e89aac045e8bbfdcc21adc5efa287d98f03f41df0db9fbf0e315034d7f4ad1a",
       "original_classification": "candidato_fecha_pendiente",
       "date_source": null,
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": "2027-07-31",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -420,7 +420,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17"
+      "last_seen": "2026-11-18"
     },
     {
       "review_id": "ocr_ef6727c7fda5d3729f4bf6db",
@@ -472,10 +472,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "a67eb1654cb18b123168d9f5502ef0c5025bd5818edcb8e7e232ff480ba02c5f",
+      "document_sha256": "83be74d7d24621b40281f9b3dc672c66f6c90c7c5ba108b9698787d733585c0b",
       "original_classification": null,
       "date_source": "2026-08-24",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -484,7 +484,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {
@@ -505,10 +505,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "f12441094d7f9137653056421d303238a5486e83a9d4dc4aba28c041b9a6d720",
+      "document_sha256": "b6ad1a87dd17a674c21b57952d8a792ed30369eadfc65c08b708b17795f06d0d",
       "original_classification": null,
       "date_source": "2026-10-22",
-      "date_discovered": "2026-11-17",
+      "date_discovered": "2026-11-18",
       "deadline": "2026-10-26",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -517,7 +517,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-12",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "review_signature": null
     },
     {

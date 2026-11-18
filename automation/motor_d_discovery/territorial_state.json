@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-18T11:12:31.378542-03:00",
+  "last_run": "2026-11-18T15:02:04.305555-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -6966,6 +6966,138 @@
       "first_seen": "2026-11-18T11:12:31.378542-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/lider-tecnico-jornada-hibrida-3079091.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "0db736d40ce9ba138aa4": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "7f9d11aa8774c6ab3fac": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-aseo-part-time-pm-temporada-navidena-falabella-alto-las-condes-3079395.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "82e1e1afc6b692f61710": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-aseo-part-time-am-temporada-navidad-falabella-plaza-norte-3079394.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "28b54c21d4979d9a2481": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-auxiliar-de-aseo-para-temporada-navidena-turno-de-tarde-falabella-plaza-norte-3079393.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0d293d88da8651692d68": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-de-soporte-tecnico-3079392.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1883c7dd81e496750d46": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-auxiliar-de-aseo-para-temporada-navidena-turno-de-manana-falabella-parque-arauco-3079391.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "35b67bfbe4bdbb16268f": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-auxiliar-de-aseo-para-temporada-navidena-turno-de-tarde-falabella-alto-las-condes-3079390.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dcddff4eebecf153eb1f": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-aseo-part-time-pm-temporada-navidad-falabella-plaza-norte-3079389.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "db0b3195fdec6644e6ea": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-auxiliar-de-aseo-para-temporada-navidena-turno-de-manana-falabella-independencia-3079388.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4d35091f33383518ad72": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-auxiliar-de-aseo-para-temporada-navidena-turno-de-tarde-falabella-parque-arauco-3079387.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4fc5a33820ca95d14bf1": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-auxiliar-de-aseo-para-temporada-navidena-turno-de-manana-falabella-alto-las-condes-3079386.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d1339804f0524020cbd3": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-busca-auxiliar-de-aseo-para-temporada-navidena-turno-de-manana-falabella-los-dominicos-3079385.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "368de1a6a9bbed3119ed": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/encargado-a-de-oficina-3079384.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "950d73bceb2cd35201d0": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/tecnico-a-de-mantencion-mcdonald-x27-s-chillan-av-argentina-3079383.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c1d8e5382522afff9c0c": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/tecnico-electrico-especialista-en-sistemas-fotovoltaicos-y-energia-solar-san-pedro-de-la-paz-3079382.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "90659033b4de060f31a0": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/tecnico-a-de-mantencion-mcdonald-x27-s-san-pedro-de-la-paz-3079381.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "aaea5d2750bc4759c559": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-deshielo-san-jose-de-maipo-7x7-3079380.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5f2fa78f08397e574574": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/merchandaiser-mercaderista-canal-tradicional-con-camion-3-4-propio-antofagasta-3079379.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f5f2e8f0b88dc1176e6e": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/operador-de-estacionamiento-ful-time-mall-plaza-la-serena-3079378.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2dfd3e21f15b6eacd0d4": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-aseo-part-time-am-temporada-navidad-falabella-lo-barnechea-3079377.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0bf913630472a32e3688": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/vigilante-rancagua-3079376.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "126772b100b19765e714": {
+      "first_seen": "2026-11-18T15:02:04.305555-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/medico-general-policlinico-de-salud-mental-adulto/",
+      "source": "Salud Araucanía Norte",
       "commune": null
     }
   }

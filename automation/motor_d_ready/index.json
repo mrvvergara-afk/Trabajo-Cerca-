@@ -132,6 +132,12 @@
       "file": "20261117/motor-d-20261117-7b0f83c38bf2d64686.json",
       "count": 1,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261118-df2ba6f2e73e02681a",
+      "file": "20261118/motor-d-20261118-df2ba6f2e73e02681a.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -177,6 +183,7 @@
     "d_b479eb4033d3626606d4",
     "d_b82587f333519896e835",
     "d_bef43ecfd4d8417f1770",
+    "d_c3271f36e2e4551bc026",
     "d_c86ec67e426e27e24149",
     "d_cc0fbbdbedccef4fe20d",
     "d_d45494ef6c6c2102a759",
@@ -201,6 +208,7 @@
     "job:[\"bodeguero a plan navidad preunic angol\", \"preunic\", [\"angol\"]]",
     "job:[\"cajero a asistente integral temporada navidad angol\", \"fashion s park\", [\"angol\"]]",
     "job:[\"cajero a bancario a angol\", \"servicios helpbank s a\", [\"angol\"]]",
+    "job:[\"conductor a clinico urgencias angol\", \"xinerlink\", [\"angol\"]]",
     "job:[\"conductor profesional con vehiculo sedan diesel angol\", \"jobconsulting\", [\"angol\"]]",
     "job:[\"cuidador a residencia de ninos y ninas angol\", \"aldeas infantiles sos\", [\"angol\"]]",
     "job:[\"docente de matematicas reemplazo\", \"liceo agricola de negrete\", [\"negrete\"]]",
@@ -293,6 +301,7 @@
     "source:chiletrabajos:3932099",
     "source:chiletrabajos:3933145",
     "source:chiletrabajos:3933560",
+    "source:chiletrabajos:3934484",
     "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
     "url:https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
     "url:https://chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
@@ -300,6 +309,7 @@
     "url:https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963",
     "url:https://chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
     "url:https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+    "url:https://chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
     "url:https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
     "url:https://chiletrabajos.cl/trabajo/cuidador-a-residencia-de-ninos-y-ninas-angol-3677434",
     "url:https://chiletrabajos.cl/trabajo/docente-de-matematicas-reemplazo-3755017",

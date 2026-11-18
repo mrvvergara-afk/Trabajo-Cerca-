@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261118-df2ba6f2e73e02681a",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_c3271f36e2e4551bc026",
+      "cargo": "Conductor/a Clínico Urgencias Angol",
+      "empresa": "Xinerlink",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_descubrimiento": "2026-11-18",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-01",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

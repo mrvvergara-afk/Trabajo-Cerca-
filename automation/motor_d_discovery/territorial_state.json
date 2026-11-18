@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-18T15:02:04.305555-03:00",
+  "last_run": "2026-11-18T19:05:30.554262-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7099,6 +7099,138 @@
       "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/medico-general-policlinico-de-salud-mental-adulto/",
       "source": "Salud Araucanía Norte",
       "commune": null
+    },
+    "dfa1f8d173984ff01036": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Purén"
+    },
+    "a409a1cef89835565880": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/pizzero-20-horas-mall-plaza-oeste-3079621.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3bf9e70d4918bd455382": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cajero-part-time-fin-de-semana-metro-de-santiago-3079620.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "10fa8136dec0dc1bcd38": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/pizzero-30-horas-mall-plaza-oeste-3079619.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a7dbf331874a6a746722": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/tecnico-a-en-prevencion-de-riesgos-rancagua-3079618.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "37d41d996cf23822b578": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/urgente-operador-de-transpaleta-still-pudahuel-650000-pesos-desayuno-clacion-y-buses-lunes-a-viernes-am-y-pm-rotativo-3079617.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a0ae8491d275e8e38029": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/buscamos-operador-grua-horquilla-680000-liquidos-turnos-rotativos-pudahuel-3079616.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3707b80c2a7faee67932": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/operador-cd-en-copiapo-region-atacama-3079615.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e1126caa1d632883a35b": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-a-de-bodega-manana-pudahuel-bus-de-acercamiento-3079614.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ce62915b4587a25135ed": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/electromecanico-temporada-de-verano-pargua-ercilla-3079613.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6d05e2d29ebea2a74bc3": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operador-de-insumos-grua-horquilla-ercilla-pargua-3079612.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "26c438964474b2f195d0": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/conductores-ras-a3-puente-alto-terminal-primavera-3079611.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7615d6000c7f07fd37e9": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/conductores-ras-a3-puente-alto-terminal-los-tilos-3079610.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d84a6d062b49826800b1": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/conductores-ras-a3-puente-alto-terminal-camilo-henriquez-3079609.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "da1ffa2cdce1fb844f53": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/conductores-ras-a3-huechuraba-3079608.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2939496a7b11a632e329": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/buscamos-operador-grua-horquilla-680000-liquidos-turnos-rotativos-pudahuel-3079607.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "796bd2cd47e4abb7032f": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-bodega-con-licencia-clase-d-lampa-3079606.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "46041bb733e77c2b35e4": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cajero-a-retail-full-time-con-colacion-para-penalolen-630000-3079605.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "661945a239d0605999db": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-produccion-volante-3079604.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2f3d4769ed9aa20b0c2c": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-mantencion-maquinas-dispensadoras-de-bebida-en-ruta-movilizacion-propia-3079603.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "04037419daf9edb803bb": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-en-mantencion-maquinas-post-mix-y-shop-en-ruta-movilizacion-propia-3079602.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "963d40f61e305eaaff3e": {
+      "first_seen": "2026-11-18T19:05:30.554262-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/inspector-comercial-victoria-ercilla-3934905",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
     }
   }
 }

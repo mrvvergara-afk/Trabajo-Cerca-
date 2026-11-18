@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261118-d17333430d2aefde48",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_1a99f7fd5b8b9d116634",
+      "cargo": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "empresa": "CMPC",
+      "comunas": [
+        "Purén"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_descubrimiento": "2026-11-18",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-01",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    },
+    {
+      "id_fuente": "d_cace0a119d050a60beba",
+      "cargo": "Inspector Comercial Victoria Ercilla",
+      "empresa": "Peoplego",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/inspector-comercial-victoria-ercilla-3934905",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_descubrimiento": "2026-11-18",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-01",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

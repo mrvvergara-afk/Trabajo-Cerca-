@@ -138,6 +138,12 @@
       "file": "20261118/motor-d-20261118-df2ba6f2e73e02681a.json",
       "count": 1,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261118-d17333430d2aefde48",
+      "file": "20261118/motor-d-20261118-d17333430d2aefde48.json",
+      "count": 2,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -146,6 +152,7 @@
     "d_06be2b623b31c335001a",
     "d_074cdef4c2f1125ff8f0",
     "d_173964b29fca14e45f5d",
+    "d_1a99f7fd5b8b9d116634",
     "d_266d755ef6aa88feb9a3",
     "d_2795b5d75320388ba141",
     "d_286a02fa884ea7ea2859",
@@ -185,6 +192,7 @@
     "d_bef43ecfd4d8417f1770",
     "d_c3271f36e2e4551bc026",
     "d_c86ec67e426e27e24149",
+    "d_cace0a119d050a60beba",
     "d_cc0fbbdbedccef4fe20d",
     "d_d45494ef6c6c2102a759",
     "d_d5b4f7c3b41de14eac84",
@@ -199,6 +207,7 @@
     "d_restore_aba6c908a9d7b1936b"
   ],
   "seen_identity_keys": [
+    "job:[\"analista de vibraciones mininco planta plywood\", \"cmpc\", [\"puren\"]]",
     "job:[\"analista laboratorio i turno\", \"cmpc\", [\"nacimiento\"]]",
     "job:[\"asesor a de socias rural en angol malleco trabajador a tecnico social\", \"fondo esperanza\", [\"angol\"]]",
     "job:[\"asistente de aseo pt 20 hr angol\", \"fashion s park\", [\"angol\"]]",
@@ -222,6 +231,7 @@
     "job:[\"gestor de casos jornada completa cdc mca angol region de la araucania\", \"fundacion ciudad del nino\", [\"angol\"]]",
     "job:[\"ingeniero a procesos y excelencia sr\", \"cmpc\", [\"collipulli\"]]",
     "job:[\"inspector a ambiental\", \"cmpc\", [\"nacimiento\"]]",
+    "job:[\"inspector comercial victoria ercilla\", \"peoplego\", [\"victoria\"]]",
     "job:[\"instrumentista area\", \"cmpc\", [\"nacimiento\"]]",
     "job:[\"instrumentista de area santa fe\", \"cmpc\", [\"nacimiento\"]]",
     "job:[\"jefe de asesoria angol\", \"consultores 2000\", [\"angol\"]]",
@@ -302,6 +312,9 @@
     "source:chiletrabajos:3933145",
     "source:chiletrabajos:3933560",
     "source:chiletrabajos:3934484",
+    "source:chiletrabajos:3934867",
+    "source:chiletrabajos:3934905",
+    "url:https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
     "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
     "url:https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
     "url:https://chiletrabajos.cl/trabajo/asistente-dental-full-time-angol-3844114",
@@ -320,6 +333,7 @@
     "url:https://chiletrabajos.cl/trabajo/experto-a-en-prevencion-de-riesgos-rubro-celulosa-collipulli-3933145",
     "url:https://chiletrabajos.cl/trabajo/geomensor-angol-3915735",
     "url:https://chiletrabajos.cl/trabajo/gestor-de-casos-jornada-completa-cdc-mca-angol-region-de-la-araucania-3921759",
+    "url:https://chiletrabajos.cl/trabajo/inspector-comercial-victoria-ercilla-3934905",
     "url:https://chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
     "url:https://chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
     "url:https://chiletrabajos.cl/trabajo/m1-moldajero-obra-gruesa-hospital-de-nacimiento-contrato-a-trato-3887988",

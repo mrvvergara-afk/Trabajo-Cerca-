@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-18T15:02:04.305555-03:00",
+  "source_scan_date": "2026-11-18T19:05:30.554262-03:00",
   "registered_total": 202,
-  "total_pending": 105,
+  "total_pending": 82,
   "group_counts": {
-    "failed_public_source": 34,
-    "partial_index": 1,
+    "failed_public_source": 10,
+    "partial_index": 2,
     "regional_query": 2,
     "restricted_job_portal": 38,
     "social_reference": 27,
@@ -15,51 +15,51 @@
   "no_blocked_or_unread_source_claimed_recovered": true,
   "per_commune": {
     "Angol": {
-      "pending": 27,
+      "pending": 25,
       "high_priority": 5
     },
     "Collipulli": {
-      "pending": 18,
+      "pending": 16,
       "high_priority": 6
     },
     "Ercilla": {
-      "pending": 17,
+      "pending": 15,
       "high_priority": 5
     },
     "Lumaco": {
-      "pending": 17,
+      "pending": 15,
       "high_priority": 5
     },
     "Los Sauces": {
-      "pending": 18,
+      "pending": 16,
       "high_priority": 5
     },
     "Purén": {
-      "pending": 18,
+      "pending": 16,
       "high_priority": 5
     },
     "Renaico": {
-      "pending": 18,
+      "pending": 16,
       "high_priority": 5
     },
     "Traiguén": {
-      "pending": 17,
+      "pending": 15,
       "high_priority": 5
     },
     "Victoria": {
-      "pending": 20,
-      "high_priority": 5
-    },
-    "Mulchén": {
-      "pending": 17,
-      "high_priority": 5
-    },
-    "Negrete": {
       "pending": 18,
       "high_priority": 5
     },
+    "Mulchén": {
+      "pending": 16,
+      "high_priority": 6
+    },
+    "Negrete": {
+      "pending": 16,
+      "high_priority": 5
+    },
     "Nacimiento": {
-      "pending": 19,
+      "pending": 17,
       "high_priority": 5
     }
   },
@@ -204,87 +204,17 @@
       "recovered": false
     },
     {
-      "id": "00a5c7f9f6e6458a4663",
-      "name": "Portal Opción Empleo · Ercilla",
-      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "id": "6a1f646aeeab2be90424",
+      "name": "Mulchén · empleos búsqueda",
+      "url": "https://www.munimulchen.cl/?s=oferta+laboral",
       "communes": [
-        "Ercilla"
+        "Mulchén"
       ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
+      "status": "index_pagination_required",
+      "recovery_group": "partial_index",
+      "priority_tier": 2,
       "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "0ccdc04534e34659b53f",
-      "name": "Portal Opción Empleo · Los Sauces",
-      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
-      "communes": [
-        "Los Sauces"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "11eb2852413642b2bdbf",
-      "name": "Portal Laborum · Collipulli",
-      "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
-      "communes": [
-        "Collipulli"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "169bfe2a48756cccda19",
-      "name": "Portal Laborum · Renaico",
-      "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
-      "communes": [
-        "Renaico"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "18e59f401f833786ae3a",
-      "name": "Portal Laborum · Lumaco",
-      "url": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
-      "communes": [
-        "Lumaco"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "23d0575e2faa0b8c43bb",
-      "name": "Portal Opción Empleo · Angol",
-      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
-      "communes": [
-        "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "next_action": "Implement complete index pagination or a structured official feed. Never report the first 35 entries as a full source catalog.",
       "recovered": false
     },
     {
@@ -318,34 +248,6 @@
         "Mulchén",
         "Negrete",
         "Nacimiento"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "2cbbe7ca7223df025954",
-      "name": "Portal Opción Empleo · Victoria",
-      "url": "https://www.opcionempleo.cl/empleo-en-victoria.html",
-      "communes": [
-        "Victoria"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "2d58b7c0a4b425f727fc",
-      "name": "Portal Laborum · Purén",
-      "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
-      "communes": [
-        "Purén"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -394,90 +296,6 @@
       "recovered": false
     },
     {
-      "id": "5066930b67f5b9754e5b",
-      "name": "Portal Laborum · Ercilla",
-      "url": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
-      "communes": [
-        "Ercilla"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "54398eb96578576d4e71",
-      "name": "Portal Opción Empleo · Negrete",
-      "url": "https://www.opcionempleo.cl/empleo-en-negrete.html",
-      "communes": [
-        "Negrete"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "5a9d7a7233312a0b57eb",
-      "name": "Portal Laborum · Angol",
-      "url": "https://www.laborum.cl/empleos-busqueda-angol.html",
-      "communes": [
-        "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "5db36981a4a1e8b04fe0",
-      "name": "Portal Opción Empleo · Mulchén",
-      "url": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
-      "communes": [
-        "Mulchén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "78903755478202667606",
-      "name": "Portal Opción Empleo · Lumaco",
-      "url": "https://www.opcionempleo.cl/empleo-en-lumaco.html",
-      "communes": [
-        "Lumaco"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "7c3ced6f9152142d321c",
-      "name": "Portal Laborum · Victoria",
-      "url": "https://www.laborum.cl/empleos-busqueda-victoria.html",
-      "communes": [
-        "Victoria"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
       "id": "8116faf5be99996dde3b",
       "name": "Auditoría Empleos Públicos - convocatoria individual",
       "url": "https://empleospublicos.cl/pub/convocatorias/avisotrabajoficha.aspx?i=143787",
@@ -503,81 +321,11 @@
       "recovered": false
     },
     {
-      "id": "822684b14691c862dc3c",
-      "name": "Portal Opción Empleo · Renaico",
-      "url": "https://www.opcionempleo.cl/empleo-en-renaico.html",
-      "communes": [
-        "Renaico"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "8dd5b76aab354d921fa6",
-      "name": "Portal Laborum · Mulchén",
-      "url": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
-      "communes": [
-        "Mulchén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "98540d51b21fff2e130f",
-      "name": "Portal Laborum · Los Sauces",
-      "url": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
-      "communes": [
-        "Los Sauces"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "a129d685b363c7a0330a",
-      "name": "Portal Opción Empleo · Traiguén",
-      "url": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
-      "communes": [
-        "Traiguén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
       "id": "a44b7e6bb56349159931",
       "name": "Falabella · empleos oficiales",
       "url": "https://muevete.falabella.com/",
       "communes": [
         "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "af025b403ad9c22727cc",
-      "name": "Portal Opción Empleo · Nacimiento",
-      "url": "https://www.opcionempleo.cl/empleo-en-nacimiento.html",
-      "communes": [
-        "Nacimiento"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -640,81 +388,11 @@
       "recovered": false
     },
     {
-      "id": "c3432bfa8cab9e20b714",
-      "name": "Portal Opción Empleo · Purén",
-      "url": "https://www.opcionempleo.cl/empleo-en-puren.html",
-      "communes": [
-        "Purén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "cc430cb5fd7ee56bd76b",
-      "name": "Portal Laborum · Negrete",
-      "url": "https://www.laborum.cl/empleos-busqueda-negrete.html",
-      "communes": [
-        "Negrete"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
       "id": "d0dff4fb4776a3a53f1e",
       "name": "Portal LinkedIn · Victoria",
       "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
       "communes": [
         "Victoria"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "db426597e7d84996a388",
-      "name": "Portal Opción Empleo · Collipulli",
-      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
-      "communes": [
-        "Collipulli"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "e07b3a1162041c168bac",
-      "name": "Portal Laborum · Traiguén",
-      "url": "https://www.laborum.cl/empleos-busqueda-traiguen.html",
-      "communes": [
-        "Traiguén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "e9278af95ace458b395b",
-      "name": "Portal Laborum · Nacimiento",
-      "url": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
-      "communes": [
-        "Nacimiento"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

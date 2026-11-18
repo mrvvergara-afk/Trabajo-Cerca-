@@ -102,9 +102,24 @@ function bneLabelledPosting(raw:string, url:string):Data | null {
     datePosted:calendars[0][1],validThrough:calendars[1][1] };
 }
 
+// \"Nueva Victoria\" (northern mining site) and Victoria's Secret are not
+// evidence for the commune Victoria in the Araucanía region.
+function genuineWorksitePlaceMention(scope:string, place:string) {
+  const text=sourceFold(scope);
+  const expression=new RegExp('\\b'+sourceFold(place)+'\\b','g');
+  for (const match of text.matchAll(expression)) {
+    if (place!=='Victoria') return true;
+    const before=text.slice(0,match.index);
+    const after=text.slice(match.index+match[0].length);
+    if (/\bnueva\s+$/.test(before) || /^\s*['’]?s\s+secret\b/.test(after)) continue;
+    return true;
+  }
+  return false;
+}
+
 function descriptionWorksite(value:unknown) {
   const text=typeof value==='string' ? sourceDecode(value.replace(/<br\s*\/?>|<\/p>/gi,'\n').replace(/<[^>]*>/g,' ')) : '';
-  const scopes=[...text.matchAll(/(?:(?:lugar (?:real )?de trabajo|ubicaci[oó]n de (?:la )?faena)\s*:\s*|(?:para (?:un |el )?proyecto|servicio de atenci[oó]n domiciliaria|realizar (?:su |la )?pr[aá]ctica presencial|para trabajar|desempe[nñ]arse(?: de forma presencial)?)\s+en\s+)([^\n.;]{2,140})/gi)]
+  const scopes=[...text.matchAll(/(?:(?:lugar (?:real )?de trabajo|ubicaci[oó]n de (?:la )?faena|condiciones?\s+lugar)\s*:\s*|(?:para (?:un |el )?proyecto|servicio de atenci[oó]n domiciliaria|realizar (?:su |la )?pr[aá]ctica presencial|para trabajar|desempe[nñ]arse(?: de forma presencial)?)\s+en\s+|(?:obras? en ejecuci[oó]n en|obras? ubicadas? en|en la ciudad de|en la comuna de|a desarrollarse en la comuna de|para la localidad de|planta ubicada en)\s+)([^\n.;]{2,140})/gi)]
     .filter(match=>{
       // Functional requirements are not contradictory geographic evidence.
       // Explicit workplace labels remain authoritative, including unknown places.
@@ -117,7 +132,7 @@ function descriptionWorksite(value:unknown) {
   const places=new Set<string>();
   for (const match of scopes) {
     const scope=sourceFold(match[1]);
-    const found=SOURCE_WORK_PLACES.filter(place=>new RegExp('\\b'+sourceFold(place)+'\\b').test(scope));
+    const found=SOURCE_WORK_PLACES.filter(place=>genuineWorksitePlaceMention(scope,place));
     if (!found.length) return {observed:true,commune:null,literal:match[0]};
     if (found.length===2 && found.includes('Mininco') && found.includes('Collipulli')) found.splice(found.indexOf('Collipulli'),1);
     for (const place of found) places.add(place);
@@ -142,7 +157,7 @@ function worksite(job:Data) {
   for (const location of locations) {
     const address=(location as Data).address as Data;
     const text = sourceFold(address.addressLocality);
-    const places = SOURCE_WORK_PLACES.filter(place => new RegExp('\\b'+sourceFold(place)+'\\b').test(text));
+    const places = SOURCE_WORK_PLACES.filter(place => genuineWorksitePlaceMention(text,place));
     if (places.length===2 && places.includes('Mininco') && places.includes('Collipulli')) places.splice(places.indexOf('Collipulli'),1);
     if (!places.length) return null;
     for (const place of places) found.add(place);
@@ -204,7 +219,7 @@ export function evaluatePublicJob(url:string, raw:string, finalUrl=url, status=2
   if (Buffer.byteLength(raw,'utf8')>600000) return { status:'pending',reason:'source_byte_budget_exceeded' };
   const visible = visibleHtml(raw), body = publicText(visible);
   if (/verify you are human|access denied|unusual traffic|log in to view|iniciar sesi[oó]n para ver/i.test(body)) return { status:'pending',reason:'public_access_challenge' };
-  if (/oferta (?:expirada|finalizada|cerrada)|postulaci[oó]n(?:es)? (?:cerradas?|finalizadas?)|esta oferta ya no|job (?:expired|closed)|no longer accepting applications/i.test(body)) return { status:'rejected',reason:'closed_notice' };
+  if (/oferta (?:expirada|finalizada|cerrada)|postulaci[oó]n(?:es)? (?:cerradas?|finalizadas?)|esta oferta ya no|este anuncio ha expirado|desactivado por el empleador|job (?:expired|closed)|no longer accepting applications/i.test(body)) return { status:'rejected',reason:'closed_notice' };
   const all = postings(raw);
   if (!all.length && adapter.name==='Bolsa Nacional de Empleo') {
     const labelled=bneLabelledPosting(visible,finalUrl);

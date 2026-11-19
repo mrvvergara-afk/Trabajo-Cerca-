@@ -247,5 +247,14 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("x.ubicacion_trabajo",importer)
 
 
+    def test_gemini_bridge_supports_trabajando_and_keeps_aggregators_separate(self):
+        bridge=(ROOT/"motor-gemini-github-pull.ts").read_text(encoding="utf-8")
+        adapter=(ROOT/"public-source-adapters.ts").read_text(encoding="utf-8")
+        self.assertIn("'trabajando.cl':'Trabajando.com'", bridge)
+        self.assertIn("if(!adapter||adapter.family==='aggregator')return null", bridge)
+        self.assertIn("host === 'trabajando.cl'",adapter)
+        self.assertIn("host === 'opcionempleo.cl'",adapter)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -57,7 +57,6 @@ jobs:
       - name: Validate exactly one consolidated release candidate
         run: |
           python automation/test_release_candidate_rc5.py
-          python automation/test_release_candidate_rc4.py
       - name: Validate no data writes or deployment in CI
         run: |
           echo 'Read-only analytics, metadata and code tests only. No AppDeploy deployment.'

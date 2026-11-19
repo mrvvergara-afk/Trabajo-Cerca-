@@ -33,9 +33,10 @@ EXPECTED = {
     "backend/index.ts",
     "backend/engine-metrics-contract.ts",
     "backend/engine-telemetry.ts",
+    "backend/engine-source-audit.ts",
     "src/executive-charts.tsx",
 }
-NEW_FILES = {"backend/worksite-semantics.ts", "backend/gemini-verify-scheduler.ts", "src/house-photo-selection.ts", "src/commercial-media-policy.ts", "backend/engine-metrics-contract.ts", "backend/engine-telemetry.ts", "src/executive-charts.tsx"}
+NEW_FILES = {"backend/worksite-semantics.ts", "backend/gemini-verify-scheduler.ts", "src/house-photo-selection.ts", "src/commercial-media-policy.ts", "backend/engine-metrics-contract.ts", "backend/engine-telemetry.ts", "backend/engine-source-audit.ts", "src/executive-charts.tsx"}
 
 
 def stage_path(name: str) -> pathlib.Path:
@@ -70,10 +71,10 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertTrue(any("explicit user authorization" in x for x in m["guardrails"]))
         self.assertTrue(any("database" in x for x in m["guardrails"]))
 
-    def test_only_twenty_three_expected_files(self):
+    def test_only_twenty_four_expected_files(self):
         self.assertEqual(set(self.files), EXPECTED)
         self.assertEqual(len(self.manifest["files"]), len(self.files))
-        self.assertEqual(sum(x.startswith("backend/") for x in self.files), 9)
+        self.assertEqual(sum(x.startswith("backend/") for x in self.files), 10)
         self.assertEqual(sum(x.startswith("src/") for x in self.files), 14)
         self.assertEqual(len(self.files["backend/index.ts"]["diffs"]), 2)
         self.assertFalse(any(x == "src/App.tsx" for x in self.files))
@@ -186,7 +187,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertNotIn("src/App.tsx",self.files)
         self.assertNotIn("src/commercial-admin.tsx",self.files)
         self.assertNotIn("src/house-admin.tsx",self.files)
-        self.assertEqual(len(self.files),23)
+        self.assertEqual(len(self.files),24)
 
 
     def test_commercial_logo_is_persistent_and_never_cropped(self):
@@ -255,6 +256,24 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertNotIn("'Temuco'",metrics)
         self.assertNotIn("'Los Ángeles'",metrics)
         self.assertEqual(len(self.files["src/executive-control-center.tsx"]["diffs"]),1)
+
+
+    def test_external_audits_are_aggregate_read_only_and_bounded(self):
+        producer=stage_path("backend/engine-source-audit.ts").read_text(encoding="utf-8")
+        svc=stage_path("backend/engine-telemetry.ts").read_text(encoding="utf-8")
+        self.assertIn("producerAudits",svc)
+        self.assertIn("MOTOR_C_GITHUB_READ_TOKEN",producer)
+        self.assertIn("secrets.listSecretNames()",producer)
+        self.assertIn("AbortSignal.timeout(5000)",producer)
+        self.assertIn("TTL_MS=4*60_000",producer)
+        self.assertIn("chatgpt_coverage",producer)
+        self.assertIn("gemini_source_audit_v2",producer)
+        self.assertIn("producer_heartbeat",producer)
+        self.assertIn("publishedConfirmed:null",producer)
+        self.assertNotIn("console.log(token)",producer)
+        self.assertNotIn("console.warn(token)",producer)
+        self.assertNotIn("db.tx.add",producer)
+        self.assertNotIn("db.tx.update",producer)
 
 
 if __name__ == "__main__":

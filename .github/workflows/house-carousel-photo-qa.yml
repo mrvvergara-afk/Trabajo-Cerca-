@@ -50,4 +50,5 @@ jobs:
       - name: Check consolidated release manifest
         run: python automation/test_release_candidate_rc2.py
       - name: No AppDeploy write or external publishing
-        run: echo 'PASS: CI runs offline with synthetic URLs, no deployment or database writes'
+        run: |
+          echo 'PASS: CI runs offline with synthetic URLs, no deployment or database writes'

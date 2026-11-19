@@ -1,0 +1,55 @@
+name: Clean public interface and unified RC6 QA
+
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging_ui/src/App.tsx'
+      - 'appdeploy_staging_ui/src/public-content-policy.ts'
+      - 'appdeploy_staging_ui/src/test_public_content_policy.ts'
+      - 'appdeploy_staging_ui/src/house-advertising.tsx'
+      - 'appdeploy_staging_ui/src/territorial-sections.tsx'
+      - 'automation/test_release_candidate_rc6.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC6_APPDEPLOY_FILES.json'
+      - '.github/workflows/public-ui-cleanup-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging_ui/src/App.tsx'
+      - 'appdeploy_staging_ui/src/public-content-policy.ts'
+      - 'appdeploy_staging_ui/src/test_public_content_policy.ts'
+      - 'appdeploy_staging_ui/src/house-advertising.tsx'
+      - 'appdeploy_staging_ui/src/territorial-sections.tsx'
+      - 'automation/test_release_candidate_rc6.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC6_APPDEPLOY_FILES.json'
+      - '.github/workflows/public-ui-cleanup-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  public-ui-cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source labels and backend-description privacy tests
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/test_public_content_policy.ts --bundle --format=esm --platform=node --outfile=/tmp/tc-public-policy.mjs
+          node /tmp/tc-public-policy.mjs
+      - name: Compile complete public page and advertising sources
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/App.tsx --bundle --format=esm --platform=browser --external:* --outfile=/tmp/tc-public-app.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/territorial-sections.tsx --bundle --format=esm --platform=browser --external:* --outfile=/tmp/tc-public-cities.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/house-advertising.tsx --bundle --format=esm --platform=browser --external:* --outfile=/tmp/tc-house-banner.js
+      - name: Verify 23 unique pinned RC6 files, safe presentation and no changed backend provenance
+        run: |
+          python automation/test_release_candidate_rc6.py
+      - name: Confirm no production operations during code QA
+        run: |
+          echo 'The QA workflow neither writes public records nor deploys Trabajo Cerca.'

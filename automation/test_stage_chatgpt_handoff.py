@@ -45,8 +45,9 @@ class TestChatGPTHandoff(unittest.TestCase):
             prepare(p, index(), day="20261113")
 
     def test_recent_open_official_source_without_publication_date_is_staged(self):
-        from datetime import datetime,timezone
-        day=datetime.now(timezone.utc).date().isoformat()
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        day=datetime.now(ZoneInfo("America/Santiago")).date().isoformat()
         p=payload()
         p["offers"][0]["fecha_publicacion"]=None
         p["offers"][0]["fecha_descubrimiento"]=day
@@ -89,6 +90,29 @@ class TestChatGPTHandoff(unittest.TestCase):
         p["offers"] = p["offers"] * 16
         with self.assertRaisesRegex(ValueError, "invalid_batch_size"):
             prepare(p, index(), day="20261113")
+
+
+    def test_chile_boundary_accepts_today_and_rejects_tomorrow(self):
+        p=payload()
+        p['offers'][0]['fecha_publicacion']='2026-11-18'
+        p['offers'][0]['fecha_descubrimiento']='2026-11-18'
+        _,batch,_=prepare(p,index(),day='20261118',today=date(2026,11,18))
+        self.assertEqual(batch['offers'][0]['fecha_descubrimiento'],'2026-11-18')
+        p['offers'][0]['fecha_descubrimiento']='2026-11-19'
+        with self.assertRaisesRegex(ValueError,'future_date'):
+            prepare(p,index(),day='20261118',today=date(2026,11,18))
+
+    def test_undated_open_evidence_uses_chile_day(self):
+        p=payload()
+        p['offers'][0]['fecha_publicacion']=None
+        p['offers'][0]['fecha_descubrimiento']='2026-11-18'
+        p['offers'][0]['fecha_verificacion']='2026-11-18'
+        p['offers'][0]['vigencia_fuente']='postulacion_abierta_verificada'
+        _,batch,_=prepare(p,index(),day='20261118',today=date(2026,11,18))
+        self.assertIsNone(batch['offers'][0]['fecha_publicacion'])
+        p['offers'][0]['fecha_verificacion']='2026-11-19'
+        with self.assertRaisesRegex(ValueError,'stale_or_future_undated_evidence'):
+            prepare(p,index(),day='20261118',today=date(2026,11,18))
 
 if __name__ == "__main__":
     unittest.main()

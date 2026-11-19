@@ -5,7 +5,8 @@ import hashlib
 import ipaddress
 import re
 import unicodedata
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 COMMUNES = ("Angol", "Collipulli", "Ercilla", "Lumaco", "Los Sauces", "Purén",
@@ -135,7 +136,7 @@ def validate_offer(raw: dict, *, today: date | None = None) -> dict:
     offer["hash_url_sha256"] = digest
     publish = None if offer["fecha_publicacion"] is None else _date(offer["fecha_publicacion"], "fecha_publicacion")
     discover = _date(offer["fecha_descubrimiento"], "fecha_descubrimiento")
-    today = today or date.today()
+    today = today or datetime.now(ZoneInfo("America/Santiago")).date()
     if publish is None:
         if offer.get("vigencia_fuente") != "postulacion_abierta_verificada":
             raise ValueError("undated_needs_open_application_evidence")

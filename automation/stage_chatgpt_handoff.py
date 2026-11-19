@@ -5,7 +5,8 @@ import copy
 import hashlib
 import json
 import re
-from datetime import date, datetime, timezone
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from ipaddress import ip_address
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -16,7 +17,10 @@ COMMUNES = {"Angol", "Collipulli", "Ercilla", "Lumaco", "Los Sauces", "Purén", 
 ALIASES = {"Mininco": "Collipulli", "Coihue": "Negrete", "Coigüe": "Negrete",
            "Cohigue": "Negrete", "Capitán Pastene": "Lumaco"}
 
-def prepare(payload: dict, index: dict, day: str | None = None):
+def prepare(payload: dict, index: dict, day: str | None = None, *, today: date | None = None):
+    # Date validations and batch naming use the Chilean calendar, not UTC.
+    # `day` is the output batch identifier; it can be historical during backfills.
+    chile_today = today or datetime.now(ZoneInfo('America/Santiago')).date()
     if payload.get("schema_version") != 1 or payload.get("approval") != "approved_for_publication" or payload.get("producer") != "chatgpt_territorial":
         raise ValueError("invalid_chatgpt_approval")
     if index.get("schema_version") != 1 or index.get("producer") != "chatgpt_territorial":
@@ -25,7 +29,8 @@ def prepare(payload: dict, index: dict, day: str | None = None):
     if not isinstance(offers, list) or not 1 <= len(offers) <= 15:
         raise ValueError("invalid_batch_size")
     offers = validate_batch(copy.deepcopy(offers), set(index.get("seen_url_hashes", [])),
-                            prior_source_identities=set(index.get("seen_source_identities", [])))
+                            prior_source_identities=set(index.get("seen_source_identities", [])),
+                            today=chile_today)
     prior = set(index.get("seen_offer_ids", []))
     unique = set()
     for offer in offers:
@@ -67,7 +72,7 @@ def prepare(payload: dict, index: dict, day: str | None = None):
                 parsed_date = date.fromisoformat(offer[field])
             except (ValueError, TypeError):
                 raise ValueError("invalid_" + field)
-            if parsed_date > datetime.now(timezone.utc).date():
+            if parsed_date > chile_today:
                 raise ValueError("future_" + field)
         if offer["fecha_publicacion"] is not None and date.fromisoformat(offer["fecha_descubrimiento"]) < date.fromisoformat(offer["fecha_publicacion"]):
             raise ValueError("discovery_before_publication")
@@ -76,9 +81,9 @@ def prepare(payload: dict, index: dict, day: str | None = None):
                 closing = date.fromisoformat(offer["fecha_cierre"])
             except (ValueError, TypeError):
                 raise ValueError("invalid_fecha_cierre")
-            if closing < datetime.now(timezone.utc).date():
+            if closing < chile_today:
                 raise ValueError("expired_offer")
-    day = day or datetime.now(timezone.utc).strftime("%Y%m%d")
+    day = day or chile_today.strftime("%Y%m%d")
     if not re.fullmatch(r"20[0-9]{6}", day):
         raise ValueError("invalid_day")
     suffix = hashlib.sha256(json.dumps(offers, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:18]

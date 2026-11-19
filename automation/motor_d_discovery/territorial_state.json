@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-18T19:05:30.554262-03:00",
+  "last_run": "2026-11-18T23:32:38.474754-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7231,6 +7231,132 @@
       "url": "https://www.chiletrabajos.cl/trabajo/inspector-comercial-victoria-ercilla-3934905",
       "source": "Chiletrabajos · Victoria",
       "commune": "Victoria"
+    },
+    "17f08dc9a36be2d9c2c0": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/ai-offer-aechromium-1795053211369-3079675.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c4ce0496966cfc9e73d8": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/reponedor-a-nocturno-para-supermercado-en-la-calera-v-region-inicio-hoy-horario-rotativos-3079674.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8115f3070c3433ff515e": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/reponedor-a-nocturno-para-supermercado-en-limache-v-region-horario-rotativos-3079673.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cbc592e274bdf774f6c4": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/electromecanica-o-parque-fotovoltaico-3079672.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9c6ef78eb1a1c5caf6c9": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/electromecanica-o-parque-fotovoltaico-3079671.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8b77f0936c27cd759a3b": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnica-o-electromecanica-o-3079670.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cc6f45b31b13e6a7081d": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/tecnica-o-electromecanica-o-3079669.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e33e79780b9bceb667f6": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnica-o-climatizacion-3079668.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "474f0e2d35b1c8104364": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-tecnica-en-mecanica-santiago-scania-3079667.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "75f453a1b0c604fc2289": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/electromecanico-en-colina-800000-3079666.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "705c5fcb511fb3eb1e06": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/desarrollador-fullstack-nodejs-react-reemplazo-3079665.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "38ed4fe66f5a5dc1928b": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/practica-logistica-calama-3079664.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "50115c80fc76cadd51b1": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/oportunidad-conductor-de-bus-jornada-5x2-domicilio-antofagasta-residencia-antofagasta-3079663.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c3c53a868cc893ee7447": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/se-buscan-15-choferes-repartidores-para-ideal-bimbo-vina-del-mar-sector-placilla-placilla-3079662.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0d29e1c8d414e61582ce": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apilador-electrico-toyota-pudahuel-colacion-bus-de-acercamiento-3079661.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "968a821080c96b6df92d": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/picker-full-time-noche-659000-noche-penalolen-3079660.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "513d953385b2d04af01f": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-picker-669000-turnos-rotativos-maipu-3079659.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "41d8a6f074858aca02dd": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-picker-669000-turnos-rotativos-maipu-3079658.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5ae669e4cdfb9590e92c": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/auxiliar-de-aseo-part-time-concepcion-3079657.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "57f9fe35da781f6c87b2": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-sin-experiencia-turno-de-dia-570000-con-bus-ingreso-inmediato-san-bernardo-3079656.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8c99a49f5ac6dcc3c40d": {
+      "first_seen": "2026-11-18T23:32:38.474754-03:00",
+      "url": "https://lasnoticiasdemalleco.cl/conectividad/avanza-pavimentacion-de-la-ruta-entre-inspector-fernandez-y-laguna-malleco-segunda-etapa-se-entregaria-en-abril/",
+      "source": "Las Noticias de Malleco",
+      "commune": null
     }
   }
 }

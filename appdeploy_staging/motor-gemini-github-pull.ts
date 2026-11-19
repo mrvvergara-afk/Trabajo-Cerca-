@@ -18,9 +18,11 @@ export function adaptGeminiCandidate(raw:Candidate) {
   let host = '';
   try { const parsed=new URL(url); if(parsed.protocol!=='https:')return null; host=parsed.hostname.replace(/^www\./,'').toLowerCase(); }
   catch { return null; }
-  const supported:Record<string,string>={'chiletrabajos.cl':'Chiletrabajos','portal.chiletrabajos.cl':'Chiletrabajos','laborum.cl':'Laborum','cl.computrabajo.com':'Computrabajo','computrabajo.cl':'Computrabajo','bne.cl':'BNE','bne.gob.cl':'BNE','jobs.arauco.com':'Arauco','cmpc.csod.com':'CMPC','municipalidadrenaico.cl':'Municipalidad Renaico','munimulchen.cl':'Municipalidad Mulchen','mtraiguen.cl':'Municipalidad Traiguen','muninegrete.cl':'Municipalidad Negrete','munilumaco.cl':'Municipalidad Lumaco','munipuren.cl':'Municipalidad Puren','muniercilla.cl':'Municipalidad Ercilla','municipalidadcollipulli.cl':'Municipalidad Collipulli','nacimiento.cl':'Municipalidad Nacimiento','munilossauces.cl':'Municipalidad Los Sauces','noticias.angol.cl':'Municipalidad Angol','victoriachile.cl':'Municipalidad Victoria','hospitalangol.cl':'Hospital Angol'};
+  const supported:Record<string,string>={'chiletrabajos.cl':'Chiletrabajos','portal.chiletrabajos.cl':'Chiletrabajos','laborum.cl':'Laborum','trabajando.cl':'Trabajando.com','cl.computrabajo.com':'Computrabajo','computrabajo.cl':'Computrabajo','bne.cl':'BNE','bne.gob.cl':'BNE','jobs.arauco.com':'Arauco','cmpc.csod.com':'CMPC','municipalidadrenaico.cl':'Municipalidad Renaico','munimulchen.cl':'Municipalidad Mulchen','mtraiguen.cl':'Municipalidad Traiguen','muninegrete.cl':'Municipalidad Negrete','munilumaco.cl':'Municipalidad Lumaco','munipuren.cl':'Municipalidad Puren','muniercilla.cl':'Municipalidad Ercilla','municipalidadcollipulli.cl':'Municipalidad Collipulli','nacimiento.cl':'Municipalidad Nacimiento','munilossauces.cl':'Municipalidad Los Sauces','noticias.angol.cl':'Municipalidad Angol','victoriachile.cl':'Municipalidad Victoria','hospitalangol.cl':'Hospital Angol'};
   if(!supported[host])return null;
   if(host==='chiletrabajos.cl'&&!new URL(url).pathname.startsWith('/trabajo/'))return null;
+  // The merged public-source adapter accepts only individual Trabajando requisitions.
+  // Opcionempleo remains an aggregator: resolve employer ATS separately before import.
   const adapter=publicSourceAdapter(url);
   if(!adapter||adapter.family==='aggregator')return null;
   const originalCity=string(raw.comuna_real || raw.comuna);

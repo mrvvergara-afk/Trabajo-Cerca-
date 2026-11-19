@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-19T06:51:54.421029-03:00",
+  "last_run": "2026-11-19T10:26:09.741141-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7404,6 +7404,144 @@
       "first_seen": "2026-11-19T06:51:54.421029-03:00",
       "url": "https://jobs.arauco.com/Chile/job/San-Jose-de-la-Mariquina-Supervisora-Producci%C3%B3n-Complejo-Maderas-Valdivia-LR-5150000/1429038300/",
       "source": "Arauco empleo",
+      "commune": null
+    },
+    "8a98eb6047414d6ddda8": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/especialista-de-soporte-tecnico-ti-3079765.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c93601d99de1034c14fe": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-de-operaciones-domiciliarias-3079764.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "60cbecec119940b491ba": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-de-mantenimiento-3079763.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "db000c8637cab7d6b711": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-a-de-mantenimiento-3079762.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9b4629ee3e5b0eb5f5cc": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/mecanico-para-nuestro-cliente-walmart-chile-3079761.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "39ec49b47b6fa6c49b3a": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-jornada-4x4-noche-cerrillos-3079760.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3b9af44b6dd7769280e8": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-jefe-grupo-4x4-renca-renta-650000-3079759.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "19407d923e5a718d90f4": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/supervisor-de-seguridad-concepcion-5x2-800000-3079758.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6dcce2210c8396dc5005": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-de-tiendas-la-cav-3079757.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7637107a0aa755094256": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/nochero-a-la-florida-part-time-fines-de-semana-y-festivos-3079756.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ea0608e178ea957bc3e5": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/urgente-personal-de-seguridad-retail-solo-guardias-de-seguridad-con-os10-vigente-o-prorroga-santiago-3079755.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a0caee7806ceb937fb0e": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-tacticos-turno-am-y-pm-3079754.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fe6efb612d42c2d24372": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/vendedor-tecnico-en-electricidad-volkron-energy-con-con-todo-chile-3079753.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a38a563b1c09f393ec27": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/control-de-acceso-para-supermercado-en-la-florida-turnos-fin-de-semana-fin-de-semana-3079752.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ae7a87f65391942cd313": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-periodismo-o-comunicacion-audiovisual-maipu-3079751.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2a59d47a55d7840ad06d": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/administrador-de-contratos-30-antofagasta-3079750.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "48d575fc1b10568019ba": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-de-seguridad-convencional-turno-am-y-pm-3079749.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ac941687891f140947c7": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/ejecutivo-a-comercial-vii-region-rubro-hormigon-rubro-hormigon-3079748.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "37ca29cfba5a45b35a87": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-recursos-humanos-lampa-3079747.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "061df91443672e3f591a": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/qa-flash-aechromium-1795091649058-3079746.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3a391e2af84d17cdd7ff": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Chill%C3%A1n-Mantenedora-Preventivo-Taller-Central-Chill%C3%A1n-Viejo-BI-3780000/1452128900/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "862c0bdc6550f1a9ad83": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ingeniero-constructor-o-ingeniero-civil-3935060",
+      "source": "Motor A · ficha original a verificar",
+      "commune": null
+    },
+    "36a763f216f19cc82fce": {
+      "first_seen": "2026-11-19T10:26:09.741141-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/maestro-de-primera-3935047",
+      "source": "Motor A · ficha original a verificar",
       "commune": null
     }
   }

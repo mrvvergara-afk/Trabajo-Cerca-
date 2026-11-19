@@ -1,4 +1,5 @@
 import {db} from '@appdeploy/sdk';
+import {producerAudits} from './engine-source-audit';
 import {ENGINE_IDS,adaptEngine,rollup,asRow,nonnegative,stamp,
  type EngineId,type DayPoint,type EngineRow} from './engine-metrics-contract';
 
@@ -66,9 +67,21 @@ export async function executiveEngineTelemetry() {
    const data=await readStatus(source[0],source[1]);
    return {id,...data};
  }));
- const engines:EngineRow[]=statuses.map(item=>
+ const internal:EngineRow[]=statuses.map(item=>
    adaptEngine(item.id,item.value,{readFailed:item.error}));
- const histories=await Promise.all(HISTORIES.map(h=>readHistory(h.engine,h.table,h.measure)));
+ // Reporter snapshots are fetched independently from authoritative producer
+ // artifacts, not from the import queue; only counters enter the response.
+ const [external,histories]=await Promise.all([
+   producerAudits().catch(()=>({} as Awaited<ReturnType<typeof producerAudits>>)),
+   Promise.all(HISTORIES.map(h=>readHistory(h.engine,h.table,h.measure)))
+ ]);
+ const engines:EngineRow[]=internal.map(item=>{
+   const candidate=item.id==='D'||item.id==='CHATGPT'||item.id==='GEMINI'?external[item.id]:null;
+   // A recent direct producer observation supersedes an old importer report.
+   if(!candidate)return item;
+   if(!item.observedAt)return candidate;
+   return Date.parse(candidate.observedAt||'')>=Date.parse(item.observedAt)?candidate:item;
+ });
  const points=histories.flatMap(h=>h.points);
  const incomplete=histories.some(x=>!x.complete);
  const missing=engines.filter(x=>x.status==='unreported'||x.status==='error').map(x=>x.id);

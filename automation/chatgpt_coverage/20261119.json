@@ -4,8 +4,8 @@
   "inventory_sha": "ba0b70bb97d7a14d8b97afdfb5540b2fb00a79b7",
   "inventory_endpoints": 143,
   "inventory_discovery_targets": 29,
-  "scan_wave": 5,
-  "run_at": "2026-11-19T08:11:28Z",
+  "scan_wave": 0,
+  "run_at": "2026-11-19T11:38:31Z",
   "coverage_complete": false,
   "source_results": [
     {
@@ -283,6 +283,294 @@
       "origin": "public_web_open",
       "offers_found": 3,
       "reason": "Three current public municipal listings found; secondary Los Ángeles, pending catalog reconciliation"
+    },
+    {
+      "source_id": "indeed-Angol",
+      "scan_wave": 0,
+      "source_name": "Indeed · Angol",
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "territory": "Angol",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "trabajando-Angol",
+      "scan_wave": 0,
+      "source_name": "Trabajando · Angol",
+      "url": "https://www.trabajando.cl/trabajo-empleo/angol",
+      "territory": "Angol",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "chiletrabajos-Collipulli",
+      "scan_wave": 0,
+      "source_name": "ChileTrabajos · Collipulli",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+      "territory": "Collipulli",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "opcionempleo-Ercilla",
+      "scan_wave": 0,
+      "source_name": "Opción Empleo · Ercilla",
+      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "territory": "Ercilla",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "laborum-Renaico",
+      "scan_wave": 0,
+      "source_name": "Laborum · Renaico",
+      "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+      "territory": "Renaico",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "linkedin-Mininco",
+      "scan_wave": 0,
+      "source_name": "LinkedIn · Mininco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Mininco",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Access restricted / anti-bot JS / LinkedIn reader disabled"
+    },
+    {
+      "source_id": "computrabajo-Nacimiento",
+      "scan_wave": 0,
+      "source_name": "Computrabajo · Nacimiento",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+      "territory": "Nacimiento",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Access restricted / anti-bot JS / LinkedIn reader disabled"
+    },
+    {
+      "source_id": "indeed-Negrete",
+      "scan_wave": 0,
+      "source_name": "Indeed · Negrete",
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "territory": "Negrete",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "trabajando-Negrete",
+      "scan_wave": 0,
+      "source_name": "Trabajando · Negrete",
+      "url": "https://www.trabajando.cl/trabajo-empleo/negrete",
+      "territory": "Negrete",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "chiletrabajos-Mulchén",
+      "scan_wave": 0,
+      "source_name": "ChileTrabajos · Mulchén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+      "territory": "Mulchén",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "opcionempleo-Los Sauces",
+      "scan_wave": 0,
+      "source_name": "Opción Empleo · Los Sauces",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "territory": "Los Sauces",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "laborum-Purén",
+      "scan_wave": 0,
+      "source_name": "Laborum · Purén",
+      "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+      "territory": "Purén",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "linkedin-Traiguén",
+      "scan_wave": 0,
+      "source_name": "LinkedIn · Traiguén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Traiguén",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Access restricted / anti-bot JS / LinkedIn reader disabled"
+    },
+    {
+      "source_id": "computrabajo-Lumaco",
+      "scan_wave": 0,
+      "source_name": "Computrabajo · Lumaco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+      "territory": "Lumaco",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Access restricted / anti-bot JS / LinkedIn reader disabled"
+    },
+    {
+      "source_id": "indeed-Victoria",
+      "scan_wave": 0,
+      "source_name": "Indeed · Victoria",
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "territory": "Victoria",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "trabajando-Victoria",
+      "scan_wave": 0,
+      "source_name": "Trabajando · Victoria",
+      "url": "https://www.trabajando.cl/trabajo-empleo/victoria",
+      "territory": "Victoria",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "chiletrabajos-secondary-Los Ángeles",
+      "scan_wave": 0,
+      "source_name": "ChileTrabajos · Los Ángeles",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+      "territory": "Los Ángeles",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "opcionempleo-secondary-Temuco",
+      "scan_wave": 0,
+      "source_name": "Opción Empleo · Temuco",
+      "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+      "territory": "Temuco",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "fashions-park-empleo-angol",
+      "scan_wave": 0,
+      "source_name": "Fashion's Park · contratación oficial",
+      "url": "https://fashionspark.hiringroom.com/jobs",
+      "territory": "Angol y Victoria",
+      "status": "checked_found",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 2,
+      "reason": "Official ATS read: Angol listing already cataloged; Victoria listing has conflicting Temuco requirement"
+    },
+    {
+      "source_id": "omil-negrete",
+      "scan_wave": 0,
+      "source_name": "Municipalidad / OMIL Negrete",
+      "url": "https://www.muninegrete.cl/",
+      "territory": "Negrete",
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page read; no new eligible vacancy verified"
+    },
+    {
+      "source_id": "malleco7",
+      "scan_wave": 0,
+      "source_name": "Malleco 7",
+      "url": "https://www.malleco7.cl/",
+      "territory": "Malleco",
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page read; no new eligible vacancy verified"
+    },
+    {
+      "source_id": "bne-negrete-pilot-2026-109726",
+      "scan_wave": 0,
+      "source_name": "Bolsa Nacional de Empleo · Negrete",
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "territory": "Negrete",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "404 not found"
+    },
+    {
+      "source_id": "mulchen-feed",
+      "scan_wave": 0,
+      "source_name": "Municipalidad de Mulchén · novedades",
+      "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "territory": "Mulchén",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
+    },
+    {
+      "source_id": "registry-omil-temuco-portal",
+      "scan_wave": 0,
+      "source_name": "OMIL Temuco · Portal de Empleo",
+      "url": "https://temuco.omil.cl/",
+      "territory": "Temuco",
+      "status": "failed",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader unable to retrieve page; not counted as empty"
     }
   ],
   "discovery_results": [
@@ -317,6 +605,51 @@
       "attempted_at": null,
       "origin": null,
       "reason": "No individual discovery search completed"
+    },
+    {
+      "source_id": "motor-tavily",
+      "scan_wave": 0,
+      "status": "unsupported",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_index_search",
+      "offers_found": 0,
+      "reason": "External Tavily service not invoked; public web search only"
+    },
+    {
+      "source_id": "bne",
+      "scan_wave": 0,
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_index_search",
+      "offers_found": 0,
+      "reason": "Public indexed search attempted; no new eligible individually verified listing"
+    },
+    {
+      "source_id": "computrabajo",
+      "scan_wave": 0,
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_index_search",
+      "offers_found": 0,
+      "reason": "Public indexed search attempted; no new eligible individually verified listing"
+    },
+    {
+      "source_id": "radio-montecarlo-angol",
+      "scan_wave": 0,
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_index_search",
+      "offers_found": 0,
+      "reason": "Public indexed search attempted; no new eligible individually verified listing"
+    },
+    {
+      "source_id": "millaray-puren-sauces",
+      "scan_wave": 0,
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T11:38:31Z",
+      "origin": "public_index_search",
+      "offers_found": 0,
+      "reason": "Public indexed search attempted; no new eligible individually verified listing"
     }
   ],
   "candidates": [
@@ -351,17 +684,32 @@
       "url": "https://www.losangeles.cl/wp-content/uploads/2026/11/bases-tans-c.-nte-44hrs.pdf",
       "closing_date": "2026-11-20",
       "status": "secondary_pending_catalog_unavailable"
+    },
+    {
+      "key": "fashions-victoria-2026-11",
+      "title": "Cajero/a Asistente Integral – Temporada Navidad – Victoria",
+      "company": "Fashion's Park",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aea08221564eb41f9a6b54c",
+      "status": "territory_conflict",
+      "reason": "ATS heading Victoria but requirements location Temuco; do not assign to base or complementary until clarified"
+    },
+    {
+      "key": "cmpc-ayudante-reproceso-4473535815",
+      "title": "Ayudante Reproceso",
+      "company": "CMPC",
+      "url": "https://cl.linkedin.com/jobs/view/ayudante-reproceso-at-cmpc-4473535815",
+      "status": "pending_vigency",
+      "reason": "Nacimiento execution evidenced; current acceptance status not confirmed; similar older postings closed"
     }
   ],
   "catalog": {
-    "status": "catalog_unavailable",
-    "mirror_generated_at": "2026-11-19T03:08:26Z",
-    "mirror_count": 284,
-    "mirror_complete": true,
-    "mirror_stale": true,
-    "api_attempt": "failed_reader",
-    "new_batches": 0,
-    "publications_confirmed": 0
+    "status": "valid",
+    "generated_at": "2026-11-19T08:12:22+00:00",
+    "jobIdentityCount": 284,
+    "complete": true,
+    "reason": "Mirror valid at run time; 11 pages; 284 items; no new candidate approved"
   },
-  "notes": "Statuses are evidence of individual direct web attempts, not successful reading. No app changes or deployment."
+  "notes": [
+    "Wave 0: 24 individual URL attempts, 3 readable pages, 4 blocked, 17 failed. Five discovery targets addressed through public indexed search or unsupported flag. No new public publication confirmed. Renaico already in mirror; Fashion's Park Angol already cataloged."
+  ]
 }

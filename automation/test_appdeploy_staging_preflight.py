@@ -218,12 +218,18 @@ class BackendPreflight(unittest.TestCase):
         self.assertLess(cron.index("await archiveMislocatedCmpcDuplicateOnce();"),
                         cron.index("advancePublicFeed(feedProjector)"))
 
-    def test_explicit_sublocality_blocks_wrong_work_commune(self):
-        source=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
-        self.assertIn("{name:'mininco',commune:'Collipulli'}",source)
-        self.assertIn("{name:'coihue',commune:'Negrete'}",source)
-        self.assertIn("{name:'capitan pastene',commune:'Lumaco'}",source)
-        self.assertIn("!(communes as string[]).includes(commune)",source)
+    def test_corporate_names_are_not_job_location_evidence(self):
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        verifier=(ROOT/"public-source-verifier.ts").read_text(encoding="utf-8")
+        semantics=(ROOT/"worksite-semantics.ts").read_text(encoding="utf-8")
+        self.assertIn("worksiteMentionsCommune",importer)
+        self.assertIn("workplaceWithoutEmployerNames",verifier)
+        self.assertIn("forestal\\s+mininco",semantics)
+        self.assertIn("remanufactura|maderas|celulosa",semantics)
+        self.assertNotIn("const titleSite=",importer)
+        self.assertNotIn("sublocalities.some",importer)
+        self.assertIn("x.ubicacion_trabajo",importer)
+
 
 if __name__ == "__main__":
     unittest.main()

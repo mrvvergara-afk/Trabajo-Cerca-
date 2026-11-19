@@ -36,7 +36,7 @@ EXPECTED = {
     "backend/engine-source-audit.ts",
     "src/executive-charts.tsx",
 }
-NEW_FILES = {"backend/worksite-semantics.ts", "backend/gemini-verify-scheduler.ts", "src/house-photo-selection.ts", "src/commercial-media-policy.ts", "backend/engine-metrics-contract.ts", "backend/engine-telemetry.ts", "backend/engine-source-audit.ts", "src/executive-charts.tsx"}
+NEW_FILES = {"backend/worksite-semantics.ts", "backend/gemini-verify-scheduler.ts", "src/house-photo-selection.ts", "src/commercial-media-policy.ts", "backend/engine-metrics-contract.ts", "backend/engine-telemetry.ts", "backend/engine-source-audit.ts", "src/executive-charts.tsx", "src/executive-metrics.ts", "src/executive-control-center.tsx", "src/executive-control-center.css"}
 
 
 def stage_path(name: str) -> pathlib.Path:
@@ -71,11 +71,11 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertTrue(any("explicit user authorization" in x for x in m["guardrails"]))
         self.assertTrue(any("database" in x for x in m["guardrails"]))
 
-    def test_only_twenty_four_expected_files(self):
+    def test_only_twenty_one_expected_files(self):
         self.assertEqual(set(self.files), EXPECTED)
         self.assertEqual(len(self.manifest["files"]), len(self.files))
         self.assertEqual(sum(x.startswith("backend/") for x in self.files), 10)
-        self.assertEqual(sum(x.startswith("src/") for x in self.files), 14)
+        self.assertEqual(sum(x.startswith("src/") for x in self.files), 11)
         self.assertEqual(len(self.files["backend/index.ts"]["diffs"]), 2)
         self.assertFalse(any(x == "src/App.tsx" for x in self.files))
 
@@ -168,8 +168,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertIn("Promise.allSettled",dashboard)
         for endpoint in [
             "/api/admin/territorial-coverage",
-            "/api/admin/gemini/status",
-            "/api/admin/motors/health",
+            "/api/admin/ops-telemetry",
         ]: self.assertIn(endpoint,dashboard)
         self.assertNotIn("api.post(",dashboard)
         self.assertNotIn("api.put(",dashboard)
@@ -187,7 +186,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertNotIn("src/App.tsx",self.files)
         self.assertNotIn("src/commercial-admin.tsx",self.files)
         self.assertNotIn("src/house-admin.tsx",self.files)
-        self.assertEqual(len(self.files),24)
+        self.assertEqual(len(self.files),21)
 
 
     def test_commercial_logo_is_persistent_and_never_cropped(self):
@@ -255,7 +254,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertIn("MAIN_CITIES",metrics)
         self.assertNotIn("'Temuco'",metrics)
         self.assertNotIn("'Los Ángeles'",metrics)
-        self.assertEqual(len(self.files["src/executive-control-center.tsx"]["diffs"]),1)
+        self.assertIn("content",self.files["src/executive-control-center.tsx"])
 
 
     def test_external_audits_are_aggregate_read_only_and_bounded(self):

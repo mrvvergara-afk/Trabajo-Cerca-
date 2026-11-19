@@ -1,98 +1,110 @@
 import {useEffect,useState} from 'react';
 import {api} from '@appdeploy/client';
-import {cityCounts,executiveKpis,knownCount,type AdminSnapshot} from './executive-metrics';
+import {cityCounts,executiveKpis,knownCount,type AdminSnapshot,type Telemetry} from './executive-metrics';
+import {ActivityChart,SourceDonut,TerritoryBars,EnginesTable,ExecutiveStatusBar} from './executive-charts';
 import './executive-control-center.css';
 
-type TerritoryResult={readOnly?:boolean;checkedAt?:string;feedComplete?:boolean;sourceAuditComplete?:boolean;communes?:unknown[]};
-type GeminiStatus={state?:string;at?:string;received?:number;queued?:number;alreadyQueued?:number;needsReview?:number;verificationRetriesPending?:number};
-type Health={motorB?:unknown;motorC?:unknown;motorCGithubPull?:unknown};
-
-function dateText(input:unknown) {
-  if(typeof input!=='string'||!Number.isFinite(Date.parse(input)))return 'Sin datos';
-  return new Date(input).toLocaleString('es-CL',{dateStyle:'short',timeStyle:'short'});
+type TerritoryResult={
+ readOnly?:boolean;checkedAt?:string;feedComplete?:boolean;
+ sourceAuditComplete?:boolean;communes?:unknown[];
+};
+function isRecord(value:unknown):value is Record<string,unknown>{
+ return value!==null&&typeof value==='object'&&!Array.isArray(value);
 }
-function isRecord(value:unknown):value is Record<string,unknown> {
-  return value!==null&&typeof value==='object'&&!Array.isArray(value);
+function isTelemetry(value:unknown):value is Telemetry {
+ const r=isRecord(value)?value:{};
+ return r.schemaVersion===1&&r.readOnly===true&&Array.isArray(r.engines)&&
+   isRecord(r.rollup)&&Array.isArray(r.history);
 }
-
-/** Private read-only executive overview. Parent mounts this ONLY after admin session verification. */
+function timeText(value:unknown):string {
+ if(typeof value!=='string'||!Number.isFinite(Date.parse(value)))return 'Sin datos';
+ return new Date(value).toLocaleString('es-CL',{dateStyle:'short',timeStyle:'short'});
+}
 export function ExecutiveControlCenter({summary}:{summary?:AdminSnapshot}){
-  const [territory,setTerritory]=useState<TerritoryResult|null>(null);
-  const [gemini,setGemini]=useState<GeminiStatus|null>(null);
-  const [health,setHealth]=useState<Health|null>(null);
-  const [retry,setRetry]=useState(0);
-  const [loading,setLoading]=useState(true);
-  const [issues,setIssues]=useState<string[]>([]);
-  useEffect(()=>{
-    let active=true;
-    setLoading(true);
-    const urls=[
-      '/api/admin/territorial-coverage',
-      '/api/admin/gemini/status',
-      '/api/admin/motors/health',
-    ];
-    void Promise.allSettled(urls.map(url=>api.get(url))).then(results=>{
-      if(!active)return;
-      const bad:string[]=[];
-      const take=(index:number)=>{
-        const result=results[index];
-        if(result.status!=='fulfilled'||!isRecord(result.value.data)){bad.push(urls[index]);return null;}
-        return result.value.data;
-      };
-      const sources=take(0),g=take(1),h=take(2);
-      setTerritory(sources as TerritoryResult|null);
-      setGemini(g as GeminiStatus|null);
-      setHealth(h as Health|null);
-      setIssues(bad);setLoading(false);
-    });
-    return()=>{active=false;};
-  },[retry]);
-  const cards=executiveKpis(summary);
-  const cities=cityCounts(territory);
-  const availableMotors=[
-    ['Motor A','Sin reporte comparable'],
-    ['Motor B',isRecord(health?.motorB)?'Registro disponible':'Sin datos'],
-    ['Motor C',isRecord(health?.motorC)?'Registro disponible':'Sin datos'],
-    ['Motor D','Sin reporte comparable'],
-    ['Motor ChatGPT','Sin reporte comparable'],
-    ['Motor Gemini',gemini?.state?'Importación: '+gemini.state:'Sin datos'],
-  ];
-  return <div className='tcExecCenter' aria-label='Centro de Control ejecutivo'>
-    <header className='tcExecHeading'>
-      <div><strong>Centro de Control</strong>
-        <p>Indicadores confirmados. Una fuente intentada no equivale a una lectura útil.</p></div>
-      <button type='button' onClick={()=>setRetry(n=>n+1)} disabled={loading}>{loading?'Consultando…':'Actualizar datos'}</button>
-    </header>
-    <div className='tcExecKpis'>
-      {cards.map(card=><article key={card.key}>
-        <span>{card.label}</span><strong>{card.value}</strong><small>{card.note}</small>
-      </article>)}
-    </div>
-    <p className='tcExecContext'>Las ofertas visibles son el total actual del catálogo, no altas del día. Las cifras de cobertura y salud se mostrarán cuando los seis motores informen lecturas útiles y ejecuciones comparables.</p>
-    {issues.length>0&&<p className='tcExecNotice' role='status'>Datos administrativos parciales: no respondieron {issues.length} de 3 consultas. Las métricas no disponibles se muestran sin inventar valores.</p>}
-    <div className='tcExecColumns'>
-      <section className='tcExecCard' aria-label='Rastreo e importación'>
-        <h4>Rastreo e importación</h4>
-        <p>Estado de los motores; no confirma ofertas nuevas publicadas.</p>
-        <dl>{availableMotors.map(([name,status])=><div key={name}><dt>{name}</dt><dd>{status}</dd></div>)}</dl>
-        <p className='tcExecMeta'>Puente Gemini · registros recibidos: {knownCount(gemini?.received)} · encolados nuevos: {knownCount(gemini?.queued)} · reintentos pendientes: {knownCount(gemini?.verificationRetriesPending)}</p>
-        <p className='tcExecMeta'>Último registro de importación Gemini: {dateText(gemini?.at)}</p>
-      </section>
-      <section className='tcExecCard' aria-label='Control territorial'>
-        <h4>Control territorial</h4>
-        <p>Solo 12 comunas principales. Temuco y Los Ángeles se gestionan aparte.</p>
-        <p className='tcExecMeta'>Catálogo completo: {territory?.feedComplete===true?'Sí':territory?.feedComplete===false?'No acreditado':'Sin datos'} · Auditoría de fuentes completa: {territory?.sourceAuditComplete===true?'Sí':territory?.sourceAuditComplete===false?'No acreditada':'Sin datos'}</p>
-        <details>
-          <summary>Ver detalle por comuna</summary>
-          <div className='tcExecTableWrap'><table>
-            <thead><tr><th scope='col'>Comuna</th><th scope='col'>Visibles</th><th scope='col'>Auditadas / previstas</th><th scope='col'>Con falla</th></tr></thead>
-            <tbody>{cities.map(row=><tr key={row.city}><th scope='row'>{row.city}</th><td>{row.visible}</td><td>{row.audited} / {row.expected}</td><td>{row.failed}</td></tr>)}</tbody>
-          </table></div>
-        </details>
-        <p className='tcExecMeta'>«Auditadas» significa con registro de inspección, no lectura efectiva ni ofertas encontradas.</p>
-        <p className='tcExecMeta'>Fuente: informe territorial administrativo · {dateText(territory?.checkedAt)}</p>
-      </section>
-    </div>
-    <footer className='tcExecFooter'>Solo lectura · Sin información personal · Sin publicaciones ni ejecuciones manuales</footer>
-  </div>;
+ const [territory,setTerritory]=useState<TerritoryResult|null>(null);
+ const [telemetry,setTelemetry]=useState<Telemetry|null>(null);
+ const [refresh,setRefresh]=useState(0);
+ const [loading,setLoading]=useState(true);
+ const [failures,setFailures]=useState<string[]>([]);
+ useEffect(()=>{
+  let active=true;setLoading(true);
+  const urls=['/api/admin/territorial-coverage','/api/admin/ops-telemetry'];
+  void Promise.allSettled(urls.map(url=>api.get(url))).then(results=>{
+    if(!active)return;
+    const problems:string[]=[];
+    const first=results[0],second=results[1];
+    if(first.status==='fulfilled'&&isRecord(first.value.data)){
+      setTerritory(first.value.data as TerritoryResult);
+    }else{setTerritory(null);problems.push('cobertura por comuna');}
+    if(second.status==='fulfilled'&&isTelemetry(second.value.data)){
+      setTelemetry(second.value.data);
+    }else{setTelemetry(null);problems.push('telemetría de motores');}
+    setFailures(problems);setLoading(false);
+  });
+  return()=>{active=false;};
+ },[refresh]);
+ const cards=executiveKpis(summary,telemetry);
+ const cities=cityCounts(territory);
+ return <section className='tcExecCenter' aria-label='Centro de Control de Trabajo Cerca'>
+   <header className='tcExecHero'>
+     <div className='tcExecHeroTitle'>
+      <span className='tcExecEyebrow'>ADMINISTRACIÓN / INTELIGENCIA OPERATIVA</span>
+      <h3>Centro de Control</h3>
+      <p>Rastreo, publicaciones y publicidad local, con cifras verificables y trazabilidad.</p>
+     </div>
+     <div className='tcExecHeroActions'>
+      <small>Datos actualizados: {timeText(telemetry?.generatedAt||territory?.checkedAt)}</small>
+      <button type='button' onClick={()=>setRefresh(n=>n+1)} disabled={loading}>
+       {loading?'Actualizando…':'Actualizar tablero'}
+      </button>
+     </div>
+   </header>
+   <div className='tcExecKpis'>
+    {cards.map(card=><article key={card.key} className='tcExecKpi' data-accent={card.accent}>
+      <span className='tcExecKpiTitle'>{card.label}</span>
+      <strong className='tcExecKpiValue'>{card.value}</strong>
+      <small>{card.note}</small>
+    </article>)}
+   </div>
+   {failures.length>0&&<p className='tcExecNotice' role='status'>
+      Los siguientes informes no respondieron: {failures.join(', ')}. Sus valores aparecen como «Sin datos».
+   </p>}
+   <ExecutiveStatusBar telemetry={telemetry}/>
+   <div className='tcBIChartsTop'>
+     <ActivityChart history={telemetry?.history} complete={telemetry?.historyComplete}/>
+     <SourceDonut engines={telemetry?.engines}/>
+   </div>
+   <div className='tcBIChartsBottom'>
+     <TerritoryBars cities={cities} feedComplete={territory?.feedComplete}/>
+     <div className='tcBIChartCard tcBIManagement'>
+      <header className='tcBIChartHead'><div><h4>Control territorial</h4>
+       <p>Cobertura de las 12 comunas y estado del proceso.</p></div></header>
+      <dl>
+       <div><dt>Comunas principales</dt><dd>12</dd></div>
+       <div><dt>Catálogo público</dt><dd>{territory?.feedComplete===true?'Completo':
+         territory?.feedComplete===false?'Parcial':'Sin datos'}</dd></div>
+       <div><dt>Auditoría de fuentes</dt><dd>{territory?.sourceAuditComplete===true?'Consulta completa':
+         territory?.sourceAuditComplete===false?'Consulta parcial':'Sin datos'}</dd></div>
+       <div><dt>Última revisión territorial</dt><dd>{timeText(territory?.checkedAt)}</dd></div>
+      </dl>
+      <details className='tcBICityDetails'>
+       <summary>Ver cobertura detallada por comuna</summary>
+       <div className='tcBITableWrap'><table>
+        <thead><tr><th>Comuna</th><th>Ofertas visibles</th><th>Fuentes revisadas</th>
+          <th>Fuentes previstas</th><th>Fallidas</th></tr></thead>
+        <tbody>{cities.map(r=><tr key={r.city}><th scope='row'>{r.city}</th>
+         <td>{r.visible}</td><td>{r.audited}</td><td>{r.expected}</td><td>{r.failed}</td></tr>)}</tbody>
+       </table></div>
+      </details>
+      <p className='tcExecCaution'>«Revisadas» son fuentes con registro de auditoría,
+       no necesariamente lecturas útiles ni empleos encontrados.</p>
+     </div>
+   </div>
+   <EnginesTable telemetry={telemetry}/>
+   <footer className='tcExecFooter'>
+     <strong>Lectura responsable:</strong> el total visible procede del catálogo; las cifras de cada motor
+     corresponden a sus ejecuciones y no deben sumarse como nuevas ofertas publicadas. Los datos faltantes
+     permanecen explícitos. Panel privado, de solo lectura y sin información personal.
+   </footer>
+ </section>;
 }

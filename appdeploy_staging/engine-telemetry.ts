@@ -29,8 +29,10 @@ async function readStatus(table:string,id:string):Promise<ReadOutcome>{
 }
 function dayChile(value:unknown):string|null {
  const iso=stamp(value);if(!iso)return null;
- return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Santiago',year:'numeric',
-  month:'2-digit',day:'2-digit'}).format(new Date(iso));
+ const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Santiago',year:'numeric',
+  month:'2-digit',day:'2-digit'}).formatToParts(new Date(iso));
+ const fields=Object.fromEntries(parts.map(x=>[x.type,x.value]));
+ return fields.year&&fields.month&&fields.day?fields.year+'-'+fields.month+'-'+fields.day:null;
 }
 function runValue(engine:'A'|'B'|'C',row:Record<string,unknown>):number|null {
  if(engine==='A')return nonnegative(asRow(row.summary).sourcesRead);

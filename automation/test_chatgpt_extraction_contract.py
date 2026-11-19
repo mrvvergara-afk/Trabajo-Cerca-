@@ -81,6 +81,32 @@ class StrictExtractionTest(unittest.TestCase):
                            today=TODAY)
         self.assertEqual(row["comunas"],["Negrete"])
 
+    def test_forestal_mininco_brand_is_not_collipulli_worksite(self):
+        with self.assertRaisesRegex(ValueError, "territory_not_evidenced"):
+            validate_offer(offer(comunas=["Collipulli"],
+                                 ubicacion_trabajo="Forestal Mininco SpA, faena en Nacimiento"),
+                           today=TODAY)
+        row=validate_offer(offer(comunas=["Nacimiento"],
+                                 ubicacion_trabajo="Forestal Mininco SpA, faena en Nacimiento"),
+                           today=TODAY)
+        self.assertEqual(row["comunas"],["Nacimiento"])
+
+    def test_localidad_mininco_still_maps_to_collipulli(self):
+        row=validate_offer(offer(comunas=["Collipulli"],
+                                 ubicacion_trabajo="Villa Mininco, Planta Plywood"),
+                           today=TODAY)
+        self.assertEqual(row["comunas"],["Collipulli"])
+
+    def test_arauco_business_names_do_not_define_worksite(self):
+        for business in ("Bosques Arauco", "Paneles Arauco", "Remanufactura Arauco"):
+            with self.subTest(business=business):
+                row=validate_offer(offer(comunas=["Mulchén"],
+                                         ubicacion_trabajo=business+" - faena en Mulchén"),
+                                   today=TODAY)
+                self.assertEqual(row["comunas"],["Mulchén"])
+                with self.assertRaisesRegex(ValueError,"territory_not_evidenced"):
+                    validate_offer(offer(comunas=["Mulchén"],ubicacion_trabajo=business),today=TODAY)
+
     def test_unknown_modality_rejected(self):
         with self.assertRaisesRegex(ValueError,"invalid_modalidad"):
             validate_offer(offer(modalidad="quizas"),today=TODAY)

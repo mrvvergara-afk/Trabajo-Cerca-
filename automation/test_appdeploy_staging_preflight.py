@@ -189,5 +189,31 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("!municipalEvidenceExpired",self.feed)
 
 
+    def test_cmpc_duplicate_repair_is_guarded_and_idempotent(self):
+        repair=(ROOT/"territory-repair.ts").read_text(encoding="utf-8")
+        index=(ROOT/"index.ts").read_text(encoding="utf-8")
+        self.assertIn("CMPC_BAD_ID = 'chatgpt_d_1a99f7fd5b8b9d116634'",repair)
+        self.assertIn("CMPC_OFFICIAL_ID = 'chatgpt_d_910ceee091936904696e'",repair)
+        self.assertIn("19427?c=cmpc",repair)
+        self.assertIn("3934867",repair)
+        self.assertIn("sameJob(bad, CMPC_BAD_URL, 'Purén')",repair)
+        self.assertIn("sameJob(official, CMPC_OFFICIAL_URL, 'Collipulli')",repair)
+        self.assertIn("source_or_official_guard_failed",repair)
+        self.assertIn("if:{ active:true, verified:true, url:CMPC_BAD_URL }",repair)
+        self.assertIn("db.tx.add('public_feed_changes'",repair)
+        self.assertIn("db.tx.add('territory_repair_audit'",repair)
+        self.assertIn("await db.transact(changes)",repair)
+        self.assertIn("await archiveMislocatedCmpcDuplicateOnce();",index)
+        cron=index.split("export const v14VerificationHandler",1)[1].split("export const v15VerificationRecoveryHandler",1)[0]
+        self.assertLess(cron.index("await archiveMislocatedCmpcDuplicateOnce();"),
+                        cron.index("advancePublicFeed(feedProjector)"))
+
+    def test_explicit_sublocality_blocks_wrong_work_commune(self):
+        source=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        self.assertIn("{name:'mininco',commune:'Collipulli'}",source)
+        self.assertIn("{name:'coihue',commune:'Negrete'}",source)
+        self.assertIn("{name:'capitan pastene',commune:'Lumaco'}",source)
+        self.assertIn("!(communes as string[]).includes(commune)",source)
+
 if __name__ == "__main__":
     unittest.main()

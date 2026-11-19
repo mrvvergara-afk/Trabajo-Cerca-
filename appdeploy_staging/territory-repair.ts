@@ -133,3 +133,94 @@ export async function repairApprovedTerritoriesOnce() {
   }));
   return {status:'completed',repaired,skipped,inspected};
 }
+
+
+/**
+ * One-time removal of a duplicate CMPC vacancy assigned to Purén.
+ * The same real job is correctly published under official ATS requisition 19427
+ * in Mininco/Collipulli. Both original sources and evidence remain archived.
+ *
+ * Do not delete or rewrite any nonmatching record. The transaction updates
+ * ONLY the mistaken Chiletrabajos entry and queues its public-feed removal.
+ */
+const CMPC_BAD_ID = 'chatgpt_d_1a99f7fd5b8b9d116634';
+const CMPC_OFFICIAL_ID = 'chatgpt_d_910ceee091936904696e';
+const CMPC_BAD_URL = 'https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867';
+const CMPC_OFFICIAL_URL = 'https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc';
+
+export async function archiveMislocatedCmpcDuplicateOnce() {
+  const [bad, official] = await db.get<Record<string,unknown>>(
+    'radar_jobs', [CMPC_BAD_ID, CMPC_OFFICIAL_ID], { consistent:true });
+
+  if (!bad) {
+    return { status:'source_record_not_found', removed:0 };
+  }
+  if (bad.active !== true) {
+    return {
+      status: bad.archiveReason === 'semantic_duplicate_of_official_ats'
+        ? 'already_archived' : 'inactive_manual_review',
+      removed:0,
+    };
+  }
+
+  const sameJob = (row:Record<string,unknown>|null, url:string, city:string) =>
+    !!row && row.kind === 'job_offer' && row.url === url &&
+    normal(row.title).replace(/[^a-z0-9]+/g, ' ').trim() === 'analista de vibraciones mininco planta plywood' &&
+    normal(row.company) === 'cmpc' &&
+    row.active === true && row.verified === true && row.review !== true &&
+    Array.isArray(row.workCommunes) && row.workCommunes.length === 1 &&
+    row.workCommunes[0] === city;
+
+  if (!sameJob(bad, CMPC_BAD_URL, 'Purén') ||
+      !sameJob(official, CMPC_OFFICIAL_URL, 'Collipulli')) {
+    // Fail closed: do not remove even an inaccurate record unless the official
+    // replacement is truly present, active, verified and correctly located.
+    console.warn('CMPC_DUPLICATE_REPAIR_GUARD_FAILED ' + JSON.stringify({
+      badPresent:!!bad,officialPresent:!!official,
+      badCommune:bad.workCommunes,officialCommune:official?.workCommunes
+    }));
+    return { status:'source_or_official_guard_failed', removed:0 };
+  }
+
+  const now = new Date().toISOString();
+  const auditId = 'cmpc_mininco_19427_duplicate_3934867_20261119';
+  const changes = [
+    db.tx.update('radar_jobs', [{
+      id:CMPC_BAD_ID,
+      record:{
+        active:false,
+        status:'Archivada · duplicada con publicación oficial CMPC',
+        archiveReason:'semantic_duplicate_of_official_ats',
+        duplicateOf:CMPC_OFFICIAL_ID,
+        archivedAt:now,
+        archiveEvidence:{
+          sourceUrl:CMPC_BAD_URL,
+          canonicalOfficialUrl:CMPC_OFFICIAL_URL,
+          verifiedWorksite:'Mininco, Planta Plywood · Collipulli',
+          wrongWorkCommunes:['Purén'],
+          jobCode:'3934867',
+          officialRequisition:'19427',
+          reason:'Misma oferta CMPC identificada por título y lugar de ejecución',
+        },
+      },
+      if:{ active:true, verified:true, url:CMPC_BAD_URL },
+    }], { patch:true }),
+    db.tx.add('public_feed_changes', [{
+      source:'radar_jobs',sourceId:CMPC_BAD_ID,queuedAt:now,
+    }]),
+    db.tx.add('territory_repair_audit', [{
+      id:auditId,at:now,action:'archive_semantic_duplicate',
+      invalidPublicId:CMPC_BAD_ID,officialPublicId:CMPC_OFFICIAL_ID,
+      from:'Purén',actualWorksite:'Mininco, Collipulli',
+      sourceUrl:CMPC_BAD_URL,officialUrl:CMPC_OFFICIAL_URL,
+    }]),
+  ];
+  const result = await db.transact(changes);
+  if (!Array.isArray(result) || !result[0]) {
+    throw new Error('cmpc_duplicate_archive_transaction_unconfirmed');
+  }
+  console.warn('CMPC_DUPLICATE_REPAIR ' + JSON.stringify({
+    status:'archived',removed:1,id:CMPC_BAD_ID,keep:CMPC_OFFICIAL_ID,
+  }));
+  return { status:'archived',removed:1,keep:CMPC_OFFICIAL_ID };
+}

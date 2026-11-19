@@ -68,6 +68,19 @@ function parse(value:unknown,strict=false):Candidate[]|null {
       (!municipalOpen && !strictUndatedOpen && (date===null || !/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date) || Number.isNaN(Date.parse(date)) || Date.parse(date+'T00:00:00-03:00')>Date.now()))||
       (deadline!==null&&(!/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(deadline)||Number.isNaN(Date.parse(deadline))))||
       !url.startsWith('https://')||url.length>700)return null;
+    // A named sublocality in the employer's job title overrides search portals'
+    // broad geographic labels. Never assign "Mininco" to Purén or Angol.
+    const titleSite=normalizePlace(title);
+    const sublocalities=[
+      {name:'mininco',commune:'Collipulli'},
+      {name:'coihue',commune:'Negrete'},
+      {name:'coigue',commune:'Negrete'},
+      {name:'cohigue',commune:'Negrete'},
+      {name:'capitan pastene',commune:'Lumaco'},
+    ];
+    if (sublocalities.some(({name,commune}) =>
+        (' '+titleSite+' ').includes(' '+name+' ') &&
+        !(communes as string[]).includes(commune))) return null;
     let host='';try{host=new URL(url).hostname.toLowerCase()}catch{return null;}
     const omilSocial=(host==='www.instagram.com'||host==='instagram.com')&&new URL(url).pathname.replace(/\/$/,'')==='/omilangol2026'&&
       x.social_source_account==='omilangol2026'&&x.social_evidence_type==='user_supplied_official_omil_post_and_poster_screenshots'&&

@@ -330,6 +330,26 @@
         {
           "from": "<p className='tcLocalOnlyNote'>Priorizamos las 12 comunas de Trabajo Cerca. Mininco pertenece a Collipulli, Coihue a Negrete y Capitán Pastene a Lumaco.</p>",
           "to": "<p className='tcLocalOnlyNote'>Encuentra oportunidades en tu comuna y localidades cercanas.</p>"
+        },
+        {
+          "from": "            {selected.portalPlace && selected.portalPlace !== selected.workLocation && <div className='detailEvidence'><BadgeCheck /><span><b>Ubicación corregida</b><small>El portal la clasificó como {selected.portalPlace}, pero el lugar real detectado es {selected.workLocation}.</small></span></div>}\n",
+          "to": ""
+        },
+        {
+          "from": "            <div className='detailSection'><h3>Sobre esta oportunidad</h3><p>{selected.note || 'Sin descripción adicional.'}</p></div>",
+          "to": "            {publicOfferDetail(selected.note)&&<div className='detailSection'><h3>Sobre esta oportunidad</h3><p>{publicOfferDetail(selected.note)}</p></div>}"
+        },
+        {
+          "from": "              {selected.apply && <div><small>Postulación</small><b>{selected.apply}</b></div>}",
+          "to": "              {publicOfferDetail(selected.apply) && <div><small>Postulación</small><b>{publicOfferDetail(selected.apply)}</b></div>}"
+        },
+        {
+          "from": "            <div className='detailSource'><BadgeCheck /><div><small>FUENTE ORIGINAL</small><b>{selected.source}</b>{selected.discoveredBy && <small>Detectado por {selected.discoveredBy}</small>}</div></div>",
+          "to": "            <div className='detailSource'><BadgeCheck /><div><small>FUENTE</small><b>{publicSourceLabel(selected.source)}</b></div></div>"
+        },
+        {
+          "from": "<button className='secondary' onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando más…' : 'Cargar más resultados'}</button><span>La app descarga los avisos por páginas para reducir carga y consumo de datos.</span>",
+          "to": "<button className='secondary' onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando más…' : 'Cargar más resultados'}</button>"
         }
       ]
     },
@@ -360,7 +380,7 @@
     "src/executive-charts.tsx": "1f4417699425de0d14a09d5407df82a3b0ad4428",
     "backend/index.ts": "46419bbcbf2b59e86cf251e26e5253916d6d07ef",
     "backend/engine-source-audit.ts": "d008983fd561713be52a55edd039f95a06a02dc4",
-    "src/App.tsx": "dc61ffb739dfc246831f5910fd6af05fd3b56b4e",
+    "src/App.tsx": "455a26ebeb6c4958fc67e71da37270a282878da9",
     "src/public-content-policy.ts": "f1ca18b240471e23432af4684daf2724c2191aff"
   },
   "status": "READY_FOR_CODE_QA_NOT_DEPLOYABLE_WITHOUT_ISOLATED_LAB",

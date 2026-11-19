@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-19T13:25:51.250533+00:00",
-  "items_total": 7,
+  "updated_at": "2026-11-19T22:15:53.616881+00:00",
+  "items_total": 6,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-19T13:25:51.250533+00:00",
+      "last_checked_at": "2026-11-19T22:15:53.616881+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -25,15 +25,31 @@
       ]
     },
     {
-      "id": "a_611504760a1598b66f2e",
-      "url": "https://www.chiletrabajos.cl/trabajo/auxiliar-de-farmacia-traiguen-3821463",
+      "id": "a_862c0bdc6550f1a9ad83",
+      "url": "https://www.chiletrabajos.cl/trabajo/ingeniero-constructor-o-ingeniero-civil-3935060",
       "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Auxiliar de Farmacia - TRAIGUEN - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-11 14:36:11",
-      "deadline_hint": "2027-01-25T14:36:11",
-      "first_discovered_at": "2026-11-12T15:52:12.590137+00:00",
-      "last_checked_at": "2026-11-19T13:25:51.250533+00:00",
+      "work_commune": "Renaico",
+      "title_hint": "Ingeniero Constructor o Ingeniero Civil - Los Ángeles | Chiletrabajos",
+      "date_source_hint": "2026-11-19 09:58:56",
+      "deadline_hint": "2027-02-02T09:58:56",
+      "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
+      "last_checked_at": "2026-11-19T22:15:53.616881+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description"
+    },
+    {
+      "id": "a_36a763f216f19cc82fce",
+      "url": "https://www.chiletrabajos.cl/trabajo/maestro-de-primera-3935047",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Renaico",
+      "title_hint": "Maestro de Primera - Los Ángeles | Chiletrabajos",
+      "date_source_hint": "2026-11-19 09:49:56",
+      "deadline_hint": "2027-02-02T09:49:56",
+      "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
+      "last_checked_at": "2026-11-19T22:15:53.616881+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -99,47 +115,15 @@
       "catalog_work_communes": [
         "Angol"
       ]
-    },
-    {
-      "id": "a_862c0bdc6550f1a9ad83",
-      "url": "https://www.chiletrabajos.cl/trabajo/ingeniero-constructor-o-ingeniero-civil-3935060",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Renaico",
-      "title_hint": "Ingeniero Constructor o Ingeniero Civil - Los Ángeles | Chiletrabajos",
-      "date_source_hint": "2026-11-19 09:58:56",
-      "deadline_hint": "2027-02-02T09:58:56",
-      "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-19T13:25:51.250533+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_36a763f216f19cc82fce",
-      "url": "https://www.chiletrabajos.cl/trabajo/maestro-de-primera-3935047",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Renaico",
-      "title_hint": "Maestro de Primera - Los Ángeles | Chiletrabajos",
-      "date_source_hint": "2026-11-19 09:49:56",
-      "deadline_hint": "2027-02-02T09:49:56",
-      "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-19T13:25:51.250533+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
     }
   ],
   "metrics": {
-    "added": 13,
-    "updated": 5,
+    "added": 11,
+    "updated": 4,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 11,
+    "published_reconciled": 12,
     "territory_mismatch": 4
   }
 }

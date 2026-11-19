@@ -66,7 +66,7 @@ El nuevo contrato es real y completo, pero **no toda la instrumentación de prod
 **NO-GO para producción mientras no se verifiquen laboratorio, restauración, seguridad, carga y recorrido real hasta el feed.** Una ejecución satisfactoria de GitHub Actions no equivale a validación operacional.
 
 ## Fuentes del paquete
-- `docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC5_APPDEPLOY_FILES.json` (24 archivos; 16 RC4 + 8 cambios adicionales).
+- `docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC5_APPDEPLOY_FILES.json` (21 archivos únicos; 16 RC4 + 5 módulos/rutas adicionales y 3 archivos de panel actualizados).
 - `automation/test_release_candidate_rc5.py`.
 - `.github/workflows/engine-telemetry-visual-bi-qa.yml`.
 - Plan Maestro: `docs/PLAN_MAESTRO_PREPRODUCCION_Y_CONTINUIDAD_20261118.md`.

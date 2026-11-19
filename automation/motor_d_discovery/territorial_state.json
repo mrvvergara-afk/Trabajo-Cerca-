@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-18T23:32:38.474754-03:00",
+  "last_run": "2026-11-19T00:38:12.850962-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7356,6 +7356,24 @@
       "first_seen": "2026-11-18T23:32:38.474754-03:00",
       "url": "https://lasnoticiasdemalleco.cl/conectividad/avanza-pavimentacion-de-la-ruta-entre-inspector-fernandez-y-laguna-malleco-segunda-etapa-se-entregaria-en-abril/",
       "source": "Las Noticias de Malleco",
+      "commune": null
+    },
+    "99ee8db7a2173e67876d": {
+      "first_seen": "2026-11-19T00:38:12.850962-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-comercial-experiencia-en-cargos-similares-3079678.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9c5ca3d15f336e35785f": {
+      "first_seen": "2026-11-19T00:38:12.850962-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-a-mecanico-automotriz-rea-tecnica-3079677.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7bb64d9b1289c8a0f589": {
+      "first_seen": "2026-11-19T00:38:12.850962-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/mercaderista-part-time-dominguero-calama-ingreso-inmediato-3079676.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

@@ -256,5 +256,11 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("host === 'opcionempleo.cl'",adapter)
 
 
+    def test_negrete_rss_is_in_motor_b_source_registry(self):
+        sources=(ROOT/"motor-b-sources.ts").read_text(encoding="utf-8")
+        self.assertEqual(sources.count("https://www.muninegrete.cl/feed/"),1)
+        self.assertIn('["Negrete OMIL · RSS","https://www.muninegrete.cl/feed/"]',sources)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-19T08:12:22+00:00",
+  "generated_at": "2026-11-19T11:39:25+00:00",
   "complete": true,
-  "totalItemsReported": 288,
-  "jobIdentityCount": 284,
+  "totalItemsReported": 287,
+  "jobIdentityCount": 283,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 106,
+  "visibleIn12CommunesCount": 105,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "4d0edbbaf55e5a35f4ebd6925744153131a9aa86cb92b267ef87db2bc66c8c5a",
+  "fingerprint": "bc723198f743289d013046d65c4065abd4ac263cd4e6edc55bb2bc66857db27d",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -884,17 +884,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
       "urlHashSha256": "eedd8d86097d3012ce0b619f080a8a8aec504a6f7cc22fc52c9d9d48fa192d09"
-    },
-    {
-      "id": "chatgpt_d_1a99f7fd5b8b9d116634",
-      "title": "Analista de Vibraciones - Mininco, Planta Plywood",
-      "company": "CMPC",
-      "workCommunes": [
-        "Purén"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
-      "urlHashSha256": "1a99f7fd5b8b9d116634648df81bdf192467d4fddb125a1675d9464a9387939d"
     },
     {
       "id": "chatgpt_d_2795b5d75320388ba141",

@@ -83,21 +83,33 @@
       "fecha_publicacion": "2026-10-20",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18859",
-      "cargo": "Ingeniero/a Procesos y Excelencia Sr",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
-      "fecha_publicacion": "2026-10-13",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     }
   ],
   "pending": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19460?c=cmpc",
+      "title": "Subgerente PC&P",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19444?c=cmpc",
+      "title": "Ingeniero Compras PL",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19439?c=cmpc",
+      "title": "KAM INDUSTRIAL",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19440?c=cmpc",
       "title": "Feria Laboral Los Ángeles",
@@ -217,23 +229,6 @@
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
-      "title": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
-      "title": "Analista de Contabilidad",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed",
-        "source_publication_date_not_confirmed"
       ]
     }
   ]

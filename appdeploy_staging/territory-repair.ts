@@ -165,7 +165,7 @@ export async function archiveMislocatedCmpcDuplicateOnce() {
 
   const sameJob = (row:Record<string,unknown>|null, url:string, city:string) =>
     !!row && row.kind === 'job_offer' && row.url === url &&
-    normal(row.title) === 'analista de vibraciones mininco planta plywood' &&
+    normal(row.title).replace(/[^a-z0-9]+/g, ' ').trim() === 'analista de vibraciones mininco planta plywood' &&
     normal(row.company) === 'cmpc' &&
     row.active === true && row.verified === true && row.review !== true &&
     Array.isArray(row.workCommunes) && row.workCommunes.length === 1 &&

@@ -19,6 +19,7 @@
 - **Catálogo principal: exactamente 12 comunas:** Angol, Collipulli (Mininco), Ercilla, Lumaco (Capitán Pastene), Los Sauces, Purén, Renaico, Traiguén, Victoria, Mulchén, Negrete (Coihue/Coigüe) y Nacimiento.
 - **Complementario:** Temuco y Los Ángeles, consultables en secciones/filtros secundarios; si el trabajo se desarrolla realmente en alguna de las 12 comunas base, debe asignarse a esta última.
 - **Quilaco excluido** salvo nueva decisión explícita.
+- **Regla territorial de marcas y empresas (acuerdo 19-11-2026):** El nombre de una empresa, filial, unidad industrial o marca NO acredita ubicación del trabajo. Ejemplos: Forestal Mininco/CMPC, CMPC Maderas, CMPC Celulosa, Softys, Bosques/Paneles/Remanufactura Arauco. El nombre “Arauco” también designa una comuna que no pertenece a las 12 principales. La localidad de Mininco sí pertenece a Collipulli, pero su nombre en una denominación social no basta para asignar Collipulli. Clasificar usando el **lugar efectivo de prestación** expresado en campos de ubicación individual, “ubicación/lugar de trabajo”, “faena”, “planta ubicada en” u otra evidencia explícita. Si hay ambigüedad: dejar en revisión, no inventar comuna ni descartar definitivamente. Guardar por separado **grupo/empresa**, **planta/faena**, **comuna real**, **fuente de evidencia** y **comuna del portal/reclutamiento**. Revisar que no exista atajo por palabras de título o empresa.
 
 ## 2. Cinco frentes de trabajo y orden
 

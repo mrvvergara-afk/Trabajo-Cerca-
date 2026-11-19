@@ -3,6 +3,7 @@ import {canonicalSourceUrl,canonicalSourceHash} from './chatgpt-url-identity';
 import { db, json, error, isAppDatabaseError } from '@appdeploy/sdk';
 import { readPublicFeedPage, registerPublicFeedChange } from './public-feed';
 import { safePublicUrl, publicJobExclusion, publicFeedIdentity } from './public-source-adapters';
+import { worksiteMentionsCommune } from './worksite-semantics';
 
 type Candidate={id_fuente:string;cargo:string;empresa:string;comunas:string[];url_original:string;fecha_publicacion:string|null;fecha_descubrimiento?:string;municipal_open_index_url?:string;application_method?:string;fecha_cierre?:string|null;vigencia_fuente?:string;fecha_verificacion?:string;justificacion?:string;recruitment_communes?:string[];work_location?:string;territorial_recruitment_verified?:boolean;social_source_account?:string;social_evidence_type?:string;fecha_publicacion_metodo?:string;internal_visibility_days?:number;ubicacion_trabajo?:string;modalidad?:string;salario?:string|null;enlace_postulacion?:string|null;url_canonica?:string;hash_url_sha256?:string};
 const LOCAL=new Set(['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento']);
@@ -21,16 +22,8 @@ const STRICT_FIELDS=new Set(['id_fuente','cargo','empresa','comunas','ubicacion_
   'fecha_cierre','justificacion','url_canonica','hash_url_sha256','vigencia_fuente','fecha_verificacion']);
 const REQUIRED_STRICT=['id_fuente','cargo','empresa','comunas','ubicacion_trabajo',
   'modalidad','salario','url_original','enlace_postulacion','fecha_publicacion','fecha_descubrimiento'];
-const GEO_ALIASES:Record<string,string[]>={Collipulli:['mininco'],Negrete:['coihue','coigue','cohigue'],Lumaco:['capitan pastene']};
-const normalizePlace=(str:string)=>str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/ +/g,' ').trim();
 function territoryFromLocation(name:string,work:string){
-  const names=[name,...(GEO_ALIASES[name]||[])].map(normalizePlace);
-  return names.some(tag => {
-    if(!(' '+work+' ').includes(' '+tag+' ')) return false;
-    if(tag==='victoria' && (/\bnueva\s+victoria\b/.test(work) ||
-       /\bvictoria\s+s\s+secret\b/.test(work))) return false;
-    return true;
-  });
+  return worksiteMentionsCommune(work,name);
 }
 function parse(value:unknown,strict=false):Candidate[]|null {
   if(!Array.isArray(value)||value.length<1||value.length>15)return null;
@@ -68,19 +61,13 @@ function parse(value:unknown,strict=false):Candidate[]|null {
       (!municipalOpen && !strictUndatedOpen && (date===null || !/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date) || Number.isNaN(Date.parse(date)) || Date.parse(date+'T00:00:00-03:00')>Date.now()))||
       (deadline!==null&&(!/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(deadline)||Number.isNaN(Date.parse(deadline))))||
       !url.startsWith('https://')||url.length>700)return null;
-    // A named sublocality in the employer's job title overrides search portals'
-    // broad geographic labels. Never assign "Mininco" to Purén or Angol.
-    const titleSite=normalizePlace(title);
-    const sublocalities=[
-      {name:'mininco',commune:'Collipulli'},
-      {name:'coihue',commune:'Negrete'},
-      {name:'coigue',commune:'Negrete'},
-      {name:'cohigue',commune:'Negrete'},
-      {name:'capitan pastene',commune:'Lumaco'},
-    ];
-    if (sublocalities.some(({name,commune}) =>
-        (' '+titleSite+' ').includes(' '+name+' ') &&
-        !(communes as string[]).includes(commune))) return null;
+    // A brand in the title (Forestal Mininco, Paneles Arauco) is NOT a
+    // worksite. Only a separately identified place of work can justify a
+    // commune. Missing worksite evidence remains for review rather than
+    // forcing Collipulli or silently accepting a contrary commune.
+    if(typeof x.ubicacion_trabajo==='string' &&
+       !(communes as string[]).every(city =>
+         territoryFromLocation(city,String(x.ubicacion_trabajo)))) return null;
     let host='';try{host=new URL(url).hostname.toLowerCase()}catch{return null;}
     const omilSocial=(host==='www.instagram.com'||host==='instagram.com')&&new URL(url).pathname.replace(/\/$/,'')==='/omilangol2026'&&
       x.social_source_account==='omilangol2026'&&x.social_evidence_type==='user_supplied_official_omil_post_and_poster_screenshots'&&
@@ -93,7 +80,7 @@ function parse(value:unknown,strict=false):Candidate[]|null {
       if(Object.keys(x).some(k=>!STRICT_FIELDS.has(k))||REQUIRED_STRICT.some(k=>!(k in x))||
         !/^cg_[a-f0-9]{20}$/.test(id)||typeof x.ubicacion_trabajo!=='string'||
         x.ubicacion_trabajo.trim().length<3||x.ubicacion_trabajo.length>240||
-        !Array.isArray(communes)||!(communes as string[]).every(c=>territoryFromLocation(c,normalizePlace(String(x.ubicacion_trabajo))))||
+        !Array.isArray(communes)||!(communes as string[]).every(c=>territoryFromLocation(c,String(x.ubicacion_trabajo)))||
         !['presencial','hibrida','remota','no_informada'].includes(String(x.modalidad))||
         !(x.salario===null||(typeof x.salario==='string'&&x.salario.length>=1&&x.salario.length<=100))||
         !(x.enlace_postulacion===null||(typeof x.enlace_postulacion==='string'&&Boolean(safePublicUrl(x.enlace_postulacion))))||

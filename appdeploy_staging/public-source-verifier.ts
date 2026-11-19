@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { socialSourceDate } from './social-evidence';
 import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
+import { workplaceWithoutEmployerNames } from './worksite-semantics';
 
 type Data = Record<string, unknown>;
 export type PublicVerification = {
@@ -105,7 +106,9 @@ function bneLabelledPosting(raw:string, url:string):Data | null {
 // \"Nueva Victoria\" (northern mining site) and Victoria's Secret are not
 // evidence for the commune Victoria in the Araucanía region.
 function genuineWorksitePlaceMention(scope:string, place:string) {
-  const text=sourceFold(scope);
+  // A JSON-LD locality or explicit description field can still contain the
+  // name of a business division. Remove those company names before locating.
+  const text=workplaceWithoutEmployerNames(scope);
   const expression=new RegExp('\\b'+sourceFold(place)+'\\b','g');
   for (const match of text.matchAll(expression)) {
     if (place!=='Victoria') return true;

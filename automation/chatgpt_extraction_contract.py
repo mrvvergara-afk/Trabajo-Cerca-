@@ -72,6 +72,16 @@ def source_identity(raw: str) -> str:
     return url
 
 
+
+def workplace_without_employer_names(value: str) -> str:
+    """Never infer location from CMPC / Arauco corporate business names."""
+    text = re.sub(r"[^a-z0-9 ]", " ", fold(value))
+    text = re.sub(r"\b(?:cmpc\s+)?forestal\s+mininco(?:\s+(?:spa|sa))?\b", " ", text)
+    text = re.sub(r"\b(?:bosques?|paneles|remanufactura|maderas|celulosa)\s+arauco(?:\s+(?:spa|sa))?\b", " ", text)
+    text = re.sub(r"\barauco\s+(?:spa|sa)\b", " ", text)
+    return " ".join(text.split())
+
+
 def genuine_worksite_mention(source_location: str, name: str) -> bool:
     for match in re.finditer(r"(?<!\w)"+re.escape(fold(name))+r"(?!\w)",source_location):
         before=source_location[:match.start()]
@@ -113,7 +123,7 @@ def validate_offer(raw: dict, *, today: date | None = None) -> dict:
         raise ValueError("missing_territory")
     communes = list(dict.fromkeys(normalized_commune(c) for c in offer["comunas"]))
     # A location must actually name every declared commune or a known sublocality.
-    source_location = fold(offer["ubicacion_trabajo"])
+    source_location = workplace_without_employer_names(offer["ubicacion_trabajo"])
     location_communes = {normalized_commune(name) for name in (*COMMUNES, "Mininco", "Coihue", "Coigüe", "Cohigue", "Capitán Pastene")
                          if genuine_worksite_mention(source_location, name)}
     if not set(communes).issubset(location_communes):

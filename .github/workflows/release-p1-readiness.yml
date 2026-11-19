@@ -1,0 +1,60 @@
+name: P1 Release Candidate - isolated lab gate and bundle QA
+
+on:
+  pull_request:
+    paths:
+      - 'docs/releases/TRABAJO_CERCA_P1_RC1_APPDEPLOY_FILES.json'
+      - 'automation/test_release_candidate_p1.py'
+      - 'appdeploy_staging/chatgpt-direct-import.ts'
+      - 'appdeploy_staging/public-source-verifier.ts'
+      - 'appdeploy_staging/motor-gemini-github-pull.ts'
+      - 'appdeploy_staging/gemini-verify-scheduler.ts'
+      - 'appdeploy_staging/worksite-semantics.ts'
+      - 'appdeploy_staging/motor-b-sources.ts'
+      - '.github/workflows/release-p1-readiness.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/releases/TRABAJO_CERCA_P1_RC1_APPDEPLOY_FILES.json'
+      - 'automation/test_release_candidate_p1.py'
+      - 'appdeploy_staging/chatgpt-direct-import.ts'
+      - 'appdeploy_staging/public-source-verifier.ts'
+      - 'appdeploy_staging/motor-gemini-github-pull.ts'
+      - 'appdeploy_staging/gemini-verify-scheduler.ts'
+      - 'appdeploy_staging/worksite-semantics.ts'
+      - 'appdeploy_staging/motor-b-sources.ts'
+      - '.github/workflows/release-p1-readiness.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  bundle-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Release manifest schema, source integrity and no-production gate
+        run: python automation/test_release_candidate_p1.py
+      - name: Gemini cursor bounded retry regression
+        run: node --experimental-strip-types appdeploy_staging/test_gemini_verify_scheduler.ts
+      - name: Existing staged backend package TypeScript syntax
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/chatgpt-direct-import.ts --format=esm --platform=node --packages=external --outfile=/tmp/p1-chatgpt.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/public-source-verifier.ts --format=esm --platform=node --packages=external --outfile=/tmp/p1-verifier.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/motor-gemini-github-pull.ts --format=esm --platform=node --packages=external --outfile=/tmp/p1-gemini.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/gemini-verify-scheduler.ts --format=esm --platform=node --packages=external --outfile=/tmp/p1-scheduler.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/worksite-semantics.ts --format=esm --platform=node --packages=external --outfile=/tmp/p1-geography.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/motor-b-sources.ts --format=esm --platform=node --packages=external --outfile=/tmp/p1-source-list.js
+      - name: Existing territorial and importer regression checks
+        run: |
+          PYTHONPATH=automation python -m unittest -v automation.test_chatgpt_extraction_contract
+          python automation/test_appdeploy_staging_preflight.py
+      - name: Explicit no-deployment notice
+        run: echo 'CODE BUNDLE VALIDATED ONLY; LAB ISOLATION, RESTORE AND PUBLICATION QA STILL REQUIRED'

@@ -11,7 +11,7 @@ import { adminBackupPage } from './admin-backup';
 import { directChatGPTImport, revalidateOfficialMunicipalOpenOffers } from './chatgpt-direct-import';
 import { motorDAutoImportHandler, confirmMotorDPublications } from './motor-d-auto-import';
 import {chatgptAutoImportHandler, confirmChatGPTPublications} from './chatgpt-auto-import';
-import { repairApprovedTerritoriesOnce } from './territory-repair';
+import { repairApprovedTerritoriesOnce, archiveMislocatedCmpcDuplicateOnce } from './territory-repair';
 export { motorDAutoImportHandler };
 import { importReview, listReview, decideReview } from './radar-review-inbox';
 import {importMotorCGitHubOidc} from './motor-c-github-import';
@@ -2981,6 +2981,9 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
     catch(cause){console.warn('CHATGPT_BRIDGE_HOOK_ERROR '+String(cause).slice(0,150));}
     try { await repairApprovedTerritoriesOnce(); }
     catch(cause){console.warn('WORKSITE_SAFE_REPAIR_ERROR '+String(cause).slice(0,180));}
+    // One-time verified duplicate correction, before updating the public feed.
+    try { await archiveMislocatedCmpcDuplicateOnce(); }
+    catch(cause){console.warn('CMPC_DUPLICATE_REPAIR_ERROR '+String(cause).slice(0,180));}
     // Verified municipal open notices renew daily. A confirmed CLOSED index
     // removes them; a blocked source does not masquerade as closure.
     try { console.warn('MOTOR_D_MUNICIPAL_RECHECK '+JSON.stringify(

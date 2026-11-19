@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-19T12:02:46+00:00",
+  "generated_at": "2026-11-19T15:41:02+00:00",
   "complete": true,
-  "totalItemsReported": 287,
-  "jobIdentityCount": 283,
+  "totalItemsReported": 288,
+  "jobIdentityCount": 284,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 105,
+  "visibleIn12CommunesCount": 106,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "bc723198f743289d013046d65c4065abd4ac263cd4e6edc55bb2bc66857db27d",
+  "fingerprint": "422457fd7b288cfbccdeec45df025759135b52271387ca5ab3b915feb52a3766",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1996,6 +1996,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/analista-control-gestion-industrial-pitrufquen-3906559",
       "urlHashSha256": "46f265acacc3c8a38173ad10e460bb120d4e3eac3a3de9bcd17288ae7f11bbe6"
+    },
+    {
+      "id": "free-611504760a1598b66f2eba5c65d66c9e1c6606ef",
+      "title": "Auxiliar de Farmacia - TRAIGUEN",
+      "company": "-",
+      "workCommunes": [
+        "Traiguén"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/auxiliar-de-farmacia-traiguen-3821463",
+      "urlHashSha256": "54c44ca0f403d90d0691dead5bcd90cf48db80861375665d8878549eab6ae028"
     },
     {
       "id": "free-6129a1780959a30639118cec8010d9f8a60ec48c",

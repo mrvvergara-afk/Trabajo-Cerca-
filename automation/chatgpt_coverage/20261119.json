@@ -4,8 +4,8 @@
   "inventory_sha": "ba0b70bb97d7a14d8b97afdfb5540b2fb00a79b7",
   "inventory_endpoints": 143,
   "inventory_discovery_targets": 29,
-  "scan_wave": 1,
-  "run_at": "2026-11-19T15:39:43Z",
+  "scan_wave": 2,
+  "run_at": "2026-11-19T19:38:28Z",
   "coverage_complete": false,
   "source_results": [
     {
@@ -859,6 +859,294 @@
       "origin": "public_web_open",
       "offers_found": 0,
       "reason": "Page readable; no individually verified eligible vacancy on the opened page"
+    },
+    {
+      "source_id": "linkedin-Angol",
+      "scan_wave": 2,
+      "source_name": "LinkedIn · Angol",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+      "territory": "Angol",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page blocked by access restriction or robot verification"
+    },
+    {
+      "source_id": "computrabajo-Collipulli",
+      "scan_wave": 2,
+      "source_name": "Computrabajo · Collipulli",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-collipulli",
+      "territory": "Collipulli",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page blocked by access restriction or robot verification"
+    },
+    {
+      "source_id": "indeed-Ercilla",
+      "scan_wave": 2,
+      "source_name": "Indeed · Ercilla",
+      "url": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+      "territory": "Ercilla",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "trabajando-Ercilla",
+      "scan_wave": 2,
+      "source_name": "Trabajando · Ercilla",
+      "url": "https://www.trabajando.cl/trabajo-empleo/ercilla",
+      "territory": "Ercilla",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "chiletrabajos-Renaico",
+      "scan_wave": 2,
+      "source_name": "ChileTrabajos · Renaico",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
+      "territory": "Renaico",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "opcionempleo-Mininco",
+      "scan_wave": 2,
+      "source_name": "Opción Empleo · Mininco",
+      "url": "https://www.opcionempleo.cl/empleo-en-mininco.html",
+      "territory": "Mininco",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "laborum-Nacimiento",
+      "scan_wave": 2,
+      "source_name": "Laborum · Nacimiento",
+      "url": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
+      "territory": "Nacimiento",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "linkedin-Negrete",
+      "scan_wave": 2,
+      "source_name": "LinkedIn · Negrete",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+      "territory": "Negrete",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page blocked by access restriction or robot verification"
+    },
+    {
+      "source_id": "computrabajo-Mulchén",
+      "scan_wave": 2,
+      "source_name": "Computrabajo · Mulchén",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-mulchen",
+      "territory": "Mulchén",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page blocked by access restriction or robot verification"
+    },
+    {
+      "source_id": "indeed-Los Sauces",
+      "scan_wave": 2,
+      "source_name": "Indeed · Los Sauces",
+      "url": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+      "territory": "Los Sauces",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "trabajando-Los Sauces",
+      "scan_wave": 2,
+      "source_name": "Trabajando · Los Sauces",
+      "url": "https://www.trabajando.cl/trabajo-empleo/los-sauces",
+      "territory": "Los Sauces",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "chiletrabajos-Purén",
+      "scan_wave": 2,
+      "source_name": "ChileTrabajos · Purén",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
+      "territory": "Purén",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "opcionempleo-Traiguén",
+      "scan_wave": 2,
+      "source_name": "Opción Empleo · Traiguén",
+      "url": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+      "territory": "Traiguén",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "laborum-Lumaco",
+      "scan_wave": 2,
+      "source_name": "Laborum · Lumaco",
+      "url": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
+      "territory": "Lumaco",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "linkedin-Victoria",
+      "scan_wave": 2,
+      "source_name": "LinkedIn · Victoria",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "territory": "Victoria",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page blocked by access restriction or robot verification"
+    },
+    {
+      "source_id": "computrabajo-secondary-Los Ángeles",
+      "scan_wave": 2,
+      "source_name": "Computrabajo · Los Ángeles",
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-los-angeles",
+      "territory": "Los Ángeles",
+      "status": "blocked",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Public page blocked by access restriction or robot verification"
+    },
+    {
+      "source_id": "indeed-secondary-Temuco",
+      "scan_wave": 2,
+      "source_name": "Indeed · Temuco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
+      "territory": "Temuco",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "trabajando-secondary-Temuco",
+      "scan_wave": 2,
+      "source_name": "Trabajando · Temuco",
+      "url": "https://www.trabajando.cl/trabajo-empleo/temuco",
+      "territory": "Temuco",
+      "status": "failed",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Reader could not retrieve URL; no successful reading claimed"
+    },
+    {
+      "source_id": "omil-los-sauces",
+      "scan_wave": 2,
+      "source_name": "Municipalidad / OMIL Los Sauces",
+      "url": "https://www.munilossauces.cl/noticias",
+      "territory": "Los Sauces",
+      "status": "unsupported",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Page has no usable readable job content"
+    },
+    {
+      "source_id": "omil-collipulli",
+      "scan_wave": 2,
+      "source_name": "Municipalidad / OMIL Collipulli",
+      "url": "https://municipalidadcollipulli.cl/concursos-publicos/",
+      "territory": "Collipulli",
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Page readable; no new eligible vacancy confirmed"
+    },
+    {
+      "source_id": "radio-nativa",
+      "scan_wave": 2,
+      "source_name": "Radio Nativa",
+      "url": "https://www.radionativa.cl/",
+      "territory": "Lumaco",
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Page readable; no new eligible vacancy confirmed"
+    },
+    {
+      "source_id": "radio-viaducto",
+      "scan_wave": 2,
+      "source_name": "Radio Viaducto",
+      "url": "https://radioviaducto.cl/",
+      "territory": "Collipulli",
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Page readable; no new eligible vacancy confirmed"
+    },
+    {
+      "source_id": "registry-portal-empleo-biobio",
+      "scan_wave": 2,
+      "source_name": "Portal Empleo Biobío",
+      "url": "https://portalempleobiobio.cl/",
+      "territory": "Los Ángeles",
+      "status": "unsupported",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Page has no usable readable job content"
+    },
+    {
+      "source_id": "registry-omil-chillan-ofertas",
+      "scan_wave": 2,
+      "source_name": "OMIL Chillán · Ofertas laborales",
+      "url": "https://www.municipalidadchillan.cl/sitio/menu/tramites/ofertas-laborales.php",
+      "territory": "Chillán",
+      "status": "checked_empty",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_open",
+      "offers_found": 0,
+      "reason": "Page readable; no new eligible vacancy confirmed"
     }
   ],
   "discovery_results": [
@@ -966,6 +1254,56 @@
       "origin": "public_web_indexed_search",
       "reason": "Public indexed search performed; individual source access not guaranteed; candidates require fresh catalog reconciliation",
       "offers_found": 0
+    },
+    {
+      "source_id": "trabajando",
+      "scan_wave": 2,
+      "source_name": "Trabajando.com",
+      "status": "checked_found",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_search",
+      "offers_found": 4,
+      "reason": "Public indexed Chiletrabajos listings found for Nacimiento; candidate-level catalog reconciliation required"
+    },
+    {
+      "source_id": "local-job-pages",
+      "scan_wave": 2,
+      "source_name": "Páginas locales de datos laborales",
+      "status": "checked_found",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "public_web_search",
+      "offers_found": 0,
+      "reason": "Search for local job sources completed; no independently eligible new item established"
+    },
+    {
+      "source_id": "computrabajo",
+      "scan_wave": 2,
+      "source_name": "Computrabajo",
+      "status": "not_attempted",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "not_attempted",
+      "offers_found": 0,
+      "reason": "No individual discovery-target-specific search verified in this run"
+    },
+    {
+      "source_id": "social-public",
+      "scan_wave": 2,
+      "source_name": "Facebook · Instagram · TikTok públicos",
+      "status": "not_attempted",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "not_attempted",
+      "offers_found": 0,
+      "reason": "No individual discovery-target-specific search verified in this run"
+    },
+    {
+      "source_id": "linkedin",
+      "scan_wave": 2,
+      "source_name": "LinkedIn",
+      "status": "not_attempted",
+      "attempted_at": "2026-11-19T19:38:28Z",
+      "origin": "not_attempted",
+      "offers_found": 0,
+      "reason": "No individual discovery-target-specific search verified in this run"
     }
   ],
   "candidates": [
@@ -1024,8 +1362,8 @@
       "url": "https://www.chiletrabajos.cl/trabajo/trabajador-silvicola-nacimiento-establecimiento-3933810",
       "published_at": "2026-11-17",
       "discovered_at": "2026-11-19",
-      "status": "pending_catalog_unavailable",
-      "reason": "Original listing indexed and territorial execution indicated; mirror stale and API inaccessible; not in 283-item mirror by title/URL"
+      "status": "pending_final_verification",
+      "reason": "Indexed original posting dated 2026-11-17; requires confirmation of application eligibility and strict importer contract"
     },
     {
       "title": "Operador Retroexcavadora — Santa Juana/Nacimiento",
@@ -1036,17 +1374,49 @@
       "discovered_at": "2026-11-19",
       "status": "pending_catalog_unavailable",
       "reason": "Original listing specifies road works including Nacimiento; catalog stale; verify current application availability before publication"
+    },
+    {
+      "title": "Mecánico/a Automotriz – Nacimiento",
+      "company": "Serfonac",
+      "work_commune": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
+      "published_at": "2026-11-05",
+      "discovered_at": "2026-11-19",
+      "status": "already_in_catalog",
+      "reason": "Catalog checked; publication not claimed"
+    },
+    {
+      "title": "Mecánico/a Soldador/a de Maquinaria – Nacimiento",
+      "company": "Serfonac",
+      "work_commune": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/trabajo/3923358",
+      "published_at": "2026-11-05",
+      "discovered_at": "2026-11-19",
+      "status": "already_in_catalog",
+      "reason": "Catalog checked; publication not claimed"
+    },
+    {
+      "title": "Conductor de Transporte de Carga y Personal - Nacimiento",
+      "company": "Serfonac",
+      "work_commune": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/trabajo/conductor-de-transporte-de-carga-y-personal-nacimiento-3923758",
+      "published_at": "2026-11-05",
+      "discovered_at": "2026-11-19",
+      "status": "already_in_catalog",
+      "reason": "Catalog checked; publication not claimed"
     }
   ],
   "catalog": {
-    "status": "catalog_unavailable",
-    "generated_at": "2026-11-19T12:02:46+00:00",
-    "jobIdentityCount": 283,
+    "status": "valid",
+    "generated_at": "2026-11-19T18:16:15+00:00",
+    "jobIdentityCount": 284,
     "complete": true,
-    "reason": "Mirror older than 120 minutes at 12:39 Chile; real API inaccessible through reader. No publication allowed."
+    "pagesChecked": 11,
+    "reason": "Schema, count, fingerprint and freshness validated; existing candidates reconciled against all 284 items"
   },
   "notes": [
     "Wave 0: 24 individual URL attempts, 3 readable pages, 4 blocked, 17 failed. Five discovery targets addressed through public indexed search or unsupported flag. No new public publication confirmed. Renaico already in mirror; Fashion's Park Angol already cataloged.",
-    "Wave 1: 24/24 URLs individually attempted; 3 readable, 6 blocked, 15 failed. 5 discovery searches addressed. Two potentially new Nacimiento listings retained pending fresh catalog and eligibility verification. No batches or confirmed publications."
+    "Wave 1: 24/24 URLs individually attempted; 3 readable, 6 blocked, 15 failed. 5 discovery searches addressed. Two potentially new Nacimiento listings retained pending fresh catalog and eligibility verification. No batches or confirmed publications.",
+    "Wave 2: 24/24 individual direct URL attempts; 4 readable pages, 6 blocked, 12 failed, 2 unsupported. Five discovery target IDs recorded; 2 searched and 3 explicitly not attempted. Fresh catalog 284 identities. Three Serfonac Nacimiento jobs already present; no new publication confirmed."
   ]
 }

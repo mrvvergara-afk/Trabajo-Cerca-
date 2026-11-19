@@ -97,5 +97,14 @@
       "filename": "backend/gemini-verify-scheduler.ts",
       "content": "// Pure progress policy for the bounded Gemini-to-admin-review connector.\n// Incomplete dedup scans expire after 24 hours; keep their batch scheduled\n// at the next cron instead of restarting after a full 43-item rotation.\nconst RETRYABLE_REASONS = new Set([\n  'duplicate_check_in_progress',\n  'public_duplicate_catalog_unavailable',\n  'public_duplicate_page_unavailable',\n  'duplicate_scan_concurrent_change',\n]);\nexport function geminiRetryableReason(reason:string):boolean {\n  return RETRYABLE_REASONS.has(reason);\n}\nexport function nextGeminiVerifyCursor(start:number, selected:number, total:number, reasons:readonly string[]):number {\n  if(!total)return 0;\n  if(reasons.some(geminiRetryableReason))return start;\n  return start+selected<total?start+selected:0;\n}\n"
     }
-  ]
+  ],
+  "source_file_blobs": {
+    "backend/chatgpt-direct-import.ts": "785ba9aa87764e0a1ed287a2c79ea5e83acb3c3e",
+    "backend/public-source-verifier.ts": "c76fae853ed7d778b04c5a0b9aced7de9dac5977",
+    "backend/motor-gemini-github-pull.ts": "6376781c656ae1730af2eb5645d7a47c8fa775aa",
+    "backend/motor-b-sources.ts": "5cbabe78ce67a83fecd115cfec1ab7b0132f1fee",
+    "backend/worksite-semantics.ts": "c4f6cdda1659205219b9e0f8e7154e5252983766",
+    "backend/gemini-verify-scheduler.ts": "6dfa88b7782b8cf07949974a7d4c506dfa51c874"
+  },
+  "status": "READY_FOR_QA_NOT_DEPLOYABLE_WITHOUT_ISOLATED_LAB"
 }

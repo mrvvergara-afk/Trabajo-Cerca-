@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-19T15:14:52.221578-03:00",
+  "last_run": "2026-11-19T19:16:15.334778-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7674,6 +7674,138 @@
       "first_seen": "2026-11-19T15:14:52.221578-03:00",
       "url": "https://www.angolnoticiasnew.cl/regional/gendarmeria-incauta-diversas-sustancias-ocultas-al-interior-de-herramientas-de-trabajo-en-el-ccp-temuco/",
       "source": "Inventario P03",
+      "commune": null
+    },
+    "7899ce4f8dd43b3d37dd": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/jefe-de-ventas-de-piso-vina-del-mar-3080154.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b061e07f4d39f9b0c1bd": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/garzon-para-clinica-lunes-a-viernes-620000-las-condes-3080153.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "55ab9674b7cd365875a6": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/repartidor-30-buin-3080152.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ad0467a43cc59c3b223e": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-logistico-polifuncional-part-time-30-hrs-3080151.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f2eb94347879bae6f884": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/se-un-ejecutivo-para-banco-estado-y-conecta-con-el-exito-venta-de-seguros-3080150.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "252dd96a87021965128f": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/campanas-cross-los-mas-altos-indices-de-ventas-3080149.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "06a05883e3e768e9d423": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/desarrollador-a-backend-3080148.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cda36d448484010383e0": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/realizador-audiovisual-editor-de-video-mineria-antofagasta-3080147.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f2249f305a2ee5c1c189": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ai-engineer-aws-amazon-bedrock-3080146.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "174366ffb8ff33181a4e": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/gerente-de-administracion-y-relaciones-laborales-3080145.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2667faf599af74ba1fa2": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/gerente-de-operaciones-comerciales-y-distribucion-3080144.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "393b5ab44ba9a6817faa": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-magallanes-y-antartica-chilena/reemplazo-administrativo-sucursal-punta-arenas-3080143.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "58e9dfac6dfc50bf7f57": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/reemplazo-administrativo-sucursal-san-antonio-3080142.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e3416108ffedbd862284": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-publicacion-e-commerce-ordenada-detallista-y-respondable-3080141.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "60b53cfd12f85e1ec6e4": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-ventas-terreno-de-maquinas-de-pago-getnet-region-metropolitana-3080140.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8304119e314073923ab4": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-overhaul-equipos-mina-antofagasta-3080139.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c98515b152728b6db590": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-overhaul-equipos-mina-antofagasta-3080138.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e1b3c6170876ec3e2ae6": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-a-part-time-santiago-centro-3080137.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e9404875aeb397f09fb7": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operador-de-tratamiento-reemplazo-lm-puerto-montt-3080136.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a6535ef2b99f1e0a6edd": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-mall-costanera-center-turno-tarde-3080135.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ad5134d38b3b31ce0823": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/asesor-sst-temuco-nueva-imperial-3935498",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": null
+    },
+    "6c6a59a01993da526e10": {
+      "first_seen": "2026-11-19T19:16:15.334778-03:00",
+      "url": "https://radioviaducto.cl/2026/11/19/club-de-leones-de-collipulli-se-suma-a-los-homenajes-a-luis-sandoval-bascur-ejemplo-de-trabajo-y-emprendimiento-a-sus-96-anos/",
+      "source": "Radio Viaducto",
       "commune": null
     }
   }

@@ -234,12 +234,33 @@ class BackendPreflight(unittest.TestCase):
         self.assertLess(cron.index("await archiveMislocatedCmpcDuplicateOnce();"),
                         cron.index("advancePublicFeed(feedProjector)"))
 
-    def test_explicit_sublocality_blocks_wrong_work_commune(self):
-        source=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
-        self.assertIn("{name:'mininco',commune:'Collipulli'}",source)
-        self.assertIn("{name:'coihue',commune:'Negrete'}",source)
-        self.assertIn("{name:'capitan pastene',commune:'Lumaco'}",source)
-        self.assertIn("!(communes as string[]).includes(commune)",source)
+    def test_corporate_names_are_not_job_location_evidence(self):
+        importer=(ROOT/"chatgpt-direct-import.ts").read_text(encoding="utf-8")
+        verifier=(ROOT/"public-source-verifier.ts").read_text(encoding="utf-8")
+        semantics=(ROOT/"worksite-semantics.ts").read_text(encoding="utf-8")
+        self.assertIn("worksiteMentionsCommune",importer)
+        self.assertIn("workplaceWithoutEmployerNames",verifier)
+        self.assertIn("forestal\\s+mininco",semantics)
+        self.assertIn("remanufactura|maderas|celulosa",semantics)
+        self.assertNotIn("const titleSite=",importer)
+        self.assertNotIn("sublocalities.some",importer)
+        self.assertIn("x.ubicacion_trabajo",importer)
+
+
+    def test_gemini_bridge_supports_trabajando_and_keeps_aggregators_separate(self):
+        bridge=(ROOT/"motor-gemini-github-pull.ts").read_text(encoding="utf-8")
+        adapter=(ROOT/"public-source-adapters.ts").read_text(encoding="utf-8")
+        self.assertIn("'trabajando.cl':'Trabajando.com'", bridge)
+        self.assertIn("if(!adapter||adapter.family==='aggregator')return null", bridge)
+        self.assertIn("host === 'trabajando.cl'",adapter)
+        self.assertIn("host === 'opcionempleo.cl'",adapter)
+
+
+    def test_negrete_rss_is_in_motor_b_source_registry(self):
+        sources=(ROOT/"motor-b-sources.ts").read_text(encoding="utf-8")
+        self.assertEqual(sources.count("https://www.muninegrete.cl/feed/"),1)
+        self.assertIn('["Negrete OMIL · RSS","https://www.muninegrete.cl/feed/"]',sources)
+
 
 if __name__ == "__main__":
     unittest.main()

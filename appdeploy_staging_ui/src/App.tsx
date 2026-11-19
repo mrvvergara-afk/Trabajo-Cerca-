@@ -2061,7 +2061,7 @@ function App() {
           })}
         </div>
 
-        {nextCursor && !loadError && <div className='loadMoreWrap'><button className='secondary' onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando más…' : 'Cargar más resultados'}</button><span>La app descarga los avisos por páginas para reducir carga y consumo de datos.</span></div>}
+        {nextCursor && !loadError && <div className='loadMoreWrap'><button className='secondary' onClick={() => void load(nextCursor)} disabled={loadingMore}>{loadingMore ? 'Cargando más…' : 'Cargar más resultados'}</button></div>}
 
         {!loading && visible.length === 0 && !loadError && <div className='empty'><AlertCircle /><b>No hay coincidencias en esta vista.</b><span>Prueba otra comuna, otro oficio o cambia entre lugar real y zona desde donde aceptan personas. Si quedan páginas disponibles, usa “Cargar más resultados”.</span></div>}
       </section>
@@ -2099,15 +2099,14 @@ function App() {
               <div className='detailBlock'><MapPin /><span><small>{selected.kind === 'worker_available' ? 'LOCALIDAD BASE' : 'LUGAR REAL'}</small><b>{selected.workLocation}</b></span></div>
               <div className='detailBlock'><Users /><span><small>{selected.kind === 'worker_available' ? 'PUEDE TRABAJAR EN' : 'ACEPTAN PERSONAS DE'}</small><b>{selected.recruitmentZones.join(' · ')}</b></span></div>
             </div>
-            {selected.portalPlace && selected.portalPlace !== selected.workLocation && <div className='detailEvidence'><BadgeCheck /><span><b>Ubicación corregida</b><small>El portal la clasificó como {selected.portalPlace}, pero el lugar real detectado es {selected.workLocation}.</small></span></div>}
-            <div className='detailSection'><h3>Sobre esta oportunidad</h3><p>{selected.note || 'Sin descripción adicional.'}</p></div>
+            {publicOfferDetail(selected.note)&&<div className='detailSection'><h3>Sobre esta oportunidad</h3><p>{publicOfferDetail(selected.note)}</p></div>}
             <div className='detailFacts'>
               <div><small>Publicado</small><b>{publicDate(selected)}</b></div>
               {selected.until && <div><small>Vigencia</small><b>Hasta {selected.until}</b></div>}
               {selected.vacancies && <div><small>Vacantes</small><b>{selected.vacancies}</b></div>}
-              {selected.apply && <div><small>Postulación</small><b>{selected.apply}</b></div>}
+              {publicOfferDetail(selected.apply) && <div><small>Postulación</small><b>{publicOfferDetail(selected.apply)}</b></div>}
             </div>
-            <div className='detailSource'><BadgeCheck /><div><small>FUENTE ORIGINAL</small><b>{selected.source}</b>{selected.discoveredBy && <small>Detectado por {selected.discoveredBy}</small>}</div></div>
+            <div className='detailSource'><BadgeCheck /><div><small>FUENTE</small><b>{publicSourceLabel(selected.source)}</b></div></div>
             <div className='detailActions'>
               {selected.url && <a href={selected.url} target='_blank' rel='noreferrer' onClick={() => track('tc_external_offer_click', { listing_id:selected.id, kind:selected.kind, commune:selected.workLocation, origin:selected.origin })}>Ver oferta original <ArrowRight /></a>}
               {selected.contact && <>

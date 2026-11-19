@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-19T18:40:45.035487+00:00",
+  "updated_at": "2026-11-19T22:41:58.542634+00:00",
   "items_total": 18,
   "pending_total": 18,
   "publication_enabled": false,
@@ -15,7 +15,6 @@
         "Traiguén"
       ],
       "possible_communes": [
-        "Renaico",
         "Traiguén"
       ],
       "reader_status": "documento_antiguo_revision_vigencia",
@@ -23,10 +22,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "0927b708650c9a729c913c763d53c6133c133ffa35d49c945919d36980117749",
+      "document_sha256": "6acc54d92189fe49f847d229991b0c6929250fcb86d59e3499bb25b99accad67",
       "original_classification": null,
       "date_source": "2026-10-17",
-      "date_discovered": "2026-11-18",
+      "date_discovered": "2026-11-19",
       "deadline": "2026-11-27",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -35,7 +34,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-09",
-      "last_seen": "2026-11-18",
+      "last_seen": "2026-11-19",
       "review_signature": null
     },
     {
@@ -573,6 +572,5 @@
       "original_classification": "sin_evidencia_suficiente",
       "deadline": null
     }
-  ],
-  "added_this_run": 0
+  ]
 }

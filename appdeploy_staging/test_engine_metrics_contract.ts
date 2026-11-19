@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {adaptEngine,nonnegative,usefulFromAudits,health,rollup,ENGINE_IDS} from './engine-metrics-contract';
+assert.equal(nonnegative('44'),null);
+assert.equal(nonnegative(-1),null);
+assert.equal(nonnegative(0),0);
+assert.equal(usefulFromAudits([{http:200,error:null},{http:200,error:'captcha'},{http:403,error:'robots'}]),1);
+const at='2026-11-19T15:00:00.000Z';
+const a=adaptEngine('A',{checkedAt:at,summary:{
+ sourcesRead:5,audits:[{http:200,error:null},{http:200,error:null},{http:200,error:'captcha'}, {http:403,error:'blocked'}, {http:200,error:null}],
+ noticesChecked:3,verified:1,pending:4}});
+assert.equal(a.counts.attempted,5);
+assert.equal(a.counts.useful,3);
+assert.equal(a.counts.blocked,2);
+assert.equal(a.counts.publishedConfirmed,null);
+const d=adaptEngine('D',{at,producerLastScanAt:at,producerSourcesChecked:175,producerSourcesAccessible:119,producerReadyCandidates:4});
+assert.equal(d.counts.attempted,175);
+assert.equal(d.counts.useful,119);
+const b=adaptEngine('B',{at,visited:10,ready:2,reviews:4,errors:[]});
+assert.equal(b.counts.processed,10);
+assert.equal(b.counts.useful,null);
+const gemini=adaptEngine('GEMINI',{at,state:'import_completed',received:16,queued:4});
+assert.equal(gemini.counts.queued,4);
+assert.equal(gemini.counts.attempted,null);
+assert.equal(gemini.counts.publishedConfirmed,null);
+assert.equal(adaptEngine('CHATGPT',null).status,'unreported');
+assert.equal(adaptEngine('A',null,{readFailed:true}).status,'error');
+assert.equal(health('D','2026-11-18T00:00:00.000Z',false,Date.parse(at)),'stale');
+const rows=ENGINE_IDS.map(id=>id==='A'?a:id==='D'?d:id==='B'?b:id==='GEMINI'?gemini:adaptEngine(id,null));
+assert.equal(rollup(rows).total,6);
+console.log('ENGINE_NORMALIZATION_CONTRACT_PASS');

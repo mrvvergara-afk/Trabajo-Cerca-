@@ -1,0 +1,62 @@
+name: Control de gestion - telemetry and visual BI (RC5)
+
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging/engine-*'
+      - 'appdeploy_staging_backend/index.ts'
+      - 'appdeploy_staging_ui/src/executive-*'
+      - 'automation/test_release_candidate_rc5.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC5_APPDEPLOY_FILES.json'
+      - '.github/workflows/engine-telemetry-visual-bi-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging/engine-*'
+      - 'appdeploy_staging_backend/index.ts'
+      - 'appdeploy_staging_ui/src/executive-*'
+      - 'automation/test_release_candidate_rc5.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC5_APPDEPLOY_FILES.json'
+      - '.github/workflows/engine-telemetry-visual-bi-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  bi-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pure adapter tests for six motors
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/test_engine_metrics_contract.ts --bundle --format=esm --platform=node --outfile=/tmp/engine-contract.mjs
+          node /tmp/engine-contract.mjs
+      - name: Pure presentation tests, twelve communes and missing data
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/test_executive_metrics.ts --bundle --format=esm --platform=node --outfile=/tmp/presentation-contract.mjs
+          node /tmp/presentation-contract.mjs
+      - name: Compile independent UI charts and central dashboard
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/executive-charts.tsx --bundle --format=esm --platform=browser --external:* --outfile=/tmp/tc-charts.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/executive-control-center.tsx --bundle --format=esm --platform=browser --external:* --outfile=/tmp/tc-dashboard.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/executive-metrics.ts --format=esm --platform=browser --outfile=/tmp/tc-metrics.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/executive-control-center.css --outfile=/tmp/tc-dashboard.css
+      - name: Compile read-only backend route, producer and metrics adapters
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/engine-metrics-contract.ts --format=esm --platform=node --outfile=/tmp/tc-engine-contract.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/engine-source-audit.ts --bundle --format=esm --platform=node --external:* --outfile=/tmp/tc-engine-audit.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging/engine-telemetry.ts --bundle --format=esm --platform=node --external:* --outfile=/tmp/tc-engine-telemetry.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_backend/index.ts --bundle --format=esm --platform=node --external:* --outfile=/tmp/tc-index-qa.js
+      - name: Validate exactly one consolidated release candidate
+        run: |
+          python automation/test_release_candidate_rc5.py
+      - name: Validate no data writes or deployment in CI
+        run: |
+          echo 'Read-only analytics, metadata and code tests only. No AppDeploy deployment.'

@@ -56,7 +56,7 @@ export function ActivityChart({history,complete}:{history?:DayPoint[];complete?:
  </section>;
 }
 export function SourceDonut({engines}:{engines?:EngineRow[]}){
- const [choice,setChoice]=useState<'D'|'A'>('D');
+ const [choice,setChoice]=useState<'D'|'A'|'CHATGPT'|'GEMINI'>('D');
  const row=engines?.find(x=>x.id===choice);
  const attempted=row?.counts.attempted??null,useful=row?.counts.useful??null;
  const pct=percent(useful,attempted);
@@ -65,8 +65,8 @@ export function SourceDonut({engines}:{engines?:EngineRow[]}){
    <header className='tcBIChartHead'><div><h4>Lectura de fuentes</h4>
     <p>Efectividad técnica del último barrido medido, sin confundirla con ofertas.</p></div>
     <div className='tcBITabs' role='group' aria-label='Motor de fuentes'>
-      {(['D','A'] as const).map(x=><button type='button' key={x} aria-pressed={choice===x}
-        onClick={()=>setChoice(x)}>{x}</button>)}
+      {(['D','A','CHATGPT','GEMINI'] as const).map(x=><button type='button' key={x} aria-pressed={choice===x}
+        onClick={()=>setChoice(x)}>{x==='CHATGPT'?'GPT':x==='GEMINI'?'GEM':x}</button>)}
     </div>
    </header>
    {pct===null?<div className='tcBIEmptyChart'>Sin registro comparable de fuentes para Motor {choice}.</div>:
@@ -86,7 +86,7 @@ export function SourceDonut({engines}:{engines?:EngineRow[]}){
        <div><dt>No útiles / bloqueadas</dt><dd>{attempted!==null&&useful!==null?knownCount(attempted-useful):'Sin datos'}</dd></div>
       </dl>
     </div>}
-   <footer className='tcBIChartFoot'>Fuente: última ejecución del motor {choice}. No representa cobertura de todo el inventario.</footer>
+   <footer className='tcBIChartFoot'>Fuente: última ejecución del motor {choice}. No representa cobertura de todo el inventario. {row?.notes?.[0]||''}</footer>
  </section>;
 }
 export function TerritoryBars({cities,feedComplete}:{cities:CityCount[];feedComplete?:boolean}){

@@ -156,11 +156,37 @@ export async function archiveMislocatedCmpcDuplicateOnce() {
     return { status:'source_record_not_found', removed:0 };
   }
   if (bad.active !== true) {
-    return {
-      status: bad.archiveReason === 'semantic_duplicate_of_official_ats'
-        ? 'already_archived' : 'inactive_manual_review',
-      removed:0,
-    };
+    if (bad.archiveReason !== 'semantic_duplicate_of_official_ats')
+      return {status:'inactive_manual_review',removed:0};
+    if (bad.closureReason === 'administrative_semantic_duplicate')
+      return {status:'already_archived',removed:0};
+    // The first correction archived this job but the feed intentionally
+    // preserved its last-known-good card: no administrative closure marker.
+    // Add that marker to this exact archived identity and requeue projection.
+    const stamp = new Date().toISOString();
+    const [updated] = await db.transact([
+      db.tx.update('radar_jobs', [{
+        id:CMPC_BAD_ID,
+        record:{
+          closureReason:'administrative_semantic_duplicate',
+          closureEvidenceUrl:CMPC_OFFICIAL_URL,
+          closureRecordedAt:stamp,
+        },
+        if:{
+          active:false,
+          archiveReason:'semantic_duplicate_of_official_ats',
+          url:String(bad.url),
+        },
+      }],{patch:true}),
+      db.tx.add('public_feed_changes', [{
+        source:'radar_jobs',sourceId:CMPC_BAD_ID,queuedAt:stamp,
+      }]),
+    ]);
+    if (!updated?.[0])throw new Error('cmpc_duplicate_closure_requeue_unconfirmed');
+    console.warn('CMPC_DUPLICATE_REPAIR '+JSON.stringify({
+      status:'administrative_closure_requeued',removed:0,id:CMPC_BAD_ID,
+    }));
+    return {status:'administrative_closure_requeued',removed:0};
   }
 
   // The published sources may preserve a harmless www prefix or tracking
@@ -206,6 +232,7 @@ export async function archiveMislocatedCmpcDuplicateOnce() {
         active:false,
         status:'Archivada · duplicada con publicación oficial CMPC',
         archiveReason:'semantic_duplicate_of_official_ats',
+        closureReason:'administrative_semantic_duplicate',
         duplicateOf:CMPC_OFFICIAL_ID,
         archivedAt:now,
         archiveEvidence:{

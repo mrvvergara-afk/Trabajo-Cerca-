@@ -6,7 +6,7 @@ on:
       - 'appdeploy_staging/engine-*'
       - 'appdeploy_staging_backend/index.ts'
       - 'appdeploy_staging_ui/src/executive-*'
-      - 'automation/test_release_candidate_rc5.py'
+      - 'automation/test_release_candidate_rc6.py'
       - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC5_APPDEPLOY_FILES.json'
       - '.github/workflows/engine-telemetry-visual-bi-qa.yml'
   push:
@@ -15,7 +15,7 @@ on:
       - 'appdeploy_staging/engine-*'
       - 'appdeploy_staging_backend/index.ts'
       - 'appdeploy_staging_ui/src/executive-*'
-      - 'automation/test_release_candidate_rc5.py'
+      - 'automation/test_release_candidate_rc6.py'
       - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC5_APPDEPLOY_FILES.json'
       - '.github/workflows/engine-telemetry-visual-bi-qa.yml'
 

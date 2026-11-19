@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-19T02:33:33+00:00",
+  "generated_at": "2026-11-19T03:08:26+00:00",
   "complete": true,
-  "totalItemsReported": 286,
-  "jobIdentityCount": 282,
+  "totalItemsReported": 288,
+  "jobIdentityCount": 284,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 104,
+  "visibleIn12CommunesCount": 106,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "992d5bb0a82e830966a13da0d8456efdf8a1ba83aa6ea9598197f68fadd0dfb2",
+  "fingerprint": "4d0edbbaf55e5a35f4ebd6925744153131a9aa86cb92b267ef87db2bc66c8c5a",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1040,6 +1040,17 @@
       "urlHashSha256": "897ecd5eaa571cd80e36932cf1ccb2d03ad0bf1c32d30cf485ed42eeccaf71b1"
     },
     {
+      "id": "chatgpt_d_910ceee091936904696e",
+      "title": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "company": "CMPC",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
+      "urlHashSha256": "067853b43b95b63f22f40a1ca0a97d1f5e62eea9649b71f2267657c3b2931869"
+    },
+    {
       "id": "chatgpt_d_ad791baa0556cf59d931",
       "title": "Reponedor PART TIME PARA TRAIGUEN",
       "company": "Cultiva",
@@ -1071,6 +1082,17 @@
       "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19192?c=cmpc",
       "urlHashSha256": "e528e4b2242e8c0cd02f6089a152b76c13ecd40991c206424f204433c480c77a"
+    },
+    {
+      "id": "chatgpt_d_b603fd0cac39366e5659",
+      "title": "ANALISTA LABORATORIO I",
+      "company": "CMPC",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
+      "urlHashSha256": "ef0264bf9a5d7153f8645501c717ee6924f32130f86ba50ef8843cf7a961b0d4"
     },
     {
       "id": "chatgpt_d_b82587f333519896e835",

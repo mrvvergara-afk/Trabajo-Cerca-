@@ -387,7 +387,8 @@ const FREE_PORTAL_SEARCHES = [
   { key:'laborum', name:'Laborum', search:'https://www.laborum.cl/empleos-busqueda-{slug}.html' },
   { key:'opcionempleo', name:'Opción Empleo', search:'https://www.opcionempleo.cl/empleo-en-{slug}.html' },
   { key:'chiletrabajos', name:'ChileTrabajos', search:'https://www.chiletrabajos.cl/encuentra-un-empleo/?2={place}' },
-  { key:'trabajando', name:'Trabajando', search:'https://www.trabajando.cl/trabajo-empleo/{slug}' }
+  { key:'trabajando', name:'Trabajando.com', search:'https://www.trabajando.cl/trabajo-{slug}' },
+  { key:'jobrapido', name:'Jobrapido · descubrimiento', search:'https://cl.jobrapido.com/Ofertas-de-trabajo-en-{place}' }
 ];
 // Scan the 13 priority localities, including Victoria, Purén, Ercilla and Mininco. Quilaco is excluded.
 const FREE_TARGET_TOWNS = [...PILOT];

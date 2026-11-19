@@ -181,9 +181,12 @@ export function nextPublicSource(sources:FreeSource[], state:Pick<ScanState,'loc
   const primary=allPortals.filter(source=>source.discoveryPriority!=='secondary');
   const secondary=allPortals.filter(source=>source.discoveryPriority==='secondary');
   const portals=primary.length ? primary : allPortals;
-  // Three out of four source roots prioritize municipalities and OMIL.
-  // Independent cursors keep portals discoverable without increasing HTTP budget.
-  const useLocal=local.length>0 && (!portals.length || slot%4!==3);
+  // One of four discovery roots is municipal/OMIL, three are portals.
+  // With four roots per 30-minute run this preserves 48 local checks/day
+  // while allowing 144 portal checks/day, covering all provider/commune pairs
+  // without increasing requests or bypassing failures/robots.
+  // Separate persistent cursors prevent either group from starving.
+  const useLocal=local.length>0 && (!portals.length || slot%4===0);
   const pool=useLocal ? local : portals;
   if (!pool.length) throw new Error('No public discovery pool');
   const field=useLocal ? 'localPosition' : 'portalPosition';
@@ -495,7 +498,20 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     if (priorityQueue){state.priorityCandidates.shift();priorityProcessed++;}
     else {state.pending.splice(selected,1);normalProcessed++;state.reviewLane=((state.reviewLane || 0)+1)%3;}
   }
-  const summary = { checkedAt:new Date(now).toISOString(),sourcesRead:roots,httpReads:reads,
+  // Last-run operational facts. This does not claim full coverage or
+  // invent historical results; 200 without usable content is not counted read.
+  const portalHealth:Record<string,{attempted:number,readable:number,blocked:number,failed:number,candidates:number}>={};
+  for(const audit of audits.filter(row=>row.discoveryGroup==='portal')){
+    const provider=publicPublisher(String(audit.url||''))?.group || 'unknown';
+    const counters=portalHealth[provider] ||= {attempted:0,readable:0,blocked:0,failed:0,candidates:0};
+    counters.attempted++;
+    const code=Number(audit.http||0),error=String(audit.error||'');
+    if(code===200&&!error)counters.readable++;
+    else if([401,403,429].includes(code)||/robots|challenge/.test(error))counters.blocked++;
+    else counters.failed++;
+    counters.candidates+=Number(audit.candidates||0);
+  }
+  const summary = { checkedAt:new Date(now).toISOString(),sourcesRead:roots,httpReads:reads,portalHealth,
     localSourcesRead:audits.filter(item=>item.discoveryGroup==='local').length,
     portalSourcesRead:audits.filter(item=>item.discoveryGroup==='portal').length,
     documentsManagedSeparately:documentManagedUrls.size,

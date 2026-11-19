@@ -106,6 +106,22 @@ class BackendPreflight(unittest.TestCase):
         self.assertIn("previous?.item.verified===true", self.feed)
         self.assertIn("!/confirmed|explicit|administrative|owner_request/.test(closure)", self.feed)
 
+    def test_portal_recovery_restores_all_important_provider_families(self):
+        adapter=(ROOT/"public-source-adapters.ts").read_text(encoding="utf-8")
+        source=(ROOT/"free-public-sources.ts").read_text(encoding="utf-8")
+        index=(ROOT/"index.ts").read_text(encoding="utf-8")
+        for term in ("'indeed.com'", "'laborum.cl'", "'bne.gob.cl'",
+                     "'cl.computrabajo.com'", "'opcionempleo.cl'",
+                     "'chiletrabajos.cl'", "'trabajando.cl'", "'cl.jobrapido.com'"):
+            self.assertIn(term,adapter)
+        self.assertIn("name='Trabajando.com'",adapter)
+        self.assertIn("family='aggregator'",adapter)
+        self.assertIn("https://www.trabajando.cl/trabajo-{slug}",index)
+        self.assertIn("https://cl.jobrapido.com/Ofertas-de-trabajo-en-{place}",index)
+        self.assertIn("slot%4===0",source)
+        self.assertIn("portalHealth",source)
+        self.assertIn("httpReads:reads,portalHealth",source)
+
     def test_chatgpt_bridge_is_hooked_into_publication_cron(self):
         index=(ROOT/"index.ts").read_text(encoding="utf-8")
         self.assertIn("await chatgptAutoImportHandler();",index)

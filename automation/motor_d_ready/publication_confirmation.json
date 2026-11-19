@@ -2,15 +2,15 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-19T04:16:57.210530+00:00",
+  "checked_at": "2026-11-19T13:34:50.214951+00:00",
   "feed_complete": true,
-  "feed_rows": 288,
+  "feed_rows": 287,
   "indexed_batches": 26,
   "quarantined_batches": 2,
   "distinct_nonquarantined_offers": 57,
-  "source_confirmed": 56,
+  "source_confirmed": 55,
   "semantic_only": 0,
-  "not_found": 0,
+  "not_found": 1,
   "expired_not_expected": 1,
   "territory_mismatches_count": 1,
   "territory_mismatches": [
@@ -257,9 +257,9 @@
       "batch_id": "motor-d-20261118-d17333430d2aefde48",
       "historically_quarantined": false,
       "offer_count": 2,
-      "source_confirmed": 2,
+      "source_confirmed": 1,
       "semantic_only": 0,
-      "not_found": 0,
+      "not_found": 1,
       "expired_not_expected": 0
     },
     {
@@ -272,8 +272,15 @@
       "expired_not_expected": 0
     }
   ],
-  "unresolved_active_batches": [],
+  "unresolved_active_batches": [
+    {
+      "id_fuente": "d_1a99f7fd5b8b9d116634",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
+      "batch_id": "motor-d-20261118-d17333430d2aefde48",
+      "status": "not_found_in_complete_feed"
+    }
+  ],
   "previously_flagged_resolved": 0,
-  "previously_flagged_still_pending": 0,
+  "previously_flagged_still_pending": 1,
   "prior_pending_resolution": []
 }

@@ -27,11 +27,10 @@ export function NearbyCities({ stats, ready, failed, current, onExplore, onRetur
     </div>
     <div className='tcExploreCities'>{EXPLORATION_CITIES.slice(0,compact?2:undefined).map(city => <button type='button'
       key={city} aria-pressed={current === city} onClick={() => onExplore(city)}>
-      <MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed ? 'Recuento no disponible' : !ready ? 'Consultando oportunidades…' : `${stats[city]?.jobs ?? 0} ${(stats[city]?.jobs ?? 0) === 1 ? 'oferta publicada' : 'ofertas publicadas'}`}</small></span><ArrowRight aria-hidden='true'/>
+      <MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed?'No disponible':!ready?'Actualizando…':'Ver oportunidades'}</small></span><ArrowRight aria-hidden='true'/>
     </button>)}</div>
-    {compact&&EXPLORATION_CITIES.length>2&&<details className='tcMoreCities'><summary>Ver otras ciudades</summary><div className='tcExploreCities'>{EXPLORATION_CITIES.slice(2).map(city=><button type='button' key={city} aria-pressed={current===city} onClick={()=>onExplore(city)}><MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed?'Recuento no disponible':!ready?'Consultando oportunidades…':`${stats[city]?.jobs??0} ofertas publicadas`}</small></span><ArrowRight aria-hidden='true'/></button>)}</div></details>}
+    {compact&&EXPLORATION_CITIES.length>2&&<details className='tcMoreCities'><summary>Ver otras ciudades</summary><div className='tcExploreCities'>{EXPLORATION_CITIES.slice(2).map(city=><button type='button' key={city} aria-pressed={current===city} onClick={()=>onExplore(city)}><MapPin aria-hidden='true'/><span><strong>{city}</strong><small>{failed?'No disponible':!ready?'Actualizando…':'Ver oportunidades'}</small></span><ArrowRight aria-hidden='true'/></button>)}</div></details>}
     {EXPLORATION_CITIES.some(city => city === current) && <button className='tcReturn' type='button' onClick={onReturn}>Volver a {origin === 'Todas' ? 'mi zona local' : origin}</button>}
-    <small className='tcExploreNote'>Conteos publicados. Cero avisos no significa que no haya empleos en la ciudad.</small>
   </section>;
 }
 

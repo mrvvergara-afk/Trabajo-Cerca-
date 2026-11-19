@@ -1,0 +1,70 @@
+[
+  {
+    "from": "import {reviewLabel,lastConfirmedAt,identifiedEmployer,originalPoster,shortDate} from './compact-presentation';",
+    "to": "import {reviewLabel,identifiedEmployer,originalPoster,shortDate} from './compact-presentation';\nimport {publicSourceLabel,publicOfferDetail} from './public-content-policy';"
+  },
+  {
+    "from": "<div><span><Radar aria-hidden='true'/> Radar laboral territorial · 12 comunas</span><b>{scopeCount??'…'} ofertas</b></div>",
+    "to": "<div><span><MapPin aria-hidden='true'/> Empleos y servicios en tu zona</span></div>"
+  },
+  {
+    "from": "            <div className='tcDiscoverActions'><span className='tcCatalogCount' role='status'>{cachedView?'Último catálogo guardado · Verificando vigencia…':loading&&!items.length?'Cargando primeras ofertas…':!feedComplete&&items.length?`Mostrando ${visible.length} ofertas · Actualizando catálogo…`:feedComplete?`${visible.length} resultados del catálogo`:'Actualizando catálogo…'}</span>",
+    "to": "            <div className='tcDiscoverActions'>{(cachedView||loading||!feedComplete)&&<span className='tcCatalogCount' role='status'>{cachedView?'Verificando vigencia…':loading&&!items.length?'Cargando ofertas…':'Actualizando ofertas…'}</span>}"
+  },
+  {
+    "from": "{value}{feedComplete?` (${value==='Todas'?territoryTotals.primary:normalizedRadarStats[value]?.jobs??0})`:''}",
+    "to": "{value}"
+  },
+  {
+    "from": "<b title={item.source}>{item.source||'Fuente no informada'}</b>",
+    "to": "<b>{publicSourceLabel(item.source)}</b>"
+  },
+  {
+    "from": "<div className='neoLoadMore'><small>{items.filter(item=>item.kind==='job_offer').length} ofertas cargadas de {availableJobs} publicadas</small><button",
+    "to": "<div className='neoLoadMore'><button"
+  },
+  {
+    "from": "'PROMOCIÓN PROPIA'",
+    "to": "'TRABAJO CERCA'"
+  },
+  {
+    "from": "<p>{advertising.promotion?.kind==='founder'?'Cupos restantes: '+advertising.promotion?.remaining+'. ':''}Sujeto a aprobación y disponibilidad.</p>",
+    "to": "<p>Sujeto a aprobación y disponibilidad.</p>"
+  },
+  {
+    "from": "{lastConfirmedAt(selected)&&<div><BadgeCheck/><span><small>ÚLTIMA COMPROBACIÓN CON EVIDENCIA</small><b>{shortDate(lastConfirmedAt(selected)!)}</b></span></div>}",
+    "to": ""
+  },
+  {
+    "from": "<div><BadgeCheck /><span><small>FUENTE</small><b>{selected.source}</b></span></div>",
+    "to": "<div><BadgeCheck /><span><small>FUENTE</small><b>{publicSourceLabel(selected.source)}</b></span></div>"
+  },
+  {
+    "from": "{selected.portalPlace && selected.portalPlace !== selected.workLocation && <div className='neoDrawerEvidence'><BadgeCheck /><span><b>Ubicación corregida</b><small>El portal la clasificó como {selected.portalPlace}; el lugar real detectado es {selected.workLocation}.</small></span></div>}",
+    "to": ""
+  },
+  {
+    "from": "<div className='neoDrawerSection'>\n                  <span className='neoKicker'>DETALLE</span>\n                  <h3>Sobre esta oportunidad</h3>\n                  <p>{selected.note || 'Sin descripción adicional.'}</p>\n                </div>",
+    "to": "{publicOfferDetail(selected.note)&&<div className='neoDrawerSection'>\n                  <span className='neoKicker'>DETALLE</span>\n                  <h3>Sobre esta oportunidad</h3>\n                  <p>{publicOfferDetail(selected.note)}</p>\n                </div>}"
+  },
+  {
+    "from": "{(selected.apply||selected.evidence)&&<div className='neoDrawerSection'><h3>Postulación y evidencia</h3>{selected.apply&&<p>{selected.apply}</p>}{selected.evidence&&<p>{selected.evidence}</p>}</div>}",
+    "to": "{publicOfferDetail(selected.apply)&&<div className='neoDrawerSection'><h3>Cómo postular</h3><p>{publicOfferDetail(selected.apply)}</p></div>}"
+  },
+  {
+    "from": "<span className='sourceMini'><BadgeCheck /> {item.source}</span>",
+    "to": "<span className='sourceMini'><BadgeCheck /> {publicSourceLabel(item.source)}</span>"
+  },
+  {
+    "from": "<div className='resultLine modernResultLine'><b>{loading ? 'Cargando…' : visible.length + ' resultados'}</b><span>Actualización territorial · Radar 3.0</span></div>",
+    "to": "{loading&&<div className='resultLine modernResultLine' role='status'>Cargando oportunidades…</div>}"
+  },
+  {
+    "from": "<div className='heroMetric'><strong>{loading ? '…' : availableJobs}</strong><span><b>oportunidades verificadas</b><small>{(feedSummary.recentJobOffers24h || 0) > 0 ? `+${(feedSummary.recentJobOffers24h || 0)} nuevas en las últimas 24 h · ` : ''}disponibles hasta cierre o vencimiento confirmado</small></span></div>",
+    "to": "<div className='heroMetric'><span><b>Oportunidades de tu zona</b><small>Explora ofertas laborales por localidad.</small></span></div>"
+  },
+  {
+    "from": "<section className='coverageSection compactCoverage' id='cobertura'>\n        <div className='sectionHead modernHead'>\n          <div><span className='overline'>RADAR 3.1</span><h2>Tres motores, tres trabajos distintos</h2><p>Motor 1 mantiene la base estructurada y oficial. Motor 2 busca brechas en la web. Motor 3 rastrea el movimiento difícil: redes públicas, radios, diarios comunales, OMIL, cámaras, comercios, contratistas y páginas locales. Encontrar no significa publicar: cada hallazgo debe superar deduplicación, territorio, fecha, seguridad y verificación.</p></div>\n          <button className='coverageToggle' onClick={() => void loadCoverage()}>{showCoverage ? 'Ocultar' : 'Ver cobertura'} <ArrowRight /></button>\n        </div>\n        {showCoverage ? <div className='coverageSummary'>\n          <div><b>{radarStatus?.searchEngines ?? 3}</b><span>motores de búsqueda activos</span></div>\n          <div><b>{radarStatus?.motor2Latest?.newCandidates ?? '—'}</b><span>nuevos aportados por Motor 2</span></div>\n          <div><b>{radarStatus?.motor3Latest?.newCandidates ?? '—'}</b><span>nuevos aportados por Motor 3</span></div>\n          <div><b>{radarStatus?.pendingCandidates ?? reviewCount}</b><span>candidatos totales en revisión</span></div>\n        </div> : <button className='radarTeaser' onClick={() => void loadCoverage()}><span className='radarTeaserIcon'><Radar /></span><span><b>Radar territorial activo</b><small>La cobertura técnica queda resumida hasta que decidas abrirla.</small></span><ArrowRight /></button>}\n        {showCoverage && radarStatus?.socialOverview && <div className='coverageSummary'><div><b>{radarStatus.socialOverview.pending}</b><span>capturas sociales pendientes (muestra)</span></div><div><b>{radarStatus.socialOverview.processed}</b><span>capturas procesadas (muestra)</span></div><div><b>{radarStatus.socialOverview.imagesRead}</b><span>imágenes OCR leídas (muestra)</span></div><div><b>{radarStatus.socialOverview.jobNotices}</b><span>afiches laborales detectados (no publicados necesariamente)</span></div>{radarStatus.socialOverview.hasMore && <small>Existen capturas adicionales fuera de la muestra; los conteos no son totales.</small>}</div>}\n\n        {showCoverage && radarStatus?.territoryCoverage && (\n          <div className='territoryMatrix'>\n            <div className='territoryMatrixHead'><b>Matriz territorial</b><span>Fuentes oficiales + medios comunitarios por zona. Las brechas quedan visibles para reforzarlas.</span></div>\n            <div className='territoryMatrixGrid'>\n              {radarStatus.territoryCoverage.map(row => (\n                <div className={'territoryRow ' + (row.gap === 'Cobertura base activa' ? 'covered' : 'gap')} key={row.place}>\n                  <div><b>{row.place}</b><small>{row.gap}</small></div>\n                  <span><strong>{row.officialSources}</strong> oficiales</span>\n                  <span><strong>{row.communitySources}</strong> comunitarias</span>\n                  <span><strong>{row.automatedSources}</strong> automáticas</span>\n                </div>\n              ))}\n            </div>\n          </div>\n        )}\n        {showCoverage && <div className='coverageGrid'>{(radarStatus?.sources ?? []).map(source => (\n          <div className={'coverageCard ' + source.status} key={source.key}>\n            <span>{source.status === 'automatic' ? 'AUTOMÁTICA' : source.status === 'active' ? 'DESCUBRIMIENTO' : 'COBERTURA LIMITADA'}</span>\n            <b>{source.name}</b><p>{source.note}</p>\n            <small>{source.lastChecked ? 'Revisada: ' + new Date(source.lastChecked).toLocaleString('es-CL',{dateStyle:'short',timeStyle:'short'}) : source.mode === 'public_scan' ? 'Primer barrido programado' : 'Revisión por descubrimiento / aporte'}</small>\n          </div>\n        ))}</div>}\n      </section>\n\n      ",
+    "to": ""
+  }
+]

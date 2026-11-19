@@ -187,7 +187,7 @@ export async function archiveMislocatedCmpcDuplicateOnce() {
     active:row?.active===true,
     verified:row?.verified===true,
     review:row?.review!==true,
-    work:Array.isArray(row?.workCommunes)&&row.workCommunes.length===1&&row.workCommunes[0]===city,
+    work:!!row&&Array.isArray(row.workCommunes)&&row.workCommunes.length===1&&row.workCommunes[0]===city,
   });
   const wrong=flags(bad,'aggregator','Purén');
   const correct=flags(official,'ats','Collipulli');

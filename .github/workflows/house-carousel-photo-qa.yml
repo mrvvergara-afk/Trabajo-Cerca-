@@ -1,0 +1,53 @@
+name: Institutional carousel media regression (preproduction only)
+
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging_ui/**'
+      - '.github/workflows/house-carousel-photo-qa.yml'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC2_APPDEPLOY_FILES.json'
+      - 'automation/test_release_candidate_rc2.py'
+  push:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging_ui/**'
+      - '.github/workflows/house-carousel-photo-qa.yml'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC2_APPDEPLOY_FILES.json'
+      - 'automation/test_release_candidate_rc2.py'
+
+permissions:
+  contents: read
+
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run approved photo and withdrawal rules
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/test_house_photo_selection.ts --bundle --platform=node --format=esm --outfile=/tmp/house-photo-test.mjs
+          node /tmp/house-photo-test.mjs
+      - name: Parse updated banner and ensure only selected photos render
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/house-advertising.tsx --format=esm --platform=browser --external:* --outfile=/tmp/house-banner-qa.js
+          python - <<'PY'
+          from pathlib import Path
+          x=Path('appdeploy_staging_ui/src/house-advertising.tsx').read_text()
+          assert "selectHousePhotoUrl" in x
+          assert "{photoUrl && <AdImage url={photoUrl}/>}" in x
+          assert "creative.storagePath && !creative.imageDisabled" not in x
+          assert "houseSequence(house.campaign.id)" in x
+          assert "tcCampaignFallbackArt" in x
+          print("CAROUSEL_STAGED_ONLY_PASS")
+          PY
+      - name: Check consolidated release manifest
+        run: python automation/test_release_candidate_rc2.py
+      - name: No AppDeploy write or external publishing
+        run: echo 'PASS: CI runs offline with synthetic URLs, no deployment or database writes'

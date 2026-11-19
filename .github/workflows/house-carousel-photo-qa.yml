@@ -36,7 +36,7 @@ jobs:
           node /tmp/house-photo-test.mjs
       - name: Parse updated banner and ensure only selected photos render
         run: |
-          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/house-advertising.tsx --format=esm --platform=browser --external:* --outfile=/tmp/house-banner-qa.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/house-advertising.tsx --bundle --format=esm --platform=browser --external:* --outfile=/tmp/house-banner-qa.js
           python - <<'PY'
           from pathlib import Path
           x=Path('appdeploy_staging_ui/src/house-advertising.tsx').read_text()

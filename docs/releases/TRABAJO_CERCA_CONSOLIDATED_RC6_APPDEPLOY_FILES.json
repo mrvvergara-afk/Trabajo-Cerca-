@@ -363,7 +363,7 @@
     "src/App.tsx": "dc61ffb739dfc246831f5910fd6af05fd3b56b4e",
     "src/public-content-policy.ts": "f1ca18b240471e23432af4684daf2724c2191aff"
   },
-  "status": "CODE_QA_PENDING_NO_DEPLOYMENT",
+  "status": "READY_FOR_CODE_QA_NOT_DEPLOYABLE_WITHOUT_ISOLATED_LAB",
   "supplements": [
     "Six original institutional photographs verified in historical repo, each at 640/1200 WebP",
     "New carousel helper honors imageDisabled across all slides",

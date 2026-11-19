@@ -163,23 +163,38 @@ export async function archiveMislocatedCmpcDuplicateOnce() {
     };
   }
 
-  const sameJob = (row:Record<string,unknown>|null, url:string, city:string) =>
-    !!row && row.kind === 'job_offer' && row.url === url &&
-    normal(row.title).replace(/[^a-z0-9]+/g, ' ').trim() === 'analista de vibraciones mininco planta plywood' &&
-    normal(row.company) === 'cmpc' &&
-    row.active === true && row.verified === true && row.review !== true &&
-    Array.isArray(row.workCommunes) && row.workCommunes.length === 1 &&
-    row.workCommunes[0] === city;
-
-  if (!sameJob(bad, CMPC_BAD_URL, 'Purén') ||
-      !sameJob(official, CMPC_OFFICIAL_URL, 'Collipulli')) {
-    // Fail closed: do not remove even an inaccurate record unless the official
-    // replacement is truly present, active, verified and correctly located.
-    console.warn('CMPC_DUPLICATE_REPAIR_GUARD_FAILED ' + JSON.stringify({
-      badPresent:!!bad,officialPresent:!!official,
-      badCommune:bad.workCommunes,officialCommune:official?.workCommunes
-    }));
-    return { status:'source_or_official_guard_failed', removed:0 };
+  // The published sources may preserve a harmless www prefix or tracking
+  // parameters. Verify the SAME source by HTTPS hostname and stable job ID.
+  const officialSource = (raw:unknown,kind:'ats'|'aggregator') => {
+    try {
+      const url=new URL(String(raw||''));
+      if(url.protocol!=='https:')return false;
+      const host=url.hostname.toLowerCase().replace(/^www\./,'');
+      if(kind==='aggregator')
+        return host==='chiletrabajos.cl' &&
+          /\/trabajo\/analista-de-vibraciones-mininco-planta-plywood-3934867\/?$/.test(url.pathname);
+      return host==='cmpc.csod.com' &&
+        /\/requisition\/19427\/?$/.test(url.pathname) &&
+        url.searchParams.get('c')==='cmpc';
+    }catch{return false;}
+  };
+  const flags=(row:Record<string,unknown>|null,source:'ats'|'aggregator',city:string) => ({
+    exists:!!row,
+    source:officialSource(row?.url,source),
+    kind:row?.kind==='job_offer',
+    title:normal(row?.title).replace(/[^a-z0-9]+/g,' ').trim()==='analista de vibraciones mininco planta plywood',
+    company:normal(row?.company).startsWith('cmpc'),
+    active:row?.active===true,
+    verified:row?.verified===true,
+    review:row?.review!==true,
+    work:Array.isArray(row?.workCommunes)&&row.workCommunes.length===1&&row.workCommunes[0]===city,
+  });
+  const wrong=flags(bad,'aggregator','Purén');
+  const correct=flags(official,'ats','Collipulli');
+  if([...Object.values(wrong),...Object.values(correct)].some(v=>v!==true)){
+    // Fail closed. Diagnostics contain only boolean guards, no private data.
+    console.warn('CMPC_DUPLICATE_REPAIR_GUARD_FAILED '+JSON.stringify({wrong,correct}));
+    return {status:'source_or_official_guard_failed',removed:0};
   }
 
   const now = new Date().toISOString();
@@ -203,7 +218,7 @@ export async function archiveMislocatedCmpcDuplicateOnce() {
           reason:'Misma oferta CMPC identificada por título y lugar de ejecución',
         },
       },
-      if:{ active:true, verified:true, url:CMPC_BAD_URL },
+      if:{ active:true, verified:true, url:String(bad.url) },
     }], { patch:true }),
     db.tx.add('public_feed_changes', [{
       source:'radar_jobs',sourceId:CMPC_BAD_ID,queuedAt:now,

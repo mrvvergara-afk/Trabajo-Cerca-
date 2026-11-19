@@ -1,0 +1,48 @@
+name: Commercial logo, carousel and unified RC4 release QA
+
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging_ui/src/commercial*'
+      - 'appdeploy_staging_ui/src/territorial-sections.tsx'
+      - 'automation/test_release_candidate_rc4.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC4_APPDEPLOY_FILES.json'
+      - '.github/workflows/commercial-carousel-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging_ui/src/commercial*'
+      - 'appdeploy_staging_ui/src/territorial-sections.tsx'
+      - 'automation/test_release_candidate_rc4.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC4_APPDEPLOY_FILES.json'
+      - '.github/workflows/commercial-carousel-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  commercial-media:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Commercial logo, photo and text card contracts
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/test_commercial_media_policy.ts --bundle --platform=node --format=esm --outfile=/tmp/tc-commercial-policy.mjs
+          node /tmp/tc-commercial-policy.mjs
+      - name: TypeScript and CSS syntax without external API calls
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/commercial-slides.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-commercial-slides.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/territorial-sections.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-advertising.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/commercial-slides.css --outfile=/tmp/tc-commercial.css
+      - name: Consolidated release contract and snapshot
+        run: python automation/test_release_candidate_rc4.py
+      - name: Report
+        run: |
+          echo 'RC4 tested in GitHub only; AppDeploy deployment not authorized'

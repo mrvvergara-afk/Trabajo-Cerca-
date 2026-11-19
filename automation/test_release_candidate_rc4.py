@@ -203,7 +203,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
 
     def test_commercial_client_upload_is_not_claimed_as_implemented(self):
         m=self.manifest
-        self.assertTrue(any("no attachment intake" in s for s in m.supplements))
+        self.assertTrue(any("no attachment intake" in s for s in m["supplements"]))
         self.assertFalse(any("src/commercial-overview.tsx" == s for s in self.files))
 
 

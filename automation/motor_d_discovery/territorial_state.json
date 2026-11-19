@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-19T00:38:12.850962-03:00",
+  "last_run": "2026-11-19T06:51:54.421029-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7374,6 +7374,36 @@
       "first_seen": "2026-11-19T00:38:12.850962-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/mercaderista-part-time-dominguero-calama-ingreso-inmediato-3079676.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "66a3740ee3b491d4974b": {
+      "first_seen": "2026-11-19T06:51:54.421029-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/tecnico-en-climatizacion-tecnico-del-area-clima-o-refrigeracion-3079682.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "03439a16ce4c5a4c8807": {
+      "first_seen": "2026-11-19T06:51:54.421029-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-bodega-transpaleta-pudahuel-2-turnos-600-liq-bod-sn-fco-bodegas-sn-francisco-lunes-a-sabado-3079681.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0177ae44d9f74c2fa35a": {
+      "first_seen": "2026-11-19T06:51:54.421029-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/gestion-comercial-y-logistica-de-cuentas-3079680.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "20c1e3d9db3c067d8e5d": {
+      "first_seen": "2026-11-19T06:51:54.421029-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-cobranza-prejudicial-modalidad-hibrida-3079679.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "99d07933d75f350e5b2d": {
+      "first_seen": "2026-11-19T06:51:54.421029-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/San-Jose-de-la-Mariquina-Supervisora-Producci%C3%B3n-Complejo-Maderas-Valdivia-LR-5150000/1429038300/",
+      "source": "Arauco empleo",
       "commune": null
     }
   }

@@ -1,0 +1,46 @@
+name: Private executive dashboard and unified RC3 release QA
+
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging_ui/**'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC3_APPDEPLOY_FILES.json'
+      - 'automation/test_release_candidate_rc3.py'
+      - '.github/workflows/executive-dashboard-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging_ui/**'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC3_APPDEPLOY_FILES.json'
+      - 'automation/test_release_candidate_rc3.py'
+      - '.github/workflows/executive-dashboard-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  executive-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Executive KPI and territorial integrity (12, no extra cities)
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/test_executive_metrics.ts --bundle --platform=node --format=esm --outfile=/tmp/tc-executive-metrics.mjs
+          node /tmp/tc-executive-metrics.mjs
+      - name: Compile private dashboard modules and mobile styles
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/executive-control-center.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-executive-ui.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/administrator-access.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-admin-gate.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/executive-control-center.css --outfile=/tmp/tc-executive-ui.css
+      - name: Consolidated candidate must retain 12 pinned files and no deployment authorization
+        run: python automation/test_release_candidate_rc3.py
+      - name: Confirm no runtime writes
+        run: |
+          echo 'Executive dashboard is an authenticated read-only frontend; no AppDeploy call or writes in CI'

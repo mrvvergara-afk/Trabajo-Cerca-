@@ -40,7 +40,7 @@ jobs:
           npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/administrator-access.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-admin-gate.js
           npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/executive-control-center.css --outfile=/tmp/tc-executive-ui.css
       - name: Current consolidated RC5 must be unique and require authorization
-        run: python automation/test_release_candidate_rc5.py
+        run: python automation/test_release_candidate_rc6.py
       - name: Confirm no runtime writes
         run: |
           echo 'Executive dashboard is an authenticated read-only frontend; no AppDeploy call or writes in CI'

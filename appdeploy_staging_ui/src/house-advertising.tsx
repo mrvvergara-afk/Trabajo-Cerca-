@@ -124,7 +124,6 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
       <img className='tcCampaignFallbackArt tcHouseGallerySelected'
         src={'/house-creatives/'+artwork+'.svg'} alt='' loading='lazy' decoding='async'/>
       {photoUrl && <AdImage url={photoUrl}/>}
-      <span className='tcHouseGalleryLabel'>Imagen ilustrativa</span>
     </div>
     <div className='tcHouseGalleryControls' role='group' aria-label='Explorar mensajes de Trabajo Cerca'>
       {galleryImages.map((art,i)=><button type='button' key={art}

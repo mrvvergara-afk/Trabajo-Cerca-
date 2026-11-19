@@ -144,6 +144,12 @@
       "file": "20261118/motor-d-20261118-d17333430d2aefde48.json",
       "count": 2,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261119-57c4da53a98591f320",
+      "file": "20261119/motor-d-20261119-57c4da53a98591f320.json",
+      "count": 2,
+      "batch_type": "recovery"
     }
   ],
   "seen_offer_ids": [
@@ -181,6 +187,7 @@
     "d_8cd3f39aa6e6f4dfd760",
     "d_8dfb2507759d6af5a6ba",
     "d_8e10d10d8dedf4b7e3b9",
+    "d_910ceee091936904696e",
     "d_930e3ffa3ba2344bd643",
     "d_9e173e643c73999fa7f6",
     "d_a3a2f2298d5984b06475",
@@ -188,6 +195,7 @@
     "d_ad791baa0556cf59d931",
     "d_af9a119e45d5f84851a7",
     "d_b479eb4033d3626606d4",
+    "d_b603fd0cac39366e5659",
     "d_b82587f333519896e835",
     "d_bef43ecfd4d8417f1770",
     "d_c3271f36e2e4551bc026",

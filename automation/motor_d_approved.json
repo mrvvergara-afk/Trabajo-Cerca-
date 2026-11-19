@@ -2,8 +2,32 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "motor_d_cmpc_browser",
-  "batch_id": "motor-d-cmpc-2325f40d974dda96",
+  "batch_id": "motor-d-cmpc-c93906101c2317fc",
   "offers": [
+    {
+      "id_fuente": "cmpc_19182",
+      "cargo": "ANALISTA LABORATORIO I",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19427",
+      "cargo": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
     {
       "id_fuente": "cmpc_19384",
       "cargo": "Inspector/a Ambiental",

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261119-57c4da53a98591f320",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_b603fd0cac39366e5659",
+      "cargo": "ANALISTA LABORATORIO I",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_descubrimiento": "2026-11-19",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    },
+    {
+      "id_fuente": "d_910ceee091936904696e",
+      "cargo": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_descubrimiento": "2026-11-19",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    }
+  ]
+}

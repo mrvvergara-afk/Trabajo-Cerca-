@@ -1,6 +1,6 @@
 {
   "fuente": "CMPC Cornerstone",
-  "checked_at": "2026-11-18T18:22:49.308801+00:00",
+  "checked_at": "2026-11-19T02:47:19.016730+00:00",
   "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "state": "individual_links_found",
   "individual_urls": [
@@ -13,6 +13,16 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
       "cargo": "Ejecutivo Comercial",
       "evidencia_tarjeta": "Ejecutivo Comercial\n\nChile\n\n18/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
+      "cargo": "ANALISTA LABORATORIO I",
+      "evidencia_tarjeta": "ANALISTA LABORATORIO I\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n18/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
+      "cargo": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "evidencia_tarjeta": "Analista de Vibraciones - Mininco, Planta Plywood\n\nCollipullli, Araucanía, Chile\n\n18/11/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
@@ -50,11 +60,6 @@
       "evidencia_tarjeta": "PLANIFICADOR/A MANTENIMIENTO - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n13/11/2026"
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19348?c=cmpc",
-      "cargo": "PLANIFICADOR ELECTROCONTROL",
-      "evidencia_tarjeta": "PLANIFICADOR ELECTROCONTROL\n\nChile\n\n13/11/2026"
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19369?c=cmpc",
       "cargo": "Coordinador/a Matricería Y Clisses - Osorno",
       "evidencia_tarjeta": "Coordinador/a Matricería Y Clisses - Osorno\n\nOsorno, Chile\n\n12/11/2026"
@@ -78,11 +83,6 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
       "cargo": "Operador Montacarga Turno - Planta Puente Alto",
       "evidencia_tarjeta": "Operador Montacarga Turno - Planta Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n12/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
-      "cargo": "Electrico Dia",
-      "evidencia_tarjeta": "Electrico Dia\n\nPuente Alto, REGION METROPOLITANA, Chile\n\n04/11/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
@@ -133,7 +133,7 @@
   "errors": [],
   "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "title": "Vacantes actuales - cmpc",
-  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (24)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (5)\nMetropolitana (4)\nBio Bio (3)\nJalisco (3)\nRegion Metropolitana (3)\nBuenos Aires (2)\nNuevo León (1)\nPuebla (1)\nRegion Del Maule (1)\nRegión De La Araucanía (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (5)\nSantiago (4)\nPuente Alto (3)\nTlajomulco (3)\nLos Angeles (2)\nOsorno (2)\nZarate (2)\nCollipulli (1)\nCoquimbo (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nYerbas Buenas (1)\nFecha colocada\nDentro de 1 día (2)\nDentro de 3 días (7)\nDentro de 7 días (15)\nDentro de 15 días (16)\nDentro de 30 días (22)\nCualquier momento (39)\nUnidad de Negocio\nCMPC Celulosa (9)\nCMPC BioPackaging (10)\nSoftys (15)\nEmpresas CMPC (5)\nVacantes actuales\n\nFeria Laboral Los Ángeles\n\nChile\n\n18/11/2026\n\nEjecutivo Comercial\n\nChile\n\n18/11/2026\n\nTECHNICAL LEAD SR\n\nSantiago, REGION METROPOLITANA, Chile\n\n17/11/2026\n\nPráctica Administración RRHH - Los Ángeles\n\nLos Ángeles, REGION DEL BIOBIO, Chile\n\n16/11/2026\n\nInspector/a Ambiental\n\nNacimiento, Bio Bio, Chile\n\n16/11/2026\n\nDATA & INFORMATION GO",
+  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (24)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (5)\nMetropolitana (4)\nBio Bio (3)\nJalisco (3)\nBuenos Aires (2)\nRegion Metropolitana (2)\nRegión De La Araucanía (2)\nAraucanía (1)\nNuevo León (1)\nPuebla (1)\nRegion Del Maule (1)\nRegión Metropolitana (1)\nCiudad\nNacimiento (5)\nSantiago (4)\nTlajomulco (3)\nCollipulli (2)\nLos Angeles (2)\nOsorno (2)\nPuente Alto (2)\nZarate (2)\nCollipullli (1)\nCoquimbo (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nYerbas Buenas (1)\nFecha colocada\nDentro de 1 día (3)\nDentro de 3 días (5)\nDentro de 7 días (11)\nDentro de 15 días (16)\nDentro de 30 días (20)\nCualquier momento (39)\nUnidad de Negocio\nCMPC Celulosa (10)\nCMPC BioPackaging (9)\nSoftys (15)\nEmpresas CMPC (5)\nVacantes actuales\n\nFeria Laboral Los Ángeles\n\nChile\n\n18/11/2026\n\nEjecutivo Comercial\n\nChile\n\n18/11/2026\n\nANALISTA LABORATORIO I\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n18/11/2026\n\nAnalista de Vibraciones - Mininco, Planta Plywood\n\nCollipullli, Araucanía, Chile\n\n18/11/2026\n\nTECHNICAL LEAD SR\n\nSantiago, REGION METROPOLIT",
   "individual_details": [
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19440?c=cmpc",
@@ -143,7 +143,7 @@
       "ficha_accessible": false,
       "ficha_content_length": 1971,
       "ficha_contenido_laboral": false,
-      "ficha_checked_at": "2026-11-18T18:23:09.854692+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:40.325452+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
@@ -153,7 +153,27 @@
       "ficha_accessible": true,
       "ficha_content_length": 2884,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:11.334359+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:42.818116+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
+      "cargo": "ANALISTA LABORATORIO I",
+      "evidencia_tarjeta": "ANALISTA LABORATORIO I\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n18/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nANALISTA LABORATORIO I\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n|\nreq19182\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nMISIÓN: \n\nEjecutar las actividades relacionadas con la rutina de análisis del laboratorio industrial como también de requerimientos específicos, realizando ensayos y análisis físicos-químicos en diferentes matrices en los laboratorios de la planta trabajando en jornada de turno rotativo.\n\n\nEN ESTE ROL TENDRAS LA OPORTUNIDAD DE:\n\nEjecutar el plan de rutina del laboratorio para el desarrollo de las actividades analíticas, con el fin de cumplir los objetivos y determinar los recursos a utilizar.\nRealizar los ensayos analíticos bajo métodos estándares internos, basados en normas nacionales e internacionales.\nColaborar con la necesidad de la fábrica en la realización de actividades de soporte técnico y proyectos de investigación definido junto al jefe de unidad.\nOperar, verificar, calibrar y mantener operativos equipos y instrumentos a su cargo.\nControlar y validar sus datos y resultados obtenidos en las actividades analíticas.\nEjecutar el programa de aseguramiento de calidad del área, con el fin de obtener resultados veraces.\nControlar el stock de reactivos, materiales y repuestos utilizados en el laboratorio.\nPreparar soluciones específicas para las ensayos analiticos que no se pude comprar externamente.\nRealizar la inspección de equipos y tanques en detenciones en busca de probables contaminantes\nManejar y preparar muestras y contramuestras durante el periodo de análisis y almacenamiento. Y si está de acuerdo con el jefe de unidad, realizar colectas de muestra.\nCumplir con las normas de seguridad y salud ocupacional en las instalaciones de trabajo.\nCumplir con los estándares del programa 5 S.\nContribuir al sistema o sistemas de gestión y certificación de CMPC aplicables a su rutina, realizando el seguimiento y prestando apoyo en materia de indicadores, auditorías e iniciativas de la empresa. \n\nFORMACIÓN: Título Técnico Profesional en Química o Biotecnología. Deseable título profesional en Química, Química Industrial, Bioquímica, Ingeniería en Biotecnología, Ingeniería Química, Ingeniería Civil Industrial o Ingeniería en Producción.\n \nEXPERIENCIA: Mínimo 1 año trabajando en laboratorios industriales.\n\n\nCONOCIMIENTO ESPECÍFICO:\n\n\nManejo de equipamiento general de laboratorio.\n\nConocimiento en Química Analítica y técnicas analíticas, clásicas e instrumentales.\n\nManejo de herramientas estadísticas para análisis de datos y de herramientas tecnológicas básicas.\n\nConocimiento de rutinas de laboratorio, manejo seguro de químicos y material de vidrio.\n\nDeseable manejo de software estadístico.\nManejo de Inglés nivel lectura técnica.\n\nCONTRATO: Indefinido.\nUBICACIÓN: Planta Pacífico, Región del Biobío.\n\n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 3868,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-19T02:47:45.105550+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
+      "cargo": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "evidencia_tarjeta": "Analista de Vibraciones - Mininco, Planta Plywood\n\nCollipullli, Araucanía, Chile\n\n18/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nAnalista de Vibraciones - Mininco, Planta Plywood\nCollipullli, Araucanía, Chile\n|\nreq19427\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nEl cargo está orientado a el monitoreo de condición equipos mecánicos y ensayos no \ndestructivos, en instalaciones de CMPC Maderas. Confección de Informes de resultados del \nmonitoreo y retroalimentación al equipo de mantención orientado a evitar fallos inesperados \nen las maquinas industriales. Manejo de equipos y software asociados a las labores propias \ndel cargo. \n\n1.- Mediciones de vibraciones equipos industriales \n2.- Medición con equipo termográfico. \n3.- Medición de tintas penetrantes. \n4.- Medición de ultrasonido. \n5.- Análisis e interpretación de resultados \n6.- Retroalimentación de resultados a planificadores de mantención y equipo mantención en \ngeneral. \n7.- Trabajar en dar cumplimiento y mejorar el plan de monitorio de condiciones en planta. \n8.- Generación de avisos en SAP PM. \n\nFormación: Técnico nivel superior o Ing. Mecánica, Ing. en Mantenimiento Industrial o afín\nExperiencia: 2 años de experiencia en cargos similares.\nConocimiento específico: Certificaciones: Analista de vibraciones nivel 1 o 2 por normativa ISO 18436-2 (ASNT SNT\u0002TC-1A). Conocimiento en el Sistema de Gestión de la SST (ISO 45001), política, identificación de peligros y evaluación de riesgos en materias de SST, termografía nivel 1 (ISO 18436-7), ultrasonido, tintas penetrantes. Conocimiento de mecánica general y procesos industriales. Análisis de fallas para generar reportes.\nComputación: Deseable Sap PM\n\nContrato: Indefinido\nUbicación: Mininco, Planta Plywood\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2714,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-19T02:47:46.876012+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
@@ -163,7 +183,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3485,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:12.822434+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:48.676922+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
@@ -173,7 +193,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2162,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:14.222235+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:50.383536+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
@@ -183,7 +203,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4035,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:15.637575+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:52.108677+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19342?c=cmpc",
@@ -193,7 +213,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4982,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:16.953221+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:53.866235+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
@@ -203,7 +223,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2306,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:18.511662+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:55.730301+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19328?c=cmpc",
@@ -213,7 +233,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3130,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:20.008389+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:57.542850+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
@@ -223,17 +243,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3396,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:21.375995+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19348?c=cmpc",
-      "cargo": "PLANIFICADOR ELECTROCONTROL",
-      "evidencia_tarjeta": "PLANIFICADOR ELECTROCONTROL\n\nChile\n\n13/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nPLANIFICADOR ELECTROCONTROL\nChile\n|\nreq19348\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nContribuir a alcanzar las metas estratégicas de Planta Laja, asegurando intervenciones de mantención\n\neficaces y oportunas, maximizando el uso de los recursos disponibles, para asegurar el logro de los objetivos\n\nde disponibilidad, confiabilidad y costos, cumpliendo con nuestras políticas de Seguridad y Salud Ocupacional,\n\nMedio Ambiente, Calidad, Energía, además de los compromisos asumidos con las Comunidades locales.\n\n\n\n\nPlanificar los trabajos de Mantención y Producción de manera eficaz, dentro de los parámetros establecidos\nCoordinar, activar y actualizar, el desarrollo del Plan de Detenciones Anuales de sus áreas.\nLiderar Proyectos de Mejora del Mantenimiento\nLiderar la gestión de planificación en el equipo del área mantención producción\nCumplir los objetivos indicados por la estrategia de gestión de activos, en costo, disponibilidad y confiabilidad.\n\nFormación:  Ingeniería Civil Mecánica o Electrica \n\nConocimiento específico:\n\nSAP PM (Excluyente)\n\nExcel Intermedio (Excluyente)\n\nPower BI deseable \n\nInteligencia Artificial Deseable\n\nExperiencia: 1 año de experiencia como planificador \n\n \n\n\n\n\nContrato: Indefinido\nUbicación:  Balmaceda, 30 \nHorario: Lunes - Jueves: 08:00 A 17:30 HRS. Viernes: 08:00 A 14:00 \n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2427,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:22.791506+00:00"
+      "ficha_checked_at": "2026-11-19T02:47:59.309098+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19369?c=cmpc",
@@ -243,7 +253,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2280,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:23.954847+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:01.207941+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19334?c=cmpc",
@@ -253,7 +263,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2362,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:25.425621+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:02.975524+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
@@ -263,7 +273,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3272,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:26.694972+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:04.876189+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19296?c=cmpc",
@@ -273,7 +283,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3991,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:27.974764+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:06.904490+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
@@ -283,17 +293,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2605,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:29.357897+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19261?c=cmpc",
-      "cargo": "Electrico Dia",
-      "evidencia_tarjeta": "Electrico Dia\n\nPuente Alto, REGION METROPOLITANA, Chile\n\n04/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nElectrico Dia\nPuente Alto, REGION METROPOLITANA, Chile\n|\nreq19261\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nDiagnosticar, evaluar y reparar sistemas eléctricos y de control automático en el proceso de fabricación, asegurando la continuidad operacional, seguridad e inocuidad del proceso, y contribuyendo a la planificación de mantenimientos según los lineamientos de la Subgerencia de Operaciones.\n\n\n\n\nInspeccionar y evaluar equipos mediante mantenimientos preventivos y predictivos para detectar desviaciones de eficiencia.\nInstalar repuestos e insumos según el desgaste de las piezas y notificar la necesidad de reposición en bodega.\nRegistrar la información técnica de las intervenciones en el sistema y reportar el estado de las máquinas a la supervisión.\nReparar fallas eléctricas imprevistas y ajustar sistemas de control automático durante la jornada.\nIdentificar riesgos de seguridad e inocuidad alimentaria durante las actividades de mantenimiento.\nColaborar con el personal de turno en la resolución de fallas de alta complejidad técnica.\n\nCompetencias Académicas\n- Técnico o Ingeniero en Automatización, Electricidad, Electrónica o Instrumentación.\n\n Experiencia\n- 3 a 5 años en mantenimiento industrial y automatización.\n\nCompetencias Técnicas\n- PLC Siemens, Allen Bradley, Schneider u Omron, Mitsubishi, Proface.\n- TIA Portal, Studio 5000, HMI y SCADA.\n- Redes Profinet, Profibus, Modbus y Ethernet/IP.\n- Instrumentación industrial y variadores de frecuencia.\n- Interpretación de planos eléctricos y de control.\n\nCompetencias Conductuales\n- Trabajo en equipo.\n- Orientación al logro.\n- Mejora continua.\n- Apertura al cambio.\n\nContrato: Indefinido\nUbicación: Puente Alto\nHorario: Lunes a Jueves 08:00 a 17:30\nViernes 08:00 a 14:30.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2855,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:30.652999+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:08.727161+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
@@ -303,7 +303,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2873,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:32.041059+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:10.527951+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
@@ -313,7 +313,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3974,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:33.371680+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:12.544266+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
@@ -323,7 +323,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3790,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:34.821822+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:14.341847+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
@@ -333,7 +333,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2752,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:36.257426+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:16.429059+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
@@ -343,7 +343,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3872,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:37.645350+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:18.148816+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19100?c=cmpc",
@@ -353,7 +353,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3507,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:39.002703+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:19.803790+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
@@ -363,7 +363,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2485,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:40.365409+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:21.502496+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
@@ -373,7 +373,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5754,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:42.074439+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:23.613650+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
@@ -383,7 +383,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2781,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-18T18:23:43.536117+00:00"
+      "ficha_checked_at": "2026-11-19T02:48:25.312244+00:00"
     }
   ]
 }

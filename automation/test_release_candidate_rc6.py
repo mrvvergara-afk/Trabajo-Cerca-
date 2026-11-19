@@ -79,7 +79,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertEqual(sum(x.startswith("backend/") for x in self.files), 10)
         self.assertEqual(sum(x.startswith("src/") for x in self.files), 13)
         self.assertEqual(len(self.files["backend/index.ts"]["diffs"]), 2)
-        self.assertEqual(len(self.files["src/App.tsx"]["diffs"]), 19)
+        self.assertEqual(len(self.files["src/App.tsx"]["diffs"]), 24)
 
     def test_staged_source_is_cryptographically_pinned(self):
         blobs = self.manifest["source_file_blobs"]
@@ -303,7 +303,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertIn("originalPoster(selected",app)
         self.assertIn("function publicSourceLabel",policy)
         self.assertIn("function publicOfferDetail",policy)
-        self.assertEqual(len(self.files["src/App.tsx"]["diffs"]),19)
+        self.assertEqual(len(self.files["src/App.tsx"]["diffs"]),24)
         self.assertEqual(self.files["src/public-content-policy.ts"]["content"],policy)
 
     def test_complementary_cities_preserved_without_counts(self):
@@ -321,7 +321,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertNotIn("backend/chatgpt-direct-import.tsx",self.files)
         self.assertNotIn("src/legal-content.tsx",self.files)
         self.assertNotIn("shared/offer-public-state.ts",self.files)
-        self.assertTrue(any("not delete original source URL" in v.lower()
+        self.assertTrue(any("not delete original source url" in v.lower()
             for v in self.manifest["guardrails"]))
 
 

@@ -1,0 +1,46 @@
+name: Ads and header mobile visual inspection
+on: workflow_dispatch
+permissions: {contents: read}
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Examine live CSS and mobile DOM without editing or login
+        run: |
+          node <<'JS'
+          const {chromium}=require('playwright-core');
+          const url='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/';
+          (async()=>{
+            const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+            for(const width of [320,360,390,430]){
+              const page=await browser.newPage({viewport:{width,height:850}});
+              await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});await page.waitForTimeout(1700);
+              const r=await page.evaluate(()=>{
+                const s=(selector)=>{
+                  const e=document.querySelector(selector);
+                  if(!e)return null;
+                  const b=e.getBoundingClientRect(),c=getComputedStyle(e);
+                  return {text:e.textContent?.trim().slice(0,70),bbox:[Math.round(b.x),Math.round(b.y),Math.round(b.width),Math.round(b.height)],
+                    grid:c.gridTemplateColumns,row:c.gridRow,column:c.gridColumn,display:c.display,overflow:c.overflow,
+                    position:c.position,white:c.whiteSpace,padding:c.padding,visibility:c.visibility,opacity:c.opacity};
+                };
+                return {
+                  header:s('.tcTopbarInner'),brand:s('.neoBrand'),place:s('.tcMobilePlace'),placeSelect:s('.tcMobilePlace select'),
+                  card:s('.tcLocalAdvertising.tcCommercialCard'),ad:s('.tcLocalAdvertising.tcCommercialCard .tcAdContent'),
+                  visual:s('.tcLocalAdvertising.tcCommercialCard .tcCommercialVisual'),
+                  copy:s('.tcLocalAdvertising.tcCommercialCard .tcCommercialCopy'),
+                  action:s('.tcLocalAdvertising.tcCommercialCard .tcCommercialAction'),
+                  button:s('.tcLocalAdvertising.tcCommercialCard .tcCommercialAction a'),
+                  installs:[...document.querySelectorAll('.tcInstallShortcut,.tcHeroInstallRow')].map(e=>({cls:e.className,display:getComputedStyle(e).display,bbox:e.getBoundingClientRect().toJSON()})),
+                  analytics:s('.tcAnalyticsChoice')
+                };
+              });
+              console.log('LIVE_DIAGNOSTIC',JSON.stringify({width,...r}));
+              await page.close();
+            }
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS

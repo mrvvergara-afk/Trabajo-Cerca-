@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-20T17:46:57+00:00",
+  "generated_at": "2026-11-20T18:45:13+00:00",
   "complete": true,
-  "totalItemsReported": 288,
-  "jobIdentityCount": 284,
+  "totalItemsReported": 290,
+  "jobIdentityCount": 286,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 106,
+  "visibleIn12CommunesCount": 108,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "422457fd7b288cfbccdeec45df025759135b52271387ca5ab3b915feb52a3766",
+  "fingerprint": "055280b945a484120a7e486ed822ffefe7b864172c771d9f2005be3c66f2c494",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -974,6 +974,17 @@
       "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
     },
     {
+      "id": "chatgpt_d_4c599ad95a20501aa8c8",
+      "title": "Vendedor/a en terreno para Angol ¡Sin experiencia + Comisiones sin Tope!",
+      "company": "Verisure",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
+      "urlHashSha256": "4c599ad95a20501aa8c89d860922d731f156fd40f760fb296feb84b3308f249a"
+    },
+    {
       "id": "chatgpt_d_5241af5f68d396e67450",
       "title": "Vendedor Terreno - ANGOL",
       "company": "Distribuidora consumo masivo",
@@ -1104,6 +1115,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
       "urlHashSha256": "c3271f36e2e4551bc026f152edd4d3c239a5ac07ab33bff1daff945bd0283d88"
+    },
+    {
+      "id": "chatgpt_d_c566b2e49f402a38c6c4",
+      "title": "JEFE/A AREA ELECTROCONTROL - Pacifico",
+      "company": "CMPC",
+      "workCommunes": [
+        "Collipulli"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
+      "urlHashSha256": "cbfea4db735ba945a026c3973176cdfbde0e38812db9768bb90980fe3c501942"
     },
     {
       "id": "chatgpt_d_c86ec67e426e27e24149",

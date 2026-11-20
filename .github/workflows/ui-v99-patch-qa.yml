@@ -1,0 +1,21 @@
+name: Trabajo Cerca isolated v99 UI patch QA
+on:
+  push:
+    branches:
+      - feature/trabajo-cerca-cuatro-espacios-v99-20261113
+  pull_request:
+    paths:
+      - 'docs/APPDEPLOY_UI_V99_CUATRO_ESPACIOS_PATCH_20261113.json'
+      - 'scripts/test_ui_patch_v99.py'
+jobs:
+  patch-contract:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify design patch structure and navigation targets
+        run: python -m unittest discover -s scripts -p 'test_ui_patch_v99.py' -v

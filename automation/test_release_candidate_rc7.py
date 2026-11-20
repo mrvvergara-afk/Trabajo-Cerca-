@@ -65,6 +65,8 @@ def git_blob_sha(text: str) -> str:
 class ReleaseCandidatePreflight(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        if (ROOT / 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC8_APPDEPLOY_FILES.json').exists():
+            raise unittest.SkipTest('RC8 supersedes historical candidate; run test_release_candidate_rc8.py')
         cls.manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
         cls.files = {f["filename"]: f for f in cls.manifest["files"]}
 

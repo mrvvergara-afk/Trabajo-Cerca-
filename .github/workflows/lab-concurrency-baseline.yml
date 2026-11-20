@@ -1,15 +1,6 @@
 name: LAB safe concurrency baseline (local DB only)
 on:
-  push:
-    branches:
-      - qa/lab-release-smoke-20261120
-    paths:
-      - scripts/lab-concurrency-baseline.mjs
-      - .github/workflows/lab-concurrency-baseline.yml
-  pull_request:
-    paths:
-      - scripts/lab-concurrency-baseline.mjs
-      - .github/workflows/lab-concurrency-baseline.yml
+  workflow_dispatch:
 
 permissions:
   contents: read

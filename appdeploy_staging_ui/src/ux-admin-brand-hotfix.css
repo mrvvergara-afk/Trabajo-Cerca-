@@ -147,3 +147,12 @@
  .tcStitchShell .tcStitchBrand.tcUnifiedBrand{gap:5px!important}
  .tcStitchShell .tcStitchBrand.tcUnifiedBrand>.tcStitchBrandArt{width:27px!important;height:27px!important;flex-basis:27px!important}
 }
+
+.tcCommercialSlideMissing{position:absolute;inset:0;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;padding:18px;gap:8px;text-align:center;
+ color:#184d34;background:linear-gradient(135deg,#eff6e8,#deebdf)}
+.tcCommercialSlideMissing strong{font-size:15px;line-height:1.35;max-width:100%;overflow-wrap:break-word}
+.tcCommercialSlideMissing span{font-size:11px;line-height:1.4;color:#4f725a;max-width:100%}
+.tcCommercialSlides>.tcCommercialSlideInfo{min-width:0}
+.tcCommercialSlides .tcCommercialSlideCaption strong,.tcCommercialSlides .tcCommercialSlideCaption span{
+ overflow-wrap:break-word;word-break:normal}

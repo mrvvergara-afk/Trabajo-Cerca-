@@ -31,3 +31,5 @@ jobs:
           npx playwright install chromium
       - name: Test isolated LAB mobile UI and PWA
         run: node scripts/lab-mobile-pwa.mjs
+      - name: Verify official view unchanged and opt-in compact release preview
+        run: node scripts/prod-preview-canary.mjs

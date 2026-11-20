@@ -1,0 +1,80 @@
+name: RC8 live mobile, admin and catalogue smoke
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/rc8-postdeploy-browser.yml']
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  browser-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser driver, keep repository unchanged
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Check mobile, desktop, admin access, source images and public feed
+        shell: bash
+        run: |
+          node <<'JS'
+          const {chromium}=require('playwright-core');
+          const base='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai';
+          const api='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro';
+          (async()=>{
+            const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+            let issues=[];
+            for(const width of [320,360,390,430,768,1280]){
+              const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
+              try{
+                const r=await page.goto(base+'/',{waitUntil:'domcontentloaded',timeout:30000});
+                await page.waitForTimeout(4000);
+                const d=await page.evaluate(()=>{
+                  const all=[...document.querySelectorAll('body *')];
+                  const offenders=all.map(x=>({tag:x.tagName,cls:String(x.className||'').slice(0,60),right:Math.round(x.getBoundingClientRect().right)}))
+                    .filter(x=>x.right>innerWidth+5).sort((a,b)=>b.right-a.right).slice(0,5);
+                  const logos=[...document.querySelectorAll('img[src*="trabajo-cerca"]')].map(x=>({src:x.getAttribute('src'),complete:x.complete,ok:x.naturalWidth>0}));
+                  return {width:innerWidth,scroll:document.documentElement.scrollWidth,
+                    cards:document.querySelectorAll('.neoJobCard').length,
+                    logos,offenders,nav:document.querySelectorAll('.neoMobileNav button').length};
+                });
+                console.log('VIEWPORT',JSON.stringify({http:r.status(),...d}));
+                if(r.status()!==200||d.scroll>d.width+8)issues.push(width+'px overflow/HTTP');
+                if(!d.logos.some(l=>l.ok))issues.push(width+'px brand not loaded');
+                if(width===390 && !d.cards)issues.push('390px no visible job cards');
+              }catch(e){issues.push(width+'px '+e.message.slice(0,115));}
+              await page.close();
+            }
+            const admin=await browser.newPage({viewport:{width:390,height:850}});
+            try{
+              const r=await admin.goto(base+'/admin',{waitUntil:'domcontentloaded',timeout:30000});
+              await admin.waitForTimeout(2300);
+              const d=await admin.evaluate(()=>({admin:document.querySelectorAll('main.opsShell').length,
+                publicNav:document.querySelectorAll('.neoMobileNav').length,
+                scroll:document.documentElement.scrollWidth,width:innerWidth,
+                brand:[...document.querySelectorAll('img.tcOfficialBrandIcon')].map(x=>x.naturalWidth)}));
+              console.log('ADMIN_ROUTE',JSON.stringify({http:r.status(),...d}));
+              if(r.status()!==200||!d.admin||d.publicNav||d.scroll>d.width+8)issues.push('admin route/layout');
+            }catch(e){issues.push('admin '+e.message.slice(0,115))}
+            await browser.close();
+            for(const [name,url] of [
+              ['catalog',api+'/api/listings?limit=5'],
+              ['advertising',api+'/api/growth/advertising?place=Collipulli&page=home'],
+              ['admin_unauth',api+'/api/admin/ops-telemetry'],
+              ['vector_logo',base+'/brand/trabajo-cerca-oficial.svg'],
+              ['pwa_manifest',base+'/manifest.webmanifest']
+            ]){
+              try{
+                const r=await fetch(url,{signal:AbortSignal.timeout(15000)});
+                if(name==='catalog'){const j=await r.json();console.log('CATALOG',JSON.stringify({http:r.status,items:j.items?.length,totalJobOffers:j.totalJobOffers}));if(!r.ok||!(j.items?.length>0||j.totalJobOffers>0))issues.push('catalog empty');}
+                else if(name==='advertising'){const j=await r.json();const m=(j.commercial||[]).find(x=>/Ferretería Mininco/i.test(x.businessName));console.log('MININCO',JSON.stringify({http:r.status,found:!!m,slides:m?.slides?.length||0,withImage:m?.slides?.filter(s=>s.imageUrl).length||0}));if(!r.ok)issues.push('advertising error');}
+                else if(name==='admin_unauth'){console.log('ADMIN_API',r.status);if(r.status!==401&&r.status!==403)issues.push('admin API unprotected');}
+                else {console.log(name.toUpperCase(),JSON.stringify({http:r.status,type:r.headers.get('content-type')}));if(!r.ok)issues.push(name+' unavailable');}
+              }catch(e){issues.push(name+' '+e.message.slice(0,80));}
+            }
+            console.log('ISSUES',JSON.stringify(issues));
+            if(issues.length)process.exitCode=1;
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS

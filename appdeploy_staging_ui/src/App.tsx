@@ -1635,7 +1635,7 @@ function App() {
   if (isVNext) {
     return (
       <main className='neoShell tcStitchShell' data-directory-open={directoryMode ? 'true' : 'false'}>
-        {analyticsChoice === null && <aside className='tcAnalyticsChoice' role='region' aria-label='Preferencias de medición'><span>Ayúdanos a mejorar Trabajo Cerca permitiendo estadísticas anónimas. Es opcional y está desactivado por defecto.</span><button type='button' onClick={() => chooseAnalytics('no')}>Mantener desactivado</button><button type='button' onClick={() => chooseAnalytics('yes')}>Aceptar medición</button></aside>}
+        {analyticsChoice === null && <aside className='tcAnalyticsChoice' role='region' aria-label='Preferencias de medición'><span>Ayúdanos a mejorar Trabajo Cerca permitiendo estadísticas básicas de uso. Es opcional y está desactivado por defecto.</span><button type='button' onClick={() => chooseAnalytics('no')}>Mantener desactivado</button><button type='button' onClick={() => chooseAnalytics('yes')}>Aceptar medición</button></aside>}
         <header className='neoTopbar'>
           <div className='tcTopbarInner'>
             <button className='neoBrand' aria-label='Trabajo Cerca, inicio' onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}><StitchBrand /></button>

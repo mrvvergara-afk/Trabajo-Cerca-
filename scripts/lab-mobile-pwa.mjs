@@ -189,6 +189,52 @@ await check('PWA update requires discard confirmation even for controlled input'
     assert.equal(result.draft, 'Borrador sin enviar');
   } finally { await ctx.close(); }
 });
+await check('Free service/business form shows context-sensitive help', async () => {
+  const ctx = await mobile(), page = await ctx.newPage();
+  try {
+    await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.locator('.tcPurposeGrid button')
+      .filter({ hasText: 'Publicar mi servicio o negocio' })
+      .first().click();
+    const form = page.locator('form.tcDirectoryForm').first();
+    await form.waitFor({ timeout: 15000 });
+    assert.match(await form.locator('.tcPublishGuide').innerText(), /Servicio gratuito/);
+    assert.ok(await form.locator('input[placeholder="Ej.: Soldadura o gasfitería"]').count());
+    await form.locator('input[name="local-kind"][value="business"]').check();
+    assert.match(await form.locator('.tcPublishGuide').innerText(), /Negocio gratuito/);
+    assert.ok(await form.locator('input[placeholder="Ej.: Ferretería o alimentación"]').count());
+    assert.ok(await form.locator('textarea[placeholder^="Ej.: Vendemos herramientas"]').count());
+    const details = form.locator('.tcPublishGuideDetails');
+    await details.locator('summary').click();
+    assert.match(await details.innerText(), /No necesitas contratar publicidad/);
+    assert.match(await form.locator('.tcPublishFinalHelp').innerText(),
+      /gratis y requiere revisión/);
+    assert.equal(await form.locator('button[type="submit"]').getAttribute('disabled'),
+      null, 'submit is not arbitrarily disabled');
+  } finally { await ctx.close(); }
+});
+await check('Advertising request explains optional promotion and fields', async () => {
+  const ctx = await mobile(), page = await ctx.newPage();
+  try {
+    await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.locator('.tcSiteMenu summary').first().click();
+    await page.getByRole('button', { name: 'Promocionar mi negocio' })
+      .first().click();
+    const dialog = page.locator('.advertiserPanel').first();
+    await dialog.waitFor({ timeout: 15000 });
+    assert.match(await dialog.locator('.tcAdvertiserGuide').innerText(),
+      /distinta de la ficha gratuita/);
+    assert.match(await dialog.locator('.tcAdvertiserGuide').innerText(),
+      /no genera cobros/i);
+    assert.ok(await dialog.locator('.tcAdFieldHelp').count() >= 7);
+    const details = dialog.locator('.tcAdGuideDetails');
+    await details.locator('summary').click();
+    assert.match(await details.innerText(), /Servicio gratuito:/);
+    assert.match(await details.innerText(), /Publicidad:/);
+    assert.ok(await dialog.getByRole('button', {
+      name: 'Enviar solicitud para revisión' }).count());
+  } finally { await ctx.close(); }
+});
 await browser.close();
 console.log('LAB_MOBILE_PWA', JSON.stringify({
   passed: results.filter(x => x.ok).length,

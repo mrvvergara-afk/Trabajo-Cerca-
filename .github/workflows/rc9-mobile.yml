@@ -1,0 +1,25 @@
+name: RC9 mobile ad, location, install, privacy
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging_ui/src/App.tsx'
+      - 'appdeploy_staging_ui/src/main.tsx'
+      - 'appdeploy_staging_ui/src/ux-rc9-mobile.css'
+      - 'automation/test_rc9_mobile.py'
+      - '.github/workflows/rc9-mobile.yml'
+permissions: {contents: read}
+jobs:
+  rc9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Inspect privacy/install/advertising contract
+        run: python automation/test_rc9_mobile.py
+      - name: Compile adjusted React and CSS
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/App.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/rc9-App.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/main.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/rc9-main.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/ux-rc9-mobile.css --outfile=/tmp/rc9.css

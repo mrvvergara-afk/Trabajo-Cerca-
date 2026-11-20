@@ -1088,7 +1088,7 @@ function App() {
       if(previousFocus?.isConnected)previousFocus.focus();
     };
   }, [showPublishChoices]);
-  const [analyticsChoice, setAnalyticsChoice] = useState<string | null>(()=>{try{return localStorage.getItem('tc_analytics_consent');}catch{return 'no';}});
+  const [analyticsChoice, setAnalyticsChoice] = useState<string | null>(()=>{try{return localStorage.getItem('tc_analytics_consent')||'no';}catch{return 'no';}});
   const [place, setPlace] = useState(initialPlace);
   const [filterMode, setFilterMode] = useState<FilterMode>('work');
   const [q, setQ] = useState('');
@@ -1165,6 +1165,14 @@ function App() {
   const [revealingContact, setRevealingContact] = useState(false);
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
   const [installHelp,setInstallHelp] = useState(false);
+  // Visible once per browsing session, never forced over a shared listing.
+  const [showInstallInvitation,setShowInstallInvitation] = useState(()=>{
+    try{return sessionStorage.getItem('tc_install_invite_dismissed')!=='1';}catch{return true;}
+  });
+  const dismissInstallInvitation=()=>{
+    try{sessionStorage.setItem('tc_install_invite_dismissed','1');}catch{}
+    setShowInstallInvitation(false);
+  };
   useEffect(()=>{
     if(!installHelp)return;
     const dialog=document.querySelector<HTMLElement>('.tcInstallGuide');if(!dialog)return;
@@ -1565,7 +1573,7 @@ function App() {
 
   const shareListing = async (item: Listing) => {
     const url = listingShareUrl(window.location.href,item.id);
-    const text = `${item.title} · ${item.workLocation}\nTrabajo Cerca`;
+    const text = `${item.title} · ${item.workLocation}\nTrabajo Cerca · Empleos y servicios locales.\nAbre el enlace para ver esta oferta. Si quieres tener Trabajo Cerca en tu teléfono, puedes instalar la app gratis desde la página.`;
     track('tc_listing_shared', { listing_id:item.id, kind:item.kind, commune:item.workLocation, origin:item.origin });
     try {
       if (navigator.share) {
@@ -1627,7 +1635,7 @@ function App() {
   if (isVNext) {
     return (
       <main className='neoShell tcStitchShell' data-directory-open={directoryMode ? 'true' : 'false'}>
-        {analyticsChoice === null && <aside className='tcAnalyticsChoice' role='region' aria-label='Preferencias de medición'><span>La medición de navegación es opcional. Puedes usar Trabajo Cerca sin aceptarla.</span><button type='button' onClick={() => chooseAnalytics('no')}>No aceptar</button><button type='button' onClick={() => chooseAnalytics('yes')}>Aceptar medición</button></aside>}
+        {analyticsChoice === null && <aside className='tcAnalyticsChoice' role='region' aria-label='Preferencias de medición'><span>Ayúdanos a mejorar Trabajo Cerca permitiendo estadísticas básicas de uso. Es opcional y está desactivado por defecto.</span><button type='button' onClick={() => chooseAnalytics('no')}>Mantener desactivado</button><button type='button' onClick={() => chooseAnalytics('yes')}>Aceptar medición</button></aside>}
         <header className='neoTopbar'>
           <div className='tcTopbarInner'>
             <button className='neoBrand' aria-label='Trabajo Cerca, inicio' onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}><StitchBrand /></button>
@@ -1638,13 +1646,19 @@ function App() {
               <button aria-current={directoryMode?'page':undefined} onClick={() => openLocalDirectory('all')}>Servicios y negocios</button>
             </nav>
             <button type='button' className='tcTopPublish' onClick={()=>setShowPublishChoices(true)}><PlusCircle aria-hidden='true'/> Publicar gratis</button>
-            <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Todas':value}</option>)}</select></label>
+            <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcMobilePlaceLabel' aria-hidden='true'>Comuna</span><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Todas':value}</option>)}</select></label>
             <SiteMenu onRadar={()=>openSecondary('neo-radar')} onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
               onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
               onCities={()=>openSecondary('tc-other-cities')} onNews={isStandalone?undefined:()=>openSecondary('actualidad-laboral')}
               onPeople={()=>navigateResults('people')}/>
           </div>
         </header>
+        {!isStandalone && showInstallInvitation && !installHelp && <aside className='tcInstallInvite' role='region' aria-label='Invitación a instalar Trabajo Cerca'>
+          <img src='/brand/trabajo-cerca-oficial.svg' alt='' width='36' height='36' decoding='async'/>
+          <div className='tcInstallInviteCopy'><strong>Trabajo Cerca en tu celular</strong><span>{queryParams.get('listing') ? 'Mira la oferta compartida y ten acceso rápido a otras oportunidades.' : 'Consulta ofertas y servicios locales desde tu pantalla de inicio.'}</span></div>
+          <button className='tcInstallInviteAction' type='button' onClick={()=>void installApp()}><Download aria-hidden='true'/> Instalar gratis</button>
+          <button className='tcInstallInviteClose' type='button' aria-label='Ocultar invitación para esta visita' onClick={dismissInstallInvitation}><X aria-hidden='true'/></button>
+        </aside>}
         <div className='tcTerritorialStatus'><div><span><Radar aria-hidden='true'/> Radar laboral territorial <span className='tcStatusDetail'> · Oportunidades con fuente y estado visibles</span></span><span><MapPin aria-hidden='true'/> {place==='Todas'?'Malleco y Biobío':place}{feedUpdatedAt?' · Catálogo del '+shortDate(feedUpdatedAt):''}</span></div></div>
         <section className='neoHero neoHeroReborn' id='neo-home'>
           <div className='tcStitchHeroRadar' aria-hidden='true'><svg viewBox='0 0 400 400' fill='none'><circle cx='200' cy='200' r='190' strokeDasharray='6 6'/><circle cx='200' cy='200' r='140'/><circle cx='200' cy='200' r='90' strokeDasharray='4 4'/><circle cx='200' cy='200' r='40'/><path d='M200 10V390M10 200H390'/></svg></div>
@@ -1863,6 +1877,7 @@ function App() {
                   </div>}
                   {!selected.url && !selected.contact && !selected.hasContact && <span className='neoDrawerPending'>Este aviso aún no tiene un canal útil de contacto confirmado.</span>}
                   <button className='neoDrawerSecondary' onClick={() => void shareListing(selected)}><Share2 /> Compartir oportunidad</button>
+                  {!isStandalone && <button type='button' className='tcShareInstallButton' onClick={()=>void installApp()}><Download aria-hidden='true'/> Instalar Trabajo Cerca gratis</button>}
                   {ownerTokens[selected.id]&&selected.origin==='direct'&&<OwnedPublicationEditor key={selected.id} item={selected} ownerToken={ownerTokens[selected.id]} onSaved={()=>{setSelected(null);setNotice('Publicación actualizada gratuitamente.');void load(undefined,true);}}/>}
                   {ownerTokens[selected.id] && <button className='neoDrawerDanger' onClick={() => void deleteOwn(selected)}>Eliminar mi publicación y datos</button>}
                 </div>

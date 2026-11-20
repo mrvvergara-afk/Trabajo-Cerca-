@@ -873,7 +873,7 @@ export function OperationsPanel() {
     const target = new URL(window.location.href);
     target.searchParams.delete('panel');
     target.hash = '';
-    window.location.assign('/');
+    window.location.assign('./');
   };
   return (
     <main className='opsShell'>

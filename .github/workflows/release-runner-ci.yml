@@ -1,0 +1,27 @@
+name: Self-service release runner — isolated unit gates
+on:
+  push:
+    branches:
+      - qa/lab-release-smoke-20261120
+    paths:
+      - scripts/release-runner.mjs
+      - scripts/release-runner.test.mjs
+      - .github/workflows/release-runner-ci.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: release-runner-unit
+  cancel-in-progress: false
+jobs:
+  safe-release-tests:
+    name: Release runner dry-run and rollback simulation (no credentials)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Unit-test release guard and mock deployment (no production calls)
+        run: node --test scripts/release-runner.test.mjs

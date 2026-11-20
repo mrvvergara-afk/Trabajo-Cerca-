@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-20T03:30:27.014799+00:00",
+  "updated_at": "2026-11-20T13:06:51.407389+00:00",
   "items_total": 7,
   "automatically_published": 0,
   "items": [
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-20T03:30:27.014799+00:00",
+      "last_checked_at": "2026-11-20T13:06:51.407389+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -33,7 +33,7 @@
       "date_source_hint": "2026-11-19 09:58:56",
       "deadline_hint": "2027-02-02T09:58:56",
       "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-20T03:30:27.014799+00:00",
+      "last_checked_at": "2026-11-20T13:06:51.407389+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -49,12 +49,32 @@
       "date_source_hint": "2026-11-19 09:49:56",
       "deadline_hint": "2027-02-02T09:49:56",
       "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-20T03:30:27.014799+00:00",
+      "last_checked_at": "2026-11-20T13:06:51.407389+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
+    },
+    {
+      "id": "a_1843a3809a023ee68321",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Traiguén",
+      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-06 14:20:34",
+      "deadline_hint": "2027-01-20T14:20:34",
+      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
+      "last_checked_at": "2026-11-20T13:06:51.407389+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
     },
     {
       "id": "a_dfa1f8d173984ff01036",
@@ -71,26 +91,6 @@
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_1843a3809a023ee68321",
-      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-06 14:20:34",
-      "deadline_hint": "2027-01-20T14:20:34",
-      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
-      "last_checked_at": "2026-11-19T13:25:51.250533+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
     },
     {
       "id": "a_68755a767511789f2d4e",
@@ -134,12 +134,12 @@
     }
   ],
   "metrics": {
-    "added": 11,
-    "updated": 3,
+    "added": 8,
+    "updated": 4,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 10,
+    "published_reconciled": 8,
     "territory_mismatch": 4
   }
 }

@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "date_chile": "2026-11-20",
+  "inventory_sha": "ba0b70bb97d7a14d8b97afdfb5540b2fb00a79b7",
+  "inventory_endpoints": 143,
+  "discovery_targets_total": 29,
+  "waves": {
+    "4": {
+      "expected": 24,
+      "attempted": 24,
+      "readable": 6,
+      "blocked": 6,
+      "failed": 12,
+      "unsupported": 0,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "opcionempleo-Angol",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-angol.html",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "laborum-Collipulli",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "linkedin-Ercilla",
+          "status": "blocked",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control de acceso/JS/redirect bloqueado"
+        },
+        {
+          "source_id": "computrabajo-Renaico",
+          "status": "blocked",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-renaico",
+          "offers_found": [],
+          "note": "Control de acceso/JS/redirect bloqueado"
+        },
+        {
+          "source_id": "indeed-Mininco",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Mininco&fromage=45",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "trabajando-Mininco",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/mininco",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "chiletrabajos-Nacimiento",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "opcionempleo-Negrete",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-negrete.html",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "laborum-Mulchén",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "linkedin-Los Sauces",
+          "status": "blocked",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control de acceso/JS/redirect bloqueado"
+        },
+        {
+          "source_id": "computrabajo-Purén",
+          "status": "blocked",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-puren",
+          "offers_found": [],
+          "note": "Control de acceso/JS/redirect bloqueado"
+        },
+        {
+          "source_id": "indeed-Traiguén",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "trabajando-Traiguén",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/traiguen",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "chiletrabajos-Lumaco",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "opcionempleo-Victoria",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-victoria.html",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "laborum-secondary-Los Ángeles",
+          "status": "failed",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
+          "offers_found": [],
+          "note": "No se obtuvo contenido legible desde URL exacta"
+        },
+        {
+          "source_id": "linkedin-secondary-Temuco",
+          "status": "blocked",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control de acceso/JS/redirect bloqueado"
+        },
+        {
+          "source_id": "hospital-angol-concursos",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://hospitalangol.cl/concursos/",
+          "offers_found": [],
+          "note": "Página leída; checked_found indica contenido laboral relevante o referencia de fuente, no necesariamente oferta nueva"
+        },
+        {
+          "source_id": "omil-renaico",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "offers_found": [
+            "Concurso Renaico 12 vacantes — existente visible"
+          ],
+          "note": "Página leída; checked_found indica contenido laboral relevante o referencia de fuente, no necesariamente oferta nueva"
+        },
+        {
+          "source_id": "omil-puren-2026",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://munipuren.cl/llamados-a-concurso-2026/",
+          "offers_found": [],
+          "note": "Página leída; checked_found indica contenido laboral relevante o referencia de fuente, no necesariamente oferta nueva"
+        },
+        {
+          "source_id": "cmpc-empleo-trabajando",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://cmpc.trabajando.cl/",
+          "offers_found": [],
+          "note": "Página leída; checked_found indica contenido laboral relevante o referencia de fuente, no necesariamente oferta nueva"
+        },
+        {
+          "source_id": "ssan-indice",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
+          "offers_found": [
+            "Médico General Salud Mental Traiguén — difusión finalizada 2026-11-19"
+          ],
+          "note": "Página leída; checked_found indica contenido laboral relevante o referencia de fuente, no necesariamente oferta nueva"
+        },
+        {
+          "source_id": "registry-omil-los-angeles-ofertas",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://sites.google.com/losangeles.cl/omil-losangeles/ofertas-laborales",
+          "offers_found": [],
+          "note": "Página leída; checked_found indica contenido laboral relevante o referencia de fuente, no necesariamente oferta nueva"
+        },
+        {
+          "source_id": "registry-radio-surena-collipulli",
+          "status": "blocked",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "https://www.radiodelsur.cl/",
+          "offers_found": [],
+          "note": "Control de acceso/JS/redirect bloqueado"
+        }
+      ],
+      "discovery": [
+        {
+          "source_id": "los-angeles-bridge",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "public_indexed_search",
+          "offers_found": [
+            "GRAFTON Collipulli — ya publicado",
+            "Axioma tramo Chillán-Collipulli — territorial pendiente"
+          ],
+          "note": "Búsqueda indexada, no lectura de portal privado; no acredita cobertura exhaustiva de la fuente"
+        },
+        {
+          "source_id": "temuco-bridge",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "public_indexed_search",
+          "offers_found": [
+            "CMPC Analista vibraciones Mininco — ya publicado"
+          ],
+          "note": "Búsqueda indexada, no lectura de portal privado; no acredita cobertura exhaustiva de la fuente"
+        },
+        {
+          "source_id": "concepcion-bridge",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "public_indexed_search",
+          "offers_found": [],
+          "note": "Búsqueda indexada, no lectura de portal privado; no acredita cobertura exhaustiva de la fuente"
+        },
+        {
+          "source_id": "chillan-bridge",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "public_indexed_search",
+          "offers_found": [],
+          "note": "Búsqueda indexada, no lectura de portal privado; no acredita cobertura exhaustiva de la fuente"
+        },
+        {
+          "source_id": "bne",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T04:09:30.037Z",
+          "origin": "public_indexed_search",
+          "offers_found": [],
+          "note": "Búsqueda indexada, no lectura de portal privado; no acredita cobertura exhaustiva de la fuente"
+        }
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "title": "Médico General Policlínico de Salud Mental Adulto",
+      "commune": "Traiguén",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/medico-general-policlinico-de-salud-mental-adulto/",
+      "publication_date": "2026-11-12",
+      "status": "not_publishable_dissemination_ended_2026-11-19"
+    },
+    {
+      "title": "Experto/a Prevención de Riesgos",
+      "commune": "Collipulli",
+      "url": "https://www.chiletrabajos.cl/trabajo/experto-a-en-prevencion-de-riesgos-rubro-celulosa-collipulli-3933145",
+      "status": "existing_visible"
+    },
+    {
+      "title": "Analista de Vibraciones - Mininco",
+      "commune": "Collipulli",
+      "url": "https://cl.linkedin.com/jobs/view/analista-de-vibraciones-mininco-planta-plywood-at-cmpc-4492232069",
+      "status": "existing_visible_official_ATS"
+    },
+    {
+      "title": "Personal de Seguridad Vial y Contingencias",
+      "commune": "Collipulli",
+      "url": "https://www.chiletrabajos.cl/trabajo/personal-de-seguridad-vial-y-contingencias-3933043",
+      "status": "pending_route_workplace_verification"
+    },
+    {
+      "title": "Supervisor/a Mantención - Planta Nacimiento",
+      "commune": "Nacimiento",
+      "url": "https://www.linkedin.com/jobs/view/4460504983/",
+      "status": "pending_current_vacancy_verification"
+    }
+  ],
+  "catalog": {
+    "generated_at": "2026-11-20T02:18:56+00:00",
+    "jobIdentityCount": 284,
+    "complete": true,
+    "pagesChecked": 11,
+    "fingerprint": "422457fd7b288cfbccdeec45df025759135b52271387ca5ab3b915feb52a3766",
+    "note": "Espejo consultado; la frescura se evalúa contra hora real de ejecución; sin lotes nuevos"
+  },
+  "new_batches": 0,
+  "published_confirmed": 0
+}

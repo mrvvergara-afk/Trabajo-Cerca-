@@ -1,0 +1,41 @@
+name: Postdeploy visual browser and API diagnostics (read-only)
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/postdeploy-browser-smoke.yml']
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Verify frontend in installed runner browser, without writes
+        shell: bash
+        run: |
+          python - <<'PY'
+          import shutil,subprocess,re,urllib.request,json,sys
+          base='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai'
+          request=urllib.request.Request(base+'/api/listings?limit=1',headers={'User-Agent':'TrabajoCerca-Postdeploy-ReadOnly'})
+          try:
+            with urllib.request.urlopen(request,timeout=18) as r:
+              data=r.read(2048);print('DIRECT_API',json.dumps({'status':r.status,'type':r.headers.get('Content-Type'),'prefix':data[:80].decode('utf8','replace')}))
+          except Exception as ex:print('DIRECT_API_ERROR',type(ex).__name__,str(ex)[:100])
+          chrome=next((shutil.which(x) for x in ['google-chrome','google-chrome-stable','chromium','chromium-browser'] if shutil.which(x)),None)
+          print('CHROME',chrome or 'absent')
+          if not chrome:sys.exit('No browser in runner: cannot confirm client-side feed')
+          cmd=[chrome,'--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--virtual-time-budget=18000','--dump-dom',base+'/']
+          done=subprocess.run(cmd,capture_output=True,text=True,timeout=65)
+          html=done.stdout
+          cards=len(re.findall(r'data-offer-id=',html))
+          list_titles=html.count('neoJobCard')
+          page=html.count('Oportunidades Cerca')
+          print('VISIBLE_PUBLIC_DOM',json.dumps({'exit':done.returncode,'bytes':len(html),'cards':cards,'cardClassTokens':list_titles,'opportunitiesHeading':page,'oldRadarFootnote':'Cero publicaciones no significa ausencia' in html,'websiteNews':('Actualidad laboral y trámites' in html)},ensure_ascii=False))
+          if not html:print('CHROME_STDERR',done.stderr[:350])
+          if cards==0:sys.exit('No DOM job cards after browser load: inspect public catalogue')
+          if 'Cero publicaciones no significa ausencia' in html:sys.exit('Old radar note still visible')
+          print('POSTDEPLOY_BROWSER_SMOKE_PASS')
+          PY

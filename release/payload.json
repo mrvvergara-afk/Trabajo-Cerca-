@@ -1,0 +1,17 @@
+{
+  "schema": "tc-release-v1",
+  "appId": "trabajo-cerca-laboratorio-3ojgro",
+  "expectedBaseline": "1795209664148",
+  "description": "First nonvisual release exercise: annotate opt-in CSS only, default user view identical",
+  "files": [
+    {
+      "filename": "src/ux-preview-transfer.css",
+      "diffs": [
+        {
+          "from": "/* Production canary only: inactive without ?tc_release_preview=1 */",
+          "to": "/* Production canary only: inactive without ?tc_release_preview=1; verified release pipeline */"
+        }
+      ]
+    }
+  ]
+}

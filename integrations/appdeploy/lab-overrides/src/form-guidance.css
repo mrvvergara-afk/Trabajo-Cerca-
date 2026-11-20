@@ -1,0 +1,68 @@
+/* Compact, readable in-form guidance. Free directory and paid/trial ads
+   remain distinct; examples change with the selected publication type. */
+.tcDirectoryForm .tcPublishGuide,
+.advertiserPanel .tcAdvertiserGuide {
+  margin: 0;
+  border-left: 3px solid #2f7857;
+  padding: 9px 11px;
+  background: #f1f7f2;
+  border-radius: 0 8px 8px 0;
+  color: #244a36;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.tcDirectoryForm .tcPublishGuide strong,
+.advertiserPanel .tcAdvertiserGuide strong {
+  font-weight: 750;
+}
+.tcDirectoryForm .tcPublishGuideDetails,
+.advertiserPanel .tcPublishGuideDetails {
+  font-size: 12px;
+  color: #3e5b4b;
+}
+.tcPublishGuideDetails summary {
+  display: list-item;
+  width: fit-content;
+  font-weight: 650;
+  cursor: pointer;
+  color: #23533d;
+  padding: 6px 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tcPublishGuideDetails summary:focus-visible {
+  outline: 2px solid #29764c;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.tcPublishGuideDetails p {
+  margin: 4px 0 7px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #435f50;
+}
+.tcDirectoryForm .tcPublishFinalHelp,
+.tcDirectoryForm .tcPublishPrivacyNote {
+  margin: 1px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #496352;
+}
+.advertiserPanel .tcAdFieldHelp {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #516b5c;
+}
+.advertiserPanel .tcAdGuideDetails { margin: 3px 0 9px; }
+.advertiserPanel .tcAdSlotChoices > .tcAdFieldHelp {
+  margin: 3px 0 8px;
+}
+@media (max-width: 420px) {
+  .tcDirectoryForm .tcPublishGuide,
+  .advertiserPanel .tcAdvertiserGuide { padding: 8px 9px; }
+  .tcPublishGuideDetails summary { min-height: 34px; }
+}

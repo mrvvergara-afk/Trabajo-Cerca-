@@ -1,0 +1,73 @@
+name: RC9 post-deployment real mobile QA
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/rc9-postdeploy-qa.yml']
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  mobile-ads-share:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Verify exact paid advertising bounds, full commune and shared-install UX
+        run: |
+          node <<'JS'
+          const {chromium}=require('playwright-core');
+          const base='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai';
+          const api='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro';
+          (async()=>{
+            const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+            const errors=[];
+            const bbox=(e)=>{if(!e)return null;const r=e.getBoundingClientRect();return {x:Math.round(r.x),y:Math.round(r.y),w:Math.round(r.width),h:Math.round(r.height),right:Math.round(r.right)}};
+            for(const width of [320,360,390,430]){
+              const p=await browser.newPage({viewport:{width,height:860}});
+              await p.goto(base+'/',{waitUntil:'domcontentloaded',timeout:30000});
+              await p.locator('.tcMobilePlace select').selectOption('Collipulli');
+              await p.waitForTimeout(2000);
+              const d=await p.evaluate(()=>{
+                const bb=(selector)=>{const e=document.querySelector(selector);if(!e)return null;const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {x:Math.round(r.left),right:Math.round(r.right),w:Math.round(r.width),h:Math.round(r.height),display:s.display,grid:s.gridTemplateColumns,column:s.gridColumn,row:s.gridRow,text:e.textContent?.trim().slice(0,80)}};
+                const ad=document.querySelector('.tcLocalAdvertising.tcCommercialCard');
+                const pieces=(sel)=>{const e=ad?.querySelector(sel);if(!e)return null;const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {x:Math.round(r.x),right:Math.round(r.right),w:Math.round(r.width),h:Math.round(r.height),gridColumn:s.gridColumn,gridRow:s.gridRow,display:s.display,text:e.textContent?.trim().slice(0,85)}};
+                return {viewport:innerWidth,scroll:document.documentElement.scrollWidth,header:bb('.neoTopbar'),
+                  picker:bb('.tcMobilePlace'),select:bb('.tcMobilePlace select'),
+                  ad:bb('.tcLocalAdvertising.tcCommercialCard'),contents:pieces('.tcPremiumCommercial'),
+                  img:pieces('.tcCommercialVisual'),copy:pieces('.tcCommercialCopy'),button:pieces('.tcCommercialAction'),
+                  invite:bb('.tcInstallInvite'),consent:bb('.tcAnalyticsChoice'),
+                  jobs:document.querySelectorAll('.neoJobCard').length
+                };
+              });
+              console.log('RC9_PUBLIC',JSON.stringify({width,...d}));
+              if(d.scroll>width+6)errors.push(width+': document horizontal overflow');
+              if(!d.picker || d.picker.w<width-30||!d.select||d.select.w<width-125)errors.push(width+': place selector still clipped');
+              if(!d.ad||!d.img||!d.copy||!d.button)errors.push(width+': paid ad missing');
+              else{
+                if(d.copy.w<100||d.copy.x<d.ad.x-3||d.copy.right>d.ad.right-3)errors.push(width+': copy clipped');
+                if(d.button.w<width*.5||d.button.x<d.ad.x-3||d.button.right>d.ad.right-3)errors.push(width+': button clipped');
+                if(d.img.w<70||d.img.x<d.ad.x-3||d.img.right>d.ad.right-3)errors.push(width+': image clipped');
+              }
+              if(!d.invite || d.consent)errors.push(width+': install invite or privacy default wrong');
+              await p.close();
+            }
+            const r=await fetch(api+'/api/listings?limit=2');const j=await r.json();const id=j.items?.[0]?.id;
+            if(!id)errors.push('no public listing for share QA');
+            else{
+              const p=await browser.newPage({viewport:{width:390,height:850}});
+              await p.goto(base+'/?listing='+encodeURIComponent(id),{waitUntil:'domcontentloaded',timeout:30000});
+              await p.waitForTimeout(1600);
+              const d=await p.evaluate(()=>({drawer:document.querySelectorAll('.neoDrawer').length,
+                installInDrawer:document.querySelectorAll('.neoDrawer .tcShareInstallButton').length,
+                installInvitation:document.querySelectorAll('.tcInstallInvite').length,
+                consent:document.querySelectorAll('.tcAnalyticsChoice').length
+              }));
+              console.log('RC9_SHARED',JSON.stringify(d));
+              if(d.drawer!==1||d.installInDrawer!==1||d.consent)errors.push('shared listing installation flow');
+              await p.close();
+            }
+            await browser.close();
+            console.log('RC9_ISSUES',JSON.stringify(errors));
+            if(errors.length)process.exitCode=1;
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS

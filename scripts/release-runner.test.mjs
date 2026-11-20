@@ -60,6 +60,18 @@ function stubTransport({ badPostdeploy = false, deny = false } = {}) {
   const calls = [];
   let version = BASE, deployed = false;
   const request = async (url, init) => {
+    if (String(url).includes('api/growth/advertising?')) {
+      calls.push('advertising');
+      return new Response(JSON.stringify({ commercial: [], house: [{}] }), {
+        status: 200, headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    if (String(url).includes('api/admin/session')) {
+      calls.push('admin_auth');
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401, headers: { 'Content-Type': 'application/json' },
+      });
+    }
     if (String(url).includes('api/listings?')) {
       calls.push('feed');
       return new Response(JSON.stringify({
@@ -114,6 +126,8 @@ test('successful mock release checks baseline, backup version, deploy, and publi
   assert.equal(result.rollback, BASE);
   assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 1);
   assert.equal(stub.calls.filter(x => x === 'apply_app_version').length, 0);
+  assert.equal(stub.calls.filter(x => x === 'advertising').length, 2);
+  assert.equal(stub.calls.filter(x => x === 'admin_auth').length, 2);
 });
 test('mock post-deploy feed drop triggers code rollback and checks recovery', async () => {
   const stub = stubTransport({ badPostdeploy: true });

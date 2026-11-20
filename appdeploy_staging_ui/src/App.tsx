@@ -873,12 +873,12 @@ export function OperationsPanel() {
     const target = new URL(window.location.href);
     target.searchParams.delete('panel');
     target.hash = '';
-    window.location.assign(target.pathname + target.search);
+    window.location.assign('/');
   };
   return (
     <main className='opsShell'>
       <header className='opsHeader'>
-        <div className='brand'><div className='brandmark'><img className='tcOfficialBrandIcon' src='/icon-192.png' width='192' height='192' alt='' aria-hidden='true' decoding='async' /></div><div><b>Trabajo Cerca</b><span>CENTRO DE ADMINISTRACIÓN</span></div></div>
+        <div className='brand'><div className='brandmark'><img className='tcOfficialBrandIcon' src='/brand/trabajo-cerca-simbolo.svg' width='64' height='64' alt='' aria-hidden='true' decoding='async' /></div><div><b>Trabajo Cerca</b><span>CENTRO DE ADMINISTRACIÓN</span></div></div>
         <button onClick={back}>Volver a Trabajo Cerca</button>
       </header>
       {securityMode && <pre id='security-live-check'>{JSON.stringify(securityProof,null,2)}</pre>}
@@ -1894,7 +1894,7 @@ function App() {
     <main className='appShell'>
       <header className='topbar' id='inicio'>
         <button className='brand brandButton' onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}>
-          <div className='brandmark'><MapPin size={21} /><Radar size={12} /></div>
+          <div className='brandmark'><img className='tcOfficialBrandIcon' src='/brand/trabajo-cerca-simbolo.svg' width='64' height='64' alt='' decoding='async'/></div>
           <div><b>Trabajo Cerca</b><span>PERSONAS ↔ TRABAJO</span></div>
         </button>
         <div className='topbarActions'>
@@ -2072,7 +2072,7 @@ function App() {
       </section>
 
       <footer className='cleanFooter'>
-        <div className='brand'><div className='brandmark'><img className='tcOfficialBrandIcon' src='/icon-192.png' width='192' height='192' alt='' aria-hidden='true' decoding='async' /></div><div><b>Trabajo Cerca</b><span>PERSONAS ↔ TRABAJO</span></div></div>
+        <div className='brand'><div className='brandmark'><img className='tcOfficialBrandIcon' src='/brand/trabajo-cerca-simbolo.svg' width='64' height='64' alt='' aria-hidden='true' decoding='async' /></div><div><b>Trabajo Cerca</b><span>PERSONAS ↔ TRABAJO</span></div></div>
         <div className='footerLegal'><button onClick={() => setLegalView('privacy')}>Privacidad y tus datos</button><button onClick={() => setLegalView('terms')}>Términos de uso</button><span>Piloto territorial · Malleco y Biobío norte · trabajocerca.malleco.biobio@gmail.com</span></div>
       </footer>
 

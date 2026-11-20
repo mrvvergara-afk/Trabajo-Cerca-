@@ -1,0 +1,33 @@
+name: LAB release smoke (read-only, no load test)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - qa/lab-release-smoke-*
+    paths:
+      - scripts/lab-release-smoke.mjs
+      - .github/workflows/lab-release-smoke.yml
+  pull_request:
+    paths:
+      - scripts/lab-release-smoke.mjs
+      - .github/workflows/lab-release-smoke.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-release-smoke
+  cancel-in-progress: false
+
+jobs:
+  lab-smoke:
+    name: LAB-only public endpoints and auth gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify read-only LAB behavior
+        run: node scripts/lab-release-smoke.mjs

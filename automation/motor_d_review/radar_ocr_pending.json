@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-20T02:36:47.271795+00:00",
+  "updated_at": "2026-11-20T03:11:33.114166+00:00",
   "items_total": 18,
   "pending_total": 18,
   "publication_enabled": false,
@@ -243,10 +243,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "cd7cdf209b962412e981f900906c743ed1d22ed1c9fef4e70f96cd750498681e",
+      "document_sha256": "18beb760824eb0d056a48f381f9b0fcfa7d419354b845d88005ddd16fb088187",
       "original_classification": null,
       "date_source": null,
-      "date_discovered": "2026-11-19",
+      "date_discovered": "2026-11-20",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -255,7 +255,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-19",
+      "last_seen": "2026-11-20",
       "review_signature": null
     },
     {
@@ -275,10 +275,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "76792663ccf920eb847af00c46a5028b0da656333a8afdfa3779ae513c4a9da5",
+      "document_sha256": "9e5312084a46ac19fd9ebcc32bbd485f43ca6e4bd04247e6d20f9ce85633e9d6",
       "original_classification": null,
       "date_source": null,
-      "date_discovered": "2026-11-19",
+      "date_discovered": "2026-11-20",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -287,7 +287,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-19",
+      "last_seen": "2026-11-20",
       "review_signature": null
     },
     {
@@ -435,10 +435,10 @@
       "extractor": "html_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "e8ceecbc111bcd613c09e61a091c6066fcc31204240859553b9d286a3c020a81",
+      "document_sha256": "ca019a23a81aeba0f1d7f02683f5645f38c58083b81d83f082c1fcd6e630ee1b",
       "original_classification": null,
       "date_source": null,
-      "date_discovered": "2026-11-19",
+      "date_discovered": "2026-11-20",
       "deadline": null,
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -447,7 +447,7 @@
       "publication_eligible": false,
       "review_status": "pending",
       "first_discovered": "2026-11-10",
-      "last_seen": "2026-11-19",
+      "last_seen": "2026-11-20",
       "review_signature": null
     },
     {
@@ -572,6 +572,5 @@
       "original_classification": "sin_evidencia_suficiente",
       "deadline": null
     }
-  ],
-  "added_this_run": 0
+  ]
 }

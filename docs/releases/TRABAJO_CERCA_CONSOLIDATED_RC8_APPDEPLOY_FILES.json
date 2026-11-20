@@ -4,7 +4,7 @@
   "baseline_snapshot": "1795136804449",
   "requested_by": "user",
   "authorized": true,
-  "status": "DEPLOYED_PENDING_RUNTIME_QA",
+  "status": "DEPLOYED_READY_PUBLIC_AND_ADMIN_BROWSER_QA_PASS",
   "asset_origin": "Official logo from user upload was traced to a local color-limited vector; two brand assets share the identical SVG. Original PNG source remains unmodified in chat, vector trace approximates it but is not byte-identical.",
   "files": [
     {
@@ -99,5 +99,27 @@
     "Verify public jobs visible after deploy, advertising endpoints, admin GET 401 anonymous",
     "No changes to motors, feeds, CRM or stored advert records"
   ],
-  "retry_reason": "AppDeploy disallows absolute client routes; relative navigation patched in saved source, no other file changed"
+  "retry_reason": "AppDeploy disallows absolute client routes; relative navigation patched in saved source, no other file changed",
+  "deployed_snapshot": "1795140994870",
+  "qa": {
+    "pr": 90,
+    "ci_checks_pass": 10,
+    "browser_smoke": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/44659933561",
+    "ui_regression": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/44660445665",
+    "mobile_viewports": [
+      320,
+      360,
+      390,
+      430,
+      768,
+      1280
+    ],
+    "public_catalog_http": 200,
+    "public_catalog_page_records": 35,
+    "admin_route_http": 200,
+    "admin_private_api_without_session": 401,
+    "brand_svg_http": 200,
+    "ferreteria_mininco_saved_additional_images": 0,
+    "caveat": "No authenticated administrator session or real uploaded extra business photos were available for E2E verification. iOS launcher cache may require reinstall."
+  }
 }

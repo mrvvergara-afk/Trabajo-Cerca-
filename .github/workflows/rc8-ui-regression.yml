@@ -1,0 +1,99 @@
+name: RC8 UI regression - public tabs and admin chart layout
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/rc8-ui-regression.yml']
+  workflow_dispatch:
+
+permissions: {contents: read}
+jobs:
+  visual-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Check public screens and synthetic admin fixtures without authentication or writes
+        run: |
+          node <<'JS'
+          const {chromium}=require('playwright-core');
+          const root='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai';
+          (async()=>{
+            const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+            const issues=[];
+            for(const width of [320,360,390,430]){
+              const page=await browser.newPage({viewport:{width,height:820}});
+              await page.goto(root,{waitUntil:'domcontentloaded',timeout:30000});
+              await page.waitForTimeout(2200);
+              const nav=page.locator('.neoMobileNav button');
+              const labels=await nav.allTextContents();
+              console.log('PUBLIC_TABS',JSON.stringify({width,labels}));
+              for(const name of ['Personas','Directorio','Publicar','Empleos']){
+                const btn=nav.filter({hasText:name}).first();
+                if(!await btn.count()){issues.push(width+': missing '+name);continue}
+                try{
+                  await btn.click({timeout:5000});
+                  await page.waitForTimeout(350);
+                  const state=await page.evaluate(()=>({
+                    scroll:document.documentElement.scrollWidth,width:window.innerWidth,
+                    error:document.querySelectorAll('.opsError').length,
+                    main:document.querySelectorAll('.tcStitchShell').length
+                  }));
+                  console.log('PUBLIC_NAV',JSON.stringify({width,name,...state}));
+                  if(state.scroll>width+8)issues.push(width+': '+name+' horizontal overflow');
+                }catch(err){issues.push(width+': '+name+' '+err.message.slice(0,100));}
+              }
+              await page.close();
+              const admin=await browser.newPage({viewport:{width,height:850}});
+              await admin.goto(root+'/admin',{waitUntil:'domcontentloaded',timeout:30000});
+              await admin.waitForTimeout(500);
+              const d=await admin.evaluate(()=>{
+                const main=document.querySelector('main.opsShell');
+                const fixture=document.createElement('section');
+                fixture.className='tcAdminAccess';
+                fixture.innerHTML=`<div class="tcAdminWorkspace">
+                  <aside class="tcAdminSidebar"><nav><button>Publicidad y campañas</button></nav></aside>
+                  <div class="tcAdminWorkspaceMain"><section class="tcExecCenter">
+                    <div class="tcBIChartsTop"><section class="tcBIChartCard tcBIDonutCard">
+                      <header class="tcBIChartHead"><div><h4>Lectura de fuentes</h4>
+                        <p>Efectividad técnica del último barrido medido, sin confundirla con ofertas.</p></div>
+                        <div class="tcBITabs"><button>D</button><button>A</button><button>GPT</button><button>GEM</button></div>
+                      </header>
+                      <div class="tcBIDonutLayout"><svg class="tcBIDonutSVG" viewBox="0 0 152 152">
+                        <circle cx="76" cy="76" r="55" fill="none" stroke="#2b90c8" stroke-width="16"/></svg>
+                        <dl class="tcBIDonutFacts"><div><dt>Intentadas</dt><dd>175</dd></div>
+                        <div><dt>Accesibles</dt><dd>119</dd></div></dl>
+                      </div>
+                    </section></div>
+                    <div class="tcEditorPanel"><div class="tcEditorSaveBar"><div>EDICIÓN SIN APLICAR</div><button>Guardar y publicar</button></div>
+                      <div class="tcEditorOptions"><label class="tcEditorOption"><input type="checkbox"/>Toda la zona</label>
+                      <label class="tcEditorOption"><input type="checkbox"/>Nacimiento</label>
+                      <label class="tcEditorOption"><input type="checkbox"/>Collipulli</label></div>
+                    </div></section>
+                  </div>
+                </div>`;
+                main.append(fixture);
+                const para=fixture.querySelector('.tcBIChartHead p');
+                const card=fixture.querySelector('.tcBIChartCard');
+                const editor=fixture.querySelector('.tcEditorSaveBar');
+                const opts=[...fixture.querySelectorAll('.tcEditorOption')].map(el=>({
+                  text:el.textContent,client:el.clientWidth,scroll:el.scrollWidth}));
+                const out={
+                  width:innerWidth,document:document.documentElement.scrollWidth,
+                  card:Math.round(card.getBoundingClientRect().width),
+                  paragraph:Math.round(para.getBoundingClientRect().width),
+                  chartDisplay:getComputedStyle(fixture.querySelector('.tcBIChartsTop')).gridTemplateColumns,
+                  savePosition:getComputedStyle(editor).position,options:opts
+                };fixture.remove();return out;
+              });
+              console.log('ADMIN_FIXTURE',JSON.stringify(d));
+              if(d.document>width+8||d.paragraph<125||d.card<195||d.savePosition!=='static'||
+                 d.options.some(o=>o.scroll>o.client+8))issues.push(width+': admin overflow');
+              await admin.close();
+            }
+            await browser.close();
+            console.log('VISUAL_REGRESSION_ISSUES',JSON.stringify(issues));
+            if(issues.length)process.exitCode=1;
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS

@@ -171,7 +171,7 @@
         },
         {
           "source_id": "omil-negrete",
-          "status": "checked_found",
+          "status": "checked_empty",
           "checked_at": "2026-11-20T12:23:58Z",
           "origin": "https://www.muninegrete.cl/",
           "offers_found": [],
@@ -179,7 +179,7 @@
         },
         {
           "source_id": "malleco7",
-          "status": "checked_found",
+          "status": "checked_empty",
           "checked_at": "2026-11-20T12:23:58Z",
           "origin": "https://www.malleco7.cl/",
           "offers_found": [],

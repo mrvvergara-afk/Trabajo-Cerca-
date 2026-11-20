@@ -18,7 +18,7 @@ jobs:
         run: |
           python - <<'PY'
           import json,time,urllib.request,urllib.error,sys
-          root='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai'
+          root='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro'
           headers={'User-Agent':'TrabajoCerca-QA-ReadOnly/1.0','Accept':'application/json'}
           def get(path,timeout=15):
               request=urllib.request.Request(root+path,headers=headers)

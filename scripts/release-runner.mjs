@@ -171,6 +171,23 @@ async function untilReady(client, version, wait = ms => new Promise(r => setTime
   }
   throw Error('AppDeploy did not reach ready within polling window');
 }
+export async function testOwnerConnection(env = process.env, request = fetch) {
+  if (!env.TC_APPDEPLOY_MCP_TOKEN || env.TC_APPDEPLOY_MCP_TOKEN.length < 30)
+    throw Error('AppDeploy owner credential missing');
+  const client = new AppDeployMcp(env.TC_APPDEPLOY_MCP_TOKEN, request);
+  await client.initialize();
+  const who = await client.call('appdeploy_who_am_i');
+  if (!who?.user?.user_id || who.isGuest === true ||
+      !Array.isArray(who.apps) ||
+      !who.apps.some(app => app.data?.app_id === OFFICIAL_ID))
+    throw Error('AppDeploy credential does not belong to production app owner');
+  const status = await client.call('get_app_status', { app_id: OFFICIAL_ID, limit: 3 });
+  if (status.deployment?.status !== 'ready')
+    throw Error('Official deployment is not READY');
+  const feed = await readPublic(request);
+  return { connected: true, appId: OFFICIAL_ID,
+    version: status.deployment.snapshot_version, publicJobs: feed.count };
+}
 export async function runRelease({
   env = process.env, request = fetch, wait,
   payload, commitSha, baseline
@@ -237,6 +254,11 @@ export async function runRelease({
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const env = process.env;
+  if (env.TC_RELEASE_DRY_RUN === 'true') {
+    const result = await testOwnerConnection(env);
+    console.log('RELEASE_CONNECTION_TEST', JSON.stringify(result));
+    process.exit(0);
+  }
   const payload = JSON.parse(await readFile('release/payload.json', 'utf8'));
   const result = await runRelease({
     env, payload, commitSha: env.TC_CANDIDATE_SHA,

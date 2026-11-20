@@ -2,8 +2,20 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "motor_d_cmpc_browser",
-  "batch_id": "motor-d-cmpc-d3b50f8d6b8db0d2",
+  "batch_id": "motor-d-cmpc-bc5645955ca518eb",
   "offers": [
+    {
+      "id_fuente": "cmpc_19446",
+      "cargo": "JEFE/A AREA ELECTROCONTROL - Pacifico",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
+      "fecha_publicacion": "2026-11-20",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
     {
       "id_fuente": "cmpc_19182",
       "cargo": "ANALISTA LABORATORIO I",
@@ -73,18 +85,6 @@
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "fecha_publicacion": "2026-10-28",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_19129",
-      "cargo": "Líder de Procesos y Calidad - Nacimiento",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19129?c=cmpc",
-      "fecha_publicacion": "2026-10-20",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     }

@@ -13,6 +13,11 @@ on:
         description: AppDeploy official snapshot expected before deploy
         type: string
         required: true
+      dry_run:
+        description: Verify owner credential and API health only; never deploy
+        type: boolean
+        required: false
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -76,4 +81,5 @@ jobs:
           TC_FEED_ATOMIC_VERIFIED_AT: ${{ secrets.TC_FEED_ATOMIC_VERIFIED_AT }}
           TC_ADMIN_E2E_VERIFIED_AT: ${{ secrets.TC_ADMIN_E2E_VERIFIED_AT }}
           TC_APPDEPLOY_MCP_TOKEN: ${{ secrets.TC_APPDEPLOY_MCP_TOKEN }}
+          TC_RELEASE_DRY_RUN: ${{ inputs.dry_run }}
         run: node scripts/release-runner.mjs

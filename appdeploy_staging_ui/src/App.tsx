@@ -1877,7 +1877,7 @@ function App() {
                   </div>}
                   {!selected.url && !selected.contact && !selected.hasContact && <span className='neoDrawerPending'>Este aviso aún no tiene un canal útil de contacto confirmado.</span>}
                   <button className='neoDrawerSecondary' onClick={() => void shareListing(selected)}><Share2 /> Compartir oportunidad</button>
-                  {!isStandalone && <button type='button' className='tcShareInstallButton' onClick={()=>void installApp()}><Download aria-hidden='true'/> Instalar Trabajo Cerca gratis</button>
+                  {!isStandalone && <button type='button' className='tcShareInstallButton' onClick={()=>void installApp()}><Download aria-hidden='true'/> Instalar Trabajo Cerca gratis</button>}
                   {ownerTokens[selected.id]&&selected.origin==='direct'&&<OwnedPublicationEditor key={selected.id} item={selected} ownerToken={ownerTokens[selected.id]} onSaved={()=>{setSelected(null);setNotice('Publicación actualizada gratuitamente.');void load(undefined,true);}}/>}
                   {ownerTokens[selected.id] && <button className='neoDrawerDanger' onClick={() => void deleteOwn(selected)}>Eliminar mi publicación y datos</button>}
                 </div>

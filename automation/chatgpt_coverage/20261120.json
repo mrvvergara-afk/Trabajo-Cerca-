@@ -258,6 +258,258 @@
           "note": "Búsqueda indexada, no lectura de portal privado; no acredita cobertura exhaustiva de la fuente"
         }
       ]
+    },
+    "5": {
+      "expected": 23,
+      "attempted": 23,
+      "readable": 3,
+      "blocked": 3,
+      "failed": 15,
+      "unsupported": 2,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "chiletrabajos-Angol",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "opcionempleo-Collipulli",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "laborum-Ercilla",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "linkedin-Renaico",
+          "status": "blocked",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control JS/anti-bot o acceso deshabilitado"
+        },
+        {
+          "source_id": "computrabajo-Mininco",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-mininco",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "indeed-Nacimiento",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "trabajando-Nacimiento",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/nacimiento",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "chiletrabajos-Negrete",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "opcionempleo-Mulchén",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "laborum-Los Sauces",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "linkedin-Purén",
+          "status": "blocked",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control JS/anti-bot o acceso deshabilitado"
+        },
+        {
+          "source_id": "computrabajo-Traiguén",
+          "status": "blocked",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-traiguen",
+          "offers_found": [],
+          "note": "Control JS/anti-bot o acceso deshabilitado"
+        },
+        {
+          "source_id": "indeed-Lumaco",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "trabajando-Lumaco",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/lumaco",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "chiletrabajos-Victoria",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "opcionempleo-secondary-Los Ángeles",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "laborum-secondary-Temuco",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-temuco.html",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "hospital-angol-enlaces",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://hospitalangol.cl/enlaces/",
+          "offers_found": [],
+          "note": "Página pública legible; sin nueva ficha individual verificable"
+        },
+        {
+          "source_id": "omil-nacimiento",
+          "status": "unsupported",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.nacimiento.cl/noticias",
+          "offers_found": [],
+          "note": "Contenido dinámico sin fichas o RSS no soportado"
+        },
+        {
+          "source_id": "omil-ercilla",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://muniercilla.cl/",
+          "offers_found": [],
+          "note": "Página pública legible; sin nueva ficha individual verificable"
+        },
+        {
+          "source_id": "arauco-empleo",
+          "status": "failed",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://jobs.arauco.com/Chile/search/",
+          "offers_found": [],
+          "note": "URL exacta intentada sin contenido legible"
+        },
+        {
+          "source_id": "negrete-feed",
+          "status": "unsupported",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.muninegrete.cl/feed/",
+          "offers_found": [],
+          "note": "Contenido dinámico sin fichas o RSS no soportado"
+        },
+        {
+          "source_id": "registry-los-angeles-trabaja",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "https://www.losangeles.cl/trabaja-con-nosotros/",
+          "offers_found": [
+            "Auxiliar de Servicio CESFAM Nuevo Horizonte, Los Ángeles, cierre 2026-11-25",
+            "TNS Mantención Industrial CESFAM Santa Fe, Los Ángeles, cierre 2026-11-23",
+            "TANS CESFAM Norte, Los Ángeles, cierre 2026-11-20"
+          ],
+          "note": "Convocatorias públicas verificadas; mercado complementario, sin publicación por espejo vencido"
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "chillan-bridge",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "búsqueda web pública por nombre/territorio",
+          "offers_found": [],
+          "note": "Búsqueda indexada ejecutada; no se recuperó ficha laboral vigente verificable en comunas objetivo; no implica lectura de RRSS privada"
+        },
+        {
+          "source_id": "local-job-pages",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "búsqueda web pública por nombre/territorio",
+          "offers_found": [],
+          "note": "Búsqueda indexada ejecutada; no se recuperó ficha laboral vigente verificable en comunas objetivo; no implica lectura de RRSS privada"
+        },
+        {
+          "source_id": "teleangol",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "búsqueda web pública por nombre/territorio",
+          "offers_found": [],
+          "note": "Búsqueda indexada ejecutada; no se recuperó ficha laboral vigente verificable en comunas objetivo; no implica lectura de RRSS privada"
+        },
+        {
+          "source_id": "radio-victoria",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T07:48:29.648Z",
+          "origin": "búsqueda web pública por nombre/territorio",
+          "offers_found": [],
+          "note": "Búsqueda indexada ejecutada; no se recuperó ficha laboral vigente verificable en comunas objetivo; no implica lectura de RRSS privada"
+        }
+      ],
+      "catalog_status": "catalog_unavailable",
+      "catalog_note": "Espejo generated_at 2026-11-20T04:09:45Z, más de 120 minutos al ejecutar; API real inaccesible por lector; sin lotes nuevos",
+      "candidates_pending": [
+        {
+          "title": "Ayudante Reproceso",
+          "company": "CMPC",
+          "work_commune": "Nacimiento",
+          "url": "https://cl.linkedin.com/jobs/view/ayudante-reproceso-at-cmpc-4473535815",
+          "reason": "vigencia no confirmada y catálogo no conciliable"
+        },
+        {
+          "title": "Trabajador Silvícola Nacimiento Establecimiento",
+          "company": "Serfonac",
+          "url": "https://www.chiletrabajos.cl/trabajo/trabajador-silvicola-nacimiento-establecimiento-3933810",
+          "reason": "faena real no asignada en ficha; no atribuir Nacimiento sin respaldo"
+        }
+      ],
+      "new_batches": 0,
+      "confirmed_publications": 0
     }
   },
   "candidates": [

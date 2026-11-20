@@ -42,7 +42,7 @@ jobs:
         run: |
           node --input-type=module -e '
             const validSha=/^[a-f0-9]{40}$/i.test(process.env.CANDIDATE_SHA || "");
-            const validVersion=/^\\d{12,20}$/.test(process.env.PRODUCTION_BASELINE || "");
+            const validVersion=/^[0-9]{12,20}$/.test(process.env.PRODUCTION_BASELINE || "");
             if(!validSha || !validVersion) {
               process.stderr.write("Invalid release identifiers\\n"); process.exit(1);
             }

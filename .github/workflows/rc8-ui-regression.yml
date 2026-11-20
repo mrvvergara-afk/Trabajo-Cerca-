@@ -29,7 +29,7 @@ jobs:
               const nav=page.locator('.neoMobileNav button');
               const labels=await nav.allTextContents();
               console.log('PUBLIC_TABS',JSON.stringify({width,labels}));
-              for(const name of ['Personas','Directorio','Publicar','Empleos']){
+              for(const name of ['Personas','Directorio','Empleos','Publicar']){
                 const btn=nav.filter({hasText:name}).first();
                 if(!await btn.count()){issues.push(width+': missing '+name);continue}
                 try{

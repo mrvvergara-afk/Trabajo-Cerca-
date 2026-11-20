@@ -1,0 +1,25 @@
+name: LAB safe concurrency baseline (local DB only)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tc-lab-concurrency-baseline
+  cancel-in-progress: false
+
+jobs:
+  lab-concurrency:
+    name: LAB-local DB 5, 10 and 25 VU without production bridge
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run short bounded concurrency baseline
+        env:
+          TC_LAB_LOAD_BASELINE: 'yes'
+        run: node scripts/lab-concurrency-baseline.mjs

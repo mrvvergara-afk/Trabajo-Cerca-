@@ -47,6 +47,16 @@ jobs:
               process.stderr.write("Invalid release identifiers\\n"); process.exit(1);
             }
           '
+      - name: Require candidate commit to be part of reviewed main history
+        env:
+          CANDIDATE_SHA: ${{ inputs.candidate_sha }}
+        run: |
+          git fetch --no-tags --depth=150 origin main
+          git cat-file -e "${CANDIDATE_SHA}^{commit}"
+          git merge-base --is-ancestor "$CANDIDATE_SHA" origin/main || {
+            echo "::error::Candidate is not in trusted main history"
+            exit 1
+          }
       - name: Checkout approved candidate AS DATA ONLY
         uses: actions/checkout@v4
         with:

@@ -1,0 +1,31 @@
+name: LAB synthetic publication lifecycle
+on:
+  push:
+    branches:
+      - qa/lab-release-smoke-20261120
+    paths:
+      - scripts/lab-fixture-lifecycle.mjs
+      - .github/workflows/lab-fixture-lifecycle.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tc-lab-fictional-fixture
+  cancel-in-progress: false
+
+jobs:
+  lab-fixture:
+    name: Create, verify, and remove one fictional LAB listing
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Controlled isolated LAB test with mandatory cleanup
+        env:
+          TC_LAB_FIXTURE_RUN: 'yes'
+        run: node scripts/lab-fixture-lifecycle.mjs

@@ -137,6 +137,22 @@ await test('Anonymous directory moderation and reports are blocked', async () =>
       ' (' + response.status + ')');
   }
 });
+await test('Anonymous release control and execution are both blocked', async () => {
+  for (const [path, method] of [
+    ['api/admin/release/status', 'GET'],
+    ['api/admin/release/execute', 'POST'],
+  ]) {
+    const { response } = await get(path, {
+      method,
+      ...(method === 'POST' ? {
+        body: '{}', headers: { 'content-type': 'application/json' },
+      } : {}),
+    });
+    assert.ok([401, 403].includes(response.status),
+      'Release route exposed without admin access: ' + method +
+      ' ' + path + ' (' + response.status + ')');
+  }
+});
 await test('Incomplete local business submission is rejected without saving', async () => {
   const { response } = await get('api/local-directory', {
     method: 'POST',

@@ -4,7 +4,7 @@
   "baseline_snapshot": "1795136804449",
   "requested_by": "user",
   "authorized": true,
-  "status": "CODE_QA_PENDING_ONE_DEPLOY",
+  "status": "DEPLOYED_PENDING_RUNTIME_QA",
   "asset_origin": "Official logo from user upload was traced to a local color-limited vector; two brand assets share the identical SVG. Original PNG source remains unmodified in chat, vector trace approximates it but is not byte-identical.",
   "files": [
     {
@@ -17,7 +17,7 @@
     },
     {
       "filename": "src/main.tsx",
-      "content": "import { StrictMode } from 'react';\nimport { createRoot } from 'react-dom/client';\nimport App, { OperationsPanel } from './App';\nimport './index.css';\nimport './ux-admin-brand-hotfix.css';\n\ncreateRoot(document.getElementById('root')!).render(\n  <StrictMode>\n    {(window.location.pathname.replace(/\\/$/,'') === '/admin' || window.location.pathname.replace(/\\/$/,'') === '/administracion' || window.location.hash === '#operacion' || new URLSearchParams(window.location.search).get('panel') === 'administracion') ? <OperationsPanel /> : <App />}\n  </StrictMode>\n);\n\nif ('serviceWorker' in navigator) {\n  window.addEventListener('load', () => {\n    void navigator.serviceWorker.register('./sw.js', { scope:'./', updateViaCache:'none' }).then(registration => {\n      // Check for a newer shell when the page is opened. Never reload automatically:\n      // a forced refresh could discard a job application or publication form.\n      void registration.update().catch(() => undefined);\n    }).catch(() => undefined);\n  });\n}\n"
+      "content": "import { StrictMode } from 'react';\nimport { createRoot } from 'react-dom/client';\nimport App, { OperationsPanel } from './App';\nimport './index.css';\nimport './ux-admin-brand-hotfix.css';\n\ncreateRoot(document.getElementById('root')!).render(\n  <StrictMode>\n    {(window.location.pathname.split('/').filter(Boolean).at(-1) === 'admin' || window.location.pathname.split('/').filter(Boolean).at(-1) === 'administracion' || window.location.hash === '#operacion' || new URLSearchParams(window.location.search).get('panel') === 'administracion') ? <OperationsPanel /> : <App />}\n  </StrictMode>\n);\n\nif ('serviceWorker' in navigator) {\n  window.addEventListener('load', () => {\n    void navigator.serviceWorker.register('./sw.js', { scope:'./', updateViaCache:'none' }).then(registration => {\n      // Check for a newer shell when the page is opened. Never reload automatically:\n      // a forced refresh could discard a job application or publication form.\n      void registration.update().catch(() => undefined);\n    }).catch(() => undefined);\n  });\n}\n"
     },
     {
       "filename": "src/stitch-brand.tsx",
@@ -52,7 +52,7 @@
       "diffs": [
         {
           "from": "    window.location.assign(target.pathname + target.search);",
-          "to": "    window.location.assign('/');"
+          "to": "    window.location.assign('./');"
         },
         {
           "from": "src='/icon-192.png' width='192' height='192'",
@@ -70,7 +70,7 @@
       "diffs": [
         {
           "from": "href={window.location.pathname+'?panel=administracion'}",
-          "to": "href='/admin'",
+          "to": "href='./admin'",
           "multiple": true
         }
       ]
@@ -79,7 +79,7 @@
   "source_file_blobs": {
     "public/brand/trabajo-cerca-oficial.svg": "3a6b666d0752ae9afd18e3013dc9bb67fc112e7f",
     "public/brand/trabajo-cerca-simbolo.svg": "3a6b666d0752ae9afd18e3013dc9bb67fc112e7f",
-    "src/main.tsx": "f3dd62eeace3af4eb51320577ca233ffe6292809",
+    "src/main.tsx": "32ff55b92520b617469b43bde153c741c05b7c74",
     "src/stitch-brand.tsx": "a18a9eedd5e71dca59e8d591260f530c96a6a4a0",
     "index.html": "da2e7d49acddb5d264e0b343c7d43d68a45beaaa",
     "public/manifest.webmanifest": "6ed891549b9984b688757d8ce1944ef9cf8d2c5b",
@@ -87,8 +87,8 @@
     "src/ux-admin-brand-hotfix.css": "de6b7e75b0e2cb760dce1006e26fed341003be61",
     "src/commercial-overview.tsx": "c1d89e95448803106d88a0fcc6ac0a24c793cb40",
     "src/commercial-slides.tsx": "43cb46bb7a2d7e1b9ac5d096f15d1c310e280b73",
-    "src/App.tsx": "ec2585c86d2ab846a8fa22a3e4fcd89e07569e47",
-    "src/administrator-access.tsx": "fca14b52bb608c2a6f16ce606d8b723fd523d11c"
+    "src/App.tsx": "4c00d6a737c0aba49ff56330d498ca9fb0dd0897",
+    "src/administrator-access.tsx": "fbf4c7122da8227c777fea30ae30d7a8c2166e8c"
   },
   "checks": [
     "Existing production snapshot v99 hash must match; no migration or deletion",
@@ -98,5 +98,6 @@
     "PWA manifest, splash and web header refer to consistent new local SVG brand",
     "Verify public jobs visible after deploy, advertising endpoints, admin GET 401 anonymous",
     "No changes to motors, feeds, CRM or stored advert records"
-  ]
+  ],
+  "retry_reason": "AppDeploy disallows absolute client routes; relative navigation patched in saved source, no other file changed"
 }

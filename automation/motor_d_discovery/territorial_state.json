@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-20T00:30:41.911600-03:00",
+  "last_run": "2026-11-20T06:39:13.883944-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7949,6 +7949,126 @@
     "ba57990d8e4380699c45": {
       "first_seen": "2026-11-20T00:30:41.911600-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrador-a-de-obra-3080326.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "29e0def756ebd74682cb": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-contable-para-administracion-finanzas-y-control-de-gestion-control-de-gestion-3080378.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e05c97342c89a81f7cfb": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/colorista-industria-plasticos-770000-liquidos-bono-bus-de-acercamiento-colacion-valle-grande-3080377.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d12a51375429c1a382bf": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/ayudante-de-linea-de-terminacion-coronel-3080376.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6f46b0e9fdf9cc4a50eb": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-rios/ayudante-operario-de-caldera-la-union-3080375.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6b00ed5c496c0db647a1": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/operarios-as-de-bodega-6x1-full-time-06-00-a-14-00-ingreso-inmediato-concepcion-680000-liquidos-aprox-3080374.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c2bfebfc92c1df2ae42d": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-noche-san-bernardo-turno-fijo-a-eleccion-3080373.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b4aab1d1996fa77b299f": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/operarios-as-de-bodega-part-time-06-00-a-14-00-ingreso-inmediato-concepcion-35000-liquidos-aprox-por-dia-3080372.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "93986b9c87b030c52a07": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-a-mantenedor-a-puente-alto-la-florida-3080371.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b09b7949396ecec323cb": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/colorista-industria-plasticos-770000-liquidos-bono-bus-de-acercamiento-colacion-valle-grande-3080370.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "16053cdf249e9dfa7663": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-operario-de-maquinaria-y-caldera-puente-alto-3080369.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5e5f5226f0c38761ceed": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/ayudante-operario-de-maquinaria-y-caldera-la-calera-3080368.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fdf8490171d70343720e": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/operarios-de-bodega-turno-tarde-650000-liquidos-curico-3080367.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "659fcb6154c4e60c3ebf": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/operarios-de-bodega-turno-noche-650000-liquidos-curico-3080366.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c4b41ac0c1b630ad280d": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-cargador-isla-de-maipo-3080365.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b484bf8f78049e9c9d30": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-operario-de-maquinaria-y-caldera-isla-de-maipo-3080364.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0b1b4a07b5af1baae457": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-rios/ayudante-operario-de-maquinaria-y-caldera-los-lagos-3080363.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3efad923743a4a3bb682": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-produccion-con-experiencia-en-alimentos-turno-rotativos-lunes-a-sabado-comuna-de-cerrillos-3080362.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9bd146fb9c3db3e3048a": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-sensado-lun-a-vie-560000-liquidos-y-colacion-stgo-centro-3080361.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "250f831c017260d30fca": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-a-planta-tal-tal-4x4-rubro-minero-3080360.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fc20504bded8d78a9540": {
+      "first_seen": "2026-11-20T06:39:13.883944-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/mercaderista-part-time-ovallle-3080359.html",
       "source": "Inventario D04",
       "commune": null
     }

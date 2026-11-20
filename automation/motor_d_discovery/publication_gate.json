@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "scan_date": "2026-11-20T00:30:41.911600-03:00",
-  "checked_at": "2026-11-20T00:31:36.289375-03:00",
+  "scan_date": "2026-11-20T06:39:13.883944-03:00",
+  "checked_at": "2026-11-20T06:39:51.485225-03:00",
   "run_local_date": "2026-11-20",
   "state": "historical_publication_reconciliation_required",
   "eligible_before_catalog": 37,

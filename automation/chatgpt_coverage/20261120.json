@@ -255,6 +255,257 @@
       "discovery_attempted": 5,
       "discovery_readable": 0
     },
+    "1": {
+      "expected": 24,
+      "attempted": 24,
+      "readable": 2,
+      "blocked": 7,
+      "failed": 15,
+      "unsupported": 0,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "computrabajo-Angol",
+          "status": "blocked",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-angol",
+          "offers_found": [],
+          "note": "Página con control JS, verificación anti-bot o HTTP 403; no se eludió el bloqueo."
+        },
+        {
+          "source_id": "indeed-Collipulli",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "trabajando-Collipulli",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/collipulli",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "chiletrabajos-Ercilla",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Ercilla",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "opcionempleo-Renaico",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-renaico.html",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "laborum-Mininco",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-mininco.html",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "linkedin-Nacimiento",
+          "status": "blocked",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Nacimiento%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Página con control JS, verificación anti-bot o HTTP 403; no se eludió el bloqueo."
+        },
+        {
+          "source_id": "computrabajo-Negrete",
+          "status": "blocked",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-negrete",
+          "offers_found": [],
+          "note": "Página con control JS, verificación anti-bot o HTTP 403; no se eludió el bloqueo."
+        },
+        {
+          "source_id": "indeed-Mulchén",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=45",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "trabajando-Mulchén",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/mulchen",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "chiletrabajos-Los Sauces",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "opcionempleo-Purén",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-puren.html",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "laborum-Traiguén",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-traiguen.html",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "linkedin-Lumaco",
+          "status": "blocked",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Página con control JS, verificación anti-bot o HTTP 403; no se eludió el bloqueo."
+        },
+        {
+          "source_id": "computrabajo-Victoria",
+          "status": "blocked",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-victoria",
+          "offers_found": [],
+          "note": "Página con control JS, verificación anti-bot o HTTP 403; no se eludió el bloqueo."
+        },
+        {
+          "source_id": "indeed-secondary-Los Ángeles",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "trabajando-secondary-Los Ángeles",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/los-angeles",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "chiletrabajos-secondary-Temuco",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Temuco",
+          "offers_found": [],
+          "note": "URL intentada pero no recuperó contenido laboral legible; no equivale a fuente vacía."
+        },
+        {
+          "source_id": "omil-lumaco",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.munilumaco.cl/",
+          "offers_found": [],
+          "note": "Página pública legible; no se encontró ficha individual nueva en el contenido revisado."
+        },
+        {
+          "source_id": "omil-mulchen",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.munimulchen.cl/?s=oferta+laboral",
+          "offers_found": [],
+          "note": "URL municipal de búsqueda no accesible; no se interpretó como ausencia de ofertas."
+        },
+        {
+          "source_id": "malleco7-ediciones",
+          "status": "blocked",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+          "offers_found": [],
+          "note": "Página con control JS, verificación anti-bot o HTTP 403; no se eludió el bloqueo."
+        },
+        {
+          "source_id": "bne",
+          "status": "failed",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.bne.gob.cl/ofertas",
+          "offers_found": [],
+          "note": "Ruta /ofertas devolvió HTTP 404; buscador alternativo requerido."
+        },
+        {
+          "source_id": "empleos-publicos",
+          "status": "blocked",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+          "offers_found": [],
+          "note": "Página con control JS, verificación anti-bot o HTTP 403; no se eludió el bloqueo."
+        },
+        {
+          "source_id": "registry-omil-concepcion",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "https://concepcion.cl/informacion-e-inscripciones-en-linea-omil/",
+          "offers_found": [],
+          "note": "Página pública legible; no se encontró ficha individual nueva en el contenido revisado."
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "motor-territorial-controlled",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Búsqueda web pública por fuente/territorio; no se recuperó aviso individual nuevo verificable."
+        },
+        {
+          "source_id": "chiletrabajos",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "public_web_search",
+          "offers_found": [
+            "Supervisor Técnico de Obra — Mulchén (ya existente)",
+            "Psicólogo/a PRM Nacimiento (pendiente de conciliación)"
+          ],
+          "note": "Búsqueda web pública por fuente/territorio; no se recuperó aviso individual nuevo verificable."
+        },
+        {
+          "source_id": "social-public",
+          "status": "unsupported",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Solo resultados públicos indexables; redes privadas o con inicio de sesión no consultadas."
+        },
+        {
+          "source_id": "millaray-collipulli",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Búsqueda web pública por fuente/territorio; no se recuperó aviso individual nuevo verificable."
+        },
+        {
+          "source_id": "cordialisima-sauces",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T16:25:15Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Búsqueda web pública por fuente/territorio; no se recuperó aviso individual nuevo verificable."
+        }
+      ],
+      "discovery_attempted": 5,
+      "discovery_readable": 4,
+      "note": "Lectura directa de páginas municipales de Lumaco y OMIL Concepción; búsquedas públicas alternativas encontraron avisos pero no cuentan como lectura de endpoints fallidos."
+    },
     "4": {
       "expected": 24,
       "attempted": 24,
@@ -813,6 +1064,17 @@
       "expires_at": "2026-11-22",
       "status": "pending_contract_validation",
       "note": "Oferta con sede explícita en Nacimiento aunque portal la etiqueta Los Ángeles; no identificada en espejo de 284 identidades."
+    },
+    {
+      "title": "Psicólogo/a 40 horas PRM Nacimiento",
+      "company": "Fundación Tierra de Esperanza",
+      "commune": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/trabajo/3889597",
+      "publication_date": "2026-09-07",
+      "discovery_date": "2026-11-20",
+      "closing_date": "2026-11-21",
+      "status": "pending_catalog_reconciliation",
+      "reason": "Espejo vencido y API alternativa inaccesible; no publicar a ciegas."
     }
   ],
   "catalog": {
@@ -831,6 +1093,15 @@
       "valid": true,
       "found_new_pending": 2,
       "note": "Espejo válido y fresco; importer backend/chatgpt-direct-import.ts no disponible en ruta solicitada, se evita lote sin validar contrato."
+    },
+    "wave1": {
+      "checked_at": "2026-11-20T16:25:15Z",
+      "mirror_generated_at": "2026-11-20T12:25:22+00:00",
+      "jobIdentityCount": 284,
+      "pagesChecked": 11,
+      "complete": true,
+      "valid": false,
+      "reason": "Espejo con 239 minutos de antigüedad; API real inaccesible mediante lector web; catalog_unavailable. No se publicaron lotes."
     }
   },
   "new_batches": 0,

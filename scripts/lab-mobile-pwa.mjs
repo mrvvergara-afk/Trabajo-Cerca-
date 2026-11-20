@@ -262,9 +262,26 @@ await check('Public menu has account but no administrator shortcut', async () =>
     await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.locator('.tcSiteMenu summary').first().click();
     assert.ok(await page.locator('.tcMenuAccount').isVisible());
+    assert.equal(await page.getByRole('link', { name: /Panel de administración/i }).count(), 0, 'no public admin link for guests');
     assert.equal(await page.getByRole('button', { name: 'Acceso administrativo' }).count(), 0);
     assert.equal(await page.getByRole('button', { name: 'Ver personas y oficios' }).count(), 0);
     assert.ok(await page.getByRole('button', { name: 'Promocionar negocio' }).isVisible());
+  } finally { await ctx.close(); }
+});
+await check('Protected LAB admin route stays reachable for authorized sign-in', async () => {
+  const ctx = await mobile(), page = await ctx.newPage();
+  try {
+    await page.goto(new URL('admin', BASE).toString(), {
+      waitUntil: 'domcontentloaded', timeout: 30000,
+    });
+    await page.getByRole('heading', { name: 'Acceso administrativo' }).waitFor({
+      timeout: 18000,
+    });
+    assert.ok(await page.getByRole('button', {
+      name: 'Ingresar como administrador',
+    }).count(), 'admin login action should exist');
+    assert.equal(await page.locator('.tcAdminBadge[data-allowed="true"]').count(), 0,
+      'anonymous session cannot access administrative operations');
   } finally { await ctx.close(); }
 });
 await browser.close();

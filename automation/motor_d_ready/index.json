@@ -162,6 +162,12 @@
       "file": "20261120/motor-d-20261120-0eed2a9ffbee789014.json",
       "count": 1,
       "batch_type": "recovery"
+    },
+    {
+      "batch_id": "motor-d-20261120-a9e1312c01453fbd0c",
+      "file": "20261120/motor-d-20261120-a9e1312c01453fbd0c.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -183,6 +189,7 @@
     "d_46607b264d4d83a176c3",
     "d_4bdcac8ef560f0fe716d",
     "d_4c599ad95a20501aa8c8",
+    "d_4de1ef999c10ba4947aa",
     "d_5241af5f68d396e67450",
     "d_561f393870110fb67e2a",
     "d_56d079ed0f37b488c6d6",
@@ -258,9 +265,11 @@
     "job:[\"inspector comercial victoria ercilla\", \"peoplego\", [\"victoria\"]]",
     "job:[\"instrumentista area\", \"cmpc\", [\"nacimiento\"]]",
     "job:[\"instrumentista de area santa fe\", \"cmpc\", [\"nacimiento\"]]",
+    "job:[\"jefe a area electrocontrol pacifico\", \"cmpc\", [\"collipulli\"]]",
     "job:[\"jefe de asesoria angol\", \"consultores 2000\", [\"angol\"]]",
     "job:[\"laboratorista vial clase b para aif angol\", \"consultores 2000\", [\"angol\"]]",
     "job:[\"lider de procesos y calidad nacimiento\", \"cmpc\", [\"nacimiento\"]]",
+    "job:[\"lider prevencion de riesgo y sistema integrado de gestion\", \"recompany\", [\"puren\"]]",
     "job:[\"m1 moldajero obra gruesa hospital de nacimiento contrato a trato\", \"constructora aljo\", [\"nacimiento\"]]",
     "job:[\"mecanico a automotriz nacimiento\", \"serfonac\", [\"nacimiento\"]]",
     "job:[\"mecanico a de area nacimiento planta santa fe\", \"cmpc\", [\"nacimiento\"]]",
@@ -339,6 +348,7 @@
     "source:chiletrabajos:3934484",
     "source:chiletrabajos:3934867",
     "source:chiletrabajos:3934905",
+    "source:chiletrabajos:3935812",
     "source:chiletrabajos:3936181",
     "url:https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
     "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
@@ -362,6 +372,7 @@
     "url:https://chiletrabajos.cl/trabajo/inspector-comercial-victoria-ercilla-3934905",
     "url:https://chiletrabajos.cl/trabajo/jefe-de-asesoria-angol-3915725",
     "url:https://chiletrabajos.cl/trabajo/laboratorista-vial-clase-b-para-aif-angol-3915741",
+    "url:https://chiletrabajos.cl/trabajo/lider-prevencion-de-riesgo-y-sistema-integrado-de-gestion-3935812",
     "url:https://chiletrabajos.cl/trabajo/m1-moldajero-obra-gruesa-hospital-de-nacimiento-contrato-a-trato-3887988",
     "url:https://chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
     "url:https://chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
@@ -399,6 +410,7 @@
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19252?c=cmpc",
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
     "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
+    "url:https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
     "url:https://mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/ayudante-de-cancha-teclero-vacaciones-mulchen-3074287.html",
     "url:https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/practica-profesional-contador-auditor-nacimiento-3911316"
   ],

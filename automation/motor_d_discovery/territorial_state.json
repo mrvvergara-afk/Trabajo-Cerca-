@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-20T14:45:52.417477-03:00",
+  "last_run": "2026-11-20T18:15:52.287631-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -8334,6 +8334,156 @@
       "first_seen": "2026-11-20T14:45:52.417477-03:00",
       "url": "https://www.angolnoticiasnew.cl/regional/club-de-leones-de-collipulli-se-suma-a-los-homenajes-a-luis-sandoval-bascur-ejemplo-de-trabajo-y-emprendimiento-a-sus-96-anos/",
       "source": "Inventario P03",
+      "commune": null
+    },
+    "2c54b249d33a1ee397ed": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/urgente-buscamos-operadores-de-tienda-con-experiencia-en-caja-a-cuenta-o-lider-ingreso-inmediato-zona-oriente-rm-3080889.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "82014d0739a63fd65aa2": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-ventas-en-ruta-canal-tradicional-santiago-3080888.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6f63592afcdf7ca832b8": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-formacion-academica-3080887.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c67e3e2e56c9acb4d916": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/docente-de-ensenanza-media-en-ciencias-rm-sector-sur-3080886.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f27822b7d45904642b61": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-call-center-presencial-providencia-3080885.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "aae5ff139b78b6a4fcac": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-contact-center-part-time-30-horas-3080884.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ba947ebd8d04ffced6bd": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-soporte-ti-presencial-3080883.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0e37d3fcddd6f2e64879": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apoyo-navideno-part-time-grandes-tiendas-mall-plaza-vespucio-y-mall-florida-del-01-al-31-de-diciembre-3080882.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2c8eebb0d2b66b3b51f2": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apoyo-navideno-part-time-grandes-tiendas-mall-plaza-oeste-del-01-al-31-de-diciembre-3080881.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "85222709715dbe0fa2dd": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/buscamos-jefe-de-planta-placilla-empresa-del-rubro-automotriz-3080880.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b90294240480299c9b05": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/capacitacion-gratuita-de-caja-lider-o-acuenta-para-rancagua-ingreso-inmediato-3080879.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "da3647bdf7384033884c": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/capacitacion-gratuita-de-caja-lider-o-acuenta-para-rancagua-ingreso-inmediato-3080878.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5036581852df86fd973d": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/administrativo-a-talca-3080877.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c23f9a78366221218f8c": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-con-licencia-d-700000-liquidos-turno-am-3080876.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "433a039a45513eeecb2c": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-multifunciones-de-logistica-reemplazo-por-1-mes-3080875.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d4d04fbe46bde0ae9d4d": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-en-prevencion-de-riesgos-pudahuel-3080874.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4fd463b29bc5bdc37550": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarias-de-bodega-ingreso-inmediato-periodo-cyber-lo-boza-pudahuel-3080873.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "363b08610b6db659c64e": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-pudahuel-pudahuel-3080872.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2e36e09fbd1ad3422447": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-bodega-renca-3080871.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "86c8b275ebf2925983ab": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/administrativo-operaciones-plazo-fijo-el-penon-coquimbo-3080870.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cfa98de1434c3645a5e4": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/lider-prevencion-de-riesgo-y-sistema-integrado-de-gestion-3935812",
+      "source": "Portal Chiletrabajos · palabra clave · Purén",
+      "commune": "Purén"
+    },
+    "459bfc72de37ad229393": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-en-alimentacion-sala-cuna-2/",
+      "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "f81668fbb49dffc8d984": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/encargadoa-de-agendas-del-servicio-de-orientacion-medica-y-estadistica-some-2/",
+      "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "1f2dd0aec6443eb3a3d7": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/administrativo-a-de-logistica-2/",
+      "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "1f2d7de7d36287733243": {
+      "first_seen": "2026-11-20T18:15:52.287631-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/profesional-estadistico-2/",
+      "source": "Salud Araucanía Norte",
       "commune": null
     }
   }

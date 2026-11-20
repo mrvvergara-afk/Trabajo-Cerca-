@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-20T14:45:52.417477-03:00",
+  "source_scan_date": "2026-11-20T18:15:52.287631-03:00",
   "registered_total": 202,
-  "total_pending": 83,
+  "total_pending": 81,
   "group_counts": {
-    "failed_public_source": 11,
+    "failed_public_source": 9,
     "partial_index": 2,
     "regional_query": 2,
     "restricted_job_portal": 38,
@@ -39,7 +39,7 @@
       "high_priority": 5
     },
     "Renaico": {
-      "pending": 17,
+      "pending": 16,
       "high_priority": 5
     },
     "Traiguén": {
@@ -47,15 +47,15 @@
       "high_priority": 5
     },
     "Victoria": {
-      "pending": 18,
+      "pending": 17,
       "high_priority": 5
     },
     "Mulchén": {
-      "pending": 16,
+      "pending": 15,
       "high_priority": 6
     },
     "Negrete": {
-      "pending": 16,
+      "pending": 17,
       "high_priority": 5
     },
     "Nacimiento": {
@@ -335,25 +335,11 @@
       "recovered": false
     },
     {
-      "id": "b66fcc53a9a46d116825",
-      "name": "Portal LinkedIn · Renaico",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "id": "a7900ab8f50a32be5239",
+      "name": "Portal LinkedIn · Negrete",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
       "communes": [
-        "Renaico"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "b6fdcc3d375d283f4f7b",
-      "name": "Portal LinkedIn · Mulchén",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mulch%C3%A9n%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Mulchén"
+        "Negrete"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -393,20 +379,6 @@
         "Mulchén",
         "Negrete",
         "Nacimiento"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "d0dff4fb4776a3a53f1e",
-      "name": "Portal LinkedIn · Victoria",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Victoria"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

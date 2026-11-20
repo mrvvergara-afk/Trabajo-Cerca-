@@ -1,0 +1,47 @@
+name: RC8 branding, responsive UI and admin QA
+on:
+  pull_request:
+    paths:
+      - 'public/brand/**'
+      - 'appdeploy_staging_ui/**'
+      - 'appdeploy_staging_public/**'
+      - 'automation/test_release_candidate_rc8.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC8_APPDEPLOY_FILES.json'
+      - '.github/workflows/rc8-brand-admin-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/brand/**'
+      - 'appdeploy_staging_ui/**'
+      - 'appdeploy_staging_public/**'
+      - 'automation/test_release_candidate_rc8.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC8_APPDEPLOY_FILES.json'
+      - '.github/workflows/rc8-brand-admin-qa.yml'
+permissions: {contents: read}
+jobs:
+  rc8:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Verify brand, standalone admin route and release contract
+        run: python automation/test_release_candidate_rc8.py
+      - name: TypeScript and CSS compilation
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/main.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-main.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/App.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-app.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/administrator-access.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-admin.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/stitch-brand.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-brand.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/commercial-overview.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-editor.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/commercial-slides.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-carousel.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/ux-admin-brand-hotfix.css --outfile=/tmp/tc-mobile.css
+      - name: Core commercial carousel contract
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/test_commercial_media_policy.ts --bundle --platform=node --format=esm --outfile=/tmp/tc-media-test.mjs
+          node /tmp/tc-media-test.mjs
+      - name: Offline source-only test
+        run: echo "No public data updates or deployment during this QA"

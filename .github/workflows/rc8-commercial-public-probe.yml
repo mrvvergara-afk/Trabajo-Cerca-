@@ -1,0 +1,39 @@
+name: RC8 commercial images public data preflight (read-only)
+
+on:
+  pull_request:
+    paths: ['.github/workflows/rc8-commercial-public-probe.yml']
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  public-media:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: Verify public advertising media, not customer data
+        shell: bash
+        run: |
+          python - <<'PY'
+          import urllib.request,urllib.parse,json
+          root='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro'
+          for place in ['Collipulli','Mininco','Todas']:
+            q=urllib.parse.urlencode({'place':place,'page':'home'})
+            req=urllib.request.Request(root+'/api/growth/advertising?'+q,headers={'User-Agent':'TrabajoCerca-Commercial-ReadOnly/1.0','Accept':'application/json'})
+            try:
+              with urllib.request.urlopen(req,timeout=15) as resp:
+                obj=json.load(resp)
+              commercial=obj.get('commercial') or []
+              rows=[]
+              for item in commercial:
+                if 'mininco' not in str(item.get('businessName','')).lower():continue
+                slides=item.get('slides') or []
+                rows.append({'business':'Ferretería Mininco','has_main_image':bool(item.get('imageUrl')),
+                  'slides_total':len(slides),'slides_with_image':sum(bool(s.get('imageUrl')) for s in slides),
+                  'slide_types':[s.get('kind') for s in slides],
+                  'status':item.get('status')})
+              print('MININCO_PUBLIC_MEDIA',json.dumps({'place':place,'matches':rows,'commercial_total':len(commercial)},ensure_ascii=False))
+            except Exception as exc:
+              print('MEDIA_READ_ERROR',place,type(exc).__name__,str(exc)[:130])
+          PY

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-19T19:16:15.334778-03:00",
+  "last_run": "2026-11-19T23:17:53.209104-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -7806,6 +7806,126 @@
       "first_seen": "2026-11-19T19:16:15.334778-03:00",
       "url": "https://radioviaducto.cl/2026/11/19/club-de-leones-de-collipulli-se-suma-a-los-homenajes-a-luis-sandoval-bascur-ejemplo-de-trabajo-y-emprendimiento-a-sus-96-anos/",
       "source": "Radio Viaducto",
+      "commune": null
+    },
+    "10fc85a79dae0e6ea09e": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asesor-a-comercial-de-venta-de-seguros-con-experiencia-en-telemarketing-dirigido-a-clientes-de-importante-banco-3080325.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d876e236063a7a6a3f59": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/carpinteros-as-paletizado-faena-segunda-region-proyecto-por-3-meses-3080324.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2c324192a944cee7d946": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-bodega-con-o-sin-experiencia-turno-tarde-san-bernardo-3080323.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "54c4cf6b95ed68453255": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-grua-y-transpaleta-comuna-de-pudahuel-3080322.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "87e1c9d79e383ea1de87": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-administrativo-logistico-noviciado-clerk-3080321.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7ece00f3acbecd8a8d16": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-administrativo-logistico-noviciado-clerk-3080320.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0677f3c0aa194687295d": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/reemplazo-operario-de-bodega-talcahuano-650000-con-licencia-clase-d-3080319.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0ac5096497a81101e32a": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/operarios-as-de-bodega-lontue-3080318.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "be5178675ea81d366f42": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/picker-de-supermercado-en-colina-3080317.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5edbfa282edf8e767fbb": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-quilicura-lunes-viernes-3080316.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1d6b6c9f8725a0881f82": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/repartidor-a4-lunes-a-viernes-814000-liquidos-mensuales-residencia-en-huechuraba-huechuraba-3080315.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ba12f3019d5481850854": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/jefe-de-operaciones-consumo-masivo-calama-3080314.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "88258eeef32cf2da8166": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/experto-a-en-prevencion-de-riesgos-renca-3080313.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f93c1a03842d198d563b": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tens-pabellonero-a-720000-4to-turno-institucion-de-salud-comuna-de-providencia-3080312.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "eefb5cf1a8c4d9717dd0": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tens-volante-pabellon-jornada-am-o-pm-de-lunes-a-viernes-850000-liq-providencia-pabellonero-3080311.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "033d1b925685bb0dc8c2": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/enfermeras-os-urgencias-estacion-central-3080310.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "15733f584183c8d52e81": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tens-medico-quirurgico-adulto-estacion-central-3080309.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "aee0c29ac91da549a48e": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/enfermero-a-clinico-a-pabellon-centro-medico-santa-lucia-reemplazo-vacaciones-3080308.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4728489a1ba8e5b0459e": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/medicos-as-cirujanos-reemplazo-estacion-central-3080307.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "63253abdd1bf3b0e4562": {
+      "first_seen": "2026-11-19T23:17:53.209104-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/enfermero-a-clinico-a-hemodialisis-reemplazo-vacaciones-3080306.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

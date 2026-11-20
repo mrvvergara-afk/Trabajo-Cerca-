@@ -114,6 +114,29 @@ await test('Anonymous administrator session and backup are blocked', async () =>
   assert.ok([401, 403].includes(backup.response.status),
     'backup export returned ' + backup.response.status);
 });
+await test('Anonymous directory moderation and reports are blocked', async () => {
+  const id = 'local_00000000-0000-0000-0000-000000000000';
+  const endpoints = [
+    'api/admin/local-directory',
+    'api/admin/local-directory/' + id + '/approve',
+    'api/admin/local-directory/' + id + '/hide',
+    'api/admin/local-directory/reviews/review_' + '0'.repeat(64) + '/approve',
+    'api/admin/local-directory/reports/report_' +
+      '00000000-0000-0000-0000-000000000000' + '/resolve',
+  ];
+  for (let i = 0; i < endpoints.length; i++) {
+    const { response } = await get(endpoints[i], {
+      method: i === 0 ? 'GET' : 'POST',
+      ...(i === 0 ? {} : {
+        body: '{}',
+        headers: { 'content-type': 'application/json' },
+      }),
+    });
+    assert.ok([401, 403].includes(response.status),
+      'admin moderation unexpectedly available: ' + endpoints[i] +
+      ' (' + response.status + ')');
+  }
+});
 await test('Incomplete local business submission is rejected without saving', async () => {
   const { response } = await get('api/local-directory', {
     method: 'POST',

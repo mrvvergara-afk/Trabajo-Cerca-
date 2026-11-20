@@ -70,8 +70,8 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertEqual(m["target_app"]["app_id"], "trabajo-cerca-laboratorio-3ojgro")
         self.assertEqual(m["target_app"]["snapshot_version"], SNAPSHOT)
         self.assertEqual(m["target_app"]["app_type"], "frontend+backend")
-        self.assertEqual(m["authorization"], "NOT_AUTHORIZED")
-        self.assertIn("NOT_DEPLOYABLE_WITHOUT_ISOLATED_LAB", m["status"])
+        self.assertEqual(m["authorization"], "USER_AUTHORIZED_ONE_CONSOLIDATED_DEPLOY_2026-11-19")
+        self.assertIn("QA_PENDING", m["status"])
         self.assertTrue(any("explicit user authorization" in x for x in m["guardrails"]))
         self.assertTrue(any("database" in x for x in m["guardrails"]))
 

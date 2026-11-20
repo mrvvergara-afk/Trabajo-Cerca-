@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   validatePayload, enforceAttestations, AppDeployMcp,
-  runRelease, OFFICIAL_ID,
+  runRelease, testOwnerConnection, OFFICIAL_ID,
 } from './release-runner.mjs';
 const SHA = 'a'.repeat(40);
 const BASE = '1795209664148';
@@ -128,5 +128,13 @@ test('bearer rejection cannot deploy anything', async () => {
   await assert.rejects(() => runRelease({ env: env(),
     request: stub.request, payload: good(),
     baseline: BASE, commitSha: SHA }), /MCP HTTP 401/);
+  assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 0);
+});
+
+test('owner connection dry-run never invokes deployment', async () => {
+  const stub = stubTransport();
+  const report = await testOwnerConnection(env(), stub.request);
+  assert.equal(report.connected, true);
+  assert.equal(report.version, BASE);
   assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 0);
 });

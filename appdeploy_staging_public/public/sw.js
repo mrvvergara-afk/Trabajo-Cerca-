@@ -1,6 +1,6 @@
-const CACHE='trabajo-cerca-shell-brand-20261120';
+const CACHE='trabajo-cerca-shell-icons-20261120-v2';
 const SHARE_CACHE='trabajo-cerca-share-v1';
-const CORE=['./','./manifest.webmanifest','./brand/trabajo-cerca-oficial.svg','./brand/trabajo-cerca-simbolo.svg'];
+const CORE=['./','./manifest.webmanifest','./brand/trabajo-cerca-oficial.svg','./brand/trabajo-cerca-simbolo.svg','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 self.addEventListener('install',event=>{event.waitUntil((async()=>{
  const cache=await caches.open(CACHE);await cache.addAll(CORE);
  try{const html=await (await fetch('./',{cache:'reload'})).text();

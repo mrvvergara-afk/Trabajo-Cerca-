@@ -1646,7 +1646,7 @@ function App() {
               <button aria-current={directoryMode?'page':undefined} onClick={() => openLocalDirectory('all')}>Servicios y negocios</button>
             </nav>
             <button type='button' className='tcTopPublish' onClick={()=>setShowPublishChoices(true)}><PlusCircle aria-hidden='true'/> Publicar gratis</button>
-            <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcMobilePlaceLabel' aria-hidden='true'>Comuna</span><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Todas':value}</option>)}</select></label>
+            <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcMobilePlaceValue' aria-hidden='true'>{place==='Todas'?'Todas las comunas':place}</span><span className='tcVisuallyHidden'>Seleccionar comuna</span><select aria-label='Seleccionar comuna' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Todas':value}</option>)}</select></label>
             <SiteMenu onRadar={()=>openSecondary('neo-radar')} onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
               onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
               onCities={()=>openSecondary('tc-other-cities')} onNews={isStandalone?undefined:()=>openSecondary('actualidad-laboral')}

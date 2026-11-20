@@ -1,0 +1,86 @@
+name: RC10 crisp identity, Android PNG icon build and full commune selector
+
+on:
+  pull_request:
+    paths:
+      - 'public/brand/trabajo-cerca-*.svg'
+      - 'scripts/generate-pwa-icons.mjs'
+      - 'appdeploy_staging_ui/**'
+      - 'appdeploy_staging_public/**'
+      - '.github/workflows/rc10-pwa-quality.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/brand/trabajo-cerca-*.svg'
+      - 'scripts/generate-pwa-icons.mjs'
+      - 'appdeploy_staging_ui/**'
+      - 'appdeploy_staging_public/**'
+      - '.github/workflows/rc10-pwa-quality.yml'
+
+permissions: {contents: read}
+
+jobs:
+  crisp-icons-and-communes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install only build-time vector rasterizer and TS parser
+        run: |
+          npm init -y >/dev/null
+          npm install --no-save --ignore-scripts --no-audit --no-fund @resvg/resvg-js@2.6.2 esbuild@0.25.12
+      - name: Generate actual PNG install icons from official SVG
+        run: node scripts/generate-pwa-icons.mjs
+      - name: Assert PNG dimensions and icon manifest
+        run: |
+          python - <<'PY'
+          import json,struct,pathlib,xml.etree.ElementTree as ET
+          root=pathlib.Path('public')
+          for file,dimension in [('icon-192.png',192),('icon-512.png',512),('icon-maskable-512.png',512)]:
+            b=(root/file).read_bytes()
+            assert b[:8]==bytes([137,80,78,71,13,10,26,10]),file
+            width,height=struct.unpack('>II',b[16:24])
+            assert width==dimension and height==dimension,(file,width,height)
+            assert len(b)>4000,(file,len(b))
+          logo=root/'brand/trabajo-cerca-oficial.svg'
+          ET.parse(logo)
+          manifest=json.load(open('appdeploy_staging_public/public/manifest.webmanifest'))
+          icons=manifest['icons']
+          assert len(icons)==3 and {i['purpose'] for i in icons}=={'maskable','any'}
+          assert set(i['sizes'] for i in icons)=={'192x192','512x512'}
+          assert all('icon-' in i['src'] and i['type']=='image/png' for i in icons)
+          assert manifest['id']=='./' and manifest['start_url']=='./'
+          boot=pathlib.Path('appdeploy_staging_ui/index.html').read_text()
+          assert 'icon-192.png?v=crisp-20261120' in boot
+          assert 'brand/trabajo-cerca-oficial.svg' in boot
+          worker=pathlib.Path('appdeploy_staging_public/public/sw.js').read_text()
+          assert 'trabajo-cerca-shell-icons-20261120-v2' in worker
+          assert all(x in worker for x in ('icon-192.png','icon-512.png','icon-maskable-512.png'))
+          print('RC10_PWA_ICONS_PASS')
+          PY
+      - name: Validate full commune name and invisible native select
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          app=Path('appdeploy_staging_ui/src/App.tsx').read_text()
+          css=Path('appdeploy_staging_ui/src/ux-rc9-mobile.css').read_text()
+          pkg=Path('appdeploy_staging_ui/package.json').read_text()
+          assert 'tcMobilePlaceValue' in app and "place==='Todas'?'Todas las comunas':place" in app
+          assert "aria-label='Seleccionar comuna'" in app
+          assert '.tcMobilePlace>select' in css
+          assert 'opacity:0!important' in css
+          assert 'width:100%!important;max-width:none!important' in css
+          assert '"prebuild": "node scripts/generate-pwa-icons.mjs"' in pkg
+          assert '"@resvg/resvg-js": "2.6.2"' in pkg
+          print('RC10_FULL_COMMUNE_SELECTOR_PASS')
+          PY
+      - name: Compile changed app syntax and mobile CSS
+        run: |
+          ./node_modules/.bin/esbuild appdeploy_staging_ui/src/App.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/rc10-app.js
+          ./node_modules/.bin/esbuild appdeploy_staging_ui/src/ux-rc9-mobile.css --outfile=/tmp/rc10-css.css
+      - name: No deployment in CI
+        run: echo 'Source and generated PNG checks only. No live writes.'

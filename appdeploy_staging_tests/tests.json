@@ -741,5 +741,42 @@
       "Verificar que la rotulación Publicidad local permanece y las imágenes no se cortan"
     ],
     "expected": "Galería fluida, logo sin recorte, sin numeración técnica ni imagen institucional de sustitución indebida."
+  },
+  {
+    "name": "Selector de comuna muestra nombre completo en Android",
+    "viewport": "mobile",
+    "covers": [
+      "Comuna actual visible completa",
+      "Nacimiento y Collipulli sin truncamiento",
+      "selector nativo accesible",
+      "filtros territoriales intactos"
+    ],
+    "description": "El nombre de la comuna es texto visible de ancho completo; la selección nativa permanece disponible.",
+    "steps": [
+      "Abrir Trabajo Cerca en un teléfono de 320 a 390 px",
+      "Elegir Nacimiento en la cabecera",
+      "Comprobar que se lee Nacimiento completo y no aparece Nacimi...",
+      "Cambiar a Collipulli y confirmar el nombre completo y las ofertas filtradas"
+    ],
+    "expected": "Selector totalmente legible, sin recorte y sin perder navegación por comuna."
+  },
+  {
+    "name": "Instalación PWA con logo nítido e iconos correctos",
+    "viewport": "mobile",
+    "covers": [
+      "Logo de arranque sin pixelación",
+      "Iconos Android 192 y 512",
+      "Icono maskable",
+      "PWA manifest actualizado"
+    ],
+    "description": "Se utiliza el mismo emblema de curvas limpias en inicio, cabecera e iconos Android generados automáticamente.",
+    "steps": [
+      "Abrir página web en Chrome",
+      "Comprobar que el logo carga nítido y sin bordes dentados",
+      "Abrir la invitación de instalación",
+      "Instalar desde Chrome y verificar icono Trabajo Cerca",
+      "Abrir la PWA instalada y comprobar splash y cabecera"
+    ],
+    "expected": "Splash e icono emplean la identidad actual, sin icono radar anterior. Android puede exigir quitar un acceso previo antes de instalar."
   }
 ]

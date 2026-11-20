@@ -133,3 +133,39 @@
  .tcStitchShell .tcLocalAdvertising.tcCommercialCard .tcAdContent.tcPremiumCommercial{
   gap:8px!important;grid-template-columns:86px minmax(0,1fr)!important}
 }
+
+/* RC10: Android native <select> text ellipsizes even in full-width row.
+   Show the exact selected place as ordinary text; retain real native control. */
+.tcStitchShell .tcMobilePlaceValue{display:none;pointer-events:none}
+@media(max-width:767px){
+  .tcStitchShell .neoTopbar .tcTopbarInner>.tcMobilePlace{
+    position:relative!important;isolation:isolate!important;
+    box-sizing:border-box!important;width:100%!important;max-width:none!important;
+    grid-column:1/-1!important;grid-row:2!important;min-width:0!important;
+    display:flex!important;justify-content:flex-start!important;
+    align-items:center!important;padding-inline:12px 34px!important;
+    overflow:hidden!important
+  }
+  .tcStitchShell .tcMobilePlace .tcMobilePlaceLabel{display:none!important}
+  .tcStitchShell .tcMobilePlace .tcMobilePlaceValue{
+    display:block!important;flex:1 1 auto!important;min-width:0!important;
+    max-width:100%!important;white-space:normal!important;
+    overflow-wrap:break-word!important;word-break:normal!important;
+    font-size:clamp(12px,3.6vw,15px)!important;line-height:1.2!important;
+    font-weight:750!important;color:#24573c!important;overflow:visible!important
+  }
+  .tcStitchShell .tcMobilePlace>select{
+    display:block!important;position:absolute!important;inset:0!important;
+    width:100%!important;height:100%!important;max-width:none!important;
+    min-width:100%!important;margin:0!important;opacity:0!important;
+    z-index:3!important;cursor:pointer!important;appearance:none!important
+  }
+  .tcStitchShell .tcMobilePlace:after{
+    content:'⌄';position:absolute;right:12px;top:50%;
+    transform:translateY(-55%);font-size:23px;line-height:1;
+    color:#326b49;pointer-events:none;z-index:2
+  }
+  .tcStitchShell .tcMobilePlace:focus-within{
+    outline:2px solid #338b5a!important;outline-offset:2px!important
+  }
+}

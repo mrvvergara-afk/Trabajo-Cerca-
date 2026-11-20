@@ -1,0 +1,30 @@
+name: Autonomous release runner QA (zero production writes)
+on:
+  pull_request:
+    paths:
+      - scripts/release-runner.mjs
+      - scripts/release-runner.test.mjs
+      - .github/workflows/trabajo-cerca-release.yml
+      - .github/workflows/release-runner-ci.yml
+      - release/payload.json
+  push:
+    branches:
+      - feature/autonomous-release-runner-20261120
+    paths:
+      - scripts/release-runner.mjs
+      - scripts/release-runner.test.mjs
+      - .github/workflows/release-runner-ci.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mock-releases:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --check scripts/release-runner.mjs
+      - run: node --test scripts/release-runner.test.mjs

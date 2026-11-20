@@ -39,8 +39,9 @@ EXPECTED = {
     "src/public-content-policy.ts",
     "src/territorial-radar.tsx",
     "src/site-menu.tsx",
+    "tests/tests.json",
 }
-NEW_FILES = {"backend/worksite-semantics.ts", "backend/gemini-verify-scheduler.ts", "src/house-photo-selection.ts", "src/commercial-media-policy.ts", "backend/engine-metrics-contract.ts", "backend/engine-telemetry.ts", "backend/engine-source-audit.ts", "src/executive-charts.tsx", "src/executive-metrics.ts", "src/executive-control-center.tsx", "src/executive-control-center.css", "src/public-content-policy.ts"}
+NEW_FILES = {"backend/worksite-semantics.ts", "backend/gemini-verify-scheduler.ts", "src/house-photo-selection.ts", "src/commercial-media-policy.ts", "backend/engine-metrics-contract.ts", "backend/engine-telemetry.ts", "backend/engine-source-audit.ts", "src/executive-charts.tsx", "src/executive-metrics.ts", "src/executive-control-center.tsx", "src/executive-control-center.css", "src/public-content-policy.ts", "tests/tests.json"}
 
 
 def stage_path(name: str) -> pathlib.Path:
@@ -48,6 +49,8 @@ def stage_path(name: str) -> pathlib.Path:
         return ROOT / "appdeploy_staging_backend/index.ts"
     if name.startswith("backend/"):
         return ROOT / "appdeploy_staging" / name.removeprefix("backend/")
+    if name == "tests/tests.json":
+        return ROOT / "appdeploy_staging_tests/tests.json"
     if name.startswith("src/"):
         return ROOT / "appdeploy_staging_ui" / name
     raise AssertionError("Unexpected release path " + name)
@@ -75,7 +78,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertTrue(any("explicit user authorization" in x for x in m["guardrails"]))
         self.assertTrue(any("database" in x for x in m["guardrails"]))
 
-    def test_only_twenty_five_expected_files(self):
+    def test_only_twenty_six_expected_files(self):
         self.assertEqual(set(self.files), EXPECTED)
         self.assertEqual(len(self.manifest["files"]), len(self.files))
         self.assertEqual(sum(x.startswith("backend/") for x in self.files), 10)
@@ -193,7 +196,7 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertIn("src/App.tsx",self.files)
         self.assertNotIn("src/commercial-admin.tsx",self.files)
         self.assertNotIn("src/house-admin.tsx",self.files)
-        self.assertEqual(len(self.files),25)
+        self.assertEqual(len(self.files),26)
 
 
     def test_commercial_logo_is_persistent_and_never_cropped(self):
@@ -350,6 +353,19 @@ class ReleaseCandidatePreflight(unittest.TestCase):
         self.assertNotIn("Todavía no hay noticias recientes revisadas",sec)
         self.assertIn("Trámites y fuentes oficiales",sec)
         self.assertEqual(len(self.files["src/site-menu.tsx"]["diffs"]),2)
+
+
+    def test_existing_app_test_suite_is_preserved_and_expanded(self):
+        tests=json.loads(stage_path("tests/tests.json").read_text(encoding="utf-8"))
+        self.assertGreaterEqual(len(tests),41)
+        self.assertEqual(sum(x.get("sanity") is True for x in tests),1)
+        joined=" ".join(x["name"] for x in tests)
+        for text in ("Radar limpio con 12 comunas","Noticias y trámites solo en sitio web",
+                     "Centro de Control privado","Publicidad comercial: logo fijo"):
+            self.assertIn(text,joined)
+        self.assertTrue(all(x.get("covers") for x in tests))
+        self.assertEqual(self.files["tests/tests.json"]["content"],
+                         stage_path("tests/tests.json").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

@@ -6,6 +6,8 @@ on:
       - qa/lab-release-smoke-*
     paths:
       - scripts/lab-release-smoke.mjs
+      - scripts/release-runner.mjs
+      - scripts/release-runner.test.mjs
       - .github/workflows/lab-release-smoke.yml
   pull_request:
     paths:
@@ -29,5 +31,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Validate independent release runner against mock MCP, without secrets
+        run: node --test scripts/release-runner.test.mjs
       - name: Verify read-only LAB behavior
         run: node scripts/lab-release-smoke.mjs

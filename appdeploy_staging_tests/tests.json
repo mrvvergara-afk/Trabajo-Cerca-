@@ -1,0 +1,745 @@
+[
+  {
+    "name": "Six themed original advertising panels show matching titles and dots",
+    "viewport": "mobile",
+    "covers": [
+      "six themed local SVGs",
+      "dots not numbers",
+      "per-frame CTA",
+      "soft gradient",
+      "touch swipe"
+    ],
+    "description": "Check each of the six images has a matching benefit and correct CTA.",
+    "steps": [
+      "Open self-promotion",
+      "Select all six bullets",
+      "Confirm copy and CTA change with image"
+    ],
+    "expected": "Images and messages coherent; no visible numeric selectors or image framing"
+  },
+  {
+    "name": "Fast repeat PWA startup only caches verified public RADAR offers",
+    "viewport": "mobile",
+    "covers": [
+      "no private contacts",
+      "cache restore",
+      "server revalidation",
+      "fewer page round-trips"
+    ],
+    "description": "Cache only approved public external jobs, revalidate in background.",
+    "steps": [
+      "Complete initial catalogue",
+      "Reload app",
+      "Verify immediate useful listings",
+      "Confirm live server refresh"
+    ],
+    "expected": "No profile/contact data in cache and last-good remains visible during refresh"
+  },
+  {
+    "name": "Acceso a mi cuenta y panel en web de escritorio y móvil",
+    "viewport": "desktop",
+    "covers": [
+      "menú web",
+      "inicio de sesión",
+      "acceso administrativo misma pestaña",
+      "sesión de navegador independiente"
+    ],
+    "description": "En una visita sin sesión, el menú siempre ofrece iniciar sesión y acceso al panel; la autorización del backend sigue siendo obligatoria.",
+    "steps": [
+      "Abrir la web desde escritorio sin sesión",
+      "Abrir Menú y comprobar Mi cuenta e Iniciar sesión",
+      "Abrir Acceso administrativo sin sesión: muestra pantalla restringida",
+      "Comprobar que no se expone información privada",
+      "Verificar la navegación en la misma pestaña"
+    ],
+    "expected": "Ingreso público a la pantalla de autenticación, panel privado solo tras validar permisos."
+  },
+  {
+    "name": "El catálogo comunica avance sin fingir que no tiene ofertas",
+    "viewport": "mobile",
+    "covers": [
+      "estado de catálogo",
+      "UX carga progresiva",
+      "sin parpadeos"
+    ],
+    "description": "Cuando ya se muestra la primera página, el contador indica ofertas visibles y la actualización de inventario.",
+    "steps": [
+      "Abrir portada móvil",
+      "Observar indicador mientras se completan las páginas",
+      "Confirmar que las ofertas permanecen visibles"
+    ],
+    "expected": "Se evita Preparando catálogo completo cuando ya hay contenido en pantalla."
+  },
+  {
+    "name": "Galería accesible con avance automático y deslizamiento táctil",
+    "viewport": "mobile",
+    "covers": [
+      "galería propia",
+      "imagen local",
+      "navegación sin autoplay"
+    ],
+    "description": "Avance automático a 5,5 s mientras está visible y movimiento permitido; pausa tras interactuar y deslizamiento con dedo.",
+    "steps": [
+      "Abrir la publicidad propia destacada",
+      "Pulsar 1, 2 y 3",
+      "Verificar que CTA y diseño se mantienen"
+    ],
+    "expected": "Tres vistas: avance lento solo visible, pausa manual o por movimiento reducido, sin contabilizar el cambio de imagen como nueva impresión."
+  },
+  {
+    "name": "Guardados locales y ruta de ferreterías",
+    "viewport": "mobile",
+    "covers": [
+      "favoritos consultables",
+      "directorio de negocios real",
+      "búsqueda por comuna"
+    ],
+    "description": "Un servicio técnico conecta con negocios publicados y aprobados, si existen.",
+    "steps": [
+      "Guardar una ficha",
+      "Filtrar guardados",
+      "Abrir un servicio de gasfitería y buscar ferreterías"
+    ],
+    "expected": "Solo fichas aprobadas; vacío transparente cuando no hay negocios"
+  },
+  {
+    "name": "Rendimiento comercial de laboratorio exportable",
+    "viewport": "desktop",
+    "covers": [
+      "resumen de métricas",
+      "CTR de filas cargadas",
+      "CSV sin datos personales"
+    ],
+    "description": "El panel muestra suma y CSV sin contactos de personas.",
+    "steps": [
+      "Iniciar sesión administrativa",
+      "Consultar métricas",
+      "Exportar CSV"
+    ],
+    "expected": "Métricas de laboratorio con advertencias y descarga CSV"
+  },
+  {
+    "name": "Enlaces de postulación equivalentes no duplican botones",
+    "viewport": "mobile",
+    "covers": [
+      "acción única Chiletrabajos",
+      "enlaces de postulación",
+      "enlaces distintos conservados"
+    ],
+    "description": "Un aviso con el mismo destino de postulación y fuente original muestra una sola acción, sin ocultar rutas diferentes.",
+    "steps": [
+      "Abrir una oferta de Victoria procedente de Chiletrabajos",
+      "Examinar sus acciones externas",
+      "Comprobar que una fuente de postulación diferente conserva dos enlaces"
+    ],
+    "expected": "Un solo enlace si las URL equivalen y dos si los destinos son diferentes."
+  },
+  {
+    "name": "Guardar fichas de servicios sin registrar datos en el servidor",
+    "viewport": "mobile",
+    "covers": [
+      "directorio local",
+      "guardar ficha",
+      "privacidad sin registro"
+    ],
+    "description": "Guardar una ficha en el dispositivo, navegar y volver sin iniciar sesión.",
+    "steps": [
+      "Abrir directorio de una comuna",
+      "Guardar una ficha aprobada",
+      "Recargar la página y comprobar que el estado Guardado persiste",
+      "Quitar ficha de guardados"
+    ],
+    "expected": "El estado de favorito es persistente solo en el teléfono y reversible."
+  },
+  {
+    "name": "Acceso y privacidad de publicaciones propias",
+    "viewport": "desktop",
+    "covers": [
+      "código de propietario no público",
+      "gestión de publicación directa",
+      "borrado de contacto de directorio"
+    ],
+    "description": "Las publicaciones nuevas no exponen el hash de acceso y las antiguas siguen admitiendo sus credenciales.",
+    "steps": [
+      "Revisar que los objetos públicos no incluyan ownerToken ni ownerHash",
+      "Acceder a gestionar publicación propia en laboratorio",
+      "Confirmar bloqueo con credencial incorrecta"
+    ],
+    "expected": "No se exponen secretos y las modificaciones ajenas siguen bloqueadas."
+  },
+  {
+    "name": "No presentar como completo un catálogo parcial",
+    "viewport": "mobile",
+    "covers": [
+      "catálogo degradado",
+      "continuidad de la lista pública",
+      "conservación de ofertas"
+    ],
+    "description": "Verificar que las lecturas incompletas muestran una advertencia y no falsifican cero ofertas.",
+    "steps": [
+      "Abrir la página móvil de empleos",
+      "Revisar el estado y el conteo durante la carga",
+      "Comprobar que no se sustituye la lista confirmada por datos degradados"
+    ],
+    "expected": "Solo una lectura completa confirma el catálogo; una interrupción conserva la lista y ofrece reintentar."
+  },
+  {
+    "name": "Privacidad de la transferencia de imágenes PWA",
+    "viewport": "mobile",
+    "covers": [
+      "PWA share-target",
+      "imágenes temporales",
+      "protección contra cargas excesivas"
+    ],
+    "description": "Comprobar que el afiche compartido tiene formato, tamaño y disponibilidad limitados.",
+    "steps": [
+      "Compartir un afiche JPEG compatible",
+      "Abrirlo desde Trabajo Cerca sin publicarlo",
+      "Comprobar que el archivo temporal no se puede reutilizar después de consumirse"
+    ],
+    "expected": "Se comparte una sola vez y no se conserva indefinidamente en el dispositivo."
+  },
+  {
+    "name": "Radar B no muestra avisos cerrados",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "guardia de vigencia",
+      "conservación de feed"
+    ],
+    "description": "Verifica que una publicación cerrada no se presente como oferta publicable.",
+    "steps": [
+      "Abrir la página principal del laboratorio",
+      "Examinar las ofertas visibles y sus estados"
+    ],
+    "expected": "No se presentan como vigentes ofertas expresamente cerradas."
+  },
+  {
+    "name": "Quilaco permanece excluido",
+    "viewport": "mobile",
+    "covers": [
+      "exclusión territorial de Quilaco",
+      "filtros territoriales"
+    ],
+    "description": "Comprueba que Quilaco está excluido de las opciones territoriales.",
+    "steps": [
+      "Abrir filtros territoriales",
+      "Confirmar que Quilaco no figura en las opciones"
+    ],
+    "expected": "Quilaco no figura en los territorios disponibles."
+  },
+  {
+    "name": "La verificación del motor A sigue disponible",
+    "viewport": "desktop",
+    "covers": [
+      "estabilidad motor A",
+      "feed público",
+      "arranque estable y paginación del catálogo"
+    ],
+    "description": "Comprueba que la consulta pública sigue funcionando después del cambio acotado en B.",
+    "steps": [
+      "Abrir el catálogo de empleos",
+      "Cambiar un filtro y regresar al listado",
+      "Abrir la app en móvil y confirmar que el conteo no salta por cada página adicional; al terminar, revisar que se conservan todas las ofertas y filtros."
+    ],
+    "expected": "Las ofertas y sus enlaces siguen consultables, sin fallos visibles."
+  },
+  {
+    "name": "Comunas accesibles y perfil laboral remunerado",
+    "viewport": "desktop",
+    "covers": [
+      "comunas completas",
+      "publicación de perfil gratuita",
+      "portada compacta"
+    ],
+    "description": "Verifica que la lista de localidades no se recorta y el perfil es gratuito de publicar, no el trabajo.",
+    "steps": [
+      "Abrir la portada desde escritorio",
+      "Comprobar que Lumaco y las demás comunas son visibles sin quedar cortadas a la derecha",
+      "Comprobar que la franja Explorar por rubro no aparece bajo el buscador",
+      "Ubicar Publicar mi perfil gratis y abrir el formulario de perfil"
+    ],
+    "expected": "Las comunas no quedan cortadas, la franja eliminada no aparece y publicar perfil gratis abre el formulario."
+  },
+  {
+    "name": "Instalación visible y menú público restringido",
+    "viewport": "mobile",
+    "covers": [
+      "instalación PWA desde portada",
+      "sesión y administración privadas",
+      "comunas y filtros móviles"
+    ],
+    "description": "Confirma que la opción de instalar se encuentra sin entrar al menú y que el visitante no ve controles de cuenta.",
+    "steps": [
+      "Abrir la portada como visitante sin iniciar sesión",
+      "Pulsar Instalar app gratis en el panel del radar y verificar que aparecen instrucciones o el diálogo del navegador; cerrar ayuda si existe",
+      "Abrir menú superior y verificar ausencia de Administración, Tu sesión y Cambiar cuenta",
+      "Usar el selector de comuna del radar para elegir una comuna"
+    ],
+    "expected": "El control PWA es accesible, el visitante no ve controles privados y la selección comunal continúa funcionando."
+  },
+  {
+    "name": "Bandeja comercial segura para visitantes",
+    "viewport": "mobile",
+    "covers": [
+      "autorización administrativa",
+      "GET /api/admin/marketing/trials",
+      "privacidad de solicitudes publicitarias"
+    ],
+    "description": "Verifica que los visitantes no acceden a registros privados de anunciantes.",
+    "steps": [
+      "Abrir Trabajo Cerca sin sesión",
+      "Comprobar que no se muestra Gestión comercial en el menú público",
+      "Abrir la ruta interna de Administración y comprobar que necesita validación"
+    ],
+    "expected": "La bandeja comercial y los contactos privados quedan restringidos a la cuenta administradora."
+  },
+  {
+    "name": "Flujo de revisión comercial autorizado",
+    "viewport": "desktop",
+    "covers": [
+      "GET /api/admin/marketing/commercial",
+      "GET /api/admin/marketing/trials",
+      "PUT /api/admin/marketing/trials",
+      "POST /api/admin/marketing/trial",
+      "POST /api/admin/marketing/notifications"
+    ],
+    "description": "Comprueba bandeja comercial, estados y accesos a configuración sin activar campañas reales durante la prueba.",
+    "steps": [
+      "Acceder como administrador autorizado",
+      "Abrir el panel en otra pestaña, seleccionar Solicitudes y consultar los anunciantes",
+      "Verificar que una solicitud incluye fecha, negocio, comuna, rubro, contacto y consentimiento",
+      "Abrir Preparar aprobación y cancelar antes de enviar",
+      "Consultar la configuración comercial y comprobar que no devuelve error de lectura"
+    ],
+    "expected": "Los registros se ven y pueden prepararse para aprobación; la configuración se consulta sin HTTP 409 y no hay activación involuntaria."
+  },
+  {
+    "name": "Generar borrador e imagen para anuncio sin sitio web",
+    "viewport": "desktop",
+    "covers": [
+      "propuesta automática desde solicitud",
+      "imagen ilustrativa y vista previa",
+      "contacto WhatsApp con autorización",
+      "POST /api/admin/marketing/creative",
+      "POST /api/admin/marketing/trial",
+      "publicación comercial con imagen aprobada",
+      "activación de piloto Ferretería Mininco por administrador sin lanzamiento general"
+    ],
+    "description": "El administrador puede crear un borrador con texto e imagen desde una solicitud y comprobar la vista previa sin tener que publicar durante la prueba. El único piloto autorizado en esta versión es Ferretería Mininco, en Mininco, por 30 días, sin cambiar el lanzamiento general.",
+    "steps": [
+      "Ingresar como administrador y abrir la bandeja de solicitudes",
+      "En una solicitud pendiente de ejemplo, pulsar Crear campaña automáticamente",
+      "Comprobar que aparecen título y descripción adaptados al nombre y rubro; esperar la imagen ilustrativa",
+      "Comprobar la vista previa y editar el texto",
+      "Verificar que el WhatsApp está desactivado para uso público hasta confirmar autorización; no aprobar ni activar",
+      "En el laboratorio, con la sesión administradora, comprobar que se puede aprobar específicamente Ferretería Mininco sin configurar el lanzamiento general; no reutilizar esta excepción para otros negocios."
+    ],
+    "expected": "El formulario y la vista previa se completan automáticamente con datos existentes. La imagen es ilustrativa y el contacto privado no se publica por defecto. La excepción de laboratorio no altera el lanzamiento ni consume cupos globales."
+  },
+  {
+    "name": "Tarjeta comercial compacta sin vigencia pública",
+    "viewport": "mobile",
+    "covers": [
+      "tarjeta comercial responsive",
+      "fecha interna reservada",
+      "Mininco visible para Collipulli"
+    ],
+    "description": "Verifica tarjeta de Ferretería Mininco compacta.",
+    "steps": [
+      "Abrir Mininco desde celular de 390 píxeles",
+      "Comprobar proporciones de imagen, texto y botón",
+      "Confirmar que no aparece fecha de vencimiento"
+    ],
+    "expected": "La tarjeta cabe en la pantalla y no revela fecha interna."
+  },
+  {
+    "name": "Ampliación comercial sin publicación automática",
+    "viewport": "desktop",
+    "covers": [
+      "POST /api/admin/marketing/coverage",
+      "selección multicomuna",
+      "espacios comerciales"
+    ],
+    "description": "El administrador solicita cobertura adicional conservando la campaña gratuita.",
+    "steps": [
+      "Ingresar al panel administrativo",
+      "Consultar campañas y elegir agregar comunas o espacios",
+      "Seleccionar una comuna adicional",
+      "Guardar la propuesta"
+    ],
+    "expected": "La ampliación se guarda pendiente de revisión, sin publicarse ni cobrarse."
+  },
+  {
+    "name": "Editor comercial modifica ubicaciones sin alterar la vigencia",
+    "viewport": "desktop",
+    "covers": [
+      "editor de campaña privada",
+      "PUT /api/admin/marketing/campaigns/details",
+      "segmentación por comuna y sección",
+      "segmentación de espacios",
+      "persistencia al refrescar",
+      "vigencia original"
+    ],
+    "description": "El administrador puede modificar una campaña ya activada y recuperar el cambio persistido.",
+    "steps": [
+      "Acceder al panel privado y abrir Publicidad y campañas",
+      "En una campaña existente pulsar Editar anuncio y ubicaciones",
+      "Seleccionar dos comunas, una sección adicional y los espacios disponibles",
+      "Guardar cambios y volver a consultar la campaña",
+      "Confirmar que los cambios permanecen y la fecha de vigencia es la misma"
+    ],
+    "expected": "Los contenidos y ubicaciones elegidos persisten sin cambiar la duración de la campaña ni activar cobros."
+  },
+  {
+    "name": "Vista previa comercial y tarjeta móvil compacta",
+    "viewport": "mobile",
+    "covers": [
+      "vista previa sin publicar",
+      "diseño comercial responsive",
+      "tarjeta comercial con imagen y CTA",
+      "comuna Mininco Collipulli",
+      "elección de espacios y vista previa antes de enviar"
+    ],
+    "description": "Confirma la composición visual en 390 px y las opciones de edición sin publicar cambios.",
+    "steps": [
+      "Abrir Administración en pantalla de 390 px y pulsar Editar anuncio y ubicaciones",
+      "Alternar entre formato destacado y compacto comprobando la vista previa",
+      "Cancelar la edición y abrir el catálogo de la comuna Mininco",
+      "Examinar el anuncio publicado y su botón comercial",
+      "Abrir solicitud comercial en móvil, escoger al menos un espacio, escribir título de anuncio y comprobar vista previa y envío moderado."
+    ],
+    "expected": "La tarjeta no desborda la pantalla, mantiene imagen y texto legibles; cancelar no cambia la campaña pública."
+  },
+  {
+    "name": "Cada espacio sin campaña comercial muestra autopublicidad territorial",
+    "viewport": "desktop",
+    "covers": [
+      "fallback de anuncios comerciales vencidos o pausados",
+      "autopublicidad search",
+      "autopublicidad listing",
+      "autopublicidad featured",
+      "respeto de comunas",
+      "sin cobros",
+      "imagen de autopromoción",
+      "tarjeta fundadores visible en móvil",
+      "tarjeta móvil con texto y CTA legible"
+    ],
+    "description": "Comprueba que los espacios publicitarios siempre exhiben campañas propias cuando no hay publicidad comercial elegible; no exige suspender ni borrar campañas reales.",
+    "steps": [
+      "Abrir la portada con una comuna sin anuncio comercial elegible en ese momento.",
+      "Observar la autopromoción propia después del buscador.",
+      "Buscar entre las ofertas el segundo espacio de autopromoción integrada.",
+      "Comprobar que el espacio territorial destacado muestra campaña propia cuando no tiene anunciante.",
+      "Cambiar a otra comuna y verificar que no se muestra publicidad comercial fuera de su segmento.",
+      "En vista móvil, verificar que el beneficio de fundadores se presenta como tarjeta ilustrada y no requiere desplegar un resumen, siempre que no haya campaña comercial destacada.",
+      "Con ancho móvil de 375 px, inspeccionar que la promoción del buscador cabe sin cortar texto, que la fotografía no ocupa más de una franja pequeña y que el botón completo es pulsable."
+    ],
+    "expected": "La promoción propia cabe en el ancho móvil, el texto no ocupa una columna de 50px y CTA, fotografía y búsqueda siguen utilizables sin desplazamiento horizontal."
+  },
+  {
+    "name": "Boceto 3 en formularios con respaldo institucional y respeto a la publicación",
+    "viewport": "mobile",
+    "covers": [
+      "publicidad local suave en formularios",
+      "fallback institucional en formulario",
+      "publicidad contextual por localidad",
+      "formulario usable sin interferencia",
+      "vencimiento de anuncios",
+      "acceso claro a publicidad"
+    ],
+    "description": "El formulario usa una franja editorial junto a la localidad sin interrumpir controles ni ocultar los botones de envío.",
+    "steps": [
+      "En móvil abrir Publicar mi perfil gratis.",
+      "Ver la publicidad editorial discreta debajo del selector de localidad.",
+      "Elegir otra comuna y comprobar que cambia la elegibilidad de la publicidad.",
+      "Si no existe campaña comercial elegible, confirmar la autopromoción de Trabajo Cerca.",
+      "Completar campos del formulario sin abrir el anuncio y verificar que se puede continuar a vista previa."
+    ],
+    "expected": "Se mantiene una única franja discreta y etiquetada, ningún campo queda oculto y el formulario conserva su flujo normal."
+  },
+  {
+    "name": "Administración permite seleccionar la franja de formularios",
+    "viewport": "desktop",
+    "covers": [
+      "configuración comercial multicomuna",
+      "editor publicidad en formularios",
+      "asignación automática page forms y slot form",
+      "persistencia verificada sin modificar vigencia"
+    ],
+    "description": "Verificación sin activar nuevas campañas: la opción Formularios debe vincular la franja editorial automáticamente y conservar el registro hasta guardar.",
+    "steps": [
+      "Entrar a Publicidad y campañas con cuenta administradora.",
+      "Editar un anuncio sin guardar los cambios.",
+      "Seleccionar Formularios de publicación y comprobar que se activa Apoyo local en formularios.",
+      "Deseleccionar la opción y confirmar que el espacio se desactiva.",
+      "Cerrar el editor y comprobar que la configuración anterior permanece."
+    ],
+    "expected": "La configuración de formulario y espacio está vinculada; cerrar sin guardar no publica ni altera la campaña."
+  },
+  {
+    "name": "Cobertura de portales sin avisos ficticios",
+    "viewport": "desktop",
+    "covers": [
+      "continuidad de rastreo de portales",
+      "verificación conservadora de ofertas",
+      "catálogo público"
+    ],
+    "description": "Después de incorporar nuevas rutas laborales, comprueba que el catálogo sigue siendo consultable y no presenta páginas de búsqueda como ofertas.",
+    "steps": [
+      "Abrir el catálogo público de Trabajo Cerca",
+      "Filtrar por Angol y observar títulos, comunas y enlaces de postulación",
+      "Comprobar que una página de búsqueda no aparezca como una oferta individual",
+      "Cambiar a Victoria y regresar a Angol"
+    ],
+    "expected": "El catálogo funciona, los filtros territoriales siguen activos y las tarjetas visibles corresponden a empleos individuales con enlaces, sin convertir índices de portales en avisos."
+  },
+  {
+    "name": "Catálogo estable después del cierre integrado A y D",
+    "viewport": "desktop",
+    "covers": [
+      "Motor A - continuidad de ofertas verificadas",
+      "Motor D - conciliación de duplicados",
+      "catálogo público sin regresión"
+    ],
+    "description": "Asegura que los cambios internos en rastreo, vigencia y publicación preserven las fichas públicas existentes.",
+    "steps": [
+      "Abrir Trabajo Cerca como visitante sin iniciar sesión",
+      "Esperar a que carguen las ofertas públicas",
+      "Examinar ofertas de Angol y de Mulchén y abrir una tarjeta existente",
+      "Volver al catálogo y cambiar de comuna"
+    ],
+    "expected": "El catálogo continúa mostrando ofertas laborales existentes, enlaces originales y filtros operativos, sin pantalla vacía ni duplicación visible por URL."
+  },
+  {
+    "name": "Portada local: cuatro caminos sin confusión",
+    "viewport": "mobile",
+    "covers": [
+      "busco empleo",
+      "ofrezco mi trabajo",
+      "necesito contratar",
+      "negocios y servicios",
+      "comuna Angol predeterminada"
+    ],
+    "description": "La portada comunica cuatro funciones separadas y prioriza territorio local.",
+    "steps": [
+      "Abrir Trabajo Cerca por primera vez",
+      "Confirmar que el selector parte en Angol",
+      "Revisar cuatro opciones de la pregunta Qué necesitas hacer hoy",
+      "Elegir Necesito contratar y comprobar las dos alternativas diferenciadas",
+      "Abrir Negocios y servicios y alternar oficios y emprendimientos"
+    ],
+    "expected": "Las cuatro rutas son comprensibles y cada botón lleva al flujo anunciado; las ofertas de ciudades ajenas no aparecen como destino principal."
+  },
+  {
+    "name": "Directorio moderado de oficios y negocios",
+    "viewport": "desktop",
+    "covers": [
+      "GET /api/local-directory",
+      "POST /api/local-directory",
+      "galería JPEG sin EXIF",
+      "moderación previa",
+      "revelación de contacto voluntaria"
+    ],
+    "description": "Ficha voluntaria con datos mínimos y portafolio, sin publicar de inmediato.",
+    "steps": [
+      "Abrir la sección Oficios y servicios",
+      "Comprobar que se puede registrar una ficha sin RUT, CV ni dirección personal",
+      "Comprobar teléfono, correo, descripción y fotografías opcionales",
+      "Verificar que es necesario autorizar el contacto y aceptar privacidad",
+      "Con datos ficticios de laboratorio, enviar una sola ficha y comprobar estado pendiente de aprobación"
+    ],
+    "expected": "Solicitud recibida para moderación, no aparece entre fichas públicas sin aprobación; visitantes no ven teléfono y correo antes de solicitarlo."
+  },
+  {
+    "name": "Evaluaciones moderadas de servicios y negocios",
+    "viewport": "desktop",
+    "covers": [
+      "POST /api/local-directory/:id/reviews",
+      "correo verificado",
+      "opiniones de servicios y negocios",
+      "moderación previa",
+      "protección de personas disponibles",
+      "retorno a misma ficha tras autenticación incluso con 0 resultados locales"
+    ],
+    "description": "Verifica que la evaluación de servicios y negocios explica las condiciones, confirma identidad y no se publica hasta su aprobación.",
+    "steps": [
+      "Abrir Servicios y negocios y revisar una ficha aprobada si existe",
+      "En fichas de servicio y negocio de terceros comprobar la opción Calificar y el diálogo de estrellas",
+      "Verificar que para enviar se exige contratar o comprar y correo confirmado",
+      "Si no hay fichas aprobadas, comprobar el estado vacío sin errores ni botones de calificación falsos",
+      "Confirmar que los perfiles de búsqueda de empleo no tienen calificaciones ni estrellas",
+      "Abrir la calificación de ficha de otra comuna, iniciar sesión con correo y comprobar que se reabre por ID."
+    ],
+    "expected": "Las fichas aprobadas de servicios y negocios aceptan opiniones moderadas sin valoraciones anónimas; las fichas propias y los perfiles laborales no permiten calificarse."
+  },
+  {
+    "name": "Analítica consentida y fechas originales",
+    "viewport": "mobile",
+    "covers": [
+      "consentimiento analítico",
+      "POST /api/analytics",
+      "fecha real de publicación directa",
+      "preferencias de medición"
+    ],
+    "description": "La medición no es obligatoria y la fecha de incorporación no suplanta la fecha de publicación.",
+    "steps": [
+      "Abrir como visitante nuevo y elegir No aceptar",
+      "Comprobar que la búsqueda y directorio funcionan sin permiso de medición",
+      "Abrir una oferta directa antigua y comprobar que no indique Publicado hoy incorrectamente",
+      "Abrir preferencias de medición en el pie de página"
+    ],
+    "expected": "La plataforma sigue funcionando sin rastreo opcional; las fechas son coherentes y las preferencias se pueden revisar."
+  },
+  {
+    "name": "Arranque estable y autopublicidad móvil sin salto",
+    "viewport": "mobile",
+    "covers": [
+      "carga inicial",
+      "placeholder comercial estable",
+      "publicidad local prioritaria",
+      "servicio worker cache renovado",
+      "catálogo paginado en segundo plano",
+      "estado degradado y reconexión"
+    ],
+    "description": "Evita mostrar antes de tiempo una autopromoción que luego se reemplaza y comprueba que no hay tarjeta desbordada al terminar la carga.",
+    "steps": [
+      "Abrir Trabajo Cerca en una sesión móvil nueva de 375 px",
+      "Comprobar que durante la carga aparece un único espacio reservado de tamaño acotado para la promoción",
+      "Tras cargar campañas, verificar que la primera promoción tiene miniatura a la izquierda y texto y botón íntegros a la derecha",
+      "Comprobar que el buscador y las primeras ofertas son utilizables mientras llegan otras páginas",
+      "Navegar a Directorio y regresar a Empleos sin desplazamiento horizontal",
+      "Simular reconstrucción del feed durante ingreso frío y comprobar que no aparece un falso mensaje de cero ofertas."
+    ],
+    "expected": "Sin texto vertical comprimido, botón cortado ni campaña provisional diferente; las ofertas quedan navegables y el espacio publicitario respeta campañas vigentes."
+  },
+  {
+    "name": "Recarga estable sin pérdida provisional de ofertas",
+    "viewport": "mobile",
+    "covers": [
+      "carga inicial estable",
+      "actualización atómica del catálogo",
+      "paginación pública",
+      "sin parpadeo al actualizar",
+      "publicidad territorial correcta"
+    ],
+    "description": "Confirma que refrescar el catálogo no lo reduce temporalmente a la primera página ni cambia la publicidad por un aviso de otra comuna.",
+    "steps": [
+      "Abrir la página móvil y esperar el inventario completo",
+      "Avanzar a la segunda página de resultados",
+      "Actualizar desde la acción pública de novedades si está disponible",
+      "Verificar que no desaparecen temporalmente las tarjetas ya cargadas",
+      "Cambiar de comuna y comprobar que la campaña anterior no aparece provisionalmente"
+    ],
+    "expected": "El inventario cambia de manera atómica; no retrocede a 40 entradas, conserva la página cuando procede y no muestra anuncios de otra comuna."
+  },
+  {
+    "name": "Ofertas publicadas conservan su comuna verdadera sin duplicados",
+    "viewport": "desktop",
+    "covers": [
+      "catálogo público de empleos",
+      "filtro por comuna",
+      "reparación territorial sin duplicados",
+      "recarga sin pérdida de ofertas"
+    ],
+    "description": "Verifica que una ficha verificada cuyo lugar real es Angol, Victoria, Negrete o Nacimiento no quede atribuida por defecto a Temuco, Los Ángeles o Angol cuando el trabajo se hace en otra comuna.",
+    "steps": [
+      "Abrir el catálogo público de empleos y registrar el total visible antes de filtrar",
+      "Buscar las ofertas vigentes de Director/a Angol, Ortodoncista Victoria, práctica Cohigue y enfierradores Hospital de Nacimiento",
+      "Abrir los filtros de Angol, Victoria, Negrete y Nacimiento y comprobar que cada oferta vigente aparece en la comuna de ejecución",
+      "Recargar la página y comprobar que el catálogo permanece disponible, sin duplicados, sin cambios abruptos de conteo y con sus enlaces originales"
+    ],
+    "expected": "Las ofertas que siguen vigentes conservan su identidad y enlace, aparecen solo donde corresponde el trabajo, y no desaparecen ni se duplican por una actualización automática."
+  },
+  {
+    "name": "Radar limpio con 12 comunas navegables",
+    "viewport": "mobile",
+    "covers": [
+      "radar de 12 comunas",
+      "ocultar aviso técnico de cero ofertas",
+      "navegación por comuna",
+      "paginación pública"
+    ],
+    "description": "Seleccionar una comuna conserva ofertas y navegación sin mensajes técnicos inferiores ni fechas internas.",
+    "steps": [
+      "Abrir Empleos y navegar hasta Radar territorial",
+      "Expandir las comunas y elegir Traiguén",
+      "Verificar que el panel no muestra el pie explicativo ni la hora técnica del catálogo",
+      "Comprobar que la selección permite acceder a ofertas según el filtro activo"
+    ],
+    "expected": "Radar compacto con puntos y comunas operativas, sin explicación de cero publicaciones ni pie de estado técnico."
+  },
+  {
+    "name": "Noticias y trámites solo en sitio web y no en PWA instalada",
+    "viewport": "mobile",
+    "covers": [
+      "experiencia standalone PWA",
+      "visibilidad condicional de noticias",
+      "recursos oficiales web",
+      "menú sin enlaces rotos"
+    ],
+    "description": "Distinguir la aplicación instalada del sitio web sin perder recursos de orientación laboral.",
+    "steps": [
+      "Abrir Trabajo Cerca como PWA instalada",
+      "Verificar que Actualidad laboral y trámites no ocupa espacio ni aparece en el menú",
+      "Abrir la dirección en un navegador web normal",
+      "Expandir Actualidad laboral y trámites y comprobar enlaces oficiales sin un bloque vacío de noticias ni fecha antigua"
+    ],
+    "expected": "La PWA queda compacta; el sitio web conserva recursos oficiales y el menú no apunta a secciones inexistentes."
+  },
+  {
+    "name": "Oferta pública limpia con fuente y postulación original",
+    "viewport": "mobile",
+    "covers": [
+      "tarjeta comercial sin dominio www",
+      "nota técnica motor oculta",
+      "fecha original publicación",
+      "enlace externo válido"
+    ],
+    "description": "Tarjetas concisas con trazabilidad preservada internamente y canal de postulación accesible.",
+    "steps": [
+      "Abrir una oferta vigente procedente de Chiletrabajos",
+      "Verificar que el origen de la tarjeta dice Fuente externa sin el dominio largo",
+      "Abrir detalle y confirmar que no aparece Motor D ni notas de auditoría",
+      "Comprobar fecha original, localidad y botón Ver oferta original"
+    ],
+    "expected": "Solo información útil al postulante; datos y enlaces internos se conservan sin mostrarse como texto técnico."
+  },
+  {
+    "name": "Centro de Control privado con seis motores y gráficos operativos",
+    "viewport": "desktop",
+    "covers": [
+      "GET /api/admin/ops-telemetry",
+      "control administrativo de acceso",
+      "seis motores",
+      "gráficos comparativos",
+      "sin métricas inventadas"
+    ],
+    "description": "Las métricas de motores pertenecen exclusivamente al administrador y los datos faltantes no se muestran como cero.",
+    "steps": [
+      "Abrir menú de administración sin iniciar sesión y comprobar acceso restringido",
+      "Entrar con una cuenta administradora habilitada",
+      "Abrir Centro de Control y revisar los seis motores, gráfico de tendencias y anillo de lecturas",
+      "Confirmar que los campos de publicación no conciliada dicen Sin datos"
+    ],
+    "expected": "Panel autenticado, lectura de información real sin alterar base de datos y gráficos responsive."
+  },
+  {
+    "name": "Publicidad comercial: logo fijo y fotos completas",
+    "viewport": "mobile",
+    "covers": [
+      "campaña comercial",
+      "logo fijo",
+      "galería de fotografías",
+      "publicidad identificada"
+    ],
+    "description": "Una campaña comercial con logo y dos imágenes debe preservar identidad y mostrar fotos sin recortes.",
+    "steps": [
+      "Abrir un anuncio comercial con logo y fotos adicionales aprobadas",
+      "Comprobar que nombre y logo quedan visibles al cambiar la lámina",
+      "Cambiar entre fotografías mediante puntos discretos y gesto táctil",
+      "Verificar que la rotulación Publicidad local permanece y las imágenes no se cortan"
+    ],
+    "expected": "Galería fluida, logo sin recorte, sin numeración técnica ni imagen institucional de sustitución indebida."
+  }
+]

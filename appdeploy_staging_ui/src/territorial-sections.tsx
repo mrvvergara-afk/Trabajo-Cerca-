@@ -96,15 +96,15 @@ export function LaborNewsSection() {
   const shown=expanded?news:news.slice(0,2);
   const resource=(item:typeof LABOR_RESOURCES[number])=><a key={item.source} href={item.url} target='_blank' rel='noopener noreferrer'><span><b>{item.source}</b><small>{item.title}</small></span><ArrowRight aria-hidden='true'/></a>;
   return <section className='tcLaborNews tcCompactNews' data-expanded={expanded} aria-labelledby='tc-news-title'>
-    <header><div><h2 id='tc-news-title' className='tcVisuallyHidden'>Actualidad laboral de La Araucanía</h2><p>Noticias y enlaces útiles para tu vida laboral.</p></div><Newspaper aria-hidden='true'/></header>
-    <div className='tcNewsLayout'><div className='tcNewsArticles'>
+    <header><div><h2 id='tc-news-title' className='tcVisuallyHidden'>Actualidad laboral de La Araucanía</h2><p>Enlaces útiles y orientación laboral.</p></div><Newspaper aria-hidden='true'/></header>
+    <div className='tcNewsLayout' style={news.length?undefined:{gridTemplateColumns:'minmax(0,1fr)'}}>{news.length>0&&<div className='tcNewsArticles'>
       {shown.length?shown.map(item=><article key={item.id} data-news-id={item.id}>
         <span className='tcNewsTopic'>{item.topic}</span><h3>{item.title}</h3><p>{item.summary}</p>
         <div className='tcNewsBottom'><small>{item.source} · <time dateTime={item.publishedOn}>{item.publishedOn.split('-').reverse().join('/')}</time></small><a href={item.url} target='_blank' rel='noopener noreferrer'>Leer noticia <ArrowRight aria-hidden='true'/></a></div>
-      </article>):<p className='tcNewsEmpty'>Todavía no hay noticias recientes revisadas. Puedes consultar las fuentes oficiales.</p>}
+      </article>):null}
       {news.length>0&&<button className='tcNewsExpand' type='button' aria-expanded={expanded} onClick={()=>setExpanded(value=>!value)}>{expanded?'Volver al resumen':'Ver toda la actualidad'} <span aria-hidden='true'>{expanded?'−':'+'}</span></button>}
       <small className='tcNewsReview'>Selección revisada el {LABOR_NEWS_REVIEWED_ON.split('-').reverse().join('/')}. Las noticias no son ofertas.</small>
-    </div><aside aria-labelledby='tc-resources-title'><h3 id='tc-resources-title'>Trámites y fuentes oficiales</h3>
+    </div>}<aside aria-labelledby='tc-resources-title'><h3 id='tc-resources-title'>Trámites y fuentes oficiales</h3>
       {LABOR_RESOURCES.slice(0,3).map(resource)}
       <details className='tcResourceMore'><summary>Ver todos los recursos <span aria-hidden='true'>+</span></summary>{LABOR_RESOURCES.slice(3).map(resource)}</details>
     </aside></div>

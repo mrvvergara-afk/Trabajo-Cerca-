@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - 'appdeploy_staging_ui/src/App.tsx'
+      - 'appdeploy_staging_ui/src/territorial-radar.tsx'
+      - 'appdeploy_staging_ui/src/site-menu.tsx'
       - 'appdeploy_staging_ui/src/public-content-policy.ts'
       - 'appdeploy_staging_ui/src/test_public_content_policy.ts'
       - 'appdeploy_staging_ui/src/house-advertising.tsx'
       - 'appdeploy_staging_ui/src/territorial-sections.tsx'
-      - 'automation/test_release_candidate_rc6.py'
+      - 'automation/test_release_candidate_rc7.py'
       - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC6_APPDEPLOY_FILES.json'
       - '.github/workflows/public-ui-cleanup-qa.yml'
   push:
@@ -19,7 +21,7 @@ on:
       - 'appdeploy_staging_ui/src/test_public_content_policy.ts'
       - 'appdeploy_staging_ui/src/house-advertising.tsx'
       - 'appdeploy_staging_ui/src/territorial-sections.tsx'
-      - 'automation/test_release_candidate_rc6.py'
+      - 'automation/test_release_candidate_rc7.py'
       - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC6_APPDEPLOY_FILES.json'
       - '.github/workflows/public-ui-cleanup-qa.yml'
 
@@ -49,7 +51,7 @@ jobs:
           npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/house-advertising.tsx --bundle --format=esm --platform=browser --external:* --outfile=/tmp/tc-house-banner.js
       - name: Verify 23 unique pinned RC6 files, safe presentation and no changed backend provenance
         run: |
-          python automation/test_release_candidate_rc6.py
+          python automation/test_release_candidate_rc7.py
       - name: Confirm no production operations during code QA
         run: |
           echo 'The QA workflow neither writes public records nor deploys Trabajo Cerca.'

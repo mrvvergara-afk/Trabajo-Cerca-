@@ -1,0 +1,49 @@
+# Future independent release executor. This deliberately FAILS CLOSED until the
+# owned AppDeploy deploy credential, signed bundle, restoration evidence and
+# atomic-feed check are integrated. It must never be described as a live deploy.
+name: Trabajo Cerca — self-service production release
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_sha:
+        description: Approved, immutable candidate commit
+        type: string
+        required: true
+      production_baseline:
+        description: Expected existing AppDeploy official version
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trabajo-cerca-production-release
+  cancel-in-progress: false
+
+jobs:
+  release-guard:
+    runs-on: ubuntu-24.04
+    environment: production
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate approved immutable release inputs
+        env:
+          CANDIDATE_SHA: ${{ inputs.candidate_sha }}
+          PRODUCTION_BASELINE: ${{ inputs.production_baseline }}
+        run: |
+          node -e '
+          const sha=process.env.CANDIDATE_SHA || "";
+          const baseline=process.env.PRODUCTION_BASELINE || "";
+          if(!/^[a-f0-9]{40}$/i.test(sha) || !/^[0-9]{12,20}$/.test(baseline)){
+            process.stderr.write("Invalid signed release identifiers\\n");
+            process.exit(1);
+          }
+          process.stdout.write("Release identifiers syntactically valid\\n");
+          '
+      - name: Stop until complete autonomous AppDeploy runner and DR have been certified
+        run: |
+          echo "::error::NO-GO: native AppDeploy service credentials, approved release bundle, real database restore, and atomic public feed are not certified."
+          echo "::error::This workflow has NOT deployed the official app."
+          exit 1

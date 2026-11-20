@@ -6,7 +6,7 @@ import './ux-admin-brand-hotfix.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {(window.location.pathname.replace(/\/$/,'') === '/admin' || window.location.pathname.replace(/\/$/,'') === '/administracion' || window.location.hash === '#operacion' || new URLSearchParams(window.location.search).get('panel') === 'administracion') ? <OperationsPanel /> : <App />}
+    {(window.location.pathname.split('/').filter(Boolean).at(-1) === 'admin' || window.location.pathname.split('/').filter(Boolean).at(-1) === 'administracion' || window.location.hash === '#operacion' || new URLSearchParams(window.location.search).get('panel') === 'administracion') ? <OperationsPanel /> : <App />}
   </StrictMode>
 );
 

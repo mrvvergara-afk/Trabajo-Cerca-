@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-20T10:07:07.209980-03:00",
+  "last_run": "2026-11-20T14:45:52.417477-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -8196,6 +8196,144 @@
       "first_seen": "2026-11-20T10:07:07.209980-03:00",
       "url": "https://radioviaducto.cl/2026/11/20/radio-viaducto-recibio-al-seremi-del-trabajo-para-analizar-los-desafios-del-empleo-y-desarrollo-economico-en-la-araucania/",
       "source": "Radio Viaducto",
+      "commune": null
+    },
+    "b1d57e80b4cabfbad4fc": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "feaa80766fba65540da4": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/supervisor-area-de-aseo-42hrs-semanales-850000-para-los-angeles-y-alrededores-3080703.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "df490f270c99c70dbdd4": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-a-multifuncional-part-time-comida-rapida-30-horas-y-20-horas-kfc-terminal-turbus-3080702.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f70efb6d6001b6b1ff6b": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-tecnologia-peak-time-temporada-navidena-florida-center-3080701.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "27e860bf22861ef06b8a": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/carrero-para-supermercado-en-el-bosque-turnos-continuos-turnos-rotativos-am-y-pm-3080700.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d4c585c997210867b61b": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/carrero-para-supermercado-en-el-bosque-turnos-continuos-turnos-rotativos-am-y-pm-3080699.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "88fe539b7985bacbb233": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/carrero-para-supermercado-en-el-bosque-turnos-continuos-turnos-rotativos-am-y-pm-3080698.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5bc1b44af3998d15bc56": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/abogado-con-experiencia-y-presencial-3080697.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ce2fb3882ffac4665d0d": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-juridico-con-experiencia-y-presencial-3080696.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bbb12379daa22dd7c8c8": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/guardias-de-seguridad-os10-paris-copiapo-campana-navidad-2026-625000-posibilidad-de-continuidad-3080695.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b974bcf8aa04843a53a0": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/auxiliar-de-limpieza-5x2-iquique-42-hrs-3080694.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e3dc68044afd8936e293": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vidriero-maipu-full-time-6x1-3080693.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "46f50013cdfa4af3e92f": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/guardias-de-seguridad-os10-osorno-campana-navidad-2026-610000-posibilidad-de-continuidad-3080692.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "80af0435a463044a721f": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/guardias-de-seguridad-os10-puertomontt-campana-navidad-2026-610000-posibilidad-de-continuidad-3080691.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9e21f96aa0876ae43949": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-de-seguridad-os10-santiago-centro-campana-navidad-610000-posibilidad-de-continuidad-3080690.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e0ebf7fc1623675596c8": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-de-seguridad-os10-estacion-central-campana-navidad-610000-posibilidad-de-continuidad-3080689.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "513eafb1bfb4a8418bd7": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/vendedora-part-time-30hrs-angamos-3080688.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "57ad815d89a5ecc70e80": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/asistente-de-aula-40-hrs-vina-del-mar-3080687.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9b66058026242f51f956": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/docente-diferencial-reemplazo-38-hrs-osorno-3080686.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "23903cb7e98897690bf6": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-de-produccion-ti-modalidad-hibrida-3080685.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1ba2385b2ab4e1059338": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-de-ventas-por-streaming-telecomunicaciones-3080684.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e8cbf54360d107bb55d7": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6b006ae143aa69dcf479648d",
+      "source": "Fashion's Park · portal oficial de contratación",
+      "commune": null
+    },
+    "505f4ef37c4e75dd734c": {
+      "first_seen": "2026-11-20T14:45:52.417477-03:00",
+      "url": "https://www.angolnoticiasnew.cl/regional/club-de-leones-de-collipulli-se-suma-a-los-homenajes-a-luis-sandoval-bascur-ejemplo-de-trabajo-y-emprendimiento-a-sus-96-anos/",
+      "source": "Inventario P03",
       "commune": null
     }
   }

@@ -150,6 +150,12 @@
       "file": "20261119/motor-d-20261119-57c4da53a98591f320.json",
       "count": 2,
       "batch_type": "recovery"
+    },
+    {
+      "batch_id": "motor-d-20261120-14a9eb42906dde13b7",
+      "file": "20261120/motor-d-20261120-14a9eb42906dde13b7.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -170,6 +176,7 @@
     "d_465c77761224e30a83cb",
     "d_46607b264d4d83a176c3",
     "d_4bdcac8ef560f0fe716d",
+    "d_4c599ad95a20501aa8c8",
     "d_5241af5f68d396e67450",
     "d_561f393870110fb67e2a",
     "d_56d079ed0f37b488c6d6",
@@ -273,6 +280,7 @@
     "job:[\"tecnico telecomunicaciones sin experiencia angol\", \"dominion spa\", [\"angol\"]]",
     "job:[\"tens enfermera administrativa angol\", \"inmunomedica\", [\"angol\"]]",
     "job:[\"tens para cuidados pacientes domiciliarios lumaco\", \"layner\", [\"angol\"]]",
+    "job:[\"vendedor a en terreno para angol sin experiencia comisiones sin tope\", \"verisure\", [\"angol\"]]",
     "job:[\"vendedor terreno angol\", \"distribuidora consumo masivo\", [\"angol\"]]",
     "job:[\"verificador a de domicilios en terreno renaico\", \"rocketpin\", [\"angol\"]]",
     "job:[\"vvendedor en terreno angol victoria traiguen\", \"manpowergroup\", [\"angol\"]]",
@@ -324,6 +332,7 @@
     "source:chiletrabajos:3934484",
     "source:chiletrabajos:3934867",
     "source:chiletrabajos:3934905",
+    "source:chiletrabajos:3936181",
     "url:https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
     "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
     "url:https://chiletrabajos.cl/trabajo/asistente-de-aseo-pt-20-hr-angol-3926914",
@@ -368,6 +377,7 @@
     "url:https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
     "url:https://chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
     "url:https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
+    "url:https://chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
     "url:https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
     "url:https://chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",
     "url:https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",

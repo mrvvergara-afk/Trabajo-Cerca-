@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261120-14a9eb42906dde13b7",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_4c599ad95a20501aa8c8",
+      "cargo": "Vendedor/a en terreno para Angol ¡Sin experiencia + Comisiones sin Tope!",
+      "empresa": "Verisure",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
+      "fecha_publicacion": "2026-11-20",
+      "fecha_descubrimiento": "2026-11-20",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-03",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

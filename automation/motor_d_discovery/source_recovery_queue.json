@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-20T10:07:07.209980-03:00",
+  "source_scan_date": "2026-11-20T14:45:52.417477-03:00",
   "registered_total": 202,
   "total_pending": 83,
   "group_counts": {
@@ -35,11 +35,11 @@
       "high_priority": 5
     },
     "Purén": {
-      "pending": 17,
+      "pending": 16,
       "high_priority": 5
     },
     "Renaico": {
-      "pending": 16,
+      "pending": 17,
       "high_priority": 5
     },
     "Traiguén": {
@@ -218,20 +218,6 @@
       "recovered": false
     },
     {
-      "id": "178f8b8a9c2565ee9c9a",
-      "name": "Portal LinkedIn · Purén",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Purén"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
       "id": "26e7f4c16c97f94e0cb9",
       "name": "Auditoría Empleos Públicos - Enfermera Diálisis Hospital Angol",
       "url": "https://www.empleospublicos.cl/pub/convocatorias/avisopizarronficha.aspx?i=125294",
@@ -340,6 +326,20 @@
       "url": "https://muevete.falabella.com/",
       "communes": [
         "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "b66fcc53a9a46d116825",
+      "name": "Portal LinkedIn · Renaico",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Renaico"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

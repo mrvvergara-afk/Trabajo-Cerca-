@@ -9,6 +9,7 @@ on:
       - release/payload.json
   push:
     branches:
+      - main
       - feature/autonomous-release-runner-20261120
     paths:
       - scripts/release-runner.mjs

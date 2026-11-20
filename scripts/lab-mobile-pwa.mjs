@@ -252,7 +252,7 @@ await check('Regional job counter only after full verified catalog load', async 
     const wording = await count.innerText();
     assert.match(wording, /empleos verificados en nuestras 12 comunas/);
     assert.match(wording, /[0-9]+/);
-    const quantity = Number((wording.match(/\\d+/) || [])[0]);
+    const quantity = Number((wording.match(/\d+/) || [])[0]);
     assert.ok(Number.isInteger(quantity) && quantity > 0 && quantity < 300);
   } finally { await ctx.close(); }
 });

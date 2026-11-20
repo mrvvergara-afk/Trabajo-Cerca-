@@ -1,0 +1,45 @@
+name: RC7 Radar and Website News — final consolidated QA
+
+on:
+  pull_request:
+    paths:
+      - 'appdeploy_staging_ui/src/territorial-radar.tsx'
+      - 'appdeploy_staging_ui/src/site-menu.tsx'
+      - 'appdeploy_staging_ui/src/App.tsx'
+      - 'appdeploy_staging_ui/src/territorial-sections.tsx'
+      - 'automation/test_release_candidate_rc7.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC7_APPDEPLOY_FILES.json'
+      - '.github/workflows/rc7-radar-news-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'appdeploy_staging_ui/src/territorial-radar.tsx'
+      - 'appdeploy_staging_ui/src/site-menu.tsx'
+      - 'appdeploy_staging_ui/src/App.tsx'
+      - 'appdeploy_staging_ui/src/territorial-sections.tsx'
+      - 'automation/test_release_candidate_rc7.py'
+      - 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC7_APPDEPLOY_FILES.json'
+      - '.github/workflows/rc7-radar-news-qa.yml'
+
+permissions: {contents: read}
+
+jobs:
+  rc7:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Build affected public view and navigation
+        run: |
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/territorial-radar.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-radar.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/site-menu.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-menu.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/territorial-sections.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-territory.js
+          npx --yes --package=esbuild@0.25.12 esbuild appdeploy_staging_ui/src/App.tsx --bundle --platform=browser --format=esm --external:* --outfile=/tmp/tc-app.js
+      - name: Check full release manifest and behavior
+        run: python automation/test_release_candidate_rc7.py
+      - name: No deployment during GitHub QA
+        run: echo "RC7 source QA only; production deployment is a separate operation."

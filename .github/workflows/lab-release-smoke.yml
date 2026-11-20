@@ -33,5 +33,8 @@ jobs:
           node-version: '20'
       - name: Validate independent release runner against mock MCP, without secrets
         run: node --test scripts/release-runner.test.mjs
+      - name: Diagnose LAB API edge (one safe GET)
+        if: always()
+        run: node scripts/diagnose-lab-edge.mjs
       - name: Verify read-only LAB behavior
         run: node scripts/lab-release-smoke.mjs

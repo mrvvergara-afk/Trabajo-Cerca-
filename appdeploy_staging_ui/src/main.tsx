@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App, { OperationsPanel } from './App';
 import './index.css';
 import './ux-admin-brand-hotfix.css';
+import './ux-rc9-mobile.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

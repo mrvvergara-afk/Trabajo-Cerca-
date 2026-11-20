@@ -23,7 +23,7 @@ class RC9(unittest.TestCase):
   self.assertIn("const url = listingShareUrl(window.location.href,item.id);",APP)
   self.assertIn("window.addEventListener('beforeinstallprompt'",APP)
  def test_full_location_names_in_header(self):
-  self.assertIn("tcMobilePlaceLabel",APP)
+  self.assertIn("tcMobilePlaceValue",APP)
   self.assertIn("grid-template-rows:40px 39px",CSS)
   self.assertIn("grid-column:1/-1!important;grid-row:2!important",CSS)
   self.assertIn("width:100%!important;max-width:none!important",CSS)

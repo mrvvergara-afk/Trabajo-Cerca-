@@ -203,7 +203,7 @@ export function AdministratorShortcut({ inline = false }: { inline?: boolean }) 
   // exclusivamente al validar la sesión contra el backend, nunca por estado local.
   return (
     <div className={'tcAccountControl' + (inline ? ' tcAccountInline' : '')}>
-      {allowed && <a className='tcAdminShortcut' href='/admin'>Administración</a>}
+      {allowed && <a className='tcAdminShortcut' href='./admin'>Administración</a>}
       {!inline && <button className='tcAccountButton' disabled={busy} aria-expanded={menuOpen} onClick={() => { setMenuOpen(!menuOpen); }}>Mi cuenta</button>}
       {(inline || menuOpen) && <div className='tcAccountMenu' role='region' aria-label='Mi cuenta'>
         <b>{checking ? 'Comprobando cuenta…' : signedIn ? 'Tu sesión' : 'Mi cuenta'}</b>
@@ -214,7 +214,7 @@ export function AdministratorShortcut({ inline = false }: { inline?: boolean }) 
             : 'En este navegador necesitas iniciar sesión. La cuenta del teléfono no se transfiere automáticamente.'}</p>
         <button type='button' onClick={() => void login()} disabled={busy||checking}>{signedIn ? 'Cambiar cuenta' : 'Iniciar sesión'}</button>
         {signedIn && <button type='button' onClick={() => void logout()} disabled={busy||checking}>Cerrar sesión</button>}
-        {!allowed && <a className='tcAdminEntryLink' href='/admin'>Acceso administrativo</a>}
+        {!allowed && <a className='tcAdminEntryLink' href='./admin'>Acceso administrativo</a>}
         {!inline && <button onClick={() => setMenuOpen(false)}>Cerrar menú</button>}
         {message && <p role='status'>{message}</p>}
       </div>}

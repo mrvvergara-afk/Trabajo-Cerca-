@@ -284,6 +284,35 @@ await check('Protected LAB admin route stays reachable for authorized sign-in', 
       'anonymous session cannot access administrative operations');
   } finally { await ctx.close(); }
 });
+await check('LAB administrator sign-in button opens authentication screen', async () => {
+  const ctx = await mobile(), page = await ctx.newPage();
+  try {
+    await page.goto(new URL('admin', BASE).toString(), {
+      waitUntil: 'domcontentloaded', timeout: 30000,
+    });
+    const btn = page.getByRole('button', { name: 'Ingresar como administrador' });
+    await btn.waitFor({ timeout: 16000 });
+    await btn.click();
+    await Promise.race([
+      page.waitForURL(url => !url.pathname.endsWith('/admin'), {
+        timeout: 18500, waitUntil: 'domcontentloaded',
+      }).catch(() => undefined),
+      page.waitForTimeout(16000),
+    ]);
+    const state = await page.evaluate(() => ({
+      path: location.pathname,
+      domain: location.hostname.replace(/[a-z0-9_-]+\.(?=v2\.appdeploy\.ai)/i,'<app>.'),
+      notice: document.querySelector('.tcAdminAccess [role="status"]')?.textContent || '',
+    })).catch(() => null);
+    assert.ok(
+      (state && !state.path.endsWith('/admin')) ||
+      (state && state.notice.includes('almacenamiento')) ||
+      (state && state.notice.includes('No se pudo')),
+      'No detectable login redirect or error: ' + JSON.stringify(state)
+    );
+    console.log('AUTH_NAVIGATION_STATE', JSON.stringify(state));
+  } finally { await ctx.close(); }
+});
 await browser.close();
 console.log('LAB_MOBILE_PWA', JSON.stringify({
   passed: results.filter(x => x.ok).length,

@@ -149,9 +149,15 @@ async function readPublic(request = fetch) {
   return { rows: data.items.length,
     count: Number.isSafeInteger(total) && total > 0 ? total : data.items.length };
 }
-async function untilReady(client, version, wait = ms => new Promise(r => setTimeout(r, ms))) {
+async function untilReady(client, version, wait = ms => new Promise(r => setTimeout(r, ms)),
+  request = fetch, floor = 1) {
   for (let n = 0; n < 40; n++) {
-    const status = await client.call('get_app_status', { app_id: OFFICIAL_ID, limit: 10 });
+    const [status, publicJobs] = await Promise.all([
+      client.call('get_app_status', { app_id: OFFICIAL_ID, limit: 10 }),
+      readPublic(request),
+    ]);
+    if (publicJobs.count < floor)
+      throw Error('Catalog vanished or dropped during deployment');
     const dep = status.deployment || {};
     if (dep.snapshot_version === version && dep.status === 'ready') {
       const errors = status.qa_snapshot || {};
@@ -175,7 +181,10 @@ export async function runRelease({
   const client = new AppDeployMcp(env.TC_APPDEPLOY_MCP_TOKEN, request);
   await client.initialize();
   const who = await client.call('appdeploy_who_am_i');
-  if (!who || who.is_guest) throw Error('AppDeploy owner login not confirmed');
+  if (!who?.user?.user_id || who.isGuest === true ||
+      !Array.isArray(who.apps) ||
+      !who.apps.some(app => app.data?.app_id === OFFICIAL_ID))
+    throw Error('AppDeploy credential does not belong to production app owner');
 
   const before = await client.call('get_app_status', { app_id: OFFICIAL_ID, limit: 5 });
   if (before.deployment?.snapshot_version !== baseline ||
@@ -205,7 +214,8 @@ export async function runRelease({
     acceptedVersion = deploy.deployment?.snapshot_version;
     if (!acceptedVersion || !/^\d{12,20}$/.test(String(acceptedVersion)))
       throw Error('Deployment was not confirmed with a version');
-    await untilReady(client, acceptedVersion, wait);
+    await untilReady(client, acceptedVersion, wait, request,
+      Math.max(1, Math.floor(healthyBefore.count * 0.9)));
     const after = await readPublic(request);
     if (after.count < Math.max(1, Math.floor(healthyBefore.count * 0.9)))
       throw Error('Production feed count dropped beyond verified threshold');
@@ -218,7 +228,7 @@ export async function runRelease({
       app_id: OFFICIAL_ID, version: baseline,
     });
     if (!rollback.success) throw Error('Critical: rollback rejected after ' + cause.message);
-    await untilReady(client, baseline, wait);
+    await untilReady(client, baseline, wait, request, 1);
     const restored = await readPublic(request);
     if (restored.count < 1)
       throw Error('Critical: rollback restored code but no public jobs');

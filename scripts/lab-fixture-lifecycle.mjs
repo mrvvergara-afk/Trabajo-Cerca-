@@ -48,6 +48,7 @@ try {
     category: 'Negocio de prueba',
     description: 'Ficha ficticia para comprobar alta, moderación y retiro en LAB.',
     commune: 'Mininco',
+    coverage: ['Mininco', 'Renaico', 'Los Sauces', 'Collipulli'],
     phone: fakePhone,
     email: fakeEmail,
     showPhone: false,
@@ -73,6 +74,7 @@ try {
   assert.equal(status.status, 200);
   assert.equal(status.data.status, 'pending');
   assert.equal(status.data.commune, 'Collipulli');
+  assert.deepEqual([...status.data.coverage].sort(), ['Collipulli', 'Los Sauces', 'Renaico'].sort());
   assert.equal(status.data.title, title);
   assert.equal(status.data.phone, undefined);
   assert.equal(status.data.email, undefined);

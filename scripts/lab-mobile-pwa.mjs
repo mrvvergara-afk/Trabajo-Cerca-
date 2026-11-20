@@ -193,9 +193,11 @@ await check('Free service/business form shows context-sensitive help', async () 
   const ctx = await mobile(), page = await ctx.newPage();
   try {
     await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.locator('.tcPurposeGrid button')
-      .filter({ hasText: 'Publicar mi servicio o negocio' })
-      .first().click();
+    await page.locator(
+      '.neoMobileNav button[aria-label="Publicar gratis en Trabajo Cerca"]'
+    ).click();
+    await page.getByRole('dialog', { name: '¿Qué quieres publicar?' })
+      .getByRole('button', { name: /Ofrezco servicios o productos/ }).click();
     const form = page.locator('form.tcDirectoryForm').first();
     await form.waitFor({ timeout: 15000 });
     assert.match(await form.locator('.tcPublishGuide').innerText(), /Servicio gratuito/);

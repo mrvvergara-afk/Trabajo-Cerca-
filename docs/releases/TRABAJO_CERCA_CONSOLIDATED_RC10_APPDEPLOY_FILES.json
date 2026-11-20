@@ -2,7 +2,7 @@
   "release": "TC-CONSOLIDATED-RC10-CRISP-BRAND-PWA-20261120",
   "target_app": "trabajo-cerca-laboratorio-3ojgro",
   "baseline_snapshot": "1795174234095",
-  "status": "CI_PENDING_NO_DEPLOY",
+  "status": "DEPLOYED_READY_POSTDEPLOY_BROWSER_QA_PASS",
   "scope": "Only logo, native mobile place selector, PWA build icons, manifest, service worker and 2 extra tests; no data, backend or motor changes",
   "source_file_blobs": {
     "public/brand/trabajo-cerca-oficial.svg": "64a148a3c25d3623e3ee877d949033a7dda3c9e3",
@@ -71,5 +71,31 @@
     "One consolidated deploy only after green CI, current snapshot check and readiness",
     "Do not claim Android launcher icon updated remotely; existing shortcut may require removal/reinstallation",
     "Verify public feed, icon bytes and mobile layout after release"
-  ]
+  ],
+  "deployed_snapshot": "1795180490226",
+  "qa": {
+    "github_ci_checks": 9,
+    "postdeploy_browser_run": "https://github.com/mrvvergara-afk/Trabajo-Cerca-/actions/runs/44742917046",
+    "phone_widths": [
+      320,
+      360,
+      390,
+      430
+    ],
+    "communes_confirmed": [
+      "Nacimiento",
+      "Collipulli",
+      "Todas"
+    ],
+    "icon_png_live_http": 200,
+    "icon_dimensions": [
+      192,
+      512
+    ],
+    "maskable_512": true,
+    "splash_svg_http": 200,
+    "catalog_http": 200,
+    "catalog_items_in_response": 35,
+    "warning": "Android may preserve previous shortcut/WebAPK launcher icon; reinstall old PWA shortcut after saving local drafts. New vector illustration follows supplied brand composition, not a byte-exact copy of uploaded PNG."
+  }
 }

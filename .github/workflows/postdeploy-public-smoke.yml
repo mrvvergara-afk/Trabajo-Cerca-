@@ -1,0 +1,61 @@
+name: Post-deploy public smoke (read-only)
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/postdeploy-public-smoke.yml']
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  public-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Verify real public feed, adverts and protected administrator
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,time,urllib.request,urllib.error,sys
+          root='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai'
+          headers={'User-Agent':'TrabajoCerca-QA-ReadOnly/1.0','Accept':'application/json'}
+          def get(path,timeout=15):
+              request=urllib.request.Request(root+path,headers=headers)
+              try:
+                  with urllib.request.urlopen(request,timeout=timeout) as response:
+                      return response.status,response.read(2000000)
+              except urllib.error.HTTPError as error:
+                  return error.code,error.read(15000)
+          first=None
+          for attempt in range(5):
+              try:
+                  status,body=get('/api/listings?limit=5')
+                  if status==200:
+                      d=json.loads(body)
+                      items=d.get('items') if isinstance(d,dict) else None
+                      count=len(items) if isinstance(items,list) else 0
+                      total=d.get('totalJobOffers') if isinstance(d,dict) else None
+                      state=d.get('feedState') if isinstance(d,dict) else None
+                      print('PUBLIC_FEED',json.dumps({'http':status,'page_items':count,'totalJobOffers':total,'feedState':state}))
+                      if count>0 or (isinstance(total,int) and total>0):
+                          first=True
+                          break
+                      first=False
+                  else:
+                      print('PUBLIC_FEED_HTTP',status)
+                      first=False
+              except Exception as exc:
+                  print('PUBLIC_FEED_READ_ERROR',type(exc).__name__,str(exc)[:160])
+                  first=False
+              if attempt<4:time.sleep(10)
+          if not first:sys.exit('FAIL: public feed returned no visible jobs after retries')
+          for path,label in [('/api/growth/advertising?place=Todas&page=home','ADVERTISEMENT')]:
+              status,body=get(path)
+              print(label+'_HTTP',status,'bytes',len(body))
+              if status!=200:sys.exit('FAIL: public advertising feed not responding')
+          status,body=get('/api/admin/ops-telemetry')
+          print('ADMIN_UNAUTH_HTTP',status)
+          if status not in (401,403):sys.exit('FAIL: private dashboard endpoint exposed or unusable guard')
+          print('POSTDEPLOY_PUBLIC_SMOKE_PASS')
+          PY

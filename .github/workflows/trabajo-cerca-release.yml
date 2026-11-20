@@ -1,49 +1,69 @@
-# Future independent release executor. This deliberately FAILS CLOSED until the
-# owned AppDeploy deploy credential, signed bundle, restoration evidence and
-# atomic-feed check are integrated. It must never be described as a live deploy.
+# This workflow is a real AppDeploy MCP release executor, but all real deploys
+# remain fail-closed until the owner's credentials and DR evidence are supplied.
+# Keep runner code from trusted main; read candidate payload as data only.
 name: Trabajo Cerca — self-service production release
 on:
   workflow_dispatch:
     inputs:
       candidate_sha:
-        description: Approved, immutable candidate commit
+        description: Immutable candidate commit with release/payload.json
         type: string
         required: true
       production_baseline:
-        description: Expected existing AppDeploy official version
+        description: AppDeploy official snapshot expected before deploy
         type: string
         required: true
-
 permissions:
   contents: read
-
 concurrency:
   group: trabajo-cerca-production-release
   cancel-in-progress: false
-
 jobs:
-  release-guard:
+  release:
+    name: Approve, deploy, verify and roll back code on failure
     runs-on: ubuntu-24.04
     environment: production
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate approved immutable release inputs
+      - name: Checkout trusted release runner
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Prove local runner rejects unsafe changes (no API token)
+        run: node --test scripts/release-runner.test.mjs
+      - name: Validate immutable SHA and official baseline
         env:
           CANDIDATE_SHA: ${{ inputs.candidate_sha }}
           PRODUCTION_BASELINE: ${{ inputs.production_baseline }}
         run: |
-          node -e '
-          const sha=process.env.CANDIDATE_SHA || "";
-          const baseline=process.env.PRODUCTION_BASELINE || "";
-          if(!/^[a-f0-9]{40}$/i.test(sha) || !/^[0-9]{12,20}$/.test(baseline)){
-            process.stderr.write("Invalid signed release identifiers\\n");
-            process.exit(1);
-          }
-          process.stdout.write("Release identifiers syntactically valid\\n");
+          node --input-type=module -e '
+            const validSha=/^[a-f0-9]{40}$/i.test(process.env.CANDIDATE_SHA || "");
+            const validVersion=/^\\d{12,20}$/.test(process.env.PRODUCTION_BASELINE || "");
+            if(!validSha || !validVersion) {
+              process.stderr.write("Invalid release identifiers\\n"); process.exit(1);
+            }
           '
-      - name: Stop until complete autonomous AppDeploy runner and DR have been certified
+      - name: Checkout approved candidate AS DATA ONLY
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.candidate_sha }}
+          path: approved-candidate
+          persist-credentials: false
+      - name: Read immutable candidate payload without running its code
         run: |
-          echo "::error::NO-GO: native AppDeploy service credentials, approved release bundle, real database restore, and atomic public feed are not certified."
-          echo "::error::This workflow has NOT deployed the official app."
-          exit 1
+          test -f approved-candidate/release/payload.json
+          cp approved-candidate/release/payload.json ./release/payload.json
+      - name: Deploy via authenticated AppDeploy MCP, verify and roll back if needed
+        env:
+          TC_CANDIDATE_SHA: ${{ inputs.candidate_sha }}
+          TC_PRODUCTION_BASELINE: ${{ inputs.production_baseline }}
+          TC_RELEASE_ENABLE: ${{ vars.TC_RELEASE_ENABLE }}
+          TC_RESTORE_VERIFIED_AT: ${{ secrets.TC_RESTORE_VERIFIED_AT }}
+          TC_FEED_ATOMIC_VERIFIED_AT: ${{ secrets.TC_FEED_ATOMIC_VERIFIED_AT }}
+          TC_ADMIN_E2E_VERIFIED_AT: ${{ secrets.TC_ADMIN_E2E_VERIFIED_AT }}
+          TC_APPDEPLOY_MCP_TOKEN: ${{ secrets.TC_APPDEPLOY_MCP_TOKEN }}
+        run: node scripts/release-runner.mjs

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="245 155 510 530" role="img" aria-label="Trabajo Cerca">
+<rect x="245" y="155" width="510" height="530" rx="120" fill="#ffffff"/>
+<path d="M649 163l25-67M707 191l50-61M748 249l60-30" stroke="#79c52e" stroke-width="23" stroke-linecap="round" fill="none"/>
+<g id="tcLogoMark">
+<path d="M500 188c-122 0-220 95-220 214 0 150 190 320 220 342 30-22 220-192 220-342 0-119-98-214-220-214z" fill="#004d2d"/>
+<circle cx="500" cy="396" r="161" fill="#fff"/>
+<path d="M432 330v-28c0-15 12-28 28-28h80c16 0 28 13 28 28v28" fill="none" stroke="#005331" stroke-width="16" stroke-linejoin="round"/>
+<rect x="384" y="318" width="232" height="112" rx="17" fill="#005331"/>
+<path d="M384 362q116 61 232 0" stroke="white" stroke-width="12" fill="none"/>
+<rect x="483" y="351" width="34" height="38" rx="7" fill="white"/>
+<circle cx="405" cy="498" r="31" fill="#00613b"/><circle cx="500" cy="497" r="34" fill="#75c32f"/><circle cx="595" cy="498" r="31" fill="#00613b"/>
+<path d="M368 595q1-72 65-72t65 72v27h-130z" fill="#00613b"/>
+<path d="M502 599q0-70 63-76 67-7 67 72v28h-130z" fill="#00613b"/>
+<path d="M444 622q4-78 56-78 58 0 59 78v18H444z" fill="#75c32f" stroke="white" stroke-width="9"/>
+</g>
+</svg>

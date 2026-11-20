@@ -26,7 +26,8 @@ jobs:
               const p=await browser.newPage({viewport:{width,height:860}});
               await p.goto(base+'/',{waitUntil:'domcontentloaded',timeout:30000});
               await p.locator('.tcMobilePlace select').selectOption('Collipulli');
-              await p.waitForTimeout(2000);
+              await p.waitForSelector('.tcLocalAdvertising.tcCommercialCard',{timeout:15000});
+              await p.waitForTimeout(250);
               const d=await p.evaluate(()=>{
                 const bb=(selector)=>{const e=document.querySelector(selector);if(!e)return null;const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {x:Math.round(r.left),right:Math.round(r.right),w:Math.round(r.width),h:Math.round(r.height),display:s.display,grid:s.gridTemplateColumns,column:s.gridColumn,row:s.gridRow,text:e.textContent?.trim().slice(0,80)}};
                 const ad=document.querySelector('.tcLocalAdvertising.tcCommercialCard');

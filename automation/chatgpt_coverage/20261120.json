@@ -506,6 +506,256 @@
       "discovery_readable": 4,
       "note": "Lectura directa de páginas municipales de Lumaco y OMIL Concepción; búsquedas públicas alternativas encontraron avisos pero no cuentan como lectura de endpoints fallidos."
     },
+    "2": {
+      "expected": 24,
+      "attempted": 24,
+      "readable": 4,
+      "blocked": 6,
+      "failed": 12,
+      "unsupported": 2,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "linkedin-Angol",
+          "status": "blocked",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Página requiere JS/verificación o lector denegado"
+        },
+        {
+          "source_id": "computrabajo-Collipulli",
+          "status": "blocked",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-collipulli",
+          "offers_found": [],
+          "note": "Página requiere JS/verificación o lector denegado"
+        },
+        {
+          "source_id": "indeed-Ercilla",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Ercilla&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "trabajando-Ercilla",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/ercilla",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "chiletrabajos-Renaico",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Renaico",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "opcionempleo-Mininco",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-mininco.html",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "laborum-Nacimiento",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-nacimiento.html",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "linkedin-Negrete",
+          "status": "blocked",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Negrete%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Página requiere JS/verificación o lector denegado"
+        },
+        {
+          "source_id": "computrabajo-Mulchén",
+          "status": "blocked",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-mulchen",
+          "offers_found": [],
+          "note": "Página requiere JS/verificación o lector denegado"
+        },
+        {
+          "source_id": "indeed-Los Sauces",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Los%20Sauces&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "trabajando-Los Sauces",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/los-sauces",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "chiletrabajos-Purén",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Pur%C3%A9n",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "opcionempleo-Traiguén",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-traiguen.html",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "laborum-Lumaco",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-lumaco.html",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "linkedin-Victoria",
+          "status": "blocked",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Página requiere JS/verificación o lector denegado"
+        },
+        {
+          "source_id": "computrabajo-secondary-Los Ángeles",
+          "status": "blocked",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-los-angeles",
+          "offers_found": [],
+          "note": "Página requiere JS/verificación o lector denegado"
+        },
+        {
+          "source_id": "indeed-secondary-Temuco",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "trabajando-secondary-Temuco",
+          "status": "failed",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/temuco",
+          "offers_found": [],
+          "note": "URL exacta no accesible al lector; búsqueda alternativa separada"
+        },
+        {
+          "source_id": "omil-los-sauces",
+          "status": "unsupported",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.munilossauces.cl/noticias",
+          "offers_found": [],
+          "note": "HTML sin contenido laboral extraíble"
+        },
+        {
+          "source_id": "omil-collipulli",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://municipalidadcollipulli.cl/concursos-publicos/",
+          "offers_found": [],
+          "note": "Página legible; sin oferta individual vigente comprobada"
+        },
+        {
+          "source_id": "radio-nativa",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.radionativa.cl/",
+          "offers_found": [],
+          "note": "Página legible; sin oferta individual vigente comprobada"
+        },
+        {
+          "source_id": "radio-viaducto",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://radioviaducto.cl/",
+          "offers_found": [],
+          "note": "Página legible; sin oferta individual vigente comprobada"
+        },
+        {
+          "source_id": "registry-portal-empleo-biobio",
+          "status": "unsupported",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://portalempleobiobio.cl/",
+          "offers_found": [],
+          "note": "HTML sin contenido laboral extraíble"
+        },
+        {
+          "source_id": "registry-omil-chillan-ofertas",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "https://www.municipalidadchillan.cl/sitio/menu/tramites/ofertas-laborales.php",
+          "offers_found": [],
+          "note": "Página legible; sin oferta individual vigente comprobada"
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "los-angeles-bridge",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "public_search",
+          "offers_found": [],
+          "note": "Búsqueda pública por nombre y territorio; resultados exploratorios, sin ficha original nueva aprobada"
+        },
+        {
+          "source_id": "aggregators",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "public_search",
+          "offers_found": [],
+          "note": "Búsqueda pública por nombre y territorio; resultados exploratorios, sin ficha original nueva aprobada"
+        },
+        {
+          "source_id": "linkedin",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "public_search",
+          "offers_found": [],
+          "note": "Búsqueda pública por nombre y territorio; resultados exploratorios, sin ficha original nueva aprobada"
+        },
+        {
+          "source_id": "radio-ercilla",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "public_search",
+          "offers_found": [],
+          "note": "Búsqueda pública por nombre y territorio; resultados exploratorios, sin ficha original nueva aprobada"
+        },
+        {
+          "source_id": "alfarero-nacimiento",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T19:46:25Z",
+          "origin": "public_search",
+          "offers_found": [],
+          "note": "Búsqueda pública por nombre y territorio; resultados exploratorios, sin ficha original nueva aprobada"
+        }
+      ],
+      "discovery_attempted": 5,
+      "candidates_found": 3,
+      "new_batches": 0,
+      "published_confirmed": 0,
+      "note": "Hallazgo: Psicólogo PRM Nacimiento 3889597 pendiente de importación; Trabajador Social 3889603 ya visible; Prevencionista 3924497 existe catalogado Angol pero obras Purén Los Sauces Traiguén (incidente territorial)."
+    },
     "4": {
       "expected": 24,
       "attempted": 24,
@@ -1075,34 +1325,21 @@
       "closing_date": "2026-11-21",
       "status": "pending_catalog_reconciliation",
       "reason": "Espejo vencido y API alternativa inaccesible; no publicar a ciegas."
+    },
+    {
+      "url": "https://www.chiletrabajos.cl/trabajo/3924497",
+      "cargo": "Prevencionista de Riesgos – Malleco",
+      "comuna": "Purén, Los Sauces, Traiguén",
+      "status": "territorial_incident_existing",
+      "catalog_id": "free-c9a7209710e4ccc2807b3b51e8909ad00bcbb490"
     }
   ],
   "catalog": {
-    "generated_at": "2026-11-20T02:18:56+00:00",
-    "jobIdentityCount": 284,
+    "status": "valid",
+    "generated_at": "2026-11-20T18:45:13Z",
+    "jobIdentityCount": 286,
     "complete": true,
-    "pagesChecked": 11,
-    "fingerprint": "422457fd7b288cfbccdeec45df025759135b52271387ca5ab3b915feb52a3766",
-    "note": "Espejo consultado; la frescura se evalúa contra hora real de ejecución; sin lotes nuevos",
-    "wave0": {
-      "checked_at": "2026-11-20T12:23:58Z",
-      "mirror_generated_at": "2026-11-20T10:22:58+00:00",
-      "jobIdentityCount": 284,
-      "pagesChecked": 11,
-      "complete": true,
-      "valid": true,
-      "found_new_pending": 2,
-      "note": "Espejo válido y fresco; importer backend/chatgpt-direct-import.ts no disponible en ruta solicitada, se evita lote sin validar contrato."
-    },
-    "wave1": {
-      "checked_at": "2026-11-20T16:25:15Z",
-      "mirror_generated_at": "2026-11-20T12:25:22+00:00",
-      "jobIdentityCount": 284,
-      "pagesChecked": 11,
-      "complete": true,
-      "valid": false,
-      "reason": "Espejo con 239 minutos de antigüedad; API real inaccesible mediante lector web; catalog_unavailable. No se publicaron lotes."
-    }
+    "checked_at": "2026-11-20T19:46:25Z"
   },
   "new_batches": 0,
   "published_confirmed": 0

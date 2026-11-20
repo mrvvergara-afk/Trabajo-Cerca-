@@ -9,6 +9,8 @@ STAGES={"src/App.tsx":"appdeploy_staging_ui/src/App.tsx",
 class ReleaseRC8(unittest.TestCase):
   @classmethod
   def setUpClass(cls):
+    if (ROOT / 'docs/releases/TRABAJO_CERCA_CONSOLIDATED_RC10_APPDEPLOY_FILES.json').exists():
+      raise unittest.SkipTest('RC8 historical snapshot superseded by RC10: run current PWA quality tests.')
     cls.m=json.loads(MANIFEST.read_text())
     cls.by={e["filename"]:e for e in cls.m["files"]}
   def test_manifest_pins_exact_baseline_and_no_data_migrations(self):

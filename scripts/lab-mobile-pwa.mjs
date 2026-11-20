@@ -37,7 +37,7 @@ await check('Mobile LAB shell and geographic controls', async () => {
       .waitFor({ timeout: 20000 });
     await page.getByText('LAB · Ofertas públicas reales', { exact: true })
       .waitFor({ timeout: 20000 });
-    const filter = page.locator('.communePicker select');
+    const filter = page.getByRole('combobox', { name: 'Seleccionar comuna' });
     assert.ok(await filter.count() > 0, 'missing mobile commune selector');
     const options = await filter.first().locator('option').allTextContents();
     assert.ok(options.some(v => /Nacimiento/i.test(v)));
@@ -170,6 +170,13 @@ await check('PWA update requires discard confirmation even for controlled input'
       input.value = 'Borrador sin enviar';
       input.defaultValue = 'Borrador sin enviar';
       input.dispatchEvent(new Event('input', { bubbles: true }));
+      // Eliminate unrelated app forms: isolate only the controlled draft.
+      // Otherwise a prefilled input elsewhere could make this test a false PASS.
+      document.querySelectorAll('form').forEach(node => {
+        if (node.id !== 'tc-lab-test-dirty') node.remove();
+      });
+      if (document.querySelectorAll('form input').length !== 1)
+        throw Error('Dirty-form test was not isolated');
     });
     await page.getByRole('button', { name: 'Actualizar', exact: true }).click();
     const result = await page.evaluate(() => ({

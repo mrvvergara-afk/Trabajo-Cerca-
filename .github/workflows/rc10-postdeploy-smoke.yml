@@ -1,0 +1,92 @@
+name: RC10 post-deploy mobile picker, icons and public feed
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/rc10-postdeploy-smoke.yml']
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Test phone layout, PNG icons, manifest and live public offers
+        run: |
+          node <<'JS'
+          const {chromium}=require('playwright-core');
+          const root='https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai';
+          const gateway='https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro';
+          (async()=>{
+            const problems=[];
+            const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+            for(const width of [320,360,390,430]){
+              const page=await browser.newPage({viewport:{width,height:850},deviceScaleFactor:2});
+              const response=await page.goto(root+'/',{waitUntil:'domcontentloaded',timeout:30000});
+              await page.waitForSelector('.tcMobilePlace select',{timeout:18000});
+              const selections=[];
+              for(const place of ['Nacimiento','Collipulli','Todas']){
+                await page.locator('.tcMobilePlace select').selectOption(place);
+                await page.waitForTimeout(450);
+                const state=await page.evaluate(()=>{
+                  const input=document.querySelector('.tcMobilePlace select');
+                  const box=document.querySelector('.tcMobilePlace');
+                  const label=document.querySelector('.tcMobilePlaceValue');
+                  const ar=box?.getBoundingClientRect(),lr=label?.getBoundingClientRect();
+                  return {selected:input?.value,label:label?.textContent?.trim(),
+                    labelVisible:label?getComputedStyle(label).display!=='none':false,
+                    overlayOpacity:input?getComputedStyle(input).opacity:null,
+                    width:Math.round(ar?.width||0),valueWidth:Math.round(lr?.width||0),
+                    clips:lr&&ar?lr.right>ar.right-20:false,
+                    documentWidth:document.documentElement.scrollWidth,viewport:innerWidth};
+                });
+                selections.push(state);
+                if(state.selected!==place||state.label!==(place==='Todas'?'Todas las comunas':place)||
+                   !state.labelVisible||state.clips||state.documentWidth>width+8)
+                  problems.push(width+': visible commune '+place);
+              }
+              console.log('MOBILE_PICKER',JSON.stringify({width,http:response.status(),selections}));
+              await page.close();
+            }
+            await browser.close();
+            const assets=[
+              ['icon-192.png',192],
+              ['icon-512.png',512],
+              ['icon-maskable-512.png',512]
+            ];
+            for(const [file,size] of assets){
+              const r=await fetch(root+'/'+file+'?v=crisp-20261120',{signal:AbortSignal.timeout(15000)});
+              const bytes=Buffer.from(await r.arrayBuffer());
+              const isPng=bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]));
+              const dims=isPng?[bytes.readUInt32BE(16),bytes.readUInt32BE(20)]:[];
+              console.log('REAL_PNG',JSON.stringify({file,http:r.status,mime:r.headers.get('content-type'),bytes:bytes.length,dims}));
+              if(!r.ok||!isPng||dims[0]!==size||dims[1]!==size||bytes.length<4000)
+                problems.push(file+' missing or old');
+            }
+            const man=await fetch(root+'/manifest.webmanifest').then(r=>r.json());
+            console.log('MANIFEST',JSON.stringify({icons:man.icons,id:man.id,scope:man.scope}));
+            if(man.icons?.length!==3||!man.icons.some(i=>i.purpose==='maskable'))
+              problems.push('new PWA icons not advertised');
+            const logo=await fetch(root+'/brand/trabajo-cerca-oficial.svg');
+            const svg=await logo.text();
+            console.log('CRISP_SVG',JSON.stringify({status:logo.status,bytes:svg.length,smoothViewbox:svg.includes('0 0 1024 1024')}));
+            if(!logo.ok||!svg.includes('0 0 1024 1024'))problems.push('crisp splash logo missing');
+            let verified=false;
+            for(let i=0;i<4;i++){
+              try{
+                const r=await fetch(gateway+'/api/listings?limit=5',{signal:AbortSignal.timeout(12000)});
+                const d=await r.json();
+                console.log('PUBLIC_FEED',JSON.stringify({http:r.status,items:d.items?.length,totalJobOffers:d.totalJobOffers}));
+                if(r.ok && (d.items?.length>0||d.totalJobOffers>0)){verified=true;break;}
+              }catch(e){console.log('FEED_RETRY',String(e).slice(0,140));}
+              if(i<3)await new Promise(r=>setTimeout(r,9000));
+            }
+            if(!verified)problems.push('public feed not confirmed after deployment');
+            console.log('RC10_PROBLEMS',JSON.stringify(problems));
+            if(problems.length)process.exitCode=1;
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS

@@ -33,3 +33,7 @@ jobs:
         run: node scripts/lab-mobile-pwa.mjs
       - name: Verify official view unchanged and opt-in compact release preview
         run: node scripts/prod-preview-canary.mjs
+      - name: One controlled multi-commune LAB-only fixture and mandatory cleanup
+        env:
+          TC_LAB_FIXTURE_RUN: 'yes'
+        run: node scripts/lab-fixture-lifecycle.mjs

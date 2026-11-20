@@ -5,6 +5,256 @@
   "inventory_endpoints": 143,
   "discovery_targets_total": 29,
   "waves": {
+    "0": {
+      "expected": 24,
+      "attempted": 24,
+      "readable": 3,
+      "blocked": 4,
+      "failed": 17,
+      "unsupported": 0,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "indeed-Angol",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "trabajando-Angol",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/angol",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "chiletrabajos-Collipulli",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "opcionempleo-Ercilla",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "laborum-Renaico",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "linkedin-Mininco",
+          "status": "blocked",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control JS/anti-bot o bloqueo de lector"
+        },
+        {
+          "source_id": "computrabajo-Nacimiento",
+          "status": "blocked",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+          "offers_found": [],
+          "note": "Control JS/anti-bot o bloqueo de lector"
+        },
+        {
+          "source_id": "indeed-Negrete",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "trabajando-Negrete",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/negrete",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "chiletrabajos-Mulchén",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "opcionempleo-Los Sauces",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "laborum-Purén",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-puren.html",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "linkedin-Traiguén",
+          "status": "blocked",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control JS/anti-bot o bloqueo de lector"
+        },
+        {
+          "source_id": "computrabajo-Lumaco",
+          "status": "blocked",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+          "offers_found": [],
+          "note": "Control JS/anti-bot o bloqueo de lector"
+        },
+        {
+          "source_id": "indeed-Victoria",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "trabajando-Victoria",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/victoria",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "chiletrabajos-secondary-Los Ángeles",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "opcionempleo-secondary-Temuco",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "fashions-park-empleo-angol",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://fashionspark.hiringroom.com/jobs",
+          "offers_found": [
+            "Asistente de Aseo PT 20 HR (Angol)",
+            "Cajero/a Asistente Integral – Temporada Navidad – Victoria"
+          ],
+          "note": "Índice oficial legible; dos fichas abiertas; Victoria tiene ubicación contradictoria Temuco"
+        },
+        {
+          "source_id": "omil-negrete",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.muninegrete.cl/",
+          "offers_found": [],
+          "note": "Página legible sin convocatoria nueva individual comprobada"
+        },
+        {
+          "source_id": "malleco7",
+          "status": "checked_found",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.malleco7.cl/",
+          "offers_found": [],
+          "note": "Página legible sin convocatoria nueva individual comprobada"
+        },
+        {
+          "source_id": "bne-negrete-pilot-2026-109726",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.bne.gob.cl/oferta/2026-109726",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "mulchen-feed",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        },
+        {
+          "source_id": "registry-omil-temuco-portal",
+          "status": "failed",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "https://temuco.omil.cl/",
+          "offers_found": [],
+          "note": "URL exacta no entregó contenido laboral legible; BNE respondió 404 cuando aplica"
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "motor-tavily",
+          "status": "unsupported",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Tavily no disponible como herramienta conectada; se realizó búsqueda web pública sustitutiva, no se ejecutó Tavily."
+        },
+        {
+          "source_id": "bne",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Búsqueda web pública realizada; sin convocatoria nueva verificable en los resultados. No equivale a acceso a sistemas privados."
+        },
+        {
+          "source_id": "computrabajo",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Búsqueda web pública realizada; sin convocatoria nueva verificable en los resultados. No equivale a acceso a sistemas privados."
+        },
+        {
+          "source_id": "radio-montecarlo-angol",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Búsqueda web pública realizada; sin convocatoria nueva verificable en los resultados. No equivale a acceso a sistemas privados."
+        },
+        {
+          "source_id": "millaray-puren-sauces",
+          "status": "checked_empty",
+          "checked_at": "2026-11-20T12:23:58Z",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "note": "Búsqueda web pública realizada; sin convocatoria nueva verificable en los resultados. No equivale a acceso a sistemas privados."
+        }
+      ],
+      "discovery_attempted": 5,
+      "discovery_readable": 0
+    },
     "4": {
       "expected": 24,
       "attempted": 24,
@@ -543,6 +793,26 @@
       "commune": "Nacimiento",
       "url": "https://www.linkedin.com/jobs/view/4460504983/",
       "status": "pending_current_vacancy_verification"
+    },
+    {
+      "title": "Psicólogo/a 40 horas PRM Nacimiento",
+      "company": "Fundación Tierra de Esperanza",
+      "commune": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/trabajo/3889597",
+      "published_at": "2026-09-07",
+      "expires_at": "2026-11-21",
+      "status": "pending_contract_validation",
+      "note": "Oferta con sede de ejecución explícita en Nacimiento aunque portal la etiqueta Los Ángeles; no identificada en espejo de 284 identidades."
+    },
+    {
+      "title": "Trabajador/a Social 40 horas PRM Nacimiento",
+      "company": "Fundación Tierra de Esperanza",
+      "commune": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/trabajo/trabajador-a-social-40-horas-prm-nacimiento-3889603",
+      "published_at": "2026-09-08",
+      "expires_at": "2026-11-22",
+      "status": "pending_contract_validation",
+      "note": "Oferta con sede explícita en Nacimiento aunque portal la etiqueta Los Ángeles; no identificada en espejo de 284 identidades."
     }
   ],
   "catalog": {
@@ -551,7 +821,17 @@
     "complete": true,
     "pagesChecked": 11,
     "fingerprint": "422457fd7b288cfbccdeec45df025759135b52271387ca5ab3b915feb52a3766",
-    "note": "Espejo consultado; la frescura se evalúa contra hora real de ejecución; sin lotes nuevos"
+    "note": "Espejo consultado; la frescura se evalúa contra hora real de ejecución; sin lotes nuevos",
+    "wave0": {
+      "checked_at": "2026-11-20T12:23:58Z",
+      "mirror_generated_at": "2026-11-20T10:22:58+00:00",
+      "jobIdentityCount": 284,
+      "pagesChecked": 11,
+      "complete": true,
+      "valid": true,
+      "found_new_pending": 2,
+      "note": "Espejo válido y fresco; importer backend/chatgpt-direct-import.ts no disponible en ruta solicitada, se evita lote sin validar contrato."
+    }
   },
   "new_batches": 0,
   "published_confirmed": 0

@@ -197,20 +197,26 @@ await check('Free service/business form shows context-sensitive help', async () 
       '.neoMobileNav button[aria-label="Publicar gratis en Trabajo Cerca"]'
     ).click();
     await page.getByRole('dialog', { name: '¿Qué quieres publicar?' })
-      .getByRole('button', { name: /Ofrezco servicios o productos/ }).click();
+      .getByRole('button', { name: /Ofrezco un servicio o tengo un negocio/ }).click();
     const form = page.locator('form.tcDirectoryForm').first();
     await form.waitFor({ timeout: 15000 });
-    assert.match(await form.locator('.tcPublishGuide').innerText(), /Servicio gratuito/);
+    assert.match(await form.locator('.tcVisuallyHidden[aria-live="polite"]').textContent(), /Servicio gratuito/);
     assert.ok(await form.locator('input[placeholder="Ej.: Soldadura o gasfitería"]').count());
     await form.locator('input[name="local-kind"][value="business"]').check();
-    assert.match(await form.locator('.tcPublishGuide').innerText(), /Negocio gratuito/);
+    assert.match(await form.locator('.tcVisuallyHidden[aria-live="polite"]').textContent(), /Negocio gratuito/);
     assert.ok(await form.locator('input[placeholder="Ej.: Ferretería o alimentación"]').count());
     assert.ok(await form.locator('textarea[placeholder^="Ej.: Vendemos herramientas"]').count());
     const details = form.locator('.tcPublishGuideDetails');
     await details.locator('summary').click();
     assert.match(await details.innerText(), /No necesitas contratar publicidad/);
-    assert.match(await form.locator('.tcPublishFinalHelp').innerText(),
-      /gratis y requiere revisión/);
+    assert.ok(await form.locator('.tcInlineHelp').count() >= 5);
+    await form.locator('.tcInlineHelp summary').first().click();
+    assert.ok(await form.locator('.tcInlineHelp').first().locator('small').isVisible());
+    const coverage = form.locator('.tcCoveragePicker');
+    await coverage.locator('summary').click();
+    const renaico = coverage.getByRole('button', { name: /Renaico/ });
+    await renaico.click();
+    assert.equal(await renaico.getAttribute('aria-pressed'), 'true');
     assert.equal(await form.locator('button[type="submit"]').getAttribute('disabled'),
       null, 'submit is not arbitrarily disabled');
   } finally { await ctx.close(); }
@@ -220,7 +226,7 @@ await check('Advertising request explains optional promotion and fields', async 
   try {
     await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.locator('.tcSiteMenu summary').first().click();
-    await page.getByRole('button', { name: 'Promocionar mi negocio' })
+    await page.getByRole('button', { name: 'Promocionar negocio' })
       .first().click();
     const dialog = page.locator('.advertiserPanel').first();
     await dialog.waitFor({ timeout: 15000 });
@@ -235,6 +241,30 @@ await check('Advertising request explains optional promotion and fields', async 
     assert.match(await details.innerText(), /Publicidad:/);
     assert.ok(await dialog.getByRole('button', {
       name: 'Enviar solicitud para revisión' }).count());
+  } finally { await ctx.close(); }
+});
+await check('Regional job counter only after full verified catalog load', async () => {
+  const ctx = await mobile(), page = await ctx.newPage();
+  try {
+    await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    const count = page.locator('.tcRegionalCount');
+    await count.waitFor({ timeout: 30000 });
+    const wording = await count.innerText();
+    assert.match(wording, /empleos verificados en nuestras 12 comunas/);
+    assert.match(wording, /[0-9]+/);
+    const quantity = Number((wording.match(/\\d+/) || [])[0]);
+    assert.ok(Number.isInteger(quantity) && quantity > 0 && quantity < 300);
+  } finally { await ctx.close(); }
+});
+await check('Public menu has account but no administrator shortcut', async () => {
+  const ctx = await mobile(), page = await ctx.newPage();
+  try {
+    await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.locator('.tcSiteMenu summary').first().click();
+    assert.ok(await page.locator('.tcMenuAccount').isVisible());
+    assert.equal(await page.getByRole('button', { name: 'Acceso administrativo' }).count(), 0);
+    assert.equal(await page.getByRole('button', { name: 'Ver personas y oficios' }).count(), 0);
+    assert.ok(await page.getByRole('button', { name: 'Promocionar negocio' }).isVisible());
   } finally { await ctx.close(); }
 });
 await browser.close();

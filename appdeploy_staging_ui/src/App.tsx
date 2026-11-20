@@ -1641,7 +1641,7 @@ function App() {
             <label className='tcMobilePlace'><MapPin aria-hidden='true'/><span className='tcVisuallyHidden'>Comuna de cabecera</span><select aria-label='Comuna de cabecera' value={place} onChange={e=>chooseLocalPlace(e.target.value)}>{isTravelView&&!places.includes(place)&&<option value={place}>{place}</option>}{places.map(value=><option key={value} value={value}>{value==='Todas'?'Todas':value}</option>)}</select></label>
             <SiteMenu onRadar={()=>openSecondary('neo-radar')} onAdvertise={()=>setShowAdvertiser(true)} onAlerts={()=>setShowActivity(true)} onInstall={()=>void installApp()}
               onService={()=>setFlow('servicio')} onContribute={()=>setFlow('aporte')}
-              onCities={()=>openSecondary('tc-other-cities')} onNews={()=>openSecondary('actualidad-laboral')}
+              onCities={()=>openSecondary('tc-other-cities')} onNews={isStandalone?undefined:()=>openSecondary('actualidad-laboral')}
               onPeople={()=>navigateResults('people')}/>
           </div>
         </header>
@@ -1783,7 +1783,7 @@ function App() {
             failed={Boolean(loadError)} selected={place} updatedAt={feedUpdatedAt}
             onSelect={town=>navigateResults('opportunities',town)}/>
         </section>
-        {<details className='tcSecondary tcWebsiteNewsOnly' id='actualidad-laboral'>
+        {!isStandalone&&<details className='tcSecondary tcWebsiteNewsOnly' id='actualidad-laboral'>
           <summary>Actualidad laboral y trámites</summary><LaborNewsSection/>
         </details>}
         <details className='tcStitchFooterDetails' open={window.matchMedia('(min-width:768px)').matches}>

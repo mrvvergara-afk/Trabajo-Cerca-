@@ -74,7 +74,10 @@ function stubTransport({ badPostdeploy = false, deny = false } = {}) {
     if (body.method === 'notifications/initialized')
       return new Response('', { status: 202 });
     const result = method === 'initialize' ? { protocolVersion: '2025-06-18' }
-      : method === 'appdeploy_who_am_i' ? { is_guest: false }
+      : method === 'appdeploy_who_am_i' ? { isGuest: false,
+          user: { user_id: 'test-owner-only' },
+          apps: [{ data: { app_id: OFFICIAL_ID } }],
+        }
       : method === 'get_app_versions' ? { versions: [{ version: BASE }] }
       : method === 'get_app_status' ? {
           deployment: { status: 'ready', snapshot_version: version },

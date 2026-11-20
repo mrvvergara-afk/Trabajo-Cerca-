@@ -149,6 +149,26 @@ async function readPublic(request = fetch) {
   return { rows: data.items.length,
     count: Number.isSafeInteger(total) && total > 0 ? total : data.items.length };
 }
+async function checkOfficialPublicContracts(request = fetch) {
+  const advertising = await request(
+    new URL('api/growth/advertising?place=Todas&page=home&turn=1', OFFICIAL_ORIGIN),
+    { method: 'GET', headers: { Accept: 'application/json' },
+      redirect: 'error', signal: AbortSignal.timeout(15000) },
+  );
+  if (advertising.status !== 200)
+    throw Error('Official advertising unavailable: ' + advertising.status);
+  const ads = await advertising.json();
+  if (!Array.isArray(ads.commercial) || !Array.isArray(ads.house))
+    throw Error('Official advertising has an invalid public contract');
+  const admin = await request(new URL('api/admin/session', OFFICIAL_ORIGIN), {
+    method: 'GET', headers: { Accept: 'application/json' },
+    redirect: 'error', signal: AbortSignal.timeout(15000),
+  });
+  if (admin.status !== 401 && admin.status !== 403)
+    throw Error('Administrative access unexpectedly exposed or unavailable: ' +
+      admin.status);
+  return true;
+}
 async function untilReady(client, version, wait = ms => new Promise(r => setTimeout(r, ms)),
   request = fetch, floor = 1) {
   for (let n = 0; n < 40; n++) {
@@ -211,6 +231,7 @@ export async function runRelease({
   if (!known.versions?.some(v => String(v.version) === baseline))
     throw Error('Rollback snapshot missing');
   const healthyBefore = await readPublic(request);
+  await checkOfficialPublicContracts(request);
   const newFiles = payload.files.map(f => ({
     filename: f.filename,
     diffs: f.diffs.map(d => ({ from: d.from, to: d.to })),
@@ -234,6 +255,7 @@ export async function runRelease({
     await untilReady(client, acceptedVersion, wait, request,
       Math.max(1, Math.floor(healthyBefore.count * 0.9)));
     const after = await readPublic(request);
+    await checkOfficialPublicContracts(request);
     if (after.count < Math.max(1, Math.floor(healthyBefore.count * 0.9)))
       throw Error('Production feed count dropped beyond verified threshold');
     return { success: true, version: acceptedVersion,

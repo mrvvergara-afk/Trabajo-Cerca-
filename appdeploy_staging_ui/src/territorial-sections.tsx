@@ -97,7 +97,7 @@ export function LaborNewsSection() {
   const resource=(item:typeof LABOR_RESOURCES[number])=><a key={item.source} href={item.url} target='_blank' rel='noopener noreferrer'><span><b>{item.source}</b><small>{item.title}</small></span><ArrowRight aria-hidden='true'/></a>;
   return <section className='tcLaborNews tcCompactNews' data-expanded={expanded} aria-labelledby='tc-news-title'>
     <header><div><h2 id='tc-news-title' className='tcVisuallyHidden'>Actualidad laboral de La Araucanía</h2><p>Enlaces útiles y orientación laboral.</p></div><Newspaper aria-hidden='true'/></header>
-    <div className='tcNewsLayout'>{news.length>0&&<div className='tcNewsArticles'>
+    <div className='tcNewsLayout' style={news.length?undefined:{gridTemplateColumns:'minmax(0,1fr)'}}>{news.length>0&&<div className='tcNewsArticles'>
       {shown.length?shown.map(item=><article key={item.id} data-news-id={item.id}>
         <span className='tcNewsTopic'>{item.topic}</span><h3>{item.title}</h3><p>{item.summary}</p>
         <div className='tcNewsBottom'><small>{item.source} · <time dateTime={item.publishedOn}>{item.publishedOn.split('-').reverse().join('/')}</time></small><a href={item.url} target='_blank' rel='noopener noreferrer'>Leer noticia <ArrowRight aria-hidden='true'/></a></div>

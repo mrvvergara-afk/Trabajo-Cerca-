@@ -27,6 +27,7 @@ try {
         .first().click();
       const dir = page.locator('.tcLocalDirectory').first();
       await dir.waitFor({ timeout: 20000 });
+      await page.locator('.tcDirectoryTabs button').first().waitFor({ timeout: 20000 });
       const state = await page.evaluate(() => {
         const root = document.querySelector('.tcLocalDirectory');
         const tabs = document.querySelector('.tcDirectoryTabs button');

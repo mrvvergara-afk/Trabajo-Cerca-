@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-21T15:45:36+00:00",
+  "generated_at": "2026-11-21T16:20:56+00:00",
   "complete": true,
-  "totalItemsReported": 293,
-  "jobIdentityCount": 289,
+  "totalItemsReported": 292,
+  "jobIdentityCount": 288,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 111,
+  "visibleIn12CommunesCount": 110,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "be8473e85e297c5224052c970bedf2eea8e9367a11034a6012ca8c57b4c07b37",
+  "fingerprint": "8c97792299d75f83b5e08578a28578e4e784c29a75145b38707230dcd6a1fa7e",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -2491,18 +2491,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/administrativo-a-contable-de-temporada-los-angeles-3921696",
       "urlHashSha256": "2ef9a8203a2955f82fefe41abd482d5ce22cc4f13a906885909e2c130a98da91"
-    },
-    {
-      "id": "free-a970317e586c0a813cb54304a7a4aa214fff81de",
-      "title": "EMBAJADOR DE EXPERIENCIA TEMUCO - ANCUD - CASTRO - CALBUCO - PTO MONTT - MULCHEN",
-      "company": "CONSULTORA CAPACITACION",
-      "workCommunes": [
-        "Mulchén",
-        "Temuco"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/embajador-de-experiencia-temuco-ancud-castro-calbuco-pto-montt-mulchen-3894935",
-      "urlHashSha256": "6725b64ddb36538409ecdf05bf8bc73543b1015ad79a62fddb0811d2860d193f"
     },
     {
       "id": "free-ad019f6231cc3397526557f362a5a27c70a6a700",

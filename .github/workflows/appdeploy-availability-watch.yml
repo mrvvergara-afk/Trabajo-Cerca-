@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '17 */3 * * *'
   workflow_dispatch:
+  pull_request:
+    paths:
+      - scripts/appdeploy-availability-watch.mjs
+      - scripts/appdeploy-availability-watch.test.mjs
+      - .github/workflows/appdeploy-availability-watch.yml
   push:
     branches: [main]
     paths:
@@ -12,14 +17,29 @@ on:
 
 permissions:
   contents: read
-  issues: write
 
 concurrency:
   group: trabajo-cerca-availability-watch
   cancel-in-progress: false
 
 jobs:
+  verify:
+    name: Static availability tests (no external calls)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --check scripts/appdeploy-availability-watch.mjs
+      - run: node --test scripts/appdeploy-availability-watch.test.mjs
+
   observe:
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: read
+      issues: write
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     steps:
@@ -27,8 +47,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Validate availability classification without HTTP probes
-        run: node --test scripts/appdeploy-availability-watch.test.mjs
       - name: Check two public endpoints twice and report only state changes
         env:
           GITHUB_TOKEN: ${{ github.token }}

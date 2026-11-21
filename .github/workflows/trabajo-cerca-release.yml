@@ -2,7 +2,7 @@
 # remain fail-closed until the owner's credentials and DR evidence are supplied.
 # Keep runner code from trusted main; read candidate payload as data only.
 name: Trabajo Cerca — self-service production release
-run-name: TC PROD ${{ inputs.candidate_sha }} @ ${{ inputs.production_baseline }}
+run-name: TC PROD ${{ inputs.candidate_sha }} @ ${{ inputs.production_baseline }} [${{ inputs.dry_run && 'DRY' || 'LIVE' }}]
 on:
   workflow_dispatch:
     inputs:

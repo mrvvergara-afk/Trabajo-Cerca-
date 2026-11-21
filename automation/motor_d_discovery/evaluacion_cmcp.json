@@ -123,15 +123,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19440?c=cmpc",
-      "title": "Feria Laboral Los Ángeles",
-      "workplaces": [],
-      "reason": [
-        "detail_unavailable",
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
       "title": "Ejecutivo Comercial",
       "workplaces": [],
@@ -222,6 +213,14 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
       "title": "Operador Montacarga Turno - Planta Puente Alto",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
+      "title": "INGENIERO PREVENCIÓN RIESGOS",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"

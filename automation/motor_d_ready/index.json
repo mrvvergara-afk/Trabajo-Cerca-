@@ -168,6 +168,12 @@
       "file": "20261120/motor-d-20261120-a9e1312c01453fbd0c.json",
       "count": 1,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261121-beb79ae39f3195f757",
+      "file": "20261121/motor-d-20261121-beb79ae39f3195f757.json",
+      "count": 1,
+      "batch_type": "recovery"
     }
   ],
   "seen_offer_ids": [
@@ -196,6 +202,7 @@
     "d_5813016bef2debcf1ea2",
     "d_5c980138c7556d6f7de9",
     "d_5ca6fdce4da0aaa7911b",
+    "d_65e87d47bbed462ca924",
     "d_688f28c809dc3463f046",
     "d_719dc82e84eb93a138d9",
     "d_728743fa1bc6044fab11",
@@ -277,6 +284,7 @@
     "job:[\"mecanico a turno nacimiento planta santa fe\", \"cmpc\", [\"nacimiento\"]]",
     "job:[\"paramedico a traiguen\", \"xinerlink\", [\"angol\"]]",
     "job:[\"practica profesional contador auditor nacimiento\", \"serfonac ltda\", [\"nacimiento\"]]",
+    "job:[\"prevencionista de riesgos aif chanaral\", \"consultores 2000\", [\"puren\"]]",
     "job:[\"prevencionista de riesgos en faena antofagasta 100 terreno jornada 5x2\", \"empleo seguro\", [\"victoria\"]]",
     "job:[\"prevencionista de riesgos malleco\", \"constructora\", [\"angol\"]]",
     "job:[\"prevencionista de riesgos malleco\", \"constructora\", [\"puren\"]]",
@@ -345,6 +353,7 @@
     "source:chiletrabajos:3932099",
     "source:chiletrabajos:3933145",
     "source:chiletrabajos:3933560",
+    "source:chiletrabajos:3933712",
     "source:chiletrabajos:3934484",
     "source:chiletrabajos:3934867",
     "source:chiletrabajos:3934905",
@@ -378,6 +387,7 @@
     "url:https://chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
     "url:https://chiletrabajos.cl/trabajo/paramedico-a-traiguen-3892108",
     "url:https://chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
+    "url:https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
     "url:https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-en-faena-antofagasta-100-terreno-jornada-5x2-3933560",
     "url:https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
     "url:https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",

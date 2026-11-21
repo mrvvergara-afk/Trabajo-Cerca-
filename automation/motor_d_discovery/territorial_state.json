@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-21T13:45:47.515035-03:00",
+  "last_run": "2026-11-21T15:07:23.699170-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -8833,6 +8833,36 @@
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-de-inventario-pudahuel-turno-dia-3081026.html",
       "source": "Inventario D04",
       "commune": null
+    },
+    "37bfb3ecf4ac08183fe1": {
+      "first_seen": "2026-11-21T15:07:23.699170-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ordenador-de-carros-de-supermercado-fines-de-semana-en-las-condes-rm-3081049.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f3fa1df0456c905156e5": {
+      "first_seen": "2026-11-21T15:07:23.699170-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ordenador-de-carros-de-supermercado-en-las-condes-rm-3081048.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bd2b43a5008db297ec52": {
+      "first_seen": "2026-11-21T15:07:23.699170-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutiva-o-de-venta-de-seguros-call-center-retencion-de-seguros-3081047.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dc4d96e73b2f635014af": {
+      "first_seen": "2026-11-21T15:07:23.699170-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/guardia-de-seguridad-4x4-fijo-dia-ingreso-inmediato-con-o-sin-os10-unimarc-caldera-caldera-3081046.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "855ec401c9cfb3c760e4": {
+      "first_seen": "2026-11-21T15:07:23.699170-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
+      "source": "Motor A · ficha original a verificar",
+      "commune": "Purén"
     }
   }
 }

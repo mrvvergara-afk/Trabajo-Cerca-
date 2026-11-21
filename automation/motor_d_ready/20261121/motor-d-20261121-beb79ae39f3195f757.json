@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261121-beb79ae39f3195f757",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_65e87d47bbed462ca924",
+      "cargo": "Prevencionista de Riesgos AIF - Chañaral",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Purén"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
+      "fecha_publicacion": "2026-11-17",
+      "fecha_descubrimiento": "2026-11-21",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-01-31",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    }
+  ]
+}

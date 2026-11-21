@@ -1,0 +1,33 @@
+name: Trabajo Cerca — PWA candidate offline QA
+on:
+  push:
+    branches:
+      - release/pwa-recovery-candidate-20261120
+    paths:
+      - 'release/candidates/pwa-resilience-20261120.json'
+      - 'release/baselines/sw-1795209664148.js'
+      - 'scripts/pwa-resilience-candidate.test.mjs'
+      - '.github/workflows/pwa-resilience-qa.yml'
+  pull_request:
+    paths:
+      - 'release/candidates/pwa-resilience-20261120.json'
+      - 'release/baselines/sw-1795209664148.js'
+      - 'scripts/pwa-resilience-candidate.test.mjs'
+      - '.github/workflows/pwa-resilience-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Validate candidate and simulate offline worker recovery
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Compile candidate and run isolated Cache Storage simulations
+        run: node --test scripts/pwa-resilience-candidate.test.mjs

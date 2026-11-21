@@ -1,0 +1,30 @@
+name: Trabajo Cerca — visible canary candidate offline QA
+on:
+  pull_request:
+    paths:
+      - 'release/candidates/visible-canary-20261121.json'
+      - 'release/baselines/ux-preview-transfer-1795209664148.css'
+      - 'scripts/visible-canary-candidate.test.mjs'
+      - '.github/workflows/visible-canary-qa.yml'
+  push:
+    branches:
+      - release/visible-canary-gate-20261121
+    paths:
+      - 'release/candidates/visible-canary-20261121.json'
+      - 'release/baselines/ux-preview-transfer-1795209664148.css'
+      - 'scripts/visible-canary-candidate.test.mjs'
+      - '.github/workflows/visible-canary-qa.yml'
+permissions:
+  contents: read
+jobs:
+  verify-candidate:
+    name: Verify isolated visual canary without deployment
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run candidate gate tests
+        run: node --test scripts/visible-canary-candidate.test.mjs

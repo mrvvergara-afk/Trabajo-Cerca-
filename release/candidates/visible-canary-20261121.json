@@ -1,0 +1,17 @@
+{
+  "schema": "tc-release-v1",
+  "appId": "trabajo-cerca-laboratorio-3ojgro",
+  "expectedBaseline": "1795209664148",
+  "description": "Canary opt-in visible marker for confirming actual first official release; regular visitors unchanged; production deploy gated by signed DR attestation",
+  "files": [
+    {
+      "filename": "src/ux-preview-transfer.css",
+      "diffs": [
+        {
+          "from": "/* Production canary only: inactive without ?tc_release_preview=1 */",
+          "to": "/* Opt-in proof of deployment: regular visitors see no marker. */\nhtml[data-tc-release-preview=\"1\"] body::before {\n  content: \"Trabajo Cerca | version de prueba TC-20261121-A\";\n  position: fixed;\n  left: 50%;\n  bottom: max(10px, env(safe-area-inset-bottom));\n  transform: translateX(-50%);\n  z-index: 2147483000;\n  max-width: calc(100vw - 20px);\n  box-sizing: border-box;\n  border-radius: 8px;\n  padding: 9px 12px;\n  background: #133b2d;\n  color: #ffffff;\n  font: 700 12px/1.35 system-ui, sans-serif;\n  text-align: center;\n  overflow-wrap: anywhere;\n  box-shadow: 0 3px 12px #0004;\n  pointer-events: none;\n}"
+        }
+      ]
+    }
+  ]
+}

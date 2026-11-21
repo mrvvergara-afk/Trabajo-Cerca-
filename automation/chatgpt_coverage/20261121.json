@@ -347,6 +347,335 @@
         }
       ]
     },
+    "1": {
+      "scheduled_local": "13:00",
+      "attempted_at": "2026-11-21T12:44:46-03:00",
+      "expected": 24,
+      "attempted": 24,
+      "accessible": 2,
+      "blocked": 6,
+      "failed": 16,
+      "unsupported": 0,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "computrabajo-Angol",
+          "name": "Computrabajo · Angol",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-angol",
+          "territory": "Angol",
+          "status": "blocked",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso, JS/robot o HTTP 403; no equivale a lectura"
+        },
+        {
+          "source_id": "indeed-Collipulli",
+          "name": "Indeed · Collipulli",
+          "url": "https://cl.indeed.com/jobs?q=&l=Collipulli&fromage=45",
+          "territory": "Collipulli",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-Collipulli",
+          "name": "Trabajando · Collipulli",
+          "url": "https://www.trabajando.cl/trabajo-empleo/collipulli",
+          "territory": "Collipulli",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-Ercilla",
+          "name": "ChileTrabajos · Ercilla",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Ercilla",
+          "territory": "Ercilla",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-Renaico",
+          "name": "Opción Empleo · Renaico",
+          "url": "https://www.opcionempleo.cl/empleo-en-renaico.html",
+          "territory": "Renaico",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "laborum-Mininco",
+          "name": "Laborum · Mininco",
+          "url": "https://www.laborum.cl/empleos-busqueda-mininco.html",
+          "territory": "Mininco",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "linkedin-Nacimiento",
+          "name": "LinkedIn · Nacimiento",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Nacimiento%2C%20Chile&f_TPR=r3888000",
+          "territory": "Nacimiento",
+          "status": "blocked",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso, JS/robot o HTTP 403; no equivale a lectura"
+        },
+        {
+          "source_id": "computrabajo-Negrete",
+          "name": "Computrabajo · Negrete",
+          "url": "https://cl.computrabajo.com/empleos-en-biobio-en-negrete",
+          "territory": "Negrete",
+          "status": "blocked",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso, JS/robot o HTTP 403; no equivale a lectura"
+        },
+        {
+          "source_id": "indeed-Mulchén",
+          "name": "Indeed · Mulchén",
+          "url": "https://cl.indeed.com/jobs?q=&l=Mulch%C3%A9n&fromage=45",
+          "territory": "Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-Mulchén",
+          "name": "Trabajando · Mulchén",
+          "url": "https://www.trabajando.cl/trabajo-empleo/mulchen",
+          "territory": "Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-Los Sauces",
+          "name": "ChileTrabajos · Los Sauces",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20Sauces",
+          "territory": "Los Sauces",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-Purén",
+          "name": "Opción Empleo · Purén",
+          "url": "https://www.opcionempleo.cl/empleo-en-puren.html",
+          "territory": "Purén",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "laborum-Traiguén",
+          "name": "Laborum · Traiguén",
+          "url": "https://www.laborum.cl/empleos-busqueda-traiguen.html",
+          "territory": "Traiguén",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "linkedin-Lumaco",
+          "name": "LinkedIn · Lumaco",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
+          "territory": "Lumaco",
+          "status": "blocked",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso, JS/robot o HTTP 403; no equivale a lectura"
+        },
+        {
+          "source_id": "computrabajo-Victoria",
+          "name": "Computrabajo · Victoria",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-victoria",
+          "territory": "Victoria",
+          "status": "blocked",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso, JS/robot o HTTP 403; no equivale a lectura"
+        },
+        {
+          "source_id": "indeed-secondary-Los Ángeles",
+          "name": "Indeed · Los Ángeles",
+          "url": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
+          "territory": "Los Ángeles",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-secondary-Los Ángeles",
+          "name": "Trabajando · Los Ángeles",
+          "url": "https://www.trabajando.cl/trabajo-empleo/los-angeles",
+          "territory": "Los Ángeles",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-secondary-Temuco",
+          "name": "ChileTrabajos · Temuco",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Temuco",
+          "territory": "Temuco",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "omil-lumaco",
+          "name": "Municipalidad / OMIL Lumaco",
+          "url": "https://www.munilumaco.cl/",
+          "territory": "Lumaco",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "omil-mulchen",
+          "name": "Municipalidad / OMIL Mulchén",
+          "url": "https://www.munimulchen.cl/?s=oferta+laboral",
+          "territory": "Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "malleco7-ediciones",
+          "name": "Malleco 7 · ediciones digitales",
+          "url": "https://www.malleco7.cl/ediciones-digitales-malleco7/",
+          "territory": "Malleco",
+          "status": "checked_empty",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Página accesible; no se acreditó ficha laboral individual en contenido visible"
+        },
+        {
+          "source_id": "bne",
+          "name": "Bolsa Nacional de Empleo",
+          "url": "https://www.bne.gob.cl/ofertas",
+          "territory": "territorio piloto",
+          "status": "failed",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable, 404 o timeout; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "empleos-publicos",
+          "name": "Servicio Civil · Empleos Públicos",
+          "url": "https://www.empleospublicos.cl/pub/convocatorias/convocatorias.aspx",
+          "territory": "Chile",
+          "status": "blocked",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso, JS/robot o HTTP 403; no equivale a lectura"
+        },
+        {
+          "source_id": "registry-omil-concepcion",
+          "name": "OMIL Concepción",
+          "url": "https://concepcion.cl/informacion-e-inscripciones-en-linea-omil/",
+          "territory": "Concepción",
+          "status": "checked_empty",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Página accesible; no se acreditó ficha laboral individual en contenido visible"
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "trabajando",
+          "name": "Trabajando.com",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_indexed_search",
+          "offers_found": [],
+          "reason": "Búsqueda indexada alternativa realizada; no se afirma lectura del portal privado ni cobertura exhaustiva de sus fichas"
+        },
+        {
+          "source_id": "local-job-pages",
+          "name": "Páginas locales de datos laborales",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_indexed_search",
+          "offers_found": [],
+          "reason": "Búsqueda indexada alternativa realizada; no se afirma lectura del portal privado ni cobertura exhaustiva de sus fichas"
+        },
+        {
+          "source_id": "computrabajo",
+          "name": "Computrabajo",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_indexed_search",
+          "offers_found": [],
+          "reason": "Búsqueda indexada alternativa realizada; no se afirma lectura del portal privado ni cobertura exhaustiva de sus fichas"
+        },
+        {
+          "source_id": "social-public",
+          "name": "Facebook · Instagram · TikTok públicos",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_indexed_search",
+          "offers_found": [],
+          "reason": "Búsqueda indexada alternativa realizada; no se afirma lectura del portal privado ni cobertura exhaustiva de sus fichas"
+        },
+        {
+          "source_id": "linkedin",
+          "name": "LinkedIn",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T12:44:46-03:00",
+          "origin": "public_web_indexed_search",
+          "offers_found": [],
+          "reason": "Búsqueda indexada alternativa realizada; no se afirma lectura del portal privado ni cobertura exhaustiva de sus fichas"
+        }
+      ],
+      "notes": [
+        "Ejecución adelantada a las 12:44 Chile; no equivale a ejecución automática confirmada de las 13:00.",
+        "Búsquedas indexadas hallaron ficha territorial incorrecta 3924497, ya existente; no duplicar.",
+        "No se verificó recibo de publicación AppDeploy."
+      ]
+    },
     "4": {
       "scheduled_local": "01:00",
       "attempted_at": "2026-11-21T01:26:12-03:00",
@@ -1035,10 +1364,12 @@
     }
   },
   "catalog": {
-    "status": "catalog_unavailable",
-    "generated_at": "2026-11-21T08:11:36+00:00",
+    "status": "valid",
+    "generated_at": "2026-11-21T12:24:04+00:00",
     "jobIdentityCount": 287,
-    "reason": "Espejo de 287 identidades completo pero con antigüedad >120 minutos (generado 05:11 Chile); API real alternativa no accesible mediante lector web; no publicar sin conciliación vigente"
+    "pagesChecked": 11,
+    "complete": true,
+    "reason": "Espejo fresco a las 12:44 Chile; 287 identidades con campos requeridos; API directa no legible, no se generaron lotes"
   },
   "candidates": [
     {
@@ -1094,6 +1425,7 @@
     "La fuente SSAN muestra concursos externos en Lonquimay, fuera del territorio principal; no se importan.",
     "Sin modificación ni despliegue de app.",
     "Onda 5: 23 endpoints intentados, lectura efectiva 3, no se confunde fallo con checked_empty. Sin publicaciones confirmadas.",
-    "09:00 onda 0: 24/24 intentos, solo 2 fuentes legibles; 4 bloqueadas, 17 fallidas, 1 sin HTML utilizable. Hallazgo ATS Angol y conflicto territorial Victoria/Temuco. Espejo vencido y API no accesible: sin lote ni publicación."
+    "09:00 onda 0: 24/24 intentos, solo 2 fuentes legibles; 4 bloqueadas, 17 fallidas, 1 sin HTML utilizable. Hallazgo ATS Angol y conflicto territorial Victoria/Temuco. Espejo vencido y API no accesible: sin lote ni publicación.",
+    "Onda 1 intentada: 24 fuentes, 2 legibles, 6 bloqueadas, 16 fallidas. Descubrimiento por índices; no publicación nueva. Incidencia territorial existente 3924497 (Purén/Los Sauces/Traiguén, no Angol)."
   ]
 }

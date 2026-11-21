@@ -1,0 +1,29 @@
+{
+  "schema": "tc-release-v1",
+  "appId": "trabajo-cerca-laboratorio-3ojgro",
+  "expectedBaseline": "1795209664148",
+  "description": "Approved only after canary and independent DR: harden official PWA install, cache retention and lazy-module recovery without changing app data",
+  "files": [
+    {
+      "filename": "public/sw.js",
+      "diffs": [
+        {
+          "from": "const CACHE='trabajo-cerca-shell-icons-20261120-v2';",
+          "to": "const CACHE='trabajo-cerca-shell-icons-20261120-v3';"
+        },
+        {
+          "from": " const cache=await caches.open(CACHE);await cache.addAll(CORE);",
+          "to": " const cache=await caches.open(CACHE);\n await cache.add('./');\n await Promise.all(CORE.filter(path=>path!=='./').map(async path=>{\n   try{\n     const response=await fetch(path,{cache:'reload'});\n     if(response.ok) await cache.put(path,response.clone());\n   }catch{/* An optional icon must never block the shell upgrade. */}\n }));"
+        },
+        {
+          "from": "self.addEventListener('activate',event=>{\n  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE&&key!==SHARE_CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));\n});",
+          "to": "self.addEventListener('activate',event=>{\n event.waitUntil((async()=>{\n   const keys=await caches.keys();\n   const previous=keys.filter(key=>key.startsWith('trabajo-cerca-shell-icons-')&&key!==CACHE).sort().reverse();\n   const preserve=new Set([CACHE,SHARE_CACHE,...previous.slice(0,4)]);\n   await Promise.all(previous.filter(key=>!preserve.has(key)).map(key=>caches.delete(key)));\n   await self.clients.claim();\n })());\n});"
+        },
+        {
+          "from": "  if(/\\/assets\\/[^/]+\\.(?:js|css)$/.test(url.pathname)){\n    event.respondWith((async()=>{\n      const cache=await caches.open(CACHE),stored=await cache.match(request);",
+          "to": "  if(/\\/assets\\/[^/]+\\.(?:js|css)$/.test(url.pathname)){\n    event.respondWith((async()=>{\n      const cache=await caches.open(CACHE),stored=await caches.match(request);"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 /**
- * Trabajo Cerca — no-write, single-pass release smoke test.
+ * Trabajo Cerca — no-write, single-pass release smoke test (post-quota-reset verification).
  * TARGET IS HARDCODED to the isolated LAB; no credentials or production writes.
  * Run: node scripts/lab-release-smoke.mjs (Node 20+)
  * No load test: < 16 low-rate sequential requests, no retries and no stored data.

@@ -1,7 +1,11 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-20",
+  "checked_at": "2026-11-21T00:23:01.823672+00:00",
+  "feed_complete": true,
+  "feed_rows": 291,
   "state": "needs_receipt_review",
+  "territory_mismatches_count": 1,
   "historical_missing_from_catalog": 1,
   "released_from_quarantine": 0,
   "released_items": [],
@@ -17,7 +21,11 @@
       "prior_batch_ids": [
         "motor-d-20261118-d17333430d2aefde48"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery",
+      "catalog_status": "not_found_in_complete_feed"
     }
-  ]
+  ],
+  "resolved_published_items": [],
+  "confirmation_file": "publication_confirmation.json",
+  "semantic_only_requires_receipt": []
 }

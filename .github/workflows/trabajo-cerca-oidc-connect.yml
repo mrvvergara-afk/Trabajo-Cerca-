@@ -26,9 +26,6 @@ jobs:
           node-version: '20'
       - name: Prove signed GitHub Actions identity can reach isolated LAB
         id: handshake
-        env:
-          ACTIONS_ID_TOKEN_REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
-          ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
         run: |
           node --input-type=module <<'NODE'
           const endpoint=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;

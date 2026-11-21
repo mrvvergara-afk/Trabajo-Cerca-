@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-21T08:18:52.707668-03:00",
+  "last_run": "2026-11-21T13:45:47.515035-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -8711,6 +8711,126 @@
     "68258ecaa6ff73347541": {
       "first_seen": "2026-11-21T08:18:52.707668-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-produccion-industrial-lunes-a-viernes-580000-liquidos-desayuno-almuerzo-y-once-quilicura-3080938.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d7ddb1b6ef95f3b818fa": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-con-o-sin-experiencia-para-pudahuel-de-lunes-a-viernes-3081045.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3f36061497090ac973ce": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/picker-preparador-de-pedidos-sabado-y-domingo-sector-agua-santa-valparaiso-picker-agua-santa-3081044.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2840678ef2dce660448a": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/picker-preparador-de-pedidos-supermercado-estacion-central-picker-estacion-central-3081043.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c505c564d0ad3bd8a544": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-bodega-san-bernardo-564000-liq-bono-asistencia-3081042.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e15d4e2d596382ea2395": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-turno-tarde-san-bernardo-tradis-ingreso-inmediato-3081041.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "988fd48e0da2811cc934": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asesor-a-comercial-de-venta-de-seguros-con-experiencia-en-telemarketing-presencial-3081040.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6e7341d1efc5788dcd25": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-tienda-caja-con-experiencia-en-caja-lider-o-acuenta-huechuraba-ingreso-inmediato-3081039.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b91c915df6eaa970e029": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/preparador-de-pedidos-pickers-cerrillos-3081038.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "78591dab255a92551d3b": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-administrativo-de-recursos-humanos-pudahuel-750000-3081037.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "189ba97ed7eb4e0e6030": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-nocturno-para-supermercado-colina-horario-rotativo-am-y-pm-turnos-continuos-3081036.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9ff2479e1ed3579b1152": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-sin-experiencia-turno-tarde-570000-liquidos-3081035.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "743ec8c62f8f4f57c6e0": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-part-time-04-50-a-12-20-ingreso-inmediato-san-bernardo-35000-por-dia-liquidos-3081034.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cf87e19f0834c80110f3": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-6x1-full-time-04-15-a-11-45-ingreso-inmediato-san-bernardo-750-000-liquidos-3081033.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7d8242945ada5a4b79ae": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/apoyo-polifuncional-tienda-mall-plaza-premium-outlets-concepcion-hoy-ingreso-inmediato-3081032.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6a34664619564c31e976": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apoyo-polifuncional-tienda-mall-plaza-alameda-ingreso-inmediato-3081031.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "219680ad352061b8b07f": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/operador-tienda-cajero-fin-de-semana-para-supermercado-quillota-horario-rotativo-am-y-pm-fin-de-semana-3081030.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0122f83c1e207d9c71e7": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/conductor-con-auto-y-preparacion-de-pedidos-shopper-renaca-3081029.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "265d3f39b878f97feed5": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-a-de-bodega-turno-dia-con-o-sin-experiencia-san-bernardo-3081028.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bdfd8c7b21aa9d2282eb": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/carrero-ingreso-inmediato-la-dehesa-con-experiencia-3081027.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7e2179bdd5adb4d24ae2": {
+      "first_seen": "2026-11-21T13:45:47.515035-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-de-inventario-pudahuel-turno-dia-3081026.html",
       "source": "Inventario D04",
       "commune": null
     }

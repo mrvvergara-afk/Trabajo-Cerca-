@@ -114,7 +114,9 @@ test('a signed proof cannot certify a partial, stale or unverified backup', () =
   assert.throws(() => enforceAttestations(stale, Date.now(), context()), /Atomic encrypted/);
 });
 function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false,
-  noDeployVersionInResponse = false, deny = false } = {}) {
+  noDeployVersionInResponse = false, deny = false,
+  throwAfterCommit = false, throwBeforeCommit = false,
+  sourceMismatch = false, baselineSourceMismatch = false } = {}) {
   const calls = [];
   let version = BASE, deployed = false;
   const request = async (url, init) => {
@@ -144,6 +146,12 @@ function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false,
     if (deny) return new Response('Unauthorized', { status: 401 });
     const method = body.params?.name || body.method;
     calls.push(method);
+    if (method === 'deploy_app' && throwBeforeCommit)
+      throw Error('Simulated transport failure before acceptance');
+    if (method === 'deploy_app' && throwAfterCommit) {
+      deployed = true; version = '1795999999999';
+      throw Error('Simulated transport failure after commit');
+    }
     if (body.method === 'notifications/initialized')
       return new Response('', { status: 202 });
     const result = method === 'initialize' ? { protocolVersion: '2025-06-18' }
@@ -152,6 +160,15 @@ function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false,
           apps: [{ data: { app_id: OFFICIAL_ID } }],
         }
       : method === 'get_app_versions' ? { versions: [{ version: BASE }] }
+      : method === 'src_read' ? (() => {
+          const requested = body.params?.arguments?.version;
+          const from = '/* production view only */';
+          const to = '/* production view only; verified */';
+          const content = requested === BASE
+            ? baselineSourceMismatch ? '/* unexpected baseline */' : from
+            : sourceMismatch ? '/* unknown external change */' : deployed ? to : from;
+          return { version: requested, total_lines: 1, content };
+        })()
       : method === 'get_app_status' ? {
           deployment: { status: 'ready', snapshot_version: version },
           qa_snapshot: { frontend_errors: [], network_errors: [] },
@@ -239,4 +256,40 @@ test('ambiguous deploy response with degraded catalog reverts actual observed ve
     payload:good(), baseline:BASE, commitSha:SHA, wait:async () => {} }),
     /rolled back/);
   assert.equal(stub.calls.filter(x => x === 'apply_app_version').length,1);
+});
+
+test('lost deployment HTTP response after commit reconciles and rolls back only verified code', async () => {
+  const stub = stubTransport({ throwAfterCommit: true });
+  await assert.rejects(() => runRelease({ env: env(), request: stub.request,
+    payload: good(), baseline: BASE, commitSha: SHA, wait: async () => {} }),
+  /rolled back/);
+  assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 1);
+  assert.equal(stub.calls.filter(x => x === 'apply_app_version').length, 1);
+  assert.ok(stub.calls.filter(x => x === 'src_read').length >= 2);
+});
+
+test('lost response with no confirmed new version cannot retry or roll back blindly', async () => {
+  const stub = stubTransport({ throwBeforeCommit: true });
+  await assert.rejects(() => runRelease({ env: env(), request: stub.request,
+    payload: good(), baseline: BASE, commitSha: SHA, wait: async () => {} }),
+  /CRITICAL: deployment outcome unresolved/);
+  assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 1);
+  assert.equal(stub.calls.filter(x => x === 'apply_app_version').length, 0);
+});
+
+test('changed snapshot without approved candidate code never triggers destructive rollback', async () => {
+  const stub = stubTransport({ throwAfterCommit: true, sourceMismatch: true });
+  await assert.rejects(() => runRelease({ env: env(), request: stub.request,
+    payload: good(), baseline: BASE, commitSha: SHA, wait: async () => {} }),
+  /candidate ownership cannot be proved/);
+  assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 1);
+  assert.equal(stub.calls.filter(x => x === 'apply_app_version').length, 0);
+});
+
+test('baseline diff is unique and present before issuing any production deploy', async () => {
+  const stub = stubTransport({ baselineSourceMismatch: true });
+  await assert.rejects(() => runRelease({ env: env(), request: stub.request,
+    payload: good(), baseline: BASE, commitSha: SHA, wait: async () => {} }),
+  /absent or non-unique/);
+  assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 0);
 });

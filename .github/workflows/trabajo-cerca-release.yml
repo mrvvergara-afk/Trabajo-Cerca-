@@ -21,6 +21,7 @@ on:
         default: false
 permissions:
   contents: read
+  id-token: write
 concurrency:
   group: trabajo-cerca-production-release
   cancel-in-progress: false
@@ -86,3 +87,37 @@ jobs:
           TC_APPDEPLOY_MCP_TOKEN: ${{ secrets.TC_APPDEPLOY_MCP_TOKEN }}
           TC_RELEASE_DRY_RUN: ${{ inputs.dry_run }}
         run: node scripts/release-runner.mjs
+      - name: Report protected LIVE result to isolated LAB with signed OIDC
+        if: always() && inputs.dry_run == false
+        env:
+          RELEASE_STATUS: ${{ job.status }}
+          RELEASE_CANDIDATE: ${{ inputs.candidate_sha }}
+          RELEASE_BASELINE: ${{ inputs.production_baseline }}
+          RELEASE_RUN_ID: ${{ github.run_id }}
+        run: |
+          node --input-type=module <<'NODE'
+          const u=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
+          const t=process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
+          if(!u||!t)throw Error('GitHub OIDC unavailable for release result');
+          const tokenResponse=await fetch(u+(u.includes('?')?'&':'?')+
+            'audience=trabajo-cerca-release-result-v1',
+            {headers:{Authorization:'Bearer '+t},signal:AbortSignal.timeout(10000)});
+          if(!tokenResponse.ok)throw Error('OIDC result token HTTP '+tokenResponse.status);
+          const jwt=(await tokenResponse.json()).value;
+          const result=process.env.RELEASE_STATUS;
+          const response=await fetch(
+            'https://api-v2.appdeploy.ai/app/trabajo-cerca-lab-aislado-xirg9w/api/internal/release/poll',
+            {method:'POST',redirect:'error',
+              headers:{Authorization:'Bearer '+jwt,'Content-Type':'application/json'},
+              body:JSON.stringify({
+                action:'complete',
+                candidateSha:process.env.RELEASE_CANDIDATE,
+                baseline:process.env.RELEASE_BASELINE,
+                runId:process.env.RELEASE_RUN_ID,
+                dryRun:false,
+                outcome:result,
+              }),
+              signal:AbortSignal.timeout(15000)});
+          if(!response.ok)throw Error('LAB release result recording HTTP '+response.status);
+          console.log('TC_RELEASE_OIDC_FINAL_STATUS_RECORDED');
+          NODE

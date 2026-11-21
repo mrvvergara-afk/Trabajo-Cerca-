@@ -34,7 +34,7 @@ Actualmente el exportador propio declara `rolling_non_atomic`, `fullPlatformBack
 - Cerrar E2E con cuenta autorizada: publicación pendiente→aprobada, cobertura por distintas comunas, reseña con otra cuenta, baja/ocultación y sesiones PWA.
 - Entregar al ejecutor evidencias verificables emitidas por la tarea de CI/DR, no fechas inventadas ni solo casillas visuales.
 
-Environment secrets del workflow (solo tras certificar): `TC_RESTORE_VERIFIED_AT`, `TC_FEED_ATOMIC_VERIFIED_AT`, `TC_ADMIN_E2E_VERIFIED_AT`. Variable Environment `TC_RELEASE_ENABLE=approved`. Sin ellas, el ejecutor debe fallar sin llamar a `deploy_app`.
+El ejecutor ya **no admite fechas manuales** como prueba suficiente. Requiere el certificado de recuperación firmado Ed25519, vinculado al commit, al paquete de cambios y al snapshot oficial, según [contrato técnico de respaldo y restauración](RESPALDO_RESTAURACION_RELEASE.md). Los secrets de GitHub Environment son `TC_RELEASE_PROOF_JSON`, `TC_RELEASE_PROOF_SIGNATURE` y `TC_RELEASE_PROOF_PUBLIC_KEY`, emitidos por el proceso independiente después de la restauración real. Variable `TC_RELEASE_ENABLE=approved` solo tras comprobación completa. Sin la firma y comprobantes correctos, el ejecutor **no debe llamar** a `deploy_app`.
 
 ## 4. Vincular el botón del LAB a GitHub
 El LAB todavía no tiene secretos configurados (`list_app_secrets=[]` en la última comprobación). En AppDeploy, mediante formulario **seguro de secretos** de la propia cuenta, vincular:
@@ -56,7 +56,7 @@ El 20-11-2026, APIs LAB y oficial respondieron `HTTP 402 APP_TEMPORARILY_UNAVAIL
 
 ## 7. QA y propiedad
 - Infraestructura desde PR #94, fusionada en `main`. Unit tests `node --test scripts/release-runner.test.mjs` — mocks sin escrituras.
-- Botón LAB actualizado a la versión `1795219838976` — protegido por correo autorizado.
+- Botón LAB actualizado a la versión `1795221189117` — protegido por correo autorizado; formato móvil y verificación de firma independiente, aún sin respaldo real certificado.
 - Seguir avance en issue #74; PR #93 permanece en borrador y no debe fusionarse entero.
 - **NO-GO hasta propietario OAuth/AppDeploy credential + DR real + feed atómico + CI firmada + botón LAB completo.**
 

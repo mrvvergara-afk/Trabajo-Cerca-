@@ -12,7 +12,8 @@ export const ENVIRONMENTS = Object.freeze({
 });
 export function classifyHttp(httpStatus, json) {
   if (httpStatus === 200 && json && typeof json === 'object' &&
-      Array.isArray(json.items)) return { state: 'HEALTHY', code: 'OK', httpStatus };
+      Array.isArray(json.items) && json.items.length > 0)
+    return { state: 'HEALTHY', code: 'OK', httpStatus };
   if (httpStatus === 402) {
     const code = typeof json?.code === 'string' &&
       /^[A-Z_]{3,70}$/.test(json.code) ? json.code : 'HTTP_402';

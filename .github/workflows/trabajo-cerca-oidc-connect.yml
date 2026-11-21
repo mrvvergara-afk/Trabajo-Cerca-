@@ -44,6 +44,13 @@ jobs:
             body:'{}',signal:AbortSignal.timeout(10000)});
           if(anonymous.status!==401)
             throw Error('Security failure: OIDC endpoint accepted unsigned request HTTP '+anonymous.status);
+          const unauthorizedPoll=await fetch(
+            'https://api-v2.appdeploy.ai/app/trabajo-cerca-lab-aislado-xirg9w/api/internal/release/poll',
+            {method:'POST',headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({action:'poll'}),
+              signal:AbortSignal.timeout(10000)});
+          if(unauthorizedPoll.status!==401)
+            throw Error('Security failure: unsigned release poll HTTP '+unauthorizedPoll.status);
           const response=await fetch(
             target,
             {method:'POST',redirect:'error',

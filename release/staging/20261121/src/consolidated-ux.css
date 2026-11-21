@@ -1,0 +1,65 @@
+/* Trabajo Cerca — consolidated compact mobile UX, accessible help and coverage */
+.tcStitchShell .tcLocalDirectory { margin-top: 8px; padding: 12px; }
+.tcStitchShell .tcDirectoryTop h2 { font-size: 20px; margin: 0; }
+.tcStitchShell .tcDirectoryTabs { display: flex; flex-wrap: nowrap; gap: 5px; margin: 7px 0; }
+.tcStitchShell .tcDirectoryTabs button { min-width: 0; flex: 1 1 0; min-height: 38px; font-size: 12px; padding: 7px 5px; }
+.tcStitchShell .tcDirectorySummary { justify-content: flex-end; margin: 3px 0; }
+.tcStitchShell .tcDirectorySummary button { min-height: 35px; padding: 6px 10px; font-size: 12px; }
+.tcStitchShell .tcDirectorySearch { margin: 4px 0; }
+.tcStitchShell .tcDirectorySearch input { min-height: 42px; font-size: 13px; }
+.tcStitchShell .tcDirectorySavedControls { margin: 4px 0; }
+.tcStitchShell .tcDirectorySavedControls button { min-height: 34px; padding: 6px 9px; font-size: 11px; }
+.tcDirectoryManagement { font-size: 12px; margin: 2px 0 7px; }
+.tcDirectoryManagement > summary { color: #276849; cursor: pointer; padding: 4px; }
+.tcDirectoryManagement > .tcRecoverDirectory { margin: 6px 0; font-size: 12px; padding: 9px; }
+.tcStitchShell .tcDirectoryGrid { margin-top: 9px; }
+.tcStitchShell .tcDirectoryEmpty { padding: 10px; }
+.tcStitchShell .tcDirectoryForm { gap: 9px; padding: 12px; }
+.tcStitchShell .tcDirectoryForm h3 { font-size: 17px; margin: 0; }
+.tcInlineHelp { display: block; margin: 2px 0; font-size: 12px; font-weight: 400; }
+.tcInlineHelp > summary { cursor: pointer; list-style: none; font-size: 13px; line-height: 19px; border-radius: 100%; text-align: center; border: 1px solid #c2dbcb; width: 24px; height: 24px; color: #286549; }
+.tcInlineHelp > summary::-webkit-details-marker { display: none; }
+.tcInlineHelp > summary:focus-visible, .tcCoveragePicker > summary:focus-visible { outline: 2px solid #206b4b; outline-offset: 3px; }
+.tcInlineHelp[open] > small.tcFieldHelp, .tcInlineHelp[open] > small.tcAdFieldHelp { display: block; font-size: 12px; line-height: 1.45; background: #edf5ee; color: #315943; padding: 8px; border-radius: 7px; margin-top: 5px; }
+.tcCoveragePicker { margin: 1px 0 8px; }
+.tcCoveragePicker > summary { cursor: pointer; font-weight: 700; color: #256344; font-size: 12px; }
+.tcCoverageChoices { display: flex; flex-wrap: wrap; gap: 5px; padding: 9px 0; }
+.tcCoverageChoices button { min-height: 34px; padding: 6px 9px; border-radius: 7px; border: 1px solid #c0d7c6; font-size: 12px; color: #20563b; background: white; }
+.tcCoverageChoices button.selected { background: #20563b; color: white; }
+.tcCoveragePicker small { font-size: 11px; color: #536f5c; }
+.tcCriteriaRow { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 5px; padding: 7px 0; border-bottom: 1px solid #e7eee9; }
+.tcCriteriaRow > span { font-size: 13px; font-weight: 650; }
+.tcCriteriaRow .tcDirectoryStars { display: flex; gap: 2px; }
+.tcCriteriaRow .tcDirectoryStars button { min-width: 33px; min-height: 40px; font-size: 24px; }
+.tcRegionalCount { display: flex; align-items: center; gap: 6px; margin: 5px 18px 0; font-size: 12px; color: #265b3d; }
+.tcRegionalCount svg { width: 17px; height: 17px; }
+.tcRegionalCount strong { font-size: 18px; }
+.tcMenuAccount { display: grid; gap: 7px; margin-top: 8px; padding: 12px 0 6px; border-top: 1px solid #dbe6df; color: #2b5b41; font-size: 12px; }
+.tcMenuAccount strong { font-size: 14px; }
+.tcMenuAccount button { padding: 10px; min-height: 40px; background: #edf5ef; color: #20563b; border: 1px solid #c6dacb; border-radius: 8px; }
+@media(max-width: 420px) {
+ .tcStitchShell .tcLocalDirectory { margin: 8px 7px; padding: 10px; }
+ .tcCriteriaRow { grid-template-columns: 1fr; }
+ .tcCriteriaRow .tcDirectoryStars { justify-content: space-between; }
+ .tcRegionalCount { margin: 5px 12px; }
+}
+
+/* Admin shortcut is visible only after /api/admin/session grants access. */
+.tcMenuAccount .tcVerifiedAdminEntry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  background: #164c36;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 750;
+  text-align: center;
+  text-decoration: none;
+}
+.tcMenuAccount .tcVerifiedAdminEntry:focus-visible {
+  outline: 3px solid #79b48f;
+  outline-offset: 3px;
+}

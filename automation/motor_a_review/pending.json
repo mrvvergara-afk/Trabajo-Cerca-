@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-21T11:18:38.694821+00:00",
-  "items_total": 8,
+  "updated_at": "2026-11-21T18:07:10.875763+00:00",
+  "items_total": 7,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-21T11:18:38.694821+00:00",
+      "last_checked_at": "2026-11-21T18:07:10.875763+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -25,31 +25,15 @@
       ]
     },
     {
-      "id": "a_862c0bdc6550f1a9ad83",
-      "url": "https://www.chiletrabajos.cl/trabajo/ingeniero-constructor-o-ingeniero-civil-3935060",
+      "id": "a_855ec401c9cfb3c760e4",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
       "source": "Motor A Chiletrabajos",
-      "work_commune": "Renaico",
-      "title_hint": "Ingeniero Constructor o Ingeniero Civil - Los Ángeles | Chiletrabajos",
-      "date_source_hint": "2026-11-19 09:58:56",
-      "deadline_hint": "2027-02-02T09:58:56",
-      "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-21T11:18:38.694821+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_36a763f216f19cc82fce",
-      "url": "https://www.chiletrabajos.cl/trabajo/maestro-de-primera-3935047",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Renaico",
-      "title_hint": "Maestro de Primera - Los Ángeles | Chiletrabajos",
-      "date_source_hint": "2026-11-19 09:49:56",
-      "deadline_hint": "2027-02-02T09:49:56",
-      "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-21T11:18:38.694821+00:00",
+      "work_commune": "Purén",
+      "title_hint": "Prevencionista de Riesgos AIF - Chañaral - Chañaral | Chiletrabajos",
+      "date_source_hint": null,
+      "deadline_hint": null,
+      "first_discovered_at": "2026-11-21T18:07:10.875763+00:00",
+      "last_checked_at": "2026-11-21T18:07:10.875763+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -90,7 +74,11 @@
       "publication_eligible": false,
       "date_source_verified": false,
       "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
     },
     {
       "id": "a_0db736d40ce9ba138aa4",
@@ -154,12 +142,12 @@
     }
   ],
   "metrics": {
-    "added": 9,
-    "updated": 5,
+    "added": 10,
+    "updated": 3,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 9,
-    "territory_mismatch": 5
+    "published_reconciled": 11,
+    "territory_mismatch": 6
   }
 }

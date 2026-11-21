@@ -113,7 +113,8 @@ test('a signed proof cannot certify a partial, stale or unverified backup', () =
   stale.TC_RELEASE_PROOF_JSON = JSON.stringify(old);
   assert.throws(() => enforceAttestations(stale, Date.now(), context()), /Atomic encrypted/);
 });
-function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false, deny = false } = {}) {
+function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false,
+  noDeployVersionInResponse = false, deny = false } = {}) {
   const calls = [];
   let version = BASE, deployed = false;
   const request = async (url, init) => {
@@ -157,7 +158,8 @@ function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false, d
         }
       : method === 'deploy_app' ? (
           deployed = true, version = '1795999999999', {
-            deployment: { status: 'deploying', snapshot_version: version },
+            deployment: { status: 'deploying',
+              ...(noDeployVersionInResponse ? {} : { snapshot_version: version }) },
           }
         )
       : method === 'apply_app_version' ? (
@@ -220,4 +222,21 @@ test('post-deploy provisional catalog with nonzero jobs triggers rollback', asyn
     baseline: BASE, commitSha: SHA, wait: async () => {} }),
     /rolled back/);
   assert.equal(stub.calls.filter(x => x === 'apply_app_version').length, 1);
+});
+
+test('ambiguous deploy response reconciles live snapshot and still checks QA', async () => {
+  const stub = stubTransport({ noDeployVersionInResponse:true });
+  const result = await runRelease({ env:env(), request:stub.request,
+    payload:good(), baseline:BASE, commitSha:SHA, wait:async () => {} });
+  assert.equal(result.success,true);
+  assert.equal(result.version,'1795999999999');
+  assert.equal(stub.calls.filter(x => x === 'get_app_status').length >= 3,true);
+});
+test('ambiguous deploy response with degraded catalog reverts actual observed version', async () => {
+  const stub = stubTransport({ noDeployVersionInResponse:true,
+    provisionalPostdeploy:true });
+  await assert.rejects(() => runRelease({ env:env(), request:stub.request,
+    payload:good(), baseline:BASE, commitSha:SHA, wait:async () => {} }),
+    /rolled back/);
+  assert.equal(stub.calls.filter(x => x === 'apply_app_version').length,1);
 });

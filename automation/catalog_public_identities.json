@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-21T00:44:10+00:00",
+  "generated_at": "2026-11-21T02:12:51+00:00",
   "complete": true,
   "totalItemsReported": 291,
   "jobIdentityCount": 287,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 109,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 11,
-  "fingerprint": "afbe1108568f8296b5381a1dc4dc800cd916605461944fe9f3b47f06a50602ae",
+  "fingerprint": "51182e5d3191e3a17b3e0b68f92ffb9e04e075e798da41217aa725c5f78783c1",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -897,17 +897,6 @@
       "urlHashSha256": "2795b5d75320388ba141c19a0fa3e292a01cee48cb27c27dce878c9711ad5e81"
     },
     {
-      "id": "chatgpt_d_286a02fa884ea7ea2859",
-      "title": "CONDUCTOR PROFESIONAL CON VEHÍCULO SEDAN/DIESEL - ANGOL",
-      "company": "Jobconsulting",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
-      "urlHashSha256": "286a02fa884ea7ea2859e783b25aa95cc20996ea2f21e4c59b97acf55bfd6c5a"
-    },
-    {
       "id": "chatgpt_d_2e5d13719312865d3636",
       "title": "Mecánico/a Soldador/a de Maquinaria – Nacimiento",
       "company": "Serfonac",
@@ -996,17 +985,6 @@
       "urlHashSha256": "4de1ef999c10ba4947aaaf64c9e7d8e14ed50bb9c16ac2a177cf8e3501b37df2"
     },
     {
-      "id": "chatgpt_d_5241af5f68d396e67450",
-      "title": "Vendedor Terreno - ANGOL",
-      "company": "Distribuidora consumo masivo",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
-      "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
-    },
-    {
       "id": "chatgpt_d_56d079ed0f37b488c6d6",
       "title": "Ejecutivo/a Atención a Usuarios, 42hrs, Call Center  Presencial",
       "company": "Empresa de tecnología e",
@@ -1016,17 +994,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
       "urlHashSha256": "56d079ed0f37b488c6d6a3d44d0419ac5d8b96848244efa95fadf9dc54104acb"
-    },
-    {
-      "id": "chatgpt_d_719dc82e84eb93a138d9",
-      "title": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
-      "company": "Fondo Esperanza",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
-      "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
     },
     {
       "id": "chatgpt_d_72a6ff236aed32072a0c",
@@ -1644,6 +1611,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
       "urlHashSha256": "728743fa1bc6044fab11bee888fd1f8764785ba2965ddb7311f9d5d5e3060729"
+    },
+    {
+      "id": "free-2ee12fa1a047c31a5c2e43334d1e0f7718ec2439",
+      "title": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
+      "company": "Fondo Esperanza",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
+      "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
     },
     {
       "id": "free-2fcd588aae3ba3abc69163cb1d98623ced600cfc",
@@ -2604,6 +2582,17 @@
       "urlHashSha256": "5c468418b0b0770ab1e23d42969129ef858cf97b3375d325b2fc539d97f29580"
     },
     {
+      "id": "free-b7ea6a01cc881c69760a9e3d1c5e9ecfc572ff1c",
+      "title": "CONDUCTOR PROFESIONAL CON VEHÍCULO SEDAN/DIESEL - ANGOL",
+      "company": "Jobconsulting",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
+      "urlHashSha256": "286a02fa884ea7ea2859e783b25aa95cc20996ea2f21e4c59b97acf55bfd6c5a"
+    },
+    {
       "id": "free-b8dda59a2a2ebf718b149c9d0abcc5075ce00b26",
       "title": "Vendedor en terreno",
       "company": "Pitch Marketing Ltda",
@@ -2866,6 +2855,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/trabajador-a-social-fae-cautin-media-jornada-3922996",
       "urlHashSha256": "98194596ff0c6c3d3cf2308dbe851d15b3f1d3ea8b705dfcb099ec446f44f6a4"
+    },
+    {
+      "id": "free-d850aaa7c83bdfcd8f83adfe0da30c0892260589",
+      "title": "Vendedor Terreno - ANGOL",
+      "company": "Distribuidora consumo masivo",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
     },
     {
       "id": "free-d944864a2813a0335a76e245fa502fec10f0c92a",

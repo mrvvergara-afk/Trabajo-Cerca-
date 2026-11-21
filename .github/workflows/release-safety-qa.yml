@@ -1,0 +1,35 @@
+name: Trabajo Cerca — release executor safety QA
+on:
+  push:
+    branches:
+      - fix/release-lost-response-20261121
+    paths:
+      - 'scripts/release-runner.mjs'
+      - 'scripts/release-runner.test.mjs'
+      - '.github/workflows/release-safety-qa.yml'
+  pull_request:
+    paths:
+      - 'scripts/release-runner.mjs'
+      - 'scripts/release-runner.test.mjs'
+      - 'docs/releases/DECISION_APPDEPLOY_2026-11-21.md'
+      - '.github/workflows/release-safety-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  safety:
+    name: Validate release execution without AppDeploy calls
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check runner and test syntax
+        run: |
+          node --check scripts/release-runner.mjs
+          node --check scripts/release-runner.test.mjs
+      - name: Simulate deployment outcomes, recovery evidence and safe rollback
+        run: node --test scripts/release-runner.test.mjs

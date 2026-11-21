@@ -7,6 +7,7 @@ test('valid JSON public feed means available, not guaranteed credit balance', ()
   assert.equal(x.state, 'HEALTHY');
   assert.equal(x.httpStatus, 200);
   assert.equal(classifyHttp(200, { error: 'invalid' }).state, 'DEGRADED');
+  assert.equal(classifyHttp(200, { items: [] }).state, 'DEGRADED');
 });
 test('HTTP 402 retains only safe public platform code', () => {
   const a = classifyHttp(402, { code:'APP_TEMPORARILY_UNAVAILABLE' });
@@ -15,7 +16,7 @@ test('HTTP 402 retains only safe public platform code', () => {
   assert.equal(classifyHttp(402, { code:'secret_token=123' }).code, 'HTTP_402');
 });
 test('two healthy samples recover; persistent 402 is degraded', () => {
-  const ok = classifyHttp(200, { items:[] }), blocked = classifyHttp(402, { code:'APP_TEMPORARILY_UNAVAILABLE' });
+  const ok = classifyHttp(200, { items:[{ id:'example' }] }), blocked = classifyHttp(402, { code:'APP_TEMPORARILY_UNAVAILABLE' });
   const first = { laboratorio: ok, oficial: ok };
   const down = { laboratorio: blocked, oficial: ok };
   assert.equal(stableState(first,first), 'HEALTHY');
@@ -36,7 +37,7 @@ test('sampling only reads exactly one endpoint per environment', async () => {
   const request=async (url,init)=>{
     paths.push(new URL(url).pathname);
     assert.equal(init.method,'GET');
-    return new Response(JSON.stringify({ items:[] }),{
+    return new Response(JSON.stringify({ items:[{id:'mock-job'}] }),{
       status:200,headers:{'Content-Type':'application/json'},
     });
   };

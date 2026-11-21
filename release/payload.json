@@ -2,14 +2,14 @@
   "schema": "tc-release-v1",
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "expectedBaseline": "1795209664148",
-  "description": "First nonvisual release exercise: annotate opt-in CSS only, default user view identical",
+  "description": "Conservative public feed pagination: follow only the backend nextCursor; no speculative requests, no data migration.",
   "files": [
     {
-      "filename": "src/ux-preview-transfer.css",
+      "filename": "src/feed-page-batch.ts",
       "diffs": [
         {
-          "from": "/* Production canary only: inactive without ?tc_release_preview=1 */",
-          "to": "/* Production canary only: inactive without ?tc_release_preview=1; verified release pipeline */"
+          "from": " const match=/^v2:([A-Za-z0-9_-]{1,128}):(\\d+)$/.exec(cursor);\n const start=match?Number(match[2]):NaN;\n const verify=(r:Page<T>):T[]=>{\n  if(!alive()||!r||!Array.isArray(r.items)||r.degraded||r.feedRebuilding)\n   throw Error('Incomplete public job inventory');\n  return r.items;\n };\n if(match&&Number.isSafeInteger(start)&&start>=1){\n  const prefix='v2:'+match[1]+':';\n  const items:T[]=[];\n  let index=start;\n  for(let pair=0;pair<30;pair++){\n   if(!alive())throw Error('Cancelled public feed');\n   const responses=await Promise.allSettled([read(prefix+index),read(prefix+(index+1))]);\n   const first=responses[0];\n   if(first.status==='rejected')throw first.reason;\n   items.push(...verify(first.value));\n   // If the first page is last, its cursor ends the read. No count inference.\n   if(!first.value.nextCursor)return items;\n   if(first.value.nextCursor!==prefix+(index+1))\n     throw Error('Public feed cursor mismatch');\n   const second=responses[1];\n   if(second.status==='rejected')throw second.reason;\n   items.push(...verify(second.value));\n   if(!second.value.nextCursor)return items;\n   if(second.value.nextCursor!==prefix+(index+2))\n     throw Error('Public feed cursor mismatch');\n   index+=2;\n   await new Promise(resolve=>setTimeout(resolve,120));\n  }\n  throw Error('Public feed page bound reached');\n }\n // Legacy pages: cursor-linked sequential fallback; no speculative index.\n",
+          "to": " // Cursor is opaque: never synthesize page numbers or speculative requests.\n"
         }
       ]
     }

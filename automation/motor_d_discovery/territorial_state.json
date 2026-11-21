@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-20T18:15:52.287631-03:00",
+  "last_run": "2026-11-20T23:11:41.367464-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -8484,6 +8484,126 @@
       "first_seen": "2026-11-20T18:15:52.287631-03:00",
       "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/profesional-estadistico-2/",
       "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "33e18c706c46a0fc6752": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-psicologo-a-atraccion-de-talento-providencia-3080926.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "90b5521dbcffab502133": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-de-administracion-y-operaciones-jornada-completa-3080925.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "49e113582a8d1a618883": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/se-busca-mecanico-3080924.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c732a1109d6ad671f08e": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/tecnico-mecanico-sl-calama-3080923.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "59a6afc1999c3d9b636f": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-a-analista-de-recursos-humanos-operacional-3080922.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b8acf734de3e895de79f": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/practica-mecanica-antofagasta-3080921.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a4de87fc5291ed010931": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/practica-mecanica-concepcion-3080920.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5e2c1b5a6d16fe626627": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/practica-mecanica-temuco-3080919.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "12eb175ae9426762374e": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/vendedor-en-terreno-canal-horeca-sueldo-base-y-comisiones-3080918.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1210bc20f61fcde51537": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/recepcionista-cajero-a-para-clinica-veterinaria-con-experiencia-3080917.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cfbfe692d74cc78f4a3b": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/bodeguero-logistico-nocturno-694000-maipu-3080916.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4eb9584de68456b3947b": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-transpaleta-electrica-apilador-electrico-bus-de-acercamiento-colacion-3080915.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "829d80f76952a3a68402": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/bodeguero-logistico-nocturno-694000-maipu-3080914.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "23ab79afdec1dedb3580": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-transpaleta-electrica-apilador-electrico-bus-de-acercamiento-colacion-3080913.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "68d2217cbc632a2a2635": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-control-de-perdidas-654000-la-florida-3080912.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "be0e3364504e63f085e6": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-control-de-perdidas-654000-la-florida-3080911.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "31f2343d8a32f25920c1": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-de-bodega-logistica-y-transporte-de-ultima-milla-lampa-region-metropolitana-3080910.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "efe23c3580785244a086": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/tecnico-instalacion-gps-camaras-de-seguridad-rancagua-3080909.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e110808ee8bc28e2150d": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operativo-integral-de-prevencion-centrol-logistico-colina-3080908.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "eea4c509fc3e76a4d934": {
+      "first_seen": "2026-11-20T23:11:41.367464-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-a-de-bodega-turno-tarde-pudahuel-675000-liquidos-lunes-a-jueves-13-00-a-22-30-viernes-13-30-a-22-30-3080907.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

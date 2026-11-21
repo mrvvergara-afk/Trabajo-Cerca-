@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { generateKeyPairSync, sign } from 'node:crypto';
 import {
   validatePayload, enforceAttestations, AppDeployMcp,
-  runRelease, testOwnerConnection, OFFICIAL_ID,
+  runRelease, testOwnerConnection, OFFICIAL_ID, sha256,
 } from './release-runner.mjs';
 const SHA = 'a'.repeat(40);
 const BASE = '1795209664148';
@@ -13,13 +14,44 @@ const good = () => ({
     diffs: [{ from: '/* production view only */',
       to: '/* production view only; verified */' }] }],
 });
-const env = () => ({
-  TC_RELEASE_ENABLE: 'approved',
-  TC_RESTORE_VERIFIED_AT: new Date().toISOString(),
-  TC_FEED_ATOMIC_VERIFIED_AT: new Date().toISOString(),
-  TC_ADMIN_E2E_VERIFIED_AT: new Date().toISOString(),
-  TC_APPDEPLOY_MCP_TOKEN: 'authorized_token_mock_for_node_test_only',
-});
+const context = () => ({ baseline: BASE, candidateSha: SHA,
+  payloadSha256: sha256(JSON.stringify(good())) });
+function makeProof() {
+  const { publicKey, privateKey } = generateKeyPairSync('ed25519');
+  const at = new Date().toISOString();
+  const proof = {
+    schema: 'tc-release-attestation-v1',
+    issuer: 'independent-recovery-qa',
+    appId: OFFICIAL_ID,
+    baseline: BASE,
+    candidateSha: SHA,
+    payloadSha256: sha256(JSON.stringify(good())),
+    backup: { scope: 'full-app-data', consistency: 'atomic',
+      encrypted: true, external: true, manifestSha256: 'b'.repeat(64),
+      completedAt: at },
+    restore: { outcome: 'passed', targetAppId: 'isolated-restore-qa',
+      recordsMatched: true, filesMatched: true,
+      receiptSha256: 'c'.repeat(64), verifiedAt: at },
+    feed: { noEmptyPages: true, noDegradedPages: true,
+      receiptSha256: 'd'.repeat(64), verifiedAt: at },
+    admin: { authenticated: true, passed: true,
+      receiptSha256: 'e'.repeat(64), verifiedAt: at },
+  };
+  const raw = JSON.stringify(proof);
+  const signature = sign(null, Buffer.from(raw), privateKey).toString('base64');
+  return { raw, signature,
+    publicKey: publicKey.export({ type:'spki', format:'pem' }) };
+}
+const env = () => {
+  const p = makeProof();
+  return {
+    TC_RELEASE_ENABLE: 'approved',
+    TC_RELEASE_PROOF_JSON: p.raw,
+    TC_RELEASE_PROOF_SIGNATURE: p.signature,
+    TC_RELEASE_PROOF_PUBLIC_KEY: p.publicKey,
+    TC_APPDEPLOY_MCP_TOKEN: 'authorized_token_mock_for_node_test_only',
+  };
+};
 test('only a pinned existing official app can receive release', () => {
   assert.equal(validatePayload(good(), BASE, SHA), true);
   assert.throws(() => validatePayload(good(), '0000000000000', SHA));
@@ -42,19 +74,44 @@ test('paths cannot copy LAB bridge, backend routes, secrets or repeat files', ()
   const q = good(); q.files[0].diffs[0].multiple = true;
   assert.throws(() => validatePayload(q, BASE, SHA));
 });
-test('requires recent independent disaster recovery, feed and admin certificates', () => {
-  assert.doesNotThrow(() => enforceAttestations(env()));
+test('requires signed independent DR/QA receipt, not bare dates', () => {
+  assert.doesNotThrow(() => enforceAttestations(env(), Date.now(), context()));
   for (const key of [
-    'TC_RELEASE_ENABLE', 'TC_RESTORE_VERIFIED_AT',
-    'TC_FEED_ATOMIC_VERIFIED_AT', 'TC_ADMIN_E2E_VERIFIED_AT',
+    'TC_RELEASE_ENABLE', 'TC_RELEASE_PROOF_JSON',
+    'TC_RELEASE_PROOF_SIGNATURE', 'TC_RELEASE_PROOF_PUBLIC_KEY',
     'TC_APPDEPLOY_MCP_TOKEN',
   ]) {
     const copy = env(); delete copy[key];
-    assert.throws(() => enforceAttestations(copy), key);
+    assert.throws(() => enforceAttestations(copy, Date.now(), context()), key);
   }
+  const forged = env();
+  const json = JSON.parse(forged.TC_RELEASE_PROOF_JSON);
+  json.restore.outcome = 'failed';
+  forged.TC_RELEASE_PROOF_JSON = JSON.stringify(json);
+  assert.throws(() => enforceAttestations(forged, Date.now(), context()));
+  const replay = env();
+  assert.throws(() => enforceAttestations(replay, Date.now(),
+    { ...context(), baseline:'1234567890123' }), /baseline/);
+  const legacy = env();
+  delete legacy.TC_RELEASE_PROOF_JSON;
+  legacy.TC_RESTORE_VERIFIED_AT = new Date().toISOString();
+  legacy.TC_FEED_ATOMIC_VERIFIED_AT = new Date().toISOString();
+  legacy.TC_ADMIN_E2E_VERIFIED_AT = new Date().toISOString();
+  assert.throws(() => enforceAttestations(legacy, Date.now(), context()));
+});
+test('a signed proof cannot certify a partial, stale or unverified backup', () => {
+  const p = makeProof();
+  const { privateKey } = generateKeyPairSync('ed25519');
+  const bad = JSON.parse(p.raw);
+  bad.backup.consistency = 'rolling_non_atomic';
+  const e = env();
+  e.TC_RELEASE_PROOF_JSON = JSON.stringify(bad);
+  assert.throws(() => enforceAttestations(e, Date.now(), context()), /Atomic encrypted/);
+  const old = JSON.parse(p.raw);
+  old.backup.completedAt = '2020-01-01T00:00:00Z';
   const stale = env();
-  stale.TC_RESTORE_VERIFIED_AT = '2025-01-01T00:00:00Z';
-  assert.throws(() => enforceAttestations(stale));
+  stale.TC_RELEASE_PROOF_JSON = JSON.stringify(old);
+  assert.throws(() => enforceAttestations(stale, Date.now(), context()), /Atomic encrypted/);
 });
 function stubTransport({ badPostdeploy = false, deny = false } = {}) {
   const calls = [];

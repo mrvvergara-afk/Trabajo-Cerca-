@@ -393,6 +393,12 @@ export async function runRelease({
         throw Error('CRITICAL: production snapshot changed but candidate ownership cannot be proved; manual reconciliation required');
       }
     }
+    // A second actor may have deployed after our snapshot verification.
+    // Never replace that actor's live code with our prior baseline.
+    const live = await client.call('get_app_status',
+      { app_id: OFFICIAL_ID, limit: 5 });
+    if (live.deployment?.snapshot_version !== acceptedVersion)
+      throw Error('CRITICAL: live version changed after our release; refusing to roll back a different deployment');
     // Rollback CODE ONLY after snapshot contents prove they match our diffs.
     const rollback = await client.call('apply_app_version', {
       app_id: OFFICIAL_ID, version: baseline,

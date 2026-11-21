@@ -1,4 +1,4 @@
-# Actualizaciones autónomas de Trabajo Cerca — habilitación única
+# Actualizaciones autónomas de Trabajo Cerca — configuración y renovación segura
 
 Actualizado: 20-11-2026. **Estado: PREPARADO, NO ACTIVADO.** Este documento define el procedimiento para que un administrador haga un despliegue sin ChatGPT. No representa autorización para modificar producción antes de los resguardos de seguridad.
 
@@ -20,6 +20,12 @@ En GitHub, abrir repositorio → Settings → Environments → `production`. Res
 
 Antes de autorizar un despliegue real, el workflow admite `dry_run: true` para probar exclusivamente identidad propietaria, estado AppDeploy y lectura pública, sin escrituras. Evitar usar release real hasta que la conexión dry-run sea exitosa. Registrar solo el resultado, nunca token.
 
+**Advertencia documentada sobre credenciales de larga duración (20-11-2026):** según la política oficial de AppDeploy, los tokens OAuth MCP de acceso caducan después de aproximadamente **1 hora**, y los tokens de renovación tienen vigencia de **30 días**. Por lo tanto, **guardar un access token de propietario una vez en GitHub Secrets NO resuelve la autonomía permanente**: caducará y el botón fallará. Tampoco sirve generar `ak_...` con `/mcp/api-key` y asumir que pertenece al dueño: ese mecanismo crea una identidad de agente independiente salvo confirmación expresa del proveedor y un proceso autorizado de vinculación/transferencia.
+
+**Criterio de habilitación obligatorio:** antes de usar `TC_RELEASE_ENABLE=approved`, AppDeploy debe confirmar una modalidad estable de despliegue para **la cuenta propietaria**, preferiblemente una identidad de servicio restringida a esa aplicación, o un OAuth con **renovación automática verificada, rotación segura, revocación y alertas de caducidad**. Una conexión temporal que solo pasa `dry_run` no acredita operación permanente. Nunca conservar refresh tokens en repositorios, registros, URLs, mensajes ni archivos de compilación. No dar por resuelta esta condición hasta completar un ensayo de expiración/renovación sin interacción con ChatGPT.
+
+Fuentes: https://appdeploy.ai/privacy y https://appdeploy.ai/mcp-docs. Si el proveedor no ofrece una credencial propietaria de servicio, solicitar por su soporte el mecanismo recomendado para GitHub Actions sin interacción repetida.
+
 ## 3. Recuperación y continuidad
 Actualmente el exportador propio declara `rolling_non_atomic`, `fullPlatformBackup:false`, `restoreValidated:false`. Antes de activar:
 - Disponer de una copia **consistente** y cifrada de la BD productiva y almacenamiento asociado. No basta con exportar páginas sueltas.
@@ -31,7 +37,7 @@ Actualmente el exportador propio declara `rolling_non_atomic`, `fullPlatformBack
 Environment secrets del workflow (solo tras certificar): `TC_RESTORE_VERIFIED_AT`, `TC_FEED_ATOMIC_VERIFIED_AT`, `TC_ADMIN_E2E_VERIFIED_AT`. Variable Environment `TC_RELEASE_ENABLE=approved`. Sin ellas, el ejecutor debe fallar sin llamar a `deploy_app`.
 
 ## 4. Vincular el botón del LAB a GitHub
-El LAB todavía no tiene secretos configurados (`list_app_secrets=[]` al 20-11). En AppDeploy, mediante formulario **seguro de secretos** de la propia cuenta, vincular:
+El LAB todavía no tiene secretos configurados (`list_app_secrets=[]` en la última comprobación). En AppDeploy, mediante formulario **seguro de secretos** de la propia cuenta, vincular:
 - `TC_GITHUB_RELEASE_TOKEN`: credencial GH con permisos limitados a ejecutar el workflow específico del repo; guardada solo en backend.
 - `TC_RELEASE_RUNNER_ENABLED`: configuración de habilitación solo después de verificar permisos, DR, carga, baseline y candidato.
 
@@ -50,6 +56,13 @@ El 20-11-2026, APIs LAB y oficial respondieron `HTTP 402 APP_TEMPORARILY_UNAVAIL
 
 ## 7. QA y propiedad
 - Infraestructura desde PR #94, fusionada en `main`. Unit tests `node --test scripts/release-runner.test.mjs` — mocks sin escrituras.
-- Botón LAB de la versión `1795215434003` — protegido por correo autorizado.
+- Botón LAB actualizado a la versión `1795219838976` — protegido por correo autorizado.
 - Seguir avance en issue #74; PR #93 permanece en borrador y no debe fusionarse entero.
 - **NO-GO hasta propietario OAuth/AppDeploy credential + DR real + feed atómico + CI firmada + botón LAB completo.**
+
+## 8. Monitoreo independiente y límites de créditos
+- GitHub monitor externo `.github/workflows/appdeploy-availability-watch.yml`, cada 3 horas, estado e incidencias en https://github.com/mrvvergara-afk/Trabajo-Cerca-/issues/95.
+- Detecta HTTP 200 con catálogo no vacío, HTTP 402/503 y caída de conexión; registra **solo cambios confirmados de disponibilidad**.
+- No puede anticipar consumo diario ni mensual porque no está conectado el estado de facturación del dueño.
+- El panel LAB → Actualizaciones muestra salud observada y aclara «Saldo no conectado»; la única cifra oficial disponible para el dueño se consulta en https://dashboard.appdeploy.ai/my/dashboard.
+- El monitoreo externo no evita por sí mismo la interrupción de hosting cuando se consumen créditos. La operación de producción requiere alerta temprana de capacidad desde AppDeploy, reserva de créditos/top-ups, o una estrategia de infraestructura alternativa.

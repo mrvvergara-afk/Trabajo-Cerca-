@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-21T02:30:33.101281+00:00",
-  "local_discovery_at": "2026-11-21T02:30:22.301331+00:00",
+  "checked_at": "2026-11-21T11:18:20.898980+00:00",
+  "local_discovery_at": "2026-11-21T11:18:11.098031+00:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -48,11 +48,11 @@
   "municipalities_unreadable": [],
   "local_sources_expected": 17,
   "local_sources_attempted": 17,
-  "local_candidates": 90,
+  "local_candidates": 93,
   "chiletrabajos_queries_attempted": 15,
   "chiletrabajos_candidates": 131,
   "job_details_checked": 60,
-  "ready_for_d_review": 16,
+  "ready_for_d_review": 14,
   "publication_confirmed": false,
   "coverage_complete": false,
   "source_failures": [
@@ -60,13 +60,6 @@
       "source": "Municipio Angol",
       "commune": "Angol",
       "pages_scanned": 1,
-      "status": "partial",
-      "errors": 1
-    },
-    {
-      "source": "Municipio Collipulli",
-      "commune": "Collipulli",
-      "pages_scanned": 3,
       "status": "partial",
       "errors": 1
     },

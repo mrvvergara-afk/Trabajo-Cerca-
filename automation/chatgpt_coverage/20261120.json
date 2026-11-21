@@ -756,6 +756,252 @@
       "published_confirmed": 0,
       "note": "Hallazgo: Psicólogo PRM Nacimiento 3889597 pendiente de importación; Trabajador Social 3889603 ya visible; Prevencionista 3924497 existe catalogado Angol pero obras Purén Los Sauces Traiguén (incidente territorial)."
     },
+    "3": {
+      "expected": 24,
+      "attempted": 24,
+      "readable": 3,
+      "blocked": 8,
+      "failed": 12,
+      "unsupported": 1,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "laborum-Angol",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-angol.html",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "linkedin-Collipulli",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "computrabajo-Ercilla",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-ercilla",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "indeed-Renaico",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Renaico&fromage=45",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "trabajando-Renaico",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/renaico",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "chiletrabajos-Mininco",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mininco",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "opcionempleo-Nacimiento",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-nacimiento.html",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "laborum-Negrete",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-negrete.html",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "linkedin-Mulchén",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Mulch%C3%A9n%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "computrabajo-Los Sauces",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-los-sauces",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "indeed-Purén",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://cl.indeed.com/jobs?q=&l=Pur%C3%A9n&fromage=45",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "trabajando-Purén",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.trabajando.cl/trabajo-empleo/puren",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "chiletrabajos-Traiguén",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Traigu%C3%A9n",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "opcionempleo-Lumaco",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.opcionempleo.cl/empleo-en-lumaco.html",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "laborum-Victoria",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.laborum.cl/empleos-busqueda-victoria.html",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "linkedin-secondary-Los Ángeles",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20%C3%81ngeles%2C%20Chile&f_TPR=r3888000",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "computrabajo-secondary-Temuco",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://cl.computrabajo.com/empleos-en-araucania-en-temuco",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "omil-angol",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://noticias.angol.cl/index.php/noticias",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "omil-traiguen",
+          "status": "blocked",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://mtraiguen.cl/direccion-de-fomento-productivo/",
+          "offers_found": [],
+          "note": "Control de acceso, JavaScript anti-bot o HTTP 403; no se pudo leer contenido laboral"
+        },
+        {
+          "source_id": "omil-victoria-news",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://victoriachile.cl/category/omil/",
+          "offers_found": [],
+          "note": "Página pública legible; sin nueva ficha individual verificable en contenido revisado"
+        },
+        {
+          "source_id": "cmpc-empleo-csod",
+          "status": "unsupported",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
+          "offers_found": [],
+          "note": "ATS devuelve HTML sin contenido textual extraíble"
+        },
+        {
+          "source_id": "las-noticias-malleco",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://lasnoticiasdemalleco.cl/",
+          "offers_found": [],
+          "note": "Página pública legible; sin nueva ficha individual verificable en contenido revisado"
+        },
+        {
+          "source_id": "registry-cvtrabajos-los-angeles",
+          "status": "failed",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://cvtrabajos.github.io/trabajo-en-los-angeles/",
+          "offers_found": [],
+          "note": "La URL exacta no proporcionó contenido legible mediante lector web"
+        },
+        {
+          "source_id": "registry-collipulli-web",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "https://municipalidadcollipulli.cl/",
+          "offers_found": [],
+          "note": "Página pública legible; sin nueva ficha individual verificable en contenido revisado"
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "mi-mininco",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "búsqueda pública indexada por nombre y territorio",
+          "offers_found": [],
+          "note": "Se buscaron publicaciones laborales recientes; se localizaron referencias del medio, no avisos individuales verificables. No se accedió a redes privadas."
+        },
+        {
+          "source_id": "radio-mininco",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "búsqueda pública indexada por nombre y territorio",
+          "offers_found": [],
+          "note": "Se buscaron publicaciones laborales recientes; se localizaron referencias del medio, no avisos individuales verificables. No se accedió a redes privadas."
+        },
+        {
+          "source_id": "teleangol",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "búsqueda pública indexada por nombre y territorio",
+          "offers_found": [],
+          "note": "Se buscaron publicaciones laborales recientes; se localizaron referencias del medio, no avisos individuales verificables. No se accedió a redes privadas."
+        },
+        {
+          "source_id": "radio-montecarlo-angol",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "búsqueda pública indexada por nombre y territorio",
+          "offers_found": [],
+          "note": "Se buscaron publicaciones laborales recientes; se localizaron referencias del medio, no avisos individuales verificables. No se accedió a redes privadas."
+        },
+        {
+          "source_id": "millaray-collipulli",
+          "status": "checked_empty",
+          "checked_at": "2026-11-21T00:17:05Z",
+          "origin": "búsqueda pública indexada por nombre y territorio",
+          "offers_found": [],
+          "note": "Se buscaron publicaciones laborales recientes; se localizaron referencias del medio, no avisos individuales verificables. No se accedió a redes privadas."
+        }
+      ],
+      "notes": "Onda intentada íntegramente; solo 3 fuentes legibles. Catálogo espejo vencido (>120 min), API real inaccesible. No se generaron lotes."
+    },
     "4": {
       "expected": 24,
       "attempted": 24,
@@ -1332,15 +1578,28 @@
       "comuna": "Purén, Los Sauces, Traiguén",
       "status": "territorial_incident_existing",
       "catalog_id": "free-c9a7209710e4ccc2807b3b51e8909ad00bcbb490"
+    },
+    {
+      "title": "Práctica Profesional / Técnica – Prevención de Riesgos Cohigue",
+      "company": "Empresas Agrotop",
+      "commune": "Negrete",
+      "url": "https://www.chiletrabajos.cl/trabajo/practica-profesional-tecnica-prevencion-de-riesgos-cohigue-3929311",
+      "publication_date": "2026-11-10",
+      "discovery_date": "2026-11-20",
+      "closing_date": "2027-01-24",
+      "status": "existing_visible_in_stale_mirror_requires_fresh_recheck",
+      "catalog_id": "free-665cc0de1652d9b7d944064930c025d6a3e38dff",
+      "note": "Ficha original confirma Planta Biobío Coihue, Negrete. Ya figuraba visible en espejo antiguo, no duplicar."
     }
   ],
   "catalog": {
-    "status": "valid",
-    "generated_at": "2026-11-20T18:45:13Z",
-    "jobIdentityCount": 286,
-    "complete": true,
-    "checked_at": "2026-11-20T19:46:25Z"
+    "status": "catalog_unavailable",
+    "mirror_generated_at": "2026-11-20T19:47:13+00:00",
+    "mirror_jobIdentityCount": 286,
+    "mirror_complete": true,
+    "reason": "Espejo fuera de ventana de frescura y API real inaccesible al lector; no apto para publicar nuevos candidatos",
+    "checked_at": "2026-11-21T00:17:05Z"
   },
-  "new_batches": 0,
-  "published_confirmed": 0
+  "new_batches": [],
+  "published_confirmed": []
 }

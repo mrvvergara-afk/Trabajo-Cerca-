@@ -77,9 +77,11 @@ jobs:
           TC_CANDIDATE_SHA: ${{ inputs.candidate_sha }}
           TC_PRODUCTION_BASELINE: ${{ inputs.production_baseline }}
           TC_RELEASE_ENABLE: ${{ vars.TC_RELEASE_ENABLE }}
-          TC_RESTORE_VERIFIED_AT: ${{ secrets.TC_RESTORE_VERIFIED_AT }}
-          TC_FEED_ATOMIC_VERIFIED_AT: ${{ secrets.TC_FEED_ATOMIC_VERIFIED_AT }}
-          TC_ADMIN_E2E_VERIFIED_AT: ${{ secrets.TC_ADMIN_E2E_VERIFIED_AT }}
+          # A signed independent recovery and QA proof must be produced by
+          # a separate restore drill. Dates/checkboxes cannot unlock deploy.
+          TC_RELEASE_PROOF_JSON: ${{ secrets.TC_RELEASE_PROOF_JSON }}
+          TC_RELEASE_PROOF_SIGNATURE: ${{ secrets.TC_RELEASE_PROOF_SIGNATURE }}
+          TC_RELEASE_PROOF_PUBLIC_KEY: ${{ secrets.TC_RELEASE_PROOF_PUBLIC_KEY }}
           TC_APPDEPLOY_MCP_TOKEN: ${{ secrets.TC_APPDEPLOY_MCP_TOKEN }}
           TC_RELEASE_DRY_RUN: ${{ inputs.dry_run }}
         run: node scripts/release-runner.mjs

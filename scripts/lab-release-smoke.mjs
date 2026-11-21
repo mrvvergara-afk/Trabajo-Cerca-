@@ -192,6 +192,17 @@ await test('Local brand and house artwork return SVG, not SPA HTML', async () =>
     assert.match(text.slice(0, 250), /<svg\b|<\?xml/i);
   }
 });
+await test('LAB serves new PWA worker and current admin entry externally', async () => {
+  const sw = await get('sw.js?tc_smoke=20261120B', {}, true);
+  assert.equal(sw.response.status, 200);
+  assert.match(sw.text, /trabajo-cerca-lab-shell-20261121-v5/,
+    'server still serves stale PWA worker');
+  const admin = await get('admin?seccion=actualizaciones&tc_fresh=R20261120B', {}, true);
+  assert.equal(admin.response.status, 200);
+  assert.match(admin.response.headers.get('content-type') || '', /html/i);
+  assert.match(admin.text, /<script[^>]+\/assets\//i,
+    'admin entry has no compiled React asset');
+});
 console.log(JSON.stringify({
   surface: 'isolated-lab-only',
   passed: results.filter(x => x.ok).length,

@@ -113,7 +113,7 @@ test('a signed proof cannot certify a partial, stale or unverified backup', () =
   stale.TC_RELEASE_PROOF_JSON = JSON.stringify(old);
   assert.throws(() => enforceAttestations(stale, Date.now(), context()), /Atomic encrypted/);
 });
-function stubTransport({ badPostdeploy = false, deny = false } = {}) {
+function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false, deny = false } = {}) {
   const calls = [];
   let version = BASE, deployed = false;
   const request = async (url, init) => {
@@ -134,6 +134,9 @@ function stubTransport({ badPostdeploy = false, deny = false } = {}) {
       return new Response(JSON.stringify({
         items: [{ id: 'job', kind: 'job_offer' }],
         totalVerifiedJobOffers: badPostdeploy && deployed ? 1 : 100,
+        degraded: provisionalPostdeploy && deployed,
+        feedRebuilding: provisionalPostdeploy && deployed,
+        totalsProvisional: provisionalPostdeploy && deployed,
       }), { status: 200, headers: { 'Content-Type': 'application/json' } });
     }
     const body = JSON.parse(init.body);
@@ -208,4 +211,13 @@ test('owner connection dry-run never invokes deployment', async () => {
   assert.equal(report.connected, true);
   assert.equal(report.version, BASE);
   assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 0);
+});
+
+test('post-deploy provisional catalog with nonzero jobs triggers rollback', async () => {
+  const stub = stubTransport({ provisionalPostdeploy: true });
+  await assert.rejects(() => runRelease({ env: env(),
+    request: stub.request, payload: good(),
+    baseline: BASE, commitSha: SHA, wait: async () => {} }),
+    /rolled back/);
+  assert.equal(stub.calls.filter(x => x === 'apply_app_version').length, 1);
 });

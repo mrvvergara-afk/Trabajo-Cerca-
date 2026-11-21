@@ -154,6 +154,18 @@ await test('Anonymous release control and execution are both blocked', async () 
       ' ' + path + ' (' + response.status + ')');
   }
 });
+await test('Unauthenticated GitHub OIDC release routes never expose or change a release', async () => {
+  for (const path of ['api/internal/release/oidc-check',
+                      'api/internal/release/poll']) {
+    const { response } = await get(path, {
+      method:'POST',
+      body: JSON.stringify({action:'poll'}),
+      headers:{'content-type':'application/json'},
+    });
+    assert.ok([401,403].includes(response.status),
+      'Release OIDC endpoint exposed: '+path+' HTTP '+response.status);
+  }
+});
 await test('Incomplete local business submission is rejected without saving', async () => {
   const { response } = await get('api/local-directory', {
     method: 'POST',

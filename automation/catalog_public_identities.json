@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-21T04:27:11+00:00",
+  "generated_at": "2026-11-21T07:45:43+00:00",
   "complete": true,
   "totalItemsReported": 291,
   "jobIdentityCount": 287,

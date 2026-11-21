@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-20T21:15:33.025813+00:00",
-  "items_total": 7,
+  "updated_at": "2026-11-21T02:30:52.965251+00:00",
+  "items_total": 8,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-20T21:15:33.025813+00:00",
+      "last_checked_at": "2026-11-21T02:30:52.965251+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -33,7 +33,7 @@
       "date_source_hint": "2026-11-19 09:58:56",
       "deadline_hint": "2027-02-02T09:58:56",
       "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-20T21:15:33.025813+00:00",
+      "last_checked_at": "2026-11-21T02:30:52.965251+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -49,12 +49,32 @@
       "date_source_hint": "2026-11-19 09:49:56",
       "deadline_hint": "2027-02-02T09:49:56",
       "first_discovered_at": "2026-11-19T13:25:51.250533+00:00",
-      "last_checked_at": "2026-11-20T21:15:33.025813+00:00",
+      "last_checked_at": "2026-11-21T02:30:52.965251+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
+    },
+    {
+      "id": "a_0db736d40ce9ba138aa4",
+      "url": "https://www.chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Purén",
+      "title_hint": "Conductor/a Clínico Urgencias Angol - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-18 12:19:56",
+      "deadline_hint": "2027-02-01T12:19:56",
+      "first_discovered_at": "2026-11-21T02:30:52.965251+00:00",
+      "last_checked_at": "2026-11-21T02:30:52.965251+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
     },
     {
       "id": "a_68755a767511789f2d4e",
@@ -134,12 +154,12 @@
     }
   ],
   "metrics": {
-    "added": 14,
-    "updated": 5,
+    "added": 13,
+    "updated": 3,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 14,
-    "territory_mismatch": 4
+    "published_reconciled": 12,
+    "territory_mismatch": 5
   }
 }

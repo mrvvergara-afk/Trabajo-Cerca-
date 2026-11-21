@@ -20,6 +20,333 @@
   ],
   "coverage_complete": false,
   "waves": {
+    "0": {
+      "scheduled_local": "09:00",
+      "attempted_at": "2026-11-21T09:23:07-03:00",
+      "expected": 24,
+      "attempted": 24,
+      "accessible": 2,
+      "blocked": 4,
+      "failed": 17,
+      "unsupported": 1,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "indeed-Angol",
+          "name": "Indeed · Angol",
+          "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+          "territory": "Angol",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-Angol",
+          "name": "Trabajando · Angol",
+          "url": "https://www.trabajando.cl/trabajo-empleo/angol",
+          "territory": "Angol",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-Collipulli",
+          "name": "ChileTrabajos · Collipulli",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+          "territory": "Collipulli",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-Ercilla",
+          "name": "Opción Empleo · Ercilla",
+          "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+          "territory": "Ercilla",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "laborum-Renaico",
+          "name": "Laborum · Renaico",
+          "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+          "territory": "Renaico",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "linkedin-Mininco",
+          "name": "LinkedIn · Mininco",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+          "territory": "Mininco",
+          "status": "blocked",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control JS/robot o lector deshabilitado"
+        },
+        {
+          "source_id": "computrabajo-Nacimiento",
+          "name": "Computrabajo · Nacimiento",
+          "url": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+          "territory": "Nacimiento",
+          "status": "blocked",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control JS/robot o lector deshabilitado"
+        },
+        {
+          "source_id": "indeed-Negrete",
+          "name": "Indeed · Negrete",
+          "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+          "territory": "Negrete",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-Negrete",
+          "name": "Trabajando · Negrete",
+          "url": "https://www.trabajando.cl/trabajo-empleo/negrete",
+          "territory": "Negrete",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-Mulchén",
+          "name": "ChileTrabajos · Mulchén",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+          "territory": "Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-Los Sauces",
+          "name": "Opción Empleo · Los Sauces",
+          "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+          "territory": "Los Sauces",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "laborum-Purén",
+          "name": "Laborum · Purén",
+          "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+          "territory": "Purén",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "linkedin-Traiguén",
+          "name": "LinkedIn · Traiguén",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+          "territory": "Traiguén",
+          "status": "blocked",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control JS/robot o lector deshabilitado"
+        },
+        {
+          "source_id": "computrabajo-Lumaco",
+          "name": "Computrabajo · Lumaco",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+          "territory": "Lumaco",
+          "status": "blocked",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control JS/robot o lector deshabilitado"
+        },
+        {
+          "source_id": "indeed-Victoria",
+          "name": "Indeed · Victoria",
+          "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+          "territory": "Victoria",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-Victoria",
+          "name": "Trabajando · Victoria",
+          "url": "https://www.trabajando.cl/trabajo-empleo/victoria",
+          "territory": "Victoria",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-secondary-Los Ángeles",
+          "name": "ChileTrabajos · Los Ángeles",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+          "territory": "Los Ángeles",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-secondary-Temuco",
+          "name": "Opción Empleo · Temuco",
+          "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+          "territory": "Temuco",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "fashions-park-empleo-angol",
+          "name": "Fashion's Park · contratación oficial",
+          "url": "https://fashionspark.hiringroom.com/jobs",
+          "territory": "Angol y Victoria",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [
+            "Asistente de Aseo PT 20 HR (Angol) — ficha oficial",
+            "Cajero/a temporada Navidad Victoria — contradicción Victoria/Temuco"
+          ],
+          "reason": "ATS oficial legible; dos fichas encontradas"
+        },
+        {
+          "source_id": "omil-negrete",
+          "name": "Municipalidad / OMIL Negrete",
+          "url": "https://www.muninegrete.cl/",
+          "territory": "Negrete",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Portada municipal legible; sin oferta individual nueva en portada"
+        },
+        {
+          "source_id": "malleco7",
+          "name": "Malleco 7",
+          "url": "https://www.malleco7.cl/",
+          "territory": "Malleco",
+          "status": "unsupported",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "HTML sin contenido extraíble"
+        },
+        {
+          "source_id": "bne-negrete-pilot-2026-109726",
+          "name": "Bolsa Nacional de Empleo · Negrete",
+          "url": "https://www.bne.gob.cl/oferta/2026-109726",
+          "territory": "Negrete",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "mulchen-feed",
+          "name": "Municipalidad de Mulchén · novedades",
+          "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+          "territory": "Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "registry-omil-temuco-portal",
+          "name": "OMIL Temuco · Portal de Empleo",
+          "url": "https://temuco.omil.cl/",
+          "territory": "Temuco",
+          "status": "failed",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable por lector web; no equivale a fuente vacía"
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "motor-tavily",
+          "name": "Tavily · barrido de brechas",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública de empleos por comuna y fuentes indexadas; no se verificó acceso interno al motor ni una ficha nueva atribuible a este objetivo"
+        },
+        {
+          "source_id": "motor-territorial-controlled",
+          "name": "Radar Web Territorial",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública de empleos por comuna y fuentes indexadas; no se verificó acceso interno al motor ni una ficha nueva atribuible a este objetivo"
+        },
+        {
+          "source_id": "los-angeles-bridge",
+          "name": "Los Ángeles · ciudad fuente",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública de empleos por comuna y fuentes indexadas; no se verificó acceso interno al motor ni una ficha nueva atribuible a este objetivo"
+        },
+        {
+          "source_id": "temuco-bridge",
+          "name": "Temuco · ciudad fuente",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública de empleos por comuna y fuentes indexadas; no se verificó acceso interno al motor ni una ficha nueva atribuible a este objetivo"
+        },
+        {
+          "source_id": "concepcion-bridge",
+          "name": "Concepción · ciudad fuente",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T09:23:07-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública de empleos por comuna y fuentes indexadas; no se verificó acceso interno al motor ni una ficha nueva atribuible a este objetivo"
+        }
+      ]
+    },
     "4": {
       "scheduled_local": "01:00",
       "attempted_at": "2026-11-21T01:26:12-03:00",
@@ -709,9 +1036,9 @@
   },
   "catalog": {
     "status": "catalog_unavailable",
-    "generated_at": "2026-11-21T04:27:11+00:00",
+    "generated_at": "2026-11-21T08:11:36+00:00",
     "jobIdentityCount": 287,
-    "reason": "Espejo fuera de ventana de 120 minutos y API alternativa inaccesible"
+    "reason": "Espejo de 287 identidades completo pero con antigüedad >120 minutos (generado 05:11 Chile); API real alternativa no accesible mediante lector web; no publicar sin conciliación vigente"
   },
   "candidates": [
     {
@@ -722,8 +1049,8 @@
       "published_at": "2026-09-07",
       "discovered_at": "2026-11-20",
       "closing_date": "2026-11-21",
-      "status": "pending_import_contract_unavailable",
-      "reason": "No está en espejo; backend/chatgpt-direct-import.ts no disponible en ruta solicitada; sin lote seguro"
+      "status": "pending_catalog_unavailable_and_deadline_today",
+      "reason": "Vence hoy según ficha; falta espejo vigente y confirmación de postulación"
     },
     {
       "title": "Concurso municipal Renaico (12 vacantes)",
@@ -732,14 +1059,41 @@
       "url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
       "status": "existing_in_catalog",
       "catalog_id": "chatgpt_cg_c7d521f0c88ecb48d3e7"
+    },
+    {
+      "title": "Asistente de Aseo PT 20 HR (Angol)",
+      "company": "Fashion's Park",
+      "commune": "Angol",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aec988122ecc8f6459cb62a",
+      "discovered_at": "2026-11-21",
+      "status": "pending_catalog_unavailable",
+      "reason": "ATS oficial abierto; no figura en espejo antiguo, requiere conciliación vigente"
+    },
+    {
+      "title": "Cajero/a Asistente Integral Navidad Victoria",
+      "company": "Fashion's Park",
+      "commune": "unresolved_Victoria_or_Temuco",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6aea08221564eb41f9a6b54c",
+      "discovered_at": "2026-11-21",
+      "status": "pending_territory_verification",
+      "reason": "Encabezado Victoria pero requisitos indican Temuco; no atribuir sin confirmación"
+    },
+    {
+      "title": "REPONEDOR PART TIME MULCHEN",
+      "company": "Cultiva",
+      "commune": "Mulchén",
+      "url": "https://www.chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
+      "status": "existing_in_catalog",
+      "catalog_id": "chatgpt_chiletrabajos_3927989"
     }
   ],
-  "new_batches": 0,
+  "new_batches": [],
   "new_publications_confirmed": 0,
   "notes": [
     "Onda intentada pero lectura efectiva 6/24.",
     "La fuente SSAN muestra concursos externos en Lonquimay, fuera del territorio principal; no se importan.",
     "Sin modificación ni despliegue de app.",
-    "Onda 5: 23 endpoints intentados, lectura efectiva 3, no se confunde fallo con checked_empty. Sin publicaciones confirmadas."
+    "Onda 5: 23 endpoints intentados, lectura efectiva 3, no se confunde fallo con checked_empty. Sin publicaciones confirmadas.",
+    "09:00 onda 0: 24/24 intentos, solo 2 fuentes legibles; 4 bloqueadas, 17 fallidas, 1 sin HTML utilizable. Hallazgo ATS Angol y conflicto territorial Victoria/Temuco. Espejo vencido y API no accesible: sin lote ni publicación."
   ]
 }

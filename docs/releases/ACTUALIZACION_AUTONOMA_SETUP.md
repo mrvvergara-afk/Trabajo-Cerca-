@@ -36,19 +36,25 @@ Actualmente el exportador propio declara `rolling_non_atomic`, `fullPlatformBack
 
 El ejecutor ya **no admite fechas manuales** como prueba suficiente. Requiere el certificado de recuperación firmado Ed25519, vinculado al commit, al paquete de cambios y al snapshot oficial, según [contrato técnico de respaldo y restauración](RESPALDO_RESTAURACION_RELEASE.md). Los secrets de GitHub Environment son `TC_RELEASE_PROOF_JSON`, `TC_RELEASE_PROOF_SIGNATURE` y `TC_RELEASE_PROOF_PUBLIC_KEY`, emitidos por el proceso independiente después de la restauración real. Variable `TC_RELEASE_ENABLE=approved` solo tras comprobación completa. Sin la firma y comprobantes correctos, el ejecutor **no debe llamar** a `deploy_app`.
 
-## 4. Vincular el botón del LAB a GitHub
-El LAB todavía no tiene secretos configurados (`list_app_secrets=[]` en la última comprobación). En AppDeploy, mediante formulario **seguro de secretos** de la propia cuenta, vincular:
-- `TC_GITHUB_RELEASE_TOKEN`: credencial GH con permisos limitados a ejecutar el workflow específico del repo; guardada solo en backend.
-- `TC_RELEASE_RUNNER_ENABLED`: configuración de habilitación solo después de verificar permisos, DR, carga, baseline y candidato.
+## 4. Botón del LAB ↔ GitHub: conexión OIDC sin token estático
 
-No habilitar el botón simplemente porque los nombres de secretos existan. El backend debe comprobar que `trabajo-cerca-release.yml` esté activo en `main` y que la versión candidata y el baseline sean compatibles.
+**Implementado y probado en GitHub real (21-11-2026):**
+- `.github/workflows/trabajo-cerca-oidc-connect.yml` obtiene una identidad firmada por GitHub OIDC, comprobada en LAB mediante ruta `/api/internal/release/oidc-check`. Ejecución **44849388642**, resultado **CONEXIÓN VERIFICADA**.
+- `.github/workflows/trabajo-cerca-release-poller.yml` sondea el LAB cada **15 minutos** con `id-token:write`, sin PAT ni credencial GitHub permanente dentro del laboratorio. Ruta `POST /api/internal/release/poll`, valida firma RS256 del JWT mediante JWKS, audiencia, repositorio, branch y workflow_ref exactos. Ejecución **44849947957**, resultado **SONDEO CONECTADO**.
+- El panel protegido `POST /api/admin/release/execute` puede registrar una solicitud `pending_poll` **solamente si todos los controles de seguridad están aprobados**. El sondeo toma un bloqueo idempotente antes de intentar disparar el flujo GitHub de producción. Sin backup/restore, no recibe ninguna solicitud.
+- Un resultado de GitHub se devuelve al LAB mediante otro token OIDC `trabajo-cerca-release-result-v1`, aceptado únicamente desde `trabajo-cerca-release.yml` y ligado a la ejecución. El panel `GET /api/admin/release/execution` muestra cola, ejecución y resultado, sin confundir aceptación con publicación.
+- No requiere `TC_GITHUB_RELEASE_TOKEN`; la antigua ruta con PAT permanece como alternativa, pero **no debe configurarse** si OIDC sigue operativo.
+
+**Alcance de la prueba:** autenticación y sondeo sin candidato aprobado. Todavía NO se ha realizado una promoción productiva con este circuito; el respaldo real y el permiso AppDeploy del propietario siguen pendientes. La programación de GitHub Actions puede demorarse y su intervalo no constituye una garantía de tiempo exacto.
+
+Para seguridad, GitHub usa `id-token: write` y `actions: write` restringidos a la tarea. El receptor solo admite JWT del repositorio y workflow exactos desde `main`; no expone versiones, correos ni tokens a visitantes.
 
 ## 5. Uso normal una vez habilitado
 1. El desarrollador presenta un cambio en LAB y el CI genera un `release/payload.json` revisado, sin archivos de prueba/credenciales.
 2. El sistema registra candidato inmutable aprobado, versión actual PROD y pruebas completas.
 3. El administrador entra en LAB → Administrador → Actualizaciones → «Comprobar y publicar actualización».
 4. Si alguna condición falta, se detiene con causa específica. No existe un “despliegue parcialmente aprobado”.
-5. Con todo aprobado, CI ejecuta en `main` comprobaciones, `deploy_app`, espera `READY`, verifica oferta pública y front, y revierte código ante regresión.
+5. Con todo aprobado, el administrador registra una sola solicitud; GitHub OIDC la recoge, inicia el CI de `main`, ejecuta `deploy_app`, espera `READY`, verifica oferta pública y frontend, y revierte código ante regresión.
 6. Solo marcar **publicado** al confirmar resultado final del workflow más estado AppDeploy y feed público. 202 de GitHub significa **aceptado en cola**, no éxito.
 
 ## 6. Incidencia real de capacidad
@@ -56,7 +62,7 @@ El 20-11-2026, APIs LAB y oficial respondieron `HTTP 402 APP_TEMPORARILY_UNAVAIL
 
 ## 7. QA y propiedad
 - Infraestructura desde PR #94, fusionada en `main`. Unit tests `node --test scripts/release-runner.test.mjs` — mocks sin escrituras.
-- Botón LAB actualizado a la versión `1795221189117` — protegido por correo autorizado; formato móvil y verificación de firma independiente, aún sin respaldo real certificado.
+- Botón LAB actualizado a la versión `1795224195083` — protegido por correo autorizado; pantalla móvil, seguimiento de estado, OIDC firmado y firma independiente. Aún sin respaldo real certificado.
 - Seguir avance en issue #74; PR #93 permanece en borrador y no debe fusionarse entero.
 - **NO-GO hasta propietario OAuth/AppDeploy credential + DR real + feed atómico + CI firmada + botón LAB completo.**
 

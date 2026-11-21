@@ -1,7 +1,7 @@
 name: Trabajo Cerca — OIDC autonomous release poller
 on:
   schedule:
-    - cron: '17,47 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -12,6 +12,7 @@ permissions:
   contents: read
   id-token: write
   actions: write
+  issues: write
 
 concurrency:
   group: trabajo-cerca-release-poller
@@ -102,3 +103,20 @@ jobs:
           if(!r.ok)throw Error('Release dispatch acknowledgment HTTP '+r.status);
           console.log('TC_RELEASE_OIDC_ACK_RECORDED');
           NODE
+
+      - name: Report initial OIDC polling result
+        if: always() && github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          POLL_OUTCOME: ${{ steps.poll.outcome }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          if [ "$POLL_OUTCOME" = success ]; then
+            BODY="Sondeo OIDC autónomo desde GitHub → LAB: **CONECTADO**. No se publicó ninguna versión sin certificados de respaldo y recuperación."
+          else
+            BODY="Sondeo OIDC autónomo GitHub → LAB: **PRUEBA FALLIDA**. No se autorizó ningún despliegue."
+          fi
+          gh issue comment 74 --repo "$REPO" --body "$BODY
+
+          CI: https://github.com/$REPO/actions/runs/$RUN_ID"

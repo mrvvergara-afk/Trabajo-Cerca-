@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-21T16:46:56+00:00",
+  "generated_at": "2026-11-21T20:12:56+00:00",
   "complete": true,
-  "totalItemsReported": 292,
-  "jobIdentityCount": 288,
+  "totalItemsReported": 293,
+  "jobIdentityCount": 289,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 110,
+  "visibleIn12CommunesCount": 111,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "8c97792299d75f83b5e08578a28578e4e784c29a75145b38707230dcd6a1fa7e",
+  "fingerprint": "db9b50aa7b4e3aefde5116894d2cdfcc4e8d8a2a5b9e6bd7c5e8301f45dd5b3f",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -983,6 +983,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
       "urlHashSha256": "56d079ed0f37b488c6d6a3d44d0419ac5d8b96848244efa95fadf9dc54104acb"
+    },
+    {
+      "id": "chatgpt_d_65e87d47bbed462ca924",
+      "title": "Prevencionista de Riesgos AIF - Chañaral",
+      "company": "Consultores 2000",
+      "workCommunes": [
+        "Purén"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
+      "urlHashSha256": "65e87d47bbed462ca924c148946aac8c88e263e5bf1a4474a83f252e50adbfcf"
     },
     {
       "id": "chatgpt_d_72a6ff236aed32072a0c",

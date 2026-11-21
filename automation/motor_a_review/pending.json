@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-21T18:07:10.875763+00:00",
-  "items_total": 7,
+  "updated_at": "2026-11-21T23:27:01.019343+00:00",
+  "items_total": 6,
   "automatically_published": 0,
   "items": [
     {
@@ -23,22 +23,6 @@
       "catalog_work_communes": [
         "Ercilla"
       ]
-    },
-    {
-      "id": "a_855ec401c9cfb3c760e4",
-      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Purén",
-      "title_hint": "Prevencionista de Riesgos AIF - Chañaral - Chañaral | Chiletrabajos",
-      "date_source_hint": null,
-      "deadline_hint": null,
-      "first_discovered_at": "2026-11-21T18:07:10.875763+00:00",
-      "last_checked_at": "2026-11-21T18:07:10.875763+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
     },
     {
       "id": "a_1843a3809a023ee68321",
@@ -142,12 +126,12 @@
     }
   ],
   "metrics": {
-    "added": 10,
-    "updated": 3,
+    "added": 0,
+    "updated": 0,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 11,
+    "published_reconciled": 1,
     "territory_mismatch": 6
   }
 }

@@ -1,23 +1,26 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-21",
-  "state": "needs_receipt_review",
-  "historical_missing_from_catalog": 1,
+  "checked_at": "2026-11-21T15:30:37.500904+00:00",
+  "feed_complete": true,
+  "feed_rows": 294,
+  "state": "needs_territory_repair",
+  "territory_mismatches_count": 2,
+  "historical_missing_from_catalog": 0,
   "released_from_quarantine": 0,
   "released_items": [],
-  "items": [
+  "items": [],
+  "resolved_published_items": [
     {
       "id_fuente": "d_1a99f7fd5b8b9d116634",
-      "cargo": "Analista de Vibraciones - Mininco, Planta Plywood",
-      "empresa": "CMPC",
-      "comunas": [
-        "Purén"
-      ],
       "url_original": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
+      "status": "confirmed_visible_in_live_feed_by_source",
+      "checked_at": "2026-11-21T15:30:37.500904+00:00",
       "prior_batch_ids": [
         "motor-d-20261118-d17333430d2aefde48"
-      ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+      ]
     }
-  ]
+  ],
+  "confirmation_file": "publication_confirmation.json",
+  "semantic_only_requires_receipt": []
 }

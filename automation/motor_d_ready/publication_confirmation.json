@@ -2,22 +2,34 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-21T07:27:26.230411+00:00",
+  "checked_at": "2026-11-21T15:30:37.500904+00:00",
   "feed_complete": true,
-  "feed_rows": 291,
+  "feed_rows": 294,
   "indexed_batches": 29,
   "quarantined_batches": 2,
   "distinct_nonquarantined_offers": 60,
-  "source_confirmed": 58,
+  "source_confirmed": 59,
   "semantic_only": 0,
-  "not_found": 1,
+  "not_found": 0,
   "expired_not_expected": 1,
-  "territory_mismatches_count": 1,
+  "territory_mismatches_count": 2,
   "territory_mismatches": [
     {
       "id_fuente": "d_bef43ecfd4d8417f1770",
       "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",
       "catalog_id": "free-c9a7209710e4ccc2807b3b51e8909ad00bcbb490",
+      "expected_work_communes": [
+        "Purén"
+      ],
+      "catalog_work_communes": [
+        "Angol"
+      ],
+      "status": "catalog_territory_mismatch"
+    },
+    {
+      "id_fuente": "d_1a99f7fd5b8b9d116634",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
+      "catalog_id": "free-dfa1f8d173984ff01036feb5981907a7062d1c20",
       "expected_work_communes": [
         "Purén"
       ],
@@ -257,9 +269,9 @@
       "batch_id": "motor-d-20261118-d17333430d2aefde48",
       "historically_quarantined": false,
       "offer_count": 2,
-      "source_confirmed": 1,
+      "source_confirmed": 2,
       "semantic_only": 0,
-      "not_found": 1,
+      "not_found": 0,
       "expired_not_expected": 0
     },
     {
@@ -299,15 +311,18 @@
       "expired_not_expected": 0
     }
   ],
-  "unresolved_active_batches": [
+  "unresolved_active_batches": [],
+  "previously_flagged_resolved": 1,
+  "previously_flagged_still_pending": 0,
+  "prior_pending_resolution": [
     {
       "id_fuente": "d_1a99f7fd5b8b9d116634",
       "url_original": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
-      "batch_id": "motor-d-20261118-d17333430d2aefde48",
-      "status": "not_found_in_complete_feed"
+      "status": "confirmed_visible_in_live_feed_by_source",
+      "checked_at": "2026-11-21T15:30:37.500904+00:00",
+      "prior_batch_ids": [
+        "motor-d-20261118-d17333430d2aefde48"
+      ]
     }
-  ],
-  "previously_flagged_resolved": 0,
-  "previously_flagged_still_pending": 1,
-  "prior_pending_resolution": []
+  ]
 }

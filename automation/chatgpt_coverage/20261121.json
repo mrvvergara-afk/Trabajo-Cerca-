@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-21",
+  "inventory_sha": "ba0b70bb97d7a14d8b97afdfb5540b2fb00a79b7",
+  "inventory_count": 143,
+  "discovery_count": 29,
+  "target_communes": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Lumaco",
+    "Los Sauces",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria",
+    "Mulchén",
+    "Negrete",
+    "Nacimiento"
+  ],
+  "coverage_complete": false,
+  "waves": {
+    "4": {
+      "scheduled_local": "01:00",
+      "attempted_at": "2026-11-21T01:26:12-03:00",
+      "expected": 24,
+      "attempted": 24,
+      "accessible": 6,
+      "blocked": 5,
+      "failed": 13,
+      "not_attempted": 0,
+      "sources": [
+        {
+          "source_id": "opcionempleo-Angol",
+          "name": "Opción Empleo · Angol",
+          "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+          "territory": "Angol",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "laborum-Collipulli",
+          "name": "Laborum · Collipulli",
+          "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+          "territory": "Collipulli",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "linkedin-Ercilla",
+          "name": "LinkedIn · Ercilla",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
+          "territory": "Ercilla",
+          "status": "blocked",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso/JS/lector deshabilitado"
+        },
+        {
+          "source_id": "computrabajo-Renaico",
+          "name": "Computrabajo · Renaico",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-renaico",
+          "territory": "Renaico",
+          "status": "blocked",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso/JS/lector deshabilitado"
+        },
+        {
+          "source_id": "indeed-Mininco",
+          "name": "Indeed · Mininco",
+          "url": "https://cl.indeed.com/jobs?q=&l=Mininco&fromage=45",
+          "territory": "Mininco",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "trabajando-Mininco",
+          "name": "Trabajando · Mininco",
+          "url": "https://www.trabajando.cl/trabajo-empleo/mininco",
+          "territory": "Mininco",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "chiletrabajos-Nacimiento",
+          "name": "ChileTrabajos · Nacimiento",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
+          "territory": "Nacimiento",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "opcionempleo-Negrete",
+          "name": "Opción Empleo · Negrete",
+          "url": "https://www.opcionempleo.cl/empleo-en-negrete.html",
+          "territory": "Negrete",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "laborum-Mulchén",
+          "name": "Laborum · Mulchén",
+          "url": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
+          "territory": "Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "linkedin-Los Sauces",
+          "name": "LinkedIn · Los Sauces",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+          "territory": "Los Sauces",
+          "status": "blocked",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso/JS/lector deshabilitado"
+        },
+        {
+          "source_id": "computrabajo-Purén",
+          "name": "Computrabajo · Purén",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-puren",
+          "territory": "Purén",
+          "status": "blocked",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso/JS/lector deshabilitado"
+        },
+        {
+          "source_id": "indeed-Traiguén",
+          "name": "Indeed · Traiguén",
+          "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+          "territory": "Traiguén",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "trabajando-Traiguén",
+          "name": "Trabajando · Traiguén",
+          "url": "https://www.trabajando.cl/trabajo-empleo/traiguen",
+          "territory": "Traiguén",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "chiletrabajos-Lumaco",
+          "name": "ChileTrabajos · Lumaco",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+          "territory": "Lumaco",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "opcionempleo-Victoria",
+          "name": "Opción Empleo · Victoria",
+          "url": "https://www.opcionempleo.cl/empleo-en-victoria.html",
+          "territory": "Victoria",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "laborum-secondary-Los Ángeles",
+          "name": "Laborum · Los Ángeles",
+          "url": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
+          "territory": "Los Ángeles",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        },
+        {
+          "source_id": "linkedin-secondary-Temuco",
+          "name": "LinkedIn · Temuco",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
+          "territory": "Temuco",
+          "status": "blocked",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Control de acceso/JS/lector deshabilitado"
+        },
+        {
+          "source_id": "hospital-angol-concursos",
+          "name": "Hospital de Angol · concursos oficiales",
+          "url": "https://hospitalangol.cl/concursos/",
+          "territory": "Angol",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Página legible; no se verificaron nuevas ofertas publicables"
+        },
+        {
+          "source_id": "omil-renaico",
+          "name": "Municipalidad / OMIL Renaico",
+          "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+          "territory": "Renaico",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [
+            "Concurso municipal Renaico 12 vacantes (ya existente)"
+          ],
+          "reason": "Página legible; no se verificaron nuevas ofertas publicables"
+        },
+        {
+          "source_id": "omil-puren-2026",
+          "name": "Municipalidad / Purén · llamados 2026",
+          "url": "https://munipuren.cl/llamados-a-concurso-2026/",
+          "territory": "Purén",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Página legible; no se verificaron nuevas ofertas publicables"
+        },
+        {
+          "source_id": "cmpc-empleo-trabajando",
+          "name": "CMPC · portal oficial Trabajando",
+          "url": "https://cmpc.trabajando.cl/",
+          "territory": "Collipulli, Mininco, Nacimiento y zona forestal",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [
+            "Analista de Vibraciones Mininco (ya existente)"
+          ],
+          "reason": "Página legible; no se verificaron nuevas ofertas publicables"
+        },
+        {
+          "source_id": "ssan-indice",
+          "name": "Servicio de Salud Araucanía Norte",
+          "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
+          "territory": "Malleco",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Página legible; no se verificaron nuevas ofertas publicables"
+        },
+        {
+          "source_id": "registry-omil-los-angeles-ofertas",
+          "name": "OMIL Los Ángeles · Ofertas",
+          "url": "https://sites.google.com/losangeles.cl/omil-losangeles/ofertas-laborales",
+          "territory": "Los Ángeles",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "Página legible; no se verificaron nuevas ofertas publicables"
+        },
+        {
+          "source_id": "registry-radio-surena-collipulli",
+          "name": "Radio Sureña · Collipulli",
+          "url": "https://www.radiodelsur.cl/",
+          "territory": "Collipulli / Mininco / Ercilla",
+          "status": "failed",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_direct",
+          "offers_found": [],
+          "reason": "URL no recuperable o redirección bloqueada por lector web"
+        }
+      ],
+      "discovery_targets": [
+        {
+          "source_id": "concepcion-bridge",
+          "name": "Concepción · ciudad fuente",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública realizada; sin nueva ficha elegible individual verificable"
+        },
+        {
+          "source_id": "trabajando",
+          "name": "Trabajando.com",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública realizada; sin nueva ficha elegible individual verificable"
+        },
+        {
+          "source_id": "radio-mininco",
+          "name": "Radio Mininco",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública realizada; sin nueva ficha elegible individual verificable"
+        },
+        {
+          "source_id": "radio-victoria",
+          "name": "Radio Victoria",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública realizada; sin nueva ficha elegible individual verificable"
+        },
+        {
+          "source_id": "community",
+          "name": "Radio local · páginas comunitarias · WhatsApp · carteles · otra IA",
+          "status": "checked_found",
+          "timestamp": "2026-11-21T01:26:12-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Búsqueda pública realizada; sin nueva ficha elegible individual verificable"
+        }
+      ]
+    }
+  },
+  "catalog": {
+    "generated_at": "2026-11-21T02:12:51+00:00",
+    "jobIdentityCount": 287,
+    "complete": true,
+    "pagesChecked": 11,
+    "valid_for_run": true
+  },
+  "candidates": [
+    {
+      "title": "Psicólogo/a 40 horas PRM Nacimiento",
+      "company": "Fundación Tierra de Esperanza",
+      "commune": "Nacimiento",
+      "url": "https://www.chiletrabajos.cl/trabajo/psicologo-a-40-horas-prm-nacimiento-3889597",
+      "published_at": "2026-09-07",
+      "discovered_at": "2026-11-20",
+      "closing_date": "2026-11-21",
+      "status": "pending_import_contract_unavailable",
+      "reason": "No está en espejo; backend/chatgpt-direct-import.ts no disponible en ruta solicitada; sin lote seguro"
+    },
+    {
+      "title": "Concurso municipal Renaico (12 vacantes)",
+      "company": "Municipalidad de Renaico",
+      "commune": "Renaico",
+      "url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
+      "status": "existing_in_catalog",
+      "catalog_id": "chatgpt_cg_c7d521f0c88ecb48d3e7"
+    }
+  ],
+  "new_batches": 0,
+  "new_publications_confirmed": 0,
+  "notes": [
+    "Onda intentada pero lectura efectiva 6/24.",
+    "La fuente SSAN muestra concursos externos en Lonquimay, fuera del territorio principal; no se importan.",
+    "Sin modificación ni despliegue de app."
+  ]
+}

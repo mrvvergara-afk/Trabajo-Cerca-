@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-21T06:11:20.432391-03:00",
+  "last_run": "2026-11-21T08:18:52.707668-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -8676,6 +8676,42 @@
       "first_seen": "2026-11-21T06:11:20.432391-03:00",
       "url": "https://www.radionativa.cl/entregan-resultados-de-postulacion-al-subsidio-electrico-revisa-aqui-si-eres-beneficiario/",
       "source": "Inventario P06",
+      "commune": null
+    },
+    "aa0efcdd24ac6aee74db": {
+      "first_seen": "2026-11-21T08:18:52.707668-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-tecnico-en-informatica-soporte-ti-3080943.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f15bc8001790ef53024c": {
+      "first_seen": "2026-11-21T08:18:52.707668-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/urgente-operadores-polifuncionales-turno-7x7-dia-y-noche-3080942.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "de78d930da81ccf6f333": {
+      "first_seen": "2026-11-21T08:18:52.707668-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/urgente-operadores-as-caex-turno-7x7-dia-y-noche-3080941.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a43e425af65b1ed87b1b": {
+      "first_seen": "2026-11-21T08:18:52.707668-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/urgente-operadores-as-caex-turno-7x7-dia-y-noche-3080940.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "db781223af90a369af24": {
+      "first_seen": "2026-11-21T08:18:52.707668-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/urgente-operadores-polifuncionales-turno-7x7-dia-y-noche-3080939.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "68258ecaa6ff73347541": {
+      "first_seen": "2026-11-21T08:18:52.707668-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-produccion-industrial-lunes-a-viernes-580000-liquidos-desayuno-almuerzo-y-once-quilicura-3080938.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

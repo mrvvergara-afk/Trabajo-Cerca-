@@ -254,6 +254,43 @@ export async function testOwnerConnection(env = process.env, request = fetch) {
   return { connected: true, appId: OFFICIAL_ID,
     version: status.deployment.snapshot_version, publicJobs: feed.count };
 }
+// Verify that the intended source diffs apply to the exact production baseline.
+// If a deployment response is lost, compare the stored snapshot before deciding
+// whether it is safe to roll back. Never revert an unrelated external deploy.
+async function readReleaseSource(client, version, filename) {
+  const source = await client.call('src_read', {
+    app_id: OFFICIAL_ID, path: filename, version, offset: 0, limit: 2000,
+  });
+  if (source.version && source.version !== version)
+    throw Error('Source version differs from the requested snapshot');
+  if (typeof source.content !== 'string' ||
+      !Number.isSafeInteger(source.total_lines) ||
+      source.total_lines > 2000 ||
+      source.content.split('\n').length !== source.total_lines)
+    throw Error('Incomplete or oversized release source; manual reconciliation required');
+  return source.content;
+}
+async function expectedReleasedSources(client, payload, baseline) {
+  const expected = new Map();
+  for (const file of payload.files) {
+    let current = await readReleaseSource(client, baseline, file.filename);
+    for (const { from, to } of file.diffs) {
+      if (current.split(from).length !== 2)
+        throw Error('Release diff anchor is absent or non-unique in the official baseline');
+      current = current.replace(from, to);
+    }
+    expected.set(file.filename, current);
+  }
+  return expected;
+}
+async function confirmReleasedSources(client, version, expected) {
+  for (const [filename, text] of expected) {
+    const observed = await readReleaseSource(client, version, filename);
+    if (observed !== text)
+      throw Error('Unverified AppDeploy version contents: ' + filename);
+  }
+}
+
 export async function runRelease({
   env = process.env, request = fetch, wait,
   payload, commitSha, baseline
@@ -279,12 +316,18 @@ export async function runRelease({
     throw Error('Rollback snapshot missing');
   const healthyBefore = await readPublic(request);
   await checkOfficialPublicContracts(request);
+  // Source verification precedes any possible production deployment.
+  const expectedSources = await expectedReleasedSources(client, payload, baseline);
   const newFiles = payload.files.map(f => ({
     filename: f.filename,
     diffs: f.diffs.map(d => ({ from: d.from, to: d.to })),
   }));
   let acceptedVersion = null;
+  let deployRequested = false;
+  let candidateVerified = false;
   try {
+    // From this point a transport error does NOT prove that nothing changed.
+    deployRequested = true;
     const deploy = await client.call('deploy_app', {
       app_id: OFFICIAL_ID,
       app_name: 'Trabajo Cerca Laboratorio',
@@ -314,6 +357,8 @@ export async function runRelease({
     }
     if (!/^\d{12,20}$/.test(String(acceptedVersion)))
       throw Error('CRITICAL: deployment version format unexpected');
+    await confirmReleasedSources(client, acceptedVersion, expectedSources);
+    candidateVerified = true;
     await untilReady(client, acceptedVersion, wait, request,
       Math.max(1, Math.floor(healthyBefore.count * 0.9)));
     const after = await readPublic(request);
@@ -323,8 +368,32 @@ export async function runRelease({
     return { success: true, version: acceptedVersion,
       rollback: baseline, visibleJobs: after.count };
   } catch (cause) {
-    if (!acceptedVersion) throw cause;
-    // Rollback code ONLY: external durable data restoration is separate.
+    if (!deployRequested) throw cause;
+    if (!acceptedVersion) {
+      // deploy_app can commit server-side and then lose its HTTP response.
+      // One read-only reconciliation is safer than a second deploy request.
+      let observed;
+      try {
+        observed = await client.call('get_app_status',
+          { app_id: OFFICIAL_ID, limit: 5 });
+      } catch {
+        throw Error('CRITICAL: deployment response lost and production unreadable; manual reconciliation required; do not retry');
+      }
+      const current = observed.deployment?.snapshot_version;
+      if (!current || current === baseline || !/^\d{12,20}$/.test(String(current)))
+        throw Error('CRITICAL: deployment outcome unresolved; no safe automatic retry or rollback; inspect official version');
+      acceptedVersion = current;
+    }
+    if (!candidateVerified) {
+      try {
+        await confirmReleasedSources(client, acceptedVersion, expectedSources);
+        candidateVerified = true;
+      } catch {
+        // The changed snapshot may belong to another actor. Never roll it back.
+        throw Error('CRITICAL: production snapshot changed but candidate ownership cannot be proved; manual reconciliation required');
+      }
+    }
+    // Rollback CODE ONLY after snapshot contents prove they match our diffs.
     const rollback = await client.call('apply_app_version', {
       app_id: OFFICIAL_ID, version: baseline,
     });

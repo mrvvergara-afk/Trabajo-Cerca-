@@ -1,5 +1,13 @@
 name: Trabajo Cerca — PWA candidate offline QA
 on:
+  push:
+    branches:
+      - release/pwa-recovery-candidate-20261120
+    paths:
+      - 'release/candidates/pwa-resilience-20261120.json'
+      - 'release/baselines/sw-1795209664148.js'
+      - 'scripts/pwa-resilience-candidate.test.mjs'
+      - '.github/workflows/pwa-resilience-qa.yml'
   pull_request:
     paths:
       - 'release/candidates/pwa-resilience-20261120.json'

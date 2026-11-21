@@ -49,18 +49,6 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
-      "id_fuente": "cmpc_19251",
-      "cargo": "Mecánico/a Turno - Nacimiento, planta Santa Fe",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19251?c=cmpc",
-      "fecha_publicacion": "2026-10-30",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_19222",
       "cargo": "Instrumentista de área - Santa Fe",
       "empresa": "CMPC",
@@ -86,6 +74,22 @@
     }
   ],
   "pending": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19467?c=cmpc",
+      "title": "HRBP OPERACIONES MADERAS",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19452?c=cmpc",
+      "title": "ESPECIALISTA MEDIO AMBIENTE",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19460?c=cmpc",
       "title": "Subgerente PC&P",
@@ -218,14 +222,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
       "title": "Operador Montacarga Turno - Planta Puente Alto",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
-      "title": "INGENIERO PREVENCIÓN RIESGOS",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"

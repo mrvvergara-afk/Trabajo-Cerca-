@@ -1,4 +1,4 @@
-import { createHash, timingSafeEqual } from 'node:crypto';
+import { createHash, createPublicKey, verify } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
@@ -55,20 +55,62 @@ export function validatePayload(payload, baseline, commitSha) {
   }
   return true;
 }
-export function enforceAttestations(env, now = Date.now()) {
+// Data recovery is certified only by a signed independent QA report.
+// A timestamp, checkbox or page-export is not an atomic full-data backup.
+export function enforceAttestations(env, now = Date.now(), context = {}) {
   if (env.TC_RELEASE_ENABLE !== 'approved') throw Error('Release disabled');
-  const fields = [
-    ['TC_RESTORE_VERIFIED_AT', 7 * 86400000],
-    ['TC_FEED_ATOMIC_VERIFIED_AT', 2 * 86400000],
-    ['TC_ADMIN_E2E_VERIFIED_AT', 7 * 86400000],
-  ];
-  for (const [key, age] of fields) {
-    const date = Date.parse(env[key] || '');
-    if (!Number.isFinite(date) || date > now || now - date > age)
-      throw Error('Missing or stale independent evidence: ' + key);
-  }
   if (!env.TC_APPDEPLOY_MCP_TOKEN || env.TC_APPDEPLOY_MCP_TOKEN.length < 30)
     throw Error('Owner-connected AppDeploy credential missing');
+  const raw = env.TC_RELEASE_PROOF_JSON;
+  const sig = env.TC_RELEASE_PROOF_SIGNATURE;
+  const key = env.TC_RELEASE_PROOF_PUBLIC_KEY;
+  if (!raw || !sig || !key || raw.length > 16000 || sig.length > 300 ||
+      !/^[a-zA-Z0-9+/=]+$/.test(sig))
+    throw Error('Missing signed independent recovery evidence');
+  let proof;
+  try { proof = JSON.parse(raw); } catch { throw Error('Invalid recovery evidence JSON'); }
+  if (proof?.schema !== 'tc-release-attestation-v1' ||
+      proof?.issuer !== 'independent-recovery-qa' ||
+      proof?.appId !== OFFICIAL_ID ||
+      proof?.baseline !== context.baseline ||
+      proof?.candidateSha !== context.candidateSha ||
+      !fixedHex(context.payloadSha256, 64) ||
+      proof?.payloadSha256 !== context.payloadSha256)
+    throw Error('Recovery evidence does not match candidate or production baseline');
+  const b = proof.backup || {}, r = proof.restore || {};
+  const f = proof.feed || {}, a = proof.admin || {};
+  const fresh = (value, max) => {
+    const v = typeof value === 'string' ? Date.parse(value) : NaN;
+    return Number.isFinite(v) && v <= now && v >= now - max;
+  };
+  if (b.scope !== 'full-app-data' || b.consistency !== 'atomic' ||
+      b.encrypted !== true || b.external !== true ||
+      !fixedHex(b.manifestSha256, 64) ||
+      !fresh(b.completedAt, 24 * 3600000))
+    throw Error('Atomic encrypted external production backup not certified');
+  if (r.outcome !== 'passed' || !r.targetAppId ||
+      r.targetAppId === OFFICIAL_ID ||
+      r.recordsMatched !== true || r.filesMatched !== true ||
+      !fixedHex(r.receiptSha256, 64) ||
+      !fresh(r.verifiedAt, 24 * 3600000))
+    throw Error('Independent isolated restore test not certified');
+  if (f.noEmptyPages !== true || f.noDegradedPages !== true ||
+      !fixedHex(f.receiptSha256, 64) ||
+      !fresh(f.verifiedAt, 2 * 86400000))
+    throw Error('Atomic public catalog continuity not certified');
+  if (a.authenticated !== true || a.passed !== true ||
+      !fixedHex(a.receiptSha256, 64) ||
+      !fresh(a.verifiedAt, 7 * 86400000))
+    throw Error('Authenticated administrator E2E not certified');
+  let signed = false;
+  try {
+    const pub = createPublicKey(key);
+    signed = pub.asymmetricKeyType === 'ed25519' &&
+      verify(null, Buffer.from(raw, 'utf8'), pub, Buffer.from(sig, 'base64'));
+  } catch { signed = false; }
+  if (!signed) throw Error('Independent recovery evidence signature invalid');
+  return { baseline: proof.baseline, backup: b.manifestSha256,
+    restore: r.receiptSha256 };
 }
 function unwrap(mcp) {
   if (mcp.error) throw Error('MCP error: ' + String(mcp.error.message || 'unknown'));
@@ -145,6 +187,10 @@ async function readPublic(request = fetch) {
   const data = await response.json();
   if (!Array.isArray(data.items) || !data.items.length)
     throw Error('Official public feed is empty');
+  if (data.degraded === true || data.feedRebuilding === true ||
+      data.totalsProvisional === true ||
+      /^(degraded|building|partial)/i.test(String(data.feedState || '')))
+    throw Error('Official public feed is provisional or rebuilding');
   const total = Number(data.totalVerifiedJobOffers || 0);
   return { rows: data.items.length,
     count: Number.isSafeInteger(total) && total > 0 ? total : data.items.length };
@@ -213,8 +259,9 @@ export async function runRelease({
   payload, commitSha, baseline
 }) {
   // No network call to deploy is permitted before all static guards.
-  enforceAttestations(env);
   validatePayload(payload, baseline, commitSha);
+  enforceAttestations(env, Date.now(), { baseline, candidateSha: commitSha,
+    payloadSha256: sha256(JSON.stringify(payload)) });
   const client = new AppDeployMcp(env.TC_APPDEPLOY_MCP_TOKEN, request);
   await client.initialize();
   const who = await client.call('appdeploy_who_am_i');

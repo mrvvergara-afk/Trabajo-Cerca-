@@ -297,8 +297,23 @@ export async function runRelease({
       files: newFiles,
     });
     acceptedVersion = deploy.deployment?.snapshot_version;
-    if (!acceptedVersion || !/^\d{12,20}$/.test(String(acceptedVersion)))
-      throw Error('Deployment was not confirmed with a version');
+    if (!acceptedVersion || !/^\d{12,20}$/.test(String(acceptedVersion))) {
+      // The deployment call can commit server-side while its response is lost.
+      // Never silently announce failure when a new version may be live.
+      const observed = await client.call('get_app_status',
+        { app_id: OFFICIAL_ID, limit: 5 });
+      const current = observed.deployment?.snapshot_version;
+      if (current && current !== baseline) {
+        // Adopt the actual snapshot for the guarded QA/rollback path.
+        acceptedVersion = current;
+      } else if (current === baseline) {
+        throw Error('No new AppDeploy version confirmed; baseline remains active');
+      } else {
+        throw Error('CRITICAL: deployment state indeterminate; manual reconciliation required');
+      }
+    }
+    if (!/^\d{12,20}$/.test(String(acceptedVersion)))
+      throw Error('CRITICAL: deployment version format unexpected');
     await untilReady(client, acceptedVersion, wait, request,
       Math.max(1, Math.floor(healthyBefore.count * 0.9)));
     const after = await readPublic(request);

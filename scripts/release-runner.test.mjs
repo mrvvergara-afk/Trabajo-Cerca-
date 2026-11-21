@@ -116,9 +116,10 @@ test('a signed proof cannot certify a partial, stale or unverified backup', () =
 function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false,
   noDeployVersionInResponse = false, deny = false,
   throwAfterCommit = false, throwBeforeCommit = false,
-  sourceMismatch = false, baselineSourceMismatch = false } = {}) {
+  sourceMismatch = false, baselineSourceMismatch = false,
+  externalChangeOnRollback = false } = {}) {
   const calls = [];
-  let version = BASE, deployed = false;
+  let version = BASE, deployed = false, statusCalls = 0;
   const request = async (url, init) => {
     if (String(url).includes('api/growth/advertising?')) {
       calls.push('advertising');
@@ -170,7 +171,9 @@ function stubTransport({ badPostdeploy = false, provisionalPostdeploy = false,
           return { version: requested, total_lines: 1, content };
         })()
       : method === 'get_app_status' ? {
-          deployment: { status: 'ready', snapshot_version: version },
+          deployment: { status: 'ready',
+            snapshot_version: externalChangeOnRollback && deployed && ++statusCalls >= 2
+              ? '1795888888888' : version },
           qa_snapshot: { frontend_errors: [], network_errors: [] },
         }
       : method === 'deploy_app' ? (
@@ -292,4 +295,13 @@ test('baseline diff is unique and present before issuing any production deploy',
     payload: good(), baseline: BASE, commitSha: SHA, wait: async () => {} }),
   /absent or non-unique/);
   assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 0);
+});
+
+test('concurrent external deployment after our release stops rollback of other code', async () => {
+  const stub = stubTransport({ provisionalPostdeploy: true, externalChangeOnRollback: true });
+  await assert.rejects(() => runRelease({ env: env(), request: stub.request,
+    payload: good(), baseline: BASE, commitSha: SHA, wait: async () => {} }),
+    /CRITICAL: live version changed/);
+  assert.equal(stub.calls.filter(x => x === 'deploy_app').length, 1);
+  assert.equal(stub.calls.filter(x => x === 'apply_app_version').length, 0);
 });

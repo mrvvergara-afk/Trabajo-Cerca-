@@ -1,0 +1,74 @@
+name: Trabajo Cerca — OIDC handshake LAB (no writes)
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/trabajo-cerca-oidc-connect.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  issues: write
+
+concurrency:
+  group: trabajo-cerca-oidc-lab-connection
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify GitHub identity against LAB only
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Prove signed GitHub Actions identity can reach isolated LAB
+        id: handshake
+        env:
+          ACTIONS_ID_TOKEN_REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+          ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
+        run: |
+          node --input-type=module <<'NODE'
+          const endpoint=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
+          const secret=process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
+          if(!endpoint||!secret) throw Error('GitHub OIDC not enabled');
+          const tokenUrl=endpoint + (endpoint.includes('?')?'&':'?') +
+            'audience=trabajo-cerca-release-oidc-v1';
+          const auth=await fetch(tokenUrl,{headers:{Authorization:'Bearer '+secret},
+            signal:AbortSignal.timeout(10000)});
+          if(!auth.ok)throw Error('OIDC issuance failed HTTP '+auth.status);
+          const payload=await auth.json();
+          if(typeof payload.value!=='string')throw Error('OIDC identity missing');
+          const response=await fetch(
+            'https://api-v2.appdeploy.ai/app/trabajo-cerca-lab-aislado-xirg9w/api/internal/release/oidc-check',
+            {method:'POST',redirect:'error',
+              headers:{Authorization:'Bearer '+payload.value,
+                'Content-Type':'application/json'},
+              body:'{}',signal:AbortSignal.timeout(15000)});
+          if(response.status!==200)
+            throw Error('LAB OIDC verification HTTP '+response.status);
+          const result=await response.json();
+          if(result.verified!==true || result.deployEnabled!==false ||
+            result.productionChanges!==0)
+            throw Error('LAB OIDC contract rejected or unsafe');
+          console.log('TC_OIDC_LAB_CONNECTION_PASS (read only, zero deployments)');
+          NODE
+      - name: Record read-only OIDC test outcome on the release issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ steps.handshake.outcome }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          case "$OUTCOME" in
+            success)
+              BODY="GitHub OIDC → LAB: **CONEXIÓN VERIFICADA** (solo lectura). Sin credenciales persistentes, sin despliegue ni acceso a bases de producción." ;;
+            *)
+              BODY="GitHub OIDC → LAB: **PRUEBA NO APROBADA**. Revisar logs de esta ejecución; no se habilitó publicación." ;;
+          esac
+          gh issue comment 74 --repo "$REPO" --body "$BODY
+
+          CI: https://github.com/$REPO/actions/runs/$RUN_ID"

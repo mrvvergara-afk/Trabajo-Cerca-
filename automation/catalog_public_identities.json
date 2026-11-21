@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-21T12:24:04+00:00",
+  "generated_at": "2026-11-21T15:45:36+00:00",
   "complete": true,
-  "totalItemsReported": 291,
-  "jobIdentityCount": 287,
+  "totalItemsReported": 293,
+  "jobIdentityCount": 289,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 109,
+  "visibleIn12CommunesCount": 111,
   "outside12CommuneScopeCount": 178,
-  "pagesChecked": 11,
-  "fingerprint": "51182e5d3191e3a17b3e0b68f92ffb9e04e075e798da41217aa725c5f78783c1",
+  "pagesChecked": 12,
+  "fingerprint": "be8473e85e297c5224052c970bedf2eea8e9367a11034a6012ca8c57b4c07b37",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -629,17 +629,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ayudante-de-operador-freire-temuco-3908285",
       "urlHashSha256": "a1bcac069c5ae513e03f3936ddda45258313daebe7d46c6af9e0a532576afc63"
-    },
-    {
-      "id": "b80928c9-6bb1-46fc-b1d9-eea732003c5c",
-      "title": "AUXILIAR ESTAFETA, Reemplazo, media jornada, programa PRM ANGOL, Reg. La Araucan",
-      "company": "FUNDACION CIUDAD DEL NIÑO",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/auxiliar-estafeta-reemplazo-media-jornada-programa-prm-angol-reg-la-araucan-3894880",
-      "urlHashSha256": "1f8ccc9428964a89aa68964d79ae6a54beee3f0d778e0e9c77ebd7d2311d9afc"
     },
     {
       "id": "b92528e5-61b5-4498-88ca-808c2443a044",
@@ -1668,6 +1657,17 @@
       "urlHashSha256": "6a41abe0be836ab76297f5128a053238e54234c310ccc9010aa87c7693e65909"
     },
     {
+      "id": "free-36a763f216f19cc82fcefc7ff52108c9ff816863",
+      "title": "Maestro de Primera",
+      "company": "MOCH Ingeniería y Construccion",
+      "workCommunes": [
+        "Renaico"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/maestro-de-primera-3935047",
+      "urlHashSha256": "ccfbc64b23f3c259473d5de48c7491b80b8f694f5ba016e687000bcbad481b93"
+    },
+    {
       "id": "free-36dabf6d0767e19367b244878bd86e8cf82f38c5",
       "title": "Bodeguero/a Plan Navidad Full Time Preunic - Angol",
       "company": "Preunic",
@@ -2249,6 +2249,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/encargado-a-de-medio-ambiente-y-relaciones-con-el-territorio-3921809",
       "urlHashSha256": "a68e4f016c3799ea9fe4089796d489add7f199241d344d68c5dca6f7300dac81"
+    },
+    {
+      "id": "free-862c0bdc6550f1a9ad83642726358740c0d96279",
+      "title": "Ingeniero Constructor o Ingeniero Civil",
+      "company": "MOCH Ingenieria y Construccion",
+      "workCommunes": [
+        "Renaico"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/ingeniero-constructor-o-ingeniero-civil-3935060",
+      "urlHashSha256": "c65411e81a245bf374540379a905abcc05d8722654d459899996f5f30c4e762f"
     },
     {
       "id": "free-878ae593fd95de6b3867a0a8eecd01a6d6db0001",
@@ -2921,6 +2932,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/implantologa-3922425",
       "urlHashSha256": "e07e6552b60aa3ed43177c0f90cd8cb9019a954e06a5674e340805038264ead3"
+    },
+    {
+      "id": "free-dfa1f8d173984ff01036feb5981907a7062d1c20",
+      "title": "Analista de Vibraciones - Mininco, Planta Plywood",
+      "company": "CMPC",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
+      "urlHashSha256": "1a99f7fd5b8b9d116634648df81bdf192467d4fddb125a1675d9464a9387939d"
     },
     {
       "id": "free-e3f4608b1c7d8460922044654f0453ea49850204",

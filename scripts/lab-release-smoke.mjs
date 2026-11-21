@@ -140,6 +140,7 @@ await test('Anonymous directory moderation and reports are blocked', async () =>
 await test('Anonymous release control and execution are both blocked', async () => {
   for (const [path, method] of [
     ['api/admin/release/status', 'GET'],
+    ['api/admin/release/execution', 'GET'],
     ['api/admin/release/execute', 'POST'],
   ]) {
     const { response } = await get(path, {

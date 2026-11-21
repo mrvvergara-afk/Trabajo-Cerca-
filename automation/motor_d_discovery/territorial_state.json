@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-21T15:07:23.699170-03:00",
+  "last_run": "2026-11-21T19:10:41.126475-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -8863,6 +8863,126 @@
       "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
       "source": "Motor A · ficha original a verificar",
       "commune": "Purén"
+    },
+    "12e1ae77661db2df5d08": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/vendedores-canal-tradicional-retail-consumo-masivo-l-a-v-movilizacion-propia-valparaiso-vina-el-mar-3081072.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a4a6eebe1eb17a067ec9": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/vendedores-canal-tradicional-retail-consumo-masivo-l-a-v-movilizacion-propia-villa-alemana-villa-alemana-zona-norte-3081071.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "692d3e3b89a099e4e779": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/vendedores-canal-tradicional-retail-consumo-masivo-l-a-v-movilizacion-propia-villa-alemana-villa-alemana-quilpue-3081070.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "231d7e91f2bbb693068a": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/operario-prevencion-de-perdidas-jornada-completa-turno-dia-3081069.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c29396fcc3f8ea493e1b": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-arica-y-parinacota/cajera-a-arica-region-de-arica-y-parinacota-3081068.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b06dce1416650759841e": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practicante-ingenieria-civil-industrial-control-de-gestion-o-profesion-afin-empresa-fabricacion-retail-pop-3081067.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fda506f2f69f31bdc611": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/operario-de-bodega-coquimbo-turno-part-time-con-o-sin-experiencia-martes-a-viernes-06-30-a-14-00-500000-3081066.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ddd47762aefea004e17b": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-mercado-libre-part-time-quilicura-con-o-sin-experiencia-1-a-4-dias-lunes-a-sabado-35000-por-dia-trabajado-3081065.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1bfb49670ba0f534257c": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/operario-de-bodega-mercado-libre-rancagua-part-time-1-a-4-dias-por-semana-06-00-a-14-00-4-dias-a-la-semana-lunes-a-viernes-3081064.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d6b513d2dfbd006f73e3": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-tradis-lof-1-turno-de-manana-08-00-a-18-00-cerrillos-564000-black-3081063.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "246ed0f87dbae0300743": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/bodegueros-con-experiencia-para-supermercado-colina-ingreso-inmediato-chicureo-3081062.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2749d28249d041844984": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tens-enfermeria-digitador-reemplazo-centro-medico-maipu-3081061.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a78fddeee313eebe6397": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tens-enfermeria-reemplazo-centro-medico-alamena-3081060.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4e51db72b424e76ca0ab": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/carrero-para-supermercado-lo-barnechea-horarios-rotativos-turnos-continuos-3081059.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ebbf6a71ca8dc37d8bc3": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-grua-horquilla-cerrillos-turnos-rotativos-6x2-con-colacion-3081058.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a8a0abc203c9480df8a9": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/carrero-para-supermercados-fin-de-semana-chillan-horarios-rotativos-fin-de-semana-3081057.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "eb9126677ab845dd86b9": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/jefe-a-de-gestion-de-bodega-e-inventarios-3081056.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "616c7978907671bb2518": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/operarios-de-bodega-evento-black-vina-del-mar-660000-liquidos-3081055.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f6d2e4a88e94e8a767cc": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/operarios-de-bodega-evento-black-copiapo-660000-liquidos-3081054.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d4167e8b9da5cd584c70": {
+      "first_seen": "2026-11-21T19:10:41.126475-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-magallanes-y-antartica-chilena/bodeguero-punta-arenas-3081053.html",
+      "source": "Inventario D04",
+      "commune": null
     }
   }
 }

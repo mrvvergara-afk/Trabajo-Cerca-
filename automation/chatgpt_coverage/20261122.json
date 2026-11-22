@@ -968,5 +968,69 @@
     }
   ],
   "batches_created": 0,
-  "published_confirmed": 0
+  "published_confirmed": 0,
+  "recovery_review_20261122_1655": {
+    "timestamp": "2026-11-22T16:55:31-03:00",
+    "inventory_verified": {
+      "count": 143,
+      "discovery_targets": 29,
+      "waves": [
+        24,
+        24,
+        24,
+        24,
+        24,
+        23
+      ]
+    },
+    "catalog": {
+      "generated_at": "2026-11-22T17:59:44+00:00",
+      "jobIdentityCount": 288,
+      "complete": true,
+      "pagesChecked": 12,
+      "within_120_minutes_at_review": true
+    },
+    "checked": [
+      {
+        "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-3935615",
+        "status": "checked_found",
+        "work_commune": "Collipulli",
+        "original_date": "2026-11-19",
+        "expiry": "2027-02-02",
+        "catalog_identity": "not_found_by_job_id_or_company",
+        "action": "pending_import_contract_validation"
+      },
+      {
+        "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+        "status": "checked_found",
+        "work_commune": "Renaico",
+        "catalog_identity": "chatgpt_cg_c7d521f0c88ecb48d3e7",
+        "action": "existing_no_duplicate"
+      },
+      {
+        "url": "https://www.bne.gob.cl/ofertas/1595478",
+        "status": "failed",
+        "reason": "Public reader only returns login shell; job details not verified this run",
+        "action": "pending_verification"
+      }
+    ],
+    "territorial_incidents": [
+      {
+        "catalog_id": "free-b09e1a50f6ecb280c18328e61aaf153b5819ee24",
+        "url": "https://chiletrabajos.cl/trabajo/ito-residente-experiencia-obras-conservacion-caminos-los-angeles-3905459",
+        "catalog_work_communes": [
+          "Los Ángeles"
+        ],
+        "candidate_actual_communes": [
+          "Nacimiento",
+          "Mulchén"
+        ],
+        "action": "review_existing_identity_do_not_duplicate"
+      }
+    ],
+    "wave_2_status": "not_attempted_before_17_00",
+    "new_batches": 0,
+    "published_confirmed": 0,
+    "reason": "No verified import contract or AppDeploy published receipt; do not claim production"
+  }
 }

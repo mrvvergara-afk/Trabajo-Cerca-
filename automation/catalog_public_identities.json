@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-22T00:20:18+00:00",
+  "generated_at": "2026-11-22T02:02:29+00:00",
   "complete": true,
   "totalItemsReported": 293,
   "jobIdentityCount": 289,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 110,
-  "outside12CommuneScopeCount": 179,
+  "visibleIn12CommunesCount": 109,
+  "outside12CommuneScopeCount": 180,
   "pagesChecked": 12,
-  "fingerprint": "7ffef4b41c6dc0d828af9ddb0459e84d60e3856adc7fa24f5a5be7a2059cdb0d",
+  "fingerprint": "8bae129c60ed17c08790ca7302eba2d93af54a0d957d85206fa87277df424239",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -966,10 +966,8 @@
       "id": "chatgpt_d_4de1ef999c10ba4947aa",
       "title": "Líder Prevención de Riesgo y Sistema Integrado de Gestión",
       "company": "Recompany",
-      "workCommunes": [
-        "Purén"
-      ],
-      "visibleIn12Communes": true,
+      "workCommunes": [],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/lider-prevencion-de-riesgo-y-sistema-integrado-de-gestion-3935812",
       "urlHashSha256": "4de1ef999c10ba4947aaaf64c9e7d8e14ed50bb9c16ac2a177cf8e3501b37df2"
     },
@@ -2935,7 +2933,7 @@
       "title": "Analista de Vibraciones - Mininco, Planta Plywood",
       "company": "CMPC",
       "workCommunes": [
-        "Angol"
+        "Collipulli"
       ],
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",

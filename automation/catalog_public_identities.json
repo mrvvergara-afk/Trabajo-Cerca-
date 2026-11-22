@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-22T17:08:22+00:00",
+  "generated_at": "2026-11-22T17:59:44+00:00",
   "complete": true,
-  "totalItemsReported": 293,
-  "jobIdentityCount": 289,
+  "totalItemsReported": 292,
+  "jobIdentityCount": 288,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 109,
+  "visibleIn12CommunesCount": 108,
   "outside12CommuneScopeCount": 180,
   "pagesChecked": 12,
-  "fingerprint": "b295822feccd9cd3397950be8416115a3929c0b4bee0b5ced51603941afa6159",
+  "fingerprint": "1693f492a7eaaa8879414e17643c044c40d3b5b9effe91285f4c030a79af135e",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -386,18 +386,6 @@
       "visibleIn12Communes": true,
       "url": "https://munimulchen.cl/oferta-laboral-labores-agricolas-y-cuidado-de-parcela",
       "urlHashSha256": "b41bcbc30c4c6e0b8004894ec02a4093fa7c33bf0b505da3d9e5f64a27b63341"
-    },
-    {
-      "id": "6abf9e94-dade-4490-ba22-9b8c925a9e4e",
-      "title": "Trabajador/a Social 40 horas PRM Nacimiento",
-      "company": "Fundación Tierra de Esperanza",
-      "workCommunes": [
-        "Los Ángeles",
-        "Nacimiento"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/3889603",
-      "urlHashSha256": "5b3b815795409aac08fa0d232f499aee3af9e8092f1da52141ca7fec41dc4924"
     },
     {
       "id": "6d27e85f-3aa2-44fc-9ac5-89c3fd0b5bb8",

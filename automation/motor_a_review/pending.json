@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-22T07:01:29.595720+00:00",
+  "updated_at": "2026-11-22T15:28:22.390447+00:00",
   "items_total": 6,
   "automatically_published": 0,
   "items": [
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-22T07:01:29.595720+00:00",
+      "last_checked_at": "2026-11-22T15:28:22.390447+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -22,6 +22,46 @@
       "catalog_territory_mismatch": true,
       "catalog_work_communes": [
         "Ercilla"
+      ]
+    },
+    {
+      "id": "a_1843a3809a023ee68321",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Traiguén",
+      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-06 14:20:34",
+      "deadline_hint": "2027-01-20T14:20:34",
+      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
+      "last_checked_at": "2026-11-22T15:28:22.390447+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
+    },
+    {
+      "id": "a_0db736d40ce9ba138aa4",
+      "url": "https://www.chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Purén",
+      "title_hint": "Conductor/a Clínico Urgencias Angol - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-18 12:19:56",
+      "deadline_hint": "2027-02-01T12:19:56",
+      "first_discovered_at": "2026-11-21T02:30:52.965251+00:00",
+      "last_checked_at": "2026-11-22T15:28:22.390447+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
       ]
     },
     {
@@ -65,26 +105,6 @@
       ]
     },
     {
-      "id": "a_1843a3809a023ee68321",
-      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-06 14:20:34",
-      "deadline_hint": "2027-01-20T14:20:34",
-      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
-      "last_checked_at": "2026-11-21T11:18:38.694821+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
-    },
-    {
       "id": "a_dfa1f8d173984ff01036",
       "url": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
       "source": "Motor A Chiletrabajos",
@@ -103,35 +123,15 @@
       "catalog_work_communes": [
         "Collipulli"
       ]
-    },
-    {
-      "id": "a_0db736d40ce9ba138aa4",
-      "url": "https://www.chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Purén",
-      "title_hint": "Conductor/a Clínico Urgencias Angol - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-18 12:19:56",
-      "deadline_hint": "2027-02-01T12:19:56",
-      "first_discovered_at": "2026-11-21T02:30:52.965251+00:00",
-      "last_checked_at": "2026-11-21T02:30:52.965251+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
     }
   ],
   "metrics": {
-    "added": 15,
+    "added": 14,
     "updated": 3,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 15,
+    "published_reconciled": 14,
     "territory_mismatch": 6
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema": "trabajo-cerca.motor-d-review.v1",
-  "updated_at": "2026-11-22T17:23:21.242145+00:00",
+  "updated_at": "2026-11-22T21:06:42.504268+00:00",
   "items_total": 18,
   "pending_total": 18,
   "publication_enabled": false,
@@ -22,10 +22,10 @@
       "extractor": "article_body_text",
       "http": 200,
       "text_excerpt": null,
-      "document_sha256": "b827066da4044550e1f156fa923e0b67deec7a3e63bba6fbd14a410e9f87123f",
+      "document_sha256": "6b545836af511ca25f2d1b1bc4467f6e5ed36561f43abc39be7ae30117e1d23a",
       "original_classification": null,
       "date_source": "2026-10-17",
-      "date_discovered": "2026-11-21",
+      "date_discovered": "2026-11-22",
       "deadline": "2026-11-27",
       "publication_date_confirmed": false,
       "work_location_verified": false,
@@ -572,6 +572,5 @@
       "original_classification": "sin_evidencia_suficiente",
       "deadline": null
     }
-  ],
-  "added_this_run": 0
+  ]
 }

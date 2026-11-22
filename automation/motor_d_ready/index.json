@@ -174,6 +174,12 @@
       "file": "20261121/motor-d-20261121-beb79ae39f3195f757.json",
       "count": 1,
       "batch_type": "recovery"
+    },
+    {
+      "batch_id": "motor-d-20261122-da4f2536327eda43e6",
+      "file": "20261122/motor-d-20261122-da4f2536327eda43e6.json",
+      "count": 1,
+      "batch_type": "recovery"
     }
   ],
   "seen_offer_ids": [
@@ -202,6 +208,7 @@
     "d_5813016bef2debcf1ea2",
     "d_5c980138c7556d6f7de9",
     "d_5ca6fdce4da0aaa7911b",
+    "d_5cc1e31b3ff3d83ea28b",
     "d_65e87d47bbed462ca924",
     "d_688f28c809dc3463f046",
     "d_719dc82e84eb93a138d9",
@@ -289,6 +296,7 @@
     "job:[\"prevencionista de riesgos malleco\", \"constructora\", [\"angol\"]]",
     "job:[\"prevencionista de riesgos malleco\", \"constructora\", [\"puren\"]]",
     "job:[\"prevencionista de riesgos para aif angol\", \"consultores 2000\", [\"angol\"]]",
+    "job:[\"prevencionista\", \"maestranza\", [\"puren\"]]",
     "job:[\"profesional de programas generales lae angol reemplazo\", \"fundacion tierra de esperanza\", [\"angol\"]]",
     "job:[\"psicologo a 22 horas\", \"trayectos angol\", [\"angol\"]]",
     "job:[\"psicologo a organizacional comuna ercilla\", \"empresa confidencial\", [\"angol\"]]",
@@ -357,6 +365,7 @@
     "source:chiletrabajos:3934484",
     "source:chiletrabajos:3934867",
     "source:chiletrabajos:3934905",
+    "source:chiletrabajos:3935615",
     "source:chiletrabajos:3935812",
     "source:chiletrabajos:3936181",
     "url:https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
@@ -387,6 +396,7 @@
     "url:https://chiletrabajos.cl/trabajo/mecanico-a-soldador-a-de-maquinaria-nacimiento-3923358",
     "url:https://chiletrabajos.cl/trabajo/paramedico-a-traiguen-3892108",
     "url:https://chiletrabajos.cl/trabajo/part-time-para-traiguen-en-la-araucania-3924463",
+    "url:https://chiletrabajos.cl/trabajo/prevencionista-3935615",
     "url:https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
     "url:https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-en-faena-antofagasta-100-terreno-jornada-5x2-3933560",
     "url:https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-malleco-3924497",

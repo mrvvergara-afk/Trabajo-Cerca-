@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261122-da4f2536327eda43e6",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_5cc1e31b3ff3d83ea28b",
+      "cargo": "PREVENCIONISTA",
+      "empresa": "MAESTRANZA",
+      "comunas": [
+        "Purén"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-3935615",
+      "fecha_publicacion": "2026-11-19",
+      "fecha_descubrimiento": "2026-11-22",
+      "tipo_lote": "recuperacion_vigente",
+      "fecha_cierre": "2027-02-02",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación anterior recuperada durante pruebas; no se detectó cierre explícito y la ficha conserva evidencia de postulación."
+    }
+  ]
+}

@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-22T19:56:08+00:00",
+  "generated_at": "2026-11-22T22:28:56+00:00",
   "complete": true,
-  "totalItemsReported": 292,
-  "jobIdentityCount": 288,
+  "totalItemsReported": 293,
+  "jobIdentityCount": 289,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 108,
+  "visibleIn12CommunesCount": 109,
   "outside12CommuneScopeCount": 180,
   "pagesChecked": 12,
-  "fingerprint": "1693f492a7eaaa8879414e17643c044c40d3b5b9effe91285f4c030a79af135e",
+  "fingerprint": "6deb8bf1986d7f9d0d2863f3d55da7b3b281b513646194381c67b84d2bd94eb2",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -958,6 +958,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
       "urlHashSha256": "56d079ed0f37b488c6d6a3d44d0419ac5d8b96848244efa95fadf9dc54104acb"
+    },
+    {
+      "id": "chatgpt_d_5cc1e31b3ff3d83ea28b",
+      "title": "PREVENCIONISTA",
+      "company": "MAESTRANZA",
+      "workCommunes": [
+        "Purén"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-3935615",
+      "urlHashSha256": "5cc1e31b3ff3d83ea28bd48c5ba1cab6ebda828931d2dbec5f2728f0b68957e1"
     },
     {
       "id": "chatgpt_d_65e87d47bbed462ca924",

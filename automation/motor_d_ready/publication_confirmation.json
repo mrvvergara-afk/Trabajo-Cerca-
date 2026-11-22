@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-21T21:14:41.634601+00:00",
+  "checked_at": "2026-11-22T01:26:42.178779+00:00",
   "feed_complete": true,
   "feed_rows": 293,
   "indexed_batches": 30,
@@ -12,7 +12,7 @@
   "semantic_only": 0,
   "not_found": 0,
   "expired_not_expected": 1,
-  "territory_mismatches_count": 2,
+  "territory_mismatches_count": 4,
   "territory_mismatches": [
     {
       "id_fuente": "d_bef43ecfd4d8417f1770",
@@ -34,8 +34,28 @@
         "Purén"
       ],
       "catalog_work_communes": [
-        "Angol"
+        "Collipulli"
       ],
+      "status": "catalog_territory_mismatch"
+    },
+    {
+      "id_fuente": "d_4de1ef999c10ba4947aa",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/lider-prevencion-de-riesgo-y-sistema-integrado-de-gestion-3935812",
+      "catalog_id": "chatgpt_d_4de1ef999c10ba4947aa",
+      "expected_work_communes": [
+        "Purén"
+      ],
+      "catalog_work_communes": [],
+      "status": "catalog_territory_mismatch"
+    },
+    {
+      "id_fuente": "d_65e87d47bbed462ca924",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
+      "catalog_id": "chatgpt_d_65e87d47bbed462ca924",
+      "expected_work_communes": [
+        "Purén"
+      ],
+      "catalog_work_communes": [],
       "status": "catalog_territory_mismatch"
     }
   ],

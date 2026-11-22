@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-22T11:47:23+00:00",
+  "generated_at": "2026-11-22T15:34:35+00:00",
   "complete": true,
   "totalItemsReported": 293,
   "jobIdentityCount": 289,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 109,
   "outside12CommuneScopeCount": 180,
   "pagesChecked": 12,
-  "fingerprint": "8bae129c60ed17c08790ca7302eba2d93af54a0d957d85206fa87277df424239",
+  "fingerprint": "b295822feccd9cd3397950be8416115a3929c0b4bee0b5ced51603941afa6159",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -950,17 +950,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/cajero-a-asistente-integral-temporada-navidad-angol-3915270",
       "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
-    },
-    {
-      "id": "chatgpt_d_4c599ad95a20501aa8c8",
-      "title": "Vendedor/a en terreno para Angol ¡Sin experiencia + Comisiones sin Tope!",
-      "company": "Verisure",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
-      "urlHashSha256": "4c599ad95a20501aa8c89d860922d731f156fd40f760fb296feb84b3308f249a"
     },
     {
       "id": "chatgpt_d_4de1ef999c10ba4947aa",
@@ -2531,6 +2520,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ito-residente-experiencia-obras-conservacion-caminos-los-angeles-3905459",
       "urlHashSha256": "5ba17866f0d970e3241b156ff7e6cf381f2e87ade67c47baec40a5c83a46efc4"
+    },
+    {
+      "id": "free-b1d57e80b4cabfbad4fcbd7d34bd1efa650988cf",
+      "title": "Vendedor/a en terreno para Angol ¡Sin experiencia + Comisiones sin Tope!",
+      "company": "Verisure",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
+      "urlHashSha256": "4c599ad95a20501aa8c89d860922d731f156fd40f760fb296feb84b3308f249a"
     },
     {
       "id": "free-b2695ceb7c312095726e8636d0323bae10638b80",

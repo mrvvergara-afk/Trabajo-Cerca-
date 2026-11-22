@@ -311,13 +311,307 @@
           "reason": "WhatsApp y grupos privados inaccesibles"
         }
       ]
+    },
+    "5": {
+      "timestamp": "2026-11-22T08:46:25-03:00",
+      "planned": 23,
+      "attempted": 23,
+      "accessible": 3,
+      "blocked": 3,
+      "failed": 15,
+      "unsupported": 2,
+      "not_attempted": 0,
+      "source_results": [
+        {
+          "source_id": "chiletrabajos-Angol",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+          "territory": "Angol",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-Collipulli",
+          "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+          "territory": "Collipulli",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "laborum-Ercilla",
+          "url": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
+          "territory": "Ercilla",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "linkedin-Renaico",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+          "territory": "Renaico",
+          "status": "blocked",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "Restricción JS/antibot"
+        },
+        {
+          "source_id": "computrabajo-Mininco",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-mininco",
+          "territory": "Collipulli",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "indeed-Nacimiento",
+          "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+          "territory": "Nacimiento",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-Nacimiento",
+          "url": "https://www.trabajando.cl/trabajo-empleo/nacimiento",
+          "territory": "Nacimiento",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-Negrete",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
+          "territory": "Negrete",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-Mulchén",
+          "url": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+          "territory": "Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "laborum-Los Sauces",
+          "url": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
+          "territory": "Los Sauces",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "linkedin-Purén",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+          "territory": "Purén",
+          "status": "blocked",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "Restricción JS/antibot"
+        },
+        {
+          "source_id": "computrabajo-Traiguén",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-traiguen",
+          "territory": "Traiguén",
+          "status": "blocked",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "Restricción JS/antibot"
+        },
+        {
+          "source_id": "indeed-Lumaco",
+          "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+          "territory": "Lumaco",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "trabajando-Lumaco",
+          "url": "https://www.trabajando.cl/trabajo-empleo/lumaco",
+          "territory": "Lumaco",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "chiletrabajos-Victoria",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+          "territory": "Victoria",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "opcionempleo-secondary-Los Ángeles",
+          "url": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
+          "territory": "solo_ubicacion_en_12_comunas",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "laborum-secondary-Temuco",
+          "url": "https://www.laborum.cl/empleos-busqueda-temuco.html",
+          "territory": "solo_ubicacion_en_12_comunas",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "hospital-angol-enlaces",
+          "url": "https://hospitalangol.cl/enlaces/",
+          "territory": "Angol",
+          "status": "checked_empty",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": null
+        },
+        {
+          "source_id": "omil-nacimiento",
+          "url": "https://www.nacimiento.cl/noticias",
+          "territory": "Nacimiento",
+          "status": "unsupported",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "RSS o contenido dinámico no extraíble"
+        },
+        {
+          "source_id": "omil-ercilla",
+          "url": "https://muniercilla.cl/",
+          "territory": "Ercilla",
+          "status": "checked_empty",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": null
+        },
+        {
+          "source_id": "arauco-empleo",
+          "url": "https://jobs.arauco.com/Chile/search/",
+          "territory": "zona forestal",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "URL no recuperable; no equivale a fuente vacía"
+        },
+        {
+          "source_id": "negrete-feed",
+          "url": "https://www.muninegrete.cl/feed/",
+          "territory": "Negrete",
+          "status": "unsupported",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [],
+          "reason": "RSS o contenido dinámico no extraíble"
+        },
+        {
+          "source_id": "registry-los-angeles-trabaja",
+          "url": "https://www.losangeles.cl/trabaja-con-nosotros/",
+          "territory": "Los Ángeles",
+          "status": "checked_found",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "web_public_reader",
+          "offers_found": [
+            "Auxiliar CESFAM Nuevo Horizonte",
+            "TNS Mantención CESFAM Santa Fe"
+          ],
+          "reason": null
+        }
+      ],
+      "discovery_results": [
+        {
+          "source_id": "millaray-puren-sauces",
+          "name": "Millaray Radio · Purén / Los Sauces",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Sin ficha pública verificable; no se accedió a redes privadas"
+        },
+        {
+          "source_id": "cordialisima-sauces",
+          "name": "Radio Cordialísima · Los Sauces",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Sin ficha pública verificable; no se accedió a redes privadas"
+        },
+        {
+          "source_id": "alfarero-nacimiento",
+          "name": "El Alfarero Radio · Nacimiento",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Sin ficha pública verificable; no se accedió a redes privadas"
+        },
+        {
+          "source_id": "dinastia-mulchen",
+          "name": "Radio Dinastía · Mulchén",
+          "status": "failed",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Sin ficha pública verificable; no se accedió a redes privadas"
+        },
+        {
+          "source_id": "community",
+          "name": "Radio local · páginas comunitarias · WhatsApp · carteles · otra IA",
+          "status": "unsupported",
+          "timestamp": "2026-11-22T08:46:25-03:00",
+          "origin": "public_web_search",
+          "offers_found": [],
+          "reason": "Sin ficha pública verificable; no se accedió a redes privadas"
+        }
+      ]
     }
   },
   "catalog": {
-    "status": "catalog_unavailable",
-    "mirror_generated_at": "2026-11-22T02:02:29Z",
+    "status": "valid_at_check",
+    "mirror_generated_at": "2026-11-22T10:10:29+00:00",
     "jobIdentityCount": 289,
-    "reason": "Mirror stale >120min; API real inaccessible"
+    "pagesChecked": 12,
+    "complete": true,
+    "checked_at": "2026-11-22T08:46:25-03:00"
   },
   "pending": [
     {
@@ -341,9 +635,10 @@
       "cargo": "Médico General Policlínico Salud Mental Adulto",
       "empresa": "Hospital Traiguén",
       "comuna": "Traiguén",
-      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/medico-general-policlinico-de-salud-mental-adulto/",
       "fecha_publicacion": "2026-11-12",
-      "reason": "Ficha individual pendiente"
+      "reason": "Plazo oficial vencido el 2026-11-19; no importar como vigente",
+      "fecha_cierre": "2026-11-19"
     }
   ],
   "batches_created": 0,

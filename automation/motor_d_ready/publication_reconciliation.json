@@ -1,16 +1,9 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-22",
-  "checked_at": "2026-11-22T16:43:41.491678+00:00",
-  "feed_complete": true,
-  "feed_rows": 293,
-  "state": "needs_territory_repair",
-  "territory_mismatches_count": 4,
+  "state": "clear",
   "historical_missing_from_catalog": 0,
   "released_from_quarantine": 0,
   "released_items": [],
-  "items": [],
-  "resolved_published_items": [],
-  "confirmation_file": "publication_confirmation.json",
-  "semantic_only_requires_receipt": []
+  "items": []
 }

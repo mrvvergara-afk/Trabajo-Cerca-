@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "scan_date": "2026-11-21T19:10:41.126475-03:00",
-  "checked_at": "2026-11-21T19:11:10.775181-03:00",
-  "run_local_date": "2026-11-21",
-  "state": "blocked_catalog_incomplete",
-  "eligible_before_catalog": 5,
-  "public_catalog_records_checked": 0,
-  "already_published_skipped": 0,
+  "scan_date": "2026-11-22T01:59:32.991983-03:00",
+  "checked_at": "2026-11-22T02:00:14.818813-03:00",
+  "run_local_date": "2026-11-22",
+  "state": "completed",
+  "eligible_before_catalog": 36,
+  "public_catalog_records_checked": 293,
+  "already_published_skipped": 36,
   "ready_batch_offers_staged": 0,
   "historical_missing_from_catalog": 0,
-  "feed_error": "HTTPError",
-  "feed_complete": false
+  "feed_error": null,
+  "feed_complete": true
 }

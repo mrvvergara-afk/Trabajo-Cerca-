@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-22T01:26:42.178779+00:00",
+  "checked_at": "2026-11-22T08:27:55.131018+00:00",
   "feed_complete": true,
   "feed_rows": 293,
   "indexed_batches": 30,

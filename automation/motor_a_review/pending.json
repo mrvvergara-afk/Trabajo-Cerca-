@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-21T23:27:01.019343+00:00",
+  "updated_at": "2026-11-22T07:01:29.595720+00:00",
   "items_total": 6,
   "automatically_published": 0,
   "items": [
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-21T18:07:10.875763+00:00",
+      "last_checked_at": "2026-11-22T07:01:29.595720+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -22,6 +22,46 @@
       "catalog_territory_mismatch": true,
       "catalog_work_communes": [
         "Ercilla"
+      ]
+    },
+    {
+      "id": "a_68755a767511789f2d4e",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Purén",
+      "title_hint": "Prevencionista de Riesgos para AIF - Angol - Angol | Chiletrabajos",
+      "date_source_hint": null,
+      "deadline_hint": null,
+      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-22T07:01:29.595720+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
+    },
+    {
+      "id": "a_d850aaa7c83bdfcd8f83",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Traiguén",
+      "title_hint": "Vendedor Terreno - ANGOL - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-13 16:23:21",
+      "deadline_hint": "2027-01-27T16:23:21",
+      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-22T07:01:29.595720+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
       ]
     },
     {
@@ -61,7 +101,7 @@
       "review_reason": "explicit_worksite_in_original_description",
       "catalog_territory_mismatch": true,
       "catalog_work_communes": [
-        "Angol"
+        "Collipulli"
       ]
     },
     {
@@ -83,55 +123,15 @@
       "catalog_work_communes": [
         "Angol"
       ]
-    },
-    {
-      "id": "a_68755a767511789f2d4e",
-      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Purén",
-      "title_hint": "Prevencionista de Riesgos para AIF - Angol - Angol | Chiletrabajos",
-      "date_source_hint": null,
-      "deadline_hint": null,
-      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
-      "last_checked_at": "2026-11-20T21:15:33.025813+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
-    },
-    {
-      "id": "a_d850aaa7c83bdfcd8f83",
-      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Vendedor Terreno - ANGOL - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-13 16:23:21",
-      "deadline_hint": "2027-01-27T16:23:21",
-      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
-      "last_checked_at": "2026-11-20T21:15:33.025813+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
     }
   ],
   "metrics": {
-    "added": 0,
-    "updated": 0,
+    "added": 15,
+    "updated": 3,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 1,
+    "published_reconciled": 15,
     "territory_mismatch": 6
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-22T01:59:32.991983-03:00",
+  "last_run": "2026-11-22T04:01:42.093167-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -9041,6 +9041,48 @@
     "ed85b04dade2729f6615": {
       "first_seen": "2026-11-22T01:59:32.991983-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivos-back-office-cliente-rubro-retail-la-florida-3081073.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ecc5de35b3f52fa64169": {
+      "first_seen": "2026-11-22T04:01:42.093167-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnicos-senior-llenado-turnos-rotativos-planta-vespucio-pudahuel-pudahuel-3081089.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2ac8ece12c8a319dd74c": {
+      "first_seen": "2026-11-22T04:01:42.093167-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-senior-linea-turnos-rotativos-planta-vespucio-pudahuel-pudahuel-3081088.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "14b2634f18091ec90533": {
+      "first_seen": "2026-11-22T04:01:42.093167-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-senior-etiquetado-turnos-rotativos-planta-vespucio-pudahuel-pudahuel-3081087.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3634e5c39248ed7ef8c5": {
+      "first_seen": "2026-11-22T04:01:42.093167-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-senior-embalado-turnos-rotativos-planta-vespucio-pudahuel-pudahuel-3081086.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "77458b9073103c6ee785": {
+      "first_seen": "2026-11-22T04:01:42.093167-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-senior-depaletizado-automatico-turnos-rotativos-planta-vespucio-pudahuel-pudahuel-3081085.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3cb52c504f34b37a0e9d": {
+      "first_seen": "2026-11-22T04:01:42.093167-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-logisticos-lunes-a-viernes-3081084.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "451fc91c634727da83e0": {
+      "first_seen": "2026-11-22T04:01:42.093167-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/prevencionista-de-riesgos-pudahuel-3081083.html",
       "source": "Inventario D04",
       "commune": null
     }

@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-21T20:12:56+00:00",
+  "generated_at": "2026-11-22T00:20:18+00:00",
   "complete": true,
   "totalItemsReported": 293,
   "jobIdentityCount": 289,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 111,
-  "outside12CommuneScopeCount": 178,
+  "visibleIn12CommunesCount": 110,
+  "outside12CommuneScopeCount": 179,
   "pagesChecked": 12,
-  "fingerprint": "db9b50aa7b4e3aefde5116894d2cdfcc4e8d8a2a5b9e6bd7c5e8301f45dd5b3f",
+  "fingerprint": "7ffef4b41c6dc0d828af9ddb0459e84d60e3856adc7fa24f5a5be7a2059cdb0d",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -988,10 +988,8 @@
       "id": "chatgpt_d_65e87d47bbed462ca924",
       "title": "Prevencionista de Riesgos AIF - Chañaral",
       "company": "Consultores 2000",
-      "workCommunes": [
-        "Purén"
-      ],
-      "visibleIn12Communes": true,
+      "workCommunes": [],
+      "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
       "urlHashSha256": "65e87d47bbed462ca924c148946aac8c88e263e5bf1a4474a83f252e50adbfcf"
     },

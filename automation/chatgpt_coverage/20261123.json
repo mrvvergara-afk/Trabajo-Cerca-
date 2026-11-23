@@ -633,7 +633,7 @@
     "not_attempted": 0,
     "new_batches": 0,
     "published_confirmed": 0,
-    "notes": "Aggregate wave 4 and 5. Readable=7+3. Other status subtotals based on wave4 original summary and wave5 statuses; see individual entries.",
+    "notes": "Counts recomputed from individual source statuses; attempted does not imply readable. Wave 5: 23 attempts, 3 readable (2 checked_empty, 1 checked_found), 3 blocked, 16 failed, 1 unsupported.",
     "checked_found": 4,
     "checked_empty": 4
   },

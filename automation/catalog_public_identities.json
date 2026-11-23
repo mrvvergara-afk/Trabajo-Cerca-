@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-22T22:28:56+00:00",
+  "generated_at": "2026-11-23T03:34:35+00:00",
   "complete": true,
   "totalItemsReported": 293,
   "jobIdentityCount": 289,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 109,
   "outside12CommuneScopeCount": 180,
   "pagesChecked": 12,
-  "fingerprint": "6deb8bf1986d7f9d0d2863f3d55da7b3b281b513646194381c67b84d2bd94eb2",
+  "fingerprint": "40aa701850e70c429d261f743dbeb500dfa13ba997115a17078c831a7d721062",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -964,7 +964,7 @@
       "title": "PREVENCIONISTA",
       "company": "MAESTRANZA",
       "workCommunes": [
-        "Purén"
+        "Collipulli"
       ],
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-3935615",

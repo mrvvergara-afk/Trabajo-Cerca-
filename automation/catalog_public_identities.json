@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-23T03:34:35+00:00",
+  "generated_at": "2026-11-23T07:17:57+00:00",
   "complete": true,
   "totalItemsReported": 293,
   "jobIdentityCount": 289,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 109,
   "outside12CommuneScopeCount": 180,
   "pagesChecked": 12,
-  "fingerprint": "40aa701850e70c429d261f743dbeb500dfa13ba997115a17078c831a7d721062",
+  "fingerprint": "53810a4465fef61058392bbf5e71e6644f3a18fda5f84dc3ac49e7667cd13c39",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1397,17 +1397,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/jefe-a-de-sucursal-los-angeles-3899799",
       "urlHashSha256": "8dded086ae3908da6de9f31b0e0bf3a71287e6d499ca4b17d8e4eed5a65e1db9"
-    },
-    {
-      "id": "free-149bb65066307aa45733b5f251ca3055f042eeeb",
-      "title": "VVendedor en Terreno - Angol Victoria Traiguén",
-      "company": "Manpowergroup",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
-      "urlHashSha256": "688f28c809dc3463f046fab29977d6012c4887f1455555d8c72f105714262867"
     },
     {
       "id": "free-14e1df80032c1d933c364ea8439ec7f9c24b73eb",
@@ -3179,6 +3168,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/mercaderista-temuco-3926574",
       "urlHashSha256": "d1e4baee4379f228b815b7fe391fae66f15f94386880346bf9c1463892c36b4f"
+    },
+    {
+      "id": "tcq_149bb65066307aa45733b5",
+      "title": "VVendedor en Terreno - Angol Victoria Traiguén",
+      "company": "Manpowergroup",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
+      "urlHashSha256": "688f28c809dc3463f046fab29977d6012c4887f1455555d8c72f105714262867"
     },
     {
       "id": "tcq_e2265a52410f086a0dcb71",

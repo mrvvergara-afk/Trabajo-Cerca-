@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261123-41e88159a997af13d6",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_62e23c5d9bc15004ccf2",
+      "cargo": "Ayudante Obra Civil",
+      "empresa": "INMEL CHILE SPA",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
+      "fecha_publicacion": "2026-11-23",
+      "fecha_descubrimiento": "2026-11-23",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-06",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    },
+    {
+      "id_fuente": "d_24aa2b93041da064e5d2",
+      "cargo": "Analista Tecnico",
+      "empresa": "INMEL CHILE SPA",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254",
+      "fecha_publicacion": "2026-11-23",
+      "fecha_descubrimiento": "2026-11-23",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-06",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    },
+    {
+      "id_fuente": "d_bf620420ab7734288092",
+      "cargo": "Supervisor Obra Civil",
+      "empresa": "Inmel Chile Spa",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
+      "fecha_publicacion": "2026-11-22",
+      "fecha_descubrimiento": "2026-11-23",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-05",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

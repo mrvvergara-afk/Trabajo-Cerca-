@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-23T10:04:25.964904-03:00",
+  "last_run": "2026-11-23T18:17:32.233967-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -9588,6 +9588,180 @@
       "first_seen": "2026-11-23T10:04:25.964904-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/auxiliar-de-aseo-lenga-6x1-580000-3081246.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "9cfa84f680e3d38caf5a": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-relator-para-curso-admin-de-establecimientos-gastronomicos-3937340",
+      "source": "Chiletrabajos · Angol",
+      "commune": null
+    },
+    "46c289f2ccee50343e35": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ven-a-desempenarte-desde-nuestras-instalaciones-ejecutivos-de-venta-de-seguros-3081889.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0584513c114deac1fa2f": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/las-mas-exitosas-campanas-de-salud-ejecutivos-de-venta-de-seguros-3081888.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2d94147d3076d35da2f0": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivos-de-seguros-cross-atractivas-comisiones-3081887.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "07a53045fc4d3e30b836": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/coach-de-ventas-de-seguros-para-call-center-ingreso-inmediato-3081886.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c0d0956f2cf287d5e179": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/promotor-a-vendedor-a-campana-edgewell-chillan-36000-liquidos-x-dia-3081885.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "137f1e73f55526161919": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-vendedor-a-campana-edgewell-puente-alto-36000-liquidos-x-dia-3081884.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7beec0193b833f0c9ae5": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/promotor-a-vendedor-a-campana-edgewell-los-andes-36000-liquidos-x-dia-3081883.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4d70d1527e0788e2a235": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-limpieza-industrial-turnos-rotativos-am-tarde-y-noche-6x1-quilicura-lampa-3081882.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a624404ed195aab44d6e": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/supervisor-de-ventas-tienda-quilpue-3081881.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e064913d500dffa366f9": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-ventas-full-time-telecomunicaciones-temuco-3081880.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "52e592c8a23caa2674b1": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/vendedor-trainee-tarjetas-de-credito-full-time-los-ngeles-3081879.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9ccca5d8240f7f20c51e": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-ventas-full-time-telecomunicaciones-mall-plaza-el-trebol-3081878.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "220e8672b8df29761743": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-ventas-full-time-telecomunicaciones-melipilla-3081877.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "87475158d43ecdb62561": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/asistente-de-tienda-pronto-copec-chimbarongo-part-time-3081876.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ae60ba46d079288d3a16": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-vias-full-time-aeropuerto-amb-pudahuel-3081875.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4bc457c62cea2d5ff6ce": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/asistente-de-parking-full-time-mall-plaza-iquique-iquique-3081874.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "771ee1930300d43fb8af": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-parking-pt-fds-aeropuerto-amb-pudahuel-3081873.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0c18bbc53d8dad0c028b": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/asistente-de-tienda-pronto-copec-chimbarongo-full-time-3081872.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3af7def12a721a816bb2": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/developer-integraciones-senior-zendesk-excluyente-modalidad-remota-3081871.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4748e52cc968c9944575": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-cocina-full-time-turnos-rotativos-5x2-am-pm-y-noche-quilicura-lampa-3081870.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cd79367592471c8c7bd4": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/asesor-sst-zona-temuco-nueva-imperial-3936778",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": null
+    },
+    "0dbbfc3d6d5f71206794": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/trabajador-establecimiento-silvicola-nacimiento-3933810",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": null
+    },
+    "5fd1fcdf2d2b93cdddce": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://portal.chiletrabajos.cl/empresa/serfonac/trabajo/trabajador-establecimiento-silvicola-canete-3933822",
+      "source": "SERFONAC · ofertas del empleador",
+      "commune": null
+    },
+    "59336d67ccc4d18a5021": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "b5ba3957f4525c1661b0": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "402b80fa0d19da47c1a8": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
+      "source": "Chiletrabajos · Victoria",
+      "commune": "Victoria"
+    },
+    "d994bae1e616f991161d": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-Mantenedora-Vivero-Horcones-BI-4360000/1452924900/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "bc13c2e6491a03122fde": {
+      "first_seen": "2026-11-23T18:17:32.233967-03:00",
+      "url": "https://traiguencity.cl/inspectores-municipales-colaboran-con-carabineros-en-detencion-de-conductor-en-estado-de-ebriedad/",
+      "source": "Inventario P01",
       "commune": null
     }
   }

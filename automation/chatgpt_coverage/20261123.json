@@ -18,9 +18,9 @@
     "Negrete",
     "Nacimiento"
   ],
-  "run_at": "2026-11-23T03:33:18Z",
-  "scan_wave": 4,
-  "execution_note": "Early pre-scheduled scan; not evidence that the scheduled 01:00 run executed",
+  "run_at": "2026-11-23T07:31:32Z",
+  "scan_wave": 5,
+  "execution_note": "Early scan of wave 5 before 05:00 Chile; not proof of scheduled execution. 23 endpoints attempted, 3 readable; blocked/failed/unsupported are not successful reads.",
   "sources": [
     {
       "source_id": "opcionempleo-Angol",
@@ -291,6 +291,262 @@
       "origin": "public_web_reader",
       "offers_found": [],
       "detail": "No current eligible public individual listing in readable page"
+    },
+    {
+      "source_id": "chiletrabajos-Angol",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Angol",
+      "territory": "Angol",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "opcionempleo-Collipulli",
+      "url": "https://www.opcionempleo.cl/empleo-en-collipulli.html",
+      "territory": "Collipulli",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "laborum-Ercilla",
+      "url": "https://www.laborum.cl/empleos-busqueda-ercilla.html",
+      "territory": "Ercilla",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "linkedin-Renaico",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "territory": "Renaico",
+      "scan_wave": 5,
+      "status": "blocked",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access control / JavaScript verification; not read"
+    },
+    {
+      "source_id": "computrabajo-Mininco",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-mininco",
+      "territory": "Collipulli",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "indeed-Nacimiento",
+      "url": "https://cl.indeed.com/jobs?q=&l=Nacimiento&fromage=45",
+      "territory": "Nacimiento",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "trabajando-Nacimiento",
+      "url": "https://www.trabajando.cl/trabajo-empleo/nacimiento",
+      "territory": "Nacimiento",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "chiletrabajos-Negrete",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Negrete",
+      "territory": "Negrete",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "opcionempleo-Mulchén",
+      "url": "https://www.opcionempleo.cl/empleo-en-mulchen.html",
+      "territory": "Mulchén",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "laborum-Los Sauces",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-sauces.html",
+      "territory": "Los Sauces",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "linkedin-Purén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "territory": "Purén",
+      "scan_wave": 5,
+      "status": "blocked",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access control / JavaScript verification; not read"
+    },
+    {
+      "source_id": "computrabajo-Traiguén",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-traiguen",
+      "territory": "Traiguén",
+      "scan_wave": 5,
+      "status": "blocked",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access control / JavaScript verification; not read"
+    },
+    {
+      "source_id": "indeed-Lumaco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Lumaco&fromage=45",
+      "territory": "Lumaco",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "trabajando-Lumaco",
+      "url": "https://www.trabajando.cl/trabajo-empleo/lumaco",
+      "territory": "Lumaco",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "chiletrabajos-Victoria",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Victoria",
+      "territory": "Victoria",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "opcionempleo-secondary-Los Ángeles",
+      "url": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
+      "territory": "solo_ubicacion_en_12_comunas",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "laborum-secondary-Temuco",
+      "url": "https://www.laborum.cl/empleos-busqueda-temuco.html",
+      "territory": "solo_ubicacion_en_12_comunas",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "hospital-angol-enlaces",
+      "url": "https://hospitalangol.cl/enlaces/",
+      "territory": "Angol",
+      "scan_wave": 5,
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Page accessible, no individual active vacancy on this landing page"
+    },
+    {
+      "source_id": "omil-nacimiento",
+      "url": "https://www.nacimiento.cl/noticias",
+      "territory": "Nacimiento",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "omil-ercilla",
+      "url": "https://muniercilla.cl/",
+      "territory": "Ercilla",
+      "scan_wave": 5,
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Municipal landing page accessible; vacancies loaded dynamically, none verified"
+    },
+    {
+      "source_id": "arauco-empleo",
+      "url": "https://jobs.arauco.com/Chile/search/",
+      "territory": "zona forestal",
+      "scan_wave": 5,
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader failed or only shell returned; not an empty source"
+    },
+    {
+      "source_id": "negrete-feed",
+      "url": "https://www.muninegrete.cl/feed/",
+      "territory": "Negrete",
+      "scan_wave": 5,
+      "status": "unsupported",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "RSS application/rss+xml unsupported by reader"
+    },
+    {
+      "source_id": "registry-los-angeles-trabaja",
+      "url": "https://www.losangeles.cl/trabaja-con-nosotros/",
+      "territory": "Los Ángeles",
+      "scan_wave": 5,
+      "status": "checked_found",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_reader",
+      "offers_found": [
+        "Auxiliar de Servicio CESFAM Nuevo Horizonte (Los Ángeles, cierre 2026-11-25)",
+        "TNS Mantención Industrial CESFAM Santa Fe (Los Ángeles, cierre 2026-11-23)"
+      ],
+      "detail": "Two dated calls, complementary city only; not confirmed as new against catalog"
     }
   ],
   "discovery_targets": [
@@ -328,32 +584,68 @@
     },
     {
       "source_id": "millaray-puren-sauces",
-      "name": "Millaray Radio · Purén / Los Sauces",
-      "status": "checked_empty",
-      "checked_at": "2026-11-23T03:33:18Z",
-      "origin": "public_indexed_web_search",
-      "detail": "Search by station name and employment terms; no verifiable current individual listing identified; private social content not accessed"
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_search",
+      "offers_found": [],
+      "detail": "Public indexed search did not establish a currently open individual job; private social/WhatsApp content not accessed"
+    },
+    {
+      "source_id": "cordialisima-sauces",
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_search",
+      "offers_found": [],
+      "detail": "Public indexed search did not establish a currently open individual job; private social/WhatsApp content not accessed"
+    },
+    {
+      "source_id": "alfarero-nacimiento",
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_search",
+      "offers_found": [],
+      "detail": "Public indexed search did not establish a currently open individual job; private social/WhatsApp content not accessed"
+    },
+    {
+      "source_id": "dinastia-mulchen",
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_search",
+      "offers_found": [],
+      "detail": "Public indexed search did not establish a currently open individual job; private social/WhatsApp content not accessed"
+    },
+    {
+      "source_id": "community",
+      "status": "failed",
+      "checked_at": "2026-11-23T07:31:32Z",
+      "origin": "public_web_search",
+      "offers_found": [],
+      "detail": "Public indexed search did not establish a currently open individual job; private social/WhatsApp content not accessed"
     }
   ],
   "summary": {
-    "planned": 24,
-    "attempted": 24,
-    "readable": 7,
-    "checked_found": 3,
-    "checked_empty": 2,
-    "blocked": 5,
-    "failed": 12,
-    "unsupported": 2,
+    "planned": 47,
+    "attempted": 47,
+    "readable": 8,
+    "blocked": 8,
+    "failed": 28,
+    "unsupported": 3,
     "not_attempted": 0,
     "new_batches": 0,
-    "published_confirmed": 0
+    "published_confirmed": 0,
+    "notes": "Aggregate wave 4 and 5. Readable=7+3. Other status subtotals based on wave4 original summary and wave5 statuses; see individual entries.",
+    "checked_found": 4,
+    "checked_empty": 4
   },
   "catalog": {
-    "status": "catalog_unavailable",
-    "mirror_generated_at": "2026-11-22T22:28:56Z",
-    "mirror_job_count": 289,
-    "mirror_complete": true,
-    "reason": "Mirror older than 120 minutes; real API unreadable via public reader"
+    "generated_at": "2026-11-23T07:17:57+00:00",
+    "complete": true,
+    "jobIdentityCount": 289,
+    "items_length": 289,
+    "pagesChecked": 12,
+    "valid": true,
+    "source": "GitHub mirror",
+    "fresh_at_check": true
   },
   "incidents": [
     {
@@ -363,7 +655,11 @@
       "recorded_commune": "Purén",
       "correct_commune": "Collipulli",
       "sub_locality": "Mininco",
-      "action": "correct existing record, never duplicate"
+      "action": "correct existing record, never duplicate",
+      "status": "resolved_in_current_mirror",
+      "recorded_commune_now": "Collipulli",
+      "visibleIn12Communes": true,
+      "checked_at": "2026-11-23T07:31:32Z"
     },
     {
       "type": "existing",

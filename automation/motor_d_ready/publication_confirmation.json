@@ -2,15 +2,15 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-23T11:36:22.422668+00:00",
+  "checked_at": "2026-11-23T22:56:53.745942+00:00",
   "feed_complete": true,
   "feed_rows": 293,
-  "indexed_batches": 31,
+  "indexed_batches": 32,
   "quarantined_batches": 2,
-  "distinct_nonquarantined_offers": 62,
+  "distinct_nonquarantined_offers": 65,
   "source_confirmed": 61,
   "semantic_only": 0,
-  "not_found": 0,
+  "not_found": 3,
   "expired_not_expected": 1,
   "territory_mismatches_count": 5,
   "territory_mismatches": [
@@ -72,12 +72,12 @@
     }
   ],
   "latest_batch": {
-    "batch_id": "motor-d-20261122-da4f2536327eda43e6",
+    "batch_id": "motor-d-20261123-41e88159a997af13d6",
     "historically_quarantined": false,
-    "offer_count": 1,
-    "source_confirmed": 1,
+    "offer_count": 3,
+    "source_confirmed": 0,
     "semantic_only": 0,
-    "not_found": 0,
+    "not_found": 3,
     "expired_not_expected": 0
   },
   "batches": [
@@ -359,9 +359,37 @@
       "semantic_only": 0,
       "not_found": 0,
       "expired_not_expected": 0
+    },
+    {
+      "batch_id": "motor-d-20261123-41e88159a997af13d6",
+      "historically_quarantined": false,
+      "offer_count": 3,
+      "source_confirmed": 0,
+      "semantic_only": 0,
+      "not_found": 3,
+      "expired_not_expected": 0
     }
   ],
-  "unresolved_active_batches": [],
+  "unresolved_active_batches": [
+    {
+      "id_fuente": "d_62e23c5d9bc15004ccf2",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
+      "batch_id": "motor-d-20261123-41e88159a997af13d6",
+      "status": "not_found_in_complete_feed"
+    },
+    {
+      "id_fuente": "d_24aa2b93041da064e5d2",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254",
+      "batch_id": "motor-d-20261123-41e88159a997af13d6",
+      "status": "not_found_in_complete_feed"
+    },
+    {
+      "id_fuente": "d_bf620420ab7734288092",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
+      "batch_id": "motor-d-20261123-41e88159a997af13d6",
+      "status": "not_found_in_complete_feed"
+    }
+  ],
   "previously_flagged_resolved": 0,
   "previously_flagged_still_pending": 0,
   "prior_pending_resolution": []

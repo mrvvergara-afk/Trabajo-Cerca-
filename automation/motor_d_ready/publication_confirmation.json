@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-23T02:55:37.231740+00:00",
+  "checked_at": "2026-11-23T11:36:22.422668+00:00",
   "feed_complete": true,
   "feed_rows": 293,
   "indexed_batches": 31,
@@ -12,7 +12,7 @@
   "semantic_only": 0,
   "not_found": 0,
   "expired_not_expected": 1,
-  "territory_mismatches_count": 4,
+  "territory_mismatches_count": 5,
   "territory_mismatches": [
     {
       "id_fuente": "d_bef43ecfd4d8417f1770",
@@ -56,6 +56,18 @@
         "Purén"
       ],
       "catalog_work_communes": [],
+      "status": "catalog_territory_mismatch"
+    },
+    {
+      "id_fuente": "d_5cc1e31b3ff3d83ea28b",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-3935615",
+      "catalog_id": "chatgpt_d_5cc1e31b3ff3d83ea28b",
+      "expected_work_communes": [
+        "Purén"
+      ],
+      "catalog_work_communes": [
+        "Collipulli"
+      ],
       "status": "catalog_territory_mismatch"
     }
   ],

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-22",
-  "checked_at": "2026-11-23T02:55:37.231740+00:00",
+  "checked_at": "2026-11-23T11:36:22.422668+00:00",
   "feed_complete": true,
   "feed_rows": 293,
   "state": "needs_territory_repair",
-  "territory_mismatches_count": 4,
+  "territory_mismatches_count": 5,
   "historical_missing_from_catalog": 0,
   "released_from_quarantine": 0,
   "released_items": [],

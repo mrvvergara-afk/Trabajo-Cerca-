@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-22T19:27:51.104767-03:00",
+  "last_run": "2026-11-22T23:55:01.914014-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -9367,6 +9367,108 @@
       "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-3935615",
       "source": "Motor A · ficha original a verificar",
       "commune": "Purén"
+    },
+    "9633da66116ce4d6736e": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/bodeguero-6x1-renta-liquida-677000-residencia-antofagasta-3081212.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8b9897a05849dc84c1ea": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practicante-psicologia-organizacional-pudahuel-presencial-3081211.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c0d219c0b9bcb46be25f": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practicante-para-capacitacion-pudahuel-presencial-3081210.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c8cfb13ca2a5a5052461": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practicante-para-desarrollo-organizacional-huechuraba-presencial-3081209.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5d09f8d43aa78a91f498": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/alumno-a-en-practica-para-bodega-presencial-administrativo-3081208.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3c5e4a70384d4742f146": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-bodega-san-bernardo-black-friday-part-time-de-semana-3081207.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ef7f26fcce3a7eeb5cdb": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/coordinador-de-proyectos-santiago-3081206.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2613bd29c9fd1d85ab05": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-full-time-renta-aproximada-639000-50-vacantes-pudahuel-3081205.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fc5b7f09fbbb119b8ebc": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/qa-urgente-aemobileadaptativechromium-1795398608533-3081204.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f0c0c7541154f1d340b0": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/gestor-de-permisos-region-metropolitana-3081203.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9e73bc3fcf1de8952ee7": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/gestor-de-permisos-concepcion-3081202.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "63e21462366b4cf99c73": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/transportador-clinico-camillero-para-clinica-en-estacion-central-turno-full-time-576000-liq-3081201.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "34c9f740af20d193ff43": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-limpieza-para-hospital-en-estacion-central-en-turno-pm-517000-liquido-colacion-3081200.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6c30f426ced2767db828": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/promotora-de-perfumeria-30000-liquidos-campana-navidad-talcahuano-3081199.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f35d7582057fd4939b41": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/auxiliar-dietetica-2x2-rotativo-renta-liquida-656000-residencia-antofagasta-3081198.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2460b6e35a92f1b28c7a": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativo-de-recursos-humanos-presencial-3081197.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b17d0c75eb92a75bdc08": {
+      "first_seen": "2026-11-22T23:55:01.914014-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-marketing-3081196.html",
+      "source": "Inventario D04",
+      "commune": null
     }
   }
 }

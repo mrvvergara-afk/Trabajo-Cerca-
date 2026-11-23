@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-22T23:55:01.914014-03:00",
+  "last_run": "2026-11-23T10:04:25.964904-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -9467,6 +9467,126 @@
     "b17d0c75eb92a75bdc08": {
       "first_seen": "2026-11-22T23:55:01.914014-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-marketing-3081196.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fdc3fe7c21979a6f27d2": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/supervisor-de-operaciones-telecomunicaciones-talca-3081265.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fe44c9b156364b7a496d": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/consultor-pmo-en-rancagua-3081264.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e40aed4102fee4c1e790": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-ti-3081263.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8499fdd572a24d7ab80b": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/inspector-de-camiones-iquique-3081262.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ff0b0772195a4b207211": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/dibujante-estructural-3081261.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2b4368ae451cda25b292": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-limpieza-turno-noche-21-00-pm-a-06-00-am-5x2-dia-libre-rotativo-comuna-vitacura-3081260.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d6a0168707cd0b2bb6aa": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-limpieza-turno-manana-07-00-a-15-00-hrs-6x1-dia-libre-rotativo-comuna-vitacura-3081259.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9cb815f40245678c076d": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-de-seguridad-para-hotel-5-estrellas-ubicado-en-comuna-de-vitacura-4x4-rotativo-3081258.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5ec6fb5bef9355db6442": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/vendedor-de-retail-tiendas-sabado-y-domingo-rotativo-manana-y-tarde-3081257.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "decdecf6f2f6312a9254": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedores-nocturnos-en-padre-hurtado-turnos-contiuos-turnos-continuos-3081256.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fa50c4f03dbd943075ef": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-operador-de-maquinista-en-lampa-3081255.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "11986e53ecf8ecb62def": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/inspector-a-de-camiones-iquique-3081254.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fa23b86cf70641d3d88a": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/vendedora-de-retail-tiendas-sabado-y-domingo-rotativo-manana-y-tarde-3081253.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5c74e7c68a9054a6b64d": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/kam-senior-canal-industrial-b2b-alimentos-3081252.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "be872767f1a2ac74bbd6": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/alumna-en-practica-psicologa-laboral-maipu-3081251.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0b454c5756e2c5017d1c": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/promotor-a-ventas-full-time-3081250.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e222c6d0f9c6feb3fc2e": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operadora-multifuncional-de-tienda-lunes-a-sabado-rotativo-manana-y-tarde-3081249.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b7c742dd4bb4bdf3ddf8": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/coordinador-a-de-contenido-corporativo-melipilla-3081248.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d72aff5fce3350acd238": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-de-seguridad-en-maipu-3081247.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "092b7bf1bc09237e9ba5": {
+      "first_seen": "2026-11-23T10:04:25.964904-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/auxiliar-de-aseo-lenga-6x1-580000-3081246.html",
       "source": "Inventario D04",
       "commune": null
     }

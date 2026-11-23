@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-22T21:55:19.350123+00:00",
+  "updated_at": "2026-11-23T02:54:47.388031+00:00",
   "items_total": 7,
   "automatically_published": 0,
   "items": [
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-22T21:55:19.350123+00:00",
+      "last_checked_at": "2026-11-23T02:54:47.388031+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -33,7 +33,7 @@
       "date_source_hint": "2026-11-18 17:27:54",
       "deadline_hint": "2027-02-01T17:27:54",
       "first_discovered_at": "2026-11-20T03:30:27.014799+00:00",
-      "last_checked_at": "2026-11-22T21:55:19.350123+00:00",
+      "last_checked_at": "2026-11-23T02:54:47.388031+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -45,15 +45,15 @@
       ]
     },
     {
-      "id": "a_e84b1a85c584ecf1f1c0",
-      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-3935615",
+      "id": "a_855ec401c9cfb3c760e4",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
       "source": "Motor A Chiletrabajos",
       "work_commune": "Purén",
-      "title_hint": "PREVENCIONISTA - Los Ángeles | Chiletrabajos",
-      "date_source_hint": "2026-11-19 17:18:30",
-      "deadline_hint": "2027-02-02T17:18:30",
-      "first_discovered_at": "2026-11-22T21:55:19.350123+00:00",
-      "last_checked_at": "2026-11-22T21:55:19.350123+00:00",
+      "title_hint": "Prevencionista de Riesgos AIF - Chañaral - Chañaral | Chiletrabajos",
+      "date_source_hint": null,
+      "deadline_hint": null,
+      "first_discovered_at": "2026-11-23T02:54:47.388031+00:00",
+      "last_checked_at": "2026-11-23T02:54:47.388031+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -142,7 +142,7 @@
     }
   ],
   "metrics": {
-    "added": 13,
+    "added": 12,
     "updated": 2,
     "closed": 0,
     "invalid": 0,

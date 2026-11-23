@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-23T02:54:47.388031+00:00",
+  "updated_at": "2026-11-23T13:04:10.441416+00:00",
   "items_total": 7,
   "automatically_published": 0,
   "items": [
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-23T02:54:47.388031+00:00",
+      "last_checked_at": "2026-11-23T13:04:10.441416+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -22,6 +22,66 @@
       "catalog_territory_mismatch": true,
       "catalog_work_communes": [
         "Ercilla"
+      ]
+    },
+    {
+      "id": "a_1843a3809a023ee68321",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Traiguén",
+      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-06 14:20:34",
+      "deadline_hint": "2027-01-20T14:20:34",
+      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
+      "last_checked_at": "2026-11-23T13:04:10.441416+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
+    },
+    {
+      "id": "a_68755a767511789f2d4e",
+      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Purén",
+      "title_hint": "Prevencionista de Riesgos para AIF - Angol - Angol | Chiletrabajos",
+      "date_source_hint": null,
+      "deadline_hint": null,
+      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-23T13:04:10.441416+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
+    },
+    {
+      "id": "a_d850aaa7c83bdfcd8f83",
+      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Traiguén",
+      "title_hint": "Vendedor Terreno - ANGOL - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-13 16:23:21",
+      "deadline_hint": "2027-01-27T16:23:21",
+      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
+      "last_checked_at": "2026-11-23T13:04:10.441416+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
       ]
     },
     {
@@ -61,26 +121,6 @@
       "review_reason": "explicit_worksite_in_original_description"
     },
     {
-      "id": "a_1843a3809a023ee68321",
-      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-06 14:20:34",
-      "deadline_hint": "2027-01-20T14:20:34",
-      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
-      "last_checked_at": "2026-11-22T15:28:22.390447+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
-    },
-    {
       "id": "a_0db736d40ce9ba138aa4",
       "url": "https://www.chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
       "source": "Motor A Chiletrabajos",
@@ -99,55 +139,15 @@
       "catalog_work_communes": [
         "Angol"
       ]
-    },
-    {
-      "id": "a_68755a767511789f2d4e",
-      "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-para-aif-angol-3915742",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Purén",
-      "title_hint": "Prevencionista de Riesgos para AIF - Angol - Angol | Chiletrabajos",
-      "date_source_hint": null,
-      "deadline_hint": null,
-      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
-      "last_checked_at": "2026-11-22T07:01:29.595720+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
-    },
-    {
-      "id": "a_d850aaa7c83bdfcd8f83",
-      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Vendedor Terreno - ANGOL - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-13 16:23:21",
-      "deadline_hint": "2027-01-27T16:23:21",
-      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
-      "last_checked_at": "2026-11-22T07:01:29.595720+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
     }
   ],
   "metrics": {
-    "added": 12,
-    "updated": 2,
+    "added": 13,
+    "updated": 4,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 12,
+    "published_reconciled": 13,
     "territory_mismatch": 6
   }
 }

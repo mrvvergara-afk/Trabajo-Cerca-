@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-23",
+  "inventory_sha": "ba0b70bb97d7a14d8b97afdfb5540b2fb00a79b7",
+  "inventory_count": 143,
+  "discovery_count": 29,
+  "territories": [
+    "Angol",
+    "Collipulli",
+    "Ercilla",
+    "Lumaco",
+    "Los Sauces",
+    "Purén",
+    "Renaico",
+    "Traiguén",
+    "Victoria",
+    "Mulchén",
+    "Negrete",
+    "Nacimiento"
+  ],
+  "run_at": "2026-11-23T03:33:18Z",
+  "scan_wave": 4,
+  "execution_note": "Early pre-scheduled scan; not evidence that the scheduled 01:00 run executed",
+  "sources": [
+    {
+      "source_id": "opcionempleo-Angol",
+      "url": "https://www.opcionempleo.cl/empleo-en-angol.html",
+      "territory": "Angol",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "laborum-Collipulli",
+      "url": "https://www.laborum.cl/empleos-busqueda-collipulli.html",
+      "territory": "Collipulli",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "linkedin-Ercilla",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
+      "territory": "Ercilla",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access challenge or disabled public fetch"
+    },
+    {
+      "source_id": "computrabajo-Renaico",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-renaico",
+      "territory": "Renaico",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access challenge or disabled public fetch"
+    },
+    {
+      "source_id": "indeed-Mininco",
+      "url": "https://cl.indeed.com/jobs?q=&l=Mininco&fromage=45",
+      "territory": "Mininco",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "trabajando-Mininco",
+      "url": "https://www.trabajando.cl/trabajo-empleo/mininco",
+      "territory": "Mininco",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "chiletrabajos-Nacimiento",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Nacimiento",
+      "territory": "Nacimiento",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "opcionempleo-Negrete",
+      "url": "https://www.opcionempleo.cl/empleo-en-negrete.html",
+      "territory": "Negrete",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "laborum-Mulchén",
+      "url": "https://www.laborum.cl/empleos-busqueda-mulchen.html",
+      "territory": "Mulchén",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "linkedin-Los Sauces",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+      "territory": "Los Sauces",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access challenge or disabled public fetch"
+    },
+    {
+      "source_id": "computrabajo-Purén",
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-puren",
+      "territory": "Purén",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access challenge or disabled public fetch"
+    },
+    {
+      "source_id": "indeed-Traiguén",
+      "url": "https://cl.indeed.com/jobs?q=&l=Traigu%C3%A9n&fromage=45",
+      "territory": "Traiguén",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "trabajando-Traiguén",
+      "url": "https://www.trabajando.cl/trabajo-empleo/traiguen",
+      "territory": "Traiguén",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "chiletrabajos-Lumaco",
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Lumaco",
+      "territory": "Lumaco",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "opcionempleo-Victoria",
+      "url": "https://www.opcionempleo.cl/empleo-en-victoria.html",
+      "territory": "Victoria",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "laborum-secondary-Los Ángeles",
+      "url": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
+      "territory": "Los Ángeles",
+      "scan_wave": 4,
+      "status": "failed",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Reader fetch failed; not counted as empty"
+    },
+    {
+      "source_id": "linkedin-secondary-Temuco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
+      "territory": "Temuco",
+      "scan_wave": 4,
+      "status": "blocked",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Access challenge or disabled public fetch"
+    },
+    {
+      "source_id": "hospital-angol-concursos",
+      "url": "https://hospitalangol.cl/concursos/",
+      "territory": "Angol",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [
+        "concursos-internos-2026-sin-vigencia-individual-confirmada"
+      ],
+      "detail": "Listings indexed; publication eligibility not established"
+    },
+    {
+      "source_id": "omil-renaico",
+      "url": "https://municipalidadrenaico.cl/concursos-publicos/",
+      "territory": "Renaico",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [
+        "concurso-12-vacantes-existente"
+      ],
+      "detail": "Listings indexed; publication eligibility not established"
+    },
+    {
+      "source_id": "omil-puren-2026",
+      "url": "https://munipuren.cl/llamados-a-concurso-2026/",
+      "territory": "Purén",
+      "scan_wave": 4,
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "No current eligible public individual listing in readable page"
+    },
+    {
+      "source_id": "cmpc-empleo-trabajando",
+      "url": "https://cmpc.trabajando.cl/",
+      "territory": "Collipulli, Mininco, Nacimiento y zona forestal",
+      "scan_wave": 4,
+      "status": "unsupported",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Page readable but does not expose individual job records"
+    },
+    {
+      "source_id": "ssan-indice",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/",
+      "territory": "Malleco",
+      "scan_wave": 4,
+      "status": "checked_found",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [
+        "medico-general-traiguen-plazo-original-cerrado"
+      ],
+      "detail": "Listings indexed; publication eligibility not established"
+    },
+    {
+      "source_id": "registry-omil-los-angeles-ofertas",
+      "url": "https://sites.google.com/losangeles.cl/omil-losangeles/ofertas-laborales",
+      "territory": "Los Ángeles",
+      "scan_wave": 4,
+      "status": "unsupported",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "Page readable but does not expose individual job records"
+    },
+    {
+      "source_id": "registry-radio-surena-collipulli",
+      "url": "https://www.radiodelsur.cl/",
+      "territory": "Collipulli / Mininco / Ercilla",
+      "scan_wave": 4,
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_web_reader",
+      "offers_found": [],
+      "detail": "No current eligible public individual listing in readable page"
+    }
+  ],
+  "discovery_targets": [
+    {
+      "source_id": "radio-ercilla",
+      "name": "Radio Ercilla 106.7 FM",
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_indexed_web_search",
+      "detail": "Search by station name and employment terms; no verifiable current individual listing identified; private social content not accessed"
+    },
+    {
+      "source_id": "renaico-fm",
+      "name": "Renaico FM",
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_indexed_web_search",
+      "detail": "Search by station name and employment terms; no verifiable current individual listing identified; private social content not accessed"
+    },
+    {
+      "source_id": "radio-victoria",
+      "name": "Radio Victoria",
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_indexed_web_search",
+      "detail": "Search by station name and employment terms; no verifiable current individual listing identified; private social content not accessed"
+    },
+    {
+      "source_id": "radio-colonos-victoria",
+      "name": "Radio Los Colonos · Victoria",
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_indexed_web_search",
+      "detail": "Search by station name and employment terms; no verifiable current individual listing identified; private social content not accessed"
+    },
+    {
+      "source_id": "millaray-puren-sauces",
+      "name": "Millaray Radio · Purén / Los Sauces",
+      "status": "checked_empty",
+      "checked_at": "2026-11-23T03:33:18Z",
+      "origin": "public_indexed_web_search",
+      "detail": "Search by station name and employment terms; no verifiable current individual listing identified; private social content not accessed"
+    }
+  ],
+  "summary": {
+    "planned": 24,
+    "attempted": 24,
+    "readable": 7,
+    "checked_found": 3,
+    "checked_empty": 2,
+    "blocked": 5,
+    "failed": 12,
+    "unsupported": 2,
+    "not_attempted": 0,
+    "new_batches": 0,
+    "published_confirmed": 0
+  },
+  "catalog": {
+    "status": "catalog_unavailable",
+    "mirror_generated_at": "2026-11-22T22:28:56Z",
+    "mirror_job_count": 289,
+    "mirror_complete": true,
+    "reason": "Mirror older than 120 minutes; real API unreadable via public reader"
+  },
+  "incidents": [
+    {
+      "type": "territorial_misclassification",
+      "id": "chatgpt_d_5cc1e31b3ff3d83ea28b",
+      "url": "https://chiletrabajos.cl/trabajo/prevencionista-3935615",
+      "recorded_commune": "Purén",
+      "correct_commune": "Collipulli",
+      "sub_locality": "Mininco",
+      "action": "correct existing record, never duplicate"
+    },
+    {
+      "type": "existing",
+      "id": "chatgpt_cg_c7d521f0c88ecb48d3e7",
+      "correct_commune": "Renaico",
+      "action": "do not duplicate 12-vacancy contest"
+    }
+  ],
+  "pending": "Retain historical candidates for reconciliation once catalog fresh; do not publish blindly",
+  "coverage_complete": false
+}

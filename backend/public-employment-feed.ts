@@ -19,8 +19,9 @@ export function employmentFeedLinks(xml:string):EmploymentFeedLink[]{
   if(!entryLevel || level!==entryLevel+1)return;
   if(tag.local==='title')field='title';
   if(tag.local==='link'||tag.local==='enclosure'){
-   const value=Object.values(tag.attributes).find(a=>a.local==='href'||a.local==='url')?.value;
-   const relation=Object.values(tag.attributes).find(a=>a.local==='rel')?.value;
+   const attributes=Object.values(tag.attributes as Record<string,{local:string;value:string}>);
+   const value=attributes.find(a=>a.local==='href'||a.local==='url')?.value;
+   const relation=attributes.find(a=>a.local==='rel')?.value;
    const attachment=tag.local==='enclosure'||relation==='enclosure';
    if(value&&(attachment||!relation||relation==='alternate'))URLs.push({target:value,isAttachment:attachment});
    else if(!value&&tag.local==='link')field='link';

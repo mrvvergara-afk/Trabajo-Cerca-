@@ -1,9 +1,14 @@
 {
   "fuente": "CMPC Cornerstone",
-  "checked_at": "2026-11-23T21:39:05.093213+00:00",
+  "checked_at": "2026-11-24T20:19:47.184399+00:00",
   "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "state": "individual_links_found",
   "individual_urls": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19478?c=cmpc",
+      "cargo": "Ingeniero Excelencia Operacional Sr",
+      "evidencia_tarjeta": "Ingeniero Excelencia Operacional Sr\n\nChile\n\n24/11/2026"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19462?c=cmpc",
       "cargo": "CATEGORY MANAGER",
@@ -55,11 +60,6 @@
       "evidencia_tarjeta": "KAM INDUSTRIAL\n\nSantiago, Metropolitana, Chile\n\n19/11/2026"
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
-      "cargo": "Ejecutivo Comercial",
-      "evidencia_tarjeta": "Ejecutivo Comercial\n\nChile\n\n18/11/2026"
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
       "cargo": "ANALISTA LABORATORIO I",
       "evidencia_tarjeta": "ANALISTA LABORATORIO I\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n18/11/2026"
@@ -78,26 +78,6 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
       "cargo": "Práctica Administración RRHH - Los Ángeles",
       "evidencia_tarjeta": "Práctica Administración RRHH - Los Ángeles\n\nLos Ángeles, REGION DEL BIOBIO, Chile\n\n16/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
-      "cargo": "Inspector/a Ambiental",
-      "evidencia_tarjeta": "Inspector/a Ambiental\n\nNacimiento, Bio Bio, Chile\n\n16/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19342?c=cmpc",
-      "cargo": "DATA & INFORMATION GOVERNANCE SPECIALIST",
-      "evidencia_tarjeta": "DATA & INFORMATION GOVERNANCE SPECIALIST\n\nSantiago, Metropolitana, Chile\n\n16/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
-      "cargo": "Administrador Zonal",
-      "evidencia_tarjeta": "Administrador Zonal\n\nCoquimbo, Chile\n\n16/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19328?c=cmpc",
-      "cargo": "Subgerente Técnico SSO",
-      "evidencia_tarjeta": "Subgerente Técnico SSO\n\nSantiago, Metropolitana, Chile\n\n15/11/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
@@ -128,13 +108,43 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
       "cargo": "Instrumentista de área - Santa Fe",
       "evidencia_tarjeta": "Instrumentista de área - Santa Fe\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n30/10/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
+      "cargo": "Electricista de área - Planta Santa Fe",
+      "evidencia_tarjeta": "Electricista de área - Planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n28/10/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
+      "cargo": "INGENIERO PREVENCIÓN RIESGOS",
+      "evidencia_tarjeta": "INGENIERO PREVENCIÓN RIESGOS\n\nTil Til, REGIÓN METROPOLITANA, Chile\n\n28/10/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
+      "cargo": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
+      "evidencia_tarjeta": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"\n\nSantiago, REGION METROPOLITANA, Chile\n\n13/10/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+      "cargo": "Ingeniero/a Procesos y Excelencia Sr",
+      "evidencia_tarjeta": "Ingeniero/a Procesos y Excelencia Sr\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n13/10/2026"
     }
   ],
   "errors": [],
   "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "title": "Vacantes actuales - cmpc",
-  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (29)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Metropolitana (6)\nMetropolitana (5)\nRegion Del Biobio (4)\nBio Bio (3)\nJalisco (3)\nAraucanía (2)\nBuenos Aires (2)\nRegión De La Araucanía (2)\nNuevo León (1)\nPuebla (1)\nRegión De Los Ríos (1)\nRegión Metropolitana (1)\nCiudad\nSantiago (9)\nCollipulli (3)\nLos Angeles (3)\nNacimiento (3)\nTlajomulco (3)\nOsorno (2)\nPuente Alto (2)\nZarate (2)\nCollipullli (1)\nCoquimbo (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nValdivia (1)\nFecha colocada\nDentro de 1 día (3)\nDentro de 3 días (3)\nDentro de 7 días (14)\nDentro de 15 días (24)\nDentro de 30 días (27)\nCualquier momento (44)\nUnidad de Negocio\nCMPC Celulosa (11)\nCMPC BioPackaging (11)\nSoftys (15)\nEmpresas CMPC (7)\nVacantes actuales\n\nCATEGORY MANAGER\n\nSantiago, REGION METROPOLITANA, Chile\n\n23/11/2026\n\nLider Producción - Osorno\n\nOsorno, Chile\n\n23/11/2026\n\nLIDER CONTROL SINTOMATICO\n\nValdivia, REGIÓN DE LOS RÍOS, Chile\n\n23/11/2026\n\nHRBP OPERACIONES MADERAS\n\nLos Angeles, Bio Bio, Chile\n\n20/11/2026\n\nESPECIALISTA MEDIO AMBIENTE\n\nChile\n\n20/11",
+  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (25)\nMéxico (8)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Metropolitana (6)\nRegion Del Biobio (4)\nJalisco (3)\nMetropolitana (3)\nAraucanía (2)\nBio Bio (2)\nBuenos Aires (2)\nRegión De La Araucanía (2)\nNuevo León (1)\nPuebla (1)\nRegión De Los Ríos (1)\nRegión Metropolitana (1)\nCiudad\nSantiago (7)\nCollipulli (3)\nLos Angeles (3)\nTlajomulco (3)\nNacimiento (2)\nOsorno (2)\nPuente Alto (2)\nZarate (2)\nCollipullli (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTil Til (1)\nValdivia (1)\nFecha colocada\nDentro de 1 día (1)\nDentro de 3 días (4)\nDentro de 7 días (13)\nDentro de 15 días (20)\nDentro de 30 días (23)\nCualquier momento (40)\nUnidad de Negocio\nCMPC Celulosa (11)\nCMPC BioPackaging (8)\nSoftys (15)\nEmpresas CMPC (6)\nVacantes actuales\n\nIngeniero Excelencia Operacional Sr\n\nChile\n\n24/11/2026\n\nCATEGORY MANAGER\n\nSantiago, REGION METROPOLITANA, Chile\n\n23/11/2026\n\nLider Producción - Osorno\n\nOsorno, Chile\n\n23/11/2026\n\nLIDER CONTROL SINTOMATICO\n\nValdivia, REGIÓN DE LOS RÍOS, Chile\n\n23/11/2026\n\nHRBP OPERACIONES MADERAS\n\nLos Angeles, Bio Bio, Chile\n\n20/11/2026\n",
   "individual_details": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19478?c=cmpc",
+      "cargo": "Ingeniero Excelencia Operacional Sr",
+      "evidencia_tarjeta": "Ingeniero Excelencia Operacional Sr\n\nChile\n\n24/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n|\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAsegurar la aplicación consistente del Modelo BEST en el negocio Bosques, focalizando a los equipos en la gestión de brechas, resultados y aumento de la madurez en excelencia operacional a través del índice de Excelencia Organizacional OEI, con el propósito habilitar el cumplimento de la estrategia de CMPC a lo largo de toda la cadena de valor forestal — desde el vivero y establecimiento hasta la cosecha, transporte y abastecimiento a planta.\n\n \n\nPriorizar y gestionar brechas con el negocio para que se alcancen los resultados esperados, considerando las particularidades de una operación distribuida geográficamente (predios, caminos, faenas de cosecha) y no solo de planta.\nReforzar importancia del método y habilitar a los colaboradores para que se haga “lo básico bien” desde el gemba (despliegue de metas, gestión del desempeño, gestión de pérdidas, análisis causa raíz, estandarización, gestión del tiempo, liderazgo visible, desarrollo de personas), extendiendo esta disciplina a las etapas forestales de la cadena (vivero, establecimiento, cosecha, transporte forestal) además de las áreas industriales.\nProporcionar feedback a nivel operativo, táctico y estratégico, promoviendo la colaboración interdepartamental para mejorar la eficiencia y sinergia en los procesos de CMPC, actuando como coach técnico, fomentando la autonomía, el pensamiento crítico y la toma de decisión basada en datos.\nAcompañar el desarrollo de temas clave priorizados con el negocio (ACR, células, diagnósticos, talleres), incluyendo aquellos ligados a pérdidas propias del negocio forestal (disponibilidad de flota, cumplimiento de abastecimiento, mermas en cosecha y transporte).\nParticipar en el diseño, adaptación, implementación y mejora de las herramientas del Modelo Best, transformando los aprendizajes, en estándares que puedan ser exportados a otras operaciones y/o procesos (ej.: buenas prácticas, mejoras al modelo).\nImpulsar y conectar el liderazgo y valores de CMPC en todos los niveles de la planta y de las faenas forestales basado en el role modeling, asegurando la adherencia a sistemas de medición del índice de Excelencia Organizacional (OEI) como métrica cultural.\nArticular dentro de la Gerencia Centro de Excelencia la integración con la Gestión de Capacidades Best y Digitalización, traspasando las brechas detectadas en terreno como insumo para el diseño de rutas de formación y para la trazabilidad digital de la gestión Best en el negocio Bosques. \n\nFormación: Ingeniero Civil Químico, Mecánico, Industrial, Forestal o afín, deseable con postgrado en Mejora Continua o Lean Six Sigma.\n\nConocimiento específico:\n\nConocimientos en Sistemas de Mejora Continua (Lean, TPM, TQM, etc.) o Six Sigma.\nDeseable experiencia en proyectos de mejora continua.\nDeseable dominio del idioma inglés/portugués (hablado y escrito).\nConocimiento de procesos productivos y cadenas de valor, deseablemente en operaciones forestales y/o industriales, incluyendo su integración con el abastecimiento a plantas.\nFamiliaridad con indicadores propios del negocio Bosques (cumplimiento de abastecimiento, stock en planta, densidad por especie, disponibilidad de flota) para priorizar brechas con foco en resultado.\nDeseable conocimiento de normativa y certificación forestal (FSC, PEFC/Certfor) y su relación con el Sistema Integrado de Gestión.\nSistema Integrado de Gestión (Calidad ISO 9001, Medio Ambiente ISO 14001, Seguridad y Salud Ocupacional OSHAS 18001), Sistema de Gestión de la Energía ISO 50001 y Cadena de Custodia Certfor y FSC.\n\nExperiencia: Mayor a 5 años en las áreas de Procesos, Control de gestión, Mejora Continua, Lean o Excelencia Operacional.\nDeseable experienc",
+      "ficha_accessible": true,
+      "ficha_content_length": 5171,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-24T20:19:57.893111+00:00"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19462?c=cmpc",
       "cargo": "CATEGORY MANAGER",
@@ -143,7 +153,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4791,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:16.584990+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:01.211999+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19450?c=cmpc",
@@ -153,7 +163,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2977,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:19.444134+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:04.429556+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19359?c=cmpc",
@@ -163,7 +173,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2159,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:22.380175+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:07.327040+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19467?c=cmpc",
@@ -173,7 +183,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3406,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:24.712941+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:09.551919+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19452?c=cmpc",
@@ -183,7 +193,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5248,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:27.649828+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:12.274983+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
@@ -193,7 +203,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3596,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:30.680023+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:15.429876+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19460?c=cmpc",
@@ -203,7 +213,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2577,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:34.548658+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:17.775956+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19447?c=cmpc",
@@ -213,7 +223,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5103,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:36.832131+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:22.159076+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19444?c=cmpc",
@@ -223,7 +233,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4427,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:39.792915+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:24.869514+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19439?c=cmpc",
@@ -233,17 +243,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5363,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:42.439120+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
-      "cargo": "Ejecutivo Comercial",
-      "evidencia_tarjeta": "Ejecutivo Comercial\n\nChile\n\n18/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nEjecutivo Comercial\nChile\n|\nreq19387\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nBuscamos un/a Ejecutivo/a Comercial que contribuya al crecimiento del negocio mediante la gestión y desarrollo de una cartera de proveedores, identificando nuevas oportunidades de mercado y fortaleciendo relaciones comerciales de largo plazo, asegurando la disponibilidad de materia prima para la operación. \n\n En este rol tendrás la oportunidad de       \n\nGestionar y desarrollar la cartera de proveedores asignada.\nRealizar visitas periódicas a proveedores para fortalecer relaciones comerciales y detectar nuevas oportunidades de negocio. \nIdentificar y captar nuevos proveedores para ampliar la red de abastecimiento. \nCoordinar solicitudes de compra y retiro de materiales. \nGestionar el seguimiento de pagos y requerimientos asociados a los proveedores. \nCrear y mantener actualizados proveedores en SAP y Microsoft 365. \nAdministrar documentación comercial, contratos, certificados y registros asociados. \nConsolidar y analizar indicadores comerciales y KPIs mensuales. \nCoordinar con áreas operacionales, comerciales y administrativas para asegurar la continuidad del negocio. \nContribuir al crecimiento de la captación de fibra y al abastecimiento de insumos estratégicos para la operación. \n\n Lo que necesitas para desempeñar este rol \n\nTítulo profesional de Ingeniería Comercial, Administración de Empresas o carrera afín. \nAl menos 2 años de experiencia en gestión de cartera comercial, proveedores o clientes. \nLicencia Clase B vigente.\nMovilización propia.\nManejo de SAP nivel usuario.\nManejo de Microsoft Office. \n\n Condiciones del cargo                                   \n\nContrato: Indefinido\nUbicación: Puente Alto\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2884,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:45.241541+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:27.422605+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
@@ -253,7 +253,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3868,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:47.583617+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:30.639943+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
@@ -263,7 +263,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2714,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:50.027073+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:32.830578+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
@@ -273,7 +273,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3485,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:52.537710+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:35.387186+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
@@ -283,47 +283,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2162,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:54.686865+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
-      "cargo": "Inspector/a Ambiental",
-      "evidencia_tarjeta": "Inspector/a Ambiental\n\nNacimiento, Bio Bio, Chile\n\n16/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nInspector/a Ambiental\nNacimiento, Bio Bio, Chile\n|\nreq19384\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAportar al cumplimiento de las metas de la Gerencia de Medio Ambiente (GEMA), específicamente en la Planta Santa Fe, a través de la revisión y supervisión de los parámetros ambientales de los procesos, gestión de cambios que se requieran y cumplimiento de rutas ambientales que garanticen la operación impecable que resguarde la estabilidad del proceso productivo, de acuerdo a parámetros establecidos en el Sistema Integrado de Gestión y directrices de su Línea, con apego a los principios CMPC, resguardando el cumplimiento de nuestras políticas de Seguridad y Salud Ocupacional, Medio Ambiente, Calidad, Energía, además de los compromisos asumidos con las Comunidades locales.\n\n\n\n\nComunicar las temáticas ambientales relevantes en los DdD que participe.\nDetectar y evaluar desviaciones ambientales.\nRealizar CdP ambientales a los trabajos críticos que se ejecuten.\nEmitir  informes que están definidos en la rutina del cargo.\nMovilizar y liderar los Análisis de Riesgo Ambiental (ARA) con coordinación con Líderes y/o Jefe de Turno Planta (equipo multidisciplinario).\nAutorizar la ejecución de trabajos en el área mediante la firma del ARA.\nEjecutar rutas ambientales de inspección y monitoreo en condición normal de operación y ante cualquier alertas recibida por olor, polución, ruido o afectación ambiental.\nIncorporar en su quehacer diario el uso de herramientas Best.\nEjecutar actividades de la Unidad de acuerdo a las políticas de calidad, medio ambiente, seguridad y salud ocupacional, y Sistema de Gestión de la Energía.\nParticipar en el desarrollo de ACR y DdD que le apliquen.\nEjecutar estándares ambientales y recomendar actualizaciones ante brechas.\nMantenerse actualizado en los nuevos procesos, equipos, tecnologías, procedimientos y legislación aplicable.\nLevantar amenazas y riesgos de áreas a Jefe de Turno que impidan lograr las metas.\nEjecutar las tareas rutinarias, de acuerdo a los estándares previamente establecidos y mejorarlos continuamente.\nAsegurar la creación de estándares necesarios.\nDefinir los focos de las tareas rutinarias a realizar y resolver problemas técnicos del proceso.\nElaborar el reporte flash y recabar información técnica cuando ocurra un Incidente Operacional Con Consecuencia Ambiental (IOCCA).\n\nFormación: Tipo Enseñanza: Universitario o Instituto Profesional, Titulado\nCarrera Deseada:  Técnico o Ingeniero Ejecución Químico, Ambiental o equivalente.\n\nConocimiento específico: Conocimientos de los principios de operación y procesos productivos de celulosa.\n\nExperiencia: Experiencia de más de 2 años en procesos de la industria de la celulosa o química.\n\nConducir: Si (obligatorio)\n\nComputación: Si, nivel medio\n\n\n\n\nContrato: Indefinido\nUbicación: Planta Santa Fe, Nacimiento\nHorario: Mañana 08.00 a 16.00hrs  6x1 \nTarde 16.00 a 00.00hrs 4x2\nNoche 00.00 a 08.00hrs 4x3\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 4035,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:56.749381+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19342?c=cmpc",
-      "cargo": "DATA & INFORMATION GOVERNANCE SPECIALIST",
-      "evidencia_tarjeta": "DATA & INFORMATION GOVERNANCE SPECIALIST\n\nSantiago, Metropolitana, Chile\n\n16/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nDATA & INFORMATION GOVERNANCE SPECIALIST\nSantiago, Metropolitana, Chile\n|\nreq19342\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nLiderar la correcta implementación de los estándares y herramientas de Gobierno de Datos a nivel corporativo, participando activamente en la gestión de consentimiento de datos, calidad de información, catalogación de activos de datos y acompañamiento de iniciativas que impulsan una cultura Data Driven en CMPC.\n\n En este rol tendrás la oportunidad de       \n\n• Liderar proyectos e iniciativas de Gobierno de Datos, asegurando el cumplimiento de alcance, plazos, presupuesto y gestión de stakeholders.\n• Diseñar e implementar el modelo corporativo de Gobierno de Datos, incluyendo políticas, estándares, roles, comités y mecanismos de gestión.\n• Gestionar la calidad, trazabilidad, catalogación y observabilidad de los datos, promoviendo la disponibilidad de información confiable y reutilizable para el negocio.\n• Velar por el cumplimiento de los estándares de seguridad, privacidad y uso responsable de los datos, en coordinación con las áreas correspondientes.\n• Impulsar la adopción del Gobierno de Datos mediante iniciativas de gestión del cambio, capacitación y desarrollo de capacidades de Data Literacy.\n• Coordinar equipos multidisciplinarios, proveedores y áreas de negocio para asegurar la implementación y sostenibilidad de las prácticas de Gobierno de Datos.\n\n Lo que necesitas para desempeñar este rol \n\nFormación: Título profesional en Ingeniería Informática, Ingeniería Civil Industrial, Ingeniería en Información y Control de Gestión, Estadística, Administración, Ciencias de Datos o carrera afín. Deseable especialización, diplomado o certificación en Gobierno de Datos, Data Management, Data Governance, Data Quality o disciplinas relacionadas.\n\nConocimiento específico: \n\n• Experiencia en implementación y operación de frameworks de Gobierno de Datos (DAMA-DMBOK, DCAM o equivalente)\n• Experiencia en modelos de Data Ownership y Data Stewardship, trabajando con Data Owners, Data Stewards y equipos técnicos\n• Experiencia en iniciativas de catalogación de datos, gestión de metadatos, calidad de datos, clasificación de información o definición de políticas y estándares de datos.\n• Coordinación de equipos multidisciplinarios y gestión de stakeholders de negocio y tecnología.\n\nExperiencia: Mínimo 3 años de experiencia en roles de Data Governance, Data Management, Data Quality, Metadata Management o similares.\n\n• Herramientas de gestión y colaboración: Jira, Confluence, Microsoft Planner o similares.\n• Herramientas de Data Catalog / Metadata Management (Microsoft Purview, Unity Catalog, Collibra, Alation, Atlan, Informatica Axon, DataHub o similares).\n• Plataformas cloud de datos: Google Cloud Platform, Microsoft Azure, AWS, Databricks o similares.\n• Manejo de SQL para consulta, análisis y validación de datos en distintas plataformas.\n• Conocimiento de marcos de gestión y gobierno de datos: DAMA-DMBOK, DCAM, ISO 8000 o equivalentes.\n• Conocimiento de Data Quality, incluyendo definición de reglas, dimensiones de calidad, métricas, controles, monitoreo y gestión de incidencias.\n• Nociones de seguridad y privacidad de datos: control de accesos, clasificación y sensibilidad de la información, trazabilidad y regulaciones aplicables.\n• Conocimiento de Information Governance y ciclo de vida de la información, incluyendo clasificación, retención, protección, acceso y disposición de información. (Deseable)\n• Experiencia con herramientas de Data Quality (Great Expectations, Monte Carlo, Soda, etc.). (Deseable)\n• Conocimiento de Python, APIs o herramientas de automatización aplicadas a procesos ",
-      "ficha_accessible": true,
-      "ficha_content_length": 4982,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:39:59.397784+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
-      "cargo": "Administrador Zonal",
-      "evidencia_tarjeta": "Administrador Zonal\n\nCoquimbo, Chile\n\n16/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nAdministrador Zonal\nCoquimbo, Chile\n|\nreq19003\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nCoordinar y supervisar los servicios y el plan comercial, administrativo, operacional y logístico asociado a la compra de recortes en la región asignada, planificando y controlando el uso de los recursos disponibles, con el propósito de cumplir los objetivos del negocio definidos por la compañía.\n\n\n\n\nCoordinar y controlar la compra de recortes en la región asignada, de acuerdo con los lineamientos comerciales definidos.\nSupervisar la captación y mantención de proveedores de recortes, elaborando informes periódicos de cobertura regional.\nAnalizar la cadena de suministro regional, considerando proveedores y agentes comerciales.\nElaborar y revisar informes de compra de recortes y análisis comerciales de la región.\nControlar los gastos fijos y variables de la sucursal, de acuerdo con los presupuestos establecidos.\n\nFormación: Ingeniero Logística y Operaciones/ Ingeniero Civil Industrial\n\nConocimiento específico: \n\nExperiencia: 2 años de experiencia con personal a cargo. \n\nLicencia Conducir: Clase B. \n\nComputación: Nivel medio SAP. \n\n\n\n\nContrato: Indefinido \nUbicación: Zona Norte ( Coquimbo ) \n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2306,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:01.726919+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19328?c=cmpc",
-      "cargo": "Subgerente Técnico SSO",
-      "evidencia_tarjeta": "Subgerente Técnico SSO\n\nSantiago, Metropolitana, Chile\n\n15/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nSubgerente Técnico SSO\nSantiago, Metropolitana, Chile\n|\nreq19328\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nLiderar el Centro de Excelencia Técnico de Seguridad como dueño del marco técnico corporativo. Definir y estandarizar metodologías, herramientas, estándares de desempeño, KPI técnicos y criterios de aseguramiento; desarrollar las competencias internas de la función y proporcionar soporte experto, sin asumir el despliegue ni la gestión cotidiana de las operaciones\n\n• Definir y mantener estándares, metodologías, procedimientos, herramientas y criterios técnicos corporativos.\n• Establecer criterios para riesgos críticos, controles críticos y estándares de desempeño.\n• Integrar seguridad de procesos, integridad de activos y gestión del cambio al marco técnico.\n• Definir el marco técnico para la gestión de contratistas y alcances con potencial fatal.\n• Mantener la metodología corporativa de reportabilidad, investigación y aprendizaje.\n• Definir KPI, protocolos de verificación, criterios de calidad y planes de aseguramiento.\n• Definir criterios técnicos para preparación y respuesta ante emergencias.\n• Diseñar perfiles de competencia, mallas, formación y certificación de la función de Seguridad.\n• Emitir criterios y recomendaciones expertas para riesgos complejos, proyectos, inversiones, excepciones y desviaciones técnicas, a solicitud del Gerente de Seguridad o de la gobernanza definida.\n• Gestionar comunidades de práctica, redes de expertise e incorporación de mejores prácticas.\n\nFormación: Ingeniero Civil, Ingeniero en Prevención de Riesgos o carrera afín (titulado). Deseable postgrado en gestión de riesgos o seguridad de procesos.\n\nConocimiento específico: Diseño de estándares; riesgos y controles críticos; seguridad de procesos; integridad; gestión del cambio; contratistas; investigación; aseguramiento; emergencias.\n\nExperiencia: Experiencia demostrable en cargos de liderazgo en seguridad y gestión de riesgos en industrias de alto riesgo.\n\nContrato: Indefinido\nUbicación: Agustinas\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 3130,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:04.123579+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:37.964228+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
@@ -333,7 +293,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3396,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:06.571830+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:40.709062+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19334?c=cmpc",
@@ -343,7 +303,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2362,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:09.015935+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:43.910085+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
@@ -353,7 +313,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3272,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:12.136156+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:46.103378+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19296?c=cmpc",
@@ -363,7 +323,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3991,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:14.825351+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:48.924008+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
@@ -373,7 +333,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2605,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:17.114574+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:51.429658+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
@@ -383,7 +343,47 @@
       "ficha_accessible": true,
       "ficha_content_length": 3974,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-23T21:40:19.084588+00:00"
+      "ficha_checked_at": "2026-11-24T20:20:55.175812+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
+      "cargo": "Electricista de área - Planta Santa Fe",
+      "evidencia_tarjeta": "Electricista de área - Planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n28/10/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nElectricista de área - Planta Santa Fe\nNacimiento, Bio Bio, Chile\n|\nreq19239\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAportar al logro de las metas de Planta Santa Fe y contribuir a la sostenibilidad del negocio, realizando funciones y prestando apoyo técnico a las áreas y turno, ejecutando mantención preventiva y correctiva a equipos eléctricos en general, resguardando el cumplimiento de nuestras políticas de Seguridad y Salud Ocupacional, Medio Ambiente, Calidad, Energía, Cadena de Custodia Certfor y FSC, además de los compromisos asumidos con las Comunidades locales.\n\n\nEjecutar actividades de mantenimiento preventivo y correctivo a los equipos eléctricos en su área de responsabilidad.\nRealizar rutas de inspección y detectar deficiencias, mejoras de mantenibilidad y levantarlas mediante los sistemas de gestión y en sus DdD.\nAnalizar y corregir fallas eléctricas.\nRealizar comisionamiento e inspección técnica de actividades de mantenimiento realizadas por personal externo.\nRealizar revisión en terreno y comisionamiento de proyectos o equipos nuevos en el área.\nProponer ideas para la optimización de los procesos, desempeño medio ambiental y seguridad, que aporten a la mejora continua.\nEn su quehacer diario hace uso de las herramientas BEST y participa activamente en las actividades BEST.\nGarantizar el cumplimiento de la política de Calidad, Medio Ambiente, Seguridad, Salud en el Trabajo, Gestión de la Energía de la empresa y Sistema de Gestión Integridad Instalaciones Eléctricas (SGIIE).\n\nFormación:\n\nTitulado de carrera Profesional Impartida por Universidad o Instituto Profesional, reconocido por el  Ministerio de Educación u homologada en caso de ser extranjero.  Carrera Deseada: Ingeniero Ejecución o Técnico de Nivel Superior Eléctrico., Electrocontrol o Automatización.\n\nExperiencia:\n\nAl menos 3 años de experiencia, en cargos similares en plantas industriales o forestales (excluyente).\n\nConocimientos específicos:\n\nExperiencia en Mantención de motores y accionamientos eléctricos. \nExperiencia en comisionamiento y protocolos eléctricos.  \nConocimientos del Idioma Inglés Técnico básico. \nConocimientos de computación a nivel usuario. \nConocimientos básicos de PLC (excluyente). \nConocimiento en electrónica de potencia y accionamientos eléctricos (excluyente). \nConocimiento de Seguridad industrial (excluyente). \n Interpretación de planos eléctricos (excluyente). \nManejo de instrumentos: Tester, medición de aislación, osciloscopio, termómetros, registradores análogos,  digitales, etc. (excluyente) \nDetección, análisis y solución de problemas potenciales y consumados.\nManejo de SAP PM Básico.\n\n\n\nUbicación: Nacimiento, Planta Santa Fe. \n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 3790,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-24T20:20:57.472268+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
+      "cargo": "INGENIERO PREVENCIÓN RIESGOS",
+      "evidencia_tarjeta": "INGENIERO PREVENCIÓN RIESGOS\n\nTil Til, REGIÓN METROPOLITANA, Chile\n\n28/10/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nINGENIERO PREVENCIÓN RIESGOS\nTil Til, REGIÓN METROPOLITANA, Chile\n|\nreq19163\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nSupervisar los programas de prevención de riesgos de las distintas áreas de la planta, fortaleciendo la seguridad operacional y promoviendo una cultura preventiva en la organización. \n\n\n\n\nRealizar la supervisión de las acciones y condiciones de peligro en planta.\n\nRealizar asesorías a la organización mediante información técnica en prevención de riesgos. \n\nRealizar el control del cumplimiento de procesos y prácticas de trabajo seguras. \n\nEjecutar instrumentos y herramientas de gestión del riesgo operacional, como procedimientos, matrices, análisis causales y otros. \n\nIdentificar e informar situaciones que afecten el sistema de gestión integrado, inocuidad alimentaria o normas certificadas vigentes. \n\nFormación: Ingeniero en Prevención de Riesgos o carrera afín \n\nConocimiento específico:\n\nConocimiento en Gestión de Seguridad y Salud en el Trabajo \nConocimiento en Gestión del Cambio Conductual \nConocimiento Básicos de Mecánica \nConocimiento en Producción en Línea de Proceso \nConocimiento Microsoft Office Nivel Intermedio \nPolítica Integrada \nEficiencia energética \nUsos significativos \nInterpretación ISO 50001 2018 \nAhorro de energía en iluminación y acondicionamiento de aire \nEficiencia energética en procesos térmicos \nIdentificación de Peligros en sus funciones \n\nExperiencia: 3 años de Experiencia en Industrias\n\nConducir: Licencia conducir B.\n\nComputación: Microsoft Office Avanzado\n\n\n\n\nContrato:Indefinido\nUbicación:Cerro Blanco 100, Til Til.\nHorario: Lunes - Jueves 07:30-17:00 Viernes 07:30-14:00 \n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2752,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-24T20:20:59.838582+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
+      "cargo": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
+      "evidencia_tarjeta": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"\n\nSantiago, REGION METROPOLITANA, Chile\n\n13/10/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nPrograma de Prácticas y Memorias 2027: \"Mi Primer Papel\"\nSantiago, REGION METROPOLITANA, Chile\n|\nreq19080\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n¡Vive tu primera gran experiencia profesional en CMPC! 🌱\n\n¿Buscas una oportunidad para impulsar tu desarrollo y dejar tu huella?\nTe invitamos a ser parte de nuestro Programa de Prácticas y Memorias: Mi Primer Papel.\n\nEn CMPC, líder global en sustentabilidad, valoramos tu talento y te acompañamos para que crezcas aprendiendo de proyectos reales y equipos inspiradores.\n\nAl unirte, podrás acceder a:\n\n* 💰 Asignación económica y almuerzo (si tu práctica es presencial).\n* 🎁 Kit de bienvenida para integrarte a nuestra fibra desde el primer día.\n* 🚌 Transporte en caso de plantas (Sujeto a disponibilidad*)\n* 📚 Capacitaciones y cursos online para fortalecer tu formación.\n* 🤝 Acompañamiento constante y desafíos reales para aplicar tus conocimientos.\n\nPara postular a nuestro programa, es indispensable que cumplas con los siguientes requisitos:\n\n- Ser estudiante de una carrera técnica o profesional.\n- Presentar tu certificado de alumno/a regular.\n- Contar con seguro escolar vigente, emitido por tu casa de estudios.\n- Disponer de un mínimo de 3 meses para la realización de tu práctica o memoria.\n\n¡No esperes más y postula!\nSúmate a la compañía forestal y papelera más sustentable del mundo y da tu primer paso en CMPC 🌍💚\n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2485,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-24T20:21:02.094264+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+      "cargo": "Ingeniero/a Procesos y Excelencia Sr",
+      "evidencia_tarjeta": "Ingeniero/a Procesos y Excelencia Sr\n\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n\n13/10/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nIngeniero/a Procesos y Excelencia Sr\nCollipulli, REGIÓN DE LA ARAUCANÍA, Chile\n|\nreq18859\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nLiderar la gestión, el seguimiento y la optimización de los procesos productivos de la Planta, en base al control de las variables críticas (plan de calidad, KPI) y del plan operativo, entregando apoyo técnico constante al área productiva y buscando permanentemente la optimización y eficiencia de los procesos a mediano y largo plazo. Asimismo, liderar y consolidar la transformación cultural hacia la Excelencia Operacional, a través de la capacitación y el entrenamiento continuo en el aseguramiento, profundización y mejora del modelo BEST, actuando como coach técnico y cultural para los líderes operativos, impulsando su autonomía, el pensamiento crítico y la toma de decisiones basada en datos. El cargo también gestiona el modelo de mejora continua mediante el seguimiento al estado de la investigación y acciones derivadas de las pérdidas e incidentes de la Planta, garantizando la estandarización, disciplina y efectividad de las herramientas BEST en terreno, y entregando feedback estratégico que impulse la mejora continua y el logro de resultados tangibles y sostenibles para el negocio. \n\n En este rol tendrás la oportunidad de       \n\nEfectuar seguimiento a las variables críticas de proceso, consumos específicos, costos y calidad del proceso unitario, en un horizonte de tiempo que permita concluir y acordar acciones de mejora con las áreas. \nApoyar el despliegue estratégico de CMPC, facilitando el desdoblamiento de objetivos, indicadores e iniciativas para asegurar el correcto cascadeo y el cumplimiento de las metas organizacionales. \nParticipar en el diseño, adaptación, implementación y mejora de las herramientas del Modelo BEST. \nDar soporte en la implementación, uso y seguimiento de las metodologías y herramientas del Modelo BEST a los distintos clientes internos de la compañía. Realizar seguimiento y apoyo a las investigaciones de causa raíz y a las acciones derivadas del modelo de mejora continua. \nProponer mejoras que se deduzcan del análisis de causa raíz en conjunto con el área operativa. \nArticular y colaborar con otros departamentos de excelencia, tales como Centro de Excelencia Organizacional, Competitividad Fábrica u otros, para generar sinergia, mejores prácticas y estandarización. \nEstudiar nuevos proyectos y mejoras en coordinación con el área de operaciones, orientados a mejorar la eficiencia de los procesos en el mediano y largo plazo. \nFacilitar la Mejora Continua a través de los ciclos PDCA y SDCA. \nFomentar la estandarización y optimización de rutinas operacionales clave, promoviendo la colaboración interdepartamental para mejorar la eficiencia y sinergia en los procesos de CMPC. \nAsegurar el cumplimiento de las acciones derivadas del análisis de problemas mediante el diseño de reportes que conduzcan a ese fin. \nImpulsar y conectar el liderazgo y los valores de CMPC en todos los niveles de la planta basado en el rol modelling, asegurando la adherencia a los sistemas de medición del Índice de Excelencia Operacional (OEI) como métrica cultural. \n\n Lo que necesitas para desempeñar este rol \n\nFormación: Ingeniero Civil Químico, Mecánico, Industrial, Forestal o afín, de al menos 10 semestres de duración; deseable con postgrado en Mejora Continua o Lean Six Sigma.\n\nConocimiento específico: Al menos 5 años en cargos de procesos, producción, control de gestión, mejora continua, Lean o excelencia operacional, en el rubro celulosa o industria similar. (Específicamente en área de fibras) Excluyente.\n\nConocimientos técnicos:\n\nConocimiento nivel intermedio",
+      "ficha_accessible": true,
+      "ficha_content_length": 5754,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-24T20:21:04.880663+00:00"
     }
   ]
 }

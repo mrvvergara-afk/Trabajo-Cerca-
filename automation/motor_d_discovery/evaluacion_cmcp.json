@@ -37,18 +37,6 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
-      "id_fuente": "cmpc_19384",
-      "cargo": "Inspector/a Ambiental",
-      "empresa": "CMPC",
-      "comunas": [
-        "Nacimiento"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19384?c=cmpc",
-      "fecha_publicacion": "2026-11-16",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_19222",
       "cargo": "Instrumentista de área - Santa Fe",
       "empresa": "CMPC",
@@ -59,9 +47,41 @@
       "fecha_publicacion": "2026-10-30",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_19239",
+      "cargo": "Electricista de área - Planta Santa Fe",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
+      "fecha_publicacion": "2026-10-28",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
+    {
+      "id_fuente": "cmpc_18859",
+      "cargo": "Ingeniero/a Procesos y Excelencia Sr",
+      "empresa": "CMPC",
+      "comunas": [
+        "Collipulli"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
+      "fecha_publicacion": "2026-10-13",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     }
   ],
   "pending": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19478?c=cmpc",
+      "title": "Ingeniero Excelencia Operacional Sr",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19462?c=cmpc",
       "title": "CATEGORY MANAGER",
@@ -135,14 +155,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19387?c=cmpc",
-      "title": "Ejecutivo Comercial",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
       "title": "TECHNICAL LEAD SR",
       "workplaces": [],
@@ -153,30 +165,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
       "title": "Práctica Administración RRHH - Los Ángeles",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19342?c=cmpc",
-      "title": "DATA & INFORMATION GOVERNANCE SPECIALIST",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
-      "title": "Administrador Zonal",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19328?c=cmpc",
-      "title": "Subgerente Técnico SSO",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -217,6 +205,22 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
       "title": "Operador Montacarga Turno - Planta Puente Alto",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19163?c=cmpc",
+      "title": "INGENIERO PREVENCIÓN RIESGOS",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
+      "title": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-label="Trabajo Cerca">
+<defs><linearGradient id="forest" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19734b"/><stop offset="1" stop-color="#062c23"/></linearGradient><linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e0f8a8"/><stop offset="1" stop-color="#95dc4e"/></linearGradient></defs>
+<rect x="8" y="8" width="1008" height="1008" rx="242" fill="url(#forest)"/>
+<path d="M8 835Q260 675 510 830T1016 820V1016H8Z" fill="#438d5d" opacity=".55"/>
+<path d="M8 969Q260 844 510 954T1016 915V1016H8Z" fill="#91d84a" opacity=".5"/>
+<path d="M512 196c-155 0-272 118-272 273 0 181 182 354 272 444 90-90 272-263 272-444 0-155-117-273-272-273z" fill="#fff"/>
+<path d="M512 261c-119 0-211 90-211 210 0 133 130 276 211 353 81-77 211-220 211-353 0-120-92-210-211-210z" fill="url(#lime)"/>
+<circle cx="512" cy="467" r="118" fill="#094c34"/>
+<rect x="406" y="442" width="212" height="117" rx="16" fill="#fff"/>
+<path d="M459 441v-26c0-25 18-43 43-43h20c25 0 43 18 43 43v26" fill="none" stroke="#fff" stroke-width="20"/>
+<path d="M406 480q106 57 212 0" fill="none" stroke="#126546" stroke-width="12"/>
+<rect x="497" y="485" width="30" height="29" rx="5" fill="#126546"/>
+</svg>

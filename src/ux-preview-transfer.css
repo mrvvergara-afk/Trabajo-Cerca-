@@ -1,0 +1,33 @@
+/* Production canary only: inactive without ?tc_release_preview=1 */
+html[data-tc-release-preview="1"] .tcStitchShell .tcLocalDirectory {
+  margin: 8px auto 16px !important; padding: 8px !important; border-radius: 12px;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectoryTop h2 {
+  font-size: 16px !important; margin: 0;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectoryTop > div > small,
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectoryTop > div > p {
+  display: none;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectoryTabs {
+  display: flex; flex-wrap: nowrap; margin: 8px 0; gap: 5px;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectoryTabs button {
+  flex: 1 1 0; min-width: 0; min-height: 30px !important; font-size: 12px;
+  border-radius: 8px; padding: 6px 4px;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectorySummary { margin: 3px 0; }
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectorySummary button {
+  font-size: 12px; min-height: 34px; padding: 6px 9px;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectorySavedControls {
+  margin: 5px 0; gap: 5px;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectorySavedControls button {
+  font-size: 11px; min-height: 33px; padding: 5px 7px;
+}
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectorySavedControls small { display: none; }
+html[data-tc-release-preview="1"] .tcStitchShell .tcDirectoryGrid { margin-top: 10px; }
+@media(max-width: 420px) {
+ html[data-tc-release-preview="1"] .tcStitchShell .tcLocalDirectory { margin: 8px 6px !important; padding: 8px !important; }
+}

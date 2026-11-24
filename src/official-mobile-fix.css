@@ -1,0 +1,62 @@
+/* Mobile repair verified against actual source rules: compact five-option dialog,
+   remove the intentional two-line ad truncation, preserve scroll and touch targets. */
+@media (max-width: 767px) {
+  .tcStitchShell .tcPublishBackdrop { padding: 10px !important; }
+  .tcStitchShell .tcPublishDialog {
+    width: min(100%, 440px) !important;
+    max-height: min(82dvh, 620px) !important;
+    padding: 12px !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+  .tcStitchShell .tcPublishDialogHeader { gap: 8px !important; }
+  .tcStitchShell .tcPublishDialogHeader h2 {
+    font-size: 19px !important;
+    line-height: 1.2 !important;
+  }
+  .tcStitchShell .tcPublishDialogHeader > button {
+    flex: 0 0 38px !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .tcStitchShell .tcPublishDialog > p {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    margin: 6px 0 9px !important;
+  }
+  .tcStitchShell .tcPublishDialog > button {
+    min-height: 48px !important;
+    margin-top: 5px !important;
+    margin-bottom: 0 !important;
+    padding: 7px 9px !important;
+    gap: 9px !important;
+    align-items: center !important;
+  }
+  .tcStitchShell .tcPublishDialog > button > svg {
+    width: 18px !important;
+    height: 18px !important;
+    flex: 0 0 18px !important;
+  }
+  .tcStitchShell .tcPublishDialog > button > span { gap: 1px !important; }
+  .tcStitchShell .tcPublishDialog > button strong {
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+  }
+  .tcStitchShell .tcPublishDialog > button small {
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+  .tcStitchShell .tcStitchBrand.tcUnifiedBrand > .tcStitchBrandArt {
+    border-radius: 25% !important;
+    clip-path: inset(0 round 25%);
+  }
+}

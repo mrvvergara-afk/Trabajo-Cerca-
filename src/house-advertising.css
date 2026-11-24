@@ -1,0 +1,410 @@
+.tcHouseAdmin button {
+  border:1px solid #b9cec0;
+  border-radius:12px;
+  padding:12px 16px;
+  min-height:44px;
+  background:#082b20;
+  color:white;
+  cursor:pointer
+}
+.tcHouseMobile {
+  display:none
+}
+.tcHouseAdmin {
+  margin-top:28px;
+  border-top:1px solid #d4dfd6;
+  padding-top:24px
+}
+.tcHouseAdmin fieldset {
+  border:1px solid #c9dbca;
+  border-radius:12px;
+  margin:18px 0;
+  padding:16px;
+  min-width:0
+}
+.tcHouseAdmin label {
+  display:block;
+  font-size:14px;
+  margin:10px 0
+}
+.tcHouseAdmin input,.tcHouseAdmin select,.tcHouseAdmin textarea {
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+  border:1px solid #b9cec0;
+  border-radius:8px;
+  background:white;
+  color:#082b20;
+  font:inherit
+}
+.tcHouseAdmin summary {
+  cursor:pointer;
+  padding:12px
+}
+.tcHouseAdmin .tcHouseFields {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+.tcHouseAdmin table {
+  width:100%;
+  font-size:13px;
+  text-align:left
+}
+.tcHouseAdmin .tcHouseTable {
+  overflow:auto
+}
+.tcHouseAdmin th,.tcHouseAdmin td {
+  padding:8px
+}
+.tcHouseAdmin button:disabled {
+  opacity:.5;
+  cursor:default
+}
+.tcHouseAdmin button:focus-visible {
+  outline:3px solid #80b900;
+  outline-offset:3px
+}
+@media(max-width:600px) {
+  .tcHouseDesktop {
+    display:none
+  }
+  .tcHouseMobile {
+    display:block
+  }
+  .tcHouseAdmin .tcHouseFields {
+    grid-template-columns:1fr
+  }
+}
+.tcHouseAdmin input[type=checkbox] {
+  display:inline-block;
+  width:20px;
+  height:20px;
+  padding:0;
+  margin:0 8px 0 0;
+  vertical-align:middle
+}
+.tcHouseAdmin article,.tcHouseAdmin p {
+  overflow-wrap:anywhere
+}
+/* Stitch institutional campaign family. Allocation, media and events unchanged. */
+
+/* Bandeja de solicitudes: accesible solo tras verificación administrativa. */
+.tcCommercialInbox{padding:18px;margin:14px 0 26px;background:#f7fbf7;color:#153a2b;border:1px solid #cfdfd0;border-radius:15px}
+.tcCommercialInbox>header{display:flex;justify-content:space-between;gap:14px;align-items:start}
+.tcCommercialInbox h3{font-size:22px;line-height:1.25;margin:5px 0}
+.tcCommercialInbox>header p,.tcCommercialNote{font-size:12px;line-height:1.5;color:#536b5c}
+.tcCommercialInbox>header>b{font-size:12px;flex:none;background:#e5f2e4;padding:8px;border-radius:9px}
+.tcCommercialNote{background:#e9f2e9;padding:10px;border-radius:8px}
+.tcCommercialActions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tcCommercialActions button{padding:10px 12px;min-height:40px;border:0;background:#1d6041;color:white;border-radius:9px;font-size:12px;font-weight:650;cursor:pointer}
+.tcCommercialActions button:disabled{opacity:.55;cursor:default}
+.tcCommercialActions .tcCommercialReject{background:#fff1ec;color:#973c30;border:1px solid #efd0c8}
+.tcCommercialActions span{font-size:12px;color:#285e42}
+.tcCommercialLead{padding:15px;background:white;border:1px solid #d7e2d8;border-radius:12px;margin:12px 0}
+.tcCommercialLeadTop{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.tcCommercialLeadTop strong{font-size:16px;overflow-wrap:anywhere}
+.tcCommercialLeadTop span{font-size:11px;padding:6px 8px;background:#f6edda;border-radius:8px}
+.tcCommercialLead dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:12px 0}
+.tcCommercialLead dl>div{display:grid;gap:3px;min-width:0}
+.tcCommercialLead dt{font-size:11px;color:#657669}
+.tcCommercialLead dd{font-size:13px;color:#244b36;margin:0;overflow-wrap:anywhere;white-space:pre-wrap}
+.tcCommercialLead .tcCommercialNoteRow{grid-column:1/-1}
+.tcCommercialApproval{display:grid;gap:9px;background:#e9f4ea;border-radius:12px;padding:14px}
+.tcCommercialApproval h4{margin:0;font-size:17px}
+.tcCommercialApproval p{font-size:12px;margin:0}
+.tcCommercialApproval label{display:grid;gap:5px;font-size:12px}
+.tcCommercialApproval input,.tcCommercialApproval textarea{padding:10px;font:inherit;font-size:14px;border:1px solid #b4cbb8;border-radius:8px;background:white;color:#16452d}
+.tcCommercialApproval textarea{min-height:85px}
+@media(max-width:700px){.tcCommercialInbox{padding:12px}.tcCommercialInbox>header{flex-direction:column}.tcCommercialLead dl{grid-template-columns:1fr}.tcCommercialActions button{width:100%}}
+
+.tcHouseAd {
+  --house-accent:#b9ee67;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  grid-column:1/-1;
+  position:relative;
+  isolation:isolate;
+  min-width:0;
+  overflow:hidden;
+  background:#143929;
+  color:#fff;
+  border:1px solid #31523e;
+  border-radius:12px;
+  margin:0;
+}
+.neoShell>.tcHouseAd {width:calc(100% - 48px);max-width:1180px;margin:22px auto}
+.tcHouseAd[data-creative-family=services] {--house-accent:#d8eecc;background:#eaf3e5;border-color:#d2e3cb;color:#173d29}
+.tcHouseAd[data-creative-family=business] {--house-accent:#c4ef8e;background:#123326;border-color:#294f38}
+.tcHouseAd .tcCampaignVisual {position:relative;min-width:0;min-height:200px;order:2;background:#173b2b;overflow:hidden}
+.tcHouseAd .tcCampaignVisual .tcAdImage {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;object-position:right center;border-radius:0}
+.tcHouseAd .tcCreativeFallback {position:absolute;inset:0;display:grid;place-items:center;background:#173b2b;color:#c6e4b7;font-size:13px}
+.tcHouseAd .tcCampaignVisual:has(>.tcAdImage)>.tcCreativeFallback {display:none}
+.tcHouseAd .tcCampaignCopy {position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px;min-width:0;padding:22px 24px;overflow-wrap:anywhere}
+.tcHouseAd .tcCampaignEyebrow {font-size:9px;letter-spacing:.05em;line-height:1.5;color:#c5d9bf}
+.tcHouseAd[data-creative-family=services] .tcCampaignEyebrow {color:#53724a}
+.tcHouseAd h3 {font-size:24px;line-height:1.2;letter-spacing:-.035em;margin:0;font-weight:700;color:inherit}
+.tcHouseAd p {font-size:13px;line-height:1.5;margin:0;max-width:44ch;color:inherit;opacity:.88}
+.neoShell .tcHouseAd button {display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:44px;min-width:44px;max-width:100%;padding:9px 14px;margin:5px 0 0;background:var(--house-accent);color:#163b28;border:0;border-radius:7px;font:inherit;font-size:12px;font-weight:700;line-height:1.4;white-space:normal;cursor:pointer}
+.neoShell .tcHouseAd button:focus-visible {outline:3px solid #5b9c43;outline-offset:3px}
+.neoShell .tcHouseAd button:hover {filter:brightness(1.04)}
+.tcHouseAd .tcHouseMobile {display:none}
+@media(max-width:720px) {
+  .tcHouseAd {grid-template-columns:minmax(0,1fr) minmax(0,.72fr);border-radius:9px}
+  .neoShell>.tcHouseAd {width:calc(100% - 28px);margin:16px auto}
+  .tcHouseAd .tcCampaignCopy {padding:14px 12px;gap:6px}
+  .tcHouseAd .tcCampaignVisual {min-height:190px}
+  .tcHouseAd h3 {font-size:18px;line-height:1.25}
+  .tcHouseAd p {font-size:12px;line-height:1.45}
+  .tcHouseAd .tcCampaignEyebrow {font-size:8px;letter-spacing:.025em}
+  .tcHouseAd .tcHouseDesktop {display:none}
+  .tcHouseAd .tcHouseMobile {display:block}
+  .neoShell .tcHouseAd button {font-size:11px;padding:8px 10px;margin-top:3px}
+}
+@media(prefers-reduced-motion:reduce) {.neoShell .tcHouseAd button {transition:none}}
+
+/* Mobile administrative forms: no fixed width or inherited oversized controls. */
+.tcAdminAccess,.tcAdminAccess *,.tcHouseAdmin,.tcHouseAdmin *{box-sizing:border-box}
+.tcAdminAccess,.tcHouseAdmin,.tcHouseAdmin fieldset,.tcHouseAdmin details,
+.tcHouseAdmin .tcHouseFields,.tcHouseAdmin label{min-width:0;max-width:100%}
+.tcHouseAdmin .tcHouseFields{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tcHouseAdmin input:not([type=checkbox]),.tcHouseAdmin select,.tcHouseAdmin textarea{
+  display:block;width:100%;max-width:100%;min-width:0;font-size:16px;line-height:1.35
+}
+.tcHouseAdmin input[type=datetime-local]{min-width:0;max-width:100%;font-size:15px}
+.tcHouseAdmin details>label,.tcHouseAdmin fieldset>label{display:block;min-width:0;max-width:100%}
+.tcHouseAdmin legend,.tcHouseAdmin summary,.tcHouseAdmin label{overflow-wrap:anywhere}
+.tcHouseAdmin .tcHouseTable{width:100%;max-width:100%;overflow-x:auto}
+.tcHouseAdmin .tcHouseTable table{min-width:640px}
+@media(max-width:720px){
+  .tcHouseAdmin .tcHouseFields{grid-template-columns:minmax(0,1fr)}
+  .tcHouseAdmin fieldset{padding:12px;margin:12px 0}
+  .tcHouseAdmin details{padding:0}
+  .tcHouseAdmin details>label{padding:0 6px}
+  .tcHouseAdmin input[type=datetime-local]{font-size:14px}
+  .tcAdminAccess{padding-inline:12px}
+}
+
+
+/* Campaña comercial asistida: vista previa realista, editable, responsiva */
+.tcCampaignPreview{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(0,1fr);gap:0;border:1px solid #d0e1d3;border-radius:14px;background:#fff;overflow:hidden;max-width:100%}
+.tcCampaignPreviewArt{min-height:160px;background:linear-gradient(140deg,#073c29,#368459);display:grid;place-items:center;color:#fff;position:relative;overflow:hidden}
+.tcCampaignPreviewArt>img{width:100%;height:100%;object-fit:cover;display:block}
+.tcCampaignPreviewArt>div{padding:20px;display:grid;gap:10px}
+.tcCampaignPreviewArt strong{font-size:22px;line-height:1.2;overflow-wrap:anywhere}
+.tcCampaignPreviewArt small{font-size:12px;color:#e5f8db}
+.tcCampaignPreviewCopy{display:flex;flex-direction:column;gap:9px;padding:18px;min-width:0}
+.tcCampaignPreviewCopy>small{font-size:10px;letter-spacing:.04em;color:#487457}
+.tcCampaignPreviewCopy h5{font-size:21px;line-height:1.2;overflow-wrap:anywhere;margin:0;color:#163b2c}
+.tcCampaignPreviewCopy p{font-size:13px;line-height:1.45;overflow-wrap:anywhere;margin:0;color:#536558}
+.tcCampaignPreviewCopy>span{align-self:flex-start;border-radius:9px;padding:10px 14px;background:#184d36;color:white;font-weight:700;font-size:12px}
+.tcCommercialApproval .tcWhatsAppConsent{display:flex;align-items:flex-start;gap:10px;padding:12px;background:#fff;border-radius:10px;font-size:12px;line-height:1.45}
+.tcCommercialApproval .tcWhatsAppConsent input{flex:none;width:auto;min-width:18px;height:18px;margin:0}
+.tcCommercialImageUpload{font-size:12px;background:#eff6ed;border:1px solid #bad1c0;border-radius:9px;padding:9px 12px;display:flex;flex-direction:column;gap:7px}
+.tcCommercialImageUpload input{font-size:12px!important}
+.tcCampaignImageInfo{font-size:12px;color:#476d55}
+@media(max-width:740px){.tcCampaignPreview{grid-template-columns:1fr}.tcCampaignPreviewArt{min-height:170px}.tcCampaignPreviewCopy{padding:14px}.tcCampaignPreviewCopy h5{font-size:18px}}
+
+
+/* One premium institutional visual language for the featured home slot. */
+.tcStitchShell .tcHouseAd.tcPremiumAd{
+ background:linear-gradient(120deg,#0e3d2b,#21593c)!important;
+ border:1px solid #2c6348!important;box-shadow:0 7px 17px #163c2522;
+ border-radius:16px!important;min-width:0!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+ padding:15px 18px!important;gap:6px!important;min-width:0!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd h3{
+ color:#fff!important;font-size:clamp(17px,2.2vw,25px)!important;
+ line-height:1.18!important;letter-spacing:-.025em!important;
+ overflow-wrap:normal!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd p{font-size:12px!important;line-height:1.42!important;color:#e4f4e5!important;}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignEyebrow{color:#c7f4a0!important;font-size:9px!important;}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual{min-height:138px!important;}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual .tcAdImage{object-fit:cover!important;}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseBenefits{
+ font-size:10px;line-height:15px;color:#daefc5;font-weight:700;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd button:not(.tcHouseRotateButton){
+ background:#d9f29e!important;color:#194832!important;
+ border-radius:10px!important;min-height:39px!important;
+ font-size:11px!important;padding:8px 11px!important;box-shadow:none!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseRotateButton{
+ min-height:25px!important;max-width:100%!important;
+ background:#ffffff1b!important;color:#edf8e6!important;
+ border:1px solid #ffffff52!important;border-radius:8px!important;
+ padding:3px 7px!important;margin:0!important;
+ font-size:10px!important;line-height:15px!important;font-weight:600!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd[data-creative-family=services]{background:linear-gradient(116deg,#12452f,#2c6941)!important;color:white!important;}
+@media(max-width:720px){
+ .tcStitchShell .tcHouseAd.tcPremiumAd{grid-template-columns:minmax(0,1fr) minmax(0,.55fr)!important;border-radius:12px!important;}
+ .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{padding:11px 12px!important;gap:5px!important;}
+ .tcStitchShell .tcHouseAd.tcPremiumAd h3{font-size:17px!important;line-height:19px!important;}
+ .tcStitchShell .tcHouseAd.tcPremiumAd p{font-size:11px!important;line-height:15px!important;}
+ .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual{min-height:155px!important;}
+ .tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseBenefits{font-size:9px!important;}
+ .tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseRotateButton{font-size:9px!important;}
+}
+@media(max-width:355px){
+ .tcStitchShell .tcHouseAd.tcPremiumAd h3{font-size:15px!important;line-height:17px!important;}
+ .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{padding:9px!important;}
+}
+
+
+/* Hotfix 14-11: institutional carousel is automatic and photography stays visible. */
+.tcStitchShell .tcHouseAd.tcPremiumAd{
+  display:grid!important;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)!important;
+  grid-template-areas:"copy art"!important;align-items:stretch!important;
+  min-height:172px!important;max-width:100%!important;overflow:hidden!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+  grid-area:copy!important;display:flex!important;flex-direction:column!important;
+  justify-content:center!important;align-items:flex-start!important;
+  max-width:100%!important;min-width:0!important;padding:13px 15px!important;
+  gap:6px!important;box-sizing:border-box!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual{
+  grid-area:art!important;order:initial!important;
+  position:relative!important;min-width:0!important;min-height:172px!important;
+  background:#bed6af!important;isolation:isolate!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual .tcCampaignFallbackArt{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  display:block!important;object-fit:cover!important;z-index:0!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual>.tcAdImage{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;z-index:1!important;display:block!important;
+}
+/* Galería institucional manual; no carga video ni gira sin acción del usuario. */
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryLabel{
+ position:absolute;z-index:4;bottom:7px;left:7px;
+ border-radius:7px;padding:3px 5px;background:#123b2bd9;color:#f2f9ef;font-size:8px;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGallerySelected{
+ object-fit:cover!important;object-position:center!important;z-index:3!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls{
+ display:flex;align-items:center;gap:5px;flex-wrap:wrap;max-width:100%;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button{
+ display:grid!important;place-items:center!important;width:25px!important;height:25px!important;
+ min-width:25px!important;min-height:25px!important;border:1px solid #cbe7b999!important;
+ border-radius:8px!important;padding:0!important;margin:0!important;
+ background:#ffffff18!important;color:#fff!important;font-size:10px!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button[aria-pressed='true']{
+ background:#d9f29e!important;color:#173c2a!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button:focus-visible{
+ outline:2px solid #fff!important;outline-offset:2px!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls small{
+ font-size:9px;line-height:1.2;color:#eff8e5;
+}
+@media(max-width:360px){.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls small{display:none}}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage{
+  position:absolute!important;right:7px!important;bottom:8px!important;
+  display:flex!important;gap:5px!important;z-index:2!important;
+  max-width:calc(100% - 12px)!important;pointer-events:none!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage img{
+  display:block!important;width:48px!important;height:45px!important;
+  max-width:44%!important;object-fit:cover!important;
+  border:2px solid #fff!important;border-radius:9px!important;
+  box-shadow:0 3px 9px #123d2a55!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy h3{
+  font-size:clamp(16px,2.2vw,25px)!important;line-height:1.18!important;
+  max-width:100%!important;overflow-wrap:break-word!important;margin:0!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy button{
+  font-size:11px!important;line-height:1.25!important;min-width:0!important;
+  max-width:100%!important;padding:9px 11px!important;
+  box-sizing:border-box!important;white-space:normal!important;
+}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseBenefits{
+  display:block!important;font-size:9px!important;line-height:14px!important;
+  max-width:100%!important;overflow-wrap:normal!important;
+}
+@media(max-width:720px){
+  .tcStitchShell .tcHouseAd.tcPremiumAd{
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;
+    min-height:170px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+    padding:11px 11px!important;gap:5px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy h3{
+    font-size:16px!important;line-height:19px!important;letter-spacing:-.02em!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual{min-height:170px!important;}
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy button{
+    font-size:10px!important;line-height:13px!important;padding:8px 9px!important;
+    min-height:36px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage img{
+    width:38px!important;height:38px!important;border-radius:7px!important;
+  }
+}
+@media(max-width:360px){
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy h3{
+    font-size:15px!important;line-height:18px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+    padding:9px!important;
+  }
+  .tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseImageCollage img{
+    width:32px!important;height:33px!important;
+  }
+}
+
+/* Featured institutional slot: photo supports the copy; never squeezes it on mobile. */
+@media(max-width:767px){
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd{
+   display:grid!important;grid-template-columns:minmax(0,1fr) 105px!important;
+   grid-template-areas:"copy art"!important;
+   max-width:100%!important;min-height:148px!important;
+   border-radius:12px!important;overflow:hidden!important;
+ }
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcCampaignCopy{
+   grid-area:copy!important;min-width:0!important;max-width:100%!important;
+   min-height:0!important;height:auto!important;
+   padding:12px!important;gap:5px!important;justify-content:center!important;
+   box-sizing:border-box!important;
+ }
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcCampaignVisual{
+   grid-area:art!important;position:relative!important;inset:auto!important;
+   min-height:148px!important;height:100%!important;left:auto!important;
+   opacity:1!important;z-index:0!important;
+ }
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcCampaignEyebrow{
+   display:block!important;font-size:8px!important;line-height:11px!important;
+   max-width:100%!important;padding:0!important;background:none!important;
+ }
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcCampaignCopy h3{
+   display:-webkit-box!important;-webkit-box-orient:vertical!important;
+   -webkit-line-clamp:2!important;overflow:hidden!important;
+   font-size:15px!important;line-height:19px!important;
+   max-width:100%!important;overflow-wrap:break-word!important;
+ }
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcCampaignCopy p{
+   display:-webkit-box!important;-webkit-box-orient:vertical!important;
+   -webkit-line-clamp:2!important;overflow:hidden!important;
+   font-size:10px!important;line-height:14px!important;margin:0!important;
+ }
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcHouseBenefits{display:none!important;}
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcCampaignCopy button{
+   max-width:100%!important;min-width:0!important;min-height:35px!important;
+   padding:7px 9px!important;margin:0!important;
+   font-size:10px!important;line-height:13px!important;
+   white-space:normal!important;overflow-wrap:break-word!important;
+ }
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd .tcHouseImageCollage{display:none!important;}
+}

@@ -1,0 +1,74 @@
+.tcCommercialSlides{position:relative;width:100%;height:100%;min-height:125px;overflow:hidden;
+ border-radius:inherit;background:linear-gradient(145deg,#d7eddb,#8dbc9e);isolation:isolate}
+.tcCommercialSlides>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tcCommercialSlideInitial{position:absolute;inset:0;display:grid;place-items:center;font-size:50px;color:#215b39}
+.tcCommercialSlideCaption{position:absolute;inset:auto 0 0;padding:10px 8px 35px;color:white;
+ background:linear-gradient(transparent,#12352bee);display:grid;gap:3px}
+.tcCommercialSlideCaption strong{font-size:14px;line-height:1.15}
+.tcCommercialSlideCaption span{font-size:11px;line-height:1.28;display:-webkit-box;-webkit-line-clamp:3;
+ -webkit-box-orient:vertical;overflow:hidden}
+.tcCommercialSlideButtons{position:absolute;z-index:3;bottom:5px;left:50%;transform:translateX(-50%);
+ display:flex;gap:4px;padding:3px;border-radius:9px;background:#113f2fd9}
+.tcCommercialSlideButtons button{width:25px;min-width:25px;height:25px;min-height:25px;padding:0;
+ border:0;border-radius:7px;background:#ffffff44;color:#fff;font-size:11px}
+.tcCommercialSlideButtons button[aria-pressed=true]{background:#d9f19e;color:#12402c}
+.tcCommercialSlideButtons button:focus-visible{outline:2px solid white}
+.tcEditorSlides,.tcEditorSlide{display:grid;gap:9px;padding:12px;border:1px solid #cbdfd0;border-radius:10px;background:#f5faf4}
+.tcEditorSlide{background:white}.tcEditorSlide label{display:grid;gap:4px}
+.tcEditorSlide input,.tcEditorSlide select,.tcEditorSlide textarea{width:100%;min-width:0}
+.tcEditorSlideHead{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.tcEditorSlideHead strong{margin-right:auto}.tcEditorSlideHead button{min-height:35px}
+.tcEditorSlidePreview{width:100%;max-height:125px;object-fit:contain}
+.tcEditorAddSlide{min-height:42px}.tcEditorPreviewCount{display:block;font-size:11px;margin:5px 0}
+/* Logos and product images must always be fully visible. Never crop lettering. */
+.tcCommercialSlides>img{object-fit:contain;object-position:center;background:#eef5ef;padding:7px;box-sizing:border-box}
+.tcCommercialSlideCaption{max-width:100%;right:0;overflow-wrap:anywhere}
+.tcCommercialSlideInfo{position:absolute;inset:0;padding:18px 16px 43px;
+ display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px;
+ background:linear-gradient(132deg,#f3f8e8,#d8ead9);color:#18442e;overflow-wrap:anywhere}
+.tcCommercialSlideInfo small{font-size:10px;font-weight:800;letter-spacing:.06em;color:#426b52}
+.tcCommercialSlideInfo strong{font-size:clamp(14px,3vw,20px);line-height:1.2}
+.tcCommercialSlideInfo span{font-size:12px;line-height:1.45;white-space:pre-wrap}
+.tcCommercialSlideButtons button{width:12px;min-width:12px;height:12px;min-height:12px;
+ border-radius:50%;padding:0;border:1px solid #d5ecd7;background:#d9e5dca8}
+.tcCommercialSlideButtons button[aria-pressed=true]{background:#d9f19e;border-color:#d9f19e}
+.tcCommercialIdentity{display:flex;align-items:center;gap:10px;min-width:0}
+.tcCommercialIdentity .tcCommercialName{min-width:0;overflow-wrap:anywhere}
+.tcCommercialBrandLogo{flex:none;width:56px;height:56px;border-radius:10px;display:grid;
+ place-items:center;overflow:hidden;background:#fff;border:1px solid #d9e6db}
+.tcCommercialBrandLogo .tcAdLogo{width:100%!important;height:100%!important;max-width:100%;
+ object-fit:contain!important;object-position:center!important;padding:5px!important;
+ box-sizing:border-box;display:block}
+.tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcAdContent.tcPremiumCommercial{
+ grid-template-columns:minmax(220px, .85fr) minmax(0,1fr) auto;align-items:center}
+.tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcPremiumCommercial .tcCommercialVisual{
+ width:100%;height:182px;min-height:182px;max-height:none}
+.tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcCommercialSlides{min-height:182px}
+@media(max-width:840px){
+ .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcAdContent.tcPremiumCommercial{
+   grid-template-columns:minmax(0,1fr)!important;align-items:stretch!important}
+ .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcPremiumCommercial .tcCommercialCopy{
+   grid-column:1!important;grid-row:1!important}
+ .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcPremiumCommercial .tcCommercialVisual{
+   grid-column:1!important;grid-row:2!important;width:100%!important;min-width:0;
+   height:170px!important;min-height:170px!important;max-height:none!important}
+ .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcCommercialAction{
+   grid-column:1!important;grid-row:3!important}
+}
+/* Override older 64px compact layout ONLY for image-rich commercial campaigns. */
+@media(max-width:720px){
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcAdContent.tcPremiumCommercial{
+   grid-template-columns:minmax(0,1fr)!important;gap:9px!important}
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcPremiumCommercial .tcCommercialVisual{
+   width:100%!important;height:158px!important;min-height:158px!important;
+   max-height:none!important;grid-column:1!important;grid-row:2!important}
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcPremiumCommercial .tcCommercialCopy{
+   grid-column:1!important;grid-row:1!important}
+ .tcStitchShell .tcLocalAdvertising.tcCommercialCard[data-has-gallery=true] .tcCommercialAction{
+   grid-column:1!important;grid-row:3!important}
+ .tcCommercialBrandLogo{width:46px;height:46px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .tcCommercialSlides>img,.tcCommercialSlideInfo{animation:tcCommercialReveal .3s ease-out both}
+ @keyframes tcCommercialReveal{from{opacity:.3}to{opacity:1}}
+}

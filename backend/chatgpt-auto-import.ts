@@ -10,11 +10,11 @@ const INDEX=ROOT+'index.json';
 type Result={id:string;status:string;internalId?:string;existingId?:string;expectedWorkCommunes?:string[]};
 type Receipt={id:string;batchId:string;status:string;results:Result[];newCount:number;published:number;at:string;checkedAt?:string};
 
-async function load(path:string,token:string){
+async function load(path:string,token?:string){
   if(path!==INDEX&&!/^automation\/chatgpt_ready\/\d{8}\/chatgpt-\d{8}-[a-f0-9]{18}\.json$/.test(path))
     throw Error('unsafe_chatgpt_path');
   const response=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path+'?ref=main',{
-    headers:{authorization:'Bearer '+token,accept:'application/vnd.github+json',
+    headers:{...(token?{authorization:'Bearer '+token}:{}),accept:'application/vnd.github+json',
       'x-github-api-version':'2022-11-28','user-agent':'TrabajoCerca-ChatGPT-Publisher'},
     signal:AbortSignal.timeout(9000)
   });
@@ -34,9 +34,8 @@ function result(state:string,extra:Record<string,unknown>={}){
 }
 export async function chatgptAutoImportHandler(){
   try{
-    if(!(await secrets.listSecretNames()).includes('MOTOR_C_GITHUB_READ_TOKEN'))
-      return result('awaiting_github_read_token');
-    const token=await secrets.readSecret('MOTOR_C_GITHUB_READ_TOKEN');
+    const token=(await secrets.listSecretNames()).includes('MOTOR_C_GITHUB_READ_TOKEN')
+      ?await secrets.readSecret('MOTOR_C_GITHUB_READ_TOKEN'):undefined;
     const head=await load(INDEX,token);
     if(!head)return result('awaiting_chatgpt_index');
     const idx=head.data;

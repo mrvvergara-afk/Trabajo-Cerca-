@@ -39,10 +39,10 @@ async function documentMatches(offer:Record<string,unknown>):Promise<boolean> {
 type Result = { id:string; status:string; internalId?:string; existingId?:string };
 type Receipt = { id:string; batchId?:string; status?:string; results?:Result[]; accepted?:number; published?:number; known?:number; checkedAt?:string };
 
-async function load(path:string, token:string) {
+async function load(path:string, token?:string) {
   if (!(path===PRODUCER_HEARTBEAT || /^automation\/motor_d_ready\/(?:index\.json|\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json)$/.test(path))) throw Error('invalid_d_path');
   const response=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path+'?ref=main',{
-    headers:{ authorization:'Bearer '+token,accept:'application/vnd.github+json',
+    headers:{ ...(token?{authorization:'Bearer '+token}:{}),accept:'application/vnd.github+json',
       'x-github-api-version':'2022-11-28','user-agent':'TrabajoCerca-D-Publisher' },
     signal:AbortSignal.timeout(9000)
   });
@@ -76,8 +76,8 @@ async function recordStatus(state:string,more:Record<string,unknown>={}) {
 export async function motorDAutoImportHandler(){
   try{
     const names=await secrets.listSecretNames();
-    if(!names.includes('MOTOR_C_GITHUB_READ_TOKEN'))return recordStatus('awaiting_read_token');
-    const token=await secrets.readSecret('MOTOR_C_GITHUB_READ_TOKEN');
+    const token=names.includes('MOTOR_C_GITHUB_READ_TOKEN')
+      ?await secrets.readSecret('MOTOR_C_GITHUB_READ_TOKEN'):undefined;
     const source=await load(INDEX,token);
     if(!source)return recordStatus('awaiting_first_express_batch');
     const batches=source.data.batches;

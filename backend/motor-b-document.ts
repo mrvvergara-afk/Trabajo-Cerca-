@@ -1,40 +1,15 @@
 import {createHash} from 'node:crypto';
-import {createRequire} from 'node:module';
-import {dirname,join,resolve} from 'node:path';
 import {PNG} from 'pngjs';
 import {imageSize} from 'image-size';
 import {getDocument,OPS} from 'pdfjs-dist/legacy/build/pdf.mjs';
 import * as pdfjsWorker from 'pdfjs-dist/legacy/build/pdf.worker.mjs';
-import {createWorker,type Worker} from 'tesseract.js';
+import {readPackagedSpanish} from './packaged-ocr';
 
 Object.assign(globalThis,{pdfjsWorker});
 export type BDocument={kind:'pdf'|'image';url:string;sha256:string;text:string;method:string;status:'extracted'|'needs_ocr'|'failed';reason?:string};
 const MAX_BYTES=6_000_000;
 const MAX_IMAGE_PIXELS=12_000_000;
 const MAX_RASTER_PIXELS=2_000_000;
-
-async function ocr(images:Buffer[]):Promise<string>{
- const require=createRequire(resolve(process.cwd(),'package.json'));
- const langPath=join(dirname(require.resolve('@tesseract.js-data/spa/package.json')),'4.0.0_best_int');
- let timer:ReturnType<typeof setTimeout>|undefined, worker:Worker|undefined, timedOut=false;
- const timeout=new Promise<never>((_,reject)=>{
-  timer=setTimeout(()=>{timedOut=true;reject(Error('ocr_timeout'));},22_000);
- });
- const reading=(async()=>{
-  const workerPath=require.resolve('tesseract.js/src/worker-script/node/index.js');
-  const current=await createWorker('spa',1,{langPath,workerPath,cacheMethod:'none'});
-  worker=current;
-  if(timedOut){await current.terminate();throw Error('ocr_timeout');}
-  const text:string[]=[];
-  for(const image of images){
-   if(timedOut)throw Error('ocr_timeout');
-   text.push((await current.recognize(image)).data.text);
-  }
-  return text.join('\n').slice(0,20_000).trim();
- })();
- try{return await Promise.race([reading,timeout]);}
- finally{clearTimeout(timer);if(worker)await worker.terminate();}
-}
 
 async function pdfText(bytes:Uint8Array,allowOcr:boolean){
  const task=getDocument({data:Uint8Array.from(bytes),useSystemFonts:true,disableFontFace:true,
@@ -76,7 +51,7 @@ async function pdfText(bytes:Uint8Array,allowOcr:boolean){
    }
    if([1,2,3].includes(kind))images.push(PNG.sync.write(png));
   }
-  return {text:images.length?await ocr(images):'',method:'pdfjs_tesseract_local_spa'};
+  return {text:images.length?await readPackagedSpanish(images):'',method:'pdfjs_tesseract_local_spa'};
  }finally{await task.destroy();}
 }
 
@@ -97,7 +72,7 @@ export async function extractBDocument(url:string,bytes:Uint8Array,mime:string,a
    if(!dim.width || !dim.height || dim.width*dim.height>MAX_IMAGE_PIXELS)throw Error('image_pixel_limit');
    if(!allowOcr)return {...base,text:'',method:'none',status:'needs_ocr',reason:'ocr_budget_deferred'};
    if(dim.width*dim.height>MAX_RASTER_PIXELS)throw Error('image_ocr_pixel_limit');
-   result={text:await ocr([Buffer.from(bytes)]),method:'tesseract_local_spa'};
+   result={text:await readPackagedSpanish([Buffer.from(bytes)]),method:'tesseract_local_spa'};
   }
   return {...base,...result,status:result.text.length>=26?'extracted':'needs_ocr',
    ...(result.text.length<26?{reason:'document_no_legible_text'}:{})};

@@ -18,7 +18,8 @@
     "react-dom": "^19.0.0",
     "saxes": "6.0.0",
     "tesseract.js": "^6.0.1",
-    "pngjs": "7.0.0"
+    "pngjs": "7.0.0",
+    "tesseract.js-core": "6.1.2"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.0.0"

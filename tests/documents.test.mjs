@@ -2,7 +2,13 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {deflateSync} from 'node:zlib';
 import {createCanvas} from '@napi-rs/canvas';
-import {extractBDocument} from '../backend/motor-b-document.ts';
+import {registerHooks} from 'node:module';
+const hook=registerHooks({resolve(specifier,context,next){
+ if(context.parentURL?.endsWith('.ts') && specifier.startsWith('.') && !specifier.endsWith('.ts'))return next(specifier+'.ts',context);
+ return next(specifier,context);
+}});
+const {extractBDocument}=await import('../backend/motor-b-document.ts');
+test.after(()=>hook.deregister());
 
 function flyer(){
  const canvas=createCanvas(950,250),ctx=canvas.getContext('2d');

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-24T06:43:28.882818+00:00",
+  "checked_at": "2026-11-24T18:24:52.971110+00:00",
   "feed_complete": true,
   "feed_rows": 290,
   "indexed_batches": 32,
@@ -383,6 +383,6 @@
     }
   ],
   "previously_flagged_resolved": 0,
-  "previously_flagged_still_pending": 3,
+  "previously_flagged_still_pending": 4,
   "prior_pending_resolution": []
 }

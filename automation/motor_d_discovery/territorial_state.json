@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-24T17:08:24.812711-03:00",
+  "last_run": "2026-11-24T18:21:55.502050-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -10068,6 +10068,126 @@
       "first_seen": "2026-11-24T17:08:24.812711-03:00",
       "url": "https://www.angolnoticiasnew.cl/regional/frontel-refuerza-la-calidad-y-continuidad-del-suministro-electrico-con-importantes-trabajos-de-mantenimiento-en-ercilla/",
       "source": "Inventario P03",
+      "commune": null
+    },
+    "317875d3110b9e67da3f": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-part-time-en-lacteos-para-supermercado-por-black-friday-del-26-al-28-de-noviembre-puente-alto-3082712.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "042a0dabdeb27a40f92b": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/asistente-de-operaciones-calama-ingreso-inmediato-3082711.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "babf622af1dd00012c7d": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operario-de-bodega-calama-3082710.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "71ffb70d030694e3a44e": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-bodega-full-time-lunes-a-viernes-613000-sector-san-francisco-pudahuel-3082709.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "894e8584c9f1427ad573": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/chofer-bodeguero-reemplazo-de-licencia-medica-recoleta-750000-liquido-mensual-aprox-3082708.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fb8362ccdac18d4b8932": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-operaciones-colina-ingreso-inmediato-3082707.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1a3c11d25ed1931d8b1e": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/asistente-de-operaciones-calama-ingreso-inmediato-3082706.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e93536eb74bad20ead8b": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-almacen-y-panol-3082705.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "997d00a293a291828d45": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maquinista-turnos-rotativos-3082704.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a62a22a98b78af5a6354": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativo-a-bodega-lampa-3082703.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "abc96a4e409bd62ea968": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-a-maquinista-de-produccion-850000-quilicura-3082702.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c9df16ec7e2744989464": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-multifuncionales-700000-quilicura-3082701.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0b5b22ee08ccfada6345": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-a-de-frigorifico-sucursal-melipilla-3082700.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a64a32a72378b535a00c": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/mecanico-lider-especializado-volvo-3082699.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a81f502e490ac9b5754d": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-a-bodeguero-bebestibles-full-time-para-supermercado-en-buin-3082698.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "36bba5986d1467e2837a": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/tecnico-electrico-especialista-volvo-3082697.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "66437d7c3a3690e17195": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/maquinistas-apiladores-con-experiencia-en-gruas-y-transpaleta-renta-aprox-750000-instalacion-ubicada-en-lampa-3082696.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2965887478cd68103770": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-apilador-electrico-740000-liquido-pudahuel-3082695.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "501ff2e4ee2e4d53a66f": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-bodega-am-lunes-a-viernes-550000liq-3082694.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f7fd30200d384f87e4c9": {
+      "first_seen": "2026-11-24T18:21:55.502050-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/operario-a-frigorifico-sucursal-concon-reemplazo-vacaciones-3082693.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

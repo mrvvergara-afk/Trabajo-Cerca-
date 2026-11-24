@@ -1,0 +1,158 @@
+"""Prepara lotes ChatGPT independientes de Motor D para commit GitHub atómico."""
+from __future__ import annotations
+import argparse
+import fcntl
+import os
+import tempfile
+import copy
+import hashlib
+import json
+import re
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
+from ipaddress import ip_address
+from pathlib import Path
+from urllib.parse import urlsplit
+from automation.chatgpt_extraction_contract import validate_batch, source_identity
+
+COMMUNES = {"Angol", "Collipulli", "Ercilla", "Lumaco", "Los Sauces", "Purén", "Renaico",
+            "Traiguén", "Victoria", "Mulchén", "Negrete", "Nacimiento"}
+ALIASES = {"Mininco": "Collipulli", "Coihue": "Negrete", "Coigüe": "Negrete",
+           "Cohigue": "Negrete", "Capitán Pastene": "Lumaco",
+           "Tijeral": "Renaico", "Huelehueico": "Renaico"}
+
+def prepare(payload: dict, index: dict, day: str | None = None, *, today: date | None = None):
+    # Date validations and batch naming use the Chilean calendar, not UTC.
+    # `day` is the output batch identifier; it can be historical during backfills.
+    chile_today = today or datetime.now(ZoneInfo('America/Santiago')).date()
+    if payload.get("schema_version") != 1 or payload.get("approval") != "approved_for_publication" or payload.get("producer") != "chatgpt_territorial":
+        raise ValueError("invalid_chatgpt_approval")
+    if index.get("schema_version") != 1 or index.get("producer") != "chatgpt_territorial":
+        raise ValueError("invalid_chatgpt_index")
+    offers = payload.get("offers")
+    if not isinstance(offers, list) or not 1 <= len(offers) <= 15:
+        raise ValueError("invalid_batch_size")
+    offers = validate_batch(copy.deepcopy(offers), set(index.get("seen_url_hashes", [])),
+                            prior_source_identities=set(index.get("seen_source_identities", [])),
+                            today=chile_today)
+    prior = set(index.get("seen_offer_ids", []))
+    unique = set()
+    for offer in offers:
+        if not isinstance(offer, dict):
+            raise ValueError("invalid_offer")
+        key = offer.get("id_fuente")
+        if not isinstance(key, str) or not re.fullmatch(r"cg_[a-f0-9]{20}", key) or key in prior or key in unique:
+            raise ValueError("duplicate_or_invalid_chatgpt_id")
+        unique.add(key)
+        for field in ("cargo", "empresa", "url_original", "fecha_descubrimiento"):
+            if not isinstance(offer.get(field), str) or not offer[field].strip():
+                raise ValueError("missing_" + field)
+        if len(offer["cargo"]) < 5 or len(offer["empresa"]) < 2:
+            raise ValueError("invalid_title_or_company")
+        url = offer["url_original"]
+        parsed = urlsplit(url)
+        if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password or any(ch.isspace() for ch in url):
+            raise ValueError("invalid_url")
+        host = parsed.hostname.lower()
+        if host == "localhost" or host.endswith((".localhost", ".local", ".internal")):
+            raise ValueError("unsafe_url")
+        try:
+            if not ip_address(host).is_global:
+                raise ValueError("unsafe_url")
+        except ValueError as exc:
+            if str(exc) == "unsafe_url":
+                raise
+        places = offer.get("comunas")
+        if not isinstance(places, list) or not places or not all(isinstance(p, str) for p in places):
+            raise ValueError("missing_territory")
+        offer["comunas"] = list(dict.fromkeys(ALIASES.get(p, p) for p in places))
+        if any(p not in COMMUNES for p in offer["comunas"]):
+            raise ValueError("outside_territory")
+        if offer.get("fecha_publicacion") is None:
+            if offer.get("vigencia_fuente") != "postulacion_abierta_verificada" or not offer.get("fecha_verificacion"):
+                raise ValueError("undated_requires_fresh_verified_open_source")
+        for field in (("fecha_publicacion", "fecha_descubrimiento") if offer.get("fecha_publicacion") else ("fecha_descubrimiento",)):
+            try:
+                parsed_date = date.fromisoformat(offer[field])
+            except (ValueError, TypeError):
+                raise ValueError("invalid_" + field)
+            if parsed_date > chile_today:
+                raise ValueError("future_" + field)
+        if offer["fecha_publicacion"] is not None and date.fromisoformat(offer["fecha_descubrimiento"]) < date.fromisoformat(offer["fecha_publicacion"]):
+            raise ValueError("discovery_before_publication")
+        if offer.get("fecha_cierre"):
+            try:
+                closing = date.fromisoformat(offer["fecha_cierre"])
+            except (ValueError, TypeError):
+                raise ValueError("invalid_fecha_cierre")
+            if closing < chile_today:
+                raise ValueError("expired_offer")
+    day = day or chile_today.strftime("%Y%m%d")
+    if not re.fullmatch(r"20[0-9]{6}", day):
+        raise ValueError("invalid_day")
+    suffix = hashlib.sha256(json.dumps(offers, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:18]
+    batch_id = f"chatgpt-{day}-{suffix}"
+    relative = f"{day}/{batch_id}.json"
+    if any(row.get("batch_id") == batch_id for row in index.get("batches", [])):
+        raise ValueError("already_indexed")
+    batch = {"schema_version": 1, "approval": "approved_for_publication", "producer": "chatgpt_territorial",
+             "batch_id": batch_id, "offers": offers}
+    updated = {**index, "batches": [*index["batches"],
+                {"batch_id": batch_id, "file": relative, "count": len(offers)}],
+               "seen_offer_ids": sorted(prior | unique),
+               "seen_url_hashes": sorted(set(index.get("seen_url_hashes", [])) | {x["hash_url_sha256"] for x in offers}),
+               "seen_source_identities": sorted(set(index.get("seen_source_identities", [])) | {source_identity(x["url_original"]) for x in offers})}
+    return relative, batch, updated
+
+def durable_json(target: Path, data: dict) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    fd, name = tempfile.mkstemp(dir=target.parent, prefix=".handoff-")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as stream:
+            json.dump(data, stream, ensure_ascii=False, indent=2)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(name, target)
+        directory = os.open(target.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+    finally:
+        Path(name).unlink(missing_ok=True)
+
+
+def stage(payload: dict, root: Path, *, day: str | None = None, today: date | None = None) -> dict:
+    """Publish the reviewed batch locally. Commit the two reported paths together."""
+    lock_path = root.parent / ".chatgpt-handoff.lock"
+    with lock_path.open("a", encoding="utf-8") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        index_path = root / "index.json"
+        index = json.loads(index_path.read_text(encoding="utf-8"))
+        rel, batch, updated = prepare(payload, index, day, today=today)
+        target = root / rel
+        resumed = target.exists()
+        if resumed:
+            if json.loads(target.read_text(encoding="utf-8")) != batch:
+                raise ValueError("batch_conflicts_with_unindexed_file")
+        else:
+            durable_json(target, batch)
+        durable_json(index_path, updated)
+    return {"batch_file": str(target), "index_file": str(index_path),
+            "batch_id": batch["batch_id"], "count": len(batch["offers"]),
+            "recovered_unindexed_batch": resumed, "publication_confirmed": False,
+            "requires_atomic_git_commit_of_both_files": True}
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("reviewed_json", type=Path)
+    parser.add_argument("--root", type=Path, default=Path("automation/chatgpt_ready"))
+    args = parser.parse_args()
+    payload = json.loads(args.reviewed_json.read_text(encoding="utf-8"))
+    print(json.dumps(stage(payload, args.root)))
+
+
+if __name__ == "__main__":
+    main()

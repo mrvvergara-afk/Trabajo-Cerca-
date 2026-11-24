@@ -1,76 +1,97 @@
 import {db} from '@appdeploy/sdk';
-import {createHash} from 'node:crypto';
-import {getDocument} from 'pdfjs-dist/legacy/build/pdf.mjs';
-import * as pdfjsWorker from 'pdfjs-dist/legacy/build/pdf.worker.mjs';
-(globalThis as any).pdfjsWorker = pdfjsWorker;
-import {checkPublicRobots} from './public-robots';
-import {publicPublisher,safePublicUrl} from './public-source-adapters';
-import {freePublicSourceStatus} from './free-public-sources';
+import {createHash,randomUUID} from 'node:crypto';
+import {openPublicResponse} from './public-source-http';
+import {readPublicDocumentWork} from './free-public-sources';
+import {extractBDocument} from './motor-b-document';
+import {worksiteMentionsCommune} from './worksite-semantics';
+import {PRIMARY_PLACES} from '../shared/territories';
 
 type Row=Record<string,unknown>;
-const fold=(v:string)=>v.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-const locales=['Angol','Collipulli','Ercilla','Renaico','Mininco','Nacimiento','Negrete','Mulchén','Los Sauces','Purén','Traiguén','Lumaco','Victoria'];
-export async function shadowPdfBatch() {
-  const status=await freePublicSourceStatus();
-  const [done]=await db.get<{resolved?:Record<string,unknown>}>('fast_bc_state_v2',['current'],{consistent:true});
-  const resolved=(done?.resolved || {}) as Record<string,{reason?:string}>;
-  // Retry once only the documents blocked by the former 1.5MB cap.
-  const docs=status.documentWork.items.filter(x=>x.kind==='document' && (/\.pdf(?:[?#]|$)/i.test(x.url) || /\/index\.php\/component\/phocadownload\/category\/1-concursos(?:\?|$)/i.test(x.url)) && (!resolved[x.url] || resolved[x.url]?.reason==='pdf_byte_limit'));
-  const cursor=(await db.list<Row>('fast_bc_pdf_cursor_v1',{limit:1})).items[0];
-  const retries=docs.filter(item=>resolved[item.url]?.reason==='pdf_byte_limit');
-  const fresh=docs.filter(item=>!resolved[item.url]);
-  const start=Number(cursor?.position||0)%Math.max(1,fresh.length);
-  const selected=[...retries.slice(0,4),...fresh.slice(start).concat(fresh.slice(0,start)).slice(0,Math.max(0,4-retries.length))].slice(0,4);
-  const newlySelected=selected.filter(item=>!resolved[item.url]).length;
-  const outcomes:Row[]=[];
-  await Promise.all(selected.map(async source => {
-    const url=safePublicUrl(source.url);
-    if(!url || !publicPublisher(url) || !url.startsWith('https:'))return;
-    const id='pdf-'+createHash('sha256').update(url).digest('hex').slice(0,42);
-    let item:Row={id,url,source:source.source,publisherPage:source.publisher_page,scannedAt:new Date().toISOString(),stage:'blocked',reason:'unreadable'};
-    try{
-      const policy=await checkPublicRobots(url);
-      if(!policy.allowed){item.reason=policy.error||'robots_disallowed';}
-      else {
-        const response=await fetch(url,{headers:{accept:'application/pdf','user-agent':'TrabajoCercaPublic/1.0'},redirect:'manual',signal:AbortSignal.timeout(12000)});
-        if(response.status!==200) item.reason='HTTP '+response.status;
-        else if(!/application\/pdf|octet-stream/i.test(response.headers.get('content-type')||''))item.reason='not_pdf';
-        else {
-          const bytes=new Uint8Array(await response.arrayBuffer());
-          if(bytes.byteLength>6000000)item.reason='pdf_byte_limit_6mb';
-          else if(String.fromCharCode(...bytes.slice(0,5))!=='%PDF-')item.reason='invalid_pdf_header';
-          else {
-            const task=getDocument({data:bytes,useSystemFonts:false,disableFontFace:true,isEvalSupported:false});
-            const document=await task.promise;
-            const pages=Math.min(document.numPages,6);
-            let text='';
-            for(let pageNo=1;pageNo<=pages;pageNo++){
-              const page=await document.getPage(pageNo);
-              const extracted=await page.getTextContent();
-              text+=' '+extracted.items.map(x=>('str' in x?String(x.str):'')).join(' ');
-              if(text.length>16000)break;
-            }
-            await document.destroy();
-            const work=locales.filter(place=>fold(text).includes(fold(place)));
-            const hiring=/concurso p[uú]blico|llamado a concurso|se requiere|oferta laboral|convocatoria laboral|se busca|vacante/i.test(text);
-            const closed=/postulaciones cerradas|concurso finalizado|proceso cerrado/i.test(text);
-            const jobs=[...new Set([...text.matchAll(/(?:cargo|puesto|vacante)\s*[:\-]\s*([^.;\n]{6,100})/gi)].slice(0,8).map(x=>x[1].trim()))];
-            item={...item,stage:closed?'closed':hiring&&jobs.length>0?'recoverable':'needs_review',
-              reason:closed?'explicit_closure':hiring?'pdf_text_extracted':'no_job_text_evidence',
-              pageCount:document.numPages,textLength:text.length,workCommunes:work,jobTitles:jobs,
-              sha256:createHash('sha256').update(bytes).digest('hex'),textExcerpt:text.slice(0,550),publicEligible:false};
-          }
-        }
-      }
-    }catch(error){item.reason=error instanceof Error?error.message.slice(0,140):'pdf_read_failed';}
-    const [old]=await db.get<Row>('fast_bc_documents_v1',[id],{consistent:true});
-    if(old){const [ok]=await db.update('fast_bc_documents_v1',[{id,record:item}]);if(!ok)throw Error('fast_bc_document_update_failed');}
-    else{const [created]=await db.tx.add('fast_bc_documents_v1',[item]);if(!created)throw Error('fast_bc_document_create_failed');}
-    outcomes.push({url,stage:item.stage,reason:item.reason,jobTitles:item.jobTitles,workCommunes:item.workCommunes});
-  }));
-  const next={position:(start+newlySelected)%Math.max(1,fresh.length),updatedAt:new Date().toISOString()};
-  if(cursor)await db.update('fast_bc_pdf_cursor_v1',[{id:cursor.id,record:next}]);
-  else await db.add('fast_bc_pdf_cursor_v1',[next]);
-  console.warn('SHADOW_PDF_READER '+JSON.stringify({totalDocuments:docs.length,processed:outcomes.length,outcomes}).slice(0,12000));
-  return {totalDocuments:docs.length,processed:outcomes.length,outcomes};
+type Attempt={id:string;token:string;attempt:number;due:number;state:string};
+const DOCUMENTS='fast_bc_documents_v1';
+const ATTEMPTS='tc_document_attempts_v1';
+const unsupported=new Set(['document_mime_mismatch','pdf_mime_mismatch','image_pixel_limit',
+ 'pdf_raster_limit','document_byte_limit','robots_disallowed','document_http_404','document_http_410']);
+
+async function readBoundedDocument(response:Response):Promise<Uint8Array>{
+ const reader=response.body?.getReader();
+ if(!reader)throw Error('document_body_missing');
+ const chunks:Uint8Array[]=[];
+ let size=0;
+ try{
+  for(;;){
+   const part=await reader.read();
+   if(part.done)break;
+   size+=part.value.byteLength;
+   if(size>6_000_000)throw Error('document_byte_limit');
+   chunks.push(part.value);
+  }
+ }finally{
+  await reader.cancel().catch(()=>{});
+  reader.releaseLock();
+ }
+ return Buffer.concat(chunks,size);
+}
+
+export async function shadowPdfBatch(){
+ const now=Date.now();
+ const documentWork=await readPublicDocumentWork();
+ const [old]=await db.get<{resolved?:Record<string,{reason?:string}>}>('fast_bc_state_v2',['current'],{consistent:true});
+ const inputs=documentWork.items.filter(x=>x.kind==='document');
+ const pending=inputs.filter(item=>!old?.resolved?.[item.url] || old.resolved[item.url].reason==='pdf_byte_limit')
+  .map(item=>({...item,id:'pdf-'+createHash('sha256').update(item.url).digest('hex').slice(0,42)}));
+ const prior=pending.length?await db.get<Attempt>(ATTEMPTS,pending.map(item=>item.id),{consistent:true}):[];
+ const ready=pending.map((source,i)=>({source,old:prior[i]})).filter(({old})=>!old||old.due<=now&&['retry','leased'].includes(old.state));
+ const completed=pending.filter((_,i)=>prior[i]?.state==='completed');
+ const durable=completed.length?await db.get<Row>(DOCUMENTS,completed.map(item=>item.id),{consistent:true}):[];
+ const outcomes:Row[]=durable.flatMap((item,i)=>item?[{url:completed[i].url,stage:item.stage,
+   reason:item.reason,jobTitles:item.jobTitles,workCommunes:item.workCommunes,replayed:true}]:[]);
+ let processed=0;
+ for(const {source,old} of ready.slice(0,2)){
+  const {id,url}=source;
+  const attempt=(old?.attempt??0)+1,token=randomUUID();
+  const lease={id,token,attempt,due:now+180_000,state:'leased'};
+  const [claimed]=old?await db.tx.update(ATTEMPTS,[{id,if:{token:old.token},record:lease}]):await db.tx.add(ATTEMPTS,[lease]);
+  if(!claimed)continue;
+  let item:Row={id,url,source:source.source,publisherPage:source.publisher_page,
+   scannedAt:new Date().toISOString(),stage:'blocked',reason:'document_failed',publicEligible:false};
+  if(attempt<=5)try{
+   const opened=await openPublicResponse(url,AbortSignal.timeout(12_000),'application/pdf,image/png,image/jpeg,image/webp');
+   if('error' in opened)throw Error(opened.error);
+   const response=opened.response;
+   const mime=(response.headers.get('content-type')||'').split(';')[0].toLowerCase();
+   if(response.status!==200 || !['application/pdf','application/octet-stream','image/png','image/jpeg','image/webp'].includes(mime)){
+    await response.body?.cancel();throw Error(response.status!==200?'document_http_'+response.status:'document_mime_mismatch');
+   }
+   const bytes=await readBoundedDocument(response);
+   const result=await extractBDocument(opened.url,bytes,mime);
+   if(result.status==='failed')throw Error(result.reason||'document_extraction_failed');
+   const text=result.text;
+   const worksite=text.match(/(?:lugar de trabajo|comuna de la vacante|ubicaci[oó]n de la faena)\s*:\s*([^\n.;]{2,100})/i)?.[1];
+   const work=worksite?PRIMARY_PLACES.filter(place=>worksiteMentionsCommune(worksite,place)):[];
+   const hiring=/concurso p[uú]blico|llamado a concurso|se requiere|oferta laboral|convocatoria laboral|se busca|vacante/i.test(text);
+   const jobs=[...new Set([...text.matchAll(/(?:cargo|puesto|vacante)\s*[:\-]\s*([^.;\n]{6,100})/gi)].slice(0,8).map(x=>x[1].trim()))];
+   // Text extraction/OCR is evidence only. Publication still needs original date, validity and application proof.
+   item={...item,stage:hiring&&jobs.length?'recoverable':'needs_review',
+    reason:result.reason||(hiring?'document_job_evidence_extracted':'no_job_text_evidence'),method:result.method,
+    kind:result.kind,textLength:text.length,workCommunes:work,jobTitles:jobs,
+    sha256:result.sha256,textExcerpt:text.slice(0,600)};
+  }catch(error){
+   const reason=error instanceof Error?error.message.slice(0,120):'document_failed';
+   item={...item,reason,stage:attempt>=5||unsupported.has(reason)?'blocked':'retry'};
+  }
+  const retry=item.stage==='retry';
+  const record={id,token,attempt,due:retry?now+Math.min(24*3600_000,30*60_000*2**(attempt-1)):0,state:retry?'retry':'completed'};
+  await db.transact([
+   db.tx.update(ATTEMPTS,[{id,if:{token},record}]),
+   db.tx.update(DOCUMENTS,[{id,record:item}]),
+   db.tx.add('tc_document_receipts_v1',[{id:token,candidateId:id,attempt,state:item.stage,
+    reason:item.reason,at:new Date().toISOString(),sha256:item.sha256??null,method:item.method??null}]),
+  ]);
+  processed++;
+  outcomes.push({url,stage:item.stage,reason:item.reason,jobTitles:item.jobTitles,workCommunes:item.workCommunes});
+ }
+ return {totalDocuments:pending.length,rawDocumentInputs:documentWork.rawDocumentInputs,
+  eligibleDocumentInputs:documentWork.eligibleDocuments,imageInputs:inputs.filter(item=>/\.(?:png|jpe?g|webp)$/i.test(new URL(item.url).pathname)).length,
+  pendingRetry:pending.length-ready.length,processed,outcomes};
 }

@@ -25,6 +25,7 @@ const PLACES:Record<string,string[]>={
   collipulli:['collipulli','mininco','villa mininco'],
   negrete:['negrete','coihue','coigue','cohigue'],
   lumaco:['lumaco','capitan pastene'],
+  renaico:['renaico','tijeral','huelehueico'],
 };
 
 /**
@@ -37,9 +38,11 @@ export function worksiteMentionsCommune(worksite:unknown,commune:string):boolean
   const aliases=PLACES[place] || [place];
   for(const alias of aliases){
     if(!text.includes(' '+alias+' '))continue;
-    if(alias==='victoria' &&
-       (/\bnueva victoria\b/.test(text)||/\bvictoria s secret\b/.test(text)))
-      continue;
+    if(alias==='victoria'){
+      if(/\b(?:santiago|region metropolitana)\b/.test(text))continue;
+      const withoutHomonyms=text.replace(/\b(?:nueva|la) victoria\b|\bvictoria s secret\b/g,' ');
+      if(!withoutHomonyms.includes(' victoria '))continue;
+    }
     return true;
   }
   return false;

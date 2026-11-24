@@ -63,7 +63,7 @@ export async function motorCIndependentHandler(){
      url,label,detailTitle,detailDate,detailStatus,source:name,observedAt:new Date().toISOString(),state:'needs_primary_verification',publicable:false}}]);
     const reported=name==='Salud Araucanía Norte'?[]:[name==='Mininco (Collipulli)'?'Collipulli':name];
     try{const result=await importReview({items:[{candidate_key:key,url,source_id:'motor-c-independent',
-      status:'revision_obligatoria',reported_territories:reported,published_date_evidence:detailDate,deadline_evidence:null}]});
+      status:'revision_obligatoria',reported_territories:reported,published_date_evidence:detailDate,deadline_evidence:null}]},'C');
       queued+=result.inserted;rejected+=result.rejected;
       if(result.inserted||result.duplicates){
        try{await decideReview({id:'tc_'+key,status:'ready_for_final_check'});

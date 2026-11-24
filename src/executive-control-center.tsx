@@ -164,6 +164,28 @@ export function ExecutiveControlCenter({
           valores aparecen como «Sin datos».
         </p>
       )}
+      {telemetry?.operationReadState && <details className="tcBICityDetails">
+        <summary>Publicación confirmada</summary>
+        {telemetry.operation ? <>
+          <p>{knownCount(telemetry.operation.visible)} avisos con primera visibilidad en los últimos 24 tramos
+            horarios. {telemetry.operation.observedBuckets} tramos con registros.</p>
+          <div className="tcBITableWrap"><table>
+            <thead><tr><th>Motor</th><th>Publicaciones con atribución</th></tr></thead>
+            <tbody>{Object.entries(telemetry.operation.motors).map(([motor,count])=><tr key={motor}>
+              <th scope="row">{motor}</th><td>{knownCount(count)}</td>
+            </tr>)}</tbody>
+          </table></div>
+          <p>Latencia de ingreso a visibilidad, por intervalos. {Object.entries(telemetry.operation.latency).map(([key,value])=>
+            key.toUpperCase()+' '+(value ? value.upperMinutes===null ? 'más de 1440 min' : 'hasta '+value.upperMinutes+' min' : 'Sin datos')
+          ).join(' · ')}</p>
+        </> : <p>Error de lectura de la confirmación de visibilidad.</p>}
+      </details>}
+      {telemetry?.workQueue && <p className="tcExecNotice" role="status">
+        Cola: {telemetry.workQueue.fresh.complete?'':'al menos '}{telemetry.workQueue.fresh.sampled} nuevos,
+        {' '}{telemetry.workQueue.retry.complete?'':'al menos '}{telemetry.workQueue.retry.sampled} en recuperación.
+        {telemetry.workQueue.fresh.oldestSampleMs!==null&&
+          ' El nuevo más antiguo de la muestra espera '+Math.floor(telemetry.workQueue.fresh.oldestSampleMs/60000)+' min.'}
+      </p>}
       {/* El detalle individual conserva los controles productivos anteriores. */}
       <EngineCommand telemetry={telemetry} />
       <ExecutiveStatusBar telemetry={telemetry} />
@@ -193,7 +215,7 @@ export function ExecutiveControlCenter({
         />
         <SourceDonut engines={telemetry?.engines} />
       </div>
-      {telemetry?.stageRead?.some(s=>s.latest) && <section className='tcBCJoint'><div><strong>Registros individuales B y C</strong><small>Recepciones de etapa verificables</small></div><div className='tcBCJointStats'>{telemetry.stageRead.map(s=><span key={s.engine}><b>Motor {s.engine}</b><small>{s.latest?`${knownCount(s.latest.processed)} revisados · ${s.engine==='C'?`${knownCount(s.latest.inputCount)} detectados · ${knownCount(s.latest.already)} ya revisados`:'etapa PDF'} · ${s.latest.status==='completed'?'Ciclo finalizado':'Error'}`:'Sin registro nuevo'}</small><small>{s.latest?timeText(s.latest.at):'—'}</small></span>)}</div><small>Las cifras individuales representan etapas, no publicaciones confirmadas.</small></section>}
+      {telemetry?.stageRead?.some(s=>s.latest) && <section className='tcBCJoint'><div><strong>Registros individuales B y C</strong><small>Recepciones de etapa verificables</small></div><div className='tcBCJointStats'>{telemetry.stageRead.map(s=><span key={s.engine}><b>Motor {s.engine}</b><small>{s.latest?`${knownCount(s.latest.processed)} revisados · ${s.engine==='C'?`${knownCount(s.latest.inputCount)} detectados · ${knownCount(s.latest.already)} ya revisados`:'etapa PDF'} · ${s.latest.status==='completed'?'Ciclo finalizado':'Error'}`:'Sin registro nuevo'}</small><small>{s.latest?timeText(s.latest.at):'—'}</small>{s.lastUsefulAt&&<small>Último trabajo {timeText(s.lastUsefulAt)}</small>}</span>)}</div><small>Las cifras individuales representan etapas, no publicaciones confirmadas.</small></section>}
       {telemetry?.bcOperations && <section className='tcBCJoint'><div><strong>Actividad verificable B/C</strong><small>Última recepción: {timeText(telemetry.bcOperations.at)}</small></div><div className='tcBCJointStats'><span><b>{knownCount(telemetry.bcOperations.html.found)}</b><small>Enlaces detectados C</small></span><span><b>{knownCount(telemetry.bcOperations.html.already)}</b><small>Ya revisados C</small></span><span><b>{knownCount(telemetry.bcOperations.html.checked)}</b><small>Revisados C</small></span><span><b>{knownCount(telemetry.bcOperations.html.deferredOutside)}</b><small>Diferidos C</small></span></div><small>El total detectado incluye enlaces ya revisados. No equivale a nuevas ofertas.</small></section>}
       {telemetry?.jointBC && <section className='tcBCJoint'><div><strong>Procesamiento conjunto B/C</strong><small>Último checkpoint con trabajo: {timeText(telemetry.jointBC.at)}</small></div><div className='tcBCJointStats'><span><b>{knownCount(telemetry.jointBC.scanned)}</b><small>Documentos revisados</small></span><span><b>{knownCount(telemetry.jointBC.remainingPdf)}</b><small>PDF pendientes</small></span><span><b>{knownCount(telemetry.jointBC.html?.verified)}</b><small>HTML verificados</small></span><span><b>{knownCount(telemetry.jointBC.decisions?.not_job)}</b><small>Sin oferta</small></span></div><small>Checkpoint histórico del trabajo útil, distinto de la última ejecución. Los ceros no prueban productividad.</small></section>}
       <div className="tcBIChartsBottom">

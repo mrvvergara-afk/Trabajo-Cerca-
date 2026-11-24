@@ -178,15 +178,17 @@ export async function executiveEngineTelemetry() {
   const runs=stageRows.filter(x=>x.engine===engine)
    .sort((a,b)=>String(b.finishedAt||'').localeCompare(String(a.finishedAt||'')));
   const latest=runs[0];
+  const useful=runs.find(row=>row.status==='completed'&&Number(row.processed)>0);
   return {engine,latest:latest?{
    runId:String(latest.runId||''),at:stamp(latest.finishedAt),
    status:String(latest.status||'unknown'),processed:nonnegative(latest.processed),
-   inputCount:nonnegative(latest.inputCount),verified:nonnegative(latest.verified),
+   inputCount:nonnegative(latest.inputCount),rawDocumentInputs:nonnegative(latest.rawDocumentInputs),
+   eligibleDocumentInputs:nonnegative(latest.eligibleDocumentInputs),imageInputs:nonnegative(latest.imageInputs),verified:nonnegative(latest.verified),
    blocked:nonnegative(latest.blocked),already:nonnegative(latest.already),
    deferredOutside:nonnegative(latest.deferredOutside),deferredIndex:nonnegative(latest.deferredIndex),
    archived:nonnegative(latest.archived),storedForFeed:nonnegative(latest.storedForFeed),
    storageFailures:nonnegative(latest.storageFailures),error:latest.error||null
-  }:null,sampledRuns:runs.length,complete:stageComplete&&!stageReadError};
+  }:null,lastUsefulAt:stamp(useful?.finishedAt),sampledRuns:runs.length,complete:stageComplete&&!stageReadError};
  });
  const latestB=stageRead.find(x=>x.engine==='B')?.latest;
  const latestC=stageRead.find(x=>x.engine==='C')?.latest;

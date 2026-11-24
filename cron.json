@@ -7,7 +7,7 @@
   },
   {
     "name": "verify-publish",
-    "cron": "5,20,35,50 * * * *",
+    "cron": "*/5 * * * *",
     "handler": "v14VerificationHandler",
     "timezone": "America/Santiago"
   },
@@ -33,12 +33,6 @@
     "name": "gemini-review-pull",
     "cron": "13 6,10,14,18,22 * * *",
     "handler": "geminiReviewPullHandler",
-    "timezone": "America/Santiago"
-  },
-  {
-    "name": "engine-telemetry-proof",
-    "cron": "15 1,5,9,13,17,21 * * *",
-    "handler": "engineTelemetrySnapshotHandler",
     "timezone": "America/Santiago"
   }
 ]

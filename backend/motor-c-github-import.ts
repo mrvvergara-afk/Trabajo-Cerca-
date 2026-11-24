@@ -27,7 +27,7 @@ export async function importMotorCGitHubOidc(ctx:{body:unknown;event:any}){
    return {statusCode:403,headers:{'content-type':'application/json'},body:'{"error":"signature_rejected"}'};
   const input=ctx.body as {items?:unknown};
   if(!Array.isArray(input?.items)||input.items.length>35)return {statusCode:400,headers:{'content-type':'application/json'},body:'{"error":"invalid_batch"}'};
-  const outcome=await importReview(input);
+  const outcome=await importReview(input,'C');
   return {statusCode:200,headers:{'content-type':'application/json','cache-control':'no-store'},body:JSON.stringify({...outcome,verified:0,published:0})};
  }catch(e){console.warn('MOTOR_C_IMPORT_ERROR '+String(e).slice(0,160));return {statusCode:503,headers:{'content-type':'application/json'},body:'{"error":"integration_unavailable"}'};}
 }

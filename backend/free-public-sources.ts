@@ -1,3 +1,4 @@
+import {employmentFeedLinks} from './public-employment-feed';
 import { db } from '@appdeploy/sdk';
 import { recheckSlots } from './recheck-policy';
 import { createHash } from 'node:crypto';
@@ -84,11 +85,11 @@ export function publicPageLinks(raw:string, origin:string, rotation=0) {
     if(script[1].length>300000)continue;
     try {visit(JSON.parse(script[1]));} catch { /* No script evaluation or invented IDs. */ }
   }
-  if (/^\s*<\?xml|<rss\b|<feed\b/i.test(raw)) for(const entry of raw.matchAll(/<(?:item|entry)\b[^>]*>([\s\S]*?)<\/(?:item|entry)>/gi)) {
-    const title=publicText((entry[1].match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '').replace(/<!\[CDATA\[|\]\]>/g,''));
-    const target=entry[1].match(/<link[^>]*>([^<]+)<\/link>/i)?.[1] || entry[1].match(/<link\b[^>]*href=["']([^"']+)/i)?.[1];
-    const url=target?safePublicUrl(target.replace(/&amp;/g,'&'),origin):null;
-    if(url && publicSourceAdapter(url)?.family==='local' && publicPublisher(url)?.group===publicPublisher(origin)?.group && /oferta|vacante|empleo|concurso|postul/i.test(title+' '+url)) candidates.set(url,title.slice(0,200));
+  for(const entry of employmentFeedLinks(raw)){
+    const title=publicText(entry.title),url=safePublicUrl(entry.target,origin);
+    if(!url || publicPublisher(url)?.group!==publicPublisher(origin)?.group ||
+      !/oferta|vacante|empleo|concurso|postul/i.test(title+' '+url))continue;
+    if(entry.isAttachment?publicDocumentUrl(url):Boolean(publicSourceAdapter(url)))candidates.set(url,title);
   }
   for (const anchor of raw.matchAll(/<a\b([^>]*)href\s*=\s*["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi)) {
     const url = safePublicUrl(anchor[2].replace(/&amp;/g,'&'),origin);
@@ -142,7 +143,7 @@ export function publicRenderRequired(raw:string) {
 export function publicDocumentWork(current?:ScanState | null) {
   const items=[...(current?.documentPending || []),...(current?.pending || [])].flatMap(item=>{
     const url=safePublicUrl(item.url),publisherPage=safePublicUrl(item.publisherPage || item.url);
-    if (!url || !publisherPage || staleDocumentUploadPath(url) || nonEmploymentStory(url) || nonEmploymentStory(publisherPage) || !(publicSourceAdapter(url)?.family==='local' || publicDocumentUrl(url) && publicPublisher(url)?.group==='munilumaco.cl') ||
+    if (!url || !publisherPage || staleDocumentUploadPath(url) || nonEmploymentStory(url) || nonEmploymentStory(publisherPage) || !(publicSourceAdapter(url)?.family==='local' || publicDocumentUrl(url) && publicPublisher(url)) ||
         publicPublisher(url)?.group!==publicPublisher(publisherPage)?.group) return [];
     return [{ url,source:item.source,publisher_page:publisherPage,
       kind:publicDocumentUrl(url)?'document':'local_page' }];
@@ -153,7 +154,14 @@ export function publicDocumentWork(current?:ScanState | null) {
       ? [{ url,source:item.source,publisher_page:url,kind:'rendered_page' }] : [];
   });
   return { schema:'trabajo-cerca.document-work.v1',read_only:true,paid_provider_calls:0,
-    items:[...rendered,...items].slice(0,100),checked_at:current?.checkedAt || null,coverage_complete:false };
+    items:[...items.filter(item=>item.kind==='document'),...rendered,...items.filter(item=>item.kind!=='document')].slice(0,100),
+    rawDocumentInputs:current?.documentPending?.length ?? null,
+    eligibleDocuments:items.filter(item=>item.kind==='document').length,checked_at:current?.checkedAt || null,coverage_complete:false };
+}
+
+export async function readPublicDocumentWork() {
+  const [current]=await db.get<ScanState>(CURSOR,['cursor'],{consistent:true});
+  return publicDocumentWork(current);
 }
 
 export function pendingCandidateIndex(items:PublicCandidate[], lane=0,providerPosition=0) {
@@ -238,7 +246,8 @@ export function verifiedPublicRecord(offer:PublicVerification, now=Date.now()):S
     verificationMethod:offer.verification_method,verificationReason:offer.reason };
 }
 
-export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date.now()) {
+export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date.now(),
+    tracking?:{runId?:string;engine?:'A'|'B'|'C';discoveredAt?:string}) {
   const adapter = publicSourceAdapter(offer.url || '');
   if (!adapter || adapter.family==='aggregator') throw new Error('Unconfirmed offer identity');
   const identity = hash(adapter.identityUrl), table = 'radar_external_'+identity.slice(0,32);
@@ -257,6 +266,8 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
       workLocationEvidence:old!.workLocationEvidence,secondaryMarket:false,
     }:{}),
     createdAt:old?.createdAt || new Date(now).toISOString(),
+    ...(!old?{traceVersion:1,sourceProducer:tracking?.engine??'A',
+      discoveredAt:tracking?.discoveredAt??null,storedAt:new Date(now).toISOString()}:{}),
     externalIdentity:identity,externalVerifiedAt:new Date(now).toISOString() };
   if (Buffer.byteLength(JSON.stringify(record))>230*1024) throw new Error('Public offer exceeds byte budget');
   let id = old?.id;
@@ -268,13 +279,23 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
     if(!updatedRows[0])throw new Error('Public offer update failed');
   } else {
     id='free-'+identity.slice(0,40);
-    const [createdRows]=await db.transact([
+    const writes=[
       db.tx.add(table,[{ ...record,id }]),
       db.tx.add('public_feed_changes',[{source:table,sourceId:id,queuedAt:new Date(now).toISOString()}]),
-    ]);
-    if(!createdRows[0])throw new Error('Public offer already exists; reconcile before advancing');
+    ] as const;
+    if(tracking?.runId){
+      const intake={id,table,engine:'A',source:'trabajando',runId:tracking.runId,storedAt:now,status:'stored'};
+      await db.transact([
+        ...writes,
+        db.tx.add('trabajando_publication_receipts_v1',[intake]),
+        db.tx.add('trabajando_visibility_pending_v1',[intake]),
+      ]);
+    }else{
+      const [createdRows,feedChanges]=await db.transact(writes);
+      if(!createdRows[0] || !feedChanges[0])throw new Error('Public offer write unconfirmed');
+    }
   }
-  return { table,id,url:offer.url };
+  return { table,id,url:offer.url,created:!old };
 }
 
 async function closeKnownOffer(url:string,result:PublicVerification,page:{url:string;status:number;raw:string},now:number) {
@@ -428,7 +449,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));
       for (const item of links.candidates) if (!seenPending.has(item.url)) {
         if (staleDocumentUploadPath(item.url,now) || nonEmploymentStory(item.url) || nonEmploymentStory(page.url)){seenPending.add(item.url);continue;}
-        if (onboarding && state.priorityCandidates.length<3) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url });
+        if (onboarding && state.priorityCandidates.length<3 && !publicDocumentUrl(item.url)) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url });
         else if (publicDocumentUrl(item.url) && (!bcResolved[item.url] || (bcResolved[item.url] as {reason?:string})?.reason==='pdf_byte_limit') && state.documentPending.length<180) state.documentPending.push({url:item.url,source:source.name,publisherPage:page.url});
         else if (state.pending.length<100 && !publicDocumentUrl(item.url)) state.pending.push({ url:item.url,source:source.name,publisherPage:page.url });
         else {
@@ -468,6 +489,13 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
     if(selected<0 && state.priorityCandidates.length>0){priorityQueue=true;selected=0;}
     if (selected<0) break;
     const candidate = priorityQueue ? state.priorityCandidates[0] : state.pending[selected];
+    // Recover legacy documents accidentally put into the HTML priority lane.
+    if(publicDocumentUrl(candidate.url)){
+      if(state.documentPending.length>=180)break;
+      if(!state.documentPending.some(item=>item.url===candidate.url))state.documentPending.push(candidate);
+      if(priorityQueue)state.priorityCandidates.shift();else state.pending.splice(selected,1);
+      continue;
+    }
     const page = await fetchPublicPage(candidate.url,candidate.url);reads++;
     let result = page.error ? { status:'pending',reason:page.error } as PublicVerification : evaluatePublicJob(candidate.url,page.raw,page.url,page.status,now);
     if (result.reason==='aggregator_requires_original_source') {
@@ -544,11 +572,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
   return summary;
 }
 
-export async function freePublicSourceStatus() {
-  const current = (await db.list<ScanState>(CURSOR,{ limit:1 })).items[0];
-  const snapshot = current ? await currentPublicFeedManifest() : null;
-  const receipts = Array.isArray(current?.summary?.receipts) ? current.summary.receipts as Stored[] : [];
-  const visible = snapshot ? receipts.filter(receipt => snapshot.manifest.pages.some(page => page.keys.includes(String(receipt.table)+':'+String(receipt.id)))) : [];
+function reviewWork(current:ScanState|null|undefined){
   const dueRechecks=(current?.rechecks || [])
     .filter(item => !Number.isFinite(Date.parse(String(item.nextCheckAt||''))) || Date.parse(String(item.nextCheckAt||''))<=Date.now())
     .sort((a,b)=>(Date.parse(String(a.nextCheckAt||a.lastAttemptAt||''))||0)-(Date.parse(String(b.nextCheckAt||b.lastAttemptAt||''))||0));
@@ -559,7 +583,21 @@ export async function freePublicSourceStatus() {
   const recheckWork=[...dueRechecks.slice(recheckOffset),...dueRechecks.slice(0,recheckOffset)]
     .slice(0,24)
     .map(item=>({url:String(item.url||''),source:'Reverificación pública',nextCheckAt:item.nextCheckAt||null}));
-  return { readOnly:true,providerCalls:0,initialized:Boolean(current),summary:current?.summary || null,recheckWork,
+  return {summary:current?.summary||null,recheckWork,checkedAt:current?.checkedAt||null};
+}
+
+export async function readPublicReviewWork(){
+  const [current]=await db.get<ScanState>(CURSOR,['cursor'],{consistent:true});
+  return reviewWork(current);
+}
+
+export async function freePublicSourceStatus() {
+  const current = (await db.list<ScanState>(CURSOR,{ limit:1 })).items[0];
+  const snapshot = current ? await currentPublicFeedManifest() : null;
+  const receipts = Array.isArray(current?.summary?.receipts) ? current.summary.receipts as Stored[] : [];
+  const keys=snapshot?new Set(snapshot.manifest.pages.flatMap(page=>page.keys)):null;
+  const visible = keys ? receipts.filter(receipt => keys.has(String(receipt.table)+':'+String(receipt.id))) : [];
+  return { readOnly:true,providerCalls:0,initialized:Boolean(current),...reviewWork(current),
     // Confirmation only concerns receipts from the MOST RECENT A scan.
     // This is NOT the historical publication count; avoid false zero claims.
     publishedConfirmed:snapshot ? visible.length : null,
@@ -568,6 +606,6 @@ export async function freePublicSourceStatus() {
     storedLatestScan:receipts.length,
     awaitingLatestScanProjection:snapshot ? receipts.length-visible.length : null,
     feedManifestId:snapshot?.manifestId || null,
-    historicalCoverageComplete:false,pending:current?.pending.length ?? null,checkedAt:current?.checkedAt || null,
+    historicalCoverageComplete:false,pending:current?.pending.length ?? null,
     documentWork:publicDocumentWork(current) };
 }

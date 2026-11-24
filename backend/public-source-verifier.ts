@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { socialSourceDate } from './social-evidence';
 import { publicSourceAdapter, safePublicUrl, samePublicJob } from './public-source-adapters';
-import { workplaceWithoutEmployerNames } from './worksite-semantics';
+import { worksiteMentionsCommune } from './worksite-semantics';
 
 type Data = Record<string, unknown>;
 export type PublicVerification = {
@@ -26,7 +26,7 @@ export type PublicVerification = {
 
 // Publication scope is strictly the twelve Trabajo Cerca communes; Mininco is part of Collipulli.
 // Recruiter addresses or neighboring hubs must never make an outside vacancy eligible.
-const SOURCE_WORK_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Mininco','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria'];
+const SOURCE_WORK_PLACES = ['Angol','Collipulli','Ercilla','Renaico','Los Sauces','Purén','Traiguén','Lumaco','Nacimiento','Negrete','Mulchén','Victoria'];
 const sourceFold = (value:unknown) => String(value ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sourceDecode = (value:string) => value.replace(/&(?:amp|quot|apos|lt|gt|nbsp);/g, entity => ({ '&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>','&nbsp;':' ' }[entity] || entity));
 export const publicText = (value:string) => sourceDecode(value.replace(/<[^>]*>/g,' ')).replace(/\s+/g,' ').trim();
@@ -103,22 +103,6 @@ function bneLabelledPosting(raw:string, url:string):Data | null {
     datePosted:calendars[0][1],validThrough:calendars[1][1] };
 }
 
-// \"Nueva Victoria\" (northern mining site) and Victoria's Secret are not
-// evidence for the commune Victoria in the Araucanía region.
-function genuineWorksitePlaceMention(scope:string, place:string) {
-  // A JSON-LD locality or explicit description field can still contain the
-  // name of a business division. Remove those company names before locating.
-  const text=workplaceWithoutEmployerNames(scope);
-  const expression=new RegExp('\\b'+sourceFold(place)+'\\b','g');
-  for (const match of text.matchAll(expression)) {
-    if (place!=='Victoria') return true;
-    const before=text.slice(0,match.index);
-    const after=text.slice(match.index+match[0].length);
-    if (/\b(?:nueva|la)\s+$/.test(before) || /^\s*['’]?s\s+secret\b/.test(after) || /\b(?:santiago|region metropolitana)\b/.test(text)) continue;
-    return true;
-  }
-  return false;
-}
 
 function descriptionWorksite(value:unknown) {
   const text=typeof value==='string' ? sourceDecode(value.replace(/<br\s*\/?>|<\/p>/gi,'\n').replace(/<[^>]*>/g,' ')) : '';
@@ -135,9 +119,8 @@ function descriptionWorksite(value:unknown) {
   const places=new Set<string>();
   for (const match of scopes) {
     const scope=sourceFold(match[1]);
-    const found=SOURCE_WORK_PLACES.filter(place=>genuineWorksitePlaceMention(scope,place));
+    const found=SOURCE_WORK_PLACES.filter(place=>worksiteMentionsCommune(scope,place));
     if (!found.length) return {observed:true,commune:null,literal:match[0]};
-    if (found.length===2 && found.includes('Mininco') && found.includes('Collipulli')) found.splice(found.indexOf('Collipulli'),1);
     for (const place of found) places.add(place);
   }
   return {observed:true,commune:places.size===1 ? [...places][0] : null,literal:scopes.map(match=>match[0]).join(' | ')};
@@ -160,8 +143,7 @@ function worksite(job:Data) {
   for (const location of locations) {
     const address=(location as Data).address as Data;
     const text = sourceFold(address.addressLocality);
-    const places = SOURCE_WORK_PLACES.filter(place => genuineWorksitePlaceMention(text,place));
-    if (places.length===2 && places.includes('Mininco') && places.includes('Collipulli')) places.splice(places.indexOf('Collipulli'),1);
+    const places = SOURCE_WORK_PLACES.filter(place => worksiteMentionsCommune(text,place));
     if (!places.length) return null;
     for (const place of places) found.add(place);
   }

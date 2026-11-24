@@ -282,7 +282,7 @@ export async function directChatGPTImport(body:unknown){
     }
     const id='chatgpt_'+x.id_fuente;
     if(!commit){results.push({id:x.id_fuente,status:'ready_for_direct_import'});continue;}
-    const rec={id,kind:'job_offer',origin:'radar',sourceProducer:producer,title:x.cargo,company:x.empresa,
+    const rec={id,kind:'job_offer',origin:'radar',sourceProducer:producer,traceVersion:1,storedAt:now,title:x.cargo,company:x.empresa,
       workLocation:social?(x.work_location||'Lugar de trabajo no informado'):(x.ubicacion_trabajo||x.comunas.join(' / ')),workCommunes:social?[]:x.comunas,recruitmentCommunes:social?x.recruitment_communes||['Angol']:[],recruitmentZones:social?['Postulación presencial OMIL Angol']:[],
       ...(!social?{workLocationEvidence:{method:strict?'approved_chatgpt_original_worksite':'approved_motor_d_original_worksite',
         literal:x.ubicacion_trabajo||x.comunas.join(' / ')}}:{}),

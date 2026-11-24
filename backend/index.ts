@@ -1,3 +1,6 @@
+import {operationalView} from './operational-metrics';
+import {claimVerification,settleVerification,readVerificationIntake,saveVerificationRetryCursor,clearOrphanedIntake,verificationQueueView} from './verification-work';
+import { selectRescueBatch } from './rescue-work-policy';
 import {processAdminReviewBatch,confirmAdminReviewPublications,isAdminVerificationSlot} from './radar-admin-verification';
 import {updateCommercialCampaignDetails} from './commercial-editor';
 import {withSecurityHeaders} from './security-headers';
@@ -702,7 +705,7 @@ function isCurrentlyActive(item: ListingRecord) {
 function publicRecord<T extends ListingRecord & { id: string }>(item: T) {
   const { ownerToken: _ownerToken, ownerHash: _ownerHash, contact, evidenceImagePath: _evidenceImagePath, socialEvidence: _socialEvidence, ...safe } = item;
   const projected={...safe} as Record<string,unknown>;
-  for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof','adminVerificationEvidence','adminVerificationAttempt']) delete projected[field];
+  for (const field of ['localContactEvidence','cmpcPrimaryReview','primarySourceEvidence','documentUnitProof','adminVerificationEvidence','adminVerificationAttempt','traceVersion','queuedAt','storedAt','verificationAttempts']) delete projected[field];
   return { ...safe, ...Object.fromEntries(Object.keys(safe).map(key=>[key,projected[key]])), hasContact: Boolean(contact) };
 }
 
@@ -1296,7 +1299,7 @@ async function verifyPendingOffer(item:ListingRecord & { id:string }) {
   const pending = (reason:string, method='Revisión automática') => ({ id, record:{ ...record, review:true, verified:false, status:'Por confirmar', verificationCheckedAt:checkedAt, verificationReason:reason, verificationMethod:method, verificationVersion:VERIFICATION_VERSION } });
   const inconclusive = (reason:string, method='Revalidación técnica') => {
     const canKeep = record.verified === true && record.review === false && Boolean(record.verifiedAt) && Boolean(record.sourcePublishedAt) && !offerRetentionReason(record as unknown as Record<string,unknown>);
-    if (canKeep) return { id, record:{ ...record, active:true, review:false, verified:true, status:'Verificada', verificationCheckedAt:checkedAt, verificationReason:reason, verificationMethod:method, verificationVersion:VERIFICATION_VERSION } };
+    if (canKeep) return { id, inconclusive:true, record:{ ...record, active:true, review:false, verified:true, status:'Verificada', verificationCheckedAt:checkedAt, verificationReason:reason, verificationMethod:method, verificationVersion:VERIFICATION_VERSION } };
     return pending(reason, method);
   };
   const reject = (reason:string) => ({ id, record:{ ...record, review:false, verified:false, active:false, status:'Descartada', verificationCheckedAt:checkedAt, verificationReason:reason, verificationMethod:'Revisión automática', verificationVersion:VERIFICATION_VERSION } });
@@ -1317,7 +1320,7 @@ async function verifyPendingOffer(item:ListingRecord & { id:string }) {
     const tier=sourceVerificationTier(verificationHost(record.url,record.sourceDomain));
     const original=parseDiscoveryDate(record.sourcePublishedAt||'');
     const workEvidence=[record.title,record.note,record.workLocation,record.portalPlace].filter(Boolean).join(' ');
-    const targetConfirmed=hasTargetEvidence(workEvidence,record);
+    const targetConfirmed=Boolean((record as unknown as Record<string,unknown>).workLocationEvidence) && hasTargetEvidence(workEvidence,record);
     const workInsideTerritory=record.workCommunes.some(place=>PILOT.includes(place)||place==='Mininco');
     const sourceDeadline=Date.parse(String(record.sourceValidThrough||''));
     const stillOpen=!Number.isFinite(sourceDeadline)||sourceDeadline>=Date.now();
@@ -1618,15 +1621,23 @@ async function processPendingOffers(limit=40) {
   // Avoid repeatedly checking the same inconclusive sources throughout the day.
   const reviewCutoff = Date.now() - 24 * 3600000;
   const liveRecheckCutoff = Date.now() - 24 * 3600000;
-  const prioritized=new Set(adminIds);
-  const allJobs=[...new Map([...rows.items,...adminJobs]
+  const intake=await readVerificationIntake();
+  const byId=new Map(intake.items.map(item=>[item.jobId,item]));
+  const newIds=[...byId.keys()];
+  const newJobs=newIds.length?await db.get<ListingRecord>('radar_jobs',newIds,{consistent:true}):[];
+  const durableJobs=newJobs.flatMap((job,index)=>job?[{...job,id:newIds[index]}]:[]);
+  for(let i=0;i<newJobs.length;i++){
+    if(!newJobs[i] || !newJobs[i]?.active)await clearOrphanedIntake(byId.get(newIds[i])!.id);
+  }
+  const prioritized=new Set([...adminIds,...newIds]);
+  const allJobs=[...new Map([...rows.items,...adminJobs,...durableJobs]
     .map(item=>[item.id,item])).values()];
   const pendingCandidates = allJobs
     .filter(item => item.active && item.kind === 'job_offer')
     .filter(item => item.discoveredBy!=='admin-review-inbox-v1' || prioritized.has(item.id) || (item.verified===true && item.review===false))
     .filter(item => prioritized.has(item.id) || item.review || item.verified || Boolean(item.verificationMethod))
     .filter(item => {
-      if (item.verificationVersion !== VERIFICATION_VERSION) return true;
+      if (byId.has(item.id) || item.verificationVersion !== VERIFICATION_VERSION) return true;
       // Administrator-prioritized rescue items receive an earlier bounded check.
       if (prioritized.has(item.id)) {
         const priorityChecked = Date.parse(item.verificationCheckedAt || '');
@@ -1654,55 +1665,59 @@ async function processPendingOffers(limit=40) {
   // Three disjoint priority lanes; each candidate is owned by one lane per cycle.
   // Run inside the existing single scheduled publisher to avoid cross-invocation
   // cursor races until the provider supports a transactional distributed lease.
-  const lanes={fast:[] as ListingRecord[],document:[] as ListingRecord[],recovery:[] as ListingRecord[]};
+  const lanes:{fast:Array<ListingRecord & {id:string}>;document:Array<ListingRecord & {id:string}>;recovery:Array<ListingRecord & {id:string}>}={fast:[],document:[],recovery:[]};
   for(const item of pendingCandidates){
     const tier=sourceVerificationTier(verificationHost(item.url,item.sourceDomain));
     const lane=(tier==='official'||tier==='portal')?'fast':(tier==='social'?'document':'recovery');
     lanes[lane].push(item);
   }
-  const quotas={fast:Math.ceil(limit/2),document:Math.floor(limit/4),recovery:limit-Math.ceil(limit/2)-Math.floor(limit/4)};
-  const selected=[...lanes.fast.splice(0,quotas.fast),...lanes.document.splice(0,quotas.document),...lanes.recovery.splice(0,quotas.recovery)];
-  for(const lane of [lanes.fast,lanes.document,lanes.recovery])selected.push(...lane.splice(0,Math.max(0,limit-selected.length)));
-  const pending=selected.slice(0,limit);
+  const capacity=Math.min(24,limit+(intake.fresh>=limit?8:0));
+  const pending=selectRescueBatch(lanes,capacity,item=>item.verified===true && item.review!==true);
+  const previouslyVerified=new Set(pending.filter(item=>item.verified===true).map(item=>item.id));
   const laneCounts={fast:pending.filter(item=>['official','portal'].includes(sourceVerificationTier(verificationHost(item.url,item.sourceDomain)))).length,document:pending.filter(item=>sourceVerificationTier(verificationHost(item.url,item.sourceDomain))==='social').length,recovery:pending.filter(item=>!['official','portal','social'].includes(sourceVerificationTier(verificationHost(item.url,item.sourceDomain)))).length};
-  const updates:Array<{ id:string; record:Record<string,unknown> }> = [];
-  // Priority 1 permanent rule: inconclusive evidence is NOT proof of closure.
-  // Keep historical vacancies in retry/review; only explicit closure or verified
-  // non-job evidence may remove them. No automatic age-based archival.
-  let archivedUnconfirmed=0;
-  for (let i=0; i<pending.length; i+=16) {
-    const resolved = await Promise.all(pending.slice(i, i+16).map(async item => {
-      const decision=await verifyPendingOffer(item);
-      // An inconclusive source never becomes a terminal rejection merely
-      // because its original publication is old. Preserve it for retry.
-      return decision;
+  const updates:Array<{id:string;record:Record<string,unknown>;inconclusive?:boolean}>=[];
+  let commitConflicts=0, verificationErrors=0;
+  for(let i=0;i<pending.length;i+=4){
+    const batch=await Promise.allSettled(pending.slice(i,i+4).map(async item=>{
+      const {id,...before}=item;
+      const lease=await claimVerification(id,before,VERIFICATION_VERSION,byId.get(id)?.admittedAt);
+      if(!lease)return;
+      let decision;
+      try{decision=await verifyPendingOffer(item);}
+      catch{
+        verificationErrors++;
+        await settleVerification(lease,before,{id,record:before},Date.now(),true);
+        return;
+      }
+      if(await settleVerification(lease,before,decision))updates.push(decision);
+      else commitConflicts++;
     }));
-    updates.push(...resolved);
+    for(const outcome of batch)if(outcome.status==='rejected'){
+      verificationErrors++;
+      console.warn('VERIFICATION_WORK_ERROR '+(outcome.reason instanceof Error?outcome.reason.name:'unknown'));
+    }
   }
-  const saved = updates.length ? await trackedFeedUpdate('radar_jobs', updates) : [];
-  if (saved.length !== updates.length || saved.some(ok => !ok)) {
-    throw new Error('Partial verification write; publication counters must not claim success');
-  }
-  // Keep the current page while it still has unprocessed candidates.
-  // Updated records have a fresh verificationCheckedAt and will not be reselected.
-  // Inbox additions do not hold the normal source-page cursor hostage.
-  const pageIds=new Set(rows.items.map(item=>item.id));
-  const pageEligible=pendingCandidates.filter(item=>pageIds.has(item.id));
-  const processedIds=new Set(updates.map(item=>item.id));
-  const pageHasMore=pageEligible.some(item=>!processedIds.has(item.id));
-  await saveRadarPageCursor('radar_verification_cursor',cursor.items[0],
-    pageHasMore?(cursor.items[0]?.nextToken||undefined):rows.nextToken);
-  const verified = updates.filter(update => update.record.verified === true).length;
+  // Continue the legacy sweep even when rows are blocked or claimed by another worker.
+  // The ready/retry tables independently keep actionable work reachable.
+  await saveRadarPageCursor('radar_verification_cursor',cursor.items[0],rows.nextToken);
+  await saveVerificationRetryCursor(intake.retryCursor);
+  const pageHasMore=Boolean(rows.nextToken);
+  const archivedUnconfirmed=0;
   const rejected = updates.filter(update => update.record.active === false).length;
+  const verifiedUpdates=updates.filter(update=>update.record.active!==false && update.record.verified===true && !update.inconclusive);
+  const newlyVerified=verifiedUpdates.filter(update=>!previouslyVerified.has(update.id));
+  const verified=verifiedUpdates.length;
   return {
     processed:updates.length, verified, rejected,
+    newlyVerified:newlyVerified.length, reverified:verified-newlyVerified.length,
     kept:updates.length - verified - rejected,
     adminQueuedSeen:adminJobs.length,
     adminProcessed:updates.filter(update=>prioritized.has(update.id)).length,
     archivedUnconfirmed,
-    pageHasMore,cursorAdvanced:!pageHasMore,
+    pageHasMore,cursorAdvanced:true,commitConflicts,verificationErrors,
+    freshIntakeSample:intake.fresh,retryIntakeSample:intake.retrySample,
     scanned:rows.items.length,due:pendingCandidates.length,laneCounts,
-    verifiedIds:updates.filter(update=>update.record.verified===true&&update.record.active!==false).map(update=>update.id).slice(0,16),
+    verifiedIds:newlyVerified.map(update=>update.id),
   };
 }
 
@@ -3019,10 +3034,9 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   // tracked feed writes, preserving source evidence and deduplication.
   let result:Record<string,unknown>={processed:0,verified:0,rejected:0,kept:0,status:'not_scheduled'};
   const priorityRescueStartedAt=Date.now();
-  if(event?.type==='cron'&&event.name==='verify-publish'){
-    try{result={...(await processPendingOffers(16)),status:'priority_rescue_checked'};console.warn('PRIORITY_JOB_RESCUE '+JSON.stringify(result));}
-    catch(cause){console.warn('PRIORITY_JOB_RESCUE_ERROR '+String(cause).slice(0,240));result={status:'error',reason:String(cause).slice(0,120)};}
-  }
+  const scheduled=event?.type==='cron'&&event.name==='verify-publish'?new Date(event.scheduledTime):null;
+  const standardSlot=scheduled!==null&&scheduled.getUTCMinutes()%15===5;
+
   // Archive confirmed closures in the existing publisher cron, before the feed is advanced.
   if(event?.type==='cron'&&event.name==='verify-publish'&&new Date(event.scheduledTime).getUTCMinutes()===35){
     try{console.warn('RADAR_ARCHIVE '+JSON.stringify(await archiveConfirmedClosedJobs()));}
@@ -3030,7 +3044,7 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
   }
   const ingestion={stored:0,published:0,status:'legacy_signed_pull_frozen'};
   // The D bridge processes one durable batch every publisher run.
-  if(event?.type==='cron' && event.name==='verify-publish'){
+  if(standardSlot){
     try { await motorDAutoImportHandler(); }
     catch(cause){console.warn('MOTOR_D_BRIDGE_HOOK_ERROR '+String(cause).slice(0,150));}
     try { const bridge=await chatgptAutoImportHandler();const report=JSON.parse(String(bridge.body||'{}')) as Record<string,unknown>;await db.tx.update('chatgpt_bridge_latest',[{id:'current',record:report}]); }
@@ -3047,6 +3061,10 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
     try { console.warn('MOTOR_D_MUNICIPAL_RECHECK '+JSON.stringify(
       await revalidateOfficialMunicipalOpenOffers())); }
     catch(cause){console.warn('MOTOR_D_MUNICIPAL_RECHECK_ERROR '+String(cause).slice(0,170));}
+  }
+  if(event?.type==='cron'&&event.name==='verify-publish'){
+    try{result={...(await processPendingOffers(16)),status:'priority_rescue_checked'};console.warn('PRIORITY_JOB_RESCUE '+JSON.stringify(result));}
+    catch(cause){console.warn('PRIORITY_JOB_RESCUE_ERROR '+String(cause).slice(0,240));result={status:'error',reason:String(cause).slice(0,120)};}
   }
   const administrative=isAdminVerificationSlot(event) ? await processAdminReviewBatch({scheduledTime:event!.scheduledTime,project:projectFeedListing}) : undefined;
   const feedProjector={ revision:'published-retention-counts-v11-inmel-territorial-withdrawal', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
@@ -3065,22 +3083,29 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
     catch(cause) { console.warn('PUREN_PUBLIC_SOURCE_AUDIT_ERROR '+String(cause).slice(0,180)); }
   }
   const receipts={status:'legacy_receipts_frozen',published:0};
-  const motorDConfirm=await confirmMotorDPublications();
+  const motorDConfirm=standardSlot?await confirmMotorDPublications():{status:'deferred_to_standard_slot'};
   console.warn('MOTOR_D_PUBLICATION_CONFIRM '+JSON.stringify(motorDConfirm));
-  const chatgptConfirm=await confirmChatGPTPublications();
+  const chatgptConfirm=standardSlot?await confirmChatGPTPublications():{status:'deferred_to_standard_slot'};
   console.warn('CHATGPT_PUBLICATION_CONFIRM '+JSON.stringify(chatgptConfirm));
   const adminPublications=isAdminVerificationSlot(event) ? await confirmAdminReviewPublications() : undefined;
   if(event?.type==='cron'&&event.name==='verify-publish'){
     const verifiedIds=Array.isArray(result.verifiedIds)?result.verifiedIds.filter((id):id is string=>typeof id==='string').slice(0,16):[];
-    const visibility=await Promise.all(verifiedIds.map(async id=>{try{return Boolean(await readPublicFeedItem(id));}catch{return false;}}));
+    const visibility=await Promise.all(verifiedIds.map(async id=>{try{return (await readPublicFeedItem(id))?.verified===true;}catch{return false;}}));
     const visibleVerified=visibility.filter(Boolean).length;
-    const telemetry={id:'latest',checkedAt:new Date().toISOString(),processed:Number(result.processed||0),verified:Number(result.verified||0),kept:Number(result.kept||0),rejected:Number(result.rejected||0),adminProcessed:Number(result.adminProcessed||0),archivedUnconfirmed:Number(result.archivedUnconfirmed||0),status:String(result.status||'unknown'),durationMs:Date.now()-priorityRescueStartedAt,publicVerifiedJobs:Number(feed.totalVerifiedJobOffers||0),feedRebuilding:Boolean(feed.rebuilding),publicationConfirmed:verifiedIds.length>0&&visibleVerified===verifiedIds.length&&!feed.rebuilding,publicationConfirmationStatus:feed.rebuilding?'feed_rebuilding':verifiedIds.length===0?'no_new_verified':visibleVerified===verifiedIds.length?'verified_items_visible':'verified_items_not_all_visible',visibleVerified,visibilityChecked:verifiedIds.length,laneCounts:result.laneCounts||{},cursorAdvanced:Boolean(result.cursorAdvanced),scanned:Number(result.scanned||0),due:Number(result.due||0)};
+    const telemetry={id:'latest',checkedAt:new Date().toISOString(),processed:Number(result.processed||0),verified:Number(result.verified||0),kept:Number(result.kept||0),rejected:Number(result.rejected||0),adminProcessed:Number(result.adminProcessed||0),archivedUnconfirmed:Number(result.archivedUnconfirmed||0),status:String(result.status||'unknown'),durationMs:Date.now()-priorityRescueStartedAt,publicVerifiedJobs:Number(feed.totalVerifiedJobOffers||0),feedRebuilding:Boolean(feed.rebuilding),publicationConfirmed:verifiedIds.length>0&&visibleVerified===verifiedIds.length&&!feed.rebuilding,publicationConfirmationStatus:feed.rebuilding?'feed_rebuilding':verifiedIds.length===0?'no_new_verified':visibleVerified===verifiedIds.length?'verified_items_visible':'verified_items_not_all_visible',visibleVerified,newlyVerified:result.newlyVerified??null,reverified:result.reverified??null,freshIntakeSample:result.freshIntakeSample??null,retryIntakeSample:result.retryIntakeSample??null,commitConflicts:result.commitConflicts??null,verificationErrors:result.verificationErrors??null,visibilityChecked:verifiedIds.length,laneCounts:result.laneCounts||{},cursorAdvanced:Boolean(result.cursorAdvanced),scanned:Number(result.scanned||0),due:Number(result.due||0)};
     try{
       await db.tx.update('radar_priority_rescue_telemetry',[{id:'latest',record:telemetry}]);
       const [historyId]=await db.add('radar_priority_rescue_history',[{...telemetry,runId:String(event.scheduledTime||telemetry.checkedAt)}]);
       console.warn('PRIORITY_RESCUE_TELEMETRY '+JSON.stringify({...telemetry,historySaved:Boolean(historyId)}));
     }
     catch(cause){console.warn('PRIORITY_RESCUE_TELEMETRY_ERROR '+String(cause).slice(0,160));}
+  }
+  if(scheduled?.getUTCMinutes()===15){
+    const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'America/Santiago',hour:'2-digit',hourCycle:'h23'}).format(scheduled));
+    if([1,5,9,13,17,21].includes(hour)){
+      try{await captureEngineTelemetry(scheduled.toISOString());}
+      catch(error){console.warn('ENGINE_TELEMETRY_CHECKPOINT_ERROR '+(error instanceof Error?error.name:'unknown'));}
+    }
   }
   console.warn('RADAR_VERIFY_HISTORY '+JSON.stringify({documents,providerSlot,history,result,ingestion,receipts,administrative,adminPublications,publicJobs:feed.totalVerifiedJobOffers,feedRebuilding:feed.rebuilding}));
   if (documentError) throw documentError;
@@ -3241,8 +3266,12 @@ const applicationRouter = router({
   }],
   'POST /api/admin/gemini/pull': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), async () => json(await pullGeminiReviewQueue())],
   'GET /api/admin/ops-telemetry': [requireAuth(),requireAdminEmailAllowlist(ADMIN_EMAILS),async () => {
-    const snapshot=await executiveEngineTelemetry();
-    const response=json(snapshot);
+    const [snapshot,operation,workQueue]=await Promise.all([
+      executiveEngineTelemetry(),
+      operationalView().catch(()=>null),
+      verificationQueueView().catch(()=>null),
+    ]);
+    const response=json({...snapshot,operation,workQueue,operationReadState:operation?'available':'read_error'});
     response.headers={...response.headers,'Cache-Control':'no-store, private','Vary':'Authorization'};
     return response;
   }],

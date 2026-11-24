@@ -139,7 +139,7 @@ export async function motorBIndependentHandler(){
       detailPages++;
       const evidence=evaluatePublicJob(job.url,body,job.url,200,now);
       if(evidence.status==='verified'){
-        try{await saveVerifiedPublicOffer(evidence,now);ready++;verifiedPublished++;console.warn('MOTOR_B_SOURCE_PUBLISHED '+JSON.stringify({source:job.source,url:job.url}));}
+        try{await saveVerifiedPublicOffer(evidence,now,{engine:'B'});ready++;verifiedPublished++;console.warn('MOTOR_B_SOURCE_PUBLISHED '+JSON.stringify({source:job.source,url:job.url}));}
         catch(cause){errors.push('publication:'+job.source+':'+String(cause).slice(0,100));}
       }else if(evidence.status==='pending'||evidence.status==='review_ready'){
         markReview('individual_'+evidence.reason.slice(0,70));

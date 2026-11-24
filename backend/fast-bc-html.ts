@@ -1,16 +1,16 @@
 import { db } from '@appdeploy/sdk';
 import { createHash } from 'node:crypto';
-import { freePublicSourceStatus, publicDocumentUrl, saveVerifiedPublicOffer } from './free-public-sources';
+import { readPublicReviewWork, publicDocumentUrl, saveVerifiedPublicOffer } from './free-public-sources';
 import { safePublicUrl, publicSourceAdapter } from './public-source-adapters';
 import { fetchPublicPage } from './public-source-http';
-import { evaluatePublicJob } from './public-source-verifier';
+import { evaluatePublicJob, type PublicVerification } from './public-source-verifier';
 import { bcCheckLimit } from './recheck-policy';
 
 type JobResult={id:string;url:string;checkedAt:string;firstReason:string;decision:string;reason:string;published:boolean;attempts?:number};
 const TABLE='fast_bc_html_decisions_v1';
 const STATUS='fast_bc_html_status_v1';
 const key=(url:string)=>createHash('sha256').update('fast-bc-html:'+url).digest('hex').slice(0,48);
-const targetPlaces=new Set(['angol','collipulli','mininco','ercilla','lumaco','los-sauces','puren','renaico','traiguen','victoria','mulchen','negrete','coihue','coigue','nacimiento']);
+const targetPlaces=new Set(['angol','collipulli','mininco','ercilla','lumaco','los-sauces','puren','renaico','traiguen','victoria','mulchen','negrete','coihue','coigue','nacimiento','capitan-pastene','tijeral','huelehueico']);
 const nonTargetCities=new Set(['valdivia','chillan','constitucion','santiago','concepcion','temuco','osorno','talca','puerto-montt','san-jose-de-la-mariquina']);
 const indexPaths=/\/(?:search|trabaje-con-nosotros|empleos|ofertas-laborales|bolsa-de-empleo)\/?$/i;
 function genericSourceIndex(url:string){try{const u=new URL(url);return indexPaths.test(u.pathname) && !u.searchParams.has('id') && !u.searchParams.has('jobId') && !u.searchParams.has('oferta');}catch{return false;}}
@@ -28,13 +28,13 @@ function locationHint(url:string){
 }
 
 export async function runFastBCHtml(){
- const source=await freePublicSourceStatus();
+ const source=await readPublicReviewWork();
  const reviewed=Array.isArray(source.summary?.reviewed)?source.summary.reviewed as Array<{url?:string;status?:string;reason?:string}>:[];
  // Only the latest Motor A first-pass findings are eligible; never import historical queues.
  const seenUrls=new Set<string>();
  const recheckRows=Array.isArray(source.recheckWork)?source.recheckWork as Array<{url?:string}>:[];
- // Explicitly due rechecks receive the first slots in the bounded queue.
- const reviewedWithRechecks=[...recheckRows.map(row=>({...row,status:'pending',reason:'revalidation_due'})),...reviewed];
+ // Include due rechecks but reserve first look for fresh territorial candidates.
+ const reviewedWithRechecks=[...reviewed,...recheckRows.map(row=>({...row,status:'pending',reason:'revalidation_due'}))];
  const todo=reviewedWithRechecks.filter(row=>{
   if(row.status!=='pending' || typeof row.url!=='string' || publicDocumentUrl(row.url))return false;
   const url=safePublicUrl(row.url);
@@ -47,18 +47,20 @@ export async function runFastBCHtml(){
  todo.sort((a,b)=>{
   const outside=Number(locationHint(a.url||'')==='outside_hint')-Number(locationHint(b.url||'')==='outside_hint');
   if(outside!==0)return outside;
-  return Number(b.reason==='revalidation_due')-Number(a.reason==='revalidation_due');
+  return Number(a.reason==='revalidation_due')-Number(b.reason==='revalidation_due');
  });
  let checked=0,verified=0,archived=0,blocked=0,already=0,legacyRecovered=0,deferredOutside=0,deferredIndex=0,storedForFeed=0,storageFailures=0;
+ let unsupported=0,budgetDeferred=0;
  const outcomes:Array<{url:string;decision:string;reason:string}>=[];
  // Walk the entire bounded first-pass result so early already-seen rows cannot starve later ones.
  const checkLimit=bcCheckLimit(todo.length,12);
  for(const row of todo){
-  if(checked>=checkLimit)break;
   const url=safePublicUrl(row.url || '');
-  if(!url || !publicSourceAdapter(url))continue;
+  if(!url){unsupported++;continue;}
   if(genericSourceIndex(url)){deferredIndex++;continue;}
   if(locationHint(url)==='outside_hint'){deferredOutside++;continue;}
+  if(!publicSourceAdapter(url)){unsupported++;continue;}
+  if(checked>=checkLimit){budgetDeferred++;continue;}
   const id=key(url);
   const [prior]=await db.get<JobResult>(TABLE,[id],{consistent:true});
   // A pending or blocked decision is not a final rejection. Retry at most twice,
@@ -74,11 +76,11 @@ export async function runFastBCHtml(){
   }
   checked++;
   const page=await fetchPublicPage(url,url);
-  const result=page.error?{status:'pending',reason:page.error}:
+  const result:PublicVerification=page.error?{status:'pending',reason:page.error}:
     evaluatePublicJob(url,page.raw,page.url,page.status,Date.now());
   let decision='pending_evidence',reason=String(result.reason || 'unresolved').slice(0,120),published=false;
   if(result.status==='verified'){
-   try{await saveVerifiedPublicOffer(result,Date.now());decision='stored_pending_public_feed';published=false;verified++;storedForFeed++;}
+   try{await saveVerifiedPublicOffer(result,Date.now(),{engine:'C',discoveredAt:source.checkedAt??undefined});decision='stored_pending_public_feed';published=false;verified++;storedForFeed++;}
    catch(error){decision='blocked_verification_storage';reason=String(error).slice(0,110);blocked++;storageFailures++;}
   }else if(page.error || [0,401,403,429,500,502,503].includes(page.status)){
    decision='blocked_source';blocked++;
@@ -90,7 +92,7 @@ export async function runFastBCHtml(){
   if(!stored){storageFailures++;console.warn('FAST_B_C_DECISION_WRITE_FAILED '+JSON.stringify({url,decision}));} // Never count failed writes as successful deduplication.
   outcomes.push({url,decision,reason});
  }
- const summary={checkedAt:new Date().toISOString(),aCheckedAt:source.checkedAt,found:todo.length,checked,verified,archived,blocked,already,legacyRecovered,deferredOutside,deferredIndex,storedForFeed,storageFailures,outcomes};
+ const summary={checkedAt:new Date().toISOString(),aCheckedAt:source.checkedAt,found:todo.length,checked,verified,archived,blocked,already,legacyRecovered,deferredOutside,deferredIndex,unsupported,budgetDeferred,storedForFeed,storageFailures,outcomes};
  // Avoid a status write on idle five-minute cron cycles; keep last meaningful result.
  if(checked===0 && storageFailures===0){
   console.warn('FAST_B_C_HTML_IDLE '+JSON.stringify({found:todo.length,already,deferredOutside,deferredIndex}));

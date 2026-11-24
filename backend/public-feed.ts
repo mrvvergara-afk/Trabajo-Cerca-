@@ -1,10 +1,12 @@
+import { verificationIntake } from './verification-work';
 import { db } from '@appdeploy/sdk';
-import { createHash } from 'node:crypto';
+import { candidateTrace, visibilityEvent, hourCounters, VISIBLE, HOURS, type CandidateTrace } from './operational-metrics';
+import { createHash, randomUUID } from 'node:crypto';
 import { publicOfferIdentity, publicFeedIdentity, confirmedTerritorialWithdrawal } from './public-source-adapters';
 
 type FeedSource = string;
 type Stored = Record<string, unknown>;
-type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored; projectionRevision?:string };
+type Entry = { key:string; source:FeedSource; sourceId:string; item:Stored; trace?:CandidateTrace; projectionRevision?:string };
 type Order = { time:number; key:string };
 type Counts = { jobs:number; newJobs24h:number; newJobs7d:number; people:number; needs:number; services:number };
 type Summary = {
@@ -69,8 +71,8 @@ function chunks<T>(values:T[], envelope:(items:T[]) => unknown) {
   return result;
 }
 
-async function single<T>(table:string) {
-  return (await db.list<T>(table, { limit:1 })).items[0];
+async function single<T>(table:string):Promise<(T & {id:string})|undefined> {
+  return (await db.list<T>(table, { limit:1 })).items[0] as (T & {id:string})|undefined;
 }
 
 async function replaceSingle(table:string, record:Stored) {
@@ -138,6 +140,13 @@ export async function trackedFeedAdd(table:string, records:Stored[]) {
     if (saved.length !== batch.length) throw new Error('Source insertion result count mismatch');
     ids.push(...saved);
     await queueChanges(table, saved.filter((id):id is string => Boolean(id)));
+    if(table==='radar_jobs'){
+      const fresh=saved.filter((id,i):id is string=>Boolean(id)&&batch[i].kind==='job_offer'&&
+        batch[i].active===true&&batch[i].verified!==true);
+      for(let i=0;i<fresh.length;i+=6){
+        await Promise.allSettled(fresh.slice(i,i+6).map(id=>verificationIntake(id)));
+      }
+    }
   }
   return ids;
 }
@@ -351,7 +360,8 @@ class Editor {
       }
     }
     if (firstTimes.length) item.firstPublishedAt=new Date(Math.min(...firstTimes)).toISOString();
-    const entry:Entry = { key, source, sourceId, item, ...(this.projector.revision ? { projectionRevision:this.projector.revision } : {}) };
+    const trace=record?candidateTrace(sourceId,record):undefined;
+    const entry:Entry = { key, source, sourceId, item, ...(trace?{trace}:{}), ...(this.projector.revision ? { projectionRevision:this.projector.revision } : {}) };
     checkSize({ entries:[entry] });
     let ref = this.pages.find(page => compare(order(entry), page.last) <= 0) ?? this.pages[this.pages.length - 1];
     if (!ref) {
@@ -417,6 +427,7 @@ async function publish(record:Manifest, projector:Projector) {
   // reprojected. A confirmed source deadline or owner closure is allowed.
   const oldControl=await single<Control>('public_feed_control');
   const oldCount=Number(oldControl?.totalVerifiedJobOffers||0);
+  const candidateVisibility:Entry[]=[];
   const confirmedRemovals:Array<{key:string;reason:string}>=[];
   if(oldControl?.manifestId){
     const [baseline]=await db.get<Manifest>('public_feed_manifests',[oldControl.manifestId]);
@@ -427,6 +438,8 @@ async function publish(record:Manifest, projector:Projector) {
       if(!leaf)throw new Error('Public feed regression: prior page missing');
       oldEntries.push(...leaf.entries);
     }
+    const previousIdentities=new Set(oldEntries.filter(entry=>entry.item.kind==='job_offer' &&
+      entry.item.verified===true && entry.item.review!==true).map(entry=>identity(entry.item)??entry.key));
     for(const page of record.pages){
       const [leaf]=await db.get<{entries:Entry[]}>('public_feed_versions',[page.id]);
       if(!leaf)throw new Error('Public feed regression: proposed page missing');
@@ -435,6 +448,7 @@ async function publish(record:Manifest, projector:Projector) {
         if(entry.item.kind==='job_offer' && entry.item.verified===true && entry.item.review!==true){
           const equivalent=identity(entry.item);
           if(equivalent)newVerifiedIdentities.add(equivalent);
+          if(entry.trace && !previousIdentities.has(equivalent??entry.key))candidateVisibility.push(entry);
         }
       }
     }
@@ -500,18 +514,32 @@ async function publish(record:Manifest, projector:Projector) {
   }
   const [manifestId] = await db.add('public_feed_manifests', [record]);
   if (!manifestId) throw new Error('Public feed manifest insertion failed; previous feed retained');
-  const previous = await single<Control>('public_feed_control');
-  const { id:_id, ...fields } = previous ?? {};
+  const { id:_id, ...fields } = oldControl ?? {};
   const { pages:_pages, ...summary } = record;
-  // Keep a durable, independently readable pointer to the last complete manifest.
-  // A backup failure must prevent publishing a pointer that cannot be recovered.
-  // Retain the previous immutable manifest as an independent recovery target.
-  // On the very first publication there is no prior manifest to retain.
-  const backupId=previous?.manifestId || manifestId;
-  // Never pair a prior manifest identifier with counts from a newer manifest.
-  // Readers recover the authoritative totals directly from the immutable manifest.
-  await replaceSingle('public_feed_last_good', { manifestId:backupId, updatedAt:new Date().toISOString() });
-  await replaceSingle('public_feed_control', { ...fields, ...summary, manifestId });
+  const backup=await single<Control>('public_feed_last_good');
+  const at=new Date().toISOString();
+  const backupRecord={manifestId:oldControl?.manifestId||manifestId,updatedAt:at};
+  const controlRecord={...fields,...summary,manifestId};
+  const observations=[...new Map(candidateVisibility.map(entry=>{
+    const event=visibilityEvent(identity(entry.item)??entry.key,entry.sourceId,entry.trace!,manifestId,at);
+    return [event.id,event];
+  })).values()];
+  if(observations.length>90)throw Error('public_visibility_transaction_capacity');
+  const existing=observations.length?await db.get(VISIBLE,observations.map(row=>row.id),{consistent:true}):[];
+  const first=observations.filter((_,i)=>!existing[i]);
+  const hour=String(Math.floor(Date.parse(at)/3600_000));
+  const [counter]=first.length?await db.get<Record<string,unknown>>(HOURS,[hour],{consistent:true}):[null];
+  const writes=[
+    oldControl?db.tx.update('public_feed_control',[{id:oldControl.id,if:{manifestId:oldControl.manifestId},record:controlRecord}])
+      :db.tx.add('public_feed_control',[{id:'current',...controlRecord}]),
+    backup?db.tx.update('public_feed_last_good',[{id:backup.id,record:backupRecord}])
+      :db.tx.add('public_feed_last_good',[{id:'current',...backupRecord}]),
+  ];
+  if(first.length){
+    const totals=hourCounters(first,Date.parse(at),counter);
+    await db.transact([...writes,db.tx.add(VISIBLE,first),
+      db.tx.update(HOURS,[{id:hour,record:totals}])]);
+  }else await db.transact(writes);
   if(confirmedRemovals.length)console.warn('PUBLIC_FEED_CONFIRMED_REMOVALS '+JSON.stringify({
     before:oldCount,after:record.totalVerifiedJobOffers,
     items:confirmedRemovals,at:new Date().toISOString()}));
@@ -588,7 +616,19 @@ export async function readStagedPublicFeedPage() {
 }
 
 // Single scheduled writer: the existing verify-publish cron. Other handlers only read the summary.
-export async function advancePublicFeed(projector:Projector) {
+export async function advancePublicFeed(projector:Projector){
+  const table='public_feed_writer_v1',id='current',token=randomUUID(),now=Date.now();
+  const [old]=await db.get<{token:string;until:number}>(table,[id],{consistent:true});
+  if(old&&old.until>now)return readPublicFeedSummary();
+  const lease={id,token,until:now+120_000};
+  const [saved]=old?await db.tx.update(table,[{id,if:{token:old.token},record:lease}]):await db.tx.add(table,[lease]);
+  if(!saved)return readPublicFeedSummary();
+  try{return await advancePublicFeedUnlocked(projector);}
+  finally{await db.tx.update(table,[{id,if:{token},record:{id,token,until:0}}]).catch(()=>{});}
+}
+
+type FeedAdvance=Awaited<ReturnType<typeof readPublicFeedSummary>>&{buildSource?:string;regressionBlocked?:boolean};
+async function advancePublicFeedUnlocked(projector:Projector):Promise<FeedAdvance> {
   const now = Date.now();
   const control = await single<Control>('public_feed_control');
   if (!control?.manifestId) {
@@ -636,7 +676,7 @@ export async function advancePublicFeed(projector:Projector) {
     const source = rows.nextToken ? build.source : build.source === 'radar_jobs' ? 'community_posts' : 'complete';
     const next:Build = { ...manifest(pages, now), source, ...(rows.nextToken ? { nextToken:rows.nextToken } : {}) };
     await replaceSingle('public_feed_build_state', next as unknown as Stored);
-    return source === 'complete' ? advancePublicFeed(projector) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
+    return source === 'complete' ? advancePublicFeedUnlocked(projector) : { ...await readPublicFeedSummary(), rebuilding:true, buildSource:source };
   }
 
   const [current] = await db.get<Manifest>('public_feed_manifests', [control.manifestId]);
@@ -765,9 +805,10 @@ async function readPublicFeedPageUncached(cursor?:string) {
 
 
 // Lookups must use the current public projection, never private source records.
-export async function readPublicFeedItem(id:string) {
+export async function readPublicFeedItem(id:string,
+    snapshot?:NonNullable<Awaited<ReturnType<typeof currentPublicFeedManifest>>>) {
   if(!/^[A-Za-z0-9_-]{1,128}$/.test(id))return null;
-  const current=await currentPublicFeedManifest();
+  const current=snapshot??await currentPublicFeedManifest();
   if(!current)return null;
   const ref=current.manifest.pages.find(page=>page.keys.some(key=>key.endsWith(':'+id)));
   if(!ref)return null;

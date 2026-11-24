@@ -2,9 +2,10 @@ import { db, isAppDatabaseError } from '@appdeploy/sdk';
 import { registerPublicFeedChange, currentPublicFeedManifest, readPublicFeedItem } from './public-feed';
 import { checkOneReview } from './radar-review-check';
 import {publicFeedIdentity} from './public-source-adapters';
+import {verificationIntake} from './verification-work';
 import {offerRetentionReason} from './offer-retention';
 
-type Review={kind?:string;status?:string;url?:string;sourceId?:string};
+type Review={kind?:string;status?:string;url?:string;sourceId?:string;sourceProducer?:string;discoveredAt?:string};
 type Job={url?:string;kind?:string;review?:boolean;verified?:boolean};
 type Check={status:string;reason?:string;title?:string;company?:string;workCommune?:string;
   publishedDate?:string;sourcePublishedAt?:string;application?:string;deadline?:string|null;source?:string};
@@ -75,17 +76,15 @@ export async function enqueueAdminReviewedOffer(body:unknown){
       note:'Aviso revisado; verificación del sistema pendiente. Postulación: '+check.application,
       tags:[check.title,check.workCommune].join(' ').toLowerCase().split(/\s+/).slice(0,18),
       visual:'field',icon:'work',discoveredBy:'admin-review-inbox-v1',
+      sourceProducer:row.sourceProducer,discoveredAt:row.discoveredAt,traceVersion:1,queuedAt:now,storedAt:now,
       review:true,verified:false,active:true,createdAt:now,lastSeenAt:now
     };
     const [existing]=await db.get<Job>('radar_jobs',[jobId],{consistent:true});
     if(existing&&existing.url!==row.url)throw Error('candidate_id_conflict');
     if(!existing){
       try{
-        const [created]=await db.tx.add('radar_jobs',[record]);
-        if(!created){
-          const [saved]=await db.get<Job>('radar_jobs',[jobId],{consistent:true});
-          if(!saved||saved.url!==row.url)throw Error('candidate_storage_failed');
-        }
+        await db.transact([db.tx.add('radar_jobs',[record]),verificationIntake(jobId)]);
+        stored=true;
       }catch(cause:unknown){
         if(isAppDatabaseError(cause)&&
            (cause.code==='AppDatabaseDuplicateId'||cause.code==='AppDatabaseUnknownOutcome')){

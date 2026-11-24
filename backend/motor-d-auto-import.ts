@@ -83,21 +83,35 @@ export async function motorDAutoImportHandler(){
     const batches=source.data.batches;
     if(source.data.schema_version!==1||!Array.isArray(batches)||batches.length>256)return recordStatus('invalid_index');
     let quarantinedCount=0;
-    let previouslyProcessedCount=0;
+    let previouslyProcessedCount=0,invalidReferenceCount=0,blockedBatches=0,filesRead=0;
     for(const entry of batches as Array<Record<string,unknown>>){
-      const batchId=String(entry.batch_id||''),relative=String(entry.file||'');
+      const batchId=String(entry?.batch_id||''),relative=String(entry?.file||'');
       if(!/^motor-d-\d{8}-[a-f0-9]{18}$/.test(batchId)||
          !/^\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json$/.test(relative)||
-         !relative.endsWith('/'+batchId+'.json'))return recordStatus('invalid_batch_reference',{batchId});
+         !relative.endsWith('/'+batchId+'.json')||relative.slice(0,8)!==batchId.slice(8,16)){
+        invalidReferenceCount++;continue;
+      }
       if(QUARANTINED_BATCHES.has(batchId)){quarantinedCount++;continue;}
       const [old]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
       if(old?.results?.length){previouslyProcessedCount++;continue;}
+      const failures='motor_d_batch_recovery_v1';
+      const [checkpoint]=await db.get<{indexSha:string;nextAt:number|null;attempt:number}>(failures,[batchId],{consistent:true});
+      const retry=checkpoint?.indexSha===source.sha?checkpoint:null;
+      if(retry && (retry.nextAt===null || retry.nextAt>Date.now())){blockedBatches++;continue;}
+      if(filesRead>=4){blockedBatches++;continue;}
+      filesRead++;
       const file=await load('automation/motor_d_ready/'+relative,token);
-      if(!file)return recordStatus('batch_missing',{batchId});
-      const data=file.data;
-      if(data.schema_version!==1||data.approval!=='approved_for_publication'||
+      const data=file?.data;
+      if(!file||!data||data.schema_version!==1||data.approval!=='approved_for_publication'||
          data.producer!=='motor_d_territorial'||data.batch_id!==batchId||
-         !Array.isArray(data.offers)||data.offers.length<1||data.offers.length>15)return recordStatus('unapproved_batch',{batchId});
+         !Array.isArray(data.offers)||data.offers.length<1||data.offers.length>15){
+        const attempt=(retry?.attempt??0)+1;
+        const [saved]=await db.tx.update(failures,[{id:batchId,record:{indexSha:source.sha,attempt,
+          reason:file?'unapproved_batch':'batch_missing',
+          nextAt:file||attempt>=5?null:Date.now()+15*60_000*2**(attempt-1)}}]);
+        if(!saved)throw Error('motor_d_batch_recovery_write_failed');
+        blockedBatches++;continue;
+      }
       const offers=data.offers as Array<Record<string,unknown>>;
       const expired:Result[]=[];
       const current:Record<string,unknown>[]=[];
@@ -126,20 +140,24 @@ export async function motorDAutoImportHandler(){
       const allowed=new Set(['direct_record_queued_for_public_projection','already_published','already_imported_id','expired','review_expired']);
       if(results.some(x=>!allowed.has(x.status)))return recordStatus('invalid_results',{batchId});
       const accepted=results.filter(x=>!['expired','review_expired'].includes(x.status)).length;
-      const known=results.length-accepted;
-      const receipt={id:batchId,batchId,sha:file.sha,at:new Date().toISOString(),accepted,known,results,status:accepted?'awaiting_public_feed':'processed_without_publication',published:0};
+      const known=results.length-accepted; // legacy count
+      const newlyQueued=results.filter(x=>x.status==='direct_record_queued_for_public_projection').length;
+      const alreadyKnown=accepted-newlyQueued;
+      const expiredCount=known;
+      const receipt={id:batchId,batchId,sha:file.sha,at:new Date().toISOString(),accepted,known,newlyQueued,alreadyKnown,expiredCount,results,status:accepted?'awaiting_public_feed':'processed_without_publication',published:0};
       const [saved]=await db.tx.add('motor_d_import_receipts',[receipt]);
       if(!saved){
         const [existing]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
         if(!existing?.results?.length)throw Error('receipt_commit_failed');
         return recordStatus('receipt_already_exists',{batchId,existingStatus:existing.status||'unknown'});
       }
-      return recordStatus('imported_waiting_for_feed',{batchId,accepted,known});
+      return recordStatus('imported_waiting_for_feed',{batchId,accepted,known,newlyQueued,alreadyKnown,expiredCount,invalidReferenceCount,blockedBatches});
     }
+    if(invalidReferenceCount||blockedBatches)return recordStatus('batch_recovery_pending',{invalidReferenceCount,blockedBatches,previouslyProcessedCount});
     // A quiet index is not evidence that the territorial search actually ran.
     // Flag the missing producer heartbeat separately from an empty verified result.
     const batchDates=(batches as Array<Record<string,unknown>>)
-      .map(x=>String(x.batch_id||'').match(/^motor-d-(\d{8})-/)?.[1]||'')
+      .map(x=>String(x?.batch_id||'').match(/^motor-d-(\d{8})-/)?.[1]||'')
       .filter(Boolean).sort();
     const latestBatchDate=batchDates.at(-1)||null;
     const today=new Date().toISOString().slice(0,10).replace(/-/g,'');
@@ -205,7 +223,7 @@ export async function confirmMotorDPublications(){
     if(!Array.isArray(page.items))break;
     feedCount+=page.items.length;
     for(const row of page.items as Array<Record<string,unknown>>){
-      if(typeof row.id==='string')visibleIds.add(row.id);
+      if(typeof row.id==='string' && row.verified===true)visibleIds.add(row.id);
     }
     if(!page.nextCursor){complete=feedCount>=Number(('totalJobOffers' in page && page.totalJobOffers)||0);break;}
     if(cursors.has(page.nextCursor))break;

@@ -46,7 +46,7 @@ export async function publishQualifiedShadowOffers() {
   const offer=strict.status==='verified'?strict:alternate(url,page.raw,Date.now());
   if(!offer){results.push({url,status:'pending',reason:strict.reason});continue;}
   try {
-    const saved=await saveVerifiedPublicOffer(offer);
+    const saved=await saveVerifiedPublicOffer(offer,Date.now(),{engine:'B'});
     results.push({url,status:'stored_for_public_feed',sourceTable:saved.table,sourceId:saved.id,method:offer.verification_method});
   }catch(e){results.push({url,status:'error',reason:e instanceof Error?e.message.slice(0,130):'save_failed'});}
  }

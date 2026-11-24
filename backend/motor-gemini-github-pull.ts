@@ -3,12 +3,13 @@ import { db, secrets } from '@appdeploy/sdk';
 import { importReview, decideReview } from './radar-review-inbox';
 import { enqueueAdminReviewedOffer } from './radar-review-queue';
 import { publicSourceAdapter, publicFeedIdentity } from './public-source-adapters';
-import { nextGeminiVerifyCursor, geminiRetryableReason } from './gemini-verify-scheduler';
+import { nextGeminiVerifyCursor, geminiRetryableReason, geminiCursorForSnapshot } from './gemini-verify-scheduler';
 
 // Laboratorio: solo bandeja administrativa. No publica directamente ni altera motores A/B/C.
 const REPOSITORY = 'mrvvergara-afk/motor-rastreo-gemini';
 const FILE = 'output/trabajo_cerca_review_queue_v2.json';
 const STATUS_TABLE = 'gemini_github_pull_status';
+const PROGRESS_TABLE = 'gemini_github_pull_progress_v1';
 type Candidate = Record<string, unknown>;
 function string(value:unknown) { return typeof value === 'string' ? value.trim() : ''; }
 function candidateKey(url:string) { return createHash('sha256').update(url).digest('hex').slice(0,22); }
@@ -44,11 +45,24 @@ export function adaptGeminiCandidate(raw:Candidate) {
   };
 }
 export async function pullGeminiReviewQueue() {
-  const at=new Date().toISOString();
-  const save=async (state:Record<string,unknown>)=>{
-    await db.tx.update(STATUS_TABLE,[{id:'current',record:{at,...state}}]);
-    console.warn('MOTOR_GEMINI_PULL '+JSON.stringify({at,...state}));
-    return {at,...state};
+  const now=Date.now(),at=new Date(now).toISOString();
+  const [claimed]=await db.tx.add('gemini_pull_run_slots_v1',[{
+    id:String(Math.floor(now/300_000)),at
+  }]);
+  if(!claimed)return {at,state:'slot_already_claimed'};
+  const save=async (state:Record<string,unknown>):Promise<Record<string,unknown>>=>{
+    const result={at,...state};
+    const status=db.tx.update(STATUS_TABLE,[{id:'current',record:result}]);
+    if(state.state==='import_completed'){
+      await db.transact([status,db.tx.update(PROGRESS_TABLE,[{id:'current',record:{
+        at,githubSha:state.githubSha,nextImportCursor:state.nextImportCursor,nextVerifyCursor:state.nextVerifyCursor,verifyHoldCount:state.verifyHoldCount
+      }}])]);
+    }else{
+      const [saved]=await status;
+      if(!saved)throw Error('gemini_status_write_unconfirmed');
+    }
+    console.warn('MOTOR_GEMINI_PULL '+JSON.stringify(result));
+    return result;
   };
   try {
     const names=await secrets.listSecretNames();
@@ -72,11 +86,12 @@ export async function pullGeminiReviewQueue() {
     const pending=Array.isArray(obj.catalogo_principal_pendientes)?obj.catalogo_principal_pendientes:[];
     const allRecords=confirmed.length||pending.length?[...confirmed,...pending]:(Array.isArray(obj.items)?obj.items:[]);
     const sourceTotal=['catalogo_principal_confirmadas','catalogo_principal_pendientes','territorio_complementario_confirmadas','territorio_complementario_pendientes'].reduce((n,key)=>n+(Array.isArray(obj[key])?obj[key].length:0),0);
-    const [previous]=await db.get<Record<string,unknown>>(STATUS_TABLE,['current'],{consistent:true});
+    const [checkpoint]=await db.get<Record<string,unknown>>(PROGRESS_TABLE,['current'],{consistent:true});
+    const previous=checkpoint??(await db.get<Record<string,unknown>>(STATUS_TABLE,['current'],{consistent:true}))[0];
     if(allRecords.length>500)return save({state:'too_many_records',sourceTotal});
     const sourceCount=allRecords.length;
     const complementaryTotal=sourceTotal-sourceCount;
-    const start=sourceCount?Math.max(0,Number(previous?.nextImportCursor)||0)%sourceCount:0;
+    const start=geminiCursorForSnapshot(data.sha,previous?.githubSha,previous?.nextImportCursor,sourceCount);
     const records=allRecords.slice(start,start+16);
     const nextImportCursor=sourceCount&&start+records.length<sourceCount?start+records.length:0;
     const normalized=records.map(record=>{
@@ -88,7 +103,7 @@ export async function pullGeminiReviewQueue() {
     const valid=normalized.filter((r):r is NonNullable<typeof r>=>r!==null);
     let inserted=0,duplicates=0,rejected=records.length-valid.length;
     for(let i=0;i<valid.length;i+=35){
-      const result=await importReview({items:valid.slice(i,i+35).map(item=>item.candidate)});
+      const result=await importReview({items:valid.slice(i,i+35).map(item=>item.candidate)},'GEMINI');
       inserted+=result.inserted;duplicates+=result.duplicates;rejected+=result.rejected;
     }
     // Avanza solo por el verificador y publicador existentes.
@@ -98,7 +113,7 @@ export async function pullGeminiReviewQueue() {
     const addReason=(reason:string)=>{const key=reason.slice(0,90);reasons[key]=(reasons[key]||0)+1;};
     const retainedForReview=valid.filter(x=>!x.autoSubmit).length;
     let submissionAttempts=0;
-    const verifyStart=confirmed.length?Math.max(0,Number(previous?.nextVerifyCursor)||0)%confirmed.length:0;
+    const verifyStart=geminiCursorForSnapshot(data.sha,previous?.githubSha,previous?.nextVerifyCursor,confirmed.length);
     const verifyRecords=confirmed.slice(verifyStart,verifyStart+4);
     const retryReasons:string[]=[];
     for (const raw of verifyRecords) {
@@ -109,6 +124,7 @@ export async function pullGeminiReviewQueue() {
       try {
         const [row]=await db.get<{status?:string;lastCheck?:{reason?:string}}>('radar_review_inbox',[id],{consistent:true});
         if(!row){needsReview++;addReason('candidate_not_found_after_import');continue;}
+        if(row.status==='queued_for_verification'){alreadyQueued++;continue;}
         if(row.status==='pending'||row.status==='needs_evidence'){
           await decideReview({id,status:'ready_for_final_check'});
         } else if(!['ready_for_final_check','submitting','queued_for_verification'].includes(row.status||'')){
@@ -130,10 +146,13 @@ export async function pullGeminiReviewQueue() {
         addReason(cause instanceof Error?cause.name+':'+cause.message:'unknown_exception');
       }
     }
-    const nextVerifyCursor=nextGeminiVerifyCursor(verifyStart,verifyRecords.length,confirmed.length,retryReasons);
+    const holds=previous?.githubSha===data.sha && previous.nextVerifyCursor===verifyStart
+      ?Number(previous.verifyHoldCount||0):0;
+    const nextVerifyCursor=nextGeminiVerifyCursor(verifyStart,verifyRecords.length,confirmed.length,retryReasons,holds);
+    const verifyHoldCount=retryReasons.length&&nextVerifyCursor===verifyStart&&holds<2?holds+1:0;
     // A partial duplicate scan must be resumed on the next scheduled run;
     // otherwise a 43-item rotation revisits it after the 24h checkpoint expires.
     const importRemainingInSweep=Math.max(0,sourceCount-start-records.length);
-    return save({state:'import_completed',githubSha:data.sha,adapterRevision:'gemini-v2.4-progress',sourceTotal,totalMain:sourceCount,complementaryIsolated:complementaryTotal,received:records.length,deferred:importRemainingInSweep,importStart:start,nextImportCursor,verifyStart,nextVerifyCursor,verificationRetriesPending,importedConfirmed:valid.filter(x=>x.autoSubmit).length,retainedForReview,submissionAttempts,inserted,duplicates,rejected,queued,alreadyQueued,needsReview,reasons,published:0,lastAttemptAt:at});
+    return save({state:'import_completed',githubSha:data.sha,adapterRevision:'gemini-v2.4-progress',sourceTotal,totalMain:sourceCount,complementaryIsolated:complementaryTotal,received:records.length,deferred:importRemainingInSweep,importStart:start,nextImportCursor,verifyStart,nextVerifyCursor,verifyHoldCount,verificationRetriesPending,importedConfirmed:valid.filter(x=>x.autoSubmit).length,retainedForReview,submissionAttempts,inserted,duplicates,rejected,queued,alreadyQueued,needsReview,reasons,published:0,lastAttemptAt:at});
   }catch(error){return save({state:'pull_error',error:error instanceof Error?error.name:'unknown'});}
 }

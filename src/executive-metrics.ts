@@ -48,10 +48,14 @@ export type Telemetry = {
   rollup: { recent: number; reporting: number; total: number };
   history: DayPoint[];
   historyComplete: boolean;
+  operation?:{visible:number|null;observedBuckets:number;motors:Record<EngineId,number|null>;
+    latency:Record<'p50'|'p95'|'p99',{upperMinutes:number|null;samples:number}|null>}|null;
+  operationReadState?:'available'|'read_error';
+  workQueue?:Record<'fresh'|'retry',{sampled:number;complete:boolean;oldestSampleMs:number|null}>|null;
   historyQuality?: {windowDays:number;fullyRecovered:boolean;producerHistoryDays?:number;producerHistoryDaysByEngine?:Record<string,number>;warnings?:string[];overlapLegacyBCDays?:string[];sources:Array<{table:string;scanned:number;pages:number;complete:boolean;readError:boolean}>;note:string};
   missingOrFailed: EngineId[];
   bcOperations?: {at:string|null;pdf:{processed:number|null;pending:number|null;decisions:Record<string,unknown>};html:{found:number|null;checked:number|null;verified:number|null;blocked:number|null;archived:number|null;already:number|null;deferredOutside:number|null;deferredIndex:number|null;storedForFeed:number|null;storageFailures:number|null};idle:boolean;provenance?:string};
-  stageRead?: Array<{engine:string;latest:{runId:string;at:string|null;status:string;processed:number|null;inputCount:number|null;verified:number|null;blocked:number|null;already?:number|null;deferredOutside?:number|null;deferredIndex?:number|null;archived?:number|null;storedForFeed?:number|null;storageFailures?:number|null;error:unknown}|null;sampledRuns:number;complete:boolean}>;
+  stageRead?: Array<{engine:string;lastUsefulAt?:string|null;latest:{runId:string;at:string|null;status:string;processed:number|null;inputCount:number|null;verified:number|null;blocked:number|null;already?:number|null;deferredOutside?:number|null;deferredIndex?:number|null;archived?:number|null;storedForFeed?:number|null;storageFailures?:number|null;error:unknown}|null;sampledRuns:number;complete:boolean}>;
   jointBC?: {at:string|null;scanned:number|null;remainingPdf:number|null;decisions?:{not_job?:number;blocked?:number};html?:{verified?:number};idle:boolean;note:string};
   warning: string;
 };

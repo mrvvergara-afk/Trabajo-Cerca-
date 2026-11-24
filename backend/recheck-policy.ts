@@ -2,7 +2,7 @@
 
 export function recheckSlots(backlog: number, maxReviews = 10): number {
   if (!Number.isFinite(backlog) || backlog <= 0) return 0;
-  const reserveForNewLeads = 2;
+  const reserveForNewLeads = Math.ceil(maxReviews * 0.6);
   const capacity = Math.max(0, maxReviews - reserveForNewLeads);
   if (backlog > 50) return Math.min(8, capacity);
   if (backlog > 10) return Math.min(4, capacity);

@@ -6,7 +6,7 @@ const TABLE='radar_review_inbox';
 type Review={id?:string;kind:'review_candidate'|'review_catalog';url:string;sourceId:string;
   territories:string[];publishedEvidence:string|null;deadlineEvidence:string|null;
   status:'pending'|'needs_evidence'|'discarded'|'ready_for_final_check'|'submitting'|'queued_for_verification';
-  radarJobId?:string;
+  radarJobId?:string;sourceProducer?:'GEMINI'|'C';discoveredAt?:string;
   createdAt:string;updatedAt:string;published:false;verified:false;
   motorState?:string;blockReason?:string;lastCheckedAt?:string;nextCheckAt?:string;lastCheck?:{reason?:string}};
 const HOSTS=new Set(['chiletrabajos.cl','kitempleo.cl','traiguencity.cl','malleco7.cl',
@@ -33,7 +33,7 @@ function dateEvidence(value:unknown){
   const x=new Date(value+'T12:00:00Z');
   return !Number.isNaN(x.getTime())&&x.toISOString().slice(0,10)===value?value:null;
 }
-function parse(body:unknown){
+function parse(body:unknown,producer?:'GEMINI'|'C'){
   const obj=body&&typeof body==='object'?body as Record<string,unknown>:{};
   if(!Array.isArray(obj.items)||obj.items.length<1||obj.items.length>35)
     throw Error('Se requieren entre 1 y 35 referencias.');
@@ -50,7 +50,7 @@ function parse(body:unknown){
     rows.push({id:'tc_'+key,kind:'review_candidate',url,sourceId:short(x.source_id,50),
       territories,publishedEvidence:dateEvidence(x.published_date_evidence),
       deadlineEvidence:dateEvidence(x.deadline_evidence),status:'pending',
-      createdAt:now,updatedAt:now,published:false,verified:false});
+      sourceProducer:producer,discoveredAt:now,createdAt:now,updatedAt:now,published:false,verified:false});
   }
   return {rows,rejected};
 }
@@ -64,8 +64,8 @@ async function prepare(){
     updatedAt:now,published:false,verified:false}]);
   if(!id)throw Error('No fue posible iniciar la bandeja.');
 }
-export async function importReview(body:unknown){
-  const {rows,rejected}=parse(body);
+export async function importReview(body:unknown,producer?:'GEMINI'|'C'){
+  const {rows,rejected}=parse(body,producer);
   if(!rows.length)return {inserted:0,duplicates:0,rejected,published:0};
   await prepare();
   let inserted=0,duplicates=0;

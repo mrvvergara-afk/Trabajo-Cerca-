@@ -1,16 +1,49 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-23",
-  "checked_at": "2026-11-23T22:56:53.745942+00:00",
-  "feed_complete": true,
-  "feed_rows": 293,
-  "state": "needs_territory_repair",
-  "territory_mismatches_count": 5,
-  "historical_missing_from_catalog": 0,
+  "state": "needs_receipt_review",
+  "historical_missing_from_catalog": 3,
   "released_from_quarantine": 0,
   "released_items": [],
-  "items": [],
-  "resolved_published_items": [],
-  "confirmation_file": "publication_confirmation.json",
-  "semantic_only_requires_receipt": []
+  "items": [
+    {
+      "id_fuente": "d_24aa2b93041da064e5d2",
+      "cargo": "Analista Tecnico",
+      "empresa": "INMEL CHILE SPA",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254",
+      "prior_batch_ids": [
+        "motor-d-20261123-41e88159a997af13d6"
+      ],
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+    },
+    {
+      "id_fuente": "d_bf620420ab7734288092",
+      "cargo": "Supervisor Obra Civil",
+      "empresa": "Inmel Chile Spa",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
+      "prior_batch_ids": [
+        "motor-d-20261123-41e88159a997af13d6"
+      ],
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+    },
+    {
+      "id_fuente": "d_65e87d47bbed462ca924",
+      "cargo": "Prevencionista de Riesgos AIF - Chañaral",
+      "empresa": "Consultores 2000",
+      "comunas": [
+        "Purén"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
+      "prior_batch_ids": [
+        "motor-d-20261121-beb79ae39f3195f757"
+      ],
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+    }
+  ]
 }

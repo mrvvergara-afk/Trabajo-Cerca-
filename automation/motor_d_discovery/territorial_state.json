@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-23T18:17:32.233967-03:00",
+  "last_run": "2026-11-23T22:01:04.923373-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -9762,6 +9762,132 @@
       "first_seen": "2026-11-23T18:17:32.233967-03:00",
       "url": "https://traiguencity.cl/inspectores-municipales-colaboran-con-carabineros-en-detencion-de-conductor-en-estado-de-ebriedad/",
       "source": "Inventario P01",
+      "commune": null
+    },
+    "e6c6d85f7231bea0db7b": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-comercial-en-terreno-3081942.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "70e062c06475983ecf73": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-con-os10-vigente-4x4-dia-o-noche-comuna-de-pudahuel-san-pablo-9500-3081941.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b59eae839e184c41a2d3": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-en-climatizacion-con-experiencia-3081940.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4fc9ae998a4dc3a3f322": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-sin-os10-en-4x4-rotativo-aeropuerto-de-santiago-3081939.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f3fe2b48a5a3f4266c3f": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardias-con-os10-vigente-4x4-dia-o-noche-comuna-de-pudahuel-san-pablo-9500-3081938.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "65d309a86930c455d7b4": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/promovendedor-a-de-pinturas-solo-domingo-el-belloto-3081937.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3587e7841e88ac46e9bf": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/promovendedor-a-de-pinturas-solo-domingo-los-andes-3081936.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d049a69e6eb6a5f11479": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/supervisor-de-ventas-tienda-temuco-3081935.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4449938ee2c63dfc332a": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivos-as-de-atencion-al-cliente-part-time-20-hrs-volantes-fin-de-semana-300000-liquidos-la-florida-penalolen-las-condes-lo-barnechea-3081934.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6318e1a889084f29fb57": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/atendedor-multifuncional-turno-completo-experiencia-3081933.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3a53dc2a23218b68bd4a": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliares-de-aseo-industrial-san-bernardo-3081932.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "857d09adec493aad9eab": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/gerente-de-olca-y-recursos-de-campo-estacion-central-3081931.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "31ef9fc1e65b2c4038bf": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/guardias-con-y-sin-os10-importantes-instalaciones-diversos-turnos-antofagasta-3081930.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fdd3baed4a4706eebdee": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-comercial-red-empresarios-san-bernardo-3081929.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8812e2decc9809165f7a": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-datos-desarrollo-y-control-de-gestion-las-condes-3081928.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ab6dca9dc622bd87246d": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativo-de-gestion-operacional-las-condes-3081927.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "119a1e7cbbaa2181e1d1": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-estacionamiento-part-time-20-hrs-mall-plaza-egana-3081926.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "30ad2b903162662a815f": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-a-de-infraestructura-cloud-y-onpremise-3081925.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "51e3dc1958b67a20bdf8": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/banquero-a-grandes-empresas-senior-valparaiso-3081924.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7f38be5d6900a980bc23": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/mecanico-senior-region-metropolitana-san-jose-de-maipo-3081923.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2853b50483103a35fb7c": {
+      "first_seen": "2026-11-23T22:01:04.923373-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-relator-de-curso-produccion-de-miel-y-otros-productos-de-la-colmena-3937307",
+      "source": "Motor A · ficha original a verificar",
       "commune": null
     }
   }

@@ -27,3 +27,14 @@ Fecha UTC | entorno | commit | snapshot | ID control | estado (pendiente/parcial
 Mantener solo estado actual y referencias a evidencia; Git conserva historial. No inventar métricas ni porcentajes.
 ## Pendientes de línea base
 Recuperar informes originales DeepSeek/Gemini/Codex, conciliar hallazgos sin duplicarlos, verificar versiones activas de ambos entornos y reevaluar controles afectados. Los estados iniciales son reportados, no pruebas independientes. No activar automatización adicional hasta justificar costo.
+
+## Revisión incremental 2026-11-24, registros hasta 21:02 UTC
+- Oficial trabajo-cerca-laboratorio-3ojgro: ready, snapshot 1795487203524, siete cron activos con último estado success. El log de verificación 20:50 UTC reporta 287 ofertas verificadas, tres prioritarios procesados, cero verificados y tres retenidos. No equivale a lectura independiente del catálogo.
+- Laboratorio conocido trabajo-cerca-lab-aislado-xirg9w: ready, snapshot 1795370984155, solo cron de telemetría. No coincide con snapshot 1795551497165 del informe de 46 altas. Identificar app_id exacto antes de conciliar o desplegar; no sobrescribir ninguno.
+- OPE-02 parcial: tres retenidos; adminQueuedSeen=1, adminProcessed=0. Revisar antigüedad y causas, sin inferir latencia de este ciclo.
+- OPE-03/04 parcial: B/C 20:42 UTC, dos HTML revisados, cero verificados, motivos worksite_missing_or_multiple y ambiguous_jobposting; 25 documentos completados acumulados, sin prueba de alta documental.
+- OPE-05 bloqueado: puente oficial 20:50 UTC, último lote 18 nov, 137 h de antigüedad. D: 31 lotes procesados, dos en cuarentena, productor 175 fuentes consultadas/108 accesibles.
+- OPE-08 nuevo: Trabajando targeted 21:02 UTC, dos sitemaps exceden presupuesto de bytes, cero fichas y altas. Cierre: lectura incremental acotada y publicación real comprobada sin aumentar presupuesto injustificadamente.
+- ADM-01 parcial: laboratorio conocido 20:15 UTC, A/B/C/Gemini sin reporte, ChatGPT stale, D recent, historyComplete=false.
+- TEC-02 bloqueado por identidad de entorno; SEG-01/02, UX-01 y COM-01 no reevaluados en este ciclo. OPE-06/07 mantienen estado previo reportado.
+- Decisión NO-GO. Solo lectura de logs y actualización documental; cero despliegues, cron o servicios nuevos. Siguiente: identificar laboratorio del informe, conciliar código, verificar seguridad/migración y revisar UX y administración sin repetir pruebas innecesarias.

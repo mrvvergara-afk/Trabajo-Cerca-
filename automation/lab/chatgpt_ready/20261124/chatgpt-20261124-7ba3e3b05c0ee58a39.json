@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "chatgpt_territorial",
+  "batch_id": "chatgpt-20261124-7ba3e3b05c0ee58a39",
+  "offers": [
+    {
+      "id_fuente": "cg_0db736d40ce9ba138aa4",
+      "cargo": "Conductor/a Clínico Urgencias Angol",
+      "empresa": "Xinerlink",
+      "comunas": [
+        "Angol"
+      ],
+      "ubicacion_trabajo": "Angol",
+      "modalidad": "no_informada",
+      "salario": null,
+      "url_original": "https://www.chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "enlace_postulacion": "https://www.chiletrabajos.cl/trabajo/postular/3934484",
+      "fecha_publicacion": "2026-11-18",
+      "fecha_descubrimiento": "2026-11-24",
+      "fecha_cierre": "2027-02-01",
+      "justificacion": "Ensayo aislado con ficha JobPosting verificada el 24/11. Identidad individual 3934484, comuna Angol, fecha, plazo y enlace de postulación comprobados.",
+      "url_canonica": "https://chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "hash_url_sha256": "c3271f36e2e4551bc026f152edd4d3c239a5ac07ab33bff1daff945bd0283d88"
+    }
+  ]
+}

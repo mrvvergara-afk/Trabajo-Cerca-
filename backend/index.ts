@@ -1,3 +1,4 @@
+import {feedReconciliationBaseline} from './feed-reconciliation-config';
 import {operationalView} from './operational-metrics';
 import {claimVerification,settleVerification,readVerificationIntake,saveVerificationRetryCursor,clearOrphanedIntake,verificationQueueView} from './verification-work';
 import { selectRescueBatch } from './rescue-work-policy';
@@ -2770,7 +2771,7 @@ export const v17HardWebHandler = async () => {
 export const radarShadowPromotionHandler = async () => {
   const before=await readPublicFeedSummary();
   const results=await publishQualifiedShadowOffers();
-  const feedProjector={ revision:'published-retention-counts-v11-inmel-territorial-withdrawal', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  const feedProjector={ revision:'published-retention-counts-v11-inmel-territorial-withdrawal', reconcileManifestId:feedReconciliationBaseline, project:projectFeedListing, refreshAt:feedRefreshAt };
   let after=await advancePublicFeed(feedProjector);
   for(let step=1;step<4&&after.rebuilding;step++)after=await advancePublicFeed(feedProjector);
   console.warn('RADAR_B_PUBLICATION_RESULT '+JSON.stringify({before:Number(before.totalVerifiedJobOffers||0),after:Number(after.totalVerifiedJobOffers||0),examined:results.examined,results:results.results,rebuilding:after.rebuilding}).slice(0,14000));
@@ -3067,7 +3068,7 @@ export const v14VerificationHandler = async (event?:{ type:string; name:string; 
     catch(cause){console.warn('PRIORITY_JOB_RESCUE_ERROR '+String(cause).slice(0,240));result={status:'error',reason:String(cause).slice(0,120)};}
   }
   const administrative=isAdminVerificationSlot(event) ? await processAdminReviewBatch({scheduledTime:event!.scheduledTime,project:projectFeedListing}) : undefined;
-  const feedProjector={ revision:'published-retention-counts-v11-inmel-territorial-withdrawal', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt };
+  const feedProjector={ revision:'published-retention-counts-v11-inmel-territorial-withdrawal', reconcileManifestId:feedReconciliationBaseline, project:projectFeedListing, refreshAt:feedRefreshAt };
   // Resume the backlog hourly until cleared; when clean, perform only a daily
   // safety reconciliation. New/changed offers already use trackedFeedAdd/Update.
   // Previous backlog gap reconciliation must not requeue archived historical offers.
@@ -3253,7 +3254,7 @@ export const liveTestReportHandler = async () => {
 
 const consumeReviewedExchange=reviewedReceiver({
   ingest:()=>pullRadarBatch(externalOfferRecord),
-  advance:()=>advancePublicFeed({ revision:'published-retention-counts-v11-inmel-territorial-withdrawal', reconcileManifestId:'a7425daf-c460-4d88-98fc-adfae0b807fd', project:projectFeedListing, refreshAt:feedRefreshAt }),
+  advance:()=>advancePublicFeed({ revision:'published-retention-counts-v11-inmel-territorial-withdrawal', reconcileManifestId:feedReconciliationBaseline, project:projectFeedListing, refreshAt:feedRefreshAt }),
   confirm:confirmRadarPublications,
 });
 

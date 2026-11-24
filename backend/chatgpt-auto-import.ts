@@ -1,3 +1,4 @@
+import {chatgptHandoffRef,chatgptHandoffRoot} from './chatgpt-handoff-config';
 import {db, secrets} from '@appdeploy/sdk';
 import {Buffer} from 'node:buffer';
 import {directChatGPTImport} from './chatgpt-direct-import';
@@ -5,15 +6,15 @@ import {readPublicFeedPage} from './public-feed';
 
 // Independent GitHub intake. Never reads Motor D's index or receipts.
 const REPO='mrvvergara-afk/Trabajo-Cerca-';
-const ROOT='automation/chatgpt_ready/';
+const ROOT=chatgptHandoffRoot;
 const INDEX=ROOT+'index.json';
 type Result={id:string;status:string;internalId?:string;existingId?:string;expectedWorkCommunes?:string[]};
 type Receipt={id:string;batchId:string;status:string;results:Result[];newCount:number;published:number;at:string;checkedAt?:string};
 
 async function load(path:string,token?:string){
-  if(path!==INDEX&&!/^automation\/chatgpt_ready\/\d{8}\/chatgpt-\d{8}-[a-f0-9]{18}\.json$/.test(path))
+  if(path!==INDEX&&(!path.startsWith(ROOT)||!/^\d{8}\/chatgpt-\d{8}-[a-f0-9]{18}\.json$/.test(path.slice(ROOT.length))))
     throw Error('unsafe_chatgpt_path');
-  const response=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path+'?ref=main',{
+  const response=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path+'?ref='+encodeURIComponent(chatgptHandoffRef),{
     headers:{...(token?{authorization:'Bearer '+token}:{}),accept:'application/vnd.github+json',
       'x-github-api-version':'2022-11-28','user-agent':'TrabajoCerca-ChatGPT-Publisher'},
     signal:AbortSignal.timeout(9000)

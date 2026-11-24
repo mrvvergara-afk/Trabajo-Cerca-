@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "producer": "chatgpt_territorial",
+  "batches": [
+    {
+      "batch_id": "chatgpt-20261124-7ba3e3b05c0ee58a39",
+      "file": "20261124/chatgpt-20261124-7ba3e3b05c0ee58a39.json",
+      "count": 1
+    }
+  ],
+  "seen_offer_ids": [
+    "cg_0db736d40ce9ba138aa4"
+  ],
+  "seen_url_hashes": [
+    "c3271f36e2e4551bc026f152edd4d3c239a5ac07ab33bff1daff945bd0283d88"
+  ],
+  "seen_source_identities": [
+    "ct:3934484"
+  ]
+}

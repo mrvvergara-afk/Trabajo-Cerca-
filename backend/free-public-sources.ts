@@ -10,7 +10,7 @@ import { shadowEvaluate } from './shadow-radar';
 import { rotateIndex } from './index-rotation';
 
 export type FreeSource = { key:string; name:string; url:string; territory:string; bootstrap?:boolean; discoveryGroup?:'local' | 'portal'; discoveryPriority?:'secondary' };
-type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string };
+type PublicCandidate = { url:string; source:string; priority?:boolean; publisherPage?:string; discoveredAt?:string };
 type ScanState = { position:number; queues:Record<string,string[]>; seen:Record<string,string[]>;
   localPosition?:number; portalPosition?:number;
   portalProviderPosition?:number; providerPositions?:Record<string,number>;
@@ -434,6 +434,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       // Rotate through the ENTIRE index, not always the first forty links.
       // A's hourly source rounds now make progress across deep ATS listings.
       const links = publicPageLinks(page.raw,page.url,Number(previousSeed?.revision||0));
+      const discoveredAt=new Date().toISOString();
       audit.indexedOfferLinks=links.indexedOfferLinks;
       audit.indexIncomplete=links.indexIncomplete;
       audit.indexRotationOffset=links.indexRotationOffset;
@@ -442,21 +443,21 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
         audit.error='source_render_required';audit.renderRequired=true;
         if (['munilossauces.cl','nacimiento.cl'].includes(publicPublisher(page.url)?.group || '') &&
             !state.renderPending.some(item=>item.url===page.url) && state.renderPending.length<12) {
-          state.renderPending.push({ url:page.url,source:source.name,publisherPage:page.url });
+          state.renderPending.push({ url:page.url,source:source.name,publisherPage:page.url,discoveredAt });
         }
       }
       if (publicSourceAdapter(page.url) && !seenPending.has(page.url)) links.candidates.unshift({ url:page.url,title:'' });
       audit.candidateEvidence=links.candidates.map(item=>({ url:item.url,title:item.title }));
       for (const item of links.candidates) if (!seenPending.has(item.url)) {
         if (staleDocumentUploadPath(item.url,now) || nonEmploymentStory(item.url) || nonEmploymentStory(page.url)){seenPending.add(item.url);continue;}
-        if (onboarding && state.priorityCandidates.length<3 && !publicDocumentUrl(item.url)) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url });
-        else if (publicDocumentUrl(item.url) && (!bcResolved[item.url] || (bcResolved[item.url] as {reason?:string})?.reason==='pdf_byte_limit') && state.documentPending.length<180) state.documentPending.push({url:item.url,source:source.name,publisherPage:page.url});
-        else if (state.pending.length<100 && !publicDocumentUrl(item.url)) state.pending.push({ url:item.url,source:source.name,publisherPage:page.url });
+        if (onboarding && state.priorityCandidates.length<3 && !publicDocumentUrl(item.url)) state.priorityCandidates.push({ url:item.url,source:source.name,priority:true,publisherPage:page.url,discoveredAt });
+        else if (publicDocumentUrl(item.url) && (!bcResolved[item.url] || (bcResolved[item.url] as {reason?:string})?.reason==='pdf_byte_limit') && state.documentPending.length<180) state.documentPending.push({url:item.url,source:source.name,publisherPage:page.url,discoveredAt});
+        else if (state.pending.length<100 && !publicDocumentUrl(item.url)) state.pending.push({ url:item.url,source:source.name,publisherPage:page.url,discoveredAt });
         else {
           const overflowId=hash('overflow:'+item.url);
           const [exists]=await db.get<Stored>(OVERFLOW,[overflowId],{consistent:true});
           if(!exists){
-            const [stored]=await db.tx.add(OVERFLOW,[{id:overflowId,url:item.url,source:source.name,publisherPage:page.url}]);
+            const [stored]=await db.tx.add(OVERFLOW,[{id:overflowId,url:item.url,source:source.name,publisherPage:page.url,discoveredAt}]);
             if(!stored)throw new Error('Overflow candidate checkpoint failed');
           }
           audit.queueFull=true;
@@ -506,7 +507,7 @@ export async function runFreePublicSources(sources:FreeSource[], requestId:strin
       }
     }
     if (result.status==='verified') {
-      receipts.push(await saveVerifiedPublicOffer(result,now));verified++;
+      receipts.push(await saveVerifiedPublicOffer(result,Date.now(),{engine:'A',discoveredAt:candidate.discoveredAt}));verified++;
       rechecks.set(safePublicUrl(result.url!)!,{ url:safePublicUrl(result.url!)!,lastAttemptAt:new Date(now).toISOString(),nextCheckAt:new Date(now+18*3600000).toISOString() });
     } else if (result.status==='rejected') {
       const closed=await closeKnownOffer(candidate.url,result,page,now);

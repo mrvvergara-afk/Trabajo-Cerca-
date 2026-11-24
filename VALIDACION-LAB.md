@@ -72,3 +72,11 @@ El snapshot final de laboratorio es **1795523019719**. Expone un resumen acotado
 - Gemini registró en el propio runtime `missing_github_read_token`. La inspección del panel después de reanudar volvió a mostrar acceso restringido. Falta una sesión AppDeploy autorizada para confirmar el cuadro de mando con datos reales.
 - D registró `import_error` al alcanzar `motor-d-20261120-a9e1312c01453fbd0c`. Se guardan por lote los fallos de importación y los recibos incongruentes, y se sigue leyendo el índice. Se conserva el límite de cuatro archivos por ejecución y se reintentan fallos transitorios hasta cinco veces. Una regresión verifica el avance al siguiente lote y que el lote rechazado no se relea mientras su índice siga igual.
 - La lectura pública recorrió las dos páginas de identidad y devolvió 45 IDs únicos, con cierre de recorrido confirmado. La corrección de D compiló y AppDeploy dejó lista la versión `1795551497165` en el laboratorio. La suite final local aprobó 23 pruebas Node y 37 pruebas Python.
+
+### Repetición después de la corrección de D
+
+En el cron de las 20:20 UTC, AppDeploy pospuso dos lotes problemáticos y continuó hasta `motor-d-20261122-da4f2536327eda43e6`. Importó una oferta nueva. La consulta pública independiente devolvió **PREVENCIONISTA — MAESTRANZA** con `verified:true`. Su recibo `chatgpt_d_5cc1e31b3ff3d83ea28b` mide **4,037 s de cola de proyección a primera visibilidad**. El catálogo subió de 45 a **46 ofertas verificadas**, con 46 recibos (18 A y 28 D). Los cambios pendientes de proyección bajaron de 2 a 0 durante el ciclo. Este drenaje observado no mide capacidad sostenida con entradas masivas.
+
+La repetición de carga al corte de 46 devolvió HTTP 200 en las 13 lecturas de los grupos 1, 4 y 8, sin degradación en esas lecturas y con el mismo manifiesto. El P95 con ocho lectores fue **5,711 s** frente a **1,168 s** del corte inicial de dos ofertas. Durante la activación de la versión AppDeploy registró avisos de reconstrucción del manifiesto. La medición de carga corresponde al estado estable posterior.
+
+- [Ficha publicada tras corregir D](https://api-v2.appdeploy.ai/app/trabajo-cerca-qa-sdk-aislado-lykn7b/api/listings/chatgpt_d_5cc1e31b3ff3d83ea28b)

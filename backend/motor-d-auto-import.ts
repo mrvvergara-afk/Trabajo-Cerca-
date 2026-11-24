@@ -100,45 +100,54 @@ export async function motorDAutoImportHandler(){
       if(retry && (retry.nextAt===null || retry.nextAt>Date.now())){blockedBatches++;continue;}
       if(filesRead>=4){blockedBatches++;continue;}
       filesRead++;
+      const deferBatch=async (reason:string,terminal=false)=>{
+        const attempt=(retry?.attempt??0)+1;
+        const [saved]=await db.tx.update(failures,[{id:batchId,record:{indexSha:source.sha,attempt,reason,
+          nextAt:terminal||attempt>=5?null:Date.now()+15*60_000*2**(attempt-1)}}]);
+        if(!saved)throw Error('motor_d_batch_recovery_write_failed');
+        blockedBatches++;
+      };
       const file=await load('automation/motor_d_ready/'+relative,token);
       const data=file?.data;
       if(!file||!data||data.schema_version!==1||data.approval!=='approved_for_publication'||
          data.producer!=='motor_d_territorial'||data.batch_id!==batchId||
          !Array.isArray(data.offers)||data.offers.length<1||data.offers.length>15){
-        const attempt=(retry?.attempt??0)+1;
-        const [saved]=await db.tx.update(failures,[{id:batchId,record:{indexSha:source.sha,attempt,
-          reason:file?'unapproved_batch':'batch_missing',
-          nextAt:file||attempt>=5?null:Date.now()+15*60_000*2**(attempt-1)}}]);
-        if(!saved)throw Error('motor_d_batch_recovery_write_failed');
-        blockedBatches++;continue;
+        await deferBatch(file?'unapproved_batch':'batch_missing',Boolean(file));
+        continue;
       }
       const offers=data.offers as Array<Record<string,unknown>>;
       const expired:Result[]=[];
       const current:Record<string,unknown>[]=[];
+      let blockedOffer=false;
       for(const offer of offers){
         const ocr=Boolean(offer.review_id||offer.promotion_id||offer.ocr_revalidate_after);
         if(ocr && (typeof offer.review_id!=='string'||typeof offer.promotion_id!=='string'||
             typeof offer.ocr_revalidate_after!=='string'||!Number.isFinite(Date.parse(offer.ocr_revalidate_after))))
-          return recordStatus('invalid_ocr_authorization',{batchId});
+          {await deferBatch('invalid_ocr_authorization',true);blockedOffer=true;break;}
         if(ocr && Date.parse(String(offer.ocr_revalidate_after))<=Date.now())
           expired.push({id:String(offer.id_fuente),status:'review_expired'});
         else if(ocr && !await documentMatches(offer))
-          return recordStatus('ocr_document_changed_or_unavailable',{batchId});
+          {await deferBatch('ocr_document_changed_or_unavailable');blockedOffer=true;break;}
         else current.push(offer);
       }
+      if(blockedOffer)continue;
       const output=current.length ? await directChatGPTImport({offers:current,commit:true,producer:'motor_d_territorial'}) :
         {statusCode:200,body:'{"results":[]}'};
-      if(output.statusCode!==200)return recordStatus('import_error',{batchId,http:output.statusCode});
+      if(output.statusCode!==200){
+        const http=output.statusCode;
+        await deferBatch('import_http_'+http,http===400||http===422);
+        continue;
+      }
       const parsed=JSON.parse(String(output.body||'{}')) as {results?:Result[]};
       const results=[...(parsed.results||[]),...expired];
-      if(results.length!==data.offers.length)return recordStatus('partial_batch',{batchId,got:results.length,expected:data.offers.length});
+      if(results.length!==data.offers.length){await deferBatch('partial_batch');continue;}
       const expectedIds=new Set(offers.map(x=>String(x.id_fuente||'')));
       const actualIds=new Set(results.map(x=>String(x.id||'')));
       if(expectedIds.has('')||expectedIds.size!==offers.length||actualIds.size!==results.length||
          actualIds.size!==expectedIds.size||[...actualIds].some(id=>!expectedIds.has(id)))
-        return recordStatus('receipt_offer_mismatch',{batchId});
+        {await deferBatch('receipt_offer_mismatch',true);continue;}
       const allowed=new Set(['direct_record_queued_for_public_projection','already_published','already_imported_id','expired','review_expired']);
-      if(results.some(x=>!allowed.has(x.status)))return recordStatus('invalid_results',{batchId});
+      if(results.some(x=>!allowed.has(x.status))){await deferBatch('invalid_results');continue;}
       const accepted=results.filter(x=>!['expired','review_expired'].includes(x.status)).length;
       const known=results.length-accepted; // legacy count
       const newlyQueued=results.filter(x=>x.status==='direct_record_queued_for_public_projection').length;

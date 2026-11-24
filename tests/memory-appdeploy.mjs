@@ -57,7 +57,7 @@ export function memoryDatabase(){
 
 export function hookSdk(memory){
  globalThis.testAppDeploy={db:memory.db,isAppDatabaseError:e=>Boolean(e?.code)};
- const mock='data:text/javascript,'+encodeURIComponent('export const {db,isAppDatabaseError}=globalThis.testAppDeploy;');
+ const mock='data:text/javascript,'+encodeURIComponent('export const {db,isAppDatabaseError}=globalThis.testAppDeploy; export const secrets={listSecretNames:async()=>[]}; export const json=(body,statusCode=200)=>({statusCode,body:JSON.stringify(body)}); export const error=(message,statusCode)=>json({message},statusCode);');
  return registerHooks({resolve(specifier,context,next){
   if(specifier==='@appdeploy/sdk')return {url:mock,shortCircuit:true};
   if(context.parentURL?.endsWith('.ts')&&specifier.startsWith('.')&&!specifier.endsWith('.ts'))

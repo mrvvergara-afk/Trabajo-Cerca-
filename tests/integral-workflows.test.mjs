@@ -114,3 +114,38 @@ test('progressive simulation: admitted work drains when capacity exceeds arrival
  assert.equal(events.length,240);
  assert.equal(new Set(events.map(e=>e.jobId)).size,240);
 });
+
+test('D checkpoints rejected batches and imports the next eligible batch',async()=>{
+ memory.tables.clear();
+ const {motorDAutoImportHandler}=await import('../backend/motor-d-auto-import.ts');
+ const bad='motor-d-20261120-a9e1312c01453fbd0c';
+ const good='motor-d-20261120-b9e1312c01453fbd0c';
+ const entries=[bad,good].map(batch_id=>({batch_id,file:'20261120/'+batch_id+'.json'}));
+ const requests=[];
+ const original=globalThis.fetch;
+ globalThis.fetch=async (input)=>{
+  const filename=new URL(input).pathname.split('/').at(-1);
+  requests.push(filename);
+  const batch=filename.slice(0,-5);
+  const payload=filename==='index.json'?{schema_version:1,batches:entries}:{
+   schema_version:1,approval:'approved_for_publication',producer:'motor_d_territorial',
+   batch_id:batch,offers:[batch===bad?{id_fuente:'bad'}:{
+    id_fuente:'expired',review_id:'review',promotion_id:'promotion',ocr_revalidate_after:'2020-01-01',
+   }],
+  };
+  const raw=Buffer.from(JSON.stringify(payload));
+  return Response.json({encoding:'base64',content:raw.toString('base64'),size:raw.length,sha:'test'});
+ };
+ try {
+  const response=await motorDAutoImportHandler();
+  assert.equal(JSON.parse(response.body).batchId,good);
+  const [recovery]=await db.get('motor_d_batch_recovery_v1',[bad]);
+  assert.equal(recovery.reason,'import_http_400');
+  assert.equal(recovery.nextAt,null);
+  assert.equal((await db.get('motor_d_import_receipts',[good]))[0].results[0].status,'review_expired');
+  await motorDAutoImportHandler();
+  assert.equal(requests.filter(name=>name===bad+'.json').length,1);
+ } finally {
+  globalThis.fetch=original;
+ }
+});

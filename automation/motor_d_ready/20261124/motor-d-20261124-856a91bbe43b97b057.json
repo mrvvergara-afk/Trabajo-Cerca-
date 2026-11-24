@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261124-856a91bbe43b97b057",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_ac99dfccf73d73c896ac",
+      "cargo": "ENCARGADO DE ADMINISTRACIÓN Y OPERACIONES DE BASES",
+      "empresa": "Angolec SPA",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/encargado-de-administracion-y-operaciones-de-bases-3937782",
+      "fecha_publicacion": "2026-11-24",
+      "fecha_descubrimiento": "2026-11-24",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-07",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

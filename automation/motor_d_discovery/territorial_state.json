@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-24T08:05:46.918405-03:00",
+  "last_run": "2026-11-24T17:08:24.812711-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -9912,6 +9912,162 @@
       "first_seen": "2026-11-24T08:05:46.918405-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-con-experiencia-3081943.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "53f599d03d7b957825d4": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/encargado-de-administracion-y-operaciones-de-bases-3937782",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "cc90e5c046059d1d5823": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/asistente-administrativa-o-en-osorno-3082567.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "98a9dfc10de11b06cc51": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-comunicacion-interna-y-onboarding-para-las-condes-3082566.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2806bf079422899bdaca": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-recursos-humanos-para-las-condes-3082565.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b5bd7cae72f18351a593": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/especialista-de-reportabilidad-tecnica-y-analisis-o-m-3082564.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "df17888668fc603a4716": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/mantenimiento-los-angeles-3082563.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "45b9b828aed7eacf2f85": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/mantenimiento-los-angeles-3082562.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d43f74938d013878c0d1": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-atencion-comercial-para-sucursal-las-condes-rubro-3082561.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "edaaed4960001be05f50": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/promovendedor-a-telecomunicaciones-part-time-16-hrs-temporada-navidena-osorno-3082560.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "97a684667dc78a97273a": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-atencion-comercial-para-sucursal-maipu-temporada-de-verano-3082559.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "40f5f920a25271aeb4cc": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-atencion-comercial-para-sucursal-arauco-maipu-temporada-de-verano-3082558.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "065e2e14201050047742": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/promovendedor-a-telecomunicaciones-part-time-16-hrs-temporada-navidena-chillan-3082557.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "86ad3dc1c10e00d076fc": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-de-ventas-en-terreno-valvulas-e-instrumentacion-renca-industrial-3082556.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "39b76ffd0b917c055c92": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/promovendedor-a-telecomunicaciones-part-time-16-hrs-temporada-navidena-linares-3082555.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0b90766865f80af4a263": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-telecomunicaciones-ejecutivos-de-venta-en-terreno-3082554.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d14b67abb4fce55e33a6": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-instalador-de-aromatizantes-region-metropolitana-3082553.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7714075106e5a2478f6c": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-transpaleta-o-grua-horquilla-sector-de-pudahuel-licencida-d-c-o-b-turno-rotativos-3082552.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2b7990fc11e4e25aa0b6": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-control-y-habilitacion-de-canchas-3082551.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c2b51b30f294f3a2acff": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operario-de-muelle-tarjeta-portuaria-vigente-3082550.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5ff59d9f325e9c063a45": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/coordinador-de-servicios-cad-cam-renca-3082549.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "222fb82056ef56d893db": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-produccion-industrial-renca-4x4-3082548.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ba676669e32ec3115a77": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Operador-Maquinaria-Forestal-Bulldozer/1453388500/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "51116d248a3d611b7fae": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Valdivia-Conductora-Log%C3%ADstico-LR-5110467/1453399700/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "ee012894f7727d95d996": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Niederweningen-Bi-de-Chile-Operadora-Clasificado-Garra-Zona-%C3%91uble-y-Maule-BI/1453340100/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "b9f1469de34c2ecf93ee": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6b0594160691568690649187",
+      "source": "Fashion's Park · portal oficial de contratación",
+      "commune": null
+    },
+    "030c6b104cdb765f4fde": {
+      "first_seen": "2026-11-24T17:08:24.812711-03:00",
+      "url": "https://www.angolnoticiasnew.cl/regional/frontel-refuerza-la-calidad-y-continuidad-del-suministro-electrico-con-importantes-trabajos-de-mantenimiento-en-ercilla/",
+      "source": "Inventario P03",
       "commune": null
     }
   }

@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-23T21:18:41+00:00",
+  "generated_at": "2026-11-24T04:24:49+00:00",
   "complete": true,
-  "totalItemsReported": 293,
-  "jobIdentityCount": 289,
+  "totalItemsReported": 290,
+  "jobIdentityCount": 286,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 109,
-  "outside12CommuneScopeCount": 180,
+  "visibleIn12CommunesCount": 108,
+  "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "53810a4465fef61058392bbf5e71e6644f3a18fda5f84dc3ac49e7667cd13c39",
+  "fingerprint": "eacee1a9713e4e8c24b21d91fbd804692701ca88ef8d21ab51481b1c135e6e7d",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -91,17 +91,6 @@
       "urlHashSha256": "08f0ebce17c70df72d07345fe67db2a49605a22251c6cd24f62ff6ac1e7ad908"
     },
     {
-      "id": "0c9d9edf-98c7-41e8-a864-604fd8069445",
-      "title": "Profesional de Programas Generales / LAE Angol Reemplazo",
-      "company": "Fundación Tierra de Esperanza",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
-      "urlHashSha256": "01d76b0d3eabfed48d2f64883d905ae4df13bf0505116fdc104bf3f32a708875"
-    },
-    {
       "id": "0fb518e1-74bd-4fb2-af54-10a42b8e7cba",
       "title": "Supervisor Técnico de Obra - Mulchén - septiembre 2026 | Laborum Chile",
       "company": "laborum.cl",
@@ -177,6 +166,17 @@
       "visibleIn12Communes": true,
       "url": "https://laborum.cl/empleos/promotora-full-time-martes-a-sabado-angol-falabella-top-top-1118456156.html",
       "urlHashSha256": "c8af3a136933055c503dce27e86dbe05bf4f053e02cec0fd57363a7640d4c865"
+    },
+    {
+      "id": "259a64bb-54fb-43bd-99ad-e15983631cb6",
+      "title": "Profesional de Programas Generales / LAE Angol Reemplazo",
+      "company": "Fundación Tierra de Esperanza",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/profesional-de-programas-generales-lae-angol-reemplazo-3904472",
+      "urlHashSha256": "01d76b0d3eabfed48d2f64883d905ae4df13bf0505116fdc104bf3f32a708875"
     },
     {
       "id": "2ca4362e-d4fb-4d6c-a12e-dfa42849b019",
@@ -452,6 +452,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/vendedor-meson-repuestos-automotrices-3350680",
       "urlHashSha256": "3c190da94f42cd18386703cc133641216e06b55600d40d024b8157da2237358a"
+    },
+    {
+      "id": "80c05369-4a99-4508-9b5b-239ac5bb13c5",
+      "title": "Conductor",
+      "company": "-",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/conductor-3904934",
+      "urlHashSha256": "78bd794104f05a2c3065bc68d33c0c874321c22b0117ea4d95ad7c6295e9f045"
     },
     {
       "id": "84a864c5-7202-4802-85dd-fa5dbcb38a4c",
@@ -819,17 +830,6 @@
       "urlHashSha256": "b1991b80dde5d8efe1c9032afc95f2a99b585803321d6760fa0f595d2440e172"
     },
     {
-      "id": "chatgpt_cg_c7d521f0c88ecb48d3e7",
-      "title": "Concurso Municipal Renaico: 6 salvavidas, 2 TENS, 2 aseo y 2 seguridad (12 vacantes)",
-      "company": "Municipalidad de Renaico",
-      "workCommunes": [
-        "Renaico"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://municipalidadrenaico.cl/wp-content/uploads/2026/11/BASES-CONCURSO-PUBLICO.pdf",
-      "urlHashSha256": "c7d521f0c88ecb48d3e7f335311992256e45e2d2772c0557d2d12c596bb00921"
-    },
-    {
       "id": "chatgpt_cg_cf56d288bde056a1d0fe",
       "title": "Jefe Asesoría Aeródromo Victoria",
       "company": "Ingenieros Consultores Asociados S.A.",
@@ -940,15 +940,6 @@
       "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
     },
     {
-      "id": "chatgpt_d_4de1ef999c10ba4947aa",
-      "title": "Líder Prevención de Riesgo y Sistema Integrado de Gestión",
-      "company": "Recompany",
-      "workCommunes": [],
-      "visibleIn12Communes": false,
-      "url": "https://chiletrabajos.cl/trabajo/lider-prevencion-de-riesgo-y-sistema-integrado-de-gestion-3935812",
-      "urlHashSha256": "4de1ef999c10ba4947aaaf64c9e7d8e14ed50bb9c16ac2a177cf8e3501b37df2"
-    },
-    {
       "id": "chatgpt_d_56d079ed0f37b488c6d6",
       "title": "Ejecutivo/a Atención a Usuarios, 42hrs, Call Center  Presencial",
       "company": "Empresa de tecnología e",
@@ -969,15 +960,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-3935615",
       "urlHashSha256": "5cc1e31b3ff3d83ea28bd48c5ba1cab6ebda828931d2dbec5f2728f0b68957e1"
-    },
-    {
-      "id": "chatgpt_d_65e87d47bbed462ca924",
-      "title": "Prevencionista de Riesgos AIF - Chañaral",
-      "company": "Consultores 2000",
-      "workCommunes": [],
-      "visibleIn12Communes": false,
-      "url": "https://chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
-      "urlHashSha256": "65e87d47bbed462ca924c148946aac8c88e263e5bf1a4474a83f252e50adbfcf"
     },
     {
       "id": "chatgpt_d_72a6ff236aed32072a0c",
@@ -2607,17 +2589,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/relator-prevencionista-de-riesgos-temuco-3215730",
       "urlHashSha256": "835a696362f4715cdc96a07c6babd480551861b0c3a79715c79af47a456a112f"
-    },
-    {
-      "id": "free-bb02698f8acd323951c80f85ba73a050ec1dcb61",
-      "title": "Conductor",
-      "company": "-",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/conductor-3904934",
-      "urlHashSha256": "78bd794104f05a2c3065bc68d33c0c874321c22b0117ea4d95ad7c6295e9f045"
     },
     {
       "id": "free-bb108224d8bacdc89fa74514d3801f4217baa590",

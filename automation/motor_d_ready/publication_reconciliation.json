@@ -1,12 +1,8 @@
 {
   "schema_version": 1,
-  "scan_date": "2026-11-23",
-  "checked_at": "2026-11-24T06:43:28.882818+00:00",
-  "feed_complete": true,
-  "feed_rows": 290,
+  "scan_date": "2026-11-24",
   "state": "needs_receipt_review",
-  "territory_mismatches_count": 3,
-  "historical_missing_from_catalog": 3,
+  "historical_missing_from_catalog": 4,
   "released_from_quarantine": 0,
   "released_items": [],
   "items": [
@@ -21,8 +17,20 @@
       "prior_batch_ids": [
         "motor-d-20261123-41e88159a997af13d6"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery",
-      "catalog_status": "not_found_in_complete_feed"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+    },
+    {
+      "id_fuente": "d_62e23c5d9bc15004ccf2",
+      "cargo": "Ayudante Obra Civil",
+      "empresa": "INMEL CHILE SPA",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
+      "prior_batch_ids": [
+        "motor-d-20261123-41e88159a997af13d6"
+      ],
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
     },
     {
       "id_fuente": "d_bf620420ab7734288092",
@@ -35,8 +43,7 @@
       "prior_batch_ids": [
         "motor-d-20261123-41e88159a997af13d6"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery",
-      "catalog_status": "not_found_in_complete_feed"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
     },
     {
       "id_fuente": "d_65e87d47bbed462ca924",
@@ -49,11 +56,7 @@
       "prior_batch_ids": [
         "motor-d-20261121-beb79ae39f3195f757"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery",
-      "catalog_status": "not_found_in_complete_feed"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
     }
-  ],
-  "resolved_published_items": [],
-  "confirmation_file": "publication_confirmation.json",
-  "semantic_only_requires_receipt": []
+  ]
 }

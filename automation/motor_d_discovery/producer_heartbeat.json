@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "producer": "motor_d_territorial",
-  "scan_completed_at": "2026-11-23T22:01:04.923373-03:00",
+  "scan_completed_at": "2026-11-24T08:05:46.918405-03:00",
   "communes_expected": [
     "Angol",
     "Collipulli",
@@ -20,9 +20,9 @@
   "sources_total": 175,
   "sources_accessible": 118,
   "sources_blocked": 48,
-  "job_candidates_total": 261,
-  "express_ready_candidates": 3,
-  "source_report_sha256": "29300ab41ab4b9e5145301bd984916f3737a7a172da007ce3f6532af839ac4c8",
+  "job_candidates_total": 258,
+  "express_ready_candidates": 2,
+  "source_report_sha256": "9d4b973963b6bda1c34562a15e49ae7cc5c0c950e5cab7c602462c8d28993352",
   "published_in_trabajo_cerca": 0,
   "publication_confirmed": false,
   "source_inventory_registered": 202,

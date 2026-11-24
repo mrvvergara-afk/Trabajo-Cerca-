@@ -2,17 +2,17 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-23T22:56:53.745942+00:00",
+  "checked_at": "2026-11-24T06:43:28.882818+00:00",
   "feed_complete": true,
-  "feed_rows": 293,
+  "feed_rows": 290,
   "indexed_batches": 32,
   "quarantined_batches": 2,
   "distinct_nonquarantined_offers": 65,
-  "source_confirmed": 61,
+  "source_confirmed": 59,
   "semantic_only": 0,
-  "not_found": 3,
+  "not_found": 5,
   "expired_not_expected": 1,
-  "territory_mismatches_count": 5,
+  "territory_mismatches_count": 3,
   "territory_mismatches": [
     {
       "id_fuente": "d_bef43ecfd4d8417f1770",
@@ -36,26 +36,6 @@
       "catalog_work_communes": [
         "Collipulli"
       ],
-      "status": "catalog_territory_mismatch"
-    },
-    {
-      "id_fuente": "d_4de1ef999c10ba4947aa",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/lider-prevencion-de-riesgo-y-sistema-integrado-de-gestion-3935812",
-      "catalog_id": "chatgpt_d_4de1ef999c10ba4947aa",
-      "expected_work_communes": [
-        "Purén"
-      ],
-      "catalog_work_communes": [],
-      "status": "catalog_territory_mismatch"
-    },
-    {
-      "id_fuente": "d_65e87d47bbed462ca924",
-      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
-      "catalog_id": "chatgpt_d_65e87d47bbed462ca924",
-      "expected_work_communes": [
-        "Purén"
-      ],
-      "catalog_work_communes": [],
       "status": "catalog_territory_mismatch"
     },
     {
@@ -337,18 +317,18 @@
       "batch_id": "motor-d-20261120-a9e1312c01453fbd0c",
       "historically_quarantined": false,
       "offer_count": 1,
-      "source_confirmed": 1,
+      "source_confirmed": 0,
       "semantic_only": 0,
-      "not_found": 0,
+      "not_found": 1,
       "expired_not_expected": 0
     },
     {
       "batch_id": "motor-d-20261121-beb79ae39f3195f757",
       "historically_quarantined": false,
       "offer_count": 1,
-      "source_confirmed": 1,
+      "source_confirmed": 0,
       "semantic_only": 0,
-      "not_found": 0,
+      "not_found": 1,
       "expired_not_expected": 0
     },
     {
@@ -372,6 +352,18 @@
   ],
   "unresolved_active_batches": [
     {
+      "id_fuente": "d_4de1ef999c10ba4947aa",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/lider-prevencion-de-riesgo-y-sistema-integrado-de-gestion-3935812",
+      "batch_id": "motor-d-20261120-a9e1312c01453fbd0c",
+      "status": "not_found_in_complete_feed"
+    },
+    {
+      "id_fuente": "d_65e87d47bbed462ca924",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/prevencionista-de-riesgos-aif-chanaral-3933712",
+      "batch_id": "motor-d-20261121-beb79ae39f3195f757",
+      "status": "not_found_in_complete_feed"
+    },
+    {
       "id_fuente": "d_62e23c5d9bc15004ccf2",
       "url_original": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
       "batch_id": "motor-d-20261123-41e88159a997af13d6",
@@ -391,6 +383,6 @@
     }
   ],
   "previously_flagged_resolved": 0,
-  "previously_flagged_still_pending": 0,
+  "previously_flagged_still_pending": 3,
   "prior_pending_resolution": []
 }

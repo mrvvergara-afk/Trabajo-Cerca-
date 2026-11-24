@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-24T15:11:36+00:00",
+  "generated_at": "2026-11-24T20:10:11+00:00",
   "complete": true,
   "totalItemsReported": 290,
   "jobIdentityCount": 286,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 108,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "06c992336108d7998dae2f78c58d462ec758a107152647d08474edcc5bee6e91",
+  "fingerprint": "ea2ba541ec2af19c5d4b8fa1756d45df264456a466b8feae91c1f62d49bc60c5",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -3098,6 +3098,17 @@
       "urlHashSha256": "7e45132d6145e0227fa87dfa70e645d18c6e481ae7199f7283250f278bd94a65"
     },
     {
+      "id": "free-fd6f3d91033632ce9dbcc52634dcf4933c21a219",
+      "title": "Subgerente de tienda Papa Johns - Angol",
+      "company": "Papa Johns Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
+      "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
+    },
+    {
       "id": "free-fdbde00be5d732241bbfb312a513a0b218c13509",
       "title": "Asistente de Marketing",
       "company": "Enjoy",
@@ -3151,17 +3162,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
       "urlHashSha256": "e2265a52410f086a0dcb71a8684cc66e82a97a9d849af2fc45370c09ad971024"
-    },
-    {
-      "id": "tcq_fd6f3d91033632ce9dbcc5",
-      "title": "Subgerente de tienda Papa Johns - Angol",
-      "company": "Papa Johns Angol",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
-      "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
     }
   ]
 }

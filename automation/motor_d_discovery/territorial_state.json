@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-25T01:58:12.574492-03:00",
+  "last_run": "2026-11-25T12:46:15.998072-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -10308,6 +10308,138 @@
       "first_seen": "2026-11-25T01:09:42.145629-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/asesor-de-ventas-42-horas-semanales-3082777.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "155e05f2362f198c59f4": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/especialista-contratos-de-oym-3083158.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ce2b987f990faf5807bf": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-rios/guardia-de-seguridad-4x4-valdivia-570000-liquidos-3083157.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c44a999afa81775cddf6": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/guardia-de-seguridad-hombre-o-mujer-3083156.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a3ce25b6b142037f9511": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-profesional-en-diseno-grafico-3083155.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a0911893215963c67e93": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-casino-2x2-noche-vitacura-sin-experiencia-3083154.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "feabec9064ba3b5d5986": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/auxiliar-de-aseo-full-time-pm-centro-medico-integramedica-iquique-3083153.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2a8f51f2758146378de7": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/cajero-b-externo-coyhaique-region-de-aysen-3083152.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ccc9d951ce0f6cd143de": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/captador-a-con-experiencia-3083151.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "613fb2b5e3d2b6003397": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/urgente-buscamos-ejecutivos-en-terreno-del-canal-tradicional-calama-3083150.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d2c4440404ac84cd0aea": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practica-en-area-de-seleccion-providencia-2027-3083149.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "09477891b2b9b8271d74": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/auxiliar-de-aseo-reemplazo-supermercado-rengo-3083148.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "16e5d8a8c0a4aafe1aa6": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/auxiliar-de-aseo-renta-liquida-510000-antofagasta-3083147.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "442342bd225d7f7721e6": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/guardia-de-seguridad-cctv-planta-pesquera-food-defense-obligatorio-7x7-caldera-contar-con-curso-de-food-defense-defensa-alimentaria-3083146.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "49e86b087edf63e32233": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-aseo-industrial-reemplazo-licencia-6-meses-3083145.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b0fce18fe19ed020a3d3": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/supervisor-de-aseo-industrial-3083144.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "24aa2cc96f937210e3ff": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/auxiliares-de-aseo-sabados-talca-3083143.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "31c624ca97aec65bf3ee": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/buscamos-auxiliares-de-aseo-para-centro-de-salud-en-nunoa-3083142.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6eab7294de37432913df": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/administrador-de-contrato-con-experiencia-en-energia-para-antofagasta-antofagasta-3083141.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "02cd24afc2880ae55eff": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cajero-a-cafeteria-6x1-santiago-centro-con-experiencia-3083140.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "761e519cacd1a989697d": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/jefe-de-local-nuevo-streat-burger-los-angeles-3083139.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d0356beff855c6124cf2": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Arauco-Mantenedor-Junior-BI-4360000/1453758500/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "58c05ee1091195fb8f90": {
+      "first_seen": "2026-11-25T12:46:15.998072-03:00",
+      "url": "https://www.muninegrete.cl/concurso-publico-directora-de-control-municipal/",
+      "source": "Negrete · municipio",
       "commune": null
     }
   }

@@ -1,0 +1,86 @@
+/* Six contextual self-promotions: subtle dots, feathered artwork, no numeric tabs. */
+.tcScreenreaderOnly{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;
+ margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.tcStitchShell .tcInlineHousePromo,.tcStitchShell .tcHouseAd.tcPremiumAd{
+ background:linear-gradient(120deg,#0a382b,#1b5d41)!important;border:0!important;
+ border-radius:16px!important;box-shadow:0 7px 19px #123e2920!important;
+ overflow:hidden!important;isolation:isolate!important;position:relative!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon,
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+ border:0!important;border-radius:0!important;box-shadow:none!important;background:#255943!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcHouseFallbackThumb,
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{border-radius:0!important;object-fit:cover!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb)::after{
+ content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+ background:linear-gradient(90deg,#14513cf0 0%,#14513c70 20%,transparent 80%)!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls{
+ position:absolute!important;z-index:8!important;bottom:7px!important;right:6px!important;
+ left:auto!important;transform:none!important;max-width:none!important;
+ display:flex!important;flex-flow:row nowrap!important;gap:1px!important;padding:2px!important;
+ background:#06372bbf!important;border-radius:30px!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button,
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button{
+ display:grid!important;place-items:center!important;position:relative!important;
+ flex:0 0 19px!important;width:19px!important;min-width:19px!important;max-width:19px!important;
+ height:23px!important;min-height:23px!important;max-height:23px!important;padding:0!important;
+ margin:0!important;border:0!important;border-radius:20px!important;
+ background:transparent!important;color:transparent!important;font-size:0!important;line-height:0!important;
+ box-shadow:none!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button::after,
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button::after{
+ content:'';display:block!important;width:6px!important;height:6px!important;border-radius:15px!important;
+ background:#f1f9ebbe!important;transition:width .15s ease!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button[aria-pressed=true]::after,
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button[aria-pressed=true]::after{
+ width:14px!important;background:#d9f59d!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button:focus-visible,
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button:focus-visible{
+ outline:2px solid #e0f5a3!important;outline-offset:2px!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy{position:relative!important;z-index:5!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{color:#d9f4b9!important}
+.tcStitchShell .tcInlineHousePromo>button{
+ background:#dff3ab!important;color:#194d34!important;border:0!important;border-radius:12px!important;
+ box-shadow:none!important;position:relative!important;z-index:6!important;min-height:40px!important}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual{border-radius:0!important;border:0!important}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignVisual::after{
+ content:'';position:absolute;inset:0;z-index:4;pointer-events:none;
+ background:linear-gradient(90deg,#1b5844a8,#1b58444d 30%,transparent 72%)!important}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls{
+ position:absolute!important;bottom:8px!important;right:7px!important;z-index:8!important;
+ flex-flow:row nowrap!important;gap:1px!important;border-radius:30px!important;
+ background:#06372bbf!important;padding:2px!important;max-width:none!important}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryLabel{display:none!important}
+.tcStitchShell .tcHouseAd.tcPremiumAd .tcCampaignCopy>button{
+ background:#dff3ab!important;color:#194d34!important;border:0!important;border-radius:12px!important}
+@media(max-width:767px){
+ .tcStitchShell .tcInlineHousePromo:has(.tcHouseFallbackThumb),
+ .tcStitchShell .tcInlineHousePromo[data-placement=search]:has(.tcHouseFallbackThumb),
+ .tcStitchShell .tcInlineHousePromo[data-placement=listing]:has(.tcHouseFallbackThumb){
+  display:grid!important;grid-template-columns:minmax(0,1.1fr) minmax(120px,.9fr)!important;
+  grid-template-rows:minmax(0,1fr) auto!important;grid-template-areas:"copy photo" "cta photo"!important;
+  gap:5px!important;min-height:168px!important;max-height:none!important;
+  width:calc(100% - 24px)!important;max-width:100%!important;margin:8px auto!important;padding:12px!important}
+ .tcStitchShell .tcInlineHousePromo[data-placement=listing]:has(.tcHouseFallbackThumb){width:100%!important;margin:7px 0!important}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+  grid-area:photo!important;grid-column:2!important;grid-row:1/3!important;
+  align-self:stretch!important;width:100%!important;height:100%!important;
+  min-height:100%!important;max-height:none!important;border-radius:0!important}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy{
+  grid-area:copy!important;grid-column:1!important;grid-row:1!important;align-self:center!important}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:clamp(15px,4.2vw,19px)!important;
+  line-height:1.15!important;-webkit-line-clamp:3!important}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{font-size:11px!important;line-height:1.3!important}
+ .tcStitchShell .tcInlineHousePromo>button{
+  grid-area:cta!important;grid-column:1!important;grid-row:2!important;
+  justify-self:stretch!important;min-height:38px!important}
+ .tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button,
+ .tcStitchShell .tcHouseAd.tcPremiumAd .tcHouseGalleryControls button{
+  flex-basis:17px!important;width:17px!important;min-width:17px!important;
+  height:22px!important;min-height:22px!important}
+ .tcStitchShell .tcStitchAdvertising .tcHouseAd.tcPremiumAd{
+  grid-template-columns:minmax(0,1fr) minmax(125px,.78fr)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .tcStitchShell .tcInlineGalleryControls button::after,
+ .tcStitchShell .tcHouseGalleryControls button::after{transition:none!important}
+}

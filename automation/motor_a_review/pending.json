@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-25T04:57:59.353683+00:00",
-  "items_total": 12,
+  "updated_at": "2026-11-25T15:45:32.313614+00:00",
+  "items_total": 10,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-25T04:57:59.353683+00:00",
+      "last_checked_at": "2026-11-25T15:45:32.313614+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -25,22 +25,6 @@
       ]
     },
     {
-      "id": "a_2853b50483103a35fb7c",
-      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-relator-de-curso-produccion-de-miel-y-otros-productos-de-la-colmena-3937307",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Mulchén",
-      "title_hint": "Se busca relator de curso producción de miel y otros productos de la colmena - Los Ángeles | Chiletrabajos",
-      "date_source_hint": "2026-11-23 16:55:25",
-      "deadline_hint": "2027-02-06T16:55:25",
-      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
-      "last_checked_at": "2026-11-25T04:57:59.353683+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
       "id": "a_9cfa84f680e3d38caf5a",
       "url": "https://www.chiletrabajos.cl/trabajo/se-busca-relator-para-curso-admin-de-establecimientos-gastronomicos-3937340",
       "source": "Motor A Chiletrabajos",
@@ -49,7 +33,39 @@
       "date_source_hint": "2026-11-23 17:19:12",
       "deadline_hint": "2027-02-06T17:19:12",
       "first_discovered_at": "2026-11-24T21:21:38.921925+00:00",
-      "last_checked_at": "2026-11-25T04:57:59.353683+00:00",
+      "last_checked_at": "2026-11-25T15:45:32.313614+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description"
+    },
+    {
+      "id": "a_b5ba3957f4525c1661b0",
+      "url": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Victoria",
+      "title_hint": "Analista Tecnico - Santiago | Chiletrabajos",
+      "date_source_hint": "2026-11-23 16:20:06",
+      "deadline_hint": "2027-02-06T16:20:06",
+      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
+      "last_checked_at": "2026-11-25T15:45:32.313614+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description"
+    },
+    {
+      "id": "a_59336d67ccc4d18a5021",
+      "url": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Victoria",
+      "title_hint": "Ayudante Obra Civil - Santiago | Chiletrabajos",
+      "date_source_hint": "2026-11-23 16:14:57",
+      "deadline_hint": "2027-02-06T16:14:57",
+      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
+      "last_checked_at": "2026-11-25T15:45:32.313614+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -117,38 +133,6 @@
       ]
     },
     {
-      "id": "a_b5ba3957f4525c1661b0",
-      "url": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Victoria",
-      "title_hint": "Analista Tecnico - Santiago | Chiletrabajos",
-      "date_source_hint": "2026-11-23 16:20:06",
-      "deadline_hint": "2027-02-06T16:20:06",
-      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
-      "last_checked_at": "2026-11-24T01:00:48.123256+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_59336d67ccc4d18a5021",
-      "url": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Victoria",
-      "title_hint": "Ayudante Obra Civil - Santiago | Chiletrabajos",
-      "date_source_hint": "2026-11-23 16:14:57",
-      "deadline_hint": "2027-02-06T16:14:57",
-      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
-      "last_checked_at": "2026-11-24T01:00:48.123256+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
       "id": "a_402b80fa0d19da47c1a8",
       "url": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
       "source": "Motor A Chiletrabajos",
@@ -163,26 +147,6 @@
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_d850aaa7c83bdfcd8f83",
-      "url": "https://www.chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Vendedor Terreno - ANGOL - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-13 16:23:21",
-      "deadline_hint": "2027-01-27T16:23:21",
-      "first_discovered_at": "2026-11-18T04:31:14.992084+00:00",
-      "last_checked_at": "2026-11-23T13:04:10.441416+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
     },
     {
       "id": "a_dfa1f8d173984ff01036",
@@ -223,11 +187,11 @@
   ],
   "metrics": {
     "added": 12,
-    "updated": 5,
+    "updated": 6,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 11,
-    "territory_mismatch": 6
+    "published_reconciled": 14,
+    "territory_mismatch": 5
   }
 }

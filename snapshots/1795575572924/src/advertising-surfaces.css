@@ -1,0 +1,484 @@
+/* Presencia editorial discreta para formularios y autopromoción en espacios sin anunciante. */
+.tcFormEditorialAd {
+  display:grid;
+  grid-template-columns:82px minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  box-sizing:border-box;
+  min-width:0;
+  margin:10px 0 18px;
+  padding:12px 13px;
+  border:1px solid #dbe7d8;
+  border-radius:13px;
+  background:linear-gradient(125deg,#f5f9ee,#f1f7ef 68%,#eaf5e6);
+  color:#214635;
+}
+.tcFormEditorialArt {
+  position:relative;
+  display:grid;
+  place-items:center;
+  height:67px;
+  border-right:1px solid #c8decd;
+  color:#387b4d;
+}
+.tcFormEditorialArt svg:first-child {width:40px;height:40px;stroke-width:1.7;}
+.tcFormEditorialArt svg:last-child {position:absolute;bottom:3px;right:4px;width:17px;height:17px;color:#88b38d;}
+.tcFormEditorialCopy {min-width:0;line-height:1.35;}
+.tcFormEditorialCopy small {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:4px;
+  margin-bottom:5px;
+  font-size:10px;
+  color:#397c53;
+  font-weight:750;
+  letter-spacing:.025em;
+}
+.tcFormEditorialCopy small svg {width:12px;height:12px;}
+.tcFormEditorialCopy p {font-size:12px!important;line-height:1.45;margin:0!important;color:#415d4a;}
+.tcFormEditorialCopy strong {font-size:13px;color:#204734;}
+.tcFormEditorialLink {
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  justify-content:center;
+  flex-shrink:0;
+  min-height:39px;
+  padding:7px 10px;
+  font-size:11px;
+  font-weight:750;
+  color:#25643d;
+  text-decoration:none;
+  white-space:normal;
+  border:1px solid #a4cbb0;
+  border-radius:10px;
+  background:#ffffffa8;
+}
+.tcFormEditorialLink svg {width:13px;height:13px;flex-shrink:0;}
+.tcFormEditorialLink:focus-visible,.tcInlineHousePromo button:focus-visible {
+  outline:3px solid #66a676;outline-offset:2px;
+}
+.tcInlineHousePromo {
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  width:min(1200px,calc(100% - 36px));
+  margin:15px auto;
+  padding:14px 18px;
+  box-sizing:border-box;
+  border:1px solid #d7e7db;
+  border-radius:15px;
+  background:#f3f8f2;
+  color:#224632;
+}
+.neoJobsGrid>.tcInlineHousePromo,.tcInlineHousePromo[data-placement='listing'] {
+  grid-column:1 / -1;
+  width:100%;
+  margin:12px 0;
+}
+.tcInlineHouseIcon {
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  border-radius:13px;background:#e2efdf;color:#377c4c;
+}
+.tcInlineHouseIcon svg {width:19px;height:19px;}
+.tcInlineHouseCopy {min-width:0;}
+.tcInlineHouseCopy small {
+  display:block;font-size:9px;letter-spacing:.055em;
+  font-weight:750;color:#478253;margin-bottom:4px;
+}
+.tcInlineHouseCopy strong {display:block;font-size:14px;color:#19452f;}
+.tcInlineHouseCopy p {margin:4px 0 0!important;font-size:12px;line-height:1.35;color:#587361;}
+.tcInlineHousePromo button {
+  display:inline-flex;align-items:center;gap:7px;
+  justify-content:center;
+  border:1px solid #abcab1;border-radius:9px;
+  min-height:40px;padding:9px 12px;
+  background:white;color:#245c37;font-size:11px;
+  font-weight:750;cursor:pointer;
+}
+.tcInlineHousePromo button svg {width:13px;height:13px;}
+@media(max-width:780px) {
+  .tcFormEditorialAd {grid-template-columns:45px minmax(0,1fr);gap:9px;padding:10px;}
+  .tcFormEditorialArt {height:52px;}
+  .tcFormEditorialArt svg:first-child {width:31px;height:31px;}
+  .tcFormEditorialLink {grid-column:2;justify-self:start;min-height:34px;padding:6px 10px;}
+  .tcInlineHousePromo {grid-template-columns:36px minmax(0,1fr);gap:10px;padding:12px;}
+  .tcInlineHouseIcon {height:36px;width:36px;}
+  .tcInlineHousePromo button {grid-column:2;justify-self:start;}
+}
+@media(max-width:420px) {
+  .tcFormEditorialCopy small {font-size:9px;}
+  .tcFormEditorialCopy p {font-size:11px!important;}
+  .tcFormEditorialCopy strong {font-size:12px;}
+  .tcInlineHouseCopy p {font-size:11px;}
+}
+
+
+/* Benefit-led house promotion: confident contrast, short real CTA, not a pop-up. */
+.tcStitchShell .tcInlineHousePromo{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:linear-gradient(116deg,#0d3929 0%,#185139 60%,#206747 100%);
+ border:1px solid #1b6040;color:#fff;
+ box-shadow:0 7px 20px rgba(10,48,32,.11);
+ padding:15px 16px;border-radius:15px;
+ grid-template-columns:46px minmax(0,1fr) auto;
+ gap:12px;
+}
+.tcStitchShell .tcInlineHousePromo::before{
+ content:'';position:absolute;right:-30px;top:-60px;width:180px;height:180px;
+ border:1px solid rgba(207,246,172,.16);border-radius:50%;z-index:-1;pointer-events:none;
+}
+.tcStitchShell .tcInlineHousePromo::after{
+ content:'';position:absolute;right:5px;top:-15px;width:110px;height:110px;
+ border:1px solid rgba(207,246,172,.12);border-radius:50%;z-index:-1;pointer-events:none;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon{
+ background:#e7f9ca;color:#205a3c;border-radius:12px;
+ width:42px;height:42px;box-shadow:inset 0 0 0 1px #ffffff80;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{
+ color:#c6f3a2;font-size:10px;line-height:14px;letter-spacing:.035em;
+ margin-bottom:5px;font-weight:800;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{
+ display:block;max-width:34ch;color:white;font-size:17px;
+ font-weight:830;line-height:1.18;letter-spacing:-.02em;overflow-wrap:normal;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{
+ color:#e0f2e5;margin:5px 0!important;font-size:12px;line-height:1.4;max-width:49ch;
+}
+.tcStitchShell .tcInlineHousePromo .tcPromoBenefit{
+ display:inline-block;color:#dbf0cf;font-size:10px;line-height:15px;font-weight:700;
+}
+.tcStitchShell .tcInlineHousePromo button{
+ display:inline-flex;justify-content:center;align-items:center;gap:7px;
+ min-height:42px;border:0;border-radius:10px;
+ background:#dbf49d;color:#17462d;font-size:12px;font-weight:850;
+ padding:10px 13px;box-shadow:0 3px 0 #0a291950;
+}
+.tcStitchShell .tcInlineHousePromo button:hover{background:#ebffc5;}
+.tcStitchShell .tcInlineHousePromo button:focus-visible{outline:3px solid #eefbcf;outline-offset:2px;}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo{
+  grid-template-columns:38px minmax(0,1fr);gap:9px 11px;
+  padding:13px 14px;align-items:start;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon{width:37px;height:37px;}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:16px;line-height:19px;}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{font-size:11px;line-height:15px;}
+ .tcStitchShell .tcInlineHousePromo button{
+  grid-column:2;justify-self:start;max-width:100%;min-height:38px;
+  padding:8px 11px;font-size:11px;
+ }
+}
+@media(max-width:360px){
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:15px;line-height:18px;}
+ .tcStitchShell .tcInlineHousePromo{padding:10px 11px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .tcStitchShell .tcInlineHousePromo button{transition:none;}
+}
+
+
+/* Reuse authorized house-campaign photography as a small, relevant visual. */
+.tcStitchShell .tcInlineHousePromo:has(.tcInlineHouseIcon .tcAdImage){grid-template-columns:70px minmax(0,1fr) auto;}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcAdImage){
+ width:68px;height:68px;overflow:hidden;border-radius:11px;
+ box-shadow:0 0 0 2px #c5f0a6;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{
+ display:block;width:100%;height:100%;object-fit:cover;object-position:center;
+ border-radius:10px;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcAdImage) svg{display:none;}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo:has(.tcInlineHouseIcon .tcAdImage){grid-template-columns:60px minmax(0,1fr);}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcAdImage){width:58px;height:58px;}
+}
+
+
+/* Consistent self-promotion across feed/search and embedded forms; commercial ads untouched. */
+.tcStitchShell .tcInlineHousePromo .tcHouseRotateButton{
+  display:inline-flex!important;min-height:28px!important;width:auto!important;max-width:100%;
+  padding:4px 7px!important;margin-top:5px!important;align-self:flex-start;
+  background:#ffffff19!important;color:#e3f2da!important;border:1px solid #ffffff59!important;
+  box-shadow:none!important;border-radius:7px!important;
+  font-size:10px!important;line-height:15px!important;font-weight:600!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcHouseRotateButton:focus-visible{
+  outline:3px solid #eaf9c4;outline-offset:2px;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD']{
+  background:linear-gradient(118deg,#113b2a,#225942)!important;
+  color:#fff!important;border:1px solid #36704e!important;
+  box-shadow:0 5px 14px #0b3c2220;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt{
+  border-color:#e0f9af50;color:#d8f3a1;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt .tcAdImage{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:9px;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt:has(.tcAdImage) svg{
+  display:none;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy strong{
+  color:#f1ffde;font-size:13px!important;line-height:17px!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy p{
+  color:#e3f0e1!important;font-size:11px!important;line-height:16px!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy small{
+  color:#c9f3a8!important;font-size:9px!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialLink{
+  background:#e5f4b4;color:#20492f;border:0;font-weight:800;
+}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo .tcHouseRotateButton{font-size:9px!important;margin-top:4px!important;}
+ .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD']{padding:9px!important;gap:7px!important;}
+ .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt{height:52px!important;width:52px!important;}
+ .tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialCopy p{font-size:10px!important;line-height:14px!important;}
+}
+
+
+/* Hotfix: safe local image fallback, visually consistent on all institutional slots. */
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon{
+ position:relative;isolation:isolate;overflow:hidden!important;flex-shrink:0!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcHouseFallbackThumb{
+ position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;
+ border-radius:inherit;z-index:0;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{
+ position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;z-index:1;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb)>svg{
+ display:none!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+ width:60px!important;height:60px!important;
+}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+   width:50px!important;height:50px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo:has(.tcHouseFallbackThumb){
+   grid-template-columns:50px minmax(0,1fr)!important;
+   align-items:start!important;
+ }
+}
+
+
+/* Institutional cards 2026: image-led layout in every self-ad slot, paid creatives unaffected. */
+.tcStitchShell .tcInlineHousePromo{
+ display:grid!important;grid-template-columns:minmax(0,1.06fr) minmax(110px,.94fr)!important;
+ grid-template-rows:auto auto!important;grid-template-areas:"copy photo" "cta photo"!important;
+ gap:8px 11px!important;min-width:0!important;max-width:100%!important;
+ min-height:155px!important;padding:13px!important;box-sizing:border-box!important;
+ align-items:stretch!important;overflow:hidden!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy{
+ grid-area:copy!important;display:flex!important;flex-direction:column!important;
+ align-items:flex-start!important;min-width:0!important;max-width:100%!important;
+ gap:4px!important;justify-content:center!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{
+ display:block!important;font-size:9px!important;line-height:12px!important;
+ max-width:100%!important;white-space:normal!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{
+ display:-webkit-box!important;-webkit-box-orient:vertical!important;
+ -webkit-line-clamp:3!important;overflow:hidden!important;
+ font-size:clamp(15px,1.5vw,19px)!important;line-height:1.2!important;
+ max-width:100%!important;overflow-wrap:normal!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{
+ display:-webkit-box!important;-webkit-box-orient:vertical!important;
+ -webkit-line-clamp:2!important;overflow:hidden!important;
+ font-size:11px!important;line-height:15px!important;margin:2px 0!important;
+ max-width:100%!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcPromoBenefit{
+ display:block!important;font-size:9px!important;line-height:13px!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon,
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+ grid-area:photo!important;position:relative!important;isolation:isolate!important;
+ width:100%!important;height:100%!important;min-height:130px!important;
+ display:block!important;border-radius:12px!important;overflow:hidden!important;
+ box-sizing:border-box!important;background:#d3e5d0!important;box-shadow:0 0 0 2px #eef8e850!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcHouseFallbackThumb,
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ display:block!important;object-fit:cover!important;border-radius:12px!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcHouseFallbackThumb{z-index:0!important;}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon .tcAdImage{z-index:1!important;}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb)>svg{display:none!important;}
+.tcStitchShell .tcInlineHousePromo>button{
+ grid-area:cta!important;justify-self:start!important;align-self:end!important;
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ min-width:0!important;max-width:100%!important;min-height:37px!important;
+ padding:8px 10px!important;white-space:normal!important;text-align:left!important;
+ font-size:11px!important;line-height:14px!important;font-weight:800!important;
+ border-radius:9px!important;
+}
+.tcStitchShell .tcInlineHousePromo>button svg{width:15px!important;height:15px!important;flex:0 0 15px!important;}
+/* Embedded form's house campaign also gets a persistent local illustration. */
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt{
+ display:block!important;position:relative!important;isolation:isolate!important;
+ min-width:52px!important;max-width:64px!important;
+ border-radius:10px!important;overflow:hidden!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt .tcFormHouseFallback{
+ position:absolute!important;inset:0!important;display:block!important;width:100%!important;
+ height:100%!important;object-fit:cover!important;z-index:0!important;
+}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt .tcAdImage{z-index:1!important;}
+.tcStitchShell .tcFormEditorialAd[data-ad-type='HOUSE_AD'] .tcFormEditorialArt:has(.tcFormHouseFallback)>svg{
+ display:none!important;
+}
+@media(max-width:780px){
+ .tcStitchShell .tcInlineHousePromo{
+   grid-template-columns:minmax(0,1.13fr) minmax(110px,.87fr)!important;
+   grid-template-areas:"copy photo" "cta photo"!important;
+   gap:7px 10px!important;padding:11px!important;min-height:150px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{
+   font-size:15px!important;line-height:18px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{font-size:10px!important;line-height:14px!important;}
+ .tcStitchShell .tcInlineHousePromo>button{grid-column:auto!important;grid-row:auto!important;font-size:10px!important;line-height:13px!important;}
+}
+@media(max-width:360px){
+ .tcStitchShell .tcInlineHousePromo{
+   grid-template-columns:minmax(0,1.15fr) minmax(92px,.85fr)!important;
+   padding:9px!important;gap:6px!important;
+ }
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:13px!important;line-height:16px!important;}
+ .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{font-size:8px!important;line-height:11px!important;}
+ .tcStitchShell .tcInlineHousePromo>button{font-size:10px!important;padding:7px 8px!important;line-height:12px!important;}
+}
+
+/* 15-11: única regla móvil final para campañas propias.
+   Corrige el antiguo :has() que imponía una columna de 50px pese al diseño de dos columnas. */
+.tcAdStartupPlaceholder {
+  box-sizing:border-box;width:calc(100% - 36px);max-width:1200px;
+  min-height:98px;margin:12px auto;border:1px solid #d9e8dd;
+  border-radius:13px;background:#f3f8f2;display:flex;align-items:center;
+  padding:13px 16px;color:#56715e;font-size:12px;
+}
+.tcAdStartupPlaceholder[data-placement='listing']{width:100%;grid-column:1/-1;}
+.tcAdStartupPlaceholder[data-placement='featured']{width:100%;min-height:140px;}
+@media(max-width:767px){
+  .tcStitchShell .tcInlineHousePromo:has(.tcHouseFallbackThumb),
+  .tcStitchShell .tcInlineHousePromo[data-placement='search']:has(.tcHouseFallbackThumb),
+  .tcStitchShell .tcInlineHousePromo[data-placement='listing']:has(.tcHouseFallbackThumb){
+    display:grid!important;
+    grid-template-columns:76px minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    grid-template-areas:"photo copy" "photo cta"!important;
+    align-items:center!important;
+    gap:5px 10px!important;
+    padding:10px!important;
+    min-width:0!important;width:calc(100% - 24px)!important;
+    min-height:119px!important;max-height:none!important;
+    margin:8px auto!important;
+    border-radius:13px!important;
+  }
+  .tcStitchShell .tcInlineHousePromo[data-placement='listing']:has(.tcHouseFallbackThumb){
+    width:100%!important;margin:6px 0!important;grid-column:1/-1!important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){
+    grid-area:photo!important;grid-column:1!important;grid-row:1/span 2!important;
+    align-self:stretch!important;display:block!important;
+    width:76px!important;height:100%!important;min-height:98px!important;max-height:122px!important;
+    border-radius:10px!important;overflow:hidden!important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy{
+    grid-area:copy!important;grid-column:2!important;grid-row:1!important;
+    align-self:end!important;min-width:0!important;width:100%!important;
+    display:flex!important;flex-direction:column!important;gap:2px!important;
+    justify-content:flex-end!important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{
+    display:block!important;font-size:9px!important;line-height:12px!important;
+    margin:0!important;max-width:100%!important;letter-spacing:.02em!important;
+    white-space:normal!important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{
+    display:-webkit-box!important;-webkit-box-orient:vertical!important;
+    -webkit-line-clamp:2!important;overflow:hidden!important;
+    font-size:15px!important;line-height:19px!important;
+    max-width:100%!important;overflow-wrap:break-word!important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{
+    display:-webkit-box!important;-webkit-box-orient:vertical!important;
+    -webkit-line-clamp:1!important;overflow:hidden!important;
+    margin:2px 0 0!important;font-size:11px!important;line-height:15px!important;
+    max-width:100%!important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcPromoBenefit{display:none!important;}
+  .tcStitchShell .tcInlineHousePromo>button{
+    grid-area:cta!important;grid-column:2!important;grid-row:2!important;
+    align-self:start!important;justify-self:start!important;
+    display:inline-flex!important;align-items:center!important;
+    max-width:100%!important;width:auto!important;min-width:0!important;
+    min-height:34px!important;padding:7px 10px!important;
+    font-size:11px!important;line-height:14px!important;
+    white-space:normal!important;text-align:left!important;
+    overflow-wrap:break-word!important;word-break:normal!important;
+    border-radius:8px!important;
+  }
+  .tcStitchShell .tcInlineHousePromo>button svg{
+    width:13px!important;height:13px!important;flex:0 0 13px!important;
+  }
+  .tcAdStartupPlaceholder{min-height:119px!important;width:calc(100% - 24px)!important;margin:8px auto!important;}
+  .tcAdStartupPlaceholder[data-placement='listing']{width:100%!important;margin:6px 0!important;}
+  .tcAdStartupPlaceholder[data-placement='featured']{min-height:130px!important;}
+}
+@media(max-width:355px){
+  .tcStitchShell .tcInlineHousePromo:has(.tcHouseFallbackThumb){
+    grid-template-columns:64px minmax(0,1fr)!important;gap:5px 8px!important;padding:8px!important;
+  }
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon:has(.tcHouseFallbackThumb){width:64px!important;min-height:95px!important;}
+  .tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:13px!important;line-height:17px!important;}
+}
+/* Always-visible mobile lab demo: 3 manual artwork choices over the house photo.
+   Small footprint, zero autoplay, no extra network metrics. */
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseIcon{position:relative!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls{
+ position:absolute!important;z-index:7!important;bottom:4px!important;left:50%!important;
+ transform:translateX(-50%)!important;display:flex!important;align-items:center!important;
+ justify-content:center!important;gap:2px!important;max-width:96%!important;
+ padding:2px!important;border-radius:9px!important;background:#092f24dc!important;
+ pointer-events:auto!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button{
+ position:relative!important;display:grid!important;place-items:center!important;
+ grid-column:auto!important;grid-row:auto!important;justify-self:center!important;
+ box-sizing:border-box!important;flex:0 0 21px!important;width:21px!important;height:21px!important;
+ min-width:21px!important;min-height:21px!important;max-width:21px!important;
+ padding:0!important;margin:0!important;border:0!important;border-radius:7px!important;
+ font-size:10px!important;line-height:1!important;box-shadow:none!important;
+ background:#ffffff35!important;color:#ffffff!important;touch-action:manipulation;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button[aria-pressed='true']{
+ background:#d9f29e!important;color:#16452c!important;
+}
+.tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button:focus-visible{
+ outline:2px solid #fff!important;outline-offset:1px!important;
+}
+@media(max-width:355px){
+ .tcStitchShell .tcInlineHousePromo .tcInlineGalleryControls button{
+  flex-basis:18px!important;width:18px!important;height:21px!important;
+  min-width:18px!important;max-width:18px!important;
+ }
+}
+

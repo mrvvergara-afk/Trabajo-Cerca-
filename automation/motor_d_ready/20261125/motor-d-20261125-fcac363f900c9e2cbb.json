@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261125-fcac363f900c9e2cbb",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_09fc627c3f134314a6b1",
+      "cargo": "AUXILIAR DE SERVICIO - NACIMIENTO",
+      "empresa": "Confidencial",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/auxiliar-de-servicio-nacimiento-3938842",
+      "fecha_publicacion": "2026-11-25",
+      "fecha_descubrimiento": "2026-11-25",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-08",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

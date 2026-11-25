@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-25T12:46:15.998072-03:00",
+  "last_run": "2026-11-25T16:13:36.254070-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -10441,6 +10441,132 @@
       "url": "https://www.muninegrete.cl/concurso-publico-directora-de-control-municipal/",
       "source": "Negrete · municipio",
       "commune": null
+    },
+    "f9e6fc9917d8d3f2f88d": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-instalador-de-muebles-y-cocinas-3083320.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c5c0673ad4d943f430ac": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/venta-superavance-unicard-3083319.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "db3255fde7153f852e0c": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-junior-de-formulacion-planificacion-costos-proyecto-minero-region-de-antofagasta-3083318.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9a2f2b702e33b5f876f7": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/lider-de-seguridad-proyecto-minero-region-de-antofagasta-3083317.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c51c2f3f2d7540b9d5c7": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-sso-sernageomin-b-proyecto-minero-region-de-antofagasta-3083316.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dcf7c69f54bd46b534fe": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-de-estudios-y-obras-de-climatizacion-3083315.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8d36b480b269594cb1f3": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-sso-sernageomin-c-proyecto-minero-region-de-antofagasta-3083314.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e2e8e50c397acd1b27ea": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/especialista-sso-sns-proyecto-minero-region-de-antofagasta-3083313.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fac1dba1484c2eb5eabc": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/dba-exp-en-sector-salud-experiencia-en-sector-salud-3083312.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6cb086a325c25a6c46ad": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-senior-proyecto-minero-region-de-antofagasta-3083311.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bbd30c47b04869b3d22e": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-especialista-1-proyecto-minero-region-de-antofagasta-3083310.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bf6fc5d089746b95225c": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-especialista-2-proyecto-minero-region-de-antofagasta-3083309.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "361aaa52d728069f2f4c": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cajeros-as-metro-tren-turno-40-hrs-pm-3083308.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8c762b97e1b1333a586b": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-atencion-cliente-cobranzas-santiago-quilicura-reemplazo-entidad-bancaria-3083307.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8a692e1f03dcd37e9424": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-especialista-3-proyecto-minero-region-de-antofagasta-3083306.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c2db4b33f8abacd89be1": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-senior-de-programacion-y-costos-proyecto-minero-region-de-antofagasta-3083305.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8513ef69d5532c3d7ffc": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/representante-de-ventas-cirugia-3083304.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "37d82355d6313a9668f2": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-magallanes-y-antartica-chilena/asesor-comercial-full-time-telecomunicaciones-en-punta-arenas-3083303.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "be3a8df6989f760f3bab": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/vendedor-a-en-terreno-antofagasta-sin-experiencia-comisiones-sin-tope-3083302.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1548e877816fc731000f": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/ingeniero-a-especialista-en-programacion-proyecto-minero-region-de-antofagasta-3083301.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "28fae9d5245bf81a0f61": {
+      "first_seen": "2026-11-25T16:13:36.254070-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/auxiliar-de-servicio-nacimiento-3938842",
+      "source": "Portal Chiletrabajos · palabra clave · Nacimiento",
+      "commune": "Nacimiento"
     }
   }
 }

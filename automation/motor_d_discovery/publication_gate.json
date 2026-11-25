@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "scan_date": "2026-11-25T12:46:15.998072-03:00",
-  "checked_at": "2026-11-25T12:47:24.817253-03:00",
+  "scan_date": "2026-11-25T16:13:36.254070-03:00",
+  "checked_at": "2026-11-25T16:14:45.863678-03:00",
   "run_local_date": "2026-11-25",
   "state": "historical_publication_reconciliation_required",
-  "eligible_before_catalog": 39,
-  "public_catalog_records_checked": 292,
+  "eligible_before_catalog": 40,
+  "public_catalog_records_checked": 293,
   "already_published_skipped": 36,
-  "ready_batch_offers_staged": 0,
+  "ready_batch_offers_staged": 1,
   "historical_missing_from_catalog": 3,
   "feed_error": null,
   "feed_complete": true

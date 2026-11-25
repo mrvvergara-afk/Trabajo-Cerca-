@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 type Review={id:string;kind?:string;sourceId?:string;status?:string;lastCheckedAt?:string};
 type Cursor={id:string;cursor?:string|null;pending?:string[];revision?:string;leaseUntil?:number;retryAfter?:Record<string,number>};
 const TABLE='motor_b_c_idle_cursor_v2';
-const eligible=(r:Review,now:number)=>r.kind==='review_candidate'&&/^motor-c(?:-|$)/.test(r.sourceId||'')&&r.status==='ready_for_final_check'&&/^tc_[a-f0-9]{22}$/.test(r.id)&&(!r.lastCheckedAt||now-Date.parse(r.lastCheckedAt)>=7200000);
+const eligible=(r:Review,now:number)=>r.kind==='review_candidate'&&/^motor-c(?:-|$)/.test(r.sourceId||'')&&r.status==='ready_for_final_check'&&/^tc_[a-f0-9]{22}$/.test(r.id)&&(!r.lastCheckedAt||!Number.isFinite(Date.parse(r.lastCheckedAt))||now-Date.parse(r.lastCheckedAt)>=7200000);
 export async function assistMotorCWhenBIdle(pdfProcessed:number,pdfAvailable:number|null){
  const result={checked:0,submitted:0,alreadyQueued:0,deferred:0,errors:0,hasMore:false,eligible:false};
  if(pdfProcessed!==0||pdfAvailable!==0)return result;
@@ -23,11 +23,14 @@ export async function assistMotorCWhenBIdle(pdfProcessed:number,pdfAvailable:num
  try{
   result.eligible=true;
   if(!state.pending?.length){
+   for(let pages=0;pages<4&&!state.pending?.length;pages++){
    const page=await db.list<Review>('radar_review_inbox',{limit:24,...(state.cursor?{nextToken:state.cursor}:{})});
    const retryAfter=Object.fromEntries(Object.entries(state.retryAfter||{}).filter(([,until])=>until>now));
    await save({cursor:page.nextToken||null,pending:page.items.filter(r=>eligible(r,now)&&!retryAfter[r.id]).map(r=>r.id),retryAfter});
+   if(!page.nextToken)break;
+   }
   }
-  for(const id of (state.pending||[]).slice(0,2)){
+  for(const id of (state.pending||[]).slice(0,4)){
    const [row]=await db.get<Review>('radar_review_inbox',[id],{consistent:true});
    let retry=false;
    if(row&&eligible(row,Date.now())){

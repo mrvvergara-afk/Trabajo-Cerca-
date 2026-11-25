@@ -56,7 +56,8 @@ export async function runFastBCPipeline(){
   const result=pdfOutcome.status==='fulfilled'?pdfOutcome.value:{processed:0,totalDocuments:null,outcomes:[]};
   const html=htmlOutcome.status==='fulfilled'?htmlOutcome.value:{found:null,checked:null,verified:null,archived:null,blocked:null,storageFailures:null};
   const partial=pdfOutcome.status==='rejected'||htmlOutcome.status==='rejected';
-  const bIdleAssist=!partial?await assistMotorCWhenBIdle(result.processed,result.totalDocuments):null;
+  const bIdleAssist=!partial?await assistMotorCWhenBIdle(result.processed,result.totalDocuments).catch(error=>({eligible:true,failed:true,error:String(error).slice(0,160)})):null;
+  if(bIdleAssist) console.warn('MOTOR_B_IDLE_ASSIST '+JSON.stringify(bIdleAssist));
   // No new PDF decisions or HTML work: reuse the checkpoint instead of
   // migrating old rows and writing the same status on every cron invocation.
   if(!partial && result.processed===0 && !result.outcomes.length && html.checked===0 && html.storageFailures===0){

@@ -1,0 +1,233 @@
+import { db, secrets } from '@appdeploy/sdk';
+import { createHash } from 'node:crypto';
+import { Buffer } from 'node:buffer';
+import { directChatGPTImport } from './chatgpt-direct-import';
+import { readPublicFeedPage } from './public-feed';
+import { publicPublisher, safePublicUrl } from './public-source-adapters';
+
+// This file is a source review snapshot for the AppDeploy deployment.
+// The production module lives at backend/motor-d-auto-import.ts.
+const REPO = 'mrvvergara-afk/Trabajo-Cerca-';
+const INDEX = 'automation/motor_d_ready/index.json';
+const PRODUCER_HEARTBEAT = 'automation/motor_d_discovery/producer_heartbeat.json';
+const EXPECTED_TERRITORIES = ['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento'];
+// Safety hold: keep the original evidence; release only through a newly reviewed batch.
+const QUARANTINED_BATCHES = new Set([
+  'motor-d-20261108-bccafbb13b7baa5270',
+  'motor-d-20261108-50a5c80afe2d3bf4fd',
+]);
+
+async function documentMatches(offer:Record<string,unknown>):Promise<boolean> {
+  const url=String(offer.url_original||'');
+  if(!url.startsWith('https://')||!safePublicUrl(url)||!publicPublisher(url)||
+     !/^[a-f0-9]{64}$/.test(String(offer.ocr_document_sha256||'')))return false;
+  try{
+    const response=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(12000)});
+    if(!response.ok||!response.body)return false;
+    const reader=response.body.getReader(),hash=createHash('sha256');
+    let size=0;
+    while(true){
+      const {done,value}=await reader.read();
+      if(done)break;
+      size+=value.byteLength;
+      if(size>16*1024*1024){await reader.cancel();return false;}
+      hash.update(value);
+    }
+    return size>0&&hash.digest('hex')===offer.ocr_document_sha256;
+  }catch{return false;}
+}
+type Result = { id:string; status:string; internalId?:string; existingId?:string };
+type Receipt = { id:string; batchId?:string; status?:string; results?:Result[]; accepted?:number; published?:number; known?:number; checkedAt?:string };
+
+async function load(path:string, token:string) {
+  if (!(path===PRODUCER_HEARTBEAT || /^automation\/motor_d_ready\/(?:index\.json|\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json)$/.test(path))) throw Error('invalid_d_path');
+  const response=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path+'?ref=main',{
+    headers:{ authorization:'Bearer '+token,accept:'application/vnd.github+json',
+      'x-github-api-version':'2022-11-28','user-agent':'TrabajoCerca-D-Publisher' },
+    signal:AbortSignal.timeout(9000)
+  });
+  if (response.status===404)return null;
+  if (!response.ok)throw Error('github_http_'+response.status);
+  const raw=await response.json() as {encoding?:string;content?:string;size?:number;sha?:string};
+  if(raw.encoding!=='base64'||typeof raw.content!=='string'||typeof raw.size!=='number'||raw.size>180000||!raw.sha)throw Error('invalid_github_content');
+  const buffer=Buffer.from(raw.content.replace(/\s/g,''),'base64');
+  if(buffer.length!==raw.size)throw Error('github_size_mismatch');
+  return { data:JSON.parse(buffer.toString('utf8')) as Record<string,unknown>,sha:raw.sha };
+}
+
+async function recordStatus(state:string,more:Record<string,unknown>={}) {
+  const row={at:new Date().toISOString(),state,...more};
+  let persisted=false;
+  try {
+    const [ok]=await db.tx.update('motor_d_bridge_status',[{id:'current',record:row}]);
+    persisted=Boolean(ok);
+  }catch(cause){
+    // Never retry an SDK write with an unknown commit outcome.
+    console.warn('MOTOR_D_BRIDGE_STATUS_UNPERSISTED '+String(cause).slice(0,180));
+  }
+  console.warn('MOTOR_D_BRIDGE '+JSON.stringify({...row,persisted}).slice(0,8000));
+  return {
+    statusCode:persisted?200:503,
+    headers:persisted?{}:{'Retry-After':'60'},
+    body:JSON.stringify({...row,persisted})
+  };
+}
+
+export async function motorDAutoImportHandler(){
+  try{
+    const names=await secrets.listSecretNames();
+    if(!names.includes('MOTOR_C_GITHUB_READ_TOKEN'))return recordStatus('awaiting_read_token');
+    const token=await secrets.readSecret('MOTOR_C_GITHUB_READ_TOKEN');
+    const source=await load(INDEX,token);
+    if(!source)return recordStatus('awaiting_first_express_batch');
+    const batches=source.data.batches;
+    if(source.data.schema_version!==1||!Array.isArray(batches)||batches.length>256)return recordStatus('invalid_index');
+    let quarantinedCount=0;
+    let previouslyProcessedCount=0;
+    for(const entry of batches as Array<Record<string,unknown>>){
+      const batchId=String(entry.batch_id||''),relative=String(entry.file||'');
+      if(!/^motor-d-\d{8}-[a-f0-9]{18}$/.test(batchId)||
+         !/^\d{8}\/motor-d-\d{8}-[a-f0-9]{18}\.json$/.test(relative)||
+         !relative.endsWith('/'+batchId+'.json'))return recordStatus('invalid_batch_reference',{batchId});
+      if(QUARANTINED_BATCHES.has(batchId)){quarantinedCount++;continue;}
+      const [old]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
+      if(old?.results?.length){previouslyProcessedCount++;continue;}
+      const file=await load('automation/motor_d_ready/'+relative,token);
+      if(!file)return recordStatus('batch_missing',{batchId});
+      const data=file.data;
+      if(data.schema_version!==1||data.approval!=='approved_for_publication'||
+         data.producer!=='motor_d_territorial'||data.batch_id!==batchId||
+         !Array.isArray(data.offers)||data.offers.length<1||data.offers.length>15)return recordStatus('unapproved_batch',{batchId});
+      const offers=data.offers as Array<Record<string,unknown>>;
+      const expired:Result[]=[];
+      const current:Record<string,unknown>[]=[];
+      for(const offer of offers){
+        const ocr=Boolean(offer.review_id||offer.promotion_id||offer.ocr_revalidate_after);
+        if(ocr && (typeof offer.review_id!=='string'||typeof offer.promotion_id!=='string'||
+            typeof offer.ocr_revalidate_after!=='string'||!Number.isFinite(Date.parse(offer.ocr_revalidate_after))))
+          return recordStatus('invalid_ocr_authorization',{batchId});
+        if(ocr && Date.parse(String(offer.ocr_revalidate_after))<=Date.now())
+          expired.push({id:String(offer.id_fuente),status:'review_expired'});
+        else if(ocr && !await documentMatches(offer))
+          return recordStatus('ocr_document_changed_or_unavailable',{batchId});
+        else current.push(offer);
+      }
+      const output=current.length ? await directChatGPTImport({offers:current,commit:true,producer:'motor_d_territorial'}) :
+        {statusCode:200,body:'{"results":[]}'};
+      if(output.statusCode!==200)return recordStatus('import_error',{batchId,http:output.statusCode});
+      const parsed=JSON.parse(String(output.body||'{}')) as {results?:Result[]};
+      const results=[...(parsed.results||[]),...expired];
+      if(results.length!==data.offers.length)return recordStatus('partial_batch',{batchId,got:results.length,expected:data.offers.length});
+      const expectedIds=new Set(offers.map(x=>String(x.id_fuente||'')));
+      const actualIds=new Set(results.map(x=>String(x.id||'')));
+      if(expectedIds.has('')||expectedIds.size!==offers.length||actualIds.size!==results.length||
+         actualIds.size!==expectedIds.size||[...actualIds].some(id=>!expectedIds.has(id)))
+        return recordStatus('receipt_offer_mismatch',{batchId});
+      const allowed=new Set(['direct_record_queued_for_public_projection','already_published','already_imported_id','expired','review_expired']);
+      if(results.some(x=>!allowed.has(x.status)))return recordStatus('invalid_results',{batchId});
+      const accepted=results.filter(x=>!['expired','review_expired'].includes(x.status)).length;
+      const known=results.length-accepted;
+      const receipt={id:batchId,batchId,sha:file.sha,at:new Date().toISOString(),accepted,known,results,status:accepted?'awaiting_public_feed':'processed_without_publication',published:0};
+      const [saved]=await db.tx.add('motor_d_import_receipts',[receipt]);
+      if(!saved){
+        const [existing]=await db.get<Receipt>('motor_d_import_receipts',[batchId],{consistent:true});
+        if(!existing?.results?.length)throw Error('receipt_commit_failed');
+        return recordStatus('receipt_already_exists',{batchId,existingStatus:existing.status||'unknown'});
+      }
+      return recordStatus('imported_waiting_for_feed',{batchId,accepted,known});
+    }
+    // A quiet index is not evidence that the territorial search actually ran.
+    // Flag the missing producer heartbeat separately from an empty verified result.
+    const batchDates=(batches as Array<Record<string,unknown>>)
+      .map(x=>String(x.batch_id||'').match(/^motor-d-(\d{8})-/)?.[1]||'')
+      .filter(Boolean).sort();
+    const latestBatchDate=batchDates.at(-1)||null;
+    const today=new Date().toISOString().slice(0,10).replace(/-/g,'');
+    const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10).replace(/-/g,'');
+    const lastBatchStale=!latestBatchDate||latestBatchDate<yesterday;
+    // No new batch is not evidence that a territorial search ran successfully.
+    let heartbeat:Record<string,unknown>|null=null;
+    try { heartbeat=(await load(PRODUCER_HEARTBEAT,token))?.data||null; }
+    catch(cause) { console.warn('MOTOR_D_PRODUCER_HEARTBEAT_UNAVAILABLE '+String(cause).slice(0,160)); }
+    const communes=Array.isArray(heartbeat?.communes_expected)?heartbeat!.communes_expected:[];
+    const missing=Array.isArray(heartbeat?.missing_communes)?heartbeat!.missing_communes:null;
+    const uniqueCommunes=new Set(communes);
+    const ageMs=Date.now()-Date.parse(String(heartbeat?.scan_completed_at||''));
+    const producerConfirmed=Boolean(
+      heartbeat?.schema_version===1 && heartbeat?.producer==='motor_d_territorial' &&
+      communes.length===12 && uniqueCommunes.size===12 &&
+      EXPECTED_TERRITORIES.every(name=>uniqueCommunes.has(name)) &&
+      missing!==null && missing.length===0 &&
+      typeof heartbeat?.sources_total==='number' && heartbeat.sources_total>0 &&
+      typeof heartbeat?.sources_accessible==='number' && heartbeat.sources_accessible>0 &&
+      heartbeat.sources_accessible<=heartbeat.sources_total &&
+      typeof heartbeat?.source_report_sha256==='string' &&
+      /^[a-f0-9]{64}$/.test(heartbeat.source_report_sha256) &&
+      Number.isFinite(ageMs) && ageMs>=-300000 && ageMs<=8*3600000
+    );
+    const state=producerConfirmed?'no_unprocessed_batches_producer_confirmed':
+      lastBatchStale?'no_recent_batches_unverified_producer':'no_unprocessed_batches_producer_unverified';
+    return recordStatus(state,{
+      indexedBatches:batches.length,quarantinedCount,previouslyProcessedCount,
+      latestBatchDate,lastBatchStale,producerExecutionUnverified:!producerConfirmed,
+      producerLastScanAt:typeof heartbeat?.scan_completed_at==='string'?heartbeat.scan_completed_at:null,
+      producerSourcesChecked:typeof heartbeat?.sources_total==='number'?heartbeat.sources_total:null,
+      producerSourcesAccessible:typeof heartbeat?.sources_accessible==='number'?heartbeat.sources_accessible:null,
+      producerReadyCandidates:typeof heartbeat?.express_ready_candidates==='number'?heartbeat.express_ready_candidates:null,
+      referenceDate:today
+    });
+  }catch(e){return recordStatus('bridge_error',{error:String(e).slice(0,180)});}
+}
+
+export async function confirmMotorDPublications(){
+  let cursor:string|undefined;
+  const pending:Receipt[]=[];
+  const receiptCursors=new Set<string>();
+  let receiptsComplete=false;
+  for(let page=0;page<100;page++){
+    const batch=await db.list<Receipt>('motor_d_import_receipts',{limit:100,...(cursor?{nextToken:cursor}:{})});
+    pending.push(...batch.items.filter(x=>x.status==='awaiting_public_feed' && x.results?.length));
+    if(!batch.nextToken){receiptsComplete=true;break;}
+    if(receiptCursors.has(batch.nextToken))break;
+    receiptCursors.add(batch.nextToken);
+    cursor=batch.nextToken;
+  }
+  if(!receiptsComplete)return {checked:0,publishedBatches:0,waiting:pending.length,status:'receipts_incomplete'};
+  if(!pending.length)return {checked:0,publishedBatches:0,waiting:0};
+  const visibleIds=new Set<string>();
+  let feedCursor:string|undefined,complete=false;
+  const cursors=new Set<string>();
+  let feedCount=0;
+  for(let pageNo=0;pageNo<100;pageNo++){
+    const page=await readPublicFeedPage(feedCursor);
+    if(!page || ('degraded' in page && page.degraded===true) ||
+       ('feedRebuilding' in page && page.feedRebuilding===true))break;
+    if(!Array.isArray(page.items))break;
+    feedCount+=page.items.length;
+    for(const row of page.items as Array<Record<string,unknown>>){
+      if(typeof row.id==='string')visibleIds.add(row.id);
+    }
+    if(!page.nextCursor){complete=feedCount>=Number(('totalJobOffers' in page && page.totalJobOffers)||0);break;}
+    if(cursors.has(page.nextCursor))break;
+    cursors.add(page.nextCursor);
+    feedCursor=page.nextCursor;
+  }
+  if(!complete)return {checked:0,publishedBatches:0,waiting:pending.length,status:'feed_unavailable'};
+  let publishedBatches=0,waiting=0;
+  for(const batch of pending.slice(0,12)){
+    let visible=0;
+    for(const item of batch.results||[]){
+      if(item.status==='expired'||item.status==='review_expired')continue;
+      const id=item.internalId||item.existingId||('chatgpt_'+item.id);
+      // A shared employer careers URL cannot prove that this particular vacancy is public.
+      if(visibleIds.has(id))visible++;
+    }
+    const expected=(batch.results||[]).filter(x=>!['expired','review_expired'].includes(x.status)).length;
+    const fullyVisible=expected>0&&visible>=expected;
+    await db.tx.update('motor_d_import_receipts',[{id:batch.id,record:{...batch,status:!expected?'processed_without_publication':fullyVisible?'published':'awaiting_public_feed',published:visible,checkedAt:new Date().toISOString()}}]);
+    if(fullyVisible)publishedBatches++;else waiting++;
+  }
+  return {checked:Math.min(12,pending.length),publishedBatches,waiting};
+}
+
+export async function motorDSocialImportHandler(){return {statusCode:200,body:'{"state":"social_legacy_paused"}'};}

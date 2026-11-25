@@ -1,0 +1,27 @@
+/* Trabajo Cerca UX consolidated overlay. SEO remains disabled in pilot. */
+/* Reserve the line box for the catalogue status to avoid counter layout shifts. */
+.tcStitchShell .tcCatalogCount { font-variant-numeric:tabular-nums; line-height:1.45; }
+@media(prefers-reduced-motion:reduce){
+  .tcStitchShell .neoJobCard { transition:none!important;animation:none!important; }
+}
+.tcStitchShell[data-directory-open='true']>.tcRadarCompactRegion{display:none!important}
+.tcStitchShell .tcWebsiteNewsOnly{display:block!important}
+.tcStitchShell .tcDirectoryIllustration{height:112px;background:#edf4ed;border-radius:11px;margin:0 0 9px;overflow:hidden}
+.tcStitchShell .tcDirectoryIllustration img{width:100%;height:100%;object-fit:cover;opacity:.83}
+.tcStitchShell .tcDirectoryMore,.tcStitchShell .tcRecoverDirectory{min-height:44px;border:1px solid #bed6c5;border-radius:10px;padding:10px 14px;background:#e8f3e8;color:#154832;margin:8px 0;font-weight:700;font-size:13px}
+.tcStitchShell .tcAdPhotoNotice{font-size:12px;line-height:17px;color:#4e6657;margin:6px 0}
+.tcStitchShell .tcAdSlotChoices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:1px solid #cde2d2;padding:12px;border-radius:10px}
+.tcStitchShell .tcAdSlotChoices label{display:flex;align-items:center;gap:8px;font-size:13px}
+.tcStitchShell .tcAdSlotChoices input{width:18px;height:18px}
+.tcStitchShell .tcAdPreviewToggle{min-height:44px;border:1px solid #cde2d2;background:#fff;padding:10px;border-radius:10px;font-weight:700}
+.tcStitchShell .tcAdLeadPreview{display:grid;grid-template-columns:95px minmax(0,1fr);gap:11px;padding:10px;border-radius:10px;background:#edf6ed}
+.tcStitchShell .tcAdLeadPreview img{width:95px;height:90px;object-fit:cover;border-radius:8px}
+.tcStitchShell .tcAdLeadPreview div{display:grid;gap:5px}.tcStitchShell .tcAdLeadPreview p{margin:0}
+@media(max-width:767px){
+.tcStitchShell .tcInlineHousePromo:has(.tcHouseFallbackThumb){grid-template-columns:76px minmax(0,1fr)!important;grid-template-areas:"photo copy" "photo cta"!important;min-height:120px!important;gap:7px 10px!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy small{font-size:11px!important;line-height:14px!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy strong{font-size:15px!important;line-height:19px!important}
+.tcStitchShell .tcInlineHousePromo .tcInlineHouseCopy p{font-size:12px!important;line-height:17px!important}
+.tcStitchShell .tcInlineHousePromo>button,.tcStitchShell .tcFounderCard .tcFounderCta,.tcStitchShell .tcHouseAd.tcPremiumAd button{min-height:44px!important;font-size:12px!important;line-height:16px!important}
+.tcStitchShell .tcAdSlotChoices{grid-template-columns:1fr}
+}

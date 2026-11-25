@@ -1,7 +1,11 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-25",
+  "checked_at": "2026-11-25T20:44:06.618154+00:00",
+  "feed_complete": true,
+  "feed_rows": 295,
   "state": "needs_receipt_review",
+  "territory_mismatches_count": 3,
   "historical_missing_from_catalog": 3,
   "released_from_quarantine": 0,
   "released_items": [],
@@ -17,7 +21,8 @@
       "prior_batch_ids": [
         "motor-d-20261123-41e88159a997af13d6"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery",
+      "catalog_status": "not_found_in_complete_feed"
     },
     {
       "id_fuente": "d_62e23c5d9bc15004ccf2",
@@ -30,7 +35,8 @@
       "prior_batch_ids": [
         "motor-d-20261123-41e88159a997af13d6"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery",
+      "catalog_status": "not_found_in_complete_feed"
     },
     {
       "id_fuente": "d_bf620420ab7734288092",
@@ -43,7 +49,11 @@
       "prior_batch_ids": [
         "motor-d-20261123-41e88159a997af13d6"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery",
+      "catalog_status": "not_found_in_complete_feed"
     }
-  ]
+  ],
+  "resolved_published_items": [],
+  "confirmation_file": "publication_confirmation.json",
+  "semantic_only_requires_receipt": []
 }

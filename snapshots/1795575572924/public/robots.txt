@@ -1,0 +1,4 @@
+# Release candidate: indexing stays disabled until owner approval.
+User-agent: *
+Disallow: /
+Sitemap: https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/sitemap.xml

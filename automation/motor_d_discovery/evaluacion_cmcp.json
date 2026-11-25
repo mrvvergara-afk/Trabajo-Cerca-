@@ -83,6 +83,14 @@
       ]
     },
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19455?c=cmpc",
+      "title": "INGENIERO/A PROGRAMACION Y CONTROL - Puente Alto",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19462?c=cmpc",
       "title": "CATEGORY MANAGER",
       "workplaces": [],
@@ -101,14 +109,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19359?c=cmpc",
       "title": "LIDER CONTROL SINTOMATICO",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19467?c=cmpc",
-      "title": "HRBP OPERACIONES MADERAS",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -149,14 +149,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19439?c=cmpc",
       "title": "KAM INDUSTRIAL",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19362?c=cmpc",
-      "title": "TECHNICAL LEAD SR",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -224,6 +216,15 @@
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/16530?c=cmpc",
+      "title": "Analista de Contabilidad",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed",
+        "source_publication_date_not_confirmed"
       ]
     }
   ]

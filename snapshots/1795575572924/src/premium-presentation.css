@@ -1,0 +1,170 @@
+/* Presentation only: allocation, editorial evidence and commercial terms are unchanged. */
+.tcPremiumCommercial .tcCommercialVisual {
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  background:#dce8d6;
+  align-self:stretch
+}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual .tcAdImage {
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  border-radius:0
+}
+.tcCreativeFallback {
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:14px;
+  text-align:center;
+  color:#31533b;
+  font-size:14px;
+  font-weight:700;
+  background:repeating-linear-gradient(140deg,#edf3e5 0 28px,#e1ebd8 28px 29px)
+}
+.tcCommercialVisual:has(>.tcAdImage)>.tcCreativeFallback {
+  display:none
+}
+.tcCreativeExample {
+  position:absolute;
+  bottom:8px;
+  left:8px;
+  right:8px;
+  justify-self:start;
+  border-radius:5px;
+  padding:4px 6px;
+  font-size:10px;
+  line-height:1.2;
+  color:#173c2b;
+  background:#fafdf1ed
+}
+.tcLocalAdvertising .tcAdContent.tcPremiumCommercial {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  margin-top:10px
+}
+.tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true] {
+  grid-template-columns:38% minmax(0,1fr) auto
+}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual {
+  min-height:140px;
+  border-radius:10px
+}
+.tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual:has(>.tcAdImage) {
+  min-height:140px
+}
+.tcLocalAdvertising .tcPremiumCommercial p {
+  font-size:14px;
+  line-height:1.4;
+  margin:6px 0
+}
+.tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong {
+  font-size:18px;
+  line-height:1.3
+}
+@media(max-width:800px) {
+  .tcLocalAdvertising .tcAdContent.tcPremiumCommercial {
+    grid-template-columns:minmax(0,1fr);
+    gap:8px
+  }
+  .tcLocalAdvertising .tcAdContent.tcPremiumCommercial[data-has-image=true] {
+    grid-template-columns:minmax(92px,30%) minmax(0,1fr);
+    align-items:center
+  }
+  .tcLocalAdvertising .tcPremiumCommercial .tcCommercialVisual {
+    grid-row:1;
+    min-height:116px;
+    height:100%
+  }
+  .tcLocalAdvertising .tcPremiumCommercial>a {
+    grid-column:1/-1;
+    min-height:44px;
+    justify-self:end;
+    font-size:13px;
+    padding:8px 10px;
+    max-width:100%;
+    box-sizing:border-box
+  }
+  .tcLocalAdvertising .tcPremiumCommercial:not([data-has-image=true])>a {
+    grid-column:1/-1
+  }
+  .tcLocalAdvertising .tcPremiumCommercial .tcAdBusiness strong {
+    font-size:15px
+  }
+  .tcLocalAdvertising .tcPremiumCommercial p {
+    font-size:12px
+  }
+}
+/* Single owner: public home/search/activity. Earlier rules were removed, not overridden. */
+@media(max-width:800px) {
+  /* Compact fintech-like density: no loss of the four primary actions. */
+}
+/* iOS keeps 16px text inputs to avoid focus zoom; viewport zoom stays available. */
+@supports(-webkit-touch-callout:none) {
+}
+
+/* 2026-10-24 · Density and calm home. This is the last visual stylesheet loaded.
+   Preserve 44px tap areas; distinguish communes by very subtle, non-semantic tints.
+   Avoid another pile of competing phone-specific styles elsewhere. */
+@media(max-width:800px){
+  /* Native-app density: one search, one category rail, no redundant hero. */
+  /* Lightweight primary shortcuts remain visible on the first screen. */
+  /* Catalogue counts are already in the heading. The utility menu retains the full activity centre. */
+  /* Light navigation like the user's reference; active icons use brand green. */
+  .neoShell .neoNotice{bottom:calc(63px + env(safe-area-inset-bottom))}
+  .neoShell a{scroll-margin-bottom:calc(68px + env(safe-area-inset-bottom))}
+  /* Do not overcrowd or clip filter options on smaller phones. */
+}
+
+/* Consistent device rendering: prevent browser's arbitrary text inflation
+   on two mobile contexts while preserving OS/browser accessibility zoom. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(max-width:800px){
+  /* Own publications have two management controls that must not enlarge the card's text. */
+  .neoShell .neoOwnActions{gap:6px;margin-top:6px}
+  .neoShell .neoOwnActions button{min-height:44px;font-size:10.5px;line-height:1.15;padding:6px 8px}
+  .tcActivityCenter .tcActivityPush{white-space:normal;line-height:1.22}
+}
+
+/* Mobile footer and territorial support sections, unified visual owner.
+   Keep these separate from the job feed; all links and accordions stay functional. */
+@media(max-width:800px){
+  .neoShell .tcTerritorialRadar,.neoShell .tcSecondary{
+    box-sizing:border-box;width:calc(100% - 28px);
+    margin:2px auto;padding:0 6px;
+    border:0;border-bottom:1px solid #e8eee7;border-radius:0;
+    background:transparent;box-shadow:none;
+  }
+  .neoShell .tcTerritorialRadar{padding:7px 6px 0}
+  .neoShell .tcRadarHeading{gap:6px;min-height:24px}
+  .neoShell .tcRadarHeading h2{font-size:14.5px;line-height:1.2;font-weight:650;margin:0}
+  .neoShell .tcRadarHeading p{display:none}
+  .neoShell .tcRadarHeading>svg{width:17px;height:17px;flex-shrink:0}
+  .neoShell .tcRadarDetails>summary{
+    min-height:44px;font-size:11.5px;line-height:1.2;
+    padding:0 1px;color:#526f5b
+  }
+  .neoShell .tcRadarDetails>summary span{font-size:16px}
+  .neoShell .tcSecondary>summary{
+    display:flex;align-items:center;justify-content:space-between;
+    min-height:46px;padding:3px 1px;gap:12px;
+    font-size:13.5px;font-weight:640;line-height:1.2;
+    color:#203e2d;letter-spacing:-.005em;
+  }
+  .neoShell .tcSecondary>summary::after{
+    content:'+';display:grid;place-items:center;
+    flex:0 0 28px;width:28px;height:28px;border-radius:50%;
+    font-size:19px;background:transparent;color:#426a4b
+  }
+  .neoShell .tcSecondary[open]>summary::after{content:'−'}
+  .neoShell .tcSecondary[open]{padding-bottom:9px}
+  /* Footer is four distinct lines instead of logo + legal text collision. */
+}

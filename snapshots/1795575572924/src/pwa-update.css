@@ -1,0 +1,15 @@
+/* Production notification for a newly available PWA release. */
+.tcPwaUpdateNotice { position:fixed; z-index:150; left:12px; right:12px; bottom:10px;
+ display:flex; flex-wrap:wrap; align-items:center; gap:9px; max-width:690px;
+ padding:12px; border-radius:12px; background:#f8fff7; color:#16442c;
+ box-shadow:0 6px 32px #091f1380; border:1px solid #97c89e; }
+.tcPwaUpdateNotice > div { display:flex; flex:1 1 220px; flex-direction:column; gap:3px; }
+.tcPwaUpdateNotice strong { font-size:13px; }
+.tcPwaUpdateNotice span { font-size:11px; }
+.tcPwaUpdateNotice button { padding:9px 12px; border-radius:9px; border:1px solid #99c1a7;
+ background:#fff; color:#1d4e34; font-size:12px; font-weight:700; min-height:38px; }
+.tcPwaUpdateNotice button:last-child { background:#17553a; color:#fff; }
+@media(max-width:440px) {
+ .tcPwaUpdateNotice { bottom:72px; left:7px; right:7px; gap:6px; }
+ .tcPwaUpdateNotice button { flex:1 1 90px; }
+}

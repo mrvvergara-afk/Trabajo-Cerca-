@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261125-a0184e437e0454d8e4",
+  "batch_type": "recovery",
+  "offers": [
+    {
+      "id_fuente": "d_442c8958dcd8af4d12b7",
+      "cargo": "Supervisor Servicios Generales PSF",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19437?c=cmpc",
+      "fecha_publicacion": "2026-11-25",
+      "fecha_descubrimiento": "2026-11-25",
+      "fecha_cierre": null,
+      "justificacion": "Descubierta por lector oficial CMPC Cornerstone; ficha, comuna y fecha original cotejadas en navegación real. Procedencia: motor_d_cmpc_browser, no ChatGPT manual."
+    }
+  ]
+}

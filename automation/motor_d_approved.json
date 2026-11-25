@@ -2,8 +2,20 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "motor_d_cmpc_browser",
-  "batch_id": "motor-d-cmpc-f2c432b6a4e5e64e",
+  "batch_id": "motor-d-cmpc-1f63b25214fdd86d",
   "offers": [
+    {
+      "id_fuente": "cmpc_19437",
+      "cargo": "Supervisor Servicios Generales PSF",
+      "empresa": "CMPC",
+      "comunas": [
+        "Nacimiento"
+      ],
+      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19437?c=cmpc",
+      "fecha_publicacion": "2026-11-25",
+      "fecha_cierre": null,
+      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
+    },
     {
       "id_fuente": "cmpc_19446",
       "cargo": "JEFE/A AREA ELECTROCONTROL - Pacifico",
@@ -61,18 +73,6 @@
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "fecha_publicacion": "2026-10-28",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_18859",
-      "cargo": "Ingeniero/a Procesos y Excelencia Sr",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/18859?c=cmpc",
-      "fecha_publicacion": "2026-10-13",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     }

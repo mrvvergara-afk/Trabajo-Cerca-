@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-26",
+  "waves": {
+    "0": {
+      "heartbeat_at": "2026-11-26T11:59:15.577Z",
+      "inventory_valid": false,
+      "coverage_complete": false,
+      "results": [
+        {
+          "key": "indeed-Angol",
+          "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+          "status": "not_attempted"
+        },
+        {
+          "key": "trabajando-Angol",
+          "url": "https://www.trabajando.cl/trabajo-empleo/angol",
+          "status": "not_attempted"
+        },
+        {
+          "key": "chiletrabajos-Collipulli",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+          "status": "not_attempted"
+        },
+        {
+          "key": "opcionempleo-Ercilla",
+          "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+          "status": "not_attempted"
+        },
+        {
+          "key": "laborum-Renaico",
+          "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+          "status": "not_attempted"
+        },
+        {
+          "key": "linkedin-Mininco",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+          "status": "not_attempted"
+        },
+        {
+          "key": "computrabajo-Nacimiento",
+          "url": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+          "status": "not_attempted"
+        },
+        {
+          "key": "indeed-Negrete",
+          "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+          "status": "not_attempted"
+        },
+        {
+          "key": "trabajando-Negrete",
+          "url": "https://www.trabajando.cl/trabajo-empleo/negrete",
+          "status": "not_attempted"
+        },
+        {
+          "key": "chiletrabajos-Mulchén",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+          "status": "not_attempted"
+        },
+        {
+          "key": "opcionempleo-Los Sauces",
+          "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+          "status": "not_attempted"
+        },
+        {
+          "key": "laborum-Purén",
+          "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+          "status": "not_attempted"
+        },
+        {
+          "key": "linkedin-Traiguén",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+          "status": "not_attempted"
+        },
+        {
+          "key": "computrabajo-Lumaco",
+          "url": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+          "status": "not_attempted"
+        },
+        {
+          "key": "indeed-Victoria",
+          "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+          "status": "not_attempted"
+        },
+        {
+          "key": "trabajando-Victoria",
+          "url": "https://www.trabajando.cl/trabajo-empleo/victoria",
+          "status": "not_attempted"
+        },
+        {
+          "key": "chiletrabajos-secondary-Los Ángeles",
+          "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+          "status": "not_attempted"
+        },
+        {
+          "key": "opcionempleo-secondary-Temuco",
+          "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+          "status": "not_attempted"
+        },
+        {
+          "key": "fashions-park-empleo-angol",
+          "url": "https://fashionspark.hiringroom.com/jobs",
+          "status": "not_attempted"
+        },
+        {
+          "key": "omil-negrete",
+          "url": "https://www.muninegrete.cl/",
+          "status": "not_attempted"
+        },
+        {
+          "key": "malleco7",
+          "url": "https://www.malleco7.cl/",
+          "status": "not_attempted"
+        },
+        {
+          "key": "bne-negrete-pilot-2026-109726",
+          "url": "https://www.bne.gob.cl/oferta/2026-109726",
+          "status": "not_attempted"
+        },
+        {
+          "key": "mulchen-feed",
+          "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+          "status": "not_attempted"
+        },
+        {
+          "key": "registry-omil-temuco-portal",
+          "url": "https://temuco.omil.cl/",
+          "status": "not_attempted"
+        }
+      ],
+      "discovery": [
+        {
+          "key": "motor-tavily",
+          "status": "not_attempted"
+        },
+        {
+          "key": "bne",
+          "status": "not_attempted"
+        },
+        {
+          "key": "computrabajo",
+          "status": "not_attempted"
+        },
+        {
+          "key": "radio-montecarlo-angol",
+          "status": "not_attempted"
+        },
+        {
+          "key": "millaray-puren-sauces",
+          "status": "not_attempted"
+        }
+      ],
+      "pending": []
+    }
+  }
+}

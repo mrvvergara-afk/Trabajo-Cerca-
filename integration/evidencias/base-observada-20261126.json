@@ -1,0 +1,11 @@
+{
+  "stage": "3210e4072f9d2813938cb8ee451ec7a6f7dd6dbb",
+  "ads": "651f8adc806bbfb9a4cf6178f3c6767f35eadc9b",
+  "main": "42977d42b3e0a08fc854aaab4c687658bfe57001",
+  "production_observed": "1795726351197",
+  "previous_production": "1795664276412",
+  "production_status": "ready",
+  "scope": "read_only",
+  "new_tests": 0,
+  "production_mutated": false
+}

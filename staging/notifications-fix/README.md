@@ -1,0 +1,2 @@
+# Corrección de avisos push
+Base 1795662986056. Candidato 1795663927061. Logs: Failed to fetch en Firebase Installations; CSP no autorizaba el origen. Permitir únicamente Firebase Installations y FCM Registrations en connect-src. Conservar autenticación, restaurar borrador tras redirect, registrar dispositivo por gesto, mantener formulario abierto para prueba y eliminar recorte de comunas. El envío aceptado no equivale a entrega física. No cambia motores ni backend. Verificar entrega real en dos teléfonos y comprobar catálogo tras despliegue.

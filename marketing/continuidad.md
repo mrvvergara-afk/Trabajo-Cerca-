@@ -37,3 +37,22 @@ protección de los anuncios comerciales en AppDeploy.
 Siguiente acción: verificar tipos, desplegar un paquete incremental al
 laboratorio, comprobar sus APIs y el carrusel y archivar el primer manifiesto
 real. La autorización de producción depende de la validación completa.
+
+## Evidencia inicial del laboratorio
+
+- AppDeploy guardó y activó la versión `1795701015578`. La API real publicó
+  seis diapositivas en el manifiesto `9983f5b5f57098ae4902ac4933f890e633ed8a753741578cf5e10e88b56029c2`.
+  Primera carga: 12,15 s. La visita directa a un WebP desde la API entregó
+  116.518 bytes, 840 × 560 y la huella esperada.
+- `marketing/archive/` conserva el manifiesto obtenido de la cola real.
+  `marketing/metricool/lab.json` contiene métricas de la marca cifradas con
+  la clave pública comprobada del laboratorio.
+- La consulta administrativa anónima devolvió HTTP 401. Detectada y corregida
+  una diferencia entre el dominio web y el dominio de la API para imágenes.
+- `node --test tests/house-autonomy.test.mjs`: 5 comprobaciones con un
+  adaptador local del SDK. Incluyen concurrencia, respaldo duplicado,
+  catálogo defectuoso, reversión y ausencia de escrituras comerciales.
+
+Siguiente acción: confirmar las imágenes y los tamaños de pantalla en
+Chromium sobre la versión corregida, completar el consumidor de la cola y
+verificar el respaldo previo a un eventual despliegue oficial.

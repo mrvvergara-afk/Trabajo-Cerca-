@@ -1,0 +1,110 @@
+{
+  "bankHash": "ba010602c5a13049db808d62a3975b17ecc4fe0cb3ec33ad08df3c35de163e91",
+  "campaign": {
+    "brandId": "7187503",
+    "caption": "Presenta tu negocio local. Muestra tus horarios, servicios y formas de contacto en las comunas de Malleco.\n\nImagen ilustrativa generada con IA.\n#TrabajoCerca #tcorganico20261123",
+    "earliestDay": "2026-11-23",
+    "id": "tc-organico-2026-11-23",
+    "imageUrl": "https://raw.githubusercontent.com/mrvvergara-afk/Trabajo-Cerca-/refs/heads/feat/gestor-publicitario-autonomo-20261126/marketing/bank/a0ce7868c2af4f0e1d7c39b4fab33e30f157d99f730eb4b028176561adffde0d.jpg",
+    "landingUrl": "https://trabajo-cerca-laboratorio-3ojgro.v2.appdeploy.ai/?utm_source=metricool&utm_medium=organic_social&utm_campaign=tc-organico-2026-11-23",
+    "networks": [
+      "facebook",
+      "instagram"
+    ]
+  },
+  "manifest": {
+    "period": "2026-11-23",
+    "revision": "9983f5b5f57098ae4902ac4933f890e633ed8a753741578cf5e10e88b56029c2",
+    "schema": 1,
+    "season": "primavera",
+    "slides": [
+      {
+        "alt": "Ilustración de una cosecha de hortalizas",
+        "imageUrl": "/api/growth/institutional/media/d5e38729803677fdbdc7c172e22d4b6d2fee0e7893140e99a70a78af907cbe8d",
+        "message": "Explora empleos, oficios y servicios en las comunas de Malleco.",
+        "mobile": "Explora oportunidades locales.",
+        "slot": "explore",
+        "title": "Encuentra oportunidades cerca"
+      },
+      {
+        "alt": "Ilustración de una profesional de salud",
+        "imageUrl": "/api/growth/institutional/media/29aa7403983f43c262b035c0d518d15b9541df607086273abb4502accfe25747",
+        "message": "Comparte tu oficio, profesión o disponibilidad en las comunas de Malleco.",
+        "mobile": "Muestra lo que sabes hacer.",
+        "slot": "professionals",
+        "title": "Haz visible tu experiencia"
+      },
+      {
+        "alt": "Ilustración de un taller de carpintería",
+        "imageUrl": "/api/growth/institutional/media/38e0d1c06a5a634d2ba0082a82808abc5aaf2ab3a60837b8ef69d0018d82f116",
+        "message": "Da a conocer tus servicios y encuentra nuevos contactos en las comunas de Malleco.",
+        "mobile": "Publica tu oficio o servicio.",
+        "slot": "inclusion",
+        "title": "Tu oficio hace falta"
+      },
+      {
+        "alt": "Ilustración de un puesto de frutas",
+        "imageUrl": "/api/growth/institutional/media/3c68f52bd005cdd957dfaf5bb24489b0cce68c563c178af42872f5200ee6c190",
+        "message": "Descubre negocios y servicios de vecinos en las comunas de Malleco.",
+        "mobile": "Conoce comercios de tu zona.",
+        "slot": "local-business",
+        "title": "Compra y encarga cerca"
+      },
+      {
+        "alt": "Ilustración de gastronomía local",
+        "imageUrl": "/api/growth/institutional/media/9dbc9301bc67ef6ac81972ef1fbd584b31c1d25731885306bf345788d0ed1c37",
+        "message": "Muestra tus horarios, servicios y formas de contacto en las comunas de Malleco.",
+        "mobile": "Muestra tu negocio a tus vecinos.",
+        "slot": "advertisers",
+        "title": "Presenta tu negocio local"
+      },
+      {
+        "alt": "Ilustración de una faena de construcción",
+        "imageUrl": "/api/growth/institutional/media/4faee680229d441458cf70d0322a73b78596c982fa38e2f31ce4522961fc4f06",
+        "message": "Publica los perfiles que busca tu equipo en las comunas de Malleco.",
+        "mobile": "Publica una necesidad de contratación.",
+        "slot": "employers",
+        "title": "Conecta con personas de la zona"
+      }
+    ],
+    "territory": "Malleco"
+  },
+  "media": [
+    {
+      "bytes": 116518,
+      "height": 560,
+      "sha256": "d5e38729803677fdbdc7c172e22d4b6d2fee0e7893140e99a70a78af907cbe8d",
+      "width": 840
+    },
+    {
+      "bytes": 44436,
+      "height": 560,
+      "sha256": "29aa7403983f43c262b035c0d518d15b9541df607086273abb4502accfe25747",
+      "width": 840
+    },
+    {
+      "bytes": 57164,
+      "height": 560,
+      "sha256": "38e0d1c06a5a634d2ba0082a82808abc5aaf2ab3a60837b8ef69d0018d82f116",
+      "width": 840
+    },
+    {
+      "bytes": 82204,
+      "height": 560,
+      "sha256": "3c68f52bd005cdd957dfaf5bb24489b0cce68c563c178af42872f5200ee6c190",
+      "width": 840
+    },
+    {
+      "bytes": 73114,
+      "height": 560,
+      "sha256": "9dbc9301bc67ef6ac81972ef1fbd584b31c1d25731885306bf345788d0ed1c37",
+      "width": 840
+    },
+    {
+      "bytes": 96884,
+      "height": 560,
+      "sha256": "4faee680229d441458cf70d0322a73b78596c982fa38e2f31ce4522961fc4f06",
+      "width": 840
+    }
+  ]
+}

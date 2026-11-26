@@ -1,3 +1,4 @@
+import { houseSubmissionAttribution } from './house-autonomy';
 import {StitchBrand} from './stitch-brand';
 import {StitchCommunity} from './stitch-community';
 import { InlineHousePromotion, FormEditorialPromotion } from './advertising-surfaces';
@@ -363,7 +364,7 @@ function FormPanel({
         website,
         consent,
         clientToken:analyticsId(),
-        houseAttribution:attribution,
+        houseAttribution:houseSubmissionAttribution(attribution),
       });
       if (!response.data.item?.id) throw new Error('La publicación no fue confirmada.');
       if (kind === 'worker_available') completeHouseGoal('professional');
@@ -579,7 +580,7 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
     setSending(true);
     setErrorMessage('');
     try {
-      const response=await api.post('/api/growth/advertiser-leads', { ...data, placementsRequested:slots, headlineRequested, consent, advertisingConsent, website, clientToken:analyticsId(), houseAttribution:attribution });
+      const response=await api.post('/api/growth/advertiser-leads', { ...data, placementsRequested:slots, headlineRequested, consent, advertisingConsent, website, clientToken:analyticsId(), houseAttribution:houseSubmissionAttribution(attribution) });
       if (!response.data.id && !response.data.duplicate) throw new Error('La solicitud no fue confirmada.');
       completeHouseGoal('advertiser');
       track('tc_advertiser_interest_submitted', { commune:data.commune, category:data.category, presence:data.presence });

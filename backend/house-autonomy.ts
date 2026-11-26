@@ -1,13 +1,15 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { db, error, isAppDatabaseError, json, storage, type RouterContext } from '@appdeploy/sdk';
+import { db, error, increment, isAppDatabaseError, json, storage, type RouterContext } from '@appdeploy/sdk';
 import { METRICOOL_TARGET, metricoolBridgeKey, metricoolMetrics } from './house-metricool';
 import {
-  BANK_BRANCH, BANK_URL, HASH, MAX_IMAGE_BYTES, SOCIAL_BRAND,
+  BANK_BRANCH, BANK_URL, HASH, MAX_IMAGE_BYTES, SOCIAL_BRAND, SOCIAL_CAMPAIGN,
   editorialPeriod, editorialPlan, validateBank, validatePublicManifest,
   type BankAsset, type InstitutionalManifest,
 } from '../shared/house-autonomy';
 
 const STATE = 'growth_house_autonomy';
+const ORGANIC_METRICS = 'growth_house_organic_metrics';
+const ORGANIC_EFFECTS = 'growth_house_organic_effects';
 const VERSIONS = 'growth_house_versions';
 const CHECK_MS = 6 * 3_600_000;
 const LEASE_MS = 90_000;
@@ -270,6 +272,7 @@ export async function refreshInstitutional(force = false, now = Date.now()) {
     }
   }
   const committed = await writeState(locked, next, newRelease);
+  if (committed && next.active?.manifest.revision !== locked.active?.manifest.revision) allowedMedia = undefined;
   return committed ? next.exception || 'comprobado' : 'concurrente';
 }
 
@@ -292,8 +295,17 @@ export async function publicInstitutional() {
   return publicResult({ manifest });
 }
 
+let allowedMedia: { until: number; hashes: Set<string> } | undefined;
 export async function institutionalMedia({ params }: RouterContext) {
   if (!HASH.test(params.hash || '')) return error('Imagen inválida.', 404);
+  if (!allowedMedia || allowedMedia.until <= Date.now()) {
+    const row = await state();
+    allowedMedia = {
+      until: Date.now() + 60_000,
+      hashes: new Set([...(row?.active?.media || []), ...(row?.previous?.media || [])].map(media => media.sha256)),
+    };
+  }
+  if (!allowedMedia.hashes.has(params.hash)) return error('Imagen indisponible.', 404);
   const [file] = await storage.url([pathFor(params.hash)]);
   const url = file?.url ? new URL(file.url) : null;
   if (!url || url.protocol !== 'https:' || url.username || url.password ||
@@ -322,6 +334,28 @@ export async function institutionalArchiveQueue() {
   return publicResult({ branch: BANK_BRANCH, releases: rows.flatMap(row => row ? [{ id: row.id, release: row.release }] : []) });
 }
 
+const confirmedEvents = ['profile_published', 'employer_added', 'advertiser_captured'] as const;
+export async function recordOrganicConversion(attribution: unknown, event: string, effectId: string) {
+  if (METRICOOL_TARGET !== 'prod' || !attribution || typeof attribution !== 'object' ||
+    !confirmedEvents.some(name => event === name)) return;
+  const campaign = (attribution as { organicCampaign?: unknown }).organicCampaign;
+  if (typeof campaign !== 'string' || !SOCIAL_CAMPAIGN.test(campaign)) return;
+  const current = await state();
+  if (![current?.active?.campaign.id, current?.previous?.campaign.id].includes(campaign)) return;
+  const receipt = sha(event + ':' + effectId);
+  if ((await db.get(ORGANIC_EFFECTS, [receipt], { consistent: true }))[0]) return;
+  await db.tx.add(ORGANIC_METRICS, [{ id: campaign, profile_published: 0, employer_added: 0, advertiser_captured: 0 }]);
+  try {
+    await db.transact([
+      db.tx.add(ORGANIC_EFFECTS, [{ id: receipt, campaign, event }]),
+      db.tx.update(ORGANIC_METRICS, [{ id: campaign, record: { [event]: increment(1) } }], { patch: true }),
+    ]);
+  } catch (cause) {
+    if (!isAppDatabaseError(cause) || !['AppDatabaseDuplicateId', 'AppDatabaseUnknownOutcome'].includes(cause.code) ||
+      !(await db.get(ORGANIC_EFFECTS, [receipt], { consistent: true }))[0]) throw cause;
+  }
+}
+
 export async function institutionalAdmin({ body }: RouterContext) {
   const action = (body as { action?: string; revision?: string } | null)?.action;
   if (action === 'refresh') await refreshInstitutional(true);
@@ -341,15 +375,20 @@ export async function institutionalAdmin({ body }: RouterContext) {
   }
   if (action && action !== 'restore' && action !== 'refresh') return error('Acción inválida.', 400);
   const [row, socialMetrics] = await Promise.all([state(), metricoolMetrics(Boolean(action)).catch(() => null)]);
-  if (action) publicCache = null;
+  if (action) { publicCache = null; allowedMedia = undefined; }
+  const campaign = row?.active?.campaign.id;
+  const [counts] = campaign ? await db.get<Record<string, number>>(ORGANIC_METRICS, [campaign], { consistent: true }) : [null];
+  const organicConversions = campaign && METRICOOL_TARGET === 'prod'
+    ? Object.fromEntries(confirmedEvents.map(event => [event, counts?.[event] ?? 0])) : null;
   return privateResult({
     active: row?.active?.manifest ?? null, previousRevision: row?.previous?.manifest.revision ?? null,
     pendingBackups: row?.pending.length ?? 0, checkedAt: row?.checkedAt ?? null,
-    exception: row?.exception ?? null, organicPlan: row?.active?.campaign ?? null, socialMetrics,
+    exception: row?.exception ?? null, organicPlan: row?.active?.campaign ?? null, socialMetrics, organicConversions,
   });
 }
 
 export async function institutionalCron() {
   await refreshInstitutional();
+  await metricoolMetrics(false).catch(() => null);
   return { statusCode: 200 };
 }

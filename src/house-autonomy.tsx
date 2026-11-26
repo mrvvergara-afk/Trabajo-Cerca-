@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '@appdeploy/client';
 import {
-  safeInstitutionalImage, validatePublicManifest, type InstitutionalManifest,
+  INSTITUTIONAL_APP, SOCIAL_CAMPAIGN, safeInstitutionalImage, validatePublicManifest, type InstitutionalManifest,
 } from '../shared/house-autonomy';
 
 const ROUTE = '/api/growth/institutional';
@@ -40,10 +40,25 @@ export function useInstitutionalRelease(enabled: boolean) {
 }
 export function InstitutionalPhoto({ url, alt }: { url: string; alt: string }) {
   const [failed, fail] = useState(false);
-  if (failed || !safeInstitutionalImage(url)) return null;
-  return <img className="tcAdImage" src={url} alt={alt}
+  const appId = (window as Window & { __APPDEPLOY_APP_ID?: string }).__APPDEPLOY_APP_ID;
+  const permitted = appId === INSTITUTIONAL_APP.lab || appId === INSTITUTIONAL_APP.prod;
+  if (failed || !permitted || !safeInstitutionalImage(url)) return null;
+  return <img className="tcAdImage" src={'https://api-v2.appdeploy.ai/app/' + appId + url} alt={alt}
     width={840} height={560} loading="lazy" decoding="async"
     referrerPolicy="no-referrer" onError={() => fail(true)} />;
+}
+
+export function houseSubmissionAttribution<T extends { campaignId: string; creativeId: string }>(value: T | null | undefined) {
+  const params = new URLSearchParams(window.location.search);
+  const campaign = params.get('utm_campaign');
+  try {
+    if (params.get('utm_source') === 'metricool' && params.get('utm_medium') === 'organic_social' &&
+      campaign && SOCIAL_CAMPAIGN.test(campaign)) sessionStorage.setItem('tc-organic-campaign', campaign);
+    const saved = sessionStorage.getItem('tc-organic-campaign');
+    return saved && SOCIAL_CAMPAIGN.test(saved) ? { ...value, organicCampaign: saved } : value;
+  } catch {
+    return value;
+  }
 }
 
 type SocialMetric = { network: string; reach: number | null; impressions: number | null; clicks: number | null; views: number | null };
@@ -53,6 +68,7 @@ type AdminState = {
   checkedAt: string | null;
   exception: string | null;
   pendingBackups: number;
+  organicConversions?: Record<string, number> | null;
   socialMetrics?: { from: string; to: string; networks: SocialMetric[] } | null;
 };
 const problems: Record<string, string> = {
@@ -97,7 +113,7 @@ export function InstitutionalAdmin() {
     {data?.previousRevision && <button type="button" disabled={busy} onClick={() => void apply('restore')}>Restaurar edición anterior</button>}
     <h3>Campañas orgánicas</h3>
     {data?.socialMetrics ? <>
-      <p>Métricas de Metricool del {data.socialMetrics.from} al {data.socialMetrics.to}.</p>
+      <p>Métricas de Metricool del {data.socialMetrics.from} al {data.socialMetrics.to}. El alcance suma publicaciones.</p>
       <div className="tcHouseTable"><table>
         <thead><tr><th>Red</th><th>Alcance</th><th>Impresiones</th><th>Clics en enlaces</th><th>Visualizaciones</th></tr></thead>
         <tbody>{data.socialMetrics.networks.map(row => <tr key={row.network}>
@@ -106,5 +122,6 @@ export function InstitutionalAdmin() {
         </tr>)}</tbody>
       </table></div>
     </> : <p>En espera de datos de Metricool.</p>}
+    {data?.organicConversions && <p>Conversiones de la campaña actual verificadas por Trabajo Cerca: {Object.values(data.organicConversions).reduce((total, count) => total + count, 0)}.</p>}
   </section>;
 }

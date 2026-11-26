@@ -3,6 +3,11 @@ export const INSTITUTIONAL_SLOTS = [
 ] as const;
 export type InstitutionalSlot = typeof INSTITUTIONAL_SLOTS[number];
 export type Season = 'verano' | 'otono' | 'invierno' | 'primavera';
+export const INSTITUTIONAL_APP = {
+  lab: 'trabajo-cerca-lab-aislado-xirg9w',
+  prod: 'trabajo-cerca-laboratorio-3ojgro',
+} as const;
+export const SOCIAL_CAMPAIGN = /^tc-organico-\d{4}-\d{2}-\d{2}$/;
 export const SOCIAL_BRAND = '7187503';
 export const BANK_BRANCH = 'feat/gestor-publicitario-autonomo-20261126';
 export const BANK_ORIGIN = 'https://raw.githubusercontent.com/mrvvergara-afk/Trabajo-Cerca-/refs/heads/';

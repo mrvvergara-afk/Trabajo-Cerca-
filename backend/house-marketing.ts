@@ -1,3 +1,4 @@
+import { recordOrganicConversion } from './house-autonomy';
 import { COMMERCIAL_DEFAULTS, COMMERCIAL_PLACES, promotionOffer, validateCommercialConfig, businessIdentity, selectCommercial, commercialPlaceMatches, type CommercialConfig } from '../shared/commercial-policy';
 import { db, storage, json, error, increment, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 import { createHash, randomUUID } from 'node:crypto';
@@ -224,7 +225,12 @@ export async function houseDashboard(ctx:RouterContext) {
 }
 // Called after a real business effect has succeeded; never lets metrics break publishing.
 export async function houseConversion(attribution:unknown,event:HouseEvent,effectId:string) {
-  try { return await recordHouseEvent(attribution,event,effectId); }
+  try {
+    await recordOrganicConversion(attribution, event, effectId).catch(() => {
+      console.warn('house_organic_conversion_pending', { event });
+    });
+    return await recordHouseEvent(attribution, event, effectId);
+  }
   catch { console.warn('house_conversion_metric_pending',{event});return false; }
 }
 

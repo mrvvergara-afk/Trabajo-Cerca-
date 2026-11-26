@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-25T15:45:32.313614+00:00",
-  "items_total": 10,
+  "updated_at": "2026-11-26T00:30:55.357476+00:00",
+  "items_total": 9,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-25T15:45:32.313614+00:00",
+      "last_checked_at": "2026-11-26T00:30:55.357476+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -25,15 +25,15 @@
       ]
     },
     {
-      "id": "a_9cfa84f680e3d38caf5a",
-      "url": "https://www.chiletrabajos.cl/trabajo/se-busca-relator-para-curso-admin-de-establecimientos-gastronomicos-3937340",
+      "id": "a_402b80fa0d19da47c1a8",
+      "url": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
       "source": "Motor A Chiletrabajos",
-      "work_commune": "Lumaco",
-      "title_hint": "Se busca Relator para curso Admin de Establecimientos Gastronómicos - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-23 17:19:12",
-      "deadline_hint": "2027-02-06T17:19:12",
-      "first_discovered_at": "2026-11-24T21:21:38.921925+00:00",
-      "last_checked_at": "2026-11-25T15:45:32.313614+00:00",
+      "work_commune": "Victoria",
+      "title_hint": "Supervisor Obra Civil - Santiago | Chiletrabajos",
+      "date_source_hint": "2026-11-22 22:55:57",
+      "deadline_hint": "2027-02-05T22:55:57",
+      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
+      "last_checked_at": "2026-11-26T00:30:55.357476+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -133,22 +133,6 @@
       ]
     },
     {
-      "id": "a_402b80fa0d19da47c1a8",
-      "url": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Victoria",
-      "title_hint": "Supervisor Obra Civil - Santiago | Chiletrabajos",
-      "date_source_hint": "2026-11-22 22:55:57",
-      "deadline_hint": "2027-02-05T22:55:57",
-      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
-      "last_checked_at": "2026-11-24T01:00:48.123256+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
       "id": "a_dfa1f8d173984ff01036",
       "url": "https://www.chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
       "source": "Motor A Chiletrabajos",
@@ -186,12 +170,12 @@
     }
   ],
   "metrics": {
-    "added": 12,
-    "updated": 6,
+    "added": 16,
+    "updated": 3,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 14,
+    "published_reconciled": 17,
     "territory_mismatch": 5
   }
 }

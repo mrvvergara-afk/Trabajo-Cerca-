@@ -216,3 +216,17 @@ export function territorialPresence(cities:CityCount[],complete?:boolean):string
  if(complete!==true||cities.length!==MAIN_CITIES.length||new Set(cities.map(c=>c.city)).size!==MAIN_CITIES.length||cities.some(c=>!MAIN_CITIES.includes(c.city as typeof MAIN_CITIES[number])||c.visible==='Sin datos'||!/^\d+$/.test(c.visible)))return 'Sin datos';
  return cities.filter(c=>Number(c.visible)>0).length+' / '+MAIN_CITIES.length;
 }
+
+export function managementAlerts(t?:Telemetry|null, feedComplete?:boolean, publicTotal?:number|null){
+ const alerts:{key:string;level:'review'|'info';message:string}[]=[];
+ if(!t) alerts.push({key:'telemetry',level:'review',message:'Telemetría no disponible; no es posible evaluar los motores.'});
+ else {
+  for(const id of ['A','B','C','D','CHATGPT','GEMINI'] as const){
+   const e=t.engines.find(row=>row.id===id);
+   if(!e||e.status!=='recent')alerts.push({key:id,level:'review',message:'Motor '+id+': '+(e?engineStatus(e.status):'Sin reporte')});
+  }
+  if(t.historyComplete!==true)alerts.push({key:'history',level:'info',message:'Historial parcial: no utilizar como serie completa.'});
+ }
+ if(feedComplete!==true||knownCount(publicTotal)==='Sin datos')alerts.push({key:'feed',level:'review',message:'Integridad del catálogo no confirmada.'});
+ return alerts;
+}

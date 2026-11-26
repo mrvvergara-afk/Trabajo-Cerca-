@@ -206,3 +206,10 @@
 .tcEfficiencyMotor dl div{display:flex;justify-content:space-between;gap:8px;font-size:12px}
 .tcEfficiencyMotor dt{color:#63778a}
 .tcEfficiencyMotor dd{margin:0;font-weight:750;text-align:right;overflow-wrap:anywhere}
+
+.tcMgmtAlerts{margin:12px 0}.tcMgmtAlerts ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.tcMgmtAlerts li{font-size:12px;line-height:1.45;padding:7px 10px;border-left:3px solid #a7bac4;background:#f6f9fa;overflow-wrap:anywhere}
+.tcMgmtAlerts li[data-level=review]{border-left-color:#ad771d;background:#fffaf0}
+.tcEfficiencyDetails summary{cursor:pointer;font-size:12px;font-weight:700;padding:10px 0;color:#176c4d}
+.tcEfficiencyDetails[open] summary{margin-bottom:6px}
+@media(max-width:670px){.tcEfficiencyGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.tcEfficiencyMotor{padding:9px}.tcEfficiencyMotor dl div{flex-wrap:wrap;gap:2px}.tcEfficiencyMotor dd{text-align:left}.tcEfficiencyMotor strong{font-size:12px}.tcEfficiencyMotor small{font-size:10px}.tcMgmtAlerts li{font-size:11px}}

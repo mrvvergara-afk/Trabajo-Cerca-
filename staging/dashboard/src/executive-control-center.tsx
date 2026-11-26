@@ -6,6 +6,7 @@ import {
   knownCount,
   motorEfficiency,
   territorialPresence,
+  managementAlerts,
   type AdminSnapshot,
   type Telemetry,
 } from './executive-metrics';
@@ -115,6 +116,7 @@ export function ExecutiveControlCenter({
   },[]);
   const cards = executiveKpis(summary, telemetry, publicVerifiedTotal);
   const cities = cityCounts(territory);
+  const alerts = managementAlerts(telemetry, territory?.feedComplete, publicVerifiedTotal);
   return (
     <section
       className="tcExecCenter"
@@ -166,16 +168,20 @@ export function ExecutiveControlCenter({
           valores aparecen como «Sin datos».
         </p>
       )}
+      <section className="tcBIChartCard tcMgmtAlerts" aria-label="Alertas de gestión">
+        <header className="tcBIChartHead"><div><h4>Alertas de gestión</h4><p>{loading?'Consultando datos; se muestran los últimos resultados disponibles.':alerts.length?'Situaciones que requieren seguimiento.':'Sin alertas en los controles disponibles.'}</p></div></header>
+        {alerts.length>0&&<ul>{alerts.map(a=><li key={a.key} data-level={a.level}>{a.message}</li>)}</ul>}
+      </section>
       {/* El detalle individual conserva los controles productivos anteriores. */}
       <EngineCommand telemetry={telemetry} />
       <ExecutiveStatusBar telemetry={telemetry} />
       <section className="tcBIChartCard tcEfficiency" aria-label="Eficiencia operacional por motor">
         <header className="tcBIChartHead"><div><h4>Eficiencia operacional</h4><p>Último registro de cada motor; no se suman períodos distintos.</p></div></header>
-        <div className="tcEfficiencyGrid">{motorEfficiency(telemetry).map(m=>
+        <details className="tcEfficiencyDetails"><summary>Comparar los seis motores</summary><div className="tcEfficiencyGrid">{motorEfficiency(telemetry).map(m=>
           <article key={m.id} className="tcEfficiencyMotor"><header><strong>{m.name}</strong><small>{m.status}</small></header>
           <dl>{m.id==='B'||m.id==='C'?<><div><dt>Procesados</dt><dd>{m.reviewed}</dd></div><div><dt>En cola</dt><dd>{m.queued}</dd></div></>:<><div><dt>Cobertura</dt><dd>{m.coverage}</dd></div><div><dt>Lectura útil</dt><dd>{m.reading}</dd></div></>}
           <div><dt>Visibles atribuibles</dt><dd>{m.published}</dd></div></dl><small>Medición: {timeText(m.observedAt)}</small></article>)}</div>
-        <p className="tcExecCaution">Cobertura = consultadas / programadas; lectura útil = accesibles / consultadas. Sin datos no equivale a cero. Las publicaciones atribuibles no se suman entre motores.</p>
+        </details><p className="tcExecCaution">Cobertura = consultadas / programadas; lectura útil = accesibles / consultadas. Sin datos no equivale a cero. Las publicaciones atribuibles no se suman entre motores.</p>
       </section>
       {telemetry?.historyComplete===false && <p className="tcExecNotice" role="status">
         El historial de 30 días aún es parcial. No se interpretan las fechas faltantes como cero.

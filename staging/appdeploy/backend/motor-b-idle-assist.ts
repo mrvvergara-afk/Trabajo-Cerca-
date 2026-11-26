@@ -30,7 +30,11 @@ export async function assistMotorCWhenBIdle(pdfProcessed:number,pdfAvailable:num
    if(!page.nextToken)break;
    }
   }
-  for(const id of (state.pending||[]).slice(0,2)){
+  // Bound attempts separately from successful submissions: a failed or stale
+  // candidate must not consume the entire useful publication budget.
+  for(const id of (state.pending||[]).slice(0,6)){
+   if(result.submitted+result.alreadyQueued>=2)break;
+   if(Date.now()>=(state.leaseUntil||0)-30000)break;
    const [row]=await db.get<Review>('radar_review_inbox',[id],{consistent:true});
    let retry=false;
    if(row&&eligible(row,Date.now())){

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-26T02:44:17+00:00",
+  "generated_at": "2026-11-26T03:34:08+00:00",
   "complete": true,
   "totalItemsReported": 295,
   "jobIdentityCount": 291,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 113,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "548a8e16d50854ef74eff5160bc6b7a0abfa591e91341bd69122f5028cb8a13b",
+  "fingerprint": "d8f949f2a74be9c3750b9e525322c6200db8575c13ab8bb9424a3e6862bf74da",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -962,17 +962,6 @@
       "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
     },
     {
-      "id": "chatgpt_d_5241af5f68d396e67450",
-      "title": "Vendedor Terreno - ANGOL",
-      "company": "Distribuidora consumo masivo",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
-      "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
-    },
-    {
       "id": "chatgpt_d_56d079ed0f37b488c6d6",
       "title": "Ejecutivo/a Atención a Usuarios, 42hrs, Call Center  Presencial",
       "company": "Empresa de tecnología e",
@@ -993,17 +982,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/prevencionista-3935615",
       "urlHashSha256": "5cc1e31b3ff3d83ea28bd48c5ba1cab6ebda828931d2dbec5f2728f0b68957e1"
-    },
-    {
-      "id": "chatgpt_d_719dc82e84eb93a138d9",
-      "title": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
-      "company": "Fondo Esperanza",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
-      "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
     },
     {
       "id": "chatgpt_d_72a6ff236aed32072a0c",
@@ -1632,6 +1610,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
       "urlHashSha256": "728743fa1bc6044fab11bee888fd1f8764785ba2965ddb7311f9d5d5e3060729"
+    },
+    {
+      "id": "free-2ee12fa1a047c31a5c2e43334d1e0f7718ec2439",
+      "title": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
+      "company": "Fondo Esperanza",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
+      "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
     },
     {
       "id": "free-2fcd588aae3ba3abc69163cb1d98623ced600cfc",
@@ -2886,6 +2875,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/trabajador-a-social-fae-cautin-media-jornada-3922996",
       "urlHashSha256": "98194596ff0c6c3d3cf2308dbe851d15b3f1d3ea8b705dfcb099ec446f44f6a4"
+    },
+    {
+      "id": "free-d850aaa7c83bdfcd8f83adfe0da30c0892260589",
+      "title": "Vendedor Terreno - ANGOL",
+      "company": "Distribuidora consumo masivo",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
     },
     {
       "id": "free-d944864a2813a0335a76e245fa502fec10f0c92a",

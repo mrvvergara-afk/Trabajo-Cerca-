@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "source_commit": "dd1697b591c94a12ee2150abd03a2d28c3feed13",
+  "tested_snapshot": "1795723819856",
+  "qa_restored_source_snapshot": "1795554937385",
+  "scope": "real_municipal_notice_controlled_a_handoff_sdk_and_qa_public_feed",
+  "receipt": {
+    "ok": true,
+    "id": "free-8339f0a5178b4ef50000092d238bed809f293c94",
+    "beforeVisible": false,
+    "visible": true,
+    "first": {
+      "checkedAt": "2026-11-26T20:11:34.611Z",
+      "aCheckedAt": "2026-11-26T20:11:29.667Z",
+      "found": 1,
+      "checked": 1,
+      "verified": 1,
+      "archived": 0,
+      "blocked": 0,
+      "already": 0,
+      "legacyRecovered": 0,
+      "deferredOutside": 0,
+      "deferredIndex": 0,
+      "storedForFeed": 1,
+      "storageFailures": 0,
+      "outcomes": [
+        {
+          "url": "https://www.muninegrete.cl/concurso-publico-directora-de-control-municipal/",
+          "decision": "stored_pending_public_feed",
+          "reason": "municipal_competition_with_dated_official_bases"
+        }
+      ]
+    },
+    "second": {
+      "checkedAt": "2026-11-26T20:11:34.846Z",
+      "aCheckedAt": "2026-11-26T20:11:29.667Z",
+      "found": 1,
+      "checked": 0,
+      "verified": 0,
+      "archived": 0,
+      "blocked": 0,
+      "already": 1,
+      "legacyRecovered": 0,
+      "deferredOutside": 0,
+      "deferredIndex": 0,
+      "storedForFeed": 0,
+      "storageFailures": 0,
+      "outcomes": []
+    },
+    "ledgerRows": 1,
+    "sourceUrl": "https://www.muninegrete.cl/concurso-publico-directora-de-control-municipal/",
+    "deadline": "2026-12-09T17:00:00.000Z",
+    "workCommunes": [
+      "Negrete"
+    ]
+  },
+  "public_checks": [
+    {
+      "app": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+      "http": 200,
+      "id": "free-8339f0a5178b4ef50000092d238bed809f293c94",
+      "title": "DIRECTOR(A) DE CONTROL MUNICIPAL",
+      "company": "Ilustre Municipalidad de Negrete",
+      "workCommunes": [
+        "Negrete"
+      ],
+      "verified": true,
+      "sourceValidThrough": "2026-12-09T17:00:00.000Z",
+      "url": "https://www.muninegrete.cl/concurso-publico-directora-de-control-municipal/"
+    },
+    {
+      "app": "trabajo-cerca-laboratorio-3ojgro",
+      "http": 404
+    }
+  ]
+}

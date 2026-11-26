@@ -5,9 +5,17 @@ Base GitHub: `7a745d2cbfd382f59819369eeda5d1868e75f8dd`.
 Laboratorio: `trabajo-cerca-lab-aislado-xirg9w`, versión inicial `1795554885123`.
 Oficial: `trabajo-cerca-laboratorio-3ojgro`, versión observada `1795664276412`.
 
-Verificado el vínculo de Facebook e Instagram para la marca Metricool `7187503`.
-Se aplicarán diffs acotados a los snapshots existentes. El cron oficial ya contiene
-siete tareas. El gestor no reemplazará ni modificará esas tareas.
+- Banco inicial: 12 escenas ilustrativas del proyecto y 24 derivados de nombre
+  SHA-256. WebP para el carrusel (840 × 560), JPEG para redes (840 × 840).
+  El mayor derivado pesa 191.397 bytes. El catálogo conserva origen,
+  derechos editoriales, hash del original, objetivos, territorios y temporadas.
+- Selector editorial semanal en `shared/house-autonomy.ts`. Usa el calendario
+  de Chile y los seis objetivos existentes. Los originales proceden del banco
+  gráfico propio y de imágenes ilustrativas generadas para Trabajo Cerca.
+- Facebook e Instagram vinculados a Metricool marca `7187503`. La clave API no
+  está configurada en AppDeploy. El conector autorizado funciona en esta sesión.
+- El cron oficial tiene siete tareas. Se preserva y el laboratorio se modifica
+  mediante diffs acotados al gestor publicitario.
 
-Próxima acción: versionar las imágenes institucionales, publicar el manifiesto
-con respaldo y probar el carrusel en el laboratorio aislado.
+Próxima acción: probar la publicación del manifiesto, la reversión y la
+protección de los anuncios comerciales en AppDeploy.

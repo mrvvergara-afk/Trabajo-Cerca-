@@ -1,0 +1,186 @@
+[
+  {
+    "id": "hortalizas",
+    "slot": "explore",
+    "seasons": [
+      "primavera",
+      "verano"
+    ],
+    "territories": [
+      "Malleco"
+    ],
+    "source": "Cosecha de lechugas bajo la cordillera.png",
+    "alt": "Ilustración de una cosecha de hortalizas",
+    "rights": "trabajo-cerca-generated"
+  },
+  {
+    "id": "comunidad",
+    "slot": "explore",
+    "seasons": [
+      "otono",
+      "invierno"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Retratos del trabajo comunitario rural.png",
+    "alt": "Composición ilustrativa de la vida rural",
+    "rights": "trabajo-cerca-generated"
+  },
+  {
+    "id": "electricidad",
+    "slot": "professionals",
+    "seasons": [
+      "todo"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de trabajo eléctrico",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/01_electricista.jpg"
+  },
+  {
+    "id": "salud",
+    "slot": "professionals",
+    "seasons": [
+      "todo"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de una profesional de salud",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/02_profesional_salud.jpg"
+  },
+  {
+    "id": "carpinteria",
+    "slot": "inclusion",
+    "seasons": [
+      "primavera",
+      "verano"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de un taller de carpintería",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/09_carpintera.jpg"
+  },
+  {
+    "id": "cocina",
+    "slot": "inclusion",
+    "seasons": [
+      "otono",
+      "invierno"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de cocina tradicional",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/08_cocina_tradicional.jpg"
+  },
+  {
+    "id": "almacen",
+    "slot": "local-business",
+    "seasons": [
+      "todo"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de un comercio vecinal",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/11_comercio_vecinal.jpg"
+  },
+  {
+    "id": "fruteria",
+    "slot": "local-business",
+    "seasons": [
+      "primavera",
+      "verano"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de un puesto de frutas",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/03_almacen_frutas.jpg"
+  },
+  {
+    "id": "turismo",
+    "slot": "advertisers",
+    "seasons": [
+      "primavera",
+      "verano"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de gastronomía local",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/12_turismo_gastronomico.jpg"
+  },
+  {
+    "id": "emprendimiento",
+    "slot": "advertisers",
+    "seasons": [
+      "otono",
+      "invierno"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Marketing Trabajo Cerca/Banco_Trabajo_Cerca_01.zip",
+    "alt": "Ilustración de un emprendimiento local",
+    "rights": "trabajo-cerca-generated",
+    "member": "originales/07_almacenera.jpg"
+  },
+  {
+    "id": "construccion",
+    "slot": "employers",
+    "seasons": [
+      "primavera",
+      "verano"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Construcción de cabaña con vista a montañas.png",
+    "alt": "Ilustración de una faena de construcción",
+    "rights": "trabajo-cerca-generated"
+  },
+  {
+    "id": "forestal",
+    "slot": "employers",
+    "seasons": [
+      "otono",
+      "invierno"
+    ],
+    "territories": [
+      "Malleco",
+      "Biobío"
+    ],
+    "source": "Supervisores forestales en aserradero industrial.png",
+    "alt": "Ilustración de trabajo en un aserradero",
+    "rights": "trabajo-cerca-generated"
+  }
+]

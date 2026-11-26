@@ -7,10 +7,11 @@ quedan acotadas a `marketing/archive/`, `marketing/metricool/` y
 
 ## Ciclo diario
 
-1. Consulta las rutas de la API de cada destino en
+1. Consulta exclusivamente las rutas de la API de producción (`trabajo-cerca-laboratorio-3ojgro`) en
    `https://api-v2.appdeploy.ai/app/<app_id>/api/growth/institutional`.
    Recupera el manifiesto y luego `/archive` y `/bridge`. Si la aplicación
-   oficial aún no tiene estas rutas, procesa únicamente el laboratorio.
+   oficial aún no tiene estas rutas, registra la excepción y detén el ciclo.
+   Nunca uses `trabajo-cerca-lab-aislado-xirg9w`: queda congelado y excluido de toda operación.
 2. Ejecuta `node marketing/bridge-payload.mjs archive cola.json`. Para cada
    archivo devuelve una ruta inmutable y el contenido que se debe respaldar.
    Usa GitHub conectado para crear archivos ausentes con la revisión actual de
@@ -23,7 +24,7 @@ quedan acotadas a `marketing/archive/`, `marketing/metricool/` y
    datos ausentes. Convierte con `node marketing/bridge-payload.mjs metrics
    facebook.json instagram.json AAAA-MM-DD AAAA-MM-DD` y cifra con
    `node marketing/seal-metricool.mjs puente.json reporte.json`. Escribe sólo el
-   sobre cifrado en `marketing/metricool/lab.json` o `marketing/metricool/prod.json`,
+   sobre cifrado en `marketing/metricool/prod.json`,
    usando el SHA vigente. Actualiza como máximo una vez por día por destino.
 4. Si el puente corresponde a producción y `organicEnabled` es verdadero,
    ejecuta `node marketing/bridge-payload.mjs plan puente.json`. El resultado
@@ -51,8 +52,7 @@ quedan acotadas a `marketing/archive/`, `marketing/metricool/` y
 
 ## Límites y recuperación
 
-Una campaña por semana. El modo laboratorio archiva y lee métricas con
-`organicEnabled: false`. La automatización usa planificación orgánica
+Una campaña por semana. El laboratorio aislado queda fuera de operación. Cualquier laboratorio activo distinto requiere identificar y registrar su ID antes de usarlo. La promoción a producción exige respaldo y pruebas; nunca se promueve desde la copia congelada. La automatización usa planificación orgánica
 y nunca compra anuncios, aumenta planes o modifica la publicidad comercial.
 
 El banco se actualiza en GitHub sin recompilar AppDeploy. Para incorporar

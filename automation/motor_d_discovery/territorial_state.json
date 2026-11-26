@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-26T15:58:53.092618-03:00",
+  "last_run": "2026-11-26T16:43:22.538538-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -11058,6 +11058,126 @@
       "first_seen": "2026-11-26T15:58:53.092618-03:00",
       "url": "https://jobs.arauco.com/Chile/job/San-Jose-de-la-Mariquina-Conductora-Combustible-Negocio-Forestal-Valdivia-LR-5150000/1454026100/",
       "source": "Arauco empleo",
+      "commune": null
+    },
+    "a28167b295fac489f6f5": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/mucama-part-time-el-quisco-3083964.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "aef3ed45c823ee3a7381": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/vendedor-a-de-repuestos-automotrices-3083963.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "46f6315ae9c9cebd4100": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/cocinero-ayudante-de-cocina-par-time-de-30-o-20-horas-para-restaurantes-las-condes-3083962.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "80c75d80e1a3080aeb72": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practicante-en-electronica-telecomunicaciones-electricidad-carreras-afines-3083961.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3c811ebc1d253e7b84e5": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-en-sistemas-de-seguridad-electronica-turnos-rotativos-3083960.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bfafbbc01be01b781f5b": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/urgente-operadores-as-caex-980-turno-7x7-dia-y-noche-3083959.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7f0126877ff4c89f7321": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/carrero-ingreso-inmediato-lo-barnechea-y-huechuraba-con-experiencia-3083958.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b952dd36d08acb576dc7": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operario-de-produccion-empresa-lactea-frutillar-3083957.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1079cdd34690e4f04501": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-produccion-con-licencia-clase-d-san-bernardo-3083956.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2d31b47df5e74f3e4145": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/carrero-para-supermercados-fin-de-semana-san-bernardo-horarios-rotativos-fin-de-semana-3083955.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fa6a38dcf10c47257853": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-a-comercial-experiencia-en-rrhh-3083954.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0a122309fe73d501656f": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-de-ventas-tv-apoyo-navidad-falabella-plaza-oeste-3083953.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e7e607dae59757058880": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/jefe-a-de-estudio-proyecto-minero-region-de-antofagasta-3083952.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "277010837bf9dbf16d60": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/anfitrion-a-de-sucursal-full-time-telecomunicaciones-en-linares-3083951.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3bb1d2d2b0da845dbfa2": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/anfitrion-a-de-sucursal-full-time-telecomunicaciones-en-talca-3083950.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1f912b62a487bdcc02c6": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-santiago-centro-encargado-de-grupo-tiempo-completo-3083949.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2330be0b422ca2849726": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-tactico-en-comuna-de-santiago-790000-liquidos-4x4-fijo-de-dia-3083948.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5f1a722beb7515251141": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-a-de-aseo-maipu-643000-liquido-turno-noche-3083947.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0dd492d7b5151c7e4534": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/auxiliar-part-time-20-hrs-viernes-sabado-y-domingo-vina-del-mar-3083946.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "38972612e1b7dc948e03": {
+      "first_seen": "2026-11-26T16:43:22.538538-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/apoyo-multifuncional-retail-campana-rancagua-3083945.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

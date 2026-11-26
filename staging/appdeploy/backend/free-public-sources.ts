@@ -292,7 +292,7 @@ export async function saveVerifiedPublicOffer(offer:PublicVerification, now=Date
     ]);
     if(!createdRows[0])throw new Error('Public offer already exists; reconcile before advancing');
   }
-  return { table,id,url:offer.url };
+  return { table,id,url:offer.url,created:!old };
 }
 
 async function closeKnownOffer(url:string,result:PublicVerification,page:{url:string;status:number;raw:string},now:number) {

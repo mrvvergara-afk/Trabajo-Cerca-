@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "state": "verified_source_awaiting_integrated_publication",
+  "engine": "B",
+  "title": "Director/a de Control Municipal",
+  "employer": "Ilustre Municipalidad de Negrete",
+  "workCommunes": [
+    "Negrete"
+  ],
+  "sourceUrl": "https://www.muninegrete.cl/concurso-publico-directora-de-control-municipal/",
+  "documentUrl": "https://www.muninegrete.cl/wp-content/uploads/2026/11/Decreto-N%C2%B0-601-de-fecha-18-de-noviembre-de-2026.pdf",
+  "applicationInstructionsUrl": "https://www.muninegrete.cl/concurso-publico-directora-de-control-municipal/",
+  "openedOn": "2026-11-25",
+  "discoveredOn": "2026-11-26",
+  "deadline": "2026-12-09T14:00:00-03:00",
+  "ocr": {
+    "method": "pdfjs_tesseract_local_spa",
+    "status": "extracted",
+    "sha256": "781918de8e3ecb1fddad26a6095d20348f172daff32a8ff9dbb3e96eae4798f6",
+    "textLength": 4921,
+    "hasControl": true,
+    "hasNegrete": true,
+    "durationMs": 16859
+  },
+  "catalogCheck": {
+    "scope": "complete_official_catalog",
+    "rows": 294,
+    "matchingSourceOrTitleAndTerritory": 0
+  },
+  "publicationConfirmed": false
+}

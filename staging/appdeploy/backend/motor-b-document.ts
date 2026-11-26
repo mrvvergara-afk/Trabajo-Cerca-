@@ -36,22 +36,27 @@ async function pdfText(bytes:Uint8Array,allowOcr:boolean){
     const pool=operand.startsWith('g_')?page.commonObjs:page.objs;
     image=await new Promise(resolve=>pool.get(operand,result=>resolve(result)));
    }else image=operand as Raster|null;
-   if(!image?.data || !image.width || !image.height || image.width*image.height>MAX_RASTER_PIXELS)continue;
+   if(!image?.data || !image.width || !image.height || ![1,2,3].includes(image.kind))continue;
    const {width,height,kind,data}=image;
-   const png=new PNG({width,height});
-   for(let y=0;y<height;y++)for(let x=0;x<width;x++){
-    const index=y*width+x,i=index*4;
+   const scale=Math.min(1,Math.sqrt(MAX_RASTER_PIXELS/(width*height)));
+   const targetWidth=Math.max(1,Math.floor(width*scale));
+   const targetHeight=Math.max(1,Math.floor(height*scale));
+   const png=new PNG({width:targetWidth,height:targetHeight});
+   for(let y=0;y<targetHeight;y++)for(let x=0;x<targetWidth;x++){
+    const sourceY=Math.floor(y*height/targetHeight);
+    const sourceX=Math.floor(x*width/targetWidth);
+    const index=sourceY*width+sourceX,i=(y*targetWidth+x)*4;
     if(kind===1){
-     const byte=data[y*Math.ceil(width/8)+Math.floor(x/8)];
-     const shade=(byte & (128>>(x%8)))?255:0;
+     const byte=data[sourceY*Math.ceil(width/8)+Math.floor(sourceX/8)];
+     const shade=(byte & (128>>(sourceX%8)))?255:0;
      png.data.fill(shade,i,i+3);png.data[i+3]=255;
-    }else if(kind===2||kind===3){
+    }else{
      const step=kind===2?3:4;
      png.data[i]=data[index*step];png.data[i+1]=data[index*step+1];png.data[i+2]=data[index*step+2];
      png.data[i+3]=step===4?data[index*step+3]:255;
     }
    }
-   if([1,2,3].includes(kind))images.push(PNG.sync.write(png));
+   images.push(PNG.sync.write(png));
   }
   return {text:images.length?await readPackagedSpanish(images):'',method:'pdfjs_tesseract_local_spa'};
  }finally{await task.destroy();}

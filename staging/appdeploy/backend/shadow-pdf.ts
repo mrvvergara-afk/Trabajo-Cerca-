@@ -53,7 +53,7 @@ export async function shadowPdfBatch(){
    reason:item.reason,jobTitles:item.jobTitles,workCommunes:item.workCommunes,replayed:true}]:[]);
  let processed=0,terminal=0,retried=0,processingMs=0;
  for(const {source,old} of ready.slice(0,4)){
-  if(processed&&Date.now()-now>=20_000)break;
+  if(processed&&Date.now()-now>=12_000)break;
   const started=Date.now();
   const {id,url}=source;
   const attempt=(old?.attempt??0)+1,token=randomUUID();
@@ -79,7 +79,7 @@ export async function shadowPdfBatch(){
    const work=worksite?WORK_PLACES.filter(place=>worksiteMentionsCommune(worksite,place)):[];
    const hiring=/concurso p[uú]blico|llamado a concurso|se requiere|oferta laboral|convocatoria laboral|se busca|vacante/i.test(text);
    const closed=/postulaciones cerradas|concurso finalizado|proceso cerrado/i.test(text);
-   const jobs=[...new Set([...text.matchAll(/(?:cargo|puesto|vacante)\s*[:\-]\s*([^.;\n]{6,100})/gi)].slice(0,8).map(x=>x[1].trim()))];
+   const jobs=[...new Set([...text.matchAll(/\b(?:cargo|puesto|vacante)(?:\s*[:\-]\s*|\s+(?:de|denominado)\s+)([^.;\n]{6,100})/gi)].slice(0,8).map(x=>x[1].trim()))];
    // Text extraction/OCR is evidence only. Publication still needs original date, validity and application proof.
    item={...item,stage:closed?'closed':hiring&&jobs.length?'recoverable':'needs_review',
     reason:closed?'explicit_closure':result.reason||(hiring?'document_job_evidence_extracted':'no_job_text_evidence'),method:result.method,

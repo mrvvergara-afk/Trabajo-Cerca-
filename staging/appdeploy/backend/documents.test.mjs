@@ -10,8 +10,9 @@ const hook=registerHooks({resolve(specifier,context,next){
 const {extractBDocument}=await import('./motor-b-document.ts');
 test.after(()=>hook.deregister());
 
-function flyer(){
- const canvas=createCanvas(950,250),ctx=canvas.getContext('2d');
+function flyer(scale=1){
+ const canvas=createCanvas(950*scale,250*scale),ctx=canvas.getContext('2d');
+ ctx.scale(scale,scale);
  ctx.fillStyle='white';ctx.fillRect(0,0,950,250);ctx.fillStyle='black';ctx.font='38px sans-serif';
  ctx.fillText('OFERTA LABORAL: TECNICO',35,85);
  ctx.fillText('LUGAR DE TRABAJO: ANGOL',35,155);
@@ -54,7 +55,7 @@ test('actual Spanish OCR reads an image and image-only PDF using packaged langua
  assert.equal(png.method,'tesseract_local_spa');
  assert.equal(png.status,'extracted');
  assert.match(png.text,/TRABAJO: ANGOL/);
- const pdf=await extractBDocument('https://fixture.invalid/aviso.pdf',imagePdf(image),'application/pdf');
+ const pdf=await extractBDocument('https://fixture.invalid/aviso.pdf',imagePdf(flyer(3)),'application/pdf');
  assert.equal(pdf.method,'pdfjs_tesseract_local_spa');
  assert.equal(pdf.status,'extracted');
  assert.match(pdf.text,/TRABAJO: ANGOL/);

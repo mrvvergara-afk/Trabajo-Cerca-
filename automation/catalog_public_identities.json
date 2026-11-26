@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-26T18:59:52+00:00",
+  "generated_at": "2026-11-26T21:51:01+00:00",
   "complete": true,
   "totalItemsReported": 294,
   "jobIdentityCount": 290,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 112,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "410b5d07015fc41da41ef988a1283a321b78f2d629c53c00ae8faac2d278d1cf",
+  "fingerprint": "bb47174258bec14673e29ac2d99c241e61bcd8c9bf30d935549590d7975dce8e",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -1778,6 +1778,17 @@
       "urlHashSha256": "ddad4ab0c134985d4f9c80bb0590c015df61885c539e8b211dbd0f5314f6f4db"
     },
     {
+      "id": "free-3fba47530376cc60f714e881756b58f00a7636cd",
+      "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
+      "company": "Empresa de alimentos",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+      "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
+    },
+    {
       "id": "free-3ff47957892f9c91c43887029ef188fad6b55713",
       "title": "Vendedor@s con experiencia Terreno Telecomunicaciones, Pos Pago, Intangibles",
       "company": "Empresa Venta Terreno",
@@ -3184,17 +3195,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
       "urlHashSha256": "688f28c809dc3463f046fab29977d6012c4887f1455555d8c72f105714262867"
-    },
-    {
-      "id": "tcq_8e10d10d8dedf4b7e3b9c1",
-      "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
-      "company": "Empresa de alimentos",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
-      "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
     },
     {
       "id": "tcq_e2265a52410f086a0dcb71",

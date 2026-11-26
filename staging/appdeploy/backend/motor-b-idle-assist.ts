@@ -30,7 +30,7 @@ export async function assistMotorCWhenBIdle(pdfProcessed:number,pdfAvailable:num
    if(!page.nextToken)break;
    }
   }
-  for(const id of (state.pending||[]).slice(0,4)){
+  for(const id of (state.pending||[]).slice(0,2)){
    const [row]=await db.get<Review>('radar_review_inbox',[id],{consistent:true});
    let retry=false;
    if(row&&eligible(row,Date.now())){

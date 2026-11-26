@@ -1,4 +1,6 @@
 # Trabajo Cerca — guía de prueba del asistente de actualizaciones (modalidad A)
+
+> Procedimiento histórico. Para destinos vigentes y estado de la promoción, consulta [Entornos de Trabajo Cerca](ENTORNOS_ACTIVOS.md).
 **Fecha:** 21-11-2026. **Ámbito:** LAB aislado, sin actualizar la aplicación oficial.
 **Estado:** interfaz y backend desplegados y compilados; pruebas prácticas con sesión administradora y respaldo real PENDIENTES.
 

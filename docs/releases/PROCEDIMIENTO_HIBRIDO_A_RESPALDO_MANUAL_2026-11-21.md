@@ -1,4 +1,6 @@
 # Trabajo Cerca — procedimiento híbrido A (respaldo manual + publicación controlada)
+
+> Procedimiento histórico. Para destinos vigentes y estado de la promoción, consulta [Entornos de Trabajo Cerca](ENTORNOS_ACTIVOS.md).
 **Estado: piloto instalado en LAB, todavía NO autorizado para publicar oficial.**
 **Fecha: 21 de noviembre de 2026.**
 

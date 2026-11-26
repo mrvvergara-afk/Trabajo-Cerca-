@@ -3,12 +3,13 @@
  * GitHub issue #95 is updated ONLY when two consecutive samples agree.
  */
 import { pathToFileURL } from 'node:url';
+import { operationalLabApi, trabajoCercaEnvironments } from './trabajo-cerca-environments.mjs';
 
 const APP_API = 'https://api-v2.appdeploy.ai/app/';
 export const HEALTH_ISSUE = 95;
 export const ENVIRONMENTS = Object.freeze({
-  laboratorio: 'trabajo-cerca-lab-aislado-xirg9w',
-  oficial: 'trabajo-cerca-laboratorio-3ojgro',
+  oficial: trabajoCercaEnvironments.official,
+  ...(operationalLabApi() ? { laboratorio: trabajoCercaEnvironments.operationalLab } : {}),
 });
 export function classifyHttp(httpStatus, json) {
   if (httpStatus === 200 && json && typeof json === 'object' &&

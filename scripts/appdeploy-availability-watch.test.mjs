@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { operationalLabApi, trabajoCercaEnvironments } from './trabajo-cerca-environments.mjs';
 import { classifyHttp, stableState, summarize, sample, ENVIRONMENTS } from './appdeploy-availability-watch.mjs';
 
 test('valid JSON public feed means available, not guaranteed credit balance', () => {
@@ -17,8 +18,8 @@ test('HTTP 402 retains only safe public platform code', () => {
 });
 test('two healthy samples recover; persistent 402 is degraded', () => {
   const ok = classifyHttp(200, { items:[{ id:'example' }] }), blocked = classifyHttp(402, { code:'APP_TEMPORARILY_UNAVAILABLE' });
-  const first = { laboratorio: ok, oficial: ok };
-  const down = { laboratorio: blocked, oficial: ok };
+  const first = Object.fromEntries(Object.keys(ENVIRONMENTS).map(name => [name, ok]));
+  const down = { ...first, oficial: blocked };
   assert.equal(stableState(first,first), 'HEALTHY');
   assert.equal(stableState(down,down), 'DEGRADED');
   assert.equal(stableState(first,down), 'INCONCLUSIVE');
@@ -27,8 +28,9 @@ test('two healthy samples recover; persistent 402 is degraded', () => {
 test('network failure never turns into invented monthly or daily credit value', () => {
   const x = classifyHttp(0,null);
   assert.equal(x.state,'DEGRADED');
-  const report = summarize({laboratorio:x,oficial:x},{laboratorio:x,oficial:x},'DEGRADED');
-  assert.equal(report.environments.laboratorio.code,'CONNECTION_FAILURE');
+  const sample = Object.fromEntries(Object.keys(ENVIRONMENTS).map(name => [name, x]));
+  const report = summarize(sample, sample, 'DEGRADED');
+  assert.equal(report.environments.oficial.code,'CONNECTION_FAILURE');
   assert.equal(report.note.includes('no equivale'),true);
   assert.equal('creditsRemaining' in report,false);
 });
@@ -44,4 +46,15 @@ test('sampling only reads exactly one endpoint per environment', async () => {
   const x=await sample(request);
   assert.equal(paths.length,Object.keys(ENVIRONMENTS).length);
   assert.equal(x.oficial.state,'HEALTHY');
+});
+
+
+test('a frozen app, production and the SDK fixture cannot serve as release laboratory', () => {
+  assert.equal(Boolean(operationalLabApi()), Boolean(trabajoCercaEnvironments.operationalLab));
+  for (const id of [trabajoCercaEnvironments.frozenLab, trabajoCercaEnvironments.official,
+    trabajoCercaEnvironments.sdkTest, 'trabajo-cerca-supuesto-lab']) {
+    assert.throws(() => operationalLabApi(id));
+  }
+  assert.equal(ENVIRONMENTS.oficial, trabajoCercaEnvironments.official);
+  assert.equal(ENVIRONMENTS.laboratorio ?? null, trabajoCercaEnvironments.operationalLab);
 });

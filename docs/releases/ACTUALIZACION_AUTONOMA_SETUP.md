@@ -1,5 +1,7 @@
 # Actualizaciones autónomas de Trabajo Cerca — configuración y renovación segura
 
+> Procedimiento histórico. Para destinos vigentes y estado de la promoción, consulta [Entornos de Trabajo Cerca](ENTORNOS_ACTIVOS.md).
+
 Actualizado: 20-11-2026. **Estado: PREPARADO, NO ACTIVADO.** Este documento define el procedimiento para que un administrador haga un despliegue sin ChatGPT. No representa autorización para modificar producción antes de los resguardos de seguridad.
 
 ## 1. Entornos y seguridad

@@ -21,13 +21,24 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Prove signed GitHub Actions identity can reach isolated LAB
+      - name: Prove signed GitHub Actions identity can reach registered LAB
         id: handshake
         run: |
           node --input-type=module <<'NODE'
+          import { operationalLabApi } from './scripts/trabajo-cerca-environments.mjs';
+          const laboratory=operationalLabApi();
+          if(!laboratory) {
+            console.log('Laboratorio operativo pendiente de identificación. Se omite la conexión.');
+            process.exit(0);
+          }
+          const { appendFile }=await import('node:fs/promises');
+          await appendFile(process.env.GITHUB_OUTPUT,'target_configured=true\n');
           const endpoint=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
           const secret=process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
           if(!endpoint||!secret) throw Error('GitHub OIDC not enabled');
@@ -38,14 +49,14 @@ jobs:
           if(!auth.ok)throw Error('OIDC issuance failed HTTP '+auth.status);
           const payload=await auth.json();
           if(typeof payload.value!=='string')throw Error('OIDC identity missing');
-          const target='https://api-v2.appdeploy.ai/app/trabajo-cerca-lab-aislado-xirg9w/api/internal/release/oidc-check';
+          const target=laboratory+'/api/internal/release/oidc-check';
           const anonymous=await fetch(target,{
             method:'POST',headers:{'Content-Type':'application/json'},
             body:'{}',signal:AbortSignal.timeout(10000)});
           if(anonymous.status!==401)
             throw Error('Security failure: OIDC endpoint accepted unsigned request HTTP '+anonymous.status);
           const unauthorizedPoll=await fetch(
-            'https://api-v2.appdeploy.ai/app/trabajo-cerca-lab-aislado-xirg9w/api/internal/release/poll',
+            laboratory+'/api/internal/release/poll',
             {method:'POST',headers:{'Content-Type':'application/json'},
               body:JSON.stringify({action:'poll'}),
               signal:AbortSignal.timeout(10000)});
@@ -66,7 +77,7 @@ jobs:
           console.log('TC_OIDC_LAB_CONNECTION_PASS (read only, zero deployments)');
           NODE
       - name: Record read-only OIDC test outcome on the release issue
-        if: always()
+        if: always() && steps.handshake.outputs.target_configured == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           OUTCOME: ${{ steps.handshake.outcome }}

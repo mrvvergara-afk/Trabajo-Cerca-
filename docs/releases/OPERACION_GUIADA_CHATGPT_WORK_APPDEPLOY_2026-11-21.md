@@ -1,5 +1,7 @@
 # Trabajo Cerca — operación ocasional guiada por ChatGPT Work (Plus)
 
+> Procedimiento histórico. Para destinos vigentes y estado de la promoción, consulta [Entornos de Trabajo Cerca](ENTORNOS_ACTIVOS.md).
+
 **Estado:** interfaz de preparación lista en LAB, creación del primer respaldo real y pruebas prácticas pendientes. **Sin migración de plataforma.**
 Fecha: 21-11-2026.
 Aplicación oficial: `trabajo-cerca-laboratorio-3ojgro`.

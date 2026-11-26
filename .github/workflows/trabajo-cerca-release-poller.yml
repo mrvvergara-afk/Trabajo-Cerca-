@@ -23,6 +23,9 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -30,6 +33,14 @@ jobs:
         id: poll
         run: |
           node --input-type=module <<'NODE'
+          import { operationalLabApi } from './scripts/trabajo-cerca-environments.mjs';
+          const laboratory=operationalLabApi();
+          if(!laboratory) {
+            console.log('Laboratorio operativo pendiente de identificación. Se omite la conexión.');
+            process.exit(0);
+          }
+          const { appendFile }=await import('node:fs/promises');
+          await appendFile(process.env.GITHUB_OUTPUT,'target_configured=true\n');
           const tokenUrl=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
           const tokenSecret=process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
           const output=process.env.GITHUB_OUTPUT;
@@ -42,7 +53,7 @@ jobs:
           const jwt=(await identity.json()).value;
           if(typeof jwt!=='string')throw Error('OIDC token missing');
           const r=await fetch(
-            'https://api-v2.appdeploy.ai/app/trabajo-cerca-lab-aislado-xirg9w/api/internal/release/poll',
+            laboratory+'/api/internal/release/poll',
             {method:'POST',headers:{Authorization:'Bearer '+jwt,
               'Content-Type':'application/json'},body:JSON.stringify({action:'poll'}),
               signal:AbortSignal.timeout(18000)});
@@ -85,6 +96,9 @@ jobs:
           ENQUEUED: ${{ steps.dispatch.outcome == 'success' }}
         run: |
           node --input-type=module <<'NODE'
+          import { operationalLabApi } from './scripts/trabajo-cerca-environments.mjs';
+          const laboratory=operationalLabApi();
+          if(!laboratory) process.exit(0);
           const u=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
           const t=process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
           const auth=await fetch(u+(u.includes('?')?'&':'?')+
@@ -93,7 +107,7 @@ jobs:
           if(!auth.ok)throw Error('OIDC ack credential unavailable');
           const jwt=(await auth.json()).value;
           const r=await fetch(
-            'https://api-v2.appdeploy.ai/app/trabajo-cerca-lab-aislado-xirg9w/api/internal/release/poll',
+            laboratory+'/api/internal/release/poll',
             {method:'POST',headers:{Authorization:'Bearer '+jwt,
               'Content-Type':'application/json'},
               body:JSON.stringify({action:'ack',candidateSha:process.env.CANDIDATE_SHA,
@@ -105,7 +119,7 @@ jobs:
           NODE
 
       - name: Report initial OIDC polling result
-        if: always() && github.event_name == 'push'
+        if: always() && github.event_name == 'push' && steps.poll.outputs.target_configured == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           POLL_OUTCOME: ${{ steps.poll.outcome }}

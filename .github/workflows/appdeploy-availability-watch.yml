@@ -5,12 +5,14 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - scripts/trabajo-cerca-environments.mjs
       - scripts/appdeploy-availability-watch.mjs
       - scripts/appdeploy-availability-watch.test.mjs
       - .github/workflows/appdeploy-availability-watch.yml
   push:
     branches: [main]
     paths:
+      - scripts/trabajo-cerca-environments.mjs
       - scripts/appdeploy-availability-watch.mjs
       - scripts/appdeploy-availability-watch.test.mjs
       - .github/workflows/appdeploy-availability-watch.yml
@@ -36,7 +38,7 @@ jobs:
       - run: node --test scripts/appdeploy-availability-watch.test.mjs
 
   observe:
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: read
       issues: write
@@ -47,7 +49,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Check two public endpoints twice and report only state changes
+      - name: Sample the registered public environments twice and report only state changes
         env:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}

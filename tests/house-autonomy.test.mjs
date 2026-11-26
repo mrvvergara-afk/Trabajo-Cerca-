@@ -184,3 +184,56 @@ test('un banco defectuoso conserva la edición y una pérdida de medios recupera
   assert.equal(validatePublicManifest(malformed), null);
   assert.equal(tables.has('growth_campaigns'), false);
 });
+
+test('carrusel propio y operación comercial conservan los espacios contratados', async () => {
+  const { allocateAdvertising, HOUSE_DEFAULTS } = await import('../shared/house-ads.ts');
+  const thirdParty = {
+    id: 'comercio-local-prueba', businessName: 'Taller de prueba', headline: 'Atención local',
+    detail: 'Sucursal de prueba', communes: ['Todas'], category: 'servicios',
+    status: 'active', startAt: '2026-11-01T00:00:00Z', endAt: '2026-12-15T00:00:00Z',
+    priority: 3, placements: ['search'], pages: ['home'], adType: 'COMMERCIAL_PAID',
+  };
+  const input = {
+    house: HOUSE_DEFAULTS, commercial: [thirdParty], complete: true, place: 'Angol',
+    page: 'home', now: Date.parse('2026-11-26T13:00:00Z'), turn: 7, seen: {},
+    completed: [], slots: ['search', 'listing'],
+  };
+  const result = allocateAdvertising(input);
+  assert.deepEqual(result.search, { type: 'COMMERCIAL', campaign: thirdParty });
+  assert.equal(result.listing.type, 'HOUSE_AD');
+  assert.equal(table('growth_house_versions').size, 2);
+});
+
+test('las métricas cifradas se validan con la clave y destino correctos', async () => {
+  const { spawnSync } = await import('node:child_process');
+  const { generateKeyPairSync } = await import('node:crypto');
+  const { mkdtempSync, writeFileSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { decryptMetricoolSnapshot } = await import('../backend/house-metricool.ts');
+  const { publicKey, privateKey } = generateKeyPairSync('rsa', {
+    modulusLength: 2048,
+    publicKeyEncoding: { type: 'spki', format: 'pem' },
+    privateKeyEncoding: { type: 'pkcs8', format: 'pem' },
+  });
+  const tmp = mkdtempSync(tmpdir() + '/tc-metrics-');
+  try {
+    const bridge = tmp + '/bridge.json';
+    const report = tmp + '/report.json';
+    const data = { schema: 1, brandId: '7187503', from: '2026-11-01', to: '2026-11-26',
+      networks: [
+        { network: 'Facebook', reach: null, impressions: 0, clicks: null, views: null },
+        { network: 'Instagram', reach: 2, impressions: null, clicks: null, views: 9 },
+      ],
+    };
+    writeFileSync(bridge, JSON.stringify({ target: 'lab', analyticsPublicKey: publicKey }));
+    writeFileSync(report, JSON.stringify(data));
+    const sealed = spawnSync(process.execPath, ['marketing/seal-metricool.mjs', bridge, report], { encoding: 'utf8' });
+    assert.equal(sealed.status, 0, sealed.stderr);
+    const envelope = JSON.parse(sealed.stdout);
+    assert.deepEqual(decryptMetricoolSnapshot(envelope, privateKey), data);
+    assert.throws(() => decryptMetricoolSnapshot({ ...envelope, target: 'prod' }, privateKey));
+    assert.throws(() => decryptMetricoolSnapshot({ ...envelope, tag: Buffer.alloc(16).toString('base64') }, privateKey));
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});

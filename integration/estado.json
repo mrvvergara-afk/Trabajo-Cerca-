@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "phase": "base_reconciliation",
+  "next": "Comparar cambios del snapshot oficial 1795726351197 con v100 y puntas registradas; revisar contrato B/C en paralelo.",
+  "production_mutation_allowed": false,
+  "qa_cron_allowed": false,
+  "completed": [
+    "read_existing_evidence",
+    "observe_remote_heads",
+    "observe_production_snapshot",
+    "initialize_acceptance_register"
+  ]
+}

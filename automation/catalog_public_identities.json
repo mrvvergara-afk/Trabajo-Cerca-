@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-26T12:12:20+00:00",
+  "generated_at": "2026-11-26T18:59:52+00:00",
   "complete": true,
   "totalItemsReported": 294,
   "jobIdentityCount": 290,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 112,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "dd3a52461cd71f73faf6c57c1ce72cbb07af0ab51e9358d99ce2e09f44a64c21",
+  "fingerprint": "410b5d07015fc41da41ef988a1283a321b78f2d629c53c00ae8faac2d278d1cf",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -886,28 +886,6 @@
       "urlHashSha256": "eedd8d86097d3012ce0b619f080a8a8aec504a6f7cc22fc52c9d9d48fa192d09"
     },
     {
-      "id": "chatgpt_d_000ee049f91cba301df5",
-      "title": "Técnico Telecomunicaciones Sin Experiencia - Angol",
-      "company": "DOMINION SPA",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
-      "urlHashSha256": "000ee049f91cba301df59c0711311eb3f531a20aa4a340e7e770da6770b04ba9"
-    },
-    {
-      "id": "chatgpt_d_06be2b623b31c335001a",
-      "title": "Cajero/a Bancario/a ANGOL",
-      "company": "SERVICIOS HELPBANK S.A",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
-      "urlHashSha256": "06be2b623b31c335001a29edf6c88d326a9aeccb3f04bb824244b1599ecd3367"
-    },
-    {
       "id": "chatgpt_d_09fc627c3f134314a6b1",
       "title": "AUXILIAR DE SERVICIO - NACIMIENTO",
       "company": "Confidencial",
@@ -1018,17 +996,6 @@
       "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
     },
     {
-      "id": "chatgpt_d_4c599ad95a20501aa8c8",
-      "title": "Vendedor/a en terreno para Angol ¡Sin experiencia + Comisiones sin Tope!",
-      "company": "Verisure",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
-      "urlHashSha256": "4c599ad95a20501aa8c89d860922d731f156fd40f760fb296feb84b3308f249a"
-    },
-    {
       "id": "chatgpt_d_5241af5f68d396e67450",
       "title": "Vendedor Terreno - ANGOL",
       "company": "Distribuidora consumo masivo",
@@ -1040,17 +1007,6 @@
       "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
     },
     {
-      "id": "chatgpt_d_561f393870110fb67e2a",
-      "title": "Técnico Telecomunicaciones - Angol",
-      "company": "DOMINION SPA",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-angol-3926909",
-      "urlHashSha256": "561f393870110fb67e2a81d40bb42b6a97ce47881c7d66aec87d7a3464a4848b"
-    },
-    {
       "id": "chatgpt_d_56d079ed0f37b488c6d6",
       "title": "Ejecutivo/a Atención a Usuarios, 42hrs, Call Center  Presencial",
       "company": "Empresa de tecnología e",
@@ -1060,17 +1016,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-a-atencion-a-usuarios-42hrs-call-center-presencial-3907748",
       "urlHashSha256": "56d079ed0f37b488c6d6a3d44d0419ac5d8b96848244efa95fadf9dc54104acb"
-    },
-    {
-      "id": "chatgpt_d_5c980138c7556d6f7de9",
-      "title": "Psicólogo (a) 22 horas",
-      "company": "Trayectos Angol",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
-      "urlHashSha256": "5c980138c7556d6f7de937563a80ccf1a5b6585f74c36b9b12a8f401b888a826"
     },
     {
       "id": "chatgpt_d_5cc1e31b3ff3d83ea28b",
@@ -1558,6 +1503,17 @@
       "urlHashSha256": "1506d87b354b79cccc444a6c98ba0f7bf550decfce1c3ba3ebc61c584c591d25"
     },
     {
+      "id": "free-1843a3809a023ee683216d2cc05ddf709bb33344",
+      "title": "Cajero/a Bancario/a ANGOL",
+      "company": "SERVICIOS HELPBANK S.A",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "urlHashSha256": "06be2b623b31c335001a29edf6c88d326a9aeccb3f04bb824244b1599ecd3367"
+    },
+    {
       "id": "free-18d099565ad2837cd726fc0fc65bb9cf366cc2eb",
       "title": "Lavador-Movilizador de Vehículos - Temuco",
       "company": "People Match",
@@ -1952,6 +1908,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-produccion-3914756",
       "urlHashSha256": "e31caf6da07a16c32a52e57d04db1f8626b1916257c190de75e2d8e1fd9d6971"
+    },
+    {
+      "id": "free-4ccf94719ecaafadedf67d2080eeba966168a840",
+      "title": "Técnico Telecomunicaciones - Angol",
+      "company": "DOMINION SPA",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-angol-3926909",
+      "urlHashSha256": "561f393870110fb67e2a81d40bb42b6a97ce47881c7d66aec87d7a3464a4848b"
     },
     {
       "id": "free-4ce3e39af3dfe15996b0a91c160c8d2dc9f61516",
@@ -2592,6 +2559,17 @@
       "urlHashSha256": "5ba17866f0d970e3241b156ff7e6cf381f2e87ade67c47baec40a5c83a46efc4"
     },
     {
+      "id": "free-b1d57e80b4cabfbad4fcbd7d34bd1efa650988cf",
+      "title": "Vendedor/a en terreno para Angol ¡Sin experiencia + Comisiones sin Tope!",
+      "company": "Verisure",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
+      "urlHashSha256": "4c599ad95a20501aa8c89d860922d731f156fd40f760fb296feb84b3308f249a"
+    },
+    {
       "id": "free-b2695ceb7c312095726e8636d0323bae10638b80",
       "title": "Operador Cargador Frontal",
       "company": "Empresa Ciudad Los Angeles",
@@ -2788,6 +2766,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-obrera-implementacion-temuco-3921067",
       "urlHashSha256": "21d861609776b8cf9e583d608bf4241d8d95b38d6404115f2bfaed02bee359f0"
+    },
+    {
+      "id": "free-c89dfcec21f65228c222ce3b80ccf6dcf672ab43",
+      "title": "Psicólogo (a) 22 horas",
+      "company": "Trayectos Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
+      "urlHashSha256": "5c980138c7556d6f7de937563a80ccf1a5b6585f74c36b9b12a8f401b888a826"
     },
     {
       "id": "free-c9a7209710e4ccc2807b3b51e8909ad00bcbb490",
@@ -3109,6 +3098,17 @@
       "urlHashSha256": "c608665d95efdc7f352375205edc905c82915eb3db64660f4e8699ded50bf32e"
     },
     {
+      "id": "free-f852b8ae8a782bcf9f2225998ee470f367c5b26e",
+      "title": "Técnico Telecomunicaciones Sin Experiencia - Angol",
+      "company": "DOMINION SPA",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
+      "urlHashSha256": "000ee049f91cba301df59c0711311eb3f531a20aa4a340e7e770da6770b04ba9"
+    },
+    {
       "id": "free-f96f4616e1fe159deb092d5ccbf04cd0ffd35e2e",
       "title": "Práctica Profesional – Contador",
       "company": "Empresas Agrotop",
@@ -3140,6 +3140,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/teams-operacionales-tarragona-temuco-temporada-diciembre-3929431",
       "urlHashSha256": "7e45132d6145e0227fa87dfa70e645d18c6e481ae7199f7283250f278bd94a65"
+    },
+    {
+      "id": "free-fd6f3d91033632ce9dbcc52634dcf4933c21a219",
+      "title": "Subgerente de tienda Papa Johns - Angol",
+      "company": "Papa Johns Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
+      "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
     },
     {
       "id": "free-fdbde00be5d732241bbfb312a513a0b218c13509",
@@ -3195,17 +3206,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
       "urlHashSha256": "e2265a52410f086a0dcb71a8684cc66e82a97a9d849af2fc45370c09ad971024"
-    },
-    {
-      "id": "tcq_fd6f3d91033632ce9dbcc5",
-      "title": "Subgerente de tienda Papa Johns - Angol",
-      "company": "Papa Johns Angol",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
-      "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
     }
   ]
 }

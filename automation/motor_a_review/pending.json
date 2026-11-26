@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-26T09:40:28.854476+00:00",
-  "items_total": 9,
+  "updated_at": "2026-11-26T19:43:04.988360+00:00",
+  "items_total": 10,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-26T09:40:28.854476+00:00",
+      "last_checked_at": "2026-11-26T19:43:04.988360+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -23,6 +23,42 @@
       "catalog_work_communes": [
         "Ercilla"
       ]
+    },
+    {
+      "id": "a_1843a3809a023ee68321",
+      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Traiguén",
+      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-06 14:20:34",
+      "deadline_hint": "2027-01-20T14:20:34",
+      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
+      "last_checked_at": "2026-11-26T19:43:04.988360+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description",
+      "catalog_territory_mismatch": true,
+      "catalog_work_communes": [
+        "Angol"
+      ]
+    },
+    {
+      "id": "a_6d438f92b60768acf3ef",
+      "url": "https://www.chiletrabajos.cl/trabajo/oferta-laboral-inspector-end-nivel-ii-ultrasonido-ut-3939294",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Angol",
+      "title_hint": "OFERTA LABORAL  Inspector END Nivel II – Ultrasonido (UT) - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-26 10:59:36",
+      "deadline_hint": "2027-02-09T10:59:36",
+      "first_discovered_at": "2026-11-26T19:43:04.988360+00:00",
+      "last_checked_at": "2026-11-26T19:43:04.988360+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "jobposting_structured_location"
     },
     {
       "id": "a_402b80fa0d19da47c1a8",
@@ -71,26 +107,6 @@
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_1843a3809a023ee68321",
-      "url": "https://www.chiletrabajos.cl/trabajo/cajero-a-bancario-a-angol-3732391",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Traiguén",
-      "title_hint": "Cajero/a Bancario/a ANGOL - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-06 14:20:34",
-      "deadline_hint": "2027-01-20T14:20:34",
-      "first_discovered_at": "2026-11-18T14:12:17.556316+00:00",
-      "last_checked_at": "2026-11-25T04:57:59.353683+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description",
-      "catalog_territory_mismatch": true,
-      "catalog_work_communes": [
-        "Angol"
-      ]
     },
     {
       "id": "a_68755a767511789f2d4e",
@@ -171,11 +187,11 @@
   ],
   "metrics": {
     "added": 13,
-    "updated": 1,
+    "updated": 2,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 13,
+    "published_reconciled": 12,
     "territory_mismatch": 5
   }
 }

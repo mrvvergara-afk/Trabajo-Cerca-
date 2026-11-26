@@ -19,6 +19,7 @@ import {
 } from './executive-charts';
 import './executive-control-center.css';
 import { EngineCommand } from './engine-command';
+import { CommercialManagement } from './commercial-management';
 
 type TerritoryResult = {
   readOnly?: boolean;
@@ -284,6 +285,7 @@ export function ExecutiveControlCenter({
       </div>
       {/* El detalle de los motores se consulta desde el panel compacto. */}
       <section className='tcBILiveProcesses' hidden><h4>Procesos automáticos: último resultado registrado</h4>{(((telemetry as (Telemetry & {operational?:Array<{name:string;at:string|null;state:string;details:Record<string,unknown>}>})|null)?.operational)||[]).map(p=><article key={p.name}><strong>{p.name==='fast_bc_pipeline_latest'?'Procesamiento rápido B/C':p.name==='chatgpt_bridge_latest'?'Importador ChatGPT':'Importador GitHub C'}</strong><span>{p.at?new Date(p.at).toLocaleString('es-CL'):'Sin registro'}</span><span>Estado: {p.state}</span><details><summary>Detalle de resultados</summary><pre>{JSON.stringify(p.details,null,2)}</pre></details></article>)}</section>
+      <CommercialManagement summary={summary} />
       <footer className="tcExecFooter">
         <strong>Lectura responsable:</strong> el total visible procede del
         catálogo; las cifras de cada motor corresponden a sus ejecuciones y no

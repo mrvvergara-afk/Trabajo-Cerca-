@@ -70,6 +70,22 @@ class PublicReconciliationTests(unittest.TestCase):
         self.assertEqual(updated["items"][0]["id_fuente"],self.second["id_fuente"])
         self.assertEqual(updated["state"],"needs_receipt_review")
 
+    def test_confirmed_worksite_outside_catalog_is_expected_absence(self):
+        old = {**self.second, "prior_batch_ids": ["batch-evidence"]}
+        exclusion = {"id_fuente":old["id_fuente"], "url_original":old["url_original"],
+                     "batch_id":"batch-evidence", "worksite":"La Granja, Santiago"}
+        def run(history, rows):
+            return reconcile(self.index, history, rows, lambda b: self.batches[b["batch_id"]],
+                             "2026-11-12T16:00:00+00:00", [exclusion])[1]
+
+        classified = run({"items":[old]}, [feed(self.first)])
+        self.assertEqual(classified["historical_missing_from_catalog"], 0)
+        self.assertEqual(len(classified["resolved_outside_territory"]), 1)
+        unchanged = run(classified, [feed(self.first)])
+        self.assertEqual(len(unchanged["resolved_outside_territory"]), 1)
+        unexpected_visible = run(unchanged, [feed(self.first), feed(self.second)])
+        self.assertEqual(unexpected_visible["items"][0]["catalog_status"], "visible_outside_catalog_territory")
+
     def test_semantic_duplicate_is_not_proof_of_original_url(self):
         unrelated={**feed(self.first),"url":"https://example.org/job/other"}
         confirmation,updated=self.compute([unrelated])

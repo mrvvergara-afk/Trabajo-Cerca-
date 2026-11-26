@@ -37,6 +37,7 @@ export async function runFastBCPipeline(){
         outcomes:documents.outcomes.length,rawDocumentInputs:documents.rawDocumentInputs,
         eligibleDocumentInputs:documents.eligibleDocumentInputs,excludedDocumentInputs:documents.excludedDocumentInputs??null,
         imageInputs:documents.imageInputs,pendingOtherDocumentInputs:documents.pendingOtherDocumentInputs??null,
+        remainingDocuments:documents.remainingDocuments??null,
         deferredDocumentInputs:documents.deferredDocumentInputs??null,terminalDocumentInputs:documents.terminalDocumentInputs??null,
         replayedDocumentInputs:documents.replayedDocumentInputs??null,oldestObservedPendingMs:documents.oldestObservedPendingMs??null,
         averageProcessingMs:documents.averageProcessingMs??null}:{}),
@@ -65,7 +66,7 @@ export async function runFastBCPipeline(){
   const deferredDocuments=documents?.deferredDocumentInputs??null;
   // Deferred retries remain in B's queue. Only runnable or leased work
   // reserves B's capacity for this cycle.
-  const bIdleAssist=!partial&&pendingOtherDocuments===0
+  const bIdleAssist=!partial&&pendingOtherDocuments===0&&result.processed===0&&availableDocuments===0
     ?await assistMotorCWhenBIdle(result.processed,availableDocuments).catch(error=>({eligible:true,failed:true,error:String(error).slice(0,160)}))
     :null;
   if(bIdleAssist) console.warn('MOTOR_B_IDLE_ASSIST '+JSON.stringify(bIdleAssist));

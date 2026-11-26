@@ -251,7 +251,8 @@ def genuine_worksite_commune_mention(clause, commune, match):
     # \"Nueva Victoria\" is a mining site in northern Chile.
     # \"Victoria's Secret\" is a retail brand, not a worksite.
     return not (
-        re.search(r"\bnueva\s+$", before) or
+        re.search(r"\b(?:nueva|la)\s+$", before) or
+        re.match(r"\s*[,]?\s*(?:comuna (?:de )?)?(?:la granja|santiago)\b", after) or
         re.match(r"\s*['’´]?s\s+secret\b", after, re.I)
     )
 

@@ -201,6 +201,14 @@ class TerritorialSafetyTests(unittest.TestCase):
         self.assertIsNone(engine.explicit_work_commune(
             "Lugar de trabajo: tienda Victoria's Secret en Santiago."))
 
+    def test_la_victoria_in_la_granja_is_not_victoria_malleco(self):
+        self.assertIsNone(engine.explicit_work_commune(
+            "Lugar de trabajo: La Victoria, comuna de La Granja, Santiago."))
+        self.assertIsNone(engine.explicit_work_commune(
+            "Lugar de trabajo: Victoria, La Granja."))
+        self.assertEqual(engine.explicit_work_commune(
+            "Lugar de trabajo: Victoria, Malleco."), "Victoria")
+
     def test_chiletrabajos_metadata_rejects_mining_homonym_but_keeps_expiry(self):
         page = BeautifulSoup(
             "<html><h1>Prevencionista de Riesgos en Faena Antofagasta</h1>"

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "id_fuente": "d_24aa2b93041da064e5d2",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254",
+      "batch_id": "motor-d-20261123-41e88159a997af13d6",
+      "verified_on": "2026-11-26",
+      "worksite": "La Victoria, comuna de La Granja, Santiago",
+      "evidence_url": "https://www.chiletrabajos.cl/trabajo/analista-tecnico-3937254"
+    },
+    {
+      "id_fuente": "d_62e23c5d9bc15004ccf2",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/ayudante-obra-civil-3937247",
+      "batch_id": "motor-d-20261123-41e88159a997af13d6",
+      "verified_on": "2026-11-26",
+      "worksite": "La Victoria, comuna de La Granja, Santiago",
+      "evidence_url": "https://www.chiletrabajos.cl/trabajo/3937247"
+    },
+    {
+      "id_fuente": "d_bf620420ab7734288092",
+      "url_original": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
+      "batch_id": "motor-d-20261123-41e88159a997af13d6",
+      "verified_on": "2026-11-26",
+      "worksite": "La Victoria, comuna de La Granja, Santiago",
+      "evidence_url": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836"
+    }
+  ]
+}

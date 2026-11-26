@@ -55,6 +55,8 @@ export function staleDocumentUploadPath(raw:string,now=Date.now()) {
 }
 
 function nonEmploymentStory(url:string,title='') {
+  const path=safePublicUrl(url);
+  if(path&&/\/wp-content\/themes\/[^/]+\/[^?#]*\/redes-sociales\//i.test(new URL(path).pathname))return true;
   const key=(url+' '+title).toLowerCase().normalize('NFD')
     .replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ');
   // Only explicit non-employment topics already observed in the territorial scan.

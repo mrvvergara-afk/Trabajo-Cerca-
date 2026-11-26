@@ -21,6 +21,23 @@ def inventory():
     }
 
 class AuditTests(unittest.TestCase):
+    def test_endpoint_and_discovery_cannot_share_a_key(self):
+        config = inventory()
+        config["discovery_targets"] = [{"key": "a"}]
+        with self.assertRaisesRegex(ValueError, "duplicate_source_and_discovery_key"):
+            module.audit(config, {})
+
+    def test_heartbeat_neither_counts_as_read_nor_erases_valid_measurement(self):
+        report = module.audit(inventory(), {
+            "waves": {"0": {"heartbeat_at": "2026-11-26T16:00:00Z",
+                            "results": [{"key": "a", "status": "not_attempted"}]}},
+            "sources": [{"source_id": "a", "scan_wave": 0, "status": "checked_found",
+                         "checked_at": "2026-11-26T12:00:00Z"}],
+        })
+        self.assertEqual(report["attempted"], 1)
+        self.assertEqual(report["effective_reads"], 1)
+        self.assertFalse(report["daily_effective_coverage_complete"])
+
     def test_attempt_is_not_read(self):
         report = module.audit(inventory(), {
             "sources": [

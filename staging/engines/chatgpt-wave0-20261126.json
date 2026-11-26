@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-26",
+  "started_at": "2026-11-26T19:07:24.820022+00:00",
+  "run_at": "2026-11-26T19:07:47.045447+00:00",
+  "scan_wave": 0,
+  "mode": "integration_readonly",
+  "coverage_complete": false,
+  "sources": [
+    {
+      "source_id": "indeed-Angol",
+      "scan_wave": 0,
+      "url": "https://cl.indeed.com/jobs?q=&l=Angol&fromage=45",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:24.820270+00:00",
+      "reason": "structured_portal_skipped_use_official_origin"
+    },
+    {
+      "source_id": "trabajando-Angol",
+      "scan_wave": 0,
+      "url": "https://www.trabajando.cl/trabajo-empleo/angol",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.830065+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "chiletrabajos-Collipulli",
+      "scan_wave": 0,
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Collipulli",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.826548+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "opcionempleo-Ercilla",
+      "scan_wave": 0,
+      "url": "https://www.opcionempleo.cl/empleo-en-ercilla.html",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.827292+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "laborum-Renaico",
+      "scan_wave": 0,
+      "url": "https://www.laborum.cl/empleos-busqueda-renaico.html",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.828320+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "linkedin-Mininco",
+      "scan_wave": 0,
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mininco%2C%20Chile&f_TPR=r3888000",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:24.823893+00:00",
+      "reason": "structured_portal_skipped_use_official_origin"
+    },
+    {
+      "source_id": "computrabajo-Nacimiento",
+      "scan_wave": 0,
+      "url": "https://cl.computrabajo.com/empleos-en-biobio-en-nacimiento",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:24.824686+00:00",
+      "reason": "structured_portal_skipped_use_official_origin"
+    },
+    {
+      "source_id": "indeed-Negrete",
+      "scan_wave": 0,
+      "url": "https://cl.indeed.com/jobs?q=&l=Negrete&fromage=45",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:24.824698+00:00",
+      "reason": "structured_portal_skipped_use_official_origin"
+    },
+    {
+      "source_id": "trabajando-Negrete",
+      "scan_wave": 0,
+      "url": "https://www.trabajando.cl/trabajo-empleo/negrete",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.830333+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "chiletrabajos-Mulchén",
+      "scan_wave": 0,
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Mulch%C3%A9n",
+      "status": "checked_found",
+      "checked_at": "2026-11-26T19:07:34.034693+00:00",
+      "http": 200,
+      "bytes": 55326,
+      "links_matched": 6,
+      "reason": "individual_link_pattern_observed"
+    },
+    {
+      "source_id": "opcionempleo-Los Sauces",
+      "scan_wave": 0,
+      "url": "https://www.opcionempleo.cl/empleo-en-los-sauces.html",
+      "status": "failed",
+      "checked_at": "2026-11-26T19:07:35.396312+00:00",
+      "http": 200,
+      "bytes": 10177,
+      "links_matched": 0,
+      "reason": "http_accessible_without_confirmed_extraction"
+    },
+    {
+      "source_id": "laborum-Purén",
+      "scan_wave": 0,
+      "url": "https://www.laborum.cl/empleos-busqueda-puren.html",
+      "status": "failed",
+      "checked_at": "2026-11-26T19:07:34.070067+00:00",
+      "reason": "source_read_failed",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "linkedin-Traiguén",
+      "scan_wave": 0,
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Traigu%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.830123+00:00",
+      "reason": "structured_portal_skipped_use_official_origin"
+    },
+    {
+      "source_id": "computrabajo-Lumaco",
+      "scan_wave": 0,
+      "url": "https://cl.computrabajo.com/empleos-en-araucania-en-lumaco",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.830131+00:00",
+      "reason": "structured_portal_skipped_use_official_origin"
+    },
+    {
+      "source_id": "indeed-Victoria",
+      "scan_wave": 0,
+      "url": "https://cl.indeed.com/jobs?q=&l=Victoria&fromage=45",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:28.830137+00:00",
+      "reason": "structured_portal_skipped_use_official_origin"
+    },
+    {
+      "source_id": "trabajando-Victoria",
+      "scan_wave": 0,
+      "url": "https://www.trabajando.cl/trabajo-empleo/victoria",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:32.836246+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "chiletrabajos-secondary-Los Ángeles",
+      "scan_wave": 0,
+      "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
+      "status": "checked_found",
+      "checked_at": "2026-11-26T19:07:34.111352+00:00",
+      "http": 200,
+      "bytes": 136476,
+      "links_matched": 30,
+      "reason": "individual_link_pattern_observed"
+    },
+    {
+      "source_id": "opcionempleo-secondary-Temuco",
+      "scan_wave": 0,
+      "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
+      "status": "failed",
+      "checked_at": "2026-11-26T19:07:38.003699+00:00",
+      "http": 200,
+      "bytes": 10177,
+      "links_matched": 0,
+      "reason": "http_accessible_without_confirmed_extraction"
+    },
+    {
+      "source_id": "fashions-park-empleo-angol",
+      "scan_wave": 0,
+      "url": "https://fashionspark.hiringroom.com/jobs",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:38.037954+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "omil-negrete",
+      "scan_wave": 0,
+      "url": "https://www.muninegrete.cl/",
+      "status": "failed",
+      "checked_at": "2026-11-26T19:07:46.932382+00:00",
+      "http": 200,
+      "bytes": 281244,
+      "links_matched": 0,
+      "reason": "http_accessible_without_confirmed_extraction"
+    },
+    {
+      "source_id": "malleco7",
+      "scan_wave": 0,
+      "url": "https://www.malleco7.cl/",
+      "status": "failed",
+      "checked_at": "2026-11-26T19:07:41.823791+00:00",
+      "http": 200,
+      "bytes": 606883,
+      "links_matched": 0,
+      "reason": "http_accessible_without_confirmed_extraction"
+    },
+    {
+      "source_id": "bne-negrete-pilot-2026-109726",
+      "scan_wave": 0,
+      "url": "https://www.bne.gob.cl/oferta/2026-109726",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:39.402727+00:00",
+      "reason": "robots_policy_unavailable",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "mulchen-feed",
+      "scan_wave": 0,
+      "url": "https://www.munimulchen.cl/?feed=rss2&s=oferta+laboral",
+      "status": "failed",
+      "checked_at": "2026-11-26T19:07:47.044900+00:00",
+      "reason": "source_read_failed",
+      "exception": "ReadTimeout"
+    },
+    {
+      "source_id": "registry-omil-temuco-portal",
+      "scan_wave": 0,
+      "url": "https://temuco.omil.cl/",
+      "status": "not_attempted",
+      "checked_at": "2026-11-26T19:07:41.892870+00:00",
+      "reason": "robots_policy_unavailable",
+      "robots_http": 503
+    }
+  ],
+  "publications_confirmed": 0
+}

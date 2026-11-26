@@ -948,9 +948,10 @@
       "url": "https://cl.indeed.com/jobs?q=&l=Los%20%C3%81ngeles&fromage=45",
       "territory": "Los Ángeles",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "indeed",
-      "scan_wave": 1
+      "scan_wave": 1,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "computrabajo-secondary-Los Ángeles",
@@ -958,9 +959,10 @@
       "url": "https://cl.computrabajo.com/empleos-en-biobio-en-los-angeles",
       "territory": "Los Ángeles",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "computrabajo",
-      "scan_wave": 2
+      "scan_wave": 2,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "linkedin-secondary-Los Ángeles",
@@ -968,9 +970,10 @@
       "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20%C3%81ngeles%2C%20Chile&f_TPR=r3888000",
       "territory": "Los Ángeles",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "linkedin",
-      "scan_wave": 3
+      "scan_wave": 3,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "laborum-secondary-Los Ángeles",
@@ -978,9 +981,10 @@
       "url": "https://www.laborum.cl/empleos-busqueda-los-angeles.html",
       "territory": "Los Ángeles",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "laborum",
-      "scan_wave": 4
+      "scan_wave": 4,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "opcionempleo-secondary-Los Ángeles",
@@ -988,9 +992,10 @@
       "url": "https://www.opcionempleo.cl/empleo-en-los-angeles.html",
       "territory": "Los Ángeles",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "opcionempleo",
-      "scan_wave": 5
+      "scan_wave": 5,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "chiletrabajos-secondary-Los Ángeles",
@@ -998,9 +1003,10 @@
       "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Los%20%C3%81ngeles",
       "territory": "Los Ángeles",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "chiletrabajos",
-      "scan_wave": 0
+      "scan_wave": 0,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "trabajando-secondary-Los Ángeles",
@@ -1008,9 +1014,10 @@
       "url": "https://www.trabajando.cl/trabajo-empleo/los-angeles",
       "territory": "Los Ángeles",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "trabajando",
-      "scan_wave": 1
+      "scan_wave": 1,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "indeed-secondary-Temuco",
@@ -1018,9 +1025,10 @@
       "url": "https://cl.indeed.com/jobs?q=&l=Temuco&fromage=45",
       "territory": "Temuco",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "indeed",
-      "scan_wave": 2
+      "scan_wave": 2,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "computrabajo-secondary-Temuco",
@@ -1028,9 +1036,10 @@
       "url": "https://cl.computrabajo.com/empleos-en-araucania-en-temuco",
       "territory": "Temuco",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "computrabajo",
-      "scan_wave": 3
+      "scan_wave": 3,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "linkedin-secondary-Temuco",
@@ -1038,9 +1047,10 @@
       "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Temuco%2C%20Chile&f_TPR=r3888000",
       "territory": "Temuco",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "linkedin",
-      "scan_wave": 4
+      "scan_wave": 4,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "laborum-secondary-Temuco",
@@ -1048,9 +1058,10 @@
       "url": "https://www.laborum.cl/empleos-busqueda-temuco.html",
       "territory": "Temuco",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "laborum",
-      "scan_wave": 5
+      "scan_wave": 5,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "opcionempleo-secondary-Temuco",
@@ -1058,9 +1069,10 @@
       "url": "https://www.opcionempleo.cl/empleo-en-temuco.html",
       "territory": "Temuco",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "opcionempleo",
-      "scan_wave": 0
+      "scan_wave": 0,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "chiletrabajos-secondary-Temuco",
@@ -1068,9 +1080,10 @@
       "url": "https://www.chiletrabajos.cl/encuentra-un-empleo/?2=Temuco",
       "territory": "Temuco",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "chiletrabajos",
-      "scan_wave": 1
+      "scan_wave": 1,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "trabajando-secondary-Temuco",
@@ -1078,9 +1091,10 @@
       "url": "https://www.trabajando.cl/trabajo-empleo/temuco",
       "territory": "Temuco",
       "canonicalCommune": "solo_ubicacion_en_12_comunas",
-      "kind": "ciudad_puente",
+      "kind": "ciudad_complementaria",
       "provider": "trabajando",
-      "scan_wave": 2
+      "scan_wave": 2,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "omil-angol",
@@ -1322,7 +1336,8 @@
       "canonicalCommune": "Los Ángeles",
       "kind": "public_registry_extension",
       "provider": "source_defs",
-      "scan_wave": 2
+      "scan_wave": 2,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "registry-cvtrabajos-los-angeles",
@@ -1332,7 +1347,8 @@
       "canonicalCommune": "Los Ángeles",
       "kind": "public_registry_extension",
       "provider": "source_defs",
-      "scan_wave": 3
+      "scan_wave": 3,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "registry-omil-los-angeles-ofertas",
@@ -1342,7 +1358,8 @@
       "canonicalCommune": "Los Ángeles",
       "kind": "public_registry_extension",
       "provider": "source_defs",
-      "scan_wave": 4
+      "scan_wave": 4,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "registry-los-angeles-trabaja",
@@ -1352,7 +1369,8 @@
       "canonicalCommune": "Los Ángeles",
       "kind": "public_registry_extension",
       "provider": "source_defs",
-      "scan_wave": 5
+      "scan_wave": 5,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "registry-omil-temuco-portal",
@@ -1362,7 +1380,8 @@
       "canonicalCommune": "Temuco",
       "kind": "public_registry_extension",
       "provider": "source_defs",
-      "scan_wave": 0
+      "scan_wave": 0,
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "registry-omil-concepcion",
@@ -1405,7 +1424,7 @@
       "scan_wave": 4
     }
   ],
-  "version_note": "Cobertura complementada con SOURCE_DEFS del catálogo de fuentes en backend/index.ts. Fuentes de descubrimiento sin URL pública requieren búsqueda externa verificable; no clasificarlas como consultadas cuando solo estén registradas.",
+  "version_note": "Cobertura complementada con SOURCE_DEFS del catálogo de fuentes en backend/index.ts. Fuentes de descubrimiento sin URL pública requieren búsqueda externa verificable; no clasificarlas como consultadas cuando solo estén registradas. 2026-11-26: Temuco y Los Ángeles son complementarias y fuentes de descubrimiento principal; no mezclar catálogos.",
   "discovery_targets": [
     {
       "key": "motor-tavily",
@@ -1466,9 +1485,11 @@
         "Victoria",
         "Mulchén",
         "Negrete",
-        "Nacimiento"
+        "Nacimiento",
+        "Los Ángeles"
       ],
-      "access": "public_search_or_external_evidence_required"
+      "access": "public_search_or_external_evidence_required",
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "temuco-bridge",
@@ -1487,9 +1508,11 @@
         "Victoria",
         "Mulchén",
         "Negrete",
-        "Nacimiento"
+        "Nacimiento",
+        "Temuco"
       ],
-      "access": "public_search_or_external_evidence_required"
+      "access": "public_search_or_external_evidence_required",
+      "catalog_scope": "complementary_and_target_discovery"
     },
     {
       "key": "concepcion-bridge",
@@ -1534,7 +1557,7 @@
       "access": "public_search_or_external_evidence_required"
     },
     {
-      "key": "bne",
+      "key": "bne-indexed-discovery",
       "name": "Bolsa Nacional de Empleo",
       "mode": "discovery",
       "status": "active",
@@ -1884,5 +1907,13 @@
       ],
       "access": "public_search_or_external_evidence_required"
     }
+  ],
+  "complementary_communes": [
+    "Temuco",
+    "Los Ángeles"
+  ],
+  "bridge_only_communes": [
+    "Concepción",
+    "Chillán"
   ]
 }

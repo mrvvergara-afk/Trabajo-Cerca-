@@ -16,14 +16,26 @@ def audit(inventory, coverage):
     targets = inventory.get("discovery_targets", [])
     if len(sources) != inventory.get("count") or len({s.get("key") for s in sources}) != len(sources):
         raise ValueError("inventory_count_or_duplicate_key")
-    if len({t.get("key") for t in targets}) != len(targets):
+    discovery_keys = {t.get("key") for t in targets}
+    if len(discovery_keys) != len(targets):
         raise ValueError("duplicate_discovery_target")
+    if discovery_keys & {s.get("key") for s in sources}:
+        raise ValueError("duplicate_source_and_discovery_key")
     if set(inventory.get("target_communes", [])) != COMMUNES:
         raise ValueError("inventory_communes_mismatch")
     expected = {s["key"]: s for s in sources}
     observed = {}
     invalid = []
-    for row in coverage.get("sources", []):
+    waves = coverage.get("waves") or {}
+    wave_rows = [
+        {"source_id": item.get("key"), "scan_wave": int(wave),
+         "checked_at": item.get("checked_at") or data.get("heartbeat_at"),
+         **item}
+        for wave, data in waves.items()
+        if wave in {"0", "1", "2", "3", "4", "5"} and isinstance(data, dict)
+        for item in data.get("results", []) if isinstance(item, dict)
+    ]
+    for row in [*wave_rows, *coverage.get("sources", [])]:
         key = row.get("source_id")
         if key not in expected or row.get("status") not in STATES:
             invalid.append(key)
@@ -32,7 +44,9 @@ def audit(inventory, coverage):
             invalid.append(key)
             continue
         # A source can be retried; use the latest timestamp rather than double-counting.
-        if key not in observed or str(row.get("checked_at", "")) >= str(observed[key].get("checked_at", "")):
+        if key in observed and row["status"] == "not_attempted" and observed[key]["status"] != "not_attempted":
+            continue
+        if key not in observed or observed[key]["status"] == "not_attempted" or str(row.get("checked_at", "")) >= str(observed[key].get("checked_at", "")):
             observed[key] = row
     counts = {state: 0 for state in STATES}
     by_wave = {}
@@ -50,10 +64,12 @@ def audit(inventory, coverage):
             "unsupported": counts_wave["unsupported"],
             "missing": [s["key"] for s in planned if s["key"] not in observed],
         }
-    discovery_rows = coverage.get("discovery", [])
+    discovery_rows = coverage.get("discovery") or coverage.get("discovery_targets") or []
     discovered = {}
     for row in discovery_rows:
-        key = row.get("source_id")
+        key = row.get("source_id") or row.get("key")
+        if key == "bne" and "bne-indexed-discovery" in discovery_keys:
+            key = "bne-indexed-discovery"
         # A discovery target can be revisited in another wave; use the latest
         # evidence instead of treating repeated rows as additional coverage.
         if key not in discovered or str(row.get("checked_at", "")) >= str(discovered[key].get("checked_at", "")):

@@ -36,7 +36,7 @@ def load_batch(root, entry):
     return data["offers"]
 
 
-def reconcile(index, history, rows, load_offers, checked_at=None):
+def reconcile(index, history, rows, load_offers, checked_at=None, territory_exclusions=()):
     """Pure reconciliation; leave snapshots and prior source files untouched."""
     if not isinstance(index, dict) or index.get("schema_version") != 1:
         raise ValueError("invalid_batch_index")
@@ -48,6 +48,8 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
     if not isinstance(history, dict) or not isinstance(history.get("items", []), list):
         raise ValueError("invalid_history")
     stamp = checked_at or datetime.now(timezone.utc).isoformat()
+    exclusions = {(item["id_fuente"], item["url_original"], item["batch_id"]): item
+                  for item in territory_exclusions}
     observed_date = datetime.fromisoformat(stamp.replace("Z","+00:00")).date()
     def expired(item):
         value=item.get("fecha_cierre")
@@ -62,7 +64,7 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
     offers = {}
     batch_entries = []
     original_missing = {}
-    for old in history.get("items", []):
+    for old in [*history.get("resolved_outside_territory", []), *history.get("items", [])]:
         if isinstance(old, dict) and old.get("id_fuente") and old.get("url_original"):
             original_missing[old["id_fuente"]] = old
     for b in batches:
@@ -99,7 +101,7 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
             "source_confirmed" if status in ACTIVE else (
             "semantic_only" if status in SEMANTIC else "not_found"))
         batch[key] += 1
-    legacy_pending, resolved, legacy_semantic_only = [], [], []
+    legacy_pending, resolved, legacy_semantic_only, outside = [], [], [], []
     if original_missing:
         pending_status = check_ready_offers(list(original_missing.values()), rows, True)
         for identifier, old in original_missing.items():
@@ -107,12 +109,20 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
                 continue
             status = pending_status.get(identifier)
             record = dict(old)
-            if status in ACTIVE:
+            excluded = next((exclusions[key] for batch_id in old.get("prior_batch_ids", [])
+                             if (key := (identifier, old["url_original"], batch_id)) in exclusions), None)
+            if excluded and status in ACTIVE:
+                record["catalog_status"] = "visible_outside_catalog_territory"
+                legacy_pending.append(record)
+            elif status in ACTIVE:
                 resolved.append({
                     "id_fuente": identifier, "url_original": old["url_original"],
                     "status": "confirmed_visible_in_live_feed_by_source",
                     "checked_at": stamp, "prior_batch_ids": old.get("prior_batch_ids", [])
                 })
+            elif excluded and status == "not_found_in_complete_feed":
+                outside.append({**old, **excluded, "status": "outside_catalog_territory_confirmed",
+                                "checked_at": stamp})
             elif status in SEMANTIC:
                 record["catalog_status"] = "semantic_only_requires_source_or_receipt"
                 legacy_pending.append(record)
@@ -144,7 +154,9 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
         "unresolved_active_batches": unresolved,
         "previously_flagged_resolved": len(resolved),
         "previously_flagged_still_pending": len(legacy_pending),
+        "previously_flagged_outside_territory": len(outside),
         "prior_pending_resolution": resolved,
+        "prior_pending_territorial_exclusions": outside,
     }
     updated = {
         "schema_version": 1,
@@ -159,6 +171,7 @@ def reconcile(index, history, rows, load_offers, checked_at=None):
         "released_items": history.get("released_items", []),
         "items": legacy_pending,
         "resolved_published_items": resolved,
+        "resolved_outside_territory": outside,
         "confirmation_file": "publication_confirmation.json",
         "semantic_only_requires_receipt": legacy_semantic_only
     }
@@ -175,6 +188,8 @@ def main():
     index = json.loads((root / "index.json").read_text(encoding="utf-8"))
     previous_path = root / "publication_reconciliation.json"
     history = json.loads(previous_path.read_text(encoding="utf-8")) if previous_path.exists() else {"items":[]}
+    exclusions_path = root / "publication_territory_exclusions.json"
+    exclusions = json.loads(exclusions_path.read_text(encoding="utf-8"))["items"] if exclusions_path.exists() else []
     rows, complete, error = [], False, "not_checked"
     for attempt in range(3):
         rows, complete, error = read_full_feed(max_pages=30)
@@ -189,7 +204,7 @@ def main():
                           "wrote_snapshots":False}, ensure_ascii=False), flush=True)
         return 2
     latest, updated = reconcile(index, history, rows,
-                                lambda b: load_batch(root, b))
+                                lambda b: load_batch(root, b), territory_exclusions=exclusions)
     record = {"state":updated["state"],
               "source_confirmed": latest["source_confirmed"],
               "semantic_only": latest["semantic_only"],
@@ -198,6 +213,7 @@ def main():
               "territory_mismatches_count":latest["territory_mismatches_count"],
               "prior_missing_resolved": latest["previously_flagged_resolved"],
               "prior_missing_remaining": latest["previously_flagged_still_pending"],
+        "prior_missing_excluded_by_territory": latest["previously_flagged_outside_territory"],
               "latest_batch": latest["latest_batch"],
               "feed_rows": latest["feed_rows"],
               "committed_to_github":not args.dry_run}

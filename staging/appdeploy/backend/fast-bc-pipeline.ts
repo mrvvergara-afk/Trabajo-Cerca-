@@ -37,7 +37,8 @@ export async function runFastBCPipeline(){
         outcomes:(data as {outcomes?:unknown[]}).outcomes?.length??null,
         rawDocumentInputs:(data as {rawDocumentInputs?:number|null}).rawDocumentInputs??null,
         eligibleDocumentInputs:(data as {eligibleDocumentInputs?:number}).eligibleDocumentInputs??null,
-        imageInputs:(data as {imageInputs?:number}).imageInputs??null}:{}),
+        imageInputs:(data as {imageInputs?:number}).imageInputs??null,
+        pendingOtherDocumentInputs:(data as {pendingOtherDocumentInputs?:number}).pendingOtherDocumentInputs??null}:{}),
       ...(success&&kind==='html'?{inputCount:Number((data as {found?:number}).found||0),
         verified:Number((data as {verified?:number}).verified||0),
         blocked:Number((data as {blocked?:number}).blocked||0),
@@ -56,11 +57,15 @@ export async function runFastBCPipeline(){
   const result=pdfOutcome.status==='fulfilled'?pdfOutcome.value:{processed:0,totalDocuments:null,outcomes:[]};
   const html=htmlOutcome.status==='fulfilled'?htmlOutcome.value:{found:null,checked:null,verified:null,archived:null,blocked:null,storageFailures:null};
   const partial=pdfOutcome.status==='rejected'||htmlOutcome.status==='rejected';
-  const bIdleAssist=!partial?await assistMotorCWhenBIdle(result.processed,result.totalDocuments).catch(error=>({eligible:true,failed:true,error:String(error).slice(0,160)})):null;
+  const pendingOtherDocuments=pdfOutcome.status==='fulfilled'?pdfOutcome.value.pendingOtherDocumentInputs:null;
+  // Unknown or unresolved document backlog is not evidence of idle capacity.
+  const bIdleAssist=!partial&&pendingOtherDocuments===0
+    ?await assistMotorCWhenBIdle(result.processed,result.totalDocuments).catch(error=>({eligible:true,failed:true,error:String(error).slice(0,160)}))
+    :null;
   if(bIdleAssist) console.warn('MOTOR_B_IDLE_ASSIST '+JSON.stringify(bIdleAssist));
   // No new PDF decisions or HTML work: reuse the checkpoint instead of
   // migrating old rows and writing the same status on every cron invocation.
-  if(!partial && result.processed===0 && !result.outcomes.length && html.checked===0 && html.storageFailures===0){
+  if(!partial && pendingOtherDocuments===0 && result.processed===0 && !result.outcomes.length && html.checked===0 && html.storageFailures===0){
     const [previous]=await db.get<Progress>(STATE,['current'],{consistent:true});
     if(previous?.lastBatch){
       console.warn('MOTOR_B_C_FAST_IDLE '+JSON.stringify({remainingPdf:result.totalDocuments}));
@@ -100,7 +105,7 @@ export async function runFastBCPipeline(){
   const pruned=pruneResolved(resolved,1000);
   const record={id:'current',resolved:pruned,lastRunAt:now,runId,
     lastBatch:{scanned:result.processed,remainingPdf:result.totalDocuments===null?null:Math.max(0,result.totalDocuments-result.processed),
-      decisions:counted,partial,bIdleAssist,completedTotal:Object.keys(pruned).length,html:{found:html.found,checked:html.checked,verified:html.verified,archived:html.archived,blocked:html.blocked}}};
+      decisions:counted,partial,pendingOtherDocuments,bIdleAssist,completedTotal:Object.keys(pruned).length,html:{found:html.found,checked:html.checked,verified:html.verified,archived:html.archived,blocked:html.blocked}}};
   if(existing){const [ok]=await db.tx.update(STATE,[{id:'current',record,...(existing.runId?{if:{runId:existing.runId}}:{})}]);if(!ok)throw Error('fast_bc_checkpoint_update_failed');}
   else{const [id]=await db.tx.add(STATE,[record]);if(!id)throw Error('fast_bc_checkpoint_create_failed');}
   console.warn('MOTOR_B_C_FAST '+JSON.stringify(record.lastBatch));

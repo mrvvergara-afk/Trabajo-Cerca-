@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-25T21:31:09.173556-03:00",
+  "last_run": "2026-11-26T00:32:36.988059-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -10692,6 +10692,96 @@
       "first_seen": "2026-11-25T21:31:09.173556-03:00",
       "url": "https://lasnoticiasdemalleco.cl/informacion-general/frontel-refuerza-la-calidad-y-continuidad-del-suministro-electrico-con-importantes-trabajos-de-mantenimiento-en-ercilla/",
       "source": "Las Noticias de Malleco",
+      "commune": null
+    },
+    "0740f2bfce8dc81f2bdf": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/guardias-os10-al-dia-para-curico-renta-570000-bono-de-100000-3083482.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "87f931f2f21f559cd643": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/qa-pack-automation-aemobileadaptativechromium-58472769-3083481.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b65e4b032f61ced4a77d": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-aisen-del-gral-c-ibanez-del-campo/qa-pack-automation-aechromium-57867395-3083480.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "78b79e7f5ac229918004": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-de-silo-mejillones-turno-7x7-3083479.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2bf54e0a7508df7eecde": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-camion-aljibe-mejillones-turnos-7x7-y-5x2-3083478.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "35458478da68d9ff745b": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-maquinaria-pesada-en-rodillo-y-cargador-frontal-mejillones-7x7-3083477.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b6d3b7d6f764b7ef3a4e": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-maquinaria-pesada-en-bulldozer-y-cargador-frontal-mejillones-7x7-3083476.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "83d27788c3e7ba73a15c": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-maule/operarios-as-de-produccion-selladoras-curico-3083475.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fb9f4fbb92b0ae0d69e4": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-produccion-y-bodega-con-y-sin-licencia-d-650000-liquidos-malloco-penaflor-reemplazos-de-temporada-3083474.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7256df0fbcef5044d1f9": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/prevencionista-de-riesgo-lunes-a-viernes-3083473.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "588b90c2f8286f076f6e": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-quilicura-part-time-04-15-am-a-12-15-m-3083472.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e5207d70e5020a6c970a": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-quilicura-part-time-05-30-a-13-30-hrs-3083471.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0f3fe9ecb34d35519b7c": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vigilantes-privados-con-os10-de-vigilantes-lunes-a-viernes-para-importante-banco-las-condes-3083470.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cad710474c2636740a74": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/psicologo-a-laboral-experiencia-en-protocolo-psicosocial-3083469.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dee108667878faf30703": {
+      "first_seen": "2026-11-26T00:32:36.988059-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedora-30hrs-pm-lunes-a-viernes-las-condes-3083468.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-26T00:32:36.988059-03:00",
+  "last_run": "2026-11-26T10:32:27.409633-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -10782,6 +10782,150 @@
       "first_seen": "2026-11-26T00:32:36.988059-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedora-30hrs-pm-lunes-a-viernes-las-condes-3083468.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "6839dd753b5e49b74f78": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/alumnos-en-practica-comunicacion-audiovisual-on-line-3642814",
+      "source": "Chiletrabajos · Angol",
+      "commune": null
+    },
+    "5b76c7b6d63ff6662601": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/alumnos-en-practica-comunicacion-audiovisual-on-line-3656518",
+      "source": "Chiletrabajos · Angol",
+      "commune": null
+    },
+    "a7a983746e5045af0261": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-y-armado-de-exhibiciones-conchali-560000-lunes-a-viernes-proyecto-3083654.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dd07fe4d7fc6c2a47d33": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-y-armado-de-exhibiciones-recoleta-560000-lunes-a-viernes-proyecto-3083653.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0e512aa27ea7264daeb7": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-y-armado-de-exhibiciones-independencia-560000-lunes-a-viernes-proyecto-3083652.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a4af73f181e3e8510645": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-parking-part-time-20-horas-mall-plaza-los-dominicos-las-condes-3083651.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "749447fd21417e62ce78": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/practicante-de-reclutamiento-y-seleccion-practica-rrhh-nunoa-3083650.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "157d1845803ce37395c7": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-call-center-atencion-telefonica-hibrido-rea-financiera-3083649.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c4ab3a6cf8d505c997fe": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/promotor-vestuario-reemplazo-hasta-18-de-diciembre-concepcion-3083648.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "247055d8ff0b4f40fd46": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/guardia-de-seguridad-supermercado-en-machali-610000-6x1-turnos-extras-os10-vigente-3083647.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "00e4ce86c81eafe630e7": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-para-control-de-acceso-de-supermercado-para-san-bernardo-jornada-completa-rotativa-am-pm-3083646.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "323bea5242811ba0e32c": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/soldador-7x7-antofagasta-3083645.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bdf604be4d2894e7af9e": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/administrador-de-contrato-lunes-a-viernes-3083644.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "08721ae55bfed359b10a": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-tiempo-completo-3083643.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5c221d81e000f5463391": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auxiliar-de-aseo-santiago-centro-tiempo-completo-3083642.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d71bb19537e77746a128": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/supervisor-4x4-dia-noche-3083641.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "19e56f9792af9b4eacea": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ordenador-de-carros-de-supermercado-en-huechuraba-fin-de-semana-fin-de-semana-3083640.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ec5ef0513b97ecb7e72f": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ordenador-de-carros-de-supermercado-en-huechuraba-fin-de-semana-fin-de-semana-3083639.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0ea926c265e846f046a8": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ordenador-de-carros-de-supermercado-en-huechuraba-fin-de-semana-fin-de-semana-3083638.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ab282cd70f0ac69cee7e": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/reponedor-y-armado-de-stand-san-miguel-lunes-a-viernes-560000-proyecto-3083637.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bf0d053dd60df7992dd3": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asesor-al-cliente-pro-la-florida-755000-3083636.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f699507d311d5c02d381": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/clinica-belenus-especialista-laser-vina-del-mar-jornada-30-hrs-3083635.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3ee08afddd072c2fb3c9": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/San-Jose-de-la-Mariquina-Operadora-Maquinaria-Forestal-Skidder-LR-5150000/1454007800/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "f9acb3ed5f82de8f6db0": {
+      "first_seen": "2026-11-26T10:32:27.409633-03:00",
+      "url": "https://fashionspark.hiringroom.com/jobs/get_vacancy/6b083416f9919326e7a5011c",
+      "source": "Fashion's Park · portal oficial de contratación",
       "commune": null
     }
   }

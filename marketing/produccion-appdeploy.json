@@ -1,0 +1,91 @@
+{
+  "target": "trabajo-cerca-laboratorio-3ojgro",
+  "baseSnapshot": "1795664276412",
+  "sourcePaths": [
+    "backend/house-autonomy.ts",
+    "backend/house-metricool.ts",
+    "shared/house-autonomy.ts",
+    "src/house-autonomy.tsx"
+  ],
+  "patches": [
+    {
+      "filename": "backend/index.ts",
+      "diffs": [
+        {
+          "from": "import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, decideAdvertiserLead, commercialAdmin, readCommercialConfiguration, commercialCampaigns, readCommercialCampaigns, requestCommercialExpansion, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';",
+          "to": "import { advertisingCatalog, saveHouseConfiguration, uploadHouseCreative, houseClientEvent, houseDashboard, houseConversion, trialApplications, activateFreeTrial, decideAdvertiserLead, commercialAdmin, readCommercialConfiguration, commercialCampaigns, readCommercialCampaigns, requestCommercialExpansion, publicPromotion, commercialInventory, commercialClientEvent, commercialMetrics } from './house-marketing';\nimport { publicInstitutional, institutionalMedia, institutionalArchiveQueue, institutionalAdmin, institutionalBridge, institutionalCron } from './house-autonomy';\nexport { institutionalCron };"
+        },
+        {
+          "from": "  'GET /api/growth/advertising': [",
+          "to": "  'GET /api/growth/institutional': [publicInstitutional],\n  'GET /api/growth/institutional/media/:hash': [institutionalMedia],\n  'GET /api/growth/institutional/archive': [institutionalArchiveQueue],\n  'GET /api/growth/institutional/bridge': [institutionalBridge],\n  'GET /api/admin/marketing/institutional': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), institutionalAdmin],\n  'POST /api/admin/marketing/institutional': [requireAuth(), requireAdminEmailAllowlist(ADMIN_EMAILS), institutionalAdmin],\n  'GET /api/growth/advertising': ["
+        }
+      ]
+    },
+    {
+      "filename": "src/house-advertising.tsx",
+      "diffs": [
+        {
+          "from": "import './house-advertising.css';",
+          "to": "import './house-advertising.css';\nimport { InstitutionalPhoto, useInstitutionalRelease } from './house-autonomy';"
+        },
+        {
+          "from": "  const house=selection?.type==='HOUSE_AD'?selection:null;",
+          "to": "  const house=selection?.type==='HOUSE_AD'?selection:null;\n  const institutional = useInstitutionalRelease(Boolean(house));"
+        },
+        {
+          "from": "  const title=first?creative.title:story.title;\n  const message=first?creative.message:story.message;\n  const mobileMessage=first?creative.mobileMessage:story.mobile;",
+          "to": "  const edition = institutional?.slides.find(item => item.slot === artwork);\n  const activePhoto = edition && !creative.imageDisabled && !(first && creative.storagePath) ? edition : null;\n  const title = edition?.title ?? (first ? creative.title : story.title);\n  const message = edition?.message ?? (first ? creative.message : story.message);\n  const mobileMessage = edition?.mobile ?? (first ? creative.mobileMessage : story.mobile);"
+        },
+        {
+          "from": "      {photoUrl && <AdImage url={photoUrl}/>}",
+          "to": "        {activePhoto\n          ? <InstitutionalPhoto key={activePhoto.imageUrl} url={activePhoto.imageUrl} alt={activePhoto.alt} />\n          : photoUrl && <AdImage url={photoUrl} />}"
+        }
+      ]
+    },
+    {
+      "filename": "src/house-admin.tsx",
+      "diffs": [
+        {
+          "from": "import {CommercialControls} from './commercial-admin';",
+          "to": "import {CommercialControls} from './commercial-admin';\nimport { InstitutionalAdmin } from './house-autonomy';"
+        },
+        {
+          "from": "    {mode === 'campanas' && <>",
+          "to": "    {mode === 'campanas' && <>\n    <InstitutionalAdmin />"
+        }
+      ]
+    },
+    {
+      "filename": "src/App.tsx",
+      "diffs": [
+        {
+          "from": "import {StitchBrand} from './stitch-brand';",
+          "to": "import {StitchBrand} from './stitch-brand';\nimport { houseSubmissionAttribution } from './house-autonomy';"
+        },
+        {
+          "from": "houseAttribution:attribution",
+          "to": "houseAttribution:houseSubmissionAttribution(attribution)",
+          "multiple": true
+        }
+      ]
+    },
+    {
+      "filename": "backend/house-marketing.ts",
+      "diffs": [
+        {
+          "from": "import { createHash, randomUUID } from 'node:crypto';",
+          "to": "import { createHash, randomUUID } from 'node:crypto';\nimport { recordOrganicConversion } from './house-autonomy';"
+        },
+        {
+          "from": "  try { return await recordHouseEvent(attribution,event,effectId); }",
+          "to": "  try {\n    await recordOrganicConversion(attribution, event, effectId).catch(() => {\n      console.warn('house_organic_conversion_pending', { event });\n    });\n    return await recordHouseEvent(attribution, event, effectId);\n  }"
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "filename": "backend/house-metricool.ts",
+    "from": "export const METRICOOL_TARGET = 'lab' as 'lab' | 'prod';",
+    "to": "export const METRICOOL_TARGET = 'prod' as 'lab' | 'prod';"
+  }
+}

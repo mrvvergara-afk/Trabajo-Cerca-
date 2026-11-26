@@ -56,3 +56,32 @@ real. La autorización de producción depende de la validación completa.
 Siguiente acción: confirmar las imágenes y los tamaños de pantalla en
 Chromium sobre la versión corregida, completar el consumidor de la cola y
 verificar el respaldo previo a un eventual despliegue oficial.
+
+## Validación y punto de continuidad del 26 de noviembre de 2026
+
+- Laboratorio activo en AppDeploy `1795701319580`. Sirvió seis WebP reales
+  (470.320 bytes en total) con las huellas esperadas. Cuatro lecturas
+  concurrentes devolvieron la misma revisión. Las rutas administrativas
+  rechazaron lecturas y restauraciones anónimas con HTTP 401.
+- Chromium comprobó el carrusel en 320, 360, 390, 430 y 1440 px, con seis
+  controles y decodificación de imagen. Pasaron el respaldo visual con
+  conexión lenta e imagen bloqueada y la conservación del espacio de
+  un anuncio comercial mediante inventario simulado. Pasaron siete pruebas
+  locales del banco, concurrencia, persistencia, reversión y cifrado.
+- Reversión real ensayada en AppDeploy: se aplicó la versión anterior del
+  laboratorio `1795554885123`, cuya ruta institucional volvió a HTTP 404.
+  Al reaplicar `1795701319580` reaparecieron las seis diapositivas con
+  el mismo hash de manifiesto. El ensayo cubrió el despliegue del laboratorio.
+- El primer ciclo operativo verificó el respaldo por hash y actualizó y
+  releyó las métricas cifradas del 13 al 26 de noviembre. Evidencia GitHub
+  `0d44aa4cac00c9c2475d7b6e803716a43757539d`. La programación en redes queda
+  condicionada a la activación del destino oficial.
+- `marketing/produccion-appdeploy.json` contiene el paquete incremental
+  para la versión oficial `1795664276412`. Los marcadores se cotejaron
+  con su código y el paquete omite cambios al cron de los motores.
+
+Pendiente: obtener y verificar el respaldo consistente de la aplicación
+oficial en la consola de AppDeploy, que exige una sesión de propietario.
+El historial conserva `1795664276412` como punto de reversión de código.
+Con el respaldo comprobado, aplicar el paquete único y verificar el panel
+administrativo y el primer ciclo orgánico real de Facebook e Instagram.

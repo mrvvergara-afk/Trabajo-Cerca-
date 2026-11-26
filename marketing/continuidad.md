@@ -85,3 +85,9 @@ oficial en la consola de AppDeploy, que exige una sesión de propietario.
 El historial conserva `1795664276412` como punto de reversión de código.
 Con el respaldo comprobado, aplicar el paquete único y verificar el panel
 administrativo y el primer ciclo orgánico real de Facebook e Instagram.
+
+## Separación de entornos
+
+- `main` en `496c1105f3bc3cb80abaed7c282cfa82943ab68f`: GitHub Actions y el monitor de disponibilidad excluyen el laboratorio congelado. Pasa el conjunto de 23 pruebas de disponibilidad y promoción.
+- Retiro, versión congelada y condición de respaldo: [Entornos y retiro](entornos-y-retiro.md).
+- Paquete incremental oficial para `1795664276412`: [produccion-appdeploy.json](produccion-appdeploy.json). La vista institucional oficial sigue pendiente del respaldo de plataforma.

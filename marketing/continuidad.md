@@ -19,3 +19,21 @@ Oficial: `trabajo-cerca-laboratorio-3ojgro`, versión observada `1795664276412`.
 
 Próxima acción: probar la publicación del manifiesto, la reversión y la
 protección de los anuncios comerciales en AppDeploy.
+
+## Manifiesto y administración implementados
+
+- `backend/house-autonomy.ts` valida, replica en almacenamiento institucional,
+  publica el manifiesto y guarda una versión anterior y un trabajo de respaldo
+  en una transacción. Verifica respaldos GitHub con espera creciente.
+- `src/house-autonomy.tsx` carga una edición válida y muestra estado y métricas
+  en Campañas propias. La selección comercial usa sus rutas y datos existentes.
+- `backend/house-metricool.ts` y `marketing/seal-metricool.mjs` permiten al
+  conector Metricool entregar métricas cifradas con una clave propia de cada
+  aplicación. En el laboratorio la publicación orgánica queda inhabilitada.
+- Se consultó Metricool: para la ventana del 1 al 26 de noviembre, su conector
+  devolvió una fila de Instagram y ninguna de Facebook para las métricas
+  solicitadas. La falta de filas se representa como dato ausente.
+
+Siguiente acción: verificar tipos, desplegar un paquete incremental al
+laboratorio, comprobar sus APIs y el carrusel y archivar el primer manifiesto
+real. La autorización de producción depende de la validación completa.

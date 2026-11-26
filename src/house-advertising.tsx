@@ -5,6 +5,7 @@ import './house-advertising.css';
 import {AdImage} from './ad-image';
 import {presentHouseCreative} from './house-creative-presentation';
 import {useRespectfulCarousel} from './respectful-carousel';
+import { InstitutionalPhoto, useInstitutionalRelease } from './house-autonomy';
 import {STORIES,houseSequence} from './house-slide-content';
 import {HOUSE_DEFAULTS} from '../shared/house-ads';
 import {selectHousePhotoUrl} from './house-photo-selection';
@@ -92,6 +93,7 @@ export function useAdvertising(place:string,category:string,page='home',requeste
 export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Selection;place:string;onGoal:(goal:Goal,attribution:HouseAttribution)=>void;onImpression:(id:string)=>void}) {
   const node=useRef<HTMLElement>(null);const counted=useRef(new Set<string>());
   const house=selection?.type==='HOUSE_AD'?selection:null;
+  const institutional = useInstitutionalRelease(Boolean(house));
   const key=house?house.campaign.id+':'+house.creative.id:'';
   const {index:slide,choose,attach,onTouchStart,onTouchEnd,hoverHandlers}=useRespectfulCarousel(key,6);
   useEffect(()=>{
@@ -113,9 +115,11 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
   const approvedDefault=HOUSE_DEFAULTS.find(c=>c.id==='house-'+artwork)?.creatives[0]?.imageUrl;
   const photoUrl=selectHousePhotoUrl({imageDisabled:creative.imageDisabled, customUrl:creative.imageUrl, defaultUrl:approvedDefault, firstSlide:slide===0});
   const story=STORIES[artwork],first=slide===0;
-  const title=first?creative.title:story.title;
-  const message=first?creative.message:story.message;
-  const mobileMessage=first?creative.mobileMessage:story.mobile;
+  const edition = institutional?.slides.find(item => item.slot === artwork);
+  const activePhoto = edition && !creative.imageDisabled && !(first && creative.storagePath) ? edition : null;
+  const title=edition?.title ?? (first?creative.title:story.title);
+  const message=edition?.message ?? (first?creative.message:story.message);
+  const mobileMessage=edition?.mobile ?? (first?creative.mobileMessage:story.mobile);
   const cta=first?creative.button:story.cta;
   const slideGoal=first?house.campaign.goal:story.goal;
   return <aside ref={node} className='tcHouseAd tcPremiumAd' aria-label='Campaña propia de Trabajo Cerca' data-ad-type='HOUSE_AD' data-campaign={house.campaign.id} data-creative-family={house.campaign.goal==='professional'?'services':house.campaign.goal==='advertiser'?'business':'jobs'}
@@ -123,7 +127,9 @@ export function HouseBanner({selection,place,onGoal,onImpression}:{selection:Sel
     <div className='tcCampaignVisual' ref={attach} aria-hidden='true'>
       <img className='tcCampaignFallbackArt tcHouseGallerySelected'
         src={'/house-creatives/'+artwork+'.svg'} alt='' loading='lazy' decoding='async'/>
-      {photoUrl && <AdImage url={photoUrl}/>}
+      {activePhoto
+        ? <InstitutionalPhoto key={activePhoto.imageUrl} url={activePhoto.imageUrl} alt={activePhoto.alt} />
+        : photoUrl && <AdImage url={photoUrl}/>}
     </div>
     <div className='tcHouseGalleryControls' role='group' aria-label='Explorar mensajes de Trabajo Cerca'>
       {galleryImages.map((art,i)=><button type='button' key={art}

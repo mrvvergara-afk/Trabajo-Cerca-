@@ -1,3 +1,4 @@
+import { InstitutionalAdmin } from './house-autonomy';
 import {CommercialControls} from './commercial-admin';
 import { useEffect, useState } from 'react';
 import { api, notifications } from '@appdeploy/client';
@@ -142,6 +143,7 @@ export function HouseCampaignAdmin({ mode = 'solicitudes' }: { mode?: 'solicitud
       </form>}
     </section>}
     {mode === 'campanas' && <>
+    <InstitutionalAdmin />
     <h3>Campañas propias</h3><p>Promoción de Trabajo Cerca. Las métricas HOUSE_AD no representan ventas, ingresos ni clientes pagados.</p>
     <label>Campaña<select value={selected} disabled={busy} onChange={e=>setSelected(e.target.value)}>{campaigns.map(c=><option key={c.id} value={c.id}>{c.creatives[0]?.title} · {c.status==='active'?'Activa':'Pausada'}</option>)}</select></label>
     <button disabled={busy||!revision||campaigns.length>=24} onClick={()=>{const c=structuredClone(HOUSE_DEFAULTS[0]);c.id='house-'+crypto.randomUUID();c.status='paused';setCampaigns([...campaigns,c]);setSelected(c.id);}}>Crear campaña</button>

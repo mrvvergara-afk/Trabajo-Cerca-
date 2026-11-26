@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-26T00:30:55.357476+00:00",
+  "updated_at": "2026-11-26T09:40:28.854476+00:00",
   "items_total": 9,
   "automatically_published": 0,
   "items": [
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-26T00:30:55.357476+00:00",
+      "last_checked_at": "2026-11-26T09:40:28.854476+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -170,12 +170,12 @@
     }
   ],
   "metrics": {
-    "added": 16,
-    "updated": 3,
+    "added": 13,
+    "updated": 1,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 17,
+    "published_reconciled": 13,
     "territory_mismatch": 5
   }
 }

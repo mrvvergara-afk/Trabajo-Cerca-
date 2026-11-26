@@ -66,6 +66,10 @@
           "from": "houseAttribution:attribution",
           "to": "houseAttribution:houseSubmissionAttribution(attribution)",
           "multiple": true
+        },
+        {
+          "from": "      if(slot==='featured'&&advertising.promotion?.days)return null;\n",
+          "to": ""
         }
       ]
     },

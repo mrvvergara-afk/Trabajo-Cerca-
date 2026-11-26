@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-25T16:13:36.254070-03:00",
+  "last_run": "2026-11-25T21:31:09.173556-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -10567,6 +10567,132 @@
       "url": "https://www.chiletrabajos.cl/trabajo/auxiliar-de-servicio-nacimiento-3938842",
       "source": "Portal Chiletrabajos · palabra clave · Nacimiento",
       "commune": "Nacimiento"
+    },
+    "19205ce15a0ac9aafe54": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/salesforce-developer-ciudad-empresarial-santiago-3083467.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ab20698bcc5ec19d2e43": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/supervisor-de-mantenimiento-turno-pm-3083466.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "22fb5aff9c6c27bdc970": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-produccion-657000-liquido-pudahuel-3-turnos-rotativos-3083465.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "059af9c257c1abe4bb40": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-ayudante-de-produccion-industrial-700000-liquidos-turno-7x7-rotativo-bus-y-colacion-mejillones-antofagasta-rea-hidrometalurgia-3083464.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e0763f9473a5af558d71": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/vendedora-apoyo-navidad-sabados-y-domingos-la-serena-3083463.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c39f55acc7e44a204d69": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/vendedora-full-apoyo-navidad-outlet-rancagua-3083462.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b8e30e0e6b4d6aff38b5": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-electromecanico-turno-pm-3083461.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e75fb6c9291340c949b6": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/vendedora-part-time-30-hrs-temporada-navidad-iquique-3083460.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "de9e816795409f2cec47": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/vendedora-full-apoyo-navidad-ovalle-3083459.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "964f4b5d2eb31ecb2854": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/vendedora-30-hrs-apoyo-navidad-marina-arauco-3083458.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4fb52b5654e4260d1c77": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/promotor-a-vendedor-a-campana-edgewell-santiago-36000-liquidos-x-dia-3083457.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2284063659ae11ff1cb6": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedora-apoyo-navidad-part-time-30-hrs-el-bosque-3083456.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8268661a3739c85f3c72": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/project-coordinator-proyecto-3083455.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2571d93f44a85681c4c6": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedora-apoyo-navidad-30-hrs-melipilla-3083454.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "83f97606e97197c4dbfe": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/apoyo-multifuncional-retail-campana-mall-plaza-calama-disponibilidad-por-activacion-de-turnos-3083453.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bf8f4f6a016adc4f0df4": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apoyo-multifuncional-retail-campana-easton-outlet-mall-disponibilidad-por-activacion-de-turnos-3083452.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8d8812959d3ca3dfa1b7": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/tecnico-mecanico-antofagasta-7x7-3083451.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "16e6a3680750b0ef48aa": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/soporte-a-impresoras-en-sitio-presencial-copiapo-reemplazo-de-vacaciones-3083450.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5d14c4fe0669aba5c413": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-de-atencion-al-cliente-bancario-region-metropolitana-3083449.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f79d934729bd1dc478d3": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-social-encargado-a-de-bienestar-3083448.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ba7a3f09917ef48cae19": {
+      "first_seen": "2026-11-25T21:31:09.173556-03:00",
+      "url": "https://lasnoticiasdemalleco.cl/informacion-general/frontel-refuerza-la-calidad-y-continuidad-del-suministro-electrico-con-importantes-trabajos-de-mantenimiento-en-ercilla/",
+      "source": "Las Noticias de Malleco",
+      "commune": null
     }
   }
 }

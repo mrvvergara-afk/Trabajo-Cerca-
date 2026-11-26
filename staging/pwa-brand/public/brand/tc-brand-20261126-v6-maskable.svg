@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Trabajo Cerca"><rect width="1024" height="1024" fill="#fff"/><g transform="translate(128 128) scale(.75)">
+  <defs>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00643a"/><stop offset="1" stop-color="#00391f"/></linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a2dc54"/><stop offset="1" stop-color="#67b927"/></linearGradient>
+  </defs>
+  <circle cx="512" cy="512" r="493" fill="url(#dark)"/>
+  <circle cx="512" cy="512" r="456" fill="#fff"/>
+  <path d="M636 148l17-47M683 181l33-44M724 224l45-23" fill="none" stroke="url(#lime)" stroke-linecap="round" stroke-width="28"/>
+  <path d="M512 194c-112 0-198 86-198 197 0 132 165 270 198 298 33-28 198-166 198-298 0-111-86-197-198-197z" fill="url(#dark)"/>
+  <circle cx="512" cy="388" r="148" fill="#fff"/>
+  <rect x="432" y="295" width="160" height="101" rx="15" fill="url(#dark)"/>
+  <path d="M482 297v-23c0-10 7-18 17-18h26c10 0 17 8 17 18v23" fill="none" stroke="#005331" stroke-width="15" stroke-linejoin="round"/>
+  <path d="M432 337c42 19 118 19 160 0" fill="none" stroke="#fff" stroke-width="12"/>
+  <rect x="498" y="329" width="28" height="24" rx="5" fill="#fff"/>
+  <circle cx="430" cy="438" r="28" fill="url(#dark)"/>
+  <circle cx="512" cy="438" r="29" fill="url(#lime)"/>
+  <circle cx="594" cy="438" r="28" fill="url(#dark)"/>
+  <path d="M391 492c-3-23 12-37 39-37 22 0 35 9 39 24-22 12-37 27-47 49a150 150 0 0 1-31-36zM633 492c3-23-12-37-39-37-22 0-35 9-39 24 22 12 37 27 47 49 11-11 21-23 31-36z" fill="url(#dark)"/>
+  <path d="M450 532c2-47 26-70 62-70 36 0 60 23 62 70 0 3-27 22-62 22s-62-19-62-22z" fill="url(#lime)" stroke="#fff" stroke-width="7"/>
+  <ellipse cx="512" cy="654" rx="176" ry="30" fill="none" stroke="url(#lime)" stroke-width="15"/>
+  
+  
+</g></svg>

@@ -1,0 +1,43 @@
+{
+  "base_app_version": "1795664276412",
+  "changes": [
+    {
+      "path": "backend/chatgpt-direct-import.ts",
+      "replacements": [
+        {
+          "before": "const LOCAL=new Set(['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento']);",
+          "after": "const LOCAL=new Set(['Angol','Collipulli','Ercilla','Lumaco','Los Sauces','Purén','Renaico','Traiguén','Victoria','Mulchén','Negrete','Nacimiento','Temuco','Los Ángeles']);"
+        },
+        {
+          "before": "secondaryMarket:false,",
+          "after": "secondaryMarket:x.comunas.every(c=>c==='Temuco'||c==='Los Ángeles'),"
+        },
+        {
+          "before": "workCommunes:social?[]:x.comunas,recruitmentCommunes:",
+          "after": "workCommunes:social?[]:x.comunas,secondaryMarket:!social&&x.comunas.every(c=>c==='Temuco'||c==='Los Ángeles'),recruitmentCommunes:"
+        }
+      ]
+    },
+    {
+      "path": "backend/index.ts",
+      "replacements": [
+        {
+          "before": "const projectionPlaces = PILOT;",
+          "after": "const projectionPlaces = [...PILOT,'Temuco','Los Ángeles'];"
+        },
+        {
+          "before": "const allowed=(row.secondaryMarket===true&&row.discoveredBy==='free-public-sources-v1')?MARKET_PLACES:PILOT;",
+          "after": "const allowed=[...PILOT,'Temuco','Los Ángeles'];"
+        }
+      ]
+    }
+  ],
+  "status": "staged_not_deployed",
+  "acceptance": [
+    "verified Temuco and Los Ángeles visible only in complementary UI",
+    "12 primary communes unchanged",
+    "expired source deadline excluded",
+    "Concepción, Chillán and Lautaro not admitted",
+    "reconcile actual feed and recovery queue"
+  ]
+}

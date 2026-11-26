@@ -23,3 +23,20 @@ test('unknown document backlog fails closed',async()=>{const f=fixture({pendingO
 test('PDF failure preserves C receipt without assistance',async()=>{const f=fixture({}, {pdfError:true});const r=await f.run();assert.equal(r.partial,true);assert.equal(f.calls.length,0);assert.equal(f.receipts.find(x=>x.engine==='B').status,'failed');assert.equal(f.receipts.find(x=>x.engine==='C').status,'completed')});
 test('assistance failure does not stop checkpoint',async()=>{const f=fixture({}, {assistError:true});const r=await f.run();assert.equal(r.bIdleAssist.failed,true);assert.equal(f.checkpoints.length,1)});
 test('both stage failures save receipts and reject',async()=>{const f=fixture({}, {pdfError:true,htmlError:true});await assert.rejects(f.run(),/bc_stage_failed_receipts_saved/);assert.equal(f.receipts.length,2);assert.equal(f.checkpoints.length,0)});
+test('deferred documents remain pending without reserving idle B capacity',async()=>{
+ const f=fixture({rawDocumentInputs:2,imageInputs:2,totalDocuments:2,availableDocumentInputs:0,
+  remainingDocuments:2,deferredDocumentInputs:2});
+ const r=await f.run();
+ assert.deepEqual(f.calls,[[0,0]]);
+ assert.equal(r.remainingDocuments,2);
+ assert.equal(r.deferredDocuments,2);
+ assert.equal(f.receipts.find(x=>x.engine==='B').deferredDocumentInputs,2);
+});
+test('unreadable OCR evidence stays available for review instead of being discarded',async()=>{
+ const url='https://example.test/notice.png';
+ const f=fixture({processed:1,totalDocuments:1,remainingDocuments:0,availableDocumentInputs:1,
+  outcomes:[{url,stage:'needs_review',reason:'document_no_legible_text'}]});
+ const r=await f.run();
+ assert.equal(r.decisions.needs_source_evidence,1);
+ assert.equal(f.checkpoints[0].resolved[url].state,'needs_source_evidence');
+});

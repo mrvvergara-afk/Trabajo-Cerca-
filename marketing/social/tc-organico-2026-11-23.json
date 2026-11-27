@@ -1,0 +1,15 @@
+{
+  "campaignId": "tc-organico-2026-11-23",
+  "label": "#tcorganico20261123",
+  "appId": "trabajo-cerca-laboratorio-3ojgro",
+  "target": "prod",
+  "brandId": "7187503",
+  "state": "reserved",
+  "publicationDate": "2026-11-27T19:00:00-03:00",
+  "networks": [
+    "facebook",
+    "instagram"
+  ],
+  "manifestRevision": "9983f5b5f57098ae4902ac4933f890e633ed8a753741578cf5e10e88b56029c2",
+  "reservedAt": "2026-11-27T14:28:08.583Z"
+}

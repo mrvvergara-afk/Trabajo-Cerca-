@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "phase": "candidate_assembly",
-  "next": "Ensamblar B/C y el recibo SHA de ChatGPT sobre una base oficial verificable, correr compilación integrada en QA y comprobar restauración lógica aislada con datos sintéticos.",
+  "phase": "cross_invocation_recovery_validation",
+  "next": "Probar exportación y restauración en invocaciones separadas con clave gestionada, inventariar entidades fuera del SDK y verificar el paquete final con recibos de flujo sin modificar producción.",
   "production_mutation_allowed": false,
   "qa_cron_allowed": false,
   "completed": [
@@ -11,6 +11,9 @@
     "initialize_acceptance_register",
     "compare_active_bc_dependencies",
     "match_gemini_blob_with_production_import",
-    "add_chatgpt_blob_receipts_in_staging"
+    "add_chatgpt_blob_receipts_in_staging",
+    "integrated_candidate_build_qa",
+    "synthetic_paginated_encrypted_restore_qa",
+    "qa_baseline_restored"
   ]
 }

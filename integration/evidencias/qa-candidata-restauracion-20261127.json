@@ -1,0 +1,50 @@
+{
+  "candidate_commit": "55914407bdfac4276866b88ee7ab842b39c14cd7",
+  "scope": "integrated_qa_build_and_same_invocation_synthetic_database_restore",
+  "qa": {
+    "app_id": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "snapshot": "1795773859678",
+    "validation": true,
+    "cron": null,
+    "restored_snapshot": "1795554937385",
+    "restored_status": "ready",
+    "test_endpoint_after_rollback_http": 404
+  },
+  "local": {
+    "bc_tests_passed": 26
+  },
+  "restore": {
+    "initial_failed_snapshot": "1795773758623",
+    "initial_observed_failure": "qa_export_fixture_mismatch",
+    "adjustment": "Canonical field ordering plus bounded retries for paginated reads, in new QA-only tables.",
+    "first": {
+      "ok": true,
+      "replay": false,
+      "id": "restore",
+      "rows": 5,
+      "exportedPages": 3,
+      "sha256": "e528ff1d472a626c86f3010ca1336ef6ed22ca51c16923b8ea69c7b6d5c98a2d",
+      "tamperRejected": true
+    },
+    "replay": {
+      "ok": true,
+      "replay": true,
+      "exportedPages": 3,
+      "id": "restore",
+      "rows": 5,
+      "sha256": "e528ff1d472a626c86f3010ca1336ef6ed22ca51c16923b8ea69c7b6d5c98a2d",
+      "tamperRejected": true
+    },
+    "authenticated_encryption": "AES-256-GCM",
+    "key_lifetime": "ephemeral_single_invocation",
+    "source_frozen_fixture": true,
+    "atomic_data_and_receipt": true
+  },
+  "limitations": [
+    "No production data used",
+    "Encryption key not persisted or tested across separate invocations",
+    "No concurrent-write export or full-platform recovery verified",
+    "QA uses its existing frozen data and configuration; production promotion not approved"
+  ],
+  "production_mutated": false
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261127-2b72bad7146268ca0b",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_47288eca64242952a501",
+      "cargo": "Rigger - Angol",
+      "empresa": "Empresa de grúas",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/rigger-angol-3940244",
+      "fecha_publicacion": "2026-11-27",
+      "fecha_descubrimiento": "2026-11-27",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-10",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

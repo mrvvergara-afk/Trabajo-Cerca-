@@ -210,6 +210,12 @@
       "file": "20261127/motor-d-20261127-65995e4e00dc34dcee.json",
       "count": 1,
       "batch_type": "daily"
+    },
+    {
+      "batch_id": "motor-d-20261127-2b72bad7146268ca0b",
+      "file": "20261127/motor-d-20261127-2b72bad7146268ca0b.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -232,6 +238,7 @@
     "d_442c8958dcd8af4d12b7",
     "d_465c77761224e30a83cb",
     "d_46607b264d4d83a176c3",
+    "d_47288eca64242952a501",
     "d_4bdcac8ef560f0fe716d",
     "d_4c599ad95a20501aa8c8",
     "d_4de1ef999c10ba4947aa",
@@ -343,6 +350,7 @@
     "job:[\"psicologo a organizacional comuna ercilla\", \"empresa confidencial\", [\"angol\"]]",
     "job:[\"reponedor part time mulchen\", \"cultiva\", [\"mulchen\"]]",
     "job:[\"reponedor part time para traiguen\", \"cultiva\", [\"traiguen\"]]",
+    "job:[\"rigger angol\", \"empresa de gruas\", [\"angol\"]]",
     "job:[\"se busca operario de produccion angol\", \"empresa de alimentos\", [\"angol\"]]",
     "job:[\"se buscan enfierradores nacimiento\", \"constructora aljo\", [\"nacimiento\"]]",
     "job:[\"se buscan enfierradores obra hospital de nacimiento\", \"constructora aljo\", [\"nacimiento\"]]",
@@ -418,6 +426,7 @@
     "source:chiletrabajos:3937782",
     "source:chiletrabajos:3938842",
     "source:chiletrabajos:3939921",
+    "source:chiletrabajos:3940244",
     "url:https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
     "url:https://chiletrabajos.cl/trabajo/analista-tecnico-3937254",
     "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
@@ -459,6 +468,7 @@
     "url:https://chiletrabajos.cl/trabajo/psicologo-a-22-horas-3926911",
     "url:https://chiletrabajos.cl/trabajo/psicologo-a-organizacional-comuna-ercilla-3924928",
     "url:https://chiletrabajos.cl/trabajo/reponedor-part-time-mulchen-3927989",
+    "url:https://chiletrabajos.cl/trabajo/rigger-angol-3940244",
     "url:https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
     "url:https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
     "url:https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-obra-hospital-de-nacimiento-3887984",

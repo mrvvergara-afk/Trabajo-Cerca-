@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-27T14:49:34.083414-03:00",
+  "last_run": "2026-11-27T15:55:25.707022-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -11574,6 +11574,168 @@
       "first_seen": "2026-11-27T14:49:34.083414-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-arica-y-parinacota/operador-maquinaria-reemplazo-lluta-cargador-frontal-3084455.html",
       "source": "Inventario D04",
+      "commune": null
+    },
+    "c98032a7a9b174cf8b72": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/rigger-angol-3940244",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "a08355621c5ff2f38d47": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-a-multifuncional-con-experiencia-3084510.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "513f39ea93788e46c298": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-de-apilador-trilateral-turno-noche-899000-liquidos-y-bus-san-bernardo-3084509.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "1604d63da7c3256e8504": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-produccion-dia-y-noche-3084508.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "947b885173d975af5561": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-produccion-noche-3084507.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "72b50996e36b0cdc73fb": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-traspaleta-turno-tarde-y-noche-renca-20-vacantes-3084506.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c437402062301cc22a5f": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/conecta-nuevos-clientes-en-terreno-venta-internet-fo-part-time-copiapo-rubro-telecomunicaciones-3084505.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d4d55b5a0dc7542ad38e": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/dermoconsejero-a-farmacia-nunoa-full-time-3084504.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "6aaf97d02a05d48d0c12": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/conecta-nuevos-clientes-en-terreno-venta-internet-fo-part-time-antofagasta-rubro-telecomunicaciones-3084503.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "98ab1c178c8d03ac131a": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-falabella-noche-600-mas-colacion-bus-de-acercamiento-con-curso-os10-3084502.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dbeaef771ab429e49d6a": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/guardia-empresa-en-pudahuel-600-4x4-liquidos-turno-dia-con-curso-os10-3084501.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7cb73ecb84f8df485621": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/cajero-a-bancario-a-vi-region-pichilemu-696000-liquidos-3084500.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "754aa61c78e4bb331053": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/anfitriones-part-time-20-quilicura-proyecto-3084499.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "90371bc564da40b49d09": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/anfitriones-part-time-20-larapinta-proyecto-3084498.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b6ef7335001126fc38f1": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/anfitriones-part-time-20-la-calera-proyecto-3084497.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b7b4a8ca78a69937a39d": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/vendedor-a-en-terreno-para-el-gran-concepcion-sin-experiencia-altas-comisiones-3084496.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b0332286f2a04890378c": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/vendedor-a-en-terreno-para-chillan-sin-experiencia-altas-comisiones-3084495.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "975dd3f89fdcfabe955c": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/vendedor-a-en-terreno-para-temuco-sin-experiencias-altas-comisiones-3084494.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bbda9e080b0f7d1ee2cc": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-en-terreno-canal-tradicional-con-movilizacion-propia-en-quinta-normal-y-alrededores-3084493.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5192bad3c2736af074c7": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/vendedor-a-en-terreno-para-osorno-sin-experiencias-altas-comisiones-3084492.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "57b8943f7ddcd9b7ac80": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/representante-de-ventas-de-campo-b2b-servicios-de-hidratacion-3084491.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ee06fecd48057d49f803": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://jobs.arauco.com/Chile/job/Santiago-Ingeniero-Planificaci%C3%B3n-Demanda-Santiago-RM-7550107/1454171000/",
+      "source": "Arauco empleo",
+      "commune": null
+    },
+    "a4e1b4a3eab71a647639": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/auxiliar-de-servicios-generales/",
+      "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "077a564e5ed9f6ccc26e": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-de-nivel-superior-en-laboratorio-clinico/",
+      "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "2e33d9dd365e7712435f": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/tecnico-en-mantencion-en-infraestructura-2/",
+      "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "d0449fda3a723630cb3a": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/secretariao-direccion-hospital-lonquimay/",
+      "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "8a2c5cf8d72d3722cf24": {
+      "first_seen": "2026-11-27T15:55:25.707022-03:00",
+      "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/conductor-a-de-ambulancia-jornada-diurna-2/",
+      "source": "Salud Araucanía Norte",
       "commune": null
     }
   }

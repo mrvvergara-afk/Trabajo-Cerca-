@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "phase": "recovery_writer_integration",
-  "next": "Coordinar escritores de los motores y del publicador durante un respaldo con tablas y archivos, probar la restauración representativa en QA y verificar un flujo con productor y publicador reales antes de promover.",
+  "next": "Integrar publicación por revisión o pausa coordinada en escritores reales, validar alcance de recuperación y ejecutar el flujo productor–publicador en QA cuando exista una entrada elegible y se disponga de permisos independientes para el origen.",
   "production_mutation_allowed": false,
   "qa_cron_allowed": false,
   "validated_evidence": [
@@ -10,6 +10,7 @@
     "consistencia-respaldo-qa-20261127.json",
     "respaldo-v3-identidad-qa-20261127.json",
     "reanudacion-motor-b-qa-20261127.json",
-    "reanudacion-puente-chatgpt-qa-20261127.json"
+    "reanudacion-puente-chatgpt-qa-20261127.json",
+    "respaldo-coordinado-tablas-y-archivos-qa-20261127.json"
   ]
 }

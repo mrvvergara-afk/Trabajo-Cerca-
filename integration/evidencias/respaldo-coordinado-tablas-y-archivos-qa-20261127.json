@@ -1,0 +1,62 @@
+{
+  "candidate_commit": "6dde5ae1b219f1d3ae1daaf100a9424a429faf96",
+  "scope": "synthetic_versioned_snapshot_with_appdeploy_database_and_storage",
+  "qa": {
+    "app_id": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "tested_snapshot": "1795791494192",
+    "restored_snapshot": "1795554937385",
+    "cron": null,
+    "temporary_route_after_rollback": 404
+  },
+  "results": {
+    "first": {
+      "ok": true,
+      "replay": false,
+      "id": "proof",
+      "firstRevision": 1,
+      "currentRevision": 2,
+      "rows": 5,
+      "pages": 3,
+      "files": 1,
+      "previousBytesPreserved": true,
+      "orphanInvisible": true,
+      "corruptedReferenceRejected": true,
+      "restoredRevision": 1
+    },
+    "replay": {
+      "ok": true,
+      "replay": true,
+      "corruptedReferenceRejected": true,
+      "currentRevision": 2,
+      "files": 1,
+      "firstRevision": 1,
+      "id": "proof",
+      "orphanInvisible": true,
+      "pages": 3,
+      "previousBytesPreserved": true,
+      "restoredRevision": 1,
+      "rows": 5
+    }
+  },
+  "producer_read_only": {
+    "production_snapshot": "1795744970786",
+    "chatgpt_local_contract_tests": 33,
+    "chatgpt_last_batch": "2026-11-18",
+    "chatgpt_processed_count": 4,
+    "gemini": {
+      "observed_at": "2026-11-27T13:13:02.075Z",
+      "github_sha": "d7ba95dd2d998922dae773daf71c0f2d15c5e692",
+      "blob_matches": true,
+      "received": 7,
+      "duplicates": 6,
+      "rejected": 1,
+      "published": 0
+    }
+  },
+  "limitations": [
+    "Synthetic revisions and isolated tables and storage.",
+    "QA did not exercise every existing application writer or the live producer.",
+    "A failed pointer update can leave an unreferenced object; production needs retention and garbage-collection policy.",
+    "No production deployment or data writes."
+  ]
+}

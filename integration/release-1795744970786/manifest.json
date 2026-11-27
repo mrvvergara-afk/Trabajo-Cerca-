@@ -7,7 +7,7 @@
   "adsCommit": "3676c1e1c944fc67577a541aae6b22028859b81c",
   "qaAppId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
   "qaPreviousSnapshot": "1795554937385",
-  "releaseAuthorization": "blocked_pending_native_atomic_backup_and_independent_restore",
+  "releaseAuthorization": "blocked_pending_zero_cost_isolated_recovery_and_integrated_qa",
   "runtimeFiles": [
     {
       "path": "backend/admin-backup.ts",
@@ -18,6 +18,11 @@
       "path": "backend/chatgpt-auto-import.ts",
       "baseSha256": "3eb7aa24b3474c91c49c07351117f0af62e8825772aff0ad7d31bc52d416b7a2",
       "candidateSha256": "f277ef97563ffceddf975018a8d5c1a95b09ad2e497b415f4b9317e87884753b"
+    },
+    {
+      "path": "backend/chatgpt-direct-import.ts",
+      "baseSha256": "393a2ed25547801a83d0d921024fdc2f8c6dcdde5df8d77f68f8ba51ba1980f6",
+      "candidateSha256": "f4db37fb0cdec30654af79387e8030f0f3f92ce4e4e118b2d907de34a8bd91b8"
     },
     {
       "path": "backend/engine-telemetry.ts",
@@ -254,6 +259,12 @@
     "cron.json": "806ba9a9be4765e5fe4cec011f6ea8252f7ae18fa5addc6558d3f5233cf34ab0",
     "appdeploy.auth-login.json": "cfc42835d6f65c17d4f5c8be1c0e47a5a98494ee070b7efbbc7bff1afaa4b503"
   },
-  "qaVerifiedSnapshot": "1795804026239",
-  "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3"
+  "qaVerifiedSnapshot": null,
+  "qaPrecedingPackage": {
+    "snapshot": "1795804026239",
+    "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
+    "runtimeFiles": 46
+  },
+  "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
+  "payloadSha256": "366b0a113005ade782a6b8c08cda257fccb940d728d35f2a3f71322e88ea0df2"
 }

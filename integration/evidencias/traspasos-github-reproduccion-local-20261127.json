@@ -1,0 +1,70 @@
+{
+  "testedAt": "2026-11-27T20:00:00Z",
+  "scope": "offline_replay_real_github_blobs_memory_database",
+  "chatgpt": {
+    "indexSha": "5b71d688a327b71efe6d4f674587cef935e21f9f",
+    "batches": [
+      {
+        "id": "chatgpt-20261113-029256317af938be8b",
+        "sha": "cb2d30e061b3f20f406c51f89a4c7bda743e65dc",
+        "offers": 5
+      },
+      {
+        "id": "chatgpt-20261113-1c3068e8db51d95bb6",
+        "sha": "b5bd79a4e711182019f02d449af8407d828b3ab3",
+        "offers": 2
+      },
+      {
+        "id": "chatgpt-20261116-f915fab77a162d120d",
+        "sha": "066baa5d761bae13e2e6a707af35ecca6c5aa9e3",
+        "offers": 3
+      },
+      {
+        "id": "chatgpt-20261118-9c58b885edd5c23c79",
+        "sha": "e03003cc283ae633930da2d3e6048322025b6945",
+        "offers": 1
+      }
+    ],
+    "outcomes": {
+      "direct_record_queued_for_public_projection": 10,
+      "expired": 1
+    },
+    "locallyProjected": 10,
+    "replayedBatches": 4,
+    "duplicateRowsCreated": 0,
+    "staleOpenWithoutDeadlineRejected": true,
+    "staleOpenWithFutureDeadlineRejected": true,
+    "beforeFix": {
+      "batchId": "chatgpt-20261118-9c58b885edd5c23c79",
+      "missingReceipt": true,
+      "state": "chatgpt_import_error",
+      "http": 400
+    }
+  },
+  "gemini": {
+    "blobSha": "3e3af156b56629d125ee26c3c0622ac3b2f81ad6",
+    "previousObservedBlobSha": "d7ba95dd2d998922dae773daf71c0f2d15c5e692",
+    "primary": 55,
+    "complementaryExcluded": 137,
+    "primaryKeysAddedSincePreviousBlob": 0,
+    "primaryKeysRemovedSincePreviousBlob": 0,
+    "received": 55,
+    "receivedIntoReview": 52,
+    "rejected": 3,
+    "duplicateRowsCreatedOnReplay": 0,
+    "pendingIndependentSourceVerification": true,
+    "published": 0
+  },
+  "productionWrites": 0,
+  "appDeployCalls": 0,
+  "externalNetworkRequests": 0,
+  "gitBlobHashesVerified": true,
+  "existingRegressionTestsPassed": 41,
+  "reproduction": {
+    "runner": "integration/qa/reproducir-lotes-github.mjs",
+    "candidateRuntime": "AppDeploy source at 1795744970786 plus the verified release overlay; replace backend/chatgpt-direct-import.ts with the staged file in this branch",
+    "dbFixture": "Copy memory-appdeploy.mjs from the release verification files into the assembled backend",
+    "inputs": "Save checked-out blob bytes named chatgpt-index.json, <batch id>.json, gemini-current.json and gemini-processed.json; pass candidate path and input path to the runner",
+    "boundary": "Public feed projection runs locally with a test projector. Gemini live website verification is replaced with an explicit pending outcome."
+  }
+}

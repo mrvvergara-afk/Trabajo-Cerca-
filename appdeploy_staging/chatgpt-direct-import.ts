@@ -25,6 +25,9 @@ const REQUIRED_STRICT=['id_fuente','cargo','empresa','comunas','ubicacion_trabaj
 function territoryFromLocation(name:string,work:string){
   return worksiteMentionsCommune(work,name);
 }
+function deadlineHasPassed(deadline:string|null|undefined){
+  return Boolean(deadline&&Date.parse(deadline+'T23:59:59-03:00')<Date.now());
+}
 function parse(value:unknown,strict=false):Candidate[]|null {
   if(!Array.isArray(value)||value.length<1||value.length>15)return null;
   const result:Candidate[]=[];
@@ -39,10 +42,12 @@ function parse(value:unknown,strict=false):Candidate[]|null {
     const verifiedDay=String(x.fecha_verificacion||'');
     const evidenceAt=/^20\d{2}-\d{2}-\d{2}$/.test(verifiedDay)
       ? Date.parse(verifiedDay+'T00:00:00-03:00'):NaN;
-    const strictUndatedOpen=Boolean(strict && date===null &&
+    const strictUndatedOffer=Boolean(strict && date===null &&
       x.vigencia_fuente==='postulacion_abierta_verificada' &&
       Number.isFinite(evidenceAt) && evidenceAt<=Date.now() &&
-      Date.now()-evidenceAt<=3*86400000 &&
+      // An expired closing date is sufficient to record a terminal outcome
+      // for a historical batch. Only fresh evidence permits a new listing.
+      (Date.now()-evidenceAt<=3*86400000 || deadlineHasPassed(deadline)) &&
       typeof x.enlace_postulacion==='string' &&
       Boolean(safePublicUrl(x.enlace_postulacion)));
     const municipalOpen=(date===null &&
@@ -58,7 +63,7 @@ function parse(value:unknown,strict=false):Candidate[]|null {
       Date.parse(x.fecha_descubrimiento)<=Date.now());
     if(!/^[A-Za-z0-9_-]{4,64}$/.test(id)||title.length<5||title.length>180||company.length<2||company.length>140||
       !Array.isArray(communes)||!communes.length||communes.length>12||!communes.every(y=>typeof y==='string'&&LOCAL.has(y))||
-      (!municipalOpen && !strictUndatedOpen && (date===null || !/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date) || Number.isNaN(Date.parse(date)) || Date.parse(date+'T00:00:00-03:00')>Date.now()))||
+      (!municipalOpen && !strictUndatedOffer && (date===null || !/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date) || Number.isNaN(Date.parse(date)) || Date.parse(date+'T00:00:00-03:00')>Date.now()))||
       (deadline!==null&&(!/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(deadline)||Number.isNaN(Date.parse(deadline))))||
       !url.startsWith('https://')||url.length>700)return null;
     // A brand in the title (Forestal Mininco, Paneles Arauco) is NOT a
@@ -97,7 +102,7 @@ function parse(value:unknown,strict=false):Candidate[]|null {
         salario:x.salario as string|null,enlace_postulacion:x.enlace_postulacion as string|null,
         url_canonica:String(x.url_canonica),hash_url_sha256:String(x.hash_url_sha256),
         fecha_descubrimiento:String(x.fecha_descubrimiento)}:{}),
-      ...(strictUndatedOpen?{vigencia_fuente:'postulacion_abierta_verificada',
+      ...(strictUndatedOffer?{vigencia_fuente:'postulacion_abierta_verificada',
         fecha_verificacion:verifiedDay}:{}),...(municipalOpen?{
       municipal_open_index_url:String(x.municipal_open_index_url),application_method:'in_person_omil',
       fecha_descubrimiento:String(x.fecha_descubrimiento),fecha_publicacion_metodo:String(x.fecha_publicacion_metodo),
@@ -209,6 +214,9 @@ export async function directChatGPTImport(body:unknown){
     const social=x.social_source_account==='omilangol2026';
     const municipal=Boolean(x.municipal_open_index_url && x.fecha_publicacion===null);
     const officialUndated=x.fecha_publicacion===null && x.vigencia_fuente==='postulacion_abierta_verificada';
+    if(officialUndated&&deadlineHasPassed(x.fecha_cierre)){
+      results.push({id:x.id_fuente,status:'expired'});continue;
+    }
     const urlKey=social?'':keyUrl(x.url_original);
     const urlHash=social?'':canonicalSourceHash(x.url_original);
     const canonicalUrl=social?'':canonicalSourceUrl(x.url_original);
@@ -277,7 +285,7 @@ export async function directChatGPTImport(body:unknown){
     if(municipal && municipalProofs.get(x.id_fuente)!=='open'){
       results.push({id:x.id_fuente,status:'review_expired'});continue;
     }
-    if(x.fecha_cierre&&Date.parse(x.fecha_cierre+'T23:59:59-03:00')<Date.now()){
+    if(deadlineHasPassed(x.fecha_cierre)){
       results.push({id:x.id_fuente,status:'expired'});continue;
     }
     const id='chatgpt_'+x.id_fuente;

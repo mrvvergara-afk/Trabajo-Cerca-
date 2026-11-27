@@ -1,9 +1,14 @@
 {
   "fuente": "CMPC Cornerstone",
-  "checked_at": "2026-11-26T19:16:41.468692+00:00",
+  "checked_at": "2026-11-27T03:46:28.904005+00:00",
   "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "state": "individual_links_found",
   "individual_urls": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19487?c=cmpc",
+      "cargo": "Técnico Desarrollo - Puente Alto",
+      "evidencia_tarjeta": "Técnico Desarrollo - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n26/11/2026"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19507?c=cmpc",
       "cargo": "Supervisor/a Mantenimiento de Servicios Externos - Puente Alto",
@@ -58,16 +63,6 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
       "cargo": "JEFE/A AREA ELECTROCONTROL - Pacifico",
       "evidencia_tarjeta": "JEFE/A AREA ELECTROCONTROL - Pacifico\n\nCollipulli, Araucanía, Chile\n\n20/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19447?c=cmpc",
-      "cargo": "ANALISTA ESTUDIOS Y PROYECTOS",
-      "evidencia_tarjeta": "ANALISTA ESTUDIOS Y PROYECTOS\n\nSantiago, REGION METROPOLITANA, Chile\n\n19/11/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19444?c=cmpc",
-      "cargo": "Ingeniero Compras PL",
-      "evidencia_tarjeta": "Ingeniero Compras PL\n\nSantiago, REGION METROPOLITANA, Chile\n\n19/11/2026"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
@@ -128,13 +123,28 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19185?c=cmpc",
       "cargo": "ANALISTA GESTION CALIDAD",
       "evidencia_tarjeta": "ANALISTA GESTION CALIDAD\n\nTLAJOMULCO, JALISCO, México\n\n19/10/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19144?c=cmpc",
+      "cargo": "SUPERVISOR EMBARQUES Y PT",
+      "evidencia_tarjeta": "SUPERVISOR EMBARQUES Y PT\n\nTLAJOMULCO, JALISCO, México\n\n19/10/2026"
     }
   ],
   "errors": [],
   "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "title": "Vacantes actuales - cmpc",
-  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (27)\nMéxico (9)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (6)\nJalisco (4)\nMetropolitana (4)\nRegion Metropolitana (4)\nAraucanía (2)\nBuenos Aires (2)\nRegión De La Araucanía (2)\nBio Bio (1)\nLa Araucanía (1)\nNuevo León (1)\nPuebla (1)\nRegión De Los Ríos (1)\nCiudad\nPuente Alto (4)\nSantiago (4)\nTlajomulco (4)\nCollipulli (3)\nNacimiento (3)\nLos Angeles (2)\nOsorno (2)\nZarate (2)\nCollipullli (1)\nCoquimbo (1)\nLaja (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTemuco (1)\nValdivia (1)\nFecha colocada\nDentro de 3 días (6)\nDentro de 7 días (11)\nDentro de 15 días (21)\nDentro de 30 días (24)\nCualquier momento (43)\nUnidad de Negocio\nCMPC Celulosa (12)\nCMPC BioPackaging (11)\nSoftys (15)\nEmpresas CMPC (5)\nVacantes actuales\n\nSupervisor/a Mantenimiento de Servicios Externos - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n25/11/2026\n\nJEFE/A ÁREA ELECTROCONTROL - Laja\n\nChile\n\n25/11/2026\n\nSupervisor Servicios Generales PSF\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n25/11/2026\n\nAdministrador Zonal\n\nCoquimbo, Chile\n\n25/11/2026\n\nIngeniero Excelencia Opera",
+  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (26)\nMéxico (10)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (6)\nJalisco (5)\nMetropolitana (5)\nAraucanía (2)\nBuenos Aires (2)\nRegion Metropolitana (2)\nRegión De La Araucanía (2)\nBio Bio (1)\nLa Araucanía (1)\nNuevo León (1)\nPuebla (1)\nRegión De Los Ríos (1)\nCiudad\nPuente Alto (5)\nTlajomulco (5)\nCollipulli (3)\nNacimiento (3)\nLos Angeles (2)\nOsorno (2)\nSantiago (2)\nZarate (2)\nCollipullli (1)\nCoquimbo (1)\nLaja (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTemuco (1)\nValdivia (1)\nFecha colocada\nDentro de 3 días (5)\nDentro de 7 días (10)\nDentro de 15 días (16)\nDentro de 30 días (22)\nCualquier momento (43)\nUnidad de Negocio\nCMPC Celulosa (12)\nCMPC BioPackaging (13)\nSoftys (15)\nEmpresas CMPC (3)\nVacantes actuales\n\nTécnico Desarrollo - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n26/11/2026\n\nSupervisor/a Mantenimiento de Servicios Externos - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n25/11/2026\n\nJEFE/A ÁREA ELECTROCONTROL - Laja\n\nChile\n\n25/11/2026\n\nSupervisor Servicios Generales PSF\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n25/11/",
   "individual_details": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19487?c=cmpc",
+      "cargo": "Técnico Desarrollo - Puente Alto",
+      "evidencia_tarjeta": "Técnico Desarrollo - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n26/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nTécnico Desarrollo - Puente Alto\nPuente Alto, Metropolitana, Chile\n|\nreq19487\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nEjecutar la preparación de muestras de productos solicitadas por los clientes y realizar ensayos de laboratorio. Cumplir con normativas y estándares de calidad establecidos por la organización.\nDar soporte al equipo de Desarrollo en el análisis de los ensayos de laboratorio.\n\nTareas SALA MUESTRAS:\n1. Realizar la recepción, inspección e ingreso de placas a la bodega.\n2. Ejecutar la operación de la máquina de corte en sala de muestras y realizar terminaciones en muestras confeccionadas para clientes, esto incluye: revisión, limpieza, pegado y rotulado según definición.\n3. Preparar y Coordinar el despacho de muestras de productos a clientes externos e internos, revisando que toda la información cumpla con lo definido en la OT.\n4. Realizar mantención básica a “Plotter” de corte\nTareas LABORATORIO:\n1. Realizar análisis y ensayos de laboratorio a papeles, cartones y cajas según necesidad, y reportar los mismos.\n2. Brindar soporte al equipo de Diseño Estructural en la realización y análisis de los ensayos de laboratorio.\n\nFormación: Enseñanza Media Completa (excluyente)\nConocimiento específico: Conocimiento en Cartón corrugado\nExperiencia: Experiencia comprobable en plantas industriales de cartón y papel (packaging)\nComputación: Conocimiento de Microsoft Office (Excel y Word) Nivel Usuario\n\nContrato: Plazo fijo 3 meses y luego indefinido según desempeño.\nUbicación: Planta Papeles Cordillera, Puente Alto.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2652,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-27T03:46:39.642492+00:00"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19507?c=cmpc",
       "cargo": "Supervisor/a Mantenimiento de Servicios Externos - Puente Alto",
@@ -143,7 +153,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3458,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:16:51.096977+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:40.926535+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19470?c=cmpc",
@@ -153,7 +163,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3657,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:16:53.068795+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:42.205514+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19437?c=cmpc",
@@ -163,7 +173,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2595,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:16:55.129069+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:43.344857+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
@@ -173,7 +183,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2306,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:16:57.053477+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:44.474742+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19478?c=cmpc",
@@ -183,7 +193,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5222,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:16:59.147279+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:45.555666+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19455?c=cmpc",
@@ -193,7 +203,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4599,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:00.897080+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:46.781928+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19462?c=cmpc",
@@ -203,7 +213,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4791,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:02.808574+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:48.001749+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19450?c=cmpc",
@@ -213,7 +223,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2977,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:04.533405+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:49.240896+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19359?c=cmpc",
@@ -223,7 +233,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2159,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:06.308805+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:50.348674+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19452?c=cmpc",
@@ -233,7 +243,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5248,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:08.300499+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:51.501752+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
@@ -243,27 +253,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3596,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:10.009286+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19447?c=cmpc",
-      "cargo": "ANALISTA ESTUDIOS Y PROYECTOS",
-      "evidencia_tarjeta": "ANALISTA ESTUDIOS Y PROYECTOS\n\nSantiago, REGION METROPOLITANA, Chile\n\n19/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nANALISTA ESTUDIOS Y PROYECTOS\nSantiago, REGION METROPOLITANA, Chile\n|\nreq19447\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nBrindar soporte técnico y analítico especializado en la evaluación tributaria y financiera de proyectos de\ninversión, nuevos negocios y M&A. Su misión es ejecutar los modelos de impacto, investigar la normativa\naplicable, y preparar la documentación necesaria para asegurar la viabilidad, optimización y correcto\ncumplimiento de las estrategias fiscales de los proyectos. Garantiza el cumplimiento de la política fiscal de\nCMPC y las normas financieras en la evaluación y ciclo de vida de los proyectos.\n\n\n\n\nEjecutar y mantener los modelos financieros y tributarios para cuantificar el impacto\nde nuevas normas, interpretaciones y estructuras en los flujos de caja y la\nrentabilidad de los proyectos de inversión y M&A.\nInvestigar y analizar la normativa fiscal y jurisprudencia (local e internacional)\naplicable a las estructuras de los proyectos. Prepara la documentación y soportes\nnecesarios para procesos de Due Diligence y cumplimiento. Responsable de\nmantener información financiera y tributaria al día.\nRecopilar, organizar y validar los datos transaccionales y financieros de los\nproyectos. Preparación de determinaciones fiscales, balances proforma, registros\ncontables relacionados con los proyectos.\nGestionar y asegurar la ejecución de trámites y actualización ante el SII u otros\norganismos reguladores relacionados con las estructuras fiscales de los proyectos.\n\nFormación: Contador Auditor, Contador Público Auditor, Ingeniero Comercial o carrera a fin con especialización en tributación y/o financiera.\n\nExperiencia: Entre 3 y 4 años de experiencia \n\nHabilidades:  Capacidad analítica, pensamiento estratégico, orientación a resultados y ética profesional.\nProactivo, ordenado, demuestra capacidad para trabajar en equipo. Administrar eficientemente los plazos de\nentrega tanto propios como del equipo. Habilidad para estructurar actividades, asignar recursos y definir\ncronogramas realistas de sus propias tareas. Autonomía para organizar su trabajo, seleccionar las\nfuentes de información y definir la metodología de modelamiento y análisis de datos\n\nConocimientos técnicos:\n\nPosee conocimientos contables tributarios y financieros que permitan asegurar la calidad técnica de\nlos entregables. Demostrar conocimientos contables y tributarios, siendo capaz de efectuar análisis\nconsistentes respecto de esta materia,\nEjecuta las actividades necesarias para efectos financieros y tributarios en el ciclo de vida de los\nproyectos, asegurando el cumplimiento de las leyes tributarias y reglamentos y las normas financieras\ny su correcta presentación.\nSolidos conocimientos tributarios y financieros en procesos de reorganización. Determinar\nadecuadamente bases imponibles, impuestos y efectos financieros vinculados a procesos de\nrestructuraciones sociales, enajenaciones de inversiones, venta de activos entre otros.\nDebe ser capaz de estructurar actividades y definir cronogramas realistas, permitiendo que todas las\ntareas se ejecuten según lo planeado.\nConoce de normas de tributación nacional e internacional en reorganizaciones y normas de precios\nde trasferencia.\nConocimiento en modelamiento y análisis cuantitativo. Asistir en la integración de tecnología para la\nrecopilación, organización, análisis y visibilidad de datos.\nPosee conocimiento y uso intermedio de herramientas de Office, ERP (SAP), Power BI, entre otros.\nMantiene actualización de jurisprudencia y normas, levantando cualquier situación atingente a los\nproyectos en curso. Identificando oportunidades de negocios y/o gestionando contingencias que se\nderivan de los cambios normativos.\nConoce de los diferen",
-      "ficha_accessible": true,
-      "ficha_content_length": 5103,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:11.726824+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19444?c=cmpc",
-      "cargo": "Ingeniero Compras PL",
-      "evidencia_tarjeta": "Ingeniero Compras PL\n\nSantiago, REGION METROPOLITANA, Chile\n\n19/11/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nIngeniero Compras PL\nSantiago, REGION METROPOLITANA, Chile\n|\nreq19444\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nEjecutar procesos de compra, licitación y negociación asociados a categorías estratégicas, asegurando competitividad, continuidad operacional, cumplimiento normativo y generación de valor para CMPC. Colaborar activamente con el equipo de Procurement en el análisis de mercado, evaluación de oportunidades, gestión de proveedores y construcción de estrategias de abastecimiento que apoyen los objetivos del negocio.\n\nEn este rol tendrás la oportunidad de       \n\nLiderar procesos de abastecimiento: gestionar procesos de sourcing desde el diseño de la estrategia, levantamiento de información hasta la adjudicación y formalización, asegurando competitividad, trazabilidad y cumplimiento de políticas internas.\nApoyar la gestión de categorías y subcategorías: analizar gasto, demanda, proveedores, contratos y oportunidades de mejora dentro del scope asignado, aportando información clave para la toma de decisiones.\nParticipar en el diseño de estrategias de abastecimiento: contribuir con análisis, información de mercado, evaluación de alternativas y recomendaciones que permitan construir soluciones de valor para el negocio.\nAnalizar ofertas y mercados proveedores: realizar comparativos técnico-económicos, análisis de costos, condiciones comerciales, riesgos y capacidades de proveedores para soportar procesos competitivos.\nConducir negociaciones asignadas: preparar y ejecutar negociaciones con proveedores, buscando optimizar precio, calidad, plazos, continuidad y condiciones contractuales.\nRelacionarse con clientes internos y proveedores: coordinar requerimientos, resolver consultas, levantar oportunidades y asegurar una comunicación clara durante el proceso de compra.\nUtilizar herramientas digitales y datos: usar SAP/Ariba, Excel, bases de datos, herramientas de análisis e inteligencia artificial para mejorar la eficiencia, trazabilidad y calidad de los procesos de abastecimiento.\nAsegurar compliance y disciplina de proceso: ejecutar procesos transparentes, auditables y alineados a políticas corporativas, estándares éticos y criterios de sustentabilidad.\n\n Lo que necesitas para desempeñar este rol \n\nFormación: Ingeniería Comercial, Ingeniería Civil Industrial, Administración, Supply Chain, Logística o carrera afín.\nExperiencia: De 2 a 4 años de experiencia en Procurement, Compras Estratégicas, Strategic Sourcing, Supply Chain, gestión de proveedores, análisis de costos o abastecimiento corporativo. Deseable experiencia en grandes industrias, (industria forestal, celulosa y papel, minería, energía, manufactura, logística,étc).\nConocimiento específico: Experiencia en licitaciones, análisis de ofertas, negociación, adjudicación, emisión de órdenes de compra y seguimiento de compromisos comerciales, análisis de categorías, gasto, demanda, proveedores, contratos y oportunidades de mejora.\nSoftwares: Conocimiento en Excel Intermedio Avanzado (excluyente). Deseable conocimiento intermedio en SAP MM y Ariba.\nIdiomas: Deseable conocimiento en Inglés o Portugués. \n\n Condiciones del cargo                                   \n\nContrato: Indefinido.\n\nUbicación: Santiago.\n\nModalidad: Híbrida 4x1 (4 días presencial, 1 día Home Office)\n\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te",
-      "ficha_accessible": true,
-      "ficha_content_length": 4427,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:13.431838+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:52.667313+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
@@ -273,7 +263,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3990,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:15.258226+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:53.861066+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
@@ -283,7 +273,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2714,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:17.058844+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:55.182474+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
@@ -293,7 +283,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2162,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:18.779392+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:56.586257+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
@@ -303,7 +293,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3396,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:20.721006+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:57.725252+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19334?c=cmpc",
@@ -313,7 +303,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2362,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:22.388393+00:00"
+      "ficha_checked_at": "2026-11-27T03:46:58.810537+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
@@ -323,7 +313,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3272,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:24.185823+00:00"
+      "ficha_checked_at": "2026-11-27T03:47:00.114718+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19296?c=cmpc",
@@ -333,7 +323,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3991,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:26.001978+00:00"
+      "ficha_checked_at": "2026-11-27T03:47:02.361257+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
@@ -343,7 +333,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2605,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:27.714453+00:00"
+      "ficha_checked_at": "2026-11-27T03:47:03.534099+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
@@ -353,7 +343,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2620,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:29.461875+00:00"
+      "ficha_checked_at": "2026-11-27T03:47:04.677487+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
@@ -363,7 +353,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3974,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:31.189919+00:00"
+      "ficha_checked_at": "2026-11-27T03:47:05.868405+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
@@ -373,7 +363,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3790,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:33.021934+00:00"
+      "ficha_checked_at": "2026-11-27T03:47:07.026915+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19185?c=cmpc",
@@ -383,7 +373,17 @@
       "ficha_accessible": true,
       "ficha_content_length": 2076,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-26T19:17:34.630850+00:00"
+      "ficha_checked_at": "2026-11-27T03:47:08.100758+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19144?c=cmpc",
+      "cargo": "SUPERVISOR EMBARQUES Y PT",
+      "evidencia_tarjeta": "SUPERVISOR EMBARQUES Y PT\n\nTLAJOMULCO, JALISCO, México\n\n19/10/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nSUPERVISOR EMBARQUES Y PT\nTLAJOMULCO, JALISCO, México\n|\nreq19144\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAsegurar que las entregas de embarques nacionales y de exportación lleguen al cliente y/o centros de distribución en tiempo y forma, optimizando los procesos logísticos y reduciendo costos adicionales. Supervisar y coordinar al personal del área de embarques, implementar proyectos de mejora continua, y garantizar el cumplimiento de estándares de calidad para satisfacer las necesidades y expectativas de los clientes, así como mantener el almacén de producto terminado.\n\n\n\n\nGestión de ventas y costos de transporte, optimización de fletes, administración de unidades para embarques, y desarrollo de estrategias alineadas para la planta de Guadalajara.\nCubicaje de pedidos de venta, tarifario de rutas, facturación, gestión de pagos, obtención de POD’s del cliente\nGestión del almacén de producto terminado.\n\nFormación: Licenciatura en Ingeniería Industrial, Tráfico o áreas afines\n\nConocimiento específico:\n\n●Logística y Transporte\n●Gestión de Inventarios (indispensable)\n●Costos\n\nExperiencia:\n\n●Mínimo 5 años en roles similares\n\nComputación:\n\n●Office intermedio indispensable (Excel avanzado, Word, PowerPoint)\n●SAP (indispensable SAP R/3)\n●Power BI (deseable)\n\n\n\n\nContrato: indefinido\nUbicación: Tlajomulco de zuñiga, Jalisco.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2449,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-27T03:47:09.195568+00:00"
     }
   ]
 }

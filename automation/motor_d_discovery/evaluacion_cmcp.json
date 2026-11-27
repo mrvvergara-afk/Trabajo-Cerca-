@@ -75,6 +75,14 @@
   ],
   "pending": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19487?c=cmpc",
+      "title": "Técnico Desarrollo - Puente Alto",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19507?c=cmpc",
       "title": "Supervisor/a Mantenimiento de Servicios Externos - Puente Alto",
       "workplaces": [],
@@ -147,22 +155,6 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19447?c=cmpc",
-      "title": "ANALISTA ESTUDIOS Y PROYECTOS",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19444?c=cmpc",
-      "title": "Ingeniero Compras PL",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
       "title": "Práctica Administración RRHH - Los Ángeles",
       "workplaces": [],
@@ -221,6 +213,14 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19185?c=cmpc",
       "title": "ANALISTA GESTION CALIDAD",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19144?c=cmpc",
+      "title": "SUPERVISOR EMBARQUES Y PT",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"

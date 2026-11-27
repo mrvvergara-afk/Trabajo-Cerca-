@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T12:39:56.144502+00:00",
-  "items_total": 10,
+  "updated_at": "2026-11-27T22:09:26.736987+00:00",
+  "items_total": 11,
   "automatically_published": 0,
   "items": [
     {
@@ -13,7 +13,7 @@
       "date_source_hint": "2026-11-02 20:55:46",
       "deadline_hint": "2027-01-16T20:55:46",
       "first_discovered_at": "2026-11-12T13:39:48.295766+00:00",
-      "last_checked_at": "2026-11-27T12:39:56.144502+00:00",
+      "last_checked_at": "2026-11-27T22:09:26.736987+00:00",
       "status": "recheck_original",
       "publication_eligible": false,
       "date_source_verified": false,
@@ -23,6 +23,38 @@
       "catalog_work_communes": [
         "Ercilla"
       ]
+    },
+    {
+      "id": "a_402b80fa0d19da47c1a8",
+      "url": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Victoria",
+      "title_hint": "Supervisor Obra Civil - Santiago | Chiletrabajos",
+      "date_source_hint": "2026-11-22 22:55:57",
+      "deadline_hint": "2027-02-05T22:55:57",
+      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
+      "last_checked_at": "2026-11-27T22:09:26.736987+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "explicit_worksite_in_original_description"
+    },
+    {
+      "id": "a_c98032a7a9b174cf8b72",
+      "url": "https://www.chiletrabajos.cl/trabajo/rigger-angol-3940244",
+      "source": "Motor A Chiletrabajos",
+      "work_commune": "Angol",
+      "title_hint": "Rigger - Angol - Angol | Chiletrabajos",
+      "date_source_hint": "2026-11-27 15:30:09",
+      "deadline_hint": "2027-02-10T15:30:09",
+      "first_discovered_at": "2026-11-27T22:09:26.736987+00:00",
+      "last_checked_at": "2026-11-27T22:09:26.736987+00:00",
+      "status": "recheck_original",
+      "publication_eligible": false,
+      "date_source_verified": false,
+      "work_commune_finally_verified": false,
+      "review_reason": "jobposting_structured_location"
     },
     {
       "id": "a_b5ba3957f4525c1661b0",
@@ -133,22 +165,6 @@
       "review_reason": "jobposting_structured_location"
     },
     {
-      "id": "a_402b80fa0d19da47c1a8",
-      "url": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Victoria",
-      "title_hint": "Supervisor Obra Civil - Santiago | Chiletrabajos",
-      "date_source_hint": "2026-11-22 22:55:57",
-      "deadline_hint": "2027-02-05T22:55:57",
-      "first_discovered_at": "2026-11-24T01:00:48.123256+00:00",
-      "last_checked_at": "2026-11-26T00:30:55.357476+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
       "id": "a_e84b1a85c584ecf1f1c0",
       "url": "https://www.chiletrabajos.cl/trabajo/prevencionista-3935615",
       "source": "Motor A Chiletrabajos",
@@ -186,12 +202,12 @@
     }
   ],
   "metrics": {
-    "added": 16,
-    "updated": 1,
+    "added": 14,
+    "updated": 2,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 16,
+    "published_reconciled": 13,
     "territory_mismatch": 5
   }
 }

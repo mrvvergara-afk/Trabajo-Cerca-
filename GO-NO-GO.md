@@ -1,6 +1,6 @@
 # Estado de la entrega integrada
 
-El paquete fue preparado sobre el código oficial `1795744970786`. Los controles del despliegue siguen cerrados hasta comprobar el respaldo nativo consistente y su restauración independiente.
+La candidata quedó compilada y validada en QA contra la versión oficial `1795744970786`. La publicación en producción queda pendiente de una restauración independiente verificada y de un procedimiento de costo total cero.
 
 | Control | Resultado |
 |---|---|
@@ -11,3 +11,9 @@ El paquete fue preparado sobre el código oficial `1795744970786`. Los controles
 | Recuperación | Cinco registros y un archivo de prueba recuperados con el SDK real. Pendientes la copia nativa actual, su restauración independiente y el panel autenticado con datos reales. |
 | Publicidad | Seis láminas observadas en la aplicación oficial. Algunos medios faltaban en el almacenamiento aislado de QA. |
 | Producción | Versión publicada `1795744970786`. El paquete y la reversión están en [la entrega](integration/release-1795744970786/README.md). |
+
+## Condiciones pendientes para producción
+
+- AppDeploy conserva un respaldo consistente de producción del 26 de noviembre (`1795664276412`) y el respaldo del procedimiento híbrido del 21 de noviembre (`1795209664148`). La copia consistente del laboratorio (`1795701319580`) pertenece a ese entorno.
+- El procedimiento nativo documentado por soporte restaura datos en la aplicación de origen. El ZIP es de custodia. Sigue pendiente una alternativa que permita probar recuperación en una instancia independiente y confirme costo total cero.
+- La consulta al proveedor se envió el 27 de noviembre. Al revisar el hilo solo figuraba el envío. La etapa de producción espera una vía verificable que cumpla ambas condiciones.

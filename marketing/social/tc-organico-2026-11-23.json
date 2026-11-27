@@ -4,12 +4,27 @@
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "target": "prod",
   "brandId": "7187503",
-  "state": "reserved",
+  "state": "scheduled",
   "publicationDate": "2026-11-27T19:00:00-03:00",
   "networks": [
     "facebook",
     "instagram"
   ],
   "manifestRevision": "9983f5b5f57098ae4902ac4933f890e633ed8a753741578cf5e10e88b56029c2",
-  "reservedAt": "2026-11-27T14:28:08.583Z"
+  "reservedAt": "2026-11-27T14:28:08.583Z",
+  "metricoolPostId": 444451140,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7187503&openWithPostUuid=7186747588499949783",
+  "providers": [
+    {
+      "network": "facebook",
+      "status": "PENDING"
+    },
+    {
+      "network": "instagram",
+      "status": "PENDING"
+    }
+  ],
+  "verifiedAt": "2026-11-27T14:29:00.525Z",
+  "mediaSha256": "a0ce7868c2af4f0e1d7c39b4fab33e30f157d99f730eb4b028176561adffde0d",
+  "mediaTransport": "verified_local_jpeg_upload"
 }

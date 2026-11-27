@@ -7,7 +7,7 @@ La candidata quedó compilada y validada en QA contra la versión oficial `17957
 | Integración y compilación | 46 archivos en el paquete. Vite 8 y compilación AppDeploy en QA. |
 | B/C y telemetría | OCR de un documento de Negrete, recuperación de rechazos del verificador en C e historial móvil de B/C. |
 | Publicación | Ficha real de Angol nueva en QA, confirmada por la API y sin duplicado al repetir. La entrada al Motor C fue controlada. |
-| Importadores | Cambio de recibos ChatGPT cubierto por pruebas. El recorrido autónomo con un lote real nuevo de ChatGPT y Gemini queda pendiente de verificación. |
+| Importadores | Reproducción local con lotes reales. ChatGPT recorrió 4 lotes con 11 registros, dio salida terminal a 1 oferta vencida y proyectó 10 en el catálogo local. Gemini recibió 55 registros principales, admitió 52 a revisión y excluyó los 137 complementarios. La corrección de recuperación se guardó en una rama de trabajo. Queda pendiente verificarla en el runtime con un lote nuevo de cada productor. [Evidencia](https://github.com/mrvvergara-afk/Trabajo-Cerca-/blob/fix/chatgpt-reanudar-lote-vencido-20261127/integration/evidencias/traspasos-github-reproduccion-local-20261127.json) |
 | Recuperación | Cinco registros y un archivo de prueba recuperados con el SDK real. Pendientes la copia nativa actual, su restauración independiente y el panel autenticado con datos reales. |
 | Publicidad | Seis láminas observadas en la aplicación oficial. Algunos medios faltaban en el almacenamiento aislado de QA. |
 | Producción | Versión publicada `1795744970786`. El paquete y la reversión están en [la entrega](integration/release-1795744970786/README.md). |

@@ -2,13 +2,13 @@
   "schema_version": 1,
   "source": "complete_appdeploy_public_feed",
   "scope": "url_or_stable_job_id_checked; no_private_receipt_claim",
-  "checked_at": "2026-11-27T14:02:21.005569+00:00",
+  "checked_at": "2026-11-27T22:47:30.915261+00:00",
   "feed_complete": true,
-  "feed_rows": 294,
-  "indexed_batches": 35,
+  "feed_rows": 296,
+  "indexed_batches": 37,
   "quarantined_batches": 2,
-  "distinct_nonquarantined_offers": 68,
-  "source_confirmed": 62,
+  "distinct_nonquarantined_offers": 70,
+  "source_confirmed": 64,
   "semantic_only": 0,
   "not_found": 5,
   "expired_not_expected": 1,
@@ -52,7 +52,7 @@
     }
   ],
   "latest_batch": {
-    "batch_id": "motor-d-20261125-a0184e437e0454d8e4",
+    "batch_id": "motor-d-20261127-2b72bad7146268ca0b",
     "historically_quarantined": false,
     "offer_count": 1,
     "source_confirmed": 1,
@@ -369,6 +369,24 @@
     },
     {
       "batch_id": "motor-d-20261125-a0184e437e0454d8e4",
+      "historically_quarantined": false,
+      "offer_count": 1,
+      "source_confirmed": 1,
+      "semantic_only": 0,
+      "not_found": 0,
+      "expired_not_expected": 0
+    },
+    {
+      "batch_id": "motor-d-20261127-65995e4e00dc34dcee",
+      "historically_quarantined": false,
+      "offer_count": 1,
+      "source_confirmed": 1,
+      "semantic_only": 0,
+      "not_found": 0,
+      "expired_not_expected": 0
+    },
+    {
+      "batch_id": "motor-d-20261127-2b72bad7146268ca0b",
       "historically_quarantined": false,
       "offer_count": 1,
       "source_confirmed": 1,

@@ -248,6 +248,11 @@
       "path": "src/executive-metrics.ts",
       "baseSha256": "48c27004ea21ea7f035c04a9a68bd9cf6799b759856b2ad80550d47c251dd2a9",
       "candidateSha256": "12f101246b613c053a35c47bbe22c2a828c6eddcd87e530050d414daa287b17e"
+    },
+    {
+      "path": "src/house-autonomy.tsx",
+      "baseSha256": "b2518c733aa4391464854fbfba79462306ca6b3bbc96fd0763152ae95ad3f495",
+      "candidateSha256": "8e812266b5e87d05ba038b04532ce2587ae22740e3954f53571fdc937d4745a5"
     }
   ],
   "verifiedPreservedSha256": {
@@ -256,7 +261,6 @@
     "backend/house-autonomy.ts": "5d96e4b45b8b5123e252f50da5b54f20f3278b2d35b28fa1235aa60c7e8868cf",
     "backend/house-metricool.ts": "946855f5aceebca8e40ec716907e26ecba0c45fd3a20aa66134dce044bb10494",
     "src/house-advertising.tsx": "3a9903454f2611089b68de4868eb4d938895cc8c4f62ce674ef4877f40b42ba1",
-    "src/house-autonomy.tsx": "b2518c733aa4391464854fbfba79462306ca6b3bbc96fd0763152ae95ad3f495",
     "src/house-campaign-polish.css": "89ee65e93fd973c845193f37c5fb0d630e502a3b9104dc04af4c19194bd26801",
     "src/advertising-surfaces.tsx": "045d2484cc7d41e85ff1d299f1edf5a6b7ec3fabfccbc5d87b9e1d63a7dedde1",
     "marketing/bank/carousel-squares.json": "10fa216c0aaa6672780e111a539a73e666afa9d10d302612b645fba286a2c21e",
@@ -271,5 +275,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "ea9a2e865e8ded6128e6b8e6db00e4aceaad0bacf18f7cff71a79168d2772488"
+  "payloadSha256": "5dc2c09cc138eee0bc9b5d539dca46f1fb498b6c9c0c2d15b2a2c245f99f55b0"
 }

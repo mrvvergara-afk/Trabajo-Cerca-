@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 48,
-  "payloadSha256": "ea9a2e865e8ded6128e6b8e6db00e4aceaad0bacf18f7cff71a79168d2772488",
+  "runtimeFiles": 49,
+  "payloadSha256": "5dc2c09cc138eee0bc9b5d539dca46f1fb498b6c9c0c2d15b2a2c245f99f55b0",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -13,7 +13,8 @@
   "appDeployCalls": 0,
   "differencesFromPreviouslyTestedPayload": [
     "backend/chatgpt-direct-import.ts",
-    "src/App.tsx"
+    "src/App.tsx",
+    "src/house-autonomy.tsx"
   ],
   "local": {
     "viteBuild": "passed",
@@ -90,7 +91,321 @@
       "excludesComplementaryAndUnverifiedFromPrimaryTotal": true,
       "administrationHiddenForGuest": true,
       "noHorizontalOverflow": true
-    }
+    },
+    "advertising": {
+      "scope": "chromium_simulated_services_verified_bank_assets",
+      "script": "verification/tests/browser/advertising.mjs",
+      "assetHashesVerified": 24,
+      "editionsChecked": 2,
+      "slidesPerEdition": 6,
+      "viewportWidthsPx": [
+        320,
+        375,
+        430,
+        1440
+      ],
+      "carouselSurfaces": [
+        "search",
+        "featured"
+      ],
+      "editorialThumbnailSurface": "form",
+      "imageSizesChecked": [
+        "840x840",
+        "840x560"
+      ],
+      "nonOverlappingGalleryControls": true,
+      "noHorizontalOverflow": true,
+      "simulatedImage404RecoversOtherApprovedPhoto": true,
+      "bothSourcesFailRevertsToLocalIllustration": true,
+      "commercialPriorityAndExpiration": [
+        "paid",
+        "free",
+        "house"
+      ],
+      "layoutRuns": [
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 320,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              193,
+              207,
+              201,
+              215
+            ],
+            "destacada": [
+              186
+            ],
+            "formulario": [
+              126
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 375,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              219
+            ],
+            "destacada": [
+              213
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 430,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              246
+            ],
+            "destacada": [
+              239
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 1440,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              609
+            ],
+            "destacada": [
+              481
+            ],
+            "formulario": [
+              93
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 320,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              193,
+              207,
+              201,
+              215
+            ],
+            "destacada": [
+              186
+            ],
+            "formulario": [
+              126
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 375,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              219
+            ],
+            "destacada": [
+              213
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 430,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              246
+            ],
+            "destacada": [
+              239
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-laboratorio-3ojgro",
+          "width": 1440,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              609
+            ],
+            "destacada": [
+              481
+            ],
+            "formulario": [
+              93
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 320,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              152,
+              207,
+              201,
+              215
+            ],
+            "destacada": [
+              148,
+              179,
+              184
+            ],
+            "formulario": [
+              126
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 375,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              171,
+              186,
+              194
+            ],
+            "destacada": [
+              159,
+              165
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 430,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              189,
+              194
+            ],
+            "destacada": [
+              177
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 1440,
+          "edition": 0,
+          "heightsByPlacement": {
+            "buscador": [
+              432
+            ],
+            "destacada": [
+              390
+            ],
+            "formulario": [
+              93
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 320,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              152,
+              207,
+              201,
+              215
+            ],
+            "destacada": [
+              148,
+              179,
+              184
+            ],
+            "formulario": [
+              126
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 375,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              171,
+              186,
+              194
+            ],
+            "destacada": [
+              159,
+              165
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 430,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              189,
+              194
+            ],
+            "destacada": [
+              177
+            ],
+            "formulario": [
+              113
+            ]
+          }
+        },
+        {
+          "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+          "width": 1440,
+          "edition": 1,
+          "heightsByPlacement": {
+            "buscador": [
+              432
+            ],
+            "destacada": [
+              390
+            ],
+            "formulario": [
+              93
+            ]
+          }
+        }
+      ]
+    },
+    "pwaBrandContract": "passed"
   },
   "pending": [
     "independent_zero_cost_data_recovery",

@@ -26,7 +26,13 @@ def source_bytes(root, entry):
 
 
 def derivative(image, directory, size, image_format):
-    canvas = ImageOps.fit(image, size, method=Image.Resampling.LANCZOS)
+    # Web cards must retain every edge of the authorized original. Pad only
+    # when aspect ratios differ; keep the established social format unchanged.
+    canvas = (
+        ImageOps.pad(image, size, method=Image.Resampling.LANCZOS, color=(18, 61, 48))
+        if image_format == "WEBP"
+        else ImageOps.fit(image, size, method=Image.Resampling.LANCZOS)
+    )
     extension = "webp" if image_format == "WEBP" else "jpg"
     for quality in range(86, 59, -4):
         result = io.BytesIO()

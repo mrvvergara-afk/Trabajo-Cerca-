@@ -1,0 +1,46 @@
+{
+  "scope": "code_and_read_only_production_comparison",
+  "compared_snapshots": [
+    "1795726351197",
+    "1795744970786"
+  ],
+  "files": [
+    {
+      "path": "cron.json",
+      "unchanged": true
+    },
+    {
+      "path": "backend/fast-bc-pipeline.ts",
+      "unchanged": true
+    },
+    {
+      "path": "backend/shadow-pdf.ts",
+      "unchanged": true
+    },
+    {
+      "path": "backend/fast-bc-html.ts",
+      "unchanged": true
+    },
+    {
+      "path": "backend/free-public-sources.ts",
+      "unchanged": true
+    }
+  ],
+  "candidate": {
+    "base": "63362f88f7c775dc9f358b77224ba1b8ae8d04e4",
+    "fix": "Preservar firstSeenAt al reservar o recuperar un documento",
+    "tests": {
+      "document": 6,
+      "pipeline": 8,
+      "idle_assist": 5
+    },
+    "sdk": "fixture",
+    "regression_failed_before_fix": true
+  },
+  "production_mutated": false,
+  "remaining": [
+    "full_base_and_dependency_reconciliation",
+    "sha_verified_transfer",
+    "isolated_data_restore"
+  ]
+}

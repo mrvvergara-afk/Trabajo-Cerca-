@@ -18,7 +18,7 @@ function fixture(inputs,options={}){
  const reads=[];
  const open=async url=>{
   reads.push(url);
-  return options.open?.(url)??{url,response:new Response(Buffer.from('sample'),{headers:{'Content-Type':'image/png'}})};
+  return (await options.open?.(url))??{url,response:new Response(Buffer.from('sample'),{headers:{'Content-Type':'image/png'}})};
  };
  const work=async()=>({items:inputs,rawDocumentInputs:options.unknown?null:inputs.length,
   eligibleDocuments:options.unknown?null:inputs.length,excludedDocumentInputs:options.unknown?null:0});
@@ -91,4 +91,21 @@ test('a missing A checkpoint reports an unknown inventory',async()=>{
  assert.equal(r.totalDocuments,null);
  assert.equal(r.availableDocumentInputs,null);
  assert.equal(r.pendingOtherDocumentInputs,null);
+});
+
+test('a reclaimed lease preserves the original observation time',async()=>{
+ const source=input('reclaim.png');
+ let observed;
+ const f=fixture([source],{open:async url=>{
+  [observed]=await f.db.get(attemptTable,[id],{consistent:true});
+  return {url,error:'source_timeout'};
+ }});
+ const id='pdf-'+createHash('sha256').update(source.url).digest('hex').slice(0,42);
+ const firstSeenAt=Date.now()-120_000;
+ await f.db.tx.add(attemptTable,[{id,token:'original',attempt:1,due:0,state:'leased',firstSeenAt}]);
+ await f.run();
+ const [attempt]=await f.db.get(attemptTable,[id],{consistent:true});
+ assert.equal(observed.firstSeenAt,firstSeenAt);
+ assert.equal(attempt.firstSeenAt,firstSeenAt);
+ assert.equal(attempt.state,'retry');
 });

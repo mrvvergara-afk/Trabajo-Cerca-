@@ -58,7 +58,7 @@ export async function shadowPdfBatch(){
   const {id,url}=source;
   const attempt=(old?.attempt??0)+1,token=randomUUID();
   const firstSeenAt=old?.firstSeenAt??started;
-  const lease={id,token,attempt,due:started+180_000,state:'leased'};
+  const lease={id,token,attempt,firstSeenAt,due:started+180_000,state:'leased'};
   const [claimed]=old?await db.tx.update(ATTEMPTS,[{id,if:{token:old.token},record:lease}]):await db.tx.add(ATTEMPTS,[lease]);
   if(!claimed)continue;
   let item:Row={id,url,source:source.source,publisherPage:source.publisher_page,

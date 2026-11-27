@@ -10,7 +10,7 @@ const hooks = registerHooks({ resolve(specifier, context, next) {
 const { advanceBackup, backupFailure, checkBackupRun, newBackupRun } = await import('./backup-runner.ts');
 const { rehearseRestore } = await import('./restore-rehearsal.ts');
 test.after(() => hooks.deregister());
-const revision = 'application-backup-v3';
+const revision = 'application-backup-v4';
 const password = 'synthetic-fixture-only';
 const table = 'fast_bc_documents_v1';
 const rows = [
@@ -31,7 +31,7 @@ test('a source version change aborts pagination without advancing the encrypted 
   let run = await advanceBackup(await newBackupRun(password), reader);
   run = await advanceBackup(run, reader);
   assert.equal(run.cursor, 'second');
-  await assert.rejects(advanceBackup(run, body => ({ ...reader(body), revision: undefined })), cause => {
+  await assert.rejects(advanceBackup(run, body => ({ ...reader(body), revision: 'application-backup-v3' })), cause => {
     assert.equal(backupFailure(cause).resumable, false);
     return cause.message === 'backup_revision_changed';
   });

@@ -1,6 +1,6 @@
 import { db, storage, json, error, isAppDatabaseError, type RouterContext } from '@appdeploy/sdk';
 
-const BACKUP_REVISION = 'application-backup-v3';
+const BACKUP_REVISION = 'application-backup-v4';
 
 export const BACKUP_TABLES = [
   'radar_admin_verification_queue',
@@ -16,6 +16,7 @@ export const BACKUP_TABLES = [
   'fast_bc_html_decisions_v1', 'fast_bc_html_status_v1', 'bc_stage_execution_receipts_v1', 'fast_bc_pipeline_latest',
   'trabajando_targeted_state', 'motor_d_bridge_status', 'engine_telemetry_snapshots_v1',
   'growth_commercial_metrics', 'growth_commercial_events', 'growth_commercial_config', 'growth_trial_entitlements', 'growth_commercial_audit', 'growth_house_config', 'growth_house_metrics', 'growth_house_events', 'community_posts', 'free_public_run_leases', 'free_public_source_reads', 'free_public_source_runs',
+  'growth_house_autonomy', 'growth_house_versions', 'growth_house_organic_metrics', 'growth_house_organic_effects',
   'growth_advertiser_leads', 'growth_campaigns', 'growth_social_queue', 'hard_exa_cursor', 'motor3_web_cursor',
   'notification_dispatch_log', 'notification_dispatch_state', 'notification_preferences', 'notification_user_dispatch',
   'tc_local_directory_v1', 'tc_local_reviews_v1', 'tc_local_reports_v1',
@@ -26,6 +27,7 @@ export const BACKUP_TABLES = [
   'radar_external_pull_state', 'radar_jobs', 'radar_live_tests', 'radar_local_contact_rechecks',
   'radar_meta', 'radar_social_recovery_cursor', 'radar_sources', 'radar_verification_cursor',
   'security_request_limits', 'chatgpt_import_receipts', 'motor_d_import_receipts',
+  'municipal_open_recheck_state', 'territory_repair_audit',
   'social_capture_runs', 'social_notice_evidence', 'source_audits', 'source_meta', 'source_scan_state'
 ];
 

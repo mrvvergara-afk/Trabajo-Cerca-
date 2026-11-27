@@ -12,7 +12,7 @@
     {
       "path": "backend/admin-backup.ts",
       "baseSha256": "db5367cb113711aa6e092b69350a5e406c8372cfdd8784e7c2f502ae72fd9d96",
-      "candidateSha256": "d054e1f62e27c3bae8bf11101d84623d442113e05fa42f3fdd4f7dd0bc22c662"
+      "candidateSha256": "1eb2155430a23a70886c11530378175e540e97a0239516cdb120f77f597ba4d2"
     },
     {
       "path": "backend/chatgpt-auto-import.ts",
@@ -227,12 +227,12 @@
     {
       "path": "src/backup-crypto.ts",
       "baseSha256": "21f771cf1a2a3910f20f421c479392b98573257f0f550a51ae6c545c5b852206",
-      "candidateSha256": "ab3ffa4b42c9d90903de62ca7fec0afff2edaec5b3c8350342d710a8be63e30b"
+      "candidateSha256": "0315a06422ec2574c5cf335fbdc855aa8680b764e8eabd6c239b8a909a8ab3c2"
     },
     {
       "path": "src/backup-runner.ts",
       "baseSha256": "bc2091537fe3c5526dd9476b77ac05a68eca2d94f8645db1a5b15e8d955f8697",
-      "candidateSha256": "5dd7cc74687f8336975b47a4c378e2e57010bcdd0bd622113139e360601b29dc"
+      "candidateSha256": "6d7b1c2e71d99f75a7ca3e2a12256e63b75525b3c261f6e98e4a06c93b07c96a"
     },
     {
       "path": "src/engine-command.tsx",
@@ -275,5 +275,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "5dc2c09cc138eee0bc9b5d539dca46f1fb498b6c9c0c2d15b2a2c245f99f55b0"
+  "payloadSha256": "4b3eaafabebcfd91edc60032d348c15e1d726fbd7aa14ee441a20614907a74c0"
 }

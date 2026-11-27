@@ -5,6 +5,10 @@ const ITERATIONS = 310000;
 export type CipherPart = { iv: string; content: string };
 export type BackupEnvelope = { format: string; id: string; salt: string; iterations: number; parts: CipherPart[] };
 
+export function backupUsesPhysicalIdentity(revision: string | undefined) {
+  return revision === 'application-backup-v3' || revision === 'application-backup-v4';
+}
+
 function base64(bytes: Uint8Array): string {
   let text = '';
   for (let offset = 0; offset < bytes.length; offset += 8192) text += String.fromCharCode(...bytes.subarray(offset, offset + 8192));
@@ -69,7 +73,7 @@ export async function verifyEncryptedBackup(text: string, password: string, visi
     if (visit) await visit(value);
   }
   if (!manifest?.complete || manifest.parts !== envelope.parts.length - 1 || !Array.isArray(manifest.tables) || manifest.tables.length !== tables.size || manifest.files !== paths.size) throw new Error('Respaldo incompleto.');
-  const requiresPhysicalIdentity = manifest.revision === 'application-backup-v3';
+  const requiresPhysicalIdentity = backupUsesPhysicalIdentity(manifest.revision);
   if (identityModes.has(!requiresPhysicalIdentity)) throw new Error('Identidad del manifiesto inconsistente.');
   const listed = new Set<string>();
   for (const entry of manifest.tables) {

@@ -1,4 +1,4 @@
-import { appendEncrypted, beginEncryptedBackup, verifyEncryptedBackup, type BackupEnvelope } from './backup-crypto';
+import { appendEncrypted, backupUsesPhysicalIdentity, beginEncryptedBackup, verifyEncryptedBackup, type BackupEnvelope } from './backup-crypto';
 
 type Row = Record<string, unknown> & { id?: string; __appdeploy_ddb_id?: string };
 export type BackupPage = { kind: string; table?: string; tables?: string[]; revision?: string; items?: Row[]; paths?: string[]; path?: string; content?: string; nextToken?: string | null };
@@ -32,10 +32,11 @@ export async function advanceBackup(original: BackupRun, read: BackupReader): Pr
   if (original.phase === 'complete') return original;
   if (original.calls >= 5000 || original.tables.length > 500) throw new Error('backup_limit');
   const state: BackupRun = { ...original, envelope: { ...original.envelope, parts: [...original.envelope.parts] }, tables: [...original.tables], tokens: [...original.tokens], ids: { ...original.ids }, paths: [...original.paths], pendingPaths: [...original.pendingPaths], storageTokens: [...original.storageTokens] };
+  const physicalIdentity = backupUsesPhysicalIdentity(state.revision);
   const ask = async (body: Record<string, unknown>) => {
     state.calls += 1;
     const page = await read(state.revision ? { ...body, revision: state.revision } : body);
-    if (state.revision === 'application-backup-v3' && page.revision !== state.revision)
+    if (physicalIdentity && page.revision !== state.revision)
       throw new Error('backup_revision_changed');
     return page;
   };
@@ -55,7 +56,6 @@ export async function advanceBackup(original: BackupRun, read: BackupReader): Pr
     const next = page.nextToken || null;
     if (next && state.tokens.includes(next)) throw new Error('pagination_loop');
     const ids = new Set(state.ids[table] || []);
-    const physicalIdentity = state.revision === 'application-backup-v3';
     for (const row of page.items) {
       const id = physicalIdentity ? row.__appdeploy_ddb_id : row.id;
       if (typeof id !== 'string' || !id || ids.has(id)) throw new Error('duplicate_id');

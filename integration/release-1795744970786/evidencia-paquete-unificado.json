@@ -2,7 +2,7 @@
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
   "runtimeFiles": 49,
-  "payloadSha256": "5dc2c09cc138eee0bc9b5d539dca46f1fb498b6c9c0c2d15b2a2c245f99f55b0",
+  "payloadSha256": "4b3eaafabebcfd91edc60032d348c15e1d726fbd7aa14ee441a20614907a74c0",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -14,12 +14,15 @@
   "differencesFromPreviouslyTestedPayload": [
     "backend/chatgpt-direct-import.ts",
     "src/App.tsx",
-    "src/house-autonomy.tsx"
+    "src/house-autonomy.tsx",
+    "backend/admin-backup.ts",
+    "src/backup-crypto.ts",
+    "src/backup-runner.ts"
   ],
   "local": {
     "viteBuild": "passed",
     "vite": "8.3.8",
-    "nodeTestsPassed": 41,
+    "nodeTestsPassed": 42,
     "replay": {
       "testedAt": "2026-11-27T20:00:00Z",
       "scope": "offline_replay_real_github_blobs_memory_database",
@@ -405,7 +408,38 @@
         }
       ]
     },
-    "pwaBrandContract": "passed"
+    "pwaBrandContract": "passed",
+    "backup": {
+      "tables": 6,
+      "records": 7,
+      "files": 1,
+      "mismatches": 0,
+      "resumeFromCursor": true,
+      "partialRejected": true,
+      "wrongPasswordRejected": true,
+      "independentBrowserContext": true,
+      "usedIndexedDB": true,
+      "temporaryStoreDeleted": true,
+      "restoreNetworkRequests": 0,
+      "productionWrites": 0,
+      "platformRestoreTested": false,
+      "scope": "synthetic_data_in_simulated_reader_real_browser_indexeddb",
+      "revision": "application-backup-v4",
+      "script": "verification/tests/browser/backup.mjs",
+      "backwardCompatibilityVerified": [
+        "application-backup-v2",
+        "application-backup-v3"
+      ],
+      "addedTables": [
+        "growth_house_autonomy",
+        "growth_house_versions",
+        "growth_house_organic_metrics",
+        "growth_house_organic_effects",
+        "municipal_open_recheck_state",
+        "territory_repair_audit"
+      ],
+      "credentialTableExcluded": "growth_house_metricool"
+    }
   },
   "pending": [
     "independent_zero_cost_data_recovery",

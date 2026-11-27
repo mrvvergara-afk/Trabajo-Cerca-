@@ -1,9 +1,19 @@
 {
   "fuente": "CMPC Cornerstone",
-  "checked_at": "2026-11-27T03:46:28.904005+00:00",
+  "checked_at": "2026-11-27T19:09:51.128101+00:00",
   "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "state": "individual_links_found",
   "individual_urls": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19687?c=cmpc",
+      "cargo": "OPERADOR MANTENCION MECANICO",
+      "evidencia_tarjeta": "OPERADOR MANTENCION MECANICO\n\nChile\n\n27/11/2026"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19481?c=cmpc",
+      "cargo": "OPERADOR MECANICO - Puente Alto",
+      "evidencia_tarjeta": "OPERADOR MECANICO - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n27/11/2026"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19487?c=cmpc",
       "cargo": "Técnico Desarrollo - Puente Alto",
@@ -118,23 +128,33 @@
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
       "cargo": "Electricista de área - Planta Santa Fe",
       "evidencia_tarjeta": "Electricista de área - Planta Santa Fe\n\nNacimiento, Bio Bio, Chile\n\n28/10/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19185?c=cmpc",
-      "cargo": "ANALISTA GESTION CALIDAD",
-      "evidencia_tarjeta": "ANALISTA GESTION CALIDAD\n\nTLAJOMULCO, JALISCO, México\n\n19/10/2026"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19144?c=cmpc",
-      "cargo": "SUPERVISOR EMBARQUES Y PT",
-      "evidencia_tarjeta": "SUPERVISOR EMBARQUES Y PT\n\nTLAJOMULCO, JALISCO, México\n\n19/10/2026"
     }
   ],
   "errors": [],
   "final_url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
   "title": "Vacantes actuales - cmpc",
-  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (26)\nMéxico (10)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nRegion Del Biobio (6)\nJalisco (5)\nMetropolitana (5)\nAraucanía (2)\nBuenos Aires (2)\nRegion Metropolitana (2)\nRegión De La Araucanía (2)\nBio Bio (1)\nLa Araucanía (1)\nNuevo León (1)\nPuebla (1)\nRegión De Los Ríos (1)\nCiudad\nPuente Alto (5)\nTlajomulco (5)\nCollipulli (3)\nNacimiento (3)\nLos Angeles (2)\nOsorno (2)\nSantiago (2)\nZarate (2)\nCollipullli (1)\nCoquimbo (1)\nLaja (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTemuco (1)\nValdivia (1)\nFecha colocada\nDentro de 3 días (5)\nDentro de 7 días (10)\nDentro de 15 días (16)\nDentro de 30 días (22)\nCualquier momento (43)\nUnidad de Negocio\nCMPC Celulosa (12)\nCMPC BioPackaging (13)\nSoftys (15)\nEmpresas CMPC (3)\nVacantes actuales\n\nTécnico Desarrollo - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n26/11/2026\n\nSupervisor/a Mantenimiento de Servicios Externos - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n25/11/2026\n\nJEFE/A ÁREA ELECTROCONTROL - Laja\n\nChile\n\n25/11/2026\n\nSupervisor Servicios Generales PSF\n\nNacimiento, REGION DEL BIOBIO, Chile\n\n25/11/",
+  "body_excerpt": "Saltar al contenido\n↵\nINGRESAR\nSaltar a Navegación\n↵\nINGRESAR\nAbrir barra de herramientas de accesibilidad\n↵\nINGRESAR\nSaltar al pie de página\n↵\nINGRESAR\nOmitir e ir a Contenido principal\nEspañol (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\n\nOportunidades Laborales\n\nBuscar\nFiltros\nReiniciar\nPaís\nChile (28)\nMéxico (10)\nArgentina (3)\nPerú (3)\nEstado/Provincia\nMetropolitana (6)\nRegion Del Biobio (6)\nJalisco (5)\nAraucanía (2)\nBuenos Aires (2)\nRegion Metropolitana (2)\nRegión De La Araucanía (2)\nBio Bio (1)\nLa Araucanía (1)\nNuevo León (1)\nPuebla (1)\nRegión De Los Ríos (1)\nCiudad\nPuente Alto (6)\nTlajomulco (5)\nCollipulli (3)\nNacimiento (3)\nLos Angeles (2)\nOsorno (2)\nSantiago (2)\nZarate (2)\nCollipullli (1)\nCoquimbo (1)\nLaja (1)\nLos Ángeles (1)\nMalvinas Argentinas (1)\nMonterrey 1 (1)\nSan Andres Cholula, Puebla (1)\nTemuco (1)\nValdivia (1)\nFecha colocada\nDentro de 1 día (2)\nDentro de 3 días (7)\nDentro de 7 días (12)\nDentro de 15 días (18)\nDentro de 30 días (24)\nCualquier momento (45)\nUnidad de Negocio\nCMPC Celulosa (13)\nCMPC BioPackaging (14)\nSoftys (15)\nEmpresas CMPC (3)\nVacantes actuales\n\nOPERADOR MANTENCION MECANICO\n\nChile\n\n27/11/2026\n\nOPERADOR MECANICO - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n27/11/2026\n\nTécnico Desarrollo - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n26/11/2026\n\nSupervisor/a Mantenimiento de Servicios Externos - Puente Alto\n\nPuente Alto, Metropolitana, Chil",
   "individual_details": [
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19687?c=cmpc",
+      "cargo": "OPERADOR MANTENCION MECANICO",
+      "evidencia_tarjeta": "OPERADOR MANTENCION MECANICO\n\nChile\n\n27/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nOPERADOR MANTENCION MECANICO\nChile\n|\nreq19687\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\n Misión del cargo                                          \n\nAsegurar la continuidad y confiabilidad operativa de los equipos mecánicos de su área, gestionando con excelencia el ciclo\ncompleto de mantenimiento preventivo y correctivo de personal propio y terceros. Su rol garantiza la entrega conforme de\nlos activos bajo los más altos estándares de calidad, seguridad, salud ocupacional, sustentabilidad ambiental y\ncumplimiento de la normativa laboral de la compañía.\n\n\n\n\n En este rol tendrás la oportunidad de       \n\nGestionar de manera oportuna y eficaz los procesos realizados del área de personas.\nSer responsable de su seguridad y colaborar con el cumplimiento de ésta y verificar contar con los equipos e instrumentos en terreno.\nCumplir estrictamente con las normas de higiene, seguridad y medio ambiente en áreas de trabajo y talleres, identificando peligros y riesgos potenciales antes y durante cualquier intervención de equipos.\nEjecutar los procedimientos de bloqueo y aislamiento de energías (eléctrica, fluidos, aire, espacios confinados, entre otros) mediante el uso de candados y tarjetas de seguridad, verificando la efectividad de los bloqueos antes de intervenir.\nRealizar recorridos de inspección en equipos mecánicos según los protocolos establecidos, registrando hallazgos e informando oportunamente al Jefe Directo sobre cualquier desviación que ponga en riesgo la continuidad operativa, la seguridad o el medio ambiente.\nBrindar apoyo permanente y directo al Jefe de Área de Mantención Mecánica en las actividades y requerimientos operativos del departamento.\nEjecutar tareas de mantenimiento preventivo y correctivo de equipos mecánicos (desarmar componentes, evaluar desgaste superficial y sustituir elementos averiados) basándose en pautas del fabricante, planos, normas vigentes y estándares de la planta\nRealizar el cambio de equipos mecánicos y su alineamiento de precisión de acuerdo con las normas técnicas y de calidad de la planta.\n\n-Formación: Técnico de nivel superior en mantenimiento industrial, Mecánico, Ejecución.\n-Experiencia: 2 años como mecánico en plantas industriales.\n-Conocimiento básico computacional (Office, SAP).\n-Disponibilidad para trabajar en Laja.\n\n\n\n\nContrato fijo con posibilidad de pasar a indefinido.\nDisponibilidad Laja.\nHorario: Lunes a Jueves de 08:00 a 17:30 hrs\nViernes de 08:00 a 14:00 hrs.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 3559,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-27T19:10:01.571109+00:00"
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19481?c=cmpc",
+      "cargo": "OPERADOR MECANICO - Puente Alto",
+      "evidencia_tarjeta": "OPERADOR MECANICO - Puente Alto\n\nPuente Alto, Metropolitana, Chile\n\n27/11/2026",
+      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nOPERADOR MECANICO - Puente Alto\nPuente Alto, Metropolitana, Chile\n|\nreq19481\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nASEGURAR LA CORRECTA EJECUCION DE TRABAJOS MECANICOS, MATRICERIA Y SETUP ASIGNADO, UTILIZANDO SU CONOCIMIENTO Y EXPERIENCIA, SEGUN PROGAMA PLANIFICADO DIARIAMENTE Y TRABAJOS CORRECTIVOS, BASADO EN INSTRUCCIONES DEL SUPERVISOR DEL AREA, RESPETANDO LA NORMATIVA VIGENTE CON ALTO GRADO DE PRIORIDAD EN LA SEGURIDAD, EN EL ACTUAR Y  EL AUTO CUIDADO. \n\n1.  Apoyar a mantenimiento mecánico a realizar ejecuciones de trabajos en máquinas moldeadoras y módulo de conversión asegurando la correcta ejecución y funcionamiento de equipos y máquinas. \n2.  Inspeccionar, evaluar y participar en Mantenimientos de equipos auxiliares, a fin de evitar posibles desperfectos, buscando desviaciones que no permiten el normal funcionamiento o entreguen perdidas de calidad y/o eficiencia en la producción. \n3.  Apoyar al área de matricería a realizar cambio de calibres, cambios de fabricación y mantenciones de matrices. \n4.  Realizar mantención de parrillas de máquinas Hartmann 1,2 y 3, lo que implica realizar limpiezas, trabajos en caliente y balanceo de estas. \n5.  Realizar cambio de formatos de parrillas en máquinas Hartmann. \n6.  Realizar y apoyar en cambios de formatos de stacker en maquina2 Hartmann 1 y keyes 2.  \n7.  Ejecutar las normas de seguridad, higiene, medio ambiente e inocuidad de la empresa \n\nFormación: Técnico Nivel Medio Mecánica Industrial o carrera afín con experiencia comprobable. Técnico Nivel superior en mecánica industrial, mantenimiento industrial o carrera afín \nExperiencia: 1 a 3 años en el área de mantenimiento industrial. 1 año en plantas industriales.\nComputación: Deseable conocimiento SAP PM.\n\nContrato: Indefinido\nUbicación: Planta Moldeados, Puente Alto\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
+      "ficha_accessible": true,
+      "ficha_content_length": 2913,
+      "ficha_contenido_laboral": true,
+      "ficha_checked_at": "2026-11-27T19:10:04.143173+00:00"
+    },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19487?c=cmpc",
       "cargo": "Técnico Desarrollo - Puente Alto",
@@ -143,7 +163,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2652,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:39.642492+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:06.787747+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19507?c=cmpc",
@@ -153,7 +173,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3458,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:40.926535+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:09.040448+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19470?c=cmpc",
@@ -163,7 +183,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3657,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:42.205514+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:11.702498+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19437?c=cmpc",
@@ -173,7 +193,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2595,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:43.344857+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:14.174226+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19003?c=cmpc",
@@ -183,7 +203,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2306,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:44.474742+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:16.482158+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19478?c=cmpc",
@@ -193,7 +213,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5222,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:45.555666+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:18.585387+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19455?c=cmpc",
@@ -203,7 +223,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4599,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:46.781928+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:21.243185+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19462?c=cmpc",
@@ -213,7 +233,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 4791,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:48.001749+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:23.005382+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19450?c=cmpc",
@@ -223,7 +243,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2977,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:49.240896+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:25.765513+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19359?c=cmpc",
@@ -233,7 +253,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2159,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:50.348674+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:27.772179+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19452?c=cmpc",
@@ -243,7 +263,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 5248,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:51.501752+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:29.678445+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
@@ -253,7 +273,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3596,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:52.667313+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:32.174603+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19182?c=cmpc",
@@ -263,7 +283,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3990,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:53.861066+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:33.951044+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
@@ -273,7 +293,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2714,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:55.182474+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:35.782051+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
@@ -283,7 +303,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2162,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:56.586257+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:37.889263+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
@@ -293,7 +313,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3396,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:57.725252+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:39.750260+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19334?c=cmpc",
@@ -303,7 +323,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2362,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:46:58.810537+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:41.896594+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19297?c=cmpc",
@@ -313,7 +333,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3272,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:00.114718+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:43.894639+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19296?c=cmpc",
@@ -323,7 +343,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3991,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:02.361257+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:46.337865+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19268?c=cmpc",
@@ -333,7 +353,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2605,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:03.534099+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:48.343704+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
@@ -343,7 +363,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 2620,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:04.677487+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:50.389540+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19222?c=cmpc",
@@ -353,7 +373,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3974,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:05.868405+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:52.231164+00:00"
     },
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19239?c=cmpc",
@@ -363,27 +383,7 @@
       "ficha_accessible": true,
       "ficha_content_length": 3790,
       "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:07.026915+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19185?c=cmpc",
-      "cargo": "ANALISTA GESTION CALIDAD",
-      "evidencia_tarjeta": "ANALISTA GESTION CALIDAD\n\nTLAJOMULCO, JALISCO, México\n\n19/10/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nANALISTA GESTION CALIDAD\nTLAJOMULCO, JALISCO, México\n|\nreq19185\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAsegurar la estandarización, mantenimiento y mejora continua del Sistema Integral de Gestión (SIG) en la totalidad de los procesos Operativos y Administrativos garanntizando el estricto cumplimiento de ISO 9001 e ISO 22000 mediante auditorias sistemáticas y control documental global para salvaguardar la calidad e inocuidad en cada una de las etapas de valor.\n\n\n\n\nEstablecer la standarización de los procesos\nGarantizar el cumplimiento unifficado de las normas ISO 9001 Y 22000\n\nFormación: Ingeniero Industrial, Químico, QFB ó carrera afin.\n\nConocimiento específico: Dominio e interpretación de las norma ISO 9001, ISO 19011, ISO 22000. FSSC 22000, Sistema HACCP.\n\nExperiencia: Experiiencia mínima de 3 años en implementacion de Sistemas de Calidad e Inocuidad.\n\nComputación: Excel Avanzado, Manejo de MRP\n\n\n\n\nContrato: Indefinido \nUbicación: Guafdalajara a\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2076,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:08.100758+00:00"
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19144?c=cmpc",
-      "cargo": "SUPERVISOR EMBARQUES Y PT",
-      "evidencia_tarjeta": "SUPERVISOR EMBARQUES Y PT\n\nTLAJOMULCO, JALISCO, México\n\n19/10/2026",
-      "ficha_excerpt": "Español (América Latina) \nQuiénes Somos\nOportunidades Laborales\nIngrese al sistema\nCrear perfil\nInglés (EU)\nPortugués (Brasil)\nSpanish (Latin America)\nSUPERVISOR EMBARQUES Y PT\nTLAJOMULCO, JALISCO, México\n|\nreq19144\nSolicitar ahora\nCompartir\n Guardar trabajo\n Regresar a la búsqueda\n\nSomos una compañia global, con presencia en 12 países y un fuerte compromiso con un futuro más sustentable para las próximas generaciones.\n\nNos guiamos por el respeto, la integridad, el coraje y la colaboración, fomentando siempre la inclusión y diversidad\n\nCreamos la fibra natural para un futuro mejor.\n\nAsegurar que las entregas de embarques nacionales y de exportación lleguen al cliente y/o centros de distribución en tiempo y forma, optimizando los procesos logísticos y reduciendo costos adicionales. Supervisar y coordinar al personal del área de embarques, implementar proyectos de mejora continua, y garantizar el cumplimiento de estándares de calidad para satisfacer las necesidades y expectativas de los clientes, así como mantener el almacén de producto terminado.\n\n\n\n\nGestión de ventas y costos de transporte, optimización de fletes, administración de unidades para embarques, y desarrollo de estrategias alineadas para la planta de Guadalajara.\nCubicaje de pedidos de venta, tarifario de rutas, facturación, gestión de pagos, obtención de POD’s del cliente\nGestión del almacén de producto terminado.\n\nFormación: Licenciatura en Ingeniería Industrial, Tráfico o áreas afines\n\nConocimiento específico:\n\n●Logística y Transporte\n●Gestión de Inventarios (indispensable)\n●Costos\n\nExperiencia:\n\n●Mínimo 5 años en roles similares\n\nComputación:\n\n●Office intermedio indispensable (Excel avanzado, Word, PowerPoint)\n●SAP (indispensable SAP R/3)\n●Power BI (deseable)\n\n\n\n\nContrato: indefinido\nUbicación: Tlajomulco de zuñiga, Jalisco.\n \n\nEn CMPC promovemos una cultura de inclusión y diversidad, centrada en las personas, que promueve el respeto y la igualdad de oportunidades.\n\nNuestras vacantes aceptan personas sin distinción de identidad y/o expresión de género, con todas las características físicas y/o discapacidad, de cualquier generación y nacionalidad, sin importar raza o etnia y orientación afectiva.\n\n¡Te invitamos a trabajar con nosotros, alcanzar tu máximo potencial y crear fibra natural para un futuro mejor!\n\nAnterior\nSiguiente\nSolicitar ahora\nCompartir\n Guardar trabajo\nLa Ruta del\nCandidato en CMPC\nConsejos para\ntu CV\nReconocimientos\nSíguenos",
-      "ficha_accessible": true,
-      "ficha_content_length": 2449,
-      "ficha_contenido_laboral": true,
-      "ficha_checked_at": "2026-11-27T03:47:09.195568+00:00"
+      "ficha_checked_at": "2026-11-27T19:10:54.319791+00:00"
     }
   ]
 }

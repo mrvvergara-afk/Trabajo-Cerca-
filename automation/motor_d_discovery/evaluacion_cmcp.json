@@ -75,6 +75,22 @@
   ],
   "pending": [
     {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19687?c=cmpc",
+      "title": "OPERADOR MANTENCION MECANICO",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19481?c=cmpc",
+      "title": "OPERADOR MECANICO - Puente Alto",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19487?c=cmpc",
       "title": "Técnico Desarrollo - Puente Alto",
       "workplaces": [],
@@ -205,22 +221,6 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
       "title": "Asistente Ventas (Plazo Fijo) - Temuco",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19185?c=cmpc",
-      "title": "ANALISTA GESTION CALIDAD",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19144?c=cmpc",
-      "title": "SUPERVISOR EMBARQUES Y PT",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"

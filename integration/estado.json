@@ -1,23 +1,13 @@
 {
   "schema": 1,
   "phase": "recovery_writer_integration",
-  "next": "Añadir al paquete de respaldo las tablas requeridas verificando identidades físicas. Probar un mecanismo de revisión o pausa coordinada que cubra todos los escritores en una copia aislada representativa antes de promover.",
+  "next": "Validar una copia representativa en QA con escritores reales, incluidos datos en proceso y archivos. Confirmar recuperación de colas y deduplicación, y completar aceptación del flujo de publicación.",
   "production_mutation_allowed": false,
   "qa_cron_allowed": false,
-  "completed": [
-    "read_existing_evidence",
-    "observe_remote_heads",
-    "observe_production_snapshot",
-    "initialize_acceptance_register",
-    "compare_active_bc_dependencies",
-    "match_gemini_blob_with_production_import",
-    "add_chatgpt_blob_receipts_in_staging",
-    "integrated_candidate_build_qa",
-    "synthetic_paginated_encrypted_restore_qa",
-    "qa_baseline_restored",
-    "cross_invocation_restore_with_external_key",
-    "compare_official_backup_scope_with_motor_state",
-    "classify_known_motor_tables_for_recovery",
-    "reject_interleaved_snapshot_and_accept_stable_revision_in_qa"
+  "validated_evidence": [
+    "qa-candidata-restauracion-20261127.json",
+    "recuperacion-entre-invocaciones-20261127.json",
+    "consistencia-respaldo-qa-20261127.json",
+    "respaldo-v3-identidad-qa-20261127.json"
   ]
 }

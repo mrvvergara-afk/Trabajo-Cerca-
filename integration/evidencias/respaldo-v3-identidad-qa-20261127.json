@@ -1,0 +1,50 @@
+{
+  "candidate_base": "8543036ef1c7a23de836ade0ecedcc87597c6fa2",
+  "official_snapshot": "1795744970786",
+  "backup_revision": "application-backup-v3",
+  "tables_added": [
+    "free_public_source_cursor_v3",
+    "fast_bc_state_v2",
+    "fast_bc_documents_v1",
+    "tc_document_attempts_v1",
+    "tc_document_receipts_v1",
+    "motor_b_c_idle_cursor_v2",
+    "gemini_github_pull_status"
+  ],
+  "local_tests": 4,
+  "qa": {
+    "app_id": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "sdk_proof_snapshot": "1795776648481",
+    "candidate_snapshot": "1795776729678",
+    "validation": true,
+    "restored_snapshot": "1795554937385",
+    "cron": null,
+    "temporary_route_http_after_restore": 404
+  },
+  "physical_identity_proof": {
+    "first": {
+      "ok": true,
+      "replay": false,
+      "id": "proof",
+      "distinctIds": true,
+      "logicalIdPreserved": true,
+      "physicalIdPreserved": true,
+      "retryStatePreserved": true
+    },
+    "replay": {
+      "ok": true,
+      "replay": true,
+      "distinctIds": true,
+      "id": "proof",
+      "logicalIdPreserved": true,
+      "physicalIdPreserved": true,
+      "retryStatePreserved": true
+    }
+  },
+  "limits": [
+    "Actual restored row is synthetic and includes distinct database and logical IDs.",
+    "v3 still exposes rolling non-atomic consistency.",
+    "No representative restore of all motor tables or real writer coordination yet.",
+    "No production mutation."
+  ]
+}

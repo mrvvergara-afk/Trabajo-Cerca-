@@ -1,0 +1,88 @@
+{
+  "scope": "cross_invocation_synthetic_logical_recovery",
+  "qa": {
+    "app_id": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "tested_snapshot": "1795776112899",
+    "restored_snapshot": "1795554937385",
+    "status": "ready",
+    "cron": null,
+    "temporary_routes_after_rollback": [
+      404,
+      404
+    ]
+  },
+  "cipher": {
+    "payload": "AES-256-GCM",
+    "key_wrap": "RSA-3072 OAEP SHA-256",
+    "restore_authorization": "Ed25519",
+    "key_custody": "Temporary isolated workspace; only public keys deployed in QA",
+    "test_private_keys_removed": true
+  },
+  "result": {
+    "offline": {
+      "rows": 5,
+      "pages": 3,
+      "sha256": "99193e9e3b880952e9f61627926dd55a4886339544ccb9cb1ef6f494c5e5c372",
+      "tamperRejected": true
+    },
+    "restored": {
+      "ok": true,
+      "replay": false,
+      "id": "restore",
+      "restored": 5,
+      "sha256": "99193e9e3b880952e9f61627926dd55a4886339544ccb9cb1ef6f494c5e5c372"
+    },
+    "replay": {
+      "ok": true,
+      "replay": true,
+      "id": "restore",
+      "restored": 5,
+      "sha256": "99193e9e3b880952e9f61627926dd55a4886339544ccb9cb1ef6f494c5e5c372"
+    },
+    "http": [
+      200,
+      403,
+      200,
+      200
+    ]
+  },
+  "official_backup_review": {
+    "snapshot": "1795744970786",
+    "source": "backend/admin-backup.ts",
+    "fixed_allowlist_tables": 55,
+    "consistency": "rolling_non_atomic",
+    "explicitly_in_scope": [
+      "Allowlisted application DB records, page by page",
+      "Visible app storage files within the export size cap"
+    ],
+    "observed_omissions_in_official_motors": [
+      "free_public_source_cursor_v3",
+      "fast_bc_state_v2",
+      "gemini_github_pull_status"
+    ],
+    "additional_candidate_tables_to_inventory": [
+      "fast_bc_documents_v1",
+      "tc_document_attempts_v1",
+      "tc_document_receipts_v1",
+      "bc_stage_execution_receipts_v1",
+      "motor_b_c_idle_cursor_v2",
+      "engine_telemetry_snapshots_v1"
+    ],
+    "outside_export_interface": [
+      "AppDeploy Auth identities and sessions",
+      "Managed secrets and credentials",
+      "Deployment history and stored source versions",
+      "Cron and platform configuration",
+      "Platform push subscriptions",
+      "Files exceeding the exporter's encoded size limit",
+      "External GitHub producer configuration and state"
+    ],
+    "limits": [
+      "The QA fixture was frozen during export",
+      "No point-in-time consistency verified under concurrent writes",
+      "No platform-wide or production data restore performed",
+      "Cross-invocation recovery used externally held test keys, not a permanent operational key"
+    ]
+  },
+  "production_mutated": false
+}

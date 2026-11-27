@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "phase": "cross_invocation_recovery_validation",
-  "next": "Probar exportación y restauración en invocaciones separadas con clave gestionada, inventariar entidades fuera del SDK y verificar el paquete final con recibos de flujo sin modificar producción.",
+  "phase": "recovery_coverage_and_release",
+  "next": "Cerrar el inventario de recuperación del paquete final, clasificar las tablas faltantes y probar una estrategia consistente para datos con escritores activos. Mantener bloqueada la promoción hasta validar el alcance de recuperación requerido.",
   "production_mutation_allowed": false,
   "qa_cron_allowed": false,
   "completed": [
@@ -14,6 +14,8 @@
     "add_chatgpt_blob_receipts_in_staging",
     "integrated_candidate_build_qa",
     "synthetic_paginated_encrypted_restore_qa",
-    "qa_baseline_restored"
+    "qa_baseline_restored",
+    "cross_invocation_restore_with_external_key",
+    "compare_official_backup_scope_with_motor_state"
   ]
 }

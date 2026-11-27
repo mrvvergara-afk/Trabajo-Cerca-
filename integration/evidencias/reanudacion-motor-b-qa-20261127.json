@@ -1,0 +1,55 @@
+{
+  "candidate_commit": "51163f04cddab1b48034a890cc6ac354de4ce5b1",
+  "scope": "candidate_motor_b_real_appdeploy_sdk_pdfjs_and_synthetic_queue_restore",
+  "qa": {
+    "app_id": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "tested_snapshot": "1795777923771",
+    "restored_snapshot": "1795554937385",
+    "cron": null,
+    "temporary_route_http_after_restore": 404
+  },
+  "results": {
+    "first": {
+      "ok": true,
+      "replay": false,
+      "id": "proof",
+      "tablesRestored": 4,
+      "rowsRestored": 5,
+      "firstProcessed": 1,
+      "deferredBeforeDue": 1,
+      "processedAfterDue": 1,
+      "completedReplayed": 3,
+      "duplicateWorkOnRepeat": 0,
+      "attempts": [
+        1,
+        3,
+        1
+      ],
+      "receiptsVerified": 3
+    },
+    "replay": {
+      "ok": true,
+      "replay": true,
+      "attempts": [
+        1,
+        3,
+        1
+      ],
+      "completedReplayed": 3,
+      "deferredBeforeDue": 1,
+      "duplicateWorkOnRepeat": 0,
+      "firstProcessed": 1,
+      "id": "proof",
+      "processedAfterDue": 1,
+      "receiptsVerified": 3,
+      "rowsRestored": 5,
+      "tablesRestored": 4
+    }
+  },
+  "boundaries": [
+    "Motor B fixture replaces external sources and table names; worker processing is from candidate.",
+    "Deferred deadline advanced deliberately after validating its preservation.",
+    "No live external source or production data, no publication asserted.",
+    "No whole-app coordination across writers or platform recovery validated."
+  ]
+}

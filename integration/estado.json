@@ -1,13 +1,14 @@
 {
   "schema": 1,
   "phase": "recovery_writer_integration",
-  "next": "Validar una copia representativa en QA con escritores reales, incluidos datos en proceso y archivos. Confirmar recuperación de colas y deduplicación, y completar aceptación del flujo de publicación.",
+  "next": "Probar una copia representativa con coordinación de escritores y archivos, ampliar reanudación al puente y publicación, y confirmar recuperación de plataforma antes de decisión de promoción.",
   "production_mutation_allowed": false,
   "qa_cron_allowed": false,
   "validated_evidence": [
     "qa-candidata-restauracion-20261127.json",
     "recuperacion-entre-invocaciones-20261127.json",
     "consistencia-respaldo-qa-20261127.json",
-    "respaldo-v3-identidad-qa-20261127.json"
+    "respaldo-v3-identidad-qa-20261127.json",
+    "reanudacion-motor-b-qa-20261127.json"
   ]
 }

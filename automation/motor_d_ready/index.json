@@ -204,6 +204,12 @@
       "file": "20261125/motor-d-20261125-a0184e437e0454d8e4.json",
       "count": 1,
       "batch_type": "recovery"
+    },
+    {
+      "batch_id": "motor-d-20261127-65995e4e00dc34dcee",
+      "file": "20261127/motor-d-20261127-65995e4e00dc34dcee.json",
+      "count": 1,
+      "batch_type": "daily"
     }
   ],
   "seen_offer_ids": [
@@ -257,6 +263,7 @@
     "d_ac99dfccf73d73c896ac",
     "d_ad791baa0556cf59d931",
     "d_af9a119e45d5f84851a7",
+    "d_b08568ac25dff836b4ea",
     "d_b479eb4033d3626606d4",
     "d_b603fd0cac39366e5659",
     "d_b82587f333519896e835",
@@ -348,6 +355,7 @@
     "job:[\"tecnico telecomunicaciones sin experiencia angol\", \"dominion spa\", [\"angol\"]]",
     "job:[\"tens enfermera administrativa angol\", \"inmunomedica\", [\"angol\"]]",
     "job:[\"tens para cuidados pacientes domiciliarios lumaco\", \"layner\", [\"angol\"]]",
+    "job:[\"trabajador social reemplazo jornada completa programa prm angol la araucania\", \"fundacion ciudad del nino\", [\"angol\"]]",
     "job:[\"vendedor a en terreno para angol sin experiencia comisiones sin tope\", \"verisure\", [\"angol\"]]",
     "job:[\"vendedor terreno angol\", \"distribuidora consumo masivo\", [\"angol\"]]",
     "job:[\"verificador a de domicilios en terreno renaico\", \"rocketpin\", [\"angol\"]]",
@@ -409,6 +417,7 @@
     "source:chiletrabajos:3937254",
     "source:chiletrabajos:3937782",
     "source:chiletrabajos:3938842",
+    "source:chiletrabajos:3939921",
     "url:https://chiletrabajos.cl/trabajo/analista-de-vibraciones-mininco-planta-plywood-3934867",
     "url:https://chiletrabajos.cl/trabajo/analista-tecnico-3937254",
     "url:https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
@@ -461,6 +470,7 @@
     "url:https://chiletrabajos.cl/trabajo/tecnico-telecomunicaciones-sin-experiencia-angol-3926918",
     "url:https://chiletrabajos.cl/trabajo/tens-enfermera-administrativa-angol-3911374",
     "url:https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3892923",
+    "url:https://chiletrabajos.cl/trabajo/trabajador-social-reemplazo-jornada-completa-programa-prm-angol-la-araucania-3939921",
     "url:https://chiletrabajos.cl/trabajo/vendedor-a-en-terreno-para-angol-sin-experiencia-comisiones-sin-tope-3936181",
     "url:https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
     "url:https://chiletrabajos.cl/trabajo/verificador-a-de-domicilios-en-terreno-renaico-3893607",

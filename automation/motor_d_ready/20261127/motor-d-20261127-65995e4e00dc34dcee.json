@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approval": "approved_for_publication",
+  "producer": "motor_d_territorial",
+  "batch_id": "motor-d-20261127-65995e4e00dc34dcee",
+  "batch_type": "daily",
+  "offers": [
+    {
+      "id_fuente": "d_b08568ac25dff836b4ea",
+      "cargo": "TRABAJADOR SOCIAL,Reemplazo, jornada completa, programa PRM Angol, La Araucanía",
+      "empresa": "FUNDACION CIUDAD DEL NIÑO",
+      "comunas": [
+        "Angol"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/trabajador-social-reemplazo-jornada-completa-programa-prm-angol-la-araucania-3939921",
+      "fecha_publicacion": "2026-11-27",
+      "fecha_descubrimiento": "2026-11-27",
+      "tipo_lote": "radar_diario",
+      "fecha_cierre": "2027-02-10",
+      "justificacion": "Motor D: ficha individual, fecha original, empresa, lugar de trabajo y postulación explícitos. Publicación de hoy o ayer."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-27T09:40:18.855097-03:00",
+  "last_run": "2026-11-27T14:49:34.083414-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -11447,6 +11447,132 @@
     "f2d5af7cf2ab71dd56a4": {
       "first_seen": "2026-11-27T09:40:18.855097-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-araucania/tecnico-electronica-telecomunicaciones-o-electricidad-3084162.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "06640fa233af493e2990": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.chiletrabajos.cl/trabajo/trabajador-social-reemplazo-jornada-completa-programa-prm-angol-la-araucania-3939921",
+      "source": "Chiletrabajos · Angol",
+      "commune": "Angol"
+    },
+    "85fd8bf2a504028e15b5": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedora-fines-de-semana-mall-apumanque-3084474.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "577cd0010a6d844a88fb": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-en-terreno-canal-tradicional-con-movilizacion-propia-en-pedro-aguirre-cerda-y-alrededores-3084473.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "784256d529de4b44dd63": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-comercial-freelance-remoto-en-software-punto-de-venta-3084472.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ddd01dcf5c985e34c656": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/vendedor-de-ruta-canal-tradicional-3084471.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0473e430a83aef3e7cac": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-en-terreno-canal-tradicional-con-movilizacion-propia-en-penaflor-y-alrededores-3084470.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a8d4dcf3c2c1f6da9e7b": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-a-rotativa-full-time-5x2-3084469.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9bc90bbfcdf40b467873": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-en-terreno-canal-tradicional-con-movilizacion-propia-en-penalolen-y-alrededores-3084468.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a4e9d894b1b5c08ca8b4": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-en-terreno-canal-tradicional-con-movilizacion-propia-en-pirque-y-alrededores-3084467.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "aa6977284dd731cc07c1": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-ventas-y-marketing-b2b-pudahuel-3084466.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dc49b9a115679f2574c9": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-comercial-las-condes-3084465.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9a94634f6a66adaa44c3": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/vendedor-en-terreno-canal-tradicional-con-movilizacion-propia-en-providencia-y-alrededores-3084464.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f0d3fb13af87279a9221": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-coquimbo/ayudante-de-cocina-tienda-pronto-copec-los-vilos-jornada-full-y-part-time-3084463.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9855c6f5b8eca1b2105e": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-atencion-de-clientes-para-reemplazo-santiago-centro-3084462.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b885e55c195a788f438d": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/anfitriones-part-time-20-proyecto-3084461.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4e88c4d797851b116265": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/anfitriones-part-time-20-proyecto-3084460.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "52f9ae0b6dcadf974b6b": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-mantencion-sin-experiencia-huechuraba-3084459.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "482e15974da5f11b162c": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/pintor-industrial-con-experiencia-en-empresas-metalmecanicas-o-maestranzas-3084458.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fb839d35d5c823209037": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/operador-a-auxiliar-de-camion-fosero-san-pedro-de-atacama-3084457.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "dca5044b189e2f14de7b": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/chofer-de-camion-fosero-san-pedro-de-atacama-3084456.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "854f7ac6ed04f9883a0a": {
+      "first_seen": "2026-11-27T14:49:34.083414-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-arica-y-parinacota/operador-maquinaria-reemplazo-lluta-cargador-frontal-3084455.html",
       "source": "Inventario D04",
       "commune": null
     }

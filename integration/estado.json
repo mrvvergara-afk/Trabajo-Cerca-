@@ -1,13 +1,16 @@
 {
   "schema": 1,
-  "phase": "base_reconciliation",
-  "next": "Comparar cambios del snapshot oficial 1795726351197 con v100 y puntas registradas; revisar contrato B/C en paralelo.",
+  "phase": "candidate_assembly",
+  "next": "Ensamblar B/C y el recibo SHA de ChatGPT sobre una base oficial verificable, correr compilación integrada en QA y comprobar restauración lógica aislada con datos sintéticos.",
   "production_mutation_allowed": false,
   "qa_cron_allowed": false,
   "completed": [
     "read_existing_evidence",
     "observe_remote_heads",
     "observe_production_snapshot",
-    "initialize_acceptance_register"
+    "initialize_acceptance_register",
+    "compare_active_bc_dependencies",
+    "match_gemini_blob_with_production_import",
+    "add_chatgpt_blob_receipts_in_staging"
   ]
 }

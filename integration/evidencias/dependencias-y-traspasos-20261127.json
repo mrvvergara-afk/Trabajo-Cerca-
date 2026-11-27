@@ -1,0 +1,47 @@
+{
+  "production_reference": "1795744970786",
+  "candidate_base": "84de788c55fa4580ab1e1476a42a95d61d0d1ca1",
+  "bc": {
+    "three_way_base": "1795575572924",
+    "files": [
+      "engine-telemetry.ts",
+      "fast-bc-html.ts",
+      "fast-bc-pipeline.ts",
+      "free-public-sources.ts",
+      "public-source-verifier.ts",
+      "shadow-pdf.ts"
+    ],
+    "merge_conflicts": 0,
+    "relative_dependencies_checked": 12,
+    "package_additions": {
+      "dependencies": {
+        "image-size": "2.0.2",
+        "pngjs": "7.0.0",
+        "tesseract.js-core": "6.1.2"
+      },
+      "devDependencies": {
+        "@types/pngjs": "6.0.5"
+      }
+    },
+    "local_tests": 25,
+    "local_validation": "Node v24.22.3; npm legacy peer resolution for inherited Vite/react plugin metadata; real packaged Spanish OCR; database fixtures",
+    "merged_application_build_verified": false
+  },
+  "gemini": {
+    "github_blob_sha": "17c6735ec2898fc0d60fcc25d3097968a6ec7a23",
+    "production_import_at": "2026-11-27T01:13:02.795Z",
+    "received": 16,
+    "duplicates": 16,
+    "queued": 0,
+    "published": 0
+  },
+  "chatgpt": {
+    "official_index_blob_sha": "5b71d688a327b71efe6d4f674587cef935e21f9f",
+    "last_production_batch_date": "2026-11-18",
+    "indexed": 4,
+    "processed": 4,
+    "legacy_batch_sha_verified": false,
+    "staging_sha_instrumentation_fixture_tests": 4
+  },
+  "production_mutated": false
+}

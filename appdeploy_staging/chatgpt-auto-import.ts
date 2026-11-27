@@ -8,7 +8,7 @@ const REPO='mrvvergara-afk/Trabajo-Cerca-';
 const ROOT='automation/chatgpt_ready/';
 const INDEX=ROOT+'index.json';
 type Result={id:string;status:string;internalId?:string;existingId?:string;expectedWorkCommunes?:string[]};
-type Receipt={id:string;batchId:string;status:string;results:Result[];newCount:number;published:number;at:string;checkedAt?:string};
+type Receipt={id:string;batchId:string;status:string;results:Result[];newCount:number;published:number;at:string;checkedAt?:string;indexSha?:string;batchSha?:string};
 
 async function load(path:string,token:string){
   if(path!==INDEX&&!/^automation\/chatgpt_ready\/\d{8}\/chatgpt-\d{8}-[a-f0-9]{18}\.json$/.test(path))
@@ -21,7 +21,8 @@ async function load(path:string,token:string){
   if(response.status===404)return null;
   if(!response.ok)throw Error('chatgpt_github_http_'+response.status);
   const raw=await response.json() as {encoding?:string;content?:string;size?:number;sha?:string};
-  if(raw.encoding!=='base64'||!raw.content||!raw.size||raw.size>180000||!raw.sha)
+  if(raw.encoding!=='base64'||!raw.content||!raw.size||raw.size>180000||
+     typeof raw.sha!=='string'||!/^[a-f0-9]{40}$/.test(raw.sha))
     throw Error('chatgpt_invalid_content');
   const bytes=Buffer.from(raw.content.replace(/\s/g,''),'base64');
   if(bytes.length!==raw.size)throw Error('chatgpt_size_mismatch');
@@ -42,7 +43,7 @@ export async function chatgptAutoImportHandler(){
     const idx=head.data;
     if(idx.schema_version!==1||idx.producer!=='chatgpt_territorial'||
        !Array.isArray(idx.batches)||idx.batches.length>256)return result('invalid_chatgpt_index');
-    let processed=0;
+    let processed=0, legacyReceiptsWithoutSha=0;
     for(const entry of idx.batches as Array<Record<string,unknown>>){
       const batchId=String(entry.batch_id||'');
       const rel=String(entry.file||'');
@@ -50,7 +51,11 @@ export async function chatgptAutoImportHandler(){
          !/^\d{8}\/chatgpt-\d{8}-[a-f0-9]{18}\.json$/.test(rel)||
          !rel.endsWith('/'+batchId+'.json'))return result('invalid_chatgpt_reference',{batchId});
       const [old]=await db.get<Receipt>('chatgpt_import_receipts',[batchId],{consistent:true});
-      if(old?.results?.length){processed++;continue;}
+      if(old?.results?.length){
+        processed++;
+        if(!old.batchSha)legacyReceiptsWithoutSha++;
+        continue;
+      }
       const file=await load(ROOT+rel,token);
       if(!file)return result('missing_chatgpt_batch',{batchId});
       const batch=file.data;
@@ -74,15 +79,15 @@ export async function chatgptAutoImportHandler(){
       if(results.some(x=>!allowed.has(x.status)))return result('chatgpt_unexpected_import_result',{batchId});
       const newCount=results.filter(x=>x.status==='direct_record_queued_for_public_projection'||x.status==='territory_reconciled').length;
       const receipt:Receipt={id:batchId,batchId,status:newCount?'awaiting_public_feed':'processed_without_new_publications',
-        results,newCount,published:0,at:new Date().toISOString()};
+        results,newCount,published:0,at:new Date().toISOString(),indexSha:head.sha,batchSha:file.sha};
       try{
         const [saved]=await db.tx.add('chatgpt_import_receipts',[receipt]);
         if(!saved)throw Error('chatgpt_receipt_write_unconfirmed');
       }catch(cause){
         const [again]=await db.get<Receipt>('chatgpt_import_receipts',[batchId],{consistent:true});
-        if(!again?.results?.length)throw cause;
+        if(!again?.results?.length||again.batchSha!==file.sha)throw cause;
       }
-      return result('chatgpt_imported_waiting_for_feed',{batchId,newCount,duplicates:results.length-newCount});
+      return result('chatgpt_imported_waiting_for_feed',{batchId,indexSha:head.sha,batchSha:file.sha,newCount,duplicates:results.length-newCount});
     }
     const latestBatch = (idx.batches as Array<Record<string,unknown>>)
       .map(entry => String(entry.batch_id || ''))
@@ -96,7 +101,9 @@ export async function chatgptAutoImportHandler(){
       : null;
     const producerStale = lastBatchAgeHours === null || lastBatchAgeHours >= 24;
     return result(producerStale ? 'producer_stale_no_new_batches' : 'no_unprocessed_chatgpt_batches', {
+      indexSha:head.sha,
       indexedBatches:idx.batches.length,
+      legacyReceiptsWithoutSha,
       processed,
       latestBatchDate,
       lastBatchAgeHours,

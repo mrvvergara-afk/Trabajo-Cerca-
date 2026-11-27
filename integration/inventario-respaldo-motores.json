@@ -1,0 +1,164 @@
+{
+  "official_snapshot": "1795744970786",
+  "exporter": "backend/admin-backup.ts",
+  "allowlisted_tables": 55,
+  "scope": "Known motor and publisher tables referenced by the selected official and candidate modules; not a platform inventory.",
+  "entries": [
+    {
+      "table": "free_public_source_cursor_v3",
+      "engine": "A",
+      "purpose": "cursor y trabajo documental pendiente",
+      "classification": "required",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "fast_bc_state_v2",
+      "engine": "B/C",
+      "purpose": "resoluciones por URL y checkpoint",
+      "classification": "required",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "fast_bc_documents_v1",
+      "engine": "B",
+      "purpose": "evidencia de extracción y resoluciones documentales",
+      "classification": "required",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "tc_document_attempts_v1",
+      "engine": "B",
+      "purpose": "intentos, reservas y reintentos diferidos",
+      "classification": "required",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "tc_document_receipts_v1",
+      "engine": "B",
+      "purpose": "recibos de procesamiento y reconciliación",
+      "classification": "required",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "motor_b_c_idle_cursor_v2",
+      "engine": "B/C",
+      "purpose": "cursor de asistencia y reintentos",
+      "classification": "required",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "radar_admin_verification_queue",
+      "engine": "B/C",
+      "purpose": "entregas pendientes de verificación",
+      "classification": "required",
+      "in_official_backup_allowlist": true
+    },
+    {
+      "table": "radar_admin_verification_control",
+      "engine": "B/C",
+      "purpose": "coordinación y estado de verificación",
+      "classification": "required",
+      "in_official_backup_allowlist": true
+    },
+    {
+      "table": "radar_review_inbox",
+      "engine": "B/C/Gemini",
+      "purpose": "candidatos y estado de revisión",
+      "classification": "required",
+      "in_official_backup_allowlist": true
+    },
+    {
+      "table": "chatgpt_import_receipts",
+      "engine": "ChatGPT",
+      "purpose": "deduplicación y confirmación de publicación",
+      "classification": "required",
+      "in_official_backup_allowlist": true
+    },
+    {
+      "table": "motor_d_import_receipts",
+      "engine": "D",
+      "purpose": "deduplicación de lotes y confirmación",
+      "classification": "required",
+      "in_official_backup_allowlist": true
+    },
+    {
+      "table": "motor_d_bridge_status",
+      "engine": "D",
+      "purpose": "último estado del puente",
+      "classification": "telemetry",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "gemini_github_pull_status",
+      "engine": "Gemini",
+      "purpose": "cursor de importación y verificación, SHA más reciente",
+      "classification": "required",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "bc_stage_execution_receipts_v1",
+      "engine": "B/C",
+      "purpose": "historial de ejecución y diagnóstico",
+      "classification": "telemetry",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "engine_telemetry_snapshots_v1",
+      "engine": "A/B/C/D/ChatGPT/Gemini",
+      "purpose": "histórico de métricas consolidadas",
+      "classification": "telemetry",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "motor_b_latest",
+      "engine": "B",
+      "purpose": "estado histórico de lector",
+      "classification": "legacy_telemetry",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "motor_c_local_latest",
+      "engine": "C",
+      "purpose": "estado histórico de lector",
+      "classification": "legacy_telemetry",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "motor_b_runs",
+      "engine": "B",
+      "purpose": "historial del lector anterior",
+      "classification": "legacy_telemetry",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "motor_c_local_runs",
+      "engine": "C",
+      "purpose": "historial del lector anterior",
+      "classification": "legacy_telemetry",
+      "in_official_backup_allowlist": false
+    },
+    {
+      "table": "free_public_source_runs",
+      "engine": "A",
+      "purpose": "histórico de corridas de fuente",
+      "classification": "telemetry",
+      "in_official_backup_allowlist": true
+    },
+    {
+      "table": "public_feed_manifests",
+      "engine": "Publicador",
+      "purpose": "manifiestos y punteros de visibilidad",
+      "classification": "required",
+      "in_official_backup_allowlist": true
+    },
+    {
+      "table": "public_feed_versions",
+      "engine": "Publicador",
+      "purpose": "versiones del catálogo de ofertas",
+      "classification": "required",
+      "in_official_backup_allowlist": true
+    }
+  ],
+  "identity_gap": "Current exporter uses db.list without appdeploy_system_id. Restore must verify physical database identities where they can differ from logical payload id.",
+  "consistency_gap": "Current exporter is rolling non-atomic. A revision check is valid only for writers participating in the revision protocol."
+}

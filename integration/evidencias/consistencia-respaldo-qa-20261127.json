@@ -1,0 +1,47 @@
+{
+  "qa": {
+    "app_id": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "tested_snapshot": "1795776378029",
+    "restored_snapshot": "1795554937385",
+    "temporary_endpoint_after_rollback_http": 404,
+    "cron": null
+  },
+  "method": "Strongly consistent reads of known row IDs, monotonic revision read before and after the export, writer updates rows and revision in the same transaction, receipt conditional on unchanged revision.",
+  "result": {
+    "first": {
+      "ok": true,
+      "replay": false,
+      "rejected": {
+        "accepted": false,
+        "before": 1,
+        "after": 2,
+        "observedRevisions": [
+          1,
+          2
+        ]
+      },
+      "id": "proof",
+      "pages": 3,
+      "publishedRevision": 2,
+      "rejectedMixedCopy": true,
+      "rows": 5,
+      "sha256": "e44e7e47f33b09c218522bee17d6ba9af89af93f25f7d124e1913efaed2cb442"
+    },
+    "replay": {
+      "ok": true,
+      "replay": true,
+      "id": "proof",
+      "pages": 3,
+      "publishedRevision": 2,
+      "rejectedMixedCopy": true,
+      "rows": 5,
+      "sha256": "e44e7e47f33b09c218522bee17d6ba9af89af93f25f7d124e1913efaed2cb442"
+    }
+  },
+  "limitations": [
+    "Synthetic five-row fixture; deliberate interleaving between reads",
+    "No application writer is yet required to update this revision",
+    "Does not cover enumeration or storage snapshots under writes",
+    "No production mutation"
+  ]
+}

@@ -40,3 +40,10 @@ test('unreadable OCR evidence stays available for review instead of being discar
  assert.equal(r.decisions.needs_source_evidence,1);
  assert.equal(f.checkpoints[0].resolved[url].state,'needs_source_evidence');
 });
+
+test('independent HTML failure does not prevent idle B assistance',async()=>{
+ const f=fixture({}, {htmlError:true});const r=await f.run();
+ assert.deepEqual(f.calls,[[0,0]]);assert.equal(r.partial,true);
+ assert.equal(f.receipts.find(x=>x.engine==='C').status,'failed');
+ assert.equal(f.receipts.find(x=>x.engine==='B').status,'completed');
+});

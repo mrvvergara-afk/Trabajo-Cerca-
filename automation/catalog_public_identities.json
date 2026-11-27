@@ -2,16 +2,16 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-27T18:56:25+00:00",
+  "generated_at": "2026-11-27T22:53:05+00:00",
   "complete": true,
-  "totalItemsReported": 295,
-  "jobIdentityCount": 291,
+  "totalItemsReported": 296,
+  "jobIdentityCount": 292,
   "nonJobItemsExcluded": 4,
   "identityScope": "job_offer_only; totalItemsReported includes other public kinds",
-  "visibleIn12CommunesCount": 113,
+  "visibleIn12CommunesCount": 114,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "54148b2d1e8ede63bd7121c5e613d2e65874ddc86f637924c7ad4f01f159be8e",
+  "fingerprint": "cad7466d6085f0b7786f9b6a0156a4ab826550a227f8554bd7fb20cf3a394ebc",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -985,6 +985,17 @@
       "urlHashSha256": "465c77761224e30a83cbac85c5919ded8a47b7fa0ac265c1d6029496f60cf585"
     },
     {
+      "id": "chatgpt_d_47288eca64242952a501",
+      "title": "Rigger - Angol",
+      "company": "Empresa de grúas",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/rigger-angol-3940244",
+      "urlHashSha256": "47288eca64242952a50131edd2dd90ca7b781757e2e1b332238dceac4ba983bf"
+    },
+    {
       "id": "chatgpt_d_4bdcac8ef560f0fe716d",
       "title": "Cajero/a Asistente Integral – Temporada Navidad – Angol",
       "company": "Fashion's Park",
@@ -1314,17 +1325,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/reemplazo-secretaria-o-contable-aft-pf-ercilla-3849478",
       "urlHashSha256": "cafadb8a86d09015704899fe1b3bfa7e244809699b634891936c93c1d9934c70"
-    },
-    {
-      "id": "e84d3815-1a88-49ee-9ad4-a52aebf3e293",
-      "title": "Supervisor Técnico de Obra - Mulchén",
-      "company": "Aguas Andinas",
-      "workCommunes": [
-        "Mulchén"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
-      "urlHashSha256": "970437a2ef96421bbc171863c478a3172ae91ac7aefc5cd70080355d4fcb35a4"
     },
     {
       "id": "eb54af21-eccd-4e3c-ace2-d06da87235c3",
@@ -1789,6 +1789,17 @@
       "urlHashSha256": "ddad4ab0c134985d4f9c80bb0590c015df61885c539e8b211dbd0f5314f6f4db"
     },
     {
+      "id": "free-3fba47530376cc60f714e881756b58f00a7636cd",
+      "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
+      "company": "Empresa de alimentos",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+      "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
+    },
+    {
       "id": "free-3ff47957892f9c91c43887029ef188fad6b55713",
       "title": "Vendedor@s con experiencia Terreno Telecomunicaciones, Pos Pago, Intangibles",
       "company": "Empresa Venta Terreno",
@@ -1985,6 +1996,17 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-atencion-publico-sucursal-temuco-3928272",
       "urlHashSha256": "a076cf5993fd714ea4f39f417025ea4bd4b458315911d23c4571811994b4da9e"
+    },
+    {
+      "id": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
+      "title": "Supervisor Técnico de Obra - Mulchén",
+      "company": "Aguas Andinas",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
+      "urlHashSha256": "970437a2ef96421bbc171863c478a3172ae91ac7aefc5cd70080355d4fcb35a4"
     },
     {
       "id": "free-5656d92711f693c876be6cdbdac3e750a380c782",
@@ -3195,17 +3217,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/vvendedor-en-terreno-angol-victoria-traiguen-3916595",
       "urlHashSha256": "688f28c809dc3463f046fab29977d6012c4887f1455555d8c72f105714262867"
-    },
-    {
-      "id": "tcq_8e10d10d8dedf4b7e3b9c1",
-      "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
-      "company": "Empresa de alimentos",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
-      "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
     },
     {
       "id": "tcq_e2265a52410f086a0dcb71",

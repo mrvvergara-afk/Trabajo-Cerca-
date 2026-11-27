@@ -220,6 +220,11 @@
       "candidateSha256": "31587e5d3be34882b4959bc841a462818b17ed188d1b8b9e990e2041ebe16dd3"
     },
     {
+      "path": "src/App.tsx",
+      "baseSha256": "ed597e3374109751a312063748a9590237e578d95b96ccd44267f7a5766dd706",
+      "candidateSha256": "fb29280986e5086059d8c0063c61ee9831ac0e4f6a2dbbfcc53057ce67f84305"
+    },
+    {
       "path": "src/backup-crypto.ts",
       "baseSha256": "21f771cf1a2a3910f20f421c479392b98573257f0f550a51ae6c545c5b852206",
       "candidateSha256": "ab3ffa4b42c9d90903de62ca7fec0afff2edaec5b3c8350342d710a8be63e30b"
@@ -266,5 +271,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "366b0a113005ade782a6b8c08cda257fccb940d728d35f2a3f71322e88ea0df2"
+  "payloadSha256": "ea9a2e865e8ded6128e6b8e6db00e4aceaad0bacf18f7cff71a79168d2772488"
 }

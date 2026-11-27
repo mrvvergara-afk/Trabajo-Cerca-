@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 47,
-  "payloadSha256": "366b0a113005ade782a6b8c08cda257fccb940d728d35f2a3f71322e88ea0df2",
+  "runtimeFiles": 48,
+  "payloadSha256": "ea9a2e865e8ded6128e6b8e6db00e4aceaad0bacf18f7cff71a79168d2772488",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -12,7 +12,8 @@
   "productionWrites": 0,
   "appDeployCalls": 0,
   "differencesFromPreviouslyTestedPayload": [
-    "backend/chatgpt-direct-import.ts"
+    "backend/chatgpt-direct-import.ts",
+    "src/App.tsx"
   ],
   "local": {
     "viteBuild": "passed",
@@ -72,6 +73,23 @@
       "productionWrites": 0,
       "appDeployCalls": 0,
       "externalNetworkRequests": 0
+    },
+    "publicExperience": {
+      "scope": "local_chromium_simulated_api",
+      "script": "verification/tests/browser/experience.mjs",
+      "viewportWidthsPx": [
+        320,
+        375,
+        430,
+        1440
+      ],
+      "expectedPrimaryVerifiedJobs": 2,
+      "previousPrimaryVerifiedJobs": 3,
+      "currentPrimaryVerifiedJobs": 2,
+      "includesBothAssignedCommunesInFilters": true,
+      "excludesComplementaryAndUnverifiedFromPrimaryTotal": true,
+      "administrationHiddenForGuest": true,
+      "noHorizontalOverflow": true
     }
   },
   "pending": [

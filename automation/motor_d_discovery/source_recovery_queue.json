@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-26T16:43:22.538538-03:00",
+  "source_scan_date": "2026-11-26T23:56:30.271358-03:00",
   "registered_total": 202,
-  "total_pending": 83,
+  "total_pending": 81,
   "group_counts": {
-    "failed_public_source": 11,
+    "failed_public_source": 9,
     "partial_index": 2,
     "regional_query": 2,
     "restricted_job_portal": 38,
@@ -15,7 +15,7 @@
   "no_blocked_or_unread_source_claimed_recovered": true,
   "per_commune": {
     "Angol": {
-      "pending": 26,
+      "pending": 25,
       "high_priority": 5
     },
     "Collipulli": {
@@ -23,7 +23,7 @@
       "high_priority": 6
     },
     "Ercilla": {
-      "pending": 16,
+      "pending": 15,
       "high_priority": 5
     },
     "Lumaco": {
@@ -31,11 +31,11 @@
       "high_priority": 5
     },
     "Los Sauces": {
-      "pending": 17,
+      "pending": 16,
       "high_priority": 5
     },
     "Purén": {
-      "pending": 16,
+      "pending": 17,
       "high_priority": 5
     },
     "Renaico": {
@@ -218,6 +218,20 @@
       "recovered": false
     },
     {
+      "id": "178f8b8a9c2565ee9c9a",
+      "name": "Portal LinkedIn · Purén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Purén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
       "id": "26e7f4c16c97f94e0cb9",
       "name": "Auditoría Empleos Públicos - Enfermera Diálisis Hospital Angol",
       "url": "https://www.empleospublicos.cl/pub/convocatorias/avisopizarronficha.aspx?i=125294",
@@ -271,34 +285,6 @@
       "recovered": false
     },
     {
-      "id": "361f692c40d13907f684",
-      "name": "Portal LinkedIn · Ercilla",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Ercilla"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "41ee43e2357d46fe9d44",
-      "name": "Portal LinkedIn · Angol",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
       "id": "4330eac222635c780d2a",
       "name": "CMPC empleo",
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
@@ -315,20 +301,6 @@
         "Victoria",
         "Mulchén",
         "Negrete"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "5bc54af1a733786aeb73",
-      "name": "Portal LinkedIn · Los Sauces",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Los Sauces"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

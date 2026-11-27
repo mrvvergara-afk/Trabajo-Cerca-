@@ -66,7 +66,7 @@ export async function runFastBCPipeline(){
   const deferredDocuments=documents?.deferredDocumentInputs??null;
   // Deferred retries remain in B's queue. Only runnable or leased work
   // reserves B's capacity for this cycle.
-  const bIdleAssist=!partial&&pendingOtherDocuments===0&&result.processed===0&&availableDocuments===0
+  const bIdleAssist=pdfOutcome.status==='fulfilled'&&pendingOtherDocuments===0&&result.processed===0&&availableDocuments===0
     ?await assistMotorCWhenBIdle(result.processed,availableDocuments).catch(error=>({eligible:true,failed:true,error:String(error).slice(0,160)}))
     :null;
   if(bIdleAssist) console.warn('MOTOR_B_IDLE_ASSIST '+JSON.stringify(bIdleAssist));

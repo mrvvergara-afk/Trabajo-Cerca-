@@ -1,0 +1,24 @@
+# Candidata integrada de Trabajo Cerca
+
+La base oficial es `1795744970786`. El manifiesto fija la aplicación, la base, las huellas de cada archivo y el snapshot para la reversión de código. El paquete aplica 46 archivos, incluidos 27 fragmentos del modelo OCR español. Las pruebas se ejecutan fuera del paquete. La candidata conserva el catálogo, las rutas, la autenticación, las tareas programadas y el carrusel vigente de la base. La configuración del carrusel reconoce como laboratorio únicamente `trabajo-cerca-qa-sdk-aislado-lykn7b`.
+
+## Verificación
+
+- Vite 8.3.8 compila la interfaz con el cliente de prueba. Los iconos PWA pasan su comprobación de dimensiones y referencias.
+- 41 pruebas Node cubren las etapas B/C, el límite y la prioridad de reintentos, las ubicaciones explícitas y los requisitos que mencionan trabajo, el OCR local, la confirmación de importación ChatGPT, la integridad y la recuperación cifrada. 17 pruebas adicionales pasan en el ejecutor de despliegue. Python ejecuta 441 casos, con 434 aprobados y 7 omitidos.
+- Chromium comprueba los detalles y el historial B/C a 320, 375, 430 y 1440 píxeles. En C distingue enlaces detectados de páginas procesadas y los gráficos muestran escala por volumen diario.
+- El documento real de Negrete produjo 4.921 caracteres mediante OCR local en español y reconoció el cargo y la comuna. Los ensayos previos de AppDeploy acreditan la primera visibilidad de ese aviso en QA y la restauración de cinco registros y un archivo de un conjunto de prueba.
+- El exportador cifra y conserva claves físicas. Si el servidor cambia de versión entre páginas, la copia se interrumpe y mantiene el avance cifrado anterior. Las lecturas del exportador siguen siendo paginadas y pueden coincidir con escrituras de la misma versión. La copia atómica requiere la pausa que aplica AppDeploy.
+
+- AppDeploy compiló la candidata en QA en `1795804026239`, con tres diferencias propias del ensayo: el manifiesto de reconciliación usa la base propia de QA, el icono táctil apunta a su SVG existente y Metricool permanece en modo de laboratorio. La ruta temporal de ensayo pertenece exclusivamente a QA. El carrusel oficial mostró las seis láminas con `object-fit: contain`. QA emitió 404 de algunos recursos del carrusel porque su almacenamiento se prueba sin copiar datos de producción.
+- La ficha real de Angol pasó de `worksite_missing_or_multiple` a verificada al corregir la interpretación de un requisito sobre la temática del programa. El Motor C retomó la decisión anterior. La API pública de QA devolvió una sola ficha verificada de Angol, y la API del catálogo informó 49 verificadas sin degradación. El hallazgo se reprodujo con un traspaso controlado al Motor C, con lectura de la fuente original, y se documentó en `evidencia-verificacion.json`.
+- El ensayo combinado recuperó cinco registros y un archivo en el SDK de QA, mantuvo el objeto de la revisión anterior y rechazó una huella de archivo incorrecta. El respaldo oficial completo del corte activo y su restauración independiente siguen pendientes.
+
+## Despliegue y recuperación
+
+1. Confirmar en AppDeploy que la versión activa es `1795744970786`. Exportar su código y ejecutar `node preparar.mjs <directorio-base> > payload.json`. El script coteja las huellas de las rutas afectadas y protegidas. No contacta AppDeploy. No ejecutar ninguna actualización si la versión cambió.
+2. Completar controles de recuperación del repositorio. Crear una copia nativa consistente, comprobar su restauración en un destino autorizado y aislado, mantener un recibo con conteos de registros y archivos y completar la prueba autenticada del panel. En la consola hay una copia consistente del 26/11 sobre `1795664276412`. La restauración que ofrece esa consola actúa sobre la aplicación de origen. El último código oficial y esa copia corresponden a momentos distintos.
+3. Tras superar los controles, enviar el paquete en una sola actualización a `trabajo-cerca-laboratorio-3ojgro`. El paquete no configura tareas ni incluye código de ensayo. Verificar estado listo, catálogo sin degradación, protección de las rutas administrativas y carrusel. Confirmar una publicación nueva desde un productor antes de contabilizarla como éxito.
+4. Si el código falla, restaurar `1795744970786` y volver a cotejar el catálogo. La recuperación de datos procede del respaldo nativo verificado y se decide con el inventario de cambios válidos posteriores a la copia.
+
+El estado del paquete sigue pendiente de promoción. El ejecutor automático `tc-release-v1` admite hasta 15 rutas modificadas. Esta candidata usa el formato completo de AppDeploy en un solo paquete, sujeto a las mismas condiciones de recuperación y autorización. No se ejecutó el paso 3 en la aplicación oficial.

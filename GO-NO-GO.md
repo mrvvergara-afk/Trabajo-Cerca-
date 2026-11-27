@@ -1,13 +1,13 @@
-# Registro de aceptación
+# Estado de la entrega integrada
 
-| Control | Estado | Evidencia y pendiente |
-|---|---|---|
-| BASE | Parcial | Producción observada en `1795744970786`. Se conciliaron archivos B/C acotados. Falta fijar el paquete integrado contra la base oficial. |
-| BC | Parcial | La candidata compiló en QA, pasó 26 pruebas locales y el Motor B reanudó una cola sintética restaurada sin duplicar trabajo. |
-| QA-PUB | Parcial | Negrete visible en QA con traspaso controlado. La confirmación de ChatGPT se verificó con un feed sintético paginado. Falta el flujo real completo. |
-| DR | Parcial | Ensayos aislados de cifrado, restauración entre invocaciones, detección de revisiones mezcladas e identidad física aprobados. El respaldo v3 agrega siete tablas; en QA se restauraron tablas y un archivo de una revisión fijada mientras se publicó otra. Falta integrar la coordinación en los escritores de la candidata y validar la recuperación de las entidades fuera del exportador. |
-| ADS | Abierto | La punta publicitaria observada está registrada en el manifiesto. Falta conciliarla con el paquete integrado. |
-| TRANSFER | Parcial | SHA de Gemini contrastado con producción, último ciclo observado a las 13:13 UTC del 27/11, con cero publicaciones. Pasaron 33 pruebas locales del contrato de ChatGPT. ChatGPT conserva SHA en recibos nuevos y recupera un recibo legado, acreditado con entradas sintéticas; falta evidencia con productor real. |
-| RELEASE | Pendiente | Producción sigue fuera del ensayo. Promoción condicionada a recuperación representativa y validación del flujo integrado. |
+El paquete fue preparado sobre el código oficial `1795744970786`. Los controles del despliegue siguen cerrados hasta comprobar el respaldo nativo consistente y su restauración independiente.
 
-Las pruebas no reactivan el rastreo independiente ni los cron de QA. El ensayo se retiró y QA volvió a su snapshot de reposo.
+| Control | Resultado |
+|---|---|
+| Integración y compilación | 46 archivos en el paquete. Vite 8 y compilación AppDeploy en QA. |
+| B/C y telemetría | OCR de un documento de Negrete, recuperación de rechazos del verificador en C e historial móvil de B/C. |
+| Publicación | Ficha real de Angol nueva en QA, confirmada por la API y sin duplicado al repetir. La entrada al Motor C fue controlada. |
+| Importadores | Cambio de recibos ChatGPT cubierto por pruebas. El recorrido autónomo con un lote real nuevo de ChatGPT y Gemini queda pendiente de verificación. |
+| Recuperación | Cinco registros y un archivo de prueba recuperados con el SDK real. Pendientes la copia nativa actual, su restauración independiente y el panel autenticado con datos reales. |
+| Publicidad | Seis láminas observadas en la aplicación oficial. Algunos medios faltaban en el almacenamiento aislado de QA. |
+| Producción | Versión publicada `1795744970786`. El paquete y la reversión están en [la entrega](integration/release-1795744970786/README.md). |

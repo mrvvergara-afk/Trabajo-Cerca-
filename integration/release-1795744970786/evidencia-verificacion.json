@@ -1,0 +1,89 @@
+{
+  "dateAmericaSantiago": "2026-11-27",
+  "production": {
+    "appId": "trabajo-cerca-laboratorio-3ojgro",
+    "snapshot": "1795744970786",
+    "mutatedByRelease": false,
+    "publicRead": {
+      "verifiedOffersGlobal": 291,
+      "firstPageRows": 19,
+      "degraded": false
+    },
+    "carousel": {
+      "slidesObserved": 6,
+      "fit": "contain"
+    },
+    "latestNativeConsistentBackup": {
+      "snapshot": "1795664276412",
+      "date": "2026-11-26",
+      "status": "ready"
+    },
+    "nativeRestoreToIndependentAppVerified": false,
+    "authenticatedAdminE2eVerified": false
+  },
+  "local": {
+    "nodeCandidatePassed": 41,
+    "nodeReleaseRunnerPassed": 17,
+    "pythonPassed": 434,
+    "pythonSkipped": 7,
+    "vite": "8.3.8",
+    "pwaContractPassed": true,
+    "chromiumPanelWidths": [
+      320,
+      375,
+      430,
+      1440
+    ],
+    "realDocumentOcr": {
+      "commune": "Negrete",
+      "characters": 4921,
+      "jobAndCommuneRead": true
+    },
+    "changedBaselineRejected": true
+  },
+  "qa": {
+    "appId": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "candidateSnapshot": "1795804026239",
+    "buildPassed": true,
+    "scheduledJobsEnabled": false,
+    "negreteExistingOffer": {
+      "verifiedByPublicApi": true,
+      "visibleBefore": true,
+      "visibleAfter": true,
+      "duplicatesCreated": 0
+    },
+    "angolNewOffer": {
+      "controlledHandoff": true,
+      "readOriginalSource": true,
+      "source": "https://www.chiletrabajos.cl/trabajo/trabajador-social-reemplazo-jornada-completa-programa-prm-angol-la-araucania-3939921",
+      "firstAttemptReason": "worksite_missing_or_multiple",
+      "retryVerified": true,
+      "id": "free-06640fa233af493e299042797e1ffddf453476db",
+      "communes": [
+        "Angol"
+      ],
+      "deadline": "2027-02-10T13:18:27.000Z",
+      "visibleBefore": false,
+      "visibleAfter": true,
+      "verifiedByPublicApi": true,
+      "copiesOnFirstPage": 1,
+      "replayAlreadySeen": true,
+      "verifiedQaOffers": 49,
+      "feedDegraded": false
+    },
+    "databaseAndStorageRestore": {
+      "testData": true,
+      "rows": 5,
+      "files": 1,
+      "revision": 1,
+      "corruptedReferenceRejected": true,
+      "previousBytesPreserved": true
+    },
+    "codeRollback": {
+      "snapshot": "1795554937385",
+      "status": "ready",
+      "temporaryProofSourceRemoved": true,
+      "scheduledJobsEnabled": false
+    }
+  }
+}

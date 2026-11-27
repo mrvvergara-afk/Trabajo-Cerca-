@@ -1,0 +1,49 @@
+{
+  "candidate_commit": "c2565d624fccc834b0067dbe2c101a6c5bb3c8e9",
+  "production_snapshot_observed": "1795744970786",
+  "scope": "actual_candidate_bridge_with_real_appdeploy_db_and_synthetic_producer_projection_and_paged_feed",
+  "qa": {
+    "app_id": "trabajo-cerca-qa-sdk-aislado-lykn7b",
+    "tested_snapshot": "1795790833634",
+    "restored_snapshot": "1795554937385",
+    "cron": null,
+    "temporary_route_http_after_rollback": 404
+  },
+  "results": {
+    "first": {
+      "ok": true,
+      "replay": false,
+      "id": "proof",
+      "restoredReceipts": 1,
+      "batchesRecognized": 2,
+      "legacyWithoutSha": 1,
+      "candidateQueued": 1,
+      "indexSha": "226c3fbb22ab2e1f2609a285deae5e82e984e0cc",
+      "batchSha": "6e948cc766a6ba73dc80a781331337ee5296865a",
+      "degradedFeedConfirmed": 0,
+      "wrongCommuneConfirmed": 0,
+      "correctFeedConfirmed": 1,
+      "confirmedAgain": 0
+    },
+    "replay": {
+      "ok": true,
+      "replay": true,
+      "batchSha": "6e948cc766a6ba73dc80a781331337ee5296865a",
+      "batchesRecognized": 2,
+      "candidateQueued": 1,
+      "confirmedAgain": 0,
+      "correctFeedConfirmed": 1,
+      "degradedFeedConfirmed": 0,
+      "id": "proof",
+      "indexSha": "226c3fbb22ab2e1f2609a285deae5e82e984e0cc",
+      "legacyWithoutSha": 1,
+      "restoredReceipts": 1,
+      "wrongCommuneConfirmed": 0
+    }
+  },
+  "boundaries": [
+    "GitHub transport and direct import implementation were replaced with fixture adapters.",
+    "Feed data and territory are synthetic. No real publication or discovery is asserted.",
+    "No production mutation or producer reactivation."
+  ]
+}

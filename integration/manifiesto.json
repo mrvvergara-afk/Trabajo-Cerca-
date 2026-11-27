@@ -9,5 +9,12 @@
   "evidence_blobs": {
     "bc": "4717c1d02551eea6c2f7fd361fb2dbff386d6a70",
     "negrete": "4ce119eb30464f99a0230553fc5f1c60d28f38a7"
+  },
+  "latest_observed": {
+    "stage": "c2565d624fccc834b0067dbe2c101a6c5bb3c8e9",
+    "ads": "3676c1e1c944fc67577a541aae6b22028859b81c",
+    "main": "be3f4aee2a9696c51fd128b7eb22250a0826cf8d",
+    "production": "1795744970786",
+    "consolidated": false
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "phase": "recovery_writer_integration",
-  "next": "Probar una copia representativa con coordinación de escritores y archivos, ampliar reanudación al puente y publicación, y confirmar recuperación de plataforma antes de decisión de promoción.",
+  "next": "Coordinar escritores de los motores y del publicador durante un respaldo con tablas y archivos, probar la restauración representativa en QA y verificar un flujo con productor y publicador reales antes de promover.",
   "production_mutation_allowed": false,
   "qa_cron_allowed": false,
   "validated_evidence": [
@@ -9,6 +9,7 @@
     "recuperacion-entre-invocaciones-20261127.json",
     "consistencia-respaldo-qa-20261127.json",
     "respaldo-v3-identidad-qa-20261127.json",
-    "reanudacion-motor-b-qa-20261127.json"
+    "reanudacion-motor-b-qa-20261127.json",
+    "reanudacion-puente-chatgpt-qa-20261127.json"
   ]
 }

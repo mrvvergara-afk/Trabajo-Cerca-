@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-27T15:55:25.707022-03:00",
+  "last_run": "2026-11-27T19:09:45.975052-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -11736,6 +11736,126 @@
       "first_seen": "2026-11-27T15:55:25.707022-03:00",
       "url": "https://ssan.redsalud.gob.cl/trabaje-con-nosotros/conductor-a-de-ambulancia-jornada-diurna-2/",
       "source": "Salud Araucanía Norte",
+      "commune": null
+    },
+    "5ad60cf03f2a78aeec4f": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-cocina-en-nunoa-comuna-nunoa-3084762.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "16508cc5f2ba0422d5b4": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-de-cocina-en-san-joaquin-comuna-san-joaquin-3084761.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "05ca9c0895e2f60a84db": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-produccion-alimentos-para-san-bernardo-570000-colacion-bus-de-acercamiento-turnos-rotativos-am-pm-noche-3084760.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9375bde056e176fe8501": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/gestor-de-alianzas-estrategicas-publico-privado-santiago-cupo-fijo-full-time-3084759.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "96c661373ae652231801": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/secretaria-de-gerencia-general-agf-servicios-transitorios-3084758.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e912151a2d72b4df9ce0": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-planificacion-y-control-de-mantencion-reemplazo-3084757.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "0b652949de83344dbc92": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/buscamos-supervisor-a-de-cobranza-santiago-centro-3084756.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d399252ff109fad38829": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativo-de-cuentas-3084755.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "4310d52d4471765495f5": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutiva-de-venta-telefonica-rubro-canal-moderno-3084754.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "69735865aac9e00a66c4": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ingeniero-en-infraestructura-ti-3084753.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8818af98fac30b8f9362": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/administrativo-a-servicios-transitorios-3084752.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9d7c2fc4d4fd1cf37ba3": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-administrativo-3084751.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "81de6b5a21948b991797": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/oferta-practica-laboral-3084750.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "80e7aa3e2bb65cae7f37": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-recursos-humanos-3084749.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a7bfa5665bd701d8792c": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-de-finanzas-3084748.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "504392958ae9eb93c087": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-administrativo-3084747.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "265d4df6d771c99d3d92": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-recursos-humanos-3084746.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3858b5d4b560660f27d2": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/auditor-contable-3084745.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "59eca4439956f123dea3": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/mecanico-soldador-turno-am-o-pm-3084744.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "f25e350e9052c4906e00": {
+      "first_seen": "2026-11-27T19:09:45.975052-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-mecanico-maquinaria-pesada-pudahuel-3084743.html",
+      "source": "Inventario D04",
       "commune": null
     }
   }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-28T06:47:00.142513-03:00",
+  "source_scan_date": "2026-11-28T10:11:29.317206-03:00",
   "registered_total": 202,
   "total_pending": 86,
   "group_counts": {
@@ -19,11 +19,11 @@
       "high_priority": 5
     },
     "Collipulli": {
-      "pending": 17,
+      "pending": 16,
       "high_priority": 6
     },
     "Ercilla": {
-      "pending": 16,
+      "pending": 15,
       "high_priority": 5
     },
     "Lumaco": {
@@ -35,11 +35,11 @@
       "high_priority": 5
     },
     "Purén": {
-      "pending": 16,
+      "pending": 17,
       "high_priority": 5
     },
     "Renaico": {
-      "pending": 17,
+      "pending": 16,
       "high_priority": 5
     },
     "Traiguén": {
@@ -47,11 +47,11 @@
       "high_priority": 5
     },
     "Victoria": {
-      "pending": 17,
+      "pending": 18,
       "high_priority": 5
     },
     "Mulchén": {
-      "pending": 15,
+      "pending": 16,
       "high_priority": 6
     },
     "Negrete": {
@@ -218,6 +218,20 @@
       "recovered": false
     },
     {
+      "id": "178f8b8a9c2565ee9c9a",
+      "name": "Portal LinkedIn · Purén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Pur%C3%A9n%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Purén"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
       "id": "26e7f4c16c97f94e0cb9",
       "name": "Auditoría Empleos Públicos - Enfermera Diálisis Hospital Angol",
       "url": "https://www.empleospublicos.cl/pub/convocatorias/avisopizarronficha.aspx?i=125294",
@@ -285,20 +299,6 @@
       "recovered": false
     },
     {
-      "id": "361f692c40d13907f684",
-      "name": "Portal LinkedIn · Ercilla",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Ercilla%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Ercilla"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
       "id": "4330eac222635c780d2a",
       "name": "CMPC empleo",
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
@@ -329,20 +329,6 @@
       "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
       "communes": [
         "Los Sauces"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
-      "id": "790f1e381e46e12ce81f",
-      "name": "Portal LinkedIn · Collipulli",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Collipulli%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Collipulli"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -405,11 +391,11 @@
       "recovered": false
     },
     {
-      "id": "b66fcc53a9a46d116825",
-      "name": "Portal LinkedIn · Renaico",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Renaico%2C%20Chile&f_TPR=r3888000",
+      "id": "b6fdcc3d375d283f4f7b",
+      "name": "Portal LinkedIn · Mulchén",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Mulch%C3%A9n%2C%20Chile&f_TPR=r3888000",
       "communes": [
-        "Renaico"
+        "Mulchén"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -449,6 +435,20 @@
         "Mulchén",
         "Negrete",
         "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "d0dff4fb4776a3a53f1e",
+      "name": "Portal LinkedIn · Victoria",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Victoria%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Victoria"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

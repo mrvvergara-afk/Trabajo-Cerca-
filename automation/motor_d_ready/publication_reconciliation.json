@@ -1,29 +1,11 @@
 {
   "schema_version": 1,
   "scan_date": "2026-11-28",
-  "checked_at": "2026-11-28T04:21:52.280041+00:00",
-  "feed_complete": true,
-  "feed_rows": 296,
   "state": "needs_receipt_review",
-  "territory_mismatches_count": 3,
   "historical_missing_from_catalog": 3,
   "released_from_quarantine": 0,
   "released_items": [],
   "items": [
-    {
-      "id_fuente": "d_bf620420ab7734288092",
-      "cargo": "Supervisor Obra Civil",
-      "empresa": "Inmel Chile Spa",
-      "comunas": [
-        "Victoria"
-      ],
-      "url_original": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
-      "prior_batch_ids": [
-        "motor-d-20261123-41e88159a997af13d6"
-      ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery",
-      "catalog_status": "not_found_in_complete_feed"
-    },
     {
       "id_fuente": "d_24aa2b93041da064e5d2",
       "cargo": "Analista Tecnico",
@@ -35,8 +17,7 @@
       "prior_batch_ids": [
         "motor-d-20261123-41e88159a997af13d6"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery",
-      "catalog_status": "not_found_in_complete_feed"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
     },
     {
       "id_fuente": "d_62e23c5d9bc15004ccf2",
@@ -49,11 +30,20 @@
       "prior_batch_ids": [
         "motor-d-20261123-41e88159a997af13d6"
       ],
-      "next_action": "review_appdeploy_receipt_before_safe_recovery",
-      "catalog_status": "not_found_in_complete_feed"
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
+    },
+    {
+      "id_fuente": "d_bf620420ab7734288092",
+      "cargo": "Supervisor Obra Civil",
+      "empresa": "Inmel Chile Spa",
+      "comunas": [
+        "Victoria"
+      ],
+      "url_original": "https://www.chiletrabajos.cl/trabajo/supervisor-obra-civil-3471836",
+      "prior_batch_ids": [
+        "motor-d-20261123-41e88159a997af13d6"
+      ],
+      "next_action": "review_appdeploy_receipt_before_safe_recovery"
     }
-  ],
-  "resolved_published_items": [],
-  "confirmation_file": "publication_confirmation.json",
-  "semantic_only_requires_receipt": []
+  ]
 }

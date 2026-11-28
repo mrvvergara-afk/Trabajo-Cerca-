@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-28T00:17:16.802899-03:00",
+  "last_run": "2026-11-28T06:47:00.142513-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -11975,6 +11975,126 @@
     "e7db0b64bbdbe8362016": {
       "first_seen": "2026-11-28T00:17:16.802899-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/se-requieren-medicos-cirujanos-con-o-sin-experiencia-lunes-a-viernes-reemplazo-en-iquique-3084831.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "88245300b31d25f271cc": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/chofer-3084884.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5b8281f1dee2620915e6": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-pool-bp-santiago-plan-verano-3084883.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "08a5cfa867c0deba2ade": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/cajero-a-con-experiencia-en-bancoes-el-quisco-3084882.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7f95ba76e1c514beea60": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-envasado-independencia-colacion-movilizacion-3084881.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "69a8978f11321d2d00f2": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-fraccionado-quilicura-turnos-rotativos-3084880.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "7ad96fc7817646e70b44": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-supermercado-mayorista-santiago-centro-620000-3084879.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "5d634a5f9a0a18fd916a": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/recepcionista-corporativo-ingles-intermedio-avanzado-las-condes-3084878.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "a3777ad8e6cb6c769984": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-call-center-de-atencion-comercial-30-hs-turno-diurno-3084877.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "86369f2fe58eac7c1add": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-call-center-de-atencion-comercial-30-hs-turno-madrugada-3084876.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9abd5b167872a95ef648": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-de-exportaciones-agencia-de-aduanas-3084875.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2062b2f29288991466b7": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-de-exportaciones-agencia-de-aduanas-3084874.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "be203f3b4d38bc3bf3b7": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/experta-o-en-prevencion-de-riesgos-los-andes-3084873.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cd562e01f20e8fb10d81": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/experta-o-en-prevencion-de-riesgos-santiago-3084872.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cb0c15200d12b6c7d0ad": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/abogado-societario-corporativo-senior-3084871.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8f97ce346f0263dddf9e": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/coordinador-laboral-concepcion-3084870.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "c176a2c315508d0a7733": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/abogado-a-3084869.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "8d87d3e9312c41935e73": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-libertador-b-o-higgins/ordenadores-de-carros-de-supermercado-rancagua-fin-de-semana-fin-de-semana-3084868.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "454830a510f2c6e599b3": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/disenador-a-de-vestuario-junior-recoleta-1200000-liquido-mensual-aprox-3084867.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2967b3dd828ee8554fa2": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/dibujante-tecnico-junior-maestranza-3084866.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "bd2d24929500bdfb95af": {
+      "first_seen": "2026-11-28T06:47:00.142513-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-marketing-digital-3084865.html",
       "source": "Inventario D04",
       "commune": null
     }

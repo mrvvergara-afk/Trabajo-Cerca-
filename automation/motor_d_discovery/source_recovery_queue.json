@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "source_scan_date": "2026-11-28T00:17:16.802899-03:00",
+  "source_scan_date": "2026-11-28T06:47:00.142513-03:00",
   "registered_total": 202,
-  "total_pending": 84,
+  "total_pending": 86,
   "group_counts": {
-    "failed_public_source": 12,
+    "failed_public_source": 14,
     "partial_index": 2,
     "regional_query": 2,
     "restricted_job_portal": 38,
@@ -15,7 +15,7 @@
   "no_blocked_or_unread_source_claimed_recovered": true,
   "per_commune": {
     "Angol": {
-      "pending": 26,
+      "pending": 25,
       "high_priority": 5
     },
     "Collipulli": {
@@ -27,11 +27,11 @@
       "high_priority": 5
     },
     "Lumaco": {
-      "pending": 15,
+      "pending": 16,
       "high_priority": 5
     },
     "Los Sauces": {
-      "pending": 16,
+      "pending": 17,
       "high_priority": 5
     },
     "Purén": {
@@ -59,7 +59,7 @@
       "high_priority": 5
     },
     "Nacimiento": {
-      "pending": 17,
+      "pending": 18,
       "high_priority": 5
     }
   },
@@ -257,6 +257,20 @@
       "recovered": false
     },
     {
+      "id": "2d62de66c62bb79d6e4c",
+      "name": "Portal LinkedIn · Nacimiento",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Nacimiento%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Nacimiento"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
       "id": "33d40f93bf9432db64cd",
       "name": "Inventario M08",
       "url": "https://noticias.angol.cl/index.php/noticias",
@@ -285,20 +299,6 @@
       "recovered": false
     },
     {
-      "id": "41ee43e2357d46fe9d44",
-      "name": "Portal LinkedIn · Angol",
-      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Angol%2C%20Chile&f_TPR=r3888000",
-      "communes": [
-        "Angol"
-      ],
-      "status": "blocked_or_failed",
-      "recovery_group": "failed_public_source",
-      "priority_tier": 3,
-      "previously_verified_job_count": 0,
-      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
-      "recovered": false
-    },
-    {
       "id": "4330eac222635c780d2a",
       "name": "CMPC empleo",
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home?c=cmpc",
@@ -315,6 +315,20 @@
         "Victoria",
         "Mulchén",
         "Negrete"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "5bc54af1a733786aeb73",
+      "name": "Portal LinkedIn · Los Sauces",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Los%20Sauces%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Los Sauces"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",
@@ -368,6 +382,20 @@
       "url": "https://muevete.falabella.com/",
       "communes": [
         "Angol"
+      ],
+      "status": "blocked_or_failed",
+      "recovery_group": "failed_public_source",
+      "priority_tier": 3,
+      "previously_verified_job_count": 0,
+      "next_action": "Check public official equivalent, RSS or authorized API; record HTTP failure and retry via normal public access.",
+      "recovered": false
+    },
+    {
+      "id": "ac864a211d99933b8ef1",
+      "name": "Portal LinkedIn · Lumaco",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=&location=Lumaco%2C%20Chile&f_TPR=r3888000",
+      "communes": [
+        "Lumaco"
       ],
       "status": "blocked_or_failed",
       "recovery_group": "failed_public_source",

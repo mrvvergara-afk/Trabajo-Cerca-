@@ -72,6 +72,7 @@ import { revalidateReviewedDocuments, documentRevalidationStatus } from './docum
 import { reviewedReceiver } from './reviewed-receiver';
 import { SECURITY_POLICY, denyRemoteCapabilities, checkedLegacyFetch, opaqueOwnerToken } from './security-policy';
 import { publicQuota } from './security-quota';
+import { observeVisibleJobs, type NotificationObservations } from './notification-visible-offers';
 
 const guardedAi = denyRemoteCapabilities(ai);
 const fetch = checkedLegacyFetch;
@@ -244,6 +245,7 @@ type NotificationPreference = {
 type NotificationDispatchState = {
   lastRunAt: string;
   updatedAt: string;
+  publicObservations?: NotificationObservations;
 };
 
 const POSTHOG_PROJECT_KEY = 'phc_BnfcP6mKc3J2438WPTonKWZnuFfC7RvQ9jFJwTbtPSVz';
@@ -771,8 +773,17 @@ function notificationPreferenceMatches(item: ListingRecord, pref: NotificationPr
 }
 
 async function getNotificationPreference(userId: string) {
-  const rows = await db.list<NotificationPreference>('notification_preferences', { limit:200 });
-  return rows.items.find(item => item.userId === userId);
+  let cursor: string | undefined;
+  const visited = new Set<string>();
+  for (let page = 0; page < 30; page++) {
+    const rows = await db.list<NotificationPreference>('notification_preferences', { limit:200, ...(cursor ? { nextToken:cursor } : {}) });
+    const match = rows.items.find(item => item.userId === userId);
+    if (match || !rows.nextToken) return match;
+    if (visited.has(rows.nextToken)) break;
+    visited.add(rows.nextToken);
+    cursor = rows.nextToken;
+  }
+  throw Error('Notification preference lookup incomplete');
 }
 
 async function saveNotificationPreference(userId: string, communes: string[], keywords: string[]) {
@@ -844,10 +855,6 @@ async function runNotificationSweep() {
   const nowIso = now.toISOString();
   const stateRows = await db.list<NotificationDispatchState>('notification_dispatch_state', { limit:1 });
   const state = stateRows.items[0];
-  if (!state?.lastRunAt) {
-    await writeSingleRecord('notification_dispatch_state', { lastRunAt:nowIso, updatedAt:nowIso });
-    return { initialized:true, offers:0, matchedUsers:0, sent:0, failed:0 };
-  }
   const prefs: NotificationPreference[] = [];
   let token: string | undefined;
   for (let page=0; page<30; page++) {
@@ -859,23 +866,33 @@ async function runNotificationSweep() {
   if (token) throw Error('Notification preference scan incomplete');
   // Read the actual public manifest, not a truncated internal source table.
   const feedSummary=await readPublicFeedSummary();
-  if (feedSummary.rebuilding===true) return { skipped:true, reason:'feed_rebuilding', offers:0, matchedUsers:0, sent:0, failed:0 };
+  if (feedSummary.rebuilding===true || typeof feedSummary.manifestId!=='string')
+    return { skipped:true, reason:'feed_rebuilding', offers:0, matchedUsers:0, sent:0, failed:0 };
   const visible: ListingRecord[] = [];
-  let cursor: string | undefined;
+  let cursor: string | undefined = 'v2:'+feedSummary.manifestId+':0';
   for (let page=0; page<100; page++) {
     const feed=await readPublicFeedPage(cursor);
     if (!feed || !Array.isArray(feed.items)) throw Error('Notification public feed unavailable');
     for (const row of feed.items) {
       const item=row as unknown as ListingRecord;
-      if (item.kind==='job_offer' && item.verified===true && item.review!==true && Array.isArray(item.workCommunes) && Array.isArray(item.tags)) visible.push(item);
+      if (item.kind==='job_offer' && !offerRetentionReason(row, now.getTime()) && Array.isArray(item.workCommunes) && Array.isArray(item.tags)) visible.push(item);
     }
     cursor=feed.nextCursor;
     if (!cursor) { if (feed.hasMore) throw Error('Notification public feed cursor missing'); break; }
   }
   if (cursor) throw Error('Notification public feed scan incomplete');
   const floor=now.getTime()-48*3600000;
+  const { observations, offers } = observeVisibleJobs(visible, state?.publicObservations, now.getTime(), floor);
+  if (!state?.lastRunAt) {
+    await writeSingleRecord('notification_dispatch_state', { lastRunAt:nowIso, updatedAt:nowIso, publicObservations:observations });
+    return { initialized:true, offers:0, matchedUsers:0, sent:0, failed:0 };
+  }
   const globalSince=Date.parse(state.lastRunAt);
   if (!Number.isFinite(globalSince)) throw Error('Notification dispatch cursor invalid');
+  // Persist new public appearances before sending, so a retry keeps their original time.
+  if (JSON.stringify(observations)!==JSON.stringify(state.publicObservations)) {
+    await writeSingleRecord('notification_dispatch_state', { lastRunAt:state.lastRunAt, updatedAt:nowIso, publicObservations:observations });
+  }
   let matchedUsers=0, sent=0, failed=0, pending=0;
   const uniquePrefs=[...new Map(prefs.map(pref=>[pref.userId,pref])).values()];
   for (let offset=0; offset<uniquePrefs.length; offset+=50) {
@@ -886,10 +903,7 @@ async function runNotificationSweep() {
       const last=Date.parse(checkpoints[i]?.lastRunAt||state.lastRunAt);
       const created=Date.parse(pref.createdAt);
       const since=Math.max(floor,Number.isFinite(last)?last:globalSince,Number.isFinite(created)?created:floor);
-      const matches=visible.filter(item=>{
-        const ts=Date.parse(item.firstVerifiedAt||item.verifiedAt||item.createdAt);
-        return Number.isFinite(ts)&&ts>since&&ts<=now.getTime()&&notificationPreferenceMatches(item,pref);
-      });
+      const matches=offers.filter(({item,at})=>at>since&&notificationPreferenceMatches(item,pref)).map(({item})=>item);
       let accepted=!matches.length;
       if(matches.length) {
         matchedUsers++;
@@ -913,7 +927,7 @@ async function runNotificationSweep() {
       if(!accepted) pending++;
     }
   }
-  await writeSingleRecord('notification_dispatch_state',{lastRunAt:nowIso,updatedAt:nowIso});
+  await writeSingleRecord('notification_dispatch_state',{lastRunAt:nowIso,updatedAt:nowIso,publicObservations:observations});
   const result={initialized:false,offers:visible.length,matchedUsers,sent,failed,pending,checkedAccounts:uniquePrefs.length};
   await db.add('notification_dispatch_log',[{checkedAt:nowIso,...result}]);
   return result;

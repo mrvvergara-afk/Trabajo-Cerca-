@@ -1,13 +1,13 @@
 # Candidata integrada de Trabajo Cerca
 
-La base oficial es `1795744970786`. El manifiesto fija la aplicación, la base, las huellas de cada archivo y el snapshot para la reversión de código. El paquete aplica 58 archivos, incluidos 27 fragmentos del modelo OCR español. Las pruebas se ejecutan fuera del paquete. La candidata conserva el catálogo, las rutas, la autenticación, las tareas programadas y el carrusel vigente de la base. La configuración del carrusel reconoce como laboratorio únicamente `trabajo-cerca-qa-sdk-aislado-lykn7b`.
+La base oficial es `1795744970786`. El manifiesto fija la aplicación, la base, las huellas de cada archivo y el snapshot para la reversión de código. El paquete aplica 60 archivos, incluidos 27 fragmentos del modelo OCR español. Las pruebas se ejecutan fuera del paquete. La candidata conserva el catálogo, las rutas, la autenticación, las tareas programadas y el carrusel vigente de la base. La configuración del carrusel reconoce como laboratorio únicamente `trabajo-cerca-qa-sdk-aislado-lykn7b`.
 
 ## Verificación
 
-La versión unificada incorpora el registro de ofertas vencidas sin fecha original, el conteo de ofertas únicas en la portada de las 12 comunas y la recuperación de fotos institucionales desde una segunda ubicación. Vite 8, 49 pruebas y la reproducción local de lotes reales pasaron al ensamblar los 58 archivos. El nuevo paquete requiere su verificación en AppDeploy. [Evidencia local](evidencia-paquete-unificado.json).
+La versión unificada incorpora el registro de ofertas vencidas sin fecha original, el conteo de ofertas únicas en la portada de las 12 comunas y la recuperación de fotos institucionales desde una segunda ubicación. Vite 8, 54 pruebas y la reproducción local de lotes reales pasaron al ensamblar los 60 archivos. El nuevo paquete requiere su verificación en AppDeploy. [Evidencia local](evidencia-paquete-unificado.json).
 
 - Vite 8.3.8 compila la interfaz con el cliente de prueba. Los iconos PWA pasan su comprobación de dimensiones y referencias.
-- 49 pruebas Node cubren las etapas B/C, el límite y la prioridad de reintentos, las ubicaciones explícitas y los requisitos que mencionan trabajo, el OCR local, la confirmación de importación ChatGPT, la integridad y la recuperación cifrada. 17 pruebas adicionales pasan en el ejecutor de despliegue. Python ejecuta 441 casos, con 434 aprobados y 7 omitidos.
+- 54 pruebas Node cubren las etapas B/C, el límite y la prioridad de reintentos, las ubicaciones explícitas y los requisitos que mencionan trabajo, el OCR local, la confirmación de importación ChatGPT, la integridad y la recuperación cifrada. 17 pruebas adicionales pasan en el ejecutor de despliegue. Python ejecuta 441 casos, con 434 aprobados y 7 omitidos.
 - ChatGPT confirma una publicación cuando la ruta pública contiene una oferta activa y verificada de la comuna esperada. Gemini reanuda sus dos cursores después de una falla temporal de GitHub. El ensayo de los lotes históricos usa el proyectador y la ruta pública de la candidata con una base de datos simulada.
 - La ruta administrativa vuelve a comprobar la sesión al regresar al panel. Una respuesta 401 o 403 de un informe protegido cierra el área privada. Chromium verifica ese cierre con una sesión simulada y comprueba que un HTTP 503 temporal permite continuar la copia cifrada ya iniciada.
 - La auditoría administrativa simplifica los recorridos en Inicio, Empleos, Publicidad, Fuentes, Motores y Sistema. Se probaron los módulos desde el menú único y el enlace anterior de Moderación en la candidata compilada. [Auditoría del panel](auditoria-experiencia-panel.md).
@@ -33,6 +33,8 @@ Para repetir el recorrido local de importación, ejecuta `node verification/veri
 Para repetir la prueba de sesión desde la ruta administrativa local, ejecuta `TC_CHROMIUM=/ruta/chromium node tests/browser/admin-session.mjs` dentro de la candidata ensamblada con las pruebas del navegador. Usa el cliente AppDeploy simulado para distinguir una denegación de acceso de una interrupción temporal.
 
 Para repetir los recorridos y la comprobación de ancho del panel, ejecuta `TC_CHROMIUM=/ruta/chromium node tests/browser/admin-navigation.mjs` dentro de la candidata ensamblada con las pruebas del navegador. El ensayo compila la app con el cliente simulado.
+
+El ensayo de alertas usa el catálogo confirmado, una falla simulada del proveedor y 500 preferencias ficticias. La prueba de la PWA comprueba que un error 5xx recupere la portada en caché. [Actualización y continuidad](actualizacion-y-continuidad.md).
 
 ## Despliegue y recuperación
 

@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 58,
-  "payloadSha256": "752832205f4340b1dfa8b674eef31a95636139efd55f7b32eb5d15035d537e60",
+  "runtimeFiles": 60,
+  "payloadSha256": "8045a99de56a95c9679de752176dfd4f7d4b96412611e76d06f58b22922da2a4",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -31,12 +31,14 @@
     "src/admin-workspace.css",
     "src/house-admin.tsx",
     "src/source-management.tsx",
-    "src/territorial-coverage-audit.tsx"
+    "src/territorial-coverage-audit.tsx",
+    "backend/notification-visible-offers.ts",
+    "public/sw.js"
   ],
   "local": {
     "viteBuild": "passed",
     "vite": "8.3.8",
-    "nodeTestsPassed": 49,
+    "nodeTestsPassed": 54,
     "replay": {
       "testedAt": "2026-11-28T02:30:00Z",
       "scope": "offline_replay_real_github_blobs_memory_database",
@@ -599,6 +601,24 @@
         "before": 2,
         "after": 1
       }
+    },
+    "notificationSweep": {
+      "scope": "simulated_database_public_feed_and_push_provider",
+      "fixture": "Chiletrabajos 3940244 · Rigger en Angol",
+      "accounts": 500,
+      "matchingAccounts": 1,
+      "preferencesPages": 3,
+      "latePublicAppearanceDetected": true,
+      "rejectedSendRetried": true,
+      "acceptedDispatches": 1,
+      "repeatDispatchesAfterAcceptance": 0,
+      "realDispatchOrDeviceReceiptVerified": false
+    },
+    "updateContinuity": {
+      "scope": "service_worker_test_in_controlled_runtime",
+      "cachedHomeRecoveredAfter503": true,
+      "apiAndAuthErrorsPreserved": true,
+      "actualAppDeployRollbackOrCapacityVerified": false
     }
   },
   "pending": [

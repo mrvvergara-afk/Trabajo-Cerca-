@@ -52,7 +52,7 @@
     {
       "path": "backend/index.ts",
       "baseSha256": "94b828d8fe1eb0d556358cf45fc422c5690c839a7f13f535b4a4e54a79bae11f",
-      "candidateSha256": "3d3bb64bb33b2286659b20fbcff6075da1133fc7f23a9503cdf931f693521e8b"
+      "candidateSha256": "cbe26c2955813d4c5cfb2c7e0bb8a7458322a75fb8786bcc5a45f970cf2a870d"
     },
     {
       "path": "backend/motor-b-document.ts",
@@ -68,6 +68,11 @@
       "path": "backend/motor-gemini-github-pull.ts",
       "baseSha256": "31c4aa71329f79984d8d0049c42a8244e4b54ec0171b695f18d8d8be02d4c24b",
       "candidateSha256": "4b3cd4582a7662dfd8301b073780c960896d14a47d3f87151f90813895630a6d"
+    },
+    {
+      "path": "backend/notification-visible-offers.ts",
+      "baseSha256": null,
+      "candidateSha256": "e293b1b955434875fc6556cfaa177c76b2304da95f18f395026ae30e052bfc3f"
     },
     {
       "path": "backend/ocr-spa-model.ts",
@@ -230,6 +235,11 @@
       "candidateSha256": "59c9a7d0ebc407b03a1cde50d8dac771304113aa40931160f3a5bbc99416fd5c"
     },
     {
+      "path": "public/sw.js",
+      "baseSha256": "c6b77ab7305eea59d9eeb64d398a43d4e8a91385272fd0aad6d1927e470223f4",
+      "candidateSha256": "7aed678e914d425658a8f2c7fc9acc152a79afb213421db6db0eea83520a0464"
+    },
+    {
       "path": "shared/house-autonomy.ts",
       "baseSha256": "2c81d305c10170e40b93993680fde7b37b053ed3471a2de8f2901b34615f4285",
       "candidateSha256": "31587e5d3be34882b4959bc841a462818b17ed188d1b8b9e990e2041ebe16dd3"
@@ -319,5 +329,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "752832205f4340b1dfa8b674eef31a95636139efd55f7b32eb5d15035d537e60"
+  "payloadSha256": "8045a99de56a95c9679de752176dfd4f7d4b96412611e76d06f58b22922da2a4"
 }

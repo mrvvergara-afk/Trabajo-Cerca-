@@ -2,8 +2,15 @@ const ids=['A','B','C','D','CHATGPT','GEMINI'];
 const now=new Date().toISOString();
 const fixture={
  schemaVersion:1,readOnly:true,generatedAt:now,historyComplete:false,
- engines:ids.map(id=>({id,role:['B','C'].includes(id)?'documents':'discovery',status:'recent',observedAt:now,counts:{processed:3,publishedConfirmed:0},notes:[]})),
- rollup:{recent:6,reporting:6,total:6},missingOrFailed:[],history:[
+ engines:ids.map(id=>({id,role:['B','C'].includes(id)?'documents':'discovery',
+  status:{C:'error',D:'stale',CHATGPT:'unreported'}[id]??'recent',
+  observedAt:id==='CHATGPT'?null:now,counts:{processed:id==='B'?0:null,attempted:id==='A'?0:id==='GEMINI'?30:null,publishedConfirmed:null},notes:[],
+  source:['B','C'].includes(id)?'bc_stage_execution_receipts_v1':'fixture'})),
+ stageRead:['B','C'].map(engine=>({engine,latest:{runId:'qa-'+engine,at:now,
+  status:engine==='B'?'completed':'failed',health:engine==='B'?'recent':'error',
+  processed:engine==='B'?0:null,inputCount:engine==='B'?0:null,error:engine==='C'?'Lectura fallida':null},sampledRuns:1,complete:true})),
+ rollup:{recent:3,reporting:4,total:6},missingOrFailed:['C','CHATGPT'],history:[
+  {engine:'B',day:'2026-11-25',measure:'docs_processed',value:0},
   {engine:'B',day:'2026-11-26',measure:'docs_processed',value:2},
   {engine:'B',day:'2026-11-27',measure:'docs_processed',value:4},
   {engine:'C',day:'2026-11-26',measure:'docs_processed',value:3},

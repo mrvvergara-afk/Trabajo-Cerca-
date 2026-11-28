@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {knownCount,percent,type EngineId,type EngineRow,type Telemetry} from './executive-metrics';
+import {chartValues,engineStatus,knownCount,percent,type EngineId,type EngineRow,type Telemetry} from './executive-metrics';
 import './engine-command.css';
 const GROUPS=[
  {title:'Rastreo de fuentes',subtitle:'Cobertura y acceso',ids:['A','D'] as EngineId[]},
@@ -10,7 +10,7 @@ const short=(id:EngineId)=>id==='CHATGPT'?'ChatGPT':id==='GEMINI'?'Gemini':'Moto
 const fmt=(date:string|null)=>date&&Number.isFinite(Date.parse(date))?new Date(date).toLocaleString('es-CL',{timeZone:'America/Santiago',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'Sin registro';
 function assessment(row:EngineRow){
  if(row.status==='error')return 'No se pudo consultar el registro de actividad. Revisar la conexión antes de evaluar resultados.';
- if(!row.observedAt)return 'No existe una medición conectada para este motor. Es necesario registrar sus ejecuciones en el origen.';
+ if(row.status==='unreported'||!row.observedAt)return 'Sin medición de actividad. Revisa los reportes del motor.';
  if(row.status==='stale')return 'El último registro es antiguo. Comprobar si el motor ejecutó sus tareas programadas.';
  const c=row.counts;
  if(row.role==='documents'&&c.queued!==null&&c.processed!==null&&c.queued>c.processed)return 'La cola pendiente supera el volumen procesado en el último registro. Revisar la tendencia antes de ajustar capacidad.';
@@ -35,8 +35,7 @@ export function EngineCommand({telemetry}:{telemetry:Telemetry|null}){
  const activeOps=selected==='B'?telemetry?.bcOperations?.pdf:selected==='C'?telemetry?.bcOperations?.html:null;
  const activeStage=selected==='B'||selected==='C'?telemetry?.stageRead?.find(s=>s.engine===selected)?.latest:null;
  const isLegacyBC=active?.id==='B'||active?.id==='C';
- const history=(telemetry?.history||[]).filter(point=>point.engine===active?.id&&
-  point.measure===(isLegacyBC?'docs_processed':'sources_attempted'));
+ const history=active?chartValues(telemetry?.history||[],active.id):[];
  const historyScale=Math.max(1,...history.map(point=>point.value));
  return <section className="tcCmd" aria-label="Rendimiento y diagnóstico de motores">
  <div className="tcCmdHeading"><div><h4>Rendimiento de los motores</h4><p>Toca un motor para ver resultados y problemas.</p></div><span>{knownCount(telemetry?.rollup.reporting)} de 6 con reporte</span></div>
@@ -45,25 +44,27 @@ export function EngineCommand({telemetry}:{telemetry:Telemetry|null}){
  <div className="tcCmdTwins">{group.ids.map(id=>{const row=engines.find(e=>e.id===id);
  const c=row?.counts;
  const stage=(id==='B'||id==='C')?telemetry?.stageRead?.find(s=>s.engine===id)?.latest:null;
+ const status=stage?.health??row?.status??'unreported';
+ const statusLabel=status==='recent'&&stage?.processed===0?'0 procesados en el ciclo':engineStatus(status);
  const ops=id==='B'?telemetry?.bcOperations?.pdf:id==='C'?telemetry?.bcOperations?.html:null;
  const stageCount=id==='B'?telemetry?.bcOperations?.pdf.processed:id==='C'?telemetry?.bcOperations?.html.checked:null;
  const base=row?.role==='documents'?c?.processed??null:c?.attempted??null;
  const done=row?.role==='documents'?c?.processed??null:c?.useful??null;
  const ratio=row?.role==='documents'?null:percent(done,base);
  return <button className="tcCmdMotor" data-role={row?.role||'unreported'} key={id} type="button" onClick={()=>setSelected(id)} aria-label={'Ver detalle de '+short(id)}>
- <span className="tcCmdMotorTitle"><b>{short(id)}</b><span className={'tcCmdDot '+(stage?.at?'recent':row?.status||'unreported')}/></span>
+ <span className="tcCmdMotorTitle"><b>{short(id)}</b><span className={'tcCmdDot '+status} aria-hidden="true"/></span>
  {row?.role!=='documents'&&<MiniDonut value={ratio} label='Lectura'/>}
  <span className="tcCmdMotorFacts"><span><small>{ops?(id==='B'?'Documentos revisados':'HTML revisados'):stage?'Etapa reciente':row?.role==='documents'?'Procesados':'Consultadas'}</small><b>{knownCount(ops?stageCount:stage?stage.processed:base)}</b></span><span><small>{ops?(id==='B'?'Documentos pendientes':'Enlaces de A'):stage?'Cola actual':row?.role==='documents'?'En cola':'Candidatos'}</small><b>{knownCount(ops?(id==='B'?telemetry?.bcOperations?.pdf.pending:telemetry?.bcOperations?.html.found):stage?null:row?.role==='documents'?row?.status==='stale'?null:c?.queued:c?.candidates)}</b></span></span>
- <small className="tcCmdWhen">{stage?'Etapa conjunta: '+fmt(stage.at):row?.status==='stale'?'Registro individual antiguo · '+fmt(row?.observedAt||null):fmt(row?.observedAt||null)}</small><span className="tcCmdOpen">Ver detalle ›</span>
+ <small className="tcCmdWhen">{statusLabel}{stage?.at?' · Etapa conjunta '+fmt(stage.at):row?.observedAt?' · '+fmt(row.observedAt):''}</small><span className="tcCmdOpen">Ver detalle ›</span>
  </button>})}</div>
  </section>)}</div>
  <p className="tcCmdDataNote">Lectura: fuentes accesibles sobre consultadas. B/C: documentos y colas. Toca cada motor para investigar.</p>
  {active&&<div className="tcCmdOverlay" role="presentation" onClick={()=>setSelected(null)}>
  <section className="tcCmdDrawer" role="dialog" aria-modal="true" aria-label={'Detalle de '+short(active.id)} onClick={e=>e.stopPropagation()}>
  <header className="tcCmdDrawerHead"><div><small>DETALLE DEL MOTOR</small><h4>{short(active.id)}</h4><p>{active.id==='CHATGPT'?'Rastreo por ondas; el último informe no equivale al día completo.':active.id==='GEMINI'?'Rastreo por barridos completos.':active.role==='documents'?'Procesamiento de documentos y colas.':'Consulta de fuentes y verificación.'}</p></div><button type="button" onClick={()=>setSelected(null)} aria-label="Cerrar detalle">✕</button></header>
- <div className="tcCmdLast">{isLegacyBC?<>Último registro independiente: <strong>{fmt(active.observedAt)}</strong> · {active.status==='stale'?'Antiguo':'Registro individual'}</>:<>Última medición: <strong>{fmt(active.observedAt)}</strong> · {active.status==='recent'?'Registro reciente':active.status==='stale'?'Registro antiguo':active.status==='error'?'Error de lectura':'Sin medición'}</>}</div>
+ <div className="tcCmdLast">{active.source==='bc_stage_execution_receipts_v1'?'Última etapa conjunta':'Última medición'} <strong>{fmt(active.observedAt)}</strong> · {engineStatus(active.status)}</div>
  {isLegacyBC&&activeOps&&<div className='tcCmdOps'><strong>Resultados del último ciclo</strong><div className='tcCmdOpsGrid'>{(active.id==='B'?[['Documentos revisados',telemetry?.bcOperations?.pdf.processed],['Documentos pendientes',telemetry?.bcOperations?.pdf.pending],['Elegibles de A',telemetry?.bcOperations?.pdf.eligible],['Reintentos en espera',telemetry?.bcOperations?.pdf.deferred],['Sin oferta',telemetry?.bcOperations?.pdf.decisions?.not_job],['Bloqueados',telemetry?.bcOperations?.pdf.decisions?.blocked]]:[['Enlaces recibidos desde A',telemetry?.bcOperations?.html.found],['Páginas revisadas',telemetry?.bcOperations?.html.checked],['Verificados',telemetry?.bcOperations?.html.verified],['Ya revisados',telemetry?.bcOperations?.html.already],['Bloqueados',telemetry?.bcOperations?.html.blocked],['Diferidos por cupo',telemetry?.bcOperations?.html.budgetDeferred],['Sin lector compatible',telemetry?.bcOperations?.html.unsupported],['Índices diferidos',telemetry?.bcOperations?.html.deferredIndex]]).map(([label,value])=><div key={String(label)}><small>{label}</small><b>{knownCount(value)}</b></div>)}</div><small>Último recibo {fmt(telemetry?.bcOperations?.at||null)}. La entrada C procede del Motor A e incluye enlaces ya revisados. No son nuevas ofertas ni totales acumulados.</small></div>}
- {isLegacyBC&&<div className="tcCmdLast"><strong>{active.id==='B'?'Etapa documental del procesador conjunto':'Etapa HTML del procesador conjunto'}</strong><p>{activeStage?`Última ejecución: ${fmt(activeStage.at)} · ${knownCount(activeStage.processed)} procesados · ${activeStage.status==='completed'?'Etapa finalizada':'Etapa con error'}`:'Sin recepción individual reciente de esta etapa.'}</p><small>No acredita que el motor independiente esté ejecutándose. La cola histórica no es la cola actual.</small></div>}
+ {isLegacyBC&&<div className="tcCmdLast"><strong>{active.id==='B'?'Etapa documental del procesador conjunto':'Etapa HTML del procesador conjunto'}</strong><p>{activeStage?`${fmt(activeStage.at)} · ${activeStage.processed===null?'Conteo no disponible':`${activeStage.processed} procesados`} · ${activeStage.health==='error'||activeStage.error?'Etapa con error':['completed','idle'].includes(activeStage.status)?'Etapa finalizada':'Resultado pendiente'}`:'Sin reporte de esta etapa.'}</p><small>El estado del motor independiente se consulta en sus propios informes.</small></div>}
  <div className="tcCmdDetailGrid">{[
  [active.role==='documents'?'Procesados':'Fuentes consultadas',isLegacyBC?(activeStage?.processed??null):active.role==='documents'?active.counts.processed:active.counts.attempted],
  [active.role==='documents'?'En cola actual':'Lecturas útiles',isLegacyBC?null:active.role==='documents'?active.counts.queued:active.counts.useful],
@@ -77,7 +78,7 @@ export function EngineCommand({telemetry}:{telemetry:Telemetry|null}){
  <Bar label="Lecturas útiles" value={active.counts.useful} total={active.counts.attempted}/>
  <Bar label="Bloqueadas" value={active.counts.blocked} total={active.counts.attempted}/>
  </>}</div>:<div className="tcCmdHistory">{history.length?history.map(point=><Bar key={point.day} label={point.day} value={point.value} total={null} scale={historyScale}/>):<p>Este motor todavía no dispone de una serie histórica conectada.</p>}<small>Historial de ejecuciones registradas.</small></div>}
- <div className="tcCmdDiagnosis"><strong>Diagnóstico</strong><p>{isLegacyBC?'No hay evidencia de programación activa del motor independiente en las tareas actuales. La etapa conjunta sí tiene ejecución registrada; falta conciliación de cola y publicaciones.':assessment(active)}</p></div>
+ <div className="tcCmdDiagnosis"><strong>Diagnóstico</strong><p>{isLegacyBC&&activeStage?.health==='error'?'La última etapa conjunta registró un error. Revisa el recibo de ejecución.':assessment(active)}</p></div>
  {active.notes?.length>0&&<details className="tcCmdNotes"><summary>Observaciones de la medición</summary>{active.notes.map((note,i)=><p key={i}>{note}</p>)}</details>}
  <p className="tcCmdDataNote">Las publicaciones sin atribución comprobada no se adjudican a este motor. No se ejecutan rastreos al abrir esta pantalla.</p>
  </section></div>}

@@ -51,7 +51,7 @@ export type Telemetry = {
   historyQuality?: {windowDays:number;fullyRecovered:boolean;producerHistoryDays?:number;producerHistoryDaysByEngine?:Record<string,number>;warnings?:string[];overlapLegacyBCDays?:string[];sources:Array<{table:string;scanned:number;pages:number;complete:boolean;readError:boolean}>;note:string};
   missingOrFailed: EngineId[];
   bcOperations?: {at:string|null;pdf:{processed:number|null;pending:number|null;decisions:Record<string,unknown>;queuedByA?:number|null;eligible?:number|null;excluded?:number|null;deferred?:number|null;terminal?:number|null;oldestObservedPendingMs?:number|null;averageProcessingMs?:number|null};html:{found:number|null;checked:number|null;verified:number|null;blocked:number|null;archived:number|null;already:number|null;deferredOutside:number|null;deferredIndex:number|null;unsupported?:number|null;budgetDeferred?:number|null;storedForFeed:number|null;storageFailures:number|null};idle:boolean;provenance?:string};
-  stageRead?: Array<{engine:string;latest:{runId:string;at:string|null;status:string;processed:number|null;inputCount:number|null;verified:number|null;blocked:number|null;already?:number|null;deferredOutside?:number|null;deferredIndex?:number|null;archived?:number|null;storedForFeed?:number|null;storageFailures?:number|null;error:unknown}|null;sampledRuns:number;complete:boolean}>;
+  stageRead?: Array<{engine:string;latest:{runId:string;at:string|null;status:string;health?:EngineStatus;processed:number|null;inputCount:number|null;verified:number|null;blocked:number|null;already?:number|null;deferredOutside?:number|null;deferredIndex?:number|null;archived?:number|null;storedForFeed?:number|null;storageFailures?:number|null;error:unknown}|null;sampledRuns:number;complete:boolean}>;
   jointBC?: {at:string|null;scanned:number|null;remainingPdf:number|null;decisions?:{not_job?:number;blocked?:number};html?:{verified?:number};idle:boolean;note:string};
   warning: string;
 };
@@ -192,8 +192,8 @@ export function chartValues(
 export function engineStatus(status: EngineStatus): string {
   return {
     recent: 'Registro reciente',
-    stale: 'Sin ejecución reciente',
+    stale: 'Registro antiguo',
     unreported: 'Sin reporte',
-    error: 'Requiere revisión',
+    error: 'Con error',
   }[status];
 }

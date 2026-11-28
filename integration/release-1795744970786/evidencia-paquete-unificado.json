@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 50,
-  "payloadSha256": "4fa32f32ff2bd541bcc201c46d9c52c25637b474887e019a93a06090d59a1156",
+  "runtimeFiles": 51,
+  "payloadSha256": "404a9bcfbcb96f1c512604fde09bd7c96aeb27d60bfc5f8082a1b3a62f2c4986",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -18,12 +18,16 @@
     "backend/admin-backup.ts",
     "src/backup-crypto.ts",
     "src/backup-runner.ts",
-    "backend/index.ts"
+    "backend/index.ts",
+    "backend/engine-source-audit.ts",
+    "backend/engine-telemetry.ts",
+    "src/engine-command.tsx",
+    "src/executive-metrics.ts"
   ],
   "local": {
     "viteBuild": "passed",
     "vite": "8.3.8",
-    "nodeTestsPassed": 44,
+    "nodeTestsPassed": 48,
     "replay": {
       "testedAt": "2026-11-27T20:00:00Z",
       "scope": "offline_replay_real_github_blobs_memory_database",
@@ -454,6 +458,34 @@
       "script": "verification/tests/browser/notifications.mjs",
       "timeoutSeconds": 30,
       "requestQuotaAndLegacyVerified": true
+    },
+    "engineTelemetry": {
+      "scope": "simulated_database_and_browser_real_github_source_report_replay",
+      "viewportWidthsPx": [
+        320,
+        375,
+        430,
+        1440
+      ],
+      "knownZeroPreserved": true,
+      "newerFailedCycleVisibleWithoutProcessedCount": true,
+      "missingReportHasNoHistoryPoint": true,
+      "snapshotReadErrorMarksHistoryPartial": true,
+      "heartbeatDoesNotReplaceMeasuredCoverage": true,
+      "replay": {
+        "motorD": 175,
+        "gemini": 143,
+        "chatgptAttempts": 119,
+        "chatgptObservation": "2026-11-23T20:16:23.000Z",
+        "chatgptHeartbeatWithoutMeasurements": "2026-11-26T11:59:15.577Z"
+      },
+      "githubBlobs": {
+        "motorD": "f0b746d0dbdcac954546fc3733dd37b75b540c0c",
+        "gemini": "5f2866a6016b8a7a46f580c21d9e91d7fd721c47",
+        "chatgptMeasured20261123": "54ec330699e8a03c926605526b3b54c64eed0498",
+        "chatgptHeartbeat20261126": "33cad29069783560d67e869a04cd76fa2729eab8"
+      },
+      "authenticatedAdministrationVerifiedInAppDeploy": false
     }
   },
   "pending": [

@@ -1,6 +1,6 @@
 import {db} from '@appdeploy/sdk';
 import {producerAuditSnapshot} from './engine-source-audit';
-import {ENGINE_IDS,adaptEngine,rollup,asRow,nonnegative,stamp,
+import {ENGINE_IDS,adaptEngine,rollup,asRow,nonnegative,stamp,health,
  type EngineId,type DayPoint,type EngineRow} from './engine-metrics-contract';
 
 /** All reads are bounded. This endpoint has no side effects and is restricted
@@ -178,9 +178,12 @@ export async function executiveEngineTelemetry() {
   const runs=stageRows.filter(x=>x.engine===engine)
    .sort((a,b)=>String(b.finishedAt||'').localeCompare(String(a.finishedAt||'')));
   const latest=runs[0];
+  const at=stamp(latest?.finishedAt);
+  const status=String(latest?.status||'unknown');
   return {engine,latest:latest?{
-   runId:String(latest.runId||''),at:stamp(latest.finishedAt),
-   status:String(latest.status||'unknown'),processed:nonnegative(latest.processed),
+   runId:String(latest.runId||''),at,status,
+   health:health(engine,at,!['completed','idle'].includes(status)||Boolean(latest.error)),
+   processed:nonnegative(latest.processed),
    inputCount:nonnegative(latest.inputCount),verified:nonnegative(latest.verified),
    blocked:nonnegative(latest.blocked),already:nonnegative(latest.already),
    deferredOutside:nonnegative(latest.deferredOutside),deferredIndex:nonnegative(latest.deferredIndex),
@@ -199,8 +202,9 @@ export async function executiveEngineTelemetry() {
  });
  const latestB=stageRead.find(x=>x.engine==='B')?.latest;
  const latestC=stageRead.find(x=>x.engine==='C')?.latest;
+ const pdfDecisions=!latestB||latestB.runId===fast.runId?asRow(batch.decisions):{};
  const bcOperations={at:latestC?.at||latestB?.at||jointBC.at,
-   pdf:{processed:latestB?.processed??null,pending:latestB?.remainingDocuments??nonnegative(batch.remainingPdf),decisions:asRow(batch.decisions),
+   pdf:{processed:latestB?.processed??null,pending:latestB?latestB.remainingDocuments:nonnegative(batch.remainingPdf),decisions:pdfDecisions,
      queuedByA:latestB?.rawDocumentInputs??null,eligible:latestB?.eligibleDocumentInputs??null,
      excluded:latestB?.excludedDocumentInputs??null,deferred:latestB?.deferredDocumentInputs??null,
      terminal:latestB?.terminalDocumentInputs??null,oldestObservedPendingMs:latestB?.oldestObservedPendingMs??null,
@@ -262,7 +266,7 @@ export async function executiveEngineTelemetry() {
   pointMap.set(point.engine+'|'+point.day+'|'+point.measure,point);
  const points=[...pointMap.values()].sort((a,b)=>
   a.day.localeCompare(b.day)||a.engine.localeCompare(b.engine));
- const incomplete=histories.some(x=>!x.complete)||!stageComplete||stageReadError;
+ const incomplete=histories.some(x=>!x.complete)||!stageComplete||!snapshotHistory.complete;
  const historyQuality={
   windowDays:30,fullyRecovered:false,
   producerHistoryDays:externalSnapshot.historyDays,
@@ -283,12 +287,9 @@ export async function executiveEngineTelemetry() {
  const resolvedEngines=engines.map(row=>{
   if(row.id!=='B'&&row.id!=='C')return row;
   const receipt=stageRead.find(x=>x.engine===row.id)?.latest;
-  if(!receipt?.at||receipt.processed===null||(
+  if(!receipt?.at||(
    row.observedAt&&Date.parse(row.observedAt)>Date.parse(receipt.at)))return row;
-  const receiptHealthy=['completed','idle'].includes(receipt.status)&&!receipt.error;
-  const stageHealth:EngineRow['status']=!receiptHealthy?'error':
-   Date.now()-Date.parse(receipt.at)<8*3600_000?'recent':'stale';
-  return {...row,status:stageHealth,
+  return {...row,status:receipt.health,
    observedAt:receipt.at,source:'bc_stage_execution_receipts_v1',
    counts:{...row.counts,attempted:receipt.inputCount,processed:receipt.processed,
     blocked:receipt.blocked,verified:receipt.verified},

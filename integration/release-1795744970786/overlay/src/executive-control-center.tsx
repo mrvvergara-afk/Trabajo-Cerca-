@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { api } from '@appdeploy/client';
 import { administratorDenialStatus } from './administrator-permission';
 import {
-  cityCounts,
   executiveKpis,
   knownCount,
   type AdminSnapshot,
@@ -11,21 +10,11 @@ import {
 import {
   ActivityChart,
   SourceDonut,
-  TerritoryBars,
-  EnginesTable,
   ExecutiveStatusBar,
 } from './executive-charts';
 import './executive-control-center.css';
 import { EngineCommand } from './engine-command';
 
-type TerritoryResult = {
-  readOnly?: boolean;
-  checkedAt?: string;
-  feedComplete?: boolean;
-  sourceAuditComplete?: boolean;
-  communes?: unknown[];
-  sources?: Array<{id:string;communes:string[];status:string;checkedAt:string|null;candidates:number|null}>;
-};
 function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
@@ -45,6 +34,7 @@ function timeText(value: unknown): string {
   return new Date(value).toLocaleString('es-CL', {
     dateStyle: 'short',
     timeStyle: 'short',
+    timeZone: 'America/Santiago',
   });
 }
 export function ExecutiveControlCenter({
@@ -54,7 +44,6 @@ export function ExecutiveControlCenter({
   summary?: AdminSnapshot;
   onSessionDenied?: (status: 401 | 403) => void;
 }) {
-  const [territory, setTerritory] = useState<TerritoryResult | null>(null);
   const [telemetry, setTelemetry] = useState<Telemetry | null>(null);
   const [publicVerifiedTotal, setPublicVerifiedTotal] = useState<number | null>(null);
   const [checkedAt, setCheckedAt] = useState<string | null>(null);
@@ -65,7 +54,6 @@ export function ExecutiveControlCenter({
     let active = true;
     setLoading(true);
     const urls = [
-      '/api/admin/territorial-coverage',
       '/api/admin/ops-telemetry',
       '/api/listings?limit=1',
     ];
@@ -77,23 +65,15 @@ export function ExecutiveControlCenter({
     void Promise.allSettled(requests).then(results => {
       if (!active) return;
       const problems: string[] = [];
-      const first = results[0],
-        second = results[1];
-      if (first.status === 'fulfilled' && isRecord(first.value.data)) {
-        setTerritory(first.value.data as TerritoryResult);
-      } else {
-        setTerritory(null);
-        problems.push('cobertura por comuna');
-      }
-      if (second.status === 'fulfilled' && isTelemetry(second.value.data)) {
-        setTelemetry(second.value.data);
+      const [motorReport, catalogue] = results;
+      if (motorReport.status === 'fulfilled' && isTelemetry(motorReport.value.data)) {
+        setTelemetry(motorReport.value.data);
       } else {
         setTelemetry(null);
         problems.push('telemetría de motores');
       }
-      const third = results[2];
-      const publicData = third?.status === 'fulfilled' && isRecord(third.value.data)
-        ? third.value.data : null;
+      const publicData = catalogue.status === 'fulfilled' && isRecord(catalogue.value.data)
+        ? catalogue.value.data : null;
       const count = publicData?.totalVerifiedJobOffers;
       if (publicData && Array.isArray(publicData.items) &&
           publicData.items.length > 0 &&
@@ -120,7 +100,6 @@ export function ExecutiveControlCenter({
     return ()=>clearInterval(timer);
   },[]);
   const cards = executiveKpis(summary, telemetry, publicVerifiedTotal);
-  const cities = cityCounts(territory);
   return (
     <section
       className="tcExecCenter"
@@ -128,18 +107,11 @@ export function ExecutiveControlCenter({
     >
       <header className="tcExecHero">
         <div className="tcExecHeroTitle">
-          <span className="tcExecEyebrow">
-            ADMINISTRACIÓN / INTELIGENCIA OPERATIVA
-          </span>
-          <h3>Centro de Control</h3>
-          <p>
-            Rastreo, publicaciones y publicidad local, con cifras verificables y
-            trazabilidad.
-          </p>
+          <h3>Motores de rastreo</h3>
         </div>
         <div className="tcExecHeroActions">
           <small>
-            Datos de los motores: {timeText(telemetry?.generatedAt || territory?.checkedAt)}
+            Datos de los motores: {timeText(telemetry?.generatedAt)}
           </small>
           <small role="status">
             Consulta del tablero: {checkedAt ? timeText(checkedAt) : 'En curso'}
@@ -174,7 +146,6 @@ export function ExecutiveControlCenter({
       )}
       {/* El detalle individual conserva los controles productivos anteriores. */}
       <EngineCommand telemetry={telemetry} />
-      <ExecutiveStatusBar telemetry={telemetry} />
       {telemetry?.historyComplete===false && <p className="tcExecNotice" role="status">
         El historial de 30 días aún es parcial. No se interpretan las fechas faltantes como cero.
       </p>}
@@ -201,79 +172,16 @@ export function ExecutiveControlCenter({
         />
         <SourceDonut engines={telemetry?.engines} />
       </div>
-      {telemetry?.stageRead?.some(s=>s.latest) && <section className='tcBCJoint'><div><strong>Registros individuales B y C</strong><small>Recepciones de etapa verificables</small></div><div className='tcBCJointStats'>{telemetry.stageRead.map(s=><span key={s.engine}><b>Motor {s.engine}</b><small>{s.latest?`${knownCount(s.latest.processed)} revisados · ${s.engine==='C'?`${knownCount(s.latest.inputCount)} detectados · ${knownCount(s.latest.already)} ya revisados`:'etapa PDF'} · ${s.latest.status==='completed'?'Ciclo finalizado':'Error'}`:'Sin registro nuevo'}</small><small>{s.latest?timeText(s.latest.at):'—'}</small></span>)}</div><small>Las cifras individuales representan etapas, no publicaciones confirmadas.</small></section>}
-      {telemetry?.bcOperations && <section className='tcBCJoint'><div><strong>Actividad verificable B/C</strong><small>Última recepción: {timeText(telemetry.bcOperations.at)}</small></div><div className='tcBCJointStats'><span><b>{knownCount(telemetry.bcOperations.html.found)}</b><small>Enlaces detectados C</small></span><span><b>{knownCount(telemetry.bcOperations.html.already)}</b><small>Ya revisados C</small></span><span><b>{knownCount(telemetry.bcOperations.html.checked)}</b><small>Revisados C</small></span><span><b>{knownCount(telemetry.bcOperations.html.deferredOutside)}</b><small>Diferidos C</small></span></div><small>El total detectado incluye enlaces ya revisados. No equivale a nuevas ofertas.</small></section>}
-      {telemetry?.jointBC && <section className='tcBCJoint'><div><strong>Procesamiento conjunto B/C</strong><small>Último checkpoint con trabajo: {timeText(telemetry.jointBC.at)}</small></div><div className='tcBCJointStats'><span><b>{knownCount(telemetry.jointBC.scanned)}</b><small>Documentos revisados</small></span><span><b>{knownCount(telemetry.jointBC.remainingPdf)}</b><small>Documentos pendientes</small></span><span><b>{knownCount(telemetry.jointBC.html?.verified)}</b><small>HTML verificados</small></span><span><b>{knownCount(telemetry.jointBC.decisions?.not_job)}</b><small>Sin oferta</small></span></div><small>Checkpoint histórico del trabajo útil, distinto de la última ejecución. Los ceros no prueban productividad.</small></section>}
-      <div className="tcBIChartsBottom">
-        <TerritoryBars cities={cities} feedComplete={territory?.feedComplete} />
-        <div className="tcBIChartCard tcBIManagement">
-          <header className="tcBIChartHead">
-            <div>
-              <h4>Control territorial</h4>
-              <p>Cobertura de las 12 comunas y estado del proceso.</p>
-            </div>
-          </header>
-          <dl>
-            <div>
-              <dt>Comunas principales</dt>
-              <dd>12</dd>
-            </div>
-            <div>
-              <dt>Catálogo público</dt>
-              <dd>
-                {territory?.feedComplete === true
-                  ? 'Completo'
-                  : territory?.feedComplete === false
-                    ? 'Parcial'
-                    : 'Sin datos'}
-              </dd>
-            </div>
-            <div>
-              <dt>Auditoría de fuentes</dt>
-              <dd>
-                {territory?.sourceAuditComplete === true
-                  ? 'Consulta completa'
-                  : territory?.sourceAuditComplete === false
-                    ? 'Consulta parcial'
-                    : 'Sin datos'}
-              </dd>
-            </div>
-            <div>
-              <dt>Última revisión territorial</dt>
-              <dd>{timeText(territory?.checkedAt)}</dd>
-            </div>
-          </dl>
-          <details className="tcBICityDetails">
-            <summary>Ver cobertura detallada por comuna</summary>
-            <div className="tcBITableWrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Comuna</th>
-                    <th>Ofertas visibles</th>
-                    <th>Fuentes revisadas</th>
-                    <th>Fuentes previstas</th>
-                    <th>Fallidas</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cities.map(r => (
-                    <tr key={r.city}>
-                      <th scope="row">{r.city}</th>
-                      <td>{r.visible}</td>
-                      <td>{r.audited}</td>
-                      <td>{r.expected}</td>
-                      <td>{r.failed}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </details>
-          <p className="tcExecCaution">Fuentes revisadas no significa ofertas encontradas.</p>
-          <p className='tcExecCaution'>La gestión individual de acceso, lectura y extracción está en la sección Fuentes.</p>
+      {telemetry?.jointBC && <details className="tcBICityDetails">
+        <summary>Último trabajo registrado del proceso conjunto B/C</summary>
+        <div className="tcBCJointStats">
+          <span><b>{knownCount(telemetry.jointBC.scanned)}</b><small>Documentos revisados</small></span>
+          <span><b>{knownCount(telemetry.jointBC.remainingPdf)}</b><small>Documentos pendientes</small></span>
+          <span><b>{knownCount(telemetry.jointBC.html?.verified)}</b><small>HTML verificados</small></span>
+          <span><b>{knownCount(telemetry.jointBC.decisions?.not_job)}</b><small>Sin oferta</small></span>
         </div>
-      </div>
+        <p>Registro del {timeText(telemetry.jointBC.at)}.</p>
+      </details>}
       {/* El detalle de los motores se consulta desde el panel compacto. */}
       <section className='tcBILiveProcesses' hidden><h4>Procesos automáticos: último resultado registrado</h4>{(((telemetry as (Telemetry & {operational?:Array<{name:string;at:string|null;state:string;details:Record<string,unknown>}>})|null)?.operational)||[]).map(p=><article key={p.name}><strong>{p.name==='fast_bc_pipeline_latest'?'Procesamiento rápido B/C':p.name==='chatgpt_bridge_latest'?'Importador ChatGPT':'Importador GitHub C'}</strong><span>{p.at?new Date(p.at).toLocaleString('es-CL'):'Sin registro'}</span><span>Estado: {p.state}</span><details><summary>Detalle de resultados</summary><pre>{JSON.stringify(p.details,null,2)}</pre></details></article>)}</section>
       <footer className="tcExecFooter">

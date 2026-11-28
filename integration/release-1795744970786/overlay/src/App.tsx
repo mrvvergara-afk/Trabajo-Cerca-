@@ -45,7 +45,6 @@ import './commercial-card.css';
 import './ux-compact-2026-11.css';
 import { SiteMenu } from './site-menu';
 const LocalDirectory = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectory })));
-const LocalDirectoryModeration = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectoryModeration })));
 import './local-directory.css';
 import './ux-territorial-cleanup.css';
 import './ux-release-consolidated.css';
@@ -979,9 +978,7 @@ export function OperationsPanel() {
       </header>
       {securityMode && <pre id='security-live-check'>{JSON.stringify(securityProof,null,2)}</pre>}
       <section className='opsHero'>
-        <span className='overline'>TRABAJO CERCA · ADMINISTRACIÓN OFICIAL</span>
         <h1>Panel de administración</h1>
-        <p>Selecciona un área para consultar resultados y gestionar pendientes.</p>
       </section>
       <AdministratorAccess summary={summary ? {
         jobs:summary.jobs.active,
@@ -992,9 +989,8 @@ export function OperationsPanel() {
         campaigns:summary.growth.activeCampaigns,
         lastSweep:summary.radar.lastSweep,
       }:undefined}/>
-      {new URLSearchParams(window.location.search).get('seccion')==='moderacion' && <Suspense fallback={null}><LocalDirectoryModeration /></Suspense>}
       <details className='opsTechnicalDetails' id='ops-diagnostico' open={securityMode||proofMode||localMode||publicMode||receiverMode}>
-        <summary>Herramientas técnicas avanzadas (abrir solo para investigar problemas)</summary>
+        <summary>Diagnóstico técnico</summary>
       {new URLSearchParams(window.location.search).get('restore-proof') === '1' && <Suspense fallback={<p role='status'>Preparando comprobación de respaldo…</p>}><RestoreRehearsalProof /></Suspense>}
       <section className='opsReadiness' aria-label='Preparación para producción'>
         <ShieldCheck aria-hidden='true' />

@@ -66,7 +66,7 @@ try {
 
   const temporary = await openPage();
   await authorized(temporary).waitFor();
-  await temporary.getByRole('button', { name: 'Sistema' }).click();
+  await temporary.getByRole('button', { name: 'Respaldo' }).click();
   const pass = temporary.getByLabel('Contraseña del respaldo');
   await pass.fill('clave-de-prueba-local');
   await temporary.getByLabel('Repetir contraseña').fill('clave-de-prueba-local');

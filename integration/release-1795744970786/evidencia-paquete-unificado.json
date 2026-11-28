@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 54,
-  "payloadSha256": "2c30cc9e37c8a1caca38fde025799d3793a973cdedc9c284b2a5b94ee6dd3782",
+  "runtimeFiles": 58,
+  "payloadSha256": "752832205f4340b1dfa8b674eef31a95636139efd55f7b32eb5d15035d537e60",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -27,7 +27,11 @@
     "backend/motor-gemini-github-pull.ts",
     "src/administrator-access.tsx",
     "src/administrator-permission.ts",
-    "src/executive-control-center.tsx"
+    "src/executive-control-center.tsx",
+    "src/admin-workspace.css",
+    "src/house-admin.tsx",
+    "src/source-management.tsx",
+    "src/territorial-coverage-audit.tsx"
   ],
   "local": {
     "viteBuild": "passed",
@@ -512,6 +516,89 @@
       "script": "verification/tests/browser/admin-session.mjs",
       "viewportWidthPx": 375,
       "pausedBackupResumedAfterTransientError": true
+    },
+    "administrativeNavigation": {
+      "scope": "local_built_candidate_simulated_api",
+      "script": "verification/tests/browser/admin-navigation.mjs",
+      "runs": [
+        {
+          "width": 320,
+          "moduleLinks": 10,
+          "duplicateHomeLinks": 0,
+          "confirmedDirectModules": [
+            "Rescate",
+            "Motores",
+            "Fuentes",
+            "Solicitudes",
+            "Publicidad",
+            "Moderación",
+            "Respaldo",
+            "Importación"
+          ],
+          "territorialRequests": 1
+        },
+        {
+          "width": 375,
+          "moduleLinks": 10,
+          "duplicateHomeLinks": 0,
+          "confirmedDirectModules": [
+            "Rescate",
+            "Motores",
+            "Fuentes",
+            "Solicitudes",
+            "Publicidad",
+            "Moderación",
+            "Respaldo",
+            "Importación"
+          ],
+          "territorialRequests": 1
+        },
+        {
+          "width": 430,
+          "moduleLinks": 10,
+          "duplicateHomeLinks": 0,
+          "confirmedDirectModules": [
+            "Rescate",
+            "Motores",
+            "Fuentes",
+            "Solicitudes",
+            "Publicidad",
+            "Moderación",
+            "Respaldo",
+            "Importación"
+          ],
+          "territorialRequests": 1
+        },
+        {
+          "width": 1440,
+          "moduleLinks": 10,
+          "duplicateHomeLinks": 0,
+          "confirmedDirectModules": [
+            "Rescate",
+            "Motores",
+            "Fuentes",
+            "Solicitudes",
+            "Publicidad",
+            "Moderación",
+            "Respaldo",
+            "Importación"
+          ],
+          "territorialRequests": 1
+        },
+        {
+          "legacyModerationLink": true,
+          "moderationBehindSession": true
+        }
+      ],
+      "mainDuplicateAccessPointsRemoved": 6,
+      "importationClicksFromOverview": {
+        "before": 2,
+        "after": 1
+      },
+      "moderationClicksFromOverview": {
+        "before": 2,
+        "after": 1
+      }
     }
   },
   "pending": [

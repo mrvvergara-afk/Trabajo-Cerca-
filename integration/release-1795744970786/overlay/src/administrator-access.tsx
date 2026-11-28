@@ -1,4 +1,5 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import { Activity, Briefcase, Database, Download, House, Inbox, LifeBuoy, Megaphone, Radar, Store } from 'lucide-react';
 const HouseCampaignAdmin = lazy(() => import('./house-admin').then(module => ({ default: module.HouseCampaignAdmin })));
 const ExecutiveControlCenter = lazy(() => import('./executive-control-center').then(module => ({ default: module.ExecutiveControlCenter })));
 const CommercialOverview = lazy(() => import('./commercial-overview').then(module => ({ default: module.CommercialOverview })));
@@ -7,8 +8,8 @@ const DocumentWorkExport = lazy(() => import('./document-work-export').then(modu
 const RadarReviewInbox = lazy(() => import('./radar-review-inbox').then(module => ({ default: module.RadarReviewInbox })));
 const PublicInventoryAudit = lazy(() => import('./public-inventory-audit').then(module => ({ default: module.PublicInventoryAudit })));
 const InternalOfferReconciliation = lazy(() => import('./internal-offer-reconciliation').then(module => ({ default: module.InternalOfferReconciliation })));
-const TerritorialCoverageAudit = lazy(() => import('./territorial-coverage-audit').then(module => ({ default: module.TerritorialCoverageAudit })));
 const ChatGPTDirectConnector = lazy(() => import('./chatgpt-direct-connector').then(module => ({ default: module.ChatGPTDirectConnector })));
+const LocalDirectoryModeration = lazy(() => import('./local-directory').then(module => ({ default: module.LocalDirectoryModeration })));
 import { administratorDenialStatus, administratorPermission } from './administrator-permission';
 import './administrator-access.css';
 import './admin-workspace.css';
@@ -16,24 +17,33 @@ import { api, auth } from '@appdeploy/client';
 import { SourceManagement } from './source-management';
 
 type AdminSummary={jobs:number;publicVisible:number;verified:number;pending:number;campaigns:number;requests:number;lastSweep?:string};
+const sections = [
+  { id: 'inicio', title: 'Inicio', icon: House },
+  { id: 'ofertas', title: 'Empleos', icon: Briefcase },
+  { id: 'rescate', title: 'Rescate', icon: LifeBuoy },
+  { id: 'motores', title: 'Motores', icon: Activity },
+  { id: 'fuentes', title: 'Fuentes', icon: Radar },
+  { id: 'solicitudes', title: 'Solicitudes', icon: Inbox },
+  { id: 'campanas', title: 'Publicidad', icon: Megaphone },
+  { id: 'moderacion', title: 'Negocios y servicios', icon: Store },
+  { id: 'respaldo', title: 'Respaldo', icon: Database },
+  { id: 'importacion', title: 'Importación y datos', icon: Download },
+] as const;
+type Section = typeof sections[number]['id'];
+function requestedSection(): Section {
+  const route = new URLSearchParams(window.location.search).get('seccion');
+  return sections.find(section => section.id === route)?.id ?? 'inicio';
+}
+
 export function AdministratorAccess({summary}:{summary?:AdminSummary}) {
   const [message, setMessage] = useState('Inicia sesión para comprobar el acceso administrativo.');
   const [busy, setBusy] = useState(false);
   const [allowed, setAllowed] = useState(false);
-  const [section,setSection] = useState<'inicio'|'solicitudes'|'campanas'|'ofertas'|'rescate'|'motores'|'fuentes'|'moderacion'|'importacion'|'respaldo'>('inicio');
+  const [section,setSection] = useState<Section>(requestedSection);
+  const [jobView,setJobView] = useState<'pendientes'|'catalogo'>('pendientes');
+  const [campaignView,setCampaignView] = useState<'comerciales'|'propias'>('comerciales');
   const checkGeneration = useRef(0);
   const changingSession = useRef(false);
-  const sections=[
-    {id:'inicio',title:'Inicio'},
-    {id:'solicitudes',title:'Solicitudes'},
-    {id:'campanas',title:'Publicidad'},
-    {id:'moderacion',title:'Negocios y servicios'},
-    {id:'ofertas',title:'Empleos'},
-    {id:'rescate',title:'Rescate de ofertas'},
-    {id:'motores',title:'Motores'},
-    {id:'fuentes',title:'Fuentes'},
-    {id:'respaldo',title:'Sistema'},
-  ] as const;
   const denyAccess = useCallback((status: 401 | 403) => {
     checkGeneration.current += 1;
     setAllowed(false);
@@ -119,56 +129,53 @@ export function AdministratorAccess({summary}:{summary?:AdminSummary}) {
 
   return (
     <section className='opsCard tcAdminAccess' aria-label='Acceso administrativo'>
-      <div className='tcAdminTitle'><h2>Acceso administrativo</h2><span className='tcAdminBadge' data-allowed={allowed}>{allowed ? 'Sesión autorizada' : 'Acceso restringido'}</span></div>
-      {!allowed && <p role='status' aria-live='polite'>{message}</p>}
-      <div className='tcAdminActions'>
-      {!allowed && <button onClick={() => void verify(true)} disabled={busy}>Ingresar como administrador</button>}
-      {!allowed && <button onClick={() => void verify(false)} disabled={busy}>Verificar acceso</button>}
-      {allowed && <button className='tcAdminSignout' onClick={() => void signOut()} disabled={busy}>Salir</button>}
+      <div className='tcAdminTitle'>
+        {!allowed && <h2>Acceso administrativo</h2>}
+        <span className='tcAdminBadge' data-allowed={allowed}>{allowed ? 'Sesión autorizada' : 'Acceso restringido'}</span>
+        {allowed && <button type='button' className='tcAdminSignout' onClick={() => void signOut()} disabled={busy}>Cerrar sesión</button>}
       </div>
+      {!allowed && <p role='status' aria-live='polite'>{message}</p>}
+      {!allowed && <div className='tcAdminActions'>
+        <button onClick={() => void verify(true)} disabled={busy}>Ingresar como administrador</button>
+        <button onClick={() => void verify(false)} disabled={busy}>Verificar acceso</button>
+      </div>}
       {allowed && <div className='tcAdminWorkspace'>
-        <aside className='tcAdminSidebar'>
-          <div className='tcAdminSidebarBrand'><strong>Trabajo Cerca</strong><small>Administración privada</small></div>
-          <nav aria-label='Secciones administrativas'>
-            {sections.map(item=><button key={item.id} type='button'
-              aria-current={(section===item.id||(item.id==='respaldo'&&section==='importacion'))?'page':undefined}
-              className={(section===item.id||(item.id==='respaldo'&&section==='importacion'))?'active':''}
-              onClick={()=>setSection(item.id)}>{item.title}</button>)}
-          </nav>
-        </aside>
-        <div className='tcAdminWorkspaceMain'>
-
-          {(section==='respaldo'||section==='importacion')&&<nav className='tcAdminSubnav' aria-label='Sistema y actualizaciones'><button type='button' aria-current={section==='respaldo'?'page':undefined} onClick={()=>setSection('respaldo')}>Respaldo</button><button type='button' aria-current={section==='importacion'?'page':undefined} onClick={()=>setSection('importacion')}>Importación y datos</button></nav>}
+        <nav className='tcAdminNav' aria-label='Secciones administrativas'>
+          {sections.map(({ id, title, icon: Icon }) => <button key={id} type='button'
+            aria-current={section===id?'page':undefined}
+            onClick={()=>setSection(id)}><Icon aria-hidden='true'/><span>{title}</span></button>)}
+        </nav>
+        <div className='tcAdminWorkspaceMain' id='tc-admin-content'>
           <Suspense fallback={<p className='tcAdminLoading' role='status'>Preparando esta sección…</p>}>
           {section==='inicio'&&<section className='tcAdminLanding' aria-label='Resumen ejecutivo'>
             <h3>Resumen</h3>
-            <div className='tcAdminHomeStats'><span><strong>{summary?.publicVisible??'—'}</strong> publicaciones registradas</span><span><strong>{summary?.requests??'—'}</strong> solicitudes</span><span><strong>{summary?.campaigns??'—'}</strong> campañas activas</span></div>
-            <details className='tcAdminAdvanced'><summary>Ir a otras áreas del administrador</summary>
-            <div className='tcAdminTiles'>
-              <button onClick={()=>setSection('solicitudes')}><strong>Solicitudes publicitarias</strong><span>Revisar clientes, autorizar anuncios y preparar imágenes.</span></button>
-              <button onClick={()=>setSection('campanas')}><strong>Publicidad y campañas</strong><span>Comprobar vigencia, lugares y publicación de los anuncios.</span></button>
-              <button onClick={()=>setSection('ofertas')}><strong>Ofertas laborales</strong><span>Auditar catálogo público y revisar avisos pendientes.</span></button>
-              <button onClick={()=>setSection('rescate')}><strong>Rescate y conciliación de ofertas</strong><span>Prioridad 1 · revisar ofertas retenidas, buscar por comuna y consultar fuentes.</span></button>
-              <button onClick={()=>setSection('motores')}><strong>Motores de rastreo</strong><span>Ver fuentes y diagnósticos del radar.</span></button>
-            </div>
-            </details>
+            <dl className='tcAdminHomeStats'>
+              <div><dt>Publicaciones en portada</dt><dd>{summary?.publicVisible??'—'}</dd></div>
+              <div><dt>Ofertas en revisión interna</dt><dd>{summary?.pending??'—'}</dd></div>
+              <div><dt>Solicitudes publicitarias</dt><dd>{summary?.requests??'—'}</dd></div>
+              <div><dt>Campañas activas</dt><dd>{summary?.campaigns??'—'}</dd></div>
+            </dl>
             <p className='tcAdminLatest'>Último barrido: {summary?.lastSweep?new Date(summary.lastSweep).toLocaleString('es-CL'):'Sin información disponible'}.</p>
           </section>}
           {section==='solicitudes'&&<HouseCampaignAdmin mode='solicitudes'/>}
           {section==='campanas'&&<section className='tcAdminCampaignManagement'>
-            <h2>Publicidad y campañas</h2>
-            <p>Revisa los anuncios comerciales y comprueba si aparecen en el catálogo público.</p>
-            <CommercialOverview/>
-            <details className='tcAdminAdvanced'>
-              <summary>Campañas propias, promoción y configuración avanzada</summary>
-              <HouseCampaignAdmin mode='campanas'/>
-            </details>
+            <nav className='tcAdminSubnav' aria-label='Vistas de publicidad'>
+              <button type='button' aria-current={campaignView==='comerciales'?'page':undefined} onClick={()=>setCampaignView('comerciales')}>Comerciales</button>
+              <button type='button' aria-current={campaignView==='propias'?'page':undefined} onClick={()=>setCampaignView('propias')}>Campañas propias</button>
+            </nav>
+            {campaignView==='comerciales'?<CommercialOverview/>:<HouseCampaignAdmin mode='campanas'/>}
           </section>}
-          {section==='ofertas'&&<><div className='tcAdminTiles'><button type='button' onClick={()=>setSection('rescate')}><strong>Rescate y conciliación de ofertas · Prioridad 1</strong><span>Abrir el panel independiente para gestionar ofertas pendientes.</span></button></div><TerritorialCoverageAudit/><PublicInventoryAudit/><RadarReviewInbox/></>}
+          {section==='ofertas'&&<>
+            <nav className='tcAdminSubnav' aria-label='Vistas de empleos'>
+              <button type='button' aria-current={jobView==='pendientes'?'page':undefined} onClick={()=>setJobView('pendientes')}>En revisión</button>
+              <button type='button' aria-current={jobView==='catalogo'?'page':undefined} onClick={()=>setJobView('catalogo')}>Catálogo público</button>
+            </nav>
+            {jobView==='pendientes'?<RadarReviewInbox/>:<PublicInventoryAudit/>}
+          </>}
           {section==='rescate'&&<InternalOfferReconciliation/>}
           {section==='motores'&&<ExecutiveControlCenter summary={summary} onSessionDenied={denyAccess}/>}
-          {section==='fuentes'&&<SourceManagement/>}
-          {section==='moderacion'&&<section className='tcAdminModeration'><h3>Negocios y servicios</h3><p>Revisión de solicitudes, opiniones y denuncias.</p><a href='./admin?seccion=moderacion'>Abrir bandeja de moderación</a></section>}
+          {section==='fuentes'&&<SourceManagement onSessionDenied={denyAccess}/>}
+          {section==='moderacion'&&<LocalDirectoryModeration/>}
           {section==='importacion'&&<><ChatGPTDirectConnector/><DocumentWorkExport/></>}
           {section==='respaldo'&&<BackupPanel/>}
           </Suspense>

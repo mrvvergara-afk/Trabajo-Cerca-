@@ -237,12 +237,17 @@
     {
       "path": "src/App.tsx",
       "baseSha256": "ed597e3374109751a312063748a9590237e578d95b96ccd44267f7a5766dd706",
-      "candidateSha256": "f5928f36e809a8e3cedb647ce9740ae52b2312311deadb348806d622a2724cce"
+      "candidateSha256": "821c04e6bb263611d1ee654a3d654f3ec75caad8b1a5f2d0bd6c89245862756c"
+    },
+    {
+      "path": "src/admin-workspace.css",
+      "baseSha256": "c8d9ce911bab1c70bc6d3d45d362814dd53da0437379cca334f5a839c2ab731b",
+      "candidateSha256": "7fdc4e849201fad5fc834c2b3779690afaa19b43e18b2b4ad27e62e2b99181a2"
     },
     {
       "path": "src/administrator-access.tsx",
       "baseSha256": "cb2a1a3d3b8784dd9ba8bf48082304c2d0aaf072f54b37a0485ad36497206549",
-      "candidateSha256": "5d619ceb97dce5cb1def72491d17c2c2a641433d4656cb32ad98fba48831370e"
+      "candidateSha256": "bcbbe963c38e83d7bfd49b4bc0372317a7900dc6a4260ceb3d5291561bbc4b3d"
     },
     {
       "path": "src/administrator-permission.ts",
@@ -262,12 +267,12 @@
     {
       "path": "src/engine-command.tsx",
       "baseSha256": "4ff2a039980af57d7f2b4ab03a57de36fc1f041eeb9d58c73f07f139c34c949f",
-      "candidateSha256": "8b36651163b33d61cfc19fc171bf00e981f9504defcc4a34d5f5564ecd26edbd"
+      "candidateSha256": "bc82e7800bd980451983ff75a98c025771e0442afc68cedcb394c72e0ad664bf"
     },
     {
       "path": "src/executive-control-center.tsx",
       "baseSha256": "902cdf40c8015d3edae5e628610210621ee8b32e7ffbcbe83fd7c3d3249fe7a9",
-      "candidateSha256": "b66e8b5e86e943b601a0dbbf83b0338f914018681befb64b4e12f99d0cf5efaa"
+      "candidateSha256": "dd9670903ef7e8967768ce11e5157519c1123aef7b5bc424e8a00557a802e655"
     },
     {
       "path": "src/executive-metrics.ts",
@@ -275,9 +280,24 @@
       "candidateSha256": "6c3470ae0222d3b3f86b38dcb6a72f04ab59e80030a0110f428cfdd7b5a3dae5"
     },
     {
+      "path": "src/house-admin.tsx",
+      "baseSha256": "3c3b0d52b01540c917cebf267553aa992aef3d18f8acadde3ec211b1e1f33c42",
+      "candidateSha256": "dcdb0f1743a448fbf636aeefe5b86da9e5a326200f12e6dd2feb36b0e691d544"
+    },
+    {
       "path": "src/house-autonomy.tsx",
       "baseSha256": "b2518c733aa4391464854fbfba79462306ca6b3bbc96fd0763152ae95ad3f495",
       "candidateSha256": "8e812266b5e87d05ba038b04532ce2587ae22740e3954f53571fdc937d4745a5"
+    },
+    {
+      "path": "src/source-management.tsx",
+      "baseSha256": "b35ea1f7577cc424a1348a79608ca39fcf2e8a8516d1f76cce8e532dc49de819",
+      "candidateSha256": "ddf026f106f95d13a0461e27ca160bf7b76e8bc496111f7e566fa36065d63235"
+    },
+    {
+      "path": "src/territorial-coverage-audit.tsx",
+      "baseSha256": "394cffb90d535d5cefaddadcb7ded0f1dc973b6b37e513d8d1f2ca7e46c5c016",
+      "candidateSha256": "1ee8e6745e3bf7f4f6b42c82e6336d272cb41b99737bebb2d9e03fe4cf38f717"
     }
   ],
   "verifiedPreservedSha256": {
@@ -299,5 +319,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "2c30cc9e37c8a1caca38fde025799d3793a973cdedc9c284b2a5b94ee6dd3782"
+  "payloadSha256": "752832205f4340b1dfa8b674eef31a95636139efd55f7b32eb5d15035d537e60"
 }

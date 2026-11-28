@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '@appdeploy/client';
+import { administratorDenialStatus } from './administrator-permission';
 import {
   cityCounts,
   executiveKpis,
@@ -48,8 +49,10 @@ function timeText(value: unknown): string {
 }
 export function ExecutiveControlCenter({
   summary,
+  onSessionDenied,
 }: {
   summary?: AdminSnapshot;
+  onSessionDenied?: (status: 401 | 403) => void;
 }) {
   const [territory, setTerritory] = useState<TerritoryResult | null>(null);
   const [telemetry, setTelemetry] = useState<Telemetry | null>(null);
@@ -66,7 +69,12 @@ export function ExecutiveControlCenter({
       '/api/admin/ops-telemetry',
       '/api/listings?limit=1',
     ];
-    void Promise.allSettled(urls.map(url => api.get(url))).then(results => {
+    const requests = urls.map(url => api.get(url).catch(cause => {
+      const status = administratorDenialStatus(cause);
+      if (active && status && url.startsWith('/api/admin/')) onSessionDenied?.(status);
+      throw cause;
+    }));
+    void Promise.allSettled(requests).then(results => {
       if (!active) return;
       const problems: string[] = [];
       const first = results[0],
@@ -106,7 +114,7 @@ export function ExecutiveControlCenter({
     return () => {
       active = false;
     };
-  }, [refresh]);
+  }, [refresh, onSessionDenied]);
   useEffect(()=>{
     const timer=setInterval(()=>setRefresh(n=>n+1),4*60_000);
     return ()=>clearInterval(timer);

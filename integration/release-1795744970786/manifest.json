@@ -240,6 +240,16 @@
       "candidateSha256": "f5928f36e809a8e3cedb647ce9740ae52b2312311deadb348806d622a2724cce"
     },
     {
+      "path": "src/administrator-access.tsx",
+      "baseSha256": "cb2a1a3d3b8784dd9ba8bf48082304c2d0aaf072f54b37a0485ad36497206549",
+      "candidateSha256": "5d619ceb97dce5cb1def72491d17c2c2a641433d4656cb32ad98fba48831370e"
+    },
+    {
+      "path": "src/administrator-permission.ts",
+      "baseSha256": "502aa73a8782a720cee5da0e8cdada7dd6ed445398561474807d85051c657b38",
+      "candidateSha256": "2ba4289f6a4947cbb46fe6c17d7ac26186c64ec60c037f4d21c0041177ac35ad"
+    },
+    {
       "path": "src/backup-crypto.ts",
       "baseSha256": "21f771cf1a2a3910f20f421c479392b98573257f0f550a51ae6c545c5b852206",
       "candidateSha256": "0315a06422ec2574c5cf335fbdc855aa8680b764e8eabd6c239b8a909a8ab3c2"
@@ -257,7 +267,7 @@
     {
       "path": "src/executive-control-center.tsx",
       "baseSha256": "902cdf40c8015d3edae5e628610210621ee8b32e7ffbcbe83fd7c3d3249fe7a9",
-      "candidateSha256": "45a80eedbd74f149b9212f92b10db900c93ddaf61b40e2201a9e3fe4c4ad7dba"
+      "candidateSha256": "b66e8b5e86e943b601a0dbbf83b0338f914018681befb64b4e12f99d0cf5efaa"
     },
     {
       "path": "src/executive-metrics.ts",
@@ -289,5 +299,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "2a86e0f0449dc2ab73c572d2bd4e3c0987b5165510b387da5818252f83724058"
+  "payloadSha256": "2c30cc9e37c8a1caca38fde025799d3793a973cdedc9c284b2a5b94ee6dd3782"
 }

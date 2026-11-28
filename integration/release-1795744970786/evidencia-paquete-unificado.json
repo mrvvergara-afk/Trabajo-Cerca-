@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 52,
-  "payloadSha256": "2a86e0f0449dc2ab73c572d2bd4e3c0987b5165510b387da5818252f83724058",
+  "runtimeFiles": 54,
+  "payloadSha256": "2c30cc9e37c8a1caca38fde025799d3793a973cdedc9c284b2a5b94ee6dd3782",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -24,7 +24,10 @@
     "src/engine-command.tsx",
     "src/executive-metrics.ts",
     "backend/chatgpt-auto-import.ts",
-    "backend/motor-gemini-github-pull.ts"
+    "backend/motor-gemini-github-pull.ts",
+    "src/administrator-access.tsx",
+    "src/administrator-permission.ts",
+    "src/executive-control-center.tsx"
   ],
   "local": {
     "viteBuild": "passed",
@@ -495,6 +498,20 @@
         "chatgptHeartbeat20261126": "33cad29069783560d67e869a04cd76fa2729eab8"
       },
       "authenticatedAdministrationVerifiedInAppDeploy": false
+    },
+    "administrativeSession": {
+      "scope": "local_chromium_simulated_auth_provider",
+      "normalAdminRoute": true,
+      "unauthorizedAccountDenied": true,
+      "expiredSessionClosesWorkspace": true,
+      "protectedReportDenialClosesWorkspace": true,
+      "delayedGrantCannotRestoreAccess": true,
+      "manualReverificationRestoresAccess": true,
+      "temporaryReadErrorPreservesBackupWork": true,
+      "liveAppDeploySessionVerified": false,
+      "script": "verification/tests/browser/admin-session.mjs",
+      "viewportWidthPx": 375,
+      "pausedBackupResumedAfterTransientError": true
     }
   },
   "pending": [

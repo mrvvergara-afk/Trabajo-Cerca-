@@ -2,7 +2,7 @@
   "schema_version": 1,
   "producer": "trabajo_cerca_public_feed",
   "source": "https://api-v2.appdeploy.ai/app/trabajo-cerca-laboratorio-3ojgro/api/listings/identities",
-  "generated_at": "2026-11-28T04:39:49+00:00",
+  "generated_at": "2026-11-28T14:01:47+00:00",
   "complete": true,
   "totalItemsReported": 296,
   "jobIdentityCount": 292,
@@ -11,7 +11,7 @@
   "visibleIn12CommunesCount": 114,
   "outside12CommuneScopeCount": 178,
   "pagesChecked": 12,
-  "fingerprint": "6717f8fc1f42bc4b0f93781d6e117d2d51ec0d12033952bb75577f2dca61ede6",
+  "fingerprint": "86ddfe3e8a6611105f2e5aa35a521992b920a0810209101adb2531313a5aa77f",
   "items": [
     {
       "id": "02236bf2-6346-43a2-a30b-734f328e7f95",
@@ -320,6 +320,18 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/practica-gestion-personas-nacimiento-3899780",
       "urlHashSha256": "59f89cfcb0067637f4c9f26568b22557297630a75b410789b3ea75bca3731edc"
+    },
+    {
+      "id": "50a280a4-8992-4957-9906-251ea7a4546c",
+      "title": "TENS para Cuidados Pacientes Domiciliarios / Lumaco - Temuco",
+      "company": "portal.chiletrabajos.cl",
+      "workCommunes": [
+        "Lumaco",
+        "Temuco"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://portal.chiletrabajos.cl/empresa/layner/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
+      "urlHashSha256": "f6ffd6d1be2e1948a33288b5445d91ab6df677ee7c0cc69f7266c961630d9e90"
     },
     {
       "id": "5261274a-80e4-436b-b228-500120c49827",
@@ -753,6 +765,17 @@
       "urlHashSha256": "7b9c2dcc998f4b32ad65628ea79062e1d0abef83865fccab6b9d73da2c0365c5"
     },
     {
+      "id": "chatgpt_3923364",
+      "title": "Mecánico/a Automotriz – Nacimiento",
+      "company": "Serfonac",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
+      "urlHashSha256": "728743fa1bc6044fab11bee888fd1f8764785ba2965ddb7311f9d5d5e3060729"
+    },
+    {
       "id": "chatgpt_3923758",
       "title": "Conductor transporte carga y personal",
       "company": "Serfonac",
@@ -885,6 +908,17 @@
       "urlHashSha256": "2795b5d75320388ba141c19a0fa3e292a01cee48cb27c27dce878c9711ad5e81"
     },
     {
+      "id": "chatgpt_d_286a02fa884ea7ea2859",
+      "title": "CONDUCTOR PROFESIONAL CON VEHÍCULO SEDAN/DIESEL - ANGOL",
+      "company": "Jobconsulting",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
+      "urlHashSha256": "286a02fa884ea7ea2859e783b25aa95cc20996ea2f21e4c59b97acf55bfd6c5a"
+    },
+    {
       "id": "chatgpt_d_2e5d13719312865d3636",
       "title": "Mecánico/a Soldador/a de Maquinaria – Nacimiento",
       "company": "Serfonac",
@@ -973,6 +1007,17 @@
       "urlHashSha256": "4bdcac8ef560f0fe716d0f28d19941a1c942eaa09d354f466e643c6e04b1c446"
     },
     {
+      "id": "chatgpt_d_5241af5f68d396e67450",
+      "title": "Vendedor Terreno - ANGOL",
+      "company": "Distribuidora consumo masivo",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
+      "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
+    },
+    {
       "id": "chatgpt_d_56d079ed0f37b488c6d6",
       "title": "Ejecutivo/a Atención a Usuarios, 42hrs, Call Center  Presencial",
       "company": "Empresa de tecnología e",
@@ -995,6 +1040,17 @@
       "urlHashSha256": "5cc1e31b3ff3d83ea28bd48c5ba1cab6ebda828931d2dbec5f2728f0b68957e1"
     },
     {
+      "id": "chatgpt_d_719dc82e84eb93a138d9",
+      "title": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
+      "company": "Fondo Esperanza",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
+      "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
+    },
+    {
       "id": "chatgpt_d_72a6ff236aed32072a0c",
       "title": "Líder de Procesos y Calidad - Nacimiento",
       "company": "CMPC",
@@ -1006,6 +1062,17 @@
       "urlHashSha256": "4acf5dc1e5d01dccfedcd6f6b6b64ec2aa4231ebe00b4e006600e3217092f995"
     },
     {
+      "id": "chatgpt_d_897ecd5eaa571cd80e36",
+      "title": "Cuidador/a residencia de niños y niñas, Angol",
+      "company": "Aldeas Infantiles SOS",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/cuidador-a-residencia-de-ninos-y-ninas-angol-3677434",
+      "urlHashSha256": "897ecd5eaa571cd80e36932cf1ccb2d03ad0bf1c32d30cf485ed42eeccaf71b1"
+    },
+    {
       "id": "chatgpt_d_910ceee091936904696e",
       "title": "Analista de Vibraciones - Mininco, Planta Plywood",
       "company": "CMPC",
@@ -1015,6 +1082,17 @@
       "visibleIn12Communes": true,
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19427?c=cmpc",
       "urlHashSha256": "067853b43b95b63f22f40a1ca0a97d1f5e62eea9649b71f2267657c3b2931869"
+    },
+    {
+      "id": "chatgpt_d_9e173e643c73999fa7f6",
+      "title": "Se buscan enfierradores Nacimiento",
+      "company": "Constructora aljo",
+      "workCommunes": [
+        "Nacimiento"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
+      "urlHashSha256": "a6c5ab75b47d129e5ebb407a06705cc38ca8615c2ab01581b42d6cf6e8321ec1"
     },
     {
       "id": "chatgpt_d_ac99dfccf73d73c896ac",
@@ -1092,6 +1170,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/experto-a-en-prevencion-de-riesgos-rubro-celulosa-collipulli-3933145",
       "urlHashSha256": "b82587f333519896e835a1b4fbac447b7f727b2ce8ac259e20ff1aaf29bc5f67"
+    },
+    {
+      "id": "chatgpt_d_c3271f36e2e4551bc026",
+      "title": "Conductor/a Clínico Urgencias Angol",
+      "company": "Xinerlink",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
+      "urlHashSha256": "c3271f36e2e4551bc026f152edd4d3c239a5ac07ab33bff1daff945bd0283d88"
     },
     {
       "id": "chatgpt_d_c566b2e49f402a38c6c4",
@@ -1238,6 +1327,17 @@
       "urlHashSha256": "cafadb8a86d09015704899fe1b3bfa7e244809699b634891936c93c1d9934c70"
     },
     {
+      "id": "e84d3815-1a88-49ee-9ad4-a52aebf3e293",
+      "title": "Supervisor Técnico de Obra - Mulchén",
+      "company": "Aguas Andinas",
+      "workCommunes": [
+        "Mulchén"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
+      "urlHashSha256": "970437a2ef96421bbc171863c478a3172ae91ac7aefc5cd70080355d4fcb35a4"
+    },
+    {
       "id": "eb54af21-eccd-4e3c-ace2-d06da87235c3",
       "title": "Psicólogo (a)",
       "company": "PROGRAMA AFT PF FREIRE TOLTÉN TEODORO SCHMIDT",
@@ -1379,17 +1479,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/operador-de-procesos-industriales-y-quimicos-freire-3930114",
       "urlHashSha256": "50357b25d2ea74fd81ddf6a06744f5861638ef73df45d4f6e8ede64c0b46f2c1"
-    },
-    {
-      "id": "free-0db736d40ce9ba138aa4074e80b49bd27121f94d",
-      "title": "Conductor/a Clínico Urgencias Angol",
-      "company": "Xinerlink",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/conductor-a-clinico-urgencias-angol-3934484",
-      "urlHashSha256": "c3271f36e2e4551bc026f152edd4d3c239a5ac07ab33bff1daff945bd0283d88"
     },
     {
       "id": "free-0e04eb3bd57991d9c616eec3ab5bde90d5eda964",
@@ -1612,28 +1701,6 @@
       "urlHashSha256": "e3fbf4c96f04831fafdb012ce6fe1c494a868eb8296c1409340520ade9c00512"
     },
     {
-      "id": "free-2e1d1d9cfacf82451b64f76b3d1ce15ccde89eb8",
-      "title": "Mecánico/a Automotriz – Nacimiento",
-      "company": "Serfonac",
-      "workCommunes": [
-        "Nacimiento"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/mecanico-a-automotriz-nacimiento-3923364",
-      "urlHashSha256": "728743fa1bc6044fab11bee888fd1f8764785ba2965ddb7311f9d5d5e3060729"
-    },
-    {
-      "id": "free-2ee12fa1a047c31a5c2e43334d1e0f7718ec2439",
-      "title": "Asesor/a de Socias Rural en Angol (Malleco) (Trabajador/a, Técnico social?",
-      "company": "Fondo Esperanza",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/asesor-a-de-socias-rural-en-angol-malleco-trabajador-a-tecnico-social-3931920",
-      "urlHashSha256": "719dc82e84eb93a138d9e19951aa4e068daa4e0b708ab886e78d1721e8311d2c"
-    },
-    {
       "id": "free-2fcd588aae3ba3abc69163cb1d98623ced600cfc",
       "title": "Práctica Profesional - Tesorería",
       "company": "Empresas Agrotop",
@@ -1731,17 +1798,6 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/bodeguero-a-plan-navidad-preunic-angol-3925963",
       "urlHashSha256": "ddad4ab0c134985d4f9c80bb0590c015df61885c539e8b211dbd0f5314f6f4db"
-    },
-    {
-      "id": "free-3fba47530376cc60f714e881756b58f00a7636cd",
-      "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
-      "company": "Empresa de alimentos",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
-      "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
     },
     {
       "id": "free-3ff47957892f9c91c43887029ef188fad6b55713",
@@ -1940,17 +1996,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/ejecutivo-atencion-publico-sucursal-temuco-3928272",
       "urlHashSha256": "a076cf5993fd714ea4f39f417025ea4bd4b458315911d23c4571811994b4da9e"
-    },
-    {
-      "id": "free-54e528da7db786668f2bd60d615ac3f03624ce38",
-      "title": "Supervisor Técnico de Obra - Mulchén",
-      "company": "Aguas Andinas",
-      "workCommunes": [
-        "Mulchén"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/supervisor-tecnico-de-obra-mulchen-3900996",
-      "urlHashSha256": "970437a2ef96421bbc171863c478a3172ae91ac7aefc5cd70080355d4fcb35a4"
     },
     {
       "id": "free-5656d92711f693c876be6cdbdac3e750a380c782",
@@ -2171,17 +2216,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/administrativo-de-compras-3927193",
       "urlHashSha256": "d7e9fcd0a620e831e35cd0f3c2dbb8ce8d2080ec6d8e64e0ff6edc6a5d197a6e"
-    },
-    {
-      "id": "free-766b0123f4316acc520275244e28a3622ad0d46e",
-      "title": "Cuidador/a residencia de niños y niñas, Angol",
-      "company": "Aldeas Infantiles SOS",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/cuidador-a-residencia-de-ninos-y-ninas-angol-3677434",
-      "urlHashSha256": "897ecd5eaa571cd80e36932cf1ccb2d03ad0bf1c32d30cf485ed42eeccaf71b1"
     },
     {
       "id": "free-77ef39ec8bc7406b6a96a5a8f32b75036e2ee1c9",
@@ -2426,17 +2460,6 @@
       "urlHashSha256": "aa2f9fbf6d3ed4869ac8bd04ee6fdf5a775b957aa3f19490d21d017ac183a4cb"
     },
     {
-      "id": "free-9e173e643c73999fa7f6e52332a957d0834d0b45",
-      "title": "Se buscan enfierradores Nacimiento",
-      "company": "Constructora aljo",
-      "workCommunes": [
-        "Nacimiento"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/se-buscan-enfierradores-nacimiento-3926105",
-      "urlHashSha256": "a6c5ab75b47d129e5ebb407a06705cc38ca8615c2ab01581b42d6cf6e8321ec1"
-    },
-    {
       "id": "free-a13a87dc83802f0a66ad06e96c16e381025c55ed",
       "title": "Práctica Profesional Ingeniero Mecánico Automotriz Los Angeles",
       "company": "Coseche",
@@ -2624,17 +2647,6 @@
       "urlHashSha256": "5c468418b0b0770ab1e23d42969129ef858cf97b3375d325b2fc539d97f29580"
     },
     {
-      "id": "free-b7ea6a01cc881c69760a9e3d1c5e9ecfc572ff1c",
-      "title": "CONDUCTOR PROFESIONAL CON VEHÍCULO SEDAN/DIESEL - ANGOL",
-      "company": "Jobconsulting",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/conductor-profesional-con-vehiculo-sedan-diesel-angol-3389480",
-      "urlHashSha256": "286a02fa884ea7ea2859e783b25aa95cc20996ea2f21e4c59b97acf55bfd6c5a"
-    },
-    {
       "id": "free-b8dda59a2a2ebf718b149c9d0abcc5075ce00b26",
       "title": "Vendedor en terreno",
       "company": "Pitch Marketing Ltda",
@@ -2756,17 +2768,6 @@
       "urlHashSha256": "974001793a5d2304cc71fda6de1e9b75cf5bdd8e6a6b5de3254c23b9c54bfcfd"
     },
     {
-      "id": "free-c4c786d406e19ea9db7e112a29e1cac97729be12",
-      "title": "TENS para Cuidados Pacientes Domiciliarios / Lumaco",
-      "company": "Layner",
-      "workCommunes": [
-        "Lumaco"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/tens-para-cuidados-pacientes-domiciliarios-lumaco-3902931",
-      "urlHashSha256": "d56df5112a06bb23e2a29618bcace5922d2fcbcbf982d6815c4e03b62a1d551c"
-    },
-    {
       "id": "free-c6cf2427c078f3c343257b30d0172c666b8e762e",
       "title": "Ejecutivo de Ventas de Seguros de Salud – Los Ángeles",
       "company": "Talents",
@@ -2886,17 +2887,6 @@
       "visibleIn12Communes": false,
       "url": "https://chiletrabajos.cl/trabajo/trabajador-a-social-fae-cautin-media-jornada-3922996",
       "urlHashSha256": "98194596ff0c6c3d3cf2308dbe851d15b3f1d3ea8b705dfcb099ec446f44f6a4"
-    },
-    {
-      "id": "free-d850aaa7c83bdfcd8f83adfe0da30c0892260589",
-      "title": "Vendedor Terreno - ANGOL",
-      "company": "Distribuidora consumo masivo",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/vendedor-terreno-angol-3932099",
-      "urlHashSha256": "5241af5f68d396e67450d3b76f8e4b154ffa4549d154e94e252298bee170f10a"
     },
     {
       "id": "free-d944864a2813a0335a76e245fa502fec10f0c92a",
@@ -3174,17 +3164,6 @@
       "urlHashSha256": "7e45132d6145e0227fa87dfa70e645d18c6e481ae7199f7283250f278bd94a65"
     },
     {
-      "id": "free-fd6f3d91033632ce9dbcc52634dcf4933c21a219",
-      "title": "Subgerente de tienda Papa Johns - Angol",
-      "company": "Papa Johns Angol",
-      "workCommunes": [
-        "Angol"
-      ],
-      "visibleIn12Communes": true,
-      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
-      "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
-    },
-    {
       "id": "free-fdbde00be5d732241bbfb312a513a0b218c13509",
       "title": "Asistente de Marketing",
       "company": "Enjoy",
@@ -3218,6 +3197,17 @@
       "urlHashSha256": "688f28c809dc3463f046fab29977d6012c4887f1455555d8c72f105714262867"
     },
     {
+      "id": "tcq_8e10d10d8dedf4b7e3b9c1",
+      "title": "SE BUSCA OPERARIO DE PRODUCCIÓN (ANGOL)",
+      "company": "Empresa de alimentos",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/se-busca-operario-de-produccion-angol-3919569",
+      "urlHashSha256": "8e10d10d8dedf4b7e3b9c10d75b9dafbdb427bf7dd09806ce63d9ee3424fc088"
+    },
+    {
       "id": "tcq_e2265a52410f086a0dcb71",
       "title": "Se requieren Tens o Enfermeras/os",
       "company": "Expertise Spa",
@@ -3227,6 +3217,17 @@
       "visibleIn12Communes": true,
       "url": "https://chiletrabajos.cl/trabajo/se-requieren-tens-o-enfermeras-os-3918381",
       "urlHashSha256": "e2265a52410f086a0dcb71a8684cc66e82a97a9d849af2fc45370c09ad971024"
+    },
+    {
+      "id": "tcq_fd6f3d91033632ce9dbcc5",
+      "title": "Subgerente de tienda Papa Johns - Angol",
+      "company": "Papa Johns Angol",
+      "workCommunes": [
+        "Angol"
+      ],
+      "visibleIn12Communes": true,
+      "url": "https://chiletrabajos.cl/trabajo/subgerente-de-tienda-papa-johns-angol-3923618",
+      "urlHashSha256": "8cd3f39aa6e6f4dfd760b49be4842a8af5f07e04f89f453ccc6bd21a689c1b9c"
     }
   ]
 }

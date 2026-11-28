@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T22:09:26.736987+00:00",
-  "items_total": 11,
+  "updated_at": "2026-11-28T03:58:59.417350+00:00",
+  "items_total": 10,
   "automatically_published": 0,
   "items": [
     {
@@ -39,22 +39,6 @@
       "date_source_verified": false,
       "work_commune_finally_verified": false,
       "review_reason": "explicit_worksite_in_original_description"
-    },
-    {
-      "id": "a_c98032a7a9b174cf8b72",
-      "url": "https://www.chiletrabajos.cl/trabajo/rigger-angol-3940244",
-      "source": "Motor A Chiletrabajos",
-      "work_commune": "Angol",
-      "title_hint": "Rigger - Angol - Angol | Chiletrabajos",
-      "date_source_hint": "2026-11-27 15:30:09",
-      "deadline_hint": "2027-02-10T15:30:09",
-      "first_discovered_at": "2026-11-27T22:09:26.736987+00:00",
-      "last_checked_at": "2026-11-27T22:09:26.736987+00:00",
-      "status": "recheck_original",
-      "publication_eligible": false,
-      "date_source_verified": false,
-      "work_commune_finally_verified": false,
-      "review_reason": "jobposting_structured_location"
     },
     {
       "id": "a_b5ba3957f4525c1661b0",
@@ -202,12 +186,12 @@
     }
   ],
   "metrics": {
-    "added": 14,
-    "updated": 2,
+    "added": 0,
+    "updated": 0,
     "closed": 0,
     "invalid": 0,
     "expired": 0,
-    "published_reconciled": 13,
+    "published_reconciled": 1,
     "territory_mismatch": 5
   }
 }

@@ -653,6 +653,8 @@ function AdvertiserPanel({ onClose, onSent, initialCommune='Angol', attribution 
   );
 }
 
+type PushTest = { id: string; status: 'sending' | 'waiting' | 'timed_out' | 'received' };
+
 function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; onClose:()=>void; onSaved:(message:string)=>void }) {
   const selectable = [...new Set([...places.filter(value => value !== 'Todas'), ...travelPlaces])];
   const [selected, setSelected] = useState<string[]>(() => selectable.includes(defaultPlace) ? [defaultPlace] : []);
@@ -664,16 +666,27 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
   const [saving, setSaving] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [testMessage, setTestMessage] = useState('');
-  const [pushReceipt, setPushReceipt] = useState('');
+  const [pushTest, setPushTest] = useState<PushTest | null>(null);
   const [localResult, setLocalResult] = useState('');
   useEffect(() => {
     const received = (event: Event) => {
       const data = (event as CustomEvent).detail;
-      if (data?.kind === 'notification_test') setPushReceipt('Prueba push recibida por esta aplicación. Comprueba también la notificación del sistema.');
+      const testId = data?.testId;
+      if (data?.kind !== 'notification_test' || typeof testId !== 'string') return;
+      setPushTest(current => current?.id === testId ? { ...current, status: 'received' } : current);
     };
     window.addEventListener('tc-push-received', received);
     return () => window.removeEventListener('tc-push-received', received);
   }, []);
+  const waitingId = pushTest?.status === 'waiting' ? pushTest.id : null;
+  useEffect(() => {
+    if (!waitingId) return;
+    const timeout = window.setTimeout(() => {
+      setPushTest(current => current?.id === waitingId && current.status === 'waiting'
+        ? { ...current, status: 'timed_out' } : current);
+    }, 30_000);
+    return () => window.clearTimeout(timeout);
+  }, [waitingId]);
   const [legacyPending,setLegacyPending] = useState(false);
   useEffect(() => {
     let active = true;
@@ -719,7 +732,7 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
   const parsedKeywords = () => keywords.split(',').map(value => value.trim()).filter(Boolean).slice(0,8);
   const activate = async () => {
     if (!selected.length) { setErrorMessage('Elige al menos una comuna para recibir avisos.'); return; }
-    setSaving(true); setErrorMessage(''); setTestMessage('');
+    setSaving(true); setErrorMessage(''); setTestMessage(''); setPushTest(null);
     let stage = 'sesión';
     try {
       if (!(await auth.getUser())) {
@@ -756,13 +769,16 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
     } finally { setSaving(false); }
   };
   const testNotification = async () => {
-    setSaving(true); setErrorMessage(''); setTestMessage(''); setPushReceipt('');
+    const id = crypto.randomUUID();
+    setSaving(true); setErrorMessage(''); setTestMessage(''); setPushTest({ id, status: 'sending' });
     try {
-      const response = await api.post('/api/notifications/test');
+      const response = await api.post('/api/notifications/test', { testId: id });
       if (!(Number(response.data?.sent)>0)) throw Error('El servicio no aceptó el envío. Revisa la suscripción y los permisos antes de volver a probar.');
       track('tc_notifications_test', { commune:selected.join(' · '), surface:'alerts_panel' });
-      setTestMessage('Proveedor aceptó ' + Number(response.data.sent) + ' envío(s); fallidos: ' + Number(response.data.failed || 0) + '. Espera el aviso del teléfono. Aún no confirma recepción en este dispositivo.');
+      setTestMessage('Proveedor aceptó ' + Number(response.data.sent) + ' envío(s). Fallidos: ' + Number(response.data.failed || 0) + '.');
+      setPushTest(current => current?.id === id && current.status === 'sending' ? { ...current, status: 'waiting' } : current);
     } catch (error) {
+      setPushTest(current => current?.id === id && current.status !== 'received' ? null : current);
       const message = error instanceof Error ? error.message : '';
       const status = (error as { response?: { status?: number } } | null)?.response?.status;
       setErrorMessage(status === 429 ? 'Has alcanzado el límite de pruebas. Inténtalo más tarde.' : /failed to fetch|network/i.test(message) ? 'No se pudo conectar para enviar la prueba. Revisa tu conexión.' : message.includes('servicio no aceptó') ? message : 'No se pudo enviar la prueba. Actualiza los avisos y verifica tus permisos.');
@@ -780,7 +796,7 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
     } catch { setLocalResult('El sistema no pudo mostrar la prueba local. Revisa los permisos del dispositivo.'); }
   };
   const disable = async () => {
-    setSaving(true); setErrorMessage(''); setTestMessage(''); setPushReceipt('');
+    setSaving(true); setErrorMessage(''); setTestMessage(''); setPushTest(null);
     try {
       if (await auth.getUser()) await api.delete('/api/notifications/preferences');
       setEnabled(false);
@@ -815,7 +831,9 @@ function AlertsPanel({ defaultPlace, onClose, onSaved }: { defaultPlace:string; 
         <p className='tcNotifyNote'>Buscar trabajo y consultar novedades es gratis y no requiere cuenta. Solo para recibir notificaciones automáticas con la app cerrada, el proveedor AppDeploy solicita iniciar sesión una vez y aceptar los permisos del teléfono. No tiene cobros. En iPhone puede ser necesario instalar la app primero.</p>
         {errorMessage&&<div className='formError' role='alert'><AlertCircle/>{errorMessage}</div>}
         {testMessage&&<p className='tcNotifyActive' role='status'>{testMessage}</p>}
-        {pushReceipt&&<p className='tcNotifyActive' role='status'>{pushReceipt}</p>}
+        {pushTest?.status === 'waiting' && <p className='tcNotifyNote' role='status'>Esperando confirmación de este dispositivo…</p>}
+        {pushTest?.status === 'timed_out' && <p className='tcNotifyNote' role='status'>Este dispositivo no confirmó la recepción en 30 segundos. Usa «Comprobar aviso local» para revisar el permiso del teléfono.</p>}
+        {pushTest?.status === 'received' && <p className='tcNotifyActive' role='status'>Prueba push recibida por esta aplicación. Revisa también el aviso del sistema.</p>}
         {localResult&&<p className='tcNotifyNote' role='status'>{localResult}</p>}
         {enabled&&<button type='button' className='neoAlertTest' onClick={()=>void testLocalNotification()}>Comprobar aviso local</button>}
         <div className='neoAlertActions tcNotifyActions'>

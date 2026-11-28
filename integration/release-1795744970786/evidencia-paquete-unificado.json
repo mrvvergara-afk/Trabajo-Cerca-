@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 49,
-  "payloadSha256": "4b3eaafabebcfd91edc60032d348c15e1d726fbd7aa14ee441a20614907a74c0",
+  "runtimeFiles": 50,
+  "payloadSha256": "4fa32f32ff2bd541bcc201c46d9c52c25637b474887e019a93a06090d59a1156",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -17,12 +17,13 @@
     "src/house-autonomy.tsx",
     "backend/admin-backup.ts",
     "src/backup-crypto.ts",
-    "src/backup-runner.ts"
+    "src/backup-runner.ts",
+    "backend/index.ts"
   ],
   "local": {
     "viteBuild": "passed",
     "vite": "8.3.8",
-    "nodeTestsPassed": 42,
+    "nodeTestsPassed": 44,
     "replay": {
       "testedAt": "2026-11-27T20:00:00Z",
       "scope": "offline_replay_real_github_blobs_memory_database",
@@ -439,11 +440,26 @@
         "territory_repair_audit"
       ],
       "credentialTableExcluded": "growth_house_metricool"
+    },
+    "notifications": {
+      "scope": "local_chromium_simulated_notification_sdk",
+      "acceptedDistinctFromReceived": true,
+      "unrelatedReceiptIgnored": true,
+      "oldReceiptIgnored": true,
+      "timeoutReported": true,
+      "lateReceiptRecognized": true,
+      "receiptBeforeProviderResponseRecognized": true,
+      "providerRejectionReported": true,
+      "realPhoneDeliveryVerified": false,
+      "script": "verification/tests/browser/notifications.mjs",
+      "timeoutSeconds": 30,
+      "requestQuotaAndLegacyVerified": true
     }
   },
   "pending": [
     "independent_zero_cost_data_recovery",
     "authenticated_admin_with_integrated_package",
-    "real_runtime_transfer_from_both_producers"
+    "real_runtime_transfer_from_both_producers",
+    "real_notification_delivery_installed_android"
   ]
 }

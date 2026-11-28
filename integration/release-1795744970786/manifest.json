@@ -45,6 +45,11 @@
       "candidateSha256": "cb63db938aa7edf319dd89910541a9f03135c7bd08c1fe6af5b60ee234af0f16"
     },
     {
+      "path": "backend/index.ts",
+      "baseSha256": "94b828d8fe1eb0d556358cf45fc422c5690c839a7f13f535b4a4e54a79bae11f",
+      "candidateSha256": "3d3bb64bb33b2286659b20fbcff6075da1133fc7f23a9503cdf931f693521e8b"
+    },
+    {
       "path": "backend/motor-b-document.ts",
       "baseSha256": "79c081c0cd15c3c508491587205aaba2d2fad3dd4d6054811ca82d2b268495a4",
       "candidateSha256": "6c85811d3463d6c7ea9141f5d3f1566d56b035e97f88114d191d6f969a0eaf6c"
@@ -222,7 +227,7 @@
     {
       "path": "src/App.tsx",
       "baseSha256": "ed597e3374109751a312063748a9590237e578d95b96ccd44267f7a5766dd706",
-      "candidateSha256": "fb29280986e5086059d8c0063c61ee9831ac0e4f6a2dbbfcc53057ce67f84305"
+      "candidateSha256": "f5928f36e809a8e3cedb647ce9740ae52b2312311deadb348806d622a2724cce"
     },
     {
       "path": "src/backup-crypto.ts",
@@ -256,7 +261,6 @@
     }
   ],
   "verifiedPreservedSha256": {
-    "backend/index.ts": "94b828d8fe1eb0d556358cf45fc422c5690c839a7f13f535b4a4e54a79bae11f",
     "backend/public-feed.ts": "11e99512213b99305c7b0e6a7029354c79119eea685da59fd0de660480bebf4a",
     "backend/house-autonomy.ts": "5d96e4b45b8b5123e252f50da5b54f20f3278b2d35b28fa1235aa60c7e8868cf",
     "backend/house-metricool.ts": "946855f5aceebca8e40ec716907e26ecba0c45fd3a20aa66134dce044bb10494",
@@ -275,5 +279,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "4b3eaafabebcfd91edc60032d348c15e1d726fbd7aa14ee441a20614907a74c0"
+  "payloadSha256": "4fa32f32ff2bd541bcc201c46d9c52c25637b474887e019a93a06090d59a1156"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_run": "2026-11-27T19:09:45.975052-03:00",
+  "last_run": "2026-11-28T00:17:16.802899-03:00",
   "seen": {
     "507b22d2078fc8c77c6e": {
       "first_seen": "2026-11-05T09:36:33.060720-03:00",
@@ -11855,6 +11855,126 @@
     "f25e350e9052c4906e00": {
       "first_seen": "2026-11-27T19:09:45.975052-03:00",
       "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ayudante-mecanico-maquinaria-pesada-pudahuel-3084743.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "d6391be16f1ab6bf555e": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/guardia-con-os10-sodimac-antofagasta-renta-600000-colacion-opcion-de-turnos-extras-con-pago-semanal-ingreso-inmediato-3084850.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "fd6aaa6171c140a0dfea": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/apilador-a-licencia-d-697000-3084849.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "357997d6d1fa725fe557": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/repartidor-multifuncional-licencia-clase-b-3084848.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "345fe16d95535f174d27": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/encargado-de-bodega-y-despacho-licencia-clase-b-3084847.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2887e509447bb2fa900c": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-as-de-bodega-25hrs-open-kennedy-3084846.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "3ab97ce4fce3ad6662d7": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operaria-de-bodega-turno-noche-3084845.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "792d5bbde1346a6de2f3": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-los-lagos/operario-de-bodega-castro-full-time-dia-3084844.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "058cba1d8c31b5a7ba7b": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-full-time-san-bernardo-turno-6-30-a-14-00-hrs-3084843.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "049da2a2ee6398ba0f3d": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-full-time-san-bernardo-turno-11-00-a-19-00-hrs-3084842.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "134553debe69aa1a642a": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operario-de-bodega-con-licencia-d-calera-de-tango-3084841.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b0f48f16bc09bf70fdd0": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-atacama/operador-multifuncional-jardineria-martes-y-viernes-copiapo-160000-liquidos-mensuales-3084840.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "cf2885d9ff60218e1d3e": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-biobio/asistente-de-bodega-con-licencia-clase-d-camino-a-penco-3084839.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "b6d1baf63f7241ce98df": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operarios-de-bodega-pudahuel-lo-boza-pudahuel-3084838.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "05cdfc1fe9cdbc6ece1e": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/operador-tienda-caja-para-supermercado-en-macul-jornada-6x1-3084837.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "40d646bacac357390a28": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-valparaiso/chef-cocinero-con-experiencia-3084836.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ecd246d24cc513ae3a32": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/analista-de-cuentas-por-pagar-manufactura-lampa-3084835.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "2a67354efeaa452ecef0": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/ejecutivo-a-pyme-pyme-digital-2-reemplazo-prepost-natal-3084834.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "9a31f07ceef77a0582b0": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-rmetropolitana/asistente-administrativo-recepcion-de-muestras-san-joaquin-tens-laboratorio-administrativo-3084833.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "ba735140eca4743b410d": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-antofagasta/conductor-clinico-con-licencia-a2-o-a3-antofagasta-3084832.html",
+      "source": "Inventario D04",
+      "commune": null
+    },
+    "e7db0b64bbdbe8362016": {
+      "first_seen": "2026-11-28T00:17:16.802899-03:00",
+      "url": "https://www.mipleo.cl/ofertas-de-trabajo/oferta-de-trabajo-en-tarapaca/se-requieren-medicos-cirujanos-con-o-sin-experiencia-lunes-a-viernes-reemplazo-en-iquique-3084831.html",
       "source": "Inventario D04",
       "commune": null
     }

@@ -4,7 +4,7 @@
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "target": "prod",
   "brandId": "7187503",
-  "state": "scheduled",
+  "state": "published",
   "publicationDate": "2026-11-27T19:00:00-03:00",
   "networks": [
     "facebook",
@@ -17,14 +17,16 @@
   "providers": [
     {
       "network": "facebook",
-      "status": "PENDING"
+      "status": "PUBLISHED",
+      "publicUrl": "https://facebook.com/122124288507500356/posts/122124615663500356"
     },
     {
       "network": "instagram",
-      "status": "PENDING"
+      "status": "PUBLISHED",
+      "publicUrl": "https://www.instagram.com/p/DgQtYMXlGUO/"
     }
   ],
-  "verifiedAt": "2026-11-27T14:29:00.525Z",
+  "verifiedAt": "2026-11-28T11:34:19-03:00",
   "mediaSha256": "a0ce7868c2af4f0e1d7c39b4fab33e30f157d99f730eb4b028176561adffde0d",
   "mediaTransport": "verified_local_jpeg_upload"
 }

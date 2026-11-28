@@ -1,8 +1,8 @@
 {
   "appId": "trabajo-cerca-laboratorio-3ojgro",
   "baseline": "1795744970786",
-  "runtimeFiles": 51,
-  "payloadSha256": "404a9bcfbcb96f1c512604fde09bd7c96aeb27d60bfc5f8082a1b3a62f2c4986",
+  "runtimeFiles": 52,
+  "payloadSha256": "2a86e0f0449dc2ab73c572d2bd4e3c0987b5165510b387da5818252f83724058",
   "previousQa": {
     "snapshot": "1795804026239",
     "payloadSha256": "4c405aff3b829200eb1c0cc98b27d8a943bdcc1921c0c2ea97a94a2a7b193ea3",
@@ -22,14 +22,16 @@
     "backend/engine-source-audit.ts",
     "backend/engine-telemetry.ts",
     "src/engine-command.tsx",
-    "src/executive-metrics.ts"
+    "src/executive-metrics.ts",
+    "backend/chatgpt-auto-import.ts",
+    "backend/motor-gemini-github-pull.ts"
   ],
   "local": {
     "viteBuild": "passed",
     "vite": "8.3.8",
-    "nodeTestsPassed": 48,
+    "nodeTestsPassed": 49,
     "replay": {
-      "testedAt": "2026-11-27T20:00:00Z",
+      "testedAt": "2026-11-28T02:30:00Z",
       "scope": "offline_replay_real_github_blobs_memory_database",
       "chatgpt": {
         "indexSha": "5b71d688a327b71efe6d4f674587cef935e21f9f",
@@ -62,6 +64,8 @@
         "locallyProjected": 10,
         "replayedBatches": 4,
         "duplicateRowsCreated": 0,
+        "readThroughCandidatePublicRoute": true,
+        "verifiedPublicOffers": 10,
         "staleOpenWithoutDeadlineRejected": true,
         "staleOpenWithFutureDeadlineRejected": true
       },
@@ -76,12 +80,17 @@
         "receivedIntoReview": 52,
         "rejected": 3,
         "duplicateRowsCreatedOnReplay": 0,
+        "resumedBothCursorsAfterGithub503": true,
         "pendingIndependentSourceVerification": true,
         "published": 0
       },
       "productionWrites": 0,
       "appDeployCalls": 0,
-      "externalNetworkRequests": 0
+      "externalNetworkRequests": 0,
+      "sameGithubIndexAndQueueAsPriorCheck": true,
+      "allChatGPTBatchBlobsVerifiedAtCurrentHead": true,
+      "newProductionPublicationVerified": false,
+      "script": "verification/verify-real-batches.mjs"
     },
     "publicExperience": {
       "scope": "local_chromium_simulated_api",

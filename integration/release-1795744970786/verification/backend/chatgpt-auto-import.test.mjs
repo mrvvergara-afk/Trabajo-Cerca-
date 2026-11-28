@@ -70,3 +70,29 @@ test('rejects an invalid GitHub SHA before importing candidates', async () => {
   assert.equal((await f.run()).state, 'chatgpt_bridge_error');
   assert.equal(f.stats().imports, 0);
 });
+
+test('public confirmation requires a verified active job in the expected commune', async () => {
+  let receipt = {
+    id: batchId, batchId, status: 'awaiting_public_feed', newCount: 1, published: 0,
+    results: [{ id: offerId, status: 'direct_record_queued_for_public_projection', expectedWorkCommunes: ['Angol'] }],
+  };
+  const db = {
+    list: async () => ({ items: [receipt] }),
+    tx: { update: async (_table, [row]) => { receipt = row.record; return [true]; } },
+  };
+  const entry = { id: 'chatgpt_' + offerId, kind: 'job_offer', verified: true, active: true, workCommunes: ['Angol'] };
+  let item;
+  const readPublicFeedPage = async () => ({ items: [item], totalJobOffers: 1 });
+  const confirm = new Function('db', 'readPublicFeedPage', code + '\nreturn confirmChatGPTPublications;')(db, readPublicFeedPage);
+
+  for (const patch of [
+    { kind: 'worker_available' }, { verified: false }, { active: false }, { review: true }, { workCommunes: ['Purén'] },
+  ]) {
+    item = { ...entry, ...patch };
+    assert.equal((await confirm()).published, 0);
+    assert.equal(receipt.status, 'awaiting_public_feed');
+  }
+  item = entry;
+  assert.equal((await confirm()).published, 1);
+  assert.equal(receipt.status, 'published');
+});

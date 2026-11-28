@@ -139,6 +139,7 @@ export async function confirmChatGPTPublications(){
       if(!Array.isArray(page.items))return {status:'feed_invalid_items',checked:0,published:0};
       total+=page.items.length;
       for(const item of page.items){
+        if(item.kind!=='job_offer'||item.verified!==true||item.active!==true||item.review===true)continue;
         const id=String(item.id);ids.add(id);
         workById.set(id,Array.isArray(item.workCommunes)?item.workCommunes as string[]:[]);
       }

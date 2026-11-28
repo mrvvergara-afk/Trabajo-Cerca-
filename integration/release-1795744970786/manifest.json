@@ -17,7 +17,7 @@
     {
       "path": "backend/chatgpt-auto-import.ts",
       "baseSha256": "3eb7aa24b3474c91c49c07351117f0af62e8825772aff0ad7d31bc52d416b7a2",
-      "candidateSha256": "f277ef97563ffceddf975018a8d5c1a95b09ad2e497b415f4b9317e87884753b"
+      "candidateSha256": "7bfc2decc1e704703da7f0d4e19cad98af57e80efe46a8838da1748a158452d0"
     },
     {
       "path": "backend/chatgpt-direct-import.ts",
@@ -63,6 +63,11 @@
       "path": "backend/motor-b-idle-assist.ts",
       "baseSha256": null,
       "candidateSha256": "380ed5453c5a5dc890c1492660ec48a2a328223651820807155b8a50dc664471"
+    },
+    {
+      "path": "backend/motor-gemini-github-pull.ts",
+      "baseSha256": "31c4aa71329f79984d8d0049c42a8244e4b54ec0171b695f18d8d8be02d4c24b",
+      "candidateSha256": "4b3cd4582a7662dfd8301b073780c960896d14a47d3f87151f90813895630a6d"
     },
     {
       "path": "backend/ocr-spa-model.ts",
@@ -284,5 +289,5 @@
     "runtimeFiles": 46
   },
   "followupCommit": "830db7d916b3e25a1aca193d54dbb5d75437a88f",
-  "payloadSha256": "404a9bcfbcb96f1c512604fde09bd7c96aeb27d60bfc5f8082a1b3a62f2c4986"
+  "payloadSha256": "2a86e0f0449dc2ab73c572d2bd4e3c0987b5165510b387da5818252f83724058"
 }

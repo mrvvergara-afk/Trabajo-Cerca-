@@ -13,18 +13,6 @@
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
     {
-      "id_fuente": "cmpc_19446",
-      "cargo": "JEFE/A AREA ELECTROCONTROL - Pacifico",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
-      "fecha_publicacion": "2026-11-20",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
       "id_fuente": "cmpc_19182",
       "cargo": "ANALISTA LABORATORIO I",
       "empresa": "CMPC",
@@ -163,24 +151,8 @@
       ]
     },
     {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19452?c=cmpc",
-      "title": "ESPECIALISTA MEDIO AMBIENTE",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19426?c=cmpc",
       "title": "Práctica Administración RRHH - Los Ángeles",
-      "workplaces": [],
-      "reason": [
-        "workplace_not_single_confirmed"
-      ]
-    },
-    {
-      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19396?c=cmpc",
-      "title": "PLANIFICADOR/A MANTENIMIENTO - Puente Alto",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"
@@ -221,6 +193,30 @@
     {
       "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19245?c=cmpc",
       "title": "Asistente Ventas (Plazo Fijo) - Temuco",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19185?c=cmpc",
+      "title": "ANALISTA GESTION CALIDAD",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19144?c=cmpc",
+      "title": "SUPERVISOR EMBARQUES Y PT",
+      "workplaces": [],
+      "reason": [
+        "workplace_not_single_confirmed"
+      ]
+    },
+    {
+      "url": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19080?c=cmpc",
+      "title": "Programa de Prácticas y Memorias 2027: \"Mi Primer Papel\"",
       "workplaces": [],
       "reason": [
         "workplace_not_single_confirmed"

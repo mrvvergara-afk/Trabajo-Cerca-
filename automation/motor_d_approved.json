@@ -2,7 +2,7 @@
   "schema_version": 1,
   "approval": "approved_for_publication",
   "producer": "motor_d_cmpc_browser",
-  "batch_id": "motor-d-cmpc-1f63b25214fdd86d",
+  "batch_id": "motor-d-cmpc-22c48e2531a6ba41",
   "offers": [
     {
       "id_fuente": "cmpc_19437",
@@ -13,18 +13,6 @@
       ],
       "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19437?c=cmpc",
       "fecha_publicacion": "2026-11-25",
-      "fecha_cierre": null,
-      "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
-    },
-    {
-      "id_fuente": "cmpc_19446",
-      "cargo": "JEFE/A AREA ELECTROCONTROL - Pacifico",
-      "empresa": "CMPC",
-      "comunas": [
-        "Collipulli"
-      ],
-      "url_original": "https://cmpc.csod.com/ux/ats/careersite/4/home/requisition/19446?c=cmpc",
-      "fecha_publicacion": "2026-11-20",
       "fecha_cierre": null,
       "justificacion": "Ficha individual oficial CMPC accesible; comuna y fecha de publicación contrastadas con tarjeta oficial."
     },
